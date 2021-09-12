@@ -1,8 +1,16 @@
 [package]
-name = "oak"
+name = "loquat"
 version = "0.1.0"
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+
+[dependencies.sdl2]
+version = "0.34"
+features = ["bundled", "static-link", "mixer"]
+
+[dependencies.nut]
+path = "../nut"
+features = ["sqlite"]

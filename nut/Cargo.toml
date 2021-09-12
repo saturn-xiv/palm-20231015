@@ -5,4 +5,122 @@ edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[features]
+postgresql = ["diesel/postgres"]
+mysql = ["diesel/mysql"]
+sqlite = ["diesel/sqlite"]
+
 [dependencies]
+futures = "0.3"
+futures-util = "0.3"
+mime = "0.3"
+language-tags = "0.3"
+warp = "0.3"
+log = "0.4"
+yaml-rust = "0.4"
+serde-xml-rs = "0.5"
+toml = "0.5"
+juniper_warp = "0.7"
+encoding_rs = "0.8"
+prost = "0.8"
+prost-types = "0.8"
+prost-derive = "0.8"
+r2d2 = "0.8"
+rand = "0.8"
+xml-rs = "0.8"
+env_logger = "0.9"
+ssh2 = "0.9"
+paho-mqtt = "0.9"
+askama = "0.10"
+lettre = "0.10.0-rc.3"
+base64 = "0.13"
+git2 = "0.13"
+juniper = "0.15"
+ipnetwork = "0.18"
+nix = "0.22"
+# quick-xml = "0.22"
+rusoto_core = "0.47"
+rusoto_credential = "0.47"
+rusoto_s3 = "0.47"
+rusoto_sqs = "0.47"
+bytes = "1"
+bytesize = "1"
+lazy_static = "1"
+regex = "1"
+serde_json = "1"
+flexbuffers = "2"
+humantime = "2"
+lapin = "2.0.0-alpha.4"
+percent-encoding = "2"
+clap = "3.0.0-beta.4"
+tempfile = "3"
+handlebars = "4"
+serialport = "4"
+amq-protocol-uri = "7.0.0-alpha.7"
+jsonwebtoken = "7"
+
+[dependencies.chrono]
+version = "0.4"
+features = ["serde"]
+
+[dependencies.chrono-tz]
+version = "0.5"
+features = ["serde"]
+
+[dependencies.uuid]
+version = "0.8"
+features = ["v4", "serde"]
+
+[dependencies.zmq]
+version = "0.9"
+features = ["vendored"]
+
+[dependencies.reqwest]
+version = "0.11"
+features = ["json"]
+
+[dependencies.hyper]
+version = "0.14"
+features = ["full"]
+
+[dependencies.validator]
+version = "0.14"
+features = ["derive", "phone", "card", "unic"]
+
+[dependencies.cookie]
+version = "0.15"
+features = ["secure", "private", "percent-encode"]
+
+[dependencies.redis]
+version = "0.21"
+features = ["r2d2", "cluster"]
+
+[dependencies.eui48]
+version = "1"
+features = ["serde_bytes"]
+
+[dependencies.diesel]
+version = "1"
+default-features = false
+features = ["chrono", "serde_json", "uuid", "numeric", "r2d2", "128-column-tables"]
+
+[dependencies.rss]
+version = "1"
+features = ["validation"]
+
+[dependencies.serde]
+version = "1"
+features = ["derive"]
+
+[dependencies.tokio]
+version = "1"
+features = ["full"]
+
+[dependencies.url]
+version = "2"
+features = ["serde"]
+
+[dependencies.openssl]
+version = "*"
+features = ["vendored"]
+

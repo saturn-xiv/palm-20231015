@@ -6,3 +6,34 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+
+[dependencies.cbeta]
+path = "../cbeta"
+
+[dependencies.cscd]
+path = "../cscd"
+
+[dependencies.lunar]
+path = "../lunar"
+
+[dependencies.nut]
+path = "../nut"
+features = ["postgresql"]
+
+[dependencies.courses]
+path = "../courses"
+
+[dependencies.grocery]
+path = "../grocery"
+
+[dependencies.mail]
+path = "../ops/mail"
+
+[dependencies.vpn]
+path = "../ops/vpn"
+
+[dependencies.metrics]
+path = "../ops/metrics"
+
+[dependencies.oak]
+path = "../ops/oak"
