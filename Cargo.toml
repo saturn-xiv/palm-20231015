@@ -1,0 +1,17 @@
+[workspace]
+
+members = [
+    "cbeta",
+    "cscd",
+    "lunar",
+
+    "nut",
+    "courses",
+    "grocery",
+    "ops/mail",
+    "ops/vpn",
+    "ops/metrics",
+
+    "oak",
+    "fig",
+]
