@@ -1,0 +1,13 @@
+# backend
+/target/
+/Cargo.lock
+
+# assets
+/node_modules/
+/yarn.lock
+
+# test
+/tmp/
+/.env
+/config.toml
+*.log
