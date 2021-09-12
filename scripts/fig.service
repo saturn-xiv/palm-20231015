@@ -1,0 +1,14 @@
+[Unit]
+Description={{description}}
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/lib/fig
+ExecStart=/usr/bin/fig -c /etc/fig/config.toml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
