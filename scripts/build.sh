@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 # ---------------------------------
@@ -78,12 +78,12 @@ build_backend() {
         
         cargo build --target $target --release
         cp -av target/$target/release/fig $TARGET/usr/bin/
-        arm-linux-gnueabihf-strip -s target/$target/release/fig
+        arm-linux-gnueabihf-strip -s $TARGET/usr/bin/fig
         for f in "${features[@]}"
         do
             cargo build --target $target --release
             cp -av target/$target/release/nut $TARGET/usr/bin/nut-${f}
-            arm-linux-gnueabihf-strip -s target/$target/release/nut-${f}
+            arm-linux-gnueabihf-strip -s $TARGET/usr/bin/nut-${f}
         done
     else
         echo "unknown arch $1"
