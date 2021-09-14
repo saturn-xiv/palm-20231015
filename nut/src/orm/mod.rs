@@ -1,3 +1,5 @@
+pub mod migration;
+
 #[cfg(feature = "mysql")]
 pub mod mysql;
 #[cfg(feature = "postgresql")]
@@ -5,7 +7,7 @@ pub mod postgresql;
 #[cfg(feature = "sqlite")]
 pub mod sqlite;
 
-pub mod migration;
+use super::Result;
 
 #[cfg(feature = "mysql")]
 pub use self::mysql::*;
@@ -13,8 +15,6 @@ pub use self::mysql::*;
 pub use self::postgresql::*;
 #[cfg(feature = "sqlite")]
 pub use self::sqlite::*;
-
-use super::Result;
 
 pub type Pool = diesel::r2d2::Pool<diesel::r2d2::ConnectionManager<Connection>>;
 pub type PooledConnection =

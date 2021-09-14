@@ -2,9 +2,17 @@
 extern crate diesel;
 #[macro_use]
 extern crate log;
+#[macro_use]
+extern crate lazy_static;
 
+pub mod cache;
+pub mod crypto;
+pub mod i18n;
+pub mod jwt;
 pub mod orm;
+pub mod queue;
 pub mod result;
+pub mod settings;
 
 use std::default::Default;
 use std::fmt;
