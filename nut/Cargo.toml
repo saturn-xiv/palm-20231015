@@ -55,7 +55,6 @@ percent-encoding = "2"
 clap = "3.0.0-beta.4"
 tempfile = "3"
 handlebars = "4"
-serialport = "4"
 amq-protocol-uri = "7.0.0-alpha.7"
 jsonwebtoken = "7"
 
