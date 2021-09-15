@@ -5,13 +5,16 @@ extern crate log;
 #[macro_use]
 extern crate lazy_static;
 
+pub mod app;
 pub mod aws;
 pub mod cache;
 pub mod crypto;
+pub mod env;
 pub mod i18n;
 pub mod image_magick;
 pub mod jwt;
 pub mod mailer;
+pub mod models;
 pub mod orm;
 pub mod parser;
 pub mod queue;
