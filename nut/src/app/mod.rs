@@ -1,3 +1,4 @@
+pub mod rpc;
 pub mod web;
 pub mod worker;
 
@@ -38,13 +39,15 @@ pub enum SubCommand {
     Web,
     #[clap(about = "Worker process")]
     Worker,
+    #[clap(about = "gRPC Server")]
+    Rpc,
 }
 
 pub async fn launch() -> Result<()> {
     let opts: Opts = Opts::parse();
+    let cfg: Config = from_toml(&opts.config)?;
     match opts.sub_cmd {
         SubCommand::Db(opt) => {
-            let cfg: Config = from_toml(&opts.config)?;
             let db = cfg.database.open()?;
             let db = db.get()?;
             let db = db.deref();
@@ -57,6 +60,9 @@ pub async fn launch() -> Result<()> {
                     FORUM_MIGRATION.deref(),
                 ],
             )?;
+        }
+        SubCommand::Rpc => {
+            rpc::launch(&cfg).await?;
         }
         SubCommand::Web => {
             // TODO

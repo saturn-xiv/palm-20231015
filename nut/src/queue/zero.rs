@@ -1,4 +1,4 @@
-use std::fmt::Debug;
+use std::fmt;
 use std::sync::Mutex;
 
 use hyper::StatusCode;
@@ -17,26 +17,11 @@ pub enum Queue {
     Ipc(String),
 }
 
-impl Queue {
-    pub fn server(&self) -> String {
+impl fmt::Display for Queue {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
-            Self::Tcp(ref host, port) => format!(
-                "tcp://{}:{}",
-                match host {
-                    Some(v) => v,
-                    None => "*",
-                },
-                port
-            ),
-            Self::Ipc(path) => format!(
-                "ipc:///tmp/{}.sock",
-                percent_encode(path.as_bytes(), NON_ALPHANUMERIC)
-            ),
-        }
-    }
-    pub fn client(&self) -> String {
-        match self {
-            Self::Tcp(ref host, port) => format!(
+            Self::Tcp(ref host, port) => write!(
+                f,
                 "tcp://{}:{}",
                 match host {
                     Some(v) => v,
@@ -44,7 +29,8 @@ impl Queue {
                 },
                 port
             ),
-            Self::Ipc(path) => format!(
+            Self::Ipc(path) => write!(
+                f,
                 "ipc:///tmp/{}.sock",
                 percent_encode(path.as_bytes(), NON_ALPHANUMERIC)
             ),
@@ -56,7 +42,7 @@ impl Queue {
     pub const SNDHWM: i32 = 0;
     pub const RCVHWM: i32 = 0;
     pub fn sub(&self, topic: Option<String>) -> Result<zmq::Socket> {
-        let url = self.client();
+        let url = self.to_string();
         info!("open sub socket to {}", url);
         let ctx = zmq::Context::new();
         let sck = ctx.socket(zmq::SUB)?;
@@ -81,7 +67,7 @@ impl Queue {
     }
 
     pub fn pub_(&self) -> Result<zmq::Socket> {
-        let url = self.server();
+        let url = self.to_string();
         info!("open pub socket to {}", url);
         let ctx = zmq::Context::new();
         let sck = ctx.socket(zmq::PUB)?;
@@ -91,7 +77,7 @@ impl Queue {
         Ok(sck)
     }
     pub fn push(&self) -> Result<zmq::Socket> {
-        let url = self.client();
+        let url = self.to_string();
         info!("open push socket to {}", url);
         let ctx = zmq::Context::new();
         let sck = ctx.socket(zmq::PUSH)?;
@@ -101,10 +87,30 @@ impl Queue {
         Ok(sck)
     }
     pub fn pull(&self) -> Result<zmq::Socket> {
-        let url = self.server();
+        let url = self.to_string();
         info!("open pull socket to {}", url);
         let ctx = zmq::Context::new();
         let sck = ctx.socket(zmq::PULL)?;
+        sck.set_sndhwm(Self::SNDHWM)?;
+        sck.set_rcvhwm(Self::RCVHWM)?;
+        sck.bind(&url)?;
+        Ok(sck)
+    }
+    pub fn req(&self) -> Result<zmq::Socket> {
+        let url = self.to_string();
+        info!("open request client socket to {}", url);
+        let ctx = zmq::Context::new();
+        let sck = ctx.socket(zmq::REQ)?;
+        sck.set_sndhwm(Self::SNDHWM)?;
+        sck.set_rcvhwm(Self::RCVHWM)?;
+        sck.connect(&url)?;
+        Ok(sck)
+    }
+    pub fn rep(&self) -> Result<zmq::Socket> {
+        let url = self.to_string();
+        info!("open response server socket to {}", url);
+        let ctx = zmq::Context::new();
+        let sck = ctx.socket(zmq::REP)?;
         sck.set_sndhwm(Self::SNDHWM)?;
         sck.set_rcvhwm(Self::RCVHWM)?;
         sck.bind(&url)?;

@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package nut.services.s3.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/duration.proto";
+
+service S3 {
+  rpc Put(PutRequest) returns (PutResponse);
+  rpc All(AllRequest) returns (AllResponse);
+  rpc Get(GetRequest) returns (GetResponse);
+  rpc Delete(DeleteRequest) returns (google.protobuf.Empty);
+}
+
+message PutRequest {
+  string bucket = 1;
+  string name = 2;
+  bytes body = 3;
+}
+
+message PutResponse { string name = 1; }
+
+message GetRequest {
+  string bucket = 1;
+  string name = 2;
+  google.protobuf.Duration ttl = 3;
+}
+message GetResponse { string url = 1; }
+
+message AllRequest {
+  string bucket = 1;
+  optional string after = 2;
+}
+
+message AllResponse { repeated string items = 1; }
+
+message DeleteRequest {
+  string bucket = 1;
+  string name = 2;
+}

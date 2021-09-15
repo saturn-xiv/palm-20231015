@@ -10,6 +10,7 @@ pub type Result<T> = StdResult<T, Error>;
 #[derive(Debug)]
 pub struct HttpError(pub StatusCode, pub Option<String>);
 pub type HttpResult<T> = StdResult<T, HttpError>;
+pub type GrpcResult<T> = StdResult<tonic::Response<T>, tonic::Status>;
 // TODO: https://github.com/rust-lang/rust/issues/63063
 // pub type HttpResponder = HttpResult<impl Responder>;
 

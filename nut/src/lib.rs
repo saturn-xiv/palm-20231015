@@ -5,6 +5,9 @@ extern crate log;
 #[macro_use]
 extern crate lazy_static;
 
+#[macro_use]
+pub mod macros;
+
 pub mod app;
 pub mod aws;
 pub mod cache;
@@ -18,7 +21,9 @@ pub mod models;
 pub mod orm;
 pub mod parser;
 pub mod queue;
+pub mod request;
 pub mod result;
+pub mod services;
 pub mod settings;
 
 use std::default::Default;
@@ -30,7 +35,7 @@ use hyper::StatusCode;
 use serde::{Deserialize, Serialize};
 use xml::writer::{EventWriter, Result as XmlWriterResult};
 
-pub use self::result::{Error, HttpError, HttpResult, Result};
+pub use self::result::{Error, GrpcResult, HttpError, HttpResult, Result};
 
 include!(concat!(env!("OUT_DIR"), "/env.rs"));
 
