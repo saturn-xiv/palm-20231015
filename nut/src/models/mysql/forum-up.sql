@@ -87,7 +87,7 @@ CREATE TABLE notifications(
     user_id INTEGER NOT NULL,
     url VARCHAR(255) NOT NULL,
     body TEXT NOT NULL,
-    media_type VARCHAR(36) NOT NULL,
+    body_type VARCHAR(36) NOT NULL,
     `level` VARCHAR(16) NOT NULL,
     `read` BOOLEAN NOT NULL,
     version INTEGER NOT NULL DEFAULT 0,
@@ -96,3 +96,23 @@ CREATE TABLE notifications(
 );
 
 CREATE INDEX idx_notifications ON notifications(`level`);
+
+CREATE TABLE votes(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    resource VARCHAR(255) NOT NULL,
+    user_id INTEGER NOT NULL,
+    point INTEGER NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_votes ON votes(user_id, resource);
+
+CREATE TABLE view_counters(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    resource VARCHAR(255) NOT NULL,
+    point INTEGER NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL
+);
+
+CREATE INDEX idx_view_counters ON view_counters(resource);

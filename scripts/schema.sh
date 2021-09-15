@@ -13,7 +13,8 @@ do
     diesel print-schema -o schema_migrations > nut/src/orm/$k/schema.rs
     diesel print-schema -o settings > nut/src/settings/$k/schema.rs
     diesel print-schema -o locales > nut/src/i18n/$k/schema.rs
-    diesel print-schema -o categories tags topics tags_topics posts notifications attachments \
+    diesel print-schema -o categories tags topics tags_topics posts \
+        notifications attachments votes view_counters \
         logs users groups_users groups roles_users roles_groups roles_relations roles operations resources policies > nut/src/models/$k/schema.rs
 done
 

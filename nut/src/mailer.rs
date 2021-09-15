@@ -7,7 +7,7 @@ use super::{MediaType, Result};
 pub struct Email {
     pub subject: String,
     pub body: String,
-    pub media_type: MediaType,
+    pub body_type: MediaType,
     pub to: String,
     pub cc: Vec<String>,
     pub bcc: Vec<String>,

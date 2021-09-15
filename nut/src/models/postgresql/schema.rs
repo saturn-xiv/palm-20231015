@@ -67,7 +67,7 @@ table! {
         user_id -> Int4,
         url -> Varchar,
         body -> Text,
-        media_type -> Varchar,
+        body_type -> Varchar,
         level -> Varchar,
         read -> Bool,
         version -> Int4,
@@ -242,6 +242,26 @@ table! {
     }
 }
 
+table! {
+    view_counters (id) {
+        id -> Int4,
+        resource -> Varchar,
+        point -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
+    votes (id) {
+        id -> Int4,
+        resource -> Varchar,
+        user_id -> Int4,
+        point -> Int4,
+        created_at -> Timestamp,
+    }
+}
+
 allow_tables_to_appear_in_same_query!(
     attachments,
     categories,
@@ -261,4 +281,6 @@ allow_tables_to_appear_in_same_query!(
     tags_topics,
     topics,
     users,
+    view_counters,
+    votes,
 );
