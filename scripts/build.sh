@@ -55,7 +55,7 @@ build_backend() {
 
         for f in "${features[@]}"
         do
-            cargo build --target $target --release --package nut
+            cargo build --target $target --release --features $f --package nut
             cp -av $WORKSPACE/target/$target/release/nut $TARGET/usr/bin/nut-${f}
             strip -s $TARGET/usr/bin/nut-${f}
         done
@@ -76,12 +76,12 @@ build_backend() {
 
         local target="armv7-unknown-linux-gnueabihf"
         
-        cargo build --target $target --release
+        cargo build --target $target --release --package fig
         cp -av target/$target/release/fig $TARGET/usr/bin/
         arm-linux-gnueabihf-strip -s $TARGET/usr/bin/fig
         for f in "${features[@]}"
         do
-            cargo build --target $target --release
+            cargo build --target $target --features $f --release --package nut
             cp -av target/$target/release/nut $TARGET/usr/bin/nut-${f}
             arm-linux-gnueabihf-strip -s $TARGET/usr/bin/nut-${f}
         done
