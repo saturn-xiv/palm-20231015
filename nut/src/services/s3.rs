@@ -1,4 +1,6 @@
-pub mod v1;
+pub mod v1 {
+    tonic::include_proto!("nut.services.s3.v1");
+}
 
 use std::convert::TryFrom;
 use std::sync::Arc;

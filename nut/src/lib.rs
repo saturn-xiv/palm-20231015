@@ -18,6 +18,7 @@ pub mod image_magick;
 pub mod jwt;
 pub mod mailer;
 pub mod models;
+pub mod oauth;
 pub mod orm;
 pub mod parser;
 pub mod queue;

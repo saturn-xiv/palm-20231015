@@ -12,7 +12,7 @@ fn shell(cmd: &mut Command) -> String {
 }
 
 fn main() {
-    for it in ["s3"] {
+    for it in ["s3", "auth"] {
         tonic_build::compile_protos(&format!("proto/{}.proto", it)).unwrap();
     }
     {

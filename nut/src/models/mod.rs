@@ -1,3 +1,9 @@
+pub mod group;
+pub mod log;
+pub mod operation;
+pub mod policy;
+pub mod resource;
+pub mod role;
 pub mod user;
 
 #[cfg(feature = "mysql")]
