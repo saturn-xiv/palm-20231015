@@ -3,8 +3,8 @@ LABEL maintainer="Jeremy Zheng"
 
 RUN apk update
 RUN apk upgrade
-RUN apk add perl vim curl zsh sudo pwgen openssl git tmux \
-    build-base cmake \
+RUN apk add perl vim curl bash zsh sudo pwgen openssl git tmux \
+    build-base cmake protobuf \
     nodejs npm yarn \
     libudev-zero-dev postgresql-dev mariadb-dev sqlite-dev
 

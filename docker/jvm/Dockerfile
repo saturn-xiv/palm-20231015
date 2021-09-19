@@ -50,8 +50,8 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | s
 RUN sh -c ". $HOME/.profile \
     && nvm install node"
 # https://stackoverflow.com/questions/37324519/node-sass-does-not-yet-support-your-current-environment-linux-64-bit-with-false
-# RUN sh -c ". $HOME/.profile \
-#     && nvm install node --lts"
+RUN sh -c ". $HOME/.profile \
+    && nvm install lts/fermium"
 RUN sh -c ". $HOME/.profile \
     && npm i yarn -g"
 RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
@@ -66,6 +66,7 @@ RUN curl -s "https://get.sdkman.io" | zsh
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
     && sdk install java 17-open \
+    && sdk install java 16.0.2-open \
     && sdk install maven \
     && sdk install gradle"
 

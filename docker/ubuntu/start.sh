@@ -2,7 +2,7 @@
 
 NAME=palm
 
-if [ podman container exists $NAME ]
+if podman container exists $NAME
 then
     podman start -i -a --events-backend=file $NAME
 else

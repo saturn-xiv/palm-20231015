@@ -44,13 +44,13 @@ build_frontend(){
     cd $WORKSPACE/dashboard
     yarn build
 
-    mkdir -pv $TARGET/usr/share/fig
     cp -av $WORKSPACE/node_modules $TARGET/
     cp -av $WORKSPACE/dashboard/build $TARGET/dashboard
 }
 
 # ---------------------------------
 
+mkdir -pv $TARGET
 build_backend
 build_frontend
 
