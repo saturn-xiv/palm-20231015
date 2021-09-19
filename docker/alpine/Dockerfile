@@ -5,6 +5,7 @@ RUN apk update
 RUN apk upgrade
 RUN apk add perl vim curl zsh sudo pwgen openssl git tmux \
     build-base cmake \
+    nodejs npm yarn \
     libudev-zero-dev postgresql-dev mariadb-dev sqlite-dev
 
 # deploy

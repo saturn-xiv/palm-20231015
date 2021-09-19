@@ -49,8 +49,9 @@ RUN echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/$(date +%Y%m%d%H%M%S).log ansible-
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | sh
 RUN sh -c ". $HOME/.profile \
     && nvm install node"
-RUN sh -c ". $HOME/.profile \
-    && nvm install node --lts"
+# https://stackoverflow.com/questions/37324519/node-sass-does-not-yet-support-your-current-environment-linux-64-bit-with-false
+# RUN sh -c ". $HOME/.profile \
+#     && nvm install node --lts"
 RUN sh -c ". $HOME/.profile \
     && npm i yarn -g"
 RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
