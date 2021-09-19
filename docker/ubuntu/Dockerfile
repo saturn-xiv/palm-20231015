@@ -51,6 +51,7 @@ RUN cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
 RUN echo 'source $HOME/.profile' >> $HOME/.zshrc
 
 RUN git config --global core.quotepath false
+RUN echo 'set-option -g history-limit 10240' > $HOME/.tmux.conf
 
 RUN sh -c ". $HOME/.profile \
     && pip3 install --user cmake"
@@ -82,8 +83,6 @@ RUN sudo apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
 RUN zsh -c "source $HOME/.zshrc \
     && cargo install diesel_cli \
     && cargo install --locked cargo-outdated"
-
-RUN echo 'set-option -g history-limit 10240' > $HOME/.tmux.conf
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | sudo tee /VERSION
 
