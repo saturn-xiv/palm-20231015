@@ -1,0 +1,3 @@
+- name: get latest tag name
+  shell: "git describe --tags --always --dirty --first-parent"
+  register: git_version

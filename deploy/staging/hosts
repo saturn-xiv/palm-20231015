@@ -1,0 +1,7 @@
+[all:vars]
+app_domain = "change-me.cn"
+app_http_port = 8080
+app_rpc_port = 8081
+; openssl rand -base64 32
+app_secrets_key = "r3M6gdgm06M8urrXF0F3bO5EQ7ODucAx9KmlWw3SECs="
+
