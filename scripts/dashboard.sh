@@ -16,7 +16,7 @@ set -e
 # vue create dashboard
 yarn add vue-i18n vuex vue-router \
     moment moment-timezone \
-    grpc-web js-cookie jwt-decode dinero.js@alpha \
+    quill grpc-web js-cookie jwt-decode dinero.js@alpha \
     vuetify
 
 echo 'done.'
