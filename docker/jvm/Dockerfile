@@ -33,15 +33,19 @@ RUN mkdir -p $HOME/downloads $HOME/local
 RUN git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
 RUN cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
 RUN echo 'source $HOME/.profile' >> $HOME/.zshrc
+RUN echo 'export LANG=en_US.UTF-8' >> $HOME/.profile
+RUN echo 'export LC_ALL=en_US.UTF-8' >> $HOME/.profile
 
 RUN git config --global core.quotepath false
 RUN echo 'set-option -g history-limit 10240' > $HOME/.tmux.conf
 
 
+# https://pip.pypa.io/en/stable/installation/#get-pip-py
+RUN curl -o- https://bootstrap.pypa.io/get-pip.py | python3
 RUN sh -c ". $HOME/.profile \
-    && pip3 install --user cmake"
+    && pip install --user cmake"
 RUN sh -c ". $HOME/.profile \
-    && pip3 install --user ansible paramiko"
+    && pip install --user ansible paramiko"
 RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.profile
 RUN echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.profile
 

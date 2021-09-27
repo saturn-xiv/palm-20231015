@@ -1,33 +1,18 @@
-FROM ubuntu:latest
+FROM ubuntu:bionic
 LABEL maintainer="Jeremy Zheng"
 
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt update
 RUN apt -y upgrade
-RUN apt -y install debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
 
-# https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
-RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test -y
-# https://wiki.ubuntu.com/ToolChain
-RUN dpkg --add-architecture armhf
-RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
-RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb [arch=armhf] http://ports.ubuntu.com/ $(lsb_release -cs) main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb [arch=armhf] http://ports.ubuntu.com/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb [arch=armhf] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
-RUN apt update
-RUN apt -y upgrade
-
-RUN apt -y install zsh git locales rsync openssh-client sshpass \
-    vim sudo tzdata pwgen curl zip unzip tree tmux \
-    net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
-    imagemagick ffmpeg \
-    build-essential pkg-config libtool automake autoconf binutils debhelper bison flex ninja-build \
-    gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf gcc-multilib-arm-linux-gnueabihf g++-multilib-arm-linux-gnueabihf \
-    pkg-config-arm-linux-gnueabihf binutils-arm-linux-gnueabihf \
-    python3 python3-distutils python3-pip python3-dev
+RUN apt install -y build-essential pkg-config libtool automake autoconf binutils \
+    unzip curl wget \
+    git rsync subversion \
+    w3m graphviz \
+    python3 python3-distutils python3-pip python3-dev \    
+    vim sudo locales zsh openssh-client sshpass zip unzip tree tmux \
+    libncurses-dev libssl-dev
 RUN apt -y autoremove
 RUN apt -y clean
 
@@ -78,16 +63,39 @@ RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 # https://doc.rust-lang.org/nightly/rustc/platform-support.html
 RUN zsh -c "source $HOME/.cargo/env \
-    && rustup target add x86_64-unknown-linux-musl"
-RUN zsh -c "source $HOME/.cargo/env \
     && rustup target add armv7-unknown-linux-gnueabihf"
 RUN zsh -c "source $HOME/.cargo/env \
-    && rustup target add armv7-unknown-linux-musleabihf"
+    && rustup target add aarch64-unknown-linux-gnu"
 RUN sudo apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
 RUN zsh -c "source $HOME/.zshrc \
     && cargo install diesel_cli \
     && cargo install --locked cargo-outdated"
 
+ENV OPENWRT_VERSION "2021.05.2"
+RUN git clone https://github.com/buildroot/buildroot.git $HOME/build/buildroot
+RUN cd $HOME/build/buildroot \
+    && git checkout OPENWRT_VERSION \
+    && make raspberrypi3_64_defconfig \
+    && 
+
+
+ENV FRIENDLYWRT_VERSION "v19.07.1"
+RUN wget -O - https://raw.githubusercontent.com/friendlyarm/build-env-on-ubuntu-bionic/master/install.sh | bash
+RUN git clone https://github.com/friendlyarm/repo $HOME/build/friendlyarm/repo
+RUN cp $HOME/build/friendlyarm/repo $HOME/.local/bin
+RUN zsh -c "source $HOME/.zshrc \
+    && mkdir -p $HOME/build/friendlyarm/h3 \
+    && cd $HOME/build/friendlyarm/h3 \
+    && repo init -u https://github.com/friendlyarm/friendlywrt_manifests -b master-$FRIENDLYWRT_VERSION -m h3.xml --repo-url=https://github.com/friendlyarm/repo  --no-clone-bundle \
+    && repo sync -c --no-clone-bundle"
+
+
+# RUN ln -svf /opt/boards/raspberrypi3_64 $HOME/build/buildroot/.config \
+#     && make
+# RUN ln -svf /opt/boards/friendlyarm_nanopi_neo2 $HOME/build/buildroot/.config \
+#     && make
+
+ADD boards /opt
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | sudo tee /VERSION
 
 VOLUME /workspace
