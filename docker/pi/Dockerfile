@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt update
 RUN apt -y upgrade
 
-RUN apt install -y build-essential pkg-config libtool automake autoconf binutils \
+RUN apt install -y build-essential pkg-config libtool automake autoconf binutils cpio \
     unzip curl wget \
     git rsync subversion \
     w3m graphviz \
@@ -71,31 +71,25 @@ RUN zsh -c "source $HOME/.zshrc \
     && cargo install diesel_cli \
     && cargo install --locked cargo-outdated"
 
-ENV OPENWRT_VERSION "2021.05.2"
+ENV BUILDROOT_VERSION "2021.08"
 RUN git clone https://github.com/buildroot/buildroot.git $HOME/build/buildroot
-RUN cd $HOME/build/buildroot \
-    && git checkout OPENWRT_VERSION \
-    && make raspberrypi3_64_defconfig \
-    && 
-
+RUN cd $HOME/build/buildroot && git checkout ${BUILDROOT_VERSION}
 
 ENV FRIENDLYWRT_VERSION "v19.07.1"
+# https://stackoverflow.com/questions/33439905/is-the-cacerts-file-missing-in-ubuntu-15-10-and-openjdk-8-jdk
+#  sudo apt-get install ca-certificates-java
 RUN wget -O - https://raw.githubusercontent.com/friendlyarm/build-env-on-ubuntu-bionic/master/install.sh | bash
 RUN git clone https://github.com/friendlyarm/repo $HOME/build/friendlyarm/repo
-RUN cp $HOME/build/friendlyarm/repo $HOME/.local/bin
+RUN cp $HOME/build/friendlyarm/repo/repo $HOME/.local/bin/
+RUN git config --global user.email "deploy@palm"
+RUN git config --global user.name "Ops"
+RUN git config --global color.ui true
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir -p $HOME/build/friendlyarm/h3 \
     && cd $HOME/build/friendlyarm/h3 \
-    && repo init -u https://github.com/friendlyarm/friendlywrt_manifests -b master-$FRIENDLYWRT_VERSION -m h3.xml --repo-url=https://github.com/friendlyarm/repo  --no-clone-bundle \
+    && repo init -u https://github.com/friendlyarm/friendlywrt_manifests -b master-${FRIENDLYWRT_VERSION} -m h3.xml --repo-url=https://github.com/friendlyarm/repo  --no-clone-bundle \
     && repo sync -c --no-clone-bundle"
 
-
-# RUN ln -svf /opt/boards/raspberrypi3_64 $HOME/build/buildroot/.config \
-#     && make
-# RUN ln -svf /opt/boards/friendlyarm_nanopi_neo2 $HOME/build/buildroot/.config \
-#     && make
-
-ADD boards /opt
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | sudo tee /VERSION
 
 VOLUME /workspace

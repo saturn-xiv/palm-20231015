@@ -24,7 +24,8 @@ RUN apt -y install zsh git locales rsync openssh-client sshpass \
     vim sudo tzdata pwgen curl zip unzip tree tmux \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
     imagemagick ffmpeg \
-    build-essential pkg-config libtool automake autoconf binutils debhelper bison flex ninja-build \
+    build-essential pkg-config libtool automake autoconf binutils cpio \
+    debhelper bison flex ninja-build \
     gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf gcc-multilib-arm-linux-gnueabihf g++-multilib-arm-linux-gnueabihf \
     pkg-config-arm-linux-gnueabihf binutils-arm-linux-gnueabihf \
     python3 python3-distutils python3-pip python3-dev
