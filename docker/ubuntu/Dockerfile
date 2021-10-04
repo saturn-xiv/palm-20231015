@@ -71,9 +71,9 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | s
 RUN sh -c ". $HOME/.profile \
     && nvm install node"
 RUN sh -c ". $HOME/.profile \
-    && nvm install node --lts"
-RUN sh -c ". $HOME/.profile \
     && npm i yarn -g"
+RUN sh -c ". $HOME/.profile \
+    && nvm install node lts/fermium"
 RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
 
 # https://www.rust-lang.org/tools/install
@@ -89,14 +89,14 @@ RUN zsh -c "source $HOME/.zshrc \
     && cargo install --locked cargo-outdated"
 
 # https://sdkman.io/install
-ENV JAVA_VERSION="17-open"
 RUN curl -s "https://get.sdkman.io" | zsh
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
-    && sdk install java ${JAVA_VERSION} \
+    && sdk install java 17-open \
     && sdk install maven \
     && sdk install gradle"
-
+RUN zsh -c "source $HOME/.zshrc \
+    && sdk install java 16.0.2-open"
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | sudo tee /VERSION
 
