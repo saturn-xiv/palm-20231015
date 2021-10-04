@@ -5,7 +5,7 @@ set -e
 USAGE=$(cat <<-END 
 Please specify your arch!
 
-Usage: $0 armhf|amd64
+Usage: $0 amd64|aarch64|arm
 END
 )
 
@@ -84,6 +84,32 @@ build_backend() {
             cargo build --target $target --features $f --release --package nut
             cp -av target/$target/release/nut $TARGET/usr/bin/nut-${f}
             arm-linux-gnueabihf-strip -s $TARGET/usr/bin/nut-${f}
+        done
+    elif [ "$1" = "aarch64" ]
+    then
+        sudo apt -y install libc6-dev:aarch64 libudev-dev:aarch64 \
+            libpq5:aarch64 libpq-dev:aarch64 libmysqlclient-dev:aarch64 libsqlite3-dev:aarch64
+
+        PKG_CONFIG_ALLOW_CROSS=1
+        PKG_CONFIG_DIR=
+        PKG_CONFIG_LIBDIR=/usr/lib/aarch64-linux-gnu/pkgconfig
+        export PKG_CONFIG_ALLOW_CROSS PKG_CONFIG_DIR PKG_CONFIG_LIBDIR
+
+        # fix in dpkg-architecture
+        CC=aarch64-linux-gnu-gcc
+        CXX=aarch64-linux-gnu-g++
+        export CC CXX
+
+        local target="aarch64-unknown-linux-gnu"
+        
+        cargo build --target $target --release --package fig
+        cp -av target/$target/release/fig $TARGET/usr/bin/
+        arm-linux-gnueabihf-strip -s $TARGET/usr/bin/fig
+        for f in "${features[@]}"
+        do
+            cargo build --target $target --features $f --release --package nut
+            cp -av target/$target/release/nut $TARGET/usr/bin/nut-${f}
+            aarch64-linux-gnu-strip -s $TARGET/usr/bin/nut-${f}
         done
     else
         echo "unknown arch $1"

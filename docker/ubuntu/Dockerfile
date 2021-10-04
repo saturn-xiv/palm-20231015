@@ -10,13 +10,14 @@ RUN apt -y install debian-keyring debian-archive-keyring apt-transport-https sof
 # https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test -y
 # https://wiki.ubuntu.com/ToolChain
-RUN dpkg --add-architecture armhf
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb [arch=armhf] http://ports.ubuntu.com/ $(lsb_release -cs) main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb [arch=armhf] http://ports.ubuntu.com/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb [arch=armhf] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
+RUN dpkg --add-architecture armhf
+RUN dpkg --add-architecture aarch64
+RUN echo "deb [arch=armhf,aarch64] http://ports.ubuntu.com/ $(lsb_release -cs) main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb [arch=armhf,aarch64] http://ports.ubuntu.com/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb [arch=armhf,aarch64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 RUN apt update
 RUN apt -y upgrade
 
@@ -26,8 +27,8 @@ RUN apt -y install zsh git locales rsync openssh-client sshpass \
     imagemagick ffmpeg \
     build-essential pkg-config libtool automake autoconf binutils cpio \
     debhelper bison flex ninja-build \
-    gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf gcc-multilib-arm-linux-gnueabihf g++-multilib-arm-linux-gnueabihf \
-    pkg-config-arm-linux-gnueabihf binutils-arm-linux-gnueabihf \
+    g++-arm-linux-gnueabihf pkg-config-arm-linux-gnueabihf binutils-arm-linux-gnueabihf \
+    g++-aarch64-linux-gnu pkg-config-aarch64-linux-gnu binutils-aarch64-linux-gnu \
     python3 python3-distutils python3-pip python3-dev
 RUN apt -y autoremove
 RUN apt -y clean
@@ -44,7 +45,7 @@ RUN echo 'deploy ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/101-deploy
 
 USER deploy
 
-RUN mkdir -p $HOME/downloads $HOME/local
+RUN mkdir -p $HOME/downloads $HOME/build $HOME/local
 
 # https://github.com/ohmyzsh/ohmyzsh
 RUN git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
@@ -79,15 +80,23 @@ RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 # https://doc.rust-lang.org/nightly/rustc/platform-support.html
 RUN zsh -c "source $HOME/.cargo/env \
-    && rustup target add x86_64-unknown-linux-musl"
-RUN zsh -c "source $HOME/.cargo/env \
     && rustup target add armv7-unknown-linux-gnueabihf"
 RUN zsh -c "source $HOME/.cargo/env \
-    && rustup target add armv7-unknown-linux-musleabihf"
+    && rustup target add aarch64-unknown-linux-gnu"
 RUN sudo apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
 RUN zsh -c "source $HOME/.zshrc \
     && cargo install diesel_cli \
     && cargo install --locked cargo-outdated"
+
+# https://sdkman.io/install
+ENV JAVA_VERSION="17-open"
+RUN curl -s "https://get.sdkman.io" | zsh
+RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
+RUN zsh -c "source $HOME/.zshrc \
+    && sdk install java ${JAVA_VERSION} \
+    && sdk install maven \
+    && sdk install gradle"
+
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | sudo tee /VERSION
 
