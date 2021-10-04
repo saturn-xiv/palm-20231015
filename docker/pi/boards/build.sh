@@ -7,6 +7,8 @@ export WORKSPACE=$PWD
 export VERSION=$(git describe --tags --always --dirty --first-parent)
 export SD_TARGET=$WORKSPACE/tmp/sd-cards/$VERSION
 
+# https://openwrt.org/toh/raspberry_pi_foundation/raspberry_pi
+
 # https://buildroot.org/downloads/manual/manual.html
 # make list-defconfigs raspberrypi3_64_defconfig menuconfig
 # ls output/images 
@@ -26,8 +28,8 @@ function build_nano_h3() {
 mkdir -p $SD_TARGET
 declare -a raspberry=(
     "3"
-    "4"
-    "4-qt"
+    # "4"
+    # "4-qt"
 )
 
 for i in "${raspberry[@]}"
