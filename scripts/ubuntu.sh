@@ -5,7 +5,7 @@ set -e
 USAGE=$(cat <<-END 
 Please specify your arch!
 
-Usage: $0 amd64|aarch64|arm
+Usage: $0 amd64|arm64|armhf
 END
 )
 
@@ -22,7 +22,7 @@ export TARGET=$WORKSPACE/tmp/fig-$1-$VERSION/target
 prepare_build() {
     if [ -f $TARGET/../fig_*.deb ]
     then
-        echo "ingore..."
+        echo "ingore($TARGET)..."
         exit 0
     fi
 
@@ -85,10 +85,10 @@ build_backend() {
             cp -av target/$target/release/nut $TARGET/usr/bin/nut-${f}
             arm-linux-gnueabihf-strip -s $TARGET/usr/bin/nut-${f}
         done
-    elif [ "$1" = "aarch64" ]
+    elif [ "$1" = "arm64" ]
     then
-        sudo apt -y install libc6-dev:aarch64 libudev-dev:aarch64 \
-            libpq5:aarch64 libpq-dev:aarch64 libmysqlclient-dev:aarch64 libsqlite3-dev:aarch64
+        sudo apt -y install libc6-dev:arm64 libudev-dev:arm64 \
+            libpq5:arm64 libpq-dev:arm64 libmysqlclient-dev:arm64 libsqlite3-dev:arm64
 
         PKG_CONFIG_ALLOW_CROSS=1
         PKG_CONFIG_DIR=
@@ -104,7 +104,7 @@ build_backend() {
         
         cargo build --target $target --release --package fig
         cp -av target/$target/release/fig $TARGET/usr/bin/
-        arm-linux-gnueabihf-strip -s $TARGET/usr/bin/fig
+        aarch64-linux-gnu-strip -s $TARGET/usr/bin/fig
         for f in "${features[@]}"
         do
             cargo build --target $target --features $f --release --package nut
@@ -134,7 +134,7 @@ build_frontend(){
 
     mkdir -pv $TARGET/usr/share/fig
     cp -av $WORKSPACE/node_modules $TARGET/usr/share/fig/
-    cp -av $WORKSPACE/dashboard/build $TARGET/usr/share/fig/dashboard
+    cp -av $WORKSPACE/dashboard/dist $TARGET/usr/share/fig/dashboard
 }
 
 build_deb() {

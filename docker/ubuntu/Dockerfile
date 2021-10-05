@@ -14,10 +14,10 @@ RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) 
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
 RUN dpkg --add-architecture armhf
-RUN dpkg --add-architecture aarch64
-RUN echo "deb [arch=armhf,aarch64] http://ports.ubuntu.com/ $(lsb_release -cs) main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb [arch=armhf,aarch64] http://ports.ubuntu.com/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb [arch=armhf,aarch64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
+RUN dpkg --add-architecture arm64
+RUN echo "deb [arch=armhf,arm64] http://ports.ubuntu.com/ $(lsb_release -cs) main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb [arch=armhf,arm64] http://ports.ubuntu.com/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb [arch=armhf,arm64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 RUN apt update
 RUN apt -y upgrade
 
@@ -27,8 +27,8 @@ RUN apt -y install zsh git locales rsync openssh-client sshpass \
     imagemagick ffmpeg \
     build-essential pkg-config libtool automake autoconf binutils cpio \
     debhelper bison flex ninja-build \
-    g++-arm-linux-gnueabihf pkg-config-arm-linux-gnueabihf binutils-arm-linux-gnueabihf \
-    g++-aarch64-linux-gnu pkg-config-aarch64-linux-gnu binutils-aarch64-linux-gnu \
+    crossbuild-essential-armhf pkg-config-arm-linux-gnueabihf \
+    crossbuild-essential-arm64 pkg-config-aarch64-linux-gnu \
     python3 python3-distutils python3-pip python3-dev
 RUN apt -y autoremove
 RUN apt -y clean
