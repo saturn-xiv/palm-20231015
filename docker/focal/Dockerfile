@@ -94,6 +94,23 @@ RUN zsh -c "source $HOME/.zshrc \
     && sdk install maven \
     && sdk install gradle"
 
+# https://grpc.io/docs/languages/cpp/quickstart/
+ENV GRPC_VERSION "v1.42.0"
+RUN zsh -c "source $HOME/.zshrc \
+    && git clone --recurse-submodules -b ${GRPC_VERSION} https://github.com/grpc/grpc.git $HOME/downloads/grpc"
+RUN mkdir -pv $HOME/build/grpc-amd64
+RUN zsh -c "source $HOME/.zshrc \
+    && cd $HOME/build/grpc-amd64 \
+    && cmake -DCMAKE_BUILD_TYPE=Release \
+    -DgRPC_INSTALL=ON \
+    -DgRPC_SSL_PROVIDER=package \
+    -DgRPC_BUILD_TESTS=OFF \
+    -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc"
+RUN zsh -c "source $HOME/.zshrc \
+    && cd $HOME/build/grpc-amd64 \
+    && make \
+    && make install"
+
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | sudo tee /VERSION
 
 VOLUME /workspace
