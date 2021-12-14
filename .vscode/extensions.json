@@ -1,8 +1,8 @@
 {
     "recommendations": [
-        // "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cpptools-extension-pack",
         "ms-python.python",
-        // "golang.go",
+        "golang.go",
         "rust-lang.rust",
         "redhat.ansible",
         "redhat.vscode-yaml",
