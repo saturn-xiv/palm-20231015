@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:focal
 LABEL maintainer="Jeremy Zheng"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -67,13 +67,11 @@ RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.profile
 RUN echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.profile
 
 # https://github.com/nvm-sh/nvm
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | sh
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | sh
 RUN sh -c ". $HOME/.profile \
     && nvm install node"
 RUN sh -c ". $HOME/.profile \
     && npm i yarn -g"
-RUN sh -c ". $HOME/.profile \
-    && nvm install node lts/fermium"
 RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
 
 # https://www.rust-lang.org/tools/install
@@ -92,11 +90,9 @@ RUN zsh -c "source $HOME/.zshrc \
 RUN curl -s "https://get.sdkman.io" | zsh
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
-    && sdk install java 17-open \
+    && sdk install java 17.0.1-open \
     && sdk install maven \
     && sdk install gradle"
-RUN zsh -c "source $HOME/.zshrc \
-    && sdk install java 16.0.2-open"
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | sudo tee /VERSION
 
