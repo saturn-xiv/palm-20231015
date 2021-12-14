@@ -12,6 +12,7 @@
     "marked": "^4.0.7",
     "material-components-web": "^13.0.0",
     "material-design-icons": "^3.0.1",
+    "mdb-ui-kit": "^3.10.1",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.34"
   }
