@@ -5,3 +5,5 @@
 /yarn.lock
 
 /tmp/
+/.env
+/config.toml
