@@ -1,0 +1,192 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package palm.plugins.nut.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+message Pagination {
+  int64 total = 1;
+  int64 size = 2;
+  int64 current = 3;
+}
+
+message Pager {
+  int64 index = 1;
+  int64 size = 2;
+}
+
+message IdRequest { int64 id = 1; }
+
+message Size {
+  uint32 width = 1;
+  uint32 height = 2;
+}
+
+message Point {
+  int32 x = 1;
+  int32 y = 2;
+}
+
+enum MediaType {
+  PlainText = 0;
+  Markdown = 1;
+  Html = 2;
+}
+
+service Site {
+  rpc About(google.protobuf.Empty) returns (AboutResponse) {}
+}
+
+message AboutResponse {
+  string title = 1;
+  string subhead = 2;
+  repeated string keywords = 3;
+  string description = 4;
+  string copyright = 5;
+  google.protobuf.Timestamp created_at = 9;
+
+  string lang = 10;
+  repeated string languages = 11;
+}
+
+service Locale {
+  rpc Index(LocaleIndexRequest) returns (LocaleIndexResponse) {}
+  rpc Set(LocaleSetRequest) returns (google.protobuf.Empty) {}
+}
+
+message LocaleIndexRequest { string lang = 1; }
+
+message LocaleIndexResponse {
+  message Item {
+    int64 id = 1;
+    string code = 2;
+    string lang = 3;
+    string message = 4;
+    google.protobuf.Timestamp updated_at = 5;
+  }
+  repeated Item items = 1;
+}
+
+message LocaleSetRequest {
+  string code = 1;
+  string lang = 2;
+  string message = 3;
+}
+
+service Stmp {
+  rpc Get(google.protobuf.Empty) returns (StmpProfile) {}
+  rpc Set(StmpProfile) returns (google.protobuf.Empty) {}
+}
+message StmpProfile {
+  string host = 1;
+  uint32 port = 2;
+  string user = 3;
+  string password = 4;
+  repeated string cc = 5;
+  repeated string bcc = 6;
+}
+message StmpTask {
+  string subject = 1;
+  string body = 2;
+  MediaType body_content_type = 3;
+  map<string, bytes> attachments = 4;
+
+  repeated string to = 11;
+  repeated string cc = 12;
+  repeated string bcc = 13;
+}
+
+service Twilio {
+  rpc Get(google.protobuf.Empty) returns (TwilioProfile) {}
+  rpc Set(TwilioProfile) returns (google.protobuf.Empty) {}
+}
+message TwilioProfile {
+  string account_sid = 1;
+  string auto_token = 2;
+  string from = 3;
+}
+message TwilioTask {
+  repeated string to = 1;
+  string body = 2;
+  optional string callback = 3;
+}
+
+service Seo {
+  rpc Get(google.protobuf.Empty) returns (SeoProfile) {}
+  rpc Set(SeoProfile) returns (google.protobuf.Empty) {}
+}
+message SeoProfile {
+  optional string googleSiteVerifyId = 1;
+  optional string baiduSiteVerifyId = 11;
+  optional string bingSiteVerifyId = 21;
+}
+
+service Tag {
+  rpc Create(CreateTagRequest) returns (google.protobuf.Empty) {}
+  rpc Show(IdRequest) returns (IndexTagResponse.Item) {}
+  rpc Update(CreateTagRequest) returns (google.protobuf.Empty) {}
+  rpc Destory(IdRequest) returns (google.protobuf.Empty) {}
+  rpc Index(Pager) returns (IndexTagResponse) {}
+}
+
+message CreateTagRequest {
+  string name = 1;
+  optional string color = 2;
+}
+message UpdateTagRequest {
+  int64 id = 1;
+  string name = 2;
+  optional string color = 3;
+}
+message IndexTagResponse {
+  message Font {
+    string name = 1;
+    optional uint32 size = 2;
+    bool bold = 3;
+    bool italic = 4;
+    optional string background = 5;
+    optional string foreground = 6;
+  }
+  message Icon {
+    string name = 1;
+    optional Size size = 2;
+  }
+
+  message Item {
+    int64 id = 1;
+    string name = 2;
+    optional Icon icon = 3;
+    optional Font font = 4;
+    google.protobuf.Timestamp updated_at = 11;
+  }
+  repeated Item items = 1;
+  Pagination pagination = 2;
+}
+
+service Notification {
+  rpc Create(CreateNotificationRequest) returns (google.protobuf.Empty) {}
+  rpc Show(IdRequest) returns (IndexNotificationResponse.Item) {}
+  rpc SetRead(IdRequest) returns (google.protobuf.Empty) {}
+  rpc Destory(IdRequest) returns (google.protobuf.Empty) {}
+  rpc Index(Pager) returns (IndexNotificationResponse) {}
+}
+
+message CreateNotificationRequest {
+  string body = 2;
+  MediaType body_content_type = 3;
+  string link = 4;
+}
+
+message IndexNotificationResponse {
+  message Item {
+    int64 id = 1;
+    string body = 2;
+    MediaType body_content_type = 3;
+    string link = 4;
+    bool read = 10;
+    google.protobuf.Timestamp updated_at = 11;
+  }
+  repeated Item items = 1;
+  Pagination pagination = 2;
+}

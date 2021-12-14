@@ -1,0 +1,108 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package palm.rbac.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+service Enforcer {
+  rpc DeleteUser(UserList.Item) returns (google.protobuf.Empty) {}
+  rpc DeleteOperation(OperationList.Item) returns (google.protobuf.Empty) {}
+  rpc DeleteResource(ResourceList.Item) returns (google.protobuf.Empty) {}
+
+  rpc AllRoles(google.protobuf.Empty) returns (RoleList) {}
+  rpc LinkRoles(RolesInheritance) returns (google.protobuf.Empty) {}
+  rpc UnlinkRoles(RolesInheritance) returns (google.protobuf.Empty) {}
+  rpc GetRolesForUser(UserList.Item) returns (RoleList) {}
+  rpc GetUsersForRole(RoleList.Item) returns (UserList) {}
+  rpc HasRoleForUser(RoleForUserRequest) returns (google.protobuf.Empty) {}
+  rpc AddRoleForUser(AddRoleForUserRequest) returns (google.protobuf.Empty) {}
+  rpc DeleteRoleForUser(RoleForUserRequest) returns (google.protobuf.Empty) {}
+  rpc DeleteRole(RoleList.Item) returns (google.protobuf.Empty) {}
+
+  rpc AddPermission(PermissionList.Item) returns (google.protobuf.Empty) {}
+  rpc DeletePermission(PermissionList.Item) returns (google.protobuf.Empty) {}
+  rpc GetPermissions(PermissionQuery) returns (PermissionList) {}
+  rpc HasPermission(PermissionQuery) returns (google.protobuf.Empty) {}
+
+  rpc GetImplicitRolesForUser(UserList.Item) returns (RoleList) {}
+  rpc GetImplicitUsersForRole(RoleList.Item) returns (UserList) {}
+  rpc GetImplicitPermissions(PermissionQuery) returns (PermissionList) {}
+  rpc HasImplicitPermission(PermissionQuery) returns (google.protobuf.Empty) {}
+}
+
+message UserList {
+  message Item {
+    string code = 1;
+    string type = 2;
+    optional string name = 8;
+    google.protobuf.Timestamp updated_at = 9;
+  }
+  repeated Item items = 1;
+}
+
+message ResourceList {
+  message Item {
+    string code = 1;
+    string type = 2;
+    optional string name = 8;
+    google.protobuf.Timestamp updated_at = 9;
+  }
+  repeated Item items = 1;
+}
+
+message RoleList {
+  message Item {
+    string code = 1;
+    optional string domain = 2;
+    optional string name = 8;
+    google.protobuf.Timestamp updated_at = 9;
+  }
+  repeated Item items = 1;
+}
+
+message OperationList {
+  message Item {
+    string code = 1;
+    optional string name = 8;
+    google.protobuf.Timestamp updated_at = 9;
+  }
+  repeated Item items = 1;
+}
+
+message PermissionList {
+  message Item {
+    string role = 1;
+    optional string operation = 2;
+    optional string resource = 3;
+    google.protobuf.Timestamp updated_at = 9;
+  }
+  repeated Item items = 1;
+}
+
+message RolesInheritance {
+  string node = 1;
+  string parent = 2;
+  optional string domain = 3;
+}
+
+message RoleForUserRequest {
+  string user = 1;
+  string role = 2;
+}
+
+message AddRoleForUserRequest {
+  string user = 1;
+  string role = 2;
+  google.protobuf.Timestamp not_before = 6;
+  google.protobuf.Timestamp exipre_at = 7;
+}
+
+message PermissionQuery {
+  oneof by {
+    string role = 1;
+    string user = 2;
+  }
+  optional string operation = 8;
+  optional string resource = 9;
+}

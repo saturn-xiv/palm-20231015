@@ -1,0 +1,123 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package palm.pi.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+import "nut.proto";
+
+service User {
+  rpc Get(google.protobuf.Empty) returns (UserProfile) {}
+  rpc Set(UserProfile) returns (google.protobuf.Empty) {}
+  rpc Logs(google.protobuf.Empty) returns (UserLogsResponse) {}
+}
+
+message UserProfile {
+  string name = 1;
+  string password = 2;
+}
+
+message UserLogsResponse {
+  message Item {
+    string message = 1;
+    google.protobuf.Timestamp timestamp = 2;
+  }
+  repeated Item items = 1;
+  palm.plugins.nut.v1.Pagination pagination = 2;
+}
+
+service Tty {
+  rpc Write(TtyRequest) returns (google.protobuf.Empty) {}
+}
+
+message TtyRequest {
+  repeated string items = 1;
+  optional google.protobuf.Duration delay = 2;
+}
+
+message TtyResponse {
+  string message = 1;
+  google.protobuf.Timestamp timestamp = 2;
+}
+
+service Audio {
+  rpc Play(AudioPlayRequest) returns (google.protobuf.Empty) {}
+  rpc Stop(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc Tts(AudioTtsRequest) returns (google.protobuf.Empty) {}
+}
+
+message AudioPlayRequest {
+  repeated string files = 1;
+  repeated uint64 loop = 21;
+  optional google.protobuf.Duration delay = 22;
+}
+
+message AudioTtsRequest {
+  message Message { string message = 1; }
+  repeated Message messages = 1;
+  repeated uint64 loop = 21;
+  optional google.protobuf.Duration delay = 22;
+}
+
+service Button {}
+
+service Led {}
+
+service OpenVpn {
+  rpc Get(google.protobuf.Empty) returns (OpenVpnProfile) {}
+  rpc Set(OpenVpnProfile) returns (google.protobuf.Empty) {}
+}
+message OpenVpnProfile {
+  message Auth {
+    string user = 1;
+    string password = 2;
+  }
+  optional Auth auth = 1;
+  string body = 2;
+}
+
+service Network {
+  rpc Get(google.protobuf.Empty) returns (NetworkProfile) {}
+  rpc Set(NetworkProfile) returns (google.protobuf.Empty) {}
+}
+
+message NetworkProfile {
+  message IpV4 {
+    string address = 1;
+    string netmask = 2;
+    string gateway = 3;
+    string dns1 = 4;
+    optional string dns2 = 5;
+  }
+  message Wifi {
+    string name = 1;
+    string ssid = 2;
+    oneof ip {
+      bool dhcp = 11;
+      IpV4 static = 12;
+    }
+    oneof security {
+      bool open = 21;
+      Wpa wpa = 22;
+      Eap eap = 23;
+    }
+  }
+  message Wpa {
+    string username = 1;
+    string password = 2;
+  }
+  message Eap {
+    string identify = 1;
+    string password = 2;
+  }
+
+  message Ethernet {
+    string name = 1;
+    oneof ip {
+      bool dhcp = 11;
+      IpV4 static = 12;
+    }
+  }
+}

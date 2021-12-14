@@ -1,0 +1,79 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package palm.plugins.forum.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+import "nut.proto";
+
+service Topic {
+  rpc Create(CreateTopicRequest) returns (google.protobuf.Empty) {}
+  rpc Show(palm.plugins.nut.v1.IdRequest) returns (IndexTopicResponse.Item) {}
+  rpc Update(CreateTopicRequest) returns (google.protobuf.Empty) {}
+  rpc Destory(palm.plugins.nut.v1.IdRequest) returns (google.protobuf.Empty) {}
+  rpc Index(palm.plugins.nut.v1.Pager) returns (IndexTopicResponse) {}
+}
+
+message CreateTopicRequest {
+  string title = 1;
+  string body = 2;
+  palm.plugins.nut.v1.MediaType body_content_type = 3;
+  repeated int64 tags = 4;
+}
+message UpdateTopicRequest {
+  int64 id = 1;
+  string title = 2;
+  string body = 3;
+  palm.plugins.nut.v1.MediaType body_content_type = 4;
+  repeated int64 tags = 5;
+}
+message IndexTopicResponse {
+  message Item {
+    int64 id = 1;
+    string title = 2;
+    string body = 3;
+    palm.plugins.nut.v1.MediaType body_content_type = 4;
+    int64 author_id = 5;
+    repeated int64 tags = 6;
+    google.protobuf.Timestamp updated_at = 11;
+  }
+  repeated Item items = 1;
+  palm.plugins.nut.v1.Pagination pagination = 2;
+}
+
+service Post {
+  rpc Create(CreatePostRequest) returns (google.protobuf.Empty) {}
+  rpc Show(palm.plugins.nut.v1.IdRequest) returns (IndexPostResponse.Item) {}
+  rpc Update(CreatePostRequest) returns (google.protobuf.Empty) {}
+  rpc Destory(palm.plugins.nut.v1.IdRequest) returns (google.protobuf.Empty) {}
+  rpc Index(palm.plugins.nut.v1.Pager) returns (IndexPostResponse) {}
+}
+
+message CreatePostRequest {
+  int64 topic_id = 1;
+  string body = 2;
+  palm.plugins.nut.v1.MediaType body_content_type = 3;
+  optional int64 parent_id = 4;
+  int64 author_id = 5;
+}
+
+message UpdatePostRequest {
+  int64 id = 1;
+  string body = 2;
+  palm.plugins.nut.v1.MediaType body_content_type = 3;
+}
+
+message IndexPostResponse {
+  message Item {
+    int64 id = 1;
+    int64 topic_id = 2;
+    string body = 3;
+    palm.plugins.nut.v1.MediaType body_content_type = 4;
+    optional int64 parent_id = 5;
+    int64 author_id = 6;
+    google.protobuf.Timestamp updated_at = 11;
+  }
+  repeated Item items = 1;
+  palm.plugins.nut.v1.Pagination pagination = 2;
+}
