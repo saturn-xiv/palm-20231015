@@ -20,7 +20,7 @@ var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
 
-var auth_pb = require('./auth_pb.js')
+var nut_auth_pb = require('./nut.auth_pb.js')
 const proto = {};
 proto.palm = {};
 proto.palm.nut = {};
@@ -142,16 +142,16 @@ proto.palm.nut.v1.SitePromiseClient.prototype.about =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.auth.v1.SignUpRequest,
+ *   !proto.palm.nut.v1.auth.SignUpRequest,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Site_Install = new grpc.web.MethodDescriptor(
   '/palm.nut.v1.Site/Install',
   grpc.web.MethodType.UNARY,
-  auth_pb.SignUpRequest,
+  nut_auth_pb.SignUpRequest,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.auth.v1.SignUpRequest} request
+   * @param {!proto.palm.nut.v1.auth.SignUpRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -162,7 +162,7 @@ const methodDescriptor_Site_Install = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.auth.v1.SignUpRequest} request The
+ * @param {!proto.palm.nut.v1.auth.SignUpRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -183,7 +183,7 @@ proto.palm.nut.v1.SiteClient.prototype.install =
 
 
 /**
- * @param {!proto.palm.auth.v1.SignUpRequest} request The
+ * @param {!proto.palm.nut.v1.auth.SignUpRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata

@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for palm.rbac.v1
+ * @fileoverview gRPC-Web generated client stub for palm.nut.v1.rbac
  * @enhanceable
  * @public
  */
@@ -21,8 +21,9 @@ var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
 const proto = {};
 proto.palm = {};
-proto.palm.rbac = {};
-proto.palm.rbac.v1 = require('./rbac_pb.js');
+proto.palm.nut = {};
+proto.palm.nut.v1 = {};
+proto.palm.nut.v1.rbac = require('./nut.rbac_pb.js');
 
 /**
  * @param {string} hostname
@@ -32,7 +33,7 @@ proto.palm.rbac.v1 = require('./rbac_pb.js');
  * @struct
  * @final
  */
-proto.palm.rbac.v1.EnforcerClient =
+proto.palm.nut.v1.rbac.EnforcerClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -58,7 +59,7 @@ proto.palm.rbac.v1.EnforcerClient =
  * @struct
  * @final
  */
-proto.palm.rbac.v1.EnforcerPromiseClient =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -79,16 +80,16 @@ proto.palm.rbac.v1.EnforcerPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.UserList.Item,
+ *   !proto.palm.nut.v1.rbac.UserList.Item,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Enforcer_DeleteUser = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/DeleteUser',
+  '/palm.nut.v1.rbac.Enforcer/DeleteUser',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.UserList.Item,
+  proto.palm.nut.v1.rbac.UserList.Item,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.rbac.v1.UserList.Item} request
+   * @param {!proto.palm.nut.v1.rbac.UserList.Item} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -99,7 +100,7 @@ const methodDescriptor_Enforcer_DeleteUser = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.rbac.v1.UserList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.UserList.Item} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -108,10 +109,10 @@ const methodDescriptor_Enforcer_DeleteUser = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.deleteUser =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.deleteUser =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/DeleteUser',
+      '/palm.nut.v1.rbac.Enforcer/DeleteUser',
       request,
       metadata || {},
       methodDescriptor_Enforcer_DeleteUser,
@@ -120,17 +121,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.deleteUser =
 
 
 /**
- * @param {!proto.palm.rbac.v1.UserList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.UserList.Item} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.deleteUser =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.deleteUser =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/DeleteUser',
+      '/palm.nut.v1.rbac.Enforcer/DeleteUser',
       request,
       metadata || {},
       methodDescriptor_Enforcer_DeleteUser);
@@ -140,16 +141,16 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.deleteUser =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.OperationList.Item,
+ *   !proto.palm.nut.v1.rbac.OperationList.Item,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Enforcer_DeleteOperation = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/DeleteOperation',
+  '/palm.nut.v1.rbac.Enforcer/DeleteOperation',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.OperationList.Item,
+  proto.palm.nut.v1.rbac.OperationList.Item,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.rbac.v1.OperationList.Item} request
+   * @param {!proto.palm.nut.v1.rbac.OperationList.Item} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -160,7 +161,7 @@ const methodDescriptor_Enforcer_DeleteOperation = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.rbac.v1.OperationList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.OperationList.Item} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -169,10 +170,10 @@ const methodDescriptor_Enforcer_DeleteOperation = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.deleteOperation =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.deleteOperation =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/DeleteOperation',
+      '/palm.nut.v1.rbac.Enforcer/DeleteOperation',
       request,
       metadata || {},
       methodDescriptor_Enforcer_DeleteOperation,
@@ -181,17 +182,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.deleteOperation =
 
 
 /**
- * @param {!proto.palm.rbac.v1.OperationList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.OperationList.Item} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.deleteOperation =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.deleteOperation =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/DeleteOperation',
+      '/palm.nut.v1.rbac.Enforcer/DeleteOperation',
       request,
       metadata || {},
       methodDescriptor_Enforcer_DeleteOperation);
@@ -201,16 +202,16 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.deleteOperation =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.ResourceList.Item,
+ *   !proto.palm.nut.v1.rbac.ResourceList.Item,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Enforcer_DeleteResource = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/DeleteResource',
+  '/palm.nut.v1.rbac.Enforcer/DeleteResource',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.ResourceList.Item,
+  proto.palm.nut.v1.rbac.ResourceList.Item,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.rbac.v1.ResourceList.Item} request
+   * @param {!proto.palm.nut.v1.rbac.ResourceList.Item} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -221,7 +222,7 @@ const methodDescriptor_Enforcer_DeleteResource = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.rbac.v1.ResourceList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.ResourceList.Item} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -230,10 +231,10 @@ const methodDescriptor_Enforcer_DeleteResource = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.deleteResource =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.deleteResource =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/DeleteResource',
+      '/palm.nut.v1.rbac.Enforcer/DeleteResource',
       request,
       metadata || {},
       methodDescriptor_Enforcer_DeleteResource,
@@ -242,17 +243,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.deleteResource =
 
 
 /**
- * @param {!proto.palm.rbac.v1.ResourceList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.ResourceList.Item} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.deleteResource =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.deleteResource =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/DeleteResource',
+      '/palm.nut.v1.rbac.Enforcer/DeleteResource',
       request,
       metadata || {},
       methodDescriptor_Enforcer_DeleteResource);
@@ -263,13 +264,13 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.deleteResource =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.google.protobuf.Empty,
- *   !proto.palm.rbac.v1.RoleList>}
+ *   !proto.palm.nut.v1.rbac.RoleList>}
  */
 const methodDescriptor_Enforcer_AllRoles = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/AllRoles',
+  '/palm.nut.v1.rbac.Enforcer/AllRoles',
   grpc.web.MethodType.UNARY,
   google_protobuf_empty_pb.Empty,
-  proto.palm.rbac.v1.RoleList,
+  proto.palm.nut.v1.rbac.RoleList,
   /**
    * @param {!proto.google.protobuf.Empty} request
    * @return {!Uint8Array}
@@ -277,7 +278,7 @@ const methodDescriptor_Enforcer_AllRoles = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  proto.palm.rbac.v1.RoleList.deserializeBinary
+  proto.palm.nut.v1.rbac.RoleList.deserializeBinary
 );
 
 
@@ -286,15 +287,15 @@ const methodDescriptor_Enforcer_AllRoles = new grpc.web.MethodDescriptor(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.palm.rbac.v1.RoleList)}
+ * @param {function(?grpc.web.RpcError, ?proto.palm.nut.v1.rbac.RoleList)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.palm.rbac.v1.RoleList>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.palm.nut.v1.rbac.RoleList>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.allRoles =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.allRoles =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/AllRoles',
+      '/palm.nut.v1.rbac.Enforcer/AllRoles',
       request,
       metadata || {},
       methodDescriptor_Enforcer_AllRoles,
@@ -307,13 +308,13 @@ proto.palm.rbac.v1.EnforcerClient.prototype.allRoles =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.palm.rbac.v1.RoleList>}
+ * @return {!Promise<!proto.palm.nut.v1.rbac.RoleList>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.allRoles =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.allRoles =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/AllRoles',
+      '/palm.nut.v1.rbac.Enforcer/AllRoles',
       request,
       metadata || {},
       methodDescriptor_Enforcer_AllRoles);
@@ -323,16 +324,16 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.allRoles =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.RolesInheritance,
+ *   !proto.palm.nut.v1.rbac.RolesInheritance,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Enforcer_LinkRoles = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/LinkRoles',
+  '/palm.nut.v1.rbac.Enforcer/LinkRoles',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.RolesInheritance,
+  proto.palm.nut.v1.rbac.RolesInheritance,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.rbac.v1.RolesInheritance} request
+   * @param {!proto.palm.nut.v1.rbac.RolesInheritance} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -343,7 +344,7 @@ const methodDescriptor_Enforcer_LinkRoles = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.rbac.v1.RolesInheritance} request The
+ * @param {!proto.palm.nut.v1.rbac.RolesInheritance} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -352,10 +353,10 @@ const methodDescriptor_Enforcer_LinkRoles = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.linkRoles =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.linkRoles =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/LinkRoles',
+      '/palm.nut.v1.rbac.Enforcer/LinkRoles',
       request,
       metadata || {},
       methodDescriptor_Enforcer_LinkRoles,
@@ -364,17 +365,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.linkRoles =
 
 
 /**
- * @param {!proto.palm.rbac.v1.RolesInheritance} request The
+ * @param {!proto.palm.nut.v1.rbac.RolesInheritance} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.linkRoles =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.linkRoles =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/LinkRoles',
+      '/palm.nut.v1.rbac.Enforcer/LinkRoles',
       request,
       metadata || {},
       methodDescriptor_Enforcer_LinkRoles);
@@ -384,16 +385,16 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.linkRoles =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.RolesInheritance,
+ *   !proto.palm.nut.v1.rbac.RolesInheritance,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Enforcer_UnlinkRoles = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/UnlinkRoles',
+  '/palm.nut.v1.rbac.Enforcer/UnlinkRoles',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.RolesInheritance,
+  proto.palm.nut.v1.rbac.RolesInheritance,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.rbac.v1.RolesInheritance} request
+   * @param {!proto.palm.nut.v1.rbac.RolesInheritance} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -404,7 +405,7 @@ const methodDescriptor_Enforcer_UnlinkRoles = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.rbac.v1.RolesInheritance} request The
+ * @param {!proto.palm.nut.v1.rbac.RolesInheritance} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -413,10 +414,10 @@ const methodDescriptor_Enforcer_UnlinkRoles = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.unlinkRoles =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.unlinkRoles =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/UnlinkRoles',
+      '/palm.nut.v1.rbac.Enforcer/UnlinkRoles',
       request,
       metadata || {},
       methodDescriptor_Enforcer_UnlinkRoles,
@@ -425,17 +426,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.unlinkRoles =
 
 
 /**
- * @param {!proto.palm.rbac.v1.RolesInheritance} request The
+ * @param {!proto.palm.nut.v1.rbac.RolesInheritance} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.unlinkRoles =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.unlinkRoles =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/UnlinkRoles',
+      '/palm.nut.v1.rbac.Enforcer/UnlinkRoles',
       request,
       metadata || {},
       methodDescriptor_Enforcer_UnlinkRoles);
@@ -445,39 +446,39 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.unlinkRoles =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.UserList.Item,
- *   !proto.palm.rbac.v1.RoleList>}
+ *   !proto.palm.nut.v1.rbac.UserList.Item,
+ *   !proto.palm.nut.v1.rbac.RoleList>}
  */
 const methodDescriptor_Enforcer_GetRolesForUser = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/GetRolesForUser',
+  '/palm.nut.v1.rbac.Enforcer/GetRolesForUser',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.UserList.Item,
-  proto.palm.rbac.v1.RoleList,
+  proto.palm.nut.v1.rbac.UserList.Item,
+  proto.palm.nut.v1.rbac.RoleList,
   /**
-   * @param {!proto.palm.rbac.v1.UserList.Item} request
+   * @param {!proto.palm.nut.v1.rbac.UserList.Item} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.palm.rbac.v1.RoleList.deserializeBinary
+  proto.palm.nut.v1.rbac.RoleList.deserializeBinary
 );
 
 
 /**
- * @param {!proto.palm.rbac.v1.UserList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.UserList.Item} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.palm.rbac.v1.RoleList)}
+ * @param {function(?grpc.web.RpcError, ?proto.palm.nut.v1.rbac.RoleList)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.palm.rbac.v1.RoleList>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.palm.nut.v1.rbac.RoleList>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.getRolesForUser =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.getRolesForUser =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/GetRolesForUser',
+      '/palm.nut.v1.rbac.Enforcer/GetRolesForUser',
       request,
       metadata || {},
       methodDescriptor_Enforcer_GetRolesForUser,
@@ -486,17 +487,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.getRolesForUser =
 
 
 /**
- * @param {!proto.palm.rbac.v1.UserList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.UserList.Item} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.palm.rbac.v1.RoleList>}
+ * @return {!Promise<!proto.palm.nut.v1.rbac.RoleList>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.getRolesForUser =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.getRolesForUser =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/GetRolesForUser',
+      '/palm.nut.v1.rbac.Enforcer/GetRolesForUser',
       request,
       metadata || {},
       methodDescriptor_Enforcer_GetRolesForUser);
@@ -506,39 +507,39 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.getRolesForUser =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.RoleList.Item,
- *   !proto.palm.rbac.v1.UserList>}
+ *   !proto.palm.nut.v1.rbac.RoleList.Item,
+ *   !proto.palm.nut.v1.rbac.UserList>}
  */
 const methodDescriptor_Enforcer_GetUsersForRole = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/GetUsersForRole',
+  '/palm.nut.v1.rbac.Enforcer/GetUsersForRole',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.RoleList.Item,
-  proto.palm.rbac.v1.UserList,
+  proto.palm.nut.v1.rbac.RoleList.Item,
+  proto.palm.nut.v1.rbac.UserList,
   /**
-   * @param {!proto.palm.rbac.v1.RoleList.Item} request
+   * @param {!proto.palm.nut.v1.rbac.RoleList.Item} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.palm.rbac.v1.UserList.deserializeBinary
+  proto.palm.nut.v1.rbac.UserList.deserializeBinary
 );
 
 
 /**
- * @param {!proto.palm.rbac.v1.RoleList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.RoleList.Item} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.palm.rbac.v1.UserList)}
+ * @param {function(?grpc.web.RpcError, ?proto.palm.nut.v1.rbac.UserList)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.palm.rbac.v1.UserList>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.palm.nut.v1.rbac.UserList>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.getUsersForRole =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.getUsersForRole =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/GetUsersForRole',
+      '/palm.nut.v1.rbac.Enforcer/GetUsersForRole',
       request,
       metadata || {},
       methodDescriptor_Enforcer_GetUsersForRole,
@@ -547,17 +548,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.getUsersForRole =
 
 
 /**
- * @param {!proto.palm.rbac.v1.RoleList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.RoleList.Item} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.palm.rbac.v1.UserList>}
+ * @return {!Promise<!proto.palm.nut.v1.rbac.UserList>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.getUsersForRole =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.getUsersForRole =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/GetUsersForRole',
+      '/palm.nut.v1.rbac.Enforcer/GetUsersForRole',
       request,
       metadata || {},
       methodDescriptor_Enforcer_GetUsersForRole);
@@ -567,16 +568,16 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.getUsersForRole =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.RoleForUserRequest,
+ *   !proto.palm.nut.v1.rbac.RoleForUserRequest,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Enforcer_HasRoleForUser = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/HasRoleForUser',
+  '/palm.nut.v1.rbac.Enforcer/HasRoleForUser',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.RoleForUserRequest,
+  proto.palm.nut.v1.rbac.RoleForUserRequest,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.rbac.v1.RoleForUserRequest} request
+   * @param {!proto.palm.nut.v1.rbac.RoleForUserRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -587,7 +588,7 @@ const methodDescriptor_Enforcer_HasRoleForUser = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.rbac.v1.RoleForUserRequest} request The
+ * @param {!proto.palm.nut.v1.rbac.RoleForUserRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -596,10 +597,10 @@ const methodDescriptor_Enforcer_HasRoleForUser = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.hasRoleForUser =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.hasRoleForUser =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/HasRoleForUser',
+      '/palm.nut.v1.rbac.Enforcer/HasRoleForUser',
       request,
       metadata || {},
       methodDescriptor_Enforcer_HasRoleForUser,
@@ -608,17 +609,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.hasRoleForUser =
 
 
 /**
- * @param {!proto.palm.rbac.v1.RoleForUserRequest} request The
+ * @param {!proto.palm.nut.v1.rbac.RoleForUserRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.hasRoleForUser =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.hasRoleForUser =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/HasRoleForUser',
+      '/palm.nut.v1.rbac.Enforcer/HasRoleForUser',
       request,
       metadata || {},
       methodDescriptor_Enforcer_HasRoleForUser);
@@ -628,16 +629,16 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.hasRoleForUser =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.AddRoleForUserRequest,
+ *   !proto.palm.nut.v1.rbac.AddRoleForUserRequest,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Enforcer_AddRoleForUser = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/AddRoleForUser',
+  '/palm.nut.v1.rbac.Enforcer/AddRoleForUser',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.AddRoleForUserRequest,
+  proto.palm.nut.v1.rbac.AddRoleForUserRequest,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.rbac.v1.AddRoleForUserRequest} request
+   * @param {!proto.palm.nut.v1.rbac.AddRoleForUserRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -648,7 +649,7 @@ const methodDescriptor_Enforcer_AddRoleForUser = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.rbac.v1.AddRoleForUserRequest} request The
+ * @param {!proto.palm.nut.v1.rbac.AddRoleForUserRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -657,10 +658,10 @@ const methodDescriptor_Enforcer_AddRoleForUser = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.addRoleForUser =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.addRoleForUser =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/AddRoleForUser',
+      '/palm.nut.v1.rbac.Enforcer/AddRoleForUser',
       request,
       metadata || {},
       methodDescriptor_Enforcer_AddRoleForUser,
@@ -669,17 +670,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.addRoleForUser =
 
 
 /**
- * @param {!proto.palm.rbac.v1.AddRoleForUserRequest} request The
+ * @param {!proto.palm.nut.v1.rbac.AddRoleForUserRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.addRoleForUser =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.addRoleForUser =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/AddRoleForUser',
+      '/palm.nut.v1.rbac.Enforcer/AddRoleForUser',
       request,
       metadata || {},
       methodDescriptor_Enforcer_AddRoleForUser);
@@ -689,16 +690,16 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.addRoleForUser =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.RoleForUserRequest,
+ *   !proto.palm.nut.v1.rbac.RoleForUserRequest,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Enforcer_DeleteRoleForUser = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/DeleteRoleForUser',
+  '/palm.nut.v1.rbac.Enforcer/DeleteRoleForUser',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.RoleForUserRequest,
+  proto.palm.nut.v1.rbac.RoleForUserRequest,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.rbac.v1.RoleForUserRequest} request
+   * @param {!proto.palm.nut.v1.rbac.RoleForUserRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -709,7 +710,7 @@ const methodDescriptor_Enforcer_DeleteRoleForUser = new grpc.web.MethodDescripto
 
 
 /**
- * @param {!proto.palm.rbac.v1.RoleForUserRequest} request The
+ * @param {!proto.palm.nut.v1.rbac.RoleForUserRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -718,10 +719,10 @@ const methodDescriptor_Enforcer_DeleteRoleForUser = new grpc.web.MethodDescripto
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.deleteRoleForUser =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.deleteRoleForUser =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/DeleteRoleForUser',
+      '/palm.nut.v1.rbac.Enforcer/DeleteRoleForUser',
       request,
       metadata || {},
       methodDescriptor_Enforcer_DeleteRoleForUser,
@@ -730,17 +731,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.deleteRoleForUser =
 
 
 /**
- * @param {!proto.palm.rbac.v1.RoleForUserRequest} request The
+ * @param {!proto.palm.nut.v1.rbac.RoleForUserRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.deleteRoleForUser =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.deleteRoleForUser =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/DeleteRoleForUser',
+      '/palm.nut.v1.rbac.Enforcer/DeleteRoleForUser',
       request,
       metadata || {},
       methodDescriptor_Enforcer_DeleteRoleForUser);
@@ -750,16 +751,16 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.deleteRoleForUser =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.RoleList.Item,
+ *   !proto.palm.nut.v1.rbac.RoleList.Item,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Enforcer_DeleteRole = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/DeleteRole',
+  '/palm.nut.v1.rbac.Enforcer/DeleteRole',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.RoleList.Item,
+  proto.palm.nut.v1.rbac.RoleList.Item,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.rbac.v1.RoleList.Item} request
+   * @param {!proto.palm.nut.v1.rbac.RoleList.Item} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -770,7 +771,7 @@ const methodDescriptor_Enforcer_DeleteRole = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.rbac.v1.RoleList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.RoleList.Item} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -779,10 +780,10 @@ const methodDescriptor_Enforcer_DeleteRole = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.deleteRole =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.deleteRole =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/DeleteRole',
+      '/palm.nut.v1.rbac.Enforcer/DeleteRole',
       request,
       metadata || {},
       methodDescriptor_Enforcer_DeleteRole,
@@ -791,17 +792,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.deleteRole =
 
 
 /**
- * @param {!proto.palm.rbac.v1.RoleList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.RoleList.Item} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.deleteRole =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.deleteRole =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/DeleteRole',
+      '/palm.nut.v1.rbac.Enforcer/DeleteRole',
       request,
       metadata || {},
       methodDescriptor_Enforcer_DeleteRole);
@@ -811,16 +812,16 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.deleteRole =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.PermissionList.Item,
+ *   !proto.palm.nut.v1.rbac.PermissionList.Item,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Enforcer_AddPermission = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/AddPermission',
+  '/palm.nut.v1.rbac.Enforcer/AddPermission',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.PermissionList.Item,
+  proto.palm.nut.v1.rbac.PermissionList.Item,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.rbac.v1.PermissionList.Item} request
+   * @param {!proto.palm.nut.v1.rbac.PermissionList.Item} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -831,7 +832,7 @@ const methodDescriptor_Enforcer_AddPermission = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.rbac.v1.PermissionList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.PermissionList.Item} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -840,10 +841,10 @@ const methodDescriptor_Enforcer_AddPermission = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.addPermission =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.addPermission =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/AddPermission',
+      '/palm.nut.v1.rbac.Enforcer/AddPermission',
       request,
       metadata || {},
       methodDescriptor_Enforcer_AddPermission,
@@ -852,17 +853,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.addPermission =
 
 
 /**
- * @param {!proto.palm.rbac.v1.PermissionList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.PermissionList.Item} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.addPermission =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.addPermission =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/AddPermission',
+      '/palm.nut.v1.rbac.Enforcer/AddPermission',
       request,
       metadata || {},
       methodDescriptor_Enforcer_AddPermission);
@@ -872,16 +873,16 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.addPermission =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.PermissionList.Item,
+ *   !proto.palm.nut.v1.rbac.PermissionList.Item,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Enforcer_DeletePermission = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/DeletePermission',
+  '/palm.nut.v1.rbac.Enforcer/DeletePermission',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.PermissionList.Item,
+  proto.palm.nut.v1.rbac.PermissionList.Item,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.rbac.v1.PermissionList.Item} request
+   * @param {!proto.palm.nut.v1.rbac.PermissionList.Item} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -892,7 +893,7 @@ const methodDescriptor_Enforcer_DeletePermission = new grpc.web.MethodDescriptor
 
 
 /**
- * @param {!proto.palm.rbac.v1.PermissionList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.PermissionList.Item} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -901,10 +902,10 @@ const methodDescriptor_Enforcer_DeletePermission = new grpc.web.MethodDescriptor
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.deletePermission =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.deletePermission =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/DeletePermission',
+      '/palm.nut.v1.rbac.Enforcer/DeletePermission',
       request,
       metadata || {},
       methodDescriptor_Enforcer_DeletePermission,
@@ -913,17 +914,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.deletePermission =
 
 
 /**
- * @param {!proto.palm.rbac.v1.PermissionList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.PermissionList.Item} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.deletePermission =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.deletePermission =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/DeletePermission',
+      '/palm.nut.v1.rbac.Enforcer/DeletePermission',
       request,
       metadata || {},
       methodDescriptor_Enforcer_DeletePermission);
@@ -933,39 +934,39 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.deletePermission =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.PermissionQuery,
- *   !proto.palm.rbac.v1.PermissionList>}
+ *   !proto.palm.nut.v1.rbac.PermissionQuery,
+ *   !proto.palm.nut.v1.rbac.PermissionList>}
  */
 const methodDescriptor_Enforcer_GetPermissions = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/GetPermissions',
+  '/palm.nut.v1.rbac.Enforcer/GetPermissions',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.PermissionQuery,
-  proto.palm.rbac.v1.PermissionList,
+  proto.palm.nut.v1.rbac.PermissionQuery,
+  proto.palm.nut.v1.rbac.PermissionList,
   /**
-   * @param {!proto.palm.rbac.v1.PermissionQuery} request
+   * @param {!proto.palm.nut.v1.rbac.PermissionQuery} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.palm.rbac.v1.PermissionList.deserializeBinary
+  proto.palm.nut.v1.rbac.PermissionList.deserializeBinary
 );
 
 
 /**
- * @param {!proto.palm.rbac.v1.PermissionQuery} request The
+ * @param {!proto.palm.nut.v1.rbac.PermissionQuery} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.palm.rbac.v1.PermissionList)}
+ * @param {function(?grpc.web.RpcError, ?proto.palm.nut.v1.rbac.PermissionList)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.palm.rbac.v1.PermissionList>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.palm.nut.v1.rbac.PermissionList>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.getPermissions =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.getPermissions =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/GetPermissions',
+      '/palm.nut.v1.rbac.Enforcer/GetPermissions',
       request,
       metadata || {},
       methodDescriptor_Enforcer_GetPermissions,
@@ -974,17 +975,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.getPermissions =
 
 
 /**
- * @param {!proto.palm.rbac.v1.PermissionQuery} request The
+ * @param {!proto.palm.nut.v1.rbac.PermissionQuery} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.palm.rbac.v1.PermissionList>}
+ * @return {!Promise<!proto.palm.nut.v1.rbac.PermissionList>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.getPermissions =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.getPermissions =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/GetPermissions',
+      '/palm.nut.v1.rbac.Enforcer/GetPermissions',
       request,
       metadata || {},
       methodDescriptor_Enforcer_GetPermissions);
@@ -994,16 +995,16 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.getPermissions =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.PermissionQuery,
+ *   !proto.palm.nut.v1.rbac.PermissionQuery,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Enforcer_HasPermission = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/HasPermission',
+  '/palm.nut.v1.rbac.Enforcer/HasPermission',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.PermissionQuery,
+  proto.palm.nut.v1.rbac.PermissionQuery,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.rbac.v1.PermissionQuery} request
+   * @param {!proto.palm.nut.v1.rbac.PermissionQuery} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -1014,7 +1015,7 @@ const methodDescriptor_Enforcer_HasPermission = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.rbac.v1.PermissionQuery} request The
+ * @param {!proto.palm.nut.v1.rbac.PermissionQuery} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -1023,10 +1024,10 @@ const methodDescriptor_Enforcer_HasPermission = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.hasPermission =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.hasPermission =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/HasPermission',
+      '/palm.nut.v1.rbac.Enforcer/HasPermission',
       request,
       metadata || {},
       methodDescriptor_Enforcer_HasPermission,
@@ -1035,17 +1036,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.hasPermission =
 
 
 /**
- * @param {!proto.palm.rbac.v1.PermissionQuery} request The
+ * @param {!proto.palm.nut.v1.rbac.PermissionQuery} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.hasPermission =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.hasPermission =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/HasPermission',
+      '/palm.nut.v1.rbac.Enforcer/HasPermission',
       request,
       metadata || {},
       methodDescriptor_Enforcer_HasPermission);
@@ -1055,39 +1056,39 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.hasPermission =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.UserList.Item,
- *   !proto.palm.rbac.v1.RoleList>}
+ *   !proto.palm.nut.v1.rbac.UserList.Item,
+ *   !proto.palm.nut.v1.rbac.RoleList>}
  */
 const methodDescriptor_Enforcer_GetImplicitRolesForUser = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/GetImplicitRolesForUser',
+  '/palm.nut.v1.rbac.Enforcer/GetImplicitRolesForUser',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.UserList.Item,
-  proto.palm.rbac.v1.RoleList,
+  proto.palm.nut.v1.rbac.UserList.Item,
+  proto.palm.nut.v1.rbac.RoleList,
   /**
-   * @param {!proto.palm.rbac.v1.UserList.Item} request
+   * @param {!proto.palm.nut.v1.rbac.UserList.Item} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.palm.rbac.v1.RoleList.deserializeBinary
+  proto.palm.nut.v1.rbac.RoleList.deserializeBinary
 );
 
 
 /**
- * @param {!proto.palm.rbac.v1.UserList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.UserList.Item} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.palm.rbac.v1.RoleList)}
+ * @param {function(?grpc.web.RpcError, ?proto.palm.nut.v1.rbac.RoleList)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.palm.rbac.v1.RoleList>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.palm.nut.v1.rbac.RoleList>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.getImplicitRolesForUser =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.getImplicitRolesForUser =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/GetImplicitRolesForUser',
+      '/palm.nut.v1.rbac.Enforcer/GetImplicitRolesForUser',
       request,
       metadata || {},
       methodDescriptor_Enforcer_GetImplicitRolesForUser,
@@ -1096,17 +1097,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.getImplicitRolesForUser =
 
 
 /**
- * @param {!proto.palm.rbac.v1.UserList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.UserList.Item} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.palm.rbac.v1.RoleList>}
+ * @return {!Promise<!proto.palm.nut.v1.rbac.RoleList>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.getImplicitRolesForUser =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.getImplicitRolesForUser =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/GetImplicitRolesForUser',
+      '/palm.nut.v1.rbac.Enforcer/GetImplicitRolesForUser',
       request,
       metadata || {},
       methodDescriptor_Enforcer_GetImplicitRolesForUser);
@@ -1116,39 +1117,39 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.getImplicitRolesForUser =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.RoleList.Item,
- *   !proto.palm.rbac.v1.UserList>}
+ *   !proto.palm.nut.v1.rbac.RoleList.Item,
+ *   !proto.palm.nut.v1.rbac.UserList>}
  */
 const methodDescriptor_Enforcer_GetImplicitUsersForRole = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/GetImplicitUsersForRole',
+  '/palm.nut.v1.rbac.Enforcer/GetImplicitUsersForRole',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.RoleList.Item,
-  proto.palm.rbac.v1.UserList,
+  proto.palm.nut.v1.rbac.RoleList.Item,
+  proto.palm.nut.v1.rbac.UserList,
   /**
-   * @param {!proto.palm.rbac.v1.RoleList.Item} request
+   * @param {!proto.palm.nut.v1.rbac.RoleList.Item} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.palm.rbac.v1.UserList.deserializeBinary
+  proto.palm.nut.v1.rbac.UserList.deserializeBinary
 );
 
 
 /**
- * @param {!proto.palm.rbac.v1.RoleList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.RoleList.Item} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.palm.rbac.v1.UserList)}
+ * @param {function(?grpc.web.RpcError, ?proto.palm.nut.v1.rbac.UserList)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.palm.rbac.v1.UserList>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.palm.nut.v1.rbac.UserList>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.getImplicitUsersForRole =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.getImplicitUsersForRole =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/GetImplicitUsersForRole',
+      '/palm.nut.v1.rbac.Enforcer/GetImplicitUsersForRole',
       request,
       metadata || {},
       methodDescriptor_Enforcer_GetImplicitUsersForRole,
@@ -1157,17 +1158,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.getImplicitUsersForRole =
 
 
 /**
- * @param {!proto.palm.rbac.v1.RoleList.Item} request The
+ * @param {!proto.palm.nut.v1.rbac.RoleList.Item} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.palm.rbac.v1.UserList>}
+ * @return {!Promise<!proto.palm.nut.v1.rbac.UserList>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.getImplicitUsersForRole =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.getImplicitUsersForRole =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/GetImplicitUsersForRole',
+      '/palm.nut.v1.rbac.Enforcer/GetImplicitUsersForRole',
       request,
       metadata || {},
       methodDescriptor_Enforcer_GetImplicitUsersForRole);
@@ -1177,39 +1178,39 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.getImplicitUsersForRole =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.PermissionQuery,
- *   !proto.palm.rbac.v1.PermissionList>}
+ *   !proto.palm.nut.v1.rbac.PermissionQuery,
+ *   !proto.palm.nut.v1.rbac.PermissionList>}
  */
 const methodDescriptor_Enforcer_GetImplicitPermissions = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/GetImplicitPermissions',
+  '/palm.nut.v1.rbac.Enforcer/GetImplicitPermissions',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.PermissionQuery,
-  proto.palm.rbac.v1.PermissionList,
+  proto.palm.nut.v1.rbac.PermissionQuery,
+  proto.palm.nut.v1.rbac.PermissionList,
   /**
-   * @param {!proto.palm.rbac.v1.PermissionQuery} request
+   * @param {!proto.palm.nut.v1.rbac.PermissionQuery} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.palm.rbac.v1.PermissionList.deserializeBinary
+  proto.palm.nut.v1.rbac.PermissionList.deserializeBinary
 );
 
 
 /**
- * @param {!proto.palm.rbac.v1.PermissionQuery} request The
+ * @param {!proto.palm.nut.v1.rbac.PermissionQuery} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.palm.rbac.v1.PermissionList)}
+ * @param {function(?grpc.web.RpcError, ?proto.palm.nut.v1.rbac.PermissionList)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.palm.rbac.v1.PermissionList>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.palm.nut.v1.rbac.PermissionList>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.getImplicitPermissions =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.getImplicitPermissions =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/GetImplicitPermissions',
+      '/palm.nut.v1.rbac.Enforcer/GetImplicitPermissions',
       request,
       metadata || {},
       methodDescriptor_Enforcer_GetImplicitPermissions,
@@ -1218,17 +1219,17 @@ proto.palm.rbac.v1.EnforcerClient.prototype.getImplicitPermissions =
 
 
 /**
- * @param {!proto.palm.rbac.v1.PermissionQuery} request The
+ * @param {!proto.palm.nut.v1.rbac.PermissionQuery} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.palm.rbac.v1.PermissionList>}
+ * @return {!Promise<!proto.palm.nut.v1.rbac.PermissionList>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.getImplicitPermissions =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.getImplicitPermissions =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/GetImplicitPermissions',
+      '/palm.nut.v1.rbac.Enforcer/GetImplicitPermissions',
       request,
       metadata || {},
       methodDescriptor_Enforcer_GetImplicitPermissions);
@@ -1238,16 +1239,16 @@ proto.palm.rbac.v1.EnforcerPromiseClient.prototype.getImplicitPermissions =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.rbac.v1.PermissionQuery,
+ *   !proto.palm.nut.v1.rbac.PermissionQuery,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Enforcer_HasImplicitPermission = new grpc.web.MethodDescriptor(
-  '/palm.rbac.v1.Enforcer/HasImplicitPermission',
+  '/palm.nut.v1.rbac.Enforcer/HasImplicitPermission',
   grpc.web.MethodType.UNARY,
-  proto.palm.rbac.v1.PermissionQuery,
+  proto.palm.nut.v1.rbac.PermissionQuery,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.rbac.v1.PermissionQuery} request
+   * @param {!proto.palm.nut.v1.rbac.PermissionQuery} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -1258,7 +1259,7 @@ const methodDescriptor_Enforcer_HasImplicitPermission = new grpc.web.MethodDescr
 
 
 /**
- * @param {!proto.palm.rbac.v1.PermissionQuery} request The
+ * @param {!proto.palm.nut.v1.rbac.PermissionQuery} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -1267,10 +1268,10 @@ const methodDescriptor_Enforcer_HasImplicitPermission = new grpc.web.MethodDescr
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.rbac.v1.EnforcerClient.prototype.hasImplicitPermission =
+proto.palm.nut.v1.rbac.EnforcerClient.prototype.hasImplicitPermission =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/HasImplicitPermission',
+      '/palm.nut.v1.rbac.Enforcer/HasImplicitPermission',
       request,
       metadata || {},
       methodDescriptor_Enforcer_HasImplicitPermission,
@@ -1279,22 +1280,22 @@ proto.palm.rbac.v1.EnforcerClient.prototype.hasImplicitPermission =
 
 
 /**
- * @param {!proto.palm.rbac.v1.PermissionQuery} request The
+ * @param {!proto.palm.nut.v1.rbac.PermissionQuery} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.rbac.v1.EnforcerPromiseClient.prototype.hasImplicitPermission =
+proto.palm.nut.v1.rbac.EnforcerPromiseClient.prototype.hasImplicitPermission =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.rbac.v1.Enforcer/HasImplicitPermission',
+      '/palm.nut.v1.rbac.Enforcer/HasImplicitPermission',
       request,
       metadata || {},
       methodDescriptor_Enforcer_HasImplicitPermission);
 };
 
 
-module.exports = proto.palm.rbac.v1;
+module.exports = proto.palm.nut.v1.rbac;
 

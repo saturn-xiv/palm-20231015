@@ -5,7 +5,7 @@ package palm.nut.v1;
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 
-import "auth.proto";
+import "nut.auth.proto";
 
 message Pagination {
   int64 total = 1;
@@ -18,9 +18,7 @@ message Pager {
   int64 size = 2;
 }
 
-message IdRequest {
-  int64 id = 1;
-}
+message IdRequest { int64 id = 1; }
 
 message Size {
   uint32 width = 1;
@@ -40,7 +38,7 @@ enum MediaType {
 
 service Site {
   rpc About(google.protobuf.Empty) returns (AboutResponse) {}
-  rpc Install(palm.auth.v1.SignUpRequest) returns (google.protobuf.Empty) {}
+  rpc Install(palm.nut.v1.auth.SignUpRequest) returns (google.protobuf.Empty) {}
 }
 
 message AboutResponse {
@@ -60,9 +58,7 @@ service Locale {
   rpc Set(LocaleSetRequest) returns (google.protobuf.Empty) {}
 }
 
-message LocaleIndexRequest {
-  string lang = 1;
-}
+message LocaleIndexRequest { string lang = 1; }
 
 message LocaleIndexResponse {
   message Item {

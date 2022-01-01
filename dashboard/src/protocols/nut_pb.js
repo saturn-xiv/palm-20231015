@@ -19,8 +19,8 @@ var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb
 goog.object.extend(proto, google_protobuf_empty_pb);
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
-var auth_pb = require('./auth_pb.js');
-goog.object.extend(proto, auth_pb);
+var nut_auth_pb = require('./nut.auth_pb.js');
+goog.object.extend(proto, nut_auth_pb);
 goog.exportSymbol('proto.palm.nut.v1.AboutResponse', null, global);
 goog.exportSymbol('proto.palm.nut.v1.CreateNotificationRequest', null, global);
 goog.exportSymbol('proto.palm.nut.v1.CreateTagRequest', null, global);

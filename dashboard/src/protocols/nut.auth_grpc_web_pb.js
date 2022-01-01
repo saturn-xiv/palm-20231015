@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for palm.auth.v1
+ * @fileoverview gRPC-Web generated client stub for palm.nut.v1.auth
  * @enhanceable
  * @public
  */
@@ -23,8 +23,9 @@ var google_protobuf_duration_pb = require('google-protobuf/google/protobuf/durat
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
 const proto = {};
 proto.palm = {};
-proto.palm.auth = {};
-proto.palm.auth.v1 = require('./auth_pb.js');
+proto.palm.nut = {};
+proto.palm.nut.v1 = {};
+proto.palm.nut.v1.auth = require('./nut.auth_pb.js');
 
 /**
  * @param {string} hostname
@@ -34,7 +35,7 @@ proto.palm.auth.v1 = require('./auth_pb.js');
  * @struct
  * @final
  */
-proto.palm.auth.v1.UserClient =
+proto.palm.nut.v1.auth.UserClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -60,7 +61,7 @@ proto.palm.auth.v1.UserClient =
  * @struct
  * @final
  */
-proto.palm.auth.v1.UserPromiseClient =
+proto.palm.nut.v1.auth.UserPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -81,39 +82,39 @@ proto.palm.auth.v1.UserPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.auth.v1.SignInRequest,
- *   !proto.palm.auth.v1.SignInResponse>}
+ *   !proto.palm.nut.v1.auth.SignInRequest,
+ *   !proto.palm.nut.v1.auth.SignInResponse>}
  */
 const methodDescriptor_User_SignIn = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.User/SignIn',
+  '/palm.nut.v1.auth.User/SignIn',
   grpc.web.MethodType.UNARY,
-  proto.palm.auth.v1.SignInRequest,
-  proto.palm.auth.v1.SignInResponse,
+  proto.palm.nut.v1.auth.SignInRequest,
+  proto.palm.nut.v1.auth.SignInResponse,
   /**
-   * @param {!proto.palm.auth.v1.SignInRequest} request
+   * @param {!proto.palm.nut.v1.auth.SignInRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.palm.auth.v1.SignInResponse.deserializeBinary
+  proto.palm.nut.v1.auth.SignInResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.palm.auth.v1.SignInRequest} request The
+ * @param {!proto.palm.nut.v1.auth.SignInRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.palm.auth.v1.SignInResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.palm.nut.v1.auth.SignInResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.palm.auth.v1.SignInResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.palm.nut.v1.auth.SignInResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.UserClient.prototype.signIn =
+proto.palm.nut.v1.auth.UserClient.prototype.signIn =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.User/SignIn',
+      '/palm.nut.v1.auth.User/SignIn',
       request,
       metadata || {},
       methodDescriptor_User_SignIn,
@@ -122,17 +123,17 @@ proto.palm.auth.v1.UserClient.prototype.signIn =
 
 
 /**
- * @param {!proto.palm.auth.v1.SignInRequest} request The
+ * @param {!proto.palm.nut.v1.auth.SignInRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.palm.auth.v1.SignInResponse>}
+ * @return {!Promise<!proto.palm.nut.v1.auth.SignInResponse>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.UserPromiseClient.prototype.signIn =
+proto.palm.nut.v1.auth.UserPromiseClient.prototype.signIn =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.User/SignIn',
+      '/palm.nut.v1.auth.User/SignIn',
       request,
       metadata || {},
       methodDescriptor_User_SignIn);
@@ -142,16 +143,16 @@ proto.palm.auth.v1.UserPromiseClient.prototype.signIn =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.auth.v1.SignUpRequest,
+ *   !proto.palm.nut.v1.auth.SignUpRequest,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_User_SignUp = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.User/SignUp',
+  '/palm.nut.v1.auth.User/SignUp',
   grpc.web.MethodType.UNARY,
-  proto.palm.auth.v1.SignUpRequest,
+  proto.palm.nut.v1.auth.SignUpRequest,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.auth.v1.SignUpRequest} request
+   * @param {!proto.palm.nut.v1.auth.SignUpRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -162,7 +163,7 @@ const methodDescriptor_User_SignUp = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.auth.v1.SignUpRequest} request The
+ * @param {!proto.palm.nut.v1.auth.SignUpRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -171,10 +172,10 @@ const methodDescriptor_User_SignUp = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.UserClient.prototype.signUp =
+proto.palm.nut.v1.auth.UserClient.prototype.signUp =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.User/SignUp',
+      '/palm.nut.v1.auth.User/SignUp',
       request,
       metadata || {},
       methodDescriptor_User_SignUp,
@@ -183,17 +184,17 @@ proto.palm.auth.v1.UserClient.prototype.signUp =
 
 
 /**
- * @param {!proto.palm.auth.v1.SignUpRequest} request The
+ * @param {!proto.palm.nut.v1.auth.SignUpRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.UserPromiseClient.prototype.signUp =
+proto.palm.nut.v1.auth.UserPromiseClient.prototype.signUp =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.User/SignUp',
+      '/palm.nut.v1.auth.User/SignUp',
       request,
       metadata || {},
       methodDescriptor_User_SignUp);
@@ -203,16 +204,16 @@ proto.palm.auth.v1.UserPromiseClient.prototype.signUp =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.auth.v1.UserQuery,
+ *   !proto.palm.nut.v1.auth.UserQuery,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_User_Confirm = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.User/Confirm',
+  '/palm.nut.v1.auth.User/Confirm',
   grpc.web.MethodType.UNARY,
-  proto.palm.auth.v1.UserQuery,
+  proto.palm.nut.v1.auth.UserQuery,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.auth.v1.UserQuery} request
+   * @param {!proto.palm.nut.v1.auth.UserQuery} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -223,7 +224,7 @@ const methodDescriptor_User_Confirm = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.auth.v1.UserQuery} request The
+ * @param {!proto.palm.nut.v1.auth.UserQuery} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -232,10 +233,10 @@ const methodDescriptor_User_Confirm = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.UserClient.prototype.confirm =
+proto.palm.nut.v1.auth.UserClient.prototype.confirm =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.User/Confirm',
+      '/palm.nut.v1.auth.User/Confirm',
       request,
       metadata || {},
       methodDescriptor_User_Confirm,
@@ -244,17 +245,17 @@ proto.palm.auth.v1.UserClient.prototype.confirm =
 
 
 /**
- * @param {!proto.palm.auth.v1.UserQuery} request The
+ * @param {!proto.palm.nut.v1.auth.UserQuery} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.UserPromiseClient.prototype.confirm =
+proto.palm.nut.v1.auth.UserPromiseClient.prototype.confirm =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.User/Confirm',
+      '/palm.nut.v1.auth.User/Confirm',
       request,
       metadata || {},
       methodDescriptor_User_Confirm);
@@ -264,16 +265,16 @@ proto.palm.auth.v1.UserPromiseClient.prototype.confirm =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.auth.v1.TokenForm,
+ *   !proto.palm.nut.v1.auth.TokenForm,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_User_ConfirmByToken = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.User/ConfirmByToken',
+  '/palm.nut.v1.auth.User/ConfirmByToken',
   grpc.web.MethodType.UNARY,
-  proto.palm.auth.v1.TokenForm,
+  proto.palm.nut.v1.auth.TokenForm,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.auth.v1.TokenForm} request
+   * @param {!proto.palm.nut.v1.auth.TokenForm} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -284,7 +285,7 @@ const methodDescriptor_User_ConfirmByToken = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.auth.v1.TokenForm} request The
+ * @param {!proto.palm.nut.v1.auth.TokenForm} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -293,10 +294,10 @@ const methodDescriptor_User_ConfirmByToken = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.UserClient.prototype.confirmByToken =
+proto.palm.nut.v1.auth.UserClient.prototype.confirmByToken =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.User/ConfirmByToken',
+      '/palm.nut.v1.auth.User/ConfirmByToken',
       request,
       metadata || {},
       methodDescriptor_User_ConfirmByToken,
@@ -305,17 +306,17 @@ proto.palm.auth.v1.UserClient.prototype.confirmByToken =
 
 
 /**
- * @param {!proto.palm.auth.v1.TokenForm} request The
+ * @param {!proto.palm.nut.v1.auth.TokenForm} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.UserPromiseClient.prototype.confirmByToken =
+proto.palm.nut.v1.auth.UserPromiseClient.prototype.confirmByToken =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.User/ConfirmByToken',
+      '/palm.nut.v1.auth.User/ConfirmByToken',
       request,
       metadata || {},
       methodDescriptor_User_ConfirmByToken);
@@ -325,16 +326,16 @@ proto.palm.auth.v1.UserPromiseClient.prototype.confirmByToken =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.auth.v1.UserQuery,
+ *   !proto.palm.nut.v1.auth.UserQuery,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_User_Unlock = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.User/Unlock',
+  '/palm.nut.v1.auth.User/Unlock',
   grpc.web.MethodType.UNARY,
-  proto.palm.auth.v1.UserQuery,
+  proto.palm.nut.v1.auth.UserQuery,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.auth.v1.UserQuery} request
+   * @param {!proto.palm.nut.v1.auth.UserQuery} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -345,7 +346,7 @@ const methodDescriptor_User_Unlock = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.auth.v1.UserQuery} request The
+ * @param {!proto.palm.nut.v1.auth.UserQuery} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -354,10 +355,10 @@ const methodDescriptor_User_Unlock = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.UserClient.prototype.unlock =
+proto.palm.nut.v1.auth.UserClient.prototype.unlock =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.User/Unlock',
+      '/palm.nut.v1.auth.User/Unlock',
       request,
       metadata || {},
       methodDescriptor_User_Unlock,
@@ -366,17 +367,17 @@ proto.palm.auth.v1.UserClient.prototype.unlock =
 
 
 /**
- * @param {!proto.palm.auth.v1.UserQuery} request The
+ * @param {!proto.palm.nut.v1.auth.UserQuery} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.UserPromiseClient.prototype.unlock =
+proto.palm.nut.v1.auth.UserPromiseClient.prototype.unlock =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.User/Unlock',
+      '/palm.nut.v1.auth.User/Unlock',
       request,
       metadata || {},
       methodDescriptor_User_Unlock);
@@ -386,16 +387,16 @@ proto.palm.auth.v1.UserPromiseClient.prototype.unlock =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.auth.v1.TokenForm,
+ *   !proto.palm.nut.v1.auth.TokenForm,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_User_UnlockByToken = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.User/UnlockByToken',
+  '/palm.nut.v1.auth.User/UnlockByToken',
   grpc.web.MethodType.UNARY,
-  proto.palm.auth.v1.TokenForm,
+  proto.palm.nut.v1.auth.TokenForm,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.auth.v1.TokenForm} request
+   * @param {!proto.palm.nut.v1.auth.TokenForm} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -406,7 +407,7 @@ const methodDescriptor_User_UnlockByToken = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.auth.v1.TokenForm} request The
+ * @param {!proto.palm.nut.v1.auth.TokenForm} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -415,10 +416,10 @@ const methodDescriptor_User_UnlockByToken = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.UserClient.prototype.unlockByToken =
+proto.palm.nut.v1.auth.UserClient.prototype.unlockByToken =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.User/UnlockByToken',
+      '/palm.nut.v1.auth.User/UnlockByToken',
       request,
       metadata || {},
       methodDescriptor_User_UnlockByToken,
@@ -427,17 +428,17 @@ proto.palm.auth.v1.UserClient.prototype.unlockByToken =
 
 
 /**
- * @param {!proto.palm.auth.v1.TokenForm} request The
+ * @param {!proto.palm.nut.v1.auth.TokenForm} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.UserPromiseClient.prototype.unlockByToken =
+proto.palm.nut.v1.auth.UserPromiseClient.prototype.unlockByToken =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.User/UnlockByToken',
+      '/palm.nut.v1.auth.User/UnlockByToken',
       request,
       metadata || {},
       methodDescriptor_User_UnlockByToken);
@@ -447,16 +448,16 @@ proto.palm.auth.v1.UserPromiseClient.prototype.unlockByToken =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.auth.v1.UserQuery,
+ *   !proto.palm.nut.v1.auth.UserQuery,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_User_ForgotPassword = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.User/ForgotPassword',
+  '/palm.nut.v1.auth.User/ForgotPassword',
   grpc.web.MethodType.UNARY,
-  proto.palm.auth.v1.UserQuery,
+  proto.palm.nut.v1.auth.UserQuery,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.auth.v1.UserQuery} request
+   * @param {!proto.palm.nut.v1.auth.UserQuery} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -467,7 +468,7 @@ const methodDescriptor_User_ForgotPassword = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.auth.v1.UserQuery} request The
+ * @param {!proto.palm.nut.v1.auth.UserQuery} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -476,10 +477,10 @@ const methodDescriptor_User_ForgotPassword = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.UserClient.prototype.forgotPassword =
+proto.palm.nut.v1.auth.UserClient.prototype.forgotPassword =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.User/ForgotPassword',
+      '/palm.nut.v1.auth.User/ForgotPassword',
       request,
       metadata || {},
       methodDescriptor_User_ForgotPassword,
@@ -488,17 +489,17 @@ proto.palm.auth.v1.UserClient.prototype.forgotPassword =
 
 
 /**
- * @param {!proto.palm.auth.v1.UserQuery} request The
+ * @param {!proto.palm.nut.v1.auth.UserQuery} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.UserPromiseClient.prototype.forgotPassword =
+proto.palm.nut.v1.auth.UserPromiseClient.prototype.forgotPassword =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.User/ForgotPassword',
+      '/palm.nut.v1.auth.User/ForgotPassword',
       request,
       metadata || {},
       methodDescriptor_User_ForgotPassword);
@@ -508,16 +509,16 @@ proto.palm.auth.v1.UserPromiseClient.prototype.forgotPassword =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.auth.v1.ResetPasswordRequest,
+ *   !proto.palm.nut.v1.auth.ResetPasswordRequest,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_User_ResetPassword = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.User/ResetPassword',
+  '/palm.nut.v1.auth.User/ResetPassword',
   grpc.web.MethodType.UNARY,
-  proto.palm.auth.v1.ResetPasswordRequest,
+  proto.palm.nut.v1.auth.ResetPasswordRequest,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.auth.v1.ResetPasswordRequest} request
+   * @param {!proto.palm.nut.v1.auth.ResetPasswordRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -528,7 +529,7 @@ const methodDescriptor_User_ResetPassword = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.auth.v1.ResetPasswordRequest} request The
+ * @param {!proto.palm.nut.v1.auth.ResetPasswordRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -537,10 +538,10 @@ const methodDescriptor_User_ResetPassword = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.UserClient.prototype.resetPassword =
+proto.palm.nut.v1.auth.UserClient.prototype.resetPassword =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.User/ResetPassword',
+      '/palm.nut.v1.auth.User/ResetPassword',
       request,
       metadata || {},
       methodDescriptor_User_ResetPassword,
@@ -549,17 +550,17 @@ proto.palm.auth.v1.UserClient.prototype.resetPassword =
 
 
 /**
- * @param {!proto.palm.auth.v1.ResetPasswordRequest} request The
+ * @param {!proto.palm.nut.v1.auth.ResetPasswordRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.UserPromiseClient.prototype.resetPassword =
+proto.palm.nut.v1.auth.UserPromiseClient.prototype.resetPassword =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.User/ResetPassword',
+      '/palm.nut.v1.auth.User/ResetPassword',
       request,
       metadata || {},
       methodDescriptor_User_ResetPassword);
@@ -569,16 +570,16 @@ proto.palm.auth.v1.UserPromiseClient.prototype.resetPassword =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.auth.v1.ChangePasswordRequest,
+ *   !proto.palm.nut.v1.auth.ChangePasswordRequest,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_User_ChangePassword = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.User/ChangePassword',
+  '/palm.nut.v1.auth.User/ChangePassword',
   grpc.web.MethodType.UNARY,
-  proto.palm.auth.v1.ChangePasswordRequest,
+  proto.palm.nut.v1.auth.ChangePasswordRequest,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.auth.v1.ChangePasswordRequest} request
+   * @param {!proto.palm.nut.v1.auth.ChangePasswordRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -589,7 +590,7 @@ const methodDescriptor_User_ChangePassword = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.auth.v1.ChangePasswordRequest} request The
+ * @param {!proto.palm.nut.v1.auth.ChangePasswordRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -598,10 +599,10 @@ const methodDescriptor_User_ChangePassword = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.UserClient.prototype.changePassword =
+proto.palm.nut.v1.auth.UserClient.prototype.changePassword =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.User/ChangePassword',
+      '/palm.nut.v1.auth.User/ChangePassword',
       request,
       metadata || {},
       methodDescriptor_User_ChangePassword,
@@ -610,17 +611,17 @@ proto.palm.auth.v1.UserClient.prototype.changePassword =
 
 
 /**
- * @param {!proto.palm.auth.v1.ChangePasswordRequest} request The
+ * @param {!proto.palm.nut.v1.auth.ChangePasswordRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.UserPromiseClient.prototype.changePassword =
+proto.palm.nut.v1.auth.UserPromiseClient.prototype.changePassword =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.User/ChangePassword',
+      '/palm.nut.v1.auth.User/ChangePassword',
       request,
       metadata || {},
       methodDescriptor_User_ChangePassword);
@@ -630,16 +631,16 @@ proto.palm.auth.v1.UserPromiseClient.prototype.changePassword =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.auth.v1.ProfileRequest,
+ *   !proto.palm.nut.v1.auth.ProfileRequest,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_User_SetProfile = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.User/SetProfile',
+  '/palm.nut.v1.auth.User/SetProfile',
   grpc.web.MethodType.UNARY,
-  proto.palm.auth.v1.ProfileRequest,
+  proto.palm.nut.v1.auth.ProfileRequest,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.auth.v1.ProfileRequest} request
+   * @param {!proto.palm.nut.v1.auth.ProfileRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -650,7 +651,7 @@ const methodDescriptor_User_SetProfile = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.auth.v1.ProfileRequest} request The
+ * @param {!proto.palm.nut.v1.auth.ProfileRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -659,10 +660,10 @@ const methodDescriptor_User_SetProfile = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.UserClient.prototype.setProfile =
+proto.palm.nut.v1.auth.UserClient.prototype.setProfile =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.User/SetProfile',
+      '/palm.nut.v1.auth.User/SetProfile',
       request,
       metadata || {},
       methodDescriptor_User_SetProfile,
@@ -671,17 +672,17 @@ proto.palm.auth.v1.UserClient.prototype.setProfile =
 
 
 /**
- * @param {!proto.palm.auth.v1.ProfileRequest} request The
+ * @param {!proto.palm.nut.v1.auth.ProfileRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.UserPromiseClient.prototype.setProfile =
+proto.palm.nut.v1.auth.UserPromiseClient.prototype.setProfile =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.User/SetProfile',
+      '/palm.nut.v1.auth.User/SetProfile',
       request,
       metadata || {},
       methodDescriptor_User_SetProfile);
@@ -695,7 +696,7 @@ proto.palm.auth.v1.UserPromiseClient.prototype.setProfile =
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_User_SignOut = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.User/SignOut',
+  '/palm.nut.v1.auth.User/SignOut',
   grpc.web.MethodType.UNARY,
   google_protobuf_empty_pb.Empty,
   google_protobuf_empty_pb.Empty,
@@ -720,10 +721,10 @@ const methodDescriptor_User_SignOut = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.UserClient.prototype.signOut =
+proto.palm.nut.v1.auth.UserClient.prototype.signOut =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.User/SignOut',
+      '/palm.nut.v1.auth.User/SignOut',
       request,
       metadata || {},
       methodDescriptor_User_SignOut,
@@ -739,10 +740,10 @@ proto.palm.auth.v1.UserClient.prototype.signOut =
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.UserPromiseClient.prototype.signOut =
+proto.palm.nut.v1.auth.UserPromiseClient.prototype.signOut =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.User/SignOut',
+      '/palm.nut.v1.auth.User/SignOut',
       request,
       metadata || {},
       methodDescriptor_User_SignOut);
@@ -753,13 +754,13 @@ proto.palm.auth.v1.UserPromiseClient.prototype.signOut =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.google.protobuf.Empty,
- *   !proto.palm.auth.v1.SelfResponse>}
+ *   !proto.palm.nut.v1.auth.SelfResponse>}
  */
 const methodDescriptor_User_Self = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.User/Self',
+  '/palm.nut.v1.auth.User/Self',
   grpc.web.MethodType.UNARY,
   google_protobuf_empty_pb.Empty,
-  proto.palm.auth.v1.SelfResponse,
+  proto.palm.nut.v1.auth.SelfResponse,
   /**
    * @param {!proto.google.protobuf.Empty} request
    * @return {!Uint8Array}
@@ -767,7 +768,7 @@ const methodDescriptor_User_Self = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  proto.palm.auth.v1.SelfResponse.deserializeBinary
+  proto.palm.nut.v1.auth.SelfResponse.deserializeBinary
 );
 
 
@@ -776,15 +777,15 @@ const methodDescriptor_User_Self = new grpc.web.MethodDescriptor(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.palm.auth.v1.SelfResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.palm.nut.v1.auth.SelfResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.palm.auth.v1.SelfResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.palm.nut.v1.auth.SelfResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.UserClient.prototype.self =
+proto.palm.nut.v1.auth.UserClient.prototype.self =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.User/Self',
+      '/palm.nut.v1.auth.User/Self',
       request,
       metadata || {},
       methodDescriptor_User_Self,
@@ -797,13 +798,13 @@ proto.palm.auth.v1.UserClient.prototype.self =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.palm.auth.v1.SelfResponse>}
+ * @return {!Promise<!proto.palm.nut.v1.auth.SelfResponse>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.UserPromiseClient.prototype.self =
+proto.palm.nut.v1.auth.UserPromiseClient.prototype.self =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.User/Self',
+      '/palm.nut.v1.auth.User/Self',
       request,
       metadata || {},
       methodDescriptor_User_Self);
@@ -814,13 +815,13 @@ proto.palm.auth.v1.UserPromiseClient.prototype.self =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.google.protobuf.Duration,
- *   !proto.palm.auth.v1.LogList>}
+ *   !proto.palm.nut.v1.auth.LogList>}
  */
 const methodDescriptor_User_Log = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.User/Log',
+  '/palm.nut.v1.auth.User/Log',
   grpc.web.MethodType.UNARY,
   google_protobuf_duration_pb.Duration,
-  proto.palm.auth.v1.LogList,
+  proto.palm.nut.v1.auth.LogList,
   /**
    * @param {!proto.google.protobuf.Duration} request
    * @return {!Uint8Array}
@@ -828,7 +829,7 @@ const methodDescriptor_User_Log = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  proto.palm.auth.v1.LogList.deserializeBinary
+  proto.palm.nut.v1.auth.LogList.deserializeBinary
 );
 
 
@@ -837,15 +838,15 @@ const methodDescriptor_User_Log = new grpc.web.MethodDescriptor(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.palm.auth.v1.LogList)}
+ * @param {function(?grpc.web.RpcError, ?proto.palm.nut.v1.auth.LogList)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.palm.auth.v1.LogList>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.palm.nut.v1.auth.LogList>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.UserClient.prototype.log =
+proto.palm.nut.v1.auth.UserClient.prototype.log =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.User/Log',
+      '/palm.nut.v1.auth.User/Log',
       request,
       metadata || {},
       methodDescriptor_User_Log,
@@ -858,13 +859,13 @@ proto.palm.auth.v1.UserClient.prototype.log =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.palm.auth.v1.LogList>}
+ * @return {!Promise<!proto.palm.nut.v1.auth.LogList>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.UserPromiseClient.prototype.log =
+proto.palm.nut.v1.auth.UserPromiseClient.prototype.log =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.User/Log',
+      '/palm.nut.v1.auth.User/Log',
       request,
       metadata || {},
       methodDescriptor_User_Log);
@@ -875,13 +876,13 @@ proto.palm.auth.v1.UserPromiseClient.prototype.log =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.google.protobuf.Duration,
- *   !proto.palm.auth.v1.UserList>}
+ *   !proto.palm.nut.v1.auth.UserList>}
  */
 const methodDescriptor_User_Index = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.User/Index',
+  '/palm.nut.v1.auth.User/Index',
   grpc.web.MethodType.UNARY,
   google_protobuf_duration_pb.Duration,
-  proto.palm.auth.v1.UserList,
+  proto.palm.nut.v1.auth.UserList,
   /**
    * @param {!proto.google.protobuf.Duration} request
    * @return {!Uint8Array}
@@ -889,7 +890,7 @@ const methodDescriptor_User_Index = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  proto.palm.auth.v1.UserList.deserializeBinary
+  proto.palm.nut.v1.auth.UserList.deserializeBinary
 );
 
 
@@ -898,15 +899,15 @@ const methodDescriptor_User_Index = new grpc.web.MethodDescriptor(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.palm.auth.v1.UserList)}
+ * @param {function(?grpc.web.RpcError, ?proto.palm.nut.v1.auth.UserList)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.palm.auth.v1.UserList>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.palm.nut.v1.auth.UserList>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.UserClient.prototype.index =
+proto.palm.nut.v1.auth.UserClient.prototype.index =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.User/Index',
+      '/palm.nut.v1.auth.User/Index',
       request,
       metadata || {},
       methodDescriptor_User_Index,
@@ -919,13 +920,13 @@ proto.palm.auth.v1.UserClient.prototype.index =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.palm.auth.v1.UserList>}
+ * @return {!Promise<!proto.palm.nut.v1.auth.UserList>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.UserPromiseClient.prototype.index =
+proto.palm.nut.v1.auth.UserPromiseClient.prototype.index =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.User/Index',
+      '/palm.nut.v1.auth.User/Index',
       request,
       metadata || {},
       methodDescriptor_User_Index);
@@ -935,39 +936,39 @@ proto.palm.auth.v1.UserPromiseClient.prototype.index =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.auth.v1.UserQuery,
- *   !proto.palm.auth.v1.UserList.Item>}
+ *   !proto.palm.nut.v1.auth.UserQuery,
+ *   !proto.palm.nut.v1.auth.UserList.Item>}
  */
 const methodDescriptor_User_Show = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.User/Show',
+  '/palm.nut.v1.auth.User/Show',
   grpc.web.MethodType.UNARY,
-  proto.palm.auth.v1.UserQuery,
-  proto.palm.auth.v1.UserList.Item,
+  proto.palm.nut.v1.auth.UserQuery,
+  proto.palm.nut.v1.auth.UserList.Item,
   /**
-   * @param {!proto.palm.auth.v1.UserQuery} request
+   * @param {!proto.palm.nut.v1.auth.UserQuery} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.palm.auth.v1.UserList.Item.deserializeBinary
+  proto.palm.nut.v1.auth.UserList.Item.deserializeBinary
 );
 
 
 /**
- * @param {!proto.palm.auth.v1.UserQuery} request The
+ * @param {!proto.palm.nut.v1.auth.UserQuery} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.palm.auth.v1.UserList.Item)}
+ * @param {function(?grpc.web.RpcError, ?proto.palm.nut.v1.auth.UserList.Item)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.palm.auth.v1.UserList.Item>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.palm.nut.v1.auth.UserList.Item>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.UserClient.prototype.show =
+proto.palm.nut.v1.auth.UserClient.prototype.show =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.User/Show',
+      '/palm.nut.v1.auth.User/Show',
       request,
       metadata || {},
       methodDescriptor_User_Show,
@@ -976,17 +977,17 @@ proto.palm.auth.v1.UserClient.prototype.show =
 
 
 /**
- * @param {!proto.palm.auth.v1.UserQuery} request The
+ * @param {!proto.palm.nut.v1.auth.UserQuery} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.palm.auth.v1.UserList.Item>}
+ * @return {!Promise<!proto.palm.nut.v1.auth.UserList.Item>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.UserPromiseClient.prototype.show =
+proto.palm.nut.v1.auth.UserPromiseClient.prototype.show =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.User/Show',
+      '/palm.nut.v1.auth.User/Show',
       request,
       metadata || {},
       methodDescriptor_User_Show);
@@ -996,16 +997,16 @@ proto.palm.auth.v1.UserPromiseClient.prototype.show =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.auth.v1.UserQuery,
+ *   !proto.palm.nut.v1.auth.UserQuery,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_User_Lock = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.User/Lock',
+  '/palm.nut.v1.auth.User/Lock',
   grpc.web.MethodType.UNARY,
-  proto.palm.auth.v1.UserQuery,
+  proto.palm.nut.v1.auth.UserQuery,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.auth.v1.UserQuery} request
+   * @param {!proto.palm.nut.v1.auth.UserQuery} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -1016,7 +1017,7 @@ const methodDescriptor_User_Lock = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.auth.v1.UserQuery} request The
+ * @param {!proto.palm.nut.v1.auth.UserQuery} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -1025,10 +1026,10 @@ const methodDescriptor_User_Lock = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.UserClient.prototype.lock =
+proto.palm.nut.v1.auth.UserClient.prototype.lock =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.User/Lock',
+      '/palm.nut.v1.auth.User/Lock',
       request,
       metadata || {},
       methodDescriptor_User_Lock,
@@ -1037,17 +1038,17 @@ proto.palm.auth.v1.UserClient.prototype.lock =
 
 
 /**
- * @param {!proto.palm.auth.v1.UserQuery} request The
+ * @param {!proto.palm.nut.v1.auth.UserQuery} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.UserPromiseClient.prototype.lock =
+proto.palm.nut.v1.auth.UserPromiseClient.prototype.lock =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.User/Lock',
+      '/palm.nut.v1.auth.User/Lock',
       request,
       metadata || {},
       methodDescriptor_User_Lock);
@@ -1062,7 +1063,7 @@ proto.palm.auth.v1.UserPromiseClient.prototype.lock =
  * @struct
  * @final
  */
-proto.palm.auth.v1.AttachmentClient =
+proto.palm.nut.v1.auth.AttachmentClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -1088,7 +1089,7 @@ proto.palm.auth.v1.AttachmentClient =
  * @struct
  * @final
  */
-proto.palm.auth.v1.AttachmentPromiseClient =
+proto.palm.nut.v1.auth.AttachmentPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -1110,13 +1111,13 @@ proto.palm.auth.v1.AttachmentPromiseClient =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.google.protobuf.Duration,
- *   !proto.palm.auth.v1.AttachmentList>}
+ *   !proto.palm.nut.v1.auth.AttachmentList>}
  */
 const methodDescriptor_Attachment_All = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.Attachment/All',
+  '/palm.nut.v1.auth.Attachment/All',
   grpc.web.MethodType.UNARY,
   google_protobuf_duration_pb.Duration,
-  proto.palm.auth.v1.AttachmentList,
+  proto.palm.nut.v1.auth.AttachmentList,
   /**
    * @param {!proto.google.protobuf.Duration} request
    * @return {!Uint8Array}
@@ -1124,7 +1125,7 @@ const methodDescriptor_Attachment_All = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  proto.palm.auth.v1.AttachmentList.deserializeBinary
+  proto.palm.nut.v1.auth.AttachmentList.deserializeBinary
 );
 
 
@@ -1133,15 +1134,15 @@ const methodDescriptor_Attachment_All = new grpc.web.MethodDescriptor(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.palm.auth.v1.AttachmentList)}
+ * @param {function(?grpc.web.RpcError, ?proto.palm.nut.v1.auth.AttachmentList)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.palm.auth.v1.AttachmentList>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.palm.nut.v1.auth.AttachmentList>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.AttachmentClient.prototype.all =
+proto.palm.nut.v1.auth.AttachmentClient.prototype.all =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.Attachment/All',
+      '/palm.nut.v1.auth.Attachment/All',
       request,
       metadata || {},
       methodDescriptor_Attachment_All,
@@ -1154,13 +1155,13 @@ proto.palm.auth.v1.AttachmentClient.prototype.all =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.palm.auth.v1.AttachmentList>}
+ * @return {!Promise<!proto.palm.nut.v1.auth.AttachmentList>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.AttachmentPromiseClient.prototype.all =
+proto.palm.nut.v1.auth.AttachmentPromiseClient.prototype.all =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.Attachment/All',
+      '/palm.nut.v1.auth.Attachment/All',
       request,
       metadata || {},
       methodDescriptor_Attachment_All);
@@ -1170,39 +1171,39 @@ proto.palm.auth.v1.AttachmentPromiseClient.prototype.all =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.auth.v1.AttachmentQuery,
- *   !proto.palm.auth.v1.AttachmentList.Item>}
+ *   !proto.palm.nut.v1.auth.AttachmentQuery,
+ *   !proto.palm.nut.v1.auth.AttachmentList.Item>}
  */
 const methodDescriptor_Attachment_Show = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.Attachment/Show',
+  '/palm.nut.v1.auth.Attachment/Show',
   grpc.web.MethodType.UNARY,
-  proto.palm.auth.v1.AttachmentQuery,
-  proto.palm.auth.v1.AttachmentList.Item,
+  proto.palm.nut.v1.auth.AttachmentQuery,
+  proto.palm.nut.v1.auth.AttachmentList.Item,
   /**
-   * @param {!proto.palm.auth.v1.AttachmentQuery} request
+   * @param {!proto.palm.nut.v1.auth.AttachmentQuery} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.palm.auth.v1.AttachmentList.Item.deserializeBinary
+  proto.palm.nut.v1.auth.AttachmentList.Item.deserializeBinary
 );
 
 
 /**
- * @param {!proto.palm.auth.v1.AttachmentQuery} request The
+ * @param {!proto.palm.nut.v1.auth.AttachmentQuery} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.palm.auth.v1.AttachmentList.Item)}
+ * @param {function(?grpc.web.RpcError, ?proto.palm.nut.v1.auth.AttachmentList.Item)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.palm.auth.v1.AttachmentList.Item>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.palm.nut.v1.auth.AttachmentList.Item>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.AttachmentClient.prototype.show =
+proto.palm.nut.v1.auth.AttachmentClient.prototype.show =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.Attachment/Show',
+      '/palm.nut.v1.auth.Attachment/Show',
       request,
       metadata || {},
       methodDescriptor_Attachment_Show,
@@ -1211,17 +1212,17 @@ proto.palm.auth.v1.AttachmentClient.prototype.show =
 
 
 /**
- * @param {!proto.palm.auth.v1.AttachmentQuery} request The
+ * @param {!proto.palm.nut.v1.auth.AttachmentQuery} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.palm.auth.v1.AttachmentList.Item>}
+ * @return {!Promise<!proto.palm.nut.v1.auth.AttachmentList.Item>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.AttachmentPromiseClient.prototype.show =
+proto.palm.nut.v1.auth.AttachmentPromiseClient.prototype.show =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.Attachment/Show',
+      '/palm.nut.v1.auth.Attachment/Show',
       request,
       metadata || {},
       methodDescriptor_Attachment_Show);
@@ -1231,16 +1232,16 @@ proto.palm.auth.v1.AttachmentPromiseClient.prototype.show =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.auth.v1.AttachmentUploadRequest,
+ *   !proto.palm.nut.v1.auth.AttachmentUploadRequest,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Attachment_Upload = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.Attachment/Upload',
+  '/palm.nut.v1.auth.Attachment/Upload',
   grpc.web.MethodType.UNARY,
-  proto.palm.auth.v1.AttachmentUploadRequest,
+  proto.palm.nut.v1.auth.AttachmentUploadRequest,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.auth.v1.AttachmentUploadRequest} request
+   * @param {!proto.palm.nut.v1.auth.AttachmentUploadRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -1251,7 +1252,7 @@ const methodDescriptor_Attachment_Upload = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.auth.v1.AttachmentUploadRequest} request The
+ * @param {!proto.palm.nut.v1.auth.AttachmentUploadRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -1260,10 +1261,10 @@ const methodDescriptor_Attachment_Upload = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.AttachmentClient.prototype.upload =
+proto.palm.nut.v1.auth.AttachmentClient.prototype.upload =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.Attachment/Upload',
+      '/palm.nut.v1.auth.Attachment/Upload',
       request,
       metadata || {},
       methodDescriptor_Attachment_Upload,
@@ -1272,17 +1273,17 @@ proto.palm.auth.v1.AttachmentClient.prototype.upload =
 
 
 /**
- * @param {!proto.palm.auth.v1.AttachmentUploadRequest} request The
+ * @param {!proto.palm.nut.v1.auth.AttachmentUploadRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.AttachmentPromiseClient.prototype.upload =
+proto.palm.nut.v1.auth.AttachmentPromiseClient.prototype.upload =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.Attachment/Upload',
+      '/palm.nut.v1.auth.Attachment/Upload',
       request,
       metadata || {},
       methodDescriptor_Attachment_Upload);
@@ -1292,16 +1293,16 @@ proto.palm.auth.v1.AttachmentPromiseClient.prototype.upload =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.palm.auth.v1.AttachmentQuery,
+ *   !proto.palm.nut.v1.auth.AttachmentQuery,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Attachment_Destory = new grpc.web.MethodDescriptor(
-  '/palm.auth.v1.Attachment/Destory',
+  '/palm.nut.v1.auth.Attachment/Destory',
   grpc.web.MethodType.UNARY,
-  proto.palm.auth.v1.AttachmentQuery,
+  proto.palm.nut.v1.auth.AttachmentQuery,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.palm.auth.v1.AttachmentQuery} request
+   * @param {!proto.palm.nut.v1.auth.AttachmentQuery} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -1312,7 +1313,7 @@ const methodDescriptor_Attachment_Destory = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.palm.auth.v1.AttachmentQuery} request The
+ * @param {!proto.palm.nut.v1.auth.AttachmentQuery} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -1321,10 +1322,10 @@ const methodDescriptor_Attachment_Destory = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.palm.auth.v1.AttachmentClient.prototype.destory =
+proto.palm.nut.v1.auth.AttachmentClient.prototype.destory =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/palm.auth.v1.Attachment/Destory',
+      '/palm.nut.v1.auth.Attachment/Destory',
       request,
       metadata || {},
       methodDescriptor_Attachment_Destory,
@@ -1333,22 +1334,22 @@ proto.palm.auth.v1.AttachmentClient.prototype.destory =
 
 
 /**
- * @param {!proto.palm.auth.v1.AttachmentQuery} request The
+ * @param {!proto.palm.nut.v1.auth.AttachmentQuery} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.palm.auth.v1.AttachmentPromiseClient.prototype.destory =
+proto.palm.nut.v1.auth.AttachmentPromiseClient.prototype.destory =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/palm.auth.v1.Attachment/Destory',
+      '/palm.nut.v1.auth.Attachment/Destory',
       request,
       metadata || {},
       methodDescriptor_Attachment_Destory);
 };
 
 
-module.exports = proto.palm.auth.v1;
+module.exports = proto.palm.nut.v1.auth;
 
