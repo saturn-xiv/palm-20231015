@@ -124,7 +124,7 @@ features = ["serde"]
 
 [dependencies.openssl]
 version = "*"
-features = ["vendored"]
+# features = ["vendored"]
 
 [build-dependencies]
 tonic-build = "0.6"

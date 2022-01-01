@@ -9,7 +9,7 @@ export TARGET=$WORKSPACE/tmp/$GIT_VERSION
 build_ubuntu_backend() {
     echo "build $1..."
 
-    sudo apt -y install libc6-dev:$1 libudev-dev:$1 \
+    sudo apt -y install libc6-dev:$1 libudev-dev:$1 libssl-dev:$1 \
         libpq5:$1 libpq-dev:$1 libmysqlclient-dev:$1 libsqlite3-dev:$1
 
     local root=$2/usr/bin
@@ -17,16 +17,23 @@ build_ubuntu_backend() {
     cd $WORKSPACE
     if [ "$1" = "amd64" ]
     then
+        CC=gcc
+        CXX=g++
+        export CC CXX
+        
         local target="x86_64-unknown-linux-gnu"
         cargo build --target $target --release
         cp target/$target/release/palm $root
         strip -s $root/palm
     elif [ "$1" = "armhf" ]
     then
-        # PKG_CONFIG_ALLOW_CROSS=1
-        # PKG_CONFIG_DIR=
-        # PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig
-        # export PKG_CONFIG_ALLOW_CROSS PKG_CONFIG_DIR PKG_CONFIG_LIBDIR
+        PKG_CONFIG_ALLOW_CROSS=1
+        PKG_CONFIG_DIR=
+        PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig
+        export PKG_CONFIG_ALLOW_CROSS PKG_CONFIG_DIR PKG_CONFIG_LIBDIR
+        CC=arm-linux-gnueabihf-gcc 
+        CXX=arm-linux-gnueabihf-g++
+        export CC CXX 
 
         local target="armv7-unknown-linux-gnueabihf"
         cargo build --target $target --release
@@ -34,10 +41,13 @@ build_ubuntu_backend() {
         arm-linux-gnueabihf-strip -s $root/palm
     elif [ "$1" = "arm64" ]
     then
-        # PKG_CONFIG_ALLOW_CROSS=1
-        # PKG_CONFIG_DIR=
-        # PKG_CONFIG_LIBDIR=/usr/lib/aarch64-linux-gnu/pkgconfig
-        # export PKG_CONFIG_ALLOW_CROSS PKG_CONFIG_DIR PKG_CONFIG_LIBDIR
+        PKG_CONFIG_ALLOW_CROSS=1
+        PKG_CONFIG_DIR=
+        PKG_CONFIG_LIBDIR=/usr/lib/aarch64-linux-gnu/pkgconfig
+        export PKG_CONFIG_ALLOW_CROSS PKG_CONFIG_DIR PKG_CONFIG_LIBDIR
+        CC=aarch64-linux-gnu-gcc 
+        CXX=aarch64-linux-gnu-g++ 
+        export CC CXX
 
         local target="aarch64-unknown-linux-gnu"
         cargo build --target $target --release
@@ -65,7 +75,7 @@ build_dashboard(){
 }
 
 build_deb(){
-    local target=$TARGET/$1/target
+    local target=$TARGET/$1-target
     if [ -d $target ]
     then
         rm -rf $(dirname $target)
@@ -105,26 +115,6 @@ build_deb(){
     cp -r $WORKSPACE/LICENSE $WORKSPACE/README.md $WORKSPACE/package.json $target/etc/palm/
     echo "$GIT_VERSION $(date -R)" > $target/etc/palm/VERSION
 
-    if [ "$1" = "armhf" ]
-    then
-        CC=arm-linux-gnueabihf-gcc
-        CXX=arm-linux-gnueabihf-g++
-        export CC CXX
-    elif [ "$1" = "arm64" ]
-    then
-        CC=aarch64-linux-gnu-gcc
-        CXX=aarch64-linux-gnu-g++
-        export CC CXX
-    elif [ "$1" = "amd64" ]
-    then
-        CC=gcc
-        CXX=g++
-        export CC CXX
-    else
-        echo "unknown arch $1"
-        return 1
-    fi
-    
     cd $target
     dpkg-buildpackage -us -uc -b --host-arch $1
 }
