@@ -22,7 +22,7 @@ RUN cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
 RUN echo 'source $HOME/.profile' >> $HOME/.zshrc
 
 RUN git config --global core.quotepath false
-RUN echo 'set-option -g history-limit 10240' > $HOME/.tmux.conf
+RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf
 
 # https://www.rust-lang.org/tools/install
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y

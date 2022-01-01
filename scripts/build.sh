@@ -81,6 +81,8 @@ build_deb(){
         "bulma/css"
         "marked/marked.min.js"
         "material-design-icons/iconfont"
+        "d3/dist"
+        "@fontsource/roboto"
         "moment/dist"
         "moment-timezone/builds/moment-timezone-with-data.min.js"
         "@popperjs/core/dist"
@@ -132,17 +134,15 @@ build_deb(){
 export OS_NAME=$(lsb_release -is)
 export OS_CODE=$(lsb_release -cs)
 
+build_dashboard
+
 if [[ $OS_NAME == "Ubuntu" ]]
-then
-    build_dashboard
-    
+then    
     build_deb amd64
     build_deb arm64
     build_deb armhf
-    
 elif [[ $OS_NAME == "Arch" ]]
 then
-    build_dashboard
     cargo build --release
 else
     echo "Unknowk os $OS_NAME"

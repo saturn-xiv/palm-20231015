@@ -7,8 +7,6 @@ RUN apt update
 RUN apt -y upgrade
 RUN apt -y install debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
 
-# https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
-RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test -y
 # https://wiki.ubuntu.com/ToolChain
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
@@ -55,7 +53,7 @@ RUN echo 'export LANG=en_US.UTF-8' >> $HOME/.profile
 RUN echo 'export LC_ALL=en_US.UTF-8' >> $HOME/.profile
 
 RUN git config --global core.quotepath false
-RUN echo 'set-option -g history-limit 10240' > $HOME/.tmux.conf
+RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf
 
 # https://pip.pypa.io/en/stable/installation/#get-pip-py
 RUN curl -o- https://bootstrap.pypa.io/get-pip.py | python3
@@ -67,7 +65,7 @@ RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.profile
 RUN echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.profile
 
 # https://github.com/nvm-sh/nvm
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | sh
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | sh
 RUN sh -c ". $HOME/.profile \
     && nvm install node"
 RUN sh -c ". $HOME/.profile \
@@ -78,8 +76,7 @@ RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 # https://doc.rust-lang.org/nightly/rustc/platform-support.html
 RUN zsh -c "source $HOME/.cargo/env \
-    && rustup target add armv7-unknown-linux-gnueabihf"
-RUN zsh -c "source $HOME/.cargo/env \
+    && rustup target add armv7-unknown-linux-gnueabihf \
     && rustup target add aarch64-unknown-linux-gnu"
 RUN sudo apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
 RUN zsh -c "source $HOME/.zshrc \
@@ -87,15 +84,16 @@ RUN zsh -c "source $HOME/.zshrc \
     && cargo install --locked cargo-outdated"
 
 # https://sdkman.io/install
+ENV JDK_VERSION "17.0.1-open"
 RUN curl -s "https://get.sdkman.io" | zsh
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
-    && sdk install java 17.0.1-open \
+    && sdk install java ${JDK_VERSION} \
     && sdk install maven \
     && sdk install gradle"
 
 # https://grpc.io/docs/languages/cpp/quickstart/
-ENV GRPC_VERSION "v1.42.0"
+ENV GRPC_VERSION "v1.43.0"
 RUN zsh -c "source $HOME/.zshrc \
     && git clone --recurse-submodules -b ${GRPC_VERSION} https://github.com/grpc/grpc.git $HOME/downloads/grpc"
 RUN mkdir -pv $HOME/build/grpc-amd64
