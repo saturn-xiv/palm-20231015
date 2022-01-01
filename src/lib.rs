@@ -9,3 +9,8 @@ extern crate lazy_static;
 
 #[macro_use]
 pub mod macros;
+
+pub mod i18n;
+pub mod orm;
+pub mod plugins;
+pub mod settings;

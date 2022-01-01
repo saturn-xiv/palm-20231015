@@ -3,7 +3,7 @@
         "ms-vscode.cpptools-extension-pack",
         "ms-python.python",
         "golang.go",
-        "rust-lang.rust",
+        // "rust-lang.rust",
         "matklad.rust-analyzer",
         "redhat.ansible",
         "redhat.vscode-yaml",

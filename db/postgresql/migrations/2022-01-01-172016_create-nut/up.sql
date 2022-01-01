@@ -6,6 +6,9 @@ CREATE TABLE users(
     "password" BYTEA,
     salt BYTEA NOT NULL,
     uid VARCHAR(36) NOT NULL,
+    provider_type VARCHAR(16) NOT NULL,
+    provider_id VARCHAR(255) NOT NULL,
+    access_token VARCHAR(255),
     logo VARCHAR(255) NOT NULL,
     lang VARCHAR(16) NOT NULL DEFAULT 'en-US',
     time_zone VARCHAR(32) NOT NULL DEFAULT 'UTC',
@@ -206,3 +209,31 @@ CREATE TABLE tags(
 CREATE UNIQUE INDEX idx_tags_code ON tags(code);
 
 CREATE INDEX idx_tags_name ON tags(name);
+
+CREATE TABLE votes(
+    id BIGSERIAL PRIMARY KEY,
+    resource_type VARCHAR(255) NOT NULL,
+    resource_id VARCHAR(255) NOT NULL,
+    "point" BIGINT NOT NULL DEFAULT 0,
+    version BIGINT NOT NULL DEFAULT 0,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
+);
+
+CREATE UNIQUE INDEX idx_votes ON votes(resource_type, resource_id);
+
+CREATE INDEX idx_votes_resource_type ON votes(resource_type);
+
+CREATE TABLE view_counters(
+    id BIGSERIAL PRIMARY KEY,
+    resource_type VARCHAR(255) NOT NULL,
+    resource_id VARCHAR(255) NOT NULL,
+    "point" BIGINT NOT NULL DEFAULT 0,
+    version BIGINT NOT NULL DEFAULT 0,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
+);
+
+CREATE UNIQUE INDEX idx_view_counters ON view_counters(resource_type, resource_id);
+
+CREATE INDEX idx_view_counters_resource_type ON view_counters(resource_type);

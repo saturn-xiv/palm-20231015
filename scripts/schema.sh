@@ -11,12 +11,13 @@ function generate_diesel_postgresql() {
     local DATABASE_URL=postgres://postgres@127.0.0.1:5432/demo
     local MIGRATION_DIRECTORY=db/postgresql/migrations
 
-    diesel print-schema -o schema_migrations > nut/src/orm/$k/schema.rs
-    diesel print-schema -o settings > nut/src/settings/$k/schema.rs
-    diesel print-schema -o locales > nut/src/i18n/$k/schema.rs
-    diesel print-schema -o categories tags topics tags_topics posts \
-        notifications attachments votes view_counters \
-        logs users groups_users groups roles_users roles_groups roles_relations roles operations resources policies > nut/src/models/$k/schema.rs
+    diesel print-schema -o settings > src/settings/schema.rs
+    diesel print-schema -o locales > src/i18n/schema.rs
+    diesel print-schema -o users logs groups groups_users \
+        roles roles_relations roles_users roles_groups operations resources policies \
+        attachments tags notifications votes view_counters > src/plugins/nut/schema.rs
+    diesel print-schema -o forum_* > src/plugins/forum/schema.rs
+    diesel print-schema -o erp_* > src/plugins/erp/schema.rs
 }
 
 function generate_grpc() {

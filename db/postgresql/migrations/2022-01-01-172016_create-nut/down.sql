@@ -1,3 +1,7 @@
+DROP TABLE votes;
+
+DROP TABLE view_counters;
+
 DROP TABLE tags;
 
 DROP TABLE notifications;
