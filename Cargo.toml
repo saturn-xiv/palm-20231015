@@ -27,8 +27,8 @@ xml-rs = "0.8"
 env_logger = "0.9"
 ssh2 = "0.9"
 paho-mqtt = "0.9"
-askama = "0.10"
-lettre = "0.10.0-rc.3"
+lettre = "0.10.0-rc.4"
+askama = "0.11"
 base64 = "0.13"
 git2 = "0.13"
 ipnetwork = "0.18"
@@ -90,7 +90,7 @@ version = "0.14"
 features = ["derive", "phone", "card", "unic"]
 
 [dependencies.cookie]
-version = "0.15"
+version = "0.16"
 features = ["secure", "private", "percent-encode"]
 
 [dependencies.redis]

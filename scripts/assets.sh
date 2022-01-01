@@ -2,7 +2,7 @@
 
 set -e
 
-yarn add marked moment moment-timezone\
+yarn add marked moment moment-timezone d3 \
     bootstrap @popperjs/core \
     mdb-ui-kit \
     bulma \

@@ -4,6 +4,7 @@
         "ms-python.python",
         "golang.go",
         "rust-lang.rust",
+        "matklad.rust-analyzer",
         "redhat.ansible",
         "redhat.vscode-yaml",
         "ms-vscode-remote.remote-ssh",
