@@ -143,7 +143,9 @@ then
     build_deb armhf
 elif [[ $OS_NAME == "Arch" ]]
 then
+    cd $WORKSPACE
     cargo build --release
+    strip -s target/release/palm
 else
     echo "Unknowk os $OS_NAME"
     exit 1

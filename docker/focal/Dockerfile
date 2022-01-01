@@ -83,15 +83,6 @@ RUN zsh -c "source $HOME/.zshrc \
     && cargo install diesel_cli \
     && cargo install --locked cargo-outdated"
 
-# https://sdkman.io/install
-ENV JDK_VERSION "17.0.1-open"
-RUN curl -s "https://get.sdkman.io" | zsh
-RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
-RUN zsh -c "source $HOME/.zshrc \
-    && sdk install java ${JDK_VERSION} \
-    && sdk install maven \
-    && sdk install gradle"
-
 # https://grpc.io/docs/languages/cpp/quickstart/
 ENV GRPC_VERSION "v1.43.0"
 RUN zsh -c "source $HOME/.zshrc \
@@ -108,6 +99,10 @@ RUN zsh -c "source $HOME/.zshrc \
     && cd $HOME/build/grpc-amd64 \
     && make \
     && make install"
+
+ENV GRPC_WEB_VERSION "1.3.0"
+RUN wget -q -O $HOME/.local/bin/protoc-gen-grpc-web https://github.com/grpc/grpc-web/releases/download/${GRPC_WEB_VERSION}/protoc-gen-grpc-web-${GRPC_WEB_VERSION}-linux-x86_64
+RUN chmod +x $HOME/.local/bin/protoc-gen-grpc-web
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | sudo tee /VERSION
 

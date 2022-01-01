@@ -4,6 +4,7 @@
 /node_modules/
 /yarn.lock
 
+/protocols/
 /tmp/
 /.env
 /config.toml

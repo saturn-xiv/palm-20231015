@@ -25,7 +25,7 @@ message UserLogsResponse {
     google.protobuf.Timestamp timestamp = 2;
   }
   repeated Item items = 1;
-  palm.plugins.nut.v1.Pagination pagination = 2;
+  palm.nut.v1.Pagination pagination = 2;
 }
 
 service Tty {
@@ -55,7 +55,9 @@ message AudioPlayRequest {
 }
 
 message AudioTtsRequest {
-  message Message { string message = 1; }
+  message Message {
+    string message = 1;
+  }
   repeated Message messages = 1;
   repeated uint64 loop = 21;
   optional google.protobuf.Duration delay = 22;
