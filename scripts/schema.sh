@@ -6,6 +6,11 @@ export WORKSPACE=$PWD
 export PROTOBUF_ROOT=$HOME/.local
 
 # ----------------------------------------------------------
+
+function generate_flatbuffers(){
+    flatc --rust -o $WORKSPACE/src/$2.rs $WORKSPACE/$1.fbs
+}
+
 function generate_diesel_postgresql() {
     echo "generate diesel schema for(postgresql)..."
     local DATABASE_URL=postgres://postgres@127.0.0.1:5432/demo
