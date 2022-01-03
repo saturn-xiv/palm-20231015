@@ -16,8 +16,12 @@ function generate_diesel_postgresql() {
     diesel print-schema -o users logs groups groups_users \
         roles roles_relations roles_users roles_groups operations resources policies \
         attachments tags notifications votes view_counters > src/plugins/nut/schema.rs
-    diesel print-schema -o forum_* > src/plugins/forum/schema.rs
-    diesel print-schema -o erp_* > src/plugins/erp/schema.rs
+    
+    diesel print-schema -o forum_topics forum_posts forum_topics_tags > src/plugins/forum/schema.rs
+     
+    diesel print-schema -o erp_brands erp_categories erp_spu erp_spu_parameters erp_categories_spu erp_sku erp_sku_pictures \
+        erp_sku_parameters erp_warehouses erp_warehouses_parameters erp_stores erp_stores_parameters \
+        erp_stocks erp_consignees erp_delivery_methods erp_payment_methods erp_orders erp_order_logs > src/plugins/mall/schema.rs
 }
 
 function generate_grpc() {

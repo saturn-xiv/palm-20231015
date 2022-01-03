@@ -37,7 +37,7 @@ RUN echo 'export LANG=en_US.UTF-8' >> $HOME/.profile
 RUN echo 'export LC_ALL=en_US.UTF-8' >> $HOME/.profile
 
 RUN git config --global core.quotepath false
-RUN echo 'set-option -g history-limit 10240' > $HOME/.tmux.conf
+RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf
 
 
 # https://pip.pypa.io/en/stable/installation/#get-pip-py

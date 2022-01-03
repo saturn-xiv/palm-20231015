@@ -1,6 +1,6 @@
 #!/bin/sh
 
-NAME=palm
+NAME=palm-jvm
 
 if podman container exists $NAME
 then

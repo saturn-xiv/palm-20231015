@@ -104,7 +104,7 @@ features = ["serde_bytes"]
 [dependencies.diesel]
 version = "1"
 default-features = false
-features = ["postgres", "mysql", "sqlite", "chrono", "serde_json", "uuid", "numeric", "r2d2", "128-column-tables"]
+features = ["postgres", "mysql", "sqlite", "extras", "128-column-tables"]
 
 [dependencies.serde]
 version = "1"
