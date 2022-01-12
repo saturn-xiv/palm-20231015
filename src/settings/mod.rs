@@ -9,7 +9,7 @@ use serde::{de::DeserializeOwned, ser::Serialize};
 use self::schema::settings;
 use super::{
     crypto::Secret,
-    orm::{Connection, Migration},
+    orm::{migration::Migration, Connection},
     Result,
 };
 

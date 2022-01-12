@@ -49,32 +49,29 @@ impl fmt::Display for Config {
 }
 
 // https://redis.io/commands
-impl super::Provider for Connection {
-    fn version(&self) -> Result<String> {
-        let mut con = self.get_connection()?;
-        let it = cmd("info").query::<Value>(&mut con)?;
+impl super::Provider for redis::Connection {
+    fn version(&mut self) -> Result<String> {
+        let it = cmd("info").query::<Value>(self)?;
         Ok(format!("{:#?}", it))
     }
-    fn keys(&self) -> Result<Vec<(String, i64)>> {
-        let mut con = self.get_connection()?;
+    fn keys(&mut self) -> Result<Vec<(String, i64)>> {
         let mut items = Vec::new();
-        let keys: Vec<String> = Commands::keys(&mut con, "*")?;
+        let keys: Vec<String> = Commands::keys(self, "*")?;
         for it in keys {
-            let ttl = con.ttl(&it)?;
+            let ttl = self.ttl(&it)?;
             items.push((it, ttl));
         }
         Ok(items)
     }
 
-    fn get<K, V, F>(&self, key: &K, fun: F, ttl: Duration) -> Result<V>
+    fn get<K, V, F>(&mut self, key: &K, fun: F, ttl: Duration) -> Result<V>
     where
         F: FnOnce() -> Result<V>,
         K: Display,
         V: DeserializeOwned + Serialize,
     {
-        let mut con = self.get_connection()?;
         let key = key.to_string();
-        let buf: RedisResult<Vec<u8>> = Commands::get(&mut con, &key);
+        let buf: RedisResult<Vec<u8>> = Commands::get(self, &key);
         if let Ok(buf) = buf {
             if let Ok(val) = flexbuffers::from_slice(buf.as_slice()) {
                 return Ok(val);
@@ -82,7 +79,7 @@ impl super::Provider for Connection {
         }
         debug!("cache expire, set {:?} {:?}", key, ttl);
         let val = fun()?;
-        let _: () = con.set_ex(
+        let _: () = self.set_ex(
             &key,
             flexbuffers::to_vec(&val)?.as_slice(),
             ttl.as_secs() as usize,
@@ -90,16 +87,14 @@ impl super::Provider for Connection {
         Ok(val)
     }
 
-    fn clear(&self) -> Result<()> {
-        let mut con = self.get_connection()?;
-        let rst = cmd("flushall").query::<String>(&mut con)?;
+    fn clear(&mut self) -> Result<()> {
+        let rst = cmd("flushall").query::<String>(self)?;
         info!("{}", rst);
         Ok(())
     }
 
-    fn heartbeat(&self) -> Result<()> {
-        let mut con = self.get_connection()?;
-        let rst = cmd("ping").query::<String>(&mut con)?;
+    fn heartbeat(&mut self) -> Result<()> {
+        let rst = cmd("ping").query::<String>(self)?;
         info!("{}", rst);
         Ok(())
     }

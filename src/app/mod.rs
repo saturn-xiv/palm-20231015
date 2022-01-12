@@ -36,8 +36,8 @@ pub enum SubCommand {
     DbMigrate,
     #[clap(about = "Revert migration to previous version")]
     DbRollback,
-    #[clap(about = "Re-applying all the migrations")]
-    DbRedo,
+    // #[clap(about = "Re-applying all the migrations")]
+    // DbRedo,
     #[clap(about = "Show current database versions")]
     DbStatus,
     #[clap(about = "Http Server")]
@@ -51,7 +51,7 @@ pub enum SubCommand {
 #[derive(clap::Parser, Debug)]
 pub struct Nginx {
     #[clap(short, long)]
-    pub name: String,
+    pub domain: String,
     #[clap(short, long)]
     pub ssl: bool,
 }
@@ -71,7 +71,10 @@ pub fn launch() -> Result<()> {
     let args = Args::parse();
     match args.command {
         SubCommand::GenerateConfig => generate::config_toml(&args.config)?,
-        SubCommand::GenerateNginx(cfg) => generate::nginx_conf(&cfg.name, cfg.ssl)?,
+        SubCommand::GenerateNginx(it) => {
+            let cfg: Config = from_toml(&args.config)?;
+            generate::nginx_conf(&cfg, &it.domain, it.ssl)?;
+        }
         SubCommand::GenerateSystemd(cfg) => generate::systemd_conf(&cfg.name)?,
         SubCommand::CacheClear => {
             let cfg: Config = from_toml(&args.config)?;
@@ -88,10 +91,6 @@ pub fn launch() -> Result<()> {
         SubCommand::DbRollback => {
             let cfg: Config = from_toml(&args.config)?;
             db::rollback(&cfg)?;
-        }
-        SubCommand::DbRedo => {
-            let cfg: Config = from_toml(&args.config)?;
-            db::redo(&cfg)?;
         }
         SubCommand::DbStatus => {
             let cfg: Config = from_toml(&args.config)?;

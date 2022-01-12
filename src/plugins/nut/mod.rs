@@ -6,7 +6,7 @@ pub mod sitemap;
 
 use gotham::state::StateData;
 
-use super::super::orm::{Migration, Pool as DbPool};
+use super::super::orm::{migration::Migration, Pool as DbPool};
 
 lazy_static! {
     pub static ref MIGRATION: Migration<'static> = Migration {

@@ -16,6 +16,7 @@ function generate_diesel_postgresql() {
     local DATABASE_URL=postgres://postgres@127.0.0.1:5432/demo
     local MIGRATION_DIRECTORY=db/postgresql/migrations
 
+    diesel print-schema -o schema_migrations > src/orm/schema.rs
     diesel print-schema -o settings > src/settings/schema.rs
     diesel print-schema -o locales > src/i18n/schema.rs
     diesel print-schema -o users logs groups groups_users \

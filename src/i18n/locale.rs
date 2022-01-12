@@ -6,7 +6,7 @@ use serde::Serialize;
 use yaml_rust::{Yaml, YamlLoader};
 
 use super::super::{
-    orm::{Connection, Migration},
+    orm::{migration::Migration, Connection},
     Result,
 };
 use super::schema::locales;

@@ -1,6 +1,6 @@
 pub mod schema;
 
-use super::super::orm::Migration;
+use super::super::orm::migration::Migration;
 
 lazy_static! {
     pub static ref MIGRATION: Migration<'static> = Migration {

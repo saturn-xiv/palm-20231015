@@ -1,7 +1,12 @@
+pub mod migration;
+pub mod schema;
+
 use std::default::Default;
 use std::fmt;
 
 use serde::{Deserialize, Serialize};
+
+use super::Result;
 
 pub type Pool = diesel::r2d2::Pool<diesel::r2d2::ConnectionManager<Connection>>;
 pub type PooledConnection =
@@ -11,21 +16,6 @@ pub type PooledConnection =
 // /var/lib/postgres/data/postgresql.conf: log_statement = 'all'
 pub type Connection = diesel::pg::PgConnection;
 
-pub const VERSION: &str = "SELECT VERSION() AS value";
-
-pub struct Migration<'a> {
-    pub name: &'a str,
-    pub version: &'a str,
-    pub up: &'a str,
-    pub down: &'a str,
-}
-
-impl<'a> fmt::Display for Migration<'a> {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}-{}", self.version, self.name)
-    }
-}
-
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Config {
@@ -34,6 +24,13 @@ pub struct Config {
     pub name: String,
     pub user: String,
     pub password: Option<String>,
+}
+
+impl Config {
+    pub fn open(&self) -> Result<Pool> {
+        let manager = diesel::r2d2::ConnectionManager::<Connection>::new(&self.to_string()[..]);
+        Ok(Pool::new(manager)?)
+    }
 }
 
 impl Default for Config {

@@ -8,13 +8,13 @@ use serde::{de::DeserializeOwned, ser::Serialize};
 use super::Result;
 
 pub trait Provider {
-    fn get<K, V, F>(&self, key: &K, fun: F, ttl: Duration) -> Result<V>
+    fn get<K, V, F>(&mut self, key: &K, fun: F, ttl: Duration) -> Result<V>
     where
         F: FnOnce() -> Result<V>,
         K: Display,
         V: DeserializeOwned + Serialize;
-    fn clear(&self) -> Result<()>;
-    fn keys(&self) -> Result<Vec<(String, i64)>>;
-    fn version(&self) -> Result<String>;
-    fn heartbeat(&self) -> Result<()>;
+    fn clear(&mut self) -> Result<()>;
+    fn keys(&mut self) -> Result<Vec<(String, i64)>>;
+    fn version(&mut self) -> Result<String>;
+    fn heartbeat(&mut self) -> Result<()>;
 }

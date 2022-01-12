@@ -9,6 +9,7 @@ extern crate lazy_static;
 pub mod macros;
 
 pub mod app;
+pub mod aws;
 pub mod cache;
 pub mod crypto;
 pub mod env;
