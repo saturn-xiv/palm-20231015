@@ -13,17 +13,17 @@ mime = "0.3"
 language-tags = "0.3"
 log = "0.4"
 yaml-rust = "0.4"
-rocket = "0.5.0-rc.1"
 serde-xml-rs = "0.5"
 toml = "0.5"
 tonic = "0.6"
+gotham = "0.7"
 encoding_rs = "0.8"
-prost = "0.9"
-prost-types = "0.9"
-prost-derive = "0.9"
 r2d2 = "0.8"
 rand = "0.8"
 xml-rs = "0.8"
+prost = "0.9"
+prost-types = "0.9"
+prost-derive = "0.9"
 env_logger = "0.9"
 ssh2 = "0.9"
 paho-mqtt = "0.9"
@@ -46,20 +46,10 @@ flexbuffers = "2"
 humantime = "2"
 lapin = "2.0.0-beta.3"
 percent-encoding = "2"
-clap = "3"
 tempfile = "3"
 handlebars = "4"
 amq-protocol-uri = "7"
 jsonwebtoken = "7"
-
-[dependencies.rocket_sync_db_pools]
-version = "0.1.0-rc.1"
-default-features = false
-features = ["diesel_postgres_pool", "diesel_mysql_pool", "diesel_sqlite_pool"]
-
-[dependencies.rocket_dyn_templates]
-version = "0.1.0-rc.1"
-features = ["handlebars", "tera"]
 
 [dependencies.chrono]
 version = "0.4"
@@ -121,6 +111,10 @@ features = ["validation"]
 [dependencies.url]
 version = "2"
 features = ["serde"]
+
+[dependencies.clap]
+version = "3"
+features = ["derive"]
 
 [dependencies.openssl]
 version = "*"
