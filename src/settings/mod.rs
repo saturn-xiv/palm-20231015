@@ -1,5 +1,7 @@
 pub mod schema;
 
+use std::fmt::Display;
+
 use chrono::{NaiveDateTime, Utc};
 use diesel::{insert_into, prelude::*, update};
 use serde::{de::DeserializeOwned, ser::Serialize};
@@ -42,14 +44,15 @@ pub struct New<'a> {
 }
 
 pub trait Dao {
-    fn get<V: DeserializeOwned, E: Secret>(&self, e: &E, key: &str) -> Result<V>;
-    fn set<V: Serialize, E: Secret>(&self, e: &E, k: &str, v: &V, f: bool) -> Result<()>;
+    fn get<K: Display, V: DeserializeOwned, E: Secret>(&self, e: &E, key: &K) -> Result<V>;
+    fn set<K: Display, V: Serialize, E: Secret>(&self, e: &E, k: &K, v: &V, f: bool) -> Result<()>;
 }
 
 impl Dao for Connection {
-    fn get<V: DeserializeOwned, E: Secret>(&self, e: &E, k: &str) -> Result<V> {
+    fn get<K: Display, V: DeserializeOwned, E: Secret>(&self, e: &E, k: &K) -> Result<V> {
+        let k = k.to_string();
         let it = settings::dsl::settings
-            .filter(settings::dsl::key.eq(k))
+            .filter(settings::dsl::key.eq(&k))
             .first::<Item>(self)?;
 
         let val = match it.salt {
@@ -59,7 +62,8 @@ impl Dao for Connection {
         Ok(flexbuffers::from_slice(val.as_slice())?)
     }
 
-    fn set<V: Serialize, E: Secret>(&self, e: &E, k: &str, v: &V, f: bool) -> Result<()> {
+    fn set<K: Display, V: Serialize, E: Secret>(&self, e: &E, k: &K, v: &V, f: bool) -> Result<()> {
+        let k = k.to_string();
         let buf = flexbuffers::to_vec(v)?;
 
         let (val, salt) = if f {
@@ -72,7 +76,7 @@ impl Dao for Connection {
         let now = Utc::now().naive_utc();
 
         match settings::dsl::settings
-            .filter(settings::dsl::key.eq(k))
+            .filter(settings::dsl::key.eq(&k))
             .first::<Item>(self)
         {
             Ok(it) => {
@@ -88,7 +92,7 @@ impl Dao for Connection {
             Err(_) => {
                 insert_into(settings::dsl::settings)
                     .values(&New {
-                        key: k,
+                        key: &k,
                         value: &val,
                         salt: salt.as_ref().map(|x| x as _),
                         updated_at: &now,
