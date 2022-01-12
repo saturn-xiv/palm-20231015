@@ -13,6 +13,19 @@ pub type Connection = diesel::pg::PgConnection;
 
 pub const VERSION: &str = "SELECT VERSION() AS value";
 
+pub struct Migration<'a> {
+    pub name: &'a str,
+    pub version: &'a str,
+    pub up: &'a str,
+    pub down: &'a str,
+}
+
+impl<'a> fmt::Display for Migration<'a> {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{}-{}", self.version, self.name)
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Config {

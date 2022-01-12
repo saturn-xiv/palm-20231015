@@ -9,8 +9,10 @@ extern crate lazy_static;
 pub mod macros;
 
 pub mod app;
+pub mod crypto;
 pub mod env;
 pub mod i18n;
+pub mod jwt;
 pub mod orm;
 pub mod parser;
 pub mod plugins;
