@@ -84,12 +84,7 @@ impl RabbitMq {
 }
 
 impl RabbitMq {
-    pub async fn publish<P: Serialize>(
-        &self,
-        queue: &str,
-        content_type: &str,
-        payload: &P,
-    ) -> Result<()> {
+    pub async fn publish<P: Serialize>(&self, queue: &str, payload: &P) -> Result<()> {
         let payload = flexbuffers::to_vec(payload)?;
         let ch = self.open(queue).await?;
         let id = Uuid::new_v4().to_string();
@@ -101,7 +96,7 @@ impl RabbitMq {
             &payload,
             BasicProperties::default()
                 .with_message_id(id.into())
-                .with_content_type(content_type.into())
+                .with_content_type("FlatBuffers".into())
                 .with_timestamp(SystemTime::now().duration_since(UNIX_EPOCH)?.as_secs()),
         )
         .await?
@@ -139,7 +134,7 @@ impl RabbitMq {
 }
 
 pub trait Handler {
-    fn handle(&self, id: &str, content_type: &str, payload: &[u8]) -> Result<()>;
+    fn handle(&self, id: &str, payload: &[u8]) -> Result<()>;
 }
 
 async fn handle_message<H: Handler>(delivery: Delivery, hnd: &H) -> Result<()> {
@@ -150,7 +145,7 @@ async fn handle_message<H: Handler>(delivery: Delivery, hnd: &H) -> Result<()> {
             let id = id.to_string();
             let content_type = content_type.to_string();
             info!("got message: {}[{}]", id, content_type);
-            hnd.handle(&id, &content_type, &delivery.data)?;
+            hnd.handle(&id, &delivery.data)?;
             delivery.ack(BasicAckOptions::default()).await?;
             return Ok(());
         }

@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
 use serde::Serialize;
@@ -15,6 +17,13 @@ lazy_static! {
         version: "20220112115545",
         up: include_str!("up.sql"),
         down: include_str!("down.sql")
+    };
+    static ref LOCALES: HashMap<&'static str, &'static str> = {
+        let mut it = HashMap::new();
+        it.insert("en-US", include_str!("en-US.yml"));
+        it.insert("zh-Hans", include_str!("zh-Hans.yml"));
+        it.insert("zh-Hant", include_str!("zh-Hant.yml"));
+        it
     };
 }
 
@@ -39,13 +48,8 @@ pub struct New<'a> {
     pub updated_at: &'a NaiveDateTime,
 }
 
-pub struct File<'a> {
-    pub lang: &'a str,
-    pub body: &'a str,
-}
-
 pub trait Dao {
-    fn sync(&self, files: &[File]) -> Result<(usize, usize)>;
+    fn sync(&self) -> Result<(usize, usize)>;
     fn languages(&self) -> Result<Vec<String>>;
     fn count(&self, lang: &str) -> Result<i64>;
     fn all(&self) -> Result<Vec<Item>>;
@@ -128,14 +132,14 @@ fn loop_yaml(
 }
 
 impl Dao for Connection {
-    fn sync(&self, items: &[File]) -> Result<(usize, usize)> {
+    fn sync(&self) -> Result<(usize, usize)> {
         let mut find = 0;
         let mut inserted = 0;
 
-        for it in items {
-            info!("find locale {}", it.lang);
-            for node in YamlLoader::load_from_str(it.body)? {
-                let (i, f) = loop_yaml(self, it.lang, None, node)?;
+        for (lang, body) in LOCALES.iter() {
+            info!("find locale {}", lang);
+            for node in YamlLoader::load_from_str(body)? {
+                let (i, f) = loop_yaml(self, lang, None, node)?;
                 inserted += i;
                 find += f;
             }
