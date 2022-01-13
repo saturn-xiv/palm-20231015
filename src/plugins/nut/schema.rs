@@ -13,6 +13,45 @@ table! {
 }
 
 table! {
+    categories (id) {
+        id -> Int4,
+        code -> Varchar,
+        name -> Varchar,
+        parent_id -> Nullable<Int4>,
+        order -> Int4,
+        font -> Bytea,
+        icon -> Bytea,
+        color -> Bytea,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
+    categories_resources (id) {
+        id -> Int4,
+        category_id -> Int4,
+        resource_type -> Varchar,
+        resource_id -> Int4,
+        created_at -> Timestamp,
+    }
+}
+
+table! {
+    friend_links (id) {
+        id -> Int4,
+        title -> Varchar,
+        home -> Varchar,
+        logo -> Nullable<Varchar>,
+        order -> Int4,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
     groups (id) {
         id -> Int4,
         code -> Varchar,
@@ -30,6 +69,16 @@ table! {
         id -> Int4,
         group_id -> Int4,
         user_id -> Int4,
+        created_at -> Timestamp,
+    }
+}
+
+table! {
+    leave_words (id) {
+        id -> Int4,
+        ip -> Varchar,
+        body -> Text,
+        body_content_type -> Varchar,
         created_at -> Timestamp,
     }
 }
@@ -158,6 +207,16 @@ table! {
 }
 
 table! {
+    tags_resources (id) {
+        id -> Int4,
+        tag_id -> Int4,
+        resource_type -> Varchar,
+        resource_id -> Int4,
+        created_at -> Timestamp,
+    }
+}
+
+table! {
     users (id) {
         id -> Int4,
         real_name -> Varchar,
@@ -203,9 +262,9 @@ table! {
 table! {
     votes (id) {
         id -> Int4,
-        resource_type -> Varchar,
-        resource_id -> Varchar,
         point -> Int4,
+        resource_type -> Varchar,
+        resource_id -> Int4,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -214,8 +273,12 @@ table! {
 
 allow_tables_to_appear_in_same_query!(
     attachments,
+    categories,
+    categories_resources,
+    friend_links,
     groups,
     groups_users,
+    leave_words,
     logs,
     notifications,
     operations,
@@ -226,6 +289,7 @@ allow_tables_to_appear_in_same_query!(
     roles_relations,
     roles_users,
     tags,
+    tags_resources,
     users,
     view_counters,
     votes,

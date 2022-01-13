@@ -1,8 +1,18 @@
+DROP TABLE leave_words;
+
+DROP TABLE friend_links;
+
 DROP TABLE votes;
 
 DROP TABLE view_counters;
 
 DROP TABLE tags;
+
+DROP TABLE tags_resources;
+
+DROP TABLE categories;
+
+DROP TABLE categories_resources;
 
 DROP TABLE notifications;
 

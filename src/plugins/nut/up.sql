@@ -44,11 +44,15 @@ CREATE UNIQUE INDEX idx_users_provider ON users(provider_type, provider_id);
 CREATE TABLE "logs"(
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
-    LEVEL VARCHAR(16) NOT NULL DEFAULT 'INFO',
+    LEVEL VARCHAR(16) NOT NULL DEFAULT 'info',
     ip VARCHAR(45) NOT NULL,
     message VARCHAR(255) NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE INDEX idx_logs_ip ON "logs"(ip);
+
+CREATE INDEX idx_logs_level ON "logs"("level");
 
 CREATE TABLE groups(
     id SERIAL PRIMARY KEY,
@@ -209,11 +213,78 @@ CREATE UNIQUE INDEX idx_tags_code ON tags(code);
 
 CREATE INDEX idx_tags_name ON tags(name);
 
+CREATE TABLE tags_resources(
+    id SERIAL PRIMARY KEY,
+    tag_id INTEGER NOT NULL,
+    resource_type VARCHAR(255) NOT NULL,
+    resource_id INTEGER NOT NULL,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE UNIQUE INDEX idx_tags_resources ON tags_resources(tag_id, resource_type, resource_id);
+
+CREATE INDEX idx_tags_resources_type ON tags_resources(resource_type);
+
+CREATE TABLE categories(
+    id SERIAL PRIMARY KEY,
+    code VARCHAR(32) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    parent_id INTEGER,
+    "order" INTEGER NOT NULL DEFAULT 0,
+    font BYTEA NOT NULL,
+    icon BYTEA NOT NULL,
+    color BYTEA NOT NULL,
+    version INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
+);
+
+CREATE UNIQUE INDEX idx_categories_code ON categories(code);
+
+CREATE INDEX idx_categories_name ON categories(name);
+
+CREATE TABLE categories_resources(
+    id SERIAL PRIMARY KEY,
+    category_id INTEGER NOT NULL,
+    resource_type VARCHAR(255) NOT NULL,
+    resource_id INTEGER NOT NULL,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE UNIQUE INDEX idx_categories_resources ON categories_resources(category_id, resource_type, resource_id);
+
+CREATE INDEX idx_categories_resources_type ON categories_resources(resource_type);
+
+CREATE TABLE friend_links(
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    home VARCHAR(255) NOT NULL,
+    logo VARCHAR(255),
+    "order" INTEGER NOT NULL DEFAULT 0,
+    version INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
+);
+
+CREATE UNIQUE INDEX idx_friend_links ON friend_links(home);
+
+CREATE INDEX idx_friend_links_title ON friend_links(title);
+
+CREATE TABLE leave_words(
+    id SERIAL PRIMARY KEY,
+    ip VARCHAR(45) NOT NULL,
+    body TEXT NOT NULL,
+    body_content_type VARCHAR(32) NOT NULL,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_leave_words_ip ON leave_words(ip);
+
 CREATE TABLE votes(
     id SERIAL PRIMARY KEY,
-    resource_type VARCHAR(255) NOT NULL,
-    resource_id VARCHAR(255) NOT NULL,
     "point" INTEGER NOT NULL DEFAULT 0,
+    resource_type VARCHAR(255) NOT NULL,
+    resource_id INTEGER NOT NULL,
     version INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
