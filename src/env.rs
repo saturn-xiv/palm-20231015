@@ -1,6 +1,7 @@
 use std::default::Default;
 use std::fmt;
 use std::net::{IpAddr, Ipv4Addr, SocketAddr};
+use std::path::Path;
 
 use serde::{Deserialize, Serialize};
 
@@ -9,7 +10,7 @@ use super::{
     queue::amqp::Config as RabbitMq,
 };
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub enum Environment {
     Production,
@@ -75,4 +76,8 @@ pub struct Config {
     pub redis: Redis,
     pub rabbitmq: RabbitMq,
     pub s3: S3,
+}
+
+pub fn is_stopped() -> bool {
+    Path::new(".stop").exists()
 }
