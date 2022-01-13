@@ -130,6 +130,7 @@ pub fn launch() -> Result<()> {
             plugins::nut::MIGRATION.deref(),
             plugins::forum::MIGRATION.deref(),
             plugins::mall::MIGRATION.deref(),
+            plugins::twilio::MIGRATION.deref(),
         ];
         let db = cfg.postgresql.open()?;
         let db = db.get()?;
