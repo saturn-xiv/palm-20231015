@@ -7,7 +7,9 @@ use std::fs::File;
 use std::ops::{Deref, DerefMut};
 use std::os::unix::fs::PermissionsExt;
 use std::path::PathBuf;
+use std::{thread, time::Duration};
 
+use crate::diesel::Connection as DieselConnection;
 use clap::{Parser, Subcommand};
 
 use super::{
@@ -46,8 +48,8 @@ pub enum SubCommand {
     DbMigrate,
     #[clap(about = "Revert migration to previous version")]
     DbRollback,
-    // #[clap(about = "Re-applying all the migrations")]
-    // DbRedo,
+    #[clap(about = "Re-applying all the migrations")]
+    DbRedo,
     #[clap(about = "Show current database versions")]
     DbStatus,
     #[clap(about = "Http Server")]
@@ -90,8 +92,8 @@ pub fn launch() -> Result<()> {
     {
         let f = File::open(&args.config)?;
         let m = f.metadata()?.permissions().mode();
-        if ![0o400, 0o600].contains(&m) {
-            error!("bad file {}'s mode", args.config.display());
+        if ![0o100400, 0o100600].contains(&m) {
+            error!("bad file ({}) mode({:#o})", args.config.display(), m);
             return Ok(());
         }
     }
@@ -134,13 +136,33 @@ pub fn launch() -> Result<()> {
         db.load(&items)?;
 
         if args.command == SubCommand::DbMigrate {
-            return db.migrate();
+            return db.transaction::<_, _, _>(|| {
+                db.migrate()?;
+                Ok(())
+            });
+        }
+        if args.command == SubCommand::DbRedo {
+            return db.transaction::<_, _, _>(|| {
+                loop {
+                    if db.count()? == 0 {
+                        break;
+                    }
+                    db.rollback()?;
+                    thread::sleep(Duration::from_millis(100));
+                }
+                // FIXME
+                db.migrate()?;
+                Ok(())
+            });
         }
         if args.command == SubCommand::DbRollback {
-            return db.rollback();
+            return db.transaction::<_, _, _>(|| {
+                db.rollback()?;
+                Ok(())
+            });
         }
         if args.command == SubCommand::DbStatus {
-            println!("{:<14} {:<32} RUN AT", "VERSION", "NAME");
+            println!("{:<14} {:<23} NAME", "VERSION", "RUN AT");
             for it in db.all()? {
                 println!("{}", it);
             }
@@ -148,6 +170,7 @@ pub fn launch() -> Result<()> {
         }
     }
 
+    info!("run on {} mode", cfg.env);
     if is_stopped() {
         warn!("stop file exists, exit...");
         return Ok(());

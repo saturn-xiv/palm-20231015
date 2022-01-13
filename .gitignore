@@ -7,4 +7,5 @@
 /protocols/
 /tmp/
 /.env
+/.stop
 /config.toml

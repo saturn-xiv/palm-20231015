@@ -2,6 +2,11 @@
 
 A total free education &amp; translation &amp; ops solution.
 
+## Notes
+
+- Generate a random secret key: `openssl rand -base64 32`
+- Generate a random password: `pwgen 32 1`
+
 ## Documents
 
 - [Install WSL](https://docs.microsoft.com/en-us/windows/wsl/install)

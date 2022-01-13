@@ -1,8 +1,6 @@
-#[macro_use]
-extern crate log;
-
 fn main() {
+    env_logger::init();
     if let Err(e) = palm::app::launch() {
-        error!("{:?}", e);
+        log::error!("{:?}", e);
     }
 }

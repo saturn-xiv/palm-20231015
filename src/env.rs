@@ -69,6 +69,7 @@ impl Default for Rpc {
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Config {
+    pub env: Environment,
     pub secrets: Key,
     pub http: Http,
     pub rpc: Rpc,

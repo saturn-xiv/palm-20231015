@@ -38,12 +38,14 @@ pub trait Dao {
     fn migrate(&self) -> Result<()>;
     fn rollback(&self) -> Result<()>;
     fn all(&self) -> Result<Vec<Item>>;
+    fn count(&self) -> Result<i64>;
     fn version(&self) -> Result<String>;
 }
 
 #[derive(Queryable)]
 pub struct Item {
     pub id: i32,
+    // LANG=C date +%Y%m%d%H%M%S
     pub version: String,
     pub name: String,
     pub up: String,
@@ -56,13 +58,13 @@ impl fmt::Display for Item {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(
             f,
-            "{:<14} {:<32} {}",
+            "{:<14} {:<23} {}",
             self.version,
-            self.name,
             match self.run_at {
-                Some(v) => v.to_string(),
+                Some(v) => v.format("%v %r").to_string(),
                 None => "N/A".to_string(),
             },
+            self.name,
         )
     }
 }
@@ -72,14 +74,14 @@ impl Dao for Connection {
         self.batch_execute(include_str!("up.sql"))?;
 
         for it in items {
-            info!("find migration: {}", it);
+            debug!("find migration: {}", it);
             let c: i64 = schema_migrations::dsl::schema_migrations
                 .filter(schema_migrations::dsl::version.eq(it.version))
                 .filter(schema_migrations::dsl::name.eq(it.name))
                 .count()
                 .get_result(self)?;
             if c == 0 {
-                info!("did not exist, insert it");
+                warn!("migration {} did not exist, insert it", it);
                 insert_into(schema_migrations::dsl::schema_migrations)
                     .values((
                         schema_migrations::dsl::version.eq(it.version),
@@ -122,6 +124,13 @@ impl Dao for Connection {
         }
         Ok(())
     }
+    fn count(&self) -> Result<i64> {
+        let cnt: i64 = schema_migrations::dsl::schema_migrations
+            .filter(schema_migrations::dsl::run_at.is_not_null())
+            .count()
+            .get_result(self)?;
+        Ok(cnt)
+    }
     fn rollback(&self) -> Result<()> {
         match schema_migrations::dsl::schema_migrations
             .filter(schema_migrations::dsl::run_at.is_not_null())
@@ -132,7 +141,6 @@ impl Dao for Connection {
                 info!("rollback {}-{}", it.version, it.name);
                 debug!("{}", it.down);
                 self.transaction::<_, DieselError, _>(|| {
-                    self.batch_execute(&it.up)?;
                     self.batch_execute(&it.down)?;
                     delete(
                         schema_migrations::dsl::schema_migrations

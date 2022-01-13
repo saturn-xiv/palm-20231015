@@ -35,7 +35,7 @@ impl Default for Config {
     fn default() -> Self {
         Self {
             host: "127.0.0.1".to_string(),
-            port: 6371,
+            port: 6379,
             db: 0,
             pool: Some(32),
         }
