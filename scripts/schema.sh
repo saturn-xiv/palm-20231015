@@ -28,6 +28,7 @@ function generate_diesel_postgresql() {
     diesel print-schema -o erp_brands erp_categories erp_spu erp_spu_parameters erp_categories_spu erp_sku erp_sku_pictures \
         erp_sku_parameters erp_warehouses erp_warehouses_parameters erp_stores erp_stores_parameters \
         erp_stocks erp_consignees erp_delivery_methods erp_payment_methods erp_orders erp_order_logs > src/plugins/mall/schema.rs
+    diesel print-schema -o sms_logs > src/plugins/twilio/schema.rs
 }
 
 function generate_grpc() {
