@@ -4,7 +4,11 @@ use serde::Serialize;
 
 use super::super::super::super::{orm::Connection, Result};
 use super::super::schema::policies;
-
+use super::{
+    operation::{Dao as OperationDao, Item as Operation},
+    resource::{Dao as ResourceDao, Item as Resouce},
+    role::{Dao as RoleDao, Item as Role},
+};
 #[derive(Queryable, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
@@ -22,6 +26,9 @@ pub trait Dao {
     fn by_resource(&self, resource: i32) -> Result<Vec<Item>>;
     fn deny(&self, role: i32, operation: i32, resource: i32) -> Result<()>;
     fn apply(&self, role: i32, operation: i32, resource: i32) -> Result<()>;
+
+    fn is(&self, user_type: &str, user_id: i32, role: &str) -> bool;
+    fn can(&self, user_type: &str, user_id: i32, operation: &str, resource: &str) -> bool;
 }
 
 impl Dao for Connection {
@@ -75,4 +82,60 @@ impl Dao for Connection {
         }
         Ok(())
     }
+
+    fn is(&self, user_type: &str, user_id: i32, role: &str) -> bool {
+        if let Ok(role) = RoleDao::by_code(self, role) {
+            return is_role(self, user_type, user_id, &role);
+        }
+        false
+    }
+    fn can(&self, user_type: &str, user_id: i32, operation: &str, resource: &str) -> bool {
+        if let Ok(resource) = ResourceDao::by_code(self, resource) {
+            if let Ok(operation) = OperationDao::by_code(self, operation) {
+                return can(self, user_type, user_id, &operation, &resource);
+            }
+        }
+        false
+    }
+}
+
+fn is_role(db: &Connection, user_type: &str, user_id: i32, role: &Role) -> bool {
+    if RoleDao::has(db, role.id, user_type, user_id) {
+        return true;
+    }
+    if let Some(parent) = role.parent_id {
+        if let Ok(role) = RoleDao::by_id(db, parent) {
+            return is_role(db, user_type, user_id, &role);
+        }
+    }
+    false
+}
+
+fn can(
+    db: &Connection,
+    user_type: &str,
+    user_id: i32,
+    operation: &Operation,
+    resource: &Resouce,
+) -> bool {
+    if let Ok(roles) = policies::dsl::policies
+        .select(policies::dsl::role_id)
+        .filter(policies::dsl::operation_id.eq(operation.id))
+        .filter(policies::dsl::resource_id.eq(resource.id))
+        .load::<i32>(db)
+    {
+        for role in roles {
+            if let Ok(role) = RoleDao::by_id(db, role) {
+                if is_role(db, user_type, user_id, &role) {
+                    return true;
+                }
+            }
+        }
+    }
+    if let Some(resource) = resource.parent_id {
+        if let Ok(resource) = ResourceDao::by_id(db, resource) {
+            return can(db, user_type, user_id, operation, &resource);
+        }
+    }
+    false
 }

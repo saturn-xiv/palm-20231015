@@ -34,6 +34,7 @@ pub trait Dao {
         expire_at: &NaiveDate,
     ) -> Result<()>;
     fn unassociate(&self, role: i32, target_type: &str, target_id: i32) -> Result<()>;
+    fn has(&self, role: i32, target_type: &str, target_id: i32) -> bool;
 }
 
 impl Dao for Connection {
@@ -141,5 +142,18 @@ impl Dao for Connection {
         )
         .execute(self)?;
         Ok(())
+    }
+    fn has(&self, role: i32, target_type: &str, target_id: i32) -> bool {
+        if let Ok((nbf, exp)) = roles_items::dsl::roles_items
+            .select((roles_items::dsl::not_before, roles_items::dsl::expire_at))
+            .filter(roles_items::dsl::role_id.eq(role))
+            .filter(roles_items::dsl::target_type.eq(target_type))
+            .filter(roles_items::dsl::target_id.eq(target_id))
+            .first::<(NaiveDate, NaiveDate)>(self)
+        {
+            let today = Utc::now().naive_utc().date();
+            return today.ge(&nbf) && today.le(&exp);
+        }
+        false
     }
 }
