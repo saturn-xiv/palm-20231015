@@ -59,13 +59,12 @@ CREATE TABLE groups(
     code VARCHAR(32) NOT NULL,
     name VARCHAR(255) NOT NULL,
     parent_id INTEGER,
-    "level" INTEGER NOT NULL DEFAULT 1,
     version INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
 
-CREATE UNIQUE INDEX idx_groups ON groups(code, "level");
+CREATE UNIQUE INDEX idx_groups ON groups(code);
 
 CREATE INDEX idx_groups_name ON groups(name);
 
@@ -83,17 +82,16 @@ CREATE TABLE roles(
     code VARCHAR(32) NOT NULL,
     name VARCHAR(255) NOT NULL,
     parent_id INTEGER,
-    "level" INTEGER NOT NULL DEFAULT 1,
     version INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
 
-CREATE UNIQUE INDEX idx_roles ON roles(code, "level");
+CREATE UNIQUE INDEX idx_roles ON roles(code, code);
 
 CREATE INDEX idx_roles_name ON roles(name);
 
-CREATE TABLE roles_relations(
+CREATE TABLE role_relations(
     id SERIAL PRIMARY KEY,
     a INTEGER NOT NULL,
     "constraint" VARCHAR(32) NOT NULL,
@@ -103,31 +101,24 @@ CREATE TABLE roles_relations(
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE UNIQUE INDEX idx_roles_relations ON roles_relations(a, "constraint", b);
+CREATE UNIQUE INDEX idx_role_relations ON role_relations(a, "constraint", b);
 
-CREATE INDEX idx_roles_relations_from ON roles_relations(a, "constraint");
+CREATE INDEX idx_role_relations_from ON role_relations(a, "constraint");
 
-CREATE TABLE roles_users(
+CREATE TABLE roles_items(
     id SERIAL PRIMARY KEY,
     role_id INTEGER NOT NULL,
-    user_id INTEGER NOT NULL,
+    target_type VARCHAR(32) NOT NULL,
+    target_id INTEGER NOT NULL,
     not_before DATE NOT NULL,
     expire_at DATE NOT NULL,
-    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
 
-CREATE UNIQUE INDEX idx_roles_users ON roles_users(role_id, user_id);
+CREATE UNIQUE INDEX idx_roles_items ON roles_items(role_id, target_type, target_id);
 
-CREATE TABLE roles_groups(
-    id SERIAL PRIMARY KEY,
-    role_id INTEGER NOT NULL,
-    group_id INTEGER NOT NULL,
-    not_before DATE NOT NULL,
-    expire_at DATE NOT NULL,
-    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE UNIQUE INDEX idx_roles_groups ON roles_groups(role_id, group_id);
+CREATE INDEX idx_roles_items_type ON roles_items(target_type);
 
 CREATE TABLE operations(
     id SERIAL PRIMARY KEY,
@@ -145,16 +136,14 @@ CREATE INDEX idx_operations_name ON operations(name);
 CREATE TABLE resources(
     id SERIAL PRIMARY KEY,
     code VARCHAR(255) NOT NULL,
-    TYPE VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL,
     parent_id INTEGER,
-    "level" INTEGER NOT NULL DEFAULT 1,
     version INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
 
-CREATE UNIQUE INDEX idx_resources ON resources(code, TYPE, "level");
+CREATE UNIQUE INDEX idx_resources ON resources(code);
 
 CREATE INDEX idx_resources_name ON resources(name);
 
@@ -163,7 +152,6 @@ CREATE TABLE policies(
     role_id INTEGER NOT NULL,
     resource_id INTEGER NOT NULL,
     operation_id INTEGER NOT NULL,
-    version INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

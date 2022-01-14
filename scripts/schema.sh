@@ -20,7 +20,7 @@ function generate_diesel_postgresql() {
     diesel print-schema -o settings > src/settings/schema.rs
     diesel print-schema -o locales > src/i18n/schema.rs
     diesel print-schema -o users logs groups groups_users \
-        roles roles_relations roles_users roles_groups operations resources policies \
+        roles role_relations roles_items operations resources policies \
         attachments friend_links leave_words \
         tags tags_resources categories categories_resources\
         notifications votes view_counters > src/plugins/nut/schema.rs

@@ -57,7 +57,6 @@ table! {
         code -> Varchar,
         name -> Varchar,
         parent_id -> Nullable<Int4>,
-        level -> Int4,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -126,7 +125,6 @@ table! {
         role_id -> Int4,
         resource_id -> Int4,
         operation_id -> Int4,
-        version -> Int4,
         created_at -> Timestamp,
     }
 }
@@ -135,11 +133,8 @@ table! {
     resources (id) {
         id -> Int4,
         code -> Varchar,
-        #[sql_name = "type"]
-        type_ -> Varchar,
         name -> Varchar,
         parent_id -> Nullable<Int4>,
-        level -> Int4,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -147,31 +142,7 @@ table! {
 }
 
 table! {
-    roles (id) {
-        id -> Int4,
-        code -> Varchar,
-        name -> Varchar,
-        parent_id -> Nullable<Int4>,
-        level -> Int4,
-        version -> Int4,
-        created_at -> Timestamp,
-        updated_at -> Timestamp,
-    }
-}
-
-table! {
-    roles_groups (id) {
-        id -> Int4,
-        role_id -> Int4,
-        group_id -> Int4,
-        not_before -> Date,
-        expire_at -> Date,
-        created_at -> Timestamp,
-    }
-}
-
-table! {
-    roles_relations (id) {
+    role_relations (id) {
         id -> Int4,
         a -> Int4,
         constraint -> Varchar,
@@ -183,13 +154,27 @@ table! {
 }
 
 table! {
-    roles_users (id) {
+    roles (id) {
+        id -> Int4,
+        code -> Varchar,
+        name -> Varchar,
+        parent_id -> Nullable<Int4>,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
+    roles_items (id) {
         id -> Int4,
         role_id -> Int4,
-        user_id -> Int4,
+        target_type -> Varchar,
+        target_id -> Int4,
         not_before -> Date,
         expire_at -> Date,
         created_at -> Timestamp,
+        updated_at -> Timestamp,
     }
 }
 
@@ -285,10 +270,9 @@ allow_tables_to_appear_in_same_query!(
     operations,
     policies,
     resources,
+    role_relations,
     roles,
-    roles_groups,
-    roles_relations,
-    roles_users,
+    roles_items,
     tags,
     tags_resources,
     users,

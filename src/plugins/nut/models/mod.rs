@@ -1,9 +1,14 @@
 pub mod attachment;
 pub mod category;
 pub mod friend_link;
+pub mod group;
 pub mod leave_word;
 pub mod log;
 pub mod notification;
+pub mod operation;
+pub mod policy;
+pub mod resource;
+pub mod role;
 pub mod tag;
 pub mod user;
 pub mod view_counter;

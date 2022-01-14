@@ -22,6 +22,7 @@ pub struct Item {
 
 pub trait Dao {
     fn by_id(&self, id: i32) -> Result<Item>;
+    fn by_code(&self, code: &str) -> Result<Item>;
     fn create(&self, code: &str, name: &str, font: &Font, icon: &Icon, color: &Color)
         -> Result<()>;
     fn update(
@@ -34,7 +35,7 @@ pub trait Dao {
         color: &Color,
     ) -> Result<()>;
     fn all(&self) -> Result<Vec<Item>>;
-    fn delete(&self, id: i32) -> Result<()>;
+    fn destory(&self, id: i32) -> Result<()>;
     fn bind(&self, tags: &[i32], rty: &str, rid: i32) -> Result<()>;
     fn unbind(&self, rty: &str, rid: i32) -> Result<()>;
     fn resources(&self, tag: i32) -> Result<Vec<(String, i32)>>;
@@ -44,6 +45,12 @@ impl Dao for Connection {
     fn by_id(&self, id: i32) -> Result<Item> {
         let it = tags::dsl::tags
             .filter(tags::dsl::id.eq(id))
+            .first::<Item>(self)?;
+        Ok(it)
+    }
+    fn by_code(&self, code: &str) -> Result<Item> {
+        let it = tags::dsl::tags
+            .filter(tags::dsl::code.eq(code))
             .first::<Item>(self)?;
         Ok(it)
     }
@@ -99,8 +106,8 @@ impl Dao for Connection {
         Ok(items)
     }
 
-    fn delete(&self, id: i32) -> Result<()> {
-        delete(tags_resources::dsl::tags_resources.filter(tags_resources::dsl::id.eq(id)))
+    fn destory(&self, id: i32) -> Result<()> {
+        delete(tags_resources::dsl::tags_resources.filter(tags_resources::dsl::tag_id.eq(id)))
             .execute(self)?;
         delete(tags::dsl::tags.filter(tags::dsl::id.eq(id))).execute(self)?;
         Ok(())
