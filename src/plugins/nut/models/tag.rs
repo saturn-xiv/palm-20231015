@@ -36,8 +36,8 @@ pub trait Dao {
     ) -> Result<()>;
     fn all(&self) -> Result<Vec<Item>>;
     fn destory(&self, id: i32) -> Result<()>;
-    fn bind(&self, tags: &[i32], rty: &str, rid: i32) -> Result<()>;
-    fn unbind(&self, rty: &str, rid: i32) -> Result<()>;
+    fn associate(&self, tag: i32, rty: &str, rid: i32) -> Result<()>;
+    fn unassociate(&self, tag: i32, rty: &str, rid: i32) -> Result<()>;
     fn resources(&self, tag: i32) -> Result<Vec<(String, i32)>>;
 }
 
@@ -113,22 +113,22 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn bind(&self, tags: &[i32], rty: &str, rid: i32) -> Result<()> {
-        for it in tags {
-            insert_into(tags_resources::dsl::tags_resources)
-                .values((
-                    tags_resources::dsl::tag_id.eq(it),
-                    tags_resources::dsl::resource_id.eq(rid),
-                    tags_resources::dsl::resource_type.eq(rty),
-                ))
-                .execute(self)?;
-        }
+    fn associate(&self, tag: i32, rty: &str, rid: i32) -> Result<()> {
+        insert_into(tags_resources::dsl::tags_resources)
+            .values((
+                tags_resources::dsl::tag_id.eq(tag),
+                tags_resources::dsl::resource_id.eq(rid),
+                tags_resources::dsl::resource_type.eq(rty),
+            ))
+            .execute(self)?;
+
         Ok(())
     }
 
-    fn unbind(&self, rty: &str, rid: i32) -> Result<()> {
+    fn unassociate(&self, tag: i32, rty: &str, rid: i32) -> Result<()> {
         delete(
             tags_resources::dsl::tags_resources
+                .filter(tags_resources::dsl::tag_id.eq(tag))
                 .filter(tags_resources::dsl::resource_type.eq(rty))
                 .filter(tags_resources::dsl::resource_id.eq(rid)),
         )

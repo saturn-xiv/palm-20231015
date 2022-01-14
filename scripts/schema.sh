@@ -25,7 +25,7 @@ function generate_diesel_postgresql() {
         tags tags_resources categories categories_resources\
         notifications votes view_counters > src/plugins/nut/schema.rs
     
-    diesel print-schema -o forum_topics forum_posts forum_topics_tags > src/plugins/forum/schema.rs
+    diesel print-schema -o forum_topics forum_posts > src/plugins/forum/schema.rs
      
     diesel print-schema -o erp_brands erp_categories erp_spu erp_spu_parameters erp_categories_spu erp_sku erp_sku_pictures \
         erp_sku_parameters erp_warehouses erp_warehouses_parameters erp_stores erp_stores_parameters \
