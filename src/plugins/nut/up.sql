@@ -187,7 +187,8 @@ CREATE TABLE notifications(
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
     url VARCHAR(255) NOT NULL,
-    body JSON NOT NULL,
+    body TEXT NOT NULL,
+    body_content_type VARCHAR(32) NOT NULL,
     "level" VARCHAR(16) NOT NULL,
     "read" BOOLEAN NOT NULL,
     version INTEGER NOT NULL DEFAULT 0,
@@ -297,7 +298,7 @@ CREATE INDEX idx_votes_resource_type ON votes(resource_type);
 CREATE TABLE view_counters(
     id SERIAL PRIMARY KEY,
     resource_type VARCHAR(255) NOT NULL,
-    resource_id VARCHAR(255) NOT NULL,
+    resource_id INTEGER NOT NULL,
     "point" INTEGER NOT NULL DEFAULT 0,
     version INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,

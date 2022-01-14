@@ -99,7 +99,8 @@ table! {
         id -> Int4,
         user_id -> Int4,
         url -> Varchar,
-        body -> Json,
+        body -> Text,
+        body_content_type -> Varchar,
         level -> Varchar,
         read -> Bool,
         version -> Int4,
@@ -251,7 +252,7 @@ table! {
     view_counters (id) {
         id -> Int4,
         resource_type -> Varchar,
-        resource_id -> Varchar,
+        resource_id -> Int4,
         point -> Int4,
         version -> Int4,
         created_at -> Timestamp,

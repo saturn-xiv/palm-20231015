@@ -22,15 +22,3 @@ lazy_static! {
 pub struct Context {
     pub db: DbPool,
 }
-
-pub enum WYSIWYGEditor {
-    Markdown,
-    Quill,
-    Draft,
-    Textarea,
-}
-
-pub struct Page {
-    pub body: String,
-    pub editor: WYSIWYGEditor,
-}

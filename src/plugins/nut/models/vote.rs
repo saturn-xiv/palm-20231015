@@ -57,7 +57,7 @@ impl Dao for Connection {
 
     fn all(&self) -> Result<Vec<Item>> {
         let items = votes::dsl::votes
-            .order(votes::dsl::updated_at.desc())
+            .order(votes::dsl::point.desc())
             .load::<Item>(self)?;
         Ok(items)
     }
