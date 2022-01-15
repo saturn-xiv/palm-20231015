@@ -29,7 +29,6 @@ env_logger = "0.9"
 ssh2 = "0.9"
 paho-mqtt = "0.9"
 lettre = "0.10.0-rc.4"
-askama = "0.11"
 base64 = "0.13"
 git2 = "0.13"
 ipnetwork = "0.18"
@@ -67,6 +66,10 @@ features = ["v4", "serde"]
 [dependencies.zmq]
 version = "0.9"
 features = ["vendored"]
+
+[dependencies.askama]
+version = "0.11"
+features = ["with-gotham"]
 
 [dependencies.reqwest]
 version = "0.11"

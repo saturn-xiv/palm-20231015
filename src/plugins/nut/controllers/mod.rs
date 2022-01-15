@@ -1,17 +1,34 @@
-use gotham::state::State;
+pub mod sitemap;
 
-pub fn home(state: State) -> (State, &'static str) {
+use gotham::{prelude::*, state::State};
+use serde::Deserialize;
+
+pub fn home(state: State) -> (State, impl IntoResponse) {
     (state, "home")
 }
 
-pub fn robots(state: State) -> (State, &'static str) {
-    (state, "home")
+pub fn robots(state: State) -> (State, impl IntoResponse) {
+    (state, "robots")
 }
 
-pub fn sitemap(state: State) -> (State, &'static str) {
-    (state, "sitemap")
+#[derive(Deserialize, StateData, StaticResponseExtender, Debug)]
+pub struct LangExtractor {
+    pub lang: String,
 }
 
-pub fn rss(state: State) -> (State, &'static str) {
-    (state, "home")
+#[derive(Deserialize, StateData, StaticResponseExtender, Debug)]
+pub struct LangIdExtractor {
+    pub lang: String,
+    pub id: i32,
+}
+#[derive(Deserialize, StateData, StaticResponseExtender, Debug)]
+pub struct LangUidExtractor {
+    pub lang: String,
+    pub uid: String,
+}
+
+pub fn rss(state: State) -> (State, impl IntoResponse) {
+    let lang = LangExtractor::borrow_from(&state);
+    let body = format!("rss {}", lang.lang);
+    (state, body)
 }
