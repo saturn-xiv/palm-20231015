@@ -1,4 +1,5 @@
 pub mod generate;
+pub mod graphql;
 pub mod rpc;
 pub mod web;
 pub mod worker;

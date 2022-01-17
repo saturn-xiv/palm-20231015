@@ -1,3 +1,4 @@
+use juniper::EmptySubscription;
 use warp::Filter;
 
 use super::super::{
@@ -5,6 +6,7 @@ use super::super::{
     plugins::{self, nut::controllers::with_db},
     Result,
 };
+use super::graphql::{mutation::Mutation, query::Query, Schema};
 
 pub async fn launch(cfg: &Config) -> Result<()> {
     let db = cfg.postgresql.open()?;
@@ -43,21 +45,37 @@ pub async fn launch(cfg: &Config) -> Result<()> {
         .and(with_db(db.clone()))
         .and_then(plugins::nut::controllers::home::index);
     let home_by_lang = warp::path!(String)
-        .and(with_db(db))
+        .and(with_db(db.clone()))
         .and_then(plugins::nut::controllers::home::by_lang);
+    let third = warp::path("3rd").and(warp::fs::dir("./node_modules/"));
 
-    let html = warp::get().and(
-        home.or(robots_txt)
-            .or(sitemap)
-            .or(sitemap_by_lang)
-            .or(rss)
-            .or(forum_index)
-            .or(forum_topics_index)
-            .or(forum_topics_show)
-            .or(forum_posts_index)
-            .or(forum_posts_show)
-            .or(home_by_lang),
-    );
+    let ch = cfg.redis.open()?;
+    let state = warp::any().map(move || plugins::nut::graphql::Context {
+        db: db.clone(),
+        cache: ch.clone(),
+    });
+    let schema = Schema::new(Query, Mutation, EmptySubscription::new());
+    let graphql =
+        warp::path("graphql").and(juniper_warp::make_graphql_filter(schema, state.boxed()));
+    let graphiql = warp::path("graphiql").and(juniper_warp::graphiql_filter("/graphql", None));
+
+    let html = warp::get()
+        .and(
+            home.or(graphiql)
+                .or(robots_txt)
+                .or(sitemap)
+                .or(sitemap_by_lang)
+                .or(rss)
+                .or(forum_index)
+                .or(forum_topics_index)
+                .or(forum_topics_show)
+                .or(forum_posts_index)
+                .or(forum_posts_show)
+                .or(third)
+                .or(home_by_lang),
+        )
+        .or(warp::post().and(graphql));
+
     warp::serve(html).run(([127, 0, 0, 1], cfg.http.port)).await;
     Ok(())
 }
