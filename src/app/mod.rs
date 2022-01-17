@@ -80,7 +80,7 @@ pub struct Worker {
     pub queue: String,
 }
 
-pub fn launch() -> Result<()> {
+pub async fn launch() -> Result<()> {
     let args = Args::parse();
     if args.command == SubCommand::GenerateConfig {
         return generate::config_toml(&args.config);
@@ -178,7 +178,7 @@ pub fn launch() -> Result<()> {
     }
 
     if args.command == SubCommand::Web {
-        return web::launch(&cfg);
+        return web::launch(&cfg).await;
     }
     if args.command == SubCommand::Rpc {
         return rpc::launch(&cfg);

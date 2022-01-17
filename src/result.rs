@@ -1,3 +1,4 @@
+use std::convert::Infallible;
 use std::error::Error as StdError;
 use std::fmt;
 use std::result::Result as StdResult;
@@ -11,6 +12,7 @@ pub type Result<T> = StdResult<T, Error>;
 pub struct HttpError(pub StatusCode, pub Option<String>);
 pub type HttpResult<T> = StdResult<T, HttpError>;
 pub type GrpcResult<T> = StdResult<tonic::Response<T>, tonic::Status>;
+pub type InfallibleResult<T> = StdResult<T, Infallible>;
 // TODO: https://github.com/rust-lang/rust/issues/63063
 // pub type HttpResponder = HttpResult<impl Responder>;
 

@@ -1,57 +1,42 @@
-use std::net::SocketAddr;
+use warp::Filter;
 
-use gotham::{prelude::*, router::build_simple_router};
+use super::super::{
+    env::Config,
+    plugins::{self, nut::controllers::with_db},
+    Result,
+};
 
-use super::super::{env::Config, plugins, Result};
+pub async fn launch(cfg: &Config) -> Result<()> {
+    let db = cfg.postgresql.open()?;
 
-pub fn launch(cfg: &Config) -> Result<()> {
-    let addr = SocketAddr::from(([127, 0, 0, 1], cfg.http.port));
-    let router = build_simple_router(|route| {
-        route.get("/").to(plugins::nut::controllers::home);
-        route
-            .get("/robots.txt")
-            .to(plugins::nut::controllers::robots);
-        route
-            .get("/sitemap.xml")
-            .to(plugins::nut::controllers::sitemap::index);
+    let home = warp::path::end()
+        .and(with_db(db.clone()))
+        .and_then(plugins::nut::controllers::home::index);
+    let home_by_lang = warp::path!(String)
+        .and(with_db(db.clone()))
+        .and_then(plugins::nut::controllers::home::by_lang);
+    // let host = warp::header::value(HOST);
+    let robots_txt = warp::path("robots.txt")
+        .and(warp::filters::host::optional())
+        .and_then(plugins::nut::controllers::robots_txt);
+    let sitemap = warp::path("sitemap.xml")
+        .and(with_db(db.clone()))
+        .and_then(plugins::nut::controllers::sitemap::index);
+    let sitemap_by_lang = warp::path!(String / "sitemap.xml")
+        .and(with_db(db.clone()))
+        .and_then(plugins::nut::controllers::sitemap::by_lang);
 
-        route.scope("/:lang", |route| {
-            route
-                .get("/sitemap.xml")
-                .with_path_extractor::<plugins::nut::controllers::LangExtractor>()
-                .to(plugins::nut::controllers::sitemap::by_lang);
-            route
-                .get("/rss.xml")
-                .with_path_extractor::<plugins::nut::controllers::LangExtractor>()
-                .to(plugins::nut::controllers::rss);
+    let rss = warp::path!(String / "rss.xml")
+        .and(with_db(db))
+        .and_then(plugins::nut::controllers::rss);
 
-            route.scope("/forum", |route| {
-                route
-                    .get("/")
-                    .with_path_extractor::<plugins::nut::controllers::LangExtractor>()
-                    .to(plugins::forum::controllers::index);
-
-                route
-                    .get("/topics")
-                    .with_path_extractor::<plugins::nut::controllers::LangExtractor>()
-                    .to(plugins::forum::controllers::topics::index);
-                route
-                    .get("/topics/:id")
-                    .with_path_extractor::<plugins::nut::controllers::LangExtractor>()
-                    .to(plugins::forum::controllers::topics::show);
-
-                route
-                    .get("/posts")
-                    .with_path_extractor::<plugins::nut::controllers::LangExtractor>()
-                    .to(plugins::forum::controllers::posts::index);
-                route
-                    .get("/posts/:id")
-                    .with_path_extractor::<plugins::nut::controllers::LangIdExtractor>()
-                    .to(plugins::forum::controllers::posts::show);
-            });
-        });
-    });
-    println!("listening for requests at http://{}", addr);
-    gotham::start(addr, router)?;
+    let html = warp::get().and(
+        home.or(robots_txt)
+            .or(sitemap)
+            .or(sitemap_by_lang)
+            .or(rss)
+            .or(home_by_lang),
+    );
+    warp::serve(html).run(([127, 0, 0, 1], cfg.http.port)).await;
     Ok(())
 }

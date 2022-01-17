@@ -12,12 +12,11 @@ homepage = "https://github.com/saturn-xiv/palm"
 futures = "0.3"
 mime = "0.3"
 language-tags = "0.3"
+warp = "0.3"
 log = "0.4"
 yaml-rust = "0.4"
-serde-xml-rs = "0.5"
 toml = "0.5"
 tonic = "0.6"
-gotham = "0.7"
 encoding_rs = "0.8"
 r2d2 = "0.8"
 rand = "0.8"
@@ -29,6 +28,7 @@ env_logger = "0.9"
 ssh2 = "0.9"
 paho-mqtt = "0.9"
 lettre = "0.10.0-rc.4"
+askama_warp = "0.12"
 base64 = "0.13"
 git2 = "0.13"
 ipnetwork = "0.18"
@@ -69,7 +69,7 @@ features = ["vendored"]
 
 [dependencies.askama]
 version = "0.11"
-features = ["with-gotham"]
+features = ["with-warp"]
 
 [dependencies.reqwest]
 version = "0.11"
