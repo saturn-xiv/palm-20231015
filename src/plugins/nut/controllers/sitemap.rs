@@ -63,5 +63,6 @@ pub async fn by_lang(_lang: String, db: DbPool) -> InfallibleResult<Box<dyn Repl
     let db = db.get().unwrap();
     let _db = db.deref();
     let it = Sitemap { items: Vec::new() };
+    // TODO
     Ok(to_xml(&it).unwrap())
 }

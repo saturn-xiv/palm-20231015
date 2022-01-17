@@ -1,8 +1,20 @@
 pub mod posts;
 pub mod topics;
 
-// use gotham::{prelude::*, state::State};
+use askama::Template;
+use warp::Reply;
 
-// pub fn index(state: State) -> (State, impl IntoResponse) {
-//     (state, "forum index")
-// }
+use super::super::super::{orm::Pool as DbPool, InfallibleResult};
+
+#[derive(Template)]
+#[template(path = "bootstrap/forum/index.html")]
+pub struct BoostrapIndex {
+    pub lang: String,
+}
+
+pub async fn index(lang: String, db: DbPool) -> InfallibleResult<Box<dyn Reply>> {
+    let _db = db.get().unwrap();
+    let tpl = BoostrapIndex { lang };
+    // TODO
+    Ok(Box::new(tpl))
+}
