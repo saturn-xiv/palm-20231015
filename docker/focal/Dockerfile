@@ -81,7 +81,8 @@ RUN zsh -c "source $HOME/.cargo/env \
 RUN sudo apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
 RUN zsh -c "source $HOME/.zshrc \
     && cargo install diesel_cli \
-    && cargo install --locked cargo-outdated"
+    && cargo install --locked cargo-outdated \
+    && cargo install mdbook"
 
 # https://grpc.io/docs/languages/cpp/quickstart/
 ENV GRPC_VERSION "v1.43.0"
