@@ -7,7 +7,10 @@ use super::super::{
     crypto::{Aes, Hmac},
     env::Config,
     jwt::Jwt,
-    plugins::{self, nut::controllers::with_db},
+    plugins::{
+        forum,
+        nut::{self, controllers::with_db},
+    },
     Result,
 };
 use super::graphql::{mutation::Mutation, query::Query, Schema};
@@ -19,59 +22,64 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let aes = Arc::new(Aes::new(&cfg.secrets.0)?);
     let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
+    let queue = Arc::new(cfg.rabbitmq.open());
 
     let forum_index = warp::path!(String / "forum")
         .and(with_db(db.clone()))
-        .and_then(plugins::forum::controllers::index);
+        .and_then(forum::controllers::index);
     let forum_topics_index = warp::path!(String / "forum" / "topics")
         .and(with_db(db.clone()))
-        .and_then(plugins::forum::controllers::topics::index);
+        .and_then(forum::controllers::topics::index);
     let forum_topics_show = warp::path!(String / "forum" / "topics" / i32)
         .and(with_db(db.clone()))
-        .and_then(plugins::forum::controllers::topics::show);
+        .and_then(forum::controllers::topics::show);
     let forum_posts_index = warp::path!(String / "forum" / "posts")
         .and(with_db(db.clone()))
-        .and_then(plugins::forum::controllers::posts::index);
+        .and_then(forum::controllers::posts::index);
     let forum_posts_show = warp::path!(String / "forum" / "posts" / i32)
         .and(with_db(db.clone()))
-        .and_then(plugins::forum::controllers::posts::show);
+        .and_then(forum::controllers::posts::show);
 
     let robots_txt = warp::path("robots.txt")
         .and(warp::filters::host::optional())
-        .and_then(plugins::nut::controllers::robots_txt);
+        .and_then(nut::controllers::robots_txt);
     let sitemap = warp::path("sitemap.xml")
         .and(with_db(db.clone()))
-        .and_then(plugins::nut::controllers::sitemap::index);
+        .and_then(nut::controllers::sitemap::index);
     let sitemap_by_lang = warp::path!(String / "sitemap.xml")
         .and(with_db(db.clone()))
-        .and_then(plugins::nut::controllers::sitemap::by_lang);
+        .and_then(nut::controllers::sitemap::by_lang);
 
     let rss = warp::path!(String / "rss.xml")
         .and(with_db(db.clone()))
-        .and_then(plugins::nut::controllers::rss);
+        .and_then(nut::controllers::rss);
 
     let home = warp::path::end()
         .and(with_db(db.clone()))
-        .and_then(plugins::nut::controllers::home::index);
+        .and_then(nut::controllers::home::index);
     let home_by_lang = warp::path!(String)
         .and(with_db(db.clone()))
-        .and_then(plugins::nut::controllers::home::by_lang);
+        .and_then(nut::controllers::home::by_lang);
     let third = warp::path("3rd").and(warp::fs::dir("./node_modules/"));
 
     let attachments_create = warp::path("attachments")
         .and(auth)
+        .and(warp::addr::remote())
         .and(warp::filters::multipart::form())
         .and(with_db(db.clone()))
-        .and_then(plugins::nut::controllers::attachments::create);
+        .and_then(nut::controllers::attachments::create);
 
     let state = warp::any()
         .and(auth)
-        .map(move |token| plugins::nut::graphql::Context {
+        .and(warp::addr::remote())
+        .map(move |token, peer| nut::graphql::Context {
             db: db.clone(),
             cache: cache.clone(),
             jwt: jwt.clone(),
             aes: aes.clone(),
             hmac: hmac.clone(),
+            queue: queue.clone(),
+            peer,
             token,
         });
     let schema = Schema::new(Query, Mutation, EmptySubscription::new());

@@ -2,6 +2,7 @@ use std::collections::HashMap;
 
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
+use juniper::GraphQLObject;
 use serde::Serialize;
 use yaml_rust::{Yaml, YamlLoader};
 
@@ -27,7 +28,7 @@ lazy_static! {
     };
 }
 
-#[derive(Queryable, Serialize)]
+#[derive(Queryable, GraphQLObject, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
     pub id: i32,

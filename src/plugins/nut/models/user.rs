@@ -1,8 +1,10 @@
 use std::fmt;
 
 use chrono::{NaiveDateTime, Utc};
+use chrono_tz::Tz;
 use diesel::{insert_into, prelude::*, update};
 use hyper::StatusCode;
+use language_tags::LanguageTag;
 use openssl::hash::{hash, MessageDigest};
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -152,7 +154,14 @@ pub trait Dao {
     fn by_uid(&self, uid: &str) -> Result<Item>;
     fn by_email(&self, email: &str) -> Result<Item>;
     fn by_nick_name(&self, nick_name: &str) -> Result<Item>;
-    fn set_profile(&self, id: i32, real_name: &str, logo: &str) -> Result<()>;
+    fn set_profile(
+        &self,
+        id: i32,
+        real_name: &str,
+        logo: &str,
+        lang: &LanguageTag,
+        time_zone: &Tz,
+    ) -> Result<()>;
     fn sign_in(&self, id: i32, ip: &str) -> Result<()>;
     fn google(&self, access_token: &str, token: &IdToken, ip: &str) -> Result<Item>;
     fn sign_up<P: Password>(
@@ -194,7 +203,7 @@ impl Dao for Connection {
 
     fn by_nick_name(&self, nick_name: &str) -> Result<Item> {
         let it = users::dsl::users
-            .filter(users::dsl::nick_name.eq(nick_name.trim()))
+            .filter(users::dsl::nick_name.eq(nick_name.trim().to_lowercase()))
             .first(self)?;
         Ok(it)
     }
@@ -292,11 +301,12 @@ impl Dao for Connection {
         password: &str,
     ) -> Result<()> {
         let email = email.trim().to_lowercase();
-        let nick_name = nick_name.trim();
+        let nick_name = nick_name.trim().to_lowercase();
+        let real_name = real_name.trim();
         insert_into(users::dsl::users)
             .values(&New {
                 real_name,
-                nick_name,
+                nick_name: &nick_name,
                 email: &email,
                 password: Some(&enc.sum(password.as_bytes())?),
                 salt: &random_bytes(New::SALT_SIZE),
@@ -322,12 +332,22 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn set_profile(&self, id: i32, real_name: &str, logo: &str) -> Result<()> {
+    fn set_profile(
+        &self,
+        id: i32,
+        real_name: &str,
+        logo: &str,
+        lang: &LanguageTag,
+        time_zone: &Tz,
+    ) -> Result<()> {
+        let real_name = real_name.trim();
         let now = Utc::now().naive_utc();
         update(users::dsl::users.filter(users::dsl::id.eq(id)))
             .set((
                 users::dsl::real_name.eq(real_name),
                 users::dsl::logo.eq(logo),
+                users::dsl::lang.eq(&lang.to_string()),
+                users::dsl::time_zone.eq(&time_zone.to_string()),
                 users::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;

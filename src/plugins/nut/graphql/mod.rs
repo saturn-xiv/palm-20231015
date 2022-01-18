@@ -1,21 +1,24 @@
-pub mod mutation;
-pub mod query;
+pub mod locale;
+pub mod user;
 
 use std::default::Default;
+use std::net::SocketAddr;
 use std::ops::Deref;
 use std::sync::Arc;
 
 use chrono::{NaiveDateTime, Utc};
 use hyper::StatusCode;
-use juniper::GraphQLObject;
+use juniper::{GraphQLInputObject, GraphQLObject};
 use serde::{Deserialize, Serialize};
 
 use super::super::super::{
     cache::redis::Pool as CachePool,
     crypto::{Aes, Hmac},
+    i18n::locale::Dao as LocaleDao,
     jwt::Jwt,
     orm::Pool as DbPool,
-    HttpError, Result,
+    queue::amqp::RabbitMq,
+    HttpError, Result, VERSION,
 };
 use super::models::user::{Dao as UserDao, Item as User};
 
@@ -25,12 +28,20 @@ pub struct Context {
     pub jwt: Arc<Jwt>,
     pub db: DbPool,
     pub cache: CachePool,
+    pub queue: Arc<RabbitMq>,
     pub token: Option<String>,
+    pub peer: Option<SocketAddr>,
 }
 
 impl juniper::Context for Context {}
 
 impl Context {
+    pub fn peer(&self) -> String {
+        if let Some(ref it) = self.peer {
+            return it.ip().to_string();
+        }
+        "n/a".to_string()
+    }
     pub fn token(&self) -> Option<String> {
         if let Some(ref token) = self.token {
             if let Some(token) = token.strip_prefix(Jwt::BEARER) {
@@ -43,10 +54,10 @@ impl Context {
         if let Some(ref token) = self.token() {
             let token = self.jwt.parse::<Token>(token)?;
             let token = token.claims;
-            if token.action == Action::SignIn {
+            if token.act == Action::SignIn {
                 let db = self.db.get()?;
                 let db = db.deref();
-                let user = UserDao::by_uid(db, &token.user)?;
+                let user = UserDao::by_uid(db, &token.aud)?;
                 user.available()?;
                 return Ok(user);
             }
@@ -56,6 +67,10 @@ impl Context {
             StatusCode::NON_AUTHORITATIVE_INFORMATION,
             None,
         )))
+    }
+    pub fn administrator(&self) -> Result<User> {
+        let user = self.current_user()?;
+        Ok(user)
     }
 }
 
@@ -82,9 +97,88 @@ pub enum Action {
     Other(String),
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Token {
-    pub user: String,
-    pub action: Action,
+    pub aud: String,
+    pub act: Action,
+    pub nbf: i64,
+    pub exp: i64,
+}
+
+#[derive(GraphQLInputObject)]
+pub struct Pager {
+    pub size: i32,
+    pub index: i32,
+}
+
+impl Pager {
+    const MAX_SIZE: i32 = 1 << 8;
+    const MIN_SIZE: i32 = 1;
+    pub fn build(&self, total: i64) -> Pagination {
+        let total = total as i32;
+        let size = if self.size < Self::MIN_SIZE {
+            Self::MIN_SIZE
+        } else if self.size > Self::MAX_SIZE {
+            Self::MAX_SIZE
+        } else {
+            self.size
+        };
+        let capacity = {
+            if total % size == 0 {
+                total / size
+            } else {
+                (total / size) + 1
+            }
+        };
+        let index = if self.index < 1 {
+            1
+        } else if (self.index * size) > total {
+            capacity
+        } else {
+            self.index
+        };
+
+        Pagination {
+            size,
+            index,
+            capacity,
+        }
+    }
+}
+
+#[derive(GraphQLObject, Default)]
+pub struct Pagination {
+    pub capacity: i32,
+    pub size: i32,
+    pub index: i32,
+}
+
+impl Pagination {
+    pub fn build(&self) -> (i64, i64) {
+        (((self.index - 1) * self.size) as i64, self.size as i64)
+    }
+}
+
+#[derive(GraphQLObject)]
+pub struct Site {
+    pub locale: String,
+    pub languages: Vec<String>,
+    pub version: String,
+}
+
+impl Site {
+    pub fn new(ctx: &Context) -> Result<Self> {
+        let locale = match ctx.current_user() {
+            Ok(it) => it.lang,
+            Err(_) => "en-US".to_string(),
+        };
+        let db = ctx.db.get()?;
+        let db = db.deref();
+        Ok(Self {
+            locale,
+            languages: LocaleDao::languages(db)?,
+            version: VERSION.to_string(),
+        })
+    }
 }
