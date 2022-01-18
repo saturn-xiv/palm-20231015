@@ -1,15 +1,24 @@
+use std::sync::Arc;
+
 use juniper::EmptySubscription;
 use warp::Filter;
 
 use super::super::{
+    crypto::{Aes, Hmac},
     env::Config,
+    jwt::Jwt,
     plugins::{self, nut::controllers::with_db},
     Result,
 };
 use super::graphql::{mutation::Mutation, query::Query, Schema};
 
 pub async fn launch(cfg: &Config) -> Result<()> {
+    let auth = warp::header::optional::<String>("authorization");
     let db = cfg.postgresql.open()?;
+    let cache = cfg.redis.open()?;
+    let aes = Arc::new(Aes::new(&cfg.secrets.0)?);
+    let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
+    let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
 
     let forum_index = warp::path!(String / "forum")
         .and(with_db(db.clone()))
@@ -49,11 +58,22 @@ pub async fn launch(cfg: &Config) -> Result<()> {
         .and_then(plugins::nut::controllers::home::by_lang);
     let third = warp::path("3rd").and(warp::fs::dir("./node_modules/"));
 
-    let ch = cfg.redis.open()?;
-    let state = warp::any().map(move || plugins::nut::graphql::Context {
-        db: db.clone(),
-        cache: ch.clone(),
-    });
+    let attachments_create = warp::path("attachments")
+        .and(auth)
+        .and(warp::filters::multipart::form())
+        .and(with_db(db.clone()))
+        .and_then(plugins::nut::controllers::attachments::create);
+
+    let state = warp::any()
+        .and(auth)
+        .map(move |token| plugins::nut::graphql::Context {
+            db: db.clone(),
+            cache: cache.clone(),
+            jwt: jwt.clone(),
+            aes: aes.clone(),
+            hmac: hmac.clone(),
+            token,
+        });
     let schema = Schema::new(Query, Mutation, EmptySubscription::new());
     let graphql =
         warp::path("graphql").and(juniper_warp::make_graphql_filter(schema, state.boxed()));
@@ -74,7 +94,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 .or(third)
                 .or(home_by_lang),
         )
-        .or(warp::post().and(graphql));
+        .or(warp::post().and(graphql.or(attachments_create)));
 
     warp::serve(html).run(([127, 0, 0, 1], cfg.http.port)).await;
     Ok(())
