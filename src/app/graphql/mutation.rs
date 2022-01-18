@@ -41,6 +41,10 @@ impl Mutation {
         })?;
         Ok(Success::default())
     }
+    fn userConfirmByToken(ctx: &Context, token: String) -> FieldResult<Success> {
+        nut::graphql::user::confirm_by_token(ctx, &token)?;
+        Ok(Success::default())
+    }
     fn userUnlockByEmail(
         ctx: &Context,
         form: nut::graphql::user::UserUnlockByEmailRequest,
@@ -50,18 +54,22 @@ impl Mutation {
         })?;
         Ok(Success::default())
     }
-    fn userForgotPasswordByEmail(
+    fn userUnlockByToken(ctx: &Context, token: String) -> FieldResult<Success> {
+        nut::graphql::user::unlock_by_token(ctx, &token)?;
+        Ok(Success::default())
+    }
+    fn userForgotPassword(
         ctx: &Context,
-        form: nut::graphql::user::UserForgotPasswordByEmailRequest,
+        form: nut::graphql::user::UserForgotPasswordRequest,
     ) -> FieldResult<Success> {
         block_in_place(move || -> Result<()> {
             Handle::current().block_on(async move { form.handle(ctx).await })
         })?;
         Ok(Success::default())
     }
-    fn userResetPasswordByToken(
+    fn userResetPassword(
         ctx: &Context,
-        form: nut::graphql::user::UserResetPasswordByTokenRequest,
+        form: nut::graphql::user::UserResetPasswordRequest,
     ) -> FieldResult<Success> {
         form.handle(ctx)?;
         Ok(Success::default())
@@ -94,6 +102,18 @@ impl Mutation {
     }
     fn destroyLocale(ctx: &Context, id: i32) -> FieldResult<Success> {
         nut::graphql::locale::destroy(ctx, id)?;
+        Ok(Success::default())
+    }
+
+    fn createLeaveWord(
+        ctx: &Context,
+        form: nut::graphql::leave_word::CreateLeaveWordRequest,
+    ) -> FieldResult<Success> {
+        form.handle(ctx)?;
+        Ok(Success::default())
+    }
+    fn destroyLeaveWord(ctx: &Context, id: i32) -> FieldResult<Success> {
+        nut::graphql::leave_word::destroy(ctx, id)?;
         Ok(Success::default())
     }
 }

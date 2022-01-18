@@ -176,7 +176,7 @@ CREATE TABLE notifications(
     user_id INTEGER NOT NULL,
     url VARCHAR(255) NOT NULL,
     body TEXT NOT NULL,
-    body_content_type VARCHAR(32) NOT NULL,
+    body_editor VARCHAR(32) NOT NULL,
     "level" VARCHAR(16) NOT NULL,
     "read" BOOLEAN NOT NULL,
     version INTEGER NOT NULL DEFAULT 0,
@@ -263,7 +263,7 @@ CREATE TABLE leave_words(
     id SERIAL PRIMARY KEY,
     ip VARCHAR(45) NOT NULL,
     body TEXT NOT NULL,
-    body_content_type VARCHAR(32) NOT NULL,
+    body_editor VARCHAR(32) NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

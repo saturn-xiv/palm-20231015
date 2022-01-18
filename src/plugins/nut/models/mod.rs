@@ -16,8 +16,12 @@ pub mod vote;
 
 use std::default::Default;
 use std::fmt::{self};
+use std::str::FromStr;
 
+use hyper::StatusCode;
 use serde::{Deserialize, Serialize};
+
+use super::super::super::{Error, HttpError, Result};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -39,6 +43,13 @@ pub enum WYSIWYGEditor {
     Textarea,
 }
 
+impl WYSIWYGEditor {
+    pub const MARKDOWN: &'static str = "markdown";
+    pub const QUILL: &'static str = "quill";
+    pub const DRAFT: &'static str = "draft";
+    pub const TEXTAREA: &'static str = "textarea";
+}
+
 impl Default for WYSIWYGEditor {
     fn default() -> Self {
         Self::Textarea
@@ -48,10 +59,27 @@ impl Default for WYSIWYGEditor {
 impl fmt::Display for WYSIWYGEditor {
     fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
         match self {
-            Self::Markdown => fmt.write_str("markdown"),
-            Self::Quill => fmt.write_str("quill"),
-            Self::Draft => fmt.write_str("draft"),
-            Self::Textarea => fmt.write_str("textarea"),
+            Self::Markdown => fmt.write_str(Self::MARKDOWN),
+            Self::Quill => fmt.write_str(Self::QUILL),
+            Self::Draft => fmt.write_str(Self::DRAFT),
+            Self::Textarea => fmt.write_str(Self::TEXTAREA),
+        }
+    }
+}
+
+impl FromStr for WYSIWYGEditor {
+    type Err = Error;
+
+    fn from_str(s: &str) -> Result<Self> {
+        match s {
+            Self::MARKDOWN => Ok(Self::Markdown),
+            Self::QUILL => Ok(Self::Quill),
+            Self::DRAFT => Ok(Self::Draft),
+            Self::TEXTAREA => Ok(Self::Textarea),
+            _ => Err(Box::new(HttpError(
+                StatusCode::BAD_REQUEST,
+                Some(format!("unknown editor {}", s)),
+            ))),
         }
     }
 }

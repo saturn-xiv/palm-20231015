@@ -176,14 +176,14 @@ impl UserUnlockByEmailRequest {
 }
 
 #[derive(Validate, GraphQLInputObject)]
-pub struct UserForgotPasswordByEmailRequest {
+pub struct UserForgotPasswordRequest {
     #[validate(email, length(min = 1))]
     pub email: String,
     #[validate(url, length(min = 1))]
     pub home: String,
 }
 
-impl UserForgotPasswordByEmailRequest {
+impl UserForgotPasswordRequest {
     pub async fn handle(&self, ctx: &Context) -> Result<()> {
         self.validate()?;
         let db = ctx.db.get()?;
@@ -195,81 +195,63 @@ impl UserForgotPasswordByEmailRequest {
     }
 }
 
-#[derive(Validate, GraphQLInputObject)]
-pub struct UserConfirmByTokenRequest {
-    #[validate(email, length(min = 1))]
-    pub token: String,
-}
-
-impl UserConfirmByTokenRequest {
-    pub fn handle(&self, ctx: &Context) -> Result<()> {
-        self.validate()?;
-        let token = ctx.jwt.parse::<Token>(&self.token)?;
-        let token = token.claims;
-        if token.act != Action::Unlock {
-            return Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)));
-        }
-        let db = ctx.db.get()?;
-        let db = db.deref();
-        let user = UserDao::by_uid(db, &token.aud)?;
-        if user.locked_at.is_none() {
-            return Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)));
-        }
-        {
-            let ip = ctx.peer();
-            let user_id = user.id;
-            db.transaction::<_, Error, _>(move || {
-                UserDao::confirm(db, user_id)?;
-                LogDao::add(db, user_id, &ip, "Confirm account.")?;
-                Ok(())
-            })?;
-        }
-        Ok(())
+pub fn confirm_by_token(ctx: &Context, token: &str) -> Result<()> {
+    let token = ctx.jwt.parse::<Token>(token)?;
+    let token = token.claims;
+    if token.act != Action::Unlock {
+        return Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)));
     }
-}
-
-#[derive(Validate, GraphQLInputObject)]
-pub struct UserUnlockByTokenRequest {
-    #[validate(email, length(min = 1))]
-    pub token: String,
-}
-
-impl UserUnlockByTokenRequest {
-    pub fn handle(&self, ctx: &Context) -> Result<()> {
-        self.validate()?;
-        let token = ctx.jwt.parse::<Token>(&self.token)?;
-        let token = token.claims;
-        if token.act != Action::Unlock {
-            return Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)));
-        }
-        let db = ctx.db.get()?;
-        let db = db.deref();
-        let user = UserDao::by_uid(db, &token.aud)?;
-        if user.locked_at.is_none() {
-            return Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)));
-        }
-        {
-            let ip = ctx.peer();
-            let user_id = user.id;
-            db.transaction::<_, Error, _>(move || {
-                UserDao::lock(db, user_id, false)?;
-                LogDao::add(db, user_id, &ip, "Unlock account.")?;
-                Ok(())
-            })?;
-        }
-        Ok(())
+    let db = ctx.db.get()?;
+    let db = db.deref();
+    let user = UserDao::by_uid(db, &token.aud)?;
+    if user.locked_at.is_none() {
+        return Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)));
     }
+    {
+        let ip = ctx.peer();
+        let user_id = user.id;
+        db.transaction::<_, Error, _>(move || {
+            UserDao::confirm(db, user_id)?;
+            LogDao::add(db, user_id, &ip, "Confirm account.")?;
+            Ok(())
+        })?;
+    }
+    Ok(())
+}
+
+pub fn unlock_by_token(ctx: &Context, token: &str) -> Result<()> {
+    let token = ctx.jwt.parse::<Token>(token)?;
+    let token = token.claims;
+    if token.act != Action::Unlock {
+        return Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)));
+    }
+    let db = ctx.db.get()?;
+    let db = db.deref();
+    let user = UserDao::by_uid(db, &token.aud)?;
+    if user.locked_at.is_none() {
+        return Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)));
+    }
+    {
+        let ip = ctx.peer();
+        let user_id = user.id;
+        db.transaction::<_, Error, _>(move || {
+            UserDao::lock(db, user_id, false)?;
+            LogDao::add(db, user_id, &ip, "Unlock account.")?;
+            Ok(())
+        })?;
+    }
+    Ok(())
 }
 
 #[derive(Validate, GraphQLInputObject)]
-pub struct UserResetPasswordByTokenRequest {
+pub struct UserResetPasswordRequest {
     #[validate(email, length(min = 1))]
     pub token: String,
     #[validate(length(min = 6, max = 32))]
     pub password: String,
 }
 
-impl UserResetPasswordByTokenRequest {
+impl UserResetPasswordRequest {
     pub fn handle(&self, ctx: &Context) -> Result<()> {
         self.validate()?;
         let token = ctx.jwt.parse::<Token>(&self.token)?;

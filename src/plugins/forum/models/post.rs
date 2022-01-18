@@ -13,7 +13,7 @@ pub struct Item {
     pub user_id: i32,
     pub topic_id: i32,
     pub body: String,
-    pub body_content_type: String,
+    pub body_editor: String,
     pub version: i32,
     pub created_at: NaiveDateTime,
     pub updated_at: NaiveDateTime,
@@ -42,7 +42,7 @@ impl Dao for Connection {
                 forum_posts::dsl::user_id.eq(user),
                 forum_posts::dsl::topic_id.eq(topic),
                 forum_posts::dsl::body.eq(&body.content),
-                forum_posts::dsl::body_content_type.eq(&body.editor.to_string()),
+                forum_posts::dsl::body_editor.eq(&body.editor.to_string()),
                 forum_posts::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;
@@ -54,7 +54,7 @@ impl Dao for Connection {
         update(forum_posts::dsl::forum_posts.filter(forum_posts::dsl::id.eq(id)))
             .set((
                 forum_posts::dsl::body.eq(&body.content),
-                forum_posts::dsl::body_content_type.eq(&body.editor.to_string()),
+                forum_posts::dsl::body_editor.eq(&body.editor.to_string()),
                 forum_posts::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;

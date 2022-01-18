@@ -1,3 +1,4 @@
+pub mod leave_word;
 pub mod locale;
 pub mod user;
 

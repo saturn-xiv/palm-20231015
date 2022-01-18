@@ -35,4 +35,12 @@ impl Query {
         let it = nut::graphql::Site::new(ctx)?;
         Ok(it)
     }
+
+    fn indexLeaveWord(
+        ctx: &Context,
+        limit: i32,
+    ) -> FieldResult<Vec<nut::models::leave_word::Item>> {
+        nut::graphql::leave_word::index(ctx, limit)?;
+        Ok(Vec::new())
+    }
 }

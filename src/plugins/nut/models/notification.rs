@@ -13,7 +13,7 @@ pub struct Item {
     pub user_id: i32,
     pub url: String,
     pub body: String,
-    pub body_content_type: String,
+    pub body_editor: String,
     pub level: String,
     pub read: bool,
     pub version: i32,
@@ -36,7 +36,7 @@ impl Dao for Connection {
                 notifications::dsl::user_id.eq(user),
                 notifications::dsl::url.eq(url),
                 notifications::dsl::body.eq(&body.content),
-                notifications::dsl::body_content_type.eq(&body.editor.to_string()),
+                notifications::dsl::body_editor.eq(&body.editor.to_string()),
                 notifications::dsl::level.eq(level),
                 notifications::dsl::updated_at.eq(&now),
             ))

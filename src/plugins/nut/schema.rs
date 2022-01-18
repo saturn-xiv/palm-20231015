@@ -77,7 +77,7 @@ table! {
         id -> Int4,
         ip -> Varchar,
         body -> Text,
-        body_content_type -> Varchar,
+        body_editor -> Varchar,
         created_at -> Timestamp,
     }
 }
@@ -99,7 +99,7 @@ table! {
         user_id -> Int4,
         url -> Varchar,
         body -> Text,
-        body_content_type -> Varchar,
+        body_editor -> Varchar,
         level -> Varchar,
         read -> Bool,
         version -> Int4,
