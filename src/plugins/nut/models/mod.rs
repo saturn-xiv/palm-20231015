@@ -19,20 +19,33 @@ use std::fmt::{self};
 use std::str::FromStr;
 
 use hyper::StatusCode;
+use juniper::GraphQLObject;
 use serde::{Deserialize, Serialize};
 
 use super::super::super::{Error, HttpError, Result};
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+// TODO default font
+#[derive(Serialize, Deserialize, GraphQLObject, Default, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
-pub struct Font {}
-#[derive(Serialize, Deserialize, Debug, Clone)]
-#[serde(rename_all = "camelCase")]
-pub struct Color {}
+pub struct Font {
+    pub name: String,
+    pub size: i32,
+}
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+// TODO default color
+#[derive(Serialize, Deserialize, GraphQLObject, Default, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
-pub struct Icon {}
+pub struct Color {
+    pub front: String,
+    pub back: String,
+}
+
+// TODO default icon
+#[derive(Serialize, Deserialize, GraphQLObject, Default, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct Icon {
+    pub name: String,
+}
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]

@@ -116,4 +116,21 @@ impl Mutation {
         nut::graphql::leave_word::destroy(ctx, id)?;
         Ok(Success::default())
     }
+
+    fn createTag(ctx: &Context, form: nut::graphql::tag::TagRequest) -> FieldResult<Success> {
+        form.create(ctx)?;
+        Ok(Success::default())
+    }
+    fn updateTag(
+        ctx: &Context,
+        id: i32,
+        form: nut::graphql::tag::TagRequest,
+    ) -> FieldResult<Success> {
+        form.update(ctx, id)?;
+        Ok(Success::default())
+    }
+    fn destroyTag(ctx: &Context, id: i32) -> FieldResult<Success> {
+        nut::graphql::tag::destroy(ctx, id)?;
+        Ok(Success::default())
+    }
 }

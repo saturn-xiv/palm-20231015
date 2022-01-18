@@ -1,5 +1,6 @@
 pub mod leave_word;
 pub mod locale;
+pub mod tag;
 pub mod user;
 
 use std::default::Default;

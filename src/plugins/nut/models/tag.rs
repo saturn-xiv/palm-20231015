@@ -6,7 +6,7 @@ use super::super::super::super::{orm::Connection, Result};
 use super::super::schema::{tags, tags_resources};
 use super::{Color, Font, Icon};
 
-#[derive(Queryable, Serialize)]
+#[derive(Queryable, Serialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
     pub id: i32,

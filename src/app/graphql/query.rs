@@ -18,9 +18,9 @@ impl Query {
     fn apiVersion() -> &'static str {
         VERSION
     }
-    fn userLogs(ctx: &Context, pager: Pager) -> FieldResult<Vec<nut::models::log::Item>> {
-        nut::graphql::user::UserLogList::new(ctx, &pager)?;
-        Ok(Vec::new())
+    fn userLogs(ctx: &Context, pager: Pager) -> FieldResult<nut::graphql::user::UserLogList> {
+        let it = nut::graphql::user::UserLogList::new(ctx, &pager)?;
+        Ok(it)
     }
     fn userRefreshToken(ctx: &Context) -> FieldResult<nut::graphql::user::UserSignInResponse> {
         let it = nut::graphql::user::refresh_token(ctx)?;
@@ -40,7 +40,16 @@ impl Query {
         ctx: &Context,
         limit: i32,
     ) -> FieldResult<Vec<nut::models::leave_word::Item>> {
-        nut::graphql::leave_word::index(ctx, limit)?;
-        Ok(Vec::new())
+        let items = nut::graphql::leave_word::index(ctx, limit)?;
+        Ok(items)
+    }
+
+    fn indexTag(ctx: &Context) -> FieldResult<Vec<nut::graphql::tag::Tag>> {
+        let items = nut::graphql::tag::index(ctx)?;
+        Ok(items)
+    }
+    fn showTag(ctx: &Context, id: i32) -> FieldResult<nut::graphql::tag::Tag> {
+        let it = nut::graphql::tag::show(ctx, id)?;
+        Ok(it)
     }
 }
