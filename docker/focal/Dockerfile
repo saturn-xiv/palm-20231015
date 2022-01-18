@@ -23,7 +23,7 @@ RUN apt -y install zsh git locales rsync openssh-client sshpass \
     vim sudo tzdata pwgen curl zip unzip tree tmux \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
     imagemagick ffmpeg \
-    build-essential pkg-config libtool automake autoconf binutils cpio \
+    clang build-essential pkg-config libtool automake autoconf binutils cpio \
     debhelper bison flex ninja-build \
     crossbuild-essential-armhf pkg-config-arm-linux-gnueabihf \
     crossbuild-essential-arm64 pkg-config-aarch64-linux-gnu \
@@ -104,6 +104,14 @@ RUN zsh -c "source $HOME/.zshrc \
 ENV GRPC_WEB_VERSION "1.3.0"
 RUN wget -q -O $HOME/.local/bin/protoc-gen-grpc-web https://github.com/grpc/grpc-web/releases/download/${GRPC_WEB_VERSION}/protoc-gen-grpc-web-${GRPC_WEB_VERSION}-linux-x86_64
 RUN chmod +x $HOME/.local/bin/protoc-gen-grpc-web
+
+# TODO remove in future
+RUN git clone https://github.com/rui314/mold.git $HOME/build/mold
+RUN cd $HOME/build/mold
+RUN git checkout v1.0.1
+RUN sudo apt install libstdc++-10-dev libssl-dev libxxhash-dev zlib1g-dev
+RUN make CXX=clang++
+RUN sudo cp mold /usr/bin/
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | sudo tee /VERSION
 
