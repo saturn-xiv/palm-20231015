@@ -185,7 +185,7 @@ pub async fn launch() -> Result<()> {
         return rpc::launch(&cfg);
     }
     if let SubCommand::Worker(it) = args.command {
-        worker::launch(&cfg, &it.queue)?;
+        worker::launch(&cfg, &it.queue).await?;
     }
 
     Ok(())

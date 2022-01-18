@@ -12,7 +12,7 @@ use super::super::{
         log::{Dao as LogDao, Item as Log},
         user::{Dao as UserDao, Item as User},
     },
-    EmailTask,
+    tasks::email::Task as EmailTask,
 };
 use super::{Action, Context, Pager, Pagination, Token};
 

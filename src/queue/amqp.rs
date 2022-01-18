@@ -134,7 +134,7 @@ impl RabbitMq {
 }
 
 pub trait Handler {
-    fn handle(&self, id: &str, payload: &[u8]) -> Result<()>;
+    fn handle(&self, id: &str, content_type: &str, payload: &[u8]) -> Result<()>;
 }
 
 async fn handle_message<H: Handler>(delivery: Delivery, hnd: &H) -> Result<()> {
@@ -145,7 +145,7 @@ async fn handle_message<H: Handler>(delivery: Delivery, hnd: &H) -> Result<()> {
             let id = id.to_string();
             let content_type = content_type.to_string();
             info!("got message: {}[{}]", id, content_type);
-            hnd.handle(&id, &delivery.data)?;
+            hnd.handle(&id, &content_type, &delivery.data)?;
             delivery.ack(BasicAckOptions::default()).await?;
             return Ok(());
         }

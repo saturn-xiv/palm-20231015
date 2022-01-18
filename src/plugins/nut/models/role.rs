@@ -17,6 +17,11 @@ pub struct Item {
     pub updated_at: NaiveDateTime,
 }
 
+impl Item {
+    pub const ADMINISTRATOR: &'static str = "administrator";
+    pub const ROOT: &'static str = "root";
+}
+
 pub trait Dao {
     fn all(&self) -> Result<Vec<Item>>;
     fn by_id(&self, id: i32) -> Result<Item>;

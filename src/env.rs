@@ -7,7 +7,7 @@ use serde::{Deserialize, Serialize};
 
 use super::{
     aws::s3::Config as S3, cache::redis::Config as Redis, crypto::Key, orm::Config as PostgreSql,
-    queue::amqp::Config as RabbitMq,
+    plugins::nut::tasks::email::Handler as Smtp, queue::amqp::Config as RabbitMq,
 };
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
@@ -76,6 +76,7 @@ pub struct Config {
     pub postgresql: PostgreSql,
     pub redis: Redis,
     pub rabbitmq: RabbitMq,
+    pub smtp: Smtp,
     pub s3: S3,
 }
 

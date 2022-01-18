@@ -11,7 +11,7 @@ use super::super::super::super::{
 use super::Context;
 
 #[derive(Validate, GraphQLInputObject)]
-pub struct CreateLocaleRequest {
+pub struct SetLocaleRequest {
     #[validate(length(min = 1))]
     pub lang: String,
     #[validate(length(min = 1))]
@@ -20,7 +20,7 @@ pub struct CreateLocaleRequest {
     pub message: String,
 }
 
-impl CreateLocaleRequest {
+impl SetLocaleRequest {
     pub fn handle(&self, ctx: &Context) -> Result<()> {
         self.validate()?;
         let lang: LanguageTag = self.lang.parse()?;
@@ -28,27 +28,12 @@ impl CreateLocaleRequest {
         ctx.administrator()?;
         let db = ctx.db.get()?;
         let db = db.deref();
-        LocaleDao::create(db, &lang, &self.code, &self.message)?;
-        Ok(())
-    }
-}
 
-#[derive(Validate, GraphQLInputObject)]
-pub struct UpdateLocaleRequest {
-    pub id: i32,
-    #[validate(length(min = 1))]
-    pub code: String,
-    #[validate(length(min = 1))]
-    pub message: String,
-}
+        match LocaleDao::by_lang_and_code(db, &lang, &self.code) {
+            Ok(it) => LocaleDao::update(db, it.id, &self.code, &self.message)?,
+            Err(_) => LocaleDao::create(db, &lang, &self.code, &self.message)?,
+        };
 
-impl UpdateLocaleRequest {
-    pub fn handle(&self, ctx: &Context) -> Result<()> {
-        self.validate()?;
-        ctx.administrator()?;
-        let db = ctx.db.get()?;
-        let db = db.deref();
-        LocaleDao::update(db, self.id, &self.code, &self.message)?;
         Ok(())
     }
 }

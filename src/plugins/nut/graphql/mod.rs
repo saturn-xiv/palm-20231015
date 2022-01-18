@@ -20,7 +20,11 @@ use super::super::super::{
     queue::amqp::RabbitMq,
     HttpError, Result, VERSION,
 };
-use super::models::user::{Dao as UserDao, Item as User};
+use super::models::{
+    policy::Dao as PolicyDao,
+    role::Item as Role,
+    user::{Dao as UserDao, Item as User},
+};
 
 pub struct Context {
     pub hmac: Arc<Hmac>,
@@ -70,7 +74,12 @@ impl Context {
     }
     pub fn administrator(&self) -> Result<User> {
         let user = self.current_user()?;
-        Ok(user)
+        let db = self.db.get()?;
+        let db = db.deref();
+        if PolicyDao::is(db, User::ROLE_TYPE, user.id, Role::ADMINISTRATOR) {
+            return Ok(user);
+        }
+        Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))
     }
 }
 

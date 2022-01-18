@@ -85,16 +85,9 @@ impl Mutation {
         Ok(Success::default())
     }
 
-    fn createLocale(
+    fn setLocale(
         ctx: &Context,
-        form: nut::graphql::locale::CreateLocaleRequest,
-    ) -> FieldResult<Success> {
-        form.handle(ctx)?;
-        Ok(Success::default())
-    }
-    fn updateLocale(
-        ctx: &Context,
-        form: nut::graphql::locale::CreateLocaleRequest,
+        form: nut::graphql::locale::SetLocaleRequest,
     ) -> FieldResult<Success> {
         form.handle(ctx)?;
         Ok(Success::default())
