@@ -4,17 +4,38 @@ use chrono::Duration;
 use diesel::connection::Connection as DieselConnection;
 use hyper::StatusCode;
 use juniper::{GraphQLInputObject, GraphQLObject};
+use tokio::{runtime::Handle, task::block_in_place};
 use validator::Validate;
 
-use super::super::super::super::{i18n::I18n, jwt::Jwt, Error, HttpError, Result};
+use super::super::super::super::{
+    i18n::I18n, jwt::Jwt, orm::Connection as Db, Error, HttpError, Result,
+};
 use super::super::{
     models::{
         log::{Dao as LogDao, Item as Log},
-        user::{Dao as UserDao, Item as User},
+        user::{Dao as UserDao, Item as UserItem},
     },
     tasks::email::Task as EmailTask,
 };
 use super::{Action, Context, Pager, Pagination, Token};
+
+#[derive(GraphQLObject)]
+pub struct Author {
+    pub real_name: String,
+    pub nick_name: String,
+    pub logo: String,
+}
+
+impl Author {
+    pub fn new(db: &Db, user: i32) -> Result<Self> {
+        let it = UserDao::by_id(db, user)?;
+        Ok(Self {
+            real_name: it.real_name.clone(),
+            nick_name: it.nick_name.clone(),
+            logo: it.logo,
+        })
+    }
+}
 
 pub fn refresh_token(ctx: &Context) -> Result<UserSignInResponse> {
     let user = ctx.current_user()?;
@@ -104,7 +125,7 @@ pub struct UserSignUpRequest {
 }
 
 impl UserSignUpRequest {
-    pub async fn handle(&self, ctx: &Context) -> Result<()> {
+    pub fn handle(&self, ctx: &Context) -> Result<()> {
         self.validate()?;
         let db = ctx.db.get()?;
         let db = db.deref();
@@ -126,7 +147,7 @@ impl UserSignUpRequest {
         })?;
 
         let user = UserDao::by_email(db, &self.email)?;
-        send_email(ctx, &self.home, &user, &Action::Confirm).await?;
+        send_email(ctx, &self.home, &user, &Action::Confirm)?;
         Ok(())
     }
 }
@@ -140,7 +161,7 @@ pub struct UserConfirmByEmailRequest {
 }
 
 impl UserConfirmByEmailRequest {
-    pub async fn handle(&self, ctx: &Context) -> Result<()> {
+    pub fn handle(&self, ctx: &Context) -> Result<()> {
         self.validate()?;
         let db = ctx.db.get()?;
         let db = db.deref();
@@ -148,7 +169,7 @@ impl UserConfirmByEmailRequest {
         if user.confirmed_at.is_some() {
             return Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)));
         }
-        send_email(ctx, &self.home, &user, &Action::Confirm).await?;
+        send_email(ctx, &self.home, &user, &Action::Confirm)?;
         Ok(())
     }
 }
@@ -162,7 +183,7 @@ pub struct UserUnlockByEmailRequest {
 }
 
 impl UserUnlockByEmailRequest {
-    pub async fn handle(&self, ctx: &Context) -> Result<()> {
+    pub fn handle(&self, ctx: &Context) -> Result<()> {
         self.validate()?;
         let db = ctx.db.get()?;
         let db = db.deref();
@@ -170,7 +191,7 @@ impl UserUnlockByEmailRequest {
         if user.locked_at.is_none() {
             return Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)));
         }
-        send_email(ctx, &self.home, &user, &Action::Unlock).await?;
+        send_email(ctx, &self.home, &user, &Action::Unlock)?;
         Ok(())
     }
 }
@@ -184,13 +205,13 @@ pub struct UserForgotPasswordRequest {
 }
 
 impl UserForgotPasswordRequest {
-    pub async fn handle(&self, ctx: &Context) -> Result<()> {
+    pub fn handle(&self, ctx: &Context) -> Result<()> {
         self.validate()?;
         let db = ctx.db.get()?;
         let db = db.deref();
         let user = UserDao::by_email(db, &self.email)?;
         user.available()?;
-        send_email(ctx, &self.home, &user, &Action::ResetPassword).await?;
+        send_email(ctx, &self.home, &user, &Action::ResetPassword)?;
         Ok(())
     }
 }
@@ -372,7 +393,7 @@ pub fn sign_out(ctx: &Context) -> Result<()> {
     Ok(())
 }
 
-async fn send_email(ctx: &Context, home: &str, user: &User, act: &Action) -> Result<()> {
+fn send_email(ctx: &Context, home: &str, user: &UserItem, act: &Action) -> Result<()> {
     let (nbf, exp) = Jwt::timestamps(Duration::hours(1));
     let token = Token {
         aud: user.uid.clone(),
@@ -412,6 +433,9 @@ async fn send_email(ctx: &Context, home: &str, user: &User, act: &Action) -> Res
         to: user.email.clone(),
         ..Default::default()
     };
-    ctx.queue.publish(EmailTask::QUEUE, &task).await?;
+    block_in_place(move || -> Result<()> {
+        Handle::current().block_on(async move { ctx.queue.publish(EmailTask::QUEUE, &task).await })
+    })?;
+
     Ok(())
 }

@@ -63,6 +63,7 @@ impl Dao for Connection {
         color: &Color,
     ) -> Result<()> {
         let now = Utc::now().naive_utc();
+        let code = code.trim().to_lowercase();
         insert_into(tags::dsl::tags)
             .values((
                 tags::dsl::code.eq(code),
@@ -86,6 +87,7 @@ impl Dao for Connection {
         color: &Color,
     ) -> Result<()> {
         let now = Utc::now().naive_utc();
+        let code = code.trim().to_lowercase();
         update(tags::dsl::tags.filter(tags::dsl::id.eq(id)))
             .set((
                 tags::dsl::code.eq(code),

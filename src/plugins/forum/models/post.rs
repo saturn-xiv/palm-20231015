@@ -21,6 +21,7 @@ pub struct Item {
 
 pub trait Dao {
     fn all(&self) -> Result<Vec<Item>>;
+    fn count(&self) -> Result<i64>;
     fn by_topic(&self, topic: i32) -> Result<Vec<Item>>;
     fn by_id(&self, id: i32) -> Result<Item>;
     fn create(&self, user: i32, topic: i32, body: &WYSIWYG) -> Result<()>;
@@ -66,6 +67,10 @@ impl Dao for Connection {
             .order(forum_posts::dsl::updated_at.desc())
             .load::<Item>(self)?;
         Ok(items)
+    }
+    fn count(&self) -> Result<i64> {
+        let cnt: i64 = forum_posts::dsl::forum_posts.count().get_result(self)?;
+        Ok(cnt)
     }
     fn by_topic(&self, topic: i32) -> Result<Vec<Item>> {
         let items = forum_posts::dsl::forum_posts

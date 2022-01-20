@@ -27,6 +27,7 @@ pub trait Dao {
     fn create(&self, user: i32, title: &str, summary: &str, body: &WYSIWYG) -> Result<()>;
     fn update(&self, id: i32, title: &str, summary: &str, body: &WYSIWYG) -> Result<()>;
     fn all(&self) -> Result<Vec<Item>>;
+    fn count(&self) -> Result<i64>;
     fn delete(&self, id: i32) -> Result<()>;
 }
 
@@ -71,6 +72,11 @@ impl Dao for Connection {
             .order(forum_topics::dsl::updated_at.desc())
             .load::<Item>(self)?;
         Ok(items)
+    }
+
+    fn count(&self) -> Result<i64> {
+        let cnt: i64 = forum_topics::dsl::forum_topics.count().get_result(self)?;
+        Ok(cnt)
     }
 
     fn delete(&self, id: i32) -> Result<()> {

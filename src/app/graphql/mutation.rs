@@ -1,13 +1,11 @@
 use juniper::{graphql_object, FieldResult};
-use tokio::runtime::Handle;
-use tokio::task::block_in_place;
 
-use super::super::super::{
-    plugins::nut::{
+use super::super::super::plugins::{
+    forum,
+    nut::{
         self,
         graphql::{Context, Success},
     },
-    Result,
 };
 
 pub struct Mutation;
@@ -27,18 +25,14 @@ impl Mutation {
         ctx: &Context,
         form: nut::graphql::user::UserSignUpRequest,
     ) -> FieldResult<Success> {
-        block_in_place(move || -> Result<()> {
-            Handle::current().block_on(async move { form.handle(ctx).await })
-        })?;
+        form.handle(ctx)?;
         Ok(Success::default())
     }
     fn userConfirmByEmail(
         ctx: &Context,
         form: nut::graphql::user::UserConfirmByEmailRequest,
     ) -> FieldResult<Success> {
-        block_in_place(move || -> Result<()> {
-            Handle::current().block_on(async move { form.handle(ctx).await })
-        })?;
+        form.handle(ctx)?;
         Ok(Success::default())
     }
     fn userConfirmByToken(ctx: &Context, token: String) -> FieldResult<Success> {
@@ -49,9 +43,7 @@ impl Mutation {
         ctx: &Context,
         form: nut::graphql::user::UserUnlockByEmailRequest,
     ) -> FieldResult<Success> {
-        block_in_place(move || -> Result<()> {
-            Handle::current().block_on(async move { form.handle(ctx).await })
-        })?;
+        form.handle(ctx)?;
         Ok(Success::default())
     }
     fn userUnlockByToken(ctx: &Context, token: String) -> FieldResult<Success> {
@@ -62,9 +54,7 @@ impl Mutation {
         ctx: &Context,
         form: nut::graphql::user::UserForgotPasswordRequest,
     ) -> FieldResult<Success> {
-        block_in_place(move || -> Result<()> {
-            Handle::current().block_on(async move { form.handle(ctx).await })
-        })?;
+        form.handle(ctx)?;
         Ok(Success::default())
     }
     fn userResetPassword(
@@ -131,6 +121,46 @@ impl Mutation {
     }
     fn destroyTag(ctx: &Context, id: i32) -> FieldResult<Success> {
         nut::graphql::tag::destroy(ctx, id)?;
+        Ok(Success::default())
+    }
+
+    fn createForumTopic(
+        ctx: &Context,
+        form: forum::graphql::topic::ForumTopicRequest,
+    ) -> FieldResult<Success> {
+        form.create(ctx)?;
+        Ok(Success::default())
+    }
+    fn updateForumTopic(
+        ctx: &Context,
+        id: i32,
+        form: forum::graphql::topic::ForumTopicRequest,
+    ) -> FieldResult<Success> {
+        form.update(ctx, id)?;
+        Ok(Success::default())
+    }
+    fn destroyForumTopic(ctx: &Context, id: i32) -> FieldResult<Success> {
+        forum::graphql::topic::destroy(ctx, id)?;
+        Ok(Success::default())
+    }
+    fn createForumPost(
+        ctx: &Context,
+        topic: i32,
+        form: forum::graphql::post::ForumPostRequest,
+    ) -> FieldResult<Success> {
+        form.create(ctx, topic)?;
+        Ok(Success::default())
+    }
+    fn updateForumPost(
+        ctx: &Context,
+        id: i32,
+        form: forum::graphql::post::ForumPostRequest,
+    ) -> FieldResult<Success> {
+        form.update(ctx, id)?;
+        Ok(Success::default())
+    }
+    fn destroyForumPost(ctx: &Context, id: i32) -> FieldResult<Success> {
+        forum::graphql::post::destroy(ctx, id)?;
         Ok(Success::default())
     }
 }
