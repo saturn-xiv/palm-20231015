@@ -1,4 +1,6 @@
-use chrono::{NaiveDate, NaiveDateTime, Utc};
+use std::ops::Add;
+
+use chrono::{Duration, NaiveDate, NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
 use serde::Serialize;
 
@@ -20,6 +22,12 @@ pub struct Item {
 impl Item {
     pub const ADMINISTRATOR: &'static str = "administrator";
     pub const ROOT: &'static str = "root";
+
+    pub fn timestamps(ttl: Duration) -> (NaiveDate, NaiveDate) {
+        let nbf = Utc::now().naive_utc();
+        let exp = nbf.add(ttl);
+        (nbf.date(), exp.date())
+    }
 }
 
 pub trait Dao {

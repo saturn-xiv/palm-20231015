@@ -14,6 +14,10 @@ pub struct Mutation;
     context = Context,
 )]
 impl Mutation {
+    fn install(ctx: &Context, form: nut::graphql::user::UserSignUpRequest) -> FieldResult<Success> {
+        form.install_administrator(ctx)?;
+        Ok(Success::default())
+    }
     fn userSignIn(
         ctx: &Context,
         form: nut::graphql::user::UserSignInRequest,

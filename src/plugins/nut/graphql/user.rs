@@ -12,7 +12,8 @@ use super::super::super::super::{
 };
 use super::super::{
     models::{
-        log::{Dao as LogDao, Item as Log},
+        log::{Dao as LogDao, Item as LogItem},
+        role::{Dao as RoleDao, Item as RoleItem},
         user::{Dao as UserDao, Item as UserItem},
     },
     tasks::email::Task as EmailTask,
@@ -120,6 +121,10 @@ pub struct UserSignUpRequest {
     pub email: String,
     #[validate(length(min = 6, max = 32))]
     pub password: String,
+    #[validate(length(min = 1))]
+    pub lang: String,
+    #[validate(length(min = 1))]
+    pub time_zone: String,
     #[validate(url, length(min = 1))]
     pub home: String,
 }
@@ -140,6 +145,8 @@ impl UserSignUpRequest {
                 &self.nick_name,
                 &self.email,
                 &self.password,
+                &self.lang.parse()?,
+                &self.time_zone.parse()?,
             )?;
             let user = UserDao::by_email(db, &self.email)?;
             LogDao::add(db, user.id, &ip, "sign up.")?;
@@ -148,6 +155,47 @@ impl UserSignUpRequest {
 
         let user = UserDao::by_email(db, &self.email)?;
         send_email(ctx, &self.home, &user, &Action::Confirm)?;
+        Ok(())
+    }
+
+    pub fn install_administrator(&self, ctx: &Context) -> Result<()> {
+        self.validate()?;
+        let db = ctx.db.get()?;
+        let db = db.deref();
+        let c = UserDao::count(db)?;
+        if c > 0 {
+            return Err(Box::new(HttpError(
+                StatusCode::BAD_REQUEST,
+                Some("db isn't empty".to_string()),
+            )));
+        }
+        let enc = ctx.hmac.deref();
+
+        let ip = ctx.peer();
+        db.transaction::<_, Error, _>(move || {
+            UserDao::sign_up(
+                db,
+                enc,
+                &self.real_name,
+                &self.nick_name,
+                &self.email,
+                &self.password,
+                &self.lang.parse()?,
+                &self.time_zone.parse()?,
+            )?;
+            let user = UserDao::by_email(db, &self.email)?;
+            LogDao::add(db, user.id, &ip, "sign up.")?;
+            for role in [RoleItem::ADMINISTRATOR, RoleItem::ROOT] {
+                RoleDao::create(db, None, role, role)?;
+                let role = RoleDao::by_code(db, role)?;
+                let (nbf, exp) = RoleItem::timestamps(Duration::weeks(1 << 10));
+                RoleDao::associate(db, role.id, UserItem::ROLE_TYPE, user.id, &nbf, &exp)?;
+                LogDao::add(db, user.id, &ip, &format!("apply {} role.", role.code))?;
+            }
+
+            Ok(())
+        })?;
+
         Ok(())
     }
 }
@@ -367,7 +415,7 @@ impl UserChangePasswordRequest {
 
 #[derive(GraphQLObject)]
 pub struct UserLogList {
-    pub items: Vec<Log>,
+    pub items: Vec<LogItem>,
     pub pagination: Pagination,
 }
 

@@ -143,6 +143,8 @@ pub struct New<'a> {
     pub provider_type: &'a str,
     pub provider_id: &'a str,
     pub logo: &'a str,
+    pub lang: &'a str,
+    pub time_zone: &'a str,
     pub updated_at: &'a NaiveDateTime,
 }
 
@@ -172,6 +174,8 @@ pub trait Dao {
         nick_name: &str,
         email: &str,
         password: &str,
+        lang: &LanguageTag,
+        time_zone: &Tz,
     ) -> Result<()>;
     fn lock(&self, id: i32, on: bool) -> Result<()>;
     fn confirm(&self, id: i32) -> Result<()>;
@@ -252,6 +256,8 @@ impl Dao for Connection {
                         salt: &random_bytes(New::SALT_SIZE),
                         provider_type: &Type::Google.to_string(),
                         provider_id: &id_token.sub,
+                        lang: "en-US",
+                        time_zone: "UTC",
                         logo: &match id_token.picture {
                             Some(ref v) => v.clone(),
                             None => Item::gravatar_logo(&email)?,
@@ -300,6 +306,8 @@ impl Dao for Connection {
         nick_name: &str,
         email: &str,
         password: &str,
+        lang: &LanguageTag,
+        time_zone: &Tz,
     ) -> Result<()> {
         let email = email.trim().to_lowercase();
         let nick_name = nick_name.trim().to_lowercase();
@@ -314,6 +322,8 @@ impl Dao for Connection {
                 provider_type: &Type::Email.to_string(),
                 provider_id: &email,
                 logo: &Item::gravatar_logo(&email)?,
+                lang: &lang.to_string(),
+                time_zone: &time_zone.to_string(),
                 uid: &Uuid::new_v4().to_string(),
                 updated_at: &Utc::now().naive_utc(),
             })
