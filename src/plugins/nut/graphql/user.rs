@@ -1,3 +1,4 @@
+use std::any::type_name;
 use std::ops::Deref;
 
 use chrono::Duration;
@@ -189,7 +190,7 @@ impl UserSignUpRequest {
                 RoleDao::create(db, None, role, role)?;
                 let role = RoleDao::by_code(db, role)?;
                 let (nbf, exp) = RoleItem::timestamps(Duration::weeks(1 << 10));
-                RoleDao::associate(db, role.id, UserItem::ROLE_TYPE, user.id, &nbf, &exp)?;
+                RoleDao::associate(db, role.id, type_name::<UserItem>(), user.id, &nbf, &exp)?;
                 LogDao::add(db, user.id, &ip, &format!("apply {} role.", role.code))?;
             }
 

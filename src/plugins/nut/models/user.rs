@@ -78,7 +78,6 @@ impl fmt::Display for Item {
 }
 
 impl Item {
-    pub const ROLE_TYPE: &'static str = "user";
     pub fn available(&self) -> Result<()> {
         if self.deleted_at.is_some() {
             return Err(Box::new(HttpError(

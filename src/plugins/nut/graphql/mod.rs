@@ -3,6 +3,7 @@ pub mod locale;
 pub mod tag;
 pub mod user;
 
+use std::any::type_name;
 use std::default::Default;
 use std::net::SocketAddr;
 use std::ops::Deref;
@@ -78,7 +79,7 @@ impl Context {
         let user = self.current_user()?;
         let db = self.db.get()?;
         let db = db.deref();
-        if PolicyDao::is(db, User::ROLE_TYPE, user.id, Role::ADMINISTRATOR) {
+        if PolicyDao::is(db, type_name::<User>(), user.id, Role::ADMINISTRATOR) {
             return Ok(user);
         }
         Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))

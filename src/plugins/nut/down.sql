@@ -16,6 +16,8 @@ DROP TABLE categories_resources;
 
 DROP TABLE notifications;
 
+DROP TABLE attachments_usages;
+
 DROP TABLE attachments;
 
 DROP TABLE policies;
@@ -26,7 +28,7 @@ DROP TABLE resources;
 
 DROP TABLE roles_items;
 
-DROP TABLE roles_relations;
+DROP TABLE role_relations;
 
 DROP TABLE roles;
 

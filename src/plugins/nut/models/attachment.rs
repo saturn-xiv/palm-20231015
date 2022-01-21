@@ -14,7 +14,7 @@ pub struct Item {
     pub title: String,
     pub size: i32,
     pub content_type: String,
-    pub url: String,
+    pub body: Vec<u8>,
     pub version: i32,
     pub created_at: NaiveDateTime,
     pub updated_at: NaiveDateTime,
@@ -22,16 +22,8 @@ pub struct Item {
 
 pub trait Dao {
     fn by_id(&self, id: i32) -> Result<Item>;
-    fn create(
-        &self,
-        user: i32,
-        title: &str,
-        content_type: &Mime,
-        url: &str,
-        size: i32,
-    ) -> Result<()>;
-    fn update(&self, id: i32, title: &str, content_type: &Mime, url: &str, size: i32)
-        -> Result<()>;
+    fn create(&self, user: i32, title: &str, content_type: &Mime, body: &[u8]) -> Result<()>;
+    fn update(&self, id: i32, title: &str) -> Result<()>;
     fn all(&self) -> Result<Vec<Item>>;
     fn by_user(&self, user: i32) -> Result<Vec<Item>>;
     fn delete(&self, id: i32) -> Result<()>;
@@ -44,22 +36,16 @@ impl Dao for Connection {
             .first::<Item>(self)?;
         Ok(it)
     }
-    fn create(
-        &self,
-        user: i32,
-        title: &str,
-        content_type: &Mime,
-        url: &str,
-        size: i32,
-    ) -> Result<()> {
+    fn create(&self, user: i32, title: &str, content_type: &Mime, body: &[u8]) -> Result<()> {
         let now = Utc::now().naive_utc();
         let content_type = content_type.to_string();
+        let size = (body.len() / (1 << 10)) as i32;
         insert_into(attachments::dsl::attachments)
             .values((
                 attachments::dsl::user_id.eq(user),
                 attachments::dsl::title.eq(title),
                 attachments::dsl::content_type.eq(content_type),
-                attachments::dsl::url.eq(url),
+                attachments::dsl::body.eq(body),
                 attachments::dsl::size.eq(size),
                 attachments::dsl::updated_at.eq(&now),
             ))
@@ -67,22 +53,11 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn update(
-        &self,
-        id: i32,
-        title: &str,
-        content_type: &Mime,
-        url: &str,
-        size: i32,
-    ) -> Result<()> {
+    fn update(&self, id: i32, title: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
-        let content_type = content_type.to_string();
         update(attachments::dsl::attachments.filter(attachments::dsl::id.eq(id)))
             .set((
                 attachments::dsl::title.eq(title),
-                attachments::dsl::content_type.eq(content_type),
-                attachments::dsl::url.eq(url),
-                attachments::dsl::size.eq(size),
                 attachments::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;

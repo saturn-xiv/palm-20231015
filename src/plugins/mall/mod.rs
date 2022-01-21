@@ -1,3 +1,6 @@
+pub mod controllers;
+pub mod graphql;
+pub mod models;
 pub mod schema;
 
 use super::super::orm::migration::Migration;

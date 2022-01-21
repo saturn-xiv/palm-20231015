@@ -17,10 +17,6 @@ pub struct Item {
     pub updated_at: NaiveDateTime,
 }
 
-impl Item {
-    pub const ROLE_TYPE: &'static str = "group";
-}
-
 pub trait Dao {
     fn all(&self) -> Result<Vec<Item>>;
     fn by_id(&self, id: i32) -> Result<Item>;

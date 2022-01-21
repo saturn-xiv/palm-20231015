@@ -5,7 +5,7 @@ table! {
         title -> Varchar,
         size -> Int4,
         content_type -> Varchar,
-        url -> Varchar,
+        body -> Bytea,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,

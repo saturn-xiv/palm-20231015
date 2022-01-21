@@ -5,7 +5,7 @@ mod common;
 use chrono::Duration;
 use palm::{
     jwt::Jwt,
-    models::user::{Action, Token},
+    plugins::nut::graphql::{Action, Token},
 };
 
 #[test]
@@ -19,8 +19,7 @@ fn hs512() {
         .sum(
             None,
             &Token {
-                uid: uid.to_string(),
-                sub: "hi".to_string(),
+                aud: uid.to_string(),
                 act: Action::SignIn,
                 nbf,
                 exp,
@@ -29,5 +28,5 @@ fn hs512() {
         .unwrap();
     println!("{}", token);
     let token = jwt.parse::<Token>(&token).unwrap();
-    assert_eq!(token.claims.uid, uid);
+    assert_eq!(token.claims.aud, uid);
 }

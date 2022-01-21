@@ -3,8 +3,8 @@ table! {
         id -> Int4,
         code -> Varchar,
         title -> Varchar,
-        body -> Json,
-        pictures -> Json,
+        body -> Text,
+        body_editor -> Varchar,
         deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         created_at -> Timestamp,
@@ -18,7 +18,6 @@ table! {
         code -> Varchar,
         name -> Varchar,
         parent_id -> Nullable<Int4>,
-        has_nodes -> Bool,
         sort -> Int4,
         deleted_at -> Nullable<Timestamp>,
         version -> Int4,
@@ -39,11 +38,8 @@ table! {
 table! {
     erp_consignees (id) {
         id -> Int4,
-        user_id -> Int4,
         username -> Varchar,
-        phone -> Varchar,
-        address -> Nullable<Varchar>,
-        sort -> Int4,
+        company -> Nullable<Varchar>,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -56,7 +52,6 @@ table! {
         code -> Varchar,
         name -> Varchar,
         logo -> Nullable<Varchar>,
-        contact -> Json,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -80,11 +75,11 @@ table! {
         id -> Int4,
         user_id -> Int4,
         code -> Varchar,
-        consignee -> Json,
-        items -> Json,
-        deliverer -> Json,
-        payment -> Json,
-        prices -> Json,
+        consignee -> Bytea,
+        items -> Bytea,
+        deliverer -> Bytea,
+        payment -> Bytea,
+        prices -> Bytea,
         status -> Varchar,
         version -> Int4,
         created_at -> Timestamp,
@@ -98,7 +93,6 @@ table! {
         code -> Varchar,
         name -> Varchar,
         logo -> Nullable<Varchar>,
-        contact -> Json,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -111,38 +105,10 @@ table! {
         spu_id -> Int4,
         code -> Varchar,
         title -> Varchar,
-        body -> Json,
-        price -> Json,
+        body -> Text,
+        body_editor -> Varchar,
         status -> Varchar,
         deleted_at -> Nullable<Timestamp>,
-        version -> Int4,
-        created_at -> Timestamp,
-        updated_at -> Timestamp,
-    }
-}
-
-table! {
-    erp_sku_parameters (id) {
-        id -> Int4,
-        sku_id -> Int4,
-        code -> Varchar,
-        name -> Varchar,
-        value -> Json,
-        sort -> Int4,
-        version -> Int4,
-        created_at -> Timestamp,
-        updated_at -> Timestamp,
-    }
-}
-
-table! {
-    erp_sku_pictures (id) {
-        id -> Int4,
-        sku_id -> Int4,
-        title -> Varchar,
-        summary -> Nullable<Text>,
-        url -> Varchar,
-        sort -> Int4,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -155,23 +121,10 @@ table! {
         brand_id -> Int4,
         code -> Varchar,
         title -> Varchar,
-        body -> Json,
+        body -> Text,
+        body_editor -> Varchar,
         status -> Varchar,
         deleted_at -> Nullable<Timestamp>,
-        version -> Int4,
-        created_at -> Timestamp,
-        updated_at -> Timestamp,
-    }
-}
-
-table! {
-    erp_spu_parameters (id) {
-        id -> Int4,
-        spu_id -> Int4,
-        code -> Varchar,
-        name -> Varchar,
-        value -> Json,
-        sort -> Int4,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -186,7 +139,6 @@ table! {
         store_id -> Int4,
         amount -> Int4,
         unit -> Varchar,
-        address -> Nullable<Varchar>,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -198,22 +150,7 @@ table! {
         id -> Int4,
         code -> Varchar,
         name -> Varchar,
-        address -> Varchar,
         deleted_at -> Nullable<Timestamp>,
-        version -> Int4,
-        created_at -> Timestamp,
-        updated_at -> Timestamp,
-    }
-}
-
-table! {
-    erp_stores_parameters (id) {
-        id -> Int4,
-        store_id -> Int4,
-        code -> Varchar,
-        name -> Varchar,
-        value -> Json,
-        sort -> Int4,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -225,22 +162,7 @@ table! {
         id -> Int4,
         code -> Varchar,
         name -> Varchar,
-        address -> Varchar,
         deleted_at -> Nullable<Timestamp>,
-        version -> Int4,
-        created_at -> Timestamp,
-        updated_at -> Timestamp,
-    }
-}
-
-table! {
-    erp_warehouses_parameters (id) {
-        id -> Int4,
-        warehouse_id -> Int4,
-        code -> Varchar,
-        name -> Varchar,
-        value -> Json,
-        sort -> Int4,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -257,13 +179,8 @@ allow_tables_to_appear_in_same_query!(
     erp_orders,
     erp_payment_methods,
     erp_sku,
-    erp_sku_parameters,
-    erp_sku_pictures,
     erp_spu,
-    erp_spu_parameters,
     erp_stocks,
     erp_stores,
-    erp_stores_parameters,
     erp_warehouses,
-    erp_warehouses_parameters,
 );

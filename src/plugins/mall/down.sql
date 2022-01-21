@@ -4,23 +4,19 @@ DROP TABLE erp_categories;
 
 DROP TABLE erp_spu;
 
-DROP TABLE erp_spu_parameters;
+DROP TABLE erp_parameters;
+
+DROP TABLE erp_prices;
+
+DROP TABLE erp_contacts;
 
 DROP TABLE erp_categories_spu;
 
 DROP TABLE erp_sku;
 
-DROP TABLE erp_sku_pictures;
-
-DROP TABLE erp_sku_parameters;
-
 DROP TABLE erp_warehouses;
 
-DROP TABLE erp_warehouses_parameters;
-
 DROP TABLE erp_stores;
-
-DROP TABLE erp_stores_parameters;
 
 DROP TABLE erp_stocks;
 

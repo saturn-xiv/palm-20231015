@@ -1,3 +1,4 @@
+use std::any::type_name;
 use std::convert::From;
 use std::ops::Deref;
 
@@ -133,7 +134,12 @@ pub fn show(ctx: &Context, id: i32) -> Result<ForumPost> {
 fn can_edit(db: &Db, user: &UserItem, it: &PostItem) -> Result<()> {
     // TODO
     if user.id == it.user_id
-        || PolicyDao::is(db, UserItem::ROLE_TYPE, user.id, RoleItem::ADMINISTRATOR)
+        || PolicyDao::is(
+            db,
+            type_name::<UserItem>(),
+            user.id,
+            RoleItem::ADMINISTRATOR,
+        )
     {
         return Ok(());
     }
