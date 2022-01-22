@@ -108,7 +108,7 @@ RUN chmod +x $HOME/.local/bin/protoc-gen-grpc-web
 RUN git clone https://github.com/rui314/mold.git $HOME/build/mold
 RUN sudo apt install -y libstdc++-10-dev libssl-dev libxxhash-dev zlib1g-dev
 RUN zsh -c "source $HOME/.zshrc \
-    cd $HOME/build/mold \
+    && cd $HOME/build/mold \
     && git checkout v1.0.1 \
     && make CXX=clang++ \
     && strip -s mold \
