@@ -15,6 +15,7 @@ use juniper::{GraphQLInputObject, GraphQLObject};
 use serde::{Deserialize, Serialize};
 
 use super::super::super::{
+    aws::{s3::Config as S3, Credentials as Aws},
     cache::redis::Pool as CachePool,
     crypto::{Aes, Hmac},
     i18n::locale::Dao as LocaleDao,
@@ -38,6 +39,8 @@ pub struct Context {
     pub queue: Arc<RabbitMq>,
     pub token: Option<String>,
     pub peer: Option<SocketAddr>,
+    pub aws: Arc<Aws>,
+    pub s3: Arc<S3>,
 }
 
 impl juniper::Context for Context {}

@@ -4,6 +4,7 @@ pub mod sitemap;
 
 use std::convert::Infallible;
 use std::ops::Deref;
+use std::sync::Arc;
 
 use askama::Template;
 use hyper::header::CONTENT_TYPE;
@@ -13,17 +14,21 @@ use warp::{host::Authority, http::Response, Filter, Reply};
 use xml::writer::EmitterConfig;
 
 use super::super::super::{
-    cache::redis::Pool as CachePool, orm::Pool as DbPool, InfallibleResult, Result, ToXml,
+    cache::redis::Pool as CachePool, jwt::Jwt, orm::Pool as DbPool, InfallibleResult, Result, ToXml,
 };
 
-pub fn with_db(db: DbPool) -> impl Filter<Extract = (DbPool,), Error = Infallible> + Clone {
-    warp::any().map(move || db.clone())
+pub fn with_db(it: DbPool) -> impl Filter<Extract = (DbPool,), Error = Infallible> + Clone {
+    warp::any().map(move || it.clone())
+}
+
+pub fn with_jwt(it: Arc<Jwt>) -> impl Filter<Extract = (Arc<Jwt>,), Error = Infallible> + Clone {
+    warp::any().map(move || it.clone())
 }
 
 pub fn with_cache(
-    ch: CachePool,
+    it: CachePool,
 ) -> impl Filter<Extract = (CachePool,), Error = Infallible> + Clone {
-    warp::any().map(move || ch.clone())
+    warp::any().map(move || it.clone())
 }
 
 pub fn to_xml<T: ToXml>(it: &T) -> Result<Box<dyn Reply>> {

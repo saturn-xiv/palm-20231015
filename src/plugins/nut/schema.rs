@@ -1,11 +1,22 @@
 table! {
+    attachment_usages (id) {
+        id -> Int4,
+        attachment_id -> Int4,
+        resource_type -> Varchar,
+        resource_id -> Int4,
+        created_at -> Timestamp,
+    }
+}
+
+table! {
     attachments (id) {
         id -> Int4,
         user_id -> Int4,
         title -> Varchar,
         size -> Int4,
         content_type -> Varchar,
-        body -> Bytea,
+        region -> Varchar,
+        uid -> Varchar,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -258,6 +269,7 @@ table! {
 }
 
 allow_tables_to_appear_in_same_query!(
+    attachment_usages,
     attachments,
     categories,
     categories_resources,

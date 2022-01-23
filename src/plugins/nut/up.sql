@@ -163,15 +163,18 @@ CREATE TABLE attachments(
     title VARCHAR(255) NOT NULL,
     size INTEGER NOT NULL,
     content_type VARCHAR(255) NOT NULL,
-    body BYTEA NOT NULL,
+    region VARCHAR(32) NOT NULL,
+    uid VARCHAR(36) NOT NULL,
     version INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
 
-CREATE INDEX idx_attachments ON attachments(title);
+CREATE UNIQUE INDEX idx_attachments ON attachments(uid);
 
-CREATE TABLE attachments_usages(
+CREATE INDEX idx_attachments_title ON attachments(title);
+
+CREATE TABLE attachment_usages(
     id SERIAL PRIMARY KEY,
     attachment_id INTEGER NOT NULL,
     resource_type VARCHAR(255) NOT NULL,
@@ -179,7 +182,7 @@ CREATE TABLE attachments_usages(
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE UNIQUE INDEX idx_attachments_usages ON attachments_usages(attachment_id, resource_type, resource_id);
+CREATE UNIQUE INDEX idx_attachment_usages ON attachment_usages(attachment_id, resource_type, resource_id);
 
 CREATE TABLE notifications(
     id SERIAL PRIMARY KEY,

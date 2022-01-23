@@ -6,8 +6,12 @@ use std::path::Path;
 use serde::{Deserialize, Serialize};
 
 use super::{
-    aws::s3::Config as S3, cache::redis::Config as Redis, crypto::Key, orm::Config as PostgreSql,
-    plugins::nut::tasks::email::Handler as Smtp, queue::amqp::Config as RabbitMq,
+    aws::{s3::Config as S3, Credentials as Aws},
+    cache::redis::Config as Redis,
+    crypto::Key,
+    orm::Config as PostgreSql,
+    plugins::nut::tasks::email::Handler as Smtp,
+    queue::amqp::Config as RabbitMq,
 };
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
@@ -78,6 +82,7 @@ pub struct Config {
     pub rabbitmq: RabbitMq,
     pub smtp: Smtp,
     pub s3: S3,
+    pub aws: Aws,
 }
 
 pub fn is_stopped() -> bool {

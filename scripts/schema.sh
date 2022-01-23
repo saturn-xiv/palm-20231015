@@ -21,7 +21,7 @@ function generate_diesel_postgresql() {
     diesel print-schema -o locales > src/i18n/schema.rs
     diesel print-schema -o users logs groups groups_users \
         roles role_relations roles_items operations resources policies \
-        attachments friend_links leave_words \
+        attachments attachment_usages friend_links leave_words \
         tags tags_resources categories categories_resources\
         notifications votes view_counters > src/plugins/nut/schema.rs
     

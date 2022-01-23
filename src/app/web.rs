@@ -9,7 +9,10 @@ use super::super::{
     jwt::Jwt,
     plugins::{
         forum,
-        nut::{self, controllers::with_db},
+        nut::{
+            self,
+            controllers::{with_db, with_jwt},
+        },
     },
     Result,
 };
@@ -23,6 +26,8 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
     let queue = Arc::new(cfg.rabbitmq.open());
+    let aws = Arc::new(cfg.aws.clone());
+    let s3 = Arc::new(cfg.s3.clone());
 
     let forum_index = warp::path!(String / "forum")
         .and(with_db(db.clone()))
@@ -62,11 +67,16 @@ pub async fn launch(cfg: &Config) -> Result<()> {
         .and_then(nut::controllers::home::by_lang);
     let third = warp::path("3rd").and(warp::fs::dir("./node_modules/"));
 
+    let aws_attachments_create = aws.clone();
+    let s3_attachments_create = s3.clone();
     let attachments_create = warp::path("attachments")
         .and(auth)
         .and(warp::addr::remote())
         .and(warp::filters::multipart::form())
         .and(with_db(db.clone()))
+        .and(with_jwt(jwt.clone()))
+        .and(warp::any().map(move || aws_attachments_create.clone()))
+        .and(warp::any().map(move || s3_attachments_create.clone()))
         .and_then(nut::controllers::attachments::create);
 
     let state = warp::any()
@@ -79,6 +89,8 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             aes: aes.clone(),
             hmac: hmac.clone(),
             queue: queue.clone(),
+            aws: aws.clone(),
+            s3: s3.clone(),
             peer,
             token,
         });

@@ -1,7 +1,7 @@
 use std::time::Duration;
 
 use rusoto_core::{HttpClient, Region};
-use rusoto_credential::{AwsCredentials, StaticProvider};
+use rusoto_credential::AwsCredentials;
 use rusoto_s3::{
     util::{PreSignedRequest, PreSignedRequestOption},
     CreateBucketRequest, DeleteBucketRequest, DeleteObjectRequest, GetBucketLocationRequest,
@@ -10,25 +10,17 @@ use rusoto_s3::{
 use serde::{Deserialize, Serialize};
 
 use super::super::Result;
+use super::Credentials;
 
 #[derive(Serialize, Deserialize, Debug, Default, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Config {
     pub region: String,
     pub endpoint: Option<String>,
-    #[serde(rename = "access-key-id")]
-    pub access_key_id: String,
-    #[serde(rename = "secret-access-key")]
-    pub secret_access_key: String,
 }
 
 impl Config {
-    fn open(&self) -> Result<S3Client> {
-        let it = S3Client::new_with(HttpClient::new()?, self.credentials(), self.region()?);
-        Ok(it)
-    }
-
-    fn region(&self) -> Result<Region> {
+    pub fn region(&self) -> Result<Region> {
         let it = match self.endpoint {
             Some(ref v) => Region::Custom {
                 name: self.region.clone(),
@@ -38,17 +30,27 @@ impl Config {
         };
         Ok(it)
     }
-    fn credentials(&self) -> StaticProvider {
-        StaticProvider::new(
-            self.access_key_id.clone(),
-            self.secret_access_key.clone(),
-            None,
-            None,
-        )
+}
+
+pub struct Client {
+    client: S3Client,
+    credentials: AwsCredentials,
+    region: Region,
+}
+
+impl Client {
+    pub fn new(cred: &Credentials, s3: &Config) -> Result<Self> {
+        let region = s3.region()?;
+        Ok(Self {
+            client: S3Client::new_with(HttpClient::new()?, cred.provider(), region.clone()),
+            credentials: cred.credentials(),
+            region,
+        })
     }
+
     pub async fn bucket_exists(&self, name: String) -> Result<Option<String>> {
-        let cli = self.open()?;
-        let it = cli
+        let it = self
+            .client
             .get_bucket_location(GetBucketLocationRequest {
                 bucket: name,
                 ..Default::default()
@@ -58,8 +60,8 @@ impl Config {
     }
 
     pub async fn create_bucket(&self, name: String) -> Result<Option<String>> {
-        let cli = self.open()?;
-        let it = cli
+        let it = self
+            .client
             .create_bucket(CreateBucketRequest {
                 bucket: name,
                 ..Default::default()
@@ -68,18 +70,17 @@ impl Config {
         Ok(it.location)
     }
     pub async fn delete_bucket(&self, name: String) -> Result<()> {
-        let cli = self.open()?;
-        cli.delete_bucket(DeleteBucketRequest {
-            bucket: name,
-            ..Default::default()
-        })
-        .await?;
+        self.client
+            .delete_bucket(DeleteBucketRequest {
+                bucket: name,
+                ..Default::default()
+            })
+            .await?;
         Ok(())
     }
     pub async fn list_buckets(&self) -> Result<Vec<String>> {
         let mut buckets = Vec::new();
-        let cli = self.open()?;
-        if let Some(items) = cli.list_buckets().await?.buckets {
+        if let Some(items) = self.client.list_buckets().await?.buckets {
             for it in items {
                 if let Some(it) = it.name {
                     buckets.push(it);
@@ -91,8 +92,8 @@ impl Config {
 
     pub async fn list_objects(&self, bucket: String, after: Option<String>) -> Result<Vec<String>> {
         let mut objects = Vec::new();
-        let cli = self.open()?;
-        if let Some(items) = cli
+        if let Some(items) = self
+            .client
             .list_objects_v2(ListObjectsV2Request {
                 bucket,
                 start_after: after,
@@ -111,14 +112,14 @@ impl Config {
     }
 
     pub async fn put_object(&self, bucket: String, name: String, body: Vec<u8>) -> Result<()> {
-        let cli = self.open()?;
-        cli.put_object(PutObjectRequest {
-            bucket,
-            key: name,
-            body: Some(body.into()),
-            ..Default::default()
-        })
-        .await?;
+        self.client
+            .put_object(PutObjectRequest {
+                bucket,
+                key: name,
+                body: Some(body.into()),
+                ..Default::default()
+            })
+            .await?;
         Ok(())
     }
     pub fn get_object(&self, bucket: String, name: String, ttl: Duration) -> Result<String> {
@@ -129,26 +130,21 @@ impl Config {
         };
 
         let it = req.get_presigned_url(
-            &self.region()?,
-            &AwsCredentials::new(
-                self.access_key_id.clone(),
-                self.secret_access_key.clone(),
-                None,
-                None,
-            ),
+            &self.region,
+            &self.credentials,
             &PreSignedRequestOption { expires_in: ttl },
         );
         Ok(it)
     }
 
     pub async fn delete_object(&self, bucket: String, name: String) -> Result<()> {
-        let cli = self.open()?;
-        cli.delete_object(DeleteObjectRequest {
-            bucket,
-            key: name,
-            ..Default::default()
-        })
-        .await?;
+        self.client
+            .delete_object(DeleteObjectRequest {
+                bucket,
+                key: name,
+                ..Default::default()
+            })
+            .await?;
         Ok(())
     }
 }
