@@ -3,7 +3,7 @@ use diesel::{delete, insert_into, prelude::*, update};
 use serde::Serialize;
 
 use super::super::super::super::{orm::Connection, Result};
-use super::super::super::nut::models::WYSIWYG;
+use super::super::super::nut::models::{Status, WYSIWYG};
 use super::super::schema::forum_posts;
 
 #[derive(Queryable, Serialize)]
@@ -14,6 +14,7 @@ pub struct Item {
     pub topic_id: i32,
     pub body: String,
     pub body_editor: String,
+    pub state: String,
     pub version: i32,
     pub created_at: NaiveDateTime,
     pub updated_at: NaiveDateTime,
@@ -44,6 +45,7 @@ impl Dao for Connection {
                 forum_posts::dsl::topic_id.eq(topic),
                 forum_posts::dsl::body.eq(&body.content),
                 forum_posts::dsl::body_editor.eq(&body.editor.to_string()),
+                forum_posts::dsl::status.eq(&serde_json::to_string(&Status::Pending)?),
                 forum_posts::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;

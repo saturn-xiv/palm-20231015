@@ -18,6 +18,7 @@ use std::default::Default;
 use std::fmt::{self};
 use std::str::FromStr;
 
+use chrono::NaiveDateTime;
 use hyper::StatusCode;
 use juniper::GraphQLObject;
 use serde::{Deserialize, Serialize};
@@ -47,7 +48,18 @@ pub struct Icon {
     pub name: String,
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
+#[serde(rename_all = "camelCase")]
+pub enum Status {
+    Publish,
+    Future { at: NaiveDateTime },
+    Draft,
+    Pending,
+    Private,
+    Trash,
+}
+
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(rename_all = "camelCase")]
 pub enum WYSIWYGEditor {
     Markdown,

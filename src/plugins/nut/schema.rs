@@ -17,6 +17,7 @@ table! {
         content_type -> Varchar,
         region -> Varchar,
         uid -> Varchar,
+        status -> Varchar,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,

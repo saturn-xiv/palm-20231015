@@ -165,6 +165,7 @@ CREATE TABLE attachments(
     content_type VARCHAR(255) NOT NULL,
     region VARCHAR(32) NOT NULL,
     uid VARCHAR(36) NOT NULL,
+    "status" VARCHAR(255) NOT NULL,
     version INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
@@ -173,6 +174,8 @@ CREATE TABLE attachments(
 CREATE UNIQUE INDEX idx_attachments ON attachments(uid);
 
 CREATE INDEX idx_attachments_title ON attachments(title);
+
+CREATE INDEX idx_attachments_status ON attachments("status");
 
 CREATE TABLE attachment_usages(
     id SERIAL PRIMARY KEY,

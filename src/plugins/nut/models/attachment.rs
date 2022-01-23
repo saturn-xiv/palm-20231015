@@ -7,7 +7,7 @@ use serde::Serialize;
 
 use super::super::super::super::{orm::Connection, Result};
 use super::super::schema::{attachment_usages, attachments};
-
+use super::Status;
 #[derive(Queryable, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
@@ -18,6 +18,7 @@ pub struct Item {
     pub content_type: String,
     pub region: String,
     pub uid: String,
+    pub state: String,
     pub version: i32,
     pub created_at: NaiveDateTime,
     pub updated_at: NaiveDateTime,
@@ -99,6 +100,7 @@ impl Dao for Connection {
                 attachments::dsl::region.eq(region),
                 attachments::dsl::uid.eq(uid),
                 attachments::dsl::size.eq(size),
+                attachments::dsl::status.eq(&serde_json::to_string(&Status::Pending)?),
                 attachments::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;
