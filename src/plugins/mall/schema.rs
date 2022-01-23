@@ -13,6 +13,19 @@ table! {
 }
 
 table! {
+    erp_carts (id) {
+        id -> Int4,
+        user_id -> Nullable<Int4>,
+        code -> Varchar,
+        items -> Bytea,
+        prices -> Bytea,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
     erp_categories (id) {
         id -> Int4,
         code -> Varchar,
@@ -40,6 +53,20 @@ table! {
         id -> Int4,
         username -> Varchar,
         company -> Nullable<Varchar>,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
+    erp_contacts (id) {
+        id -> Int4,
+        resource_type -> Varchar,
+        resource_id -> Int4,
+        code -> Varchar,
+        name -> Varchar,
+        value -> Text,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -88,11 +115,42 @@ table! {
 }
 
 table! {
+    erp_parameters (id) {
+        id -> Int4,
+        resource_type -> Varchar,
+        resource_id -> Int4,
+        code -> Varchar,
+        name -> Varchar,
+        value -> Text,
+        sort -> Int4,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
     erp_payment_methods (id) {
         id -> Int4,
         code -> Varchar,
         name -> Varchar,
         logo -> Nullable<Varchar>,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
+    erp_prices (id) {
+        id -> Int4,
+        resource_type -> Varchar,
+        resource_id -> Int4,
+        code -> Varchar,
+        name -> Varchar,
+        currency -> Varchar,
+        value -> Numeric,
+        sort -> Int4,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -171,13 +229,17 @@ table! {
 
 allow_tables_to_appear_in_same_query!(
     erp_brands,
+    erp_carts,
     erp_categories,
     erp_categories_spu,
     erp_consignees,
+    erp_contacts,
     erp_delivery_methods,
     erp_order_logs,
     erp_orders,
+    erp_parameters,
     erp_payment_methods,
+    erp_prices,
     erp_sku,
     erp_spu,
     erp_stocks,
