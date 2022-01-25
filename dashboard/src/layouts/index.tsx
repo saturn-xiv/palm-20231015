@@ -6,6 +6,7 @@ export default (props: any) => {
 
   if (
     [
+      '/install',
       '/users/sign-in',
       '/users/sign-up',
       '/users/confirm',
