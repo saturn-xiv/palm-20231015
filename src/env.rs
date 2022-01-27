@@ -44,11 +44,16 @@ impl fmt::Display for Environment {
 #[serde(rename_all = "camelCase")]
 pub struct Http {
     pub port: u16,
+    #[serde(rename = "allow-origins")]
+    pub allow_origins: Vec<String>,
 }
 
 impl Default for Http {
     fn default() -> Self {
-        Self { port: 8080 }
+        Self {
+            port: 8080,
+            allow_origins: Vec::new(),
+        }
     }
 }
 

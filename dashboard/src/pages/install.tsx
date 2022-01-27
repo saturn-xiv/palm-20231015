@@ -7,7 +7,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { useRef } from 'react';
 
 import ApplicationForm from '../layouts/application/Form';
-import { validators } from '../config';
+import { validators, graphql } from '../utils';
 
 interface IForm {
   nickName: string;
@@ -37,8 +37,19 @@ export default () => {
   });
   const password = useRef({});
   password.current = watch('password', '');
-  const onSubmit = (data: IForm) => {
-    console.log(data);
+  const onSubmit = (form: IForm) => {
+    console.log(form);
+    // graphql_query(`query{apiVersion}`, {});
+    graphql(
+      `
+        mutation Install($form: UserSignUpRequest!) {
+          install(form: $form) {
+            createdAt
+          }
+        }
+      `,
+      { form },
+    );
   };
 
   const intl = useIntl();

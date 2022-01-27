@@ -1,5 +1,9 @@
 use std::sync::Arc;
 
+use hyper::{
+    header::{ACCEPT, ACCEPT_LANGUAGE, AUTHORIZATION, CONTENT_TYPE},
+    Method,
+};
 use juniper::EmptySubscription;
 use warp::Filter;
 
@@ -28,6 +32,26 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let queue = Arc::new(cfg.rabbitmq.open());
     let aws = Arc::new(cfg.aws.clone());
     let s3 = Arc::new(cfg.s3.clone());
+
+    // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+    // let origins: Vec<Origin> = cfg.allow_origins.iter().map(|it| &it[..]).collect();
+    let cors = warp::cors()
+        .allow_credentials(true)
+        // .allow_origins(
+        //     cfg.http
+        //         .allow_origins
+        //         .iter()
+        //         .map(|it| &it[..])
+        //         .collect::<Vec<&str>>(),
+        // )
+        .allow_any_origin()
+        .allow_header(CONTENT_TYPE)
+        .allow_header(AUTHORIZATION)
+        .allow_header(ACCEPT_LANGUAGE)
+        .allow_header(ACCEPT)
+        .allow_method(Method::OPTIONS)
+        .allow_method(Method::POST)
+        .allow_method(Method::GET);
 
     let forum_index = warp::path!(String / "forum")
         .and(with_db(db.clone()))
@@ -77,31 +101,38 @@ pub async fn launch(cfg: &Config) -> Result<()> {
         .and(with_jwt(jwt.clone()))
         .and(warp::any().map(move || aws_attachments_create.clone()))
         .and(warp::any().map(move || s3_attachments_create.clone()))
-        .and_then(nut::controllers::attachments::create);
+        .and_then(nut::controllers::attachments::create)
+        .with(cors.clone());
 
     let state = warp::any()
         .and(auth)
         .and(warp::addr::remote())
-        .map(move |token, peer| nut::graphql::Context {
-            db: db.clone(),
-            cache: cache.clone(),
-            jwt: jwt.clone(),
-            aes: aes.clone(),
-            hmac: hmac.clone(),
-            queue: queue.clone(),
-            aws: aws.clone(),
-            s3: s3.clone(),
-            peer,
-            token,
-        });
+        .and(warp::filters::cookie::optional("locale"))
+        .map(
+            move |token, peer, locale: Option<String>| nut::graphql::Context {
+                db: db.clone(),
+                cache: cache.clone(),
+                jwt: jwt.clone(),
+                aes: aes.clone(),
+                hmac: hmac.clone(),
+                queue: queue.clone(),
+                aws: aws.clone(),
+                s3: s3.clone(),
+                peer,
+                token,
+                lang: nut::graphql::Context::lang(locale),
+            },
+        );
     let schema = Schema::new(Query, Mutation, EmptySubscription::new());
-    let graphql =
-        warp::path("graphql").and(juniper_warp::make_graphql_filter(schema, state.boxed()));
+    let graphql = warp::path("graphql")
+        .and(juniper_warp::make_graphql_filter(schema, state.boxed()))
+        .with(cors);
     let graphiql = warp::path("graphiql").and(juniper_warp::graphiql_filter("/graphql", None));
 
     let html = warp::get()
         .and(
-            home.or(graphiql)
+            home.or(graphql.clone())
+                .or(graphiql)
                 .or(robots_txt)
                 .or(sitemap)
                 .or(sitemap_by_lang)
@@ -114,7 +145,8 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 .or(third)
                 .or(home_by_lang),
         )
-        .or(warp::post().and(graphql.or(attachments_create)));
+        .or(warp::post().and(graphql.clone().or(attachments_create)))
+        .or(warp::options().and(graphql));
 
     warp::serve(html).run(([127, 0, 0, 1], cfg.http.port)).await;
     Ok(())

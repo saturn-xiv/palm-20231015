@@ -12,6 +12,7 @@ use std::sync::Arc;
 use chrono::{NaiveDateTime, Utc};
 use hyper::StatusCode;
 use juniper::{GraphQLInputObject, GraphQLObject};
+use language_tags::LanguageTag;
 use serde::{Deserialize, Serialize};
 
 use super::super::super::{
@@ -41,11 +42,20 @@ pub struct Context {
     pub peer: Option<SocketAddr>,
     pub aws: Arc<Aws>,
     pub s3: Arc<S3>,
+    pub lang: String,
 }
 
 impl juniper::Context for Context {}
 
 impl Context {
+    pub fn lang(locale: Option<String>) -> String {
+        if let Some(ref it) = locale {
+            if let Ok(it) = LanguageTag::parse(it) {
+                return it.to_string();
+            }
+        }
+        "en-US".to_string()
+    }
     pub fn peer(&self) -> String {
         if let Some(ref it) = self.peer {
             return it.ip().to_string();
