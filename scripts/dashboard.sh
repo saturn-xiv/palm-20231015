@@ -2,11 +2,17 @@
 
 set -e
 
-yarn add react-hook-form react-copy-to-clipboard react-quill@beta \
+# https://umijs.org/docs/getting-started
+# yarn create @umijs/umi-app
+
+# react-hook-form moment moment-timezone 
+# @mui/material @emotion/react @emotion/styled @mui/icons-material @fontsource/roboto
+# grpc-web 
+yarn add react-copy-to-clipboard react-quill@beta \
     google-map-react qrcode.react react-markdown \
-    moment moment-timezone \
-    @mui/material @emotion/react @emotion/styled @mui/icons-material @fontsource/roboto \
-    grpc-web js-cookie jwt-decode dinero.js@alpha
+    react-json-view react-color react-syntax-highlighter \
+    emoji-mart react-sparklines react-highlight-words \
+    js-cookie jwt-decode dinero.js@alpha video.js 
 
 echo 'done.'
 
