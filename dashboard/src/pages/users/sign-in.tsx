@@ -1,7 +1,7 @@
 export default () => {
   return (
     <div>
-      <h1>Home</h1>
+      <h1>sign in</h1>
     </div>
   );
 };

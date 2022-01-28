@@ -1,0 +1,28 @@
+export default {
+  'buttons.submit': 'Submit',
+  'attributes.email': 'Email',
+  'attributes.password': 'Password',
+  'attributes.current-password': 'Current password',
+  'attributes.new-password': 'New password',
+  'attributes.password-confirmation': 'Password confirmation',
+  'attributes.nick-name': 'Nick name',
+  'attributes.real-name': 'Real name',
+  'attributes.remember-me': 'Remember me',
+  'helpers.nick-name':
+    'Nick name should between 3~32 characters and with alphabet or numbers',
+  'helpers.real-name': 'Nick name should between 2~32 characters',
+  'helpers.email': 'Please enter a valid email address',
+  'helpers.password': 'Password should between 6~32 characters',
+  'helpers.password-onfirmation': 'The passwords do not match',
+  'install.title': 'Install',
+  'users.sign-in.title': 'Sign In',
+  'users.sign-up.title': "Don't have an account? Sign Up",
+  'users.sign-up.allow-extra-emails':
+    'I want to receive inspiration, marketing promotions and updates via email.',
+  'users.confirm.title': "Didn't receive confirmation instructions?",
+  'users.confirm.submit': 'Resend confirmation instructions',
+  'users.unlock.title': "Didn't receive unlock instructions?",
+  'users.unlock.submit': 'Resend unlock instructions',
+  'users.forgot-password.title': 'Forgot your password?',
+  'users.forgot-password.submit': 'Send me reset password instructions',
+};
