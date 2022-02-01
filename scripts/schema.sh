@@ -79,7 +79,7 @@ for l in "${languages[@]}"
 do
     generate_grpc $l
 done
-generate_grpc_web
+# generate_grpc_web
 
 generate_diesel_postgresql
 cargo fmt

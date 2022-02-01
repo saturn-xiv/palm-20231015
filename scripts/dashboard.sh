@@ -8,7 +8,8 @@ set -e
 # react-hook-form moment moment-timezone 
 # @mui/material @emotion/react @emotion/styled @mui/icons-material @fontsource/roboto
 # grpc-web 
-yarn add react-copy-to-clipboard react-quill@beta \
+yarn add @ant-design/icons \
+    react-copy-to-clipboard react-quill@beta \
     google-map-react qrcode.react react-markdown \
     react-json-view react-color react-syntax-highlighter \
     emoji-mart react-sparklines react-highlight-words \

@@ -5,6 +5,7 @@ pub mod user;
 
 use std::any::type_name;
 use std::default::Default;
+use std::fmt;
 use std::net::SocketAddr;
 use std::ops::Deref;
 use std::sync::Arc;
@@ -19,11 +20,12 @@ use super::super::super::{
     aws::{s3::Config as S3, Credentials as Aws},
     cache::redis::Pool as CachePool,
     crypto::{Aes, Hmac},
-    i18n::locale::Dao as LocaleDao,
+    i18n::{locale::Dao as LocaleDao, I18n},
     jwt::Jwt,
     orm::Pool as DbPool,
     queue::amqp::RabbitMq,
-    HttpError, Result, VERSION,
+    settings::Dao as SettingDao,
+    HttpError, Result,
 };
 use super::models::{
     policy::Dao as PolicyDao,
@@ -185,25 +187,65 @@ impl Pagination {
     }
 }
 
+#[derive(GraphQLObject, Deserialize, Serialize, Debug, Default)]
+pub struct Author {
+    pub email: String,
+    pub name: String,
+}
+
+impl fmt::Display for Author {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{}<{}>", self.name, self.email)
+    }
+}
+
 #[derive(GraphQLObject)]
 pub struct Site {
     pub locale: String,
     pub languages: Vec<String>,
-    pub version: String,
+    pub title: String,
+    pub subhead: String,
+    pub keywords: Vec<String>,
+    pub description: String,
+    pub author: Author,
+    pub copyright: String,
 }
 
 impl Site {
+    pub const TITLE: &'static str = "site.title";
+    pub const SUBHEAD: &'static str = "site.subhead";
+    pub const KEYWORDS: &'static str = "site.keywords";
+    pub const DESCRIPTION: &'static str = "site.description";
+    pub const AUTHOR: &'static str = "site.author";
+    pub const COPYRIGHT: &'static str = "site.copyright";
     pub fn new(ctx: &Context) -> Result<Self> {
-        let locale = match ctx.current_user() {
+        let lang = match ctx.current_user() {
             Ok(it) => it.lang,
-            Err(_) => "en-US".to_string(),
+            Err(_) => ctx.lang.clone(),
         };
         let db = ctx.db.get()?;
         let db = db.deref();
+        let enc = ctx.aes.deref();
         Ok(Self {
-            locale,
             languages: LocaleDao::languages(db)?,
-            version: VERSION.to_string(),
+            title: I18n::t(db, &lang, Self::TITLE, &None::<String>),
+            subhead: I18n::t(db, &lang, Self::SUBHEAD, &None::<String>),
+            keywords: SettingDao::get::<String, Vec<String>, Aes>(
+                db,
+                enc,
+                &Self::KEYWORDS.to_string(),
+            )
+            .unwrap_or_default(),
+            author: SettingDao::get::<String, Author, Aes>(db, enc, &Self::AUTHOR.to_string())
+                .unwrap_or_default(),
+            description: I18n::t(db, &lang, Self::DESCRIPTION, &None::<String>),
+            copyright: SettingDao::get::<String, String, Aes>(
+                db,
+                enc,
+                &Self::COPYRIGHT.to_string(),
+            )
+            .unwrap_or_default(),
+            locale: lang,
         })
     }
 }
