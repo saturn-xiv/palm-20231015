@@ -12,6 +12,7 @@ homepage = "https://github.com/saturn-xiv/palm"
 lto = true
 
 [dependencies]
+bigdecimal = "0.3"
 futures = "0.3"
 mime = "0.3"
 language-tags = "0.3"
@@ -102,7 +103,7 @@ features = ["serde_bytes"]
 [dependencies.diesel]
 version = "1"
 default-features = false
-features = ["postgres", "mysql", "sqlite", "extras", "128-column-tables"]
+features = ["bigdecimal", "postgres", "mysql", "sqlite", "extras", "128-column-tables"]
 
 [dependencies.serde]
 version = "1"

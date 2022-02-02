@@ -4,6 +4,10 @@ A total free education &amp; translation &amp; ops solution.
 
 ## Notes
 
+```bash
+npm install sql-formatter -g
+```
+
 - Generate a random secret key: `openssl rand -base64 32`
 - Generate a random password: `pwgen 32 1`
 
@@ -16,3 +20,5 @@ A total free education &amp; translation &amp; ops solution.
 - [ISO 4217 CURRENCY CODES](https://www.iso.org/iso-4217-currency-codes.html)
 - [BCP 47](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry)
 - [National Address Database (NAD) Disclaimer](https://www.transportation.gov/gis/national-address-database/national-address-database-nad-disclaimer)
+- [Web Tools API Portal](https://www.usps.com/business/web-tools-apis/)
+- [Reviewing address formats](https://help.shopify.com/en/manual/shipping/shopify-shipping/reviewing-address-formats)

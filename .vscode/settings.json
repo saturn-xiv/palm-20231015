@@ -1,36 +1,43 @@
 {
-    "files.autoSave": "onFocusChange",
-    "files.insertFinalNewline": true,
-    "workbench.colorTheme": "Atom One Dark",
-    "window.zoomLevel": 2,
-    "editor.formatOnSave": true,
-    "editor.fontFamily": "source code pro",
-    "editor.mouseWheelZoom": true,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
-    // https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
-    "files.watcherExclude": {
-        "**/.git/**": true,
-        "**/node_modules/**": true
-    },
-    "sql-formatter.uppercase": true,
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[javascriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[css]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+  "files.autoSave": "onFocusChange",
+  "files.insertFinalNewline": true,
+  "workbench.colorTheme": "Atom One Dark",
+  "window.zoomLevel": 2,
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "source code pro",
+  "editor.mouseWheelZoom": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
+  "files.watcherExclude": {
+    "**/.git/**": true,
+    "**/node_modules/**": true
+  },
+  // "sql-formatter.uppercase": true,
+  // "[javascript]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // "[javascriptreact]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // "[typescript]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // "[typescriptreact]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // "[json]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // "[sql]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  "[rust]": {
+    "editor.defaultFormatter": "matklad.rust-analyzer"
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "mtxr.sqltools"
+  }
 }

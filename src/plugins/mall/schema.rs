@@ -150,7 +150,6 @@ table! {
         name -> Varchar,
         currency -> Varchar,
         value -> Numeric,
-        sort -> Int4,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -216,6 +215,18 @@ table! {
 }
 
 table! {
+    erp_taxes (id) {
+        id -> Int4,
+        code -> Varchar,
+        name -> Varchar,
+        value -> Numeric,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
     erp_warehouses (id) {
         id -> Int4,
         code -> Varchar,
@@ -244,5 +255,6 @@ allow_tables_to_appear_in_same_query!(
     erp_spu,
     erp_stocks,
     erp_stores,
+    erp_taxes,
     erp_warehouses,
 );
