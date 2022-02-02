@@ -1,6 +1,7 @@
 use juniper::{graphql_object, FieldResult};
 
 use super::super::super::{
+    currency::Iso4217,
     i18n::locale::Item as Locale,
     plugins::{
         forum,
@@ -9,7 +10,7 @@ use super::super::super::{
             graphql::{Context, Pager},
         },
     },
-    VERSION,
+    GIT_VERSION,
 };
 
 pub struct Query;
@@ -19,7 +20,11 @@ pub struct Query;
 )]
 impl Query {
     fn apiVersion() -> &'static str {
-        VERSION
+        GIT_VERSION
+    }
+    fn currencies() -> FieldResult<Iso4217> {
+        let it = Iso4217::new()?;
+        Ok(it)
     }
     fn userLogs(ctx: &Context, pager: Pager) -> FieldResult<nut::graphql::user::UserLogList> {
         let it = nut::graphql::user::UserLogList::new(ctx, &pager)?;

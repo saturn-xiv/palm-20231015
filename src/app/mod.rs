@@ -21,11 +21,18 @@ use super::{
     parser::from_toml,
     plugins,
     settings::MIGRATION as Settings,
-    Result, BANNER, HOMEPAGE, VERSION,
+    Result, BANNER, BUILD_TIME, GIT_VERSION, HOMEPAGE,
 };
 
+lazy_static! {
+    static ref VERSION: String = format!("{}({})", GIT_VERSION, BUILD_TIME);
+}
 #[derive(Parser, Debug)]
-#[clap(about, version=VERSION, before_help=BANNER, after_help=HOMEPAGE, author)]
+#[clap(about, 
+    version=&VERSION.deref()[..], 
+    before_help=BANNER, 
+    after_help=HOMEPAGE, 
+    author)]
 pub struct Args {
     #[clap(short, long, default_value = "config.toml")]
     pub config: PathBuf,

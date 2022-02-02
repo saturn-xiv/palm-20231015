@@ -16,6 +16,7 @@ pub mod app;
 pub mod aws;
 pub mod cache;
 pub mod crypto;
+pub mod currency;
 pub mod env;
 pub mod i18n;
 pub mod jwt;
@@ -26,7 +27,6 @@ pub mod plugins;
 pub mod queue;
 pub mod result;
 pub mod settings;
-pub mod currency;
 
 use std::io::{prelude::*, Error as IoError, ErrorKind as IoErrorKind};
 use std::path::Path;
