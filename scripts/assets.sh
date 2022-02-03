@@ -2,7 +2,7 @@
 
 set -e
 
-yarn add marked moment moment-timezone d3 \
+yarn add marked moment moment-timezone d3 mermaid \
     bootstrap @popperjs/core \
     mdb-ui-kit \
     bulma \
