@@ -1,8 +1,7 @@
 use std::convert::From;
 use std::ops::Deref;
 
-use juniper::GraphQLInputObject;
-use juniper::GraphQLObject;
+use juniper::{GraphQLInputObject, GraphQLObject};
 use validator::Validate;
 
 use super::super::super::super::Result;

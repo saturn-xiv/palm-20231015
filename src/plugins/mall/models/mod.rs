@@ -1,7 +1,6 @@
 pub mod brand;
 pub mod cart;
 pub mod consignee;
-pub mod contact;
 pub mod delivery;
 pub mod order;
 pub mod parameter;

@@ -1,5 +1,7 @@
+pub mod address;
 pub mod attachment;
 pub mod category;
+pub mod contact;
 pub mod friend_link;
 pub mod group;
 pub mod leave_word;
@@ -46,6 +48,11 @@ pub struct Color {
 #[serde(rename_all = "camelCase")]
 pub struct Icon {
     pub name: String,
+}
+
+pub struct Resource {
+    pub type_: String,
+    pub id: i32,
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]

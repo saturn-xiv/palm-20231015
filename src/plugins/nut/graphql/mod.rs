@@ -1,4 +1,6 @@
+pub mod address;
 pub mod category;
+pub mod contact;
 pub mod leave_word;
 pub mod locale;
 pub mod tag;
