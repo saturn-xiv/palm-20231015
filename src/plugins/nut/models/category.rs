@@ -6,7 +6,7 @@ use super::super::super::super::{orm::Connection, Result};
 use super::super::schema::{categories, categories_resources};
 use super::{Color, Font, Icon};
 
-#[derive(Queryable, Serialize)]
+#[derive(Queryable, Serialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
     pub id: i32,
@@ -46,7 +46,7 @@ pub trait Dao {
         order: i32,
     ) -> Result<()>;
     fn all(&self) -> Result<Vec<Item>>;
-    fn delete(&self, id: i32) -> Result<()>;
+    fn destroy(&self, id: i32) -> Result<()>;
     fn bind(&self, categories: &[i32], rty: &str, rid: i32) -> Result<()>;
     fn unbind(&self, rty: &str, rid: i32) -> Result<()>;
     fn resources(&self, category: i32, rty: &str) -> Result<Vec<i32>>;
@@ -121,7 +121,7 @@ impl Dao for Connection {
         Ok(items)
     }
 
-    fn delete(&self, id: i32) -> Result<()> {
+    fn destroy(&self, id: i32) -> Result<()> {
         let now = Utc::now().naive_utc();
         update(categories::dsl::categories.filter(categories::dsl::parent_id.eq(&Some(id))))
             .set((

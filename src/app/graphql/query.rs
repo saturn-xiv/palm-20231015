@@ -61,6 +61,15 @@ impl Query {
         Ok(it)
     }
 
+    fn indexCategory(ctx: &Context) -> FieldResult<Vec<nut::graphql::category::Category>> {
+        let items = nut::graphql::category::index(ctx)?;
+        Ok(items)
+    }
+    fn showCategory(ctx: &Context, id: i32) -> FieldResult<nut::graphql::category::Category> {
+        let it = nut::graphql::category::show(ctx, id)?;
+        Ok(it)
+    }
+
     fn latestForumTopic(
         ctx: &Context,
         pager: Pager,

@@ -1,11 +1,9 @@
 DROP TABLE erp_brands;
-DROP TABLE erp_categories;
 DROP TABLE erp_spu;
 DROP TABLE erp_parameters;
 DROP TABLE erp_prices;
 DROP TABLE erp_taxes;
 DROP TABLE erp_contacts;
-DROP TABLE erp_categories_spu;
 DROP TABLE erp_sku;
 DROP TABLE erp_warehouses;
 DROP TABLE erp_stores;

@@ -23,7 +23,7 @@ pub struct Sku {
 pub trait Dao {
     fn by_code(&self, code: &str) -> Result<Vec<Item>>;
     fn create(&self, code: &str, items: &[Sku]) -> Result<()>;
-    fn destory(&self, code: &str) -> Result<()>;
+    fn destroy(&self, code: &str) -> Result<()>;
 }
 
 impl Dao for Connection {
@@ -48,7 +48,7 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn destory(&self, code: &str) -> Result<()> {
+    fn destroy(&self, code: &str) -> Result<()> {
         delete(erp_carts::dsl::erp_carts.filter(erp_carts::dsl::code.eq(code))).execute(self)?;
         Ok(())
     }

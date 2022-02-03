@@ -128,6 +128,26 @@ impl Mutation {
         Ok(Success::default())
     }
 
+    fn createCategory(
+        ctx: &Context,
+        form: nut::graphql::category::CategoryRequest,
+    ) -> FieldResult<Success> {
+        form.create(ctx)?;
+        Ok(Success::default())
+    }
+    fn updateCategory(
+        ctx: &Context,
+        id: i32,
+        form: nut::graphql::category::CategoryRequest,
+    ) -> FieldResult<Success> {
+        form.update(ctx, id)?;
+        Ok(Success::default())
+    }
+    fn destroyCategory(ctx: &Context, id: i32) -> FieldResult<Success> {
+        nut::graphql::category::destroy(ctx, id)?;
+        Ok(Success::default())
+    }
+
     fn createForumTopic(
         ctx: &Context,
         form: forum::graphql::topic::ForumTopicRequest,

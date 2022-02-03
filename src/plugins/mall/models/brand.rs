@@ -25,7 +25,7 @@ pub trait Dao {
     fn create(&self, code: &str, title: &str, body: &WYSIWYG) -> Result<()>;
     fn update(&self, id: i32, code: &str, title: &str, body: &WYSIWYG) -> Result<()>;
     fn all(&self) -> Result<Vec<Item>>;
-    fn destory(&self, id: i32) -> Result<()>;
+    fn destroy(&self, id: i32) -> Result<()>;
 }
 
 impl Dao for Connection {
@@ -78,7 +78,7 @@ impl Dao for Connection {
         Ok(items)
     }
 
-    fn destory(&self, id: i32) -> Result<()> {
+    fn destroy(&self, id: i32) -> Result<()> {
         delete(erp_brands::dsl::erp_brands.filter(erp_brands::dsl::id.eq(id))).execute(self)?;
         Ok(())
     }
