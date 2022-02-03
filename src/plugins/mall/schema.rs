@@ -5,7 +5,6 @@ table! {
         title -> Varchar,
         body -> Text,
         body_editor -> Varchar,
-        deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -15,13 +14,10 @@ table! {
 table! {
     erp_carts (id) {
         id -> Int4,
-        user_id -> Nullable<Int4>,
         code -> Varchar,
-        items -> Bytea,
-        prices -> Bytea,
-        version -> Int4,
+        sku_id -> Int4,
+        count -> Int4,
         created_at -> Timestamp,
-        updated_at -> Timestamp,
     }
 }
 
@@ -32,7 +28,6 @@ table! {
         name -> Varchar,
         parent_id -> Nullable<Int4>,
         sort -> Int4,
-        deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -165,7 +160,6 @@ table! {
         body -> Text,
         body_editor -> Varchar,
         status -> Varchar,
-        deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -181,7 +175,6 @@ table! {
         body -> Text,
         body_editor -> Varchar,
         status -> Varchar,
-        deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -207,7 +200,6 @@ table! {
         id -> Int4,
         code -> Varchar,
         name -> Varchar,
-        deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -231,7 +223,6 @@ table! {
         id -> Int4,
         code -> Varchar,
         name -> Varchar,
-        deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,

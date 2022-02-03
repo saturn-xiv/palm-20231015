@@ -31,7 +31,8 @@ function generate_diesel_postgresql() {
         erp_parameters erp_prices erp_taxes erp_contacts \
         erp_warehouses erp_stores \
         erp_stocks erp_consignees \
-        erp_carts erp_delivery_methods erp_payment_methods erp_orders erp_order_logs > src/plugins/mall/schema.rs
+        erp_carts \
+        erp_delivery_methods erp_payment_methods erp_orders erp_order_logs > src/plugins/mall/schema.rs
     diesel print-schema -o sms_logs > src/plugins/twilio/schema.rs
 }
 
