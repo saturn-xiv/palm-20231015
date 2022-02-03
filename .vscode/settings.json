@@ -15,25 +15,6 @@
     "**/.git/**": true,
     "**/node_modules/**": true
   },
-  // "sql-formatter.uppercase": true,
-  // "[javascript]": {
-  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
-  // },
-  // "[javascriptreact]": {
-  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
-  // },
-  // "[typescript]": {
-  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
-  // },
-  // "[typescriptreact]": {
-  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
-  // },
-  // "[json]": {
-  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
-  // },
-  // "[sql]": {
-  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
-  // },
   "[rust]": {
     "editor.defaultFormatter": "matklad.rust-analyzer"
   },
