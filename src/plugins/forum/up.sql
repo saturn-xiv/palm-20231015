@@ -10,11 +10,8 @@ CREATE TABLE forum_topics(
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
-
 CREATE INDEX forum_topics_title ON forum_topics(title);
-
 CREATE INDEX idx_forum_topics_status ON forum_topics("status");
-
 CREATE TABLE forum_posts(
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
@@ -26,5 +23,4 @@ CREATE TABLE forum_posts(
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
-
 CREATE INDEX idx_forum_posts_status ON forum_posts("status");

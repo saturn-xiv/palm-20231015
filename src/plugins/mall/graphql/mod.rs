@@ -12,4 +12,5 @@ pub mod sku;
 pub mod spu;
 pub mod stock;
 pub mod store;
+pub mod tax;
 pub mod warehouse;

@@ -7,5 +7,4 @@ CREATE TABLE IF NOT EXISTS schema_migrations(
   run_at TIMESTAMP,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-
 CREATE UNIQUE INDEX IF NOT EXISTS idx_schema_migrations ON schema_migrations(version, name);
