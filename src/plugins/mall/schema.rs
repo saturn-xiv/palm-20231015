@@ -22,46 +22,10 @@ table! {
 }
 
 table! {
-    erp_categories (id) {
-        id -> Int4,
-        code -> Varchar,
-        name -> Varchar,
-        parent_id -> Nullable<Int4>,
-        sort -> Int4,
-        version -> Int4,
-        created_at -> Timestamp,
-        updated_at -> Timestamp,
-    }
-}
-
-table! {
-    erp_categories_spu (id) {
-        id -> Int4,
-        category_id -> Int4,
-        spu_id -> Int4,
-        created_at -> Timestamp,
-    }
-}
-
-table! {
     erp_consignees (id) {
         id -> Int4,
         username -> Varchar,
         company -> Nullable<Varchar>,
-        version -> Int4,
-        created_at -> Timestamp,
-        updated_at -> Timestamp,
-    }
-}
-
-table! {
-    erp_contacts (id) {
-        id -> Int4,
-        resource_type -> Varchar,
-        resource_id -> Int4,
-        code -> Varchar,
-        name -> Varchar,
-        value -> Text,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -232,10 +196,7 @@ table! {
 allow_tables_to_appear_in_same_query!(
     erp_brands,
     erp_carts,
-    erp_categories,
-    erp_categories_spu,
     erp_consignees,
-    erp_contacts,
     erp_delivery_methods,
     erp_order_logs,
     erp_orders,

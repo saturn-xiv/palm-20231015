@@ -1,4 +1,20 @@
 table! {
+    addresses (id) {
+        id -> Int4,
+        resource_type -> Varchar,
+        resource_id -> Int4,
+        street -> Varchar,
+        city -> Varchar,
+        state -> Varchar,
+        country -> Varchar,
+        zip -> Varchar,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
     attachment_usages (id) {
         id -> Int4,
         attachment_id -> Int4,
@@ -47,6 +63,20 @@ table! {
         resource_type -> Varchar,
         resource_id -> Int4,
         created_at -> Timestamp,
+    }
+}
+
+table! {
+    contacts (id) {
+        id -> Int4,
+        resource_type -> Varchar,
+        resource_id -> Int4,
+        code -> Varchar,
+        name -> Varchar,
+        value -> Text,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
     }
 }
 
@@ -270,10 +300,12 @@ table! {
 }
 
 allow_tables_to_appear_in_same_query!(
+    addresses,
     attachment_usages,
     attachments,
     categories,
     categories_resources,
+    contacts,
     friend_links,
     groups,
     groups_users,

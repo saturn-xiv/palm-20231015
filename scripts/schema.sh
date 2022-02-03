@@ -22,13 +22,14 @@ function generate_diesel_postgresql() {
     diesel print-schema -o users logs groups groups_users \
         roles role_relations roles_items operations resources policies \
         attachments attachment_usages friend_links leave_words \
-        tags tags_resources categories categories_resources\
+        tags tags_resources categories categories_resources \
+        contacts addresses \
         notifications votes view_counters > src/plugins/nut/schema.rs
     
     diesel print-schema -o forum_topics forum_posts > src/plugins/forum/schema.rs
      
     diesel print-schema -o erp_brands erp_spu erp_sku \
-        erp_parameters erp_prices erp_taxes erp_contacts \
+        erp_parameters erp_prices erp_taxes \
         erp_warehouses erp_stores \
         erp_stocks erp_consignees \
         erp_carts \

@@ -249,3 +249,37 @@ CREATE TABLE view_counters(
 );
 CREATE UNIQUE INDEX idx_view_counters ON view_counters(resource_type, resource_id);
 CREATE INDEX idx_view_counters_resource_type ON view_counters(resource_type);
+CREATE TABLE contacts(
+    id SERIAL PRIMARY KEY,
+    resource_type VARCHAR(255) NOT NULL,
+    resource_id INTEGER NOT NULL,
+    code VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    value TEXT NOT NULL,
+    version INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
+);
+CREATE UNIQUE INDEX idx_contacts ON contacts(resource_type, resource_id, code);
+CREATE INDEX idx_contacts_resource ON contacts(resource_type, resource_id);
+CREATE INDEX idx_contacts_code ON contacts(code);
+CREATE INDEX idx_contacts_name ON contacts(name);
+CREATE TABLE addresses(
+    id SERIAL PRIMARY KEY,
+    resource_type VARCHAR(255) NOT NULL,
+    resource_id INTEGER NOT NULL,
+    street VARCHAR(255) NOT NULL,
+    city VARCHAR(255) NOT NULL,
+    "state" VARCHAR(255) NOT NULL,
+    country VARCHAR(255) NOT NULL,
+    zip VARCHAR(16) NOT NULL,
+    version INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
+);
+CREATE INDEX idx_addresses_resource ON addresses(resource_type, resource_id);
+CREATE INDEX idx_addresses_street ON addresses(street);
+CREATE INDEX idx_addresses_city ON addresses(city);
+CREATE INDEX idx_addresses_state ON addresses("state");
+CREATE INDEX idx_addresses_country ON addresses("country");
+CREATE INDEX idx_addresses_zip ON addresses("zip");

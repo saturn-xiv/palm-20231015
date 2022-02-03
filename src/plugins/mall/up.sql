@@ -10,18 +10,6 @@ CREATE TABLE erp_brands(
 );
 CREATE UNIQUE INDEX idx_erp_brands_code ON erp_brands(code);
 CREATE INDEX idx_erp_brands_title ON erp_brands(title);
-CREATE TABLE erp_categories(
-    id SERIAL PRIMARY KEY,
-    code VARCHAR(255) NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    parent_id INTEGER,
-    sort INTEGER NOT NULL DEFAULT 0,
-    version INTEGER NOT NULL DEFAULT 0,
-    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
-);
-CREATE UNIQUE INDEX idx_erp_categories_code ON erp_categories(code);
-CREATE INDEX idx_erp_categories_name ON erp_categories(name);
 CREATE TABLE erp_spu(
     id SERIAL PRIMARY KEY,
     brand_id INTEGER NOT NULL,
@@ -79,13 +67,6 @@ CREATE TABLE erp_taxes(
 );
 CREATE UNIQUE INDEX idx_erp_taxes ON erp_taxes(code);
 CREATE INDEX idx_erp_taxes_name ON erp_taxes(name);
-CREATE TABLE erp_categories_spu(
-    id SERIAL PRIMARY KEY,
-    category_id INTEGER NOT NULL,
-    spu_id INTEGER NOT NULL,
-    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-CREATE UNIQUE INDEX idx_erp_categories_spu ON erp_categories_spu(category_id, spu_id);
 CREATE TABLE erp_sku(
     id SERIAL PRIMARY KEY,
     spu_id INTEGER NOT NULL,
@@ -201,17 +182,3 @@ CREATE TABLE erp_carts(
 );
 CREATE UNIQUE INDEX idx_erp_carts ON erp_carts(code, sku_id);
 CREATE UNIQUE INDEX idx_erp_carts_code ON erp_carts(code);
-CREATE TABLE erp_contacts(
-    id SERIAL PRIMARY KEY,
-    resource_type VARCHAR(255) NOT NULL,
-    resource_id INTEGER NOT NULL,
-    code VARCHAR(255) NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    value TEXT NOT NULL,
-    version INTEGER NOT NULL DEFAULT 0,
-    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
-);
-CREATE UNIQUE INDEX idx_erp_contacts ON erp_contacts(resource_type, resource_id, code);
-CREATE INDEX idx_erp_contacts_resource ON erp_contacts(resource_type, resource_id);
-CREATE INDEX idx_erp_contacts_code ON erp_contacts(code);
