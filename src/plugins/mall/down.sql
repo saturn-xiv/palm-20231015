@@ -13,3 +13,5 @@ DROP TABLE erp_payment_methods;
 DROP TABLE erp_orders;
 DROP TABLE erp_order_logs;
 DROP TABLE erp_carts;
+DROP TABLE erp_journal_accounts;
+DROP TABLE erp_journal_logs;

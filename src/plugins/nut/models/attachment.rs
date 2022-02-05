@@ -7,7 +7,8 @@ use serde::Serialize;
 
 use super::super::super::super::{orm::Connection, Result};
 use super::super::schema::{attachment_usages, attachments};
-use super::Status;
+use super::{Resource, Status};
+
 #[derive(Queryable, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
@@ -70,8 +71,8 @@ pub trait Dao {
     fn delete(&self, id: i32) -> Result<()>;
 
     fn usage(&self, id: i32) -> Result<i64>;
-    fn associate(&self, id: i32, resource_type: &str, resource_id: i32) -> Result<()>;
-    fn unassociate(&self, id: i32, resource_type: &str, resource_id: i32) -> Result<()>;
+    fn associate(&self, id: i32, resource: &Resource) -> Result<()>;
+    fn unassociate(&self, id: i32, resource: &Resource) -> Result<()>;
 }
 
 impl Dao for Connection {
@@ -149,30 +150,30 @@ impl Dao for Connection {
             .get_result(self)?;
         Ok(cnt)
     }
-    fn associate(&self, id: i32, resource_type: &str, resource_id: i32) -> Result<()> {
+    fn associate(&self, id: i32, resource: &Resource) -> Result<()> {
         let cnt: i64 = attachment_usages::dsl::attachment_usages
             .filter(attachment_usages::dsl::attachment_id.eq(id))
-            .filter(attachment_usages::dsl::resource_type.eq(resource_type))
-            .filter(attachment_usages::dsl::resource_id.eq(resource_id))
+            .filter(attachment_usages::dsl::resource_type.eq(&resource.type_))
+            .filter(attachment_usages::dsl::resource_id.eq(resource.id))
             .count()
             .get_result(self)?;
         if cnt == 0 {
             insert_into(attachment_usages::dsl::attachment_usages)
                 .values((
                     attachment_usages::dsl::attachment_id.eq(id),
-                    attachment_usages::dsl::resource_id.eq(resource_id),
-                    attachment_usages::dsl::resource_type.eq(resource_type),
+                    attachment_usages::dsl::resource_id.eq(resource.id),
+                    attachment_usages::dsl::resource_type.eq(&resource.type_),
                 ))
                 .execute(self)?;
         }
         Ok(())
     }
-    fn unassociate(&self, id: i32, resource_type: &str, resource_id: i32) -> Result<()> {
+    fn unassociate(&self, id: i32, resource: &Resource) -> Result<()> {
         delete(
             attachment_usages::dsl::attachment_usages
                 .filter(attachment_usages::dsl::attachment_id.eq(id))
-                .filter(attachment_usages::dsl::resource_type.eq(resource_type))
-                .filter(attachment_usages::dsl::resource_id.eq(resource_id)),
+                .filter(attachment_usages::dsl::resource_type.eq(&resource.type_))
+                .filter(attachment_usages::dsl::resource_id.eq(resource.id)),
         )
         .execute(self)?;
         Ok(())

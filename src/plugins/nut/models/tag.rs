@@ -4,7 +4,7 @@ use serde::Serialize;
 
 use super::super::super::super::{orm::Connection, Result};
 use super::super::schema::{tags, tags_resources};
-use super::{Color, Font, Icon};
+use super::{Color, Font, Icon, Resource};
 
 #[derive(Queryable, Serialize, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -36,8 +36,8 @@ pub trait Dao {
     ) -> Result<()>;
     fn all(&self) -> Result<Vec<Item>>;
     fn destroy(&self, id: i32) -> Result<()>;
-    fn associate(&self, tag: i32, rty: &str, rid: i32) -> Result<()>;
-    fn unassociate(&self, tag: i32, rty: &str, rid: i32) -> Result<()>;
+    fn associate(&self, tag: i32, resource: &Resource) -> Result<()>;
+    fn unassociate(&self, tag: i32, resource: &Resource) -> Result<()>;
     fn resources(&self, tag: i32) -> Result<Vec<(String, i32)>>;
 }
 
@@ -115,24 +115,24 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn associate(&self, tag: i32, rty: &str, rid: i32) -> Result<()> {
+    fn associate(&self, tag: i32, resource: &Resource) -> Result<()> {
         insert_into(tags_resources::dsl::tags_resources)
             .values((
                 tags_resources::dsl::tag_id.eq(tag),
-                tags_resources::dsl::resource_id.eq(rid),
-                tags_resources::dsl::resource_type.eq(rty),
+                tags_resources::dsl::resource_id.eq(resource.id),
+                tags_resources::dsl::resource_type.eq(&resource.type_),
             ))
             .execute(self)?;
 
         Ok(())
     }
 
-    fn unassociate(&self, tag: i32, rty: &str, rid: i32) -> Result<()> {
+    fn unassociate(&self, tag: i32, resource: &Resource) -> Result<()> {
         delete(
             tags_resources::dsl::tags_resources
                 .filter(tags_resources::dsl::tag_id.eq(tag))
-                .filter(tags_resources::dsl::resource_type.eq(rty))
-                .filter(tags_resources::dsl::resource_id.eq(rid)),
+                .filter(tags_resources::dsl::resource_type.eq(&resource.type_))
+                .filter(tags_resources::dsl::resource_id.eq(resource.id)),
         )
         .execute(self)?;
         Ok(())

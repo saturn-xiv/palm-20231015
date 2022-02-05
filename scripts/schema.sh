@@ -24,7 +24,7 @@ function generate_diesel_postgresql() {
         attachments attachment_usages friend_links leave_words \
         tags tags_resources categories categories_resources \
         contacts addresses \
-        notifications votes view_counters > src/plugins/nut/schema.rs
+        notifications rating_logs view_counters > src/plugins/nut/schema.rs
     
     diesel print-schema -o forum_topics forum_posts > src/plugins/forum/schema.rs
      
@@ -33,6 +33,7 @@ function generate_diesel_postgresql() {
         erp_warehouses erp_stores \
         erp_stocks erp_consignees \
         erp_carts \
+        erp_journal_accounts erp_journal_logs \
         erp_delivery_methods erp_payment_methods erp_orders erp_order_logs > src/plugins/mall/schema.rs
     diesel print-schema -o sms_logs > src/plugins/twilio/schema.rs
 }

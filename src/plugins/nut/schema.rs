@@ -3,6 +3,8 @@ table! {
         id -> Int4,
         resource_type -> Varchar,
         resource_id -> Int4,
+        gate -> Nullable<Varchar>,
+        unit -> Nullable<Varchar>,
         street -> Varchar,
         city -> Varchar,
         state -> Varchar,
@@ -130,6 +132,8 @@ table! {
         user_id -> Int4,
         level -> Varchar,
         ip -> Varchar,
+        resource_type -> Varchar,
+        resource_id -> Int4,
         message -> Varchar,
         created_at -> Timestamp,
     }
@@ -168,6 +172,21 @@ table! {
         resource_id -> Int4,
         operation_id -> Int4,
         created_at -> Timestamp,
+    }
+}
+
+table! {
+    rating_logs (id) {
+        id -> Int4,
+        user_id -> Int4,
+        point -> Int4,
+        resource_type -> Varchar,
+        resource_id -> Int4,
+        body -> Text,
+        body_editor -> Varchar,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
     }
 }
 
@@ -287,18 +306,6 @@ table! {
     }
 }
 
-table! {
-    votes (id) {
-        id -> Int4,
-        point -> Int4,
-        resource_type -> Varchar,
-        resource_id -> Int4,
-        version -> Int4,
-        created_at -> Timestamp,
-        updated_at -> Timestamp,
-    }
-}
-
 allow_tables_to_appear_in_same_query!(
     addresses,
     attachment_usages,
@@ -314,6 +321,7 @@ allow_tables_to_appear_in_same_query!(
     notifications,
     operations,
     policies,
+    rating_logs,
     resources,
     role_relations,
     roles,
@@ -322,5 +330,4 @@ allow_tables_to_appear_in_same_query!(
     tags_resources,
     users,
     view_counters,
-    votes,
 );

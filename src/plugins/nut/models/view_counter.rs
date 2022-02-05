@@ -4,6 +4,7 @@ use serde::Serialize;
 
 use super::super::super::super::{orm::Connection, Result};
 use super::super::schema::view_counters;
+use super::Resource;
 
 #[derive(Queryable, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -20,16 +21,16 @@ pub struct Item {
 pub trait Dao {
     fn all(&self) -> Result<Vec<Item>>;
     fn by_resource_type(&self, rty: &str) -> Result<Vec<Item>>;
-    fn visit(&self, rty: &str, rid: i32, times: i32) -> Result<()>;
+    fn visit(&self, resource: &Resource, times: i32) -> Result<()>;
     fn delete(&self, id: i32) -> Result<()>;
 }
 
 impl Dao for Connection {
-    fn visit(&self, rty: &str, rid: i32, times: i32) -> Result<()> {
+    fn visit(&self, resource: &Resource, times: i32) -> Result<()> {
         let now = Utc::now().naive_utc();
         match view_counters::dsl::view_counters
-            .filter(view_counters::dsl::resource_type.eq(rty))
-            .filter(view_counters::dsl::resource_id.eq(rid))
+            .filter(view_counters::dsl::resource_type.eq(&resource.type_))
+            .filter(view_counters::dsl::resource_id.eq(resource.id))
             .first::<Item>(self)
         {
             Ok(it) => {
@@ -43,8 +44,8 @@ impl Dao for Connection {
             Err(_) => {
                 insert_into(view_counters::dsl::view_counters)
                     .values((
-                        view_counters::dsl::resource_id.eq(rid),
-                        view_counters::dsl::resource_type.eq(rty),
+                        view_counters::dsl::resource_id.eq(resource.id),
+                        view_counters::dsl::resource_type.eq(&resource.type_),
                         view_counters::dsl::point.eq(times),
                         view_counters::dsl::updated_at.eq(&now),
                     ))

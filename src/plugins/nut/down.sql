@@ -1,6 +1,6 @@
 DROP TABLE leave_words;
 DROP TABLE friend_links;
-DROP TABLE votes;
+DROP TABLE rating_logs;
 DROP TABLE view_counters;
 DROP TABLE tags;
 DROP TABLE tags_resources;

@@ -45,6 +45,37 @@ table! {
 }
 
 table! {
+    erp_journal_accounts (id) {
+        id -> Int4,
+        code -> Varchar,
+        name -> Varchar,
+        body -> Text,
+        body_editor -> Varchar,
+        status -> Varchar,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
+    erp_journal_logs (id) {
+        id -> Int4,
+        account_id -> Int4,
+        operator_id -> Int4,
+        consignee_id -> Int4,
+        amount -> Numeric,
+        balance -> Nullable<Numeric>,
+        method -> Varchar,
+        description -> Text,
+        status -> Varchar,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
     erp_order_logs (id) {
         id -> Int4,
         operator_id -> Int4,
@@ -198,6 +229,8 @@ allow_tables_to_appear_in_same_query!(
     erp_carts,
     erp_consignees,
     erp_delivery_methods,
+    erp_journal_accounts,
+    erp_journal_logs,
     erp_order_logs,
     erp_orders,
     erp_parameters,

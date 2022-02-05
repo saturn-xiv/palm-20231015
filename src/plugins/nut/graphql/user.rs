@@ -13,9 +13,10 @@ use super::super::super::super::{
 };
 use super::super::{
     models::{
-        log::{Dao as LogDao, Item as LogItem},
+        log::{Dao as LogDao, Item as LogItem, Level},
         role::{Dao as RoleDao, Item as RoleItem},
         user::{Dao as UserDao, Item as UserItem},
+        Resource,
     },
     tasks::email::Task as EmailTask,
 };
@@ -81,7 +82,17 @@ impl UserSignInRequest {
         let ip = ctx.peer();
         db.transaction::<_, Error, _>(move || {
             UserDao::sign_in(db, user.id, &ip)?;
-            LogDao::add(db, user.id, &ip, "sign in success")?;
+            LogDao::add(
+                db,
+                user.id,
+                &Level::Info,
+                &ip,
+                &Resource {
+                    type_: type_name::<UserItem>().to_string(),
+                    id: user.id,
+                },
+                "sign in success",
+            )?;
             Ok(())
         })?;
 
@@ -150,7 +161,17 @@ impl UserSignUpRequest {
                 &self.time_zone.parse()?,
             )?;
             let user = UserDao::by_email(db, &self.email)?;
-            LogDao::add(db, user.id, &ip, "sign up.")?;
+            LogDao::add(
+                db,
+                user.id,
+                &Level::Info,
+                &ip,
+                &Resource {
+                    type_: type_name::<UserItem>().to_string(),
+                    id: user.id,
+                },
+                "sign up.",
+            )?;
             Ok(())
         })?;
 
@@ -185,13 +206,33 @@ impl UserSignUpRequest {
                 &self.time_zone.parse()?,
             )?;
             let user = UserDao::by_email(db, &self.email)?;
-            LogDao::add(db, user.id, &ip, "sign up.")?;
+            LogDao::add(
+                db,
+                user.id,
+                &Level::Info,
+                &ip,
+                &Resource {
+                    type_: type_name::<UserItem>().to_string(),
+                    id: user.id,
+                },
+                "sign up.",
+            )?;
             for role in [RoleItem::ADMINISTRATOR, RoleItem::ROOT] {
                 RoleDao::create(db, None, role, role)?;
                 let role = RoleDao::by_code(db, role)?;
                 let (nbf, exp) = RoleItem::timestamps(Duration::weeks(1 << 10));
                 RoleDao::associate(db, role.id, type_name::<UserItem>(), user.id, &nbf, &exp)?;
-                LogDao::add(db, user.id, &ip, &format!("apply {} role.", role.code))?;
+                LogDao::add(
+                    db,
+                    user.id,
+                    &Level::Info,
+                    &ip,
+                    &Resource {
+                        type_: type_name::<UserItem>().to_string(),
+                        id: user.id,
+                    },
+                    &format!("apply {} role.", role.code),
+                )?;
             }
 
             Ok(())
@@ -282,7 +323,17 @@ pub fn confirm_by_token(ctx: &Context, token: &str) -> Result<()> {
         let user_id = user.id;
         db.transaction::<_, Error, _>(move || {
             UserDao::confirm(db, user_id)?;
-            LogDao::add(db, user_id, &ip, "Confirm account.")?;
+            LogDao::add(
+                db,
+                user_id,
+                &Level::Info,
+                &ip,
+                &Resource {
+                    type_: type_name::<UserItem>().to_string(),
+                    id: user.id,
+                },
+                "Confirm account.",
+            )?;
             Ok(())
         })?;
     }
@@ -306,7 +357,17 @@ pub fn unlock_by_token(ctx: &Context, token: &str) -> Result<()> {
         let user_id = user.id;
         db.transaction::<_, Error, _>(move || {
             UserDao::lock(db, user_id, false)?;
-            LogDao::add(db, user_id, &ip, "Unlock account.")?;
+            LogDao::add(
+                db,
+                user_id,
+                &Level::Info,
+                &ip,
+                &Resource {
+                    type_: type_name::<UserItem>().to_string(),
+                    id: user.id,
+                },
+                "Unlock account.",
+            )?;
             Ok(())
         })?;
     }
@@ -339,7 +400,17 @@ impl UserResetPasswordRequest {
             let user_id = user.id;
             db.transaction::<_, Error, _>(move || {
                 UserDao::password(db, enc, user_id, &self.password)?;
-                LogDao::add(db, user_id, &ip, "Reset password")?;
+                LogDao::add(
+                    db,
+                    user_id,
+                    &Level::Info,
+                    &ip,
+                    &Resource {
+                        type_: type_name::<UserItem>().to_string(),
+                        id: user.id,
+                    },
+                    "Reset password",
+                )?;
                 Ok(())
             })?;
         }
@@ -376,7 +447,17 @@ impl UserUpdateProfileRequest {
                     &self.lang.parse()?,
                     &self.time_zone.parse()?,
                 )?;
-                LogDao::add(db, user_id, &ip, "Update profile.")?;
+                LogDao::add(
+                    db,
+                    user_id,
+                    &Level::Info,
+                    &ip,
+                    &Resource {
+                        type_: type_name::<UserItem>().to_string(),
+                        id: user.id,
+                    },
+                    "Update profile.",
+                )?;
                 Ok(())
             })?;
         }
@@ -406,7 +487,17 @@ impl UserChangePasswordRequest {
 
             db.transaction::<_, Error, _>(move || {
                 UserDao::password(db, enc, user_id, &self.new_password)?;
-                LogDao::add(db, user_id, &ip, "Change password.")?;
+                LogDao::add(
+                    db,
+                    user_id,
+                    &Level::Info,
+                    &ip,
+                    &Resource {
+                        type_: type_name::<UserItem>().to_string(),
+                        id: user.id,
+                    },
+                    "Change password.",
+                )?;
                 Ok(())
             })?;
         }
@@ -438,7 +529,17 @@ pub fn sign_out(ctx: &Context) -> Result<()> {
     let db = ctx.db.get()?;
     let db = db.deref();
     let ip = ctx.peer();
-    LogDao::add(db, user.id, &ip, "Sign out.")?;
+    LogDao::add(
+        db,
+        user.id,
+        &Level::Info,
+        &ip,
+        &Resource {
+            type_: type_name::<UserItem>().to_string(),
+            id: user.id,
+        },
+        "Sign out.",
+    )?;
     Ok(())
 }
 

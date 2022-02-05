@@ -1,5 +1,5 @@
 use chrono::{NaiveDateTime, Utc};
-use diesel::{delete, insert_into, prelude::*};
+use diesel::{delete, insert_into, prelude::*, update};
 use juniper::GraphQLInputObject;
 use serde::{Deserialize, Serialize};
 
@@ -31,7 +31,8 @@ pub struct Property {
 pub trait Dao {
     fn by_resource(&self, rescource: &Resource) -> Result<Vec<Item>>;
     fn codes(&self) -> Result<Vec<String>>;
-    fn save(&self, resource: &Resource, items: &[Property]) -> Result<()>;
+    fn save(&self, resource: &Resource, property: &Property) -> Result<()>;
+    fn destroy(&self, id: i32) -> Result<()>;
 }
 
 impl Dao for Connection {
@@ -49,26 +50,42 @@ impl Dao for Connection {
             .distinct()
             .load::<String>(self)?)
     }
-    fn save(&self, resource: &Resource, items: &[Property]) -> Result<()> {
-        delete(
-            contacts::dsl::contacts
-                .filter(contacts::dsl::resource_id.eq(resource.id))
-                .filter(contacts::dsl::resource_type.eq(&resource.type_)),
-        )
-        .execute(self)?;
+    fn save(&self, resource: &Resource, property: &Property) -> Result<()> {
         let now = Utc::now().naive_utc();
-        for it in items.iter() {
-            insert_into(contacts::dsl::contacts)
-                .values((
-                    contacts::dsl::resource_type.eq(&resource.type_),
-                    contacts::dsl::resource_id.eq(&resource.id),
-                    contacts::dsl::code.eq(&it.code),
-                    contacts::dsl::name.eq(&it.name),
-                    contacts::dsl::value.eq(&it.value),
-                    contacts::dsl::updated_at.eq(&now),
-                ))
-                .execute(self)?;
-        }
+        match contacts::dsl::contacts
+            .filter(contacts::dsl::resource_type.eq(&resource.type_))
+            .filter(contacts::dsl::resource_id.eq(resource.id))
+            .filter(contacts::dsl::code.eq(&property.code))
+            .first::<Item>(self)
+        {
+            Ok(it) => {
+                let filter = contacts::dsl::contacts.filter(contacts::dsl::id.eq(it.id));
+                update(filter)
+                    .set((
+                        contacts::dsl::name.eq(&property.name),
+                        contacts::dsl::value.eq(&property.value),
+                        contacts::dsl::updated_at.eq(&now),
+                    ))
+                    .execute(self)?;
+            }
+            Err(_) => {
+                insert_into(contacts::dsl::contacts)
+                    .values((
+                        contacts::dsl::resource_type.eq(&resource.type_),
+                        contacts::dsl::resource_id.eq(&resource.id),
+                        contacts::dsl::code.eq(&property.code),
+                        contacts::dsl::name.eq(&property.name),
+                        contacts::dsl::value.eq(&property.value),
+                        contacts::dsl::updated_at.eq(&now),
+                    ))
+                    .execute(self)?;
+            }
+        };
+
+        Ok(())
+    }
+    fn destroy(&self, id: i32) -> Result<()> {
+        delete(contacts::dsl::contacts.filter(contacts::dsl::id.eq(id))).execute(self)?;
         Ok(())
     }
 }

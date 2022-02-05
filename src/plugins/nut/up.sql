@@ -36,13 +36,16 @@ CREATE UNIQUE INDEX idx_users_provider ON users(provider_type, provider_id);
 CREATE TABLE "logs"(
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
-    LEVEL VARCHAR(16) NOT NULL DEFAULT 'info',
+    "level" VARCHAR(16) NOT NULL DEFAULT 'info',
     ip VARCHAR(45) NOT NULL,
+    resource_type VARCHAR(255) NOT NULL,
+    resource_id INTEGER NOT NULL,
     message VARCHAR(255) NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 CREATE INDEX idx_logs_ip ON "logs"(ip);
 CREATE INDEX idx_logs_level ON "logs"("level");
+CREATE INDEX idx_logs_resource ON "logs"(user_id, resource_type, resource_id);
 CREATE TABLE groups(
     id SERIAL PRIMARY KEY,
     code VARCHAR(32) NOT NULL,
@@ -227,17 +230,20 @@ CREATE TABLE leave_words(
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 CREATE INDEX idx_leave_words_ip ON leave_words(ip);
-CREATE TABLE votes(
+CREATE TABLE rating_logs(
     id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
     "point" INTEGER NOT NULL DEFAULT 0,
     resource_type VARCHAR(255) NOT NULL,
     resource_id INTEGER NOT NULL,
+    body TEXT NOT NULL,
+    body_editor VARCHAR(255) NOT NULL,
     version INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
-CREATE UNIQUE INDEX idx_votes ON votes(resource_type, resource_id);
-CREATE INDEX idx_votes_resource_type ON votes(resource_type);
+CREATE UNIQUE INDEX idx_rating_logs ON rating_logs(resource_type, resource_id);
+CREATE INDEX idx_rating_logs_resource_type ON rating_logs(resource_type);
 CREATE TABLE view_counters(
     id SERIAL PRIMARY KEY,
     resource_type VARCHAR(255) NOT NULL,
@@ -268,6 +274,8 @@ CREATE TABLE addresses(
     id SERIAL PRIMARY KEY,
     resource_type VARCHAR(255) NOT NULL,
     resource_id INTEGER NOT NULL,
+    gate VARCHAR(255),
+    unit VARCHAR(255),
     street VARCHAR(255) NOT NULL,
     city VARCHAR(255) NOT NULL,
     "state" VARCHAR(255) NOT NULL,

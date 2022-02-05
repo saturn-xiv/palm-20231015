@@ -4,7 +4,7 @@ use serde::Serialize;
 
 use super::super::super::super::{orm::Connection, Result};
 use super::super::schema::{categories, categories_resources};
-use super::{Color, Font, Icon};
+use super::{Color, Font, Icon, Resource};
 
 #[derive(Queryable, Serialize, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -47,8 +47,8 @@ pub trait Dao {
     ) -> Result<()>;
     fn all(&self) -> Result<Vec<Item>>;
     fn destroy(&self, id: i32) -> Result<()>;
-    fn bind(&self, categories: &[i32], rty: &str, rid: i32) -> Result<()>;
-    fn unbind(&self, rty: &str, rid: i32) -> Result<()>;
+    fn associate(&self, category: i32, resource: &Resource) -> Result<()>;
+    fn unassociate(&self, category: i32, resouce: &Resource) -> Result<()>;
     fn resources(&self, category: i32, rty: &str) -> Result<Vec<i32>>;
     fn children(&self, category: Option<i32>) -> Result<Vec<Item>>;
 }
@@ -138,25 +138,34 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn bind(&self, categories: &[i32], rty: &str, rid: i32) -> Result<()> {
+    fn associate(&self, category: i32, resource: &Resource) -> Result<()> {
         let now = Utc::now().naive_utc();
-        for it in categories {
+        let cnt: i64 = categories_resources::dsl::categories_resources
+            .filter(categories_resources::dsl::category_id.eq(category))
+            .filter(categories_resources::dsl::resource_type.eq(&resource.type_))
+            .filter(categories_resources::dsl::resource_id.eq(resource.id))
+            .count()
+            .get_result(self)?;
+
+        if cnt == 0 {
             insert_into(categories_resources::dsl::categories_resources)
                 .values((
-                    categories_resources::dsl::category_id.eq(it),
-                    categories_resources::dsl::resource_id.eq(&rid),
-                    categories_resources::dsl::resource_type.eq(&rty),
+                    categories_resources::dsl::category_id.eq(category),
+                    categories_resources::dsl::resource_id.eq(resource.id),
+                    categories_resources::dsl::resource_type.eq(&resource.type_),
                     categories_resources::dsl::created_at.eq(&now),
                 ))
                 .execute(self)?;
         }
+
         Ok(())
     }
-    fn unbind(&self, rty: &str, rid: i32) -> Result<()> {
+    fn unassociate(&self, category: i32, resource: &Resource) -> Result<()> {
         delete(
             categories_resources::dsl::categories_resources
-                .filter(categories_resources::dsl::resource_type.eq(rty))
-                .filter(categories_resources::dsl::resource_id.eq(rid)),
+                .filter(categories_resources::dsl::category_id.eq(category))
+                .filter(categories_resources::dsl::resource_type.eq(&resource.type_))
+                .filter(categories_resources::dsl::resource_id.eq(resource.id)),
         )
         .execute(self)?;
         Ok(())

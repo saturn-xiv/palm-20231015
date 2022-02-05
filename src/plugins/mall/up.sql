@@ -182,3 +182,32 @@ CREATE TABLE erp_carts(
 );
 CREATE UNIQUE INDEX idx_erp_carts ON erp_carts(code, sku_id);
 CREATE UNIQUE INDEX idx_erp_carts_code ON erp_carts(code);
+CREATE TABLE erp_journal_accounts(
+    id SERIAL PRIMARY KEY,
+    code VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    body TEXT NOT NULL,
+    body_editor VARCHAR(32) NOT NULL,
+    "status" VARCHAR(16) NOT NULL,
+    version INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
+);
+CREATE UNIQUE INDEX idx_erp_journal_accounts ON erp_journal_accounts(code);
+CREATE INDEX idx_erp_journal_accounts_name ON erp_journal_accounts(name);
+CREATE TABLE erp_journal_logs(
+    id SERIAL PRIMARY KEY,
+    account_id INTEGER NOT NULL,
+    operator_id INTEGER NOT NULL,
+    consignee_id INTEGER NOT NULL,
+    amount NUMERIC(20, 6) NOT NULL,
+    balance NUMERIC(20, 6),
+    method VARCHAR(32) NOT NULL,
+    description TEXT NOT NULL,
+    "status" VARCHAR(16) NOT NULL,
+    version INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
+);
+CREATE INDEX idx_erp_journal_logs_acccout_method ON erp_journal_logs(account_id, method);
+CREATE INDEX idx_erp_journal_logs_acccout_status ON erp_journal_logs(account_id, "status");

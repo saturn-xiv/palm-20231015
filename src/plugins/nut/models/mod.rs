@@ -9,15 +9,15 @@ pub mod log;
 pub mod notification;
 pub mod operation;
 pub mod policy;
+pub mod rating_log;
 pub mod resource;
 pub mod role;
 pub mod tag;
 pub mod user;
 pub mod view_counter;
-pub mod vote;
 
 use std::default::Default;
-use std::fmt::{self};
+use std::fmt;
 use std::str::FromStr;
 
 use chrono::NaiveDateTime;
@@ -53,6 +53,12 @@ pub struct Icon {
 pub struct Resource {
     pub type_: String,
     pub id: i32,
+}
+
+impl fmt::Display for Resource {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{}://{}", self.type_, self.id)
+    }
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
