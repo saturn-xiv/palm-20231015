@@ -2,6 +2,7 @@ pub mod brand;
 pub mod cart;
 pub mod consignee;
 pub mod delivery;
+pub mod journal;
 pub mod order;
 pub mod parameter;
 pub mod payment;

@@ -27,15 +27,19 @@ function generate_diesel_postgresql() {
         notifications rating_logs view_counters > src/plugins/nut/schema.rs
     
     diesel print-schema -o forum_topics forum_posts > src/plugins/forum/schema.rs
-     
-    diesel print-schema -o erp_brands erp_spu erp_sku \
-        erp_parameters erp_prices erp_taxes \
-        erp_warehouses erp_stores \
-        erp_stocks erp_consignees \
-        erp_carts \
-        erp_journal_accounts erp_journal_logs \
-        erp_delivery_methods erp_payment_methods erp_orders erp_order_logs > src/plugins/mall/schema.rs
     diesel print-schema -o sms_logs > src/plugins/twilio/schema.rs
+     
+    diesel print-schema -o erp_spec_groups erp_spec_params \
+    erp_brands erp_categories erp_categories_brands \
+    erp_spu erp_spu_brands erp_spu_categories erp_spu_params \
+    erp_sku erp_sku_params \
+    erp_prices erp_taxes \
+    erp_warehouses erp_warehouses_sku \
+    erp_levels erp_users_levels erp_vouchers \
+    erp_orders erp_delivery_logs erp_returning_logs \
+    erp_suppliers erp_purchase_logs erp_warehousing_logs \
+    > src/plugins/mall/schema.rs
+    
 }
 
 function generate_grpc() {

@@ -2,41 +2,8 @@ table! {
     erp_brands (id) {
         id -> Int4,
         code -> Varchar,
-        title -> Varchar,
-        body -> Text,
-        body_editor -> Varchar,
-        version -> Int4,
-        created_at -> Timestamp,
-        updated_at -> Timestamp,
-    }
-}
-
-table! {
-    erp_carts (id) {
-        id -> Int4,
-        code -> Varchar,
-        sku_id -> Int4,
-        count -> Int4,
-        created_at -> Timestamp,
-    }
-}
-
-table! {
-    erp_consignees (id) {
-        id -> Int4,
-        username -> Varchar,
-        company -> Nullable<Varchar>,
-        version -> Int4,
-        created_at -> Timestamp,
-        updated_at -> Timestamp,
-    }
-}
-
-table! {
-    erp_delivery_methods (id) {
-        id -> Int4,
-        code -> Varchar,
         name -> Varchar,
+        home -> Nullable<Varchar>,
         logo -> Nullable<Varchar>,
         version -> Int4,
         created_at -> Timestamp,
@@ -45,13 +12,11 @@ table! {
 }
 
 table! {
-    erp_journal_accounts (id) {
+    erp_categories (id) {
         id -> Int4,
         code -> Varchar,
         name -> Varchar,
-        body -> Text,
-        body_editor -> Varchar,
-        status -> Varchar,
+        parent_id -> Nullable<Int4>,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -59,72 +24,51 @@ table! {
 }
 
 table! {
-    erp_journal_logs (id) {
+    erp_categories_brands (id) {
         id -> Int4,
-        account_id -> Int4,
-        operator_id -> Int4,
-        consignee_id -> Int4,
-        amount -> Numeric,
-        balance -> Nullable<Numeric>,
-        method -> Varchar,
-        description -> Text,
-        status -> Varchar,
-        version -> Int4,
+        category_id -> Int4,
+        brand_id -> Int4,
         created_at -> Timestamp,
-        updated_at -> Timestamp,
     }
 }
 
 table! {
-    erp_order_logs (id) {
+    erp_delivery_logs (id) {
         id -> Int4,
-        operator_id -> Int4,
+        code -> Varchar,
         order_id -> Int4,
-        #[sql_name = "type"]
-        type_ -> Varchar,
-        message -> Text,
+        deliverer_id -> Int4,
+        warehouse_id -> Int4,
+        by -> Varchar,
+        payload -> Bytea,
+        state -> Varchar,
+        version -> Int4,
         created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
+    erp_levels (id) {
+        id -> Int4,
+        code -> Varchar,
+        name -> Varchar,
+        discount -> Numeric,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
     }
 }
 
 table! {
     erp_orders (id) {
         id -> Int4,
-        user_id -> Int4,
         code -> Varchar,
-        consignee -> Bytea,
-        items -> Bytea,
-        deliverer -> Bytea,
+        customer_id -> Int4,
         payment -> Bytea,
-        prices -> Bytea,
-        status -> Varchar,
-        version -> Int4,
-        created_at -> Timestamp,
-        updated_at -> Timestamp,
-    }
-}
-
-table! {
-    erp_parameters (id) {
-        id -> Int4,
-        resource_type -> Varchar,
-        resource_id -> Int4,
-        code -> Varchar,
-        name -> Varchar,
-        value -> Text,
-        sort -> Int4,
-        version -> Int4,
-        created_at -> Timestamp,
-        updated_at -> Timestamp,
-    }
-}
-
-table! {
-    erp_payment_methods (id) {
-        id -> Int4,
-        code -> Varchar,
-        name -> Varchar,
-        logo -> Nullable<Varchar>,
+        delivery -> Bytea,
+        payload -> Bytea,
+        state -> Varchar,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -134,12 +78,45 @@ table! {
 table! {
     erp_prices (id) {
         id -> Int4,
-        resource_type -> Varchar,
-        resource_id -> Int4,
+        sku_id -> Int4,
         code -> Varchar,
         name -> Varchar,
         currency -> Varchar,
         value -> Numeric,
+        tax_id -> Int4,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
+    erp_purchase_logs (id) {
+        id -> Int4,
+        buyer_id -> Int4,
+        supplier_id -> Int4,
+        payment -> Bytea,
+        payload -> Bytea,
+        state -> Varchar,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
+    erp_returning_logs (id) {
+        id -> Int4,
+        code -> Varchar,
+        order_id -> Int4,
+        consumer_id -> Int4,
+        qa_id -> Int4,
+        reason -> Text,
+        reason_editor -> Varchar,
+        payment -> Bytea,
+        delivery -> Bytea,
+        payload -> Bytea,
+        state -> Varchar,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -150,11 +127,47 @@ table! {
     erp_sku (id) {
         id -> Int4,
         spu_id -> Int4,
-        code -> Varchar,
-        title -> Varchar,
-        body -> Text,
-        body_editor -> Varchar,
+        name -> Varchar,
         status -> Varchar,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
+    erp_sku_params (id) {
+        id -> Int4,
+        sku_id -> Int4,
+        param_id -> Int4,
+        value -> Bytea,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
+    erp_spec_groups (id) {
+        id -> Int4,
+        code -> Varchar,
+        name -> Varchar,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
+    erp_spec_params (id) {
+        id -> Int4,
+        spec_group_id -> Int4,
+        code -> Varchar,
+        name -> Varchar,
+        unit -> Nullable<Varchar>,
+        #[sql_name = "type"]
+        type_ -> Varchar,
+        segements -> Nullable<Text>,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -164,9 +177,9 @@ table! {
 table! {
     erp_spu (id) {
         id -> Int4,
-        brand_id -> Int4,
         code -> Varchar,
         title -> Varchar,
+        subhead -> Nullable<Varchar>,
         body -> Text,
         body_editor -> Varchar,
         status -> Varchar,
@@ -177,13 +190,29 @@ table! {
 }
 
 table! {
-    erp_stocks (id) {
+    erp_spu_brands (id) {
         id -> Int4,
-        sku_id -> Int4,
-        warehouse_id -> Int4,
-        store_id -> Int4,
-        amount -> Int4,
-        unit -> Varchar,
+        spu_id -> Int4,
+        brand_id -> Int4,
+        created_at -> Timestamp,
+    }
+}
+
+table! {
+    erp_spu_categories (id) {
+        id -> Int4,
+        spu_id -> Int4,
+        category_id -> Int4,
+        created_at -> Timestamp,
+    }
+}
+
+table! {
+    erp_spu_params (id) {
+        id -> Int4,
+        spu_id -> Int4,
+        param_id -> Int4,
+        value -> Bytea,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -191,10 +220,12 @@ table! {
 }
 
 table! {
-    erp_stores (id) {
+    erp_suppliers (id) {
         id -> Int4,
         code -> Varchar,
         name -> Varchar,
+        payment -> Bytea,
+        state -> Varchar,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -214,6 +245,32 @@ table! {
 }
 
 table! {
+    erp_users_levels (id) {
+        id -> Int4,
+        user_id -> Int4,
+        level_id -> Int4,
+        created_at -> Timestamp,
+    }
+}
+
+table! {
+    erp_vouchers (id) {
+        id -> Int4,
+        operator_id -> Int4,
+        customer_id -> Int4,
+        code -> Varchar,
+        deno -> Numeric,
+        condition -> Numeric,
+        not_before -> Date,
+        expired_at -> Date,
+        consumed_at -> Nullable<Timestamp>,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
     erp_warehouses (id) {
         id -> Int4,
         code -> Varchar,
@@ -224,22 +281,58 @@ table! {
     }
 }
 
+table! {
+    erp_warehouses_sku (id) {
+        id -> Int4,
+        warehouse_id -> Int4,
+        sku_id -> Int4,
+        amount -> Int4,
+        unit -> Varchar,
+        x -> Int4,
+        y -> Int4,
+        z -> Int4,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
+    erp_warehousing_logs (id) {
+        id -> Int4,
+        storekeeper_id -> Int4,
+        purchase_log_id -> Int4,
+        payload -> Bytea,
+        state -> Varchar,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
 allow_tables_to_appear_in_same_query!(
     erp_brands,
-    erp_carts,
-    erp_consignees,
-    erp_delivery_methods,
-    erp_journal_accounts,
-    erp_journal_logs,
-    erp_order_logs,
+    erp_categories,
+    erp_categories_brands,
+    erp_delivery_logs,
+    erp_levels,
     erp_orders,
-    erp_parameters,
-    erp_payment_methods,
     erp_prices,
+    erp_purchase_logs,
+    erp_returning_logs,
     erp_sku,
+    erp_sku_params,
+    erp_spec_groups,
+    erp_spec_params,
     erp_spu,
-    erp_stocks,
-    erp_stores,
+    erp_spu_brands,
+    erp_spu_categories,
+    erp_spu_params,
+    erp_suppliers,
     erp_taxes,
+    erp_users_levels,
+    erp_vouchers,
     erp_warehouses,
+    erp_warehouses_sku,
+    erp_warehousing_logs,
 );
