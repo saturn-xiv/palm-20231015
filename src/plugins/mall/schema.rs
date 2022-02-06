@@ -12,6 +12,18 @@ table! {
 }
 
 table! {
+    erp_carts (id) {
+        id -> Int4,
+        code -> Varchar,
+        sku_id -> Int4,
+        count -> Int4,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
     erp_categories (id) {
         id -> Int4,
         code -> Varchar,
@@ -65,6 +77,7 @@ table! {
         id -> Int4,
         code -> Varchar,
         customer_id -> Int4,
+        sales_id -> Nullable<Int4>,
         payment -> Bytea,
         delivery -> Bytea,
         payload -> Bytea,
@@ -312,6 +325,7 @@ table! {
 
 allow_tables_to_appear_in_same_query!(
     erp_brands,
+    erp_carts,
     erp_categories,
     erp_categories_brands,
     erp_delivery_logs,

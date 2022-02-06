@@ -22,3 +22,4 @@ DROP TABLE erp_returning_logs;
 DROP TABLE erp_suppliers;
 DROP TABLE erp_purchase_logs;
 DROP TABLE erp_warehousing_logs;
+DROP TABLE erp_carts;

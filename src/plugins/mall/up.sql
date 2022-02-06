@@ -204,6 +204,7 @@ CREATE TABLE erp_orders(
     id SERIAL PRIMARY KEY,
     code VARCHAR(255) NOT NULL,
     customer_id INTEGER NOT NULL,
+    sales_id INTEGER,
     payment BYTEA NOT NULL,
     delivery BYTEA NOT NULL,
     payload BYTEA NOT NULL,
@@ -282,3 +283,14 @@ CREATE TABLE erp_warehousing_logs(
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
 CREATE INDEX idx_erp_warehousing_logs_state ON erp_warehousing_logs("state");
+CREATE TABLE erp_carts(
+    id SERIAL PRIMARY KEY,
+    code VARCHAR(255) NOT NULL,
+    sku_id INTEGER NOT NULL,
+    "count" INTEGER NOT NULL,
+    version INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
+);
+CREATE UNIQUE INDEX idx_erp_carts ON erp_carts(code, sku_id);
+CREATE INDEX idx_erp_carts_code ON erp_carts(code);

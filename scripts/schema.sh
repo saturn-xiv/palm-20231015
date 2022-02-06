@@ -38,6 +38,7 @@ function generate_diesel_postgresql() {
     erp_levels erp_users_levels erp_vouchers \
     erp_orders erp_delivery_logs erp_returning_logs \
     erp_suppliers erp_purchase_logs erp_warehousing_logs \
+    erp_carts \
     > src/plugins/mall/schema.rs
     
 }
