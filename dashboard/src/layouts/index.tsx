@@ -11,6 +11,7 @@ export default (props: any) => {
       '/users/unlock',
       '/users/forgot-password',
       '/leave-words/new',
+      '/switch-language',
     ].includes(props.location.pathname)
   ) {
     return <Application {...props} />;

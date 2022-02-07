@@ -5,8 +5,7 @@ export default defineConfig({
     type: 'none',
   },
   fastRefresh: {},
-  base: '/my/',
-  // TODO
+  base: `${process.env.UMI_APP_BASE_PATH}/`,
   favicon: '/assets/favicon.png',
   hash: true,
   dynamicImport: {
@@ -15,5 +14,6 @@ export default defineConfig({
   locale: {
     default: 'en-US',
     title: true,
+    antd: true,
   },
 });

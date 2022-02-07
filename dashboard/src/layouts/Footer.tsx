@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import Footer from '@ant-design/pro-layout/lib/Footer';
-import { GithubOutlined, HomeOutlined } from '@ant-design/icons';
+import {
+  GithubOutlined,
+  HomeOutlined,
+  GlobalOutlined,
+} from '@ant-design/icons';
 import { Helmet } from 'umi';
 
 import { graphql } from '@/global';
@@ -16,6 +20,7 @@ interface IResponse {
 
 export default () => {
   const [item, setItem] = useState<ISiteInfo>();
+  const languages = ['en-US', 'zh-CN', 'zh-TW', 'ko-KR', 'ja-JP'];
 
   useEffect(() => {
     graphql(
@@ -51,6 +56,11 @@ export default () => {
             title: <GithubOutlined />,
             href: 'https://github.com/saturn-xiv/palm',
             blankTarget: true,
+          },
+          {
+            key: 'global',
+            title: <GlobalOutlined />,
+            href: `${process.env.UMI_APP_BASE_PATH}/switch-language`,
           },
         ]}
       />

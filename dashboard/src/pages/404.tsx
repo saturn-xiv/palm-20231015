@@ -17,7 +17,7 @@ export default () => {
           {intl.formatMessage({ id: 'buttons.go-back' })}
         </Button>,
         <Button key="home" type="primary" onClick={() => history.push('/')}>
-          {intl.formatMessage({ id: '404.go-home' })}
+          {intl.formatMessage({ id: 'buttons.go-home' })}
         </Button>,
       ]}
     >
