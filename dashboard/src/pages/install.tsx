@@ -1,177 +1,115 @@
+import { useState, useEffect } from 'react';
+import { useIntl, getLocale } from 'umi';
+import { Form, Input, message, Button } from 'antd';
+import moment from 'moment-timezone';
+
+import NonSignInForm from '@/components/NonSignInForm';
+import {
+  CODE_VALIDATOR,
+  EMAIL_VALIDATOR,
+  NAME_VALIDATOR,
+  PASSWORD_VALIDATOR,
+} from '@/components/form';
+import { graphql } from '@/global';
+
 export default () => {
+  const intl = useIntl();
+
+  const onFinish = (values: any) => {
+    console.log('Success:', values);
+    graphql(
+      `
+        mutation Install($user: UserSignUpRequest!) {
+          install(form: $user) {
+            createdAt
+          }
+        }
+      `,
+      {
+        user: {
+          nickName: values.nickName,
+          realName: values.realName,
+          email: values.email,
+          password: values.password,
+          lang: getLocale(),
+          timeZone: moment.tz.guess(),
+          home: document.location.origin,
+        },
+      },
+      (res: any) => {
+        message.success(intl.formatMessage({ id: 'flashes.successed' }));
+      },
+    );
+  };
+
   return (
-    <div>
-      <h1>install</h1>
-    </div>
+    <NonSignInForm title={intl.formatMessage({ id: 'install.title' })}>
+      <Form name="install" layout="vertical" onFinish={onFinish}>
+        <Form.Item
+          label={intl.formatMessage({ id: 'attributes.nick-name' })}
+          name="nickName"
+          rules={[CODE_VALIDATOR]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label={intl.formatMessage({ id: 'attributes.email' })}
+          name="email"
+          rules={[EMAIL_VALIDATOR]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label={intl.formatMessage({ id: 'attributes.real-name' })}
+          name="realName"
+          rules={[NAME_VALIDATOR]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label={intl.formatMessage({ id: 'attributes.password' })}
+          name="password"
+          rules={[PASSWORD_VALIDATOR]}
+        >
+          <Input.Password type="password" />
+        </Form.Item>
+        <Form.Item
+          label={intl.formatMessage({ id: 'attributes.password-confirmation' })}
+          name="passwordConfirmation"
+          rules={[
+            { required: true },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                if (!value || getFieldValue('password') === value) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(
+                  new Error(
+                    intl.formatMessage({
+                      id: 'helpers.password-onfirmation',
+                    }),
+                  ),
+                );
+              },
+            }),
+          ]}
+        >
+          <Input.Password type="password" />
+        </Form.Item>
+
+        <Form.Item
+          wrapperCol={{
+            sm: { offset: 2, span: 20 },
+            md: { offset: 4, span: 16 },
+          }}
+        >
+          <Button type="primary" htmlType="submit">
+            {intl.formatMessage({
+              id: 'buttons.submit',
+            })}
+          </Button>
+        </Form.Item>
+      </Form>
+    </NonSignInForm>
   );
 };
-
-// import TextField from '@mui/material/TextField';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import Checkbox from '@mui/material/Checkbox';
-// import { useIntl } from 'umi';
-// import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined';
-// import { useForm, Controller } from 'react-hook-form';
-// import { useRef } from 'react';
-
-// import ApplicationForm from '../layouts/application/Form';
-// import { validators, graphql } from '../utils';
-
-// interface IForm {
-//   nickName: string;
-//   realName: string;
-//   email: string;
-//   password: string;
-//   passwordConfirmation: string;
-//   allowExtraEmails: boolean;
-// }
-
-// export default () => {
-//   const {
-//     control,
-//     formState: { errors },
-//     register,
-//     handleSubmit,
-//     watch,
-//   } = useForm({
-//     defaultValues: {
-//       nickName: '',
-//       realName: '',
-//       email: '',
-//       password: '',
-//       passwordConfirmation: '',
-//       allowExtraEmails: false,
-//     },
-//   });
-//   const password = useRef({});
-//   password.current = watch('password', '');
-//   const onSubmit = (form: IForm) => {
-//     console.log(form);
-//     // graphql_query(`query{apiVersion}`, {});
-//     graphql(
-//       `
-//         mutation Install($form: UserSignUpRequest!) {
-//           install(form: $form) {
-//             createdAt
-//           }
-//         }
-//       `,
-//       { form },
-//     );
-//   };
-
-//   const intl = useIntl();
-//   return (
-//     <ApplicationForm
-//       submitText={intl.formatMessage({ id: 'buttons.submit' })}
-//       title={intl.formatMessage({ id: 'install.title' })}
-//       icon={<HowToRegOutlinedIcon />}
-//       handleSubmit={handleSubmit(onSubmit)}
-//     >
-//       <Controller
-//         name="nickName"
-//         control={control}
-//         render={({ field }) => (
-//           <TextField
-//             margin="normal"
-//             fullWidth
-//             label={intl.formatMessage({ id: 'attributes.nick-name' })}
-//             autoFocus
-//             error={errors.nickName != null}
-//             helperText={
-//               errors.nickName && intl.formatMessage({ id: 'helpers.nick-name' })
-//             }
-//             {...register('nickName', validators.nickName)}
-//             {...field}
-//           />
-//         )}
-//       />
-//       <Controller
-//         name="realName"
-//         control={control}
-//         render={({ field }) => (
-//           <TextField
-//             margin="normal"
-//             fullWidth
-//             label={intl.formatMessage({ id: 'attributes.real-name' })}
-//             error={errors.realName != null}
-//             helperText={
-//               errors.realName && intl.formatMessage({ id: 'helpers.real-name' })
-//             }
-//             {...register('realName', validators.realName)}
-//             {...field}
-//           />
-//         )}
-//       />
-//       <Controller
-//         name="email"
-//         control={control}
-//         render={({ field }) => (
-//           <TextField
-//             margin="normal"
-//             fullWidth
-//             label={intl.formatMessage({ id: 'attributes.email' })}
-//             error={errors.email != null}
-//             helperText={
-//               errors.email && intl.formatMessage({ id: 'helpers.email' })
-//             }
-//             {...register('email', validators.email)}
-//             {...field}
-//           />
-//         )}
-//       />
-//       <Controller
-//         name="password"
-//         control={control}
-//         render={({ field }) => (
-//           <TextField
-//             margin="normal"
-//             fullWidth
-//             label={intl.formatMessage({ id: 'attributes.password' })}
-//             type="password"
-//             error={errors.password != null}
-//             helperText={
-//               errors.password && intl.formatMessage({ id: 'helpers.password' })
-//             }
-//             {...register('password', validators.password)}
-//             {...field}
-//           />
-//         )}
-//       />
-//       <Controller
-//         name="passwordConfirmation"
-//         control={control}
-//         render={({ field }) => (
-//           <TextField
-//             margin="normal"
-//             fullWidth
-//             label={intl.formatMessage({
-//               id: 'attributes.password-confirmation',
-//             })}
-//             type="password"
-//             error={errors.passwordConfirmation != null}
-//             helperText={
-//               errors.passwordConfirmation &&
-//               intl.formatMessage({ id: 'helpers.password-onfirmation' })
-//             }
-//             {...register('passwordConfirmation', {
-//               validate: (it) => it === password.current,
-//             })}
-//             {...field}
-//           />
-//         )}
-//       />
-
-//       <FormControlLabel
-//         control={
-//           <Controller
-//             name="allowExtraEmails"
-//             control={control}
-//             render={({ field }) => <Checkbox color="primary" {...field} />}
-//           />
-//         }
-//         label={intl.formatMessage({ id: 'users.sign-up.allow-extra-emails' })}
-//       />
-//     </ApplicationForm>
-//   );
-// };

@@ -12,6 +12,7 @@ export default (props: any) => {
       '/users/confirm',
       '/users/unlock',
       '/users/forgot-password',
+      '/leave-words/new',
     ].includes(props.location.pathname)
   ) {
     return <Application {...props} />;

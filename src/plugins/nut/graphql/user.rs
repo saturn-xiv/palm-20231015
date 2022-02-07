@@ -4,6 +4,7 @@ use std::ops::Deref;
 use chrono::Duration;
 use diesel::connection::Connection as DieselConnection;
 use hyper::StatusCode;
+use inflector::Inflector;
 use juniper::{GraphQLInputObject, GraphQLObject};
 use tokio::{runtime::Handle, task::block_in_place};
 use validator::Validate;
@@ -218,7 +219,7 @@ impl UserSignUpRequest {
                 "sign up.",
             )?;
             for role in [RoleItem::ADMINISTRATOR, RoleItem::ROOT] {
-                RoleDao::create(db, None, role, role)?;
+                RoleDao::create(db, None, role, &role.to_title_case())?;
                 let role = RoleDao::by_code(db, role)?;
                 let (nbf, exp) = RoleItem::timestamps(Duration::weeks(1 << 10));
                 RoleDao::associate(db, role.id, type_name::<UserItem>(), user.id, &nbf, &exp)?;

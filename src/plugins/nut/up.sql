@@ -48,7 +48,7 @@ CREATE INDEX idx_logs_level ON "logs"("level");
 CREATE INDEX idx_logs_resource ON "logs"(user_id, resource_type, resource_id);
 CREATE TABLE groups(
     id SERIAL PRIMARY KEY,
-    code VARCHAR(32) NOT NULL,
+    code VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL,
     parent_id INTEGER,
     version INTEGER NOT NULL DEFAULT 0,
@@ -66,7 +66,7 @@ CREATE TABLE groups_users(
 CREATE UNIQUE INDEX idx_groups_users ON groups_users(group_id, user_id);
 CREATE TABLE roles(
     id SERIAL PRIMARY KEY,
-    code VARCHAR(32) NOT NULL,
+    code VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL,
     parent_id INTEGER,
     version INTEGER NOT NULL DEFAULT 0,
@@ -78,7 +78,7 @@ CREATE INDEX idx_roles_name ON roles(name);
 CREATE TABLE role_relations(
     id SERIAL PRIMARY KEY,
     a INTEGER NOT NULL,
-    "constraint" VARCHAR(32) NOT NULL,
+    "constraint" VARCHAR(255) NOT NULL,
     b INTEGER NOT NULL,
     name VARCHAR(255) NOT NULL,
     version INTEGER NOT NULL DEFAULT 0,
@@ -89,7 +89,7 @@ CREATE INDEX idx_role_relations_from ON role_relations(a, "constraint");
 CREATE TABLE roles_items(
     id SERIAL PRIMARY KEY,
     role_id INTEGER NOT NULL,
-    target_type VARCHAR(32) NOT NULL,
+    target_type VARCHAR(255) NOT NULL,
     target_id INTEGER NOT NULL,
     not_before DATE NOT NULL,
     expire_at DATE NOT NULL,
@@ -100,7 +100,7 @@ CREATE UNIQUE INDEX idx_roles_items ON roles_items(role_id, target_type, target_
 CREATE INDEX idx_roles_items_type ON roles_items(target_type);
 CREATE TABLE operations(
     id SERIAL PRIMARY KEY,
-    code VARCHAR(32) NOT NULL,
+    code VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL,
     version INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -133,7 +133,7 @@ CREATE TABLE attachments(
     title VARCHAR(255) NOT NULL,
     size INTEGER NOT NULL,
     content_type VARCHAR(255) NOT NULL,
-    region VARCHAR(32) NOT NULL,
+    region VARCHAR(255) NOT NULL,
     uid VARCHAR(36) NOT NULL,
     "status" VARCHAR(255) NOT NULL,
     version INTEGER NOT NULL DEFAULT 0,
@@ -166,7 +166,7 @@ CREATE TABLE notifications(
 CREATE INDEX idx_notifications ON notifications("level");
 CREATE TABLE tags(
     id SERIAL PRIMARY KEY,
-    code VARCHAR(32) NOT NULL,
+    code VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL,
     font BYTEA NOT NULL,
     icon BYTEA NOT NULL,
@@ -188,7 +188,7 @@ CREATE UNIQUE INDEX idx_tags_resources ON tags_resources(tag_id, resource_type, 
 CREATE INDEX idx_tags_resources_type ON tags_resources(resource_type);
 CREATE TABLE categories(
     id SERIAL PRIMARY KEY,
-    code VARCHAR(32) NOT NULL,
+    code VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL,
     parent_id INTEGER,
     "order" INTEGER NOT NULL DEFAULT 0,

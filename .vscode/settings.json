@@ -10,13 +10,14 @@
     "source.fixAll.eslint": true
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // "rust-analyzer.checkOnSave.enable": false,
   // https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
   "files.watcherExclude": {
     "**/.git/**": true,
     "**/node_modules/**": true
   },
   "[rust]": {
-    "editor.defaultFormatter": "matklad.rust-analyzer"
+    "editor.defaultFormatter": "rust-lang.rust"
   },
   "[sql]": {
     "editor.defaultFormatter": "mtxr.sqltools"

@@ -180,7 +180,7 @@ table! {
         unit -> Nullable<Varchar>,
         #[sql_name = "type"]
         type_ -> Varchar,
-        segements -> Nullable<Text>,
+        segements -> Nullable<Bytea>,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,

@@ -1,5 +1,6 @@
 export default {
   'buttons.submit': 'Submit',
+  'flashes.successed': 'Successed.',
   'attributes.email': 'Email',
   'attributes.password': 'Password',
   'attributes.current-password': 'Current password',
@@ -13,7 +14,8 @@ export default {
   'helpers.real-name': 'Nick name should between 2~32 characters',
   'helpers.email': 'Please enter a valid email address',
   'helpers.password': 'Password should between 6~32 characters',
-  'helpers.password-onfirmation': 'The passwords do not match',
+  'helpers.password-onfirmation':
+    'The two passwords that you entered do not match',
   'install.title': 'Install',
   'users.sign-in.title': 'Sign In',
   'users.sign-up.title': "Don't have an account? Sign Up",
@@ -25,4 +27,5 @@ export default {
   'users.unlock.submit': 'Resend unlock instructions',
   'users.forgot-password.title': 'Forgot your password?',
   'users.forgot-password.submit': 'Send me reset password instructions',
+  'users.leave-words.new.title': 'Leave us a message',
 };

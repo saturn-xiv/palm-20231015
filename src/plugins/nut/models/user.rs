@@ -40,6 +40,11 @@ impl fmt::Display for Type {
     }
 }
 
+#[derive(Serialize, Deserialize)]
+pub enum Profile {
+    V20220207,
+}
+
 #[derive(Queryable, Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
@@ -141,6 +146,7 @@ pub struct New<'a> {
     pub uid: &'a str,
     pub provider_type: &'a str,
     pub provider_id: &'a str,
+    pub profile: &'a [u8],
     pub logo: &'a str,
     pub lang: &'a str,
     pub time_zone: &'a str,
@@ -261,6 +267,7 @@ impl Dao for Connection {
                             Some(ref v) => v.clone(),
                             None => Item::gravatar_logo(&email)?,
                         },
+                        profile: &flexbuffers::to_vec(&Profile::V20220207)?,
                         uid: &uid,
                         updated_at: &now,
                     })
@@ -324,6 +331,7 @@ impl Dao for Connection {
                 lang: &lang.to_string(),
                 time_zone: &time_zone.to_string(),
                 uid: &Uuid::new_v4().to_string(),
+                profile: &flexbuffers::to_vec(&Profile::V20220207)?,
                 updated_at: &Utc::now().naive_utc(),
             })
             .execute(self)?;
