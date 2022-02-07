@@ -2,8 +2,6 @@ import Application from './Application';
 import Dashboard from './Dashboard';
 
 export default (props: any) => {
-  // console.log(props.location, props.match.isExact);
-
   if (
     [
       '/install',

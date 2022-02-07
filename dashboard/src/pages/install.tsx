@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { useIntl, getLocale } from 'umi';
 import { Form, Input, message, Button } from 'antd';
 import moment from 'moment-timezone';
@@ -16,7 +15,6 @@ export default () => {
   const intl = useIntl();
 
   const onFinish = (values: any) => {
-    console.log('Success:', values);
     graphql(
       `
         mutation Install($user: UserSignUpRequest!) {

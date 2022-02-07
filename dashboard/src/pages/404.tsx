@@ -1,35 +1,31 @@
-import { Image, Button } from 'antd';
+import { Image, Button, Row, Col } from 'antd';
+import { useIntl, history } from 'umi';
 import { PageContainer } from '@ant-design/pro-layout';
+import { FormattedMessage } from 'react-intl';
 
 import broken_link from '../assets/broken-link.svg';
 
 export default () => {
-  // TODO
+  const intl = useIntl();
+
   return (
     <PageContainer
-      // footer={[<Footer key="footer.copyright" />]}
-      content="欢迎使用"
+      content={<FormattedMessage id="404.title" />}
       breadcrumbRender={false}
-      tabList={[
-        {
-          tab: '基本信息',
-          key: 'base',
-        },
-        {
-          tab: '详细信息',
-          key: 'info',
-        },
-      ]}
       extra={[
-        <Button key="3">操作</Button>,
-        <Button key="2">操作</Button>,
-        <Button key="1" type="primary">
-          主操作
+        <Button key="back" onClick={() => history.goBack()}>
+          {intl.formatMessage({ id: 'buttons.go-back' })}
+        </Button>,
+        <Button key="home" type="primary" onClick={() => history.push('/')}>
+          {intl.formatMessage({ id: '404.go-home' })}
         </Button>,
       ]}
     >
-      <Image src={broken_link} />
+      <Row>
+        <Col sm={{ span: 22, offset: 1 }} md={{ span: 8, offset: 3 }}>
+          <Image src={broken_link} />
+        </Col>
+      </Row>
     </PageContainer>
   );
-  // return ;
 };

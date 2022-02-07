@@ -1,5 +1,6 @@
 export default {
   'buttons.submit': 'Submit',
+  'buttons.go-back': 'Go back',
   'flashes.successed': 'Successed.',
   'attributes.email': 'Email',
   'attributes.password': 'Password',
@@ -17,6 +18,8 @@ export default {
   'helpers.password-onfirmation':
     'The two passwords that you entered do not match',
   'install.title': 'Install',
+  '404.title': 'Not found',
+  '404.go-home': 'Go home',
   'users.sign-in.title': 'Sign In',
   'users.sign-up.title': "Don't have an account? Sign Up",
   'users.sign-up.allow-extra-emails':
