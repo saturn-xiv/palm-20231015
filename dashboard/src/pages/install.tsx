@@ -1,4 +1,4 @@
-import { useIntl, getLocale } from 'umi';
+import { useIntl, getLocale, history } from 'umi';
 import { Form, Input, message, Button } from 'antd';
 import moment from 'moment-timezone';
 
@@ -8,6 +8,7 @@ import {
   EMAIL_VALIDATOR,
   NAME_VALIDATOR,
   PASSWORD_VALIDATOR,
+  FormButtonGroupWrapper,
 } from '@/components/form';
 import { graphql } from '@/global';
 
@@ -36,6 +37,7 @@ export default () => {
       },
       (res: any) => {
         message.success(intl.formatMessage({ id: 'flashes.successed' }));
+        history.push('/users/sign-in');
       },
     );
   };
@@ -95,12 +97,7 @@ export default () => {
           <Input.Password type="password" />
         </Form.Item>
 
-        <Form.Item
-          wrapperCol={{
-            sm: { offset: 2, span: 20 },
-            md: { offset: 4, span: 16 },
-          }}
-        >
+        <Form.Item wrapperCol={FormButtonGroupWrapper}>
           <Button type="primary" htmlType="submit">
             {intl.formatMessage({
               id: 'buttons.submit',

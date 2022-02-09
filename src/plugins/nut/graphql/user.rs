@@ -218,6 +218,18 @@ impl UserSignUpRequest {
                 },
                 "sign up.",
             )?;
+            UserDao::confirm(db, user.id)?;
+            LogDao::add(
+                db,
+                user.id,
+                &Level::Info,
+                &ip,
+                &Resource {
+                    type_: type_name::<UserItem>().to_string(),
+                    id: user.id,
+                },
+                "confirmed.",
+            )?;
             for role in [RoleItem::ADMINISTRATOR, RoleItem::ROOT] {
                 RoleDao::create(db, None, role, &role.to_title_case())?;
                 let role = RoleDao::by_code(db, role)?;

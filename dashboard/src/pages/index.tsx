@@ -1,7 +1,5 @@
+import { Redirect } from 'umi';
+
 export default () => {
-  return (
-    <div>
-      <h1>Home</h1>
-    </div>
-  );
+  return <Redirect to="/users/logs" />;
 };

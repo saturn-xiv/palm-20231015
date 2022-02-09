@@ -20,7 +20,6 @@ interface IResponse {
 
 export default () => {
   const [item, setItem] = useState<ISiteInfo>();
-  const languages = ['en-US', 'zh-CN', 'zh-TW', 'ko-KR', 'ja-JP'];
 
   useEffect(() => {
     graphql(
@@ -46,15 +45,15 @@ export default () => {
         copyright={item?.copyright}
         links={[
           {
-            key: 'home',
-            title: <HomeOutlined />,
-            href: '/',
-            blankTarget: true,
-          },
-          {
             key: 'github',
             title: <GithubOutlined />,
             href: 'https://github.com/saturn-xiv/palm',
+            blankTarget: true,
+          },
+          {
+            key: 'home',
+            title: <HomeOutlined />,
+            href: '/',
             blankTarget: true,
           },
           {

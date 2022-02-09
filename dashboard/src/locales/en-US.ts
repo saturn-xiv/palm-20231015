@@ -27,6 +27,8 @@ export default {
     'I want to receive inspiration, marketing promotions and updates via email.',
   'users.confirm.title': "Didn't receive confirmation instructions?",
   'users.confirm.submit': 'Resend confirmation instructions',
+  'users.confirm.successed':
+    'You will receive an email with instructions for how to confirm your email address in a few minutes.',
   'users.unlock.title': "Didn't receive unlock instructions?",
   'users.unlock.submit': 'Resend unlock instructions',
   'users.forgot-password.title': 'Forgot your password?',

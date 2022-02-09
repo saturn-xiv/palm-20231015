@@ -1,5 +1,6 @@
-import { ItalicOutlined } from '@ant-design/icons';
 import { message } from 'antd';
+
+import { get as getToken } from './components/Auth';
 
 export const graphql = (query: string, variables: object, callback: any) => {
   return fetch(`${process.env.UMI_APP_RPC_HOME}/graphql`, {
@@ -10,6 +11,7 @@ export const graphql = (query: string, variables: object, callback: any) => {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
+      Authorization: `Bearer ${getToken()}`,
     },
     body: JSON.stringify({
       query,

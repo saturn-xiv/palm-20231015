@@ -2,6 +2,7 @@ import { Image, Card, List, Menu, Button, Row, Col } from 'antd';
 import { useIntl, history, getLocale, setLocale, getAllLocales } from 'umi';
 import { FormattedMessage } from 'react-intl';
 
+// https://ant.design/docs/react/i18n
 const language_name = (l: string) => {
   switch (l) {
     case 'zh-CN':
@@ -12,6 +13,8 @@ const language_name = (l: string) => {
       return '한국어';
     case 'ja-JP':
       return '日本語';
+    case 'es-ES':
+      return 'Español';
     default:
       return 'English';
   }
