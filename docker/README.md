@@ -1,6 +1,6 @@
 # Usage
 
-- copy `containers.conf` to `$HOME/.config/containers/containers.conf`
+- copy `storage.conf` to `$HOME/.config/containers/storage.conf`
 
 - commands
 

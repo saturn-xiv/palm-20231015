@@ -20,7 +20,7 @@ RUN apt update
 RUN apt -y upgrade
 
 RUN apt -y install zsh git locales rsync openssh-client sshpass \
-    vim sudo tzdata pwgen curl zip unzip tree tmux \
+    vim tzdata pwgen curl zip unzip tree tmux \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
     imagemagick ffmpeg \
     clang build-essential pkg-config libtool automake autoconf binutils cpio \
@@ -35,13 +35,6 @@ RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 RUN locale-gen
 RUN update-locale LANG=en_US.UTF-8
 RUN update-alternatives --set editor /usr/bin/vim.basic
-
-# deploy
-RUN useradd -m deploy -s /bin/zsh
-RUN passwd -l deploy
-RUN echo 'deploy ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/101-deploy
-
-USER deploy
 
 RUN mkdir -p $HOME/downloads $HOME/build $HOME/local
 
@@ -62,6 +55,7 @@ RUN sh -c ". $HOME/.profile \
 RUN sh -c ". $HOME/.profile \
     && pip install --user ansible paramiko"
 RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.profile
+RUN echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.profile
 RUN echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.profile
 
 # https://github.com/nvm-sh/nvm
@@ -78,43 +72,23 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 RUN zsh -c "source $HOME/.cargo/env \
     && rustup target add armv7-unknown-linux-gnueabihf \
     && rustup target add aarch64-unknown-linux-gnu"
-RUN sudo apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
+RUN apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
 RUN zsh -c "source $HOME/.zshrc \
     && cargo install diesel_cli \
-    && cargo install --locked cargo-outdated \
-    && cargo install mdbook"
-
-# https://grpc.io/docs/languages/cpp/quickstart/
-ENV GRPC_VERSION "v1.43.0"
-RUN zsh -c "source $HOME/.zshrc \
-    && git clone --recurse-submodules -b ${GRPC_VERSION} https://github.com/grpc/grpc.git $HOME/downloads/grpc"
-RUN mkdir -pv $HOME/build/grpc-amd64
-RUN zsh -c "source $HOME/.zshrc \
-    && cd $HOME/build/grpc-amd64 \
-    && cmake -DCMAKE_BUILD_TYPE=Release \
-    -DgRPC_INSTALL=ON \
-    -DgRPC_SSL_PROVIDER=package \
-    -DgRPC_BUILD_TESTS=OFF \
-    -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc"
-RUN zsh -c "source $HOME/.zshrc \
-    && cd $HOME/build/grpc-amd64 \
-    && make \
-    && make install"
-
-ENV GRPC_WEB_VERSION "1.3.0"
-RUN wget -q -O $HOME/.local/bin/protoc-gen-grpc-web https://github.com/grpc/grpc-web/releases/download/${GRPC_WEB_VERSION}/protoc-gen-grpc-web-${GRPC_WEB_VERSION}-linux-x86_64
-RUN chmod +x $HOME/.local/bin/protoc-gen-grpc-web
+    && cargo install --locked cargo-outdated"
 
 RUN git clone https://github.com/rui314/mold.git $HOME/build/mold
-RUN sudo apt install -y libstdc++-10-dev libssl-dev libxxhash-dev zlib1g-dev
+RUN apt install -y libstdc++-10-dev libssl-dev libxxhash-dev zlib1g-dev
 RUN zsh -c "source $HOME/.zshrc \
     && cd $HOME/build/mold \
     && git checkout v1.0.1 \
     && make CXX=clang++ \
     && strip -s mold \
-    && sudo cp mold /usr/bin/ "
+    && cp mold /usr/bin/ "
 
-RUN echo "$(date -u +%4Y%m%d%H%M%S)" | sudo tee /VERSION
+# TODO mdbook
+
+RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
 VOLUME /workspace
 WORKDIR /workspace

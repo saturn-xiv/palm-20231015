@@ -7,7 +7,8 @@ export CODE="palm"
 
 buildah pull ubuntu:focal
 
-buildah bud --storage-driver=vfs --layers -t $CODE .
+# --storage-driver=vfs
+buildah bud --layers -t $CODE .
 podman save -o $CODE-$VERSION.tar $CODE
 
 echo 'done.'
