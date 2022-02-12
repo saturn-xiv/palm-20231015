@@ -99,10 +99,6 @@
   become: true
   shell: update-alternatives --set editor /usr/bin/vim.basic
 
-- name: Set timezone
-  become: true
-  shell: timedatectl set-timezone UTC
-
 - name: Set git rebase mode
   become: true
   shell: git config --global pull.rebase false
