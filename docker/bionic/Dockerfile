@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:bionic
 LABEL maintainer="Jeremy Zheng"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -7,6 +7,8 @@ RUN apt update
 RUN apt -y upgrade
 RUN apt -y install debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
 
+RUN add-apt-repository -y ppa:deadsnakes/ppa
+RUN add-apt-repository ppa:ubuntu-toolchain-r/test
 # https://wiki.ubuntu.com/ToolChain
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
@@ -19,6 +21,7 @@ RUN echo "deb [arch=armhf,arm64] http://ports.ubuntu.com/ $(lsb_release -cs)-upd
 RUN apt update
 RUN apt -y upgrade
 
+ENV PYTHON_VERSION "3.11"
 RUN apt -y install zsh git locales rsync openssh-client sshpass \
     vim tzdata pwgen curl zip unzip tree tmux \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
@@ -27,7 +30,7 @@ RUN apt -y install zsh git locales rsync openssh-client sshpass \
     debhelper bison flex ninja-build \
     crossbuild-essential-armhf pkg-config-arm-linux-gnueabihf \
     crossbuild-essential-arm64 pkg-config-aarch64-linux-gnu \
-    python3 python3-distutils python3-dev
+    python${PYTHON_VERSION} python${PYTHON_VERSION}-distutils python${PYTHON_VERSION}-dev
 RUN apt -y autoremove
 RUN apt -y clean
 
@@ -49,7 +52,7 @@ RUN git config --global core.quotepath false
 RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf
 
 # https://pip.pypa.io/en/stable/installation/#get-pip-py
-RUN curl -o- https://bootstrap.pypa.io/get-pip.py | python3
+RUN curl -o- https://bootstrap.pypa.io/get-pip.py | python${PYTHON_VERSION}
 RUN sh -c ". $HOME/.profile \
     && pip install --user cmake"
 RUN sh -c ". $HOME/.profile \
@@ -78,15 +81,13 @@ RUN zsh -c "source $HOME/.zshrc \
     && cargo install --locked cargo-outdated"
 
 RUN git clone https://github.com/rui314/mold.git $HOME/build/mold
-RUN apt install -y libstdc++-10-dev libssl-dev libxxhash-dev zlib1g-dev
+RUN apt install -y g++-10 libstdc++-10-dev libssl-dev libxxhash-dev zlib1g-dev
 RUN zsh -c "source $HOME/.zshrc \
     && cd $HOME/build/mold \
     && git checkout v1.0.3 \
-    && make CXX=clang++ \
+    && make CXX=g++-10 \
     && strip -s mold \
     && cp mold /usr/bin/ "
-
-# TODO mdbook
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 

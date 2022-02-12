@@ -9,7 +9,7 @@ export TARGET=$WORKSPACE/tmp/$GIT_VERSION
 build_ubuntu_backend() {
     echo "build $1..."
 
-    sudo apt -y install libc6-dev:$1 libudev-dev:$1 libssl-dev:$1 \
+    apt -y install libc6-dev:$1 libudev-dev:$1 libssl-dev:$1 \
         libpq5:$1 libpq-dev:$1 libmysqlclient-dev:$1 libsqlite3-dev:$1
 
     local root=$2/usr/bin

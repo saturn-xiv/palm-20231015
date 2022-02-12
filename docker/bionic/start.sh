@@ -1,6 +1,6 @@
 #!/bin/sh
 
-NAME=palm
+NAME=palm-bionic
 
 if podman container exists $NAME
 then
