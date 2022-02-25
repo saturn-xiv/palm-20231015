@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt update
 RUN apt -y upgrade
 RUN apt -y install zsh git locales rsync openssh-client sshpass \
-    vim sudo tzdata pwgen curl zip unzip tree tmux \
+    vim tzdata pwgen curl zip unzip tree tmux \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
     imagemagick ffmpeg \
     build-essential pkg-config libtool automake autoconf binutils \
@@ -20,24 +20,18 @@ RUN locale-gen
 RUN update-locale LANG=en_US.UTF-8
 RUN update-alternatives --set editor /usr/bin/vim.basic
 
-# deploy
-RUN useradd -m deploy -s /bin/zsh
-RUN passwd -l deploy
-RUN echo 'deploy ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/101-deploy
-
-USER deploy
-
-RUN mkdir -p $HOME/downloads $HOME/local
+RUN mkdir -p $HOME/downloads $HOME/local $HOME/build $HOME/tmp
 
 # https://github.com/ohmyzsh/ohmyzsh
 RUN git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
 RUN cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
 RUN echo 'source $HOME/.profile' >> $HOME/.zshrc
+RUN echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.profile
 RUN echo 'export LANG=en_US.UTF-8' >> $HOME/.profile
 RUN echo 'export LC_ALL=en_US.UTF-8' >> $HOME/.profile
 
 RUN git config --global core.quotepath false
-RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf
+RUN echo 'set-option -g history-limit 10240' > $HOME/.tmux.conf
 
 
 # https://pip.pypa.io/en/stable/installation/#get-pip-py
@@ -66,15 +60,14 @@ RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
 # RUN unzip $HOME/downloads/commandlinetools-linux-${ANDROID_SDK_VERSION}_latest.zip -d $HOME/local/android-sdk
 # RUN yes | $HOME/local/android-sdk/cmdline-tools/tools/bin/sdkmanager --licenses
 
-ENV JDK_VERSION "17.0.1-open"
 RUN curl -s "https://get.sdkman.io" | zsh
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
-    && sdk install java ${JDK_VERSION} \
+    && sdk install java 17.0.2-open \
     && sdk install maven \
     && sdk install gradle"
 
-RUN echo "$(date -u +%4Y%m%d%H%M%S)" | sudo tee /VERSION
+RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
 VOLUME /workspace
 WORKDIR /workspace
