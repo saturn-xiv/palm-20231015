@@ -24,7 +24,6 @@ build_ubuntu_backend() {
         local target="x86_64-unknown-linux-gnu"
         cargo build --target $target --release
         cp target/$target/release/palm $root
-        strip -s $root/palm
     elif [ "$1" = "armhf" ]
     then
         PKG_CONFIG_ALLOW_CROSS=1
@@ -38,7 +37,6 @@ build_ubuntu_backend() {
         local target="armv7-unknown-linux-gnueabihf"
         cargo build --target $target --release
         cp target/$target/release/palm $root
-        arm-linux-gnueabihf-strip -s $root/palm
     elif [ "$1" = "arm64" ]
     then
         PKG_CONFIG_ALLOW_CROSS=1
@@ -52,7 +50,6 @@ build_ubuntu_backend() {
         local target="aarch64-unknown-linux-gnu"
         cargo build --target $target --release
         cp target/$target/release/palm $root
-        aarch64-linux-gnu-strip -s $root/palm
     else
         echo "unknown arch $1"
         exit 1
@@ -135,7 +132,6 @@ elif [[ $OS_NAME == "Arch" ]]
 then
     cd $WORKSPACE
     cargo build --release
-    strip -s target/release/palm
 else
     echo "Unknowk os $OS_NAME"
     exit 1
