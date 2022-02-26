@@ -22,9 +22,10 @@ pub struct TagRequest {
 impl TagRequest {
     pub fn create(&self, ctx: &Context) -> Result<()> {
         self.validate()?;
-        ctx.administrator()?;
         let db = ctx.db.get()?;
         let db = db.deref();
+        let jwt = ctx.jwt.deref();
+        ctx.token.administrator(db, jwt)?;
 
         TagDao::create(
             db,
@@ -38,9 +39,10 @@ impl TagRequest {
     }
     pub fn update(&self, ctx: &Context, id: i32) -> Result<()> {
         self.validate()?;
-        ctx.administrator()?;
         let db = ctx.db.get()?;
         let db = db.deref();
+        let jwt = ctx.jwt.deref();
+        ctx.token.administrator(db, jwt)?;
         TagDao::update(
             db,
             id,
@@ -82,9 +84,10 @@ pub fn index(ctx: &Context) -> Result<Vec<Tag>> {
 }
 
 pub fn destroy(ctx: &Context, id: i32) -> Result<()> {
-    ctx.administrator()?;
     let db = ctx.db.get()?;
     let db = db.deref();
+    let jwt = ctx.jwt.deref();
+    ctx.token.administrator(db, jwt)?;
     let items = TagDao::destroy(db, id)?;
     Ok(items)
 }

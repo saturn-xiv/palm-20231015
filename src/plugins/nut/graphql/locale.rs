@@ -1,7 +1,6 @@
 use std::ops::Deref;
 
 use juniper::GraphQLInputObject;
-use language_tags::LanguageTag;
 use validator::Validate;
 
 use super::super::super::super::{
@@ -23,15 +22,14 @@ pub struct SetLocaleRequest {
 impl SetLocaleRequest {
     pub fn handle(&self, ctx: &Context) -> Result<()> {
         self.validate()?;
-        let lang: LanguageTag = self.lang.parse()?;
-        let lang = lang.to_string();
-        ctx.administrator()?;
         let db = ctx.db.get()?;
         let db = db.deref();
+        let jwt = ctx.jwt.deref();
+        ctx.token.administrator(db, jwt)?;
 
-        match LocaleDao::by_lang_and_code(db, &lang, &self.code) {
+        match LocaleDao::by_lang_and_code(db, &ctx.lang, &self.code) {
             Ok(it) => LocaleDao::update(db, it.id, &self.code, &self.message)?,
-            Err(_) => LocaleDao::create(db, &lang, &self.code, &self.message)?,
+            Err(_) => LocaleDao::create(db, &ctx.lang, &self.code, &self.message)?,
         };
 
         Ok(())
@@ -39,9 +37,10 @@ impl SetLocaleRequest {
 }
 
 pub fn destroy(ctx: &Context, id: i32) -> Result<()> {
-    ctx.administrator()?;
     let db = ctx.db.get()?;
     let db = db.deref();
+    let jwt = ctx.jwt.deref();
+    ctx.token.administrator(db, jwt)?;
     LocaleDao::delete(db, id)?;
     Ok(())
 }

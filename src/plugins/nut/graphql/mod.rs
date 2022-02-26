@@ -6,17 +6,13 @@ pub mod locale;
 pub mod tag;
 pub mod user;
 
-use std::any::type_name;
 use std::default::Default;
 use std::fmt;
-use std::net::SocketAddr;
 use std::ops::Deref;
 use std::sync::Arc;
 
 use chrono::{NaiveDateTime, Utc};
-use hyper::StatusCode;
 use juniper::{GraphQLInputObject, GraphQLObject};
-use language_tags::LanguageTag;
 use serde::{Deserialize, Serialize};
 
 use super::super::super::{
@@ -28,13 +24,9 @@ use super::super::super::{
     orm::Pool as DbPool,
     queue::amqp::RabbitMq,
     settings::Dao as SettingDao,
-    HttpError, Result,
+    Result,
 };
-use super::models::{
-    policy::Dao as PolicyDao,
-    role::Item as Role,
-    user::{Dao as UserDao, Item as User},
-};
+use super::handlers::token::Token;
 
 pub struct Context {
     pub hmac: Arc<Hmac>,
@@ -43,66 +35,14 @@ pub struct Context {
     pub db: DbPool,
     pub cache: CachePool,
     pub queue: Arc<RabbitMq>,
-    pub token: Option<String>,
-    pub peer: Option<SocketAddr>,
+    pub token: Token,
+    pub peer: String,
     pub aws: Arc<Aws>,
     pub s3: Arc<S3>,
     pub lang: String,
 }
 
 impl juniper::Context for Context {}
-
-impl Context {
-    pub fn lang(locale: Option<String>) -> String {
-        if let Some(ref it) = locale {
-            if let Ok(it) = LanguageTag::parse(it) {
-                return it.to_string();
-            }
-        }
-        "en-US".to_string()
-    }
-    pub fn peer(&self) -> String {
-        if let Some(ref it) = self.peer {
-            return it.ip().to_string();
-        }
-        "n/a".to_string()
-    }
-    pub fn token(&self) -> Option<String> {
-        if let Some(ref token) = self.token {
-            if let Some(token) = token.strip_prefix(Jwt::BEARER) {
-                return Some(token.to_string());
-            }
-        }
-        None
-    }
-    pub fn current_user(&self) -> Result<User> {
-        if let Some(ref token) = self.token() {
-            let token = self.jwt.parse::<Token>(token)?;
-            let token = token.claims;
-            if token.act == Action::SignIn {
-                let db = self.db.get()?;
-                let db = db.deref();
-                let user = UserDao::by_uid(db, &token.aud)?;
-                user.available()?;
-                return Ok(user);
-            }
-        }
-
-        Err(Box::new(HttpError(
-            StatusCode::NON_AUTHORITATIVE_INFORMATION,
-            None,
-        )))
-    }
-    pub fn administrator(&self) -> Result<User> {
-        let user = self.current_user()?;
-        let db = self.db.get()?;
-        let db = db.deref();
-        if PolicyDao::is(db, type_name::<User>(), user.id, Role::ADMINISTRATOR) {
-            return Ok(user);
-        }
-        Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))
-    }
-}
 
 #[derive(GraphQLObject)]
 pub struct Success {
@@ -115,25 +55,6 @@ impl Default for Success {
             created_at: Utc::now().naive_local(),
         }
     }
-}
-
-#[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
-#[serde(rename_all = "camelCase")]
-pub enum Action {
-    SignIn,
-    ResetPassword,
-    Unlock,
-    Confirm,
-    Other(String),
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Token {
-    pub aud: String,
-    pub act: Action,
-    pub nbf: i64,
-    pub exp: i64,
 }
 
 #[derive(GraphQLInputObject)]
@@ -222,12 +143,13 @@ impl Site {
     pub const AUTHOR: &'static str = "site.author";
     pub const COPYRIGHT: &'static str = "site.copyright";
     pub fn new(ctx: &Context) -> Result<Self> {
-        let lang = match ctx.current_user() {
+        let db = ctx.db.get()?;
+        let db = db.deref();
+        let jwt = ctx.jwt.deref();
+        let lang = match ctx.token.current_user(db, jwt) {
             Ok(it) => it.lang,
             Err(_) => ctx.lang.clone(),
         };
-        let db = ctx.db.get()?;
-        let db = db.deref();
         let enc = ctx.aes.deref();
         Ok(Self {
             languages: LocaleDao::languages(db)?,

@@ -1,7 +1,7 @@
 pub mod mutation;
 pub mod query;
 
-use actix_web::{web, HttpResponse, Result};
+use actix_web::{web, HttpRequest, HttpResponse, Result};
 use juniper::{EmptySubscription, RootNode};
 use juniper_actix::{graphiql_handler, graphql_handler, playground_handler};
 
@@ -13,7 +13,7 @@ use super::super::{
     orm::Pool as DbPool,
     plugins::nut::{
         graphql::Context,
-        handlers::{locale::Locale, token::Token},
+        handlers::{locale::Locale, peer::ClientIp, token::Token},
     },
     queue::amqp::RabbitMq,
 };
@@ -33,7 +33,7 @@ pub async fn playground() -> Result<HttpResponse> {
 
 #[allow(clippy::type_complexity)]
 pub async fn index(
-    (db, cache, queue, aes, hmac, jwt, aws, s3): (
+    (db, cache, queue, aes, hmac, jwt, aws, s3, schema): (
         web::Data<DbPool>,
         web::Data<CachePool>,
         web::Data<RabbitMq>,
@@ -42,11 +42,10 @@ pub async fn index(
         web::Data<Jwt>,
         web::Data<Aws>,
         web::Data<S3>,
+        web::Data<Schema>,
     ),
-    (locale, token): (Locale, Token),
-    request: actix_web::HttpRequest,
-    payload: actix_web::web::Payload,
-    schema: web::Data<Schema>,
+    (locale, token, peer): (Locale, Token, ClientIp),
+    (request, payload): (HttpRequest, web::Payload),
 ) -> Result<HttpResponse> {
     graphql_handler(
         &schema,
@@ -59,9 +58,9 @@ pub async fn index(
             jwt: jwt.into_inner(),
             aws: aws.into_inner(),
             s3: s3.into_inner(),
-            lang: locale.0,
-            peer: None,
-            token: token.0.clone(),
+            lang: locale.to_string(),
+            peer: peer.to_string(),
+            token,
         },
         request,
         payload,

@@ -1,9 +1,17 @@
+use std::any::type_name;
+use std::result::Result as StdResult;
+
 use actix_web::{dev::Payload, web, Error, FromRequest, HttpRequest};
 use futures::future::{ok, Ready};
-use hyper::header::AUTHORIZATION;
+use hyper::{header::AUTHORIZATION, StatusCode};
 use serde::{Deserialize, Serialize};
 
-use super::super::super::super::jwt::Jwt;
+use super::super::super::super::{jwt::Jwt, orm::Connection as Db, HttpError, Result};
+use super::super::models::{
+    policy::Dao as PolicyDao,
+    role::Item as Role,
+    user::{Action, Dao as UserDao, Item as User, Token as UserToken},
+};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Token(pub Option<String>);
@@ -35,16 +43,38 @@ impl Token {
 
         None
     }
+
+    pub fn current_user(&self, db: &Db, jwt: &Jwt) -> Result<User> {
+        if let Some(ref token) = self.0 {
+            let token = jwt.parse::<UserToken>(token)?;
+            let token = token.claims;
+            if token.act == Action::SignIn {
+                let user = UserDao::by_uid(db, &token.aud)?;
+                user.available()?;
+                return Ok(user);
+            }
+        }
+
+        Err(Box::new(HttpError(
+            StatusCode::NON_AUTHORITATIVE_INFORMATION,
+            None,
+        )))
+    }
+    pub fn administrator(&self, db: &Db, jwt: &Jwt) -> Result<User> {
+        let user = self.current_user(db, jwt)?;
+        if PolicyDao::is(db, type_name::<User>(), user.id, Role::ADMINISTRATOR) {
+            return Ok(user);
+        }
+        Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))
+    }
 }
 
 impl FromRequest for Token {
     type Error = Error;
-    type Future = Ready<Result<Self, Error>>;
+    type Future = Ready<StdResult<Self, Error>>;
 
     fn from_request(req: &HttpRequest, _pl: &mut Payload) -> Self::Future {
-        if let Some(it) = Self::detect(req) {
-            return ok(Self(Some(it)));
-        }
-        ok(Self(None))
+        let it = Self::detect(req);
+        ok(Self(it))
     }
 }

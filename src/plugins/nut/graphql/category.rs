@@ -24,9 +24,10 @@ pub struct CategoryRequest {
 impl CategoryRequest {
     pub fn create(&self, ctx: &Context) -> Result<()> {
         self.validate()?;
-        ctx.administrator()?;
         let db = ctx.db.get()?;
         let db = db.deref();
+        let jwt = ctx.jwt.deref();
+        ctx.token.administrator(db, jwt)?;
 
         CategoryDao::create(
             db,
@@ -42,9 +43,10 @@ impl CategoryRequest {
     }
     pub fn update(&self, ctx: &Context, id: i32) -> Result<()> {
         self.validate()?;
-        ctx.administrator()?;
         let db = ctx.db.get()?;
         let db = db.deref();
+        let jwt = ctx.jwt.deref();
+        ctx.token.administrator(db, jwt)?;
         CategoryDao::update(
             db,
             id,
@@ -92,9 +94,10 @@ pub fn index(ctx: &Context) -> Result<Vec<Category>> {
 }
 
 pub fn destroy(ctx: &Context, id: i32) -> Result<()> {
-    ctx.administrator()?;
     let db = ctx.db.get()?;
     let db = db.deref();
+    let jwt = ctx.jwt.deref();
+    ctx.token.administrator(db, jwt)?;
     let items = CategoryDao::destroy(db, id)?;
     Ok(items)
 }

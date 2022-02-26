@@ -16,12 +16,12 @@ use super::super::{
     models::{
         log::{Dao as LogDao, Item as LogItem, Level},
         role::{Dao as RoleDao, Item as RoleItem},
-        user::{Dao as UserDao, Item as UserItem},
+        user::{Action, Dao as UserDao, Item as UserItem, Token},
         Resource,
     },
     tasks::email::Task as EmailTask,
 };
-use super::{Action, Context, Pager, Pagination, Token};
+use super::{Context, Pager, Pagination};
 
 #[derive(GraphQLObject)]
 pub struct Author {
@@ -42,7 +42,10 @@ impl Author {
 }
 
 pub fn refresh_token(ctx: &Context) -> Result<UserSignInResponse> {
-    let user = ctx.current_user()?;
+    let db = ctx.db.get()?;
+    let db = db.deref();
+    let jwt = ctx.jwt.deref();
+    let user = ctx.token.current_user(db, jwt)?;
     let (nbf, exp) = Jwt::timestamps(Duration::weeks(1));
     let token = Token {
         aud: user.uid.clone(),
@@ -80,7 +83,7 @@ impl UserSignInRequest {
         };
         user.available()?;
 
-        let ip = ctx.peer();
+        let ip = ctx.peer.clone();
         db.transaction::<_, Error, _>(move || {
             UserDao::sign_in(db, user.id, &ip)?;
             LogDao::add(
@@ -149,7 +152,7 @@ impl UserSignUpRequest {
         let db = db.deref();
         let enc = ctx.hmac.deref();
 
-        let ip = ctx.peer();
+        let ip = ctx.peer.clone();
         db.transaction::<_, Error, _>(move || {
             UserDao::sign_up(
                 db,
@@ -194,7 +197,7 @@ impl UserSignUpRequest {
         }
         let enc = ctx.hmac.deref();
 
-        let ip = ctx.peer();
+        let ip = ctx.peer.clone();
         db.transaction::<_, Error, _>(move || {
             UserDao::sign_up(
                 db,
@@ -332,7 +335,7 @@ pub fn confirm_by_token(ctx: &Context, token: &str) -> Result<()> {
         return Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)));
     }
     {
-        let ip = ctx.peer();
+        let ip = ctx.peer.clone();
         let user_id = user.id;
         db.transaction::<_, Error, _>(move || {
             UserDao::confirm(db, user_id)?;
@@ -366,7 +369,7 @@ pub fn unlock_by_token(ctx: &Context, token: &str) -> Result<()> {
         return Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)));
     }
     {
-        let ip = ctx.peer();
+        let ip = ctx.peer.clone();
         let user_id = user.id;
         db.transaction::<_, Error, _>(move || {
             UserDao::lock(db, user_id, false)?;
@@ -409,7 +412,7 @@ impl UserResetPasswordRequest {
         user.available()?;
         {
             let enc = ctx.hmac.deref();
-            let ip = ctx.peer();
+            let ip = ctx.peer.clone();
             let user_id = user.id;
             db.transaction::<_, Error, _>(move || {
                 UserDao::password(db, enc, user_id, &self.password)?;
@@ -445,10 +448,11 @@ pub struct UserUpdateProfileRequest {
 
 impl UserUpdateProfileRequest {
     pub fn handle(&self, ctx: &Context) -> Result<()> {
-        let user = ctx.current_user()?;
         let db = ctx.db.get()?;
         let db = db.deref();
-        let ip = ctx.peer();
+        let jwt = ctx.jwt.deref();
+        let user = ctx.token.current_user(db, jwt)?;
+        let ip = ctx.peer.clone();
         {
             let user_id = user.id;
             db.transaction::<_, Error, _>(move || {
@@ -489,12 +493,13 @@ pub struct UserChangePasswordRequest {
 impl UserChangePasswordRequest {
     pub fn handle(&self, ctx: &Context) -> Result<()> {
         self.validate()?;
-        let user = ctx.current_user()?;
-        let enc = ctx.hmac.deref();
-        user.auth(enc, &self.current_password)?;
         let db = ctx.db.get()?;
         let db = db.deref();
-        let ip = ctx.peer();
+        let jwt = ctx.jwt.deref();
+        let user = ctx.token.current_user(db, jwt)?;
+        let enc = ctx.hmac.deref();
+        user.auth(enc, &self.current_password)?;
+        let ip = ctx.peer.clone();
         {
             let user_id = user.id;
 
@@ -526,9 +531,10 @@ pub struct UserLogList {
 
 impl UserLogList {
     pub fn new(ctx: &Context, pager: &Pager) -> Result<Self> {
-        let user = ctx.current_user()?;
         let db = ctx.db.get()?;
         let db = db.deref();
+        let jwt = ctx.jwt.deref();
+        let user = ctx.token.current_user(db, jwt)?;
         let total = LogDao::count(db, user.id)?;
         let pagination = pager.build(total);
         let (offset, limit) = pagination.build();
@@ -538,10 +544,11 @@ impl UserLogList {
 }
 
 pub fn sign_out(ctx: &Context) -> Result<()> {
-    let user = ctx.current_user()?;
     let db = ctx.db.get()?;
     let db = db.deref();
-    let ip = ctx.peer();
+    let jwt = ctx.jwt.deref();
+    let user = ctx.token.current_user(db, jwt)?;
+    let ip = ctx.peer.clone();
     LogDao::add(
         db,
         user.id,

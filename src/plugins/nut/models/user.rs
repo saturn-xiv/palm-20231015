@@ -18,6 +18,25 @@ use super::super::super::super::{
 use super::super::schema::users;
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
+pub enum Action {
+    SignIn,
+    ResetPassword,
+    Unlock,
+    Confirm,
+    Other(String),
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct Token {
+    pub aud: String,
+    pub act: Action,
+    pub nbf: i64,
+    pub exp: i64,
+}
+
+#[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
 pub enum Type {
     Google,
     Facebook,

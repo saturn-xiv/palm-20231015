@@ -23,10 +23,9 @@ impl CreateLeaveWordRequest {
         self.validate()?;
         let db = ctx.db.get()?;
         let db = db.deref();
-        let ip = ctx.peer();
         LeaveWordDao::add(
             db,
-            &ip,
+            &ctx.peer,
             &WYSIWYG {
                 editor: self.body_editor.parse()?,
                 content: self.body.clone(),
@@ -37,17 +36,19 @@ impl CreateLeaveWordRequest {
 }
 
 pub fn index(ctx: &Context, limit: i32) -> Result<Vec<LeaveWord>> {
-    ctx.administrator()?;
     let db = ctx.db.get()?;
     let db = db.deref();
+    let jwt = ctx.jwt.deref();
+    ctx.token.administrator(db, jwt)?;
     let items = LeaveWordDao::all(db, limit as i64)?;
     Ok(items)
 }
 
 pub fn destroy(ctx: &Context, id: i32) -> Result<()> {
-    ctx.administrator()?;
     let db = ctx.db.get()?;
     let db = db.deref();
+    let jwt = ctx.jwt.deref();
+    ctx.token.administrator(db, jwt)?;
     let items = LeaveWordDao::delete(db, id)?;
     Ok(items)
 }

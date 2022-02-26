@@ -29,9 +29,10 @@ pub struct ForumPostRequest {
 impl ForumPostRequest {
     pub fn create(&self, ctx: &Context, topic: i32) -> Result<()> {
         self.validate()?;
-        let user = ctx.current_user()?;
         let db = ctx.db.get()?;
         let db = db.deref();
+        let jwt = ctx.jwt.deref();
+        let user = ctx.token.current_user(db, jwt)?;
         PostDao::create(
             db,
             user.id,
@@ -45,9 +46,10 @@ impl ForumPostRequest {
     }
     pub fn update(&self, ctx: &Context, id: i32) -> Result<()> {
         self.validate()?;
-        let user = ctx.current_user()?;
         let db = ctx.db.get()?;
         let db = db.deref();
+        let jwt = ctx.jwt.deref();
+        let user = ctx.token.current_user(db, jwt)?;
         let it = PostDao::by_id(db, id)?;
         can_edit(db, &user, &it)?;
         PostDao::update(
@@ -115,9 +117,10 @@ impl ForumPostList {
 }
 
 pub fn destroy(ctx: &Context, id: i32) -> Result<()> {
-    let user = ctx.current_user()?;
     let db = ctx.db.get()?;
     let db = db.deref();
+    let jwt = ctx.jwt.deref();
+    let user = ctx.token.current_user(db, jwt)?;
     let it = PostDao::by_id(db, id)?;
     can_edit(db, &user, &it)?;
     PostDao::delete(db, id)?;

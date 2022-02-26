@@ -35,9 +35,10 @@ pub struct ForumTopicRequest {
 impl ForumTopicRequest {
     pub fn create(&self, ctx: &Context) -> Result<()> {
         self.validate()?;
-        let user = ctx.current_user()?;
         let db = ctx.db.get()?;
         let db = db.deref();
+        let jwt = ctx.jwt.deref();
+        let user = ctx.token.current_user(db, jwt)?;
         TopicDao::create(
             db,
             user.id,
@@ -52,9 +53,10 @@ impl ForumTopicRequest {
     }
     pub fn update(&self, ctx: &Context, id: i32) -> Result<()> {
         self.validate()?;
-        let user = ctx.current_user()?;
         let db = ctx.db.get()?;
         let db = db.deref();
+        let jwt = ctx.jwt.deref();
+        let user = ctx.token.current_user(db, jwt)?;
         let it = TopicDao::by_id(db, id)?;
         can_edit(db, &user, &it)?;
         TopicDao::update(
@@ -130,9 +132,10 @@ impl ForumTopicList {
 }
 
 pub fn destroy(ctx: &Context, id: i32) -> Result<()> {
-    let user = ctx.current_user()?;
     let db = ctx.db.get()?;
     let db = db.deref();
+    let jwt = ctx.jwt.deref();
+    let user = ctx.token.current_user(db, jwt)?;
     let it = TopicDao::by_id(db, id)?;
     can_edit(db, &user, &it)?;
     TopicDao::delete(db, id)?;

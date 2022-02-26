@@ -1,11 +1,25 @@
+use std::fmt;
+
 use actix_web::{dev::Payload, web, Error, FromRequest, HttpRequest};
 use futures::future::{ok, Ready};
 use hyper::header::ACCEPT_LANGUAGE;
 use language_tags::LanguageTag;
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Locale(pub String);
+#[derive(Debug)]
+pub struct Locale(pub Option<LanguageTag>);
+
+impl fmt::Display for Locale {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self.0 {
+            Some(ref it) => {
+                // TODO
+                write!(f, "{}", it)
+            }
+            None => write!(f, "en-US"),
+        }
+    }
+}
 
 #[derive(Debug, Deserialize)]
 pub struct Query {
@@ -50,9 +64,7 @@ impl FromRequest for Locale {
     type Future = Ready<Result<Self, Error>>;
 
     fn from_request(req: &HttpRequest, _pl: &mut Payload) -> Self::Future {
-        if let Some(ref it) = Self::detect(req) {
-            return ok(Self(it.to_string()));
-        }
-        ok(Self("en-US".to_string()))
+        let it = Self::detect(req);
+        ok(Self(it))
     }
 }
