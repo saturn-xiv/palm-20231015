@@ -83,6 +83,7 @@ build_deb(){
 
     mkdir -pv $target/usr/share/palm
     cp -av $WORKSPACE/dashboard/dist $target/usr/share/palm/dashboard
+    cp -av $WORKSPACE/assets $target/usr/share/palm/
     local -a packages=(
         "bootstrap/dist"
         "bulma/css"

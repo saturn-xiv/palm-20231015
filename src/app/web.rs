@@ -1,9 +1,11 @@
 use std::net::SocketAddr;
-use std::path::Path;
+use std::path::{Component, Path};
 
 use actix_cors::Cors;
+use actix_session::CookieSession;
 use actix_web::{middleware, web, App, HttpServer};
 use chrono::Duration;
+use cookie::SameSite;
 use hyper::{
     header::{ACCEPT, ACCEPT_LANGUAGE, AUTHORIZATION, CONTENT_TYPE},
     Method,
@@ -12,16 +14,16 @@ use juniper::EmptySubscription;
 
 use super::super::{
     crypto::{Aes, Hmac},
-    env::Config,
+    env::{Config, Environment},
     jwt::Jwt,
     plugins::{forum, nut},
-    Result,
+    Result, NAME,
 };
 use super::graphql::{self, mutation::Mutation, query::Query, Schema};
 
 pub async fn launch(cfg: &Config) -> Result<()> {
-    let db = cfg.postgresql.open()?;
-    let cache = cfg.redis.open()?;
+    let db = web::Data::new(cfg.postgresql.open()?);
+    let cache = web::Data::new(cfg.redis.open()?);
     let aes = web::Data::new(Aes::new(&cfg.secrets.0)?);
     let hmac = web::Data::new(Hmac::new(&cfg.secrets.0)?);
     let jwt = web::Data::new(Jwt::new(cfg.secrets.0.clone()));
@@ -30,8 +32,13 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let s3 = web::Data::new(cfg.s3.clone());
     let schema = web::Data::new(Schema::new(Query, Mutation, EmptySubscription::new()));
 
-    let addr = SocketAddr::from(([127, 0, 0, 1], 443));
+    let addr = SocketAddr::from(([127, 0, 0, 1], cfg.http.port));
+    info!("run on http://{addr}");
     let theme = cfg.theme.clone();
+
+    let cookie_key: Result<Vec<u8>> = cfg.secrets.clone().into();
+    let cookie_key = cookie_key?;
+    let is_prod = cfg.env == Environment::Production;
 
     HttpServer::new(move || {
         App::new()
@@ -48,6 +55,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .wrap(
                 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
                 Cors::default()
+                    // TODO allowed
                     .allow_any_origin()
                     .allowed_header(CONTENT_TYPE)
                     .allowed_header(AUTHORIZATION)
@@ -56,6 +64,15 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                     .allowed_methods(vec![Method::OPTIONS, Method::POST, Method::GET])
                     .supports_credentials()
                     .max_age(Duration::hours(1).num_seconds() as usize),
+            )
+            .wrap(
+                CookieSession::signed(&cookie_key)
+                    .name(NAME)
+                    .same_site(SameSite::None)
+                    .http_only(true)
+                    .max_age(Duration::hours(1).num_seconds())
+                    .path("/")
+                    .secure(is_prod),
             )
             .service(
                 web::resource(graphql::GRAPHQL_ROUTE)
@@ -80,7 +97,16 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .service(
                 actix_files::Files::new(
                     "/assets",
-                    Path::new("themes").join(theme.clone()).join("assets"),
+                    if is_prod {
+                        Path::new(&Component::RootDir)
+                            .join("user")
+                            .join("share")
+                            .join(NAME)
+                            .join("assets")
+                            .join(theme.clone())
+                    } else {
+                        Path::new("assets").join(theme.clone())
+                    },
                 )
                 .show_files_listing(),
             )

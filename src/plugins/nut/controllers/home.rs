@@ -8,7 +8,7 @@ pub struct BoostrapHome {
 }
 
 #[get("/")]
-pub async fn index(_params: web::Path<String>) -> impl Responder {
+pub async fn index() -> impl Responder {
     // TODO
     "home"
 }
