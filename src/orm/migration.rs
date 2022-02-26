@@ -21,8 +21,8 @@ pub struct Version {
 }
 
 pub struct Migration<'a> {
+    pub version: i64,
     pub name: &'a str,
-    pub version: &'a str,
     pub up: &'a str,
     pub down: &'a str,
 }
@@ -44,9 +44,8 @@ pub trait Dao {
 
 #[derive(Queryable)]
 pub struct Item {
-    pub id: i32,
     // LANG=C date +%Y%m%d%H%M%S
-    pub version: String,
+    pub version: i64,
     pub name: String,
     pub up: String,
     pub down: String,
@@ -113,7 +112,7 @@ impl Dao for Connection {
                         self.batch_execute(&it.up)?;
                         update(
                             schema_migrations::dsl::schema_migrations
-                                .filter(schema_migrations::dsl::id.eq(&it.id)),
+                                .filter(schema_migrations::dsl::version.eq(&it.version)),
                         )
                         .set(schema_migrations::dsl::run_at.eq(&now))
                         .execute(self)?;
@@ -144,7 +143,7 @@ impl Dao for Connection {
                     self.batch_execute(&it.down)?;
                     delete(
                         schema_migrations::dsl::schema_migrations
-                            .filter(schema_migrations::dsl::id.eq(it.id)),
+                            .filter(schema_migrations::dsl::version.eq(it.version)),
                     )
                     .execute(self)?;
                     Ok(())

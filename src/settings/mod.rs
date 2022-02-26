@@ -16,7 +16,7 @@ use super::{
 lazy_static! {
     pub static ref MIGRATION: Migration<'static> = Migration {
         name: "create-settings",
-        version: "20220112114811",
+        version: 20220112114811,
         up: include_str!("up.sql"),
         down: include_str!("down.sql")
     };
