@@ -2,50 +2,13 @@ pub mod attachments;
 pub mod home;
 pub mod sitemap;
 
-use std::convert::Infallible;
 use std::ops::Deref;
-use std::sync::Arc;
 
+use actix_web::{error::ErrorInternalServerError, get, web, Responder, Result};
 use askama::Template;
-use hyper::header::CONTENT_TYPE;
-use mime::TEXT_XML;
 use rss::ChannelBuilder as RssChannelBuilder;
-use warp::{host::Authority, http::Response, Filter, Reply};
-use xml::writer::EmitterConfig;
 
-use super::super::super::{
-    cache::redis::Pool as CachePool, jwt::Jwt, orm::Pool as DbPool, InfallibleResult, Result, ToXml,
-};
-
-pub fn with_db(it: DbPool) -> impl Filter<Extract = (DbPool,), Error = Infallible> + Clone {
-    warp::any().map(move || it.clone())
-}
-
-pub fn with_jwt(it: Arc<Jwt>) -> impl Filter<Extract = (Arc<Jwt>,), Error = Infallible> + Clone {
-    warp::any().map(move || it.clone())
-}
-
-pub fn with_cache(
-    it: CachePool,
-) -> impl Filter<Extract = (CachePool,), Error = Infallible> + Clone {
-    warp::any().map(move || it.clone())
-}
-
-pub fn to_xml<T: ToXml>(it: &T) -> Result<Box<dyn Reply>> {
-    let mut buffer = Vec::new();
-    {
-        let mut wrt = EmitterConfig::new()
-            .perform_indent(true)
-            .create_writer(&mut buffer);
-        it.write(&mut wrt)?;
-    }
-
-    Ok(Box::new(
-        Response::builder()
-            .header(CONTENT_TYPE.to_string(), TEXT_XML.to_string())
-            .body(buffer),
-    ))
-}
+use super::super::super::orm::Pool as DbPool;
 
 // https://developers.google.com/search/docs/advanced/robots/create-robots-txt
 #[derive(Template)]
@@ -54,15 +17,18 @@ struct RobotsTxt {
     host: String,
 }
 
-pub async fn robots_txt(auth: Option<Authority>) -> InfallibleResult<Box<dyn Reply>> {
-    let tpl = RobotsTxt {
-        host: auth.unwrap().host().to_string(),
-    };
-    Ok(Box::new(tpl))
+#[get("/robots.txt")]
+pub async fn robots_txt() -> impl Responder {
+    // TODO
+    // let tpl = RobotsTxt {
+    //     host: auth.unwrap().host().to_string(),
+    // };
+    "robots txt"
 }
 
-pub async fn rss(_lang: String, db: DbPool) -> InfallibleResult<Box<dyn Reply>> {
-    let db = db.get().unwrap();
+#[get("/{lang}/rss.xml")]
+pub async fn rss_xml(db: web::Data<DbPool>, _params: web::Path<String>) -> Result<impl Responder> {
+    let db = db.get().map_err(ErrorInternalServerError)?;
     let _db = db.deref();
 
     let mut buffer = Vec::new();
@@ -75,9 +41,5 @@ pub async fn rss(_lang: String, db: DbPool) -> InfallibleResult<Box<dyn Reply>> 
             .build();
         ch.write_to(&mut buffer).unwrap();
     }
-    Ok(Box::new(
-        Response::builder()
-            .header(CONTENT_TYPE.to_string(), TEXT_XML.to_string())
-            .body(buffer),
-    ))
+    Ok("rss.xml")
 }

@@ -1,7 +1,5 @@
+use actix_web::{get, web, Responder};
 use askama::Template;
-use warp::Reply;
-
-use super::super::super::super::{orm::Pool as DbPool, InfallibleResult};
 
 #[derive(Template)]
 #[template(path = "bootstrap/forum/posts/index.html")]
@@ -9,11 +7,10 @@ pub struct BoostrapIndex {
     pub lang: String,
 }
 
-pub async fn index(lang: String, db: DbPool) -> InfallibleResult<Box<dyn Reply>> {
-    let _db = db.get().unwrap();
+#[get("/{lang}/forum/posts")]
+pub async fn index(_params: web::Path<String>) -> impl Responder {
     // TODO
-    let tpl = BoostrapIndex { lang };
-    Ok(Box::new(tpl))
+    "forum posts index"
 }
 
 #[derive(Template)]
@@ -22,9 +19,9 @@ pub struct BoostrapShow {
     pub lang: String,
     pub id: i32,
 }
-pub async fn show(lang: String, id: i32, db: DbPool) -> InfallibleResult<Box<dyn Reply>> {
-    let _db = db.get().unwrap();
+
+#[get("/{lang}/forum/posts/{id}")]
+pub async fn show(_params: web::Path<(String, i32)>) -> impl Responder {
     // TODO
-    let tpl = BoostrapShow { lang, id };
-    Ok(Box::new(tpl))
+    "forum posts show"
 }

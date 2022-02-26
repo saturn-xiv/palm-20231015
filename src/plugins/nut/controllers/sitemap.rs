@@ -1,11 +1,10 @@
 use std::io::prelude::*;
 use std::ops::Deref;
 
-use warp::Reply;
+use actix_web::{error::ErrorInternalServerError, get, web, Responder, Result};
 use xml::writer::{EventWriter, Result as XmlWriterResult, XmlEvent};
 
-use super::super::super::super::{orm::Pool as DbPool, InfallibleResult, ToXml};
-use super::to_xml;
+use super::super::super::super::{orm::Pool as DbPool, ToXml};
 
 pub struct Item {}
 
@@ -51,18 +50,16 @@ impl ToXml for Sitemap {
     }
 }
 
-pub async fn index(db: DbPool) -> InfallibleResult<Box<dyn Reply>> {
-    let db = db.get().unwrap();
+#[get("/sitemap.xml")]
+pub async fn index(db: web::Data<DbPool>) -> Result<impl Responder> {
+    let db = db.get().map_err(ErrorInternalServerError)?;
     let _db = db.deref();
     // TODO
-    let it = Sitemap { items: Vec::new() };
-    Ok(to_xml(&it).unwrap())
+    Ok("sitemap.xml")
 }
 
-pub async fn by_lang(_lang: String, db: DbPool) -> InfallibleResult<Box<dyn Reply>> {
-    let db = db.get().unwrap();
-    let _db = db.deref();
-    let it = Sitemap { items: Vec::new() };
+#[get("/{lang}/sitemap.xml")]
+pub async fn by_lang(_params: web::Path<String>) -> impl Responder {
     // TODO
-    Ok(to_xml(&it).unwrap())
+    "sitemap.xml by lang"
 }
