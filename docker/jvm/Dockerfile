@@ -54,6 +54,7 @@ RUN sh -c ". $HOME/.profile \
     && npm i yarn -g"
 RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
 
+# https://developer.android.com/studio#cmdline-tools
 # ENV ANDROID_SDK_VERSION 6858069
 # RUN wget -P $HOME/downloads https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_VERSION}_latest.zip
 # RUN mkdir -pv $HOME/local/android-sdk
