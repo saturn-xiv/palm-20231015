@@ -1,3 +1,4 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE IF NOT EXISTS schema_migrations(
   version BIGINT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
