@@ -17,7 +17,8 @@
     "**/node_modules/**": true
   },
   "[rust]": {
-    "editor.defaultFormatter": "rust-lang.rust"
+    // "editor.defaultFormatter": "rust-lang.rust"
+    "editor.defaultFormatter": "matklad.rust-analyzer"
   },
   "[sql]": {
     "editor.defaultFormatter": "mtxr.sqltools"
