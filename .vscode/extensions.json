@@ -5,6 +5,7 @@
     "golang.go",
     // "rust-lang.rust",
     "matklad.rust-analyzer",
+    "johnsoncodehk.volar",
     "redhat.ansible",
     "redhat.vscode-yaml",
     "ms-vscode-remote.remote-ssh",

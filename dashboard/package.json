@@ -1,0 +1,28 @@
+{
+  "name": "dashboard",
+  "private": true,
+  "version": "2022.03.02",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource/roboto": "^4.5.3",
+    "ant-design-vue": "^2.2.8",
+    "dinero.js": "^2.0.0-alpha.8",
+    "js-cookie": "^3.0.1",
+    "jwt-decode": "^3.1.2",
+    "video.js": "^7.17.0",
+    "vue": "^3.2.25",
+    "vue-i18n": "9",
+    "vue-router": "4",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.2.0",
+    "typescript": "^4.5.4",
+    "vite": "^2.8.0",
+    "vue-tsc": "^0.29.8"
+  }
+}
