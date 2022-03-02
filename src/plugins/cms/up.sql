@@ -1,21 +1,22 @@
-CREATE TABLE forum_topics(
+CREATE TABLE cms_links(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID NOT NULL,
+    lang VARCHAR(16) NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    x INTEGER NOT NULL DEFAULT 0,
+    y INTEGER NOT NULL DEFAULT 0,
     title VARCHAR(255) NOT NULL,
-    summary VARCHAR(500) NOT NULL,
-    body TEXT NOT NULL,
-    body_editor VARCHAR(32) NOT NULL,
-    "status" VARCHAR(255) NOT NULL,
+    url VARCHAR(255) NOT NULL,
+    summary TEXT,
+    logo VARCHAR(255),
     version INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
-CREATE INDEX forum_topics_title ON forum_topics(title);
-CREATE INDEX idx_forum_topics_status ON forum_topics("status");
-CREATE TABLE forum_posts(
+CREATE UNIQUE INDEX idx_cms_links ON cms_links(lang, location, x, y);
+CREATE INDEX idx_cms_links_lang_location ON cms_links(lang, location);
+CREATE TABLE cms_articles(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID NOT NULL,
-    topic_id UUID NOT NULL,
+    title VARCHAR(255) NOT NULL,
     body TEXT NOT NULL,
     body_editor VARCHAR(32) NOT NULL,
     "status" VARCHAR(255) NOT NULL,
@@ -23,4 +24,4 @@ CREATE TABLE forum_posts(
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
-CREATE INDEX idx_forum_posts_status ON forum_posts("status");
+CREATE INDEX idx_cms_articles_status ON cms_articles("status");

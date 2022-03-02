@@ -1,6 +1,6 @@
 CREATE TABLE settings(
-    id SERIAL PRIMARY KEY,
-    user_id INTEGER,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID,
     "key" VARCHAR(255) NOT NULL,
     value BYTEA NOT NULL,
     salt BYTEA,

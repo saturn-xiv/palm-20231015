@@ -1,5 +1,5 @@
 CREATE TABLE sms_logs(
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     "from" VARCHAR(32) NOT NULL,
     "to" VARCHAR(32) NOT NULL,
     body TEXT NOT NULL,

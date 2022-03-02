@@ -132,6 +132,7 @@ pub async fn launch() -> Result<()> {
             Locales.deref(),
             Settings.deref(),
             plugins::nut::MIGRATION.deref(),
+            plugins::cms::MIGRATION.deref(),
             plugins::forum::MIGRATION.deref(),
             plugins::mall::MIGRATION.deref(),
             plugins::twilio::MIGRATION.deref(),

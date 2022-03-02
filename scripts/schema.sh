@@ -26,6 +26,7 @@ function generate_diesel_postgresql() {
         contacts addresses \
         notifications rating_logs view_counters > src/plugins/nut/schema.rs
     
+    diesel print-schema -o cms_links cms_topics > src/plugins/cms/schema.rs
     diesel print-schema -o forum_topics forum_posts > src/plugins/forum/schema.rs
     diesel print-schema -o sms_logs > src/plugins/twilio/schema.rs
      
@@ -85,7 +86,7 @@ declare -a languages=(
 
 for l in "${languages[@]}"
 do
-    generate_grpc $l
+    # generate_grpc $l
 done
 # generate_grpc_web
 

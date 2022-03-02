@@ -1,5 +1,5 @@
 CREATE TABLE locales(
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     lang VARCHAR(16) NOT NULL,
     code VARCHAR(255) NOT NULL,
     message TEXT NOT NULL,

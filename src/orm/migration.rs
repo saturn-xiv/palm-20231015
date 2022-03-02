@@ -10,8 +10,9 @@ use diesel::{
     sql_types::Text,
     update, RunQueryDsl,
 };
+use hyper::StatusCode;
 
-use super::super::Result;
+use super::super::{HttpError, Result};
 use super::{schema::schema_migrations, Connection};
 
 #[derive(QueryableByName)]
@@ -74,22 +75,30 @@ impl Dao for Connection {
 
         for it in items {
             debug!("find migration: {}", it);
-            let c: i64 = schema_migrations::dsl::schema_migrations
+            match schema_migrations::dsl::schema_migrations
                 .filter(schema_migrations::dsl::version.eq(it.version))
-                .filter(schema_migrations::dsl::name.eq(it.name))
-                .count()
-                .get_result(self)?;
-            if c == 0 {
-                warn!("migration {} did not exist, insert it", it);
-                insert_into(schema_migrations::dsl::schema_migrations)
-                    .values((
-                        schema_migrations::dsl::version.eq(it.version),
-                        schema_migrations::dsl::name.eq(it.name),
-                        schema_migrations::dsl::up.eq(it.up),
-                        schema_migrations::dsl::down.eq(it.down),
-                    ))
-                    .execute(self)?;
-            }
+                .first::<Item>(self)
+            {
+                Ok(v) => {
+                    if it.name != v.name || it.up != v.up || it.down != v.down {
+                        return Err(Box::new(HttpError(
+                            StatusCode::BAD_REQUEST,
+                            Some(format!("{} not same as in db", it.version)),
+                        )));
+                    }
+                }
+                Err(_) => {
+                    warn!("migration {} did not exist, insert it", it);
+                    insert_into(schema_migrations::dsl::schema_migrations)
+                        .values((
+                            schema_migrations::dsl::version.eq(it.version),
+                            schema_migrations::dsl::name.eq(it.name),
+                            schema_migrations::dsl::up.eq(it.up),
+                            schema_migrations::dsl::down.eq(it.down),
+                        ))
+                        .execute(self)?;
+                }
+            };
         }
         Ok(())
     }
