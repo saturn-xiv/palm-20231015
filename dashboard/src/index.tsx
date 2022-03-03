@@ -10,7 +10,7 @@ import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom";
 import { IntlProvider } from "react-intl";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CachedOutlinedIcon from "@mui/icons-material/CachedOutlined";
 import loadable from "@loadable/component";
 
@@ -25,7 +25,7 @@ const messages = getMessages(lang);
 ReactDOM.render(
   <React.StrictMode>
     <IntlProvider messages={messages} locale={lang}>
-      <Router>
+      <BrowserRouter basename="/my/">
         <Routes>
           {plugins.routes.map((it) => {
             const W = loadable(it.component, {
@@ -35,7 +35,7 @@ ReactDOM.render(
           })}
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
     </IntlProvider>
   </React.StrictMode>,
   document.getElementById("root")
