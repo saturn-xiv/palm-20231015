@@ -126,7 +126,7 @@ table! {
         level -> Varchar,
         ip -> Varchar,
         resource_type -> Varchar,
-        resource_id -> Int4,
+        resource_id -> Uuid,
         message -> Varchar,
         created_at -> Timestamp,
     }

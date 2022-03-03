@@ -1,20 +1,20 @@
-pub mod address;
-pub mod attachment;
-pub mod category;
-pub mod contact;
-pub mod friend_link;
-pub mod group;
-pub mod leave_word;
+// pub mod address;
+// pub mod attachment;
+// pub mod category;
+// pub mod contact;
+// pub mod friend_link;
+// pub mod group;
+// pub mod leave_word;
 pub mod log;
-pub mod notification;
-pub mod operation;
-pub mod policy;
-pub mod rating_log;
-pub mod resource;
-pub mod role;
-pub mod tag;
-pub mod user;
-pub mod view_counter;
+// pub mod notification;
+// pub mod operation;
+// pub mod policy;
+// pub mod rating_log;
+// pub mod resource;
+// pub mod role;
+// pub mod tag;
+// pub mod user;
+// pub mod view_counter;
 
 use std::default::Default;
 use std::fmt;
@@ -22,37 +22,16 @@ use std::str::FromStr;
 
 use chrono::NaiveDateTime;
 use hyper::StatusCode;
-use juniper::GraphQLObject;
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 
 use super::super::super::{Error, HttpError, Result};
 
 // TODO default font
-#[derive(Serialize, Deserialize, GraphQLObject, Default, Debug, Clone)]
-#[serde(rename_all = "camelCase")]
-pub struct Font {
-    pub name: String,
-    pub size: i32,
-}
-
-// TODO default color
-#[derive(Serialize, Deserialize, GraphQLObject, Default, Debug, Clone)]
-#[serde(rename_all = "camelCase")]
-pub struct Color {
-    pub front: String,
-    pub back: String,
-}
-
-// TODO default icon
-#[derive(Serialize, Deserialize, GraphQLObject, Default, Debug, Clone)]
-#[serde(rename_all = "camelCase")]
-pub struct Icon {
-    pub name: String,
-}
 
 pub struct Resource {
     pub type_: String,
-    pub id: i32,
+    pub id: Uuid,
 }
 
 impl fmt::Display for Resource {

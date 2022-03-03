@@ -36,7 +36,7 @@ CREATE TABLE "logs"(
     "level" VARCHAR(16) NOT NULL DEFAULT 'info',
     ip VARCHAR(45) NOT NULL,
     resource_type VARCHAR(255) NOT NULL,
-    resource_id INTEGER NOT NULL,
+    resource_id UUID NOT NULL,
     message VARCHAR(255) NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -82,7 +82,7 @@ CREATE TABLE roles_items(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     role_id UUID NOT NULL,
     target_type VARCHAR(255) NOT NULL,
-    target_id VARCHAR(255) NOT NULL,
+    target_id UUID NOT NULL,
     not_before DATE NOT NULL,
     expire_at DATE NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -133,7 +133,7 @@ CREATE TABLE attachment_usages(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     attachment_id UUID NOT NULL,
     resource_type VARCHAR(255) NOT NULL,
-    resource_id VARCHAR(255) NOT NULL,
+    resource_id UUID NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 CREATE UNIQUE INDEX idx_attachment_usages ON attachment_usages(attachment_id, resource_type, resource_id);
@@ -162,7 +162,7 @@ CREATE TABLE tags_resources(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     tag_id UUID NOT NULL,
     resource_type VARCHAR(255) NOT NULL,
-    resource_id VARCHAR(255) NOT NULL,
+    resource_id UUID NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 CREATE UNIQUE INDEX idx_tags_resources ON tags_resources(tag_id, resource_type, resource_id);
@@ -181,7 +181,7 @@ CREATE TABLE categories_resources(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     category_id UUID NOT NULL,
     resource_type VARCHAR(255) NOT NULL,
-    resource_id VARCHAR(255) NOT NULL,
+    resource_id UUID NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 CREATE UNIQUE INDEX idx_categories_resources ON categories_resources(category_id, resource_type, resource_id);
@@ -211,7 +211,7 @@ CREATE TABLE rating_logs(
     user_id UUID NOT NULL,
     "point" INTEGER NOT NULL DEFAULT 0,
     resource_type VARCHAR(255) NOT NULL,
-    resource_id VARCHAR(255) NOT NULL,
+    resource_id UUID NOT NULL,
     body TEXT NOT NULL,
     body_editor VARCHAR(255) NOT NULL,
     version INTEGER NOT NULL DEFAULT 0,
@@ -223,7 +223,7 @@ CREATE INDEX idx_rating_logs_resource_type ON rating_logs(resource_type);
 CREATE TABLE view_counters(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     resource_type VARCHAR(255) NOT NULL,
-    resource_id VARCHAR(255) NOT NULL,
+    resource_id UUID NOT NULL,
     "point" INTEGER NOT NULL DEFAULT 0,
     version INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -234,7 +234,7 @@ CREATE INDEX idx_view_counters_resource_type ON view_counters(resource_type);
 CREATE TABLE contacts(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     resource_type VARCHAR(255) NOT NULL,
-    resource_id VARCHAR(255) NOT NULL,
+    resource_id UUID NOT NULL,
     code VARCHAR(255) NOT NULL,
     value TEXT NOT NULL,
     version INTEGER NOT NULL DEFAULT 0,
@@ -247,7 +247,7 @@ CREATE INDEX idx_contacts_code ON contacts(code);
 CREATE TABLE addresses(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     resource_type VARCHAR(255) NOT NULL,
-    resource_id VARCHAR(255) NOT NULL,
+    resource_id UUID NOT NULL,
     gate VARCHAR(255),
     unit VARCHAR(255),
     street VARCHAR(255) NOT NULL,

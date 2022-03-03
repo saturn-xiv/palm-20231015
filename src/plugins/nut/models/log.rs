@@ -2,23 +2,20 @@ use std::fmt;
 
 use chrono::NaiveDateTime;
 use diesel::{insert_into, prelude::*};
-use juniper::GraphQLObject;
-use serde::Serialize;
+use uuid::Uuid;
 
 use super::super::super::super::{orm::Connection, Result};
 use super::super::schema::logs;
 use super::Resource;
 
-#[derive(Queryable, GraphQLObject, Serialize)]
-#[serde(rename_all = "camelCase")]
-#[graphql(name = "UserLogItem")]
+#[derive(Queryable)]
 pub struct Item {
-    pub id: i32,
-    pub user_id: i32,
+    pub id: Uuid,
+    pub user_id: Uuid,
     pub level: String,
     pub ip: String,
     pub resource_type: String,
-    pub resource_id: i32,
+    pub resource_id: Uuid,
     pub message: String,
     pub created_at: NaiveDateTime,
 }
@@ -49,22 +46,22 @@ impl fmt::Display for Level {
 pub trait Dao {
     fn add<S: Into<String>>(
         &self,
-        user: i32,
+        user: &Uuid,
         level: &Level,
         ip: &str,
         resource: &Resource,
         message: S,
     ) -> Result<()>;
 
-    fn all(&self, user: i32, offset: i64, limit: i64) -> Result<Vec<Item>>;
+    fn all(&self, user: &Uuid, offset: i64, limit: i64) -> Result<Vec<Item>>;
     fn by_resource(&self, resource: &Resource) -> Result<Vec<Item>>;
-    fn count(&self, user: i32) -> Result<i64>;
+    fn count(&self, user: &Uuid) -> Result<i64>;
 }
 
 impl Dao for Connection {
     fn add<S: Into<String>>(
         &self,
-        user: i32,
+        user: &Uuid,
         level: &Level,
         ip: &str,
         resource: &Resource,
@@ -83,7 +80,7 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn all(&self, user: i32, offset: i64, limit: i64) -> Result<Vec<Item>> {
+    fn all(&self, user: &Uuid, offset: i64, limit: i64) -> Result<Vec<Item>> {
         let items = logs::dsl::logs
             .filter(logs::dsl::user_id.eq(user))
             .order(logs::dsl::created_at.desc())
@@ -100,7 +97,7 @@ impl Dao for Connection {
             .load::<Item>(self)?;
         Ok(items)
     }
-    fn count(&self, user: i32) -> Result<i64> {
+    fn count(&self, user: &Uuid) -> Result<i64> {
         let it = logs::dsl::logs
             .filter(logs::dsl::user_id.eq(user))
             .count()
