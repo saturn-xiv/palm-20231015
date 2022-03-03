@@ -1,6 +1,6 @@
 table! {
     erp_brands (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
         name -> Varchar,
         home -> Nullable<Varchar>,
@@ -13,9 +13,9 @@ table! {
 
 table! {
     erp_carts (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
-        sku_id -> Int4,
+        sku_id -> Uuid,
         count -> Int4,
         version -> Int4,
         created_at -> Timestamp,
@@ -25,10 +25,9 @@ table! {
 
 table! {
     erp_categories (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
-        name -> Varchar,
-        parent_id -> Nullable<Int4>,
+        parent_id -> Nullable<Uuid>,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -37,20 +36,20 @@ table! {
 
 table! {
     erp_categories_brands (id) {
-        id -> Int4,
-        category_id -> Int4,
-        brand_id -> Int4,
+        id -> Uuid,
+        category_id -> Uuid,
+        brand_id -> Uuid,
         created_at -> Timestamp,
     }
 }
 
 table! {
     erp_delivery_logs (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
-        order_id -> Int4,
-        deliverer_id -> Int4,
-        warehouse_id -> Int4,
+        order_id -> Uuid,
+        deliverer_id -> Uuid,
+        warehouse_id -> Uuid,
         by -> Varchar,
         payload -> Bytea,
         state -> Varchar,
@@ -62,9 +61,8 @@ table! {
 
 table! {
     erp_levels (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
-        name -> Varchar,
         discount -> Numeric,
         version -> Int4,
         created_at -> Timestamp,
@@ -74,10 +72,10 @@ table! {
 
 table! {
     erp_orders (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
-        customer_id -> Int4,
-        sales_id -> Nullable<Int4>,
+        customer_id -> Uuid,
+        sales_id -> Nullable<Uuid>,
         payment -> Bytea,
         delivery -> Bytea,
         payload -> Bytea,
@@ -90,13 +88,12 @@ table! {
 
 table! {
     erp_prices (id) {
-        id -> Int4,
-        sku_id -> Int4,
+        id -> Uuid,
+        sku_id -> Uuid,
         code -> Varchar,
-        name -> Varchar,
         currency -> Varchar,
         value -> Numeric,
-        tax_id -> Int4,
+        tax_id -> Uuid,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -105,9 +102,9 @@ table! {
 
 table! {
     erp_purchase_logs (id) {
-        id -> Int4,
-        buyer_id -> Int4,
-        supplier_id -> Int4,
+        id -> Uuid,
+        buyer_id -> Uuid,
+        supplier_id -> Uuid,
         payment -> Bytea,
         payload -> Bytea,
         state -> Varchar,
@@ -119,11 +116,11 @@ table! {
 
 table! {
     erp_returning_logs (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
-        order_id -> Int4,
-        consumer_id -> Int4,
-        qa_id -> Int4,
+        order_id -> Uuid,
+        consumer_id -> Uuid,
+        qa_id -> Uuid,
         reason -> Text,
         reason_editor -> Varchar,
         payment -> Bytea,
@@ -138,9 +135,8 @@ table! {
 
 table! {
     erp_sku (id) {
-        id -> Int4,
-        spu_id -> Int4,
-        name -> Varchar,
+        id -> Uuid,
+        spu_id -> Uuid,
         status -> Varchar,
         version -> Int4,
         created_at -> Timestamp,
@@ -150,9 +146,9 @@ table! {
 
 table! {
     erp_sku_params (id) {
-        id -> Int4,
-        sku_id -> Int4,
-        param_id -> Int4,
+        id -> Uuid,
+        sku_id -> Uuid,
+        param_id -> Uuid,
         value -> Bytea,
         version -> Int4,
         created_at -> Timestamp,
@@ -162,9 +158,8 @@ table! {
 
 table! {
     erp_spec_groups (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
-        name -> Varchar,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -173,10 +168,9 @@ table! {
 
 table! {
     erp_spec_params (id) {
-        id -> Int4,
-        spec_group_id -> Int4,
+        id -> Uuid,
+        spec_group_id -> Uuid,
         code -> Varchar,
-        name -> Varchar,
         unit -> Nullable<Varchar>,
         #[sql_name = "type"]
         type_ -> Varchar,
@@ -189,7 +183,7 @@ table! {
 
 table! {
     erp_spu (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
         title -> Varchar,
         subhead -> Nullable<Varchar>,
@@ -204,27 +198,27 @@ table! {
 
 table! {
     erp_spu_brands (id) {
-        id -> Int4,
-        spu_id -> Int4,
-        brand_id -> Int4,
+        id -> Uuid,
+        spu_id -> Uuid,
+        brand_id -> Uuid,
         created_at -> Timestamp,
     }
 }
 
 table! {
     erp_spu_categories (id) {
-        id -> Int4,
-        spu_id -> Int4,
-        category_id -> Int4,
+        id -> Uuid,
+        spu_id -> Uuid,
+        category_id -> Uuid,
         created_at -> Timestamp,
     }
 }
 
 table! {
     erp_spu_params (id) {
-        id -> Int4,
-        spu_id -> Int4,
-        param_id -> Int4,
+        id -> Uuid,
+        spu_id -> Uuid,
+        param_id -> Uuid,
         value -> Bytea,
         version -> Int4,
         created_at -> Timestamp,
@@ -234,9 +228,8 @@ table! {
 
 table! {
     erp_suppliers (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
-        name -> Varchar,
         payment -> Bytea,
         state -> Varchar,
         version -> Int4,
@@ -247,9 +240,8 @@ table! {
 
 table! {
     erp_taxes (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
-        name -> Varchar,
         value -> Numeric,
         version -> Int4,
         created_at -> Timestamp,
@@ -259,18 +251,18 @@ table! {
 
 table! {
     erp_users_levels (id) {
-        id -> Int4,
-        user_id -> Int4,
-        level_id -> Int4,
+        id -> Uuid,
+        user_id -> Uuid,
+        level_id -> Uuid,
         created_at -> Timestamp,
     }
 }
 
 table! {
     erp_vouchers (id) {
-        id -> Int4,
-        operator_id -> Int4,
-        customer_id -> Int4,
+        id -> Uuid,
+        operator_id -> Uuid,
+        customer_id -> Uuid,
         code -> Varchar,
         deno -> Numeric,
         condition -> Numeric,
@@ -285,9 +277,8 @@ table! {
 
 table! {
     erp_warehouses (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
-        name -> Varchar,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -296,9 +287,9 @@ table! {
 
 table! {
     erp_warehouses_sku (id) {
-        id -> Int4,
-        warehouse_id -> Int4,
-        sku_id -> Int4,
+        id -> Uuid,
+        warehouse_id -> Uuid,
+        sku_id -> Uuid,
         amount -> Int4,
         unit -> Varchar,
         x -> Int4,
@@ -312,9 +303,9 @@ table! {
 
 table! {
     erp_warehousing_logs (id) {
-        id -> Int4,
-        storekeeper_id -> Int4,
-        purchase_log_id -> Int4,
+        id -> Uuid,
+        storekeeper_id -> Uuid,
+        purchase_log_id -> Uuid,
         payload -> Bytea,
         state -> Varchar,
         version -> Int4,

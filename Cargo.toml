@@ -110,7 +110,7 @@ features = ["serde_bytes"]
 [dependencies.diesel]
 version = "1"
 default-features = false
-features = ["bigdecimal", "postgres", "mysql", "sqlite", "extras", "128-column-tables"]
+features = ["uuidv07", "bigdecimal", "postgres", "mysql", "sqlite", "extras", "128-column-tables"]
 
 [dependencies.serde]
 version = "1"
@@ -136,5 +136,3 @@ features = ["derive"]
 version = "*"
 # features = ["vendored"]
 
-[build-dependencies]
-tonic-build = "0.6"

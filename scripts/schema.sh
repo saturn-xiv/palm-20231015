@@ -74,20 +74,20 @@ function generate_grpc_web() {
 }
 # ----------------------------------------------------------
 
-declare -a languages=(
-    # "node"
-    "php"
-    "python"
-    "ruby"
-    "cpp"
-    "csharp"
-    # "objective_c"
-)
+# declare -a languages=(
+#     # "node"
+#     "php"
+#     "python"
+#     "ruby"
+#     "cpp"
+#     "csharp"
+#     # "objective_c"
+# )
 
-for l in "${languages[@]}"
-do
-    # generate_grpc $l
-done
+# for l in "${languages[@]}"
+# do
+#     generate_grpc $l
+# done
 # generate_grpc_web
 
 generate_diesel_postgresql

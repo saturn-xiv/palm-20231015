@@ -1,15 +1,4 @@
 #[macro_export]
-macro_rules! try_grpc {
-    ($r:expr, $s:expr) => {{
-        $r.map_err(|x| x.to_string()).map_err($s)
-    }};
-    ($r:expr) => {{
-        $r.map_err(|x| x.to_string())
-            .map_err(tonic::Status::internal)
-    }};
-}
-
-#[macro_export]
 macro_rules! current_user {
     ($s:expr, $r:expr) => {{
         let ss = Session::new($r);

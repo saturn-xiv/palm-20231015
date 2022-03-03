@@ -1,9 +1,0 @@
-syntax = "proto3";
-option java_multiple_files = true;
-package palm.erp.v1;
-
-// import "google/protobuf/empty.proto";
-// import "google/protobuf/duration.proto";
-// import "google/protobuf/timestamp.proto";
-
-service Erp {}

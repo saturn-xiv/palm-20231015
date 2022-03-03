@@ -1,8 +1,8 @@
 table! {
     forum_posts (id) {
-        id -> Int4,
-        user_id -> Int4,
-        topic_id -> Int4,
+        id -> Uuid,
+        user_id -> Uuid,
+        topic_id -> Uuid,
         body -> Text,
         body_editor -> Varchar,
         status -> Varchar,
@@ -14,8 +14,8 @@ table! {
 
 table! {
     forum_topics (id) {
-        id -> Int4,
-        user_id -> Int4,
+        id -> Uuid,
+        user_id -> Uuid,
         title -> Varchar,
         summary -> Varchar,
         body -> Text,

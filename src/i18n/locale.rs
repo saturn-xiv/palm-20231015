@@ -2,8 +2,7 @@ use std::collections::HashMap;
 
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
-use juniper::GraphQLObject;
-use serde::Serialize;
+use uuid::Uuid;
 use yaml_rust::{Yaml, YamlLoader};
 
 use super::super::{
@@ -28,10 +27,9 @@ lazy_static! {
     };
 }
 
-#[derive(Queryable, GraphQLObject, Serialize)]
-#[serde(rename_all = "camelCase")]
+#[derive(Queryable)]
 pub struct Item {
-    pub id: i32,
+    pub id: Uuid,
     pub lang: String,
     pub code: String,
     pub message: String,
@@ -55,11 +53,11 @@ pub trait Dao {
     fn count(&self, lang: &str) -> Result<i64>;
     fn all(&self) -> Result<Vec<Item>>;
     fn by_lang(&self, lang: &str) -> Result<Vec<Item>>;
-    fn by_id(&self, id: i32) -> Result<Item>;
+    fn by_id(&self, id: &Uuid) -> Result<Item>;
     fn by_lang_and_code(&self, lang: &str, code: &str) -> Result<Item>;
-    fn delete(&self, id: i32) -> Result<()>;
+    fn delete(&self, id: &Uuid) -> Result<()>;
     fn create(&self, lang: &str, code: &str, message: &str) -> Result<()>;
-    fn update(&self, id: i32, code: &str, message: &str) -> Result<()>;
+    fn update(&self, id: &Uuid, code: &str, message: &str) -> Result<()>;
 }
 
 fn loop_yaml(
@@ -176,7 +174,7 @@ impl Dao for Connection {
             .load::<Item>(self)?;
         Ok(items)
     }
-    fn by_id(&self, id: i32) -> Result<Item> {
+    fn by_id(&self, id: &Uuid) -> Result<Item> {
         let it = locales::dsl::locales
             .filter(locales::dsl::id.eq(id))
             .first::<Item>(self)?;
@@ -189,7 +187,7 @@ impl Dao for Connection {
             .first::<Item>(self)?;
         Ok(it)
     }
-    fn update(&self, id: i32, code: &str, message: &str) -> Result<()> {
+    fn update(&self, id: &Uuid, code: &str, message: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
         let it = locales::dsl::locales.filter(locales::dsl::id.eq(id));
         update(it)
@@ -213,7 +211,7 @@ impl Dao for Connection {
             .execute(self)?;
         Ok(())
     }
-    fn delete(&self, id: i32) -> Result<()> {
+    fn delete(&self, id: &Uuid) -> Result<()> {
         delete(locales::dsl::locales.filter(locales::dsl::id.eq(id))).execute(self)?;
         Ok(())
     }

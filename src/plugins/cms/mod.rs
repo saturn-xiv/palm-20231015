@@ -1,3 +1,5 @@
+pub mod schema;
+
 use super::super::orm::migration::Migration;
 
 lazy_static! {

@@ -2,8 +2,6 @@ pub mod controllers;
 pub mod models;
 pub mod protocols;
 pub mod schema;
-pub mod services;
-pub mod v1;
 
 use super::super::orm::migration::Migration;
 

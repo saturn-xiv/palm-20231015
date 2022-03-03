@@ -12,7 +12,7 @@ extern crate serde_json;
 #[macro_use]
 pub mod macros;
 
-pub mod app;
+// pub mod app;
 pub mod aws;
 pub mod cache;
 pub mod crypto;
@@ -33,7 +33,7 @@ use std::path::Path;
 
 use xml::writer::{EventWriter, Result as XmlWriterResult};
 
-pub use self::result::{Error, GrpcResult, HttpError, HttpResult, InfallibleResult, Result};
+pub use self::result::{Error, HttpError, HttpResult, Result};
 
 include!(concat!(env!("OUT_DIR"), "/env.rs"));
 

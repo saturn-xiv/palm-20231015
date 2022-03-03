@@ -1,8 +1,8 @@
 table! {
     addresses (id) {
-        id -> Int4,
+        id -> Uuid,
         resource_type -> Varchar,
-        resource_id -> Int4,
+        resource_id -> Varchar,
         gate -> Nullable<Varchar>,
         unit -> Nullable<Varchar>,
         street -> Varchar,
@@ -18,23 +18,22 @@ table! {
 
 table! {
     attachment_usages (id) {
-        id -> Int4,
-        attachment_id -> Int4,
+        id -> Uuid,
+        attachment_id -> Uuid,
         resource_type -> Varchar,
-        resource_id -> Int4,
+        resource_id -> Varchar,
         created_at -> Timestamp,
     }
 }
 
 table! {
     attachments (id) {
-        id -> Int4,
-        user_id -> Int4,
+        id -> Uuid,
+        user_id -> Uuid,
         title -> Varchar,
-        size -> Int4,
+        size -> Int8,
         content_type -> Varchar,
         region -> Varchar,
-        uid -> Varchar,
         status -> Varchar,
         version -> Int4,
         created_at -> Timestamp,
@@ -44,14 +43,10 @@ table! {
 
 table! {
     categories (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
-        name -> Varchar,
-        parent_id -> Nullable<Int4>,
+        parent_id -> Nullable<Uuid>,
         order -> Int4,
-        font -> Bytea,
-        icon -> Bytea,
-        color -> Bytea,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -60,21 +55,20 @@ table! {
 
 table! {
     categories_resources (id) {
-        id -> Int4,
-        category_id -> Int4,
+        id -> Uuid,
+        category_id -> Uuid,
         resource_type -> Varchar,
-        resource_id -> Int4,
+        resource_id -> Varchar,
         created_at -> Timestamp,
     }
 }
 
 table! {
     contacts (id) {
-        id -> Int4,
+        id -> Uuid,
         resource_type -> Varchar,
-        resource_id -> Int4,
+        resource_id -> Varchar,
         code -> Varchar,
-        name -> Varchar,
         value -> Text,
         version -> Int4,
         created_at -> Timestamp,
@@ -84,7 +78,7 @@ table! {
 
 table! {
     friend_links (id) {
-        id -> Int4,
+        id -> Uuid,
         title -> Varchar,
         home -> Varchar,
         logo -> Nullable<Varchar>,
@@ -97,10 +91,9 @@ table! {
 
 table! {
     groups (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
-        name -> Varchar,
-        parent_id -> Nullable<Int4>,
+        parent_id -> Nullable<Uuid>,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -109,16 +102,16 @@ table! {
 
 table! {
     groups_users (id) {
-        id -> Int4,
-        group_id -> Int4,
-        user_id -> Int4,
+        id -> Uuid,
+        group_id -> Uuid,
+        user_id -> Uuid,
         created_at -> Timestamp,
     }
 }
 
 table! {
     leave_words (id) {
-        id -> Int4,
+        id -> Uuid,
         ip -> Varchar,
         body -> Text,
         body_editor -> Varchar,
@@ -128,8 +121,8 @@ table! {
 
 table! {
     logs (id) {
-        id -> Int4,
-        user_id -> Int4,
+        id -> Uuid,
+        user_id -> Uuid,
         level -> Varchar,
         ip -> Varchar,
         resource_type -> Varchar,
@@ -141,8 +134,8 @@ table! {
 
 table! {
     notifications (id) {
-        id -> Int4,
-        user_id -> Int4,
+        id -> Uuid,
+        user_id -> Uuid,
         url -> Varchar,
         body -> Text,
         body_editor -> Varchar,
@@ -156,9 +149,8 @@ table! {
 
 table! {
     operations (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
-        name -> Varchar,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -167,21 +159,21 @@ table! {
 
 table! {
     policies (id) {
-        id -> Int4,
-        role_id -> Int4,
-        resource_id -> Int4,
-        operation_id -> Int4,
+        id -> Uuid,
+        role_id -> Uuid,
+        resource_id -> Uuid,
+        operation_id -> Uuid,
         created_at -> Timestamp,
     }
 }
 
 table! {
     rating_logs (id) {
-        id -> Int4,
-        user_id -> Int4,
+        id -> Uuid,
+        user_id -> Uuid,
         point -> Int4,
         resource_type -> Varchar,
-        resource_id -> Int4,
+        resource_id -> Varchar,
         body -> Text,
         body_editor -> Varchar,
         version -> Int4,
@@ -192,10 +184,9 @@ table! {
 
 table! {
     resources (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
-        name -> Varchar,
-        parent_id -> Nullable<Int4>,
+        parent_id -> Nullable<Uuid>,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -204,11 +195,10 @@ table! {
 
 table! {
     role_relations (id) {
-        id -> Int4,
-        a -> Int4,
+        id -> Uuid,
+        a -> Uuid,
         constraint -> Varchar,
-        b -> Int4,
-        name -> Varchar,
+        b -> Uuid,
         version -> Int4,
         created_at -> Timestamp,
     }
@@ -216,10 +206,9 @@ table! {
 
 table! {
     roles (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
-        name -> Varchar,
-        parent_id -> Nullable<Int4>,
+        parent_id -> Nullable<Uuid>,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -228,10 +217,10 @@ table! {
 
 table! {
     roles_items (id) {
-        id -> Int4,
-        role_id -> Int4,
+        id -> Uuid,
+        role_id -> Uuid,
         target_type -> Varchar,
-        target_id -> Int4,
+        target_id -> Varchar,
         not_before -> Date,
         expire_at -> Date,
         created_at -> Timestamp,
@@ -241,12 +230,8 @@ table! {
 
 table! {
     tags (id) {
-        id -> Int4,
+        id -> Uuid,
         code -> Varchar,
-        name -> Varchar,
-        font -> Bytea,
-        icon -> Bytea,
-        color -> Bytea,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -255,23 +240,22 @@ table! {
 
 table! {
     tags_resources (id) {
-        id -> Int4,
-        tag_id -> Int4,
+        id -> Uuid,
+        tag_id -> Uuid,
         resource_type -> Varchar,
-        resource_id -> Int4,
+        resource_id -> Varchar,
         created_at -> Timestamp,
     }
 }
 
 table! {
     users (id) {
-        id -> Int4,
+        id -> Uuid,
         real_name -> Varchar,
         nick_name -> Varchar,
         email -> Varchar,
         password -> Nullable<Bytea>,
         salt -> Bytea,
-        uid -> Varchar,
         provider_type -> Varchar,
         provider_id -> Varchar,
         access_token -> Nullable<Varchar>,
@@ -279,7 +263,6 @@ table! {
         lang -> Varchar,
         time_zone -> Varchar,
         address -> Nullable<Varchar>,
-        profile -> Bytea,
         sign_in_count -> Int4,
         current_sign_in_at -> Nullable<Timestamp>,
         current_sign_in_ip -> Nullable<Varchar>,
@@ -296,9 +279,9 @@ table! {
 
 table! {
     view_counters (id) {
-        id -> Int4,
+        id -> Uuid,
         resource_type -> Varchar,
-        resource_id -> Int4,
+        resource_id -> Varchar,
         point -> Int4,
         version -> Int4,
         created_at -> Timestamp,

@@ -10,7 +10,6 @@ use super::{
     cache::redis::Config as Redis,
     crypto::Key,
     orm::Config as PostgreSql,
-    plugins::nut::tasks::email::Handler as Smtp,
     queue::amqp::Config as RabbitMq,
 };
 
@@ -86,7 +85,6 @@ pub struct Config {
     pub postgresql: PostgreSql,
     pub redis: Redis,
     pub rabbitmq: RabbitMq,
-    pub smtp: Smtp,
     pub s3: S3,
     pub aws: Aws,
 }

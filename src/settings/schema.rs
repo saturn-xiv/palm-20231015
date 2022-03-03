@@ -1,7 +1,7 @@
 table! {
     settings (id) {
-        id -> Int4,
-        user_id -> Nullable<Int4>,
+        id -> Uuid,
+        user_id -> Nullable<Uuid>,
         key -> Varchar,
         value -> Bytea,
         salt -> Nullable<Bytea>,
