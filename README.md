@@ -23,3 +23,9 @@ npm install sql-formatter -g
 - [Web Tools API Portal](https://www.usps.com/business/web-tools-apis/)
 - [Reviewing address formats](https://help.shopify.com/en/manual/shipping/shopify-shipping/reviewing-address-formats)
 - [handlebars](https://handlebarsjs.com/guide/)
+
+### UI
+
+- [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/controls/web)
+- [MUI](https://mui.com/getting-started/installation/)
+- [Google Fonts](https://developers.google.com/fonts/docs/material_icons#setup_method_2_self_hosting)
