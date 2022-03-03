@@ -1,4 +1,13 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
 /node_modules/
 /yarn.lock
-/dist/
-/*.local
+
+# testing
+
+# production
+/build/
+
+# misc
+/.env.*.local

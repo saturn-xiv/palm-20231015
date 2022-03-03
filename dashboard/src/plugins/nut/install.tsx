@@ -1,6 +1,6 @@
 function Widget() {
   // TODO
-  return <div>i18n</div>;
+  return <div>install</div>;
 }
 
 export default Widget;

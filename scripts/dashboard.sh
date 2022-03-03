@@ -18,9 +18,12 @@ set -e
 #     @fontsource/roboto \
 #     js-cookie jwt-decode dinero.js@alpha video.js
 
-yarn add react-intl react-router-dom react-redux @types/react-redux \
-    @mui/material @emotion/react @emotion/styled @mui/icons-material \
-    material-design-icons @fontsource/roboto \
+
+yarn add react-intl react-router-dom@6 \
+    react-redux @types/react-redux \
+    @mui/material @emotion/react @emotion/styled \
+    @mui/icons-material material-design-icons @fontsource/roboto \
+    @loadable/component @types/loadable__component \
     react-hook-form moment moment-timezone \
     react-copy-to-clipboard react-quill@beta react-dropzone \
     google-map-react qrcode.react react-markdown \

@@ -1,6 +1,6 @@
 function Widget() {
   // TODO
-  return <div>i18n</div>;
+  return <div>not found</div>;
 }
 
 export default Widget;
