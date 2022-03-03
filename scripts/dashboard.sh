@@ -20,9 +20,9 @@ set -e
 
 yarn add react-intl react-router-dom react-redux @types/react-redux \
     @mui/material @emotion/react @emotion/styled @mui/icons-material \
-    material-design-icons \
+    material-design-icons @fontsource/roboto \
     react-hook-form moment moment-timezone \
-    react-copy-to-clipboard react-quill@beta \
+    react-copy-to-clipboard react-quill@beta react-dropzone \
     google-map-react qrcode.react react-markdown \
     react-json-view react-color react-syntax-highlighter \
     emoji-mart react-sparklines react-highlight-words \
