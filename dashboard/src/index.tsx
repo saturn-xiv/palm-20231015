@@ -11,6 +11,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { IntlProvider } from "react-intl";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Provider } from "react-redux";
 import CachedOutlinedIcon from "@mui/icons-material/CachedOutlined";
 import loadable from "@loadable/component";
 
@@ -18,25 +19,28 @@ import plugins from "./plugins";
 import { get as getLocale, messages as getMessages } from "./locales";
 import NotFound from "./404";
 import reportWebVitals from "./reportWebVitals";
+import store from "./store";
 
 const lang = getLocale();
 const messages = getMessages(lang);
 
 ReactDOM.render(
   <React.StrictMode>
-    <IntlProvider messages={messages} locale={lang}>
-      <BrowserRouter basename="/my/">
-        <Routes>
-          {plugins.routes.map((it) => {
-            const W = loadable(it.component, {
-              fallback: <CachedOutlinedIcon />,
-            });
-            return <Route key={it.path} path={it.path} element={<W />} />;
-          })}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </IntlProvider>
+    <Provider store={store}>
+      <IntlProvider messages={messages} locale={lang}>
+        <BrowserRouter basename="/my/">
+          <Routes>
+            {plugins.routes.map((it) => {
+              const W = loadable(it.component, {
+                fallback: <CachedOutlinedIcon />,
+              });
+              return <Route key={it.path} path={it.path} element={<W />} />;
+            })}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </IntlProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -19,8 +19,8 @@ set -e
 #     js-cookie jwt-decode dinero.js@alpha video.js
 
 
-yarn add react-intl react-router-dom@6 \
-    react-redux @types/react-redux \
+yarn add react-intl \
+    react-router-dom@6 @reduxjs/toolkit react-redux @types/react-redux \
     @mui/material @emotion/react @emotion/styled \
     @mui/icons-material material-design-icons @fontsource/roboto \
     @loadable/component @types/loadable__component \
