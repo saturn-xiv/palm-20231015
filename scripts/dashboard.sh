@@ -21,6 +21,7 @@ set -e
 
 yarn add react-intl \
     react-router-dom@6 @reduxjs/toolkit react-redux @types/react-redux \
+    react-helmet-async \
     @mui/material @emotion/react @emotion/styled \
     @mui/icons-material material-design-icons @fontsource/roboto \
     @loadable/component @types/loadable__component \

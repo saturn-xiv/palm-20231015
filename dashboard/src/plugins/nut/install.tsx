@@ -1,19 +1,20 @@
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
-import Layout from "../../layouts/application";
+import Layout from "./users/NonSignInLayout";
+import { useIntl } from "react-intl";
 
 const Widget = () => {
   const handleSubmit = (data: FormData) => {
+    // TODO
     console.log(data.get("email"));
   };
+  const intl = useIntl();
   return (
     <Layout
       logo={<LockOutlinedIcon />}
-      title="Sign Up1"
+      title={intl.formatMessage({ id: "nut.install.title" })}
       handleSubmit={handleSubmit}
     >
       <Grid item xs={12}>
@@ -21,9 +22,8 @@ const Widget = () => {
           required
           fullWidth
           id="realName"
-          label="Last Name"
+          label={intl.formatMessage({ id: "fields.real-name" })}
           name="lastName"
-          autoComplete="family-name"
         />
       </Grid>
       <Grid item xs={12}>
@@ -31,9 +31,8 @@ const Widget = () => {
           required
           fullWidth
           id="email"
-          label="Email Address"
+          label={intl.formatMessage({ id: "fields.email" })}
           name="email"
-          autoComplete="email"
         />
       </Grid>
       <Grid item xs={12}>
@@ -41,16 +40,19 @@ const Widget = () => {
           required
           fullWidth
           name="password"
-          label="Password"
+          label={intl.formatMessage({ id: "fields.password" })}
           type="password"
           id="password"
-          autoComplete="new-password"
         />
       </Grid>
       <Grid item xs={12}>
-        <FormControlLabel
-          control={<Checkbox value="allowExtraEmails" color="primary" />}
-          label="I want to receive inspiration, marketing promotions and updates via email."
+        <TextField
+          required
+          fullWidth
+          name="passwordConfirmation"
+          label={intl.formatMessage({ id: "fields.password-confirmation" })}
+          type="password"
+          id="passwordConfirmation"
         />
       </Grid>
     </Layout>
