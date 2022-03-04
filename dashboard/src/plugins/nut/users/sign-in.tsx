@@ -2,11 +2,7 @@ import Layout from "../../../layouts/application";
 
 function Widget() {
   // TODO
-  return (
-    <Layout title="sign in">
-      <div>sign in</div>
-    </Layout>
-  );
+  return <div>sign in</div>;
 }
 
 export default Widget;
