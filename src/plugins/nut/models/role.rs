@@ -3,6 +3,7 @@ use std::ops::Add;
 use chrono::{Duration, NaiveDate, NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
 use serde::Serialize;
+use uuid::Uuid;
 
 use super::super::super::super::{orm::Connection, Result};
 use super::super::schema::{roles, roles_items};
@@ -10,10 +11,9 @@ use super::super::schema::{roles, roles_items};
 #[derive(Queryable, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
-    pub id: i32,
+    pub id: Uuid,
     pub code: String,
-    pub name: String,
-    pub parent_id: Option<i32>,
+    pub parent_id: Option<Uuid>,
     pub version: i32,
     pub created_at: NaiveDateTime,
     pub updated_at: NaiveDateTime,
@@ -32,22 +32,22 @@ impl Item {
 
 pub trait Dao {
     fn all(&self) -> Result<Vec<Item>>;
-    fn by_id(&self, id: i32) -> Result<Item>;
+    fn by_id(&self, id: Uuid) -> Result<Item>;
     fn by_code(&self, code: &str) -> Result<Item>;
-    fn create(&self, parent: Option<i32>, code: &str, name: &str) -> Result<()>;
-    fn update(&self, id: i32, parent: Option<i32>, code: &str, name: &str) -> Result<()>;
-    fn has_children(&self, id: i32) -> Result<bool>;
-    fn destroy(&self, id: i32) -> Result<()>;
+    fn create(&self, parent: Option<Uuid>, code: &str) -> Result<()>;
+    fn update(&self, id: Uuid, parent: Option<Uuid>, code: &str) -> Result<()>;
+    fn has_children(&self, id: Uuid) -> Result<bool>;
+    fn destroy(&self, id: Uuid) -> Result<()>;
     fn associate(
         &self,
-        role: i32,
+        role: Uuid,
         target_type: &str,
-        target_id: i32,
+        target_id: Uuid,
         not_before: &NaiveDate,
         expire_at: &NaiveDate,
     ) -> Result<()>;
-    fn unassociate(&self, role: i32, target_type: &str, target_id: i32) -> Result<()>;
-    fn has(&self, role: i32, target_type: &str, target_id: i32) -> bool;
+    fn unassociate(&self, role: Uuid, target_type: &str, target_id: Uuid) -> Result<()>;
+    fn has(&self, role: Uuid, target_type: &str, target_id: Uuid) -> bool;
 }
 
 impl Dao for Connection {
@@ -57,7 +57,7 @@ impl Dao for Connection {
             .load::<Item>(self)?;
         Ok(items)
     }
-    fn by_id(&self, id: i32) -> Result<Item> {
+    fn by_id(&self, id: Uuid) -> Result<Item> {
         let it = roles::dsl::roles
             .filter(roles::dsl::id.eq(id))
             .first::<Item>(self)?;
@@ -69,12 +69,11 @@ impl Dao for Connection {
             .first::<Item>(self)?;
         Ok(it)
     }
-    fn create(&self, parent: Option<i32>, code: &str, name: &str) -> Result<()> {
+    fn create(&self, parent: Option<Uuid>, code: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
         insert_into(roles::dsl::roles)
             .values((
                 roles::dsl::code.eq(code),
-                roles::dsl::name.eq(name),
                 roles::dsl::parent_id.eq(parent),
                 roles::dsl::updated_at.eq(&now),
             ))
@@ -82,13 +81,12 @@ impl Dao for Connection {
 
         Ok(())
     }
-    fn update(&self, id: i32, parent: Option<i32>, code: &str, name: &str) -> Result<()> {
+    fn update(&self, id: Uuid, parent: Option<Uuid>, code: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
         let it = roles::dsl::roles.filter(roles::dsl::id.eq(id));
         update(it)
             .set((
                 roles::dsl::code.eq(code),
-                roles::dsl::name.eq(name),
                 roles::dsl::parent_id.eq(parent),
                 roles::dsl::updated_at.eq(&now),
             ))
@@ -96,14 +94,14 @@ impl Dao for Connection {
 
         Ok(())
     }
-    fn has_children(&self, id: i32) -> Result<bool> {
+    fn has_children(&self, id: Uuid) -> Result<bool> {
         let c: i64 = roles::dsl::roles
             .filter(roles::dsl::parent_id.eq(id))
             .count()
             .get_result(self)?;
         Ok(c > 0)
     }
-    fn destroy(&self, id: i32) -> Result<()> {
+    fn destroy(&self, id: Uuid) -> Result<()> {
         delete(roles_items::dsl::roles_items.filter(roles_items::dsl::role_id.eq(id)))
             .execute(self)?;
         delete(roles::dsl::roles.filter(roles::dsl::parent_id.eq(id))).execute(self)?;
@@ -112,9 +110,9 @@ impl Dao for Connection {
     }
     fn associate(
         &self,
-        role: i32,
+        role: Uuid,
         target_type: &str,
-        target_id: i32,
+        target_id: Uuid,
         not_before: &NaiveDate,
         expire_at: &NaiveDate,
     ) -> Result<()> {
@@ -146,7 +144,7 @@ impl Dao for Connection {
         }
         Ok(())
     }
-    fn unassociate(&self, role: i32, target_type: &str, target_id: i32) -> Result<()> {
+    fn unassociate(&self, role: Uuid, target_type: &str, target_id: Uuid) -> Result<()> {
         delete(
             roles_items::dsl::roles_items
                 .filter(roles_items::dsl::role_id.eq(role))
@@ -156,7 +154,7 @@ impl Dao for Connection {
         .execute(self)?;
         Ok(())
     }
-    fn has(&self, role: i32, target_type: &str, target_id: i32) -> bool {
+    fn has(&self, role: Uuid, target_type: &str, target_id: Uuid) -> bool {
         if let Ok((nbf, exp)) = roles_items::dsl::roles_items
             .select((roles_items::dsl::not_before, roles_items::dsl::expire_at))
             .filter(roles_items::dsl::role_id.eq(role))

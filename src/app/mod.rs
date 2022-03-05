@@ -1,7 +1,6 @@
 pub mod generate;
-pub mod graphql;
-pub mod rpc;
-pub mod web;
+// pub mod graphql;
+// pub mod web;
 pub mod worker;
 
 use std::fs::File;
@@ -60,8 +59,6 @@ pub enum SubCommand {
     Web,
     #[clap(about = "Worker process")]
     Worker(Worker),
-    #[clap(about = "gRPC Server")]
-    Rpc,
 }
 
 #[derive(clap::Parser, PartialEq, Eq, Debug)]
@@ -183,10 +180,8 @@ pub async fn launch() -> Result<()> {
     }
 
     if args.command == SubCommand::Web {
-        return web::launch(&cfg).await;
-    }
-    if args.command == SubCommand::Rpc {
-        return rpc::launch(&cfg);
+        //    TODO
+        // return web::launch(&cfg).await;
     }
     if let SubCommand::Worker(it) = args.command {
         worker::launch(&cfg, &it.queue).await?;

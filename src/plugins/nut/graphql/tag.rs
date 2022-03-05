@@ -2,19 +2,15 @@ use std::convert::From;
 use std::ops::Deref;
 
 use juniper::{GraphQLInputObject, GraphQLObject};
+use uuid::Uuid;
 use validator::Validate;
 
 use super::super::super::super::Result;
-use super::super::models::{
-    tag::{Dao as TagDao, Item as TagItem},
-    Color, Font, Icon,
-};
+use super::super::models::tag::{Dao as TagDao, Item as TagItem};
 use super::Context;
 
 #[derive(Validate, GraphQLInputObject)]
 pub struct TagRequest {
-    #[validate(length(min = 1))]
-    pub name: String,
     #[validate(length(min = 1))]
     pub code: String,
 }
@@ -27,47 +23,30 @@ impl TagRequest {
         let jwt = ctx.jwt.deref();
         ctx.token.administrator(db, jwt)?;
 
-        TagDao::create(
-            db,
-            &self.code,
-            &self.name,
-            &Font::default(),
-            &Icon::default(),
-            &Color::default(),
-        )?;
+        TagDao::create(db, &self.code)?;
         Ok(())
     }
-    pub fn update(&self, ctx: &Context, id: i32) -> Result<()> {
+    pub fn update(&self, ctx: &Context, id: Uuid) -> Result<()> {
         self.validate()?;
         let db = ctx.db.get()?;
         let db = db.deref();
         let jwt = ctx.jwt.deref();
         ctx.token.administrator(db, jwt)?;
-        TagDao::update(
-            db,
-            id,
-            &self.code,
-            &self.name,
-            &Font::default(),
-            &Icon::default(),
-            &Color::default(),
-        )?;
+        TagDao::update(db, id, &self.code)?;
         Ok(())
     }
 }
 
 #[derive(GraphQLObject)]
 pub struct Tag {
-    pub id: i32,
+    pub id: Uuid,
     pub code: String,
-    pub name: String,
 }
 
 impl From<TagItem> for Tag {
     fn from(it: TagItem) -> Self {
         Self {
             code: it.code.clone(),
-            name: it.name.clone(),
             id: it.id,
         }
     }
@@ -83,7 +62,7 @@ pub fn index(ctx: &Context) -> Result<Vec<Tag>> {
     Ok(items)
 }
 
-pub fn destroy(ctx: &Context, id: i32) -> Result<()> {
+pub fn destroy(ctx: &Context, id: Uuid) -> Result<()> {
     let db = ctx.db.get()?;
     let db = db.deref();
     let jwt = ctx.jwt.deref();
@@ -92,7 +71,7 @@ pub fn destroy(ctx: &Context, id: i32) -> Result<()> {
     Ok(items)
 }
 
-pub fn show(ctx: &Context, id: i32) -> Result<Tag> {
+pub fn show(ctx: &Context, id: Uuid) -> Result<Tag> {
     let db = ctx.db.get()?;
     let db = db.deref();
     let it = TagDao::by_id(db, id)?;

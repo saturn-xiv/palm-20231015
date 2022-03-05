@@ -65,8 +65,8 @@ impl Address {
 pub trait Dao {
     fn by_resource(&self, rescource: &Resource) -> Result<Vec<Item>>;
     fn create(&self, resource: &Resource, address: &Address) -> Result<()>;
-    fn update(&self, user: &Uuid, address: &Address) -> Result<()>;
-    fn destroy(&self, user: &Uuid) -> Result<()>;
+    fn update(&self, id: Uuid, address: &Address) -> Result<()>;
+    fn destroy(&self, id: Uuid) -> Result<()>;
 }
 
 impl Dao for Connection {
@@ -94,7 +94,7 @@ impl Dao for Connection {
             .execute(self)?;
         Ok(())
     }
-    fn update(&self, user: &Uuid, address: &Address) -> Result<()> {
+    fn update(&self, id: Uuid, address: &Address) -> Result<()> {
         let now = Utc::now().naive_utc();
         let filter = addresses::dsl::addresses.filter(addresses::dsl::id.eq(id));
         update(filter)
@@ -109,7 +109,7 @@ impl Dao for Connection {
             .execute(self)?;
         Ok(())
     }
-    fn destroy(&self, user: &Uuid) -> Result<()> {
+    fn destroy(&self, id: Uuid) -> Result<()> {
         delete(addresses::dsl::addresses.filter(addresses::dsl::id.eq(id))).execute(self)?;
         Ok(())
     }

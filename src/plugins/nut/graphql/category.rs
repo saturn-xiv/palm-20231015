@@ -2,18 +2,16 @@ use std::convert::From;
 use std::ops::Deref;
 
 use juniper::{GraphQLInputObject, GraphQLObject};
+use uuid::Uuid;
 use validator::Validate;
 
 use super::super::super::super::Result;
-use super::super::models::{
-    category::{Dao as CategoryDao, Item as CategoryItem},
-    Color, Font, Icon,
-};
+use super::super::models::category::{Dao as CategoryDao, Item as CategoryItem};
 use super::Context;
 
 #[derive(Validate, GraphQLInputObject)]
 pub struct CategoryRequest {
-    pub parent: Option<i32>,
+    pub parent: Option<Uuid>,
     #[validate(length(min = 1))]
     pub name: String,
     #[validate(length(min = 1))]
@@ -29,45 +27,25 @@ impl CategoryRequest {
         let jwt = ctx.jwt.deref();
         ctx.token.administrator(db, jwt)?;
 
-        CategoryDao::create(
-            db,
-            self.parent,
-            &self.code,
-            &self.name,
-            &Font::default(),
-            &Icon::default(),
-            &Color::default(),
-            self.order,
-        )?;
+        CategoryDao::create(db, self.parent, &self.code, self.order)?;
         Ok(())
     }
-    pub fn update(&self, ctx: &Context, id: i32) -> Result<()> {
+    pub fn update(&self, ctx: &Context, id: Uuid) -> Result<()> {
         self.validate()?;
         let db = ctx.db.get()?;
         let db = db.deref();
         let jwt = ctx.jwt.deref();
         ctx.token.administrator(db, jwt)?;
-        CategoryDao::update(
-            db,
-            id,
-            self.parent,
-            &self.code,
-            &self.name,
-            &Font::default(),
-            &Icon::default(),
-            &Color::default(),
-            self.order,
-        )?;
+        CategoryDao::update(db, id, self.parent, &self.code, self.order)?;
         Ok(())
     }
 }
 
 #[derive(GraphQLObject)]
 pub struct Category {
-    pub parent_id: Option<i32>,
-    pub id: i32,
+    pub parent_id: Option<Uuid>,
+    pub id: Uuid,
     pub code: String,
-    pub name: String,
     pub order: i32,
 }
 
@@ -76,7 +54,6 @@ impl From<CategoryItem> for Category {
         Self {
             parent_id: it.parent_id,
             code: it.code.clone(),
-            name: it.name.clone(),
             id: it.id,
             order: it.order,
         }
@@ -93,7 +70,7 @@ pub fn index(ctx: &Context) -> Result<Vec<Category>> {
     Ok(items)
 }
 
-pub fn destroy(ctx: &Context, id: i32) -> Result<()> {
+pub fn destroy(ctx: &Context, id: Uuid) -> Result<()> {
     let db = ctx.db.get()?;
     let db = db.deref();
     let jwt = ctx.jwt.deref();
@@ -102,7 +79,7 @@ pub fn destroy(ctx: &Context, id: i32) -> Result<()> {
     Ok(items)
 }
 
-pub fn show(ctx: &Context, id: i32) -> Result<Category> {
+pub fn show(ctx: &Context, id: Uuid) -> Result<Category> {
     let db = ctx.db.get()?;
     let db = db.deref();
     let it = CategoryDao::by_id(db, id)?;

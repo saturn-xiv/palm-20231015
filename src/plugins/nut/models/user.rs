@@ -30,7 +30,7 @@ pub enum Action {
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Token {
-    pub aud: String,
+    pub aud: Uuid,
     pub act: Action,
     pub nbf: i64,
     pub exp: i64,
@@ -59,29 +59,21 @@ impl fmt::Display for Type {
     }
 }
 
-#[derive(Serialize, Deserialize)]
-pub enum Profile {
-    V20220207,
-}
-
 #[derive(Queryable, Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
-    pub id: i32,
+    pub id: Uuid,
     pub real_name: String,
     pub nick_name: String,
     pub email: String,
     pub password: Option<Vec<u8>>,
     pub salt: Vec<u8>,
-    pub uid: String,
     pub provider_type: String,
     pub provider_id: String,
     pub access_token: Option<String>,
     pub logo: String,
     pub lang: String,
     pub time_zone: String,
-    pub address: Option<String>,
-    pub profile: Vec<u8>,
     pub sign_in_count: i32,
     pub current_sign_in_at: Option<NaiveDateTime>,
     pub current_sign_in_ip: Option<String>,
@@ -162,10 +154,8 @@ pub struct New<'a> {
     pub email: &'a str,
     pub password: Option<&'a [u8]>,
     pub salt: &'a [u8],
-    pub uid: &'a str,
     pub provider_type: &'a str,
     pub provider_id: &'a str,
-    pub profile: &'a [u8],
     pub logo: &'a str,
     pub lang: &'a str,
     pub time_zone: &'a str,
@@ -177,19 +167,18 @@ impl<'a> New<'a> {
 }
 
 pub trait Dao {
-    fn by_id(&self, id: i32) -> Result<Item>;
-    fn by_uid(&self, uid: &str) -> Result<Item>;
+    fn by_id(&self, id: Uuid) -> Result<Item>;
     fn by_email(&self, email: &str) -> Result<Item>;
     fn by_nick_name(&self, nick_name: &str) -> Result<Item>;
     fn set_profile(
         &self,
-        id: i32,
+        id: Uuid,
         real_name: &str,
         logo: &str,
         lang: &LanguageTag,
         time_zone: &Tz,
     ) -> Result<()>;
-    fn sign_in(&self, id: i32, ip: &str) -> Result<()>;
+    fn sign_in(&self, id: Uuid, ip: &str) -> Result<()>;
     fn google(&self, access_token: &str, token: &IdToken, ip: &str) -> Result<Item>;
     fn sign_up<P: Password>(
         &self,
@@ -201,24 +190,17 @@ pub trait Dao {
         lang: &LanguageTag,
         time_zone: &Tz,
     ) -> Result<()>;
-    fn lock(&self, id: i32, on: bool) -> Result<()>;
-    fn confirm(&self, id: i32) -> Result<()>;
+    fn lock(&self, id: Uuid, on: bool) -> Result<()>;
+    fn confirm(&self, id: Uuid) -> Result<()>;
     fn count(&self) -> Result<i64>;
     fn all(&self) -> Result<Vec<Item>>;
-    fn password<P: Password>(&self, enc: &P, id: i32, password: &str) -> Result<()>;
+    fn password<P: Password>(&self, enc: &P, id: Uuid, password: &str) -> Result<()>;
 }
 
 impl Dao for Connection {
-    fn by_id(&self, id: i32) -> Result<Item> {
+    fn by_id(&self, id: Uuid) -> Result<Item> {
         let it = users::dsl::users
             .filter(users::dsl::id.eq(id))
-            .first(self)?;
-        Ok(it)
-    }
-
-    fn by_uid(&self, uid: &str) -> Result<Item> {
-        let it = users::dsl::users
-            .filter(users::dsl::uid.eq(uid))
             .first(self)?;
         Ok(it)
     }
@@ -267,7 +249,7 @@ impl Dao for Connection {
                     Some(ref v) => v.clone(),
                     None => format!("{}@gmail.com", id_token.sub),
                 };
-                let uid = Uuid::new_v4().to_string();
+
                 insert_into(users::dsl::users)
                     .values(&New {
                         real_name: &match id_token.name {
@@ -286,12 +268,10 @@ impl Dao for Connection {
                             Some(ref v) => v.clone(),
                             None => Item::gravatar_logo(&email)?,
                         },
-                        profile: &flexbuffers::to_vec(&Profile::V20220207)?,
-                        uid: &uid,
                         updated_at: &now,
                     })
                     .execute(self)?;
-                self.by_uid(&uid)?
+                self.by_email(&email)?
             }
         };
         update(users::dsl::users.filter(users::dsl::id.eq(it.id)))
@@ -302,7 +282,7 @@ impl Dao for Connection {
         self.by_id(it.id)
     }
 
-    fn sign_in(&self, id: i32, ip: &str) -> Result<()> {
+    fn sign_in(&self, id: Uuid, ip: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
         let (current_sign_in_at, current_sign_in_ip, sign_in_count) = users::dsl::users
             .select((
@@ -349,15 +329,13 @@ impl Dao for Connection {
                 logo: &Item::gravatar_logo(&email)?,
                 lang: &lang.to_string(),
                 time_zone: &time_zone.to_string(),
-                uid: &Uuid::new_v4().to_string(),
-                profile: &flexbuffers::to_vec(&Profile::V20220207)?,
                 updated_at: &Utc::now().naive_utc(),
             })
             .execute(self)?;
         Ok(())
     }
 
-    fn lock(&self, id: i32, on: bool) -> Result<()> {
+    fn lock(&self, id: Uuid, on: bool) -> Result<()> {
         let now = Utc::now().naive_utc();
         let it = users::dsl::users.filter(users::dsl::id.eq(id));
         update(it)
@@ -371,7 +349,7 @@ impl Dao for Connection {
 
     fn set_profile(
         &self,
-        id: i32,
+        id: Uuid,
         real_name: &str,
         logo: &str,
         lang: &LanguageTag,
@@ -391,7 +369,7 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn confirm(&self, id: i32) -> Result<()> {
+    fn confirm(&self, id: Uuid) -> Result<()> {
         let now = Utc::now().naive_utc();
         let it = users::dsl::users.filter(users::dsl::id.eq(id));
         update(it)
@@ -415,7 +393,7 @@ impl Dao for Connection {
         Ok(items)
     }
 
-    fn password<P: Password>(&self, enc: &P, id: i32, password: &str) -> Result<()> {
+    fn password<P: Password>(&self, enc: &P, id: Uuid, password: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
         let password = enc.sum(password.as_bytes())?;
         let it = users::dsl::users.filter(users::dsl::id.eq(id));

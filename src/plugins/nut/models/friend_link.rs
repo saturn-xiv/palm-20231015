@@ -1,6 +1,7 @@
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
 use serde::Serialize;
+use uuid::Uuid;
 
 use super::super::super::super::{orm::Connection, Result};
 use super::super::schema::friend_links;
@@ -8,7 +9,7 @@ use super::super::schema::friend_links;
 #[derive(Queryable, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
-    pub id: i32,
+    pub id: Uuid,
     pub title: String,
     pub home: String,
     pub logo: Option<String>,
@@ -19,22 +20,22 @@ pub struct Item {
 }
 
 pub trait Dao {
-    fn by_id(&self, id: i32) -> Result<Item>;
+    fn by_id(&self, id: Uuid) -> Result<Item>;
     fn create(&self, title: &str, home: &str, logo: Option<&str>, order: i32) -> Result<()>;
     fn update(
         &self,
-        id: i32,
+        id: Uuid,
         title: &str,
         home: &str,
         logo: Option<&str>,
         order: i32,
     ) -> Result<()>;
     fn all(&self) -> Result<Vec<Item>>;
-    fn delete(&self, id: i32) -> Result<()>;
+    fn delete(&self, id: Uuid) -> Result<()>;
 }
 
 impl Dao for Connection {
-    fn by_id(&self, id: i32) -> Result<Item> {
+    fn by_id(&self, id: Uuid) -> Result<Item> {
         let it = friend_links::dsl::friend_links
             .filter(friend_links::dsl::id.eq(id))
             .first::<Item>(self)?;
@@ -56,7 +57,7 @@ impl Dao for Connection {
 
     fn update(
         &self,
-        id: i32,
+        id: Uuid,
         title: &str,
         home: &str,
         logo: Option<&str>,
@@ -82,7 +83,7 @@ impl Dao for Connection {
         Ok(items)
     }
 
-    fn delete(&self, id: i32) -> Result<()> {
+    fn delete(&self, id: Uuid) -> Result<()> {
         delete(friend_links::dsl::friend_links.filter(friend_links::dsl::id.eq(id)))
             .execute(self)?;
         Ok(())

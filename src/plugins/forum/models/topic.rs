@@ -1,18 +1,17 @@
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
 use serde::Serialize;
-
-use crate::plugins::forum::schema::forum_posts;
+use uuid::Uuid;
 
 use super::super::super::super::{orm::Connection, Result};
 use super::super::super::nut::models::{Status, WYSIWYG};
-use super::super::schema::forum_topics;
+use super::super::schema::{forum_posts, forum_topics};
 
 #[derive(Queryable, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
-    pub id: i32,
-    pub user_id: i32,
+    pub id: Uuid,
+    pub user_id: Uuid,
     pub title: String,
     pub summary: String,
     pub body: String,
@@ -24,22 +23,22 @@ pub struct Item {
 }
 
 pub trait Dao {
-    fn by_id(&self, id: i32) -> Result<Item>;
-    fn create(&self, user: i32, title: &str, summary: &str, body: &WYSIWYG) -> Result<()>;
-    fn update(&self, id: i32, title: &str, summary: &str, body: &WYSIWYG) -> Result<()>;
+    fn by_id(&self, id: Uuid) -> Result<Item>;
+    fn create(&self, user: Uuid, title: &str, summary: &str, body: &WYSIWYG) -> Result<()>;
+    fn update(&self, id: Uuid, title: &str, summary: &str, body: &WYSIWYG) -> Result<()>;
     fn all(&self) -> Result<Vec<Item>>;
     fn count(&self) -> Result<i64>;
-    fn delete(&self, id: i32) -> Result<()>;
+    fn delete(&self, id: Uuid) -> Result<()>;
 }
 
 impl Dao for Connection {
-    fn by_id(&self, id: i32) -> Result<Item> {
+    fn by_id(&self, id: Uuid) -> Result<Item> {
         let it = forum_topics::dsl::forum_topics
             .filter(forum_topics::dsl::id.eq(id))
             .first::<Item>(self)?;
         Ok(it)
     }
-    fn create(&self, user: i32, title: &str, summary: &str, body: &WYSIWYG) -> Result<()> {
+    fn create(&self, user: Uuid, title: &str, summary: &str, body: &WYSIWYG) -> Result<()> {
         let now = Utc::now().naive_utc();
         insert_into(forum_topics::dsl::forum_topics)
             .values((
@@ -55,7 +54,7 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn update(&self, id: i32, title: &str, summary: &str, body: &WYSIWYG) -> Result<()> {
+    fn update(&self, id: Uuid, title: &str, summary: &str, body: &WYSIWYG) -> Result<()> {
         let now = Utc::now().naive_utc();
         update(forum_topics::dsl::forum_topics.filter(forum_topics::dsl::id.eq(id)))
             .set((
@@ -81,7 +80,7 @@ impl Dao for Connection {
         Ok(cnt)
     }
 
-    fn delete(&self, id: i32) -> Result<()> {
+    fn delete(&self, id: Uuid) -> Result<()> {
         delete(forum_posts::dsl::forum_posts.filter(forum_posts::dsl::topic_id.eq(id)))
             .execute(self)?;
         delete(forum_topics::dsl::forum_topics.filter(forum_topics::dsl::id.eq(id)))

@@ -40,13 +40,13 @@ pub trait Dao {
         &self,
         e: &E,
         key: &K,
-        u: &Option<Uuid>,
+        u: Option<Uuid>,
     ) -> Result<V>;
     fn set<K: Display, V: Serialize, E: Secret>(
         &self,
         e: &E,
         k: &K,
-        u: &Option<Uuid>,
+        u: Option<Uuid>,
         v: &V,
         f: bool,
     ) -> Result<()>;
@@ -57,7 +57,7 @@ impl Dao for Connection {
         &self,
         e: &E,
         k: &K,
-        u: &Option<Uuid>,
+        u: Option<Uuid>,
     ) -> Result<V> {
         let k = k.to_string();
 
@@ -83,7 +83,7 @@ impl Dao for Connection {
         &self,
         e: &E,
         k: &K,
-        u: &Option<Uuid>,
+        u: Option<Uuid>,
         v: &V,
         f: bool,
     ) -> Result<()> {
@@ -113,37 +113,27 @@ impl Dao for Connection {
         match it {
             Ok(it) => {
                 let it = settings::dsl::settings.filter(settings::dsl::id.eq(&it.id));
+
                 update(it)
                     .set((
+                        settings::dsl::value.eq(&val),
+                        settings::dsl::user_id.eq(u),
+                        settings::dsl::salt.eq(&salt),
+                        settings::dsl::updated_at.eq(&now),
+                    ))
+                    .execute(self)?;
+            }
+            Err(_) => {
+                insert_into(settings::dsl::settings)
+                    .values((
+                        settings::dsl::key.eq(&k),
+                        settings::dsl::user_id.eq(u),
                         settings::dsl::value.eq(&val),
                         settings::dsl::salt.eq(&salt),
                         settings::dsl::updated_at.eq(&now),
                     ))
                     .execute(self)?;
             }
-            Err(_) => match u {
-                Some(ref u) => {
-                    insert_into(settings::dsl::settings)
-                        .values((
-                            settings::dsl::key.eq(&k),
-                            settings::dsl::user_id.eq(u),
-                            settings::dsl::value.eq(&val),
-                            settings::dsl::salt.eq(&salt),
-                            settings::dsl::updated_at.eq(&now),
-                        ))
-                        .execute(self)?;
-                }
-                None => {
-                    insert_into(settings::dsl::settings)
-                        .values((
-                            settings::dsl::key.eq(&k),
-                            settings::dsl::value.eq(&val),
-                            settings::dsl::salt.eq(&salt),
-                            settings::dsl::updated_at.eq(&now),
-                        ))
-                        .execute(self)?;
-                }
-            },
         };
         Ok(())
     }

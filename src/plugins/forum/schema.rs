@@ -3,6 +3,7 @@ table! {
         id -> Uuid,
         user_id -> Uuid,
         topic_id -> Uuid,
+        parent_id -> Nullable<Uuid>,
         body -> Text,
         body_editor -> Varchar,
         status -> Varchar,
@@ -27,7 +28,4 @@ table! {
     }
 }
 
-allow_tables_to_appear_in_same_query!(
-    forum_posts,
-    forum_topics,
-);
+allow_tables_to_appear_in_same_query!(forum_posts, forum_topics,);

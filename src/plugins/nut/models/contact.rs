@@ -2,6 +2,7 @@ use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
 use juniper::GraphQLInputObject;
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 
 use super::super::super::super::{orm::Connection, Result};
 use super::super::schema::contacts;
@@ -10,11 +11,10 @@ use super::Resource;
 #[derive(Queryable, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
-    pub id: i32,
+    pub id: Uuid,
     pub resource_type: String,
-    pub resouce_id: i32,
+    pub resouce_id: Uuid,
     pub code: String,
-    pub name: String,
     pub value: String,
     pub version: i32,
     pub created_at: NaiveDateTime,
@@ -24,7 +24,6 @@ pub struct Item {
 #[derive(Serialize, Deserialize, GraphQLInputObject)]
 pub struct Property {
     pub code: String,
-    pub name: String,
     pub value: String,
 }
 
@@ -32,7 +31,7 @@ pub trait Dao {
     fn by_resource(&self, rescource: &Resource) -> Result<Vec<Item>>;
     fn codes(&self) -> Result<Vec<String>>;
     fn save(&self, resource: &Resource, property: &Property) -> Result<()>;
-    fn destroy(&self, id: i32) -> Result<()>;
+    fn destroy(&self, id: Uuid) -> Result<()>;
 }
 
 impl Dao for Connection {
@@ -62,7 +61,6 @@ impl Dao for Connection {
                 let filter = contacts::dsl::contacts.filter(contacts::dsl::id.eq(it.id));
                 update(filter)
                     .set((
-                        contacts::dsl::name.eq(&property.name),
                         contacts::dsl::value.eq(&property.value),
                         contacts::dsl::updated_at.eq(&now),
                     ))
@@ -74,7 +72,6 @@ impl Dao for Connection {
                         contacts::dsl::resource_type.eq(&resource.type_),
                         contacts::dsl::resource_id.eq(&resource.id),
                         contacts::dsl::code.eq(&property.code),
-                        contacts::dsl::name.eq(&property.name),
                         contacts::dsl::value.eq(&property.value),
                         contacts::dsl::updated_at.eq(&now),
                     ))
@@ -84,7 +81,7 @@ impl Dao for Connection {
 
         Ok(())
     }
-    fn destroy(&self, id: i32) -> Result<()> {
+    fn destroy(&self, id: Uuid) -> Result<()> {
         delete(contacts::dsl::contacts.filter(contacts::dsl::id.eq(id))).execute(self)?;
         Ok(())
     }

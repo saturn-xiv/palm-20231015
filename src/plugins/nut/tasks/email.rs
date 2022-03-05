@@ -28,6 +28,10 @@ pub struct Handler {
     pub pretend: bool,
 }
 
+impl Handler {
+    pub const KEY: &'static str = "smtp";
+}
+
 impl Default for Handler {
     fn default() -> Self {
         Self {

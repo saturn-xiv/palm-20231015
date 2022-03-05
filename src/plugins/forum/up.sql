@@ -16,6 +16,7 @@ CREATE TABLE forum_posts(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID NOT NULL,
     topic_id UUID NOT NULL,
+    parent_id UUID,
     body TEXT NOT NULL,
     body_editor VARCHAR(32) NOT NULL,
     "status" VARCHAR(255) NOT NULL,

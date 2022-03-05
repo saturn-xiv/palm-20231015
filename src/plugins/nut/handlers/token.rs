@@ -49,7 +49,7 @@ impl Token {
             let token = jwt.parse::<UserToken>(token)?;
             let token = token.claims;
             if token.act == Action::SignIn {
-                let user = UserDao::by_uid(db, &token.aud)?;
+                let user = UserDao::by_id(db, token.aud)?;
                 user.available()?;
                 return Ok(user);
             }

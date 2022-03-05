@@ -1,6 +1,7 @@
 use std::ops::Deref;
 
 use juniper::GraphQLInputObject;
+use uuid::Uuid;
 use validator::Validate;
 
 use super::super::super::super::Result;
@@ -44,7 +45,7 @@ pub fn index(ctx: &Context, limit: i32) -> Result<Vec<LeaveWord>> {
     Ok(items)
 }
 
-pub fn destroy(ctx: &Context, id: i32) -> Result<()> {
+pub fn destroy(ctx: &Context, id: Uuid) -> Result<()> {
     let db = ctx.db.get()?;
     let db = db.deref();
     let jwt = ctx.jwt.deref();

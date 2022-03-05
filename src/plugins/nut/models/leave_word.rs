@@ -2,6 +2,7 @@ use chrono::NaiveDateTime;
 use diesel::{delete, insert_into, prelude::*};
 use juniper::GraphQLObject;
 use serde::Serialize;
+use uuid::Uuid;
 
 use super::super::super::super::{orm::Connection, Result};
 use super::super::schema::leave_words;
@@ -10,7 +11,7 @@ use super::WYSIWYG;
 #[derive(Queryable, GraphQLObject, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
-    pub id: i32,
+    pub id: Uuid,
     pub ip: String,
     pub body: String,
     pub body_editor: String,
@@ -20,7 +21,7 @@ pub struct Item {
 pub trait Dao {
     fn add(&self, ip: &str, body: &WYSIWYG) -> Result<()>;
     fn all(&self, limit: i64) -> Result<Vec<Item>>;
-    fn delete(&self, id: i32) -> Result<()>;
+    fn delete(&self, id: Uuid) -> Result<()>;
 }
 
 impl Dao for Connection {
@@ -43,7 +44,7 @@ impl Dao for Connection {
         Ok(items)
     }
 
-    fn delete(&self, id: i32) -> Result<()> {
+    fn delete(&self, id: Uuid) -> Result<()> {
         delete(leave_words::dsl::leave_words.filter(leave_words::dsl::id.eq(id))).execute(self)?;
         Ok(())
     }

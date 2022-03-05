@@ -6,6 +6,7 @@ use chrono::NaiveDateTime;
 use diesel::prelude::*;
 use hyper::StatusCode;
 use juniper::{GraphQLInputObject, GraphQLObject};
+use uuid::Uuid;
 use validator::Validate;
 
 use super::super::super::super::{orm::Connection as Db, HttpError, Result};
@@ -27,7 +28,7 @@ pub struct ForumPostRequest {
 }
 
 impl ForumPostRequest {
-    pub fn create(&self, ctx: &Context, topic: i32) -> Result<()> {
+    pub fn create(&self, ctx: &Context, topic: Uuid, parent: Option<Uuid>) -> Result<()> {
         self.validate()?;
         let db = ctx.db.get()?;
         let db = db.deref();
@@ -37,6 +38,7 @@ impl ForumPostRequest {
             db,
             user.id,
             topic,
+            parent,
             &WYSIWYG {
                 content: self.body.clone(),
                 editor: self.body_editor.parse()?,
@@ -44,7 +46,7 @@ impl ForumPostRequest {
         )?;
         Ok(())
     }
-    pub fn update(&self, ctx: &Context, id: i32) -> Result<()> {
+    pub fn update(&self, ctx: &Context, id: Uuid) -> Result<()> {
         self.validate()?;
         let db = ctx.db.get()?;
         let db = db.deref();
@@ -67,7 +69,7 @@ impl ForumPostRequest {
 
 #[derive(GraphQLObject)]
 pub struct ForumPost {
-    pub id: i32,
+    pub id: Uuid,
     pub body: String,
     pub body_editor: String,
     pub author: Author,
@@ -75,10 +77,10 @@ pub struct ForumPost {
 }
 
 impl ForumPost {
-    pub fn new(db: &Db, id: i32) -> Result<Self> {
+    pub fn new(db: &Db, id: Uuid) -> Result<Self> {
         let it = PostDao::by_id(db, id)?;
         Ok(Self {
-            id: it.id,
+            id,
             body: it.body.clone(),
             body_editor: it.body_editor.clone(),
             author: Author::new(db, it.user_id)?,
@@ -107,7 +109,7 @@ impl ForumPostList {
             .order(forum_posts::dsl::updated_at.desc())
             .offset(offset)
             .limit(limit)
-            .load::<i32>(db)?
+            .load::<Uuid>(db)?
         {
             let it = ForumPost::new(db, id)?;
             items.push(it);
@@ -116,7 +118,7 @@ impl ForumPostList {
     }
 }
 
-pub fn destroy(ctx: &Context, id: i32) -> Result<()> {
+pub fn destroy(ctx: &Context, id: Uuid) -> Result<()> {
     let db = ctx.db.get()?;
     let db = db.deref();
     let jwt = ctx.jwt.deref();
@@ -127,7 +129,7 @@ pub fn destroy(ctx: &Context, id: i32) -> Result<()> {
     Ok(())
 }
 
-pub fn show(ctx: &Context, id: i32) -> Result<ForumPost> {
+pub fn show(ctx: &Context, id: Uuid) -> Result<ForumPost> {
     let db = ctx.db.get()?;
     let db = db.deref();
     let it = ForumPost::new(db, id)?;

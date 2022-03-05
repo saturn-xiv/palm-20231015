@@ -2,11 +2,12 @@ use std::any::type_name;
 use std::ops::Deref;
 
 use chrono::Duration;
+use chrono::NaiveDateTime;
 use diesel::connection::Connection as DieselConnection;
 use hyper::StatusCode;
-use inflector::Inflector;
 use juniper::{GraphQLInputObject, GraphQLObject};
 use tokio::{runtime::Handle, task::block_in_place};
+use uuid::Uuid;
 use validator::Validate;
 
 use super::super::super::super::{
@@ -14,7 +15,7 @@ use super::super::super::super::{
 };
 use super::super::{
     models::{
-        log::{Dao as LogDao, Item as LogItem, Level},
+        log::{Dao as LogDao, Level},
         role::{Dao as RoleDao, Item as RoleItem},
         user::{Action, Dao as UserDao, Item as UserItem, Token},
         Resource,
@@ -31,7 +32,7 @@ pub struct Author {
 }
 
 impl Author {
-    pub fn new(db: &Db, user: i32) -> Result<Self> {
+    pub fn new(db: &Db, user: Uuid) -> Result<Self> {
         let it = UserDao::by_id(db, user)?;
         Ok(Self {
             real_name: it.real_name.clone(),
@@ -48,7 +49,7 @@ pub fn refresh_token(ctx: &Context) -> Result<UserSignInResponse> {
     let user = ctx.token.current_user(db, jwt)?;
     let (nbf, exp) = Jwt::timestamps(Duration::weeks(1));
     let token = Token {
-        aud: user.uid.clone(),
+        aud: user.id,
         act: Action::SignIn,
         exp,
         nbf,
@@ -102,7 +103,7 @@ impl UserSignInRequest {
 
         let (nbf, exp) = Jwt::timestamps(Duration::weeks(1));
         let token = Token {
-            aud: user.uid.clone(),
+            aud: user.id,
             act: Action::SignIn,
             exp,
             nbf,
@@ -234,7 +235,7 @@ impl UserSignUpRequest {
                 "confirmed.",
             )?;
             for role in [RoleItem::ADMINISTRATOR, RoleItem::ROOT] {
-                RoleDao::create(db, None, role, &role.to_title_case())?;
+                RoleDao::create(db, None, role)?;
                 let role = RoleDao::by_code(db, role)?;
                 let (nbf, exp) = RoleItem::timestamps(Duration::weeks(1 << 10));
                 RoleDao::associate(db, role.id, type_name::<UserItem>(), user.id, &nbf, &exp)?;
@@ -330,7 +331,7 @@ pub fn confirm_by_token(ctx: &Context, token: &str) -> Result<()> {
     }
     let db = ctx.db.get()?;
     let db = db.deref();
-    let user = UserDao::by_uid(db, &token.aud)?;
+    let user = UserDao::by_id(db, token.aud)?;
     if user.locked_at.is_none() {
         return Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)));
     }
@@ -364,7 +365,7 @@ pub fn unlock_by_token(ctx: &Context, token: &str) -> Result<()> {
     }
     let db = ctx.db.get()?;
     let db = db.deref();
-    let user = UserDao::by_uid(db, &token.aud)?;
+    let user = UserDao::by_id(db, token.aud)?;
     if user.locked_at.is_none() {
         return Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)));
     }
@@ -408,7 +409,7 @@ impl UserResetPasswordRequest {
         }
         let db = ctx.db.get()?;
         let db = db.deref();
-        let user = UserDao::by_uid(db, &token.aud)?;
+        let user = UserDao::by_id(db, token.aud)?;
         user.available()?;
         {
             let enc = ctx.hmac.deref();
@@ -525,8 +526,18 @@ impl UserChangePasswordRequest {
 
 #[derive(GraphQLObject)]
 pub struct UserLogList {
-    pub items: Vec<LogItem>,
+    pub items: Vec<UserLogItem>,
     pub pagination: Pagination,
+}
+
+#[derive(GraphQLObject)]
+pub struct UserLogItem {
+    pub level: String,
+    pub ip: String,
+    pub resource_type: String,
+    pub resource_id: Uuid,
+    pub message: String,
+    pub created_at: NaiveDateTime,
 }
 
 impl UserLogList {
@@ -538,7 +549,17 @@ impl UserLogList {
         let total = LogDao::count(db, user.id)?;
         let pagination = pager.build(total);
         let (offset, limit) = pagination.build();
-        let items = LogDao::all(db, user.id, offset, limit)?;
+        let items = LogDao::all(db, user.id, offset, limit)?
+            .iter()
+            .map(|it| UserLogItem {
+                level: it.level.clone(),
+                ip: it.ip.clone(),
+                resource_id: it.resource_id,
+                resource_type: it.resource_type.clone(),
+                message: it.message.clone(),
+                created_at: it.created_at,
+            })
+            .collect();
         Ok(Self { items, pagination })
     }
 }
@@ -566,7 +587,7 @@ pub fn sign_out(ctx: &Context) -> Result<()> {
 fn send_email(ctx: &Context, home: &str, user: &UserItem, act: &Action) -> Result<()> {
     let (nbf, exp) = Jwt::timestamps(Duration::hours(1));
     let token = Token {
-        aud: user.uid.clone(),
+        aud: user.id,
         act: act.clone(),
         nbf,
         exp,

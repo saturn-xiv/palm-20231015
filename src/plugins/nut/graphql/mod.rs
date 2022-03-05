@@ -159,15 +159,22 @@ impl Site {
                 db,
                 enc,
                 &Self::KEYWORDS.to_string(),
+                None,
             )
             .unwrap_or_default(),
-            author: SettingDao::get::<String, Author, Aes>(db, enc, &Self::AUTHOR.to_string())
-                .unwrap_or_default(),
+            author: SettingDao::get::<String, Author, Aes>(
+                db,
+                enc,
+                &Self::AUTHOR.to_string(),
+                None,
+            )
+            .unwrap_or_default(),
             description: I18n::t(db, &lang, Self::DESCRIPTION, &None::<String>),
             copyright: SettingDao::get::<String, String, Aes>(
                 db,
                 enc,
                 &Self::COPYRIGHT.to_string(),
+                None,
             )
             .unwrap_or_default(),
             locale: lang,

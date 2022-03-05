@@ -6,6 +6,7 @@ use chrono::NaiveDateTime;
 use diesel::prelude::*;
 use hyper::StatusCode;
 use juniper::{GraphQLInputObject, GraphQLObject};
+use uuid::Uuid;
 use validator::Validate;
 
 use super::super::super::super::{orm::Connection as Db, HttpError, Result};
@@ -29,7 +30,7 @@ pub struct ForumTopicRequest {
     #[validate(length(min = 1))]
     pub body_editor: String,
     // TODO
-    pub tags: Vec<i32>,
+    pub tags: Vec<Uuid>,
 }
 
 impl ForumTopicRequest {
@@ -51,7 +52,7 @@ impl ForumTopicRequest {
         )?;
         Ok(())
     }
-    pub fn update(&self, ctx: &Context, id: i32) -> Result<()> {
+    pub fn update(&self, ctx: &Context, id: Uuid) -> Result<()> {
         self.validate()?;
         let db = ctx.db.get()?;
         let db = db.deref();
@@ -76,7 +77,7 @@ impl ForumTopicRequest {
 
 #[derive(GraphQLObject)]
 pub struct ForumTopic {
-    pub id: i32,
+    pub id: Uuid,
     pub title: String,
     pub summary: String,
     pub body: String,
@@ -87,10 +88,10 @@ pub struct ForumTopic {
 }
 
 impl ForumTopic {
-    pub fn new(db: &Db, id: i32) -> Result<Self> {
+    pub fn new(db: &Db, id: Uuid) -> Result<Self> {
         let it = TopicDao::by_id(db, id)?;
         Ok(Self {
-            id: it.id,
+            id,
             title: it.title.clone(),
             summary: it.summary.clone(),
             body: it.body.clone(),
@@ -122,7 +123,7 @@ impl ForumTopicList {
             .order(forum_topics::dsl::updated_at.desc())
             .offset(offset)
             .limit(limit)
-            .load::<i32>(db)?
+            .load::<Uuid>(db)?
         {
             let it = ForumTopic::new(db, id)?;
             items.push(it);
@@ -131,7 +132,7 @@ impl ForumTopicList {
     }
 }
 
-pub fn destroy(ctx: &Context, id: i32) -> Result<()> {
+pub fn destroy(ctx: &Context, id: Uuid) -> Result<()> {
     let db = ctx.db.get()?;
     let db = db.deref();
     let jwt = ctx.jwt.deref();
@@ -142,7 +143,7 @@ pub fn destroy(ctx: &Context, id: i32) -> Result<()> {
     Ok(())
 }
 
-pub fn show(ctx: &Context, id: i32) -> Result<ForumTopic> {
+pub fn show(ctx: &Context, id: Uuid) -> Result<ForumTopic> {
     let db = ctx.db.get()?;
     let db = db.deref();
     let it = ForumTopic::new(db, id)?;

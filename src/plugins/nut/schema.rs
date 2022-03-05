@@ -2,7 +2,7 @@ table! {
     addresses (id) {
         id -> Uuid,
         resource_type -> Varchar,
-        resource_id -> Varchar,
+        resource_id -> Uuid,
         gate -> Nullable<Varchar>,
         unit -> Nullable<Varchar>,
         street -> Varchar,
@@ -21,7 +21,7 @@ table! {
         id -> Uuid,
         attachment_id -> Uuid,
         resource_type -> Varchar,
-        resource_id -> Varchar,
+        resource_id -> Uuid,
         created_at -> Timestamp,
     }
 }
@@ -58,7 +58,7 @@ table! {
         id -> Uuid,
         category_id -> Uuid,
         resource_type -> Varchar,
-        resource_id -> Varchar,
+        resource_id -> Uuid,
         created_at -> Timestamp,
     }
 }
@@ -67,7 +67,7 @@ table! {
     contacts (id) {
         id -> Uuid,
         resource_type -> Varchar,
-        resource_id -> Varchar,
+        resource_id -> Uuid,
         code -> Varchar,
         value -> Text,
         version -> Int4,
@@ -173,7 +173,7 @@ table! {
         user_id -> Uuid,
         point -> Int4,
         resource_type -> Varchar,
-        resource_id -> Varchar,
+        resource_id -> Uuid,
         body -> Text,
         body_editor -> Varchar,
         version -> Int4,
@@ -220,7 +220,7 @@ table! {
         id -> Uuid,
         role_id -> Uuid,
         target_type -> Varchar,
-        target_id -> Varchar,
+        target_id -> Uuid,
         not_before -> Date,
         expire_at -> Date,
         created_at -> Timestamp,
@@ -243,7 +243,7 @@ table! {
         id -> Uuid,
         tag_id -> Uuid,
         resource_type -> Varchar,
-        resource_id -> Varchar,
+        resource_id -> Uuid,
         created_at -> Timestamp,
     }
 }
@@ -262,7 +262,6 @@ table! {
         logo -> Varchar,
         lang -> Varchar,
         time_zone -> Varchar,
-        address -> Nullable<Varchar>,
         sign_in_count -> Int4,
         current_sign_in_at -> Nullable<Timestamp>,
         current_sign_in_ip -> Nullable<Varchar>,
@@ -281,7 +280,7 @@ table! {
     view_counters (id) {
         id -> Uuid,
         resource_type -> Varchar,
-        resource_id -> Varchar,
+        resource_id -> Uuid,
         point -> Int4,
         version -> Int4,
         created_at -> Timestamp,

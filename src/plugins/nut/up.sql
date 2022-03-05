@@ -11,7 +11,6 @@ CREATE TABLE users(
     logo VARCHAR(255) NOT NULL,
     lang VARCHAR(16) NOT NULL DEFAULT 'en-US',
     time_zone VARCHAR(32) NOT NULL DEFAULT 'UTC',
-    address VARCHAR(255),
     sign_in_count INTEGER NOT NULL DEFAULT 0,
     current_sign_in_at TIMESTAMP WITHOUT TIME ZONE,
     current_sign_in_ip VARCHAR(45),
