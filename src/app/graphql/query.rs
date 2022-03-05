@@ -1,4 +1,5 @@
 use juniper::{graphql_object, FieldResult};
+use uuid::Uuid;
 
 use super::super::super::{
     currency::Iso4217,
@@ -35,8 +36,8 @@ impl Query {
         Ok(it)
     }
     fn fetchLocaleByLang(ctx: &Context, lang: String) -> FieldResult<Vec<Locale>> {
-        let it = nut::graphql::locale::by_lang(ctx, &lang)?;
-        Ok(it)
+        let items = nut::graphql::locale::by_lang(ctx, &lang)?;
+        Ok(items)
     }
 
     fn siteInfo(ctx: &Context) -> FieldResult<nut::graphql::Site> {
@@ -56,7 +57,7 @@ impl Query {
         let items = nut::graphql::tag::index(ctx)?;
         Ok(items)
     }
-    fn showTag(ctx: &Context, id: i32) -> FieldResult<nut::graphql::tag::Tag> {
+    fn showTag(ctx: &Context, id: Uuid) -> FieldResult<nut::graphql::tag::Tag> {
         let it = nut::graphql::tag::show(ctx, id)?;
         Ok(it)
     }
@@ -65,7 +66,7 @@ impl Query {
         let items = nut::graphql::category::index(ctx)?;
         Ok(items)
     }
-    fn showCategory(ctx: &Context, id: i32) -> FieldResult<nut::graphql::category::Category> {
+    fn showCategory(ctx: &Context, id: Uuid) -> FieldResult<nut::graphql::category::Category> {
         let it = nut::graphql::category::show(ctx, id)?;
         Ok(it)
     }
@@ -77,7 +78,7 @@ impl Query {
         let it = forum::graphql::topic::ForumTopicList::latest(ctx, &pager)?;
         Ok(it)
     }
-    fn showForumTopic(ctx: &Context, id: i32) -> FieldResult<forum::graphql::topic::ForumTopic> {
+    fn showForumTopic(ctx: &Context, id: Uuid) -> FieldResult<forum::graphql::topic::ForumTopic> {
         let it = forum::graphql::topic::show(ctx, id)?;
         Ok(it)
     }
@@ -88,7 +89,7 @@ impl Query {
         let it = forum::graphql::post::ForumPostList::latest(ctx, &pager)?;
         Ok(it)
     }
-    fn showForumPost(ctx: &Context, id: i32) -> FieldResult<forum::graphql::post::ForumPost> {
+    fn showForumPost(ctx: &Context, id: Uuid) -> FieldResult<forum::graphql::post::ForumPost> {
         let it = forum::graphql::post::show(ctx, id)?;
         Ok(it)
     }

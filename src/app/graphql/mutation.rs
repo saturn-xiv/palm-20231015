@@ -1,4 +1,5 @@
 use juniper::{graphql_object, FieldResult};
+use uuid::Uuid;
 
 use super::super::super::plugins::{
     forum,
@@ -20,8 +21,10 @@ impl Mutation {
     }
     fn userSignIn(
         ctx: &Context,
-        form: nut::graphql::user::UserSignInRequest,
+        id: String,
+        password: String,
     ) -> FieldResult<nut::graphql::user::UserSignInResponse> {
+        let form = nut::graphql::user::UserSignInRequest { id, password };
         let it = form.handle(ctx)?;
         Ok(it)
     }
@@ -32,10 +35,8 @@ impl Mutation {
         form.handle(ctx)?;
         Ok(Success::default())
     }
-    fn userConfirmByEmail(
-        ctx: &Context,
-        form: nut::graphql::user::UserConfirmByEmailRequest,
-    ) -> FieldResult<Success> {
+    fn userConfirmByEmail(ctx: &Context, email: String, home: String) -> FieldResult<Success> {
+        let form = nut::graphql::user::UserConfirmByEmailRequest { email, home };
         form.handle(ctx)?;
         Ok(Success::default())
     }
@@ -43,10 +44,8 @@ impl Mutation {
         nut::graphql::user::confirm_by_token(ctx, &token)?;
         Ok(Success::default())
     }
-    fn userUnlockByEmail(
-        ctx: &Context,
-        form: nut::graphql::user::UserUnlockByEmailRequest,
-    ) -> FieldResult<Success> {
+    fn userUnlockByEmail(ctx: &Context, email: String, home: String) -> FieldResult<Success> {
+        let form = nut::graphql::user::UserUnlockByEmailRequest { email, home };
         form.handle(ctx)?;
         Ok(Success::default())
     }
@@ -54,17 +53,13 @@ impl Mutation {
         nut::graphql::user::unlock_by_token(ctx, &token)?;
         Ok(Success::default())
     }
-    fn userForgotPassword(
-        ctx: &Context,
-        form: nut::graphql::user::UserForgotPasswordRequest,
-    ) -> FieldResult<Success> {
+    fn userForgotPassword(ctx: &Context, email: String, home: String) -> FieldResult<Success> {
+        let form = nut::graphql::user::UserForgotPasswordRequest { email, home };
         form.handle(ctx)?;
         Ok(Success::default())
     }
-    fn userResetPassword(
-        ctx: &Context,
-        form: nut::graphql::user::UserResetPasswordRequest,
-    ) -> FieldResult<Success> {
+    fn userResetPassword(ctx: &Context, token: String, password: String) -> FieldResult<Success> {
+        let form = nut::graphql::user::UserResetPasswordRequest { token, password };
         form.handle(ctx)?;
         Ok(Success::default())
     }
@@ -77,8 +72,13 @@ impl Mutation {
     }
     fn userChangePassword(
         ctx: &Context,
-        form: nut::graphql::user::UserChangePasswordRequest,
+        current_password: String,
+        new_password: String,
     ) -> FieldResult<Success> {
+        let form = nut::graphql::user::UserChangePasswordRequest {
+            current_password,
+            new_password,
+        };
         form.handle(ctx)?;
         Ok(Success::default())
     }
@@ -89,12 +89,19 @@ impl Mutation {
 
     fn setLocale(
         ctx: &Context,
-        form: nut::graphql::locale::SetLocaleRequest,
+        lang: String,
+        code: String,
+        message: String,
     ) -> FieldResult<Success> {
+        let form = nut::graphql::locale::SetLocaleRequest {
+            lang,
+            code,
+            message,
+        };
         form.handle(ctx)?;
         Ok(Success::default())
     }
-    fn destroyLocale(ctx: &Context, id: i32) -> FieldResult<Success> {
+    fn destroyLocale(ctx: &Context, id: Uuid) -> FieldResult<Success> {
         nut::graphql::locale::destroy(ctx, id)?;
         Ok(Success::default())
     }
@@ -106,44 +113,56 @@ impl Mutation {
         form.handle(ctx)?;
         Ok(Success::default())
     }
-    fn destroyLeaveWord(ctx: &Context, id: i32) -> FieldResult<Success> {
+    fn destroyLeaveWord(ctx: &Context, id: Uuid) -> FieldResult<Success> {
         nut::graphql::leave_word::destroy(ctx, id)?;
         Ok(Success::default())
     }
 
-    fn createTag(ctx: &Context, form: nut::graphql::tag::TagRequest) -> FieldResult<Success> {
+    fn createTag(ctx: &Context, code: String) -> FieldResult<Success> {
+        let form = nut::graphql::tag::TagRequest { code };
         form.create(ctx)?;
         Ok(Success::default())
     }
-    fn updateTag(
-        ctx: &Context,
-        id: i32,
-        form: nut::graphql::tag::TagRequest,
-    ) -> FieldResult<Success> {
+    fn updateTag(ctx: &Context, id: Uuid, code: String) -> FieldResult<Success> {
+        let form = nut::graphql::tag::TagRequest { code };
         form.update(ctx, id)?;
         Ok(Success::default())
     }
-    fn destroyTag(ctx: &Context, id: i32) -> FieldResult<Success> {
+    fn destroyTag(ctx: &Context, id: Uuid) -> FieldResult<Success> {
         nut::graphql::tag::destroy(ctx, id)?;
         Ok(Success::default())
     }
 
     fn createCategory(
         ctx: &Context,
-        form: nut::graphql::category::CategoryRequest,
+        parent: Option<Uuid>,
+        code: String,
+        order: i32,
     ) -> FieldResult<Success> {
+        let form = nut::graphql::category::CategoryRequest {
+            parent,
+            code,
+            order,
+        };
         form.create(ctx)?;
         Ok(Success::default())
     }
     fn updateCategory(
         ctx: &Context,
-        id: i32,
-        form: nut::graphql::category::CategoryRequest,
+        id: Uuid,
+        parent: Option<Uuid>,
+        code: String,
+        order: i32,
     ) -> FieldResult<Success> {
+        let form = nut::graphql::category::CategoryRequest {
+            parent,
+            code,
+            order,
+        };
         form.update(ctx, id)?;
         Ok(Success::default())
     }
-    fn destroyCategory(ctx: &Context, id: i32) -> FieldResult<Success> {
+    fn destroyCategory(ctx: &Context, id: Uuid) -> FieldResult<Success> {
         nut::graphql::category::destroy(ctx, id)?;
         Ok(Success::default())
     }
@@ -157,33 +176,34 @@ impl Mutation {
     }
     fn updateForumTopic(
         ctx: &Context,
-        id: i32,
+        id: Uuid,
         form: forum::graphql::topic::ForumTopicRequest,
     ) -> FieldResult<Success> {
         form.update(ctx, id)?;
         Ok(Success::default())
     }
-    fn destroyForumTopic(ctx: &Context, id: i32) -> FieldResult<Success> {
+    fn destroyForumTopic(ctx: &Context, id: Uuid) -> FieldResult<Success> {
         forum::graphql::topic::destroy(ctx, id)?;
         Ok(Success::default())
     }
     fn createForumPost(
         ctx: &Context,
-        topic: i32,
+        topic: Uuid,
+        parent: Option<Uuid>,
         form: forum::graphql::post::ForumPostRequest,
     ) -> FieldResult<Success> {
-        form.create(ctx, topic)?;
+        form.create(ctx, topic, parent)?;
         Ok(Success::default())
     }
     fn updateForumPost(
         ctx: &Context,
-        id: i32,
+        id: Uuid,
         form: forum::graphql::post::ForumPostRequest,
     ) -> FieldResult<Success> {
         form.update(ctx, id)?;
         Ok(Success::default())
     }
-    fn destroyForumPost(ctx: &Context, id: i32) -> FieldResult<Success> {
+    fn destroyForumPost(ctx: &Context, id: Uuid) -> FieldResult<Success> {
         forum::graphql::post::destroy(ctx, id)?;
         Ok(Success::default())
     }

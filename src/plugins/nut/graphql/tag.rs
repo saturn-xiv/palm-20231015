@@ -1,7 +1,7 @@
 use std::convert::From;
 use std::ops::Deref;
 
-use juniper::{GraphQLInputObject, GraphQLObject};
+use juniper::GraphQLObject;
 use uuid::Uuid;
 use validator::Validate;
 
@@ -9,7 +9,7 @@ use super::super::super::super::Result;
 use super::super::models::tag::{Dao as TagDao, Item as TagItem};
 use super::Context;
 
-#[derive(Validate, GraphQLInputObject)]
+#[derive(Validate)]
 pub struct TagRequest {
     #[validate(length(min = 1))]
     pub code: String,

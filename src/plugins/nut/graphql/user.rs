@@ -64,7 +64,7 @@ pub fn refresh_token(ctx: &Context) -> Result<UserSignInResponse> {
     })
 }
 
-#[derive(Validate, GraphQLInputObject)]
+#[derive(Validate)]
 pub struct UserSignInRequest {
     #[validate(length(min = 1))]
     pub id: String,
@@ -259,7 +259,7 @@ impl UserSignUpRequest {
     }
 }
 
-#[derive(Validate, GraphQLInputObject)]
+#[derive(Validate)]
 pub struct UserConfirmByEmailRequest {
     #[validate(email, length(min = 1))]
     pub email: String,
@@ -281,7 +281,7 @@ impl UserConfirmByEmailRequest {
     }
 }
 
-#[derive(Validate, GraphQLInputObject)]
+#[derive(Validate)]
 pub struct UserUnlockByEmailRequest {
     #[validate(email, length(min = 1))]
     pub email: String,
@@ -303,7 +303,7 @@ impl UserUnlockByEmailRequest {
     }
 }
 
-#[derive(Validate, GraphQLInputObject)]
+#[derive(Validate)]
 pub struct UserForgotPasswordRequest {
     #[validate(email, length(min = 1))]
     pub email: String,
@@ -391,7 +391,7 @@ pub fn unlock_by_token(ctx: &Context, token: &str) -> Result<()> {
     Ok(())
 }
 
-#[derive(Validate, GraphQLInputObject)]
+#[derive(Validate)]
 pub struct UserResetPasswordRequest {
     #[validate(email, length(min = 1))]
     pub token: String,
@@ -483,7 +483,7 @@ impl UserUpdateProfileRequest {
     }
 }
 
-#[derive(Validate, GraphQLInputObject)]
+#[derive(Validate)]
 pub struct UserChangePasswordRequest {
     #[validate(length(min = 1))]
     pub current_password: String,

@@ -1,7 +1,7 @@
 use std::convert::From;
 use std::ops::Deref;
 
-use juniper::{GraphQLInputObject, GraphQLObject};
+use juniper::GraphQLObject;
 use uuid::Uuid;
 use validator::Validate;
 
@@ -9,11 +9,9 @@ use super::super::super::super::Result;
 use super::super::models::category::{Dao as CategoryDao, Item as CategoryItem};
 use super::Context;
 
-#[derive(Validate, GraphQLInputObject)]
+#[derive(Validate)]
 pub struct CategoryRequest {
     pub parent: Option<Uuid>,
-    #[validate(length(min = 1))]
-    pub name: String,
     #[validate(length(min = 1))]
     pub code: String,
     pub order: i32,

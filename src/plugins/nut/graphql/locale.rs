@@ -1,6 +1,5 @@
 use std::ops::Deref;
 
-use juniper::GraphQLInputObject;
 use uuid::Uuid;
 use validator::Validate;
 
@@ -10,7 +9,7 @@ use super::super::super::super::{
 };
 use super::Context;
 
-#[derive(Validate, GraphQLInputObject)]
+#[derive(Validate)]
 pub struct SetLocaleRequest {
     #[validate(length(min = 1))]
     pub lang: String,

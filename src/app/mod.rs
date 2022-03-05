@@ -1,6 +1,6 @@
 pub mod generate;
-// pub mod graphql;
-// pub mod web;
+pub mod graphql;
+pub mod web;
 pub mod worker;
 
 use std::fs::File;
@@ -180,8 +180,7 @@ pub async fn launch() -> Result<()> {
     }
 
     if args.command == SubCommand::Web {
-        //    TODO
-        // return web::launch(&cfg).await;
+        return web::launch(&cfg).await;
     }
     if let SubCommand::Worker(it) = args.command {
         worker::launch(&cfg, &it.queue).await?;
