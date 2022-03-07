@@ -8,6 +8,7 @@ pub mod leave_word;
 pub mod log;
 pub mod notification;
 pub mod operation;
+pub mod page_content;
 pub mod policy;
 pub mod rating_log;
 pub mod resource;

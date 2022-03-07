@@ -140,8 +140,6 @@ CREATE TABLE notifications(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID NOT NULL,
     url VARCHAR(255) NOT NULL,
-    body TEXT NOT NULL,
-    body_editor VARCHAR(32) NOT NULL,
     "level" VARCHAR(16) NOT NULL,
     "read" BOOLEAN NOT NULL,
     version INTEGER NOT NULL DEFAULT 0,
@@ -200,8 +198,6 @@ CREATE INDEX idx_friend_links_title ON friend_links(title);
 CREATE TABLE leave_words(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     ip VARCHAR(45) NOT NULL,
-    body TEXT NOT NULL,
-    body_editor VARCHAR(32) NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 CREATE INDEX idx_leave_words_ip ON leave_words(ip);
@@ -211,8 +207,6 @@ CREATE TABLE rating_logs(
     "point" INTEGER NOT NULL DEFAULT 0,
     resource_type VARCHAR(255) NOT NULL,
     resource_id UUID NOT NULL,
-    body TEXT NOT NULL,
-    body_editor VARCHAR(255) NOT NULL,
     version INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
@@ -264,3 +258,16 @@ CREATE INDEX idx_addresses_city ON addresses(city);
 CREATE INDEX idx_addresses_state ON addresses("state");
 CREATE INDEX idx_addresses_country ON addresses("country");
 CREATE INDEX idx_addresses_zip ON addresses("zip");
+CREATE TABLE page_contents(
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    resource_type VARCHAR(255) NOT NULL,
+    resource_id UUID NOT NULL,
+    body TEXT NOT NULL,
+    editor VARCHAR(32) NOT NULL,
+    version INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
+);
+CREATE UNIQUE INDEX idx_page_contents ON page_contents(resource_type, resource_id);
+CREATE INDEX idx_page_contents_resource_type ON page_contents(resource_type);
+CREATE INDEX idx_page_contents_editor ON page_contents(editor);

@@ -1,3 +1,5 @@
+use std::any::type_name;
+
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
 use serde::Serialize;
@@ -5,7 +7,7 @@ use uuid::Uuid;
 
 use super::super::super::super::{orm::Connection, Result};
 use super::super::schema::rating_logs;
-use super::{Resource, WYSIWYG};
+use super::{page_content::Dao as PageContentDao, Resource, WYSIWYG};
 
 #[derive(Queryable, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -15,8 +17,6 @@ pub struct Item {
     pub point: i32,
     pub resource_type: String,
     pub resource_id: Uuid,
-    pub body: String,
-    pub body_editor: String,
     pub version: i32,
     pub created_at: NaiveDateTime,
     pub updated_at: NaiveDateTime,
@@ -33,17 +33,25 @@ pub trait Dao {
 impl Dao for Connection {
     fn create(&self, user: Uuid, resource: &Resource, point: i32, body: &WYSIWYG) -> Result<()> {
         let now = Utc::now().naive_utc();
+        let id = Uuid::new_v4();
         insert_into(rating_logs::dsl::rating_logs)
             .values((
+                rating_logs::dsl::id.eq(id),
                 rating_logs::dsl::user_id.eq(user),
                 rating_logs::dsl::resource_id.eq(resource.id),
                 rating_logs::dsl::resource_type.eq(&resource.type_),
                 rating_logs::dsl::point.eq(point),
-                rating_logs::dsl::body.eq(&body.content),
-                rating_logs::dsl::body_editor.eq(&body.editor.to_string()),
                 rating_logs::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;
+        PageContentDao::create(
+            self,
+            &Resource {
+                type_: type_name::<Item>().to_string(),
+                id,
+            },
+            body,
+        )?;
 
         Ok(())
     }
@@ -56,11 +64,10 @@ impl Dao for Connection {
                 rating_logs::dsl::resource_id.eq(resource.id),
                 rating_logs::dsl::resource_type.eq(&resource.type_),
                 rating_logs::dsl::point.eq(point),
-                rating_logs::dsl::body.eq(&body.content),
-                rating_logs::dsl::body_editor.eq(&body.editor.to_string()),
                 rating_logs::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;
+        PageContentDao::update_by_resource(self, resource, body)?;
         Ok(())
     }
 

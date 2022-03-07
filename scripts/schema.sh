@@ -24,9 +24,8 @@ function generate_diesel_postgresql() {
         attachments attachment_usages friend_links leave_words \
         tags tags_resources categories categories_resources \
         contacts addresses \
-        notifications rating_logs view_counters > src/plugins/nut/schema.rs
+        notifications rating_logs view_counters page_contents > src/plugins/nut/schema.rs
     
-    diesel print-schema -o cms_links cms_topics > src/plugins/cms/schema.rs
     diesel print-schema -o forum_topics forum_posts > src/plugins/forum/schema.rs
     diesel print-schema -o sms_logs > src/plugins/twilio/schema.rs
      

@@ -12,7 +12,10 @@ use validator::Validate;
 use super::super::super::super::{orm::Connection as Db, HttpError, Result};
 use super::super::super::nut::{
     graphql::{tag::Tag, user::Author, Context, Pager, Pagination},
-    models::{policy::Dao as PolicyDao, role::Item as RoleItem, user::Item as UserItem, WYSIWYG},
+    models::{
+        page_content::Dao as PageContentDao, policy::Dao as PolicyDao, role::Item as RoleItem,
+        user::Item as UserItem, Resource, WYSIWYG,
+    },
 };
 use super::super::{
     models::topic::{Dao as TopicDao, Item as TopicItem},
@@ -90,12 +93,19 @@ pub struct ForumTopic {
 impl ForumTopic {
     pub fn new(db: &Db, id: Uuid) -> Result<Self> {
         let it = TopicDao::by_id(db, id)?;
+        let page = PageContentDao::by_resource(
+            db,
+            &Resource {
+                type_: type_name::<TopicItem>().to_string(),
+                id,
+            },
+        )?;
         Ok(Self {
             id,
             title: it.title.clone(),
             summary: it.summary.clone(),
-            body: it.body.clone(),
-            body_editor: it.body_editor.clone(),
+            body: page.body.clone(),
+            body_editor: page.editor,
             author: Author::new(db, it.user_id)?,
             tags: Vec::new(), //TODO
             updated_at: it.updated_at,

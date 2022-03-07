@@ -113,8 +113,6 @@ table! {
     leave_words (id) {
         id -> Uuid,
         ip -> Varchar,
-        body -> Text,
-        body_editor -> Varchar,
         created_at -> Timestamp,
     }
 }
@@ -137,8 +135,6 @@ table! {
         id -> Uuid,
         user_id -> Uuid,
         url -> Varchar,
-        body -> Text,
-        body_editor -> Varchar,
         level -> Varchar,
         read -> Bool,
         version -> Int4,
@@ -151,6 +147,19 @@ table! {
     operations (id) {
         id -> Uuid,
         code -> Varchar,
+        version -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
+    page_contents (id) {
+        id -> Uuid,
+        resource_type -> Varchar,
+        resource_id -> Uuid,
+        body -> Text,
+        editor -> Varchar,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -174,8 +183,6 @@ table! {
         point -> Int4,
         resource_type -> Varchar,
         resource_id -> Uuid,
-        body -> Text,
-        body_editor -> Varchar,
         version -> Int4,
         created_at -> Timestamp,
         updated_at -> Timestamp,
@@ -302,6 +309,7 @@ allow_tables_to_appear_in_same_query!(
     logs,
     notifications,
     operations,
+    page_contents,
     policies,
     rating_logs,
     resources,

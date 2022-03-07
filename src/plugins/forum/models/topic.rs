@@ -1,10 +1,14 @@
+use std::any::type_name;
+
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
 use serde::Serialize;
 use uuid::Uuid;
 
 use super::super::super::super::{orm::Connection, Result};
-use super::super::super::nut::models::{Status, WYSIWYG};
+use super::super::super::nut::models::{
+    page_content::Dao as PageContentDao, Resource, Status, WYSIWYG,
+};
 use super::super::schema::{forum_posts, forum_topics};
 
 #[derive(Queryable, Serialize)]
@@ -14,8 +18,6 @@ pub struct Item {
     pub user_id: Uuid,
     pub title: String,
     pub summary: String,
-    pub body: String,
-    pub body_editor: String,
     pub state: String,
     pub version: i32,
     pub created_at: NaiveDateTime,
@@ -40,17 +42,24 @@ impl Dao for Connection {
     }
     fn create(&self, user: Uuid, title: &str, summary: &str, body: &WYSIWYG) -> Result<()> {
         let now = Utc::now().naive_utc();
+        let id = Uuid::new_v4();
         insert_into(forum_topics::dsl::forum_topics)
             .values((
                 forum_topics::dsl::user_id.eq(user),
                 forum_topics::dsl::title.eq(title),
                 forum_topics::dsl::summary.eq(summary),
-                forum_topics::dsl::body.eq(&body.content),
-                forum_topics::dsl::body_editor.eq(&body.editor.to_string()),
                 forum_topics::dsl::status.eq(&serde_json::to_string(&Status::Pending)?),
                 forum_topics::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;
+        PageContentDao::create(
+            self,
+            &Resource {
+                type_: type_name::<Item>().to_string(),
+                id,
+            },
+            body,
+        )?;
         Ok(())
     }
 
@@ -60,11 +69,17 @@ impl Dao for Connection {
             .set((
                 forum_topics::dsl::title.eq(title),
                 forum_topics::dsl::summary.eq(summary),
-                forum_topics::dsl::body.eq(&body.content),
-                forum_topics::dsl::body_editor.eq(&body.editor.to_string()),
                 forum_topics::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;
+        PageContentDao::update_by_resource(
+            self,
+            &Resource {
+                type_: type_name::<Item>().to_string(),
+                id,
+            },
+            body,
+        )?;
         Ok(())
     }
 
