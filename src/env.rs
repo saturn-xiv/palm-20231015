@@ -74,11 +74,10 @@ impl Default for Rpc {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Config {
     pub env: Environment,
-    pub theme: String,
     pub secrets: Key,
     pub http: Http,
     pub rpc: Rpc,
@@ -87,15 +86,6 @@ pub struct Config {
     pub rabbitmq: RabbitMq,
     pub s3: S3,
     pub aws: Aws,
-}
-
-impl Default for Config {
-    fn default() -> Self {
-        Self {
-            theme: "bootstrap".to_string(),
-            ..Default::default()
-        }
-    }
 }
 
 pub fn is_stopped() -> bool {

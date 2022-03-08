@@ -64,7 +64,7 @@ impl super::Provider for redis::Connection {
         Ok(items)
     }
 
-    fn get<K, V, F>(&mut self, key: &K, fun: F, ttl: Duration) -> Result<V>
+    fn get<K, V, F>(&mut self, key: &K, fun: F, ttl: &Duration) -> Result<V>
     where
         F: FnOnce() -> Result<V>,
         K: Display,

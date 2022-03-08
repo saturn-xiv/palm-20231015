@@ -34,7 +34,6 @@ pub async fn launch(cfg: &Config) -> Result<()> {
 
     let addr = SocketAddr::from(([127, 0, 0, 1], cfg.http.port));
     info!("run on http://{addr}");
-    let theme = cfg.theme.clone();
 
     let cookie_key: Result<Vec<u8>> = cfg.secrets.clone().into();
     let cookie_key = cookie_key?;
@@ -97,15 +96,14 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .service(
                 actix_files::Files::new(
                     "/assets",
-                    if is_prod {
+                    if cfg!(debug_assertions) {
+                        Path::new("assets").to_path_buf()
+                    } else {
                         Path::new(&Component::RootDir)
                             .join("user")
                             .join("share")
                             .join(NAME)
                             .join("assets")
-                            .join(theme.clone())
-                    } else {
-                        Path::new("assets").join(theme.clone())
                     },
                 )
                 .show_files_listing(),
