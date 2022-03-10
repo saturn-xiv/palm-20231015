@@ -1,6 +1,8 @@
 const items = {
   "buttons.search": "Search",
   "buttons.submit": "Submit",
+  "buttons.go-back": "Go back",
+  "buttons.go-home": "Go home",
 
   "fields.email": "Email address",
   "fields.real-name": "Real name",

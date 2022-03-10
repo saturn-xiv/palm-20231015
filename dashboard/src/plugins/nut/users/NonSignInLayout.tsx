@@ -72,7 +72,7 @@ function Widget({ title, logo, children, handleSubmit }: IProps) {
       <Typography component="h1" variant="h5">
         {title}
       </Typography>
-      <Box component="form" noValidate onSubmit={handleSubmit}>
+      <Box component="form" onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           {children}
           <Grid item>

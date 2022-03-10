@@ -42,8 +42,6 @@ const Widget = () => {
     },
   });
   const onSubmit: SubmitHandler<IFormData> = (data) => {
-    // TODO
-    // setFormErrorMessages(["aaa"]);
     graphql(
       `
         mutation Install($user: UserSignUpRequest!) {
@@ -63,7 +61,7 @@ const Widget = () => {
           home: document.location.origin,
         },
       },
-      (res: any) => {
+      () => {
         navigate("/users/logs");
       },
       setFormErrorMessages
@@ -77,7 +75,13 @@ const Widget = () => {
     >
       <Grid item xs={12}>
         {formErrorMessages && (
-          <Alert severity="error">
+          <Alert
+            variant="filled"
+            severity="error"
+            onClose={() => {
+              setFormErrorMessages(undefined);
+            }}
+          >
             <ol>
               {formErrorMessages.map((v, i) => (
                 <li key={i}>{v}</li>

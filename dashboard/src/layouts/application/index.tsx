@@ -23,6 +23,7 @@ function Widget({ title, children }: IProps) {
           <Box
             sx={{
               marginTop: 8,
+              marginBottom: 4,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
