@@ -7,6 +7,10 @@ const plugin: IPlugin = {
       component: () => import("./leave-words/new"),
     },
     {
+      path: "/users/logs",
+      component: () => import("./users/logs"),
+    },
+    {
       path: "/users/forgot-password",
       component: () => import("./users/forgot-password"),
     },

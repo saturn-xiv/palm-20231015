@@ -2,6 +2,20 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import type { RootState } from "../store";
 
+const KEY = "token";
+
+export const getToken = () => {
+  return sessionStorage.getItem(KEY);
+};
+
+export const setToken = (token: string) => {
+  sessionStorage.setItem(KEY, token);
+};
+
+export const destroyToken = () => {
+  sessionStorage.removeItem(KEY);
+};
+
 interface IState {
   id?: string;
   roles?: string[];
@@ -15,10 +29,12 @@ export const slice = createSlice({
   reducers: {
     signIn: (state, action: PayloadAction<string>) => {
       console.log(action.payload);
+      // TODO
       state.id = "todo";
       state.roles = [];
     },
     signOut: (state) => {
+      // TODO
       state = {};
     },
   },

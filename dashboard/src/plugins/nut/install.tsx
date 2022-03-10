@@ -1,8 +1,12 @@
+import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { useIntl } from "react-intl";
+import Alert from "@mui/material/Alert";
+import moment from "moment-timezone";
+import { useNavigate } from "react-router-dom";
 
 import Layout from "./users/NonSignInLayout";
 import {
@@ -10,6 +14,8 @@ import {
   EMAIL_VALIDATOR,
   PASSWORD_VALIDATOR,
 } from "../../components/form";
+import { graphql } from "../../request";
+import { get as getLocale } from "../../locales";
 
 interface IFormData {
   realName: string;
@@ -20,9 +26,12 @@ interface IFormData {
 
 const Widget = () => {
   const intl = useIntl();
+  const navigate = useNavigate();
+  const [formErrorMessages, setFormErrorMessages] = useState<string[]>();
   const {
     control,
     formState: { errors },
+    getValues,
     handleSubmit,
   } = useForm<IFormData>({
     defaultValues: {
@@ -34,7 +43,31 @@ const Widget = () => {
   });
   const onSubmit: SubmitHandler<IFormData> = (data) => {
     // TODO
-    console.log(data);
+    // setFormErrorMessages(["aaa"]);
+    graphql(
+      `
+        mutation Install($user: UserSignUpRequest!) {
+          install(form: $user) {
+            createdAt
+          }
+        }
+      `,
+      {
+        user: {
+          nickName: "Admin",
+          realName: data.realName,
+          email: data.email,
+          password: data.password,
+          lang: getLocale(),
+          timeZone: moment.tz.guess(),
+          home: document.location.origin,
+        },
+      },
+      (res: any) => {
+        navigate("/users/logs");
+      },
+      setFormErrorMessages
+    );
   };
   return (
     <Layout
@@ -42,6 +75,17 @@ const Widget = () => {
       title={intl.formatMessage({ id: "nut.install.title" })}
       handleSubmit={handleSubmit(onSubmit)}
     >
+      <Grid item xs={12}>
+        {formErrorMessages && (
+          <Alert severity="error">
+            <ol>
+              {formErrorMessages.map((v, i) => (
+                <li key={i}>{v}</li>
+              ))}
+            </ol>
+          </Alert>
+        )}
+      </Grid>
       <Grid item xs={12}>
         <Controller
           name="realName"
@@ -107,6 +151,14 @@ const Widget = () => {
         <Controller
           name="passwordConfirmation"
           control={control}
+          rules={{
+            validate: {
+              matchesPreviousPassword: (value) => {
+                const { password } = getValues();
+                return password === value;
+              },
+            },
+          }}
           render={({ field }) => (
             <TextField
               required
