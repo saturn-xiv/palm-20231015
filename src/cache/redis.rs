@@ -3,7 +3,7 @@ use std::fmt;
 use std::fmt::Display;
 use std::time::Duration;
 
-use ::redis::{cmd, Client, Commands, RedisResult, Value};
+use ::redis::{cmd, Client, Commands, Value};
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 
 use super::super::Result;
@@ -63,13 +63,24 @@ impl super::Provider for redis::Connection {
         }
         Ok(items)
     }
-
+    #[cfg(debug_assertions)]
+    fn get<K, V, F>(&mut self, _key: &K, fun: F, _ttl: &Duration) -> Result<V>
+    where
+        F: FnOnce() -> Result<V>,
+        K: Display,
+        V: DeserializeOwned + Serialize,
+    {
+        fun()
+    }
+    #[cfg(not(debug_assertions))]
     fn get<K, V, F>(&mut self, key: &K, fun: F, ttl: &Duration) -> Result<V>
     where
         F: FnOnce() -> Result<V>,
         K: Display,
         V: DeserializeOwned + Serialize,
     {
+        use ::redis::RedisResult;
+
         let key = key.to_string();
         let buf: RedisResult<Vec<u8>> = Commands::get(self, &key);
         if let Ok(buf) = buf {

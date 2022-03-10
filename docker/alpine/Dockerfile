@@ -8,13 +8,7 @@ RUN apk add perl vim curl bash zsh sudo pwgen openssl git tmux \
     nodejs npm yarn \
     libudev-zero-dev postgresql-dev mariadb-dev sqlite-dev
 
-# deploy
-RUN adduser -D -s /bin/zsh deploy
-RUN echo 'deploy ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/101-deploy
-
-USER deploy
-
-RUN mkdir -p $HOME/downloads $HOME/local
+RUN mkdir -p $HOME/downloads $HOME/local $HOME/tmp
 
 # https://github.com/ohmyzsh/ohmyzsh
 RUN git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh

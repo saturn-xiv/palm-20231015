@@ -56,15 +56,15 @@ interface IProps {
   title: string;
   children: ReactNode;
   logo: ReactNode;
-  handleSubmit: (event: FormData) => void;
+  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
 function Widget({ title, logo, children, handleSubmit }: IProps) {
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    handleSubmit(data);
-  };
+  // const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   handleSubmit(data);
+  // };
   const navigate = useNavigate();
   return (
     <Layout title={title}>
@@ -72,7 +72,7 @@ function Widget({ title, logo, children, handleSubmit }: IProps) {
       <Typography component="h1" variant="h5">
         {title}
       </Typography>
-      <Box component="form" noValidate onSubmit={onSubmit}>
+      <Box component="form" noValidate onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           {children}
           <Grid item>

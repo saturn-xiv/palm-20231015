@@ -1,58 +1,126 @@
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-
-import Layout from "./users/NonSignInLayout";
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { useIntl } from "react-intl";
 
+import Layout from "./users/NonSignInLayout";
+import {
+  REAL_NAME_VALIDATOR,
+  EMAIL_VALIDATOR,
+  PASSWORD_VALIDATOR,
+} from "../../components/form";
+
+interface IFormData {
+  realName: string;
+  email: string;
+  password: string;
+  passwordConfirmation: string;
+}
+
 const Widget = () => {
-  const handleSubmit = (data: FormData) => {
-    // TODO
-    console.log(data.get("email"));
-  };
   const intl = useIntl();
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<IFormData>({
+    defaultValues: {
+      realName: "",
+      email: "",
+      password: "",
+      passwordConfirmation: "",
+    },
+  });
+  const onSubmit: SubmitHandler<IFormData> = (data) => {
+    // TODO
+    console.log(data);
+  };
   return (
     <Layout
       logo={<LockOutlinedIcon />}
       title={intl.formatMessage({ id: "nut.install.title" })}
-      handleSubmit={handleSubmit}
+      handleSubmit={handleSubmit(onSubmit)}
     >
       <Grid item xs={12}>
-        <TextField
-          required
-          fullWidth
-          id="realName"
-          label={intl.formatMessage({ id: "fields.real-name" })}
-          name="lastName"
+        <Controller
+          name="realName"
+          control={control}
+          rules={REAL_NAME_VALIDATOR}
+          render={({ field }) => (
+            <TextField
+              required
+              fullWidth
+              label={intl.formatMessage({ id: "fields.real-name" })}
+              error={errors.realName !== undefined}
+              helperText={
+                errors.realName &&
+                intl.formatMessage({ id: "helpers.real-name" })
+              }
+              {...field}
+            />
+          )}
         />
       </Grid>
       <Grid item xs={12}>
-        <TextField
-          required
-          fullWidth
-          id="email"
-          label={intl.formatMessage({ id: "fields.email" })}
+        <Controller
           name="email"
+          rules={EMAIL_VALIDATOR}
+          control={control}
+          render={({ field }) => (
+            <TextField
+              required
+              fullWidth
+              label={intl.formatMessage({ id: "fields.email" })}
+              type="email"
+              error={errors.email !== undefined}
+              helperText={
+                errors.email && intl.formatMessage({ id: "helpers.email" })
+              }
+              {...field}
+            />
+          )}
         />
       </Grid>
       <Grid item xs={12}>
-        <TextField
-          required
-          fullWidth
+        <Controller
           name="password"
-          label={intl.formatMessage({ id: "fields.password" })}
-          type="password"
-          id="password"
+          rules={PASSWORD_VALIDATOR}
+          control={control}
+          render={({ field }) => (
+            <TextField
+              required
+              fullWidth
+              label={intl.formatMessage({ id: "fields.password" })}
+              type="password"
+              error={errors.password !== undefined}
+              helperText={
+                errors.password &&
+                intl.formatMessage({ id: "helpers.password" })
+              }
+              {...field}
+            />
+          )}
         />
       </Grid>
       <Grid item xs={12}>
-        <TextField
-          required
-          fullWidth
+        <Controller
           name="passwordConfirmation"
-          label={intl.formatMessage({ id: "fields.password-confirmation" })}
-          type="password"
-          id="passwordConfirmation"
+          control={control}
+          render={({ field }) => (
+            <TextField
+              required
+              fullWidth
+              label={intl.formatMessage({ id: "fields.password-confirmation" })}
+              type="password"
+              error={errors.passwordConfirmation !== undefined}
+              helperText={
+                errors.passwordConfirmation &&
+                intl.formatMessage({ id: "helpers.password-confirmation" })
+              }
+              {...field}
+            />
+          )}
         />
       </Grid>
     </Layout>

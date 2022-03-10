@@ -8,9 +8,9 @@ import { useIntl } from "react-intl";
 import Layout from "./NonSignInLayout";
 
 const Widget = () => {
-  const handleSubmit = (data: FormData) => {
+  const handleSubmit = () => {
     // TODO
-    console.log(data.get("email"));
+    // console.log(data.get("email"));
   };
   const intl = useIntl();
   return (
