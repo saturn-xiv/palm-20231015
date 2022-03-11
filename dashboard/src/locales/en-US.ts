@@ -12,6 +12,8 @@ const items = {
   "fields.body": "Body",
 
   "helpers.real-name": "Real-name's length should between 2~32",
+  "helpers.nick-name":
+    "Nickname's length should between 2~32 and only can be alphabet or numbers",
   "helpers.email": "Please entry a valid email address",
   "helpers.password": "Password's length should between 6~64",
   "helpers.password-confirmation": "Passwords not match",

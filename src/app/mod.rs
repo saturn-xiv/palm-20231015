@@ -15,8 +15,8 @@ use clap::{Parser, Subcommand};
 use super::{
     cache::Provider,
     env::{is_stopped, Config},
-    i18n::locale::MIGRATION as Locales,
-    orm::migration::Dao,
+    i18n::locale::{Dao as LocaleDao, MIGRATION as Locales},
+    orm::migration::Dao as MigrationDao,
     parser::from_toml,
     plugins,
     settings::MIGRATION as Settings,
@@ -55,6 +55,8 @@ pub enum SubCommand {
     DbRedo,
     #[clap(about = "Show current database versions")]
     DbStatus,
+    #[clap(about = "Sync i18n items")]
+    I18nSync,
     #[clap(about = "Http Server")]
     Web,
     #[clap(about = "Worker process")]
@@ -123,51 +125,60 @@ pub async fn launch() -> Result<()> {
         }
     }
 
-    // https://en.wikibooks.org/wiki/Ruby_on_Rails/ActiveRecord/Migrations
     {
-        let items = vec![
-            Locales.deref(),
-            Settings.deref(),
-            plugins::nut::MIGRATION.deref(),
-            plugins::forum::MIGRATION.deref(),
-            plugins::mall::MIGRATION.deref(),
-            plugins::twilio::MIGRATION.deref(),
-        ];
         let db = cfg.postgresql.open()?;
         let db = db.get()?;
-        db.load(&items)?;
+        let db = db.deref();
+        // https://en.wikibooks.org/wiki/Ruby_on_Rails/ActiveRecord/Migrations
 
-        if args.command == SubCommand::DbMigrate {
-            return db.transaction::<_, _, _>(|| {
-                db.migrate()?;
-                Ok(())
-            });
-        }
-        if args.command == SubCommand::DbRedo {
-            return db.transaction::<_, _, _>(|| {
-                loop {
-                    if db.count()? == 0 {
-                        break;
-                    }
-                    db.rollback()?;
-                    thread::sleep(Duration::from_millis(100));
-                }
-                // FIXME
-                db.migrate()?;
-                Ok(())
-            });
-        }
-        if args.command == SubCommand::DbRollback {
-            return db.transaction::<_, _, _>(|| {
-                db.rollback()?;
-                Ok(())
-            });
-        }
-        if args.command == SubCommand::DbStatus {
-            println!("{:<14} {:<23} NAME", "VERSION", "RUN AT");
-            for it in db.all()? {
-                println!("{}", it);
+        {
+            let items = vec![
+                Locales.deref(),
+                Settings.deref(),
+                plugins::nut::MIGRATION.deref(),
+                plugins::forum::MIGRATION.deref(),
+                plugins::mall::MIGRATION.deref(),
+                plugins::twilio::MIGRATION.deref(),
+            ];
+            db.load(&items)?;
+
+            if args.command == SubCommand::DbMigrate {
+                return db.transaction::<_, _, _>(|| {
+                    db.migrate()?;
+                    Ok(())
+                });
             }
+            if args.command == SubCommand::DbRedo {
+                return db.transaction::<_, _, _>(|| {
+                    loop {
+                        if MigrationDao::count(db)? == 0 {
+                            break;
+                        }
+                        db.rollback()?;
+                        thread::sleep(Duration::from_millis(100));
+                    }
+                    // FIXME
+                    db.migrate()?;
+                    Ok(())
+                });
+            }
+            if args.command == SubCommand::DbRollback {
+                return db.transaction::<_, _, _>(|| {
+                    db.rollback()?;
+                    Ok(())
+                });
+            }
+            if args.command == SubCommand::DbStatus {
+                println!("{:<14} {:<23} NAME", "VERSION", "RUN AT");
+                for it in MigrationDao::all(db)? {
+                    println!("{}", it);
+                }
+                return Ok(());
+            }
+        }
+        if args.command == SubCommand::I18nSync {
+            let (i, j) = LocaleDao::sync(db)?;
+            info!("sync {}/{} items", i, j);
             return Ok(());
         }
     }

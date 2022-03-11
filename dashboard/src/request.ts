@@ -6,9 +6,9 @@ export const graphql = (
   query: string,
   variables: object,
   callback: any,
-  failed: (msg: string[]) => void
+  failed?: (items: string[]) => void
 ) => {
-  return fetch(`${process.env.REACT_APP_GRAPHQL_HOST}/graphql`, {
+  fetch(`${process.env.REACT_APP_GRAPHQL_HOST}/graphql`, {
     mode: "cors",
     method: "POST",
     cache: "no-cache",
@@ -29,10 +29,14 @@ export const graphql = (
         if (ok && it.data) {
           callback(it.data);
         } else {
-          failed(it.errors.map((x: any) => x.message));
+          const items = it.errors.map((x: any) => x.message);
+          if (failed) {
+            failed(items);
+          } else {
+            items.forEach((it: string) => console.error(it));
+          }
         }
       });
     })
-
     .catch(console.error);
 };

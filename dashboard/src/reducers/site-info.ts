@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import type { RootState } from "../store";
 
-interface IState {
+export interface IState {
   title: string;
   subhead: string;
   copyright: string;
@@ -21,7 +21,11 @@ const slice = createSlice({
   initialState,
   reducers: {
     refresh: (state, action: PayloadAction<IState>) => {
-      Object.assign(state, action.payload);
+      // console.log("refresh site-info", action.payload);
+      state.title = action.payload.title;
+      state.subhead = action.payload.subhead;
+      state.copyright = action.payload.copyright;
+      state.languages = action.payload.languages;
     },
   },
 });

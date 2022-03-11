@@ -16,13 +16,8 @@ import {
 } from "../../components/form";
 import { graphql } from "../../request";
 import { get as getLocale } from "../../locales";
-
-interface IFormData {
-  realName: string;
-  email: string;
-  password: string;
-  passwordConfirmation: string;
-}
+import { IFormData } from "./users/sign-up";
+import { USERS_SIGN_IN_PATH } from ".";
 
 const Widget = () => {
   const intl = useIntl();
@@ -36,6 +31,7 @@ const Widget = () => {
   } = useForm<IFormData>({
     defaultValues: {
       realName: "",
+      nickName: "admin",
       email: "",
       password: "",
       passwordConfirmation: "",
@@ -44,7 +40,7 @@ const Widget = () => {
   const onSubmit: SubmitHandler<IFormData> = (data) => {
     graphql(
       `
-        mutation Install($user: UserSignUpRequest!) {
+        mutation PostForm($user: UserSignUpRequest!) {
           install(form: $user) {
             createdAt
           }
@@ -52,7 +48,7 @@ const Widget = () => {
       `,
       {
         user: {
-          nickName: "Admin",
+          nickName: data.nickName,
           realName: data.realName,
           email: data.email,
           password: data.password,
@@ -62,7 +58,7 @@ const Widget = () => {
         },
       },
       () => {
-        navigate("/users/logs");
+        navigate(USERS_SIGN_IN_PATH);
       },
       setFormErrorMessages
     );
@@ -110,6 +106,7 @@ const Widget = () => {
           )}
         />
       </Grid>
+
       <Grid item xs={12}>
         <Controller
           name="email"

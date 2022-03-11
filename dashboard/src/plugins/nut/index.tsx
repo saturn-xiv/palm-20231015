@@ -1,5 +1,8 @@
 import { IPlugin } from "..";
 
+export const USERS_SIGN_IN_PATH = "/users/sign-in";
+export const USERS_LOGS_PATH = "/users/logs";
+
 const plugin: IPlugin = {
   routes: [
     {
@@ -7,7 +10,7 @@ const plugin: IPlugin = {
       component: () => import("./leave-words/new"),
     },
     {
-      path: "/users/logs",
+      path: USERS_LOGS_PATH,
       component: () => import("./users/logs"),
     },
     {
@@ -23,7 +26,7 @@ const plugin: IPlugin = {
       component: () => import("./users/confirm"),
     },
     {
-      path: "/users/sign-in",
+      path: USERS_SIGN_IN_PATH,
       component: () => import("./users/sign-in"),
     },
     {

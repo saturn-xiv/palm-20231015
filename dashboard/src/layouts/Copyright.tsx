@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -6,27 +7,46 @@ import { FormattedMessage } from "react-intl";
 import Stack from "@mui/material/Stack";
 import { Helmet } from "react-helmet-async";
 
-import { refresh, selectSiteInfo } from "../reducers/site-info";
+import {
+  refresh,
+  selectSiteInfo,
+  IState as ISiteInfo,
+} from "../reducers/site-info";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { set as setLocale } from "../locales";
+import { graphql } from "../request";
 
 interface IProps {
   title: string;
 }
 
+interface IFetchResponse {
+  siteInfo: ISiteInfo;
+}
+
 const Widget = (props: IProps) => {
   const site = useAppSelector(selectSiteInfo);
   const dispatch = useAppDispatch();
-  if (site.languages.length === 0) {
-    dispatch(
-      refresh({
-        title: "demo",
-        subhead: "test",
-        copyright: `${new Date().getFullYear()}`,
-        languages: ["en-US"],
-      })
-    );
-  }
+  useEffect(() => {
+    if (site.languages.length === 0) {
+      graphql(
+        `
+          query Fetch {
+            siteInfo {
+              title
+              subhead
+              copyright
+              languages
+            }
+          }
+        `,
+        {},
+        (data: IFetchResponse) => {
+          dispatch(refresh(data.siteInfo));
+        }
+      );
+    }
+  });
   return (
     <Stack spacing={2} direction="row">
       <Helmet>

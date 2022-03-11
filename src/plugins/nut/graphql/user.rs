@@ -1,12 +1,12 @@
 use std::any::type_name;
 use std::ops::Deref;
+use std::thread;
 
 use chrono::Duration;
 use chrono::NaiveDateTime;
 use diesel::connection::Connection as DieselConnection;
 use hyper::StatusCode;
 use juniper::{GraphQLInputObject, GraphQLObject};
-use tokio::{runtime::Handle, task::block_in_place};
 use uuid::Uuid;
 use validator::Validate;
 
@@ -624,9 +624,16 @@ fn send_email(ctx: &Context, home: &str, user: &UserItem, act: &Action) -> Resul
         to: user.email.clone(),
         ..Default::default()
     };
-    block_in_place(move || -> Result<()> {
-        Handle::current().block_on(async move { ctx.queue.publish(EmailTask::QUEUE, &task).await })
-    })?;
+
+    {
+        let rt = tokio::runtime::Runtime::new()?;
+        let queue = ctx.queue.clone();
+        thread::spawn(move || {
+            rt.block_on(async {
+                queue.publish(EmailTask::QUEUE, &task).await.unwrap();
+            });
+        });
+    }
 
     Ok(())
 }

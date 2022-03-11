@@ -5,9 +5,11 @@ export const REAL_NAME_VALIDATOR = {
 };
 export const NICK_NAME_VALIDATOR = {
   required: true,
-  minLength: 2,
-  maxLength: 32,
-  pattern: /[\\.\w-]{6,32}/,
+  pattern: /[\\.\w-]{2,32}/,
+};
+export const CODE_VALIDATOR = {
+  required: true,
+  pattern: /[\\.\w-]{1,255}/,
 };
 export const EMAIL_VALIDATOR = {
   required: true,
