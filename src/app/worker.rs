@@ -25,6 +25,7 @@ pub async fn launch(cfg: &Config, name: &str) -> Result<()> {
     let aes = Aes::new(&cfg.secrets.0)?;
     match name {
         EmailTask::QUEUE => {
+            // TODO
             let cfg: EmailHandler =
                 SettingDao::get(db, &aes, &EmailHandler::KEY.to_string(), None)?;
             queue.consume(&id, name, &cfg).await

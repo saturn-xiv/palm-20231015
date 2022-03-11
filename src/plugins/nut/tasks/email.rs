@@ -17,6 +17,22 @@ pub struct Task {
 
 impl Task {
     pub const QUEUE: &'static str = "emails";
+
+    pub fn send(&self, host: &str, account: &str, password: &str) -> Result<()> {
+        let msg = Message::builder()
+            .from(account.parse()?)
+            .reply_to(account.parse()?)
+            .to(self.to.parse()?)
+            .subject(&self.subject)
+            .body(self.body.clone())?;
+        // TODO attachments bcc cc
+
+        let mailer = SmtpTransport::relay(host)?
+            .credentials(Credentials::new(account.to_string(), password.to_string()))
+            .build();
+        mailer.send(&msg)?;
+        Ok(())
+    }
 }
 
 // https://support.google.com/mail/answer/7126229#zippy=%2Cstep-change-smtp-other-settings-in-your-email-client
@@ -25,7 +41,6 @@ pub struct Handler {
     pub host: String,
     pub account: String,
     pub password: String,
-    pub pretend: bool,
 }
 
 impl Handler {
@@ -38,33 +53,23 @@ impl Default for Handler {
             host: "smtp.gmail.com".to_string(),
             account: "who-am-i".to_string(),
             password: "change-me".to_string(),
-            pretend: false,
         }
     }
 }
 
+#[cfg(not(debug_assertions))]
 impl QueueHandler for Handler {
     fn handle(&self, _id: &str, _content_type: &str, payload: &[u8]) -> Result<()> {
         let task: Task = flexbuffers::from_slice(payload)?;
-        if self.pretend {
-            info!("send to {}:{}\n{}", task.to, task.subject, task.body);
-            return Ok(());
-        }
-        let msg = Message::builder()
-            .from(self.account.parse()?)
-            .reply_to(self.account.parse()?)
-            .to(task.to.parse()?)
-            .subject(&task.subject)
-            .body(task.body.clone())?;
-        // TODO attachments bcc cc
+        task.send(&self.host, &self.account, &self.password)
+    }
+}
 
-        let mailer = SmtpTransport::relay(&self.host)?
-            .credentials(Credentials::new(
-                self.account.clone(),
-                self.password.clone(),
-            ))
-            .build();
-        mailer.send(&msg)?;
+#[cfg(debug_assertions)]
+impl QueueHandler for Handler {
+    fn handle(&self, _id: &str, _content_type: &str, payload: &[u8]) -> Result<()> {
+        let task: Task = flexbuffers::from_slice(payload)?;
+        info!("send to {}:{}\n{}", task.to, task.subject, task.body);
         Ok(())
     }
 }

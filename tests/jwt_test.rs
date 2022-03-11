@@ -5,13 +5,14 @@ mod common;
 use chrono::Duration;
 use palm::{
     jwt::Jwt,
-    plugins::nut::graphql::{Action, Token},
+    plugins::nut::models::user::{Action, Token},
 };
+use uuid::Uuid;
 
 #[test]
 fn hs512() {
     let cfg = common::load_config();
-    let uid = "who-am-i";
+    let uid = Uuid::new_v4();
 
     let jwt = Jwt::new(cfg.secrets.0.clone());
     let (nbf, exp) = Jwt::timestamps(Duration::weeks(1));
@@ -19,7 +20,7 @@ fn hs512() {
         .sum(
             None,
             &Token {
-                aud: uid.to_string(),
+                aud: uid,
                 act: Action::SignIn,
                 nbf,
                 exp,
