@@ -14,6 +14,10 @@ const plugin: IPlugin = {
       component: () => import("./users/logs"),
     },
     {
+      path: "/users/reset-password/:token",
+      component: () => import("./users/reset-password"),
+    },
+    {
       path: "/users/forgot-password",
       component: () => import("./users/forgot-password"),
     },

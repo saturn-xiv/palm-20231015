@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import ConfirmationNumberOutlinedIcon from "@mui/icons-material/ConfirmationNumberOutlined";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { useIntl } from "react-intl";
 import Alert from "@mui/material/Alert";
@@ -50,7 +50,7 @@ const Widget = () => {
   };
   return (
     <Layout
-      logo={<LockOutlinedIcon />}
+      logo={<ConfirmationNumberOutlinedIcon />}
       title={intl.formatMessage({ id: "nut.users.confirm.title" })}
       handleSubmit={handleSubmit(onSubmit)}
     >

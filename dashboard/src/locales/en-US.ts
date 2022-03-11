@@ -26,6 +26,7 @@ const items = {
   "nut.users.confirm.title": "Resend confirmation instructions",
   "nut.users.unlock.title": "Resend unlock instructions",
   "nut.users.forgot-password.title": "Forgot your password?",
+  "nut.users.reset-password.title": "Reset your password",
   "nut.leave-words.new.title": "Leave us a message",
 };
 
