@@ -17,6 +17,7 @@ const items = {
   "helpers.email": "Please entry a valid email address",
   "helpers.password": "Password's length should between 6~64",
   "helpers.password-confirmation": "Passwords not match",
+  "helpers.required": "Can't empty",
 
   "404.title": "Not found",
 

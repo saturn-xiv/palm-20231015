@@ -5,10 +5,8 @@ use uuid::Uuid;
 use validator::Validate;
 
 use super::super::super::super::Result;
-use super::super::models::{
-    leave_word::{Dao as LeaveWordDao, Item as LeaveWord},
-    WYSIWYG,
-};
+use super::super::super::nut::models::WYSIWYG;
+use super::super::models::leave_word::{Dao as LeaveWordDao, Item as LeaveWord};
 use super::Context;
 
 #[derive(Validate, GraphQLInputObject)]
@@ -16,7 +14,7 @@ pub struct CreateLeaveWordRequest {
     #[validate(length(min = 1))]
     pub body: String,
     #[validate(length(min = 1))]
-    pub body_editor: String,
+    pub editor: String,
 }
 
 impl CreateLeaveWordRequest {
@@ -28,7 +26,7 @@ impl CreateLeaveWordRequest {
             db,
             &ctx.peer,
             &WYSIWYG {
-                editor: self.body_editor.parse()?,
+                editor: self.editor.parse()?,
                 content: self.body.clone(),
             },
         )?;

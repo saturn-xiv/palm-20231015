@@ -106,10 +106,8 @@ impl Mutation {
         Ok(Success::default())
     }
 
-    fn createLeaveWord(
-        ctx: &Context,
-        form: nut::graphql::leave_word::CreateLeaveWordRequest,
-    ) -> FieldResult<Success> {
+    fn createLeaveWord(ctx: &Context, body: String, editor: String) -> FieldResult<Success> {
+        let form = nut::graphql::leave_word::CreateLeaveWordRequest { body, editor };
         form.handle(ctx)?;
         Ok(Success::default())
     }
