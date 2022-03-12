@@ -100,7 +100,7 @@ const Widget = () => {
       title={intl.formatMessage({ id: "nut.users.sign-in.title" })}
       handleSubmit={handleSubmit(onSubmit)}
     >
-      <Grid item xs={12}>
+      <Grid item>
         <Controller
           name="id"
           control={control}
@@ -120,7 +120,7 @@ const Widget = () => {
         />
       </Grid>
 
-      <Grid item xs={12}>
+      <Grid item>
         <Controller
           name="password"
           rules={{ required: true }}

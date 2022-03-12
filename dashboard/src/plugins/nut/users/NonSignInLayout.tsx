@@ -60,42 +60,48 @@ interface IProps {
 }
 
 function Widget({ title, logo, children, handleSubmit }: IProps) {
-  // const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   handleSubmit(data);
-  // };
   const navigate = useNavigate();
   return (
     <Layout title={title}>
-      <Avatar sx={{ bgcolor: "secondary.main" }}>{logo}</Avatar>
-      <Typography component="h1" variant="h5">
-        {title}
-      </Typography>
-      <Box component="form" onSubmit={handleSubmit}>
-        <Grid container spacing={2}>
-          {children}
-          <Grid item>
-            <Button type="submit" fullWidth variant="contained">
-              <FormattedMessage id="buttons.submit" />
-            </Button>
+      <Grid item md={3}></Grid>
+      <Grid item md={6}>
+        <Box component="form" onSubmit={handleSubmit}>
+          <Grid container spacing={2} direction="column">
+            <Grid item>
+              <Box display="flex" justifyContent="center">
+                <Avatar sx={{ bgcolor: "secondary.main" }}>{logo}</Avatar>
+              </Box>
+            </Grid>
+            <Grid item>
+              <Box display="flex" justifyContent="center">
+                <Typography component="h1" variant="h5">
+                  {title}
+                </Typography>
+              </Box>
+            </Grid>
+            {children}
+            <Grid item>
+              <Button type="submit" variant="contained">
+                <FormattedMessage id="buttons.submit" />
+              </Button>
+            </Grid>
+            <Grid item>
+              <List>
+                {shared_links.map((it) => (
+                  <ListItem key={it.to} disablePadding>
+                    <ListItemButton onClick={() => navigate(it.to)}>
+                      <ListItemIcon>{it.icon}</ListItemIcon>
+                      <ListItemText
+                        primary={<FormattedMessage id={it.label} />}
+                      />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+            </Grid>
           </Grid>
-          <Grid item>
-            <List>
-              {shared_links.map((it) => (
-                <ListItem key={it.to} disablePadding>
-                  <ListItemButton onClick={() => navigate(it.to)}>
-                    <ListItemIcon>{it.icon}</ListItemIcon>
-                    <ListItemText
-                      primary={<FormattedMessage id={it.label} />}
-                    />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
-          </Grid>
-        </Grid>
-      </Box>
+        </Box>
+      </Grid>
     </Layout>
   );
 }

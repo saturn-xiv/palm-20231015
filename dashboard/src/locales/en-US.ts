@@ -21,7 +21,7 @@ const items = {
   "helpers.password-confirmation": "Passwords not match",
   "helpers.required": "Can't empty",
 
-  "404.title": "Not found",
+  "404.title": "The page you are looking for isn’t here",
 
   "nut.install.title": "Install",
   "nut.users.sign-in.title": "Sign in",

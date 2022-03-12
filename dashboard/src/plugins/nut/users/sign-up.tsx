@@ -84,7 +84,7 @@ const Widget = () => {
       title={intl.formatMessage({ id: "nut.users.sign-up.title" })}
       handleSubmit={handleSubmit(onSubmit)}
     >
-      <Grid item xs={12}>
+      <Grid item>
         <Controller
           name="realName"
           control={control}
@@ -104,7 +104,7 @@ const Widget = () => {
           )}
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item>
         <Controller
           name="nickName"
           control={control}
@@ -124,7 +124,7 @@ const Widget = () => {
           )}
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item>
         <Controller
           name="email"
           rules={EMAIL_VALIDATOR}
@@ -144,7 +144,7 @@ const Widget = () => {
           )}
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item>
         <Controller
           name="password"
           rules={PASSWORD_VALIDATOR}
@@ -165,7 +165,7 @@ const Widget = () => {
           )}
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item>
         <Controller
           name="passwordConfirmation"
           control={control}

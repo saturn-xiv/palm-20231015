@@ -61,7 +61,7 @@ const Widget = () => {
       title={intl.formatMessage({ id: "nut.users.confirm.title" })}
       handleSubmit={handleSubmit(onSubmit)}
     >
-      <Grid item xs={12}>
+      <Grid item>
         <Controller
           name="email"
           rules={EMAIL_VALIDATOR}

@@ -60,7 +60,7 @@ const Widget = () => {
       title={intl.formatMessage({ id: "nut.leave-words.new.title" })}
       handleSubmit={handleSubmit(onSubmit)}
     >
-      <Grid item xs={12}>
+      <Grid item>
         <Controller
           name="body"
           rules={{ required: true }}
