@@ -25,6 +25,7 @@ const items = {
 
   "nut.install.title": "Install",
   "nut.users.sign-in.title": "Sign in",
+  "nut.users.sign-in.fields.id": "Nickname or email",
   "nut.users.sign-up.title": "Sign Up",
   "nut.users.confirm.title": "Resend confirmation instructions",
   "nut.users.unlock.title": "Resend unlock instructions",

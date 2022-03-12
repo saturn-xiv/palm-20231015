@@ -16,9 +16,17 @@ export const destroyToken = () => {
   sessionStorage.removeItem(KEY);
 };
 
-interface IState {
+export interface IState {
   id?: string;
-  roles?: string[];
+  profile?: IProfile;
+}
+
+export interface IProfile {
+  name: string;
+  lang: string;
+  tz: string;
+  logo: string;
+  roles: string[];
 }
 
 const initialState: IState = {};
@@ -27,15 +35,13 @@ export const slice = createSlice({
   name: "current-user",
   initialState,
   reducers: {
-    signIn: (state, action: PayloadAction<string>) => {
-      console.log(action.payload);
-      // TODO
-      state.id = "todo";
-      state.roles = [];
+    signIn: (state, action: PayloadAction<IState>) => {
+      state.id = action.payload.id;
+      state.profile = action.payload.profile;
     },
     signOut: (state) => {
-      // TODO
-      state = {};
+      state.id = undefined;
+      state.profile = undefined;
     },
   },
 });
@@ -50,7 +56,7 @@ export const isAdministrtor = (state: RootState): boolean =>
   hasRole(state, ADMINISTRATOR);
 
 export const hasRole = (state: RootState, role: string): boolean =>
-  state.currentUser.roles !== undefined &&
-  state.currentUser.roles.includes(role);
+  state.currentUser.profile?.roles !== undefined &&
+  state.currentUser.profile?.roles.includes(role);
 
 export default slice.reducer;

@@ -31,7 +31,7 @@ impl Query {
         let it = nut::graphql::user::UserLogList::new(ctx, &pager)?;
         Ok(it)
     }
-    fn userRefreshToken(ctx: &Context) -> FieldResult<nut::graphql::user::UserSignInResponse> {
+    fn userRefreshToken(ctx: &Context) -> FieldResult<String> {
         let it = nut::graphql::user::refresh_token(ctx)?;
         Ok(it)
     }

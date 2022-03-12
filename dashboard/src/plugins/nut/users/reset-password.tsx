@@ -15,7 +15,7 @@ import {
 } from "../../../reducers/notification-bar";
 import { useAppDispatch } from "../../../hooks";
 
-export interface IFormData {
+interface IFormData {
   password: string;
   passwordConfirmation: string;
 }

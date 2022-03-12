@@ -15,7 +15,7 @@ import {
 import { useAppDispatch } from "../../../hooks";
 import { USERS_SIGN_IN_PATH } from "..";
 
-export interface IFormData {
+interface IFormData {
   body: string;
 }
 

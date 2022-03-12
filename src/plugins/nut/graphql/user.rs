@@ -42,26 +42,14 @@ impl Author {
     }
 }
 
-pub fn refresh_token(ctx: &Context) -> Result<UserSignInResponse> {
+pub fn refresh_token(ctx: &Context) -> Result<String> {
     let db = ctx.db.get()?;
     let db = db.deref();
     let jwt = ctx.jwt.deref();
     let user = ctx.token.current_user(db, jwt)?;
-    let (nbf, exp) = Jwt::timestamps(Duration::weeks(1));
-    let token = Token {
-        aud: user.id,
-        act: Action::SignIn,
-        exp,
-        nbf,
-    };
-    let token = ctx.jwt.sum(None, &token)?;
-    Ok(UserSignInResponse {
-        token,
-        name: user.real_name.clone(),
-        lang: user.lang.clone(),
-        logo: user.logo.clone(),
-        tz: user.time_zone,
-    })
+
+    let token = UserSignInRequest::token(jwt, &user)?;
+    Ok(token)
 }
 
 #[derive(Validate)]
@@ -101,6 +89,12 @@ impl UserSignInRequest {
             Ok(())
         })?;
 
+        let jwt = ctx.jwt.deref();
+        let profile = UserProfile::new(db, &user)?;
+        let token = Self::token(jwt, &user)?;
+        Ok(UserSignInResponse { token, profile })
+    }
+    fn token(jwt: &Jwt, user: &UserItem) -> Result<String> {
         let (nbf, exp) = Jwt::timestamps(Duration::weeks(1));
         let token = Token {
             aud: user.id,
@@ -108,24 +102,46 @@ impl UserSignInRequest {
             exp,
             nbf,
         };
-        let token = ctx.jwt.sum(None, &token)?;
-        Ok(UserSignInResponse {
-            token,
-            name: user.real_name.clone(),
-            lang: user.lang.clone(),
-            logo: user.logo.clone(),
-            tz: user.time_zone,
-        })
+        let token = jwt.sum(None, &token)?;
+        Ok(token)
     }
 }
 
 #[derive(GraphQLObject)]
 pub struct UserSignInResponse {
     pub token: String,
+    pub profile: UserProfile,
+}
+
+#[derive(GraphQLObject)]
+pub struct UserProfile {
     pub name: String,
     pub lang: String,
     pub tz: String,
     pub logo: String,
+    pub roles: Vec<String>,
+}
+
+impl UserProfile {
+    fn new(db: &Db, user: &UserItem) -> Result<Self> {
+        let mut roles = Vec::new();
+        {
+            for it in &[RoleItem::ADMINISTRATOR, RoleItem::ROOT] {
+                let role = RoleDao::by_code(db, it)?;
+                if RoleDao::has(db, role.id, type_name::<UserItem>(), user.id) {
+                    roles.push(it.to_string());
+                }
+            }
+        }
+
+        Ok(Self {
+            name: user.real_name.clone(),
+            lang: user.lang.clone(),
+            logo: user.logo.clone(),
+            tz: user.time_zone.clone(),
+            roles,
+        })
+    }
 }
 
 #[derive(Validate, GraphQLInputObject)]
