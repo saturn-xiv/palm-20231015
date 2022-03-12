@@ -1,9 +1,14 @@
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { useIntl } from "react-intl";
 
 import Layout from "./NonSignInLayout";
-import { useIntl } from "react-intl";
+import {
+  error as showError,
+  success as showSuccess,
+} from "../../../reducers/notification-bar";
+import { useAppDispatch } from "../../../hooks";
 
 const Widget = () => {
   const handleSubmit = () => {
@@ -11,6 +16,7 @@ const Widget = () => {
     // console.log(data.get("email"));
   };
   const intl = useIntl();
+  const dispatch = useAppDispatch();
   return (
     <Layout
       logo={<LockOutlinedIcon />}

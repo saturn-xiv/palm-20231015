@@ -1,15 +1,19 @@
-import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { useIntl } from "react-intl";
-import Alert from "@mui/material/Alert";
 import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
-import Snackbar from "@mui/material/Snackbar";
+import { useNavigate } from "react-router-dom";
 
 import Layout from "../users/NonSignInLayout";
 import { graphql } from "../../../request";
-import { Editor, IMessageBar } from "../../";
+import { Editor } from "../../";
+import {
+  error as showError,
+  success as showSuccess,
+} from "../../../reducers/notification-bar";
+import { useAppDispatch } from "../../../hooks";
+import { USERS_SIGN_IN_PATH } from "..";
 
 export interface IFormData {
   body: string;
@@ -17,7 +21,8 @@ export interface IFormData {
 
 const Widget = () => {
   const intl = useIntl();
-  const [formErrorMessages, setFormErrorMessages] = useState<IMessageBar>();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const {
     control,
     formState: { errors },
@@ -41,9 +46,12 @@ const Widget = () => {
         editor: Editor.TEXTAREA,
       },
       () => {
-        setFormErrorMessages({ severity: "success", items: ["aaa"] });
+        dispatch(
+          showSuccess([intl.formatMessage({ id: "flashes.successed" })])
+        );
+        navigate(USERS_SIGN_IN_PATH);
       },
-      (items) => setFormErrorMessages({ severity: "error", items })
+      (items) => dispatch(showError(items))
     );
   };
   return (
@@ -52,26 +60,6 @@ const Widget = () => {
       title={intl.formatMessage({ id: "nut.leave-words.new.title" })}
       handleSubmit={handleSubmit(onSubmit)}
     >
-      <Grid item xs={12}>
-        <Snackbar
-          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-          open={formErrorMessages && formErrorMessages?.items.length > 0}
-        >
-          <Alert
-            variant="filled"
-            severity={formErrorMessages?.severity}
-            onClose={() => {
-              setFormErrorMessages({ severity: "success", items: [] });
-            }}
-          >
-            <ol>
-              {formErrorMessages?.items.map((v, i) => (
-                <li key={i}>{v}</li>
-              ))}
-            </ol>
-          </Alert>
-        </Snackbar>
-      </Grid>
       <Grid item xs={12}>
         <Controller
           name="body"

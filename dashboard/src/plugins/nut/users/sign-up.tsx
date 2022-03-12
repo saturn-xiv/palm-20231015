@@ -1,10 +1,8 @@
-import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { useIntl } from "react-intl";
-import Alert from "@mui/material/Alert";
 import moment from "moment-timezone";
 import { useNavigate } from "react-router-dom";
 
@@ -18,6 +16,11 @@ import {
 import { graphql } from "../../../request";
 import { get as getLocale } from "../../../locales";
 import { USERS_SIGN_IN_PATH } from "..";
+import {
+  error as showError,
+  success as showSuccess,
+} from "../../../reducers/notification-bar";
+import { useAppDispatch } from "../../../hooks";
 
 export interface IFormData {
   realName: string;
@@ -30,7 +33,8 @@ export interface IFormData {
 const Widget = () => {
   const intl = useIntl();
   const navigate = useNavigate();
-  const [formErrorMessages, setFormErrorMessages] = useState<string[]>();
+  const dispatch = useAppDispatch();
+
   const {
     control,
     formState: { errors },
@@ -66,9 +70,12 @@ const Widget = () => {
         },
       },
       () => {
+        dispatch(
+          showSuccess([intl.formatMessage({ id: "flashes.successed" })])
+        );
         navigate(USERS_SIGN_IN_PATH);
       },
-      setFormErrorMessages
+      (items) => dispatch(showError(items))
     );
   };
   return (
@@ -77,23 +84,6 @@ const Widget = () => {
       title={intl.formatMessage({ id: "nut.users.sign-up.title" })}
       handleSubmit={handleSubmit(onSubmit)}
     >
-      <Grid item xs={12}>
-        {formErrorMessages && (
-          <Alert
-            variant="filled"
-            severity="error"
-            onClose={() => {
-              setFormErrorMessages(undefined);
-            }}
-          >
-            <ol>
-              {formErrorMessages.map((v, i) => (
-                <li key={i}>{v}</li>
-              ))}
-            </ol>
-          </Alert>
-        )}
-      </Grid>
       <Grid item xs={12}>
         <Controller
           name="realName"

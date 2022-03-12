@@ -5,6 +5,8 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import HomeIcon from "@mui/icons-material/Home";
 import { FormattedMessage } from "react-intl";
 import Stack from "@mui/material/Stack";
+import Alert from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
 import { Helmet } from "react-helmet-async";
 
 import {
@@ -12,6 +14,10 @@ import {
   selectSiteInfo,
   IState as ISiteInfo,
 } from "../reducers/site-info";
+import {
+  hide as hideNotificationBar,
+  selectNotificationBar,
+} from "../reducers/notification-bar";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { set as setLocale } from "../locales";
 import { graphql } from "../request";
@@ -26,7 +32,11 @@ interface IFetchResponse {
 
 const Widget = (props: IProps) => {
   const site = useAppSelector(selectSiteInfo);
+  const notificationBar = useAppSelector(selectNotificationBar);
   const dispatch = useAppDispatch();
+  const onCloseNotificationBar = () => {
+    dispatch(hideNotificationBar());
+  };
   useEffect(() => {
     if (site.languages.length === 0) {
       graphql(
@@ -78,6 +88,24 @@ const Widget = (props: IProps) => {
           <FormattedMessage id={`languages.${it}`} />
         </Link>
       ))}
+      <Snackbar
+        autoHideDuration={6000}
+        onClose={onCloseNotificationBar}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        open={notificationBar.messages.length > 0}
+      >
+        <Alert
+          variant="filled"
+          severity={notificationBar.severity}
+          onClose={onCloseNotificationBar}
+        >
+          <ol>
+            {notificationBar.messages.map((v, i) => (
+              <li key={i}>{v}</li>
+            ))}
+          </ol>
+        </Alert>
+      </Snackbar>
     </Stack>
   );
 };

@@ -11,6 +11,8 @@ const items = {
   "fields.password-confirmation": "Password confirmation",
   "fields.body": "Body",
 
+  "flashes.successed": "Successed.",
+
   "helpers.real-name": "Real-name's length should between 2~32",
   "helpers.nick-name":
     "Nickname's length should between 2~32 and only can be alphabet or numbers",

@@ -22,12 +22,20 @@ const plugin: IPlugin = {
       component: () => import("./users/forgot-password"),
     },
     {
+      path: "/users/unlock/:token",
+      component: () => import("./users/unlock/verify"),
+    },
+    {
       path: "/users/unlock",
-      component: () => import("./users/unlock"),
+      component: () => import("./users/unlock/new"),
+    },
+    {
+      path: "/users/confirm/:token",
+      component: () => import("./users/confirm/verify"),
     },
     {
       path: "/users/confirm",
-      component: () => import("./users/confirm"),
+      component: () => import("./users/confirm/new"),
     },
     {
       path: USERS_SIGN_IN_PATH,
