@@ -7,6 +7,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { HelmetProvider } from "react-helmet-async";
 
 import Copyright from "../Copyright";
+import { containerPadding } from "..";
 
 const theme = createTheme();
 
@@ -19,7 +20,7 @@ function Widget({ title, children }: IProps) {
   return (
     <HelmetProvider>
       <ThemeProvider theme={theme}>
-        <Container component="main">
+        <Container style={containerPadding} maxWidth={false} component="main">
           <CssBaseline />
           <Box
             sx={{

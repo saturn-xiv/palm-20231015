@@ -31,6 +31,7 @@ const items = {
   "nut.users.unlock.title": "Resend unlock instructions",
   "nut.users.forgot-password.title": "Forgot your password?",
   "nut.users.reset-password.title": "Reset your password",
+  "nut.users.logs.title": "Logs",
   "nut.leave-words.new.title": "Leave us a message",
 };
 

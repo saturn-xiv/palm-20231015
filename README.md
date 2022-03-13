@@ -29,3 +29,7 @@ npm install sql-formatter -g
 - [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/controls/web)
 - [MUI](https://mui.com/getting-started/installation/)
 - [Google Fonts](https://developers.google.com/fonts/docs/material_icons#setup_method_2_self_hosting)
+
+### Token
+
+- [Sign in with App Passwords](https://support.google.com/accounts/answer/185833?hl=en)

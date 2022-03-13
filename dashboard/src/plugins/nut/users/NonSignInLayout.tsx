@@ -63,8 +63,8 @@ function Widget({ title, logo, children, handleSubmit }: IProps) {
   const navigate = useNavigate();
   return (
     <Layout title={title}>
-      <Grid item md={3}></Grid>
-      <Grid item md={6}>
+      <Grid item md={4}></Grid>
+      <Grid item md={4}>
         <Box component="form" onSubmit={handleSubmit}>
           <Grid container spacing={2} direction="column">
             <Grid item>
