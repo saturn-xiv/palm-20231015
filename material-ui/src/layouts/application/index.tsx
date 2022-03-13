@@ -9,14 +9,13 @@ import { HelmetProvider } from "react-helmet-async";
 import Copyright from "../Copyright";
 import { containerPadding } from "..";
 
-const theme = createTheme();
-
 interface IProps {
   title: string;
   children: ReactNode;
 }
 
 function Widget({ title, children }: IProps) {
+  const theme = createTheme();
   return (
     <HelmetProvider>
       <ThemeProvider theme={theme}>
