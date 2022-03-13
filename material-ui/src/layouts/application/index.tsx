@@ -1,23 +1,49 @@
-import CssBaseline from '@mui/material/CssBaseline';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ReactNode } from "react";
+import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { HelmetProvider } from "react-helmet-async";
 
-import Copyright from '../Copyright';
-
-export interface IProps {
-  children: React.ReactNode;
-}
+import Copyright from "../Copyright";
+import { containerPadding } from "..";
 
 const theme = createTheme();
 
-export default ({ children }: IProps) => {
+interface IProps {
+  title: string;
+  children: ReactNode;
+}
+
+function Widget({ title, children }: IProps) {
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        {children}
-        <Copyright />
-      </Container>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider theme={theme}>
+        <Container style={containerPadding} maxWidth={false} component="main">
+          <CssBaseline />
+          <Box
+            sx={{
+              marginTop: 4,
+              marginBottom: 4,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Grid container spacing={2} direction="row">
+              {children}
+              <Grid item md={12}>
+                <Box display="flex" justifyContent="center">
+                  <Copyright title={title} />
+                </Box>
+              </Grid>
+            </Grid>
+          </Box>
+        </Container>
+      </ThemeProvider>
+    </HelmetProvider>
   );
-};
+}
+
+export default Widget;

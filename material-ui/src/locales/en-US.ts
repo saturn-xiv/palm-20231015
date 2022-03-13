@@ -1,28 +1,38 @@
-export default {
-  'buttons.submit': 'Submit',
-  'attributes.email': 'Email',
-  'attributes.password': 'Password',
-  'attributes.current-password': 'Current password',
-  'attributes.new-password': 'New password',
-  'attributes.password-confirmation': 'Password confirmation',
-  'attributes.nick-name': 'Nick name',
-  'attributes.real-name': 'Real name',
-  'attributes.remember-me': 'Remember me',
-  'helpers.nick-name':
-    'Nick name should between 3~32 characters and with alphabet or numbers',
-  'helpers.real-name': 'Nick name should between 2~32 characters',
-  'helpers.email': 'Please enter a valid email address',
-  'helpers.password': 'Password should between 6~32 characters',
-  'helpers.password-onfirmation': 'The passwords do not match',
-  'install.title': 'Install',
-  'users.sign-in.title': 'Sign In',
-  'users.sign-up.title': "Don't have an account? Sign Up",
-  'users.sign-up.allow-extra-emails':
-    'I want to receive inspiration, marketing promotions and updates via email.',
-  'users.confirm.title': "Didn't receive confirmation instructions?",
-  'users.confirm.submit': 'Resend confirmation instructions',
-  'users.unlock.title': "Didn't receive unlock instructions?",
-  'users.unlock.submit': 'Resend unlock instructions',
-  'users.forgot-password.title': 'Forgot your password?',
-  'users.forgot-password.submit': 'Send me reset password instructions',
+const items = {
+  "buttons.search": "Search",
+  "buttons.submit": "Submit",
+  "buttons.go-back": "Go back",
+  "buttons.go-home": "Go home",
+
+  "fields.email": "Email address",
+  "fields.real-name": "Real name",
+  "fields.nick-name": "Nick name",
+  "fields.password": "Password",
+  "fields.password-confirmation": "Password confirmation",
+  "fields.body": "Body",
+
+  "flashes.successed": "Successed.",
+
+  "helpers.real-name": "Real-name's length should between 2~32",
+  "helpers.nick-name":
+    "Nickname's length should between 2~32 and only can be alphabet or numbers",
+  "helpers.email": "Please entry a valid email address",
+  "helpers.password": "Password's length should between 6~64",
+  "helpers.password-confirmation": "Passwords not match",
+  "helpers.required": "Can't empty",
+
+  "404.title": "The page you are looking for isn’t here",
+
+  "nut.install.title": "Install",
+  "nut.users.sign-in.title": "Sign in",
+  "nut.users.sign-in.fields.id": "Nickname or email",
+  "nut.users.sign-up.title": "Sign Up",
+  "nut.users.confirm.title": "Resend confirmation instructions",
+  "nut.users.unlock.title": "Resend unlock instructions",
+  "nut.users.forgot-password.title": "Forgot your password?",
+  "nut.users.reset-password.title": "Reset your password",
+  "nut.users.logs.title": "Logs",
+  "nut.leave-words.new.title": "Leave us a message",
 };
+
+export default items;
