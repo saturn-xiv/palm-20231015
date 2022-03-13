@@ -7,6 +7,7 @@ yarn add marked moment moment-timezone d3 mermaid \
     mdb-ui-kit \
     bulma \
     tailwindcss@latest \
+    @tabler/core \
     material-components-web material-design-icons @fontsource/roboto
 
 echo 'done.'

@@ -19,18 +19,29 @@ set -e
 #     js-cookie jwt-decode dinero.js@alpha video.js
 
 
-yarn add react-intl \
-    react-router-dom@6 @reduxjs/toolkit react-redux @types/react-redux \
-    react-helmet-async \
-    @mui/material @emotion/react @emotion/styled \
-    @mui/icons-material material-design-icons @fontsource/roboto \
-    @loadable/component @types/loadable__component \
-    react-hook-form moment moment-timezone \
-    react-copy-to-clipboard react-quill@beta react-dropzone \
-    google-map-react qrcode.react react-markdown \
-    react-json-view react-color react-syntax-highlighter \
-    emoji-mart react-sparklines react-highlight-words \
-    js-cookie jwt-decode dinero.js@alpha video.js 
+function install_third_utils() {
+    yarn add moment moment-timezone \
+        js-cookie jwt-decode dinero.js@alpha video.js
+} 
+
+function install_third_react() {
+    yarn add react-intl react-router-dom@6 react-hook-form \
+        @reduxjs/toolkit react-redux @types/react-redux \
+        react-helmet-async \
+        @loadable/component @types/loadable__component \
+        react-copy-to-clipboard react-quill@beta react-dropzone \
+        google-map-react qrcode.react react-markdown \
+        react-json-view react-color react-syntax-highlighter \
+        emoji-mart react-sparklines react-highlight-words    
+}
+
+install_third_utils
+install_third_react
+yarn add @fluentui/react
+
+# material ui
+# yarn add @mui/material @emotion/react @emotion/styled \
+#     @mui/icons-material material-design-icons @fontsource/roboto
 
 
 echo 'done.'
