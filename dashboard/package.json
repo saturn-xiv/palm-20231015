@@ -2,6 +2,7 @@
   "name": "dashboard",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/my/",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@ant-design/pro-card": "^1.18.38",

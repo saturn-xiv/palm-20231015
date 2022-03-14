@@ -46,12 +46,16 @@ const plugin: IPlugin = {
       component: () => import("./users/sign-up"),
     },
     {
+      path: "/switch-language",
+      component: () => import("./switch-language"),
+    },
+    {
       path: "/install",
       component: () => import("./install"),
     },
     {
       path: "/",
-      component: () => import("./users/sign-in"),
+      component: () => import("./home"),
     },
   ],
 };
