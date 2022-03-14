@@ -37,8 +37,20 @@ function install_third_react() {
 
 install_third_utils
 install_third_react
-yarn add @fluentui/react office-ui-fabric-core \
-    @fluentui/react-icons-mdl2 @fluentui/react-icons-mdl2-branded
+
+# ant design
+yarn add antd @ant-design/icons \
+    @ant-design/pro-form \
+    @ant-design/pro-layout \
+    @ant-design/pro-table \
+    @ant-design/pro-list \
+    @ant-design/pro-descriptions \
+    @ant-design/pro-card \
+    @ant-design/pro-skeleton
+
+# fluent ui
+# yarn add @fluentui/react office-ui-fabric-core \
+#     @fluentui/react-icons-mdl2 @fluentui/react-icons-mdl2-branded
 
 # material ui
 # yarn add @mui/material @emotion/react @emotion/styled \
