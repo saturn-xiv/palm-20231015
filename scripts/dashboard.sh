@@ -37,7 +37,8 @@ function install_third_react() {
 
 install_third_utils
 install_third_react
-yarn add @fluentui/react
+yarn add @fluentui/react office-ui-fabric-core \
+    @fluentui/react-icons-mdl2 @fluentui/react-icons-mdl2-branded
 
 # material ui
 # yarn add @mui/material @emotion/react @emotion/styled \
