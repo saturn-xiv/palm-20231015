@@ -41,10 +41,10 @@ const plugin: IPlugin = {
     //   path: USERS_SIGN_IN_PATH,
     //   component: () => import("./users/sign-in"),
     // },
-    // {
-    //   path: "/users/sign-up",
-    //   component: () => import("./users/sign-up"),
-    // },
+    {
+      path: "/users/sign-up",
+      component: () => import("./users/sign-up"),
+    },
     // {
     //   path: "/install",
     //   component: () => import("./install"),
