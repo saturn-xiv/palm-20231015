@@ -33,10 +33,10 @@ export const graphql = (
           if (failed) {
             failed(items);
           } else {
-            items.forEach(message.error);
+            items.forEach((it: string) => message.error(it));
           }
         }
       });
     })
-    .catch(message.error);
+    .catch((it) => message.error(it));
 };

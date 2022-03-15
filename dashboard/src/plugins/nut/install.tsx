@@ -14,22 +14,15 @@ import {
 } from "../../components/form";
 import { graphql } from "../../request";
 import { detect as detectLocale } from "../../locales";
-import { useAppDispatch } from "../../hooks";
 import { USERS_SIGN_IN_PATH } from ".";
+import { IFormData as ISignUpForm } from "./users/sign-up";
 
-interface IFormData {
-  nickName: string;
-  realName: string;
-  email: string;
-  password: string;
-  passwordConfirmation: string;
-}
+interface IFormData extends ISignUpForm {}
 
 const Widget = () => {
   const intl = useIntl();
   const title = intl.formatMessage({ id: "nut.install.title" });
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
   const onSubmit = async (data: IFormData) => {
     graphql(
       `
@@ -51,9 +44,7 @@ const Widget = () => {
         },
       },
       () => {
-        dispatch(
-          message.success(intl.formatMessage({ id: "flashes.successed" }))
-        );
+        message.success(intl.formatMessage({ id: "flashes.successed" }));
         navigate(USERS_SIGN_IN_PATH);
       }
     );
