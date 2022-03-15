@@ -6,7 +6,6 @@ import {
   GlobalOutlined,
 } from "@ant-design/icons";
 import Footer from "@ant-design/pro-layout/lib/Footer";
-import { Helmet } from "react-helmet-async";
 
 import {
   refresh,
@@ -51,40 +50,33 @@ const Widget = (props: IProps) => {
   });
 
   return (
-    <>
-      <Footer
-        copyright={site?.copyright}
-        links={[
-          {
-            key: "home",
-            title: <HomeOutlined />,
-            href: "/",
-            blankTarget: true,
-          },
-          {
-            key: "dashboard",
-            title: <DashboardOutlined />,
-            href: BASE_NAME,
-          },
-          {
-            key: "github",
-            title: <GithubOutlined />,
-            href: "https://github.com/saturn-xiv/palm",
-            blankTarget: true,
-          },
-          {
-            key: "global",
-            title: <GlobalOutlined />,
-            href: `${BASE_NAME}switch-language`,
-          },
-        ]}
-      />
-      <Helmet>
-        <title>
-          {props.title} | {site.title}
-        </title>
-      </Helmet>
-    </>
+    <Footer
+      copyright={site?.copyright}
+      links={[
+        {
+          key: "home",
+          title: <HomeOutlined />,
+          href: "/",
+          blankTarget: true,
+        },
+        {
+          key: "dashboard",
+          title: <DashboardOutlined />,
+          href: BASE_NAME,
+        },
+        {
+          key: "github",
+          title: <GithubOutlined />,
+          href: "https://github.com/saturn-xiv/palm",
+          blankTarget: true,
+        },
+        {
+          key: "global",
+          title: <GlobalOutlined />,
+          href: `${BASE_NAME}switch-language`,
+        },
+      ]}
+    />
   );
 };
 

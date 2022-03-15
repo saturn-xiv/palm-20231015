@@ -3,6 +3,7 @@ const items = {
   "buttons.submit": "Submit",
   "buttons.go-back": "Go back",
   "buttons.go-home": "Go home",
+  "buttons.reset": "Reset",
 
   "fields.email": "Email address",
   "fields.real-name": "Real name",
@@ -18,7 +19,8 @@ const items = {
     "Nickname's length should between 2~32 and only can be alphabet or numbers",
   "helpers.email": "Please entry a valid email address",
   "helpers.password": "Password's length should between 6~64",
-  "helpers.password-confirmation": "Passwords not match",
+  "helpers.password-confirmation":
+    "The two passwords that you entered do not match!",
   "helpers.required": "Can't empty",
 
   "nut.not-found.title": "The page you are looking for isn’t here",

@@ -1,6 +1,6 @@
-import { getToken } from "./reducers/current-user";
+import { message } from "antd";
 
-export interface IErrorHandler {}
+import { getToken } from "./reducers/current-user";
 
 export const graphql = (
   query: string,
@@ -33,10 +33,10 @@ export const graphql = (
           if (failed) {
             failed(items);
           } else {
-            items.forEach((it: string) => console.error(it));
+            items.forEach(message.error);
           }
         }
       });
     })
-    .catch(console.error);
+    .catch(message.error);
 };
