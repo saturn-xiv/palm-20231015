@@ -109,4 +109,11 @@ impl super::Provider for redis::Connection {
         info!("{}", rst);
         Ok(())
     }
+
+    fn destroy<K: Display>(&mut self, key: &K) -> Result<()> {
+        warn!("clear cache with prefix {}", key);
+        let keys: Vec<String> = Commands::keys(self, &format!("{}*", key))?;
+        let _: () = self.del(&keys)?;
+        Ok(())
+    }
 }

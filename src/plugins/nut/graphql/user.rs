@@ -1,9 +1,8 @@
 use std::any::type_name;
-use std::ops::Deref;
+use std::ops::{Deref, DerefMut};
 use std::thread;
 
-use chrono::Duration;
-use chrono::NaiveDateTime;
+use chrono::{Duration, NaiveDateTime};
 use diesel::connection::Connection as DieselConnection;
 use hyper::StatusCode;
 use juniper::{GraphQLInputObject, GraphQLObject};
@@ -13,6 +12,7 @@ use validator::Validate;
 use super::super::super::super::{
     i18n::I18n, jwt::Jwt, orm::Connection as Db, Error, HttpError, Result,
 };
+use super::super::super::layout::Layout;
 use super::super::{
     models::{
         log::{Dao as LogDao, Level},
@@ -90,9 +90,14 @@ impl UserSignInRequest {
         })?;
 
         let jwt = ctx.jwt.deref();
-        let profile = UserProfile::new(db, &user)?;
         let token = Self::token(jwt, &user)?;
-        Ok(UserSignInResponse { token, profile })
+        let aes = ctx.aes.deref();
+        let mut ch = ctx.cache.get()?;
+        let ch = ch.deref_mut();
+        let lang = user.lang.clone();
+        let layout = Layout::new(&Some(user), db, ch, aes, &lang)?;
+
+        Ok(UserSignInResponse { token, layout })
     }
     fn token(jwt: &Jwt, user: &UserItem) -> Result<String> {
         let (nbf, exp) = Jwt::timestamps(Duration::weeks(1));
@@ -110,38 +115,7 @@ impl UserSignInRequest {
 #[derive(GraphQLObject)]
 pub struct UserSignInResponse {
     pub token: String,
-    pub profile: UserProfile,
-}
-
-#[derive(GraphQLObject)]
-pub struct UserProfile {
-    pub name: String,
-    pub lang: String,
-    pub tz: String,
-    pub logo: String,
-    pub roles: Vec<String>,
-}
-
-impl UserProfile {
-    fn new(db: &Db, user: &UserItem) -> Result<Self> {
-        let mut roles = Vec::new();
-        {
-            for it in &[RoleItem::ADMINISTRATOR, RoleItem::ROOT] {
-                let role = RoleDao::by_code(db, it)?;
-                if RoleDao::has(db, role.id, type_name::<UserItem>(), user.id) {
-                    roles.push(it.to_string());
-                }
-            }
-        }
-
-        Ok(Self {
-            name: user.real_name.clone(),
-            lang: user.lang.clone(),
-            logo: user.logo.clone(),
-            tz: user.time_zone.clone(),
-            roles,
-        })
-    }
+    pub layout: Layout,
 }
 
 #[derive(Validate, GraphQLInputObject)]

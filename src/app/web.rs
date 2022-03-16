@@ -2,10 +2,11 @@ use std::net::SocketAddr;
 use std::path::{Component, Path};
 
 use actix_cors::Cors;
-use actix_session::CookieSession;
+use actix_session::{storage::CookieSessionStore, SessionMiddleware};
 use actix_web::{middleware, web, App, HttpServer};
 use chrono::Duration;
-use cookie::SameSite;
+use cookie::{Key as CookieKey, SameSite};
+
 use hyper::{
     header::{ACCEPT, ACCEPT_LANGUAGE, AUTHORIZATION, CONTENT_TYPE},
     Method,
@@ -65,13 +66,17 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                     .max_age(Duration::hours(1).num_seconds() as usize),
             )
             .wrap(
-                CookieSession::signed(&cookie_key)
-                    .name(NAME)
-                    .same_site(SameSite::None)
-                    .http_only(true)
-                    .max_age(Duration::hours(1).num_seconds())
-                    .path("/")
-                    .secure(is_prod),
+                SessionMiddleware::builder(
+                    CookieSessionStore::default(),
+                    CookieKey::from(&cookie_key),
+                )
+                .cookie_name(NAME.to_string())
+                .cookie_same_site(SameSite::None)
+                .cookie_http_only(true)
+                // .cookie_max_age(Duration::hours(1).num_seconds())
+                .cookie_path("/".to_string())
+                .cookie_secure(is_prod)
+                .build(),
             )
             .service(
                 web::resource(graphql::GRAPHQL_ROUTE)

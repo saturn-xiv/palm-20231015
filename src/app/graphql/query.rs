@@ -6,6 +6,7 @@ use super::super::super::{
     i18n::locale::Item as Locale,
     plugins::{
         forum,
+        layout::Layout,
         nut::{
             self,
             graphql::{Context, Pager},
@@ -40,8 +41,8 @@ impl Query {
         Ok(items)
     }
 
-    fn siteInfo(ctx: &Context) -> FieldResult<nut::graphql::Site> {
-        let it = nut::graphql::Site::new(ctx)?;
+    fn layout(ctx: &Context) -> FieldResult<Layout> {
+        let it = Layout::build(ctx)?;
         Ok(it)
     }
 
