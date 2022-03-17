@@ -1,19 +1,18 @@
-import { useIntl } from "react-intl";
+import { useIntl, FormattedMessage } from "react-intl";
 import { UserAddOutlined } from "@ant-design/icons";
 import ProForm, { ProFormText } from "@ant-design/pro-form";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
+import jwtDecode, { JwtPayload } from "jwt-decode";
 
 import Layout from "./NonSignInLayout";
 import { graphql } from "../../../request";
 import { USERS_LOGS_PATH } from "..";
-import {
-  signIn as userSignIn,
-  IProfile as IUserProfile,
-  setToken,
-} from "../../../reducers/current-user";
+import { signIn as userSignIn, setToken } from "../../../reducers/current-user";
+import { refresh as refreshSideBar } from "../../../reducers/side-bar";
+import { refresh as refreshSiteInfo } from "../../../reducers/site-info";
 import { useAppDispatch } from "../../../hooks";
-import jwtDecode, { JwtPayload } from "jwt-decode";
+import { ILayout } from "../../../layouts/footer";
 
 interface IFormData {
   id: string;
@@ -22,7 +21,7 @@ interface IFormData {
 
 export interface IUserSignInResponse {
   token: string;
-  profile: IUserProfile;
+  layout: ILayout;
 }
 
 interface IFormResponse {
@@ -40,29 +39,51 @@ const Widget = () => {
         mutation PostForm($id: String!, $password: String!) {
           userSignIn(id: $id, password: $password) {
             token
-            profile {
-              lang
-              tz
-              name
-              logo
-              roles
+            layout {
+              siteInfo {
+                title
+                subhead
+                copyright
+                languages
+              }
+              userProfile {
+                nickName
+                realName
+                email
+                lang
+                logo
+                timeZone
+              }
+              sideBar {
+                to
+                label
+                items {
+                  to
+                  label
+                }
+              }
             }
           }
         }
       `,
       { id: data.id, password: data.password },
-      (data: IFormResponse) => {
+      (res: IFormResponse) => {
+        const data = res.userSignIn;
         try {
-          const decoded: any = jwtDecode<JwtPayload>(data.userSignIn.token);
-          dispatch(
-            userSignIn({
-              id: decoded.aud,
-              profile: data.userSignIn.profile,
-            })
-          );
-          message.success(intl.formatMessage({ id: "flashes.successed" }));
-          navigate(USERS_LOGS_PATH);
-          setToken(data.userSignIn.token);
+          if (data.layout.userProfile) {
+            const decoded: any = jwtDecode<JwtPayload>(data.token);
+            dispatch(
+              userSignIn({
+                id: decoded.aud,
+                profile: data.layout.userProfile,
+              })
+            );
+            dispatch(refreshSideBar(data.layout.sideBar));
+            dispatch(refreshSiteInfo(data.layout.siteInfo));
+            message.success(intl.formatMessage({ id: "flashes.successed" }));
+            navigate(USERS_LOGS_PATH);
+            setToken(data.token);
+          }
         } catch (e) {
           if (e instanceof Error) {
             message.error(e.message);
@@ -81,13 +102,13 @@ const Widget = () => {
           width="md"
           name="id"
           rules={[{ required: true }]}
-          label={intl.formatMessage({ id: "nut.users.sign-in.fields.id" })}
+          label={<FormattedMessage id="nut.users.sign-in.fields.id" />}
         />
         <ProFormText.Password
           width="md"
           name="password"
           rules={[{ required: true }]}
-          label={intl.formatMessage({ id: "fields.password" })}
+          label={<FormattedMessage id="fields.password" />}
         />
       </ProForm>
     </Layout>

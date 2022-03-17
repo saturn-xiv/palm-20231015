@@ -1,4 +1,4 @@
-import { useIntl } from "react-intl";
+import { useIntl, FormattedMessage } from "react-intl";
 import { MailOutlined } from "@ant-design/icons";
 import ProForm, { ProFormText } from "@ant-design/pro-form";
 import { message } from "antd";
@@ -45,7 +45,7 @@ const Widget = () => {
           width="md"
           name="email"
           rules={EMAIL_VALIDATOR}
-          label={intl.formatMessage({ id: "fields.email" })}
+          label={<FormattedMessage id="fields.email" />}
         />
       </ProForm>
     </Layout>

@@ -21,8 +21,7 @@ const Widget = ({ title, children }: IProps) => {
   const navigate = useNavigate();
   return (
     <Layout title={title}>
-      <Card title={title}>{children}</Card>
-
+      <Card>{children}</Card>
       <Menu onClick={({ key }) => navigate(key)}>
         {[
           {

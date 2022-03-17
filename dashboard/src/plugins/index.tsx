@@ -12,6 +12,12 @@ export enum Editor {
   MARKDOWN = "markdown",
 }
 
+export interface IPagination {
+  capacity: number;
+  size: number;
+  index: number;
+}
+
 export interface IPlugin {
   routes: IRoute[];
 }

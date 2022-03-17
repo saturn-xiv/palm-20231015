@@ -36,8 +36,10 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let addr = SocketAddr::from(([127, 0, 0, 1], cfg.http.port));
     info!("run on http://{addr}");
 
-    let cookie_key: Result<Vec<u8>> = cfg.secrets.clone().into();
-    let cookie_key = cookie_key?;
+    let cookie_key = {
+        let it = base64::encode(base64::encode(&cfg.secrets.0));
+        it.as_bytes().to_vec()
+    };
     let is_prod = cfg.env == Environment::Production;
 
     HttpServer::new(move || {

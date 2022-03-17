@@ -36,3 +36,5 @@ export const PASSWORD_VALIDATOR = [
     max: 64,
   },
 ];
+
+export const URL_VALIDATOR = [{ required: true, min: 6 }];

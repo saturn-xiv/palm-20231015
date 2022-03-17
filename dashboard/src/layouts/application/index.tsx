@@ -1,8 +1,9 @@
 import { ReactNode } from "react";
-import ProLayout from "@ant-design/pro-layout";
+import ProLayout, { PageContainer } from "@ant-design/pro-layout";
 import { Row, Col } from "antd";
+import Footer from "@ant-design/pro-layout/lib/Footer";
 
-import Copyright from "../Copyright";
+import { Home, Github, Dashboard, I18n, Layout as LayoutInfo } from "../footer";
 import { selectSiteInfo } from "../../reducers/site-info";
 import { useAppSelector } from "../../hooks";
 
@@ -18,15 +19,45 @@ const Widget = ({ title, children }: IProps) => {
       title={site.subhead}
       layout="top"
       contentWidth="Fluid"
-      ErrorBoundary={false}
-      footerRender={() => <Copyright title={title} />}
+      footerRender={() => (
+        <Footer
+          copyright={site.copyright}
+          links={[
+            {
+              key: "home",
+              title: <Home />,
+              href: "#",
+            },
+            {
+              key: "dashboard",
+              title: <Dashboard />,
+              href: "#",
+            },
+            {
+              key: "github",
+              title: <Github />,
+              href: "#",
+            },
+            {
+              key: "global",
+              title: <I18n />,
+              href: "#",
+            },
+          ]}
+        />
+      )}
       fixedHeader={true}
     >
-      <Row>
-        <Col sm={{ span: 22, offset: 1 }} md={{ span: 8, offset: 8 }}>
-          {children}
-        </Col>
-      </Row>
+      <PageContainer title={title} content={<div />}>
+        <Row>
+          <Col sm={{ span: 22, offset: 1 }} md={{ span: 8, offset: 8 }}>
+            {children}
+          </Col>
+          <Col span={24}>
+            <LayoutInfo />
+          </Col>
+        </Row>
+      </PageContainer>
     </ProLayout>
   );
 };

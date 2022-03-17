@@ -1,54 +1,54 @@
 import { useIntl, FormattedMessage } from "react-intl";
-import { SecurityScanOutlined } from "@ant-design/icons";
 import ProForm, { ProFormText } from "@ant-design/pro-form";
-import { message } from "antd";
-import { useNavigate, useParams } from "react-router-dom";
+import { message, Card } from "antd";
 
-import Layout from "./NonSignInLayout";
-import { PASSWORD_VALIDATOR } from "../../../components/form";
-import { graphql } from "../../../request";
-import { USERS_SIGN_IN_PATH } from "..";
+import { PASSWORD_VALIDATOR } from "../../../../components/form";
+import { graphql } from "../../../../request";
 
-export interface IFormData {
-  password: string;
+interface IFormData {
+  currentPassword: string;
+  newPassword: string;
   passwordConfirmation: string;
 }
 
 const Widget = () => {
   const intl = useIntl();
-  const title = intl.formatMessage({ id: "nut.users.reset-password.title" });
-  const navigate = useNavigate();
-  let params = useParams();
   const onSubmit = async (data: IFormData) => {
     graphql(
       `
-        mutation PostForm($token: String!, $password: String!) {
-          userResetPassword(token: $token, password: $password) {
+        mutation PostForm($currentPassword: String!, $newPassword: String!) {
+          userChangePassword(
+            currentPassword: $currentPassword
+            newPassword: $newPassword
+          ) {
             createdAt
           }
         }
       `,
       {
-        user: {
-          password: data.password,
-          token: params.token,
-        },
+        newPassword: data.newPassword,
+        currentPassword: data.currentPassword,
       },
       () => {
         message.success(intl.formatMessage({ id: "flashes.successed" }));
-        navigate(USERS_SIGN_IN_PATH);
       }
     );
   };
 
   return (
-    <Layout icon={<SecurityScanOutlined />} title={title}>
+    <Card title={<FormattedMessage id="nut.users.profile.change-password" />}>
       <ProForm<IFormData> onFinish={onSubmit}>
         <ProFormText.Password
           width="md"
-          name="password"
+          name="currentPassword"
+          rules={[{ required: true }]}
+          label={<FormattedMessage id="fields.current-password" />}
+        />
+        <ProFormText.Password
+          width="md"
+          name="newPassword"
           rules={PASSWORD_VALIDATOR}
-          label={<FormattedMessage id="fields.password" />}
+          label={<FormattedMessage id="fields.new-password" />}
         />
         <ProFormText.Password
           width="md"
@@ -59,12 +59,14 @@ const Widget = () => {
             },
             ({ getFieldValue }) => ({
               validator(_, value) {
-                if (!value || getFieldValue("password") === value) {
+                if (!value || getFieldValue("newPassword") === value) {
                   return Promise.resolve();
                 }
                 return Promise.reject(
                   new Error(
-                    intl.formatMessage({ id: "helpers.password-confirmation" })
+                    intl.formatMessage({
+                      id: "helpers.password-confirmation",
+                    })
                   )
                 );
               },
@@ -73,7 +75,7 @@ const Widget = () => {
           label={<FormattedMessage id="fields.password-confirmation" />}
         />
       </ProForm>
-    </Layout>
+    </Card>
   );
 };
 

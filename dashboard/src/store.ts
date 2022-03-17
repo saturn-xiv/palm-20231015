@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import currentUser from "./reducers/current-user";
 import siteInfo from "./reducers/site-info";
+import sideBar from "./reducers/side-bar";
 
 const store = configureStore({
   reducer: {
     currentUser,
     siteInfo,
+    sideBar,
   },
 });
 

@@ -70,6 +70,8 @@ impl UserSignInRequest {
         } else {
             UserDao::by_nick_name(db, &self.id)?
         };
+        let enc = ctx.hmac.deref();
+        user.auth(enc, &self.password)?;
         user.available()?;
 
         let ip = ctx.peer.clone();
@@ -522,6 +524,7 @@ pub struct UserLogList {
 
 #[derive(GraphQLObject)]
 pub struct UserLogItem {
+    pub id: Uuid,
     pub level: String,
     pub ip: String,
     pub resource_type: String,
@@ -542,6 +545,7 @@ impl UserLogList {
         let items = LogDao::all(db, user.id, offset, limit)?
             .iter()
             .map(|it| UserLogItem {
+                id: it.id,
                 level: it.level.clone(),
                 ip: it.ip.clone(),
                 resource_id: it.resource_id,

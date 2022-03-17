@@ -22,11 +22,12 @@ export interface IState {
 }
 
 export interface IProfile {
-  name: string;
+  realName: string;
+  nickName: string;
+  email: string;
   lang: string;
-  tz: string;
+  timeZone: string;
   logo: string;
-  roles: string[];
 }
 
 const initialState: IState = {};
@@ -48,15 +49,10 @@ export const slice = createSlice({
 
 export const { signIn, signOut } = slice.actions;
 
-const ADMINISTRATOR = "administrator";
+export const selectCurrentUser = (state: RootState): IProfile | undefined =>
+  state.currentUser.profile;
 
 export const isSignIn = (state: RootState): boolean =>
   state.currentUser.id !== undefined;
-export const isAdministrtor = (state: RootState): boolean =>
-  hasRole(state, ADMINISTRATOR);
-
-export const hasRole = (state: RootState, role: string): boolean =>
-  state.currentUser.profile?.roles !== undefined &&
-  state.currentUser.profile?.roles.includes(role);
 
 export default slice.reducer;

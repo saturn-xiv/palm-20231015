@@ -2,7 +2,7 @@ use std::any::type_name;
 use std::fmt;
 use std::ops::{Deref, DerefMut};
 
-use chrono::Duration;
+use chrono::{Datelike, Duration, Utc};
 use juniper::GraphQLObject;
 use redis::Connection as Cache;
 use serde::{Deserialize, Serialize};
@@ -26,25 +26,29 @@ use super::nut::{
 
 #[derive(GraphQLObject, Serialize, Deserialize)]
 pub struct Layout {
-    pub menus: Vec<Menu>,
-    pub site: Site,
-    pub user: Option<UserProfile>,
+    pub side_bar: Vec<Menu>,
+    pub site_info: Site,
+    pub user_profile: Option<UserProfile>,
 }
 
 #[derive(GraphQLObject, Serialize, Deserialize)]
 pub struct UserProfile {
-    pub name: String,
+    pub nick_name: String,
+    pub real_name: String,
+    pub email: String,
     pub lang: String,
-    pub tz: String,
+    pub time_zone: String,
     pub logo: String,
 }
 impl From<User> for UserProfile {
     fn from(it: User) -> UserProfile {
         Self {
-            name: it.real_name.clone(),
+            real_name: it.real_name.clone(),
+            nick_name: it.nick_name.clone(),
+            email: it.email.clone(),
             lang: it.lang.clone(),
             logo: it.logo.clone(),
-            tz: it.time_zone,
+            time_zone: it.time_zone,
         }
     }
 }
@@ -95,12 +99,12 @@ impl Layout {
             },
             move || {
                 let it = Self {
-                    site: Site::new(db, enc, lang)?,
-                    menus: match user {
-                        Some(ref user) => Menu::load(user.id, db)?,
+                    site_info: Site::new(db, enc, lang)?,
+                    side_bar: match user {
+                        Some(ref user) => Menu::side_bar(user.id, db)?,
                         None => Vec::new(),
                     },
-                    user: user.as_ref().map(|user| user.clone().into()),
+                    user_profile: user.as_ref().map(|user| user.clone().into()),
                 };
                 Ok(it)
             },
@@ -124,9 +128,16 @@ pub struct Menu {
 }
 
 impl Menu {
-    pub fn load(user: Uuid, db: &Db) -> Result<Vec<Self>> {
-        let mut items = vec![Menu {
-            to: "personal".to_string(),
+    pub fn side_bar(user: Uuid, db: &Db) -> Result<Vec<Self>> {
+        let mut items = Vec::new();
+
+        let is_admin = {
+            let role = RoleDao::by_code(db, Role::ADMINISTRATOR)?;
+            RoleDao::has(db, role.id, type_name::<User>(), user)
+        };
+
+        let mut settings = Menu {
+            to: "settings".to_string(),
             items: vec![
                 Menu {
                     to: "/users/logs".to_string(),
@@ -136,54 +147,33 @@ impl Menu {
                     to: "/users/profile".to_string(),
                     ..Default::default()
                 },
-                Menu {
-                    to: "/users/change-password".to_string(),
-                    ..Default::default()
-                },
             ],
             ..Default::default()
-        }];
-
-        let is_admin = {
-            let role = RoleDao::by_code(db, Role::ADMINISTRATOR)?;
-            RoleDao::has(db, role.id, type_name::<User>(), user)
         };
         if is_admin {
-            items.push(Menu {
-                to: "admin".to_string(),
-                items: vec![
-                    Menu {
-                        to: "/admin/site-info".to_string(),
-                        ..Default::default()
-                    },
-                    Menu {
-                        to: "/admin/locales".to_string(),
-                        ..Default::default()
-                    },
-                    Menu {
-                        to: "/admin/smtp".to_string(),
-                        ..Default::default()
-                    },
-                    Menu {
-                        to: "/admin/seo".to_string(),
-                        ..Default::default()
-                    },
-                    Menu {
-                        to: "/admin/users".to_string(),
-                        ..Default::default()
-                    },
-                    Menu {
-                        to: "/admin/tags".to_string(),
-                        ..Default::default()
-                    },
-                    Menu {
-                        to: "/admin/categories".to_string(),
-                        ..Default::default()
-                    },
-                ],
+            settings.items.push(Menu {
+                to: "/admin/site".to_string(),
+                ..Default::default()
+            });
+            settings.items.push(Menu {
+                to: "/admin/locales".to_string(),
+                ..Default::default()
+            });
+            settings.items.push(Menu {
+                to: "/admin/users".to_string(),
+                ..Default::default()
+            });
+            settings.items.push(Menu {
+                to: "/admin/tags".to_string(),
+                ..Default::default()
+            });
+            settings.items.push(Menu {
+                to: "/admin/categories".to_string(),
                 ..Default::default()
             });
         }
+
+        items.push(settings);
         Ok(items)
     }
 }
@@ -240,7 +230,7 @@ impl Site {
                 &Self::COPYRIGHT.to_string(),
                 None,
             )
-            .unwrap_or_default(),
+            .unwrap_or_else(|_| format!("{}", Utc::now().year())),
             locale: lang.to_string(),
         };
         Ok(it)

@@ -1,4 +1,4 @@
-import { useIntl } from "react-intl";
+import { useIntl, FormattedMessage } from "react-intl";
 import { ToolOutlined } from "@ant-design/icons";
 import ProForm, { ProFormText } from "@ant-design/pro-form";
 import moment from "moment-timezone";
@@ -57,25 +57,25 @@ const Widget = () => {
           width="md"
           name="realName"
           rules={REAL_NAME_VALIDATOR}
-          label={intl.formatMessage({ id: "fields.real-name" })}
+          label={<FormattedMessage id="fields.real-name" />}
         />
         <ProFormText
           width="md"
           name="nickName"
           rules={NICK_NAME_VALIDATOR}
-          label={intl.formatMessage({ id: "fields.nick-name" })}
+          label={<FormattedMessage id="fields.nick-name" />}
         />
         <ProFormText
           width="md"
           name="email"
           rules={EMAIL_VALIDATOR}
-          label={intl.formatMessage({ id: "fields.email" })}
+          label={<FormattedMessage id="fields.email" />}
         />
         <ProFormText.Password
           width="md"
           name="password"
           rules={PASSWORD_VALIDATOR}
-          label={intl.formatMessage({ id: "fields.password" })}
+          label={<FormattedMessage id="fields.password" />}
         />
         <ProFormText.Password
           width="md"
@@ -97,7 +97,7 @@ const Widget = () => {
               },
             }),
           ]}
-          label={intl.formatMessage({ id: "fields.password-confirmation" })}
+          label={<FormattedMessage id="fields.password-confirmation" />}
         />
       </ProForm>
     </Layout>

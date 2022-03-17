@@ -1,4 +1,4 @@
-import { useIntl } from "react-intl";
+import { useIntl, FormattedMessage } from "react-intl";
 import { CommentOutlined } from "@ant-design/icons";
 import ProForm, { ProFormTextArea } from "@ant-design/pro-form";
 import { message } from "antd";
@@ -44,7 +44,7 @@ const Widget = () => {
           width="md"
           name="body"
           rules={[{ required: true }]}
-          label={intl.formatMessage({ id: "fields.body" })}
+          label={<FormattedMessage id="fields.body" />}
         />
       </ProForm>
     </Layout>

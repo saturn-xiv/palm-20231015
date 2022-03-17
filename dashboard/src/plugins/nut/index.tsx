@@ -10,6 +10,10 @@ const plugin: IPlugin = {
       component: () => import("./leave-words/new"),
     },
     {
+      path: "/users/profile",
+      component: () => import("./users/profile"),
+    },
+    {
       path: USERS_LOGS_PATH,
       component: () => import("./users/logs"),
     },
