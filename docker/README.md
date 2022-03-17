@@ -1,5 +1,9 @@
 # Usage
 
+```bash
+sudo apt install crun podman buildah
+```
+
 - copy `storage.conf` to `$HOME/.config/containers/storage.conf`
 
 - commands
