@@ -15,7 +15,7 @@ interface ILogItem {
   resourceType: String;
   resourceId: String;
   message: String;
-  createdAt: Date;
+  createdAt: number;
 }
 
 interface ILogList {
@@ -71,6 +71,12 @@ const Widget = () => {
               dataIndex: "level",
               key: "level",
               width: 80,
+            },
+            {
+              title: intl.formatMessage({ id: "fields.ip" }),
+              dataIndex: "ip",
+              key: "ip",
+              width: 120,
             },
             {
               title: intl.formatMessage({ id: "fields.message" }),
