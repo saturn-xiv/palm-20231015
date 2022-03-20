@@ -32,7 +32,7 @@ RUN apt -y install zsh git locales rsync openssh-client sshpass \
     debhelper bison flex ninja-build \
     crossbuild-essential-armhf pkg-config-arm-linux-gnueabihf \
     crossbuild-essential-arm64 pkg-config-aarch64-linux-gnu \
-    python3 python3-distutils python3-dev
+    python3 python3-distutils python3-dev python3-pip
 RUN apt -y autoremove
 RUN apt -y clean
 
@@ -59,12 +59,10 @@ RUN echo 'export LC_ALL=en_US.UTF-8' >> $HOME/.profile
 RUN git config --global core.quotepath false
 RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf
 
-# https://pip.pypa.io/en/stable/installation/#get-pip-py
-RUN curl -o- https://bootstrap.pypa.io/get-pip.py | python3
 RUN sh -c ". $HOME/.profile \
-    && pip install --user cmake"
+    && pip3 install --user cmake"
 RUN sh -c ". $HOME/.profile \
-    && pip install --user ansible paramiko"
+    && pip3 install --user ansible paramiko"
 RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.profile
 RUN echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.profile
 RUN echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.profile
