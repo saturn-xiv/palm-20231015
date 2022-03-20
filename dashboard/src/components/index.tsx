@@ -1,8 +1,8 @@
 import moment from "moment";
 
 interface ITimestampProps {
-  value: Date;
+  value: number;
 }
 export const Timestamp = ({ value }: ITimestampProps) => {
-  return <span>{moment(value).toString()}</span>;
+  return <span>{moment.unix(value).toString()}</span>;
 };

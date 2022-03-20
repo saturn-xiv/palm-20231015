@@ -10,7 +10,7 @@ homepage = "https://github.com/saturn-xiv/palm"
 
 [profile.release]
 lto = true
-strip = true
+# strip = true
 
 [dependencies]
 bigdecimal = "0.3"
@@ -36,7 +36,6 @@ lettre = "0.10.0-rc.4"
 Inflector = "0.11"
 base64 = "0.13"
 git2 = "0.14"
-juniper = "0.15"
 ipnetwork = "0.18"
 nix = "0.23"
 rusoto_core = "0.47"
@@ -94,6 +93,10 @@ features = ["full"]
 [dependencies.validator]
 version = "0.14"
 features = ["derive", "phone", "card", "unic"]
+
+[dependencies.juniper]
+version = "0.15"
+features = ["scalar-naivetime"]
 
 [dependencies.cookie]
 version = "0.16"
