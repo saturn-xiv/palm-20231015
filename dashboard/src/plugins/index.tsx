@@ -16,6 +16,14 @@ export interface IRoute {
   component: any;
 }
 
+export interface IOk {
+  createdAt: number;
+}
+
+export interface IId {
+  id: string;
+}
+
 // export enum Editor {
 //   TEXTAREA = "textarea",
 //   QUILL = "quill",
