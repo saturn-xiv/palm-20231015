@@ -5,9 +5,8 @@ import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 
 import Layout from "../users/NonSignInLayout";
-import { graphql } from "../../../request";
+import { graphql_ } from "../../../request";
 import { USERS_SIGN_IN_PATH } from "..";
-import { Editor } from "../..";
 
 interface IFormData {
   body: string;
@@ -18,7 +17,7 @@ const Widget = () => {
   const title = intl.formatMessage({ id: "nut.leave-words.new.title" });
   const navigate = useNavigate();
   const onSubmit = async (data: IFormData) => {
-    graphql(
+    graphql_(
       `
         mutation PostForm($body: String!, $editor: String!) {
           createLeaveWord(body: $body, editor: $editor) {
@@ -28,7 +27,7 @@ const Widget = () => {
       `,
       {
         body: data.body,
-        editor: Editor.TEXTAREA,
+        editor: "textarea",
       },
       () => {
         message.success(intl.formatMessage({ id: "flashes.successed" }));

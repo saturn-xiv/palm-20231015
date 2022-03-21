@@ -156,6 +156,10 @@ impl Menu {
                 ..Default::default()
             });
             settings.items.push(Menu {
+                to: "/admin/leave-words".to_string(),
+                ..Default::default()
+            });
+            settings.items.push(Menu {
                 to: "/admin/locales".to_string(),
                 ..Default::default()
             });

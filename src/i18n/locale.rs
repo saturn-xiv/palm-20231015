@@ -152,6 +152,7 @@ impl Dao for Connection {
         Ok(locales::dsl::locales
             .select(locales::dsl::lang)
             .distinct()
+            .order(locales::dsl::lang.asc())
             .load::<String>(self)?)
     }
 

@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
-import { Col, Table } from "antd";
+import { Col, message } from "antd";
 import { useIntl } from "react-intl";
+import ProTable from "@ant-design/pro-table";
 
 import Layout from "../../../layouts/dashboard";
 import { graphql } from "../../../request";
 import { TIMESTAMP_COLUMN_WIDTH } from "../../../components/table";
 import { Timestamp } from "../../../components";
-import { IPagination } from "../..";
+import { IPager, IPagination } from "../..";
 
-interface ILogItem {
+interface IItem {
   id: String;
   level: String;
   ip: String;
@@ -18,53 +18,55 @@ interface ILogItem {
   createdAt: number;
 }
 
-interface ILogList {
-  items: ILogItem[];
-  pagination: IPagination;
-}
-interface IFetchLayoutResponse {
-  userLogs: ILogList;
+interface IFetchResponse {
+  userLogs: IPagination<IItem>;
 }
 
 const Widget = () => {
-  const [items, setItems] = useState<ILogItem[]>();
-
-  useEffect(() => {
-    graphql(
-      `
-        query Fetch($pager: Pager!) {
-          userLogs(pager: $pager) {
-            items {
-              id
-              level
-              ip
-              resourceType
-              resourceId
-              message
-              createdAt
-            }
-            pagination {
-              capacity
-              size
-              index
-            }
-          }
-        }
-      `,
-      { pager: { size: 1 << 12, index: 1 } },
-      (res: IFetchLayoutResponse) => {
-        setItems(res.userLogs.items);
-      }
-    );
-  }, []);
   const intl = useIntl();
   return (
     <Layout title={intl.formatMessage({ id: "nut.users.logs.title" })}>
       <Col span={24}>
-        <Table
+        <ProTable<IItem>
           rowKey="id"
           bordered
-          dataSource={items}
+          search={false}
+          request={async (params = {}, sort, filter) => {
+            const response = await graphql<IPager, IFetchResponse>(
+              `
+                query Fetch($pageSize: Int!, $current: Int!) {
+                  userLogs(pageSize: $pageSize, current: $current) {
+                    data {
+                      id
+                      level
+                      ip
+                      resourceType
+                      resourceId
+                      message
+                      createdAt
+                    }
+                    total
+                  }
+                }
+              `,
+              { pageSize: params.pageSize || 20, current: params.current || 1 }
+            );
+            if (response.data) {
+              return {
+                data: response.data.userLogs.data,
+                total: response.data.userLogs.total,
+                success: true,
+              };
+            }
+            response.errors?.forEach((it) => {
+              message.error(it.message);
+            });
+            return {
+              data: [],
+              total: 0,
+              success: false,
+            };
+          }}
           columns={[
             {
               title: intl.formatMessage({ id: "fields.level" }),
@@ -87,7 +89,7 @@ const Widget = () => {
               title: intl.formatMessage({ id: "fields.created-at" }),
               key: "created-at",
               width: TIMESTAMP_COLUMN_WIDTH,
-              render: (it) => <Timestamp value={it.createdAt} />,
+              render: (_, it) => <Timestamp value={it.createdAt} />,
             },
           ]}
         />

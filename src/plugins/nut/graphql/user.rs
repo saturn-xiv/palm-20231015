@@ -22,7 +22,7 @@ use super::super::{
     },
     tasks::email::Task as EmailTask,
 };
-use super::{Context, Pager, Pagination};
+use super::Context;
 
 #[derive(GraphQLObject)]
 pub struct Author {
@@ -518,8 +518,8 @@ impl UserChangePasswordRequest {
 
 #[derive(GraphQLObject)]
 pub struct UserLogList {
-    pub items: Vec<UserLogItem>,
-    pub pagination: Pagination,
+    pub data: Vec<UserLogItem>,
+    pub total: i32,
 }
 
 #[derive(GraphQLObject)]
@@ -534,27 +534,34 @@ pub struct UserLogItem {
 }
 
 impl UserLogList {
-    pub fn new(ctx: &Context, pager: &Pager) -> Result<Self> {
+    pub fn new(ctx: &Context, page_size: i32, current: i32) -> Result<Self> {
         let db = ctx.db.get()?;
         let db = db.deref();
         let jwt = ctx.jwt.deref();
         let user = ctx.token.current_user(db, jwt)?;
         let total = LogDao::count(db, user.id)?;
-        let pagination = pager.build(total);
-        let (offset, limit) = pagination.build();
-        let items = LogDao::all(db, user.id, offset, limit)?
-            .iter()
-            .map(|it| UserLogItem {
-                id: it.id,
-                level: it.level.clone(),
-                ip: it.ip.clone(),
-                resource_id: it.resource_id,
-                resource_type: it.resource_type.clone(),
-                message: it.message.clone(),
-                created_at: it.created_at,
-            })
-            .collect();
-        Ok(Self { items, pagination })
+
+        let items = LogDao::all(
+            db,
+            user.id,
+            ((current - 1) * page_size) as i64,
+            page_size as i64,
+        )?
+        .iter()
+        .map(|it| UserLogItem {
+            id: it.id,
+            level: it.level.clone(),
+            ip: it.ip.clone(),
+            resource_id: it.resource_id,
+            resource_type: it.resource_type.clone(),
+            message: it.message.clone(),
+            created_at: it.created_at,
+        })
+        .collect();
+        Ok(Self {
+            data: items,
+            total: total as i32,
+        })
     }
 }
 

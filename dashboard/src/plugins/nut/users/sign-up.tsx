@@ -12,7 +12,7 @@ import {
   NICK_NAME_VALIDATOR,
   PASSWORD_VALIDATOR,
 } from "../../../components/form";
-import { graphql } from "../../../request";
+import { graphql_ } from "../../../request";
 import { detect as detectLocale } from "../../../locales";
 import { USERS_SIGN_IN_PATH } from "..";
 
@@ -29,7 +29,7 @@ const Widget = () => {
   const title = intl.formatMessage({ id: "nut.users.sign-up.title" });
   const navigate = useNavigate();
   const onSubmit = async (data: IFormData) => {
-    graphql(
+    graphql_(
       `
         mutation PostForm($user: UserSignUpRequest!) {
           userSignUp(form: $user) {

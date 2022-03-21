@@ -4,6 +4,7 @@ import {
   UserOutlined,
   ProfileOutlined,
   SettingOutlined,
+  InfoCircleOutlined,
 } from "@ant-design/icons";
 import ProLayout, { PageContainer } from "@ant-design/pro-layout";
 import { useNavigate } from "react-router-dom";
@@ -46,12 +47,14 @@ const Widget = ({ title, children }: IProps) => {
     };
   }
 
-  const to_icon = (it: string): ReactNode => {
-    switch (it) {
+  const to_icon = (to: string): ReactNode => {
+    switch (to) {
       case "personal":
         return <ProfileOutlined />;
       case "settings":
         return <SettingOutlined />;
+      default:
+        return <InfoCircleOutlined />;
     }
   };
 

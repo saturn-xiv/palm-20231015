@@ -4,6 +4,7 @@ const items = {
   "buttons.go-back": "Go back",
   "buttons.go-home": "Go home",
   "buttons.reset": "Reset",
+  "buttons.mark-as-read": "Mark as read",
 
   "fields.email": "Email address",
   "fields.real-name": "Real name",
@@ -26,6 +27,7 @@ const items = {
   "fields.updated-at": "Updated at",
   "fields.resource-type": "Resource type",
   "fields.resource-id": "Resource id",
+  "fields.operation": "Operation",
 
   "flashes.successed": "Successed.",
 
@@ -43,6 +45,7 @@ const items = {
   "side-bar.menus./users/profile": "Profile",
   "side-bar.menus./users/logs": "Logs",
   "side-bar.menus./admin/site": "Site",
+  "side-bar.menus./admin/leave-words": "Leave messages",
   "side-bar.menus./admin/users": "Users",
   "side-bar.menus./admin/locales": "Locales",
   "side-bar.menus./admin/tags": "Tags",
@@ -64,6 +67,7 @@ const items = {
   "nut.users.profile.change-password": "Change my password",
   "nut.users.profile.account": "Account info",
   "nut.leave-words.new.title": "Leave us a message",
+  "nut.admin.leave-words.index.title": "Leave messages",
 };
 
 export default items;

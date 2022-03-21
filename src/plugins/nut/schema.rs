@@ -113,7 +113,9 @@ table! {
     leave_words (id) {
         id -> Uuid,
         ip -> Varchar,
+        read_at -> Nullable<Timestamp>,
         created_at -> Timestamp,
+        updated_at -> Timestamp,
     }
 }
 

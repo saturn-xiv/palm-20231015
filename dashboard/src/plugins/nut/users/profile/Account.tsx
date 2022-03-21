@@ -7,7 +7,7 @@ import {
   REAL_NAME_VALIDATOR,
   URL_VALIDATOR,
 } from "../../../../components/form";
-import { graphql } from "../../../../request";
+import { graphql_ } from "../../../../request";
 import { selectSiteInfo } from "../../../../reducers/site-info";
 import { selectCurrentUser } from "../../../../reducers/current-user";
 import { useAppSelector } from "../../../../hooks";
@@ -26,7 +26,7 @@ const Widget = () => {
   const site = useAppSelector(selectSiteInfo);
   const user = useAppSelector(selectCurrentUser);
   const onSubmit = async (data: IFormData) => {
-    graphql(
+    graphql_(
       `
         mutation PostForm($user: UserUpdateProfileRequest!) {
           userUpdateProfile(form: $user) {

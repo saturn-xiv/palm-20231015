@@ -5,7 +5,7 @@ import { message } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 
 import Layout from "../NonSignInLayout";
-import { graphql } from "../../../../request";
+import { graphql_ } from "../../../../request";
 import { USERS_SIGN_IN_PATH } from "../..";
 
 const Widget = () => {
@@ -15,7 +15,7 @@ const Widget = () => {
   let params = useParams();
 
   useEffect(() => {
-    graphql(
+    graphql_(
       `
         mutation PostForm($token: String!) {
           userConfirmByToken(token: $token) {

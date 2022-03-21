@@ -28,8 +28,12 @@ impl Query {
         let it = Iso4217::new()?;
         Ok(it)
     }
-    fn userLogs(ctx: &Context, pager: Pager) -> FieldResult<nut::graphql::user::UserLogList> {
-        let it = nut::graphql::user::UserLogList::new(ctx, &pager)?;
+    fn userLogs(
+        ctx: &Context,
+        page_size: i32,
+        current: i32,
+    ) -> FieldResult<nut::graphql::user::UserLogList> {
+        let it = nut::graphql::user::UserLogList::new(ctx, page_size, current)?;
         Ok(it)
     }
     fn userRefreshToken(ctx: &Context) -> FieldResult<String> {
@@ -46,12 +50,13 @@ impl Query {
         Ok(it)
     }
 
-    fn indexLeaveWord(
+    fn leastLeaveWord(
         ctx: &Context,
-        limit: i32,
-    ) -> FieldResult<Vec<nut::models::leave_word::Item>> {
-        let items = nut::graphql::leave_word::index(ctx, limit)?;
-        Ok(items)
+        page_size: i32,
+        current: i32,
+    ) -> FieldResult<nut::graphql::leave_word::LeaveWordList> {
+        let it = nut::graphql::leave_word::LeaveWordList::new(ctx, page_size, current)?;
+        Ok(it)
     }
 
     fn indexTag(ctx: &Context) -> FieldResult<Vec<nut::graphql::tag::Tag>> {

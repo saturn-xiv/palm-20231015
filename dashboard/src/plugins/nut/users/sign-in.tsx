@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import jwtDecode, { JwtPayload } from "jwt-decode";
 
 import Layout from "./NonSignInLayout";
-import { graphql } from "../../../request";
+import { graphql_ } from "../../../request";
 import { USERS_LOGS_PATH } from "..";
 import { signIn as userSignIn, setToken } from "../../../reducers/current-user";
 import { refresh as refreshSideBar } from "../../../reducers/side-bar";
@@ -34,7 +34,7 @@ const Widget = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const onSubmit = async (data: IFormData) => {
-    graphql(
+    graphql_(
       `
         mutation PostForm($id: String!, $password: String!) {
           userSignIn(id: $id, password: $password) {

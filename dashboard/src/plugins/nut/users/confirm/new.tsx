@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import Layout from "../NonSignInLayout";
 import { EMAIL_VALIDATOR } from "../../../../components/form";
-import { graphql } from "../../../../request";
+import { graphql_ } from "../../../../request";
 import { USERS_SIGN_IN_PATH } from "../..";
 
 interface IFormData {
@@ -19,7 +19,7 @@ const Widget = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data: IFormData) => {
-    graphql(
+    graphql_(
       `
         mutation PostForm($email: String!, $home: String!) {
           userConfirmByEmail(email: $email, home: $home) {

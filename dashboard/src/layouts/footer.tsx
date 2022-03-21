@@ -16,7 +16,7 @@ import {
   signIn,
   signOut,
 } from "../reducers/current-user";
-import { graphql } from "../request";
+import { graphql_ } from "../request";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import {
   refresh as refreshSiteInfo,
@@ -78,7 +78,7 @@ export const Layout = () => {
   useEffect(() => {
     if (site.languages.length === 0) {
       try {
-        graphql(
+        graphql_(
           `
             query Fetch {
               layout {

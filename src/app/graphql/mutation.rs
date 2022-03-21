@@ -111,6 +111,10 @@ impl Mutation {
         form.handle(ctx)?;
         Ok(Success::default())
     }
+    fn readLeaveWord(ctx: &Context, id: Uuid) -> FieldResult<Success> {
+        nut::graphql::leave_word::read(ctx, id)?;
+        Ok(Success::default())
+    }
     fn destroyLeaveWord(ctx: &Context, id: Uuid) -> FieldResult<Success> {
         nut::graphql::leave_word::destroy(ctx, id)?;
         Ok(Success::default())

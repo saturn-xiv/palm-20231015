@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import Layout from "./NonSignInLayout";
 import { PASSWORD_VALIDATOR } from "../../../components/form";
-import { graphql } from "../../../request";
+import { graphql_ } from "../../../request";
 import { USERS_SIGN_IN_PATH } from "..";
 
 export interface IFormData {
@@ -20,7 +20,7 @@ const Widget = () => {
   const navigate = useNavigate();
   let params = useParams();
   const onSubmit = async (data: IFormData) => {
-    graphql(
+    graphql_(
       `
         mutation PostForm($token: String!, $password: String!) {
           userResetPassword(token: $token, password: $password) {

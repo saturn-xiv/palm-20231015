@@ -3,7 +3,7 @@ import ProForm, { ProFormText } from "@ant-design/pro-form";
 import { message, Card } from "antd";
 
 import { PASSWORD_VALIDATOR } from "../../../../components/form";
-import { graphql } from "../../../../request";
+import { graphql_ } from "../../../../request";
 
 interface IFormData {
   currentPassword: string;
@@ -14,7 +14,7 @@ interface IFormData {
 const Widget = () => {
   const intl = useIntl();
   const onSubmit = async (data: IFormData) => {
-    graphql(
+    graphql_(
       `
         mutation PostForm($currentPassword: String!, $newPassword: String!) {
           userChangePassword(

@@ -198,7 +198,9 @@ CREATE INDEX idx_friend_links_title ON friend_links(title);
 CREATE TABLE leave_words(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     ip VARCHAR(45) NOT NULL,
-    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
+    read_at TIMESTAMP WITHOUT TIME ZONE,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
 CREATE INDEX idx_leave_words_ip ON leave_words(ip);
 CREATE TABLE rating_logs(
