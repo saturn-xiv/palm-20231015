@@ -11,24 +11,21 @@ export async function graphql<Q, R>(
   query: string,
   variables: Q
 ): Promise<IResponse<R>> {
-  const response = await fetch(
-    `${process.env.REACT_APP_GRAPHQL_HOST}/graphql`,
-    {
-      mode: "cors",
-      method: "POST",
-      cache: "no-cache",
-      credentials: "same-origin",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${getToken()}`,
-      },
-      body: JSON.stringify({
-        query,
-        variables,
-      }),
-    }
-  );
+  const response = await fetch(`${process.env.REACT_APP_API_HOST}/graphql`, {
+    mode: "cors",
+    method: "POST",
+    cache: "no-cache",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: `Bearer ${getToken()}`,
+    },
+    body: JSON.stringify({
+      query,
+      variables,
+    }),
+  });
   const body: IResponse<R> = await response.json();
   return body;
 }
@@ -39,11 +36,11 @@ export const graphql_ = (
   callback: any,
   failed?: (items: string[]) => void
 ) => {
-  fetch(`${process.env.REACT_APP_GRAPHQL_HOST}/graphql`, {
+  fetch(`${process.env.REACT_APP_API_HOST}/graphql`, {
     mode: "cors",
     method: "POST",
     cache: "no-cache",
-    credentials: "same-origin",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",

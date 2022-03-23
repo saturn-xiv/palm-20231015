@@ -1,6 +1,10 @@
 pub mod mutation;
 pub mod query;
 
+use std::any::type_name;
+
+use actix_identity::Identity;
+use actix_session::Session;
 use actix_web::{web, HttpRequest, HttpResponse, Result};
 use juniper::{EmptySubscription, RootNode};
 use juniper_actix::{graphiql_handler, graphql_handler, playground_handler};
@@ -8,6 +12,7 @@ use juniper_actix::{graphiql_handler, graphql_handler, playground_handler};
 use super::super::{
     aws::{s3::Config as S3, Credentials as Aws},
     cache::redis::Pool as CachePool,
+    captcha::Captcha,
     crypto::{Aes, Hmac},
     jwt::Jwt,
     orm::Pool as DbPool,
@@ -45,7 +50,7 @@ pub async fn index(
         web::Data<Schema>,
     ),
     (locale, token, peer): (Locale, Token, ClientIp),
-    (request, payload): (HttpRequest, web::Payload),
+    (request, payload, session, id): (HttpRequest, web::Payload, Session, Identity),
 ) -> Result<HttpResponse> {
     graphql_handler(
         &schema,
@@ -61,6 +66,8 @@ pub async fn index(
             lang: locale.to_string(),
             peer: peer.to_string(),
             token,
+            captcha: session.get::<String>(type_name::<Captcha>())?,
+            id: id.identity(),
         },
         request,
         payload,

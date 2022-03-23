@@ -1,15 +1,25 @@
 import { useIntl, FormattedMessage } from "react-intl";
 import { CommentOutlined } from "@ant-design/icons";
-import ProForm, { ProFormTextArea } from "@ant-design/pro-form";
+import ProForm, { ProFormTextArea, ProFormText } from "@ant-design/pro-form";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 
 import Layout from "../users/NonSignInLayout";
-import { graphql_ } from "../../../request";
+import { graphql } from "../../../request";
 import { USERS_SIGN_IN_PATH } from "..";
+import Captcha from "../../../components/Captcha";
 
 interface IFormData {
   body: string;
+  captcha: string;
+}
+interface IFormResponae {
+  createLeaveWord: { createdAt: number };
+}
+interface IFormRequest {
+  body: string;
+  editor: string;
+  captcha: string;
 }
 
 const Widget = () => {
@@ -17,23 +27,29 @@ const Widget = () => {
   const title = intl.formatMessage({ id: "nut.leave-words.new.title" });
   const navigate = useNavigate();
   const onSubmit = async (data: IFormData) => {
-    graphql_(
+    const response = await graphql<IFormRequest, IFormResponae>(
       `
-        mutation PostForm($body: String!, $editor: String!) {
-          createLeaveWord(body: $body, editor: $editor) {
+        mutation PostForm($body: String!, $editor: String!, $captcha: String!) {
+          createLeaveWord(body: $body, editor: $editor, captcha: $captcha) {
             createdAt
           }
         }
       `,
       {
         body: data.body,
+        captcha: data.captcha,
         editor: "textarea",
-      },
-      () => {
-        message.success(intl.formatMessage({ id: "flashes.successed" }));
-        navigate(USERS_SIGN_IN_PATH);
       }
     );
+
+    if (response.data) {
+      message.success(intl.formatMessage({ id: "flashes.successed" }));
+      navigate(USERS_SIGN_IN_PATH);
+    } else {
+      response.errors?.forEach((it) => {
+        message.error(it.message);
+      });
+    }
   };
 
   return (
@@ -44,6 +60,14 @@ const Widget = () => {
           name="body"
           rules={[{ required: true }]}
           label={<FormattedMessage id="fields.body" />}
+        />
+
+        <ProFormText
+          width="md"
+          name="captcha"
+          addonAfter={<Captcha />}
+          rules={[{ required: true }]}
+          label={<FormattedMessage id="fields.captcha" />}
         />
       </ProForm>
     </Layout>

@@ -10,6 +10,7 @@ use std::default::Default;
 use std::sync::Arc;
 
 use chrono::{NaiveDateTime, Utc};
+use hyper::StatusCode;
 use juniper::{GraphQLInputObject, GraphQLObject};
 
 use super::super::super::{
@@ -19,6 +20,7 @@ use super::super::super::{
     jwt::Jwt,
     orm::Pool as DbPool,
     queue::amqp::RabbitMq,
+    HttpError, Result,
 };
 use super::handlers::token::Token;
 
@@ -34,8 +36,30 @@ pub struct Context {
     pub aws: Arc<Aws>,
     pub s3: Arc<S3>,
     pub lang: String,
+    pub captcha: Option<String>,
+    pub id: Option<String>,
 }
 
+impl Context {
+    pub fn verify_captcha(&self, code: &str) -> Result<()> {
+        debug!("{:?} {:?} {}", self.captcha, self.id, code);
+        if let Some(ref it) = self.captcha {
+            if it == code {
+                return Ok(());
+            }
+        }
+        // FIXME remove when session work
+        if let Some(ref it) = self.id {
+            if it == code {
+                return Ok(());
+            }
+        }
+        Err(Box::new(HttpError(
+            StatusCode::BAD_REQUEST,
+            Some("captcha code not match".to_string()),
+        )))
+    }
+}
 impl juniper::Context for Context {}
 
 #[derive(GraphQLObject)]

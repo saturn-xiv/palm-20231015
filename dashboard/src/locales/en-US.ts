@@ -28,6 +28,7 @@ const items = {
   "fields.resource-type": "Resource type",
   "fields.resource-id": "Resource id",
   "fields.operation": "Operation",
+  "fields.captcha": "Captcha code",
 
   "flashes.successed": "Successed.",
 

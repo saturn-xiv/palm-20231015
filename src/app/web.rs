@@ -2,13 +2,14 @@ use std::net::SocketAddr;
 use std::path::{Component, Path};
 
 use actix_cors::Cors;
-use actix_session::{storage::CookieSessionStore, SessionMiddleware};
+use actix_identity::{CookieIdentityPolicy, IdentityService};
+use actix_session::{storage::CookieSessionStore, SessionLength, SessionMiddleware};
 use actix_web::{middleware, web, App, HttpServer};
 use chrono::Duration;
-use cookie::{Key as CookieKey, SameSite};
+use cookie::{time::Duration as CookieDuration, Key as CookieKey, SameSite};
 
 use hyper::{
-    header::{ACCEPT, ACCEPT_LANGUAGE, AUTHORIZATION, CONTENT_TYPE},
+    header::{ACCEPT_LANGUAGE, AUTHORIZATION, CONTENT_TYPE, COOKIE},
     Method,
 };
 use juniper::EmptySubscription;
@@ -40,6 +41,10 @@ pub async fn launch(cfg: &Config) -> Result<()> {
         let it = base64::encode(base64::encode(&cfg.secrets.0));
         it.as_bytes().to_vec()
     };
+    let identity_key = {
+        let it: Result<Vec<u8>> = cfg.secrets.clone().into();
+        it?
+    };
     let is_prod = cfg.env == Environment::Production;
 
     HttpServer::new(move || {
@@ -62,7 +67,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                     .allowed_header(CONTENT_TYPE)
                     .allowed_header(AUTHORIZATION)
                     .allowed_header(ACCEPT_LANGUAGE)
-                    .allowed_header(ACCEPT)
+                    .allowed_header(COOKIE)
                     .allowed_methods(vec![Method::OPTIONS, Method::POST, Method::GET])
                     .supports_credentials()
                     .max_age(Duration::hours(1).num_seconds() as usize),
@@ -72,14 +77,22 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                     CookieSessionStore::default(),
                     CookieKey::from(&cookie_key),
                 )
-                .cookie_name(NAME.to_string())
+                .cookie_name(format!("{}.ss", NAME))
                 .cookie_same_site(SameSite::None)
                 .cookie_http_only(true)
                 // .cookie_max_age(Duration::hours(1).num_seconds())
                 .cookie_path("/".to_string())
                 .cookie_secure(is_prod)
+                .session_length(SessionLength::BrowserSession {
+                    state_ttl: Some(CookieDuration::new(Duration::hours(1).num_seconds(), 0)),
+                })
                 .build(),
             )
+            .wrap(IdentityService::new(
+                CookieIdentityPolicy::new(&identity_key)
+                    .name(format!("{}.id", NAME))
+                    .secure(is_prod),
+            ))
             .service(
                 web::resource(graphql::GRAPHQL_ROUTE)
                     .route(web::post().to(graphql::index))
@@ -95,6 +108,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .service(forum::controllers::posts::index)
             .service(forum::controllers::index)
             .service(nut::controllers::attachments::create)
+            .service(nut::controllers::captcha::get)
             .service(nut::controllers::sitemap::index)
             .service(nut::controllers::sitemap::by_lang)
             .service(nut::controllers::rss_xml)

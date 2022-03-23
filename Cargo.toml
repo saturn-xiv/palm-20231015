@@ -17,9 +17,11 @@ bigdecimal = "0.3"
 futures = "0.3"
 mime = "0.3"
 language-tags = "0.3"
+actix-identity = "0.4"
 actix-multipart = "0.4"
 juniper_actix = "0.4"
 log = "0.4"
+num-complex = "0.4"
 yaml-rust = "0.4"
 toml = "0.5"
 actix-cors = "0.6"
@@ -30,6 +32,7 @@ r2d2 = "0.8"
 rand = "0.8"
 xml-rs = "0.8"
 env_logger = "0.9"
+rusttype = "0.9"
 ssh2 = "0.9"
 paho-mqtt = "0.10"
 lettre = "0.10.0-rc.4"
@@ -38,6 +41,7 @@ base64 = "0.13"
 git2 = "0.14"
 ipnetwork = "0.18"
 nix = "0.23"
+image = "0.24"
 rusoto_core = "0.47"
 rusoto_credential = "0.47"
 rusoto_s3 = "0.47"
@@ -52,7 +56,6 @@ humantime = "2"
 lapin = "2"
 percent-encoding = "2"
 tempfile = "3"
-actix-web = "4"
 handlebars = "4"
 amq-protocol-uri = "7"
 jsonwebtoken = "8"
@@ -63,7 +66,9 @@ features = ["serde"]
 
 [dependencies.actix-session]
 version = "0.6"
-features = ["cookie-session"]
+# git = "https://github.com/actix/actix-extras.git"
+# ref = "bf41b4c"
+features = ["cookie-session", "redis-rs-session"]
 
 [dependencies.chrono-tz]
 version = "0.6"
@@ -135,7 +140,16 @@ features = ["serde"]
 version = "3"
 features = ["derive"]
 
+[dependencies.actix-web]
+version = "4"
+features = ["cookies"]
+
 [dependencies.openssl]
 version = "*"
 # features = ["vendored"]
+
+# TODO https://github.com/image-rs/imageproc/pull/491
+[dependencies.imageproc]
+git = "https://github.com/image-rs/imageproc.git"
+rev = "b794265"
 

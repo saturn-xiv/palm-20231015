@@ -15,7 +15,13 @@ pub struct Mutation;
     context = Context,
 )]
 impl Mutation {
-    fn install(ctx: &Context, form: nut::graphql::user::UserSignUpRequest) -> FieldResult<Success> {
+    fn install(
+        ctx: &Context,
+        form: nut::graphql::user::UserSignUpRequest,
+        captcha: String,
+    ) -> FieldResult<Success> {
+        ctx.verify_captcha(&captcha)?;
+
         form.install_administrator(ctx)?;
         Ok(Success::default())
     }
@@ -23,7 +29,9 @@ impl Mutation {
         ctx: &Context,
         id: String,
         password: String,
+        captcha: String,
     ) -> FieldResult<nut::graphql::user::UserSignInResponse> {
+        ctx.verify_captcha(&captcha)?;
         let form = nut::graphql::user::UserSignInRequest { id, password };
         let it = form.handle(ctx)?;
         Ok(it)
@@ -31,20 +39,35 @@ impl Mutation {
     fn userSignUp(
         ctx: &Context,
         form: nut::graphql::user::UserSignUpRequest,
+        captcha: String,
     ) -> FieldResult<Success> {
+        ctx.verify_captcha(&captcha)?;
         form.handle(ctx)?;
         Ok(Success::default())
     }
-    fn userConfirmByEmail(ctx: &Context, email: String, home: String) -> FieldResult<Success> {
+    fn userConfirmByEmail(
+        ctx: &Context,
+        email: String,
+        home: String,
+        captcha: String,
+    ) -> FieldResult<Success> {
+        ctx.verify_captcha(&captcha)?;
         let form = nut::graphql::user::UserConfirmByEmailRequest { email, home };
         form.handle(ctx)?;
         Ok(Success::default())
     }
-    fn userConfirmByToken(ctx: &Context, token: String) -> FieldResult<Success> {
+    fn userConfirmByToken(ctx: &Context, token: String, captcha: String) -> FieldResult<Success> {
+        ctx.verify_captcha(&captcha)?;
         nut::graphql::user::confirm_by_token(ctx, &token)?;
         Ok(Success::default())
     }
-    fn userUnlockByEmail(ctx: &Context, email: String, home: String) -> FieldResult<Success> {
+    fn userUnlockByEmail(
+        ctx: &Context,
+        email: String,
+        home: String,
+        captcha: String,
+    ) -> FieldResult<Success> {
+        ctx.verify_captcha(&captcha)?;
         let form = nut::graphql::user::UserUnlockByEmailRequest { email, home };
         form.handle(ctx)?;
         Ok(Success::default())
@@ -53,7 +76,13 @@ impl Mutation {
         nut::graphql::user::unlock_by_token(ctx, &token)?;
         Ok(Success::default())
     }
-    fn userForgotPassword(ctx: &Context, email: String, home: String) -> FieldResult<Success> {
+    fn userForgotPassword(
+        ctx: &Context,
+        email: String,
+        home: String,
+        captcha: String,
+    ) -> FieldResult<Success> {
+        ctx.verify_captcha(&captcha)?;
         let form = nut::graphql::user::UserForgotPasswordRequest { email, home };
         form.handle(ctx)?;
         Ok(Success::default())
@@ -106,7 +135,13 @@ impl Mutation {
         Ok(Success::default())
     }
 
-    fn createLeaveWord(ctx: &Context, body: String, editor: String) -> FieldResult<Success> {
+    fn createLeaveWord(
+        ctx: &Context,
+        body: String,
+        editor: String,
+        captcha: String,
+    ) -> FieldResult<Success> {
+        ctx.verify_captcha(&captcha)?;
         let form = nut::graphql::leave_word::CreateLeaveWordRequest { body, editor };
         form.handle(ctx)?;
         Ok(Success::default())
