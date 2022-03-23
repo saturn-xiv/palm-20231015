@@ -7,5 +7,5 @@ if podman container exists $NAME
 then
     podman start -i -a $NAME
 else
-    podman run --name $NAME -it --hostname=palm --network host -v $PWD:/workspace:z $CODE
+    podman run --name $NAME --events-backend=file -it --hostname=palm --network host -v $PWD:/workspace:z $CODE
 fi
