@@ -26,7 +26,11 @@ impl Captcha {
         let mut img: RgbImage = ImageBuffer::new(img_w, img_h);
 
         let (w, h) = {
+            #[cfg(feature = "ubuntu")]
+            let font = include_bytes!("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf");
+            #[cfg(not(feature = "ubuntu"))]
             let font = include_bytes!("/usr/share/fonts/TTF/DejaVuSans.ttf");
+
             let font = Font::try_from_bytes(font).ok_or("parse font")?;
 
             let scale = Scale {

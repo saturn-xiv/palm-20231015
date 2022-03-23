@@ -10,7 +10,10 @@ homepage = "https://github.com/saturn-xiv/palm"
 
 [profile.release]
 lto = true
-# strip = true
+strip = true
+
+[features]
+arch-linux = []
 
 [dependencies]
 bigdecimal = "0.3"

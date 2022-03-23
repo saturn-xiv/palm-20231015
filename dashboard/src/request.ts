@@ -1,5 +1,3 @@
-import { message } from "antd";
-
 import { getToken } from "./reducers/current-user";
 
 export interface IResponse<T> {

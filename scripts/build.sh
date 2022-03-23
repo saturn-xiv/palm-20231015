@@ -22,7 +22,7 @@ build_ubuntu_backend() {
         export CC CXX
         
         local target="x86_64-unknown-linux-gnu"
-        cargo build --target $target --release
+        cargo build --target $target --release --features "ubuntu"
         cp target/$target/release/palm $root
     elif [ "$1" = "armhf" ]
     then
@@ -35,7 +35,7 @@ build_ubuntu_backend() {
         export CC CXX 
 
         local target="armv7-unknown-linux-gnueabihf"
-        cargo build --target $target --release
+        cargo build --target $target --release --features "ubuntu"
         cp target/$target/release/palm $root
     elif [ "$1" = "arm64" ]
     then
@@ -48,7 +48,7 @@ build_ubuntu_backend() {
         export CC CXX
 
         local target="aarch64-unknown-linux-gnu"
-        cargo build --target $target --release
+        cargo build --target $target --release --features "ubuntu"
         cp target/$target/release/palm $root
     else
         echo "unknown arch $1"
