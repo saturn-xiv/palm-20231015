@@ -6,17 +6,19 @@ import { useNavigate } from "react-router-dom";
 import jwtDecode, { JwtPayload } from "jwt-decode";
 
 import Layout from "./NonSignInLayout";
-import { graphql_ } from "../../../request";
+import { graphql } from "../../../request";
 import { USERS_LOGS_PATH } from "..";
 import { signIn as userSignIn, setToken } from "../../../reducers/current-user";
 import { refresh as refreshSideBar } from "../../../reducers/side-bar";
 import { refresh as refreshSiteInfo } from "../../../reducers/site-info";
 import { useAppDispatch } from "../../../hooks";
 import { ILayout } from "../../../layouts/footer";
+import Captcha from "../../../components/Captcha";
 
 interface IFormData {
   id: string;
   password: string;
+  captcha: string;
 }
 
 export interface IUserSignInResponse {
@@ -24,6 +26,11 @@ export interface IUserSignInResponse {
   layout: ILayout;
 }
 
+interface IFormRequest {
+  id: string;
+  password: string;
+  captcha: string;
+}
 interface IFormResponse {
   userSignIn: IUserSignInResponse;
 }
@@ -34,10 +41,10 @@ const Widget = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const onSubmit = async (data: IFormData) => {
-    graphql_(
+    const response = await graphql<IFormRequest, IFormResponse>(
       `
-        mutation PostForm($id: String!, $password: String!) {
-          userSignIn(id: $id, password: $password) {
+        mutation PostForm($id: String!, $password: String!, $captcha: String!) {
+          userSignIn(id: $id, password: $password, captcha: $captcha) {
             token
             layout {
               siteInfo {
@@ -66,33 +73,38 @@ const Widget = () => {
           }
         }
       `,
-      { id: data.id, password: data.password },
-      (res: IFormResponse) => {
-        const data = res.userSignIn;
-        try {
-          if (data.layout.userProfile) {
-            const decoded: any = jwtDecode<JwtPayload>(data.token);
-            dispatch(
-              userSignIn({
-                id: decoded.aud,
-                profile: data.layout.userProfile,
-              })
-            );
-            dispatch(refreshSideBar(data.layout.sideBar));
-            dispatch(refreshSiteInfo(data.layout.siteInfo));
-            message.success(intl.formatMessage({ id: "flashes.successed" }));
-            navigate(USERS_LOGS_PATH);
-            setToken(data.token);
-          }
-        } catch (e) {
-          if (e instanceof Error) {
-            message.error(e.message);
-          } else {
-            console.error(e);
-          }
+      { id: data.id, password: data.password, captcha: data.captcha }
+    );
+
+    if (response.data) {
+      const data = response.data.userSignIn;
+      try {
+        if (data.layout.userProfile) {
+          const decoded: any = jwtDecode<JwtPayload>(data.token);
+          dispatch(
+            userSignIn({
+              id: decoded.aud,
+              profile: data.layout.userProfile,
+            })
+          );
+          dispatch(refreshSideBar(data.layout.sideBar));
+          dispatch(refreshSiteInfo(data.layout.siteInfo));
+          message.success(intl.formatMessage({ id: "flashes.successed" }));
+          navigate(USERS_LOGS_PATH);
+          setToken(data.token);
+        }
+      } catch (e) {
+        if (e instanceof Error) {
+          message.error(e.message);
+        } else {
+          console.error(e);
         }
       }
-    );
+    } else {
+      response.errors?.forEach((it) => {
+        message.error(it.message);
+      });
+    }
   };
 
   return (
@@ -110,6 +122,15 @@ const Widget = () => {
           rules={[{ required: true }]}
           label={<FormattedMessage id="fields.password" />}
         />
+        <ProForm.Group>
+          <ProFormText
+            width="xs"
+            name="captcha"
+            addonAfter={<Captcha />}
+            rules={[{ required: true }]}
+            label={<FormattedMessage id="fields.captcha" />}
+          />
+        </ProForm.Group>
       </ProForm>
     </Layout>
   );

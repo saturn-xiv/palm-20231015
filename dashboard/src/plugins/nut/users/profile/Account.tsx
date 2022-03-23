@@ -7,7 +7,7 @@ import {
   REAL_NAME_VALIDATOR,
   URL_VALIDATOR,
 } from "../../../../components/form";
-import { graphql_ } from "../../../../request";
+import { graphql } from "../../../../request";
 import { selectSiteInfo } from "../../../../reducers/site-info";
 import { selectCurrentUser } from "../../../../reducers/current-user";
 import { useAppSelector } from "../../../../hooks";
@@ -21,12 +21,19 @@ interface IFormData {
   timeZone: string;
 }
 
+interface IFormRequest {
+  user: { realName: string; logo: string; lang: string; timeZone: string };
+}
+interface IFormResponse {
+  userUpdateProfile: { createdAt: number };
+}
+
 const Widget = () => {
   const intl = useIntl();
   const site = useAppSelector(selectSiteInfo);
   const user = useAppSelector(selectCurrentUser);
   const onSubmit = async (data: IFormData) => {
-    graphql_(
+    const response = await graphql<IFormRequest, IFormResponse>(
       `
         mutation PostForm($user: UserUpdateProfileRequest!) {
           userUpdateProfile(form: $user) {
@@ -41,11 +48,15 @@ const Widget = () => {
           lang: data.lang,
           timeZone: data.timeZone,
         },
-      },
-      () => {
-        message.success(intl.formatMessage({ id: "flashes.successed" }));
       }
     );
+    if (response.data) {
+      message.success(intl.formatMessage({ id: "flashes.successed" }));
+    } else {
+      response.errors?.forEach((it) => {
+        message.error(it.message);
+      });
+    }
   };
 
   return (

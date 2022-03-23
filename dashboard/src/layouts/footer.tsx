@@ -16,7 +16,7 @@ import {
   signIn,
   signOut,
 } from "../reducers/current-user";
-import { graphql_ } from "../request";
+import { graphql } from "../request";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import {
   refresh as refreshSiteInfo,
@@ -78,7 +78,7 @@ export const Layout = () => {
   useEffect(() => {
     if (site.languages.length === 0) {
       try {
-        graphql_(
+        graphql<{}, IFetchLayoutResponse>(
           `
             query Fetch {
               layout {
@@ -107,9 +107,10 @@ export const Layout = () => {
               }
             }
           `,
-          {},
-          (res: IFetchLayoutResponse) => {
-            const data = res.layout;
+          {}
+        ).then((response) => {
+          if (response.data) {
+            const data = response.data.layout;
             dispatch(refreshSiteInfo(data.siteInfo));
             const token = getToken();
             if (token !== null && data.userProfile) {
@@ -120,7 +121,7 @@ export const Layout = () => {
             }
             dispatch(refreshSideBar(data.sideBar));
           }
-        );
+        });
       } catch (e) {
         if (e instanceof Error) {
           message.error(e.message);

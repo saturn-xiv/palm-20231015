@@ -13,7 +13,7 @@ interface IFormData {
   body: string;
   captcha: string;
 }
-interface IFormResponae {
+interface IFormResponse {
   createLeaveWord: { createdAt: number };
 }
 interface IFormRequest {
@@ -27,7 +27,7 @@ const Widget = () => {
   const title = intl.formatMessage({ id: "nut.leave-words.new.title" });
   const navigate = useNavigate();
   const onSubmit = async (data: IFormData) => {
-    const response = await graphql<IFormRequest, IFormResponae>(
+    const response = await graphql<IFormRequest, IFormResponse>(
       `
         mutation PostForm($body: String!, $editor: String!, $captcha: String!) {
           createLeaveWord(body: $body, editor: $editor, captcha: $captcha) {
@@ -61,14 +61,15 @@ const Widget = () => {
           rules={[{ required: true }]}
           label={<FormattedMessage id="fields.body" />}
         />
-
-        <ProFormText
-          width="md"
-          name="captcha"
-          addonAfter={<Captcha />}
-          rules={[{ required: true }]}
-          label={<FormattedMessage id="fields.captcha" />}
-        />
+        <ProForm.Group>
+          <ProFormText
+            width="xs"
+            name="captcha"
+            addonAfter={<Captcha />}
+            rules={[{ required: true }]}
+            label={<FormattedMessage id="fields.captcha" />}
+          />
+        </ProForm.Group>
       </ProForm>
     </Layout>
   );

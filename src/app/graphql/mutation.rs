@@ -56,8 +56,7 @@ impl Mutation {
         form.handle(ctx)?;
         Ok(Success::default())
     }
-    fn userConfirmByToken(ctx: &Context, token: String, captcha: String) -> FieldResult<Success> {
-        ctx.verify_captcha(&captcha)?;
+    fn userConfirmByToken(ctx: &Context, token: String) -> FieldResult<Success> {
         nut::graphql::user::confirm_by_token(ctx, &token)?;
         Ok(Success::default())
     }
@@ -87,7 +86,13 @@ impl Mutation {
         form.handle(ctx)?;
         Ok(Success::default())
     }
-    fn userResetPassword(ctx: &Context, token: String, password: String) -> FieldResult<Success> {
+    fn userResetPassword(
+        ctx: &Context,
+        token: String,
+        password: String,
+        captcha: String,
+    ) -> FieldResult<Success> {
+        ctx.verify_captcha(&captcha)?;
         let form = nut::graphql::user::UserResetPasswordRequest { token, password };
         form.handle(ctx)?;
         Ok(Success::default())

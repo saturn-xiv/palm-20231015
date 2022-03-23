@@ -5,8 +5,15 @@ import { message } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 
 import Layout from "../NonSignInLayout";
-import { graphql_ } from "../../../../request";
+import { graphql } from "../../../../request";
 import { USERS_SIGN_IN_PATH } from "../..";
+
+interface IFetchResponse {
+  userConfirmByToken: { createdAt: number };
+}
+interface IRequest {
+  token?: string;
+}
 
 const Widget = () => {
   const intl = useIntl();
@@ -15,7 +22,7 @@ const Widget = () => {
   let params = useParams();
 
   useEffect(() => {
-    graphql_(
+    graphql<IRequest, IFetchResponse>(
       `
         mutation PostForm($token: String!) {
           userConfirmByToken(token: $token) {
@@ -23,16 +30,17 @@ const Widget = () => {
           }
         }
       `,
-      { token: params.token },
-      () => {
+      { token: params.token }
+    ).then((response) => {
+      if (response.data) {
         message.success(intl.formatMessage({ id: "flashes.successed" }));
-        navigate(USERS_SIGN_IN_PATH);
-      },
-      (items) => {
-        items.forEach((it) => message.error(it));
-        navigate(USERS_SIGN_IN_PATH);
+      } else {
+        response.errors?.forEach((it) => {
+          message.error(it.message);
+        });
       }
-    );
+      navigate(USERS_SIGN_IN_PATH);
+    });
   });
 
   return (

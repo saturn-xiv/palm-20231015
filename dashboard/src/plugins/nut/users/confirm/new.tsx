@@ -6,23 +6,32 @@ import { useNavigate } from "react-router-dom";
 
 import Layout from "../NonSignInLayout";
 import { EMAIL_VALIDATOR } from "../../../../components/form";
-import { graphql_ } from "../../../../request";
+import { graphql } from "../../../../request";
 import { USERS_SIGN_IN_PATH } from "../..";
+import Captcha from "../../../../components/Captcha";
 
 interface IFormData {
   email: string;
+  captcha: string;
 }
-
+interface IFormResponse {
+  userConfirmByEmail: { createdAt: number };
+}
+interface IFormRequest {
+  email: string;
+  home: string;
+  captcha: string;
+}
 const Widget = () => {
   const intl = useIntl();
   const title = intl.formatMessage({ id: "nut.users.confirm.title" });
   const navigate = useNavigate();
 
   const onSubmit = async (data: IFormData) => {
-    graphql_(
+    const response = await graphql<IFormRequest, IFormResponse>(
       `
-        mutation PostForm($email: String!, $home: String!) {
-          userConfirmByEmail(email: $email, home: $home) {
+        mutation PostForm($email: String!, $home: String!, $captcha: String!) {
+          userConfirmByEmail(email: $email, home: $home, captcha: $captcha) {
             createdAt
           }
         }
@@ -30,12 +39,17 @@ const Widget = () => {
       {
         email: data.email,
         home: document.location.origin,
-      },
-      () => {
-        message.success(intl.formatMessage({ id: "flashes.successed" }));
-        navigate(USERS_SIGN_IN_PATH);
+        captcha: data.captcha,
       }
     );
+    if (response.data) {
+      message.success(intl.formatMessage({ id: "flashes.successed" }));
+      navigate(USERS_SIGN_IN_PATH);
+    } else {
+      response.errors?.forEach((it) => {
+        message.error(it.message);
+      });
+    }
   };
 
   return (
@@ -47,6 +61,15 @@ const Widget = () => {
           rules={EMAIL_VALIDATOR}
           label={<FormattedMessage id="fields.email" />}
         />
+        <ProForm.Group>
+          <ProFormText
+            width="xs"
+            name="captcha"
+            addonAfter={<Captcha />}
+            rules={[{ required: true }]}
+            label={<FormattedMessage id="fields.captcha" />}
+          />
+        </ProForm.Group>
       </ProForm>
     </Layout>
   );
