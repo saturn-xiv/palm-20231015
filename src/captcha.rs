@@ -30,7 +30,13 @@ impl Captcha {
             let font = include_bytes!("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf");
             #[cfg(feature = "alpine")]
             let font = include_bytes!("/usr/share/fonts/ttf-dejavu/DejaVuSans.ttf");
-            #[cfg(all(not(feature = "ubuntu"), not(feature = "alpine")))]
+            #[cfg(feature = "centos")]
+            let font = include_bytes!("/usr/share/fonts/dejavu/DejaVuSans.ttf");
+            #[cfg(all(
+                not(feature = "ubuntu"),
+                not(feature = "alpine"),
+                not(feature = "centos")
+            ))]
             let font = include_bytes!("/usr/share/fonts/TTF/DejaVuSans.ttf");
 
             let font = Font::try_from_bytes(font).ok_or("parse font")?;

@@ -15,6 +15,7 @@ strip = true
 [features]
 ubuntu = []
 alpine = []
+centos = []
 
 [dependencies]
 bigdecimal = "0.3"

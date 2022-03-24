@@ -4,9 +4,18 @@ A total free education &amp; translation &amp; ops solution.
 
 ## Notes
 
-```bash
-npm install sql-formatter -g
-```
+- install dejavu fonts
+
+  ```bash
+  # for centos
+  sudo yum install dejavu-sans-fonts
+  # for archlinux
+  sudo pacman -S ttf-dejavu
+  # for ubuntu
+  sudo apt install ttf-dejavu
+  # for alpine
+  sudo apk add ttf-dejavu
+  ```
 
 - Generate a random secret key: `openssl rand -base64 32`
 - Generate a random password: `pwgen 32 1`
