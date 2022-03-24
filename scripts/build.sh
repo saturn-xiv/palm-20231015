@@ -68,7 +68,8 @@ build_dashboard(){
         yarn install
     fi
     # FIXME https://github.com/webpack/webpack/issues/14532
-    NODE_OPTIONS=--openssl-legacy-provider yarn build
+    # NODE_OPTIONS=--openssl-legacy-provider 
+    yarn build
 }
 
 build_deb(){
@@ -119,22 +120,28 @@ build_deb(){
 
 # -----------------------------------------------------------------------------
 
-export OS_NAME=$(lsb_release -is)
-export OS_CODE=$(lsb_release -cs)
+# export OS_NAME=$(lsb_release -is)
+# export OS_CODE=$(lsb_release -cs)
 
 build_dashboard
 
-if [[ $OS_NAME == "Ubuntu" ]]
+. /etc/os-release
+
+if [[ $ID == "ubuntu" ]]
 then    
     build_deb amd64
     build_deb arm64
     build_deb armhf
-elif [[ $OS_NAME == "Arch" ]]
+elif [[ $ID == "arch" ]]
 then
     cd $WORKSPACE
-    cargo build --release
+    cargo build --target x86_64-unknown-linux-gnu --release
+elif [[ $ID == "alpine" ]]
+then
+    cd $WORKSPACE
+    cargo build --target x86_64-unknown-linux-musl --release --features alpine
 else
-    echo "Unknowk os $OS_NAME"
+    echo "Unknown os $ID"
     exit 1
 fi
 

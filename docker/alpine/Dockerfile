@@ -6,6 +6,7 @@ RUN apk upgrade
 RUN apk add perl vim curl bash zsh sudo pwgen openssl git tmux \
     build-base cmake protobuf \
     nodejs npm yarn \
+    ttf-dejavu \
     libudev-zero-dev postgresql-dev mariadb-dev sqlite-dev
 
 RUN mkdir -p $HOME/downloads $HOME/local $HOME/tmp

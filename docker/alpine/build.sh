@@ -3,7 +3,7 @@
 set -e
 
 export VERSION=$(date "+%4Y%m%d%H%M%S")
-export CODE="palm-musl"
+export CODE="palm-alpine"
 
 buildah pull alpine:latest
 buildah bud --layers -t $CODE .

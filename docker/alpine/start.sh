@@ -1,10 +1,11 @@
 #!/bin/sh
 
-NAME=palm-musl
+export CODE="palm-alpine"
+export NAME="$CODE-$USER"
 
 if podman container exists $NAME
 then
-    podman start -i -a --events-backend=file $NAME
+    podman start -i -a $NAME
 else
-    podman run --name $NAME --privileged=true -it --userns=keep-id --hostname=palm --user=$(id -ur):$(id -gr) --network host --events-backend=file -v $PWD:/workspace:z $NAME
+    podman run --name $NAME -it --events-backend=file --hostname=palm --network host -v $PWD:/workspace:z $CODE
 fi

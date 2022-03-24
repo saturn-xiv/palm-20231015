@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export CODE="palm-bionic-rust"
+export CODE="palm-bionic"
 export NAME="$CODE-$USER"
 
 if podman container exists $NAME
