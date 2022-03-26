@@ -56,17 +56,17 @@ impl From<User> for UserProfile {
 impl Layout {
     const KEY: &'static str = "layout://";
 
-    pub fn build(ctx: &Context) -> Result<Layout> {
+    pub fn build(ctx: &Context, lang: &Option<String>) -> Result<Layout> {
         let db = ctx.db.get()?;
         let db = db.deref();
         let jwt = ctx.jwt.deref();
 
         let user = ctx.token.current_user(db, jwt);
 
-        let lang = match user {
+        let lang = lang.clone().unwrap_or_else(|| match user {
             Ok(ref it) => it.lang.clone(),
             Err(_) => ctx.lang.clone(),
-        };
+        });
 
         let enc = ctx.aes.deref();
         let mut ch = ctx.cache.get()?;

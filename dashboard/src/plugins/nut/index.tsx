@@ -6,6 +6,10 @@ export const USERS_LOGS_PATH = "/users/logs";
 const plugin: IPlugin = {
   routes: [
     {
+      path: "/admin/site",
+      component: () => import("./admin/site"),
+    },
+    {
       path: "/admin/leave-words",
       component: () => import("./admin/leave-words"),
     },

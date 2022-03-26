@@ -84,9 +84,15 @@ export const Layout = () => {
               layout {
                 siteInfo {
                   title
+                  keywords
+                  description
                   subhead
                   copyright
                   languages
+                  author {
+                    email
+                    name
+                  }
                 }
                 userProfile {
                   realName

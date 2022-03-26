@@ -20,18 +20,25 @@ const initialState: IState = {
 };
 
 export const slice = createSlice({
-  name: "current-user",
+  name: "side-bar",
   initialState,
   reducers: {
     refresh: (state, action: PayloadAction<IMenu[]>) => {
       state.menus = action.payload;
     },
+    goto: (state, action: PayloadAction<string>) => {
+      state.selectedKey = action.payload;
+    },
   },
 });
 
-export const { refresh } = slice.actions;
+export const { goto, refresh } = slice.actions;
 
 export const selectSideBarMenus = (state: RootState): IMenu[] =>
   state.sideBar.menus;
+
+export const selectSideBarSelectedKey = (
+  state: RootState
+): string | undefined => state.sideBar.selectedKey;
 
 export default slice.reducer;

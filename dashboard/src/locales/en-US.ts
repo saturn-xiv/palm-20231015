@@ -69,6 +69,13 @@ const items = {
   "nut.users.profile.account": "Account info",
   "nut.leave-words.new.title": "Leave us a message",
   "nut.admin.leave-words.index.title": "Leave messages",
+  "nut.admin.site.title": "Website",
+  "nut.admin.site.info.title": "Base information",
+  "nut.admin.site.info.fields.title": "Title",
+  "nut.admin.site.info.fields.subhead": "Subhead",
+  "nut.admin.site.info.fields.keywords": "Keywords",
+  "nut.admin.site.info.fields.description": "Description",
+  "nut.admin.site.info.fields.copyright": "Copyright",
 };
 
 export default items;

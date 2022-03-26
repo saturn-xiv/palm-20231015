@@ -14,8 +14,13 @@ import { MenuInfo } from "rc-menu/lib/interface";
 
 import { selectCurrentUser } from "../../reducers/current-user";
 import { selectSiteInfo } from "../../reducers/site-info";
-import { selectSideBarMenus, IMenu } from "../../reducers/side-bar";
-import { useAppSelector } from "../../hooks";
+import {
+  selectSideBarMenus,
+  selectSideBarSelectedKey,
+  goto as sideBarGoto,
+  IMenu,
+} from "../../reducers/side-bar";
+import { useAppSelector, useAppDispatch } from "../../hooks";
 import Forbidden from "../403";
 import {
   Copyright,
@@ -35,6 +40,7 @@ const Widget = ({ title, children }: IProps) => {
   const site = useAppSelector(selectSiteInfo);
   const intl = useIntl();
   const menus = useAppSelector(selectSideBarMenus);
+  const dispatch = useAppDispatch();
 
   function to_menu_route(it: IMenu): MenuDataItem {
     return {
@@ -60,6 +66,7 @@ const Widget = ({ title, children }: IProps) => {
 
   const navigate = useNavigate();
   const user = useAppSelector(selectCurrentUser);
+  const sideBarSelectedKey = useAppSelector(selectSideBarSelectedKey);
   return user ? (
     <ProLayout
       title={site.subhead}
@@ -76,9 +83,12 @@ const Widget = ({ title, children }: IProps) => {
       }}
       menuProps={{
         onClick: ({ key }: MenuInfo) => {
+          dispatch(sideBarGoto(key));
           navigate(key);
         },
       }}
+      selectedKeys={[sideBarSelectedKey]}
+      menu={{ defaultOpenAll: true }}
     >
       <PageContainer
         title={title}

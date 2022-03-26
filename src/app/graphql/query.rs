@@ -45,8 +45,8 @@ impl Query {
         Ok(items)
     }
 
-    fn layout(ctx: &Context) -> FieldResult<Layout> {
-        let it = Layout::build(ctx)?;
+    fn layout(ctx: &Context, lang: Option<String>) -> FieldResult<Layout> {
+        let it = Layout::build(ctx, &lang)?;
         Ok(it)
     }
 
