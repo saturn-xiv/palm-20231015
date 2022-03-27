@@ -100,7 +100,7 @@ const Widget = ({ title, children }: IProps) => {
           <I18n key="global" />,
         ]}
       >
-        <Row gutter={16}>
+        <Row gutter={[16, 16]}>
           {children}
           <Col span={24}>
             <LayoutInfo />

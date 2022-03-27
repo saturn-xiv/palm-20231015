@@ -78,6 +78,9 @@ const items = {
   "nut.admin.site.info.fields.description": "Description",
   "nut.admin.site.copyright.title": "Copyright",
   "nut.admin.site.keywords.title": "Keywords",
+  "nut.admin.site.author.title": "Author",
+  "nut.admin.site.rss.title": "Rss feeds",
+  "nut.admin.site.sitemap.title": "Sitemap",
 };
 
 export default items;
