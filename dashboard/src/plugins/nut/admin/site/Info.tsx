@@ -92,6 +92,7 @@ const Widget = () => {
   return (
     <Card title={<FormattedMessage id="nut.admin.site.info.title" />}>
       <ProForm<IFormData>
+        name="info"
         onFinish={onSubmit}
         formRef={formRef}
         request={async (params = {}) => {

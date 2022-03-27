@@ -12,25 +12,25 @@ import Smtp from "./Smtp";
 import Author from "./Author";
 import Keywords from "./Keywords";
 import Copyright from "./Copyright";
+import Database from "./Database";
+import Queue from "./Queue";
+import Status from "./Status";
 
 const Widget = () => {
   const intl = useIntl();
   return (
     <Layout title={intl.formatMessage({ id: "nut.admin.site.title" })}>
       <Col sm={24} md={8}>
-        <Info />
-      </Col>
-      <Col sm={24} md={8}>
-        <Keywords />
-      </Col>
-      <Col sm={24} md={8}>
-        <Copyright />
-      </Col>
-      <Col sm={24} md={8}>
-        <Author />
+        <Status />
       </Col>
       <Col sm={24} md={8}>
         <Cache />
+      </Col>
+      <Col sm={24} md={8}>
+        <Database />
+      </Col>
+      <Col sm={24} md={8}>
+        <Queue />
       </Col>
       <Col sm={24} md={8}>
         <Smtp />
@@ -46,6 +46,18 @@ const Widget = () => {
       </Col>
       <Col sm={24} md={8}>
         <Baidu />
+      </Col>
+      <Col sm={24} md={8}>
+        <Info />
+      </Col>
+      <Col sm={24} md={8}>
+        <Keywords />
+      </Col>
+      <Col sm={24} md={8}>
+        <Copyright />
+      </Col>
+      <Col sm={24} md={8}>
+        <Author />
       </Col>
     </Layout>
   );

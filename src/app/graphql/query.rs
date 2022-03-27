@@ -50,6 +50,19 @@ impl Query {
         Ok(it)
     }
 
+    fn getSiteGoogle(ctx: &Context) -> FieldResult<nut::graphql::site::GoogleRequest> {
+        let it = nut::graphql::site::GoogleRequest::new(ctx)?;
+        Ok(it)
+    }
+    fn getSiteBaidu(ctx: &Context) -> FieldResult<nut::graphql::site::BaiduRequest> {
+        let it = nut::graphql::site::BaiduRequest::new(ctx)?;
+        Ok(it)
+    }
+    fn getSiteSmtp(ctx: &Context) -> FieldResult<nut::tasks::email::Handler> {
+        let it = nut::tasks::email::Handler::new(ctx)?;
+        Ok(it)
+    }
+
     fn leastLeaveWord(
         ctx: &Context,
         page_size: i32,

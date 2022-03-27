@@ -47,6 +47,7 @@ const Widget = () => {
   return (
     <Card title={<FormattedMessage id="nut.admin.site.keywords.title" />}>
       <ProForm<IFormData>
+        name="keywords"
         onReset={() => {
           setKeywords(site.keywords);
         }}

@@ -5,8 +5,16 @@ const items = {
   "buttons.go-home": "Go home",
   "buttons.reset": "Reset",
   "buttons.mark-as-read": "Mark as read",
+  "buttons.verify": "Verify",
+  "buttons.help": "Help",
+  "buttons.ping": "Ping",
+  "buttons.purge": "Purge",
+  "buttons.clear": "Clear",
+  "buttons.test": "Test",
 
   "fields.email": "Email address",
+  "fields.account": "Account",
+  "fields.host": "Host",
   "fields.real-name": "Real name",
   "fields.nick-name": "Nick name",
   "fields.password": "Password",
@@ -81,6 +89,16 @@ const items = {
   "nut.admin.site.author.title": "Author",
   "nut.admin.site.rss.title": "Rss feeds",
   "nut.admin.site.sitemap.title": "Sitemap",
+  "nut.admin.site.google.title": "Google",
+  "nut.admin.site.google.site-verify-code": "Site verify code",
+  "nut.admin.site.baidu.title": "Baidu",
+  "nut.admin.site.baidu.site-verify-code": "Site verify code",
+  "nut.admin.site.cache.title": "Cache",
+  "nut.admin.site.db.title": "Database",
+  "nut.admin.site.queue.title": "Messaging queues",
+  "nut.admin.site.status.title": "Status",
+  "nut.admin.site.smtp.title": "Smtp",
+  "nut.admin.site.smtp.demo": "Send a demo email",
 };
 
 export default items;

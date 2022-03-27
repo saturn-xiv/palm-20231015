@@ -1,7 +1,9 @@
 use std::collections::HashMap;
 
+use juniper::GraphQLObject;
 use lettre::{transport::smtp::authentication::Credentials, Message, SmtpTransport, Transport};
 use serde::{Deserialize, Serialize};
+use validator::Validate;
 
 use super::super::super::super::{queue::amqp::Handler as QueueHandler, Result};
 
@@ -36,10 +38,14 @@ impl Task {
 }
 
 // https://support.google.com/mail/answer/7126229#zippy=%2Cstep-change-smtp-other-settings-in-your-email-client
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(GraphQLObject, Validate, Serialize, Deserialize, Debug, Clone)]
+#[graphql(name = "SmtpSetting")]
 pub struct Handler {
+    #[validate(length(min = 1))]
     pub host: String,
+    #[validate(length(min = 1), email)]
     pub account: String,
+    #[validate(length(min = 1))]
     pub password: String,
 }
 

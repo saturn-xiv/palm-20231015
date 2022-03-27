@@ -40,7 +40,7 @@ const Widget = () => {
 
   return (
     <Card title={<FormattedMessage id="nut.admin.site.copyright.title" />}>
-      <ProForm<IFormData> onFinish={onSubmit}>
+      <ProForm<IFormData> name="copyright" onFinish={onSubmit}>
         <ProFormText
           width="md"
           name="copyright"

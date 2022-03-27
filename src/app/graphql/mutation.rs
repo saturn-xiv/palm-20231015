@@ -170,6 +170,30 @@ impl Mutation {
         form.handle(ctx)?;
         Ok(Success::default())
     }
+    fn setSiteGoogle(ctx: &Context, site_verify_code: String) -> FieldResult<Success> {
+        let form = nut::graphql::site::GoogleRequest { site_verify_code };
+        form.handle(ctx)?;
+        Ok(Success::default())
+    }
+    fn setSiteBaidu(ctx: &Context, site_verify_code: String) -> FieldResult<Success> {
+        let form = nut::graphql::site::BaiduRequest { site_verify_code };
+        form.handle(ctx)?;
+        Ok(Success::default())
+    }
+    fn setSiteSmtp(
+        ctx: &Context,
+        host: String,
+        account: String,
+        password: String,
+    ) -> FieldResult<Success> {
+        let form = nut::tasks::email::Handler {
+            host,
+            account,
+            password,
+        };
+        form.handle(ctx)?;
+        Ok(Success::default())
+    }
 
     fn createLeaveWord(
         ctx: &Context,
