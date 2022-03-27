@@ -8,13 +8,14 @@ import Layout from "../users/NonSignInLayout";
 import { graphql } from "../../../request";
 import { USERS_SIGN_IN_PATH } from "..";
 import Captcha from "../../../components/Captcha";
+import { IOk } from "../..";
 
 interface IFormData {
   body: string;
   captcha: string;
 }
 interface IFormResponse {
-  createLeaveWord: { createdAt: number };
+  createLeaveWord: IOk;
 }
 interface IFormRequest {
   body: string;

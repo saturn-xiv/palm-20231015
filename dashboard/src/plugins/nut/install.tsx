@@ -20,11 +20,12 @@ import {
   IFormRequest as ISignUpFormRequest,
 } from "./users/sign-up";
 import Captcha from "../../components/Captcha";
+import { IOk } from "..";
 
 interface IFormData extends ISignUpFormData {}
 
 interface IFormResponse {
-  install: { createdAt: number };
+  install: IOk;
 }
 
 interface IFormRequest extends ISignUpFormRequest {}

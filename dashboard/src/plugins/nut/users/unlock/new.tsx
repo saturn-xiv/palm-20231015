@@ -9,13 +9,14 @@ import { EMAIL_VALIDATOR } from "../../../../components/form";
 import { graphql } from "../../../../request";
 import { USERS_SIGN_IN_PATH } from "../..";
 import Captcha from "../../../../components/Captcha";
+import { IOk } from "../../..";
 
 interface IFormData {
   email: string;
   captcha: string;
 }
 interface IFormResponse {
-  userUnlockByEmail: { createdAt: number };
+  userUnlockByEmail: IOk;
 }
 interface IFormRequest {
   email: string;

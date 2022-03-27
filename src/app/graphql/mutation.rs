@@ -139,6 +139,37 @@ impl Mutation {
         nut::graphql::locale::destroy(ctx, id)?;
         Ok(Success::default())
     }
+    fn setSiteKeywords(ctx: &Context, keywords: Vec<String>) -> FieldResult<Success> {
+        let form = nut::graphql::site::KeywordsRequest { items: keywords };
+        form.handle(ctx)?;
+        Ok(Success::default())
+    }
+    fn setSiteCopyright(ctx: &Context, copyright: String) -> FieldResult<Success> {
+        let form = nut::graphql::site::CopyrightRequest { value: copyright };
+        form.handle(ctx)?;
+        Ok(Success::default())
+    }
+    fn setSiteAuthor(ctx: &Context, name: String, email: String) -> FieldResult<Success> {
+        let form = nut::graphql::site::AuthorRequest { email, name };
+        form.handle(ctx)?;
+        Ok(Success::default())
+    }
+    fn setSiteInfo(
+        ctx: &Context,
+        lang: String,
+        title: String,
+        subhead: String,
+        description: String,
+    ) -> FieldResult<Success> {
+        let form = nut::graphql::site::InfoRequest {
+            lang,
+            title,
+            subhead,
+            description,
+        };
+        form.handle(ctx)?;
+        Ok(Success::default())
+    }
 
     fn createLeaveWord(
         ctx: &Context,

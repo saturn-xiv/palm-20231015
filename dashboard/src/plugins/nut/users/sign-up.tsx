@@ -16,6 +16,7 @@ import { graphql } from "../../../request";
 import { detect as detectLocale } from "../../../locales";
 import { USERS_SIGN_IN_PATH } from "..";
 import Captcha from "../../../components/Captcha";
+import { IOk } from "../..";
 
 export interface IFormData {
   nickName: string;
@@ -27,7 +28,7 @@ export interface IFormData {
 }
 
 export interface IFormResponse {
-  userSignUp: { createdAt: number };
+  userSignUp: IOk;
 }
 export interface IFormRequest {
   user: {

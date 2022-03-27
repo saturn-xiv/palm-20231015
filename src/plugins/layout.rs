@@ -213,6 +213,7 @@ impl Site {
     pub const DESCRIPTION: &'static str = "site.description";
     pub const AUTHOR: &'static str = "site.author";
     pub const COPYRIGHT: &'static str = "site.copyright";
+
     pub fn new<S: Secret>(db: &Db, enc: &S, lang: &str) -> Result<Self> {
         let it = Self {
             languages: LocaleDao::languages(db)?,

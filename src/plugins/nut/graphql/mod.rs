@@ -3,6 +3,7 @@ pub mod category;
 pub mod contact;
 pub mod leave_word;
 pub mod locale;
+pub mod site;
 pub mod tag;
 pub mod user;
 

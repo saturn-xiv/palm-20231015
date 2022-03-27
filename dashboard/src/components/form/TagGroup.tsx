@@ -1,8 +1,10 @@
 import { useState, RefObject, useRef } from "react";
 import { Tag, Input, InputRef } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+import ProForm from "@ant-design/pro-form";
 
 export interface IProps {
+  title: string;
   items: string[];
   onUpdate: (values: string[]) => void;
 }
@@ -25,7 +27,7 @@ const tagInputStyle = {
   verticalAlign: "top",
 };
 
-const Widget = ({ items, onUpdate }: IProps) => {
+const Widget = ({ title, items, onUpdate }: IProps) => {
   const [newData, setNewData] = useState<INewState>({
     visable: false,
     value: "",
@@ -52,72 +54,75 @@ const Widget = ({ items, onUpdate }: IProps) => {
   };
 
   return (
-    <>
-      {items.map((it, idx) => {
-        if (editData.index === idx) {
-          return (
-            <Input
-              key={it}
-              size="small"
-              style={tagInputStyle}
-              value={editData.value}
-              onChange={(event) => {
-                setEditData({ ...editData, value: event.target.value });
-              }}
-              onBlur={handleEditConfirm}
-              onPressEnter={handleEditConfirm}
-            />
-          );
-        }
+    <ProForm.Group>
+      <ProForm.Item label={title}>
+        {items.map((it, idx) => {
+          if (editData.index === idx) {
+            return (
+              <Input
+                key={it}
+                size="small"
+                style={tagInputStyle}
+                value={editData.value}
+                onChange={(event) => {
+                  setEditData({ ...editData, value: event.target.value });
+                }}
+                onBlur={handleEditConfirm}
+                onPressEnter={handleEditConfirm}
+              />
+            );
+          }
 
-        return (
-          <Tag
-            style={{ userSelect: "none" }}
-            key={it}
-            onClose={() => {
-              onUpdate(items.filter((v: string) => v !== it));
-            }}
-          >
-            <span
-              onDoubleClick={(e) => {
-                e.preventDefault();
-                setEditData({ ...editData, index: idx, value: it });
-                editData.ref.current?.focus();
+          return (
+            <Tag
+              style={{ userSelect: "none" }}
+              key={it}
+              closable
+              onClose={() => {
+                onUpdate(items.filter((v: string) => v !== it));
               }}
             >
-              {it}
-            </span>
-          </Tag>
-        );
-      })}
+              <span
+                onDoubleClick={(e) => {
+                  e.preventDefault();
+                  setEditData({ ...editData, index: idx, value: it });
+                  editData.ref.current?.focus();
+                }}
+              >
+                {it}
+              </span>
+            </Tag>
+          );
+        })}
 
-      {newData.visable ? (
-        <Input
-          type="text"
-          size="small"
-          style={tagInputStyle}
-          value={newData.value}
-          onChange={(event) => {
-            setNewData({ ...newData, value: event.target.value });
-          }}
-          onBlur={handleNewConfirm}
-          onPressEnter={handleNewConfirm}
-        />
-      ) : (
-        <Tag
-          style={{
-            background: "#fff",
-            borderStyle: "dashed",
-          }}
-          onClick={() => {
-            setNewData({ ...newData, visable: true });
-            newData.ref.current?.focus();
-          }}
-        >
-          <PlusOutlined /> New Tag
-        </Tag>
-      )}
-    </>
+        {newData.visable ? (
+          <Input
+            type="text"
+            size="small"
+            style={tagInputStyle}
+            value={newData.value}
+            onChange={(event) => {
+              setNewData({ ...newData, value: event.target.value });
+            }}
+            onBlur={handleNewConfirm}
+            onPressEnter={handleNewConfirm}
+          />
+        ) : (
+          <Tag
+            style={{
+              background: "#fff",
+              borderStyle: "dashed",
+            }}
+            onClick={() => {
+              setNewData({ ...newData, visable: true });
+              newData.ref.current?.focus();
+            }}
+          >
+            <PlusOutlined /> New Tag
+          </Tag>
+        )}
+      </ProForm.Item>
+    </ProForm.Group>
   );
 };
 

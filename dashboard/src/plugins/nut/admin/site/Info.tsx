@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { useIntl, FormattedMessage } from "react-intl";
 import type { ProFormInstance } from "@ant-design/pro-form";
 import ProForm, {
@@ -15,23 +15,18 @@ import {
 } from "../../../../reducers/site-info";
 import { selectCurrentUser } from "../../../../reducers/current-user";
 import { useAppSelector } from "../../../../hooks";
-import TagGroup from "../../../../components/form/TagGroup";
 import { detect as detectLocale } from "../../../../locales";
+import { IOk } from "../../..";
 
 interface IFormData {
   lang: string;
   title: string;
   subhead: string;
   description: string;
-  copyright: string;
-}
-
-interface IFormRequest extends IFormData {
-  keywords: string[];
 }
 
 interface IFormResponse {
-  updateSiteInfo: { createdAt: number };
+  setSiteInfo: IOk;
 }
 
 interface IFetchResponse {
@@ -60,22 +55,31 @@ query Fetch($lang: String) {
 const Widget = () => {
   const formRef = useRef<ProFormInstance>();
 
-  const [keywords, setKeywords] = useState<string[]>([]);
   const intl = useIntl();
   const site = useAppSelector(selectSiteInfo);
   const user = useAppSelector(selectCurrentUser);
   const onSubmit = async (data: IFormData) => {
-    // TODO
-    const response = await graphql<IFormRequest, IFormResponse>(
+    const response = await graphql<IFormData, IFormResponse>(
       `
-        mutation PostForm($user: UserUpdateProfileRequest!) {
-          userUpdateProfile(form: $user) {
+        mutation PostForm(
+          $lang: String!
+          $title: String!
+          $subhead: String!
+          $description: String!
+        ) {
+          setSiteInfo(
+            lang: $lang
+            title: $title
+            subhead: $subhead
+            description: $description
+          ) {
             createdAt
           }
         }
       `,
-      { ...data, keywords }
+      data
     );
+
     if (response.data) {
       message.success(intl.formatMessage({ id: "flashes.successed" }));
     } else {
@@ -97,7 +101,6 @@ const Widget = () => {
             { lang }
           );
           if (response.data) {
-            setKeywords(response.data.layout.siteInfo.keywords);
             return {
               lang,
               title: response.data.layout.siteInfo.title,
@@ -126,7 +129,6 @@ const Widget = () => {
                   IFetchResponse
                 >(QUERY, { lang });
                 if (response.data) {
-                  setKeywords(response.data.layout.siteInfo.keywords);
                   formRef.current?.setFieldsValue({
                     title: response.data.layout.siteInfo.title,
                     subhead: response.data.layout.siteInfo.subhead,
@@ -160,20 +162,7 @@ const Widget = () => {
           rules={[{ required: true }]}
           label={<FormattedMessage id="nut.admin.site.info.fields.subhead" />}
         />
-        <ProForm.Group>
-          <ProForm.Item
-            label={
-              <FormattedMessage id="nut.admin.site.info.fields.keywords" />
-            }
-          >
-            <TagGroup
-              items={keywords}
-              onUpdate={(items) => {
-                setKeywords(items);
-              }}
-            />
-          </ProForm.Item>
-        </ProForm.Group>
+
         <ProFormTextArea
           width="md"
           name="description"
@@ -181,13 +170,6 @@ const Widget = () => {
           label={
             <FormattedMessage id="nut.admin.site.info.fields.description" />
           }
-        />
-        <ProFormText
-          required
-          width="md"
-          name="copyright"
-          rules={[{ required: true }]}
-          label={<FormattedMessage id="nut.admin.site.info.fields.copyright" />}
         />
       </ProForm>
     </Card>

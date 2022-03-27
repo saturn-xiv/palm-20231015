@@ -7,9 +7,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../NonSignInLayout";
 import { graphql } from "../../../../request";
 import { USERS_SIGN_IN_PATH } from "../..";
+import { IOk } from "../../..";
 
 interface IFetchResponse {
-  userConfirmByToken: { createdAt: number };
+  userConfirmByToken: IOk;
 }
 interface IRequest {
   token?: string;

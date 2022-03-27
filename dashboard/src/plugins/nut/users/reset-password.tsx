@@ -9,6 +9,7 @@ import { PASSWORD_VALIDATOR } from "../../../components/form";
 import { graphql } from "../../../request";
 import { USERS_SIGN_IN_PATH } from "..";
 import Captcha from "../../../components/Captcha";
+import { IOk } from "../..";
 
 export interface IFormData {
   password: string;
@@ -22,7 +23,7 @@ interface IFormRequest {
 }
 
 interface IFormResponse {
-  userResetPassword: { createdAt: number };
+  userResetPassword: IOk;
 }
 
 const Widget = () => {

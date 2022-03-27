@@ -4,6 +4,7 @@ import { message, Card } from "antd";
 
 import { PASSWORD_VALIDATOR } from "../../../../components/form";
 import { graphql } from "../../../../request";
+import { IOk } from "../../..";
 
 interface IFormData {
   currentPassword: string;
@@ -16,7 +17,7 @@ interface IFormRequest {
   newPassword: string;
 }
 interface IFormResponse {
-  userChangePassword: { createdAt: number };
+  userChangePassword: IOk;
 }
 
 const Widget = () => {

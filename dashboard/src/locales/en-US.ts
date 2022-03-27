@@ -29,6 +29,8 @@ const items = {
   "fields.resource-id": "Resource id",
   "fields.operation": "Operation",
   "fields.captcha": "Captcha code",
+  "fields.content": "Content",
+  "fields.tags": "Tags",
 
   "flashes.successed": "Successed.",
 
@@ -73,9 +75,9 @@ const items = {
   "nut.admin.site.info.title": "Base information",
   "nut.admin.site.info.fields.title": "Title",
   "nut.admin.site.info.fields.subhead": "Subhead",
-  "nut.admin.site.info.fields.keywords": "Keywords",
   "nut.admin.site.info.fields.description": "Description",
-  "nut.admin.site.info.fields.copyright": "Copyright",
+  "nut.admin.site.copyright.title": "Copyright",
+  "nut.admin.site.keywords.title": "Keywords",
 };
 
 export default items;

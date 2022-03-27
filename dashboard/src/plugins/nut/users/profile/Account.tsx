@@ -11,6 +11,7 @@ import { graphql } from "../../../../request";
 import { selectSiteInfo } from "../../../../reducers/site-info";
 import { selectCurrentUser } from "../../../../reducers/current-user";
 import { useAppSelector } from "../../../../hooks";
+import { IOk } from "../../..";
 
 interface IFormData {
   nickName: string;
@@ -25,7 +26,7 @@ interface IFormRequest {
   user: { realName: string; logo: string; lang: string; timeZone: string };
 }
 interface IFormResponse {
-  userUpdateProfile: { createdAt: number };
+  userUpdateProfile: IOk;
 }
 
 const Widget = () => {
