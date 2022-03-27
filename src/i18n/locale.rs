@@ -51,8 +51,9 @@ pub struct New<'a> {
 pub trait Dao {
     fn sync(&self) -> Result<(usize, usize)>;
     fn languages(&self) -> Result<Vec<String>>;
-    fn count(&self, lang: &str) -> Result<i64>;
-    fn all(&self) -> Result<Vec<Item>>;
+    fn count_by_lang(&self, lang: &str) -> Result<i64>;
+    fn count(&self) -> Result<i64>;
+    fn all(&self, offset: i64, limit: i64) -> Result<Vec<Item>>;
     fn by_lang(&self, lang: &str) -> Result<Vec<Item>>;
     fn by_id(&self, id: Uuid) -> Result<Item>;
     fn by_lang_and_code(&self, lang: &str, code: &str) -> Result<Item>;
@@ -156,7 +157,11 @@ impl Dao for Connection {
             .load::<String>(self)?)
     }
 
-    fn count(&self, lang: &str) -> Result<i64> {
+    fn count(&self) -> Result<i64> {
+        let cnt: i64 = locales::dsl::locales.count().get_result(self)?;
+        Ok(cnt)
+    }
+    fn count_by_lang(&self, lang: &str) -> Result<i64> {
         let cnt: i64 = locales::dsl::locales
             .count()
             .filter(locales::dsl::lang.eq(lang))
@@ -170,9 +175,11 @@ impl Dao for Connection {
             .load::<Item>(self)?;
         Ok(items)
     }
-    fn all(&self) -> Result<Vec<Item>> {
+    fn all(&self, offset: i64, limit: i64) -> Result<Vec<Item>> {
         let items = locales::dsl::locales
-            .order(locales::dsl::updated_at.desc())
+            .order((locales::dsl::code.asc(), locales::dsl::lang.asc()))
+            .offset(offset)
+            .limit(limit)
             .load::<Item>(self)?;
         Ok(items)
     }

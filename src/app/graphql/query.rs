@@ -40,9 +40,25 @@ impl Query {
         let it = nut::graphql::user::refresh_token(ctx)?;
         Ok(it)
     }
-    fn fetchLocaleByLang(ctx: &Context, lang: String) -> FieldResult<Vec<Locale>> {
+    fn showLocaleByLangAndCode(
+        ctx: &Context,
+        lang: String,
+        code: String,
+    ) -> FieldResult<Locale> {
+        let it = nut::graphql::locale::by_lang_and_code(ctx, &lang, &code)?;
+        Ok(it)
+    }
+    fn indexLocaleByLang(ctx: &Context, lang: String) -> FieldResult<Vec<Locale>> {
         let items = nut::graphql::locale::by_lang(ctx, &lang)?;
         Ok(items)
+    }
+    fn indexLocale(
+        ctx: &Context,
+        page_size: i32,
+        current: i32,
+    ) -> FieldResult<nut::graphql::locale::LocaleList> {
+        let it = nut::graphql::locale::LocaleList::new(ctx, page_size, current)?;
+        Ok(it)
     }
 
     fn layout(ctx: &Context, lang: Option<String>) -> FieldResult<Layout> {

@@ -11,6 +11,11 @@ const items = {
   "buttons.purge": "Purge",
   "buttons.clear": "Clear",
   "buttons.test": "Test",
+  "buttons.destroy": "Destroy",
+  "buttons.remove": "Remove",
+  "buttons.edit": "Edit",
+  "buttons.new": "New",
+  "buttons.add": "Add",
 
   "fields.email": "Email address",
   "fields.account": "Account",
@@ -30,6 +35,7 @@ const items = {
   "fields.level": "Level",
   "fields.ip": "Ip",
   "fields.port": "Port",
+  "fields.code": "Code",
   "fields.message": "Message",
   "fields.created-at": "Created at",
   "fields.updated-at": "Updated at",
@@ -99,6 +105,7 @@ const items = {
   "nut.admin.site.status.title": "Status",
   "nut.admin.site.smtp.title": "Smtp",
   "nut.admin.site.smtp.demo": "Send a demo email",
+  "nut.users.admin.locales.title": "Locales",
 };
 
 export default items;
