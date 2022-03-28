@@ -215,6 +215,23 @@ impl Mutation {
         Ok(Success::default())
     }
 
+    fn lockUser(ctx: &Context, id: Uuid) -> FieldResult<Success> {
+        nut::graphql::user::User::lock(ctx, id, true)?;
+        Ok(Success::default())
+    }
+    fn unlockUser(ctx: &Context, id: Uuid) -> FieldResult<Success> {
+        nut::graphql::user::User::lock(ctx, id, false)?;
+        Ok(Success::default())
+    }
+    fn enableUser(ctx: &Context, id: Uuid) -> FieldResult<Success> {
+        nut::graphql::user::User::disable(ctx, id, false)?;
+        Ok(Success::default())
+    }
+    fn disableUser(ctx: &Context, id: Uuid) -> FieldResult<Success> {
+        nut::graphql::user::User::disable(ctx, id, true)?;
+        Ok(Success::default())
+    }
+
     fn createTag(ctx: &Context, code: String) -> FieldResult<Success> {
         let form = nut::graphql::tag::TagRequest { code };
         form.create(ctx)?;

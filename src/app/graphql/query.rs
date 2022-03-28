@@ -40,11 +40,7 @@ impl Query {
         let it = nut::graphql::user::refresh_token(ctx)?;
         Ok(it)
     }
-    fn showLocaleByLangAndCode(
-        ctx: &Context,
-        lang: String,
-        code: String,
-    ) -> FieldResult<Locale> {
+    fn showLocaleByLangAndCode(ctx: &Context, lang: String, code: String) -> FieldResult<Locale> {
         let it = nut::graphql::locale::by_lang_and_code(ctx, &lang, &code)?;
         Ok(it)
     }
@@ -85,6 +81,15 @@ impl Query {
         current: i32,
     ) -> FieldResult<nut::graphql::leave_word::LeaveWordList> {
         let it = nut::graphql::leave_word::LeaveWordList::new(ctx, page_size, current)?;
+        Ok(it)
+    }
+
+    fn indexUser(
+        ctx: &Context,
+        page_size: i32,
+        current: i32,
+    ) -> FieldResult<nut::graphql::user::UserList> {
+        let it = nut::graphql::user::UserList::new(ctx, page_size, current)?;
         Ok(it)
     }
 

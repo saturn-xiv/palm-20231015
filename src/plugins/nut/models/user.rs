@@ -1,3 +1,4 @@
+use std::any::type_name;
 use std::fmt;
 
 use chrono::{NaiveDateTime, Utc};
@@ -16,6 +17,7 @@ use super::super::super::super::{
     HttpError, Result,
 };
 use super::super::schema::users;
+use super::{policy::Dao as PolicyDao, role::Item as Role};
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -94,6 +96,18 @@ impl fmt::Display for Item {
 }
 
 impl Item {
+    pub fn is_root(&self, db: &Connection) -> Result<()> {
+        if PolicyDao::is(db, type_name::<Item>(), self.id, Role::ROOT) {
+            return Ok(());
+        }
+        Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))
+    }
+    pub fn is_administrator(&self, db: &Connection) -> Result<()> {
+        if PolicyDao::is(db, type_name::<Item>(), self.id, Role::ADMINISTRATOR) {
+            return Ok(());
+        }
+        Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))
+    }
     pub fn available(&self) -> Result<()> {
         if self.deleted_at.is_some() {
             return Err(Box::new(HttpError(
@@ -191,9 +205,10 @@ pub trait Dao {
         time_zone: &Tz,
     ) -> Result<()>;
     fn lock(&self, id: Uuid, on: bool) -> Result<()>;
+    fn disable(&self, id: Uuid, on: bool) -> Result<()>;
     fn confirm(&self, id: Uuid) -> Result<()>;
     fn count(&self) -> Result<i64>;
-    fn all(&self) -> Result<Vec<Item>>;
+    fn all(&self, offset: i64, limit: i64) -> Result<Vec<Item>>;
     fn password<P: Password>(&self, enc: &P, id: Uuid, password: &str) -> Result<()>;
 }
 
@@ -346,7 +361,17 @@ impl Dao for Connection {
             .execute(self)?;
         Ok(())
     }
-
+    fn disable(&self, id: Uuid, on: bool) -> Result<()> {
+        let now = Utc::now().naive_utc();
+        let it = users::dsl::users.filter(users::dsl::id.eq(id));
+        update(it)
+            .set((
+                users::dsl::deleted_at.eq(&if on { Some(now) } else { None }),
+                users::dsl::updated_at.eq(&now),
+            ))
+            .execute(self)?;
+        Ok(())
+    }
     fn set_profile(
         &self,
         id: Uuid,
@@ -386,9 +411,11 @@ impl Dao for Connection {
         Ok(cnt)
     }
 
-    fn all(&self) -> Result<Vec<Item>> {
+    fn all(&self, offset: i64, limit: i64) -> Result<Vec<Item>> {
         let items = users::dsl::users
             .order(users::dsl::updated_at.desc())
+            .offset(offset)
+            .limit(limit)
             .load::<Item>(self)?;
         Ok(items)
     }

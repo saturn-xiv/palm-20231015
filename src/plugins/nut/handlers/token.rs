@@ -1,4 +1,3 @@
-use std::any::type_name;
 use std::result::Result as StdResult;
 
 use actix_web::{dev::Payload, web, Error, FromRequest, HttpRequest};
@@ -7,11 +6,7 @@ use hyper::{header::AUTHORIZATION, StatusCode};
 use serde::{Deserialize, Serialize};
 
 use super::super::super::super::{jwt::Jwt, orm::Connection as Db, HttpError, Result};
-use super::super::models::{
-    policy::Dao as PolicyDao,
-    role::Item as Role,
-    user::{Action, Dao as UserDao, Item as User, Token as UserToken},
-};
+use super::super::models::user::{Action, Dao as UserDao, Item as User, Token as UserToken};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Token(pub Option<String>);
@@ -62,10 +57,8 @@ impl Token {
     }
     pub fn administrator(&self, db: &Db, jwt: &Jwt) -> Result<User> {
         let user = self.current_user(db, jwt)?;
-        if PolicyDao::is(db, type_name::<User>(), user.id, Role::ADMINISTRATOR) {
-            return Ok(user);
-        }
-        Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))
+        user.is_administrator(db)?;
+        Ok(user)
     }
 }
 

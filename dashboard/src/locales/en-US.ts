@@ -16,6 +16,10 @@ const items = {
   "buttons.edit": "Edit",
   "buttons.new": "New",
   "buttons.add": "Add",
+  "buttons.lock": "Lock",
+  "buttons.unlock": "Unlock",
+  "buttons.enable": "Enable",
+  "buttons.disable": "Disable",
 
   "fields.email": "Email address",
   "fields.account": "Account",
@@ -106,6 +110,21 @@ const items = {
   "nut.admin.site.smtp.title": "Smtp",
   "nut.admin.site.smtp.demo": "Send a demo email",
   "nut.users.admin.locales.title": "Locales",
+  "nut.users.admin.locales.confirm-to-remove":
+    "Are you sure to remove { lang }.{ code }?",
+  "nut.users.admin.users.title": "Users",
+  "nut.users.admin.users.name": "Name",
+  "nut.users.admin.users.zone": "Zone",
+  "nut.users.admin.users.current-sign-in": "Current signed in",
+  "nut.users.admin.users.last-sign-in": "Last signed in",
+  "nut.users.admin.locales.confirm-to-lock": "Are you sure to lock { name }?",
+  "nut.users.admin.locales.confirm-to-unlock":
+    "Are you sure to unlock { name }?",
+  "nut.users.admin.locales.confirm-to-enable":
+    "Are you sure to enable { name }?",
+  "nut.users.admin.locales.confirm-to-disable":
+    "Are you sure to disable { name }?",
+  "nut.users.admin.locales.email-not-valid-yet": "Email not valid yet",
 };
 
 export default items;

@@ -638,3 +638,158 @@ fn send_email(ctx: &Context, home: &str, user: &UserItem, act: &Action) -> Resul
 
     Ok(())
 }
+
+#[derive(GraphQLObject)]
+pub struct UserList {
+    pub data: Vec<User>,
+    pub total: i32,
+}
+
+impl UserList {
+    pub fn new(ctx: &Context, page_size: i32, current: i32) -> Result<Self> {
+        let db = ctx.db.get()?;
+        let db = db.deref();
+        let jwt = ctx.jwt.deref();
+        ctx.token.administrator(db, jwt)?;
+
+        let total = UserDao::count(db)?;
+
+        let mut items = Vec::new();
+        for it in UserDao::all(db, ((current - 1) * page_size) as i64, page_size as i64)? {
+            items.push(it.into());
+        }
+        Ok(Self {
+            data: items,
+            total: total as i32,
+        })
+    }
+}
+
+#[derive(GraphQLObject)]
+pub struct User {
+    pub id: Uuid,
+    pub real_name: String,
+    pub nick_name: String,
+    pub provider_type: String,
+    pub email: String,
+    pub logo: String,
+    pub lang: String,
+    pub time_zone: String,
+    pub sign_in_count: i32,
+    pub current_sign_in_at: Option<NaiveDateTime>,
+    pub current_sign_in_ip: Option<String>,
+    pub last_sign_in_at: Option<NaiveDateTime>,
+    pub last_sign_in_ip: Option<String>,
+    pub confirmed_at: Option<NaiveDateTime>,
+    pub locked_at: Option<NaiveDateTime>,
+    pub deleted_at: Option<NaiveDateTime>,
+    pub updated_at: NaiveDateTime,
+}
+
+impl From<UserItem> for User {
+    fn from(it: UserItem) -> User {
+        Self {
+            id: it.id,
+            real_name: it.real_name,
+            nick_name: it.nick_name,
+            provider_type: it.provider_type,
+            email: it.email,
+            logo: it.logo,
+            lang: it.lang,
+            time_zone: it.time_zone,
+            sign_in_count: it.sign_in_count,
+            current_sign_in_at: it.current_sign_in_at,
+            current_sign_in_ip: it.current_sign_in_ip,
+            last_sign_in_at: it.last_sign_in_at,
+            last_sign_in_ip: it.last_sign_in_ip,
+            confirmed_at: it.confirmed_at,
+            locked_at: it.locked_at,
+            deleted_at: it.deleted_at,
+            updated_at: it.updated_at,
+        }
+    }
+}
+
+impl User {
+    pub fn lock(ctx: &Context, id: Uuid, on: bool) -> Result<()> {
+        let db = ctx.db.get()?;
+        let db = db.deref();
+        let jwt = ctx.jwt.deref();
+        ctx.token.administrator(db, jwt)?;
+        {
+            let user = UserDao::by_id(db, id)?;
+
+            if user.is_root(db).is_ok()
+                || (on && user.locked_at.is_some())
+                || (!on && user.locked_at.is_none())
+            {
+                return Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)));
+            }
+        }
+
+        let ip = ctx.peer.clone();
+
+        db.transaction::<_, Error, _>(move || {
+            UserDao::lock(db, id, on)?;
+
+            LogDao::add(
+                db,
+                id,
+                &Level::Info,
+                &ip,
+                &Resource {
+                    type_: type_name::<UserItem>().to_string(),
+                    id,
+                },
+                if on {
+                    "Lock by administrator."
+                } else {
+                    "Unlock by administrator."
+                },
+            )?;
+            Ok(())
+        })?;
+        Ok(())
+    }
+
+    pub fn disable(ctx: &Context, id: Uuid, on: bool) -> Result<()> {
+        let db = ctx.db.get()?;
+        let db = db.deref();
+        let jwt = ctx.jwt.deref();
+        ctx.token.administrator(db, jwt)?;
+        {
+            let user = UserDao::by_id(db, id)?;
+
+            if user.is_root(db).is_ok()
+                || (on && user.deleted_at.is_some())
+                || (!on && user.deleted_at.is_none())
+            {
+                return Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)));
+            }
+        }
+
+        let ip = ctx.peer.clone();
+
+        db.transaction::<_, Error, _>(move || {
+            UserDao::disable(db, id, on)?;
+
+            LogDao::add(
+                db,
+                id,
+                &Level::Info,
+                &ip,
+                &Resource {
+                    type_: type_name::<UserItem>().to_string(),
+                    id,
+                },
+                if on {
+                    "Disable by administrator."
+                } else {
+                    "Enable by administrator."
+                },
+            )?;
+            Ok(())
+        })?;
+        Ok(())
+    }
+}

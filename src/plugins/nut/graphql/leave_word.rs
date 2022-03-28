@@ -53,7 +53,7 @@ pub struct LeaveWordList {
 }
 
 impl LeaveWordList {
-    pub fn new(ctx: &Context, page_size: i32, current: i32) -> Result<LeaveWordList> {
+    pub fn new(ctx: &Context, page_size: i32, current: i32) -> Result<Self> {
         let db = ctx.db.get()?;
         let db = db.deref();
         let jwt = ctx.jwt.deref();

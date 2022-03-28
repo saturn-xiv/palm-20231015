@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Col, Space, Button, Tooltip, message } from "antd";
+import { Col, Space, Button, Popconfirm, Tooltip, message } from "antd";
 import { useIntl, FormattedMessage } from "react-intl";
 import ProTable, { ActionType } from "@ant-design/pro-table";
 import { EditOutlined, PlusOutlined, DeleteOutlined } from "@ant-design/icons";
@@ -8,7 +8,7 @@ import Layout from "../../../../layouts/dashboard";
 import { graphql } from "../../../../request";
 import { TIMESTAMP_COLUMN_WIDTH } from "../../../../components/table";
 import { Timestamp } from "../../../../components";
-import { IPager, IPagination } from "../../..";
+import { IPager, IOk, IId, IPagination } from "../../..";
 import { detect as detectLocale } from "../../../../locales";
 import LocaleForm from "./Form";
 
@@ -22,6 +22,10 @@ interface IItem {
 
 interface IFetchResponse {
   indexLocale: IPagination<IItem>;
+}
+
+interface IDestoryResponse {
+  destoryLocale: IOk;
 }
 
 const Widget = () => {
@@ -68,8 +72,7 @@ const Widget = () => {
             );
             if (response.data) {
               return {
-                data: response.data.indexLocale.data,
-                total: response.data.indexLocale.total,
+                ...response.data.indexLocale,
                 success: true,
               };
             }
@@ -100,7 +103,7 @@ const Widget = () => {
               key: "message",
             },
             {
-              title: intl.formatMessage({ id: "fields.created-at" }),
+              title: intl.formatMessage({ id: "fields.updated-at" }),
               key: "updated-at",
               width: TIMESTAMP_COLUMN_WIDTH,
               render: (_, it) => <Timestamp value={it.updatedAt} />,
@@ -123,17 +126,40 @@ const Widget = () => {
                       message: it.message,
                     }}
                   />
-                  <Tooltip title={<FormattedMessage id="buttons.remove" />}>
-                    <Button
-                      type="primary"
-                      danger
-                      icon={<DeleteOutlined />}
-                      onClick={() => {
-                        // TODO
-                        console.log("TODO");
-                      }}
-                    />
-                  </Tooltip>
+                  <Popconfirm
+                    title={
+                      <FormattedMessage
+                        id="nut.users.admin.locales.confirm-to-remove"
+                        values={{ code: it.code, lang: it.lang }}
+                      />
+                    }
+                    onConfirm={async () => {
+                      const response = await graphql<IId, IDestoryResponse>(
+                        `
+                          mutation PostForm($id: Uuid!) {
+                            destroyLocale(id: $id) {
+                              createdAt
+                            }
+                          }
+                        `,
+                        { id: it.id }
+                      );
+                      if (response.data) {
+                        message.success(
+                          intl.formatMessage({ id: "flashes.successed" })
+                        );
+                        ref?.current?.reload();
+                      } else {
+                        response.errors?.forEach((it) => {
+                          message.error(it.message);
+                        });
+                      }
+                    }}
+                  >
+                    <Tooltip title={<FormattedMessage id="buttons.remove" />}>
+                      <Button type="primary" danger icon={<DeleteOutlined />} />
+                    </Tooltip>
+                  </Popconfirm>
                 </Space>
               ),
             },
