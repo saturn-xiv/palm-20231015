@@ -3,7 +3,7 @@ use std::fmt;
 use std::fmt::Display;
 use std::time::Duration;
 
-use ::redis::{cmd, Client, Commands, Value};
+use ::redis::{cmd, Client, Commands};
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 
 use super::super::Result;
@@ -51,8 +51,8 @@ impl fmt::Display for Config {
 // https://redis.io/commands
 impl super::Provider for redis::Connection {
     fn version(&mut self) -> Result<String> {
-        let it = cmd("info").query::<Value>(self)?;
-        Ok(format!("{:#?}", it))
+        let it: String = cmd("info").query::<String>(self)?;
+        Ok(it)
     }
     fn keys(&mut self) -> Result<Vec<(String, i64)>> {
         let mut items = Vec::new();

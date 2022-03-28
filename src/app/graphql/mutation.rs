@@ -140,17 +140,17 @@ impl Mutation {
         Ok(Success::default())
     }
     fn setSiteKeywords(ctx: &Context, keywords: Vec<String>) -> FieldResult<Success> {
-        let form = nut::graphql::site::KeywordsRequest { items: keywords };
+        let form = nut::graphql::site::info::SiteKeywordsRequest { items: keywords };
         form.handle(ctx)?;
         Ok(Success::default())
     }
     fn setSiteCopyright(ctx: &Context, copyright: String) -> FieldResult<Success> {
-        let form = nut::graphql::site::CopyrightRequest { value: copyright };
+        let form = nut::graphql::site::info::SiteCopyrightRequest { value: copyright };
         form.handle(ctx)?;
         Ok(Success::default())
     }
     fn setSiteAuthor(ctx: &Context, name: String, email: String) -> FieldResult<Success> {
-        let form = nut::graphql::site::AuthorRequest { email, name };
+        let form = nut::graphql::site::info::SiteAuthorRequest { email, name };
         form.handle(ctx)?;
         Ok(Success::default())
     }
@@ -161,7 +161,7 @@ impl Mutation {
         subhead: String,
         description: String,
     ) -> FieldResult<Success> {
-        let form = nut::graphql::site::InfoRequest {
+        let form = nut::graphql::site::info::SiteInfoRequest {
             lang,
             title,
             subhead,
@@ -171,7 +171,7 @@ impl Mutation {
         Ok(Success::default())
     }
     fn setSiteGoogle(ctx: &Context, site_verify_code: String) -> FieldResult<Success> {
-        let form = nut::graphql::site::GoogleRequest { site_verify_code };
+        let form = nut::graphql::site::google::GoogleRequest { site_verify_code };
         form.handle(ctx)?;
         Ok(Success::default())
     }
@@ -180,7 +180,7 @@ impl Mutation {
         site_verify_code: String,
         site_verify_content: String,
     ) -> FieldResult<Success> {
-        let form = nut::graphql::site::BaiduRequest {
+        let form = nut::graphql::site::baidu::BaiduRequest {
             site_verify_code,
             site_verify_content,
         };
@@ -199,6 +199,10 @@ impl Mutation {
             password,
         };
         form.handle(ctx)?;
+        Ok(Success::default())
+    }
+    fn purgeCache(ctx: &Context) -> FieldResult<Success> {
+        nut::graphql::site::purge_cache(ctx)?;
         Ok(Success::default())
     }
 

@@ -62,16 +62,20 @@ impl Query {
         Ok(it)
     }
 
-    fn getSiteGoogle(ctx: &Context) -> FieldResult<nut::graphql::site::GoogleRequest> {
-        let it = nut::graphql::site::GoogleRequest::new(ctx)?;
+    fn getSiteGoogle(ctx: &Context) -> FieldResult<nut::graphql::site::google::GoogleRequest> {
+        let it = nut::graphql::site::google::GoogleRequest::new(ctx)?;
         Ok(it)
     }
-    fn getSiteBaidu(ctx: &Context) -> FieldResult<nut::graphql::site::BaiduRequest> {
-        let it = nut::graphql::site::BaiduRequest::new(ctx)?;
+    fn getSiteBaidu(ctx: &Context) -> FieldResult<nut::graphql::site::baidu::BaiduRequest> {
+        let it = nut::graphql::site::baidu::BaiduRequest::new(ctx)?;
         Ok(it)
     }
     fn getSiteSmtp(ctx: &Context) -> FieldResult<nut::tasks::email::Handler> {
         let it = nut::tasks::email::Handler::new(ctx)?;
+        Ok(it)
+    }
+    fn showSiteStatus(ctx: &Context) -> FieldResult<nut::graphql::site::status::SiteStatus> {
+        let it = nut::graphql::site::status::SiteStatus::new(ctx)?;
         Ok(it)
     }
 
