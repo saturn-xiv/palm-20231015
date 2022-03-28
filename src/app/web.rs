@@ -130,6 +130,8 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 .show_files_listing(),
             )
             .service(nut::controllers::home::by_lang)
+            .service(nut::controllers::sitemap::google)
+            .service(nut::controllers::sitemap::baidu)
             .service(nut::controllers::home::index)
     })
     .bind(addr)?

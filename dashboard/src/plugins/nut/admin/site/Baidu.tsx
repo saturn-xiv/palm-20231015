@@ -10,6 +10,7 @@ import { IOk } from "../../..";
 
 interface IFormData {
   siteVerifyCode: string;
+  siteVerifyContent: string;
 }
 
 interface IFormResponse {
@@ -27,8 +28,14 @@ const Widget = () => {
   const onSubmit = async (data: IFormData) => {
     const response = await graphql<IFormData, IFormResponse>(
       `
-        mutation PostForm($siteVerifyCode: String!) {
-          setSiteBaidu(siteVerifyCode: $siteVerifyCode) {
+        mutation PostForm(
+          $siteVerifyCode: String!
+          $siteVerifyContent: String!
+        ) {
+          setSiteBaidu(
+            siteVerifyCode: $siteVerifyCode
+            siteVerifyContent: $siteVerifyContent
+          ) {
             createdAt
           }
         }
@@ -72,7 +79,7 @@ const Widget = () => {
                 type="link"
                 onClick={() => {
                   window.open(
-                    `/baidu_${formRef.current?.getFieldValue(
+                    `/baidu_verify_code-${formRef.current?.getFieldValue(
                       "siteVerifyCode"
                     )}.html`,
                     "_blank"
@@ -104,6 +111,7 @@ const Widget = () => {
               query Fetch {
                 getSiteBaidu {
                   siteVerifyCode
+                  siteVerifyContent
                 }
               }
             `,
@@ -115,6 +123,7 @@ const Widget = () => {
 
           return {
             siteVerifyCode: "",
+            siteVerifyContent: "",
           };
         }}
       >
@@ -125,6 +134,15 @@ const Widget = () => {
           rules={[{ required: true }]}
           label={
             <FormattedMessage id="nut.admin.site.baidu.site-verify-code" />
+          }
+        />
+        <ProFormText
+          required
+          width="md"
+          name="siteVerifyContent"
+          rules={[{ required: true }]}
+          label={
+            <FormattedMessage id="nut.admin.site.baidu.site-verify-content" />
           }
         />
       </ProForm>

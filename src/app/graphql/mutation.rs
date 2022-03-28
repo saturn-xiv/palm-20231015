@@ -175,8 +175,15 @@ impl Mutation {
         form.handle(ctx)?;
         Ok(Success::default())
     }
-    fn setSiteBaidu(ctx: &Context, site_verify_code: String) -> FieldResult<Success> {
-        let form = nut::graphql::site::BaiduRequest { site_verify_code };
+    fn setSiteBaidu(
+        ctx: &Context,
+        site_verify_code: String,
+        site_verify_content: String,
+    ) -> FieldResult<Success> {
+        let form = nut::graphql::site::BaiduRequest {
+            site_verify_code,
+            site_verify_content,
+        };
         form.handle(ctx)?;
         Ok(Success::default())
     }

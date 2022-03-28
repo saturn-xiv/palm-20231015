@@ -125,7 +125,7 @@ impl KeywordsRequest {
 }
 
 #[derive(Template, Validate, GraphQLObject, Serialize, Deserialize)]
-#[template(path = "google/verify.html")]
+#[template(path = "google/verify.html", escape = "none")]
 #[graphql(name = "GoogleSetting")]
 pub struct GoogleRequest {
     #[validate(length(min = 1))]
@@ -133,7 +133,7 @@ pub struct GoogleRequest {
 }
 
 impl GoogleRequest {
-    const KEY: &'static str = "site.google";
+    pub const KEY: &'static str = "site.google";
     pub fn new(ctx: &Context) -> Result<Self> {
         let db = ctx.db.get()?;
         let db = db.deref();
@@ -158,15 +158,17 @@ impl GoogleRequest {
 }
 
 #[derive(Template, Validate, GraphQLObject, Serialize, Deserialize)]
-#[template(path = "baidu/verify.html")]
+#[template(path = "baidu/verify.html", escape = "none")]
 #[graphql(name = "BaiduSetting")]
 pub struct BaiduRequest {
     #[validate(length(min = 1))]
     pub site_verify_code: String,
+    #[validate(length(min = 1))]
+    pub site_verify_content: String,
 }
 
 impl BaiduRequest {
-    const KEY: &'static str = "site.baidu";
+    pub const KEY: &'static str = "site.baidu";
     pub fn new(ctx: &Context) -> Result<Self> {
         let db = ctx.db.get()?;
         let db = db.deref();
