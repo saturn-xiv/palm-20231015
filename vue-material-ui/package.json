@@ -8,7 +8,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.25"
+    "@fontsource/roboto": "^4.5.5",
+    "@types/js-cookie": "^3.0.1",
+    "dinero.js": "^2.0.0-alpha.8",
+    "js-cookie": "^3.0.1",
+    "jwt-decode": "^3.1.2",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.34",
+    "video.js": "^7.18.1",
+    "vue": "^3.2.25",
+    "vue-i18n": "9",
+    "vue-router": "4",
+    "vuetify": "^3.0.0-beta.0",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.0",
