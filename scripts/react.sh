@@ -31,7 +31,9 @@ function install_third_react() {
         @loadable/component @types/loadable__component \
         react-copy-to-clipboard react-quill@beta react-dropzone \
         google-map-react qrcode.react react-markdown \
-        react-json-view react-color react-syntax-highlighter \
+        react-json-view \
+        react-color @types/react-color \
+        react-syntax-highlighter \
         emoji-mart react-sparklines react-highlight-words    
 }
 
