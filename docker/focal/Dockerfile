@@ -39,7 +39,8 @@ RUN apt -y install zsh git locales rsync openssh-client sshpass \
     g++-10-arm-linux-gnueabihf libstdc++-${LIBSTD_VERSION}-dev:armhf \
     libc6-dev-arm64-cross crossbuild-essential-arm64 pkg-config-aarch64-linux-gnu \
     g++-10-aarch64-linux-gnu libstdc++-${LIBSTD_VERSION}-dev:arm64 \
-    python3 python3-distutils python3-dev python3-pip
+    python3 python3-distutils python3-dev python3-pip \
+    nginx elasticsearch rabbitmq-server redis postgresql mariadb-server
 RUN apt -y autoremove
 RUN apt -y clean
 
@@ -87,7 +88,18 @@ RUN sh -c ". $HOME/.profile \
     && nvm install node"
 RUN sh -c ". $HOME/.profile \
     && npm i yarn -g"
+# https://stackoverflow.com/questions/37324519/node-sass-does-not-yet-support-your-current-environment-linux-64-bit-with-false
+RUN sh -c ". $HOME/.profile \
+    && nvm install lts/fermium"
 RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
+
+
+RUN curl -s "https://get.sdkman.io" | zsh
+RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
+RUN zsh -c "source $HOME/.zshrc \
+    && sdk install java 18-open \
+    && sdk install maven \
+    && sdk install gradle"
 
 # https://grpc.io/docs/languages/cpp/quickstart/
 # ENV GRPC_VERSION "v1.41.0"
