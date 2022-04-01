@@ -9,8 +9,10 @@ import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import { BookOutlined, LinkOutlined } from '@ant-design/icons';
 import defaultSettings from '../config/defaultSettings';
 
+import { SIGN_IN_PATH } from './palm/config';
+
 const isDev = process.env.NODE_ENV === 'development';
-const loginPath = '/user/login';
+const loginPath = SIGN_IN_PATH;
 
 /** 获取用户信息比较慢的时候会展示一个 loading */
 export const initialStateConfig = {

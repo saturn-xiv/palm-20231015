@@ -4,7 +4,7 @@ import { join } from 'path';
 
 import defaultSettings from './defaultSettings';
 import proxy from './proxy';
-import routes from './routes';
+import routes from '../src/palm/routes';
 
 const { REACT_APP_ENV } = process.env;
 
