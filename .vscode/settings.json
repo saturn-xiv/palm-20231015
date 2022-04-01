@@ -18,5 +18,8 @@
   },
   "[sql]": {
     "editor.defaultFormatter": "mtxr.sqltools"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
   }
 }
