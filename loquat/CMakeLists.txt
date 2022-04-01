@@ -13,7 +13,7 @@ target_link_libraries(loquat PUBLIC
 )
 
 source_group(
-  TREE "${PROJECT_SOURCE_DIR}/protocols/cpp"
+  TREE "${PROJECT_SOURCE_DIR}/loquat/cpp"
   PREFIX "Header Files"
   FILES ${HEADER_LIST}
 )

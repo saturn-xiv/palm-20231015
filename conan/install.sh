@@ -8,15 +8,14 @@ export WORKSPACE=$PWD
 if [[ $ID == "ubuntu" ]]
 then
     declare -a profiles=(
-        "libstdc++/amd64"
-        "libstdc++/arm64"
-        "libstdc++/armhf"
+        "amd64"
+        "arm64"
+        "armhf"
     )
-elif [[ $id == "arch" ]]
+elif [[ $ID == "arch" ]]
 then
     declare -a profiles=(
-        "libstdc++/arch"
-        "libc++/arch"
+        "arch"
     )
 else
     echo "Unknowk os $ID"

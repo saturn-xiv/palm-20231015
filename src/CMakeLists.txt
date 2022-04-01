@@ -8,7 +8,7 @@ target_include_directories(palm PUBLIC
   ${palm_SOURCE_DIR}/include
 )
 
-target_link_libraries(palm PUBLIC lemon)
+target_link_libraries(palm PUBLIC loquat)
 
 source_group(
   TREE "${PROJECT_SOURCE_DIR}/include"

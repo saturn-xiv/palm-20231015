@@ -2,11 +2,14 @@
 
 set -e
 
+
 if [ "$#" -ne 2 ]
 then
     echo "USAGE: $0 GRPC_VERSION PROTOBUF_VERSION"
     exit 1
 fi
+
+. /etc/os-release
 
 function build_grpc() {
     # https://grpc.io/docs/languages/cpp/quickstart/
@@ -25,9 +28,13 @@ function build_grpc() {
 
     cd $HOME/downloads/grpc/third_party/protobuf
     git checkout $2
-    # fix build for glibc 2.34: https://github.com/abseil/abseil-cpp/issues/952
-    # cd $HOME/downloads/grpc/third_party/abseil-cpp
-    # git checkout 20210324.2
+
+    if [[ $ID == "arch" ]]
+    then
+        # fix build for glibc 2.34: https://github.com/abseil/abseil-cpp/issues/952
+        cd $HOME/downloads/grpc/third_party/abseil-cpp
+        git checkout 20210324.2
+    fi
 
     if [ -d $HOME/build/grpc-amd64 ]
     then
