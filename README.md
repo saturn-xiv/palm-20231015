@@ -23,7 +23,7 @@ A total free education & translation& ops solution.
 
   ```sql
   CREATE USER 'www'@'localhost' IDENTIFIED BY '123456';
-  CREATE DATABASE palm;
+  CREATE DATABASE palm CHARACTER SET utf8mb4;
   GRANT ALL PRIVILEGES ON palm.* TO 'www'@'localhost';
   FLUSH PRIVILEGES;
   ```
