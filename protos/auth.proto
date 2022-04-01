@@ -2,11 +2,154 @@ syntax = "proto3";
 option java_multiple_files = true;
 package palm.auth.v1;
 
-// import "google/protobuf/empty.proto";
-// import "google/protobuf/timestamp.proto";
-// import "google/protobuf/duration.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
 
+service User {
+  rpc SignIn(SignInRequest) returns (SignInResponse) {}
+  rpc SignUp(SignUpRequest) returns (google.protobuf.Empty) {}
+  rpc ConfirmByEmail(EmailRequest) returns (google.protobuf.Empty) {}
+  rpc ConfirmByToken(TokenForm) returns (google.protobuf.Empty) {}
+  rpc UnlockByEmail(EmailRequest) returns (google.protobuf.Empty) {}
+  rpc UnlockByToken(TokenForm) returns (google.protobuf.Empty) {}
+  rpc ForgotPassword(EmailRequest) returns (google.protobuf.Empty) {}
+  rpc ResetPassword(ResetPasswordRequest) returns (google.protobuf.Empty) {}
+  rpc ChangePassword(ChangePasswordRequest) returns (google.protobuf.Empty) {}
+  rpc SetProfile(ProfileRequest) returns (google.protobuf.Empty) {}
+  rpc SignOut(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc Logs(google.protobuf.Duration) returns (UserIndexResponse);
 
-service User { 
+  rpc Index(google.protobuf.Duration) returns (UserIndexResponse) {}
+  rpc Show(UserRequest) returns (UserIndexResponse.Item) {}
+  rpc Lock(UserRequest) returns (google.protobuf.Empty) {}
+  rpc Unlock(UserRequest) returns (google.protobuf.Empty) {}
+  rpc Enable(UserRequest) returns (google.protobuf.Empty) {}
+  rpc Disable(UserRequest) returns (google.protobuf.Empty) {}
 }
-  
+
+message UserRequest {
+  string uid = 1;
+}
+
+message EmailRequest {
+  oneof user {
+    string email = 1;
+    string nick_name = 2;
+  }
+  string captcha = 9;
+}
+
+message SignInRequest {
+  oneof user {
+    string email = 1;
+    string nick_name = 2;
+  }
+  string password = 8;
+  string captcha = 9;
+  google.protobuf.Duration ttl = 11;
+}
+
+message SignInResponse {
+  string token = 1;
+}
+
+message SignUpRequest {
+  string email = 1;
+  string nick_name = 2;
+  string real_name = 3;
+  string password = 4;
+  string captcha = 9;
+  string lang = 11;
+  string time_zone = 12;
+  string home = 19;
+}
+
+message LogsResponse {
+  enum Level {
+    DEBUG = 0;
+    INFO = 1;
+    WARNING = 2;
+    ERROR = 3;
+  }
+  message Item {
+    int64 id = 1;
+    int64 user_id = 2;
+    string ip = 3;
+    Level level = 4;
+    string message = 5;
+    google.protobuf.Timestamp created_at = 9;
+  }
+  repeated Item items = 1;
+}
+
+message TokenForm {
+  string token = 1;
+}
+message ResetPasswordRequest {
+  string token = 1;
+  string password = 2;
+}
+message ChangePasswordRequest {
+  string current_password = 1;
+  string new_password = 2;
+}
+
+message ProfileRequest {
+  string real_name = 1;
+  string logo = 2;
+  string home = 3;
+  string lang = 4;
+  string time_zone = 5;
+}
+
+message UserIndexResponse {
+  message Item {
+    int64 id = 1;
+    string real_name = 2;
+    string nick_name = 3;
+    string email = 4;
+    string lang = 11;
+    string time_zone = 12;
+    string logo = 13;
+    int32 sign_in_count = 21;
+    optional google.protobuf.Timestamp current_sign_in_at = 22;
+    optional string current_sign_in_ip = 23;
+    optional google.protobuf.Timestamp last_sign_in_at = 24;
+    optional string last_sign_in_ip = 25;
+    optional google.protobuf.Timestamp confirmed_at = 31;
+    optional google.protobuf.Timestamp locked_at = 32;
+    optional google.protobuf.Timestamp deleted_at = 33;
+    google.protobuf.Timestamp updated_at = 39;
+  }
+  repeated Item items = 1;
+}
+
+service Attachment {
+  rpc Index(google.protobuf.Duration) returns (AttachmentIndexResponse) {}
+  rpc Show(AttachmentShowRequest) returns (AttachmentIndexResponse.Item) {}
+  rpc Upload(AttachmentUploadRequest) returns (AttachmentIndexResponse.Item) {}
+  rpc Destory(AttachmentShowRequest) returns (google.protobuf.Empty) {}
+}
+
+message AttachmentIndexResponse {
+  message Item {
+    int64 id = 1;
+    int64 user = 2;
+    string title = 3;
+    string content_type = 4;
+    uint64 length = 5;
+    string url = 6;
+  }
+  repeated Item items = 1;
+}
+
+message AttachmentShowRequest {
+  int64 id = 1;
+  google.protobuf.Duration ttl = 2;
+}
+
+message AttachmentUploadRequest {
+  string name = 1;
+  bytes body = 2;
+}

@@ -1,0 +1,94 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package palm.nut.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+service Locale {
+  rpc Index(google.protobuf.Empty) returns (LocaleIndexResponse) {}
+  rpc ByLang(LocaleIndexRequest) returns (LocaleIndexResponse) {}
+  rpc Set(LocaleSetRequest) returns (google.protobuf.Empty) {}
+}
+
+message LocaleSetRequest {
+  string code = 1;
+  string lang = 2;
+  string message = 3;
+}
+
+message LocaleIndexRequest {
+  string lang = 1;
+}
+
+message LocaleIndexResponse {
+  message Item {
+    int64 id = 1;
+    string code = 2;
+    string lang = 3;
+    string message = 4;
+    google.protobuf.Timestamp updated_at = 5;
+  }
+  repeated Item items = 1;
+}
+
+service Stmp {
+  rpc Get(google.protobuf.Empty) returns (StmpProfile) {}
+  rpc Set(StmpProfile) returns (google.protobuf.Empty) {}
+}
+message StmpProfile {
+  string host = 1;
+  uint32 port = 2;
+  string user = 3;
+  string password = 4;
+  repeated string cc = 5;
+  repeated string bcc = 6;
+}
+message StmpTask {
+  enum Type {
+    PLAIN_TEXT = 0;
+    HTML = 1;
+  }
+  string subject = 1;
+  string body = 2;
+  Type content_type = 3;
+  map<string, bytes> attachments = 4;
+
+  repeated string to = 11;
+  repeated string cc = 12;
+  repeated string bcc = 13;
+}
+
+service Twilio {
+  rpc Get(google.protobuf.Empty) returns (TwilioProfile) {}
+  rpc Set(TwilioProfile) returns (google.protobuf.Empty) {}
+}
+message TwilioProfile {
+  string account_sid = 1;
+  string auto_token = 2;
+  string from = 3;
+}
+message TwilioTask {
+  repeated string to = 1;
+  string body = 2;
+  optional string callback = 3;
+}
+
+service Google {
+  rpc Get(google.protobuf.Empty) returns (GoogleProfile) {}
+  rpc Set(GoogleProfile) returns (google.protobuf.Empty) {}
+  rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+message GoogleProfile {
+  string siteVerifyId = 1;
+}
+
+service Baidu {
+  rpc Get(google.protobuf.Empty) returns (GoogleProfile) {}
+  rpc Set(GoogleProfile) returns (google.protobuf.Empty) {}
+  rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+message BaiduProfile {
+  string siteVerifyId = 1;
+  string siteVerifyContent = 2;
+}
