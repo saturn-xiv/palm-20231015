@@ -15,6 +15,7 @@ build_backend() {
     conan install --build=missing --profile:build=default \
         --profile:host=$WORKSPACE/conan/profiles/$1 $WORKSPACE
     cmake $WORKSPACE -DCMAKE_BUILD_TYPE=$2 \
+        -DCASBIN_BUILD_TEST=OFF -DCASBIN_BUILD_BENCHMARK=OFF -DCASBIN_BUILD_BINDINGS=OFF -DCASBIN_BUILD_PYTHON_BINDINGS=OFF \
         -DCMAKE_TOOLCHAIN_FILE=$WORKSPACE/conan/toolchains/$1.cmake
     make -j
 }
@@ -115,7 +116,7 @@ then
 elif [[ $ID == "arch" ]]
 then
     build_backend arch Debug
-    build_backend arch Release
+    # build_backend arch Release
 else
     echo "Unknowk os $ID"
     exit 1

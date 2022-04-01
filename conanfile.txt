@@ -1,12 +1,9 @@
 [requires]
 libxcrypt/4.4.28
+zstd/1.5.2
 openssl/1.1.1n
 boost/1.78.0
-libpq/14.2
-libpqxx/7.7.2
-mariadb-connector-c/3.1.12
-sqlite3/3.38.1
-sqlitecpp/3.1.1
+soci/4.0.3
 mongo-cxx-driver/3.6.6
 hiredis/1.0.2
 cpr/1.7.2
@@ -29,8 +26,11 @@ zeromq:encryption=None
 sqlite3:build_executable=False
 boost:without_stacktrace=True
 boost:without_python=True
-mariadb-connector-c:with_curl=False
-mariadb-connector-c:with_ssl=False
+soci:with_sqlite3=True
+soci:with_mysql=True
+soci:with_postgresql=True
+soci:with_boost=True
 
 [generators]
 cmake
+cmake_find_package

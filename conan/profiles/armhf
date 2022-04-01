@@ -15,6 +15,7 @@ boost:compiler=gcc
 boost:compiler.cppstd=11
 boost:compiler.version=$gcc_version
 boost:compiler.libcxx=libstdc++11
+libmysqlclient:compiler.cppstd=14
 
 [env]
 CHOST=$target

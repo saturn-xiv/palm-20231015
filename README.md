@@ -28,6 +28,13 @@ A total free education & translation& ops solution.
   FLUSH PRIVILEGES;
   ```
 
+- casbin build issues
+
+  ```bash
+  cd _deps/casbin-src
+  git apply ../../../../scripts/casbin.patch
+  ```
+
 ## Documents
 
 - [Install WSL](https://docs.microsoft.com/en-us/windows/wsl/install)
@@ -41,6 +48,7 @@ A total free education & translation& ops solution.
 - [Web Tools API Portal](https://www.usps.com/business/web-tools-apis/)
 - [Reviewing address formats](https://help.shopify.com/en/manual/shipping/shopify-shipping/reviewing-address-formats)
 - [handlebars](https://handlebarsjs.com/guide/)
+- [Casbin](https://casbin.org/docs/en/overview)
 
 ### UI
 
