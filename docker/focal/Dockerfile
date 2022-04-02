@@ -106,6 +106,12 @@ RUN zsh -c "source $HOME/.zshrc \
     && sdk install maven \
     && sdk install gradle"
 
+
+ENV LIQUIBASE_VERSION "4.9.1"
+RUN mkdir -p $HOME/local/liquibase \
+    && cd $HOME/local/liquibase \
+    && wget -c https://github.com/liquibase/liquibase/releases/download/v${LIQUIBASE_VERSION}/liquibase-${LIQUIBASE_VERSION}.tar.gz -O - | tar -xz
+
 # https://grpc.io/docs/languages/cpp/quickstart/
 # ENV GRPC_VERSION "v1.41.0"
 # ENV PROTOC_VERSION "v3.17.1"
