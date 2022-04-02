@@ -11,6 +11,10 @@ ENV CLANG_VERSION=13
 RUN echo "deb [arch=amd64] http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-focal-${CLANG_VERSION} main" > /etc/apt/sources.list.d/llvm.list
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
+RUN wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
+RUN echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg arch=amd64] https://artifacts.elastic.co/packages/8.x/apt stable main" | tee /etc/apt/sources.list.d/elastic-8.x.list
+
 # https://wiki.ubuntu.com/ToolChain
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
@@ -32,7 +36,8 @@ RUN apt -y install zsh git locales rsync openssh-client sshpass \
     debhelper bison flex ninja-build \
     crossbuild-essential-armhf pkg-config-arm-linux-gnueabihf \
     crossbuild-essential-arm64 pkg-config-aarch64-linux-gnu \
-    python3 python3-distutils python3-dev python3-pip
+    python3 python3-distutils python3-dev python3-pip \
+    nginx elasticsearch rabbitmq-server redis postgresql
 RUN apt -y autoremove
 RUN apt -y clean
 
@@ -73,7 +78,17 @@ RUN sh -c ". $HOME/.profile \
     && nvm install node"
 RUN sh -c ". $HOME/.profile \
     && npm i yarn -g"
+# https://stackoverflow.com/questions/37324519/node-sass-does-not-yet-support-your-current-environment-linux-64-bit-with-false
+RUN sh -c ". $HOME/.profile \
+    && nvm install lts/fermium"
 RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
+
+RUN curl -s "https://get.sdkman.io" | zsh
+RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
+RUN zsh -c "source $HOME/.zshrc \
+    && sdk install java 18-open \
+    && sdk install maven \
+    && sdk install gradle"
 
 # https://www.rust-lang.org/tools/install
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
