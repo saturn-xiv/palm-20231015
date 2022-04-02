@@ -89,7 +89,7 @@ struct Migration {
   std::string up;
   std::string down;
   // LANG=C date +%Y%m%d%H%M%S
-  std::string version;
+  long long version;
   std::string name;
   boost::optional<std::tm> run_on;
   std::tm created_at;
@@ -253,7 +253,7 @@ struct type_conversion<palm::orm::Migration> {
 
   static void from_base(const soci::values& v, soci::indicator i,
                         palm::orm::Migration& o) {
-    o.version = v.get<std::string>("version");
+    o.version = v.get<long long>("version");
     o.name = v.get<std::string>("name");
     o.up = v.get<std::string>("up");
     o.down = v.get<std::string>("down");

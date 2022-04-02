@@ -3,6 +3,7 @@
 #include <soci/mysql/soci-mysql.h>
 #include <soci/postgresql/soci-postgresql.h>
 #include <soci/sqlite3/soci-sqlite3.h>
+#include <boost/lexical_cast.hpp>
 #include <boost/property_tree/ini_parser.hpp>
 
 std::shared_ptr<soci::session> palm::sqlite3::open(
@@ -49,6 +50,12 @@ std::shared_ptr<soci::session> palm::mysql::open(
   std::shared_ptr<soci::session> it =
       std::make_shared<soci::session>(soci::mysql, url.str());
   it->set_logger(new palm::orm::Logger());
+  {
+    // FIXME 1064
+    // soci::mysql_session_backend* db =
+    //     dynamic_cast<soci::mysql_session_backend*>(it->get_backend());
+    // mysql_set_server_option(db->conn_, MYSQL_OPTION_MULTI_STATEMENTS_ON);
+  }
   return it;
 }
 
@@ -72,6 +79,7 @@ std::shared_ptr<soci::session> palm::postgresql::open(
   std::shared_ptr<soci::session> it =
       std::make_shared<soci::session>(soci::postgresql, url.str());
   it->set_logger(new palm::orm::Logger());
+
   return it;
 }
 
@@ -161,7 +169,7 @@ palm::orm::Schema::Schema(const std::filesystem::path& root,
     {
       std::string fn = node.filename();
       const size_t POS = 14;
-      mig.version = fn.substr(0, POS);
+      mig.version = boost::lexical_cast<long long>(fn.substr(0, POS));
       mig.name = fn.substr(POS + 1);
     }
 

@@ -2,3 +2,4 @@
 /yarn.lock
 /build/
 /include/palm/version.hpp
+/config.ini

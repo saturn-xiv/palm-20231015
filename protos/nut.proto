@@ -5,6 +5,62 @@ package palm.nut.v1;
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 
+service Site {
+  rpc Refresh(google.protobuf.Empty) returns (LayoutResponse) {}
+  rpc SetAuthor(LayoutResponse.Site.Author) returns (google.protobuf.Empty) {}
+  rpc SetCopyright(SiteSetCopyrightRequest) returns (google.protobuf.Empty) {}
+  rpc SetKeywords(SiteSetKeywordsRequest) returns (google.protobuf.Empty) {}
+  rpc SetInfo(SiteSetInfoRequest) returns (google.protobuf.Empty) {}
+  rpc GetInfo(SiteGetInfoRequest) returns (LayoutResponse.Site) {}
+}
+
+message SiteSetInfoRequest {
+  string lang = 1;
+  LayoutResponse.Site info = 2;
+}
+
+message SiteGetInfoRequest {
+  string lang = 1;
+}
+
+message SiteSetKeywordsRequest {
+  repeated string items = 1;
+}
+message SiteSetCopyrightRequest {
+  string content = 1;
+}
+message LayoutResponse {
+  message Site {
+    message Author {
+      string name = 1;
+      string email = 2;
+    }
+    string title = 1;
+    string subhead = 2;
+    repeated string keywords = 3;
+    string description = 4;
+    string copyright = 5;
+    Author author = 11;
+  }
+  message User {
+    string real_name = 1;
+    string logo = 2;
+    string lang = 11;
+    string time_zone = 12;
+    optional string token = 21;
+  }
+  message Menu {
+    string label = 1;
+    string path = 2;
+    optional string icon = 3;
+    repeated Menu items = 9;
+  }
+  Site site = 11;
+  User user = 12;
+  repeated Menu menus = 13;
+  repeated string languages = 14;
+}
+
 service Locale {
   rpc Index(google.protobuf.Empty) returns (LocaleIndexResponse) {}
   rpc ByLang(LocaleIndexRequest) returns (LocaleIndexResponse) {}
@@ -32,11 +88,12 @@ message LocaleIndexResponse {
   repeated Item items = 1;
 }
 
-service Stmp {
-  rpc Get(google.protobuf.Empty) returns (StmpProfile) {}
-  rpc Set(StmpProfile) returns (google.protobuf.Empty) {}
+service Smtp {
+  rpc Get(google.protobuf.Empty) returns (SmtpProfile) {}
+  rpc Set(SmtpProfile) returns (google.protobuf.Empty) {}
+  rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
-message StmpProfile {
+message SmtpProfile {
   string host = 1;
   uint32 port = 2;
   string user = 3;
@@ -44,7 +101,7 @@ message StmpProfile {
   repeated string cc = 5;
   repeated string bcc = 6;
 }
-message StmpTask {
+message SmtpTask {
   enum Type {
     PLAIN_TEXT = 0;
     HTML = 1;
@@ -62,6 +119,7 @@ message StmpTask {
 service Twilio {
   rpc Get(google.protobuf.Empty) returns (TwilioProfile) {}
   rpc Set(TwilioProfile) returns (google.protobuf.Empty) {}
+  rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 message TwilioProfile {
   string account_sid = 1;
@@ -84,11 +142,25 @@ message GoogleProfile {
 }
 
 service Baidu {
-  rpc Get(google.protobuf.Empty) returns (GoogleProfile) {}
-  rpc Set(GoogleProfile) returns (google.protobuf.Empty) {}
+  rpc Get(google.protobuf.Empty) returns (BaiduProfile) {}
+  rpc Set(BaiduProfile) returns (google.protobuf.Empty) {}
   rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 message BaiduProfile {
   string siteVerifyId = 1;
   string siteVerifyContent = 2;
 }
+
+service WechatPay {
+  rpc Get(google.protobuf.Empty) returns (WechatPayProfile) {}
+  rpc Set(WechatPayProfile) returns (google.protobuf.Empty) {}
+  rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+message WechatPayProfile {}
+
+service AliPay {
+  rpc Get(google.protobuf.Empty) returns (AliPayProfile) {}
+  rpc Set(AliPayProfile) returns (google.protobuf.Empty) {}
+  rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+message AliPayProfile {}

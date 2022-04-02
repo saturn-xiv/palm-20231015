@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS schema_migrations (
+    version BIGINT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    up TEXT NOT NULL,
+    down TEXT NOT NULL,
+    run_on TIMESTAMP WITHOUT TIME ZONE,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX IF NOT EXISTS schema_migrations_name ON schema_migrations(name);
