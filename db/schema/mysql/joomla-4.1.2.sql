@@ -1,6 +1,6 @@
 -- MariaDB dump 10.19  Distrib 10.7.3-MariaDB, for Linux (x86_64)
 --
--- Host: localhost    Database: cms
+-- Host: localhost    Database: joomla
 -- ------------------------------------------------------
 -- Server version	10.7.3-MariaDB
 
@@ -85,7 +85,7 @@ CREATE TABLE `cms_action_logs` (
   KEY `idx_user_id_logdate` (`user_id`,`log_date`),
   KEY `idx_user_id_extension` (`user_id`,`extension`),
   KEY `idx_extension_item_id` (`extension`,`item_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,8 +94,6 @@ CREATE TABLE `cms_action_logs` (
 
 LOCK TABLES `cms_action_logs` WRITE;
 /*!40000 ALTER TABLE `cms_action_logs` DISABLE KEYS */;
-INSERT INTO `cms_action_logs` VALUES
-(1,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":110,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=110\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2022-04-01 12:45:57','com_users',110,0,'COM_ACTIONLOGS_DISABLED');
 /*!40000 ALTER TABLE `cms_action_logs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -486,12 +484,12 @@ CREATE TABLE `cms_categories` (
 LOCK TABLES `cms_categories` WRITE;
 /*!40000 ALTER TABLE `cms_categories` DISABLE KEYS */;
 INSERT INTO `cms_categories` VALUES
-(1,0,0,0,11,0,'','system','ROOT','root','','',1,NULL,NULL,1,'{}','','','{}',110,'2022-04-01 12:44:44',110,'2022-04-01 12:44:44',0,'*',1),
-(2,27,1,1,2,1,'uncategorised','com_content','Uncategorised','uncategorised','','',1,NULL,NULL,1,'{\"category_layout\":\"\",\"image\":\"\",\"workflow_id\":\"use_default\"}','','','{\"author\":\"\",\"robots\":\"\"}',110,'2022-04-01 12:44:44',110,'2022-04-01 12:44:44',0,'*',1),
-(3,28,1,3,4,1,'uncategorised','com_banners','Uncategorised','uncategorised','','',1,NULL,NULL,1,'{\"category_layout\":\"\",\"image\":\"\"}','','','{\"author\":\"\",\"robots\":\"\"}',110,'2022-04-01 12:44:44',110,'2022-04-01 12:44:44',0,'*',1),
-(4,29,1,5,6,1,'uncategorised','com_contact','Uncategorised','uncategorised','','',1,NULL,NULL,1,'{\"category_layout\":\"\",\"image\":\"\"}','','','{\"author\":\"\",\"robots\":\"\"}',110,'2022-04-01 12:44:44',110,'2022-04-01 12:44:44',0,'*',1),
-(5,30,1,7,8,1,'uncategorised','com_newsfeeds','Uncategorised','uncategorised','','',1,NULL,NULL,1,'{\"category_layout\":\"\",\"image\":\"\"}','','','{\"author\":\"\",\"robots\":\"\"}',110,'2022-04-01 12:44:44',110,'2022-04-01 12:44:44',0,'*',1),
-(7,32,1,9,10,1,'uncategorised','com_users','Uncategorised','uncategorised','','',1,NULL,NULL,1,'{\"category_layout\":\"\",\"image\":\"\"}','','','{\"author\":\"\",\"robots\":\"\"}',110,'2022-04-01 12:44:44',110,'2022-04-01 12:44:44',0,'*',1);
+(1,0,0,0,11,0,'','system','ROOT','root','','',1,NULL,NULL,1,'{}','','','{}',476,'2022-04-02 07:21:12',476,'2022-04-02 07:21:12',0,'*',1),
+(2,27,1,1,2,1,'uncategorised','com_content','Uncategorised','uncategorised','','',1,NULL,NULL,1,'{\"category_layout\":\"\",\"image\":\"\",\"workflow_id\":\"use_default\"}','','','{\"author\":\"\",\"robots\":\"\"}',476,'2022-04-02 07:21:12',476,'2022-04-02 07:21:12',0,'*',1),
+(3,28,1,3,4,1,'uncategorised','com_banners','Uncategorised','uncategorised','','',1,NULL,NULL,1,'{\"category_layout\":\"\",\"image\":\"\"}','','','{\"author\":\"\",\"robots\":\"\"}',476,'2022-04-02 07:21:12',476,'2022-04-02 07:21:12',0,'*',1),
+(4,29,1,5,6,1,'uncategorised','com_contact','Uncategorised','uncategorised','','',1,NULL,NULL,1,'{\"category_layout\":\"\",\"image\":\"\"}','','','{\"author\":\"\",\"robots\":\"\"}',476,'2022-04-02 07:21:12',476,'2022-04-02 07:21:12',0,'*',1),
+(5,30,1,7,8,1,'uncategorised','com_newsfeeds','Uncategorised','uncategorised','','',1,NULL,NULL,1,'{\"category_layout\":\"\",\"image\":\"\"}','','','{\"author\":\"\",\"robots\":\"\"}',476,'2022-04-02 07:21:12',476,'2022-04-02 07:21:12',0,'*',1),
+(7,32,1,9,10,1,'uncategorised','com_users','Uncategorised','uncategorised','','',1,NULL,NULL,1,'{\"category_layout\":\"\",\"image\":\"\"}','','','{\"author\":\"\",\"robots\":\"\"}',476,'2022-04-02 07:21:12',476,'2022-04-02 07:21:12',0,'*',1);
 /*!40000 ALTER TABLE `cms_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -825,7 +823,7 @@ INSERT INTO `cms_extensions` VALUES
 (33,0,'com_workflow','component','com_workflow',NULL,'',1,1,0,1,1,'{\"name\":\"com_workflow\",\"type\":\"component\",\"creationDate\":\"June 2017\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2018 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"COM_WORKFLOW_XML_DESCRIPTION\",\"group\":\"\"}','{}','',NULL,NULL,0,0,NULL),
 (34,0,'com_mails','component','com_mails',NULL,'',1,1,1,1,1,'{\"name\":\"com_mails\",\"type\":\"component\",\"creationDate\":\"January 2019\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2019 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"COM_MAILS_XML_DESCRIPTION\",\"group\":\"\"}','','',NULL,NULL,0,0,NULL),
 (35,0,'COM_SCHEDULER','component','com_scheduler',NULL,'',1,1,1,0,1,'{\"name\":\"COM_SCHEDULER\",\"type\":\"component\",\"creationDate\":\"July 2021\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2021 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.1.0\",\"description\":\"COM_SCHEDULER_XML_DESCRIPTION\",\"group\":\"\"}','{}','',NULL,NULL,0,0,NULL),
-(36,0,'lib_joomla','library','joomla',NULL,'',0,1,1,1,1,'{\"name\":\"lib_joomla\",\"type\":\"library\",\"creationDate\":\"2008\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2008 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"https:\\/\\/www.joomla.org\",\"version\":\"13.1\",\"description\":\"LIB_JOOMLA_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"joomla\"}','{\"mediaversion\":\"9e35c0fee4d1ff6eef646475616a5b1e\"}','',NULL,NULL,0,0,NULL),
+(36,0,'lib_joomla','library','joomla',NULL,'',0,1,1,1,1,'{\"name\":\"lib_joomla\",\"type\":\"library\",\"creationDate\":\"2008\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2008 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"https:\\/\\/www.joomla.org\",\"version\":\"13.1\",\"description\":\"LIB_JOOMLA_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"joomla\"}','','',NULL,NULL,0,0,NULL),
 (37,0,'lib_phpass','library','phpass',NULL,'',0,1,1,1,1,'{\"name\":\"lib_phpass\",\"type\":\"library\",\"creationDate\":\"2004-2006\",\"author\":\"Solar Designer\",\"copyright\":\"\",\"authorEmail\":\"solar@openwall.com\",\"authorUrl\":\"https:\\/\\/www.openwall.com\\/phpass\\/\",\"version\":\"0.3\",\"description\":\"LIB_PHPASS_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"phpass\"}','','',NULL,NULL,0,0,NULL),
 (38,0,'mod_articles_archive','module','mod_articles_archive',NULL,'',0,1,1,0,1,'{\"name\":\"mod_articles_archive\",\"type\":\"module\",\"creationDate\":\"July 2006\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2006 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"MOD_ARTICLES_ARCHIVE_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"mod_articles_archive\"}','','',NULL,NULL,0,0,NULL),
 (39,0,'mod_articles_latest','module','mod_articles_latest',NULL,'',0,1,1,0,1,'{\"name\":\"mod_articles_latest\",\"type\":\"module\",\"creationDate\":\"July 2004\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2005 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"MOD_LATEST_NEWS_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"mod_articles_latest\"}','','',NULL,NULL,0,0,NULL),
@@ -964,7 +962,7 @@ INSERT INTO `cms_extensions` VALUES
 (172,0,'plg_system_languagefilter','plugin','languagefilter',NULL,'system',0,0,1,0,1,'{\"name\":\"plg_system_languagefilter\",\"type\":\"plugin\",\"creationDate\":\"July 2010\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2010 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_SYSTEM_LANGUAGEFILTER_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"languagefilter\"}','','',NULL,NULL,10,0,NULL),
 (173,0,'plg_system_log','plugin','log',NULL,'system',0,1,1,0,1,'{\"name\":\"plg_system_log\",\"type\":\"plugin\",\"creationDate\":\"April 2007\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2007 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_LOG_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"log\"}','','',NULL,NULL,11,0,NULL),
 (174,0,'plg_system_logout','plugin','logout',NULL,'system',0,1,1,0,1,'{\"name\":\"plg_system_logout\",\"type\":\"plugin\",\"creationDate\":\"April 2009\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2009 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_SYSTEM_LOGOUT_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"logout\"}','','',NULL,NULL,12,0,NULL),
-(175,0,'plg_system_logrotation','plugin','logrotation',NULL,'system',0,1,1,0,1,'{\"name\":\"plg_system_logrotation\",\"type\":\"plugin\",\"creationDate\":\"May 2018\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2018 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.9.0\",\"description\":\"PLG_SYSTEM_LOGROTATION_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"logrotation\"}','{\"lastrun\":1648817147}','',NULL,NULL,13,0,NULL),
+(175,0,'plg_system_logrotation','plugin','logrotation',NULL,'system',0,1,1,0,1,'{\"name\":\"plg_system_logrotation\",\"type\":\"plugin\",\"creationDate\":\"May 2018\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2018 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.9.0\",\"description\":\"PLG_SYSTEM_LOGROTATION_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"logrotation\"}','{}','',NULL,NULL,13,0,NULL),
 (176,0,'plg_system_privacyconsent','plugin','privacyconsent',NULL,'system',0,0,1,0,1,'{\"name\":\"plg_system_privacyconsent\",\"type\":\"plugin\",\"creationDate\":\"April 2018\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2018 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.9.0\",\"description\":\"PLG_SYSTEM_PRIVACYCONSENT_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"privacyconsent\"}','{}','',NULL,NULL,14,0,NULL),
 (177,0,'plg_system_redirect','plugin','redirect',NULL,'system',0,0,1,0,1,'{\"name\":\"plg_system_redirect\",\"type\":\"plugin\",\"creationDate\":\"April 2009\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2009 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_SYSTEM_REDIRECT_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"redirect\"}','','',NULL,NULL,15,0,NULL),
 (178,0,'plg_system_remember','plugin','remember',NULL,'system',0,1,1,0,1,'{\"name\":\"plg_system_remember\",\"type\":\"plugin\",\"creationDate\":\"April 2007\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2007 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_REMEMBER_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"remember\"}','','',NULL,NULL,16,0,NULL),
@@ -972,9 +970,9 @@ INSERT INTO `cms_extensions` VALUES
 (180,0,'plg_system_sef','plugin','sef',NULL,'system',0,1,1,0,1,'{\"name\":\"plg_system_sef\",\"type\":\"plugin\",\"creationDate\":\"December 2007\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2007 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.0.0\",\"description\":\"PLG_SEF_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"sef\"}','','',NULL,NULL,18,0,NULL),
 (181,0,'plg_system_sessiongc','plugin','sessiongc',NULL,'system',0,1,1,0,1,'{\"name\":\"plg_system_sessiongc\",\"type\":\"plugin\",\"creationDate\":\"February 2018\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2018 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.8.6\",\"description\":\"PLG_SYSTEM_SESSIONGC_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"sessiongc\"}','','',NULL,NULL,19,0,NULL),
 (182,0,'plg_system_skipto','plugin','skipto',NULL,'system',0,1,1,0,1,'{\"name\":\"plg_system_skipto\",\"type\":\"plugin\",\"creationDate\":\"February 2020\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2019 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_SYSTEM_SKIPTO_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"skipto\"}','{}','',NULL,NULL,20,0,NULL),
-(183,0,'plg_system_stats','plugin','stats',NULL,'system',0,0,1,0,1,'{\"name\":\"plg_system_stats\",\"type\":\"plugin\",\"creationDate\":\"November 2013\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2013 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.5.0\",\"description\":\"PLG_SYSTEM_STATS_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"stats\"}','{\"mode\":3,\"lastrun\":1648817161,\"unique_id\":\"edcef6fea1762701d1ecfda067f7706863e90080\",\"interval\":12}','',NULL,NULL,21,0,NULL),
+(183,0,'plg_system_stats','plugin','stats',NULL,'system',0,1,1,0,1,'{\"name\":\"plg_system_stats\",\"type\":\"plugin\",\"creationDate\":\"November 2013\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2013 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.5.0\",\"description\":\"PLG_SYSTEM_STATS_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"stats\"}','','',NULL,NULL,21,0,NULL),
 (184,0,'plg_system_task_notification','plugin','tasknotification',NULL,'system',0,1,1,0,1,'{\"name\":\"plg_system_task_notification\",\"type\":\"plugin\",\"creationDate\":\"September 2021\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2021 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.1\",\"description\":\"PLG_SYSTEM_TASK_NOTIFICATION_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"tasknotification\"}','','',NULL,NULL,22,0,NULL),
-(185,0,'plg_system_updatenotification','plugin','updatenotification',NULL,'system',0,1,1,0,1,'{\"name\":\"plg_system_updatenotification\",\"type\":\"plugin\",\"creationDate\":\"May 2015\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2015 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.5.0\",\"description\":\"PLG_SYSTEM_UPDATENOTIFICATION_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"updatenotification\"}','{\"lastrun\":1648817147}','',NULL,NULL,23,0,NULL),
+(185,0,'plg_system_updatenotification','plugin','updatenotification',NULL,'system',0,1,1,0,1,'{\"name\":\"plg_system_updatenotification\",\"type\":\"plugin\",\"creationDate\":\"May 2015\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2015 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.5.0\",\"description\":\"PLG_SYSTEM_UPDATENOTIFICATION_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"updatenotification\"}','','',NULL,NULL,23,0,NULL),
 (186,0,'plg_system_webauthn','plugin','webauthn',NULL,'system',0,1,1,0,1,'{\"name\":\"plg_system_webauthn\",\"type\":\"plugin\",\"creationDate\":\"2019-07-02\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2020 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.0.0\",\"description\":\"PLG_SYSTEM_WEBAUTHN_DESCRIPTION\",\"group\":\"\",\"filename\":\"webauthn\"}','{}','',NULL,NULL,23,0,NULL),
 (187,0,'plg_task_check_files','plugin','checkfiles',NULL,'task',0,1,1,0,0,'{\"name\":\"plg_task_check_files\",\"type\":\"plugin\",\"creationDate\":\"August 2021\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2021 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.1\",\"description\":\"PLG_TASK_CHECK_FILES_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"checkfiles\"}','{}','',NULL,NULL,1,0,NULL),
 (188,0,'plg_task_demo_tasks','plugin','demotasks',NULL,'task',0,1,1,0,0,'{\"name\":\"plg_task_demo_tasks\",\"type\":\"plugin\",\"creationDate\":\"July 2021\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2021 Open Source Matters, Inc.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"4.1\",\"description\":\"PLG_TASK_DEMO_TASKS_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"demotasks\"}','{}','',NULL,NULL,2,0,NULL),
@@ -2438,8 +2436,6 @@ CREATE TABLE `cms_session` (
 
 LOCK TABLES `cms_session` WRITE;
 /*!40000 ALTER TABLE `cms_session` DISABLE KEYS */;
-INSERT INTO `cms_session` VALUES
-('kdin8apnvjnqdd0e4eepr0dlku',1,0,1648817161,'joomla|s:692:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjM6e3M6Nzoic2Vzc2lvbiI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo3OiJjb3VudGVyIjtpOjc7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNjQ4ODE3MTQ2O3M6NDoibGFzdCI7aToxNjQ4ODE3MTU4O3M6Mzoibm93IjtpOjE2NDg4MTcxNjE7fXM6NToidG9rZW4iO3M6MzI6IjllNTFkOGZlODBjOWYyMWZiYzkwODRlZDFlOTYxMzQ2Ijt9czo4OiJyZWdpc3RyeSI7TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjA6e31zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6OToic2VwYXJhdG9yIjtzOjE6Ii4iO31zOjQ6InVzZXIiO086MjA6Ikpvb21sYVxDTVNcVXNlclxVc2VyIjoxOntzOjI6ImlkIjtpOjExMDt9fXM6MTQ6IgAqAGluaXRpYWxpemVkIjtiOjA7czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fQ==\";',110,'admin');
 /*!40000 ALTER TABLE `cms_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2499,7 +2495,7 @@ CREATE TABLE `cms_tags` (
 LOCK TABLES `cms_tags` WRITE;
 /*!40000 ALTER TABLE `cms_tags` DISABLE KEYS */;
 INSERT INTO `cms_tags` VALUES
-(1,0,0,1,0,'','ROOT','root','','',1,NULL,NULL,1,'','','','',110,'2022-04-01 12:44:39','',110,'2022-04-01 12:44:39','','',0,'*',1,NULL,NULL);
+(1,0,0,1,0,'','ROOT','root','','',1,NULL,NULL,1,'','','','',476,'2022-04-02 07:21:10','',476,'2022-04-02 07:21:10','','',0,'*',1,NULL,NULL);
 /*!40000 ALTER TABLE `cms_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2690,9 +2686,9 @@ CREATE TABLE `cms_update_sites` (
 LOCK TABLES `cms_update_sites` WRITE;
 /*!40000 ALTER TABLE `cms_update_sites` DISABLE KEYS */;
 INSERT INTO `cms_update_sites` VALUES
-(1,'Joomla! Core','collection','https://update.joomla.org/core/list.xml',1,1648817147,'',NULL,NULL),
-(2,'Accredited Joomla! Translations','collection','https://update.joomla.org/language/translationlist_4.xml',1,1648817099,'',NULL,NULL),
-(3,'Joomla! Update Component Update Site','extension','https://update.joomla.org/core/extensions/com_joomlaupdate.xml',1,1648817158,'',NULL,NULL);
+(1,'Joomla! Core','collection','https://update.joomla.org/core/list.xml',1,0,'',NULL,NULL),
+(2,'Accredited Joomla! Translations','collection','https://update.joomla.org/language/translationlist_4.xml',1,1648884096,'',NULL,NULL),
+(3,'Joomla! Update Component Update Site','extension','https://update.joomla.org/core/extensions/com_joomlaupdate.xml',1,0,'',NULL,NULL);
 /*!40000 ALTER TABLE `cms_update_sites` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2747,7 +2743,7 @@ CREATE TABLE `cms_updates` (
   `changelogurl` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `extra_query` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT '',
   PRIMARY KEY (`update_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Available Updates';
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Available Updates';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2757,48 +2753,48 @@ CREATE TABLE `cms_updates` (
 LOCK TABLES `cms_updates` WRITE;
 /*!40000 ALTER TABLE `cms_updates` DISABLE KEYS */;
 INSERT INTO `cms_updates` VALUES
-(1,2,0,'Arabic Unitag','','pkg_ar-AA','package','',0,'4.0.2.1','','https://update.joomla.org/language/details4/ar-AA_details.xml','','',''),
-(2,2,0,'Catalan','','pkg_ca-ES','package','',0,'4.0.4.2','','https://update.joomla.org/language/details4/ca-ES_details.xml','','',''),
-(3,2,0,'Chinese, Simplified','','pkg_zh-CN','package','',0,'4.1.0.3','','https://update.joomla.org/language/details4/zh-CN_details.xml','','',''),
-(4,2,0,'Chinese, Traditional','','pkg_zh-TW','package','',0,'4.0.6.1','','https://update.joomla.org/language/details4/zh-TW_details.xml','','',''),
-(5,2,0,'Czech','','pkg_cs-CZ','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/cs-CZ_details.xml','','',''),
-(6,2,0,'Danish','','pkg_da-DK','package','',0,'4.1.1.1','','https://update.joomla.org/language/details4/da-DK_details.xml','','',''),
-(7,2,0,'Dutch','','pkg_nl-NL','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/nl-NL_details.xml','','',''),
-(8,2,0,'English, Australia','','pkg_en-AU','package','',0,'4.1.0.2','','https://update.joomla.org/language/details4/en-AU_details.xml','','',''),
-(9,2,0,'English, Canada','','pkg_en-CA','package','',0,'4.1.0.2','','https://update.joomla.org/language/details4/en-CA_details.xml','','',''),
-(10,2,0,'English, New Zealand','','pkg_en-NZ','package','',0,'4.1.0.2','','https://update.joomla.org/language/details4/en-NZ_details.xml','','',''),
-(11,2,0,'English, USA','','pkg_en-US','package','',0,'4.1.0.2','','https://update.joomla.org/language/details4/en-US_details.xml','','',''),
-(12,2,0,'Estonian','','pkg_et-EE','package','',0,'4.1.0.1','','https://update.joomla.org/language/details4/et-EE_details.xml','','',''),
-(13,2,0,'Finnish','','pkg_fi-FI','package','',0,'4.1.1.2','','https://update.joomla.org/language/details4/fi-FI_details.xml','','',''),
-(14,2,0,'Flemish','','pkg_nl-BE','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/nl-BE_details.xml','','',''),
-(15,2,0,'French','','pkg_fr-FR','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/fr-FR_details.xml','','',''),
-(16,2,0,'Georgian','','pkg_ka-GE','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/ka-GE_details.xml','','',''),
-(17,2,0,'German','','pkg_de-DE','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/de-DE_details.xml','','',''),
-(18,2,0,'German, Austria','','pkg_de-AT','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/de-AT_details.xml','','',''),
-(19,2,0,'German, Liechtenstein','','pkg_de-LI','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/de-LI_details.xml','','',''),
-(20,2,0,'German, Luxembourg','','pkg_de-LU','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/de-LU_details.xml','','',''),
-(21,2,0,'German, Switzerland','','pkg_de-CH','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/de-CH_details.xml','','',''),
-(22,2,0,'Greek','','pkg_el-GR','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/el-GR_details.xml','','',''),
-(23,2,0,'Hungarian','','pkg_hu-HU','package','',0,'4.1.0.1','','https://update.joomla.org/language/details4/hu-HU_details.xml','','',''),
-(24,2,0,'Italian','','pkg_it-IT','package','',0,'4.1.1.1','','https://update.joomla.org/language/details4/it-IT_details.xml','','',''),
-(25,2,0,'Japanese','','pkg_ja-JP','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/ja-JP_details.xml','','',''),
-(26,2,0,'Kazakh','','pkg_kk-KZ','package','',0,'4.1.0.2','','https://update.joomla.org/language/details4/kk-KZ_details.xml','','',''),
-(27,2,0,'Norwegian Bokmål','','pkg_nb-NO','package','',0,'4.0.1.1','','https://update.joomla.org/language/details4/nb-NO_details.xml','','',''),
-(28,2,0,'Persian Farsi','','pkg_fa-IR','package','',0,'4.1.0.1','','https://update.joomla.org/language/details4/fa-IR_details.xml','','',''),
-(29,2,0,'Polish','','pkg_pl-PL','package','',0,'4.1.0.5','','https://update.joomla.org/language/details4/pl-PL_details.xml','','',''),
-(30,2,0,'Portuguese, Brazil','','pkg_pt-BR','package','',0,'4.0.3.1','','https://update.joomla.org/language/details4/pt-BR_details.xml','','',''),
-(31,2,0,'Portuguese, Portugal','','pkg_pt-PT','package','',0,'4.0.0-rc4.2','','https://update.joomla.org/language/details4/pt-PT_details.xml','','',''),
-(32,2,0,'Romanian','','pkg_ro-RO','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/ro-RO_details.xml','','',''),
-(33,2,0,'Russian','','pkg_ru-RU','package','',0,'4.1.1.1','','https://update.joomla.org/language/details4/ru-RU_details.xml','','',''),
-(34,2,0,'Slovak','','pkg_sk-SK','package','',0,'4.0.6.1','','https://update.joomla.org/language/details4/sk-SK_details.xml','','',''),
-(35,2,0,'Slovenian','','pkg_sl-SI','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/sl-SI_details.xml','','',''),
-(36,2,0,'Spanish','','pkg_es-ES','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/es-ES_details.xml','','',''),
-(37,2,0,'Swedish','','pkg_sv-SE','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/sv-SE_details.xml','','',''),
-(38,2,0,'Tamil, India','','pkg_ta-IN','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/ta-IN_details.xml','','',''),
-(39,2,0,'Thai','','pkg_th-TH','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/th-TH_details.xml','','',''),
-(40,2,0,'Turkish','','pkg_tr-TR','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/tr-TR_details.xml','','',''),
-(41,2,0,'Ukrainian','','pkg_uk-UA','package','',0,'4.0.3.2','','https://update.joomla.org/language/details4/uk-UA_details.xml','','',''),
-(42,2,0,'Welsh','','pkg_cy-GB','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/cy-GB_details.xml','','','');
+(43,2,0,'Arabic Unitag','','pkg_ar-AA','package','',0,'4.0.2.1','','https://update.joomla.org/language/details4/ar-AA_details.xml','','',''),
+(44,2,0,'Catalan','','pkg_ca-ES','package','',0,'4.0.4.2','','https://update.joomla.org/language/details4/ca-ES_details.xml','','',''),
+(45,2,0,'Chinese, Simplified','','pkg_zh-CN','package','',0,'4.1.0.3','','https://update.joomla.org/language/details4/zh-CN_details.xml','','',''),
+(46,2,0,'Chinese, Traditional','','pkg_zh-TW','package','',0,'4.0.6.1','','https://update.joomla.org/language/details4/zh-TW_details.xml','','',''),
+(47,2,0,'Czech','','pkg_cs-CZ','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/cs-CZ_details.xml','','',''),
+(48,2,0,'Danish','','pkg_da-DK','package','',0,'4.1.1.1','','https://update.joomla.org/language/details4/da-DK_details.xml','','',''),
+(49,2,0,'Dutch','','pkg_nl-NL','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/nl-NL_details.xml','','',''),
+(50,2,0,'English, Australia','','pkg_en-AU','package','',0,'4.1.0.2','','https://update.joomla.org/language/details4/en-AU_details.xml','','',''),
+(51,2,0,'English, Canada','','pkg_en-CA','package','',0,'4.1.0.2','','https://update.joomla.org/language/details4/en-CA_details.xml','','',''),
+(52,2,0,'English, New Zealand','','pkg_en-NZ','package','',0,'4.1.0.2','','https://update.joomla.org/language/details4/en-NZ_details.xml','','',''),
+(53,2,0,'English, USA','','pkg_en-US','package','',0,'4.1.0.2','','https://update.joomla.org/language/details4/en-US_details.xml','','',''),
+(54,2,0,'Estonian','','pkg_et-EE','package','',0,'4.1.0.1','','https://update.joomla.org/language/details4/et-EE_details.xml','','',''),
+(55,2,0,'Finnish','','pkg_fi-FI','package','',0,'4.1.1.2','','https://update.joomla.org/language/details4/fi-FI_details.xml','','',''),
+(56,2,0,'Flemish','','pkg_nl-BE','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/nl-BE_details.xml','','',''),
+(57,2,0,'French','','pkg_fr-FR','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/fr-FR_details.xml','','',''),
+(58,2,0,'Georgian','','pkg_ka-GE','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/ka-GE_details.xml','','',''),
+(59,2,0,'German','','pkg_de-DE','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/de-DE_details.xml','','',''),
+(60,2,0,'German, Austria','','pkg_de-AT','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/de-AT_details.xml','','',''),
+(61,2,0,'German, Liechtenstein','','pkg_de-LI','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/de-LI_details.xml','','',''),
+(62,2,0,'German, Luxembourg','','pkg_de-LU','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/de-LU_details.xml','','',''),
+(63,2,0,'German, Switzerland','','pkg_de-CH','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/de-CH_details.xml','','',''),
+(64,2,0,'Greek','','pkg_el-GR','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/el-GR_details.xml','','',''),
+(65,2,0,'Hungarian','','pkg_hu-HU','package','',0,'4.1.0.1','','https://update.joomla.org/language/details4/hu-HU_details.xml','','',''),
+(66,2,0,'Italian','','pkg_it-IT','package','',0,'4.1.1.1','','https://update.joomla.org/language/details4/it-IT_details.xml','','',''),
+(67,2,0,'Japanese','','pkg_ja-JP','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/ja-JP_details.xml','','',''),
+(68,2,0,'Kazakh','','pkg_kk-KZ','package','',0,'4.1.0.2','','https://update.joomla.org/language/details4/kk-KZ_details.xml','','',''),
+(69,2,0,'Norwegian Bokmål','','pkg_nb-NO','package','',0,'4.0.1.1','','https://update.joomla.org/language/details4/nb-NO_details.xml','','',''),
+(70,2,0,'Persian Farsi','','pkg_fa-IR','package','',0,'4.1.0.1','','https://update.joomla.org/language/details4/fa-IR_details.xml','','',''),
+(71,2,0,'Polish','','pkg_pl-PL','package','',0,'4.1.0.5','','https://update.joomla.org/language/details4/pl-PL_details.xml','','',''),
+(72,2,0,'Portuguese, Brazil','','pkg_pt-BR','package','',0,'4.0.3.1','','https://update.joomla.org/language/details4/pt-BR_details.xml','','',''),
+(73,2,0,'Portuguese, Portugal','','pkg_pt-PT','package','',0,'4.0.0-rc4.2','','https://update.joomla.org/language/details4/pt-PT_details.xml','','',''),
+(74,2,0,'Romanian','','pkg_ro-RO','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/ro-RO_details.xml','','',''),
+(75,2,0,'Russian','','pkg_ru-RU','package','',0,'4.1.1.1','','https://update.joomla.org/language/details4/ru-RU_details.xml','','',''),
+(76,2,0,'Slovak','','pkg_sk-SK','package','',0,'4.0.6.1','','https://update.joomla.org/language/details4/sk-SK_details.xml','','',''),
+(77,2,0,'Slovenian','','pkg_sl-SI','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/sl-SI_details.xml','','',''),
+(78,2,0,'Spanish','','pkg_es-ES','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/es-ES_details.xml','','',''),
+(79,2,0,'Swedish','','pkg_sv-SE','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/sv-SE_details.xml','','',''),
+(80,2,0,'Tamil, India','','pkg_ta-IN','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/ta-IN_details.xml','','',''),
+(81,2,0,'Thai','','pkg_th-TH','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/th-TH_details.xml','','',''),
+(82,2,0,'Turkish','','pkg_tr-TR','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/tr-TR_details.xml','','',''),
+(83,2,0,'Ukrainian','','pkg_uk-UA','package','',0,'4.0.3.2','','https://update.joomla.org/language/details4/uk-UA_details.xml','','',''),
+(84,2,0,'Welsh','','pkg_cy-GB','package','',0,'4.1.2.1','','https://update.joomla.org/language/details4/cy-GB_details.xml','','','');
 /*!40000 ALTER TABLE `cms_updates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2915,7 +2911,7 @@ CREATE TABLE `cms_user_usergroup_map` (
 LOCK TABLES `cms_user_usergroup_map` WRITE;
 /*!40000 ALTER TABLE `cms_user_usergroup_map` DISABLE KEYS */;
 INSERT INTO `cms_user_usergroup_map` VALUES
-(110,8);
+(476,8);
 /*!40000 ALTER TABLE `cms_user_usergroup_map` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2989,7 +2985,7 @@ CREATE TABLE `cms_users` (
   KEY `idx_name` (`name`(100)),
   KEY `idx_block` (`block`),
   KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=477 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2999,7 +2995,7 @@ CREATE TABLE `cms_users` (
 LOCK TABLES `cms_users` WRITE;
 /*!40000 ALTER TABLE `cms_users` DISABLE KEYS */;
 INSERT INTO `cms_users` VALUES
-(110,'Admin','admin','jitang.zheng@gmail.com','$2y$10$5ijG5YlLxFGa9GB0tqD1deRhxN0p4rmHsVa0JJckhBac6OnA0gzsK',0,1,'2022-04-01 12:44:58','2022-04-01 12:45:57','0','',NULL,0,'','',0,'');
+(476,'Admin','admin','jitang.zheng@gmail.com','$2y$10$VrlpmjC9Zv4gx4YvyXCYS.p80h2CLPRQUzzvvo.P3ExDHayIcJcMy',0,1,'2022-04-02 07:21:17',NULL,'0','',NULL,0,'','',0,'');
 /*!40000 ALTER TABLE `cms_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3216,7 +3212,7 @@ CREATE TABLE `cms_workflows` (
 LOCK TABLES `cms_workflows` WRITE;
 /*!40000 ALTER TABLE `cms_workflows` DISABLE KEYS */;
 INSERT INTO `cms_workflows` VALUES
-(1,56,1,'COM_WORKFLOW_BASIC_WORKFLOW','','com_content.article',1,1,'2022-04-01 12:44:42',110,'2022-04-01 12:44:42',110,NULL,NULL);
+(1,56,1,'COM_WORKFLOW_BASIC_WORKFLOW','','com_content.article',1,1,'2022-04-02 07:21:12',476,'2022-04-02 07:21:12',476,NULL,NULL);
 /*!40000 ALTER TABLE `cms_workflows` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -3229,4 +3225,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-01  6:05:42
+-- Dump completed on 2022-04-02  0:24:56

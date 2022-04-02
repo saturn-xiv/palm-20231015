@@ -1,6 +1,6 @@
 -- MariaDB dump 10.19  Distrib 10.7.3-MariaDB, for Linux (x86_64)
 --
--- Host: localhost    Database: forum
+-- Host: localhost    Database: fluxbb
 -- ------------------------------------------------------
 -- Server version	10.7.3-MariaDB
 
@@ -276,7 +276,7 @@ CREATE TABLE `forum_forums` (
 LOCK TABLES `forum_forums` WRITE;
 /*!40000 ALTER TABLE `forum_forums` DISABLE KEYS */;
 INSERT INTO `forum_forums` VALUES
-(1,'Test forum','This is just a test forum',NULL,NULL,1,1,1648816913,1,'admin',0,1,1);
+(1,'Test forum','This is just a test forum',NULL,NULL,1,1,1648884146,1,'admin',0,1,1);
 /*!40000 ALTER TABLE `forum_forums` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -359,8 +359,6 @@ CREATE TABLE `forum_online` (
 
 LOCK TABLES `forum_online` WRITE;
 /*!40000 ALTER TABLE `forum_online` DISABLE KEYS */;
-INSERT INTO `forum_online` VALUES
-(2,'admin',1648816968,0,NULL,NULL);
 /*!40000 ALTER TABLE `forum_online` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -396,7 +394,7 @@ CREATE TABLE `forum_posts` (
 LOCK TABLES `forum_posts` WRITE;
 /*!40000 ALTER TABLE `forum_posts` DISABLE KEYS */;
 INSERT INTO `forum_posts` VALUES
-(1,'admin',2,'127.0.0.1',NULL,'If you are looking at this (which I guess you are), the install of FluxBB appears to have worked! Now log in and head over to the administration control panel to configure your forum.',0,1648816913,NULL,NULL,1);
+(1,'admin',2,'127.0.0.1',NULL,'If you are looking at this (which I guess you are), the install of FluxBB appears to have worked! Now log in and head over to the administration control panel to configure your forum.',0,1648884146,NULL,NULL,1);
 /*!40000 ALTER TABLE `forum_posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -597,7 +595,7 @@ CREATE TABLE `forum_topics` (
 LOCK TABLES `forum_topics` WRITE;
 /*!40000 ALTER TABLE `forum_topics` DISABLE KEYS */;
 INSERT INTO `forum_topics` VALUES
-(1,'admin','Test topic',1648816913,1,1648816913,1,'admin',0,0,0,0,NULL,1);
+(1,'admin','Test topic',1648884146,1,1648884146,1,'admin',0,0,0,0,NULL,1);
 /*!40000 ALTER TABLE `forum_topics` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -665,7 +663,7 @@ LOCK TABLES `forum_users` WRITE;
 /*!40000 ALTER TABLE `forum_users` DISABLE KEYS */;
 INSERT INTO `forum_users` VALUES
 (1,3,'Guest','Guest','Guest',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,0,0,1,1,1,1,1,0,0,0,0,'English','Air',0,NULL,NULL,NULL,NULL,0,'0.0.0.0',0,NULL,NULL,NULL),
-(2,1,'admin','f729170314bd5a497585fe8a579f4b6e90c4ed89','jitang.zheng@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,0,0,1,1,1,1,1,0,0,0,0,'English','Air',1,1648816913,NULL,NULL,NULL,1648816913,'127.0.0.1',1648816913,NULL,NULL,NULL);
+(2,1,'admin','f729170314bd5a497585fe8a579f4b6e90c4ed89','jitang.zheng@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,0,0,1,1,1,1,1,0,0,0,0,'English','Air',1,1648884146,NULL,NULL,NULL,1648884146,'127.0.0.1',1648884146,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `forum_users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -678,4 +676,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-01  6:06:06
+-- Dump completed on 2022-04-02  0:24:32

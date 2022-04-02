@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
+
+    <preConditions onFail="HALT">
+        <or>
+            <dbms type="mysql" />
+            <dbms type="mariadb" />
+        </or>
+    </preConditions>
+
+    <changeSet id="20220401234410" author="jeremy.zheng" labels="create-joomla">
+        <sqlFile path="joomla-4.1.2.sql" />
+    </changeSet>
+    <changeSet id="20220401234423" author="jeremy.zheng" labels="create-fluxbb">
+        <sqlFile path="fluxbb-1.5.11.sql" />
+    </changeSet>
+    <changeSet id="20220401234431" author="jeremy.zheng" labels="create-opencart">
+        <sqlFile path="opencart-3.0.3.8.sql" />
+    </changeSet>
+
+</databaseChangeLog>

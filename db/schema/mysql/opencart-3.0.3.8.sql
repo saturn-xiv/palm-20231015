@@ -1,6 +1,6 @@
 -- MariaDB dump 10.19  Distrib 10.7.3-MariaDB, for Linux (x86_64)
 --
--- Host: localhost    Database: mall
+-- Host: localhost    Database: opencart
 -- ------------------------------------------------------
 -- Server version	10.7.3-MariaDB
 
@@ -74,7 +74,7 @@ CREATE TABLE `mall_api` (
 LOCK TABLES `mall_api` WRITE;
 /*!40000 ALTER TABLE `mall_api` DISABLE KEYS */;
 INSERT INTO `mall_api` VALUES
-(1,'Default','QEiWtRHXnRsaK5Uk5mcmcCZrOuqkbqmOJMDxp0NaYsLyqJ2YzXi7uff2SqYt0eEKjz9WTsiKcCEl7ljBTERMNt8AccSXnGSWOT3JqYxE5dKe7GaKjdymOOSbgyIJI6o76gAOoaUVJk6lmvfC84FY3SIb8kH6JfbQ0N9MK2R98MuCOq31uGBeQeukBtNTtEJyY1Efw3wYaClCLWZDSMFX0HjyOpowBNa8sgxWhq5U2675uaHUFcnlPH4f3cGO2BcO',1,'2022-04-01 05:48:27','2022-04-01 05:48:27');
+(1,'Default','4IKSh7tPQlOlzGe5z0Dq0bbASaLR7Qf1iusnRWstAAc6JPSExVL2YV5gvJYrf4sj43slvFBUOypr5E6amJjChfEJkP8EfwB1u6tMebNGm3QjMe6xzEa2J3ZDhD0QR0j6JNE2hom6lkYU4aIyw4Jdo9XkWlRnmwulTyk2U6ICPaQ2wD9FJ5eTaJDuiKL9ugfWPoKpXTEjqGWjefPcS8nBLG10EoNlNKOsDy7SasW3RNd9AuQlqTAWQwqhiwVXzl7e',1,'2022-04-02 00:23:35','2022-04-02 00:23:35');
 /*!40000 ALTER TABLE `mall_api` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -4312,7 +4312,7 @@ INSERT INTO `mall_setting` VALUES
 (73,0,'config','config_file_mime_allowed','text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf',0),
 (74,0,'config','config_maintenance','0',0),
 (75,0,'config','config_password','1',0),
-(203,0,'config','config_encryption','GZjT0W7Nz0dpjCYgmGuVIPJusvjBgiRSjyt3MaXfeuOryCdOF1NYBFSMWgAqYRR6TTedOgcWSbPf9P6ettXO7vBgNsX9VJxZyFv3O4YYnRTbvdzlhbjOCXegdfcEv9Ih0gnWmzvOkMNq9Owu30ZFnKCOfu6duR1dgO7Hfpu184xql8mcvoR9Uoi024uYNaSVmhs3gSQC6lWQZD7WwfgJh2mFsNluCoGusEQRf7HQWeYjpvJIXOZGsAMk6VCWImv5jlMikgn7imseiVuTecvOKprW7LP1qd9ifeYwh1o1lfnJjojdHJdxKgAShEO4hFi6iTfRTopQfEqA9j0eNSgIMjVK3Hu0fV6LcoqGpzuKqs4cd6EygPt37pIFEMfHISATLgU8VzRXEEOWJRImm0mnLHiM1VLnU9NwIn0K1HCO9N5QJ7WWAjF9iZ3cdgPk0bGdSC84iW68eZcUf2oxHGXuSQBgn6epeyqYw9hHxnKXogCjnyuD9sOYgXh5jOSkBMtUE6XfXZ8OyPCsYn86pbR49JgRJFwlB8frkRDxD4F8d6SiReBNiGUBzXW61uj72wCNuZcsJkkc4sYTk3pXOQjJ0PPKGqer1zri2dUa6khu6TrpHIB3piHDW6mICkj8CPzPk6ZudRvzzpJOFR4062KBYrpA0Sqfoly5opICoDzEUzSy9DV1SuZl4thd9UzI30nrs2iLaNIG9NUa6RcV3Ti7zvuc7MFlLFPCZkUuGiP8bfBEMGczh8Qp3Mm8nR2F6pHWYNKc0nlRPNC6zVakH8ts8TkTNbvv3YAKJG93sqtN8huhBCXbC6aAa1O9HyGckvqJAtJiN568fh1YIZ8qI9joth16a8G3zx7FI8hvbYaBAPrlH9ZyWbwWzr4mTXjeTJRuH3LkrPn8RZg3WSquonh408YE5Ex1vfiU9ybb1uGbR6vNmlGP6xRZQGSRUvPdUaCntEpbkvtjB0vGYpvi0QaqkGQ7YdQvDvHhLjosiFPfRZhMStllAt5SnAhxGyfZ9SkI',0),
+(203,0,'config','config_encryption','jmDPay6IJAqYIimxcLxjybqFyFIba79TrDEkoMBtL9XrYx3gXhAvorOuWbnAuFyB3WDKLoBpYeJtj1i3YyqtukiU4ZTcNTBclhG6pXMjHSugJUXWsFd68dLpdCHufWS1hFgK6CE0HYi0zov9nHIO36dpQhxe3JBoUWJvpzLH4KTVnDxi5sluExBDGqMKeO4mJImJo3G7JO3Tf3ABWuivp45SvVgLnRmBcd7qdEUzDwv4frHsQVN4NDt0X6mapW0I8w1e4TkExogIEW01DUY6THszzXst16Cs77Jnn5JIR8HkSjVdYdOEhquLUD8QE9rtPrz95SjQ3UTPhwospsfUeiGBK7qRMyI6nFyjTMaqjioDzlyMC0WecwxhRpYMck6kAZzZME9pQgzCzXjkMKCAdhd9qOcTnLr3TTpebJN9rvfhjbWzN94FdhGpJ3BxjodI4XneTrOYi8TWSpqerf92bpWf9LZCFa8imNq7XSfj7wNJtuOhc1oCEPhQMzox2gPn5nkvIoyU8w1kvxu1kvuXKaEE4LbVyZJPI2EYR4Engt0d9n5PFKPgE3mURUEGSXjbQzgTKiWBz0muCh2Pim8FHWqqNDtuFPvZexGoqeFXW0m0UpYXqibKGM9I3fXEdENxky2vTs64yjWkDcTkTmpHqIyBIRDG0RfJ2fX2HIJqj35ukqLPqGI30OStOipCzwsv7FIUcZrJynDvgzV5w2YlxMOfcA0tfNvFcCVsgORfohhxieqLm02afb5xoGxfMMjDwctPOvXbGTsJi9U5d6Hf4pH3TJySlNq93yolJA0S7VMiYbEbkYZTc9QK1Dd69zJDZDXAaS0rPlnb5rpWJmilKeVlysy3ykPNPyx4kFF7L71XicbmPhjqkLbPQWxIx8BjDVNYKZzwZzIQXP9rzaNRCMTLZ1Wi6xHrZEl1ohZo9H7ymJxVXQijxpomZnCAOvVs3pKyWj5vCX5J9CbDi5M8ZchmceaV638CSi9bfWOPx0A9qwzP9Iuuwawi8vjtV4wZ',0),
 (77,0,'config','config_compression','0',0),
 (78,0,'config','config_error_display','1',0),
 (79,0,'config','config_error_log','1',0),
@@ -4788,7 +4788,7 @@ CREATE TABLE `mall_user` (
 LOCK TABLES `mall_user` WRITE;
 /*!40000 ALTER TABLE `mall_user` DISABLE KEYS */;
 INSERT INTO `mall_user` VALUES
-(1,1,'admin','4370e056a5a8a35303920e20f597387cb05079fd','LFStlxcAc','John','Doe','jitang.zheng@gmail.com','','','',1,'2022-04-01 05:48:27');
+(1,1,'admin','ac6ce2e184f19194f67c45b5e50f2d4053c8aa5b','XSM5b4RsH','John','Doe','jitang.zheng@gmail.com','','','',1,'2022-04-02 00:23:35');
 /*!40000 ALTER TABLE `mall_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -9272,4 +9272,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-01  6:04:51
+-- Dump completed on 2022-04-02  0:25:20
