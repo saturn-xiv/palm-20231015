@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>dashboard layout</div>
+  <div>users unlock by email</div>
 </template>
 
 <style scoped></style>

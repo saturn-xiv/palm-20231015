@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>dashboard layout</div>
+  <div>Change Password</div>
 </template>
 
 <style scoped></style>

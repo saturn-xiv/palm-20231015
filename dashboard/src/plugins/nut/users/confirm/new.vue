@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>dashboard layout</div>
+  <div>users confirm by email</div>
 </template>
 
 <style scoped></style>

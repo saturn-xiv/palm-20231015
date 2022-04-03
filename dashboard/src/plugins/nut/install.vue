@@ -1,17 +1,24 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 
-import SharedLinks from "./SharedLinks.vue";
+import SharedLinks from "./users/SharedLinks.vue";
+import { EMAIL_VALIDATOR } from "../../components/form";
 
 interface FormState {
-  user: string;
+  email: string;
+  realName: string;
+  nickName: string;
   password: string;
+  passwordConfirmation: string;
   remember: boolean;
   captcha: string;
 }
 const formState = reactive<FormState>({
-  user: "",
+  email: "",
+  realName: "",
+  nickName: "",
   password: "",
+  passwordConfirmation: "",
   captcha: "",
   remember: true,
 });
@@ -21,28 +28,49 @@ const onFinish = (values: any) => {
 </script>
 
 <template>
-  <SharedLinks :title="$t('pages.users.sign-in.title')">
+  <SharedLinks :title="$t('pages.install.title')">
     <a-form
       :model="formState"
       name="basic"
-      :label-col="{ span: 6 }"
+      :label-col="{ span: 8 }"
       autocomplete="off"
       @finish="onFinish"
     >
       <a-form-item
-        :label="$t('pages.users.sign-in.email-or-nickname')"
-        name="user"
+        :label="$t('fields.email')"
+        name="email"
+        :rules="EMAIL_VALIDATOR"
+      >
+        <a-input v-model:value="formState.email" />
+      </a-form-item>
+      <a-form-item
+        :label="$t('fields.real-name')"
+        name="realName"
         :rules="[{ required: true }]"
       >
-        <a-input v-model:value="formState.user" />
+        <a-input v-model:value="formState.realName" />
       </a-form-item>
-
+      <a-form-item
+        :label="$t('fields.nick-name')"
+        name="nickName"
+        :rules="[{ required: true }]"
+      >
+        <a-input v-model:value="formState.nickName" />
+      </a-form-item>
       <a-form-item
         :label="$t('fields.password')"
         name="password"
         :rules="[{ required: true }]"
       >
         <a-input-password v-model:value="formState.password" />
+      </a-form-item>
+
+      <a-form-item
+        :label="$t('fields.password-confirmation')"
+        name="passwordConfirmation"
+        :rules="[{ required: true }]"
+      >
+        <a-input-password v-model:value="formState.passwordConfirmation" />
       </a-form-item>
       <a-form-item
         :label="$t('fields.captcha')"
