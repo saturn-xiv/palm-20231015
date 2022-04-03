@@ -25,7 +25,7 @@ const languages = {
   "zh-Hant": "繁體中文",
 };
 
-const i18n = createI18n({
+export default createI18n({
   locale: detect(),
   fallbackLocale: "en-US",
   messages: {
@@ -34,5 +34,3 @@ const i18n = createI18n({
     "zh-Hant": { languages, ...zhHant },
   },
 });
-
-export default i18n;

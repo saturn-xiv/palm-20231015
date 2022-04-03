@@ -3,7 +3,8 @@ import Antd from "ant-design-vue";
 
 import "ant-design-vue/dist/antd.css";
 
-import plugins from "./plugins";
+import router from "./plugins";
 import i18n from "./i18n";
+import store from "./store";
 
-createApp({}).use(plugins.router).use(i18n).use(Antd).mount("#app");
+createApp({}).use(Antd).use(router).use(i18n).use(store).mount("#app");

@@ -9,9 +9,7 @@ export interface IPlugin {
   routes: RouteRecordRaw[];
 }
 
-const router = createRouter({
+export default createRouter({
   history: createWebHistory("/my/"),
   routes: [...cms.routes, ...forum.routes, ...mall.routes, ...nut.routes],
 });
-
-export default { router };
