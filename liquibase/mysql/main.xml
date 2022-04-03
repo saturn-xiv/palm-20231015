@@ -10,16 +10,8 @@
         </or>
     </preConditions>
 
-    <changeSet id="20220401234410" author="jeremy.zheng" labels="create-joomla">
-        <sqlFile path="joomla-4.1.2.sql" />
-    </changeSet>
-    <changeSet id="20220401234423" author="jeremy.zheng" labels="create-fluxbb">
-        <sqlFile path="fluxbb-1.5.11.sql" />
-    </changeSet>
-
-    <!-- FIXME U+0327 -->
-    <!-- <changeSet id="20220401234431" author="jeremy.zheng" labels="create-opencart">
+    <changeSet id="20220401234431" author="jeremy.zheng" labels="create-opencart">
         <sqlFile path="opencart-3.0.3.8.sql" encoding="UTF-8" />
-    </changeSet> -->
+    </changeSet>
 
 </databaseChangeLog>
