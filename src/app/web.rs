@@ -24,7 +24,8 @@ use super::super::{
 use super::graphql::{self, mutation::Mutation, query::Query, Schema};
 
 pub async fn launch(cfg: &Config) -> Result<()> {
-    let db = web::Data::new(cfg.postgresql.open()?);
+    let pgsql = web::Data::new(cfg.postgresql.open()?);
+    let mysql = web::Data::new(cfg.mysql.open()?);
     let cache = web::Data::new(cfg.redis.open()?);
     let aes = web::Data::new(Aes::new(&cfg.secrets.0)?);
     let hmac = web::Data::new(Hmac::new(&cfg.secrets.0)?);
@@ -49,7 +50,8 @@ pub async fn launch(cfg: &Config) -> Result<()> {
 
     HttpServer::new(move || {
         App::new()
-            .app_data(db.clone())
+            .app_data(pgsql.clone())
+            .app_data(mysql.clone())
             .app_data(cache.clone())
             .app_data(aes.clone())
             .app_data(hmac.clone())

@@ -6,20 +6,13 @@ use diesel::{
     delete, insert_into,
     prelude::*,
     result::Error as DieselError,
-    sql_query,
-    sql_types::Text,
-    update, RunQueryDsl,
+    sql_query, update, RunQueryDsl,
 };
 use hyper::StatusCode;
 
 use super::super::super::{HttpError, Result};
+use super::super::Version;
 use super::{schema::schema_migrations, Connection};
-
-#[derive(QueryableByName)]
-pub struct Version {
-    #[sql_type = "Text"]
-    pub value: String,
-}
 
 pub struct Migration<'a> {
     pub version: i64,

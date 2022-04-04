@@ -9,7 +9,7 @@ use super::{
     aws::{s3::Config as S3, Credentials as Aws},
     cache::redis::Config as Redis,
     crypto::Key,
-    orm::postgresql::Config as PostgreSql,
+    orm::{mysql::Config as MySql, postgresql::Config as PostgreSql},
     queue::amqp::Config as RabbitMq,
 };
 
@@ -82,6 +82,7 @@ pub struct Config {
     pub http: Http,
     pub rpc: Rpc,
     pub postgresql: PostgreSql,
+    pub mysql: MySql,
     pub redis: Redis,
     pub rabbitmq: RabbitMq,
     pub s3: S3,
