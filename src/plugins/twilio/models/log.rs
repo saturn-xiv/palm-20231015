@@ -3,7 +3,7 @@ use diesel::{insert_into, prelude::*};
 use serde::Serialize;
 use uuid::Uuid;
 
-use super::super::super::super::{orm::Connection, Result};
+use super::super::super::super::{orm::postgresql::Connection, Result};
 use super::super::schema::sms_logs;
 
 #[derive(Queryable, Serialize, Clone)]

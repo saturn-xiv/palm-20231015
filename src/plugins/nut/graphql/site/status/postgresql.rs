@@ -3,7 +3,7 @@ use diesel::{sql_query, sql_types::Text, RunQueryDsl};
 use juniper::GraphQLObject;
 use serde::{Deserialize, Serialize};
 
-use super::super::super::super::super::super::{orm::Connection, Result};
+use super::super::super::super::super::super::{orm::postgresql::Connection, Result};
 
 #[derive(GraphQLObject, Serialize, Deserialize, Debug)]
 pub struct PostgreSqlStatus {

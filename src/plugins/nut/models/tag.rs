@@ -3,7 +3,7 @@ use diesel::{delete, insert_into, prelude::*, update};
 use serde::Serialize;
 use uuid::Uuid;
 
-use super::super::super::super::{orm::Connection, Result};
+use super::super::super::super::{orm::postgresql::Connection, Result};
 use super::super::schema::{tags, tags_resources};
 use super::Resource;
 

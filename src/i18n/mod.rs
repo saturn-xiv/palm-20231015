@@ -5,7 +5,7 @@ use handlebars::Handlebars;
 use hyper::StatusCode;
 use serde::ser::Serialize;
 
-use super::{orm::Connection, HttpError, Result};
+use super::{orm::postgresql::Connection, HttpError, Result};
 
 use self::locale::Dao;
 

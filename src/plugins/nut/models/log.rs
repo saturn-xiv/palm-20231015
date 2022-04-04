@@ -4,7 +4,7 @@ use chrono::NaiveDateTime;
 use diesel::{insert_into, prelude::*};
 use uuid::Uuid;
 
-use super::super::super::super::{orm::Connection, Result};
+use super::super::super::super::{orm::postgresql::Connection, Result};
 use super::super::schema::logs;
 use super::Resource;
 

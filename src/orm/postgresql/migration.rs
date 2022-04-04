@@ -12,7 +12,7 @@ use diesel::{
 };
 use hyper::StatusCode;
 
-use super::super::{HttpError, Result};
+use super::super::super::{HttpError, Result};
 use super::{schema::schema_migrations, Connection};
 
 #[derive(QueryableByName)]

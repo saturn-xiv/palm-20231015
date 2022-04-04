@@ -19,7 +19,7 @@ use super::super::super::{
     cache::redis::Pool as CachePool,
     crypto::{Aes, Hmac},
     jwt::Jwt,
-    orm::Pool as DbPool,
+    orm::postgresql::Pool as DbPool,
     queue::amqp::RabbitMq,
     HttpError, Result,
 };

@@ -10,7 +10,7 @@ use uuid::Uuid;
 use validator::Validate;
 
 use super::super::super::super::{
-    i18n::I18n, jwt::Jwt, orm::Connection as Db, Error, HttpError, Result,
+    i18n::I18n, jwt::Jwt, orm::postgresql::Connection as Db, Error, HttpError, Result,
 };
 use super::super::super::layout::Layout;
 use super::super::{

@@ -7,7 +7,7 @@ use uuid::Uuid;
 use yaml_rust::{Yaml, YamlLoader};
 
 use super::super::{
-    orm::{migration::Migration, Connection},
+    orm::postgresql::{migration::Migration, Connection},
     Result,
 };
 use super::schema::locales;

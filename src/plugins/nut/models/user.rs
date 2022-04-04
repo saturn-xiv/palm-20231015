@@ -13,7 +13,7 @@ use uuid::Uuid;
 use super::super::super::super::{
     crypto::{random::bytes as random_bytes, Password},
     oauth::google::openid::IdToken,
-    orm::Connection,
+    orm::postgresql::Connection,
     HttpError, Result,
 };
 use super::super::schema::users;

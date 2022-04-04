@@ -9,7 +9,7 @@ use super::{
     aws::{s3::Config as S3, Credentials as Aws},
     cache::redis::Config as Redis,
     crypto::Key,
-    orm::Config as PostgreSql,
+    orm::postgresql::Config as PostgreSql,
     queue::amqp::Config as RabbitMq,
 };
 

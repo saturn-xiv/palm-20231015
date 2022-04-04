@@ -9,7 +9,7 @@ use actix_web::{error::ErrorInternalServerError, get, web, Responder, Result};
 use askama::Template;
 use rss::ChannelBuilder as RssChannelBuilder;
 
-use super::super::super::orm::Pool as DbPool;
+use super::super::super::orm::postgresql::Pool as DbPool;
 
 // https://developers.google.com/search/docs/advanced/robots/create-robots-txt
 #[derive(Template)]

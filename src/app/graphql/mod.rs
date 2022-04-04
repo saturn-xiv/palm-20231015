@@ -15,7 +15,7 @@ use super::super::{
     captcha::Captcha,
     crypto::{Aes, Hmac},
     jwt::Jwt,
-    orm::Pool as DbPool,
+    orm::postgresql::Pool as DbPool,
     plugins::nut::{
         graphql::Context,
         handlers::{locale::Locale, peer::ClientIp, token::Token},

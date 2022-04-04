@@ -5,7 +5,7 @@ pub mod models;
 pub mod schema;
 pub mod tasks;
 
-use super::super::orm::migration::Migration;
+use super::super::orm::postgresql::migration::Migration;
 
 lazy_static! {
     pub static ref MIGRATION: Migration<'static> = Migration {

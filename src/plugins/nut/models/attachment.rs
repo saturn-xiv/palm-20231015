@@ -6,7 +6,7 @@ use mime::Mime;
 use serde::Serialize;
 use uuid::Uuid;
 
-use super::super::super::super::{orm::Connection, Result};
+use super::super::super::super::{orm::postgresql::Connection, Result};
 use super::super::schema::{attachment_usages, attachments};
 use super::{Resource, Status};
 

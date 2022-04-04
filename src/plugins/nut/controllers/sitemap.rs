@@ -11,7 +11,7 @@ use askama::Template;
 use xml::writer::{EventWriter, Result as XmlWriterResult, XmlEvent};
 
 use super::super::super::super::{
-    crypto::Aes, orm::Pool as DbPool, settings::Dao as SettingDao, ToXml,
+    crypto::Aes, orm::postgresql::Pool as DbPool, settings::Dao as SettingDao, ToXml,
 };
 use super::super::graphql::site::{baidu::BaiduRequest, google::GoogleRequest};
 

@@ -16,7 +16,7 @@ use super::{
     cache::Provider,
     env::{is_stopped, Config},
     i18n::locale::{Dao as LocaleDao, MIGRATION as Locales},
-    orm::migration::Dao as MigrationDao,
+    orm::postgresql::migration::Dao as MigrationDao,
     parser::from_toml,
     plugins,
     settings::MIGRATION as Settings,

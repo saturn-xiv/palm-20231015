@@ -10,7 +10,7 @@ use uuid::Uuid;
 use self::schema::settings;
 use super::{
     crypto::Secret,
-    orm::{migration::Migration, Connection},
+    orm::postgresql::{migration::Migration, Connection},
     Result,
 };
 

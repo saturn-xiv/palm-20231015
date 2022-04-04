@@ -6,7 +6,7 @@ use askama::Template;
 use super::super::super::super::{
     cache::redis::Pool as CachePool,
     crypto::Aes,
-    orm::{Connection as DbConnection, Pool as DbPool},
+    orm::postgresql::{Connection as DbConnection, Pool as DbPool},
     theme::{render, Page, Theme},
     Result,
 };

@@ -5,7 +5,7 @@ use futures::future::{ok, Ready};
 use hyper::{header::AUTHORIZATION, StatusCode};
 use serde::{Deserialize, Serialize};
 
-use super::super::super::super::{jwt::Jwt, orm::Connection as Db, HttpError, Result};
+use super::super::super::super::{jwt::Jwt, orm::postgresql::Connection as Db, HttpError, Result};
 use super::super::models::user::{Action, Dao as UserDao, Item as User, Token as UserToken};
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -12,7 +12,7 @@ use super::super::{
     cache::Provider as CacheProvider,
     crypto::Secret,
     i18n::{locale::Dao as LocaleDao, I18n},
-    orm::Connection as Db,
+    orm::postgresql::Connection as Db,
     settings::Dao as SettingDao,
     Result,
 };
