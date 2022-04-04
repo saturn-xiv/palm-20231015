@@ -1,5 +1,6 @@
 pub mod migration;
 pub mod schema;
+pub mod mysql;
 
 use std::default::Default;
 use std::fmt;

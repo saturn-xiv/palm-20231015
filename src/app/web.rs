@@ -18,7 +18,7 @@ use super::super::{
     crypto::{Aes, Hmac},
     env::{Config, Environment},
     jwt::Jwt,
-    plugins::{forum, nut},
+    plugins::nut,
     Result, NAME,
 };
 use super::graphql::{self, mutation::Mutation, query::Query, Schema};
@@ -102,11 +102,6 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 web::resource(graphql::PLAYGROUND_ROUTE).route(web::get().to(graphql::playground)),
             )
             .service(web::resource(graphql::GRAPHIQL_ROUTE).route(web::get().to(graphql::graphiql)))
-            .service(forum::controllers::topics::show)
-            .service(forum::controllers::topics::index)
-            .service(forum::controllers::posts::show)
-            .service(forum::controllers::posts::index)
-            .service(forum::controllers::index)
             .service(nut::controllers::attachments::create)
             .service(nut::controllers::captcha::get)
             .service(nut::controllers::sitemap::index)

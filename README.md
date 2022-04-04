@@ -19,6 +19,14 @@ A total free education &amp; translation &amp; ops solution.
 
 - Generate a random secret key: `openssl rand -base64 32`
 - Generate a random password: `pwgen 32 1`
+- mysql
+
+  ```sql
+  CREATE USER 'www'@'localhost' IDENTIFIED BY '123456';
+  CREATE DATABASE palm CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+  GRANT ALL PRIVILEGES ON palm.* TO 'www'@'localhost';
+  FLUSH PRIVILEGES;
+  ```
 
 ## Documents
 
@@ -42,3 +50,9 @@ A total free education &amp; translation &amp; ops solution.
 ### Token
 
 - [Sign in with App Passwords](https://support.google.com/accounts/answer/185833?hl=en)
+
+### Credits
+
+- [Joomla! is a free and open-source content management system (CMS) for publishing web content.](https://www.joomla.org)
+- [FluxBB is fast, light, user-friendly forum software for your website.](https://fluxbb.org/docs/v1.5/installing)
+- [OpenCart is an open source PHP-based online e-commerce solution.](https://docs.opencart.com/en-gb/introduction/)

@@ -1,12 +1,9 @@
 use juniper::{graphql_object, FieldResult};
 use uuid::Uuid;
 
-use super::super::super::plugins::{
-    forum,
-    nut::{
-        self,
-        graphql::{Context, Success},
-    },
+use super::super::super::plugins::nut::{
+    self,
+    graphql::{Context, Success},
 };
 
 pub struct Mutation;
@@ -289,47 +286,6 @@ impl Mutation {
     }
     fn destroyCategory(ctx: &Context, id: Uuid) -> FieldResult<Success> {
         nut::graphql::category::destroy(ctx, id)?;
-        Ok(Success::default())
-    }
-
-    fn createForumTopic(
-        ctx: &Context,
-        form: forum::graphql::topic::ForumTopicRequest,
-    ) -> FieldResult<Success> {
-        form.create(ctx)?;
-        Ok(Success::default())
-    }
-    fn updateForumTopic(
-        ctx: &Context,
-        id: Uuid,
-        form: forum::graphql::topic::ForumTopicRequest,
-    ) -> FieldResult<Success> {
-        form.update(ctx, id)?;
-        Ok(Success::default())
-    }
-    fn destroyForumTopic(ctx: &Context, id: Uuid) -> FieldResult<Success> {
-        forum::graphql::topic::destroy(ctx, id)?;
-        Ok(Success::default())
-    }
-    fn createForumPost(
-        ctx: &Context,
-        topic: Uuid,
-        parent: Option<Uuid>,
-        form: forum::graphql::post::ForumPostRequest,
-    ) -> FieldResult<Success> {
-        form.create(ctx, topic, parent)?;
-        Ok(Success::default())
-    }
-    fn updateForumPost(
-        ctx: &Context,
-        id: Uuid,
-        form: forum::graphql::post::ForumPostRequest,
-    ) -> FieldResult<Success> {
-        form.update(ctx, id)?;
-        Ok(Success::default())
-    }
-    fn destroyForumPost(ctx: &Context, id: Uuid) -> FieldResult<Success> {
-        forum::graphql::post::destroy(ctx, id)?;
         Ok(Success::default())
     }
 }

@@ -5,12 +5,8 @@ use super::super::super::{
     currency::Iso4217,
     i18n::locale::Item as Locale,
     plugins::{
-        forum,
         layout::Layout,
-        nut::{
-            self,
-            graphql::{Context, Pager},
-        },
+        nut::{self, graphql::Context},
     },
     GIT_VERSION,
 };
@@ -112,29 +108,6 @@ impl Query {
     }
     fn showCategory(ctx: &Context, id: Uuid) -> FieldResult<nut::graphql::category::Category> {
         let it = nut::graphql::category::show(ctx, id)?;
-        Ok(it)
-    }
-
-    fn latestForumTopic(
-        ctx: &Context,
-        pager: Pager,
-    ) -> FieldResult<forum::graphql::topic::ForumTopicList> {
-        let it = forum::graphql::topic::ForumTopicList::latest(ctx, &pager)?;
-        Ok(it)
-    }
-    fn showForumTopic(ctx: &Context, id: Uuid) -> FieldResult<forum::graphql::topic::ForumTopic> {
-        let it = forum::graphql::topic::show(ctx, id)?;
-        Ok(it)
-    }
-    fn latestForumPost(
-        ctx: &Context,
-        pager: Pager,
-    ) -> FieldResult<forum::graphql::post::ForumPostList> {
-        let it = forum::graphql::post::ForumPostList::latest(ctx, &pager)?;
-        Ok(it)
-    }
-    fn showForumPost(ctx: &Context, id: Uuid) -> FieldResult<forum::graphql::post::ForumPost> {
-        let it = forum::graphql::post::show(ctx, id)?;
         Ok(it)
     }
 }

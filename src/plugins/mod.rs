@@ -1,3 +1,4 @@
+pub mod cms;
 pub mod forum;
 pub mod layout;
 pub mod mall;
