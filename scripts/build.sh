@@ -31,8 +31,8 @@ build_dashboard(){
     then
         yarn install
     fi
-    # FIXME https://github.com/webpack/webpack/issues/14532
-    NODE_OPTIONS=--openssl-legacy-provider yarn build
+    
+    yarn build
 }
 
 build_deb(){
@@ -49,10 +49,14 @@ build_deb(){
     cp -av fig mint $target/usr/bin/
 
     mkdir -pv $target/usr/share/palm
-    cp -av $WORKSPACE/dashboard/dist $target/usr/share/palm/dashboard
+    cp -av $WORKSPACE/dashboard/dist \
+        $WORKSPACE/db \
+        $WORKSPACE/liquibase \
+        $target/usr/share/palm/dashboard
     local -a packages=(
         "bootstrap/dist"
         "bulma/css"
+        "admin-lte/dist"
         "marked/marked.min.js"
         "material-design-icons/iconfont"
         "moment/dist"

@@ -20,6 +20,7 @@ cppzmq/4.8.1
 paho-mqtt-cpp/1.2.0
 grpc/1.39.1
 serial/1.2.1
+libpng/1.6.37
 
 [options]
 zeromq:encryption=None

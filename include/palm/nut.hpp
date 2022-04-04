@@ -4,6 +4,7 @@
 #include "palm/orm.hpp"
 
 namespace palm {
+class Captcha {};
 namespace nut {
 
 class SiteService final : public palm::nut::v1::Site::Service {
