@@ -1,1 +1,0 @@
-export const TIMESTAMP_COLUMN_WIDTH = 280;
