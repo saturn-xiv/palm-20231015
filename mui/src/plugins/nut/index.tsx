@@ -69,14 +69,14 @@ const plugin: IPlugin = {
     //   path: "/switch-language",
     //   component: () => import("./switch-language"),
     // },
-    // {
-    //   path: "/install",
-    //   component: () => import("./install"),
-    // },
-    // {
-    //   path: "/",
-    //   component: () => import("./home"),
-    // },
+    {
+      path: "/install",
+      component: () => import("./install"),
+    },
+    {
+      path: "/",
+      component: () => import("./home"),
+    },
   ],
 };
 

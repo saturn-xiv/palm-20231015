@@ -21,6 +21,7 @@ import {
 } from "./users/sign-up";
 import Captcha from "../../components/Captcha";
 import { IOk } from "..";
+import api from "../../api";
 
 interface IFormData extends ISignUpFormData {}
 
@@ -35,35 +36,38 @@ const Widget = () => {
   const title = intl.formatMessage({ id: "nut.install.title" });
   const navigate = useNavigate();
   const onSubmit = async (data: IFormData) => {
-    const response = await graphql<IFormRequest, IFormResponse>(
-      `
-        mutation PostForm($user: UserSignUpRequest!, $captcha: String!) {
-          install(form: $user, captcha: $captcha) {
-            createdAt
-          }
-        }
-      `,
-      {
-        user: {
-          nickName: data.nickName,
-          realName: data.realName,
-          email: data.email,
-          password: data.password,
-          lang: detectLocale(),
-          timeZone: moment.tz.guess(),
-          home: document.location.origin,
-        },
-        captcha: data.captcha,
-      }
-    );
-    if (response.data) {
-      message.success(intl.formatMessage({ id: "flashes.successed" }));
-      navigate(USERS_SIGN_IN_PATH);
-    } else {
-      response.errors?.forEach((it) => {
-        message.error(it.message);
-      });
-    }
+    api.nut.postSiteInstall(data).then((res) => {
+      console.log(res);
+    });
+    // const response = await graphql<IFormRequest, IFormResponse>(
+    //   `
+    //     mutation PostForm($user: UserSignUpRequest!, $captcha: String!) {
+    //       install(form: $user, captcha: $captcha) {
+    //         createdAt
+    //       }
+    //     }
+    //   `,
+    //   {
+    //     user: {
+    //       nickName: data.nickName,
+    //       realName: data.realName,
+    //       email: data.email,
+    //       password: data.password,
+    //       lang: detectLocale(),
+    //       timeZone: moment.tz.guess(),
+    //       home: document.location.origin,
+    //     },
+    //     captcha: data.captcha,
+    //   }
+    // );
+    // if (response.data) {
+    //   message.success(intl.formatMessage({ id: "flashes.successed" }));
+    //   navigate(USERS_SIGN_IN_PATH);
+    // } else {
+    //   response.errors?.forEach((it) => {
+    //     message.error(it.message);
+    //   });
+    // }
   };
 
   return (

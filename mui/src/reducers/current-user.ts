@@ -4,7 +4,7 @@ import type { RootState } from "../store";
 
 const KEY = "token";
 
-export const getToken = () => {
+export const getToken = (): string | null => {
   return sessionStorage.getItem(KEY);
 };
 

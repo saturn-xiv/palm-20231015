@@ -12,10 +12,16 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import loadable from "@loadable/component";
 import { RefreshOutlined } from "@mui/icons-material";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 
 import plugins from "./plugins";
-import { detect as detectLocale, i18n as getI18n } from "./locales";
+import { detect as detectLocale, i18n as getI18n } from "./i18n";
 import store from "./store";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 const lang = detectLocale();
 const i18n = getI18n(lang);
