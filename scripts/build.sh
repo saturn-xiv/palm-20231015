@@ -60,16 +60,14 @@ build_dashboard(){
     cd $WORKSPACE
     if [ ! -d node_modules ]
     then
-        yarn install
+        npm install
     fi
     cd $WORKSPACE/dashboard
     if [ ! -d node_modules ]
     then
-        yarn install
+        npm install
     fi
-    # FIXME https://github.com/webpack/webpack/issues/14532
-    # NODE_OPTIONS=--openssl-legacy-provider 
-    yarn build
+    npm run build
 }
 
 build_deb(){

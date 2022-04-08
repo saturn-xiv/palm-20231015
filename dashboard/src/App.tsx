@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
-function App() {
+import { IntlProvider } from "react-intl";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Provider } from "react-redux";
+import loadable from "@loadable/component";
+import { RefreshOutlined } from "@mui/icons-material";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+
+import plugins from "./plugins";
+import { detect as detectLocale, i18n as getI18n } from "./i18n";
+import store from "./store";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+const lang = detectLocale();
+const i18n = getI18n(lang);
+
+const NotFound = loadable(() => import("./plugins/nut/404"), {
+  fallback: <RefreshOutlined />,
+});
+
+const Widget = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <IntlProvider messages={i18n.messages} locale={lang}>
+        <BrowserRouter basename={process.env.REACT_APP_BASE_URL}>
+          <Routes>
+            {plugins.routes.map((it) => {
+              const W = loadable(it.component, {
+                fallback: <RefreshOutlined />,
+              });
+              return <Route key={it.path} path={it.path} element={<W />} />;
+            })}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </IntlProvider>
+    </Provider>
   );
-}
+};
 
-export default App;
+export default Widget;

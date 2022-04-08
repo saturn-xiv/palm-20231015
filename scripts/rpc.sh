@@ -28,7 +28,7 @@ function generate_grpc() {
 
 function generate_grpc_web() {
     echo "generate code for grpc-web"
-    local target=$WORKSPACE/react-ant-design/src/protocols
+    local target=$WORKSPACE/dashboard/src/protocols
     if [ -d $target ]
     then
         rm -r $target
