@@ -1,5 +1,6 @@
 pub mod generate;
 pub mod graphql;
+pub mod rpc;
 pub mod web;
 pub mod worker;
 
@@ -59,6 +60,8 @@ pub enum SubCommand {
     I18nSync,
     #[clap(about = "Http Server")]
     Web,
+    #[clap(about = "gRPC Server")]
+    Rpc,
     #[clap(about = "Worker process")]
     Worker(Worker),
 }
@@ -189,6 +192,9 @@ pub async fn launch() -> Result<()> {
 
     if args.command == SubCommand::Web {
         return web::launch(&cfg).await;
+    }
+    if args.command == SubCommand::Rpc {
+        return rpc::launch(&cfg).await;
     }
     if let SubCommand::Worker(it) = args.command {
         worker::launch(&cfg, &it.queue).await?;

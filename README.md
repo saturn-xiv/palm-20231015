@@ -26,6 +26,8 @@ A total free education &amp; translation &amp; ops solution.
   CREATE DATABASE palm CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
   GRANT ALL PRIVILEGES ON palm.* TO 'www'@'localhost';
   FLUSH PRIVILEGES;
+  # fix caching_sha2_password could not be loaded
+  ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'change-me'
   ```
 
 ## Documents
@@ -40,6 +42,7 @@ A total free education &amp; translation &amp; ops solution.
 - [Web Tools API Portal](https://www.usps.com/business/web-tools-apis/)
 - [Reviewing address formats](https://help.shopify.com/en/manual/shipping/shopify-shipping/reviewing-address-formats)
 - [handlebars](https://handlebarsjs.com/guide/)
+- [Versioning gRPC services](https://docs.microsoft.com/en-us/aspnet/core/grpc/versioning?view=aspnetcore-6.0)
 
 ### UI
 
@@ -50,6 +53,7 @@ A total free education &amp; translation &amp; ops solution.
 ### Token
 
 - [Sign in with App Passwords](https://support.google.com/accounts/answer/185833?hl=en)
+- [Casbin is a powerful and efficient open-source access control library](https://casbin.org/docs/en/overview)
 
 ### Credits
 

@@ -2,7 +2,8 @@
 
 set -e
 
-yarn add dayjs \
+yarn add dayjs grpc-web \
+    google-protobuf @types/google-protobuf \
     js-cookie jwt-decode dinero.js@alpha video.js \
     react-intl react-router-dom@6 react-hook-form \
     @reduxjs/toolkit react-redux @types/react-redux redux-saga \

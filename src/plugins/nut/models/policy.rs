@@ -1,3 +1,4 @@
+use casbin::{prelude::*, Enforcer as CasbinEnforcer};
 use chrono::NaiveDateTime;
 use diesel::{delete, insert_into, prelude::*};
 use serde::Serialize;
@@ -10,6 +11,17 @@ use super::{
     resource::{Dao as ResourceDao, Item as Resouce},
     role::{Dao as RoleDao, Item as Role},
 };
+
+pub struct Enforcer {
+    enforcer: CasbinEnforcer,
+}
+impl Enforcer {
+    // pub async fn new(db: &Connection) -> Result<Self> {
+    //     let it = CasbinEnforcer::new().await?;
+    //     Ok(Self { enforcer: it })
+    // }
+}
+
 #[derive(Queryable, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {

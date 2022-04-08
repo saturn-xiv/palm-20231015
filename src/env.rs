@@ -47,6 +47,12 @@ pub struct Http {
     pub allow_origins: Vec<String>,
 }
 
+impl Http {
+    pub fn addr(&self) -> SocketAddr {
+        SocketAddr::new(IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1)), self.port)
+    }
+}
+
 impl Default for Http {
     fn default() -> Self {
         Self {
@@ -70,7 +76,7 @@ impl Rpc {
 
 impl Default for Rpc {
     fn default() -> Self {
-        Self { port: 8081 }
+        Self { port: 9999 }
     }
 }
 

@@ -3,7 +3,9 @@ pub mod graphql;
 pub mod handlers;
 pub mod models;
 pub mod schema;
+pub mod services;
 pub mod tasks;
+pub mod v1;
 
 use super::super::orm::postgresql::migration::Migration;
 

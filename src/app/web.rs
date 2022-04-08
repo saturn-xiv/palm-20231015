@@ -1,4 +1,3 @@
-use std::net::SocketAddr;
 use std::path::{Component, Path};
 
 use actix_cors::Cors;
@@ -35,7 +34,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let s3 = web::Data::new(cfg.s3.clone());
     let schema = web::Data::new(Schema::new(Query, Mutation, EmptySubscription::new()));
 
-    let addr = SocketAddr::from(([127, 0, 0, 1], cfg.http.port));
+    let addr = cfg.http.addr();
     info!("run on http://{addr}");
 
     let cookie_key = {
