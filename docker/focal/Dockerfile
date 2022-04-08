@@ -106,11 +106,15 @@ RUN zsh -c "source $HOME/.zshrc \
     && sdk install maven \
     && sdk install gradle"
 
+RUN git clone https://github.com/microsoft/vcpkg.git $HOME/local/vcpkg
+RUN echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.profile
+RUN zsh -c "source $HOME/.zshrc \
+    && $HOME/local/vcpkg/bootstrap-vcpkg.sh"
 
-ENV LIQUIBASE_VERSION "4.9.1"
-RUN mkdir -p $HOME/local/liquibase \
-    && cd $HOME/local/liquibase \
-    && wget -c https://github.com/liquibase/liquibase/releases/download/v${LIQUIBASE_VERSION}/liquibase-${LIQUIBASE_VERSION}.tar.gz -O - | tar -xz
+# ENV LIQUIBASE_VERSION "4.9.1"
+# RUN mkdir -p $HOME/local/liquibase \
+#     && cd $HOME/local/liquibase \
+#     && wget -c https://github.com/liquibase/liquibase/releases/download/v${LIQUIBASE_VERSION}/liquibase-${LIQUIBASE_VERSION}.tar.gz -O - | tar -xz
 
 # https://grpc.io/docs/languages/cpp/quickstart/
 # ENV GRPC_VERSION "v1.41.0"
