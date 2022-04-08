@@ -5,6 +5,8 @@ pub mod models;
 pub mod schema;
 pub mod services;
 pub mod tasks;
+
+#[allow(clippy::match_single_binding)]
 pub mod v1;
 
 use super::super::orm::postgresql::migration::Migration;
