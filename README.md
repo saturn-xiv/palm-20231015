@@ -19,16 +19,6 @@ A total free education &amp; translation &amp; ops solution.
 
 - Generate a random secret key: `openssl rand -base64 32`
 - Generate a random password: `pwgen 32 1`
-- mysql
-
-  ```sql
-  CREATE USER 'www'@'localhost' IDENTIFIED BY '123456';
-  CREATE DATABASE palm CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-  GRANT ALL PRIVILEGES ON palm.* TO 'www'@'localhost';
-  FLUSH PRIVILEGES;
-  # fix caching_sha2_password could not be loaded
-  ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'change-me'
-  ```
 
 ## Documents
 
