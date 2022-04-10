@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -7,18 +8,21 @@ import Stack from "@mui/material/Stack";
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 import { Helmet } from "react-helmet-async";
+import jwtDecode, { JwtPayload } from "jwt-decode";
 
-import { selectSiteInfo, IState as ISiteInfo } from "../reducers/site-info";
+import {
+  selectSiteInfo,
+  refresh as refreshSiteInfo,
+} from "../reducers/site-info";
 import { hide as hideSnackBar, selectSnackBar } from "../reducers/snack-bar";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { set as setLocale } from "../i18n";
+import api from "../api";
+import { getToken, signIn, signOut } from "../reducers/current-user";
+import { refresh as refreshSideBar } from "../reducers/side-bar";
 
 interface IProps {
   title: string;
-}
-
-interface IFetchResponse {
-  siteInfo: ISiteInfo;
 }
 
 const Widget = (props: IProps) => {
@@ -28,6 +32,22 @@ const Widget = (props: IProps) => {
   const onCloseNotificationBar = () => {
     dispatch(hideSnackBar());
   };
+
+  useEffect(() => {
+    if (site.languages.length === 0) {
+      api.nut.fetchLayout().then((it) => {
+        dispatch(refreshSiteInfo(it.siteInfo));
+        const token = getToken();
+        if (token !== null && it.userProfile) {
+          const decoded: any = jwtDecode<JwtPayload>(token);
+          dispatch(signIn({ id: decoded.aud, profile: it.userProfile }));
+        } else {
+          dispatch(signOut());
+        }
+        dispatch(refreshSideBar(it.sideBar));
+      });
+    }
+  });
   return (
     <Stack spacing={2} direction="row">
       <Helmet>

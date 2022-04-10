@@ -1,8 +1,4 @@
-import {
-  configureStore,
-  MiddlewareArray,
-  applyMiddleware,
-} from "@reduxjs/toolkit";
+import { configureStore, MiddlewareArray } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 
 import currentUser from "./reducers/current-user";

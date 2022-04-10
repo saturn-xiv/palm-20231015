@@ -26,7 +26,6 @@ import Typography from "@mui/material/Typography";
 
 import Copyright from "../Copyright";
 import { containerPadding } from "..";
-import { graphql } from "../../request";
 import LeftNavBar from "./LeftNavBar";
 
 const theme = createTheme();

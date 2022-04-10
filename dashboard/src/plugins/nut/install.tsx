@@ -1,9 +1,9 @@
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import SupervisorAccountOutlinedIcon from "@mui/icons-material/SupervisorAccountOutlined";
+import Stack from "@mui/material/Stack";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { useIntl } from "react-intl";
-import moment from "moment-timezone";
 import { useNavigate } from "react-router-dom";
 
 import Layout from "./users/NonSignInLayout";
@@ -12,17 +12,19 @@ import {
   EMAIL_VALIDATOR,
   PASSWORD_VALIDATOR,
 } from "../../components/form";
-import { graphql } from "../../request";
-import { detect as getLocale } from "../../i18n";
-import { IFormData as IUserFormData } from "./users/sign-up";
 import { USERS_SIGN_IN_PATH } from ".";
-import api from "../../api";
-
-export interface IFormData extends IUserFormData {}
+import postInstall, { IFormData } from "../../api/nut/postInstall";
+import { useAppDispatch } from "../../hooks";
+import {
+  success as showSuccess,
+  error as showError,
+} from "../../reducers/snack-bar";
+import Captcha from "../../components/Captcha";
 
 const Widget = () => {
   const intl = useIntl();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const {
     control,
@@ -36,45 +38,20 @@ const Widget = () => {
       email: "",
       password: "",
       passwordConfirmation: "",
+      captcha: "",
     },
   });
   const onSubmit: SubmitHandler<IFormData> = (data) => {
-    api.nut
-      .postSiteInstall(data)
+    postInstall(data)
       .then(() => {
-        console.log("aaa");
+        dispatch(
+          showSuccess([intl.formatMessage({ id: "flashes.successed" })])
+        );
+        navigate(USERS_SIGN_IN_PATH);
       })
       .catch((e) => {
-        console.log(e);
+        dispatch(showError([e.message]));
       });
-    //  TODO
-    // graphql(
-    //   `
-    //     mutation PostForm($user: UserSignUpRequest!) {
-    //       install(form: $user) {
-    //         createdAt
-    //       }
-    //     }
-    //   `,
-    //   {
-    //     user: {
-    //       nickName: data.nickName,
-    //       realName: data.realName,
-    //       email: data.email,
-    //       password: data.password,
-    //       lang: getLocale(),
-    //       timeZone: moment.tz.guess(),
-    //       home: document.location.origin,
-    //     },
-    //   },
-    //   () => {
-    //     dispatch(
-    //       showSuccess([intl.formatMessage({ id: "flashes.successed" })])
-    //     );
-    //     navigate(USERS_SIGN_IN_PATH);
-    //   },
-    //   (items) => dispatch(showError(items))
-    // );
   };
   return (
     <Layout
@@ -171,6 +148,28 @@ const Widget = () => {
             />
           )}
         />
+      </Grid>
+      <Grid item>
+        <Stack spacing={2} direction="row">
+          <Controller
+            name="captcha"
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <TextField
+                required
+                label={intl.formatMessage({ id: "fields.captcha" })}
+                error={errors.realName !== undefined}
+                helperText={
+                  errors.realName &&
+                  intl.formatMessage({ id: "helpers.required" })
+                }
+                {...field}
+              />
+            )}
+          />
+          <Captcha />
+        </Stack>
       </Grid>
     </Layout>
   );
