@@ -2,6 +2,13 @@
 
 ## PostgreSql
 
+- setup uuid
+
+  ```sql
+  \c palm
+  CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+  ```
+
 - backup
 
   ```bash

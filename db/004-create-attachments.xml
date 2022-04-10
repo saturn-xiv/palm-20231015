@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
+
+    <changeSet id="20220410130822" author="jeremy.zheng" labels="create-attachments">
+
+        <createTable tableName="attachments">
+            <column name="id" type="uuid" defaultValueComputed="uuid_generate_v4()">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="user_id" type="uuid">
+                <constraints nullable="false" />
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="size" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="content_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="region" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="status" type="varchar(16)">
+                <constraints nullable="false" />
+            </column>
+            <column name="version" type="int" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="attachments" indexName="idx_attachments_content_type">
+            <column name="content_type" />
+        </createIndex>
+        <createIndex tableName="attachments" indexName="idx_attachments_region">
+            <column name="region" />
+        </createIndex>
+        <createIndex tableName="attachments" indexName="idx_attachments_status">
+            <column name="status" />
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>
