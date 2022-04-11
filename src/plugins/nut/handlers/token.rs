@@ -17,7 +17,7 @@ pub struct Query {
 }
 
 impl Token {
-    fn detect(req: &HttpRequest) -> Option<String> {
+    pub fn detect(req: &HttpRequest) -> Option<String> {
         let key = "token";
         // 1. Check header
         if let Some(it) = req.headers().get(AUTHORIZATION) {

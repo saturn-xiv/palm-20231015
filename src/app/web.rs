@@ -70,7 +70,13 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                     .allowed_header(AUTHORIZATION)
                     .allowed_header(ACCEPT_LANGUAGE)
                     .allowed_header(COOKIE)
-                    .allowed_methods(vec![Method::OPTIONS, Method::POST, Method::GET])
+                    .allowed_methods(vec![
+                        Method::OPTIONS,
+                        Method::PATCH,
+                        Method::PUT,
+                        Method::POST,
+                        Method::GET,
+                    ])
                     .supports_credentials()
                     .max_age(Duration::hours(1).num_seconds() as usize),
             )
@@ -95,8 +101,11 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                     .name(format!("{}.id", NAME))
                     .secure(is_prod),
             ))
-            .service(web::scope("/api").service(nut::controllers::api::layout::get))
-            .service(nut::controllers::attachments::create)
+            .service(
+                web::scope("/api")
+                    .service(nut::controllers::api::attachments::create)
+                    .service(nut::controllers::api::layout::get),
+            )
             .service(nut::controllers::captcha::get)
             .service(nut::controllers::sitemap::index)
             .service(nut::controllers::sitemap::by_lang)

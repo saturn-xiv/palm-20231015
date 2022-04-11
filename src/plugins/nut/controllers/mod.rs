@@ -1,5 +1,4 @@
 pub mod api;
-pub mod attachments;
 pub mod captcha;
 pub mod home;
 pub mod sitemap;
@@ -30,7 +29,7 @@ pub async fn robots_txt() -> impl Responder {
 
 #[get("/{lang}/rss.xml")]
 pub async fn rss_xml(db: web::Data<DbPool>, _params: web::Path<String>) -> Result<impl Responder> {
-    let db = db.get().map_err(ErrorInternalServerError)?;
+    let db = try_web!(db.get())?;
     let _db = db.deref();
 
     let mut buffer = Vec::new();

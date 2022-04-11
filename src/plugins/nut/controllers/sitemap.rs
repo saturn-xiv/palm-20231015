@@ -61,7 +61,7 @@ impl ToXml for Sitemap {
 
 #[get("/sitemap.xml")]
 pub async fn index(db: web::Data<DbPool>) -> Result<impl Responder> {
-    let db = db.get().map_err(ErrorInternalServerError)?;
+    let db = try_web!(db.get())?;
     let _db = db.deref();
     // TODO
     Ok("sitemap.xml")
@@ -78,17 +78,21 @@ pub async fn google(
     (db, aes): (web::Data<DbPool>, web::Data<Aes>),
     params: web::Path<(String,)>,
 ) -> WebResult<impl Responder> {
-    let db = db.get().map_err(ErrorInternalServerError)?;
+    let db = try_web!(db.get())?;
     let db = db.deref();
     let params = params.into_inner();
     let aes = aes.deref();
     let aes = aes.deref();
-    let it: GoogleRequest = SettingDao::get(db, aes, &GoogleRequest::KEY.to_string(), None)
-        .map_err(ErrorInternalServerError)?;
+    let it: GoogleRequest = try_web!(SettingDao::get(
+        db,
+        aes,
+        &GoogleRequest::KEY.to_string(),
+        None
+    ))?;
     if params.0 != it.site_verify_code {
         return Err(ErrorBadRequest("bad google verify site id"));
     }
-    let body = it.render().map_err(ErrorInternalServerError)?;
+    let body = try_web!(it.render())?;
 
     Ok(HttpResponse::Ok()
         .content_type(ContentType::html())
@@ -100,17 +104,21 @@ pub async fn baidu(
     (db, aes): (web::Data<DbPool>, web::Data<Aes>),
     params: web::Path<(String,)>,
 ) -> WebResult<impl Responder> {
-    let db = db.get().map_err(ErrorInternalServerError)?;
+    let db = try_web!(db.get())?;
     let db = db.deref();
     let params = params.into_inner();
     let aes = aes.deref();
     let aes = aes.deref();
-    let it: BaiduRequest = SettingDao::get(db, aes, &BaiduRequest::KEY.to_string(), None)
-        .map_err(ErrorInternalServerError)?;
+    let it: BaiduRequest = try_web!(SettingDao::get(
+        db,
+        aes,
+        &BaiduRequest::KEY.to_string(),
+        None
+    ))?;
     if params.0 != it.site_verify_code {
         return Err(ErrorBadRequest("bad baidu verify site id"));
     }
-    let body = it.render().map_err(ErrorInternalServerError)?;
+    let body = try_web!(it.render())?;
 
     Ok(HttpResponse::Ok()
         .content_type(ContentType::html())

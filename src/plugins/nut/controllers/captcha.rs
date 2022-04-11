@@ -17,9 +17,18 @@ pub async fn get(session: Session, id: Identity) -> WebResult<impl Responder> {
         (0..4).map(|_| rng.sample(Alphanumeric) as char).collect()
     };
     let code = code.to_uppercase();
-    let key = type_name::<Captcha>();
+
+    if let Some(count) = session.get::<i32>("counter")? {
+        debug!("SESSION value: {}", count);
+        session.insert("counter", count + 1)?;
+    } else {
+        session.insert("counter", 1)?;
+    }
+
+    // let key = type_name::<Captcha>();
+    let key = "aaa";
     debug!(
-        "{:?}\n{:?}\n {:?}\n {:?} => {}",
+        "identity {:?}\nsession status {:?}\nsession entries {:?}\nsession get {:?}\nnew code {}",
         id.identity(),
         session.status(),
         session.entries(),
@@ -35,7 +44,7 @@ pub async fn get(session: Session, id: Identity) -> WebResult<impl Responder> {
         height: 32,
         gap: 5,
     };
-    let buf = captcha.png().map_err(ErrorInternalServerError)?;
+    let buf = try_web!(captcha.png())?;
 
     let it = HttpResponse::Ok()
         .insert_header(ContentType::png())

@@ -72,12 +72,12 @@ pub async fn by_lang(
     (db, cache, aes): (web::Data<DbPool>, web::Data<CachePool>, web::Data<Aes>),
     params: web::Path<String>,
 ) -> WebResult<impl Responder> {
-    let db = db.get().map_err(ErrorInternalServerError)?;
+    let db = try_web!(db.get())?;
     let db = db.deref();
-    let mut ch = cache.get().map_err(ErrorInternalServerError)?;
+    let mut ch = try_web!(cache.get())?;
     let ch = ch.deref_mut();
     let aes = aes.deref();
     let aes = aes.deref();
     let lang = params.into_inner();
-    render(db, ch, aes, &HomeByLang {}, &lang).map_err(ErrorInternalServerError)
+    try_web!(render(db, ch, aes, &HomeByLang {}, &lang))
 }

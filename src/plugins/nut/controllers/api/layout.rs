@@ -37,22 +37,21 @@ pub async fn get(
     token: Token,
     lang: Locale,
 ) -> WebResult<impl Responder> {
-    let db = db.get().map_err(ErrorInternalServerError)?;
+    let db = try_web!(db.get())?;
     let db = db.deref();
     let jwt = jwt.deref();
     let user = token.current_user(db, jwt).ok();
-    let mut ch = cache.get().map_err(ErrorInternalServerError)?;
+    let mut ch = try_web!(cache.get())?;
     let ch = ch.deref_mut();
     let enf = enf.deref();
     let aes = aes.deref();
     let aes = aes.deref();
-    let it = Layout::new(&user, db, ch, enf, aes, &lang.to_string())
-        .await
-        .map_err(ErrorInternalServerError)?;
+    let it = try_web!(Layout::new(&user, db, ch, enf, aes, &lang.to_string()).await)?;
     Ok(web::Json(it))
 }
 
 #[derive(Serialize, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
 pub struct Layout {
     pub side_bar: Vec<Menu>,
     pub site_info: Site,
@@ -60,6 +59,7 @@ pub struct Layout {
 }
 
 #[derive(Serialize, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
 pub struct UserProfile {
     pub nick_name: String,
     pub real_name: String,
@@ -125,6 +125,7 @@ impl Layout {
 }
 
 #[derive(Serialize, Default, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
 pub struct Menu {
     to: String,
     label: Option<String>,
@@ -203,6 +204,7 @@ impl fmt::Display for Author {
 }
 
 #[derive(Deserialize, Serialize, Clone)]
+#[serde(rename_all = "camelCase")]
 pub struct Site {
     pub locale: String,
     pub languages: Vec<String>,
