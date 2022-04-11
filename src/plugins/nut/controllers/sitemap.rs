@@ -13,7 +13,7 @@ use xml::writer::{EventWriter, Result as XmlWriterResult, XmlEvent};
 use super::super::super::super::{
     crypto::Aes, orm::postgresql::Pool as DbPool, settings::Dao as SettingDao, ToXml,
 };
-use super::super::graphql::site::{baidu::BaiduRequest, google::GoogleRequest};
+use super::api::admin::site::{baidu::Form as BaiduRequest, google::Form as GoogleRequest};
 
 pub struct Item {}
 

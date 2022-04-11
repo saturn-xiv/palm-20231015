@@ -5,6 +5,7 @@
 - setup uuid
 
   ```sql
+  CREATE DATABASE palm;
   \c palm
   CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
   ```

@@ -1,14 +1,11 @@
-use std::any::type_name;
 use std::fmt;
-use std::ops::{Deref, DerefMut};
 
 use chrono::{Datelike, Duration, Utc};
-use juniper::GraphQLObject;
 use redis::Connection as Cache;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
-use super::super::{
+use super::super::super::super::{
     cache::Provider as CacheProvider,
     crypto::Secret,
     i18n::{locale::Dao as LocaleDao, I18n},
@@ -16,22 +13,16 @@ use super::super::{
     settings::Dao as SettingDao,
     Result,
 };
-use super::nut::{
-    graphql::Context,
-    models::{
-        role::{Dao as RoleDao, Item as Role},
-        user::Item as User,
-    },
-};
+use super::super::models::user::Item as User;
 
-#[derive(GraphQLObject, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct Layout {
     pub side_bar: Vec<Menu>,
     pub site_info: Site,
     pub user_profile: Option<UserProfile>,
 }
 
-#[derive(GraphQLObject, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct UserProfile {
     pub nick_name: String,
     pub real_name: String,
@@ -55,34 +46,6 @@ impl From<User> for UserProfile {
 
 impl Layout {
     const KEY: &'static str = "layout://";
-
-    pub fn build(ctx: &Context, lang: &Option<String>) -> Result<Layout> {
-        let db = ctx.db.get()?;
-        let db = db.deref();
-        let jwt = ctx.jwt.deref();
-
-        let user = ctx.token.current_user(db, jwt);
-
-        let lang = lang.clone().unwrap_or_else(|| match user {
-            Ok(ref it) => it.lang.clone(),
-            Err(_) => ctx.lang.clone(),
-        });
-
-        let enc = ctx.aes.deref();
-        let mut ch = ctx.cache.get()?;
-        let ch = ch.deref_mut();
-        let it = Layout::new(
-            &match user {
-                Ok(user) => Some(user),
-                Err(_) => None,
-            },
-            db,
-            ch,
-            enc,
-            &lang,
-        )?;
-        Ok(it)
-    }
 
     pub fn new<S: Secret>(
         user: &Option<User>,
@@ -120,7 +83,7 @@ impl Layout {
     }
 }
 
-#[derive(GraphQLObject, Serialize, Default, Deserialize)]
+#[derive(Serialize, Default, Deserialize)]
 pub struct Menu {
     to: String,
     label: Option<String>,
@@ -132,8 +95,8 @@ impl Menu {
         let mut items = Vec::new();
 
         let is_admin = {
-            let role = RoleDao::by_code(db, Role::ADMINISTRATOR)?;
-            RoleDao::has(db, role.id, type_name::<User>(), user)
+            // TODO
+            true
         };
 
         let mut settings = Menu {
@@ -182,7 +145,7 @@ impl Menu {
     }
 }
 
-#[derive(GraphQLObject, Deserialize, Serialize, Debug, Default)]
+#[derive(Deserialize, Serialize, Debug, Default)]
 pub struct Author {
     pub email: String,
     pub name: String,
@@ -194,7 +157,7 @@ impl fmt::Display for Author {
     }
 }
 
-#[derive(GraphQLObject, Deserialize, Serialize)]
+#[derive(Deserialize, Serialize)]
 pub struct Site {
     pub locale: String,
     pub languages: Vec<String>,

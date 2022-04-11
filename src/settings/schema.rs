@@ -1,12 +1,12 @@
 table! {
     settings (id) {
         id -> Uuid,
-        user_id -> Nullable<Uuid>,
         key -> Varchar,
-        value -> Bytea,
+        user_id -> Nullable<Uuid>,
         salt -> Nullable<Bytea>,
+        value -> Bytea,
         version -> Int4,
-        created_at -> Timestamp,
         updated_at -> Timestamp,
+        created_at -> Timestamp,
     }
 }

@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
-use juniper::GraphQLObject;
+use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 use yaml_rust::{Yaml, YamlLoader};
 
@@ -28,7 +28,7 @@ lazy_static! {
     };
 }
 
-#[derive(Queryable, GraphQLObject)]
+#[derive(Queryable, Serialize, Deserialize)]
 pub struct Item {
     pub id: Uuid,
     pub lang: String,

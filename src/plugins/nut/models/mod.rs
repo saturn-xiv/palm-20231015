@@ -1,23 +1,7 @@
-pub mod address;
 pub mod attachment;
-pub mod category;
-pub mod contact;
-pub mod friend_link;
-pub mod group;
-pub mod leave_word;
 pub mod log;
-pub mod notification;
-pub mod operation;
-pub mod page_content;
-pub mod policy;
-pub mod rating_log;
-pub mod resource;
-pub mod role;
-pub mod tag;
 pub mod user;
-pub mod view_counter;
 
-use std::default::Default;
 use std::fmt;
 use std::str::FromStr;
 

@@ -1,4 +1,3 @@
-use std::any::type_name;
 use std::fmt;
 
 use chrono::{NaiveDateTime, Utc};
@@ -17,7 +16,6 @@ use super::super::super::super::{
     HttpError, Result,
 };
 use super::super::schema::users;
-use super::{policy::Dao as PolicyDao, role::Item as Role};
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -96,18 +94,6 @@ impl fmt::Display for Item {
 }
 
 impl Item {
-    pub fn is_root(&self, db: &Connection) -> Result<()> {
-        if PolicyDao::is(db, type_name::<Item>(), self.id, Role::ROOT) {
-            return Ok(());
-        }
-        Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))
-    }
-    pub fn is_administrator(&self, db: &Connection) -> Result<()> {
-        if PolicyDao::is(db, type_name::<Item>(), self.id, Role::ADMINISTRATOR) {
-            return Ok(());
-        }
-        Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))
-    }
     pub fn available(&self) -> Result<()> {
         if self.deleted_at.is_some() {
             return Err(Box::new(HttpError(

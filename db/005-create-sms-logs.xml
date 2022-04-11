@@ -12,17 +12,10 @@
             <column name="from" type="varchar(16)">
                 <constraints nullable="false" />
             </column>
-            <column name="to" type="json">
+            <column name="to" type="varchar(16)">
                 <constraints nullable="false" />
             </column>
-            <column name="message" type="text">
-                <constraints nullable="false" />
-            </column>
-            <column name="response" type="text" />
-            <column name="version" type="int" defaultValue="0">
-                <constraints nullable="false" />
-            </column>
-            <column name="updated_at" type="datetime">
+            <column name="body" type="text">
                 <constraints nullable="false" />
             </column>
             <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">

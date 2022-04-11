@@ -55,11 +55,6 @@ impl Token {
             None,
         )))
     }
-    pub fn administrator(&self, db: &Db, jwt: &Jwt) -> Result<User> {
-        let user = self.current_user(db, jwt)?;
-        user.is_administrator(db)?;
-        Ok(user)
-    }
 }
 
 impl FromRequest for Token {

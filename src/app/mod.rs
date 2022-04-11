@@ -1,5 +1,4 @@
 pub mod generate;
-pub mod graphql;
 pub mod rpc;
 pub mod web;
 pub mod worker;
@@ -19,7 +18,6 @@ use super::{
     i18n::locale::{Dao as LocaleDao, MIGRATION as Locales},
     orm::postgresql::migration::Dao as MigrationDao,
     parser::from_toml,
-    plugins,
     settings::MIGRATION as Settings,
     Result, BANNER, BUILD_TIME, GIT_VERSION, HOMEPAGE,
 };
@@ -135,12 +133,7 @@ pub async fn launch() -> Result<()> {
         // https://en.wikibooks.org/wiki/Ruby_on_Rails/ActiveRecord/Migrations
 
         {
-            let items = vec![
-                Locales.deref(),
-                Settings.deref(),
-                plugins::nut::MIGRATION.deref(),
-                plugins::twilio::MIGRATION.deref(),
-            ];
+            let items = vec![Locales.deref(), Settings.deref()];
             db.load(&items)?;
 
             if args.command == SubCommand::DbMigrate {

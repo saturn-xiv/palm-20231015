@@ -62,19 +62,16 @@ function generate_diesel_mysql() {
 
 function generate_diesel_postgresql() {
     echo "generate diesel schema for postgresql"
-    local DATABASE_URL=postgres://postgres@127.0.0.1:5432/palm
     
-    # diesel print-schema -o schema_migrations > src/orm/postgresql/schema.rs
-    diesel print-schema -o settings > src/settings/schema.rs
-    diesel print-schema -o locales > src/i18n/schema.rs
-    diesel print-schema -o users logs policies \
-        attachments > src/plugins/nut/schema.rs
-    diesel print-schema -o sms_logs > src/plugins/twilio/schema.rs
+    DATABASE_URL=$1 diesel print-schema -o settings > src/settings/schema.rs
+    DATABASE_URL=$1 diesel print-schema -o locales > src/i18n/schema.rs
+    DATABASE_URL=$1 diesel print-schema -o users logs attachments > src/plugins/nut/schema.rs
+    DATABASE_URL=$1 diesel print-schema -o sms_logs > src/plugins/twilio/schema.rs
 }
 
 # ----------------------------------------------------------
 
-generate_diesel_postgresql
+generate_diesel_postgresql "postgres://postgres@127.0.0.1:5432/palm"
 generate_diesel_mysql "mysql://root:apee1uo1Eique8A.e@127.0.0.1:3306"
 
 

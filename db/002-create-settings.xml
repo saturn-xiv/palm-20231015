@@ -12,7 +12,7 @@
             <column name="key" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="user_id" type="int" />
+            <column name="user_id" type="uuid" />
             <column name="salt" type="bytea" />
             <column name="value" type="bytea">
                 <constraints nullable="false" />

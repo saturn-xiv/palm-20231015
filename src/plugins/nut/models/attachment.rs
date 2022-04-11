@@ -7,8 +7,8 @@ use serde::Serialize;
 use uuid::Uuid;
 
 use super::super::super::super::{orm::postgresql::Connection, Result};
-use super::super::schema::{attachment_usages, attachments};
-use super::{Resource, Status};
+use super::super::schema::attachments;
+use super::Status;
 
 #[derive(Queryable, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -68,10 +68,6 @@ pub trait Dao {
     fn all(&self) -> Result<Vec<Item>>;
     fn by_user(&self, user: Uuid) -> Result<Vec<Item>>;
     fn delete(&self, id: Uuid) -> Result<()>;
-
-    fn usage(&self, id: Uuid) -> Result<i64>;
-    fn associate(&self, id: Uuid, resource: &Resource) -> Result<()>;
-    fn unassociate(&self, id: Uuid, resource: &Resource) -> Result<()>;
 }
 
 impl Dao for Connection {
@@ -132,47 +128,7 @@ impl Dao for Connection {
     }
 
     fn delete(&self, id: Uuid) -> Result<()> {
-        delete(
-            attachment_usages::dsl::attachment_usages
-                .filter(attachment_usages::dsl::attachment_id.eq(id)),
-        )
-        .execute(self)?;
         delete(attachments::dsl::attachments.filter(attachments::dsl::id.eq(id))).execute(self)?;
-        Ok(())
-    }
-    fn usage(&self, id: Uuid) -> Result<i64> {
-        let cnt: i64 = attachment_usages::dsl::attachment_usages
-            .filter(attachment_usages::dsl::attachment_id.eq(id))
-            .count()
-            .get_result(self)?;
-        Ok(cnt)
-    }
-    fn associate(&self, id: Uuid, resource: &Resource) -> Result<()> {
-        let cnt: i64 = attachment_usages::dsl::attachment_usages
-            .filter(attachment_usages::dsl::attachment_id.eq(id))
-            .filter(attachment_usages::dsl::resource_type.eq(&resource.type_))
-            .filter(attachment_usages::dsl::resource_id.eq(resource.id))
-            .count()
-            .get_result(self)?;
-        if cnt == 0 {
-            insert_into(attachment_usages::dsl::attachment_usages)
-                .values((
-                    attachment_usages::dsl::attachment_id.eq(id),
-                    attachment_usages::dsl::resource_id.eq(resource.id),
-                    attachment_usages::dsl::resource_type.eq(&resource.type_),
-                ))
-                .execute(self)?;
-        }
-        Ok(())
-    }
-    fn unassociate(&self, id: Uuid, resource: &Resource) -> Result<()> {
-        delete(
-            attachment_usages::dsl::attachment_usages
-                .filter(attachment_usages::dsl::attachment_id.eq(id))
-                .filter(attachment_usages::dsl::resource_type.eq(&resource.type_))
-                .filter(attachment_usages::dsl::resource_id.eq(resource.id)),
-        )
-        .execute(self)?;
         Ok(())
     }
 }

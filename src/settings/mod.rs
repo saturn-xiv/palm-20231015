@@ -26,10 +26,10 @@ lazy_static! {
 #[derive(Queryable)]
 pub struct Item {
     pub id: Uuid,
-    pub user_id: Option<Uuid>,
     pub key: String,
-    pub value: Vec<u8>,
+    pub user_id: Option<Uuid>,
     pub salt: Option<Vec<u8>>,
+    pub value: Vec<u8>,
     pub version: i32,
     pub updated_at: NaiveDateTime,
     pub created_at: NaiveDateTime,
@@ -73,7 +73,7 @@ impl Dao for Connection {
         };
 
         let val = match it.salt {
-            Some(salt) => e.decrypt(&it.value, &salt)?,
+            Some(ref salt) => e.decrypt(&it.value, salt)?,
             None => it.value,
         };
         Ok(flexbuffers::from_slice(val.as_slice())?)

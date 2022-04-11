@@ -11,7 +11,6 @@ use hyper::{
     header::{ACCEPT_LANGUAGE, AUTHORIZATION, CONTENT_TYPE, COOKIE},
     Method,
 };
-use juniper::EmptySubscription;
 
 use super::super::{
     crypto::{Aes, Hmac},
@@ -20,10 +19,12 @@ use super::super::{
     plugins::nut,
     Result, NAME,
 };
-use super::graphql::{self, mutation::Mutation, query::Query, Schema};
 
 pub async fn launch(cfg: &Config) -> Result<()> {
-    let pgsql = web::Data::new(cfg.postgresql.open()?);
+    let pg_pool = cfg.postgresql.open()?;
+
+    let enforcer = web::Data::new(nut::enforcer(pg_pool.clone()).await?);
+    let pgsql = web::Data::new(pg_pool);
     let mysql = web::Data::new(cfg.mysql.open()?);
     let cache = web::Data::new(cfg.redis.open()?);
     let aes = web::Data::new(Aes::new(&cfg.secrets.0)?);
@@ -32,7 +33,6 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let queue = web::Data::new(cfg.rabbitmq.open());
     let aws = web::Data::new(cfg.aws.clone());
     let s3 = web::Data::new(cfg.s3.clone());
-    let schema = web::Data::new(Schema::new(Query, Mutation, EmptySubscription::new()));
 
     let addr = cfg.http.addr();
     info!("run on http://{addr}");
@@ -49,6 +49,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
 
     HttpServer::new(move || {
         App::new()
+            .app_data(enforcer.clone())
             .app_data(pgsql.clone())
             .app_data(mysql.clone())
             .app_data(cache.clone())
@@ -58,7 +59,6 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .app_data(queue.clone())
             .app_data(aws.clone())
             .app_data(s3.clone())
-            .app_data(schema.clone())
             .wrap(middleware::Logger::default())
             .wrap(
                 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
@@ -94,15 +94,6 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                     .name(format!("{}.id", NAME))
                     .secure(is_prod),
             ))
-            .service(
-                web::resource(graphql::GRAPHQL_ROUTE)
-                    .route(web::post().to(graphql::index))
-                    .route(web::get().to(graphql::index)),
-            )
-            .service(
-                web::resource(graphql::PLAYGROUND_ROUTE).route(web::get().to(graphql::playground)),
-            )
-            .service(web::resource(graphql::GRAPHIQL_ROUTE).route(web::get().to(graphql::graphiql)))
             .service(nut::controllers::attachments::create)
             .service(nut::controllers::captcha::get)
             .service(nut::controllers::sitemap::index)

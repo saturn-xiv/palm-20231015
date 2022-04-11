@@ -24,7 +24,6 @@ mime = "0.3"
 language-tags = "0.3"
 actix-identity = "0.4"
 actix-multipart = "0.4"
-juniper_actix = "0.4"
 log = "0.4"
 num-complex = "0.4"
 yaml-rust = "0.4"
@@ -89,7 +88,6 @@ features = ["v4", "serde"]
 version = "0.9"
 features = ["vendored"]
 
-
 [dependencies.askama]
 version = "0.11"
 # features = ["with-actix-web"]
@@ -106,10 +104,6 @@ features = ["full"]
 [dependencies.validator]
 version = "0.14"
 features = ["derive", "phone", "card", "unic"]
-
-[dependencies.juniper]
-version = "0.15"
-features = ["scalar-naivetime"]
 
 [dependencies.cookie]
 version = "0.16"
@@ -160,6 +154,10 @@ version = "*"
 [dependencies.imageproc]
 git = "https://github.com/image-rs/imageproc.git"
 rev = "b794265"
+
+[dependencies.diesel-adapter]
+git = "https://github.com/saturn-xiv/diesel-adapter.git"
+rev = "b76f84f"
 
 [build-dependencies]
 tonic-build = "0.7"

@@ -1,12 +1,11 @@
 use chrono::{NaiveDate, Utc};
-use juniper::GraphQLObject;
 use serde::{Deserialize, Serialize};
 use xml::reader::{EventReader, XmlEvent};
 
 use super::Result;
 
 // https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list_one.xml
-#[derive(Serialize, Deserialize, GraphQLObject, Default, Debug, Clone)]
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Currency {
     pub country: String,
@@ -17,7 +16,7 @@ pub struct Currency {
     pub unit: Option<i32>,
 }
 
-#[derive(GraphQLObject, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct Iso4217 {
     pub items: Vec<Currency>,
     pub published_at: NaiveDate,
