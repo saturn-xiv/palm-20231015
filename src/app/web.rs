@@ -1,4 +1,5 @@
 use std::path::{Component, Path};
+use std::sync::RwLock;
 
 use actix_cors::Cors;
 use actix_identity::{CookieIdentityPolicy, IdentityService};
@@ -23,7 +24,7 @@ use super::super::{
 pub async fn launch(cfg: &Config) -> Result<()> {
     let pg_pool = cfg.postgresql.open()?;
 
-    let enforcer = web::Data::new(nut::enforcer(pg_pool.clone()).await?);
+    let enforcer = web::Data::new(RwLock::new(nut::policy::enforcer(pg_pool.clone()).await?));
     let pgsql = web::Data::new(pg_pool);
     let mysql = web::Data::new(cfg.mysql.open()?);
     let cache = web::Data::new(cfg.redis.open()?);
@@ -94,6 +95,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                     .name(format!("{}.id", NAME))
                     .secure(is_prod),
             ))
+            .service(web::scope("/api").service(nut::controllers::api::layout::get))
             .service(nut::controllers::attachments::create)
             .service(nut::controllers::captcha::get)
             .service(nut::controllers::sitemap::index)

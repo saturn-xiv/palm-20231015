@@ -1,28 +1,65 @@
 use std::fmt;
+use std::ops::{Deref, DerefMut};
+use std::sync::RwLock;
 
+use actix_web::{error::ErrorInternalServerError, get, web, Responder, Result as WebResult};
+use casbin::{prelude::*, Enforcer};
 use chrono::{Datelike, Duration, Utc};
 use redis::Connection as Cache;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
-use super::super::super::super::{
-    cache::Provider as CacheProvider,
-    crypto::Secret,
+use super::super::super::super::super::{
+    cache::{redis::Pool as CachePool, Provider as CacheProvider},
+    crypto::{Aes, Secret},
     i18n::{locale::Dao as LocaleDao, I18n},
-    orm::postgresql::Connection as Db,
+    jwt::Jwt,
+    orm::postgresql::{Connection as Db, Pool as DbPool},
     settings::Dao as SettingDao,
     Result,
 };
-use super::super::models::user::Item as User;
+use super::super::super::{
+    handlers::{locale::Locale, token::Token},
+    models::user::Item as User,
+    policy,
+};
 
-#[derive(Serialize, Deserialize)]
+#[allow(clippy::type_complexity)]
+#[get("/layout")]
+pub async fn get(
+    (db, cache, aes, enf, jwt): (
+        web::Data<DbPool>,
+        web::Data<CachePool>,
+        web::Data<Aes>,
+        web::Data<RwLock<Enforcer>>,
+        web::Data<Jwt>,
+    ),
+    token: Token,
+    lang: Locale,
+) -> WebResult<impl Responder> {
+    let db = db.get().map_err(ErrorInternalServerError)?;
+    let db = db.deref();
+    let jwt = jwt.deref();
+    let user = token.current_user(db, jwt).ok();
+    let mut ch = cache.get().map_err(ErrorInternalServerError)?;
+    let ch = ch.deref_mut();
+    let enf = enf.deref();
+    let aes = aes.deref();
+    let aes = aes.deref();
+    let it = Layout::new(&user, db, ch, enf, aes, &lang.to_string())
+        .await
+        .map_err(ErrorInternalServerError)?;
+    Ok(web::Json(it))
+}
+
+#[derive(Serialize, Deserialize, Clone)]
 pub struct Layout {
     pub side_bar: Vec<Menu>,
     pub site_info: Site,
     pub user_profile: Option<UserProfile>,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 pub struct UserProfile {
     pub nick_name: String,
     pub real_name: String,
@@ -47,32 +84,36 @@ impl From<User> for UserProfile {
 impl Layout {
     const KEY: &'static str = "layout://";
 
-    pub fn new<S: Secret>(
+    pub async fn new<S: Secret>(
         user: &Option<User>,
         db: &Db,
-        ch: &mut Cache,
+        _ch: &mut Cache,
+        enf: &RwLock<Enforcer>,
         enc: &S,
         lang: &str,
     ) -> Result<Self> {
-        let ttl = Duration::weeks(1).to_std()?;
-        let it = ch.get(
-            &match user {
-                Some(ref user) => format!("{}{}/{}", Self::KEY, lang, user.id),
-                None => format!("{}{}", Self::KEY, lang),
+        // TODO async trait
+        let _ttl = Duration::weeks(1).to_std()?;
+        let _key = &match user {
+            Some(ref user) => format!("{}{}/{}", Self::KEY, lang, user.id),
+            None => format!("{}{}", Self::KEY, lang),
+        };
+        let it = Self {
+            site_info: Site::new(db, enc, lang)?,
+            side_bar: match user {
+                Some(ref user) => Menu::side_bar(user.id, enf).await?,
+                None => Vec::new(),
             },
-            move || {
-                let it = Self {
-                    site_info: Site::new(db, enc, lang)?,
-                    side_bar: match user {
-                        Some(ref user) => Menu::side_bar(user.id, db)?,
-                        None => Vec::new(),
-                    },
-                    user_profile: user.as_ref().map(|user| user.clone().into()),
-                };
-                Ok(it)
-            },
-            &ttl,
-        )?;
+            user_profile: user.as_ref().map(|user| user.clone().into()),
+        };
+
+        // let it = ch.get(
+        // key,
+        //     move || {
+
+        //     },
+        //     &ttl,
+        // )?;
 
         Ok(it)
     }
@@ -83,7 +124,7 @@ impl Layout {
     }
 }
 
-#[derive(Serialize, Default, Deserialize)]
+#[derive(Serialize, Default, Deserialize, Clone)]
 pub struct Menu {
     to: String,
     label: Option<String>,
@@ -91,12 +132,16 @@ pub struct Menu {
 }
 
 impl Menu {
-    pub fn side_bar(user: Uuid, db: &Db) -> Result<Vec<Self>> {
+    pub async fn side_bar(user: Uuid, enf: &RwLock<Enforcer>) -> Result<Vec<Self>> {
         let mut items = Vec::new();
 
-        let is_admin = {
-            // TODO
-            true
+        let can_write_site = match enf.read() {
+            Ok(it) => it.enforce((
+                policy::by_user(user),
+                policy::Object::Site.to_string(),
+                policy::Action::Write.to_string(),
+            ))?,
+            Err(_) => false,
         };
 
         let mut settings = Menu {
@@ -113,7 +158,7 @@ impl Menu {
             ],
             ..Default::default()
         };
-        if is_admin {
+        if can_write_site {
             settings.items.push(Menu {
                 to: "/admin/site".to_string(),
                 ..Default::default()
@@ -145,7 +190,7 @@ impl Menu {
     }
 }
 
-#[derive(Deserialize, Serialize, Debug, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, Default)]
 pub struct Author {
     pub email: String,
     pub name: String,
@@ -157,7 +202,7 @@ impl fmt::Display for Author {
     }
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Clone)]
 pub struct Site {
     pub locale: String,
     pub languages: Vec<String>,

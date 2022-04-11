@@ -2,7 +2,6 @@ pub mod api;
 pub mod attachments;
 pub mod captcha;
 pub mod home;
-pub mod layout;
 pub mod sitemap;
 
 use std::ops::Deref;
