@@ -35,17 +35,22 @@ const Widget = (props: IProps) => {
 
   useEffect(() => {
     if (site.languages.length === 0) {
-      api.nut.fetchLayout().then((it) => {
-        dispatch(refreshSiteInfo(it.siteInfo));
-        const token = getToken();
-        if (token !== null && it.userProfile) {
-          const decoded: any = jwtDecode<JwtPayload>(token);
-          dispatch(signIn({ id: decoded.aud, profile: it.userProfile }));
-        } else {
-          dispatch(signOut());
-        }
-        dispatch(refreshSideBar(it.sideBar));
-      });
+      api.nut
+        .fetchLayout()
+        .then((it) => {
+          dispatch(refreshSiteInfo(it.siteInfo));
+          const token = getToken();
+          if (token !== null && it.userProfile) {
+            const decoded: any = jwtDecode<JwtPayload>(token);
+            dispatch(signIn({ id: decoded.aud, profile: it.userProfile }));
+          } else {
+            dispatch(signOut());
+          }
+          dispatch(refreshSideBar(it.sideBar));
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     }
   });
   return (
