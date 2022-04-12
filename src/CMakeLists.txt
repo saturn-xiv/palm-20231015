@@ -10,14 +10,18 @@ FetchContent_Declare(
   GIT_REPOSITORY  "https://github.com/casbin/casbin-cpp.git"
   GIT_TAG         "v1.50.0"
 )
-
+FetchContent_Declare(
+  soci
+  GIT_REPOSITORY  "https://github.com/SOCI/soci.git"
+  GIT_TAG         "v4.0.3"
+)
 # FetchContent_Declare(
 #   mariadbcpp
 #   GIT_REPOSITORY  "https://github.com/mariadb-corporation/mariadb-connector-cpp.git"
 #   GIT_TAG         "1.1.1"
 # )
 
-FetchContent_MakeAvailable(casbin)
+FetchContent_MakeAvailable(casbin soci)
 # ----------------
 
 target_include_directories(palm PUBLIC

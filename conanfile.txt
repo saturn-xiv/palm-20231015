@@ -5,6 +5,9 @@ zstd/1.5.2
 openssl/1.1.1n
 boost/1.78.0
 soci/4.0.3
+libpq/14.2
+libmysqlclient/8.0.25
+sqlite3/3.38.1
 mongo-cxx-driver/3.6.6
 hiredis/1.0.2
 cpr/1.7.2
@@ -19,6 +22,7 @@ flatbuffers/2.0.5
 rabbitmq-c/0.11.0
 cppzmq/4.8.1
 paho-mqtt-cpp/1.2.0
+#poco/1.11.1
 grpc/1.39.1
 serial/1.2.1
 fontconfig/2.13.93
