@@ -23,6 +23,11 @@ build_backend_by_conan() {
 
 build_backend() {
     echo "build $1@$2..."
+    if [[ $ID == "ubuntu" ]]
+    then
+        apt install -y libssl-dev:$1 libboost-all-dev:$1 libcurl-dev:$1 \
+            libpq-dev:$1 libmysqlclient-dev:$1 libsqlite3-dev:$1
+    fi
     mkdir -pv $WORKSPACE/build/$1-$2
     cd $WORKSPACE/build/$1-$2
     cmake $WORKSPACE -DCMAKE_BUILD_TYPE=$2 \
@@ -137,7 +142,7 @@ then
 elif [[ $ID == "arch" ]]
 then
     build_backend arch Debug
-    # build_backend arch Release
+    build_backend arch Release
 else
     echo "Unknowk os $ID"
     exit 1
