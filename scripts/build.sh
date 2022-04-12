@@ -16,7 +16,7 @@ build_backend() {
         --profile:host=$WORKSPACE/conan/profiles/$1 $WORKSPACE
     cmake $WORKSPACE -DCMAKE_BUILD_TYPE=$2 \
         -DCASBIN_BUILD_TEST=OFF -DCASBIN_BUILD_BENCHMARK=OFF -DCASBIN_BUILD_BINDINGS=OFF -DCASBIN_BUILD_PYTHON_BINDINGS=OFF \
-        -DCMAKE_TOOLCHAIN_FILE=$WORKSPACE/conan/toolchains/$1.cmake
+        -DCMAKE_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$1.cmake
     make -j
 }
 
