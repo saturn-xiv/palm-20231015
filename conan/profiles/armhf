@@ -1,6 +1,6 @@
 target=arm-linux-gnueabihf
 gcc_version=10
-clang_version=14
+clang_version=13
 
 [settings]
 os=Linux
