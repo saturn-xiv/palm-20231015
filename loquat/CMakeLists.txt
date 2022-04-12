@@ -6,10 +6,15 @@ add_library(loquat STATIC ${SOURCE_LIST})
 target_include_directories(loquat PUBLIC
   ${palm_SOURCE_DIR}/loquat/cpp/
 )
+target_link_directories(loquat PUBLIC
+  ${grpc_BINARY_DIR}
+  ${grpc_BINARY_DIR}/third_party/protobuf
+)
 
 target_link_libraries(loquat PUBLIC
-  dl crypt m 
-  ${CONAN_LIBS}
+  dl crypt m
+  ${ZLIB_LIBRARIES} ${OPENSSL_LIBRARIES}
+  protobuf grpc++ grpc++_reflection
 )
 
 source_group(

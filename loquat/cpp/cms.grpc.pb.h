@@ -47,7 +47,7 @@ class Cms final {
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
-  private:
+   private:
   };
   class Stub final : public StubInterface {
    public:

@@ -206,7 +206,7 @@ class User final {
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
-  private:
+   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::auth::v1::SignInResponse>* AsyncSignInRaw(::grpc::ClientContext* context, const ::palm::auth::v1::SignInRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::auth::v1::SignInResponse>* PrepareAsyncSignInRaw(::grpc::ClientContext* context, const ::palm::auth::v1::SignInRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncSignUpRaw(::grpc::ClientContext* context, const ::palm::auth::v1::SignUpRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -2956,7 +2956,7 @@ class Attachment final {
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
-  private:
+   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::auth::v1::AttachmentIndexResponse>* AsyncIndexRaw(::grpc::ClientContext* context, const ::google::protobuf::Duration& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::auth::v1::AttachmentIndexResponse>* PrepareAsyncIndexRaw(::grpc::ClientContext* context, const ::google::protobuf::Duration& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::auth::v1::AttachmentIndexResponse_Item>* AsyncShowRaw(::grpc::ClientContext* context, const ::palm::auth::v1::AttachmentShowRequest& request, ::grpc::CompletionQueue* cq) = 0;

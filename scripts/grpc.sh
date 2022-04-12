@@ -20,6 +20,7 @@ function build_grpc() {
     if [ -d $HOME/downloads/grpc ]
     then
         cd $HOME/downloads/grpc
+        git pull origin master
         git checkout $1
         git submodule update --init --recursive
     else

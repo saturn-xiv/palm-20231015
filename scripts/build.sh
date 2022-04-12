@@ -8,18 +8,35 @@ export WORKSPACE=$PWD
 export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
 export GCC_VERSION=10
 
-build_backend() {
+build_backend_by_conan() {
     echo "build $1@$2..."
     mkdir -pv $WORKSPACE/build/$1-$2
     cd $WORKSPACE/build/$1-$2
     conan install --build=missing --profile:build=default \
         --profile:host=$WORKSPACE/conan/profiles/$1 $WORKSPACE
     cmake $WORKSPACE -DCMAKE_BUILD_TYPE=$2 \
-        -DCASBIN_BUILD_TEST=OFF -DCASBIN_BUILD_BENCHMARK=OFF -DCASBIN_BUILD_BINDINGS=OFF -DCASBIN_BUILD_PYTHON_BINDINGS=OFF \
+        -DCASBIN_BUILD_TEST=OFF -DCASBIN_BUILD_BENCHMARK=OFF \
+        -DCASBIN_BUILD_BINDINGS=OFF -DCASBIN_BUILD_PYTHON_BINDINGS=OFF \
         -DCMAKE_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$1.cmake
     make -j
 }
 
+build_backend() {
+    echo "build $1@$2..."
+    mkdir -pv $WORKSPACE/build/$1-$2
+    cd $WORKSPACE/build/$1-$2
+    cmake $WORKSPACE -DCMAKE_BUILD_TYPE=$2 \
+        -DCASBIN_BUILD_TEST=OFF -DCASBIN_BUILD_BENCHMARK=OFF \
+        -DCASBIN_BUILD_BINDINGS=OFF -DCASBIN_BUILD_PYTHON_BINDINGS=OFF \
+        -DSOCI_SHARED=OFF -DSOCI_TESTS=OFF \
+        -DWITH_BOOST=ON -DWITH_MYSQL=ON -DWITH_MYSQL=ON -DWITH_SQLITE3=ON \
+        -DProtobuf_PROTOC_EXECUTABLE=$HOME/.local/bin/protoc \
+        -DgRPC_SSL_PROVIDER=package -DgRPC_ZLIB_PROVIDER=package \
+        -DgRPC_PROTOBUF_PROVIDER=package -DgRPC_PROTOBUF_PACKAGE_TYPE=module \
+        -DgRPC_BUILD_TESTS=OFF -DgRPC_BUILD_TESTS=OFF \
+        -DCMAKE_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$1.cmake
+    make -j
+}
 build_dashboard(){
     cd $WORKSPACE
     if [ ! -d node_modules ]

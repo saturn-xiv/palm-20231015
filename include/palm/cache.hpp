@@ -11,7 +11,7 @@
 #include <utility>
 #include <vector>
 
-#include <hiredis/hiredis.h>
+#include <hiredis.h>
 #include <boost/log/trivial.hpp>
 #include <boost/property_tree/ptree.hpp>
 

@@ -13,8 +13,8 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
+# include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+# conan_basic_setup()
 
 # --------------------------------------------------------
 execute_process(COMMAND git describe --tags --always --dirty
@@ -26,6 +26,7 @@ string(TIMESTAMP BUILD_TIME UTC)
 configure_file(include/palm/version.h.in ${PROJECT_SOURCE_DIR}/include/palm/version.hpp)
 # --------------------------------------------------------
 
+include(third.cmake)
 add_subdirectory(loquat)
 add_subdirectory(src)
 add_subdirectory(apps)
