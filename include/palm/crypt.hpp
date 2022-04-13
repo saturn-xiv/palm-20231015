@@ -7,6 +7,8 @@
 #include <unordered_map>
 #include <vector>
 
+#include <Poco/JWT/Signer.h>
+#include <Poco/JWT/Token.h>
 #include <grpcpp/grpcpp.h>
 #include <openssl/hmac.h>
 #include <openssl/md5.h>

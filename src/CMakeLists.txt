@@ -12,6 +12,22 @@ target_include_directories(palm PUBLIC
   ${soci_BINARY_DIR}/include
   ${rabbitmq_c_SOURCE_DIR}/librabbitmq
   ${cppcodec_SOURCE_DIR}
+  ${poco_SOURCE_DIR}/Foundation/include
+  ${poco_SOURCE_DIR}/Crypto/include
+  ${poco_SOURCE_DIR}/Net/include
+  ${poco_SOURCE_DIR}/JSON/include
+  ${poco_SOURCE_DIR}/JWT/include
+  ${poco_SOURCE_DIR}/ActiveRecord/include
+  ${poco_SOURCE_DIR}/Data/include
+  ${poco_SOURCE_DIR}/Data/SQLite/include
+  ${poco_SOURCE_DIR}/Data/MySQL/include
+  ${poco_SOURCE_DIR}/Data/PostgreSQL/include
+  ${poco_SOURCE_DIR}/Data/ODBC/include
+  ${poco_SOURCE_DIR}/Redis/include
+  ${poco_SOURCE_DIR}/MongoDB/include
+  ${poco_SOURCE_DIR}/XML/include
+  ${poco_SOURCE_DIR}/Zip/include
+  ${poco_SOURCE_DIR}/Util/include
 )
 target_link_directories(palm PUBLIC
   ${palm_BINARY_DIR}/lib
@@ -23,17 +39,26 @@ target_link_libraries(palm PUBLIC
   ${PostgreSQL_LIBRARIES} ${SQLite3_LIBRARIES}
   mysqlclient hiredis_static 
   loquat casbin
+  PocoActiveRecordd
 )
 
 if(CMAKE_BUILD_TYPE MATCHES Debug)
   target_link_libraries(palm PUBLIC 
     soci_cored soci_postgresqld soci_mysqld soci_sqlite3d
     rabbitmqd  
+    PocoJSONd PocoJWTd PocoCryptod PocoZipd PocoXMLd PocoEncodingsd
+    PocoFoundationd PocoNetd PocoUtild
+    PocoDatad PocoDataMySQLd PocoDataODBCd PocoDataPostgreSQLd PocoActiveRecordd
+    PocoRedisd PocoMongoDBd 
   )
 else()
   target_link_libraries(palm PUBLIC 
     soci_core soci_postgresql soci_mysql soci_sqlite3
     rabbitmq
+    PocoJSON PocoJWT PocoCrypto PocoZip PocoXML PocoEncodings
+    PocoFoundation PocoNet PocoUtil
+    PocoData PocoDataMySQL PocoDataODBC PocoDataPostgreSQL PocoActiveRecord
+    PocoRedis PocoMongoDB 
   )
 endif()
 

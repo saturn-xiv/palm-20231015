@@ -9,6 +9,10 @@
 #include <boost/log/trivial.hpp>
 #include <boost/property_tree/ptree.hpp>
 
+#include <Poco/Data/MySQL/Connector.h>
+#include <Poco/Data/PostgreSQL/Connector.h>
+#include <Poco/Data/SQLite/Connector.h>
+#include <Poco/Data/Session.h>
 #include <soci/boost-fusion.h>
 #include <soci/boost-gregorian-date.h>
 #include <soci/boost-optional.h>

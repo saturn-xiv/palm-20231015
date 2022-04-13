@@ -11,11 +11,13 @@
 #include <utility>
 #include <vector>
 
+#include <Poco/Redis/Client.h>
 #include <hiredis.h>
 #include <boost/log/trivial.hpp>
 #include <boost/property_tree/ptree.hpp>
 
 namespace palm {
+class Cache {};
 namespace redis {
 
 class Factory {
