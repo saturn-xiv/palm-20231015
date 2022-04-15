@@ -21,6 +21,7 @@ build_backend() {
         -DCMAKE_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$1.cmake
     make -j
 }
+
 build_dashboard(){
     cd $WORKSPACE
     if [ ! -d node_modules ]
