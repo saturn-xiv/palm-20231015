@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Poco/Data/SessionPool.h>
+
 #include "nut.grpc.pb.h"
 #include "palm/orm.hpp"
 
@@ -9,7 +11,9 @@ namespace nut {
 
 class SiteService final : public palm::nut::v1::Site::Service {
  public:
-  SiteService(std::shared_ptr<palm::orm::Factory> db) : db(db) {}
+  SiteService(std::shared_ptr<Poco::Data::SessionPool> pgsql,
+              std::shared_ptr<Poco::Data::SessionPool> mysql)
+      : pgsql(pgsql), mysql(mysql) {}
   ~SiteService() override {}
   grpc::Status Refresh(grpc::ServerContext* context,
                        const google::protobuf::Empty* request,
@@ -33,11 +37,13 @@ class SiteService final : public palm::nut::v1::Site::Service {
                        palm::nut::v1::LayoutResponse_Site* response) override;
 
  private:
-  std::shared_ptr<palm::orm::Factory> db;
+  std::shared_ptr<Poco::Data::SessionPool> pgsql;
+  std::shared_ptr<Poco::Data::SessionPool> mysql;
 };
 class LocaleService final : public palm::nut::v1::Locale::Service {
  public:
-  LocaleService(std::shared_ptr<palm::orm::Factory> db) : db(db) {}
+  LocaleService(std::shared_ptr<Poco::Data::SessionPool> pgsql)
+      : pgsql(pgsql) {}
   ~LocaleService() override {}
   grpc::Status Index(grpc::ServerContext* context,
                      const google::protobuf::Empty* request,
@@ -50,11 +56,11 @@ class LocaleService final : public palm::nut::v1::Locale::Service {
                    google::protobuf::Empty* response) override;
 
  private:
-  std::shared_ptr<palm::orm::Factory> db;
+  std::shared_ptr<Poco::Data::SessionPool> pgsql;
 };
 class SmtpService final : public palm::nut::v1::Smtp::Service {
  public:
-  SmtpService(std::shared_ptr<palm::orm::Factory> db) : db(db) {}
+  SmtpService(std::shared_ptr<Poco::Data::SessionPool> pgsql) : pgsql(pgsql) {}
   ~SmtpService() override {}
   grpc::Status Get(grpc::ServerContext* context,
                    const google::protobuf::Empty* request,
@@ -67,11 +73,12 @@ class SmtpService final : public palm::nut::v1::Smtp::Service {
                     google::protobuf::Empty* response) override;
 
  private:
-  std::shared_ptr<palm::orm::Factory> db;
+  std::shared_ptr<Poco::Data::SessionPool> pgsql;
 };
 class TwilioService final : public palm::nut::v1::Twilio::Service {
  public:
-  TwilioService(std::shared_ptr<palm::orm::Factory> db) : db(db) {}
+  TwilioService(std::shared_ptr<Poco::Data::SessionPool> pgsql)
+      : pgsql(pgsql) {}
   ~TwilioService() override {}
   grpc::Status Get(grpc::ServerContext* context,
                    const google::protobuf::Empty* request,
@@ -84,11 +91,12 @@ class TwilioService final : public palm::nut::v1::Twilio::Service {
                     google::protobuf::Empty* response) override;
 
  private:
-  std::shared_ptr<palm::orm::Factory> db;
+  std::shared_ptr<Poco::Data::SessionPool> pgsql;
 };
 class GoogleService final : public palm::nut::v1::Google::Service {
  public:
-  GoogleService(std::shared_ptr<palm::orm::Factory> db) : db(db) {}
+  GoogleService(std::shared_ptr<Poco::Data::SessionPool> pgsql)
+      : pgsql(pgsql) {}
   ~GoogleService() override {}
   grpc::Status Get(grpc::ServerContext* context,
                    const google::protobuf::Empty* request,
@@ -101,11 +109,11 @@ class GoogleService final : public palm::nut::v1::Google::Service {
                     google::protobuf::Empty* response) override;
 
  private:
-  std::shared_ptr<palm::orm::Factory> db;
+  std::shared_ptr<Poco::Data::SessionPool> pgsql;
 };
 class BaiduService final : public palm::nut::v1::Baidu::Service {
  public:
-  BaiduService(std::shared_ptr<palm::orm::Factory> db) : db(db) {}
+  BaiduService(std::shared_ptr<Poco::Data::SessionPool> pgsql) : pgsql(pgsql) {}
   ~BaiduService() override {}
   grpc::Status Get(grpc::ServerContext* context,
                    const google::protobuf::Empty* request,
@@ -118,11 +126,12 @@ class BaiduService final : public palm::nut::v1::Baidu::Service {
                     google::protobuf::Empty* response) override;
 
  private:
-  std::shared_ptr<palm::orm::Factory> db;
+  std::shared_ptr<Poco::Data::SessionPool> pgsql;
 };
 class WechatPayService final : public palm::nut::v1::WechatPay::Service {
  public:
-  WechatPayService(std::shared_ptr<palm::orm::Factory> db) : db(db) {}
+  WechatPayService(std::shared_ptr<Poco::Data::SessionPool> pgsql)
+      : pgsql(pgsql) {}
   ~WechatPayService() override {}
   grpc::Status Get(grpc::ServerContext* context,
                    const google::protobuf::Empty* request,
@@ -135,11 +144,12 @@ class WechatPayService final : public palm::nut::v1::WechatPay::Service {
                     google::protobuf::Empty* response) override;
 
  private:
-  std::shared_ptr<palm::orm::Factory> db;
+  std::shared_ptr<Poco::Data::SessionPool> pgsql;
 };
 class AliPayService final : public palm::nut::v1::AliPay::Service {
  public:
-  AliPayService(std::shared_ptr<palm::orm::Factory> db) : db(db) {}
+  AliPayService(std::shared_ptr<Poco::Data::SessionPool> pgsql)
+      : pgsql(pgsql) {}
   ~AliPayService() override {}
   grpc::Status Get(grpc::ServerContext* context,
                    const google::protobuf::Empty* request,
@@ -152,7 +162,7 @@ class AliPayService final : public palm::nut::v1::AliPay::Service {
                     google::protobuf::Empty* response) override;
 
  private:
-  std::shared_ptr<palm::orm::Factory> db;
+  std::shared_ptr<Poco::Data::SessionPool> pgsql;
 };
 
 }  // namespace nut

@@ -18,12 +18,6 @@ FetchContent_Declare(
 )
 
 FetchContent_Declare(
-    soci
-    GIT_REPOSITORY  "https://github.com/SOCI/soci.git"
-    GIT_TAG         "v4.0.3"
-)
-
-FetchContent_Declare(
     gRPC
     GIT_REPOSITORY  "https://github.com/grpc/grpc.git"
     GIT_TAG         "v1.45.2"
@@ -86,7 +80,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(
     nlohmann_json
     gRPC poco casbin 
-    soci hiredis
+    hiredis
     cpr cpp_httplib   
     paho_mqtt czmq rabbitmq_c
     cppcodec

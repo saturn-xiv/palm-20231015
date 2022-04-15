@@ -1,89 +1,78 @@
 #include "palm/orm.hpp"
 
-#include <soci/mysql/soci-mysql.h>
-#include <soci/postgresql/soci-postgresql.h>
-#include <soci/sqlite3/soci-sqlite3.h>
 #include <boost/lexical_cast.hpp>
 #include <boost/property_tree/ini_parser.hpp>
 
-std::shared_ptr<soci::session> palm::sqlite3::open(
+std::shared_ptr<Poco::Data::SessionPool> palm::sqlite3::open(
     const std::filesystem::path& file, const std::chrono::seconds& timeout,
     const bool wal_mode) {
+  Poco::Data::SQLite::Connector::registerConnector();
   std::stringstream url;
   {
-    url << "db=" << file.string();
-    url << " timeout=" << timeout.count();
-    url << " shared_cache=true";
-    url << " synchronous=off";
+    url << file.string();
+    // url << "db=" << file.string();
+    // url << " timeout=" << timeout.count();
+    // url << " shared_cache=true";
+    // url << " synchronous=off";
   }
-  std::shared_ptr<soci::session> it =
-      std::make_shared<soci::session>(soci::sqlite3, url.str());
-  it->set_logger(new palm::orm::Logger());
+  std::shared_ptr<Poco::Data::SessionPool> pool =
+      std::make_shared<Poco::Data::SessionPool>("SQLite", url.str());
 
-  (*it) << "PRAGMA foreign_keys = ON";
-  if (wal_mode) {
-    (*it) << "PRAGMA journal_mode = WAL";
+  {
+    Poco::Data::Session db(pool->get());
+
+    db << "PRAGMA foreign_keys = ON";
+    if (wal_mode) {
+      db << "PRAGMA journal_mode = WAL";
+    }
   }
 
-  return it;
+  return pool;
 }
 
-std::shared_ptr<soci::session> palm::mysql::open(
-    const std::string& database, const std::string& host, const uint32_t port,
-    const std::string& user, const std::optional<std::string> password,
-    const std::chrono::seconds& timeout) {
+std::shared_ptr<Poco::Data::SessionPool> palm::mysql::Config::open() const {
+  Poco::Data::MySQL::Connector::registerConnector();
   // http://soci.sourceforge.net/doc/release/4.0/backends/mysql/
   std::stringstream url;
   {
-    url << "host=" << host;
-    url << " port=" << port;
-    url << " dbname=" << database;
-    url << " user=" << user;
-    if (password) {
-      url << " password=" << password.value();
+    url << "host=" << this->host;
+    url << " port=" << this->port;
+    url << " dbname=" << this->database;
+    url << " user=" << this->user;
+    if (this->password) {
+      url << " password=" << this->password.value();
     }
     url << " charset=utf8";
     url << " reconnect=1";
-    url << " connect_timeout=" << timeout.count();
+    url << " connect_timeout=" << this->timeout.count();
   }
-
-  std::shared_ptr<soci::session> it =
-      std::make_shared<soci::session>(soci::mysql, url.str());
-  it->set_logger(new palm::orm::Logger());
-  {
-    // FIXME 1064
-    // soci::mysql_session_backend* db =
-    //     dynamic_cast<soci::mysql_session_backend*>(it->get_backend());
-    // mysql_set_server_option(db->conn_, MYSQL_OPTION_MULTI_STATEMENTS_ON);
-  }
-  return it;
+  std::shared_ptr<Poco::Data::SessionPool> pool =
+      std::make_shared<Poco::Data::SessionPool>("MySQL", url.str());
+  return pool;
 }
 
-std::shared_ptr<soci::session> palm::postgresql::open(
-    const std::string& database, const std::string& host, const uint32_t port,
-    const std::string& user, const std::optional<std::string> password,
-    const std::chrono::seconds& timeout) {
+std::shared_ptr<Poco::Data::SessionPool> palm::postgresql::Config::open()
+    const {
+  Poco::Data::PostgreSQL::Connector::registerConnector();
   // https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNSTRING
   std::stringstream url;
   {
-    url << "host=" << host;
-    url << " port=" << port;
-    url << " dbname=" << database;
-    url << " user=" << user;
-    if (password) {
-      url << " password=" << password.value();
+    url << "host=" << this->host;
+    url << " port=" << this->port;
+    url << " dbname=" << this->database;
+    url << " user=" << this->user;
+    if (this->password) {
+      url << " password=" << this->password.value();
     }
     url << " sslmode=disable";
-    url << " connect_timeout=" << timeout.count();
+    url << " connect_timeout=" << this->timeout.count();
   }
-  std::shared_ptr<soci::session> it =
-      std::make_shared<soci::session>(soci::postgresql, url.str());
-  it->set_logger(new palm::orm::Logger());
-
-  return it;
+  std::shared_ptr<Poco::Data::SessionPool> pool =
+      std::make_shared<Poco::Data::SessionPool>("PostgreSQL", url.str());
+  return pool;
 }
 
-palm::mysql::Factory::Factory(const boost::property_tree::ptree& config) {
+palm::mysql::Config::Config(const boost::property_tree::ptree& config) {
   this->host = config.get("mysql.host", "127.0.0.1");
   this->port = config.get("mysql.port", 3306);
   this->user = config.get("mysql.user", "root");
@@ -101,12 +90,7 @@ palm::mysql::Factory::Factory(const boost::property_tree::ptree& config) {
   this->pool_size = config.get("mysql.pool-size", 32);
 }
 
-std::shared_ptr<soci::session> palm::mysql::Factory::create() const {
-  return palm::mysql::open(this->database, this->host, this->port, this->user,
-                           this->password, this->timeout);
-}
-
-palm::postgresql::Factory::Factory(const boost::property_tree::ptree& config) {
+palm::postgresql::Config::Config(const boost::property_tree::ptree& config) {
   this->host = config.get("postgresql.host", "127.0.0.1");
   this->port = config.get("postgresql.port", 5432);
   this->user = config.get("postgresql.user", "postgres");
@@ -124,11 +108,6 @@ palm::postgresql::Factory::Factory(const boost::property_tree::ptree& config) {
   this->pool_size = config.get("postgresql.pool-size", 32);
 }
 
-std::shared_ptr<soci::session> palm::postgresql::Factory::create() const {
-  return palm::postgresql::open(this->database, this->host, this->port,
-                                this->user, this->password, this->timeout);
-}
-
 void palm::orm::Query::load(const std::filesystem::path& root) {
   const std::lock_guard<std::mutex> lock(this->locker);
   for (const auto& it : std::filesystem::directory_iterator(root / "queries")) {
@@ -141,7 +120,7 @@ void palm::orm::Query::load(const std::filesystem::path& root) {
 }
 
 palm::orm::Schema::Schema(const std::filesystem::path& root,
-                          std::shared_ptr<soci::session> db)
+                          Poco::Data::Session& db)
     : db(db) {
   const auto top = root / "migrations";
 
@@ -152,7 +131,7 @@ palm::orm::Schema::Schema(const std::filesystem::path& root,
     fs.open(top / "initial-setup.sql");
     std::string sql((std::istreambuf_iterator<char>(fs)),
                     std::istreambuf_iterator<char>());
-    (*db) << sql;
+    this->db << sql;
   }
 
   const auto& query = palm::orm::Query::instance();
@@ -192,81 +171,89 @@ palm::orm::Schema::Schema(const std::filesystem::path& root,
 
     {
       boost::optional<Migration> cur;
+      //   TODO
 
-      (*db) << sql_by_version, soci::use(mig), soci::into(cur);
+      //   this->db << sql_by_version, Poco::Data::Keywords::use(mig),
+      //       Poco::Data::Keywords::into(cur);
 
-      if (cur.is_initialized()) {
-        if (cur->name != mig.name || cur->up != mig.up ||
-            cur->down != mig.down) {
-          std::stringstream ss;
-          ss << "bad migration record " << cur->version;
-          throw std::runtime_error(ss.str());
-        }
-      } else {
-        BOOST_LOG_TRIVIAL(warning) << "can't found, save it";
-        (*db) << sql_create, soci::use(mig.version, "version"),
-            soci::use(mig.name, "name"), soci::use(mig.up, "up"),
-            soci::use(mig.down, "down");
-      }
+      //   if (cur.is_initialized()) {
+      //     if (cur->name != mig.name || cur->up != mig.up ||
+      //         cur->down != mig.down) {
+      //       std::stringstream ss;
+      //       ss << "bad migration record " << cur->version;
+      //       throw std::runtime_error(ss.str());
+      //     }
+      //   } else {
+      //     BOOST_LOG_TRIVIAL(warning) << "can't found, save it";
+      //     this->db << sql_create,
+      //         Poco::Data::Keywords::use(mig.version, "version"),
+      //         Poco::Data::Keywords::use(mig.name, "name"),
+      //         Poco::Data::Keywords::use(mig.up, "up"),
+      //         Poco::Data::Keywords::use(mig.down, "down");
+      //   }
     }
   }
 }
 
 void palm::orm::Schema::migrate() {
-  const palm::orm::Query& query = palm::orm::Query::instance();
-  const std::string sql_all = query.get("schema-migrations.all");
-  const std::string sql_set_run_on = query.get("schema-migrations.migrate");
-  soci::rowset<palm::orm::Migration> rows = (this->db->prepare << sql_all);
+  // TODO
+  //   const palm::orm::Query& query = palm::orm::Query::instance();
+  //   const std::string sql_all = query.get("schema-migrations.all");
+  //   const std::string sql_set_run_on =
+  //   query.get("schema-migrations.migrate");
+  //   soci::rowset<palm::orm::Migration> rows = (this->db->prepare << sql_all);
 
-  for (const auto& it : rows) {
-    if (it.run_on) {
-      continue;
-    }
-    {
-      BOOST_LOG_TRIVIAL(info) << "run migration " << it;
-      soci::transaction tr(*this->db);
-      (*this->db) << it.up;
-      (*this->db) << sql_set_run_on, soci::use(it);
-      tr.commit();
-    }
-  }
+  //   for (const auto& it : rows) {
+  //     if (it.run_on) {
+  //       continue;
+  //     }
+  //     {
+  //       BOOST_LOG_TRIVIAL(info) << "run migration " << it;
+  //       soci::transaction tr(*this->db);
+  //       (*this->db) << it.up;
+  //       (*this->db) << sql_set_run_on, soci::use(it);
+  //       tr.commit();
+  //     }
+  //   }
 }
 
 void palm::orm::Schema::rollback() {
-  const palm::orm::Query& query = palm::orm::Query::instance();
+  // TODO
+  //   const palm::orm::Query& query = palm::orm::Query::instance();
 
-  boost::optional<Migration> cur;
+  //   boost::optional<Migration> cur;
 
-  (*this->db) << query.get("schema-migrations.latest"), soci::into(cur);
-  if (cur.is_initialized()) {
-    BOOST_LOG_TRIVIAL(info) << "rollback migration " << (*cur);
-    soci::transaction tr(*this->db);
-    (*this->db) << cur->down;
-    (*this->db) << query.get("schema-migrations.rollback"), soci::use(cur);
-    tr.commit();
-  } else {
-    BOOST_LOG_TRIVIAL(info) << "database is empty";
-  }
+  //   (*this->db) << query.get("schema-migrations.latest"), soci::into(cur);
+  //   if (cur.is_initialized()) {
+  //     BOOST_LOG_TRIVIAL(info) << "rollback migration " << (*cur);
+  //     soci::transaction tr(*this->db);
+  //     (*this->db) << cur->down;
+  //     (*this->db) << query.get("schema-migrations.rollback"), soci::use(cur);
+  //     tr.commit();
+  //   } else {
+  //     BOOST_LOG_TRIVIAL(info) << "database is empty";
+  //   }
 }
 
 void palm::orm::Schema::status(std::ostream& out) {
-  const palm::orm::Query& query = palm::orm::Query::instance();
-  const std::string sql_all = query.get("schema-migrations.all");
+  // TODO
+  //   const palm::orm::Query& query = palm::orm::Query::instance();
+  //   const std::string sql_all = query.get("schema-migrations.all");
 
-  soci::rowset<palm::orm::Migration> rows = (this->db->prepare << sql_all);
-  const auto flags = out.flags();
-  out << std::setiosflags(std::ios::left);
-  out << std::setw(14) << "VERSION"
-      << " " << std::setw(32) << "NAME"
-      << " "
-      << "RUN ON" << std::endl;
-  for (const auto& it : rows) {
-    out << it.version << " " << std::setw(32) << it.name << " ";
-    if (it.run_on.is_initialized()) {
-      out << std::asctime(&it.run_on.get());
-    } else {
-      out << "Pending" << std::endl;
-    }
-  }
-  out << std::setiosflags(flags);
+  //   soci::rowset<palm::orm::Migration> rows = (this->db->prepare << sql_all);
+  //   const auto flags = out.flags();
+  //   out << std::setiosflags(std::ios::left);
+  //   out << std::setw(14) << "VERSION"
+  //       << " " << std::setw(32) << "NAME"
+  //       << " "
+  //       << "RUN ON" << std::endl;
+  //   for (const auto& it : rows) {
+  //     out << it.version << " " << std::setw(32) << it.name << " ";
+  //     if (it.run_on.is_initialized()) {
+  //       out << std::asctime(&it.run_on.get());
+  //     } else {
+  //       out << "Pending" << std::endl;
+  //     }
+  //   }
+  //   out << std::setiosflags(flags);
 }

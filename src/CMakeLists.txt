@@ -8,8 +8,6 @@ target_include_directories(palm PUBLIC
   ${casbin_SOURCE_DIR}/include
   ${nlohmann_json_SOURCE_DIR}/single_include
   ${hiredis_SOURCE_DIR}
-  ${soci_SOURCE_DIR}/include
-  ${soci_BINARY_DIR}/include
   ${rabbitmq_c_SOURCE_DIR}/librabbitmq
   ${cppcodec_SOURCE_DIR}
   ${poco_SOURCE_DIR}/Foundation/include
@@ -43,21 +41,19 @@ target_link_libraries(palm PUBLIC
 )
 
 if(CMAKE_BUILD_TYPE MATCHES Debug)
-  target_link_libraries(palm PUBLIC 
-    soci_cored soci_postgresqld soci_mysqld soci_sqlite3d
+  target_link_libraries(palm PUBLIC
     rabbitmqd  
     PocoJSONd PocoJWTd PocoCryptod PocoZipd PocoXMLd PocoEncodingsd
     PocoFoundationd PocoNetd PocoUtild
-    PocoDatad PocoDataMySQLd PocoDataODBCd PocoDataPostgreSQLd PocoActiveRecordd
+    PocoDatad PocoDataPostgreSQLd PocoDataMySQLd PocoDataSQLited PocoDataODBCd PocoActiveRecordd
     PocoRedisd PocoMongoDBd 
   )
 else()
   target_link_libraries(palm PUBLIC 
-    soci_core soci_postgresql soci_mysql soci_sqlite3
     rabbitmq
     PocoJSON PocoJWT PocoCrypto PocoZip PocoXML PocoEncodings
     PocoFoundation PocoNet PocoUtil
-    PocoData PocoDataMySQL PocoDataODBC PocoDataPostgreSQL PocoActiveRecord
+    PocoData PocoDataPostgreSQL PocoDataMySQL PocoDataSQLite PocoDataODBC PocoActiveRecord
     PocoRedis PocoMongoDB 
   )
 endif()

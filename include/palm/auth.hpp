@@ -1,19 +1,19 @@
 #pragma once
 
+#include <Poco/Data/Session.h>
+#include <Poco/Data/SessionPool.h>
 #include <casbin/casbin.h>
 
 #include "auth.grpc.pb.h"
 #include "palm/cache.hpp"
 #include "palm/crypt.hpp"
-#include "palm/i18n.hpp"
-#include "palm/orm.hpp"
 #include "palm/queue.hpp"
 
 namespace palm {
 namespace auth {
 class Adapter final : public casbin::Adapter {
  public:
-  Adapter(std::shared_ptr<soci::session> db) : db(db) {}
+  Adapter(Poco::Data::Session pgsql) : pgsql(pgsql) {}
   void LoadPolicy(const std::shared_ptr<casbin::Model>& model) override;
   void SavePolicy(const std::shared_ptr<casbin::Model>& model) override;
   void AddPolicy(std::string sec, std::string p_type,
@@ -25,12 +25,12 @@ class Adapter final : public casbin::Adapter {
   bool IsFiltered() override;
 
  private:
-  std::shared_ptr<soci::session> db;
+  Poco::Data::Session pgsql;
 };
 
 class UserService final : public palm::auth::v1::User::Service {
  public:
-  UserService(std::shared_ptr<palm::orm::Factory> db) : db(db) {}
+  UserService(std::shared_ptr<Poco::Data::SessionPool> pgsql) : pgsql(pgsql) {}
   ~UserService() override {}
   grpc::Status SignIn(grpc::ServerContext* context,
                       const palm::auth::v1::SignInRequest* request,
@@ -90,12 +90,13 @@ class UserService final : public palm::auth::v1::User::Service {
                        google::protobuf::Empty* response) override;
 
  private:
-  std::shared_ptr<palm::orm::Factory> db;
+  std::shared_ptr<Poco::Data::SessionPool> pgsql;
 };
 
 class AttachmentService final : public palm::auth::v1::Attachment::Service {
  public:
-  AttachmentService(std::shared_ptr<palm::orm::Factory> db) : db(db) {}
+  AttachmentService(std::shared_ptr<Poco::Data::SessionPool> pgsql)
+      : pgsql(pgsql) {}
   ~AttachmentService() override {}
   grpc::Status Index(
       grpc::ServerContext* context, const google::protobuf::Duration* request,
@@ -113,7 +114,7 @@ class AttachmentService final : public palm::auth::v1::Attachment::Service {
                        google::protobuf::Empty* response) override;
 
  private:
-  std::shared_ptr<palm::orm::Factory> db;
+  std::shared_ptr<Poco::Data::SessionPool> pgsql;
 };
 
 }  // namespace auth

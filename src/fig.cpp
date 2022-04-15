@@ -4,6 +4,7 @@
 #include "palm/forum.hpp"
 #include "palm/mall.hpp"
 #include "palm/nut.hpp"
+#include "palm/orm.hpp"
 #include "palm/version.hpp"
 
 #include <grpcpp/ext/proto_server_reflection_plugin.h>
@@ -61,29 +62,32 @@ palm::fig::Application::Application(int argc, char** argv) {
   boost::property_tree::ptree config;
   boost::property_tree::read_ini(config_file, config);
 
-  {
-    std::shared_ptr<palm::mysql::Factory> factory =
-        std::make_shared<palm::mysql::Factory>(config);
-    palm::orm::Pool::instance().open(factory);
-  }
-  {
-    const std::string root = config.get("mysql.schema-folder", "db/mysql");
-    palm::orm::Query::instance().load(root);
+  BOOST_LOG_TRIVIAL(debug) << "connect postgresql server";
+  std::shared_ptr<palm::postgresql::Config> pgsql_config =
+      std::make_shared<palm::postgresql::Config>(config);
+  auto pgsql = pgsql_config->open();
+  BOOST_LOG_TRIVIAL(debug) << "connect mysql server";
+  std::shared_ptr<palm::mysql::Config> mysql_config =
+      std::make_shared<palm::mysql::Config>(config);
+  auto mysql = mysql_config->open();
+  BOOST_LOG_TRIVIAL(debug) << "connect redis server";
+  // TODO
+  BOOST_LOG_TRIVIAL(debug) << "connect rabbitmq server";
+  // TODO
+  BOOST_LOG_TRIVIAL(debug) << "connect elasticsearch server";
+  // TODO
 
-    palm::orm::PooledConnection con;
-    auto db = con.get();
-    palm::orm::Schema schema = palm::orm::Schema(root, db);
-
+  {
     if (vm.count("db-migrate")) {
-      schema.migrate();
+      // TODO
       return;
     }
     if (vm.count("db-rollback")) {
-      schema.rollback();
+      //  TODO
       return;
     }
     if (vm.count("db-list")) {
-      schema.status(std::cout);
+      // TODO
       return;
     }
   }
@@ -98,9 +102,11 @@ palm::fig::Application::Application(int argc, char** argv) {
       std::cout << std::setw(12) << "TTL"
                 << " "
                 << "KEY" << std::endl;
-      for (const auto& it : db.all()) {
-        std::cout << std::setw(12) << it.second << " " << it.first << std::endl;
-      }
+      // TODO
+      // for (const auto& it : db.all()) {
+      //   std::cout << std::setw(12) << it.second << " " << it.first <<
+      //   std::endl;
+      // }
       return;
     }
     if (vm.count("cache-clear")) {
@@ -137,19 +143,23 @@ void palm::fig::Application::rpc(
   std::stringstream address;
   address << "0.0.0.0:" << port;
 
-  std::shared_ptr<palm::mysql::Factory> db =
-      std::make_shared<palm::mysql::Factory>(config);
+  // TODO
+  std::shared_ptr<Poco::Data::SessionPool> pgsql =
+      std::make_shared<Poco::Data::SessionPool>("", "");
+  // TODO
+  std::shared_ptr<Poco::Data::SessionPool> mysql =
+      std::make_shared<Poco::Data::SessionPool>("", "");
 
-  palm::auth::UserService auth_user(db);
-  palm::auth::AttachmentService auth_attachment(db);
-  palm::nut::SiteService nut_site(db);
-  palm::nut::LocaleService nut_locale(db);
-  palm::nut::SmtpService nut_smtp(db);
-  palm::nut::TwilioService nut_twilio(db);
-  palm::nut::GoogleService nut_google(db);
-  palm::nut::BaiduService nut_baidu(db);
-  palm::nut::AliPayService nut_ali_pay(db);
-  palm::nut::WechatPayService nut_wechat_pay(db);
+  palm::auth::UserService auth_user(pgsql);
+  palm::auth::AttachmentService auth_attachment(pgsql);
+  palm::nut::SiteService nut_site(pgsql, mysql);
+  palm::nut::LocaleService nut_locale(pgsql);
+  palm::nut::SmtpService nut_smtp(pgsql);
+  palm::nut::TwilioService nut_twilio(pgsql);
+  palm::nut::GoogleService nut_google(pgsql);
+  palm::nut::BaiduService nut_baidu(pgsql);
+  palm::nut::AliPayService nut_ali_pay(pgsql);
+  palm::nut::WechatPayService nut_wechat_pay(pgsql);
 
   grpc::EnableDefaultHealthCheckService(true);
   grpc::reflection::InitProtoReflectionServerBuilderPlugin();
