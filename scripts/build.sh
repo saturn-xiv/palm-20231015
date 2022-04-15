@@ -11,10 +11,10 @@ export GCC_VERSION=10
 
 build_backend() {
     echo "build $1@$2..."
-    # if [ $ID == "ubuntu" ]
-    # then
-    #     apt install -y libmysqlcppconn-dev:$1
-    # fi
+    if [ $ID == "ubuntu" ]
+    then
+        apt install -y libmysqlclient-dev:$1
+    fi
     mkdir -pv $WORKSPACE/build/$1-$2
     cd $WORKSPACE/build/$1-$2
     conan install --build=missing --profile:build=default \
