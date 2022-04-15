@@ -11,6 +11,10 @@ export GCC_VERSION=10
 
 build_backend() {
     echo "build $1@$2..."
+    # if [ $ID == "ubuntu" ]
+    # then
+    #     apt install -y libmysqlcppconn-dev:$1
+    # fi
     mkdir -pv $WORKSPACE/build/$1-$2
     cd $WORKSPACE/build/$1-$2
     conan install --build=missing --profile:build=default \
@@ -51,7 +55,7 @@ build_deb(){
     cp -av fig mint $target/usr/bin/
 
     mkdir -pv $target/usr/share/palm
-    cp -av $WORKSPACE/dashboard/dist $target/usr/share/palm/dashboard
+    cp -av $WORKSPACE/dashboard/build $target/usr/share/palm/dashboard
     cp -av $WORKSPACE/db \
         $WORKSPACE/liquibase \
         $target/usr/share/palm/
