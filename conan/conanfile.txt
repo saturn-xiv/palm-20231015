@@ -6,8 +6,11 @@ openssl/1.1.1n
 boost/1.78.0
 soci/4.0.3
 libpq/14.2
-libmysqlclient/8.0.25
+libpqxx/7.7.2
+#libmysqlclient/8.0.25
+#mariadb-connector-c/3.1.12
 sqlite3/3.38.1
+sqlite_orm/1.7.1
 mongo-cxx-driver/3.6.6
 hiredis/1.0.2
 cpr/1.7.2
@@ -22,9 +25,12 @@ flatbuffers/2.0.5
 rabbitmq-c/0.11.0
 cppzmq/4.8.1
 paho-mqtt-cpp/1.2.0
-#poco/1.11.1
-grpc/1.39.1
+poco/1.11.1
+grpc/1.44.0
 serial/1.2.1
+libssh2/1.10.0
+libgit2/1.3.0
+libpng/1.6.37
 fontconfig/2.13.93
 
 [options]
@@ -33,9 +39,12 @@ sqlite3:build_executable=False
 boost:without_stacktrace=True
 boost:without_python=True
 soci:with_sqlite3=True
-soci:with_mysql=True
+soci:with_mysql=False
 soci:with_postgresql=True
 soci:with_boost=True
+poco:enable_data_mysql=False
+mariadb-connector-c:with_ssl=False
+mariadb-connector-c:with_curl=False
 
 [generators]
 cmake

@@ -8,7 +8,7 @@ RUN apt -y upgrade
 RUN apt -y install debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
 
 # https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
-RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test -y
+RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 
 ENV CLANG_VERSION=13
 RUN echo "deb [arch=amd64] http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-focal-${CLANG_VERSION} main" > /etc/apt/sources.list.d/llvm.list

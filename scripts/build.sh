@@ -8,37 +8,16 @@ export WORKSPACE=$PWD
 export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
 export GCC_VERSION=10
 
-build_backend_by_conan() {
+
+build_backend() {
     echo "build $1@$2..."
     mkdir -pv $WORKSPACE/build/$1-$2
     cd $WORKSPACE/build/$1-$2
     conan install --build=missing --profile:build=default \
-        --profile:host=$WORKSPACE/conan/profiles/$1 $WORKSPACE
+        --profile:host=$WORKSPACE/conan/profiles/$1 $WORKSPACE/conan
     cmake $WORKSPACE -DCMAKE_BUILD_TYPE=$2 \
         -DCASBIN_BUILD_TEST=OFF -DCASBIN_BUILD_BENCHMARK=OFF \
         -DCASBIN_BUILD_BINDINGS=OFF -DCASBIN_BUILD_PYTHON_BINDINGS=OFF \
-        -DCMAKE_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$1.cmake
-    make -j
-}
-
-build_backend() {
-    echo "build $1@$2..."
-    if [[ $ID == "ubuntu" ]]
-    then
-        apt install -y libssl-dev:$1 libboost-all-dev:$1 libcurl-dev:$1 \
-            libpq-dev:$1 libmysqlclient-dev:$1 libsqlite3-dev:$1
-    fi
-    mkdir -pv $WORKSPACE/build/$1-$2
-    cd $WORKSPACE/build/$1-$2
-    cmake $WORKSPACE -DCMAKE_BUILD_TYPE=$2 \
-        -DCASBIN_BUILD_TEST=OFF -DCASBIN_BUILD_BENCHMARK=OFF \
-        -DCASBIN_BUILD_BINDINGS=OFF -DCASBIN_BUILD_PYTHON_BINDINGS=OFF \
-        -DSOCI_SHARED=OFF -DSOCI_TESTS=OFF \
-        -DWITH_BOOST=ON -DWITH_MYSQL=ON -DWITH_MYSQL=ON -DWITH_SQLITE3=ON \
-        -DProtobuf_PROTOC_EXECUTABLE=$HOME/.local/bin/protoc \
-        -DgRPC_SSL_PROVIDER=package -DgRPC_ZLIB_PROVIDER=package \
-        -DgRPC_PROTOBUF_PROVIDER=package -DgRPC_PROTOBUF_PACKAGE_TYPE=module \
-        -DgRPC_BUILD_TESTS=OFF -DgRPC_BUILD_TESTS=OFF \
         -DCMAKE_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$1.cmake
     make -j
 }
@@ -48,12 +27,12 @@ build_dashboard(){
     then
         yarn install
     fi
+
     cd $WORKSPACE/dashboard
     if [ ! -d node_modules ]
     then
         yarn install
-    fi
-    
+    fi    
     yarn build
 }
 
@@ -67,14 +46,14 @@ build_deb(){
     cp -r $WORKSPACE/debian $target/
 
     mkdir -pv $target/usr/bin
-    cd $WORKSPACE/build/$1-Release/apps/
+    cd $WORKSPACE/build/$1-Release/bin/
     cp -av fig mint $target/usr/bin/
 
     mkdir -pv $target/usr/share/palm
-    cp -av $WORKSPACE/dashboard/dist \
-        $WORKSPACE/db \
+    cp -av $WORKSPACE/dashboard/dist $target/usr/share/palm/dashboard
+    cp -av $WORKSPACE/db \
         $WORKSPACE/liquibase \
-        $target/usr/share/palm/dashboard
+        $target/usr/share/palm/
     local -a packages=(
         "bootstrap/dist"
         "bulma/css"
@@ -126,7 +105,7 @@ build_deb(){
 
 # -----------------------------------------------------------------------------
 
-# build_dashboard
+build_dashboard
 
 if [[ $ID == "ubuntu" ]]
 then

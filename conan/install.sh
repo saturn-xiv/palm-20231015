@@ -26,7 +26,7 @@ for p in "${profiles[@]}"
 do
     mkdir -pv $HOME/build/$p
     cd $HOME/build/$p
-    conan install --build=missing --profile:build=default --profile:host=$WORKSPACE/conan/profiles/$p $WORKSPACE
+    conan install --build=missing --profile:build=default --profile:host=$WORKSPACE/conan/profiles/$p $WORKSPACE/conan
 done    
 
 echo 'done.'

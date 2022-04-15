@@ -30,3 +30,6 @@ boost:CXX=$target-g++-$gcc_version
 boost:CFLAGS=""
 boost:CXXFLAGS=""
 boost:LDFLAGS=""
+
+[options]
+libpng:neon=False

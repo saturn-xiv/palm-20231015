@@ -3,60 +3,20 @@ file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${palm_SOURCE_DIR}/src/*.cpp")
 
 add_library(palm STATIC ${SOURCE_LIST})
 
+
+FetchContent_Declare(
+    casbin
+    GIT_REPOSITORY  "https://github.com/casbin/casbin-cpp.git"
+    GIT_TAG         "v1.50.0"
+)
+FetchContent_MakeAvailable(casbin)
+
 target_include_directories(palm PUBLIC
   ${palm_SOURCE_DIR}/include
   ${casbin_SOURCE_DIR}/include
-  ${nlohmann_json_SOURCE_DIR}/single_include
-  ${hiredis_SOURCE_DIR}
-  ${rabbitmq_c_SOURCE_DIR}/librabbitmq
-  ${cppcodec_SOURCE_DIR}
-  ${poco_SOURCE_DIR}/Foundation/include
-  ${poco_SOURCE_DIR}/Crypto/include
-  ${poco_SOURCE_DIR}/Net/include
-  ${poco_SOURCE_DIR}/JSON/include
-  ${poco_SOURCE_DIR}/JWT/include
-  ${poco_SOURCE_DIR}/ActiveRecord/include
-  ${poco_SOURCE_DIR}/Data/include
-  ${poco_SOURCE_DIR}/Data/SQLite/include
-  ${poco_SOURCE_DIR}/Data/MySQL/include
-  ${poco_SOURCE_DIR}/Data/PostgreSQL/include
-  ${poco_SOURCE_DIR}/Data/ODBC/include
-  ${poco_SOURCE_DIR}/Redis/include
-  ${poco_SOURCE_DIR}/MongoDB/include
-  ${poco_SOURCE_DIR}/XML/include
-  ${poco_SOURCE_DIR}/Zip/include
-  ${poco_SOURCE_DIR}/Util/include
-)
-target_link_directories(palm PUBLIC
-  ${palm_BINARY_DIR}/lib
-  ${rabbitmq_c_BINARY_DIR}/librabbitmq
 )
 
-target_link_libraries(palm PUBLIC 
-  ${Boost_DATE_TIME_LIBRARY} ${Boost_LOG_LIBRARY} ${Boost_LOG_SETUP_LIBRARY} ${Boost_PROGRAM_OPTIONS_LIBRARY}
-  ${PostgreSQL_LIBRARIES} ${SQLite3_LIBRARIES}
-  mysqlclient hiredis_static 
-  loquat casbin
-  PocoActiveRecordd
-)
-
-if(CMAKE_BUILD_TYPE MATCHES Debug)
-  target_link_libraries(palm PUBLIC
-    rabbitmqd  
-    PocoJSONd PocoJWTd PocoCryptod PocoZipd PocoXMLd PocoEncodingsd
-    PocoFoundationd PocoNetd PocoUtild
-    PocoDatad PocoDataPostgreSQLd PocoDataMySQLd PocoDataSQLited PocoDataODBCd PocoActiveRecordd
-    PocoRedisd PocoMongoDBd 
-  )
-else()
-  target_link_libraries(palm PUBLIC 
-    rabbitmq
-    PocoJSON PocoJWT PocoCrypto PocoZip PocoXML PocoEncodings
-    PocoFoundation PocoNet PocoUtil
-    PocoData PocoDataPostgreSQL PocoDataMySQL PocoDataSQLite PocoDataODBC PocoActiveRecord
-    PocoRedis PocoMongoDB 
-  )
-endif()
+target_link_libraries(palm PUBLIC casbin loquat)
 
 source_group(
   TREE "${PROJECT_SOURCE_DIR}/include"

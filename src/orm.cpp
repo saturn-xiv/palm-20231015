@@ -31,7 +31,8 @@ std::shared_ptr<Poco::Data::SessionPool> palm::sqlite3::open(
 }
 
 std::shared_ptr<Poco::Data::SessionPool> palm::mysql::Config::open() const {
-  Poco::Data::MySQL::Connector::registerConnector();
+  // Poco::Data::MySQL::Connector::registerConnector();
+  // TODO
   // http://soci.sourceforge.net/doc/release/4.0/backends/mysql/
   std::stringstream url;
   {
