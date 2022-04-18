@@ -1,12 +1,9 @@
-use std::any::type_name;
 use std::fmt;
 
 use casbin::Enforcer;
 use diesel_adapter::{casbin::prelude::*, DieselAdapter};
-use uuid::Uuid;
 
 use super::super::super::{orm::postgresql::Pool as DbPool, Result};
-use super::models::user::Item as User;
 
 pub async fn enforcer(pool: DbPool) -> Result<Enforcer> {
     let m = DefaultModel::from_file("model.conf").await?;
@@ -54,8 +51,4 @@ impl fmt::Display for Object {
             }
         )
     }
-}
-
-pub fn by_user(id: Uuid) -> String {
-    format!("{}.{}", type_name::<User>(), id)
 }

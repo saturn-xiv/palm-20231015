@@ -1,3 +1,4 @@
+use std::any::type_name;
 use std::fmt;
 
 use chrono::{NaiveDateTime, Utc};
@@ -94,6 +95,9 @@ impl fmt::Display for Item {
 }
 
 impl Item {
+    pub fn subject(&self) -> String {
+        format!("{}://{}", type_name::<Self>(), self.id)
+    }
     pub fn available(&self) -> Result<()> {
         if self.deleted_at.is_some() {
             return Err(Box::new(HttpError(

@@ -7,7 +7,6 @@ use casbin::{prelude::*, Enforcer};
 use chrono::{Datelike, Duration, Utc};
 use redis::Connection as Cache;
 use serde::{Deserialize, Serialize};
-use uuid::Uuid;
 
 use super::super::super::super::super::{
     cache::{redis::Pool as CachePool, Provider as CacheProvider},
@@ -101,19 +100,11 @@ impl Layout {
         let it = Self {
             site_info: Site::new(db, enc, lang)?,
             side_bar: match user {
-                Some(ref user) => Menu::side_bar(user.id, enf).await?,
+                Some(ref user) => Menu::side_bar(&user.subject(), enf).await?,
                 None => Vec::new(),
             },
             user_profile: user.as_ref().map(|user| user.clone().into()),
         };
-
-        // let it = ch.get(
-        // key,
-        //     move || {
-
-        //     },
-        //     &ttl,
-        // )?;
 
         Ok(it)
     }
@@ -133,12 +124,12 @@ pub struct Menu {
 }
 
 impl Menu {
-    pub async fn side_bar(user: Uuid, enf: &RwLock<Enforcer>) -> Result<Vec<Self>> {
+    pub async fn side_bar(user: &str, enf: &RwLock<Enforcer>) -> Result<Vec<Self>> {
         let mut items = Vec::new();
 
         let can_write_site = match enf.read() {
             Ok(it) => it.enforce((
-                policy::by_user(user),
+                user,
                 policy::Object::Site.to_string(),
                 policy::Action::Write.to_string(),
             ))?,
