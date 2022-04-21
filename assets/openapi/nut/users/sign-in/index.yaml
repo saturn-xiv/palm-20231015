@@ -1,0 +1,17 @@
+post:
+  tags:
+    - nut
+  summary: Sign by email & password.
+  requestBody:
+    required: true
+    content:
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: "./Form.yaml"
+  responses:
+    "200":
+      description: Sign in token
+      content:
+        application/json:
+          schema:
+            $ref: "./Response.yaml"

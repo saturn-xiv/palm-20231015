@@ -35,6 +35,7 @@ pub async fn index() -> impl Responder {
 }
 
 pub struct HomeByLang {}
+
 impl Page for HomeByLang {
     fn render(&self, _db: &DbConnection, theme: &Theme, lang: &str) -> Result<String> {
         let body = match *theme {

@@ -18,6 +18,6 @@ pub struct SignUpForm {
     pub time_zone: String,
     #[validate(url, length(min = 1))]
     pub home: String,
-    #[validate(url, length(min = 1))]
+    #[validate(length(min = 1))]
     pub captcha: String,
 }

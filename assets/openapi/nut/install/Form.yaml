@@ -1,0 +1,24 @@
+type: object
+required:
+  - nickName
+  - realName
+  - password
+  - lang
+  - timeZone
+  - home
+  - captcha
+properties:
+  nickName:
+    type: string
+  realName:
+    type: string
+  password:
+    type: string
+  lang:
+    type: string
+  timeZone:
+    type: string
+  home:
+    type: string
+  captcha:
+    type: string

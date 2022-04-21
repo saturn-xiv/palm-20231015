@@ -5,7 +5,10 @@ pub mod sitemap;
 
 use std::ops::Deref;
 
-use actix_web::{error::ErrorInternalServerError, get, web, Responder, Result};
+use actix_web::{
+    error::ErrorInternalServerError, get, http::header::ContentType, web, HttpResponse, Responder,
+    Result as WebResult,
+};
 use askama::Template;
 use rss::ChannelBuilder as RssChannelBuilder;
 
@@ -28,7 +31,10 @@ pub async fn robots_txt() -> impl Responder {
 }
 
 #[get("/{lang}/rss.xml")]
-pub async fn rss_xml(db: web::Data<DbPool>, _params: web::Path<String>) -> Result<impl Responder> {
+pub async fn rss_xml(
+    db: web::Data<DbPool>,
+    _params: web::Path<String>,
+) -> WebResult<impl Responder> {
     let db = try_web!(db.get())?;
     let _db = db.deref();
 
@@ -43,4 +49,16 @@ pub async fn rss_xml(db: web::Data<DbPool>, _params: web::Path<String>) -> Resul
         ch.write_to(&mut buffer).unwrap();
     }
     Ok("rss.xml")
+}
+
+#[derive(Template)]
+#[template(path = "swagger-ui.html")]
+pub struct SwaggerUI {}
+
+#[get("/swagger-ui")]
+pub async fn swagger_ui() -> WebResult<impl Responder> {
+    let body = try_web!(SwaggerUI {}.render())?;
+    Ok(HttpResponse::Ok()
+        .content_type(ContentType::html())
+        .body(body))
 }

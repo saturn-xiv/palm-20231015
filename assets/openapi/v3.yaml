@@ -1,0 +1,16 @@
+openapi: 3.0.0
+info:
+  title: PALM API
+  description: A total free education &amp; translation &amp; ops solution.
+  version: 2022.4.21
+  license:
+    identifier: Chonglou
+    name: MIT
+servers:
+  - url: /api
+    description: Local server
+paths:
+  /install:
+    $ref: "./nut/install/index.yaml"
+  /users/sign-in:
+    $ref: "./nut/users/sign-in/index.yaml"

@@ -1,0 +1,6 @@
+type: object
+required:
+  - createdAt
+properties:
+  createdAt:
+    type: date-time

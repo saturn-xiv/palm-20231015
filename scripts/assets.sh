@@ -4,7 +4,8 @@ set -e
 
 npm install --save marked moment moment-timezone d3 mermaid \
     bootstrap @popperjs/core \
-    mdb-ui-kit \
+    mdb-ui-kit@latest \
+    swagger-ui-dist \
     bulma \
     tailwindcss@latest \
     @tabler/core \

@@ -1,0 +1,17 @@
+post:
+  tags:
+    - nut
+  summary: Initial system.
+  requestBody:
+    required: true
+    content:
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: "./Form.yaml"
+  responses:
+    "200":
+      description: Success.
+      content:
+        application/json:
+          schema:
+            $ref: "../Ok.yaml"

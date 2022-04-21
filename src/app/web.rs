@@ -104,7 +104,8 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .service(
                 web::scope("/api")
                     .service(nut::controllers::api::attachments::create)
-                    .service(nut::controllers::api::layout::get),
+                    .service(nut::controllers::api::layout::get)
+                    .service(nut::controllers::api::install),
             )
             .service(nut::controllers::captcha::get)
             .service(nut::controllers::sitemap::index)
@@ -130,6 +131,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .service(nut::controllers::home::by_lang)
             .service(nut::controllers::sitemap::google)
             .service(nut::controllers::sitemap::baidu)
+            .service(nut::controllers::swagger_ui)
             .service(nut::controllers::home::index)
     })
     .bind(addr)?
