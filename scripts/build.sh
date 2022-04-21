@@ -60,14 +60,14 @@ build_dashboard(){
     cd $WORKSPACE
     if [ ! -d node_modules ]
     then
-        npm install
+        yarn install
     fi
     cd $WORKSPACE/dashboard
     if [ ! -d node_modules ]
     then
-        npm install
+        yarn install
     fi
-    npm run build
+    yarn build
 }
 
 build_deb(){
@@ -81,7 +81,7 @@ build_deb(){
     build_ubuntu_backend $1 $target
 
     mkdir -pv $target/usr/share/palm
-    cp -av $WORKSPACE/dashboard/build $target/usr/share/palm/dashboard
+    cp -av $WORKSPACE/dashboard/dist $target/usr/share/palm/dashboard
     cp -av $WORKSPACE/assets $target/usr/share/palm/
     local -a packages=(
         "bootstrap/dist"

@@ -1,6 +1,10 @@
 {
   "name": "palm",
-  "version": "2022.4.8",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/saturn-xiv/palm",
+  "author": "Jeremy Zheng <jitang.zheng@gmail.com>",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@fontsource/roboto": "^4.5.5",
@@ -13,7 +17,7 @@
     "material-components-web": "^13.0.0",
     "material-design-icons": "^3.0.1",
     "mdb-ui-kit": "^4.0.0",
-    "mermaid": "^9.0.0",
+    "mermaid": "^9.0.1",
     "moment": "^2.29.3",
     "moment-timezone": "^0.5.34",
     "swagger-ui-dist": "^4.10.3",
