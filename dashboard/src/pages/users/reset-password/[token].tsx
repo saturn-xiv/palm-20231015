@@ -1,5 +1,5 @@
 const Widget = () => {
-  return <div>home</div>;
+  return <div>users reset password</div>;
 };
 
 export default Widget;

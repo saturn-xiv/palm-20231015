@@ -4,8 +4,10 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
-  routes: [
-    { path: '/', component: '@/pages/index' },
-  ],
   fastRefresh: {},
+  hash: true,
+  base: '/my/',
+  dynamicImport: {
+    loading: '@/Loading',
+  },
 });

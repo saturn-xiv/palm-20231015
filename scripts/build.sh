@@ -67,7 +67,7 @@ build_dashboard(){
     then
         yarn install
     fi
-    yarn build
+    NODE_OPTIONS=--openssl-legacy-provider yarn build
 }
 
 build_deb(){
