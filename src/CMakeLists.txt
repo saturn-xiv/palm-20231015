@@ -9,7 +9,12 @@ FetchContent_Declare(
     GIT_REPOSITORY  "https://github.com/casbin/casbin-cpp.git"
     GIT_TAG         "v1.50.0"
 )
-FetchContent_MakeAvailable(casbin)
+FetchContent_Declare(
+  Poco
+    GIT_REPOSITORY  "https://github.com/pocoproject/poco.git"
+    GIT_TAG         "poco-1.11.2-release"
+)
+FetchContent_MakeAvailable(casbin Poco)
 
 target_include_directories(palm PUBLIC
   ${palm_SOURCE_DIR}/include
