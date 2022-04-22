@@ -3,4 +3,5 @@ required:
   - createdAt
 properties:
   createdAt:
-    type: date-time
+    type: string
+    format: date-time

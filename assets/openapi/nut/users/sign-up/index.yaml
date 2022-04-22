@@ -1,17 +1,17 @@
 post:
   tags:
     - nut
-  summary: Initial system.
+  summary: Sign up by email.
   requestBody:
     required: true
     content:
       application/x-www-form-urlencoded:
         schema:
-          $ref: "../users/sign-up/Form.yaml"
+          $ref: "./Form.yaml"
   responses:
     "200":
       description: Success.
       content:
         application/json:
           schema:
-            $ref: "../Ok.yaml"
+            $ref: "../../Ok.yaml"

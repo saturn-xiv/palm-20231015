@@ -2,6 +2,7 @@ type: object
 required:
   - nickName
   - realName
+  - email
   - password
   - lang
   - timeZone
@@ -11,6 +12,8 @@ properties:
   nickName:
     type: string
   realName:
+    type: string
+  email:
     type: string
   password:
     type: string

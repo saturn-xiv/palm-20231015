@@ -114,7 +114,7 @@ pub async fn install(
         web::Data<Hmac>,
         web::Data<RwLock<Enforcer>>,
     ),
-    form: web::Json<users::SignUpForm>,
+    form: web::Form<users::SignUpForm>,
     ss: Session,
     peer: ClientIp,
 ) -> WebResult<impl Responder> {

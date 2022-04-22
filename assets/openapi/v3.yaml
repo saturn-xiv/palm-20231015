@@ -14,3 +14,5 @@ paths:
     $ref: "./nut/install/index.yaml"
   /users/sign-in:
     $ref: "./nut/users/sign-in/index.yaml"
+  /users/sign-up:
+    $ref: "./nut/users/sign-up/index.yaml"
