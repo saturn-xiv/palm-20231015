@@ -12,6 +12,8 @@ servers:
 paths:
   /install:
     $ref: "./nut/install/index.yaml"
+  /layout:
+    $ref: "./nut/layout/index.yaml"
   /users/sign-in:
     $ref: "./nut/users/sign-in/index.yaml"
   /users/sign-up:

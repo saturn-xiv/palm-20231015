@@ -14,4 +14,3 @@ post:
       content:
         application/json:
           schema:
-            $ref: "../Ok.yaml"

@@ -1,0 +1,11 @@
+get:
+  tags:
+    - nut
+  summary: Dashboard layout model
+  responses:
+    "200":
+      description: Success.
+      content:
+        application/json:
+          schema:
+            $ref: "./Response.yaml"

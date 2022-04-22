@@ -1,7 +1,0 @@
-type: object
-required:
-  - createdAt
-properties:
-  createdAt:
-    type: string
-    format: date-time
