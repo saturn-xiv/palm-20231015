@@ -75,12 +75,18 @@ RUN echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/$(date +%Y%m%d%H%M%S).log ansible-
 # https://github.com/nvm-sh/nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | sh
 RUN sh -c ". $HOME/.profile \
-    && nvm install node"
+    && nvm install node \
+    && nvm use node \
+    && npm i yarn -g"
 RUN sh -c ". $HOME/.profile \
+    && nvm install --lts \
+    && nvm use --lts \
     && npm i yarn -g"
 # https://stackoverflow.com/questions/37324519/node-sass-does-not-yet-support-your-current-environment-linux-64-bit-with-false
 RUN sh -c ". $HOME/.profile \
-    && nvm install lts/fermium"
+    && nvm install lts/fermium \
+    && nvm use lts/fermium \
+    && npm i yarn -g"
 RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
 
 RUN curl -s "https://get.sdkman.io" | zsh
