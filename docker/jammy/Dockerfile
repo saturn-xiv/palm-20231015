@@ -8,7 +8,7 @@ RUN apt -y upgrade
 RUN apt -y install debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
 
 ENV CLANG_VERSION=13
-RUN echo "deb [arch=amd64] http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-focal-${CLANG_VERSION} main" > /etc/apt/sources.list.d/llvm.list
+RUN echo "deb [arch=amd64] http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-${CLANG_VERSION} main" > /etc/apt/sources.list.d/llvm.list
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 
 # https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
