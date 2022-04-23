@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:jammy
 LABEL maintainer="Jeremy Zheng"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -32,7 +32,7 @@ RUN apt -y install zsh git locales rsync openssh-client sshpass \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
     imagemagick ffmpeg ttf-dejavu \
     clang-${CLANG_VERSION} clang-format-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
-    build-essential pkg-config libtool automake autoconf binutils cpio \
+    build-essential pkg-config libtool automake autoconf binutils cpio mold \
     debhelper bison flex ninja-build \
     crossbuild-essential-armhf pkg-config-arm-linux-gnueabihf \
     crossbuild-essential-arm64 pkg-config-aarch64-linux-gnu \
@@ -106,15 +106,6 @@ RUN apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
 RUN zsh -c "source $HOME/.zshrc \
     && cargo install diesel_cli \
     && cargo install --locked cargo-outdated"
-
-RUN git clone https://github.com/rui314/mold.git $HOME/build/mold
-RUN apt install -y libstdc++-10-dev libssl-dev libxxhash-dev zlib1g-dev
-RUN zsh -c "source $HOME/.zshrc \
-    && cd $HOME/build/mold \
-    && git checkout v1.2.1 \
-    && make CXX=clang++ \
-    && strip -s mold \
-    && cp mold /usr/bin/ "
 
 # TODO mdbook
 

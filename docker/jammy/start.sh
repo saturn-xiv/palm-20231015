@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export CODE="palm-focal"
+export CODE="palm-jammy"
 export NAME="$CODE-$USER"
 
 if podman container exists $NAME
