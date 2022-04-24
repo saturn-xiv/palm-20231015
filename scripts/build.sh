@@ -2,9 +2,11 @@
 
 set -e
 
+. /etc/os-release
+
 export WORKSPACE=$PWD
 export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
-export TARGET=$WORKSPACE/tmp/$GIT_VERSION
+export TARGET=$WORKSPACE/tmp/$GIT_VERSION-$VERSION_CODENAME
 
 build_ubuntu_backend() {
     echo "build $1..."
@@ -118,12 +120,8 @@ build_deb(){
 
 # -----------------------------------------------------------------------------
 
-# export OS_NAME=$(lsb_release -is)
-# export OS_CODE=$(lsb_release -cs)
-
 build_dashboard
 
-. /etc/os-release
 
 if [[ $ID == "ubuntu" ]]
 then    

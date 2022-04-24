@@ -30,12 +30,12 @@ RUN apt -y upgrade
 RUN apt -y install zsh git locales rsync openssh-client sshpass \
     vim tzdata pwgen curl zip unzip tree tmux \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
-    imagemagick ffmpeg ttf-dejavu \
+    imagemagick ffmpeg fonts-dejavu \
     clang-${CLANG_VERSION} clang-format-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
     build-essential pkg-config libtool automake autoconf binutils cpio mold \
     debhelper bison flex ninja-build \
-    crossbuild-essential-armhf pkg-config-arm-linux-gnueabihf \
-    crossbuild-essential-arm64 pkg-config-aarch64-linux-gnu \
+    crossbuild-essential-armhf \
+    crossbuild-essential-arm64 \
     python3 python3-distutils python3-dev python3-pip \
     nginx elasticsearch rabbitmq-server redis postgresql mariadb-server
 RUN apt -y autoremove
