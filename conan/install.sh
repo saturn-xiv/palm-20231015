@@ -9,8 +9,8 @@ if [[ $ID == "ubuntu" ]]
 then
     declare -a profiles=(
         "amd64"
-        "arm64"
-        "armhf"
+        "$VERSION_CODENAME/arm64"
+        "$VERSION_CODENAME/armhf"
     )
 elif [[ $ID == "arch" ]]
 then
