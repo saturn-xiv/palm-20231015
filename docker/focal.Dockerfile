@@ -31,7 +31,7 @@ RUN echo "deb [arch=armhf,arm64] http://ports.ubuntu.com/ $(lsb_release -cs)-upd
 RUN apt update
 RUN apt -y upgrade
 
-ENV LIBSTD_VERSION 11
+ENV GCC_VERSION 10
 RUN apt -y install zsh git locales rsync openssh-client sshpass \
     vim tzdata pwgen curl zip unzip tree tmux \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
@@ -39,11 +39,11 @@ RUN apt -y install zsh git locales rsync openssh-client sshpass \
     clang-${CLANG_VERSION} clang-format-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
     build-essential pkg-config libtool automake autoconf binutils cpio \
     debhelper bison flex ninja-build \
-    g++-11 libstdc++-${LIBSTD_VERSION}-dev:amd64 \
+    g++-${GCC_VERSION} libstdc++-${GCC_VERSION}-dev:amd64 \
     libc6-dev-armhf-cross crossbuild-essential-armhf pkg-config-arm-linux-gnueabihf \
-    g++-10-arm-linux-gnueabihf libstdc++-${LIBSTD_VERSION}-dev:armhf \
+    g++-${GCC_VERSION}-arm-linux-gnueabihf libstdc++-${GCC_VERSION}-dev:armhf \
     libc6-dev-arm64-cross crossbuild-essential-arm64 pkg-config-aarch64-linux-gnu \
-    g++-10-aarch64-linux-gnu libstdc++-${LIBSTD_VERSION}-dev:arm64 \
+    g++-${GCC_VERSION}-aarch64-linux-gnu libstdc++-${GCC_VERSION}-dev:arm64 \
     python3 python3-distutils python3-dev python3-pip \
     nginx elasticsearch rabbitmq-server redis postgresql mariadb-server
 RUN apt -y autoremove

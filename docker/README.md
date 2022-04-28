@@ -12,4 +12,5 @@ sudo apt install crun podman buildah
   podman system reset
   podman images
   podman ps -a
+  podman run --rm -it ubuntu:jammy /bin/bash
   ```
