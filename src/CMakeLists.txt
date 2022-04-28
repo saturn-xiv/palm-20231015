@@ -7,7 +7,7 @@ add_library(palm STATIC ${SOURCE_LIST})
 FetchContent_Declare(
     casbin
     GIT_REPOSITORY  "https://github.com/casbin/casbin-cpp.git"
-    GIT_TAG         "v1.50.0"
+    GIT_TAG         "v1.50.1"
 )
 FetchContent_Declare(
   Poco
