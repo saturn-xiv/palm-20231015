@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:jammy
 LABEL maintainer="Jeremy Zheng"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -11,7 +11,7 @@ RUN apt -y install debian-keyring debian-archive-keyring apt-transport-https sof
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 
 ENV CLANG_VERSION=13
-RUN echo "deb [arch=amd64] http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-focal-${CLANG_VERSION} main" > /etc/apt/sources.list.d/llvm.list
+RUN echo "deb [arch=amd64] http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-${CLANG_VERSION} main" > /etc/apt/sources.list.d/llvm.list
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 
 # https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
@@ -31,19 +31,19 @@ RUN echo "deb [arch=armhf,arm64] http://ports.ubuntu.com/ $(lsb_release -cs)-upd
 RUN apt update
 RUN apt -y upgrade
 
-ENV LIBSTD_VERSION 11
+ENV GCC_VERSION 12
 RUN apt -y install zsh git locales rsync openssh-client sshpass \
     vim tzdata pwgen curl zip unzip tree tmux \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
-    imagemagick ffmpeg ttf-dejavu \
-    clang-${CLANG_VERSION} clang-format-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
+    imagemagick ffmpeg fonts-dejavu-extra \
+    mold clang-${CLANG_VERSION} clang-format-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
     build-essential pkg-config libtool automake autoconf binutils cpio \
     debhelper bison flex ninja-build \
-    g++-11 libstdc++-${LIBSTD_VERSION}-dev:amd64 \
-    libc6-dev-armhf-cross crossbuild-essential-armhf pkg-config-arm-linux-gnueabihf \
-    g++-10-arm-linux-gnueabihf libstdc++-${LIBSTD_VERSION}-dev:armhf \
-    libc6-dev-arm64-cross crossbuild-essential-arm64 pkg-config-aarch64-linux-gnu \
-    g++-10-aarch64-linux-gnu libstdc++-${LIBSTD_VERSION}-dev:arm64 \
+    g++-${GCC_VERSION} libstdc++-${GCC_VERSION}-dev:amd64 \
+    libc6-dev-armhf-cross crossbuild-essential-armhf \
+    g++-${GCC_VERSION}-arm-linux-gnueabihf libstdc++-${GCC_VERSION}-dev:armhf \
+    libc6-dev-arm64-cross crossbuild-essential-arm64 \
+    g++-${GCC_VERSION}-aarch64-linux-gnu libstdc++-${GCC_VERSION}-dev:arm64 \
     python3 python3-distutils python3-dev python3-pip \
     nginx elasticsearch rabbitmq-server redis postgresql mariadb-server
 RUN apt -y autoremove
@@ -90,19 +90,27 @@ RUN sh -c ". $HOME/.profile \
 # https://github.com/nvm-sh/nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | sh
 RUN sh -c ". $HOME/.profile \
-    && nvm install node"
-RUN sh -c ". $HOME/.profile \
+    && nvm install node \
     && npm i yarn -g"
+RUN sh -c ". $HOME/.profile \
+    && nvm install lts/fermium \
+    && nvm use --lts \
+    && npm i yarn -g"
+RUN sh -c ". $HOME/.profile \
+    && nvm install lts/fermium \
+    && nvm use lts/fermium \
+    && npm i yarn -g"
+
 # https://stackoverflow.com/questions/37324519/node-sass-does-not-yet-support-your-current-environment-linux-64-bit-with-false
 RUN sh -c ". $HOME/.profile \
-    && nvm install lts/fermium"
+    && nvm install "
 RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
 
 
 RUN curl -s "https://get.sdkman.io" | zsh
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
-    && sdk install java 18-open \
+    && sdk install java 18.0.1-open \
     && sdk install maven \
     && sdk install gradle"
 
@@ -111,33 +119,10 @@ RUN echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.profile
 RUN zsh -c "source $HOME/.zshrc \
     && $HOME/local/vcpkg/bootstrap-vcpkg.sh"
 
-# ENV LIQUIBASE_VERSION "4.9.1"
-# RUN mkdir -p $HOME/local/liquibase \
-#     && cd $HOME/local/liquibase \
-#     && wget -c https://github.com/liquibase/liquibase/releases/download/v${LIQUIBASE_VERSION}/liquibase-${LIQUIBASE_VERSION}.tar.gz -O - | tar -xz
-
-# https://grpc.io/docs/languages/cpp/quickstart/
-# ENV GRPC_VERSION "v1.41.0"
-# ENV PROTOC_VERSION "v3.17.1"
-# RUN zsh -c "source $HOME/.zshrc \
-#     && git clone --recurse-submodules -b ${GRPC_VERSION} https://github.com/grpc/grpc.git $HOME/downloads/grpc"
-# RUN cd $HOME/downloads/grpc/third_party/protobuf \
-#     && git checkout ${PROTOC_VERSION}
-# RUN mkdir -pv $HOME/build/grpc-amd64
-# RUN zsh -c "source $HOME/.zshrc \
-#     && cd $HOME/build/grpc-amd64 \
-#     && cmake -DCMAKE_BUILD_TYPE=Release \
-#     -DgRPC_INSTALL=ON \
-#     -DgRPC_SSL_PROVIDER=package \
-#     -DgRPC_BUILD_TESTS=OFF \
-#     -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc"
-# RUN zsh -c "source $HOME/.zshrc \
-#     && cd $HOME/build/grpc-amd64 \
-#     && make"
-# RUN zsh -c "source $HOME/.zshrc \
-#     && cd $HOME/build/grpc-amd64 \
-#     && make install"
-
+ENV LIQUIBASE_VERSION "4.9.1"
+RUN mkdir -p $HOME/local/liquibase \
+    && cd $HOME/local/liquibase \
+    && wget -c https://github.com/liquibase/liquibase/releases/download/v${LIQUIBASE_VERSION}/liquibase-${LIQUIBASE_VERSION}.tar.gz -O - | tar -xz
 
 # TODO mdbook
 
