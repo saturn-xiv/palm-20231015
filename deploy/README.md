@@ -9,7 +9,7 @@ cd clients/CLUSTER
 # append your cluster hosts
 touch hosts
 # generate ssh key
-ssh-keygen -t ed25519 -f .ssh/id_ed25519
+ssh-keygen -E sha512 -t ed25519 -f .ssh/id_ed25519 -C "change-me@gmail.com"
 # upload the ssh public key to target host
 ssh-copy-id -i .ssh/id_ed25519 USER@HOST
 ```
