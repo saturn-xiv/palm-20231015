@@ -1,7 +1,7 @@
 table! {
     attachments (id) {
-        id -> Uuid,
-        user_id -> Uuid,
+        id -> Int4,
+        user_id -> Int4,
         title -> Varchar,
         size -> Int8,
         content_type -> Varchar,
@@ -15,12 +15,12 @@ table! {
 
 table! {
     logs (id) {
-        id -> Uuid,
-        user_id -> Uuid,
+        id -> Int4,
+        user_id -> Int4,
         level -> Varchar,
         ip -> Varchar,
         resource_type -> Varchar,
-        resource_id -> Uuid,
+        resource_id -> Int4,
         message -> Text,
         created_at -> Timestamp,
     }
@@ -28,7 +28,7 @@ table! {
 
 table! {
     users (id) {
-        id -> Uuid,
+        id -> Int4,
         real_name -> Varchar,
         nick_name -> Varchar,
         email -> Varchar,

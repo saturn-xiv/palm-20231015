@@ -5,7 +5,6 @@ use std::fmt::Display;
 use chrono::{NaiveDateTime, Utc};
 use diesel::{insert_into, prelude::*, update};
 use serde::{de::DeserializeOwned, ser::Serialize};
-use uuid::Uuid;
 
 use self::schema::settings;
 use super::{

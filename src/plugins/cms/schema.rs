@@ -1,5 +1,5 @@
 table! {
-    cms_action_log_config (id) {
+    jm_action_log_config (id) {
         id -> Unsigned<Integer>,
         type_title -> Varchar,
         type_alias -> Varchar,
@@ -11,7 +11,7 @@ table! {
 }
 
 table! {
-    cms_action_logs (id) {
+    jm_action_logs (id) {
         id -> Unsigned<Integer>,
         message_language_key -> Varchar,
         message -> Text,
@@ -24,14 +24,14 @@ table! {
 }
 
 table! {
-    cms_action_logs_extensions (id) {
+    jm_action_logs_extensions (id) {
         id -> Unsigned<Integer>,
         extension -> Varchar,
     }
 }
 
 table! {
-    cms_action_logs_users (user_id) {
+    jm_action_logs_users (user_id) {
         user_id -> Unsigned<Integer>,
         notify -> Unsigned<Tinyint>,
         extensions -> Text,
@@ -39,7 +39,7 @@ table! {
 }
 
 table! {
-    cms_assets (id) {
+    jm_assets (id) {
         id -> Unsigned<Integer>,
         parent_id -> Integer,
         lft -> Integer,
@@ -52,7 +52,7 @@ table! {
 }
 
 table! {
-    cms_associations (context, id) {
+    jm_associations (context, id) {
         id -> Integer,
         context -> Varchar,
         key -> Char,
@@ -60,7 +60,7 @@ table! {
 }
 
 table! {
-    cms_banner_clients (id) {
+    jm_banner_clients (id) {
         id -> Integer,
         name -> Varchar,
         contact -> Varchar,
@@ -79,7 +79,7 @@ table! {
 }
 
 table! {
-    cms_banner_tracks (track_date, track_type, banner_id) {
+    jm_banner_tracks (track_date, track_type, banner_id) {
         track_date -> Datetime,
         track_type -> Unsigned<Integer>,
         banner_id -> Unsigned<Integer>,
@@ -88,7 +88,7 @@ table! {
 }
 
 table! {
-    cms_banners (id) {
+    jm_banners (id) {
         id -> Integer,
         cid -> Integer,
         #[sql_name = "type"]
@@ -128,7 +128,7 @@ table! {
 }
 
 table! {
-    cms_categories (id) {
+    jm_categories (id) {
         id -> Integer,
         asset_id -> Unsigned<Integer>,
         parent_id -> Unsigned<Integer>,
@@ -160,7 +160,7 @@ table! {
 }
 
 table! {
-    cms_contact_details (id) {
+    jm_contact_details (id) {
         id -> Integer,
         name -> Varchar,
         alias -> Varchar,
@@ -207,7 +207,7 @@ table! {
 }
 
 table! {
-    cms_content (id) {
+    jm_content (id) {
         id -> Unsigned<Integer>,
         asset_id -> Unsigned<Integer>,
         title -> Varchar,
@@ -242,7 +242,7 @@ table! {
 }
 
 table! {
-    cms_content_frontpage (content_id) {
+    jm_content_frontpage (content_id) {
         content_id -> Integer,
         ordering -> Integer,
         featured_up -> Nullable<Datetime>,
@@ -251,7 +251,7 @@ table! {
 }
 
 table! {
-    cms_content_rating (content_id) {
+    jm_content_rating (content_id) {
         content_id -> Integer,
         rating_sum -> Unsigned<Integer>,
         rating_count -> Unsigned<Integer>,
@@ -260,7 +260,7 @@ table! {
 }
 
 table! {
-    cms_extensions (extension_id) {
+    jm_extensions (extension_id) {
         extension_id -> Integer,
         package_id -> Integer,
         name -> Varchar,
@@ -286,7 +286,7 @@ table! {
 }
 
 table! {
-    cms_fields (id) {
+    jm_fields (id) {
         id -> Unsigned<Integer>,
         asset_id -> Unsigned<Integer>,
         context -> Varchar,
@@ -317,14 +317,14 @@ table! {
 }
 
 table! {
-    cms_fields_categories (field_id, category_id) {
+    jm_fields_categories (field_id, category_id) {
         field_id -> Integer,
         category_id -> Integer,
     }
 }
 
 table! {
-    cms_fields_groups (id) {
+    jm_fields_groups (id) {
         id -> Unsigned<Integer>,
         asset_id -> Unsigned<Integer>,
         context -> Varchar,
@@ -346,7 +346,7 @@ table! {
 }
 
 table! {
-    cms_finder_filters (filter_id) {
+    jm_finder_filters (filter_id) {
         filter_id -> Unsigned<Integer>,
         title -> Varchar,
         alias -> Varchar,
@@ -365,7 +365,7 @@ table! {
 }
 
 table! {
-    cms_finder_links (link_id) {
+    jm_finder_links (link_id) {
         link_id -> Unsigned<Integer>,
         url -> Varchar,
         route -> Varchar,
@@ -389,7 +389,7 @@ table! {
 }
 
 table! {
-    cms_finder_links_terms (link_id, term_id) {
+    jm_finder_links_terms (link_id, term_id) {
         link_id -> Unsigned<Integer>,
         term_id -> Unsigned<Integer>,
         weight -> Unsigned<Float>,
@@ -397,7 +397,7 @@ table! {
 }
 
 table! {
-    cms_finder_logging (md5sum) {
+    jm_finder_logging (md5sum) {
         searchterm -> Varchar,
         md5sum -> Varchar,
         query -> Blob,
@@ -407,7 +407,7 @@ table! {
 }
 
 table! {
-    cms_finder_taxonomy (id) {
+    jm_finder_taxonomy (id) {
         id -> Unsigned<Integer>,
         parent_id -> Unsigned<Integer>,
         lft -> Integer,
@@ -423,14 +423,14 @@ table! {
 }
 
 table! {
-    cms_finder_taxonomy_map (link_id, node_id) {
+    jm_finder_taxonomy_map (link_id, node_id) {
         link_id -> Unsigned<Integer>,
         node_id -> Unsigned<Integer>,
     }
 }
 
 table! {
-    cms_finder_terms (term_id) {
+    jm_finder_terms (term_id) {
         term_id -> Unsigned<Integer>,
         term -> Varchar,
         stem -> Varchar,
@@ -444,7 +444,7 @@ table! {
 }
 
 table! {
-    cms_finder_types (id) {
+    jm_finder_types (id) {
         id -> Unsigned<Integer>,
         title -> Varchar,
         mime -> Varchar,
@@ -452,7 +452,7 @@ table! {
 }
 
 table! {
-    cms_history (version_id) {
+    jm_history (version_id) {
         version_id -> Unsigned<Integer>,
         item_id -> Varchar,
         version_note -> Varchar,
@@ -466,7 +466,7 @@ table! {
 }
 
 table! {
-    cms_languages (lang_id) {
+    jm_languages (lang_id) {
         lang_id -> Unsigned<Integer>,
         asset_id -> Unsigned<Integer>,
         lang_code -> Char,
@@ -485,7 +485,7 @@ table! {
 }
 
 table! {
-    cms_mail_templates (template_id, language) {
+    jm_mail_templates (template_id, language) {
         template_id -> Varchar,
         extension -> Varchar,
         language -> Char,
@@ -498,7 +498,7 @@ table! {
 }
 
 table! {
-    cms_menu (id) {
+    jm_menu (id) {
         id -> Integer,
         menutype -> Varchar,
         title -> Varchar,
@@ -530,7 +530,7 @@ table! {
 }
 
 table! {
-    cms_menu_types (id) {
+    jm_menu_types (id) {
         id -> Unsigned<Integer>,
         asset_id -> Unsigned<Integer>,
         menutype -> Varchar,
@@ -541,7 +541,7 @@ table! {
 }
 
 table! {
-    cms_messages (message_id) {
+    jm_messages (message_id) {
         message_id -> Unsigned<Integer>,
         user_id_from -> Unsigned<Integer>,
         user_id_to -> Unsigned<Integer>,
@@ -555,7 +555,7 @@ table! {
 }
 
 table! {
-    cms_modules (id) {
+    jm_modules (id) {
         id -> Integer,
         asset_id -> Unsigned<Integer>,
         title -> Varchar,
@@ -578,14 +578,14 @@ table! {
 }
 
 table! {
-    cms_modules_menu (moduleid, menuid) {
+    jm_modules_menu (moduleid, menuid) {
         moduleid -> Integer,
         menuid -> Integer,
     }
 }
 
 table! {
-    cms_newsfeeds (id) {
+    jm_newsfeeds (id) {
         catid -> Integer,
         id -> Unsigned<Integer>,
         name -> Varchar,
@@ -619,7 +619,7 @@ table! {
 }
 
 table! {
-    cms_overrider (id) {
+    jm_overrider (id) {
         id -> Integer,
         constant -> Varchar,
         string -> Text,
@@ -628,7 +628,7 @@ table! {
 }
 
 table! {
-    cms_postinstall_messages (postinstall_message_id) {
+    jm_postinstall_messages (postinstall_message_id) {
         postinstall_message_id -> Unsigned<Bigint>,
         extension_id -> Bigint,
         title_key -> Varchar,
@@ -648,7 +648,7 @@ table! {
 }
 
 table! {
-    cms_privacy_consents (id) {
+    jm_privacy_consents (id) {
         id -> Unsigned<Integer>,
         user_id -> Unsigned<Integer>,
         state -> Integer,
@@ -661,7 +661,7 @@ table! {
 }
 
 table! {
-    cms_privacy_requests (id) {
+    jm_privacy_requests (id) {
         id -> Unsigned<Integer>,
         email -> Varchar,
         requested_at -> Datetime,
@@ -673,7 +673,7 @@ table! {
 }
 
 table! {
-    cms_redirect_links (id) {
+    jm_redirect_links (id) {
         id -> Unsigned<Integer>,
         old_url -> Varchar,
         new_url -> Nullable<Varchar>,
@@ -688,7 +688,7 @@ table! {
 }
 
 table! {
-    cms_scheduler_tasks (id) {
+    jm_scheduler_tasks (id) {
         id -> Unsigned<Integer>,
         asset_id -> Unsigned<Integer>,
         title -> Varchar,
@@ -716,14 +716,14 @@ table! {
 }
 
 table! {
-    cms_schemas (extension_id, version_id) {
+    jm_schemas (extension_id, version_id) {
         extension_id -> Integer,
         version_id -> Varchar,
     }
 }
 
 table! {
-    cms_session (session_id) {
+    jm_session (session_id) {
         session_id -> Varbinary,
         client_id -> Nullable<Unsigned<Tinyint>>,
         guest -> Nullable<Unsigned<Tinyint>>,
@@ -735,7 +735,7 @@ table! {
 }
 
 table! {
-    cms_tags (id) {
+    jm_tags (id) {
         id -> Unsigned<Integer>,
         parent_id -> Unsigned<Integer>,
         lft -> Integer,
@@ -770,7 +770,7 @@ table! {
 }
 
 table! {
-    cms_template_overrides (id) {
+    jm_template_overrides (id) {
         id -> Unsigned<Integer>,
         template -> Varchar,
         hash_id -> Varchar,
@@ -784,7 +784,7 @@ table! {
 }
 
 table! {
-    cms_template_styles (id) {
+    jm_template_styles (id) {
         id -> Unsigned<Integer>,
         template -> Varchar,
         client_id -> Unsigned<Tinyint>,
@@ -797,7 +797,7 @@ table! {
 }
 
 table! {
-    cms_ucm_base (ucm_id) {
+    jm_ucm_base (ucm_id) {
         ucm_id -> Unsigned<Integer>,
         ucm_item_id -> Integer,
         ucm_type_id -> Integer,
@@ -806,7 +806,7 @@ table! {
 }
 
 table! {
-    cms_ucm_content (core_content_id) {
+    jm_ucm_content (core_content_id) {
         core_content_id -> Unsigned<Integer>,
         core_type_alias -> Varchar,
         core_title -> Varchar,
@@ -842,7 +842,7 @@ table! {
 }
 
 table! {
-    cms_update_sites (update_site_id) {
+    jm_update_sites (update_site_id) {
         update_site_id -> Integer,
         name -> Nullable<Varchar>,
         #[sql_name = "type"]
@@ -857,14 +857,14 @@ table! {
 }
 
 table! {
-    cms_update_sites_extensions (update_site_id, extension_id) {
+    jm_update_sites_extensions (update_site_id, extension_id) {
         update_site_id -> Integer,
         extension_id -> Integer,
     }
 }
 
 table! {
-    cms_updates (update_id) {
+    jm_updates (update_id) {
         update_id -> Integer,
         update_site_id -> Nullable<Integer>,
         extension_id -> Nullable<Integer>,
@@ -885,7 +885,7 @@ table! {
 }
 
 table! {
-    cms_user_keys (id) {
+    jm_user_keys (id) {
         id -> Unsigned<Integer>,
         user_id -> Varchar,
         token -> Varchar,
@@ -896,7 +896,7 @@ table! {
 }
 
 table! {
-    cms_user_notes (id) {
+    jm_user_notes (id) {
         id -> Unsigned<Integer>,
         user_id -> Unsigned<Integer>,
         catid -> Unsigned<Integer>,
@@ -916,14 +916,14 @@ table! {
 }
 
 table! {
-    cms_user_usergroup_map (user_id, group_id) {
+    jm_user_usergroup_map (user_id, group_id) {
         user_id -> Unsigned<Integer>,
         group_id -> Unsigned<Integer>,
     }
 }
 
 table! {
-    cms_usergroups (id) {
+    jm_usergroups (id) {
         id -> Unsigned<Integer>,
         parent_id -> Unsigned<Integer>,
         lft -> Integer,
@@ -933,7 +933,7 @@ table! {
 }
 
 table! {
-    cms_users (id) {
+    jm_users (id) {
         id -> Integer,
         name -> Varchar,
         username -> Varchar,
@@ -955,7 +955,7 @@ table! {
 }
 
 table! {
-    cms_viewlevels (id) {
+    jm_viewlevels (id) {
         id -> Unsigned<Integer>,
         title -> Varchar,
         ordering -> Integer,
@@ -964,7 +964,7 @@ table! {
 }
 
 table! {
-    cms_webauthn_credentials (id) {
+    jm_webauthn_credentials (id) {
         id -> Varchar,
         user_id -> Varchar,
         label -> Varchar,
@@ -973,7 +973,7 @@ table! {
 }
 
 table! {
-    cms_workflow_associations (item_id, extension) {
+    jm_workflow_associations (item_id, extension) {
         item_id -> Integer,
         stage_id -> Integer,
         extension -> Varchar,
@@ -981,7 +981,7 @@ table! {
 }
 
 table! {
-    cms_workflow_stages (id) {
+    jm_workflow_stages (id) {
         id -> Integer,
         asset_id -> Nullable<Integer>,
         ordering -> Integer,
@@ -996,7 +996,7 @@ table! {
 }
 
 table! {
-    cms_workflow_transitions (id) {
+    jm_workflow_transitions (id) {
         id -> Integer,
         asset_id -> Nullable<Integer>,
         ordering -> Integer,
@@ -1013,7 +1013,7 @@ table! {
 }
 
 table! {
-    cms_workflows (id) {
+    jm_workflows (id) {
         id -> Integer,
         asset_id -> Nullable<Integer>,
         published -> Tinyint,
@@ -1032,66 +1032,66 @@ table! {
 }
 
 allow_tables_to_appear_in_same_query!(
-    cms_action_log_config,
-    cms_action_logs,
-    cms_action_logs_extensions,
-    cms_action_logs_users,
-    cms_assets,
-    cms_associations,
-    cms_banner_clients,
-    cms_banner_tracks,
-    cms_banners,
-    cms_categories,
-    cms_contact_details,
-    cms_content,
-    cms_content_frontpage,
-    cms_content_rating,
-    cms_extensions,
-    cms_fields,
-    cms_fields_categories,
-    cms_fields_groups,
-    cms_finder_filters,
-    cms_finder_links,
-    cms_finder_links_terms,
-    cms_finder_logging,
-    cms_finder_taxonomy,
-    cms_finder_taxonomy_map,
-    cms_finder_terms,
-    cms_finder_types,
-    cms_history,
-    cms_languages,
-    cms_mail_templates,
-    cms_menu,
-    cms_menu_types,
-    cms_messages,
-    cms_modules,
-    cms_modules_menu,
-    cms_newsfeeds,
-    cms_overrider,
-    cms_postinstall_messages,
-    cms_privacy_consents,
-    cms_privacy_requests,
-    cms_redirect_links,
-    cms_scheduler_tasks,
-    cms_schemas,
-    cms_session,
-    cms_tags,
-    cms_template_overrides,
-    cms_template_styles,
-    cms_ucm_base,
-    cms_ucm_content,
-    cms_update_sites,
-    cms_update_sites_extensions,
-    cms_updates,
-    cms_user_keys,
-    cms_user_notes,
-    cms_user_usergroup_map,
-    cms_usergroups,
-    cms_users,
-    cms_viewlevels,
-    cms_webauthn_credentials,
-    cms_workflow_associations,
-    cms_workflow_stages,
-    cms_workflow_transitions,
-    cms_workflows,
+    jm_action_log_config,
+    jm_action_logs,
+    jm_action_logs_extensions,
+    jm_action_logs_users,
+    jm_assets,
+    jm_associations,
+    jm_banner_clients,
+    jm_banner_tracks,
+    jm_banners,
+    jm_categories,
+    jm_contact_details,
+    jm_content,
+    jm_content_frontpage,
+    jm_content_rating,
+    jm_extensions,
+    jm_fields,
+    jm_fields_categories,
+    jm_fields_groups,
+    jm_finder_filters,
+    jm_finder_links,
+    jm_finder_links_terms,
+    jm_finder_logging,
+    jm_finder_taxonomy,
+    jm_finder_taxonomy_map,
+    jm_finder_terms,
+    jm_finder_types,
+    jm_history,
+    jm_languages,
+    jm_mail_templates,
+    jm_menu,
+    jm_menu_types,
+    jm_messages,
+    jm_modules,
+    jm_modules_menu,
+    jm_newsfeeds,
+    jm_overrider,
+    jm_postinstall_messages,
+    jm_privacy_consents,
+    jm_privacy_requests,
+    jm_redirect_links,
+    jm_scheduler_tasks,
+    jm_schemas,
+    jm_session,
+    jm_tags,
+    jm_template_overrides,
+    jm_template_styles,
+    jm_ucm_base,
+    jm_ucm_content,
+    jm_update_sites,
+    jm_update_sites_extensions,
+    jm_updates,
+    jm_user_keys,
+    jm_user_notes,
+    jm_user_usergroup_map,
+    jm_usergroups,
+    jm_users,
+    jm_viewlevels,
+    jm_webauthn_credentials,
+    jm_workflow_associations,
+    jm_workflow_stages,
+    jm_workflow_transitions,
+    jm_workflows,
 );

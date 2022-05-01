@@ -1,6 +1,6 @@
 table! {
     locales (id) {
-        id -> Uuid,
+        id -> Int4,
         lang -> Varchar,
         code -> Varchar,
         message -> Text,

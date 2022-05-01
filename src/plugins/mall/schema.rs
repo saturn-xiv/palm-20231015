@@ -1,5 +1,5 @@
 table! {
-    mall_address (address_id) {
+    oc_address (address_id) {
         address_id -> Integer,
         customer_id -> Integer,
         firstname -> Varchar,
@@ -16,7 +16,7 @@ table! {
 }
 
 table! {
-    mall_api (api_id) {
+    oc_api (api_id) {
         api_id -> Integer,
         username -> Varchar,
         key -> Text,
@@ -27,7 +27,7 @@ table! {
 }
 
 table! {
-    mall_api_ip (api_ip_id) {
+    oc_api_ip (api_ip_id) {
         api_ip_id -> Integer,
         api_id -> Integer,
         ip -> Varchar,
@@ -35,7 +35,7 @@ table! {
 }
 
 table! {
-    mall_api_session (api_session_id) {
+    oc_api_session (api_session_id) {
         api_session_id -> Integer,
         api_id -> Integer,
         session_id -> Varchar,
@@ -46,7 +46,7 @@ table! {
 }
 
 table! {
-    mall_attribute (attribute_id) {
+    oc_attribute (attribute_id) {
         attribute_id -> Integer,
         attribute_group_id -> Integer,
         sort_order -> Integer,
@@ -54,7 +54,7 @@ table! {
 }
 
 table! {
-    mall_attribute_description (attribute_id, language_id) {
+    oc_attribute_description (attribute_id, language_id) {
         attribute_id -> Integer,
         language_id -> Integer,
         name -> Varchar,
@@ -62,14 +62,14 @@ table! {
 }
 
 table! {
-    mall_attribute_group (attribute_group_id) {
+    oc_attribute_group (attribute_group_id) {
         attribute_group_id -> Integer,
         sort_order -> Integer,
     }
 }
 
 table! {
-    mall_attribute_group_description (attribute_group_id, language_id) {
+    oc_attribute_group_description (attribute_group_id, language_id) {
         attribute_group_id -> Integer,
         language_id -> Integer,
         name -> Varchar,
@@ -77,7 +77,7 @@ table! {
 }
 
 table! {
-    mall_banner (banner_id) {
+    oc_banner (banner_id) {
         banner_id -> Integer,
         name -> Varchar,
         status -> Bool,
@@ -85,7 +85,7 @@ table! {
 }
 
 table! {
-    mall_banner_image (banner_image_id) {
+    oc_banner_image (banner_image_id) {
         banner_image_id -> Integer,
         banner_id -> Integer,
         language_id -> Integer,
@@ -97,7 +97,7 @@ table! {
 }
 
 table! {
-    mall_cart (cart_id) {
+    oc_cart (cart_id) {
         cart_id -> Unsigned<Integer>,
         api_id -> Integer,
         customer_id -> Integer,
@@ -111,7 +111,7 @@ table! {
 }
 
 table! {
-    mall_category (category_id) {
+    oc_category (category_id) {
         category_id -> Integer,
         image -> Nullable<Varchar>,
         parent_id -> Integer,
@@ -125,7 +125,7 @@ table! {
 }
 
 table! {
-    mall_category_description (category_id, language_id) {
+    oc_category_description (category_id, language_id) {
         category_id -> Integer,
         language_id -> Integer,
         name -> Varchar,
@@ -137,14 +137,14 @@ table! {
 }
 
 table! {
-    mall_category_filter (category_id, filter_id) {
+    oc_category_filter (category_id, filter_id) {
         category_id -> Integer,
         filter_id -> Integer,
     }
 }
 
 table! {
-    mall_category_path (category_id, path_id) {
+    oc_category_path (category_id, path_id) {
         category_id -> Integer,
         path_id -> Integer,
         level -> Integer,
@@ -152,7 +152,7 @@ table! {
 }
 
 table! {
-    mall_category_to_layout (category_id, store_id) {
+    oc_category_to_layout (category_id, store_id) {
         category_id -> Integer,
         store_id -> Integer,
         layout_id -> Integer,
@@ -160,14 +160,14 @@ table! {
 }
 
 table! {
-    mall_category_to_store (category_id, store_id) {
+    oc_category_to_store (category_id, store_id) {
         category_id -> Integer,
         store_id -> Integer,
     }
 }
 
 table! {
-    mall_country (country_id) {
+    oc_country (country_id) {
         country_id -> Integer,
         name -> Varchar,
         iso_code_2 -> Varchar,
@@ -179,7 +179,7 @@ table! {
 }
 
 table! {
-    mall_coupon (coupon_id) {
+    oc_coupon (coupon_id) {
         coupon_id -> Integer,
         name -> Varchar,
         code -> Varchar,
@@ -199,14 +199,14 @@ table! {
 }
 
 table! {
-    mall_coupon_category (coupon_id, category_id) {
+    oc_coupon_category (coupon_id, category_id) {
         coupon_id -> Integer,
         category_id -> Integer,
     }
 }
 
 table! {
-    mall_coupon_history (coupon_history_id) {
+    oc_coupon_history (coupon_history_id) {
         coupon_history_id -> Integer,
         coupon_id -> Integer,
         order_id -> Integer,
@@ -217,7 +217,7 @@ table! {
 }
 
 table! {
-    mall_coupon_product (coupon_product_id) {
+    oc_coupon_product (coupon_product_id) {
         coupon_product_id -> Integer,
         coupon_id -> Integer,
         product_id -> Integer,
@@ -225,7 +225,7 @@ table! {
 }
 
 table! {
-    mall_currency (currency_id) {
+    oc_currency (currency_id) {
         currency_id -> Integer,
         title -> Varchar,
         code -> Varchar,
@@ -239,7 +239,7 @@ table! {
 }
 
 table! {
-    mall_custom_field (custom_field_id) {
+    oc_custom_field (custom_field_id) {
         custom_field_id -> Integer,
         #[sql_name = "type"]
         type_ -> Varchar,
@@ -252,7 +252,7 @@ table! {
 }
 
 table! {
-    mall_custom_field_customer_group (custom_field_id, customer_group_id) {
+    oc_custom_field_customer_group (custom_field_id, customer_group_id) {
         custom_field_id -> Integer,
         customer_group_id -> Integer,
         required -> Bool,
@@ -260,7 +260,7 @@ table! {
 }
 
 table! {
-    mall_custom_field_description (custom_field_id, language_id) {
+    oc_custom_field_description (custom_field_id, language_id) {
         custom_field_id -> Integer,
         language_id -> Integer,
         name -> Varchar,
@@ -268,7 +268,7 @@ table! {
 }
 
 table! {
-    mall_custom_field_value (custom_field_value_id) {
+    oc_custom_field_value (custom_field_value_id) {
         custom_field_value_id -> Integer,
         custom_field_id -> Integer,
         sort_order -> Integer,
@@ -276,7 +276,7 @@ table! {
 }
 
 table! {
-    mall_custom_field_value_description (custom_field_value_id, language_id) {
+    oc_custom_field_value_description (custom_field_value_id, language_id) {
         custom_field_value_id -> Integer,
         language_id -> Integer,
         custom_field_id -> Integer,
@@ -285,7 +285,7 @@ table! {
 }
 
 table! {
-    mall_customer (customer_id) {
+    oc_customer (customer_id) {
         customer_id -> Integer,
         customer_group_id -> Integer,
         store_id -> Integer,
@@ -312,7 +312,7 @@ table! {
 }
 
 table! {
-    mall_customer_activity (customer_activity_id) {
+    oc_customer_activity (customer_activity_id) {
         customer_activity_id -> Integer,
         customer_id -> Integer,
         key -> Varchar,
@@ -323,7 +323,7 @@ table! {
 }
 
 table! {
-    mall_customer_affiliate (customer_id) {
+    oc_customer_affiliate (customer_id) {
         customer_id -> Integer,
         company -> Varchar,
         website -> Varchar,
@@ -345,7 +345,7 @@ table! {
 }
 
 table! {
-    mall_customer_approval (customer_approval_id) {
+    oc_customer_approval (customer_approval_id) {
         customer_approval_id -> Integer,
         customer_id -> Integer,
         #[sql_name = "type"]
@@ -355,7 +355,7 @@ table! {
 }
 
 table! {
-    mall_customer_group (customer_group_id) {
+    oc_customer_group (customer_group_id) {
         customer_group_id -> Integer,
         approval -> Integer,
         sort_order -> Integer,
@@ -363,7 +363,7 @@ table! {
 }
 
 table! {
-    mall_customer_group_description (customer_group_id, language_id) {
+    oc_customer_group_description (customer_group_id, language_id) {
         customer_group_id -> Integer,
         language_id -> Integer,
         name -> Varchar,
@@ -372,7 +372,7 @@ table! {
 }
 
 table! {
-    mall_customer_history (customer_history_id) {
+    oc_customer_history (customer_history_id) {
         customer_history_id -> Integer,
         customer_id -> Integer,
         comment -> Text,
@@ -381,7 +381,7 @@ table! {
 }
 
 table! {
-    mall_customer_ip (customer_ip_id) {
+    oc_customer_ip (customer_ip_id) {
         customer_ip_id -> Integer,
         customer_id -> Integer,
         ip -> Varchar,
@@ -390,7 +390,7 @@ table! {
 }
 
 table! {
-    mall_customer_login (customer_login_id) {
+    oc_customer_login (customer_login_id) {
         customer_login_id -> Integer,
         email -> Varchar,
         ip -> Varchar,
@@ -401,7 +401,7 @@ table! {
 }
 
 table! {
-    mall_customer_online (ip) {
+    oc_customer_online (ip) {
         ip -> Varchar,
         customer_id -> Integer,
         url -> Text,
@@ -411,7 +411,7 @@ table! {
 }
 
 table! {
-    mall_customer_reward (customer_reward_id) {
+    oc_customer_reward (customer_reward_id) {
         customer_reward_id -> Integer,
         customer_id -> Integer,
         order_id -> Integer,
@@ -422,7 +422,7 @@ table! {
 }
 
 table! {
-    mall_customer_search (customer_search_id) {
+    oc_customer_search (customer_search_id) {
         customer_search_id -> Integer,
         store_id -> Integer,
         language_id -> Integer,
@@ -438,7 +438,7 @@ table! {
 }
 
 table! {
-    mall_customer_transaction (customer_transaction_id) {
+    oc_customer_transaction (customer_transaction_id) {
         customer_transaction_id -> Integer,
         customer_id -> Integer,
         order_id -> Integer,
@@ -449,7 +449,7 @@ table! {
 }
 
 table! {
-    mall_customer_wishlist (customer_id, product_id) {
+    oc_customer_wishlist (customer_id, product_id) {
         customer_id -> Integer,
         product_id -> Integer,
         date_added -> Datetime,
@@ -457,7 +457,7 @@ table! {
 }
 
 table! {
-    mall_download (download_id) {
+    oc_download (download_id) {
         download_id -> Integer,
         filename -> Varchar,
         mask -> Varchar,
@@ -466,7 +466,7 @@ table! {
 }
 
 table! {
-    mall_download_description (download_id, language_id) {
+    oc_download_description (download_id, language_id) {
         download_id -> Integer,
         language_id -> Integer,
         name -> Varchar,
@@ -474,7 +474,7 @@ table! {
 }
 
 table! {
-    mall_event (event_id) {
+    oc_event (event_id) {
         event_id -> Integer,
         code -> Varchar,
         trigger -> Text,
@@ -485,7 +485,7 @@ table! {
 }
 
 table! {
-    mall_extension (extension_id) {
+    oc_extension (extension_id) {
         extension_id -> Integer,
         #[sql_name = "type"]
         type_ -> Varchar,
@@ -494,7 +494,7 @@ table! {
 }
 
 table! {
-    mall_extension_install (extension_install_id) {
+    oc_extension_install (extension_install_id) {
         extension_install_id -> Integer,
         extension_download_id -> Integer,
         filename -> Varchar,
@@ -503,7 +503,7 @@ table! {
 }
 
 table! {
-    mall_extension_path (extension_path_id) {
+    oc_extension_path (extension_path_id) {
         extension_path_id -> Integer,
         extension_install_id -> Integer,
         path -> Varchar,
@@ -512,7 +512,7 @@ table! {
 }
 
 table! {
-    mall_filter (filter_id) {
+    oc_filter (filter_id) {
         filter_id -> Integer,
         filter_group_id -> Integer,
         sort_order -> Integer,
@@ -520,7 +520,7 @@ table! {
 }
 
 table! {
-    mall_filter_description (filter_id, language_id) {
+    oc_filter_description (filter_id, language_id) {
         filter_id -> Integer,
         language_id -> Integer,
         filter_group_id -> Integer,
@@ -529,14 +529,14 @@ table! {
 }
 
 table! {
-    mall_filter_group (filter_group_id) {
+    oc_filter_group (filter_group_id) {
         filter_group_id -> Integer,
         sort_order -> Integer,
     }
 }
 
 table! {
-    mall_filter_group_description (filter_group_id, language_id) {
+    oc_filter_group_description (filter_group_id, language_id) {
         filter_group_id -> Integer,
         language_id -> Integer,
         name -> Varchar,
@@ -544,7 +544,7 @@ table! {
 }
 
 table! {
-    mall_geo_zone (geo_zone_id) {
+    oc_geo_zone (geo_zone_id) {
         geo_zone_id -> Integer,
         name -> Varchar,
         description -> Varchar,
@@ -554,7 +554,7 @@ table! {
 }
 
 table! {
-    mall_googleshopping_category (google_product_category, store_id) {
+    oc_googleshopping_category (google_product_category, store_id) {
         google_product_category -> Varchar,
         store_id -> Integer,
         category_id -> Integer,
@@ -562,7 +562,7 @@ table! {
 }
 
 table! {
-    mall_googleshopping_product_status (product_id, store_id, product_variation_id) {
+    oc_googleshopping_product_status (product_id, store_id, product_variation_id) {
         product_id -> Integer,
         store_id -> Integer,
         product_variation_id -> Varchar,
@@ -574,7 +574,7 @@ table! {
 }
 
 table! {
-    mall_googleshopping_product_target (product_id, advertise_google_target_id) {
+    oc_googleshopping_product_target (product_id, advertise_google_target_id) {
         product_id -> Integer,
         store_id -> Integer,
         advertise_google_target_id -> Unsigned<Integer>,
@@ -582,7 +582,7 @@ table! {
 }
 
 table! {
-    mall_information (information_id) {
+    oc_information (information_id) {
         information_id -> Integer,
         bottom -> Integer,
         sort_order -> Integer,
@@ -591,7 +591,7 @@ table! {
 }
 
 table! {
-    mall_information_description (information_id, language_id) {
+    oc_information_description (information_id, language_id) {
         information_id -> Integer,
         language_id -> Integer,
         title -> Varchar,
@@ -603,7 +603,7 @@ table! {
 }
 
 table! {
-    mall_information_to_layout (information_id, store_id) {
+    oc_information_to_layout (information_id, store_id) {
         information_id -> Integer,
         store_id -> Integer,
         layout_id -> Integer,
@@ -611,14 +611,14 @@ table! {
 }
 
 table! {
-    mall_information_to_store (information_id, store_id) {
+    oc_information_to_store (information_id, store_id) {
         information_id -> Integer,
         store_id -> Integer,
     }
 }
 
 table! {
-    mall_language (language_id) {
+    oc_language (language_id) {
         language_id -> Integer,
         name -> Varchar,
         code -> Varchar,
@@ -631,14 +631,14 @@ table! {
 }
 
 table! {
-    mall_layout (layout_id) {
+    oc_layout (layout_id) {
         layout_id -> Integer,
         name -> Varchar,
     }
 }
 
 table! {
-    mall_layout_module (layout_module_id) {
+    oc_layout_module (layout_module_id) {
         layout_module_id -> Integer,
         layout_id -> Integer,
         code -> Varchar,
@@ -648,7 +648,7 @@ table! {
 }
 
 table! {
-    mall_layout_route (layout_route_id) {
+    oc_layout_route (layout_route_id) {
         layout_route_id -> Integer,
         layout_id -> Integer,
         store_id -> Integer,
@@ -657,14 +657,14 @@ table! {
 }
 
 table! {
-    mall_length_class (length_class_id) {
+    oc_length_class (length_class_id) {
         length_class_id -> Integer,
         value -> Decimal,
     }
 }
 
 table! {
-    mall_length_class_description (length_class_id, language_id) {
+    oc_length_class_description (length_class_id, language_id) {
         length_class_id -> Integer,
         language_id -> Integer,
         title -> Varchar,
@@ -673,7 +673,7 @@ table! {
 }
 
 table! {
-    mall_location (location_id) {
+    oc_location (location_id) {
         location_id -> Integer,
         name -> Varchar,
         address -> Text,
@@ -687,7 +687,7 @@ table! {
 }
 
 table! {
-    mall_manufacturer (manufacturer_id) {
+    oc_manufacturer (manufacturer_id) {
         manufacturer_id -> Integer,
         name -> Varchar,
         image -> Nullable<Varchar>,
@@ -696,14 +696,14 @@ table! {
 }
 
 table! {
-    mall_manufacturer_to_store (manufacturer_id, store_id) {
+    oc_manufacturer_to_store (manufacturer_id, store_id) {
         manufacturer_id -> Integer,
         store_id -> Integer,
     }
 }
 
 table! {
-    mall_marketing (marketing_id) {
+    oc_marketing (marketing_id) {
         marketing_id -> Integer,
         name -> Varchar,
         description -> Text,
@@ -714,7 +714,7 @@ table! {
 }
 
 table! {
-    mall_modification (modification_id) {
+    oc_modification (modification_id) {
         modification_id -> Integer,
         extension_install_id -> Integer,
         name -> Varchar,
@@ -729,7 +729,7 @@ table! {
 }
 
 table! {
-    mall_module (module_id) {
+    oc_module (module_id) {
         module_id -> Integer,
         name -> Varchar,
         code -> Varchar,
@@ -738,7 +738,7 @@ table! {
 }
 
 table! {
-    mall_option (option_id) {
+    oc_option (option_id) {
         option_id -> Integer,
         #[sql_name = "type"]
         type_ -> Varchar,
@@ -747,7 +747,7 @@ table! {
 }
 
 table! {
-    mall_option_description (option_id, language_id) {
+    oc_option_description (option_id, language_id) {
         option_id -> Integer,
         language_id -> Integer,
         name -> Varchar,
@@ -755,7 +755,7 @@ table! {
 }
 
 table! {
-    mall_option_value (option_value_id) {
+    oc_option_value (option_value_id) {
         option_value_id -> Integer,
         option_id -> Integer,
         image -> Varchar,
@@ -764,7 +764,7 @@ table! {
 }
 
 table! {
-    mall_option_value_description (option_value_id, language_id) {
+    oc_option_value_description (option_value_id, language_id) {
         option_value_id -> Integer,
         language_id -> Integer,
         option_id -> Integer,
@@ -773,7 +773,7 @@ table! {
 }
 
 table! {
-    mall_order (order_id) {
+    oc_order (order_id) {
         order_id -> Integer,
         invoice_no -> Integer,
         invoice_prefix -> Varchar,
@@ -839,7 +839,7 @@ table! {
 }
 
 table! {
-    mall_order_history (order_history_id) {
+    oc_order_history (order_history_id) {
         order_history_id -> Integer,
         order_id -> Integer,
         order_status_id -> Integer,
@@ -850,7 +850,7 @@ table! {
 }
 
 table! {
-    mall_order_option (order_option_id) {
+    oc_order_option (order_option_id) {
         order_option_id -> Integer,
         order_id -> Integer,
         order_product_id -> Integer,
@@ -864,7 +864,7 @@ table! {
 }
 
 table! {
-    mall_order_product (order_product_id) {
+    oc_order_product (order_product_id) {
         order_product_id -> Integer,
         order_id -> Integer,
         product_id -> Integer,
@@ -879,7 +879,7 @@ table! {
 }
 
 table! {
-    mall_order_recurring (order_recurring_id) {
+    oc_order_recurring (order_recurring_id) {
         order_recurring_id -> Integer,
         order_id -> Integer,
         reference -> Varchar,
@@ -904,7 +904,7 @@ table! {
 }
 
 table! {
-    mall_order_recurring_transaction (order_recurring_transaction_id) {
+    oc_order_recurring_transaction (order_recurring_transaction_id) {
         order_recurring_transaction_id -> Integer,
         order_recurring_id -> Integer,
         reference -> Varchar,
@@ -916,7 +916,7 @@ table! {
 }
 
 table! {
-    mall_order_shipment (order_shipment_id) {
+    oc_order_shipment (order_shipment_id) {
         order_shipment_id -> Integer,
         order_id -> Integer,
         date_added -> Datetime,
@@ -926,7 +926,7 @@ table! {
 }
 
 table! {
-    mall_order_status (order_status_id, language_id) {
+    oc_order_status (order_status_id, language_id) {
         order_status_id -> Integer,
         language_id -> Integer,
         name -> Varchar,
@@ -934,7 +934,7 @@ table! {
 }
 
 table! {
-    mall_order_total (order_total_id) {
+    oc_order_total (order_total_id) {
         order_total_id -> Integer,
         order_id -> Integer,
         code -> Varchar,
@@ -945,7 +945,7 @@ table! {
 }
 
 table! {
-    mall_order_voucher (order_voucher_id) {
+    oc_order_voucher (order_voucher_id) {
         order_voucher_id -> Integer,
         order_id -> Integer,
         voucher_id -> Integer,
@@ -962,7 +962,7 @@ table! {
 }
 
 table! {
-    mall_product (product_id) {
+    oc_product (product_id) {
         product_id -> Integer,
         model -> Varchar,
         sku -> Varchar,
@@ -998,7 +998,7 @@ table! {
 }
 
 table! {
-    mall_product_attribute (product_id, attribute_id, language_id) {
+    oc_product_attribute (product_id, attribute_id, language_id) {
         product_id -> Integer,
         attribute_id -> Integer,
         language_id -> Integer,
@@ -1007,7 +1007,7 @@ table! {
 }
 
 table! {
-    mall_product_description (product_id, language_id) {
+    oc_product_description (product_id, language_id) {
         product_id -> Integer,
         language_id -> Integer,
         name -> Varchar,
@@ -1020,7 +1020,7 @@ table! {
 }
 
 table! {
-    mall_product_discount (product_discount_id) {
+    oc_product_discount (product_discount_id) {
         product_discount_id -> Integer,
         product_id -> Integer,
         customer_group_id -> Integer,
@@ -1033,14 +1033,14 @@ table! {
 }
 
 table! {
-    mall_product_filter (product_id, filter_id) {
+    oc_product_filter (product_id, filter_id) {
         product_id -> Integer,
         filter_id -> Integer,
     }
 }
 
 table! {
-    mall_product_image (product_image_id) {
+    oc_product_image (product_image_id) {
         product_image_id -> Integer,
         product_id -> Integer,
         image -> Nullable<Varchar>,
@@ -1049,7 +1049,7 @@ table! {
 }
 
 table! {
-    mall_product_option (product_option_id) {
+    oc_product_option (product_option_id) {
         product_option_id -> Integer,
         product_id -> Integer,
         option_id -> Integer,
@@ -1059,7 +1059,7 @@ table! {
 }
 
 table! {
-    mall_product_option_value (product_option_value_id) {
+    oc_product_option_value (product_option_value_id) {
         product_option_value_id -> Integer,
         product_option_id -> Integer,
         product_id -> Integer,
@@ -1077,7 +1077,7 @@ table! {
 }
 
 table! {
-    mall_product_recurring (product_id, recurring_id, customer_group_id) {
+    oc_product_recurring (product_id, recurring_id, customer_group_id) {
         product_id -> Integer,
         recurring_id -> Integer,
         customer_group_id -> Integer,
@@ -1085,14 +1085,14 @@ table! {
 }
 
 table! {
-    mall_product_related (product_id, related_id) {
+    oc_product_related (product_id, related_id) {
         product_id -> Integer,
         related_id -> Integer,
     }
 }
 
 table! {
-    mall_product_reward (product_reward_id) {
+    oc_product_reward (product_reward_id) {
         product_reward_id -> Integer,
         product_id -> Integer,
         customer_group_id -> Integer,
@@ -1101,7 +1101,7 @@ table! {
 }
 
 table! {
-    mall_product_special (product_special_id) {
+    oc_product_special (product_special_id) {
         product_special_id -> Integer,
         product_id -> Integer,
         customer_group_id -> Integer,
@@ -1113,21 +1113,21 @@ table! {
 }
 
 table! {
-    mall_product_to_category (product_id, category_id) {
+    oc_product_to_category (product_id, category_id) {
         product_id -> Integer,
         category_id -> Integer,
     }
 }
 
 table! {
-    mall_product_to_download (product_id, download_id) {
+    oc_product_to_download (product_id, download_id) {
         product_id -> Integer,
         download_id -> Integer,
     }
 }
 
 table! {
-    mall_product_to_layout (product_id, store_id) {
+    oc_product_to_layout (product_id, store_id) {
         product_id -> Integer,
         store_id -> Integer,
         layout_id -> Integer,
@@ -1135,14 +1135,14 @@ table! {
 }
 
 table! {
-    mall_product_to_store (product_id, store_id) {
+    oc_product_to_store (product_id, store_id) {
         product_id -> Integer,
         store_id -> Integer,
     }
 }
 
 table! {
-    mall_recurring_description (recurring_id, language_id) {
+    oc_recurring_description (recurring_id, language_id) {
         recurring_id -> Integer,
         language_id -> Integer,
         name -> Varchar,
@@ -1150,7 +1150,7 @@ table! {
 }
 
 table! {
-    mall_return (return_id) {
+    oc_return (return_id) {
         return_id -> Integer,
         order_id -> Integer,
         product_id -> Integer,
@@ -1174,7 +1174,7 @@ table! {
 }
 
 table! {
-    mall_return_action (return_action_id, language_id) {
+    oc_return_action (return_action_id, language_id) {
         return_action_id -> Integer,
         language_id -> Integer,
         name -> Varchar,
@@ -1182,7 +1182,7 @@ table! {
 }
 
 table! {
-    mall_return_history (return_history_id) {
+    oc_return_history (return_history_id) {
         return_history_id -> Integer,
         return_id -> Integer,
         return_status_id -> Integer,
@@ -1193,7 +1193,7 @@ table! {
 }
 
 table! {
-    mall_return_reason (return_reason_id, language_id) {
+    oc_return_reason (return_reason_id, language_id) {
         return_reason_id -> Integer,
         language_id -> Integer,
         name -> Varchar,
@@ -1201,7 +1201,7 @@ table! {
 }
 
 table! {
-    mall_return_status (return_status_id, language_id) {
+    oc_return_status (return_status_id, language_id) {
         return_status_id -> Integer,
         language_id -> Integer,
         name -> Varchar,
@@ -1209,7 +1209,7 @@ table! {
 }
 
 table! {
-    mall_review (review_id) {
+    oc_review (review_id) {
         review_id -> Integer,
         product_id -> Integer,
         customer_id -> Integer,
@@ -1223,7 +1223,7 @@ table! {
 }
 
 table! {
-    mall_seo_url (seo_url_id) {
+    oc_seo_url (seo_url_id) {
         seo_url_id -> Integer,
         store_id -> Integer,
         language_id -> Integer,
@@ -1233,7 +1233,7 @@ table! {
 }
 
 table! {
-    mall_session (session_id) {
+    oc_session (session_id) {
         session_id -> Varchar,
         data -> Text,
         expire -> Datetime,
@@ -1241,7 +1241,7 @@ table! {
 }
 
 table! {
-    mall_setting (setting_id) {
+    oc_setting (setting_id) {
         setting_id -> Integer,
         store_id -> Integer,
         code -> Varchar,
@@ -1252,7 +1252,7 @@ table! {
 }
 
 table! {
-    mall_shipping_courier (shipping_courier_id) {
+    oc_shipping_courier (shipping_courier_id) {
         shipping_courier_id -> Integer,
         shipping_courier_code -> Varchar,
         shipping_courier_name -> Varchar,
@@ -1260,7 +1260,7 @@ table! {
 }
 
 table! {
-    mall_statistics (statistics_id) {
+    oc_statistics (statistics_id) {
         statistics_id -> Integer,
         code -> Varchar,
         value -> Decimal,
@@ -1268,7 +1268,7 @@ table! {
 }
 
 table! {
-    mall_stock_status (stock_status_id, language_id) {
+    oc_stock_status (stock_status_id, language_id) {
         stock_status_id -> Integer,
         language_id -> Integer,
         name -> Varchar,
@@ -1276,7 +1276,7 @@ table! {
 }
 
 table! {
-    mall_store (store_id) {
+    oc_store (store_id) {
         store_id -> Integer,
         name -> Varchar,
         url -> Varchar,
@@ -1285,7 +1285,7 @@ table! {
 }
 
 table! {
-    mall_tax_class (tax_class_id) {
+    oc_tax_class (tax_class_id) {
         tax_class_id -> Integer,
         title -> Varchar,
         description -> Varchar,
@@ -1295,7 +1295,7 @@ table! {
 }
 
 table! {
-    mall_tax_rate (tax_rate_id) {
+    oc_tax_rate (tax_rate_id) {
         tax_rate_id -> Integer,
         geo_zone_id -> Integer,
         name -> Varchar,
@@ -1308,14 +1308,14 @@ table! {
 }
 
 table! {
-    mall_tax_rate_to_customer_group (tax_rate_id, customer_group_id) {
+    oc_tax_rate_to_customer_group (tax_rate_id, customer_group_id) {
         tax_rate_id -> Integer,
         customer_group_id -> Integer,
     }
 }
 
 table! {
-    mall_tax_rule (tax_rule_id) {
+    oc_tax_rule (tax_rule_id) {
         tax_rule_id -> Integer,
         tax_class_id -> Integer,
         tax_rate_id -> Integer,
@@ -1325,7 +1325,7 @@ table! {
 }
 
 table! {
-    mall_theme (theme_id) {
+    oc_theme (theme_id) {
         theme_id -> Integer,
         store_id -> Integer,
         theme -> Varchar,
@@ -1336,7 +1336,7 @@ table! {
 }
 
 table! {
-    mall_translation (translation_id) {
+    oc_translation (translation_id) {
         translation_id -> Integer,
         store_id -> Integer,
         language_id -> Integer,
@@ -1348,7 +1348,7 @@ table! {
 }
 
 table! {
-    mall_upload (upload_id) {
+    oc_upload (upload_id) {
         upload_id -> Integer,
         name -> Varchar,
         filename -> Varchar,
@@ -1358,7 +1358,7 @@ table! {
 }
 
 table! {
-    mall_user (user_id) {
+    oc_user (user_id) {
         user_id -> Integer,
         user_group_id -> Integer,
         username -> Varchar,
@@ -1376,7 +1376,7 @@ table! {
 }
 
 table! {
-    mall_user_group (user_group_id) {
+    oc_user_group (user_group_id) {
         user_group_id -> Integer,
         name -> Varchar,
         permission -> Text,
@@ -1384,7 +1384,7 @@ table! {
 }
 
 table! {
-    mall_voucher (voucher_id) {
+    oc_voucher (voucher_id) {
         voucher_id -> Integer,
         order_id -> Integer,
         code -> Varchar,
@@ -1401,7 +1401,7 @@ table! {
 }
 
 table! {
-    mall_voucher_history (voucher_history_id) {
+    oc_voucher_history (voucher_history_id) {
         voucher_history_id -> Integer,
         voucher_id -> Integer,
         order_id -> Integer,
@@ -1411,14 +1411,14 @@ table! {
 }
 
 table! {
-    mall_voucher_theme (voucher_theme_id) {
+    oc_voucher_theme (voucher_theme_id) {
         voucher_theme_id -> Integer,
         image -> Varchar,
     }
 }
 
 table! {
-    mall_voucher_theme_description (voucher_theme_id, language_id) {
+    oc_voucher_theme_description (voucher_theme_id, language_id) {
         voucher_theme_id -> Integer,
         language_id -> Integer,
         name -> Varchar,
@@ -1426,14 +1426,14 @@ table! {
 }
 
 table! {
-    mall_weight_class (weight_class_id) {
+    oc_weight_class (weight_class_id) {
         weight_class_id -> Integer,
         value -> Decimal,
     }
 }
 
 table! {
-    mall_weight_class_description (weight_class_id, language_id) {
+    oc_weight_class_description (weight_class_id, language_id) {
         weight_class_id -> Integer,
         language_id -> Integer,
         title -> Varchar,
@@ -1442,7 +1442,7 @@ table! {
 }
 
 table! {
-    mall_zone (zone_id) {
+    oc_zone (zone_id) {
         zone_id -> Integer,
         country_id -> Integer,
         name -> Varchar,
@@ -1452,7 +1452,7 @@ table! {
 }
 
 table! {
-    mall_zone_to_geo_zone (zone_to_geo_zone_id) {
+    oc_zone_to_geo_zone (zone_to_geo_zone_id) {
         zone_to_geo_zone_id -> Integer,
         country_id -> Integer,
         zone_id -> Integer,
@@ -1463,137 +1463,137 @@ table! {
 }
 
 allow_tables_to_appear_in_same_query!(
-    mall_address,
-    mall_api,
-    mall_api_ip,
-    mall_api_session,
-    mall_attribute,
-    mall_attribute_description,
-    mall_attribute_group,
-    mall_attribute_group_description,
-    mall_banner,
-    mall_banner_image,
-    mall_cart,
-    mall_category,
-    mall_category_description,
-    mall_category_filter,
-    mall_category_path,
-    mall_category_to_layout,
-    mall_category_to_store,
-    mall_country,
-    mall_coupon,
-    mall_coupon_category,
-    mall_coupon_history,
-    mall_coupon_product,
-    mall_currency,
-    mall_custom_field,
-    mall_custom_field_customer_group,
-    mall_custom_field_description,
-    mall_custom_field_value,
-    mall_custom_field_value_description,
-    mall_customer,
-    mall_customer_activity,
-    mall_customer_affiliate,
-    mall_customer_approval,
-    mall_customer_group,
-    mall_customer_group_description,
-    mall_customer_history,
-    mall_customer_ip,
-    mall_customer_login,
-    mall_customer_online,
-    mall_customer_reward,
-    mall_customer_search,
-    mall_customer_transaction,
-    mall_customer_wishlist,
-    mall_download,
-    mall_download_description,
-    mall_event,
-    mall_extension,
-    mall_extension_install,
-    mall_extension_path,
-    mall_filter,
-    mall_filter_description,
-    mall_filter_group,
-    mall_filter_group_description,
-    mall_geo_zone,
-    mall_googleshopping_category,
-    mall_googleshopping_product_status,
-    mall_googleshopping_product_target,
-    mall_information,
-    mall_information_description,
-    mall_information_to_layout,
-    mall_information_to_store,
-    mall_language,
-    mall_layout,
-    mall_layout_module,
-    mall_layout_route,
-    mall_length_class,
-    mall_length_class_description,
-    mall_location,
-    mall_manufacturer,
-    mall_manufacturer_to_store,
-    mall_marketing,
-    mall_modification,
-    mall_module,
-    mall_option,
-    mall_option_description,
-    mall_option_value,
-    mall_option_value_description,
-    mall_order,
-    mall_order_history,
-    mall_order_option,
-    mall_order_product,
-    mall_order_recurring,
-    mall_order_recurring_transaction,
-    mall_order_shipment,
-    mall_order_status,
-    mall_order_total,
-    mall_order_voucher,
-    mall_product,
-    mall_product_attribute,
-    mall_product_description,
-    mall_product_discount,
-    mall_product_filter,
-    mall_product_image,
-    mall_product_option,
-    mall_product_option_value,
-    mall_product_recurring,
-    mall_product_related,
-    mall_product_reward,
-    mall_product_special,
-    mall_product_to_category,
-    mall_product_to_download,
-    mall_product_to_layout,
-    mall_product_to_store,
-    mall_recurring_description,
-    mall_return,
-    mall_return_action,
-    mall_return_history,
-    mall_return_reason,
-    mall_return_status,
-    mall_review,
-    mall_seo_url,
-    mall_session,
-    mall_setting,
-    mall_shipping_courier,
-    mall_statistics,
-    mall_stock_status,
-    mall_store,
-    mall_tax_class,
-    mall_tax_rate,
-    mall_tax_rate_to_customer_group,
-    mall_tax_rule,
-    mall_theme,
-    mall_translation,
-    mall_upload,
-    mall_user,
-    mall_user_group,
-    mall_voucher,
-    mall_voucher_history,
-    mall_voucher_theme,
-    mall_voucher_theme_description,
-    mall_weight_class,
-    mall_weight_class_description,
-    mall_zone,
-    mall_zone_to_geo_zone,
+    oc_address,
+    oc_api,
+    oc_api_ip,
+    oc_api_session,
+    oc_attribute,
+    oc_attribute_description,
+    oc_attribute_group,
+    oc_attribute_group_description,
+    oc_banner,
+    oc_banner_image,
+    oc_cart,
+    oc_category,
+    oc_category_description,
+    oc_category_filter,
+    oc_category_path,
+    oc_category_to_layout,
+    oc_category_to_store,
+    oc_country,
+    oc_coupon,
+    oc_coupon_category,
+    oc_coupon_history,
+    oc_coupon_product,
+    oc_currency,
+    oc_custom_field,
+    oc_custom_field_customer_group,
+    oc_custom_field_description,
+    oc_custom_field_value,
+    oc_custom_field_value_description,
+    oc_customer,
+    oc_customer_activity,
+    oc_customer_affiliate,
+    oc_customer_approval,
+    oc_customer_group,
+    oc_customer_group_description,
+    oc_customer_history,
+    oc_customer_ip,
+    oc_customer_login,
+    oc_customer_online,
+    oc_customer_reward,
+    oc_customer_search,
+    oc_customer_transaction,
+    oc_customer_wishlist,
+    oc_download,
+    oc_download_description,
+    oc_event,
+    oc_extension,
+    oc_extension_install,
+    oc_extension_path,
+    oc_filter,
+    oc_filter_description,
+    oc_filter_group,
+    oc_filter_group_description,
+    oc_geo_zone,
+    oc_googleshopping_category,
+    oc_googleshopping_product_status,
+    oc_googleshopping_product_target,
+    oc_information,
+    oc_information_description,
+    oc_information_to_layout,
+    oc_information_to_store,
+    oc_language,
+    oc_layout,
+    oc_layout_module,
+    oc_layout_route,
+    oc_length_class,
+    oc_length_class_description,
+    oc_location,
+    oc_manufacturer,
+    oc_manufacturer_to_store,
+    oc_marketing,
+    oc_modification,
+    oc_module,
+    oc_option,
+    oc_option_description,
+    oc_option_value,
+    oc_option_value_description,
+    oc_order,
+    oc_order_history,
+    oc_order_option,
+    oc_order_product,
+    oc_order_recurring,
+    oc_order_recurring_transaction,
+    oc_order_shipment,
+    oc_order_status,
+    oc_order_total,
+    oc_order_voucher,
+    oc_product,
+    oc_product_attribute,
+    oc_product_description,
+    oc_product_discount,
+    oc_product_filter,
+    oc_product_image,
+    oc_product_option,
+    oc_product_option_value,
+    oc_product_recurring,
+    oc_product_related,
+    oc_product_reward,
+    oc_product_special,
+    oc_product_to_category,
+    oc_product_to_download,
+    oc_product_to_layout,
+    oc_product_to_store,
+    oc_recurring_description,
+    oc_return,
+    oc_return_action,
+    oc_return_history,
+    oc_return_reason,
+    oc_return_status,
+    oc_review,
+    oc_seo_url,
+    oc_session,
+    oc_setting,
+    oc_shipping_courier,
+    oc_statistics,
+    oc_stock_status,
+    oc_store,
+    oc_tax_class,
+    oc_tax_rate,
+    oc_tax_rate_to_customer_group,
+    oc_tax_rule,
+    oc_theme,
+    oc_translation,
+    oc_upload,
+    oc_user,
+    oc_user_group,
+    oc_voucher,
+    oc_voucher_history,
+    oc_voucher_theme,
+    oc_voucher_theme_description,
+    oc_weight_class,
+    oc_weight_class_description,
+    oc_zone,
+    oc_zone_to_geo_zone,
 );

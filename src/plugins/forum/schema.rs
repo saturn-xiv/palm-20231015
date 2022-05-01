@@ -1,5 +1,5 @@
 table! {
-    forum_bans (id) {
+    bb_bans (id) {
         id -> Unsigned<Integer>,
         username -> Nullable<Varchar>,
         ip -> Nullable<Varchar>,
@@ -11,7 +11,7 @@ table! {
 }
 
 table! {
-    forum_categories (id) {
+    bb_categories (id) {
         id -> Unsigned<Integer>,
         cat_name -> Varchar,
         disp_position -> Integer,
@@ -19,7 +19,7 @@ table! {
 }
 
 table! {
-    forum_censoring (id) {
+    bb_censoring (id) {
         id -> Unsigned<Integer>,
         search_for -> Varchar,
         replace_with -> Varchar,
@@ -27,14 +27,14 @@ table! {
 }
 
 table! {
-    forum_config (conf_name) {
+    bb_config (conf_name) {
         conf_name -> Varchar,
         conf_value -> Nullable<Text>,
     }
 }
 
 table! {
-    forum_forum_perms (group_id, forum_id) {
+    bb_forum_perms (group_id, forum_id) {
         group_id -> Integer,
         forum_id -> Integer,
         read_forum -> Bool,
@@ -44,14 +44,14 @@ table! {
 }
 
 table! {
-    forum_forum_subscriptions (user_id, forum_id) {
+    bb_forum_subscriptions (user_id, forum_id) {
         user_id -> Unsigned<Integer>,
         forum_id -> Unsigned<Integer>,
     }
 }
 
 table! {
-    forum_groups (g_id) {
+    bb_groups (g_id) {
         g_id -> Unsigned<Integer>,
         g_title -> Varchar,
         g_user_title -> Nullable<Varchar>,
@@ -83,7 +83,7 @@ table! {
 }
 
 table! {
-    forum_posts (id) {
+    bb_posts (id) {
         id -> Unsigned<Integer>,
         poster -> Varchar,
         poster_id -> Unsigned<Integer>,
@@ -99,7 +99,7 @@ table! {
 }
 
 table! {
-    forum_reports (id) {
+    bb_reports (id) {
         id -> Unsigned<Integer>,
         post_id -> Unsigned<Integer>,
         topic_id -> Unsigned<Integer>,
@@ -113,7 +113,7 @@ table! {
 }
 
 table! {
-    forum_search_cache (id) {
+    bb_search_cache (id) {
         id -> Unsigned<Integer>,
         ident -> Varchar,
         search_data -> Nullable<Mediumtext>,
@@ -121,21 +121,21 @@ table! {
 }
 
 table! {
-    forum_search_words (word) {
+    bb_search_words (word) {
         id -> Unsigned<Integer>,
         word -> Varchar,
     }
 }
 
 table! {
-    forum_topic_subscriptions (user_id, topic_id) {
+    bb_topic_subscriptions (user_id, topic_id) {
         user_id -> Unsigned<Integer>,
         topic_id -> Unsigned<Integer>,
     }
 }
 
 table! {
-    forum_users (id) {
+    bb_users (id) {
         id -> Unsigned<Integer>,
         group_id -> Unsigned<Integer>,
         username -> Varchar,
@@ -182,17 +182,17 @@ table! {
 }
 
 allow_tables_to_appear_in_same_query!(
-    forum_bans,
-    forum_categories,
-    forum_censoring,
-    forum_config,
-    forum_forum_perms,
-    forum_forum_subscriptions,
-    forum_groups,
-    forum_posts,
-    forum_reports,
-    forum_search_cache,
-    forum_search_words,
-    forum_topic_subscriptions,
-    forum_users,
+    bb_bans,
+    bb_categories,
+    bb_censoring,
+    bb_config,
+    bb_forum_perms,
+    bb_forum_subscriptions,
+    bb_groups,
+    bb_posts,
+    bb_reports,
+    bb_search_cache,
+    bb_search_words,
+    bb_topic_subscriptions,
+    bb_users,
 );

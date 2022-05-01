@@ -9,6 +9,7 @@
 
 # misc
 .DS_Store
+/src/protocols/
 
 # umi
 /src/.umi
