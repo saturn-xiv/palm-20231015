@@ -1,5 +1,14 @@
 # Setup
 
+## Usage
+
+```bash
+$HOME/local/liquibase/liquibase drop-all
+$HOME/local/liquibase/liquibase update
+$HOME/local/liquibase/liquibase rollback-count 1
+$HOME/local/liquibase/liquibase status
+```
+
 ## PostgreSql
 
 - setup uuid
@@ -8,6 +17,8 @@
   CREATE DATABASE palm;
   \c palm
   CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+  CREATE USER www WITH PASSWORD 'CHANGE-ME';
+  GRANT ALL PRIVILEGES ON DATABASE samoyed TO www;
   ```
 
 - backup

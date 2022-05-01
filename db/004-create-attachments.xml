@@ -6,10 +6,10 @@
     <changeSet id="20220410130822" author="jeremy.zheng" labels="create-attachments">
 
         <createTable tableName="attachments">
-            <column name="id" type="uuid" defaultValueComputed="uuid_generate_v4()">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="user_id" type="uuid">
+            <column name="user_id" type="int">
                 <constraints nullable="false" />
             </column>
             <column name="title" type="varchar(255)">

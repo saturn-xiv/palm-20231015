@@ -6,13 +6,13 @@
     <changeSet id="20220402094854" author="jeremy.zheng" labels="create-settings">
 
         <createTable tableName="settings">
-            <column name="id" type="uuid" defaultValueComputed="uuid_generate_v4()">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
             <column name="key" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="user_id" type="uuid" />
+            <column name="user_id" type="int" />
             <column name="salt" type="bytea" />
             <column name="value" type="bytea">
                 <constraints nullable="false" />

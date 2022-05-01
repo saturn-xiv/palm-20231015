@@ -6,7 +6,7 @@
     <changeSet id="20220410123702" author="jeremy.zheng" labels="create-auth">
 
         <createTable tableName="users">
-            <column name="id" type="uuid" defaultValueComputed="uuid_generate_v4()">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
             <column name="real_name" type="varchar(32)">
@@ -76,10 +76,10 @@
         </createIndex>
 
         <createTable tableName="logs">
-            <column name="id" type="uuid" defaultValueComputed="uuid_generate_v4()">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="user_id" type="uuid">
+            <column name="user_id" type="int">
                 <constraints nullable="false" />
             </column>
             <column name="level" type="varchar(16)" defaultValue="info">
@@ -91,7 +91,7 @@
             <column name="resource_type" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="resource_id" type="uuid">
+            <column name="resource_id" type="int">
                 <constraints nullable="false" />
             </column>
             <column name="message" type="text">

@@ -6,7 +6,7 @@
     <changeSet id="20220402094844" author="jeremy.zheng" labels="create-locales">
 
         <createTable tableName="locales">
-            <column name="id" type="uuid" defaultValueComputed="uuid_generate_v4()">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
             <column name="lang" type="varchar(8)">
