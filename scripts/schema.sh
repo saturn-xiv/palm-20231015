@@ -44,19 +44,19 @@ function generate_grpc_web() {
 function generate_diesel_mysql() {
     echo 'generate diesel schema for mysql'
     DATABASE_URL=$1/cms diesel print-schema -e \
-        cms_contentitem_tag_map cms_fields_values \
-        cms_finder_terms_common cms_finder_tokens cms_finder_tokens_aggregate \
-        cms_messages_cfg cms_user_profiles \
-        cms_content_types \
+        jm_contentitem_tag_map jm_fields_values \
+        jm_finder_terms_common jm_finder_tokens jm_finder_tokens_aggregate \
+        jm_messages_cfg jm_user_profiles \
+        jm_content_types \
         > src/plugins/cms/schema.rs
 
     DATABASE_URL=$1/forum diesel print-schema -e \
-        forum_online forum_search_matches \
-        forum_forums forum_topics \
+        bb_online bb_search_matches \
+        bb_forums bb_topics \
         > src/plugins/forum/schema.rs
 
-    DATABASE_URL=$1/mall diesel print-schema -e \
-        mall_googleshopping_product mall_googleshopping_target mall_recurring \
+    DATABASE_URL=$1/cart diesel print-schema -e \
+        oc_googleshopping_product oc_googleshopping_target oc_recurring \
         > src/plugins/mall/schema.rs
 }
 
@@ -72,7 +72,7 @@ function generate_diesel_postgresql() {
 # ----------------------------------------------------------
 
 generate_diesel_postgresql "postgres://postgres@127.0.0.1:5432/palm"
-generate_diesel_mysql "mysql://root:apee1uo1Eique8A.e@127.0.0.1:3306"
+generate_diesel_mysql "mysql://www:apee1uo1Eique8A.e@127.0.0.1:3306"
 
 
 declare -a languages=(
