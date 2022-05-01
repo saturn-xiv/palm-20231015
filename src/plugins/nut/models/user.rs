@@ -8,7 +8,6 @@ use hyper::StatusCode;
 use language_tags::LanguageTag;
 use openssl::hash::{hash, MessageDigest};
 use serde::{Deserialize, Serialize};
-use uuid::Uuid;
 
 use super::super::super::super::{
     crypto::{random::bytes as random_bytes, Password},
@@ -31,7 +30,7 @@ pub enum Action {
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Token {
-    pub aud: Uuid,
+    pub aud: i64,
     pub act: Action,
     pub nbf: i64,
     pub exp: i64,
@@ -63,7 +62,7 @@ impl fmt::Display for Type {
 #[derive(Queryable, Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
-    pub id: Uuid,
+    pub id: i64,
     pub real_name: String,
     pub nick_name: String,
     pub email: String,
@@ -75,7 +74,7 @@ pub struct Item {
     pub logo: String,
     pub lang: String,
     pub time_zone: String,
-    pub sign_in_count: i32,
+    pub sign_in_count: i64,
     pub current_sign_in_at: Option<NaiveDateTime>,
     pub current_sign_in_ip: Option<String>,
     pub last_sign_in_at: Option<NaiveDateTime>,
@@ -83,7 +82,7 @@ pub struct Item {
     pub confirmed_at: Option<NaiveDateTime>,
     pub locked_at: Option<NaiveDateTime>,
     pub deleted_at: Option<NaiveDateTime>,
-    pub version: i32,
+    pub version: i64,
     pub created_at: NaiveDateTime,
     pub updated_at: NaiveDateTime,
 }
@@ -171,18 +170,18 @@ impl<'a> New<'a> {
 }
 
 pub trait Dao {
-    fn by_id(&self, id: Uuid) -> Result<Item>;
+    fn by_id(&self, id: i64) -> Result<Item>;
     fn by_email(&self, email: &str) -> Result<Item>;
     fn by_nick_name(&self, nick_name: &str) -> Result<Item>;
     fn set_profile(
         &self,
-        id: Uuid,
+        id: i64,
         real_name: &str,
         logo: &str,
         lang: &LanguageTag,
         time_zone: &Tz,
     ) -> Result<()>;
-    fn sign_in(&self, id: Uuid, ip: &str) -> Result<()>;
+    fn sign_in(&self, id: i64, ip: &str) -> Result<()>;
     fn google(&self, access_token: &str, token: &IdToken, ip: &str) -> Result<Item>;
     fn sign_up<P: Password>(
         &self,
@@ -194,16 +193,16 @@ pub trait Dao {
         lang: &LanguageTag,
         time_zone: &Tz,
     ) -> Result<()>;
-    fn lock(&self, id: Uuid, on: bool) -> Result<()>;
-    fn disable(&self, id: Uuid, on: bool) -> Result<()>;
-    fn confirm(&self, id: Uuid) -> Result<()>;
+    fn lock(&self, id: i64, on: bool) -> Result<()>;
+    fn disable(&self, id: i64, on: bool) -> Result<()>;
+    fn confirm(&self, id: i64) -> Result<()>;
     fn count(&self) -> Result<i64>;
     fn all(&self, offset: i64, limit: i64) -> Result<Vec<Item>>;
-    fn password<P: Password>(&self, enc: &P, id: Uuid, password: &str) -> Result<()>;
+    fn password<P: Password>(&self, enc: &P, id: i64, password: &str) -> Result<()>;
 }
 
 impl Dao for Connection {
-    fn by_id(&self, id: Uuid) -> Result<Item> {
+    fn by_id(&self, id: i64) -> Result<Item> {
         let it = users::dsl::users
             .filter(users::dsl::id.eq(id))
             .first(self)?;
@@ -287,7 +286,7 @@ impl Dao for Connection {
         self.by_id(it.id)
     }
 
-    fn sign_in(&self, id: Uuid, ip: &str) -> Result<()> {
+    fn sign_in(&self, id: i64, ip: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
         let (current_sign_in_at, current_sign_in_ip, sign_in_count) = users::dsl::users
             .select((
@@ -296,7 +295,7 @@ impl Dao for Connection {
                 users::dsl::sign_in_count,
             ))
             .filter(users::dsl::id.eq(id))
-            .first::<(Option<NaiveDateTime>, Option<String>, i32)>(self)?;
+            .first::<(Option<NaiveDateTime>, Option<String>, i64)>(self)?;
         update(users::dsl::users.filter(users::dsl::id.eq(id)))
             .set((
                 users::dsl::current_sign_in_at.eq(&now),
@@ -340,7 +339,7 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn lock(&self, id: Uuid, on: bool) -> Result<()> {
+    fn lock(&self, id: i64, on: bool) -> Result<()> {
         let now = Utc::now().naive_utc();
         let it = users::dsl::users.filter(users::dsl::id.eq(id));
         update(it)
@@ -351,7 +350,7 @@ impl Dao for Connection {
             .execute(self)?;
         Ok(())
     }
-    fn disable(&self, id: Uuid, on: bool) -> Result<()> {
+    fn disable(&self, id: i64, on: bool) -> Result<()> {
         let now = Utc::now().naive_utc();
         let it = users::dsl::users.filter(users::dsl::id.eq(id));
         update(it)
@@ -364,7 +363,7 @@ impl Dao for Connection {
     }
     fn set_profile(
         &self,
-        id: Uuid,
+        id: i64,
         real_name: &str,
         logo: &str,
         lang: &LanguageTag,
@@ -384,7 +383,7 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn confirm(&self, id: Uuid) -> Result<()> {
+    fn confirm(&self, id: i64) -> Result<()> {
         let now = Utc::now().naive_utc();
         let it = users::dsl::users.filter(users::dsl::id.eq(id));
         update(it)
@@ -410,7 +409,7 @@ impl Dao for Connection {
         Ok(items)
     }
 
-    fn password<P: Password>(&self, enc: &P, id: Uuid, password: &str) -> Result<()> {
+    fn password<P: Password>(&self, enc: &P, id: i64, password: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
         let password = enc.sum(password.as_bytes())?;
         let it = users::dsl::users.filter(users::dsl::id.eq(id));

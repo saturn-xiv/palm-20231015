@@ -1,13 +1,13 @@
 table! {
     attachments (id) {
-        id -> Int4,
-        user_id -> Int4,
+        id -> Int8,
+        user_id -> Int8,
         title -> Varchar,
         size -> Int8,
         content_type -> Varchar,
         region -> Varchar,
         status -> Varchar,
-        version -> Int4,
+        version -> Int8,
         updated_at -> Timestamp,
         created_at -> Timestamp,
     }
@@ -15,12 +15,12 @@ table! {
 
 table! {
     logs (id) {
-        id -> Int4,
-        user_id -> Int4,
+        id -> Int8,
+        user_id -> Int8,
         level -> Varchar,
         ip -> Varchar,
         resource_type -> Varchar,
-        resource_id -> Int4,
+        resource_id -> Int8,
         message -> Text,
         created_at -> Timestamp,
     }
@@ -28,7 +28,7 @@ table! {
 
 table! {
     users (id) {
-        id -> Int4,
+        id -> Int8,
         real_name -> Varchar,
         nick_name -> Varchar,
         email -> Varchar,
@@ -40,7 +40,7 @@ table! {
         logo -> Varchar,
         lang -> Varchar,
         time_zone -> Varchar,
-        sign_in_count -> Int4,
+        sign_in_count -> Int8,
         current_sign_in_at -> Nullable<Timestamp>,
         current_sign_in_ip -> Nullable<Varchar>,
         last_sign_in_at -> Nullable<Timestamp>,
@@ -48,7 +48,7 @@ table! {
         confirmed_at -> Nullable<Timestamp>,
         locked_at -> Nullable<Timestamp>,
         deleted_at -> Nullable<Timestamp>,
-        version -> Int4,
+        version -> Int8,
         updated_at -> Timestamp,
         created_at -> Timestamp,
     }

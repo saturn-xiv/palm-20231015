@@ -8,13 +8,12 @@ use std::str::FromStr;
 use chrono::NaiveDateTime;
 use hyper::StatusCode;
 use serde::{Deserialize, Serialize};
-use uuid::Uuid;
 
 use super::super::super::{Error, HttpError, Result};
 
 pub struct Resource {
     pub type_: String,
-    pub id: Uuid,
+    pub id: i64,
 }
 
 impl fmt::Display for Resource {

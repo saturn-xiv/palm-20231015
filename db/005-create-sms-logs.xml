@@ -6,7 +6,7 @@
     <changeSet id="20220410131332" author="jeremy.zheng" labels="create-sms-logs">
 
         <createTable tableName="sms_logs">
-            <column name="id" type="int" autoIncrement="true">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
             <column name="from" type="varchar(16)">

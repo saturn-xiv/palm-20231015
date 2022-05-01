@@ -3,7 +3,6 @@ use std::collections::HashMap;
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
 use serde::{Deserialize, Serialize};
-use uuid::Uuid;
 use yaml_rust::{Yaml, YamlLoader};
 
 use super::super::{
@@ -30,11 +29,11 @@ lazy_static! {
 
 #[derive(Queryable, Serialize, Deserialize)]
 pub struct Item {
-    pub id: Uuid,
+    pub id: i64,
     pub lang: String,
     pub code: String,
     pub message: String,
-    pub version: i32,
+    pub version: i64,
     pub created_at: NaiveDateTime,
     pub updated_at: NaiveDateTime,
 }
@@ -55,11 +54,11 @@ pub trait Dao {
     fn count(&self) -> Result<i64>;
     fn all(&self, offset: i64, limit: i64) -> Result<Vec<Item>>;
     fn by_lang(&self, lang: &str) -> Result<Vec<Item>>;
-    fn by_id(&self, id: Uuid) -> Result<Item>;
+    fn by_id(&self, id: i64) -> Result<Item>;
     fn by_lang_and_code(&self, lang: &str, code: &str) -> Result<Item>;
-    fn delete(&self, id: Uuid) -> Result<()>;
+    fn delete(&self, id: i64) -> Result<()>;
     fn create(&self, lang: &str, code: &str, message: &str) -> Result<()>;
-    fn update(&self, id: Uuid, code: &str, message: &str) -> Result<()>;
+    fn update(&self, id: i64, code: &str, message: &str) -> Result<()>;
 }
 
 fn loop_yaml(
@@ -183,7 +182,7 @@ impl Dao for Connection {
             .load::<Item>(self)?;
         Ok(items)
     }
-    fn by_id(&self, id: Uuid) -> Result<Item> {
+    fn by_id(&self, id: i64) -> Result<Item> {
         let it = locales::dsl::locales
             .filter(locales::dsl::id.eq(id))
             .first::<Item>(self)?;
@@ -196,7 +195,7 @@ impl Dao for Connection {
             .first::<Item>(self)?;
         Ok(it)
     }
-    fn update(&self, id: Uuid, code: &str, message: &str) -> Result<()> {
+    fn update(&self, id: i64, code: &str, message: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
         let it = locales::dsl::locales.filter(locales::dsl::id.eq(id));
         update(it)
@@ -220,7 +219,7 @@ impl Dao for Connection {
             .execute(self)?;
         Ok(())
     }
-    fn delete(&self, id: Uuid) -> Result<()> {
+    fn delete(&self, id: i64) -> Result<()> {
         delete(locales::dsl::locales.filter(locales::dsl::id.eq(id))).execute(self)?;
         Ok(())
     }

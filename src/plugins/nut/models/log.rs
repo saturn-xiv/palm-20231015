@@ -2,7 +2,6 @@ use std::fmt;
 
 use chrono::NaiveDateTime;
 use diesel::{insert_into, prelude::*};
-use uuid::Uuid;
 
 use super::super::super::super::{orm::postgresql::Connection, Result};
 use super::super::schema::logs;
@@ -10,12 +9,12 @@ use super::Resource;
 
 #[derive(Queryable)]
 pub struct Item {
-    pub id: Uuid,
-    pub user_id: Uuid,
+    pub id: i64,
+    pub user_id: i64,
     pub level: String,
     pub ip: String,
     pub resource_type: String,
-    pub resource_id: Uuid,
+    pub resource_id: i64,
     pub message: String,
     pub created_at: NaiveDateTime,
 }
@@ -46,22 +45,22 @@ impl fmt::Display for Level {
 pub trait Dao {
     fn add<S: Into<String>>(
         &self,
-        user: Uuid,
+        user: i64,
         level: &Level,
         ip: &str,
         resource: &Resource,
         message: S,
     ) -> Result<()>;
 
-    fn all(&self, user: Uuid, offset: i64, limit: i64) -> Result<Vec<Item>>;
+    fn all(&self, user: i64, offset: i64, limit: i64) -> Result<Vec<Item>>;
     fn by_resource(&self, resource: &Resource) -> Result<Vec<Item>>;
-    fn count(&self, user: Uuid) -> Result<i64>;
+    fn count(&self, user: i64) -> Result<i64>;
 }
 
 impl Dao for Connection {
     fn add<S: Into<String>>(
         &self,
-        user: Uuid,
+        user: i64,
         level: &Level,
         ip: &str,
         resource: &Resource,
@@ -80,7 +79,7 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn all(&self, user: Uuid, offset: i64, limit: i64) -> Result<Vec<Item>> {
+    fn all(&self, user: i64, offset: i64, limit: i64) -> Result<Vec<Item>> {
         let items = logs::dsl::logs
             .filter(logs::dsl::user_id.eq(user))
             .order(logs::dsl::created_at.desc())
@@ -97,7 +96,7 @@ impl Dao for Connection {
             .load::<Item>(self)?;
         Ok(items)
     }
-    fn count(&self, user: Uuid) -> Result<i64> {
+    fn count(&self, user: i64) -> Result<i64> {
         let it = logs::dsl::logs
             .filter(logs::dsl::user_id.eq(user))
             .count()

@@ -6,18 +6,18 @@
     <changeSet id="20220402094854" author="jeremy.zheng" labels="create-settings">
 
         <createTable tableName="settings">
-            <column name="id" type="int" autoIncrement="true">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
             <column name="key" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="user_id" type="int" />
+            <column name="user_id" type="bigint" />
             <column name="salt" type="bytea" />
             <column name="value" type="bytea">
                 <constraints nullable="false" />
             </column>
-            <column name="version" type="int" defaultValue="0">
+            <column name="version" type="bigint" defaultValue="0">
                 <constraints nullable="false" />
             </column>
             <column name="updated_at" type="datetime">

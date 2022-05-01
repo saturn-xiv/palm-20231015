@@ -1,11 +1,11 @@
 table! {
     settings (id) {
-        id -> Int4,
+        id -> Int8,
         key -> Varchar,
-        user_id -> Nullable<Int4>,
+        user_id -> Nullable<Int8>,
         salt -> Nullable<Bytea>,
         value -> Bytea,
-        version -> Int4,
+        version -> Int8,
         updated_at -> Timestamp,
         created_at -> Timestamp,
     }

@@ -1,7 +1,6 @@
 use chrono::NaiveDateTime;
 use diesel::{insert_into, prelude::*};
 use serde::Serialize;
-use uuid::Uuid;
 
 use super::super::super::super::{orm::postgresql::Connection, Result};
 use super::super::schema::sms_logs;
@@ -9,7 +8,7 @@ use super::super::schema::sms_logs;
 #[derive(Queryable, Serialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
-    pub id: Uuid,
+    pub id: i64,
     pub from: String,
     pub to: String,
     pub body: String,

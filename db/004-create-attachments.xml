@@ -6,10 +6,10 @@
     <changeSet id="20220410130822" author="jeremy.zheng" labels="create-attachments">
 
         <createTable tableName="attachments">
-            <column name="id" type="int" autoIncrement="true">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="user_id" type="int">
+            <column name="user_id" type="bigint">
                 <constraints nullable="false" />
             </column>
             <column name="title" type="varchar(255)">
@@ -27,7 +27,7 @@
             <column name="status" type="varchar(16)">
                 <constraints nullable="false" />
             </column>
-            <column name="version" type="int" defaultValue="0">
+            <column name="version" type="bigint" defaultValue="0">
                 <constraints nullable="false" />
             </column>
             <column name="updated_at" type="datetime">

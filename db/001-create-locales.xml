@@ -6,7 +6,7 @@
     <changeSet id="20220402094844" author="jeremy.zheng" labels="create-locales">
 
         <createTable tableName="locales">
-            <column name="id" type="int" autoIncrement="true">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
             <column name="lang" type="varchar(8)">
@@ -18,7 +18,7 @@
             <column name="message" type="text">
                 <constraints nullable="false" />
             </column>
-            <column name="version" type="int" defaultValue="0">
+            <column name="version" type="bigint" defaultValue="0">
                 <constraints nullable="false" />
             </column>
             <column name="updated_at" type="datetime">
