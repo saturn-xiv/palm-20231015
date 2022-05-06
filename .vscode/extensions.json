@@ -5,7 +5,7 @@
     "golang.go",
     // "rust-lang.rust",
     "matklad.rust-analyzer",
-    "johnsoncodehk.volar",
+    // "johnsoncodehk.volar",
     "redhat.ansible",
     "redhat.vscode-xml",
     "redhat.vscode-yaml",
