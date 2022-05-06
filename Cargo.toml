@@ -44,6 +44,7 @@ prost = "0.10"
 Inflector = "0.11"
 base64 = "0.13"
 git2 = "0.14"
+juniper = "0.15"
 ipnetwork = "0.19"
 nix = "0.24"
 image = "0.24"
@@ -102,7 +103,7 @@ version = "0.14"
 features = ["full"]
 
 [dependencies.validator]
-version = "0.14"
+version = "0.15"
 features = ["derive", "phone", "card", "unic"]
 
 [dependencies.cookie]
