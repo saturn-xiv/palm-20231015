@@ -92,7 +92,7 @@ RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
 RUN curl -s "https://get.sdkman.io" | zsh
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
-    && sdk install java 18.0.1-open \
+    && sdk install java 18.0.1.1-open \
     && sdk install maven \
     && sdk install gradle"
 
@@ -111,7 +111,7 @@ RUN git clone https://github.com/rui314/mold.git $HOME/build/mold
 RUN apt install -y libstdc++-10-dev libssl-dev libxxhash-dev zlib1g-dev
 RUN zsh -c "source $HOME/.zshrc \
     && cd $HOME/build/mold \
-    && git checkout v1.2.0 \
+    && git checkout v1.2.1 \
     && make CXX=clang++ \
     && strip -s mold \
     && cp mold /usr/bin/ "

@@ -92,7 +92,7 @@ RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
 RUN curl -s "https://get.sdkman.io" | zsh
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
-    && sdk install java 18.0.1-open \
+    && sdk install java 18.0.1.1-open \
     && sdk install maven \
     && sdk install gradle"
 
