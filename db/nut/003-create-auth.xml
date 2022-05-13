@@ -6,7 +6,7 @@
     <changeSet id="20220410123702" author="jeremy.zheng" labels="create-auth">
 
         <createTable tableName="users">
-            <column name="id" type="bigint" autoIncrement="true">
+            <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
             <column name="real_name" type="varchar(32)">
@@ -38,7 +38,7 @@
             <column name="time_zone" type="varchar(32)" defaultValue="UTC">
                 <constraints nullable="false" />
             </column>
-            <column name="sign_in_count" type="bigint" defaultValue="0">
+            <column name="sign_in_count" type="integer" defaultValue="0">
                 <constraints nullable="false" />
             </column>
             <column name="current_sign_in_at" type="datetime" />
@@ -48,7 +48,7 @@
             <column name="confirmed_at" type="datetime" />
             <column name="locked_at" type="datetime" />
             <column name="deleted_at" type="datetime" />
-            <column name="version" type="bigint" defaultValue="0">
+            <column name="version" type="integer" defaultValue="0">
                 <constraints nullable="false" />
             </column>
             <column name="updated_at" type="datetime">
@@ -76,10 +76,10 @@
         </createIndex>
 
         <createTable tableName="logs">
-            <column name="id" type="bigint" autoIncrement="true">
+            <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="user_id" type="bigint">
+            <column name="user_id" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="level" type="varchar(16)" defaultValue="info">
@@ -91,7 +91,7 @@
             <column name="resource_type" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="resource_id" type="bigint">
+            <column name="resource_id" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="message" type="text">

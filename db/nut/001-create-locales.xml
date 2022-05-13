@@ -3,21 +3,22 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
     http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
 
-    <changeSet id="20220402094854" author="jeremy.zheng" labels="create-settings">
+    <changeSet id="20220402094844" author="jeremy.zheng" labels="create-locales">
 
-        <createTable tableName="settings">
-            <column name="id" type="bigint" autoIncrement="true">
+        <createTable tableName="locales">
+            <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="key" type="varchar(255)">
+            <column name="lang" type="varchar(8)">
                 <constraints nullable="false" />
             </column>
-            <column name="user_id" type="bigint" />
-            <column name="salt" type="bytea" />
-            <column name="value" type="bytea">
+            <column name="code" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="version" type="bigint" defaultValue="0">
+            <column name="message" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="version" type="integer" defaultValue="0">
                 <constraints nullable="false" />
             </column>
             <column name="updated_at" type="datetime">
@@ -27,8 +28,15 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="settings" indexName="idx_settings_key">
-            <column name="key" />
+        <createIndex tableName="locales" indexName="idx_locales" unique="true">
+            <column name="lang" />
+            <column name="code" />
+        </createIndex>
+        <createIndex tableName="locales" indexName="idx_locales_lang">
+            <column name="lang" />
+        </createIndex>
+        <createIndex tableName="locales" indexName="idx_locales_code">
+            <column name="code" />
         </createIndex>
 
     </changeSet>
