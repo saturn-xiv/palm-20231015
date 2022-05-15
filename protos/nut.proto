@@ -133,8 +133,8 @@ service Policy {
   rpc ByResource(PolicyCodeRequest) returns (PolicyIndexResponse) {}
   rpc ByOperation(PolicyCodeRequest) returns (PolicyIndexResponse) {}
 
-  rpc Associate(PolicyUserRoleRequest) returns (google.protobuf.Empty) {}
-  rpc Unassociate(PolicyUserRoleRequest) returns (google.protobuf.Empty) {}
+  rpc Associate(PolicyUserRoleAssociateRequest) returns (google.protobuf.Empty) {}
+  rpc Unassociate(PolicyUserRoleUnassociateRequest) returns (google.protobuf.Empty) {}
 }
 
 message PolicyCodeRequest {
