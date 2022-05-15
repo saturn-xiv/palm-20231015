@@ -58,7 +58,6 @@ bytesize = "1"
 lazy_static = "1"
 regex = "1"
 serde_json = "1"
-casbin = "2"
 flexbuffers = "2"
 humantime = "2"
 lapin = "2"
@@ -156,10 +155,6 @@ version = "*"
 [dependencies.imageproc]
 git = "https://github.com/image-rs/imageproc.git"
 rev = "b794265"
-
-[dependencies.diesel-adapter]
-git = "https://github.com/saturn-xiv/diesel-adapter.git"
-rev = "b76f84f"
 
 [build-dependencies]
 tonic-build = "0.7"

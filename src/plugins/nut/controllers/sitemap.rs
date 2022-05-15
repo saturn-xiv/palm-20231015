@@ -8,12 +8,13 @@ use actix_web::{
     web, HttpResponse, Responder, Result as WebResult, Result,
 };
 use askama::Template;
+use serde::{Deserialize, Serialize};
+use validator::Validate;
 use xml::writer::{EventWriter, Result as XmlWriterResult, XmlEvent};
 
 use super::super::super::super::{
     crypto::Aes, orm::postgresql::Pool as DbPool, settings::Dao as SettingDao, ToXml,
 };
-use super::api::admin::site::{baidu::Form as BaiduRequest, google::Form as GoogleRequest};
 
 pub struct Item {}
 
@@ -73,6 +74,18 @@ pub async fn by_lang(_params: web::Path<String>) -> impl Responder {
     "sitemap.xml by lang"
 }
 
+#[derive(Template, Validate, Serialize, Deserialize)]
+#[template(path = "google/verify.html", escape = "none")]
+
+pub struct GoogleRequest {
+    #[validate(length(min = 1))]
+    pub site_verify_code: String,
+}
+
+impl GoogleRequest {
+    pub const KEY: &'static str = "site.google";
+}
+
 #[get("/google{id}.html")]
 pub async fn google(
     (db, aes): (web::Data<DbPool>, web::Data<Aes>),
@@ -97,6 +110,20 @@ pub async fn google(
     Ok(HttpResponse::Ok()
         .content_type(ContentType::html())
         .body(body))
+}
+
+#[derive(Template, Validate, Serialize, Deserialize)]
+#[template(path = "baidu/verify.html", escape = "none")]
+
+pub struct BaiduRequest {
+    #[validate(length(min = 1))]
+    pub site_verify_code: String,
+    #[validate(length(min = 1))]
+    pub site_verify_content: String,
+}
+
+impl BaiduRequest {
+    pub const KEY: &'static str = "site.baidu";
 }
 
 #[get("/baidu_verify_code-{id}.html")]
