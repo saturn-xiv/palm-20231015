@@ -1,3 +1,4 @@
+use std::any::type_name;
 use std::fmt;
 
 use chrono::NaiveDateTime;
@@ -5,7 +6,6 @@ use diesel::{insert_into, prelude::*};
 
 use super::super::super::super::{orm::postgresql::Connection, Result};
 use super::super::schema::logs;
-use super::Resource;
 
 #[derive(Queryable)]
 pub struct Item {
@@ -43,27 +43,27 @@ impl fmt::Display for Level {
     }
 }
 pub trait Dao {
-    fn add<S: Into<String>>(
+    fn add<S: Into<String>, T>(
         &self,
         user: i32,
         level: &Level,
         ip: &str,
-        resource: &Resource,
+        resource_id: i32,
         message: S,
     ) -> Result<()>;
 
     fn all(&self, user: i32, offset: i64, limit: i64) -> Result<Vec<Item>>;
-    fn by_resource(&self, resource: &Resource) -> Result<Vec<Item>>;
+    fn by_resource<T>(&self, resource_id: i32) -> Result<Vec<Item>>;
     fn count(&self, user: i32) -> Result<i64>;
 }
 
 impl Dao for Connection {
-    fn add<S: Into<String>>(
+    fn add<S: Into<String>, T>(
         &self,
         user: i32,
         level: &Level,
         ip: &str,
-        resource: &Resource,
+        resource_id: i32,
         message: S,
     ) -> Result<()> {
         insert_into(logs::dsl::logs)
@@ -71,8 +71,8 @@ impl Dao for Connection {
                 logs::dsl::user_id.eq(user),
                 logs::dsl::ip.eq(ip),
                 logs::dsl::level.eq(&level.to_string()),
-                logs::dsl::resource_type.eq(&resource.type_),
-                logs::dsl::resource_id.eq(&resource.id),
+                logs::dsl::resource_type.eq(type_name::<T>()),
+                logs::dsl::resource_id.eq(resource_id),
                 logs::dsl::message.eq(&message.into()),
             ))
             .execute(self)?;
@@ -88,10 +88,10 @@ impl Dao for Connection {
             .load::<Item>(self)?;
         Ok(items)
     }
-    fn by_resource(&self, resource: &Resource) -> Result<Vec<Item>> {
+    fn by_resource<T>(&self, resource_id: i32) -> Result<Vec<Item>> {
         let items = logs::dsl::logs
-            .filter(logs::dsl::resource_type.eq(&resource.type_))
-            .filter(logs::dsl::resource_id.eq(&resource.id))
+            .filter(logs::dsl::resource_type.eq(type_name::<T>()))
+            .filter(logs::dsl::resource_id.eq(resource_id))
             .order(logs::dsl::created_at.desc())
             .load::<Item>(self)?;
         Ok(items)

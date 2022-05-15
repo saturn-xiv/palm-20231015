@@ -27,7 +27,7 @@ lazy_static! {
     };
 }
 
-#[derive(Queryable, Serialize, Deserialize)]
+#[derive(Queryable, Serialize, Deserialize, Clone)]
 pub struct Item {
     pub id: i32,
     pub lang: String,
@@ -58,7 +58,7 @@ pub trait Dao {
     fn by_lang_and_code(&self, lang: &str, code: &str) -> Result<Item>;
     fn delete(&self, id: i32) -> Result<()>;
     fn create(&self, lang: &str, code: &str, message: &str) -> Result<()>;
-    fn update(&self, id: i32, code: &str, message: &str) -> Result<()>;
+    fn update(&self, id: i32, message: &str) -> Result<()>;
 }
 
 fn loop_yaml(
@@ -195,12 +195,11 @@ impl Dao for Connection {
             .first::<Item>(self)?;
         Ok(it)
     }
-    fn update(&self, id: i32, code: &str, message: &str) -> Result<()> {
+    fn update(&self, id: i32, message: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
         let it = locales::dsl::locales.filter(locales::dsl::id.eq(id));
         update(it)
             .set((
-                locales::dsl::code.eq(code),
                 locales::dsl::message.eq(message),
                 locales::dsl::updated_at.eq(&now),
             ))

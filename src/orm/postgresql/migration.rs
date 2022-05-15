@@ -106,7 +106,7 @@ impl Dao for Connection {
                     info!("ignore {}", it);
                 }
                 None => {
-                    let now = Utc::now().naive_local();
+                    let now = Utc::now().naive_utc();
                     info!("run {}-{}", it.version, it.name);
                     debug!("{}", it.up);
 

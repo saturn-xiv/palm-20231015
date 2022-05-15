@@ -28,7 +28,7 @@ impl Iso4217 {
 
         let mut iso = Self {
             items: Vec::new(),
-            published_at: Utc::now().naive_local().date(),
+            published_at: Utc::now().naive_utc().date(),
         };
 
         let mut depth = 0;

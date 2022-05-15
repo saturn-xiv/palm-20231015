@@ -133,8 +133,10 @@ service Policy {
   rpc ByResource(PolicyCodeRequest) returns (PolicyIndexResponse) {}
   rpc ByOperation(PolicyCodeRequest) returns (PolicyIndexResponse) {}
 
-  rpc Associate(PolicyUserRoleAssociateRequest) returns (google.protobuf.Empty) {}
-  rpc Unassociate(PolicyUserRoleUnassociateRequest) returns (google.protobuf.Empty) {}
+  rpc Associate(PolicyUserRoleAssociateRequest)
+      returns (google.protobuf.Empty) {}
+  rpc Unassociate(PolicyUserRoleUnassociateRequest)
+      returns (google.protobuf.Empty) {}
 }
 
 message PolicyCodeRequest {
@@ -175,9 +177,10 @@ service Locale {
 
 message LocaleIndexResponse {
   message Item {
-    string lang = 1;
-    string code = 2;
-    string message = 3;
+    int32 id = 1;
+    string lang = 2;
+    string code = 3;
+    string message = 4;
     google.protobuf.Timestamp updated_at = 9;
   }
   repeated Item items = 1;

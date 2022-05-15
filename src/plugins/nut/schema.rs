@@ -72,6 +72,8 @@ table! {
         role -> Varchar,
         not_before -> Date,
         expired_at -> Date,
+        version -> Int4,
+        updated_at -> Timestamp,
         created_at -> Timestamp,
     }
 }

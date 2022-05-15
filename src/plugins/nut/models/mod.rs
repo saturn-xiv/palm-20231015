@@ -1,5 +1,7 @@
 pub mod attachment;
 pub mod log;
+pub mod policy;
+pub mod role;
 pub mod user;
 
 use std::fmt;
@@ -10,17 +12,6 @@ use hyper::StatusCode;
 use serde::{Deserialize, Serialize};
 
 use super::super::super::{Error, HttpError, Result};
-
-pub struct Resource {
-    pub type_: String,
-    pub id: i32,
-}
-
-impl fmt::Display for Resource {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}://{}", self.type_, self.id)
-    }
-}
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(rename_all = "camelCase")]

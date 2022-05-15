@@ -52,7 +52,7 @@ impl I18n for Connection {
         let message = message.into();
         match Dao::by_lang_and_code(self, lang, &code) {
             Ok(it) => {
-                Dao::update(self, it.id, &code, &message)?;
+                Dao::update(self, it.id, &message)?;
             }
             Err(_) => {
                 Dao::create(self, lang, &code, &message)?;

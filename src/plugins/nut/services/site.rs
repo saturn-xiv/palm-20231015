@@ -4,7 +4,7 @@ use super::super::super::super::{
     orm::{mysql::Pool as MySqlPool, postgresql::Pool as PostgreSqlPool},
     GrpcResult,
 };
-use super::super::v1::{site_server::Site, SiteInstallRequest};
+use super::super::v1;
 
 pub struct Service {
     pub pgsql: PostgreSqlPool,

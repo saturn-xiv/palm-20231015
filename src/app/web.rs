@@ -24,7 +24,6 @@ use super::super::{
 pub async fn launch(cfg: &Config) -> Result<()> {
     let pg_pool = cfg.postgresql.open()?;
 
-    let enforcer = web::Data::new(RwLock::new(nut::policy::enforcer(pg_pool.clone()).await?));
     let pgsql = web::Data::new(pg_pool);
     let mysql = web::Data::new(cfg.mysql.open()?);
     let cache = web::Data::new(cfg.redis.open()?);
@@ -50,7 +49,6 @@ pub async fn launch(cfg: &Config) -> Result<()> {
 
     HttpServer::new(move || {
         App::new()
-            .app_data(enforcer.clone())
             .app_data(pgsql.clone())
             .app_data(mysql.clone())
             .app_data(cache.clone())
@@ -101,12 +99,6 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                     .name(format!("{}.id", NAME))
                     .secure(is_prod),
             ))
-            .service(
-                web::scope("/api")
-                    .service(nut::controllers::api::attachments::create)
-                    .service(nut::controllers::api::layout::get)
-                    .service(nut::controllers::api::install),
-            )
             .service(nut::controllers::captcha::get)
             .service(nut::controllers::sitemap::index)
             .service(nut::controllers::sitemap::by_lang)
