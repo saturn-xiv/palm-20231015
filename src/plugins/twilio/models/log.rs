@@ -8,7 +8,7 @@ use super::super::schema::sms_logs;
 #[derive(Queryable, Serialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
-    pub id: i64,
+    pub id: i32,
     pub from: String,
     pub to: String,
     pub body: String,

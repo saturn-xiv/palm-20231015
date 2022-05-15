@@ -12,14 +12,14 @@ use super::Status;
 #[derive(Queryable, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
-    pub id: i64,
-    pub user_id: i64,
+    pub id: i32,
+    pub user_id: i32,
     pub title: String,
     pub size: i64,
     pub content_type: String,
     pub region: String,
     pub state: String,
-    pub version: i64,
+    pub version: i32,
     pub created_at: NaiveDateTime,
     pub updated_at: NaiveDateTime,
 }
@@ -54,23 +54,23 @@ impl Item {
 }
 
 pub trait Dao {
-    fn by_id(&self, id: i64) -> Result<Item>;
+    fn by_id(&self, id: i32) -> Result<Item>;
     fn create(
         &self,
-        user: i64,
+        user: i32,
         title: &str,
         region: &str,
         content_type: &Mime,
         size: usize,
     ) -> Result<()>;
-    fn update(&self, id: i64, title: &str) -> Result<()>;
+    fn update(&self, id: i32, title: &str) -> Result<()>;
     fn all(&self) -> Result<Vec<Item>>;
-    fn by_user(&self, user: i64) -> Result<Vec<Item>>;
-    fn delete(&self, id: i64) -> Result<()>;
+    fn by_user(&self, user: i32) -> Result<Vec<Item>>;
+    fn delete(&self, id: i32) -> Result<()>;
 }
 
 impl Dao for Connection {
-    fn by_id(&self, id: i64) -> Result<Item> {
+    fn by_id(&self, id: i32) -> Result<Item> {
         let it = attachments::dsl::attachments
             .filter(attachments::dsl::id.eq(id))
             .first::<Item>(self)?;
@@ -78,7 +78,7 @@ impl Dao for Connection {
     }
     fn create(
         &self,
-        user: i64,
+        user: i32,
         title: &str,
         region: &str,
         content_type: &Mime,
@@ -100,7 +100,7 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn update(&self, id: i64, title: &str) -> Result<()> {
+    fn update(&self, id: i32, title: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
         update(attachments::dsl::attachments.filter(attachments::dsl::id.eq(id)))
             .set((
@@ -118,7 +118,7 @@ impl Dao for Connection {
         Ok(items)
     }
 
-    fn by_user(&self, user: i64) -> Result<Vec<Item>> {
+    fn by_user(&self, user: i32) -> Result<Vec<Item>> {
         let items = attachments::dsl::attachments
             .filter(attachments::dsl::user_id.eq(user))
             .order(attachments::dsl::updated_at.desc())
@@ -126,7 +126,7 @@ impl Dao for Connection {
         Ok(items)
     }
 
-    fn delete(&self, id: i64) -> Result<()> {
+    fn delete(&self, id: i32) -> Result<()> {
         delete(attachments::dsl::attachments.filter(attachments::dsl::id.eq(id))).execute(self)?;
         Ok(())
     }

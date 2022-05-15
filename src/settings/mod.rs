@@ -24,12 +24,12 @@ lazy_static! {
 
 #[derive(Queryable)]
 pub struct Item {
-    pub id: i64,
+    pub id: i32,
     pub key: String,
-    pub user_id: Option<i64>,
+    pub user_id: Option<i32>,
     pub salt: Option<Vec<u8>>,
     pub value: Vec<u8>,
-    pub version: i64,
+    pub version: i32,
     pub updated_at: NaiveDateTime,
     pub created_at: NaiveDateTime,
 }
@@ -39,13 +39,13 @@ pub trait Dao {
         &self,
         e: &E,
         key: &K,
-        u: Option<i64>,
+        u: Option<i32>,
     ) -> Result<V>;
     fn set<K: Display, V: Serialize, E: Secret>(
         &self,
         e: &E,
         k: &K,
-        u: Option<i64>,
+        u: Option<i32>,
         v: &V,
         f: bool,
     ) -> Result<()>;
@@ -56,7 +56,7 @@ impl Dao for Connection {
         &self,
         e: &E,
         k: &K,
-        u: Option<i64>,
+        u: Option<i32>,
     ) -> Result<V> {
         let k = k.to_string();
 
@@ -82,7 +82,7 @@ impl Dao for Connection {
         &self,
         e: &E,
         k: &K,
-        u: Option<i64>,
+        u: Option<i32>,
         v: &V,
         f: bool,
     ) -> Result<()> {

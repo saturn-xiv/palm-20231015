@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
+
+    <changeSet id="20220513111322" author="jeremy.zheng" labels="create-rbac">
+
+        <createTable tableName="policies">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="role" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="operation" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="resource" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="policies" indexName="idx_policies" unique="true">
+            <column name="role" />
+            <column name="operation" />
+            <column name="resource" />
+        </createIndex>
+        <createIndex tableName="policies" indexName="idx_policies_role">
+            <column name="role" />
+        </createIndex>
+        <createIndex tableName="policies" indexName="idx_policies_operation">
+            <column name="operation" />
+        </createIndex>
+        <createIndex tableName="policies" indexName="idx_policies_resource">
+            <column name="resource" />
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>

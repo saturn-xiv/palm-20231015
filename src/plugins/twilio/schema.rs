@@ -1,6 +1,6 @@
 table! {
     sms_logs (id) {
-        id -> Int8,
+        id -> Int4,
         from -> Varchar,
         to -> Varchar,
         body -> Text,

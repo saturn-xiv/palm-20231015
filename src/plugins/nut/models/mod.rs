@@ -13,7 +13,7 @@ use super::super::super::{Error, HttpError, Result};
 
 pub struct Resource {
     pub type_: String,
-    pub id: i64,
+    pub id: i32,
 }
 
 impl fmt::Display for Resource {

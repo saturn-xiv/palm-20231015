@@ -15,7 +15,7 @@
             <column name="title" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="size" type="integer">
+            <column name="size" type="bigint">
                 <constraints nullable="false" />
             </column>
             <column name="content_type" type="varchar(255)">

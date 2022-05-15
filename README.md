@@ -44,6 +44,7 @@ A total free education &amp; translation &amp; ops solution.
 
 - [Sign in with App Passwords](https://support.google.com/accounts/answer/185833?hl=en)
 - [Casbin is a powerful and efficient open-source access control library](https://casbin.org/docs/en/overview)
+- [The RBAC96 Model](https://profsandhu.com/cs6393_s12/lecture-rbac96.pdf)
 
 ### Credits
 

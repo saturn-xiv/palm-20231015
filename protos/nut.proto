@@ -3,10 +3,105 @@ option java_multiple_files = true;
 package palm.plugins.nut.v1;
 
 import "google/protobuf/empty.proto";
-// import "google/protobuf/timestamp.proto";
-// import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
 
-service User {}
+message Pager {
+  int64 page = 1;
+  int64 size = 2;
+}
+
+message Pagination {
+  int64 page = 1;
+  int64 size = 2;
+  int64 total = 3;
+}
+
+message IdRequest { int32 id = 1; }
+
+// ----------------------------------------------------------------------------
+
+service User {
+  rpc SignIn(UserSignInRequest) returns (UserSignInResponse) {}
+  rpc SignUp(UserSignUpRequest) returns (google.protobuf.Empty) {}
+  rpc Confirm(UserQuery) returns (google.protobuf.Empty) {}
+  rpc ConfirmByToken(UserTokenRequest) returns (google.protobuf.Empty) {}
+  rpc Unlock(UserQuery) returns (google.protobuf.Empty) {}
+  rpc UnlockByToken(UserTokenRequest) returns (google.protobuf.Empty) {}
+  rpc ForgotPassword(UserQuery) returns (google.protobuf.Empty) {}
+  rpc ResetPassword(UserResetPasswordRequest) returns (google.protobuf.Empty) {}
+
+  rpc Refresh(google.protobuf.Empty) returns (UserSignInResponse) {}
+  rpc Logs(Pager) returns (UserLogsResponse) {}
+  rpc SetProfile(UserProfile) returns (google.protobuf.Empty) {}
+  rpc GetProfile(google.protobuf.Empty) returns (UserProfile) {}
+  rpc ChangePassword(UserChangePasswordRequest)
+      returns (google.protobuf.Empty) {}
+}
+
+message UserChangePasswordRequest {
+  string old_password = 1;
+  string new_password = 2;
+}
+
+message UserLogsResponse {
+  message Item {
+    int32 id = 1;
+    int32 user_id = 2;
+    string message = 3;
+    google.protobuf.Timestamp created_at = 9;
+  }
+  repeated Item items = 1;
+  Pagination pagination = 9;
+}
+
+message UserResetPasswordRequest {
+  string token = 1;
+  string password = 2;
+}
+
+message UserQuery {
+  oneof id {
+    string email = 1;
+    string nick_name = 2;
+    string phone = 3;
+  }
+}
+
+message UserTokenRequest { string token = 1; }
+
+message UserSignInRequest {
+  UserQuery user = 1;
+  string password = 2;
+  google.protobuf.Duration ttl = 11;
+}
+
+message Menu {
+  string label = 1;
+  string to = 2;
+  repeated Menu children = 9;
+}
+message SiteInfo {
+  message Author {
+    string name = 1;
+    string email = 2;
+  }
+  string title = 1;
+  string subhead = 2;
+  repeated string keywords = 3;
+  string description = 4;
+  Author author = 5;
+  string copyright = 6;
+  repeated string languages = 9;
+}
+
+message UserSignInResponse {
+  string token = 1;
+  SiteInfo site_info = 2;
+  repeated Menu sidebar = 3;
+  string lang = 11;
+  string time_zone = 12;
+}
 
 message UserSignUpRequest {
   string real_name = 1;
@@ -18,8 +113,204 @@ message UserSignUpRequest {
   string home = 19;
 }
 
+message UserProfile {
+  string real_name = 1;
+  string logo = 2;
+  string time_zone = 8;
+  string lang = 9;
+  string wechat = 11;
+  string phone = 12;
+}
+
+// ----------------------------------------------------------------------------
+
+service Policy {
+  rpc Apply(PolicyIndexResponse.Item) returns (google.protobuf.Empty) {}
+  rpc Deny(PolicyIndexResponse.Item) returns (google.protobuf.Empty) {}
+
+  rpc Index(Pager) returns (PolicyIndexResponse) {}
+  rpc ByRole(PolicyCodeRequest) returns (PolicyIndexResponse) {}
+  rpc ByResource(PolicyCodeRequest) returns (PolicyIndexResponse) {}
+  rpc ByOperation(PolicyCodeRequest) returns (PolicyIndexResponse) {}
+
+  rpc Associate(PolicyUserRoleRequest) returns (google.protobuf.Empty) {}
+  rpc Unassociate(PolicyUserRoleRequest) returns (google.protobuf.Empty) {}
+}
+
+message PolicyCodeRequest {
+  string code = 1;
+  Pager pager = 9;
+}
+
+message PolicyIndexResponse {
+  message Item {
+    string role = 1;
+    string operation = 2;
+    string resource_type = 3;
+    int32 resource_id = 4;
+  }
+  repeated Item items = 1;
+  Pagination pagination = 9;
+}
+
+message PolicyUserRoleAssociateRequest {
+  int32 user = 1;
+  string role = 2;
+  google.protobuf.Timestamp not_before = 11;
+  google.protobuf.Timestamp expired_at = 12;
+}
+
+message PolicyUserRoleUnassociateRequest {
+  int32 user = 1;
+  string role = 2;
+}
+// ----------------------------------------------------------------------------
+
+service Locale {
+  rpc Set(LocaleSetRequest) returns (google.protobuf.Empty) {}
+  rpc Get(LocaleGetRequest) returns (LocaleIndexResponse.Item) {}
+  rpc Index(Pager) returns (LocaleIndexResponse) {}
+  rpc Destroy(IdRequest) returns (google.protobuf.Empty) {}
+}
+
+message LocaleIndexResponse {
+  message Item {
+    string lang = 1;
+    string code = 2;
+    string message = 3;
+    google.protobuf.Timestamp updated_at = 9;
+  }
+  repeated Item items = 1;
+  Pagination pagination = 9;
+}
+
+message LocaleGetRequest {
+  string lang = 1;
+  string code = 2;
+}
+message LocaleSetRequest {
+  string lang = 1;
+  string code = 2;
+  string message = 3;
+}
+
+// ----------------------------------------------------------------------------
+
+service Setting {
+  rpc Set(SettingSetRequest) returns (google.protobuf.Empty) {}
+  rpc Get(SettingGetRequest) returns (SettingGetResponse) {}
+}
+
+message SettingGetResponse {
+  optional int32 user = 1;
+  string key = 2;
+  google.protobuf.Timestamp updated_at = 9;
+}
+
+message SettingGetRequest {
+  optional int32 user = 1;
+  string key = 2;
+}
+
+message SettingSetRequest {
+  optional int32 user = 1;
+  string key = 2;
+  bytes value = 3;
+}
+
+// ----------------------------------------------------------------------------
+
 service Site {
   rpc Install(SiteInstallRequest) returns (google.protobuf.Empty) {}
+
+  rpc IndexUser(Pager) returns (SietUserIndexResponse) {}
+  rpc DisableUser(IdRequest) returns (google.protobuf.Empty) {}
+  rpc EnableUser(IdRequest) returns (google.protobuf.Empty) {}
+  rpc LockUser(IdRequest) returns (google.protobuf.Empty) {}
+  rpc UnlockUser(IdRequest) returns (google.protobuf.Empty) {}
+
+  rpc SetSmtp(SmtpProfile) returns (google.protobuf.Empty) {}
+  rpc GetSmtp(google.protobuf.Empty) returns (SmtpProfile) {}
+  rpc SetBing(BingProfile) returns (google.protobuf.Empty) {}
+  rpc GetBing(google.protobuf.Empty) returns (BingProfile) {}
+  rpc SetGoogle(GoogleProfile) returns (google.protobuf.Empty) {}
+  rpc GetGoogle(google.protobuf.Empty) returns (GoogleProfile) {}
+  rpc SetBaidu(BaiduProfile) returns (google.protobuf.Empty) {}
+  rpc GetBaidu(google.protobuf.Empty) returns (BaiduProfile) {}
+
+  rpc Status(google.protobuf.Empty) returns (SiteStatusResponse) {}
+}
+
+message SietUserIndexResponse {
+  message SignIn {
+    google.protobuf.Timestamp at = 1;
+    string ip = 2;
+  }
+  message Item {
+    int32 id = 1;
+    string uid = 2;
+    string email = 3;
+    string nick_name = 4;
+    string real_name = 5;
+    google.protobuf.Timestamp updated_at = 9;
+    optional SignIn last_sign_in = 11;
+    optional SignIn current = 12;
+    int32 sign_in_total = 13;
+    string lang = 21;
+    string time_zone = 22;
+    string avatar = 23;
+  }
+  repeated Item items = 1;
+  Pagination pagination = 9;
 }
 
 message SiteInstallRequest { UserSignUpRequest administrator = 1; }
+
+message GoogleProfile {
+  // https://developers.google.com/recaptcha/intro
+  message ReCaptcha {
+    string site_key = 1;
+    string secret = 2;
+  }
+  optional string site_verify_id = 1;
+  optional ReCaptcha re_captcha = 2;
+}
+message BaiduProfile { optional string site_verify_id = 1; }
+message BingProfile { optional string site_verify_id = 1; }
+
+message SmtpProfile {
+  string host = 1;
+  uint32 port = 2;
+  string user = 3;
+  string password = 4;
+  string cc = 5;
+  string bcc = 6;
+}
+
+message SiteStatusResponse {
+  message PostgreSql {
+    uint64 size = 1;
+    string version = 2;
+  }
+  message MySql {
+    uint64 size = 1;
+    string version = 2;
+  }
+  message Redis { string info = 1; }
+  message RabbitMq {}
+  message ElasticSearch {}
+  message Health {
+    string name = 1;
+    string status = 2;
+  }
+  message Os {}
+  message Network {}
+  PostgreSql postgresql = 1;
+  MySql mysql = 2;
+  Redis redis = 3;
+  RabbitMq rabbitmq = 4;
+  ElasticSearch elasticsearch = 5;
+  Os os = 11;
+  Network network = 12;
+  repeated Health healthes = 21;
+}

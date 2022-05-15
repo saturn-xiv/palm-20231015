@@ -11,12 +11,12 @@ pub struct Service {
     pub mysql: MySqlPool,
 }
 
-#[tonic::async_trait]
-impl Site for Service {
-    async fn install(&self, req: Request<SiteInstallRequest>) -> GrpcResult<()> {
-        let ip = req.remote_addr();
-        let req = req.into_inner();
-        debug!("receive {:?} {:?}", ip, req);
-        Ok(Response::new(()))
-    }
-}
+// #[tonic::async_trait]
+// impl Site for Service {
+//     async fn install(&self, req: Request<SiteInstallRequest>) -> GrpcResult<()> {
+//         let ip = req.remote_addr();
+//         let req = req.into_inner();
+//         debug!("receive {:?} {:?}", ip, req);
+//         Ok(Response::new(()))
+//     }
+// }
