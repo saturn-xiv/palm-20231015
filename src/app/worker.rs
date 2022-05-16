@@ -1,4 +1,4 @@
-use std::ops::Deref;
+use std::ops::DerefMut;
 
 use hyper::StatusCode;
 
@@ -6,7 +6,7 @@ use super::super::{
     crypto::Aes,
     env::Config,
     plugins::nut::tasks::email::{Handler as EmailHandler, Task as EmailTask},
-    settings::Dao as SettingDao,
+    setting::Dao as SettingDao,
     HttpError, Result,
 };
 
@@ -20,8 +20,8 @@ pub async fn launch(cfg: &Config, name: &str) -> Result<()> {
     let queue = cfg.rabbitmq.open();
 
     let db = cfg.postgresql.open()?;
-    let db = db.get()?;
-    let db = db.deref();
+    let mut db = db.get()?;
+    let db = db.deref_mut();
     let aes = Aes::new(&cfg.secrets.0)?;
     match name {
         EmailTask::QUEUE => {

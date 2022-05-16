@@ -1,5 +1,4 @@
 use std::path::{Component, Path};
-use std::sync::RwLock;
 
 use actix_cors::Cors;
 use actix_identity::{CookieIdentityPolicy, IdentityService};

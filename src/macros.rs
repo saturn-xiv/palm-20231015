@@ -8,6 +8,14 @@ macro_rules! to_timestamp {
 }
 
 #[macro_export]
+macro_rules! to_code {
+    ($x:expr) => {{
+        let it = $x.trim();
+        it.to_lowercase()
+    }};
+}
+
+#[macro_export]
 macro_rules! try_web {
     ($r:expr, $e:expr) => {{
         $r.map_err($e)

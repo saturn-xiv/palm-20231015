@@ -1,4 +1,6 @@
-table! {
+// @generated automatically by Diesel CLI.
+
+diesel::table! {
     locales (id) {
         id -> Int4,
         lang -> Varchar,

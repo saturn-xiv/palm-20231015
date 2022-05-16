@@ -1,4 +1,4 @@
-use std::ops::Deref;
+use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
 use tonic::{Request, Response, Status};
@@ -33,18 +33,18 @@ impl From<Locale> for v1::locale_index_response::Item {
 impl v1::locale_server::Locale for Service {
     async fn set(&self, req: Request<v1::LocaleSetRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
-        let db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref();
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
         let jwt = self.jwt.deref();
-        try_grpc!(ss.administrator(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.administrator(db))?;
 
         let req = req.into_inner();
-        let code = req.code.to_lowercase();
-        let code = code.trim();
+        let code = to_code!(req.code);
 
-        match LocaleDao::by_lang_and_code(db, &req.lang, code) {
+        match LocaleDao::by_lang_and_code(db, &req.lang, &code) {
             Ok(it) => try_grpc!(LocaleDao::update(db, it.id, &req.message))?,
-            Err(_) => try_grpc!(LocaleDao::create(db, &req.lang, code, &req.message))?,
+            Err(_) => try_grpc!(LocaleDao::create(db, &req.lang, &code, &req.message))?,
         };
         Ok(Response::new(()))
     }
@@ -52,16 +52,17 @@ impl v1::locale_server::Locale for Service {
         &self,
         req: Request<v1::LocaleGetRequest>,
     ) -> GrpcResult<v1::locale_index_response::Item> {
-        let db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref();
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
         let req = req.into_inner();
-        let it = try_grpc!(LocaleDao::by_lang_and_code(db, &req.lang, &req.code))?;
+        let code = to_code!(req.code);
+        let it = try_grpc!(LocaleDao::by_lang_and_code(db, &req.lang, &code))?;
 
         Ok(Response::new(it.into()))
     }
     async fn index(&self, req: Request<v1::Pager>) -> GrpcResult<v1::LocaleIndexResponse> {
-        let db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref();
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
         let req = req.into_inner();
         let total = try_grpc!(LocaleDao::count(db))?;
         let items = try_grpc!(LocaleDao::all(db, req.offset(total), req.size()))?;
@@ -73,10 +74,11 @@ impl v1::locale_server::Locale for Service {
     }
     async fn destroy(&self, req: Request<v1::IdRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
-        let db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref();
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
         let jwt = self.jwt.deref();
-        try_grpc!(ss.administrator(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.administrator(db))?;
         let req = req.into_inner();
         try_grpc!(LocaleDao::delete(db, req.id))?;
         Ok(Response::new(()))

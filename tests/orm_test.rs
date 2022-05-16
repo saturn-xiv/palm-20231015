@@ -3,7 +3,7 @@ extern crate uuid;
 
 use std::ops::Deref;
 
-use palm::{plugins::nut::models::group::Dao as GroupDao, settings::Dao as SettingDao};
+use palm::{plugins::nut::models::group::Dao as GroupDao, setting::Dao as SettingDao};
 
 #[test]
 fn groups() {

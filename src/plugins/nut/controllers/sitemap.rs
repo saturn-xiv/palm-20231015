@@ -1,5 +1,5 @@
 use std::io::prelude::*;
-use std::ops::Deref;
+use std::ops::{Deref, DerefMut};
 
 use actix_web::{
     error::{ErrorBadRequest, ErrorInternalServerError},
@@ -13,7 +13,7 @@ use validator::Validate;
 use xml::writer::{EventWriter, Result as XmlWriterResult, XmlEvent};
 
 use super::super::super::super::{
-    crypto::Aes, orm::postgresql::Pool as DbPool, settings::Dao as SettingDao, ToXml,
+    crypto::Aes, orm::postgresql::Pool as DbPool, setting::Dao as SettingDao, ToXml,
 };
 
 pub struct Item {}
@@ -91,8 +91,8 @@ pub async fn google(
     (db, aes): (web::Data<DbPool>, web::Data<Aes>),
     params: web::Path<(String,)>,
 ) -> WebResult<impl Responder> {
-    let db = try_web!(db.get())?;
-    let db = db.deref();
+    let mut db = try_web!(db.get())?;
+    let db = db.deref_mut();
     let params = params.into_inner();
     let aes = aes.deref();
     let aes = aes.deref();
@@ -131,8 +131,8 @@ pub async fn baidu(
     (db, aes): (web::Data<DbPool>, web::Data<Aes>),
     params: web::Path<(String,)>,
 ) -> WebResult<impl Responder> {
-    let db = try_web!(db.get())?;
-    let db = db.deref();
+    let mut db = try_web!(db.get())?;
+    let db = db.deref_mut();
     let params = params.into_inner();
     let aes = aes.deref();
     let aes = aes.deref();

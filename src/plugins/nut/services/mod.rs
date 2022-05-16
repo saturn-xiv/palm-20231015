@@ -6,6 +6,7 @@ pub mod user;
 
 use std::any::type_name;
 
+use chrono::Duration;
 use hyper::{
     header::{ACCEPT_LANGUAGE, AUTHORIZATION},
     StatusCode,
@@ -17,7 +18,7 @@ use super::super::super::{jwt::Jwt, orm::postgresql::Connection as Db, HttpError
 use super::models::{
     policy::Dao as PolicyDao,
     role::Dao as RoleDao,
-    user::{Action, Dao as UserDao, Item as User, Token as UserToken},
+    user::{Action, Dao as UserDao, Item as User, Token},
 };
 
 impl super::v1::Pagination {
@@ -76,11 +77,8 @@ pub struct Session {
 }
 
 impl Session {
-    pub const RESOURCE_SITE: &'static str = "site";
-    pub const ROLE_ADMINISTRATOR: &'static str = "administrator";
-
     fn detect_locale(meta: &MetadataMap) -> String {
-        if let Some(it) = meta.get(ACCEPT_LANGUAGE.as_str()) {
+        if let Some(it) = meta.get(ACCEPT_LANGUAGE.as_str().to_lowercase()) {
             if let Ok(it) = it.to_str() {
                 if let Ok(it) = LanguageTag::parse(it) {
                     return it.to_string();
@@ -91,7 +89,7 @@ impl Session {
     }
 
     fn detect_token(meta: &MetadataMap) -> Option<String> {
-        if let Some(it) = meta.get(AUTHORIZATION.as_str()) {
+        if let Some(it) = meta.get(AUTHORIZATION.as_str().to_lowercase()) {
             if let Ok(it) = it.to_str() {
                 if let Some(ref it) = it.strip_prefix(Jwt::BEARER) {
                     return Some(it.to_string());
@@ -112,9 +110,9 @@ impl Session {
         }
     }
 
-    pub fn current_user(&self, db: &Db, jwt: &Jwt) -> Result<User> {
+    pub fn current_user(&self, db: &mut Db, jwt: &Jwt) -> Result<User> {
         if let Some(ref token) = self.token {
-            let token = jwt.parse::<UserToken>(token)?;
+            let token = jwt.parse::<Token>(token)?;
             let token = token.claims;
             if token.act == Action::SignIn {
                 let user = UserDao::by_uid(db, &token.aud)?;
@@ -128,26 +126,21 @@ impl Session {
             None,
         )))
     }
+}
 
-    pub fn administrator(&self, db: &Db, jwt: &Jwt) -> Result<User> {
-        self.is(db, jwt, Self::ROLE_ADMINISTRATOR)
+impl User {
+    pub const ROLE_ADMINISTRATOR: &'static str = "administrator";
+    pub fn administrator(&self, db: &mut Db) -> Result<()> {
+        self.is(db, Self::ROLE_ADMINISTRATOR)
     }
-    pub fn is(&self, db: &Db, jwt: &Jwt, role: &str) -> Result<User> {
-        let user = self.current_user(db, jwt)?;
-        if RoleDao::is(db, user.id, role)? {
-            return Ok(user);
+    pub fn is(&self, db: &mut Db, role: &str) -> Result<()> {
+        if RoleDao::is(db, self.id, role)? {
+            return Ok(());
         }
         Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))
     }
 
-    pub fn can<T>(
-        &self,
-        db: &Db,
-        jwt: &Jwt,
-        operation: &str,
-        resource_id: Option<i32>,
-    ) -> Result<User> {
-        let user = self.current_user(db, jwt)?;
+    pub fn can<T>(&self, db: &mut Db, operation: &str, resource_id: Option<i32>) -> Result<()> {
         let resource = {
             let t = type_name::<T>();
             match resource_id {
@@ -156,11 +149,22 @@ impl Session {
             }
         };
 
-        for role in RoleDao::by_user(db, user.id)?.iter() {
+        for role in RoleDao::by_user(db, self.id)?.iter() {
             if PolicyDao::get(db, role, operation, &resource).is_ok() {
-                return Ok(user);
+                return Ok(());
             }
         }
         Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))
+    }
+
+    pub fn token(&self, jwt: &Jwt, ttl: Duration) -> Result<String> {
+        let (nbf, exp) = Jwt::timestamps(ttl);
+        let token = Token {
+            aud: self.uid.clone(),
+            act: Action::SignIn,
+            exp,
+            nbf,
+        };
+        jwt.sum(None, &token)
     }
 }

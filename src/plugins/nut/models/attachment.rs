@@ -54,30 +54,30 @@ impl Item {
 }
 
 pub trait Dao {
-    fn by_id(&self, id: i32) -> Result<Item>;
+    fn by_id(&mut self, id: i32) -> Result<Item>;
     fn create(
-        &self,
+        &mut self,
         user: i32,
         title: &str,
         region: &str,
         content_type: &Mime,
         size: usize,
     ) -> Result<()>;
-    fn update(&self, id: i32, title: &str) -> Result<()>;
-    fn all(&self) -> Result<Vec<Item>>;
-    fn by_user(&self, user: i32) -> Result<Vec<Item>>;
-    fn delete(&self, id: i32) -> Result<()>;
+    fn update(&mut self, id: i32, title: &str) -> Result<()>;
+    fn all(&mut self) -> Result<Vec<Item>>;
+    fn by_user(&mut self, user: i32) -> Result<Vec<Item>>;
+    fn delete(&mut self, id: i32) -> Result<()>;
 }
 
 impl Dao for Connection {
-    fn by_id(&self, id: i32) -> Result<Item> {
+    fn by_id(&mut self, id: i32) -> Result<Item> {
         let it = attachments::dsl::attachments
             .filter(attachments::dsl::id.eq(id))
             .first::<Item>(self)?;
         Ok(it)
     }
     fn create(
-        &self,
+        &mut self,
         user: i32,
         title: &str,
         region: &str,
@@ -100,7 +100,7 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn update(&self, id: i32, title: &str) -> Result<()> {
+    fn update(&mut self, id: i32, title: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
         update(attachments::dsl::attachments.filter(attachments::dsl::id.eq(id)))
             .set((
@@ -111,14 +111,14 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn all(&self) -> Result<Vec<Item>> {
+    fn all(&mut self) -> Result<Vec<Item>> {
         let items = attachments::dsl::attachments
             .order(attachments::dsl::updated_at.desc())
             .load::<Item>(self)?;
         Ok(items)
     }
 
-    fn by_user(&self, user: i32) -> Result<Vec<Item>> {
+    fn by_user(&mut self, user: i32) -> Result<Vec<Item>> {
         let items = attachments::dsl::attachments
             .filter(attachments::dsl::user_id.eq(user))
             .order(attachments::dsl::updated_at.desc())
@@ -126,7 +126,7 @@ impl Dao for Connection {
         Ok(items)
     }
 
-    fn delete(&self, id: i32) -> Result<()> {
+    fn delete(&mut self, id: i32) -> Result<()> {
         delete(attachments::dsl::attachments.filter(attachments::dsl::id.eq(id))).execute(self)?;
         Ok(())
     }

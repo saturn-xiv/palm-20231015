@@ -18,7 +18,7 @@ use super::{
     i18n::locale::{Dao as LocaleDao, MIGRATION as Locales},
     orm::postgresql::migration::Dao as MigrationDao,
     parser::from_toml,
-    settings::MIGRATION as Settings,
+    setting::MIGRATION as Settings,
     Result, BANNER, BUILD_TIME, GIT_VERSION, HOMEPAGE,
 };
 
@@ -128,22 +128,22 @@ pub async fn launch() -> Result<()> {
 
     {
         let db = cfg.postgresql.open()?;
-        let db = db.get()?;
-        let db = db.deref();
+        let mut db = db.get()?;
+        let db = db.deref_mut();
         // https://en.wikibooks.org/wiki/Ruby_on_Rails/ActiveRecord/Migrations
 
         {
             let items = vec![Locales.deref(), Settings.deref()];
-            db.load(&items)?;
+            MigrationDao::load(db, &items)?;
 
             if args.command == SubCommand::DbMigrate {
-                return db.transaction::<_, _, _>(|| {
+                return db.transaction::<_, _, _>(|db| {
                     db.migrate()?;
                     Ok(())
                 });
             }
             if args.command == SubCommand::DbRedo {
-                return db.transaction::<_, _, _>(|| {
+                return db.transaction::<_, _, _>(|db| {
                     loop {
                         if MigrationDao::count(db)? == 0 {
                             break;
@@ -157,7 +157,7 @@ pub async fn launch() -> Result<()> {
                 });
             }
             if args.command == SubCommand::DbRollback {
-                return db.transaction::<_, _, _>(|| {
+                return db.transaction::<_, _, _>(|db| {
                     db.rollback()?;
                     Ok(())
                 });

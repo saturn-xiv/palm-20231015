@@ -39,7 +39,7 @@ impl Token {
         None
     }
 
-    pub fn current_user(&self, db: &Db, jwt: &Jwt) -> Result<User> {
+    pub fn current_user(&self, db: &mut Db, jwt: &Jwt) -> Result<User> {
         if let Some(ref token) = self.0 {
             let token = jwt.parse::<UserToken>(token)?;
             let token = token.claims;

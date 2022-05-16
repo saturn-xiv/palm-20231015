@@ -16,13 +16,13 @@ pub struct Item {
 }
 
 pub trait Dao {
-    fn add(&self, from: &str, to: &str, body: &str) -> Result<()>;
-    fn all(&self, offset: i64, limit: i64) -> Result<Vec<Item>>;
-    fn count(&self) -> Result<i64>;
+    fn add(&mut self, from: &str, to: &str, body: &str) -> Result<()>;
+    fn all(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>>;
+    fn count(&mut self) -> Result<i64>;
 }
 
 impl Dao for Connection {
-    fn add(&self, from: &str, to: &str, body: &str) -> Result<()> {
+    fn add(&mut self, from: &str, to: &str, body: &str) -> Result<()> {
         insert_into(sms_logs::dsl::sms_logs)
             .values((
                 sms_logs::dsl::from.eq(from),
@@ -33,7 +33,7 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn all(&self, offset: i64, limit: i64) -> Result<Vec<Item>> {
+    fn all(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>> {
         let items = sms_logs::dsl::sms_logs
             .order(sms_logs::dsl::created_at.desc())
             .offset(offset)
@@ -41,7 +41,7 @@ impl Dao for Connection {
             .load::<Item>(self)?;
         Ok(items)
     }
-    fn count(&self) -> Result<i64> {
+    fn count(&mut self) -> Result<i64> {
         let it = sms_logs::dsl::sms_logs.count().first(self)?;
         Ok(it)
     }

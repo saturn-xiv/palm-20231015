@@ -7,6 +7,8 @@ extern crate diesel;
 extern crate log;
 #[macro_use]
 extern crate lazy_static;
+#[macro_use]
+extern crate serde_json;
 
 #[macro_use]
 pub mod macros;
@@ -26,7 +28,7 @@ pub mod parser;
 pub mod plugins;
 pub mod queue;
 pub mod result;
-pub mod settings;
+pub mod setting;
 pub mod theme;
 
 use std::io::{prelude::*, Error as IoError, ErrorKind as IoErrorKind};

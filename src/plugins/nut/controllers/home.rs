@@ -37,7 +37,7 @@ pub async fn index() -> impl Responder {
 pub struct HomeByLang {}
 
 impl Page for HomeByLang {
-    fn render(&self, _db: &DbConnection, theme: &Theme, lang: &str) -> Result<String> {
+    fn render(&self, _db: &mut DbConnection, theme: &Theme, lang: &str) -> Result<String> {
         let body = match *theme {
             Theme::Bootstrap => {
                 // TODO
@@ -73,8 +73,8 @@ pub async fn by_lang(
     (db, cache, aes): (web::Data<DbPool>, web::Data<CachePool>, web::Data<Aes>),
     params: web::Path<String>,
 ) -> WebResult<impl Responder> {
-    let db = try_web!(db.get())?;
-    let db = db.deref();
+    let mut db = try_web!(db.get())?;
+    let db = db.deref_mut();
     let mut ch = try_web!(cache.get())?;
     let ch = ch.deref_mut();
     let aes = aes.deref();

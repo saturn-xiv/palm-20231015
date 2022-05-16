@@ -36,13 +36,13 @@ pub struct Item {
 
 pub trait Dao {
     fn get<K: Display, V: DeserializeOwned, E: Secret>(
-        &self,
+        &mut self,
         e: &E,
         key: &K,
         u: Option<i32>,
     ) -> Result<V>;
     fn set<K: Display, V: Serialize, E: Secret>(
-        &self,
+        &mut self,
         e: &E,
         k: &K,
         u: Option<i32>,
@@ -53,7 +53,7 @@ pub trait Dao {
 
 impl Dao for Connection {
     fn get<K: Display, V: DeserializeOwned, E: Secret>(
-        &self,
+        &mut self,
         e: &E,
         k: &K,
         u: Option<i32>,
@@ -79,7 +79,7 @@ impl Dao for Connection {
     }
 
     fn set<K: Display, V: Serialize, E: Secret>(
-        &self,
+        &mut self,
         e: &E,
         k: &K,
         u: Option<i32>,

@@ -1,4 +1,6 @@
-table! {
+// @generated automatically by Diesel CLI.
+
+diesel::table! {
     attachments (id) {
         id -> Int4,
         user_id -> Int4,
@@ -13,7 +15,7 @@ table! {
     }
 }
 
-table! {
+diesel::table! {
     logs (id) {
         id -> Int4,
         user_id -> Int4,
@@ -26,7 +28,7 @@ table! {
     }
 }
 
-table! {
+diesel::table! {
     policies (id) {
         id -> Int4,
         role -> Varchar,
@@ -36,7 +38,17 @@ table! {
     }
 }
 
-table! {
+diesel::table! {
+    sms_logs (id) {
+        id -> Int4,
+        from -> Varchar,
+        to -> Varchar,
+        body -> Text,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     users (id) {
         id -> Int4,
         real_name -> Varchar,
@@ -48,7 +60,7 @@ table! {
         provider_type -> Varchar,
         provider_id -> Varchar,
         access_token -> Nullable<Varchar>,
-        logo -> Varchar,
+        avatar -> Varchar,
         lang -> Varchar,
         time_zone -> Varchar,
         sign_in_count -> Int4,
@@ -65,7 +77,7 @@ table! {
     }
 }
 
-table! {
+diesel::table! {
     users_roles (id) {
         id -> Int4,
         user_id -> Int4,
@@ -78,4 +90,11 @@ table! {
     }
 }
 
-allow_tables_to_appear_in_same_query!(attachments, logs, policies, users, users_roles,);
+diesel::allow_tables_to_appear_in_same_query!(
+    attachments,
+    logs,
+    policies,
+    sms_logs,
+    users,
+    users_roles,
+);

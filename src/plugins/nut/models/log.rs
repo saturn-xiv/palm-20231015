@@ -44,7 +44,7 @@ impl fmt::Display for Level {
 }
 pub trait Dao {
     fn add<S: Into<String>, T>(
-        &self,
+        &mut self,
         user: i32,
         level: &Level,
         ip: &str,
@@ -52,14 +52,14 @@ pub trait Dao {
         message: S,
     ) -> Result<()>;
 
-    fn all(&self, user: i32, offset: i64, limit: i64) -> Result<Vec<Item>>;
-    fn by_resource<T>(&self, resource_id: i32) -> Result<Vec<Item>>;
-    fn count(&self, user: i32) -> Result<i64>;
+    fn all(&mut self, user: i32, offset: i64, limit: i64) -> Result<Vec<Item>>;
+    fn by_resource<T>(&mut self, resource_id: i32) -> Result<Vec<Item>>;
+    fn count(&mut self, user: i32) -> Result<i64>;
 }
 
 impl Dao for Connection {
     fn add<S: Into<String>, T>(
-        &self,
+        &mut self,
         user: i32,
         level: &Level,
         ip: &str,
@@ -79,7 +79,7 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn all(&self, user: i32, offset: i64, limit: i64) -> Result<Vec<Item>> {
+    fn all(&mut self, user: i32, offset: i64, limit: i64) -> Result<Vec<Item>> {
         let items = logs::dsl::logs
             .filter(logs::dsl::user_id.eq(user))
             .order(logs::dsl::created_at.desc())
@@ -88,7 +88,7 @@ impl Dao for Connection {
             .load::<Item>(self)?;
         Ok(items)
     }
-    fn by_resource<T>(&self, resource_id: i32) -> Result<Vec<Item>> {
+    fn by_resource<T>(&mut self, resource_id: i32) -> Result<Vec<Item>> {
         let items = logs::dsl::logs
             .filter(logs::dsl::resource_type.eq(type_name::<T>()))
             .filter(logs::dsl::resource_id.eq(resource_id))
@@ -96,7 +96,7 @@ impl Dao for Connection {
             .load::<Item>(self)?;
         Ok(items)
     }
-    fn count(&self, user: i32) -> Result<i64> {
+    fn count(&mut self, user: i32) -> Result<i64> {
         let it = logs::dsl::logs
             .filter(logs::dsl::user_id.eq(user))
             .count()

@@ -24,14 +24,14 @@ message IdRequest { int32 id = 1; }
 service User {
   rpc SignIn(UserSignInRequest) returns (UserSignInResponse) {}
   rpc SignUp(UserSignUpRequest) returns (google.protobuf.Empty) {}
-  rpc Confirm(UserQuery) returns (google.protobuf.Empty) {}
+  rpc ConfirmByEmail(UserQueryRequest) returns (google.protobuf.Empty) {}
   rpc ConfirmByToken(UserTokenRequest) returns (google.protobuf.Empty) {}
-  rpc Unlock(UserQuery) returns (google.protobuf.Empty) {}
+  rpc UnlockByEmail(UserQueryRequest) returns (google.protobuf.Empty) {}
   rpc UnlockByToken(UserTokenRequest) returns (google.protobuf.Empty) {}
-  rpc ForgotPassword(UserQuery) returns (google.protobuf.Empty) {}
+  rpc ForgotPassword(UserQueryRequest) returns (google.protobuf.Empty) {}
   rpc ResetPassword(UserResetPasswordRequest) returns (google.protobuf.Empty) {}
 
-  rpc Refresh(google.protobuf.Empty) returns (UserSignInResponse) {}
+  rpc Refresh(google.protobuf.Duration) returns (UserSignInResponse) {}
   rpc Logs(Pager) returns (UserLogsResponse) {}
   rpc SetProfile(UserProfile) returns (google.protobuf.Empty) {}
   rpc GetProfile(google.protobuf.Empty) returns (UserProfile) {}
@@ -60,18 +60,17 @@ message UserResetPasswordRequest {
   string password = 2;
 }
 
-message UserQuery {
+message UserQueryRequest {
   oneof id {
     string email = 1;
     string nick_name = 2;
-    string phone = 3;
   }
 }
 
 message UserTokenRequest { string token = 1; }
 
 message UserSignInRequest {
-  UserQuery user = 1;
+  UserQueryRequest query = 1;
   string password = 2;
   google.protobuf.Duration ttl = 11;
 }
@@ -97,10 +96,12 @@ message SiteInfo {
 
 message UserSignInResponse {
   string token = 1;
-  SiteInfo site_info = 2;
-  repeated Menu sidebar = 3;
+  // SiteInfo site_info = 2;
+  // repeated Menu sidebar = 3;
   string lang = 11;
   string time_zone = 12;
+  string avatar = 13;
+  string real_name = 14;
 }
 
 message UserSignUpRequest {
@@ -110,7 +111,7 @@ message UserSignUpRequest {
   string password = 4;
   string lang = 11;
   string time_zone = 12;
-  string home = 19;
+  string home = 21;
 }
 
 message UserProfile {
@@ -204,11 +205,7 @@ service Setting {
   rpc Get(SettingGetRequest) returns (SettingGetResponse) {}
 }
 
-message SettingGetResponse {
-  optional int32 user = 1;
-  string key = 2;
-  google.protobuf.Timestamp updated_at = 9;
-}
+message SettingGetResponse { bytes value = 1; }
 
 message SettingGetRequest {
   optional int32 user = 1;
@@ -219,6 +216,7 @@ message SettingSetRequest {
   optional int32 user = 1;
   string key = 2;
   bytes value = 3;
+  bool encrypt = 9;
 }
 
 // ----------------------------------------------------------------------------

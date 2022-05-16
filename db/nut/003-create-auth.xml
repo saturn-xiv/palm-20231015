@@ -32,7 +32,7 @@
                 <constraints nullable="false" />
             </column>
             <column name="access_token" type="varchar(255)" />
-            <column name="logo" type="varchar(255)">
+            <column name="avatar" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
             <column name="lang" type="varchar(16)" defaultValue="en-US">

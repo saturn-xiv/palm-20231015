@@ -1,3 +1,4 @@
+use std::ops::DerefMut;
 use std::result::Result as StdResult;
 
 use actix_web::{
@@ -19,8 +20,9 @@ impl FromRequest for User {
         let token = Token::detect(req);
         if let Some(jwt) = req.app_data::<Jwt>() {
             if let Some(db) = req.app_data::<DbPool>() {
-                if let Ok(db) = try_web!(db.get()) {
-                    if let Ok(it) = Token(token).current_user(&db, jwt) {
+                if let Ok(mut db) = try_web!(db.get()) {
+                    let db = db.deref_mut();
+                    if let Ok(it) = Token(token).current_user(db, jwt) {
                         return ok(it);
                     }
                 }

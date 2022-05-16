@@ -26,21 +26,21 @@ impl Item {
 }
 
 pub trait Dao {
-    fn by_user(&self, user: i32) -> Result<Vec<String>>;
-    fn by_role(&self, role: &str) -> Result<Vec<i32>>;
-    fn is(&self, user: i32, role: &str) -> Result<bool>;
+    fn by_user(&mut self, user: i32) -> Result<Vec<String>>;
+    fn by_role(&mut self, role: &str) -> Result<Vec<i32>>;
+    fn is(&mut self, user: i32, role: &str) -> Result<bool>;
     fn associate(
-        &self,
+        &mut self,
         user: i32,
         role: &str,
         not_before: &NaiveDate,
         expired_at: &NaiveDate,
     ) -> Result<()>;
-    fn unassociate(&self, user: i32, role: &str) -> Result<()>;
+    fn unassociate(&mut self, user: i32, role: &str) -> Result<()>;
 }
 
 impl Dao for Connection {
-    fn by_user(&self, user: i32) -> Result<Vec<String>> {
+    fn by_user(&mut self, user: i32) -> Result<Vec<String>> {
         Ok(users_roles::dsl::users_roles
             .select(users_roles::dsl::role)
             .filter(users_roles::dsl::user_id.eq(user))
@@ -48,7 +48,7 @@ impl Dao for Connection {
             .order(users_roles::dsl::role.asc())
             .load::<String>(self)?)
     }
-    fn by_role(&self, role: &str) -> Result<Vec<i32>> {
+    fn by_role(&mut self, role: &str) -> Result<Vec<i32>> {
         Ok(users_roles::dsl::users_roles
             .select(users_roles::dsl::user_id)
             .filter(users_roles::dsl::role.eq(role))
@@ -56,7 +56,7 @@ impl Dao for Connection {
             .order(users_roles::dsl::user_id.asc())
             .load::<i32>(self)?)
     }
-    fn is(&self, user: i32, role: &str) -> Result<bool> {
+    fn is(&mut self, user: i32, role: &str) -> Result<bool> {
         let it = users_roles::dsl::users_roles
             .filter(users_roles::dsl::user_id.eq(user))
             .filter(users_roles::dsl::role.eq(role))
@@ -64,7 +64,7 @@ impl Dao for Connection {
         Ok(it.available())
     }
     fn associate(
-        &self,
+        &mut self,
         user: i32,
         role: &str,
         not_before: &NaiveDate,
@@ -102,7 +102,7 @@ impl Dao for Connection {
         };
         Ok(())
     }
-    fn unassociate(&self, user: i32, role: &str) -> Result<()> {
+    fn unassociate(&mut self, user: i32, role: &str) -> Result<()> {
         delete(
             users_roles::dsl::users_roles
                 .filter(users_roles::dsl::user_id.eq(user))

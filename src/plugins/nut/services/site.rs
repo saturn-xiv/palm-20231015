@@ -1,14 +1,16 @@
-use tonic::{Request, Response};
+use std::sync::Arc;
 
 use super::super::super::super::{
+    crypto::Aes,
+    jwt::Jwt,
     orm::{mysql::Pool as MySqlPool, postgresql::Pool as PostgreSqlPool},
-    GrpcResult,
 };
-use super::super::v1;
 
 pub struct Service {
     pub pgsql: PostgreSqlPool,
     pub mysql: MySqlPool,
+    pub jwt: Arc<Jwt>,
+    pub aes: Arc<Aes>,
 }
 
 // #[tonic::async_trait]

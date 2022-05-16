@@ -63,7 +63,7 @@ function generate_diesel_mysql() {
 function generate_diesel_postgresql() {
     echo "generate diesel schema for postgresql"
     
-    DATABASE_URL=$1 diesel print-schema -o settings > src/settings/schema.rs
+    DATABASE_URL=$1 diesel print-schema -o settings > src/setting/schema.rs
     DATABASE_URL=$1 diesel print-schema -o locales > src/i18n/schema.rs
     DATABASE_URL=$1 diesel print-schema -o users logs attachments \
         policies users_roles > src/plugins/nut/schema.rs
@@ -73,7 +73,7 @@ function generate_diesel_postgresql() {
 # ----------------------------------------------------------
 
 generate_diesel_postgresql "postgres://postgres@127.0.0.1:5432/palm"
-generate_diesel_mysql "mysql://www:apee1uo1Eique8A.e@127.0.0.1:3306"
+# generate_diesel_mysql "mysql://www:apee1uo1Eique8A.e@127.0.0.1:3306"
 
 
 declare -a languages=(
@@ -83,6 +83,8 @@ declare -a languages=(
     "ruby"
     "cpp"
     "csharp"
+    # https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/
+    "java" 
     # "objective_c"
 )
 
