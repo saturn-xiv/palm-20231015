@@ -28,7 +28,7 @@ RUN apt update
 RUN apt -y upgrade
 
 RUN apt -y install zsh git locales-all rsync openssh-client sshpass \
-    vim tzdata pwgen curl zip unzip tree tmux dialog \
+    vim tzdata pwgen zip unzip tree tmux dialog \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
     imagemagick ffmpeg fonts-dejavu \
     clang-${CLANG_VERSION} clang-format-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \

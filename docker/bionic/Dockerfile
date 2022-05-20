@@ -23,7 +23,7 @@ RUN apt -y upgrade
 
 ENV PYTHON_VERSION "3.11"
 RUN apt -y install zsh git locales rsync openssh-client sshpass \
-    vim tzdata pwgen curl zip unzip tree tmux \
+    vim tzdata pwgen zip unzip tree tmux \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
     imagemagick ffmpeg \
     clang build-essential pkg-config libtool automake autoconf binutils cpio \
