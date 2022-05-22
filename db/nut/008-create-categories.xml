@@ -3,30 +3,17 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
     http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
 
-    <changeSet id="20220410130822" author="jeremy.zheng" labels="create-attachments">
+    <changeSet id="20220519152526" author="jeremy.zheng" labels="create-categories">
 
-        <createTable tableName="attachments">
+        <createTable tableName="categories">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="user_id" type="integer">
-                <constraints nullable="false" />
+            <column name="name" type="varchar(255)">
+                <constraints unique="true" nullable="false" />
             </column>
-            <column name="title" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-            <column name="size" type="bigint">
-                <constraints nullable="false" />
-            </column>
-            <column name="content_type" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-            <column name="region" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-            <column name="status" type="varchar(16)">
-                <constraints nullable="false" />
-            </column>
+            <column name="parent_id" type="integer" />
+            <column name="level" type="integer" defaultValue="0" />
             <column name="version" type="integer" defaultValue="0">
                 <constraints nullable="false" />
             </column>
@@ -37,21 +24,12 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="attachments" indexName="idx_attachments_content_type">
-            <column name="content_type" />
-        </createIndex>
-        <createIndex tableName="attachments" indexName="idx_attachments_region">
-            <column name="region" />
-        </createIndex>
-        <createIndex tableName="attachments" indexName="idx_attachments_status">
-            <column name="status" />
-        </createIndex>
 
-        <createTable tableName="attachments_resources">
+        <createTable tableName="categories_resources">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="attachment_id" type="integer" />
+            <column name="tag_id" type="integer" />
             <column name="resource_type" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
@@ -62,15 +40,16 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="attachments_resources" indexName="idx_attachments_resources" unique="true">
-            <column name="attachment_id" />
+        <createIndex tableName="categories_resources" indexName="idx_categories_resources" unique="true">
+            <column name="tag_id" />
             <column name="resource_type" />
             <column name="resource_id" />
         </createIndex>
-        <createIndex tableName="attachments_resources" indexName="idx_attachments_resources_resource">
+        <createIndex tableName="categories_resources" indexName="idx_categories_resources_resource">
             <column name="resource_type" />
             <column name="resource_id" />
         </createIndex>
+
     </changeSet>
 
 </databaseChangeLog>

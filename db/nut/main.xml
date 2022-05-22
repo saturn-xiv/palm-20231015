@@ -9,5 +9,7 @@
     <include file="004-create-attachments.xml" relativeToChangelogFile="true" />
     <include file="005-create-rbac.xml" relativeToChangelogFile="true" />
     <include file="006-create-users-roles.xml" relativeToChangelogFile="true" />
+    <include file="007-create-tags.xml" relativeToChangelogFile="true" />
+    <include file="008-create-categories.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>

@@ -9,6 +9,7 @@
 
     <include file="nut/main.xml" relativeToChangelogFile="true" />
     <include file="cms/main.xml" relativeToChangelogFile="true" />
+    <include file="forum/main.xml" relativeToChangelogFile="true" />
     <include file="twilio/main.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>
