@@ -3,7 +3,7 @@ use diesel::{insert_into, prelude::*};
 use serde::Serialize;
 
 use super::super::super::super::{orm::postgresql::Connection, Result};
-use super::super::schema::sms_logs;
+use super::super::schema::twilio_sms_logs;
 
 #[derive(Queryable, Serialize, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -23,26 +23,26 @@ pub trait Dao {
 
 impl Dao for Connection {
     fn add(&mut self, from: &str, to: &str, body: &str) -> Result<()> {
-        insert_into(sms_logs::dsl::sms_logs)
+        insert_into(twilio_sms_logs::dsl::twilio_sms_logs)
             .values((
-                sms_logs::dsl::from.eq(from),
-                sms_logs::dsl::to.eq(to),
-                sms_logs::dsl::body.eq(body),
+                twilio_sms_logs::dsl::from.eq(from),
+                twilio_sms_logs::dsl::to.eq(to),
+                twilio_sms_logs::dsl::body.eq(body),
             ))
             .execute(self)?;
         Ok(())
     }
 
     fn all(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>> {
-        let items = sms_logs::dsl::sms_logs
-            .order(sms_logs::dsl::created_at.desc())
+        let items = twilio_sms_logs::dsl::twilio_sms_logs
+            .order(twilio_sms_logs::dsl::created_at.desc())
             .offset(offset)
             .limit(limit)
             .load::<Item>(self)?;
         Ok(items)
     }
     fn count(&mut self) -> Result<i64> {
-        let it = sms_logs::dsl::sms_logs.count().first(self)?;
+        let it = twilio_sms_logs::dsl::twilio_sms_logs.count().first(self)?;
         Ok(it)
     }
 }

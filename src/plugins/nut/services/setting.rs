@@ -1,13 +1,17 @@
+use std::any::type_name;
 use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
 use tonic::{Request, Response, Status};
 
 use super::super::super::super::{
-    crypto::Aes, jwt::Jwt, orm::postgresql::Pool as PostgreSqlPool, setting::Dao as SettingDao,
+    crypto::Aes,
+    jwt::Jwt,
+    orm::postgresql::Pool as PostgreSqlPool,
+    setting::{Dao as SettingDao, Item as Setting},
     GrpcResult,
 };
-use super::super::v1;
+use super::super::{models::Operation, v1};
 use super::Session;
 
 pub struct Service {
@@ -30,11 +34,11 @@ impl v1::setting_server::Setting for Service {
 
         match req.user {
             None => {
-                try_grpc!(user.administrator(db))?;
+                try_grpc!(user.can::<Setting>(db, &Operation::Write, None))?;
             }
             Some(id) => {
                 if user.id != id {
-                    try_grpc!(user.administrator(db))?;
+                    return Err(Status::permission_denied(type_name::<Setting>()));
                 }
             }
         };
@@ -58,11 +62,11 @@ impl v1::setting_server::Setting for Service {
         let req = req.into_inner();
         match req.user {
             None => {
-                try_grpc!(user.administrator(db))?;
+                try_grpc!(user.can::<Setting>(db, &Operation::Read, None))?;
             }
             Some(id) => {
                 if user.id != id {
-                    try_grpc!(user.administrator(db))?;
+                    return Err(Status::permission_denied(type_name::<Setting>()));
                 }
             }
         };

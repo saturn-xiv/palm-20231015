@@ -88,7 +88,6 @@ pub struct Config {
     pub http: Http,
     pub rpc: Rpc,
     pub postgresql: PostgreSql,
-    pub mysql: MySql,
     pub redis: Redis,
     pub rabbitmq: RabbitMq,
     pub s3: S3,

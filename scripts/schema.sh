@@ -41,39 +41,25 @@ function generate_grpc_web() {
         $WORKSPACE/protos/*.proto
 }
 
-function generate_diesel_mysql() {
-    echo 'generate diesel schema for mysql'
-    DATABASE_URL=$1/cms diesel print-schema -e \
-        jm_contentitem_tag_map jm_fields_values \
-        jm_finder_terms_common jm_finder_tokens jm_finder_tokens_aggregate \
-        jm_messages_cfg jm_user_profiles \
-        jm_content_types \
-        > src/plugins/cms/schema.rs
-
-    DATABASE_URL=$1/forum diesel print-schema -e \
-        bb_online bb_search_matches \
-        bb_forums bb_topics \
-        > src/plugins/forum/schema.rs
-
-    DATABASE_URL=$1/cart diesel print-schema -e \
-        oc_googleshopping_product oc_googleshopping_target oc_recurring \
-        > src/plugins/mall/schema.rs
-}
 
 function generate_diesel_postgresql() {
     echo "generate diesel schema for postgresql"
     
     DATABASE_URL=$1 diesel print-schema -o settings > src/setting/schema.rs
     DATABASE_URL=$1 diesel print-schema -o locales > src/i18n/schema.rs
-    DATABASE_URL=$1 diesel print-schema -o users logs attachments \
-        policies users_roles > src/plugins/nut/schema.rs
-    DATABASE_URL=$1 diesel print-schema -o sms_logs > src/plugins/twilio/schema.rs
+    DATABASE_URL=$1 diesel print-schema -o users logs leave_words \
+        attachments attachments_resources \
+        policies roles users_roles \
+        tags tags_resources\
+        categories categories_resources> src/plugins/nut/schema.rs
+    DATABASE_URL=$1 diesel print-schema -o cms_articles cms_comments > src/plugins/cms/schema.rs
+    DATABASE_URL=$1 diesel print-schema -o forum_topics forum_posts > src/plugins/forum/schema.rs
+    DATABASE_URL=$1 diesel print-schema -o twilio_sms_logs > src/plugins/twilio/schema.rs
 }
 
 # ----------------------------------------------------------
 
 generate_diesel_postgresql "postgres://postgres@127.0.0.1:5432/palm"
-# generate_diesel_mysql "mysql://www:apee1uo1Eique8A.e@127.0.0.1:3306"
 
 
 declare -a languages=(

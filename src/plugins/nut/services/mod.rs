@@ -19,6 +19,7 @@ use super::models::{
     policy::Dao as PolicyDao,
     role::Dao as RoleDao,
     user::{Action, Dao as UserDao, Item as User, Token},
+    Operation,
 };
 
 impl super::v1::Pagination {
@@ -129,18 +130,20 @@ impl Session {
 }
 
 impl User {
-    pub const ROLE_ADMINISTRATOR: &'static str = "administrator";
-    pub fn administrator(&self, db: &mut Db) -> Result<()> {
-        self.is(db, Self::ROLE_ADMINISTRATOR)
-    }
     pub fn is(&self, db: &mut Db, role: &str) -> Result<()> {
-        if RoleDao::is(db, self.id, role)? {
+        let role = RoleDao::by_lang_and_code(db, &self.lang, role)?;
+        if RoleDao::is(db, self.id, role.id)? {
             return Ok(());
         }
         Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))
     }
 
-    pub fn can<T>(&self, db: &mut Db, operation: &str, resource_id: Option<i32>) -> Result<()> {
+    pub fn can<T>(
+        &self,
+        db: &mut Db,
+        operation: &Operation,
+        resource_id: Option<i32>,
+    ) -> Result<()> {
         let resource = {
             let t = type_name::<T>();
             match resource_id {
@@ -148,13 +151,17 @@ impl User {
                 None => t.to_string(),
             }
         };
+        let operation = operation.to_string();
 
-        for role in RoleDao::by_user(db, self.id)?.iter() {
-            if PolicyDao::get(db, role, operation, &resource).is_ok() {
+        for role in RoleDao::roles_by_user(db, self.id)? {
+            if PolicyDao::get(db, role, &operation, &resource).is_ok() {
                 return Ok(());
             }
         }
-        Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))
+        Err(Box::new(HttpError(
+            StatusCode::FORBIDDEN,
+            Some(format!("{} {}", operation, resource)),
+        )))
     }
 
     pub fn token(&self, jwt: &Jwt, ttl: Duration) -> Result<String> {

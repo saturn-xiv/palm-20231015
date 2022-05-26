@@ -16,6 +16,50 @@ diesel::table! {
 }
 
 diesel::table! {
+    attachments_resources (id) {
+        id -> Int4,
+        attachment_id -> Nullable<Int4>,
+        resource_type -> Varchar,
+        resource_id -> Int4,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    categories (id) {
+        id -> Int4,
+        lang -> Varchar,
+        code -> Varchar,
+        name -> Varchar,
+        parent_id -> Nullable<Int4>,
+        priority -> Int4,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    categories_resources (id) {
+        id -> Int4,
+        category_id -> Int4,
+        resource_type -> Varchar,
+        resource_id -> Int4,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    leave_words (id) {
+        id -> Int4,
+        lang -> Varchar,
+        ip -> Varchar,
+        body -> Text,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     logs (id) {
         id -> Int4,
         user_id -> Int4,
@@ -31,7 +75,7 @@ diesel::table! {
 diesel::table! {
     policies (id) {
         id -> Int4,
-        role -> Varchar,
+        role_id -> Int4,
         operation -> Varchar,
         resource -> Varchar,
         created_at -> Timestamp,
@@ -39,7 +83,42 @@ diesel::table! {
 }
 
 diesel::table! {
-    sms_logs (id) {
+    roles (id) {
+        id -> Int4,
+        lang -> Varchar,
+        code -> Varchar,
+        name -> Varchar,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    tags (id) {
+        id -> Int4,
+        lang -> Varchar,
+        code -> Varchar,
+        name -> Varchar,
+        priority -> Int4,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    tags_resources (id) {
+        id -> Int4,
+        tag_id -> Int4,
+        resource_type -> Varchar,
+        resource_id -> Int4,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    twilio_sms_logs (id) {
         id -> Int4,
         from -> Varchar,
         to -> Varchar,
@@ -81,7 +160,7 @@ diesel::table! {
     users_roles (id) {
         id -> Int4,
         user_id -> Int4,
-        role -> Varchar,
+        role_id -> Int4,
         not_before -> Date,
         expired_at -> Date,
         version -> Int4,
@@ -92,9 +171,16 @@ diesel::table! {
 
 diesel::allow_tables_to_appear_in_same_query!(
     attachments,
+    attachments_resources,
+    categories,
+    categories_resources,
+    leave_words,
     logs,
     policies,
-    sms_logs,
+    roles,
+    tags,
+    tags_resources,
+    twilio_sms_logs,
     users,
     users_roles,
 );

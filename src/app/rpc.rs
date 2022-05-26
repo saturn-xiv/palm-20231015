@@ -14,7 +14,6 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let addr = cfg.rpc.addr();
     info!("run on http://{addr}");
     let pgsql = cfg.postgresql.open()?;
-    let _mysql = cfg.mysql.open()?;
     let _cache = cfg.redis.open()?;
     let aes = Arc::new(Aes::new(&cfg.secrets.0)?);
     let _hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);

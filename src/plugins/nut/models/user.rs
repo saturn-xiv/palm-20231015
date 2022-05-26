@@ -330,12 +330,12 @@ impl Dao for Connection {
         insert_into(users::dsl::users)
             .values(&New {
                 real_name,
-                nick_name: &nick_name,
-                email: &email,
+                nick_name,
+                email,
                 password: Some(&enc.sum(password.as_bytes())?),
                 salt: &random_bytes(New::SALT_SIZE),
                 provider_type: &Type::Email.to_string(),
-                provider_id: &email,
+                provider_id: email,
                 avatar: &Item::gravatar(&email)?,
                 lang: &lang.to_string(),
                 time_zone: &time_zone.to_string(),

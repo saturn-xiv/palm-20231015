@@ -1,7 +1,7 @@
 // @generated automatically by Diesel CLI.
 
 diesel::table! {
-    sms_logs (id) {
+    twilio_sms_logs (id) {
         id -> Int4,
         from -> Varchar,
         to -> Varchar,

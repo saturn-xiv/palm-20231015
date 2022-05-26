@@ -6,7 +6,7 @@ use mime::Mime;
 use serde::Serialize;
 
 use super::super::super::super::{orm::postgresql::Connection, Result};
-use super::super::schema::attachments;
+use super::super::schema::{attachments, attachments_resources};
 use super::Status;
 
 #[derive(Queryable, Serialize)]
@@ -67,6 +67,8 @@ pub trait Dao {
     fn all(&mut self) -> Result<Vec<Item>>;
     fn by_user(&mut self, user: i32) -> Result<Vec<Item>>;
     fn delete(&mut self, id: i32) -> Result<()>;
+    fn associate(&mut self, id: i32, resource_type: &str, resource_id: i32) -> Result<()>;
+    fn unassociate(&mut self, id: i32, resource_type: &str, resource_id: i32) -> Result<()>;
 }
 
 impl Dao for Connection {
@@ -127,7 +129,40 @@ impl Dao for Connection {
     }
 
     fn delete(&mut self, id: i32) -> Result<()> {
+        delete(
+            attachments_resources::dsl::attachments_resources
+                .filter(attachments_resources::dsl::attachment_id.eq(id)),
+        )
+        .execute(self)?;
         delete(attachments::dsl::attachments.filter(attachments::dsl::id.eq(id))).execute(self)?;
+        Ok(())
+    }
+    fn associate(&mut self, id: i32, resource_type: &str, resource_id: i32) -> Result<()> {
+        let cnt: i64 = attachments_resources::dsl::attachments_resources
+            .filter(attachments_resources::dsl::attachment_id.eq(id))
+            .filter(attachments_resources::dsl::resource_type.eq(resource_type))
+            .filter(attachments_resources::dsl::resource_id.eq(resource_id))
+            .count()
+            .get_result(self)?;
+        if cnt == 0 {
+            insert_into(attachments_resources::dsl::attachments_resources)
+                .values((
+                    attachments_resources::dsl::attachment_id.eq(id),
+                    attachments_resources::dsl::resource_type.eq(resource_type),
+                    attachments_resources::dsl::resource_id.eq(resource_id),
+                ))
+                .execute(self)?;
+        }
+        Ok(())
+    }
+    fn unassociate(&mut self, id: i32, resource_type: &str, resource_id: i32) -> Result<()> {
+        delete(
+            attachments_resources::dsl::attachments_resources
+                .filter(attachments_resources::dsl::attachment_id.eq(id))
+                .filter(attachments_resources::dsl::resource_type.eq(resource_type))
+                .filter(attachments_resources::dsl::resource_id.eq(resource_id)),
+        )
+        .execute(self)?;
         Ok(())
     }
 }

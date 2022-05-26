@@ -9,27 +9,27 @@ use super::super::schema::policies;
 #[serde(rename_all = "camelCase")]
 pub struct Item {
     pub id: i32,
-    pub role: String,
+    pub role_id: i32,
     pub operation: String,
     pub resource: String,
     pub created_at: NaiveDateTime,
 }
 
 pub trait Dao {
-    fn by_role(&mut self, role: &str) -> Result<Vec<Item>>;
+    fn by_role(&mut self, role: i32) -> Result<Vec<Item>>;
     fn by_operation(&mut self, operation: &str) -> Result<Vec<Item>>;
     fn by_resource(&mut self, resource: &str) -> Result<Vec<Item>>;
     fn index(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>>;
     fn count(&mut self) -> Result<i64>;
-    fn create(&mut self, role: &str, operation: &str, resource: &str) -> Result<()>;
-    fn get(&mut self, role: &str, operation: &str, resource: &str) -> Result<Item>;
+    fn create(&mut self, role: i32, operation: &str, resource: &str) -> Result<()>;
+    fn get(&mut self, role: i32, operation: &str, resource: &str) -> Result<Item>;
     fn destroy(&mut self, id: i32) -> Result<()>;
 }
 
 impl Dao for Connection {
-    fn by_role(&mut self, role: &str) -> Result<Vec<Item>> {
+    fn by_role(&mut self, role: i32) -> Result<Vec<Item>> {
         let items = policies::dsl::policies
-            .filter(policies::dsl::role.eq(role))
+            .filter(policies::dsl::role_id.eq(role))
             .order((
                 policies::dsl::resource.asc(),
                 policies::dsl::operation.asc(),
@@ -66,19 +66,19 @@ impl Dao for Connection {
         let cnt: i64 = policies::dsl::policies.count().get_result(self)?;
         Ok(cnt)
     }
-    fn create(&mut self, role: &str, operation: &str, resource: &str) -> Result<()> {
+    fn create(&mut self, role: i32, operation: &str, resource: &str) -> Result<()> {
         insert_into(policies::dsl::policies)
             .values((
-                policies::dsl::role.eq(role),
+                policies::dsl::role_id.eq(role),
                 policies::dsl::operation.eq(operation),
                 policies::dsl::resource.eq(resource),
             ))
             .execute(self)?;
         Ok(())
     }
-    fn get(&mut self, role: &str, operation: &str, resource: &str) -> Result<Item> {
+    fn get(&mut self, role: i32, operation: &str, resource: &str) -> Result<Item> {
         let it = policies::dsl::policies
-            .filter(policies::dsl::role.eq(role))
+            .filter(policies::dsl::role_id.eq(role))
             .filter(policies::dsl::operation.eq(operation))
             .filter(policies::dsl::resource.eq(resource))
             .first::<Item>(self)?;

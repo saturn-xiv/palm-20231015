@@ -5,7 +5,7 @@
 
     <changeSet id="20220410131332" author="jeremy.zheng" labels="create-sms-logs">
 
-        <createTable tableName="sms_logs">
+        <createTable tableName="twilio_sms_logs">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
@@ -22,6 +22,12 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
+        <createIndex tableName="twilio_sms_logs" indexName="idx_twilio_sms_logs_from">
+            <column name="from" />
+        </createIndex>
+        <createIndex tableName="twilio_sms_logs" indexName="idx_twilio_sms_logs_to">
+            <column name="to" />
+        </createIndex>
 
     </changeSet>
 

@@ -9,7 +9,7 @@ use super::super::super::super::{
     orm::postgresql::Pool as PostgreSqlPool,
     GrpcResult,
 };
-use super::super::v1;
+use super::super::{models::Operation, v1};
 use super::Session;
 
 pub struct Service {
@@ -37,7 +37,7 @@ impl v1::locale_server::Locale for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        try_grpc!(user.administrator(db))?;
+        try_grpc!(user.can::<Locale>(db, &Operation::Write, None))?;
 
         let req = req.into_inner();
         let code = to_code!(req.code);
@@ -78,7 +78,7 @@ impl v1::locale_server::Locale for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        try_grpc!(user.administrator(db))?;
+        try_grpc!(user.can::<Locale>(db, &Operation::Write, None))?;
         let req = req.into_inner();
         try_grpc!(LocaleDao::delete(db, req.id))?;
         Ok(Response::new(()))
