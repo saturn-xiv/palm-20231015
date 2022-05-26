@@ -16,7 +16,7 @@ use super::super::super::super::{
 };
 use super::super::{
     models::{
-        log::{Dao as LogDao, Item as Log, Level},
+        log::{Dao as LogDao, Level},
         user::{Action, Dao as UserDao, Item as User, Token},
     },
     tasks::email::Task as EmailTask,
@@ -107,14 +107,13 @@ impl v1::user_server::User for Service {
             return Ok(Response::new(it));
         }
 
-        Err(Status::permission_denied("must sign in"))
+        Err(Status::permission_denied("can't sign in"))
     }
     async fn sign_up(&self, req: Request<v1::UserSignUpRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
 
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
-        let jwt = self.jwt.deref();
         let hmac = self.hmac.deref();
         let req = req.into_inner();
 
@@ -126,7 +125,7 @@ impl v1::user_server::User for Service {
             UserDao::sign_up(
                 db,
                 hmac,
-                &real_name,
+                real_name,
                 &nick_name,
                 &email,
                 &req.password,
@@ -145,41 +144,187 @@ impl v1::user_server::User for Service {
             Ok(user)
         }))?;
 
-        // try_grpc!(
-        //     self.send_email(db, &req.home, &user, &Action::Confirm)
-        //         .await
-        // )?;
+        try_grpc!(
+            self.send_email(db, &req.home, &user, &Action::Confirm)
+                .await
+        )?;
 
         Ok(Response::new(()))
     }
-    async fn confirm_by_email(&self, req: Request<v1::UserQueryRequest>) -> GrpcResult<()> {
+    async fn confirm_by_email(&self, req: Request<v1::UserEmailRequest>) -> GrpcResult<()> {
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let req = req.into_inner();
+
+        if let Some(ref it) = req.query {
+            let user = try_grpc!(it.user(db))?;
+            if user.confirmed_at.is_some() {
+                return Err(Status::invalid_argument(format!(
+                    "user {} already confirmed!",
+                    user.email
+                )));
+            }
+            try_grpc!(
+                self.send_email(db, &req.home, &user, &Action::Confirm)
+                    .await
+            )?;
+            return Ok(Response::new(()));
+        }
+
+        Err(Status::not_found("user"))
+    }
+    async fn confirm_by_token(&self, req: Request<v1::UserTokenRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
-        let jwt = self.jwt.deref();
         let req = req.into_inner();
-        let user = try_grpc!(req.user(db))?;
-        // TODO
+
+        let token = try_grpc!(self.jwt.parse::<Token>(&req.token))?;
+        let token = token.claims;
+        if token.act != Action::Confirm {
+            return Err(Status::invalid_argument(format!(
+                "bad request {:?}",
+                token.act
+            )));
+        }
+
+        let user = try_grpc!(UserDao::by_uid(db, &token.aud))?;
+        if user.confirmed_at.is_some() {
+            return Err(Status::invalid_argument(format!(
+                "user {} already confirmed!",
+                user.email
+            )));
+        }
+        {
+            let ip = ss.client_ip;
+            let user_id = user.id;
+            try_grpc!(db.transaction::<_, Error, _>(move |db| {
+                UserDao::confirm(db, user_id)?;
+                LogDao::add::<String, User>(
+                    db,
+                    user_id,
+                    &Level::Info,
+                    &ip,
+                    user.id,
+                    "Confirm account.".to_string(),
+                )?;
+                Ok(())
+            }))?;
+        }
+
         Ok(Response::new(()))
     }
-    async fn confirm_by_token(&self, req: Request<v1::UserTokenRequest>) -> GrpcResult<()> {
-        // TODO
-        Ok(Response::new(()))
-    }
-    async fn unlock_by_email(&self, req: Request<v1::UserQueryRequest>) -> GrpcResult<()> {
-        // TODO
-        Ok(Response::new(()))
+    async fn unlock_by_email(&self, req: Request<v1::UserEmailRequest>) -> GrpcResult<()> {
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let req = req.into_inner();
+
+        if let Some(ref it) = req.query {
+            let user = try_grpc!(it.user(db))?;
+            if user.locked_at.is_none() {
+                return Err(Status::invalid_argument(format!(
+                    "user {} isn't locked!",
+                    user.email
+                )));
+            }
+            try_grpc!(self.send_email(db, &req.home, &user, &Action::Unlock).await)?;
+            return Ok(Response::new(()));
+        }
+
+        Err(Status::not_found("user"))
     }
     async fn unlock_by_token(&self, req: Request<v1::UserTokenRequest>) -> GrpcResult<()> {
-        // TODO
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let req = req.into_inner();
+
+        let token = try_grpc!(self.jwt.parse::<Token>(&req.token))?;
+        let token = token.claims;
+        if token.act != Action::Unlock {
+            return Err(Status::invalid_argument(format!(
+                "bad request {:?}",
+                token.act
+            )));
+        }
+
+        let user = try_grpc!(UserDao::by_uid(db, &token.aud))?;
+        if user.locked_at.is_none() {
+            return Err(Status::invalid_argument(format!(
+                "user {} isn't locked!",
+                user.email
+            )));
+        }
+        {
+            let ip = ss.client_ip;
+            let user_id = user.id;
+            try_grpc!(db.transaction::<_, Error, _>(move |db| {
+                UserDao::lock(db, user_id, false)?;
+                LogDao::add::<String, User>(
+                    db,
+                    user_id,
+                    &Level::Info,
+                    &ip,
+                    user.id,
+                    "Unlock account.".to_string(),
+                )?;
+                Ok(())
+            }))?;
+        }
+
         Ok(Response::new(()))
     }
-    async fn forgot_password(&self, req: Request<v1::UserQueryRequest>) -> GrpcResult<()> {
-        // TODO
-        Ok(Response::new(()))
+    async fn forgot_password(&self, req: Request<v1::UserEmailRequest>) -> GrpcResult<()> {
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let req = req.into_inner();
+
+        if let Some(ref it) = req.query {
+            let user = try_grpc!(it.user(db))?;
+            try_grpc!(
+                self.send_email(db, &req.home, &user, &Action::ResetPassword)
+                    .await
+            )?;
+            return Ok(Response::new(()));
+        }
+
+        Err(Status::not_found("user"))
     }
     async fn reset_password(&self, req: Request<v1::UserResetPasswordRequest>) -> GrpcResult<()> {
-        // TODO
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let req = req.into_inner();
+        let hmac = self.hmac.deref();
+
+        let token = try_grpc!(self.jwt.parse::<Token>(&req.token))?;
+        let token = token.claims;
+        if token.act != Action::ResetPassword {
+            return Err(Status::invalid_argument(format!(
+                "bad request {:?}",
+                token.act
+            )));
+        }
+
+        let user = try_grpc!(UserDao::by_uid(db, &token.aud))?;
+
+        {
+            let ip = ss.client_ip;
+            let user_id = user.id;
+            try_grpc!(db.transaction::<_, Error, _>(move |db| {
+                UserDao::password(db, hmac, user_id, &req.password)?;
+                LogDao::add::<String, User>(
+                    db,
+                    user_id,
+                    &Level::Info,
+                    &ip,
+                    user.id,
+                    "Reset password.".to_string(),
+                )?;
+                Ok(())
+            }))?;
+        }
+
         Ok(Response::new(()))
     }
     async fn refresh(
@@ -202,19 +347,107 @@ impl v1::user_server::User for Service {
         Ok(Response::new(it))
     }
     async fn logs(&self, req: Request<v1::Pager>) -> GrpcResult<v1::UserLogsResponse> {
-        // TODO
-        Ok(Response::new(v1::UserLogsResponse::default()))
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let req = req.into_inner();
+        let total = try_grpc!(LogDao::count(db, user.id))?;
+        let items = try_grpc!(LogDao::all(db, user.id, req.offset(total), req.size()))?;
+
+        Ok(Response::new(v1::UserLogsResponse {
+            items: items
+                .iter()
+                .map(|x| v1::user_logs_response::Item {
+                    id: x.id,
+                    user_id: x.user_id,
+                    message: x.message.clone(),
+                    resource_type: x.resource_type.clone(),
+                    resource_id: x.resource_id,
+                    created_at: Some(to_timestamp!(x.created_at)),
+                })
+                .collect(),
+            pagination: Some(v1::Pagination::new(&req, total)),
+        }))
     }
     async fn set_profile(&self, req: Request<v1::UserProfile>) -> GrpcResult<()> {
-        // TODO
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let req = req.into_inner();
+
+        {
+            let ip = ss.client_ip;
+            let user_id = user.id;
+            try_grpc!(db.transaction::<_, Error, _>(move |db| {
+                UserDao::set_profile(
+                    db,
+                    user.id,
+                    &req.real_name,
+                    &req.avatar,
+                    &req.lang.parse()?,
+                    &req.time_zone.parse()?,
+                )?;
+                LogDao::add::<String, User>(
+                    db,
+                    user_id,
+                    &Level::Info,
+                    &ip,
+                    user.id,
+                    "Update profile.".to_string(),
+                )?;
+                Ok(())
+            }))?;
+        }
         Ok(Response::new(()))
     }
     async fn get_profile(&self, req: Request<()>) -> GrpcResult<v1::UserProfile> {
-        // TODO
-        Ok(Response::new(v1::UserProfile::default()))
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        Ok(Response::new(v1::UserProfile {
+            real_name: user.real_name.clone(),
+            nick_name: user.nick_name.clone(),
+            email: user.email.clone(),
+            avatar: user.avatar.clone(),
+            lang: user.lang.clone(),
+            time_zone: user.time_zone,
+            wechat: "".to_string(),
+            phone: "".to_string(),
+        }))
     }
     async fn change_password(&self, req: Request<v1::UserChangePasswordRequest>) -> GrpcResult<()> {
-        // TODO
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let req = req.into_inner();
+        let hmac = self.hmac.deref();
+        try_grpc!(user.auth(hmac, &req.current_password))?;
+
+        {
+            let ip = ss.client_ip;
+            let user_id = user.id;
+            try_grpc!(db.transaction::<_, Error, _>(move |db| {
+                UserDao::password(db, hmac, user_id, &req.new_password)?;
+                LogDao::add::<String, User>(
+                    db,
+                    user_id,
+                    &Level::Info,
+                    &ip,
+                    user.id,
+                    "Change password.".to_string(),
+                )?;
+                Ok(())
+            }))?;
+        }
+
         Ok(Response::new(()))
     }
 }

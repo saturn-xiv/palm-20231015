@@ -4,8 +4,7 @@ use redis::Connection as Cache;
 use serde::{Deserialize, Serialize};
 
 use super::{
-    cache::Provider, crypto::Secret, orm::postgresql::Connection as Db, setting::Dao as SettingDao,
-    Result,
+    crypto::Secret, orm::postgresql::Connection as Db, setting::Dao as SettingDao, Result,
 };
 
 #[derive(Serialize, Deserialize, Debug, Clone)]

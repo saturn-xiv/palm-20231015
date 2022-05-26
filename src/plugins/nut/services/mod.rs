@@ -68,7 +68,7 @@ impl super::v1::Pager {
         self.size
     }
     const MAX_SIZE: i64 = 1 << 10;
-    const MIN_SIZE: i64 = 1 << 6;
+    const MIN_SIZE: i64 = 1 << 2;
 }
 
 pub struct Session {
