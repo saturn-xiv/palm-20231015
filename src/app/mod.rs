@@ -1,5 +1,6 @@
 pub mod generate;
 pub mod rpc;
+pub mod user;
 pub mod web;
 pub mod worker;
 
@@ -7,18 +8,15 @@ use std::fs::File;
 use std::ops::{Deref, DerefMut};
 use std::os::unix::fs::PermissionsExt;
 use std::path::PathBuf;
-use std::{thread, time::Duration};
 
-use crate::diesel::Connection as DieselConnection;
 use clap::{Parser, Subcommand};
 
 use super::{
     cache::Provider,
+    crypto::Hmac,
     env::{is_stopped, Config},
-    i18n::locale::{Dao as LocaleDao, MIGRATION as Locales},
-    orm::postgresql::migration::Dao as MigrationDao,
+    i18n::locale::Dao as LocaleDao,
     parser::from_toml,
-    setting::MIGRATION as Settings,
     Result, BANNER, BUILD_TIME, GIT_VERSION, HOMEPAGE,
 };
 
@@ -46,14 +44,20 @@ pub enum SubCommand {
     CacheList,
     #[clap(about = "Clear cache items")]
     CacheClear,
-    #[clap(about = "Migrate the database to the latest version")]
-    DbMigrate,
-    #[clap(about = "Revert migration to previous version")]
-    DbRollback,
-    #[clap(about = "Re-applying all the migrations")]
-    DbRedo,
-    #[clap(about = "Show current database versions")]
-    DbStatus,
+    #[clap(about = "List all users")]
+    UserList,
+    #[clap(about = "Apply role to user(by uid)")]
+    UserApplyPolicy(user::ApplyPolicy),
+    #[clap(about = "reset user's password(by uid)")]
+    UserResetPassword(user::ResetPassword),
+    // #[clap(about = "Migrate the database to the latest version")]
+    // DbMigrate,
+    // #[clap(about = "Revert migration to previous version")]
+    // DbRollback,
+    // #[clap(about = "Re-applying all the migrations")]
+    // DbRedo,
+    // #[clap(about = "Show current database versions")]
+    // DbStatus,
     #[clap(about = "Sync i18n items")]
     I18nSync,
     #[clap(about = "Http Server")]
@@ -130,46 +134,58 @@ pub async fn launch() -> Result<()> {
         let db = cfg.postgresql.open()?;
         let mut db = db.get()?;
         let db = db.deref_mut();
-        // https://en.wikibooks.org/wiki/Ruby_on_Rails/ActiveRecord/Migrations
-
+        let hmac = Hmac::new(&cfg.secrets.0)?;
         {
-            let items = vec![Locales.deref(), Settings.deref()];
-            MigrationDao::load(db, &items)?;
-
-            if args.command == SubCommand::DbMigrate {
-                return db.transaction::<_, _, _>(|db| {
-                    db.migrate()?;
-                    Ok(())
-                });
+            if args.command == SubCommand::UserList {
+                return user::list(db);
             }
-            if args.command == SubCommand::DbRedo {
-                return db.transaction::<_, _, _>(|db| {
-                    loop {
-                        if MigrationDao::count(db)? == 0 {
-                            break;
-                        }
-                        db.rollback()?;
-                        thread::sleep(Duration::from_millis(100));
-                    }
-                    // FIXME
-                    db.migrate()?;
-                    Ok(())
-                });
+            if let SubCommand::UserApplyPolicy(ref it) = args.command {
+                return it.execute(db);
             }
-            if args.command == SubCommand::DbRollback {
-                return db.transaction::<_, _, _>(|db| {
-                    db.rollback()?;
-                    Ok(())
-                });
-            }
-            if args.command == SubCommand::DbStatus {
-                println!("{:<14} {:<23} NAME", "VERSION", "RUN AT");
-                for it in MigrationDao::all(db)? {
-                    println!("{}", it);
-                }
-                return Ok(());
+            if let SubCommand::UserResetPassword(ref it) = args.command {
+                return it.execute(db, &hmac);
             }
         }
+        // https://en.wikibooks.org/wiki/Ruby_on_Rails/ActiveRecord/Migrations
+
+        // {
+        //     let items = vec![Locales.deref(), Settings.deref()];
+        //     MigrationDao::load(db, &items)?;
+
+        //     if args.command == SubCommand::DbMigrate {
+        //         return db.transaction::<_, _, _>(|db| {
+        //             db.migrate()?;
+        //             Ok(())
+        //         });
+        //     }
+        //     if args.command == SubCommand::DbRedo {
+        //         return db.transaction::<_, _, _>(|db| {
+        //             loop {
+        //                 if MigrationDao::count(db)? == 0 {
+        //                     break;
+        //                 }
+        //                 db.rollback()?;
+        //                 thread::sleep(Duration::from_millis(100));
+        //             }
+        //             // FIXME
+        //             db.migrate()?;
+        //             Ok(())
+        //         });
+        //     }
+        //     if args.command == SubCommand::DbRollback {
+        //         return db.transaction::<_, _, _>(|db| {
+        //             db.rollback()?;
+        //             Ok(())
+        //         });
+        //     }
+        //     if args.command == SubCommand::DbStatus {
+        //         println!("{:<14} {:<23} NAME", "VERSION", "RUN AT");
+        //         for it in MigrationDao::all(db)? {
+        //             println!("{}", it);
+        //         }
+        //         return Ok(());
+        //     }
+        // }
         if args.command == SubCommand::I18nSync {
             let (i, j) = LocaleDao::sync(db)?;
             info!("sync {}/{} items", i, j);
@@ -189,7 +205,7 @@ pub async fn launch() -> Result<()> {
     if args.command == SubCommand::Rpc {
         return rpc::launch(&cfg).await;
     }
-    if let SubCommand::Worker(it) = args.command {
+    if let SubCommand::Worker(ref it) = args.command {
         worker::launch(&cfg, &it.queue).await?;
     }
 
