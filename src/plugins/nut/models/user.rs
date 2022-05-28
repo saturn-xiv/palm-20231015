@@ -196,7 +196,7 @@ pub trait Dao {
         time_zone: &Tz,
     ) -> Result<()>;
     fn lock(&mut self, id: i32, on: bool) -> Result<()>;
-    fn disable(&mut self, id: i32, on: bool) -> Result<()>;
+    fn enable(&mut self, id: i32, on: bool) -> Result<()>;
     fn confirm(&mut self, id: i32) -> Result<()>;
     fn count(&mut self) -> Result<i64>;
     fn all(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>>;
@@ -356,12 +356,12 @@ impl Dao for Connection {
             .execute(self)?;
         Ok(())
     }
-    fn disable(&mut self, id: i32, on: bool) -> Result<()> {
+    fn enable(&mut self, id: i32, on: bool) -> Result<()> {
         let now = Utc::now().naive_utc();
         let it = users::dsl::users.filter(users::dsl::id.eq(id));
         update(it)
             .set((
-                users::dsl::deleted_at.eq(&if on { Some(now) } else { None }),
+                users::dsl::deleted_at.eq(&if on { None } else { Some(now) }),
                 users::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;

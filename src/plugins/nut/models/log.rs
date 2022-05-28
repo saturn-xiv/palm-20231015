@@ -14,7 +14,7 @@ pub struct Item {
     pub level: String,
     pub ip: String,
     pub resource_type: String,
-    pub resource_id: i32,
+    pub resource_id: Option<i32>,
     pub message: String,
     pub created_at: NaiveDateTime,
 }
@@ -48,12 +48,12 @@ pub trait Dao {
         user: i32,
         level: &Level,
         ip: &str,
-        resource_id: i32,
+        resource_id: Option<i32>,
         message: S,
     ) -> Result<()>;
 
     fn all(&mut self, user: i32, offset: i64, limit: i64) -> Result<Vec<Item>>;
-    fn by_resource<T>(&mut self, resource_id: i32) -> Result<Vec<Item>>;
+    fn by_resource<T>(&mut self, resource_id: Option<i32>) -> Result<Vec<Item>>;
     fn count(&mut self, user: i32) -> Result<i64>;
 }
 
@@ -63,7 +63,7 @@ impl Dao for Connection {
         user: i32,
         level: &Level,
         ip: &str,
-        resource_id: i32,
+        resource_id: Option<i32>,
         message: S,
     ) -> Result<()> {
         insert_into(logs::dsl::logs)
@@ -88,7 +88,7 @@ impl Dao for Connection {
             .load::<Item>(self)?;
         Ok(items)
     }
-    fn by_resource<T>(&mut self, resource_id: i32) -> Result<Vec<Item>> {
+    fn by_resource<T>(&mut self, resource_id: Option<i32>) -> Result<Vec<Item>> {
         let items = logs::dsl::logs
             .filter(logs::dsl::resource_type.eq(type_name::<T>()))
             .filter(logs::dsl::resource_id.eq(resource_id))

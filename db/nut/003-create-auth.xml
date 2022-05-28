@@ -94,9 +94,7 @@
             <column name="resource_type" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="resource_id" type="integer">
-                <constraints nullable="false" />
-            </column>
+            <column name="resource_id" type="integer" />
             <column name="message" type="text">
                 <constraints nullable="false" />
             </column>
@@ -114,6 +112,10 @@
         <createIndex tableName="logs" indexName="idx_logs_user_ip">
             <column name="user_id" />
             <column name="ip" />
+        </createIndex>
+        <createIndex tableName="logs" indexName="idx_logs_user_resource_type">
+            <column name="user_id" />
+            <column name="resource_type" />
         </createIndex>
 
     </changeSet>

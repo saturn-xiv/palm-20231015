@@ -91,7 +91,7 @@ impl v1::user_server::User for Service {
                     user.id,
                     &Level::Info,
                     &ss.client_ip,
-                    user.id,
+                    Some(user.id),
                     "sign in success",
                 )?;
                 Ok(())
@@ -138,7 +138,7 @@ impl v1::user_server::User for Service {
                 user.id,
                 &Level::Info,
                 &ss.client_ip,
-                user.id,
+                Some(user.id),
                 "sign up.",
             )?;
             Ok(user)
@@ -205,7 +205,7 @@ impl v1::user_server::User for Service {
                     user_id,
                     &Level::Info,
                     &ip,
-                    user.id,
+                    Some(user.id),
                     "Confirm account.".to_string(),
                 )?;
                 Ok(())
@@ -265,7 +265,7 @@ impl v1::user_server::User for Service {
                     user_id,
                     &Level::Info,
                     &ip,
-                    user.id,
+                    Some(user.id),
                     "Unlock account.".to_string(),
                 )?;
                 Ok(())
@@ -318,7 +318,7 @@ impl v1::user_server::User for Service {
                     user_id,
                     &Level::Info,
                     &ip,
-                    user.id,
+                    Some(user.id),
                     "Reset password.".to_string(),
                 )?;
                 Ok(())
@@ -396,7 +396,7 @@ impl v1::user_server::User for Service {
                     user_id,
                     &Level::Info,
                     &ip,
-                    user.id,
+                    Some(user.id),
                     "Update profile.".to_string(),
                 )?;
                 Ok(())
@@ -441,7 +441,7 @@ impl v1::user_server::User for Service {
                     user_id,
                     &Level::Info,
                     &ip,
-                    user.id,
+                    Some(user.id),
                     "Change password.".to_string(),
                 )?;
                 Ok(())

@@ -50,7 +50,7 @@ message UserLogsResponse {
     int32 user_id = 2;
     string message = 3;
     string resource_type = 4;
-    int32 resource_id = 5;
+    optional int32 resource_id = 5;
     google.protobuf.Timestamp created_at = 9;
   }
   repeated Item items = 1;
@@ -140,9 +140,6 @@ service Policy {
   rpc Deny(PolicyIndexResponse.Item) returns (google.protobuf.Empty) {}
 
   rpc Index(Pager) returns (PolicyIndexResponse) {}
-  rpc ByRole(PolicyCodeRequest) returns (PolicyIndexResponse) {}
-  rpc ByResource(PolicyCodeRequest) returns (PolicyIndexResponse) {}
-  rpc ByOperation(PolicyCodeRequest) returns (PolicyIndexResponse) {}
 
   rpc Associate(PolicyUserRoleAssociateRequest)
       returns (google.protobuf.Empty) {}
@@ -150,17 +147,12 @@ service Policy {
       returns (google.protobuf.Empty) {}
 }
 
-message PolicyCodeRequest {
-  string code = 1;
-  Pager pager = 9;
-}
-
 message PolicyIndexResponse {
   message Item {
     string role = 1;
     string operation = 2;
     string resource_type = 3;
-    int32 resource_id = 4;
+    optional int32 resource_id = 4;
   }
   repeated Item items = 1;
   Pagination pagination = 9;
@@ -232,13 +224,15 @@ message SettingSetRequest {
 // ----------------------------------------------------------------------------
 
 service Site {
-  rpc Install(SiteInstallRequest) returns (google.protobuf.Empty) {}
 
-  rpc IndexUser(Pager) returns (SietUserIndexResponse) {}
+  rpc IndexUser(Pager) returns (SiteUserIndexResponse) {}
   rpc DisableUser(IdRequest) returns (google.protobuf.Empty) {}
   rpc EnableUser(IdRequest) returns (google.protobuf.Empty) {}
   rpc LockUser(IdRequest) returns (google.protobuf.Empty) {}
   rpc UnlockUser(IdRequest) returns (google.protobuf.Empty) {}
+  rpc ConfirmUser(IdRequest) returns (google.protobuf.Empty) {}
+  rpc SetUserPassword(SiteSetUserPasswordRequest)
+      returns (google.protobuf.Empty) {}
 
   rpc SetSmtp(SmtpProfile) returns (google.protobuf.Empty) {}
   rpc GetSmtp(google.protobuf.Empty) returns (SmtpProfile) {}
@@ -251,31 +245,36 @@ service Site {
 
   rpc Status(google.protobuf.Empty) returns (SiteStatusResponse) {}
 }
+message SiteSetUserPasswordRequest {
+  int32 user = 1;
+  string password = 2;
+}
 
-message SietUserIndexResponse {
-  message SignIn {
-    google.protobuf.Timestamp at = 1;
-    string ip = 2;
-  }
+message SiteUserIndexResponse {
+
   message Item {
     int32 id = 1;
     string uid = 2;
     string email = 3;
     string nick_name = 4;
     string real_name = 5;
+    string provider_type = 6;
     google.protobuf.Timestamp updated_at = 9;
-    optional SignIn last_sign_in = 11;
-    optional SignIn current = 12;
-    int32 sign_in_total = 13;
+    optional google.protobuf.Timestamp last_sign_in_at = 11;
+    optional string last_sign_in_ip = 12;
+    optional google.protobuf.Timestamp current_sign_in_at = 13;
+    optional string current_sign_in_ip = 14;
+    int32 sign_in_count = 19;
     string lang = 21;
     string time_zone = 22;
     string avatar = 23;
+    optional google.protobuf.Timestamp confirmed_at = 27;
+    optional google.protobuf.Timestamp locked_at = 28;
+    optional google.protobuf.Timestamp deleted_at = 29;
   }
   repeated Item items = 1;
   Pagination pagination = 9;
 }
-
-message SiteInstallRequest { UserSignUpRequest administrator = 1; }
 
 message GoogleProfile {
   // https://developers.google.com/recaptcha/intro
@@ -299,29 +298,51 @@ message SmtpProfile {
 }
 
 message SiteStatusResponse {
+  message Database {
+    string name = 1;
+    string size = 2;
+  }
   message PostgreSql {
-    uint64 size = 1;
-    string version = 2;
+    string version = 1;
+    google.protobuf.Timestamp now = 2;
+    repeated Database databases = 9;
   }
   message MySql {
     uint64 size = 1;
     string version = 2;
   }
-  message Redis { string info = 1; }
-  message RabbitMq {}
+  message Redis {
+    message Item {
+      string key = 1;
+      int64 ttl = 2;
+    };
+    string info = 1;
+    repeated Item items = 2;
+  }
+  message RabbitMq { string protocol = 1; }
   message ElasticSearch {}
   message Health {
     string name = 1;
     string status = 2;
   }
-  message Os {}
-  message Network {}
+  message System {
+    string version = 1;
+    string cpu = 2;
+    string memory = 3;
+    string boot = 4;
+    string disk = 5;
+    string load = 6;
+    string fs = 7;
+    string swap = 8;
+    string uptime = 9;
+    string network = 10;
+  }
+
   PostgreSql postgresql = 1;
   MySql mysql = 2;
   Redis redis = 3;
   RabbitMq rabbitmq = 4;
   ElasticSearch elasticsearch = 5;
-  Os os = 11;
-  Network network = 12;
+  System system = 11;
   repeated Health healthes = 21;
 }

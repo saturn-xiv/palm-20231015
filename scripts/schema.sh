@@ -49,7 +49,7 @@ function generate_diesel_postgresql() {
     DATABASE_URL=$1 diesel print-schema -o locales > src/i18n/schema.rs
     DATABASE_URL=$1 diesel print-schema -o users logs leave_words \
         attachments attachments_resources \
-        policies roles users_roles \
+        policies users_roles \
         tags tags_resources\
         categories categories_resources> src/plugins/nut/schema.rs
     DATABASE_URL=$1 diesel print-schema -o cms_articles cms_comments > src/plugins/cms/schema.rs

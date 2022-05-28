@@ -66,7 +66,7 @@ diesel::table! {
         level -> Varchar,
         ip -> Varchar,
         resource_type -> Varchar,
-        resource_id -> Int4,
+        resource_id -> Nullable<Int4>,
         message -> Text,
         created_at -> Timestamp,
     }
@@ -75,21 +75,9 @@ diesel::table! {
 diesel::table! {
     policies (id) {
         id -> Int4,
-        role_id -> Int4,
+        role -> Varchar,
         operation -> Varchar,
         resource -> Varchar,
-        created_at -> Timestamp,
-    }
-}
-
-diesel::table! {
-    roles (id) {
-        id -> Int4,
-        lang -> Varchar,
-        code -> Varchar,
-        name -> Varchar,
-        version -> Int4,
-        updated_at -> Timestamp,
         created_at -> Timestamp,
     }
 }
@@ -160,7 +148,7 @@ diesel::table! {
     users_roles (id) {
         id -> Int4,
         user_id -> Int4,
-        role_id -> Int4,
+        role -> Varchar,
         not_before -> Date,
         expired_at -> Date,
         version -> Int4,
@@ -177,7 +165,6 @@ diesel::allow_tables_to_appear_in_same_query!(
     leave_words,
     logs,
     policies,
-    roles,
     tags,
     tags_resources,
     twilio_sms_logs,

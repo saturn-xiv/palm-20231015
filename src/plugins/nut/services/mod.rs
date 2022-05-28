@@ -16,8 +16,8 @@ use tonic::{metadata::MetadataMap, Request};
 
 use super::super::super::{jwt::Jwt, orm::postgresql::Connection as Db, HttpError, Result};
 use super::models::{
-    policy::Dao as PolicyDao,
-    role::Dao as RoleDao,
+    policy::{Dao as PolicyDao, Item as Policy},
+    role::{Dao as RoleDao, ADMINISTRATOR},
     user::{Action, Dao as UserDao, Item as User, Token},
     Operation,
 };
@@ -130,9 +130,11 @@ impl Session {
 }
 
 impl User {
+    pub fn is_administrator(&self, db: &mut Db) -> Result<()> {
+        self.is(db, ADMINISTRATOR)
+    }
     pub fn is(&self, db: &mut Db, role: &str) -> Result<()> {
-        let role = RoleDao::by_lang_and_code(db, &self.lang, role)?;
-        if RoleDao::is(db, self.id, role.id)? {
+        if RoleDao::is(db, self.id, role)? {
             return Ok(());
         }
         Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))
@@ -144,23 +146,41 @@ impl User {
         operation: &Operation,
         resource_id: Option<i32>,
     ) -> Result<()> {
-        let resource = {
-            let t = type_name::<T>();
-            match resource_id {
-                Some(id) => format!("{}://{}", t, id),
-                None => t.to_string(),
-            }
-        };
+        // TODO cache result
+        if self.is_administrator(db).is_ok() {
+            return Ok(());
+        }
+
+        let resource_type = type_name::<T>();
         let operation = operation.to_string();
 
         for role in RoleDao::roles_by_user(db, self.id)? {
-            if PolicyDao::get(db, role, &operation, &resource).is_ok() {
+            if PolicyDao::get(
+                db,
+                &role,
+                &operation,
+                &Policy::resource(resource_type, None),
+            )
+            .is_ok()
+            {
                 return Ok(());
+            }
+            if let Some(resource_id) = resource_id {
+                if PolicyDao::get(
+                    db,
+                    &role,
+                    &operation,
+                    &Policy::resource(resource_type, Some(resource_id)),
+                )
+                .is_ok()
+                {
+                    return Ok(());
+                }
             }
         }
         Err(Box::new(HttpError(
             StatusCode::FORBIDDEN,
-            Some(format!("{} {}", operation, resource)),
+            Some(format!("{} {} {:?}", operation, resource_type, resource_id)),
         )))
     }
 
