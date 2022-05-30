@@ -27,7 +27,7 @@ RUN echo "deb [arch=armhf,arm64] http://ports.ubuntu.com/ $(lsb_release -cs)-upd
 RUN apt update
 RUN apt -y upgrade
 
-RUN apt -y install zsh git locales-all rsync openssh-client sshpass \
+RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     vim tzdata pwgen zip unzip tree tmux dialog \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
     imagemagick ffmpeg fonts-dejavu \
