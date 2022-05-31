@@ -7,5 +7,6 @@ export default {
   'form.fields.email.label': 'Email',
   'form.fields.real-name.label': 'Real name',
   'form.fields.nick-name.label': 'Nick name',
+  'form.fields.body.label': 'Body',
   'form.submit.successed': 'Successed!',
 };

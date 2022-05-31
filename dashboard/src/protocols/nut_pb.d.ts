@@ -831,6 +831,87 @@ export namespace SettingSetRequest {
   }
 }
 
+export class SiteNewLeaveWordRequest extends jspb.Message {
+  getBody(): string;
+  setBody(value: string): SiteNewLeaveWordRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SiteNewLeaveWordRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: SiteNewLeaveWordRequest): SiteNewLeaveWordRequest.AsObject;
+  static serializeBinaryToWriter(message: SiteNewLeaveWordRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SiteNewLeaveWordRequest;
+  static deserializeBinaryFromReader(message: SiteNewLeaveWordRequest, reader: jspb.BinaryReader): SiteNewLeaveWordRequest;
+}
+
+export namespace SiteNewLeaveWordRequest {
+  export type AsObject = {
+    body: string,
+  }
+}
+
+export class SiteIndexLeaveWordResponse extends jspb.Message {
+  getItemsList(): Array<SiteIndexLeaveWordResponse.Item>;
+  setItemsList(value: Array<SiteIndexLeaveWordResponse.Item>): SiteIndexLeaveWordResponse;
+  clearItemsList(): SiteIndexLeaveWordResponse;
+  addItems(value?: SiteIndexLeaveWordResponse.Item, index?: number): SiteIndexLeaveWordResponse.Item;
+
+  getPagination(): Pagination | undefined;
+  setPagination(value?: Pagination): SiteIndexLeaveWordResponse;
+  hasPagination(): boolean;
+  clearPagination(): SiteIndexLeaveWordResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SiteIndexLeaveWordResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: SiteIndexLeaveWordResponse): SiteIndexLeaveWordResponse.AsObject;
+  static serializeBinaryToWriter(message: SiteIndexLeaveWordResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SiteIndexLeaveWordResponse;
+  static deserializeBinaryFromReader(message: SiteIndexLeaveWordResponse, reader: jspb.BinaryReader): SiteIndexLeaveWordResponse;
+}
+
+export namespace SiteIndexLeaveWordResponse {
+  export type AsObject = {
+    itemsList: Array<SiteIndexLeaveWordResponse.Item.AsObject>,
+    pagination?: Pagination.AsObject,
+  }
+
+  export class Item extends jspb.Message {
+    getId(): number;
+    setId(value: number): Item;
+
+    getLang(): string;
+    setLang(value: string): Item;
+
+    getIp(): string;
+    setIp(value: string): Item;
+
+    getBody(): string;
+    setBody(value: string): Item;
+
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      id: number,
+      lang: string,
+      ip: string,
+      body: string,
+      createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    }
+  }
+
+}
+
 export class SiteInstallRequest extends jspb.Message {
   getUser(): UserSignUpRequest | undefined;
   setUser(value?: UserSignUpRequest): SiteInstallRequest;

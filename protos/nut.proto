@@ -244,6 +244,23 @@ service Site {
   rpc GetBaidu(google.protobuf.Empty) returns (BaiduProfile) {}
 
   rpc Status(google.protobuf.Empty) returns (SiteStatusResponse) {}
+
+  rpc NewLeaveWord(SiteNewLeaveWordRequest) returns (google.protobuf.Empty) {}
+  rpc IndexLeaveWord(Pager) returns (SiteIndexLeaveWordResponse) {}
+  rpc DestroyLeaveWord(IdRequest) returns (google.protobuf.Empty) {}
+}
+
+message SiteNewLeaveWordRequest { string body = 1; }
+message SiteIndexLeaveWordResponse {
+  message Item {
+    int32 id = 1;
+    string lang = 2;
+    string ip = 3;
+    string body = 4;
+    google.protobuf.Timestamp created_at = 9;
+  }
+  repeated Item items = 1;
+  Pagination pagination = 9;
 }
 
 message SiteInstallRequest { UserSignUpRequest user = 1; }

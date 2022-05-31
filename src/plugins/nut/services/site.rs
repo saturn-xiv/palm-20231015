@@ -25,6 +25,7 @@ use super::super::super::super::{
 };
 use super::super::{
     models::{
+        leave_word::Dao as LeaveWordDao,
         log::{Dao as LogDao, Level},
         role::{Dao as RoleDao, ADMINISTRATOR, ROOT},
         user::{Dao as UserDao, Item as User},
@@ -432,6 +433,54 @@ impl v1::site_server::Site for Service {
             redis: Some(redis),
             ..Default::default()
         }))
+    }
+
+    async fn new_leave_word(&self, req: Request<v1::SiteNewLeaveWordRequest>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let req = req.into_inner();
+        try_grpc!(LeaveWordDao::create(db, &ss.lang, &ss.client_ip, &req.body))?;
+        Ok(Response::new(()))
+    }
+    async fn index_leave_word(
+        &self,
+        req: Request<v1::Pager>,
+    ) -> GrpcResult<v1::SiteIndexLeaveWordResponse> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.is_administrator(db))?;
+        let req = req.into_inner();
+        let total = try_grpc!(LeaveWordDao::count(db))?;
+
+        let items = try_grpc!(LeaveWordDao::all(db, req.offset(total), req.size()))?;
+        Ok(Response::new(v1::SiteIndexLeaveWordResponse {
+            items: items
+                .iter()
+                .map(|x| v1::site_index_leave_word_response::Item {
+                    id: x.id,
+                    lang: x.lang.clone(),
+                    ip: x.ip.clone(),
+                    body: x.body.clone(),
+                    created_at: Some(to_timestamp!(x.created_at)),
+                })
+                .collect(),
+            pagination: Some(v1::Pagination::new(&req, total)),
+        }))
+    }
+    async fn destroy_leave_word(&self, req: Request<v1::IdRequest>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.is_administrator(db))?;
+        let req = req.into_inner();
+        try_grpc!(LeaveWordDao::destroy(db, req.id))?;
+        Ok(Response::new(()))
     }
 }
 

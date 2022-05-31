@@ -59,19 +59,26 @@ pub async fn launch(cfg: &Config) -> Result<()> {
         .allow_credentials(true)
         .enable(nut::v1::user_server::UserServer::new(
             nut::services::user::Service {
-                pgsql,
-                jwt,
+                pgsql: pgsql.clone(),
+                jwt: jwt.clone(),
                 hmac,
                 rabbitmq,
             },
+        ));
+    let nut_policy = tonic_web::config()
+        .allow_all_origins()
+        .allow_credentials(true)
+        .enable(nut::v1::policy_server::PolicyServer::new(
+            nut::services::policy::Service { pgsql, jwt },
         ));
 
     Server::builder()
         .accept_http1(true)
         .add_service(nut_locale)
         .add_service(nut_setting)
-        .add_service(nut_site)
         .add_service(nut_user)
+        .add_service(nut_policy)
+        .add_service(nut_site)
         .serve(addr)
         .await?;
     Ok(())

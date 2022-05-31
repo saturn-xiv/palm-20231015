@@ -1884,5 +1884,134 @@ export class SiteClient {
     this.methodDescriptorStatus);
   }
 
+  methodDescriptorNewLeaveWord = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Site/NewLeaveWord',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.SiteNewLeaveWordRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.SiteNewLeaveWordRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  newLeaveWord(
+    request: nut_pb.SiteNewLeaveWordRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  newLeaveWord(
+    request: nut_pb.SiteNewLeaveWordRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  newLeaveWord(
+    request: nut_pb.SiteNewLeaveWordRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Site/NewLeaveWord',
+        request,
+        metadata || {},
+        this.methodDescriptorNewLeaveWord,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Site/NewLeaveWord',
+    request,
+    metadata || {},
+    this.methodDescriptorNewLeaveWord);
+  }
+
+  methodDescriptorIndexLeaveWord = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Site/IndexLeaveWord',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.Pager,
+    nut_pb.SiteIndexLeaveWordResponse,
+    (request: nut_pb.Pager) => {
+      return request.serializeBinary();
+    },
+    nut_pb.SiteIndexLeaveWordResponse.deserializeBinary
+  );
+
+  indexLeaveWord(
+    request: nut_pb.Pager,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.SiteIndexLeaveWordResponse>;
+
+  indexLeaveWord(
+    request: nut_pb.Pager,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.SiteIndexLeaveWordResponse) => void): grpcWeb.ClientReadableStream<nut_pb.SiteIndexLeaveWordResponse>;
+
+  indexLeaveWord(
+    request: nut_pb.Pager,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.SiteIndexLeaveWordResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Site/IndexLeaveWord',
+        request,
+        metadata || {},
+        this.methodDescriptorIndexLeaveWord,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Site/IndexLeaveWord',
+    request,
+    metadata || {},
+    this.methodDescriptorIndexLeaveWord);
+  }
+
+  methodDescriptorDestroyLeaveWord = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Site/DestroyLeaveWord',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.IdRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.IdRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  destroyLeaveWord(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  destroyLeaveWord(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  destroyLeaveWord(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Site/DestroyLeaveWord',
+        request,
+        metadata || {},
+        this.methodDescriptorDestroyLeaveWord,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Site/DestroyLeaveWord',
+    request,
+    metadata || {},
+    this.methodDescriptorDestroyLeaveWord);
+  }
+
 }
 

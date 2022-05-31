@@ -18,7 +18,8 @@ pub struct Item {
 pub trait Dao {
     fn by_id(&mut self, id: i32) -> Result<Item>;
     fn create(&mut self, lang: &str, ip: &str, body: &str) -> Result<()>;
-    fn all(&mut self) -> Result<Vec<Item>>;
+    fn all(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>>;
+    fn count(&mut self) -> Result<i64>;
     fn destroy(&mut self, id: i32) -> Result<()>;
 }
 
@@ -40,10 +41,16 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn all(&mut self) -> Result<Vec<Item>> {
+    fn all(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>> {
         Ok(leave_words::dsl::leave_words
             .order(leave_words::dsl::created_at.desc())
+            .offset(offset)
+            .limit(limit)
             .load::<Item>(self)?)
+    }
+    fn count(&mut self) -> Result<i64> {
+        let it = leave_words::dsl::leave_words.count().first(self)?;
+        Ok(it)
     }
     fn destroy(&mut self, id: i32) -> Result<()> {
         delete(leave_words::dsl::leave_words.filter(leave_words::dsl::id.eq(id))).execute(self)?;

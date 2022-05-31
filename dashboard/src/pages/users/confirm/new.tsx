@@ -18,7 +18,7 @@ const Widget = () => {
   const history = useHistory();
 
   return (
-    <Layout title="nut.users.forgot-password.title">
+    <Layout title="nut.users.confirm.new.title">
       <ProForm<IFormData>
         onFinish={async (values: IFormData) => {
           const client = new UserClient(GRPC_HOST);
@@ -31,14 +31,14 @@ const Widget = () => {
             request.setQuery(query);
           }
 
-          client.forgotPassword(request, grpc_metadata(), function (error) {
+          client.confirmByEmail(request, grpc_metadata(), function (error) {
             if (error) {
               message.error(error.message);
             } else {
               history.push(TO_SIGN_IN);
               message.success(
                 intl.formatMessage({
-                  id: 'nut.users.forgot-password.successed',
+                  id: 'nut.users.confirm.new.successed',
                 }),
               );
             }
