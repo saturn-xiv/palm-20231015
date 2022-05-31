@@ -37,7 +37,7 @@ function generate_grpc_web() {
     $PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/protos \
         -I $PROTOBUF_ROOT/include/google/protobuf \
         --js_out=import_style=commonjs,binary:$target \
-        --grpc-web_out=import_style=commonjs,mode=grpcweb:$target \
+        --grpc-web_out=import_style=typescript,mode=grpcweb:$target \
         $WORKSPACE/protos/*.proto
 }
 

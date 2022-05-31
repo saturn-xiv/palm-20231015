@@ -22,31 +22,56 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let _aws = Arc::new(cfg.aws.clone());
     let _s3 = Arc::new(cfg.s3.clone());
 
-    Server::builder()
-        .accept_http1(true)
-        .add_service(tonic_web::enable(
-            nut::v1::locale_server::LocaleServer::new(nut::services::locale::Service {
+    let nut_locale = tonic_web::config()
+        .allow_all_origins()
+        .allow_credentials(true)
+        .enable(nut::v1::locale_server::LocaleServer::new(
+            nut::services::locale::Service {
                 pgsql: pgsql.clone(),
                 jwt: jwt.clone(),
-            }),
-        ))
-        .add_service(tonic_web::enable(
-            nut::v1::setting_server::SettingServer::new(nut::services::setting::Service {
+            },
+        ));
+    let nut_setting = tonic_web::config()
+        .allow_all_origins()
+        .allow_credentials(true)
+        .enable(nut::v1::setting_server::SettingServer::new(
+            nut::services::setting::Service {
                 pgsql: pgsql.clone(),
                 jwt: jwt.clone(),
                 aes: aes.clone(),
-            }),
-        ))
-        .add_service(nut::v1::site_server::SiteServer::new(
+            },
+        ));
+    let nut_site = tonic_web::config()
+        .allow_all_origins()
+        .allow_credentials(true)
+        .enable(nut::v1::site_server::SiteServer::new(
             nut::services::site::Service {
+                pgsql: pgsql.clone(),
+                jwt: jwt.clone(),
+                aes,
+                hmac: hmac.clone(),
+                redis,
+                rabbitmq: rabbitmq.clone(),
+            },
+        ));
+    let nut_user = tonic_web::config()
+        .allow_all_origins()
+        .allow_credentials(true)
+        .enable(nut::v1::user_server::UserServer::new(
+            nut::services::user::Service {
                 pgsql,
                 jwt,
-                aes,
                 hmac,
-                redis,
                 rabbitmq,
             },
-        ))
+        ));
+
+    Server::builder()
+        .accept_http1(true)
+        .add_service(nut_locale)
+        .add_service(nut_setting)
+        .add_service(nut_site)
+        .add_service(nut_user)
         .serve(addr)
         .await?;
     Ok(())

@@ -7,10 +7,6 @@ RUN apt update
 RUN apt -y upgrade
 RUN apt -y install debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
 
-ENV CLANG_VERSION=13
-RUN echo "deb [arch=amd64] http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-${CLANG_VERSION} main" > /etc/apt/sources.list.d/llvm.list
-RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
-
 # https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
 RUN wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
 RUN echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg arch=amd64] https://artifacts.elastic.co/packages/8.x/apt stable main" | tee /etc/apt/sources.list.d/elastic-8.x.list
@@ -31,7 +27,7 @@ RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     vim tzdata pwgen zip unzip tree tmux dialog \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
     imagemagick ffmpeg fonts-dejavu \
-    clang-${CLANG_VERSION} clang-format-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
+    clang clang-format lldb lld \
     build-essential pkg-config libtool automake autoconf binutils cpio mold \
     debhelper bison flex ninja-build \
     crossbuild-essential-armhf \
@@ -46,11 +42,6 @@ RUN locale-gen
 RUN update-locale LANG=en_US.UTF-8
 RUN update-alternatives --set editor /usr/bin/vim.basic
 
-RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CLANG_VERSION} 100
-RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${CLANG_VERSION} 100
-RUN update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${CLANG_VERSION} 100
-RUN update-alternatives --install /usr/bin/lldb lldb /usr/bin/lldb-${CLANG_VERSION} 100
-RUN update-alternatives --install /usr/bin/lld lld /usr/bin/lld-${CLANG_VERSION} 100
 
 RUN mkdir -p $HOME/downloads $HOME/build $HOME/local
 

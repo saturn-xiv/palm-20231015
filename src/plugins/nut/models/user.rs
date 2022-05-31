@@ -8,6 +8,7 @@ use hyper::StatusCode;
 use language_tags::LanguageTag;
 use openssl::hash::{hash, MessageDigest};
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 
 use super::super::super::super::{
     crypto::{random::bytes as random_bytes, Password},
@@ -158,6 +159,7 @@ pub struct New<'a> {
     pub email: &'a str,
     pub password: Option<&'a [u8]>,
     pub salt: &'a [u8],
+    pub uid: &'a str,
     pub provider_type: &'a str,
     pub provider_id: &'a str,
     pub avatar: &'a str,
@@ -263,6 +265,8 @@ impl Dao for Connection {
                     None => format!("{}@gmail.com", id_token.sub),
                 };
 
+                let uid = Uuid::new_v4().to_string();
+
                 insert_into(users::dsl::users)
                     .values(&New {
                         real_name: &match id_token.name {
@@ -271,6 +275,7 @@ impl Dao for Connection {
                         },
                         nick_name: &format!("g{}", id_token.sub),
                         email: &email,
+                        uid: &uid,
                         password: None,
                         salt: &random_bytes(New::SALT_SIZE),
                         provider_type: &Type::Google.to_string(),
@@ -327,11 +332,13 @@ impl Dao for Connection {
         lang: &LanguageTag,
         time_zone: &Tz,
     ) -> Result<()> {
+        let uid = Uuid::new_v4().to_string();
         insert_into(users::dsl::users)
             .values(&New {
                 real_name,
                 nick_name,
                 email,
+                uid: &uid,
                 password: Some(&enc.sum(password.as_bytes())?),
                 salt: &random_bytes(New::SALT_SIZE),
                 provider_type: &Type::Email.to_string(),

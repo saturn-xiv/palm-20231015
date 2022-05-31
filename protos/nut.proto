@@ -116,9 +116,8 @@ message UserSignUpRequest {
   string nick_name = 2;
   string email = 3;
   string password = 4;
-  string avatar = 11;
-  string lang = 12;
-  string time_zone = 13;
+  string lang = 11;
+  string time_zone = 12;
   string home = 21;
 }
 

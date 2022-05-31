@@ -1,6 +1,17 @@
+import { Metadata } from 'grpc-web';
+
 import { get as getToken } from './token';
 
 export const backend = (u: string) => `/api${u}`;
+
+export const GRPC_HOST: string =
+  process.env.UMI_APP_GRPC_HOST || 'http://localhost:9999';
+
+export const grpc_metadata = (): Metadata => {
+  return {
+    Authorization: `Bearer ${getToken()}`,
+  };
+};
 
 export const upload = () => {
   return {
