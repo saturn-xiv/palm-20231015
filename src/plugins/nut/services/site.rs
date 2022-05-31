@@ -3,7 +3,7 @@ use std::ops::{Deref, DerefMut};
 use std::process::Command;
 use std::sync::Arc;
 
-use chrono::NaiveDateTime;
+use chrono::{Duration, NaiveDateTime, Utc};
 use diesel::{
     sql_query,
     sql_types::{Text, Timestamptz},
@@ -26,6 +26,7 @@ use super::super::super::super::{
 use super::super::{
     models::{
         log::{Dao as LogDao, Level},
+        role::{Dao as RoleDao, ADMINISTRATOR, ROOT},
         user::{Dao as UserDao, Item as User},
     },
     v1,
@@ -43,6 +44,82 @@ pub struct Service {
 
 #[tonic::async_trait]
 impl v1::site_server::Site for Service {
+    async fn install(&self, req: Request<v1::SiteInstallRequest>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let hmac = self.hmac.deref();
+        let req = req.into_inner();
+
+        if try_grpc!(UserDao::count(db))? > 0 {
+            return Err(Status::invalid_argument("db isn't empty"));
+        }
+        match req.user {
+            Some(ref req) => {
+                let nick_name = to_code!(req.nick_name);
+                let email = to_code!(req.email);
+                let real_name = req.real_name.trim();
+
+                try_grpc!(db.transaction::<_, Error, _>(move |db| {
+                    UserDao::sign_up(
+                        db,
+                        hmac,
+                        real_name,
+                        &nick_name,
+                        &email,
+                        &req.password,
+                        &req.lang.parse()?,
+                        &req.time_zone.parse()?,
+                    )?;
+                    let user = UserDao::by_email(db, &email)?;
+                    LogDao::add::<_, User>(
+                        db,
+                        user.id,
+                        &Level::Info,
+                        &ss.client_ip,
+                        Some(user.id),
+                        "sign up.",
+                    )?;
+                    UserDao::confirm(db, user.id)?;
+                    LogDao::add::<_, User>(
+                        db,
+                        user.id,
+                        &Level::Info,
+                        &ss.client_ip,
+                        Some(user.id),
+                        "confirmed.",
+                    )?;
+                    {
+                        let now = Utc::now().naive_utc();
+                        let nbf = now.date();
+                        let exp = (now + Duration::weeks(1 << 10)).date();
+                        for role in [ROOT, ADMINISTRATOR] {
+                            RoleDao::associate(db, user.id, role, &nbf, &exp)?;
+                            LogDao::add::<String, User>(
+                                db,
+                                user.id,
+                                &Level::Info,
+                                &ss.client_ip,
+                                Some(user.id),
+                                format!(
+                                    "apply role {} {} from {} to {}.",
+                                    role,
+                                    nix::unistd::getuid(),
+                                    nbf,
+                                    exp
+                                ),
+                            )?;
+                        }
+                    }
+                    Ok(())
+                }))?;
+
+                Ok(Response::new(()))
+            }
+            None => Err(Status::invalid_argument("user cann't be empty")),
+        }
+    }
     async fn index_user(&self, req: Request<v1::Pager>) -> GrpcResult<v1::SiteUserIndexResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;

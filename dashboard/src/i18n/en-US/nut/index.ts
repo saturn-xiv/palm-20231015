@@ -17,4 +17,5 @@ export default {
   'nut.users.reset-password.title': 'Reset my password',
   'nut.users.reset-password.successed':
     'Your password has been changed successfully.',
+  'nut.install.title': 'Install',
 };

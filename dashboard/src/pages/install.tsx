@@ -10,22 +10,15 @@ import {
   RULE_CODE,
   RULE_PASSWORD,
 } from '@/components/forms';
-import { UserSignUpRequest } from '@/protocols/nut_pb';
-import { UserClient } from '@/protocols/NutServiceClientPb';
+import { SiteInstallRequest, UserSignUpRequest } from '@/protocols/nut_pb';
+import { SiteClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
-
-export interface IFormData {
-  email: string;
-  realName: string;
-  nickName: string;
-  password: string;
-  passwordConfirmation: string;
-}
+import { IFormData } from './users/sign-up';
 
 const Widget = () => {
   const intl = useIntl();
   const history = useHistory();
-  const title = intl.formatMessage({ id: 'nut.users.sign-up.title' });
+  const title = intl.formatMessage({ id: 'nut.install.title' });
 
   return (
     <Layout title={title}>
@@ -33,25 +26,29 @@ const Widget = () => {
         <Card>
           <ProForm<IFormData>
             onFinish={async (values: IFormData) => {
-              const client = new UserClient(GRPC_HOST);
+              const client = new SiteClient(GRPC_HOST);
 
-              const request = new UserSignUpRequest();
-              request.setHome(home_url());
-              request.setLang(getLocale());
-              request.setTimeZone(guess_timezone());
-              request.setNickName(values.nickName);
-              request.setRealName(values.realName);
-              request.setPassword(values.password);
-              request.setEmail(values.email);
+              const request = new SiteInstallRequest();
+              {
+                const user = new UserSignUpRequest();
+                user.setHome(home_url());
+                user.setLang(getLocale());
+                user.setTimeZone(guess_timezone());
+                user.setNickName(values.nickName);
+                user.setRealName(values.realName);
+                user.setPassword(values.password);
+                user.setEmail(values.email);
+                request.setUser(user);
+              }
 
-              client.signUp(request, grpc_metadata(), function (error) {
+              client.install(request, grpc_metadata(), function (error) {
                 if (error) {
                   message.error(error.message);
                 } else {
                   history.push(TO_SIGN_IN);
                   message.success(
                     intl.formatMessage({
-                      id: 'nut.users.confirm.new.successed',
+                      id: 'form.submit.successed',
                     }),
                   );
                 }

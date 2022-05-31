@@ -831,6 +831,26 @@ export namespace SettingSetRequest {
   }
 }
 
+export class SiteInstallRequest extends jspb.Message {
+  getUser(): UserSignUpRequest | undefined;
+  setUser(value?: UserSignUpRequest): SiteInstallRequest;
+  hasUser(): boolean;
+  clearUser(): SiteInstallRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SiteInstallRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: SiteInstallRequest): SiteInstallRequest.AsObject;
+  static serializeBinaryToWriter(message: SiteInstallRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SiteInstallRequest;
+  static deserializeBinaryFromReader(message: SiteInstallRequest, reader: jspb.BinaryReader): SiteInstallRequest;
+}
+
+export namespace SiteInstallRequest {
+  export type AsObject = {
+    user?: UserSignUpRequest.AsObject,
+  }
+}
+
 export class SiteSetUserPasswordRequest extends jspb.Message {
   getUser(): number;
   setUser(value: number): SiteSetUserPasswordRequest;

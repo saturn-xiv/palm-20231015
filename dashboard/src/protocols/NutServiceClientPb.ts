@@ -1153,6 +1153,49 @@ export class SiteClient {
     this.options_ = options;
   }
 
+  methodDescriptorInstall = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Site/Install',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.SiteInstallRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.SiteInstallRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  install(
+    request: nut_pb.SiteInstallRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  install(
+    request: nut_pb.SiteInstallRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  install(
+    request: nut_pb.SiteInstallRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Site/Install',
+        request,
+        metadata || {},
+        this.methodDescriptorInstall,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Site/Install',
+    request,
+    metadata || {},
+    this.methodDescriptorInstall);
+  }
+
   methodDescriptorIndexUser = new grpcWeb.MethodDescriptor(
     '/palm.plugins.nut.v1.Site/IndexUser',
     grpcWeb.MethodType.UNARY,

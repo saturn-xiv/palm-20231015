@@ -223,6 +223,7 @@ message SettingSetRequest {
 // ----------------------------------------------------------------------------
 
 service Site {
+  rpc Install(SiteInstallRequest) returns (google.protobuf.Empty) {}
 
   rpc IndexUser(Pager) returns (SiteUserIndexResponse) {}
   rpc DisableUser(IdRequest) returns (google.protobuf.Empty) {}
@@ -244,6 +245,9 @@ service Site {
 
   rpc Status(google.protobuf.Empty) returns (SiteStatusResponse) {}
 }
+
+message SiteInstallRequest { UserSignUpRequest user = 1; }
+
 message SiteSetUserPasswordRequest {
   int32 user = 1;
   string password = 2;
