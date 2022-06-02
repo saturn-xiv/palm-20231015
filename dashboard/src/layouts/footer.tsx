@@ -4,11 +4,11 @@ import {
   DashboardOutlined,
   GlobalOutlined,
 } from '@ant-design/icons';
-import { useHistory } from 'umi';
+import { useHistory, useModel } from 'umi';
 
 export const Copyright = () => {
-  // TODO
-  return <span>&copy;2022</span>;
+  const { initialState } = useModel('@@initialState');
+  return <>&copy;{initialState?.layout.copyright}</>;
 };
 
 export const Home = () => (

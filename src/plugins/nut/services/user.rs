@@ -32,14 +32,23 @@ pub struct Service {
 }
 
 impl v1::UserSignInResponse {
-    pub fn new(user: &User, _db: &mut Db, jwt: &Jwt, ttl: Duration) -> Result<Self> {
+    pub fn new(user: &User, db: &mut Db, jwt: &Jwt, ttl: Duration) -> Result<Self> {
+        let mut policies = Vec::new();
+        for x in user.policies(db)?.iter() {
+            let it = v1::policy_index_response::Item::new(x)?;
+            policies.push(it);
+        }
+
         let it = Self {
             time_zone: user.time_zone.clone(),
             lang: user.lang.clone(),
             real_name: user.real_name.clone(),
             avatar: user.avatar.clone(),
             token: user.token(jwt, ttl)?,
+            is_administrator: user.is_administrator(db).is_ok(),
+            policies,
         };
+
         Ok(it)
     }
 }
@@ -371,7 +380,23 @@ impl v1::user_server::User for Service {
             pagination: Some(v1::Pagination::new(&req, total)),
         }))
     }
-    async fn set_profile(&self, req: Request<v1::UserProfile>) -> GrpcResult<()> {
+    async fn sign_out(&self, req: Request<()>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(LogDao::add::<_, User>(
+            db,
+            user.id,
+            &Level::Info,
+            &ss.client_ip,
+            Some(user.id),
+            "sign out."
+        ))?;
+        Ok(Response::new(()))
+    }
+    async fn set_profile(&self, req: Request<v1::UserSetProfileRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -404,13 +429,13 @@ impl v1::user_server::User for Service {
         }
         Ok(Response::new(()))
     }
-    async fn get_profile(&self, req: Request<()>) -> GrpcResult<v1::UserProfile> {
+    async fn get_profile(&self, req: Request<()>) -> GrpcResult<v1::UserGetProfileResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        Ok(Response::new(v1::UserProfile {
+        Ok(Response::new(v1::UserGetProfileResponse {
             real_name: user.real_name.clone(),
             nick_name: user.nick_name.clone(),
             email: user.email.clone(),

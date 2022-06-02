@@ -33,10 +33,11 @@ service User {
 
   rpc Refresh(google.protobuf.Duration) returns (UserSignInResponse) {}
   rpc Logs(Pager) returns (UserLogsResponse) {}
-  rpc SetProfile(UserProfile) returns (google.protobuf.Empty) {}
-  rpc GetProfile(google.protobuf.Empty) returns (UserProfile) {}
+  rpc SetProfile(UserSetProfileRequest) returns (google.protobuf.Empty) {}
+  rpc GetProfile(google.protobuf.Empty) returns (UserGetProfileResponse) {}
   rpc ChangePassword(UserChangePasswordRequest)
       returns (google.protobuf.Empty) {}
+  rpc SignOut(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
 message UserChangePasswordRequest {
@@ -82,29 +83,10 @@ message UserSignInRequest {
   google.protobuf.Duration ttl = 11;
 }
 
-message Menu {
-  string label = 1;
-  string to = 2;
-  repeated Menu children = 9;
-}
-message SiteInfo {
-  message Author {
-    string name = 1;
-    string email = 2;
-  }
-  string title = 1;
-  string subhead = 2;
-  repeated string keywords = 3;
-  string description = 4;
-  Author author = 5;
-  string copyright = 6;
-  repeated string languages = 9;
-}
-
 message UserSignInResponse {
   string token = 1;
-  // SiteInfo site_info = 2;
-  // repeated Menu sidebar = 3;
+  bool is_administrator = 2;
+  repeated PolicyIndexResponse.Item policies = 3;
   string lang = 11;
   string time_zone = 12;
   string avatar = 13;
@@ -121,7 +103,16 @@ message UserSignUpRequest {
   string home = 21;
 }
 
-message UserProfile {
+message UserSetProfileRequest {
+  string real_name = 1;
+  string avatar = 2;
+  string time_zone = 8;
+  string lang = 9;
+  string wechat = 11;
+  string phone = 12;
+}
+
+message UserGetProfileResponse {
   string real_name = 1;
   string avatar = 2;
   string nick_name = 3;
@@ -225,6 +216,13 @@ message SettingSetRequest {
 service Site {
   rpc Install(SiteInstallRequest) returns (google.protobuf.Empty) {}
 
+  rpc Layout(google.protobuf.Empty) returns (SiteLayoutResponse) {}
+  rpc SetAuthor(SiteLayoutResponse.Author) returns (google.protobuf.Empty) {}
+  rpc SetCopyright(SiteSetCopyrightRequest) returns (google.protobuf.Empty) {}
+  rpc SetKeywords(SiteSetKeywordsRequest) returns (google.protobuf.Empty) {}
+  rpc SetInfo(SiteSetInfoRequest) returns (google.protobuf.Empty) {}
+  rpc SetLogo(SiteSetLogoRequest) returns (google.protobuf.Empty) {}
+
   rpc IndexUser(Pager) returns (SiteUserIndexResponse) {}
   rpc DisableUser(IdRequest) returns (google.protobuf.Empty) {}
   rpc EnableUser(IdRequest) returns (google.protobuf.Empty) {}
@@ -248,6 +246,30 @@ service Site {
   rpc NewLeaveWord(SiteNewLeaveWordRequest) returns (google.protobuf.Empty) {}
   rpc IndexLeaveWord(Pager) returns (SiteIndexLeaveWordResponse) {}
   rpc DestroyLeaveWord(IdRequest) returns (google.protobuf.Empty) {}
+}
+
+message SiteSetLogoRequest { string url = 1; }
+message SiteSetCopyrightRequest { string payload = 1; }
+message SiteSetKeywordsRequest { repeated string items = 1; }
+message SiteSetInfoRequest {
+  string title = 1;
+  string subhead = 2;
+  string description = 3;
+}
+
+message SiteLayoutResponse {
+  message Author {
+    string name = 1;
+    string email = 2;
+  }
+  string title = 1;
+  string subhead = 2;
+  repeated string keywords = 3;
+  string description = 4;
+  Author author = 5;
+  string copyright = 6;
+  string logo = 7;
+  repeated string languages = 9;
 }
 
 message SiteNewLeaveWordRequest { string body = 1; }

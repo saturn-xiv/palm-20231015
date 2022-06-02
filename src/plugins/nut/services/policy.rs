@@ -6,7 +6,7 @@ use diesel::Connection as DieselConntection;
 use tonic::{Request, Response, Status};
 
 use super::super::super::super::{
-    jwt::Jwt, orm::postgresql::Pool as PostgreSqlPool, Error, GrpcResult,
+    jwt::Jwt, orm::postgresql::Pool as PostgreSqlPool, Error, GrpcResult, Result,
 };
 use super::super::{
     models::{
@@ -33,6 +33,19 @@ impl fmt::Display for v1::policy_index_response::Item {
             Policy::resource(&self.resource_type, self.resource_id),
             self.operation
         )
+    }
+}
+
+impl v1::policy_index_response::Item {
+    pub fn new(x: &Policy) -> Result<Self> {
+        let (rty, rid) = x.get_resource()?;
+        let it = Self {
+            role: x.role.clone(),
+            operation: x.operation.clone(),
+            resource_type: rty,
+            resource_id: rid,
+        };
+        Ok(it)
     }
 }
 

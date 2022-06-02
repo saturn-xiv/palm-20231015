@@ -1,6 +1,6 @@
 import { Metadata } from 'grpc-web';
 
-import { get as getToken } from './token';
+import { get as getToken } from './models/useAuthModel';
 
 export const backend = (u: string) => `/api${u}`;
 

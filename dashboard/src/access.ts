@@ -1,31 +1,24 @@
-interface IPolicy {
-  resourceType: string;
-  resourceId?: number;
-  operation: string;
-}
-
-export interface IApplicationState {
-  policies: IPolicy[];
-}
-
-export const OPERATION_READ = 'read';
-export const OPERATION_WRITE = 'write';
-export const OPERATION_CREATE = 'create';
-export const OPERATION_UPDATE = 'update';
-export const OPERATION_REMOVE = 'remove';
+import { IApplicationState } from './app';
+import { IPolicy } from './models/useAuthModel';
 
 export default function (initialState: IApplicationState) {
-  const { policies } = initialState;
+  const { currentUser } = initialState;
 
   return {
+    isAdministrator: currentUser?.isAdministrator,
     can: (it: IPolicy): boolean => {
-      for (var x of policies) {
-        if (
-          x.operation === it.operation &&
-          x.resourceType === it.resourceType &&
-          (x.resourceId === undefined || x.resourceId === it.resourceId)
-        ) {
+      if (currentUser) {
+        if (currentUser.isAdministrator) {
           return true;
+        }
+        for (var x of currentUser.policies) {
+          if (
+            x.operation === it.operation &&
+            x.resourceType === it.resourceType &&
+            (x.resourceId === undefined || x.resourceId === it.resourceId)
+          ) {
+            return true;
+          }
         }
       }
       return false;

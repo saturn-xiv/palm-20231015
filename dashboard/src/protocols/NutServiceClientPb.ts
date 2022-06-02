@@ -470,26 +470,26 @@ export class UserClient {
   methodDescriptorSetProfile = new grpcWeb.MethodDescriptor(
     '/palm.plugins.nut.v1.User/SetProfile',
     grpcWeb.MethodType.UNARY,
-    nut_pb.UserProfile,
+    nut_pb.UserSetProfileRequest,
     google_protobuf_empty_pb.Empty,
-    (request: nut_pb.UserProfile) => {
+    (request: nut_pb.UserSetProfileRequest) => {
       return request.serializeBinary();
     },
     google_protobuf_empty_pb.Empty.deserializeBinary
   );
 
   setProfile(
-    request: nut_pb.UserProfile,
+    request: nut_pb.UserSetProfileRequest,
     metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
 
   setProfile(
-    request: nut_pb.UserProfile,
+    request: nut_pb.UserSetProfileRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
   setProfile(
-    request: nut_pb.UserProfile,
+    request: nut_pb.UserSetProfileRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void) {
@@ -514,28 +514,28 @@ export class UserClient {
     '/palm.plugins.nut.v1.User/GetProfile',
     grpcWeb.MethodType.UNARY,
     google_protobuf_empty_pb.Empty,
-    nut_pb.UserProfile,
+    nut_pb.UserGetProfileResponse,
     (request: google_protobuf_empty_pb.Empty) => {
       return request.serializeBinary();
     },
-    nut_pb.UserProfile.deserializeBinary
+    nut_pb.UserGetProfileResponse.deserializeBinary
   );
 
   getProfile(
     request: google_protobuf_empty_pb.Empty,
-    metadata: grpcWeb.Metadata | null): Promise<nut_pb.UserProfile>;
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.UserGetProfileResponse>;
 
   getProfile(
     request: google_protobuf_empty_pb.Empty,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: nut_pb.UserProfile) => void): grpcWeb.ClientReadableStream<nut_pb.UserProfile>;
+               response: nut_pb.UserGetProfileResponse) => void): grpcWeb.ClientReadableStream<nut_pb.UserGetProfileResponse>;
 
   getProfile(
     request: google_protobuf_empty_pb.Empty,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: nut_pb.UserProfile) => void) {
+               response: nut_pb.UserGetProfileResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
@@ -594,6 +594,49 @@ export class UserClient {
     request,
     metadata || {},
     this.methodDescriptorChangePassword);
+  }
+
+  methodDescriptorSignOut = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.User/SignOut',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    google_protobuf_empty_pb.Empty,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  signOut(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  signOut(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  signOut(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.User/SignOut',
+        request,
+        metadata || {},
+        this.methodDescriptorSignOut,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.User/SignOut',
+    request,
+    metadata || {},
+    this.methodDescriptorSignOut);
   }
 
 }
@@ -1194,6 +1237,264 @@ export class SiteClient {
     request,
     metadata || {},
     this.methodDescriptorInstall);
+  }
+
+  methodDescriptorLayout = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Site/Layout',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    nut_pb.SiteLayoutResponse,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    nut_pb.SiteLayoutResponse.deserializeBinary
+  );
+
+  layout(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.SiteLayoutResponse>;
+
+  layout(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.SiteLayoutResponse) => void): grpcWeb.ClientReadableStream<nut_pb.SiteLayoutResponse>;
+
+  layout(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.SiteLayoutResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Site/Layout',
+        request,
+        metadata || {},
+        this.methodDescriptorLayout,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Site/Layout',
+    request,
+    metadata || {},
+    this.methodDescriptorLayout);
+  }
+
+  methodDescriptorSetAuthor = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Site/SetAuthor',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.SiteLayoutResponse.Author,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.SiteLayoutResponse.Author) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  setAuthor(
+    request: nut_pb.SiteLayoutResponse.Author,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  setAuthor(
+    request: nut_pb.SiteLayoutResponse.Author,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  setAuthor(
+    request: nut_pb.SiteLayoutResponse.Author,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Site/SetAuthor',
+        request,
+        metadata || {},
+        this.methodDescriptorSetAuthor,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Site/SetAuthor',
+    request,
+    metadata || {},
+    this.methodDescriptorSetAuthor);
+  }
+
+  methodDescriptorSetCopyright = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Site/SetCopyright',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.SiteSetCopyrightRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.SiteSetCopyrightRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  setCopyright(
+    request: nut_pb.SiteSetCopyrightRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  setCopyright(
+    request: nut_pb.SiteSetCopyrightRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  setCopyright(
+    request: nut_pb.SiteSetCopyrightRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Site/SetCopyright',
+        request,
+        metadata || {},
+        this.methodDescriptorSetCopyright,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Site/SetCopyright',
+    request,
+    metadata || {},
+    this.methodDescriptorSetCopyright);
+  }
+
+  methodDescriptorSetKeywords = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Site/SetKeywords',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.SiteSetKeywordsRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.SiteSetKeywordsRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  setKeywords(
+    request: nut_pb.SiteSetKeywordsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  setKeywords(
+    request: nut_pb.SiteSetKeywordsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  setKeywords(
+    request: nut_pb.SiteSetKeywordsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Site/SetKeywords',
+        request,
+        metadata || {},
+        this.methodDescriptorSetKeywords,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Site/SetKeywords',
+    request,
+    metadata || {},
+    this.methodDescriptorSetKeywords);
+  }
+
+  methodDescriptorSetInfo = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Site/SetInfo',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.SiteSetInfoRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.SiteSetInfoRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  setInfo(
+    request: nut_pb.SiteSetInfoRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  setInfo(
+    request: nut_pb.SiteSetInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  setInfo(
+    request: nut_pb.SiteSetInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Site/SetInfo',
+        request,
+        metadata || {},
+        this.methodDescriptorSetInfo,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Site/SetInfo',
+    request,
+    metadata || {},
+    this.methodDescriptorSetInfo);
+  }
+
+  methodDescriptorSetLogo = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Site/SetLogo',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.SiteSetLogoRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.SiteSetLogoRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  setLogo(
+    request: nut_pb.SiteSetLogoRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  setLogo(
+    request: nut_pb.SiteSetLogoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  setLogo(
+    request: nut_pb.SiteSetLogoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Site/SetLogo',
+        request,
+        metadata || {},
+        this.methodDescriptorSetLogo,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Site/SetLogo',
+    request,
+    metadata || {},
+    this.methodDescriptorSetLogo);
   }
 
   methodDescriptorIndexUser = new grpcWeb.MethodDescriptor(

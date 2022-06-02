@@ -2,10 +2,12 @@ use std::fmt;
 
 use chrono::NaiveDateTime;
 use diesel::{delete, insert_into, prelude::*};
+use hyper::StatusCode;
 use serde::Serialize;
 
-use super::super::super::super::{orm::postgresql::Connection, Result};
+use super::super::super::super::{orm::postgresql::Connection, HttpError, Result};
 use super::super::schema::policies;
+use super::role::{ADMINISTRATOR, ROOT};
 
 #[derive(Queryable, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -95,6 +97,14 @@ impl Dao for Connection {
         Ok(cnt)
     }
     fn create(&mut self, role: &str, operation: &str, resource: &str) -> Result<()> {
+        for it in [ADMINISTRATOR, ROOT] {
+            if role == it {
+                return Err(Box::new(HttpError(
+                    StatusCode::BAD_REQUEST,
+                    Some(format!("bad role code {:?}", role)),
+                )));
+            }
+        }
         insert_into(policies::dsl::policies)
             .values((
                 policies::dsl::role.eq(role),

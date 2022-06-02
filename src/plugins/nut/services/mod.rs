@@ -194,4 +194,12 @@ impl User {
         };
         jwt.sum(None, &token)
     }
+
+    pub fn policies(&self, db: &mut Db) -> Result<Vec<Policy>> {
+        let mut items = Vec::new();
+        for r in RoleDao::roles_by_user(db, self.id)?.iter() {
+            items.extend(PolicyDao::by_role(db, r)?);
+        }
+        Ok(items)
+    }
 }

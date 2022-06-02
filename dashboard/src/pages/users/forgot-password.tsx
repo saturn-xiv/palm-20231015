@@ -8,9 +8,10 @@ import { RULE_EMAIL } from '@/components/forms';
 import { UserEmailRequest, UserQueryRequest } from '@/protocols/nut_pb';
 import { UserClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
+import { to_user_query_request } from '@/models/useAuthModel';
 
 export interface IFormData {
-  email: string;
+  account: string;
 }
 
 const Widget = () => {
@@ -25,11 +26,7 @@ const Widget = () => {
 
           const request = new UserEmailRequest();
           request.setHome(home_url());
-          {
-            const query = new UserQueryRequest();
-            query.setEmail(values.email);
-            request.setQuery(query);
-          }
+          request.setQuery(to_user_query_request(values.account));
 
           client.forgotPassword(request, grpc_metadata(), function (error) {
             if (error) {
@@ -48,9 +45,9 @@ const Widget = () => {
         <ProForm.Group>
           <ProFormText
             width="md"
-            name="email"
-            label={intl.formatMessage({ id: 'form.fields.email.label' })}
-            rules={[RULE_EMAIL]}
+            name="account"
+            label={intl.formatMessage({ id: 'form.fields.account.label' })}
+            rules={[{ required: true }]}
           />
         </ProForm.Group>
       </ProForm>

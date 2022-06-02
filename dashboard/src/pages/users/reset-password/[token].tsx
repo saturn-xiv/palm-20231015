@@ -1,5 +1,7 @@
+import { useRef } from 'react';
 import { message } from 'antd';
 import ProForm, { ProFormText } from '@ant-design/pro-form';
+import type { ProFormInstance } from '@ant-design/pro-form';
 import { useIntl, useParams, useHistory } from 'umi';
 
 import Layout from '@/layouts/non-sign-in';
@@ -22,9 +24,11 @@ const Widget = () => {
   const intl = useIntl();
   const history = useHistory();
   const params = useParams<IParam>();
+  const formRef = useRef<ProFormInstance>();
   return (
     <Layout title="nut.users.reset-password.title">
       <ProForm<IFormData>
+        formRef={formRef}
         onFinish={async (values: IFormData) => {
           const client = new UserClient(GRPC_HOST);
 
@@ -36,6 +40,7 @@ const Widget = () => {
             if (error) {
               message.error(error.message);
             } else {
+              formRef.current?.resetFields();
               history.push(TO_SIGN_IN);
               message.success(
                 intl.formatMessage({

@@ -3,7 +3,7 @@ use std::ops::{Deref, DerefMut};
 use std::process::Command;
 use std::sync::Arc;
 
-use chrono::{Duration, NaiveDateTime, Utc};
+use chrono::{Datelike, Duration, NaiveDateTime, Utc};
 use diesel::{
     sql_query,
     sql_types::{Text, Timestamptz},
@@ -17,8 +17,9 @@ use tonic::{Request, Response, Status};
 use super::super::super::super::{
     cache::{redis::Pool as RedisPool, Provider as CacheProvider},
     crypto::{Aes, Hmac},
+    i18n::{locale::Dao as LocaleDao, I18n},
     jwt::Jwt,
-    orm::postgresql::{Connection as PostgreSqlConnect, Pool as PostgreSqlPool},
+    orm::postgresql::{Connection as PostgreSqlConnection, Pool as PostgreSqlPool},
     queue::amqp::RabbitMq,
     setting::Dao as SettingDao,
     Error, GrpcResult, Result,
@@ -34,6 +35,74 @@ use super::super::{
 };
 use super::Session;
 
+impl v1::site_layout_response::Author {
+    pub const NAME: &'static str = "site.author.name";
+    pub const EMAIL: &'static str = "site.author.email";
+}
+
+impl v1::SiteSetInfoRequest {
+    pub const TITLE: &'static str = "site.title";
+    pub const SUBHEAD: &'static str = "site.subhead";
+    pub const DESCRIPTION: &'static str = "site.description";
+}
+impl v1::SiteSetLogoRequest {
+    pub const KEY: &'static str = "site.logo";
+}
+impl v1::SiteSetKeywordsRequest {
+    pub const KEY: &'static str = "site.keywords";
+}
+impl v1::SiteSetCopyrightRequest {
+    pub const KEY: &'static str = "site.copyright";
+}
+impl v1::SiteLayoutResponse {
+    pub fn new(db: &mut PostgreSqlConnection, aes: &Aes, lang: &str) -> Self {
+        let keywords: Vec<String> =
+            SettingDao::get(db, aes, &v1::SiteSetKeywordsRequest::KEY.to_string(), None)
+                .unwrap_or_default();
+        let copyright: String =
+            SettingDao::get(db, aes, &v1::SiteSetCopyrightRequest::KEY.to_string(), None)
+                .unwrap_or_else(|_| {
+                    let (_, year) = Utc::now().year_ce();
+                    format!("2013~{}", year)
+                });
+        let languages = LocaleDao::languages(db).unwrap_or_default();
+        let author_name = SettingDao::get(
+            db,
+            aes,
+            &v1::site_layout_response::Author::NAME.to_string(),
+            None,
+        )
+        .unwrap_or_default();
+        let author_email = SettingDao::get(
+            db,
+            aes,
+            &v1::site_layout_response::Author::EMAIL.to_string(),
+            None,
+        )
+        .unwrap_or_default();
+        let logo: String = SettingDao::get(db, aes, &v1::SiteSetLogoRequest::KEY.to_string(), None)
+            .unwrap_or_else(|_| "/favicon.png".to_string());
+        Self {
+            title: I18n::t(db, lang, v1::SiteSetInfoRequest::TITLE, &None::<String>),
+            subhead: I18n::t(db, lang, v1::SiteSetInfoRequest::SUBHEAD, &None::<String>),
+            description: I18n::t(
+                db,
+                lang,
+                v1::SiteSetInfoRequest::DESCRIPTION,
+                &None::<String>,
+            ),
+            keywords,
+            logo,
+            copyright,
+            languages,
+            author: Some(v1::site_layout_response::Author {
+                email: author_email,
+                name: author_name,
+            }),
+        }
+    }
+}
+
 pub struct Service {
     pub pgsql: PostgreSqlPool,
     pub jwt: Arc<Jwt>,
@@ -45,6 +114,136 @@ pub struct Service {
 
 #[tonic::async_trait]
 impl v1::site_server::Site for Service {
+    async fn set_author(&self, req: Request<v1::site_layout_response::Author>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.is_administrator(db))?;
+        let req = req.into_inner();
+        let aes = self.aes.deref();
+        try_grpc!(db.transaction::<_, Error, _>(move |db| {
+            SettingDao::set(
+                db,
+                aes,
+                &v1::site_layout_response::Author::NAME.to_string(),
+                None,
+                &req.name,
+                false,
+            )?;
+            SettingDao::set(
+                db,
+                aes,
+                &v1::site_layout_response::Author::EMAIL.to_string(),
+                None,
+                &req.email,
+                false,
+            )?;
+            Ok(())
+        }))?;
+        Ok(Response::new(()))
+    }
+    async fn set_copyright(&self, req: Request<v1::SiteSetCopyrightRequest>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.is_administrator(db))?;
+        let req = req.into_inner();
+        let aes = self.aes.deref();
+        try_grpc!(SettingDao::set(
+            db,
+            aes,
+            &v1::SiteSetCopyrightRequest::KEY.to_string(),
+            None,
+            &req.payload,
+            false,
+        ))?;
+        Ok(Response::new(()))
+    }
+    async fn set_logo(&self, req: Request<v1::SiteSetLogoRequest>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.is_administrator(db))?;
+        let req = req.into_inner();
+        let aes = self.aes.deref();
+        try_grpc!(SettingDao::set(
+            db,
+            aes,
+            &v1::SiteSetLogoRequest::KEY.to_string(),
+            None,
+            &req.url,
+            false,
+        ))?;
+        Ok(Response::new(()))
+    }
+    async fn set_keywords(&self, req: Request<v1::SiteSetKeywordsRequest>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.is_administrator(db))?;
+        let req = req.into_inner();
+        let aes = self.aes.deref();
+        try_grpc!(SettingDao::set(
+            db,
+            aes,
+            &v1::SiteSetKeywordsRequest::KEY.to_string(),
+            None,
+            &req.items,
+            false,
+        ))?;
+        Ok(Response::new(()))
+    }
+    async fn set_info(&self, req: Request<v1::SiteSetInfoRequest>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.is_administrator(db))?;
+        let req = req.into_inner();
+        try_grpc!(db.transaction::<_, Error, _>(move |db| {
+            I18n::set(
+                db,
+                &ss.lang,
+                &v1::SiteSetInfoRequest::TITLE.to_string(),
+                &req.title,
+            )?;
+            I18n::set(
+                db,
+                &ss.lang,
+                &v1::SiteSetInfoRequest::SUBHEAD.to_string(),
+                &req.subhead,
+            )?;
+            I18n::set(
+                db,
+                &ss.lang,
+                &v1::SiteSetInfoRequest::DESCRIPTION.to_string(),
+                &req.description,
+            )?;
+            Ok(())
+        }))?;
+        Ok(Response::new(()))
+    }
+    async fn layout(&self, req: Request<()>) -> GrpcResult<v1::SiteLayoutResponse> {
+        let ss = Session::new(&req);
+
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let aes = self.aes.deref();
+
+        Ok(Response::new(v1::SiteLayoutResponse::new(
+            db, aes, &ss.lang,
+        )))
+    }
+
     async fn install(&self, req: Request<v1::SiteInstallRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
 
@@ -521,7 +720,7 @@ struct Database {
 }
 
 impl v1::site_status_response::PostgreSql {
-    pub fn new(db: &mut PostgreSqlConnect) -> Result<Self> {
+    pub fn new(db: &mut PostgreSqlConnection) -> Result<Self> {
         let ver: DatabaseVersion = sql_query("SELECT VERSION() AS value").get_result(db)?;
         let now: DatabaseNow = sql_query("SELECT CURRENT_TIMESTAMP AS value").get_result(db)?;
         let databases: Vec<Database> = sql_query(r###"SELECT pg_database.datname as "name", pg_size_pretty(pg_database_size(pg_database.datname)) AS "size" FROM pg_database ORDER by "size" DESC;"###).load(db)?;
