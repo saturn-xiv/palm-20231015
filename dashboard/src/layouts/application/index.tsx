@@ -2,17 +2,18 @@ import { ReactNode } from 'react';
 import ProLayout, { PageContainer } from '@ant-design/pro-layout';
 import { Row, Col } from 'antd';
 import Footer from '@ant-design/pro-layout/lib/Footer';
-import { Helmet, useModel } from 'umi';
+import { useModel } from 'umi';
 
 import { Home, Dashboard, Github, SwitchLanguage } from '../footer';
 import palm_tree from '@/assets/palm-tree.svg';
+import Header from '../Header';
 
 export interface IProps {
   title: string;
   children: ReactNode;
 }
 
-const Widget = (props: IProps) => {
+const Widget = ({ title, children }: IProps) => {
   const { initialState } = useModel('@@initialState');
   return (
     <ProLayout
@@ -49,16 +50,11 @@ const Widget = (props: IProps) => {
       )}
       fixedHeader
     >
-      <PageContainer title={props.title} content={<div />}>
-        <Row>{props.children}</Row>
+      <PageContainer title={title} content={<div />}>
+        <Row>{children}</Row>
         <Row>
           <Col>
-            <Helmet>
-              <title>
-                {props.title} | {initialState?.layout.subhead} |
-                {initialState?.layout.title}
-              </title>
-            </Helmet>
+            <Header title={title} />
           </Col>
         </Row>
       </PageContainer>

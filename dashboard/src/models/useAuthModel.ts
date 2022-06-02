@@ -2,7 +2,6 @@ import { useState, useCallback } from 'react';
 import { message } from 'antd';
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb';
 import { Duration } from 'google-protobuf/google/protobuf/duration_pb';
-import { useHistory } from 'umi';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
 
 import {
@@ -12,6 +11,7 @@ import {
 } from '@/protocols/nut_pb';
 import { UserClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
+import { setLocale } from '@/i18n';
 
 export const TO_SIGN_IN = '/users/sign-in';
 export const TO_PROFILE = '/users/profile';
@@ -19,15 +19,15 @@ export const TO_PROFILE = '/users/profile';
 const KEY = 'token';
 export const DURATION = 60 * 60 * 24;
 
-export const get = (): string | null => {
+export const getToken = (): string | null => {
   return sessionStorage.getItem(KEY);
 };
 
-export const set = (token: string) => {
+export const setToken = (token: string) => {
   sessionStorage.setItem(KEY, token);
 };
 
-export const remove = () => {
+export const removeToken = () => {
   sessionStorage.removeItem(KEY);
 };
 
@@ -47,7 +47,7 @@ export const to_user_query_request = (account: string): UserQueryRequest => {
   return query;
 };
 
-export interface IPolicy {
+export interface IPermission {
   resourceType: string;
   resourceId?: number;
   operation: string;
@@ -60,11 +60,12 @@ export interface ICurrentUser {
   lang: string;
   timeZone: string;
   isAdministrator: boolean;
-  policies: IPolicy[];
+  permissions: IPermission[];
 }
 
 export const to_current_user = (response: UserSignInResponse): ICurrentUser => {
   const decoded: any = jwtDecode<JwtPayload>(response.getToken());
+
   return {
     uid: decoded.aud,
     realName: response.getRealName(),
@@ -72,7 +73,7 @@ export const to_current_user = (response: UserSignInResponse): ICurrentUser => {
     lang: response.getLang(),
     timeZone: response.getTimeZone(),
     isAdministrator: response.getIsAdministrator(),
-    policies: response.getPoliciesList().map((x) => {
+    permissions: response.getPoliciesList().map((x) => {
       return {
         operation: x.getOperation(),
         resourceType: x.getResourceType(),
@@ -84,9 +85,8 @@ export const to_current_user = (response: UserSignInResponse): ICurrentUser => {
 
 export default function useAuthModel() {
   const [currentUser, setCurrentUser] = useState<ICurrentUser>();
-  const history = useHistory();
 
-  const sign_in = useCallback((account: string, password: string) => {
+  const signIn = useCallback((account: string, password: string) => {
     const client = new UserClient(GRPC_HOST);
 
     const request = new UserSignInRequest();
@@ -100,29 +100,31 @@ export default function useAuthModel() {
 
     client.signIn(request, grpc_metadata(), function (err, response) {
       if (err) {
+        removeToken();
         message.error(err.message);
       } else {
+        setToken(response.getToken());
+        setLocale(response.getLang());
         setCurrentUser(to_current_user(response));
-        history.push(TO_PROFILE);
       }
     });
   }, []);
 
-  const sign_out = useCallback(() => {
+  const signOut = useCallback(() => {
     const client = new UserClient(GRPC_HOST);
 
     client.signOut(new Empty(), grpc_metadata(), function (err) {
+      removeToken();
       if (err) {
         message.error(err.message);
       } else {
-        history.push(TO_SIGN_IN);
       }
     });
   }, []);
 
   return {
     currentUser,
-    sign_in,
-    sign_out,
+    signIn,
+    signOut,
   };
 }

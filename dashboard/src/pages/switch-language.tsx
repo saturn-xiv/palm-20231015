@@ -3,7 +3,7 @@ import { useIntl, setLocale, getAllLocales } from 'umi';
 import { FormattedMessage } from 'react-intl';
 
 import Layout from '@/layouts/application';
-import { set as setLang } from '@/i18n';
+import { setLocale as setLang } from '@/i18n';
 
 const Widget = () => {
   const intl = useIntl();

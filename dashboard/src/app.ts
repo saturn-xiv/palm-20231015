@@ -4,7 +4,7 @@ import { Duration } from 'google-protobuf/google/protobuf/duration_pb';
 import {
   DURATION as TOKEN_DURATION,
   ICurrentUser,
-  get as getToken,
+  getToken,
   to_current_user,
 } from './models/useAuthModel';
 import { ILayout, to_layout } from './models/useSiteModel';

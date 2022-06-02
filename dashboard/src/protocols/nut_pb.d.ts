@@ -125,6 +125,12 @@ export namespace UserLogsResponse {
     getUserId(): number;
     setUserId(value: number): Item;
 
+    getIp(): string;
+    setIp(value: string): Item;
+
+    getLevel(): string;
+    setLevel(value: string): Item;
+
     getMessage(): string;
     setMessage(value: string): Item;
 
@@ -153,6 +159,8 @@ export namespace UserLogsResponse {
     export type AsObject = {
       id: number,
       userId: number,
+      ip: string,
+      level: string,
       message: string,
       resourceType: string,
       resourceId?: number,
@@ -161,7 +169,7 @@ export namespace UserLogsResponse {
 
     export enum ResourceIdCase { 
       _RESOURCE_ID_NOT_SET = 0,
-      RESOURCE_ID = 5,
+      RESOURCE_ID = 7,
     }
   }
 

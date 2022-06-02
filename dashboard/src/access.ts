@@ -1,17 +1,17 @@
 import { IApplicationState } from './app';
-import { IPolicy } from './models/useAuthModel';
+import { IPermission } from './models/useAuthModel';
 
 export default function (initialState: IApplicationState) {
   const { currentUser } = initialState;
 
   return {
     isAdministrator: currentUser?.isAdministrator,
-    can: (it: IPolicy): boolean => {
+    can: (it: IPermission): boolean => {
       if (currentUser) {
         if (currentUser.isAdministrator) {
           return true;
         }
-        for (var x of currentUser.policies) {
+        for (var x of currentUser.permissions) {
           if (
             x.operation === it.operation &&
             x.resourceType === it.resourceType &&

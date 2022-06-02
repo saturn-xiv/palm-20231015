@@ -1,6 +1,7 @@
 import { Metadata } from 'grpc-web';
+import { getLocale } from './i18n';
 
-import { get as getToken } from './models/useAuthModel';
+import { getToken } from './models/useAuthModel';
 
 export const backend = (u: string) => `/api${u}`;
 
@@ -9,7 +10,8 @@ export const GRPC_HOST: string =
 
 export const grpc_metadata = (): Metadata => {
   return {
-    Authorization: `Bearer ${getToken()}`,
+    authorization: `Bearer ${getToken()}`,
+    'accept-language': getLocale() || 'en-US',
   };
 };
 

@@ -3,7 +3,7 @@ import ProForm, { ProFormText } from '@ant-design/pro-form';
 import { useIntl, useHistory, getLocale } from 'umi';
 
 import Layout from '@/layouts/non-sign-in';
-import { guess_timezone, home_url } from '@/components';
+import { home_url } from '@/components';
 import {
   RULE_EMAIL,
   RULE_NAME,
@@ -15,6 +15,7 @@ import { SiteClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
 import { IFormData } from './users/sign-up';
 import { TO_SIGN_IN } from '@/models/useAuthModel';
+import { guess_timezone } from '@/components/date';
 
 const Widget = () => {
   const intl = useIntl();

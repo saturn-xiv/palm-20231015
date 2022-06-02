@@ -2020,9 +2020,11 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.toObject = function(includeInsta
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
     userId: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    message: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    resourceType: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    resourceId: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    ip: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    level: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    message: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    resourceType: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    resourceId: jspb.Message.getFieldWithDefault(msg, 7, 0),
     createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
@@ -2070,17 +2072,25 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.deserializeBinaryFromReader = fu
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setMessage(value);
+      msg.setIp(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setResourceType(value);
+      msg.setLevel(value);
       break;
     case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMessage(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setResourceType(value);
+      break;
+    case 7:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setResourceId(value);
       break;
-    case 9:
+    case 11:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setCreatedAt(value);
@@ -2128,31 +2138,45 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.serializeBinaryToWriter = functi
       f
     );
   }
-  f = message.getMessage();
+  f = message.getIp();
   if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
-  f = message.getResourceType();
+  f = message.getLevel();
   if (f.length > 0) {
     writer.writeString(
       4,
       f
     );
   }
-  f = /** @type {number} */ (jspb.Message.getField(message, 5));
+  f = message.getMessage();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+  f = message.getResourceType();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 7));
   if (f != null) {
     writer.writeInt32(
-      5,
+      7,
       f
     );
   }
   f = message.getCreatedAt();
   if (f != null) {
     writer.writeMessage(
-      9,
+      11,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
@@ -2197,10 +2221,10 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.setUserId = function(v
 
 
 /**
- * optional string message = 3;
+ * optional string ip = 3;
  * @return {string}
  */
-proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.getMessage = function() {
+proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.getIp = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
@@ -2209,16 +2233,16 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.getMessage = function(
  * @param {string} value
  * @return {!proto.palm.plugins.nut.v1.UserLogsResponse.Item} returns this
  */
-proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.setMessage = function(value) {
+proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.setIp = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * optional string resource_type = 4;
+ * optional string level = 4;
  * @return {string}
  */
-proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.getResourceType = function() {
+proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.getLevel = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
@@ -2227,17 +2251,53 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.getResourceType = func
  * @param {string} value
  * @return {!proto.palm.plugins.nut.v1.UserLogsResponse.Item} returns this
  */
-proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.setResourceType = function(value) {
+proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.setLevel = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
 /**
- * optional int32 resource_id = 5;
+ * optional string message = 5;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.getMessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.UserLogsResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.setMessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional string resource_type = 6;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.getResourceType = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.UserLogsResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.setResourceType = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * optional int32 resource_id = 7;
  * @return {number}
  */
 proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.getResourceId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
 };
 
 
@@ -2246,7 +2306,7 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.getResourceId = functi
  * @return {!proto.palm.plugins.nut.v1.UserLogsResponse.Item} returns this
  */
 proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.setResourceId = function(value) {
-  return jspb.Message.setField(this, 5, value);
+  return jspb.Message.setField(this, 7, value);
 };
 
 
@@ -2255,7 +2315,7 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.setResourceId = functi
  * @return {!proto.palm.plugins.nut.v1.UserLogsResponse.Item} returns this
  */
 proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.clearResourceId = function() {
-  return jspb.Message.setField(this, 5, undefined);
+  return jspb.Message.setField(this, 7, undefined);
 };
 
 
@@ -2264,17 +2324,17 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.clearResourceId = func
  * @return {boolean}
  */
 proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.hasResourceId = function() {
-  return jspb.Message.getField(this, 5) != null;
+  return jspb.Message.getField(this, 7) != null;
 };
 
 
 /**
- * optional google.protobuf.Timestamp created_at = 9;
+ * optional google.protobuf.Timestamp created_at = 11;
  * @return {?proto.google.protobuf.Timestamp}
  */
 proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.getCreatedAt = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 9));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 11));
 };
 
 
@@ -2283,7 +2343,7 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.getCreatedAt = functio
  * @return {!proto.palm.plugins.nut.v1.UserLogsResponse.Item} returns this
 */
 proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.setCreatedAt = function(value) {
-  return jspb.Message.setWrapperField(this, 9, value);
+  return jspb.Message.setWrapperField(this, 11, value);
 };
 
 
@@ -2301,7 +2361,7 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.clearCreatedAt = funct
  * @return {boolean}
  */
 proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.hasCreatedAt = function() {
-  return jspb.Message.getField(this, 9) != null;
+  return jspb.Message.getField(this, 11) != null;
 };
 
 

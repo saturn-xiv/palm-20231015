@@ -372,6 +372,8 @@ impl v1::user_server::User for Service {
                     id: x.id,
                     user_id: x.user_id,
                     message: x.message.clone(),
+                    level: x.level.to_string(),
+                    ip: x.ip.clone(),
                     resource_type: x.resource_type.clone(),
                     resource_id: x.resource_id,
                     created_at: Some(to_timestamp!(x.created_at)),

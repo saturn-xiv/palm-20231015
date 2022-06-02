@@ -2,16 +2,16 @@ import Cookies from 'js-cookie';
 
 const KEY = 'locale';
 
-export const get = (): string | undefined => {
+export const getLocale = (): string | undefined => {
   return localStorage.getItem(KEY) || Cookies.get(KEY);
 };
 
-export const set = (lang: string) => {
+export const setLocale = (lang: string) => {
   Cookies.set(KEY, lang);
   localStorage.setItem(KEY, lang);
 };
 
-export const remove = () => {
+export const removeLocale = () => {
   Cookies.remove(KEY);
   localStorage.removeItem(KEY);
 };
