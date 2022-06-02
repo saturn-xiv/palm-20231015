@@ -21,4 +21,5 @@ export default {
   'nut.users.account-info.title': 'Account info',
   'nut.users.logs.title': 'Logs',
   'nut.users.change-password.title': 'Change password',
+  'nut.users.sign-out.title': 'Are you sure to sign out?',
 };
