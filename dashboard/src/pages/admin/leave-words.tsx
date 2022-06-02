@@ -1,5 +1,15 @@
+import { useIntl } from 'umi';
+import { Col } from 'antd';
+
+import Layout from '@/layouts/dashboard';
+
 const Widget = () => {
-  return <></>;
+  const intl = useIntl();
+  return (
+    <Layout title={intl.formatMessage({ id: 'nut.admin.leave-words.index' })}>
+      <Col span={24}></Col>
+    </Layout>
+  );
 };
 
 export default Widget;

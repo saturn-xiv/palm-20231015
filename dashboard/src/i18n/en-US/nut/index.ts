@@ -1,5 +1,6 @@
 import users from './users';
 import menus from './menus';
+import admin from './admin';
 
 export default {
   'nut.switch-language.title': 'Switch language',
@@ -7,6 +8,8 @@ export default {
   'nut.install.title': 'Install',
   'nut.leave-words.new.title': 'Leave us a message',
   'nut.404.title': 'Not found',
+  'nut.attachments.title': 'Attachments',
   ...users,
+  ...admin,
   ...menus,
 };

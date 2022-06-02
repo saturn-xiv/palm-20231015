@@ -10,6 +10,7 @@ import school from './school';
 export interface IMenu {
   to: string;
   icon?: ReactNode;
+  mustAdministrator?: boolean;
   permissions: IPermission[];
   items: IMenu[];
 }
