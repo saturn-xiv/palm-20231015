@@ -26,24 +26,13 @@ impl super::v1::Pagination {
     pub fn new(pager: &super::v1::Pager, total: i64) -> Self {
         let page = pager.page(total);
         let size = pager.size();
-        Self {
-            page,
-            size,
-            total: {
-                let it = total / size;
-                if total % size == 0 {
-                    it
-                } else {
-                    it + 1
-                }
-            },
-        }
+        Self { page, size, total }
     }
 }
 
 impl super::v1::Pager {
     pub fn offset(&self, total: i64) -> i64 {
-        self.page(total) * self.size()
+        (self.page(total) - 1) * self.size()
     }
 
     pub fn page(&self, total: i64) -> i64 {
@@ -53,7 +42,7 @@ impl super::v1::Pager {
         }
         if self.page * size >= total {
             let it = total / size;
-            return if total % size == 0 { it - 1 } else { it };
+            return if total % size == 0 { it } else { it + 1 };
         }
         self.page
     }

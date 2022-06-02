@@ -68,7 +68,7 @@ const Widget = () => {
 
         const request = new Pager();
         request.setPage(params.current || 1);
-        request.setPage(params.pageSize || 20);
+        request.setSize(params.pageSize || 20);
 
         const response = await client.logs(request, grpc_metadata());
         return {
@@ -92,6 +92,7 @@ const Widget = () => {
       bordered
       pagination={{
         showQuickJumper: true,
+        showSizeChanger: true,
       }}
       headerTitle={intl.formatMessage({ id: 'nut.users.logs.title' })}
     />

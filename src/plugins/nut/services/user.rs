@@ -363,6 +363,15 @@ impl v1::user_server::User for Service {
         let user = try_grpc!(ss.current_user(db, jwt))?;
         let req = req.into_inner();
         let total = try_grpc!(LogDao::count(db, user.id))?;
+        debug!(
+            "pager={:?}, total={}, page={}, offset={}, size={}, pagination={:?}",
+            req,
+            total,
+            req.page(total),
+            req.offset(total),
+            req.size(),
+            v1::Pagination::new(&req, total)
+        );
         let items = try_grpc!(LogDao::all(db, user.id, req.offset(total), req.size()))?;
 
         Ok(Response::new(v1::UserLogsResponse {
