@@ -6,6 +6,7 @@ export default {
   'nut.switch-language.confirm': 'Are you sure to change language to {lang}',
   'nut.install.title': 'Install',
   'nut.leave-words.new.title': 'Leave us a message',
+  'nut.404.title': 'Not found',
   ...users,
   ...menus,
 };
