@@ -1,18 +1,16 @@
 import { useRef } from 'react';
 import { message } from 'antd';
 import ProForm, { ProFormText, ProFormSelect } from '@ant-design/pro-form';
-import { useIntl, getLocale, getAllLocales, setLocale } from 'umi';
+import { useIntl, getAllLocales } from 'umi';
 import type { ProFormInstance } from '@ant-design/pro-form';
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb';
 
 import { RULE_NAME } from '@/components/forms';
-import {
-  UserSetProfileRequest,
-  UserGetProfileResponse,
-} from '@/protocols/nut_pb';
+import { UserSetProfileRequest } from '@/protocols/nut_pb';
 import { UserClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
-import { all_time_zones, guess_timezone } from '@/components/date';
+import { all_time_zones } from '@/components/date';
+import { setLocale } from '@/i18n';
 
 interface IFormData {
   email: string;

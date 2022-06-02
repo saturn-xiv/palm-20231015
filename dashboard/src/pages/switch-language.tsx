@@ -1,9 +1,9 @@
 import { Col, Card, Button, Popconfirm, List } from 'antd';
-import { useIntl, setLocale, getAllLocales } from 'umi';
+import { useIntl, getAllLocales } from 'umi';
 import { FormattedMessage } from 'react-intl';
 
 import Layout from '@/layouts/application';
-import { setLocale as setLang } from '@/i18n';
+import { setLocale } from '@/i18n';
 
 const Widget = () => {
   const intl = useIntl();
@@ -24,9 +24,7 @@ const Widget = () => {
                     { lang: intl.formatMessage({ id: `languages.${it}` }) },
                   )}
                   onConfirm={() => {
-                    setLang(it);
-                    // TODO test if sign in
-                    setLocale(it, true);
+                    setLocale(it);
                   }}
                 >
                   <Button type="text">
