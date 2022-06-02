@@ -59,7 +59,7 @@ const Widget = ({ title, children }: IProps) => {
           selectSideBar(key);
         },
       }}
-      selectedKeys={[sideBar.selectedKey]}
+      selectedKeys={sideBar.selectedKey ? [sideBar.selectedKey] : []}
       // TODO
       // openKeys={sideBar.openKeys}
 

@@ -1,8 +1,11 @@
 import { useRef } from 'react';
 import { useIntl } from 'umi';
 import ProTable, { ActionType } from '@ant-design/pro-table';
+import { Timestamp } from 'google-protobuf/google/protobuf/timestamp_pb';
 
 import {
+  DEFAULT_PAGE,
+  DEFAULT_SIZE,
   ID_WIDTH,
   IP_WIDTH,
   TIMESTAMP_COLUMN_WIDTH,
@@ -11,7 +14,6 @@ import {
 import { Pager } from '@/protocols/nut_pb';
 import { UserClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
-import { Timestamp } from 'google-protobuf/google/protobuf/timestamp_pb';
 import { ShowTimestamp } from '@/components/date';
 
 interface IItem {
@@ -35,7 +37,6 @@ const Widget = () => {
         {
           title: intl.formatMessage({ id: 'form.fields.id.label' }),
           dataIndex: 'id',
-
           key: 'id',
           width: ID_WIDTH,
         },
@@ -43,7 +44,7 @@ const Widget = () => {
           title: intl.formatMessage({ id: 'form.fields.level.label' }),
           dataIndex: 'level',
           key: 'level',
-          width: 120,
+          width: 80,
         },
         {
           title: intl.formatMessage({ id: 'form.fields.ip.label' }),
@@ -67,8 +68,8 @@ const Widget = () => {
         const client = new UserClient(GRPC_HOST);
 
         const request = new Pager();
-        request.setPage(params.current || 1);
-        request.setSize(params.pageSize || 20);
+        request.setPage(params.current || DEFAULT_PAGE);
+        request.setSize(params.pageSize || DEFAULT_SIZE);
 
         const response = await client.logs(request, grpc_metadata());
         return {

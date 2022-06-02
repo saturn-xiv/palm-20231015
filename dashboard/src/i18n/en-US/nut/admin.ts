@@ -1,6 +1,6 @@
 export default {
-  'nut.admin.locales.index': 'Locales',
-  'nut.admin.users.index': 'Users',
-  'nut.admin.leave-words.index': 'Leave words',
-  'nut.admin.site.index': 'Web site',
+  'nut.admin.locales.title': 'Locales',
+  'nut.admin.users.title': 'Users',
+  'nut.admin.leave-words.title': 'Leave words',
+  'nut.admin.site.title': 'Web site',
 };
