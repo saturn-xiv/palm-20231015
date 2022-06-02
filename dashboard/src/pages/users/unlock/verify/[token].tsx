@@ -1,13 +1,11 @@
 import { message, Button } from 'antd';
-import ProForm, { ProFormText } from '@ant-design/pro-form';
 import { useIntl, useParams, useHistory, FormattedMessage } from 'umi';
 
 import Layout from '@/layouts/non-sign-in';
-import { TO_SIGN_IN } from '@/components';
-import { RULE_PASSWORD } from '@/components/forms';
 import { UserTokenRequest } from '@/protocols/nut_pb';
 import { UserClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
+import { TO_SIGN_IN } from '@/models/useAuthModel';
 
 export interface IFormData {
   email: string;

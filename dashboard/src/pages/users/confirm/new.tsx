@@ -3,11 +3,11 @@ import ProForm, { ProFormText } from '@ant-design/pro-form';
 import { useIntl, useHistory } from 'umi';
 
 import Layout from '@/layouts/non-sign-in';
-import { home_url, TO_SIGN_IN } from '@/components';
+import { home_url } from '@/components';
 import { UserEmailRequest } from '@/protocols/nut_pb';
 import { UserClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
-import { to_user_query_request } from '@/models/useAuthModel';
+import { TO_SIGN_IN, to_user_query_request } from '@/models/useAuthModel';
 
 export interface IFormData {
   account: string;

@@ -12,7 +12,9 @@ import {
 } from '@/protocols/nut_pb';
 import { UserClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
-import { TO_SIGN_IN } from '@/components';
+
+export const TO_SIGN_IN = '/users/sign-in';
+export const TO_PROFILE = '/users/profile';
 
 const KEY = 'token';
 export const DURATION = 60 * 60 * 24;
@@ -101,7 +103,7 @@ export default function useAuthModel() {
         message.error(err.message);
       } else {
         setCurrentUser(to_current_user(response));
-        history.push('/users/profile');
+        history.push(TO_PROFILE);
       }
     });
   }, []);

@@ -11,6 +11,7 @@ import {
 } from '@ant-design/icons';
 
 import Layout from '../application';
+import { TO_SIGN_IN } from '@/models/useAuthModel';
 
 export interface IProps {
   title: string;
@@ -29,7 +30,7 @@ const Widget = ({ title, children }: IProps) => {
   const shared_links: ILink[] = [
     {
       label: 'nut.users.sign-in.title',
-      to: '/users/sign-in',
+      to: TO_SIGN_IN,
       icon: <LoginOutlined />,
     },
     {

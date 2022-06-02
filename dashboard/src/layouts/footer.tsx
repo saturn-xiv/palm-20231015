@@ -4,12 +4,7 @@ import {
   DashboardOutlined,
   GlobalOutlined,
 } from '@ant-design/icons';
-import { useHistory, useModel } from 'umi';
-
-export const Copyright = () => {
-  const { initialState } = useModel('@@initialState');
-  return <>&copy;{initialState?.layout.copyright}</>;
-};
+import { useHistory } from 'umi';
 
 export const Home = () => (
   <HomeOutlined

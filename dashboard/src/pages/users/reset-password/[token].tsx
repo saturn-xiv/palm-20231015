@@ -5,11 +5,11 @@ import type { ProFormInstance } from '@ant-design/pro-form';
 import { useIntl, useParams, useHistory } from 'umi';
 
 import Layout from '@/layouts/non-sign-in';
-import { TO_SIGN_IN } from '@/components';
 import { RULE_PASSWORD } from '@/components/forms';
 import { UserResetPasswordRequest } from '@/protocols/nut_pb';
 import { UserClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
+import { TO_SIGN_IN } from '@/models/useAuthModel';
 
 export interface IFormData {
   password: string;

@@ -3,7 +3,7 @@ import ProForm, { ProFormText } from '@ant-design/pro-form';
 import { useIntl, useHistory, getLocale } from 'umi';
 
 import Layout from '@/layouts/non-sign-in';
-import { guess_timezone, home_url, TO_SIGN_IN } from '@/components';
+import { guess_timezone, home_url } from '@/components';
 import {
   RULE_EMAIL,
   RULE_NAME,
@@ -13,6 +13,7 @@ import {
 import { UserSignUpRequest } from '@/protocols/nut_pb';
 import { UserClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
+import { TO_SIGN_IN } from '@/models/useAuthModel';
 
 export interface IFormData {
   email: string;
