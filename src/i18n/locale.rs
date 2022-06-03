@@ -21,8 +21,8 @@ lazy_static! {
     static ref LOCALES: HashMap<&'static str, &'static str> = {
         let mut it = HashMap::new();
         it.insert("en-US", include_str!("en-US.yml"));
-        it.insert("zh-Hans", include_str!("zh-Hans.yml"));
-        it.insert("zh-Hant", include_str!("zh-Hant.yml"));
+        it.insert("zh-CN", include_str!("zh-CN.yml"));
+        it.insert("zh-TW", include_str!("zh-TW.yml"));
         it
     };
 }

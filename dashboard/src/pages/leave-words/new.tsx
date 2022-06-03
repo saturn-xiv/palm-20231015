@@ -5,7 +5,6 @@ import { useIntl } from 'umi';
 import type { ProFormInstance } from '@ant-design/pro-form';
 
 import Layout from '@/layouts/non-sign-in';
-import { home_url, TO_SIGN_IN } from '@/components';
 import { SiteNewLeaveWordRequest } from '@/protocols/nut_pb';
 import { SiteClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';

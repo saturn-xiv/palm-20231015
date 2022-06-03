@@ -37,10 +37,10 @@ impl super::v1::Pager {
 
     pub fn page(&self, total: i64) -> i64 {
         let size = self.size();
-        if self.page < 1 {
+        if total < size || self.page < 1 {
             return 1;
         }
-        if self.page * size >= total {
+        if self.page * size > total {
             let it = total / size;
             return if total % size == 0 { it } else { it + 1 };
         }

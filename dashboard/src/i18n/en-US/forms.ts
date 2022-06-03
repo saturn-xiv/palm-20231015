@@ -19,5 +19,6 @@ export default {
   'form.fields.language.label': 'Language',
   'form.fields.avatar.label': 'Avatar',
   'form.fields.time-zone.label': 'Time zone',
+  'form.fields.code.label': 'Code',
   'form.submit.successed': 'Successed!',
 };
