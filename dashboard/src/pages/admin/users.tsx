@@ -2,12 +2,15 @@ import { useIntl } from 'umi';
 import { Col } from 'antd';
 
 import Layout from '@/layouts/dashboard';
+import IndexUser from '@/components/nut/admin/users';
 
 const Widget = () => {
   const intl = useIntl();
   return (
-    <Layout title={intl.formatMessage({ id: 'nut.admin.users.index' })}>
-      <Col span={24}></Col>
+    <Layout title={intl.formatMessage({ id: 'nut.admin.users.title' })}>
+      <Col span={24}>
+        <IndexUser />
+      </Col>
     </Layout>
   );
 };

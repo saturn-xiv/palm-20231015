@@ -9,4 +9,9 @@ export default {
   'buttons.test': 'Test',
   'buttons.run': 'Run',
   'buttons.remove': 'Remove',
+  'buttons.verify': 'Verify',
+  'buttons.enable': 'Enable',
+  'buttons.disable': 'Disable',
+  'buttons.lock': 'Lock',
+  'buttons.unlock': 'Unlock',
 };
