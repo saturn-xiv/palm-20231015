@@ -10,8 +10,8 @@ use super::super::{
     Result,
 };
 
-pub async fn launch(cfg: &Config) -> Result<()> {
-    let addr = cfg.rpc.addr();
+pub async fn web(cfg: &Config) -> Result<()> {
+    let addr = cfg.rpc.web.addr();
     info!("run on http://{addr}");
     let pgsql = cfg.postgresql.open()?;
     let redis = cfg.redis.open()?;
@@ -84,17 +84,28 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     Ok(())
 }
 
-// pub async fn launch_(cfg: &Config) -> Result<()> {
-//     let addr = cfg.rpc.addr();
-//     info!("run on http://{addr}");
-//     let pgsql = cfg.postgresql.open()?;
-//     let mysql = cfg.mysql.open()?;
+pub async fn tcp(cfg: &Config) -> Result<()> {
+    let addr = cfg.rpc.addr();
+    info!("run on {addr}");
+    let pgsql = cfg.postgresql.open()?;
+    let redis = cfg.redis.open()?;
+    let aes = Arc::new(Aes::new(&cfg.secrets.0)?);
+    let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
+    let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
+    let rabbitmq = Arc::new(cfg.rabbitmq.open());
 
-//     Server::builder()
-//         .add_service(nut::v1::site_server::SiteServer::new(
-//             nut::services::site::Service { pgsql, mysql },
-//         ))
-//         .serve(addr)
-//         .await?;
-//     Ok(())
-// }
+    Server::builder()
+        .add_service(nut::v1::site_server::SiteServer::new(
+            nut::services::site::Service {
+                pgsql,
+                jwt,
+                aes,
+                hmac,
+                redis,
+                rabbitmq,
+            },
+        ))
+        .serve(addr)
+        .await?;
+    Ok(())
+}

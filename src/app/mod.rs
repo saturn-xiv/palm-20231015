@@ -62,8 +62,10 @@ pub enum SubCommand {
     I18nSync,
     #[clap(about = "Http Server")]
     Web,
-    #[clap(about = "gRPC Server")]
-    Rpc,
+    #[clap(about = "gRPC-Web Server")]
+    RpcWeb,
+    #[clap(about = "gRPC-TCP Server")]
+    RpcTcp,
     #[clap(about = "Worker process")]
     Worker(Worker),
 }
@@ -202,8 +204,11 @@ pub async fn launch() -> Result<()> {
     if args.command == SubCommand::Web {
         return web::launch(&cfg).await;
     }
-    if args.command == SubCommand::Rpc {
-        return rpc::launch(&cfg).await;
+    if args.command == SubCommand::RpcWeb {
+        return rpc::web(&cfg).await;
+    }
+    if args.command == SubCommand::RpcTcp {
+        return rpc::tcp(&cfg).await;
     }
     if let SubCommand::Worker(ref it) = args.command {
         worker::launch(&cfg, &it.queue).await?;
