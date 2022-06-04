@@ -6,7 +6,10 @@ use diesel::Connection as DieselConntection;
 use tonic::{Request, Response, Status};
 
 use super::super::super::super::{
-    jwt::Jwt, orm::postgresql::Pool as PostgreSqlPool, Error, GrpcResult, Result,
+    i18n::I18n,
+    jwt::Jwt,
+    orm::postgresql::{Connection as PostgreSqlConnection, Pool as PostgreSqlPool},
+    Error, GrpcResult,
 };
 use super::super::{
     models::{
@@ -24,34 +27,62 @@ pub struct Service {
     pub jwt: Arc<Jwt>,
 }
 
-impl fmt::Display for v1::policy_index_response::Item {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "{}@{}://{}",
-            self.role,
-            Policy::resource(&self.resource_type, self.resource_id),
-            self.operation
-        )
+impl v1::policy_options_response::Item {
+    pub fn role(db: &mut PostgreSqlConnection, lang: &str, code: &str) -> Self {
+        Self::new(db, lang, "roles", code)
+    }
+    pub fn resource(db: &mut PostgreSqlConnection, lang: &str, code: &str) -> Self {
+        Self::new(db, lang, "resources", code)
+    }
+    pub fn operation(db: &mut PostgreSqlConnection, lang: &str, code: &str) -> Self {
+        Self::new(db, lang, "operations", code)
+    }
+    pub fn new(db: &mut PostgreSqlConnection, lang: &str, ns: &str, code: &str) -> Self {
+        Self {
+            code: code.to_string(),
+            label: I18n::t(db, lang, &format!("{}://{}", ns, code), &None::<String>),
+        }
     }
 }
 
 impl v1::policy_index_response::Item {
-    pub fn new(x: &Policy) -> Result<Self> {
-        let (rty, rid) = x.get_resource()?;
-        let it = Self {
-            role: x.role.clone(),
-            operation: x.operation.clone(),
-            resource_type: rty,
-            resource_id: rid,
-        };
-        Ok(it)
+    pub fn new(db: &mut PostgreSqlConnection, lng: &str, it: &Policy) -> Self {
+        Self {
+            role: Some(v1::policy_options_response::Item::role(db, lng, &it.role)),
+            operation: Some(v1::policy_options_response::Item::operation(
+                db,
+                lng,
+                &it.operation,
+            )),
+            resource_type: Some(v1::policy_options_response::Item::resource(
+                db,
+                lng,
+                &it.resource_type,
+            )),
+            resource_id: it.resource_id,
+        }
+    }
+}
+
+impl fmt::Display for v1::PolicyPermission {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(
+            f,
+            "{}@{}://{}/{}",
+            self.role,
+            self.operation,
+            self.resource_type,
+            match self.resource_id {
+                Some(id) => id.to_string(),
+                None => "".to_string(),
+            }
+        )
     }
 }
 
 #[tonic::async_trait]
 impl v1::policy_server::Policy for Service {
-    async fn apply(&self, req: Request<v1::policy_index_response::Item>) -> GrpcResult<()> {
+    async fn apply(&self, req: Request<v1::PolicyPermission>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -60,11 +91,30 @@ impl v1::policy_server::Policy for Service {
         try_grpc!(user.is_administrator(db))?;
         let req = req.into_inner();
 
-        let resource = Policy::resource(&req.resource_type, req.resource_id);
         try_grpc!(db.transaction::<_, Error, _>(move |db| {
-            if PolicyDao::get(db, &req.role, &req.operation, &resource).is_err() {
-                PolicyDao::create(db, &req.role, &req.operation, &resource)?;
-                let it = PolicyDao::get(db, &req.role, &req.operation, &resource)?;
+            if PolicyDao::get(
+                db,
+                &req.role,
+                &req.operation,
+                &req.resource_type,
+                req.resource_id,
+            )
+            .is_err()
+            {
+                PolicyDao::create(
+                    db,
+                    &req.role,
+                    &req.operation,
+                    &req.resource_type,
+                    req.resource_id,
+                )?;
+                let it = PolicyDao::get(
+                    db,
+                    &req.role,
+                    &req.operation,
+                    &req.resource_type,
+                    req.resource_id,
+                )?;
                 LogDao::add::<_, Policy>(
                     db,
                     user.id,
@@ -80,7 +130,7 @@ impl v1::policy_server::Policy for Service {
         Ok(Response::new(()))
     }
 
-    async fn deny(&self, req: Request<v1::policy_index_response::Item>) -> GrpcResult<()> {
+    async fn deny(&self, req: Request<v1::PolicyPermission>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -89,9 +139,14 @@ impl v1::policy_server::Policy for Service {
         try_grpc!(user.is_administrator(db))?;
         let req = req.into_inner();
 
-        let resource = Policy::resource(&req.resource_type, req.resource_id);
         try_grpc!(db.transaction::<_, Error, _>(move |db| {
-            if let Ok(it) = PolicyDao::get(db, &req.role, &req.operation, &resource) {
+            if let Ok(it) = PolicyDao::get(
+                db,
+                &req.role,
+                &req.operation,
+                &req.resource_type,
+                req.resource_id,
+            ) {
                 PolicyDao::destroy(db, it.id)?;
                 LogDao::add::<_, Policy>(
                     db,
@@ -121,13 +176,8 @@ impl v1::policy_server::Policy for Service {
         let mut items = Vec::new();
 
         for x in try_grpc!(PolicyDao::index(db, req.offset(total), req.size()))?.iter() {
-            let rs = try_grpc!(x.get_resource())?;
-            items.push(v1::policy_index_response::Item {
-                role: x.role.clone(),
-                operation: x.operation.clone(),
-                resource_type: rs.0,
-                resource_id: rs.1,
-            });
+            let it = v1::policy_index_response::Item::new(db, &ss.lang, x);
+            items.push(it);
         }
         Ok(Response::new(v1::PolicyIndexResponse {
             items,
@@ -194,5 +244,34 @@ impl v1::policy_server::Policy for Service {
         }))?;
 
         Ok(Response::new(()))
+    }
+
+    async fn options(&self, req: Request<()>) -> GrpcResult<v1::PolicyOptionsResponse> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.is_administrator(db))?;
+        let roles = try_grpc!(PolicyDao::roles(db))?;
+        let operations = try_grpc!(PolicyDao::operations(db))?;
+        let resources = try_grpc!(PolicyDao::resources(db))?;
+
+        let it = v1::PolicyOptionsResponse {
+            roles: roles
+                .iter()
+                .map(|x| v1::policy_options_response::Item::role(db, &ss.lang, x))
+                .collect(),
+            operations: operations
+                .iter()
+                .map(|x| v1::policy_options_response::Item::operation(db, &ss.lang, x))
+                .collect(),
+            resources: resources
+                .iter()
+                .map(|x| v1::policy_options_response::Item::resource(db, &ss.lang, x))
+                .collect(),
+        };
+
+        Ok(Response::new(it))
     }
 }

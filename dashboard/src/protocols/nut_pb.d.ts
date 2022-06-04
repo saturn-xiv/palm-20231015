@@ -451,6 +451,98 @@ export namespace UserGetProfileResponse {
   }
 }
 
+export class PolicyPermission extends jspb.Message {
+  getRole(): string;
+  setRole(value: string): PolicyPermission;
+
+  getOperation(): string;
+  setOperation(value: string): PolicyPermission;
+
+  getResourceType(): string;
+  setResourceType(value: string): PolicyPermission;
+
+  getResourceId(): number;
+  setResourceId(value: number): PolicyPermission;
+  hasResourceId(): boolean;
+  clearResourceId(): PolicyPermission;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PolicyPermission.AsObject;
+  static toObject(includeInstance: boolean, msg: PolicyPermission): PolicyPermission.AsObject;
+  static serializeBinaryToWriter(message: PolicyPermission, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PolicyPermission;
+  static deserializeBinaryFromReader(message: PolicyPermission, reader: jspb.BinaryReader): PolicyPermission;
+}
+
+export namespace PolicyPermission {
+  export type AsObject = {
+    role: string,
+    operation: string,
+    resourceType: string,
+    resourceId?: number,
+  }
+
+  export enum ResourceIdCase { 
+    _RESOURCE_ID_NOT_SET = 0,
+    RESOURCE_ID = 4,
+  }
+}
+
+export class PolicyOptionsResponse extends jspb.Message {
+  getRolesList(): Array<PolicyOptionsResponse.Item>;
+  setRolesList(value: Array<PolicyOptionsResponse.Item>): PolicyOptionsResponse;
+  clearRolesList(): PolicyOptionsResponse;
+  addRoles(value?: PolicyOptionsResponse.Item, index?: number): PolicyOptionsResponse.Item;
+
+  getOperationsList(): Array<PolicyOptionsResponse.Item>;
+  setOperationsList(value: Array<PolicyOptionsResponse.Item>): PolicyOptionsResponse;
+  clearOperationsList(): PolicyOptionsResponse;
+  addOperations(value?: PolicyOptionsResponse.Item, index?: number): PolicyOptionsResponse.Item;
+
+  getResourcesList(): Array<PolicyOptionsResponse.Item>;
+  setResourcesList(value: Array<PolicyOptionsResponse.Item>): PolicyOptionsResponse;
+  clearResourcesList(): PolicyOptionsResponse;
+  addResources(value?: PolicyOptionsResponse.Item, index?: number): PolicyOptionsResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PolicyOptionsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: PolicyOptionsResponse): PolicyOptionsResponse.AsObject;
+  static serializeBinaryToWriter(message: PolicyOptionsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PolicyOptionsResponse;
+  static deserializeBinaryFromReader(message: PolicyOptionsResponse, reader: jspb.BinaryReader): PolicyOptionsResponse;
+}
+
+export namespace PolicyOptionsResponse {
+  export type AsObject = {
+    rolesList: Array<PolicyOptionsResponse.Item.AsObject>,
+    operationsList: Array<PolicyOptionsResponse.Item.AsObject>,
+    resourcesList: Array<PolicyOptionsResponse.Item.AsObject>,
+  }
+
+  export class Item extends jspb.Message {
+    getCode(): string;
+    setCode(value: string): Item;
+
+    getLabel(): string;
+    setLabel(value: string): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      code: string,
+      label: string,
+    }
+  }
+
+}
+
 export class PolicyIndexResponse extends jspb.Message {
   getItemsList(): Array<PolicyIndexResponse.Item>;
   setItemsList(value: Array<PolicyIndexResponse.Item>): PolicyIndexResponse;
@@ -477,14 +569,20 @@ export namespace PolicyIndexResponse {
   }
 
   export class Item extends jspb.Message {
-    getRole(): string;
-    setRole(value: string): Item;
+    getRole(): PolicyOptionsResponse.Item | undefined;
+    setRole(value?: PolicyOptionsResponse.Item): Item;
+    hasRole(): boolean;
+    clearRole(): Item;
 
-    getOperation(): string;
-    setOperation(value: string): Item;
+    getOperation(): PolicyOptionsResponse.Item | undefined;
+    setOperation(value?: PolicyOptionsResponse.Item): Item;
+    hasOperation(): boolean;
+    clearOperation(): Item;
 
-    getResourceType(): string;
-    setResourceType(value: string): Item;
+    getResourceType(): PolicyOptionsResponse.Item | undefined;
+    setResourceType(value?: PolicyOptionsResponse.Item): Item;
+    hasResourceType(): boolean;
+    clearResourceType(): Item;
 
     getResourceId(): number;
     setResourceId(value: number): Item;
@@ -501,9 +599,9 @@ export namespace PolicyIndexResponse {
 
   export namespace Item {
     export type AsObject = {
-      role: string,
-      operation: string,
-      resourceType: string,
+      role?: PolicyOptionsResponse.Item.AsObject,
+      operation?: PolicyOptionsResponse.Item.AsObject,
+      resourceType?: PolicyOptionsResponse.Item.AsObject,
       resourceId?: number,
     }
 

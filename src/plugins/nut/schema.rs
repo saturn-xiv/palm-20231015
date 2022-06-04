@@ -77,7 +77,8 @@ diesel::table! {
         id -> Int4,
         role -> Varchar,
         operation -> Varchar,
-        resource -> Varchar,
+        resource_type -> Varchar,
+        resource_id -> Nullable<Int4>,
         created_at -> Timestamp,
     }
 }

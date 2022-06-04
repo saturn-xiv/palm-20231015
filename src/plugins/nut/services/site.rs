@@ -95,7 +95,7 @@ impl v1::SiteLayoutResponse {
             Some(ref x) => {
                 let mut policies = Vec::new();
                 for x in x.policies(db)?.iter() {
-                    let it = v1::policy_index_response::Item::new(x)?;
+                    let it = v1::policy_index_response::Item::new(db, lang, x);
                     policies.push(it);
                 }
                 let it = v1::site_layout_response::CurrentUser {

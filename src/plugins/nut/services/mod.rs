@@ -150,27 +150,14 @@ impl User {
         let operation = operation.to_string();
 
         for role in RoleDao::roles_by_user(db, self.id)? {
-            if PolicyDao::get(
-                db,
-                &role,
-                &operation,
-                &Policy::resource(resource_type, None),
-            )
-            .is_ok()
-            {
+            if PolicyDao::get(db, &role, &operation, resource_type, None).is_ok() {
                 return Ok(());
             }
-            if let Some(resource_id) = resource_id {
-                if PolicyDao::get(
-                    db,
-                    &role,
-                    &operation,
-                    &Policy::resource(resource_type, Some(resource_id)),
-                )
-                .is_ok()
-                {
-                    return Ok(());
-                }
+
+            if resource_id.is_some()
+                && PolicyDao::get(db, &role, &operation, resource_type, resource_id).is_ok()
+            {
+                return Ok(());
             }
         }
         Err(Box::new(HttpError(

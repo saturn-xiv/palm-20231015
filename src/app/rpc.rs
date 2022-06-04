@@ -95,6 +95,12 @@ pub async fn tcp(cfg: &Config) -> Result<()> {
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
 
     Server::builder()
+        .add_service(nut::v1::policy_server::PolicyServer::new(
+            nut::services::policy::Service {
+                pgsql: pgsql.clone(),
+                jwt: jwt.clone(),
+            },
+        ))
         .add_service(nut::v1::user_server::UserServer::new(
             nut::services::user::Service {
                 pgsql: pgsql.clone(),

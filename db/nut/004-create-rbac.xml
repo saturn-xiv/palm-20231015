@@ -49,23 +49,24 @@
             <column name="operation" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="resource" type="varchar(255)">
+            <column name="resource_type" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
+            <column name="resource_id" type="integer" />
             <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="policies" indexName="idx_policies" unique="true">
+        <createIndex tableName="policies" indexName="idx_policies_role_operation_resource_type">
             <column name="role" />
             <column name="operation" />
-            <column name="resource" />
+            <column name="resource_type" />
         </createIndex>
         <createIndex tableName="policies" indexName="idx_policies_operation">
             <column name="operation" />
         </createIndex>
-        <createIndex tableName="policies" indexName="idx_policies_resource">
-            <column name="resource" />
+        <createIndex tableName="policies" indexName="idx_policies_resource_type">
+            <column name="resource_type" />
         </createIndex>
 
     </changeSet>

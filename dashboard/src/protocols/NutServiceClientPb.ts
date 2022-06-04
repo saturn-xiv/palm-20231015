@@ -620,26 +620,26 @@ export class PolicyClient {
   methodDescriptorApply = new grpcWeb.MethodDescriptor(
     '/palm.plugins.nut.v1.Policy/Apply',
     grpcWeb.MethodType.UNARY,
-    nut_pb.PolicyIndexResponse.Item,
+    nut_pb.PolicyPermission,
     google_protobuf_empty_pb.Empty,
-    (request: nut_pb.PolicyIndexResponse.Item) => {
+    (request: nut_pb.PolicyPermission) => {
       return request.serializeBinary();
     },
     google_protobuf_empty_pb.Empty.deserializeBinary
   );
 
   apply(
-    request: nut_pb.PolicyIndexResponse.Item,
+    request: nut_pb.PolicyPermission,
     metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
 
   apply(
-    request: nut_pb.PolicyIndexResponse.Item,
+    request: nut_pb.PolicyPermission,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
   apply(
-    request: nut_pb.PolicyIndexResponse.Item,
+    request: nut_pb.PolicyPermission,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void) {
@@ -663,26 +663,26 @@ export class PolicyClient {
   methodDescriptorDeny = new grpcWeb.MethodDescriptor(
     '/palm.plugins.nut.v1.Policy/Deny',
     grpcWeb.MethodType.UNARY,
-    nut_pb.PolicyIndexResponse.Item,
+    nut_pb.PolicyPermission,
     google_protobuf_empty_pb.Empty,
-    (request: nut_pb.PolicyIndexResponse.Item) => {
+    (request: nut_pb.PolicyPermission) => {
       return request.serializeBinary();
     },
     google_protobuf_empty_pb.Empty.deserializeBinary
   );
 
   deny(
-    request: nut_pb.PolicyIndexResponse.Item,
+    request: nut_pb.PolicyPermission,
     metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
 
   deny(
-    request: nut_pb.PolicyIndexResponse.Item,
+    request: nut_pb.PolicyPermission,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
   deny(
-    request: nut_pb.PolicyIndexResponse.Item,
+    request: nut_pb.PolicyPermission,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void) {
@@ -830,6 +830,49 @@ export class PolicyClient {
     request,
     metadata || {},
     this.methodDescriptorUnassociate);
+  }
+
+  methodDescriptorOptions = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Policy/Options',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    nut_pb.PolicyOptionsResponse,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    nut_pb.PolicyOptionsResponse.deserializeBinary
+  );
+
+  options(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.PolicyOptionsResponse>;
+
+  options(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.PolicyOptionsResponse) => void): grpcWeb.ClientReadableStream<nut_pb.PolicyOptionsResponse>;
+
+  options(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.PolicyOptionsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Policy/Options',
+        request,
+        metadata || {},
+        this.methodDescriptorOptions,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Policy/Options',
+    request,
+    metadata || {},
+    this.methodDescriptorOptions);
   }
 
 }

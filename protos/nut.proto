@@ -120,8 +120,8 @@ message UserGetProfileResponse {
 // ----------------------------------------------------------------------------
 
 service Policy {
-  rpc Apply(PolicyIndexResponse.Item) returns (google.protobuf.Empty) {}
-  rpc Deny(PolicyIndexResponse.Item) returns (google.protobuf.Empty) {}
+  rpc Apply(PolicyPermission) returns (google.protobuf.Empty) {}
+  rpc Deny(PolicyPermission) returns (google.protobuf.Empty) {}
 
   rpc Index(Pager) returns (PolicyIndexResponse) {}
 
@@ -129,13 +129,32 @@ service Policy {
       returns (google.protobuf.Empty) {}
   rpc Unassociate(PolicyUserRoleUnassociateRequest)
       returns (google.protobuf.Empty) {}
+
+  rpc Options(google.protobuf.Empty) returns (PolicyOptionsResponse) {}
+}
+
+message PolicyPermission {
+  string role = 1;
+  string operation = 2;
+  string resource_type = 3;
+  optional int32 resource_id = 4;
+}
+
+message PolicyOptionsResponse {
+  message Item {
+    string code = 1;
+    string label = 2;
+  }
+  repeated Item roles = 1;
+  repeated Item operations = 2;
+  repeated Item resources = 3;
 }
 
 message PolicyIndexResponse {
   message Item {
-    string role = 1;
-    string operation = 2;
-    string resource_type = 3;
+    PolicyOptionsResponse.Item role = 1;
+    PolicyOptionsResponse.Item operation = 2;
+    PolicyOptionsResponse.Item resource_type = 3;
     optional int32 resource_id = 4;
   }
   repeated Item items = 1;

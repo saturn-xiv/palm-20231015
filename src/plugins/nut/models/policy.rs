@@ -15,53 +15,81 @@ pub struct Item {
     pub id: i32,
     pub role: String,
     pub operation: String,
-    pub resource: String,
+    pub resource_type: String,
+    pub resource_id: Option<i32>,
     pub created_at: NaiveDateTime,
-}
-
-impl Item {
-    const SEP: &'static str = "://";
-    pub fn resource(ty: &str, id: Option<i32>) -> String {
-        match id {
-            Some(id) => format!("{}{}{}", ty, Self::SEP, id),
-            None => ty.to_string(),
-        }
-    }
-    pub fn get_resource(&self) -> Result<(String, Option<i32>)> {
-        match self.resource.find(Self::SEP) {
-            Some(x) => {
-                let ty = &self.resource[0..x];
-                let id: i32 = (&self.resource[(x + Self::SEP.len())..]).parse()?;
-                Ok((ty.to_string(), Some(id)))
-            }
-            None => Ok((self.resource.clone(), None)),
-        }
-    }
 }
 
 impl fmt::Display for Item {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}@{}://{}", self.role, self.resource, self.operation)
+        write!(
+            f,
+            "{}@{}://{}/{}",
+            self.role,
+            self.resource_type,
+            match self.resource_id {
+                Some(i) => i.to_string(),
+                None => "".to_string(),
+            },
+            self.operation
+        )
     }
 }
 
 pub trait Dao {
+    fn operations(&mut self) -> Result<Vec<String>>;
+    fn roles(&mut self) -> Result<Vec<String>>;
+    fn resources(&mut self) -> Result<Vec<String>>;
     fn by_role(&mut self, role: &str) -> Result<Vec<Item>>;
     fn by_operation(&mut self, operation: &str) -> Result<Vec<Item>>;
-    fn by_resource(&mut self, resource: &str) -> Result<Vec<Item>>;
+    fn by_resource_type(&mut self, resource_type: &str) -> Result<Vec<Item>>;
+    fn by_resource(&mut self, resource_type: &str, resource_id: Option<i32>) -> Result<Vec<Item>>;
     fn index(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>>;
     fn count(&mut self) -> Result<i64>;
-    fn create(&mut self, role: &str, operation: &str, resource: &str) -> Result<()>;
-    fn get(&mut self, role: &str, operation: &str, resource: &str) -> Result<Item>;
+    fn create(
+        &mut self,
+        role: &str,
+        operation: &str,
+        resource_type: &str,
+        resource_id: Option<i32>,
+    ) -> Result<()>;
+    fn get(
+        &mut self,
+        role: &str,
+        operation: &str,
+        resource_type: &str,
+        resource_id: Option<i32>,
+    ) -> Result<Item>;
     fn destroy(&mut self, id: i32) -> Result<()>;
 }
 
 impl Dao for Connection {
+    fn resources(&mut self) -> Result<Vec<String>> {
+        Ok(policies::dsl::policies
+            .select(policies::dsl::role)
+            .distinct()
+            .order(policies::dsl::role.asc())
+            .load::<String>(self)?)
+    }
+    fn roles(&mut self) -> Result<Vec<String>> {
+        Ok(policies::dsl::policies
+            .select(policies::dsl::role)
+            .distinct()
+            .order(policies::dsl::role.asc())
+            .load::<String>(self)?)
+    }
+    fn operations(&mut self) -> Result<Vec<String>> {
+        Ok(policies::dsl::policies
+            .select(policies::dsl::operation)
+            .distinct()
+            .order(policies::dsl::operation.asc())
+            .load::<String>(self)?)
+    }
     fn by_role(&mut self, role: &str) -> Result<Vec<Item>> {
         let items = policies::dsl::policies
             .filter(policies::dsl::role.eq(role))
             .order((
-                policies::dsl::resource.asc(),
+                policies::dsl::resource_type.asc(),
                 policies::dsl::operation.asc(),
             ))
             .load::<Item>(self)?;
@@ -70,22 +98,38 @@ impl Dao for Connection {
     fn by_operation(&mut self, operation: &str) -> Result<Vec<Item>> {
         let items = policies::dsl::policies
             .filter(policies::dsl::operation.eq(operation))
-            .order(policies::dsl::resource.asc())
+            .order(policies::dsl::resource_type.asc())
             .load::<Item>(self)?;
         Ok(items)
     }
-    fn by_resource(&mut self, resource: &str) -> Result<Vec<Item>> {
+    fn by_resource_type(&mut self, resource_type: &str) -> Result<Vec<Item>> {
         let items = policies::dsl::policies
-            .filter(policies::dsl::resource.eq(resource))
+            .filter(policies::dsl::resource_type.eq(resource_type))
             .order(policies::dsl::operation.asc())
             .load::<Item>(self)?;
+        Ok(items)
+    }
+    fn by_resource(&mut self, resource_type: &str, resource_id: Option<i32>) -> Result<Vec<Item>> {
+        let items = match resource_id {
+            Some(it) => policies::dsl::policies
+                .filter(policies::dsl::resource_type.eq(resource_type))
+                .filter(policies::dsl::resource_id.eq(it))
+                .order(policies::dsl::operation.asc())
+                .load::<Item>(self)?,
+            None => policies::dsl::policies
+                .filter(policies::dsl::resource_type.eq(resource_type))
+                .filter(policies::dsl::resource_id.is_null())
+                .order(policies::dsl::operation.asc())
+                .load::<Item>(self)?,
+        };
         Ok(items)
     }
     fn index(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>> {
         let items = policies::dsl::policies
             .order((
-                policies::dsl::resource.asc(),
+                policies::dsl::role.asc(),
                 policies::dsl::operation.asc(),
+                policies::dsl::resource_type.asc(),
             ))
             .offset(offset)
             .limit(limit)
@@ -96,7 +140,13 @@ impl Dao for Connection {
         let cnt: i64 = policies::dsl::policies.count().get_result(self)?;
         Ok(cnt)
     }
-    fn create(&mut self, role: &str, operation: &str, resource: &str) -> Result<()> {
+    fn create(
+        &mut self,
+        role: &str,
+        operation: &str,
+        resource_type: &str,
+        resource_id: Option<i32>,
+    ) -> Result<()> {
         for it in [ADMINISTRATOR, ROOT] {
             if role == it {
                 return Err(Box::new(HttpError(
@@ -109,16 +159,24 @@ impl Dao for Connection {
             .values((
                 policies::dsl::role.eq(role),
                 policies::dsl::operation.eq(operation),
-                policies::dsl::resource.eq(resource),
+                policies::dsl::resource_type.eq(resource_type),
+                policies::dsl::resource_id.eq(resource_id),
             ))
             .execute(self)?;
         Ok(())
     }
-    fn get(&mut self, role: &str, operation: &str, resource: &str) -> Result<Item> {
+    fn get(
+        &mut self,
+        role: &str,
+        operation: &str,
+        resource_type: &str,
+        resource_id: Option<i32>,
+    ) -> Result<Item> {
         let it = policies::dsl::policies
             .filter(policies::dsl::role.eq(role))
             .filter(policies::dsl::operation.eq(operation))
-            .filter(policies::dsl::resource.eq(resource))
+            .filter(policies::dsl::resource_type.eq(resource_type))
+            .filter(policies::dsl::resource_id.eq(resource_id))
             .first::<Item>(self)?;
         Ok(it)
     }
