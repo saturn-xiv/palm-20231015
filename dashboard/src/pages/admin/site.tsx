@@ -1,26 +1,45 @@
+import { useEffect, useState } from 'react';
 import { FormattedMessage, useIntl } from 'umi';
-import { Col, Row, Tabs } from 'antd';
+import { Col, Row, message, Tabs } from 'antd';
+import { Empty } from 'google-protobuf/google/protobuf/empty_pb';
 
 import Layout from '@/layouts/dashboard';
-import CopyrightForm from '@/components/nut/admin/site/settings/Copyright';
-import InfoForm from '@/components/nut/admin/site/settings/Info';
-import AuthorForm from '@/components/nut/admin/site/settings/Author';
+import CopyrightForm from '@/components/nut/admin/site/profile/Copyright';
+import InfoForm from '@/components/nut/admin/site/profile/Info';
+import AuthorForm from '@/components/nut/admin/site/profile/Author';
 import KeywordsForm from '@/components/nut/admin/site/seo/Keywords';
-import LogoForm from '@/components/nut/admin/site/settings/Logo';
+import LogoForm from '@/components/nut/admin/site/profile/Logo';
 import GoogleForm from '@/components/nut/admin/site/seo/Google';
 import BaiduForm from '@/components/nut/admin/site/seo/Baidu';
 import RssPanel from '@/components/nut/admin/site/seo/Rss';
 import SitemapPanel from '@/components/nut/admin/site/seo/Sitemap';
 import BingForm from '@/components/nut/admin/site/seo/Bing';
-import SmtpForm from '@/components/nut/admin/site/settings/Smtp';
+import SmtpForm from '@/components/nut/admin/site/profile/Smtp';
 import PostgreSqlPanel from '@/components/nut/admin/site/status/PostgreSql';
-import TokenPanel from '@/components/nut/admin/site/settings/Token';
+import TokenPanel from '@/components/nut/admin/site/profile/Token';
 import RedisPanel from '@/components/nut/admin/site/status/Redis';
 import SystemPanel from '@/components/nut/admin/site/status/System';
 import RabbitMqPanel from '@/components/nut/admin/site/status/RabbitMq';
+import { SiteClient } from '@/protocols/NutServiceClientPb';
+import { GRPC_HOST, grpc_metadata } from '@/request';
+import { SiteLayoutResponse } from '@/protocols/nut_pb';
 
 const Widget = () => {
   const intl = useIntl();
+  const [layout, setLayout] = useState<SiteLayoutResponse>(
+    new SiteLayoutResponse(),
+  );
+
+  useEffect(() => {
+    const client = new SiteClient(GRPC_HOST);
+    client.layout(new Empty(), grpc_metadata(), (err, response) => {
+      if (err) {
+        message.error(err.message);
+      } else {
+        setLayout(response);
+      }
+    });
+  }, [setLayout]);
   return (
     <Layout title={intl.formatMessage({ id: 'nut.admin.site.title' })}>
       <Col span={24}>
@@ -45,21 +64,28 @@ const Widget = () => {
             </Row>
           </Tabs.TabPane>
           <Tabs.TabPane
-            key="settings"
-            tab={<FormattedMessage id="nut.admin.site.settings" />}
+            key="profile"
+            tab={<FormattedMessage id="nut.admin.site.profile" />}
           >
             <Row gutter={[16, 16]}>
               <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
-                <InfoForm />
+                <InfoForm
+                  title={layout.getTitle()}
+                  subhead={layout.getSubhead()}
+                  description={layout.getDescription()}
+                />
               </Col>
               <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
-                <AuthorForm />
+                <AuthorForm
+                  email={layout.getAuthor()?.getEmail() || ''}
+                  name={layout.getAuthor()?.getName() || ''}
+                />
               </Col>
               <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
-                <CopyrightForm />
+                <CopyrightForm value={layout.getCopyright()} />
               </Col>
               <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
-                <LogoForm />
+                <LogoForm url={layout.getLogo()} />
               </Col>
               <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
                 <SmtpForm />
@@ -81,7 +107,7 @@ const Widget = () => {
                 <RssPanel />
               </Col>
               <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
-                <KeywordsForm />
+                <KeywordsForm items={layout.getKeywordsList()} />
               </Col>
               <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
                 <GoogleForm />

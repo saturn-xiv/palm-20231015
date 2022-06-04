@@ -1,7 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { message, Button, Tag, Card, Input, Tooltip } from 'antd';
 import { useIntl, FormattedMessage } from 'umi';
-import { Empty } from 'google-protobuf/google/protobuf/empty_pb';
 import { PlusOutlined } from '@ant-design/icons';
 import type { InputRef } from 'antd';
 
@@ -9,25 +8,19 @@ import { SiteSetKeywordsRequest } from '@/protocols/nut_pb';
 import { SiteClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
 
-const Widget = () => {
+interface IProps {
+  items: string[];
+}
+
+const Widget = (props: IProps) => {
   const intl = useIntl();
-  const [items, setItems] = useState<string[]>([]);
+  const [items, setItems] = useState<string[]>(props.items);
   const [inputVisible, setInputVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [editInputIndex, setEditInputIndex] = useState(-1);
   const [editInputValue, setEditInputValue] = useState('');
   const inputRef = useRef<InputRef>(null);
   const editInputRef = useRef<InputRef>(null);
-  useEffect(() => {
-    const client = new SiteClient(GRPC_HOST);
-    client.layout(new Empty(), grpc_metadata(), (err, response) => {
-      if (err) {
-        message.error(err.message);
-      } else {
-        setItems(response.getKeywordsList());
-      }
-    });
-  }, [setItems]);
 
   const handleClose = (removedTag: string) => {
     const newTags = items.filter((it) => it !== removedTag);

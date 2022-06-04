@@ -20,5 +20,13 @@ export default {
   'form.fields.avatar.label': 'Avatar',
   'form.fields.time-zone.label': 'Time zone',
   'form.fields.code.label': 'Code',
+  'form.fields.url.label': 'URL',
+  'form.fields.value.label': 'Value',
+  'form.fields.title.label': 'Title',
+  'form.fields.subhead.label': 'Subhead',
+  'form.fields.logo.label': 'Logo',
+  'form.fields.description.label': 'Description',
+  'form.fields.port.label': 'Port',
+  'form.fields.host.label': 'Host',
   'form.submit.successed': 'Successed!',
 };
