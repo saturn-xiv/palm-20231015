@@ -226,6 +226,7 @@ service Site {
   rpc SetLogo(SiteSetLogoRequest) returns (google.protobuf.Empty) {}
 
   rpc IndexUser(Pager) returns (SiteUserIndexResponse) {}
+  rpc ShowUser(IdRequest) returns (SiteUserIndexResponse.Item) {}
   rpc DisableUser(IdRequest) returns (google.protobuf.Empty) {}
   rpc EnableUser(IdRequest) returns (google.protobuf.Empty) {}
   rpc LockUser(IdRequest) returns (google.protobuf.Empty) {}

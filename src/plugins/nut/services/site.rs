@@ -322,6 +322,22 @@ impl v1::site_server::Site for Service {
             None => Err(Status::invalid_argument("user cann't be empty")),
         }
     }
+    async fn show_user(
+        &self,
+        req: Request<v1::IdRequest>,
+    ) -> GrpcResult<v1::site_user_index_response::Item> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.is_administrator(db))?;
+        let req = req.into_inner();
+
+        let user = try_grpc!(UserDao::by_id(db, req.id))?;
+        let it = v1::site_user_index_response::Item::new(&user);
+        Ok(Response::new(it))
+    }
     async fn index_user(&self, req: Request<v1::Pager>) -> GrpcResult<v1::SiteUserIndexResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
@@ -337,26 +353,7 @@ impl v1::site_server::Site for Service {
         Ok(Response::new(v1::SiteUserIndexResponse {
             items: items
                 .iter()
-                .map(|x| v1::site_user_index_response::Item {
-                    id: x.id,
-                    uid: x.uid.clone(),
-                    email: x.email.clone(),
-                    real_name: x.real_name.clone(),
-                    nick_name: x.nick_name.clone(),
-                    provider_type: x.provider_type.clone(),
-                    updated_at: Some(to_timestamp!(x.updated_at)),
-                    sign_in_count: x.sign_in_count,
-                    lang: x.lang.clone(),
-                    time_zone: x.time_zone.clone(),
-                    avatar: x.avatar.clone(),
-                    last_sign_in_at: x.last_sign_in_at.map(|x| to_timestamp!(x)),
-                    last_sign_in_ip: x.last_sign_in_ip.clone(),
-                    current_sign_in_at: x.current_sign_in_at.map(|x| to_timestamp!(x)),
-                    current_sign_in_ip: x.current_sign_in_ip.clone(),
-                    confirmed_at: x.confirmed_at.map(|x| to_timestamp!(x)),
-                    locked_at: x.locked_at.map(|x| to_timestamp!(x)),
-                    deleted_at: x.deleted_at.map(|x| to_timestamp!(x)),
-                })
+                .map(v1::site_user_index_response::Item::new)
                 .collect(),
             pagination: Some(v1::Pagination::new(&req, total)),
         }))
@@ -813,5 +810,29 @@ impl v1::site_status_response::Redis {
             info: version,
             items,
         })
+    }
+}
+impl v1::site_user_index_response::Item {
+    pub fn new(x: &User) -> Self {
+        Self {
+            id: x.id,
+            uid: x.uid.clone(),
+            email: x.email.clone(),
+            real_name: x.real_name.clone(),
+            nick_name: x.nick_name.clone(),
+            provider_type: x.provider_type.clone(),
+            updated_at: Some(to_timestamp!(x.updated_at)),
+            sign_in_count: x.sign_in_count,
+            lang: x.lang.clone(),
+            time_zone: x.time_zone.clone(),
+            avatar: x.avatar.clone(),
+            last_sign_in_at: x.last_sign_in_at.map(|x| to_timestamp!(x)),
+            last_sign_in_ip: x.last_sign_in_ip.clone(),
+            current_sign_in_at: x.current_sign_in_at.map(|x| to_timestamp!(x)),
+            current_sign_in_ip: x.current_sign_in_ip.clone(),
+            confirmed_at: x.confirmed_at.map(|x| to_timestamp!(x)),
+            locked_at: x.locked_at.map(|x| to_timestamp!(x)),
+            deleted_at: x.deleted_at.map(|x| to_timestamp!(x)),
+        }
     }
 }
