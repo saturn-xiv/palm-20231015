@@ -1540,6 +1540,49 @@ export class SiteClient {
     this.methodDescriptorIndexUser);
   }
 
+  methodDescriptorShowUser = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Site/ShowUser',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.IdRequest,
+    nut_pb.SiteUserIndexResponse.Item,
+    (request: nut_pb.IdRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.SiteUserIndexResponse.Item.deserializeBinary
+  );
+
+  showUser(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.SiteUserIndexResponse.Item>;
+
+  showUser(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.SiteUserIndexResponse.Item) => void): grpcWeb.ClientReadableStream<nut_pb.SiteUserIndexResponse.Item>;
+
+  showUser(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.SiteUserIndexResponse.Item) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Site/ShowUser',
+        request,
+        metadata || {},
+        this.methodDescriptorShowUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Site/ShowUser',
+    request,
+    metadata || {},
+    this.methodDescriptorShowUser);
+  }
+
   methodDescriptorDisableUser = new grpcWeb.MethodDescriptor(
     '/palm.plugins.nut.v1.Site/DisableUser',
     grpcWeb.MethodType.UNARY,

@@ -31,6 +31,7 @@ use super::super::{
         log::{Dao as LogDao, Level},
         role::{Dao as RoleDao, ADMINISTRATOR, ROOT},
         user::{Dao as UserDao, Item as User},
+        Operation,
     },
     tasks::email::Task as EmailTask,
     v1,
@@ -331,8 +332,10 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        try_grpc!(user.is_administrator(db))?;
         let req = req.into_inner();
+        if user.id != req.id {
+            try_grpc!(user.can::<User>(db, &Operation::Read, None))?;
+        }
 
         let user = try_grpc!(UserDao::by_id(db, req.id))?;
         let it = v1::site_user_index_response::Item::new(&user);
@@ -344,7 +347,7 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        try_grpc!(user.is_administrator(db))?;
+        try_grpc!(user.can::<User>(db, &Operation::Read, None))?;
         let req = req.into_inner();
 
         let total = try_grpc!(UserDao::count(db))?;

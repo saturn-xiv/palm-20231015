@@ -1426,7 +1426,9 @@ proto.palm.plugins.nut.v1.Pagination.toObject = function(includeInstance, msg) {
   var f, obj = {
     page: jspb.Message.getFieldWithDefault(msg, 1, 0),
     size: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    total: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    total: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    hasNext: jspb.Message.getBooleanFieldWithDefault(msg, 11, false),
+    hasPrevious: jspb.Message.getBooleanFieldWithDefault(msg, 12, false)
   };
 
   if (includeInstance) {
@@ -1475,6 +1477,14 @@ proto.palm.plugins.nut.v1.Pagination.deserializeBinaryFromReader = function(msg,
       var value = /** @type {number} */ (reader.readInt64());
       msg.setTotal(value);
       break;
+    case 11:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setHasNext(value);
+      break;
+    case 12:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setHasPrevious(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1522,6 +1532,20 @@ proto.palm.plugins.nut.v1.Pagination.serializeBinaryToWriter = function(message,
   if (f !== 0) {
     writer.writeInt64(
       3,
+      f
+    );
+  }
+  f = message.getHasNext();
+  if (f) {
+    writer.writeBool(
+      11,
+      f
+    );
+  }
+  f = message.getHasPrevious();
+  if (f) {
+    writer.writeBool(
+      12,
       f
     );
   }
@@ -1579,6 +1603,42 @@ proto.palm.plugins.nut.v1.Pagination.prototype.getTotal = function() {
  */
 proto.palm.plugins.nut.v1.Pagination.prototype.setTotal = function(value) {
   return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional bool has_next = 11;
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.Pagination.prototype.getHasNext = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 11, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.palm.plugins.nut.v1.Pagination} returns this
+ */
+proto.palm.plugins.nut.v1.Pagination.prototype.setHasNext = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 11, value);
+};
+
+
+/**
+ * optional bool has_previous = 12;
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.Pagination.prototype.getHasPrevious = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 12, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.palm.plugins.nut.v1.Pagination} returns this
+ */
+proto.palm.plugins.nut.v1.Pagination.prototype.setHasPrevious = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 12, value);
 };
 
 

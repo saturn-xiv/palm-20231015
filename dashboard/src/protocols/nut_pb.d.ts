@@ -37,6 +37,12 @@ export class Pagination extends jspb.Message {
   getTotal(): number;
   setTotal(value: number): Pagination;
 
+  getHasNext(): boolean;
+  setHasNext(value: boolean): Pagination;
+
+  getHasPrevious(): boolean;
+  setHasPrevious(value: boolean): Pagination;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Pagination.AsObject;
   static toObject(includeInstance: boolean, msg: Pagination): Pagination.AsObject;
@@ -50,6 +56,8 @@ export namespace Pagination {
     page: number,
     size: number,
     total: number,
+    hasNext: boolean,
+    hasPrevious: boolean,
   }
 }
 

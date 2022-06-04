@@ -26,7 +26,13 @@ impl super::v1::Pagination {
     pub fn new(pager: &super::v1::Pager, total: i64) -> Self {
         let page = pager.page(total);
         let size = pager.size();
-        Self { page, size, total }
+        Self {
+            page,
+            size,
+            total,
+            has_next: (page * size < total),
+            has_previous: (page > 1),
+        }
     }
 }
 
