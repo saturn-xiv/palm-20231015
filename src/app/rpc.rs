@@ -86,7 +86,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
 
 pub async fn tcp(cfg: &Config) -> Result<()> {
     let addr = cfg.rpc.addr();
-    info!("run on {addr}");
+    info!("run on tcp://{addr}");
     let pgsql = cfg.postgresql.open()?;
     let redis = cfg.redis.open()?;
     let aes = Arc::new(Aes::new(&cfg.secrets.0)?);
@@ -95,6 +95,14 @@ pub async fn tcp(cfg: &Config) -> Result<()> {
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
 
     Server::builder()
+        .add_service(nut::v1::user_server::UserServer::new(
+            nut::services::user::Service {
+                pgsql: pgsql.clone(),
+                jwt: jwt.clone(),
+                hmac: hmac.clone(),
+                rabbitmq: rabbitmq.clone(),
+            },
+        ))
         .add_service(nut::v1::site_server::SiteServer::new(
             nut::services::site::Service {
                 pgsql,
