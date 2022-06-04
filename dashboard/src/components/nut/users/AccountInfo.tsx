@@ -21,12 +21,6 @@ interface IFormData {
   timeZone: string;
 }
 
-interface IFormRequest {
-  realName: string;
-  lang: string;
-  avatar: string;
-  timeZone: string;
-}
 const Widget = () => {
   const intl = useIntl();
   const formRef = useRef<ProFormInstance>();

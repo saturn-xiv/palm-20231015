@@ -15,11 +15,6 @@ interface IFormData {
   passwordConfirmation: string;
 }
 
-interface IFormRequest {
-  newPassword: string;
-  currentPassword: string;
-}
-
 const Widget = () => {
   const intl = useIntl();
   const formRef = useRef<ProFormInstance>();
