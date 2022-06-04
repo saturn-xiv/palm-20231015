@@ -2,16 +2,22 @@ import { IApplicationState } from './app';
 import { IPermission } from './models/useAuthModel';
 
 export default function (initialState: IApplicationState) {
-  const { currentUser } = initialState;
+  const { layout } = initialState;
 
   return {
-    isAdministrator: currentUser?.isAdministrator,
+    isAdministrator: (): boolean => {
+      if (layout.currentUser?.isAdministrator) {
+        return true;
+      }
+      return false;
+    },
     can: (it: IPermission): boolean => {
-      if (currentUser) {
-        if (currentUser.isAdministrator) {
+      if (layout.currentUser) {
+        if (layout.currentUser.isAdministrator) {
           return true;
         }
-        for (var x of currentUser.permissions) {
+
+        for (var x of layout.currentUser.permissions) {
           if (
             x.operation === it.operation &&
             x.resourceType === it.resourceType &&

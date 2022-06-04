@@ -395,6 +395,9 @@ impl v1::site_server::Site for Service {
         let user = try_grpc!(ss.current_user(db, jwt))?;
         try_grpc!(user.is_administrator(db))?;
         let req = req.into_inner();
+        if RoleDao::is(db, req.id, ROOT).unwrap_or(false) {
+            return Err(Status::permission_denied(ROOT));
+        }
         try_grpc!(UserDao::enable(db, req.id, false))?;
         Ok(Response::new(()))
     }
@@ -407,6 +410,9 @@ impl v1::site_server::Site for Service {
         let user = try_grpc!(ss.current_user(db, jwt))?;
         try_grpc!(user.is_administrator(db))?;
         let req = req.into_inner();
+        if RoleDao::is(db, req.id, ROOT).unwrap_or(false) {
+            return Err(Status::permission_denied(ROOT));
+        }
         try_grpc!(UserDao::enable(db, req.id, true))?;
         Ok(Response::new(()))
     }
@@ -419,6 +425,9 @@ impl v1::site_server::Site for Service {
         let user = try_grpc!(ss.current_user(db, jwt))?;
         try_grpc!(user.is_administrator(db))?;
         let req = req.into_inner();
+        if RoleDao::is(db, req.id, ROOT).unwrap_or(false) {
+            return Err(Status::permission_denied(ROOT));
+        }
         try_grpc!(UserDao::lock(db, req.id, true))?;
         Ok(Response::new(()))
     }
@@ -430,7 +439,11 @@ impl v1::site_server::Site for Service {
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
         try_grpc!(user.is_administrator(db))?;
+
         let req = req.into_inner();
+        if RoleDao::is(db, req.id, ROOT).unwrap_or(false) {
+            return Err(Status::permission_denied(ROOT));
+        }
         try_grpc!(UserDao::lock(db, req.id, false))?;
         Ok(Response::new(()))
     }
@@ -442,6 +455,9 @@ impl v1::site_server::Site for Service {
         let user = try_grpc!(ss.current_user(db, jwt))?;
         try_grpc!(user.is_administrator(db))?;
         let req = req.into_inner();
+        if RoleDao::is(db, req.id, ROOT).unwrap_or(false) {
+            return Err(Status::permission_denied(ROOT));
+        }
         try_grpc!(UserDao::confirm(db, req.id))?;
         Ok(Response::new(()))
     }
