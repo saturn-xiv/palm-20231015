@@ -13,4 +13,9 @@ export default {
   'nut.admin.users.disable.confirm': 'Are you sure to disable user {name}?',
   'nut.admin.leave-words.title': 'Leave words',
   'nut.admin.site.title': 'Web site',
+  'nut.admin.site.settings': 'Settings',
+  'nut.admin.site.seo': 'Seo',
+  'nut.admin.site.status': 'Status',
+  'nut.admin.site.rss.title': 'Rss',
+  'nut.admin.site.sitemap.title': 'Sitemap',
 };
