@@ -36,7 +36,7 @@ service User {
   rpc Refresh(google.protobuf.Duration) returns (UserSignInResponse) {}
   rpc Logs(Pager) returns (UserLogsResponse) {}
   rpc SetProfile(UserSetProfileRequest) returns (google.protobuf.Empty) {}
-  rpc GetProfile(google.protobuf.Empty) returns (UserGetProfileResponse) {}
+  rpc GetProfile(google.protobuf.Empty) returns (SiteUserIndexResponse.Item) {}
   rpc ChangePassword(UserChangePasswordRequest)
       returns (google.protobuf.Empty) {}
   rpc SignOut(google.protobuf.Empty) returns (google.protobuf.Empty) {}

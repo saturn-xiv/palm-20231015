@@ -440,22 +440,18 @@ impl v1::user_server::User for Service {
         }
         Ok(Response::new(()))
     }
-    async fn get_profile(&self, req: Request<()>) -> GrpcResult<v1::UserGetProfileResponse> {
+    async fn get_profile(
+        &self,
+        req: Request<()>,
+    ) -> GrpcResult<v1::site_user_index_response::Item> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        Ok(Response::new(v1::UserGetProfileResponse {
-            real_name: user.real_name.clone(),
-            nick_name: user.nick_name.clone(),
-            email: user.email.clone(),
-            avatar: user.avatar.clone(),
-            lang: user.lang.clone(),
-            time_zone: user.time_zone,
-            wechat: "".to_string(),
-            phone: "".to_string(),
-        }))
+        Ok(Response::new(v1::site_user_index_response::Item::new(
+            &user,
+        )))
     }
     async fn change_password(&self, req: Request<v1::UserChangePasswordRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
