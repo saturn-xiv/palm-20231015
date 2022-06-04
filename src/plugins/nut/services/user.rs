@@ -31,28 +31,6 @@ pub struct Service {
     pub rabbitmq: Arc<RabbitMq>,
 }
 
-impl v1::UserSignInResponse {
-    pub fn new(user: &User, db: &mut Db, jwt: &Jwt, ttl: Duration) -> Result<Self> {
-        let mut policies = Vec::new();
-        for x in user.policies(db)?.iter() {
-            let it = v1::policy_index_response::Item::new(x)?;
-            policies.push(it);
-        }
-
-        let it = Self {
-            time_zone: user.time_zone.clone(),
-            lang: user.lang.clone(),
-            real_name: user.real_name.clone(),
-            avatar: user.avatar.clone(),
-            token: user.token(jwt, ttl)?,
-            is_administrator: user.is_administrator(db).is_ok(),
-            policies,
-        };
-
-        Ok(it)
-    }
-}
-
 impl v1::UserQueryRequest {
     pub fn user(&self, db: &mut Db) -> Result<User> {
         if let Some(ref id) = self.id {
@@ -106,14 +84,12 @@ impl v1::user_server::User for Service {
                 Ok(())
             }))?;
 
-            let it = try_grpc!(v1::UserSignInResponse::new(
-                &user,
-                db,
+            let token = try_grpc!(user.token(
                 jwt,
                 req.ttl
                     .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds))
             ))?;
-            return Ok(Response::new(it));
+            return Ok(Response::new(v1::UserSignInResponse { token }));
         }
 
         Err(Status::permission_denied("can't sign in"))
@@ -347,13 +323,8 @@ impl v1::user_server::User for Service {
         let user = try_grpc!(ss.current_user(db, jwt))?;
         let req = req.into_inner();
 
-        let it = try_grpc!(v1::UserSignInResponse::new(
-            &user,
-            db,
-            jwt,
-            Duration::seconds(req.seconds)
-        ))?;
-        Ok(Response::new(it))
+        let token = try_grpc!(user.token(jwt, Duration::seconds(req.seconds)))?;
+        Ok(Response::new(v1::UserSignInResponse { token }))
     }
     async fn logs(&self, req: Request<v1::Pager>) -> GrpcResult<v1::UserLogsResponse> {
         let ss = Session::new(&req);
@@ -440,19 +411,7 @@ impl v1::user_server::User for Service {
         }
         Ok(Response::new(()))
     }
-    async fn get_profile(
-        &self,
-        req: Request<()>,
-    ) -> GrpcResult<v1::site_user_index_response::Item> {
-        let ss = Session::new(&req);
-        let mut db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref_mut();
-        let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
-        Ok(Response::new(v1::site_user_index_response::Item::new(
-            &user,
-        )))
-    }
+
     async fn change_password(&self, req: Request<v1::UserChangePasswordRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;

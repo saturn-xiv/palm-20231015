@@ -58,7 +58,12 @@ impl v1::SiteSetCopyrightRequest {
     pub const KEY: &'static str = "site.copyright";
 }
 impl v1::SiteLayoutResponse {
-    pub fn new(db: &mut PostgreSqlConnection, aes: &Aes, lang: &str) -> Self {
+    pub fn new(
+        db: &mut PostgreSqlConnection,
+        user: &Option<User>,
+        aes: &Aes,
+        lang: &str,
+    ) -> Result<Self> {
         let keywords: Vec<String> =
             SettingDao::get(db, aes, &v1::SiteSetKeywordsRequest::KEY.to_string(), None)
                 .unwrap_or_default();
@@ -85,7 +90,25 @@ impl v1::SiteLayoutResponse {
         .unwrap_or_default();
         let logo: String = SettingDao::get(db, aes, &v1::SiteSetLogoRequest::KEY.to_string(), None)
             .unwrap_or_else(|_| "/favicon.png".to_string());
-        Self {
+
+        let user = match user {
+            Some(ref x) => {
+                let mut policies = Vec::new();
+                for x in x.policies(db)?.iter() {
+                    let it = v1::policy_index_response::Item::new(x)?;
+                    policies.push(it);
+                }
+                let it = v1::site_layout_response::CurrentUser {
+                    payload: Some(v1::site_user_index_response::Item::new(x)),
+                    is_administrator: x.is_administrator(db).is_ok(),
+                    policies,
+                };
+                Some(it)
+            }
+            None => None,
+        };
+
+        Ok(Self {
             title: I18n::t(db, lang, v1::SiteSetInfoRequest::TITLE, &None::<String>),
             subhead: I18n::t(db, lang, v1::SiteSetInfoRequest::SUBHEAD, &None::<String>),
             description: I18n::t(
@@ -102,7 +125,8 @@ impl v1::SiteLayoutResponse {
                 email: author_email,
                 name: author_name,
             }),
-        }
+            current_user: user,
+        })
     }
 }
 
@@ -241,10 +265,11 @@ impl v1::site_server::Site for Service {
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
         let aes = self.aes.deref();
+        let jwt = self.jwt.deref();
+        let user = ss.current_user(db, jwt).ok();
 
-        Ok(Response::new(v1::SiteLayoutResponse::new(
-            db, aes, &ss.lang,
-        )))
+        let it = try_grpc!(v1::SiteLayoutResponse::new(db, &user, aes, &ss.lang))?;
+        Ok(Response::new(it))
     }
 
     async fn install(&self, req: Request<v1::SiteInstallRequest>) -> GrpcResult<()> {

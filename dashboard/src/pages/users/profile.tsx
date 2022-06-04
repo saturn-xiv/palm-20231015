@@ -8,7 +8,7 @@ import Layout from '@/layouts/dashboard';
 
 const Widget = () => {
   const intl = useIntl();
-  // () => <FormattedMessage id="nut.users.profile.title" />
+
   return (
     <Layout title={intl.formatMessage({ id: 'nut.users.profile.title' })}>
       <Col span={22} offset={1}>

@@ -7,7 +7,7 @@ import { Empty } from 'google-protobuf/google/protobuf/empty_pb';
 
 import { RULE_NAME } from '@/components/forms';
 import { UserSetProfileRequest } from '@/protocols/nut_pb';
-import { UserClient } from '@/protocols/NutServiceClientPb';
+import { SiteClient, UserClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
 import { all_time_zones } from '@/components/date';
 import { setLocale } from '@/i18n';
@@ -30,16 +30,18 @@ const Widget = () => {
       name="user.profile"
       formRef={formRef}
       request={async () => {
-        const client = new UserClient(GRPC_HOST);
-        const response = await client.getProfile(new Empty(), grpc_metadata());
-        return {
-          email: response.getEmail(),
-          nickName: response.getNickName(),
-          realName: response.getRealName(),
-          lang: response.getLang(),
-          avatar: response.getAvatar(),
-          timeZone: response.getTimeZone(),
+        const client = new SiteClient(GRPC_HOST);
+        const response = await client.layout(new Empty(), grpc_metadata());
+        const user = response.getCurrentUser()?.getPayload();
+        const it: IFormData = {
+          email: user?.getEmail() || '',
+          nickName: user?.getNickName() || '',
+          realName: user?.getRealName() || '',
+          lang: user?.getLang() || '',
+          avatar: user?.getAvatar() || '',
+          timeZone: user?.getTimeZone() || '',
         };
+        return it;
       }}
       onFinish={async (values: IFormData) => {
         const client = new UserClient(GRPC_HOST);

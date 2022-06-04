@@ -79,6 +79,24 @@ export namespace IdRequest {
   }
 }
 
+export class UserSignInResponse extends jspb.Message {
+  getToken(): string;
+  setToken(value: string): UserSignInResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UserSignInResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: UserSignInResponse): UserSignInResponse.AsObject;
+  static serializeBinaryToWriter(message: UserSignInResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UserSignInResponse;
+  static deserializeBinaryFromReader(message: UserSignInResponse, reader: jspb.BinaryReader): UserSignInResponse;
+}
+
+export namespace UserSignInResponse {
+  export type AsObject = {
+    token: string,
+  }
+}
+
 export class UserChangePasswordRequest extends jspb.Message {
   getCurrentPassword(): string;
   setCurrentPassword(value: string): UserChangePasswordRequest;
@@ -304,50 +322,6 @@ export namespace UserSignInRequest {
     query?: UserQueryRequest.AsObject,
     password: string,
     ttl?: google_protobuf_duration_pb.Duration.AsObject,
-  }
-}
-
-export class UserSignInResponse extends jspb.Message {
-  getToken(): string;
-  setToken(value: string): UserSignInResponse;
-
-  getIsAdministrator(): boolean;
-  setIsAdministrator(value: boolean): UserSignInResponse;
-
-  getPoliciesList(): Array<PolicyIndexResponse.Item>;
-  setPoliciesList(value: Array<PolicyIndexResponse.Item>): UserSignInResponse;
-  clearPoliciesList(): UserSignInResponse;
-  addPolicies(value?: PolicyIndexResponse.Item, index?: number): PolicyIndexResponse.Item;
-
-  getLang(): string;
-  setLang(value: string): UserSignInResponse;
-
-  getTimeZone(): string;
-  setTimeZone(value: string): UserSignInResponse;
-
-  getAvatar(): string;
-  setAvatar(value: string): UserSignInResponse;
-
-  getRealName(): string;
-  setRealName(value: string): UserSignInResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): UserSignInResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: UserSignInResponse): UserSignInResponse.AsObject;
-  static serializeBinaryToWriter(message: UserSignInResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): UserSignInResponse;
-  static deserializeBinaryFromReader(message: UserSignInResponse, reader: jspb.BinaryReader): UserSignInResponse;
-}
-
-export namespace UserSignInResponse {
-  export type AsObject = {
-    token: string,
-    isAdministrator: boolean,
-    policiesList: Array<PolicyIndexResponse.Item.AsObject>,
-    lang: string,
-    timeZone: string,
-    avatar: string,
-    realName: string,
   }
 }
 
@@ -935,6 +909,11 @@ export class SiteLayoutResponse extends jspb.Message {
   clearLanguagesList(): SiteLayoutResponse;
   addLanguages(value: string, index?: number): SiteLayoutResponse;
 
+  getCurrentUser(): SiteLayoutResponse.CurrentUser | undefined;
+  setCurrentUser(value?: SiteLayoutResponse.CurrentUser): SiteLayoutResponse;
+  hasCurrentUser(): boolean;
+  clearCurrentUser(): SiteLayoutResponse;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SiteLayoutResponse.AsObject;
   static toObject(includeInstance: boolean, msg: SiteLayoutResponse): SiteLayoutResponse.AsObject;
@@ -953,6 +932,7 @@ export namespace SiteLayoutResponse {
     copyright: string,
     logo: string,
     languagesList: Array<string>,
+    currentUser?: SiteLayoutResponse.CurrentUser.AsObject,
   }
 
   export class Author extends jspb.Message {
@@ -977,6 +957,42 @@ export namespace SiteLayoutResponse {
     }
   }
 
+
+  export class CurrentUser extends jspb.Message {
+    getPayload(): SiteUserIndexResponse.Item | undefined;
+    setPayload(value?: SiteUserIndexResponse.Item): CurrentUser;
+    hasPayload(): boolean;
+    clearPayload(): CurrentUser;
+
+    getIsAdministrator(): boolean;
+    setIsAdministrator(value: boolean): CurrentUser;
+
+    getPoliciesList(): Array<PolicyIndexResponse.Item>;
+    setPoliciesList(value: Array<PolicyIndexResponse.Item>): CurrentUser;
+    clearPoliciesList(): CurrentUser;
+    addPolicies(value?: PolicyIndexResponse.Item, index?: number): PolicyIndexResponse.Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CurrentUser.AsObject;
+    static toObject(includeInstance: boolean, msg: CurrentUser): CurrentUser.AsObject;
+    static serializeBinaryToWriter(message: CurrentUser, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CurrentUser;
+    static deserializeBinaryFromReader(message: CurrentUser, reader: jspb.BinaryReader): CurrentUser;
+  }
+
+  export namespace CurrentUser {
+    export type AsObject = {
+      payload?: SiteUserIndexResponse.Item.AsObject,
+      isAdministrator: boolean,
+      policiesList: Array<PolicyIndexResponse.Item.AsObject>,
+    }
+  }
+
+
+  export enum CurrentUserCase { 
+    _CURRENT_USER_NOT_SET = 0,
+    CURRENT_USER = 11,
+  }
 }
 
 export class SiteNewLeaveWordRequest extends jspb.Message {

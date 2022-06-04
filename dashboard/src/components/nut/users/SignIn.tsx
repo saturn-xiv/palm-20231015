@@ -15,7 +15,6 @@ import {
 import { UserSignInRequest } from '@/protocols/nut_pb';
 import { UserClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
-import { setLocale } from '@/i18n';
 
 interface IFormData {
   account: string;
@@ -55,7 +54,6 @@ const Widget = () => {
             message.error(err.message);
           } else {
             setToken(response.getToken());
-            setLocale(response.getLang());
             refresh();
           }
         });

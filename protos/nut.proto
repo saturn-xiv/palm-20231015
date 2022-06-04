@@ -36,12 +36,12 @@ service User {
   rpc Refresh(google.protobuf.Duration) returns (UserSignInResponse) {}
   rpc Logs(Pager) returns (UserLogsResponse) {}
   rpc SetProfile(UserSetProfileRequest) returns (google.protobuf.Empty) {}
-  rpc GetProfile(google.protobuf.Empty) returns (SiteUserIndexResponse.Item) {}
   rpc ChangePassword(UserChangePasswordRequest)
       returns (google.protobuf.Empty) {}
   rpc SignOut(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
+message UserSignInResponse { string token = 1; }
 message UserChangePasswordRequest {
   string current_password = 1;
   string new_password = 2;
@@ -85,16 +85,6 @@ message UserSignInRequest {
   UserQueryRequest query = 1;
   string password = 2;
   google.protobuf.Duration ttl = 11;
-}
-
-message UserSignInResponse {
-  string token = 1;
-  bool is_administrator = 2;
-  repeated PolicyIndexResponse.Item policies = 3;
-  string lang = 11;
-  string time_zone = 12;
-  string avatar = 13;
-  string real_name = 14;
 }
 
 message UserSignUpRequest {
@@ -274,6 +264,11 @@ message SiteLayoutResponse {
     string name = 1;
     string email = 2;
   }
+  message CurrentUser {
+    SiteUserIndexResponse.Item payload = 1;
+    bool is_administrator = 2;
+    repeated PolicyIndexResponse.Item policies = 3;
+  }
   string title = 1;
   string subhead = 2;
   repeated string keywords = 3;
@@ -282,6 +277,7 @@ message SiteLayoutResponse {
   string copyright = 6;
   string logo = 7;
   repeated string languages = 9;
+  optional CurrentUser current_user = 11;
 }
 
 message SiteNewLeaveWordRequest { string body = 1; }

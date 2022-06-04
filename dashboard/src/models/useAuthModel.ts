@@ -55,12 +55,6 @@ export interface IPermission {
 
 export interface ICurrentUser {
   uid: string;
-  realName: string;
-  avatar: string;
-  lang: string;
-  timeZone: string;
-  isAdministrator: boolean;
-  permissions: IPermission[];
 }
 
 export const to_current_user = (response: UserSignInResponse): ICurrentUser => {
@@ -68,18 +62,6 @@ export const to_current_user = (response: UserSignInResponse): ICurrentUser => {
 
   return {
     uid: decoded.aud,
-    realName: response.getRealName(),
-    avatar: response.getAvatar(),
-    lang: response.getLang(),
-    timeZone: response.getTimeZone(),
-    isAdministrator: response.getIsAdministrator(),
-    permissions: response.getPoliciesList().map((x) => {
-      return {
-        operation: x.getOperation(),
-        resourceType: x.getResourceType(),
-        resourceId: x.getResourceId(),
-      };
-    }),
   };
 };
 
@@ -104,7 +86,6 @@ export default function useAuthModel() {
         message.error(err.message);
       } else {
         setToken(response.getToken());
-        setLocale(response.getLang());
         setCurrentUser(to_current_user(response));
       }
     });

@@ -510,49 +510,6 @@ export class UserClient {
     this.methodDescriptorSetProfile);
   }
 
-  methodDescriptorGetProfile = new grpcWeb.MethodDescriptor(
-    '/palm.plugins.nut.v1.User/GetProfile',
-    grpcWeb.MethodType.UNARY,
-    google_protobuf_empty_pb.Empty,
-    nut_pb.SiteUserIndexResponse.Item,
-    (request: google_protobuf_empty_pb.Empty) => {
-      return request.serializeBinary();
-    },
-    nut_pb.SiteUserIndexResponse.Item.deserializeBinary
-  );
-
-  getProfile(
-    request: google_protobuf_empty_pb.Empty,
-    metadata: grpcWeb.Metadata | null): Promise<nut_pb.SiteUserIndexResponse.Item>;
-
-  getProfile(
-    request: google_protobuf_empty_pb.Empty,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: nut_pb.SiteUserIndexResponse.Item) => void): grpcWeb.ClientReadableStream<nut_pb.SiteUserIndexResponse.Item>;
-
-  getProfile(
-    request: google_protobuf_empty_pb.Empty,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: nut_pb.SiteUserIndexResponse.Item) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/palm.plugins.nut.v1.User/GetProfile',
-        request,
-        metadata || {},
-        this.methodDescriptorGetProfile,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/palm.plugins.nut.v1.User/GetProfile',
-    request,
-    metadata || {},
-    this.methodDescriptorGetProfile);
-  }
-
   methodDescriptorChangePassword = new grpcWeb.MethodDescriptor(
     '/palm.plugins.nut.v1.User/ChangePassword',
     grpcWeb.MethodType.UNARY,
