@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::fs::read_to_string;
 use std::ops::{Deref, DerefMut};
 use std::process::Command;
@@ -31,6 +32,7 @@ use super::super::{
         role::{Dao as RoleDao, ADMINISTRATOR, ROOT},
         user::{Dao as UserDao, Item as User},
     },
+    tasks::email::Task as EmailTask,
     v1,
 };
 use super::Session;
@@ -484,8 +486,37 @@ impl v1::site_server::Site for Service {
             &v1::SmtpProfile::KEY.to_string(),
             None
         ))?;
-        let it = try_grpc!(v1::SmtpProfile::decode(&buf[..]))?;
+        let mut it = try_grpc!(v1::SmtpProfile::decode(&buf[..]))?;
+        it.password = "change-me".to_string();
         Ok(Response::new(it))
+    }
+
+    async fn test_smtp(&self, req: Request<v1::SiteSmtpTestRequst>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let aes = self.aes.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.is_administrator(db))?;
+        let req = req.into_inner();
+        let buf: Vec<u8> = try_grpc!(SettingDao::get(
+            db,
+            aes,
+            &v1::SmtpProfile::KEY.to_string(),
+            None
+        ))?;
+        let it = try_grpc!(v1::SmtpProfile::decode(&buf[..]))?;
+        let task = EmailTask {
+            subject: req.subject.clone(),
+            body: req.body.clone(),
+            to: req.to,
+            cc: Vec::new(),
+            bcc: Vec::new(),
+            files: HashMap::new(),
+        };
+        try_grpc!(task.send(&it.host, &it.user, &it.password))?;
+        Ok(Response::new(()))
     }
 
     async fn set_bing(&self, req: Request<v1::BingProfile>) -> GrpcResult<()> {

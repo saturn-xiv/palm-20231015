@@ -14,7 +14,7 @@ import BaiduForm from '@/components/nut/admin/site/seo/Baidu';
 import RssPanel from '@/components/nut/admin/site/seo/Rss';
 import SitemapPanel from '@/components/nut/admin/site/seo/Sitemap';
 import BingForm from '@/components/nut/admin/site/seo/Bing';
-import SmtpForm from '@/components/nut/admin/site/profile/Smtp';
+import SmtpForm from '@/components/nut/admin/site/profile/SmtpProfile';
 import PostgreSqlPanel from '@/components/nut/admin/site/status/PostgreSql';
 import TokenPanel from '@/components/nut/admin/site/profile/Token';
 import RedisPanel from '@/components/nut/admin/site/status/Redis';

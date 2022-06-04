@@ -20,7 +20,7 @@ const Widget = (props: IFormData) => {
   return (
     <Card title={intl.formatMessage({ id: 'nut.admin.site.profile.author' })}>
       <ProForm<IFormData>
-        name="site.info"
+        name="site.author"
         formRef={formRef}
         onFinish={async (values: IFormData) => {
           const client = new SiteClient(GRPC_HOST);

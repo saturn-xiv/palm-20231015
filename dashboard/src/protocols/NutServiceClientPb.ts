@@ -1884,6 +1884,49 @@ export class SiteClient {
     this.methodDescriptorGetSmtp);
   }
 
+  methodDescriptorTestSmtp = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Site/TestSmtp',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.SiteSmtpTestRequst,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.SiteSmtpTestRequst) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  testSmtp(
+    request: nut_pb.SiteSmtpTestRequst,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  testSmtp(
+    request: nut_pb.SiteSmtpTestRequst,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  testSmtp(
+    request: nut_pb.SiteSmtpTestRequst,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Site/TestSmtp',
+        request,
+        metadata || {},
+        this.methodDescriptorTestSmtp,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Site/TestSmtp',
+    request,
+    metadata || {},
+    this.methodDescriptorTestSmtp);
+  }
+
   methodDescriptorSetBing = new grpcWeb.MethodDescriptor(
     '/palm.plugins.nut.v1.Site/SetBing',
     grpcWeb.MethodType.UNARY,

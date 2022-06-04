@@ -18,6 +18,8 @@ export default {
   'nut.admin.site.profile.copyright': 'Copyright',
   'nut.admin.site.profile.info': 'Information',
   'nut.admin.site.profile.author': 'Author',
+  'nut.admin.site.profile.smtp': 'Smtp',
+  'nut.admin.site.profile.smtp.test': 'Send a demo email',
   'nut.admin.site.seo': 'SEO',
   'nut.admin.site.google.title': 'Google',
   'nut.admin.site.google.site-verify-id': 'Site verify id',

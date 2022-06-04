@@ -236,6 +236,7 @@ service Site {
 
   rpc SetSmtp(SmtpProfile) returns (google.protobuf.Empty) {}
   rpc GetSmtp(google.protobuf.Empty) returns (SmtpProfile) {}
+  rpc TestSmtp(SiteSmtpTestRequst) returns (google.protobuf.Empty) {}
   rpc SetBing(BingProfile) returns (google.protobuf.Empty) {}
   rpc GetBing(google.protobuf.Empty) returns (BingProfile) {}
   rpc SetGoogle(GoogleProfile) returns (google.protobuf.Empty) {}
@@ -248,6 +249,12 @@ service Site {
   rpc NewLeaveWord(SiteNewLeaveWordRequest) returns (google.protobuf.Empty) {}
   rpc IndexLeaveWord(Pager) returns (SiteIndexLeaveWordResponse) {}
   rpc DestroyLeaveWord(IdRequest) returns (google.protobuf.Empty) {}
+}
+
+message SiteSmtpTestRequst {
+  string to = 1;
+  string subject = 2;
+  string body = 3;
 }
 
 message SiteSetLogoRequest { string url = 1; }

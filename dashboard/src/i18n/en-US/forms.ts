@@ -24,6 +24,7 @@ export default {
   'form.fields.value.label': 'Value',
   'form.fields.title.label': 'Title',
   'form.fields.subhead.label': 'Subhead',
+  'form.fields.subject.label': 'Subject',
   'form.fields.logo.label': 'Logo',
   'form.fields.description.label': 'Description',
   'form.fields.port.label': 'Port',

@@ -788,6 +788,32 @@ export namespace SettingSetRequest {
   }
 }
 
+export class SiteSmtpTestRequst extends jspb.Message {
+  getTo(): string;
+  setTo(value: string): SiteSmtpTestRequst;
+
+  getSubject(): string;
+  setSubject(value: string): SiteSmtpTestRequst;
+
+  getBody(): string;
+  setBody(value: string): SiteSmtpTestRequst;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SiteSmtpTestRequst.AsObject;
+  static toObject(includeInstance: boolean, msg: SiteSmtpTestRequst): SiteSmtpTestRequst.AsObject;
+  static serializeBinaryToWriter(message: SiteSmtpTestRequst, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SiteSmtpTestRequst;
+  static deserializeBinaryFromReader(message: SiteSmtpTestRequst, reader: jspb.BinaryReader): SiteSmtpTestRequst;
+}
+
+export namespace SiteSmtpTestRequst {
+  export type AsObject = {
+    to: string,
+    subject: string,
+    body: string,
+  }
+}
+
 export class SiteSetLogoRequest extends jspb.Message {
   getUrl(): string;
   setUrl(value: string): SiteSetLogoRequest;
