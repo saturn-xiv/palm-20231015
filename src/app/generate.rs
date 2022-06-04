@@ -9,31 +9,69 @@ use nix::unistd::{Gid, Uid};
 use super::super::{env::Config, Result, DESCRIPTION, NAME};
 
 #[derive(Template)]
-#[template(path = "nginx.conf", escape = "none")]
-struct NginxConf<'a> {
+#[template(path = "nginx/www.conf", escape = "none")]
+struct WwwNginxConf<'a> {
     name: &'a str,
     domain: &'a str,
     port: u16,
     ssl: bool,
 }
 
-pub fn nginx_conf(cfg: &Config, domain: &str, ssl: bool) -> Result<()> {
-    let tpl = NginxConf {
-        domain,
-        name: NAME,
-        port: cfg.http.port,
-        ssl,
+impl WwwNginxConf<'_> {
+    pub fn write<P: AsRef<Path>>(&self, file: P) -> Result<()> {
+        let file = file.as_ref();
+        info!("generate file {}", file.display());
+        let tpl = self.render()?;
+        let mut fd = fs::OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .mode(0o644)
+            .open(file)?;
+        fd.write_all(tpl.as_bytes())?;
+        Ok(())
     }
-    .render()?;
-
-    let file = Path::new("tmp").join("nginx.conf");
-    info!("generate file {}", file.display());
-    let mut fd = fs::OpenOptions::new()
-        .write(true)
-        .create_new(true)
-        .mode(0o644)
-        .open(file)?;
-    fd.write_all(tpl.as_bytes())?;
+}
+#[derive(Template)]
+#[template(path = "nginx/rpc.conf", escape = "none")]
+struct RpcNginxConf<'a> {
+    domain: &'a str,
+    port: u16,
+    ssl: bool,
+}
+impl RpcNginxConf<'_> {
+    pub fn write<P: AsRef<Path>>(&self, file: P) -> Result<()> {
+        let file = file.as_ref();
+        info!("generate file {}", file.display());
+        let tpl = self.render()?;
+        let mut fd = fs::OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .mode(0o644)
+            .open(file)?;
+        fd.write_all(tpl.as_bytes())?;
+        Ok(())
+    }
+}
+pub fn nginx_conf(cfg: &Config, domain: &str, ssl: bool) -> Result<()> {
+    {
+        let tpl = WwwNginxConf {
+            domain,
+            name: NAME,
+            port: cfg.http.port,
+            ssl,
+        };
+        let file = Path::new("nginx").join(format!("{}.conf", domain));
+        tpl.write(&file)?;
+    }
+    {
+        let tpl = RpcNginxConf {
+            domain,
+            port: cfg.http.port,
+            ssl,
+        };
+        let file = Path::new("nginx").join(format!("{}.conf", domain));
+        tpl.write(&file)?;
+    }
     info!("please copy it into /etc/nginx/sites-enable/ folder.");
     Ok(())
 }
