@@ -20,6 +20,7 @@ export default {
   'nut.admin.site.profile.author': 'Author',
   'nut.admin.site.profile.smtp': 'Smtp',
   'nut.admin.site.profile.smtp.test': 'Send a demo email',
+  'nut.admin.site.profile.token.title': 'Generate an administrator token',
   'nut.admin.site.seo': 'SEO',
   'nut.admin.site.google.title': 'Google',
   'nut.admin.site.google.site-verify-id': 'Site verify id',

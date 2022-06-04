@@ -90,7 +90,7 @@ const Widget = () => {
               <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
                 <SmtpForm />
               </Col>
-              <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
+              <Col span={22}>
                 <TokenPanel />
               </Col>
             </Row>

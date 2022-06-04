@@ -29,5 +29,6 @@ export default {
   'form.fields.description.label': 'Description',
   'form.fields.port.label': 'Port',
   'form.fields.host.label': 'Host',
+  'form.fields.due-day.label': 'Due day',
   'form.submit.successed': 'Successed!',
 };
