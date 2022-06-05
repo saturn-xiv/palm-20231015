@@ -48,6 +48,7 @@ impl v1::policy_options_response::Item {
 impl v1::policy_index_response::Item {
     pub fn new(db: &mut PostgreSqlConnection, lng: &str, it: &Policy) -> Self {
         Self {
+            id: it.id,
             role: Some(v1::policy_options_response::Item::role(db, lng, &it.role)),
             operation: Some(v1::policy_options_response::Item::operation(
                 db,
@@ -60,6 +61,7 @@ impl v1::policy_index_response::Item {
                 &it.resource_type,
             )),
             resource_id: it.resource_id,
+            created_at: Some(to_timestamp!(it.created_at)),
         }
     }
 }

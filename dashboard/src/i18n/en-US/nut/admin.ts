@@ -35,4 +35,5 @@ export default {
   'nut.admin.site.status': 'Status',
   'nut.admin.site.rss.title': 'Rss',
   'nut.admin.site.sitemap.title': 'Sitemap',
+  'nut.admin.policies.title': 'Policies',
 };

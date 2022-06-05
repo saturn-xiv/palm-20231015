@@ -7,4 +7,5 @@ export default {
   'menus./admin/leave-words': 'Leave words',
   'menus./admin/site': 'Web site',
   'menus./admin/locales': 'Locales',
+  'menus./admin/policies': 'Policies',
 };

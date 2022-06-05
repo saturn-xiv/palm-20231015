@@ -172,12 +172,20 @@ impl Dao for Connection {
         resource_type: &str,
         resource_id: Option<i32>,
     ) -> Result<Item> {
-        let it = policies::dsl::policies
-            .filter(policies::dsl::role.eq(role))
-            .filter(policies::dsl::operation.eq(operation))
-            .filter(policies::dsl::resource_type.eq(resource_type))
-            .filter(policies::dsl::resource_id.eq(resource_id))
-            .first::<Item>(self)?;
+        let it = match resource_id {
+            Some(id) => policies::dsl::policies
+                .filter(policies::dsl::role.eq(role))
+                .filter(policies::dsl::operation.eq(operation))
+                .filter(policies::dsl::resource_type.eq(resource_type))
+                .filter(policies::dsl::resource_id.eq(id))
+                .first::<Item>(self)?,
+            None => policies::dsl::policies
+                .filter(policies::dsl::role.eq(role))
+                .filter(policies::dsl::operation.eq(operation))
+                .filter(policies::dsl::resource_type.eq(resource_type))
+                .filter(policies::dsl::resource_id.is_null())
+                .first::<Item>(self)?,
+        };
         Ok(it)
     }
     fn destroy(&mut self, id: i32) -> Result<()> {

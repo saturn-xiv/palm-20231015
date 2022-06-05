@@ -152,10 +152,12 @@ message PolicyOptionsResponse {
 
 message PolicyIndexResponse {
   message Item {
-    PolicyOptionsResponse.Item role = 1;
-    PolicyOptionsResponse.Item operation = 2;
-    PolicyOptionsResponse.Item resource_type = 3;
-    optional int32 resource_id = 4;
+    int32 id = 1;
+    PolicyOptionsResponse.Item role = 2;
+    PolicyOptionsResponse.Item operation = 3;
+    PolicyOptionsResponse.Item resource_type = 4;
+    optional int32 resource_id = 5;
+    google.protobuf.Timestamp created_at = 9;
   }
   repeated Item items = 1;
   Pagination pagination = 9;

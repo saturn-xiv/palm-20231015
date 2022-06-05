@@ -30,5 +30,9 @@ export default {
   'form.fields.port.label': 'Port',
   'form.fields.host.label': 'Host',
   'form.fields.due-day.label': 'Due day',
+  'form.fields.role.label': 'Role',
+  'form.fields.operation.label': 'Operation',
+  'form.fields.resource.label': 'Resource',
+  'form.fields.type.label': 'Type',
   'form.submit.successed': 'Successed!',
 };

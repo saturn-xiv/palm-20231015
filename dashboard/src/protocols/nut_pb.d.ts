@@ -569,6 +569,9 @@ export namespace PolicyIndexResponse {
   }
 
   export class Item extends jspb.Message {
+    getId(): number;
+    setId(value: number): Item;
+
     getRole(): PolicyOptionsResponse.Item | undefined;
     setRole(value?: PolicyOptionsResponse.Item): Item;
     hasRole(): boolean;
@@ -589,6 +592,11 @@ export namespace PolicyIndexResponse {
     hasResourceId(): boolean;
     clearResourceId(): Item;
 
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): Item;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Item.AsObject;
     static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
@@ -599,15 +607,17 @@ export namespace PolicyIndexResponse {
 
   export namespace Item {
     export type AsObject = {
+      id: number,
       role?: PolicyOptionsResponse.Item.AsObject,
       operation?: PolicyOptionsResponse.Item.AsObject,
       resourceType?: PolicyOptionsResponse.Item.AsObject,
       resourceId?: number,
+      createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     }
 
     export enum ResourceIdCase { 
       _RESOURCE_ID_NOT_SET = 0,
-      RESOURCE_ID = 4,
+      RESOURCE_ID = 5,
     }
   }
 
