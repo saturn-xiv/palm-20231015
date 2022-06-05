@@ -40,7 +40,7 @@ impl v1::policy_options_response::Item {
     pub fn new(db: &mut PostgreSqlConnection, lang: &str, ns: &str, code: &str) -> Self {
         Self {
             code: code.to_string(),
-            label: I18n::t(db, lang, &format!("{}://{}", ns, code), &None::<String>),
+            label: I18n::t(db, lang, &format!("{}.{}", ns, code), &None::<String>),
         }
     }
 }
