@@ -12,6 +12,7 @@ import LockUser from './Lock';
 import EnableUser from './Enable';
 import ConfirmUser from './Confirm';
 import SetUserPassword from './SetPassword';
+import RolesForm from './Roles';
 
 export interface IItem {
   id: number;
@@ -75,7 +76,7 @@ const Widget = () => {
           title: intl.formatMessage({
             id: 'nut.admin.users.columns.current-sign-in',
           }),
-          key: 'zone',
+          key: 'current-sign-in',
           render: (_, it) => (
             <>
               {it.currentSignInAt ? (
@@ -124,6 +125,7 @@ const Widget = () => {
                     ref.current?.reload();
                   }}
                 />
+                <RolesForm item={it} />
               </>
             ),
         },

@@ -129,10 +129,14 @@ service Policy {
       returns (google.protobuf.Empty) {}
   rpc Unassociate(PolicyUserRoleUnassociateRequest)
       returns (google.protobuf.Empty) {}
+  rpc Bind(PolicyUserRoleBindRequest) returns (google.protobuf.Empty) {}
+  rpc RolesByUser(IdRequest) returns (PolicyRolesByUserResponse) {}
 
   rpc Options(google.protobuf.Empty) returns (PolicyOptionsResponse) {}
 }
-
+message PolicyRolesByUserResponse {
+  repeated PolicyOptionsResponse.Item items = 1;
+}
 message PolicyPermission {
   string role = 1;
   string operation = 2;
@@ -163,6 +167,12 @@ message PolicyIndexResponse {
   Pagination pagination = 9;
 }
 
+message PolicyUserRoleBindRequest {
+  int32 user = 1;
+  repeated string roles = 2;
+  google.protobuf.Timestamp not_before = 11;
+  google.protobuf.Timestamp expired_at = 12;
+}
 message PolicyUserRoleAssociateRequest {
   int32 user = 1;
   string role = 2;

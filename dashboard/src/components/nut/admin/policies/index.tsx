@@ -49,7 +49,7 @@ const Widget = () => {
         },
         {
           title: intl.formatMessage({ id: 'form.fields.operation.label' }),
-          key: 'operation',
+          key: 'operation.code',
           render: (_, it) => (
             <>
               {it.operation.label}({it.operation.code})

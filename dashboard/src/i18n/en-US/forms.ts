@@ -31,8 +31,11 @@ export default {
   'form.fields.host.label': 'Host',
   'form.fields.due-day.label': 'Due day',
   'form.fields.role.label': 'Role',
+  'form.fields.roles.label': 'Roles',
   'form.fields.operation.label': 'Operation',
   'form.fields.resource.label': 'Resource',
+  'form.fields.validate-date-range.label': 'Validate date range',
   'form.fields.type.label': 'Type',
+  'form.fields.user.label': 'User',
   'form.submit.successed': 'Successed!',
 };

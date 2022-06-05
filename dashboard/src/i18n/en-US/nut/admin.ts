@@ -5,6 +5,7 @@ export default {
   'nut.admin.users.columns.zone': 'Zone',
   'nut.admin.users.columns.current-sign-in': 'Current sign in',
   'nut.admin.users.set-password': 'Set password',
+  'nut.admin.users.roles': 'Roles',
   'nut.admin.users.lock.confirm': 'Are you sure to lock user {name}?',
   'nut.admin.users.unlock.confirm': 'Are you sure to unlock user {name}?',
   'nut.admin.users.verify-email.confirm':

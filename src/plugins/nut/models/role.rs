@@ -20,6 +20,7 @@ pub trait Dao {
         expired_at: &NaiveDate,
     ) -> Result<()>;
     fn unassociate(&mut self, user: i32, role: &str) -> Result<()>;
+    fn clear(&mut self, user: i32) -> Result<()>;
 }
 
 impl Dao for Connection {
@@ -101,6 +102,11 @@ impl Dao for Connection {
                 .filter(users_roles::dsl::role.eq(role)),
         )
         .execute(self)?;
+        Ok(())
+    }
+    fn clear(&mut self, user: i32) -> Result<()> {
+        delete(users_roles::dsl::users_roles.filter(users_roles::dsl::user_id.eq(user)))
+            .execute(self)?;
         Ok(())
     }
 }
