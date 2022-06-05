@@ -9409,7 +9409,7 @@ proto.palm.plugins.nut.v1.SiteLayoutResponse.CurrentUser.toObject = function(inc
     payload: (f = msg.getPayload()) && proto.palm.plugins.nut.v1.SiteUserIndexResponse.Item.toObject(includeInstance, f),
     isAdministrator: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
     policiesList: jspb.Message.toObjectList(msg.getPoliciesList(),
-    proto.palm.plugins.nut.v1.PolicyIndexResponse.Item.toObject, includeInstance)
+    proto.palm.plugins.nut.v1.PolicyPermission.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -9456,8 +9456,8 @@ proto.palm.plugins.nut.v1.SiteLayoutResponse.CurrentUser.deserializeBinaryFromRe
       msg.setIsAdministrator(value);
       break;
     case 3:
-      var value = new proto.palm.plugins.nut.v1.PolicyIndexResponse.Item;
-      reader.readMessage(value,proto.palm.plugins.nut.v1.PolicyIndexResponse.Item.deserializeBinaryFromReader);
+      var value = new proto.palm.plugins.nut.v1.PolicyPermission;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.PolicyPermission.deserializeBinaryFromReader);
       msg.addPolicies(value);
       break;
     default:
@@ -9509,7 +9509,7 @@ proto.palm.plugins.nut.v1.SiteLayoutResponse.CurrentUser.serializeBinaryToWriter
     writer.writeRepeatedMessage(
       3,
       f,
-      proto.palm.plugins.nut.v1.PolicyIndexResponse.Item.serializeBinaryToWriter
+      proto.palm.plugins.nut.v1.PolicyPermission.serializeBinaryToWriter
     );
   }
 };
@@ -9571,17 +9571,17 @@ proto.palm.plugins.nut.v1.SiteLayoutResponse.CurrentUser.prototype.setIsAdminist
 
 
 /**
- * repeated PolicyIndexResponse.Item policies = 3;
- * @return {!Array<!proto.palm.plugins.nut.v1.PolicyIndexResponse.Item>}
+ * repeated PolicyPermission policies = 3;
+ * @return {!Array<!proto.palm.plugins.nut.v1.PolicyPermission>}
  */
 proto.palm.plugins.nut.v1.SiteLayoutResponse.CurrentUser.prototype.getPoliciesList = function() {
-  return /** @type{!Array<!proto.palm.plugins.nut.v1.PolicyIndexResponse.Item>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.palm.plugins.nut.v1.PolicyIndexResponse.Item, 3));
+  return /** @type{!Array<!proto.palm.plugins.nut.v1.PolicyPermission>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.palm.plugins.nut.v1.PolicyPermission, 3));
 };
 
 
 /**
- * @param {!Array<!proto.palm.plugins.nut.v1.PolicyIndexResponse.Item>} value
+ * @param {!Array<!proto.palm.plugins.nut.v1.PolicyPermission>} value
  * @return {!proto.palm.plugins.nut.v1.SiteLayoutResponse.CurrentUser} returns this
 */
 proto.palm.plugins.nut.v1.SiteLayoutResponse.CurrentUser.prototype.setPoliciesList = function(value) {
@@ -9590,12 +9590,12 @@ proto.palm.plugins.nut.v1.SiteLayoutResponse.CurrentUser.prototype.setPoliciesLi
 
 
 /**
- * @param {!proto.palm.plugins.nut.v1.PolicyIndexResponse.Item=} opt_value
+ * @param {!proto.palm.plugins.nut.v1.PolicyPermission=} opt_value
  * @param {number=} opt_index
- * @return {!proto.palm.plugins.nut.v1.PolicyIndexResponse.Item}
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermission}
  */
 proto.palm.plugins.nut.v1.SiteLayoutResponse.CurrentUser.prototype.addPolicies = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.palm.plugins.nut.v1.PolicyIndexResponse.Item, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.palm.plugins.nut.v1.PolicyPermission, opt_index);
 };
 
 

@@ -93,15 +93,19 @@ impl v1::SiteLayoutResponse {
 
         let user = match user {
             Some(ref x) => {
-                let mut policies = Vec::new();
-                for x in x.policies(db)?.iter() {
-                    let it = v1::policy_index_response::Item::new(db, lang, x);
-                    policies.push(it);
-                }
                 let it = v1::site_layout_response::CurrentUser {
                     payload: Some(v1::site_user_index_response::Item::new(x)),
                     is_administrator: x.is_administrator(db).is_ok(),
-                    policies,
+                    policies: x
+                        .policies(db)?
+                        .iter()
+                        .map(|x| v1::PolicyPermission {
+                            role: x.role.clone(),
+                            operation: x.operation.clone(),
+                            resource_type: x.resource_type.clone(),
+                            resource_id: x.resource_id,
+                        })
+                        .collect(),
                 };
                 Some(it)
             }

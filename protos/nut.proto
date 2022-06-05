@@ -298,7 +298,7 @@ message SiteLayoutResponse {
   message CurrentUser {
     SiteUserIndexResponse.Item payload = 1;
     bool is_administrator = 2;
-    repeated PolicyIndexResponse.Item policies = 3;
+    repeated PolicyPermission policies = 3;
   }
   string title = 1;
   string subhead = 2;

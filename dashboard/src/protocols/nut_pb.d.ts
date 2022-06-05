@@ -1131,10 +1131,10 @@ export namespace SiteLayoutResponse {
     getIsAdministrator(): boolean;
     setIsAdministrator(value: boolean): CurrentUser;
 
-    getPoliciesList(): Array<PolicyIndexResponse.Item>;
-    setPoliciesList(value: Array<PolicyIndexResponse.Item>): CurrentUser;
+    getPoliciesList(): Array<PolicyPermission>;
+    setPoliciesList(value: Array<PolicyPermission>): CurrentUser;
     clearPoliciesList(): CurrentUser;
-    addPolicies(value?: PolicyIndexResponse.Item, index?: number): PolicyIndexResponse.Item;
+    addPolicies(value?: PolicyPermission, index?: number): PolicyPermission;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): CurrentUser.AsObject;
@@ -1148,7 +1148,7 @@ export namespace SiteLayoutResponse {
     export type AsObject = {
       payload?: SiteUserIndexResponse.Item.AsObject,
       isAdministrator: boolean,
-      policiesList: Array<PolicyIndexResponse.Item.AsObject>,
+      policiesList: Array<PolicyPermission.AsObject>,
     }
   }
 
