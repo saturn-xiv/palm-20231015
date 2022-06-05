@@ -22,12 +22,15 @@ import SystemPanel from '@/components/nut/admin/site/status/System';
 import RabbitMqPanel from '@/components/nut/admin/site/status/RabbitMq';
 import { SiteClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
-import { SiteLayoutResponse } from '@/protocols/nut_pb';
+import { SiteLayoutResponse, SiteStatusResponse } from '@/protocols/nut_pb';
 
 const Widget = () => {
   const intl = useIntl();
   const [layout, setLayout] = useState<SiteLayoutResponse>(
     new SiteLayoutResponse(),
+  );
+  const [status, setStatus] = useState<SiteStatusResponse>(
+    new SiteStatusResponse(),
   );
 
   useEffect(() => {
@@ -39,7 +42,14 @@ const Widget = () => {
         setLayout(response);
       }
     });
-  }, [setLayout]);
+    client.status(new Empty(), grpc_metadata(), (err, response) => {
+      if (err) {
+        message.error(err.message);
+      } else {
+        setStatus(response);
+      }
+    });
+  }, [setLayout, setStatus]);
   return (
     <Layout title={intl.formatMessage({ id: 'nut.admin.site.title' })}>
       <Col span={24}>
@@ -53,7 +63,7 @@ const Widget = () => {
                 <SystemPanel />
               </Col>
               <Col sm={{ span: 22, offset: 1 }} md={{ span: 10 }}>
-                <PostgreSqlPanel />
+                <PostgreSqlPanel item={status.getPostgresql()} />
               </Col>
               <Col sm={{ span: 22, offset: 1 }} md={{ span: 10 }}>
                 <RedisPanel />
