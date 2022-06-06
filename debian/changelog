@@ -1,5 +1,5 @@
-palm (0.1.0) stable; urgency=medium
+palm (2022.06.05) stable; urgency=medium
 
-  * [29b1fb8] init project.
+  * [6501bf3] add the auth & rbac features.
 
- -- Jeremy Zheng <jitang.zheng@gmail.com>  Fri, 17 Dec 2021 22:39:09 -0800
+ -- Jeremy Zheng <jitang.zheng@gmail.com>  Sun, 05 Jun 2022 18:37:05 -0700
