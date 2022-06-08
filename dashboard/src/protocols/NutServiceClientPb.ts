@@ -746,6 +746,49 @@ export class PolicyClient {
     this.methodDescriptorIndex);
   }
 
+  methodDescriptorRolesByUser = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Policy/RolesByUser',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.IdRequest,
+    nut_pb.PolicyRolesByUserResponse,
+    (request: nut_pb.IdRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.PolicyRolesByUserResponse.deserializeBinary
+  );
+
+  rolesByUser(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.PolicyRolesByUserResponse>;
+
+  rolesByUser(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.PolicyRolesByUserResponse) => void): grpcWeb.ClientReadableStream<nut_pb.PolicyRolesByUserResponse>;
+
+  rolesByUser(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.PolicyRolesByUserResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Policy/RolesByUser',
+        request,
+        metadata || {},
+        this.methodDescriptorRolesByUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Policy/RolesByUser',
+    request,
+    metadata || {},
+    this.methodDescriptorRolesByUser);
+  }
+
   methodDescriptorAssociate = new grpcWeb.MethodDescriptor(
     '/palm.plugins.nut.v1.Policy/Associate',
     grpcWeb.MethodType.UNARY,
@@ -830,92 +873,6 @@ export class PolicyClient {
     request,
     metadata || {},
     this.methodDescriptorUnassociate);
-  }
-
-  methodDescriptorBind = new grpcWeb.MethodDescriptor(
-    '/palm.plugins.nut.v1.Policy/Bind',
-    grpcWeb.MethodType.UNARY,
-    nut_pb.PolicyUserRoleBindRequest,
-    google_protobuf_empty_pb.Empty,
-    (request: nut_pb.PolicyUserRoleBindRequest) => {
-      return request.serializeBinary();
-    },
-    google_protobuf_empty_pb.Empty.deserializeBinary
-  );
-
-  bind(
-    request: nut_pb.PolicyUserRoleBindRequest,
-    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
-
-  bind(
-    request: nut_pb.PolicyUserRoleBindRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
-
-  bind(
-    request: nut_pb.PolicyUserRoleBindRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/palm.plugins.nut.v1.Policy/Bind',
-        request,
-        metadata || {},
-        this.methodDescriptorBind,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/palm.plugins.nut.v1.Policy/Bind',
-    request,
-    metadata || {},
-    this.methodDescriptorBind);
-  }
-
-  methodDescriptorRolesByUser = new grpcWeb.MethodDescriptor(
-    '/palm.plugins.nut.v1.Policy/RolesByUser',
-    grpcWeb.MethodType.UNARY,
-    nut_pb.IdRequest,
-    nut_pb.PolicyRolesByUserResponse,
-    (request: nut_pb.IdRequest) => {
-      return request.serializeBinary();
-    },
-    nut_pb.PolicyRolesByUserResponse.deserializeBinary
-  );
-
-  rolesByUser(
-    request: nut_pb.IdRequest,
-    metadata: grpcWeb.Metadata | null): Promise<nut_pb.PolicyRolesByUserResponse>;
-
-  rolesByUser(
-    request: nut_pb.IdRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: nut_pb.PolicyRolesByUserResponse) => void): grpcWeb.ClientReadableStream<nut_pb.PolicyRolesByUserResponse>;
-
-  rolesByUser(
-    request: nut_pb.IdRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: nut_pb.PolicyRolesByUserResponse) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/palm.plugins.nut.v1.Policy/RolesByUser',
-        request,
-        metadata || {},
-        this.methodDescriptorRolesByUser,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/palm.plugins.nut.v1.Policy/RolesByUser',
-    request,
-    metadata || {},
-    this.methodDescriptorRolesByUser);
   }
 
   methodDescriptorOptions = new grpcWeb.MethodDescriptor(

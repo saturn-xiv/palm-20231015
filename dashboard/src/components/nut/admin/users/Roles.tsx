@@ -15,7 +15,7 @@ import dayjs from 'dayjs';
 
 import { PolicyClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
-import { PolicyUserRoleBindRequest, IdRequest } from '@/protocols/nut_pb';
+import { PolicyUserRoleAssociateRequest, IdRequest } from '@/protocols/nut_pb';
 import { IItem } from '.';
 
 interface IProps {
@@ -50,7 +50,7 @@ const Widget = ({ item }: IProps) => {
       onFinish={async (values: IFormData) => {
         const client = new PolicyClient(GRPC_HOST);
 
-        const request = new PolicyUserRoleBindRequest();
+        const request = new PolicyUserRoleAssociateRequest();
         request.setUser(item.id);
         request.setRolesList(values.roles);
         {
@@ -63,7 +63,7 @@ const Widget = ({ item }: IProps) => {
           exp.setSeconds(dayjs(values.dates[1]).unix());
           request.setExpiredAt(exp);
         }
-        client.bind(request, grpc_metadata(), (err) => {
+        client.associate(request, grpc_metadata(), (err) => {
           if (err) {
             message.error(err.message);
           } else {
