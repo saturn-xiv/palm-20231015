@@ -52,6 +52,27 @@ impl RpcNginxConf<'_> {
         Ok(())
     }
 }
+
+#[derive(Template)]
+#[template(path = "nginx/s3.conf", escape = "none")]
+struct S3NginxConf<'a> {
+    domain: &'a str,
+    ssl: bool,
+}
+impl S3NginxConf<'_> {
+    pub fn write<P: AsRef<Path>>(&self, file: P) -> Result<()> {
+        let file = file.as_ref();
+        info!("generate file {}", file.display());
+        let tpl = self.render()?;
+        let mut fd = fs::OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .mode(0o644)
+            .open(file)?;
+        fd.write_all(tpl.as_bytes())?;
+        Ok(())
+    }
+}
 pub fn nginx_conf(cfg: &Config, domain: &str, ssl: bool) -> Result<()> {
     {
         let tpl = WwwNginxConf {
@@ -60,7 +81,9 @@ pub fn nginx_conf(cfg: &Config, domain: &str, ssl: bool) -> Result<()> {
             port: cfg.http.port,
             ssl,
         };
-        let file = Path::new("nginx").join(format!("rpc.{}.conf", domain));
+        let file = Path::new("tmp")
+            .join("nginx")
+            .join(format!("www.{}.conf", domain));
         tpl.write(&file)?;
     }
     {
@@ -69,7 +92,12 @@ pub fn nginx_conf(cfg: &Config, domain: &str, ssl: bool) -> Result<()> {
             port: cfg.http.port,
             ssl,
         };
-        let file = Path::new("nginx").join(format!("www.{}.conf", domain));
+        let file = Path::new("nginx").join(format!("rpc.{}.conf", domain));
+        tpl.write(&file)?;
+    }
+    {
+        let tpl = S3NginxConf { domain, ssl };
+        let file = Path::new("nginx").join(format!("s3.{}.conf", domain));
         tpl.write(&file)?;
     }
     info!("please copy it into /etc/nginx/sites-enable/ folder.");
@@ -77,8 +105,8 @@ pub fn nginx_conf(cfg: &Config, domain: &str, ssl: bool) -> Result<()> {
 }
 
 #[derive(Template)]
-#[template(path = "systemd.conf", escape = "none")]
-struct SystemdConfig<'a> {
+#[template(path = "systemd/palm.conf", escape = "none")]
+struct PalmSystemdConfig<'a> {
     user: &'a str,
     group: &'a str,
     name: &'a str,
@@ -86,28 +114,72 @@ struct SystemdConfig<'a> {
     description: &'a str,
     args: &'a str,
 }
-
-pub fn systemd_conf(domain: &str) -> Result<()> {
-    let user = &Uid::current().to_string();
-    let group = &Gid::current().to_string();
-    for it in &["rpc", "web", "worker"] {
-        let file = Path::new("tmp").join(&format!("{}-{}.service", domain, it));
-        let tpl = SystemdConfig {
-            user,
-            group,
-            name: NAME,
-            domain,
-            description: DESCRIPTION,
-            args: it,
-        }
-        .render()?;
+impl PalmSystemdConfig<'_> {
+    pub fn write<P: AsRef<Path>>(&self, file: P) -> Result<()> {
+        let file = file.as_ref();
         info!("generate file {}", file.display());
+        let tpl = self.render()?;
         let mut fd = fs::OpenOptions::new()
             .write(true)
             .create_new(true)
             .mode(0o644)
             .open(file)?;
         fd.write_all(tpl.as_bytes())?;
+        Ok(())
+    }
+}
+
+#[derive(Template)]
+#[template(path = "systemd/s3.conf", escape = "none")]
+struct S3SystemdConfig<'a> {
+    user: &'a str,
+    group: &'a str,
+    domain: &'a str,
+}
+impl S3SystemdConfig<'_> {
+    pub fn write<P: AsRef<Path>>(&self, file: P) -> Result<()> {
+        let file = file.as_ref();
+        info!("generate file {}", file.display());
+        let tpl = self.render()?;
+        let mut fd = fs::OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .mode(0o644)
+            .open(file)?;
+        fd.write_all(tpl.as_bytes())?;
+        Ok(())
+    }
+}
+
+pub fn systemd_conf(domain: &str) -> Result<()> {
+    let user = &Uid::current().to_string();
+    let group = &Gid::current().to_string();
+    for it in &["rpc-tcp", "rpc-web", "api", "worker"] {
+        let file = Path::new("tmp")
+            .join("systemd")
+            .join(&format!("{}.{}.service", it, domain));
+
+        let tpl = PalmSystemdConfig {
+            user,
+            group,
+            name: NAME,
+            domain,
+            description: DESCRIPTION,
+            args: it,
+        };
+        tpl.write(&file)?;
+    }
+    {
+        let file = Path::new("tmp")
+            .join("systemd")
+            .join(&format!("s3.{}.service", domain));
+
+        let tpl = S3SystemdConfig {
+            user,
+            group,
+            domain,
+        };
+        tpl.write(&file)?;
     }
 
     info!("please copy them into /lib/systemd/system/ folder.");

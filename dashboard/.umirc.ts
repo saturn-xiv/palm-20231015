@@ -7,6 +7,7 @@ export default defineConfig({
   fastRefresh: {},
   hash: true,
   base: '/my/',
+  publicPath: '/my/',
   favicon: '/favicon.png',
   dynamicImport: {
     loading: '@/Loading',
