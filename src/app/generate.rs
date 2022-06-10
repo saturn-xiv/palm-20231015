@@ -60,7 +60,7 @@ pub fn nginx_conf(cfg: &Config, domain: &str, ssl: bool) -> Result<()> {
             port: cfg.http.port,
             ssl,
         };
-        let file = Path::new("nginx").join(format!("{}.conf", domain));
+        let file = Path::new("nginx").join(format!("rpc.{}.conf", domain));
         tpl.write(&file)?;
     }
     {
@@ -69,7 +69,7 @@ pub fn nginx_conf(cfg: &Config, domain: &str, ssl: bool) -> Result<()> {
             port: cfg.http.port,
             ssl,
         };
-        let file = Path::new("nginx").join(format!("{}.conf", domain));
+        let file = Path::new("nginx").join(format!("www.{}.conf", domain));
         tpl.write(&file)?;
     }
     info!("please copy it into /etc/nginx/sites-enable/ folder.");
@@ -90,12 +90,8 @@ struct SystemdConfig<'a> {
 pub fn systemd_conf(domain: &str) -> Result<()> {
     let user = &Uid::current().to_string();
     let group = &Gid::current().to_string();
-    for it in &["grpc", "web", "worker -q email"] {
-        let file = Path::new("tmp").join(&format!(
-            "{}-{}.service",
-            domain,
-            str::replace(it, ' ', "-")
-        ));
+    for it in &["rpc", "web", "worker"] {
+        let file = Path::new("tmp").join(&format!("{}-{}.service", domain, it));
         let tpl = SystemdConfig {
             user,
             group,
