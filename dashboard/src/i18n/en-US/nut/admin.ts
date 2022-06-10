@@ -5,7 +5,6 @@ export default {
   'nut.admin.users.columns.zone': 'Zone',
   'nut.admin.users.columns.current-sign-in': 'Current sign in',
   'nut.admin.users.set-password': 'Set password',
-  'nut.admin.users.roles': 'Roles',
   'nut.admin.users.lock.confirm': 'Are you sure to lock user {name}?',
   'nut.admin.users.unlock.confirm': 'Are you sure to unlock user {name}?',
   'nut.admin.users.verify-email.confirm':
@@ -13,6 +12,7 @@ export default {
   'nut.admin.users.enable.confirm': 'Are you sure to enable user {name}?',
   'nut.admin.users.disable.confirm': 'Are you sure to disable user {name}?',
   'nut.admin.leave-words.title': 'Leave words',
+  'nut.admin.roles.title': 'Roles',
   'nut.admin.site.title': 'Web site',
   'nut.admin.site.profile': 'Profile',
   'nut.admin.site.profile.logo': 'Logo',

@@ -9,13 +9,12 @@ use super::super::super::super::{
     i18n::I18n,
     jwt::Jwt,
     orm::postgresql::{Connection as PostgreSqlConnection, Pool as PostgreSqlPool},
-    Error, GrpcResult,
+    Error, GrpcResult, Result,
 };
 use super::super::{
     models::{
         log::{Dao as LogDao, Level},
         policy::{Dao as PolicyDao, Item as Policy},
-        role::Dao as RoleDao,
         user::Dao as UserDao,
     },
     v1,
@@ -36,6 +35,13 @@ impl v1::policy_options_response::Item {
     }
     pub fn operation(db: &mut PostgreSqlConnection, lang: &str, code: &str) -> Self {
         Self::new(db, lang, "operations", code)
+    }
+    pub fn user(db: &mut PostgreSqlConnection, user: i32) -> Result<Self> {
+        let user = UserDao::by_id(db, user)?;
+        Ok(Self {
+            code: user.nick_name.clone(),
+            label: user.real_name,
+        })
     }
     pub fn new(db: &mut PostgreSqlConnection, lang: &str, ns: &str, code: &str) -> Self {
         Self {
@@ -185,128 +191,6 @@ impl v1::policy_server::Policy for Service {
             items,
             pagination: Some(v1::Pagination::new(&req, total)),
         }))
-    }
-
-    async fn roles_by_user(
-        &self,
-        req: Request<v1::IdRequest>,
-    ) -> GrpcResult<v1::PolicyRolesByUserResponse> {
-        let ss = Session::new(&req);
-        let mut db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref_mut();
-        let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
-        try_grpc!(user.is_administrator(db))?;
-        let req = req.into_inner();
-
-        let items = try_grpc!(RoleDao::roles_by_user(db, req.id))?
-            .iter()
-            .map(|x| v1::policy_options_response::Item::role(db, &ss.lang, x))
-            .collect();
-        Ok(Response::new(v1::PolicyRolesByUserResponse { items }))
-    }
-
-    async fn bind(&self, req: Request<v1::PolicyUserRoleBindRequest>) -> GrpcResult<()> {
-        let ss = Session::new(&req);
-        let mut db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref_mut();
-        let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
-        try_grpc!(user.is_administrator(db))?;
-        let req = req.into_inner();
-        let manager = user.nick_name;
-
-        try_grpc!(db.transaction::<_, Error, _>(move |db| {
-            let user = UserDao::by_id(db, req.user)?;
-            user.available()?;
-            let nbf = to_datetime!(req.not_before.clone().unwrap_or_default());
-            let exp = to_datetime!(req.expired_at.clone().unwrap_or_default());
-            RoleDao::clear(db, user.id)?;
-            LogDao::add::<_, Policy>(
-                db,
-                user.id,
-                &Level::Info,
-                &ss.client_ip,
-                None,
-                &format!("clear all role binding by {}", manager),
-            )?;
-
-            for role in req.roles.iter() {
-                RoleDao::associate(db, user.id, role, &nbf.date(), &exp.date())?;
-                LogDao::add::<_, Policy>(
-                    db,
-                    user.id,
-                    &Level::Info,
-                    &ss.client_ip,
-                    None,
-                    &format!("associate {} to {} by {}", user, role, manager),
-                )?;
-            }
-
-            Ok(())
-        }))?;
-
-        Ok(Response::new(()))
-    }
-    async fn associate(&self, req: Request<v1::PolicyUserRoleAssociateRequest>) -> GrpcResult<()> {
-        let ss = Session::new(&req);
-        let mut db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref_mut();
-        let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
-        try_grpc!(user.is_administrator(db))?;
-        let req = req.into_inner();
-
-        try_grpc!(db.transaction::<_, Error, _>(move |db| {
-            let user = UserDao::by_id(db, req.user)?;
-            user.available()?;
-            let nbf = to_datetime!(req.not_before.clone().unwrap_or_default());
-            let exp = to_datetime!(req.expired_at.clone().unwrap_or_default());
-            RoleDao::associate(db, user.id, &req.role, &nbf.date(), &exp.date())?;
-            LogDao::add::<_, Policy>(
-                db,
-                user.id,
-                &Level::Info,
-                &ss.client_ip,
-                None,
-                &format!("associate {} to {}", user, req.role),
-            )?;
-
-            Ok(())
-        }))?;
-
-        Ok(Response::new(()))
-    }
-
-    async fn unassociate(
-        &self,
-        req: Request<v1::PolicyUserRoleUnassociateRequest>,
-    ) -> GrpcResult<()> {
-        let ss = Session::new(&req);
-        let mut db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref_mut();
-        let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
-        try_grpc!(user.is_administrator(db))?;
-        let req = req.into_inner();
-
-        try_grpc!(db.transaction::<_, Error, _>(move |db| {
-            let user = UserDao::by_id(db, req.user)?;
-            user.available()?;
-            RoleDao::unassociate(db, user.id, &req.role)?;
-            LogDao::add::<_, Policy>(
-                db,
-                user.id,
-                &Level::Info,
-                &ss.client_ip,
-                None,
-                &format!("unassociate {} from {}", user, req.role),
-            )?;
-
-            Ok(())
-        }))?;
-
-        Ok(Response::new(()))
     }
 
     async fn options(&self, req: Request<()>) -> GrpcResult<v1::PolicyOptionsResponse> {

@@ -65,6 +65,15 @@ pub async fn web(cfg: &Config) -> Result<()> {
                 rabbitmq,
             },
         ));
+    let nut_role = tonic_web::config()
+        .allow_all_origins()
+        .allow_credentials(true)
+        .enable(nut::v1::role_server::RoleServer::new(
+            nut::services::role::Service {
+                pgsql: pgsql.clone(),
+                jwt: jwt.clone(),
+            },
+        ));
     let nut_policy = tonic_web::config()
         .allow_all_origins()
         .allow_credentials(true)
@@ -77,6 +86,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
         .add_service(nut_locale)
         .add_service(nut_setting)
         .add_service(nut_user)
+        .add_service(nut_role)
         .add_service(nut_policy)
         .add_service(nut_site)
         .serve(addr)
@@ -95,6 +105,12 @@ pub async fn tcp(cfg: &Config) -> Result<()> {
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
 
     Server::builder()
+        .add_service(nut::v1::role_server::RoleServer::new(
+            nut::services::role::Service {
+                pgsql: pgsql.clone(),
+                jwt: jwt.clone(),
+            },
+        ))
         .add_service(nut::v1::policy_server::PolicyServer::new(
             nut::services::policy::Service {
                 pgsql: pgsql.clone(),

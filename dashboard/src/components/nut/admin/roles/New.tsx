@@ -16,7 +16,7 @@ import dayjs from 'dayjs';
 import { PolicyClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
 import { PolicyUserRoleAssociateRequest, IdRequest } from '@/protocols/nut_pb';
-import { IItem } from '.';
+import { IItem } from '../users';
 
 interface IProps {
   item: IItem;

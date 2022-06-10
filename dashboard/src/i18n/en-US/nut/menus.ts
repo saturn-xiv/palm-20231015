@@ -8,4 +8,5 @@ export default {
   'menus./admin/site': 'Web site',
   'menus./admin/locales': 'Locales',
   'menus./admin/policies': 'Policies',
+  'menus./admin/roles': 'Roles',
 };

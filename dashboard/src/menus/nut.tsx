@@ -35,12 +35,17 @@ const items: IMenu[] = [
             items: [],
           },
           {
+            to: '/admin/users',
+            permissions: [],
+            items: [],
+          },
+          {
             to: '/admin/policies',
             permissions: [],
             items: [],
           },
           {
-            to: '/admin/users',
+            to: '/admin/roles',
             permissions: [],
             items: [],
           },

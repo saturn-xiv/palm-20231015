@@ -1,5 +1,6 @@
 pub mod locale;
 pub mod policy;
+pub mod role;
 pub mod setting;
 pub mod site;
 pub mod user;

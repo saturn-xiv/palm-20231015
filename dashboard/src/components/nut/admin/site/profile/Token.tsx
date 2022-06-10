@@ -1,10 +1,12 @@
 import { useRef, useState } from 'react';
-import { message, Card } from 'antd';
+import { message, Tooltip, Button, Card } from 'antd';
 import ProForm, { ProFormDateTimePicker } from '@ant-design/pro-form';
 import type { ProFormInstance } from '@ant-design/pro-form';
 import { useIntl } from 'umi';
 import dayjs from 'dayjs';
 import { Duration } from 'google-protobuf/google/protobuf/duration_pb';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { CopyOutlined } from '@ant-design/icons';
 
 import { UserClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
@@ -24,6 +26,21 @@ const Widget = () => {
       <ProForm<IFormData>
         name="site.token"
         formRef={formRef}
+        submitter={{
+          render: (props, doms) => {
+            return [
+              ...doms,
+              <Tooltip
+                key="copy"
+                title={intl.formatMessage({ id: 'buttons.copy-to-clipboard' })}
+              >
+                <CopyToClipboard text={token} onCopy={() => {}}>
+                  <Button icon={<CopyOutlined />} />
+                </CopyToClipboard>
+              </Tooltip>,
+            ];
+          },
+        }}
         onFinish={async (values: IFormData) => {
           const now = dayjs();
           const due = dayjs(values.due);
@@ -59,6 +76,7 @@ const Widget = () => {
         </ProForm.Group>
       </ProForm>
       <br />
+
       <Card.Meta description={<pre>{token}</pre>} />
     </Card>
   );

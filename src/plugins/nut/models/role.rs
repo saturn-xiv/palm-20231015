@@ -1,5 +1,6 @@
-use chrono::{NaiveDate, Utc};
+use chrono::{NaiveDate, NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
+use serde::Serialize;
 
 use super::super::super::super::{orm::postgresql::Connection, Result};
 use super::super::schema::users_roles;
@@ -7,8 +8,30 @@ use super::super::schema::users_roles;
 pub const ADMINISTRATOR: &str = "administrator";
 pub const ROOT: &str = "root";
 
+#[derive(Queryable, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct Item {
+    pub id: i32,
+    pub user_id: i32,
+    pub role: String,
+    pub not_before: NaiveDate,
+    pub expired_at: NaiveDate,
+    pub version: i32,
+    pub updated_at: NaiveDateTime,
+    pub created_at: NaiveDateTime,
+}
+
+impl Item {
+    pub fn is_valid(&self) -> bool {
+        let it = Utc::now().naive_utc().date();
+        self.not_before <= it && it <= self.expired_at
+    }
+}
+
 pub trait Dao {
     fn all(&mut self) -> Result<Vec<String>>;
+    fn index(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>>;
+    fn count(&mut self) -> Result<i64>;
     fn roles_by_user(&mut self, user: i32) -> Result<Vec<String>>;
     fn users_by_role(&mut self, role: &str) -> Result<Vec<i32>>;
     fn is(&mut self, user: i32, role: &str) -> Result<bool>;
@@ -31,6 +54,18 @@ impl Dao for Connection {
             .order(users_roles::dsl::role.asc())
             .load::<String>(self)?)
     }
+    fn index(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>> {
+        let items = users_roles::dsl::users_roles
+            .order(users_roles::dsl::created_at.desc())
+            .offset(offset)
+            .limit(limit)
+            .load::<Item>(self)?;
+        Ok(items)
+    }
+    fn count(&mut self) -> Result<i64> {
+        let cnt: i64 = users_roles::dsl::users_roles.count().get_result(self)?;
+        Ok(cnt)
+    }
     fn roles_by_user(&mut self, user: i32) -> Result<Vec<String>> {
         Ok(users_roles::dsl::users_roles
             .select(users_roles::dsl::role)
@@ -46,14 +81,11 @@ impl Dao for Connection {
             .load::<i32>(self)?)
     }
     fn is(&mut self, user: i32, role: &str) -> Result<bool> {
-        let (nbf, exp) = users_roles::dsl::users_roles
-            .select((users_roles::dsl::not_before, users_roles::dsl::expired_at))
+        let it = users_roles::dsl::users_roles
             .filter(users_roles::dsl::user_id.eq(user))
             .filter(users_roles::dsl::role.eq(role))
-            .first::<(NaiveDate, NaiveDate)>(self)?;
-
-        let it = Utc::now().naive_utc().date();
-        Ok(nbf <= it && it <= exp)
+            .first::<Item>(self)?;
+        Ok(it.is_valid())
     }
     fn associate(
         &mut self,

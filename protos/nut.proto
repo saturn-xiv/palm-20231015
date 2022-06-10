@@ -119,24 +119,44 @@ message UserGetProfileResponse {
 
 // ----------------------------------------------------------------------------
 
+service Role {
+  rpc Index(Pager) returns (RoleIndexResponse) {}
+  rpc ByUser(IdRequest) returns (RoleByUserResponse) {}
+  rpc Associate(RoleUserAssociateRequest) returns (google.protobuf.Empty) {}
+  rpc Unassociate(RoleUserUnassociateRequest) returns (google.protobuf.Empty) {}
+}
+
+message RoleIndexResponse {
+  message Item {
+    int32 id = 1;
+    PolicyOptionsResponse.Item role = 2;
+    PolicyOptionsResponse.Item user = 3;
+    google.protobuf.Timestamp created_at = 9;
+  }
+  repeated Item items = 1;
+  Pagination pagination = 9;
+}
+message RoleByUserResponse { repeated PolicyOptionsResponse.Item items = 1; }
+message RoleUserUnassociateRequest {
+  int32 user = 1;
+  string role = 2;
+}
+message RoleUserAssociateRequest {
+  int32 user = 1;
+  repeated string roles = 2;
+  google.protobuf.Timestamp not_before = 11;
+  google.protobuf.Timestamp expired_at = 12;
+}
+
 service Policy {
   rpc Apply(PolicyPermission) returns (google.protobuf.Empty) {}
   rpc Deny(PolicyPermission) returns (google.protobuf.Empty) {}
 
   rpc Index(Pager) returns (PolicyIndexResponse) {}
 
-  rpc Associate(PolicyUserRoleAssociateRequest)
-      returns (google.protobuf.Empty) {}
-  rpc Unassociate(PolicyUserRoleUnassociateRequest)
-      returns (google.protobuf.Empty) {}
-  rpc Bind(PolicyUserRoleBindRequest) returns (google.protobuf.Empty) {}
-  rpc RolesByUser(IdRequest) returns (PolicyRolesByUserResponse) {}
-
   rpc Options(google.protobuf.Empty) returns (PolicyOptionsResponse) {}
 }
-message PolicyRolesByUserResponse {
-  repeated PolicyOptionsResponse.Item items = 1;
-}
+
 message PolicyPermission {
   string role = 1;
   string operation = 2;
@@ -167,23 +187,6 @@ message PolicyIndexResponse {
   Pagination pagination = 9;
 }
 
-message PolicyUserRoleBindRequest {
-  int32 user = 1;
-  repeated string roles = 2;
-  google.protobuf.Timestamp not_before = 11;
-  google.protobuf.Timestamp expired_at = 12;
-}
-message PolicyUserRoleAssociateRequest {
-  int32 user = 1;
-  string role = 2;
-  google.protobuf.Timestamp not_before = 11;
-  google.protobuf.Timestamp expired_at = 12;
-}
-
-message PolicyUserRoleUnassociateRequest {
-  int32 user = 1;
-  string role = 2;
-}
 // ----------------------------------------------------------------------------
 
 service Locale {

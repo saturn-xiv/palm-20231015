@@ -451,81 +451,144 @@ export namespace UserGetProfileResponse {
   }
 }
 
-export class PolicyRolesByUserResponse extends jspb.Message {
+export class RoleIndexResponse extends jspb.Message {
+  getItemsList(): Array<RoleIndexResponse.Item>;
+  setItemsList(value: Array<RoleIndexResponse.Item>): RoleIndexResponse;
+  clearItemsList(): RoleIndexResponse;
+  addItems(value?: RoleIndexResponse.Item, index?: number): RoleIndexResponse.Item;
+
+  getPagination(): Pagination | undefined;
+  setPagination(value?: Pagination): RoleIndexResponse;
+  hasPagination(): boolean;
+  clearPagination(): RoleIndexResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RoleIndexResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: RoleIndexResponse): RoleIndexResponse.AsObject;
+  static serializeBinaryToWriter(message: RoleIndexResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RoleIndexResponse;
+  static deserializeBinaryFromReader(message: RoleIndexResponse, reader: jspb.BinaryReader): RoleIndexResponse;
+}
+
+export namespace RoleIndexResponse {
+  export type AsObject = {
+    itemsList: Array<RoleIndexResponse.Item.AsObject>,
+    pagination?: Pagination.AsObject,
+  }
+
+  export class Item extends jspb.Message {
+    getId(): number;
+    setId(value: number): Item;
+
+    getRole(): PolicyOptionsResponse.Item | undefined;
+    setRole(value?: PolicyOptionsResponse.Item): Item;
+    hasRole(): boolean;
+    clearRole(): Item;
+
+    getUser(): PolicyOptionsResponse.Item | undefined;
+    setUser(value?: PolicyOptionsResponse.Item): Item;
+    hasUser(): boolean;
+    clearUser(): Item;
+
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      id: number,
+      role?: PolicyOptionsResponse.Item.AsObject,
+      user?: PolicyOptionsResponse.Item.AsObject,
+      createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    }
+  }
+
+}
+
+export class RoleByUserResponse extends jspb.Message {
   getItemsList(): Array<PolicyOptionsResponse.Item>;
-  setItemsList(value: Array<PolicyOptionsResponse.Item>): PolicyRolesByUserResponse;
-  clearItemsList(): PolicyRolesByUserResponse;
+  setItemsList(value: Array<PolicyOptionsResponse.Item>): RoleByUserResponse;
+  clearItemsList(): RoleByUserResponse;
   addItems(value?: PolicyOptionsResponse.Item, index?: number): PolicyOptionsResponse.Item;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PolicyRolesByUserResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: PolicyRolesByUserResponse): PolicyRolesByUserResponse.AsObject;
-  static serializeBinaryToWriter(message: PolicyRolesByUserResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PolicyRolesByUserResponse;
-  static deserializeBinaryFromReader(message: PolicyRolesByUserResponse, reader: jspb.BinaryReader): PolicyRolesByUserResponse;
+  toObject(includeInstance?: boolean): RoleByUserResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: RoleByUserResponse): RoleByUserResponse.AsObject;
+  static serializeBinaryToWriter(message: RoleByUserResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RoleByUserResponse;
+  static deserializeBinaryFromReader(message: RoleByUserResponse, reader: jspb.BinaryReader): RoleByUserResponse;
 }
 
-export namespace PolicyRolesByUserResponse {
+export namespace RoleByUserResponse {
   export type AsObject = {
     itemsList: Array<PolicyOptionsResponse.Item.AsObject>,
   }
 }
 
-export class PolicyUserRoleAssociateRequest extends jspb.Message {
+export class RoleUserUnassociateRequest extends jspb.Message {
   getUser(): number;
-  setUser(value: number): PolicyUserRoleAssociateRequest;
+  setUser(value: number): RoleUserUnassociateRequest;
 
-  getRolesList(): Array<string>;
-  setRolesList(value: Array<string>): PolicyUserRoleAssociateRequest;
-  clearRolesList(): PolicyUserRoleAssociateRequest;
-  addRoles(value: string, index?: number): PolicyUserRoleAssociateRequest;
-
-  getNotBefore(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setNotBefore(value?: google_protobuf_timestamp_pb.Timestamp): PolicyUserRoleAssociateRequest;
-  hasNotBefore(): boolean;
-  clearNotBefore(): PolicyUserRoleAssociateRequest;
-
-  getExpiredAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setExpiredAt(value?: google_protobuf_timestamp_pb.Timestamp): PolicyUserRoleAssociateRequest;
-  hasExpiredAt(): boolean;
-  clearExpiredAt(): PolicyUserRoleAssociateRequest;
+  getRole(): string;
+  setRole(value: string): RoleUserUnassociateRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PolicyUserRoleAssociateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: PolicyUserRoleAssociateRequest): PolicyUserRoleAssociateRequest.AsObject;
-  static serializeBinaryToWriter(message: PolicyUserRoleAssociateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PolicyUserRoleAssociateRequest;
-  static deserializeBinaryFromReader(message: PolicyUserRoleAssociateRequest, reader: jspb.BinaryReader): PolicyUserRoleAssociateRequest;
+  toObject(includeInstance?: boolean): RoleUserUnassociateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RoleUserUnassociateRequest): RoleUserUnassociateRequest.AsObject;
+  static serializeBinaryToWriter(message: RoleUserUnassociateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RoleUserUnassociateRequest;
+  static deserializeBinaryFromReader(message: RoleUserUnassociateRequest, reader: jspb.BinaryReader): RoleUserUnassociateRequest;
 }
 
-export namespace PolicyUserRoleAssociateRequest {
+export namespace RoleUserUnassociateRequest {
+  export type AsObject = {
+    user: number,
+    role: string,
+  }
+}
+
+export class RoleUserAssociateRequest extends jspb.Message {
+  getUser(): number;
+  setUser(value: number): RoleUserAssociateRequest;
+
+  getRolesList(): Array<string>;
+  setRolesList(value: Array<string>): RoleUserAssociateRequest;
+  clearRolesList(): RoleUserAssociateRequest;
+  addRoles(value: string, index?: number): RoleUserAssociateRequest;
+
+  getNotBefore(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setNotBefore(value?: google_protobuf_timestamp_pb.Timestamp): RoleUserAssociateRequest;
+  hasNotBefore(): boolean;
+  clearNotBefore(): RoleUserAssociateRequest;
+
+  getExpiredAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setExpiredAt(value?: google_protobuf_timestamp_pb.Timestamp): RoleUserAssociateRequest;
+  hasExpiredAt(): boolean;
+  clearExpiredAt(): RoleUserAssociateRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RoleUserAssociateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RoleUserAssociateRequest): RoleUserAssociateRequest.AsObject;
+  static serializeBinaryToWriter(message: RoleUserAssociateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RoleUserAssociateRequest;
+  static deserializeBinaryFromReader(message: RoleUserAssociateRequest, reader: jspb.BinaryReader): RoleUserAssociateRequest;
+}
+
+export namespace RoleUserAssociateRequest {
   export type AsObject = {
     user: number,
     rolesList: Array<string>,
     notBefore?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     expiredAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
-}
-
-export class PolicyUserRoleUnassociateRequest extends jspb.Message {
-  getUser(): number;
-  setUser(value: number): PolicyUserRoleUnassociateRequest;
-
-  getRole(): string;
-  setRole(value: string): PolicyUserRoleUnassociateRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PolicyUserRoleUnassociateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: PolicyUserRoleUnassociateRequest): PolicyUserRoleUnassociateRequest.AsObject;
-  static serializeBinaryToWriter(message: PolicyUserRoleUnassociateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PolicyUserRoleUnassociateRequest;
-  static deserializeBinaryFromReader(message: PolicyUserRoleUnassociateRequest, reader: jspb.BinaryReader): PolicyUserRoleUnassociateRequest;
-}
-
-export namespace PolicyUserRoleUnassociateRequest {
-  export type AsObject = {
-    user: number,
-    role: string,
   }
 }
 

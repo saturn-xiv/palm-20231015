@@ -14,4 +14,5 @@ export default {
   'buttons.disable': 'Disable',
   'buttons.lock': 'Lock',
   'buttons.unlock': 'Unlock',
+  'buttons.copy-to-clipboard': 'Copy to clipboard',
 };
