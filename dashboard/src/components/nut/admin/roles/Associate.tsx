@@ -2,56 +2,44 @@ import { useRef } from 'react';
 import { message, Button, Tooltip } from 'antd';
 import ProForm, {
   ModalForm,
-  ProFormText,
   ProFormSelect,
   ProFormDateRangePicker,
 } from '@ant-design/pro-form';
 import type { ProFormInstance } from '@ant-design/pro-form';
-import { GroupOutlined } from '@ant-design/icons';
-import { FormattedMessage, useIntl } from 'umi';
+import { PlusOutlined } from '@ant-design/icons';
+import { FormattedMessage, useModel, useIntl } from 'umi';
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb';
 import { Timestamp } from 'google-protobuf/google/protobuf/timestamp_pb';
 import dayjs from 'dayjs';
 
-import { PolicyClient } from '@/protocols/NutServiceClientPb';
+import { RoleClient, SiteClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
-import { PolicyUserRoleAssociateRequest, IdRequest } from '@/protocols/nut_pb';
-import { IItem } from '../users';
+import { RoleUserAssociateRequest } from '@/protocols/nut_pb';
+import { ROLE_ROOT } from '@/models/useAuthModel';
 
 interface IProps {
-  item: IItem;
+  handleRefresh: () => void;
 }
 
 interface IFormData {
-  user: string;
+  user: number;
   roles: string[];
   dates: string[];
 }
 
-const Widget = ({ item }: IProps) => {
+const Widget = ({ handleRefresh }: IProps) => {
   const formRef = useRef<ProFormInstance>();
+  const { initialState } = useModel('@@initialState');
   const intl = useIntl();
   return (
     <ModalForm<IFormData>
-      name="user.roles"
+      name="user.roles.associate"
       formRef={formRef}
-      request={async () => {
-        const client = new PolicyClient(GRPC_HOST);
-
-        const request = new IdRequest();
-        request.setId(item.id);
-        const response = await client.rolesByUser(request, grpc_metadata());
-        return {
-          user: `${item.realName} <${item.nickName}>`,
-          roles: response.getItemsList().map((x) => x.getCode()),
-          dates: [],
-        };
-      }}
       onFinish={async (values: IFormData) => {
-        const client = new PolicyClient(GRPC_HOST);
+        const client = new RoleClient(GRPC_HOST);
 
-        const request = new PolicyUserRoleAssociateRequest();
-        request.setUser(item.id);
+        const request = new RoleUserAssociateRequest();
+        request.setUser(values.user);
         request.setRolesList(values.roles);
         {
           var nbf = new Timestamp();
@@ -70,22 +58,37 @@ const Widget = ({ item }: IProps) => {
             message.success(
               intl.formatMessage({ id: 'form.submit.successed' }),
             );
+            handleRefresh();
           }
         });
       }}
       trigger={
-        <Tooltip title={<FormattedMessage id="nut.admin.users.roles" />}>
-          <Button type="dashed" shape="circle" icon={<GroupOutlined />} />
+        <Tooltip title={<FormattedMessage id="buttons.associate" />}>
+          <Button type="dashed" shape="circle" icon={<PlusOutlined />} />
         </Tooltip>
       }
     >
       <ProForm.Group>
-        <ProFormText
+        <ProFormSelect
           width="md"
+          request={async () => {
+            const client = new SiteClient(GRPC_HOST);
+            const response = await client.listUser(
+              new Empty(),
+              grpc_metadata(),
+            );
+            return response
+              .getItemsList()
+              .filter((x) => x.getId() !== initialState?.layout.currentUser?.id)
+              .map((it, id) => ({
+                label: `${it.getRealName()}(${it.getNickName()})`,
+                value: it.getId(),
+                key: id,
+              }));
+          }}
           name="user"
-          disabled
+          required
           label={intl.formatMessage({ id: 'form.fields.user.label' })}
-          rules={[{ required: true }]}
         />
       </ProForm.Group>
       <ProForm.Group>
@@ -93,14 +96,18 @@ const Widget = ({ item }: IProps) => {
           width="md"
           fieldProps={{ mode: 'multiple' }}
           request={async () => {
-            const client = new PolicyClient(GRPC_HOST);
+            const client = new RoleClient(GRPC_HOST);
             const response = await client.options(new Empty(), grpc_metadata());
-            return response.getRolesList().map((it, id) => ({
-              lable: it.getLabel(),
-              value: it.getCode(),
-              key: id,
-            }));
+            return response
+              .getItemsList()
+              .filter((x) => x.getCode() !== ROLE_ROOT)
+              .map((it, id) => ({
+                lable: it.getLabel(),
+                value: it.getCode(),
+                key: id,
+              }));
           }}
+          required
           name="roles"
           label={intl.formatMessage({ id: 'form.fields.roles.label' })}
         />

@@ -789,6 +789,49 @@ export class RoleClient {
     this.methodDescriptorUnassociate);
   }
 
+  methodDescriptorOptions = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Role/Options',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    nut_pb.RoleOptionsResponse,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    nut_pb.RoleOptionsResponse.deserializeBinary
+  );
+
+  options(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.RoleOptionsResponse>;
+
+  options(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.RoleOptionsResponse) => void): grpcWeb.ClientReadableStream<nut_pb.RoleOptionsResponse>;
+
+  options(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.RoleOptionsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Role/Options',
+        request,
+        metadata || {},
+        this.methodDescriptorOptions,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Role/Options',
+    request,
+    metadata || {},
+    this.methodDescriptorOptions);
+  }
+
 }
 
 export class PolicyClient {
@@ -1946,6 +1989,49 @@ export class SiteClient {
     request,
     metadata || {},
     this.methodDescriptorSetUserPassword);
+  }
+
+  methodDescriptorListUser = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Site/ListUser',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    nut_pb.SiteListUserResponse,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    nut_pb.SiteListUserResponse.deserializeBinary
+  );
+
+  listUser(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.SiteListUserResponse>;
+
+  listUser(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.SiteListUserResponse) => void): grpcWeb.ClientReadableStream<nut_pb.SiteListUserResponse>;
+
+  listUser(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.SiteListUserResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Site/ListUser',
+        request,
+        metadata || {},
+        this.methodDescriptorListUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Site/ListUser',
+    request,
+    metadata || {},
+    this.methodDescriptorListUser);
   }
 
   methodDescriptorSetSmtp = new grpcWeb.MethodDescriptor(

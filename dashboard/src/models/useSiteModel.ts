@@ -13,6 +13,7 @@ export interface IAuthor {
 }
 
 export interface IUser {
+  id: number;
   isAdministrator: boolean;
   permissions: IPermission[];
   realName: string;
@@ -48,6 +49,7 @@ export const to_layout = (response: SiteLayoutResponse): ILayout => {
   const user = response.getCurrentUser()?.getPayload();
   if (user) {
     const iu: IUser = {
+      id: user.getId(),
       realName: user.getRealName(),
       nickName: user.getNickName(),
       avatar: user.getAvatar(),

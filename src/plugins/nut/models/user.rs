@@ -202,6 +202,7 @@ pub trait Dao {
     fn confirm(&mut self, id: i32) -> Result<()>;
     fn count(&mut self) -> Result<i64>;
     fn all(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>>;
+    fn options(&mut self) -> Result<Vec<(i32, String, String)>>;
     fn password<P: Password>(&mut self, enc: &P, id: i32, password: &str) -> Result<()>;
 }
 
@@ -420,7 +421,13 @@ impl Dao for Connection {
             .load::<Item>(self)?;
         Ok(items)
     }
-
+    fn options(&mut self) -> Result<Vec<(i32, String, String)>> {
+        let items = users::dsl::users
+            .select((users::dsl::id, users::dsl::nick_name, users::dsl::real_name))
+            .order(users::dsl::nick_name.asc())
+            .load::<(i32, String, String)>(self)?;
+        Ok(items)
+    }
     fn password<P: Password>(&mut self, enc: &P, id: i32, password: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
         let password = enc.sum(password.as_bytes())?;

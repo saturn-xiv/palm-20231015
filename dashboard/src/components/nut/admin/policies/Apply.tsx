@@ -3,12 +3,11 @@ import { message, Button, Tooltip } from 'antd';
 import ProForm, {
   ModalForm,
   ProFormDigit,
-  ProFormSelect,
   ProFormText,
 } from '@ant-design/pro-form';
 import type { ProFormInstance } from '@ant-design/pro-form';
 import { PlusOutlined } from '@ant-design/icons';
-import { FormattedMessage, getAllLocales, useIntl } from 'umi';
+import { FormattedMessage, useIntl } from 'umi';
 
 import { PolicyClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';

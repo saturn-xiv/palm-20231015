@@ -11,7 +11,8 @@ import {
 } from '@/protocols/nut_pb';
 import { UserClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
-import { setLocale } from '@/i18n';
+
+export const ROLE_ROOT = 'root';
 
 export const TO_SIGN_IN = '/users/sign-in';
 export const TO_PROFILE = '/users/profile';

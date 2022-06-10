@@ -11,7 +11,7 @@ use super::super::{
     models::{
         log::{Dao as LogDao, Level},
         policy::Item as Policy,
-        role::Dao as RoleDao,
+        role::{Dao as RoleDao, ROOT},
         user::Dao as UserDao,
     },
     v1,
@@ -25,6 +25,21 @@ pub struct Service {
 
 #[tonic::async_trait]
 impl v1::role_server::Role for Service {
+    async fn options(&self, req: Request<()>) -> GrpcResult<v1::RoleOptionsResponse> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.is_administrator(db))?;
+        let roles = try_grpc!(RoleDao::all(db))?;
+        let roles = roles
+            .iter()
+            .map(|x| v1::policy_options_response::Item::role(db, &ss.lang, x))
+            .collect();
+        Ok(Response::new(v1::RoleOptionsResponse { items: roles }))
+    }
+
     async fn by_user(&self, req: Request<v1::IdRequest>) -> GrpcResult<v1::RoleByUserResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
@@ -54,7 +69,8 @@ impl v1::role_server::Role for Service {
 
         for it in try_grpc!(RoleDao::index(db, req.offset(total), req.size()))?.iter() {
             let role = v1::policy_options_response::Item::role(db, &ss.lang, &it.role);
-            let user = try_grpc!(v1::policy_options_response::Item::user(db, it.user_id))?;
+            let user = try_grpc!(UserDao::by_id(db, it.user_id))?;
+            let user = v1::site_user_index_response::Item::new(&user);
             let it = v1::role_index_response::Item {
                 id: it.id,
                 user: Some(user),
@@ -79,6 +95,16 @@ impl v1::role_server::Role for Service {
         try_grpc!(user.is_administrator(db))?;
         let req = req.into_inner();
         let manager = user.nick_name;
+        if user.id == req.user {
+            return Err(Status::permission_denied(
+                "forbidden to associate current user",
+            ));
+        }
+        if RoleDao::is(db, req.user, ROOT).is_ok() {
+            return Err(Status::permission_denied(
+                "forbidden to associate root user",
+            ));
+        }
 
         try_grpc!(db.transaction::<_, Error, _>(move |db| {
             let user = UserDao::by_id(db, req.user)?;
@@ -115,6 +141,16 @@ impl v1::role_server::Role for Service {
         let user = try_grpc!(ss.current_user(db, jwt))?;
         try_grpc!(user.is_administrator(db))?;
         let req = req.into_inner();
+        if user.id == req.user {
+            return Err(Status::permission_denied(
+                "forbidden to unassociate current user",
+            ));
+        }
+        if RoleDao::is(db, req.user, ROOT).is_ok() {
+            return Err(Status::permission_denied(
+                "forbidden to unassociate root user",
+            ));
+        }
 
         try_grpc!(db.transaction::<_, Error, _>(move |db| {
             let user = UserDao::by_id(db, req.user)?;

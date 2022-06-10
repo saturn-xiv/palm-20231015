@@ -15,4 +15,6 @@ export default {
   'buttons.lock': 'Lock',
   'buttons.unlock': 'Unlock',
   'buttons.copy-to-clipboard': 'Copy to clipboard',
+  'buttons.associate': 'Associate',
+  'buttons.unassociate': 'Unassociate',
 };

@@ -451,6 +451,26 @@ export namespace UserGetProfileResponse {
   }
 }
 
+export class RoleOptionsResponse extends jspb.Message {
+  getItemsList(): Array<PolicyOptionsResponse.Item>;
+  setItemsList(value: Array<PolicyOptionsResponse.Item>): RoleOptionsResponse;
+  clearItemsList(): RoleOptionsResponse;
+  addItems(value?: PolicyOptionsResponse.Item, index?: number): PolicyOptionsResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RoleOptionsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: RoleOptionsResponse): RoleOptionsResponse.AsObject;
+  static serializeBinaryToWriter(message: RoleOptionsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RoleOptionsResponse;
+  static deserializeBinaryFromReader(message: RoleOptionsResponse, reader: jspb.BinaryReader): RoleOptionsResponse;
+}
+
+export namespace RoleOptionsResponse {
+  export type AsObject = {
+    itemsList: Array<PolicyOptionsResponse.Item.AsObject>,
+  }
+}
+
 export class RoleIndexResponse extends jspb.Message {
   getItemsList(): Array<RoleIndexResponse.Item>;
   setItemsList(value: Array<RoleIndexResponse.Item>): RoleIndexResponse;
@@ -485,8 +505,8 @@ export namespace RoleIndexResponse {
     hasRole(): boolean;
     clearRole(): Item;
 
-    getUser(): PolicyOptionsResponse.Item | undefined;
-    setUser(value?: PolicyOptionsResponse.Item): Item;
+    getUser(): SiteUserIndexResponse.Item | undefined;
+    setUser(value?: SiteUserIndexResponse.Item): Item;
     hasUser(): boolean;
     clearUser(): Item;
 
@@ -507,7 +527,7 @@ export namespace RoleIndexResponse {
     export type AsObject = {
       id: number,
       role?: PolicyOptionsResponse.Item.AsObject,
-      user?: PolicyOptionsResponse.Item.AsObject,
+      user?: SiteUserIndexResponse.Item.AsObject,
       createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     }
   }
@@ -961,6 +981,53 @@ export namespace SettingSetRequest {
     _USER_NOT_SET = 0,
     USER = 1,
   }
+}
+
+export class SiteListUserResponse extends jspb.Message {
+  getItemsList(): Array<SiteListUserResponse.Item>;
+  setItemsList(value: Array<SiteListUserResponse.Item>): SiteListUserResponse;
+  clearItemsList(): SiteListUserResponse;
+  addItems(value?: SiteListUserResponse.Item, index?: number): SiteListUserResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SiteListUserResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: SiteListUserResponse): SiteListUserResponse.AsObject;
+  static serializeBinaryToWriter(message: SiteListUserResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SiteListUserResponse;
+  static deserializeBinaryFromReader(message: SiteListUserResponse, reader: jspb.BinaryReader): SiteListUserResponse;
+}
+
+export namespace SiteListUserResponse {
+  export type AsObject = {
+    itemsList: Array<SiteListUserResponse.Item.AsObject>,
+  }
+
+  export class Item extends jspb.Message {
+    getId(): number;
+    setId(value: number): Item;
+
+    getNickName(): string;
+    setNickName(value: string): Item;
+
+    getRealName(): string;
+    setRealName(value: string): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      id: number,
+      nickName: string,
+      realName: string,
+    }
+  }
+
 }
 
 export class SiteSmtpTestRequst extends jspb.Message {

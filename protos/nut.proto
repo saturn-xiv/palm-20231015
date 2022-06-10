@@ -124,13 +124,14 @@ service Role {
   rpc ByUser(IdRequest) returns (RoleByUserResponse) {}
   rpc Associate(RoleUserAssociateRequest) returns (google.protobuf.Empty) {}
   rpc Unassociate(RoleUserUnassociateRequest) returns (google.protobuf.Empty) {}
+  rpc Options(google.protobuf.Empty) returns (RoleOptionsResponse) {}
 }
-
+message RoleOptionsResponse { repeated PolicyOptionsResponse.Item items = 1; }
 message RoleIndexResponse {
   message Item {
     int32 id = 1;
     PolicyOptionsResponse.Item role = 2;
-    PolicyOptionsResponse.Item user = 3;
+    SiteUserIndexResponse.Item user = 3;
     google.protobuf.Timestamp created_at = 9;
   }
   repeated Item items = 1;
@@ -260,6 +261,7 @@ service Site {
   rpc ConfirmUser(IdRequest) returns (google.protobuf.Empty) {}
   rpc SetUserPassword(SiteSetUserPasswordRequest)
       returns (google.protobuf.Empty) {}
+  rpc ListUser(google.protobuf.Empty) returns (SiteListUserResponse) {}
 
   rpc SetSmtp(SmtpProfile) returns (google.protobuf.Empty) {}
   rpc GetSmtp(google.protobuf.Empty) returns (SmtpProfile) {}
@@ -276,6 +278,15 @@ service Site {
   rpc NewLeaveWord(SiteNewLeaveWordRequest) returns (google.protobuf.Empty) {}
   rpc IndexLeaveWord(Pager) returns (SiteIndexLeaveWordResponse) {}
   rpc DestroyLeaveWord(IdRequest) returns (google.protobuf.Empty) {}
+}
+
+message SiteListUserResponse {
+  message Item {
+    int32 id = 1;
+    string nick_name = 2;
+    string real_name = 3;
+  }
+  repeated Item items = 1;
 }
 
 message SiteSmtpTestRequst {

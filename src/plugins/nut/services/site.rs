@@ -390,7 +390,25 @@ impl v1::site_server::Site for Service {
             pagination: Some(v1::Pagination::new(&req, total)),
         }))
     }
+    async fn list_user(&self, req: Request<()>) -> GrpcResult<v1::SiteListUserResponse> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.can::<User>(db, &Operation::Read, None))?;
 
+        let mut items = Vec::new();
+        for (id, nick_name, real_name) in try_grpc!(UserDao::options(db))? {
+            items.push(v1::site_list_user_response::Item {
+                id,
+                nick_name,
+                real_name,
+            });
+        }
+
+        Ok(Response::new(v1::SiteListUserResponse { items }))
+    }
     async fn disable_user(&self, req: Request<v1::IdRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;

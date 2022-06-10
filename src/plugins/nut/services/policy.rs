@@ -9,13 +9,12 @@ use super::super::super::super::{
     i18n::I18n,
     jwt::Jwt,
     orm::postgresql::{Connection as PostgreSqlConnection, Pool as PostgreSqlPool},
-    Error, GrpcResult, Result,
+    Error, GrpcResult,
 };
 use super::super::{
     models::{
         log::{Dao as LogDao, Level},
         policy::{Dao as PolicyDao, Item as Policy},
-        user::Dao as UserDao,
     },
     v1,
 };
@@ -36,13 +35,7 @@ impl v1::policy_options_response::Item {
     pub fn operation(db: &mut PostgreSqlConnection, lang: &str, code: &str) -> Self {
         Self::new(db, lang, "operations", code)
     }
-    pub fn user(db: &mut PostgreSqlConnection, user: i32) -> Result<Self> {
-        let user = UserDao::by_id(db, user)?;
-        Ok(Self {
-            code: user.nick_name.clone(),
-            label: user.real_name,
-        })
-    }
+
     pub fn new(db: &mut PostgreSqlConnection, lang: &str, ns: &str, code: &str) -> Self {
         Self {
             code: code.to_string(),
