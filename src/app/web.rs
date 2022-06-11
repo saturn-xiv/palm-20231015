@@ -29,8 +29,6 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let hmac = web::Data::new(Hmac::new(&cfg.secrets.0)?);
     let jwt = web::Data::new(Jwt::new(cfg.secrets.0.clone()));
     let queue = web::Data::new(cfg.rabbitmq.open());
-    let aws = web::Data::new(cfg.aws.clone());
-    let s3 = web::Data::new(cfg.s3.clone());
 
     let addr = cfg.http.addr();
     info!("run on http://{addr}");
@@ -53,8 +51,6 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .app_data(hmac.clone())
             .app_data(jwt.clone())
             .app_data(queue.clone())
-            .app_data(aws.clone())
-            .app_data(s3.clone())
             .wrap(middleware::Logger::default())
             .wrap(
                 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS

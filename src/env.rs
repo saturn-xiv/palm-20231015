@@ -6,10 +6,7 @@ use std::path::Path;
 use serde::{Deserialize, Serialize};
 
 use super::{
-    aws::{s3::Config as S3, Credentials as Aws},
-    cache::redis::Config as Redis,
-    crypto::Key,
-    orm::postgresql::Config as PostgreSql,
+    cache::redis::Config as Redis, crypto::Key, orm::postgresql::Config as PostgreSql,
     queue::amqp::Config as RabbitMq,
 };
 
@@ -112,8 +109,6 @@ pub struct Config {
     pub postgresql: PostgreSql,
     pub redis: Redis,
     pub rabbitmq: RabbitMq,
-    pub s3: S3,
-    pub aws: Aws,
 }
 
 pub fn is_stopped() -> bool {

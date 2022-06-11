@@ -37,5 +37,7 @@ export default {
   'form.fields.validate-date-range.label': 'Validate date range',
   'form.fields.type.label': 'Type',
   'form.fields.user.label': 'User',
+  'form.fields.region.label': 'Region',
+  'form.fields.endpoint.label': 'Endpoint',
   'form.submit.successed': 'Successed!',
 };

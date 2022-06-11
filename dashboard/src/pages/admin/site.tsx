@@ -14,12 +14,13 @@ import BaiduForm from '@/components/nut/admin/site/seo/Baidu';
 import RssPanel from '@/components/nut/admin/site/seo/Rss';
 import SitemapPanel from '@/components/nut/admin/site/seo/Sitemap';
 import BingForm from '@/components/nut/admin/site/seo/Bing';
-import SmtpForm from '@/components/nut/admin/site/profile/SmtpProfile';
+import SmtpForm from '@/components/nut/admin/site/profile/smtp/Profile';
 import PostgreSqlPanel from '@/components/nut/admin/site/status/PostgreSql';
 import TokenPanel from '@/components/nut/admin/site/profile/Token';
 import RedisPanel from '@/components/nut/admin/site/status/redis';
 import SystemPanel from '@/components/nut/admin/site/status/System';
 import RabbitMqPanel from '@/components/nut/admin/site/status/RabbitMq';
+import AwsForm from '@/components/nut/admin/site/profile/aws/Profile';
 import { SiteClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
 import { SiteLayoutResponse, SiteStatusResponse } from '@/protocols/nut_pb';
@@ -99,6 +100,9 @@ const Widget = () => {
               </Col>
               <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
                 <SmtpForm />
+              </Col>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
+                <AwsForm />
               </Col>
               <Col span={22}>
                 <TokenPanel />

@@ -1,5 +1,6 @@
 use hyper::StatusCode;
 use rusoto_core::{request::HttpClient, Region};
+use rusoto_credential::StaticProvider;
 use rusoto_sqs::{
     CreateQueueRequest, GetQueueUrlRequest, ReceiveMessageRequest, SendMessageRequest,
     Sqs as AwsSqs, SqsClient,
@@ -17,9 +18,9 @@ pub struct Sqs {
 }
 
 impl Sqs {
-    pub fn new(cred: super::Credentials, region: Region) -> Result<Self> {
+    pub fn new(provider: StaticProvider, region: Region) -> Result<Self> {
         Ok(Self {
-            client: SqsClient::new_with(HttpClient::new()?, cred.provider(), region),
+            client: SqsClient::new_with(HttpClient::new()?, provider, region),
         })
     }
 

@@ -18,4 +18,6 @@ export default {
   'buttons.associate': 'Associate',
   'buttons.unassociate': 'Unassociate',
   'buttons.clear': 'Clear',
+  'buttons.fetch': 'Fetch',
+  'buttons.refresh': 'Refresh',
 };

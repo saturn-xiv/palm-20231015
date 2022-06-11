@@ -19,8 +19,6 @@ pub async fn web(cfg: &Config) -> Result<()> {
     let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
-    let _aws = Arc::new(cfg.aws.clone());
-    let _s3 = Arc::new(cfg.s3.clone());
 
     let nut_locale = tonic_web::config()
         .allow_all_origins()

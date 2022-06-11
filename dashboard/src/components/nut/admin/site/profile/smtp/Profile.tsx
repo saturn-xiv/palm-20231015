@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { message, Card } from 'antd';
+import { message, Card, List } from 'antd';
 import ProForm, { ProFormText, ProFormSelect } from '@ant-design/pro-form';
 import { useIntl } from 'umi';
 import type { ProFormInstance } from '@ant-design/pro-form';
@@ -9,7 +9,7 @@ import { RULE_EMAIL, RULE_PASSWORD } from '@/components/forms';
 import { SmtpProfile } from '@/protocols/nut_pb';
 import { SiteClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
-import SmtpTestForm from './SmtpTest';
+import SmtpTestForm from './Test';
 
 interface IFormData {
   host: string;
@@ -131,6 +131,21 @@ const Widget = () => {
           />
         </ProForm.Group>
       </ProForm>
+      <br />
+      <Card.Meta
+        description={
+          <List bordered>
+            <List.Item>
+              <a
+                href="https://developers.google.com/gmail/imap/imap-smtp"
+                target="_blank"
+              >
+                IMAP, POP, and SMTP - Gmail for Developers
+              </a>
+            </List.Item>
+          </List>
+        }
+      />
     </Card>
   );
 };

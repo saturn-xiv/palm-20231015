@@ -265,6 +265,9 @@ service Site {
       returns (google.protobuf.Empty) {}
   rpc ListUser(google.protobuf.Empty) returns (SiteListUserResponse) {}
 
+  rpc SetAws(AwsProfile) returns (google.protobuf.Empty) {}
+  rpc GetAws(google.protobuf.Empty) returns (AwsProfile) {}
+  rpc TestAwsS3(google.protobuf.Empty) returns (SiteAwsS3TestResponse) {}
   rpc SetSmtp(SmtpProfile) returns (google.protobuf.Empty) {}
   rpc GetSmtp(google.protobuf.Empty) returns (SmtpProfile) {}
   rpc TestSmtp(SiteSmtpTestRequst) returns (google.protobuf.Empty) {}
@@ -281,6 +284,14 @@ service Site {
   rpc IndexLeaveWord(Pager) returns (SiteIndexLeaveWordResponse) {}
   rpc DestroyLeaveWord(IdRequest) returns (google.protobuf.Empty) {}
 }
+
+message AwsProfile {
+  string region = 1;
+  optional string endpoint = 2;
+  string access_key_id = 3;
+  string secret_access_key = 4;
+}
+message SiteAwsS3TestResponse { repeated string buckets = 1; }
 
 message SiteListUserResponse {
   message Item {

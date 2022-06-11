@@ -983,6 +983,63 @@ export namespace SettingSetRequest {
   }
 }
 
+export class AwsProfile extends jspb.Message {
+  getRegion(): string;
+  setRegion(value: string): AwsProfile;
+
+  getEndpoint(): string;
+  setEndpoint(value: string): AwsProfile;
+  hasEndpoint(): boolean;
+  clearEndpoint(): AwsProfile;
+
+  getAccessKeyId(): string;
+  setAccessKeyId(value: string): AwsProfile;
+
+  getSecretAccessKey(): string;
+  setSecretAccessKey(value: string): AwsProfile;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): AwsProfile.AsObject;
+  static toObject(includeInstance: boolean, msg: AwsProfile): AwsProfile.AsObject;
+  static serializeBinaryToWriter(message: AwsProfile, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AwsProfile;
+  static deserializeBinaryFromReader(message: AwsProfile, reader: jspb.BinaryReader): AwsProfile;
+}
+
+export namespace AwsProfile {
+  export type AsObject = {
+    region: string,
+    endpoint?: string,
+    accessKeyId: string,
+    secretAccessKey: string,
+  }
+
+  export enum EndpointCase { 
+    _ENDPOINT_NOT_SET = 0,
+    ENDPOINT = 2,
+  }
+}
+
+export class SiteAwsS3TestResponse extends jspb.Message {
+  getBucketsList(): Array<string>;
+  setBucketsList(value: Array<string>): SiteAwsS3TestResponse;
+  clearBucketsList(): SiteAwsS3TestResponse;
+  addBuckets(value: string, index?: number): SiteAwsS3TestResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SiteAwsS3TestResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: SiteAwsS3TestResponse): SiteAwsS3TestResponse.AsObject;
+  static serializeBinaryToWriter(message: SiteAwsS3TestResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SiteAwsS3TestResponse;
+  static deserializeBinaryFromReader(message: SiteAwsS3TestResponse, reader: jspb.BinaryReader): SiteAwsS3TestResponse;
+}
+
+export namespace SiteAwsS3TestResponse {
+  export type AsObject = {
+    bucketsList: Array<string>,
+  }
+}
+
 export class SiteListUserResponse extends jspb.Message {
   getItemsList(): Array<SiteListUserResponse.Item>;
   setItemsList(value: Array<SiteListUserResponse.Item>): SiteListUserResponse;

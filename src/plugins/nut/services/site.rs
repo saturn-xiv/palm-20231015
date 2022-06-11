@@ -12,10 +12,13 @@ use diesel::{
 };
 use prost::Message;
 use redis::Connection as RedisConnection;
+use rusoto_core::Region as RusotoRegion;
+use rusoto_credential::{AwsCredentials, StaticProvider as RusotoCredentialStaticProvider};
 use serde::{Deserialize, Serialize};
 use tonic::{Request, Response, Status};
 
 use super::super::super::super::{
+    aws::s3::Client as AwsS3Client,
     cache::{redis::Pool as RedisPool, Provider as CacheProvider},
     crypto::{Aes, Hmac},
     i18n::{locale::Dao as LocaleDao, I18n},
@@ -514,6 +517,58 @@ impl v1::site_server::Site for Service {
         Ok(Response::new(()))
     }
 
+    async fn set_aws(&self, req: Request<v1::AwsProfile>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let aes = self.aes.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.is_administrator(db))?;
+        let req = req.into_inner();
+        let buf = req.encode_to_vec();
+        try_grpc!(SettingDao::set(
+            db,
+            aes,
+            &v1::AwsProfile::KEY.to_string(),
+            None,
+            &buf,
+            true
+        ))?;
+        Ok(Response::new(()))
+    }
+
+    async fn get_aws(&self, req: Request<()>) -> GrpcResult<v1::AwsProfile> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let aes = self.aes.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.is_administrator(db))?;
+
+        let mut it = try_grpc!(v1::AwsProfile::new(db, aes))?;
+        it.secret_access_key = "change-me".to_string();
+
+        Ok(Response::new(it))
+    }
+
+    async fn test_aws_s3(&self, req: Request<()>) -> GrpcResult<v1::SiteAwsS3TestResponse> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let aes = self.aes.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.is_administrator(db))?;
+
+        let it = try_grpc!(v1::AwsProfile::new(db, aes))?;
+
+        let s3 = try_grpc!(it.s3())?;
+        let buckets = try_grpc!(s3.list_buckets().await)?;
+        Ok(Response::new(v1::SiteAwsS3TestResponse { buckets }))
+    }
+
     async fn set_smtp(&self, req: Request<v1::SmtpProfile>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
@@ -793,18 +848,38 @@ impl v1::site_server::Site for Service {
 
 impl v1::SmtpProfile {
     pub const KEY: &'static str = "site.smtp";
+    pub fn new(db: &mut PostgreSqlConnection, aes: &Aes) -> Result<Self> {
+        let buf: Vec<u8> = SettingDao::get(db, aes, &Self::KEY.to_string(), None)?;
+        let it = Self::decode(&buf[..])?;
+        Ok(it)
+    }
 }
 
 impl v1::GoogleProfile {
     pub const KEY: &'static str = "site.google";
+    pub fn new(db: &mut PostgreSqlConnection, aes: &Aes) -> Result<Self> {
+        let buf: Vec<u8> = SettingDao::get(db, aes, &Self::KEY.to_string(), None)?;
+        let it = Self::decode(&buf[..])?;
+        Ok(it)
+    }
 }
 
 impl v1::BaiduProfile {
     pub const KEY: &'static str = "site.baidu";
+    pub fn new(db: &mut PostgreSqlConnection, aes: &Aes) -> Result<Self> {
+        let buf: Vec<u8> = SettingDao::get(db, aes, &Self::KEY.to_string(), None)?;
+        let it = Self::decode(&buf[..])?;
+        Ok(it)
+    }
 }
 
 impl v1::BingProfile {
     pub const KEY: &'static str = "site.bing";
+    pub fn new(db: &mut PostgreSqlConnection, aes: &Aes) -> Result<Self> {
+        let buf: Vec<u8> = SettingDao::get(db, aes, &Self::KEY.to_string(), None)?;
+        let it = Self::decode(&buf[..])?;
+        Ok(it)
+    }
 }
 
 #[derive(QueryableByName, PartialEq, Debug)]
@@ -914,5 +989,47 @@ impl v1::site_user_index_response::Item {
             locked_at: x.locked_at.map(|x| to_timestamp!(x)),
             deleted_at: x.deleted_at.map(|x| to_timestamp!(x)),
         }
+    }
+}
+
+/// https://console.aws.amazon.com/iam/home
+impl v1::AwsProfile {
+    pub const KEY: &'static str = "site.s3";
+
+    pub fn new(db: &mut PostgreSqlConnection, aes: &Aes) -> Result<Self> {
+        let buf: Vec<u8> = SettingDao::get(db, aes, &Self::KEY.to_string(), None)?;
+        let it = Self::decode(&buf[..])?;
+        Ok(it)
+    }
+    pub fn s3(&self) -> Result<AwsS3Client> {
+        AwsS3Client::new(
+            self.credentials(),
+            self.credential_static_provider(),
+            self.region()?,
+        )
+    }
+    pub fn credential_static_provider(&self) -> RusotoCredentialStaticProvider {
+        RusotoCredentialStaticProvider::new_minimal(
+            self.access_key_id.clone(),
+            self.secret_access_key.clone(),
+        )
+    }
+    pub fn region(&self) -> Result<RusotoRegion> {
+        let it = match self.endpoint {
+            Some(ref it) => RusotoRegion::Custom {
+                name: self.region.clone(),
+                endpoint: it.clone(),
+            },
+            None => self.region.parse()?,
+        };
+        Ok(it)
+    }
+    pub fn credentials(&self) -> AwsCredentials {
+        AwsCredentials::new(
+            self.access_key_id.clone(),
+            self.secret_access_key.clone(),
+            None,
+            None,
+        )
     }
 }

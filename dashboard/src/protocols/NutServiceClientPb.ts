@@ -2077,6 +2077,135 @@ export class SiteClient {
     this.methodDescriptorListUser);
   }
 
+  methodDescriptorSetAws = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Site/SetAws',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.AwsProfile,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.AwsProfile) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  setAws(
+    request: nut_pb.AwsProfile,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  setAws(
+    request: nut_pb.AwsProfile,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  setAws(
+    request: nut_pb.AwsProfile,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Site/SetAws',
+        request,
+        metadata || {},
+        this.methodDescriptorSetAws,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Site/SetAws',
+    request,
+    metadata || {},
+    this.methodDescriptorSetAws);
+  }
+
+  methodDescriptorGetAws = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Site/GetAws',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    nut_pb.AwsProfile,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    nut_pb.AwsProfile.deserializeBinary
+  );
+
+  getAws(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.AwsProfile>;
+
+  getAws(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.AwsProfile) => void): grpcWeb.ClientReadableStream<nut_pb.AwsProfile>;
+
+  getAws(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.AwsProfile) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Site/GetAws',
+        request,
+        metadata || {},
+        this.methodDescriptorGetAws,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Site/GetAws',
+    request,
+    metadata || {},
+    this.methodDescriptorGetAws);
+  }
+
+  methodDescriptorTestAwsS3 = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Site/TestAwsS3',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    nut_pb.SiteAwsS3TestResponse,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    nut_pb.SiteAwsS3TestResponse.deserializeBinary
+  );
+
+  testAwsS3(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.SiteAwsS3TestResponse>;
+
+  testAwsS3(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.SiteAwsS3TestResponse) => void): grpcWeb.ClientReadableStream<nut_pb.SiteAwsS3TestResponse>;
+
+  testAwsS3(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.SiteAwsS3TestResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Site/TestAwsS3',
+        request,
+        metadata || {},
+        this.methodDescriptorTestAwsS3,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Site/TestAwsS3',
+    request,
+    metadata || {},
+    this.methodDescriptorTestAwsS3);
+  }
+
   methodDescriptorSetSmtp = new grpcWeb.MethodDescriptor(
     '/palm.plugins.nut.v1.Site/SetSmtp',
     grpcWeb.MethodType.UNARY,

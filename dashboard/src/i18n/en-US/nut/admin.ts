@@ -37,5 +37,6 @@ export default {
   'nut.admin.site.redis.clear-confirm': 'Are you sure to clear the cache?',
   'nut.admin.site.rss.title': 'Rss',
   'nut.admin.site.sitemap.title': 'Sitemap',
+  'nut.admin.site.aws.s3-buckets': 'S3 buckets',
   'nut.admin.policies.title': 'Policies',
 };

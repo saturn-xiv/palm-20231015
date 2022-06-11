@@ -61,19 +61,11 @@ impl Default for Handler {
     }
 }
 
-#[cfg(not(debug_assertions))]
 impl QueueHandler for Handler {
-    fn handle(&self, _id: &str, _content_type: &str, payload: &[u8]) -> Result<()> {
+    fn handle(&self, id: &str, content_type: &str, payload: &[u8]) -> Result<()> {
+        info!("receive message {} {}", id, content_type);
         let task: Task = flexbuffers::from_slice(payload)?;
+        info!("send {} to {}", task.subject, task.to);
         task.send(&self.host, &self.account, &self.password)
-    }
-}
-
-#[cfg(debug_assertions)]
-impl QueueHandler for Handler {
-    fn handle(&self, _id: &str, _content_type: &str, payload: &[u8]) -> Result<()> {
-        let task: Task = flexbuffers::from_slice(payload)?;
-        info!("send to {}:{}\n{}", task.to, task.subject, task.body);
-        Ok(())
     }
 }
