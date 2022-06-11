@@ -1,14 +1,16 @@
 import { defineConfig } from 'umi';
 
+const BASE_PATH = '/my/';
+
 export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
   fastRefresh: {},
   hash: true,
-  base: '/my/',
-  publicPath: '/my/',
-  favicon: '/favicon.png',
+  base: BASE_PATH,
+  publicPath: BASE_PATH,
+  favicon: `${BASE_PATH}favicon.png`,
   dynamicImport: {
     loading: '@/Loading',
   },
