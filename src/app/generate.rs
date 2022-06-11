@@ -32,13 +32,13 @@ impl WwwNginxConf<'_> {
     }
 }
 #[derive(Template)]
-#[template(path = "nginx/rpc.conf", escape = "none")]
-struct RpcNginxConf<'a> {
+#[template(path = "nginx/api.conf", escape = "none")]
+struct ApiNginxConf<'a> {
     domain: &'a str,
     port: u16,
     ssl: bool,
 }
-impl RpcNginxConf<'_> {
+impl ApiNginxConf<'_> {
     pub fn write<P: AsRef<Path>>(&self, file: P) -> Result<()> {
         let file = file.as_ref();
         info!("generate file {}", file.display());
@@ -53,26 +53,6 @@ impl RpcNginxConf<'_> {
     }
 }
 
-#[derive(Template)]
-#[template(path = "nginx/s3.conf", escape = "none")]
-struct S3NginxConf<'a> {
-    domain: &'a str,
-    ssl: bool,
-}
-impl S3NginxConf<'_> {
-    pub fn write<P: AsRef<Path>>(&self, file: P) -> Result<()> {
-        let file = file.as_ref();
-        info!("generate file {}", file.display());
-        let tpl = self.render()?;
-        let mut fd = fs::OpenOptions::new()
-            .write(true)
-            .create_new(true)
-            .mode(0o644)
-            .open(file)?;
-        fd.write_all(tpl.as_bytes())?;
-        Ok(())
-    }
-}
 pub fn nginx_conf(cfg: &Config, domain: &str, ssl: bool) -> Result<()> {
     {
         let tpl = WwwNginxConf {
@@ -83,23 +63,20 @@ pub fn nginx_conf(cfg: &Config, domain: &str, ssl: bool) -> Result<()> {
         };
         let file = Path::new("tmp")
             .join("nginx")
-            .join(format!("www.{}.conf", domain));
+            .join(format!("{}.conf", domain));
         tpl.write(&file)?;
     }
-    {
-        let tpl = RpcNginxConf {
-            domain,
-            port: cfg.http.port,
+    for (px, pt) in [("rpc", cfg.http.port), ("s3", 9000), ("cli.s3", 9001)] {
+        let domain = format!("{}.{}", px, domain);
+        let tpl = ApiNginxConf {
+            domain: &domain,
+            port: pt,
             ssl,
         };
-        let file = Path::new("nginx").join(format!("rpc.{}.conf", domain));
+        let file = Path::new("nginx").join(format!("{}.conf", domain));
         tpl.write(&file)?;
     }
-    {
-        let tpl = S3NginxConf { domain, ssl };
-        let file = Path::new("nginx").join(format!("s3.{}.conf", domain));
-        tpl.write(&file)?;
-    }
+
     info!("please copy it into /etc/nginx/sites-enable/ folder.");
     Ok(())
 }

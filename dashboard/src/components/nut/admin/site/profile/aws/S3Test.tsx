@@ -16,6 +16,7 @@ const BucketList = ({ items }: IBucketListProps) => {
     <List<string>
       dataSource={items}
       bordered
+      pagination={{ position: 'bottom' }}
       renderItem={(item) => <List.Item>{item}</List.Item>}
     />
   );
