@@ -1,10 +1,4 @@
-@import '~@ant-design/pro-form/dist/form.css';
-@import '~@ant-design/pro-layout/dist/layout.css';
-@import '~@ant-design/pro-table/dist/table.css';
-@import '~@ant-design/pro-list/dist/list.css';
-@import '~@ant-design/pro-descriptions/dist/descriptions.css';
-@import '~@ant-design/pro-card/dist/card.css';
-@import '~@ant-design/pro-skeleton/dist/skeleton.less';
+@import '~@ant-design/pro-components/dist/components.css';
 
 @import '~react-quill/dist/quill.snow.css';
 

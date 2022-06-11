@@ -719,11 +719,14 @@ impl v1::site_server::Site for Service {
                 lapin::protocol::metadata::REVISION
             ),
         };
+        let system = try_grpc!(v1::site_status_response::System::new())?;
+
         let redis = try_grpc!(v1::site_status_response::Redis::new(ch))?;
         Ok(Response::new(v1::SiteStatusResponse {
             postgresql: Some(postgresql),
             rabbitmq: Some(rabbitmq),
             redis: Some(redis),
+            system: Some(system),
             ..Default::default()
         }))
     }

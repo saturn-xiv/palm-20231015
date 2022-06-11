@@ -60,16 +60,16 @@ const Widget = () => {
           >
             <Row gutter={[16, 16]}>
               <Col sm={{ span: 22, offset: 1 }} md={{ span: 10 }}>
-                <SystemPanel />
+                <SystemPanel item={status.getSystem()} />
               </Col>
               <Col sm={{ span: 22, offset: 1 }} md={{ span: 10 }}>
                 <PostgreSqlPanel item={status.getPostgresql()} />
               </Col>
               <Col sm={{ span: 22, offset: 1 }} md={{ span: 10 }}>
-                <RedisPanel />
+                <RedisPanel item={status.getRedis()} />
               </Col>
               <Col sm={{ span: 22, offset: 1 }} md={{ span: 10 }}>
-                <RabbitMqPanel />
+                <RabbitMqPanel item={status.getRabbitmq()} />
               </Col>
             </Row>
           </Tabs.TabPane>

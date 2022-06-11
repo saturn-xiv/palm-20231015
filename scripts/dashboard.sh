@@ -12,8 +12,7 @@ yarn add dayjs timezones-list grpc-web \
     react-color @types/react-color \
     react-json-view react-syntax-highlighter \
     emoji-mart react-sparklines react-highlight-words \
-    @ant-design/pro-form @ant-design/pro-layout@beta @ant-design/pro-table @ant-design/pro-list \
-    @ant-design/pro-descriptions @ant-design/pro-card @ant-design/pro-skeleton
+    @ant-design/pro-components
     
 
 echo 'done.'

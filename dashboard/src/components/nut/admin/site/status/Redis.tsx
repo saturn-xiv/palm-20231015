@@ -1,4 +1,4 @@
-import { Card, Table } from 'antd';
+import { Card, List, Table } from 'antd';
 import { SiteStatusResponse } from '@/protocols/nut_pb';
 
 export interface IProps {
@@ -22,7 +22,13 @@ const Widget = ({ item }: IProps) => {
           ?.getItemsList()
           .map((x) => ({ key: x.getKey(), ttl: x.getTtl() }))}
       />
-      <pre>{item?.getInfo()}</pre>
+
+      <List
+        dataSource={item?.getInfo().split('\r\n')}
+        bordered
+        renderItem={(item) => <List.Item>${item}</List.Item>}
+        pagination={{ position: 'bottom' }}
+      />
     </Card>
   );
 };

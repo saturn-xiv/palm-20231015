@@ -1,4 +1,7 @@
 import { Card, Typography, List } from 'antd';
+import { Timestamp } from 'google-protobuf/google/protobuf/timestamp_pb';
+
+import { to_date } from '@/components';
 import { SiteStatusResponse } from '@/protocols/nut_pb';
 
 export interface IProps {
@@ -12,7 +15,10 @@ interface IItem {
 
 const Widget = ({ item }: IProps) => {
   var items: IItem[] = [
-    { key: 'Timestamp', value: item?.getNow()?.toString() },
+    {
+      key: 'Timestamp',
+      value: to_date(item?.getNow() || new Timestamp()).toString(),
+    },
     { key: 'Version', value: item?.getVersion() },
   ];
   if (item) {
