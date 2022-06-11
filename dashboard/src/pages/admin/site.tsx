@@ -17,7 +17,7 @@ import BingForm from '@/components/nut/admin/site/seo/Bing';
 import SmtpForm from '@/components/nut/admin/site/profile/SmtpProfile';
 import PostgreSqlPanel from '@/components/nut/admin/site/status/PostgreSql';
 import TokenPanel from '@/components/nut/admin/site/profile/Token';
-import RedisPanel from '@/components/nut/admin/site/status/Redis';
+import RedisPanel from '@/components/nut/admin/site/status/redis';
 import SystemPanel from '@/components/nut/admin/site/status/System';
 import RabbitMqPanel from '@/components/nut/admin/site/status/RabbitMq';
 import { SiteClient } from '@/protocols/NutServiceClientPb';

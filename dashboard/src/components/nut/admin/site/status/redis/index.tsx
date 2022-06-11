@@ -1,5 +1,8 @@
+import { useState } from 'react';
 import { Card, List, Table } from 'antd';
+
 import { SiteStatusResponse } from '@/protocols/nut_pb';
+import ClearButton from './Clear';
 
 export interface IProps {
   item?: SiteStatusResponse.Redis;
@@ -11,16 +14,28 @@ interface IItem {
 }
 
 const Widget = ({ item }: IProps) => {
+  const [clear, setClear] = useState(false);
   return (
     <Card title="Redis">
       <Table
+        footer={() => (
+          <ClearButton
+            handleRefresh={() => {
+              setClear(true);
+            }}
+          />
+        )}
         columns={[
           { title: 'KEY', dataIndex: 'key', key: 'key' },
           { title: 'TTL', dataIndex: 'ttl', key: 'ttl' },
         ]}
-        dataSource={item
-          ?.getItemsList()
-          .map((x) => ({ key: x.getKey(), ttl: x.getTtl() }))}
+        dataSource={
+          clear
+            ? []
+            : item
+                ?.getItemsList()
+                .map((x) => ({ key: x.getKey(), ttl: x.getTtl() }))
+        }
       />
 
       <List

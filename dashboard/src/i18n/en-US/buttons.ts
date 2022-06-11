@@ -17,4 +17,5 @@ export default {
   'buttons.copy-to-clipboard': 'Copy to clipboard',
   'buttons.associate': 'Associate',
   'buttons.unassociate': 'Unassociate',
+  'buttons.clear': 'Clear',
 };

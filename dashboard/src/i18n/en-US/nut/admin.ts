@@ -34,6 +34,7 @@ export default {
   'nut.admin.site.bing.site-verify-id': 'Site verify id',
   'nut.admin.site.keywords.title': 'Keywords',
   'nut.admin.site.status': 'Status',
+  'nut.admin.site.redis.clear-confirm': 'Are you sure to clear the cache?',
   'nut.admin.site.rss.title': 'Rss',
   'nut.admin.site.sitemap.title': 'Sitemap',
   'nut.admin.policies.title': 'Policies',

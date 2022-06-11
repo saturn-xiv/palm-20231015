@@ -698,7 +698,18 @@ impl v1::site_server::Site for Service {
         let it = try_grpc!(v1::BaiduProfile::decode(&buf[..]))?;
         Ok(Response::new(it))
     }
-
+    async fn clear_cache(&self, req: Request<()>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        try_grpc!(user.is_administrator(db))?;
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        try_grpc!(ch.clear())?;
+        Ok(Response::new(()))
+    }
     async fn status(&self, req: Request<()>) -> GrpcResult<v1::SiteStatusResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;

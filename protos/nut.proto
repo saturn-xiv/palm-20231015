@@ -245,6 +245,8 @@ message SettingSetRequest {
 service Site {
   rpc Install(SiteInstallRequest) returns (google.protobuf.Empty) {}
 
+  rpc ClearCache(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
   rpc Layout(google.protobuf.Empty) returns (SiteLayoutResponse) {}
   rpc SetAuthor(SiteLayoutResponse.Author) returns (google.protobuf.Empty) {}
   rpc SetCopyright(SiteSetCopyrightRequest) returns (google.protobuf.Empty) {}

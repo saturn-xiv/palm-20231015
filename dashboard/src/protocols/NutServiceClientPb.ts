@@ -1389,6 +1389,49 @@ export class SiteClient {
     this.methodDescriptorInstall);
   }
 
+  methodDescriptorClearCache = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Site/ClearCache',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    google_protobuf_empty_pb.Empty,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  clearCache(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  clearCache(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  clearCache(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Site/ClearCache',
+        request,
+        metadata || {},
+        this.methodDescriptorClearCache,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Site/ClearCache',
+    request,
+    metadata || {},
+    this.methodDescriptorClearCache);
+  }
+
   methodDescriptorLayout = new grpcWeb.MethodDescriptor(
     '/palm.plugins.nut.v1.Site/Layout',
     grpcWeb.MethodType.UNARY,
