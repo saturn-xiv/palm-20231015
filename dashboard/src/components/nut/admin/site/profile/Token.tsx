@@ -75,7 +75,26 @@ const Widget = () => {
             label={intl.formatMessage({
               id: 'form.fields.due-day.label',
             })}
-            rules={[{ required: true }]}
+            rules={[
+              { required: true },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  const now = dayjs();
+                  const due = dayjs(getFieldValue('due'));
+                  if (due <= now) {
+                    return Promise.reject(
+                      new Error(
+                        intl.formatMessage({
+                          id: 'form.fields.due-day.must-after-today',
+                        }),
+                      ),
+                    );
+                  }
+
+                  return Promise.resolve();
+                },
+              }),
+            ]}
           />
         </ProForm.Group>
       </ProForm>

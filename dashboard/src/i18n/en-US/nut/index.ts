@@ -9,6 +9,7 @@ export default {
   'nut.leave-words.new.title': 'Leave us a message',
   'nut.404.title': 'Not found',
   'nut.attachments.title': 'Attachments',
+  'nut.attachments.show.due.invalid': 'Must be less than a week',
   ...users,
   ...admin,
   ...menus,

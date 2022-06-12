@@ -8,6 +8,8 @@ import ProForm, {
   ProFormDateTimePicker,
 } from '@ant-design/pro-form';
 import type { ProFormInstance } from '@ant-design/pro-form';
+import dayjs from 'dayjs';
+import { Duration } from 'google-protobuf/google/protobuf/duration_pb';
 
 import { IItem } from '.';
 import { AttachemtShowRequest } from '@/protocols/nut_pb';
@@ -18,7 +20,7 @@ interface IProps {
   item: IItem;
 }
 interface IFormData {
-  expiredAt: Date;
+  due: Date;
 }
 
 const Widget = ({ item }: IProps) => {
@@ -65,6 +67,15 @@ const Widget = ({ item }: IProps) => {
         const request = new AttachemtShowRequest();
         request.setId(item.id);
 
+        {
+          const now = dayjs();
+          const due = dayjs(values.due);
+          const seconds = due.diff(now, 'second');
+          const ttl = new Duration();
+          ttl.setSeconds(seconds);
+          request.setTtl(ttl);
+        }
+
         client.show(request, grpc_metadata(), (err, res) => {
           if (err) {
             message.error(err.message);
@@ -89,7 +100,34 @@ const Widget = ({ item }: IProps) => {
           label={intl.formatMessage({
             id: 'form.fields.due-day.label',
           })}
-          rules={[{ required: true }]}
+          rules={[
+            { required: true },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                const now = dayjs();
+                const due = dayjs(getFieldValue('due'));
+                if (due <= now) {
+                  return Promise.reject(
+                    new Error(
+                      intl.formatMessage({
+                        id: 'form.fields.due-day.must-after-today',
+                      }),
+                    ),
+                  );
+                }
+                if (due.diff(now, 'week') > 0) {
+                  return Promise.reject(
+                    new Error(
+                      intl.formatMessage({
+                        id: 'nut.attachments.show.due.invalid',
+                      }),
+                    ),
+                  );
+                }
+                return Promise.resolve();
+              },
+            }),
+          ]}
         />
       </ProForm.Group>
     </ModalForm>

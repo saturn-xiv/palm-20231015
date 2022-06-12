@@ -30,6 +30,7 @@ export default {
   'form.fields.port.label': 'Port',
   'form.fields.host.label': 'Host',
   'form.fields.due-day.label': 'Due day',
+  'form.fields.due-day.must-after-today': 'Due day is must after today',
   'form.fields.role.label': 'Role',
   'form.fields.roles.label': 'Roles',
   'form.fields.operation.label': 'Operation',
