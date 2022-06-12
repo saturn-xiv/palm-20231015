@@ -1,3 +1,4 @@
+pub mod attachment;
 pub mod locale;
 pub mod policy;
 pub mod role;

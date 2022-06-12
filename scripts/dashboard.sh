@@ -2,7 +2,7 @@
 
 set -e
 
-yarn add dayjs timezones-list grpc-web \
+yarn add filesize dayjs timezones-list grpc-web \
     google-protobuf @types/google-protobuf \
     js-cookie @types/js-cookie \
     jwt-decode dinero.js@alpha video.js \

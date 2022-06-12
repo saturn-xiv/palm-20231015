@@ -22,7 +22,7 @@ impl Token {
         // 1. Check header
         if let Some(it) = req.headers().get(AUTHORIZATION) {
             if let Ok(it) = it.to_str() {
-                if let Some(ref it) = it.strip_prefix(Jwt::BEARER) {
+                if let Some(it) = it.strip_prefix(Jwt::BEARER) {
                     return Some(it.to_string());
                 }
             }

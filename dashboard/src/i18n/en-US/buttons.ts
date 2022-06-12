@@ -20,4 +20,8 @@ export default {
   'buttons.clear': 'Clear',
   'buttons.fetch': 'Fetch',
   'buttons.refresh': 'Refresh',
+  'buttons.show': 'Show',
+  'buttons.open': 'Open',
+  'buttons.upload': 'Upload',
+  'buttons.click-to-upload': 'Click to upload',
 };

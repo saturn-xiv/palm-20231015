@@ -39,5 +39,12 @@ export default {
   'form.fields.user.label': 'User',
   'form.fields.region.label': 'Region',
   'form.fields.endpoint.label': 'Endpoint',
+  'form.fields.name.label': 'Name',
+  'form.fields.content-type.label': 'Content type',
+  'form.fields.file-size.label': 'File size',
+  'form.fields.size.label': 'Size',
+  'form.upload.successed': 'File {name} uploaded successfully.',
+  'form.upload.failed': 'File {name} upload failed.',
+  'form.upload.processing': 'Please wait for file {name} uploading...',
   'form.submit.successed': 'Successed!',
 };

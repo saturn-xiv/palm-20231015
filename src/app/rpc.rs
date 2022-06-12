@@ -20,6 +20,16 @@ pub async fn web(cfg: &Config) -> Result<()> {
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
 
+    let nut_attachment = tonic_web::config()
+        .allow_all_origins()
+        .allow_credentials(true)
+        .enable(nut::v1::attachment_server::AttachmentServer::new(
+            nut::services::attachment::Service {
+                pgsql: pgsql.clone(),
+                jwt: jwt.clone(),
+                aes: aes.clone(),
+            },
+        ));
     let nut_locale = tonic_web::config()
         .allow_all_origins()
         .allow_credentials(true)
@@ -39,19 +49,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
                 aes: aes.clone(),
             },
         ));
-    let nut_site = tonic_web::config()
-        .allow_all_origins()
-        .allow_credentials(true)
-        .enable(nut::v1::site_server::SiteServer::new(
-            nut::services::site::Service {
-                pgsql: pgsql.clone(),
-                jwt: jwt.clone(),
-                aes,
-                hmac: hmac.clone(),
-                redis,
-                rabbitmq: rabbitmq.clone(),
-            },
-        ));
+
     let nut_user = tonic_web::config()
         .allow_all_origins()
         .allow_credentials(true)
@@ -59,10 +57,11 @@ pub async fn web(cfg: &Config) -> Result<()> {
             nut::services::user::Service {
                 pgsql: pgsql.clone(),
                 jwt: jwt.clone(),
-                hmac,
-                rabbitmq,
+                hmac: hmac.clone(),
+                rabbitmq: rabbitmq.clone(),
             },
         ));
+
     let nut_role = tonic_web::config()
         .allow_all_origins()
         .allow_credentials(true)
@@ -72,11 +71,28 @@ pub async fn web(cfg: &Config) -> Result<()> {
                 jwt: jwt.clone(),
             },
         ));
+
     let nut_policy = tonic_web::config()
         .allow_all_origins()
         .allow_credentials(true)
         .enable(nut::v1::policy_server::PolicyServer::new(
-            nut::services::policy::Service { pgsql, jwt },
+            nut::services::policy::Service {
+                pgsql: pgsql.clone(),
+                jwt: jwt.clone(),
+            },
+        ));
+    let nut_site = tonic_web::config()
+        .allow_all_origins()
+        .allow_credentials(true)
+        .enable(nut::v1::site_server::SiteServer::new(
+            nut::services::site::Service {
+                pgsql,
+                jwt,
+                aes,
+                hmac,
+                redis,
+                rabbitmq,
+            },
         ));
 
     Server::builder()
@@ -84,6 +100,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
         .add_service(nut_locale)
         .add_service(nut_setting)
         .add_service(nut_user)
+        .add_service(nut_attachment)
         .add_service(nut_role)
         .add_service(nut_policy)
         .add_service(nut_site)

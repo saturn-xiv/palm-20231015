@@ -16,6 +16,7 @@ pub struct Client {
     region: Region,
 }
 
+// https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html
 impl Client {
     pub fn new(
         credentials: AwsCredentials,
@@ -92,30 +93,35 @@ impl Client {
         Ok(objects)
     }
 
-    pub async fn put_object(&self, bucket: String, name: String, body: Vec<u8>) -> Result<()> {
+    pub async fn put_object(
+        &self,
+        bucket: String,
+        name: String,
+        content_type: String,
+        body: Vec<u8>,
+    ) -> Result<()> {
         self.client
             .put_object(PutObjectRequest {
                 bucket,
                 key: name,
                 body: Some(body.into()),
+                content_type: Some(content_type),
                 ..Default::default()
             })
             .await?;
         Ok(())
     }
-    pub fn get_object(&self, bucket: String, name: String, ttl: Duration) -> Result<String> {
+    pub fn get_object(&self, bucket: String, name: String, ttl: Duration) -> String {
         let req = GetObjectRequest {
             bucket,
             key: name,
             ..Default::default()
         };
-
-        let it = req.get_presigned_url(
+        req.get_presigned_url(
             &self.region,
             &self.credentials,
             &PreSignedRequestOption { expires_in: ttl },
-        );
-        Ok(it)
+        )
     }
 
     pub async fn delete_object(&self, bucket: String, name: String) -> Result<()> {

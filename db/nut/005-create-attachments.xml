@@ -12,6 +12,12 @@
             <column name="user_id" type="integer">
                 <constraints nullable="false" />
             </column>
+            <column name="bucket" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" unique="true" />
+            </column>
             <column name="title" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
@@ -37,6 +43,9 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
+        <createIndex tableName="attachments" indexName="idx_attachments_bucket">
+            <column name="bucket" />
+        </createIndex>
         <createIndex tableName="attachments" indexName="idx_attachments_content_type">
             <column name="content_type" />
         </createIndex>

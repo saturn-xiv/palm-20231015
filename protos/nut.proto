@@ -189,6 +189,37 @@ message PolicyIndexResponse {
 }
 
 // ----------------------------------------------------------------------------
+service Attachment {
+  rpc Index(Pager) returns (AttachmetIndexResponse) {}
+  rpc Destroy(IdRequest) returns (google.protobuf.Empty) {}
+  rpc Show(AttachemtShowRequest) returns (AttachemtShowResponse) {}
+}
+message AttachemtShowRequest {
+  int32 id = 1;
+  google.protobuf.Duration ttl = 2;
+}
+message AttachemtShowResponse {
+  AttachmetIndexResponse.Item item = 1;
+  string url = 2;
+}
+
+message AttachmetIndexResponse {
+  message Item {
+    int32 id = 1;
+    string bucket = 2;
+    string name = 3;
+    string title = 4;
+    int64 size = 5;
+    string content_type = 6;
+    string region = 7;
+    string status = 8;
+
+    google.protobuf.Timestamp updated_at = 11;
+  }
+  repeated Item items = 1;
+  Pagination pagination = 9;
+}
+// ----------------------------------------------------------------------------
 
 service Locale {
   rpc Set(LocaleSetRequest) returns (google.protobuf.Empty) {}

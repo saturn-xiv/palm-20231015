@@ -92,6 +92,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                     .name(format!("{}.id", NAME))
                     .secure(is_prod),
             ))
+            .service(nut::controllers::attachments::create)
             .service(nut::controllers::captcha::get)
             .service(nut::controllers::sitemap::index)
             .service(nut::controllers::sitemap::by_lang)

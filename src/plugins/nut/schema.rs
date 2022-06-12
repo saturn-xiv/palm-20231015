@@ -4,6 +4,8 @@ diesel::table! {
     attachments (id) {
         id -> Int4,
         user_id -> Int4,
+        bucket -> Varchar,
+        name -> Varchar,
         title -> Varchar,
         size -> Int8,
         content_type -> Varchar,

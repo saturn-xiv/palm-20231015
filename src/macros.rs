@@ -15,6 +15,18 @@ macro_rules! to_datetime {
 }
 
 #[macro_export]
+macro_rules! to_chrono_duration {
+    ($x:expr) => {{
+        chrono::Duration::seconds($x.seconds)
+    }};
+}
+#[macro_export]
+macro_rules! to_std_duration {
+    ($x:expr) => {{
+        std::time::Duration::new($x.seconds as u64, $x.nanos as u32)
+    }};
+}
+#[macro_export]
 macro_rules! to_code {
     ($x:expr) => {{
         let it = $x.trim();

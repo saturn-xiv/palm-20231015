@@ -1027,6 +1027,156 @@ export class PolicyClient {
 
 }
 
+export class AttachmentClient {
+  client_: grpcWeb.AbstractClientBase;
+  hostname_: string;
+  credentials_: null | { [index: string]: string; };
+  options_: null | { [index: string]: any; };
+
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; }) {
+    if (!options) options = {};
+    if (!credentials) credentials = {};
+    options['format'] = 'binary';
+
+    this.client_ = new grpcWeb.GrpcWebClientBase(options);
+    this.hostname_ = hostname;
+    this.credentials_ = credentials;
+    this.options_ = options;
+  }
+
+  methodDescriptorIndex = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Attachment/Index',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.Pager,
+    nut_pb.AttachmetIndexResponse,
+    (request: nut_pb.Pager) => {
+      return request.serializeBinary();
+    },
+    nut_pb.AttachmetIndexResponse.deserializeBinary
+  );
+
+  index(
+    request: nut_pb.Pager,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.AttachmetIndexResponse>;
+
+  index(
+    request: nut_pb.Pager,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.AttachmetIndexResponse) => void): grpcWeb.ClientReadableStream<nut_pb.AttachmetIndexResponse>;
+
+  index(
+    request: nut_pb.Pager,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.AttachmetIndexResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Attachment/Index',
+        request,
+        metadata || {},
+        this.methodDescriptorIndex,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Attachment/Index',
+    request,
+    metadata || {},
+    this.methodDescriptorIndex);
+  }
+
+  methodDescriptorDestroy = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Attachment/Destroy',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.IdRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.IdRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  destroy(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  destroy(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  destroy(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Attachment/Destroy',
+        request,
+        metadata || {},
+        this.methodDescriptorDestroy,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Attachment/Destroy',
+    request,
+    metadata || {},
+    this.methodDescriptorDestroy);
+  }
+
+  methodDescriptorShow = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Attachment/Show',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.AttachemtShowRequest,
+    nut_pb.AttachemtShowResponse,
+    (request: nut_pb.AttachemtShowRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.AttachemtShowResponse.deserializeBinary
+  );
+
+  show(
+    request: nut_pb.AttachemtShowRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.AttachemtShowResponse>;
+
+  show(
+    request: nut_pb.AttachemtShowRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.AttachemtShowResponse) => void): grpcWeb.ClientReadableStream<nut_pb.AttachemtShowResponse>;
+
+  show(
+    request: nut_pb.AttachemtShowRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.AttachemtShowResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Attachment/Show',
+        request,
+        metadata || {},
+        this.methodDescriptorShow,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Attachment/Show',
+    request,
+    metadata || {},
+    this.methodDescriptorShow);
+  }
+
+}
+
 export class LocaleClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;

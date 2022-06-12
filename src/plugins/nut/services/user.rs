@@ -323,7 +323,7 @@ impl v1::user_server::User for Service {
         let user = try_grpc!(ss.current_user(db, jwt))?;
         let req = req.into_inner();
 
-        let token = try_grpc!(user.token(jwt, Duration::seconds(req.seconds)))?;
+        let token = try_grpc!(user.token(jwt, to_chrono_duration!(req)))?;
         Ok(Response::new(v1::UserSignInResponse { token }))
     }
     async fn logs(&self, req: Request<v1::Pager>) -> GrpcResult<v1::UserLogsResponse> {

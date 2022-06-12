@@ -784,6 +784,133 @@ export namespace PolicyIndexResponse {
 
 }
 
+export class AttachemtShowRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): AttachemtShowRequest;
+
+  getTtl(): google_protobuf_duration_pb.Duration | undefined;
+  setTtl(value?: google_protobuf_duration_pb.Duration): AttachemtShowRequest;
+  hasTtl(): boolean;
+  clearTtl(): AttachemtShowRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): AttachemtShowRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: AttachemtShowRequest): AttachemtShowRequest.AsObject;
+  static serializeBinaryToWriter(message: AttachemtShowRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AttachemtShowRequest;
+  static deserializeBinaryFromReader(message: AttachemtShowRequest, reader: jspb.BinaryReader): AttachemtShowRequest;
+}
+
+export namespace AttachemtShowRequest {
+  export type AsObject = {
+    id: number,
+    ttl?: google_protobuf_duration_pb.Duration.AsObject,
+  }
+}
+
+export class AttachemtShowResponse extends jspb.Message {
+  getItem(): AttachmetIndexResponse.Item | undefined;
+  setItem(value?: AttachmetIndexResponse.Item): AttachemtShowResponse;
+  hasItem(): boolean;
+  clearItem(): AttachemtShowResponse;
+
+  getUrl(): string;
+  setUrl(value: string): AttachemtShowResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): AttachemtShowResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: AttachemtShowResponse): AttachemtShowResponse.AsObject;
+  static serializeBinaryToWriter(message: AttachemtShowResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AttachemtShowResponse;
+  static deserializeBinaryFromReader(message: AttachemtShowResponse, reader: jspb.BinaryReader): AttachemtShowResponse;
+}
+
+export namespace AttachemtShowResponse {
+  export type AsObject = {
+    item?: AttachmetIndexResponse.Item.AsObject,
+    url: string,
+  }
+}
+
+export class AttachmetIndexResponse extends jspb.Message {
+  getItemsList(): Array<AttachmetIndexResponse.Item>;
+  setItemsList(value: Array<AttachmetIndexResponse.Item>): AttachmetIndexResponse;
+  clearItemsList(): AttachmetIndexResponse;
+  addItems(value?: AttachmetIndexResponse.Item, index?: number): AttachmetIndexResponse.Item;
+
+  getPagination(): Pagination | undefined;
+  setPagination(value?: Pagination): AttachmetIndexResponse;
+  hasPagination(): boolean;
+  clearPagination(): AttachmetIndexResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): AttachmetIndexResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: AttachmetIndexResponse): AttachmetIndexResponse.AsObject;
+  static serializeBinaryToWriter(message: AttachmetIndexResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AttachmetIndexResponse;
+  static deserializeBinaryFromReader(message: AttachmetIndexResponse, reader: jspb.BinaryReader): AttachmetIndexResponse;
+}
+
+export namespace AttachmetIndexResponse {
+  export type AsObject = {
+    itemsList: Array<AttachmetIndexResponse.Item.AsObject>,
+    pagination?: Pagination.AsObject,
+  }
+
+  export class Item extends jspb.Message {
+    getId(): number;
+    setId(value: number): Item;
+
+    getBucket(): string;
+    setBucket(value: string): Item;
+
+    getName(): string;
+    setName(value: string): Item;
+
+    getTitle(): string;
+    setTitle(value: string): Item;
+
+    getSize(): number;
+    setSize(value: number): Item;
+
+    getContentType(): string;
+    setContentType(value: string): Item;
+
+    getRegion(): string;
+    setRegion(value: string): Item;
+
+    getStatus(): string;
+    setStatus(value: string): Item;
+
+    getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
+    hasUpdatedAt(): boolean;
+    clearUpdatedAt(): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      id: number,
+      bucket: string,
+      name: string,
+      title: string,
+      size: number,
+      contentType: string,
+      region: string,
+      status: string,
+      updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    }
+  }
+
+}
+
 export class LocaleIndexResponse extends jspb.Message {
   getItemsList(): Array<LocaleIndexResponse.Item>;
   setItemsList(value: Array<LocaleIndexResponse.Item>): LocaleIndexResponse;

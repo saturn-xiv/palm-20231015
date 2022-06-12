@@ -16,7 +16,7 @@ interface IFormData {
 }
 
 const Widget = () => {
-  const [token, setToken] = useState<string>('');
+  const [token, setToken] = useState<string>();
   const intl = useIntl();
   const formRef = useRef<ProFormInstance>();
   return (
@@ -28,17 +28,21 @@ const Widget = () => {
         formRef={formRef}
         submitter={{
           render: (props, doms) => {
-            return [
-              ...doms,
-              <Tooltip
-                key="copy"
-                title={intl.formatMessage({ id: 'buttons.copy-to-clipboard' })}
-              >
-                <CopyToClipboard text={token} onCopy={() => {}}>
-                  <Button icon={<CopyOutlined />} />
-                </CopyToClipboard>
-              </Tooltip>,
-            ];
+            return token
+              ? [
+                  ...doms,
+                  <Tooltip
+                    key="copy"
+                    title={intl.formatMessage({
+                      id: 'buttons.copy-to-clipboard',
+                    })}
+                  >
+                    <CopyToClipboard text={token} onCopy={() => {}}>
+                      <Button icon={<CopyOutlined />} />
+                    </CopyToClipboard>
+                  </Tooltip>,
+                ]
+              : doms;
           },
         }}
         onFinish={async (values: IFormData) => {
