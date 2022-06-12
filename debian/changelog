@@ -1,5 +1,5 @@
-palm (2022.06.05) stable; urgency=medium
+palm (2022.06.12) stable; urgency=medium
 
-  * [6501bf3] add the auth & rbac features.
+  * [df0dc9c] add nut plugin.
 
- -- Jeremy Zheng <jitang.zheng@gmail.com>  Sun, 05 Jun 2022 18:37:05 -0700
+ -- Jeremy Zheng <jitang.zheng@gmail.com>  Sun, 12 Jun 2022 15:51:42 -0700
