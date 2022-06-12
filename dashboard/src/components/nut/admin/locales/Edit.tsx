@@ -30,6 +30,7 @@ const Widget = ({ item, handleRefresh }: IProps) => {
   return (
     <ModalForm<IFormData>
       name="locales.edit"
+      modalProps={{ destroyOnClose: true }}
       formRef={formRef}
       onFinish={async (values: IFormData) => {
         const client = new LocaleClient(GRPC_HOST);

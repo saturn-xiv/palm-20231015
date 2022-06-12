@@ -1,5 +1,5 @@
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { CopyOutlined, PictureOutlined, EyeOutlined } from '@ant-design/icons';
+import { CopyOutlined, EyeOutlined, ShareAltOutlined } from '@ant-design/icons';
 import { Tooltip, Button, message } from 'antd';
 import { useState, useRef } from 'react';
 import { FormattedMessage, useIntl } from 'umi';
@@ -30,6 +30,7 @@ const Widget = ({ item }: IProps) => {
   return (
     <ModalForm<IFormData>
       name="attachments.show"
+      modalProps={{ destroyOnClose: true }}
       formRef={formRef}
       submitter={{
         render: (props, doms) => {
@@ -54,7 +55,7 @@ const Widget = ({ item }: IProps) => {
                     onClick={() => {
                       window.open(url, '_blank');
                     }}
-                    icon={<PictureOutlined />}
+                    icon={<EyeOutlined />}
                   />
                 </Tooltip>,
               ]
@@ -88,8 +89,15 @@ const Widget = ({ item }: IProps) => {
         });
       }}
       trigger={
-        <Tooltip title={<FormattedMessage id="buttons.show" />}>
-          <Button type="dashed" shape="circle" icon={<EyeOutlined />} />
+        <Tooltip
+          title={
+            <FormattedMessage
+              id="nut.attachments.show.title"
+              values={{ name: item.title }}
+            />
+          }
+        >
+          <Button type="dashed" shape="circle" icon={<ShareAltOutlined />} />
         </Tooltip>
       }
     >

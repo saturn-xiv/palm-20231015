@@ -1,6 +1,5 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { message, Button, Modal, Tooltip, List } from 'antd';
-import type { ProFormInstance } from '@ant-design/pro-form';
 import { UnorderedListOutlined } from '@ant-design/icons';
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb';
 import { FormattedMessage, useIntl } from 'umi';
@@ -29,7 +28,6 @@ interface IFormData {
 }
 
 const Widget = () => {
-  const formRef = useRef<ProFormInstance>();
   const [showBuckets, setShowBuckets] = useState(false);
   const [buckets, setBuckets] = useState<string[]>([]);
 
@@ -47,6 +45,7 @@ const Widget = () => {
         />
       </Tooltip>
       <Modal
+        destroyOnClose
         title={intl.formatMessage({ id: 'nut.admin.site.aws.s3-buckets' })}
         visible={showBuckets}
         okText={intl.formatMessage({ id: 'buttons.fetch' })}

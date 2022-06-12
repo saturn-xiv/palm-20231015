@@ -34,6 +34,7 @@ const Widget = ({ handleRefresh }: IProps) => {
   return (
     <ModalForm<IFormData>
       name="user.roles.associate"
+      modalProps={{ destroyOnClose: true }}
       formRef={formRef}
       onFinish={async (values: IFormData) => {
         const client = new RoleClient(GRPC_HOST);

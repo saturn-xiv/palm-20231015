@@ -31,6 +31,7 @@ const Widget = ({ handleRefresh }: IProps) => {
   return (
     <ModalForm<IFormData>
       name="policy.apply"
+      modalProps={{ destroyOnClose: true }}
       formRef={formRef}
       onFinish={async (values: IFormData) => {
         const client = new PolicyClient(GRPC_HOST);

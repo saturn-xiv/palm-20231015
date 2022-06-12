@@ -28,6 +28,7 @@ const Widget = ({ item, handleRefresh }: IProps) => {
   return (
     <ModalForm<IFormData>
       name="user.set-password"
+      modalProps={{ destroyOnClose: true }}
       formRef={formRef}
       initialValues={{
         nickName: item.nickName,

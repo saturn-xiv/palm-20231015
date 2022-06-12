@@ -27,6 +27,7 @@ const Widget = ({ handleRefresh }: IProps) => {
 
       <Modal
         title={intl.formatMessage({ id: 'buttons.upload' })}
+        destroyOnClose
         visible={show}
         onOk={() => {
           setShow(false);

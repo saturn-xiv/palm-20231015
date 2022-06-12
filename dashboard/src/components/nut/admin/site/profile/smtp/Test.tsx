@@ -26,6 +26,7 @@ const Widget = () => {
   return (
     <ModalForm<IFormData>
       name="site.smtp.test"
+      modalProps={{ destroyOnClose: true }}
       formRef={formRef}
       onFinish={async (values: IFormData) => {
         const client = new SiteClient(GRPC_HOST);
