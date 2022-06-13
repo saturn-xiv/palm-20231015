@@ -100,6 +100,7 @@ pub async fn launch() -> Result<()> {
     }
 
     {
+        info!("load config from {}", args.config.display());
         let f = File::open(&args.config)?;
         let m = f.metadata()?.permissions().mode();
         if ![0o100400, 0o100600].contains(&m) {

@@ -54,6 +54,10 @@ impl ApiNginxConf<'_> {
 }
 
 pub fn nginx_conf(cfg: &Config, domain: &str, ssl: bool) -> Result<()> {
+    let root = Path::new("tmp").join("nginx");
+    if !root.exists() {
+        fs::create_dir_all(&root)?;
+    }
     {
         let tpl = WwwNginxConf {
             domain,
@@ -61,9 +65,7 @@ pub fn nginx_conf(cfg: &Config, domain: &str, ssl: bool) -> Result<()> {
             port: cfg.http.port,
             ssl,
         };
-        let file = Path::new("tmp")
-            .join("nginx")
-            .join(format!("{}.conf", domain));
+        let file = root.join(format!("{}.conf", domain));
         tpl.write(&file)?;
     }
     for (px, pt) in [("rpc", cfg.http.port), ("s3", 9000), ("cli.s3", 9001)] {
@@ -73,7 +75,7 @@ pub fn nginx_conf(cfg: &Config, domain: &str, ssl: bool) -> Result<()> {
             port: pt,
             ssl,
         };
-        let file = Path::new("nginx").join(format!("{}.conf", domain));
+        let file = root.join(format!("{}.conf", domain));
         tpl.write(&file)?;
     }
 
@@ -131,10 +133,12 @@ impl S3SystemdConfig<'_> {
 pub fn systemd_conf(domain: &str) -> Result<()> {
     let user = &Uid::current().to_string();
     let group = &Gid::current().to_string();
+    let root = Path::new("tmp").join("systemd");
+    if !root.exists() {
+        fs::create_dir_all(&root)?;
+    }
     for it in &["rpc-tcp", "rpc-web", "api", "worker"] {
-        let file = Path::new("tmp")
-            .join("systemd")
-            .join(&format!("{}.{}.service", it, domain));
+        let file = root.join(&format!("{}.{}.service", it, domain));
 
         let tpl = PalmSystemdConfig {
             user,
@@ -147,9 +151,7 @@ pub fn systemd_conf(domain: &str) -> Result<()> {
         tpl.write(&file)?;
     }
     {
-        let file = Path::new("tmp")
-            .join("systemd")
-            .join(&format!("s3.{}.service", domain));
+        let file = root.join(&format!("s3.{}.service", domain));
 
         let tpl = S3SystemdConfig {
             user,
