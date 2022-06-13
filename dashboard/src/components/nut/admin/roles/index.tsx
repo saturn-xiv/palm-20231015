@@ -9,6 +9,7 @@ import { RoleClient } from '@/protocols/NutServiceClientPb';
 import { GRPC_HOST, grpc_metadata } from '@/request';
 import Associate from './Associate';
 import Unassociate from './Unassociate';
+import { ROLE_ROOT } from '@/models/useAuthModel';
 
 export interface ITableItem {
   id: number;
@@ -54,14 +55,18 @@ const Widget = () => {
           title: intl.formatMessage({ id: 'table.columns.operation.label' }),
           key: 'operation',
           width: 120,
-          render: (_, it) => (
-            <Unassociate
-              item={it}
-              handleRefresh={async () => {
-                ref.current?.reload();
-              }}
-            />
-          ),
+          render: (_, it) =>
+            it.user.id === initialState?.layout.currentUser?.id ||
+            it.role.code === ROLE_ROOT ? (
+              <></>
+            ) : (
+              <Unassociate
+                item={it}
+                handleRefresh={async () => {
+                  ref.current?.reload();
+                }}
+              />
+            ),
         },
       ]}
       request={async (params, sorter, filter) => {
@@ -75,28 +80,22 @@ const Widget = () => {
         return {
           total: response.getPagination()?.getTotal(),
           success: true,
-          data: response
-            .getItemsList()
-            .filter(
-              (x) =>
-                x.getUser()?.getId() !== initialState?.layout.currentUser?.id,
-            )
-            .map((x) => {
-              var it: ITableItem = {
-                id: x.getId(),
-                role: {
-                  code: x.getRole()?.getCode() || '',
-                  label: x.getRole()?.getLabel() || '',
-                },
-                user: {
-                  id: x.getUser()?.getId() || 0,
-                  realName: x.getUser()?.getRealName() || '',
-                  nickName: x.getUser()?.getNickName() || '',
-                },
-                createdAt: to_date(x.getCreatedAt() || new Timestamp()),
-              };
-              return it;
-            }),
+          data: response.getItemsList().map((x) => {
+            var it: ITableItem = {
+              id: x.getId(),
+              role: {
+                code: x.getRole()?.getCode() || '',
+                label: x.getRole()?.getLabel() || '',
+              },
+              user: {
+                id: x.getUser()?.getId() || 0,
+                realName: x.getUser()?.getRealName() || '',
+                nickName: x.getUser()?.getNickName() || '',
+              },
+              createdAt: to_date(x.getCreatedAt() || new Timestamp()),
+            };
+            return it;
+          }),
         };
       }}
       rowKey="id"
