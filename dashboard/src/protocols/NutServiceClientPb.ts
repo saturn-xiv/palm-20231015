@@ -1027,6 +1027,392 @@ export class PolicyClient {
 
 }
 
+export class TagClient {
+  client_: grpcWeb.AbstractClientBase;
+  hostname_: string;
+  credentials_: null | { [index: string]: string; };
+  options_: null | { [index: string]: any; };
+
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; }) {
+    if (!options) options = {};
+    if (!credentials) credentials = {};
+    options['format'] = 'binary';
+
+    this.client_ = new grpcWeb.GrpcWebClientBase(options);
+    this.hostname_ = hostname;
+    this.credentials_ = credentials;
+    this.options_ = options;
+  }
+
+  methodDescriptorCreate = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Tag/Create',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.TagCreateRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.TagCreateRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  create(
+    request: nut_pb.TagCreateRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  create(
+    request: nut_pb.TagCreateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  create(
+    request: nut_pb.TagCreateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Tag/Create',
+        request,
+        metadata || {},
+        this.methodDescriptorCreate,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Tag/Create',
+    request,
+    metadata || {},
+    this.methodDescriptorCreate);
+  }
+
+  methodDescriptorUpdate = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Tag/Update',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.TagUpdateRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.TagUpdateRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  update(
+    request: nut_pb.TagUpdateRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  update(
+    request: nut_pb.TagUpdateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  update(
+    request: nut_pb.TagUpdateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Tag/Update',
+        request,
+        metadata || {},
+        this.methodDescriptorUpdate,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Tag/Update',
+    request,
+    metadata || {},
+    this.methodDescriptorUpdate);
+  }
+
+  methodDescriptorDestroy = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Tag/Destroy',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.IdRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.IdRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  destroy(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  destroy(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  destroy(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Tag/Destroy',
+        request,
+        metadata || {},
+        this.methodDescriptorDestroy,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Tag/Destroy',
+    request,
+    metadata || {},
+    this.methodDescriptorDestroy);
+  }
+
+  methodDescriptorIndex = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Tag/Index',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    nut_pb.TagIndexResponse,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    nut_pb.TagIndexResponse.deserializeBinary
+  );
+
+  index(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.TagIndexResponse>;
+
+  index(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.TagIndexResponse) => void): grpcWeb.ClientReadableStream<nut_pb.TagIndexResponse>;
+
+  index(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.TagIndexResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Tag/Index',
+        request,
+        metadata || {},
+        this.methodDescriptorIndex,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Tag/Index',
+    request,
+    metadata || {},
+    this.methodDescriptorIndex);
+  }
+
+}
+
+export class CategoryClient {
+  client_: grpcWeb.AbstractClientBase;
+  hostname_: string;
+  credentials_: null | { [index: string]: string; };
+  options_: null | { [index: string]: any; };
+
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; }) {
+    if (!options) options = {};
+    if (!credentials) credentials = {};
+    options['format'] = 'binary';
+
+    this.client_ = new grpcWeb.GrpcWebClientBase(options);
+    this.hostname_ = hostname;
+    this.credentials_ = credentials;
+    this.options_ = options;
+  }
+
+  methodDescriptorCreate = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Category/Create',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.CategoryCreateRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.CategoryCreateRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  create(
+    request: nut_pb.CategoryCreateRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  create(
+    request: nut_pb.CategoryCreateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  create(
+    request: nut_pb.CategoryCreateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Category/Create',
+        request,
+        metadata || {},
+        this.methodDescriptorCreate,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Category/Create',
+    request,
+    metadata || {},
+    this.methodDescriptorCreate);
+  }
+
+  methodDescriptorUpdate = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Category/Update',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.CategoryUpdateRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.CategoryUpdateRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  update(
+    request: nut_pb.CategoryUpdateRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  update(
+    request: nut_pb.CategoryUpdateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  update(
+    request: nut_pb.CategoryUpdateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Category/Update',
+        request,
+        metadata || {},
+        this.methodDescriptorUpdate,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Category/Update',
+    request,
+    metadata || {},
+    this.methodDescriptorUpdate);
+  }
+
+  methodDescriptorDestroy = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Category/Destroy',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.IdRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.IdRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  destroy(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  destroy(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  destroy(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Category/Destroy',
+        request,
+        metadata || {},
+        this.methodDescriptorDestroy,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Category/Destroy',
+    request,
+    metadata || {},
+    this.methodDescriptorDestroy);
+  }
+
+  methodDescriptorIndex = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Category/Index',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    nut_pb.CategoryIndexResponse,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    nut_pb.CategoryIndexResponse.deserializeBinary
+  );
+
+  index(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.CategoryIndexResponse>;
+
+  index(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.CategoryIndexResponse) => void): grpcWeb.ClientReadableStream<nut_pb.CategoryIndexResponse>;
+
+  index(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.CategoryIndexResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Category/Index',
+        request,
+        metadata || {},
+        this.methodDescriptorIndex,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Category/Index',
+    request,
+    metadata || {},
+    this.methodDescriptorIndex);
+  }
+
+}
+
 export class AttachmentClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;

@@ -6,6 +6,7 @@ pub mod policy;
 pub mod role;
 pub mod tag;
 pub mod user;
+pub mod vote;
 
 use std::fmt;
 use std::str::FromStr;

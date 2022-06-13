@@ -11,5 +11,6 @@
     <include file="006-create-tags.xml" relativeToChangelogFile="true" />
     <include file="007-create-categories.xml" relativeToChangelogFile="true" />
     <include file="008-create-leave-words.xml" relativeToChangelogFile="true" />
+    <include file="009-create-votes.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>

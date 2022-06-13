@@ -189,6 +189,71 @@ message PolicyIndexResponse {
 }
 
 // ----------------------------------------------------------------------------
+
+service Tag {
+  rpc Create(TagCreateRequest) returns (google.protobuf.Empty) {}
+  rpc Update(TagUpdateRequest) returns (google.protobuf.Empty) {}
+  rpc Destroy(IdRequest) returns (google.protobuf.Empty) {}
+  rpc Index(google.protobuf.Empty) returns (TagIndexResponse) {}
+}
+message TagIndexResponse {
+  message Item {
+    int32 id = 1;
+    string lang = 2;
+    string name = 3;
+    int32 priority = 4;
+
+    google.protobuf.Timestamp updated_at = 11;
+  }
+  repeated Item items = 1;
+}
+message TagCreateRequest {
+  string lang = 1;
+  string name = 2;
+  int32 priority = 11;
+}
+
+message TagUpdateRequest {
+  int32 id = 1;
+  string name = 2;
+  int32 priority = 11;
+}
+// ----------------------------------------------------------------------------
+
+service Category {
+  rpc Create(CategoryCreateRequest) returns (google.protobuf.Empty) {}
+  rpc Update(CategoryUpdateRequest) returns (google.protobuf.Empty) {}
+  rpc Destroy(IdRequest) returns (google.protobuf.Empty) {}
+  rpc Index(google.protobuf.Empty) returns (CategoryIndexResponse) {}
+}
+message CategoryIndexResponse {
+  message Item {
+    int32 id = 1;
+    string lang = 2;
+    string name = 3;
+    optional int32 parent_id = 4;
+    int32 priority = 5;
+
+    google.protobuf.Timestamp updated_at = 11;
+  }
+  repeated Item items = 1;
+}
+message CategoryCreateRequest {
+  string lang = 1;
+  string name = 2;
+  optional int32 parent_id = 3;
+  int32 priority = 11;
+}
+
+message CategoryUpdateRequest {
+  int32 id = 1;
+  string name = 2;
+  optional int32 parent_id = 3;
+  int32 priority = 11;
+}
+
+// ----------------------------------------------------------------------------
+
 service Attachment {
   rpc Index(Pager) returns (AttachmetIndexResponse) {}
   rpc Destroy(IdRequest) returns (google.protobuf.Empty) {}
@@ -219,6 +284,7 @@ message AttachmetIndexResponse {
   repeated Item items = 1;
   Pagination pagination = 9;
 }
+
 // ----------------------------------------------------------------------------
 
 service Locale {

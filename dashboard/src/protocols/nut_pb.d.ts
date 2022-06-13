@@ -784,6 +784,257 @@ export namespace PolicyIndexResponse {
 
 }
 
+export class TagIndexResponse extends jspb.Message {
+  getItemsList(): Array<TagIndexResponse.Item>;
+  setItemsList(value: Array<TagIndexResponse.Item>): TagIndexResponse;
+  clearItemsList(): TagIndexResponse;
+  addItems(value?: TagIndexResponse.Item, index?: number): TagIndexResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TagIndexResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: TagIndexResponse): TagIndexResponse.AsObject;
+  static serializeBinaryToWriter(message: TagIndexResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TagIndexResponse;
+  static deserializeBinaryFromReader(message: TagIndexResponse, reader: jspb.BinaryReader): TagIndexResponse;
+}
+
+export namespace TagIndexResponse {
+  export type AsObject = {
+    itemsList: Array<TagIndexResponse.Item.AsObject>,
+  }
+
+  export class Item extends jspb.Message {
+    getId(): number;
+    setId(value: number): Item;
+
+    getLang(): string;
+    setLang(value: string): Item;
+
+    getName(): string;
+    setName(value: string): Item;
+
+    getPriority(): number;
+    setPriority(value: number): Item;
+
+    getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
+    hasUpdatedAt(): boolean;
+    clearUpdatedAt(): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      id: number,
+      lang: string,
+      name: string,
+      priority: number,
+      updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    }
+  }
+
+}
+
+export class TagCreateRequest extends jspb.Message {
+  getLang(): string;
+  setLang(value: string): TagCreateRequest;
+
+  getName(): string;
+  setName(value: string): TagCreateRequest;
+
+  getPriority(): number;
+  setPriority(value: number): TagCreateRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TagCreateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: TagCreateRequest): TagCreateRequest.AsObject;
+  static serializeBinaryToWriter(message: TagCreateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TagCreateRequest;
+  static deserializeBinaryFromReader(message: TagCreateRequest, reader: jspb.BinaryReader): TagCreateRequest;
+}
+
+export namespace TagCreateRequest {
+  export type AsObject = {
+    lang: string,
+    name: string,
+    priority: number,
+  }
+}
+
+export class TagUpdateRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): TagUpdateRequest;
+
+  getName(): string;
+  setName(value: string): TagUpdateRequest;
+
+  getPriority(): number;
+  setPriority(value: number): TagUpdateRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TagUpdateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: TagUpdateRequest): TagUpdateRequest.AsObject;
+  static serializeBinaryToWriter(message: TagUpdateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TagUpdateRequest;
+  static deserializeBinaryFromReader(message: TagUpdateRequest, reader: jspb.BinaryReader): TagUpdateRequest;
+}
+
+export namespace TagUpdateRequest {
+  export type AsObject = {
+    id: number,
+    name: string,
+    priority: number,
+  }
+}
+
+export class CategoryIndexResponse extends jspb.Message {
+  getItemsList(): Array<CategoryIndexResponse.Item>;
+  setItemsList(value: Array<CategoryIndexResponse.Item>): CategoryIndexResponse;
+  clearItemsList(): CategoryIndexResponse;
+  addItems(value?: CategoryIndexResponse.Item, index?: number): CategoryIndexResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CategoryIndexResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: CategoryIndexResponse): CategoryIndexResponse.AsObject;
+  static serializeBinaryToWriter(message: CategoryIndexResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CategoryIndexResponse;
+  static deserializeBinaryFromReader(message: CategoryIndexResponse, reader: jspb.BinaryReader): CategoryIndexResponse;
+}
+
+export namespace CategoryIndexResponse {
+  export type AsObject = {
+    itemsList: Array<CategoryIndexResponse.Item.AsObject>,
+  }
+
+  export class Item extends jspb.Message {
+    getId(): number;
+    setId(value: number): Item;
+
+    getLang(): string;
+    setLang(value: string): Item;
+
+    getName(): string;
+    setName(value: string): Item;
+
+    getParentId(): number;
+    setParentId(value: number): Item;
+    hasParentId(): boolean;
+    clearParentId(): Item;
+
+    getPriority(): number;
+    setPriority(value: number): Item;
+
+    getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
+    hasUpdatedAt(): boolean;
+    clearUpdatedAt(): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      id: number,
+      lang: string,
+      name: string,
+      parentId?: number,
+      priority: number,
+      updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    }
+
+    export enum ParentIdCase { 
+      _PARENT_ID_NOT_SET = 0,
+      PARENT_ID = 4,
+    }
+  }
+
+}
+
+export class CategoryCreateRequest extends jspb.Message {
+  getLang(): string;
+  setLang(value: string): CategoryCreateRequest;
+
+  getName(): string;
+  setName(value: string): CategoryCreateRequest;
+
+  getParentId(): number;
+  setParentId(value: number): CategoryCreateRequest;
+  hasParentId(): boolean;
+  clearParentId(): CategoryCreateRequest;
+
+  getPriority(): number;
+  setPriority(value: number): CategoryCreateRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CategoryCreateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CategoryCreateRequest): CategoryCreateRequest.AsObject;
+  static serializeBinaryToWriter(message: CategoryCreateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CategoryCreateRequest;
+  static deserializeBinaryFromReader(message: CategoryCreateRequest, reader: jspb.BinaryReader): CategoryCreateRequest;
+}
+
+export namespace CategoryCreateRequest {
+  export type AsObject = {
+    lang: string,
+    name: string,
+    parentId?: number,
+    priority: number,
+  }
+
+  export enum ParentIdCase { 
+    _PARENT_ID_NOT_SET = 0,
+    PARENT_ID = 3,
+  }
+}
+
+export class CategoryUpdateRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): CategoryUpdateRequest;
+
+  getName(): string;
+  setName(value: string): CategoryUpdateRequest;
+
+  getParentId(): number;
+  setParentId(value: number): CategoryUpdateRequest;
+  hasParentId(): boolean;
+  clearParentId(): CategoryUpdateRequest;
+
+  getPriority(): number;
+  setPriority(value: number): CategoryUpdateRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CategoryUpdateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CategoryUpdateRequest): CategoryUpdateRequest.AsObject;
+  static serializeBinaryToWriter(message: CategoryUpdateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CategoryUpdateRequest;
+  static deserializeBinaryFromReader(message: CategoryUpdateRequest, reader: jspb.BinaryReader): CategoryUpdateRequest;
+}
+
+export namespace CategoryUpdateRequest {
+  export type AsObject = {
+    id: number,
+    name: string,
+    parentId?: number,
+    priority: number,
+  }
+
+  export enum ParentIdCase { 
+    _PARENT_ID_NOT_SET = 0,
+    PARENT_ID = 3,
+  }
+}
+
 export class AttachemtShowRequest extends jspb.Message {
   getId(): number;
   setId(value: number): AttachemtShowRequest;

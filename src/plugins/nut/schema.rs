@@ -31,7 +31,6 @@ diesel::table! {
     categories (id) {
         id -> Int4,
         lang -> Varchar,
-        code -> Varchar,
         name -> Varchar,
         parent_id -> Nullable<Int4>,
         priority -> Int4,
@@ -89,7 +88,6 @@ diesel::table! {
     tags (id) {
         id -> Int4,
         lang -> Varchar,
-        code -> Varchar,
         name -> Varchar,
         priority -> Int4,
         version -> Int4,
@@ -160,6 +158,35 @@ diesel::table! {
     }
 }
 
+diesel::table! {
+    vote_items (id) {
+        id -> Int4,
+        score -> Int4,
+        resource_type -> Varchar,
+        resource_id -> Int4,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    vote_logs (id) {
+        id -> Int4,
+        user_id -> Int4,
+        ip -> Varchar,
+        score -> Int4,
+        body -> Text,
+        body_editor -> Varchar,
+        resource_type -> Varchar,
+        resource_id -> Int4,
+        status -> Varchar,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
 diesel::allow_tables_to_appear_in_same_query!(
     attachments,
     attachments_resources,
@@ -173,4 +200,6 @@ diesel::allow_tables_to_appear_in_same_query!(
     twilio_sms_logs,
     users,
     users_roles,
+    vote_items,
+    vote_logs,
 );

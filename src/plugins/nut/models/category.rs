@@ -10,7 +10,6 @@ use super::super::schema::{categories, categories_resources};
 pub struct Item {
     pub id: i32,
     pub lang: String,
-    pub code: String,
     pub name: String,
     pub parent: Option<i32>,
     pub priority: i32,
@@ -21,17 +20,10 @@ pub struct Item {
 
 pub trait Dao {
     fn by_id(&mut self, id: i32) -> Result<Item>;
-    fn create(
-        &mut self,
-        lang: &str,
-        code: &str,
-        name: &str,
-        parent: Option<i32>,
-        priority: i32,
-    ) -> Result<()>;
-    fn update(&mut self, id: i32, code: &str, name: &str, priority: i32) -> Result<()>;
+    fn create(&mut self, lang: &str, name: &str, parent: Option<i32>, priority: i32) -> Result<()>;
+    fn update(&mut self, id: i32, name: &str, priority: i32) -> Result<()>;
     fn all(&mut self) -> Result<Vec<Item>>;
-    fn root(&mut self) -> Result<Vec<Item>>;
+    fn root(&mut self, lang: &str) -> Result<Vec<Item>>;
     fn children(&mut self, id: i32) -> Result<Vec<Item>>;
     fn destroy(&mut self, id: i32) -> Result<()>;
     fn associate(&mut self, id: i32, resource_type: &str, resource_id: i32) -> Result<()>;
@@ -45,19 +37,11 @@ impl Dao for Connection {
             .first::<Item>(self)?)
     }
 
-    fn create(
-        &mut self,
-        lang: &str,
-        code: &str,
-        name: &str,
-        parent: Option<i32>,
-        priority: i32,
-    ) -> Result<()> {
+    fn create(&mut self, lang: &str, name: &str, parent: Option<i32>, priority: i32) -> Result<()> {
         let now = Utc::now().naive_utc();
         insert_into(categories::dsl::categories)
             .values((
                 categories::dsl::lang.eq(lang),
-                categories::dsl::code.eq(code),
                 categories::dsl::name.eq(name),
                 categories::dsl::parent_id.eq(parent),
                 categories::dsl::priority.eq(priority),
@@ -66,12 +50,11 @@ impl Dao for Connection {
             .execute(self)?;
         Ok(())
     }
-    fn update(&mut self, id: i32, code: &str, name: &str, priority: i32) -> Result<()> {
+    fn update(&mut self, id: i32, name: &str, priority: i32) -> Result<()> {
         let it = categories::dsl::categories.filter(categories::dsl::id.eq(&id));
         let now = Utc::now().naive_utc();
         update(it)
             .set((
-                categories::dsl::code.eq(code),
                 categories::dsl::name.eq(name),
                 categories::dsl::priority.eq(priority),
                 categories::dsl::updated_at.eq(&now),
@@ -81,11 +64,12 @@ impl Dao for Connection {
     }
     fn all(&mut self) -> Result<Vec<Item>> {
         Ok(categories::dsl::categories
-            .order(categories::dsl::code.asc())
+            .order(categories::dsl::updated_at.desc())
             .load::<Item>(self)?)
     }
-    fn root(&mut self) -> Result<Vec<Item>> {
+    fn root(&mut self, lang: &str) -> Result<Vec<Item>> {
         Ok(categories::dsl::categories
+            .filter(categories::dsl::lang.eq(lang))
             .filter(categories::dsl::parent_id.is_null())
             .order(categories::dsl::priority.asc())
             .load::<Item>(self)?)

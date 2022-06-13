@@ -51,7 +51,8 @@ function generate_diesel_postgresql() {
         attachments attachments_resources \
         policies users_roles \
         tags tags_resources\
-        categories categories_resources> src/plugins/nut/schema.rs
+        categories categories_resources \
+        vote_items vote_logs > src/plugins/nut/schema.rs
     DATABASE_URL=$1 diesel print-schema -o cms_articles cms_comments > src/plugins/cms/schema.rs
     DATABASE_URL=$1 diesel print-schema -o forum_topics forum_posts > src/plugins/forum/schema.rs
     DATABASE_URL=$1 diesel print-schema -o twilio_sms_logs > src/plugins/twilio/schema.rs
