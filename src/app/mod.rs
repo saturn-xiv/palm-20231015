@@ -16,6 +16,7 @@ use super::{
     crypto::Hmac,
     env::{is_stopped, Config},
     i18n::locale::Dao as LocaleDao,
+    jwt::Jwt,
     parser::from_toml,
     Result, BANNER, BUILD_TIME, GIT_VERSION, HOMEPAGE,
 };
@@ -48,8 +49,10 @@ pub enum SubCommand {
     UserList,
     #[clap(about = "Apply role to user(by uid)")]
     UserApplyPolicy(user::ApplyPolicy),
-    #[clap(about = "reset user's password(by uid)")]
+    #[clap(about = "Reset user's password(by uid)")]
     UserResetPassword(user::ResetPassword),
+    #[clap(about = "Generate user token(by uid)")]
+    UserToken(user::Token),
     // #[clap(about = "Migrate the database to the latest version")]
     // DbMigrate,
     // #[clap(about = "Revert migration to previous version")]
@@ -147,6 +150,12 @@ pub async fn launch() -> Result<()> {
             }
             if let SubCommand::UserResetPassword(ref it) = args.command {
                 return it.execute(db, &hmac);
+            }
+            if let SubCommand::UserToken(ref it) = args.command {
+                let jwt = Jwt::new(cfg.secrets.0.clone());
+                let token = it.execute(db, &jwt)?;
+                println!("{:?}", token);
+                return Ok(());
             }
         }
         // https://en.wikibooks.org/wiki/Ruby_on_Rails/ActiveRecord/Migrations

@@ -3,6 +3,7 @@ use diesel::Connection as DieselConntection;
 
 use super::super::{
     crypto::Hmac,
+    jwt::Jwt,
     orm::postgresql::Connection as Db,
     plugins::nut::models::{
         log::{Dao as LogDao, Level},
@@ -11,6 +12,21 @@ use super::super::{
     },
     Error, Result,
 };
+
+#[derive(clap::Parser, PartialEq, Eq, Debug)]
+pub struct Token {
+    #[clap(short, long)]
+    pub user: String,
+    #[clap(short, long)]
+    pub weeks: u32,
+}
+impl Token {
+    pub fn execute(&self, db: &mut Db, jwt: &Jwt) -> Result<String> {
+        let user = UserDao::by_uid(db, &self.user)?;
+        let token = user.token(jwt, Duration::weeks(self.weeks as i64))?;
+        Ok(token)
+    }
+}
 
 #[derive(clap::Parser, PartialEq, Eq, Debug)]
 pub struct ApplyPolicy {
