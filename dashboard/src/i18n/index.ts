@@ -1,10 +1,10 @@
 import Cookies from 'js-cookie';
-import { setLocale as setUmiLocale } from 'umi';
+import { setLocale as setUmiLocale, getLocale as getUmiLocale } from 'umi';
 
 const KEY = 'locale';
 
-export const getLocale = (): string | undefined => {
-  return localStorage.getItem(KEY) || Cookies.get(KEY);
+export const getLocale = (): string => {
+  return localStorage.getItem(KEY) || Cookies.get(KEY) || getUmiLocale();
 };
 
 export const setLocale = (lang: string) => {
