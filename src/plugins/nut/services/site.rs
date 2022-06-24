@@ -92,7 +92,7 @@ impl v1::SiteLayoutResponse {
         )
         .unwrap_or_default();
         let logo: String = SettingDao::get(db, aes, &v1::SiteSetLogoRequest::KEY.to_string(), None)
-            .unwrap_or_else(|_| "/favicon.png".to_string());
+            .unwrap_or_else(|_| "/my/favicon.png".to_string());
 
         let user = match user {
             Some(ref x) => {

@@ -1,9 +1,11 @@
 pub mod attachment;
+pub mod category;
 pub mod locale;
 pub mod policy;
 pub mod role;
 pub mod setting;
 pub mod site;
+pub mod tag;
 pub mod user;
 
 use std::any::type_name;

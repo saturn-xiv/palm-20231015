@@ -1,12 +1,14 @@
-import { useIntl, getAllLocales } from 'umi';
+import { useIntl, getAllLocales, useModel } from 'umi';
 import { Menu, Card } from 'antd';
-import type { ItemType } from 'antd/lib/menu/hooks/useItems';
 
 const Widget = () => {
+  const { initialState } = useModel('@@initialState');
   const intl = useIntl();
-  var items = ['/favicon.png', '/robots.txt', '/sitemap.xml'].concat(
-    getAllLocales().map((x) => `/${x}/sitemap.xml`),
-  );
+  var items: string[] = [
+    initialState?.layout.logo || '/my/favicon.png',
+    '/robots.txt',
+    '/sitemap.xml',
+  ].concat(getAllLocales().map((x) => `/${x}/sitemap.xml`));
 
   // let items: ItemType[] = [{ label: '/sitemap.xml', key: '/sitemap.xml' }];
   return (

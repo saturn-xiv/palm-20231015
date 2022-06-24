@@ -196,6 +196,7 @@ service Tag {
   rpc Destroy(IdRequest) returns (google.protobuf.Empty) {}
   rpc Index(google.protobuf.Empty) returns (TagIndexResponse) {}
 }
+
 message TagIndexResponse {
   message Item {
     int32 id = 1;
@@ -207,6 +208,7 @@ message TagIndexResponse {
   }
   repeated Item items = 1;
 }
+
 message TagCreateRequest {
   string lang = 1;
   string name = 2;

@@ -104,7 +104,7 @@ const Widget = () => {
         showQuickJumper: true,
         showSizeChanger: true,
       }}
-      headerTitle={intl.formatMessage({ id: 'nut.admin.policies.title' })}
+      headerTitle={intl.formatMessage({ id: 'nut.admin.roles.title' })}
       toolBarRender={() => [
         <Associate
           handleRefresh={async () => {

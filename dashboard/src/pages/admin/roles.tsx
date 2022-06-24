@@ -7,7 +7,7 @@ import IndexRole from '@/components/nut/admin/roles/';
 const Widget = () => {
   const intl = useIntl();
   return (
-    <Layout title={intl.formatMessage({ id: 'nut.admin.policies.title' })}>
+    <Layout title={intl.formatMessage({ id: 'nut.admin.roles.title' })}>
       <Col span={24}>
         <IndexRole />
       </Col>

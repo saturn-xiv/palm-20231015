@@ -2,6 +2,7 @@ import { useModel, useIntl } from 'umi';
 import { useRef } from 'react';
 import ProTable, { ActionType } from '@ant-design/pro-table';
 import { Timestamp } from 'google-protobuf/google/protobuf/timestamp_pb';
+import { Space } from 'antd';
 
 import { DEFAULT_PAGE, DEFAULT_SIZE, ID_WIDTH, to_date } from '@/components';
 import { Pager } from '@/protocols/nut_pb';
@@ -65,10 +66,10 @@ const Widget = () => {
           }),
           key: 'zone',
           render: (_, it) => (
-            <>
-              {intl.formatMessage({ id: `languages.${it.lang}` })}({it.timeZone}
-              )
-            </>
+            <Space>
+              {intl.formatMessage({ id: `languages.${it.lang}` })}
+              <span>({it.timeZone})</span>
+            </Space>
           ),
         },
         {
@@ -77,14 +78,15 @@ const Widget = () => {
           }),
           key: 'current-sign-in',
           render: (_, it) => (
-            <>
+            <Space>
               {it.currentSignInAt ? (
                 <ShowTimestamp value={it.currentSignInAt} />
               ) : (
                 'n/a'
               )}
-              {it.currentSignInIp || ''}({it.signInCount})
-            </>
+              <span>{it.currentSignInIp || ''}</span>
+              <span>({it.signInCount})</span>
+            </Space>
           ),
         },
         {
