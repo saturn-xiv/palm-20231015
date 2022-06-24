@@ -4,6 +4,32 @@ import jwtDecode, { JwtPayload } from "jwt-decode";
 import type { RootState } from "../store";
 import { UserSignInResponse } from "../protocols/nut_pb";
 
+export const ROLE_ROOT = "root";
+
+export const TO_SIGN_IN = "/users/sign-in";
+export const TO_PROFILE = "/users/profile";
+
+const KEY = "token";
+export const DURATION = 60 * 60 * 24;
+
+export const get = (): string | null => {
+  return sessionStorage.getItem(KEY);
+};
+
+export const set = (token: string) => {
+  sessionStorage.setItem(KEY, token);
+};
+
+export const remove = () => {
+  sessionStorage.removeItem(KEY);
+};
+
+export const OPERATION_READ = "read";
+export const OPERATION_WRITE = "write";
+export const OPERATION_CREATE = "create";
+export const OPERATION_UPDATE = "update";
+export const OPERATION_REMOVE = "remove";
+
 export interface IPermission {
   operation: string;
   resourceType: string;
