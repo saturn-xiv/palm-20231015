@@ -31,6 +31,27 @@ pub struct Service {
     pub rabbitmq: Arc<RabbitMq>,
 }
 
+impl v1::UserSignInResponse {
+    pub fn new(user: &User, db: &mut Db, jwt: &Jwt, ttl: Duration) -> Result<Self> {
+        let token = user.token(jwt, ttl)?;
+        Ok(Self {
+            token,
+            is_administrator: user.is_administrator(db).is_ok(),
+            policies: user
+                .policies(db)?
+                .iter()
+                .map(|x| v1::PolicyPermission {
+                    role: x.role.clone(),
+                    operation: x.operation.clone(),
+                    resource_type: x.resource_type.clone(),
+                    resource_id: x.resource_id,
+                })
+                .collect(),
+            payload: Some(v1::site_user_index_response::Item::new(user)),
+        })
+    }
+}
+
 impl v1::UserQueryRequest {
     pub fn user(&self, db: &mut Db) -> Result<User> {
         if let Some(ref id) = self.id {
@@ -66,6 +87,7 @@ impl v1::user_server::User for Service {
         let jwt = self.jwt.deref();
         let hmac = self.hmac.deref();
         let req = req.into_inner();
+
         if let Some(ref it) = req.query {
             let user = try_grpc!(it.user(db))?;
             try_grpc!(user.auth(hmac, &req.password))?;
@@ -84,12 +106,14 @@ impl v1::user_server::User for Service {
                 Ok(())
             }))?;
 
-            let token = try_grpc!(user.token(
+            let it = try_grpc!(v1::UserSignInResponse::new(
+                &user,
+                db,
                 jwt,
                 req.ttl
-                    .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds))
+                    .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds)),
             ))?;
-            return Ok(Response::new(v1::UserSignInResponse { token }));
+            return Ok(Response::new(it));
         }
 
         Err(Status::permission_denied("can't sign in"))
@@ -323,8 +347,14 @@ impl v1::user_server::User for Service {
         let user = try_grpc!(ss.current_user(db, jwt))?;
         let req = req.into_inner();
 
-        let token = try_grpc!(user.token(jwt, to_chrono_duration!(req)))?;
-        Ok(Response::new(v1::UserSignInResponse { token }))
+        let it = try_grpc!(v1::UserSignInResponse::new(
+            &user,
+            db,
+            jwt,
+            to_chrono_duration!(req)
+        ))?;
+
+        Ok(Response::new(it))
     }
     async fn logs(&self, req: Request<v1::Pager>) -> GrpcResult<v1::UserLogsResponse> {
         let ss = Session::new(&req);

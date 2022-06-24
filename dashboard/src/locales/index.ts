@@ -8,6 +8,7 @@ import zhHant from "./zh-Hant";
 const KEY = "locale";
 
 export const DEFAULT: string = import.meta.env.VITE_DEFAULT_LOCALE;
+export const LANGUAGES: string[] = import.meta.env.VITE_LANGUAGES;
 
 export const get = (): string => {
   return localStorage.getItem(KEY) || Cookies.get(KEY) || DEFAULT;

@@ -41,7 +41,12 @@ service User {
   rpc SignOut(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
-message UserSignInResponse { string token = 1; }
+message UserSignInResponse {
+  string token = 1;
+  bool is_administrator = 2;
+  repeated PolicyPermission policies = 3;
+  SiteUserIndexResponse.Item payload = 9;
+}
 message UserChangePasswordRequest {
   string current_password = 1;
   string new_password = 2;
@@ -421,11 +426,6 @@ message SiteLayoutResponse {
     string name = 1;
     string email = 2;
   }
-  message CurrentUser {
-    SiteUserIndexResponse.Item payload = 1;
-    bool is_administrator = 2;
-    repeated PolicyPermission policies = 3;
-  }
   string title = 1;
   string subhead = 2;
   repeated string keywords = 3;
@@ -434,7 +434,6 @@ message SiteLayoutResponse {
   string copyright = 6;
   string logo = 7;
   repeated string languages = 9;
-  optional CurrentUser current_user = 11;
 }
 
 message SiteNewLeaveWordRequest { string body = 1; }

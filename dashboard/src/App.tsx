@@ -8,7 +8,6 @@ import locales, {
 function App() {
   const messages = locales();
   const lang = getLocale();
-  console.log(import.meta.env.VITE_DEFAULT_LOCALE);
   return (
     <IntlProvider
       messages={messages}
