@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import jwtDecode, { JwtPayload } from "jwt-decode";
 
 import type { RootState } from "../store";
-import { UserSignInResponse } from "../protocols/nut_pb";
+import { UserSignInResponse, UserQueryRequest } from "../protocols/nut_pb.d";
 
 export const ROLE_ROOT = "root";
 
@@ -11,6 +11,16 @@ export const TO_PROFILE = "/users/profile";
 
 const KEY = "token";
 export const DURATION = 60 * 60 * 24;
+
+export const to_user_query_request = (account: string): UserQueryRequest => {
+  const query = new UserQueryRequest();
+  if (account.includes("@")) {
+    query.setEmail(account);
+  } else {
+    query.setNickName(account);
+  }
+  return query;
+};
 
 export const get = (): string | null => {
   return sessionStorage.getItem(KEY);
@@ -37,6 +47,7 @@ export interface IPermission {
 }
 
 interface IState {
+  id?: number;
   uid?: string;
   realName?: string;
   avatar?: string;
@@ -57,6 +68,7 @@ export const slice = createSlice({
       try {
         const decoded: any = jwtDecode<JwtPayload>(action.payload.getToken());
         state.uid = decoded.aud;
+        state.id = action.payload.getPayload()?.getId();
         state.realName = action.payload.getPayload()?.getRealName() || "";
         state.avatar = action.payload.getPayload()?.getAvatar() || "";
         state.permissions = action.payload.getPoliciesList().map((x) => ({
@@ -65,6 +77,8 @@ export const slice = createSlice({
           resourceType: x.getResourceType(),
         }));
         state.isAdministrator = action.payload.getIsAdministrator();
+
+        set(action.payload.getToken());
       } catch {}
     },
     signOut: (state) => {
@@ -79,5 +93,6 @@ export const permissions = (state: RootState): IPermission[] =>
   state.currentUser.permissions;
 export const isAdministrator = (state: RootState): boolean =>
   state.currentUser.isAdministrator;
+export const currentUser = (state: RootState): IState => state.currentUser;
 
 export default slice.reducer;

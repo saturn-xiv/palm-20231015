@@ -1,9 +1,11 @@
 import { IntlProvider, FormattedMessage } from "react-intl";
+import { Provider } from "react-redux";
 
 import locales, {
   get as getLocale,
   DEFAULT as DEFAULT_LOCALE,
 } from "./locales";
+import store from "./store";
 
 function App() {
   const messages = locales();
@@ -14,9 +16,11 @@ function App() {
       locale={lang}
       defaultLocale={DEFAULT_LOCALE}
     >
-      <div className="App">
-        <FormattedMessage id="nut.404.title" />
-      </div>
+      <Provider store={store}>
+        <div>
+          <FormattedMessage id="nut.404.title" />
+        </div>
+      </Provider>
     </IntlProvider>
   );
 }
