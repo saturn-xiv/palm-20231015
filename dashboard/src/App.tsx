@@ -3,6 +3,10 @@ import { IntlProvider } from "react-intl";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import "antd/dist/antd.css";
+import "@ant-design/pro-components/dist/components.css";
+import "react-quill/dist/quill.snow.css";
+
 import locales, {
   get as getLocale,
   DEFAULT as DEFAULT_LOCALE,
@@ -11,6 +15,8 @@ import store from "./store";
 import pages from "./pages";
 import Loading from "./Loading";
 import NotFound from "./NotFound";
+
+import "./App.css";
 
 function App() {
   const messages = locales();
