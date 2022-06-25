@@ -4,7 +4,7 @@ import { useIntl, FormattedMessage } from "react-intl";
 import { PlusOutlined } from "@ant-design/icons";
 import type { InputRef } from "antd";
 
-import { SiteSetKeywordsRequest } from "../../../../../protocols/nut_pb";
+import { SiteSetKeywordsRequest } from "../../../../../protocols/nut_pb.d";
 import { SiteClient } from "../../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../../request";
 

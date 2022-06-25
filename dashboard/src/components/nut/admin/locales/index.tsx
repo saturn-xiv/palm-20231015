@@ -12,7 +12,7 @@ import {
   TIMESTAMP_COLUMN_WIDTH,
   to_date,
 } from "../../..";
-import { Pager } from "../../../../protocols/nut_pb";
+import { Pager } from "../../../../protocols/nut_pb.d";
 import { LocaleClient } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
 import { ShowTimestamp } from "../../../date";

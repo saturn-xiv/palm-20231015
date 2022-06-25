@@ -6,7 +6,7 @@ import type { ProFormInstance } from "@ant-design/pro-form";
 import { Empty } from "google-protobuf/google/protobuf/empty_pb";
 
 import { RULE_EMAIL, RULE_PASSWORD } from "../../../../../forms";
-import { SmtpProfile } from "../../../../../../protocols/nut_pb";
+import { SmtpProfile } from "../../../../../../protocols/nut_pb.d";
 import { SiteClient } from "../../../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../../../request";
 import SmtpTestForm from "./Test";

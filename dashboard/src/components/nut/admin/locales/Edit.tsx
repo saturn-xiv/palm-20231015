@@ -11,7 +11,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 
 import { LocaleClient } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
-import { LocaleSetRequest } from "../../../../protocols/nut_pb";
+import { LocaleSetRequest } from "../../../../protocols/nut_pb.d";
 import { IItem } from ".";
 
 interface IProps {

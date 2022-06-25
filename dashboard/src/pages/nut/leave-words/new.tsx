@@ -5,7 +5,7 @@ import { useIntl } from "react-intl";
 import type { ProFormInstance } from "@ant-design/pro-form";
 
 import Layout from "../../../layouts/non-sign-in";
-import { SiteNewLeaveWordRequest } from "../../../protocols/nut_pb";
+import { SiteNewLeaveWordRequest } from "../../../protocols/nut_pb.d";
 import { SiteClient } from "../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../request";
 

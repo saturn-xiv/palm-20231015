@@ -6,7 +6,7 @@ import type { ProFormInstance } from "@ant-design/pro-form";
 import { Empty } from "google-protobuf/google/protobuf/empty_pb";
 import { GoogleOutlined } from "@ant-design/icons";
 
-import { GoogleProfile } from "../../../../../protocols/nut_pb";
+import { GoogleProfile } from "../../../../../protocols/nut_pb.d";
 import { SiteClient } from "../../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../../request";
 

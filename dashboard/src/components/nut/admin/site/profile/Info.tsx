@@ -6,7 +6,7 @@ import { useIntl } from "react-intl";
 
 import { SiteClient } from "../../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../../request";
-import { SiteSetInfoRequest } from "../../../../../protocols/nut_pb";
+import { SiteSetInfoRequest } from "../../../../../protocols/nut_pb.d";
 
 interface IFormData {
   title: string;

@@ -2,7 +2,7 @@ import { Card, Typography, List } from "antd";
 import { Timestamp } from "google-protobuf/google/protobuf/timestamp_pb";
 
 import { to_date } from "../../../..";
-import { SiteStatusResponse } from "../../../../../protocols/nut_pb";
+import { SiteStatusResponse } from "../../../../../protocols/nut_pb.d";
 
 export interface IProps {
   item?: SiteStatusResponse.PostgreSql;

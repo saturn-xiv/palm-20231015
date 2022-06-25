@@ -5,7 +5,7 @@ import type { ProFormInstance } from "@ant-design/pro-form";
 import { useIntl } from "react-intl";
 
 import { RULE_PASSWORD } from "../../forms";
-import { UserChangePasswordRequest } from "../../../protocols/nut_pb";
+import { UserChangePasswordRequest } from "../../../protocols/nut_pb.d";
 import { UserClient } from "../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../request";
 

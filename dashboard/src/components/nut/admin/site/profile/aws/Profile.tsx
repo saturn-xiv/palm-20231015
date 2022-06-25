@@ -5,7 +5,7 @@ import { useIntl } from "react-intl";
 import type { ProFormInstance } from "@ant-design/pro-form";
 import { Empty } from "google-protobuf/google/protobuf/empty_pb";
 
-import { AwsProfile } from "../../../../../../protocols/nut_pb";
+import { AwsProfile } from "../../../../../../protocols/nut_pb.d";
 import { SiteClient } from "../../../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../../../request";
 import S3TestForm from "./S3Test";

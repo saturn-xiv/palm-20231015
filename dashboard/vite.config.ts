@@ -5,4 +5,19 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   base: "/my/",
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+      },
+    },
+  },
+  resolve: {
+    alias: [
+      {
+        find: /^~/,
+        replacement: "",
+      },
+    ],
+  },
 });

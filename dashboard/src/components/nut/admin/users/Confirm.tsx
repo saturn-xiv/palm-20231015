@@ -3,7 +3,7 @@ import { Popconfirm, Tooltip, message, Button } from "antd";
 import { MailOutlined } from "@ant-design/icons";
 import { RpcError } from "grpc-web";
 
-import { IdRequest } from "../../../../protocols/nut_pb";
+import { IdRequest } from "../../../../protocols/nut_pb.d";
 import { SiteClient } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
 import { IItem } from ".";

@@ -7,7 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import Layout from "../../../layouts/non-sign-in";
 import { RULE_PASSWORD } from "../../../components/forms";
-import { UserResetPasswordRequest } from "../../../protocols/nut_pb";
+import { UserResetPasswordRequest } from "../../../protocols/nut_pb.d";
 import { UserClient } from "../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../request";
 import { TO_SIGN_IN } from "../../../reducers/current-user";

@@ -12,7 +12,7 @@ import dayjs from "dayjs";
 import { Duration } from "google-protobuf/google/protobuf/duration_pb";
 
 import { IItem } from ".";
-import { AttachemtShowRequest } from "../../../protocols/nut_pb";
+import { AttachemtShowRequest } from "../../../protocols/nut_pb.d";
 import { AttachmentClient } from "../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../request";
 

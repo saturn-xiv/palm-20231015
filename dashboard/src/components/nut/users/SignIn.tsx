@@ -12,7 +12,7 @@ import {
   to_user_query_request,
   TO_PROFILE,
 } from "../../../reducers/current-user";
-import { UserSignInRequest } from "../../../protocols/nut_pb";
+import { UserSignInRequest } from "../../../protocols/nut_pb.d";
 import { UserClient } from "../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../request";
 import { signIn } from "../../../reducers/current-user";

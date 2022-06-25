@@ -4,6 +4,11 @@ import { Col, Row, message, Tabs } from "antd";
 import { Empty } from "google-protobuf/google/protobuf/empty_pb";
 
 import Layout from "../../../layouts/dashboard";
+import { GRPC_HOST, grpc_metadata } from "../../../request";
+import {
+  SiteLayoutResponse,
+  SiteStatusResponse,
+} from "../../../protocols/nut_pb.d";
 import CopyrightForm from "../../../components/nut/admin/site/profile/Copyright";
 import InfoForm from "../../../components/nut/admin/site/profile/Info";
 import AuthorForm from "../../../components/nut/admin/site/profile/Author";
@@ -22,11 +27,6 @@ import SystemPanel from "../../../components/nut/admin/site/status/System";
 import RabbitMqPanel from "../../../components/nut/admin/site/status/RabbitMq";
 import AwsForm from "../../../components/nut/admin/site/profile/aws/Profile";
 import { SiteClient } from "../../../protocols/NutServiceClientPb";
-import { GRPC_HOST, grpc_metadata } from "../../../request";
-import {
-  SiteLayoutResponse,
-  SiteStatusResponse,
-} from "../../../protocols/nut_pb";
 
 const Widget = () => {
   const intl = useIntl();

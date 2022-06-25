@@ -11,7 +11,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 
 import { PolicyClient } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
-import { PolicyPermission } from "../../../../protocols/nut_pb";
+import { PolicyPermission } from "../../../../protocols/nut_pb.d";
 import { RULE_CODE } from "../../../forms";
 
 interface IProps {

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import Layout from "../../../../layouts/non-sign-in";
 import { home_url } from "../../../../components";
-import { UserEmailRequest } from "../../../../protocols/nut_pb";
+import { UserEmailRequest } from "../../../../protocols/nut_pb.d";
 import { UserClient } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
 import {

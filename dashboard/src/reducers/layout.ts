@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import type { RootState } from "../store";
-import { SiteLayoutResponse } from "../protocols/nut_pb";
+import { SiteLayoutResponse } from "../protocols/nut_pb.d";
 
 export interface IAuthor {
   name: string;

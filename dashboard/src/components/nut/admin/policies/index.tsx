@@ -4,7 +4,7 @@ import ProTable, { ActionType } from "@ant-design/pro-table";
 import { Timestamp } from "google-protobuf/google/protobuf/timestamp_pb";
 
 import { DEFAULT_PAGE, DEFAULT_SIZE, ID_WIDTH, to_date } from "../../..";
-import { Pager } from "../../../../protocols/nut_pb";
+import { Pager } from "../../../../protocols/nut_pb.d";
 import { PolicyClient } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
 import DenyForm from "./Deny";

@@ -17,6 +17,7 @@ yarn add filesize dayjs timezones-list grpc-web \
     react-router-dom@6 \
     @reduxjs/toolkit react-redux
     
+yarn add -D less
 
 echo 'done.'
 
