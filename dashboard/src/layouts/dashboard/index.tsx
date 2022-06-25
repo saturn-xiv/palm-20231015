@@ -8,8 +8,9 @@ import { SelectInfo } from "rc-menu/lib/interface";
 
 import { Home, Dashboard, Github, SwitchLanguage } from "../footer";
 import menus, { IMenu } from "../../menus";
-import { TO_SIGN_IN } from "../../reducers/current-user";
+import { TO_SIGN_IN, currentUser } from "../../reducers/current-user";
 import { select as selectSideBar } from "../../reducers/side-bar";
+import { siteInfo } from "../../reducers/layout";
 import Header from "../Header";
 import SignOut from "./SignOut";
 import NotificationBar from "./NotificationBar";
@@ -21,17 +22,17 @@ export interface IProps {
 }
 
 const Widget = ({ title, children }: IProps) => {
-  const layout = useAppSelector((state) => state.layout);
-  const currentUser = useAppSelector((state) => state.currentUser);
+  const site = useAppSelector(siteInfo);
+  const user = useAppSelector(currentUser);
   const sideBar = useAppSelector((state) => state.sideBar);
   const intl = useIntl();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!currentUser.uid) {
+    if (!user) {
       navigate(TO_SIGN_IN);
     }
-  }, [currentUser, navigate]);
+  }, [user, navigate]);
 
   function to_menu_route(it: IMenu): MenuDataItem {
     return {
@@ -44,8 +45,8 @@ const Widget = ({ title, children }: IProps) => {
 
   return (
     <ProLayout
-      title={layout.subhead}
-      logo={<img alt="logo" src={layout.logo} />}
+      title={site?.subhead}
+      logo={<img alt="logo" src={site?.logo} />}
       fixedHeader
       fixSiderbar
       rightContentRender={() => (
@@ -79,7 +80,7 @@ const Widget = ({ title, children }: IProps) => {
       <PageContainer
         title={title}
         footer={[
-          <span key="copyright">&copy;{layout.copyright}</span>,
+          <span key="copyright">&copy;{site?.copyright}</span>,
           <Home key="home" />,
           <Dashboard key="dashboard" />,
           <Github key="github" />,

@@ -10,7 +10,7 @@ import { GRPC_HOST, grpc_metadata } from "../../../../request";
 import Associate from "./Associate";
 import Unassociate from "./Unassociate";
 import { useAppSelector } from "../../../../hooks";
-import { ROLE_ROOT } from "../../../../reducers/current-user";
+import { ROLE_ROOT, currentUser } from "../../../../reducers/current-user";
 
 export interface ITableItem {
   id: number;
@@ -22,7 +22,7 @@ export interface ITableItem {
 const Widget = () => {
   const intl = useIntl();
   const ref = useRef<ActionType>();
-  const currentUser = useAppSelector((state) => state.currentUser);
+  const user = useAppSelector(currentUser);
 
   return (
     <ProTable<ITableItem>
@@ -58,7 +58,7 @@ const Widget = () => {
           key: "operation",
           width: 120,
           render: (_, it) =>
-            it.user.id === currentUser.id || it.role.code === ROLE_ROOT ? (
+            it.user.id === user?.id || it.role.code === ROLE_ROOT ? (
               <></>
             ) : (
               <Unassociate

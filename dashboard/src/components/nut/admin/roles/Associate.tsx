@@ -19,7 +19,7 @@ import {
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
 import { RoleUserAssociateRequest } from "../../../../protocols/nut_pb";
 import { useAppSelector } from "../../../../hooks";
-import { ROLE_ROOT } from "../../../../reducers/current-user";
+import { ROLE_ROOT, currentUser } from "../../../../reducers/current-user";
 
 interface IProps {
   handleRefresh: () => void;
@@ -33,7 +33,7 @@ interface IFormData {
 
 const Widget = ({ handleRefresh }: IProps) => {
   const formRef = useRef<ProFormInstance>();
-  const currentUser = useAppSelector((state) => state.currentUser);
+  const user = useAppSelector(currentUser);
   const intl = useIntl();
   return (
     <ModalForm<IFormData>
@@ -83,7 +83,7 @@ const Widget = ({ handleRefresh }: IProps) => {
             );
             return response
               .getItemsList()
-              .filter((x) => x.getId() !== currentUser?.id)
+              .filter((x) => x.getId() !== user?.id)
               .map((it, id) => ({
                 label: `${it.getRealName()}(${it.getNickName()})`,
                 value: it.getId(),

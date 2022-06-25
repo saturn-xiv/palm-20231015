@@ -3,13 +3,16 @@ import { Menu, Card } from "antd";
 
 import { LANGUAGES } from "../../../../../locales";
 import { useAppSelector } from "../../../../../hooks";
+import { siteInfo } from "../../../../../reducers/layout";
 
 const Widget = () => {
-  const layout = useAppSelector((state) => state.layout);
+  const site = useAppSelector(siteInfo);
   const intl = useIntl();
-  var items: string[] = [layout.logo, "/robots.txt", "/sitemap.xml"].concat(
-    LANGUAGES.map((x) => `/${x}/sitemap.xml`)
-  );
+  var items: string[] = [
+    site?.logo || "/favicon.png",
+    "/robots.txt",
+    "/sitemap.xml",
+  ].concat(LANGUAGES.map((x) => `/${x}/sitemap.xml`));
 
   // let items: ItemType[] = [{ label: '/sitemap.xml', key: '/sitemap.xml' }];
   return (

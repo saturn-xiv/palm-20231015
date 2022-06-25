@@ -3,10 +3,6 @@ import { IntlProvider } from "react-intl";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import "antd/dist/antd.min.css";
-import "@ant-design/pro-components/dist/components.min.css";
-import "react-quill/dist/quill.snow.css";
-
 import locales, {
   get as getLocale,
   DEFAULT as DEFAULT_LOCALE,

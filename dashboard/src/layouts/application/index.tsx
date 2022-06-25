@@ -7,6 +7,7 @@ import { Home, Dashboard, Github, SwitchLanguage } from "../footer";
 import palm_tree from "../../assets/palm-tree.svg";
 import Header from "../Header";
 import { useAppSelector } from "../../hooks";
+import { siteInfo } from "../../reducers/layout";
 
 export interface IProps {
   title: string;
@@ -14,16 +15,16 @@ export interface IProps {
 }
 
 const Widget = ({ title, children }: IProps) => {
-  const layout = useAppSelector((state) => state.layout);
+  const site = useAppSelector(siteInfo);
   return (
     <ProLayout
-      title={layout.subhead}
+      title={site?.subhead}
       layout="top"
       contentWidth="Fluid"
       logo={() => <img src={palm_tree} alt="tree" />}
       footerRender={() => (
         <Footer
-          copyright={`${layout.copyright}`}
+          copyright={`${site?.copyright}`}
           links={[
             {
               key: "home",

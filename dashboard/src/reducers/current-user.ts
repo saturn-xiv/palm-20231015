@@ -48,43 +48,54 @@ export interface IPermission {
   resourceId: number;
 }
 
-interface IState {
-  id?: number;
-  uid?: string;
-  realName?: string;
-  avatar?: string;
+export interface IUser {
+  id: number;
+  uid: string;
+  realName: string;
+  avatar: string;
   permissions: IPermission[];
   isAdministrator: boolean;
 }
 
-const initialState: IState = {
-  permissions: [],
-  isAdministrator: false,
+export const to_user = (response: UserSignInResponse): IUser | undefined => {
+  const decoded: any = jwtDecode<JwtPayload>(response.getToken());
+  const payload = response.getPayload();
+  if (!payload) {
+    return;
+  }
+  return {
+    uid: decoded.aud,
+    id: payload.getId(),
+    realName: payload.getRealName(),
+    avatar: payload.getAvatar(),
+    permissions: response.getPoliciesList().map((x) => ({
+      operation: x.getOperation(),
+      resourceId: x.getResourceId(),
+      resourceType: x.getResourceType(),
+    })),
+    isAdministrator: response.getIsAdministrator(),
+  };
 };
+
+interface IState {
+  payload?: IUser;
+}
+
+const initialState: IState = {};
 
 export const slice = createSlice({
   name: "current-user",
   initialState,
   reducers: {
-    signIn: (state, action: PayloadAction<UserSignInResponse>) => {
+    signIn: (state, action: PayloadAction<[IUser, string]>) => {
       try {
-        const decoded: any = jwtDecode<JwtPayload>(action.payload.getToken());
-        state.uid = decoded.aud;
-        state.id = action.payload.getPayload()?.getId();
-        state.realName = action.payload.getPayload()?.getRealName() || "";
-        state.avatar = action.payload.getPayload()?.getAvatar() || "";
-        state.permissions = action.payload.getPoliciesList().map((x) => ({
-          operation: x.getOperation(),
-          resourceId: x.getResourceId(),
-          resourceType: x.getResourceType(),
-        }));
-        state.isAdministrator = action.payload.getIsAdministrator();
-
-        set(action.payload.getToken());
+        state.payload = action.payload[0];
+        set(action.payload[1]);
       } catch {}
     },
     signOut: (state) => {
-      state = { permissions: [], isAdministrator: false };
+      state.payload = undefined;
+      remove();
     },
   },
 });
@@ -92,9 +103,10 @@ export const slice = createSlice({
 export const { signIn, signOut } = slice.actions;
 
 export const permissions = (state: RootState): IPermission[] =>
-  state.currentUser.permissions;
+  state.currentUser.payload?.permissions || [];
 export const isAdministrator = (state: RootState): boolean =>
-  state.currentUser.isAdministrator;
-export const currentUser = (state: RootState): IState => state.currentUser;
+  state.currentUser.payload?.isAdministrator || false;
+export const currentUser = (state: RootState): IUser | undefined =>
+  state.currentUser.payload;
 
 export default slice.reducer;

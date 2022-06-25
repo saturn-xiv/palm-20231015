@@ -14,6 +14,7 @@ import LockUser from "./Lock";
 import EnableUser from "./Enable";
 import ConfirmUser from "./Confirm";
 import SetUserPassword from "./SetPassword";
+import { currentUser } from "../../../../reducers/current-user";
 
 export interface IItem {
   id: number;
@@ -36,7 +37,7 @@ export interface IItem {
 }
 
 const Widget = () => {
-  const currentUser = useAppSelector((state) => state.currentUser);
+  const user = useAppSelector(currentUser);
   const intl = useIntl();
   const ref = useRef<ActionType>();
   return (
@@ -95,7 +96,7 @@ const Widget = () => {
           key: "operation",
           width: 220,
           render: (_, it) =>
-            it.uid === currentUser?.uid ? (
+            it.uid === user?.uid ? (
               <></>
             ) : (
               <>

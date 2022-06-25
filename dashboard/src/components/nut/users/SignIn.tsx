@@ -11,6 +11,8 @@ import {
   remove as removeToken,
   to_user_query_request,
   TO_PROFILE,
+  currentUser,
+  to_user,
 } from "../../../reducers/current-user";
 import { UserSignInRequest } from "../../../protocols/nut_pb";
 import { UserClient } from "../../../protocols/NutServiceClientPb";
@@ -26,14 +28,14 @@ interface IFormData {
 const Widget = () => {
   const intl = useIntl();
   const navigate = useNavigate();
-  const currentUser = useAppSelector((state) => state.currentUser);
+  const user = useAppSelector(currentUser);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (currentUser.uid) {
+    if (user) {
       navigate(TO_PROFILE);
     }
-  }, [currentUser, navigate]);
+  }, [user, navigate]);
 
   const formRef = useRef<ProFormInstance>();
   return (
@@ -49,13 +51,18 @@ const Widget = () => {
           ttl.setSeconds(DURATION);
           request.setTtl(ttl);
         }
-        console.log(values);
+
         client.signIn(request, grpc_metadata(), function (err, response) {
           if (err) {
             removeToken();
             message.error(err.message);
           } else {
-            dispatch(signIn(response));
+            try {
+              const user = to_user(response);
+              if (user) {
+                dispatch(signIn([user, response.getToken()]));
+              }
+            } catch {}
           }
         });
       }}
