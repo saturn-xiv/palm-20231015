@@ -11,7 +11,7 @@ import {
   RULE_CODE,
   RULE_PASSWORD,
 } from "../../../components/forms";
-import { UserSignUpRequest } from "../../../protocols/nut_pb.d";
+import { UserSignUpRequest } from "../../../protocols/nut_pb";
 import { UserClient } from "../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../request";
 import { TO_SIGN_IN } from "../../../reducers/current-user";

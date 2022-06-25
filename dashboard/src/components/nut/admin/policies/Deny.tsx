@@ -2,7 +2,7 @@ import { useIntl, FormattedMessage } from "react-intl";
 import { Popconfirm, Tooltip, message, Button } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 
-import { PolicyPermission } from "../../../../protocols/nut_pb.d";
+import { PolicyPermission } from "../../../../protocols/nut_pb";
 import { PolicyClient } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
 import { ITableItem } from ".";

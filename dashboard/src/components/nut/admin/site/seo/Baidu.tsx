@@ -5,7 +5,7 @@ import { useIntl, FormattedMessage } from "react-intl";
 import type { ProFormInstance } from "@ant-design/pro-form";
 import { Empty } from "google-protobuf/google/protobuf/empty_pb";
 
-import { BaiduProfile } from "../../../../../protocols/nut_pb.d";
+import { BaiduProfile } from "../../../../../protocols/nut_pb";
 import { SiteClient } from "../../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../../request";
 

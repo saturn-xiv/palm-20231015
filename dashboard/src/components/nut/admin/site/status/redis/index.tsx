@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, List, Table } from "antd";
 
-import { SiteStatusResponse } from "../../../../../../protocols/nut_pb.d";
+import { SiteStatusResponse } from "../../../../../../protocols/nut_pb";
 import ClearButton from "./Clear";
 
 export interface IProps {

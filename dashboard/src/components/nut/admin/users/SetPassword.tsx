@@ -7,7 +7,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 
 import { SiteClient } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
-import { SiteSetUserPasswordRequest } from "../../../../protocols/nut_pb.d";
+import { SiteSetUserPasswordRequest } from "../../../../protocols/nut_pb";
 import { IItem } from ".";
 import { RULE_PASSWORD } from "../../../forms";
 

@@ -11,10 +11,7 @@ import {
   RULE_CODE,
   RULE_PASSWORD,
 } from "../../components/forms";
-import {
-  SiteInstallRequest,
-  UserSignUpRequest,
-} from "../../protocols/nut_pb.d";
+import { SiteInstallRequest, UserSignUpRequest } from "../../protocols/nut_pb";
 import { SiteClient } from "../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../request";
 import { IFormData } from "./users/sign-up";

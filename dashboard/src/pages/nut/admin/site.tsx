@@ -8,7 +8,7 @@ import { GRPC_HOST, grpc_metadata } from "../../../request";
 import {
   SiteLayoutResponse,
   SiteStatusResponse,
-} from "../../../protocols/nut_pb.d";
+} from "../../../protocols/nut_pb";
 import CopyrightForm from "../../../components/nut/admin/site/profile/Copyright";
 import InfoForm from "../../../components/nut/admin/site/profile/Info";
 import AuthorForm from "../../../components/nut/admin/site/profile/Author";

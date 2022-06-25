@@ -6,7 +6,7 @@ import type { ProFormInstance } from "@ant-design/pro-form";
 import { Duration } from "google-protobuf/google/protobuf/duration_pb";
 
 import { RULE_NAME } from "../../forms";
-import { UserSetProfileRequest } from "../../../protocols/nut_pb.d";
+import { UserSetProfileRequest } from "../../../protocols/nut_pb";
 import { UserClient } from "../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../request";
 import { all_time_zones } from "../../date";

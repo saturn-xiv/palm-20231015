@@ -5,7 +5,7 @@ import { Timestamp } from "google-protobuf/google/protobuf/timestamp_pb";
 import { Space } from "antd";
 
 import { DEFAULT_PAGE, DEFAULT_SIZE, ID_WIDTH, to_date } from "../../..";
-import { Pager } from "../../../../protocols/nut_pb.d";
+import { Pager } from "../../../../protocols/nut_pb";
 import { SiteClient } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
 import { useAppSelector } from "../../../../hooks";

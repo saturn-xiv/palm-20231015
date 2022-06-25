@@ -17,7 +17,7 @@ import {
   SiteClient,
 } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
-import { RoleUserAssociateRequest } from "../../../../protocols/nut_pb.d";
+import { RoleUserAssociateRequest } from "../../../../protocols/nut_pb";
 import { useAppSelector } from "../../../../hooks";
 import { ROLE_ROOT } from "../../../../reducers/current-user";
 

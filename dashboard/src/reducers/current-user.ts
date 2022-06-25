@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import jwtDecode, { JwtPayload } from "jwt-decode";
 
 import type { RootState } from "../store";
-import { UserSignInResponse, UserQueryRequest } from "../protocols/nut_pb.d";
+import { UserSignInResponse, UserQueryRequest } from "../protocols/nut_pb";
 
 export const ROLE_ROOT = "root";
 
@@ -14,11 +14,13 @@ export const DURATION = 60 * 60 * 24;
 
 export const to_user_query_request = (account: string): UserQueryRequest => {
   const query = new UserQueryRequest();
+
   if (account.includes("@")) {
     query.setEmail(account);
   } else {
     query.setNickName(account);
   }
+
   return query;
 };
 

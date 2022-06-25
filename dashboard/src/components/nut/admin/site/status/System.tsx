@@ -1,5 +1,5 @@
 import { Card, Typography, List } from "antd";
-import { SiteStatusResponse } from "../../../../../protocols/nut_pb.d";
+import { SiteStatusResponse } from "../../../../../protocols/nut_pb";
 
 export interface IProps {
   item?: SiteStatusResponse.System;

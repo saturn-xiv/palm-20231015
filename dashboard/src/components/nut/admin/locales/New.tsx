@@ -12,7 +12,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 
 import { LocaleClient } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
-import { LocaleSetRequest } from "../../../../protocols/nut_pb.d";
+import { LocaleSetRequest } from "../../../../protocols/nut_pb";
 import { RULE_CODE } from "../../../forms";
 import { LANGUAGES } from "../../../../locales";
 

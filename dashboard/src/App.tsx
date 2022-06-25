@@ -3,8 +3,8 @@ import { IntlProvider } from "react-intl";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import "antd/dist/antd.css";
-import "@ant-design/pro-components/dist/components.css";
+import "antd/dist/antd.min.css";
+import "@ant-design/pro-components/dist/components.min.css";
 import "react-quill/dist/quill.snow.css";
 
 import locales, {
@@ -31,9 +31,9 @@ function App() {
         <Router basename={process.env.PUBLIC_URL}>
           <Suspense fallback={<Loading />}>
             <Routes>
-              {pages.map((x) => {
+              {pages.map((x, i) => {
                 const Widget = lazy(x.component);
-                return <Route path={x.path} element={<Widget />} />;
+                return <Route key={i} path={x.path} element={<Widget />} />;
               })}
 
               <Route path="*" element={<NotFound />} />

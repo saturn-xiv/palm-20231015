@@ -12,7 +12,7 @@ import {
   to_user_query_request,
   TO_PROFILE,
 } from "../../../reducers/current-user";
-import { UserSignInRequest } from "../../../protocols/nut_pb.d";
+import { UserSignInRequest } from "../../../protocols/nut_pb";
 import { UserClient } from "../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../request";
 import { signIn } from "../../../reducers/current-user";
@@ -41,7 +41,6 @@ const Widget = () => {
       formRef={formRef}
       onFinish={async (values: IFormData) => {
         const client = new UserClient(GRPC_HOST);
-
         const request = new UserSignInRequest();
         request.setQuery(to_user_query_request(values.account));
         request.setPassword(values.password);
@@ -50,7 +49,7 @@ const Widget = () => {
           ttl.setSeconds(DURATION);
           request.setTtl(ttl);
         }
-
+        console.log(values);
         client.signIn(request, grpc_metadata(), function (err, response) {
           if (err) {
             removeToken();
