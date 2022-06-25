@@ -2,8 +2,8 @@ import { useIntl, FormattedMessage } from "react-intl";
 import { Card, Button, Col } from "antd";
 import { useNavigate } from "react-router-dom";
 
-import Layout from "../../layouts/application";
-import broken_link from "../../assets/broken-link.svg";
+import Layout from "./layouts/application";
+import broken_link from "./assets/broken-link.svg";
 
 const Widget = () => {
   const intl = useIntl();

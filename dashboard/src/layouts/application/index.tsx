@@ -4,7 +4,7 @@ import { Row, Col } from "antd";
 import Footer from "@ant-design/pro-layout/lib/Footer";
 
 import { Home, Dashboard, Github, SwitchLanguage } from "../footer";
-import palm_tree from "@/assets/palm-tree.svg";
+import palm_tree from "../../assets/palm-tree.svg";
 import Header from "../Header";
 import { useAppSelector } from "../../hooks";
 
