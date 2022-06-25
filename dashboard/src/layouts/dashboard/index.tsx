@@ -31,7 +31,7 @@ const Widget = ({ title, children }: IProps) => {
     if (!currentUser.uid) {
       navigate(TO_SIGN_IN);
     }
-  }, [layout, navigate]);
+  }, [currentUser, navigate]);
 
   function to_menu_route(it: IMenu): MenuDataItem {
     return {
@@ -45,7 +45,7 @@ const Widget = ({ title, children }: IProps) => {
   return (
     <ProLayout
       title={layout.subhead}
-      logo={<img src={layout.logo} />}
+      logo={<img alt="logo" src={layout.logo} />}
       fixedHeader
       fixSiderbar
       rightContentRender={() => (

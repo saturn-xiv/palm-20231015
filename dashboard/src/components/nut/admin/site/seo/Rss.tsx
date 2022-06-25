@@ -15,7 +15,7 @@ const Widget = () => {
     <Card
       title={
         <>
-          <img style={{ width: 24, height: 24 }} src={rss_svg} />
+          <img alt="rss" style={{ width: 24, height: 24 }} src={rss_svg} />
           &nbsp;
           <FormattedMessage id="nut.admin.site.rss.title" />
         </>

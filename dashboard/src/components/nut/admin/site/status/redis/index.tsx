@@ -8,11 +8,6 @@ export interface IProps {
   item?: SiteStatusResponse.Redis;
 }
 
-interface IItem {
-  key?: string;
-  ttl?: number;
-}
-
 const Widget = ({ item }: IProps) => {
   const [clear, setClear] = useState(false);
   return (

@@ -22,6 +22,7 @@ const Widget = () => {
       title={intl.formatMessage({ id: "nut.admin.site.bing.title" })}
       extra={
         <a
+          rel="noreferrer"
           target="_blank"
           href={`/bing-${formRef.current?.getFieldValue("siteVerifyId")}.html`}
         >
@@ -75,6 +76,7 @@ const Widget = () => {
           <a
             href="https://www.bing.com/webmasters/help/add-and-verify-site-12184f8b"
             target="_blank"
+            rel="noreferrer"
           >
             Add and verify site
           </a>

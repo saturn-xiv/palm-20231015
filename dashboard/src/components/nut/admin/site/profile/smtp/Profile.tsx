@@ -137,6 +137,7 @@ const Widget = () => {
           <List bordered>
             <List.Item>
               <a
+                rel="noreferrer"
                 href="https://developers.google.com/gmail/imap/imap-smtp"
                 target="_blank"
               >

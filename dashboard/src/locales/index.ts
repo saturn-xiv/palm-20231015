@@ -7,8 +7,10 @@ import zhHant from "./zh-Hant";
 
 const KEY = "locale";
 
-export const DEFAULT: string = import.meta.env.VITE_DEFAULT_LOCALE;
-export const LANGUAGES: string[] = import.meta.env.VITE_LANGUAGES;
+export const DEFAULT: string = process.env.REACT_APP_DEFAULT_LOCALE || "en-US";
+export const LANGUAGES: string[] = process.env.REACT_APP_LANGUAGES?.split(
+  ","
+) || ["en-US", "zh-Hans", "zh-Hant"];
 
 export const get = (): string => {
   return localStorage.getItem(KEY) || Cookies.get(KEY) || DEFAULT;

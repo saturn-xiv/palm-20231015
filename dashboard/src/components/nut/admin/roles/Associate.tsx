@@ -46,16 +46,15 @@ const Widget = ({ handleRefresh }: IProps) => {
         const request = new RoleUserAssociateRequest();
         request.setUser(values.user);
         request.setRolesList(values.roles);
-        {
-          var nbf = new Timestamp();
-          nbf.setSeconds(dayjs(values.dates[0]).unix());
-          request.setNotBefore(nbf);
-        }
-        {
-          var exp = new Timestamp();
-          exp.setSeconds(dayjs(values.dates[1]).unix());
-          request.setExpiredAt(exp);
-        }
+
+        var nbf = new Timestamp();
+        nbf.setSeconds(dayjs(values.dates[0]).unix());
+        request.setNotBefore(nbf);
+
+        var exp = new Timestamp();
+        exp.setSeconds(dayjs(values.dates[1]).unix());
+        request.setExpiredAt(exp);
+
         client.associate(request, grpc_metadata(), (err) => {
           if (err) {
             message.error(err.message);

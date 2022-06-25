@@ -28,7 +28,7 @@ function App() {
       defaultLocale={DEFAULT_LOCALE}
     >
       <Provider store={store}>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Suspense fallback={<Loading />}>
             <Routes>
               {pages.map((x) => {

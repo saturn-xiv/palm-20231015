@@ -30,6 +30,7 @@ const Widget = () => {
       }
       extra={
         <a
+          rel="noreferrer"
           target="_blank"
           href={`/google_${formRef.current?.getFieldValue(
             "siteVerifyId"
@@ -115,6 +116,7 @@ const Widget = () => {
       <Card.Meta
         description={
           <a
+            rel="noreferrer"
             target="_blank"
             href="https://support.google.com/webmasters/answer/9008080?hl=en#html_verification"
           >
@@ -124,7 +126,11 @@ const Widget = () => {
       />
       <Card.Meta
         description={
-          <a href="https://www.google.com/recaptcha/about/">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.google.com/recaptcha/about/"
+          >
             WHAT IS RECAPTCHA?
           </a>
         }

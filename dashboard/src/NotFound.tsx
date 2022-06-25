@@ -34,7 +34,7 @@ const Widget = () => {
               </Button>
             </>
           }
-          cover={<img src={broken_link} />}
+          cover={<img alt="not found" src={broken_link} />}
         />
       </Col>
     </Layout>

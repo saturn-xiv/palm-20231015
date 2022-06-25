@@ -22,6 +22,7 @@ const Widget = () => {
       title={intl.formatMessage({ id: "nut.admin.site.baidu.title" })}
       extra={
         <a
+          rel="noreferrer"
           target="_blank"
           href={`/baidu-${formRef.current?.getFieldValue("siteVerifyId")}.html`}
         >

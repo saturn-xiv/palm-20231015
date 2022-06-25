@@ -12,7 +12,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { SiteClient } from "../../../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../../../request";
 import { SiteSmtpTestRequst } from "../../../../../../protocols/nut_pb.d";
-import { RULE_EMAIL, RULE_PASSWORD } from "../../../../../forms";
+import { RULE_EMAIL } from "../../../../../forms";
 
 interface IFormData {
   to: string;

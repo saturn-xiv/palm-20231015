@@ -1,4 +1,4 @@
-import { ReactNode, ComponentType } from "react";
+import { ComponentType } from "react";
 
 import nut from "./nut";
 

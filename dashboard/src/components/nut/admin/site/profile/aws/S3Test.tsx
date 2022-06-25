@@ -21,12 +21,6 @@ const BucketList = ({ items }: IBucketListProps) => {
   );
 };
 
-interface IFormData {
-  to: string;
-  subject: string;
-  body: string;
-}
-
 const Widget = () => {
   const [showBuckets, setShowBuckets] = useState(false);
   const [buckets, setBuckets] = useState<string[]>([]);

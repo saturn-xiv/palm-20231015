@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { message, Button, Tag, Card, Input, Tooltip } from "antd";
 import { useIntl, FormattedMessage } from "react-intl";
 import { PlusOutlined } from "@ant-design/icons";

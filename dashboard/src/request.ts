@@ -5,7 +5,8 @@ import { get as getToken } from "./reducers/current-user";
 
 export const backend = (u: string) => `/api${u}`;
 
-export const GRPC_HOST: string = import.meta.env.VITE_GRPC_HOST;
+export const GRPC_HOST: string =
+  process.env.REACT_APP_GRPC_HOST || "http://localhost:9999";
 
 export const grpc_metadata = (): Metadata => {
   return {
