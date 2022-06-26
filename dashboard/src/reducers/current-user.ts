@@ -28,11 +28,11 @@ export const get = (): string | null => {
   return sessionStorage.getItem(KEY);
 };
 
-export const set = (token: string) => {
+const set = (token: string) => {
   sessionStorage.setItem(KEY, token);
 };
 
-export const remove = () => {
+const remove = () => {
   sessionStorage.removeItem(KEY);
 };
 
@@ -88,10 +88,8 @@ export const slice = createSlice({
   initialState,
   reducers: {
     signIn: (state, action: PayloadAction<[IUser, string]>) => {
-      try {
-        state.payload = action.payload[0];
-        set(action.payload[1]);
-      } catch {}
+      state.payload = action.payload[0];
+      set(action.payload[1]);
     },
     signOut: (state) => {
       state.payload = undefined;

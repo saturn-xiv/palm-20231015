@@ -8,13 +8,16 @@ import locales, {
   DEFAULT as DEFAULT_LOCALE,
 } from "./locales";
 import store from "./store";
+import onLoad from "./load";
 import pages from "./pages";
 import Loading from "./Loading";
 import NotFound from "./NotFound";
 
 import "./App.css";
 
-function App() {
+onLoad();
+
+function Widget() {
   const messages = locales();
   const lang = getLocale();
   return (
@@ -41,4 +44,4 @@ function App() {
   );
 }
 
-export default App;
+export default Widget;

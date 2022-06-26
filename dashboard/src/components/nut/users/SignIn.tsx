@@ -8,7 +8,6 @@ import { message } from "antd";
 
 import {
   DURATION,
-  remove as removeToken,
   to_user_query_request,
   TO_PROFILE,
   currentUser,
@@ -32,9 +31,11 @@ const Widget = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (user) {
-      navigate(TO_PROFILE);
-    }
+    return () => {
+      if (user) {
+        navigate(TO_PROFILE);
+      }
+    };
   }, [user, navigate]);
 
   const formRef = useRef<ProFormInstance>();
@@ -54,13 +55,13 @@ const Widget = () => {
 
         client.signIn(request, grpc_metadata(), function (err, response) {
           if (err) {
-            removeToken();
             message.error(err.message);
           } else {
             try {
               const user = to_user(response);
               if (user) {
                 dispatch(signIn([user, response.getToken()]));
+                navigate(TO_PROFILE);
               }
             } catch {}
           }

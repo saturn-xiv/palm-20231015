@@ -22,7 +22,7 @@ interface IState {
   site?: ISite;
 }
 
-export const to_layout = (response: SiteLayoutResponse): ISite | undefined => {
+export const to_site = (response: SiteLayoutResponse): ISite | undefined => {
   let author = response.getAuthor();
   if (!author) {
     return;

@@ -13,7 +13,9 @@ const Widget = () => {
   const user = useAppSelector(currentUser);
 
   useEffect(() => {
-    navigate(user ? TO_PROFILE : TO_SIGN_IN);
+    return () => {
+      navigate(user ? TO_PROFILE : TO_SIGN_IN);
+    };
   }, [user, navigate]);
 
   return <></>;

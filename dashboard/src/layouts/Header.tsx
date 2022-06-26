@@ -9,9 +9,12 @@ interface IProps {
 
 const Widget = ({ title }: IProps) => {
   const site = useAppSelector(siteInfo);
+
   useEffect(() => {
-    document.title = `${title} | ${site?.subhead} | ${site?.title}`;
-  });
+    return () => {
+      document.title = `${title} | ${site?.subhead} | ${site?.title}`;
+    };
+  }, [site, title]);
 
   return <></>;
 };

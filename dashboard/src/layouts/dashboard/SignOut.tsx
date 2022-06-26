@@ -7,11 +7,13 @@ import { useNavigate } from "react-router-dom";
 
 import { UserClient } from "../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../request";
-import { remove as removeToken } from "../../reducers/current-user";
+import { TO_SIGN_IN, signOut } from "../../reducers/current-user";
+import { useAppDispatch } from "../../hooks";
 
 const Widget = () => {
   const navigate = useNavigate();
   const intl = useIntl();
+  const dispatch = useAppDispatch();
   return (
     <Popconfirm
       title={intl.formatMessage({ id: "nut.users.sign-out.title" })}
@@ -25,8 +27,8 @@ const Widget = () => {
               intl.formatMessage({ id: "form.submit.successed" })
             );
           }
-          removeToken();
-          navigate("/");
+          dispatch(signOut());
+          navigate(TO_SIGN_IN);
         });
       }}
     >
