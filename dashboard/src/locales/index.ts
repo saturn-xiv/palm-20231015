@@ -2,8 +2,8 @@ import Cookies from "js-cookie";
 
 import languages from "./languages";
 import enUS from "./en-US";
-import zhHans from "./zh-Hans";
-import zhHant from "./zh-Hant";
+import zhCN from "./zh-CN";
+import zhTW from "./zh-TW";
 
 const KEY = "locale";
 
@@ -28,10 +28,10 @@ export const remove = () => {
 
 const messages = (): Record<string, string> => {
   switch (get()) {
-    case "zh-Hans":
-      return { ...zhHans, ...languages };
-    case "zh-Hant":
-      return { ...zhHant, ...languages };
+    case "zh-CN":
+      return { ...zhCN, ...languages };
+    case "zh-TW":
+      return { ...zhTW, ...languages };
     default:
       return { ...enUS, ...languages };
   }

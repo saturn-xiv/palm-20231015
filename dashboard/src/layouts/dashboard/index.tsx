@@ -14,7 +14,7 @@ import { siteInfo } from "../../reducers/layout";
 import Header from "../Header";
 import SignOut from "./SignOut";
 import NotificationBar from "./NotificationBar";
-import { useAppSelector } from "../../hooks";
+import { useAppSelector, useAppDispatch } from "../../hooks";
 
 export interface IProps {
   title: string;
@@ -25,6 +25,7 @@ const Widget = ({ title, children }: IProps) => {
   const site = useAppSelector(siteInfo);
   const user = useAppSelector(currentUser);
   const sideBar = useAppSelector((state) => state.sideBar);
+  const dispatch = useAppDispatch();
   const intl = useIntl();
   const navigate = useNavigate();
 
@@ -64,7 +65,7 @@ const Widget = ({ title, children }: IProps) => {
       menuProps={{
         onSelect: ({ key }: SelectInfo) => {
           navigate(key);
-          selectSideBar(key);
+          dispatch(selectSideBar(key));
         },
       }}
       selectedKeys={sideBar.selectedKey ? [sideBar.selectedKey] : []}
