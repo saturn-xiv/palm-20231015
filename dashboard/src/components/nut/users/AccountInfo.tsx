@@ -56,7 +56,7 @@ const Widget = () => {
           if (error) {
             message.error(error.message);
           } else {
-            setLocale(values.lang);
+            setLocale(values.lang, true);
             message.success(
               intl.formatMessage({
                 id: "form.submit.successed",

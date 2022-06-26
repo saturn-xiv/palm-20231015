@@ -16,9 +16,12 @@ export const get = (): string => {
   return localStorage.getItem(KEY) || Cookies.get(KEY) || DEFAULT;
 };
 
-export const set = (lang: string) => {
+export const set = (lang: string, reload: boolean) => {
   Cookies.set(KEY, lang);
   localStorage.setItem(KEY, lang);
+  if (reload) {
+    window.location.reload();
+  }
 };
 
 export const remove = () => {

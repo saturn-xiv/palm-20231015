@@ -24,7 +24,7 @@ const Widget = () => {
                     { lang: intl.formatMessage({ id: `languages.${it}` }) }
                   )}
                   onConfirm={() => {
-                    setLocale(it);
+                    setLocale(it, true);
                   }}
                 >
                   <Button type="text">
