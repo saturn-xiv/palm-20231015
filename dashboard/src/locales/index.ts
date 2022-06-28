@@ -1,9 +1,13 @@
 import Cookies from "js-cookie";
+import type { Locale as AntdLocale } from "antd/lib/locale-provider";
+import antdZhCN from "antd/lib/locale/zh_CN";
+import antdZhTW from "antd/lib/locale/zh_TW";
+import antdEnUS from "antd/lib/locale/en_US";
 
 import languages from "./languages";
 import enUS from "./en-US";
-import zhCN from "./zh-CN";
-import zhTW from "./zh-TW";
+import zhHans from "./zh-Hans";
+import zhHant from "./zh-Hant";
 
 const KEY = "locale";
 
@@ -29,14 +33,19 @@ export const remove = () => {
   localStorage.removeItem(KEY);
 };
 
-const messages = (): Record<string, string> => {
+interface ILocale {
+  antd: AntdLocale;
+  messages: Record<string, string>;
+}
+
+const messages = (): ILocale => {
   switch (get()) {
-    case "zh-CN":
-      return { ...zhCN, ...languages };
-    case "zh-TW":
-      return { ...zhTW, ...languages };
+    case "zh-Hans":
+      return { messages: { ...zhHans, ...languages }, antd: antdZhCN };
+    case "zh-Hant":
+      return { messages: { ...zhHant, ...languages }, antd: antdZhTW };
     default:
-      return { ...enUS, ...languages };
+      return { messages: { ...enUS, ...languages }, antd: antdEnUS };
   }
 };
 

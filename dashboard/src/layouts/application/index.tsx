@@ -34,7 +34,7 @@ const Widget = ({ title, children }: IProps) => {
             {
               key: "dashboard",
               title: <Dashboard />,
-              href: "/my/",
+              href: process.env.PUBLIC_URL,
             },
             {
               key: "github",

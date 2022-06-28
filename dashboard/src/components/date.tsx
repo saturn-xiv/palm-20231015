@@ -8,21 +8,22 @@ import "dayjs/locale/zh-cn";
 import "dayjs/locale/zh-tw";
 import timezones from "timezones-list";
 
-import { get as getLocale } from "../locales";
-
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(advanced);
 dayjs.extend(localizedFormat);
 
-const get_lang = (): string => {
-  const lang = getLocale().toLocaleLowerCase();
-
+export const switch_lang = (lang: string) => {
   switch (lang) {
-    case "zh-cn" || "zh-tw":
-      return "lang";
+    case "zh-Hans":
+      dayjs.locale("zh-cn");
+      break;
+    case "zh-Hant":
+      dayjs.locale("zh-tw");
+      break;
     default:
-      return "en";
+      dayjs.locale("en");
+      break;
   }
 };
 
@@ -32,7 +33,7 @@ interface IShowTimestampProps {
   value: Date;
 }
 export const ShowTimestamp = ({ value }: IShowTimestampProps) => {
-  return <span>{dayjs(value).locale(get_lang()).format("llll")}</span>;
+  return <span>{dayjs(value).format("llll")}</span>;
 };
 
 export const all_time_zones = () => {
