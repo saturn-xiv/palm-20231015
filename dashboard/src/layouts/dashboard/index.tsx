@@ -15,6 +15,7 @@ import Header from "../Header";
 import SignOut from "./SignOut";
 import NotificationBar from "./NotificationBar";
 import { useAppSelector, useAppDispatch } from "../../hooks";
+import palm_tree from "../../assets/palm-tree.svg";
 
 export interface IProps {
   title: string;
@@ -49,7 +50,7 @@ const Widget = ({ title, children }: IProps) => {
   return (
     <ProLayout
       title={site?.subhead}
-      logo={<img alt="logo" src={site?.logo} />}
+      logo={<img alt="logo" src={site?.logo || palm_tree} />}
       fixedHeader
       fixSiderbar
       rightContentRender={() => (
