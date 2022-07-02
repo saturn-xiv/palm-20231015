@@ -43,7 +43,30 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     };
     let is_prod = cfg.env == Environment::Production;
 
+    let allow_origins = cfg.http.allow_origins.clone();
     HttpServer::new(move || {
+        // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+        let cors = {
+            let mut cs = Cors::default();
+            for it in allow_origins.iter() {
+                cs = cs.allowed_origin(it);
+            }
+            cs.allowed_methods(vec![
+                Method::OPTIONS,
+                Method::DELETE,
+                Method::PATCH,
+                Method::PUT,
+                Method::POST,
+                Method::GET,
+            ])
+            .allowed_header(CONTENT_TYPE)
+            .allowed_header(AUTHORIZATION)
+            .allowed_header(ACCEPT_LANGUAGE)
+            .allowed_header(COOKIE)
+            .allowed_header("X-Requested-With")
+            .supports_credentials()
+            .max_age(Duration::hours(1).num_seconds() as usize)
+        };
         App::new()
             .app_data(pgsql.clone())
             .app_data(cache.clone())
@@ -51,26 +74,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .app_data(hmac.clone())
             .app_data(jwt.clone())
             .app_data(queue.clone())
-            .wrap(
-                // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-                Cors::default()
-                    .allowed_origin("http://localhost:3000")
-                    .allowed_methods(vec![
-                        Method::OPTIONS,
-                        Method::DELETE,
-                        Method::PATCH,
-                        Method::PUT,
-                        Method::POST,
-                        Method::GET,
-                    ])
-                    .allowed_header(CONTENT_TYPE)
-                    .allowed_header(AUTHORIZATION)
-                    .allowed_header(ACCEPT_LANGUAGE)
-                    .allowed_header(COOKIE)
-                    .allowed_header("X-Requested-With")
-                    .supports_credentials()
-                    .max_age(Duration::hours(1).num_seconds() as usize),
-            )
+            .wrap(cors)
             .wrap(middleware::Logger::default())
             .wrap(
                 SessionMiddleware::builder(
