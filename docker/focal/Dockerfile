@@ -111,7 +111,7 @@ RUN git clone https://github.com/rui314/mold.git $HOME/build/mold
 RUN apt install -y libstdc++-10-dev libssl-dev libxxhash-dev zlib1g-dev
 RUN zsh -c "source $HOME/.zshrc \
     && cd $HOME/build/mold \
-    && git checkout v1.2.1 \
+    && git checkout v1.3.1 \
     && make CXX=clang++ \
     && strip -s mold \
     && cp mold /usr/bin/ "
