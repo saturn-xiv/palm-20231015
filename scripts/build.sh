@@ -83,7 +83,7 @@ build_deb(){
     build_ubuntu_backend $1 $target
 
     mkdir -pv $target/usr/share/palm
-    cp -av $WORKSPACE/dashboard/dist $target/usr/share/palm/dashboard
+    cp -av $WORKSPACE/dashboard/build $target/usr/share/palm/dashboard
     cp -av $WORKSPACE/assets $WORKSPACE/db $WORKSPACE/protos $target/usr/share/palm/
     local -a packages=(
         "bootstrap/dist"
