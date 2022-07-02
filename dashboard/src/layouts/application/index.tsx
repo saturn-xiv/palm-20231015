@@ -21,7 +21,7 @@ const Widget = ({ title, children }: IProps) => {
       title={site?.subhead}
       layout="top"
       contentWidth="Fluid"
-      logo={() => <img src={site?.logo || palm_tree} alt="logo" />}
+      logo={site?.logo || palm_tree}
       footerRender={() => (
         <Footer
           copyright={`${site?.copyright}`}

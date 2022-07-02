@@ -4,6 +4,7 @@ import { UploadOutlined, CloudUploadOutlined } from "@ant-design/icons";
 import { FormattedMessage, useIntl } from "react-intl";
 
 import { get as getToken } from "../../../reducers/current-user";
+import { API_HOST } from "../../../request";
 
 interface IProps {
   handleRefresh: () => void;
@@ -12,6 +13,7 @@ interface IProps {
 const Widget = ({ handleRefresh }: IProps) => {
   const intl = useIntl();
   const [show, setShow] = useState(false);
+
   return (
     <>
       <Tooltip title={<FormattedMessage id="buttons.upload" />}>
@@ -39,7 +41,7 @@ const Widget = ({ handleRefresh }: IProps) => {
         <Upload
           multiple
           name="file"
-          action="/api/attachments"
+          action={`${API_HOST}/api/attachments`}
           headers={{
             Authorization: `Bearer ${getToken()}`,
           }}

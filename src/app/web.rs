@@ -51,26 +51,27 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .app_data(hmac.clone())
             .app_data(jwt.clone())
             .app_data(queue.clone())
-            .wrap(middleware::Logger::default())
             .wrap(
                 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
                 Cors::default()
-                    // TODO allowed
-                    .allow_any_origin()
-                    .allowed_header(CONTENT_TYPE)
-                    .allowed_header(AUTHORIZATION)
-                    .allowed_header(ACCEPT_LANGUAGE)
-                    .allowed_header(COOKIE)
+                    .allowed_origin("http://localhost:3000")
                     .allowed_methods(vec![
                         Method::OPTIONS,
+                        Method::DELETE,
                         Method::PATCH,
                         Method::PUT,
                         Method::POST,
                         Method::GET,
                     ])
+                    .allowed_header(CONTENT_TYPE)
+                    .allowed_header(AUTHORIZATION)
+                    .allowed_header(ACCEPT_LANGUAGE)
+                    .allowed_header(COOKIE)
+                    .allowed_header("X-Requested-With")
                     .supports_credentials()
                     .max_age(Duration::hours(1).num_seconds() as usize),
             )
+            .wrap(middleware::Logger::default())
             .wrap(
                 SessionMiddleware::builder(
                     CookieSessionStore::default(),

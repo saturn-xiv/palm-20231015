@@ -8,6 +8,11 @@ export const backend = (u: string) => `/api${u}`;
 export const GRPC_HOST: string =
   process.env.REACT_APP_GRPC_HOST || "http://localhost:9999";
 
+export const API_HOST: string =
+  process.env.NODE_ENV === "development" && process.env.REACT_APP_API_HOST
+    ? process.env.REACT_APP_API_HOST
+    : "";
+
 export const grpc_metadata = (): Metadata => {
   return {
     authorization: `Bearer ${getToken()}`,

@@ -50,7 +50,7 @@ const Widget = ({ title, children }: IProps) => {
   return (
     <ProLayout
       title={site?.subhead}
-      logo={<img alt="logo" src={site?.logo || palm_tree} />}
+      logo={site?.logo || palm_tree}
       fixedHeader
       fixSiderbar
       rightContentRender={() => (

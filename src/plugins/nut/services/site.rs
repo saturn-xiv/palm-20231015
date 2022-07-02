@@ -87,7 +87,7 @@ impl v1::SiteLayoutResponse {
         )
         .unwrap_or_default();
         let logo: String = SettingDao::get(db, aes, &v1::SiteSetLogoRequest::KEY.to_string(), None)
-            .unwrap_or_else(|_| "/my/favicon.png".to_string());
+            .unwrap_or_else(|_| "/my/favicon.ico".to_string());
 
         Ok(Self {
             title: I18n::t(db, lang, v1::SiteSetInfoRequest::TITLE, &None::<String>),
