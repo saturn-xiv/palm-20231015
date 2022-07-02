@@ -43,7 +43,7 @@ export const Github = () => {
 
 export const SwitchLanguage = () => {
   const navigate = useNavigate();
-  return LANGUAGES.length > 0 ? (
+  return LANGUAGES.length > 1 ? (
     <GlobalOutlined
       onClick={(ev) => {
         ev.preventDefault();

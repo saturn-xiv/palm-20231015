@@ -58,6 +58,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 Method::PUT,
                 Method::POST,
                 Method::GET,
+                Method::HEAD,
             ])
             .allowed_header(CONTENT_TYPE)
             .allowed_header(AUTHORIZATION)
