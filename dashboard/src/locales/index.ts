@@ -38,8 +38,8 @@ interface ILocale {
   messages: Record<string, string>;
 }
 
-const messages = (): ILocale => {
-  switch (get()) {
+const messages = (lang: string): ILocale => {
+  switch (lang) {
     case "zh-Hans":
       return { messages: { ...zhHans, ...languages }, antd: antdZhCN };
     case "zh-Hant":
