@@ -33,6 +33,7 @@ export const options = (method: string): RequestInit => {
       Authorization: `Bearer ${getToken()}`,
       "Content-Type": "application/json; charset=utf-8",
     },
+    mode: "cors",
     method,
   };
 };
