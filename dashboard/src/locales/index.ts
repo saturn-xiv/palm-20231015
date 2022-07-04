@@ -1,8 +1,11 @@
 import Cookies from "js-cookie";
 import type { Locale as AntdLocale } from "antd/lib/locale-provider";
+import antdEnUS from "antd/lib/locale/en_US";
 import antdZhCN from "antd/lib/locale/zh_CN";
 import antdZhTW from "antd/lib/locale/zh_TW";
-import antdEnUS from "antd/lib/locale/en_US";
+import "@ant-design/pro-provider/lib/locale/en_US";
+import "@ant-design/pro-provider/lib/locale/zh_CN";
+import "@ant-design/pro-provider/lib/locale/zh_TW";
 
 import languages from "./languages";
 import enUS from "./en-US";
@@ -41,11 +44,20 @@ interface ILocale {
 const messages = (lang: string): ILocale => {
   switch (lang) {
     case "zh-Hans":
-      return { messages: { ...zhHans, ...languages }, antd: antdZhCN };
+      return {
+        messages: { ...zhHans, ...languages },
+        antd: antdZhCN,
+      };
     case "zh-Hant":
-      return { messages: { ...zhHant, ...languages }, antd: antdZhTW };
+      return {
+        messages: { ...zhHant, ...languages },
+        antd: antdZhTW,
+      };
     default:
-      return { messages: { ...enUS, ...languages }, antd: antdEnUS };
+      return {
+        messages: { ...enUS, ...languages },
+        antd: antdEnUS,
+      };
   }
 };
 

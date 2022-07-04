@@ -3,7 +3,7 @@ import { get as getLocale } from "./locales";
 
 import { get as getToken } from "./reducers/current-user";
 
-export const backend = (u: string) => `/api${u}`;
+export const backend = (u: string) => `${API_HOST}/api${u}`;
 
 export const GRPC_HOST: string =
   process.env.REACT_APP_GRPC_HOST || "http://localhost:9999";
