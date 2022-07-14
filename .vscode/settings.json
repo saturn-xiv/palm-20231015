@@ -17,7 +17,6 @@
     "**/node_modules/**": true
   },
   "[rust]": {
-    // "editor.defaultFormatter": "rust-lang.rust"
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
   "[proto3]": {
