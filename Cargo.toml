@@ -25,11 +25,11 @@ futures-util = "0.3"
 mime = "0.3"
 language-tags = "0.3"
 tonic-web = "0.3"
-actix-identity = "0.4"
 actix-multipart = "0.4"
 log = "0.4"
 num-complex = "0.4"
 yaml-rust = "0.4"
+actix-identity = "0.5"
 toml = "0.5"
 actix-cors = "0.6"
 actix-files = "0.6"
@@ -48,7 +48,7 @@ prost-types = "0.10"
 Inflector = "0.11"
 base64 = "0.13"
 git2 = "0.14"
-ipnetwork = "0.19"
+ipnetwork = "0.20"
 nix = "0.24"
 image = "0.24"
 rusoto_core = "0.48"
@@ -74,15 +74,13 @@ jsonwebtoken = "8"
 version = "0.4"
 features = ["serde"]
 
-[dependencies.actix-session]
-version = "0.6"
-# git = "https://github.com/actix/actix-extras.git"
-# ref = "bf41b4c"
-features = ["cookie-session", "redis-rs-session"]
-
 [dependencies.chrono-tz]
 version = "0.6"
 features = ["serde"]
+
+[dependencies.actix-session]
+version = "0.7"
+features = ["cookie-session", "redis-rs-session"]
 
 [dependencies.uuid]
 version = "1"

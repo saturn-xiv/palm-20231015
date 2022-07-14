@@ -1,8 +1,12 @@
 use std::path::{Component, Path};
 
 use actix_cors::Cors;
-use actix_identity::{CookieIdentityPolicy, IdentityService};
-use actix_session::{storage::CookieSessionStore, SessionLength, SessionMiddleware};
+use actix_identity::IdentityMiddleware;
+use actix_session::{
+    config::{BrowserSession, CookieContentSecurity, SessionLifecycle},
+    storage::CookieSessionStore,
+    SessionMiddleware,
+};
 use actix_web::{middleware, web, App, HttpServer};
 use chrono::Duration;
 use cookie::{time::Duration as CookieDuration, Key as CookieKey, SameSite};
@@ -77,27 +81,23 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .app_data(queue.clone())
             .wrap(cors)
             .wrap(middleware::Logger::default())
+            .wrap(IdentityMiddleware::default())
             .wrap(
                 SessionMiddleware::builder(
                     CookieSessionStore::default(),
                     CookieKey::from(&cookie_key),
                 )
                 .cookie_name(format!("{}.ss", NAME))
-                .cookie_same_site(SameSite::None)
+                .cookie_same_site(SameSite::Strict)
                 .cookie_http_only(true)
-                // .cookie_max_age(Duration::hours(1).num_seconds())
+                .cookie_content_security(CookieContentSecurity::Private)
                 .cookie_path("/".to_string())
+                .session_lifecycle(SessionLifecycle::BrowserSession(
+                    BrowserSession::default().state_ttl(CookieDuration::hours(1)),
+                ))
                 .cookie_secure(is_prod)
-                .session_length(SessionLength::BrowserSession {
-                    state_ttl: Some(CookieDuration::new(Duration::hours(1).num_seconds(), 0)),
-                })
                 .build(),
             )
-            .wrap(IdentityService::new(
-                CookieIdentityPolicy::new(&identity_key)
-                    .name(format!("{}.id", NAME))
-                    .secure(is_prod),
-            ))
             .service(nut::controllers::attachments::create)
             .service(nut::controllers::captcha::get)
             .service(nut::controllers::sitemap::index)
