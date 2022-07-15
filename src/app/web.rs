@@ -41,10 +41,6 @@ pub async fn launch(cfg: &Config) -> Result<()> {
         let it = base64::encode(base64::encode(&cfg.secrets.0));
         it.as_bytes().to_vec()
     };
-    let identity_key = {
-        let it: Result<Vec<u8>> = cfg.secrets.clone().into();
-        it?
-    };
     let is_prod = cfg.env == Environment::Production;
 
     let allow_origins = cfg.http.allow_origins.clone();

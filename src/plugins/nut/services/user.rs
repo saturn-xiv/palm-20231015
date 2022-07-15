@@ -356,24 +356,37 @@ impl v1::user_server::User for Service {
 
         Ok(Response::new(it))
     }
-    async fn logs(&self, req: Request<v1::Pager>) -> GrpcResult<v1::UserLogsResponse> {
+    async fn logs(&self, req: Request<v1::UserLogsRequest>) -> GrpcResult<v1::UserLogsResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
         let req = req.into_inner();
-        let total = try_grpc!(LogDao::count(db, user.id))?;
-        debug!(
-            "pager={:?}, total={}, page={}, offset={}, size={}, pagination={:?}",
-            req,
-            total,
-            req.page(total),
-            req.offset(total),
-            req.size(),
-            v1::Pagination::new(&req, total)
-        );
-        let items = try_grpc!(LogDao::all(db, user.id, req.offset(total), req.size()))?;
+        let level = match req.level {
+            Some(ref it) => Some(try_grpc!(it.parse().map_err(Status::internal))?),
+            None => None,
+        };
+        let total = try_grpc!(LogDao::count_by_queries(db, user.id, &level, &req.ip))?;
+        let pager = req.pager.clone().unwrap_or_default();
+
+        // debug!(
+        //     "pager={:?}, total={}, page={}, offset={}, size={}, pagination={:?}",
+        //     req,
+        //     total,
+        //     pager.page(total),
+        //     pager.offset(total),
+        //     pager.size(),
+        //     v1::Pagination::new(&pager, total)
+        // );
+        let items = try_grpc!(LogDao::index_by_queries(
+            db,
+            user.id,
+            pager.offset(total),
+            pager.size(),
+            &level,
+            &req.ip
+        ))?;
 
         Ok(Response::new(v1::UserLogsResponse {
             items: items
@@ -389,7 +402,7 @@ impl v1::user_server::User for Service {
                     created_at: Some(to_timestamp!(x.created_at)),
                 })
                 .collect(),
-            pagination: Some(v1::Pagination::new(&req, total)),
+            pagination: Some(v1::Pagination::new(&pager, total)),
         }))
     }
     async fn sign_out(&self, req: Request<()>) -> GrpcResult<()> {

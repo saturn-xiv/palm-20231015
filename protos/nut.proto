@@ -34,11 +34,17 @@ service User {
   rpc ResetPassword(UserResetPasswordRequest) returns (google.protobuf.Empty) {}
 
   rpc Refresh(google.protobuf.Duration) returns (UserSignInResponse) {}
-  rpc Logs(Pager) returns (UserLogsResponse) {}
+  rpc Logs(UserLogsRequest) returns (UserLogsResponse) {}
   rpc SetProfile(UserSetProfileRequest) returns (google.protobuf.Empty) {}
   rpc ChangePassword(UserChangePasswordRequest)
       returns (google.protobuf.Empty) {}
   rpc SignOut(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message UserLogsRequest {
+  Pager pager = 1;
+  optional string level = 11;
+  optional string ip = 12;
 }
 
 message UserSignInResponse {

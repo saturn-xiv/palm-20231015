@@ -427,26 +427,26 @@ export class UserClient {
   methodDescriptorLogs = new grpcWeb.MethodDescriptor(
     '/palm.plugins.nut.v1.User/Logs',
     grpcWeb.MethodType.UNARY,
-    nut_pb.Pager,
+    nut_pb.UserLogsRequest,
     nut_pb.UserLogsResponse,
-    (request: nut_pb.Pager) => {
+    (request: nut_pb.UserLogsRequest) => {
       return request.serializeBinary();
     },
     nut_pb.UserLogsResponse.deserializeBinary
   );
 
   logs(
-    request: nut_pb.Pager,
+    request: nut_pb.UserLogsRequest,
     metadata: grpcWeb.Metadata | null): Promise<nut_pb.UserLogsResponse>;
 
   logs(
-    request: nut_pb.Pager,
+    request: nut_pb.UserLogsRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: nut_pb.UserLogsResponse) => void): grpcWeb.ClientReadableStream<nut_pb.UserLogsResponse>;
 
   logs(
-    request: nut_pb.Pager,
+    request: nut_pb.UserLogsRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: nut_pb.UserLogsResponse) => void) {

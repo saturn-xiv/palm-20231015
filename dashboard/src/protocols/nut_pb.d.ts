@@ -79,6 +79,48 @@ export namespace IdRequest {
   }
 }
 
+export class UserLogsRequest extends jspb.Message {
+  getPager(): Pager | undefined;
+  setPager(value?: Pager): UserLogsRequest;
+  hasPager(): boolean;
+  clearPager(): UserLogsRequest;
+
+  getLevel(): string;
+  setLevel(value: string): UserLogsRequest;
+  hasLevel(): boolean;
+  clearLevel(): UserLogsRequest;
+
+  getIp(): string;
+  setIp(value: string): UserLogsRequest;
+  hasIp(): boolean;
+  clearIp(): UserLogsRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UserLogsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UserLogsRequest): UserLogsRequest.AsObject;
+  static serializeBinaryToWriter(message: UserLogsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UserLogsRequest;
+  static deserializeBinaryFromReader(message: UserLogsRequest, reader: jspb.BinaryReader): UserLogsRequest;
+}
+
+export namespace UserLogsRequest {
+  export type AsObject = {
+    pager?: Pager.AsObject,
+    level?: string,
+    ip?: string,
+  }
+
+  export enum LevelCase { 
+    _LEVEL_NOT_SET = 0,
+    LEVEL = 11,
+  }
+
+  export enum IpCase { 
+    _IP_NOT_SET = 0,
+    IP = 12,
+  }
+}
+
 export class UserSignInResponse extends jspb.Message {
   getToken(): string;
   setToken(value: string): UserSignInResponse;

@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useIntl } from "react-intl";
-import ProTable, { ActionType } from "@ant-design/pro-table";
+import { ProTable } from "@ant-design/pro-components";
+import type { ActionType, ProFormInstance } from "@ant-design/pro-components";
 import { Timestamp } from "google-protobuf/google/protobuf/timestamp_pb";
 
 import {
@@ -11,7 +12,7 @@ import {
   TIMESTAMP_COLUMN_WIDTH,
   to_date,
 } from "../..";
-import { Pager } from "../../../protocols/nut_pb";
+import { Pager, UserLogsRequest } from "../../../protocols/nut_pb";
 import { UserClient } from "../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../request";
 import { ShowTimestamp } from "../../../components/date";
@@ -28,23 +29,32 @@ interface IItem {
 
 const Widget = () => {
   const intl = useIntl();
-  const ref = useRef<ActionType>();
+  const actionRef = useRef<ActionType>();
+  const formRef = useRef<ProFormInstance>();
   return (
     <ProTable<IItem>
-      search={false}
-      actionRef={ref}
+      formRef={formRef}
+      actionRef={actionRef}
       columns={[
         {
           title: intl.formatMessage({ id: "form.fields.id.label" }),
           dataIndex: "id",
           key: "id",
           width: ID_WIDTH,
+          search: false,
         },
         {
           title: intl.formatMessage({ id: "form.fields.level.label" }),
           dataIndex: "level",
           key: "level",
           width: 80,
+          valueType: "select",
+          valueEnum: {
+            info: { text: "提示", status: "info" },
+            debug: { text: "调试", status: "debug" },
+            warning: { text: "警告", status: "warning" },
+            error: { text: "错误", status: "error" },
+          },
         },
         {
           title: intl.formatMessage({ id: "form.fields.ip.label" }),
@@ -56,20 +66,32 @@ const Widget = () => {
           title: intl.formatMessage({ id: "form.fields.message.label" }),
           dataIndex: "message",
           key: "message",
+          search: false,
         },
         {
           title: intl.formatMessage({ id: "form.fields.created-at.label" }),
           key: "created-at",
           width: TIMESTAMP_COLUMN_WIDTH,
           render: (_, it) => <ShowTimestamp value={it.createdAt} />,
+          search: false,
         },
       ]}
-      request={async (params, sorter, filter) => {
+      request={async (params = {}, sorter, filter) => {
         const client = new UserClient(GRPC_HOST);
 
-        const request = new Pager();
-        request.setPage(params.current || DEFAULT_PAGE);
-        request.setSize(params.pageSize || DEFAULT_SIZE);
+        const request = new UserLogsRequest();
+        {
+          const pager = new Pager();
+          pager.setPage(params.current || DEFAULT_PAGE);
+          pager.setSize(params.pageSize || DEFAULT_SIZE);
+          request.setPager(pager);
+        }
+        if (params.level) {
+          request.setLevel(params.level);
+        }
+        if (params.ip) {
+          request.setIp(params.ip);
+        }
 
         const response = await client.logs(request, grpc_metadata());
         return {
