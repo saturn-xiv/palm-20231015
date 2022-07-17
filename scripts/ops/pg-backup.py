@@ -50,10 +50,12 @@ def release(folder, keep):
                     datetime.timedelta(days=keep)).timestamp()))
     for it in os.listdir(folder):
         if it.endswith('.gz'):
-            mt = os.path.getmtime(os.path.join(folder, it))
+            file = os.path.join(folder, it)
+            mt = os.path.getmtime(file)
             logging.debug("find backup file %s", it)
             if mt < ts:
                 logging.warning("remove %s", it)
+                os.remove(file)
 
 
 if __name__ == '__main__':
