@@ -90,7 +90,7 @@ if __name__ == '__main__':
     release(args.folder, args.days)
 
     smtp = config['smtp']
-    # send_mail(smtp['host'], int(smtp['port']), smtp['username'],
-    #           smtp['password'], args.to, subject, body)
+    send_mail(smtp['host'], int(smtp['port']), smtp['username'],
+              smtp['password'], args.to, subject, body)
 
     logging.info('done.')
