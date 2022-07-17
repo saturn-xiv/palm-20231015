@@ -24,5 +24,8 @@
   },
   "[xml]": {
     "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
   }
 }
