@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from email import message
+from itertools import repeat
 import os
 import logging
 import argparse
@@ -14,13 +15,17 @@ import socket
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+from tomlkit import array
+
 
 def send_mail(host, port, username, password, to, subject, body):
     logging.info('send email to %s', to)
     message = MIMEMultipart()
     message['Subject'] = subject
     message['From'] = username
-    message['To'] = to
+    message['To'] = to[0]
+    if len(to) > 1:
+        message['Cc'] = ','.join(to[1:])
     message.attach(MIMEText(body, "plain"))
 
     context = ssl.create_default_context()
@@ -57,7 +62,7 @@ if __name__ == '__main__':
         description='Backup PostgreSql db and send a report email.')
     parser.add_argument('-c', '--config', type=str, default="config.ini",
                         help='config file')
-    parser.add_argument('-t', '--to', type=str, required=True,
+    parser.add_argument('-t', '--to', type=str, action='append', required=True,
                         help='send report to this email')
     parser.add_argument('-f', '--folder', type=str, default='tmp',
                         help='target folder')
