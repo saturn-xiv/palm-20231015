@@ -15,8 +15,6 @@ import socket
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-from tomlkit import array
-
 
 def send_mail(host, port, username, password, to, subject, body):
     logging.info('send email to %s', to)
@@ -34,16 +32,17 @@ def send_mail(host, port, username, password, to, subject, body):
         server.sendmail(username, to, message.as_string())
 
 
-def backup(host, port, user, password, name, folder):
+def backup(host, port, user, password, name, dump, folder):
     now = datetime.datetime.now()
     version = now.strftime('%Y%m%d%H%M%S')
     url = f'postgresql://{user}:{password}@{host}:{port}/{name}'
+    logging.debug("backup %s", url)
     file = os.path.join(folder, f'{version}.gz')
     logging.info('write to %s', file)
-    out = subprocess.run(['pg_dump', '--dbname', url, '-Z',
+    out = subprocess.run([dump, '--dbname', url, '-Z',
                           '9', '-f', file], capture_output=True)
     hostname = socket.gethostname()
-    return (f'Backup to {file} successfully({hostname})', out.stdout.decode("utf-8"))
+    return (f'Backup to {file} successfully({hostname})', f"{out.returncode}\n{ out.stdout.decode('utf-8')}\n{ out.stderr.decode('utf-8')}")
 
 
 def release(folder, keep):
@@ -84,12 +83,12 @@ if __name__ == '__main__':
 
     pg = config['postgresql']
     (subject, body) = backup(pg['host'], int(pg['port']), pg['user'],
-                             pg['password'], pg['name'], args.folder)
+                             pg['password'], pg['name'], pg.get('dump', 'pg_dump'), args.folder)
 
     release(args.folder, args.days)
 
     smtp = config['smtp']
-    send_mail(smtp['host'], int(smtp['port']), smtp['username'],
-              smtp['password'], args.to, subject, body)
+    # send_mail(smtp['host'], int(smtp['port']), smtp['username'],
+    #           smtp['password'], args.to, subject, body)
 
     logging.info('done.')
