@@ -14,7 +14,7 @@ yarn add filesize dayjs timezones-list grpc-web \
     emoji-mart react-sparklines react-highlight-words \
     antd @ant-design/pro-components \
     react-intl \
-    react-router-dom@6 \
+    react-router-dom@latest \
     @reduxjs/toolkit react-redux
 
 echo 'done.'
