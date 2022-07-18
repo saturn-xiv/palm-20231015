@@ -40,7 +40,7 @@ def backup(host, port, user, password, name, dump, folder):
     file = os.path.join(folder, f'{version}.gz')
     logging.info('write to %s', file)
     out = subprocess.run([dump, '--dbname', url, '-Z',
-                          '9', '-f', file], capture_output=True)
+                         '9', '-f', file])
     hostname = socket.gethostname()
     return (f'Backup to {file} successfully({hostname})', f"{out.returncode}\n{ out.stdout.decode('utf-8')}\n{ out.stderr.decode('utf-8')}")
 
@@ -77,7 +77,7 @@ if __name__ == '__main__':
         format='%(asctime)s %(levelname)s: %(message)s', level=logging.DEBUG if args.debug else logging.INFO)
 
     logging.debug('run on debug mode')
-    logging.info('backup to %s and keep recent %d files',
+    logging.info("backup to %s and keep recent %d days' files",
                  args.folder, args.days)
     logging.debug('load file %s', args.config)
     config = configparser.ConfigParser()
