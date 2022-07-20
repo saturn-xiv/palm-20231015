@@ -11,9 +11,7 @@ const Widget = ({ title }: IProps) => {
   const site = useAppSelector(siteInfo);
 
   useEffect(() => {
-    return () => {
-      document.title = `${title} | ${site?.subhead} | ${site?.title}`;
-    };
+    document.title = `${title} | ${site?.subhead} | ${site?.title}`;
   }, [site, title]);
 
   return <></>;

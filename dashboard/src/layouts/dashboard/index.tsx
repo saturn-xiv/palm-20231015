@@ -31,11 +31,9 @@ const Widget = ({ title, children }: IProps) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    return () => {
-      if (!user) {
-        navigate(TO_SIGN_IN);
-      }
-    };
+    if (!user) {
+      navigate(TO_SIGN_IN);
+    }
   }, [user, navigate]);
 
   function to_menu_route(it: IMenu): MenuDataItem {

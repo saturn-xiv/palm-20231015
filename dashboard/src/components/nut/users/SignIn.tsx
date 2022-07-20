@@ -31,11 +31,9 @@ const Widget = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    return () => {
-      if (user) {
-        navigate(TO_PROFILE);
-      }
-    };
+    if (user) {
+      navigate(TO_PROFILE);
+    }
   }, [user, navigate]);
 
   const formRef = useRef<ProFormInstance>();

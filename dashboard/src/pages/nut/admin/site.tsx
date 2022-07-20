@@ -38,23 +38,21 @@ const Widget = () => {
   );
 
   useEffect(() => {
-    return () => {
-      const client = new SiteClient(GRPC_HOST);
-      client.layout(new Empty(), grpc_metadata(), (err, response) => {
-        if (err) {
-          message.error(err.message);
-        } else {
-          setLayout(response);
-        }
-      });
-      client.status(new Empty(), grpc_metadata(), (err, response) => {
-        if (err) {
-          message.error(err.message);
-        } else {
-          setStatus(response);
-        }
-      });
-    };
+    const client = new SiteClient(GRPC_HOST);
+    client.layout(new Empty(), grpc_metadata(), (err, response) => {
+      if (err) {
+        message.error(err.message);
+      } else {
+        setLayout(response);
+      }
+    });
+    client.status(new Empty(), grpc_metadata(), (err, response) => {
+      if (err) {
+        message.error(err.message);
+      } else {
+        setStatus(response);
+      }
+    });
   }, []);
   return (
     <Layout title={intl.formatMessage({ id: "nut.admin.site.title" })}>
