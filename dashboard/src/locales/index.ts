@@ -6,6 +6,8 @@ import antdZhTW from "antd/lib/locale/zh_TW";
 import "@ant-design/pro-provider/lib/locale/en_US";
 import "@ant-design/pro-provider/lib/locale/zh_CN";
 import "@ant-design/pro-provider/lib/locale/zh_TW";
+import "moment/locale/zh-cn";
+import "moment/locale/zh-tw";
 
 import languages from "./languages";
 import enUS from "./en-US";
