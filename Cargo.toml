@@ -49,6 +49,7 @@ Inflector = "0.11"
 base64 = "0.13"
 git2 = "0.14"
 ipnetwork = "0.20"
+imageproc = "0.23"
 nix = "0.24"
 image = "0.24"
 rusoto_core = "0.48"
@@ -152,10 +153,9 @@ features = ["cookies"]
 version = "*"
 # features = ["vendored"]
 
-# TODO https://github.com/image-rs/imageproc/pull/491
-[dependencies.imageproc]
-git = "https://github.com/image-rs/imageproc.git"
-rev = "b794265"
-
 [build-dependencies]
 tonic-build = "0.7"
+
+[dependencies.casbin]
+git = "https://github.com/casbin/casbin-rs.git"
+rev = "e161068"
