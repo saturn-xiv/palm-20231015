@@ -28,19 +28,6 @@ diesel::table! {
 }
 
 diesel::table! {
-    casbin_rules (id) {
-        id -> Int4,
-        ptype -> Varchar,
-        v0 -> Varchar,
-        v1 -> Varchar,
-        v2 -> Varchar,
-        v3 -> Varchar,
-        v4 -> Varchar,
-        v5 -> Varchar,
-    }
-}
-
-diesel::table! {
     categories (id) {
         id -> Int4,
         lang -> Varchar,
@@ -82,17 +69,6 @@ diesel::table! {
         resource_type -> Varchar,
         resource_id -> Nullable<Int4>,
         message -> Text,
-        created_at -> Timestamp,
-    }
-}
-
-diesel::table! {
-    policies (id) {
-        id -> Int4,
-        role -> Varchar,
-        operation -> Varchar,
-        resource_type -> Varchar,
-        resource_id -> Nullable<Int4>,
         created_at -> Timestamp,
     }
 }
@@ -159,19 +135,6 @@ diesel::table! {
 }
 
 diesel::table! {
-    users_roles (id) {
-        id -> Int4,
-        user_id -> Int4,
-        role -> Varchar,
-        not_before -> Date,
-        expired_at -> Date,
-        version -> Int4,
-        updated_at -> Timestamp,
-        created_at -> Timestamp,
-    }
-}
-
-diesel::table! {
     vote_items (id) {
         id -> Int4,
         score -> Int4,
@@ -203,17 +166,14 @@ diesel::table! {
 diesel::allow_tables_to_appear_in_same_query!(
     attachments,
     attachments_resources,
-    casbin_rules,
     categories,
     categories_resources,
     leave_words,
     logs,
-    policies,
     tags,
     tags_resources,
     twilio_sms_logs,
     users,
-    users_roles,
     vote_items,
     vote_logs,
 );

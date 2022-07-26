@@ -2,10 +2,8 @@ use std::io::prelude::*;
 use std::ops::{Deref, DerefMut};
 
 use actix_web::{
-    error::{ErrorBadRequest, ErrorInternalServerError},
-    get,
-    http::header::ContentType,
-    web, HttpResponse, Responder, Result as WebResult, Result,
+    error::ErrorBadRequest, get, http::header::ContentType, web, HttpResponse, Responder,
+    Result as WebResult, Result,
 };
 use askama::Template;
 use serde::{Deserialize, Serialize};

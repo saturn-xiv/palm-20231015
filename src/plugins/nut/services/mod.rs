@@ -1,14 +1,10 @@
 pub mod attachment;
 pub mod category;
 pub mod locale;
-pub mod policy;
-pub mod role;
 pub mod setting;
 pub mod site;
 pub mod tag;
 pub mod user;
-
-use std::any::type_name;
 
 use chrono::Duration;
 use hyper::{
@@ -19,12 +15,7 @@ use language_tags::LanguageTag;
 use tonic::{metadata::MetadataMap, Request};
 
 use super::super::super::{jwt::Jwt, orm::postgresql::Connection as Db, HttpError, Result};
-use super::models::{
-    policy::{Dao as PolicyDao, Item as Policy},
-    role::{Dao as RoleDao, ADMINISTRATOR},
-    user::{Action, Dao as UserDao, Item as User, Token},
-    Operation,
-};
+use super::models::user::{Action, Dao as UserDao, Item as User, Token};
 
 impl super::v1::Pagination {
     pub fn new(pager: &super::v1::Pager, total: i64) -> Self {
@@ -129,47 +120,6 @@ impl Session {
 }
 
 impl User {
-    pub fn is_administrator(&self, db: &mut Db) -> Result<()> {
-        self.is(db, ADMINISTRATOR)
-    }
-    pub fn is(&self, db: &mut Db, role: &str) -> Result<()> {
-        if RoleDao::is(db, self.id, role)? {
-            return Ok(());
-        }
-        Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))
-    }
-
-    pub fn can<T>(
-        &self,
-        db: &mut Db,
-        operation: &Operation,
-        resource_id: Option<i32>,
-    ) -> Result<()> {
-        // TODO cache result
-        if self.is_administrator(db).is_ok() {
-            return Ok(());
-        }
-
-        let resource_type = type_name::<T>();
-        let operation = operation.to_string();
-
-        for role in RoleDao::roles_by_user(db, self.id)? {
-            if PolicyDao::get(db, &role, &operation, resource_type, None).is_ok() {
-                return Ok(());
-            }
-
-            if resource_id.is_some()
-                && PolicyDao::get(db, &role, &operation, resource_type, resource_id).is_ok()
-            {
-                return Ok(());
-            }
-        }
-        Err(Box::new(HttpError(
-            StatusCode::FORBIDDEN,
-            Some(format!("{} {} {:?}", operation, resource_type, resource_id)),
-        )))
-    }
-
     pub fn token(&self, jwt: &Jwt, ttl: Duration) -> Result<String> {
         let (nbf, exp) = Jwt::timestamps(ttl);
         let token = Token {
@@ -179,13 +129,5 @@ impl User {
             nbf,
         };
         jwt.sum(None, &token)
-    }
-
-    pub fn policies(&self, db: &mut Db) -> Result<Vec<Policy>> {
-        let mut items = Vec::new();
-        for r in RoleDao::roles_by_user(db, self.id)?.iter() {
-            items.extend(PolicyDao::by_role(db, r)?);
-        }
-        Ok(items)
     }
 }

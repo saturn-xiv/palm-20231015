@@ -141,12 +141,13 @@ pub async fn launch() -> Result<()> {
         let mut db = db.get()?;
         let db = db.deref_mut();
         let hmac = Hmac::new(&cfg.secrets.0)?;
+        let mut enf = cfg.postgresql.enforcer(2).await?;
         {
             if args.command == SubCommand::UserList {
                 return user::list(db);
             }
             if let SubCommand::UserApplyPolicy(ref it) = args.command {
-                return it.execute(db);
+                return it.execute(db, &mut enf).await;
             }
             if let SubCommand::UserResetPassword(ref it) = args.command {
                 return it.execute(db, &hmac);

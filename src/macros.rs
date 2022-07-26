@@ -26,6 +26,7 @@ macro_rules! to_std_duration {
         std::time::Duration::new($x.seconds as u64, $x.nanos as u32)
     }};
 }
+
 #[macro_export]
 macro_rules! to_code {
     ($x:expr) => {{
@@ -35,12 +36,48 @@ macro_rules! to_code {
 }
 
 #[macro_export]
+macro_rules! has_role {
+    ($e:expr, $u:expr, $r:expr) => {{
+        use casbin::RbacApi;
+        if let Ok(ref mut e) = $e.lock() {
+            let e = e.deref_mut();
+            e.has_role_for_user($u, $r, None)
+        } else {
+            false
+        }
+    }};
+}
+
+#[macro_export]
+macro_rules! has_permission {
+    ($e:expr, $u:expr, $o:expr, $r:expr) => {{
+        use casbin::RbacApi;
+        if let Ok(ref mut e) = $e.lock() {
+            let e = e.deref_mut();
+            e.has_permission_for_user($u, vec![$r, $o])
+        } else {
+            false
+        }
+    }};
+}
+
+#[macro_export]
+macro_rules! to_resource {
+    ($t:expr, $i:expr) => {{
+        format!("{}://{}", $t, $i)
+    }};
+    ($t:expr) => {{
+        $t.to_string()
+    }};
+}
+
+#[macro_export]
 macro_rules! try_web {
     ($r:expr, $e:expr) => {{
         $r.map_err($e)
     }};
     ($r:expr) => {{
-        try_web!($r, ErrorInternalServerError)
+        try_web!($r, actix_web::error::ErrorInternalServerError)
     }};
 }
 
@@ -50,6 +87,6 @@ macro_rules! try_grpc {
         $r.map_err($e)
     }};
     ($r:expr) => {{
-        try_grpc!($r, |e| Status::internal(e.to_string()))
+        try_grpc!($r, |e| tonic::Status::internal(e.to_string()))
     }};
 }

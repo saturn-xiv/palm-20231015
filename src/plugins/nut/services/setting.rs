@@ -12,7 +12,7 @@ use super::super::super::super::{
     setting::{Dao as SettingDao, Item as Setting},
     GrpcResult,
 };
-use super::super::{models::Operation, v1};
+use super::super::{models::user::Item as User, v1};
 use super::Session;
 
 pub struct Service {
@@ -34,16 +34,17 @@ impl v1::setting_server::Setting for Service {
 
         let key = to_code!(req.key);
 
-        match req.user {
+        let can = match req.user {
             None => {
-                try_grpc!(user.can::<Setting>(db, &Operation::Write, None))?;
+                has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR)
             }
             Some(id) => {
-                if user.id != id {
-                    return Err(Status::permission_denied(type_name::<Setting>()));
-                }
+                user.id == id || has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR)
             }
         };
+        if !can {
+            return Err(Status::permission_denied(type_name::<Setting>()));
+        }
         let aes = self.aes.deref();
         try_grpc!(SettingDao::set(
             db,
@@ -62,16 +63,17 @@ impl v1::setting_server::Setting for Service {
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
         let req = req.into_inner();
-        match req.user {
+        let can = match req.user {
             None => {
-                try_grpc!(user.can::<Setting>(db, &Operation::Read, None))?;
+                has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR)
             }
             Some(id) => {
-                if user.id != id {
-                    return Err(Status::permission_denied(type_name::<Setting>()));
-                }
+                user.id == id || has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR)
             }
         };
+        if !can {
+            return Err(Status::permission_denied(type_name::<Setting>()));
+        }
         let aes = self.aes.deref();
         let key = to_code!(req.key);
         let value: Vec<u8> = try_grpc!(SettingDao::get(db, aes, &key, req.user))?;

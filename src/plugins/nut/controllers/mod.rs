@@ -6,8 +6,7 @@ pub mod sitemap;
 use std::ops::Deref;
 
 use actix_web::{
-    error::ErrorInternalServerError, get, http::header::ContentType, web, HttpResponse, Responder,
-    Result as WebResult,
+    get, http::header::ContentType, web, HttpResponse, Responder, Result as WebResult,
 };
 use askama::Template;
 use rss::ChannelBuilder as RssChannelBuilder;

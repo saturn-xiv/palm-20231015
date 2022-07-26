@@ -1,3 +1,4 @@
+use std::any::type_name;
 use std::ops::{Deref, DerefMut};
 use std::sync::{Arc, Mutex};
 
@@ -10,6 +11,7 @@ use super::super::super::super::{
 use super::super::{
     models::{
         attachment::{Dao as AttachmentDao, Item as Attachment},
+        user::Item as User,
         Operation,
     },
     v1,
@@ -34,7 +36,7 @@ impl v1::attachment_server::Attachment for Service {
         let user = try_grpc!(ss.current_user(db, jwt))?;
         let req = req.into_inner();
 
-        let (total, items) = if user.is_administrator(db).is_ok() {
+        let (total, items) = if has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
             let total = try_grpc!(AttachmentDao::count(db))?;
             let items = try_grpc!(AttachmentDao::all(db, req.offset(total), req.size()))?;
             (total, items)
@@ -62,17 +64,22 @@ impl v1::attachment_server::Attachment for Service {
         let user = try_grpc!(ss.current_user(db, jwt))?;
         let req = req.into_inner();
         let it = try_grpc!(AttachmentDao::by_id(db, req.id))?;
-        if it.user_id == user.id
-            || user
-                .can::<Attachment>(db, &Operation::Remove, Some(it.id))
-                .is_ok()
-        {
+
+        let can = has_permission!(
+            self.enforcer,
+            &user.subject(),
+            Operation::Remove.to_string(),
+            to_resource!(type_name::<Attachment>(), it.id)
+        );
+
+        if can {
             let aws = try_grpc!(v1::AwsProfile::new(db, aes))?;
             let s3 = try_grpc!(aws.s3())?;
             try_grpc!(s3.delete_object(it.bucket.clone(), it.name.clone()).await)?;
             try_grpc!(AttachmentDao::delete(db, it.id))?;
             return Ok(Response::new(()));
         }
+
         Err(Status::permission_denied(format!(
             "forbidden to remove {}",
             it.title
@@ -91,11 +98,14 @@ impl v1::attachment_server::Attachment for Service {
         let req = req.into_inner();
         let ttl = req.ttl.unwrap_or_default();
         let it = try_grpc!(AttachmentDao::by_id(db, req.id))?;
-        if it.user_id == user.id
-            || user
-                .can::<Attachment>(db, &Operation::Read, Some(it.id))
-                .is_ok()
-        {
+
+        let can = has_permission!(
+            self.enforcer,
+            &user.subject(),
+            Operation::Read.to_string(),
+            to_resource!(type_name::<Attachment>(), it.id)
+        );
+        if can {
             let aws = try_grpc!(v1::AwsProfile::new(db, aes))?;
             let s3 = try_grpc!(aws.s3())?;
             let url = s3.get_object(it.bucket.clone(), it.name.clone(), to_std_duration!(ttl));

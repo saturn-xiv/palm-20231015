@@ -1,10 +1,7 @@
 pub mod attachment;
-pub mod casbin_rule;
 pub mod category;
 pub mod leave_word;
 pub mod log;
-pub mod policy;
-pub mod role;
 pub mod tag;
 pub mod user;
 pub mod vote;

@@ -1,9 +1,7 @@
 use std::ops::{Deref, DerefMut};
 
 use actix_multipart::Multipart;
-use actix_web::{
-    error::ErrorInternalServerError, post, web, HttpResponse, Responder, Result as WebResult,
-};
+use actix_web::{post, web, HttpResponse, Responder, Result as WebResult};
 use bytes::BytesMut;
 use futures_util::TryStreamExt;
 

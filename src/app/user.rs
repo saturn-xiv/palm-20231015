@@ -1,3 +1,4 @@
+use casbin::{Enforcer, RbacApi};
 use chrono::{Duration, Utc};
 use diesel::Connection as DieselConntection;
 
@@ -7,7 +8,6 @@ use super::super::{
     orm::postgresql::Connection as Db,
     plugins::nut::models::{
         log::{Dao as LogDao, Level},
-        role::Dao as RoleDao,
         user::{Dao as UserDao, Item as User},
     },
     Error, Result,
@@ -37,32 +37,30 @@ pub struct ApplyPolicy {
 }
 
 impl ApplyPolicy {
-    pub fn execute(&self, db: &mut Db) -> Result<()> {
+    pub async fn execute(&self, db: &mut Db, enf: &mut Enforcer) -> Result<()> {
         let now = Utc::now().naive_utc();
         let nbf = now.date();
         let exp = (now + Duration::weeks(1 << 10)).date();
 
         let user = UserDao::by_uid(db, &self.user)?;
-        db.transaction::<_, Error, _>(move |db| {
-            let un = nix::sys::utsname::uname()?;
+        enf.add_role_for_user(&user.subject(), &self.role, None)
+            .await?;
+        let un = nix::sys::utsname::uname()?;
+        LogDao::add::<String, User>(
+            db,
+            user.id,
+            &Level::Info,
+            &format!("{:?}", un.nodename().to_str()),
+            Some(user.id),
+            format!(
+                "Apply role {} by system user {} from {} to {}.",
+                self.role,
+                nix::unistd::getuid(),
+                nbf,
+                exp
+            ),
+        )?;
 
-            RoleDao::associate(db, user.id, &self.role, &nbf, &exp)?;
-            LogDao::add::<String, User>(
-                db,
-                user.id,
-                &Level::Info,
-                &format!("{:?}", un.nodename().to_str()),
-                Some(user.id),
-                format!(
-                    "Apply role {} by system user {} from {} to {}.",
-                    self.role,
-                    nix::unistd::getuid(),
-                    nbf,
-                    exp
-                ),
-            )?;
-            Ok(())
-        })?;
         info!(
             "apple role {} to user {} from {} to {}",
             self.role, user, nbf, exp

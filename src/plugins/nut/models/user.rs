@@ -96,6 +96,9 @@ impl fmt::Display for Item {
 }
 
 impl Item {
+    pub const ADMINISTRATOR: &'static str = "role://administrator";
+    pub const ROOT: &'static str = "role://root";
+
     pub fn subject(&self) -> String {
         format!("{}://{}", type_name::<Self>(), self.id)
     }

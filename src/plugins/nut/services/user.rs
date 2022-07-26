@@ -1,7 +1,7 @@
 use std::ops::{Deref, DerefMut};
 use std::sync::{Arc, Mutex};
 
-use casbin::Enforcer;
+use casbin::{Enforcer, RbacApi};
 use chrono::Duration;
 use diesel::Connection as DieselConntection;
 use hyper::StatusCode;
@@ -33,27 +33,6 @@ pub struct Service {
     pub enforcer: Arc<Mutex<Enforcer>>,
 }
 
-impl v1::UserSignInResponse {
-    pub fn new(user: &User, db: &mut Db, jwt: &Jwt, ttl: Duration) -> Result<Self> {
-        let token = user.token(jwt, ttl)?;
-        Ok(Self {
-            token,
-            is_administrator: user.is_administrator(db).is_ok(),
-            policies: user
-                .policies(db)?
-                .iter()
-                .map(|x| v1::PolicyPermission {
-                    role: x.role.clone(),
-                    operation: x.operation.clone(),
-                    resource_type: x.resource_type.clone(),
-                    resource_id: x.resource_id,
-                })
-                .collect(),
-            payload: Some(v1::site_user_index_response::Item::new(user)),
-        })
-    }
-}
-
 impl v1::UserQueryRequest {
     pub fn user(&self, db: &mut Db) -> Result<User> {
         if let Some(ref id) = self.id {
@@ -74,6 +53,35 @@ impl v1::UserQueryRequest {
             StatusCode::NOT_FOUND,
             Some("user is't exists".to_string()),
         )))
+    }
+}
+
+impl v1::UserSignInResponse {
+    pub fn new(user: &User, enf: &Mutex<Enforcer>, jwt: &Jwt, ttl: Duration) -> Result<Self> {
+        let token = user.token(jwt, ttl)?;
+        let (roles, permissions) = if let Ok(ref mut enf) = enf.lock() {
+            let enf = enf.deref_mut();
+            (
+                enf.get_implicit_roles_for_user(&user.subject(), None),
+                enf.get_implicit_permissions_for_user(&user.subject(), None)
+                    .iter()
+                    .filter(|x| x.len() == 3)
+                    .map(|x| v1::user_sign_in_response::Permission {
+                        subject: x[0].clone(),
+                        object: x[1].clone(),
+                        action: x[2].clone(),
+                    })
+                    .collect(),
+            )
+        } else {
+            (Vec::new(), Vec::new())
+        };
+        Ok(Self {
+            token,
+            roles,
+            permissions,
+            payload: Some(v1::site_user_index_response::Item::new(user)),
+        })
     }
 }
 
@@ -110,7 +118,7 @@ impl v1::user_server::User for Service {
 
             let it = try_grpc!(v1::UserSignInResponse::new(
                 &user,
-                db,
+                &self.enforcer,
                 jwt,
                 req.ttl
                     .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds)),
@@ -351,7 +359,7 @@ impl v1::user_server::User for Service {
 
         let it = try_grpc!(v1::UserSignInResponse::new(
             &user,
-            db,
+            &self.enforcer,
             jwt,
             to_chrono_duration!(req)
         ))?;

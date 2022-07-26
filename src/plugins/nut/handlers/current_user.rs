@@ -1,11 +1,7 @@
 use std::ops::DerefMut;
 use std::result::Result as StdResult;
 
-use actix_web::{
-    dev::Payload,
-    error::{ErrorForbidden, ErrorInternalServerError},
-    web, Error, FromRequest, HttpRequest,
-};
+use actix_web::{dev::Payload, error::ErrorForbidden, web, Error, FromRequest, HttpRequest};
 use futures::future::{err, ok, Ready};
 
 use super::super::super::super::{jwt::Jwt, orm::postgresql::Pool as DbPool};

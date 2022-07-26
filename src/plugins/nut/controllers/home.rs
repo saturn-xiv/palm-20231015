@@ -1,6 +1,6 @@
 use std::ops::{Deref, DerefMut};
 
-use actix_web::{error::ErrorInternalServerError, get, web, Responder, Result as WebResult};
+use actix_web::{get, web, Responder, Result as WebResult};
 use askama::Template;
 
 use super::super::super::super::{

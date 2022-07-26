@@ -48,9 +48,14 @@ message UserLogsRequest {
 }
 
 message UserSignInResponse {
+  message Permission {
+    string subject = 1;
+    string object = 2;
+    string action = 3;
+  }
   string token = 1;
-  bool is_administrator = 2;
-  repeated PolicyPermission policies = 3;
+  repeated string roles = 2;
+  repeated Permission permissions = 3;
   SiteUserIndexResponse.Item payload = 9;
 }
 message UserChangePasswordRequest {
@@ -126,77 +131,6 @@ message UserGetProfileResponse {
   string lang = 9;
   string wechat = 11;
   string phone = 12;
-}
-
-// ----------------------------------------------------------------------------
-
-service Role {
-  rpc Index(Pager) returns (RoleIndexResponse) {}
-  rpc ByUser(IdRequest) returns (RoleByUserResponse) {}
-  rpc Associate(RoleUserAssociateRequest) returns (google.protobuf.Empty) {}
-  rpc Unassociate(RoleUserUnassociateRequest) returns (google.protobuf.Empty) {}
-  rpc Options(google.protobuf.Empty) returns (RoleOptionsResponse) {}
-}
-message RoleOptionsResponse { repeated PolicyOptionsResponse.Item items = 1; }
-message RoleIndexResponse {
-  message Item {
-    int32 id = 1;
-    PolicyOptionsResponse.Item role = 2;
-    SiteUserIndexResponse.Item user = 3;
-    google.protobuf.Timestamp created_at = 9;
-  }
-  repeated Item items = 1;
-  Pagination pagination = 9;
-}
-message RoleByUserResponse { repeated PolicyOptionsResponse.Item items = 1; }
-message RoleUserUnassociateRequest {
-  int32 user = 1;
-  string role = 2;
-}
-message RoleUserAssociateRequest {
-  int32 user = 1;
-  repeated string roles = 2;
-  google.protobuf.Timestamp not_before = 11;
-  google.protobuf.Timestamp expired_at = 12;
-}
-
-service Policy {
-  rpc Apply(PolicyPermission) returns (google.protobuf.Empty) {}
-  rpc Deny(PolicyPermission) returns (google.protobuf.Empty) {}
-
-  rpc Index(Pager) returns (PolicyIndexResponse) {}
-
-  rpc Options(google.protobuf.Empty) returns (PolicyOptionsResponse) {}
-}
-
-message PolicyPermission {
-  string role = 1;
-  string operation = 2;
-  string resource_type = 3;
-  optional int32 resource_id = 4;
-}
-
-message PolicyOptionsResponse {
-  message Item {
-    string code = 1;
-    string label = 2;
-  }
-  repeated Item roles = 1;
-  repeated Item operations = 2;
-  repeated Item resources = 3;
-}
-
-message PolicyIndexResponse {
-  message Item {
-    int32 id = 1;
-    PolicyOptionsResponse.Item role = 2;
-    PolicyOptionsResponse.Item operation = 3;
-    PolicyOptionsResponse.Item resource_type = 4;
-    optional int32 resource_id = 5;
-    google.protobuf.Timestamp created_at = 9;
-  }
-  repeated Item items = 1;
-  Pagination pagination = 9;
 }
 
 // ----------------------------------------------------------------------------

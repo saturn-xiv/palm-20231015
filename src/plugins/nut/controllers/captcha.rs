@@ -1,10 +1,7 @@
 use std::any::type_name;
 
 use actix_session::Session;
-use actix_web::{
-    error::ErrorInternalServerError, get, http::header::ContentType, HttpResponse, Responder,
-    Result as WebResult,
-};
+use actix_web::{get, http::header::ContentType, HttpResponse, Responder, Result as WebResult};
 use rand::{distributions::Alphanumeric, thread_rng, Rng};
 
 use super::super::super::super::captcha::Captcha;
