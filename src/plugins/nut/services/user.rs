@@ -1,10 +1,11 @@
 use std::ops::{Deref, DerefMut};
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
 
 use casbin::{Enforcer, RbacApi};
 use chrono::Duration;
 use diesel::Connection as DieselConntection;
 use hyper::StatusCode;
+use tokio::sync::Mutex;
 use tonic::{Request, Response, Status};
 
 use super::super::super::super::{
@@ -68,21 +69,18 @@ impl v1::rbac_permissions_response::Item {
 }
 
 impl v1::UserSignInResponse {
-    pub fn new(user: &User, enf: &Mutex<Enforcer>, jwt: &Jwt, ttl: Duration) -> Result<Self> {
+    pub async fn new(user: &User, enf: &Mutex<Enforcer>, jwt: &Jwt, ttl: Duration) -> Result<Self> {
         let token = user.token(jwt, ttl)?;
-        let (roles, permissions) = if let Ok(ref mut enf) = enf.lock() {
-            let enf = enf.deref_mut();
-            (
-                enf.get_implicit_roles_for_user(&user.subject(), None),
-                enf.get_implicit_permissions_for_user(&user.subject(), None)
-                    .iter()
-                    .filter(|x| x.len() == 3)
-                    .map(|x| v1::rbac_permissions_response::Item::new(&x[1], &x[2]))
-                    .collect(),
-            )
-        } else {
-            (Vec::new(), Vec::new())
-        };
+        let mut enf = enf.lock().await;
+        let enf = enf.deref_mut();
+        let roles = enf.get_implicit_roles_for_user(&user.subject(), None);
+        let permissions = enf
+            .get_implicit_permissions_for_user(&user.subject(), None)
+            .iter()
+            .filter(|x| x.len() == 3)
+            .map(|x| v1::rbac_permissions_response::Item::new(&x[1], &x[2]))
+            .collect();
+
         Ok(Self {
             token,
             roles,
@@ -123,13 +121,16 @@ impl v1::user_server::User for Service {
                 Ok(())
             }))?;
 
-            let it = try_grpc!(v1::UserSignInResponse::new(
-                &user,
-                &self.enforcer,
-                jwt,
-                req.ttl
-                    .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds)),
-            ))?;
+            let it = try_grpc!(
+                v1::UserSignInResponse::new(
+                    &user,
+                    &self.enforcer,
+                    jwt,
+                    req.ttl
+                        .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds)),
+                )
+                .await
+            )?;
             return Ok(Response::new(it));
         }
 
@@ -364,12 +365,9 @@ impl v1::user_server::User for Service {
         let user = try_grpc!(ss.current_user(db, jwt))?;
         let req = req.into_inner();
 
-        let it = try_grpc!(v1::UserSignInResponse::new(
-            &user,
-            &self.enforcer,
-            jwt,
-            to_chrono_duration!(req)
-        ))?;
+        let it = try_grpc!(
+            v1::UserSignInResponse::new(&user, &self.enforcer, jwt, to_chrono_duration!(req)).await
+        )?;
 
         Ok(Response::new(it))
     }

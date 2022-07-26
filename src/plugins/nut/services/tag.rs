@@ -1,6 +1,7 @@
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
 
 use casbin::Enforcer;
+use tokio::sync::Mutex;
 use tonic::{Request, Response};
 
 use super::super::super::super::{jwt::Jwt, orm::postgresql::Pool as PostgreSqlPool, GrpcResult};

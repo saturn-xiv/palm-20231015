@@ -39,12 +39,9 @@ macro_rules! to_code {
 macro_rules! has_role {
     ($e:expr, $u:expr, $r:expr) => {{
         use casbin::RbacApi;
-        if let Ok(ref mut e) = $e.lock() {
-            let e = e.deref_mut();
-            e.has_role_for_user($u, $r, None)
-        } else {
-            false
-        }
+        let mut e = $e.lock().await;
+        let e = e.deref_mut();
+        e.has_role_for_user($u, $r, None)
     }};
 }
 
@@ -52,12 +49,9 @@ macro_rules! has_role {
 macro_rules! has_permission {
     ($e:expr, $u:expr, $o:expr, $r:expr) => {{
         use casbin::RbacApi;
-        if let Ok(ref mut e) = $e.lock() {
-            let e = e.deref_mut();
-            e.has_permission_for_user($u, vec![$r, $o])
-        } else {
-            false
-        }
+        let mut e = $e.lock().await;
+        let e = e.deref_mut();
+        e.has_permission_for_user($u, vec![$r, $o])
     }};
 }
 

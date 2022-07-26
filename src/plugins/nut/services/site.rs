@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use std::fs::read_to_string;
 use std::ops::{Deref, DerefMut};
 use std::process::Command;
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
 
 use casbin::{Enforcer, RbacApi};
 use chrono::{Datelike, Duration, NaiveDateTime, Utc};
@@ -17,7 +17,7 @@ use redis::Connection as RedisConnection;
 use rusoto_core::Region as RusotoRegion;
 use rusoto_credential::{AwsCredentials, StaticProvider as RusotoCredentialStaticProvider};
 use serde::{Deserialize, Serialize};
-use tokio::runtime::Runtime;
+use tokio::sync::Mutex;
 use tonic::{Request, Response, Status};
 
 use super::super::super::super::{
@@ -344,17 +344,18 @@ impl v1::site_server::Site for Service {
                     Ok(user)
                 }))?;
 
-                if let Ok(rt) = Runtime::new() {
-                    if let Ok(ref mut enf) = self.enforcer.lock() {
-                        let enf = enf.deref_mut();
-                        try_grpc!(rt.block_on(enf.add_roles_for_user(
+                {
+                    let mut enf = self.enforcer.lock().await;
+                    let enf = enf.deref_mut();
+                    try_grpc!(
+                        enf.add_roles_for_user(
                             &user.subject(),
                             vec![User::ROOT.to_string(), User::ADMINISTRATOR.to_string()],
                             None,
-                        )))?;
-                    }
+                        )
+                        .await
+                    )?;
                 }
-
                 Ok(Response::new(()))
             }
             None => Err(Status::invalid_argument("user cann't be empty")),

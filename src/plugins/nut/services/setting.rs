@@ -1,8 +1,9 @@
 use std::any::type_name;
 use std::ops::{Deref, DerefMut};
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
 
 use casbin::Enforcer;
+use tokio::sync::Mutex;
 use tonic::{Request, Response, Status};
 
 use super::super::super::super::{
