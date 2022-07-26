@@ -1,4 +1,5 @@
 use std::path::{Component, Path};
+use std::sync::Mutex;
 
 use actix_cors::Cors;
 use actix_identity::IdentityMiddleware;
@@ -33,6 +34,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let hmac = web::Data::new(Hmac::new(&cfg.secrets.0)?);
     let jwt = web::Data::new(Jwt::new(cfg.secrets.0.clone()));
     let queue = web::Data::new(cfg.rabbitmq.open());
+    let enforcer = web::Data::new(Mutex::new(cfg.postgresql.enforcer(1 << 3).await?));
 
     let addr = cfg.http.addr();
     info!("run on http://{addr}");
@@ -75,6 +77,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .app_data(hmac.clone())
             .app_data(jwt.clone())
             .app_data(queue.clone())
+            .app_data(enforcer.clone())
             .wrap(cors)
             .wrap(middleware::Logger::default())
             .wrap(IdentityMiddleware::default())

@@ -2,8 +2,9 @@ use std::collections::HashMap;
 use std::fs::read_to_string;
 use std::ops::{Deref, DerefMut};
 use std::process::Command;
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 
+use casbin::Enforcer;
 use chrono::{Datelike, Duration, NaiveDateTime, Utc};
 use diesel::{
     sql_query,
@@ -117,6 +118,7 @@ pub struct Service {
     pub hmac: Arc<Hmac>,
     pub redis: RedisPool,
     pub rabbitmq: Arc<RabbitMq>,
+    pub enforcer: Arc<Mutex<Enforcer>>,
 }
 
 #[tonic::async_trait]

@@ -1,7 +1,8 @@
 use std::any::type_name;
 use std::ops::{Deref, DerefMut};
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 
+use casbin::Enforcer;
 use tonic::{Request, Response, Status};
 
 use super::super::super::super::{
@@ -18,6 +19,7 @@ pub struct Service {
     pub pgsql: PostgreSqlPool,
     pub jwt: Arc<Jwt>,
     pub aes: Arc<Aes>,
+    pub enforcer: Arc<Mutex<Enforcer>>,
 }
 
 #[tonic::async_trait]

@@ -1,4 +1,4 @@
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 
 use tonic::transport::Server;
 
@@ -19,6 +19,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
     let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
+    let enforcer = Arc::new(Mutex::new(cfg.postgresql.enforcer(1 << 3).await?));
 
     let nut_attachment = tonic_web::config()
         .allow_all_origins()
@@ -28,6 +29,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
                 pgsql: pgsql.clone(),
                 jwt: jwt.clone(),
                 aes: aes.clone(),
+                enforcer: enforcer.clone(),
             },
         ));
     let nut_locale = tonic_web::config()
@@ -37,6 +39,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
             nut::services::locale::Service {
                 pgsql: pgsql.clone(),
                 jwt: jwt.clone(),
+                enforcer: enforcer.clone(),
             },
         ));
     let nut_setting = tonic_web::config()
@@ -47,6 +50,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
                 pgsql: pgsql.clone(),
                 jwt: jwt.clone(),
                 aes: aes.clone(),
+                enforcer: enforcer.clone(),
             },
         ));
 
@@ -59,6 +63,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
                 jwt: jwt.clone(),
                 hmac: hmac.clone(),
                 rabbitmq: rabbitmq.clone(),
+                enforcer: enforcer.clone(),
             },
         ));
 
@@ -92,6 +97,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
                 hmac,
                 redis,
                 rabbitmq,
+                enforcer,
             },
         ));
 
@@ -118,6 +124,7 @@ pub async fn tcp(cfg: &Config) -> Result<()> {
     let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
+    let enforcer = Arc::new(Mutex::new(cfg.postgresql.enforcer(1 << 3).await?));
 
     Server::builder()
         .add_service(nut::v1::role_server::RoleServer::new(
@@ -138,6 +145,7 @@ pub async fn tcp(cfg: &Config) -> Result<()> {
                 jwt: jwt.clone(),
                 hmac: hmac.clone(),
                 rabbitmq: rabbitmq.clone(),
+                enforcer: enforcer.clone(),
             },
         ))
         .add_service(nut::v1::site_server::SiteServer::new(
@@ -148,6 +156,7 @@ pub async fn tcp(cfg: &Config) -> Result<()> {
                 hmac,
                 redis,
                 rabbitmq,
+                enforcer: enforcer.clone(),
             },
         ))
         .serve(addr)

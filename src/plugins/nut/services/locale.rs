@@ -1,6 +1,7 @@
 use std::ops::{Deref, DerefMut};
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 
+use casbin::Enforcer;
 use tonic::{Request, Response, Status};
 
 use super::super::super::super::{
@@ -15,6 +16,7 @@ use super::Session;
 pub struct Service {
     pub pgsql: PostgreSqlPool,
     pub jwt: Arc<Jwt>,
+    pub enforcer: Arc<Mutex<Enforcer>>,
 }
 
 impl From<Locale> for v1::locale_index_response::Item {

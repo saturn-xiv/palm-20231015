@@ -1,6 +1,7 @@
 use std::ops::{Deref, DerefMut};
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 
+use casbin::Enforcer;
 use chrono::Duration;
 use diesel::Connection as DieselConntection;
 use hyper::StatusCode;
@@ -29,6 +30,7 @@ pub struct Service {
     pub jwt: Arc<Jwt>,
     pub hmac: Arc<Hmac>,
     pub rabbitmq: Arc<RabbitMq>,
+    pub enforcer: Arc<Mutex<Enforcer>>,
 }
 
 impl v1::UserSignInResponse {
