@@ -2,14 +2,6 @@ import { IPlugin } from "..";
 
 const pages: IPlugin[] = [
   {
-    path: "/admin/policies",
-    component: () => import("./admin/policies"),
-  },
-  {
-    path: "/admin/roles",
-    component: () => import("./admin/roles"),
-  },
-  {
     path: "/admin/users",
     component: () => import("./admin/users"),
   },

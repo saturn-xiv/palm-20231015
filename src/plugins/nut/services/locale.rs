@@ -45,7 +45,7 @@ impl v1::locale_server::Locale for Service {
             self.enforcer,
             &user.subject(),
             Operation::Write.to_string(),
-            to_resource!(type_name::<Locale>())
+            resource_to_object!(type_name::<Locale>())
         ) {
             return Err(Status::permission_denied(type_name::<Locale>()));
         }
@@ -93,7 +93,7 @@ impl v1::locale_server::Locale for Service {
             self.enforcer,
             &user.subject(),
             Operation::Remove.to_string(),
-            to_resource!(type_name::<Locale>())
+            resource_to_object!(type_name::<Locale>())
         ) {
             return Err(Status::permission_denied(type_name::<Locale>()));
         }

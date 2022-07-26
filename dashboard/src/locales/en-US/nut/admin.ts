@@ -12,7 +12,6 @@ const items = {
   "nut.admin.users.enable.confirm": "Are you sure to enable user {name}?",
   "nut.admin.users.disable.confirm": "Are you sure to disable user {name}?",
   "nut.admin.leave-words.title": "Leave words",
-  "nut.admin.roles.title": "Roles",
   "nut.admin.site.title": "Web site",
   "nut.admin.site.profile": "Profile",
   "nut.admin.site.profile.logo": "Logo",
@@ -38,7 +37,6 @@ const items = {
   "nut.admin.site.rss.title": "Rss",
   "nut.admin.site.sitemap.title": "Sitemap",
   "nut.admin.site.aws.s3-buckets": "S3 buckets",
-  "nut.admin.policies.title": "Policies",
 };
 
 export default items;

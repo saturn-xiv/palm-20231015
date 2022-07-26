@@ -56,6 +56,17 @@ impl v1::UserQueryRequest {
     }
 }
 
+impl v1::rbac_permissions_response::Item {
+    pub fn new(object: &str, action: &str) -> Self {
+        let (resource_type, resource_id) = object_to_resource!(object);
+        Self {
+            operation: action.to_string(),
+            resource_type,
+            resource_id,
+        }
+    }
+}
+
 impl v1::UserSignInResponse {
     pub fn new(user: &User, enf: &Mutex<Enforcer>, jwt: &Jwt, ttl: Duration) -> Result<Self> {
         let token = user.token(jwt, ttl)?;
@@ -66,11 +77,7 @@ impl v1::UserSignInResponse {
                 enf.get_implicit_permissions_for_user(&user.subject(), None)
                     .iter()
                     .filter(|x| x.len() == 3)
-                    .map(|x| v1::user_sign_in_response::Permission {
-                        subject: x[0].clone(),
-                        object: x[1].clone(),
-                        action: x[2].clone(),
-                    })
+                    .map(|x| v1::rbac_permissions_response::Item::new(&x[1], &x[2]))
                     .collect(),
             )
         } else {

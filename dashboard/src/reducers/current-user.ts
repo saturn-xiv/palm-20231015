@@ -5,6 +5,7 @@ import type { RootState } from "../store";
 import { UserSignInResponse, UserQueryRequest } from "../protocols/nut_pb";
 
 export const ROLE_ROOT = "root";
+export const ROLE_ADMINISTRATOR = "administrator";
 
 export const TO_SIGN_IN = "/users/sign-in";
 export const TO_PROFILE = "/users/profile";
@@ -54,7 +55,7 @@ export interface IUser {
   realName: string;
   avatar: string;
   permissions: IPermission[];
-  isAdministrator: boolean;
+  roles: string[];
 }
 
 export const to_user = (response: UserSignInResponse): IUser | undefined => {
@@ -68,12 +69,12 @@ export const to_user = (response: UserSignInResponse): IUser | undefined => {
     id: payload.getId(),
     realName: payload.getRealName(),
     avatar: payload.getAvatar(),
-    permissions: response.getPoliciesList().map((x) => ({
+    permissions: response.getPermissionsList().map((x) => ({
       operation: x.getOperation(),
       resourceId: x.getResourceId(),
       resourceType: x.getResourceType(),
     })),
-    isAdministrator: response.getIsAdministrator(),
+    roles: response.getRolesList(),
   };
 };
 
@@ -102,8 +103,10 @@ export const { signIn, signOut } = slice.actions;
 
 export const permissions = (state: RootState): IPermission[] =>
   state.currentUser.payload?.permissions || [];
+export const isRoot = (state: RootState): boolean =>
+  state.currentUser.payload?.roles.includes(ROLE_ROOT) || false;
 export const isAdministrator = (state: RootState): boolean =>
-  state.currentUser.payload?.isAdministrator || false;
+  state.currentUser.payload?.roles.includes(ROLE_ADMINISTRATOR) || false;
 export const currentUser = (state: RootState): IUser | undefined =>
   state.currentUser.payload;
 

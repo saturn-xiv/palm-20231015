@@ -48,14 +48,10 @@ message UserLogsRequest {
 }
 
 message UserSignInResponse {
-  message Permission {
-    string subject = 1;
-    string object = 2;
-    string action = 3;
-  }
+
   string token = 1;
   repeated string roles = 2;
-  repeated Permission permissions = 3;
+  repeated RbacPermissionsResponse.Item permissions = 3;
   SiteUserIndexResponse.Item payload = 9;
 }
 message UserChangePasswordRequest {
@@ -132,7 +128,54 @@ message UserGetProfileResponse {
   string wechat = 11;
   string phone = 12;
 }
+// ----------------------------------------------------------------------------
 
+service Rbac {
+  rpc GetRolesForUser(RbacUserRequest) returns (RbacGetRolesForUserResponse) {}
+  rpc GetUsersForRole(RbacRoleRequest) returns (RbacGetUsersForRoleResponse) {}
+  rpc GetPermissionsForUser(RbacUserRequest) returns (RbacPermissionsResponse) {
+  }
+  rpc GetPermissionsForRole(RbacRoleRequest) returns (RbacPermissionsResponse) {
+  }
+
+  rpc AddRolesForUser(RbacUserRolesRequest) returns (google.protobuf.Empty) {}
+  rpc AddPermissionsForUser(RbacAddPermissionsForUserRequest)
+      returns (google.protobuf.Empty) {}
+  rpc AddPermissionsForRole(RbacAddPermissionsForRoleRequest)
+      returns (google.protobuf.Empty) {}
+
+  rpc DeleteRolesForUser(RbacUserRolesRequest) returns (google.protobuf.Empty) {
+  }
+  rpc DeleteUser(RbacUserRequest) returns (google.protobuf.Empty) {}
+  rpc DeleteRole(RbacRoleRequest) returns (google.protobuf.Empty) {}
+  rpc DeletePermission(RbacPermissionsResponse.Item)
+      returns (google.protobuf.Empty) {}
+}
+
+message RbacUserRequest { int32 user = 1; }
+message RbacGetRolesForUserResponse { repeated string roles = 1; }
+message RbacRoleRequest { string role = 2; }
+message RbacGetUsersForRoleResponse { repeated string users = 2; }
+message RbacPermissionsResponse {
+  message Item {
+    string operation = 1;
+    string resource_type = 2;
+    optional int32 resource_id = 3;
+  }
+  repeated Item items = 1;
+}
+message RbacUserRolesRequest {
+  int32 user = 1;
+  repeated string roles = 2;
+}
+message RbacAddPermissionsForUserRequest {
+  int32 user = 1;
+  repeated RbacPermissionsResponse.Item permissions = 2;
+}
+message RbacAddPermissionsForRoleRequest {
+  string role = 1;
+  repeated RbacPermissionsResponse.Item permissions = 2;
+}
 // ----------------------------------------------------------------------------
 
 service Tag {

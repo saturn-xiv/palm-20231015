@@ -130,10 +130,10 @@ export class UserSignInResponse extends jspb.Message {
   clearRolesList(): UserSignInResponse;
   addRoles(value: string, index?: number): UserSignInResponse;
 
-  getPermissionsList(): Array<UserSignInResponse.Permission>;
-  setPermissionsList(value: Array<UserSignInResponse.Permission>): UserSignInResponse;
+  getPermissionsList(): Array<RbacPermissionsResponse.Item>;
+  setPermissionsList(value: Array<RbacPermissionsResponse.Item>): UserSignInResponse;
   clearPermissionsList(): UserSignInResponse;
-  addPermissions(value?: UserSignInResponse.Permission, index?: number): UserSignInResponse.Permission;
+  addPermissions(value?: RbacPermissionsResponse.Item, index?: number): RbacPermissionsResponse.Item;
 
   getPayload(): SiteUserIndexResponse.Item | undefined;
   setPayload(value?: SiteUserIndexResponse.Item): UserSignInResponse;
@@ -152,36 +152,9 @@ export namespace UserSignInResponse {
   export type AsObject = {
     token: string,
     rolesList: Array<string>,
-    permissionsList: Array<UserSignInResponse.Permission.AsObject>,
+    permissionsList: Array<RbacPermissionsResponse.Item.AsObject>,
     payload?: SiteUserIndexResponse.Item.AsObject,
   }
-
-  export class Permission extends jspb.Message {
-    getSubject(): string;
-    setSubject(value: string): Permission;
-
-    getObject(): string;
-    setObject(value: string): Permission;
-
-    getAction(): string;
-    setAction(value: string): Permission;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Permission.AsObject;
-    static toObject(includeInstance: boolean, msg: Permission): Permission.AsObject;
-    static serializeBinaryToWriter(message: Permission, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Permission;
-    static deserializeBinaryFromReader(message: Permission, reader: jspb.BinaryReader): Permission;
-  }
-
-  export namespace Permission {
-    export type AsObject = {
-      subject: string,
-      object: string,
-      action: string,
-    }
-  }
-
 }
 
 export class UserChangePasswordRequest extends jspb.Message {
@@ -535,6 +508,208 @@ export namespace UserGetProfileResponse {
     lang: string,
     wechat: string,
     phone: string,
+  }
+}
+
+export class RbacUserRequest extends jspb.Message {
+  getUser(): number;
+  setUser(value: number): RbacUserRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RbacUserRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RbacUserRequest): RbacUserRequest.AsObject;
+  static serializeBinaryToWriter(message: RbacUserRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RbacUserRequest;
+  static deserializeBinaryFromReader(message: RbacUserRequest, reader: jspb.BinaryReader): RbacUserRequest;
+}
+
+export namespace RbacUserRequest {
+  export type AsObject = {
+    user: number,
+  }
+}
+
+export class RbacGetRolesForUserResponse extends jspb.Message {
+  getRolesList(): Array<string>;
+  setRolesList(value: Array<string>): RbacGetRolesForUserResponse;
+  clearRolesList(): RbacGetRolesForUserResponse;
+  addRoles(value: string, index?: number): RbacGetRolesForUserResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RbacGetRolesForUserResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: RbacGetRolesForUserResponse): RbacGetRolesForUserResponse.AsObject;
+  static serializeBinaryToWriter(message: RbacGetRolesForUserResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RbacGetRolesForUserResponse;
+  static deserializeBinaryFromReader(message: RbacGetRolesForUserResponse, reader: jspb.BinaryReader): RbacGetRolesForUserResponse;
+}
+
+export namespace RbacGetRolesForUserResponse {
+  export type AsObject = {
+    rolesList: Array<string>,
+  }
+}
+
+export class RbacRoleRequest extends jspb.Message {
+  getRole(): string;
+  setRole(value: string): RbacRoleRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RbacRoleRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RbacRoleRequest): RbacRoleRequest.AsObject;
+  static serializeBinaryToWriter(message: RbacRoleRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RbacRoleRequest;
+  static deserializeBinaryFromReader(message: RbacRoleRequest, reader: jspb.BinaryReader): RbacRoleRequest;
+}
+
+export namespace RbacRoleRequest {
+  export type AsObject = {
+    role: string,
+  }
+}
+
+export class RbacGetUsersForRoleResponse extends jspb.Message {
+  getUsersList(): Array<string>;
+  setUsersList(value: Array<string>): RbacGetUsersForRoleResponse;
+  clearUsersList(): RbacGetUsersForRoleResponse;
+  addUsers(value: string, index?: number): RbacGetUsersForRoleResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RbacGetUsersForRoleResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: RbacGetUsersForRoleResponse): RbacGetUsersForRoleResponse.AsObject;
+  static serializeBinaryToWriter(message: RbacGetUsersForRoleResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RbacGetUsersForRoleResponse;
+  static deserializeBinaryFromReader(message: RbacGetUsersForRoleResponse, reader: jspb.BinaryReader): RbacGetUsersForRoleResponse;
+}
+
+export namespace RbacGetUsersForRoleResponse {
+  export type AsObject = {
+    usersList: Array<string>,
+  }
+}
+
+export class RbacPermissionsResponse extends jspb.Message {
+  getItemsList(): Array<RbacPermissionsResponse.Item>;
+  setItemsList(value: Array<RbacPermissionsResponse.Item>): RbacPermissionsResponse;
+  clearItemsList(): RbacPermissionsResponse;
+  addItems(value?: RbacPermissionsResponse.Item, index?: number): RbacPermissionsResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RbacPermissionsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: RbacPermissionsResponse): RbacPermissionsResponse.AsObject;
+  static serializeBinaryToWriter(message: RbacPermissionsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RbacPermissionsResponse;
+  static deserializeBinaryFromReader(message: RbacPermissionsResponse, reader: jspb.BinaryReader): RbacPermissionsResponse;
+}
+
+export namespace RbacPermissionsResponse {
+  export type AsObject = {
+    itemsList: Array<RbacPermissionsResponse.Item.AsObject>,
+  }
+
+  export class Item extends jspb.Message {
+    getOperation(): string;
+    setOperation(value: string): Item;
+
+    getResourceType(): string;
+    setResourceType(value: string): Item;
+
+    getResourceId(): number;
+    setResourceId(value: number): Item;
+    hasResourceId(): boolean;
+    clearResourceId(): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      operation: string,
+      resourceType: string,
+      resourceId?: number,
+    }
+
+    export enum ResourceIdCase { 
+      _RESOURCE_ID_NOT_SET = 0,
+      RESOURCE_ID = 3,
+    }
+  }
+
+}
+
+export class RbacUserRolesRequest extends jspb.Message {
+  getUser(): number;
+  setUser(value: number): RbacUserRolesRequest;
+
+  getRolesList(): Array<string>;
+  setRolesList(value: Array<string>): RbacUserRolesRequest;
+  clearRolesList(): RbacUserRolesRequest;
+  addRoles(value: string, index?: number): RbacUserRolesRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RbacUserRolesRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RbacUserRolesRequest): RbacUserRolesRequest.AsObject;
+  static serializeBinaryToWriter(message: RbacUserRolesRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RbacUserRolesRequest;
+  static deserializeBinaryFromReader(message: RbacUserRolesRequest, reader: jspb.BinaryReader): RbacUserRolesRequest;
+}
+
+export namespace RbacUserRolesRequest {
+  export type AsObject = {
+    user: number,
+    rolesList: Array<string>,
+  }
+}
+
+export class RbacAddPermissionsForUserRequest extends jspb.Message {
+  getUser(): number;
+  setUser(value: number): RbacAddPermissionsForUserRequest;
+
+  getPermissionsList(): Array<RbacPermissionsResponse.Item>;
+  setPermissionsList(value: Array<RbacPermissionsResponse.Item>): RbacAddPermissionsForUserRequest;
+  clearPermissionsList(): RbacAddPermissionsForUserRequest;
+  addPermissions(value?: RbacPermissionsResponse.Item, index?: number): RbacPermissionsResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RbacAddPermissionsForUserRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RbacAddPermissionsForUserRequest): RbacAddPermissionsForUserRequest.AsObject;
+  static serializeBinaryToWriter(message: RbacAddPermissionsForUserRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RbacAddPermissionsForUserRequest;
+  static deserializeBinaryFromReader(message: RbacAddPermissionsForUserRequest, reader: jspb.BinaryReader): RbacAddPermissionsForUserRequest;
+}
+
+export namespace RbacAddPermissionsForUserRequest {
+  export type AsObject = {
+    user: number,
+    permissionsList: Array<RbacPermissionsResponse.Item.AsObject>,
+  }
+}
+
+export class RbacAddPermissionsForRoleRequest extends jspb.Message {
+  getRole(): string;
+  setRole(value: string): RbacAddPermissionsForRoleRequest;
+
+  getPermissionsList(): Array<RbacPermissionsResponse.Item>;
+  setPermissionsList(value: Array<RbacPermissionsResponse.Item>): RbacAddPermissionsForRoleRequest;
+  clearPermissionsList(): RbacAddPermissionsForRoleRequest;
+  addPermissions(value?: RbacPermissionsResponse.Item, index?: number): RbacPermissionsResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RbacAddPermissionsForRoleRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RbacAddPermissionsForRoleRequest): RbacAddPermissionsForRoleRequest.AsObject;
+  static serializeBinaryToWriter(message: RbacAddPermissionsForRoleRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RbacAddPermissionsForRoleRequest;
+  static deserializeBinaryFromReader(message: RbacAddPermissionsForRoleRequest, reader: jspb.BinaryReader): RbacAddPermissionsForRoleRequest;
+}
+
+export namespace RbacAddPermissionsForRoleRequest {
+  export type AsObject = {
+    role: string,
+    permissionsList: Array<RbacPermissionsResponse.Item.AsObject>,
   }
 }
 

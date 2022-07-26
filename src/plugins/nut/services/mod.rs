@@ -1,6 +1,7 @@
 pub mod attachment;
 pub mod category;
 pub mod locale;
+pub mod rbac;
 pub mod setting;
 pub mod site;
 pub mod tag;

@@ -62,7 +62,7 @@ macro_rules! has_permission {
 }
 
 #[macro_export]
-macro_rules! to_resource {
+macro_rules! resource_to_object {
     ($t:expr, $i:expr) => {{
         format!("{}://{}", $t, $i)
     }};
@@ -71,6 +71,20 @@ macro_rules! to_resource {
     }};
 }
 
+#[macro_export]
+macro_rules! object_to_resource {
+    ($o:expr) => {{
+        let items: Vec<&str> = $o.split("://").collect();
+        if items.len() == 2 {
+            match items[1].parse() {
+                Ok(id) => (items[0].to_string(), Some(id)),
+                Err(_) => ($o.to_string(), None),
+            }
+        } else {
+            ($o.to_string(), None)
+        }
+    }};
+}
 #[macro_export]
 macro_rules! try_web {
     ($r:expr, $e:expr) => {{

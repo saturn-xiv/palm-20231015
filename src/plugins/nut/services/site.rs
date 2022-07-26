@@ -891,7 +891,7 @@ impl v1::site_server::Site for Service {
             self.enforcer,
             &user.subject(),
             Operation::Read.to_string(),
-            to_resource!(type_name::<LeaveWord>())
+            resource_to_object!(type_name::<LeaveWord>())
         ) {
             return Err(Status::permission_denied(type_name::<LeaveWord>()));
         }
@@ -923,7 +923,7 @@ impl v1::site_server::Site for Service {
             self.enforcer,
             &user.subject(),
             Operation::Remove.to_string(),
-            to_resource!(type_name::<LeaveWord>())
+            resource_to_object!(type_name::<LeaveWord>())
         ) {
             return Err(Status::permission_denied(type_name::<LeaveWord>()));
         }

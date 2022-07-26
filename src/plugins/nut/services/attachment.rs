@@ -69,7 +69,7 @@ impl v1::attachment_server::Attachment for Service {
             self.enforcer,
             &user.subject(),
             Operation::Remove.to_string(),
-            to_resource!(type_name::<Attachment>(), it.id)
+            resource_to_object!(type_name::<Attachment>(), it.id)
         );
 
         if can {
@@ -103,7 +103,7 @@ impl v1::attachment_server::Attachment for Service {
             self.enforcer,
             &user.subject(),
             Operation::Read.to_string(),
-            to_resource!(type_name::<Attachment>(), it.id)
+            resource_to_object!(type_name::<Attachment>(), it.id)
         );
         if can {
             let aws = try_grpc!(v1::AwsProfile::new(db, aes))?;

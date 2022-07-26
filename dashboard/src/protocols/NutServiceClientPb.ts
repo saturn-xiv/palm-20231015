@@ -598,6 +598,500 @@ export class UserClient {
 
 }
 
+export class RbacClient {
+  client_: grpcWeb.AbstractClientBase;
+  hostname_: string;
+  credentials_: null | { [index: string]: string; };
+  options_: null | { [index: string]: any; };
+
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; }) {
+    if (!options) options = {};
+    if (!credentials) credentials = {};
+    options['format'] = 'binary';
+
+    this.client_ = new grpcWeb.GrpcWebClientBase(options);
+    this.hostname_ = hostname;
+    this.credentials_ = credentials;
+    this.options_ = options;
+  }
+
+  methodDescriptorGetRolesForUser = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Rbac/GetRolesForUser',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.RbacUserRequest,
+    nut_pb.RbacGetRolesForUserResponse,
+    (request: nut_pb.RbacUserRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.RbacGetRolesForUserResponse.deserializeBinary
+  );
+
+  getRolesForUser(
+    request: nut_pb.RbacUserRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.RbacGetRolesForUserResponse>;
+
+  getRolesForUser(
+    request: nut_pb.RbacUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.RbacGetRolesForUserResponse) => void): grpcWeb.ClientReadableStream<nut_pb.RbacGetRolesForUserResponse>;
+
+  getRolesForUser(
+    request: nut_pb.RbacUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.RbacGetRolesForUserResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Rbac/GetRolesForUser',
+        request,
+        metadata || {},
+        this.methodDescriptorGetRolesForUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Rbac/GetRolesForUser',
+    request,
+    metadata || {},
+    this.methodDescriptorGetRolesForUser);
+  }
+
+  methodDescriptorGetUsersForRole = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Rbac/GetUsersForRole',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.RbacRoleRequest,
+    nut_pb.RbacGetUsersForRoleResponse,
+    (request: nut_pb.RbacRoleRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.RbacGetUsersForRoleResponse.deserializeBinary
+  );
+
+  getUsersForRole(
+    request: nut_pb.RbacRoleRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.RbacGetUsersForRoleResponse>;
+
+  getUsersForRole(
+    request: nut_pb.RbacRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.RbacGetUsersForRoleResponse) => void): grpcWeb.ClientReadableStream<nut_pb.RbacGetUsersForRoleResponse>;
+
+  getUsersForRole(
+    request: nut_pb.RbacRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.RbacGetUsersForRoleResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Rbac/GetUsersForRole',
+        request,
+        metadata || {},
+        this.methodDescriptorGetUsersForRole,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Rbac/GetUsersForRole',
+    request,
+    metadata || {},
+    this.methodDescriptorGetUsersForRole);
+  }
+
+  methodDescriptorGetPermissionsForUser = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Rbac/GetPermissionsForUser',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.RbacUserRequest,
+    nut_pb.RbacPermissionsResponse,
+    (request: nut_pb.RbacUserRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.RbacPermissionsResponse.deserializeBinary
+  );
+
+  getPermissionsForUser(
+    request: nut_pb.RbacUserRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.RbacPermissionsResponse>;
+
+  getPermissionsForUser(
+    request: nut_pb.RbacUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.RbacPermissionsResponse) => void): grpcWeb.ClientReadableStream<nut_pb.RbacPermissionsResponse>;
+
+  getPermissionsForUser(
+    request: nut_pb.RbacUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.RbacPermissionsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Rbac/GetPermissionsForUser',
+        request,
+        metadata || {},
+        this.methodDescriptorGetPermissionsForUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Rbac/GetPermissionsForUser',
+    request,
+    metadata || {},
+    this.methodDescriptorGetPermissionsForUser);
+  }
+
+  methodDescriptorGetPermissionsForRole = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Rbac/GetPermissionsForRole',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.RbacRoleRequest,
+    nut_pb.RbacPermissionsResponse,
+    (request: nut_pb.RbacRoleRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.RbacPermissionsResponse.deserializeBinary
+  );
+
+  getPermissionsForRole(
+    request: nut_pb.RbacRoleRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.RbacPermissionsResponse>;
+
+  getPermissionsForRole(
+    request: nut_pb.RbacRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.RbacPermissionsResponse) => void): grpcWeb.ClientReadableStream<nut_pb.RbacPermissionsResponse>;
+
+  getPermissionsForRole(
+    request: nut_pb.RbacRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.RbacPermissionsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Rbac/GetPermissionsForRole',
+        request,
+        metadata || {},
+        this.methodDescriptorGetPermissionsForRole,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Rbac/GetPermissionsForRole',
+    request,
+    metadata || {},
+    this.methodDescriptorGetPermissionsForRole);
+  }
+
+  methodDescriptorAddRolesForUser = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Rbac/AddRolesForUser',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.RbacUserRolesRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.RbacUserRolesRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  addRolesForUser(
+    request: nut_pb.RbacUserRolesRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  addRolesForUser(
+    request: nut_pb.RbacUserRolesRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  addRolesForUser(
+    request: nut_pb.RbacUserRolesRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Rbac/AddRolesForUser',
+        request,
+        metadata || {},
+        this.methodDescriptorAddRolesForUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Rbac/AddRolesForUser',
+    request,
+    metadata || {},
+    this.methodDescriptorAddRolesForUser);
+  }
+
+  methodDescriptorAddPermissionsForUser = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Rbac/AddPermissionsForUser',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.RbacAddPermissionsForUserRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.RbacAddPermissionsForUserRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  addPermissionsForUser(
+    request: nut_pb.RbacAddPermissionsForUserRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  addPermissionsForUser(
+    request: nut_pb.RbacAddPermissionsForUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  addPermissionsForUser(
+    request: nut_pb.RbacAddPermissionsForUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Rbac/AddPermissionsForUser',
+        request,
+        metadata || {},
+        this.methodDescriptorAddPermissionsForUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Rbac/AddPermissionsForUser',
+    request,
+    metadata || {},
+    this.methodDescriptorAddPermissionsForUser);
+  }
+
+  methodDescriptorAddPermissionsForRole = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Rbac/AddPermissionsForRole',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.RbacAddPermissionsForRoleRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.RbacAddPermissionsForRoleRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  addPermissionsForRole(
+    request: nut_pb.RbacAddPermissionsForRoleRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  addPermissionsForRole(
+    request: nut_pb.RbacAddPermissionsForRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  addPermissionsForRole(
+    request: nut_pb.RbacAddPermissionsForRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Rbac/AddPermissionsForRole',
+        request,
+        metadata || {},
+        this.methodDescriptorAddPermissionsForRole,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Rbac/AddPermissionsForRole',
+    request,
+    metadata || {},
+    this.methodDescriptorAddPermissionsForRole);
+  }
+
+  methodDescriptorDeleteRolesForUser = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Rbac/DeleteRolesForUser',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.RbacUserRolesRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.RbacUserRolesRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  deleteRolesForUser(
+    request: nut_pb.RbacUserRolesRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  deleteRolesForUser(
+    request: nut_pb.RbacUserRolesRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  deleteRolesForUser(
+    request: nut_pb.RbacUserRolesRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Rbac/DeleteRolesForUser',
+        request,
+        metadata || {},
+        this.methodDescriptorDeleteRolesForUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Rbac/DeleteRolesForUser',
+    request,
+    metadata || {},
+    this.methodDescriptorDeleteRolesForUser);
+  }
+
+  methodDescriptorDeleteUser = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Rbac/DeleteUser',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.RbacUserRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.RbacUserRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  deleteUser(
+    request: nut_pb.RbacUserRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  deleteUser(
+    request: nut_pb.RbacUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  deleteUser(
+    request: nut_pb.RbacUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Rbac/DeleteUser',
+        request,
+        metadata || {},
+        this.methodDescriptorDeleteUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Rbac/DeleteUser',
+    request,
+    metadata || {},
+    this.methodDescriptorDeleteUser);
+  }
+
+  methodDescriptorDeleteRole = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Rbac/DeleteRole',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.RbacRoleRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.RbacRoleRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  deleteRole(
+    request: nut_pb.RbacRoleRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  deleteRole(
+    request: nut_pb.RbacRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  deleteRole(
+    request: nut_pb.RbacRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Rbac/DeleteRole',
+        request,
+        metadata || {},
+        this.methodDescriptorDeleteRole,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Rbac/DeleteRole',
+    request,
+    metadata || {},
+    this.methodDescriptorDeleteRole);
+  }
+
+  methodDescriptorDeletePermission = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.Rbac/DeletePermission',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.RbacPermissionsResponse.Item,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.RbacPermissionsResponse.Item) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  deletePermission(
+    request: nut_pb.RbacPermissionsResponse.Item,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  deletePermission(
+    request: nut_pb.RbacPermissionsResponse.Item,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  deletePermission(
+    request: nut_pb.RbacPermissionsResponse.Item,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.Rbac/DeletePermission',
+        request,
+        metadata || {},
+        this.methodDescriptorDeletePermission,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.Rbac/DeletePermission',
+    request,
+    metadata || {},
+    this.methodDescriptorDeletePermission);
+  }
+
+}
+
 export class TagClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;
