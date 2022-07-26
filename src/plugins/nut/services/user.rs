@@ -57,17 +57,6 @@ impl v1::UserQueryRequest {
     }
 }
 
-impl v1::rbac_permissions_response::Item {
-    pub fn new(object: &str, action: &str) -> Self {
-        let (resource_type, resource_id) = object_to_resource!(object);
-        Self {
-            operation: action.to_string(),
-            resource_type,
-            resource_id,
-        }
-    }
-}
-
 impl v1::UserSignInResponse {
     pub async fn new(user: &User, enf: &Mutex<Enforcer>, jwt: &Jwt, ttl: Duration) -> Result<Self> {
         let token = user.token(jwt, ttl)?;

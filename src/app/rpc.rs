@@ -67,6 +67,16 @@ pub async fn web(cfg: &Config) -> Result<()> {
                 enforcer: enforcer.clone(),
             },
         ));
+    let nut_rbac = tonic_web::config()
+        .allow_all_origins()
+        .allow_credentials(true)
+        .enable(nut::v1::rbac_server::RbacServer::new(
+            nut::services::rbac::Service {
+                pgsql: pgsql.clone(),
+                jwt: jwt.clone(),
+                enforcer: enforcer.clone(),
+            },
+        ));
 
     let nut_site = tonic_web::config()
         .allow_all_origins()
@@ -88,6 +98,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
         .add_service(nut_locale)
         .add_service(nut_setting)
         .add_service(nut_user)
+        .add_service(nut_rbac)
         .add_service(nut_attachment)
         .add_service(nut_site)
         .serve(addr)
@@ -113,6 +124,13 @@ pub async fn tcp(cfg: &Config) -> Result<()> {
                 jwt: jwt.clone(),
                 hmac: hmac.clone(),
                 rabbitmq: rabbitmq.clone(),
+                enforcer: enforcer.clone(),
+            },
+        ))
+        .add_service(nut::v1::rbac_server::RbacServer::new(
+            nut::services::rbac::Service {
+                pgsql: pgsql.clone(),
+                jwt: jwt.clone(),
                 enforcer: enforcer.clone(),
             },
         ))

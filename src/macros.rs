@@ -56,6 +56,12 @@ macro_rules! has_permission {
 }
 
 #[macro_export]
+macro_rules! to_role {
+    ($r:expr) => {{
+        format!("role://{}", to_code!($r))
+    }};
+}
+#[macro_export]
 macro_rules! resource_to_object {
     ($t:expr, $i:expr) => {{
         format!("{}://{}", $t, $i)
