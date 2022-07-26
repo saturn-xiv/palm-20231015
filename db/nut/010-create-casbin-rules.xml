@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
+
+    <changeSet id="20220725081121" author="jeremy.zheng" labels="create-casbin-rules">
+
+        <createTable tableName="casbin_rule">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="ptype" type="varchar">
+                <constraints nullable="false" />
+            </column>
+            <column name="v0" type="varchar">
+                <constraints nullable="false" />
+            </column>
+            <column name="v1" type="varchar">
+                <constraints nullable="false" />
+            </column>
+            <column name="v2" type="varchar">
+                <constraints nullable="false" />
+            </column>
+            <column name="v3" type="varchar">
+                <constraints nullable="false" />
+            </column>
+            <column name="v4" type="varchar">
+                <constraints nullable="false" />
+            </column>
+            <column name="v5" type="varchar">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="casbin_rule" indexName="idx_casbin_rule" unique="true">
+            <column name="ptype" />
+            <column name="v0" />
+            <column name="v1" />
+            <column name="v2" />
+            <column name="v3" />
+            <column name="v4" />
+            <column name="v5" />
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>
