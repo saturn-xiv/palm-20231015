@@ -12,10 +12,7 @@ use super::super::super::super::{
     orm::postgresql::Pool as PostgreSqlPool,
     GrpcResult,
 };
-use super::super::{
-    models::{user::Item as User, Operation},
-    v1,
-};
+use super::super::{models::Operation, v1};
 use super::Session;
 
 pub struct Service {
@@ -45,12 +42,10 @@ impl v1::locale_server::Locale for Service {
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
 
-        if !has_permission!(
-            self.enforcer,
-            &user.subject(),
-            Operation::Write.to_string(),
-            resource_to_object!(type_name::<Locale>())
-        ) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+
+        if !user.can::<Locale, _>(enf, &Operation::Write, None) {
             return Err(Status::permission_denied(type_name::<Locale>()));
         }
 
@@ -93,12 +88,10 @@ impl v1::locale_server::Locale for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_permission!(
-            self.enforcer,
-            &user.subject(),
-            Operation::Remove.to_string(),
-            resource_to_object!(type_name::<Locale>())
-        ) {
+
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.can::<Locale, _>(enf, &Operation::Remove, None) {
             return Err(Status::permission_denied(type_name::<Locale>()));
         }
         let req = req.into_inner();

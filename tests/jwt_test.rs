@@ -10,9 +10,9 @@ use palm::{
 use uuid::Uuid;
 
 #[test]
-fn hs512() {
+fn jwt() {
     let cfg = common::load_config();
-    let uid = Uuid::new_v4();
+    let uid = Uuid::new_v4().to_string();
 
     let jwt = Jwt::new(cfg.secrets.0.clone());
     let (nbf, exp) = Jwt::timestamps(Duration::weeks(1));
@@ -20,7 +20,7 @@ fn hs512() {
         .sum(
             None,
             &Token {
-                aud: uid,
+                aud: uid.clone(),
                 act: Action::SignIn,
                 nbf,
                 exp,

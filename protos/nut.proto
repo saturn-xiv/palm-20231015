@@ -153,10 +153,6 @@ service Rbac {
       returns (google.protobuf.Empty) {}
   rpc DeletePermissionForRole(RbacPermissionForRoleRequest)
       returns (google.protobuf.Empty) {}
-
-  rpc HasPermissionForUser(RbacPermissionForUserRequest)
-      returns (google.protobuf.Empty) {}
-  rpc HasRoleForUser(RbacRoleForUserRequest) returns (google.protobuf.Empty) {}
 }
 
 message RbacUserRequest { int32 id = 1; }
@@ -165,9 +161,10 @@ message RbacRoleRequest { string code = 2; }
 message RbacGetUsersForRoleResponse { repeated string items = 2; }
 message RbacPermissionsResponse {
   message Item {
-    string operation = 1;
-    string resource_type = 2;
-    optional int32 resource_id = 3;
+    string subject = 1;
+    string operation = 2;
+    string resource_type = 3;
+    optional int32 resource_id = 4;
   }
   repeated Item items = 1;
 }

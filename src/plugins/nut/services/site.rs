@@ -131,7 +131,9 @@ impl v1::site_server::Site for Service {
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
 
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<
                 v1::site_layout_response::Author,
             >()));
@@ -165,7 +167,9 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<
                 v1::SiteSetCopyrightRequest,
             >()));
@@ -188,7 +192,9 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(
                 type_name::<v1::SiteSetLogoRequest>(),
             ));
@@ -211,7 +217,9 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<
                 v1::SiteSetKeywordsRequest,
             >()));
@@ -234,7 +242,9 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(
                 type_name::<v1::SiteSetInfoRequest>(),
             ));
@@ -372,7 +382,9 @@ impl v1::site_server::Site for Service {
         let user = try_grpc!(ss.current_user(db, jwt))?;
         let req = req.into_inner();
 
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<User>()));
         }
 
@@ -386,7 +398,9 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<User>()));
         }
         let req = req.into_inner();
@@ -408,7 +422,9 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<User>()));
         }
 
@@ -429,13 +445,15 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<User>()));
         }
         let req = req.into_inner();
         {
             let it = try_grpc!(UserDao::by_id(db, req.id))?;
-            if has_role!(self.enforcer, &it.subject(), User::ROOT) {
+            if it.is(enf, User::ROOT) {
                 return Err(Status::permission_denied(type_name::<User>()));
             }
         }
@@ -450,13 +468,15 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<User>()));
         }
         let req = req.into_inner();
         {
             let it = try_grpc!(UserDao::by_id(db, req.id))?;
-            if has_role!(self.enforcer, &it.subject(), User::ROOT) {
+            if it.is(enf, User::ROOT) {
                 return Err(Status::permission_denied(type_name::<User>()));
             }
         }
@@ -470,13 +490,15 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<User>()));
         }
         let req = req.into_inner();
         {
             let it = try_grpc!(UserDao::by_id(db, req.id))?;
-            if has_role!(self.enforcer, &it.subject(), User::ROOT) {
+            if it.is(enf, User::ROOT) {
                 return Err(Status::permission_denied(type_name::<User>()));
             }
         }
@@ -490,13 +512,15 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<User>()));
         }
         let req = req.into_inner();
         {
             let it = try_grpc!(UserDao::by_id(db, req.id))?;
-            if has_role!(self.enforcer, &it.subject(), User::ROOT) {
+            if it.is(enf, User::ROOT) {
                 return Err(Status::permission_denied(type_name::<User>()));
             }
         }
@@ -509,13 +533,15 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<User>()));
         }
         let req = req.into_inner();
         {
             let it = try_grpc!(UserDao::by_id(db, req.id))?;
-            if has_role!(self.enforcer, &it.subject(), User::ROOT) {
+            if it.is(enf, User::ROOT) {
                 return Err(Status::permission_denied(type_name::<User>()));
             }
         }
@@ -533,13 +559,15 @@ impl v1::site_server::Site for Service {
         let jwt = self.jwt.deref();
         let hmac = self.hmac.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<User>()));
         }
         let req = req.into_inner();
         {
             let it = try_grpc!(UserDao::by_id(db, req.user))?;
-            if has_role!(self.enforcer, &it.subject(), User::ROOT) {
+            if it.is(enf, User::ROOT) {
                 return Err(Status::permission_denied(type_name::<User>()));
             }
         }
@@ -568,7 +596,9 @@ impl v1::site_server::Site for Service {
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<v1::AwsProfile>()));
         }
         let req = req.into_inner();
@@ -591,7 +621,9 @@ impl v1::site_server::Site for Service {
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<v1::AwsProfile>()));
         }
 
@@ -608,7 +640,9 @@ impl v1::site_server::Site for Service {
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<v1::AwsProfile>()));
         }
 
@@ -626,7 +660,9 @@ impl v1::site_server::Site for Service {
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<v1::SmtpProfile>()));
         }
         let req = req.into_inner();
@@ -649,7 +685,9 @@ impl v1::site_server::Site for Service {
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<v1::SmtpProfile>()));
         }
         let buf: Vec<u8> = try_grpc!(SettingDao::get(
@@ -670,7 +708,9 @@ impl v1::site_server::Site for Service {
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<v1::SmtpProfile>()));
         }
         let req = req.into_inner();
@@ -700,7 +740,9 @@ impl v1::site_server::Site for Service {
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<v1::BingProfile>()));
         }
         let req = req.into_inner();
@@ -723,7 +765,9 @@ impl v1::site_server::Site for Service {
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<v1::BingProfile>()));
         }
         let buf: Vec<u8> = try_grpc!(SettingDao::get(
@@ -743,7 +787,9 @@ impl v1::site_server::Site for Service {
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<v1::GoogleProfile>()));
         }
         let req = req.into_inner();
@@ -766,7 +812,9 @@ impl v1::site_server::Site for Service {
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<v1::GoogleProfile>()));
         }
         let buf: Vec<u8> = try_grpc!(SettingDao::get(
@@ -786,7 +834,9 @@ impl v1::site_server::Site for Service {
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<v1::BaiduProfile>()));
         }
         let req = req.into_inner();
@@ -809,7 +859,9 @@ impl v1::site_server::Site for Service {
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<v1::BaiduProfile>()));
         }
         let buf: Vec<u8> = try_grpc!(SettingDao::get(
@@ -827,7 +879,9 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<RedisConnection>()));
         }
         let mut ch = try_grpc!(self.redis.get())?;
@@ -841,7 +895,9 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(
                 type_name::<v1::SiteStatusResponse>(),
             ));
@@ -888,12 +944,11 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_permission!(
-            self.enforcer,
-            &user.subject(),
-            Operation::Read.to_string(),
-            resource_to_object!(type_name::<LeaveWord>())
-        ) {
+
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+
+        if !user.can::<LeaveWord, _>(enf, &Operation::Read, None) {
             return Err(Status::permission_denied(type_name::<LeaveWord>()));
         }
         let req = req.into_inner();
@@ -920,12 +975,9 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_permission!(
-            self.enforcer,
-            &user.subject(),
-            Operation::Remove.to_string(),
-            resource_to_object!(type_name::<LeaveWord>())
-        ) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.can::<LeaveWord, _>(enf, &Operation::Read, None) {
             return Err(Status::permission_denied(type_name::<LeaveWord>()));
         }
         let req = req.into_inner();

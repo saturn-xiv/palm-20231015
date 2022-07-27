@@ -36,29 +36,6 @@ macro_rules! to_code {
 }
 
 #[macro_export]
-macro_rules! has_role {
-    ($e:expr, $u:expr, $r:expr) => {{
-        debug!("check role ({}, {})", $u, $r);
-        use casbin::RbacApi;
-        let mut e = $e.lock().await;
-        let e = e.deref_mut();
-        e.has_role_for_user($u, $r, None)
-    }};
-}
-
-#[macro_export]
-macro_rules! has_permission {
-    ($e:expr, $u:expr, $o:expr, $r:expr) => {{
-        debug!("check permission ({}, {}, {})", $u, $o, $r);
-        use casbin::RbacApi;
-        let mut e = $e.lock().await;
-        let e = e.deref_mut();
-        e.has_permission_for_user($u, vec![$r, $o])
-            || e.has_role_for_user($u, User::ADMINISTRATOR, None)
-    }};
-}
-
-#[macro_export]
 macro_rules! to_role {
     ($r:expr) => {{
         format!("role://{}", to_code!($r))

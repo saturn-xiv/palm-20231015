@@ -14,9 +14,10 @@ use super::super::{
 use super::Session;
 
 impl v1::rbac_permissions_response::Item {
-    pub fn new(object: &str, action: &str) -> Self {
+    pub fn new(subject: &str, object: &str, action: &str) -> Self {
         let (resource_type, resource_id) = object_to_resource!(object);
         Self {
+            subject: subject.to_string(),
             operation: action.to_string(),
             resource_type,
             resource_id,
@@ -47,7 +48,10 @@ impl v1::rbac_server::Rbac for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<
                 v1::RbacGetRolesForUserResponse,
             >()));
@@ -75,7 +79,9 @@ impl v1::rbac_server::Rbac for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<
                 v1::RbacGetUsersForRoleResponse,
             >()));
@@ -100,7 +106,9 @@ impl v1::rbac_server::Rbac for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<
                 v1::RbacPermissionsResponse,
             >()));
@@ -115,7 +123,7 @@ impl v1::rbac_server::Rbac for Service {
             .get_permissions_for_user(&it.subject(), None)
             .iter()
             .filter(|x| x.len() == 3)
-            .map(|x| v1::rbac_permissions_response::Item::new(&x[1], &x[2]))
+            .map(|x| v1::rbac_permissions_response::Item::new(&x[0], &x[1], &x[2]))
             .collect();
         Ok(Response::new(v1::RbacPermissionsResponse { items }))
     }
@@ -128,7 +136,9 @@ impl v1::rbac_server::Rbac for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<
                 v1::RbacPermissionsResponse,
             >()));
@@ -142,7 +152,7 @@ impl v1::rbac_server::Rbac for Service {
             .get_permissions_for_user(&to_role!(req.code), None)
             .iter()
             .filter(|x| x.len() == 3)
-            .map(|x| v1::rbac_permissions_response::Item::new(&x[1], &x[2]))
+            .map(|x| v1::rbac_permissions_response::Item::new(&x[0], &x[1], &x[2]))
             .collect();
         Ok(Response::new(v1::RbacPermissionsResponse { items }))
     }
@@ -156,7 +166,9 @@ impl v1::rbac_server::Rbac for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<
                 v1::RbacAddRolesForUserRequest,
             >()));
@@ -178,7 +190,9 @@ impl v1::rbac_server::Rbac for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<()>()));
         }
 
@@ -207,7 +221,9 @@ impl v1::rbac_server::Rbac for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<()>()));
         }
 
@@ -236,7 +252,9 @@ impl v1::rbac_server::Rbac for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<
                 v1::RbacRoleForUserRequest,
             >()));
@@ -258,7 +276,9 @@ impl v1::rbac_server::Rbac for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<()>()));
         }
 
@@ -275,7 +295,9 @@ impl v1::rbac_server::Rbac for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<()>()));
         }
 
@@ -294,7 +316,9 @@ impl v1::rbac_server::Rbac for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<
                 v1::RbacPermissionForUserRequest,
             >()));
@@ -326,7 +350,9 @@ impl v1::rbac_server::Rbac for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        if !has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<
                 v1::RbacPermissionForRoleRequest,
             >()));
@@ -347,48 +373,5 @@ impl v1::rbac_server::Rbac for Service {
             )?;
         }
         Ok(Response::new(()))
-    }
-
-    async fn has_role_for_user(&self, req: Request<v1::RbacRoleForUserRequest>) -> GrpcResult<()> {
-        let ss = Session::new(&req);
-        let mut db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref_mut();
-        let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
-        let req = req.into_inner();
-
-        if has_role!(self.enforcer, &user.subject(), &req.role) {
-            Ok(Response::new(()))
-        } else {
-            Err(Status::permission_denied(type_name::<
-                v1::RbacRoleForUserRequest,
-            >()))
-        }
-    }
-    async fn has_permission_for_user(
-        &self,
-        req: Request<v1::RbacPermissionForUserRequest>,
-    ) -> GrpcResult<()> {
-        let ss = Session::new(&req);
-        let mut db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref_mut();
-        let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
-        let req = req.into_inner();
-
-        if let Some(ref permission) = req.permission {
-            if has_permission!(
-                self.enforcer,
-                &user.subject(),
-                permission.operation.clone(),
-                permission.object()
-            ) {
-                return Ok(Response::new(()));
-            }
-        }
-
-        Err(Status::permission_denied(type_name::<
-            v1::RbacPermissionForUserRequest,
-        >()))
     }
 }

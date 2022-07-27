@@ -7,6 +7,10 @@ pub mod site;
 pub mod tag;
 pub mod user;
 
+use std::any::type_name;
+use std::fmt::Display;
+
+use casbin::{Enforcer, RbacApi};
 use chrono::Duration;
 use hyper::{
     header::{ACCEPT_LANGUAGE, AUTHORIZATION},
@@ -130,5 +134,37 @@ impl User {
             nbf,
         };
         jwt.sum(None, &token)
+    }
+    pub fn is_administrator(&self, enf: &mut Enforcer) -> bool {
+        self.is(enf, Self::ADMINISTRATOR)
+    }
+    pub fn is(&self, enf: &mut Enforcer, role: &str) -> bool {
+        let items = enf.get_implicit_roles_for_user(&self.subject(), None);
+        items.contains(&role.to_string())
+    }
+    pub fn can<R, O: Display>(
+        &self,
+        enf: &mut Enforcer,
+        operation: &O,
+        resource_id: Option<i32>,
+    ) -> bool {
+        if self.is_administrator(enf) {
+            return true;
+        }
+        let resource_type = type_name::<R>();
+        let operation = operation.to_string();
+
+        let object = match resource_id {
+            Some(resource_id) => resource_to_object!(resource_type, resource_id),
+            None => resource_to_object!(resource_type),
+        };
+
+        let items = enf.get_implicit_permissions_for_user(&self.subject(), None);
+        for it in items.iter() {
+            if it[2] == operation && (it[1] == resource_type || it[1] == object) {
+                return true;
+            }
+        }
+        false
     }
 }

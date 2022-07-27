@@ -67,7 +67,7 @@ impl v1::UserSignInResponse {
             .get_implicit_permissions_for_user(&user.subject(), None)
             .iter()
             .filter(|x| x.len() == 3)
-            .map(|x| v1::rbac_permissions_response::Item::new(&x[1], &x[2]))
+            .map(|x| v1::rbac_permissions_response::Item::new(&x[0], &x[1], &x[2]))
             .collect();
 
         Ok(Self {

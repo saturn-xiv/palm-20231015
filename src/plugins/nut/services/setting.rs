@@ -13,7 +13,7 @@ use super::super::super::super::{
     setting::{Dao as SettingDao, Item as Setting},
     GrpcResult,
 };
-use super::super::{models::user::Item as User, v1};
+use super::super::v1;
 use super::Session;
 
 pub struct Service {
@@ -35,13 +35,12 @@ impl v1::setting_server::Setting for Service {
 
         let key = to_code!(req.key);
 
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+
         let can = match req.user {
-            None => {
-                has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR)
-            }
-            Some(id) => {
-                user.id == id || has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR)
-            }
+            None => user.is_administrator(enf),
+            Some(id) => user.id == id || user.is_administrator(enf),
         };
         if !can {
             return Err(Status::permission_denied(type_name::<Setting>()));
@@ -64,13 +63,13 @@ impl v1::setting_server::Setting for Service {
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
         let req = req.into_inner();
+
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+
         let can = match req.user {
-            None => {
-                has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR)
-            }
-            Some(id) => {
-                user.id == id || has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR)
-            }
+            None => user.is_administrator(enf),
+            Some(id) => user.id == id || user.is_administrator(enf),
         };
         if !can {
             return Err(Status::permission_denied(type_name::<Setting>()));

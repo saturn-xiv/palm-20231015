@@ -1,4 +1,3 @@
-use std::any::type_name;
 use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
@@ -12,7 +11,6 @@ use super::super::super::super::{
 use super::super::{
     models::{
         attachment::{Dao as AttachmentDao, Item as Attachment},
-        user::Item as User,
         Operation,
     },
     v1,
@@ -37,7 +35,10 @@ impl v1::attachment_server::Attachment for Service {
         let user = try_grpc!(ss.current_user(db, jwt))?;
         let req = req.into_inner();
 
-        let (total, items) = if has_role!(self.enforcer, &user.subject(), User::ADMINISTRATOR) {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+
+        let (total, items) = if user.is_administrator(enf) {
             let total = try_grpc!(AttachmentDao::count(db))?;
             let items = try_grpc!(AttachmentDao::all(db, req.offset(total), req.size()))?;
             (total, items)
@@ -66,12 +67,9 @@ impl v1::attachment_server::Attachment for Service {
         let req = req.into_inner();
         let it = try_grpc!(AttachmentDao::by_id(db, req.id))?;
 
-        let can = has_permission!(
-            self.enforcer,
-            &user.subject(),
-            Operation::Remove.to_string(),
-            resource_to_object!(type_name::<Attachment>(), it.id)
-        );
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        let can = user.can::<Attachment, _>(enf, &Operation::Remove, Some(it.id));
 
         if can {
             let aws = try_grpc!(v1::AwsProfile::new(db, aes))?;
@@ -100,13 +98,10 @@ impl v1::attachment_server::Attachment for Service {
         let ttl = req.ttl.unwrap_or_default();
         let it = try_grpc!(AttachmentDao::by_id(db, req.id))?;
 
-        let can = has_permission!(
-            self.enforcer,
-            &user.subject(),
-            Operation::Read.to_string(),
-            resource_to_object!(type_name::<Attachment>(), it.id)
-        );
-        if can {
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+
+        if user.can::<Attachment, _>(enf, &Operation::Read, Some(it.id)) {
             let aws = try_grpc!(v1::AwsProfile::new(db, aes))?;
             let s3 = try_grpc!(aws.s3())?;
             let url = s3.get_object(it.bucket.clone(), it.name.clone(), to_std_duration!(ttl));
@@ -116,10 +111,7 @@ impl v1::attachment_server::Attachment for Service {
                 url,
             }));
         }
-        Err(Status::permission_denied(format!(
-            "forbidden to shwo {}",
-            it.title
-        )))
+        Err(Status::permission_denied(it.title))
     }
 }
 

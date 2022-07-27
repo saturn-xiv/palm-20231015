@@ -607,6 +607,9 @@ export namespace RbacPermissionsResponse {
   }
 
   export class Item extends jspb.Message {
+    getSubject(): string;
+    setSubject(value: string): Item;
+
     getOperation(): string;
     setOperation(value: string): Item;
 
@@ -628,6 +631,7 @@ export namespace RbacPermissionsResponse {
 
   export namespace Item {
     export type AsObject = {
+      subject: string,
       operation: string,
       resourceType: string,
       resourceId?: number,
@@ -635,7 +639,7 @@ export namespace RbacPermissionsResponse {
 
     export enum ResourceIdCase { 
       _RESOURCE_ID_NOT_SET = 0,
-      RESOURCE_ID = 3,
+      RESOURCE_ID = 4,
     }
   }
 
