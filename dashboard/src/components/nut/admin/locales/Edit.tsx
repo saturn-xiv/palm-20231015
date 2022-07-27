@@ -56,7 +56,10 @@ const Widget = ({ item, handleRefresh }: IProps) => {
           <Button type="dashed" shape="circle" icon={<EditOutlined />} />
         </Tooltip>
       }
-      initialValues={{ code: item.code, message: item.message }}
+      request={async () => {
+        return Promise.resolve({ code: item.code, message: item.message });
+      }}
+      // initialValues={{ code: item.code, message: item.message }}
     >
       <ProForm.Group>
         <ProFormText

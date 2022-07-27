@@ -100,7 +100,7 @@ impl Item {
     pub const ROOT: &'static str = "role://root";
 
     pub fn subject(&self) -> String {
-        format!("{}://{}", type_name::<Self>(), self.id)
+        format!("{}://{}", type_name::<Self>(), self.nick_name)
     }
     pub fn available(&self) -> Result<()> {
         if self.deleted_at.is_some() {

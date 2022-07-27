@@ -12,7 +12,10 @@ use super::super::super::super::{
     orm::postgresql::Pool as PostgreSqlPool,
     GrpcResult,
 };
-use super::super::{models::Operation, v1};
+use super::super::{
+    models::{user::Item as User, Operation},
+    v1,
+};
 use super::Session;
 
 pub struct Service {
