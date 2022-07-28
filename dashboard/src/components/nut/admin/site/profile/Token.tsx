@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { message, Tooltip, Button, Card } from "antd";
-import ProForm, { ProFormDateTimePicker } from "@ant-design/pro-form";
-import type { ProFormInstance } from "@ant-design/pro-form";
+import { ProForm, ProFormDateTimePicker } from "@ant-design/pro-components";
+import type { ProFormInstance } from "@ant-design/pro-components";
 import { useIntl } from "react-intl";
 import dayjs from "dayjs";
 import { Duration } from "google-protobuf/google/protobuf/duration_pb";

@@ -1,6 +1,6 @@
 import { useIntl } from "react-intl";
 import { useRef } from "react";
-import ProTable, { ActionType } from "@ant-design/pro-table";
+import { ProTable, ActionType } from "@ant-design/pro-components";
 import { Timestamp } from "google-protobuf/google/protobuf/timestamp_pb";
 import { Space } from "antd";
 

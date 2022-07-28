@@ -1,11 +1,12 @@
 import { useRef } from "react";
 import { message, Button, Tooltip } from "antd";
-import ProForm, {
+import {
+  ProForm,
   ModalForm,
   ProFormText,
   ProFormTextArea,
-} from "@ant-design/pro-form";
-import type { ProFormInstance } from "@ant-design/pro-form";
+} from "@ant-design/pro-components";
+import type { ProFormInstance } from "@ant-design/pro-components";
 import { MailOutlined } from "@ant-design/icons";
 import { FormattedMessage, useIntl } from "react-intl";
 
@@ -58,7 +59,7 @@ const Widget = () => {
           width="md"
           name="to"
           label={intl.formatMessage({ id: "form.fields.email.label" })}
-          rules={[RULE_EMAIL]}
+          rules={[RULE_EMAIL, { type: "email" }]}
         />
       </ProForm.Group>
       <ProForm.Group>

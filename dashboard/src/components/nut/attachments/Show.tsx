@@ -3,11 +3,12 @@ import { CopyOutlined, EyeOutlined, ShareAltOutlined } from "@ant-design/icons";
 import { Tooltip, Button, message } from "antd";
 import { useState, useRef } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import ProForm, {
+import {
+  ProForm,
   ModalForm,
   ProFormDateTimePicker,
-} from "@ant-design/pro-form";
-import type { ProFormInstance } from "@ant-design/pro-form";
+} from "@ant-design/pro-components";
+import type { ProFormInstance } from "@ant-design/pro-components";
 import dayjs from "dayjs";
 import { Duration } from "google-protobuf/google/protobuf/duration_pb";
 

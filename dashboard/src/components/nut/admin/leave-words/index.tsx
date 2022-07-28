@@ -1,7 +1,7 @@
 import { FormattedMessage, useIntl } from "react-intl";
 import { Typography } from "antd";
 import { useRef } from "react";
-import ProTable, { ActionType } from "@ant-design/pro-table";
+import { ProTable, ActionType } from "@ant-design/pro-components";
 import { Timestamp } from "google-protobuf/google/protobuf/timestamp_pb";
 
 import {

@@ -1,12 +1,13 @@
 import { useRef } from "react";
 import { message, Button, Tooltip } from "antd";
-import ProForm, {
+import {
+  ProForm,
   ModalForm,
   ProFormTextArea,
   ProFormSelect,
   ProFormText,
-} from "@ant-design/pro-form";
-import type { ProFormInstance } from "@ant-design/pro-form";
+} from "@ant-design/pro-components";
+import type { ProFormInstance } from "@ant-design/pro-components";
 import { PlusOutlined } from "@ant-design/icons";
 import { FormattedMessage, useIntl } from "react-intl";
 

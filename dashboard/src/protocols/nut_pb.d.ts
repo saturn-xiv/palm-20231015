@@ -130,10 +130,10 @@ export class UserSignInResponse extends jspb.Message {
   clearRolesList(): UserSignInResponse;
   addRoles(value: string, index?: number): UserSignInResponse;
 
-  getPermissionsList(): Array<RbacPermissionsResponse.Item>;
-  setPermissionsList(value: Array<RbacPermissionsResponse.Item>): UserSignInResponse;
+  getPermissionsList(): Array<RbacGetPermissionsResponse.Item>;
+  setPermissionsList(value: Array<RbacGetPermissionsResponse.Item>): UserSignInResponse;
   clearPermissionsList(): UserSignInResponse;
-  addPermissions(value?: RbacPermissionsResponse.Item, index?: number): RbacPermissionsResponse.Item;
+  addPermissions(value?: RbacGetPermissionsResponse.Item, index?: number): RbacGetPermissionsResponse.Item;
 
   getPayload(): SiteUserIndexResponse.Item | undefined;
   setPayload(value?: SiteUserIndexResponse.Item): UserSignInResponse;
@@ -152,7 +152,7 @@ export namespace UserSignInResponse {
   export type AsObject = {
     token: string,
     rolesList: Array<string>,
-    permissionsList: Array<RbacPermissionsResponse.Item.AsObject>,
+    permissionsList: Array<RbacGetPermissionsResponse.Item.AsObject>,
     payload?: SiteUserIndexResponse.Item.AsObject,
   }
 }
@@ -587,23 +587,23 @@ export namespace RbacGetUsersForRoleResponse {
   }
 }
 
-export class RbacPermissionsResponse extends jspb.Message {
-  getItemsList(): Array<RbacPermissionsResponse.Item>;
-  setItemsList(value: Array<RbacPermissionsResponse.Item>): RbacPermissionsResponse;
-  clearItemsList(): RbacPermissionsResponse;
-  addItems(value?: RbacPermissionsResponse.Item, index?: number): RbacPermissionsResponse.Item;
+export class RbacGetPermissionsResponse extends jspb.Message {
+  getItemsList(): Array<RbacGetPermissionsResponse.Item>;
+  setItemsList(value: Array<RbacGetPermissionsResponse.Item>): RbacGetPermissionsResponse;
+  clearItemsList(): RbacGetPermissionsResponse;
+  addItems(value?: RbacGetPermissionsResponse.Item, index?: number): RbacGetPermissionsResponse.Item;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RbacPermissionsResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: RbacPermissionsResponse): RbacPermissionsResponse.AsObject;
-  static serializeBinaryToWriter(message: RbacPermissionsResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RbacPermissionsResponse;
-  static deserializeBinaryFromReader(message: RbacPermissionsResponse, reader: jspb.BinaryReader): RbacPermissionsResponse;
+  toObject(includeInstance?: boolean): RbacGetPermissionsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: RbacGetPermissionsResponse): RbacGetPermissionsResponse.AsObject;
+  static serializeBinaryToWriter(message: RbacGetPermissionsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RbacGetPermissionsResponse;
+  static deserializeBinaryFromReader(message: RbacGetPermissionsResponse, reader: jspb.BinaryReader): RbacGetPermissionsResponse;
 }
 
-export namespace RbacPermissionsResponse {
+export namespace RbacGetPermissionsResponse {
   export type AsObject = {
-    itemsList: Array<RbacPermissionsResponse.Item.AsObject>,
+    itemsList: Array<RbacGetPermissionsResponse.Item.AsObject>,
   }
 
   export class Item extends jspb.Message {
@@ -645,30 +645,6 @@ export namespace RbacPermissionsResponse {
 
 }
 
-export class RbacAddRolesForUserRequest extends jspb.Message {
-  getUser(): number;
-  setUser(value: number): RbacAddRolesForUserRequest;
-
-  getRolesList(): Array<string>;
-  setRolesList(value: Array<string>): RbacAddRolesForUserRequest;
-  clearRolesList(): RbacAddRolesForUserRequest;
-  addRoles(value: string, index?: number): RbacAddRolesForUserRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RbacAddRolesForUserRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: RbacAddRolesForUserRequest): RbacAddRolesForUserRequest.AsObject;
-  static serializeBinaryToWriter(message: RbacAddRolesForUserRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RbacAddRolesForUserRequest;
-  static deserializeBinaryFromReader(message: RbacAddRolesForUserRequest, reader: jspb.BinaryReader): RbacAddRolesForUserRequest;
-}
-
-export namespace RbacAddRolesForUserRequest {
-  export type AsObject = {
-    user: number,
-    rolesList: Array<string>,
-  }
-}
-
 export class RbacRoleForUserRequest extends jspb.Message {
   getUser(): number;
   setUser(value: number): RbacRoleForUserRequest;
@@ -691,60 +667,12 @@ export namespace RbacRoleForUserRequest {
   }
 }
 
-export class RbacAddPermissionsForUserRequest extends jspb.Message {
-  getUser(): number;
-  setUser(value: number): RbacAddPermissionsForUserRequest;
-
-  getPermissionsList(): Array<RbacPermissionsResponse.Item>;
-  setPermissionsList(value: Array<RbacPermissionsResponse.Item>): RbacAddPermissionsForUserRequest;
-  clearPermissionsList(): RbacAddPermissionsForUserRequest;
-  addPermissions(value?: RbacPermissionsResponse.Item, index?: number): RbacPermissionsResponse.Item;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RbacAddPermissionsForUserRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: RbacAddPermissionsForUserRequest): RbacAddPermissionsForUserRequest.AsObject;
-  static serializeBinaryToWriter(message: RbacAddPermissionsForUserRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RbacAddPermissionsForUserRequest;
-  static deserializeBinaryFromReader(message: RbacAddPermissionsForUserRequest, reader: jspb.BinaryReader): RbacAddPermissionsForUserRequest;
-}
-
-export namespace RbacAddPermissionsForUserRequest {
-  export type AsObject = {
-    user: number,
-    permissionsList: Array<RbacPermissionsResponse.Item.AsObject>,
-  }
-}
-
-export class RbacAddPermissionsForRoleRequest extends jspb.Message {
-  getRole(): string;
-  setRole(value: string): RbacAddPermissionsForRoleRequest;
-
-  getPermissionsList(): Array<RbacPermissionsResponse.Item>;
-  setPermissionsList(value: Array<RbacPermissionsResponse.Item>): RbacAddPermissionsForRoleRequest;
-  clearPermissionsList(): RbacAddPermissionsForRoleRequest;
-  addPermissions(value?: RbacPermissionsResponse.Item, index?: number): RbacPermissionsResponse.Item;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RbacAddPermissionsForRoleRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: RbacAddPermissionsForRoleRequest): RbacAddPermissionsForRoleRequest.AsObject;
-  static serializeBinaryToWriter(message: RbacAddPermissionsForRoleRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RbacAddPermissionsForRoleRequest;
-  static deserializeBinaryFromReader(message: RbacAddPermissionsForRoleRequest, reader: jspb.BinaryReader): RbacAddPermissionsForRoleRequest;
-}
-
-export namespace RbacAddPermissionsForRoleRequest {
-  export type AsObject = {
-    role: string,
-    permissionsList: Array<RbacPermissionsResponse.Item.AsObject>,
-  }
-}
-
 export class RbacPermissionForUserRequest extends jspb.Message {
   getUser(): number;
   setUser(value: number): RbacPermissionForUserRequest;
 
-  getPermission(): RbacPermissionsResponse.Item | undefined;
-  setPermission(value?: RbacPermissionsResponse.Item): RbacPermissionForUserRequest;
+  getPermission(): RbacGetPermissionsResponse.Item | undefined;
+  setPermission(value?: RbacGetPermissionsResponse.Item): RbacPermissionForUserRequest;
   hasPermission(): boolean;
   clearPermission(): RbacPermissionForUserRequest;
 
@@ -759,7 +687,7 @@ export class RbacPermissionForUserRequest extends jspb.Message {
 export namespace RbacPermissionForUserRequest {
   export type AsObject = {
     user: number,
-    permission?: RbacPermissionsResponse.Item.AsObject,
+    permission?: RbacGetPermissionsResponse.Item.AsObject,
   }
 }
 
@@ -767,8 +695,8 @@ export class RbacPermissionForRoleRequest extends jspb.Message {
   getRole(): string;
   setRole(value: string): RbacPermissionForRoleRequest;
 
-  getPermission(): RbacPermissionsResponse.Item | undefined;
-  setPermission(value?: RbacPermissionsResponse.Item): RbacPermissionForRoleRequest;
+  getPermission(): RbacGetPermissionsResponse.Item | undefined;
+  setPermission(value?: RbacGetPermissionsResponse.Item): RbacPermissionForRoleRequest;
   hasPermission(): boolean;
   clearPermission(): RbacPermissionForRoleRequest;
 
@@ -783,7 +711,7 @@ export class RbacPermissionForRoleRequest extends jspb.Message {
 export namespace RbacPermissionForRoleRequest {
   export type AsObject = {
     role: string,
-    permission?: RbacPermissionsResponse.Item.AsObject,
+    permission?: RbacGetPermissionsResponse.Item.AsObject,
   }
 }
 

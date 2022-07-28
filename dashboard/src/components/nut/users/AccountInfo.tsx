@@ -1,8 +1,12 @@
 import { useRef } from "react";
 import { message } from "antd";
-import ProForm, { ProFormText, ProFormSelect } from "@ant-design/pro-form";
+import {
+  ProForm,
+  ProFormText,
+  ProFormSelect,
+} from "@ant-design/pro-components";
 import { useIntl } from "react-intl";
-import type { ProFormInstance } from "@ant-design/pro-form";
+import type { ProFormInstance } from "@ant-design/pro-components";
 import { Duration } from "google-protobuf/google/protobuf/duration_pb";
 
 import { RULE_NAME } from "../../forms";

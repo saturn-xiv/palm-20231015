@@ -1,5 +1,5 @@
 import { message } from "antd";
-import ProForm, { ProFormText } from "@ant-design/pro-form";
+import { ProForm, ProFormText } from "@ant-design/pro-components";
 import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 

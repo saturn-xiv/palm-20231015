@@ -1,5 +1,5 @@
 import { message } from "antd";
-import ProForm, { ProFormText } from "@ant-design/pro-form";
+import { ProForm, ProFormText } from "@ant-design/pro-components";
 import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 
@@ -73,7 +73,7 @@ const Widget = () => {
           width="md"
           name="email"
           label={intl.formatMessage({ id: "form.fields.email.label" })}
-          rules={[RULE_EMAIL]}
+          rules={[RULE_EMAIL, { type: "email" }]}
         />
       </ProForm.Group>
       <ProForm.Group>

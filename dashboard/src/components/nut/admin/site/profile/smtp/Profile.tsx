@@ -1,8 +1,12 @@
 import { useRef } from "react";
 import { message, Card, List } from "antd";
-import ProForm, { ProFormText, ProFormSelect } from "@ant-design/pro-form";
+import {
+  ProForm,
+  ProFormText,
+  ProFormSelect,
+} from "@ant-design/pro-components";
 import { useIntl } from "react-intl";
-import type { ProFormInstance } from "@ant-design/pro-form";
+import type { ProFormInstance } from "@ant-design/pro-components";
 import { Empty } from "google-protobuf/google/protobuf/empty_pb";
 
 import { RULE_EMAIL, RULE_PASSWORD } from "../../../../../forms";
@@ -93,7 +97,7 @@ const Widget = () => {
             label={intl.formatMessage({
               id: "form.fields.email.label",
             })}
-            rules={[RULE_EMAIL]}
+            rules={[RULE_EMAIL, { type: "email" }]}
           />
         </ProForm.Group>
         <ProForm.Group>

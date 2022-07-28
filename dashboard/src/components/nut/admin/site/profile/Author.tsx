@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { message, Card } from "antd";
-import ProForm, { ProFormText } from "@ant-design/pro-form";
-import type { ProFormInstance } from "@ant-design/pro-form";
+import { ProForm, ProFormText } from "@ant-design/pro-components";
+import type { ProFormInstance } from "@ant-design/pro-components";
 import { useIntl } from "react-intl";
 
 import { SiteClient } from "../../../../../protocols/NutServiceClientPb";
@@ -56,7 +56,7 @@ const Widget = (props: IFormData) => {
             label={intl.formatMessage({
               id: "form.fields.email.label",
             })}
-            rules={[RULE_EMAIL]}
+            rules={[RULE_EMAIL, { type: "email" }]}
           />
         </ProForm.Group>
       </ProForm>

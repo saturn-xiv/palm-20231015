@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { message } from "antd";
-import ProForm, { ProFormTextArea } from "@ant-design/pro-form";
+import { ProForm, ProFormTextArea } from "@ant-design/pro-components";
 import { useIntl } from "react-intl";
-import type { ProFormInstance } from "@ant-design/pro-form";
+import type { ProFormInstance } from "@ant-design/pro-components";
 
 import Layout from "../../../layouts/non-sign-in";
 import { SiteNewLeaveWordRequest } from "../../../protocols/nut_pb";

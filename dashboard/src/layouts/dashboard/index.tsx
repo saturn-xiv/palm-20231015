@@ -1,7 +1,7 @@
 import { ReactNode, useEffect } from "react";
-import ProLayout, { PageContainer } from "@ant-design/pro-layout";
+import { ProLayout, PageContainer } from "@ant-design/pro-components";
 import { Row, Col, Space } from "antd";
-import type { MenuDataItem } from "@ant-design/pro-layout";
+import type { MenuDataItem } from "@ant-design/pro-components";
 import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { SelectInfo } from "rc-menu/lib/interface";

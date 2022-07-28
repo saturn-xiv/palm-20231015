@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
-import ProForm, { ProFormText } from "@ant-design/pro-form";
-import type { ProFormInstance } from "@ant-design/pro-form";
+import { ProForm, ProFormText } from "@ant-design/pro-components";
+import type { ProFormInstance } from "@ant-design/pro-components";
 import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { Duration } from "google-protobuf/google/protobuf/duration_pb";

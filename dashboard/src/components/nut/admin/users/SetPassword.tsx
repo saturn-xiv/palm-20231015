@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { message, Button, Tooltip } from "antd";
-import ProForm, { ModalForm, ProFormText } from "@ant-design/pro-form";
-import type { ProFormInstance } from "@ant-design/pro-form";
+import { ProForm, ModalForm, ProFormText } from "@ant-design/pro-components";
+import type { ProFormInstance } from "@ant-design/pro-components";
 import { SecurityScanOutlined } from "@ant-design/icons";
 import { FormattedMessage, useIntl } from "react-intl";
 

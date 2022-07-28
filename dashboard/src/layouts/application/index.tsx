@@ -1,7 +1,10 @@
 import { ReactNode } from "react";
-import ProLayout, { PageContainer } from "@ant-design/pro-layout";
+import {
+  DefaultFooter,
+  ProLayout,
+  PageContainer,
+} from "@ant-design/pro-components";
 import { Row, Col } from "antd";
-import Footer from "@ant-design/pro-layout/lib/Footer";
 
 import { Home, Dashboard, Github, SwitchLanguage } from "../footer";
 import palm_tree from "../../assets/palm-tree.svg";
@@ -23,7 +26,7 @@ const Widget = ({ title, children }: IProps) => {
       contentWidth="Fluid"
       logo={site?.logo || palm_tree}
       footerRender={() => (
-        <Footer
+        <DefaultFooter
           copyright={`${site?.copyright}`}
           links={[
             {
