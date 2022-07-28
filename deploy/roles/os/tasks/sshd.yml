@@ -10,13 +10,26 @@
   become: true
   lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^UseDNS '
+    regexp: "^UseDNS "
     line: UseDNS no
 
 - name: Disable GSS api auth for sshd
   become: true
   lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^GSSAPIAuthentication '
+    regexp: "^GSSAPIAuthentication "
     line: GSSAPIAuthentication no
 
+- name: Disable root ssh login
+  become: true
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^PermitRootLogin no"
+    line: PermitRootLogin no
+
+- name: Disable ssh login by password
+  become: true
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^PasswordAuthentication no"
+    line: PasswordAuthentication no
