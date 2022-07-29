@@ -15,7 +15,6 @@
 - name: create backup folder
   become: true
   ansible.builtin.file:
-    path: "{{ app_backup }}"
+    path: "{{ app_backups }}"
     state: directory
     owner: "{{ ansible_user }}"
-

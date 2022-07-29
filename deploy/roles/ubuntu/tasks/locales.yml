@@ -2,7 +2,7 @@
   become: true
   copy:
     src: /etc/locale.gen
-    dest: "{{ app_backup }}/etc_locale.gen"
+    dest: "{{ app_backups }}/etc_locale.gen"
     remote_src: yes
     backup: yes
 
@@ -12,7 +12,6 @@
     path: /etc/locale.gen
     state: present
     line: en_US.UTF-8 UTF-8
-
 
 - name: Enable zh-CN locale
   become: true
@@ -27,7 +26,6 @@
     path: /etc/locale.gen
     state: present
     line: zh_TW.UTF-8 UTF-8
-
 
 - name: Generate locales
   become: true

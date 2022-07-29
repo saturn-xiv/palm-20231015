@@ -2,14 +2,13 @@
   become: true
   copy:
     src: /boot/armbianEnv.txt
-    dest: "{{ app_backup }}/boot_armbianEnv_txt"
+    dest: "{{ app_backups }}/boot_armbianEnv_txt"
     remote_src: yes
     backup: yes
-  
+
 - name: enable uart for armbian
   become: true
   lineinfile:
     path: /boot/armbianEnv.txt
-    regexp: '^overlays='
+    regexp: "^overlays="
     line: overlays=usbhost2 usbhost3 uart1 uart2 analog-codec
-

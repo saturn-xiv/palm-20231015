@@ -33,7 +33,7 @@
       - lshw
       - tcpdump
       - lm-sensors
-      - hddtemp
+      # - hddtemp NOT work on jammy
       - dmidecode
       - net-tools
       - iputils-arping
@@ -72,7 +72,7 @@
       - libpq-dev
       - libmysqlclient-dev
 
-- include: locales.yml
+- include_tasks: locales.yml
 
 - name: Set default editor to vim
   become: true
@@ -82,7 +82,7 @@
   become: true
   shell: git config --global pull.rebase false
 
-- include: zsh.yml
+- include_tasks: zsh.yml
 
 # ---------------------------------------------------
 
@@ -91,7 +91,7 @@
     path: /etc/friendlyelec-release
   register: app_os_friendlyelec
 
-- include: friendly-core.yml
+- include_tasks: friendly-core.yml
   when: app_os_friendlyelec.stat.islnk is defined and app_os_friendlyelec.stat.isreg
 
 - name: check if armbian
@@ -99,13 +99,13 @@
     path: /etc/armbian-release
   register: app_os_armbian
 
-- include: armbian.yml
+- include_tasks: armbian.yml
   when: app_os_armbian.stat.islnk is defined and app_os_armbian.stat.isreg
 
-- include: raspbian.yml
+- include_tasks: raspbian.yml
   when: ansible_distribution == 'Raspbian'
 
-- include: pi.yml
+- include_tasks: pi.yml
   when: ansible_distribution == 'Raspbian' or (app_os_armbian.stat.islnk is defined and app_os_armbian.stat.isreg) or (app_os_friendlyelec.stat.islnk is defined and app_os_friendlyelec.stat.isreg)
 
 # ---------------------------------------------------
@@ -117,12 +117,13 @@
     enabled: yes
     masked: no
 
-- name: enable cron service
-  become: true
-  ansible.builtin.systemd:
-    name: cron-target
-    enabled: yes
-    masked: no
+# FIXME failed on jammy
+# - name: enable cron service
+#   become: true
+#   ansible.builtin.systemd:
+#     name: cron
+#     enabled: yes
+#     masked: no
 
 - name: enable ssh service
   become: true
@@ -138,4 +139,4 @@
     enabled: yes
     masked: no
 
-- include: clean.yml
+- include_tasks: clean.yml

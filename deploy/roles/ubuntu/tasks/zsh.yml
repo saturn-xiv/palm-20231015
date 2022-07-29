@@ -1,18 +1,22 @@
-- name: Clone oh-my-zsh
-  git:
-    repo: https://github.com/robbyrussell/oh-my-zsh.git
-    dest: "{{ansible_env.HOME}}/.oh-my-zsh"
+# - name: setup git to use http v1.1
+#   shell: git config --global http.version HTTP/1.1
 
-# - name: Extract ohmyzsh
-#   unarchive:
-#     src: ohmyzsh-master.zip
-#     dest: "{{ansible_env.HOME}}/"
+# - name: Clone oh-my-zsh
+#   git:
+#     repo: https://github.com/robbyrussell/oh-my-zsh.git
+#     dest: "{{ansible_env.HOME}}/.oh-my-zsh"
 
-# - name: Rename ohmyzsh
-#   command: mv ohmyzsh-master .oh-my-zsh
-#   args:
-#     chdir: "{{ansible_env.HOME}}"
-#     creates: .oh-my-zsh
+# FIXME detect if can access github
+- name: Extract ohmyzsh
+  unarchive:
+    src: ohmyzsh-master.zip
+    dest: "{{ansible_env.HOME}}/"
+
+- name: Rename ohmyzsh
+  command: mv ohmyzsh-master .oh-my-zsh
+  args:
+    chdir: "{{ansible_env.HOME}}"
+    creates: .oh-my-zsh
 
 - name: Setup .zshrc
   copy:
