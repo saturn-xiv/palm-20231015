@@ -6,15 +6,16 @@
     owner: "{{ ansible_user }}"
 
 - name: create downloads folder
-  become: true
   ansible.builtin.file:
     path: "{{ app_downloads }}"
     state: directory
-    owner: "{{ ansible_user }}"
 
 - name: create backup folder
-  become: true
   ansible.builtin.file:
     path: "{{ app_backups }}"
     state: directory
-    owner: "{{ ansible_user }}"
+
+- name: create local folder
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/local/"
+    state: directory
