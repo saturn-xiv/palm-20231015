@@ -62,7 +62,9 @@ impl Default for Http {
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Rpc {
+    #[serde(rename = "tcp-port")]
     pub tcp_port: u16,
+    #[serde(rename = "web-port")]
     pub web_port: u16,
 }
 
