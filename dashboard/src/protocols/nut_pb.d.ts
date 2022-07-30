@@ -715,6 +715,107 @@ export namespace RbacPermissionForRoleRequest {
   }
 }
 
+export class ShorterLinkIndexResponse extends jspb.Message {
+  getItemsList(): Array<ShorterLinkIndexResponse.Item>;
+  setItemsList(value: Array<ShorterLinkIndexResponse.Item>): ShorterLinkIndexResponse;
+  clearItemsList(): ShorterLinkIndexResponse;
+  addItems(value?: ShorterLinkIndexResponse.Item, index?: number): ShorterLinkIndexResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ShorterLinkIndexResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ShorterLinkIndexResponse): ShorterLinkIndexResponse.AsObject;
+  static serializeBinaryToWriter(message: ShorterLinkIndexResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ShorterLinkIndexResponse;
+  static deserializeBinaryFromReader(message: ShorterLinkIndexResponse, reader: jspb.BinaryReader): ShorterLinkIndexResponse;
+}
+
+export namespace ShorterLinkIndexResponse {
+  export type AsObject = {
+    itemsList: Array<ShorterLinkIndexResponse.Item.AsObject>,
+  }
+
+  export class Item extends jspb.Message {
+    getId(): number;
+    setId(value: number): Item;
+
+    getUrl(): string;
+    setUrl(value: string): Item;
+
+    getDetails(): string;
+    setDetails(value: string): Item;
+
+    getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
+    hasUpdatedAt(): boolean;
+    clearUpdatedAt(): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      id: number,
+      url: string,
+      details: string,
+      updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    }
+  }
+
+}
+
+export class ShorterLinkCreateRequest extends jspb.Message {
+  getUrl(): string;
+  setUrl(value: string): ShorterLinkCreateRequest;
+
+  getDetails(): string;
+  setDetails(value: string): ShorterLinkCreateRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ShorterLinkCreateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ShorterLinkCreateRequest): ShorterLinkCreateRequest.AsObject;
+  static serializeBinaryToWriter(message: ShorterLinkCreateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ShorterLinkCreateRequest;
+  static deserializeBinaryFromReader(message: ShorterLinkCreateRequest, reader: jspb.BinaryReader): ShorterLinkCreateRequest;
+}
+
+export namespace ShorterLinkCreateRequest {
+  export type AsObject = {
+    url: string,
+    details: string,
+  }
+}
+
+export class ShorterLinkUpdateRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): ShorterLinkUpdateRequest;
+
+  getUrl(): string;
+  setUrl(value: string): ShorterLinkUpdateRequest;
+
+  getDetails(): string;
+  setDetails(value: string): ShorterLinkUpdateRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ShorterLinkUpdateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ShorterLinkUpdateRequest): ShorterLinkUpdateRequest.AsObject;
+  static serializeBinaryToWriter(message: ShorterLinkUpdateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ShorterLinkUpdateRequest;
+  static deserializeBinaryFromReader(message: ShorterLinkUpdateRequest, reader: jspb.BinaryReader): ShorterLinkUpdateRequest;
+}
+
+export namespace ShorterLinkUpdateRequest {
+  export type AsObject = {
+    id: number,
+    url: string,
+    details: string,
+  }
+}
+
 export class TagIndexResponse extends jspb.Message {
   getItemsList(): Array<TagIndexResponse.Item>;
   setItemsList(value: Array<TagIndexResponse.Item>): TagIndexResponse;

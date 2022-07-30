@@ -1135,6 +1135,199 @@ export class RbacClient {
 
 }
 
+export class ShorterLinkClient {
+  client_: grpcWeb.AbstractClientBase;
+  hostname_: string;
+  credentials_: null | { [index: string]: string; };
+  options_: null | { [index: string]: any; };
+
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; }) {
+    if (!options) options = {};
+    if (!credentials) credentials = {};
+    options['format'] = 'binary';
+
+    this.client_ = new grpcWeb.GrpcWebClientBase(options);
+    this.hostname_ = hostname;
+    this.credentials_ = credentials;
+    this.options_ = options;
+  }
+
+  methodDescriptorCreate = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.ShorterLink/Create',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.ShorterLinkCreateRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.ShorterLinkCreateRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  create(
+    request: nut_pb.ShorterLinkCreateRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  create(
+    request: nut_pb.ShorterLinkCreateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  create(
+    request: nut_pb.ShorterLinkCreateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.ShorterLink/Create',
+        request,
+        metadata || {},
+        this.methodDescriptorCreate,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.ShorterLink/Create',
+    request,
+    metadata || {},
+    this.methodDescriptorCreate);
+  }
+
+  methodDescriptorUpdate = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.ShorterLink/Update',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.ShorterLinkUpdateRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.ShorterLinkUpdateRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  update(
+    request: nut_pb.ShorterLinkUpdateRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  update(
+    request: nut_pb.ShorterLinkUpdateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  update(
+    request: nut_pb.ShorterLinkUpdateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.ShorterLink/Update',
+        request,
+        metadata || {},
+        this.methodDescriptorUpdate,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.ShorterLink/Update',
+    request,
+    metadata || {},
+    this.methodDescriptorUpdate);
+  }
+
+  methodDescriptorDestroy = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.ShorterLink/Destroy',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.IdRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.IdRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  destroy(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  destroy(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  destroy(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.ShorterLink/Destroy',
+        request,
+        metadata || {},
+        this.methodDescriptorDestroy,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.ShorterLink/Destroy',
+    request,
+    metadata || {},
+    this.methodDescriptorDestroy);
+  }
+
+  methodDescriptorIndex = new grpcWeb.MethodDescriptor(
+    '/palm.plugins.nut.v1.ShorterLink/Index',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    nut_pb.ShorterLinkIndexResponse,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    nut_pb.ShorterLinkIndexResponse.deserializeBinary
+  );
+
+  index(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.ShorterLinkIndexResponse>;
+
+  index(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.ShorterLinkIndexResponse) => void): grpcWeb.ClientReadableStream<nut_pb.ShorterLinkIndexResponse>;
+
+  index(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.ShorterLinkIndexResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.plugins.nut.v1.ShorterLink/Index',
+        request,
+        metadata || {},
+        this.methodDescriptorIndex,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.plugins.nut.v1.ShorterLink/Index',
+    request,
+    metadata || {},
+    this.methodDescriptorIndex);
+  }
+
+}
+
 export class TagClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;

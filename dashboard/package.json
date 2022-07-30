@@ -17,7 +17,7 @@
     "@types/react-color": "^3.0.6",
     "@types/react-copy-to-clipboard": "^5.0.4",
     "@types/react-dom": "^18.0.0",
-    "antd": "^4.22.1",
+    "antd": "^4.22.2",
     "dayjs": "^1.11.4",
     "dinero.js": "^2.0.0-alpha.8",
     "emoji-mart": "^5.2.0",

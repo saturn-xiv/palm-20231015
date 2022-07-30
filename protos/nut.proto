@@ -180,7 +180,36 @@ message RbacPermissionForRoleRequest {
   string role = 1;
   RbacGetPermissionsResponse.Item permission = 2;
 }
+// ----------------------------------------------------------------------------
 
+service ShorterLink {
+  rpc Create(ShorterLinkCreateRequest) returns (google.protobuf.Empty) {}
+  rpc Update(ShorterLinkUpdateRequest) returns (google.protobuf.Empty) {}
+  rpc Destroy(IdRequest) returns (google.protobuf.Empty) {}
+  rpc Index(google.protobuf.Empty) returns (ShorterLinkIndexResponse) {}
+}
+
+message ShorterLinkIndexResponse {
+  message Item {
+    int32 id = 1;
+    string url = 2;
+    string details = 3;
+
+    google.protobuf.Timestamp updated_at = 11;
+  }
+  repeated Item items = 1;
+}
+
+message ShorterLinkCreateRequest {
+  string url = 1;
+  string details = 2;
+}
+
+message ShorterLinkUpdateRequest {
+  int32 id = 1;
+  string url = 2;
+  string details = 3;
+}
 // ----------------------------------------------------------------------------
 
 service Tag {

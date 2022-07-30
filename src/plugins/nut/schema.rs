@@ -74,6 +74,17 @@ diesel::table! {
 }
 
 diesel::table! {
+    shorter_links (id) {
+        id -> Int4,
+        url -> Varchar,
+        details -> Text,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     tags (id) {
         id -> Int4,
         lang -> Varchar,
@@ -170,6 +181,7 @@ diesel::allow_tables_to_appear_in_same_query!(
     categories_resources,
     leave_words,
     logs,
+    shorter_links,
     tags,
     tags_resources,
     twilio_sms_logs,
