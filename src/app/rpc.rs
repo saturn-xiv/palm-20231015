@@ -12,7 +12,7 @@ use super::super::{
 };
 
 pub async fn web(cfg: &Config) -> Result<()> {
-    let addr = cfg.rpc.web.addr();
+    let addr = cfg.rpc.web_addr();
     info!("run on http://{addr}");
     let pgsql = cfg.postgresql.open()?;
     let redis = cfg.redis.open()?;
@@ -107,7 +107,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
 }
 
 pub async fn tcp(cfg: &Config) -> Result<()> {
-    let addr = cfg.rpc.addr();
+    let addr = cfg.rpc.tcp_addr();
     info!("run on tcp://{addr}");
     let pgsql = cfg.postgresql.open()?;
     let redis = cfg.redis.open()?;
