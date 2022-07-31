@@ -59,8 +59,6 @@ impl v1::rbac_server::Rbac for Service {
 
         let req = req.into_inner();
         let it = try_grpc!(UserDao::by_id(db, req.id))?;
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
 
         let mut items = Vec::new();
         for it in enf.get_roles_for_user(&it.subject(), None).iter() {
@@ -86,8 +84,7 @@ impl v1::rbac_server::Rbac for Service {
                 v1::RbacGetUsersForRoleResponse,
             >()));
         }
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
+
         let req = req.into_inner();
         let mut items = Vec::new();
         for it in enf.get_users_for_role(&to_role!(req.code), None).iter() {
@@ -116,8 +113,6 @@ impl v1::rbac_server::Rbac for Service {
 
         let req = req.into_inner();
         let it = try_grpc!(UserDao::by_id(db, req.id))?;
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
 
         let items = enf
             .get_permissions_for_user(&it.subject(), None)
@@ -125,6 +120,7 @@ impl v1::rbac_server::Rbac for Service {
             .filter(|x| x.len() == 3)
             .map(|x| v1::rbac_get_permissions_response::Item::new(&x[0], &x[1], &x[2]))
             .collect();
+
         Ok(Response::new(v1::RbacGetPermissionsResponse { items }))
     }
     async fn get_permissions_for_role(
@@ -145,8 +141,6 @@ impl v1::rbac_server::Rbac for Service {
         }
 
         let req = req.into_inner();
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
 
         let items = enf
             .get_permissions_for_user(&to_role!(req.code), None)
@@ -172,8 +166,6 @@ impl v1::rbac_server::Rbac for Service {
         }
 
         let req = req.into_inner();
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
         let it = try_grpc!(UserDao::by_id(db, req.user))?;
         try_grpc!(enf.add_role_for_user(&it.subject(), &req.role, None).await)?;
         Ok(Response::new(()))
@@ -194,8 +186,7 @@ impl v1::rbac_server::Rbac for Service {
         }
 
         let req = req.into_inner();
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
+
         let it = try_grpc!(UserDao::by_id(db, req.user))?;
         if let Some(ref permission) = req.permission {
             try_grpc!(
@@ -224,8 +215,6 @@ impl v1::rbac_server::Rbac for Service {
         }
 
         let req = req.into_inner();
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
 
         if let Some(ref permission) = req.permission {
             try_grpc!(
@@ -256,8 +245,7 @@ impl v1::rbac_server::Rbac for Service {
         }
 
         let req = req.into_inner();
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
+
         let it = try_grpc!(UserDao::by_id(db, req.user))?;
         try_grpc!(
             enf.delete_role_for_user(&it.subject(), &to_role!(req.role), None)
@@ -278,8 +266,7 @@ impl v1::rbac_server::Rbac for Service {
         }
 
         let req = req.into_inner();
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
+
         let it = try_grpc!(UserDao::by_id(db, req.id))?;
         try_grpc!(enf.delete_user(&it.subject()).await)?;
         Ok(Response::new(()))
@@ -297,8 +284,7 @@ impl v1::rbac_server::Rbac for Service {
         }
 
         let req = req.into_inner();
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
+
         try_grpc!(enf.delete_user(&to_code!(req.code)).await)?;
         Ok(Response::new(()))
     }
@@ -321,8 +307,6 @@ impl v1::rbac_server::Rbac for Service {
 
         let req = req.into_inner();
         let it = try_grpc!(UserDao::by_id(db, req.user))?;
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
 
         if let Some(ref permission) = req.permission {
             try_grpc!(
@@ -354,9 +338,6 @@ impl v1::rbac_server::Rbac for Service {
         }
 
         let req = req.into_inner();
-
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
 
         if let Some(ref permission) = req.permission {
             try_grpc!(
