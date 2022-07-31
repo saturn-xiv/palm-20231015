@@ -19,35 +19,34 @@ build_ubuntu_backend() {
     cd $WORKSPACE
     if [ "$1" = "amd64" ]
     then
-        CC=gcc
-        CXX=g++
-        export CC CXX
+        local CC=gcc
+        local CXX=g++
         
         local target="x86_64-unknown-linux-gnu"
         cargo build --target $target --release --features "ubuntu"
         cp target/$target/release/palm $root
     elif [ "$1" = "armhf" ]
     then
-        PKG_CONFIG_ALLOW_CROSS=1
-        PKG_CONFIG_DIR=
-        PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig
-        export PKG_CONFIG_ALLOW_CROSS PKG_CONFIG_DIR PKG_CONFIG_LIBDIR
-        CC=arm-linux-gnueabihf-gcc 
-        CXX=arm-linux-gnueabihf-g++
-        export CC CXX 
+        local PKG_CONFIG_ALLOW_CROSS=1
+        local PKG_CONFIG_DIR=
+        local PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig
+        local CC=arm-linux-gnueabihf-gcc
+        local CXX=arm-linux-gnueabihf-g++
+        local HOST_CC=gcc
 
         local target="armv7-unknown-linux-gnueabihf"
         cargo build --target $target --release --features "ubuntu"
         cp target/$target/release/palm $root
     elif [ "$1" = "arm64" ]
     then
-        PKG_CONFIG_ALLOW_CROSS=1
-        PKG_CONFIG_DIR=
-        PKG_CONFIG_LIBDIR=/usr/lib/aarch64-linux-gnu/pkgconfig
-        export PKG_CONFIG_ALLOW_CROSS PKG_CONFIG_DIR PKG_CONFIG_LIBDIR
-        CC=aarch64-linux-gnu-gcc 
-        CXX=aarch64-linux-gnu-g++ 
-        export CC CXX
+        local PKG_CONFIG_ALLOW_CROSS=1
+        local PKG_CONFIG_DIR=
+        local PKG_CONFIG_LIBDIR=/usr/lib/aarch64-linux-gnu/pkgconfig
+        
+        local CC=aarch64-linux-gnu-gcc 
+        local CXX=aarch64-linux-gnu-g++ 
+        
+        local HOST_CC=gcc        
 
         local target="aarch64-unknown-linux-gnu"
         cargo build --target $target --release --features "ubuntu"
