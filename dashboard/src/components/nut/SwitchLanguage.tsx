@@ -1,10 +1,12 @@
 import { Card, Button, Popconfirm, List } from "antd";
 import { useIntl, FormattedMessage } from "react-intl";
+import { useNavigate } from "react-router-dom";
 
 import { set as setLocale, LANGUAGES } from "../../locales";
 
 const Widget = () => {
   const intl = useIntl();
+  const navigate = useNavigate();
   return (
     <Card>
       <List
@@ -20,6 +22,7 @@ const Widget = () => {
                 { lang: intl.formatMessage({ id: `languages.${it}` }) }
               )}
               onConfirm={() => {
+                navigate("/");
                 setLocale(it, true);
               }}
             >
