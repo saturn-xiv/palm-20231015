@@ -27,7 +27,7 @@ fn main() {
                 .arg("--first-parent")
                 .arg("--dirty"),
         );
-        let build_time = shell(Command::new("date").arg("-u").arg("-R"));
+        let build_time = shell(Command::new("date").arg("-R"));
 
         let dest_path = Path::new(&out_dir).join("env.rs");
         let mut fd = File::create(&dest_path).unwrap();
