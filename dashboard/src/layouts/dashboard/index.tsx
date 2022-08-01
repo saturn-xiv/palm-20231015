@@ -60,15 +60,6 @@ const Widget = () => {
         },
       }}
       selectedKeys={selectedKey ? [selectedKey] : []}
-      // TODO
-      // openKeys={sideBar.openKeys}
-
-      // onOpenChange={(keys) => {
-      //   console.log(keys, sideBar);
-      //   if (keys) {
-      //     openSideBar(keys);
-      //   }
-      // }}
     >
       <PageContainer
         title={title}
