@@ -7,8 +7,8 @@ import { UserSignInResponse, UserQueryRequest } from "../protocols/nut_pb";
 export const ROLE_ROOT = "root";
 export const ROLE_ADMINISTRATOR = "administrator";
 
-export const TO_SIGN_IN = "/users/sign-in";
-export const TO_PROFILE = "/users/profile";
+export const TO_SIGN_IN = "/anonymous/users/sign-in";
+export const TO_PROFILE = "/dashboard/users/logs";
 
 const KEY = "token";
 export const DURATION = 60 * 60 * 24;

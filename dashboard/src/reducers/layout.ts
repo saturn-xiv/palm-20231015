@@ -20,6 +20,7 @@ export interface ISite {
 
 interface IState {
   site?: ISite;
+  title?: string;
 }
 
 export const to_site = (response: SiteLayoutResponse): ISite | undefined => {
@@ -50,14 +51,20 @@ export const slice = createSlice({
     refresh: (state, action: PayloadAction<ISite>) => {
       state.site = action.payload;
     },
+    setTitle: (state, action: PayloadAction<string>) => {
+      state.title = action.payload;
+    },
   },
 });
 
-export const { refresh } = slice.actions;
+export const { refresh, setTitle } = slice.actions;
 
 export const layout = (state: RootState): IState => state.layout;
 
 export const siteInfo = (state: RootState): ISite | undefined =>
   state.layout.site;
+
+export const pageTitle = (state: RootState): string | undefined =>
+  state.layout.title;
 
 export default slice.reducer;

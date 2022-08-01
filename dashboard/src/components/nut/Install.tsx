@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { message } from "antd";
 import { ProForm, ProFormText } from "@ant-design/pro-components";
 import { useIntl } from "react-intl";
@@ -12,10 +13,18 @@ import { IFormData } from "./users/SignUp";
 import { TO_SIGN_IN } from "../../reducers/current-user";
 import { guess_timezone } from "../date";
 import { get as getLocale } from "../../locales";
+import { setTitle } from "../../reducers/layout";
+import { useAppDispatch } from "../../hooks";
 
 const Widget = () => {
   const intl = useIntl();
   const navigate = useNavigate();
+
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(setTitle(intl.formatMessage({ id: "nut.install.title" })));
+  }, [dispatch, intl]);
+
   return (
     <ProForm<IFormData>
       onFinish={async (values: IFormData) => {

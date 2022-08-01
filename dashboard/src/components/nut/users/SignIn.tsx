@@ -17,6 +17,7 @@ import { UserSignInRequest } from "../../../protocols/nut_pb";
 import { UserClient } from "../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../request";
 import { signIn } from "../../../reducers/current-user";
+import { setTitle } from "../../../reducers/layout";
 import { useAppSelector, useAppDispatch } from "../../../hooks";
 
 interface IFormData {
@@ -34,7 +35,8 @@ const Widget = () => {
     if (user) {
       navigate(TO_PROFILE);
     }
-  }, [user, navigate]);
+    dispatch(setTitle(intl.formatMessage({ id: "nut.users.sign-in.title" })));
+  }, [user, dispatch, intl, navigate]);
 
   const formRef = useRef<ProFormInstance>();
   return (

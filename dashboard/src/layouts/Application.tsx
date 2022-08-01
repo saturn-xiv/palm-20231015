@@ -1,30 +1,31 @@
 import { ReactNode } from "react";
 import {
-  DefaultFooter,
   ProLayout,
+  DefaultFooter,
   PageContainer,
 } from "@ant-design/pro-components";
 import { Row, Col } from "antd";
 
-import { Home, Dashboard, Github, SwitchLanguage } from "../footer";
-import palm_tree from "../../assets/palm-tree.svg";
-import Header from "../Header";
-import { useAppSelector } from "../../hooks";
-import { siteInfo } from "../../reducers/layout";
+import palm_tree from "../assets/palm-tree.svg";
+import { useAppSelector } from "../hooks";
+import { siteInfo, pageTitle } from "../reducers/layout";
+import Header from "./Header";
+import { Home, Dashboard, Github, SwitchLanguage } from "./footer";
 
-export interface IProps {
-  title: string;
+interface IProps {
   children: ReactNode;
 }
 
-const Widget = ({ title, children }: IProps) => {
+const Widget = (props: IProps) => {
   const site = useAppSelector(siteInfo);
+  const title = useAppSelector(pageTitle);
   return (
     <ProLayout
       title={site?.subhead}
       layout="top"
       contentWidth="Fluid"
       logo={site?.logo || palm_tree}
+      fixedHeader
       footerRender={() => (
         <DefaultFooter
           copyright={`${site?.copyright}`}
@@ -52,13 +53,12 @@ const Widget = ({ title, children }: IProps) => {
           ]}
         />
       )}
-      fixedHeader
     >
       <PageContainer title={title} content={<div />}>
-        <Row>{children}</Row>
+        <Row>{props.children}</Row>
         <Row>
           <Col>
-            <Header title={title} />
+            <Header />
           </Col>
         </Row>
       </PageContainer>

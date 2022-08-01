@@ -1,4 +1,5 @@
-import { IMenu } from ".";
+import type { MenuDataItem } from "@ant-design/pro-components";
 
-const items: IMenu[] = [];
+const items: MenuDataItem[] = [];
+
 export default items;

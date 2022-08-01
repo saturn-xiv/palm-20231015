@@ -1,16 +1,25 @@
+import { useEffect } from "react";
 import { useIntl, FormattedMessage } from "react-intl";
-import { Card, Button, Col } from "antd";
 import { useNavigate } from "react-router-dom";
+import { Card, Button, Col } from "antd";
 
-import Layout from "./layouts/application";
-import broken_link from "./assets/broken-link.svg";
+import broken_link from "../../assets/broken-link.svg";
+import { setTitle } from "../../reducers/layout";
+import { useAppDispatch } from "../../hooks";
+import Layout from "../../layouts/Application";
 
 const Widget = () => {
   const intl = useIntl();
   const navigate = useNavigate();
   const title = intl.formatMessage({ id: "nut.404.title" });
+
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(setTitle(title));
+  }, [dispatch, intl, title]);
+
   return (
-    <Layout title={title}>
+    <Layout>
       <Col sm={{ span: 22, offset: 1 }} md={{ span: 8, offset: 8 }}>
         <Card
           title={title}
@@ -34,7 +43,7 @@ const Widget = () => {
               </Button>
             </>
           }
-          cover={<img alt="not found" src={broken_link} />}
+          cover={<img alt={title} src={broken_link} />}
         />
       </Col>
     </Layout>

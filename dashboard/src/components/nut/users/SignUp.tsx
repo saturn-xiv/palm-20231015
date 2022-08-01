@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { message } from "antd";
 import { ProForm, ProFormText } from "@ant-design/pro-components";
 import { useIntl } from "react-intl";
@@ -16,6 +17,8 @@ import { GRPC_HOST, grpc_metadata } from "../../../request";
 import { TO_SIGN_IN } from "../../../reducers/current-user";
 import { guess_timezone } from "../../../components/date";
 import { get as getLocale } from "../../../locales";
+import { setTitle } from "../../../reducers/layout";
+import { useAppDispatch } from "../../../hooks";
 
 export interface IFormData {
   email: string;
@@ -26,8 +29,12 @@ export interface IFormData {
 }
 
 const Widget = () => {
-  const intl = useIntl();
   const navigate = useNavigate();
+  const intl = useIntl();
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(setTitle(intl.formatMessage({ id: "nut.users.sign-up.title" })));
+  }, [dispatch, intl]);
   return (
     <ProForm<IFormData>
       onFinish={async (values: IFormData) => {

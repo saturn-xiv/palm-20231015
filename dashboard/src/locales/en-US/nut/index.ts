@@ -1,5 +1,4 @@
 import users from "./users";
-import menus from "./menus";
 import admin from "./admin";
 
 const items = {
@@ -8,12 +7,11 @@ const items = {
   "nut.install.title": "Install",
   "nut.leave-words.new.title": "Leave us a message",
   "nut.404.title": "Not found",
-  "nut.attachments.title": "Attachments",
+  "nut.attachments.index.title": "Attachments",
   "nut.attachments.show.title": "Share {name}",
   "nut.attachments.show.due.invalid": "Must be less than a week",
   ...users,
   ...admin,
-  ...menus,
 };
 
 export default items;

@@ -1,14 +1,11 @@
 import { useEffect } from "react";
 
 import { useAppSelector } from "../hooks";
-import { siteInfo } from "../reducers/layout";
+import { siteInfo, pageTitle } from "../reducers/layout";
 
-interface IProps {
-  title: string;
-}
-
-const Widget = ({ title }: IProps) => {
+const Widget = () => {
   const site = useAppSelector(siteInfo);
+  const title = useAppSelector(pageTitle);
 
   useEffect(() => {
     document.title = `${title} | ${site?.subhead} | ${site?.title}`;

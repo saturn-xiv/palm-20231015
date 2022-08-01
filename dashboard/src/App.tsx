@@ -1,7 +1,7 @@
-import { Suspense, lazy } from "react";
+import { Suspense } from "react";
 import { IntlProvider } from "react-intl";
 import { Provider } from "react-redux";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { ConfigProvider } from "antd";
 import { ConfigProviderWrap } from "@ant-design/pro-provider";
 
@@ -12,9 +12,8 @@ import locales, {
 import { switch_lang as switch_dayjs_lang } from "./components/date";
 import store from "./store";
 import onLoad from "./load";
-import pages from "./pages";
-import Loading from "./Loading";
-import NotFound from "./NotFound";
+import Loading from "./components/Loading";
+import Router from "./Router";
 
 import "./App.css";
 
@@ -24,6 +23,7 @@ const i18n = locales(lang);
 switch_dayjs_lang(lang);
 
 const Widget = () => {
+  // FIXME intl for pro-form...
   return (
     <Provider store={store}>
       <IntlProvider
@@ -33,18 +33,11 @@ const Widget = () => {
       >
         <ConfigProvider locale={i18n.antd}>
           <ConfigProviderWrap>
-            <Router basename={process.env.PUBLIC_URL}>
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
               <Suspense fallback={<Loading />}>
-                <Routes>
-                  {pages.map((x, i) => {
-                    const Widget = lazy(x.component);
-                    return <Route key={i} path={x.path} element={<Widget />} />;
-                  })}
-
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
+                <Router />
               </Suspense>
-            </Router>
+            </BrowserRouter>
           </ConfigProviderWrap>
         </ConfigProvider>
       </IntlProvider>

@@ -3,13 +3,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 
 interface IState {
-  openKeys: string[];
   selectedKey?: string;
 }
 
-const initialState: IState = {
-  openKeys: [],
-};
+const initialState: IState = {};
 
 export const slice = createSlice({
   name: "side-bar",
@@ -23,6 +20,7 @@ export const slice = createSlice({
 
 export const { select } = slice.actions;
 
-export const sideBar = (state: RootState): IState => state.sideBar;
+export const selectedKey = (state: RootState): string | undefined =>
+  state.sideBar.selectedKey;
 
 export default slice.reducer;
