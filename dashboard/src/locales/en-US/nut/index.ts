@@ -7,6 +7,7 @@ const items = {
   "nut.install.title": "Install",
   "nut.leave-words.new.title": "Leave us a message",
   "nut.404.title": "Not found",
+  "nut.loading.title": "Loading",
   "nut.attachments.index.title": "Attachments",
   "nut.attachments.show.title": "Share {name}",
   "nut.attachments.show.due.invalid": "Must be less than a week",
