@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 
 import Anonymous from "./layouts/Anonymous";
 import Dashboard from "./layouts/dashboard";
+import NutLoading from "./components/nut/Loading";
 
 const NutHome = lazy(() => import("./components/nut/Home"));
 const NutInstall = lazy(() => import("./components/nut/Install"));
@@ -87,6 +88,7 @@ const Widget = () => {
       </Route>
 
       <Route path="switch-language" element={<NutSwitchLanguage />} />
+      <Route path="loading" element={<NutLoading />} />
       <Route path="" element={<NutHome />} />
       <Route path="*" element={<NutNotFound />} />
     </Routes>

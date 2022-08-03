@@ -12,7 +12,7 @@ import locales, {
 import { switch_lang as switch_dayjs_lang } from "./components/date";
 import store from "./store";
 import onLoad from "./load";
-import Loading from "./components/Loading";
+import Loading from "./components/nut/Loading";
 import Router from "./Router";
 
 import "./App.css";
