@@ -50,10 +50,13 @@ impl v1::rbac_get_roles_response::Item {
                 name: I18n::t(db, lang, format!("roles.{}", code), &None::<String>),
                 code: code.to_string(),
             }),
-            None => Err(Box::new(HttpError(
-                StatusCode::BAD_REQUEST,
-                Some(code.to_string()),
-            ))),
+            None => {
+                warn!("unknown role {}", code);
+                Err(Box::new(HttpError(
+                    StatusCode::BAD_REQUEST,
+                    Some(code.to_string()),
+                )))
+            }
         }
     }
 }
@@ -68,10 +71,13 @@ impl v1::rbac_get_users_response::Item {
                     real_name: user.real_name,
                 })
             }
-            None => Err(Box::new(HttpError(
-                StatusCode::BAD_REQUEST,
-                Some(code.to_string()),
-            ))),
+            None => {
+                warn!("unknown user {}", code);
+                Err(Box::new(HttpError(
+                    StatusCode::BAD_REQUEST,
+                    Some(code.to_string()),
+                )))
+            }
         }
     }
 }
@@ -259,6 +265,12 @@ impl v1::rbac_server::Rbac for Service {
         }
 
         let req = req.into_inner();
+        if req.role == User::ROOT {
+            return Err(Status::invalid_argument(format!(
+                "not allow to bind to {}",
+                User::ROOT
+            )));
+        }
         let it = try_grpc!(UserDao::by_id(db, req.user))?;
         try_grpc!(
             enf.add_role_for_user(&it.subject(), &to_role!(req.role), None)
@@ -313,6 +325,7 @@ impl v1::rbac_server::Rbac for Service {
         let req = req.into_inner();
 
         if let Some(ref permission) = req.permission {
+            debug!("{:?}", req);
             try_grpc!(
                 enf.add_permission_for_user(
                     &to_role!(req.role),

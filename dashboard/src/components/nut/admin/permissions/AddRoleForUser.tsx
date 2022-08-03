@@ -1,21 +1,25 @@
 import { useRef } from "react";
 import { message, Button } from "antd";
-import { ProForm, ModalForm, ProFormSelect } from "@ant-design/pro-components";
+import {
+  ProForm,
+  ModalForm,
+  ProFormSelect,
+  ProFormText,
+} from "@ant-design/pro-components";
 import type { ProFormInstance } from "@ant-design/pro-components";
 import { FormattedMessage, useIntl } from "react-intl";
 
-import {
-  IRoleOption,
-  IUserOption,
-  ROLE_ROOT,
-} from "../../../../reducers/current-user";
+import { IUserOption } from "../../../../reducers/current-user";
 import { RbacClient } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
 import { RbacRoleForUserRequest } from "../../../../protocols/nut_pb";
+import { RULE_CODE } from "../../../forms";
+import { useAppSelector } from "../../../../hooks";
+import { currentUser } from "../../../../reducers/current-user";
 
 interface IProps {
-  roles: IRoleOption[];
   users: IUserOption[];
+  handleRefresh: () => void;
 }
 
 interface IFormData {
@@ -23,9 +27,10 @@ interface IFormData {
   role: string;
 }
 
-const Widget = ({ users, roles }: IProps) => {
+const Widget = ({ users, handleRefresh }: IProps) => {
   const formRef = useRef<ProFormInstance>();
   const intl = useIntl();
+  const current_user = useAppSelector(currentUser);
   return (
     <ModalForm<IFormData>
       name="add-role-for-user"
@@ -45,6 +50,7 @@ const Widget = ({ users, roles }: IProps) => {
             message.success(
               intl.formatMessage({ id: "form.submit.successed" })
             );
+            handleRefresh();
           }
         });
       }}
@@ -58,25 +64,25 @@ const Widget = ({ users, roles }: IProps) => {
         <ProFormSelect
           width="md"
           name="user"
-          options={users.map((x) => ({
-            value: x.id,
-            label: `${x.nickName}(${x.realName})`,
-          }))}
+          options={users
+            .filter((x) => x.id !== current_user?.id)
+            .map((x) => ({
+              value: x.id,
+              label: `${x.nickName}(${x.realName})`,
+            }))}
           label={intl.formatMessage({ id: "form.fields.user.label" })}
           rules={[{ required: true }]}
         />
-        <ProFormSelect
-          width="md"
-          name="role"
-          options={roles
-            .filter((x) => x.code !== ROLE_ROOT)
-            .map((x) => ({
-              value: x.code,
-              label: x.name,
-            }))}
-          label={intl.formatMessage({ id: "form.fields.role.label" })}
-          rules={[{ required: true }]}
-        />
+      </ProForm.Group>
+      <ProForm.Group>
+        <ProForm.Group>
+          <ProFormText
+            width="md"
+            name="role"
+            label={intl.formatMessage({ id: "form.fields.role.label" })}
+            rules={[RULE_CODE]}
+          />
+        </ProForm.Group>
       </ProForm.Group>
     </ModalForm>
   );

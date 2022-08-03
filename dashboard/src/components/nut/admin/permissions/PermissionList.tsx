@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, ReactNode } from "react";
 import { Table, Modal, Tooltip, Button } from "antd";
 import { UnorderedListOutlined } from "@ant-design/icons";
 import { useIntl } from "react-intl";
@@ -9,31 +9,36 @@ import { RbacGetPermissionsResponse } from "../../../../protocols/nut_pb";
 interface IProps {
   onRefresh: () => Promise<RbacGetPermissionsResponse>;
   title: string;
+  destroy: (permission: IPermission, refresh: () => void) => ReactNode;
 }
 
-const Widget = ({ title, onRefresh }: IProps) => {
+const Widget = ({ title, onRefresh, destroy }: IProps) => {
   const [items, setItems] = useState<IPermission[]>([]);
   const [show, setShow] = useState<boolean>(false);
   const intl = useIntl();
 
+  const handleRefresh = useCallback(() => {
+    onRefresh().then((response) => {
+      setItems(
+        response.getItemsList().map((x) => {
+          var it: IPermission = {
+            operation: x.getOperation(),
+            resourceType: x.getResourceType(),
+          };
+          if (x.hasResourceId()) {
+            it.resourceId = x.getResourceId();
+          }
+          return it;
+        })
+      );
+    });
+  }, [onRefresh, setItems]);
+
   useEffect(() => {
     if (show) {
-      onRefresh().then((response) => {
-        setItems(
-          response.getItemsList().map((x) => {
-            var it: IPermission = {
-              operation: x.getOperation(),
-              resourceType: x.getResourceType(),
-            };
-            if (x.hasResourceId()) {
-              it.resourceId = x.getResourceId();
-            }
-            return it;
-          })
-        );
-      });
+      handleRefresh();
     }
-  }, [setItems, onRefresh, show]);
+  }, [handleRefresh, show]);
 
   const handleClose = () => {
     setShow(false);
@@ -71,6 +76,11 @@ const Widget = ({ title, onRefresh }: IProps) => {
               title: intl.formatMessage({
                 id: "form.fields.resource.id.label",
               }),
+            },
+            {
+              key: "manage",
+              title: "",
+              render: (it) => destroy(it, handleRefresh),
             },
           ]}
           dataSource={items}

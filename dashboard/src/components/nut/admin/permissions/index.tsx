@@ -11,6 +11,8 @@ import { IRoleOption, IUserOption } from "../../../../reducers/current-user";
 import { RbacClient } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
 import AddRoleForUser from "./AddRoleForUser";
+import AddPermissionForUser from "./AddPermissionForUser";
+import AddPermissionForRole from "./AddPermissionForRole";
 
 const Widget = () => {
   const intl = useIntl();
@@ -54,7 +56,9 @@ const Widget = () => {
   return (
     <>
       <Col span={24}>
-        <AddRoleForUser roles={roles} users={users} />
+        <AddRoleForUser handleRefresh={handleRefresh} users={users} />
+        <AddPermissionForRole roles={roles} />
+        <AddPermissionForUser users={users} />
       </Col>
       <Col span={24}>
         <Tabs defaultActiveKey="roles">

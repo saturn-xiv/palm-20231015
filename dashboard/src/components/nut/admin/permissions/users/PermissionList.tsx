@@ -7,7 +7,8 @@ import {
   RbacGetPermissionsResponse,
   RbacUserRequest,
 } from "../../../../../protocols/nut_pb";
-import PermissionList from "../List";
+import PermissionList from "../PermissionList";
+import DestroyButton from "../DeletePermissionForUser";
 
 interface IProps {
   user: IUserOption;
@@ -28,7 +29,15 @@ const Widget = ({ user }: IProps) => {
     return client.getPermissionsForUser(request, grpc_metadata());
   };
 
-  return <PermissionList title={title} onRefresh={load} />;
+  return (
+    <PermissionList
+      title={title}
+      onRefresh={load}
+      destroy={(it, hnd) => (
+        <DestroyButton handleRefresh={hnd} permission={it} user={user} />
+      )}
+    />
+  );
 };
 
 export default Widget;

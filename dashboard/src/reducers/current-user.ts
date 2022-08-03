@@ -48,6 +48,12 @@ export interface IRoleOption {
   name: string;
 }
 
+export const user_option_to_string = (it: IUserOption): string =>
+  `${it.nickName}(${it.realName})`;
+
+export const permission2string = (it: IPermission): string =>
+  `${it.resourceType}://${it.resourceId ? it.resourceId : "*"}/${it.operation}`;
+
 export interface IUserOption {
   id: number;
   nickName: string;

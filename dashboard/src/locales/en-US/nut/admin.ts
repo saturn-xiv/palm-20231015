@@ -48,6 +48,12 @@ const items = {
     "Permissions for user {name}",
   "nut.admin.permissions.users.index.roles": "Roles for role {name}",
   "nut.admin.permissions.add-role-for-user": "Add role for user",
+  "nut.admin.permissions.add-permission-for-role": "Add permission for role",
+  "nut.admin.permissions.delete-permission-for-role":
+    "Delete permission {permission} for role {role}",
+  "nut.admin.permissions.add-permission-for-user": "Add permission for user",
+  "nut.admin.permissions.delete-permission-for-user":
+    "Add permission {permission} for user {user}",
   "nut.admin.permissions.delete-role-for-user":
     "Delete role({role}) for user({user})",
 };
