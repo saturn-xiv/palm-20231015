@@ -38,6 +38,15 @@ const items = {
   "nut.admin.site.rss.title": "Rss",
   "nut.admin.site.sitemap.title": "Sitemap",
   "nut.admin.site.aws.s3-buckets": "S3 buckets",
+  "nut.admin.permissions.index.title": "Permissions",
+  "nut.admin.permissions.roles.index.title": "Roles",
+  "nut.admin.permissions.roles.index.permissions":
+    "Permissions for role {name}",
+  "nut.admin.permissions.roles.index.users": "Users for role {name}",
+  "nut.admin.permissions.users.index.title": "Users",
+  "nut.admin.permissions.users.index.permissions":
+    "Permissions for user {name}",
+  "nut.admin.permissions.users.index.roles": "Roles for role {name}",
 };
 
 export default items;

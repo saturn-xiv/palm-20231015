@@ -43,15 +43,47 @@ export const OPERATION_CREATE = "create";
 export const OPERATION_UPDATE = "update";
 export const OPERATION_REMOVE = "remove";
 
+export interface IRoleOption {
+  code: string;
+  name: string;
+}
+
+export interface IUserOption {
+  id: number;
+  nickName: string;
+  realName: string;
+}
+
+export interface IUserDetails {
+  id: number;
+  email: string;
+  nickName: string;
+  realName: string;
+  lang: string;
+  uid: string;
+  timeZone: string;
+  avatar: string;
+  signInCount: number;
+  currentSignInAt?: Date;
+  currentSignInIp?: string;
+  lastSignInAt?: Date;
+  lastSignInIp?: string;
+  lockedAt?: Date;
+  confirmedAt?: Date;
+  deletedAt?: Date;
+  updatedAt: Date;
+}
+
 export interface IPermission {
   operation: string;
   resourceType: string;
-  resourceId: number;
+  resourceId?: number;
 }
 
 export interface IUser {
   id: number;
   uid: string;
+  nickName: string;
   realName: string;
   avatar: string;
   permissions: IPermission[];
@@ -67,6 +99,7 @@ export const to_user = (response: UserSignInResponse): IUser | undefined => {
   return {
     uid: decoded.aud,
     id: payload.getId(),
+    nickName: payload.getNickName(),
     realName: payload.getRealName(),
     avatar: payload.getAvatar(),
     permissions: response.getPermissionsList().map((x) => ({

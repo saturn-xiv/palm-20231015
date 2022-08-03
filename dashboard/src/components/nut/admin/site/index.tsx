@@ -42,6 +42,7 @@ const Widget = () => {
   useEffect(() => {
     dispatch(setTitle(intl.formatMessage({ id: "nut.users.sign-up.title" })));
     const client = new SiteClient(GRPC_HOST);
+
     client.layout(new Empty(), grpc_metadata(), (err, response) => {
       if (err) {
         message.error(err.message);

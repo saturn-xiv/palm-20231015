@@ -35,6 +35,8 @@ const items = {
   "form.fields.roles.label": "Roles",
   "form.fields.operation.label": "Operation",
   "form.fields.resource.label": "Resource",
+  "form.fields.resource.id.label": "Resource ID",
+  "form.fields.resource.type.label": "Resource type",
   "form.fields.validate-date-range.label": "Validate date range",
   "form.fields.type.label": "Type",
   "form.fields.user.label": "User",

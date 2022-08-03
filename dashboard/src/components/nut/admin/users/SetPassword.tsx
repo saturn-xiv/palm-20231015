@@ -8,11 +8,11 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { SiteClient } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
 import { SiteSetUserPasswordRequest } from "../../../../protocols/nut_pb";
-import { IItem } from ".";
 import { RULE_PASSWORD } from "../../../forms";
+import { IUserDetails } from "../../../../reducers/current-user";
 
 interface IProps {
-  item: IItem;
+  item: IUserDetails;
   handleRefresh: () => void;
 }
 

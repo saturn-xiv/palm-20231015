@@ -14,29 +14,9 @@ import LockUser from "./Lock";
 import EnableUser from "./Enable";
 import ConfirmUser from "./Confirm";
 import SetUserPassword from "./SetPassword";
-import { currentUser } from "../../../../reducers/current-user";
+import { currentUser, IUserDetails } from "../../../../reducers/current-user";
 import { setTitle } from "../../../../reducers/layout";
 import { useAppDispatch } from "../../../../hooks";
-
-export interface IItem {
-  id: number;
-  email: string;
-  nickName: string;
-  realName: string;
-  lang: string;
-  uid: string;
-  timeZone: string;
-  avatar: string;
-  signInCount: number;
-  currentSignInAt?: Date;
-  currentSignInIp?: string;
-  lastSignInAt?: Date;
-  lastSignInIp?: string;
-  lockedAt?: Date;
-  confirmedAt?: Date;
-  deletedAt?: Date;
-  updatedAt: Date;
-}
 
 const Widget = () => {
   const user = useAppSelector(currentUser);
@@ -50,7 +30,7 @@ const Widget = () => {
   }, [dispatch, intl]);
   return (
     <Col span={22} offset={1}>
-      <ProTable<IItem>
+      <ProTable<IUserDetails>
         search={false}
         actionRef={ref}
         columns={[
@@ -153,7 +133,7 @@ const Widget = () => {
             total: response.getPagination()?.getTotal(),
             success: true,
             data: response.getItemsList().map((x) => {
-              var it: IItem = {
+              var it: IUserDetails = {
                 id: x.getId(),
                 lang: x.getLang(),
                 email: x.getEmail(),

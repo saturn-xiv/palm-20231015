@@ -44,6 +44,9 @@ const NutAdminLeaveWords = lazy(
 const NutAdminUsers = lazy(() => import("./components/nut/admin/users"));
 const NutAdminLocales = lazy(() => import("./components/nut/admin/locales"));
 const NutAdminSite = lazy(() => import("./components/nut/admin/site"));
+const NutAdminPermissions = lazy(
+  () => import("./components/nut/admin/permissions")
+);
 
 const Widget = () => {
   return (
@@ -82,8 +85,9 @@ const Widget = () => {
         <Route path="admin">
           <Route path="leave-words" element={<NutAdminLeaveWords />} />
           <Route path="locales" element={<NutAdminLocales />} />
-          <Route path="users" element={<NutAdminUsers />} />
           <Route path="site" element={<NutAdminSite />} />
+          <Route path="users" element={<NutAdminUsers />} />
+          <Route path="permissions" element={<NutAdminPermissions />} />
         </Route>
       </Route>
 

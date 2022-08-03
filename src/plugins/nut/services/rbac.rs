@@ -97,8 +97,9 @@ impl v1::rbac_server::Rbac for Service {
         let mut items = Vec::new();
 
         for it in enf.get_all_roles().iter() {
-            let it = try_grpc!(v1::rbac_get_roles_response::Item::new(db, &lang, it))?;
-            items.push(it);
+            if let Ok(it) = v1::rbac_get_roles_response::Item::new(db, &lang, it) {
+                items.push(it);
+            }
         }
 
         Ok(Response::new(v1::RbacGetRolesResponse { items }))
@@ -153,8 +154,9 @@ impl v1::rbac_server::Rbac for Service {
         let mut items = Vec::new();
 
         for it in enf.get_roles_for_user(&it.subject(), None).iter() {
-            let it = try_grpc!(v1::rbac_get_roles_response::Item::new(db, &lang, it))?;
-            items.push(it);
+            if let Ok(it) = v1::rbac_get_roles_response::Item::new(db, &lang, it) {
+                items.push(it);
+            }
         }
         Ok(Response::new(v1::RbacGetRolesResponse { items }))
     }
@@ -179,8 +181,9 @@ impl v1::rbac_server::Rbac for Service {
         let mut items = Vec::new();
 
         for it in enf.get_users_for_role(&to_role!(req.code), None).iter() {
-            let it = try_grpc!(v1::rbac_get_users_response::Item::new(db, it))?;
-            items.push(it);
+            if let Ok(it) = v1::rbac_get_users_response::Item::new(db, it) {
+                items.push(it);
+            }
         }
         Ok(Response::new(v1::RbacGetUsersResponse { items }))
     }

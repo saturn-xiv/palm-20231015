@@ -14,7 +14,7 @@ const Widget = () => {
   useEffect(() => {
     dispatch(setTitle(title));
   }, [dispatch, title]);
-  //  style={{ margin: "auto", textAlign: "center" }}
+
   return (
     <>
       <div>

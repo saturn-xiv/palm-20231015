@@ -6,10 +6,10 @@ import { RpcError } from "grpc-web";
 import { IdRequest } from "../../../../protocols/nut_pb";
 import { SiteClient } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
-import { IItem } from ".";
+import { IUserDetails } from "../../../../reducers/current-user";
 
 interface IProps {
-  item: IItem;
+  item: IUserDetails;
   handleRefresh: () => void;
 }
 

@@ -25,10 +25,11 @@ const items: MenuDataItem[] = [
     name: "nut.admin.index.title",
     icon: <SettingOutlined />,
     routes: [
-      { path: "leave-words", name: "nut.admin.leave-words.index.title" },
       { path: "locales", name: "nut.admin.locales.index.title" },
-      { path: "users", name: "nut.admin.users.index.title" },
+      { path: "leave-words", name: "nut.admin.leave-words.index.title" },
       { path: "site", name: "nut.admin.site.index.title" },
+      { path: "users", name: "nut.admin.users.index.title" },
+      { path: "permissions", name: "nut.admin.permissions.index.title" },
     ],
   },
 ];
