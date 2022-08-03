@@ -47,6 +47,9 @@ const items = {
   "nut.admin.permissions.users.index.permissions":
     "Permissions for user {name}",
   "nut.admin.permissions.users.index.roles": "Roles for role {name}",
+  "nut.admin.permissions.add-role-for-user": "Add role for user",
+  "nut.admin.permissions.delete-role-for-user":
+    "Delete role({role}) for user({user})",
 };
 
 export default items;

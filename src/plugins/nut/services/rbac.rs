@@ -260,7 +260,10 @@ impl v1::rbac_server::Rbac for Service {
 
         let req = req.into_inner();
         let it = try_grpc!(UserDao::by_id(db, req.user))?;
-        try_grpc!(enf.add_role_for_user(&it.subject(), &req.role, None).await)?;
+        try_grpc!(
+            enf.add_role_for_user(&it.subject(), &to_role!(req.role), None)
+                .await
+        )?;
         Ok(Response::new(()))
     }
     async fn add_permission_for_user(

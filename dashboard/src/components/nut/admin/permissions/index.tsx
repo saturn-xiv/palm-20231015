@@ -10,6 +10,7 @@ import UsersIndex from "./users";
 import { IRoleOption, IUserOption } from "../../../../reducers/current-user";
 import { RbacClient } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
+import AddRoleForUser from "./AddRoleForUser";
 
 const Widget = () => {
   const intl = useIntl();
@@ -51,26 +52,31 @@ const Widget = () => {
     handleRefresh();
   }, [dispatch, intl, handleRefresh]);
   return (
-    <Col span={24}>
-      <Tabs defaultActiveKey="roles">
-        <Tabs.TabPane
-          key="roles"
-          tab={
-            <FormattedMessage id="nut.admin.permissions.roles.index.title" />
-          }
-        >
-          <RolesIndex roles={roles} onRefresh={handleRefresh} />
-        </Tabs.TabPane>
-        <Tabs.TabPane
-          key="users"
-          tab={
-            <FormattedMessage id="nut.admin.permissions.users.index.title" />
-          }
-        >
-          <UsersIndex users={users} />
-        </Tabs.TabPane>
-      </Tabs>
-    </Col>
+    <>
+      <Col span={24}>
+        <AddRoleForUser roles={roles} users={users} />
+      </Col>
+      <Col span={24}>
+        <Tabs defaultActiveKey="roles">
+          <Tabs.TabPane
+            key="roles"
+            tab={
+              <FormattedMessage id="nut.admin.permissions.roles.index.title" />
+            }
+          >
+            <RolesIndex roles={roles} onRefresh={handleRefresh} />
+          </Tabs.TabPane>
+          <Tabs.TabPane
+            key="users"
+            tab={
+              <FormattedMessage id="nut.admin.permissions.users.index.title" />
+            }
+          >
+            <UsersIndex users={users} />
+          </Tabs.TabPane>
+        </Tabs>
+      </Col>
+    </>
   );
 };
 
