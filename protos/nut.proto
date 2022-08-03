@@ -131,8 +131,10 @@ message UserGetProfileResponse {
 // ----------------------------------------------------------------------------
 
 service Rbac {
-  rpc GetRolesForUser(RbacUserRequest) returns (RbacGetRolesForUserResponse) {}
-  rpc GetUsersForRole(RbacRoleRequest) returns (RbacGetUsersForRoleResponse) {}
+  rpc GetAllRoles(google.protobuf.Empty) returns (RbacGetRolesResponse) {}
+  rpc GetAllUsers(google.protobuf.Empty) returns (RbacGetUsersResponse) {}
+  rpc GetRolesForUser(RbacUserRequest) returns (RbacGetRolesResponse) {}
+  rpc GetUsersForRole(RbacRoleRequest) returns (RbacGetUsersResponse) {}
   rpc GetPermissionsForUser(RbacUserRequest)
       returns (RbacGetPermissionsResponse) {}
   rpc GetPermissionsForRole(RbacRoleRequest)
@@ -155,9 +157,22 @@ service Rbac {
 }
 
 message RbacUserRequest { int32 id = 1; }
-message RbacGetRolesForUserResponse { repeated string items = 1; }
+message RbacGetRolesResponse {
+  message Item {
+    string code = 1;
+    string name = 2;
+  }
+  repeated Item items = 1;
+}
 message RbacRoleRequest { string code = 2; }
-message RbacGetUsersForRoleResponse { repeated string items = 2; }
+message RbacGetUsersResponse {
+  message Item {
+    int32 id = 1;
+    string nick_name = 2;
+    string real_name = 3;
+  }
+  repeated Item items = 1;
+}
 message RbacGetPermissionsResponse {
   message Item {
     string subject = 1;
@@ -384,7 +399,6 @@ service Site {
   rpc ConfirmUser(IdRequest) returns (google.protobuf.Empty) {}
   rpc SetUserPassword(SiteSetUserPasswordRequest)
       returns (google.protobuf.Empty) {}
-  rpc ListUser(google.protobuf.Empty) returns (SiteListUserResponse) {}
 
   rpc SetAws(AwsProfile) returns (google.protobuf.Empty) {}
   rpc GetAws(google.protobuf.Empty) returns (AwsProfile) {}
@@ -413,15 +427,6 @@ message AwsProfile {
   string secret_access_key = 4;
 }
 message SiteAwsS3TestResponse { repeated string buckets = 1; }
-
-message SiteListUserResponse {
-  message Item {
-    int32 id = 1;
-    string nick_name = 2;
-    string real_name = 3;
-  }
-  repeated Item items = 1;
-}
 
 message SiteSmtpTestRequst {
   string to = 1;

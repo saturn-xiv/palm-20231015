@@ -2,11 +2,17 @@ use std::any::type_name;
 use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
-use casbin::{Enforcer, RbacApi};
+use casbin::{Enforcer, MgmtApi, RbacApi};
+use hyper::StatusCode;
 use tokio::sync::Mutex;
 use tonic::{Request, Response, Status};
 
-use super::super::super::super::{jwt::Jwt, orm::postgresql::Pool as PostgreSqlPool, GrpcResult};
+use super::super::super::super::{
+    i18n::I18n,
+    jwt::Jwt,
+    orm::postgresql::{Connection as PostgreSqlConnection, Pool as PostgreSqlPool},
+    GrpcResult, HttpError, Result,
+};
 use super::super::{
     models::user::{Dao as UserDao, Item as User},
     v1,
@@ -37,12 +43,95 @@ pub struct Service {
     pub enforcer: Arc<Mutex<Enforcer>>,
 }
 
+impl v1::rbac_get_roles_response::Item {
+    pub fn new(db: &mut PostgreSqlConnection, lang: &str, code: &str) -> Result<Self> {
+        match code.strip_prefix("role://") {
+            Some(code) => Ok(Self {
+                name: I18n::t(db, lang, format!("roles.{}", code), &None::<String>),
+                code: code.to_string(),
+            }),
+            None => Err(Box::new(HttpError(
+                StatusCode::BAD_REQUEST,
+                Some(code.to_string()),
+            ))),
+        }
+    }
+}
+impl v1::rbac_get_users_response::Item {
+    pub fn new(db: &mut PostgreSqlConnection, code: &str) -> Result<Self> {
+        match code.strip_prefix(&format!("{}://", type_name::<User>())) {
+            Some(code) => {
+                let user = UserDao::by_nick_name(db, code)?;
+                Ok(Self {
+                    id: user.id,
+                    nick_name: user.nick_name.clone(),
+                    real_name: user.real_name,
+                })
+            }
+            None => Err(Box::new(HttpError(
+                StatusCode::BAD_REQUEST,
+                Some(code.to_string()),
+            ))),
+        }
+    }
+}
+
 #[tonic::async_trait]
 impl v1::rbac_server::Rbac for Service {
+    async fn get_all_roles(&self, req: Request<()>) -> GrpcResult<v1::RbacGetRolesResponse> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
+            return Err(Status::permission_denied(type_name::<
+                v1::RbacGetRolesResponse,
+            >()));
+        }
+
+        let lang = ss.lang;
+        let mut items = Vec::new();
+
+        for it in enf.get_all_roles().iter() {
+            let it = try_grpc!(v1::rbac_get_roles_response::Item::new(db, &lang, it))?;
+            items.push(it);
+        }
+
+        Ok(Response::new(v1::RbacGetRolesResponse { items }))
+    }
+    async fn get_all_users(&self, req: Request<()>) -> GrpcResult<v1::RbacGetUsersResponse> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
+            return Err(Status::permission_denied(type_name::<
+                v1::RbacGetUsersResponse,
+            >()));
+        }
+
+        let mut items = Vec::new();
+        for (id, nick_name, real_name) in try_grpc!(UserDao::options(db))? {
+            items.push(v1::rbac_get_users_response::Item {
+                id,
+                nick_name,
+                real_name,
+            });
+        }
+
+        Ok(Response::new(v1::RbacGetUsersResponse { items }))
+    }
     async fn get_roles_for_user(
         &self,
         req: Request<v1::RbacUserRequest>,
-    ) -> GrpcResult<v1::RbacGetRolesForUserResponse> {
+    ) -> GrpcResult<v1::RbacGetRolesResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -53,25 +142,26 @@ impl v1::rbac_server::Rbac for Service {
         let enf = enf.deref_mut();
         if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<
-                v1::RbacGetRolesForUserResponse,
+                v1::RbacGetRolesResponse,
             >()));
         }
 
         let req = req.into_inner();
         let it = try_grpc!(UserDao::by_id(db, req.id))?;
 
+        let lang = ss.lang;
         let mut items = Vec::new();
+
         for it in enf.get_roles_for_user(&it.subject(), None).iter() {
-            if let Some(it) = it.strip_prefix("role://") {
-                items.push(it.to_string());
-            }
+            let it = try_grpc!(v1::rbac_get_roles_response::Item::new(db, &lang, it))?;
+            items.push(it);
         }
-        Ok(Response::new(v1::RbacGetRolesForUserResponse { items }))
+        Ok(Response::new(v1::RbacGetRolesResponse { items }))
     }
     async fn get_users_for_role(
         &self,
         req: Request<v1::RbacRoleRequest>,
-    ) -> GrpcResult<v1::RbacGetUsersForRoleResponse> {
+    ) -> GrpcResult<v1::RbacGetUsersResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -81,18 +171,18 @@ impl v1::rbac_server::Rbac for Service {
         let enf = enf.deref_mut();
         if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<
-                v1::RbacGetUsersForRoleResponse,
+                v1::RbacGetUsersResponse,
             >()));
         }
 
         let req = req.into_inner();
         let mut items = Vec::new();
+
         for it in enf.get_users_for_role(&to_role!(req.code), None).iter() {
-            if let Some(it) = it.strip_prefix(&format!("{}://", type_name::<User>())) {
-                items.push(it.to_string());
-            }
+            let it = try_grpc!(v1::rbac_get_users_response::Item::new(db, it))?;
+            items.push(it);
         }
-        Ok(Response::new(v1::RbacGetUsersForRoleResponse { items }))
+        Ok(Response::new(v1::RbacGetUsersResponse { items }))
     }
     async fn get_permissions_for_user(
         &self,

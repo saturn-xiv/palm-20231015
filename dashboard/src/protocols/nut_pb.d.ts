@@ -529,24 +529,47 @@ export namespace RbacUserRequest {
   }
 }
 
-export class RbacGetRolesForUserResponse extends jspb.Message {
-  getItemsList(): Array<string>;
-  setItemsList(value: Array<string>): RbacGetRolesForUserResponse;
-  clearItemsList(): RbacGetRolesForUserResponse;
-  addItems(value: string, index?: number): RbacGetRolesForUserResponse;
+export class RbacGetRolesResponse extends jspb.Message {
+  getItemsList(): Array<RbacGetRolesResponse.Item>;
+  setItemsList(value: Array<RbacGetRolesResponse.Item>): RbacGetRolesResponse;
+  clearItemsList(): RbacGetRolesResponse;
+  addItems(value?: RbacGetRolesResponse.Item, index?: number): RbacGetRolesResponse.Item;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RbacGetRolesForUserResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: RbacGetRolesForUserResponse): RbacGetRolesForUserResponse.AsObject;
-  static serializeBinaryToWriter(message: RbacGetRolesForUserResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RbacGetRolesForUserResponse;
-  static deserializeBinaryFromReader(message: RbacGetRolesForUserResponse, reader: jspb.BinaryReader): RbacGetRolesForUserResponse;
+  toObject(includeInstance?: boolean): RbacGetRolesResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: RbacGetRolesResponse): RbacGetRolesResponse.AsObject;
+  static serializeBinaryToWriter(message: RbacGetRolesResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RbacGetRolesResponse;
+  static deserializeBinaryFromReader(message: RbacGetRolesResponse, reader: jspb.BinaryReader): RbacGetRolesResponse;
 }
 
-export namespace RbacGetRolesForUserResponse {
+export namespace RbacGetRolesResponse {
   export type AsObject = {
-    itemsList: Array<string>,
+    itemsList: Array<RbacGetRolesResponse.Item.AsObject>,
   }
+
+  export class Item extends jspb.Message {
+    getCode(): string;
+    setCode(value: string): Item;
+
+    getName(): string;
+    setName(value: string): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      code: string,
+      name: string,
+    }
+  }
+
 }
 
 export class RbacRoleRequest extends jspb.Message {
@@ -567,24 +590,51 @@ export namespace RbacRoleRequest {
   }
 }
 
-export class RbacGetUsersForRoleResponse extends jspb.Message {
-  getItemsList(): Array<string>;
-  setItemsList(value: Array<string>): RbacGetUsersForRoleResponse;
-  clearItemsList(): RbacGetUsersForRoleResponse;
-  addItems(value: string, index?: number): RbacGetUsersForRoleResponse;
+export class RbacGetUsersResponse extends jspb.Message {
+  getItemsList(): Array<RbacGetUsersResponse.Item>;
+  setItemsList(value: Array<RbacGetUsersResponse.Item>): RbacGetUsersResponse;
+  clearItemsList(): RbacGetUsersResponse;
+  addItems(value?: RbacGetUsersResponse.Item, index?: number): RbacGetUsersResponse.Item;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RbacGetUsersForRoleResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: RbacGetUsersForRoleResponse): RbacGetUsersForRoleResponse.AsObject;
-  static serializeBinaryToWriter(message: RbacGetUsersForRoleResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RbacGetUsersForRoleResponse;
-  static deserializeBinaryFromReader(message: RbacGetUsersForRoleResponse, reader: jspb.BinaryReader): RbacGetUsersForRoleResponse;
+  toObject(includeInstance?: boolean): RbacGetUsersResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: RbacGetUsersResponse): RbacGetUsersResponse.AsObject;
+  static serializeBinaryToWriter(message: RbacGetUsersResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RbacGetUsersResponse;
+  static deserializeBinaryFromReader(message: RbacGetUsersResponse, reader: jspb.BinaryReader): RbacGetUsersResponse;
 }
 
-export namespace RbacGetUsersForRoleResponse {
+export namespace RbacGetUsersResponse {
   export type AsObject = {
-    itemsList: Array<string>,
+    itemsList: Array<RbacGetUsersResponse.Item.AsObject>,
   }
+
+  export class Item extends jspb.Message {
+    getId(): number;
+    setId(value: number): Item;
+
+    getNickName(): string;
+    setNickName(value: string): Item;
+
+    getRealName(): string;
+    setRealName(value: string): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      id: number,
+      nickName: string,
+      realName: string,
+    }
+  }
+
 }
 
 export class RbacGetPermissionsResponse extends jspb.Message {
@@ -1448,53 +1498,6 @@ export namespace SiteAwsS3TestResponse {
   export type AsObject = {
     bucketsList: Array<string>,
   }
-}
-
-export class SiteListUserResponse extends jspb.Message {
-  getItemsList(): Array<SiteListUserResponse.Item>;
-  setItemsList(value: Array<SiteListUserResponse.Item>): SiteListUserResponse;
-  clearItemsList(): SiteListUserResponse;
-  addItems(value?: SiteListUserResponse.Item, index?: number): SiteListUserResponse.Item;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SiteListUserResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: SiteListUserResponse): SiteListUserResponse.AsObject;
-  static serializeBinaryToWriter(message: SiteListUserResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SiteListUserResponse;
-  static deserializeBinaryFromReader(message: SiteListUserResponse, reader: jspb.BinaryReader): SiteListUserResponse;
-}
-
-export namespace SiteListUserResponse {
-  export type AsObject = {
-    itemsList: Array<SiteListUserResponse.Item.AsObject>,
-  }
-
-  export class Item extends jspb.Message {
-    getId(): number;
-    setId(value: number): Item;
-
-    getNickName(): string;
-    setNickName(value: string): Item;
-
-    getRealName(): string;
-    setRealName(value: string): Item;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Item.AsObject;
-    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
-    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Item;
-    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
-  }
-
-  export namespace Item {
-    export type AsObject = {
-      id: number,
-      nickName: string,
-      realName: string,
-    }
-  }
-
 }
 
 export class SiteSmtpTestRequst extends jspb.Message {
