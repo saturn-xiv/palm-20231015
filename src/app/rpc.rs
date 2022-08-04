@@ -134,6 +134,13 @@ pub async fn tcp(cfg: &Config) -> Result<()> {
                 enforcer: enforcer.clone(),
             },
         ))
+        .add_service(nut::v1::locale_server::LocaleServer::new(
+            nut::services::locale::Service {
+                pgsql: pgsql.clone(),
+                jwt: jwt.clone(),
+                enforcer: enforcer.clone(),
+            },
+        ))
         .add_service(nut::v1::site_server::SiteServer::new(
             nut::services::site::Service {
                 pgsql,
