@@ -141,5 +141,5 @@ else
 fi
 
 
-echo 'done.'
+echo "done($WORKSPACE)."
 exit 0
