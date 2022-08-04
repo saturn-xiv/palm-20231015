@@ -8,6 +8,10 @@ export WORKSPACE=$PWD
 export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
 export TARGET=$WORKSPACE/tmp/$GIT_VERSION-$VERSION_CODENAME
 
+clean_palm_cache() {
+    rm -rf $WORKSPACE/target/$1/release/build/palm-*
+}
+
 build_ubuntu_backend() {
     echo "build $1..."
 
@@ -23,6 +27,7 @@ build_ubuntu_backend() {
         local CXX=g++
         
         local target="x86_64-unknown-linux-gnu"
+        clean_palm_cache $target
         cargo build --target $target --release --features "ubuntu"
         cp target/$target/release/palm $root
     elif [ "$1" = "armhf" ]
@@ -30,11 +35,14 @@ build_ubuntu_backend() {
         local PKG_CONFIG_ALLOW_CROSS=1
         local PKG_CONFIG_DIR=
         local PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig
+
         local CC=arm-linux-gnueabihf-gcc
         local CXX=arm-linux-gnueabihf-g++
+
         local HOST_CC=gcc
 
         local target="armv7-unknown-linux-gnueabihf"
+        clean_palm_cache $target
         cargo build --target $target --release --features "ubuntu"
         cp target/$target/release/palm $root
     elif [ "$1" = "arm64" ]
@@ -49,6 +57,7 @@ build_ubuntu_backend() {
         local HOST_CC=gcc        
 
         local target="aarch64-unknown-linux-gnu"
+        clean_palm_cache $target
         cargo build --target $target --release --features "ubuntu"
         cp target/$target/release/palm $root
     else
@@ -57,7 +66,7 @@ build_ubuntu_backend() {
     fi
 }
 
-build_dashboard(){
+build_dashboard() {
     cd $WORKSPACE
     if [ ! -d node_modules ]
     then
@@ -71,7 +80,7 @@ build_dashboard(){
     NODE_OPTIONS=--openssl-legacy-provider yarn build
 }
 
-build_deb(){
+build_deb() {
     local target=$TARGET/$1-target
     if [ -d $target ]
     then
@@ -121,7 +130,6 @@ build_deb(){
 
 build_dashboard
 
-
 if [[ $ID == "ubuntu" ]]
 then    
     build_deb amd64
@@ -130,10 +138,13 @@ then
 elif [[ $ID == "arch" ]]
 then
     cd $WORKSPACE
+
+    clean_palm_cache x86_64-unknown-linux-gnu
     cargo build --target x86_64-unknown-linux-gnu --release
 elif [[ $ID == "alpine" ]]
 then
     cd $WORKSPACE
+    clean_palm_cache x86_64-unknown-linux-musl
     cargo build --target x86_64-unknown-linux-musl --release --features alpine
 else
     echo "Unknown os $ID"
