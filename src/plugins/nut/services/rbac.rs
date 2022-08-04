@@ -99,11 +99,9 @@ impl v1::rbac_server::Rbac for Service {
             >()));
         }
 
-        let lang = ss.lang;
         let mut items = Vec::new();
-
         for it in enf.get_all_roles().iter() {
-            if let Ok(it) = v1::rbac_get_roles_response::Item::new(db, &lang, it) {
+            if let Ok(it) = v1::rbac_get_roles_response::Item::new(db, &ss.lang, it) {
                 items.push(it);
             }
         }
@@ -156,11 +154,9 @@ impl v1::rbac_server::Rbac for Service {
         let req = req.into_inner();
         let it = try_grpc!(UserDao::by_id(db, req.id))?;
 
-        let lang = ss.lang;
         let mut items = Vec::new();
-
         for it in enf.get_roles_for_user(&it.subject(), None).iter() {
-            if let Ok(it) = v1::rbac_get_roles_response::Item::new(db, &lang, it) {
+            if let Ok(it) = v1::rbac_get_roles_response::Item::new(db, &user.lang, it) {
                 items.push(it);
             }
         }
