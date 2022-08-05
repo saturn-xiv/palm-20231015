@@ -152,5 +152,5 @@ else
 fi
 
 
-echo "done($WORKSPACE)."
+echo "done($TARGET)."
 exit 0

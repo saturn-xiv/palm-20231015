@@ -101,7 +101,7 @@ impl v1::rbac_server::Rbac for Service {
 
         let mut items = Vec::new();
         for it in enf.get_all_roles().iter() {
-            if let Ok(it) = v1::rbac_get_roles_response::Item::new(db, &ss.lang, it) {
+            if let Ok(it) = v1::rbac_get_roles_response::Item::new(db, &user.lang, it) {
                 items.push(it);
             }
         }
