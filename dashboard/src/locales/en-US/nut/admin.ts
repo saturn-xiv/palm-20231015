@@ -56,6 +56,7 @@ const items = {
     "Add permission {permission} for user {user}",
   "nut.admin.permissions.delete-role-for-user":
     "Delete role({role}) for user({user})",
+  "nut.admin.permissions.sync-policies": "Sync policies from db",
 };
 
 export default items;

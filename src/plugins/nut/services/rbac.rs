@@ -2,7 +2,7 @@ use std::any::type_name;
 use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
-use casbin::{Enforcer, MgmtApi, RbacApi};
+use casbin::{CoreApi, Enforcer, MgmtApi, RbacApi};
 use hyper::StatusCode;
 use tokio::sync::Mutex;
 use tonic::{Request, Response, Status};
@@ -454,6 +454,23 @@ impl v1::rbac_server::Rbac for Service {
                 .await
             )?;
         }
+        Ok(Response::new(()))
+    }
+
+    async fn reload(&self, req: Request<()>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
+            return Err(Status::permission_denied(type_name::<
+                v1::RbacPermissionForRoleRequest,
+            >()));
+        }
+        try_grpc!(enf.load_policy().await)?;
         Ok(Response::new(()))
     }
 }

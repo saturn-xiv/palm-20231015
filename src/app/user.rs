@@ -43,7 +43,7 @@ impl ApplyPolicy {
         let exp = (now + Duration::weeks(1 << 10)).date();
 
         let user = UserDao::by_uid(db, &self.user)?;
-        enf.add_role_for_user(&user.subject(), &self.role, None)
+        enf.add_role_for_user(&user.subject(), &to_role!(self.role), None)
             .await?;
         let un = nix::sys::utsname::uname()?;
         LogDao::add::<String, User>(

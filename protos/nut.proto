@@ -154,6 +154,8 @@ service Rbac {
       returns (google.protobuf.Empty) {}
   rpc DeletePermissionForRole(RbacPermissionForRoleRequest)
       returns (google.protobuf.Empty) {}
+
+  rpc Reload(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
 message RbacUserRequest { int32 id = 1; }

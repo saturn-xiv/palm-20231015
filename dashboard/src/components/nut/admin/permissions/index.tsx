@@ -13,6 +13,7 @@ import { GRPC_HOST, grpc_metadata } from "../../../../request";
 import AddRoleForUser from "./AddRoleForUser";
 import AddPermissionForUser from "./AddPermissionForUser";
 import AddPermissionForRole from "./AddPermissionForRole";
+import SyncPolicies from "./SyncPolicies";
 
 const Widget = () => {
   const intl = useIntl();
@@ -59,6 +60,7 @@ const Widget = () => {
         <AddRoleForUser handleRefresh={handleRefresh} users={users} />
         <AddPermissionForRole roles={roles} />
         <AddPermissionForUser users={users} />
+        <SyncPolicies />
       </Col>
       <Col span={24}>
         <Tabs defaultActiveKey="roles">

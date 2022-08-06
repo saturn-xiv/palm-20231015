@@ -27,8 +27,8 @@ async fn casbin() {
         enf.add_roles_for_user(
             user,
             vec![
-                User::ADMINISTRATOR.to_string(),
-                User::ROOT.to_string(),
+                User::ROLE_ADMINISTRATOR.to_string(),
+                User::ROLE_ROOT.to_string(),
                 manager.to_string(),
             ],
             None,
@@ -36,7 +36,7 @@ async fn casbin() {
         .await
         .unwrap();
 
-        for it in vec![User::ADMINISTRATOR, User::ROOT, manager] {
+        for it in vec![User::ROLE_ADMINISTRATOR, User::ROLE_ROOT, manager] {
             assert!(enf.has_role_for_user(user, it, None));
         }
     }
