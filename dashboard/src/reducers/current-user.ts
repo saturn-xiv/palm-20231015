@@ -110,7 +110,7 @@ export const to_user = (response: UserSignInResponse): IUser | undefined => {
     avatar: payload.getAvatar(),
     permissions: response.getPermissionsList().map((x) => ({
       operation: x.getOperation(),
-      resourceId: x.getResourceId(),
+      resourceId: x.hasResourceId() ? x.getResourceId() : undefined,
       resourceType: x.getResourceType(),
     })),
     roles: response.getRolesList(),

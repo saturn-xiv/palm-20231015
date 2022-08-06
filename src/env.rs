@@ -7,7 +7,7 @@ use serde::{Deserialize, Serialize};
 
 use super::{
     cache::redis::Config as Redis, crypto::Key, orm::postgresql::Config as PostgreSql,
-    queue::amqp::Config as RabbitMq,
+    queue::amqp::Config as RabbitMq, Result,
 };
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
@@ -89,6 +89,32 @@ impl Default for Rpc {
     }
 }
 
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct Elasticsearch {
+    pub host: String,
+    pub port: u16,
+}
+
+impl Default for Elasticsearch {
+    fn default() -> Self {
+        Self {
+            host: "127.0.0.1".to_string(),
+            port: 9200,
+        }
+    }
+}
+impl Elasticsearch {
+    pub fn open(&self) -> Result<elasticsearch::Elasticsearch> {
+        let transport = elasticsearch::http::transport::Transport::single_node(&format!(
+            "http://{}:{}",
+            self.host, self.port
+        ))?;
+        let client = elasticsearch::Elasticsearch::new(transport);
+        Ok(client)
+    }
+}
+
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Config {
@@ -99,6 +125,7 @@ pub struct Config {
     pub postgresql: PostgreSql,
     pub redis: Redis,
     pub rabbitmq: RabbitMq,
+    pub elasticsearch: Elasticsearch,
 }
 
 pub fn is_stopped() -> bool {

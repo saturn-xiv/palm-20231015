@@ -62,7 +62,15 @@ impl v1::UserSignInResponse {
         let token = user.token(jwt, ttl)?;
         let mut enf = enf.lock().await;
         let enf = enf.deref_mut();
-        let roles = enf.get_implicit_roles_for_user(&user.subject(), None);
+        let mut roles = Vec::new();
+        for it in enf
+            .get_implicit_roles_for_user(&user.subject(), None)
+            .iter()
+        {
+            if let Some(it) = it.strip_prefix(v1::rbac_get_roles_response::Item::PREFIX) {
+                roles.push(it.to_string());
+            }
+        }
         let permissions = enf
             .get_implicit_permissions_for_user(&user.subject(), None)
             .iter()

@@ -16,7 +16,7 @@ import {
 import { Pager, UserLogsRequest } from "../../../protocols/nut_pb";
 import { UserClient } from "../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../request";
-import { ShowTimestamp } from "../../../components/date";
+import { ShowTimestamp } from "../../date";
 import { setTitle } from "../../../reducers/layout";
 import { useAppDispatch } from "../../../hooks";
 

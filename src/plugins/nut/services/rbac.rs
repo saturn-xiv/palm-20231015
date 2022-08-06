@@ -44,8 +44,9 @@ pub struct Service {
 }
 
 impl v1::rbac_get_roles_response::Item {
+    pub const PREFIX: &'static str = "role://";
     pub fn new(db: &mut PostgreSqlConnection, lang: &str, code: &str) -> Result<Self> {
-        match code.strip_prefix("role://") {
+        match code.strip_prefix(Self::PREFIX) {
             Some(code) => Ok(Self {
                 name: I18n::t(db, lang, format!("roles.{}", code), &None::<String>),
                 code: code.to_string(),
