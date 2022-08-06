@@ -136,11 +136,11 @@ impl User {
         jwt.sum(None, &token)
     }
     pub fn is_administrator(&self, enf: &mut Enforcer) -> bool {
-        self.is(enf, Self::ADMINISTRATOR)
+        self.is(enf, Self::ROLE_ADMINISTRATOR)
     }
     pub fn is(&self, enf: &mut Enforcer, role: &str) -> bool {
         let items = enf.get_implicit_roles_for_user(&self.subject(), None);
-        items.contains(&role.to_string())
+        items.contains(&to_role!(role))
     }
     pub fn can<R, O: Display>(
         &self,

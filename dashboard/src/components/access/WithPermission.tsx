@@ -16,14 +16,16 @@ interface IProps {
 
 const Widget = ({ permissions, hidden, children }: IProps) => {
   const user = useAppSelector(currentUser);
+  console.debug("current user's roles:", user?.roles);
+  console.debug("current user's permissions:", user?.permissions);
+  console.debug("params:", permissions);
   const can = (): boolean => {
-    for (var permission of permissions) {
-      for (var it of user?.permissions || []) {
+    for (var ip of permissions) {
+      for (var iu of user?.permissions || []) {
         if (
-          it.operation === permission.operation &&
-          it.resourceType === permission.resourceType &&
-          (it.resourceId === undefined ||
-            it.resourceId === permission.resourceId)
+          iu.operation === ip.operation &&
+          iu.resourceType === ip.resourceType &&
+          (iu.resourceId === undefined || iu.resourceId === ip.resourceId)
         ) {
           return true;
         }

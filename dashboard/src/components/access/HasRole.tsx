@@ -12,7 +12,10 @@ interface IProps {
 
 const Widget = ({ roles, hidden, children }: IProps) => {
   const user = useAppSelector(currentUser);
-  console.log(user?.roles, user?.permissions);
+  console.debug("current user's roles:", user?.roles);
+  console.debug("current user's permissions:", user?.permissions);
+  console.debug("params:", roles);
+
   const can = (): boolean => {
     for (var role of roles) {
       if (user?.roles.includes(role)) {

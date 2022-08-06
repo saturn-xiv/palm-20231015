@@ -262,10 +262,10 @@ impl v1::rbac_server::Rbac for Service {
         }
 
         let req = req.into_inner();
-        if req.role == User::ROOT {
+        if req.role == User::ROLE_ROOT {
             return Err(Status::invalid_argument(format!(
                 "not allow to bind to {}",
-                User::ROOT
+                User::ROLE_ROOT
             )));
         }
         let it = try_grpc!(UserDao::by_id(db, req.user))?;

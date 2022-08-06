@@ -334,7 +334,7 @@ impl v1::site_server::Site for Service {
                         let now = Utc::now().naive_utc();
                         let nbf = now.date();
                         let exp = (now + Duration::weeks(1 << 10)).date();
-                        for role in [User::ROOT, User::ADMINISTRATOR] {
+                        for role in [User::ROLE_ROOT, User::ROLE_ADMINISTRATOR] {
                             LogDao::add::<String, User>(
                                 db,
                                 user.id,
@@ -360,7 +360,10 @@ impl v1::site_server::Site for Service {
                     try_grpc!(
                         enf.add_roles_for_user(
                             &user.subject(),
-                            vec![User::ROOT.to_string(), User::ADMINISTRATOR.to_string()],
+                            vec![
+                                to_role!(User::ROLE_ROOT),
+                                to_role!(User::ROLE_ADMINISTRATOR)
+                            ],
                             None,
                         )
                         .await
@@ -431,7 +434,7 @@ impl v1::site_server::Site for Service {
         let req = req.into_inner();
         {
             let it = try_grpc!(UserDao::by_id(db, req.id))?;
-            if it.is(enf, User::ROOT) {
+            if it.is(enf, User::ROLE_ROOT) {
                 return Err(Status::permission_denied(type_name::<User>()));
             }
         }
@@ -454,7 +457,7 @@ impl v1::site_server::Site for Service {
         let req = req.into_inner();
         {
             let it = try_grpc!(UserDao::by_id(db, req.id))?;
-            if it.is(enf, User::ROOT) {
+            if it.is(enf, User::ROLE_ROOT) {
                 return Err(Status::permission_denied(type_name::<User>()));
             }
         }
@@ -476,7 +479,7 @@ impl v1::site_server::Site for Service {
         let req = req.into_inner();
         {
             let it = try_grpc!(UserDao::by_id(db, req.id))?;
-            if it.is(enf, User::ROOT) {
+            if it.is(enf, User::ROLE_ROOT) {
                 return Err(Status::permission_denied(type_name::<User>()));
             }
         }
@@ -498,7 +501,7 @@ impl v1::site_server::Site for Service {
         let req = req.into_inner();
         {
             let it = try_grpc!(UserDao::by_id(db, req.id))?;
-            if it.is(enf, User::ROOT) {
+            if it.is(enf, User::ROLE_ROOT) {
                 return Err(Status::permission_denied(type_name::<User>()));
             }
         }
@@ -519,7 +522,7 @@ impl v1::site_server::Site for Service {
         let req = req.into_inner();
         {
             let it = try_grpc!(UserDao::by_id(db, req.id))?;
-            if it.is(enf, User::ROOT) {
+            if it.is(enf, User::ROLE_ROOT) {
                 return Err(Status::permission_denied(type_name::<User>()));
             }
         }
@@ -545,7 +548,7 @@ impl v1::site_server::Site for Service {
         let req = req.into_inner();
         {
             let it = try_grpc!(UserDao::by_id(db, req.user))?;
-            if it.is(enf, User::ROOT) {
+            if it.is(enf, User::ROLE_ROOT) {
                 return Err(Status::permission_denied(type_name::<User>()));
             }
         }

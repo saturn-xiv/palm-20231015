@@ -7,7 +7,7 @@ yarn add filesize dayjs timezones-list grpc-web \
     js-cookie @types/js-cookie \
     jwt-decode dinero.js@alpha video.js \
     react-copy-to-clipboard @types/react-copy-to-clipboard \
-    react-quill@beta react-dropzone \
+    react-quill react-dropzone \
     google-map-react qrcode.react react-markdown \
     react-color @types/react-color \
     react-json-view react-syntax-highlighter \
