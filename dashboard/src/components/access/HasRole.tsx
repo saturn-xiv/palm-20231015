@@ -5,17 +5,19 @@ import { currentUser, ROLE_ADMINISTRATOR } from "../../reducers/current-user";
 import Forbidden from "./Forbidden";
 
 interface IProps {
-  role: string;
+  roles: string[];
   children: ReactNode;
   hidden?: boolean;
 }
 
-const Widget = ({ role, hidden, children }: IProps) => {
+const Widget = ({ roles, hidden, children }: IProps) => {
   const user = useAppSelector(currentUser);
+  console.log(user?.roles, user?.permissions);
   const can = (): boolean => {
-    console.log(user?.roles, user?.permissions);
-    if (user?.roles.includes(role)) {
-      return true;
+    for (var role of roles) {
+      if (user?.roles.includes(role)) {
+        return true;
+      }
     }
     if (user?.roles.includes(ROLE_ADMINISTRATOR)) {
       return true;

@@ -1,5 +1,5 @@
-palm (2022.08.01) stable; urgency=medium
+palm (2022.08.06) stable; urgency=medium
 
-  * [5135c70] add nut plugin.
+  * [49964ab] add nut plugin.
 
- -- Jeremy Zheng <jitang.zheng@gmail.com>  Mon, 01 Aug 2022 10:01:11 +0530
+ -- Jeremy Zheng <jitang.zheng@gmail.com>  Sat, 06 Aug 2022 08:32:54 +0530

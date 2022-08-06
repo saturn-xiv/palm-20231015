@@ -43,7 +43,7 @@ const Widget = () => {
   }, [dispatch, intl]);
   return (
     <Col span={22} offset={1}>
-      <HasRole role={ROLE_ADMINISTRATOR}>
+      <HasRole roles={[ROLE_ADMINISTRATOR]}>
         <ProTable<IItem>
           search={false}
           actionRef={ref}

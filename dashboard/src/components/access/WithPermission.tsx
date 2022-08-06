@@ -9,24 +9,26 @@ import {
 import Forbidden from "./Forbidden";
 
 interface IProps {
-  permission: IPermission;
+  permissions: IPermission[];
   children: ReactNode;
   hidden?: boolean;
 }
 
-const Widget = ({ permission, hidden, children }: IProps) => {
+const Widget = ({ permissions, hidden, children }: IProps) => {
   const user = useAppSelector(currentUser);
   const can = (): boolean => {
-    for (var it of user?.permissions || []) {
-      if (
-        it.operation === permission.operation &&
-        it.resourceType === permission.resourceType &&
-        (it.resourceId === undefined || it.resourceId === permission.resourceId)
-      ) {
-        return true;
+    for (var permission of permissions) {
+      for (var it of user?.permissions || []) {
+        if (
+          it.operation === permission.operation &&
+          it.resourceType === permission.resourceType &&
+          (it.resourceId === undefined ||
+            it.resourceId === permission.resourceId)
+        ) {
+          return true;
+        }
       }
     }
-
     if (user?.roles.includes(ROLE_ADMINISTRATOR)) {
       return true;
     }
