@@ -29,7 +29,7 @@ interface IProps {
 }
 const USER_PREFIX = "user.";
 const ROLE_PREFIX = "role.";
-const MENU_PREFIX = "menus://side-bar/";
+export const MENU_PREFIX = "menus://side-bar/";
 
 const fetch_menu_keys = (keys: string[], menu: MenuDataItem): string[] => {
   if (menu.key) {

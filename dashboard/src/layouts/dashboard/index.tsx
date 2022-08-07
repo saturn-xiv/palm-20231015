@@ -18,9 +18,14 @@ import { useAppSelector } from "../../hooks";
 import palm_tree from "../../assets/palm-tree.svg";
 import menus from "../../menus";
 import { useAppDispatch } from "../../hooks";
-import { currentUser } from "../../reducers/current-user";
+import {
+  currentUser,
+  OPERATION_READ,
+  ROLE_ADMINISTRATOR,
+} from "../../reducers/current-user";
 import NutUsersSignIn from "../../components/nut/users/SignIn";
 import Application from "../../layouts/Application";
+import { MENU_PREFIX } from "../../components/nut/admin/permissions/SideBar";
 
 const Widget = () => {
   const site = useAppSelector(siteInfo);
@@ -30,12 +35,34 @@ const Widget = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(currentUser);
   const intl = useIntl();
+
+  const menu_route_filter = (it: MenuDataItem): boolean => {
+    if ((user?.roles || []).includes(ROLE_ADMINISTRATOR)) {
+      return true;
+    }
+    const key = `${MENU_PREFIX}${it.key}`;
+    for (var ip of user?.permissions || []) {
+      if (
+        ip.resourceId === undefined &&
+        ip.operation === OPERATION_READ &&
+        ip.resourceType === key
+      ) {
+        return true;
+      }
+    }
+    if ((it.routes || []).map(menu_route_filter).length > 0) {
+      return true;
+    }
+    return false;
+  };
   const to_menu_route = (it: MenuDataItem): MenuDataItem => {
     return {
       path: it.path,
       icon: it.icon,
       name: intl.formatMessage({ id: `${it.key}.title` }),
-      routes: it.routes ? it.routes.map(to_menu_route) : undefined,
+      routes: it.routes
+        ? it.routes.filter(menu_route_filter).map(to_menu_route)
+        : undefined,
     };
   };
   return user ? (
@@ -51,7 +78,7 @@ const Widget = () => {
         </Space>
       )}
       route={{
-        routes: menus.map(to_menu_route),
+        routes: menus.filter(menu_route_filter).map(to_menu_route),
       }}
       menuProps={{
         onSelect: ({ key }: SelectInfo) => {
