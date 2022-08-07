@@ -17,7 +17,7 @@ const items = {
   "nut.users.reset-password.title": "Reset my password",
   "nut.users.reset-password.successed":
     "Your password has been changed successfully.",
-  "nut.users.profile.title": "Profile",
+  "nut.users.index.title": "Profile",
   "nut.users.account-info.title": "Account info",
   "nut.users.logs.title": "Logs",
   "nut.users.change-password.title": "Change password",

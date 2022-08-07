@@ -14,6 +14,7 @@ import AddRoleForUser from "./AddRoleForUser";
 import AddPermissionForUser from "./AddPermissionForUser";
 import AddPermissionForRole from "./AddPermissionForRole";
 import SyncPolicies from "./SyncPolicies";
+import SideBar from "./SideBar";
 
 const Widget = () => {
   const intl = useIntl();
@@ -79,6 +80,12 @@ const Widget = () => {
             }
           >
             <UsersIndex users={users} />
+          </Tabs.TabPane>
+          <Tabs.TabPane
+            key="side-bar"
+            tab={<FormattedMessage id="nut.admin.permissions.side-bar.title" />}
+          >
+            <SideBar roles={roles} users={users} />
           </Tabs.TabPane>
         </Tabs>
       </Col>

@@ -145,6 +145,10 @@ service Rbac {
       returns (google.protobuf.Empty) {}
   rpc AddPermissionForRole(RbacPermissionForRoleRequest)
       returns (google.protobuf.Empty) {}
+  rpc UpdatePermissionsForUser(RbacUpdatePermissionsForUserRequest)
+      returns (google.protobuf.Empty) {}
+  rpc UpdatePermissionsForRole(RbacUpdatePermissionsForRoleRequest)
+      returns (google.protobuf.Empty) {}
 
   rpc DeleteRoleForUser(RbacRoleForUserRequest)
       returns (google.protobuf.Empty) {}
@@ -174,6 +178,26 @@ message RbacGetUsersResponse {
     string real_name = 3;
   }
   repeated Item items = 1;
+}
+message RbacUpdatePermissionsForUserRequest {
+  message Item {
+    string operation = 1;
+    string resource_type = 2;
+    optional int32 resource_id = 3;
+  }
+  int32 user = 1;
+  repeated Item removed = 2;
+  repeated Item created = 3;
+}
+message RbacUpdatePermissionsForRoleRequest {
+  message Item {
+    string operation = 1;
+    string resource_type = 2;
+    optional int32 resource_id = 3;
+  }
+  string role = 1;
+  repeated Item removed = 2;
+  repeated Item created = 3;
 }
 message RbacGetPermissionsResponse {
   message Item {

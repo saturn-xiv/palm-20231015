@@ -34,7 +34,7 @@ const Widget = () => {
     return {
       path: it.path,
       icon: it.icon,
-      name: intl.formatMessage({ id: it.name }),
+      name: intl.formatMessage({ id: `${it.key}.title` }),
       routes: it.routes ? it.routes.map(to_menu_route) : undefined,
     };
   };

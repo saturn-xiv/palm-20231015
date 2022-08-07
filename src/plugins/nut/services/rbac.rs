@@ -36,7 +36,22 @@ impl v1::rbac_get_permissions_response::Item {
         }
     }
 }
-
+impl v1::rbac_update_permissions_for_user_request::Item {
+    pub fn object(&self) -> String {
+        match self.resource_id {
+            Some(v) => resource_to_object!(self.resource_type, v),
+            None => resource_to_object!(self.resource_type),
+        }
+    }
+}
+impl v1::rbac_update_permissions_for_role_request::Item {
+    pub fn object(&self) -> String {
+        match self.resource_id {
+            Some(v) => resource_to_object!(self.resource_type, v),
+            None => resource_to_object!(self.resource_type),
+        }
+    }
+}
 pub struct Service {
     pub pgsql: PostgreSqlPool,
     pub jwt: Arc<Jwt>,
@@ -466,11 +481,83 @@ impl v1::rbac_server::Rbac for Service {
         let mut enf = self.enforcer.lock().await;
         let enf = enf.deref_mut();
         if !user.is_administrator(enf) {
-            return Err(Status::permission_denied(type_name::<
-                v1::RbacPermissionForRoleRequest,
-            >()));
+            return Err(Status::permission_denied("reload policies"));
         }
         try_grpc!(enf.load_policy().await)?;
+        Ok(Response::new(()))
+    }
+
+    async fn update_permissions_for_user(
+        &self,
+        req: Request<v1::RbacUpdatePermissionsForUserRequest>,
+    ) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
+            return Err(Status::permission_denied(type_name::<
+                v1::RbacUpdatePermissionsForUserRequest,
+            >()));
+        }
+
+        let req = req.into_inner();
+
+        let subject = {
+            let user = try_grpc!(UserDao::by_id(db, req.user))?;
+            user.subject()
+        };
+
+        for it in req.removed.iter() {
+            try_grpc!(
+                enf.delete_permission_for_user(&subject, vec![it.object(), it.operation.clone()])
+                    .await
+            )?;
+        }
+        for it in req.created.iter() {
+            try_grpc!(
+                enf.add_permission_for_user(&subject, vec![it.object(), it.operation.clone()])
+                    .await
+            )?;
+        }
+
+        Ok(Response::new(()))
+    }
+    async fn update_permissions_for_role(
+        &self,
+        req: Request<v1::RbacUpdatePermissionsForRoleRequest>,
+    ) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let mut enf = self.enforcer.lock().await;
+        let enf = enf.deref_mut();
+        if !user.is_administrator(enf) {
+            return Err(Status::permission_denied(type_name::<
+                v1::RbacUpdatePermissionsForRoleRequest,
+            >()));
+        }
+
+        let req = req.into_inner();
+        let subject = to_role!(req.role);
+
+        for it in req.removed.iter() {
+            try_grpc!(
+                enf.delete_permission_for_user(&subject, vec![it.object(), it.operation.clone()])
+                    .await
+            )?;
+        }
+        for it in req.created.iter() {
+            try_grpc!(
+                enf.add_permission_for_user(&subject, vec![it.object(), it.operation.clone()])
+                    .await
+            )?;
+        }
         Ok(Response::new(()))
     }
 }

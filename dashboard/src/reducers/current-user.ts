@@ -2,7 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import jwtDecode, { JwtPayload } from "jwt-decode";
 
 import type { RootState } from "../store";
-import { UserSignInResponse, UserQueryRequest } from "../protocols/nut_pb";
+import {
+  UserSignInResponse,
+  UserQueryRequest,
+  RbacGetPermissionsResponse,
+} from "../protocols/nut_pb";
 
 export const ROLE_ROOT = "root";
 export const ROLE_ADMINISTRATOR = "administrator";
@@ -96,6 +100,17 @@ export interface IUser {
   roles: string[];
 }
 
+export const to_permission = (
+  x: RbacGetPermissionsResponse.Item
+): IPermission => {
+  const it: IPermission = {
+    operation: x.getOperation(),
+    resourceId: x.hasResourceId() ? x.getResourceId() : undefined,
+    resourceType: x.getResourceType(),
+  };
+  return it;
+};
+
 export const to_user = (response: UserSignInResponse): IUser | undefined => {
   const decoded: any = jwtDecode<JwtPayload>(response.getToken());
   const payload = response.getPayload();
@@ -108,11 +123,7 @@ export const to_user = (response: UserSignInResponse): IUser | undefined => {
     nickName: payload.getNickName(),
     realName: payload.getRealName(),
     avatar: payload.getAvatar(),
-    permissions: response.getPermissionsList().map((x) => ({
-      operation: x.getOperation(),
-      resourceId: x.hasResourceId() ? x.getResourceId() : undefined,
-      resourceType: x.getResourceType(),
-    })),
+    permissions: response.getPermissionsList().map(to_permission),
     roles: response.getRolesList(),
   };
 };

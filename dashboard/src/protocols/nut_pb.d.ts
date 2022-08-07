@@ -637,6 +637,134 @@ export namespace RbacGetUsersResponse {
 
 }
 
+export class RbacUpdatePermissionsForUserRequest extends jspb.Message {
+  getUser(): number;
+  setUser(value: number): RbacUpdatePermissionsForUserRequest;
+
+  getRemovedList(): Array<RbacUpdatePermissionsForUserRequest.Item>;
+  setRemovedList(value: Array<RbacUpdatePermissionsForUserRequest.Item>): RbacUpdatePermissionsForUserRequest;
+  clearRemovedList(): RbacUpdatePermissionsForUserRequest;
+  addRemoved(value?: RbacUpdatePermissionsForUserRequest.Item, index?: number): RbacUpdatePermissionsForUserRequest.Item;
+
+  getCreatedList(): Array<RbacUpdatePermissionsForUserRequest.Item>;
+  setCreatedList(value: Array<RbacUpdatePermissionsForUserRequest.Item>): RbacUpdatePermissionsForUserRequest;
+  clearCreatedList(): RbacUpdatePermissionsForUserRequest;
+  addCreated(value?: RbacUpdatePermissionsForUserRequest.Item, index?: number): RbacUpdatePermissionsForUserRequest.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RbacUpdatePermissionsForUserRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RbacUpdatePermissionsForUserRequest): RbacUpdatePermissionsForUserRequest.AsObject;
+  static serializeBinaryToWriter(message: RbacUpdatePermissionsForUserRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RbacUpdatePermissionsForUserRequest;
+  static deserializeBinaryFromReader(message: RbacUpdatePermissionsForUserRequest, reader: jspb.BinaryReader): RbacUpdatePermissionsForUserRequest;
+}
+
+export namespace RbacUpdatePermissionsForUserRequest {
+  export type AsObject = {
+    user: number,
+    removedList: Array<RbacUpdatePermissionsForUserRequest.Item.AsObject>,
+    createdList: Array<RbacUpdatePermissionsForUserRequest.Item.AsObject>,
+  }
+
+  export class Item extends jspb.Message {
+    getOperation(): string;
+    setOperation(value: string): Item;
+
+    getResourceType(): string;
+    setResourceType(value: string): Item;
+
+    getResourceId(): number;
+    setResourceId(value: number): Item;
+    hasResourceId(): boolean;
+    clearResourceId(): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      operation: string,
+      resourceType: string,
+      resourceId?: number,
+    }
+
+    export enum ResourceIdCase { 
+      _RESOURCE_ID_NOT_SET = 0,
+      RESOURCE_ID = 3,
+    }
+  }
+
+}
+
+export class RbacUpdatePermissionsForRoleRequest extends jspb.Message {
+  getRole(): string;
+  setRole(value: string): RbacUpdatePermissionsForRoleRequest;
+
+  getRemovedList(): Array<RbacUpdatePermissionsForRoleRequest.Item>;
+  setRemovedList(value: Array<RbacUpdatePermissionsForRoleRequest.Item>): RbacUpdatePermissionsForRoleRequest;
+  clearRemovedList(): RbacUpdatePermissionsForRoleRequest;
+  addRemoved(value?: RbacUpdatePermissionsForRoleRequest.Item, index?: number): RbacUpdatePermissionsForRoleRequest.Item;
+
+  getCreatedList(): Array<RbacUpdatePermissionsForRoleRequest.Item>;
+  setCreatedList(value: Array<RbacUpdatePermissionsForRoleRequest.Item>): RbacUpdatePermissionsForRoleRequest;
+  clearCreatedList(): RbacUpdatePermissionsForRoleRequest;
+  addCreated(value?: RbacUpdatePermissionsForRoleRequest.Item, index?: number): RbacUpdatePermissionsForRoleRequest.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RbacUpdatePermissionsForRoleRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RbacUpdatePermissionsForRoleRequest): RbacUpdatePermissionsForRoleRequest.AsObject;
+  static serializeBinaryToWriter(message: RbacUpdatePermissionsForRoleRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RbacUpdatePermissionsForRoleRequest;
+  static deserializeBinaryFromReader(message: RbacUpdatePermissionsForRoleRequest, reader: jspb.BinaryReader): RbacUpdatePermissionsForRoleRequest;
+}
+
+export namespace RbacUpdatePermissionsForRoleRequest {
+  export type AsObject = {
+    role: string,
+    removedList: Array<RbacUpdatePermissionsForRoleRequest.Item.AsObject>,
+    createdList: Array<RbacUpdatePermissionsForRoleRequest.Item.AsObject>,
+  }
+
+  export class Item extends jspb.Message {
+    getOperation(): string;
+    setOperation(value: string): Item;
+
+    getResourceType(): string;
+    setResourceType(value: string): Item;
+
+    getResourceId(): number;
+    setResourceId(value: number): Item;
+    hasResourceId(): boolean;
+    clearResourceId(): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      operation: string,
+      resourceType: string,
+      resourceId?: number,
+    }
+
+    export enum ResourceIdCase { 
+      _RESOURCE_ID_NOT_SET = 0,
+      RESOURCE_ID = 3,
+    }
+  }
+
+}
+
 export class RbacGetPermissionsResponse extends jspb.Message {
   getItemsList(): Array<RbacGetPermissionsResponse.Item>;
   setItemsList(value: Array<RbacGetPermissionsResponse.Item>): RbacGetPermissionsResponse;

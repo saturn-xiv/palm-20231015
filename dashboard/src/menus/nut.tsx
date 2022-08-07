@@ -3,33 +3,37 @@ import { UserOutlined, FileOutlined, SettingOutlined } from "@ant-design/icons";
 
 const items: MenuDataItem[] = [
   {
+    key: "nut.users.index",
     path: "users",
-    name: "nut.users.profile.title",
     icon: <UserOutlined />,
     routes: [
-      { path: "logs", name: "nut.users.logs.title" },
+      { key: "nut.users.logs", path: "logs" },
       {
+        key: "nut.users.change-password",
         path: "change-password",
-        name: "nut.users.change-password.title",
       },
-      { path: "account-info", name: "nut.users.account-info.title" },
+      {
+        key: "nut.users.account-info",
+        path: "account-info",
+      },
     ],
   },
   {
+    key: "nut.attachments.index",
     path: "attachments",
-    name: "nut.attachments.index.title",
+
     icon: <FileOutlined />,
   },
   {
+    key: "nut.admin.index",
     path: "admin",
-    name: "nut.admin.index.title",
     icon: <SettingOutlined />,
     routes: [
-      { path: "locales", name: "nut.admin.locales.index.title" },
-      { path: "leave-words", name: "nut.admin.leave-words.index.title" },
-      { path: "site", name: "nut.admin.site.index.title" },
-      { path: "users", name: "nut.admin.users.index.title" },
-      { path: "permissions", name: "nut.admin.permissions.index.title" },
+      { path: "locales", key: "nut.admin.locales.index" },
+      { path: "leave-words", key: "nut.admin.leave-words.index" },
+      { path: "site", key: "nut.admin.site.index" },
+      { path: "users", key: "nut.admin.users.index" },
+      { path: "permissions", key: "nut.admin.permissions.index" },
     ],
   },
 ];
