@@ -50,7 +50,7 @@ const Widget = () => {
         return true;
       }
     }
-    if ((it.routes || []).map(menu_route_filter).length > 0) {
+    if ((it.routes || []).filter(menu_route_filter).length > 0) {
       return true;
     }
     return false;
