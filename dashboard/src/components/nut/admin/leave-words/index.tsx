@@ -20,6 +20,8 @@ import { ShowTimestamp } from "../../../date";
 import DestroyDialog from "./Destroy";
 import { setTitle } from "../../../../reducers/layout";
 import { useAppDispatch } from "../../../../hooks";
+import { ROLE_ADMINISTRATOR } from "../../../../reducers/current-user";
+import HasRole from "../../../access/HasRole";
 
 interface IItem {
   id: number;
@@ -40,94 +42,100 @@ const Widget = () => {
   }, [dispatch, intl]);
   return (
     <Col span={22} offset={1}>
-      <ProTable<IItem>
-        search={false}
-        actionRef={ref}
-        columns={[
-          {
-            title: intl.formatMessage({ id: "form.fields.id.label" }),
-            dataIndex: "id",
-            key: "id",
-            width: ID_WIDTH,
-          },
-          {
-            title: intl.formatMessage({ id: "form.fields.ip.label" }),
-            dataIndex: "ip",
-            key: "ip",
-            width: IP_WIDTH,
-          },
-          {
-            title: intl.formatMessage({ id: "form.fields.language.label" }),
-            key: "lang",
-            width: LANGUAGE_WIDTH,
-            render: (_, it) => <FormattedMessage id={`languages.${it.lang}`} />,
-          },
-          {
-            title: intl.formatMessage({ id: "form.fields.body.label" }),
+      <HasRole roles={[ROLE_ADMINISTRATOR]}>
+        <ProTable<IItem>
+          search={false}
+          actionRef={ref}
+          columns={[
+            {
+              title: intl.formatMessage({ id: "form.fields.id.label" }),
+              dataIndex: "id",
+              key: "id",
+              width: ID_WIDTH,
+            },
+            {
+              title: intl.formatMessage({ id: "form.fields.ip.label" }),
+              dataIndex: "ip",
+              key: "ip",
+              width: IP_WIDTH,
+            },
+            {
+              title: intl.formatMessage({ id: "form.fields.language.label" }),
+              key: "lang",
+              width: LANGUAGE_WIDTH,
+              render: (_, it) => (
+                <FormattedMessage id={`languages.${it.lang}`} />
+              ),
+            },
+            {
+              title: intl.formatMessage({ id: "form.fields.body.label" }),
 
-            key: "body",
-            render: (_, it) => (
-              <Typography.Paragraph ellipsis={{ rows: 2, expandable: true }}>
-                <Typography.Text>{it.body}</Typography.Text>
-              </Typography.Paragraph>
-            ),
-          },
-          {
-            title: intl.formatMessage({ id: "form.fields.created-at.label" }),
-            key: "created-at",
-            width: TIMESTAMP_COLUMN_WIDTH,
-            render: (_, it) => <ShowTimestamp value={it.createdAt} />,
-          },
-          {
-            title: intl.formatMessage({ id: "table.columns.operation.label" }),
-            key: "operation",
-            width: 80,
-            render: (_, it) => (
-              <DestroyDialog
-                id={it.id}
-                handleRefresh={async () => {
-                  ref.current?.reload();
-                }}
-              />
-            ),
-          },
-        ]}
-        request={async (params, sorter, filter) => {
-          const client = new SiteClient(GRPC_HOST);
+              key: "body",
+              render: (_, it) => (
+                <Typography.Paragraph ellipsis={{ rows: 2, expandable: true }}>
+                  <Typography.Text>{it.body}</Typography.Text>
+                </Typography.Paragraph>
+              ),
+            },
+            {
+              title: intl.formatMessage({ id: "form.fields.created-at.label" }),
+              key: "created-at",
+              width: TIMESTAMP_COLUMN_WIDTH,
+              render: (_, it) => <ShowTimestamp value={it.createdAt} />,
+            },
+            {
+              title: intl.formatMessage({
+                id: "table.columns.operation.label",
+              }),
+              key: "operation",
+              width: 80,
+              render: (_, it) => (
+                <DestroyDialog
+                  id={it.id}
+                  handleRefresh={async () => {
+                    ref.current?.reload();
+                  }}
+                />
+              ),
+            },
+          ]}
+          request={async (params, sorter, filter) => {
+            const client = new SiteClient(GRPC_HOST);
 
-          const request = new Pager();
-          request.setPage(params.current || DEFAULT_PAGE);
-          request.setSize(params.pageSize || DEFAULT_SIZE);
+            const request = new Pager();
+            request.setPage(params.current || DEFAULT_PAGE);
+            request.setSize(params.pageSize || DEFAULT_SIZE);
 
-          const response = await client.indexLeaveWord(
-            request,
-            grpc_metadata()
-          );
-          return {
-            total: response.getPagination()?.getTotal(),
-            success: true,
-            data: response.getItemsList().map((x) => {
-              var it: IItem = {
-                id: x.getId(),
-                lang: x.getLang(),
-                ip: x.getIp(),
-                body: x.getBody(),
-                createdAt: to_date(x.getCreatedAt() || new Timestamp()),
-              };
-              return it;
-            }),
-          };
-        }}
-        rowKey="id"
-        bordered
-        pagination={{
-          showQuickJumper: true,
-          showSizeChanger: true,
-        }}
-        headerTitle={intl.formatMessage({
-          id: "nut.admin.leave-words.index.title",
-        })}
-      />
+            const response = await client.indexLeaveWord(
+              request,
+              grpc_metadata()
+            );
+            return {
+              total: response.getPagination()?.getTotal(),
+              success: true,
+              data: response.getItemsList().map((x) => {
+                var it: IItem = {
+                  id: x.getId(),
+                  lang: x.getLang(),
+                  ip: x.getIp(),
+                  body: x.getBody(),
+                  createdAt: to_date(x.getCreatedAt() || new Timestamp()),
+                };
+                return it;
+              }),
+            };
+          }}
+          rowKey="id"
+          bordered
+          pagination={{
+            showQuickJumper: true,
+            showSizeChanger: true,
+          }}
+          headerTitle={intl.formatMessage({
+            id: "nut.admin.leave-words.index.title",
+          })}
+        />
+      </HasRole>
     </Col>
   );
 };

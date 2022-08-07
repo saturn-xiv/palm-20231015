@@ -11,6 +11,8 @@ import {
 import { SiteClient } from "../../../../protocols/NutServiceClientPb";
 import { setTitle } from "../../../../reducers/layout";
 import { useAppDispatch } from "../../../../hooks";
+import { ROLE_ADMINISTRATOR } from "../../../../reducers/current-user";
+import HasRole from "../../../access/HasRole";
 import CopyrightForm from "./profile/Copyright";
 import InfoForm from "./profile/Info";
 import AuthorForm from "./profile/Author";
@@ -61,87 +63,89 @@ const Widget = () => {
 
   return (
     <Col span={24}>
-      <Tabs defaultActiveKey="status">
-        <Tabs.TabPane
-          key="status"
-          tab={<FormattedMessage id="nut.admin.site.status" />}
-        >
-          <Row gutter={[16, 16]}>
-            <Col sm={{ span: 22, offset: 1 }} md={{ span: 10 }}>
-              <SystemPanel item={status.getSystem()} />
-            </Col>
-            <Col sm={{ span: 22, offset: 1 }} md={{ span: 10 }}>
-              <PostgreSqlPanel item={status.getPostgresql()} />
-            </Col>
-            <Col sm={{ span: 22, offset: 1 }} md={{ span: 10 }}>
-              <RedisPanel item={status.getRedis()} />
-            </Col>
-            <Col sm={{ span: 22, offset: 1 }} md={{ span: 10 }}>
-              <RabbitMqPanel item={status.getRabbitmq()} />
-            </Col>
-          </Row>
-        </Tabs.TabPane>
-        <Tabs.TabPane
-          key="profile"
-          tab={<FormattedMessage id="nut.admin.site.profile" />}
-        >
-          <Row gutter={[16, 16]}>
-            <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
-              <InfoForm
-                title={layout.getTitle()}
-                subhead={layout.getSubhead()}
-                description={layout.getDescription()}
-              />
-            </Col>
-            <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
-              <AuthorForm
-                email={layout.getAuthor()?.getEmail() || ""}
-                name={layout.getAuthor()?.getName() || ""}
-              />
-            </Col>
-            <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
-              <CopyrightForm value={layout.getCopyright()} />
-            </Col>
-            <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
-              <LogoForm url={layout.getLogo()} />
-            </Col>
-            <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
-              <SmtpForm />
-            </Col>
-            <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
-              <AwsForm />
-            </Col>
-            <Col span={22}>
-              <TokenPanel />
-            </Col>
-          </Row>
-        </Tabs.TabPane>
-        <Tabs.TabPane
-          key="seo"
-          tab={<FormattedMessage id="nut.admin.site.seo" />}
-        >
-          <Row gutter={[16, 16]}>
-            <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
-              <SitemapPanel />
-            </Col>
-            <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
-              <RssPanel />
-            </Col>
-            <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
-              <KeywordsForm items={layout.getKeywordsList()} />
-            </Col>
-            <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
-              <GoogleForm />
-            </Col>
-            <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
-              <BaiduForm />
-            </Col>
-            <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
-              <BingForm />
-            </Col>
-          </Row>
-        </Tabs.TabPane>
-      </Tabs>
+      <HasRole roles={[ROLE_ADMINISTRATOR]}>
+        <Tabs defaultActiveKey="status">
+          <Tabs.TabPane
+            key="status"
+            tab={<FormattedMessage id="nut.admin.site.status" />}
+          >
+            <Row gutter={[16, 16]}>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 10 }}>
+                <SystemPanel item={status.getSystem()} />
+              </Col>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 10 }}>
+                <PostgreSqlPanel item={status.getPostgresql()} />
+              </Col>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 10 }}>
+                <RedisPanel item={status.getRedis()} />
+              </Col>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 10 }}>
+                <RabbitMqPanel item={status.getRabbitmq()} />
+              </Col>
+            </Row>
+          </Tabs.TabPane>
+          <Tabs.TabPane
+            key="profile"
+            tab={<FormattedMessage id="nut.admin.site.profile" />}
+          >
+            <Row gutter={[16, 16]}>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
+                <InfoForm
+                  title={layout.getTitle()}
+                  subhead={layout.getSubhead()}
+                  description={layout.getDescription()}
+                />
+              </Col>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
+                <AuthorForm
+                  email={layout.getAuthor()?.getEmail() || ""}
+                  name={layout.getAuthor()?.getName() || ""}
+                />
+              </Col>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
+                <CopyrightForm value={layout.getCopyright()} />
+              </Col>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
+                <LogoForm url={layout.getLogo()} />
+              </Col>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
+                <SmtpForm />
+              </Col>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
+                <AwsForm />
+              </Col>
+              <Col span={22}>
+                <TokenPanel />
+              </Col>
+            </Row>
+          </Tabs.TabPane>
+          <Tabs.TabPane
+            key="seo"
+            tab={<FormattedMessage id="nut.admin.site.seo" />}
+          >
+            <Row gutter={[16, 16]}>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
+                <SitemapPanel />
+              </Col>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
+                <RssPanel />
+              </Col>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
+                <KeywordsForm items={layout.getKeywordsList()} />
+              </Col>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
+                <GoogleForm />
+              </Col>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
+                <BaiduForm />
+              </Col>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 6 }}>
+                <BingForm />
+              </Col>
+            </Row>
+          </Tabs.TabPane>
+        </Tabs>
+      </HasRole>
     </Col>
   );
 };

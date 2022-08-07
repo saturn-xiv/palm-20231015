@@ -7,7 +7,11 @@ import { setTitle } from "../../../../reducers/layout";
 import { useAppDispatch } from "../../../../hooks";
 import RolesIndex from "./roles";
 import UsersIndex from "./users";
-import { IRoleOption, IUserOption } from "../../../../reducers/current-user";
+import {
+  IRoleOption,
+  IUserOption,
+  ROLE_ADMINISTRATOR,
+} from "../../../../reducers/current-user";
 import { RbacClient } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
 import AddRoleForUser from "./AddRoleForUser";
@@ -15,6 +19,7 @@ import AddPermissionForUser from "./AddPermissionForUser";
 import AddPermissionForRole from "./AddPermissionForRole";
 import SyncPolicies from "./SyncPolicies";
 import SideBar from "./SideBar";
+import HasRole from "../../../access/HasRole";
 
 const Widget = () => {
   const intl = useIntl();
@@ -56,7 +61,7 @@ const Widget = () => {
     handleRefresh();
   }, [dispatch, intl, handleRefresh]);
   return (
-    <>
+    <HasRole roles={[ROLE_ADMINISTRATOR]}>
       <Col span={24}>
         <AddRoleForUser handleRefresh={handleRefresh} users={users} />
         <AddPermissionForRole roles={roles} />
@@ -89,7 +94,7 @@ const Widget = () => {
           </Tabs.TabPane>
         </Tabs>
       </Col>
-    </>
+    </HasRole>
   );
 };
 
