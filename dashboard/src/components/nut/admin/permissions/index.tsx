@@ -60,7 +60,7 @@ const Widget = () => {
         <AddRoleForUser handleRefresh={handleRefresh} users={users} />
         <AddPermissionForRole roles={roles} />
         <AddPermissionForUser users={users} />
-        <SyncPolicies />
+        <SyncPolicies handleRefresh={handleRefresh} />
       </Col>
       <Col span={24}>
         <Tabs defaultActiveKey="roles">

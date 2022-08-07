@@ -5,7 +5,10 @@ import { useIntl, FormattedMessage } from "react-intl";
 import { RbacClient } from "../../../../protocols/NutServiceClientPb";
 import { GRPC_HOST, grpc_metadata } from "../../../../request";
 
-const Widget = () => {
+interface IProps {
+  handleRefresh: () => void;
+}
+const Widget = ({ handleRefresh }: IProps) => {
   const intl = useIntl();
   const handleClick = () => {
     const client = new RbacClient(GRPC_HOST);
@@ -15,6 +18,7 @@ const Widget = () => {
         message.error(err.message);
       } else {
         message.success(intl.formatMessage({ id: "form.submit.successed" }));
+        handleRefresh();
       }
     });
   };
