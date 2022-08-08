@@ -49,6 +49,10 @@ const items = {
   "form.upload.successed": "File {name} uploaded successfully.",
   "form.upload.failed": "File {name} upload failed.",
   "form.upload.processing": "Please wait for file {name} uploading...",
+  "form.log.level.info": "Info",
+  "form.log.level.debug": "Debug",
+  "form.log.level.warning": "Warning",
+  "form.log.level.error": "Error",
   "form.submit.successed": "Successed!",
 };
 

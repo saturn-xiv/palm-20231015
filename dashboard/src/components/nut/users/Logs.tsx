@@ -58,10 +58,22 @@ const Widget = () => {
             width: 80,
             valueType: "select",
             valueEnum: {
-              info: { text: "提示", status: "info" },
-              debug: { text: "调试", status: "debug" },
-              warning: { text: "警告", status: "warning" },
-              error: { text: "错误", status: "error" },
+              error: {
+                text: intl.formatMessage({ id: "form.log.level.error" }),
+                status: "error",
+              },
+              warning: {
+                text: intl.formatMessage({ id: "form.log.level.warning" }),
+                status: "warning",
+              },
+              info: {
+                text: intl.formatMessage({ id: "form.log.level.info" }),
+                status: "info",
+              },
+              debug: {
+                text: intl.formatMessage({ id: "form.log.level.debug" }),
+                status: "debug",
+              },
             },
           },
           {
