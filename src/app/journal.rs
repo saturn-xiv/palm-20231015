@@ -5,11 +5,12 @@ use super::super::{
 };
 
 pub async fn launch(cfg: &Config) -> Result<()> {
-    let es = cfg.elasticsearch.open()?;
+    let se = cfg.opensearch.open()?;
+
     let mut buf = String::new();
     loop {
         io::stdin().read_line(&mut buf)?;
         let it: JournalItem = serde_json::from_str(&buf)?;
-        it.save(&es).await?;
+        se.save(&it).await?;
     }
 }

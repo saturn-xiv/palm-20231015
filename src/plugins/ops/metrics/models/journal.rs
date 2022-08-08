@@ -1,10 +1,6 @@
-use std::any::type_name;
 use std::fmt;
 
-use elasticsearch::{Elasticsearch, IndexParts};
 use serde::{Deserialize, Serialize};
-
-use super::super::super::super::super::Result;
 
 // LANG=en_US.utf8 sudo journalctl -o json --utc --all -f
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -77,17 +73,5 @@ impl fmt::Display for Item {
             "{} {} {}[{}]: {}",
             self.syslog_timestamp, self.hostname, self.comm, self.pid, self.message
         )
-    }
-}
-
-impl Item {
-    pub async fn save(&self, client: &Elasticsearch) -> Result<()> {
-        let body = json!(self);
-        client
-            .index(IndexParts::Index(type_name::<Self>()))
-            .body(body)
-            .send()
-            .await?;
-        Ok(())
     }
 }

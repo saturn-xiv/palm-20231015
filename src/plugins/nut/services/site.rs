@@ -28,6 +28,7 @@ use super::super::super::super::{
     jwt::Jwt,
     orm::postgresql::{Connection as PostgreSqlConnection, Pool as PostgreSqlPool},
     queue::amqp::RabbitMq,
+    search::OpenSearch,
     setting::Dao as SettingDao,
     Error, GrpcResult, Result,
 };
@@ -120,6 +121,7 @@ pub struct Service {
     pub redis: RedisPool,
     pub rabbitmq: Arc<RabbitMq>,
     pub enforcer: Arc<Mutex<Enforcer>>,
+    pub search: Arc<OpenSearch>,
 }
 
 #[tonic::async_trait]
@@ -885,6 +887,7 @@ impl v1::site_server::Site for Service {
         }
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
+        let se = self.search.deref();
 
         let postgresql = try_grpc!(v1::site_status_response::PostgreSql::new(db))?;
         let rabbitmq = v1::site_status_response::RabbitMq {
@@ -899,11 +902,13 @@ impl v1::site_server::Site for Service {
         let system = try_grpc!(v1::site_status_response::System::new())?;
 
         let redis = try_grpc!(v1::site_status_response::Redis::new(ch))?;
+        let opensearch = try_grpc!(v1::site_status_response::OpenSearch::new(se).await)?;
         Ok(Response::new(v1::SiteStatusResponse {
             postgresql: Some(postgresql),
             rabbitmq: Some(rabbitmq),
             redis: Some(redis),
             system: Some(system),
+            opensearch: Some(opensearch),
             ..Default::default()
         }))
     }
@@ -1152,5 +1157,12 @@ impl v1::AwsProfile {
             None,
             None,
         )
+    }
+}
+
+impl v1::site_status_response::OpenSearch {
+    pub async fn new(search: &OpenSearch) -> Result<Self> {
+        let (url, info) = search.info().await?;
+        Ok(Self { url, info })
     }
 }

@@ -30,6 +30,7 @@ import RedisPanel from "./status/redis";
 import SystemPanel from "./status/System";
 import RabbitMqPanel from "./status/RabbitMq";
 import AwsForm from "./profile/aws/Profile";
+import OpenSearchPanel from "./status/OpenSearch";
 
 const Widget = () => {
   const intl = useIntl();
@@ -81,6 +82,9 @@ const Widget = () => {
               </Col>
               <Col sm={{ span: 22, offset: 1 }} md={{ span: 10 }}>
                 <RabbitMqPanel item={status.getRabbitmq()} />
+              </Col>
+              <Col sm={{ span: 22, offset: 1 }} md={{ span: 10 }}>
+                <OpenSearchPanel item={status.getOpensearch()} />
               </Col>
             </Row>
           </Tabs.TabPane>

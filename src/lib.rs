@@ -28,6 +28,7 @@ pub mod parser;
 pub mod plugins;
 pub mod queue;
 pub mod result;
+pub mod search;
 pub mod setting;
 pub mod theme;
 

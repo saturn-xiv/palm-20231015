@@ -2266,10 +2266,10 @@ export class SiteStatusResponse extends jspb.Message {
   hasRabbitmq(): boolean;
   clearRabbitmq(): SiteStatusResponse;
 
-  getElasticsearch(): SiteStatusResponse.ElasticSearch | undefined;
-  setElasticsearch(value?: SiteStatusResponse.ElasticSearch): SiteStatusResponse;
-  hasElasticsearch(): boolean;
-  clearElasticsearch(): SiteStatusResponse;
+  getOpensearch(): SiteStatusResponse.OpenSearch | undefined;
+  setOpensearch(value?: SiteStatusResponse.OpenSearch): SiteStatusResponse;
+  hasOpensearch(): boolean;
+  clearOpensearch(): SiteStatusResponse;
 
   getSystem(): SiteStatusResponse.System | undefined;
   setSystem(value?: SiteStatusResponse.System): SiteStatusResponse;
@@ -2295,7 +2295,7 @@ export namespace SiteStatusResponse {
     mysql?: SiteStatusResponse.MySql.AsObject,
     redis?: SiteStatusResponse.Redis.AsObject,
     rabbitmq?: SiteStatusResponse.RabbitMq.AsObject,
-    elasticsearch?: SiteStatusResponse.ElasticSearch.AsObject,
+    opensearch?: SiteStatusResponse.OpenSearch.AsObject,
     system?: SiteStatusResponse.System.AsObject,
     healthesList: Array<SiteStatusResponse.Health.AsObject>,
   }
@@ -2444,17 +2444,25 @@ export namespace SiteStatusResponse {
   }
 
 
-  export class ElasticSearch extends jspb.Message {
+  export class OpenSearch extends jspb.Message {
+    getUrl(): string;
+    setUrl(value: string): OpenSearch;
+
+    getInfo(): string;
+    setInfo(value: string): OpenSearch;
+
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): ElasticSearch.AsObject;
-    static toObject(includeInstance: boolean, msg: ElasticSearch): ElasticSearch.AsObject;
-    static serializeBinaryToWriter(message: ElasticSearch, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): ElasticSearch;
-    static deserializeBinaryFromReader(message: ElasticSearch, reader: jspb.BinaryReader): ElasticSearch;
+    toObject(includeInstance?: boolean): OpenSearch.AsObject;
+    static toObject(includeInstance: boolean, msg: OpenSearch): OpenSearch.AsObject;
+    static serializeBinaryToWriter(message: OpenSearch, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): OpenSearch;
+    static deserializeBinaryFromReader(message: OpenSearch, reader: jspb.BinaryReader): OpenSearch;
   }
 
-  export namespace ElasticSearch {
+  export namespace OpenSearch {
     export type AsObject = {
+      url: string,
+      info: string,
     }
   }
 

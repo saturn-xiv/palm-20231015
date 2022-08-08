@@ -574,7 +574,10 @@ message SiteStatusResponse {
     repeated Item items = 2;
   }
   message RabbitMq { string protocol = 1; }
-  message ElasticSearch {}
+  message OpenSearch {
+    string url = 1;
+    string info = 2;
+  }
   message Health {
     string name = 1;
     string status = 2;
@@ -596,7 +599,7 @@ message SiteStatusResponse {
   MySql mysql = 2;
   Redis redis = 3;
   RabbitMq rabbitmq = 4;
-  ElasticSearch elasticsearch = 5;
+  OpenSearch opensearch = 5;
   System system = 11;
   repeated Health healthes = 21;
 }

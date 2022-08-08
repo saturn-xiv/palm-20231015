@@ -7,7 +7,7 @@ use super::super::{
     crypto::{Aes, Hmac},
     env::Config,
     jwt::Jwt,
-    plugins::nut,
+    plugins::{nut, ops},
     Result,
 };
 
@@ -21,7 +21,14 @@ pub async fn web(cfg: &Config) -> Result<()> {
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
     let enforcer = Arc::new(Mutex::new(cfg.postgresql.enforcer(1 << 3).await?));
+    let search = Arc::new(cfg.opensearch.open()?);
 
+    {
+        info!("check opensearch indexes");
+        search
+            .check::<ops::metrics::models::journal::Item>()
+            .await?;
+    }
     let nut_attachment = tonic_web::config()
         .allow_all_origins()
         .allow_credentials(true)
@@ -90,6 +97,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
                 redis,
                 rabbitmq,
                 enforcer,
+                search,
             },
         ));
 
@@ -116,6 +124,7 @@ pub async fn tcp(cfg: &Config) -> Result<()> {
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
     let enforcer = Arc::new(Mutex::new(cfg.postgresql.enforcer(1 << 3).await?));
+    let search = Arc::new(cfg.opensearch.open()?);
 
     Server::builder()
         .add_service(nut::v1::user_server::UserServer::new(
@@ -149,7 +158,8 @@ pub async fn tcp(cfg: &Config) -> Result<()> {
                 hmac,
                 redis,
                 rabbitmq,
-                enforcer: enforcer.clone(),
+                enforcer,
+                search,
             },
         ))
         .serve(addr)
