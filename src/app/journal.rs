@@ -7,8 +7,8 @@ use super::super::{
 pub async fn launch(cfg: &Config) -> Result<()> {
     let se = cfg.opensearch.open()?;
 
-    let mut buf = String::new();
     loop {
+        let mut buf = String::new();
         io::stdin().read_line(&mut buf)?;
         let it: JournalItem = serde_json::from_str(&buf)?;
         se.save(&it).await?;
