@@ -1,5 +1,4 @@
 use std::any::type_name;
-use std::collections::HashMap;
 use std::fs::read_to_string;
 use std::ops::{Deref, DerefMut};
 use std::process::Command;
@@ -39,7 +38,6 @@ use super::super::{
         user::{Dao as UserDao, Item as User},
         Operation,
     },
-    tasks::email::Task as EmailTask,
     v1,
 };
 use super::Session;
@@ -54,26 +52,26 @@ impl v1::SiteSetInfoRequest {
     pub const SUBHEAD: &'static str = "site.subhead";
     pub const DESCRIPTION: &'static str = "site.description";
 }
-impl v1::SiteSetLogoRequest {
-    pub const KEY: &'static str = "site.logo";
-}
-impl v1::SiteSetKeywordsRequest {
-    pub const KEY: &'static str = "site.keywords";
-}
-impl v1::SiteSetCopyrightRequest {
-    pub const KEY: &'static str = "site.copyright";
-}
+
 impl v1::SiteLayoutResponse {
     pub fn new(db: &mut PostgreSqlConnection, aes: &Aes, lang: &str) -> Result<Self> {
-        let keywords: Vec<String> =
-            SettingDao::get(db, aes, &v1::SiteSetKeywordsRequest::KEY.to_string(), None)
-                .unwrap_or_default();
-        let copyright: String =
-            SettingDao::get(db, aes, &v1::SiteSetCopyrightRequest::KEY.to_string(), None)
-                .unwrap_or_else(|_| {
-                    let (_, year) = Utc::now().year_ce();
-                    format!("2013~{}", year)
-                });
+        let keywords: Vec<String> = SettingDao::get(
+            db,
+            aes,
+            &type_name::<v1::SiteSetKeywordsRequest>().to_string(),
+            None,
+        )
+        .unwrap_or_default();
+        let copyright: String = SettingDao::get(
+            db,
+            aes,
+            &type_name::<v1::SiteSetCopyrightRequest>().to_string(),
+            None,
+        )
+        .unwrap_or_else(|_| {
+            let (_, year) = Utc::now().year_ce();
+            format!("2013~{}", year)
+        });
         let languages = LocaleDao::languages(db).unwrap_or_default();
         let author_name = SettingDao::get(
             db,
@@ -89,8 +87,13 @@ impl v1::SiteLayoutResponse {
             None,
         )
         .unwrap_or_default();
-        let logo: String = SettingDao::get(db, aes, &v1::SiteSetLogoRequest::KEY.to_string(), None)
-            .unwrap_or_else(|_| "/my/favicon.ico".to_string());
+        let logo: String = SettingDao::get(
+            db,
+            aes,
+            &type_name::<v1::SiteSetLogoRequest>().to_string(),
+            None,
+        )
+        .unwrap_or_else(|_| "/assets/favicon.png".to_string());
 
         Ok(Self {
             title: I18n::t(db, lang, v1::SiteSetInfoRequest::TITLE, &None::<String>),
@@ -181,7 +184,7 @@ impl v1::site_server::Site for Service {
         try_grpc!(SettingDao::set(
             db,
             aes,
-            &v1::SiteSetCopyrightRequest::KEY.to_string(),
+            &type_name::<v1::SiteSetCopyrightRequest>().to_string(),
             None,
             &req.payload,
             false,
@@ -206,7 +209,7 @@ impl v1::site_server::Site for Service {
         try_grpc!(SettingDao::set(
             db,
             aes,
-            &v1::SiteSetLogoRequest::KEY.to_string(),
+            &type_name::<v1::SiteSetLogoRequest>().to_string(),
             None,
             &req.url,
             false,
@@ -231,7 +234,7 @@ impl v1::site_server::Site for Service {
         try_grpc!(SettingDao::set(
             db,
             aes,
-            &v1::SiteSetKeywordsRequest::KEY.to_string(),
+            &type_name::<v1::SiteSetKeywordsRequest>().to_string(),
             None,
             &req.items,
             false,
@@ -589,7 +592,7 @@ impl v1::site_server::Site for Service {
         try_grpc!(SettingDao::set(
             db,
             aes,
-            &v1::AwsProfile::KEY.to_string(),
+            &type_name::<v1::AwsProfile>().to_string(),
             None,
             &buf,
             true
@@ -653,7 +656,7 @@ impl v1::site_server::Site for Service {
         try_grpc!(SettingDao::set(
             db,
             aes,
-            &v1::SmtpProfile::KEY.to_string(),
+            &type_name::<v1::SmtpProfile>().to_string(),
             None,
             &buf,
             true
@@ -673,13 +676,8 @@ impl v1::site_server::Site for Service {
         if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<v1::SmtpProfile>()));
         }
-        let buf: Vec<u8> = try_grpc!(SettingDao::get(
-            db,
-            aes,
-            &v1::SmtpProfile::KEY.to_string(),
-            None
-        ))?;
-        let mut it = try_grpc!(v1::SmtpProfile::decode(&buf[..]))?;
+
+        let mut it = try_grpc!(v1::SmtpProfile::new(db, aes))?;
         it.password = "change-me".to_string();
         Ok(Response::new(it))
     }
@@ -697,20 +695,13 @@ impl v1::site_server::Site for Service {
             return Err(Status::permission_denied(type_name::<v1::SmtpProfile>()));
         }
         let req = req.into_inner();
-        let buf: Vec<u8> = try_grpc!(SettingDao::get(
-            db,
-            aes,
-            &v1::SmtpProfile::KEY.to_string(),
-            None
-        ))?;
-        let it = try_grpc!(v1::SmtpProfile::decode(&buf[..]))?;
-        let task = EmailTask {
+
+        let it = try_grpc!(v1::SmtpProfile::new(db, aes))?;
+        let task = v1::EmailTask {
             subject: req.subject.clone(),
             body: req.body.clone(),
             to: req.to,
-            cc: Vec::new(),
-            bcc: Vec::new(),
-            files: HashMap::new(),
+            ..Default::default()
         };
         try_grpc!(task.send(&it.host, &it.user, &it.password))?;
         Ok(Response::new(()))
@@ -733,7 +724,7 @@ impl v1::site_server::Site for Service {
         try_grpc!(SettingDao::set(
             db,
             aes,
-            &v1::BingProfile::KEY.to_string(),
+            &type_name::<v1::BingProfile>().to_string(),
             None,
             &buf,
             true
@@ -753,13 +744,8 @@ impl v1::site_server::Site for Service {
         if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<v1::BingProfile>()));
         }
-        let buf: Vec<u8> = try_grpc!(SettingDao::get(
-            db,
-            aes,
-            &v1::BingProfile::KEY.to_string(),
-            None
-        ))?;
-        let it = try_grpc!(v1::BingProfile::decode(&buf[..]))?;
+
+        let it = try_grpc!(v1::BingProfile::new(db, aes))?;
         Ok(Response::new(it))
     }
 
@@ -780,7 +766,7 @@ impl v1::site_server::Site for Service {
         try_grpc!(SettingDao::set(
             db,
             aes,
-            &v1::GoogleProfile::KEY.to_string(),
+            &type_name::<v1::GoogleProfile>().to_string(),
             None,
             &buf,
             true
@@ -800,13 +786,8 @@ impl v1::site_server::Site for Service {
         if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<v1::GoogleProfile>()));
         }
-        let buf: Vec<u8> = try_grpc!(SettingDao::get(
-            db,
-            aes,
-            &v1::GoogleProfile::KEY.to_string(),
-            None
-        ))?;
-        let it = try_grpc!(v1::GoogleProfile::decode(&buf[..]))?;
+
+        let it = try_grpc!(v1::GoogleProfile::new(db, aes))?;
         Ok(Response::new(it))
     }
 
@@ -827,7 +808,7 @@ impl v1::site_server::Site for Service {
         try_grpc!(SettingDao::set(
             db,
             aes,
-            &v1::BaiduProfile::KEY.to_string(),
+            &type_name::<v1::BaiduProfile>().to_string(),
             None,
             &buf,
             true
@@ -847,13 +828,8 @@ impl v1::site_server::Site for Service {
         if !user.is_administrator(enf) {
             return Err(Status::permission_denied(type_name::<v1::BaiduProfile>()));
         }
-        let buf: Vec<u8> = try_grpc!(SettingDao::get(
-            db,
-            aes,
-            &v1::BaiduProfile::KEY.to_string(),
-            None
-        ))?;
-        let it = try_grpc!(v1::BaiduProfile::decode(&buf[..]))?;
+
+        let it = try_grpc!(v1::BaiduProfile::new(db, aes))?;
         Ok(Response::new(it))
     }
     async fn clear_cache(&self, req: Request<()>) -> GrpcResult<()> {
@@ -973,36 +949,32 @@ impl v1::site_server::Site for Service {
 }
 
 impl v1::SmtpProfile {
-    pub const KEY: &'static str = "site.smtp";
     pub fn new(db: &mut PostgreSqlConnection, aes: &Aes) -> Result<Self> {
-        let buf: Vec<u8> = SettingDao::get(db, aes, &Self::KEY.to_string(), None)?;
+        let buf: Vec<u8> = SettingDao::get(db, aes, &type_name::<Self>().to_string(), None)?;
         let it = Self::decode(&buf[..])?;
         Ok(it)
     }
 }
 
 impl v1::GoogleProfile {
-    pub const KEY: &'static str = "site.google";
     pub fn new(db: &mut PostgreSqlConnection, aes: &Aes) -> Result<Self> {
-        let buf: Vec<u8> = SettingDao::get(db, aes, &Self::KEY.to_string(), None)?;
+        let buf: Vec<u8> = SettingDao::get(db, aes, &type_name::<Self>().to_string(), None)?;
         let it = Self::decode(&buf[..])?;
         Ok(it)
     }
 }
 
 impl v1::BaiduProfile {
-    pub const KEY: &'static str = "site.baidu";
     pub fn new(db: &mut PostgreSqlConnection, aes: &Aes) -> Result<Self> {
-        let buf: Vec<u8> = SettingDao::get(db, aes, &Self::KEY.to_string(), None)?;
+        let buf: Vec<u8> = SettingDao::get(db, aes, &type_name::<Self>().to_string(), None)?;
         let it = Self::decode(&buf[..])?;
         Ok(it)
     }
 }
 
 impl v1::BingProfile {
-    pub const KEY: &'static str = "site.bing";
     pub fn new(db: &mut PostgreSqlConnection, aes: &Aes) -> Result<Self> {
-        let buf: Vec<u8> = SettingDao::get(db, aes, &Self::KEY.to_string(), None)?;
+        let buf: Vec<u8> = SettingDao::get(db, aes, &type_name::<Self>().to_string(), None)?;
         let it = Self::decode(&buf[..])?;
         Ok(it)
     }
@@ -1120,10 +1092,8 @@ impl v1::site_user_index_response::Item {
 
 /// https://console.aws.amazon.com/iam/home
 impl v1::AwsProfile {
-    pub const KEY: &'static str = "site.s3";
-
     pub fn new(db: &mut PostgreSqlConnection, aes: &Aes) -> Result<Self> {
-        let buf: Vec<u8> = SettingDao::get(db, aes, &Self::KEY.to_string(), None)?;
+        let buf: Vec<u8> = SettingDao::get(db, aes, &type_name::<Self>().to_string(), None)?;
         let it = Self::decode(&buf[..])?;
         Ok(it)
     }

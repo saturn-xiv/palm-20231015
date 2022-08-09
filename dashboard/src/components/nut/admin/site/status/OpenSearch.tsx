@@ -10,9 +10,7 @@ export interface IProps {
 const Widget = ({ item }: IProps) => {
   return (
     <Card title="OpenSearch">
-      <p>
-        <ReactJson src={JSON.parse(item?.getInfo() || "{}")} />
-      </p>
+      <ReactJson name={false} src={JSON.parse(item?.getInfo() || "{}")} />
       <Card.Meta description={item?.getUrl()} />
     </Card>
   );

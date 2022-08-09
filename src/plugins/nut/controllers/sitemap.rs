@@ -10,9 +10,8 @@ use serde::{Deserialize, Serialize};
 use validator::Validate;
 use xml::writer::{EventWriter, Result as XmlWriterResult, XmlEvent};
 
-use super::super::super::super::{
-    crypto::Aes, orm::postgresql::Pool as DbPool, setting::Dao as SettingDao, ToXml,
-};
+use super::super::super::super::{crypto::Aes, orm::postgresql::Pool as DbPool, ToXml};
+use super::super::v1::{BaiduProfile, GoogleProfile};
 
 pub struct Item {}
 
@@ -80,10 +79,6 @@ pub struct GoogleRequest {
     pub site_verify_code: String,
 }
 
-impl GoogleRequest {
-    pub const KEY: &'static str = "site.google";
-}
-
 #[get("/google{id}.html")]
 pub async fn google(
     (db, aes): (web::Data<DbPool>, web::Data<Aes>),
@@ -94,20 +89,22 @@ pub async fn google(
     let params = params.into_inner();
     let aes = aes.deref();
     let aes = aes.deref();
-    let it: GoogleRequest = try_web!(SettingDao::get(
-        db,
-        aes,
-        &GoogleRequest::KEY.to_string(),
-        None
-    ))?;
-    if params.0 != it.site_verify_code {
-        return Err(ErrorBadRequest("bad google verify site id"));
-    }
-    let body = try_web!(it.render())?;
+    let cfg = try_web!(GoogleProfile::new(db, aes))?;
 
-    Ok(HttpResponse::Ok()
-        .content_type(ContentType::html())
-        .body(body))
+    if let Some(it) = cfg.site_verify_id {
+        if params.0 == it {
+            let body = try_web!(GoogleRequest {
+                site_verify_code: it
+            }
+            .render())?;
+
+            return Ok(HttpResponse::Ok()
+                .content_type(ContentType::html())
+                .body(body));
+        }
+    }
+
+    Err(ErrorBadRequest("bad google verify site id"))
 }
 
 #[derive(Template, Validate, Serialize, Deserialize)]
@@ -120,10 +117,6 @@ pub struct BaiduRequest {
     pub site_verify_content: String,
 }
 
-impl BaiduRequest {
-    pub const KEY: &'static str = "site.baidu";
-}
-
 #[get("/baidu_verify_code-{id}.html")]
 pub async fn baidu(
     (db, aes): (web::Data<DbPool>, web::Data<Aes>),
@@ -134,18 +127,19 @@ pub async fn baidu(
     let params = params.into_inner();
     let aes = aes.deref();
     let aes = aes.deref();
-    let it: BaiduRequest = try_web!(SettingDao::get(
-        db,
-        aes,
-        &BaiduRequest::KEY.to_string(),
-        None
-    ))?;
-    if params.0 != it.site_verify_code {
-        return Err(ErrorBadRequest("bad baidu verify site id"));
-    }
-    let body = try_web!(it.render())?;
+    let cfg = try_web!(BaiduProfile::new(db, aes))?;
+    if let Some(it) = cfg.site_verify {
+        if params.0 == it.id {
+            let body = try_web!(BaiduRequest {
+                site_verify_code: it.id.clone(),
+                site_verify_content: it.content,
+            }
+            .render())?;
 
-    Ok(HttpResponse::Ok()
-        .content_type(ContentType::html())
-        .body(body))
+            return Ok(HttpResponse::Ok()
+                .content_type(ContentType::html())
+                .body(body));
+        }
+    }
+    Err(ErrorBadRequest("bad baidu verify site id"))
 }

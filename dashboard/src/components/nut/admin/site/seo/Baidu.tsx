@@ -11,6 +11,7 @@ import { GRPC_HOST, grpc_metadata } from "../../../../../request";
 
 interface IFormData {
   siteVerifyId?: string;
+  siteVerifyContent?: string;
 }
 
 const Widget = () => {
@@ -37,15 +38,19 @@ const Widget = () => {
           const client = new SiteClient(GRPC_HOST);
           const response = await client.getBaidu(new Empty(), grpc_metadata());
           return {
-            siteVerifyId: response.getSiteVerifyId(),
+            siteVerifyId: response.getSiteVerify()?.getId(),
+            siteVerifyContent: response.getSiteVerify()?.getContent(),
           };
         }}
         onFinish={async (values: IFormData) => {
           const client = new SiteClient(GRPC_HOST);
           const request = new BaiduProfile();
 
-          if (values.siteVerifyId) {
-            request.setSiteVerifyId(values.siteVerifyId);
+          if (values.siteVerifyId && values.siteVerifyContent) {
+            var it = new BaiduProfile.SiteVerify();
+            it.setId(values.siteVerifyId);
+            it.setContent(values.siteVerifyContent);
+            request.setSiteVerify(it);
           }
           client.setBaidu(request, grpc_metadata(), function (error) {
             if (error) {
@@ -66,6 +71,15 @@ const Widget = () => {
             name="siteVerifyId"
             label={intl.formatMessage({
               id: "nut.admin.site.baidu.site-verify-id",
+            })}
+          />
+        </ProForm.Group>
+        <ProForm.Group>
+          <ProFormText
+            width="md"
+            name="siteVerifyContent"
+            label={intl.formatMessage({
+              id: "nut.admin.site.baidu.site-verify-content",
             })}
           />
         </ProForm.Group>

@@ -30,6 +30,7 @@ const items = {
   "nut.admin.site.google.recaptcha.secret": "Secret",
   "nut.admin.site.baidu.title": "Baidu",
   "nut.admin.site.baidu.site-verify-id": "Site verify id",
+  "nut.admin.site.baidu.site-verify-content": "Site verify content",
   "nut.admin.site.bing.title": "Bing",
   "nut.admin.site.bing.site-verify-id": "Site verify id",
   "nut.admin.site.keywords.title": "Keywords",

@@ -1,3 +1,4 @@
+use std::any::type_name;
 use std::time::{SystemTime, UNIX_EPOCH};
 
 use amq_protocol_uri::{AMQPAuthority, AMQPUri, AMQPUserInfo};
@@ -84,8 +85,10 @@ impl RabbitMq {
 }
 
 impl RabbitMq {
-    pub async fn publish<P: Serialize>(&self, queue: &str, payload: &P) -> Result<()> {
-        let payload = flexbuffers::to_vec(payload)?;
+    pub async fn produce<T: prost::Message>(&self, payload: &T) -> Result<()> {
+        let queue = type_name::<T>();
+        let mut buf = Vec::new();
+        payload.encode(&mut buf)?;
         let ch = self.open(queue).await?;
         let id = Uuid::new_v4().to_string();
         info!("publish task {}://{}", queue, id);
@@ -93,10 +96,10 @@ impl RabbitMq {
             "",
             queue,
             BasicPublishOptions::default(),
-            &payload,
+            &buf,
             BasicProperties::default()
                 .with_message_id(id.into())
-                .with_content_type("FlatBuffers".into())
+                .with_content_type("protobuf".into())
                 .with_timestamp(SystemTime::now().duration_since(UNIX_EPOCH)?.as_secs()),
         )
         .await?
@@ -156,3 +159,5 @@ async fn handle_message<H: Handler>(delivery: Delivery, hnd: &H) -> Result<()> {
         Some("bad message format".to_string()),
     )))
 }
+
+// impl casbin::Watcher for

@@ -1,3 +1,4 @@
+use std::any::type_name;
 use std::ops::DerefMut;
 
 use hyper::StatusCode;
@@ -5,8 +6,7 @@ use hyper::StatusCode;
 use super::super::{
     crypto::Aes,
     env::Config,
-    plugins::nut::tasks::email::{Handler as EmailHandler, Task as EmailTask},
-    setting::Dao as SettingDao,
+    plugins::nut::v1::{EmailTask, SmtpProfile},
     HttpError, Result,
 };
 
@@ -23,16 +23,13 @@ pub async fn launch(cfg: &Config, name: &str) -> Result<()> {
     let mut db = db.get()?;
     let db = db.deref_mut();
     let aes = Aes::new(&cfg.secrets.0)?;
-    match name {
-        EmailTask::QUEUE => {
-            // TODO
-            let cfg: EmailHandler =
-                SettingDao::get(db, &aes, &EmailHandler::KEY.to_string(), None)?;
-            queue.consume(&id, name, &cfg).await
-        }
-        _ => Err(Box::new(HttpError(
+    if name == type_name::<EmailTask>() {
+        let cfg = SmtpProfile::new(db, &aes)?;
+        queue.consume(&id, name, &cfg).await
+    } else {
+        Err(Box::new(HttpError(
             StatusCode::BAD_REQUEST,
             Some(format!("unknown queue {}", name)),
-        ))),
+        )))
     }
 }

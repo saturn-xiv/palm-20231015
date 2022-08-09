@@ -21,7 +21,6 @@ use super::super::{
         log::{Dao as LogDao, Level},
         user::{Action, Dao as UserDao, Item as User, Token},
     },
-    tasks::email::Task as EmailTask,
     v1,
 };
 use super::Session;
@@ -522,7 +521,7 @@ impl Service {
             "home": home
         });
 
-        let task = EmailTask {
+        let task = v1::EmailTask {
             subject: I18n::t(
                 db,
                 &user.lang,
@@ -539,7 +538,7 @@ impl Service {
             ..Default::default()
         };
 
-        self.rabbitmq.publish(EmailTask::QUEUE, &task).await?;
+        self.rabbitmq.produce(&task).await?;
 
         Ok(())
     }

@@ -539,8 +539,34 @@ message GoogleProfile {
   optional string site_verify_id = 1;
   optional ReCaptcha re_captcha = 2;
 }
-message BaiduProfile { optional string site_verify_id = 1; }
+message BaiduProfile {
+  message SiteVerify {
+    string id = 1;
+    string content = 2;
+  }
+  optional SiteVerify site_verify = 1;
+}
 message BingProfile { optional string site_verify_id = 1; }
+
+message EmailTask {
+  enum ContentType {
+    TEXT_PLAIN = 0;
+    TEXT_HTML = 1;
+  }
+  message Attachment {
+    string name = 1;
+    ContentType content_type = 2;
+    bytes payload = 11;
+  }
+  string subject = 1;
+  string body = 2;
+  ContentType content_type = 3;
+
+  string to = 11;
+  repeated string cc = 12;
+  repeated string bcc = 13;
+  repeated Attachment attachments = 21;
+}
 
 message SmtpProfile {
   string host = 1;

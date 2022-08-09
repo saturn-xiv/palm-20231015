@@ -1,3 +1,5 @@
+use std::any::type_name;
+
 use actix_web::{http::header::ContentType, HttpResponse};
 use chrono::Duration;
 use redis::Connection as Cache;
@@ -14,10 +16,6 @@ pub enum Theme {
     MaterialDesign,
 }
 
-impl Theme {
-    pub const KEY: &'static str = "site.theme";
-}
-
 pub trait Page {
     fn render(&self, db: &mut Db, theme: &Theme, lang: &str) -> Result<String>;
     fn key(&self) -> String;
@@ -31,20 +29,11 @@ pub fn render<P: Page, S: Secret>(
     lang: &str,
 ) -> Result<HttpResponse> {
     let _ttl = Duration::days(1).to_std()?;
-    // let theme = ch
-    //     .get(
-    //         &Theme::KEY.to_string(),
-    //         move || db.get(enc, &Theme::KEY.to_string(), None),
-    //         &ttl,
-    //     )
-    //     .unwrap_or(Theme::Bootstrap);
 
     let theme = db
-        .get(enc, &Theme::KEY.to_string(), None)
+        .get(enc, &type_name::<Theme>().to_string(), None)
         .unwrap_or(Theme::Bootstrap);
 
-    // let key = format!("{}.{}", lang, tpl.key());
-    // let body = ch.get(&key, move || tpl.render(db, &theme, lang), &ttl)?;
     //     TODO
     let body = tpl.render(db, &theme, lang)?;
 

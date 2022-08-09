@@ -2158,10 +2158,10 @@ export namespace GoogleProfile {
 }
 
 export class BaiduProfile extends jspb.Message {
-  getSiteVerifyId(): string;
-  setSiteVerifyId(value: string): BaiduProfile;
-  hasSiteVerifyId(): boolean;
-  clearSiteVerifyId(): BaiduProfile;
+  getSiteVerify(): BaiduProfile.SiteVerify | undefined;
+  setSiteVerify(value?: BaiduProfile.SiteVerify): BaiduProfile;
+  hasSiteVerify(): boolean;
+  clearSiteVerify(): BaiduProfile;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): BaiduProfile.AsObject;
@@ -2173,12 +2173,35 @@ export class BaiduProfile extends jspb.Message {
 
 export namespace BaiduProfile {
   export type AsObject = {
-    siteVerifyId?: string,
+    siteVerify?: BaiduProfile.SiteVerify.AsObject,
   }
 
-  export enum SiteVerifyIdCase { 
-    _SITE_VERIFY_ID_NOT_SET = 0,
-    SITE_VERIFY_ID = 1,
+  export class SiteVerify extends jspb.Message {
+    getId(): string;
+    setId(value: string): SiteVerify;
+
+    getContent(): string;
+    setContent(value: string): SiteVerify;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): SiteVerify.AsObject;
+    static toObject(includeInstance: boolean, msg: SiteVerify): SiteVerify.AsObject;
+    static serializeBinaryToWriter(message: SiteVerify, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): SiteVerify;
+    static deserializeBinaryFromReader(message: SiteVerify, reader: jspb.BinaryReader): SiteVerify;
+  }
+
+  export namespace SiteVerify {
+    export type AsObject = {
+      id: string,
+      content: string,
+    }
+  }
+
+
+  export enum SiteVerifyCase { 
+    _SITE_VERIFY_NOT_SET = 0,
+    SITE_VERIFY = 1,
   }
 }
 
@@ -2204,6 +2227,88 @@ export namespace BingProfile {
   export enum SiteVerifyIdCase { 
     _SITE_VERIFY_ID_NOT_SET = 0,
     SITE_VERIFY_ID = 1,
+  }
+}
+
+export class EmailTask extends jspb.Message {
+  getSubject(): string;
+  setSubject(value: string): EmailTask;
+
+  getBody(): string;
+  setBody(value: string): EmailTask;
+
+  getContentType(): EmailTask.ContentType;
+  setContentType(value: EmailTask.ContentType): EmailTask;
+
+  getTo(): string;
+  setTo(value: string): EmailTask;
+
+  getCcList(): Array<string>;
+  setCcList(value: Array<string>): EmailTask;
+  clearCcList(): EmailTask;
+  addCc(value: string, index?: number): EmailTask;
+
+  getBccList(): Array<string>;
+  setBccList(value: Array<string>): EmailTask;
+  clearBccList(): EmailTask;
+  addBcc(value: string, index?: number): EmailTask;
+
+  getAttachmentsList(): Array<EmailTask.Attachment>;
+  setAttachmentsList(value: Array<EmailTask.Attachment>): EmailTask;
+  clearAttachmentsList(): EmailTask;
+  addAttachments(value?: EmailTask.Attachment, index?: number): EmailTask.Attachment;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): EmailTask.AsObject;
+  static toObject(includeInstance: boolean, msg: EmailTask): EmailTask.AsObject;
+  static serializeBinaryToWriter(message: EmailTask, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): EmailTask;
+  static deserializeBinaryFromReader(message: EmailTask, reader: jspb.BinaryReader): EmailTask;
+}
+
+export namespace EmailTask {
+  export type AsObject = {
+    subject: string,
+    body: string,
+    contentType: EmailTask.ContentType,
+    to: string,
+    ccList: Array<string>,
+    bccList: Array<string>,
+    attachmentsList: Array<EmailTask.Attachment.AsObject>,
+  }
+
+  export class Attachment extends jspb.Message {
+    getName(): string;
+    setName(value: string): Attachment;
+
+    getContentType(): EmailTask.ContentType;
+    setContentType(value: EmailTask.ContentType): Attachment;
+
+    getPayload(): Uint8Array | string;
+    getPayload_asU8(): Uint8Array;
+    getPayload_asB64(): string;
+    setPayload(value: Uint8Array | string): Attachment;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Attachment.AsObject;
+    static toObject(includeInstance: boolean, msg: Attachment): Attachment.AsObject;
+    static serializeBinaryToWriter(message: Attachment, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Attachment;
+    static deserializeBinaryFromReader(message: Attachment, reader: jspb.BinaryReader): Attachment;
+  }
+
+  export namespace Attachment {
+    export type AsObject = {
+      name: string,
+      contentType: EmailTask.ContentType,
+      payload: Uint8Array | string,
+    }
+  }
+
+
+  export enum ContentType { 
+    TEXT_PLAIN = 0,
+    TEXT_HTML = 1,
   }
 }
 

@@ -21,10 +21,6 @@ pub struct ClientSecret {
     pub web: Web,
 }
 
-impl ClientSecret {
-    pub const KEY: &'static str = "google.client-secret";
-}
-
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Web {
     pub client_id: String,
