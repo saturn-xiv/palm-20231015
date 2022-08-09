@@ -20,7 +20,17 @@ pub async fn web(cfg: &Config) -> Result<()> {
     let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
-    let enforcer = Arc::new(Mutex::new(cfg.postgresql.enforcer(1 << 3).await?));
+    let enforcer = Arc::new(Mutex::new(cfg.enforcer(1 << 3).await?));
+    {
+        info!("start casbin watcher");
+        let enforcer = enforcer.clone();
+        let watcher = nut::tasks::casbin::Watcher::new(redis::Client::open(cfg.redis.to_string())?);
+        tokio::spawn(async move {
+            if let Err(e) = watcher.listen(&enforcer).await {
+                error!("{:?}", e);
+            }
+        });
+    }
     let search = Arc::new(cfg.opensearch.open()?);
 
     {
@@ -123,7 +133,17 @@ pub async fn tcp(cfg: &Config) -> Result<()> {
     let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
-    let enforcer = Arc::new(Mutex::new(cfg.postgresql.enforcer(1 << 3).await?));
+    let enforcer = Arc::new(Mutex::new(cfg.enforcer(1 << 3).await?));
+    {
+        info!("start casbin watcher");
+        let enforcer = enforcer.clone();
+        let watcher = nut::tasks::casbin::Watcher::new(redis::Client::open(cfg.redis.to_string())?);
+        tokio::spawn(async move {
+            if let Err(e) = watcher.listen(&enforcer).await {
+                error!("{:?}", e);
+            }
+        });
+    }
     let search = Arc::new(cfg.opensearch.open()?);
 
     Server::builder()

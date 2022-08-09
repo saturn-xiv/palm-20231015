@@ -4,9 +4,7 @@ pub mod schema;
 use std::default::Default;
 use std::fmt;
 
-use casbin::{prelude::CoreApi, DefaultModel as CasbinModel, Enforcer};
 use serde::{Deserialize, Serialize};
-use sqlx_adapter::SqlxAdapter;
 
 use super::super::Result;
 
@@ -32,13 +30,6 @@ impl Config {
     pub fn open(&self) -> Result<Pool> {
         let manager = diesel::r2d2::ConnectionManager::<Connection>::new(&self.to_string()[..]);
         Ok(Pool::new(manager)?)
-    }
-
-    pub async fn enforcer(&self, pool: u32) -> Result<Enforcer> {
-        let m = CasbinModel::from_str(include_str!("rbac_model.conf")).await?;
-        let a = SqlxAdapter::new(self.to_string(), pool).await?;
-        let e = Enforcer::new(m, a).await?;
-        Ok(e)
     }
 }
 

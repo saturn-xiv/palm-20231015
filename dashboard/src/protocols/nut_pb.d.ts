@@ -511,6 +511,48 @@ export namespace UserGetProfileResponse {
   }
 }
 
+export class RbacWatcherMessage extends jspb.Message {
+  getSync(): RbacWatcherMessage.Sync | undefined;
+  setSync(value?: RbacWatcherMessage.Sync): RbacWatcherMessage;
+  hasSync(): boolean;
+  clearSync(): RbacWatcherMessage;
+
+  getPayloadCase(): RbacWatcherMessage.PayloadCase;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RbacWatcherMessage.AsObject;
+  static toObject(includeInstance: boolean, msg: RbacWatcherMessage): RbacWatcherMessage.AsObject;
+  static serializeBinaryToWriter(message: RbacWatcherMessage, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RbacWatcherMessage;
+  static deserializeBinaryFromReader(message: RbacWatcherMessage, reader: jspb.BinaryReader): RbacWatcherMessage;
+}
+
+export namespace RbacWatcherMessage {
+  export type AsObject = {
+    sync?: RbacWatcherMessage.Sync.AsObject,
+  }
+
+  export class Sync extends jspb.Message {
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Sync.AsObject;
+    static toObject(includeInstance: boolean, msg: Sync): Sync.AsObject;
+    static serializeBinaryToWriter(message: Sync, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Sync;
+    static deserializeBinaryFromReader(message: Sync, reader: jspb.BinaryReader): Sync;
+  }
+
+  export namespace Sync {
+    export type AsObject = {
+    }
+  }
+
+
+  export enum PayloadCase { 
+    PAYLOAD_NOT_SET = 0,
+    SYNC = 1,
+  }
+}
+
 export class RbacUserRequest extends jspb.Message {
   getId(): number;
   setId(value: number): RbacUserRequest;

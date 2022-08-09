@@ -85,7 +85,13 @@ impl RabbitMq {
 }
 
 impl RabbitMq {
+    pub async fn publish<T: prost::Message>(&self, payload: &T) -> Result<()> {
+        self.send("fanout", payload).await
+    }
     pub async fn produce<T: prost::Message>(&self, payload: &T) -> Result<()> {
+        self.send("", payload).await
+    }
+    async fn send<T: prost::Message>(&self, exchange: &str, payload: &T) -> Result<()> {
         let queue = type_name::<T>();
         let mut buf = Vec::new();
         payload.encode(&mut buf)?;
@@ -93,7 +99,7 @@ impl RabbitMq {
         let id = Uuid::new_v4().to_string();
         info!("publish task {}://{}", queue, id);
         ch.basic_publish(
-            "",
+            exchange,
             queue,
             BasicPublishOptions::default(),
             &buf,
@@ -159,5 +165,3 @@ async fn handle_message<H: Handler>(delivery: Delivery, hnd: &H) -> Result<()> {
         Some("bad message format".to_string()),
     )))
 }
-
-// impl casbin::Watcher for

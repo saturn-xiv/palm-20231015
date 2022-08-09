@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { useIntl, FormattedMessage } from "react-intl";
-import { Col, Tabs } from "antd";
+import { Col, Space, Tabs } from "antd";
 import { Empty } from "google-protobuf/google/protobuf/empty_pb";
 
 import { setTitle } from "../../../../reducers/layout";
@@ -17,7 +17,6 @@ import { GRPC_HOST, grpc_metadata } from "../../../../request";
 import AddRoleForUser from "./AddRoleForUser";
 import AddPermissionForUser from "./AddPermissionForUser";
 import AddPermissionForRole from "./AddPermissionForRole";
-import SyncPolicies from "./SyncPolicies";
 import SideBar from "./SideBar";
 import HasRole from "../../../access/HasRole";
 
@@ -63,10 +62,11 @@ const Widget = () => {
   return (
     <HasRole roles={[ROLE_ADMINISTRATOR]}>
       <Col span={24}>
-        <AddRoleForUser handleRefresh={handleRefresh} users={users} />
-        <AddPermissionForRole roles={roles} />
-        <AddPermissionForUser users={users} />
-        <SyncPolicies handleRefresh={handleRefresh} />
+        <Space>
+          <AddRoleForUser handleRefresh={handleRefresh} users={users} />
+          <AddPermissionForRole roles={roles} />
+          <AddPermissionForUser users={users} />
+        </Space>
       </Col>
       <Col span={24}>
         <Tabs defaultActiveKey="roles">

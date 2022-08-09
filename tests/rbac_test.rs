@@ -3,7 +3,7 @@ use palm::plugins::nut::models::user::Item as User;
 
 #[tokio::test]
 async fn casbin() {
-    let cfg = palm::orm::postgresql::Config::default();
+    let cfg = palm::env::Config::default();
     let mut enf = cfg.enforcer(2).await.unwrap();
     let user = "hello, casbin";
     let manager = "manager";

@@ -147,7 +147,7 @@ pub async fn launch() -> Result<()> {
         let mut db = db.get()?;
         let db = db.deref_mut();
         let hmac = Hmac::new(&cfg.secrets.0)?;
-        let mut enf = cfg.postgresql.enforcer(2).await?;
+        let mut enf = cfg.enforcer(2).await?;
         {
             if args.command == SubCommand::UserList {
                 return user::list(db);

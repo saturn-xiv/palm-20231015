@@ -93,7 +93,7 @@ impl v1::SiteLayoutResponse {
             &type_name::<v1::SiteSetLogoRequest>().to_string(),
             None,
         )
-        .unwrap_or_else(|_| "/assets/favicon.png".to_string());
+        .unwrap_or_else(|_| "/my/favicon.ico".to_string());
 
         Ok(Self {
             title: I18n::t(db, lang, v1::SiteSetInfoRequest::TITLE, &None::<String>),

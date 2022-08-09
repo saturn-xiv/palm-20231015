@@ -3,11 +3,13 @@ use std::fmt;
 use std::net::{IpAddr, Ipv4Addr, SocketAddr};
 use std::path::Path;
 
+use casbin::{CoreApi, DefaultModel as CasbinModel, Enforcer as CasbinEnforcer};
 use serde::{Deserialize, Serialize};
+use sqlx_adapter::SqlxAdapter;
 
 use super::{
     cache::redis::Config as Redis, crypto::Key, orm::postgresql::Config as PostgreSql,
-    queue::amqp::Config as RabbitMq, search::Config as OpenSearch,
+    plugins::nut, queue::amqp::Config as RabbitMq, search::Config as OpenSearch, Result,
 };
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
@@ -100,6 +102,20 @@ pub struct Config {
     pub redis: Redis,
     pub rabbitmq: RabbitMq,
     pub opensearch: OpenSearch,
+}
+
+impl Config {
+    pub async fn enforcer(&self, pool: u32) -> Result<CasbinEnforcer> {
+        let m = CasbinModel::from_str(include_str!("rbac_model.conf")).await?;
+        let a = SqlxAdapter::new(self.postgresql.to_string(), pool).await?;
+        let mut e = CasbinEnforcer::new(m, a).await?;
+        let w = {
+            let it = nut::tasks::casbin::Watcher::new(redis::Client::open(self.redis.to_string())?);
+            Box::new(it)
+        };
+        e.set_watcher(w);
+        Ok(e)
+    }
 }
 
 pub fn is_stopped() -> bool {

@@ -1,7 +1,7 @@
 use std::env;
 
 use chrono::Utc;
-use palm::{plugins::nut::tasks::email::Task as EmailTask, GIT_VERSION, NAME};
+use palm::{plugins::nut::v1::EmailTask, GIT_VERSION, NAME};
 
 #[test]
 fn smtp() {
