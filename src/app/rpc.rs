@@ -26,8 +26,10 @@ pub async fn web(cfg: &Config) -> Result<()> {
         let enforcer = enforcer.clone();
         let watcher = nut::tasks::casbin::Watcher::new(redis::Client::open(cfg.redis.to_string())?);
         tokio::spawn(async move {
-            if let Err(e) = watcher.listen(&enforcer).await {
-                error!("{:?}", e);
+            loop {
+                if let Err(e) = watcher.listen(&enforcer).await {
+                    error!("{:?}", e);
+                }
             }
         });
     }
@@ -111,6 +113,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
             },
         ));
 
+    info!("start rpc-web at {}", addr);
     Server::builder()
         .accept_http1(true)
         .add_service(nut_locale)
@@ -139,13 +142,16 @@ pub async fn tcp(cfg: &Config) -> Result<()> {
         let enforcer = enforcer.clone();
         let watcher = nut::tasks::casbin::Watcher::new(redis::Client::open(cfg.redis.to_string())?);
         tokio::spawn(async move {
-            if let Err(e) = watcher.listen(&enforcer).await {
-                error!("{:?}", e);
+            loop {
+                if let Err(e) = watcher.listen(&enforcer).await {
+                    error!("{:?}", e);
+                }
             }
         });
     }
     let search = Arc::new(cfg.opensearch.open()?);
 
+    info!("start rpc-tcp at {}", addr);
     Server::builder()
         .add_service(nut::v1::user_server::UserServer::new(
             nut::services::user::Service {
