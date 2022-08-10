@@ -11,6 +11,7 @@ use std::os::unix::fs::PermissionsExt;
 use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
+use uuid::Uuid;
 
 use super::{
     cache::Provider,
@@ -146,8 +147,9 @@ pub async fn launch() -> Result<()> {
         let db = cfg.postgresql.open()?;
         let mut db = db.get()?;
         let db = db.deref_mut();
+        let uid = Uuid::new_v4().to_string();
         let hmac = Hmac::new(&cfg.secrets.0)?;
-        let mut enf = cfg.enforcer(2).await?;
+        let mut enf = cfg.enforcer(uid, 2).await?;
         {
             if args.command == SubCommand::UserList {
                 return user::list(db);

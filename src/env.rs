@@ -105,12 +105,13 @@ pub struct Config {
 }
 
 impl Config {
-    pub async fn enforcer(&self, pool: u32) -> Result<CasbinEnforcer> {
+    pub async fn enforcer(&self, id: String, pool: u32) -> Result<CasbinEnforcer> {
         let m = CasbinModel::from_str(include_str!("rbac_model.conf")).await?;
         let a = SqlxAdapter::new(self.postgresql.to_string(), pool).await?;
         let mut e = CasbinEnforcer::new(m, a).await?;
         let w = {
-            let it = nut::tasks::casbin::Watcher::new(redis::Client::open(self.redis.to_string())?);
+            let it =
+                nut::tasks::casbin::Watcher::new(id, redis::Client::open(self.redis.to_string())?);
             Box::new(it)
         };
         e.set_watcher(w);

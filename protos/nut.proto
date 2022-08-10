@@ -161,7 +161,7 @@ service Rbac {
 }
 
 message RbacWatcherMessage {
-  message Sync {};
+  message Sync { string id = 1; };
   oneof payload { Sync sync = 1; }
 }
 

@@ -10,13 +10,15 @@ use super::super::super::super::Result;
 use super::super::v1;
 
 pub struct Watcher {
+    id: String,
     client: Client,
     callback: Box<dyn FnMut() + Send + Sync>,
 }
 
 impl Watcher {
-    pub fn new(client: Client) -> Self {
+    pub fn new(id: String, client: Client) -> Self {
         Self {
+            id,
             client,
             callback: Box::new(|| {
                 warn!("empty casbin wather callback");
@@ -34,11 +36,17 @@ impl Watcher {
             let buf: Vec<u8> = msg.get_payload()?;
             let msg = v1::RbacWatcherMessage::decode(&buf[..])?;
 
-            if let Some(v1::rbac_watcher_message::Payload::Sync(_)) = msg.payload {
-                debug!("receive reload policy message");
-                let mut enf = enforcer.lock().await;
-                let enf = enf.deref_mut();
-                enf.load_policy().await?;
+            if let Some(v1::rbac_watcher_message::Payload::Sync(v1::rbac_watcher_message::Sync {
+                id,
+            })) = msg.payload
+            {
+                if id != self.id {
+                    info!("receive reload policy message");
+
+                    let mut enf = enforcer.lock().await;
+                    let enf = enf.deref_mut();
+                    enf.load_policy().await?;
+                }
             } else {
                 error!("unknown casbin wather message {:?}", msg);
             }
@@ -85,7 +93,9 @@ impl casbin::Watcher for Watcher {
         info!("receive casbin event {}", data);
         if let Err(e) = self.publish(&v1::RbacWatcherMessage {
             payload: Some(v1::rbac_watcher_message::Payload::Sync(
-                v1::rbac_watcher_message::Sync {},
+                v1::rbac_watcher_message::Sync {
+                    id: self.id.clone(),
+                },
             )),
         }) {
             error!("{:?}", e);

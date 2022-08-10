@@ -43,7 +43,9 @@ const Widget = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(setTitle(intl.formatMessage({ id: "nut.users.sign-up.title" })));
+    dispatch(
+      setTitle(intl.formatMessage({ id: "nut.admin.site.index.title" }))
+    );
     const client = new SiteClient(GRPC_HOST);
 
     client.layout(new Empty(), grpc_metadata(), (err, response) => {

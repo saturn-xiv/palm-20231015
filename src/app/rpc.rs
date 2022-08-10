@@ -2,6 +2,7 @@ use std::sync::Arc;
 
 use tokio::sync::Mutex;
 use tonic::transport::Server;
+use uuid::Uuid;
 
 use super::super::{
     crypto::{Aes, Hmac},
@@ -12,6 +13,7 @@ use super::super::{
 };
 
 pub async fn web(cfg: &Config) -> Result<()> {
+    let uid = Uuid::new_v4().to_string();
     let addr = cfg.rpc.web_addr();
     info!("run on http://{addr}");
     let pgsql = cfg.postgresql.open()?;
@@ -20,11 +22,12 @@ pub async fn web(cfg: &Config) -> Result<()> {
     let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
-    let enforcer = Arc::new(Mutex::new(cfg.enforcer(1 << 3).await?));
+    let enforcer = Arc::new(Mutex::new(cfg.enforcer(uid.clone(), 1 << 3).await?));
     {
         info!("start casbin watcher");
         let enforcer = enforcer.clone();
-        let watcher = nut::tasks::casbin::Watcher::new(redis::Client::open(cfg.redis.to_string())?);
+        let watcher =
+            nut::tasks::casbin::Watcher::new(uid, redis::Client::open(cfg.redis.to_string())?);
         tokio::spawn(async move {
             loop {
                 if let Err(e) = watcher.listen(&enforcer).await {
@@ -128,6 +131,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
 }
 
 pub async fn tcp(cfg: &Config) -> Result<()> {
+    let uid = Uuid::new_v4().to_string();
     let addr = cfg.rpc.tcp_addr();
     info!("run on tcp://{addr}");
     let pgsql = cfg.postgresql.open()?;
@@ -136,11 +140,12 @@ pub async fn tcp(cfg: &Config) -> Result<()> {
     let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
-    let enforcer = Arc::new(Mutex::new(cfg.enforcer(1 << 3).await?));
+    let enforcer = Arc::new(Mutex::new(cfg.enforcer(uid.clone(), 1 << 3).await?));
     {
         info!("start casbin watcher");
         let enforcer = enforcer.clone();
-        let watcher = nut::tasks::casbin::Watcher::new(redis::Client::open(cfg.redis.to_string())?);
+        let watcher =
+            nut::tasks::casbin::Watcher::new(uid, redis::Client::open(cfg.redis.to_string())?);
         tokio::spawn(async move {
             loop {
                 if let Err(e) = watcher.listen(&enforcer).await {

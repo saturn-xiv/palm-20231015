@@ -107,35 +107,40 @@ impl v1::rbac_server::Rbac for Service {
         let jwt = self.jwt.deref();
 
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
-        if !user.is_administrator(enf) {
-            return Err(Status::permission_denied(type_name::<
-                v1::RbacGetRolesResponse,
-            >()));
-        }
-
         let mut items = Vec::new();
-        for it in enf.get_all_roles().iter() {
-            if let Ok(it) = v1::rbac_get_roles_response::Item::new(db, &user.lang, it) {
-                items.push(it);
+        {
+            let mut enf = self.enforcer.lock().await;
+            let enf = enf.deref_mut();
+            if !user.is_administrator(enf) {
+                return Err(Status::permission_denied(type_name::<
+                    v1::RbacGetRolesResponse,
+                >()));
+            }
+
+            for it in enf.get_all_roles().iter() {
+                if let Ok(it) = v1::rbac_get_roles_response::Item::new(db, &user.lang, it) {
+                    items.push(it);
+                }
             }
         }
 
         Ok(Response::new(v1::RbacGetRolesResponse { items }))
     }
+
     async fn get_all_users(&self, req: Request<()>) -> GrpcResult<v1::RbacGetUsersResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
-        if !user.is_administrator(enf) {
-            return Err(Status::permission_denied(type_name::<
-                v1::RbacGetUsersResponse,
-            >()));
+        {
+            let mut enf = self.enforcer.lock().await;
+            let enf = enf.deref_mut();
+            if !user.is_administrator(enf) {
+                return Err(Status::permission_denied(type_name::<
+                    v1::RbacGetUsersResponse,
+                >()));
+            }
         }
 
         let mut items = Vec::new();
