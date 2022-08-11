@@ -68,7 +68,7 @@
   lineinfile:
     path: "/etc/sysctl.d/100-{{app_vendor}}.conf"
     state: present
-    line: fs.file-max = 6815744
+    line: "fs.file-max = 6815744"
     create: true
 
 - name: Setup file max
@@ -76,5 +76,13 @@
   lineinfile:
     path: "/etc/sysctl.d/100-{{app_vendor}}.conf"
     state: present
-    line: fs.inotify.max_user_watches = 512000
+    line: "fs.inotify.max_user_watches = 512000"
+    create: true
+
+- name: Setup vm max map count
+  become: true
+  lineinfile:
+    path: "/etc/sysctl.d/100-{{app_vendor}}.conf"
+    state: present
+    line: "vm.max_map_count = 262144"
     create: true

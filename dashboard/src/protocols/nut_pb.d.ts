@@ -533,6 +533,9 @@ export namespace RbacWatcherMessage {
   }
 
   export class Sync extends jspb.Message {
+    getId(): string;
+    setId(value: string): Sync;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Sync.AsObject;
     static toObject(includeInstance: boolean, msg: Sync): Sync.AsObject;
@@ -543,6 +546,7 @@ export namespace RbacWatcherMessage {
 
   export namespace Sync {
     export type AsObject = {
+      id: string,
     }
   }
 
