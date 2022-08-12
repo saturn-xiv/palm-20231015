@@ -6,7 +6,7 @@ use xml::writer::{EventWriter, Result as XmlResult, XmlEvent};
 
 use super::super::super::super::ToXml;
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 pub struct Response {
     pub account_sid: String,
     pub api_version: String,
@@ -31,7 +31,7 @@ pub struct Response {
 }
 
 // https://www.twilio.com/docs/sms/tutorials/how-to-confirm-delivery-java
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 pub struct DeliveryStatusCallbackForm {
     #[serde(rename(deserialize = "AccountSid"))]
     pub account_sid: String,
@@ -49,7 +49,7 @@ pub struct DeliveryStatusCallbackForm {
 
 // https://www.twilio.com/docs/usage/webhooks/sms-webhooks
 // Your status delivery URL will receive an HTTP POST request with the application/x-www-form-urlencoded content type.
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 pub struct IncomingMessagesCallbackForm {
     #[serde(rename(deserialize = "To"))]
     pub to: String,
@@ -71,7 +71,7 @@ pub struct IncomingMessagesCallbackForm {
     pub body: Option<String>,
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 pub struct ReplyForm {
     #[serde(rename(deserialize = "ToCountry"))]
     pub to_country: String,
@@ -113,12 +113,12 @@ pub struct ReplyForm {
     pub api_version: String,
 }
 
-#[derive(PartialEq, Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 pub struct InboundResponse {
     pub message: Option<InboundMessage>,
 }
 
-#[derive(PartialEq, Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 pub struct InboundMessage {
     pub body: String,
 }

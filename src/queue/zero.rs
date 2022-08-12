@@ -11,7 +11,7 @@ pub struct ZeroMq {
     pub socket: zmq::Context,
 }
 
-#[derive(PartialEq, Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
 pub enum Queue {
     Tcp(Option<String>, u16),
     Ipc(String),

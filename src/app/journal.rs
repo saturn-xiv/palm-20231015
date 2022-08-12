@@ -11,6 +11,6 @@ pub async fn launch(cfg: &Config) -> Result<()> {
         let mut buf = String::new();
         io::stdin().read_line(&mut buf)?;
         let it: JournalItem = serde_json::from_str(&buf)?;
-        se.save(&it).await?;
+        se.save_object(&it).await?;
     }
 }

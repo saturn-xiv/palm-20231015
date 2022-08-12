@@ -41,7 +41,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
     {
         info!("check opensearch indexes");
         search
-            .check::<ops::metrics::models::journal::Item>()
+            .check_index::<ops::metrics::models::journal::Item>()
             .await?;
     }
     let nut_attachment = tonic_web::config()

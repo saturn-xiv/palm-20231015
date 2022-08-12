@@ -2,14 +2,14 @@ use std::any::type_name;
 
 use opensearch::{
     http::transport::{SingleNodeConnectionPool, TransportBuilder},
-    indices::{IndicesCreateParts, IndicesExistsParts},
+    indices::{IndicesCreateParts, IndicesDeleteParts, IndicesExistsParts},
     IndexParts,
 };
 use serde::{Deserialize, Serialize};
 
 use super::{HttpError, Result};
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 #[serde(rename_all = "camelCase")]
 pub struct Config {
     pub host: String,
@@ -58,7 +58,7 @@ macro_rules! check_response {
 }
 
 impl OpenSearch {
-    pub async fn check<T>(&self) -> Result<()> {
+    pub async fn check_index<T>(&self) -> Result<()> {
         let index = self.index::<T>();
         let transport = TransportBuilder::new(self.pool.clone())
             .disable_proxy()
@@ -83,8 +83,22 @@ impl OpenSearch {
 
         check_response!(response)
     }
+    pub async fn delete_index<T>(&self) -> Result<()> {
+        let index = self.index::<T>();
+        let transport = TransportBuilder::new(self.pool.clone())
+            .disable_proxy()
+            .build()?;
+        let client = opensearch::OpenSearch::new(transport);
 
-    pub async fn save<T: Serialize>(&self, object: &T) -> Result<()> {
+        let response = client
+            .indices()
+            .delete(IndicesDeleteParts::Index(&[&index]))
+            .send()
+            .await?;
+
+        check_response!(response)
+    }
+    pub async fn save_object<T: Serialize>(&self, object: &T) -> Result<()> {
         let index = self.index::<T>();
         let body = json!(object);
 
