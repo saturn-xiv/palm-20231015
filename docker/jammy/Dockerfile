@@ -53,6 +53,7 @@ RUN echo 'export LANG=en_US.UTF-8' >> $HOME/.profile
 RUN echo 'export LC_ALL=en_US.UTF-8' >> $HOME/.profile
 
 RUN git config --global core.quotepath false
+RUN git config --global http.version HTTP/1.1
 RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf
 
 RUN sh -c ". $HOME/.profile \
