@@ -133,7 +133,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
 pub async fn tcp(cfg: &Config) -> Result<()> {
     let uid = Uuid::new_v4().to_string();
     let addr = cfg.rpc.tcp_addr();
-    info!("run on tcp://{addr}");
+
     let pgsql = cfg.postgresql.open()?;
     let redis = cfg.redis.open()?;
     let aes = Arc::new(Aes::new(&cfg.secrets.0)?);

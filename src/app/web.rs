@@ -100,7 +100,21 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .service(nut::controllers::sitemap::by_lang)
             .service(nut::controllers::rss_xml)
             .service(nut::controllers::robots_txt)
-            .service(actix_files::Files::new("/3rd", "node_modules").show_files_listing())
+            .service(
+                actix_files::Files::new(
+                    "/3rd",
+                    if cfg!(debug_assertions) {
+                        Path::new("node_modules").to_path_buf()
+                    } else {
+                        Path::new(&Component::RootDir)
+                            .join("usr")
+                            .join("share")
+                            .join(NAME)
+                            .join("node_modules")
+                    },
+                )
+                .show_files_listing(),
+            )
             .service(
                 actix_files::Files::new(
                     "/assets",
@@ -108,7 +122,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                         Path::new("assets").to_path_buf()
                     } else {
                         Path::new(&Component::RootDir)
-                            .join("user")
+                            .join("usr")
                             .join("share")
                             .join(NAME)
                             .join("assets")
