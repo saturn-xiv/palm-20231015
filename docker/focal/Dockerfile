@@ -106,7 +106,8 @@ RUN zsh -c "source $HOME/.cargo/env \
 RUN apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
 RUN zsh -c "source $HOME/.zshrc \
     && cargo install diesel_cli \
-    && cargo install --locked cargo-outdated"
+    && cargo install --locked cargo-outdated \
+    && cargo install mdbook"
 
 RUN git clone https://github.com/rui314/mold.git $HOME/build/mold
 RUN apt install -y libstdc++-10-dev libssl-dev libxxhash-dev zlib1g-dev
@@ -117,7 +118,18 @@ RUN zsh -c "source $HOME/.zshrc \
     && strip -s mold \
     && cp mold /usr/bin/ "
 
-# TODO mdbook
+ENV GRPC_VERSION "v1.48.0"
+RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
+RUN zsh -c "source $HOME/.cargo/env \
+    && mkdir -pv $HOME/build/grpc \
+    && cd $HOME/build/grpc \
+    && cmake -DCMAKE_BUILD_TYPE=Release \
+        -DgRPC_INSTALL=ON \
+        -DgRPC_SSL_PROVIDER=package \
+        -DgRPC_BUILD_TESTS=OFF \
+        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
+    && make \
+    && make install"
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
