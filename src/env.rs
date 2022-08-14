@@ -2,10 +2,12 @@ use std::default::Default;
 use std::fmt;
 use std::net::{IpAddr, Ipv4Addr, SocketAddr};
 use std::path::Path;
+use std::sync::Arc;
 
 use casbin::{CoreApi, DefaultModel as CasbinModel, Enforcer as CasbinEnforcer};
 use serde::{Deserialize, Serialize};
 use sqlx_adapter::SqlxAdapter;
+use tokio::sync::Mutex as TokioMutex;
 
 use super::{
     cache::redis::Config as Redis, crypto::Key, orm::postgresql::Config as PostgreSql,
@@ -105,16 +107,40 @@ pub struct Config {
 }
 
 impl Config {
-    pub async fn enforcer(&self, id: String, pool: u32) -> Result<CasbinEnforcer> {
+    pub async fn enforcer(&self, id: String, pool: u32) -> Result<Arc<TokioMutex<CasbinEnforcer>>> {
+        let queue = self.rabbitmq.open();
         let m = CasbinModel::from_str(include_str!("rbac_model.conf")).await?;
         let a = SqlxAdapter::new(self.postgresql.to_string(), pool).await?;
-        let mut e = CasbinEnforcer::new(m, a).await?;
-        let w = {
-            let it =
-                nut::tasks::casbin::Watcher::new(id, redis::Client::open(self.redis.to_string())?);
-            Box::new(it)
-        };
-        e.set_watcher(w);
+        let e = Arc::new(TokioMutex::new({
+            let mut e = CasbinEnforcer::new(m, a).await?;
+            e.set_watcher(Box::new(nut::tasks::casbin::Watcher::new(
+                id.clone(),
+                queue.clone(),
+            )));
+            e
+        }));
+
+        {
+            let e = e.clone();
+            tokio::task::spawn(async move {
+                let hnd = nut::tasks::casbin::Handler {
+                    id: id.clone(),
+                    enforcer: e,
+                };
+                loop {
+                    if let Err(e) = queue
+                        .consume::<nut::v1::RbacWatcherMessage, _>(
+                            &format!("casbin-watcher-{}", id),
+                            &hnd,
+                        )
+                        .await
+                    {
+                        error!("error on consume casbin watcher queue {:?}", e);
+                    }
+                }
+            });
+        }
+
         Ok(e)
     }
 }

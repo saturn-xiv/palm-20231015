@@ -1,6 +1,5 @@
 use std::sync::Arc;
 
-use tokio::sync::Mutex;
 use tonic::transport::Server;
 use uuid::Uuid;
 
@@ -22,23 +21,7 @@ pub async fn web(cfg: &Config) -> Result<()> {
     let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
-    let enforcer = Arc::new(Mutex::new(cfg.enforcer(uid.clone(), 1 << 3).await?));
-
-    let mut handles = Vec::new();
-    {
-        info!("start casbin watcher");
-        let enforcer = enforcer.clone();
-        let watcher =
-            nut::tasks::casbin::Watcher::new(uid, redis::Client::open(cfg.redis.to_string())?);
-
-        handles.push(tokio::task::spawn(async move {
-            loop {
-                if let Err(e) = watcher.listen(&enforcer).await {
-                    error!("casbin watcher {:?}", e);
-                }
-            }
-        }));
-    }
+    let enforcer = cfg.enforcer(uid.clone(), 1 << 3).await?;
 
     let search = Arc::new(cfg.opensearch.open()?);
     {
@@ -145,21 +128,7 @@ pub async fn tcp(cfg: &Config) -> Result<()> {
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
     let search = Arc::new(cfg.opensearch.open()?);
-    let enforcer = Arc::new(Mutex::new(cfg.enforcer(uid.clone(), 1 << 3).await?));
-
-    {
-        info!("start casbin watcher");
-        let enforcer = enforcer.clone();
-        let watcher =
-            nut::tasks::casbin::Watcher::new(uid, redis::Client::open(cfg.redis.to_string())?);
-        tokio::spawn(async move {
-            loop {
-                if let Err(e) = watcher.listen(&enforcer).await {
-                    error!("{:?}", e);
-                }
-            }
-        });
-    }
+    let enforcer = cfg.enforcer(uid.clone(), 1 << 3).await?;
 
     info!("start rpc-tcp at {}", addr);
     Server::builder()

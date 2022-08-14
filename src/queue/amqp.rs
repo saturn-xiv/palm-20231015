@@ -4,6 +4,8 @@ use std::time::{SystemTime, UNIX_EPOCH};
 use amq_protocol_uri::{AMQPAuthority, AMQPUri, AMQPUserInfo};
 use futures::StreamExt;
 use hyper::StatusCode;
+use lapin::options::{ExchangeDeclareOptions, QueueBindOptions};
+use lapin::ExchangeKind;
 use lapin::{
     message::Delivery,
     options::{BasicAckOptions, BasicConsumeOptions, BasicPublishOptions, QueueDeclareOptions},
@@ -13,7 +15,7 @@ use lapin::{
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
-use super::super::{HttpError, Result};
+use super::super::{HttpError, Result, NAME};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Config {
@@ -64,43 +66,67 @@ pub struct RabbitMq {
 }
 
 impl RabbitMq {
-    async fn open(&self, queue: &str) -> Result<Channel> {
+    async fn open<T>(&self) -> Result<(Channel, String)> {
+        let queue = type_name::<T>();
         let con = Connection::connect_uri(self.uri.clone(), self.conn.clone()).await?;
         let ch = con.create_channel().await?;
-        {
-            ch.queue_declare(
-                queue,
-                QueueDeclareOptions {
-                    exclusive: false,
-                    auto_delete: false,
-                    durable: true,
-                    ..Default::default()
-                },
-                FieldTable::default(),
-            )
-            .await?;
-        }
-        Ok(ch)
+
+        ch.queue_declare(
+            queue,
+            QueueDeclareOptions {
+                exclusive: false,
+                auto_delete: false,
+                durable: true,
+                ..Default::default()
+            },
+            FieldTable::default(),
+        )
+        .await?;
+
+        Ok((ch, queue.to_string()))
     }
 }
 
 impl RabbitMq {
     pub async fn publish<T: prost::Message>(&self, payload: &T) -> Result<()> {
-        self.send("fanout", payload).await
+        self.send(ExchangeKind::Fanout, payload).await
     }
     pub async fn produce<T: prost::Message>(&self, payload: &T) -> Result<()> {
-        self.send("", payload).await
+        self.send(ExchangeKind::Direct, payload).await
     }
-    async fn send<T: prost::Message>(&self, exchange: &str, payload: &T) -> Result<()> {
-        let queue = type_name::<T>();
+    async fn send<T: prost::Message>(
+        &self,
+        exchange_type: ExchangeKind,
+        payload: &T,
+    ) -> Result<()> {
         let mut buf = Vec::new();
         payload.encode(&mut buf)?;
-        let ch = self.open(queue).await?;
+        let (ch, queue) = self.open::<T>().await?;
+        let exchange = format!("{}.{:?}", NAME, exchange_type);
+        ch.exchange_declare(
+            &exchange,
+            exchange_type,
+            ExchangeDeclareOptions {
+                durable: true,
+                ..Default::default()
+            },
+            FieldTable::default(),
+        )
+        .await?;
+        ch.queue_bind(
+            &queue,
+            &exchange,
+            "",
+            QueueBindOptions::default(),
+            FieldTable::default(),
+        )
+        .await?;
         let id = Uuid::new_v4().to_string();
         info!("publish task {}://{}", queue, id);
+
         ch.basic_publish(
-            exchange,
-            queue,
+            &exchange,
+            &queue,
             BasicPublishOptions::default(),
             &buf,
             BasicProperties::default()
@@ -114,16 +140,11 @@ impl RabbitMq {
         Ok(())
     }
 
-    pub async fn consume<H: Handler>(
-        &self,
-        consumer: &str,
-        queue: &str,
-        handler: &H,
-    ) -> Result<()> {
-        let ch = self.open(queue).await?;
+    pub async fn consume<T, H: Handler>(&self, consumer: &str, handler: &H) -> Result<()> {
+        let (ch, queue) = self.open::<T>().await?;
         let mut cm = ch
             .basic_consume(
-                queue,
+                &queue,
                 consumer,
                 BasicConsumeOptions::default(),
                 FieldTable::default(),

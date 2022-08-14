@@ -25,7 +25,7 @@ pub async fn launch(cfg: &Config, name: &str) -> Result<()> {
     let aes = Aes::new(&cfg.secrets.0)?;
     if name == type_name::<EmailTask>() {
         let cfg = SmtpProfile::new(db, &aes)?;
-        queue.consume(&id, name, &cfg).await
+        queue.consume::<EmailTask, _>(&id, &cfg).await
     } else {
         Err(Box::new(HttpError(
             StatusCode::BAD_REQUEST,

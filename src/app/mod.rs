@@ -149,13 +149,16 @@ pub async fn launch() -> Result<()> {
         let db = db.deref_mut();
         let uid = Uuid::new_v4().to_string();
         let hmac = Hmac::new(&cfg.secrets.0)?;
-        let mut enf = cfg.enforcer(uid, 2).await?;
+
         {
             if args.command == SubCommand::UserList {
                 return user::list(db);
             }
             if let SubCommand::UserApplyPolicy(ref it) = args.command {
-                return it.execute(db, &mut enf).await;
+                let enf = cfg.enforcer(uid, 2).await?;
+                let mut enf = enf.lock().await;
+                let enf = enf.deref_mut();
+                return it.execute(db, enf).await;
             }
             if let SubCommand::UserResetPassword(ref it) = args.command {
                 return it.execute(db, &hmac);
