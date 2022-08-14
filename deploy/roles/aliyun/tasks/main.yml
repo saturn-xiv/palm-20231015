@@ -1,0 +1,6 @@
+- name: Setup aliyun
+  become: true
+  template:
+    src: sources.list.j2
+    dest: "/etc/apt/sources.list"
+    mode: "0400"
