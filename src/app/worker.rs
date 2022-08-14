@@ -7,6 +7,7 @@ use super::super::{
     crypto::Aes,
     env::Config,
     plugins::nut::v1::{EmailTask, SmtpProfile},
+    queue::amqp::RabbitMq,
     HttpError, Result,
 };
 
@@ -23,9 +24,10 @@ pub async fn launch(cfg: &Config, name: &str) -> Result<()> {
     let mut db = db.get()?;
     let db = db.deref_mut();
     let aes = Aes::new(&cfg.secrets.0)?;
+    let ch = queue.open().await?;
     if name == type_name::<EmailTask>() {
         let cfg = SmtpProfile::new(db, &aes)?;
-        queue.consume::<EmailTask, _>(&id, &cfg).await
+        RabbitMq::consume(&ch, &id, EmailTask::QUEUE, &cfg).await
     } else {
         Err(Box::new(HttpError(
             StatusCode::BAD_REQUEST,

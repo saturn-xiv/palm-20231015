@@ -11,7 +11,7 @@ use tokio::sync::Mutex as TokioMutex;
 
 use super::{
     cache::redis::Config as Redis, crypto::Key, orm::postgresql::Config as PostgreSql,
-    plugins::nut, queue::amqp::Config as RabbitMq, search::Config as OpenSearch, Result,
+    plugins::nut, queue::amqp::Config as RabbitMqConfig, search::Config as OpenSearch, Result,
 };
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
@@ -102,46 +102,40 @@ pub struct Config {
     pub rpc: Rpc,
     pub postgresql: PostgreSql,
     pub redis: Redis,
-    pub rabbitmq: RabbitMq,
+    pub rabbitmq: RabbitMqConfig,
     pub opensearch: OpenSearch,
 }
 
 impl Config {
     pub async fn enforcer(&self, id: String, pool: u32) -> Result<Arc<TokioMutex<CasbinEnforcer>>> {
         let queue = self.rabbitmq.open();
-        let m = CasbinModel::from_str(include_str!("rbac_model.conf")).await?;
-        let a = SqlxAdapter::new(self.postgresql.to_string(), pool).await?;
-        let e = Arc::new(TokioMutex::new({
-            let mut e = CasbinEnforcer::new(m, a).await?;
-            e.set_watcher(Box::new(nut::tasks::casbin::Watcher::new(
+        let model = CasbinModel::from_str(include_str!("rbac_model.conf")).await?;
+        let adapter = SqlxAdapter::new(self.postgresql.to_string(), pool).await?;
+        let enforcer = Arc::new(TokioMutex::new({
+            let mut it = CasbinEnforcer::new(model, adapter).await?;
+            it.set_watcher(Box::new(nut::tasks::casbin::Watcher::new(
                 id.clone(),
                 queue.clone(),
             )));
-            e
+            it
         }));
 
         {
-            let e = e.clone();
+            let enforcer = enforcer.clone();
             tokio::task::spawn(async move {
                 let hnd = nut::tasks::casbin::Handler {
                     id: id.clone(),
-                    enforcer: e,
+                    enforcer,
                 };
                 loop {
-                    if let Err(e) = queue
-                        .consume::<nut::v1::RbacWatcherMessage, _>(
-                            &format!("casbin-watcher-{}", id),
-                            &hnd,
-                        )
-                        .await
-                    {
+                    if let Err(e) = nut::tasks::casbin::Watcher::consume(&id, &queue, &hnd).await {
                         error!("error on consume casbin watcher queue {:?}", e);
                     }
                 }
             });
         }
 
-        Ok(e)
+        Ok(enforcer)
     }
 }
 

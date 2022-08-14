@@ -5,6 +5,8 @@ use super::super::super::super::{queue::amqp::Handler as QueueHandler, Result};
 use super::super::v1;
 
 impl v1::EmailTask {
+    pub const QUEUE: &'static str = "mails";
+
     pub fn send(&self, host: &str, account: &str, password: &str) -> Result<()> {
         let msg = Message::builder()
             .from(account.parse()?)

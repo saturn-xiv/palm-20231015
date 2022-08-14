@@ -2,6 +2,7 @@ use std::ops::DerefMut;
 use std::sync::Arc;
 
 use casbin::{CoreApi, Enforcer, EventData};
+use lapin::ExchangeKind;
 use prost::Message as ProstMessage;
 use tokio::sync::Mutex;
 
@@ -49,6 +50,17 @@ pub struct Watcher {
 }
 
 impl Watcher {
+    pub const EXCHANGE_NAME: &'static str = "casbin";
+    pub async fn consume(id: &str, mq: &RabbitMq, hnd: &Handler) -> Result<()> {
+        let queue = format!("casbin://watcher/{}", id);
+        let ch = mq.open().await?;
+
+        RabbitMq::exchange_declare(&ch, Self::EXCHANGE_NAME, ExchangeKind::Fanout, false).await?;
+        RabbitMq::queue_declare(&ch, &queue, true, true).await?;
+        RabbitMq::queue_bind(&ch, &queue, Self::EXCHANGE_NAME, "").await?;
+        RabbitMq::consume(&ch, &format!("casbin-watcher-{}", id), &queue, hnd).await?;
+        Ok(())
+    }
     pub fn new(id: String, queue: RabbitMq) -> Self {
         Self {
             id,
@@ -58,11 +70,12 @@ impl Watcher {
             }),
         }
     }
+
     fn publish(&self, message: &v1::RbacWatcherMessage) -> Result<()> {
         debug!("publish casbin watcher message {:?}", message);
         tokio::task::block_in_place(move || {
             tokio::runtime::Handle::current().block_on(async move {
-                self.queue.publish(message).await?;
+                self.queue.send(Self::EXCHANGE_NAME, "", message).await?;
                 Ok::<(), Error>(())
             })
         })?;

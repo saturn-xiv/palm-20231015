@@ -538,7 +538,7 @@ impl Service {
             ..Default::default()
         };
 
-        self.rabbitmq.produce(&task).await?;
+        self.rabbitmq.send("", v1::EmailTask::QUEUE, &task).await?;
 
         Ok(())
     }
