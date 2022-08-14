@@ -8,7 +8,7 @@ use serde::{de::DeserializeOwned, ser::Serialize};
 use super::Result;
 
 pub trait Provider {
-    fn get<K, V, F>(&mut self, key: &K, fun: F, ttl: &Duration) -> Result<V>
+    fn get<K, V, F>(&mut self, key: &K, fun: F, ttl: Duration) -> Result<V>
     where
         F: FnOnce() -> Result<V>,
         K: Display,

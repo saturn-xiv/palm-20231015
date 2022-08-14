@@ -64,7 +64,7 @@ impl super::Provider for redis::Connection {
         Ok(items)
     }
     #[cfg(debug_assertions)]
-    fn get<K, V, F>(&mut self, _key: &K, fun: F, _ttl: &Duration) -> Result<V>
+    fn get<K, V, F>(&mut self, _key: &K, fun: F, _ttl: Duration) -> Result<V>
     where
         F: FnOnce() -> Result<V>,
         K: Display,
@@ -73,7 +73,7 @@ impl super::Provider for redis::Connection {
         fun()
     }
     #[cfg(not(debug_assertions))]
-    fn get<K, V, F>(&mut self, key: &K, fun: F, ttl: &Duration) -> Result<V>
+    fn get<K, V, F>(&mut self, key: &K, fun: F, ttl: Duration) -> Result<V>
     where
         F: FnOnce() -> Result<V>,
         K: Display,

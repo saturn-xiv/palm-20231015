@@ -23,27 +23,31 @@ pub async fn web(cfg: &Config) -> Result<()> {
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
     let enforcer = Arc::new(Mutex::new(cfg.enforcer(uid.clone(), 1 << 3).await?));
+
+    let mut handles = Vec::new();
     {
         info!("start casbin watcher");
         let enforcer = enforcer.clone();
         let watcher =
             nut::tasks::casbin::Watcher::new(uid, redis::Client::open(cfg.redis.to_string())?);
-        tokio::spawn(async move {
+
+        handles.push(tokio::task::spawn(async move {
             loop {
                 if let Err(e) = watcher.listen(&enforcer).await {
-                    error!("{:?}", e);
+                    error!("casbin watcher {:?}", e);
                 }
             }
-        });
+        }));
     }
-    let search = Arc::new(cfg.opensearch.open()?);
 
+    let search = Arc::new(cfg.opensearch.open()?);
     {
         info!("check opensearch indexes");
         search
             .check_index::<ops::metrics::models::journal::Item>()
             .await?;
     }
+
     let nut_attachment = tonic_web::config()
         .allow_all_origins()
         .allow_credentials(true)
@@ -140,7 +144,9 @@ pub async fn tcp(cfg: &Config) -> Result<()> {
     let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
+    let search = Arc::new(cfg.opensearch.open()?);
     let enforcer = Arc::new(Mutex::new(cfg.enforcer(uid.clone(), 1 << 3).await?));
+
     {
         info!("start casbin watcher");
         let enforcer = enforcer.clone();
@@ -154,7 +160,6 @@ pub async fn tcp(cfg: &Config) -> Result<()> {
             }
         });
     }
-    let search = Arc::new(cfg.opensearch.open()?);
 
     info!("start rpc-tcp at {}", addr);
     Server::builder()

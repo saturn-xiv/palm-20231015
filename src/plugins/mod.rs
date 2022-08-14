@@ -1,3 +1,4 @@
+pub mod babel;
 pub mod cms;
 pub mod forum;
 pub mod mall;
