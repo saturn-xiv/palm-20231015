@@ -1,0 +1,152 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package palm.plugins.auth.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "nut.proto";
+
+service User {
+  rpc SignIn(UserSignInRequest) returns (UserSignInResponse) {}
+  rpc SignUp(UserSignUpRequest) returns (google.protobuf.Empty) {}
+  rpc ConfirmByEmail(UserEmailRequest) returns (google.protobuf.Empty) {}
+  rpc ConfirmByToken(UserTokenRequest) returns (google.protobuf.Empty) {}
+  rpc UnlockByEmail(UserEmailRequest) returns (google.protobuf.Empty) {}
+  rpc UnlockByToken(UserTokenRequest) returns (google.protobuf.Empty) {}
+  rpc ForgotPassword(UserEmailRequest) returns (google.protobuf.Empty) {}
+  rpc ResetPassword(UserResetPasswordRequest) returns (google.protobuf.Empty) {}
+
+  rpc Refresh(google.protobuf.Duration) returns (UserSignInResponse) {}
+  rpc Logs(UserLogsRequest) returns (UserLogsResponse) {}
+  rpc SetProfile(UserSetProfileRequest) returns (google.protobuf.Empty) {}
+  rpc ChangePassword(UserChangePasswordRequest)
+      returns (google.protobuf.Empty) {}
+  rpc SignOut(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc IndexUser(palm.plugins.nut.v1.Pager) returns (UserIndexResponse) {}
+  rpc Show(UserQueryRequest) returns (UserIndexResponse.Item) {}
+  rpc Disable(UserQueryRequest) returns (google.protobuf.Empty) {}
+  rpc Enable(UserQueryRequest) returns (google.protobuf.Empty) {}
+  rpc Lock(UserQueryRequest) returns (google.protobuf.Empty) {}
+  rpc Unlock(UserQueryRequest) returns (google.protobuf.Empty) {}
+  rpc Confirm(UserQueryRequest) returns (google.protobuf.Empty) {}
+  rpc SetPassword(UserSetPasswordRequest) returns (google.protobuf.Empty) {}
+}
+
+message UserQueryRequest {
+  oneof id {
+    string email = 1;
+    string nick_name = 2;
+  }
+}
+
+message UserSignInRequest {
+  UserQueryRequest query = 1;
+  string password = 2;
+  google.protobuf.Duration ttl = 11;
+}
+message UserSignInResponse {
+  string token = 1;
+}
+
+message UserSignUpRequest {
+  string real_name = 1;
+  string nick_name = 2;
+  string email = 3;
+  string password = 4;
+  string lang = 11;
+  string time_zone = 12;
+  string home = 21;
+}
+
+message UserEmailRequest {
+  UserQueryRequest query = 1;
+  string home = 9;
+}
+
+message UserTokenRequest {
+  string token = 1;
+}
+
+message UserResetPasswordRequest {
+  string token = 1;
+  string password = 2;
+}
+
+message UserSetProfileRequest {
+  string real_name = 1;
+  string avatar = 2;
+  string time_zone = 8;
+  string lang = 9;
+  string wechat = 11;
+  string phone = 12;
+}
+
+message UserGetProfileResponse {
+  string real_name = 1;
+  string avatar = 2;
+  string nick_name = 3;
+  string email = 4;
+  string time_zone = 8;
+  string lang = 9;
+  string wechat = 11;
+  string phone = 12;
+}
+
+message UserLogsRequest {
+  palm.plugins.nut.v1.Pager pager = 1;
+
+  optional string level = 11;
+  optional string ip = 12;
+}
+
+message UserLogsResponse {
+  message Item {
+    int32 id = 1;
+    int32 user_id = 2;
+    string ip = 3;
+    string level = 4;
+    string message = 5;
+    string resource_type = 6;
+    optional int32 resource_id = 7;
+    google.protobuf.Timestamp created_at = 11;
+  }
+
+  palm.plugins.nut.v1.Pagination pagination = 1;
+  repeated Item items = 11;
+}
+message UserChangePasswordRequest {
+  string current_password = 1;
+  string new_password = 2;
+}
+message UserSetPasswordRequest {
+  UserQueryRequest user = 1;
+  string password = 2;
+}
+
+message UserIndexResponse {
+  message Item {
+    int32 id = 1;
+    string uid = 2;
+    string email = 3;
+    string nick_name = 4;
+    string real_name = 5;
+    string provider_type = 6;
+    google.protobuf.Timestamp updated_at = 9;
+    optional google.protobuf.Timestamp last_sign_in_at = 11;
+    optional string last_sign_in_ip = 12;
+    optional google.protobuf.Timestamp current_sign_in_at = 13;
+    optional string current_sign_in_ip = 14;
+    int32 sign_in_count = 19;
+    string lang = 21;
+    string time_zone = 22;
+    string avatar = 23;
+    optional google.protobuf.Timestamp confirmed_at = 27;
+    optional google.protobuf.Timestamp locked_at = 28;
+    optional google.protobuf.Timestamp deleted_at = 29;
+  }
+
+  palm.plugins.nut.v1.Pagination pagination = 1;
+  repeated Item items = 11;
+}

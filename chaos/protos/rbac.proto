@@ -1,0 +1,91 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package palm.plugins.rbac.v1;
+
+import "google/protobuf/empty.proto";
+
+enum Role {
+  ROOT = 0;
+  ADMINISTRATOR = 1;
+}
+
+service Policy {
+  rpc GetAllRoles(google.protobuf.Empty) returns (RoleListResponse) {}
+  rpc GetAllUsers(google.protobuf.Empty) returns (UserListResponse) {}
+  rpc DeleteUser(UserRequest) returns (google.protobuf.Empty) {}
+  rpc DeleteRole(RoleRequest) returns (google.protobuf.Empty) {}
+  rpc GetRolesForUser(UserRequest) returns (RoleListResponse) {}
+  rpc GetUsersForRole(RoleRequest) returns (UserListResponse) {}
+  rpc AddRolesForUser(RolesForUserRequest) returns (google.protobuf.Empty) {}
+  rpc DeleteRolesForUser(RolesForUserRequest) returns (google.protobuf.Empty) {}
+  rpc GetImplicitRolesForUser(UserRequest) returns (RoleListResponse) {}
+  rpc GetImplicitUsersForRole(RoleRequest) returns (RoleListResponse) {}
+
+  rpc GetPermissionsForUser(UserRequest) returns (PermissionListResponse) {}
+  rpc GetPermissionsForRole(RoleRequest) returns (PermissionListResponse) {}
+  rpc GetImplicitPermissionsForUser(UserRequest)
+      returns (PermissionListResponse) {}
+  rpc GetImplicitPermissionsForRole(RoleRequest)
+      returns (PermissionListResponse) {}
+
+  rpc GetImplicitResourcesForUser(UserRequest) returns (ResourceListResponse) {}
+  rpc GetImplicitResourcesForRole(RoleRequest) returns (ResourceListResponse) {}
+
+  rpc AddPermissions(PermissionsRequest) returns (google.protobuf.Empty) {}
+  rpc DeletePermissions(PermissionsRequest) returns (google.protobuf.Empty) {}
+}
+
+message UserRequest {
+  string nick_name = 1;
+}
+
+message UserListResponse {
+  message Item {
+    string nick_name = 1;
+    string real_name = 2;
+  }
+  repeated Item items = 1;
+}
+
+message RoleRequest {
+  string code = 1;
+}
+
+message RoleListResponse {
+  message Item {
+    string code = 1;
+    string name = 2;
+  }
+  repeated Item items = 1;
+}
+
+message RolesForUserRequest {
+  string user = 1;
+  repeated string roles = 2;
+}
+
+message PermissionListResponse {
+  message Item {
+    string subject = 1;
+    string operation = 2;
+    ResourceListResponse.Item resource = 3;
+  }
+  repeated Item items = 1;
+}
+
+message PermissionsRequest {
+  oneof who {
+    string user = 1;
+    string role = 2;
+  }
+  string operation = 3;
+  ResourceListResponse.Item resource = 4;
+}
+
+message ResourceListResponse {
+  message Item {
+    string type = 1;
+    optional int32 id = 2;
+  }
+  repeated Item item = 1;
+}
