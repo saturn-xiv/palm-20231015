@@ -16,400 +16,376 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
-
-namespace _pb = ::PROTOBUF_NAMESPACE_ID;
-namespace _pbi = _pb::internal;
-
 namespace palm {
 namespace plugins {
 namespace auth {
 namespace v1 {
-PROTOBUF_CONSTEXPR UserQueryRequest::UserQueryRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.id_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_._oneof_case_)*/{}} {}
+constexpr UserQueryRequest::UserQueryRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : _oneof_case_{}{}
 struct UserQueryRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserQueryRequestDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr UserQueryRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~UserQueryRequestDefaultTypeInternal() {}
   union {
     UserQueryRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserQueryRequestDefaultTypeInternal _UserQueryRequest_default_instance_;
-PROTOBUF_CONSTEXPR UserSignInRequest::UserSignInRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.password_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.query_)*/nullptr
-  , /*decltype(_impl_.ttl_)*/nullptr
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserQueryRequestDefaultTypeInternal _UserQueryRequest_default_instance_;
+constexpr UserSignInRequest::UserSignInRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : password_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , query_(nullptr)
+  , ttl_(nullptr){}
 struct UserSignInRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserSignInRequestDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr UserSignInRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~UserSignInRequestDefaultTypeInternal() {}
   union {
     UserSignInRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSignInRequestDefaultTypeInternal _UserSignInRequest_default_instance_;
-PROTOBUF_CONSTEXPR UserSignInResponse::UserSignInResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.token_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserSignInRequestDefaultTypeInternal _UserSignInRequest_default_instance_;
+constexpr UserSignInResponse::UserSignInResponse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : token_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct UserSignInResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserSignInResponseDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr UserSignInResponseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~UserSignInResponseDefaultTypeInternal() {}
   union {
     UserSignInResponse _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSignInResponseDefaultTypeInternal _UserSignInResponse_default_instance_;
-PROTOBUF_CONSTEXPR UserSignUpRequest::UserSignUpRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.real_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.nick_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.email_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.password_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.lang_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.time_zone_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.home_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserSignInResponseDefaultTypeInternal _UserSignInResponse_default_instance_;
+constexpr UserSignUpRequest::UserSignUpRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : real_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , nick_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , email_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , password_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , lang_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , time_zone_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , home_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct UserSignUpRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserSignUpRequestDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr UserSignUpRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~UserSignUpRequestDefaultTypeInternal() {}
   union {
     UserSignUpRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSignUpRequestDefaultTypeInternal _UserSignUpRequest_default_instance_;
-PROTOBUF_CONSTEXPR UserEmailRequest::UserEmailRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.home_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.query_)*/nullptr
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserSignUpRequestDefaultTypeInternal _UserSignUpRequest_default_instance_;
+constexpr UserEmailRequest::UserEmailRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : home_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , query_(nullptr){}
 struct UserEmailRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserEmailRequestDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr UserEmailRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~UserEmailRequestDefaultTypeInternal() {}
   union {
     UserEmailRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserEmailRequestDefaultTypeInternal _UserEmailRequest_default_instance_;
-PROTOBUF_CONSTEXPR UserTokenRequest::UserTokenRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.token_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserEmailRequestDefaultTypeInternal _UserEmailRequest_default_instance_;
+constexpr UserTokenRequest::UserTokenRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : token_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct UserTokenRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserTokenRequestDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr UserTokenRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~UserTokenRequestDefaultTypeInternal() {}
   union {
     UserTokenRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserTokenRequestDefaultTypeInternal _UserTokenRequest_default_instance_;
-PROTOBUF_CONSTEXPR UserResetPasswordRequest::UserResetPasswordRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.token_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.password_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserTokenRequestDefaultTypeInternal _UserTokenRequest_default_instance_;
+constexpr UserResetPasswordRequest::UserResetPasswordRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : token_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , password_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct UserResetPasswordRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserResetPasswordRequestDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr UserResetPasswordRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~UserResetPasswordRequestDefaultTypeInternal() {}
   union {
     UserResetPasswordRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserResetPasswordRequestDefaultTypeInternal _UserResetPasswordRequest_default_instance_;
-PROTOBUF_CONSTEXPR UserSetProfileRequest::UserSetProfileRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.real_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.avatar_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.time_zone_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.lang_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.wechat_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.phone_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserResetPasswordRequestDefaultTypeInternal _UserResetPasswordRequest_default_instance_;
+constexpr UserSetProfileRequest::UserSetProfileRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : real_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , avatar_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , time_zone_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , lang_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , wechat_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , phone_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct UserSetProfileRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserSetProfileRequestDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr UserSetProfileRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~UserSetProfileRequestDefaultTypeInternal() {}
   union {
     UserSetProfileRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSetProfileRequestDefaultTypeInternal _UserSetProfileRequest_default_instance_;
-PROTOBUF_CONSTEXPR UserGetProfileResponse::UserGetProfileResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.real_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.avatar_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.nick_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.email_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.time_zone_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.lang_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.wechat_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.phone_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserSetProfileRequestDefaultTypeInternal _UserSetProfileRequest_default_instance_;
+constexpr UserGetProfileResponse::UserGetProfileResponse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : real_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , avatar_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , nick_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , email_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , time_zone_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , lang_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , wechat_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , phone_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct UserGetProfileResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserGetProfileResponseDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr UserGetProfileResponseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~UserGetProfileResponseDefaultTypeInternal() {}
   union {
     UserGetProfileResponse _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserGetProfileResponseDefaultTypeInternal _UserGetProfileResponse_default_instance_;
-PROTOBUF_CONSTEXPR UserLogsRequest::UserLogsRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.level_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.ip_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.pager_)*/nullptr} {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserGetProfileResponseDefaultTypeInternal _UserGetProfileResponse_default_instance_;
+constexpr UserLogsRequest::UserLogsRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : level_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , ip_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , pager_(nullptr){}
 struct UserLogsRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserLogsRequestDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr UserLogsRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~UserLogsRequestDefaultTypeInternal() {}
   union {
     UserLogsRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserLogsRequestDefaultTypeInternal _UserLogsRequest_default_instance_;
-PROTOBUF_CONSTEXPR UserLogsResponse_Item::UserLogsResponse_Item(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.ip_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.level_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.message_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.resource_type_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.created_at_)*/nullptr
-  , /*decltype(_impl_.id_)*/0
-  , /*decltype(_impl_.user_id_)*/0
-  , /*decltype(_impl_.resource_id_)*/0} {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserLogsRequestDefaultTypeInternal _UserLogsRequest_default_instance_;
+constexpr UserLogsResponse_Item::UserLogsResponse_Item(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : ip_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , level_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , message_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , resource_type_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , created_at_(nullptr)
+  , id_(0)
+  , user_id_(0)
+  , resource_id_(0){}
 struct UserLogsResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserLogsResponse_ItemDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr UserLogsResponse_ItemDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~UserLogsResponse_ItemDefaultTypeInternal() {}
   union {
     UserLogsResponse_Item _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserLogsResponse_ItemDefaultTypeInternal _UserLogsResponse_Item_default_instance_;
-PROTOBUF_CONSTEXPR UserLogsResponse::UserLogsResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.items_)*/{}
-  , /*decltype(_impl_.pagination_)*/nullptr
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserLogsResponse_ItemDefaultTypeInternal _UserLogsResponse_Item_default_instance_;
+constexpr UserLogsResponse::UserLogsResponse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : items_()
+  , pagination_(nullptr){}
 struct UserLogsResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserLogsResponseDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr UserLogsResponseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~UserLogsResponseDefaultTypeInternal() {}
   union {
     UserLogsResponse _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserLogsResponseDefaultTypeInternal _UserLogsResponse_default_instance_;
-PROTOBUF_CONSTEXPR UserChangePasswordRequest::UserChangePasswordRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.current_password_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.new_password_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserLogsResponseDefaultTypeInternal _UserLogsResponse_default_instance_;
+constexpr UserChangePasswordRequest::UserChangePasswordRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : current_password_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , new_password_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct UserChangePasswordRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserChangePasswordRequestDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr UserChangePasswordRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~UserChangePasswordRequestDefaultTypeInternal() {}
   union {
     UserChangePasswordRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserChangePasswordRequestDefaultTypeInternal _UserChangePasswordRequest_default_instance_;
-PROTOBUF_CONSTEXPR UserSetPasswordRequest::UserSetPasswordRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.password_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.user_)*/nullptr
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserChangePasswordRequestDefaultTypeInternal _UserChangePasswordRequest_default_instance_;
+constexpr UserSetPasswordRequest::UserSetPasswordRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : password_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , user_(nullptr){}
 struct UserSetPasswordRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserSetPasswordRequestDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr UserSetPasswordRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~UserSetPasswordRequestDefaultTypeInternal() {}
   union {
     UserSetPasswordRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSetPasswordRequestDefaultTypeInternal _UserSetPasswordRequest_default_instance_;
-PROTOBUF_CONSTEXPR UserIndexResponse_Item::UserIndexResponse_Item(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.uid_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.email_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.nick_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.real_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.provider_type_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.last_sign_in_ip_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.current_sign_in_ip_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.lang_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.time_zone_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.avatar_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.updated_at_)*/nullptr
-  , /*decltype(_impl_.last_sign_in_at_)*/nullptr
-  , /*decltype(_impl_.current_sign_in_at_)*/nullptr
-  , /*decltype(_impl_.confirmed_at_)*/nullptr
-  , /*decltype(_impl_.locked_at_)*/nullptr
-  , /*decltype(_impl_.deleted_at_)*/nullptr
-  , /*decltype(_impl_.id_)*/0
-  , /*decltype(_impl_.sign_in_count_)*/0} {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserSetPasswordRequestDefaultTypeInternal _UserSetPasswordRequest_default_instance_;
+constexpr UserIndexResponse_Item::UserIndexResponse_Item(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : uid_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , email_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , nick_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , real_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , provider_type_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , last_sign_in_ip_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , current_sign_in_ip_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , lang_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , time_zone_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , avatar_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , updated_at_(nullptr)
+  , last_sign_in_at_(nullptr)
+  , current_sign_in_at_(nullptr)
+  , confirmed_at_(nullptr)
+  , locked_at_(nullptr)
+  , deleted_at_(nullptr)
+  , id_(0)
+  , sign_in_count_(0){}
 struct UserIndexResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserIndexResponse_ItemDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr UserIndexResponse_ItemDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~UserIndexResponse_ItemDefaultTypeInternal() {}
   union {
     UserIndexResponse_Item _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserIndexResponse_ItemDefaultTypeInternal _UserIndexResponse_Item_default_instance_;
-PROTOBUF_CONSTEXPR UserIndexResponse::UserIndexResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.items_)*/{}
-  , /*decltype(_impl_.pagination_)*/nullptr
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserIndexResponse_ItemDefaultTypeInternal _UserIndexResponse_Item_default_instance_;
+constexpr UserIndexResponse::UserIndexResponse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : items_()
+  , pagination_(nullptr){}
 struct UserIndexResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserIndexResponseDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr UserIndexResponseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~UserIndexResponseDefaultTypeInternal() {}
   union {
     UserIndexResponse _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserIndexResponseDefaultTypeInternal _UserIndexResponse_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserIndexResponseDefaultTypeInternal _UserIndexResponse_default_instance_;
 }  // namespace v1
 }  // namespace auth
 }  // namespace plugins
 }  // namespace palm
-static ::_pb::Metadata file_level_metadata_auth_2eproto[16];
-static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_auth_2eproto = nullptr;
-static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_auth_2eproto = nullptr;
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_auth_2eproto[16];
+static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_auth_2eproto = nullptr;
+static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_auth_2eproto = nullptr;
 
-const uint32_t TableStruct_auth_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_auth_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserQueryRequest, _internal_metadata_),
   ~0u,  // no _extensions_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserQueryRequest, _impl_._oneof_case_[0]),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserQueryRequest, _oneof_case_[0]),
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  ::_pbi::kInvalidFieldOffsetTag,
-  ::_pbi::kInvalidFieldOffsetTag,
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserQueryRequest, _impl_.id_),
+  ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
+  ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserQueryRequest, id_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignInRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignInRequest, _impl_.query_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignInRequest, _impl_.password_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignInRequest, _impl_.ttl_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignInRequest, query_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignInRequest, password_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignInRequest, ttl_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignInResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignInResponse, _impl_.token_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignInResponse, token_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignUpRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignUpRequest, _impl_.real_name_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignUpRequest, _impl_.nick_name_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignUpRequest, _impl_.email_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignUpRequest, _impl_.password_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignUpRequest, _impl_.lang_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignUpRequest, _impl_.time_zone_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignUpRequest, _impl_.home_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignUpRequest, real_name_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignUpRequest, nick_name_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignUpRequest, email_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignUpRequest, password_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignUpRequest, lang_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignUpRequest, time_zone_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSignUpRequest, home_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserEmailRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserEmailRequest, _impl_.query_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserEmailRequest, _impl_.home_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserEmailRequest, query_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserEmailRequest, home_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserTokenRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserTokenRequest, _impl_.token_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserTokenRequest, token_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserResetPasswordRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserResetPasswordRequest, _impl_.token_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserResetPasswordRequest, _impl_.password_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserResetPasswordRequest, token_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserResetPasswordRequest, password_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetProfileRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetProfileRequest, _impl_.real_name_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetProfileRequest, _impl_.avatar_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetProfileRequest, _impl_.time_zone_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetProfileRequest, _impl_.lang_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetProfileRequest, _impl_.wechat_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetProfileRequest, _impl_.phone_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetProfileRequest, real_name_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetProfileRequest, avatar_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetProfileRequest, time_zone_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetProfileRequest, lang_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetProfileRequest, wechat_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetProfileRequest, phone_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserGetProfileResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserGetProfileResponse, _impl_.real_name_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserGetProfileResponse, _impl_.avatar_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserGetProfileResponse, _impl_.nick_name_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserGetProfileResponse, _impl_.email_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserGetProfileResponse, _impl_.time_zone_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserGetProfileResponse, _impl_.lang_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserGetProfileResponse, _impl_.wechat_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserGetProfileResponse, _impl_.phone_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsRequest, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserGetProfileResponse, real_name_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserGetProfileResponse, avatar_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserGetProfileResponse, nick_name_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserGetProfileResponse, email_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserGetProfileResponse, time_zone_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserGetProfileResponse, lang_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserGetProfileResponse, wechat_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserGetProfileResponse, phone_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsRequest, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsRequest, _impl_.pager_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsRequest, _impl_.level_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsRequest, _impl_.ip_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsRequest, pager_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsRequest, level_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsRequest, ip_),
   ~0u,
   0,
   1,
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, _impl_.id_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, _impl_.user_id_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, _impl_.ip_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, _impl_.level_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, _impl_.message_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, _impl_.resource_type_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, _impl_.resource_id_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, _impl_.created_at_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, id_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, user_id_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, ip_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, level_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, message_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, resource_type_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, resource_id_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse_Item, created_at_),
   ~0u,
   ~0u,
   ~0u,
@@ -424,48 +400,48 @@ const uint32_t TableStruct_auth_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse, _impl_.pagination_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse, _impl_.items_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse, pagination_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserLogsResponse, items_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserChangePasswordRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserChangePasswordRequest, _impl_.current_password_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserChangePasswordRequest, _impl_.new_password_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserChangePasswordRequest, current_password_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserChangePasswordRequest, new_password_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetPasswordRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetPasswordRequest, _impl_.user_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetPasswordRequest, _impl_.password_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetPasswordRequest, user_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserSetPasswordRequest, password_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.id_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.uid_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.email_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.nick_name_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.real_name_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.provider_type_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.updated_at_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.last_sign_in_at_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.last_sign_in_ip_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.current_sign_in_at_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.current_sign_in_ip_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.sign_in_count_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.lang_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.time_zone_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.avatar_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.confirmed_at_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.locked_at_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, _impl_.deleted_at_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, id_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, uid_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, email_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, nick_name_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, real_name_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, provider_type_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, updated_at_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, last_sign_in_at_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, last_sign_in_ip_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, current_sign_in_at_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, current_sign_in_ip_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, sign_in_count_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, lang_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, time_zone_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, avatar_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, confirmed_at_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, locked_at_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse_Item, deleted_at_),
   ~0u,
   ~0u,
   ~0u,
@@ -490,10 +466,10 @@ const uint32_t TableStruct_auth_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse, _impl_.pagination_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse, _impl_.items_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse, pagination_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::auth::v1::UserIndexResponse, items_),
 };
-static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::palm::plugins::auth::v1::UserQueryRequest)},
   { 9, -1, -1, sizeof(::palm::plugins::auth::v1::UserSignInRequest)},
   { 18, -1, -1, sizeof(::palm::plugins::auth::v1::UserSignInResponse)},
@@ -512,23 +488,23 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 187, -1, -1, sizeof(::palm::plugins::auth::v1::UserIndexResponse)},
 };
 
-static const ::_pb::Message* const file_default_instances[] = {
-  &::palm::plugins::auth::v1::_UserQueryRequest_default_instance_._instance,
-  &::palm::plugins::auth::v1::_UserSignInRequest_default_instance_._instance,
-  &::palm::plugins::auth::v1::_UserSignInResponse_default_instance_._instance,
-  &::palm::plugins::auth::v1::_UserSignUpRequest_default_instance_._instance,
-  &::palm::plugins::auth::v1::_UserEmailRequest_default_instance_._instance,
-  &::palm::plugins::auth::v1::_UserTokenRequest_default_instance_._instance,
-  &::palm::plugins::auth::v1::_UserResetPasswordRequest_default_instance_._instance,
-  &::palm::plugins::auth::v1::_UserSetProfileRequest_default_instance_._instance,
-  &::palm::plugins::auth::v1::_UserGetProfileResponse_default_instance_._instance,
-  &::palm::plugins::auth::v1::_UserLogsRequest_default_instance_._instance,
-  &::palm::plugins::auth::v1::_UserLogsResponse_Item_default_instance_._instance,
-  &::palm::plugins::auth::v1::_UserLogsResponse_default_instance_._instance,
-  &::palm::plugins::auth::v1::_UserChangePasswordRequest_default_instance_._instance,
-  &::palm::plugins::auth::v1::_UserSetPasswordRequest_default_instance_._instance,
-  &::palm::plugins::auth::v1::_UserIndexResponse_Item_default_instance_._instance,
-  &::palm::plugins::auth::v1::_UserIndexResponse_default_instance_._instance,
+static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::auth::v1::_UserQueryRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::auth::v1::_UserSignInRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::auth::v1::_UserSignInResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::auth::v1::_UserSignUpRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::auth::v1::_UserEmailRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::auth::v1::_UserTokenRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::auth::v1::_UserResetPasswordRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::auth::v1::_UserSetProfileRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::auth::v1::_UserGetProfileResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::auth::v1::_UserLogsRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::auth::v1::_UserLogsResponse_Item_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::auth::v1::_UserLogsResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::auth::v1::_UserChangePasswordRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::auth::v1::_UserSetPasswordRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::auth::v1::_UserIndexResponse_Item_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::auth::v1::_UserIndexResponse_default_instance_),
 };
 
 const char descriptor_table_protodef_auth_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -639,27 +615,25 @@ const char descriptor_table_protodef_auth_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
   "quest\032\026.google.protobuf.Empty\"\000B\002P\001b\006pro"
   "to3"
   ;
-static const ::_pbi::DescriptorTable* const descriptor_table_auth_2eproto_deps[4] = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_auth_2eproto_deps[4] = {
   &::descriptor_table_google_2fprotobuf_2fduration_2eproto,
   &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
   &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
   &::descriptor_table_nut_2eproto,
 };
-static ::_pbi::once_flag descriptor_table_auth_2eproto_once;
-const ::_pbi::DescriptorTable descriptor_table_auth_2eproto = {
-    false, false, 4203, descriptor_table_protodef_auth_2eproto,
-    "auth.proto",
-    &descriptor_table_auth_2eproto_once, descriptor_table_auth_2eproto_deps, 4, 16,
-    schemas, file_default_instances, TableStruct_auth_2eproto::offsets,
-    file_level_metadata_auth_2eproto, file_level_enum_descriptors_auth_2eproto,
-    file_level_service_descriptors_auth_2eproto,
+static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_auth_2eproto_once;
+const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_auth_2eproto = {
+  false, false, 4203, descriptor_table_protodef_auth_2eproto, "auth.proto", 
+  &descriptor_table_auth_2eproto_once, descriptor_table_auth_2eproto_deps, 4, 16,
+  schemas, file_default_instances, TableStruct_auth_2eproto::offsets,
+  file_level_metadata_auth_2eproto, file_level_enum_descriptors_auth_2eproto, file_level_service_descriptors_auth_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_auth_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_auth_2eproto_getter() {
   return &descriptor_table_auth_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_auth_2eproto(&descriptor_table_auth_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_auth_2eproto(&descriptor_table_auth_2eproto);
 namespace palm {
 namespace plugins {
 namespace auth {
@@ -674,26 +648,23 @@ class UserQueryRequest::_Internal {
 UserQueryRequest::UserQueryRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:palm.plugins.auth.v1.UserQueryRequest)
 }
 UserQueryRequest::UserQueryRequest(const UserQueryRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  UserQueryRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.id_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , /*decltype(_impl_._oneof_case_)*/{}};
-
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   clear_has_id();
   switch (from.id_case()) {
     case kEmail: {
-      _this->_internal_set_email(from._internal_email());
+      _internal_set_email(from._internal_email());
       break;
     }
     case kNickName: {
-      _this->_internal_set_nick_name(from._internal_nick_name());
+      _internal_set_nick_name(from._internal_nick_name());
       break;
     }
     case ID_NOT_SET: {
@@ -703,25 +674,15 @@ UserQueryRequest::UserQueryRequest(const UserQueryRequest& from)
   // @@protoc_insertion_point(copy_constructor:palm.plugins.auth.v1.UserQueryRequest)
 }
 
-inline void UserQueryRequest::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.id_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , /*decltype(_impl_._oneof_case_)*/{}
-  };
-  clear_has_id();
+void UserQueryRequest::SharedCtor() {
+clear_has_id();
 }
 
 UserQueryRequest::~UserQueryRequest() {
   // @@protoc_insertion_point(destructor:palm.plugins.auth.v1.UserQueryRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserQueryRequest::SharedDtor() {
@@ -731,32 +692,38 @@ inline void UserQueryRequest::SharedDtor() {
   }
 }
 
+void UserQueryRequest::ArenaDtor(void* object) {
+  UserQueryRequest* _this = reinterpret_cast< UserQueryRequest* >(object);
+  (void)_this;
+}
+void UserQueryRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void UserQueryRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
 
 void UserQueryRequest::clear_id() {
 // @@protoc_insertion_point(one_of_clear_start:palm.plugins.auth.v1.UserQueryRequest)
   switch (id_case()) {
     case kEmail: {
-      _impl_.id_.email_.Destroy();
+      id_.email_.Destroy(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
       break;
     }
     case kNickName: {
-      _impl_.id_.nick_name_.Destroy();
+      id_.nick_name_.Destroy(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
       break;
     }
     case ID_NOT_SET: {
       break;
     }
   }
-  _impl_._oneof_case_[0] = ID_NOT_SET;
+  _oneof_case_[0] = ID_NOT_SET;
 }
 
 
 void UserQueryRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.auth.v1.UserQueryRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -764,29 +731,29 @@ void UserQueryRequest::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserQueryRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* UserQueryRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string email = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           auto str = _internal_mutable_email();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserQueryRequest.email"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserQueryRequest.email"));
         } else
           goto handle_unusual;
         continue;
       // string nick_name = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_nick_name();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserQueryRequest.nick_name"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserQueryRequest.nick_name"));
         } else
           goto handle_unusual;
         continue;
@@ -813,10 +780,10 @@ failure:
 #undef CHK_
 }
 
-uint8_t* UserQueryRequest::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* UserQueryRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.auth.v1.UserQueryRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string email = 1;
@@ -840,7 +807,7 @@ uint8_t* UserQueryRequest::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.auth.v1.UserQueryRequest)
@@ -851,7 +818,7 @@ size_t UserQueryRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.auth.v1.UserQueryRequest)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -874,38 +841,42 @@ size_t UserQueryRequest::ByteSizeLong() const {
       break;
     }
   }
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserQueryRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
     UserQueryRequest::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserQueryRequest::GetClassData() const { return &_class_data_; }
 
+void UserQueryRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<UserQueryRequest *>(to)->MergeFrom(
+      static_cast<const UserQueryRequest &>(from));
+}
 
-void UserQueryRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<UserQueryRequest*>(&to_msg);
-  auto& from = static_cast<const UserQueryRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserQueryRequest)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
+
+void UserQueryRequest::MergeFrom(const UserQueryRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserQueryRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   switch (from.id_case()) {
     case kEmail: {
-      _this->_internal_set_email(from._internal_email());
+      _internal_set_email(from._internal_email());
       break;
     }
     case kNickName: {
-      _this->_internal_set_nick_name(from._internal_nick_name());
+      _internal_set_nick_name(from._internal_nick_name());
       break;
     }
     case ID_NOT_SET: {
       break;
     }
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserQueryRequest::CopyFrom(const UserQueryRequest& from) {
@@ -922,12 +893,12 @@ bool UserQueryRequest::IsInitialized() const {
 void UserQueryRequest::InternalSwap(UserQueryRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_.id_, other->_impl_.id_);
-  swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
+  swap(id_, other->id_);
+  swap(_oneof_case_[0], other->_oneof_case_[0]);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserQueryRequest::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_auth_2eproto_getter, &descriptor_table_auth_2eproto_once,
       file_level_metadata_auth_2eproto[0]);
 }
@@ -942,114 +913,107 @@ class UserSignInRequest::_Internal {
 
 const ::palm::plugins::auth::v1::UserQueryRequest&
 UserSignInRequest::_Internal::query(const UserSignInRequest* msg) {
-  return *msg->_impl_.query_;
+  return *msg->query_;
 }
 const ::PROTOBUF_NAMESPACE_ID::Duration&
 UserSignInRequest::_Internal::ttl(const UserSignInRequest* msg) {
-  return *msg->_impl_.ttl_;
+  return *msg->ttl_;
 }
 void UserSignInRequest::clear_ttl() {
-  if (GetArenaForAllocation() == nullptr && _impl_.ttl_ != nullptr) {
-    delete _impl_.ttl_;
+  if (GetArenaForAllocation() == nullptr && ttl_ != nullptr) {
+    delete ttl_;
   }
-  _impl_.ttl_ = nullptr;
+  ttl_ = nullptr;
 }
 UserSignInRequest::UserSignInRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:palm.plugins.auth.v1.UserSignInRequest)
 }
 UserSignInRequest::UserSignInRequest(const UserSignInRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  UserSignInRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.password_){}
-    , decltype(_impl_.query_){nullptr}
-    , decltype(_impl_.ttl_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.password_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  password_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_password().empty()) {
-    _this->_impl_.password_.Set(from._internal_password(), 
-      _this->GetArenaForAllocation());
+    password_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_password(), 
+      GetArenaForAllocation());
   }
   if (from._internal_has_query()) {
-    _this->_impl_.query_ = new ::palm::plugins::auth::v1::UserQueryRequest(*from._impl_.query_);
+    query_ = new ::palm::plugins::auth::v1::UserQueryRequest(*from.query_);
+  } else {
+    query_ = nullptr;
   }
   if (from._internal_has_ttl()) {
-    _this->_impl_.ttl_ = new ::PROTOBUF_NAMESPACE_ID::Duration(*from._impl_.ttl_);
+    ttl_ = new ::PROTOBUF_NAMESPACE_ID::Duration(*from.ttl_);
+  } else {
+    ttl_ = nullptr;
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.auth.v1.UserSignInRequest)
 }
 
-inline void UserSignInRequest::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.password_){}
-    , decltype(_impl_.query_){nullptr}
-    , decltype(_impl_.ttl_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.password_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+void UserSignInRequest::SharedCtor() {
+password_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&query_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&ttl_) -
+    reinterpret_cast<char*>(&query_)) + sizeof(ttl_));
 }
 
 UserSignInRequest::~UserSignInRequest() {
   // @@protoc_insertion_point(destructor:palm.plugins.auth.v1.UserSignInRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserSignInRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.password_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.query_;
-  if (this != internal_default_instance()) delete _impl_.ttl_;
+  password_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete query_;
+  if (this != internal_default_instance()) delete ttl_;
 }
 
+void UserSignInRequest::ArenaDtor(void* object) {
+  UserSignInRequest* _this = reinterpret_cast< UserSignInRequest* >(object);
+  (void)_this;
+}
+void UserSignInRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void UserSignInRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
 
 void UserSignInRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.auth.v1.UserSignInRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.password_.ClearToEmpty();
-  if (GetArenaForAllocation() == nullptr && _impl_.query_ != nullptr) {
-    delete _impl_.query_;
+  password_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && query_ != nullptr) {
+    delete query_;
   }
-  _impl_.query_ = nullptr;
-  if (GetArenaForAllocation() == nullptr && _impl_.ttl_ != nullptr) {
-    delete _impl_.ttl_;
+  query_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && ttl_ != nullptr) {
+    delete ttl_;
   }
-  _impl_.ttl_ = nullptr;
+  ttl_ = nullptr;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserSignInRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* UserSignInRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .palm.plugins.auth.v1.UserQueryRequest query = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_query(), ptr);
           CHK_(ptr);
         } else
@@ -1057,17 +1021,17 @@ const char* UserSignInRequest::_InternalParse(const char* ptr, ::_pbi::ParseCont
         continue;
       // string password = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_password();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignInRequest.password"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignInRequest.password"));
         } else
           goto handle_unusual;
         continue;
       // .google.protobuf.Duration ttl = 11;
       case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 90)) {
           ptr = ctx->ParseMessage(_internal_mutable_ttl(), ptr);
           CHK_(ptr);
         } else
@@ -1096,17 +1060,18 @@ failure:
 #undef CHK_
 }
 
-uint8_t* UserSignInRequest::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* UserSignInRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.auth.v1.UserSignInRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // .palm.plugins.auth.v1.UserQueryRequest query = 1;
   if (this->_internal_has_query()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::query(this),
-        _Internal::query(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(
+        1, _Internal::query(this), target, stream);
   }
 
   // string password = 2;
@@ -1121,13 +1086,14 @@ uint8_t* UserSignInRequest::_InternalSerialize(
 
   // .google.protobuf.Duration ttl = 11;
   if (this->_internal_has_ttl()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::ttl(this),
-        _Internal::ttl(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(
+        11, _Internal::ttl(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.auth.v1.UserSignInRequest)
@@ -1138,7 +1104,7 @@ size_t UserSignInRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.auth.v1.UserSignInRequest)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -1153,46 +1119,48 @@ size_t UserSignInRequest::ByteSizeLong() const {
   if (this->_internal_has_query()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.query_);
+        *query_);
   }
 
   // .google.protobuf.Duration ttl = 11;
   if (this->_internal_has_ttl()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.ttl_);
+        *ttl_);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserSignInRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
     UserSignInRequest::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserSignInRequest::GetClassData() const { return &_class_data_; }
 
+void UserSignInRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<UserSignInRequest *>(to)->MergeFrom(
+      static_cast<const UserSignInRequest &>(from));
+}
 
-void UserSignInRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<UserSignInRequest*>(&to_msg);
-  auto& from = static_cast<const UserSignInRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserSignInRequest)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
+
+void UserSignInRequest::MergeFrom(const UserSignInRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserSignInRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_password().empty()) {
-    _this->_internal_set_password(from._internal_password());
+    _internal_set_password(from._internal_password());
   }
   if (from._internal_has_query()) {
-    _this->_internal_mutable_query()->::palm::plugins::auth::v1::UserQueryRequest::MergeFrom(
-        from._internal_query());
+    _internal_mutable_query()->::palm::plugins::auth::v1::UserQueryRequest::MergeFrom(from._internal_query());
   }
   if (from._internal_has_ttl()) {
-    _this->_internal_mutable_ttl()->::PROTOBUF_NAMESPACE_ID::Duration::MergeFrom(
-        from._internal_ttl());
+    _internal_mutable_ttl()->::PROTOBUF_NAMESPACE_ID::Duration::MergeFrom(from._internal_ttl());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserSignInRequest::CopyFrom(const UserSignInRequest& from) {
@@ -1212,19 +1180,20 @@ void UserSignInRequest::InternalSwap(UserSignInRequest* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.password_, lhs_arena,
-      &other->_impl_.password_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &password_, lhs_arena,
+      &other->password_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(UserSignInRequest, _impl_.ttl_)
-      + sizeof(UserSignInRequest::_impl_.ttl_)
-      - PROTOBUF_FIELD_OFFSET(UserSignInRequest, _impl_.query_)>(
-          reinterpret_cast<char*>(&_impl_.query_),
-          reinterpret_cast<char*>(&other->_impl_.query_));
+      PROTOBUF_FIELD_OFFSET(UserSignInRequest, ttl_)
+      + sizeof(UserSignInRequest::ttl_)
+      - PROTOBUF_FIELD_OFFSET(UserSignInRequest, query_)>(
+          reinterpret_cast<char*>(&query_),
+          reinterpret_cast<char*>(&other->query_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserSignInRequest::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_auth_2eproto_getter, &descriptor_table_auth_2eproto_once,
       file_level_metadata_auth_2eproto[1]);
 }
@@ -1238,83 +1207,72 @@ class UserSignInResponse::_Internal {
 UserSignInResponse::UserSignInResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:palm.plugins.auth.v1.UserSignInResponse)
 }
 UserSignInResponse::UserSignInResponse(const UserSignInResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  UserSignInResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.token_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.token_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_token().empty()) {
-    _this->_impl_.token_.Set(from._internal_token(), 
-      _this->GetArenaForAllocation());
+    token_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_token(), 
+      GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.auth.v1.UserSignInResponse)
 }
 
-inline void UserSignInResponse::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.token_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.token_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+void UserSignInResponse::SharedCtor() {
+token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 UserSignInResponse::~UserSignInResponse() {
   // @@protoc_insertion_point(destructor:palm.plugins.auth.v1.UserSignInResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserSignInResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.token_.Destroy();
+  token_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
+void UserSignInResponse::ArenaDtor(void* object) {
+  UserSignInResponse* _this = reinterpret_cast< UserSignInResponse* >(object);
+  (void)_this;
+}
+void UserSignInResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void UserSignInResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
 
 void UserSignInResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.auth.v1.UserSignInResponse)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.token_.ClearToEmpty();
+  token_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserSignInResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* UserSignInResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string token = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           auto str = _internal_mutable_token();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignInResponse.token"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignInResponse.token"));
         } else
           goto handle_unusual;
         continue;
@@ -1341,10 +1299,10 @@ failure:
 #undef CHK_
 }
 
-uint8_t* UserSignInResponse::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* UserSignInResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.auth.v1.UserSignInResponse)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string token = 1;
@@ -1358,7 +1316,7 @@ uint8_t* UserSignInResponse::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.auth.v1.UserSignInResponse)
@@ -1369,7 +1327,7 @@ size_t UserSignInResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.auth.v1.UserSignInResponse)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -1380,28 +1338,32 @@ size_t UserSignInResponse::ByteSizeLong() const {
         this->_internal_token());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserSignInResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
     UserSignInResponse::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserSignInResponse::GetClassData() const { return &_class_data_; }
 
+void UserSignInResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<UserSignInResponse *>(to)->MergeFrom(
+      static_cast<const UserSignInResponse &>(from));
+}
 
-void UserSignInResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<UserSignInResponse*>(&to_msg);
-  auto& from = static_cast<const UserSignInResponse&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserSignInResponse)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
+
+void UserSignInResponse::MergeFrom(const UserSignInResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserSignInResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_token().empty()) {
-    _this->_internal_set_token(from._internal_token());
+    _internal_set_token(from._internal_token());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserSignInResponse::CopyFrom(const UserSignInResponse& from) {
@@ -1421,13 +1383,14 @@ void UserSignInResponse::InternalSwap(UserSignInResponse* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.token_, lhs_arena,
-      &other->_impl_.token_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &token_, lhs_arena,
+      &other->token_, rhs_arena
   );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserSignInResponse::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_auth_2eproto_getter, &descriptor_table_auth_2eproto_once,
       file_level_metadata_auth_2eproto[2]);
 }
@@ -1441,239 +1404,180 @@ class UserSignUpRequest::_Internal {
 UserSignUpRequest::UserSignUpRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:palm.plugins.auth.v1.UserSignUpRequest)
 }
 UserSignUpRequest::UserSignUpRequest(const UserSignUpRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  UserSignUpRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.real_name_){}
-    , decltype(_impl_.nick_name_){}
-    , decltype(_impl_.email_){}
-    , decltype(_impl_.password_){}
-    , decltype(_impl_.lang_){}
-    , decltype(_impl_.time_zone_){}
-    , decltype(_impl_.home_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.real_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.real_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  real_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_real_name().empty()) {
-    _this->_impl_.real_name_.Set(from._internal_real_name(), 
-      _this->GetArenaForAllocation());
+    real_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_real_name(), 
+      GetArenaForAllocation());
   }
-  _impl_.nick_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.nick_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  nick_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_nick_name().empty()) {
-    _this->_impl_.nick_name_.Set(from._internal_nick_name(), 
-      _this->GetArenaForAllocation());
+    nick_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_nick_name(), 
+      GetArenaForAllocation());
   }
-  _impl_.email_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.email_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  email_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_email().empty()) {
-    _this->_impl_.email_.Set(from._internal_email(), 
-      _this->GetArenaForAllocation());
+    email_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_email(), 
+      GetArenaForAllocation());
   }
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.password_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  password_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_password().empty()) {
-    _this->_impl_.password_.Set(from._internal_password(), 
-      _this->GetArenaForAllocation());
+    password_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_password(), 
+      GetArenaForAllocation());
   }
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  lang_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_lang().empty()) {
-    _this->_impl_.lang_.Set(from._internal_lang(), 
-      _this->GetArenaForAllocation());
+    lang_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_lang(), 
+      GetArenaForAllocation());
   }
-  _impl_.time_zone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.time_zone_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  time_zone_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_time_zone().empty()) {
-    _this->_impl_.time_zone_.Set(from._internal_time_zone(), 
-      _this->GetArenaForAllocation());
+    time_zone_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_time_zone(), 
+      GetArenaForAllocation());
   }
-  _impl_.home_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.home_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  home_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_home().empty()) {
-    _this->_impl_.home_.Set(from._internal_home(), 
-      _this->GetArenaForAllocation());
+    home_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_home(), 
+      GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.auth.v1.UserSignUpRequest)
 }
 
-inline void UserSignUpRequest::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.real_name_){}
-    , decltype(_impl_.nick_name_){}
-    , decltype(_impl_.email_){}
-    , decltype(_impl_.password_){}
-    , decltype(_impl_.lang_){}
-    , decltype(_impl_.time_zone_){}
-    , decltype(_impl_.home_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.real_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.real_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.nick_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.nick_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.email_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.email_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.password_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.time_zone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.time_zone_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.home_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.home_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+void UserSignUpRequest::SharedCtor() {
+real_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+nick_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+email_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+password_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+lang_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+time_zone_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+home_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 UserSignUpRequest::~UserSignUpRequest() {
   // @@protoc_insertion_point(destructor:palm.plugins.auth.v1.UserSignUpRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserSignUpRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.real_name_.Destroy();
-  _impl_.nick_name_.Destroy();
-  _impl_.email_.Destroy();
-  _impl_.password_.Destroy();
-  _impl_.lang_.Destroy();
-  _impl_.time_zone_.Destroy();
-  _impl_.home_.Destroy();
+  real_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  nick_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  email_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  password_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  lang_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  time_zone_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  home_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
+void UserSignUpRequest::ArenaDtor(void* object) {
+  UserSignUpRequest* _this = reinterpret_cast< UserSignUpRequest* >(object);
+  (void)_this;
+}
+void UserSignUpRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void UserSignUpRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
 
 void UserSignUpRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.auth.v1.UserSignUpRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.real_name_.ClearToEmpty();
-  _impl_.nick_name_.ClearToEmpty();
-  _impl_.email_.ClearToEmpty();
-  _impl_.password_.ClearToEmpty();
-  _impl_.lang_.ClearToEmpty();
-  _impl_.time_zone_.ClearToEmpty();
-  _impl_.home_.ClearToEmpty();
+  real_name_.ClearToEmpty();
+  nick_name_.ClearToEmpty();
+  email_.ClearToEmpty();
+  password_.ClearToEmpty();
+  lang_.ClearToEmpty();
+  time_zone_.ClearToEmpty();
+  home_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserSignUpRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* UserSignUpRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string real_name = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           auto str = _internal_mutable_real_name();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignUpRequest.real_name"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignUpRequest.real_name"));
         } else
           goto handle_unusual;
         continue;
       // string nick_name = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_nick_name();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignUpRequest.nick_name"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignUpRequest.nick_name"));
         } else
           goto handle_unusual;
         continue;
       // string email = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
           auto str = _internal_mutable_email();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignUpRequest.email"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignUpRequest.email"));
         } else
           goto handle_unusual;
         continue;
       // string password = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
           auto str = _internal_mutable_password();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignUpRequest.password"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignUpRequest.password"));
         } else
           goto handle_unusual;
         continue;
       // string lang = 11;
       case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 90)) {
           auto str = _internal_mutable_lang();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignUpRequest.lang"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignUpRequest.lang"));
         } else
           goto handle_unusual;
         continue;
       // string time_zone = 12;
       case 12:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 98)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 98)) {
           auto str = _internal_mutable_time_zone();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignUpRequest.time_zone"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignUpRequest.time_zone"));
         } else
           goto handle_unusual;
         continue;
       // string home = 21;
       case 21:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 170)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 170)) {
           auto str = _internal_mutable_home();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignUpRequest.home"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserSignUpRequest.home"));
         } else
           goto handle_unusual;
         continue;
@@ -1700,10 +1604,10 @@ failure:
 #undef CHK_
 }
 
-uint8_t* UserSignUpRequest::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* UserSignUpRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.auth.v1.UserSignUpRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string real_name = 1;
@@ -1777,7 +1681,7 @@ uint8_t* UserSignUpRequest::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.auth.v1.UserSignUpRequest)
@@ -1788,7 +1692,7 @@ size_t UserSignUpRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.auth.v1.UserSignUpRequest)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -1841,46 +1745,50 @@ size_t UserSignUpRequest::ByteSizeLong() const {
         this->_internal_home());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserSignUpRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
     UserSignUpRequest::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserSignUpRequest::GetClassData() const { return &_class_data_; }
 
+void UserSignUpRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<UserSignUpRequest *>(to)->MergeFrom(
+      static_cast<const UserSignUpRequest &>(from));
+}
 
-void UserSignUpRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<UserSignUpRequest*>(&to_msg);
-  auto& from = static_cast<const UserSignUpRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserSignUpRequest)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
+
+void UserSignUpRequest::MergeFrom(const UserSignUpRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserSignUpRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_real_name().empty()) {
-    _this->_internal_set_real_name(from._internal_real_name());
+    _internal_set_real_name(from._internal_real_name());
   }
   if (!from._internal_nick_name().empty()) {
-    _this->_internal_set_nick_name(from._internal_nick_name());
+    _internal_set_nick_name(from._internal_nick_name());
   }
   if (!from._internal_email().empty()) {
-    _this->_internal_set_email(from._internal_email());
+    _internal_set_email(from._internal_email());
   }
   if (!from._internal_password().empty()) {
-    _this->_internal_set_password(from._internal_password());
+    _internal_set_password(from._internal_password());
   }
   if (!from._internal_lang().empty()) {
-    _this->_internal_set_lang(from._internal_lang());
+    _internal_set_lang(from._internal_lang());
   }
   if (!from._internal_time_zone().empty()) {
-    _this->_internal_set_time_zone(from._internal_time_zone());
+    _internal_set_time_zone(from._internal_time_zone());
   }
   if (!from._internal_home().empty()) {
-    _this->_internal_set_home(from._internal_home());
+    _internal_set_home(from._internal_home());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserSignUpRequest::CopyFrom(const UserSignUpRequest& from) {
@@ -1900,37 +1808,44 @@ void UserSignUpRequest::InternalSwap(UserSignUpRequest* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.real_name_, lhs_arena,
-      &other->_impl_.real_name_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &real_name_, lhs_arena,
+      &other->real_name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.nick_name_, lhs_arena,
-      &other->_impl_.nick_name_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &nick_name_, lhs_arena,
+      &other->nick_name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.email_, lhs_arena,
-      &other->_impl_.email_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &email_, lhs_arena,
+      &other->email_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.password_, lhs_arena,
-      &other->_impl_.password_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &password_, lhs_arena,
+      &other->password_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.lang_, lhs_arena,
-      &other->_impl_.lang_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &lang_, lhs_arena,
+      &other->lang_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.time_zone_, lhs_arena,
-      &other->_impl_.time_zone_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &time_zone_, lhs_arena,
+      &other->time_zone_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.home_, lhs_arena,
-      &other->_impl_.home_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &home_, lhs_arena,
+      &other->home_, rhs_arena
   );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserSignUpRequest::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_auth_2eproto_getter, &descriptor_table_auth_2eproto_once,
       file_level_metadata_auth_2eproto[3]);
 }
@@ -1944,94 +1859,84 @@ class UserEmailRequest::_Internal {
 
 const ::palm::plugins::auth::v1::UserQueryRequest&
 UserEmailRequest::_Internal::query(const UserEmailRequest* msg) {
-  return *msg->_impl_.query_;
+  return *msg->query_;
 }
 UserEmailRequest::UserEmailRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:palm.plugins.auth.v1.UserEmailRequest)
 }
 UserEmailRequest::UserEmailRequest(const UserEmailRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  UserEmailRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.home_){}
-    , decltype(_impl_.query_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.home_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.home_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  home_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_home().empty()) {
-    _this->_impl_.home_.Set(from._internal_home(), 
-      _this->GetArenaForAllocation());
+    home_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_home(), 
+      GetArenaForAllocation());
   }
   if (from._internal_has_query()) {
-    _this->_impl_.query_ = new ::palm::plugins::auth::v1::UserQueryRequest(*from._impl_.query_);
+    query_ = new ::palm::plugins::auth::v1::UserQueryRequest(*from.query_);
+  } else {
+    query_ = nullptr;
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.auth.v1.UserEmailRequest)
 }
 
-inline void UserEmailRequest::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.home_){}
-    , decltype(_impl_.query_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.home_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.home_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+void UserEmailRequest::SharedCtor() {
+home_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+query_ = nullptr;
 }
 
 UserEmailRequest::~UserEmailRequest() {
   // @@protoc_insertion_point(destructor:palm.plugins.auth.v1.UserEmailRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserEmailRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.home_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.query_;
+  home_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete query_;
 }
 
+void UserEmailRequest::ArenaDtor(void* object) {
+  UserEmailRequest* _this = reinterpret_cast< UserEmailRequest* >(object);
+  (void)_this;
+}
+void UserEmailRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void UserEmailRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
 
 void UserEmailRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.auth.v1.UserEmailRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.home_.ClearToEmpty();
-  if (GetArenaForAllocation() == nullptr && _impl_.query_ != nullptr) {
-    delete _impl_.query_;
+  home_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && query_ != nullptr) {
+    delete query_;
   }
-  _impl_.query_ = nullptr;
+  query_ = nullptr;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserEmailRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* UserEmailRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .palm.plugins.auth.v1.UserQueryRequest query = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_query(), ptr);
           CHK_(ptr);
         } else
@@ -2039,11 +1944,11 @@ const char* UserEmailRequest::_InternalParse(const char* ptr, ::_pbi::ParseConte
         continue;
       // string home = 9;
       case 9:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 74)) {
           auto str = _internal_mutable_home();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserEmailRequest.home"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserEmailRequest.home"));
         } else
           goto handle_unusual;
         continue;
@@ -2070,17 +1975,18 @@ failure:
 #undef CHK_
 }
 
-uint8_t* UserEmailRequest::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* UserEmailRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.auth.v1.UserEmailRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // .palm.plugins.auth.v1.UserQueryRequest query = 1;
   if (this->_internal_has_query()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::query(this),
-        _Internal::query(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(
+        1, _Internal::query(this), target, stream);
   }
 
   // string home = 9;
@@ -2094,7 +2000,7 @@ uint8_t* UserEmailRequest::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.auth.v1.UserEmailRequest)
@@ -2105,7 +2011,7 @@ size_t UserEmailRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.auth.v1.UserEmailRequest)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -2120,35 +2026,38 @@ size_t UserEmailRequest::ByteSizeLong() const {
   if (this->_internal_has_query()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.query_);
+        *query_);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserEmailRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
     UserEmailRequest::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserEmailRequest::GetClassData() const { return &_class_data_; }
 
+void UserEmailRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<UserEmailRequest *>(to)->MergeFrom(
+      static_cast<const UserEmailRequest &>(from));
+}
 
-void UserEmailRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<UserEmailRequest*>(&to_msg);
-  auto& from = static_cast<const UserEmailRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserEmailRequest)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
+
+void UserEmailRequest::MergeFrom(const UserEmailRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserEmailRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_home().empty()) {
-    _this->_internal_set_home(from._internal_home());
+    _internal_set_home(from._internal_home());
   }
   if (from._internal_has_query()) {
-    _this->_internal_mutable_query()->::palm::plugins::auth::v1::UserQueryRequest::MergeFrom(
-        from._internal_query());
+    _internal_mutable_query()->::palm::plugins::auth::v1::UserQueryRequest::MergeFrom(from._internal_query());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserEmailRequest::CopyFrom(const UserEmailRequest& from) {
@@ -2168,14 +2077,15 @@ void UserEmailRequest::InternalSwap(UserEmailRequest* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.home_, lhs_arena,
-      &other->_impl_.home_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &home_, lhs_arena,
+      &other->home_, rhs_arena
   );
-  swap(_impl_.query_, other->_impl_.query_);
+  swap(query_, other->query_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserEmailRequest::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_auth_2eproto_getter, &descriptor_table_auth_2eproto_once,
       file_level_metadata_auth_2eproto[4]);
 }
@@ -2189,83 +2099,72 @@ class UserTokenRequest::_Internal {
 UserTokenRequest::UserTokenRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:palm.plugins.auth.v1.UserTokenRequest)
 }
 UserTokenRequest::UserTokenRequest(const UserTokenRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  UserTokenRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.token_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.token_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_token().empty()) {
-    _this->_impl_.token_.Set(from._internal_token(), 
-      _this->GetArenaForAllocation());
+    token_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_token(), 
+      GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.auth.v1.UserTokenRequest)
 }
 
-inline void UserTokenRequest::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.token_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.token_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+void UserTokenRequest::SharedCtor() {
+token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 UserTokenRequest::~UserTokenRequest() {
   // @@protoc_insertion_point(destructor:palm.plugins.auth.v1.UserTokenRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserTokenRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.token_.Destroy();
+  token_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
+void UserTokenRequest::ArenaDtor(void* object) {
+  UserTokenRequest* _this = reinterpret_cast< UserTokenRequest* >(object);
+  (void)_this;
+}
+void UserTokenRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void UserTokenRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
 
 void UserTokenRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.auth.v1.UserTokenRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.token_.ClearToEmpty();
+  token_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserTokenRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* UserTokenRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string token = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           auto str = _internal_mutable_token();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserTokenRequest.token"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserTokenRequest.token"));
         } else
           goto handle_unusual;
         continue;
@@ -2292,10 +2191,10 @@ failure:
 #undef CHK_
 }
 
-uint8_t* UserTokenRequest::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* UserTokenRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.auth.v1.UserTokenRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string token = 1;
@@ -2309,7 +2208,7 @@ uint8_t* UserTokenRequest::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.auth.v1.UserTokenRequest)
@@ -2320,7 +2219,7 @@ size_t UserTokenRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.auth.v1.UserTokenRequest)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -2331,28 +2230,32 @@ size_t UserTokenRequest::ByteSizeLong() const {
         this->_internal_token());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserTokenRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
     UserTokenRequest::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserTokenRequest::GetClassData() const { return &_class_data_; }
 
+void UserTokenRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<UserTokenRequest *>(to)->MergeFrom(
+      static_cast<const UserTokenRequest &>(from));
+}
 
-void UserTokenRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<UserTokenRequest*>(&to_msg);
-  auto& from = static_cast<const UserTokenRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserTokenRequest)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
+
+void UserTokenRequest::MergeFrom(const UserTokenRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserTokenRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_token().empty()) {
-    _this->_internal_set_token(from._internal_token());
+    _internal_set_token(from._internal_token());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserTokenRequest::CopyFrom(const UserTokenRequest& from) {
@@ -2372,13 +2275,14 @@ void UserTokenRequest::InternalSwap(UserTokenRequest* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.token_, lhs_arena,
-      &other->_impl_.token_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &token_, lhs_arena,
+      &other->token_, rhs_arena
   );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserTokenRequest::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_auth_2eproto_getter, &descriptor_table_auth_2eproto_once,
       file_level_metadata_auth_2eproto[5]);
 }
@@ -2392,109 +2296,90 @@ class UserResetPasswordRequest::_Internal {
 UserResetPasswordRequest::UserResetPasswordRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:palm.plugins.auth.v1.UserResetPasswordRequest)
 }
 UserResetPasswordRequest::UserResetPasswordRequest(const UserResetPasswordRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  UserResetPasswordRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.token_){}
-    , decltype(_impl_.password_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.token_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_token().empty()) {
-    _this->_impl_.token_.Set(from._internal_token(), 
-      _this->GetArenaForAllocation());
+    token_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_token(), 
+      GetArenaForAllocation());
   }
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.password_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  password_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_password().empty()) {
-    _this->_impl_.password_.Set(from._internal_password(), 
-      _this->GetArenaForAllocation());
+    password_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_password(), 
+      GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.auth.v1.UserResetPasswordRequest)
 }
 
-inline void UserResetPasswordRequest::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.token_){}
-    , decltype(_impl_.password_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.token_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.password_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+void UserResetPasswordRequest::SharedCtor() {
+token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+password_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 UserResetPasswordRequest::~UserResetPasswordRequest() {
   // @@protoc_insertion_point(destructor:palm.plugins.auth.v1.UserResetPasswordRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserResetPasswordRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.token_.Destroy();
-  _impl_.password_.Destroy();
+  token_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  password_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
+void UserResetPasswordRequest::ArenaDtor(void* object) {
+  UserResetPasswordRequest* _this = reinterpret_cast< UserResetPasswordRequest* >(object);
+  (void)_this;
+}
+void UserResetPasswordRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void UserResetPasswordRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
 
 void UserResetPasswordRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.auth.v1.UserResetPasswordRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.token_.ClearToEmpty();
-  _impl_.password_.ClearToEmpty();
+  token_.ClearToEmpty();
+  password_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserResetPasswordRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* UserResetPasswordRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string token = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           auto str = _internal_mutable_token();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserResetPasswordRequest.token"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserResetPasswordRequest.token"));
         } else
           goto handle_unusual;
         continue;
       // string password = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_password();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserResetPasswordRequest.password"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserResetPasswordRequest.password"));
         } else
           goto handle_unusual;
         continue;
@@ -2521,10 +2406,10 @@ failure:
 #undef CHK_
 }
 
-uint8_t* UserResetPasswordRequest::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* UserResetPasswordRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.auth.v1.UserResetPasswordRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string token = 1;
@@ -2548,7 +2433,7 @@ uint8_t* UserResetPasswordRequest::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.auth.v1.UserResetPasswordRequest)
@@ -2559,7 +2444,7 @@ size_t UserResetPasswordRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.auth.v1.UserResetPasswordRequest)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -2577,31 +2462,35 @@ size_t UserResetPasswordRequest::ByteSizeLong() const {
         this->_internal_password());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserResetPasswordRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
     UserResetPasswordRequest::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserResetPasswordRequest::GetClassData() const { return &_class_data_; }
 
+void UserResetPasswordRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<UserResetPasswordRequest *>(to)->MergeFrom(
+      static_cast<const UserResetPasswordRequest &>(from));
+}
 
-void UserResetPasswordRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<UserResetPasswordRequest*>(&to_msg);
-  auto& from = static_cast<const UserResetPasswordRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserResetPasswordRequest)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
+
+void UserResetPasswordRequest::MergeFrom(const UserResetPasswordRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserResetPasswordRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_token().empty()) {
-    _this->_internal_set_token(from._internal_token());
+    _internal_set_token(from._internal_token());
   }
   if (!from._internal_password().empty()) {
-    _this->_internal_set_password(from._internal_password());
+    _internal_set_password(from._internal_password());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserResetPasswordRequest::CopyFrom(const UserResetPasswordRequest& from) {
@@ -2621,17 +2510,19 @@ void UserResetPasswordRequest::InternalSwap(UserResetPasswordRequest* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.token_, lhs_arena,
-      &other->_impl_.token_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &token_, lhs_arena,
+      &other->token_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.password_, lhs_arena,
-      &other->_impl_.password_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &password_, lhs_arena,
+      &other->password_, rhs_arena
   );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserResetPasswordRequest::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_auth_2eproto_getter, &descriptor_table_auth_2eproto_once,
       file_level_metadata_auth_2eproto[6]);
 }
@@ -2645,213 +2536,162 @@ class UserSetProfileRequest::_Internal {
 UserSetProfileRequest::UserSetProfileRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:palm.plugins.auth.v1.UserSetProfileRequest)
 }
 UserSetProfileRequest::UserSetProfileRequest(const UserSetProfileRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  UserSetProfileRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.real_name_){}
-    , decltype(_impl_.avatar_){}
-    , decltype(_impl_.time_zone_){}
-    , decltype(_impl_.lang_){}
-    , decltype(_impl_.wechat_){}
-    , decltype(_impl_.phone_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.real_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.real_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  real_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_real_name().empty()) {
-    _this->_impl_.real_name_.Set(from._internal_real_name(), 
-      _this->GetArenaForAllocation());
+    real_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_real_name(), 
+      GetArenaForAllocation());
   }
-  _impl_.avatar_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.avatar_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  avatar_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_avatar().empty()) {
-    _this->_impl_.avatar_.Set(from._internal_avatar(), 
-      _this->GetArenaForAllocation());
+    avatar_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_avatar(), 
+      GetArenaForAllocation());
   }
-  _impl_.time_zone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.time_zone_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  time_zone_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_time_zone().empty()) {
-    _this->_impl_.time_zone_.Set(from._internal_time_zone(), 
-      _this->GetArenaForAllocation());
+    time_zone_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_time_zone(), 
+      GetArenaForAllocation());
   }
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  lang_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_lang().empty()) {
-    _this->_impl_.lang_.Set(from._internal_lang(), 
-      _this->GetArenaForAllocation());
+    lang_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_lang(), 
+      GetArenaForAllocation());
   }
-  _impl_.wechat_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.wechat_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  wechat_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_wechat().empty()) {
-    _this->_impl_.wechat_.Set(from._internal_wechat(), 
-      _this->GetArenaForAllocation());
+    wechat_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_wechat(), 
+      GetArenaForAllocation());
   }
-  _impl_.phone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.phone_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  phone_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_phone().empty()) {
-    _this->_impl_.phone_.Set(from._internal_phone(), 
-      _this->GetArenaForAllocation());
+    phone_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_phone(), 
+      GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.auth.v1.UserSetProfileRequest)
 }
 
-inline void UserSetProfileRequest::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.real_name_){}
-    , decltype(_impl_.avatar_){}
-    , decltype(_impl_.time_zone_){}
-    , decltype(_impl_.lang_){}
-    , decltype(_impl_.wechat_){}
-    , decltype(_impl_.phone_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.real_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.real_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.avatar_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.avatar_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.time_zone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.time_zone_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.wechat_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.wechat_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.phone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.phone_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+void UserSetProfileRequest::SharedCtor() {
+real_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+avatar_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+time_zone_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+lang_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+wechat_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+phone_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 UserSetProfileRequest::~UserSetProfileRequest() {
   // @@protoc_insertion_point(destructor:palm.plugins.auth.v1.UserSetProfileRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserSetProfileRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.real_name_.Destroy();
-  _impl_.avatar_.Destroy();
-  _impl_.time_zone_.Destroy();
-  _impl_.lang_.Destroy();
-  _impl_.wechat_.Destroy();
-  _impl_.phone_.Destroy();
+  real_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  avatar_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  time_zone_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  lang_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  wechat_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  phone_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
+void UserSetProfileRequest::ArenaDtor(void* object) {
+  UserSetProfileRequest* _this = reinterpret_cast< UserSetProfileRequest* >(object);
+  (void)_this;
+}
+void UserSetProfileRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void UserSetProfileRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
 
 void UserSetProfileRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.auth.v1.UserSetProfileRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.real_name_.ClearToEmpty();
-  _impl_.avatar_.ClearToEmpty();
-  _impl_.time_zone_.ClearToEmpty();
-  _impl_.lang_.ClearToEmpty();
-  _impl_.wechat_.ClearToEmpty();
-  _impl_.phone_.ClearToEmpty();
+  real_name_.ClearToEmpty();
+  avatar_.ClearToEmpty();
+  time_zone_.ClearToEmpty();
+  lang_.ClearToEmpty();
+  wechat_.ClearToEmpty();
+  phone_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserSetProfileRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* UserSetProfileRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string real_name = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           auto str = _internal_mutable_real_name();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserSetProfileRequest.real_name"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserSetProfileRequest.real_name"));
         } else
           goto handle_unusual;
         continue;
       // string avatar = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_avatar();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserSetProfileRequest.avatar"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserSetProfileRequest.avatar"));
         } else
           goto handle_unusual;
         continue;
       // string time_zone = 8;
       case 8:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 66)) {
           auto str = _internal_mutable_time_zone();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserSetProfileRequest.time_zone"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserSetProfileRequest.time_zone"));
         } else
           goto handle_unusual;
         continue;
       // string lang = 9;
       case 9:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 74)) {
           auto str = _internal_mutable_lang();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserSetProfileRequest.lang"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserSetProfileRequest.lang"));
         } else
           goto handle_unusual;
         continue;
       // string wechat = 11;
       case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 90)) {
           auto str = _internal_mutable_wechat();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserSetProfileRequest.wechat"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserSetProfileRequest.wechat"));
         } else
           goto handle_unusual;
         continue;
       // string phone = 12;
       case 12:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 98)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 98)) {
           auto str = _internal_mutable_phone();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserSetProfileRequest.phone"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserSetProfileRequest.phone"));
         } else
           goto handle_unusual;
         continue;
@@ -2878,10 +2718,10 @@ failure:
 #undef CHK_
 }
 
-uint8_t* UserSetProfileRequest::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* UserSetProfileRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.auth.v1.UserSetProfileRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string real_name = 1;
@@ -2945,7 +2785,7 @@ uint8_t* UserSetProfileRequest::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.auth.v1.UserSetProfileRequest)
@@ -2956,7 +2796,7 @@ size_t UserSetProfileRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.auth.v1.UserSetProfileRequest)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -3002,43 +2842,47 @@ size_t UserSetProfileRequest::ByteSizeLong() const {
         this->_internal_phone());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserSetProfileRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
     UserSetProfileRequest::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserSetProfileRequest::GetClassData() const { return &_class_data_; }
 
+void UserSetProfileRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<UserSetProfileRequest *>(to)->MergeFrom(
+      static_cast<const UserSetProfileRequest &>(from));
+}
 
-void UserSetProfileRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<UserSetProfileRequest*>(&to_msg);
-  auto& from = static_cast<const UserSetProfileRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserSetProfileRequest)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
+
+void UserSetProfileRequest::MergeFrom(const UserSetProfileRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserSetProfileRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_real_name().empty()) {
-    _this->_internal_set_real_name(from._internal_real_name());
+    _internal_set_real_name(from._internal_real_name());
   }
   if (!from._internal_avatar().empty()) {
-    _this->_internal_set_avatar(from._internal_avatar());
+    _internal_set_avatar(from._internal_avatar());
   }
   if (!from._internal_time_zone().empty()) {
-    _this->_internal_set_time_zone(from._internal_time_zone());
+    _internal_set_time_zone(from._internal_time_zone());
   }
   if (!from._internal_lang().empty()) {
-    _this->_internal_set_lang(from._internal_lang());
+    _internal_set_lang(from._internal_lang());
   }
   if (!from._internal_wechat().empty()) {
-    _this->_internal_set_wechat(from._internal_wechat());
+    _internal_set_wechat(from._internal_wechat());
   }
   if (!from._internal_phone().empty()) {
-    _this->_internal_set_phone(from._internal_phone());
+    _internal_set_phone(from._internal_phone());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserSetProfileRequest::CopyFrom(const UserSetProfileRequest& from) {
@@ -3058,33 +2902,39 @@ void UserSetProfileRequest::InternalSwap(UserSetProfileRequest* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.real_name_, lhs_arena,
-      &other->_impl_.real_name_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &real_name_, lhs_arena,
+      &other->real_name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.avatar_, lhs_arena,
-      &other->_impl_.avatar_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &avatar_, lhs_arena,
+      &other->avatar_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.time_zone_, lhs_arena,
-      &other->_impl_.time_zone_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &time_zone_, lhs_arena,
+      &other->time_zone_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.lang_, lhs_arena,
-      &other->_impl_.lang_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &lang_, lhs_arena,
+      &other->lang_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.wechat_, lhs_arena,
-      &other->_impl_.wechat_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &wechat_, lhs_arena,
+      &other->wechat_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.phone_, lhs_arena,
-      &other->_impl_.phone_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &phone_, lhs_arena,
+      &other->phone_, rhs_arena
   );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserSetProfileRequest::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_auth_2eproto_getter, &descriptor_table_auth_2eproto_once,
       file_level_metadata_auth_2eproto[7]);
 }
@@ -3098,265 +2948,198 @@ class UserGetProfileResponse::_Internal {
 UserGetProfileResponse::UserGetProfileResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:palm.plugins.auth.v1.UserGetProfileResponse)
 }
 UserGetProfileResponse::UserGetProfileResponse(const UserGetProfileResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  UserGetProfileResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.real_name_){}
-    , decltype(_impl_.avatar_){}
-    , decltype(_impl_.nick_name_){}
-    , decltype(_impl_.email_){}
-    , decltype(_impl_.time_zone_){}
-    , decltype(_impl_.lang_){}
-    , decltype(_impl_.wechat_){}
-    , decltype(_impl_.phone_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.real_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.real_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  real_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_real_name().empty()) {
-    _this->_impl_.real_name_.Set(from._internal_real_name(), 
-      _this->GetArenaForAllocation());
+    real_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_real_name(), 
+      GetArenaForAllocation());
   }
-  _impl_.avatar_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.avatar_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  avatar_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_avatar().empty()) {
-    _this->_impl_.avatar_.Set(from._internal_avatar(), 
-      _this->GetArenaForAllocation());
+    avatar_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_avatar(), 
+      GetArenaForAllocation());
   }
-  _impl_.nick_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.nick_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  nick_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_nick_name().empty()) {
-    _this->_impl_.nick_name_.Set(from._internal_nick_name(), 
-      _this->GetArenaForAllocation());
+    nick_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_nick_name(), 
+      GetArenaForAllocation());
   }
-  _impl_.email_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.email_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  email_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_email().empty()) {
-    _this->_impl_.email_.Set(from._internal_email(), 
-      _this->GetArenaForAllocation());
+    email_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_email(), 
+      GetArenaForAllocation());
   }
-  _impl_.time_zone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.time_zone_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  time_zone_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_time_zone().empty()) {
-    _this->_impl_.time_zone_.Set(from._internal_time_zone(), 
-      _this->GetArenaForAllocation());
+    time_zone_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_time_zone(), 
+      GetArenaForAllocation());
   }
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  lang_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_lang().empty()) {
-    _this->_impl_.lang_.Set(from._internal_lang(), 
-      _this->GetArenaForAllocation());
+    lang_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_lang(), 
+      GetArenaForAllocation());
   }
-  _impl_.wechat_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.wechat_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  wechat_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_wechat().empty()) {
-    _this->_impl_.wechat_.Set(from._internal_wechat(), 
-      _this->GetArenaForAllocation());
+    wechat_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_wechat(), 
+      GetArenaForAllocation());
   }
-  _impl_.phone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.phone_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  phone_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_phone().empty()) {
-    _this->_impl_.phone_.Set(from._internal_phone(), 
-      _this->GetArenaForAllocation());
+    phone_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_phone(), 
+      GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.auth.v1.UserGetProfileResponse)
 }
 
-inline void UserGetProfileResponse::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.real_name_){}
-    , decltype(_impl_.avatar_){}
-    , decltype(_impl_.nick_name_){}
-    , decltype(_impl_.email_){}
-    , decltype(_impl_.time_zone_){}
-    , decltype(_impl_.lang_){}
-    , decltype(_impl_.wechat_){}
-    , decltype(_impl_.phone_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.real_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.real_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.avatar_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.avatar_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.nick_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.nick_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.email_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.email_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.time_zone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.time_zone_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.wechat_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.wechat_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.phone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.phone_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+void UserGetProfileResponse::SharedCtor() {
+real_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+avatar_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+nick_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+email_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+time_zone_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+lang_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+wechat_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+phone_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 UserGetProfileResponse::~UserGetProfileResponse() {
   // @@protoc_insertion_point(destructor:palm.plugins.auth.v1.UserGetProfileResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserGetProfileResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.real_name_.Destroy();
-  _impl_.avatar_.Destroy();
-  _impl_.nick_name_.Destroy();
-  _impl_.email_.Destroy();
-  _impl_.time_zone_.Destroy();
-  _impl_.lang_.Destroy();
-  _impl_.wechat_.Destroy();
-  _impl_.phone_.Destroy();
+  real_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  avatar_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  nick_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  email_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  time_zone_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  lang_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  wechat_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  phone_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
+void UserGetProfileResponse::ArenaDtor(void* object) {
+  UserGetProfileResponse* _this = reinterpret_cast< UserGetProfileResponse* >(object);
+  (void)_this;
+}
+void UserGetProfileResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void UserGetProfileResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
 
 void UserGetProfileResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.auth.v1.UserGetProfileResponse)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.real_name_.ClearToEmpty();
-  _impl_.avatar_.ClearToEmpty();
-  _impl_.nick_name_.ClearToEmpty();
-  _impl_.email_.ClearToEmpty();
-  _impl_.time_zone_.ClearToEmpty();
-  _impl_.lang_.ClearToEmpty();
-  _impl_.wechat_.ClearToEmpty();
-  _impl_.phone_.ClearToEmpty();
+  real_name_.ClearToEmpty();
+  avatar_.ClearToEmpty();
+  nick_name_.ClearToEmpty();
+  email_.ClearToEmpty();
+  time_zone_.ClearToEmpty();
+  lang_.ClearToEmpty();
+  wechat_.ClearToEmpty();
+  phone_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserGetProfileResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* UserGetProfileResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string real_name = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           auto str = _internal_mutable_real_name();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserGetProfileResponse.real_name"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserGetProfileResponse.real_name"));
         } else
           goto handle_unusual;
         continue;
       // string avatar = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_avatar();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserGetProfileResponse.avatar"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserGetProfileResponse.avatar"));
         } else
           goto handle_unusual;
         continue;
       // string nick_name = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
           auto str = _internal_mutable_nick_name();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserGetProfileResponse.nick_name"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserGetProfileResponse.nick_name"));
         } else
           goto handle_unusual;
         continue;
       // string email = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
           auto str = _internal_mutable_email();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserGetProfileResponse.email"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserGetProfileResponse.email"));
         } else
           goto handle_unusual;
         continue;
       // string time_zone = 8;
       case 8:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 66)) {
           auto str = _internal_mutable_time_zone();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserGetProfileResponse.time_zone"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserGetProfileResponse.time_zone"));
         } else
           goto handle_unusual;
         continue;
       // string lang = 9;
       case 9:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 74)) {
           auto str = _internal_mutable_lang();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserGetProfileResponse.lang"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserGetProfileResponse.lang"));
         } else
           goto handle_unusual;
         continue;
       // string wechat = 11;
       case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 90)) {
           auto str = _internal_mutable_wechat();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserGetProfileResponse.wechat"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserGetProfileResponse.wechat"));
         } else
           goto handle_unusual;
         continue;
       // string phone = 12;
       case 12:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 98)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 98)) {
           auto str = _internal_mutable_phone();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserGetProfileResponse.phone"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserGetProfileResponse.phone"));
         } else
           goto handle_unusual;
         continue;
@@ -3383,10 +3166,10 @@ failure:
 #undef CHK_
 }
 
-uint8_t* UserGetProfileResponse::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* UserGetProfileResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.auth.v1.UserGetProfileResponse)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string real_name = 1;
@@ -3470,7 +3253,7 @@ uint8_t* UserGetProfileResponse::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.auth.v1.UserGetProfileResponse)
@@ -3481,7 +3264,7 @@ size_t UserGetProfileResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.auth.v1.UserGetProfileResponse)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -3541,49 +3324,53 @@ size_t UserGetProfileResponse::ByteSizeLong() const {
         this->_internal_phone());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserGetProfileResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
     UserGetProfileResponse::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserGetProfileResponse::GetClassData() const { return &_class_data_; }
 
+void UserGetProfileResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<UserGetProfileResponse *>(to)->MergeFrom(
+      static_cast<const UserGetProfileResponse &>(from));
+}
 
-void UserGetProfileResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<UserGetProfileResponse*>(&to_msg);
-  auto& from = static_cast<const UserGetProfileResponse&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserGetProfileResponse)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
+
+void UserGetProfileResponse::MergeFrom(const UserGetProfileResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserGetProfileResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_real_name().empty()) {
-    _this->_internal_set_real_name(from._internal_real_name());
+    _internal_set_real_name(from._internal_real_name());
   }
   if (!from._internal_avatar().empty()) {
-    _this->_internal_set_avatar(from._internal_avatar());
+    _internal_set_avatar(from._internal_avatar());
   }
   if (!from._internal_nick_name().empty()) {
-    _this->_internal_set_nick_name(from._internal_nick_name());
+    _internal_set_nick_name(from._internal_nick_name());
   }
   if (!from._internal_email().empty()) {
-    _this->_internal_set_email(from._internal_email());
+    _internal_set_email(from._internal_email());
   }
   if (!from._internal_time_zone().empty()) {
-    _this->_internal_set_time_zone(from._internal_time_zone());
+    _internal_set_time_zone(from._internal_time_zone());
   }
   if (!from._internal_lang().empty()) {
-    _this->_internal_set_lang(from._internal_lang());
+    _internal_set_lang(from._internal_lang());
   }
   if (!from._internal_wechat().empty()) {
-    _this->_internal_set_wechat(from._internal_wechat());
+    _internal_set_wechat(from._internal_wechat());
   }
   if (!from._internal_phone().empty()) {
-    _this->_internal_set_phone(from._internal_phone());
+    _internal_set_phone(from._internal_phone());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserGetProfileResponse::CopyFrom(const UserGetProfileResponse& from) {
@@ -3603,41 +3390,49 @@ void UserGetProfileResponse::InternalSwap(UserGetProfileResponse* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.real_name_, lhs_arena,
-      &other->_impl_.real_name_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &real_name_, lhs_arena,
+      &other->real_name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.avatar_, lhs_arena,
-      &other->_impl_.avatar_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &avatar_, lhs_arena,
+      &other->avatar_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.nick_name_, lhs_arena,
-      &other->_impl_.nick_name_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &nick_name_, lhs_arena,
+      &other->nick_name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.email_, lhs_arena,
-      &other->_impl_.email_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &email_, lhs_arena,
+      &other->email_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.time_zone_, lhs_arena,
-      &other->_impl_.time_zone_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &time_zone_, lhs_arena,
+      &other->time_zone_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.lang_, lhs_arena,
-      &other->_impl_.lang_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &lang_, lhs_arena,
+      &other->lang_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.wechat_, lhs_arena,
-      &other->_impl_.wechat_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &wechat_, lhs_arena,
+      &other->wechat_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.phone_, lhs_arena,
-      &other->_impl_.phone_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &phone_, lhs_arena,
+      &other->phone_, rhs_arena
   );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserGetProfileResponse::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_auth_2eproto_getter, &descriptor_table_auth_2eproto_once,
       file_level_metadata_auth_2eproto[8]);
 }
@@ -3646,7 +3441,7 @@ void UserGetProfileResponse::InternalSwap(UserGetProfileResponse* other) {
 
 class UserLogsRequest::_Internal {
  public:
-  using HasBits = decltype(std::declval<UserLogsRequest>()._impl_._has_bits_);
+  using HasBits = decltype(std::declval<UserLogsRequest>()._has_bits_);
   static const ::palm::plugins::nut::v1::Pager& pager(const UserLogsRequest* msg);
   static void set_has_level(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
@@ -3658,127 +3453,108 @@ class UserLogsRequest::_Internal {
 
 const ::palm::plugins::nut::v1::Pager&
 UserLogsRequest::_Internal::pager(const UserLogsRequest* msg) {
-  return *msg->_impl_.pager_;
+  return *msg->pager_;
 }
 void UserLogsRequest::clear_pager() {
-  if (GetArenaForAllocation() == nullptr && _impl_.pager_ != nullptr) {
-    delete _impl_.pager_;
+  if (GetArenaForAllocation() == nullptr && pager_ != nullptr) {
+    delete pager_;
   }
-  _impl_.pager_ = nullptr;
+  pager_ = nullptr;
 }
 UserLogsRequest::UserLogsRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:palm.plugins.auth.v1.UserLogsRequest)
 }
 UserLogsRequest::UserLogsRequest(const UserLogsRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  UserLogsRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.level_){}
-    , decltype(_impl_.ip_){}
-    , decltype(_impl_.pager_){nullptr}};
-
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.level_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.level_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  level_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_level()) {
-    _this->_impl_.level_.Set(from._internal_level(), 
-      _this->GetArenaForAllocation());
+    level_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_level(), 
+      GetArenaForAllocation());
   }
-  _impl_.ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  ip_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_ip()) {
-    _this->_impl_.ip_.Set(from._internal_ip(), 
-      _this->GetArenaForAllocation());
+    ip_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_ip(), 
+      GetArenaForAllocation());
   }
   if (from._internal_has_pager()) {
-    _this->_impl_.pager_ = new ::palm::plugins::nut::v1::Pager(*from._impl_.pager_);
+    pager_ = new ::palm::plugins::nut::v1::Pager(*from.pager_);
+  } else {
+    pager_ = nullptr;
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.auth.v1.UserLogsRequest)
 }
 
-inline void UserLogsRequest::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.level_){}
-    , decltype(_impl_.ip_){}
-    , decltype(_impl_.pager_){nullptr}
-  };
-  _impl_.level_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.level_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+void UserLogsRequest::SharedCtor() {
+level_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+ip_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+pager_ = nullptr;
 }
 
 UserLogsRequest::~UserLogsRequest() {
   // @@protoc_insertion_point(destructor:palm.plugins.auth.v1.UserLogsRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserLogsRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.level_.Destroy();
-  _impl_.ip_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.pager_;
+  level_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ip_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete pager_;
 }
 
+void UserLogsRequest::ArenaDtor(void* object) {
+  UserLogsRequest* _this = reinterpret_cast< UserLogsRequest* >(object);
+  (void)_this;
+}
+void UserLogsRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void UserLogsRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
 
 void UserLogsRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.auth.v1.UserLogsRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
+  cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      _impl_.level_.ClearNonDefaultToEmpty();
+      level_.ClearNonDefaultToEmpty();
     }
     if (cached_has_bits & 0x00000002u) {
-      _impl_.ip_.ClearNonDefaultToEmpty();
+      ip_.ClearNonDefaultToEmpty();
     }
   }
-  if (GetArenaForAllocation() == nullptr && _impl_.pager_ != nullptr) {
-    delete _impl_.pager_;
+  if (GetArenaForAllocation() == nullptr && pager_ != nullptr) {
+    delete pager_;
   }
-  _impl_.pager_ = nullptr;
-  _impl_._has_bits_.Clear();
+  pager_ = nullptr;
+  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserLogsRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* UserLogsRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .palm.plugins.nut.v1.Pager pager = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_pager(), ptr);
           CHK_(ptr);
         } else
@@ -3786,21 +3562,21 @@ const char* UserLogsRequest::_InternalParse(const char* ptr, ::_pbi::ParseContex
         continue;
       // optional string level = 11;
       case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 90)) {
           auto str = _internal_mutable_level();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserLogsRequest.level"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserLogsRequest.level"));
         } else
           goto handle_unusual;
         continue;
       // optional string ip = 12;
       case 12:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 98)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 98)) {
           auto str = _internal_mutable_ip();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserLogsRequest.ip"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserLogsRequest.ip"));
         } else
           goto handle_unusual;
         continue;
@@ -3820,7 +3596,7 @@ const char* UserLogsRequest::_InternalParse(const char* ptr, ::_pbi::ParseContex
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _impl_._has_bits_.Or(has_bits);
+  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -3828,17 +3604,18 @@ failure:
 #undef CHK_
 }
 
-uint8_t* UserLogsRequest::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* UserLogsRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.auth.v1.UserLogsRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // .palm.plugins.nut.v1.Pager pager = 1;
   if (this->_internal_has_pager()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::pager(this),
-        _Internal::pager(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(
+        1, _Internal::pager(this), target, stream);
   }
 
   // optional string level = 11;
@@ -3862,7 +3639,7 @@ uint8_t* UserLogsRequest::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.auth.v1.UserLogsRequest)
@@ -3873,11 +3650,11 @@ size_t UserLogsRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.auth.v1.UserLogsRequest)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
+  cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     // optional string level = 11;
     if (cached_has_bits & 0x00000001u) {
@@ -3898,41 +3675,44 @@ size_t UserLogsRequest::ByteSizeLong() const {
   if (this->_internal_has_pager()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.pager_);
+        *pager_);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserLogsRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
     UserLogsRequest::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserLogsRequest::GetClassData() const { return &_class_data_; }
 
+void UserLogsRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<UserLogsRequest *>(to)->MergeFrom(
+      static_cast<const UserLogsRequest &>(from));
+}
 
-void UserLogsRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<UserLogsRequest*>(&to_msg);
-  auto& from = static_cast<const UserLogsRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserLogsRequest)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
+
+void UserLogsRequest::MergeFrom(const UserLogsRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserLogsRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._impl_._has_bits_[0];
+  cached_has_bits = from._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      _this->_internal_set_level(from._internal_level());
+      _internal_set_level(from._internal_level());
     }
     if (cached_has_bits & 0x00000002u) {
-      _this->_internal_set_ip(from._internal_ip());
+      _internal_set_ip(from._internal_ip());
     }
   }
   if (from._internal_has_pager()) {
-    _this->_internal_mutable_pager()->::palm::plugins::nut::v1::Pager::MergeFrom(
-        from._internal_pager());
+    _internal_mutable_pager()->::palm::plugins::nut::v1::Pager::MergeFrom(from._internal_pager());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserLogsRequest::CopyFrom(const UserLogsRequest& from) {
@@ -3951,20 +3731,22 @@ void UserLogsRequest::InternalSwap(UserLogsRequest* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.level_, lhs_arena,
-      &other->_impl_.level_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &level_, lhs_arena,
+      &other->level_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.ip_, lhs_arena,
-      &other->_impl_.ip_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &ip_, lhs_arena,
+      &other->ip_, rhs_arena
   );
-  swap(_impl_.pager_, other->_impl_.pager_);
+  swap(pager_, other->pager_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserLogsRequest::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_auth_2eproto_getter, &descriptor_table_auth_2eproto_once,
       file_level_metadata_auth_2eproto[9]);
 }
@@ -3973,7 +3755,7 @@ void UserLogsRequest::InternalSwap(UserLogsRequest* other) {
 
 class UserLogsResponse_Item::_Internal {
  public:
-  using HasBits = decltype(std::declval<UserLogsResponse_Item>()._impl_._has_bits_);
+  using HasBits = decltype(std::declval<UserLogsResponse_Item>()._has_bits_);
   static void set_has_resource_id(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -3982,230 +3764,192 @@ class UserLogsResponse_Item::_Internal {
 
 const ::PROTOBUF_NAMESPACE_ID::Timestamp&
 UserLogsResponse_Item::_Internal::created_at(const UserLogsResponse_Item* msg) {
-  return *msg->_impl_.created_at_;
+  return *msg->created_at_;
 }
 void UserLogsResponse_Item::clear_created_at() {
-  if (GetArenaForAllocation() == nullptr && _impl_.created_at_ != nullptr) {
-    delete _impl_.created_at_;
+  if (GetArenaForAllocation() == nullptr && created_at_ != nullptr) {
+    delete created_at_;
   }
-  _impl_.created_at_ = nullptr;
+  created_at_ = nullptr;
 }
 UserLogsResponse_Item::UserLogsResponse_Item(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:palm.plugins.auth.v1.UserLogsResponse.Item)
 }
 UserLogsResponse_Item::UserLogsResponse_Item(const UserLogsResponse_Item& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  UserLogsResponse_Item* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.ip_){}
-    , decltype(_impl_.level_){}
-    , decltype(_impl_.message_){}
-    , decltype(_impl_.resource_type_){}
-    , decltype(_impl_.created_at_){nullptr}
-    , decltype(_impl_.id_){}
-    , decltype(_impl_.user_id_){}
-    , decltype(_impl_.resource_id_){}};
-
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  ip_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_ip().empty()) {
-    _this->_impl_.ip_.Set(from._internal_ip(), 
-      _this->GetArenaForAllocation());
+    ip_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_ip(), 
+      GetArenaForAllocation());
   }
-  _impl_.level_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.level_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  level_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_level().empty()) {
-    _this->_impl_.level_.Set(from._internal_level(), 
-      _this->GetArenaForAllocation());
+    level_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_level(), 
+      GetArenaForAllocation());
   }
-  _impl_.message_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.message_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_message().empty()) {
-    _this->_impl_.message_.Set(from._internal_message(), 
-      _this->GetArenaForAllocation());
+    message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_message(), 
+      GetArenaForAllocation());
   }
-  _impl_.resource_type_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.resource_type_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  resource_type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_resource_type().empty()) {
-    _this->_impl_.resource_type_.Set(from._internal_resource_type(), 
-      _this->GetArenaForAllocation());
+    resource_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_resource_type(), 
+      GetArenaForAllocation());
   }
   if (from._internal_has_created_at()) {
-    _this->_impl_.created_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from._impl_.created_at_);
+    created_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from.created_at_);
+  } else {
+    created_at_ = nullptr;
   }
-  ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.resource_id_) -
-    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.resource_id_));
+  ::memcpy(&id_, &from.id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&resource_id_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(resource_id_));
   // @@protoc_insertion_point(copy_constructor:palm.plugins.auth.v1.UserLogsResponse.Item)
 }
 
-inline void UserLogsResponse_Item::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.ip_){}
-    , decltype(_impl_.level_){}
-    , decltype(_impl_.message_){}
-    , decltype(_impl_.resource_type_){}
-    , decltype(_impl_.created_at_){nullptr}
-    , decltype(_impl_.id_){0}
-    , decltype(_impl_.user_id_){0}
-    , decltype(_impl_.resource_id_){0}
-  };
-  _impl_.ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.level_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.level_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.message_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.message_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.resource_type_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.resource_type_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+void UserLogsResponse_Item::SharedCtor() {
+ip_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+level_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+resource_type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&created_at_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&resource_id_) -
+    reinterpret_cast<char*>(&created_at_)) + sizeof(resource_id_));
 }
 
 UserLogsResponse_Item::~UserLogsResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.plugins.auth.v1.UserLogsResponse.Item)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserLogsResponse_Item::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.ip_.Destroy();
-  _impl_.level_.Destroy();
-  _impl_.message_.Destroy();
-  _impl_.resource_type_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.created_at_;
+  ip_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  level_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  resource_type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete created_at_;
 }
 
+void UserLogsResponse_Item::ArenaDtor(void* object) {
+  UserLogsResponse_Item* _this = reinterpret_cast< UserLogsResponse_Item* >(object);
+  (void)_this;
+}
+void UserLogsResponse_Item::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void UserLogsResponse_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
 
 void UserLogsResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.auth.v1.UserLogsResponse.Item)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.ip_.ClearToEmpty();
-  _impl_.level_.ClearToEmpty();
-  _impl_.message_.ClearToEmpty();
-  _impl_.resource_type_.ClearToEmpty();
-  if (GetArenaForAllocation() == nullptr && _impl_.created_at_ != nullptr) {
-    delete _impl_.created_at_;
+  ip_.ClearToEmpty();
+  level_.ClearToEmpty();
+  message_.ClearToEmpty();
+  resource_type_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && created_at_ != nullptr) {
+    delete created_at_;
   }
-  _impl_.created_at_ = nullptr;
-  ::memset(&_impl_.id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.user_id_) -
-      reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.user_id_));
-  _impl_.resource_id_ = 0;
-  _impl_._has_bits_.Clear();
+  created_at_ = nullptr;
+  ::memset(&id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&user_id_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(user_id_));
+  resource_id_ = 0;
+  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserLogsResponse_Item::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* UserLogsResponse_Item::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // int32 id = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          _impl_.id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
       // int32 user_id = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          _impl_.user_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          user_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
       // string ip = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
           auto str = _internal_mutable_ip();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserLogsResponse.Item.ip"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserLogsResponse.Item.ip"));
         } else
           goto handle_unusual;
         continue;
       // string level = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
           auto str = _internal_mutable_level();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserLogsResponse.Item.level"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserLogsResponse.Item.level"));
         } else
           goto handle_unusual;
         continue;
       // string message = 5;
       case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
           auto str = _internal_mutable_message();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserLogsResponse.Item.message"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserLogsResponse.Item.message"));
         } else
           goto handle_unusual;
         continue;
       // string resource_type = 6;
       case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
           auto str = _internal_mutable_resource_type();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserLogsResponse.Item.resource_type"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserLogsResponse.Item.resource_type"));
         } else
           goto handle_unusual;
         continue;
       // optional int32 resource_id = 7;
       case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
           _Internal::set_has_resource_id(&has_bits);
-          _impl_.resource_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          resource_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
       // .google.protobuf.Timestamp created_at = 11;
       case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 90)) {
           ptr = ctx->ParseMessage(_internal_mutable_created_at(), ptr);
           CHK_(ptr);
         } else
@@ -4227,7 +3971,7 @@ const char* UserLogsResponse_Item::_InternalParse(const char* ptr, ::_pbi::Parse
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _impl_._has_bits_.Or(has_bits);
+  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -4235,22 +3979,22 @@ failure:
 #undef CHK_
 }
 
-uint8_t* UserLogsResponse_Item::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* UserLogsResponse_Item::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.auth.v1.UserLogsResponse.Item)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // int32 id = 1;
   if (this->_internal_id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
   }
 
   // int32 user_id = 2;
   if (this->_internal_user_id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_user_id(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_user_id(), target);
   }
 
   // string ip = 3;
@@ -4296,18 +4040,19 @@ uint8_t* UserLogsResponse_Item::_InternalSerialize(
   // optional int32 resource_id = 7;
   if (_internal_has_resource_id()) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(7, this->_internal_resource_id(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(7, this->_internal_resource_id(), target);
   }
 
   // .google.protobuf.Timestamp created_at = 11;
   if (this->_internal_has_created_at()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::created_at(this),
-        _Internal::created_at(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(
+        11, _Internal::created_at(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.auth.v1.UserLogsResponse.Item)
@@ -4318,7 +4063,7 @@ size_t UserLogsResponse_Item::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.auth.v1.UserLogsResponse.Item)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -4354,69 +4099,72 @@ size_t UserLogsResponse_Item::ByteSizeLong() const {
   if (this->_internal_has_created_at()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.created_at_);
+        *created_at_);
   }
 
   // int32 id = 1;
   if (this->_internal_id() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_id());
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_id());
   }
 
   // int32 user_id = 2;
   if (this->_internal_user_id() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_user_id());
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_user_id());
   }
 
   // optional int32 resource_id = 7;
-  cached_has_bits = _impl_._has_bits_[0];
+  cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_resource_id());
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_resource_id());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserLogsResponse_Item::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
     UserLogsResponse_Item::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserLogsResponse_Item::GetClassData() const { return &_class_data_; }
 
+void UserLogsResponse_Item::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<UserLogsResponse_Item *>(to)->MergeFrom(
+      static_cast<const UserLogsResponse_Item &>(from));
+}
 
-void UserLogsResponse_Item::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<UserLogsResponse_Item*>(&to_msg);
-  auto& from = static_cast<const UserLogsResponse_Item&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserLogsResponse.Item)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
+
+void UserLogsResponse_Item::MergeFrom(const UserLogsResponse_Item& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserLogsResponse.Item)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_ip().empty()) {
-    _this->_internal_set_ip(from._internal_ip());
+    _internal_set_ip(from._internal_ip());
   }
   if (!from._internal_level().empty()) {
-    _this->_internal_set_level(from._internal_level());
+    _internal_set_level(from._internal_level());
   }
   if (!from._internal_message().empty()) {
-    _this->_internal_set_message(from._internal_message());
+    _internal_set_message(from._internal_message());
   }
   if (!from._internal_resource_type().empty()) {
-    _this->_internal_set_resource_type(from._internal_resource_type());
+    _internal_set_resource_type(from._internal_resource_type());
   }
   if (from._internal_has_created_at()) {
-    _this->_internal_mutable_created_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(
-        from._internal_created_at());
+    _internal_mutable_created_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_created_at());
   }
   if (from._internal_id() != 0) {
-    _this->_internal_set_id(from._internal_id());
+    _internal_set_id(from._internal_id());
   }
   if (from._internal_user_id() != 0) {
-    _this->_internal_set_user_id(from._internal_user_id());
+    _internal_set_user_id(from._internal_user_id());
   }
   if (from._internal_has_resource_id()) {
-    _this->_internal_set_resource_id(from._internal_resource_id());
+    _internal_set_resource_id(from._internal_resource_id());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserLogsResponse_Item::CopyFrom(const UserLogsResponse_Item& from) {
@@ -4435,33 +4183,37 @@ void UserLogsResponse_Item::InternalSwap(UserLogsResponse_Item* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.ip_, lhs_arena,
-      &other->_impl_.ip_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &ip_, lhs_arena,
+      &other->ip_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.level_, lhs_arena,
-      &other->_impl_.level_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &level_, lhs_arena,
+      &other->level_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.message_, lhs_arena,
-      &other->_impl_.message_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &message_, lhs_arena,
+      &other->message_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.resource_type_, lhs_arena,
-      &other->_impl_.resource_type_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &resource_type_, lhs_arena,
+      &other->resource_type_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(UserLogsResponse_Item, _impl_.resource_id_)
-      + sizeof(UserLogsResponse_Item::_impl_.resource_id_)
-      - PROTOBUF_FIELD_OFFSET(UserLogsResponse_Item, _impl_.created_at_)>(
-          reinterpret_cast<char*>(&_impl_.created_at_),
-          reinterpret_cast<char*>(&other->_impl_.created_at_));
+      PROTOBUF_FIELD_OFFSET(UserLogsResponse_Item, resource_id_)
+      + sizeof(UserLogsResponse_Item::resource_id_)
+      - PROTOBUF_FIELD_OFFSET(UserLogsResponse_Item, created_at_)>(
+          reinterpret_cast<char*>(&created_at_),
+          reinterpret_cast<char*>(&other->created_at_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserLogsResponse_Item::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_auth_2eproto_getter, &descriptor_table_auth_2eproto_once,
       file_level_metadata_auth_2eproto[10]);
 }
@@ -4475,88 +4227,85 @@ class UserLogsResponse::_Internal {
 
 const ::palm::plugins::nut::v1::Pagination&
 UserLogsResponse::_Internal::pagination(const UserLogsResponse* msg) {
-  return *msg->_impl_.pagination_;
+  return *msg->pagination_;
 }
 void UserLogsResponse::clear_pagination() {
-  if (GetArenaForAllocation() == nullptr && _impl_.pagination_ != nullptr) {
-    delete _impl_.pagination_;
+  if (GetArenaForAllocation() == nullptr && pagination_ != nullptr) {
+    delete pagination_;
   }
-  _impl_.pagination_ = nullptr;
+  pagination_ = nullptr;
 }
 UserLogsResponse::UserLogsResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  items_(arena) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:palm.plugins.auth.v1.UserLogsResponse)
 }
 UserLogsResponse::UserLogsResponse(const UserLogsResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  UserLogsResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_}
-    , decltype(_impl_.pagination_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      items_(from.items_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_pagination()) {
-    _this->_impl_.pagination_ = new ::palm::plugins::nut::v1::Pagination(*from._impl_.pagination_);
+    pagination_ = new ::palm::plugins::nut::v1::Pagination(*from.pagination_);
+  } else {
+    pagination_ = nullptr;
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.auth.v1.UserLogsResponse)
 }
 
-inline void UserLogsResponse::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena}
-    , decltype(_impl_.pagination_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
+void UserLogsResponse::SharedCtor() {
+pagination_ = nullptr;
 }
 
 UserLogsResponse::~UserLogsResponse() {
   // @@protoc_insertion_point(destructor:palm.plugins.auth.v1.UserLogsResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserLogsResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-  if (this != internal_default_instance()) delete _impl_.pagination_;
+  if (this != internal_default_instance()) delete pagination_;
 }
 
+void UserLogsResponse::ArenaDtor(void* object) {
+  UserLogsResponse* _this = reinterpret_cast< UserLogsResponse* >(object);
+  (void)_this;
+}
+void UserLogsResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void UserLogsResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
 
 void UserLogsResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.auth.v1.UserLogsResponse)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.items_.Clear();
-  if (GetArenaForAllocation() == nullptr && _impl_.pagination_ != nullptr) {
-    delete _impl_.pagination_;
+  items_.Clear();
+  if (GetArenaForAllocation() == nullptr && pagination_ != nullptr) {
+    delete pagination_;
   }
-  _impl_.pagination_ = nullptr;
+  pagination_ = nullptr;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserLogsResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* UserLogsResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .palm.plugins.nut.v1.Pagination pagination = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_pagination(), ptr);
           CHK_(ptr);
         } else
@@ -4564,7 +4313,7 @@ const char* UserLogsResponse::_InternalParse(const char* ptr, ::_pbi::ParseConte
         continue;
       // repeated .palm.plugins.auth.v1.UserLogsResponse.Item items = 11;
       case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 90)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -4598,29 +4347,30 @@ failure:
 #undef CHK_
 }
 
-uint8_t* UserLogsResponse::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* UserLogsResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.auth.v1.UserLogsResponse)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // .palm.plugins.nut.v1.Pagination pagination = 1;
   if (this->_internal_has_pagination()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::pagination(this),
-        _Internal::pagination(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(
+        1, _Internal::pagination(this), target, stream);
   }
 
   // repeated .palm.plugins.auth.v1.UserLogsResponse.Item items = 11;
-  for (unsigned i = 0,
-      n = static_cast<unsigned>(this->_internal_items_size()); i < n; i++) {
-    const auto& repfield = this->_internal_items(i);
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_items_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-        InternalWriteMessage(11, repfield, repfield.GetCachedSize(), target, stream);
+      InternalWriteMessage(11, this->_internal_items(i), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.auth.v1.UserLogsResponse)
@@ -4631,13 +4381,13 @@ size_t UserLogsResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.auth.v1.UserLogsResponse)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .palm.plugins.auth.v1.UserLogsResponse.Item items = 11;
   total_size += 1UL * this->_internal_items_size();
-  for (const auto& msg : this->_impl_.items_) {
+  for (const auto& msg : this->items_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
@@ -4646,33 +4396,36 @@ size_t UserLogsResponse::ByteSizeLong() const {
   if (this->_internal_has_pagination()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.pagination_);
+        *pagination_);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserLogsResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
     UserLogsResponse::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserLogsResponse::GetClassData() const { return &_class_data_; }
 
+void UserLogsResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<UserLogsResponse *>(to)->MergeFrom(
+      static_cast<const UserLogsResponse &>(from));
+}
 
-void UserLogsResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<UserLogsResponse*>(&to_msg);
-  auto& from = static_cast<const UserLogsResponse&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserLogsResponse)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
+
+void UserLogsResponse::MergeFrom(const UserLogsResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserLogsResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_impl_.items_.MergeFrom(from._impl_.items_);
+  items_.MergeFrom(from.items_);
   if (from._internal_has_pagination()) {
-    _this->_internal_mutable_pagination()->::palm::plugins::nut::v1::Pagination::MergeFrom(
-        from._internal_pagination());
+    _internal_mutable_pagination()->::palm::plugins::nut::v1::Pagination::MergeFrom(from._internal_pagination());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserLogsResponse::CopyFrom(const UserLogsResponse& from) {
@@ -4689,12 +4442,12 @@ bool UserLogsResponse::IsInitialized() const {
 void UserLogsResponse::InternalSwap(UserLogsResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  _impl_.items_.InternalSwap(&other->_impl_.items_);
-  swap(_impl_.pagination_, other->_impl_.pagination_);
+  items_.InternalSwap(&other->items_);
+  swap(pagination_, other->pagination_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserLogsResponse::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_auth_2eproto_getter, &descriptor_table_auth_2eproto_once,
       file_level_metadata_auth_2eproto[11]);
 }
@@ -4708,109 +4461,90 @@ class UserChangePasswordRequest::_Internal {
 UserChangePasswordRequest::UserChangePasswordRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:palm.plugins.auth.v1.UserChangePasswordRequest)
 }
 UserChangePasswordRequest::UserChangePasswordRequest(const UserChangePasswordRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  UserChangePasswordRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.current_password_){}
-    , decltype(_impl_.new_password_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.current_password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.current_password_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  current_password_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_current_password().empty()) {
-    _this->_impl_.current_password_.Set(from._internal_current_password(), 
-      _this->GetArenaForAllocation());
+    current_password_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_current_password(), 
+      GetArenaForAllocation());
   }
-  _impl_.new_password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.new_password_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new_password_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_new_password().empty()) {
-    _this->_impl_.new_password_.Set(from._internal_new_password(), 
-      _this->GetArenaForAllocation());
+    new_password_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_new_password(), 
+      GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.auth.v1.UserChangePasswordRequest)
 }
 
-inline void UserChangePasswordRequest::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.current_password_){}
-    , decltype(_impl_.new_password_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.current_password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.current_password_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.new_password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.new_password_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+void UserChangePasswordRequest::SharedCtor() {
+current_password_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+new_password_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 UserChangePasswordRequest::~UserChangePasswordRequest() {
   // @@protoc_insertion_point(destructor:palm.plugins.auth.v1.UserChangePasswordRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserChangePasswordRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.current_password_.Destroy();
-  _impl_.new_password_.Destroy();
+  current_password_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  new_password_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
+void UserChangePasswordRequest::ArenaDtor(void* object) {
+  UserChangePasswordRequest* _this = reinterpret_cast< UserChangePasswordRequest* >(object);
+  (void)_this;
+}
+void UserChangePasswordRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void UserChangePasswordRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
 
 void UserChangePasswordRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.auth.v1.UserChangePasswordRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.current_password_.ClearToEmpty();
-  _impl_.new_password_.ClearToEmpty();
+  current_password_.ClearToEmpty();
+  new_password_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserChangePasswordRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* UserChangePasswordRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string current_password = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           auto str = _internal_mutable_current_password();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserChangePasswordRequest.current_password"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserChangePasswordRequest.current_password"));
         } else
           goto handle_unusual;
         continue;
       // string new_password = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_new_password();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserChangePasswordRequest.new_password"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserChangePasswordRequest.new_password"));
         } else
           goto handle_unusual;
         continue;
@@ -4837,10 +4571,10 @@ failure:
 #undef CHK_
 }
 
-uint8_t* UserChangePasswordRequest::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* UserChangePasswordRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.auth.v1.UserChangePasswordRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string current_password = 1;
@@ -4864,7 +4598,7 @@ uint8_t* UserChangePasswordRequest::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.auth.v1.UserChangePasswordRequest)
@@ -4875,7 +4609,7 @@ size_t UserChangePasswordRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.auth.v1.UserChangePasswordRequest)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -4893,31 +4627,35 @@ size_t UserChangePasswordRequest::ByteSizeLong() const {
         this->_internal_new_password());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserChangePasswordRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
     UserChangePasswordRequest::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserChangePasswordRequest::GetClassData() const { return &_class_data_; }
 
+void UserChangePasswordRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<UserChangePasswordRequest *>(to)->MergeFrom(
+      static_cast<const UserChangePasswordRequest &>(from));
+}
 
-void UserChangePasswordRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<UserChangePasswordRequest*>(&to_msg);
-  auto& from = static_cast<const UserChangePasswordRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserChangePasswordRequest)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
+
+void UserChangePasswordRequest::MergeFrom(const UserChangePasswordRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserChangePasswordRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_current_password().empty()) {
-    _this->_internal_set_current_password(from._internal_current_password());
+    _internal_set_current_password(from._internal_current_password());
   }
   if (!from._internal_new_password().empty()) {
-    _this->_internal_set_new_password(from._internal_new_password());
+    _internal_set_new_password(from._internal_new_password());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserChangePasswordRequest::CopyFrom(const UserChangePasswordRequest& from) {
@@ -4937,17 +4675,19 @@ void UserChangePasswordRequest::InternalSwap(UserChangePasswordRequest* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.current_password_, lhs_arena,
-      &other->_impl_.current_password_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &current_password_, lhs_arena,
+      &other->current_password_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.new_password_, lhs_arena,
-      &other->_impl_.new_password_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &new_password_, lhs_arena,
+      &other->new_password_, rhs_arena
   );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserChangePasswordRequest::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_auth_2eproto_getter, &descriptor_table_auth_2eproto_once,
       file_level_metadata_auth_2eproto[12]);
 }
@@ -4961,94 +4701,84 @@ class UserSetPasswordRequest::_Internal {
 
 const ::palm::plugins::auth::v1::UserQueryRequest&
 UserSetPasswordRequest::_Internal::user(const UserSetPasswordRequest* msg) {
-  return *msg->_impl_.user_;
+  return *msg->user_;
 }
 UserSetPasswordRequest::UserSetPasswordRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:palm.plugins.auth.v1.UserSetPasswordRequest)
 }
 UserSetPasswordRequest::UserSetPasswordRequest(const UserSetPasswordRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  UserSetPasswordRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.password_){}
-    , decltype(_impl_.user_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.password_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  password_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_password().empty()) {
-    _this->_impl_.password_.Set(from._internal_password(), 
-      _this->GetArenaForAllocation());
+    password_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_password(), 
+      GetArenaForAllocation());
   }
   if (from._internal_has_user()) {
-    _this->_impl_.user_ = new ::palm::plugins::auth::v1::UserQueryRequest(*from._impl_.user_);
+    user_ = new ::palm::plugins::auth::v1::UserQueryRequest(*from.user_);
+  } else {
+    user_ = nullptr;
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.auth.v1.UserSetPasswordRequest)
 }
 
-inline void UserSetPasswordRequest::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.password_){}
-    , decltype(_impl_.user_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.password_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+void UserSetPasswordRequest::SharedCtor() {
+password_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+user_ = nullptr;
 }
 
 UserSetPasswordRequest::~UserSetPasswordRequest() {
   // @@protoc_insertion_point(destructor:palm.plugins.auth.v1.UserSetPasswordRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserSetPasswordRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.password_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.user_;
+  password_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete user_;
 }
 
+void UserSetPasswordRequest::ArenaDtor(void* object) {
+  UserSetPasswordRequest* _this = reinterpret_cast< UserSetPasswordRequest* >(object);
+  (void)_this;
+}
+void UserSetPasswordRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void UserSetPasswordRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
 
 void UserSetPasswordRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.auth.v1.UserSetPasswordRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.password_.ClearToEmpty();
-  if (GetArenaForAllocation() == nullptr && _impl_.user_ != nullptr) {
-    delete _impl_.user_;
+  password_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && user_ != nullptr) {
+    delete user_;
   }
-  _impl_.user_ = nullptr;
+  user_ = nullptr;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserSetPasswordRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* UserSetPasswordRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .palm.plugins.auth.v1.UserQueryRequest user = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_user(), ptr);
           CHK_(ptr);
         } else
@@ -5056,11 +4786,11 @@ const char* UserSetPasswordRequest::_InternalParse(const char* ptr, ::_pbi::Pars
         continue;
       // string password = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_password();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserSetPasswordRequest.password"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserSetPasswordRequest.password"));
         } else
           goto handle_unusual;
         continue;
@@ -5087,17 +4817,18 @@ failure:
 #undef CHK_
 }
 
-uint8_t* UserSetPasswordRequest::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* UserSetPasswordRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.auth.v1.UserSetPasswordRequest)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // .palm.plugins.auth.v1.UserQueryRequest user = 1;
   if (this->_internal_has_user()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::user(this),
-        _Internal::user(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(
+        1, _Internal::user(this), target, stream);
   }
 
   // string password = 2;
@@ -5111,7 +4842,7 @@ uint8_t* UserSetPasswordRequest::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.auth.v1.UserSetPasswordRequest)
@@ -5122,7 +4853,7 @@ size_t UserSetPasswordRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.auth.v1.UserSetPasswordRequest)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -5137,35 +4868,38 @@ size_t UserSetPasswordRequest::ByteSizeLong() const {
   if (this->_internal_has_user()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.user_);
+        *user_);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserSetPasswordRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
     UserSetPasswordRequest::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserSetPasswordRequest::GetClassData() const { return &_class_data_; }
 
+void UserSetPasswordRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<UserSetPasswordRequest *>(to)->MergeFrom(
+      static_cast<const UserSetPasswordRequest &>(from));
+}
 
-void UserSetPasswordRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<UserSetPasswordRequest*>(&to_msg);
-  auto& from = static_cast<const UserSetPasswordRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserSetPasswordRequest)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
+
+void UserSetPasswordRequest::MergeFrom(const UserSetPasswordRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserSetPasswordRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_password().empty()) {
-    _this->_internal_set_password(from._internal_password());
+    _internal_set_password(from._internal_password());
   }
   if (from._internal_has_user()) {
-    _this->_internal_mutable_user()->::palm::plugins::auth::v1::UserQueryRequest::MergeFrom(
-        from._internal_user());
+    _internal_mutable_user()->::palm::plugins::auth::v1::UserQueryRequest::MergeFrom(from._internal_user());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserSetPasswordRequest::CopyFrom(const UserSetPasswordRequest& from) {
@@ -5185,14 +4919,15 @@ void UserSetPasswordRequest::InternalSwap(UserSetPasswordRequest* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.password_, lhs_arena,
-      &other->_impl_.password_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &password_, lhs_arena,
+      &other->password_, rhs_arena
   );
-  swap(_impl_.user_, other->_impl_.user_);
+  swap(user_, other->user_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserSetPasswordRequest::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_auth_2eproto_getter, &descriptor_table_auth_2eproto_once,
       file_level_metadata_auth_2eproto[13]);
 }
@@ -5201,7 +4936,7 @@ void UserSetPasswordRequest::InternalSwap(UserSetPasswordRequest* other) {
 
 class UserIndexResponse_Item::_Internal {
  public:
-  using HasBits = decltype(std::declval<UserIndexResponse_Item>()._impl_._has_bits_);
+  using HasBits = decltype(std::declval<UserIndexResponse_Item>()._has_bits_);
   static const ::PROTOBUF_NAMESPACE_ID::Timestamp& updated_at(const UserIndexResponse_Item* msg);
   static const ::PROTOBUF_NAMESPACE_ID::Timestamp& last_sign_in_at(const UserIndexResponse_Item* msg);
   static void set_has_last_sign_in_at(HasBits* has_bits) {
@@ -5233,415 +4968,331 @@ class UserIndexResponse_Item::_Internal {
 
 const ::PROTOBUF_NAMESPACE_ID::Timestamp&
 UserIndexResponse_Item::_Internal::updated_at(const UserIndexResponse_Item* msg) {
-  return *msg->_impl_.updated_at_;
+  return *msg->updated_at_;
 }
 const ::PROTOBUF_NAMESPACE_ID::Timestamp&
 UserIndexResponse_Item::_Internal::last_sign_in_at(const UserIndexResponse_Item* msg) {
-  return *msg->_impl_.last_sign_in_at_;
+  return *msg->last_sign_in_at_;
 }
 const ::PROTOBUF_NAMESPACE_ID::Timestamp&
 UserIndexResponse_Item::_Internal::current_sign_in_at(const UserIndexResponse_Item* msg) {
-  return *msg->_impl_.current_sign_in_at_;
+  return *msg->current_sign_in_at_;
 }
 const ::PROTOBUF_NAMESPACE_ID::Timestamp&
 UserIndexResponse_Item::_Internal::confirmed_at(const UserIndexResponse_Item* msg) {
-  return *msg->_impl_.confirmed_at_;
+  return *msg->confirmed_at_;
 }
 const ::PROTOBUF_NAMESPACE_ID::Timestamp&
 UserIndexResponse_Item::_Internal::locked_at(const UserIndexResponse_Item* msg) {
-  return *msg->_impl_.locked_at_;
+  return *msg->locked_at_;
 }
 const ::PROTOBUF_NAMESPACE_ID::Timestamp&
 UserIndexResponse_Item::_Internal::deleted_at(const UserIndexResponse_Item* msg) {
-  return *msg->_impl_.deleted_at_;
+  return *msg->deleted_at_;
 }
 void UserIndexResponse_Item::clear_updated_at() {
-  if (GetArenaForAllocation() == nullptr && _impl_.updated_at_ != nullptr) {
-    delete _impl_.updated_at_;
+  if (GetArenaForAllocation() == nullptr && updated_at_ != nullptr) {
+    delete updated_at_;
   }
-  _impl_.updated_at_ = nullptr;
+  updated_at_ = nullptr;
 }
 void UserIndexResponse_Item::clear_last_sign_in_at() {
-  if (_impl_.last_sign_in_at_ != nullptr) _impl_.last_sign_in_at_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000004u;
+  if (last_sign_in_at_ != nullptr) last_sign_in_at_->Clear();
+  _has_bits_[0] &= ~0x00000004u;
 }
 void UserIndexResponse_Item::clear_current_sign_in_at() {
-  if (_impl_.current_sign_in_at_ != nullptr) _impl_.current_sign_in_at_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000008u;
+  if (current_sign_in_at_ != nullptr) current_sign_in_at_->Clear();
+  _has_bits_[0] &= ~0x00000008u;
 }
 void UserIndexResponse_Item::clear_confirmed_at() {
-  if (_impl_.confirmed_at_ != nullptr) _impl_.confirmed_at_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000010u;
+  if (confirmed_at_ != nullptr) confirmed_at_->Clear();
+  _has_bits_[0] &= ~0x00000010u;
 }
 void UserIndexResponse_Item::clear_locked_at() {
-  if (_impl_.locked_at_ != nullptr) _impl_.locked_at_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000020u;
+  if (locked_at_ != nullptr) locked_at_->Clear();
+  _has_bits_[0] &= ~0x00000020u;
 }
 void UserIndexResponse_Item::clear_deleted_at() {
-  if (_impl_.deleted_at_ != nullptr) _impl_.deleted_at_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000040u;
+  if (deleted_at_ != nullptr) deleted_at_->Clear();
+  _has_bits_[0] &= ~0x00000040u;
 }
 UserIndexResponse_Item::UserIndexResponse_Item(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:palm.plugins.auth.v1.UserIndexResponse.Item)
 }
 UserIndexResponse_Item::UserIndexResponse_Item(const UserIndexResponse_Item& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  UserIndexResponse_Item* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.uid_){}
-    , decltype(_impl_.email_){}
-    , decltype(_impl_.nick_name_){}
-    , decltype(_impl_.real_name_){}
-    , decltype(_impl_.provider_type_){}
-    , decltype(_impl_.last_sign_in_ip_){}
-    , decltype(_impl_.current_sign_in_ip_){}
-    , decltype(_impl_.lang_){}
-    , decltype(_impl_.time_zone_){}
-    , decltype(_impl_.avatar_){}
-    , decltype(_impl_.updated_at_){nullptr}
-    , decltype(_impl_.last_sign_in_at_){nullptr}
-    , decltype(_impl_.current_sign_in_at_){nullptr}
-    , decltype(_impl_.confirmed_at_){nullptr}
-    , decltype(_impl_.locked_at_){nullptr}
-    , decltype(_impl_.deleted_at_){nullptr}
-    , decltype(_impl_.id_){}
-    , decltype(_impl_.sign_in_count_){}};
-
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.uid_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.uid_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  uid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_uid().empty()) {
-    _this->_impl_.uid_.Set(from._internal_uid(), 
-      _this->GetArenaForAllocation());
+    uid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_uid(), 
+      GetArenaForAllocation());
   }
-  _impl_.email_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.email_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  email_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_email().empty()) {
-    _this->_impl_.email_.Set(from._internal_email(), 
-      _this->GetArenaForAllocation());
+    email_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_email(), 
+      GetArenaForAllocation());
   }
-  _impl_.nick_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.nick_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  nick_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_nick_name().empty()) {
-    _this->_impl_.nick_name_.Set(from._internal_nick_name(), 
-      _this->GetArenaForAllocation());
+    nick_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_nick_name(), 
+      GetArenaForAllocation());
   }
-  _impl_.real_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.real_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  real_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_real_name().empty()) {
-    _this->_impl_.real_name_.Set(from._internal_real_name(), 
-      _this->GetArenaForAllocation());
+    real_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_real_name(), 
+      GetArenaForAllocation());
   }
-  _impl_.provider_type_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.provider_type_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  provider_type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_provider_type().empty()) {
-    _this->_impl_.provider_type_.Set(from._internal_provider_type(), 
-      _this->GetArenaForAllocation());
+    provider_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_provider_type(), 
+      GetArenaForAllocation());
   }
-  _impl_.last_sign_in_ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.last_sign_in_ip_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  last_sign_in_ip_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_last_sign_in_ip()) {
-    _this->_impl_.last_sign_in_ip_.Set(from._internal_last_sign_in_ip(), 
-      _this->GetArenaForAllocation());
+    last_sign_in_ip_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_last_sign_in_ip(), 
+      GetArenaForAllocation());
   }
-  _impl_.current_sign_in_ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.current_sign_in_ip_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  current_sign_in_ip_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_current_sign_in_ip()) {
-    _this->_impl_.current_sign_in_ip_.Set(from._internal_current_sign_in_ip(), 
-      _this->GetArenaForAllocation());
+    current_sign_in_ip_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_current_sign_in_ip(), 
+      GetArenaForAllocation());
   }
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  lang_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_lang().empty()) {
-    _this->_impl_.lang_.Set(from._internal_lang(), 
-      _this->GetArenaForAllocation());
+    lang_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_lang(), 
+      GetArenaForAllocation());
   }
-  _impl_.time_zone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.time_zone_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  time_zone_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_time_zone().empty()) {
-    _this->_impl_.time_zone_.Set(from._internal_time_zone(), 
-      _this->GetArenaForAllocation());
+    time_zone_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_time_zone(), 
+      GetArenaForAllocation());
   }
-  _impl_.avatar_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.avatar_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  avatar_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_avatar().empty()) {
-    _this->_impl_.avatar_.Set(from._internal_avatar(), 
-      _this->GetArenaForAllocation());
+    avatar_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_avatar(), 
+      GetArenaForAllocation());
   }
   if (from._internal_has_updated_at()) {
-    _this->_impl_.updated_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from._impl_.updated_at_);
+    updated_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from.updated_at_);
+  } else {
+    updated_at_ = nullptr;
   }
   if (from._internal_has_last_sign_in_at()) {
-    _this->_impl_.last_sign_in_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from._impl_.last_sign_in_at_);
+    last_sign_in_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from.last_sign_in_at_);
+  } else {
+    last_sign_in_at_ = nullptr;
   }
   if (from._internal_has_current_sign_in_at()) {
-    _this->_impl_.current_sign_in_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from._impl_.current_sign_in_at_);
+    current_sign_in_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from.current_sign_in_at_);
+  } else {
+    current_sign_in_at_ = nullptr;
   }
   if (from._internal_has_confirmed_at()) {
-    _this->_impl_.confirmed_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from._impl_.confirmed_at_);
+    confirmed_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from.confirmed_at_);
+  } else {
+    confirmed_at_ = nullptr;
   }
   if (from._internal_has_locked_at()) {
-    _this->_impl_.locked_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from._impl_.locked_at_);
+    locked_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from.locked_at_);
+  } else {
+    locked_at_ = nullptr;
   }
   if (from._internal_has_deleted_at()) {
-    _this->_impl_.deleted_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from._impl_.deleted_at_);
+    deleted_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from.deleted_at_);
+  } else {
+    deleted_at_ = nullptr;
   }
-  ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.sign_in_count_) -
-    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.sign_in_count_));
+  ::memcpy(&id_, &from.id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&sign_in_count_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(sign_in_count_));
   // @@protoc_insertion_point(copy_constructor:palm.plugins.auth.v1.UserIndexResponse.Item)
 }
 
-inline void UserIndexResponse_Item::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.uid_){}
-    , decltype(_impl_.email_){}
-    , decltype(_impl_.nick_name_){}
-    , decltype(_impl_.real_name_){}
-    , decltype(_impl_.provider_type_){}
-    , decltype(_impl_.last_sign_in_ip_){}
-    , decltype(_impl_.current_sign_in_ip_){}
-    , decltype(_impl_.lang_){}
-    , decltype(_impl_.time_zone_){}
-    , decltype(_impl_.avatar_){}
-    , decltype(_impl_.updated_at_){nullptr}
-    , decltype(_impl_.last_sign_in_at_){nullptr}
-    , decltype(_impl_.current_sign_in_at_){nullptr}
-    , decltype(_impl_.confirmed_at_){nullptr}
-    , decltype(_impl_.locked_at_){nullptr}
-    , decltype(_impl_.deleted_at_){nullptr}
-    , decltype(_impl_.id_){0}
-    , decltype(_impl_.sign_in_count_){0}
-  };
-  _impl_.uid_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.uid_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.email_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.email_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.nick_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.nick_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.real_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.real_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.provider_type_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.provider_type_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.last_sign_in_ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.last_sign_in_ip_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.current_sign_in_ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.current_sign_in_ip_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.time_zone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.time_zone_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.avatar_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.avatar_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+void UserIndexResponse_Item::SharedCtor() {
+uid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+email_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+nick_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+real_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+provider_type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+last_sign_in_ip_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+current_sign_in_ip_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+lang_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+time_zone_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+avatar_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&updated_at_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&sign_in_count_) -
+    reinterpret_cast<char*>(&updated_at_)) + sizeof(sign_in_count_));
 }
 
 UserIndexResponse_Item::~UserIndexResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.plugins.auth.v1.UserIndexResponse.Item)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserIndexResponse_Item::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.uid_.Destroy();
-  _impl_.email_.Destroy();
-  _impl_.nick_name_.Destroy();
-  _impl_.real_name_.Destroy();
-  _impl_.provider_type_.Destroy();
-  _impl_.last_sign_in_ip_.Destroy();
-  _impl_.current_sign_in_ip_.Destroy();
-  _impl_.lang_.Destroy();
-  _impl_.time_zone_.Destroy();
-  _impl_.avatar_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.updated_at_;
-  if (this != internal_default_instance()) delete _impl_.last_sign_in_at_;
-  if (this != internal_default_instance()) delete _impl_.current_sign_in_at_;
-  if (this != internal_default_instance()) delete _impl_.confirmed_at_;
-  if (this != internal_default_instance()) delete _impl_.locked_at_;
-  if (this != internal_default_instance()) delete _impl_.deleted_at_;
+  uid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  email_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  nick_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  real_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  provider_type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  last_sign_in_ip_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  current_sign_in_ip_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  lang_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  time_zone_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  avatar_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete updated_at_;
+  if (this != internal_default_instance()) delete last_sign_in_at_;
+  if (this != internal_default_instance()) delete current_sign_in_at_;
+  if (this != internal_default_instance()) delete confirmed_at_;
+  if (this != internal_default_instance()) delete locked_at_;
+  if (this != internal_default_instance()) delete deleted_at_;
 }
 
+void UserIndexResponse_Item::ArenaDtor(void* object) {
+  UserIndexResponse_Item* _this = reinterpret_cast< UserIndexResponse_Item* >(object);
+  (void)_this;
+}
+void UserIndexResponse_Item::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void UserIndexResponse_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
 
 void UserIndexResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.auth.v1.UserIndexResponse.Item)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.uid_.ClearToEmpty();
-  _impl_.email_.ClearToEmpty();
-  _impl_.nick_name_.ClearToEmpty();
-  _impl_.real_name_.ClearToEmpty();
-  _impl_.provider_type_.ClearToEmpty();
-  cached_has_bits = _impl_._has_bits_[0];
+  uid_.ClearToEmpty();
+  email_.ClearToEmpty();
+  nick_name_.ClearToEmpty();
+  real_name_.ClearToEmpty();
+  provider_type_.ClearToEmpty();
+  cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      _impl_.last_sign_in_ip_.ClearNonDefaultToEmpty();
+      last_sign_in_ip_.ClearNonDefaultToEmpty();
     }
     if (cached_has_bits & 0x00000002u) {
-      _impl_.current_sign_in_ip_.ClearNonDefaultToEmpty();
+      current_sign_in_ip_.ClearNonDefaultToEmpty();
     }
   }
-  _impl_.lang_.ClearToEmpty();
-  _impl_.time_zone_.ClearToEmpty();
-  _impl_.avatar_.ClearToEmpty();
-  if (GetArenaForAllocation() == nullptr && _impl_.updated_at_ != nullptr) {
-    delete _impl_.updated_at_;
+  lang_.ClearToEmpty();
+  time_zone_.ClearToEmpty();
+  avatar_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && updated_at_ != nullptr) {
+    delete updated_at_;
   }
-  _impl_.updated_at_ = nullptr;
+  updated_at_ = nullptr;
   if (cached_has_bits & 0x0000007cu) {
     if (cached_has_bits & 0x00000004u) {
-      GOOGLE_DCHECK(_impl_.last_sign_in_at_ != nullptr);
-      _impl_.last_sign_in_at_->Clear();
+      GOOGLE_DCHECK(last_sign_in_at_ != nullptr);
+      last_sign_in_at_->Clear();
     }
     if (cached_has_bits & 0x00000008u) {
-      GOOGLE_DCHECK(_impl_.current_sign_in_at_ != nullptr);
-      _impl_.current_sign_in_at_->Clear();
+      GOOGLE_DCHECK(current_sign_in_at_ != nullptr);
+      current_sign_in_at_->Clear();
     }
     if (cached_has_bits & 0x00000010u) {
-      GOOGLE_DCHECK(_impl_.confirmed_at_ != nullptr);
-      _impl_.confirmed_at_->Clear();
+      GOOGLE_DCHECK(confirmed_at_ != nullptr);
+      confirmed_at_->Clear();
     }
     if (cached_has_bits & 0x00000020u) {
-      GOOGLE_DCHECK(_impl_.locked_at_ != nullptr);
-      _impl_.locked_at_->Clear();
+      GOOGLE_DCHECK(locked_at_ != nullptr);
+      locked_at_->Clear();
     }
     if (cached_has_bits & 0x00000040u) {
-      GOOGLE_DCHECK(_impl_.deleted_at_ != nullptr);
-      _impl_.deleted_at_->Clear();
+      GOOGLE_DCHECK(deleted_at_ != nullptr);
+      deleted_at_->Clear();
     }
   }
-  ::memset(&_impl_.id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.sign_in_count_) -
-      reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.sign_in_count_));
-  _impl_._has_bits_.Clear();
+  ::memset(&id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&sign_in_count_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(sign_in_count_));
+  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserIndexResponse_Item::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* UserIndexResponse_Item::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // int32 id = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          _impl_.id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
       // string uid = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_uid();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.uid"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.uid"));
         } else
           goto handle_unusual;
         continue;
       // string email = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
           auto str = _internal_mutable_email();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.email"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.email"));
         } else
           goto handle_unusual;
         continue;
       // string nick_name = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
           auto str = _internal_mutable_nick_name();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.nick_name"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.nick_name"));
         } else
           goto handle_unusual;
         continue;
       // string real_name = 5;
       case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
           auto str = _internal_mutable_real_name();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.real_name"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.real_name"));
         } else
           goto handle_unusual;
         continue;
       // string provider_type = 6;
       case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
           auto str = _internal_mutable_provider_type();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.provider_type"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.provider_type"));
         } else
           goto handle_unusual;
         continue;
       // .google.protobuf.Timestamp updated_at = 9;
       case 9:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 74)) {
           ptr = ctx->ParseMessage(_internal_mutable_updated_at(), ptr);
           CHK_(ptr);
         } else
@@ -5649,7 +5300,7 @@ const char* UserIndexResponse_Item::_InternalParse(const char* ptr, ::_pbi::Pars
         continue;
       // optional .google.protobuf.Timestamp last_sign_in_at = 11;
       case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 90)) {
           ptr = ctx->ParseMessage(_internal_mutable_last_sign_in_at(), ptr);
           CHK_(ptr);
         } else
@@ -5657,17 +5308,17 @@ const char* UserIndexResponse_Item::_InternalParse(const char* ptr, ::_pbi::Pars
         continue;
       // optional string last_sign_in_ip = 12;
       case 12:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 98)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 98)) {
           auto str = _internal_mutable_last_sign_in_ip();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.last_sign_in_ip"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.last_sign_in_ip"));
         } else
           goto handle_unusual;
         continue;
       // optional .google.protobuf.Timestamp current_sign_in_at = 13;
       case 13:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 106)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 106)) {
           ptr = ctx->ParseMessage(_internal_mutable_current_sign_in_at(), ptr);
           CHK_(ptr);
         } else
@@ -5675,55 +5326,55 @@ const char* UserIndexResponse_Item::_InternalParse(const char* ptr, ::_pbi::Pars
         continue;
       // optional string current_sign_in_ip = 14;
       case 14:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 114)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 114)) {
           auto str = _internal_mutable_current_sign_in_ip();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.current_sign_in_ip"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.current_sign_in_ip"));
         } else
           goto handle_unusual;
         continue;
       // int32 sign_in_count = 19;
       case 19:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 152)) {
-          _impl_.sign_in_count_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 152)) {
+          sign_in_count_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
       // string lang = 21;
       case 21:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 170)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 170)) {
           auto str = _internal_mutable_lang();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.lang"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.lang"));
         } else
           goto handle_unusual;
         continue;
       // string time_zone = 22;
       case 22:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 178)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 178)) {
           auto str = _internal_mutable_time_zone();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.time_zone"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.time_zone"));
         } else
           goto handle_unusual;
         continue;
       // string avatar = 23;
       case 23:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 186)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 186)) {
           auto str = _internal_mutable_avatar();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.avatar"));
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.auth.v1.UserIndexResponse.Item.avatar"));
         } else
           goto handle_unusual;
         continue;
       // optional .google.protobuf.Timestamp confirmed_at = 27;
       case 27:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 218)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 218)) {
           ptr = ctx->ParseMessage(_internal_mutable_confirmed_at(), ptr);
           CHK_(ptr);
         } else
@@ -5731,7 +5382,7 @@ const char* UserIndexResponse_Item::_InternalParse(const char* ptr, ::_pbi::Pars
         continue;
       // optional .google.protobuf.Timestamp locked_at = 28;
       case 28:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 226)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 226)) {
           ptr = ctx->ParseMessage(_internal_mutable_locked_at(), ptr);
           CHK_(ptr);
         } else
@@ -5739,7 +5390,7 @@ const char* UserIndexResponse_Item::_InternalParse(const char* ptr, ::_pbi::Pars
         continue;
       // optional .google.protobuf.Timestamp deleted_at = 29;
       case 29:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 234)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 234)) {
           ptr = ctx->ParseMessage(_internal_mutable_deleted_at(), ptr);
           CHK_(ptr);
         } else
@@ -5761,7 +5412,7 @@ const char* UserIndexResponse_Item::_InternalParse(const char* ptr, ::_pbi::Pars
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _impl_._has_bits_.Or(has_bits);
+  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -5769,16 +5420,16 @@ failure:
 #undef CHK_
 }
 
-uint8_t* UserIndexResponse_Item::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* UserIndexResponse_Item::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.auth.v1.UserIndexResponse.Item)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // int32 id = 1;
   if (this->_internal_id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
   }
 
   // string uid = 2;
@@ -5833,16 +5484,18 @@ uint8_t* UserIndexResponse_Item::_InternalSerialize(
 
   // .google.protobuf.Timestamp updated_at = 9;
   if (this->_internal_has_updated_at()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(9, _Internal::updated_at(this),
-        _Internal::updated_at(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(
+        9, _Internal::updated_at(this), target, stream);
   }
 
   // optional .google.protobuf.Timestamp last_sign_in_at = 11;
   if (_internal_has_last_sign_in_at()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::last_sign_in_at(this),
-        _Internal::last_sign_in_at(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(
+        11, _Internal::last_sign_in_at(this), target, stream);
   }
 
   // optional string last_sign_in_ip = 12;
@@ -5857,9 +5510,10 @@ uint8_t* UserIndexResponse_Item::_InternalSerialize(
 
   // optional .google.protobuf.Timestamp current_sign_in_at = 13;
   if (_internal_has_current_sign_in_at()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(13, _Internal::current_sign_in_at(this),
-        _Internal::current_sign_in_at(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(
+        13, _Internal::current_sign_in_at(this), target, stream);
   }
 
   // optional string current_sign_in_ip = 14;
@@ -5875,7 +5529,7 @@ uint8_t* UserIndexResponse_Item::_InternalSerialize(
   // int32 sign_in_count = 19;
   if (this->_internal_sign_in_count() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(19, this->_internal_sign_in_count(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(19, this->_internal_sign_in_count(), target);
   }
 
   // string lang = 21;
@@ -5910,27 +5564,30 @@ uint8_t* UserIndexResponse_Item::_InternalSerialize(
 
   // optional .google.protobuf.Timestamp confirmed_at = 27;
   if (_internal_has_confirmed_at()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(27, _Internal::confirmed_at(this),
-        _Internal::confirmed_at(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(
+        27, _Internal::confirmed_at(this), target, stream);
   }
 
   // optional .google.protobuf.Timestamp locked_at = 28;
   if (_internal_has_locked_at()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(28, _Internal::locked_at(this),
-        _Internal::locked_at(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(
+        28, _Internal::locked_at(this), target, stream);
   }
 
   // optional .google.protobuf.Timestamp deleted_at = 29;
   if (_internal_has_deleted_at()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(29, _Internal::deleted_at(this),
-        _Internal::deleted_at(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(
+        29, _Internal::deleted_at(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.auth.v1.UserIndexResponse.Item)
@@ -5941,7 +5598,7 @@ size_t UserIndexResponse_Item::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.auth.v1.UserIndexResponse.Item)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -5980,7 +5637,7 @@ size_t UserIndexResponse_Item::ByteSizeLong() const {
         this->_internal_provider_type());
   }
 
-  cached_has_bits = _impl_._has_bits_[0];
+  cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     // optional string last_sign_in_ip = 12;
     if (cached_has_bits & 0x00000001u) {
@@ -6022,7 +5679,7 @@ size_t UserIndexResponse_Item::ByteSizeLong() const {
   if (this->_internal_has_updated_at()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.updated_at_);
+        *updated_at_);
   }
 
   if (cached_has_bits & 0x0000007cu) {
@@ -6030,134 +5687,132 @@ size_t UserIndexResponse_Item::ByteSizeLong() const {
     if (cached_has_bits & 0x00000004u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.last_sign_in_at_);
+          *last_sign_in_at_);
     }
 
     // optional .google.protobuf.Timestamp current_sign_in_at = 13;
     if (cached_has_bits & 0x00000008u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.current_sign_in_at_);
+          *current_sign_in_at_);
     }
 
     // optional .google.protobuf.Timestamp confirmed_at = 27;
     if (cached_has_bits & 0x00000010u) {
       total_size += 2 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.confirmed_at_);
+          *confirmed_at_);
     }
 
     // optional .google.protobuf.Timestamp locked_at = 28;
     if (cached_has_bits & 0x00000020u) {
       total_size += 2 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.locked_at_);
+          *locked_at_);
     }
 
     // optional .google.protobuf.Timestamp deleted_at = 29;
     if (cached_has_bits & 0x00000040u) {
       total_size += 2 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.deleted_at_);
+          *deleted_at_);
     }
 
   }
   // int32 id = 1;
   if (this->_internal_id() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_id());
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_id());
   }
 
   // int32 sign_in_count = 19;
   if (this->_internal_sign_in_count() != 0) {
     total_size += 2 +
-      ::_pbi::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_sign_in_count());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserIndexResponse_Item::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
     UserIndexResponse_Item::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserIndexResponse_Item::GetClassData() const { return &_class_data_; }
 
+void UserIndexResponse_Item::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<UserIndexResponse_Item *>(to)->MergeFrom(
+      static_cast<const UserIndexResponse_Item &>(from));
+}
 
-void UserIndexResponse_Item::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<UserIndexResponse_Item*>(&to_msg);
-  auto& from = static_cast<const UserIndexResponse_Item&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserIndexResponse.Item)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
+
+void UserIndexResponse_Item::MergeFrom(const UserIndexResponse_Item& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserIndexResponse.Item)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_uid().empty()) {
-    _this->_internal_set_uid(from._internal_uid());
+    _internal_set_uid(from._internal_uid());
   }
   if (!from._internal_email().empty()) {
-    _this->_internal_set_email(from._internal_email());
+    _internal_set_email(from._internal_email());
   }
   if (!from._internal_nick_name().empty()) {
-    _this->_internal_set_nick_name(from._internal_nick_name());
+    _internal_set_nick_name(from._internal_nick_name());
   }
   if (!from._internal_real_name().empty()) {
-    _this->_internal_set_real_name(from._internal_real_name());
+    _internal_set_real_name(from._internal_real_name());
   }
   if (!from._internal_provider_type().empty()) {
-    _this->_internal_set_provider_type(from._internal_provider_type());
+    _internal_set_provider_type(from._internal_provider_type());
   }
-  cached_has_bits = from._impl_._has_bits_[0];
+  cached_has_bits = from._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      _this->_internal_set_last_sign_in_ip(from._internal_last_sign_in_ip());
+      _internal_set_last_sign_in_ip(from._internal_last_sign_in_ip());
     }
     if (cached_has_bits & 0x00000002u) {
-      _this->_internal_set_current_sign_in_ip(from._internal_current_sign_in_ip());
+      _internal_set_current_sign_in_ip(from._internal_current_sign_in_ip());
     }
   }
   if (!from._internal_lang().empty()) {
-    _this->_internal_set_lang(from._internal_lang());
+    _internal_set_lang(from._internal_lang());
   }
   if (!from._internal_time_zone().empty()) {
-    _this->_internal_set_time_zone(from._internal_time_zone());
+    _internal_set_time_zone(from._internal_time_zone());
   }
   if (!from._internal_avatar().empty()) {
-    _this->_internal_set_avatar(from._internal_avatar());
+    _internal_set_avatar(from._internal_avatar());
   }
   if (from._internal_has_updated_at()) {
-    _this->_internal_mutable_updated_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(
-        from._internal_updated_at());
+    _internal_mutable_updated_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_updated_at());
   }
   if (cached_has_bits & 0x0000007cu) {
     if (cached_has_bits & 0x00000004u) {
-      _this->_internal_mutable_last_sign_in_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(
-          from._internal_last_sign_in_at());
+      _internal_mutable_last_sign_in_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_last_sign_in_at());
     }
     if (cached_has_bits & 0x00000008u) {
-      _this->_internal_mutable_current_sign_in_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(
-          from._internal_current_sign_in_at());
+      _internal_mutable_current_sign_in_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_current_sign_in_at());
     }
     if (cached_has_bits & 0x00000010u) {
-      _this->_internal_mutable_confirmed_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(
-          from._internal_confirmed_at());
+      _internal_mutable_confirmed_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_confirmed_at());
     }
     if (cached_has_bits & 0x00000020u) {
-      _this->_internal_mutable_locked_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(
-          from._internal_locked_at());
+      _internal_mutable_locked_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_locked_at());
     }
     if (cached_has_bits & 0x00000040u) {
-      _this->_internal_mutable_deleted_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(
-          from._internal_deleted_at());
+      _internal_mutable_deleted_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_deleted_at());
     }
   }
   if (from._internal_id() != 0) {
-    _this->_internal_set_id(from._internal_id());
+    _internal_set_id(from._internal_id());
   }
   if (from._internal_sign_in_count() != 0) {
-    _this->_internal_set_sign_in_count(from._internal_sign_in_count());
+    _internal_set_sign_in_count(from._internal_sign_in_count());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserIndexResponse_Item::CopyFrom(const UserIndexResponse_Item& from) {
@@ -6176,57 +5831,67 @@ void UserIndexResponse_Item::InternalSwap(UserIndexResponse_Item* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.uid_, lhs_arena,
-      &other->_impl_.uid_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &uid_, lhs_arena,
+      &other->uid_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.email_, lhs_arena,
-      &other->_impl_.email_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &email_, lhs_arena,
+      &other->email_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.nick_name_, lhs_arena,
-      &other->_impl_.nick_name_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &nick_name_, lhs_arena,
+      &other->nick_name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.real_name_, lhs_arena,
-      &other->_impl_.real_name_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &real_name_, lhs_arena,
+      &other->real_name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.provider_type_, lhs_arena,
-      &other->_impl_.provider_type_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &provider_type_, lhs_arena,
+      &other->provider_type_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.last_sign_in_ip_, lhs_arena,
-      &other->_impl_.last_sign_in_ip_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &last_sign_in_ip_, lhs_arena,
+      &other->last_sign_in_ip_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.current_sign_in_ip_, lhs_arena,
-      &other->_impl_.current_sign_in_ip_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &current_sign_in_ip_, lhs_arena,
+      &other->current_sign_in_ip_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.lang_, lhs_arena,
-      &other->_impl_.lang_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &lang_, lhs_arena,
+      &other->lang_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.time_zone_, lhs_arena,
-      &other->_impl_.time_zone_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &time_zone_, lhs_arena,
+      &other->time_zone_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.avatar_, lhs_arena,
-      &other->_impl_.avatar_, rhs_arena
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &avatar_, lhs_arena,
+      &other->avatar_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(UserIndexResponse_Item, _impl_.sign_in_count_)
-      + sizeof(UserIndexResponse_Item::_impl_.sign_in_count_)
-      - PROTOBUF_FIELD_OFFSET(UserIndexResponse_Item, _impl_.updated_at_)>(
-          reinterpret_cast<char*>(&_impl_.updated_at_),
-          reinterpret_cast<char*>(&other->_impl_.updated_at_));
+      PROTOBUF_FIELD_OFFSET(UserIndexResponse_Item, sign_in_count_)
+      + sizeof(UserIndexResponse_Item::sign_in_count_)
+      - PROTOBUF_FIELD_OFFSET(UserIndexResponse_Item, updated_at_)>(
+          reinterpret_cast<char*>(&updated_at_),
+          reinterpret_cast<char*>(&other->updated_at_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserIndexResponse_Item::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_auth_2eproto_getter, &descriptor_table_auth_2eproto_once,
       file_level_metadata_auth_2eproto[14]);
 }
@@ -6240,88 +5905,85 @@ class UserIndexResponse::_Internal {
 
 const ::palm::plugins::nut::v1::Pagination&
 UserIndexResponse::_Internal::pagination(const UserIndexResponse* msg) {
-  return *msg->_impl_.pagination_;
+  return *msg->pagination_;
 }
 void UserIndexResponse::clear_pagination() {
-  if (GetArenaForAllocation() == nullptr && _impl_.pagination_ != nullptr) {
-    delete _impl_.pagination_;
+  if (GetArenaForAllocation() == nullptr && pagination_ != nullptr) {
+    delete pagination_;
   }
-  _impl_.pagination_ = nullptr;
+  pagination_ = nullptr;
 }
 UserIndexResponse::UserIndexResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  items_(arena) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:palm.plugins.auth.v1.UserIndexResponse)
 }
 UserIndexResponse::UserIndexResponse(const UserIndexResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  UserIndexResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_}
-    , decltype(_impl_.pagination_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      items_(from.items_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_pagination()) {
-    _this->_impl_.pagination_ = new ::palm::plugins::nut::v1::Pagination(*from._impl_.pagination_);
+    pagination_ = new ::palm::plugins::nut::v1::Pagination(*from.pagination_);
+  } else {
+    pagination_ = nullptr;
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.auth.v1.UserIndexResponse)
 }
 
-inline void UserIndexResponse::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena}
-    , decltype(_impl_.pagination_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
+void UserIndexResponse::SharedCtor() {
+pagination_ = nullptr;
 }
 
 UserIndexResponse::~UserIndexResponse() {
   // @@protoc_insertion_point(destructor:palm.plugins.auth.v1.UserIndexResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserIndexResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-  if (this != internal_default_instance()) delete _impl_.pagination_;
+  if (this != internal_default_instance()) delete pagination_;
 }
 
+void UserIndexResponse::ArenaDtor(void* object) {
+  UserIndexResponse* _this = reinterpret_cast< UserIndexResponse* >(object);
+  (void)_this;
+}
+void UserIndexResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void UserIndexResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
 
 void UserIndexResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.auth.v1.UserIndexResponse)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.items_.Clear();
-  if (GetArenaForAllocation() == nullptr && _impl_.pagination_ != nullptr) {
-    delete _impl_.pagination_;
+  items_.Clear();
+  if (GetArenaForAllocation() == nullptr && pagination_ != nullptr) {
+    delete pagination_;
   }
-  _impl_.pagination_ = nullptr;
+  pagination_ = nullptr;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserIndexResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* UserIndexResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .palm.plugins.nut.v1.Pagination pagination = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_pagination(), ptr);
           CHK_(ptr);
         } else
@@ -6329,7 +5991,7 @@ const char* UserIndexResponse::_InternalParse(const char* ptr, ::_pbi::ParseCont
         continue;
       // repeated .palm.plugins.auth.v1.UserIndexResponse.Item items = 11;
       case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 90)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -6363,29 +6025,30 @@ failure:
 #undef CHK_
 }
 
-uint8_t* UserIndexResponse::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* UserIndexResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.auth.v1.UserIndexResponse)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // .palm.plugins.nut.v1.Pagination pagination = 1;
   if (this->_internal_has_pagination()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::pagination(this),
-        _Internal::pagination(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(
+        1, _Internal::pagination(this), target, stream);
   }
 
   // repeated .palm.plugins.auth.v1.UserIndexResponse.Item items = 11;
-  for (unsigned i = 0,
-      n = static_cast<unsigned>(this->_internal_items_size()); i < n; i++) {
-    const auto& repfield = this->_internal_items(i);
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_items_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-        InternalWriteMessage(11, repfield, repfield.GetCachedSize(), target, stream);
+      InternalWriteMessage(11, this->_internal_items(i), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.auth.v1.UserIndexResponse)
@@ -6396,13 +6059,13 @@ size_t UserIndexResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.auth.v1.UserIndexResponse)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .palm.plugins.auth.v1.UserIndexResponse.Item items = 11;
   total_size += 1UL * this->_internal_items_size();
-  for (const auto& msg : this->_impl_.items_) {
+  for (const auto& msg : this->items_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
@@ -6411,33 +6074,36 @@ size_t UserIndexResponse::ByteSizeLong() const {
   if (this->_internal_has_pagination()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.pagination_);
+        *pagination_);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserIndexResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
     UserIndexResponse::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserIndexResponse::GetClassData() const { return &_class_data_; }
 
+void UserIndexResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<UserIndexResponse *>(to)->MergeFrom(
+      static_cast<const UserIndexResponse &>(from));
+}
 
-void UserIndexResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<UserIndexResponse*>(&to_msg);
-  auto& from = static_cast<const UserIndexResponse&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserIndexResponse)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
+
+void UserIndexResponse::MergeFrom(const UserIndexResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.auth.v1.UserIndexResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_impl_.items_.MergeFrom(from._impl_.items_);
+  items_.MergeFrom(from.items_);
   if (from._internal_has_pagination()) {
-    _this->_internal_mutable_pagination()->::palm::plugins::nut::v1::Pagination::MergeFrom(
-        from._internal_pagination());
+    _internal_mutable_pagination()->::palm::plugins::nut::v1::Pagination::MergeFrom(from._internal_pagination());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserIndexResponse::CopyFrom(const UserIndexResponse& from) {
@@ -6454,12 +6120,12 @@ bool UserIndexResponse::IsInitialized() const {
 void UserIndexResponse::InternalSwap(UserIndexResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  _impl_.items_.InternalSwap(&other->_impl_.items_);
-  swap(_impl_.pagination_, other->_impl_.pagination_);
+  items_.InternalSwap(&other->items_);
+  swap(pagination_, other->pagination_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserIndexResponse::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_auth_2eproto_getter, &descriptor_table_auth_2eproto_once,
       file_level_metadata_auth_2eproto[15]);
 }
@@ -6470,68 +6136,52 @@ void UserIndexResponse::InternalSwap(UserIndexResponse* other) {
 }  // namespace plugins
 }  // namespace palm
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserQueryRequest*
-Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserQueryRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserQueryRequest* Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserQueryRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::auth::v1::UserQueryRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserSignInRequest*
-Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserSignInRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserSignInRequest* Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserSignInRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::auth::v1::UserSignInRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserSignInResponse*
-Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserSignInResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserSignInResponse* Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserSignInResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::auth::v1::UserSignInResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserSignUpRequest*
-Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserSignUpRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserSignUpRequest* Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserSignUpRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::auth::v1::UserSignUpRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserEmailRequest*
-Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserEmailRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserEmailRequest* Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserEmailRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::auth::v1::UserEmailRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserTokenRequest*
-Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserTokenRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserTokenRequest* Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserTokenRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::auth::v1::UserTokenRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserResetPasswordRequest*
-Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserResetPasswordRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserResetPasswordRequest* Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserResetPasswordRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::auth::v1::UserResetPasswordRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserSetProfileRequest*
-Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserSetProfileRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserSetProfileRequest* Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserSetProfileRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::auth::v1::UserSetProfileRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserGetProfileResponse*
-Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserGetProfileResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserGetProfileResponse* Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserGetProfileResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::auth::v1::UserGetProfileResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserLogsRequest*
-Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserLogsRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserLogsRequest* Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserLogsRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::auth::v1::UserLogsRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserLogsResponse_Item*
-Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserLogsResponse_Item >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserLogsResponse_Item* Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserLogsResponse_Item >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::auth::v1::UserLogsResponse_Item >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserLogsResponse*
-Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserLogsResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserLogsResponse* Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserLogsResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::auth::v1::UserLogsResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserChangePasswordRequest*
-Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserChangePasswordRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserChangePasswordRequest* Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserChangePasswordRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::auth::v1::UserChangePasswordRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserSetPasswordRequest*
-Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserSetPasswordRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserSetPasswordRequest* Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserSetPasswordRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::auth::v1::UserSetPasswordRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserIndexResponse_Item*
-Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserIndexResponse_Item >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserIndexResponse_Item* Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserIndexResponse_Item >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::auth::v1::UserIndexResponse_Item >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserIndexResponse*
-Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserIndexResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::auth::v1::UserIndexResponse* Arena::CreateMaybeMessage< ::palm::plugins::auth::v1::UserIndexResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::auth::v1::UserIndexResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE

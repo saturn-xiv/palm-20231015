@@ -16,10 +16,6 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
-
-namespace _pb = ::PROTOBUF_NAMESPACE_ID;
-namespace _pbi = _pb::internal;
-
 namespace palm {
 namespace plugins {
 namespace ops {
@@ -28,31 +24,29 @@ namespace v1 {
 }  // namespace ops
 }  // namespace plugins
 }  // namespace palm
-static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_ops_2eproto = nullptr;
-static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_ops_2eproto = nullptr;
-const uint32_t TableStruct_ops_2eproto::offsets[1] = {};
-static constexpr ::_pbi::MigrationSchema* schemas = nullptr;
-static constexpr ::_pb::Message* const* file_default_instances = nullptr;
+static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_ops_2eproto = nullptr;
+static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_ops_2eproto = nullptr;
+const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ops_2eproto::offsets[1] = {};
+static constexpr ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema* schemas = nullptr;
+static constexpr ::PROTOBUF_NAMESPACE_ID::Message* const* file_default_instances = nullptr;
 
 const char descriptor_table_protodef_ops_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\tops.proto\022\023palm.plugins.ops.v12\005\n\003Vpn2"
   "\t\n\007Metrics2\006\n\004MailB\002P\001b\006proto3"
   ;
-static ::_pbi::once_flag descriptor_table_ops_2eproto_once;
-const ::_pbi::DescriptorTable descriptor_table_ops_2eproto = {
-    false, false, 70, descriptor_table_protodef_ops_2eproto,
-    "ops.proto",
-    &descriptor_table_ops_2eproto_once, nullptr, 0, 0,
-    schemas, file_default_instances, TableStruct_ops_2eproto::offsets,
-    nullptr, file_level_enum_descriptors_ops_2eproto,
-    file_level_service_descriptors_ops_2eproto,
+static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ops_2eproto_once;
+const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ops_2eproto = {
+  false, false, 70, descriptor_table_protodef_ops_2eproto, "ops.proto", 
+  &descriptor_table_ops_2eproto_once, nullptr, 0, 0,
+  schemas, file_default_instances, TableStruct_ops_2eproto::offsets,
+  nullptr, file_level_enum_descriptors_ops_2eproto, file_level_service_descriptors_ops_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_ops_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_ops_2eproto_getter() {
   return &descriptor_table_ops_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_ops_2eproto(&descriptor_table_ops_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_ops_2eproto(&descriptor_table_ops_2eproto);
 namespace palm {
 namespace plugins {
 namespace ops {
