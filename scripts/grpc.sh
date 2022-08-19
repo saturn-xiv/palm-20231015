@@ -12,6 +12,7 @@ function build_grpc() {
     # https://grpc.io/docs/languages/cpp/quickstart/
     if [ -L $HOME/.local/bin/protoc ]
     then
+        echo 'already exists!'
         return
     fi
     if [ -d $HOME/downloads/grpc ]
@@ -20,6 +21,8 @@ function build_grpc() {
         git checkout master
         git pull
         git checkout $1
+        # fix unable to find current revision in submodule path
+        # git pull --recurse-submodules
         git submodule update --init --recursive
     else
         git clone --recurse-submodules -b $1 https://github.com/grpc/grpc.git $HOME/downloads/grpc

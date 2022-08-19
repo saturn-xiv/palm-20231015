@@ -119,7 +119,9 @@ build_deb() {
     mkdir -pv $target/lib/systemd/system/
     
     mkdir -pv $target/etc/palm
-    cp -r $WORKSPACE/LICENSE $WORKSPACE/README.md $WORKSPACE/package.json $target/etc/palm/
+    cp -r $WORKSPACE/LICENSE $WORKSPACE/README.md \
+        $WORKSPACE/package.json $WORKSPACE/envoy.yaml \
+        $target/etc/palm/
     echo "$GIT_VERSION $(date -R)" > $target/etc/palm/VERSION
 
     cd $target
