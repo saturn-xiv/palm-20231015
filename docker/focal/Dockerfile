@@ -37,22 +37,36 @@ RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     crossbuild-essential-armhf pkg-config-arm-linux-gnueabihf \
     crossbuild-essential-arm64 pkg-config-aarch64-linux-gnu \
     python3 python3-distutils python3-dev python3-pip \
-    nginx elasticsearch rabbitmq-server redis postgresql mariadb-server
+    nginx rabbitmq-server redis postgresql mariadb-server
 RUN apt -y autoremove
 RUN apt -y clean
 
-RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
-RUN locale-gen
-RUN update-locale LANG=en_US.UTF-8
-RUN update-alternatives --set editor /usr/bin/vim.basic
+# https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
+RUN add-apt-repository ppa:ubuntu-toolchain-r/test
+ENV GCC_VERSION 12
+RUN apt install -y g++-${GCC_VERSION} g++-${GCC_VERSION}-aarch64-linux-gnu g++-${GCC_VERSION}-arm-linux-gnueabihf
 
+# https://apt.llvm.org/
+ENV CLANG_VERSION=14
+RUN echo "deb [arch=amd64] http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-${CLANG_VERSION} main" > /etc/apt/sources.list.d/llvm.list
+RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+RUN apt update
+RUN apt install -y clang-${CLANG_VERSION} \
+    clangd-${CLANG_VERSION} clang-tools-${CLANG_VERSION} clang-format-${CLANG_VERSION} \
+    lldb-${CLANG_VERSION} lld-${CLANG_VERSION}
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CLANG_VERSION} 100
 RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${CLANG_VERSION} 100
 RUN update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${CLANG_VERSION} 100
 RUN update-alternatives --install /usr/bin/lldb lldb /usr/bin/lldb-${CLANG_VERSION} 100
 RUN update-alternatives --install /usr/bin/lld lld /usr/bin/lld-${CLANG_VERSION} 100
 
-RUN mkdir -p $HOME/downloads $HOME/build $HOME/local
+
+RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+RUN locale-gen
+RUN update-locale LANG=en_US.UTF-8
+RUN update-alternatives --set editor /usr/bin/vim.basic
+
+RUN mkdir -p $HOME/downloads $HOME/build $HOME/local $HOME/tmp
 
 # https://github.com/ohmyzsh/ohmyzsh
 RUN git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
@@ -63,6 +77,7 @@ RUN echo 'export LC_ALL=en_US.UTF-8' >> $HOME/.profile
 
 RUN git config --global core.quotepath false
 RUN git config --global http.version HTTP/1.1
+RUN git config --global pull.rebase false
 RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf
 
 RUN sh -c ". $HOME/.profile \
@@ -71,7 +86,7 @@ RUN sh -c ". $HOME/.profile \
     && pip3 install --user ansible paramiko"
 RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.profile
 RUN echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.profile
-RUN echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.profile
+RUN echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/tmp/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.profile
 
 # https://github.com/nvm-sh/nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | sh
@@ -93,9 +108,15 @@ RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
 RUN curl -s "https://get.sdkman.io" | zsh
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
-    && sdk install java 18.0.1.1-open \
+    && sdk install java 18.0.2.1-open \
     && sdk install maven \
     && sdk install gradle"
+
+# https://opensearch.org/downloads.html#opensearch
+ENV OPENSEARCH_VERSION "2.2.0"
+RUN wget -q -o $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz \
+    https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
+RUN tar xf -C $HOME/local/ $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
 
 # https://www.rust-lang.org/tools/install
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -113,7 +134,7 @@ RUN git clone https://github.com/rui314/mold.git $HOME/build/mold
 RUN apt install -y libstdc++-10-dev libssl-dev libxxhash-dev zlib1g-dev
 RUN zsh -c "source $HOME/.zshrc \
     && cd $HOME/build/mold \
-    && git checkout v1.3.1 \
+    && git checkout v1.4.1 \
     && make CXX=clang++ \
     && strip -s mold \
     && cp mold /usr/bin/ "
