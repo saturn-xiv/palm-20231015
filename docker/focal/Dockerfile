@@ -88,6 +88,11 @@ RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.profile
 RUN echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.profile
 RUN echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/tmp/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.profile
 
+RUN sh -c ". $HOME/.profile \
+    && pip3 install --user conan \
+    && conan profile new default --detect \
+    && conan profile update settings.compiler.libcxx=libstdc++11 default"
+
 # https://github.com/nvm-sh/nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | sh
 RUN sh -c ". $HOME/.profile \
@@ -139,18 +144,18 @@ RUN zsh -c "source $HOME/.zshrc \
     && strip -s mold \
     && cp mold /usr/bin/ "
 
-ENV GRPC_VERSION "v1.48.0"
-RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
-RUN zsh -c "source $HOME/.cargo/env \
-    && mkdir -pv $HOME/build/grpc \
-    && cd $HOME/build/grpc \
-    && cmake -DCMAKE_BUILD_TYPE=Release \
-        -DgRPC_INSTALL=ON \
-        -DgRPC_SSL_PROVIDER=package \
-        -DgRPC_BUILD_TESTS=OFF \
-        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
-    && make \
-    && make install"
+# ENV GRPC_VERSION "v1.48.0"
+# RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
+# RUN zsh -c "source $HOME/.cargo/env \
+#     && mkdir -pv $HOME/build/grpc \
+#     && cd $HOME/build/grpc \
+#     && cmake -DCMAKE_BUILD_TYPE=Release \
+#         -DgRPC_INSTALL=ON \
+#         -DgRPC_SSL_PROVIDER=package \
+#         -DgRPC_BUILD_TESTS=OFF \
+#         -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
+#     && make \
+#     && make install"
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
