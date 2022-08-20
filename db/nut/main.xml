@@ -6,7 +6,7 @@
     <include file="001-create-locales.xml" relativeToChangelogFile="true" />
     <include file="002-create-settings.xml" relativeToChangelogFile="true" />
     <include file="003-create-auth.xml" relativeToChangelogFile="true" />
-    <include file="004-create-casbin-rules.xml" relativeToChangelogFile="true" />
+    <include file="004-create-rbac.xml" relativeToChangelogFile="true" />
     <include file="005-create-attachments.xml" relativeToChangelogFile="true" />
     <include file="006-create-tags.xml" relativeToChangelogFile="true" />
     <include file="007-create-categories.xml" relativeToChangelogFile="true" />

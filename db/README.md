@@ -6,6 +6,7 @@
 $HOME/local/liquibase/liquibase drop-all
 $HOME/local/liquibase/liquibase update
 $HOME/local/liquibase/liquibase rollback-count 1
+$HOME/local/liquibase/liquibase rollback-one-changeset --changeset-id=20220513111322
 $HOME/local/liquibase/liquibase status
 ```
 

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
+
+    <changeSet id="20220513111322" author="jeremy.zheng" labels="create-rbac">
+        <createTable tableName="roles">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="parent" type="varchar(255)" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="roles" indexName="idx_roles_code" unique="true">
+            <column name="code" />
+        </createIndex>
+
+        <createTable tableName="roles_constraints">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="x" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="term" type="varchar(32)">
+                <constraints nullable="false" />
+            </column>
+            <column name="y" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="roles_constraints" indexName="idx_roles_constraints" unique="true">
+            <column name="x" />
+            <column name="term" />
+            <column name="y" />
+        </createIndex>
+        <createIndex tableName="roles_constraints" indexName="idx_roles_constraints_x">
+            <column name="x" />
+        </createIndex>
+        <createIndex tableName="roles_constraints" indexName="idx_roles_constraints_y">
+            <column name="y" />
+        </createIndex>
+
+        <createTable tableName="roles_users">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="role" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="user" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="nbf" type="date">
+                <constraints nullable="false" />
+            </column>
+            <column name="exp" type="date">
+                <constraints nullable="false" />
+            </column>
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="roles_users" indexName="idx_roles_users" unique="true">
+            <column name="role" />
+            <column name="user" />
+        </createIndex>
+
+
+        <createTable tableName="permissions">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="role" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="operation" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="resource_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="resource_id" type="integer" />
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="permissions" indexName="idx_permissions_role">
+            <column name="role" />
+        </createIndex>
+        <createIndex tableName="permissions" indexName="idx_permissions_resource">
+            <column name="resource_type" />
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>

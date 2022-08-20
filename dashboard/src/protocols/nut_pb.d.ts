@@ -79,210 +79,6 @@ export namespace IdRequest {
   }
 }
 
-export class UserLogsRequest extends jspb.Message {
-  getPager(): Pager | undefined;
-  setPager(value?: Pager): UserLogsRequest;
-  hasPager(): boolean;
-  clearPager(): UserLogsRequest;
-
-  getLevel(): string;
-  setLevel(value: string): UserLogsRequest;
-  hasLevel(): boolean;
-  clearLevel(): UserLogsRequest;
-
-  getIp(): string;
-  setIp(value: string): UserLogsRequest;
-  hasIp(): boolean;
-  clearIp(): UserLogsRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): UserLogsRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: UserLogsRequest): UserLogsRequest.AsObject;
-  static serializeBinaryToWriter(message: UserLogsRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): UserLogsRequest;
-  static deserializeBinaryFromReader(message: UserLogsRequest, reader: jspb.BinaryReader): UserLogsRequest;
-}
-
-export namespace UserLogsRequest {
-  export type AsObject = {
-    pager?: Pager.AsObject,
-    level?: string,
-    ip?: string,
-  }
-
-  export enum LevelCase { 
-    _LEVEL_NOT_SET = 0,
-    LEVEL = 11,
-  }
-
-  export enum IpCase { 
-    _IP_NOT_SET = 0,
-    IP = 12,
-  }
-}
-
-export class UserSignInResponse extends jspb.Message {
-  getToken(): string;
-  setToken(value: string): UserSignInResponse;
-
-  getRolesList(): Array<string>;
-  setRolesList(value: Array<string>): UserSignInResponse;
-  clearRolesList(): UserSignInResponse;
-  addRoles(value: string, index?: number): UserSignInResponse;
-
-  getPermissionsList(): Array<RbacGetPermissionsResponse.Item>;
-  setPermissionsList(value: Array<RbacGetPermissionsResponse.Item>): UserSignInResponse;
-  clearPermissionsList(): UserSignInResponse;
-  addPermissions(value?: RbacGetPermissionsResponse.Item, index?: number): RbacGetPermissionsResponse.Item;
-
-  getPayload(): SiteUserIndexResponse.Item | undefined;
-  setPayload(value?: SiteUserIndexResponse.Item): UserSignInResponse;
-  hasPayload(): boolean;
-  clearPayload(): UserSignInResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): UserSignInResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: UserSignInResponse): UserSignInResponse.AsObject;
-  static serializeBinaryToWriter(message: UserSignInResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): UserSignInResponse;
-  static deserializeBinaryFromReader(message: UserSignInResponse, reader: jspb.BinaryReader): UserSignInResponse;
-}
-
-export namespace UserSignInResponse {
-  export type AsObject = {
-    token: string,
-    rolesList: Array<string>,
-    permissionsList: Array<RbacGetPermissionsResponse.Item.AsObject>,
-    payload?: SiteUserIndexResponse.Item.AsObject,
-  }
-}
-
-export class UserChangePasswordRequest extends jspb.Message {
-  getCurrentPassword(): string;
-  setCurrentPassword(value: string): UserChangePasswordRequest;
-
-  getNewPassword(): string;
-  setNewPassword(value: string): UserChangePasswordRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): UserChangePasswordRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: UserChangePasswordRequest): UserChangePasswordRequest.AsObject;
-  static serializeBinaryToWriter(message: UserChangePasswordRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): UserChangePasswordRequest;
-  static deserializeBinaryFromReader(message: UserChangePasswordRequest, reader: jspb.BinaryReader): UserChangePasswordRequest;
-}
-
-export namespace UserChangePasswordRequest {
-  export type AsObject = {
-    currentPassword: string,
-    newPassword: string,
-  }
-}
-
-export class UserLogsResponse extends jspb.Message {
-  getItemsList(): Array<UserLogsResponse.Item>;
-  setItemsList(value: Array<UserLogsResponse.Item>): UserLogsResponse;
-  clearItemsList(): UserLogsResponse;
-  addItems(value?: UserLogsResponse.Item, index?: number): UserLogsResponse.Item;
-
-  getPagination(): Pagination | undefined;
-  setPagination(value?: Pagination): UserLogsResponse;
-  hasPagination(): boolean;
-  clearPagination(): UserLogsResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): UserLogsResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: UserLogsResponse): UserLogsResponse.AsObject;
-  static serializeBinaryToWriter(message: UserLogsResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): UserLogsResponse;
-  static deserializeBinaryFromReader(message: UserLogsResponse, reader: jspb.BinaryReader): UserLogsResponse;
-}
-
-export namespace UserLogsResponse {
-  export type AsObject = {
-    itemsList: Array<UserLogsResponse.Item.AsObject>,
-    pagination?: Pagination.AsObject,
-  }
-
-  export class Item extends jspb.Message {
-    getId(): number;
-    setId(value: number): Item;
-
-    getUserId(): number;
-    setUserId(value: number): Item;
-
-    getIp(): string;
-    setIp(value: string): Item;
-
-    getLevel(): string;
-    setLevel(value: string): Item;
-
-    getMessage(): string;
-    setMessage(value: string): Item;
-
-    getResourceType(): string;
-    setResourceType(value: string): Item;
-
-    getResourceId(): number;
-    setResourceId(value: number): Item;
-    hasResourceId(): boolean;
-    clearResourceId(): Item;
-
-    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
-    hasCreatedAt(): boolean;
-    clearCreatedAt(): Item;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Item.AsObject;
-    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
-    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Item;
-    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
-  }
-
-  export namespace Item {
-    export type AsObject = {
-      id: number,
-      userId: number,
-      ip: string,
-      level: string,
-      message: string,
-      resourceType: string,
-      resourceId?: number,
-      createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
-
-    export enum ResourceIdCase { 
-      _RESOURCE_ID_NOT_SET = 0,
-      RESOURCE_ID = 7,
-    }
-  }
-
-}
-
-export class UserResetPasswordRequest extends jspb.Message {
-  getToken(): string;
-  setToken(value: string): UserResetPasswordRequest;
-
-  getPassword(): string;
-  setPassword(value: string): UserResetPasswordRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): UserResetPasswordRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: UserResetPasswordRequest): UserResetPasswordRequest.AsObject;
-  static serializeBinaryToWriter(message: UserResetPasswordRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): UserResetPasswordRequest;
-  static deserializeBinaryFromReader(message: UserResetPasswordRequest, reader: jspb.BinaryReader): UserResetPasswordRequest;
-}
-
-export namespace UserResetPasswordRequest {
-  export type AsObject = {
-    token: string,
-    password: string,
-  }
-}
-
 export class UserQueryRequest extends jspb.Message {
   getEmail(): string;
   setEmail(value: string): UserQueryRequest;
@@ -310,6 +106,96 @@ export namespace UserQueryRequest {
     ID_NOT_SET = 0,
     EMAIL = 1,
     NICK_NAME = 2,
+  }
+}
+
+export class UserSignInRequest extends jspb.Message {
+  getQuery(): UserQueryRequest | undefined;
+  setQuery(value?: UserQueryRequest): UserSignInRequest;
+  hasQuery(): boolean;
+  clearQuery(): UserSignInRequest;
+
+  getPassword(): string;
+  setPassword(value: string): UserSignInRequest;
+
+  getTtl(): google_protobuf_duration_pb.Duration | undefined;
+  setTtl(value?: google_protobuf_duration_pb.Duration): UserSignInRequest;
+  hasTtl(): boolean;
+  clearTtl(): UserSignInRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UserSignInRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UserSignInRequest): UserSignInRequest.AsObject;
+  static serializeBinaryToWriter(message: UserSignInRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UserSignInRequest;
+  static deserializeBinaryFromReader(message: UserSignInRequest, reader: jspb.BinaryReader): UserSignInRequest;
+}
+
+export namespace UserSignInRequest {
+  export type AsObject = {
+    query?: UserQueryRequest.AsObject,
+    password: string,
+    ttl?: google_protobuf_duration_pb.Duration.AsObject,
+  }
+}
+
+export class UserSignInResponse extends jspb.Message {
+  getToken(): string;
+  setToken(value: string): UserSignInResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UserSignInResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: UserSignInResponse): UserSignInResponse.AsObject;
+  static serializeBinaryToWriter(message: UserSignInResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UserSignInResponse;
+  static deserializeBinaryFromReader(message: UserSignInResponse, reader: jspb.BinaryReader): UserSignInResponse;
+}
+
+export namespace UserSignInResponse {
+  export type AsObject = {
+    token: string,
+  }
+}
+
+export class UserSignUpRequest extends jspb.Message {
+  getRealName(): string;
+  setRealName(value: string): UserSignUpRequest;
+
+  getNickName(): string;
+  setNickName(value: string): UserSignUpRequest;
+
+  getEmail(): string;
+  setEmail(value: string): UserSignUpRequest;
+
+  getPassword(): string;
+  setPassword(value: string): UserSignUpRequest;
+
+  getLang(): string;
+  setLang(value: string): UserSignUpRequest;
+
+  getTimeZone(): string;
+  setTimeZone(value: string): UserSignUpRequest;
+
+  getHome(): string;
+  setHome(value: string): UserSignUpRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UserSignUpRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UserSignUpRequest): UserSignUpRequest.AsObject;
+  static serializeBinaryToWriter(message: UserSignUpRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UserSignUpRequest;
+  static deserializeBinaryFromReader(message: UserSignUpRequest, reader: jspb.BinaryReader): UserSignUpRequest;
+}
+
+export namespace UserSignUpRequest {
+  export type AsObject = {
+    realName: string,
+    nickName: string,
+    email: string,
+    password: string,
+    lang: string,
+    timeZone: string,
+    home: string,
   }
 }
 
@@ -355,75 +241,25 @@ export namespace UserTokenRequest {
   }
 }
 
-export class UserSignInRequest extends jspb.Message {
-  getQuery(): UserQueryRequest | undefined;
-  setQuery(value?: UserQueryRequest): UserSignInRequest;
-  hasQuery(): boolean;
-  clearQuery(): UserSignInRequest;
+export class UserResetPasswordRequest extends jspb.Message {
+  getToken(): string;
+  setToken(value: string): UserResetPasswordRequest;
 
   getPassword(): string;
-  setPassword(value: string): UserSignInRequest;
-
-  getTtl(): google_protobuf_duration_pb.Duration | undefined;
-  setTtl(value?: google_protobuf_duration_pb.Duration): UserSignInRequest;
-  hasTtl(): boolean;
-  clearTtl(): UserSignInRequest;
+  setPassword(value: string): UserResetPasswordRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): UserSignInRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: UserSignInRequest): UserSignInRequest.AsObject;
-  static serializeBinaryToWriter(message: UserSignInRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): UserSignInRequest;
-  static deserializeBinaryFromReader(message: UserSignInRequest, reader: jspb.BinaryReader): UserSignInRequest;
+  toObject(includeInstance?: boolean): UserResetPasswordRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UserResetPasswordRequest): UserResetPasswordRequest.AsObject;
+  static serializeBinaryToWriter(message: UserResetPasswordRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UserResetPasswordRequest;
+  static deserializeBinaryFromReader(message: UserResetPasswordRequest, reader: jspb.BinaryReader): UserResetPasswordRequest;
 }
 
-export namespace UserSignInRequest {
+export namespace UserResetPasswordRequest {
   export type AsObject = {
-    query?: UserQueryRequest.AsObject,
+    token: string,
     password: string,
-    ttl?: google_protobuf_duration_pb.Duration.AsObject,
-  }
-}
-
-export class UserSignUpRequest extends jspb.Message {
-  getRealName(): string;
-  setRealName(value: string): UserSignUpRequest;
-
-  getNickName(): string;
-  setNickName(value: string): UserSignUpRequest;
-
-  getEmail(): string;
-  setEmail(value: string): UserSignUpRequest;
-
-  getPassword(): string;
-  setPassword(value: string): UserSignUpRequest;
-
-  getLang(): string;
-  setLang(value: string): UserSignUpRequest;
-
-  getTimeZone(): string;
-  setTimeZone(value: string): UserSignUpRequest;
-
-  getHome(): string;
-  setHome(value: string): UserSignUpRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): UserSignUpRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: UserSignUpRequest): UserSignUpRequest.AsObject;
-  static serializeBinaryToWriter(message: UserSignUpRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): UserSignUpRequest;
-  static deserializeBinaryFromReader(message: UserSignUpRequest, reader: jspb.BinaryReader): UserSignUpRequest;
-}
-
-export namespace UserSignUpRequest {
-  export type AsObject = {
-    realName: string,
-    nickName: string,
-    email: string,
-    password: string,
-    lang: string,
-    timeZone: string,
-    home: string,
   }
 }
 
@@ -511,87 +347,436 @@ export namespace UserGetProfileResponse {
   }
 }
 
-export class RbacWatcherMessage extends jspb.Message {
-  getSync(): RbacWatcherMessage.Sync | undefined;
-  setSync(value?: RbacWatcherMessage.Sync): RbacWatcherMessage;
-  hasSync(): boolean;
-  clearSync(): RbacWatcherMessage;
+export class UserLogsRequest extends jspb.Message {
+  getPager(): Pager | undefined;
+  setPager(value?: Pager): UserLogsRequest;
+  hasPager(): boolean;
+  clearPager(): UserLogsRequest;
 
-  getPayloadCase(): RbacWatcherMessage.PayloadCase;
+  getLevel(): string;
+  setLevel(value: string): UserLogsRequest;
+  hasLevel(): boolean;
+  clearLevel(): UserLogsRequest;
+
+  getIp(): string;
+  setIp(value: string): UserLogsRequest;
+  hasIp(): boolean;
+  clearIp(): UserLogsRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RbacWatcherMessage.AsObject;
-  static toObject(includeInstance: boolean, msg: RbacWatcherMessage): RbacWatcherMessage.AsObject;
-  static serializeBinaryToWriter(message: RbacWatcherMessage, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RbacWatcherMessage;
-  static deserializeBinaryFromReader(message: RbacWatcherMessage, reader: jspb.BinaryReader): RbacWatcherMessage;
+  toObject(includeInstance?: boolean): UserLogsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UserLogsRequest): UserLogsRequest.AsObject;
+  static serializeBinaryToWriter(message: UserLogsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UserLogsRequest;
+  static deserializeBinaryFromReader(message: UserLogsRequest, reader: jspb.BinaryReader): UserLogsRequest;
 }
 
-export namespace RbacWatcherMessage {
+export namespace UserLogsRequest {
   export type AsObject = {
-    sync?: RbacWatcherMessage.Sync.AsObject,
+    pager?: Pager.AsObject,
+    level?: string,
+    ip?: string,
   }
 
-  export class Sync extends jspb.Message {
-    getId(): string;
-    setId(value: string): Sync;
+  export enum LevelCase { 
+    _LEVEL_NOT_SET = 0,
+    LEVEL = 11,
+  }
+
+  export enum IpCase { 
+    _IP_NOT_SET = 0,
+    IP = 12,
+  }
+}
+
+export class UserLogsResponse extends jspb.Message {
+  getPagination(): Pagination | undefined;
+  setPagination(value?: Pagination): UserLogsResponse;
+  hasPagination(): boolean;
+  clearPagination(): UserLogsResponse;
+
+  getItemsList(): Array<UserLogsResponse.Item>;
+  setItemsList(value: Array<UserLogsResponse.Item>): UserLogsResponse;
+  clearItemsList(): UserLogsResponse;
+  addItems(value?: UserLogsResponse.Item, index?: number): UserLogsResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UserLogsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: UserLogsResponse): UserLogsResponse.AsObject;
+  static serializeBinaryToWriter(message: UserLogsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UserLogsResponse;
+  static deserializeBinaryFromReader(message: UserLogsResponse, reader: jspb.BinaryReader): UserLogsResponse;
+}
+
+export namespace UserLogsResponse {
+  export type AsObject = {
+    pagination?: Pagination.AsObject,
+    itemsList: Array<UserLogsResponse.Item.AsObject>,
+  }
+
+  export class Item extends jspb.Message {
+    getId(): number;
+    setId(value: number): Item;
+
+    getUserId(): number;
+    setUserId(value: number): Item;
+
+    getIp(): string;
+    setIp(value: string): Item;
+
+    getLevel(): string;
+    setLevel(value: string): Item;
+
+    getMessage(): string;
+    setMessage(value: string): Item;
+
+    getResourceType(): string;
+    setResourceType(value: string): Item;
+
+    getResourceId(): number;
+    setResourceId(value: number): Item;
+    hasResourceId(): boolean;
+    clearResourceId(): Item;
+
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): Item;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Sync.AsObject;
-    static toObject(includeInstance: boolean, msg: Sync): Sync.AsObject;
-    static serializeBinaryToWriter(message: Sync, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Sync;
-    static deserializeBinaryFromReader(message: Sync, reader: jspb.BinaryReader): Sync;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
   }
 
-  export namespace Sync {
+  export namespace Item {
     export type AsObject = {
-      id: string,
+      id: number,
+      userId: number,
+      ip: string,
+      level: string,
+      message: string,
+      resourceType: string,
+      resourceId?: number,
+      createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    }
+
+    export enum ResourceIdCase { 
+      _RESOURCE_ID_NOT_SET = 0,
+      RESOURCE_ID = 7,
     }
   }
 
+}
 
-  export enum PayloadCase { 
-    PAYLOAD_NOT_SET = 0,
-    SYNC = 1,
+export class UserChangePasswordRequest extends jspb.Message {
+  getCurrentPassword(): string;
+  setCurrentPassword(value: string): UserChangePasswordRequest;
+
+  getNewPassword(): string;
+  setNewPassword(value: string): UserChangePasswordRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UserChangePasswordRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UserChangePasswordRequest): UserChangePasswordRequest.AsObject;
+  static serializeBinaryToWriter(message: UserChangePasswordRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UserChangePasswordRequest;
+  static deserializeBinaryFromReader(message: UserChangePasswordRequest, reader: jspb.BinaryReader): UserChangePasswordRequest;
+}
+
+export namespace UserChangePasswordRequest {
+  export type AsObject = {
+    currentPassword: string,
+    newPassword: string,
   }
 }
 
-export class RbacUserRequest extends jspb.Message {
-  getId(): number;
-  setId(value: number): RbacUserRequest;
+export class UserSetPasswordRequest extends jspb.Message {
+  getUser(): UserQueryRequest | undefined;
+  setUser(value?: UserQueryRequest): UserSetPasswordRequest;
+  hasUser(): boolean;
+  clearUser(): UserSetPasswordRequest;
+
+  getPassword(): string;
+  setPassword(value: string): UserSetPasswordRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RbacUserRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: RbacUserRequest): RbacUserRequest.AsObject;
-  static serializeBinaryToWriter(message: RbacUserRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RbacUserRequest;
-  static deserializeBinaryFromReader(message: RbacUserRequest, reader: jspb.BinaryReader): RbacUserRequest;
+  toObject(includeInstance?: boolean): UserSetPasswordRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UserSetPasswordRequest): UserSetPasswordRequest.AsObject;
+  static serializeBinaryToWriter(message: UserSetPasswordRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UserSetPasswordRequest;
+  static deserializeBinaryFromReader(message: UserSetPasswordRequest, reader: jspb.BinaryReader): UserSetPasswordRequest;
 }
 
-export namespace RbacUserRequest {
+export namespace UserSetPasswordRequest {
   export type AsObject = {
-    id: number,
+    user?: UserQueryRequest.AsObject,
+    password: string,
   }
 }
 
-export class RbacGetRolesResponse extends jspb.Message {
-  getItemsList(): Array<RbacGetRolesResponse.Item>;
-  setItemsList(value: Array<RbacGetRolesResponse.Item>): RbacGetRolesResponse;
-  clearItemsList(): RbacGetRolesResponse;
-  addItems(value?: RbacGetRolesResponse.Item, index?: number): RbacGetRolesResponse.Item;
+export class UserIndexResponse extends jspb.Message {
+  getPagination(): Pagination | undefined;
+  setPagination(value?: Pagination): UserIndexResponse;
+  hasPagination(): boolean;
+  clearPagination(): UserIndexResponse;
+
+  getItemsList(): Array<UserIndexResponse.Item>;
+  setItemsList(value: Array<UserIndexResponse.Item>): UserIndexResponse;
+  clearItemsList(): UserIndexResponse;
+  addItems(value?: UserIndexResponse.Item, index?: number): UserIndexResponse.Item;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RbacGetRolesResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: RbacGetRolesResponse): RbacGetRolesResponse.AsObject;
-  static serializeBinaryToWriter(message: RbacGetRolesResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RbacGetRolesResponse;
-  static deserializeBinaryFromReader(message: RbacGetRolesResponse, reader: jspb.BinaryReader): RbacGetRolesResponse;
+  toObject(includeInstance?: boolean): UserIndexResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: UserIndexResponse): UserIndexResponse.AsObject;
+  static serializeBinaryToWriter(message: UserIndexResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UserIndexResponse;
+  static deserializeBinaryFromReader(message: UserIndexResponse, reader: jspb.BinaryReader): UserIndexResponse;
 }
 
-export namespace RbacGetRolesResponse {
+export namespace UserIndexResponse {
   export type AsObject = {
-    itemsList: Array<RbacGetRolesResponse.Item.AsObject>,
+    pagination?: Pagination.AsObject,
+    itemsList: Array<UserIndexResponse.Item.AsObject>,
+  }
+
+  export class Item extends jspb.Message {
+    getId(): number;
+    setId(value: number): Item;
+
+    getUid(): string;
+    setUid(value: string): Item;
+
+    getEmail(): string;
+    setEmail(value: string): Item;
+
+    getNickName(): string;
+    setNickName(value: string): Item;
+
+    getRealName(): string;
+    setRealName(value: string): Item;
+
+    getProviderType(): string;
+    setProviderType(value: string): Item;
+
+    getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
+    hasUpdatedAt(): boolean;
+    clearUpdatedAt(): Item;
+
+    getLastSignInAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setLastSignInAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
+    hasLastSignInAt(): boolean;
+    clearLastSignInAt(): Item;
+
+    getLastSignInIp(): string;
+    setLastSignInIp(value: string): Item;
+    hasLastSignInIp(): boolean;
+    clearLastSignInIp(): Item;
+
+    getCurrentSignInAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCurrentSignInAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
+    hasCurrentSignInAt(): boolean;
+    clearCurrentSignInAt(): Item;
+
+    getCurrentSignInIp(): string;
+    setCurrentSignInIp(value: string): Item;
+    hasCurrentSignInIp(): boolean;
+    clearCurrentSignInIp(): Item;
+
+    getSignInCount(): number;
+    setSignInCount(value: number): Item;
+
+    getLang(): string;
+    setLang(value: string): Item;
+
+    getTimeZone(): string;
+    setTimeZone(value: string): Item;
+
+    getAvatar(): string;
+    setAvatar(value: string): Item;
+
+    getConfirmedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setConfirmedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
+    hasConfirmedAt(): boolean;
+    clearConfirmedAt(): Item;
+
+    getLockedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setLockedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
+    hasLockedAt(): boolean;
+    clearLockedAt(): Item;
+
+    getDeletedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setDeletedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
+    hasDeletedAt(): boolean;
+    clearDeletedAt(): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      id: number,
+      uid: string,
+      email: string,
+      nickName: string,
+      realName: string,
+      providerType: string,
+      updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      lastSignInAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      lastSignInIp?: string,
+      currentSignInAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      currentSignInIp?: string,
+      signInCount: number,
+      lang: string,
+      timeZone: string,
+      avatar: string,
+      confirmedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      lockedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      deletedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    }
+
+    export enum LastSignInAtCase { 
+      _LAST_SIGN_IN_AT_NOT_SET = 0,
+      LAST_SIGN_IN_AT = 11,
+    }
+
+    export enum LastSignInIpCase { 
+      _LAST_SIGN_IN_IP_NOT_SET = 0,
+      LAST_SIGN_IN_IP = 12,
+    }
+
+    export enum CurrentSignInAtCase { 
+      _CURRENT_SIGN_IN_AT_NOT_SET = 0,
+      CURRENT_SIGN_IN_AT = 13,
+    }
+
+    export enum CurrentSignInIpCase { 
+      _CURRENT_SIGN_IN_IP_NOT_SET = 0,
+      CURRENT_SIGN_IN_IP = 14,
+    }
+
+    export enum ConfirmedAtCase { 
+      _CONFIRMED_AT_NOT_SET = 0,
+      CONFIRMED_AT = 27,
+    }
+
+    export enum LockedAtCase { 
+      _LOCKED_AT_NOT_SET = 0,
+      LOCKED_AT = 28,
+    }
+
+    export enum DeletedAtCase { 
+      _DELETED_AT_NOT_SET = 0,
+      DELETED_AT = 29,
+    }
+  }
+
+}
+
+export class UserRequest extends jspb.Message {
+  getNickName(): string;
+  setNickName(value: string): UserRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UserRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UserRequest): UserRequest.AsObject;
+  static serializeBinaryToWriter(message: UserRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UserRequest;
+  static deserializeBinaryFromReader(message: UserRequest, reader: jspb.BinaryReader): UserRequest;
+}
+
+export namespace UserRequest {
+  export type AsObject = {
+    nickName: string,
+  }
+}
+
+export class UserListResponse extends jspb.Message {
+  getItemsList(): Array<UserListResponse.Item>;
+  setItemsList(value: Array<UserListResponse.Item>): UserListResponse;
+  clearItemsList(): UserListResponse;
+  addItems(value?: UserListResponse.Item, index?: number): UserListResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UserListResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: UserListResponse): UserListResponse.AsObject;
+  static serializeBinaryToWriter(message: UserListResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UserListResponse;
+  static deserializeBinaryFromReader(message: UserListResponse, reader: jspb.BinaryReader): UserListResponse;
+}
+
+export namespace UserListResponse {
+  export type AsObject = {
+    itemsList: Array<UserListResponse.Item.AsObject>,
+  }
+
+  export class Item extends jspb.Message {
+    getNickName(): string;
+    setNickName(value: string): Item;
+
+    getRealName(): string;
+    setRealName(value: string): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      nickName: string,
+      realName: string,
+    }
+  }
+
+}
+
+export class RoleRequest extends jspb.Message {
+  getCode(): string;
+  setCode(value: string): RoleRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RoleRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RoleRequest): RoleRequest.AsObject;
+  static serializeBinaryToWriter(message: RoleRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RoleRequest;
+  static deserializeBinaryFromReader(message: RoleRequest, reader: jspb.BinaryReader): RoleRequest;
+}
+
+export namespace RoleRequest {
+  export type AsObject = {
+    code: string,
+  }
+}
+
+export class RoleListResponse extends jspb.Message {
+  getItemsList(): Array<RoleListResponse.Item>;
+  setItemsList(value: Array<RoleListResponse.Item>): RoleListResponse;
+  clearItemsList(): RoleListResponse;
+  addItems(value?: RoleListResponse.Item, index?: number): RoleListResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RoleListResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: RoleListResponse): RoleListResponse.AsObject;
+  static serializeBinaryToWriter(message: RoleListResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RoleListResponse;
+  static deserializeBinaryFromReader(message: RoleListResponse, reader: jspb.BinaryReader): RoleListResponse;
+}
+
+export namespace RoleListResponse {
+  export type AsObject = {
+    itemsList: Array<RoleListResponse.Item.AsObject>,
   }
 
   export class Item extends jspb.Message {
@@ -618,216 +803,47 @@ export namespace RbacGetRolesResponse {
 
 }
 
-export class RbacRoleRequest extends jspb.Message {
-  getCode(): string;
-  setCode(value: string): RbacRoleRequest;
+export class RolesForUserRequest extends jspb.Message {
+  getUser(): string;
+  setUser(value: string): RolesForUserRequest;
+
+  getRolesList(): Array<string>;
+  setRolesList(value: Array<string>): RolesForUserRequest;
+  clearRolesList(): RolesForUserRequest;
+  addRoles(value: string, index?: number): RolesForUserRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RbacRoleRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: RbacRoleRequest): RbacRoleRequest.AsObject;
-  static serializeBinaryToWriter(message: RbacRoleRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RbacRoleRequest;
-  static deserializeBinaryFromReader(message: RbacRoleRequest, reader: jspb.BinaryReader): RbacRoleRequest;
+  toObject(includeInstance?: boolean): RolesForUserRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RolesForUserRequest): RolesForUserRequest.AsObject;
+  static serializeBinaryToWriter(message: RolesForUserRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RolesForUserRequest;
+  static deserializeBinaryFromReader(message: RolesForUserRequest, reader: jspb.BinaryReader): RolesForUserRequest;
 }
 
-export namespace RbacRoleRequest {
+export namespace RolesForUserRequest {
   export type AsObject = {
-    code: string,
+    user: string,
+    rolesList: Array<string>,
   }
 }
 
-export class RbacGetUsersResponse extends jspb.Message {
-  getItemsList(): Array<RbacGetUsersResponse.Item>;
-  setItemsList(value: Array<RbacGetUsersResponse.Item>): RbacGetUsersResponse;
-  clearItemsList(): RbacGetUsersResponse;
-  addItems(value?: RbacGetUsersResponse.Item, index?: number): RbacGetUsersResponse.Item;
+export class PermissionListResponse extends jspb.Message {
+  getItemsList(): Array<PermissionListResponse.Item>;
+  setItemsList(value: Array<PermissionListResponse.Item>): PermissionListResponse;
+  clearItemsList(): PermissionListResponse;
+  addItems(value?: PermissionListResponse.Item, index?: number): PermissionListResponse.Item;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RbacGetUsersResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: RbacGetUsersResponse): RbacGetUsersResponse.AsObject;
-  static serializeBinaryToWriter(message: RbacGetUsersResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RbacGetUsersResponse;
-  static deserializeBinaryFromReader(message: RbacGetUsersResponse, reader: jspb.BinaryReader): RbacGetUsersResponse;
+  toObject(includeInstance?: boolean): PermissionListResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: PermissionListResponse): PermissionListResponse.AsObject;
+  static serializeBinaryToWriter(message: PermissionListResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PermissionListResponse;
+  static deserializeBinaryFromReader(message: PermissionListResponse, reader: jspb.BinaryReader): PermissionListResponse;
 }
 
-export namespace RbacGetUsersResponse {
+export namespace PermissionListResponse {
   export type AsObject = {
-    itemsList: Array<RbacGetUsersResponse.Item.AsObject>,
-  }
-
-  export class Item extends jspb.Message {
-    getId(): number;
-    setId(value: number): Item;
-
-    getNickName(): string;
-    setNickName(value: string): Item;
-
-    getRealName(): string;
-    setRealName(value: string): Item;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Item.AsObject;
-    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
-    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Item;
-    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
-  }
-
-  export namespace Item {
-    export type AsObject = {
-      id: number,
-      nickName: string,
-      realName: string,
-    }
-  }
-
-}
-
-export class RbacUpdatePermissionsForUserRequest extends jspb.Message {
-  getUser(): number;
-  setUser(value: number): RbacUpdatePermissionsForUserRequest;
-
-  getRemovedList(): Array<RbacUpdatePermissionsForUserRequest.Item>;
-  setRemovedList(value: Array<RbacUpdatePermissionsForUserRequest.Item>): RbacUpdatePermissionsForUserRequest;
-  clearRemovedList(): RbacUpdatePermissionsForUserRequest;
-  addRemoved(value?: RbacUpdatePermissionsForUserRequest.Item, index?: number): RbacUpdatePermissionsForUserRequest.Item;
-
-  getCreatedList(): Array<RbacUpdatePermissionsForUserRequest.Item>;
-  setCreatedList(value: Array<RbacUpdatePermissionsForUserRequest.Item>): RbacUpdatePermissionsForUserRequest;
-  clearCreatedList(): RbacUpdatePermissionsForUserRequest;
-  addCreated(value?: RbacUpdatePermissionsForUserRequest.Item, index?: number): RbacUpdatePermissionsForUserRequest.Item;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RbacUpdatePermissionsForUserRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: RbacUpdatePermissionsForUserRequest): RbacUpdatePermissionsForUserRequest.AsObject;
-  static serializeBinaryToWriter(message: RbacUpdatePermissionsForUserRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RbacUpdatePermissionsForUserRequest;
-  static deserializeBinaryFromReader(message: RbacUpdatePermissionsForUserRequest, reader: jspb.BinaryReader): RbacUpdatePermissionsForUserRequest;
-}
-
-export namespace RbacUpdatePermissionsForUserRequest {
-  export type AsObject = {
-    user: number,
-    removedList: Array<RbacUpdatePermissionsForUserRequest.Item.AsObject>,
-    createdList: Array<RbacUpdatePermissionsForUserRequest.Item.AsObject>,
-  }
-
-  export class Item extends jspb.Message {
-    getOperation(): string;
-    setOperation(value: string): Item;
-
-    getResourceType(): string;
-    setResourceType(value: string): Item;
-
-    getResourceId(): number;
-    setResourceId(value: number): Item;
-    hasResourceId(): boolean;
-    clearResourceId(): Item;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Item.AsObject;
-    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
-    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Item;
-    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
-  }
-
-  export namespace Item {
-    export type AsObject = {
-      operation: string,
-      resourceType: string,
-      resourceId?: number,
-    }
-
-    export enum ResourceIdCase { 
-      _RESOURCE_ID_NOT_SET = 0,
-      RESOURCE_ID = 3,
-    }
-  }
-
-}
-
-export class RbacUpdatePermissionsForRoleRequest extends jspb.Message {
-  getRole(): string;
-  setRole(value: string): RbacUpdatePermissionsForRoleRequest;
-
-  getRemovedList(): Array<RbacUpdatePermissionsForRoleRequest.Item>;
-  setRemovedList(value: Array<RbacUpdatePermissionsForRoleRequest.Item>): RbacUpdatePermissionsForRoleRequest;
-  clearRemovedList(): RbacUpdatePermissionsForRoleRequest;
-  addRemoved(value?: RbacUpdatePermissionsForRoleRequest.Item, index?: number): RbacUpdatePermissionsForRoleRequest.Item;
-
-  getCreatedList(): Array<RbacUpdatePermissionsForRoleRequest.Item>;
-  setCreatedList(value: Array<RbacUpdatePermissionsForRoleRequest.Item>): RbacUpdatePermissionsForRoleRequest;
-  clearCreatedList(): RbacUpdatePermissionsForRoleRequest;
-  addCreated(value?: RbacUpdatePermissionsForRoleRequest.Item, index?: number): RbacUpdatePermissionsForRoleRequest.Item;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RbacUpdatePermissionsForRoleRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: RbacUpdatePermissionsForRoleRequest): RbacUpdatePermissionsForRoleRequest.AsObject;
-  static serializeBinaryToWriter(message: RbacUpdatePermissionsForRoleRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RbacUpdatePermissionsForRoleRequest;
-  static deserializeBinaryFromReader(message: RbacUpdatePermissionsForRoleRequest, reader: jspb.BinaryReader): RbacUpdatePermissionsForRoleRequest;
-}
-
-export namespace RbacUpdatePermissionsForRoleRequest {
-  export type AsObject = {
-    role: string,
-    removedList: Array<RbacUpdatePermissionsForRoleRequest.Item.AsObject>,
-    createdList: Array<RbacUpdatePermissionsForRoleRequest.Item.AsObject>,
-  }
-
-  export class Item extends jspb.Message {
-    getOperation(): string;
-    setOperation(value: string): Item;
-
-    getResourceType(): string;
-    setResourceType(value: string): Item;
-
-    getResourceId(): number;
-    setResourceId(value: number): Item;
-    hasResourceId(): boolean;
-    clearResourceId(): Item;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Item.AsObject;
-    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
-    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Item;
-    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
-  }
-
-  export namespace Item {
-    export type AsObject = {
-      operation: string,
-      resourceType: string,
-      resourceId?: number,
-    }
-
-    export enum ResourceIdCase { 
-      _RESOURCE_ID_NOT_SET = 0,
-      RESOURCE_ID = 3,
-    }
-  }
-
-}
-
-export class RbacGetPermissionsResponse extends jspb.Message {
-  getItemsList(): Array<RbacGetPermissionsResponse.Item>;
-  setItemsList(value: Array<RbacGetPermissionsResponse.Item>): RbacGetPermissionsResponse;
-  clearItemsList(): RbacGetPermissionsResponse;
-  addItems(value?: RbacGetPermissionsResponse.Item, index?: number): RbacGetPermissionsResponse.Item;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RbacGetPermissionsResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: RbacGetPermissionsResponse): RbacGetPermissionsResponse.AsObject;
-  static serializeBinaryToWriter(message: RbacGetPermissionsResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RbacGetPermissionsResponse;
-  static deserializeBinaryFromReader(message: RbacGetPermissionsResponse, reader: jspb.BinaryReader): RbacGetPermissionsResponse;
-}
-
-export namespace RbacGetPermissionsResponse {
-  export type AsObject = {
-    itemsList: Array<RbacGetPermissionsResponse.Item.AsObject>,
+    itemsList: Array<PermissionListResponse.Item.AsObject>,
   }
 
   export class Item extends jspb.Message {
@@ -837,13 +853,10 @@ export namespace RbacGetPermissionsResponse {
     getOperation(): string;
     setOperation(value: string): Item;
 
-    getResourceType(): string;
-    setResourceType(value: string): Item;
-
-    getResourceId(): number;
-    setResourceId(value: number): Item;
-    hasResourceId(): boolean;
-    clearResourceId(): Item;
+    getResource(): ResourceListResponse.Item | undefined;
+    setResource(value?: ResourceListResponse.Item): Item;
+    hasResource(): boolean;
+    clearResource(): Item;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Item.AsObject;
@@ -857,121 +870,79 @@ export namespace RbacGetPermissionsResponse {
     export type AsObject = {
       subject: string,
       operation: string,
-      resourceType: string,
-      resourceId?: number,
-    }
-
-    export enum ResourceIdCase { 
-      _RESOURCE_ID_NOT_SET = 0,
-      RESOURCE_ID = 4,
+      resource?: ResourceListResponse.Item.AsObject,
     }
   }
 
 }
 
-export class RbacRoleForUserRequest extends jspb.Message {
-  getUser(): number;
-  setUser(value: number): RbacRoleForUserRequest;
+export class PermissionsRequest extends jspb.Message {
+  getUser(): string;
+  setUser(value: string): PermissionsRequest;
 
   getRole(): string;
-  setRole(value: string): RbacRoleForUserRequest;
+  setRole(value: string): PermissionsRequest;
+
+  getOperation(): string;
+  setOperation(value: string): PermissionsRequest;
+
+  getResource(): ResourceListResponse.Item | undefined;
+  setResource(value?: ResourceListResponse.Item): PermissionsRequest;
+  hasResource(): boolean;
+  clearResource(): PermissionsRequest;
+
+  getWhoCase(): PermissionsRequest.WhoCase;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RbacRoleForUserRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: RbacRoleForUserRequest): RbacRoleForUserRequest.AsObject;
-  static serializeBinaryToWriter(message: RbacRoleForUserRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RbacRoleForUserRequest;
-  static deserializeBinaryFromReader(message: RbacRoleForUserRequest, reader: jspb.BinaryReader): RbacRoleForUserRequest;
+  toObject(includeInstance?: boolean): PermissionsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: PermissionsRequest): PermissionsRequest.AsObject;
+  static serializeBinaryToWriter(message: PermissionsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PermissionsRequest;
+  static deserializeBinaryFromReader(message: PermissionsRequest, reader: jspb.BinaryReader): PermissionsRequest;
 }
 
-export namespace RbacRoleForUserRequest {
+export namespace PermissionsRequest {
   export type AsObject = {
-    user: number,
+    user: string,
     role: string,
+    operation: string,
+    resource?: ResourceListResponse.Item.AsObject,
+  }
+
+  export enum WhoCase { 
+    WHO_NOT_SET = 0,
+    USER = 1,
+    ROLE = 2,
   }
 }
 
-export class RbacPermissionForUserRequest extends jspb.Message {
-  getUser(): number;
-  setUser(value: number): RbacPermissionForUserRequest;
-
-  getPermission(): RbacGetPermissionsResponse.Item | undefined;
-  setPermission(value?: RbacGetPermissionsResponse.Item): RbacPermissionForUserRequest;
-  hasPermission(): boolean;
-  clearPermission(): RbacPermissionForUserRequest;
+export class ResourceListResponse extends jspb.Message {
+  getItemList(): Array<ResourceListResponse.Item>;
+  setItemList(value: Array<ResourceListResponse.Item>): ResourceListResponse;
+  clearItemList(): ResourceListResponse;
+  addItem(value?: ResourceListResponse.Item, index?: number): ResourceListResponse.Item;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RbacPermissionForUserRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: RbacPermissionForUserRequest): RbacPermissionForUserRequest.AsObject;
-  static serializeBinaryToWriter(message: RbacPermissionForUserRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RbacPermissionForUserRequest;
-  static deserializeBinaryFromReader(message: RbacPermissionForUserRequest, reader: jspb.BinaryReader): RbacPermissionForUserRequest;
+  toObject(includeInstance?: boolean): ResourceListResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ResourceListResponse): ResourceListResponse.AsObject;
+  static serializeBinaryToWriter(message: ResourceListResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ResourceListResponse;
+  static deserializeBinaryFromReader(message: ResourceListResponse, reader: jspb.BinaryReader): ResourceListResponse;
 }
 
-export namespace RbacPermissionForUserRequest {
+export namespace ResourceListResponse {
   export type AsObject = {
-    user: number,
-    permission?: RbacGetPermissionsResponse.Item.AsObject,
-  }
-}
-
-export class RbacPermissionForRoleRequest extends jspb.Message {
-  getRole(): string;
-  setRole(value: string): RbacPermissionForRoleRequest;
-
-  getPermission(): RbacGetPermissionsResponse.Item | undefined;
-  setPermission(value?: RbacGetPermissionsResponse.Item): RbacPermissionForRoleRequest;
-  hasPermission(): boolean;
-  clearPermission(): RbacPermissionForRoleRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RbacPermissionForRoleRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: RbacPermissionForRoleRequest): RbacPermissionForRoleRequest.AsObject;
-  static serializeBinaryToWriter(message: RbacPermissionForRoleRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RbacPermissionForRoleRequest;
-  static deserializeBinaryFromReader(message: RbacPermissionForRoleRequest, reader: jspb.BinaryReader): RbacPermissionForRoleRequest;
-}
-
-export namespace RbacPermissionForRoleRequest {
-  export type AsObject = {
-    role: string,
-    permission?: RbacGetPermissionsResponse.Item.AsObject,
-  }
-}
-
-export class ShorterLinkIndexResponse extends jspb.Message {
-  getItemsList(): Array<ShorterLinkIndexResponse.Item>;
-  setItemsList(value: Array<ShorterLinkIndexResponse.Item>): ShorterLinkIndexResponse;
-  clearItemsList(): ShorterLinkIndexResponse;
-  addItems(value?: ShorterLinkIndexResponse.Item, index?: number): ShorterLinkIndexResponse.Item;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ShorterLinkIndexResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: ShorterLinkIndexResponse): ShorterLinkIndexResponse.AsObject;
-  static serializeBinaryToWriter(message: ShorterLinkIndexResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ShorterLinkIndexResponse;
-  static deserializeBinaryFromReader(message: ShorterLinkIndexResponse, reader: jspb.BinaryReader): ShorterLinkIndexResponse;
-}
-
-export namespace ShorterLinkIndexResponse {
-  export type AsObject = {
-    itemsList: Array<ShorterLinkIndexResponse.Item.AsObject>,
+    itemList: Array<ResourceListResponse.Item.AsObject>,
   }
 
   export class Item extends jspb.Message {
+    getType(): string;
+    setType(value: string): Item;
+
     getId(): number;
     setId(value: number): Item;
-
-    getUrl(): string;
-    setUrl(value: string): Item;
-
-    getDetails(): string;
-    setDetails(value: string): Item;
-
-    getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
-    hasUpdatedAt(): boolean;
-    clearUpdatedAt(): Item;
+    hasId(): boolean;
+    clearId(): Item;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Item.AsObject;
@@ -983,436 +954,13 @@ export namespace ShorterLinkIndexResponse {
 
   export namespace Item {
     export type AsObject = {
-      id: number,
-      url: string,
-      details: string,
-      updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
-  }
-
-}
-
-export class ShorterLinkCreateRequest extends jspb.Message {
-  getUrl(): string;
-  setUrl(value: string): ShorterLinkCreateRequest;
-
-  getDetails(): string;
-  setDetails(value: string): ShorterLinkCreateRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ShorterLinkCreateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: ShorterLinkCreateRequest): ShorterLinkCreateRequest.AsObject;
-  static serializeBinaryToWriter(message: ShorterLinkCreateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ShorterLinkCreateRequest;
-  static deserializeBinaryFromReader(message: ShorterLinkCreateRequest, reader: jspb.BinaryReader): ShorterLinkCreateRequest;
-}
-
-export namespace ShorterLinkCreateRequest {
-  export type AsObject = {
-    url: string,
-    details: string,
-  }
-}
-
-export class ShorterLinkUpdateRequest extends jspb.Message {
-  getId(): number;
-  setId(value: number): ShorterLinkUpdateRequest;
-
-  getUrl(): string;
-  setUrl(value: string): ShorterLinkUpdateRequest;
-
-  getDetails(): string;
-  setDetails(value: string): ShorterLinkUpdateRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ShorterLinkUpdateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: ShorterLinkUpdateRequest): ShorterLinkUpdateRequest.AsObject;
-  static serializeBinaryToWriter(message: ShorterLinkUpdateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ShorterLinkUpdateRequest;
-  static deserializeBinaryFromReader(message: ShorterLinkUpdateRequest, reader: jspb.BinaryReader): ShorterLinkUpdateRequest;
-}
-
-export namespace ShorterLinkUpdateRequest {
-  export type AsObject = {
-    id: number,
-    url: string,
-    details: string,
-  }
-}
-
-export class TagIndexResponse extends jspb.Message {
-  getItemsList(): Array<TagIndexResponse.Item>;
-  setItemsList(value: Array<TagIndexResponse.Item>): TagIndexResponse;
-  clearItemsList(): TagIndexResponse;
-  addItems(value?: TagIndexResponse.Item, index?: number): TagIndexResponse.Item;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TagIndexResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: TagIndexResponse): TagIndexResponse.AsObject;
-  static serializeBinaryToWriter(message: TagIndexResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TagIndexResponse;
-  static deserializeBinaryFromReader(message: TagIndexResponse, reader: jspb.BinaryReader): TagIndexResponse;
-}
-
-export namespace TagIndexResponse {
-  export type AsObject = {
-    itemsList: Array<TagIndexResponse.Item.AsObject>,
-  }
-
-  export class Item extends jspb.Message {
-    getId(): number;
-    setId(value: number): Item;
-
-    getLang(): string;
-    setLang(value: string): Item;
-
-    getName(): string;
-    setName(value: string): Item;
-
-    getPriority(): number;
-    setPriority(value: number): Item;
-
-    getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
-    hasUpdatedAt(): boolean;
-    clearUpdatedAt(): Item;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Item.AsObject;
-    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
-    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Item;
-    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
-  }
-
-  export namespace Item {
-    export type AsObject = {
-      id: number,
-      lang: string,
-      name: string,
-      priority: number,
-      updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
-  }
-
-}
-
-export class TagCreateRequest extends jspb.Message {
-  getLang(): string;
-  setLang(value: string): TagCreateRequest;
-
-  getName(): string;
-  setName(value: string): TagCreateRequest;
-
-  getPriority(): number;
-  setPriority(value: number): TagCreateRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TagCreateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: TagCreateRequest): TagCreateRequest.AsObject;
-  static serializeBinaryToWriter(message: TagCreateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TagCreateRequest;
-  static deserializeBinaryFromReader(message: TagCreateRequest, reader: jspb.BinaryReader): TagCreateRequest;
-}
-
-export namespace TagCreateRequest {
-  export type AsObject = {
-    lang: string,
-    name: string,
-    priority: number,
-  }
-}
-
-export class TagUpdateRequest extends jspb.Message {
-  getId(): number;
-  setId(value: number): TagUpdateRequest;
-
-  getName(): string;
-  setName(value: string): TagUpdateRequest;
-
-  getPriority(): number;
-  setPriority(value: number): TagUpdateRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TagUpdateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: TagUpdateRequest): TagUpdateRequest.AsObject;
-  static serializeBinaryToWriter(message: TagUpdateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TagUpdateRequest;
-  static deserializeBinaryFromReader(message: TagUpdateRequest, reader: jspb.BinaryReader): TagUpdateRequest;
-}
-
-export namespace TagUpdateRequest {
-  export type AsObject = {
-    id: number,
-    name: string,
-    priority: number,
-  }
-}
-
-export class CategoryIndexResponse extends jspb.Message {
-  getItemsList(): Array<CategoryIndexResponse.Item>;
-  setItemsList(value: Array<CategoryIndexResponse.Item>): CategoryIndexResponse;
-  clearItemsList(): CategoryIndexResponse;
-  addItems(value?: CategoryIndexResponse.Item, index?: number): CategoryIndexResponse.Item;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CategoryIndexResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: CategoryIndexResponse): CategoryIndexResponse.AsObject;
-  static serializeBinaryToWriter(message: CategoryIndexResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CategoryIndexResponse;
-  static deserializeBinaryFromReader(message: CategoryIndexResponse, reader: jspb.BinaryReader): CategoryIndexResponse;
-}
-
-export namespace CategoryIndexResponse {
-  export type AsObject = {
-    itemsList: Array<CategoryIndexResponse.Item.AsObject>,
-  }
-
-  export class Item extends jspb.Message {
-    getId(): number;
-    setId(value: number): Item;
-
-    getLang(): string;
-    setLang(value: string): Item;
-
-    getName(): string;
-    setName(value: string): Item;
-
-    getParentId(): number;
-    setParentId(value: number): Item;
-    hasParentId(): boolean;
-    clearParentId(): Item;
-
-    getPriority(): number;
-    setPriority(value: number): Item;
-
-    getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
-    hasUpdatedAt(): boolean;
-    clearUpdatedAt(): Item;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Item.AsObject;
-    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
-    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Item;
-    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
-  }
-
-  export namespace Item {
-    export type AsObject = {
-      id: number,
-      lang: string,
-      name: string,
-      parentId?: number,
-      priority: number,
-      updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      type: string,
+      id?: number,
     }
 
-    export enum ParentIdCase { 
-      _PARENT_ID_NOT_SET = 0,
-      PARENT_ID = 4,
-    }
-  }
-
-}
-
-export class CategoryCreateRequest extends jspb.Message {
-  getLang(): string;
-  setLang(value: string): CategoryCreateRequest;
-
-  getName(): string;
-  setName(value: string): CategoryCreateRequest;
-
-  getParentId(): number;
-  setParentId(value: number): CategoryCreateRequest;
-  hasParentId(): boolean;
-  clearParentId(): CategoryCreateRequest;
-
-  getPriority(): number;
-  setPriority(value: number): CategoryCreateRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CategoryCreateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: CategoryCreateRequest): CategoryCreateRequest.AsObject;
-  static serializeBinaryToWriter(message: CategoryCreateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CategoryCreateRequest;
-  static deserializeBinaryFromReader(message: CategoryCreateRequest, reader: jspb.BinaryReader): CategoryCreateRequest;
-}
-
-export namespace CategoryCreateRequest {
-  export type AsObject = {
-    lang: string,
-    name: string,
-    parentId?: number,
-    priority: number,
-  }
-
-  export enum ParentIdCase { 
-    _PARENT_ID_NOT_SET = 0,
-    PARENT_ID = 3,
-  }
-}
-
-export class CategoryUpdateRequest extends jspb.Message {
-  getId(): number;
-  setId(value: number): CategoryUpdateRequest;
-
-  getName(): string;
-  setName(value: string): CategoryUpdateRequest;
-
-  getParentId(): number;
-  setParentId(value: number): CategoryUpdateRequest;
-  hasParentId(): boolean;
-  clearParentId(): CategoryUpdateRequest;
-
-  getPriority(): number;
-  setPriority(value: number): CategoryUpdateRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CategoryUpdateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: CategoryUpdateRequest): CategoryUpdateRequest.AsObject;
-  static serializeBinaryToWriter(message: CategoryUpdateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CategoryUpdateRequest;
-  static deserializeBinaryFromReader(message: CategoryUpdateRequest, reader: jspb.BinaryReader): CategoryUpdateRequest;
-}
-
-export namespace CategoryUpdateRequest {
-  export type AsObject = {
-    id: number,
-    name: string,
-    parentId?: number,
-    priority: number,
-  }
-
-  export enum ParentIdCase { 
-    _PARENT_ID_NOT_SET = 0,
-    PARENT_ID = 3,
-  }
-}
-
-export class AttachemtShowRequest extends jspb.Message {
-  getId(): number;
-  setId(value: number): AttachemtShowRequest;
-
-  getTtl(): google_protobuf_duration_pb.Duration | undefined;
-  setTtl(value?: google_protobuf_duration_pb.Duration): AttachemtShowRequest;
-  hasTtl(): boolean;
-  clearTtl(): AttachemtShowRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AttachemtShowRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: AttachemtShowRequest): AttachemtShowRequest.AsObject;
-  static serializeBinaryToWriter(message: AttachemtShowRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AttachemtShowRequest;
-  static deserializeBinaryFromReader(message: AttachemtShowRequest, reader: jspb.BinaryReader): AttachemtShowRequest;
-}
-
-export namespace AttachemtShowRequest {
-  export type AsObject = {
-    id: number,
-    ttl?: google_protobuf_duration_pb.Duration.AsObject,
-  }
-}
-
-export class AttachemtShowResponse extends jspb.Message {
-  getItem(): AttachmetIndexResponse.Item | undefined;
-  setItem(value?: AttachmetIndexResponse.Item): AttachemtShowResponse;
-  hasItem(): boolean;
-  clearItem(): AttachemtShowResponse;
-
-  getUrl(): string;
-  setUrl(value: string): AttachemtShowResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AttachemtShowResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: AttachemtShowResponse): AttachemtShowResponse.AsObject;
-  static serializeBinaryToWriter(message: AttachemtShowResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AttachemtShowResponse;
-  static deserializeBinaryFromReader(message: AttachemtShowResponse, reader: jspb.BinaryReader): AttachemtShowResponse;
-}
-
-export namespace AttachemtShowResponse {
-  export type AsObject = {
-    item?: AttachmetIndexResponse.Item.AsObject,
-    url: string,
-  }
-}
-
-export class AttachmetIndexResponse extends jspb.Message {
-  getItemsList(): Array<AttachmetIndexResponse.Item>;
-  setItemsList(value: Array<AttachmetIndexResponse.Item>): AttachmetIndexResponse;
-  clearItemsList(): AttachmetIndexResponse;
-  addItems(value?: AttachmetIndexResponse.Item, index?: number): AttachmetIndexResponse.Item;
-
-  getPagination(): Pagination | undefined;
-  setPagination(value?: Pagination): AttachmetIndexResponse;
-  hasPagination(): boolean;
-  clearPagination(): AttachmetIndexResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AttachmetIndexResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: AttachmetIndexResponse): AttachmetIndexResponse.AsObject;
-  static serializeBinaryToWriter(message: AttachmetIndexResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AttachmetIndexResponse;
-  static deserializeBinaryFromReader(message: AttachmetIndexResponse, reader: jspb.BinaryReader): AttachmetIndexResponse;
-}
-
-export namespace AttachmetIndexResponse {
-  export type AsObject = {
-    itemsList: Array<AttachmetIndexResponse.Item.AsObject>,
-    pagination?: Pagination.AsObject,
-  }
-
-  export class Item extends jspb.Message {
-    getId(): number;
-    setId(value: number): Item;
-
-    getBucket(): string;
-    setBucket(value: string): Item;
-
-    getName(): string;
-    setName(value: string): Item;
-
-    getTitle(): string;
-    setTitle(value: string): Item;
-
-    getSize(): number;
-    setSize(value: number): Item;
-
-    getContentType(): string;
-    setContentType(value: string): Item;
-
-    getRegion(): string;
-    setRegion(value: string): Item;
-
-    getStatus(): string;
-    setStatus(value: string): Item;
-
-    getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
-    hasUpdatedAt(): boolean;
-    clearUpdatedAt(): Item;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Item.AsObject;
-    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
-    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Item;
-    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
-  }
-
-  export namespace Item {
-    export type AsObject = {
-      id: number,
-      bucket: string,
-      name: string,
-      title: string,
-      size: number,
-      contentType: string,
-      region: string,
-      status: string,
-      updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    export enum IdCase { 
+      _ID_NOT_SET = 0,
+      ID = 2,
     }
   }
 
@@ -1526,94 +1074,6 @@ export namespace LocaleSetRequest {
     lang: string,
     code: string,
     message: string,
-  }
-}
-
-export class SettingGetResponse extends jspb.Message {
-  getValue(): Uint8Array | string;
-  getValue_asU8(): Uint8Array;
-  getValue_asB64(): string;
-  setValue(value: Uint8Array | string): SettingGetResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SettingGetResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: SettingGetResponse): SettingGetResponse.AsObject;
-  static serializeBinaryToWriter(message: SettingGetResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SettingGetResponse;
-  static deserializeBinaryFromReader(message: SettingGetResponse, reader: jspb.BinaryReader): SettingGetResponse;
-}
-
-export namespace SettingGetResponse {
-  export type AsObject = {
-    value: Uint8Array | string,
-  }
-}
-
-export class SettingGetRequest extends jspb.Message {
-  getUser(): number;
-  setUser(value: number): SettingGetRequest;
-  hasUser(): boolean;
-  clearUser(): SettingGetRequest;
-
-  getKey(): string;
-  setKey(value: string): SettingGetRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SettingGetRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: SettingGetRequest): SettingGetRequest.AsObject;
-  static serializeBinaryToWriter(message: SettingGetRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SettingGetRequest;
-  static deserializeBinaryFromReader(message: SettingGetRequest, reader: jspb.BinaryReader): SettingGetRequest;
-}
-
-export namespace SettingGetRequest {
-  export type AsObject = {
-    user?: number,
-    key: string,
-  }
-
-  export enum UserCase { 
-    _USER_NOT_SET = 0,
-    USER = 1,
-  }
-}
-
-export class SettingSetRequest extends jspb.Message {
-  getUser(): number;
-  setUser(value: number): SettingSetRequest;
-  hasUser(): boolean;
-  clearUser(): SettingSetRequest;
-
-  getKey(): string;
-  setKey(value: string): SettingSetRequest;
-
-  getValue(): Uint8Array | string;
-  getValue_asU8(): Uint8Array;
-  getValue_asB64(): string;
-  setValue(value: Uint8Array | string): SettingSetRequest;
-
-  getEncrypt(): boolean;
-  setEncrypt(value: boolean): SettingSetRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SettingSetRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: SettingSetRequest): SettingSetRequest.AsObject;
-  static serializeBinaryToWriter(message: SettingSetRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SettingSetRequest;
-  static deserializeBinaryFromReader(message: SettingSetRequest, reader: jspb.BinaryReader): SettingSetRequest;
-}
-
-export namespace SettingSetRequest {
-  export type AsObject = {
-    user?: number,
-    key: string,
-    value: Uint8Array | string,
-    encrypt: boolean,
-  }
-
-  export enum UserCase { 
-    _USER_NOT_SET = 0,
-    USER = 1,
   }
 }
 
@@ -1933,212 +1393,6 @@ export namespace SiteIndexLeaveWordResponse {
       ip: string,
       body: string,
       createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
-  }
-
-}
-
-export class SiteInstallRequest extends jspb.Message {
-  getUser(): UserSignUpRequest | undefined;
-  setUser(value?: UserSignUpRequest): SiteInstallRequest;
-  hasUser(): boolean;
-  clearUser(): SiteInstallRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SiteInstallRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: SiteInstallRequest): SiteInstallRequest.AsObject;
-  static serializeBinaryToWriter(message: SiteInstallRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SiteInstallRequest;
-  static deserializeBinaryFromReader(message: SiteInstallRequest, reader: jspb.BinaryReader): SiteInstallRequest;
-}
-
-export namespace SiteInstallRequest {
-  export type AsObject = {
-    user?: UserSignUpRequest.AsObject,
-  }
-}
-
-export class SiteSetUserPasswordRequest extends jspb.Message {
-  getUser(): number;
-  setUser(value: number): SiteSetUserPasswordRequest;
-
-  getPassword(): string;
-  setPassword(value: string): SiteSetUserPasswordRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SiteSetUserPasswordRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: SiteSetUserPasswordRequest): SiteSetUserPasswordRequest.AsObject;
-  static serializeBinaryToWriter(message: SiteSetUserPasswordRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SiteSetUserPasswordRequest;
-  static deserializeBinaryFromReader(message: SiteSetUserPasswordRequest, reader: jspb.BinaryReader): SiteSetUserPasswordRequest;
-}
-
-export namespace SiteSetUserPasswordRequest {
-  export type AsObject = {
-    user: number,
-    password: string,
-  }
-}
-
-export class SiteUserIndexResponse extends jspb.Message {
-  getItemsList(): Array<SiteUserIndexResponse.Item>;
-  setItemsList(value: Array<SiteUserIndexResponse.Item>): SiteUserIndexResponse;
-  clearItemsList(): SiteUserIndexResponse;
-  addItems(value?: SiteUserIndexResponse.Item, index?: number): SiteUserIndexResponse.Item;
-
-  getPagination(): Pagination | undefined;
-  setPagination(value?: Pagination): SiteUserIndexResponse;
-  hasPagination(): boolean;
-  clearPagination(): SiteUserIndexResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SiteUserIndexResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: SiteUserIndexResponse): SiteUserIndexResponse.AsObject;
-  static serializeBinaryToWriter(message: SiteUserIndexResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SiteUserIndexResponse;
-  static deserializeBinaryFromReader(message: SiteUserIndexResponse, reader: jspb.BinaryReader): SiteUserIndexResponse;
-}
-
-export namespace SiteUserIndexResponse {
-  export type AsObject = {
-    itemsList: Array<SiteUserIndexResponse.Item.AsObject>,
-    pagination?: Pagination.AsObject,
-  }
-
-  export class Item extends jspb.Message {
-    getId(): number;
-    setId(value: number): Item;
-
-    getUid(): string;
-    setUid(value: string): Item;
-
-    getEmail(): string;
-    setEmail(value: string): Item;
-
-    getNickName(): string;
-    setNickName(value: string): Item;
-
-    getRealName(): string;
-    setRealName(value: string): Item;
-
-    getProviderType(): string;
-    setProviderType(value: string): Item;
-
-    getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
-    hasUpdatedAt(): boolean;
-    clearUpdatedAt(): Item;
-
-    getLastSignInAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setLastSignInAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
-    hasLastSignInAt(): boolean;
-    clearLastSignInAt(): Item;
-
-    getLastSignInIp(): string;
-    setLastSignInIp(value: string): Item;
-    hasLastSignInIp(): boolean;
-    clearLastSignInIp(): Item;
-
-    getCurrentSignInAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setCurrentSignInAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
-    hasCurrentSignInAt(): boolean;
-    clearCurrentSignInAt(): Item;
-
-    getCurrentSignInIp(): string;
-    setCurrentSignInIp(value: string): Item;
-    hasCurrentSignInIp(): boolean;
-    clearCurrentSignInIp(): Item;
-
-    getSignInCount(): number;
-    setSignInCount(value: number): Item;
-
-    getLang(): string;
-    setLang(value: string): Item;
-
-    getTimeZone(): string;
-    setTimeZone(value: string): Item;
-
-    getAvatar(): string;
-    setAvatar(value: string): Item;
-
-    getConfirmedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setConfirmedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
-    hasConfirmedAt(): boolean;
-    clearConfirmedAt(): Item;
-
-    getLockedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setLockedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
-    hasLockedAt(): boolean;
-    clearLockedAt(): Item;
-
-    getDeletedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setDeletedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
-    hasDeletedAt(): boolean;
-    clearDeletedAt(): Item;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Item.AsObject;
-    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
-    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Item;
-    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
-  }
-
-  export namespace Item {
-    export type AsObject = {
-      id: number,
-      uid: string,
-      email: string,
-      nickName: string,
-      realName: string,
-      providerType: string,
-      updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      lastSignInAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      lastSignInIp?: string,
-      currentSignInAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      currentSignInIp?: string,
-      signInCount: number,
-      lang: string,
-      timeZone: string,
-      avatar: string,
-      confirmedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      lockedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      deletedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
-
-    export enum LastSignInAtCase { 
-      _LAST_SIGN_IN_AT_NOT_SET = 0,
-      LAST_SIGN_IN_AT = 11,
-    }
-
-    export enum LastSignInIpCase { 
-      _LAST_SIGN_IN_IP_NOT_SET = 0,
-      LAST_SIGN_IN_IP = 12,
-    }
-
-    export enum CurrentSignInAtCase { 
-      _CURRENT_SIGN_IN_AT_NOT_SET = 0,
-      CURRENT_SIGN_IN_AT = 13,
-    }
-
-    export enum CurrentSignInIpCase { 
-      _CURRENT_SIGN_IN_IP_NOT_SET = 0,
-      CURRENT_SIGN_IN_IP = 14,
-    }
-
-    export enum ConfirmedAtCase { 
-      _CONFIRMED_AT_NOT_SET = 0,
-      CONFIRMED_AT = 27,
-    }
-
-    export enum LockedAtCase { 
-      _LOCKED_AT_NOT_SET = 0,
-      LOCKED_AT = 28,
-    }
-
-    export enum DeletedAtCase { 
-      _DELETED_AT_NOT_SET = 0,
-      DELETED_AT = 29,
     }
   }
 
@@ -2697,3 +1951,7 @@ export namespace SiteStatusResponse {
 
 }
 
+export enum Role { 
+  ROOT = 0,
+  ADMINISTRATOR = 1,
+}

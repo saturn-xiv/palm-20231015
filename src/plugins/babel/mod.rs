@@ -1,3 +1,4 @@
+pub mod chinese;
 pub mod pali;
 pub mod sanskrit;
 pub mod tibetan;

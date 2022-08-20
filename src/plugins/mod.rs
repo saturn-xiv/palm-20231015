@@ -1,7 +1,9 @@
+pub mod auth;
 pub mod babel;
 pub mod cms;
 pub mod forum;
 pub mod mall;
 pub mod nut;
 pub mod ops;
+pub mod rbac;
 pub mod twilio;

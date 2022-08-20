@@ -1,5 +1,5 @@
 syntax = "proto3";
 option java_multiple_files = true;
-package palm.plugins.mall.v1;
+package palm.plugins.cscd.v1;
 
-service Sku {}
+service Section {}

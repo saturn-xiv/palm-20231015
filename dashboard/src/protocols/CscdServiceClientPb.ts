@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for palm.plugins.mall.v1
+ * @fileoverview gRPC-Web generated client stub for palm.plugins.cscd.v1
  * @enhanceable
  * @public
  */
@@ -15,7 +15,7 @@ import * as grpcWeb from 'grpc-web';
 
 
 
-export class SkuClient {
+export class SectionClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;
   credentials_: null | { [index: string]: string; };

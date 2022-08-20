@@ -74,6 +74,51 @@ diesel::table! {
 }
 
 diesel::table! {
+    permissions (id) {
+        id -> Int4,
+        role -> Varchar,
+        operation -> Varchar,
+        resource_type -> Varchar,
+        resource_id -> Nullable<Int4>,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    roles (id) {
+        id -> Int4,
+        code -> Varchar,
+        parent -> Nullable<Varchar>,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    roles_constraints (id) {
+        id -> Int4,
+        x -> Varchar,
+        term -> Varchar,
+        y -> Varchar,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    roles_users (id) {
+        id -> Int4,
+        role -> Varchar,
+        user -> Int4,
+        nbf -> Date,
+        exp -> Date,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     shorter_links (id) {
         id -> Int4,
         url -> Varchar,
@@ -181,6 +226,10 @@ diesel::allow_tables_to_appear_in_same_query!(
     categories_resources,
     leave_words,
     logs,
+    permissions,
+    roles,
+    roles_constraints,
+    roles_users,
     shorter_links,
     tags,
     tags_resources,
