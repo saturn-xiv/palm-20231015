@@ -25,6 +25,9 @@ build_ubuntu_backend() {
     then
         local CC=gcc
         local CXX=g++
+
+        # FIXME: local PQ_LIB_STATIC=1
+        local PKG_CONFIG_ALL_STATIC=1
         
         local target="x86_64-unknown-linux-gnu"
         clean_palm_cache $target
@@ -33,6 +36,7 @@ build_ubuntu_backend() {
     elif [ "$1" = "armhf" ]
     then
         local PKG_CONFIG_ALLOW_CROSS=1
+        local PKG_CONFIG_ALL_STATIC=1
         local PKG_CONFIG_DIR=
         local PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig
 
@@ -48,6 +52,7 @@ build_ubuntu_backend() {
     elif [ "$1" = "arm64" ]
     then
         local PKG_CONFIG_ALLOW_CROSS=1
+        local PKG_CONFIG_ALL_STATIC=1
         local PKG_CONFIG_DIR=
         local PKG_CONFIG_LIBDIR=/usr/lib/aarch64-linux-gnu/pkgconfig
         

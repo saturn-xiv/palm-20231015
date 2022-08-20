@@ -12,10 +12,9 @@ use super::super::{
 };
 
 pub async fn launch(cfg: &Config, name: &str) -> Result<()> {
-    let mut buf = [0u8; (1 << 8)];
     let id = format!(
         "{}-{}",
-        nix::unistd::gethostname(&mut buf)?.to_str()?,
+        nix::unistd::gethostname()?.to_str().unwrap_or_default(),
         nix::unistd::getpid()
     );
     let queue = cfg.rabbitmq.open();

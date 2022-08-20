@@ -12,7 +12,7 @@ A total free education &amp; translation &amp; ops solution.
   # for archlinux
   sudo pacman -S ttf-dejavu
   # for ubuntu
-  sudo apt install ttf-dejavu
+  sudo apt install fonts-dejavu
   # for alpine
   sudo apk add ttf-dejavu
   ```
