@@ -94,7 +94,7 @@ build_tar(){
 
 # -----------------------------------------------------------------------------
 
-build_dashboard
+# build_dashboard
 
 if [[ $ID == "ubuntu" ]]
 then

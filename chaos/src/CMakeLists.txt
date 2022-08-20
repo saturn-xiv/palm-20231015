@@ -1,8 +1,3 @@
-set(Boost_USE_STATIC_LIBS ON)
-find_package(Boost REQUIRED
-  log log_setup date_time chrono timer json system iostreams program_options unit_test_framework
-)
-
 file(GLOB HEADER_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/include/palm/*.hpp")
 file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.cpp")
 

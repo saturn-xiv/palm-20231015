@@ -32,7 +32,7 @@
 #include <boost/type_index.hpp>
 
 #define TOML_EXCEPTIONS 1
-#include <toml.h>
+#include <toml.hpp>
 
 #include <nlohmann/json.hpp>
 
