@@ -4,8 +4,8 @@
   "private": true,
   "homepage": "/my",
   "dependencies": {
-    "@ant-design/pro-components": "^1.1.15",
-    "@reduxjs/toolkit": "^1.8.3",
+    "@ant-design/pro-components": "^1.1.17",
+    "@reduxjs/toolkit": "^1.8.4",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -17,10 +17,10 @@
     "@types/react-color": "^3.0.6",
     "@types/react-copy-to-clipboard": "^5.0.4",
     "@types/react-dom": "^18.0.0",
-    "antd": "^4.22.3",
-    "dayjs": "^1.11.4",
+    "antd": "^4.22.6",
+    "dayjs": "^1.11.5",
     "dinero.js": "^2.0.0-alpha.8",
-    "emoji-mart": "^5.2.0",
+    "emoji-mart": "^5.2.1",
     "filesize": "^9.0.11",
     "google-map-react": "^2.2.0",
     "google-protobuf": "^3.21.0",
@@ -45,7 +45,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "timezones-list": "^3.0.1",
     "typescript": "^4.4.2",
-    "video.js": "^7.20.1",
+    "video.js": "^7.20.2",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
