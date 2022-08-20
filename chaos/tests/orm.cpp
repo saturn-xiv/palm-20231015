@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_CASE(postgresql_toml) {
     auto it = cfg.password();
     BOOST_CHECK_EQUAL(it.value(), "secret");
   }
-  BOOST_CHECK_EQUAL(cfg.timeout(), std::chrono::seconds(8));
+  BOOST_CHECK_EQUAL(cfg.timeout().count(), 8);
   BOOST_CHECK_NE(cfg.pool_size(), 32);
 }
 

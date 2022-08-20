@@ -2,9 +2,6 @@
 
 #include "palm/utils.hpp"
 
-#include <amqpcpp.h>
-#include <amqpcpp/libboostasio.h>
-
 namespace palm {
 /**
  *
@@ -22,7 +19,7 @@ class Config {
         _password("guest") {}
   Config(const toml::table& config);
 
-  inline AMQP::Address address() const {
+  inline std::string address() const {
     std::stringstream ss;
     ss << "amqp://" << this->_user << ":" << this->_password << "@"
        << this->_host << ":" << this->_port << "/" << this->_virtual_host;

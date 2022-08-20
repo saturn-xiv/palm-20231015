@@ -10,6 +10,7 @@
 #include <iomanip>
 #include <iostream>
 #include <memory>
+#include <numeric>
 #include <optional>
 #include <random>
 #include <sstream>
@@ -24,7 +25,6 @@
 #include <boost/asio/deadline_timer.hpp>
 #include <boost/asio/io_service.hpp>
 #include <boost/asio/strand.hpp>
-#include <boost/date_time/gregorian/formatters.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/log/trivial.hpp>
@@ -32,7 +32,7 @@
 #include <boost/type_index.hpp>
 
 #define TOML_EXCEPTIONS 1
-#include <toml.hpp>
+#include <toml.h>
 
 #include <nlohmann/json.hpp>
 

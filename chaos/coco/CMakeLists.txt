@@ -11,6 +11,6 @@ target_include_directories(coco PUBLIC
 
 target_link_libraries(coco PUBLIC 
   dl crypt m 
-  gRPC::grpc++
+  gRPC::grpc++ gRPC::grpc++_reflection
 )
 

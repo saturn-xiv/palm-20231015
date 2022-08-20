@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.22)
 include(ExternalProject)
 include(FetchContent)
 
@@ -13,9 +13,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
-
+set(CMAKE_EXE_LINKER_FLAGS "--ld-path=ld.lld -Wl,--build-id=sha1")
 # --------------------------------------------------------
 execute_process(COMMAND git describe --tags --always --dirty
     OUTPUT_VARIABLE GIT_REV
@@ -25,6 +23,8 @@ string(STRIP "${GIT_REV}" GIT_REV)
 string(TIMESTAMP BUILD_TIME UTC)
 configure_file(include/palm/version.h.in ${PROJECT_SOURCE_DIR}/include/palm/version.hpp)
 # --------------------------------------------------------
+
+include(third.cmake)
 
 add_subdirectory(coco)
 add_subdirectory(src)
