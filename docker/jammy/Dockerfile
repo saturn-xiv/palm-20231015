@@ -31,7 +31,7 @@ RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     nginx rabbitmq-server redis postgresql mariadb-server
 
 # https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
-RUN add-apt-repository ppa:ubuntu-toolchain-r/test
+RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 ENV GCC_VERSION 12
 RUN apt install -y g++-${GCC_VERSION} g++-${GCC_VERSION}-aarch64-linux-gnu g++-${GCC_VERSION}-arm-linux-gnueabihf
 

@@ -8,9 +8,11 @@ RUN apk add perl vim curl bash zsh sudo pwgen openssl git tmux \
     clang llvm lld clang-extra-tools \
     nodejs npm yarn \
     ttf-dejavu \
-    libudev-zero-dev yaml-cpp-dev pugixml-dev openssl-dev \
+    libudev-zero-dev yaml-cpp-dev pugixml-dev cppcodec \
+    openssl-dev curl-dev \
     postgresql-dev mariadb-dev sqlite-dev mongo-c-driver-dev hiredis-dev \
-    poco-dev boost-dev grpc-dev protobuf-dev rabbitmq-c-dev czmq-dev
+    poco-dev boost-dev boost-static rabbitmq-c-dev czmq-dev re2-dev \
+    grpc-dev protobuf-dev c-ares-dev
 
 RUN mkdir -p $HOME/downloads $HOME/local $HOME/tmp
 

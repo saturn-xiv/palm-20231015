@@ -12,7 +12,7 @@ RUN apt -y install zsh locales locales-all \
     build-essential binutils cpio \
     debhelper bison flex ninja-build \
     python3 python3-distutils python3-dev python3-pip \
-    mercurial git cvs bazaar rsync subversion \
+    mercurial git cvs brz rsync subversion \
     libncurses-dev
 
 RUN apt -y autoremove
