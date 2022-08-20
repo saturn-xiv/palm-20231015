@@ -16,258 +16,276 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
 namespace palm {
 namespace plugins {
 namespace rbac {
 namespace v1 {
-constexpr UserRequest::UserRequest(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : nick_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+PROTOBUF_CONSTEXPR UserRequest::UserRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.nick_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct UserRequestDefaultTypeInternal {
-  constexpr UserRequestDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR UserRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~UserRequestDefaultTypeInternal() {}
   union {
     UserRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserRequestDefaultTypeInternal _UserRequest_default_instance_;
-constexpr UserListResponse_Item::UserListResponse_Item(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : nick_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , real_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserRequestDefaultTypeInternal _UserRequest_default_instance_;
+PROTOBUF_CONSTEXPR UserListResponse_Item::UserListResponse_Item(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.nick_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.real_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct UserListResponse_ItemDefaultTypeInternal {
-  constexpr UserListResponse_ItemDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR UserListResponse_ItemDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~UserListResponse_ItemDefaultTypeInternal() {}
   union {
     UserListResponse_Item _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserListResponse_ItemDefaultTypeInternal _UserListResponse_Item_default_instance_;
-constexpr UserListResponse::UserListResponse(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : items_(){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserListResponse_ItemDefaultTypeInternal _UserListResponse_Item_default_instance_;
+PROTOBUF_CONSTEXPR UserListResponse::UserListResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.items_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct UserListResponseDefaultTypeInternal {
-  constexpr UserListResponseDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR UserListResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~UserListResponseDefaultTypeInternal() {}
   union {
     UserListResponse _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserListResponseDefaultTypeInternal _UserListResponse_default_instance_;
-constexpr RoleRequest::RoleRequest(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : code_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserListResponseDefaultTypeInternal _UserListResponse_default_instance_;
+PROTOBUF_CONSTEXPR RoleRequest::RoleRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.code_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RoleRequestDefaultTypeInternal {
-  constexpr RoleRequestDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RoleRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RoleRequestDefaultTypeInternal() {}
   union {
     RoleRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT RoleRequestDefaultTypeInternal _RoleRequest_default_instance_;
-constexpr RoleListResponse_Item::RoleListResponse_Item(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : code_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RoleRequestDefaultTypeInternal _RoleRequest_default_instance_;
+PROTOBUF_CONSTEXPR RoleListResponse_Item::RoleListResponse_Item(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.code_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RoleListResponse_ItemDefaultTypeInternal {
-  constexpr RoleListResponse_ItemDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RoleListResponse_ItemDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RoleListResponse_ItemDefaultTypeInternal() {}
   union {
     RoleListResponse_Item _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT RoleListResponse_ItemDefaultTypeInternal _RoleListResponse_Item_default_instance_;
-constexpr RoleListResponse::RoleListResponse(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : items_(){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RoleListResponse_ItemDefaultTypeInternal _RoleListResponse_Item_default_instance_;
+PROTOBUF_CONSTEXPR RoleListResponse::RoleListResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.items_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RoleListResponseDefaultTypeInternal {
-  constexpr RoleListResponseDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RoleListResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RoleListResponseDefaultTypeInternal() {}
   union {
     RoleListResponse _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT RoleListResponseDefaultTypeInternal _RoleListResponse_default_instance_;
-constexpr RolesForUserRequest::RolesForUserRequest(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : roles_()
-  , user_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RoleListResponseDefaultTypeInternal _RoleListResponse_default_instance_;
+PROTOBUF_CONSTEXPR RolesForUserRequest::RolesForUserRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.roles_)*/{}
+  , /*decltype(_impl_.user_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RolesForUserRequestDefaultTypeInternal {
-  constexpr RolesForUserRequestDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RolesForUserRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RolesForUserRequestDefaultTypeInternal() {}
   union {
     RolesForUserRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT RolesForUserRequestDefaultTypeInternal _RolesForUserRequest_default_instance_;
-constexpr PermissionListResponse_Item::PermissionListResponse_Item(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : subject_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , operation_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , resource_(nullptr){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RolesForUserRequestDefaultTypeInternal _RolesForUserRequest_default_instance_;
+PROTOBUF_CONSTEXPR PermissionListResponse_Item::PermissionListResponse_Item(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.subject_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.operation_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.resource_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct PermissionListResponse_ItemDefaultTypeInternal {
-  constexpr PermissionListResponse_ItemDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR PermissionListResponse_ItemDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~PermissionListResponse_ItemDefaultTypeInternal() {}
   union {
     PermissionListResponse_Item _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PermissionListResponse_ItemDefaultTypeInternal _PermissionListResponse_Item_default_instance_;
-constexpr PermissionListResponse::PermissionListResponse(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : items_(){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PermissionListResponse_ItemDefaultTypeInternal _PermissionListResponse_Item_default_instance_;
+PROTOBUF_CONSTEXPR PermissionListResponse::PermissionListResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.items_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct PermissionListResponseDefaultTypeInternal {
-  constexpr PermissionListResponseDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR PermissionListResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~PermissionListResponseDefaultTypeInternal() {}
   union {
     PermissionListResponse _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PermissionListResponseDefaultTypeInternal _PermissionListResponse_default_instance_;
-constexpr PermissionsRequest::PermissionsRequest(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : operation_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , resource_(nullptr)
-  , _oneof_case_{}{}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PermissionListResponseDefaultTypeInternal _PermissionListResponse_default_instance_;
+PROTOBUF_CONSTEXPR PermissionsRequest::PermissionsRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.operation_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.resource_)*/nullptr
+  , /*decltype(_impl_.who_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_._oneof_case_)*/{}} {}
 struct PermissionsRequestDefaultTypeInternal {
-  constexpr PermissionsRequestDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR PermissionsRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~PermissionsRequestDefaultTypeInternal() {}
   union {
     PermissionsRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PermissionsRequestDefaultTypeInternal _PermissionsRequest_default_instance_;
-constexpr ResourceListResponse_Item::ResourceListResponse_Item(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : type_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , id_(0){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PermissionsRequestDefaultTypeInternal _PermissionsRequest_default_instance_;
+PROTOBUF_CONSTEXPR ResourceListResponse_Item::ResourceListResponse_Item(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.type_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.id_)*/0} {}
 struct ResourceListResponse_ItemDefaultTypeInternal {
-  constexpr ResourceListResponse_ItemDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR ResourceListResponse_ItemDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~ResourceListResponse_ItemDefaultTypeInternal() {}
   union {
     ResourceListResponse_Item _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ResourceListResponse_ItemDefaultTypeInternal _ResourceListResponse_Item_default_instance_;
-constexpr ResourceListResponse::ResourceListResponse(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : item_(){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ResourceListResponse_ItemDefaultTypeInternal _ResourceListResponse_Item_default_instance_;
+PROTOBUF_CONSTEXPR ResourceListResponse::ResourceListResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.item_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct ResourceListResponseDefaultTypeInternal {
-  constexpr ResourceListResponseDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR ResourceListResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~ResourceListResponseDefaultTypeInternal() {}
   union {
     ResourceListResponse _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ResourceListResponseDefaultTypeInternal _ResourceListResponse_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ResourceListResponseDefaultTypeInternal _ResourceListResponse_default_instance_;
 }  // namespace v1
 }  // namespace rbac
 }  // namespace plugins
 }  // namespace palm
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_rbac_2eproto[12];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_rbac_2eproto[1];
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_rbac_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_rbac_2eproto[12];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_rbac_2eproto[1];
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_rbac_2eproto = nullptr;
 
-const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_rbac_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+const uint32_t TableStruct_rbac_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::UserRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::UserRequest, nick_name_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::UserRequest, _impl_.nick_name_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::UserListResponse_Item, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::UserListResponse_Item, nick_name_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::UserListResponse_Item, real_name_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::UserListResponse_Item, _impl_.nick_name_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::UserListResponse_Item, _impl_.real_name_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::UserListResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::UserListResponse, items_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::UserListResponse, _impl_.items_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::RoleRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::RoleRequest, code_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::RoleRequest, _impl_.code_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::RoleListResponse_Item, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::RoleListResponse_Item, code_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::RoleListResponse_Item, name_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::RoleListResponse_Item, _impl_.code_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::RoleListResponse_Item, _impl_.name_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::RoleListResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::RoleListResponse, items_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::RoleListResponse, _impl_.items_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::RolesForUserRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::RolesForUserRequest, user_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::RolesForUserRequest, roles_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::RolesForUserRequest, _impl_.user_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::RolesForUserRequest, _impl_.roles_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionListResponse_Item, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionListResponse_Item, subject_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionListResponse_Item, operation_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionListResponse_Item, resource_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionListResponse_Item, _impl_.subject_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionListResponse_Item, _impl_.operation_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionListResponse_Item, _impl_.resource_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionListResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionListResponse, items_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionListResponse, _impl_.items_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionsRequest, _internal_metadata_),
   ~0u,  // no _extensions_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionsRequest, _oneof_case_[0]),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionsRequest, _impl_._oneof_case_[0]),
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
-  ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionsRequest, operation_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionsRequest, resource_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionsRequest, who_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::ResourceListResponse_Item, _has_bits_),
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionsRequest, _impl_.operation_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionsRequest, _impl_.resource_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::PermissionsRequest, _impl_.who_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::ResourceListResponse_Item, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::ResourceListResponse_Item, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::ResourceListResponse_Item, type_),
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::ResourceListResponse_Item, id_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::ResourceListResponse_Item, _impl_.type_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::ResourceListResponse_Item, _impl_.id_),
   ~0u,
   0,
   ~0u,  // no _has_bits_
@@ -276,9 +294,9 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_rbac_2eproto::offsets[] PROTOB
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::ResourceListResponse, item_),
+  PROTOBUF_FIELD_OFFSET(::palm::plugins::rbac::v1::ResourceListResponse, _impl_.item_),
 };
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::palm::plugins::rbac::v1::UserRequest)},
   { 7, -1, -1, sizeof(::palm::plugins::rbac::v1::UserListResponse_Item)},
   { 15, -1, -1, sizeof(::palm::plugins::rbac::v1::UserListResponse)},
@@ -293,19 +311,19 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 89, -1, -1, sizeof(::palm::plugins::rbac::v1::ResourceListResponse)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::rbac::v1::_UserRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::rbac::v1::_UserListResponse_Item_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::rbac::v1::_UserListResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::rbac::v1::_RoleRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::rbac::v1::_RoleListResponse_Item_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::rbac::v1::_RoleListResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::rbac::v1::_RolesForUserRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::rbac::v1::_PermissionListResponse_Item_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::rbac::v1::_PermissionListResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::rbac::v1::_PermissionsRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::rbac::v1::_ResourceListResponse_Item_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::palm::plugins::rbac::v1::_ResourceListResponse_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+  &::palm::plugins::rbac::v1::_UserRequest_default_instance_._instance,
+  &::palm::plugins::rbac::v1::_UserListResponse_Item_default_instance_._instance,
+  &::palm::plugins::rbac::v1::_UserListResponse_default_instance_._instance,
+  &::palm::plugins::rbac::v1::_RoleRequest_default_instance_._instance,
+  &::palm::plugins::rbac::v1::_RoleListResponse_Item_default_instance_._instance,
+  &::palm::plugins::rbac::v1::_RoleListResponse_default_instance_._instance,
+  &::palm::plugins::rbac::v1::_RolesForUserRequest_default_instance_._instance,
+  &::palm::plugins::rbac::v1::_PermissionListResponse_Item_default_instance_._instance,
+  &::palm::plugins::rbac::v1::_PermissionListResponse_default_instance_._instance,
+  &::palm::plugins::rbac::v1::_PermissionsRequest_default_instance_._instance,
+  &::palm::plugins::rbac::v1::_ResourceListResponse_Item_default_instance_._instance,
+  &::palm::plugins::rbac::v1::_ResourceListResponse_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_rbac_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -378,22 +396,24 @@ const char descriptor_table_protodef_rbac_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
   "rbac.v1.PermissionsRequest\032\026.google.prot"
   "obuf.Empty\"\000B\002P\001b\006proto3"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_rbac_2eproto_deps[1] = {
+static const ::_pbi::DescriptorTable* const descriptor_table_rbac_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_rbac_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_rbac_2eproto = {
-  false, false, 2704, descriptor_table_protodef_rbac_2eproto, "rbac.proto", 
-  &descriptor_table_rbac_2eproto_once, descriptor_table_rbac_2eproto_deps, 1, 12,
-  schemas, file_default_instances, TableStruct_rbac_2eproto::offsets,
-  file_level_metadata_rbac_2eproto, file_level_enum_descriptors_rbac_2eproto, file_level_service_descriptors_rbac_2eproto,
+static ::_pbi::once_flag descriptor_table_rbac_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_rbac_2eproto = {
+    false, false, 2704, descriptor_table_protodef_rbac_2eproto,
+    "rbac.proto",
+    &descriptor_table_rbac_2eproto_once, descriptor_table_rbac_2eproto_deps, 1, 12,
+    schemas, file_default_instances, TableStruct_rbac_2eproto::offsets,
+    file_level_metadata_rbac_2eproto, file_level_enum_descriptors_rbac_2eproto,
+    file_level_service_descriptors_rbac_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_rbac_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_rbac_2eproto_getter() {
   return &descriptor_table_rbac_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_rbac_2eproto(&descriptor_table_rbac_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_rbac_2eproto(&descriptor_table_rbac_2eproto);
 namespace palm {
 namespace plugins {
 namespace rbac {
@@ -422,72 +442,83 @@ class UserRequest::_Internal {
 UserRequest::UserRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.plugins.rbac.v1.UserRequest)
 }
 UserRequest::UserRequest(const UserRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UserRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.nick_name_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  nick_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.nick_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.nick_name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_nick_name().empty()) {
-    nick_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_nick_name(), 
-      GetArenaForAllocation());
+    _this->_impl_.nick_name_.Set(from._internal_nick_name(), 
+      _this->GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.rbac.v1.UserRequest)
 }
 
-void UserRequest::SharedCtor() {
-nick_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void UserRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.nick_name_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.nick_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.nick_name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 UserRequest::~UserRequest() {
   // @@protoc_insertion_point(destructor:palm.plugins.rbac.v1.UserRequest)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  nick_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.nick_name_.Destroy();
 }
 
-void UserRequest::ArenaDtor(void* object) {
-  UserRequest* _this = reinterpret_cast< UserRequest* >(object);
-  (void)_this;
-}
-void UserRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void UserRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void UserRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.rbac.v1.UserRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  nick_name_.ClearToEmpty();
+  _impl_.nick_name_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* UserRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string nick_name = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_nick_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.rbac.v1.UserRequest.nick_name"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.rbac.v1.UserRequest.nick_name"));
         } else
           goto handle_unusual;
         continue;
@@ -514,10 +545,10 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* UserRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* UserRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.rbac.v1.UserRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string nick_name = 1;
@@ -531,7 +562,7 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.rbac.v1.UserRequest)
@@ -542,7 +573,7 @@ size_t UserRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.rbac.v1.UserRequest)
   size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -553,32 +584,28 @@ size_t UserRequest::ByteSizeLong() const {
         this->_internal_nick_name());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     UserRequest::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserRequest::GetClassData() const { return &_class_data_; }
 
-void UserRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<UserRequest *>(to)->MergeFrom(
-      static_cast<const UserRequest &>(from));
-}
 
-
-void UserRequest::MergeFrom(const UserRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.UserRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void UserRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UserRequest*>(&to_msg);
+  auto& from = static_cast<const UserRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.UserRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_nick_name().empty()) {
-    _internal_set_nick_name(from._internal_nick_name());
+    _this->_internal_set_nick_name(from._internal_nick_name());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserRequest::CopyFrom(const UserRequest& from) {
@@ -598,14 +625,13 @@ void UserRequest::InternalSwap(UserRequest* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &nick_name_, lhs_arena,
-      &other->nick_name_, rhs_arena
+      &_impl_.nick_name_, lhs_arena,
+      &other->_impl_.nick_name_, rhs_arena
   );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserRequest::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_rbac_2eproto_getter, &descriptor_table_rbac_2eproto_once,
       file_level_metadata_rbac_2eproto[0]);
 }
@@ -619,90 +645,109 @@ class UserListResponse_Item::_Internal {
 UserListResponse_Item::UserListResponse_Item(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.plugins.rbac.v1.UserListResponse.Item)
 }
 UserListResponse_Item::UserListResponse_Item(const UserListResponse_Item& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UserListResponse_Item* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.nick_name_){}
+    , decltype(_impl_.real_name_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  nick_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.nick_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.nick_name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_nick_name().empty()) {
-    nick_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_nick_name(), 
-      GetArenaForAllocation());
+    _this->_impl_.nick_name_.Set(from._internal_nick_name(), 
+      _this->GetArenaForAllocation());
   }
-  real_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.real_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.real_name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_real_name().empty()) {
-    real_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_real_name(), 
-      GetArenaForAllocation());
+    _this->_impl_.real_name_.Set(from._internal_real_name(), 
+      _this->GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.rbac.v1.UserListResponse.Item)
 }
 
-void UserListResponse_Item::SharedCtor() {
-nick_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-real_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void UserListResponse_Item::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.nick_name_){}
+    , decltype(_impl_.real_name_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.nick_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.nick_name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.real_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.real_name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 UserListResponse_Item::~UserListResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.plugins.rbac.v1.UserListResponse.Item)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserListResponse_Item::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  nick_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  real_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.nick_name_.Destroy();
+  _impl_.real_name_.Destroy();
 }
 
-void UserListResponse_Item::ArenaDtor(void* object) {
-  UserListResponse_Item* _this = reinterpret_cast< UserListResponse_Item* >(object);
-  (void)_this;
-}
-void UserListResponse_Item::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void UserListResponse_Item::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void UserListResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.rbac.v1.UserListResponse.Item)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  nick_name_.ClearToEmpty();
-  real_name_.ClearToEmpty();
+  _impl_.nick_name_.ClearToEmpty();
+  _impl_.real_name_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserListResponse_Item::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* UserListResponse_Item::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string nick_name = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_nick_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.rbac.v1.UserListResponse.Item.nick_name"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.rbac.v1.UserListResponse.Item.nick_name"));
         } else
           goto handle_unusual;
         continue;
       // string real_name = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_real_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.rbac.v1.UserListResponse.Item.real_name"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.rbac.v1.UserListResponse.Item.real_name"));
         } else
           goto handle_unusual;
         continue;
@@ -729,10 +774,10 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* UserListResponse_Item::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* UserListResponse_Item::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.rbac.v1.UserListResponse.Item)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string nick_name = 1;
@@ -756,7 +801,7 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.rbac.v1.UserListResponse.Item)
@@ -767,7 +812,7 @@ size_t UserListResponse_Item::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.rbac.v1.UserListResponse.Item)
   size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -785,35 +830,31 @@ size_t UserListResponse_Item::ByteSizeLong() const {
         this->_internal_real_name());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserListResponse_Item::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     UserListResponse_Item::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserListResponse_Item::GetClassData() const { return &_class_data_; }
 
-void UserListResponse_Item::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<UserListResponse_Item *>(to)->MergeFrom(
-      static_cast<const UserListResponse_Item &>(from));
-}
 
-
-void UserListResponse_Item::MergeFrom(const UserListResponse_Item& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.UserListResponse.Item)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void UserListResponse_Item::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UserListResponse_Item*>(&to_msg);
+  auto& from = static_cast<const UserListResponse_Item&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.UserListResponse.Item)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_nick_name().empty()) {
-    _internal_set_nick_name(from._internal_nick_name());
+    _this->_internal_set_nick_name(from._internal_nick_name());
   }
   if (!from._internal_real_name().empty()) {
-    _internal_set_real_name(from._internal_real_name());
+    _this->_internal_set_real_name(from._internal_real_name());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserListResponse_Item::CopyFrom(const UserListResponse_Item& from) {
@@ -833,19 +874,17 @@ void UserListResponse_Item::InternalSwap(UserListResponse_Item* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &nick_name_, lhs_arena,
-      &other->nick_name_, rhs_arena
+      &_impl_.nick_name_, lhs_arena,
+      &other->_impl_.nick_name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &real_name_, lhs_arena,
-      &other->real_name_, rhs_arena
+      &_impl_.real_name_, lhs_arena,
+      &other->_impl_.real_name_, rhs_arena
   );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserListResponse_Item::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_rbac_2eproto_getter, &descriptor_table_rbac_2eproto_once,
       file_level_metadata_rbac_2eproto[1]);
 }
@@ -858,64 +897,68 @@ class UserListResponse::_Internal {
 
 UserListResponse::UserListResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  items_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.plugins.rbac.v1.UserListResponse)
 }
 UserListResponse::UserListResponse(const UserListResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      items_(from.items_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UserListResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.items_){from._impl_.items_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:palm.plugins.rbac.v1.UserListResponse)
 }
 
-void UserListResponse::SharedCtor() {
+inline void UserListResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.items_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
 }
 
 UserListResponse::~UserListResponse() {
   // @@protoc_insertion_point(destructor:palm.plugins.rbac.v1.UserListResponse)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UserListResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.items_.~RepeatedPtrField();
 }
 
-void UserListResponse::ArenaDtor(void* object) {
-  UserListResponse* _this = reinterpret_cast< UserListResponse* >(object);
-  (void)_this;
-}
-void UserListResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void UserListResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void UserListResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.rbac.v1.UserListResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  items_.Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserListResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* UserListResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // repeated .palm.plugins.rbac.v1.UserListResponse.Item items = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -949,22 +992,22 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* UserListResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* UserListResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.rbac.v1.UserListResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .palm.plugins.rbac.v1.UserListResponse.Item items = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_items_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_items_size()); i < n; i++) {
+    const auto& repfield = this->_internal_items(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, this->_internal_items(i), target, stream);
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.rbac.v1.UserListResponse)
@@ -975,41 +1018,37 @@ size_t UserListResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.rbac.v1.UserListResponse)
   size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .palm.plugins.rbac.v1.UserListResponse.Item items = 1;
   total_size += 1UL * this->_internal_items_size();
-  for (const auto& msg : this->items_) {
+  for (const auto& msg : this->_impl_.items_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserListResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     UserListResponse::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserListResponse::GetClassData() const { return &_class_data_; }
 
-void UserListResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<UserListResponse *>(to)->MergeFrom(
-      static_cast<const UserListResponse &>(from));
-}
 
-
-void UserListResponse::MergeFrom(const UserListResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.UserListResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void UserListResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UserListResponse*>(&to_msg);
+  auto& from = static_cast<const UserListResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.UserListResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  items_.MergeFrom(from.items_);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.items_.MergeFrom(from._impl_.items_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserListResponse::CopyFrom(const UserListResponse& from) {
@@ -1026,11 +1065,11 @@ bool UserListResponse::IsInitialized() const {
 void UserListResponse::InternalSwap(UserListResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  items_.InternalSwap(&other->items_);
+  _impl_.items_.InternalSwap(&other->_impl_.items_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserListResponse::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_rbac_2eproto_getter, &descriptor_table_rbac_2eproto_once,
       file_level_metadata_rbac_2eproto[2]);
 }
@@ -1044,72 +1083,83 @@ class RoleRequest::_Internal {
 RoleRequest::RoleRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.plugins.rbac.v1.RoleRequest)
 }
 RoleRequest::RoleRequest(const RoleRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RoleRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.code_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  code_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.code_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.code_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_code().empty()) {
-    code_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_code(), 
-      GetArenaForAllocation());
+    _this->_impl_.code_.Set(from._internal_code(), 
+      _this->GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.rbac.v1.RoleRequest)
 }
 
-void RoleRequest::SharedCtor() {
-code_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void RoleRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.code_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.code_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.code_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 RoleRequest::~RoleRequest() {
   // @@protoc_insertion_point(destructor:palm.plugins.rbac.v1.RoleRequest)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void RoleRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  code_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.code_.Destroy();
 }
 
-void RoleRequest::ArenaDtor(void* object) {
-  RoleRequest* _this = reinterpret_cast< RoleRequest* >(object);
-  (void)_this;
-}
-void RoleRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void RoleRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void RoleRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.rbac.v1.RoleRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  code_.ClearToEmpty();
+  _impl_.code_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* RoleRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* RoleRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string code = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_code();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.rbac.v1.RoleRequest.code"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.rbac.v1.RoleRequest.code"));
         } else
           goto handle_unusual;
         continue;
@@ -1136,10 +1186,10 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* RoleRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* RoleRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.rbac.v1.RoleRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string code = 1;
@@ -1153,7 +1203,7 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.rbac.v1.RoleRequest)
@@ -1164,7 +1214,7 @@ size_t RoleRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.rbac.v1.RoleRequest)
   size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -1175,32 +1225,28 @@ size_t RoleRequest::ByteSizeLong() const {
         this->_internal_code());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RoleRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     RoleRequest::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RoleRequest::GetClassData() const { return &_class_data_; }
 
-void RoleRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<RoleRequest *>(to)->MergeFrom(
-      static_cast<const RoleRequest &>(from));
-}
 
-
-void RoleRequest::MergeFrom(const RoleRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.RoleRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void RoleRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<RoleRequest*>(&to_msg);
+  auto& from = static_cast<const RoleRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.RoleRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_code().empty()) {
-    _internal_set_code(from._internal_code());
+    _this->_internal_set_code(from._internal_code());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void RoleRequest::CopyFrom(const RoleRequest& from) {
@@ -1220,14 +1266,13 @@ void RoleRequest::InternalSwap(RoleRequest* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &code_, lhs_arena,
-      &other->code_, rhs_arena
+      &_impl_.code_, lhs_arena,
+      &other->_impl_.code_, rhs_arena
   );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata RoleRequest::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_rbac_2eproto_getter, &descriptor_table_rbac_2eproto_once,
       file_level_metadata_rbac_2eproto[3]);
 }
@@ -1241,90 +1286,109 @@ class RoleListResponse_Item::_Internal {
 RoleListResponse_Item::RoleListResponse_Item(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.plugins.rbac.v1.RoleListResponse.Item)
 }
 RoleListResponse_Item::RoleListResponse_Item(const RoleListResponse_Item& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RoleListResponse_Item* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.code_){}
+    , decltype(_impl_.name_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  code_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.code_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.code_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_code().empty()) {
-    code_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_code(), 
-      GetArenaForAllocation());
+    _this->_impl_.code_.Set(from._internal_code(), 
+      _this->GetArenaForAllocation());
   }
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_name().empty()) {
-    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
-      GetArenaForAllocation());
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.rbac.v1.RoleListResponse.Item)
 }
 
-void RoleListResponse_Item::SharedCtor() {
-code_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void RoleListResponse_Item::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.code_){}
+    , decltype(_impl_.name_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.code_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.code_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 RoleListResponse_Item::~RoleListResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.plugins.rbac.v1.RoleListResponse.Item)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void RoleListResponse_Item::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  code_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.code_.Destroy();
+  _impl_.name_.Destroy();
 }
 
-void RoleListResponse_Item::ArenaDtor(void* object) {
-  RoleListResponse_Item* _this = reinterpret_cast< RoleListResponse_Item* >(object);
-  (void)_this;
-}
-void RoleListResponse_Item::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void RoleListResponse_Item::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void RoleListResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.rbac.v1.RoleListResponse.Item)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  code_.ClearToEmpty();
-  name_.ClearToEmpty();
+  _impl_.code_.ClearToEmpty();
+  _impl_.name_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* RoleListResponse_Item::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* RoleListResponse_Item::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string code = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_code();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.rbac.v1.RoleListResponse.Item.code"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.rbac.v1.RoleListResponse.Item.code"));
         } else
           goto handle_unusual;
         continue;
       // string name = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.rbac.v1.RoleListResponse.Item.name"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.rbac.v1.RoleListResponse.Item.name"));
         } else
           goto handle_unusual;
         continue;
@@ -1351,10 +1415,10 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* RoleListResponse_Item::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* RoleListResponse_Item::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.rbac.v1.RoleListResponse.Item)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string code = 1;
@@ -1378,7 +1442,7 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.rbac.v1.RoleListResponse.Item)
@@ -1389,7 +1453,7 @@ size_t RoleListResponse_Item::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.rbac.v1.RoleListResponse.Item)
   size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -1407,35 +1471,31 @@ size_t RoleListResponse_Item::ByteSizeLong() const {
         this->_internal_name());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RoleListResponse_Item::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     RoleListResponse_Item::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RoleListResponse_Item::GetClassData() const { return &_class_data_; }
 
-void RoleListResponse_Item::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<RoleListResponse_Item *>(to)->MergeFrom(
-      static_cast<const RoleListResponse_Item &>(from));
-}
 
-
-void RoleListResponse_Item::MergeFrom(const RoleListResponse_Item& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.RoleListResponse.Item)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void RoleListResponse_Item::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<RoleListResponse_Item*>(&to_msg);
+  auto& from = static_cast<const RoleListResponse_Item&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.RoleListResponse.Item)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_code().empty()) {
-    _internal_set_code(from._internal_code());
+    _this->_internal_set_code(from._internal_code());
   }
   if (!from._internal_name().empty()) {
-    _internal_set_name(from._internal_name());
+    _this->_internal_set_name(from._internal_name());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void RoleListResponse_Item::CopyFrom(const RoleListResponse_Item& from) {
@@ -1455,19 +1515,17 @@ void RoleListResponse_Item::InternalSwap(RoleListResponse_Item* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &code_, lhs_arena,
-      &other->code_, rhs_arena
+      &_impl_.code_, lhs_arena,
+      &other->_impl_.code_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &name_, lhs_arena,
-      &other->name_, rhs_arena
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
   );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata RoleListResponse_Item::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_rbac_2eproto_getter, &descriptor_table_rbac_2eproto_once,
       file_level_metadata_rbac_2eproto[4]);
 }
@@ -1480,64 +1538,68 @@ class RoleListResponse::_Internal {
 
 RoleListResponse::RoleListResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  items_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.plugins.rbac.v1.RoleListResponse)
 }
 RoleListResponse::RoleListResponse(const RoleListResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      items_(from.items_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RoleListResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.items_){from._impl_.items_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:palm.plugins.rbac.v1.RoleListResponse)
 }
 
-void RoleListResponse::SharedCtor() {
+inline void RoleListResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.items_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
 }
 
 RoleListResponse::~RoleListResponse() {
   // @@protoc_insertion_point(destructor:palm.plugins.rbac.v1.RoleListResponse)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void RoleListResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.items_.~RepeatedPtrField();
 }
 
-void RoleListResponse::ArenaDtor(void* object) {
-  RoleListResponse* _this = reinterpret_cast< RoleListResponse* >(object);
-  (void)_this;
-}
-void RoleListResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void RoleListResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void RoleListResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.rbac.v1.RoleListResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  items_.Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* RoleListResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* RoleListResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // repeated .palm.plugins.rbac.v1.RoleListResponse.Item items = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -1571,22 +1633,22 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* RoleListResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* RoleListResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.rbac.v1.RoleListResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .palm.plugins.rbac.v1.RoleListResponse.Item items = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_items_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_items_size()); i < n; i++) {
+    const auto& repfield = this->_internal_items(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, this->_internal_items(i), target, stream);
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.rbac.v1.RoleListResponse)
@@ -1597,41 +1659,37 @@ size_t RoleListResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.rbac.v1.RoleListResponse)
   size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .palm.plugins.rbac.v1.RoleListResponse.Item items = 1;
   total_size += 1UL * this->_internal_items_size();
-  for (const auto& msg : this->items_) {
+  for (const auto& msg : this->_impl_.items_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RoleListResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     RoleListResponse::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RoleListResponse::GetClassData() const { return &_class_data_; }
 
-void RoleListResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<RoleListResponse *>(to)->MergeFrom(
-      static_cast<const RoleListResponse &>(from));
-}
 
-
-void RoleListResponse::MergeFrom(const RoleListResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.RoleListResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void RoleListResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<RoleListResponse*>(&to_msg);
+  auto& from = static_cast<const RoleListResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.RoleListResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  items_.MergeFrom(from.items_);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.items_.MergeFrom(from._impl_.items_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void RoleListResponse::CopyFrom(const RoleListResponse& from) {
@@ -1648,11 +1706,11 @@ bool RoleListResponse::IsInitialized() const {
 void RoleListResponse::InternalSwap(RoleListResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  items_.InternalSwap(&other->items_);
+  _impl_.items_.InternalSwap(&other->_impl_.items_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata RoleListResponse::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_rbac_2eproto_getter, &descriptor_table_rbac_2eproto_once,
       file_level_metadata_rbac_2eproto[5]);
 }
@@ -1665,89 +1723,101 @@ class RolesForUserRequest::_Internal {
 
 RolesForUserRequest::RolesForUserRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  roles_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.plugins.rbac.v1.RolesForUserRequest)
 }
 RolesForUserRequest::RolesForUserRequest(const RolesForUserRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      roles_(from.roles_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RolesForUserRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.roles_){from._impl_.roles_}
+    , decltype(_impl_.user_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  user_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.user_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_user().empty()) {
-    user_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_user(), 
-      GetArenaForAllocation());
+    _this->_impl_.user_.Set(from._internal_user(), 
+      _this->GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.rbac.v1.RolesForUserRequest)
 }
 
-void RolesForUserRequest::SharedCtor() {
-user_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void RolesForUserRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.roles_){arena}
+    , decltype(_impl_.user_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.user_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 RolesForUserRequest::~RolesForUserRequest() {
   // @@protoc_insertion_point(destructor:palm.plugins.rbac.v1.RolesForUserRequest)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void RolesForUserRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  user_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.roles_.~RepeatedPtrField();
+  _impl_.user_.Destroy();
 }
 
-void RolesForUserRequest::ArenaDtor(void* object) {
-  RolesForUserRequest* _this = reinterpret_cast< RolesForUserRequest* >(object);
-  (void)_this;
-}
-void RolesForUserRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void RolesForUserRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void RolesForUserRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.rbac.v1.RolesForUserRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  roles_.Clear();
-  user_.ClearToEmpty();
+  _impl_.roles_.Clear();
+  _impl_.user_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* RolesForUserRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* RolesForUserRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string user = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_user();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.rbac.v1.RolesForUserRequest.user"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.rbac.v1.RolesForUserRequest.user"));
         } else
           goto handle_unusual;
         continue;
       // repeated string roles = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr -= 1;
           do {
             ptr += 1;
             auto str = _internal_add_roles();
-            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.rbac.v1.RolesForUserRequest.roles"));
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
+            CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.rbac.v1.RolesForUserRequest.roles"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
         } else
@@ -1776,10 +1846,10 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* RolesForUserRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* RolesForUserRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.rbac.v1.RolesForUserRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string user = 1;
@@ -1803,7 +1873,7 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.rbac.v1.RolesForUserRequest)
@@ -1814,16 +1884,16 @@ size_t RolesForUserRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.rbac.v1.RolesForUserRequest)
   size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated string roles = 2;
   total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(roles_.size());
-  for (int i = 0, n = roles_.size(); i < n; i++) {
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.roles_.size());
+  for (int i = 0, n = _impl_.roles_.size(); i < n; i++) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-      roles_.Get(i));
+      _impl_.roles_.Get(i));
   }
 
   // string user = 1;
@@ -1833,33 +1903,29 @@ size_t RolesForUserRequest::ByteSizeLong() const {
         this->_internal_user());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RolesForUserRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     RolesForUserRequest::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RolesForUserRequest::GetClassData() const { return &_class_data_; }
 
-void RolesForUserRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<RolesForUserRequest *>(to)->MergeFrom(
-      static_cast<const RolesForUserRequest &>(from));
-}
 
-
-void RolesForUserRequest::MergeFrom(const RolesForUserRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.RolesForUserRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void RolesForUserRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<RolesForUserRequest*>(&to_msg);
+  auto& from = static_cast<const RolesForUserRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.RolesForUserRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  roles_.MergeFrom(from.roles_);
+  _this->_impl_.roles_.MergeFrom(from._impl_.roles_);
   if (!from._internal_user().empty()) {
-    _internal_set_user(from._internal_user());
+    _this->_internal_set_user(from._internal_user());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void RolesForUserRequest::CopyFrom(const RolesForUserRequest& from) {
@@ -1878,16 +1944,15 @@ void RolesForUserRequest::InternalSwap(RolesForUserRequest* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  roles_.InternalSwap(&other->roles_);
+  _impl_.roles_.InternalSwap(&other->_impl_.roles_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &user_, lhs_arena,
-      &other->user_, rhs_arena
+      &_impl_.user_, lhs_arena,
+      &other->_impl_.user_, rhs_arena
   );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata RolesForUserRequest::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_rbac_2eproto_getter, &descriptor_table_rbac_2eproto_once,
       file_level_metadata_rbac_2eproto[6]);
 }
@@ -1901,112 +1966,130 @@ class PermissionListResponse_Item::_Internal {
 
 const ::palm::plugins::rbac::v1::ResourceListResponse_Item&
 PermissionListResponse_Item::_Internal::resource(const PermissionListResponse_Item* msg) {
-  return *msg->resource_;
+  return *msg->_impl_.resource_;
 }
 PermissionListResponse_Item::PermissionListResponse_Item(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.plugins.rbac.v1.PermissionListResponse.Item)
 }
 PermissionListResponse_Item::PermissionListResponse_Item(const PermissionListResponse_Item& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  PermissionListResponse_Item* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.subject_){}
+    , decltype(_impl_.operation_){}
+    , decltype(_impl_.resource_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  subject_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.subject_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.subject_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_subject().empty()) {
-    subject_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_subject(), 
-      GetArenaForAllocation());
+    _this->_impl_.subject_.Set(from._internal_subject(), 
+      _this->GetArenaForAllocation());
   }
-  operation_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.operation_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.operation_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_operation().empty()) {
-    operation_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_operation(), 
-      GetArenaForAllocation());
+    _this->_impl_.operation_.Set(from._internal_operation(), 
+      _this->GetArenaForAllocation());
   }
   if (from._internal_has_resource()) {
-    resource_ = new ::palm::plugins::rbac::v1::ResourceListResponse_Item(*from.resource_);
-  } else {
-    resource_ = nullptr;
+    _this->_impl_.resource_ = new ::palm::plugins::rbac::v1::ResourceListResponse_Item(*from._impl_.resource_);
   }
   // @@protoc_insertion_point(copy_constructor:palm.plugins.rbac.v1.PermissionListResponse.Item)
 }
 
-void PermissionListResponse_Item::SharedCtor() {
-subject_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-operation_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-resource_ = nullptr;
+inline void PermissionListResponse_Item::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.subject_){}
+    , decltype(_impl_.operation_){}
+    , decltype(_impl_.resource_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.subject_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.subject_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.operation_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.operation_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 PermissionListResponse_Item::~PermissionListResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.plugins.rbac.v1.PermissionListResponse.Item)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void PermissionListResponse_Item::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  subject_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  operation_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete resource_;
+  _impl_.subject_.Destroy();
+  _impl_.operation_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.resource_;
 }
 
-void PermissionListResponse_Item::ArenaDtor(void* object) {
-  PermissionListResponse_Item* _this = reinterpret_cast< PermissionListResponse_Item* >(object);
-  (void)_this;
-}
-void PermissionListResponse_Item::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void PermissionListResponse_Item::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void PermissionListResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.rbac.v1.PermissionListResponse.Item)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  subject_.ClearToEmpty();
-  operation_.ClearToEmpty();
-  if (GetArenaForAllocation() == nullptr && resource_ != nullptr) {
-    delete resource_;
+  _impl_.subject_.ClearToEmpty();
+  _impl_.operation_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && _impl_.resource_ != nullptr) {
+    delete _impl_.resource_;
   }
-  resource_ = nullptr;
+  _impl_.resource_ = nullptr;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* PermissionListResponse_Item::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* PermissionListResponse_Item::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string subject = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_subject();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.rbac.v1.PermissionListResponse.Item.subject"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.rbac.v1.PermissionListResponse.Item.subject"));
         } else
           goto handle_unusual;
         continue;
       // string operation = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_operation();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.rbac.v1.PermissionListResponse.Item.operation"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.rbac.v1.PermissionListResponse.Item.operation"));
         } else
           goto handle_unusual;
         continue;
       // .palm.plugins.rbac.v1.ResourceListResponse.Item resource = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           ptr = ctx->ParseMessage(_internal_mutable_resource(), ptr);
           CHK_(ptr);
         } else
@@ -2035,10 +2118,10 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* PermissionListResponse_Item::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* PermissionListResponse_Item::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.rbac.v1.PermissionListResponse.Item)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string subject = 1;
@@ -2063,14 +2146,13 @@ failure:
 
   // .palm.plugins.rbac.v1.ResourceListResponse.Item resource = 3;
   if (this->_internal_has_resource()) {
-    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        3, _Internal::resource(this), target, stream);
+      InternalWriteMessage(3, _Internal::resource(this),
+        _Internal::resource(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.rbac.v1.PermissionListResponse.Item)
@@ -2081,7 +2163,7 @@ size_t PermissionListResponse_Item::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.rbac.v1.PermissionListResponse.Item)
   size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -2103,41 +2185,38 @@ size_t PermissionListResponse_Item::ByteSizeLong() const {
   if (this->_internal_has_resource()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *resource_);
+        *_impl_.resource_);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData PermissionListResponse_Item::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     PermissionListResponse_Item::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*PermissionListResponse_Item::GetClassData() const { return &_class_data_; }
 
-void PermissionListResponse_Item::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<PermissionListResponse_Item *>(to)->MergeFrom(
-      static_cast<const PermissionListResponse_Item &>(from));
-}
 
-
-void PermissionListResponse_Item::MergeFrom(const PermissionListResponse_Item& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.PermissionListResponse.Item)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void PermissionListResponse_Item::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<PermissionListResponse_Item*>(&to_msg);
+  auto& from = static_cast<const PermissionListResponse_Item&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.PermissionListResponse.Item)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_subject().empty()) {
-    _internal_set_subject(from._internal_subject());
+    _this->_internal_set_subject(from._internal_subject());
   }
   if (!from._internal_operation().empty()) {
-    _internal_set_operation(from._internal_operation());
+    _this->_internal_set_operation(from._internal_operation());
   }
   if (from._internal_has_resource()) {
-    _internal_mutable_resource()->::palm::plugins::rbac::v1::ResourceListResponse_Item::MergeFrom(from._internal_resource());
+    _this->_internal_mutable_resource()->::palm::plugins::rbac::v1::ResourceListResponse_Item::MergeFrom(
+        from._internal_resource());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void PermissionListResponse_Item::CopyFrom(const PermissionListResponse_Item& from) {
@@ -2157,20 +2236,18 @@ void PermissionListResponse_Item::InternalSwap(PermissionListResponse_Item* othe
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &subject_, lhs_arena,
-      &other->subject_, rhs_arena
+      &_impl_.subject_, lhs_arena,
+      &other->_impl_.subject_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &operation_, lhs_arena,
-      &other->operation_, rhs_arena
+      &_impl_.operation_, lhs_arena,
+      &other->_impl_.operation_, rhs_arena
   );
-  swap(resource_, other->resource_);
+  swap(_impl_.resource_, other->_impl_.resource_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata PermissionListResponse_Item::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_rbac_2eproto_getter, &descriptor_table_rbac_2eproto_once,
       file_level_metadata_rbac_2eproto[7]);
 }
@@ -2183,64 +2260,68 @@ class PermissionListResponse::_Internal {
 
 PermissionListResponse::PermissionListResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  items_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.plugins.rbac.v1.PermissionListResponse)
 }
 PermissionListResponse::PermissionListResponse(const PermissionListResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      items_(from.items_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  PermissionListResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.items_){from._impl_.items_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:palm.plugins.rbac.v1.PermissionListResponse)
 }
 
-void PermissionListResponse::SharedCtor() {
+inline void PermissionListResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.items_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
 }
 
 PermissionListResponse::~PermissionListResponse() {
   // @@protoc_insertion_point(destructor:palm.plugins.rbac.v1.PermissionListResponse)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void PermissionListResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.items_.~RepeatedPtrField();
 }
 
-void PermissionListResponse::ArenaDtor(void* object) {
-  PermissionListResponse* _this = reinterpret_cast< PermissionListResponse* >(object);
-  (void)_this;
-}
-void PermissionListResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void PermissionListResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void PermissionListResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.rbac.v1.PermissionListResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  items_.Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* PermissionListResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* PermissionListResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // repeated .palm.plugins.rbac.v1.PermissionListResponse.Item items = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -2274,22 +2355,22 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* PermissionListResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* PermissionListResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.rbac.v1.PermissionListResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .palm.plugins.rbac.v1.PermissionListResponse.Item items = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_items_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_items_size()); i < n; i++) {
+    const auto& repfield = this->_internal_items(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, this->_internal_items(i), target, stream);
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.rbac.v1.PermissionListResponse)
@@ -2300,41 +2381,37 @@ size_t PermissionListResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.rbac.v1.PermissionListResponse)
   size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .palm.plugins.rbac.v1.PermissionListResponse.Item items = 1;
   total_size += 1UL * this->_internal_items_size();
-  for (const auto& msg : this->items_) {
+  for (const auto& msg : this->_impl_.items_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData PermissionListResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     PermissionListResponse::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*PermissionListResponse::GetClassData() const { return &_class_data_; }
 
-void PermissionListResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<PermissionListResponse *>(to)->MergeFrom(
-      static_cast<const PermissionListResponse &>(from));
-}
 
-
-void PermissionListResponse::MergeFrom(const PermissionListResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.PermissionListResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void PermissionListResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<PermissionListResponse*>(&to_msg);
+  auto& from = static_cast<const PermissionListResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.PermissionListResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  items_.MergeFrom(from.items_);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.items_.MergeFrom(from._impl_.items_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void PermissionListResponse::CopyFrom(const PermissionListResponse& from) {
@@ -2351,11 +2428,11 @@ bool PermissionListResponse::IsInitialized() const {
 void PermissionListResponse::InternalSwap(PermissionListResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  items_.InternalSwap(&other->items_);
+  _impl_.items_.InternalSwap(&other->_impl_.items_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata PermissionListResponse::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_rbac_2eproto_getter, &descriptor_table_rbac_2eproto_once,
       file_level_metadata_rbac_2eproto[8]);
 }
@@ -2369,38 +2446,44 @@ class PermissionsRequest::_Internal {
 
 const ::palm::plugins::rbac::v1::ResourceListResponse_Item&
 PermissionsRequest::_Internal::resource(const PermissionsRequest* msg) {
-  return *msg->resource_;
+  return *msg->_impl_.resource_;
 }
 PermissionsRequest::PermissionsRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.plugins.rbac.v1.PermissionsRequest)
 }
 PermissionsRequest::PermissionsRequest(const PermissionsRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  PermissionsRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.operation_){}
+    , decltype(_impl_.resource_){nullptr}
+    , decltype(_impl_.who_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  operation_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.operation_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.operation_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_operation().empty()) {
-    operation_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_operation(), 
-      GetArenaForAllocation());
+    _this->_impl_.operation_.Set(from._internal_operation(), 
+      _this->GetArenaForAllocation());
   }
   if (from._internal_has_resource()) {
-    resource_ = new ::palm::plugins::rbac::v1::ResourceListResponse_Item(*from.resource_);
-  } else {
-    resource_ = nullptr;
+    _this->_impl_.resource_ = new ::palm::plugins::rbac::v1::ResourceListResponse_Item(*from._impl_.resource_);
   }
   clear_has_who();
   switch (from.who_case()) {
     case kUser: {
-      _internal_set_user(from._internal_user());
+      _this->_internal_set_user(from._internal_user());
       break;
     }
     case kRole: {
-      _internal_set_role(from._internal_role());
+      _this->_internal_set_role(from._internal_role());
       break;
     }
     case WHO_NOT_SET: {
@@ -2410,111 +2493,119 @@ PermissionsRequest::PermissionsRequest(const PermissionsRequest& from)
   // @@protoc_insertion_point(copy_constructor:palm.plugins.rbac.v1.PermissionsRequest)
 }
 
-void PermissionsRequest::SharedCtor() {
-operation_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-resource_ = nullptr;
-clear_has_who();
+inline void PermissionsRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.operation_){}
+    , decltype(_impl_.resource_){nullptr}
+    , decltype(_impl_.who_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}
+  };
+  _impl_.operation_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.operation_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  clear_has_who();
 }
 
 PermissionsRequest::~PermissionsRequest() {
   // @@protoc_insertion_point(destructor:palm.plugins.rbac.v1.PermissionsRequest)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void PermissionsRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  operation_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete resource_;
+  _impl_.operation_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.resource_;
   if (has_who()) {
     clear_who();
   }
 }
 
-void PermissionsRequest::ArenaDtor(void* object) {
-  PermissionsRequest* _this = reinterpret_cast< PermissionsRequest* >(object);
-  (void)_this;
-}
-void PermissionsRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void PermissionsRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void PermissionsRequest::clear_who() {
 // @@protoc_insertion_point(one_of_clear_start:palm.plugins.rbac.v1.PermissionsRequest)
   switch (who_case()) {
     case kUser: {
-      who_.user_.Destroy(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+      _impl_.who_.user_.Destroy();
       break;
     }
     case kRole: {
-      who_.role_.Destroy(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+      _impl_.who_.role_.Destroy();
       break;
     }
     case WHO_NOT_SET: {
       break;
     }
   }
-  _oneof_case_[0] = WHO_NOT_SET;
+  _impl_._oneof_case_[0] = WHO_NOT_SET;
 }
 
 
 void PermissionsRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.rbac.v1.PermissionsRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  operation_.ClearToEmpty();
-  if (GetArenaForAllocation() == nullptr && resource_ != nullptr) {
-    delete resource_;
+  _impl_.operation_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && _impl_.resource_ != nullptr) {
+    delete _impl_.resource_;
   }
-  resource_ = nullptr;
+  _impl_.resource_ = nullptr;
   clear_who();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* PermissionsRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* PermissionsRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string user = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_user();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.rbac.v1.PermissionsRequest.user"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.rbac.v1.PermissionsRequest.user"));
         } else
           goto handle_unusual;
         continue;
       // string role = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_role();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.rbac.v1.PermissionsRequest.role"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.rbac.v1.PermissionsRequest.role"));
         } else
           goto handle_unusual;
         continue;
       // string operation = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           auto str = _internal_mutable_operation();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.rbac.v1.PermissionsRequest.operation"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.rbac.v1.PermissionsRequest.operation"));
         } else
           goto handle_unusual;
         continue;
       // .palm.plugins.rbac.v1.ResourceListResponse.Item resource = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           ptr = ctx->ParseMessage(_internal_mutable_resource(), ptr);
           CHK_(ptr);
         } else
@@ -2543,10 +2634,10 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* PermissionsRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* PermissionsRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.rbac.v1.PermissionsRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string user = 1;
@@ -2581,14 +2672,13 @@ failure:
 
   // .palm.plugins.rbac.v1.ResourceListResponse.Item resource = 4;
   if (this->_internal_has_resource()) {
-    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        4, _Internal::resource(this), target, stream);
+      InternalWriteMessage(4, _Internal::resource(this),
+        _Internal::resource(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.rbac.v1.PermissionsRequest)
@@ -2599,7 +2689,7 @@ size_t PermissionsRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.rbac.v1.PermissionsRequest)
   size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -2614,7 +2704,7 @@ size_t PermissionsRequest::ByteSizeLong() const {
   if (this->_internal_has_resource()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *resource_);
+        *_impl_.resource_);
   }
 
   switch (who_case()) {
@@ -2636,48 +2726,45 @@ size_t PermissionsRequest::ByteSizeLong() const {
       break;
     }
   }
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData PermissionsRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     PermissionsRequest::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*PermissionsRequest::GetClassData() const { return &_class_data_; }
 
-void PermissionsRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<PermissionsRequest *>(to)->MergeFrom(
-      static_cast<const PermissionsRequest &>(from));
-}
 
-
-void PermissionsRequest::MergeFrom(const PermissionsRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.PermissionsRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void PermissionsRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<PermissionsRequest*>(&to_msg);
+  auto& from = static_cast<const PermissionsRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.PermissionsRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_operation().empty()) {
-    _internal_set_operation(from._internal_operation());
+    _this->_internal_set_operation(from._internal_operation());
   }
   if (from._internal_has_resource()) {
-    _internal_mutable_resource()->::palm::plugins::rbac::v1::ResourceListResponse_Item::MergeFrom(from._internal_resource());
+    _this->_internal_mutable_resource()->::palm::plugins::rbac::v1::ResourceListResponse_Item::MergeFrom(
+        from._internal_resource());
   }
   switch (from.who_case()) {
     case kUser: {
-      _internal_set_user(from._internal_user());
+      _this->_internal_set_user(from._internal_user());
       break;
     }
     case kRole: {
-      _internal_set_role(from._internal_role());
+      _this->_internal_set_role(from._internal_role());
       break;
     }
     case WHO_NOT_SET: {
       break;
     }
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void PermissionsRequest::CopyFrom(const PermissionsRequest& from) {
@@ -2697,17 +2784,16 @@ void PermissionsRequest::InternalSwap(PermissionsRequest* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &operation_, lhs_arena,
-      &other->operation_, rhs_arena
+      &_impl_.operation_, lhs_arena,
+      &other->_impl_.operation_, rhs_arena
   );
-  swap(resource_, other->resource_);
-  swap(who_, other->who_);
-  swap(_oneof_case_[0], other->_oneof_case_[0]);
+  swap(_impl_.resource_, other->_impl_.resource_);
+  swap(_impl_.who_, other->_impl_.who_);
+  swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata PermissionsRequest::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_rbac_2eproto_getter, &descriptor_table_rbac_2eproto_once,
       file_level_metadata_rbac_2eproto[9]);
 }
@@ -2716,7 +2802,7 @@ void PermissionsRequest::InternalSwap(PermissionsRequest* other) {
 
 class ResourceListResponse_Item::_Internal {
  public:
-  using HasBits = decltype(std::declval<ResourceListResponse_Item>()._has_bits_);
+  using HasBits = decltype(std::declval<ResourceListResponse_Item>()._impl_._has_bits_);
   static void set_has_id(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -2725,86 +2811,99 @@ class ResourceListResponse_Item::_Internal {
 ResourceListResponse_Item::ResourceListResponse_Item(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.plugins.rbac.v1.ResourceListResponse.Item)
 }
 ResourceListResponse_Item::ResourceListResponse_Item(const ResourceListResponse_Item& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ResourceListResponse_Item* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.type_){}
+    , decltype(_impl_.id_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.type_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_type().empty()) {
-    type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_type(), 
-      GetArenaForAllocation());
+    _this->_impl_.type_.Set(from._internal_type(), 
+      _this->GetArenaForAllocation());
   }
-  id_ = from.id_;
+  _this->_impl_.id_ = from._impl_.id_;
   // @@protoc_insertion_point(copy_constructor:palm.plugins.rbac.v1.ResourceListResponse.Item)
 }
 
-void ResourceListResponse_Item::SharedCtor() {
-type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-id_ = 0;
+inline void ResourceListResponse_Item::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.type_){}
+    , decltype(_impl_.id_){0}
+  };
+  _impl_.type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.type_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 ResourceListResponse_Item::~ResourceListResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.plugins.rbac.v1.ResourceListResponse.Item)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void ResourceListResponse_Item::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.type_.Destroy();
 }
 
-void ResourceListResponse_Item::ArenaDtor(void* object) {
-  ResourceListResponse_Item* _this = reinterpret_cast< ResourceListResponse_Item* >(object);
-  (void)_this;
-}
-void ResourceListResponse_Item::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ResourceListResponse_Item::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void ResourceListResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.rbac.v1.ResourceListResponse.Item)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  type_.ClearToEmpty();
-  id_ = 0;
-  _has_bits_.Clear();
+  _impl_.type_.ClearToEmpty();
+  _impl_.id_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ResourceListResponse_Item::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ResourceListResponse_Item::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string type = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_type();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "palm.plugins.rbac.v1.ResourceListResponse.Item.type"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.plugins.rbac.v1.ResourceListResponse.Item.type"));
         } else
           goto handle_unusual;
         continue;
       // optional int32 id = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           _Internal::set_has_id(&has_bits);
-          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          _impl_.id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -2825,7 +2924,7 @@ const char* ResourceListResponse_Item::_InternalParse(const char* ptr, ::PROTOBU
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -2833,10 +2932,10 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ResourceListResponse_Item::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* ResourceListResponse_Item::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.rbac.v1.ResourceListResponse.Item)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string type = 1;
@@ -2852,11 +2951,11 @@ failure:
   // optional int32 id = 2;
   if (_internal_has_id()) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_id(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_id(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.rbac.v1.ResourceListResponse.Item)
@@ -2867,7 +2966,7 @@ size_t ResourceListResponse_Item::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.rbac.v1.ResourceListResponse.Item)
   size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -2879,40 +2978,36 @@ size_t ResourceListResponse_Item::ByteSizeLong() const {
   }
 
   // optional int32 id = 2;
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_id());
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_id());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ResourceListResponse_Item::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     ResourceListResponse_Item::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ResourceListResponse_Item::GetClassData() const { return &_class_data_; }
 
-void ResourceListResponse_Item::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<ResourceListResponse_Item *>(to)->MergeFrom(
-      static_cast<const ResourceListResponse_Item &>(from));
-}
 
-
-void ResourceListResponse_Item::MergeFrom(const ResourceListResponse_Item& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.ResourceListResponse.Item)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void ResourceListResponse_Item::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ResourceListResponse_Item*>(&to_msg);
+  auto& from = static_cast<const ResourceListResponse_Item&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.ResourceListResponse.Item)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_type().empty()) {
-    _internal_set_type(from._internal_type());
+    _this->_internal_set_type(from._internal_type());
   }
   if (from._internal_has_id()) {
-    _internal_set_id(from._internal_id());
+    _this->_internal_set_id(from._internal_id());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ResourceListResponse_Item::CopyFrom(const ResourceListResponse_Item& from) {
@@ -2931,17 +3026,16 @@ void ResourceListResponse_Item::InternalSwap(ResourceListResponse_Item* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &type_, lhs_arena,
-      &other->type_, rhs_arena
+      &_impl_.type_, lhs_arena,
+      &other->_impl_.type_, rhs_arena
   );
-  swap(id_, other->id_);
+  swap(_impl_.id_, other->_impl_.id_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ResourceListResponse_Item::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_rbac_2eproto_getter, &descriptor_table_rbac_2eproto_once,
       file_level_metadata_rbac_2eproto[10]);
 }
@@ -2954,64 +3048,68 @@ class ResourceListResponse::_Internal {
 
 ResourceListResponse::ResourceListResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  item_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.plugins.rbac.v1.ResourceListResponse)
 }
 ResourceListResponse::ResourceListResponse(const ResourceListResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      item_(from.item_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ResourceListResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.item_){from._impl_.item_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:palm.plugins.rbac.v1.ResourceListResponse)
 }
 
-void ResourceListResponse::SharedCtor() {
+inline void ResourceListResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.item_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
 }
 
 ResourceListResponse::~ResourceListResponse() {
   // @@protoc_insertion_point(destructor:palm.plugins.rbac.v1.ResourceListResponse)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void ResourceListResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.item_.~RepeatedPtrField();
 }
 
-void ResourceListResponse::ArenaDtor(void* object) {
-  ResourceListResponse* _this = reinterpret_cast< ResourceListResponse* >(object);
-  (void)_this;
-}
-void ResourceListResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ResourceListResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void ResourceListResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.plugins.rbac.v1.ResourceListResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  item_.Clear();
+  _impl_.item_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ResourceListResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ResourceListResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // repeated .palm.plugins.rbac.v1.ResourceListResponse.Item item = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -3045,22 +3143,22 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ResourceListResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* ResourceListResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.plugins.rbac.v1.ResourceListResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .palm.plugins.rbac.v1.ResourceListResponse.Item item = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_item_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_item_size()); i < n; i++) {
+    const auto& repfield = this->_internal_item(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, this->_internal_item(i), target, stream);
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.plugins.rbac.v1.ResourceListResponse)
@@ -3071,41 +3169,37 @@ size_t ResourceListResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.plugins.rbac.v1.ResourceListResponse)
   size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .palm.plugins.rbac.v1.ResourceListResponse.Item item = 1;
   total_size += 1UL * this->_internal_item_size();
-  for (const auto& msg : this->item_) {
+  for (const auto& msg : this->_impl_.item_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ResourceListResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     ResourceListResponse::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ResourceListResponse::GetClassData() const { return &_class_data_; }
 
-void ResourceListResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<ResourceListResponse *>(to)->MergeFrom(
-      static_cast<const ResourceListResponse &>(from));
-}
 
-
-void ResourceListResponse::MergeFrom(const ResourceListResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.ResourceListResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void ResourceListResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ResourceListResponse*>(&to_msg);
+  auto& from = static_cast<const ResourceListResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.plugins.rbac.v1.ResourceListResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  item_.MergeFrom(from.item_);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.item_.MergeFrom(from._impl_.item_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ResourceListResponse::CopyFrom(const ResourceListResponse& from) {
@@ -3122,11 +3216,11 @@ bool ResourceListResponse::IsInitialized() const {
 void ResourceListResponse::InternalSwap(ResourceListResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  item_.InternalSwap(&other->item_);
+  _impl_.item_.InternalSwap(&other->_impl_.item_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ResourceListResponse::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_rbac_2eproto_getter, &descriptor_table_rbac_2eproto_once,
       file_level_metadata_rbac_2eproto[11]);
 }
@@ -3137,40 +3231,52 @@ void ResourceListResponse::InternalSwap(ResourceListResponse* other) {
 }  // namespace plugins
 }  // namespace palm
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::UserRequest* Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::UserRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::UserRequest*
+Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::UserRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::rbac::v1::UserRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::UserListResponse_Item* Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::UserListResponse_Item >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::UserListResponse_Item*
+Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::UserListResponse_Item >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::rbac::v1::UserListResponse_Item >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::UserListResponse* Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::UserListResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::UserListResponse*
+Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::UserListResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::rbac::v1::UserListResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::RoleRequest* Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::RoleRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::RoleRequest*
+Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::RoleRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::rbac::v1::RoleRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::RoleListResponse_Item* Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::RoleListResponse_Item >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::RoleListResponse_Item*
+Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::RoleListResponse_Item >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::rbac::v1::RoleListResponse_Item >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::RoleListResponse* Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::RoleListResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::RoleListResponse*
+Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::RoleListResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::rbac::v1::RoleListResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::RolesForUserRequest* Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::RolesForUserRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::RolesForUserRequest*
+Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::RolesForUserRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::rbac::v1::RolesForUserRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::PermissionListResponse_Item* Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::PermissionListResponse_Item >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::PermissionListResponse_Item*
+Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::PermissionListResponse_Item >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::rbac::v1::PermissionListResponse_Item >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::PermissionListResponse* Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::PermissionListResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::PermissionListResponse*
+Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::PermissionListResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::rbac::v1::PermissionListResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::PermissionsRequest* Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::PermissionsRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::PermissionsRequest*
+Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::PermissionsRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::rbac::v1::PermissionsRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::ResourceListResponse_Item* Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::ResourceListResponse_Item >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::ResourceListResponse_Item*
+Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::ResourceListResponse_Item >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::rbac::v1::ResourceListResponse_Item >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::ResourceListResponse* Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::ResourceListResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::palm::plugins::rbac::v1::ResourceListResponse*
+Arena::CreateMaybeMessage< ::palm::plugins::rbac::v1::ResourceListResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::plugins::rbac::v1::ResourceListResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE

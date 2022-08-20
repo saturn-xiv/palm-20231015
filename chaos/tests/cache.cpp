@@ -18,7 +18,7 @@ BOOST_AUTO_TEST_CASE(redis_toml) {
   BOOST_CHECK_EQUAL(cfg.host(), "192.168.0.10");
   BOOST_CHECK_EQUAL(cfg.port(), 63790);
   BOOST_CHECK_EQUAL(cfg.db(), 2);
-  BOOST_CHECK_EQUAL(cfg.timeout().count(), 8);
+  BOOST_CHECK_EQUAL(cfg.timeout(), std::chrono::seconds(8));
   BOOST_CHECK_NE(cfg.pool_size(), 32);
 }
 
