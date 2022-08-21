@@ -32,6 +32,7 @@ RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
 
 # https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
+RUN apt update
 ENV GCC_VERSION 12
 RUN apt install -y g++-${GCC_VERSION} g++-${GCC_VERSION}-aarch64-linux-gnu g++-${GCC_VERSION}-arm-linux-gnueabihf
 
@@ -111,9 +112,9 @@ RUN zsh -c "source $HOME/.zshrc \
 
 # https://opensearch.org/downloads.html#opensearch
 ENV OPENSEARCH_VERSION "2.2.0"
-RUN wget -q -o $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz \
+RUN wget -q -P $HOME/downloads \
     https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
-RUN tar xf -C $HOME/local/ $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
+RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C $HOME/local
 
 # https://www.rust-lang.org/tools/install
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
