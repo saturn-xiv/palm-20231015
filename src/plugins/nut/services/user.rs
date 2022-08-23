@@ -1,11 +1,10 @@
+use std::any::type_name;
 use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
-use casbin::{Enforcer, RbacApi};
 use chrono::Duration;
 use diesel::Connection as DieselConntection;
 use hyper::StatusCode;
-use tokio::sync::Mutex;
 use tonic::{Request, Response, Status};
 
 use super::super::super::super::{
@@ -18,7 +17,7 @@ use super::super::super::super::{
 };
 use super::super::{
     models::{
-        log::{Dao as LogDao, Level},
+        log::Dao as LogDao,
         user::{Action, Dao as UserDao, Item as User, Token},
     },
     v1,
@@ -30,7 +29,6 @@ pub struct Service {
     pub jwt: Arc<Jwt>,
     pub hmac: Arc<Hmac>,
     pub rabbitmq: Arc<RabbitMq>,
-    pub enforcer: Arc<Mutex<Enforcer>>,
 }
 
 impl v1::UserQueryRequest {
@@ -57,31 +55,15 @@ impl v1::UserQueryRequest {
 }
 
 impl v1::UserSignInResponse {
-    pub async fn new(user: &User, enf: &Mutex<Enforcer>, jwt: &Jwt, ttl: Duration) -> Result<Self> {
+    pub async fn new(user: &User, jwt: &Jwt, ttl: Duration) -> Result<Self> {
         let token = user.token(jwt, ttl)?;
-        let mut enf = enf.lock().await;
-        let enf = enf.deref_mut();
-        let mut roles = Vec::new();
-        for it in enf
-            .get_implicit_roles_for_user(&user.subject(), None)
-            .iter()
-        {
-            if let Some(it) = it.strip_prefix(v1::rbac_get_roles_response::Item::PREFIX) {
-                roles.push(it.to_string());
-            }
-        }
-        let permissions = enf
-            .get_implicit_permissions_for_user(&user.subject(), None)
-            .iter()
-            .filter(|x| x.len() == 3)
-            .map(|x| v1::rbac_get_permissions_response::Item::new(&x[0], &x[1], &x[2]))
-            .collect();
-
         Ok(Self {
             token,
-            roles,
-            permissions,
-            payload: Some(v1::site_user_index_response::Item::new(user)),
+            real_name: user.real_name.clone(),
+            // TODO
+            permissions: Vec::new(),
+            // TODO
+            roles: Vec::new(),
         })
     }
 }
@@ -109,7 +91,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<_, User>(
                     db,
                     user.id,
-                    &Level::Info,
+                    v1::user_logs_response::item::Level::Info as i32,
                     &ss.client_ip,
                     Some(user.id),
                     "sign in success",
@@ -120,7 +102,6 @@ impl v1::user_server::User for Service {
             let it = try_grpc!(
                 v1::UserSignInResponse::new(
                     &user,
-                    &self.enforcer,
                     jwt,
                     req.ttl
                         .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds)),
@@ -159,7 +140,7 @@ impl v1::user_server::User for Service {
             LogDao::add::<_, User>(
                 db,
                 user.id,
-                &Level::Info,
+                v1::user_logs_response::item::Level::Info as i32,
                 &ss.client_ip,
                 Some(user.id),
                 "sign up.",
@@ -226,7 +207,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<String, User>(
                     db,
                     user_id,
-                    &Level::Info,
+                    v1::user_logs_response::item::Level::Info as i32,
                     &ip,
                     Some(user.id),
                     "Confirm account.".to_string(),
@@ -286,7 +267,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<String, User>(
                     db,
                     user_id,
-                    &Level::Info,
+                    v1::user_logs_response::item::Level::Info as i32,
                     &ip,
                     Some(user.id),
                     "Unlock account.".to_string(),
@@ -339,7 +320,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<String, User>(
                     db,
                     user_id,
-                    &Level::Info,
+                    v1::user_logs_response::item::Level::Info as i32,
                     &ip,
                     Some(user.id),
                     "Reset password.".to_string(),
@@ -361,9 +342,8 @@ impl v1::user_server::User for Service {
         let user = try_grpc!(ss.current_user(db, jwt))?;
         let req = req.into_inner();
 
-        let it = try_grpc!(
-            v1::UserSignInResponse::new(&user, &self.enforcer, jwt, to_chrono_duration!(req)).await
-        )?;
+        let it =
+            try_grpc!(v1::UserSignInResponse::new(&user, jwt, to_chrono_duration!(req)).await)?;
 
         Ok(Response::new(it))
     }
@@ -374,11 +354,7 @@ impl v1::user_server::User for Service {
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
         let req = req.into_inner();
-        let level = match req.level {
-            Some(ref it) => Some(try_grpc!(it.parse().map_err(Status::internal))?),
-            None => None,
-        };
-        let total = try_grpc!(LogDao::count_by_queries(db, user.id, &level, &req.ip))?;
+        let total = try_grpc!(LogDao::count_by_queries(db, user.id, req.level, &req.ip))?;
         let pager = req.pager.clone().unwrap_or_default();
 
         // debug!(
@@ -395,7 +371,7 @@ impl v1::user_server::User for Service {
             user.id,
             pager.offset(total),
             pager.size(),
-            &level,
+            req.level,
             &req.ip
         ))?;
 
@@ -406,10 +382,10 @@ impl v1::user_server::User for Service {
                     id: x.id,
                     user_id: x.user_id,
                     message: x.message.clone(),
-                    level: x.level.to_string(),
+                    level: x.level,
                     ip: x.ip.clone(),
-                    resource_type: x.resource_type.clone(),
-                    resource_id: x.resource_id,
+                    // TODO parse resource
+                    resource: Some(v1::Resource::default()),
                     created_at: Some(to_timestamp!(x.created_at)),
                 })
                 .collect(),
@@ -425,7 +401,7 @@ impl v1::user_server::User for Service {
         try_grpc!(LogDao::add::<_, User>(
             db,
             user.id,
-            &Level::Info,
+            v1::user_logs_response::item::Level::Info as i32,
             &ss.client_ip,
             Some(user.id),
             "sign out."
@@ -455,7 +431,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<String, User>(
                     db,
                     user_id,
-                    &Level::Info,
+                    v1::user_logs_response::item::Level::Info as i32,
                     &ip,
                     Some(user.id),
                     "Update profile.".to_string(),
@@ -484,7 +460,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<String, User>(
                     db,
                     user_id,
-                    &Level::Info,
+                    v1::user_logs_response::item::Level::Info as i32,
                     &ip,
                     Some(user.id),
                     "Change password.".to_string(),
@@ -492,6 +468,187 @@ impl v1::user_server::User for Service {
                 Ok(())
             }))?;
         }
+
+        Ok(Response::new(()))
+    }
+
+    async fn show(&self, req: Request<v1::IdRequest>) -> GrpcResult<v1::user_index_response::Item> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let req = req.into_inner();
+
+        if !user.is_administrator() {
+            return Err(Status::permission_denied(type_name::<User>()));
+        }
+
+        let user = try_grpc!(UserDao::by_id(db, req.id))?;
+        let it = v1::user_index_response::Item::new(&user);
+        Ok(Response::new(it))
+    }
+    async fn index(&self, req: Request<v1::Pager>) -> GrpcResult<v1::UserIndexResponse> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+
+        if !user.is_administrator() {
+            return Err(Status::permission_denied(type_name::<User>()));
+        }
+        let req = req.into_inner();
+
+        let total = try_grpc!(UserDao::count(db))?;
+        let items = try_grpc!(UserDao::all(db, req.offset(total), req.size()))?;
+
+        Ok(Response::new(v1::UserIndexResponse {
+            items: items
+                .iter()
+                .map(v1::user_index_response::Item::new)
+                .collect(),
+            pagination: Some(v1::Pagination::new(&req, total)),
+        }))
+    }
+
+    async fn disable(&self, req: Request<v1::IdRequest>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+
+        if !user.is_administrator() {
+            return Err(Status::permission_denied(type_name::<User>()));
+        }
+        let req = req.into_inner();
+        {
+            let it = try_grpc!(UserDao::by_id(db, req.id))?;
+            if it.is(User::ROLE_ROOT) {
+                return Err(Status::permission_denied(type_name::<User>()));
+            }
+        }
+
+        try_grpc!(UserDao::enable(db, req.id, false))?;
+        Ok(Response::new(()))
+    }
+
+    async fn enable(&self, req: Request<v1::IdRequest>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+
+        if !user.is_administrator() {
+            return Err(Status::permission_denied(type_name::<User>()));
+        }
+        let req = req.into_inner();
+        {
+            let it = try_grpc!(UserDao::by_id(db, req.id))?;
+            if it.is(User::ROLE_ROOT) {
+                return Err(Status::permission_denied(type_name::<User>()));
+            }
+        }
+        try_grpc!(UserDao::enable(db, req.id, true))?;
+        Ok(Response::new(()))
+    }
+
+    async fn lock(&self, req: Request<v1::IdRequest>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+
+        if !user.is_administrator() {
+            return Err(Status::permission_denied(type_name::<User>()));
+        }
+        let req = req.into_inner();
+        {
+            let it = try_grpc!(UserDao::by_id(db, req.id))?;
+            if it.is(User::ROLE_ROOT) {
+                return Err(Status::permission_denied(type_name::<User>()));
+            }
+        }
+        try_grpc!(UserDao::lock(db, req.id, true))?;
+        Ok(Response::new(()))
+    }
+
+    async fn unlock(&self, req: Request<v1::IdRequest>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+
+        if !user.is_administrator() {
+            return Err(Status::permission_denied(type_name::<User>()));
+        }
+        let req = req.into_inner();
+        {
+            let it = try_grpc!(UserDao::by_id(db, req.id))?;
+            if it.is(User::ROLE_ROOT) {
+                return Err(Status::permission_denied(type_name::<User>()));
+            }
+        }
+        try_grpc!(UserDao::lock(db, req.id, false))?;
+        Ok(Response::new(()))
+    }
+    async fn confirm(&self, req: Request<v1::IdRequest>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+
+        if !user.is_administrator() {
+            return Err(Status::permission_denied(type_name::<User>()));
+        }
+        let req = req.into_inner();
+        {
+            let it = try_grpc!(UserDao::by_id(db, req.id))?;
+            if it.is(User::ROLE_ROOT) {
+                return Err(Status::permission_denied(type_name::<User>()));
+            }
+        }
+        try_grpc!(UserDao::confirm(db, req.id))?;
+        Ok(Response::new(()))
+    }
+
+    async fn set_password(&self, req: Request<v1::UserSetPasswordRequest>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+        let hmac = self.hmac.deref();
+        let user = try_grpc!(ss.current_user(db, jwt))?;
+
+        if !user.is_administrator() {
+            return Err(Status::permission_denied(type_name::<User>()));
+        }
+        let req = req.into_inner();
+        {
+            let it = try_grpc!(UserDao::by_id(db, req.user))?;
+            if it.is(User::ROLE_ROOT) {
+                return Err(Status::permission_denied(type_name::<User>()));
+            }
+        }
+
+        try_grpc!(db.transaction::<_, Error, _>(move |db| {
+            let it = UserDao::by_id(db, req.user)?;
+            UserDao::password(db, hmac, it.id, &req.password)?;
+            LogDao::add::<_, User>(
+                db,
+                it.id,
+                v1::user_logs_response::item::Level::Info as i32,
+                &ss.client_ip,
+                Some(it.id),
+                &format!("reset password by {}", user),
+            )?;
+            Ok(user)
+        }))?;
 
         Ok(Response::new(()))
     }
@@ -541,5 +698,30 @@ impl Service {
         self.rabbitmq.send("", v1::EmailTask::QUEUE, &task).await?;
 
         Ok(())
+    }
+}
+
+impl v1::user_index_response::Item {
+    pub fn new(x: &User) -> Self {
+        Self {
+            id: x.id,
+            uid: x.uid.clone(),
+            email: x.email.clone(),
+            real_name: x.real_name.clone(),
+            nick_name: x.nick_name.clone(),
+            provider_type: x.provider_type.clone(),
+            updated_at: Some(to_timestamp!(x.updated_at)),
+            sign_in_count: x.sign_in_count,
+            lang: x.lang.clone(),
+            time_zone: x.time_zone.clone(),
+            avatar: x.avatar.clone(),
+            last_sign_in_at: x.last_sign_in_at.map(|x| to_timestamp!(x)),
+            last_sign_in_ip: x.last_sign_in_ip.clone(),
+            current_sign_in_at: x.current_sign_in_at.map(|x| to_timestamp!(x)),
+            current_sign_in_ip: x.current_sign_in_ip.clone(),
+            confirmed_at: x.confirmed_at.map(|x| to_timestamp!(x)),
+            locked_at: x.locked_at.map(|x| to_timestamp!(x)),
+            deleted_at: x.deleted_at.map(|x| to_timestamp!(x)),
+        }
     }
 }

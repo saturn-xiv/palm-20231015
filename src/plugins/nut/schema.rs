@@ -64,7 +64,7 @@ diesel::table! {
     logs (id) {
         id -> Int4,
         user_id -> Int4,
-        level -> Varchar,
+        level -> Int4,
         ip -> Varchar,
         resource_type -> Varchar,
         resource_id -> Nullable<Int4>,
@@ -74,9 +74,17 @@ diesel::table! {
 }
 
 diesel::table! {
+    notifications (id) {
+        id -> Int4,
+        message -> Bytea,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     permissions (id) {
         id -> Int4,
-        role -> Varchar,
+        role -> Int4,
         operation -> Varchar,
         resource_type -> Varchar,
         resource_id -> Nullable<Int4>,
@@ -88,7 +96,7 @@ diesel::table! {
     roles (id) {
         id -> Int4,
         code -> Varchar,
-        parent -> Nullable<Varchar>,
+        parent_id -> Nullable<Int4>,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
@@ -98,9 +106,9 @@ diesel::table! {
 diesel::table! {
     roles_constraints (id) {
         id -> Int4,
-        x -> Varchar,
+        x -> Int4,
         term -> Varchar,
-        y -> Varchar,
+        y -> Int4,
         created_at -> Timestamp,
     }
 }
@@ -108,10 +116,10 @@ diesel::table! {
 diesel::table! {
     roles_users (id) {
         id -> Int4,
-        role -> Varchar,
+        role -> Int4,
         user -> Int4,
-        nbf -> Date,
-        exp -> Date,
+        not_before -> Timestamp,
+        expired_at -> Timestamp,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
@@ -226,6 +234,7 @@ diesel::allow_tables_to_appear_in_same_query!(
     categories_resources,
     leave_words,
     logs,
+    notifications,
     permissions,
     roles,
     roles_constraints,

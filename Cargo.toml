@@ -72,10 +72,6 @@ handlebars = "4"
 amq-protocol-uri = "7"
 jsonwebtoken = "8"
 
-[dependencies.sqlx-adapter]
-version = "0.4"
-features = ["postgres"]
-
 [dependencies.chrono]
 version = "0.4"
 features = ["serde"]
@@ -137,10 +133,6 @@ features = ["derive"]
 [dependencies.tokio]
 version = "1"
 features = ["full"]
-
-[dependencies.casbin]
-version = "2"
-features = ["watcher"]
 
 [dependencies.rss]
 version = "2"

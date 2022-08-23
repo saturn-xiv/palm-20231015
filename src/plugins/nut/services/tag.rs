@@ -1,7 +1,5 @@
 use std::sync::Arc;
 
-use casbin::Enforcer;
-use tokio::sync::Mutex;
 use tonic::{Request, Response};
 
 use super::super::super::super::{jwt::Jwt, orm::postgresql::Pool as PostgreSqlPool, GrpcResult};
@@ -10,7 +8,6 @@ use super::super::v1;
 pub struct Service {
     pub pgsql: PostgreSqlPool,
     pub jwt: Arc<Jwt>,
-    pub enforcer: Arc<Mutex<Enforcer>>,
 }
 
 #[tonic::async_trait]

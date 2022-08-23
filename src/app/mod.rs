@@ -67,10 +67,8 @@ pub enum SubCommand {
     I18nSync,
     #[clap(about = "Http Server")]
     Web,
-    #[clap(about = "gRPC-Web Server")]
-    RpcWeb,
-    #[clap(about = "gRPC-TCP Server")]
-    RpcTcp,
+    #[clap(about = "gRPC Server")]
+    Rpc,
     #[clap(about = "Worker process")]
     Worker(Worker),
     #[clap(about = "Import log from journal")]
@@ -155,10 +153,7 @@ pub async fn launch() -> Result<()> {
                 return user::list(db);
             }
             if let SubCommand::UserApplyPolicy(ref it) = args.command {
-                let enf = cfg.enforcer(uid, 2).await?;
-                let mut enf = enf.lock().await;
-                let enf = enf.deref_mut();
-                return it.execute(db, enf).await;
+                return it.execute(db);
             }
             if let SubCommand::UserResetPassword(ref it) = args.command {
                 return it.execute(db, &hmac);
@@ -226,11 +221,8 @@ pub async fn launch() -> Result<()> {
     if args.command == SubCommand::Web {
         return web::launch(&cfg).await;
     }
-    if args.command == SubCommand::RpcWeb {
-        return rpc::web(&cfg).await;
-    }
-    if args.command == SubCommand::RpcTcp {
-        return rpc::tcp(&cfg).await;
+    if args.command == SubCommand::Rpc {
+        return rpc::launch(&cfg).await;
     }
     if let SubCommand::Worker(ref it) = args.command {
         worker::launch(&cfg, &it.queue).await?;

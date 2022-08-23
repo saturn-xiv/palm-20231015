@@ -11,12 +11,12 @@ pub struct Service {
 }
 
 #[tonic::async_trait]
-impl v1::category_server::Category for Service {
-    async fn create(&self, _req: Request<v1::CategoryCreateRequest>) -> GrpcResult<()> {
+impl v1::shorter_link_server::ShorterLink for Service {
+    async fn create(&self, _req: Request<v1::ShorterLinkCreateRequest>) -> GrpcResult<()> {
         // TODO
         Ok(Response::new(()))
     }
-    async fn update(&self, _req: Request<v1::CategoryUpdateRequest>) -> GrpcResult<()> {
+    async fn update(&self, _req: Request<v1::ShorterLinkUpdateRequest>) -> GrpcResult<()> {
         // TODO
         Ok(Response::new(()))
     }
@@ -24,8 +24,8 @@ impl v1::category_server::Category for Service {
         // TODO
         Ok(Response::new(()))
     }
-    async fn index(&self, _req: Request<v1::Pager>) -> GrpcResult<v1::CategoryIndexResponse> {
+    async fn index(&self, _req: Request<v1::Pager>) -> GrpcResult<v1::ShorterLinkIndexResponse> {
         // TODO
-        Ok(Response::new(v1::CategoryIndexResponse::default()))
+        Ok(Response::new(v1::ShorterLinkIndexResponse::default()))
     }
 }

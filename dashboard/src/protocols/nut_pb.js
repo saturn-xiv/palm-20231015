@@ -27,10 +27,18 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 goog.object.extend(proto, google_protobuf_timestamp_pb);
 var google_protobuf_duration_pb = require('google-protobuf/google/protobuf/duration_pb.js');
 goog.object.extend(proto, google_protobuf_duration_pb);
+goog.exportSymbol('proto.palm.plugins.nut.v1.AttachemtShowRequest', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.AttachemtShowResponse', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.AttachmetIndexResponse', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.AwsProfile', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.BaiduProfile', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.BaiduProfile.SiteVerify', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.BingProfile', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.CategoryCreateRequest', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.CategoryIndexResponse', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.CategoryIndexResponse.Item', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.CategoryUpdateRequest', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.EmailTask', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.EmailTask.Attachment', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.EmailTask.ContentType', null, global);
@@ -43,20 +51,34 @@ goog.exportSymbol('proto.palm.plugins.nut.v1.LocaleIndexResponse.Item', null, gl
 goog.exportSymbol('proto.palm.plugins.nut.v1.LocaleSetRequest', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.Pager', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.Pagination', null, global);
-goog.exportSymbol('proto.palm.plugins.nut.v1.PermissionListResponse', null, global);
-goog.exportSymbol('proto.palm.plugins.nut.v1.PermissionListResponse.Item', null, global);
-goog.exportSymbol('proto.palm.plugins.nut.v1.PermissionsRequest', null, global);
-goog.exportSymbol('proto.palm.plugins.nut.v1.PermissionsRequest.WhoCase', null, global);
-goog.exportSymbol('proto.palm.plugins.nut.v1.ResourceListResponse', null, global);
-goog.exportSymbol('proto.palm.plugins.nut.v1.ResourceListResponse.Item', null, global);
-goog.exportSymbol('proto.palm.plugins.nut.v1.Role', null, global);
-goog.exportSymbol('proto.palm.plugins.nut.v1.RoleListResponse', null, global);
-goog.exportSymbol('proto.palm.plugins.nut.v1.RoleListResponse.Item', null, global);
-goog.exportSymbol('proto.palm.plugins.nut.v1.RoleRequest', null, global);
-goog.exportSymbol('proto.palm.plugins.nut.v1.RolesForUserRequest', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.PolicyPermissionListResponse', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.PolicyPermissionsRequest', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.PolicyPermissionsRequest.WhoCase', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.PolicyResourceListResponse', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.PolicyRoleListResponse', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.PolicyRoleRequest', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.PolicyUserListResponse', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.PolicyUserListResponse.Item', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.PolicyUserRequest', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.Resource', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.SettingGetRequest', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.SettingGetResponse', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.SettingSetRequest', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.ShorterLinkCreateRequest', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.ShorterLinkIndexResponse', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.SiteAwsS3TestResponse', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.SiteIndexLeaveWordResponse', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.SiteIndexLeaveWordResponse.Item', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.SiteIndexNotificationResponse', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.MessageCase', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.SiteInstallRequest', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.SiteLayoutResponse', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.SiteLayoutResponse.Author', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.SiteNewLeaveWordRequest', null, global);
@@ -75,25 +97,29 @@ goog.exportSymbol('proto.palm.plugins.nut.v1.SiteStatusResponse.RabbitMq', null,
 goog.exportSymbol('proto.palm.plugins.nut.v1.SiteStatusResponse.Redis', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.SiteStatusResponse.Redis.Item', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.SiteStatusResponse.System', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.SmsTask', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.SmtpProfile', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.TagCreateRequest', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.TagIndexResponse', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.TagIndexResponse.Item', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.TagUpdateRequest', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.UserChangePasswordRequest', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.UserEmailRequest', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.UserGetProfileResponse', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.UserIndexResponse', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.UserIndexResponse.Item', null, global);
-goog.exportSymbol('proto.palm.plugins.nut.v1.UserListResponse', null, global);
-goog.exportSymbol('proto.palm.plugins.nut.v1.UserListResponse.Item', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.UserLogsRequest', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.UserLogsResponse', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.UserLogsResponse.Item', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.UserLogsResponse.Item.Level', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.UserQueryRequest', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.UserQueryRequest.IdCase', null, global);
-goog.exportSymbol('proto.palm.plugins.nut.v1.UserRequest', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.UserResetPasswordRequest', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.UserSetPasswordRequest', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.UserSetProfileRequest', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.UserSignInRequest', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.UserSignInResponse', null, global);
+goog.exportSymbol('proto.palm.plugins.nut.v1.UserSignInResponse.Permission', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.UserSignUpRequest', null, global);
 goog.exportSymbol('proto.palm.plugins.nut.v1.UserTokenRequest', null, global);
 /**
@@ -169,6 +195,27 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
+proto.palm.plugins.nut.v1.Resource = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.Resource, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.Resource.displayName = 'proto.palm.plugins.nut.v1.Resource';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.palm.plugins.nut.v1.UserQueryRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, proto.palm.plugins.nut.v1.UserQueryRequest.oneofGroups_);
 };
@@ -212,7 +259,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.palm.plugins.nut.v1.UserSignInResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.UserSignInResponse.repeatedFields_, null);
 };
 goog.inherits(proto.palm.plugins.nut.v1.UserSignInResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -221,6 +268,27 @@ if (goog.DEBUG && !COMPILED) {
    * @override
    */
   proto.palm.plugins.nut.v1.UserSignInResponse.displayName = 'proto.palm.plugins.nut.v1.UserSignInResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.Permission = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.UserSignInResponse.Permission, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.UserSignInResponse.Permission.displayName = 'proto.palm.plugins.nut.v1.UserSignInResponse.Permission';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -305,6 +373,27 @@ if (goog.DEBUG && !COMPILED) {
    * @override
    */
   proto.palm.plugins.nut.v1.UserResetPasswordRequest.displayName = 'proto.palm.plugins.nut.v1.UserResetPasswordRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.UserSetPasswordRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.UserSetPasswordRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.UserSetPasswordRequest.displayName = 'proto.palm.plugins.nut.v1.UserSetPasswordRequest';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -442,27 +531,6 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.palm.plugins.nut.v1.UserSetPasswordRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.palm.plugins.nut.v1.UserSetPasswordRequest, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  /**
-   * @public
-   * @override
-   */
-  proto.palm.plugins.nut.v1.UserSetPasswordRequest.displayName = 'proto.palm.plugins.nut.v1.UserSetPasswordRequest';
-}
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
 proto.palm.plugins.nut.v1.UserIndexResponse = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.UserIndexResponse.repeatedFields_, null);
 };
@@ -505,16 +573,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.palm.plugins.nut.v1.UserRequest = function(opt_data) {
+proto.palm.plugins.nut.v1.PolicyUserRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.palm.plugins.nut.v1.UserRequest, jspb.Message);
+goog.inherits(proto.palm.plugins.nut.v1.PolicyUserRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.palm.plugins.nut.v1.UserRequest.displayName = 'proto.palm.plugins.nut.v1.UserRequest';
+  proto.palm.plugins.nut.v1.PolicyUserRequest.displayName = 'proto.palm.plugins.nut.v1.PolicyUserRequest';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -526,16 +594,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.palm.plugins.nut.v1.UserListResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.UserListResponse.repeatedFields_, null);
+proto.palm.plugins.nut.v1.PolicyUserListResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.PolicyUserListResponse.repeatedFields_, null);
 };
-goog.inherits(proto.palm.plugins.nut.v1.UserListResponse, jspb.Message);
+goog.inherits(proto.palm.plugins.nut.v1.PolicyUserListResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.palm.plugins.nut.v1.UserListResponse.displayName = 'proto.palm.plugins.nut.v1.UserListResponse';
+  proto.palm.plugins.nut.v1.PolicyUserListResponse.displayName = 'proto.palm.plugins.nut.v1.PolicyUserListResponse';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -547,16 +615,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.palm.plugins.nut.v1.UserListResponse.Item = function(opt_data) {
+proto.palm.plugins.nut.v1.PolicyUserListResponse.Item = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.palm.plugins.nut.v1.UserListResponse.Item, jspb.Message);
+goog.inherits(proto.palm.plugins.nut.v1.PolicyUserListResponse.Item, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.palm.plugins.nut.v1.UserListResponse.Item.displayName = 'proto.palm.plugins.nut.v1.UserListResponse.Item';
+  proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.displayName = 'proto.palm.plugins.nut.v1.PolicyUserListResponse.Item';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -568,16 +636,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.palm.plugins.nut.v1.RoleRequest = function(opt_data) {
+proto.palm.plugins.nut.v1.PolicyRoleRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.palm.plugins.nut.v1.RoleRequest, jspb.Message);
+goog.inherits(proto.palm.plugins.nut.v1.PolicyRoleRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.palm.plugins.nut.v1.RoleRequest.displayName = 'proto.palm.plugins.nut.v1.RoleRequest';
+  proto.palm.plugins.nut.v1.PolicyRoleRequest.displayName = 'proto.palm.plugins.nut.v1.PolicyRoleRequest';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -589,16 +657,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.palm.plugins.nut.v1.RoleListResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.RoleListResponse.repeatedFields_, null);
+proto.palm.plugins.nut.v1.PolicyRoleListResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.PolicyRoleListResponse.repeatedFields_, null);
 };
-goog.inherits(proto.palm.plugins.nut.v1.RoleListResponse, jspb.Message);
+goog.inherits(proto.palm.plugins.nut.v1.PolicyRoleListResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.palm.plugins.nut.v1.RoleListResponse.displayName = 'proto.palm.plugins.nut.v1.RoleListResponse';
+  proto.palm.plugins.nut.v1.PolicyRoleListResponse.displayName = 'proto.palm.plugins.nut.v1.PolicyRoleListResponse';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -610,16 +678,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.palm.plugins.nut.v1.RoleListResponse.Item = function(opt_data) {
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.palm.plugins.nut.v1.RoleListResponse.Item, jspb.Message);
+goog.inherits(proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.palm.plugins.nut.v1.RoleListResponse.Item.displayName = 'proto.palm.plugins.nut.v1.RoleListResponse.Item';
+  proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item.displayName = 'proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -631,16 +699,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.palm.plugins.nut.v1.RolesForUserRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.RolesForUserRequest.repeatedFields_, null);
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.repeatedFields_, null);
 };
-goog.inherits(proto.palm.plugins.nut.v1.RolesForUserRequest, jspb.Message);
+goog.inherits(proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.palm.plugins.nut.v1.RolesForUserRequest.displayName = 'proto.palm.plugins.nut.v1.RolesForUserRequest';
+  proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.displayName = 'proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -652,16 +720,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.palm.plugins.nut.v1.PermissionListResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.PermissionListResponse.repeatedFields_, null);
+proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.repeatedFields_, null);
 };
-goog.inherits(proto.palm.plugins.nut.v1.PermissionListResponse, jspb.Message);
+goog.inherits(proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.palm.plugins.nut.v1.PermissionListResponse.displayName = 'proto.palm.plugins.nut.v1.PermissionListResponse';
+  proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.displayName = 'proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -673,16 +741,37 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.Item = function(opt_data) {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.PolicyPermissionListResponse.repeatedFields_, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.PolicyPermissionListResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.PolicyPermissionListResponse.displayName = 'proto.palm.plugins.nut.v1.PolicyPermissionListResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.palm.plugins.nut.v1.PermissionListResponse.Item, jspb.Message);
+goog.inherits(proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.palm.plugins.nut.v1.PermissionListResponse.Item.displayName = 'proto.palm.plugins.nut.v1.PermissionListResponse.Item';
+  proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.displayName = 'proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -694,16 +783,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.palm.plugins.nut.v1.PermissionsRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.palm.plugins.nut.v1.PermissionsRequest.oneofGroups_);
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.palm.plugins.nut.v1.PolicyPermissionsRequest.oneofGroups_);
 };
-goog.inherits(proto.palm.plugins.nut.v1.PermissionsRequest, jspb.Message);
+goog.inherits(proto.palm.plugins.nut.v1.PolicyPermissionsRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.palm.plugins.nut.v1.PermissionsRequest.displayName = 'proto.palm.plugins.nut.v1.PermissionsRequest';
+  proto.palm.plugins.nut.v1.PolicyPermissionsRequest.displayName = 'proto.palm.plugins.nut.v1.PolicyPermissionsRequest';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -715,37 +804,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.palm.plugins.nut.v1.ResourceListResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.ResourceListResponse.repeatedFields_, null);
+proto.palm.plugins.nut.v1.PolicyResourceListResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.PolicyResourceListResponse.repeatedFields_, null);
 };
-goog.inherits(proto.palm.plugins.nut.v1.ResourceListResponse, jspb.Message);
+goog.inherits(proto.palm.plugins.nut.v1.PolicyResourceListResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.palm.plugins.nut.v1.ResourceListResponse.displayName = 'proto.palm.plugins.nut.v1.ResourceListResponse';
-}
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.palm.plugins.nut.v1.ResourceListResponse.Item = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.palm.plugins.nut.v1.ResourceListResponse.Item, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  /**
-   * @public
-   * @override
-   */
-  proto.palm.plugins.nut.v1.ResourceListResponse.Item.displayName = 'proto.palm.plugins.nut.v1.ResourceListResponse.Item';
+  proto.palm.plugins.nut.v1.PolicyResourceListResponse.displayName = 'proto.palm.plugins.nut.v1.PolicyResourceListResponse';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -830,6 +898,27 @@ if (goog.DEBUG && !COMPILED) {
    * @override
    */
   proto.palm.plugins.nut.v1.LocaleSetRequest.displayName = 'proto.palm.plugins.nut.v1.LocaleSetRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.SiteInstallRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.SiteInstallRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.SiteInstallRequest.displayName = 'proto.palm.plugins.nut.v1.SiteInstallRequest';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -1198,6 +1287,69 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.repeatedFields_, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.SiteIndexNotificationResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.displayName = 'proto.palm.plugins.nut.v1.SiteIndexNotificationResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.oneofGroups_);
+};
+goog.inherits(proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.displayName = 'proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.SmsTask = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.SmsTask.repeatedFields_, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.SmsTask, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.SmsTask.displayName = 'proto.palm.plugins.nut.v1.SmsTask';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.palm.plugins.nut.v1.EmailTask = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.EmailTask.repeatedFields_, null);
 };
@@ -1460,6 +1612,405 @@ if (goog.DEBUG && !COMPILED) {
    * @override
    */
   proto.palm.plugins.nut.v1.SiteStatusResponse.System.displayName = 'proto.palm.plugins.nut.v1.SiteStatusResponse.System';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.repeatedFields_, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.ShorterLinkIndexResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.displayName = 'proto.palm.plugins.nut.v1.ShorterLinkIndexResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.displayName = 'proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.ShorterLinkCreateRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.ShorterLinkCreateRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.ShorterLinkCreateRequest.displayName = 'proto.palm.plugins.nut.v1.ShorterLinkCreateRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest.displayName = 'proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.TagIndexResponse.repeatedFields_, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.TagIndexResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.TagIndexResponse.displayName = 'proto.palm.plugins.nut.v1.TagIndexResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.TagIndexResponse.Item, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.TagIndexResponse.Item.displayName = 'proto.palm.plugins.nut.v1.TagIndexResponse.Item';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.TagCreateRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.TagCreateRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.TagCreateRequest.displayName = 'proto.palm.plugins.nut.v1.TagCreateRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.TagUpdateRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.TagUpdateRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.TagUpdateRequest.displayName = 'proto.palm.plugins.nut.v1.TagUpdateRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.CategoryIndexResponse.repeatedFields_, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.CategoryIndexResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.CategoryIndexResponse.displayName = 'proto.palm.plugins.nut.v1.CategoryIndexResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.CategoryIndexResponse.Item, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.displayName = 'proto.palm.plugins.nut.v1.CategoryIndexResponse.Item';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.CategoryCreateRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.CategoryCreateRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.CategoryCreateRequest.displayName = 'proto.palm.plugins.nut.v1.CategoryCreateRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.CategoryUpdateRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.CategoryUpdateRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.CategoryUpdateRequest.displayName = 'proto.palm.plugins.nut.v1.CategoryUpdateRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.AttachemtShowRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.AttachemtShowRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.AttachemtShowRequest.displayName = 'proto.palm.plugins.nut.v1.AttachemtShowRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.AttachemtShowResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.AttachemtShowResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.AttachemtShowResponse.displayName = 'proto.palm.plugins.nut.v1.AttachemtShowResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.plugins.nut.v1.AttachmetIndexResponse.repeatedFields_, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.AttachmetIndexResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.AttachmetIndexResponse.displayName = 'proto.palm.plugins.nut.v1.AttachmetIndexResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.displayName = 'proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.SettingGetResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.SettingGetResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.SettingGetResponse.displayName = 'proto.palm.plugins.nut.v1.SettingGetResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.SettingGetRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.SettingGetRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.SettingGetRequest.displayName = 'proto.palm.plugins.nut.v1.SettingGetRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.palm.plugins.nut.v1.SettingSetRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.palm.plugins.nut.v1.SettingSetRequest.displayName = 'proto.palm.plugins.nut.v1.SettingSetRequest';
 }
 
 
@@ -2002,6 +2553,184 @@ proto.palm.plugins.nut.v1.IdRequest.prototype.setId = function(value) {
 
 
 
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.Resource.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.Resource.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.Resource} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.Resource.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    type: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    id: jspb.Message.getFieldWithDefault(msg, 2, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.Resource}
+ */
+proto.palm.plugins.nut.v1.Resource.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.Resource;
+  return proto.palm.plugins.nut.v1.Resource.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.Resource} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.Resource}
+ */
+proto.palm.plugins.nut.v1.Resource.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setType(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setId(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.Resource.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.Resource.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.Resource} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.Resource.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getType();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
+    writer.writeInt32(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string type = 1;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.Resource.prototype.getType = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.Resource} returns this
+ */
+proto.palm.plugins.nut.v1.Resource.prototype.setType = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional int32 id = 2;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.Resource.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.Resource} returns this
+ */
+proto.palm.plugins.nut.v1.Resource.prototype.setId = function(value) {
+  return jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.Resource} returns this
+ */
+proto.palm.plugins.nut.v1.Resource.prototype.clearId = function() {
+  return jspb.Message.setField(this, 2, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.Resource.prototype.hasId = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+
 /**
  * Oneof group definitions for this message. Each group defines the field
  * numbers belonging to that group. When of these fields' value is set, all
@@ -2456,6 +3185,13 @@ proto.palm.plugins.nut.v1.UserSignInRequest.prototype.hasTtl = function() {
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.repeatedFields_ = [11,12];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -2487,7 +3223,11 @@ proto.palm.plugins.nut.v1.UserSignInResponse.prototype.toObject = function(opt_i
  */
 proto.palm.plugins.nut.v1.UserSignInResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    token: jspb.Message.getFieldWithDefault(msg, 1, "")
+    token: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    realName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    rolesList: (f = jspb.Message.getRepeatedField(msg, 11)) == null ? undefined : f,
+    permissionsList: jspb.Message.toObjectList(msg.getPermissionsList(),
+    proto.palm.plugins.nut.v1.UserSignInResponse.Permission.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -2528,6 +3268,19 @@ proto.palm.plugins.nut.v1.UserSignInResponse.deserializeBinaryFromReader = funct
       var value = /** @type {string} */ (reader.readString());
       msg.setToken(value);
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setRealName(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addRoles(value);
+      break;
+    case 12:
+      var value = new proto.palm.plugins.nut.v1.UserSignInResponse.Permission;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.UserSignInResponse.Permission.deserializeBinaryFromReader);
+      msg.addPermissions(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -2564,6 +3317,209 @@ proto.palm.plugins.nut.v1.UserSignInResponse.serializeBinaryToWriter = function(
       f
     );
   }
+  f = message.getRealName();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getRolesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      11,
+      f
+    );
+  }
+  f = message.getPermissionsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      12,
+      f,
+      proto.palm.plugins.nut.v1.UserSignInResponse.Permission.serializeBinaryToWriter
+    );
+  }
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.Permission.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.UserSignInResponse.Permission.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.UserSignInResponse.Permission} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.Permission.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    operation: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    resource: (f = msg.getResource()) && proto.palm.plugins.nut.v1.Resource.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.UserSignInResponse.Permission}
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.Permission.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.UserSignInResponse.Permission;
+  return proto.palm.plugins.nut.v1.UserSignInResponse.Permission.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.UserSignInResponse.Permission} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.UserSignInResponse.Permission}
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.Permission.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setOperation(value);
+      break;
+    case 2:
+      var value = new proto.palm.plugins.nut.v1.Resource;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.Resource.deserializeBinaryFromReader);
+      msg.setResource(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.Permission.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.UserSignInResponse.Permission.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.UserSignInResponse.Permission} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.Permission.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getOperation();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getResource();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.palm.plugins.nut.v1.Resource.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string operation = 1;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.Permission.prototype.getOperation = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.UserSignInResponse.Permission} returns this
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.Permission.prototype.setOperation = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional Resource resource = 2;
+ * @return {?proto.palm.plugins.nut.v1.Resource}
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.Permission.prototype.getResource = function() {
+  return /** @type{?proto.palm.plugins.nut.v1.Resource} */ (
+    jspb.Message.getWrapperField(this, proto.palm.plugins.nut.v1.Resource, 2));
+};
+
+
+/**
+ * @param {?proto.palm.plugins.nut.v1.Resource|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.UserSignInResponse.Permission} returns this
+*/
+proto.palm.plugins.nut.v1.UserSignInResponse.Permission.prototype.setResource = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.UserSignInResponse.Permission} returns this
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.Permission.prototype.clearResource = function() {
+  return this.setResource(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.Permission.prototype.hasResource = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -2582,6 +3538,99 @@ proto.palm.plugins.nut.v1.UserSignInResponse.prototype.getToken = function() {
  */
 proto.palm.plugins.nut.v1.UserSignInResponse.prototype.setToken = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string real_name = 2;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.prototype.getRealName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.UserSignInResponse} returns this
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.prototype.setRealName = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * repeated string roles = 11;
+ * @return {!Array<string>}
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.prototype.getRolesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 11));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.palm.plugins.nut.v1.UserSignInResponse} returns this
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.prototype.setRolesList = function(value) {
+  return jspb.Message.setField(this, 11, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.palm.plugins.nut.v1.UserSignInResponse} returns this
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.prototype.addRoles = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 11, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.palm.plugins.nut.v1.UserSignInResponse} returns this
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.prototype.clearRolesList = function() {
+  return this.setRolesList([]);
+};
+
+
+/**
+ * repeated Permission permissions = 12;
+ * @return {!Array<!proto.palm.plugins.nut.v1.UserSignInResponse.Permission>}
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.prototype.getPermissionsList = function() {
+  return /** @type{!Array<!proto.palm.plugins.nut.v1.UserSignInResponse.Permission>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.palm.plugins.nut.v1.UserSignInResponse.Permission, 12));
+};
+
+
+/**
+ * @param {!Array<!proto.palm.plugins.nut.v1.UserSignInResponse.Permission>} value
+ * @return {!proto.palm.plugins.nut.v1.UserSignInResponse} returns this
+*/
+proto.palm.plugins.nut.v1.UserSignInResponse.prototype.setPermissionsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 12, value);
+};
+
+
+/**
+ * @param {!proto.palm.plugins.nut.v1.UserSignInResponse.Permission=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.palm.plugins.nut.v1.UserSignInResponse.Permission}
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.prototype.addPermissions = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 12, opt_value, proto.palm.plugins.nut.v1.UserSignInResponse.Permission, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.palm.plugins.nut.v1.UserSignInResponse} returns this
+ */
+proto.palm.plugins.nut.v1.UserSignInResponse.prototype.clearPermissionsList = function() {
+  return this.setPermissionsList([]);
 };
 
 
@@ -3382,6 +4431,166 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
+proto.palm.plugins.nut.v1.UserSetPasswordRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.UserSetPasswordRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.UserSetPasswordRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.UserSetPasswordRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    user: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    password: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.UserSetPasswordRequest}
+ */
+proto.palm.plugins.nut.v1.UserSetPasswordRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.UserSetPasswordRequest;
+  return proto.palm.plugins.nut.v1.UserSetPasswordRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.UserSetPasswordRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.UserSetPasswordRequest}
+ */
+proto.palm.plugins.nut.v1.UserSetPasswordRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setUser(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPassword(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.UserSetPasswordRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.UserSetPasswordRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.UserSetPasswordRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.UserSetPasswordRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getUser();
+  if (f !== 0) {
+    writer.writeInt32(
+      1,
+      f
+    );
+  }
+  f = message.getPassword();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional int32 user = 1;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.UserSetPasswordRequest.prototype.getUser = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.UserSetPasswordRequest} returns this
+ */
+proto.palm.plugins.nut.v1.UserSetPasswordRequest.prototype.setUser = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string password = 2;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.UserSetPasswordRequest.prototype.getPassword = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.UserSetPasswordRequest} returns this
+ */
+proto.palm.plugins.nut.v1.UserSetPasswordRequest.prototype.setPassword = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
 proto.palm.plugins.nut.v1.UserSetProfileRequest.prototype.toObject = function(opt_includeInstance) {
   return proto.palm.plugins.nut.v1.UserSetProfileRequest.toObject(opt_includeInstance, this);
 };
@@ -4019,7 +5228,7 @@ proto.palm.plugins.nut.v1.UserLogsRequest.prototype.toObject = function(opt_incl
 proto.palm.plugins.nut.v1.UserLogsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     pager: (f = msg.getPager()) && proto.palm.plugins.nut.v1.Pager.toObject(includeInstance, f),
-    level: jspb.Message.getFieldWithDefault(msg, 11, ""),
+    level: jspb.Message.getFieldWithDefault(msg, 11, 0),
     ip: jspb.Message.getFieldWithDefault(msg, 12, "")
   };
 
@@ -4063,7 +5272,7 @@ proto.palm.plugins.nut.v1.UserLogsRequest.deserializeBinaryFromReader = function
       msg.setPager(value);
       break;
     case 11:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {!proto.palm.plugins.nut.v1.UserLogsResponse.Item.Level} */ (reader.readEnum());
       msg.setLevel(value);
       break;
     case 12:
@@ -4107,9 +5316,9 @@ proto.palm.plugins.nut.v1.UserLogsRequest.serializeBinaryToWriter = function(mes
       proto.palm.plugins.nut.v1.Pager.serializeBinaryToWriter
     );
   }
-  f = /** @type {string} */ (jspb.Message.getField(message, 11));
+  f = /** @type {!proto.palm.plugins.nut.v1.UserLogsResponse.Item.Level} */ (jspb.Message.getField(message, 11));
   if (f != null) {
-    writer.writeString(
+    writer.writeEnum(
       11,
       f
     );
@@ -4162,16 +5371,16 @@ proto.palm.plugins.nut.v1.UserLogsRequest.prototype.hasPager = function() {
 
 
 /**
- * optional string level = 11;
- * @return {string}
+ * optional UserLogsResponse.Item.Level level = 11;
+ * @return {!proto.palm.plugins.nut.v1.UserLogsResponse.Item.Level}
  */
 proto.palm.plugins.nut.v1.UserLogsRequest.prototype.getLevel = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+  return /** @type {!proto.palm.plugins.nut.v1.UserLogsResponse.Item.Level} */ (jspb.Message.getFieldWithDefault(this, 11, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {!proto.palm.plugins.nut.v1.UserLogsResponse.Item.Level} value
  * @return {!proto.palm.plugins.nut.v1.UserLogsRequest} returns this
  */
 proto.palm.plugins.nut.v1.UserLogsRequest.prototype.setLevel = function(value) {
@@ -4404,10 +5613,9 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.toObject = function(includeInsta
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
     userId: jspb.Message.getFieldWithDefault(msg, 2, 0),
     ip: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    level: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    level: jspb.Message.getFieldWithDefault(msg, 4, 0),
     message: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    resourceType: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    resourceId: jspb.Message.getFieldWithDefault(msg, 7, 0),
+    resource: (f = msg.getResource()) && proto.palm.plugins.nut.v1.Resource.toObject(includeInstance, f),
     createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
@@ -4458,7 +5666,7 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.deserializeBinaryFromReader = fu
       msg.setIp(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {!proto.palm.plugins.nut.v1.UserLogsResponse.Item.Level} */ (reader.readEnum());
       msg.setLevel(value);
       break;
     case 5:
@@ -4466,12 +5674,9 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.deserializeBinaryFromReader = fu
       msg.setMessage(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setResourceType(value);
-      break;
-    case 7:
-      var value = /** @type {number} */ (reader.readInt32());
-      msg.setResourceId(value);
+      var value = new proto.palm.plugins.nut.v1.Resource;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.Resource.deserializeBinaryFromReader);
+      msg.setResource(value);
       break;
     case 11:
       var value = new google_protobuf_timestamp_pb.Timestamp;
@@ -4529,8 +5734,8 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.serializeBinaryToWriter = functi
     );
   }
   f = message.getLevel();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0.0) {
+    writer.writeEnum(
       4,
       f
     );
@@ -4542,18 +5747,12 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.serializeBinaryToWriter = functi
       f
     );
   }
-  f = message.getResourceType();
-  if (f.length > 0) {
-    writer.writeString(
-      6,
-      f
-    );
-  }
-  f = /** @type {number} */ (jspb.Message.getField(message, 7));
+  f = message.getResource();
   if (f != null) {
-    writer.writeInt32(
-      7,
-      f
+    writer.writeMessage(
+      6,
+      f,
+      proto.palm.plugins.nut.v1.Resource.serializeBinaryToWriter
     );
   }
   f = message.getCreatedAt();
@@ -4566,6 +5765,17 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.serializeBinaryToWriter = functi
   }
 };
 
+
+/**
+ * @enum {number}
+ */
+proto.palm.plugins.nut.v1.UserLogsResponse.Item.Level = {
+  DEBUG: 0,
+  INFO: 1,
+  WARNING: 2,
+  ERROR: 3,
+  PANIC: 4
+};
 
 /**
  * optional int32 id = 1;
@@ -4622,20 +5832,20 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.setIp = function(value
 
 
 /**
- * optional string level = 4;
- * @return {string}
+ * optional Level level = 4;
+ * @return {!proto.palm.plugins.nut.v1.UserLogsResponse.Item.Level}
  */
 proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.getLevel = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+  return /** @type {!proto.palm.plugins.nut.v1.UserLogsResponse.Item.Level} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {!proto.palm.plugins.nut.v1.UserLogsResponse.Item.Level} value
  * @return {!proto.palm.plugins.nut.v1.UserLogsResponse.Item} returns this
  */
 proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.setLevel = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3EnumField(this, 4, value);
 };
 
 
@@ -4658,47 +5868,30 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.setMessage = function(
 
 
 /**
- * optional string resource_type = 6;
- * @return {string}
+ * optional Resource resource = 6;
+ * @return {?proto.palm.plugins.nut.v1.Resource}
  */
-proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.getResourceType = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.getResource = function() {
+  return /** @type{?proto.palm.plugins.nut.v1.Resource} */ (
+    jspb.Message.getWrapperField(this, proto.palm.plugins.nut.v1.Resource, 6));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.palm.plugins.nut.v1.Resource|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.UserLogsResponse.Item} returns this
+*/
+proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.setResource = function(value) {
+  return jspb.Message.setWrapperField(this, 6, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.palm.plugins.nut.v1.UserLogsResponse.Item} returns this
  */
-proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.setResourceType = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
-};
-
-
-/**
- * optional int32 resource_id = 7;
- * @return {number}
- */
-proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.getResourceId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.palm.plugins.nut.v1.UserLogsResponse.Item} returns this
- */
-proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.setResourceId = function(value) {
-  return jspb.Message.setField(this, 7, value);
-};
-
-
-/**
- * Clears the field making it undefined.
- * @return {!proto.palm.plugins.nut.v1.UserLogsResponse.Item} returns this
- */
-proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.clearResourceId = function() {
-  return jspb.Message.setField(this, 7, undefined);
+proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.clearResource = function() {
+  return this.setResource(undefined);
 };
 
 
@@ -4706,8 +5899,8 @@ proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.clearResourceId = func
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.hasResourceId = function() {
-  return jspb.Message.getField(this, 7) != null;
+proto.palm.plugins.nut.v1.UserLogsResponse.Item.prototype.hasResource = function() {
+  return jspb.Message.getField(this, 6) != null;
 };
 
 
@@ -4979,187 +6172,6 @@ proto.palm.plugins.nut.v1.UserChangePasswordRequest.prototype.getNewPassword = f
  * @return {!proto.palm.plugins.nut.v1.UserChangePasswordRequest} returns this
  */
 proto.palm.plugins.nut.v1.UserChangePasswordRequest.prototype.setNewPassword = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.palm.plugins.nut.v1.UserSetPasswordRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.palm.plugins.nut.v1.UserSetPasswordRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.palm.plugins.nut.v1.UserSetPasswordRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.palm.plugins.nut.v1.UserSetPasswordRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    user: (f = msg.getUser()) && proto.palm.plugins.nut.v1.UserQueryRequest.toObject(includeInstance, f),
-    password: jspb.Message.getFieldWithDefault(msg, 2, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.palm.plugins.nut.v1.UserSetPasswordRequest}
- */
-proto.palm.plugins.nut.v1.UserSetPasswordRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.palm.plugins.nut.v1.UserSetPasswordRequest;
-  return proto.palm.plugins.nut.v1.UserSetPasswordRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.palm.plugins.nut.v1.UserSetPasswordRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.palm.plugins.nut.v1.UserSetPasswordRequest}
- */
-proto.palm.plugins.nut.v1.UserSetPasswordRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new proto.palm.plugins.nut.v1.UserQueryRequest;
-      reader.readMessage(value,proto.palm.plugins.nut.v1.UserQueryRequest.deserializeBinaryFromReader);
-      msg.setUser(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setPassword(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.palm.plugins.nut.v1.UserSetPasswordRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.palm.plugins.nut.v1.UserSetPasswordRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.palm.plugins.nut.v1.UserSetPasswordRequest} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.palm.plugins.nut.v1.UserSetPasswordRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getUser();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      proto.palm.plugins.nut.v1.UserQueryRequest.serializeBinaryToWriter
-    );
-  }
-  f = message.getPassword();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
-};
-
-
-/**
- * optional UserQueryRequest user = 1;
- * @return {?proto.palm.plugins.nut.v1.UserQueryRequest}
- */
-proto.palm.plugins.nut.v1.UserSetPasswordRequest.prototype.getUser = function() {
-  return /** @type{?proto.palm.plugins.nut.v1.UserQueryRequest} */ (
-    jspb.Message.getWrapperField(this, proto.palm.plugins.nut.v1.UserQueryRequest, 1));
-};
-
-
-/**
- * @param {?proto.palm.plugins.nut.v1.UserQueryRequest|undefined} value
- * @return {!proto.palm.plugins.nut.v1.UserSetPasswordRequest} returns this
-*/
-proto.palm.plugins.nut.v1.UserSetPasswordRequest.prototype.setUser = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.palm.plugins.nut.v1.UserSetPasswordRequest} returns this
- */
-proto.palm.plugins.nut.v1.UserSetPasswordRequest.prototype.clearUser = function() {
-  return this.setUser(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.palm.plugins.nut.v1.UserSetPasswordRequest.prototype.hasUser = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * optional string password = 2;
- * @return {string}
- */
-proto.palm.plugins.nut.v1.UserSetPasswordRequest.prototype.getPassword = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.palm.plugins.nut.v1.UserSetPasswordRequest} returns this
- */
-proto.palm.plugins.nut.v1.UserSetPasswordRequest.prototype.setPassword = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
@@ -6193,8 +7205,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.palm.plugins.nut.v1.UserRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.palm.plugins.nut.v1.UserRequest.toObject(opt_includeInstance, this);
+proto.palm.plugins.nut.v1.PolicyUserRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.PolicyUserRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -6203,11 +7215,11 @@ proto.palm.plugins.nut.v1.UserRequest.prototype.toObject = function(opt_includeI
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.palm.plugins.nut.v1.UserRequest} msg The msg instance to transform.
+ * @param {!proto.palm.plugins.nut.v1.PolicyUserRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.UserRequest.toObject = function(includeInstance, msg) {
+proto.palm.plugins.nut.v1.PolicyUserRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     nickName: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
@@ -6223,23 +7235,23 @@ proto.palm.plugins.nut.v1.UserRequest.toObject = function(includeInstance, msg) 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.palm.plugins.nut.v1.UserRequest}
+ * @return {!proto.palm.plugins.nut.v1.PolicyUserRequest}
  */
-proto.palm.plugins.nut.v1.UserRequest.deserializeBinary = function(bytes) {
+proto.palm.plugins.nut.v1.PolicyUserRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.palm.plugins.nut.v1.UserRequest;
-  return proto.palm.plugins.nut.v1.UserRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.palm.plugins.nut.v1.PolicyUserRequest;
+  return proto.palm.plugins.nut.v1.PolicyUserRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.palm.plugins.nut.v1.UserRequest} msg The message object to deserialize into.
+ * @param {!proto.palm.plugins.nut.v1.PolicyUserRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.palm.plugins.nut.v1.UserRequest}
+ * @return {!proto.palm.plugins.nut.v1.PolicyUserRequest}
  */
-proto.palm.plugins.nut.v1.UserRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.palm.plugins.nut.v1.PolicyUserRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -6263,9 +7275,9 @@ proto.palm.plugins.nut.v1.UserRequest.deserializeBinaryFromReader = function(msg
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.palm.plugins.nut.v1.UserRequest.prototype.serializeBinary = function() {
+proto.palm.plugins.nut.v1.PolicyUserRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.palm.plugins.nut.v1.UserRequest.serializeBinaryToWriter(this, writer);
+  proto.palm.plugins.nut.v1.PolicyUserRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -6273,11 +7285,11 @@ proto.palm.plugins.nut.v1.UserRequest.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.palm.plugins.nut.v1.UserRequest} message
+ * @param {!proto.palm.plugins.nut.v1.PolicyUserRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.UserRequest.serializeBinaryToWriter = function(message, writer) {
+proto.palm.plugins.nut.v1.PolicyUserRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getNickName();
   if (f.length > 0) {
@@ -6293,16 +7305,16 @@ proto.palm.plugins.nut.v1.UserRequest.serializeBinaryToWriter = function(message
  * optional string nick_name = 1;
  * @return {string}
  */
-proto.palm.plugins.nut.v1.UserRequest.prototype.getNickName = function() {
+proto.palm.plugins.nut.v1.PolicyUserRequest.prototype.getNickName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.palm.plugins.nut.v1.UserRequest} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyUserRequest} returns this
  */
-proto.palm.plugins.nut.v1.UserRequest.prototype.setNickName = function(value) {
+proto.palm.plugins.nut.v1.PolicyUserRequest.prototype.setNickName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -6313,7 +7325,7 @@ proto.palm.plugins.nut.v1.UserRequest.prototype.setNickName = function(value) {
  * @private {!Array<number>}
  * @const
  */
-proto.palm.plugins.nut.v1.UserListResponse.repeatedFields_ = [1];
+proto.palm.plugins.nut.v1.PolicyUserListResponse.repeatedFields_ = [1];
 
 
 
@@ -6330,8 +7342,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.palm.plugins.nut.v1.UserListResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.palm.plugins.nut.v1.UserListResponse.toObject(opt_includeInstance, this);
+proto.palm.plugins.nut.v1.PolicyUserListResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.PolicyUserListResponse.toObject(opt_includeInstance, this);
 };
 
 
@@ -6340,14 +7352,14 @@ proto.palm.plugins.nut.v1.UserListResponse.prototype.toObject = function(opt_inc
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.palm.plugins.nut.v1.UserListResponse} msg The msg instance to transform.
+ * @param {!proto.palm.plugins.nut.v1.PolicyUserListResponse} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.UserListResponse.toObject = function(includeInstance, msg) {
+proto.palm.plugins.nut.v1.PolicyUserListResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     itemsList: jspb.Message.toObjectList(msg.getItemsList(),
-    proto.palm.plugins.nut.v1.UserListResponse.Item.toObject, includeInstance)
+    proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -6361,23 +7373,23 @@ proto.palm.plugins.nut.v1.UserListResponse.toObject = function(includeInstance, 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.palm.plugins.nut.v1.UserListResponse}
+ * @return {!proto.palm.plugins.nut.v1.PolicyUserListResponse}
  */
-proto.palm.plugins.nut.v1.UserListResponse.deserializeBinary = function(bytes) {
+proto.palm.plugins.nut.v1.PolicyUserListResponse.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.palm.plugins.nut.v1.UserListResponse;
-  return proto.palm.plugins.nut.v1.UserListResponse.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.palm.plugins.nut.v1.PolicyUserListResponse;
+  return proto.palm.plugins.nut.v1.PolicyUserListResponse.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.palm.plugins.nut.v1.UserListResponse} msg The message object to deserialize into.
+ * @param {!proto.palm.plugins.nut.v1.PolicyUserListResponse} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.palm.plugins.nut.v1.UserListResponse}
+ * @return {!proto.palm.plugins.nut.v1.PolicyUserListResponse}
  */
-proto.palm.plugins.nut.v1.UserListResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.palm.plugins.nut.v1.PolicyUserListResponse.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -6385,8 +7397,8 @@ proto.palm.plugins.nut.v1.UserListResponse.deserializeBinaryFromReader = functio
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.palm.plugins.nut.v1.UserListResponse.Item;
-      reader.readMessage(value,proto.palm.plugins.nut.v1.UserListResponse.Item.deserializeBinaryFromReader);
+      var value = new proto.palm.plugins.nut.v1.PolicyUserListResponse.Item;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.deserializeBinaryFromReader);
       msg.addItems(value);
       break;
     default:
@@ -6402,9 +7414,9 @@ proto.palm.plugins.nut.v1.UserListResponse.deserializeBinaryFromReader = functio
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.palm.plugins.nut.v1.UserListResponse.prototype.serializeBinary = function() {
+proto.palm.plugins.nut.v1.PolicyUserListResponse.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.palm.plugins.nut.v1.UserListResponse.serializeBinaryToWriter(this, writer);
+  proto.palm.plugins.nut.v1.PolicyUserListResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -6412,18 +7424,18 @@ proto.palm.plugins.nut.v1.UserListResponse.prototype.serializeBinary = function(
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.palm.plugins.nut.v1.UserListResponse} message
+ * @param {!proto.palm.plugins.nut.v1.PolicyUserListResponse} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.UserListResponse.serializeBinaryToWriter = function(message, writer) {
+proto.palm.plugins.nut.v1.PolicyUserListResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getItemsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       1,
       f,
-      proto.palm.plugins.nut.v1.UserListResponse.Item.serializeBinaryToWriter
+      proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.serializeBinaryToWriter
     );
   }
 };
@@ -6445,8 +7457,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.palm.plugins.nut.v1.UserListResponse.Item.prototype.toObject = function(opt_includeInstance) {
-  return proto.palm.plugins.nut.v1.UserListResponse.Item.toObject(opt_includeInstance, this);
+proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.toObject(opt_includeInstance, this);
 };
 
 
@@ -6455,14 +7467,15 @@ proto.palm.plugins.nut.v1.UserListResponse.Item.prototype.toObject = function(op
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.palm.plugins.nut.v1.UserListResponse.Item} msg The msg instance to transform.
+ * @param {!proto.palm.plugins.nut.v1.PolicyUserListResponse.Item} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.UserListResponse.Item.toObject = function(includeInstance, msg) {
+proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.toObject = function(includeInstance, msg) {
   var f, obj = {
-    nickName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    realName: jspb.Message.getFieldWithDefault(msg, 2, "")
+    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    nickName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    realName: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -6476,23 +7489,23 @@ proto.palm.plugins.nut.v1.UserListResponse.Item.toObject = function(includeInsta
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.palm.plugins.nut.v1.UserListResponse.Item}
+ * @return {!proto.palm.plugins.nut.v1.PolicyUserListResponse.Item}
  */
-proto.palm.plugins.nut.v1.UserListResponse.Item.deserializeBinary = function(bytes) {
+proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.palm.plugins.nut.v1.UserListResponse.Item;
-  return proto.palm.plugins.nut.v1.UserListResponse.Item.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.palm.plugins.nut.v1.PolicyUserListResponse.Item;
+  return proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.palm.plugins.nut.v1.UserListResponse.Item} msg The message object to deserialize into.
+ * @param {!proto.palm.plugins.nut.v1.PolicyUserListResponse.Item} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.palm.plugins.nut.v1.UserListResponse.Item}
+ * @return {!proto.palm.plugins.nut.v1.PolicyUserListResponse.Item}
  */
-proto.palm.plugins.nut.v1.UserListResponse.Item.deserializeBinaryFromReader = function(msg, reader) {
+proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -6500,10 +7513,14 @@ proto.palm.plugins.nut.v1.UserListResponse.Item.deserializeBinaryFromReader = fu
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setId(value);
+      break;
+    case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setNickName(value);
       break;
-    case 2:
+    case 3:
       var value = /** @type {string} */ (reader.readString());
       msg.setRealName(value);
       break;
@@ -6520,9 +7537,9 @@ proto.palm.plugins.nut.v1.UserListResponse.Item.deserializeBinaryFromReader = fu
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.palm.plugins.nut.v1.UserListResponse.Item.prototype.serializeBinary = function() {
+proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.palm.plugins.nut.v1.UserListResponse.Item.serializeBinaryToWriter(this, writer);
+  proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -6530,99 +7547,124 @@ proto.palm.plugins.nut.v1.UserListResponse.Item.prototype.serializeBinary = func
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.palm.plugins.nut.v1.UserListResponse.Item} message
+ * @param {!proto.palm.plugins.nut.v1.PolicyUserListResponse.Item} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.UserListResponse.Item.serializeBinaryToWriter = function(message, writer) {
+proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getNickName();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getId();
+  if (f !== 0) {
+    writer.writeInt32(
       1,
       f
     );
   }
-  f = message.getRealName();
+  f = message.getNickName();
   if (f.length > 0) {
     writer.writeString(
       2,
       f
     );
   }
+  f = message.getRealName();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
 };
 
 
 /**
- * optional string nick_name = 1;
+ * optional int32 id = 1;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.PolicyUserListResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.prototype.setId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string nick_name = 2;
  * @return {string}
  */
-proto.palm.plugins.nut.v1.UserListResponse.Item.prototype.getNickName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.palm.plugins.nut.v1.UserListResponse.Item} returns this
- */
-proto.palm.plugins.nut.v1.UserListResponse.Item.prototype.setNickName = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-/**
- * optional string real_name = 2;
- * @return {string}
- */
-proto.palm.plugins.nut.v1.UserListResponse.Item.prototype.getRealName = function() {
+proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.prototype.getNickName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.palm.plugins.nut.v1.UserListResponse.Item} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyUserListResponse.Item} returns this
  */
-proto.palm.plugins.nut.v1.UserListResponse.Item.prototype.setRealName = function(value) {
+proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.prototype.setNickName = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * repeated Item items = 1;
- * @return {!Array<!proto.palm.plugins.nut.v1.UserListResponse.Item>}
+ * optional string real_name = 3;
+ * @return {string}
  */
-proto.palm.plugins.nut.v1.UserListResponse.prototype.getItemsList = function() {
-  return /** @type{!Array<!proto.palm.plugins.nut.v1.UserListResponse.Item>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.palm.plugins.nut.v1.UserListResponse.Item, 1));
+proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.prototype.getRealName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /**
- * @param {!Array<!proto.palm.plugins.nut.v1.UserListResponse.Item>} value
- * @return {!proto.palm.plugins.nut.v1.UserListResponse} returns this
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.PolicyUserListResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.PolicyUserListResponse.Item.prototype.setRealName = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * repeated Item items = 1;
+ * @return {!Array<!proto.palm.plugins.nut.v1.PolicyUserListResponse.Item>}
+ */
+proto.palm.plugins.nut.v1.PolicyUserListResponse.prototype.getItemsList = function() {
+  return /** @type{!Array<!proto.palm.plugins.nut.v1.PolicyUserListResponse.Item>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.palm.plugins.nut.v1.PolicyUserListResponse.Item, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.palm.plugins.nut.v1.PolicyUserListResponse.Item>} value
+ * @return {!proto.palm.plugins.nut.v1.PolicyUserListResponse} returns this
 */
-proto.palm.plugins.nut.v1.UserListResponse.prototype.setItemsList = function(value) {
+proto.palm.plugins.nut.v1.PolicyUserListResponse.prototype.setItemsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
 
 /**
- * @param {!proto.palm.plugins.nut.v1.UserListResponse.Item=} opt_value
+ * @param {!proto.palm.plugins.nut.v1.PolicyUserListResponse.Item=} opt_value
  * @param {number=} opt_index
- * @return {!proto.palm.plugins.nut.v1.UserListResponse.Item}
+ * @return {!proto.palm.plugins.nut.v1.PolicyUserListResponse.Item}
  */
-proto.palm.plugins.nut.v1.UserListResponse.prototype.addItems = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.palm.plugins.nut.v1.UserListResponse.Item, opt_index);
+proto.palm.plugins.nut.v1.PolicyUserListResponse.prototype.addItems = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.palm.plugins.nut.v1.PolicyUserListResponse.Item, opt_index);
 };
 
 
 /**
  * Clears the list making it empty but non-null.
- * @return {!proto.palm.plugins.nut.v1.UserListResponse} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyUserListResponse} returns this
  */
-proto.palm.plugins.nut.v1.UserListResponse.prototype.clearItemsList = function() {
+proto.palm.plugins.nut.v1.PolicyUserListResponse.prototype.clearItemsList = function() {
   return this.setItemsList([]);
 };
 
@@ -6643,8 +7685,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.palm.plugins.nut.v1.RoleRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.palm.plugins.nut.v1.RoleRequest.toObject(opt_includeInstance, this);
+proto.palm.plugins.nut.v1.PolicyRoleRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.PolicyRoleRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -6653,11 +7695,11 @@ proto.palm.plugins.nut.v1.RoleRequest.prototype.toObject = function(opt_includeI
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.palm.plugins.nut.v1.RoleRequest} msg The msg instance to transform.
+ * @param {!proto.palm.plugins.nut.v1.PolicyRoleRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.RoleRequest.toObject = function(includeInstance, msg) {
+proto.palm.plugins.nut.v1.PolicyRoleRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     code: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
@@ -6673,23 +7715,23 @@ proto.palm.plugins.nut.v1.RoleRequest.toObject = function(includeInstance, msg) 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.palm.plugins.nut.v1.RoleRequest}
+ * @return {!proto.palm.plugins.nut.v1.PolicyRoleRequest}
  */
-proto.palm.plugins.nut.v1.RoleRequest.deserializeBinary = function(bytes) {
+proto.palm.plugins.nut.v1.PolicyRoleRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.palm.plugins.nut.v1.RoleRequest;
-  return proto.palm.plugins.nut.v1.RoleRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.palm.plugins.nut.v1.PolicyRoleRequest;
+  return proto.palm.plugins.nut.v1.PolicyRoleRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.palm.plugins.nut.v1.RoleRequest} msg The message object to deserialize into.
+ * @param {!proto.palm.plugins.nut.v1.PolicyRoleRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.palm.plugins.nut.v1.RoleRequest}
+ * @return {!proto.palm.plugins.nut.v1.PolicyRoleRequest}
  */
-proto.palm.plugins.nut.v1.RoleRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.palm.plugins.nut.v1.PolicyRoleRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -6713,9 +7755,9 @@ proto.palm.plugins.nut.v1.RoleRequest.deserializeBinaryFromReader = function(msg
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.palm.plugins.nut.v1.RoleRequest.prototype.serializeBinary = function() {
+proto.palm.plugins.nut.v1.PolicyRoleRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.palm.plugins.nut.v1.RoleRequest.serializeBinaryToWriter(this, writer);
+  proto.palm.plugins.nut.v1.PolicyRoleRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -6723,11 +7765,11 @@ proto.palm.plugins.nut.v1.RoleRequest.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.palm.plugins.nut.v1.RoleRequest} message
+ * @param {!proto.palm.plugins.nut.v1.PolicyRoleRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.RoleRequest.serializeBinaryToWriter = function(message, writer) {
+proto.palm.plugins.nut.v1.PolicyRoleRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getCode();
   if (f.length > 0) {
@@ -6743,16 +7785,16 @@ proto.palm.plugins.nut.v1.RoleRequest.serializeBinaryToWriter = function(message
  * optional string code = 1;
  * @return {string}
  */
-proto.palm.plugins.nut.v1.RoleRequest.prototype.getCode = function() {
+proto.palm.plugins.nut.v1.PolicyRoleRequest.prototype.getCode = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.palm.plugins.nut.v1.RoleRequest} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyRoleRequest} returns this
  */
-proto.palm.plugins.nut.v1.RoleRequest.prototype.setCode = function(value) {
+proto.palm.plugins.nut.v1.PolicyRoleRequest.prototype.setCode = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -6763,7 +7805,7 @@ proto.palm.plugins.nut.v1.RoleRequest.prototype.setCode = function(value) {
  * @private {!Array<number>}
  * @const
  */
-proto.palm.plugins.nut.v1.RoleListResponse.repeatedFields_ = [1];
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.repeatedFields_ = [1];
 
 
 
@@ -6780,8 +7822,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.palm.plugins.nut.v1.RoleListResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.palm.plugins.nut.v1.RoleListResponse.toObject(opt_includeInstance, this);
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.PolicyRoleListResponse.toObject(opt_includeInstance, this);
 };
 
 
@@ -6790,14 +7832,14 @@ proto.palm.plugins.nut.v1.RoleListResponse.prototype.toObject = function(opt_inc
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.palm.plugins.nut.v1.RoleListResponse} msg The msg instance to transform.
+ * @param {!proto.palm.plugins.nut.v1.PolicyRoleListResponse} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.RoleListResponse.toObject = function(includeInstance, msg) {
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     itemsList: jspb.Message.toObjectList(msg.getItemsList(),
-    proto.palm.plugins.nut.v1.RoleListResponse.Item.toObject, includeInstance)
+    proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -6811,23 +7853,23 @@ proto.palm.plugins.nut.v1.RoleListResponse.toObject = function(includeInstance, 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.palm.plugins.nut.v1.RoleListResponse}
+ * @return {!proto.palm.plugins.nut.v1.PolicyRoleListResponse}
  */
-proto.palm.plugins.nut.v1.RoleListResponse.deserializeBinary = function(bytes) {
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.palm.plugins.nut.v1.RoleListResponse;
-  return proto.palm.plugins.nut.v1.RoleListResponse.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.palm.plugins.nut.v1.PolicyRoleListResponse;
+  return proto.palm.plugins.nut.v1.PolicyRoleListResponse.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.palm.plugins.nut.v1.RoleListResponse} msg The message object to deserialize into.
+ * @param {!proto.palm.plugins.nut.v1.PolicyRoleListResponse} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.palm.plugins.nut.v1.RoleListResponse}
+ * @return {!proto.palm.plugins.nut.v1.PolicyRoleListResponse}
  */
-proto.palm.plugins.nut.v1.RoleListResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -6835,8 +7877,8 @@ proto.palm.plugins.nut.v1.RoleListResponse.deserializeBinaryFromReader = functio
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.palm.plugins.nut.v1.RoleListResponse.Item;
-      reader.readMessage(value,proto.palm.plugins.nut.v1.RoleListResponse.Item.deserializeBinaryFromReader);
+      var value = new proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item.deserializeBinaryFromReader);
       msg.addItems(value);
       break;
     default:
@@ -6852,9 +7894,9 @@ proto.palm.plugins.nut.v1.RoleListResponse.deserializeBinaryFromReader = functio
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.palm.plugins.nut.v1.RoleListResponse.prototype.serializeBinary = function() {
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.palm.plugins.nut.v1.RoleListResponse.serializeBinaryToWriter(this, writer);
+  proto.palm.plugins.nut.v1.PolicyRoleListResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -6862,18 +7904,18 @@ proto.palm.plugins.nut.v1.RoleListResponse.prototype.serializeBinary = function(
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.palm.plugins.nut.v1.RoleListResponse} message
+ * @param {!proto.palm.plugins.nut.v1.PolicyRoleListResponse} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.RoleListResponse.serializeBinaryToWriter = function(message, writer) {
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getItemsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       1,
       f,
-      proto.palm.plugins.nut.v1.RoleListResponse.Item.serializeBinaryToWriter
+      proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item.serializeBinaryToWriter
     );
   }
 };
@@ -6895,8 +7937,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.palm.plugins.nut.v1.RoleListResponse.Item.prototype.toObject = function(opt_includeInstance) {
-  return proto.palm.plugins.nut.v1.RoleListResponse.Item.toObject(opt_includeInstance, this);
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item.toObject(opt_includeInstance, this);
 };
 
 
@@ -6905,11 +7947,11 @@ proto.palm.plugins.nut.v1.RoleListResponse.Item.prototype.toObject = function(op
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.palm.plugins.nut.v1.RoleListResponse.Item} msg The msg instance to transform.
+ * @param {!proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.RoleListResponse.Item.toObject = function(includeInstance, msg) {
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item.toObject = function(includeInstance, msg) {
   var f, obj = {
     code: jspb.Message.getFieldWithDefault(msg, 1, ""),
     name: jspb.Message.getFieldWithDefault(msg, 2, "")
@@ -6926,23 +7968,23 @@ proto.palm.plugins.nut.v1.RoleListResponse.Item.toObject = function(includeInsta
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.palm.plugins.nut.v1.RoleListResponse.Item}
+ * @return {!proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item}
  */
-proto.palm.plugins.nut.v1.RoleListResponse.Item.deserializeBinary = function(bytes) {
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.palm.plugins.nut.v1.RoleListResponse.Item;
-  return proto.palm.plugins.nut.v1.RoleListResponse.Item.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item;
+  return proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.palm.plugins.nut.v1.RoleListResponse.Item} msg The message object to deserialize into.
+ * @param {!proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.palm.plugins.nut.v1.RoleListResponse.Item}
+ * @return {!proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item}
  */
-proto.palm.plugins.nut.v1.RoleListResponse.Item.deserializeBinaryFromReader = function(msg, reader) {
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -6970,9 +8012,9 @@ proto.palm.plugins.nut.v1.RoleListResponse.Item.deserializeBinaryFromReader = fu
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.palm.plugins.nut.v1.RoleListResponse.Item.prototype.serializeBinary = function() {
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.palm.plugins.nut.v1.RoleListResponse.Item.serializeBinaryToWriter(this, writer);
+  proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -6980,11 +8022,11 @@ proto.palm.plugins.nut.v1.RoleListResponse.Item.prototype.serializeBinary = func
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.palm.plugins.nut.v1.RoleListResponse.Item} message
+ * @param {!proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.RoleListResponse.Item.serializeBinaryToWriter = function(message, writer) {
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getCode();
   if (f.length > 0) {
@@ -7007,16 +8049,16 @@ proto.palm.plugins.nut.v1.RoleListResponse.Item.serializeBinaryToWriter = functi
  * optional string code = 1;
  * @return {string}
  */
-proto.palm.plugins.nut.v1.RoleListResponse.Item.prototype.getCode = function() {
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item.prototype.getCode = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.palm.plugins.nut.v1.RoleListResponse.Item} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item} returns this
  */
-proto.palm.plugins.nut.v1.RoleListResponse.Item.prototype.setCode = function(value) {
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item.prototype.setCode = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -7025,54 +8067,54 @@ proto.palm.plugins.nut.v1.RoleListResponse.Item.prototype.setCode = function(val
  * optional string name = 2;
  * @return {string}
  */
-proto.palm.plugins.nut.v1.RoleListResponse.Item.prototype.getName = function() {
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item.prototype.getName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.palm.plugins.nut.v1.RoleListResponse.Item} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item} returns this
  */
-proto.palm.plugins.nut.v1.RoleListResponse.Item.prototype.setName = function(value) {
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
  * repeated Item items = 1;
- * @return {!Array<!proto.palm.plugins.nut.v1.RoleListResponse.Item>}
+ * @return {!Array<!proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item>}
  */
-proto.palm.plugins.nut.v1.RoleListResponse.prototype.getItemsList = function() {
-  return /** @type{!Array<!proto.palm.plugins.nut.v1.RoleListResponse.Item>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.palm.plugins.nut.v1.RoleListResponse.Item, 1));
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.prototype.getItemsList = function() {
+  return /** @type{!Array<!proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item, 1));
 };
 
 
 /**
- * @param {!Array<!proto.palm.plugins.nut.v1.RoleListResponse.Item>} value
- * @return {!proto.palm.plugins.nut.v1.RoleListResponse} returns this
+ * @param {!Array<!proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item>} value
+ * @return {!proto.palm.plugins.nut.v1.PolicyRoleListResponse} returns this
 */
-proto.palm.plugins.nut.v1.RoleListResponse.prototype.setItemsList = function(value) {
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.prototype.setItemsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
 
 /**
- * @param {!proto.palm.plugins.nut.v1.RoleListResponse.Item=} opt_value
+ * @param {!proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item=} opt_value
  * @param {number=} opt_index
- * @return {!proto.palm.plugins.nut.v1.RoleListResponse.Item}
+ * @return {!proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item}
  */
-proto.palm.plugins.nut.v1.RoleListResponse.prototype.addItems = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.palm.plugins.nut.v1.RoleListResponse.Item, opt_index);
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.prototype.addItems = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.palm.plugins.nut.v1.PolicyRoleListResponse.Item, opt_index);
 };
 
 
 /**
  * Clears the list making it empty but non-null.
- * @return {!proto.palm.plugins.nut.v1.RoleListResponse} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyRoleListResponse} returns this
  */
-proto.palm.plugins.nut.v1.RoleListResponse.prototype.clearItemsList = function() {
+proto.palm.plugins.nut.v1.PolicyRoleListResponse.prototype.clearItemsList = function() {
   return this.setItemsList([]);
 };
 
@@ -7083,7 +8125,7 @@ proto.palm.plugins.nut.v1.RoleListResponse.prototype.clearItemsList = function()
  * @private {!Array<number>}
  * @const
  */
-proto.palm.plugins.nut.v1.RolesForUserRequest.repeatedFields_ = [2];
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.repeatedFields_ = [2];
 
 
 
@@ -7100,8 +8142,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.palm.plugins.nut.v1.RolesForUserRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.palm.plugins.nut.v1.RolesForUserRequest.toObject(opt_includeInstance, this);
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -7110,11 +8152,299 @@ proto.palm.plugins.nut.v1.RolesForUserRequest.prototype.toObject = function(opt_
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.palm.plugins.nut.v1.RolesForUserRequest} msg The msg instance to transform.
+ * @param {!proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.RolesForUserRequest.toObject = function(includeInstance, msg) {
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    user: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    rolesList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
+    notBefore: (f = msg.getNotBefore()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    expiredAt: (f = msg.getExpiredAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest}
+ */
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest;
+  return proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest}
+ */
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUser(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addRoles(value);
+      break;
+    case 11:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setNotBefore(value);
+      break;
+    case 12:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setExpiredAt(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getUser();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getRolesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      2,
+      f
+    );
+  }
+  f = message.getNotBefore();
+  if (f != null) {
+    writer.writeMessage(
+      11,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getExpiredAt();
+  if (f != null) {
+    writer.writeMessage(
+      12,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string user = 1;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.prototype.getUser = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest} returns this
+ */
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.prototype.setUser = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * repeated string roles = 2;
+ * @return {!Array<string>}
+ */
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.prototype.getRolesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 2));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest} returns this
+ */
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.prototype.setRolesList = function(value) {
+  return jspb.Message.setField(this, 2, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest} returns this
+ */
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.prototype.addRoles = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest} returns this
+ */
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.prototype.clearRolesList = function() {
+  return this.setRolesList([]);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp not_before = 11;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.prototype.getNotBefore = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 11));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest} returns this
+*/
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.prototype.setNotBefore = function(value) {
+  return jspb.Message.setWrapperField(this, 11, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest} returns this
+ */
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.prototype.clearNotBefore = function() {
+  return this.setNotBefore(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.prototype.hasNotBefore = function() {
+  return jspb.Message.getField(this, 11) != null;
+};
+
+
+/**
+ * optional google.protobuf.Timestamp expired_at = 12;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.prototype.getExpiredAt = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 12));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest} returns this
+*/
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.prototype.setExpiredAt = function(value) {
+  return jspb.Message.setWrapperField(this, 12, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest} returns this
+ */
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.prototype.clearExpiredAt = function() {
+  return this.setExpiredAt(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.PolicyAddRolesForUserRequest.prototype.hasExpiredAt = function() {
+  return jspb.Message.getField(this, 12) != null;
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     user: jspb.Message.getFieldWithDefault(msg, 1, ""),
     rolesList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
@@ -7131,23 +8461,23 @@ proto.palm.plugins.nut.v1.RolesForUserRequest.toObject = function(includeInstanc
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.palm.plugins.nut.v1.RolesForUserRequest}
+ * @return {!proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest}
  */
-proto.palm.plugins.nut.v1.RolesForUserRequest.deserializeBinary = function(bytes) {
+proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.palm.plugins.nut.v1.RolesForUserRequest;
-  return proto.palm.plugins.nut.v1.RolesForUserRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest;
+  return proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.palm.plugins.nut.v1.RolesForUserRequest} msg The message object to deserialize into.
+ * @param {!proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.palm.plugins.nut.v1.RolesForUserRequest}
+ * @return {!proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest}
  */
-proto.palm.plugins.nut.v1.RolesForUserRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -7175,9 +8505,9 @@ proto.palm.plugins.nut.v1.RolesForUserRequest.deserializeBinaryFromReader = func
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.palm.plugins.nut.v1.RolesForUserRequest.prototype.serializeBinary = function() {
+proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.palm.plugins.nut.v1.RolesForUserRequest.serializeBinaryToWriter(this, writer);
+  proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -7185,11 +8515,11 @@ proto.palm.plugins.nut.v1.RolesForUserRequest.prototype.serializeBinary = functi
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.palm.plugins.nut.v1.RolesForUserRequest} message
+ * @param {!proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.RolesForUserRequest.serializeBinaryToWriter = function(message, writer) {
+proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getUser();
   if (f.length > 0) {
@@ -7212,16 +8542,16 @@ proto.palm.plugins.nut.v1.RolesForUserRequest.serializeBinaryToWriter = function
  * optional string user = 1;
  * @return {string}
  */
-proto.palm.plugins.nut.v1.RolesForUserRequest.prototype.getUser = function() {
+proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.prototype.getUser = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.palm.plugins.nut.v1.RolesForUserRequest} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest} returns this
  */
-proto.palm.plugins.nut.v1.RolesForUserRequest.prototype.setUser = function(value) {
+proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.prototype.setUser = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -7230,16 +8560,16 @@ proto.palm.plugins.nut.v1.RolesForUserRequest.prototype.setUser = function(value
  * repeated string roles = 2;
  * @return {!Array<string>}
  */
-proto.palm.plugins.nut.v1.RolesForUserRequest.prototype.getRolesList = function() {
+proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.prototype.getRolesList = function() {
   return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 2));
 };
 
 
 /**
  * @param {!Array<string>} value
- * @return {!proto.palm.plugins.nut.v1.RolesForUserRequest} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest} returns this
  */
-proto.palm.plugins.nut.v1.RolesForUserRequest.prototype.setRolesList = function(value) {
+proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.prototype.setRolesList = function(value) {
   return jspb.Message.setField(this, 2, value || []);
 };
 
@@ -7247,18 +8577,18 @@ proto.palm.plugins.nut.v1.RolesForUserRequest.prototype.setRolesList = function(
 /**
  * @param {string} value
  * @param {number=} opt_index
- * @return {!proto.palm.plugins.nut.v1.RolesForUserRequest} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest} returns this
  */
-proto.palm.plugins.nut.v1.RolesForUserRequest.prototype.addRoles = function(value, opt_index) {
+proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.prototype.addRoles = function(value, opt_index) {
   return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
 };
 
 
 /**
  * Clears the list making it empty but non-null.
- * @return {!proto.palm.plugins.nut.v1.RolesForUserRequest} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest} returns this
  */
-proto.palm.plugins.nut.v1.RolesForUserRequest.prototype.clearRolesList = function() {
+proto.palm.plugins.nut.v1.PolicyDeleteRolesForUserRequest.prototype.clearRolesList = function() {
   return this.setRolesList([]);
 };
 
@@ -7269,7 +8599,7 @@ proto.palm.plugins.nut.v1.RolesForUserRequest.prototype.clearRolesList = functio
  * @private {!Array<number>}
  * @const
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.repeatedFields_ = [1];
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.repeatedFields_ = [1];
 
 
 
@@ -7286,8 +8616,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.palm.plugins.nut.v1.PermissionListResponse.toObject(opt_includeInstance, this);
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.PolicyPermissionListResponse.toObject(opt_includeInstance, this);
 };
 
 
@@ -7296,14 +8626,14 @@ proto.palm.plugins.nut.v1.PermissionListResponse.prototype.toObject = function(o
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.palm.plugins.nut.v1.PermissionListResponse} msg The msg instance to transform.
+ * @param {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.toObject = function(includeInstance, msg) {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     itemsList: jspb.Message.toObjectList(msg.getItemsList(),
-    proto.palm.plugins.nut.v1.PermissionListResponse.Item.toObject, includeInstance)
+    proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -7317,23 +8647,23 @@ proto.palm.plugins.nut.v1.PermissionListResponse.toObject = function(includeInst
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.palm.plugins.nut.v1.PermissionListResponse}
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse}
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.deserializeBinary = function(bytes) {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.palm.plugins.nut.v1.PermissionListResponse;
-  return proto.palm.plugins.nut.v1.PermissionListResponse.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.palm.plugins.nut.v1.PolicyPermissionListResponse;
+  return proto.palm.plugins.nut.v1.PolicyPermissionListResponse.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.palm.plugins.nut.v1.PermissionListResponse} msg The message object to deserialize into.
+ * @param {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.palm.plugins.nut.v1.PermissionListResponse}
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse}
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -7341,8 +8671,8 @@ proto.palm.plugins.nut.v1.PermissionListResponse.deserializeBinaryFromReader = f
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.palm.plugins.nut.v1.PermissionListResponse.Item;
-      reader.readMessage(value,proto.palm.plugins.nut.v1.PermissionListResponse.Item.deserializeBinaryFromReader);
+      var value = new proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.deserializeBinaryFromReader);
       msg.addItems(value);
       break;
     default:
@@ -7358,9 +8688,9 @@ proto.palm.plugins.nut.v1.PermissionListResponse.deserializeBinaryFromReader = f
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.prototype.serializeBinary = function() {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.palm.plugins.nut.v1.PermissionListResponse.serializeBinaryToWriter(this, writer);
+  proto.palm.plugins.nut.v1.PolicyPermissionListResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -7368,18 +8698,18 @@ proto.palm.plugins.nut.v1.PermissionListResponse.prototype.serializeBinary = fun
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.palm.plugins.nut.v1.PermissionListResponse} message
+ * @param {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.serializeBinaryToWriter = function(message, writer) {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getItemsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       1,
       f,
-      proto.palm.plugins.nut.v1.PermissionListResponse.Item.serializeBinaryToWriter
+      proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.serializeBinaryToWriter
     );
   }
 };
@@ -7401,8 +8731,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.Item.prototype.toObject = function(opt_includeInstance) {
-  return proto.palm.plugins.nut.v1.PermissionListResponse.Item.toObject(opt_includeInstance, this);
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.toObject(opt_includeInstance, this);
 };
 
 
@@ -7411,15 +8741,15 @@ proto.palm.plugins.nut.v1.PermissionListResponse.Item.prototype.toObject = funct
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.palm.plugins.nut.v1.PermissionListResponse.Item} msg The msg instance to transform.
+ * @param {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.Item.toObject = function(includeInstance, msg) {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.toObject = function(includeInstance, msg) {
   var f, obj = {
     subject: jspb.Message.getFieldWithDefault(msg, 1, ""),
     operation: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    resource: (f = msg.getResource()) && proto.palm.plugins.nut.v1.ResourceListResponse.Item.toObject(includeInstance, f)
+    resource: (f = msg.getResource()) && proto.palm.plugins.nut.v1.Resource.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -7433,23 +8763,23 @@ proto.palm.plugins.nut.v1.PermissionListResponse.Item.toObject = function(includ
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.palm.plugins.nut.v1.PermissionListResponse.Item}
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item}
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.Item.deserializeBinary = function(bytes) {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.palm.plugins.nut.v1.PermissionListResponse.Item;
-  return proto.palm.plugins.nut.v1.PermissionListResponse.Item.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item;
+  return proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.palm.plugins.nut.v1.PermissionListResponse.Item} msg The message object to deserialize into.
+ * @param {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.palm.plugins.nut.v1.PermissionListResponse.Item}
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item}
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.Item.deserializeBinaryFromReader = function(msg, reader) {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -7465,8 +8795,8 @@ proto.palm.plugins.nut.v1.PermissionListResponse.Item.deserializeBinaryFromReade
       msg.setOperation(value);
       break;
     case 3:
-      var value = new proto.palm.plugins.nut.v1.ResourceListResponse.Item;
-      reader.readMessage(value,proto.palm.plugins.nut.v1.ResourceListResponse.Item.deserializeBinaryFromReader);
+      var value = new proto.palm.plugins.nut.v1.Resource;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.Resource.deserializeBinaryFromReader);
       msg.setResource(value);
       break;
     default:
@@ -7482,9 +8812,9 @@ proto.palm.plugins.nut.v1.PermissionListResponse.Item.deserializeBinaryFromReade
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.Item.prototype.serializeBinary = function() {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.palm.plugins.nut.v1.PermissionListResponse.Item.serializeBinaryToWriter(this, writer);
+  proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -7492,11 +8822,11 @@ proto.palm.plugins.nut.v1.PermissionListResponse.Item.prototype.serializeBinary 
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.palm.plugins.nut.v1.PermissionListResponse.Item} message
+ * @param {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.Item.serializeBinaryToWriter = function(message, writer) {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getSubject();
   if (f.length > 0) {
@@ -7517,7 +8847,7 @@ proto.palm.plugins.nut.v1.PermissionListResponse.Item.serializeBinaryToWriter = 
     writer.writeMessage(
       3,
       f,
-      proto.palm.plugins.nut.v1.ResourceListResponse.Item.serializeBinaryToWriter
+      proto.palm.plugins.nut.v1.Resource.serializeBinaryToWriter
     );
   }
 };
@@ -7527,16 +8857,16 @@ proto.palm.plugins.nut.v1.PermissionListResponse.Item.serializeBinaryToWriter = 
  * optional string subject = 1;
  * @return {string}
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.Item.prototype.getSubject = function() {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.prototype.getSubject = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.palm.plugins.nut.v1.PermissionListResponse.Item} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item} returns this
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.Item.prototype.setSubject = function(value) {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.prototype.setSubject = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -7545,44 +8875,44 @@ proto.palm.plugins.nut.v1.PermissionListResponse.Item.prototype.setSubject = fun
  * optional string operation = 2;
  * @return {string}
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.Item.prototype.getOperation = function() {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.prototype.getOperation = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.palm.plugins.nut.v1.PermissionListResponse.Item} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item} returns this
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.Item.prototype.setOperation = function(value) {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.prototype.setOperation = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * optional ResourceListResponse.Item resource = 3;
- * @return {?proto.palm.plugins.nut.v1.ResourceListResponse.Item}
+ * optional Resource resource = 3;
+ * @return {?proto.palm.plugins.nut.v1.Resource}
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.Item.prototype.getResource = function() {
-  return /** @type{?proto.palm.plugins.nut.v1.ResourceListResponse.Item} */ (
-    jspb.Message.getWrapperField(this, proto.palm.plugins.nut.v1.ResourceListResponse.Item, 3));
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.prototype.getResource = function() {
+  return /** @type{?proto.palm.plugins.nut.v1.Resource} */ (
+    jspb.Message.getWrapperField(this, proto.palm.plugins.nut.v1.Resource, 3));
 };
 
 
 /**
- * @param {?proto.palm.plugins.nut.v1.ResourceListResponse.Item|undefined} value
- * @return {!proto.palm.plugins.nut.v1.PermissionListResponse.Item} returns this
+ * @param {?proto.palm.plugins.nut.v1.Resource|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item} returns this
 */
-proto.palm.plugins.nut.v1.PermissionListResponse.Item.prototype.setResource = function(value) {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.prototype.setResource = function(value) {
   return jspb.Message.setWrapperField(this, 3, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.palm.plugins.nut.v1.PermissionListResponse.Item} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item} returns this
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.Item.prototype.clearResource = function() {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.prototype.clearResource = function() {
   return this.setResource(undefined);
 };
 
@@ -7591,45 +8921,45 @@ proto.palm.plugins.nut.v1.PermissionListResponse.Item.prototype.clearResource = 
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.Item.prototype.hasResource = function() {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item.prototype.hasResource = function() {
   return jspb.Message.getField(this, 3) != null;
 };
 
 
 /**
  * repeated Item items = 1;
- * @return {!Array<!proto.palm.plugins.nut.v1.PermissionListResponse.Item>}
+ * @return {!Array<!proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item>}
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.prototype.getItemsList = function() {
-  return /** @type{!Array<!proto.palm.plugins.nut.v1.PermissionListResponse.Item>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.palm.plugins.nut.v1.PermissionListResponse.Item, 1));
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.prototype.getItemsList = function() {
+  return /** @type{!Array<!proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item, 1));
 };
 
 
 /**
- * @param {!Array<!proto.palm.plugins.nut.v1.PermissionListResponse.Item>} value
- * @return {!proto.palm.plugins.nut.v1.PermissionListResponse} returns this
+ * @param {!Array<!proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item>} value
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse} returns this
 */
-proto.palm.plugins.nut.v1.PermissionListResponse.prototype.setItemsList = function(value) {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.prototype.setItemsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
 
 /**
- * @param {!proto.palm.plugins.nut.v1.PermissionListResponse.Item=} opt_value
+ * @param {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item=} opt_value
  * @param {number=} opt_index
- * @return {!proto.palm.plugins.nut.v1.PermissionListResponse.Item}
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item}
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.prototype.addItems = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.palm.plugins.nut.v1.PermissionListResponse.Item, opt_index);
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.prototype.addItems = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.palm.plugins.nut.v1.PolicyPermissionListResponse.Item, opt_index);
 };
 
 
 /**
  * Clears the list making it empty but non-null.
- * @return {!proto.palm.plugins.nut.v1.PermissionListResponse} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionListResponse} returns this
  */
-proto.palm.plugins.nut.v1.PermissionListResponse.prototype.clearItemsList = function() {
+proto.palm.plugins.nut.v1.PolicyPermissionListResponse.prototype.clearItemsList = function() {
   return this.setItemsList([]);
 };
 
@@ -7643,22 +8973,22 @@ proto.palm.plugins.nut.v1.PermissionListResponse.prototype.clearItemsList = func
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.oneofGroups_ = [[1,2]];
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.oneofGroups_ = [[1,2]];
 
 /**
  * @enum {number}
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.WhoCase = {
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.WhoCase = {
   WHO_NOT_SET: 0,
   USER: 1,
   ROLE: 2
 };
 
 /**
- * @return {proto.palm.plugins.nut.v1.PermissionsRequest.WhoCase}
+ * @return {proto.palm.plugins.nut.v1.PolicyPermissionsRequest.WhoCase}
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.prototype.getWhoCase = function() {
-  return /** @type {proto.palm.plugins.nut.v1.PermissionsRequest.WhoCase} */(jspb.Message.computeOneofCase(this, proto.palm.plugins.nut.v1.PermissionsRequest.oneofGroups_[0]));
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.prototype.getWhoCase = function() {
+  return /** @type {proto.palm.plugins.nut.v1.PolicyPermissionsRequest.WhoCase} */(jspb.Message.computeOneofCase(this, proto.palm.plugins.nut.v1.PolicyPermissionsRequest.oneofGroups_[0]));
 };
 
 
@@ -7676,8 +9006,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.palm.plugins.nut.v1.PermissionsRequest.toObject(opt_includeInstance, this);
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.PolicyPermissionsRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -7686,16 +9016,16 @@ proto.palm.plugins.nut.v1.PermissionsRequest.prototype.toObject = function(opt_i
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.palm.plugins.nut.v1.PermissionsRequest} msg The msg instance to transform.
+ * @param {!proto.palm.plugins.nut.v1.PolicyPermissionsRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.toObject = function(includeInstance, msg) {
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     user: jspb.Message.getFieldWithDefault(msg, 1, ""),
     role: jspb.Message.getFieldWithDefault(msg, 2, ""),
     operation: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    resource: (f = msg.getResource()) && proto.palm.plugins.nut.v1.ResourceListResponse.Item.toObject(includeInstance, f)
+    resource: (f = msg.getResource()) && proto.palm.plugins.nut.v1.Resource.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -7709,23 +9039,23 @@ proto.palm.plugins.nut.v1.PermissionsRequest.toObject = function(includeInstance
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.palm.plugins.nut.v1.PermissionsRequest}
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionsRequest}
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.deserializeBinary = function(bytes) {
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.palm.plugins.nut.v1.PermissionsRequest;
-  return proto.palm.plugins.nut.v1.PermissionsRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.palm.plugins.nut.v1.PolicyPermissionsRequest;
+  return proto.palm.plugins.nut.v1.PolicyPermissionsRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.palm.plugins.nut.v1.PermissionsRequest} msg The message object to deserialize into.
+ * @param {!proto.palm.plugins.nut.v1.PolicyPermissionsRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.palm.plugins.nut.v1.PermissionsRequest}
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionsRequest}
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -7745,8 +9075,8 @@ proto.palm.plugins.nut.v1.PermissionsRequest.deserializeBinaryFromReader = funct
       msg.setOperation(value);
       break;
     case 4:
-      var value = new proto.palm.plugins.nut.v1.ResourceListResponse.Item;
-      reader.readMessage(value,proto.palm.plugins.nut.v1.ResourceListResponse.Item.deserializeBinaryFromReader);
+      var value = new proto.palm.plugins.nut.v1.Resource;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.Resource.deserializeBinaryFromReader);
       msg.setResource(value);
       break;
     default:
@@ -7762,9 +9092,9 @@ proto.palm.plugins.nut.v1.PermissionsRequest.deserializeBinaryFromReader = funct
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.prototype.serializeBinary = function() {
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.palm.plugins.nut.v1.PermissionsRequest.serializeBinaryToWriter(this, writer);
+  proto.palm.plugins.nut.v1.PolicyPermissionsRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -7772,11 +9102,11 @@ proto.palm.plugins.nut.v1.PermissionsRequest.prototype.serializeBinary = functio
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.palm.plugins.nut.v1.PermissionsRequest} message
+ * @param {!proto.palm.plugins.nut.v1.PolicyPermissionsRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.serializeBinaryToWriter = function(message, writer) {
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = /** @type {string} */ (jspb.Message.getField(message, 1));
   if (f != null) {
@@ -7804,7 +9134,7 @@ proto.palm.plugins.nut.v1.PermissionsRequest.serializeBinaryToWriter = function(
     writer.writeMessage(
       4,
       f,
-      proto.palm.plugins.nut.v1.ResourceListResponse.Item.serializeBinaryToWriter
+      proto.palm.plugins.nut.v1.Resource.serializeBinaryToWriter
     );
   }
 };
@@ -7814,26 +9144,26 @@ proto.palm.plugins.nut.v1.PermissionsRequest.serializeBinaryToWriter = function(
  * optional string user = 1;
  * @return {string}
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.prototype.getUser = function() {
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.prototype.getUser = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.palm.plugins.nut.v1.PermissionsRequest} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionsRequest} returns this
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.prototype.setUser = function(value) {
-  return jspb.Message.setOneofField(this, 1, proto.palm.plugins.nut.v1.PermissionsRequest.oneofGroups_[0], value);
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.prototype.setUser = function(value) {
+  return jspb.Message.setOneofField(this, 1, proto.palm.plugins.nut.v1.PolicyPermissionsRequest.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the field making it undefined.
- * @return {!proto.palm.plugins.nut.v1.PermissionsRequest} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionsRequest} returns this
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.prototype.clearUser = function() {
-  return jspb.Message.setOneofField(this, 1, proto.palm.plugins.nut.v1.PermissionsRequest.oneofGroups_[0], undefined);
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.prototype.clearUser = function() {
+  return jspb.Message.setOneofField(this, 1, proto.palm.plugins.nut.v1.PolicyPermissionsRequest.oneofGroups_[0], undefined);
 };
 
 
@@ -7841,7 +9171,7 @@ proto.palm.plugins.nut.v1.PermissionsRequest.prototype.clearUser = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.prototype.hasUser = function() {
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.prototype.hasUser = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -7850,26 +9180,26 @@ proto.palm.plugins.nut.v1.PermissionsRequest.prototype.hasUser = function() {
  * optional string role = 2;
  * @return {string}
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.prototype.getRole = function() {
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.prototype.getRole = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.palm.plugins.nut.v1.PermissionsRequest} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionsRequest} returns this
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.prototype.setRole = function(value) {
-  return jspb.Message.setOneofField(this, 2, proto.palm.plugins.nut.v1.PermissionsRequest.oneofGroups_[0], value);
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.prototype.setRole = function(value) {
+  return jspb.Message.setOneofField(this, 2, proto.palm.plugins.nut.v1.PolicyPermissionsRequest.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the field making it undefined.
- * @return {!proto.palm.plugins.nut.v1.PermissionsRequest} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionsRequest} returns this
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.prototype.clearRole = function() {
-  return jspb.Message.setOneofField(this, 2, proto.palm.plugins.nut.v1.PermissionsRequest.oneofGroups_[0], undefined);
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.prototype.clearRole = function() {
+  return jspb.Message.setOneofField(this, 2, proto.palm.plugins.nut.v1.PolicyPermissionsRequest.oneofGroups_[0], undefined);
 };
 
 
@@ -7877,7 +9207,7 @@ proto.palm.plugins.nut.v1.PermissionsRequest.prototype.clearRole = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.prototype.hasRole = function() {
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.prototype.hasRole = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 
@@ -7886,44 +9216,44 @@ proto.palm.plugins.nut.v1.PermissionsRequest.prototype.hasRole = function() {
  * optional string operation = 3;
  * @return {string}
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.prototype.getOperation = function() {
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.prototype.getOperation = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.palm.plugins.nut.v1.PermissionsRequest} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionsRequest} returns this
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.prototype.setOperation = function(value) {
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.prototype.setOperation = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * optional ResourceListResponse.Item resource = 4;
- * @return {?proto.palm.plugins.nut.v1.ResourceListResponse.Item}
+ * optional Resource resource = 4;
+ * @return {?proto.palm.plugins.nut.v1.Resource}
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.prototype.getResource = function() {
-  return /** @type{?proto.palm.plugins.nut.v1.ResourceListResponse.Item} */ (
-    jspb.Message.getWrapperField(this, proto.palm.plugins.nut.v1.ResourceListResponse.Item, 4));
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.prototype.getResource = function() {
+  return /** @type{?proto.palm.plugins.nut.v1.Resource} */ (
+    jspb.Message.getWrapperField(this, proto.palm.plugins.nut.v1.Resource, 4));
 };
 
 
 /**
- * @param {?proto.palm.plugins.nut.v1.ResourceListResponse.Item|undefined} value
- * @return {!proto.palm.plugins.nut.v1.PermissionsRequest} returns this
+ * @param {?proto.palm.plugins.nut.v1.Resource|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionsRequest} returns this
 */
-proto.palm.plugins.nut.v1.PermissionsRequest.prototype.setResource = function(value) {
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.prototype.setResource = function(value) {
   return jspb.Message.setWrapperField(this, 4, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.palm.plugins.nut.v1.PermissionsRequest} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyPermissionsRequest} returns this
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.prototype.clearResource = function() {
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.prototype.clearResource = function() {
   return this.setResource(undefined);
 };
 
@@ -7932,7 +9262,7 @@ proto.palm.plugins.nut.v1.PermissionsRequest.prototype.clearResource = function(
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.palm.plugins.nut.v1.PermissionsRequest.prototype.hasResource = function() {
+proto.palm.plugins.nut.v1.PolicyPermissionsRequest.prototype.hasResource = function() {
   return jspb.Message.getField(this, 4) != null;
 };
 
@@ -7943,7 +9273,7 @@ proto.palm.plugins.nut.v1.PermissionsRequest.prototype.hasResource = function() 
  * @private {!Array<number>}
  * @const
  */
-proto.palm.plugins.nut.v1.ResourceListResponse.repeatedFields_ = [1];
+proto.palm.plugins.nut.v1.PolicyResourceListResponse.repeatedFields_ = [1];
 
 
 
@@ -7960,8 +9290,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.palm.plugins.nut.v1.ResourceListResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.palm.plugins.nut.v1.ResourceListResponse.toObject(opt_includeInstance, this);
+proto.palm.plugins.nut.v1.PolicyResourceListResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.PolicyResourceListResponse.toObject(opt_includeInstance, this);
 };
 
 
@@ -7970,14 +9300,14 @@ proto.palm.plugins.nut.v1.ResourceListResponse.prototype.toObject = function(opt
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.palm.plugins.nut.v1.ResourceListResponse} msg The msg instance to transform.
+ * @param {!proto.palm.plugins.nut.v1.PolicyResourceListResponse} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.ResourceListResponse.toObject = function(includeInstance, msg) {
+proto.palm.plugins.nut.v1.PolicyResourceListResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     itemList: jspb.Message.toObjectList(msg.getItemList(),
-    proto.palm.plugins.nut.v1.ResourceListResponse.Item.toObject, includeInstance)
+    proto.palm.plugins.nut.v1.Resource.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -7991,23 +9321,23 @@ proto.palm.plugins.nut.v1.ResourceListResponse.toObject = function(includeInstan
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.palm.plugins.nut.v1.ResourceListResponse}
+ * @return {!proto.palm.plugins.nut.v1.PolicyResourceListResponse}
  */
-proto.palm.plugins.nut.v1.ResourceListResponse.deserializeBinary = function(bytes) {
+proto.palm.plugins.nut.v1.PolicyResourceListResponse.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.palm.plugins.nut.v1.ResourceListResponse;
-  return proto.palm.plugins.nut.v1.ResourceListResponse.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.palm.plugins.nut.v1.PolicyResourceListResponse;
+  return proto.palm.plugins.nut.v1.PolicyResourceListResponse.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.palm.plugins.nut.v1.ResourceListResponse} msg The message object to deserialize into.
+ * @param {!proto.palm.plugins.nut.v1.PolicyResourceListResponse} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.palm.plugins.nut.v1.ResourceListResponse}
+ * @return {!proto.palm.plugins.nut.v1.PolicyResourceListResponse}
  */
-proto.palm.plugins.nut.v1.ResourceListResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.palm.plugins.nut.v1.PolicyResourceListResponse.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -8015,8 +9345,8 @@ proto.palm.plugins.nut.v1.ResourceListResponse.deserializeBinaryFromReader = fun
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.palm.plugins.nut.v1.ResourceListResponse.Item;
-      reader.readMessage(value,proto.palm.plugins.nut.v1.ResourceListResponse.Item.deserializeBinaryFromReader);
+      var value = new proto.palm.plugins.nut.v1.Resource;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.Resource.deserializeBinaryFromReader);
       msg.addItem(value);
       break;
     default:
@@ -8032,9 +9362,9 @@ proto.palm.plugins.nut.v1.ResourceListResponse.deserializeBinaryFromReader = fun
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.palm.plugins.nut.v1.ResourceListResponse.prototype.serializeBinary = function() {
+proto.palm.plugins.nut.v1.PolicyResourceListResponse.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.palm.plugins.nut.v1.ResourceListResponse.serializeBinaryToWriter(this, writer);
+  proto.palm.plugins.nut.v1.PolicyResourceListResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -8042,235 +9372,57 @@ proto.palm.plugins.nut.v1.ResourceListResponse.prototype.serializeBinary = funct
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.palm.plugins.nut.v1.ResourceListResponse} message
+ * @param {!proto.palm.plugins.nut.v1.PolicyResourceListResponse} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.palm.plugins.nut.v1.ResourceListResponse.serializeBinaryToWriter = function(message, writer) {
+proto.palm.plugins.nut.v1.PolicyResourceListResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getItemList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       1,
       f,
-      proto.palm.plugins.nut.v1.ResourceListResponse.Item.serializeBinaryToWriter
-    );
-  }
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.palm.plugins.nut.v1.ResourceListResponse.Item.prototype.toObject = function(opt_includeInstance) {
-  return proto.palm.plugins.nut.v1.ResourceListResponse.Item.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.palm.plugins.nut.v1.ResourceListResponse.Item} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.palm.plugins.nut.v1.ResourceListResponse.Item.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    type: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    id: jspb.Message.getFieldWithDefault(msg, 2, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.palm.plugins.nut.v1.ResourceListResponse.Item}
- */
-proto.palm.plugins.nut.v1.ResourceListResponse.Item.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.palm.plugins.nut.v1.ResourceListResponse.Item;
-  return proto.palm.plugins.nut.v1.ResourceListResponse.Item.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.palm.plugins.nut.v1.ResourceListResponse.Item} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.palm.plugins.nut.v1.ResourceListResponse.Item}
- */
-proto.palm.plugins.nut.v1.ResourceListResponse.Item.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setType(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readInt32());
-      msg.setId(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.palm.plugins.nut.v1.ResourceListResponse.Item.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.palm.plugins.nut.v1.ResourceListResponse.Item.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.palm.plugins.nut.v1.ResourceListResponse.Item} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.palm.plugins.nut.v1.ResourceListResponse.Item.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getType();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
-  f = /** @type {number} */ (jspb.Message.getField(message, 2));
-  if (f != null) {
-    writer.writeInt32(
-      2,
-      f
+      proto.palm.plugins.nut.v1.Resource.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional string type = 1;
- * @return {string}
+ * repeated Resource item = 1;
+ * @return {!Array<!proto.palm.plugins.nut.v1.Resource>}
  */
-proto.palm.plugins.nut.v1.ResourceListResponse.Item.prototype.getType = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+proto.palm.plugins.nut.v1.PolicyResourceListResponse.prototype.getItemList = function() {
+  return /** @type{!Array<!proto.palm.plugins.nut.v1.Resource>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.palm.plugins.nut.v1.Resource, 1));
 };
 
 
 /**
- * @param {string} value
- * @return {!proto.palm.plugins.nut.v1.ResourceListResponse.Item} returns this
- */
-proto.palm.plugins.nut.v1.ResourceListResponse.Item.prototype.setType = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-/**
- * optional int32 id = 2;
- * @return {number}
- */
-proto.palm.plugins.nut.v1.ResourceListResponse.Item.prototype.getId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.palm.plugins.nut.v1.ResourceListResponse.Item} returns this
- */
-proto.palm.plugins.nut.v1.ResourceListResponse.Item.prototype.setId = function(value) {
-  return jspb.Message.setField(this, 2, value);
-};
-
-
-/**
- * Clears the field making it undefined.
- * @return {!proto.palm.plugins.nut.v1.ResourceListResponse.Item} returns this
- */
-proto.palm.plugins.nut.v1.ResourceListResponse.Item.prototype.clearId = function() {
-  return jspb.Message.setField(this, 2, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.palm.plugins.nut.v1.ResourceListResponse.Item.prototype.hasId = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-/**
- * repeated Item item = 1;
- * @return {!Array<!proto.palm.plugins.nut.v1.ResourceListResponse.Item>}
- */
-proto.palm.plugins.nut.v1.ResourceListResponse.prototype.getItemList = function() {
-  return /** @type{!Array<!proto.palm.plugins.nut.v1.ResourceListResponse.Item>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.palm.plugins.nut.v1.ResourceListResponse.Item, 1));
-};
-
-
-/**
- * @param {!Array<!proto.palm.plugins.nut.v1.ResourceListResponse.Item>} value
- * @return {!proto.palm.plugins.nut.v1.ResourceListResponse} returns this
+ * @param {!Array<!proto.palm.plugins.nut.v1.Resource>} value
+ * @return {!proto.palm.plugins.nut.v1.PolicyResourceListResponse} returns this
 */
-proto.palm.plugins.nut.v1.ResourceListResponse.prototype.setItemList = function(value) {
+proto.palm.plugins.nut.v1.PolicyResourceListResponse.prototype.setItemList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
 
 /**
- * @param {!proto.palm.plugins.nut.v1.ResourceListResponse.Item=} opt_value
+ * @param {!proto.palm.plugins.nut.v1.Resource=} opt_value
  * @param {number=} opt_index
- * @return {!proto.palm.plugins.nut.v1.ResourceListResponse.Item}
+ * @return {!proto.palm.plugins.nut.v1.Resource}
  */
-proto.palm.plugins.nut.v1.ResourceListResponse.prototype.addItem = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.palm.plugins.nut.v1.ResourceListResponse.Item, opt_index);
+proto.palm.plugins.nut.v1.PolicyResourceListResponse.prototype.addItem = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.palm.plugins.nut.v1.Resource, opt_index);
 };
 
 
 /**
  * Clears the list making it empty but non-null.
- * @return {!proto.palm.plugins.nut.v1.ResourceListResponse} returns this
+ * @return {!proto.palm.plugins.nut.v1.PolicyResourceListResponse} returns this
  */
-proto.palm.plugins.nut.v1.ResourceListResponse.prototype.clearItemList = function() {
+proto.palm.plugins.nut.v1.PolicyResourceListResponse.prototype.clearItemList = function() {
   return this.setItemList([]);
 };
 
@@ -9104,6 +10256,157 @@ proto.palm.plugins.nut.v1.LocaleSetRequest.prototype.getMessage = function() {
  */
 proto.palm.plugins.nut.v1.LocaleSetRequest.prototype.setMessage = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.SiteInstallRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.SiteInstallRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.SiteInstallRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.SiteInstallRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    user: (f = msg.getUser()) && proto.palm.plugins.nut.v1.UserSignUpRequest.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.SiteInstallRequest}
+ */
+proto.palm.plugins.nut.v1.SiteInstallRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.SiteInstallRequest;
+  return proto.palm.plugins.nut.v1.SiteInstallRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.SiteInstallRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.SiteInstallRequest}
+ */
+proto.palm.plugins.nut.v1.SiteInstallRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.palm.plugins.nut.v1.UserSignUpRequest;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.UserSignUpRequest.deserializeBinaryFromReader);
+      msg.setUser(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.SiteInstallRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.SiteInstallRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.SiteInstallRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.SiteInstallRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getUser();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.palm.plugins.nut.v1.UserSignUpRequest.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional UserSignUpRequest user = 1;
+ * @return {?proto.palm.plugins.nut.v1.UserSignUpRequest}
+ */
+proto.palm.plugins.nut.v1.SiteInstallRequest.prototype.getUser = function() {
+  return /** @type{?proto.palm.plugins.nut.v1.UserSignUpRequest} */ (
+    jspb.Message.getWrapperField(this, proto.palm.plugins.nut.v1.UserSignUpRequest, 1));
+};
+
+
+/**
+ * @param {?proto.palm.plugins.nut.v1.UserSignUpRequest|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.SiteInstallRequest} returns this
+*/
+proto.palm.plugins.nut.v1.SiteInstallRequest.prototype.setUser = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.SiteInstallRequest} returns this
+ */
+proto.palm.plugins.nut.v1.SiteInstallRequest.prototype.clearUser = function() {
+  return this.setUser(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.SiteInstallRequest.prototype.hasUser = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -12299,6 +13602,712 @@ proto.palm.plugins.nut.v1.BingProfile.prototype.hasSiteVerifyId = function() {
  * @private {!Array<number>}
  * @const
  */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    itemsList: jspb.Message.toObjectList(msg.getItemsList(),
+    proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.toObject, includeInstance),
+    pagination: (f = msg.getPagination()) && proto.palm.plugins.nut.v1.Pagination.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.SiteIndexNotificationResponse;
+  return proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.deserializeBinaryFromReader);
+      msg.addItems(value);
+      break;
+    case 9:
+      var value = new proto.palm.plugins.nut.v1.Pagination;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.Pagination.deserializeBinaryFromReader);
+      msg.setPagination(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getItemsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.serializeBinaryToWriter
+    );
+  }
+  f = message.getPagination();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      proto.palm.plugins.nut.v1.Pagination.serializeBinaryToWriter
+    );
+  }
+};
+
+
+
+/**
+ * Oneof group definitions for this message. Each group defines the field
+ * numbers belonging to that group. When of these fields' value is set, all
+ * other fields in the group are cleared. During deserialization, if multiple
+ * fields are encountered for a group, only the last value seen will be kept.
+ * @private {!Array<!Array<number>>}
+ * @const
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.oneofGroups_ = [[1,2]];
+
+/**
+ * @enum {number}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.MessageCase = {
+  MESSAGE_NOT_SET: 0,
+  EMAIL: 1,
+  SMS: 2
+};
+
+/**
+ * @return {proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.MessageCase}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.prototype.getMessageCase = function() {
+  return /** @type {proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.MessageCase} */(jspb.Message.computeOneofCase(this, proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.oneofGroups_[0]));
+};
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    email: (f = msg.getEmail()) && proto.palm.plugins.nut.v1.EmailTask.toObject(includeInstance, f),
+    sms: (f = msg.getSms()) && proto.palm.plugins.nut.v1.SmsTask.toObject(includeInstance, f),
+    createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item;
+  return proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.palm.plugins.nut.v1.EmailTask;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.EmailTask.deserializeBinaryFromReader);
+      msg.setEmail(value);
+      break;
+    case 2:
+      var value = new proto.palm.plugins.nut.v1.SmsTask;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.SmsTask.deserializeBinaryFromReader);
+      msg.setSms(value);
+      break;
+    case 19:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setCreatedAt(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getEmail();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.palm.plugins.nut.v1.EmailTask.serializeBinaryToWriter
+    );
+  }
+  f = message.getSms();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.palm.plugins.nut.v1.SmsTask.serializeBinaryToWriter
+    );
+  }
+  f = message.getCreatedAt();
+  if (f != null) {
+    writer.writeMessage(
+      19,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional EmailTask email = 1;
+ * @return {?proto.palm.plugins.nut.v1.EmailTask}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.prototype.getEmail = function() {
+  return /** @type{?proto.palm.plugins.nut.v1.EmailTask} */ (
+    jspb.Message.getWrapperField(this, proto.palm.plugins.nut.v1.EmailTask, 1));
+};
+
+
+/**
+ * @param {?proto.palm.plugins.nut.v1.EmailTask|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item} returns this
+*/
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.prototype.setEmail = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 1, proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.prototype.clearEmail = function() {
+  return this.setEmail(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.prototype.hasEmail = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional SmsTask sms = 2;
+ * @return {?proto.palm.plugins.nut.v1.SmsTask}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.prototype.getSms = function() {
+  return /** @type{?proto.palm.plugins.nut.v1.SmsTask} */ (
+    jspb.Message.getWrapperField(this, proto.palm.plugins.nut.v1.SmsTask, 2));
+};
+
+
+/**
+ * @param {?proto.palm.plugins.nut.v1.SmsTask|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item} returns this
+*/
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.prototype.setSms = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 2, proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.prototype.clearSms = function() {
+  return this.setSms(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.prototype.hasSms = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional google.protobuf.Timestamp created_at = 19;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.prototype.getCreatedAt = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 19));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item} returns this
+*/
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.prototype.setCreatedAt = function(value) {
+  return jspb.Message.setWrapperField(this, 19, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.prototype.clearCreatedAt = function() {
+  return this.setCreatedAt(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item.prototype.hasCreatedAt = function() {
+  return jspb.Message.getField(this, 19) != null;
+};
+
+
+/**
+ * repeated Item items = 1;
+ * @return {!Array<!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item>}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.prototype.getItemsList = function() {
+  return /** @type{!Array<!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item>} value
+ * @return {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse} returns this
+*/
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.prototype.setItemsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.prototype.addItems = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.Item, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse} returns this
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.prototype.clearItemsList = function() {
+  return this.setItemsList([]);
+};
+
+
+/**
+ * optional Pagination pagination = 9;
+ * @return {?proto.palm.plugins.nut.v1.Pagination}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.prototype.getPagination = function() {
+  return /** @type{?proto.palm.plugins.nut.v1.Pagination} */ (
+    jspb.Message.getWrapperField(this, proto.palm.plugins.nut.v1.Pagination, 9));
+};
+
+
+/**
+ * @param {?proto.palm.plugins.nut.v1.Pagination|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse} returns this
+*/
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.prototype.setPagination = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.SiteIndexNotificationResponse} returns this
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.prototype.clearPagination = function() {
+  return this.setPagination(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.SiteIndexNotificationResponse.prototype.hasPagination = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.palm.plugins.nut.v1.SmsTask.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.SmsTask.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.SmsTask.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.SmsTask} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.SmsTask.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    from: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    toList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
+    body: jspb.Message.getFieldWithDefault(msg, 3, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.SmsTask}
+ */
+proto.palm.plugins.nut.v1.SmsTask.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.SmsTask;
+  return proto.palm.plugins.nut.v1.SmsTask.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.SmsTask} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.SmsTask}
+ */
+proto.palm.plugins.nut.v1.SmsTask.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setFrom(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addTo(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBody(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.SmsTask.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.SmsTask.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.SmsTask} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.SmsTask.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getFrom();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getToList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      2,
+      f
+    );
+  }
+  f = message.getBody();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string from = 1;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.SmsTask.prototype.getFrom = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.SmsTask} returns this
+ */
+proto.palm.plugins.nut.v1.SmsTask.prototype.setFrom = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * repeated string to = 2;
+ * @return {!Array<string>}
+ */
+proto.palm.plugins.nut.v1.SmsTask.prototype.getToList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 2));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.palm.plugins.nut.v1.SmsTask} returns this
+ */
+proto.palm.plugins.nut.v1.SmsTask.prototype.setToList = function(value) {
+  return jspb.Message.setField(this, 2, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.palm.plugins.nut.v1.SmsTask} returns this
+ */
+proto.palm.plugins.nut.v1.SmsTask.prototype.addTo = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.palm.plugins.nut.v1.SmsTask} returns this
+ */
+proto.palm.plugins.nut.v1.SmsTask.prototype.clearToList = function() {
+  return this.setToList([]);
+};
+
+
+/**
+ * optional string body = 3;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.SmsTask.prototype.getBody = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.SmsTask} returns this
+ */
+proto.palm.plugins.nut.v1.SmsTask.prototype.setBody = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
 proto.palm.plugins.nut.v1.EmailTask.repeatedFields_ = [12,13,21];
 
 
@@ -15400,12 +17409,4181 @@ proto.palm.plugins.nut.v1.SiteStatusResponse.prototype.clearHealthesList = funct
 };
 
 
+
 /**
- * @enum {number}
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
  */
-proto.palm.plugins.nut.v1.Role = {
-  ROOT: 0,
-  ADMINISTRATOR: 1
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.repeatedFields_ = [11];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.toObject(opt_includeInstance, this);
 };
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    pagination: (f = msg.getPagination()) && proto.palm.plugins.nut.v1.Pagination.toObject(includeInstance, f),
+    itemsList: jspb.Message.toObjectList(msg.getItemsList(),
+    proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.ShorterLinkIndexResponse;
+  return proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.palm.plugins.nut.v1.Pagination;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.Pagination.deserializeBinaryFromReader);
+      msg.setPagination(value);
+      break;
+    case 11:
+      var value = new proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.deserializeBinaryFromReader);
+      msg.addItems(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getPagination();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.palm.plugins.nut.v1.Pagination.serializeBinaryToWriter
+    );
+  }
+  f = message.getItemsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      11,
+      f,
+      proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.serializeBinaryToWriter
+    );
+  }
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    url: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    details: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    updatedAt: (f = msg.getUpdatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item;
+  return proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setId(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUrl(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDetails(value);
+      break;
+    case 11:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setUpdatedAt(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getId();
+  if (f !== 0) {
+    writer.writeInt32(
+      1,
+      f
+    );
+  }
+  f = message.getUrl();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getDetails();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getUpdatedAt();
+  if (f != null) {
+    writer.writeMessage(
+      11,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional int32 id = 1;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.prototype.setId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string url = 2;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.prototype.getUrl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.prototype.setUrl = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string details = 3;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.prototype.getDetails = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.prototype.setDetails = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp updated_at = 11;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.prototype.getUpdatedAt = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 11));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item} returns this
+*/
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.prototype.setUpdatedAt = function(value) {
+  return jspb.Message.setWrapperField(this, 11, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.prototype.clearUpdatedAt = function() {
+  return this.setUpdatedAt(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item.prototype.hasUpdatedAt = function() {
+  return jspb.Message.getField(this, 11) != null;
+};
+
+
+/**
+ * optional Pagination pagination = 1;
+ * @return {?proto.palm.plugins.nut.v1.Pagination}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.prototype.getPagination = function() {
+  return /** @type{?proto.palm.plugins.nut.v1.Pagination} */ (
+    jspb.Message.getWrapperField(this, proto.palm.plugins.nut.v1.Pagination, 1));
+};
+
+
+/**
+ * @param {?proto.palm.plugins.nut.v1.Pagination|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse} returns this
+*/
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.prototype.setPagination = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse} returns this
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.prototype.clearPagination = function() {
+  return this.setPagination(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.prototype.hasPagination = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * repeated Item items = 11;
+ * @return {!Array<!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item>}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.prototype.getItemsList = function() {
+  return /** @type{!Array<!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item, 11));
+};
+
+
+/**
+ * @param {!Array<!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item>} value
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse} returns this
+*/
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.prototype.setItemsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 11, value);
+};
+
+
+/**
+ * @param {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.prototype.addItems = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 11, opt_value, proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.Item, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkIndexResponse} returns this
+ */
+proto.palm.plugins.nut.v1.ShorterLinkIndexResponse.prototype.clearItemsList = function() {
+  return this.setItemsList([]);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkCreateRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.ShorterLinkCreateRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.ShorterLinkCreateRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.ShorterLinkCreateRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    url: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    details: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkCreateRequest}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkCreateRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.ShorterLinkCreateRequest;
+  return proto.palm.plugins.nut.v1.ShorterLinkCreateRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.ShorterLinkCreateRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkCreateRequest}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkCreateRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUrl(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDetails(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkCreateRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.ShorterLinkCreateRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.ShorterLinkCreateRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.ShorterLinkCreateRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getUrl();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getDetails();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string url = 1;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkCreateRequest.prototype.getUrl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkCreateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.ShorterLinkCreateRequest.prototype.setUrl = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string details = 2;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkCreateRequest.prototype.getDetails = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkCreateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.ShorterLinkCreateRequest.prototype.setDetails = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    url: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    details: jspb.Message.getFieldWithDefault(msg, 3, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest;
+  return proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setId(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUrl(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDetails(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getId();
+  if (f !== 0) {
+    writer.writeInt32(
+      1,
+      f
+    );
+  }
+  f = message.getUrl();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getDetails();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional int32 id = 1;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest.prototype.setId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string url = 2;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest.prototype.getUrl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest.prototype.setUrl = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string details = 3;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest.prototype.getDetails = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.ShorterLinkUpdateRequest.prototype.setDetails = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.TagIndexResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.TagIndexResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    itemsList: jspb.Message.toObjectList(msg.getItemsList(),
+    proto.palm.plugins.nut.v1.TagIndexResponse.Item.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.TagIndexResponse}
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.TagIndexResponse;
+  return proto.palm.plugins.nut.v1.TagIndexResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.TagIndexResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.TagIndexResponse}
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.palm.plugins.nut.v1.TagIndexResponse.Item;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.TagIndexResponse.Item.deserializeBinaryFromReader);
+      msg.addItems(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.TagIndexResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.TagIndexResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getItemsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.palm.plugins.nut.v1.TagIndexResponse.Item.serializeBinaryToWriter
+    );
+  }
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.TagIndexResponse.Item.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.TagIndexResponse.Item} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    lang: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    name: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    priority: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    updatedAt: (f = msg.getUpdatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.TagIndexResponse.Item}
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.TagIndexResponse.Item;
+  return proto.palm.plugins.nut.v1.TagIndexResponse.Item.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.TagIndexResponse.Item} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.TagIndexResponse.Item}
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setId(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLang(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setPriority(value);
+      break;
+    case 11:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setUpdatedAt(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.TagIndexResponse.Item.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.TagIndexResponse.Item} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getId();
+  if (f !== 0) {
+    writer.writeInt32(
+      1,
+      f
+    );
+  }
+  f = message.getLang();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getPriority();
+  if (f !== 0) {
+    writer.writeInt32(
+      4,
+      f
+    );
+  }
+  f = message.getUpdatedAt();
+  if (f != null) {
+    writer.writeMessage(
+      11,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional int32 id = 1;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.TagIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.prototype.setId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string lang = 2;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.prototype.getLang = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.TagIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.prototype.setLang = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string name = 3;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.TagIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional int32 priority = 4;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.prototype.getPriority = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.TagIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.prototype.setPriority = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp updated_at = 11;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.prototype.getUpdatedAt = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 11));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.TagIndexResponse.Item} returns this
+*/
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.prototype.setUpdatedAt = function(value) {
+  return jspb.Message.setWrapperField(this, 11, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.TagIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.prototype.clearUpdatedAt = function() {
+  return this.setUpdatedAt(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.Item.prototype.hasUpdatedAt = function() {
+  return jspb.Message.getField(this, 11) != null;
+};
+
+
+/**
+ * repeated Item items = 1;
+ * @return {!Array<!proto.palm.plugins.nut.v1.TagIndexResponse.Item>}
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.prototype.getItemsList = function() {
+  return /** @type{!Array<!proto.palm.plugins.nut.v1.TagIndexResponse.Item>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.palm.plugins.nut.v1.TagIndexResponse.Item, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.palm.plugins.nut.v1.TagIndexResponse.Item>} value
+ * @return {!proto.palm.plugins.nut.v1.TagIndexResponse} returns this
+*/
+proto.palm.plugins.nut.v1.TagIndexResponse.prototype.setItemsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.palm.plugins.nut.v1.TagIndexResponse.Item=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.palm.plugins.nut.v1.TagIndexResponse.Item}
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.prototype.addItems = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.palm.plugins.nut.v1.TagIndexResponse.Item, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.palm.plugins.nut.v1.TagIndexResponse} returns this
+ */
+proto.palm.plugins.nut.v1.TagIndexResponse.prototype.clearItemsList = function() {
+  return this.setItemsList([]);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.TagCreateRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.TagCreateRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.TagCreateRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.TagCreateRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    lang: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    priority: jspb.Message.getFieldWithDefault(msg, 11, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.TagCreateRequest}
+ */
+proto.palm.plugins.nut.v1.TagCreateRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.TagCreateRequest;
+  return proto.palm.plugins.nut.v1.TagCreateRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.TagCreateRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.TagCreateRequest}
+ */
+proto.palm.plugins.nut.v1.TagCreateRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLang(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 11:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setPriority(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.TagCreateRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.TagCreateRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.TagCreateRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.TagCreateRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getLang();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getPriority();
+  if (f !== 0) {
+    writer.writeInt32(
+      11,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string lang = 1;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.TagCreateRequest.prototype.getLang = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.TagCreateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.TagCreateRequest.prototype.setLang = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string name = 2;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.TagCreateRequest.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.TagCreateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.TagCreateRequest.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional int32 priority = 11;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.TagCreateRequest.prototype.getPriority = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 11, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.TagCreateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.TagCreateRequest.prototype.setPriority = function(value) {
+  return jspb.Message.setProto3IntField(this, 11, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.TagUpdateRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.TagUpdateRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.TagUpdateRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.TagUpdateRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    priority: jspb.Message.getFieldWithDefault(msg, 11, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.TagUpdateRequest}
+ */
+proto.palm.plugins.nut.v1.TagUpdateRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.TagUpdateRequest;
+  return proto.palm.plugins.nut.v1.TagUpdateRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.TagUpdateRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.TagUpdateRequest}
+ */
+proto.palm.plugins.nut.v1.TagUpdateRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setId(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 11:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setPriority(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.TagUpdateRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.TagUpdateRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.TagUpdateRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.TagUpdateRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getId();
+  if (f !== 0) {
+    writer.writeInt32(
+      1,
+      f
+    );
+  }
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getPriority();
+  if (f !== 0) {
+    writer.writeInt32(
+      11,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional int32 id = 1;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.TagUpdateRequest.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.TagUpdateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.TagUpdateRequest.prototype.setId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string name = 2;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.TagUpdateRequest.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.TagUpdateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.TagUpdateRequest.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional int32 priority = 11;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.TagUpdateRequest.prototype.getPriority = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 11, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.TagUpdateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.TagUpdateRequest.prototype.setPriority = function(value) {
+  return jspb.Message.setProto3IntField(this, 11, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.repeatedFields_ = [11];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.CategoryIndexResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.CategoryIndexResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    pagination: (f = msg.getPagination()) && proto.palm.plugins.nut.v1.Pagination.toObject(includeInstance, f),
+    itemsList: jspb.Message.toObjectList(msg.getItemsList(),
+    proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.CategoryIndexResponse}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.CategoryIndexResponse;
+  return proto.palm.plugins.nut.v1.CategoryIndexResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.CategoryIndexResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.CategoryIndexResponse}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.palm.plugins.nut.v1.Pagination;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.Pagination.deserializeBinaryFromReader);
+      msg.setPagination(value);
+      break;
+    case 11:
+      var value = new proto.palm.plugins.nut.v1.CategoryIndexResponse.Item;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.deserializeBinaryFromReader);
+      msg.addItems(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.CategoryIndexResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.CategoryIndexResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getPagination();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.palm.plugins.nut.v1.Pagination.serializeBinaryToWriter
+    );
+  }
+  f = message.getItemsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      11,
+      f,
+      proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.serializeBinaryToWriter
+    );
+  }
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    lang: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    name: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    parentId: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    priority: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    updatedAt: (f = msg.getUpdatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.CategoryIndexResponse.Item;
+  return proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setId(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLang(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setParentId(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setPriority(value);
+      break;
+    case 11:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setUpdatedAt(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getId();
+  if (f !== 0) {
+    writer.writeInt32(
+      1,
+      f
+    );
+  }
+  f = message.getLang();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
+    writer.writeInt32(
+      4,
+      f
+    );
+  }
+  f = message.getPriority();
+  if (f !== 0) {
+    writer.writeInt32(
+      5,
+      f
+    );
+  }
+  f = message.getUpdatedAt();
+  if (f != null) {
+    writer.writeMessage(
+      11,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional int32 id = 1;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.setId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string lang = 2;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.getLang = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.setLang = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string name = 3;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional int32 parent_id = 4;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.getParentId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.setParentId = function(value) {
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.clearParentId = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.hasParentId = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional int32 priority = 5;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.getPriority = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.setPriority = function(value) {
+  return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp updated_at = 11;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.getUpdatedAt = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 11));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item} returns this
+*/
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.setUpdatedAt = function(value) {
+  return jspb.Message.setWrapperField(this, 11, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.clearUpdatedAt = function() {
+  return this.setUpdatedAt(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.Item.prototype.hasUpdatedAt = function() {
+  return jspb.Message.getField(this, 11) != null;
+};
+
+
+/**
+ * optional Pagination pagination = 1;
+ * @return {?proto.palm.plugins.nut.v1.Pagination}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.prototype.getPagination = function() {
+  return /** @type{?proto.palm.plugins.nut.v1.Pagination} */ (
+    jspb.Message.getWrapperField(this, proto.palm.plugins.nut.v1.Pagination, 1));
+};
+
+
+/**
+ * @param {?proto.palm.plugins.nut.v1.Pagination|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.CategoryIndexResponse} returns this
+*/
+proto.palm.plugins.nut.v1.CategoryIndexResponse.prototype.setPagination = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.CategoryIndexResponse} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.prototype.clearPagination = function() {
+  return this.setPagination(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.prototype.hasPagination = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * repeated Item items = 11;
+ * @return {!Array<!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item>}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.prototype.getItemsList = function() {
+  return /** @type{!Array<!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.palm.plugins.nut.v1.CategoryIndexResponse.Item, 11));
+};
+
+
+/**
+ * @param {!Array<!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item>} value
+ * @return {!proto.palm.plugins.nut.v1.CategoryIndexResponse} returns this
+*/
+proto.palm.plugins.nut.v1.CategoryIndexResponse.prototype.setItemsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 11, value);
+};
+
+
+/**
+ * @param {!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.palm.plugins.nut.v1.CategoryIndexResponse.Item}
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.prototype.addItems = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 11, opt_value, proto.palm.plugins.nut.v1.CategoryIndexResponse.Item, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.palm.plugins.nut.v1.CategoryIndexResponse} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryIndexResponse.prototype.clearItemsList = function() {
+  return this.setItemsList([]);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.CategoryCreateRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.CategoryCreateRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.CategoryCreateRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.CategoryCreateRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    lang: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    parentId: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    priority: jspb.Message.getFieldWithDefault(msg, 11, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.CategoryCreateRequest}
+ */
+proto.palm.plugins.nut.v1.CategoryCreateRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.CategoryCreateRequest;
+  return proto.palm.plugins.nut.v1.CategoryCreateRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.CategoryCreateRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.CategoryCreateRequest}
+ */
+proto.palm.plugins.nut.v1.CategoryCreateRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLang(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setParentId(value);
+      break;
+    case 11:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setPriority(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.CategoryCreateRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.CategoryCreateRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.CategoryCreateRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.CategoryCreateRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getLang();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 3));
+  if (f != null) {
+    writer.writeInt32(
+      3,
+      f
+    );
+  }
+  f = message.getPriority();
+  if (f !== 0) {
+    writer.writeInt32(
+      11,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string lang = 1;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.CategoryCreateRequest.prototype.getLang = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.CategoryCreateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryCreateRequest.prototype.setLang = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string name = 2;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.CategoryCreateRequest.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.CategoryCreateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryCreateRequest.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional int32 parent_id = 3;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.CategoryCreateRequest.prototype.getParentId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.CategoryCreateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryCreateRequest.prototype.setParentId = function(value) {
+  return jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.CategoryCreateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryCreateRequest.prototype.clearParentId = function() {
+  return jspb.Message.setField(this, 3, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.CategoryCreateRequest.prototype.hasParentId = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional int32 priority = 11;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.CategoryCreateRequest.prototype.getPriority = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 11, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.CategoryCreateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryCreateRequest.prototype.setPriority = function(value) {
+  return jspb.Message.setProto3IntField(this, 11, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.CategoryUpdateRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.CategoryUpdateRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.CategoryUpdateRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.CategoryUpdateRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    parentId: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    priority: jspb.Message.getFieldWithDefault(msg, 11, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.CategoryUpdateRequest}
+ */
+proto.palm.plugins.nut.v1.CategoryUpdateRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.CategoryUpdateRequest;
+  return proto.palm.plugins.nut.v1.CategoryUpdateRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.CategoryUpdateRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.CategoryUpdateRequest}
+ */
+proto.palm.plugins.nut.v1.CategoryUpdateRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setId(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setParentId(value);
+      break;
+    case 11:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setPriority(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.CategoryUpdateRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.CategoryUpdateRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.CategoryUpdateRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.CategoryUpdateRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getId();
+  if (f !== 0) {
+    writer.writeInt32(
+      1,
+      f
+    );
+  }
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 3));
+  if (f != null) {
+    writer.writeInt32(
+      3,
+      f
+    );
+  }
+  f = message.getPriority();
+  if (f !== 0) {
+    writer.writeInt32(
+      11,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional int32 id = 1;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.CategoryUpdateRequest.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.CategoryUpdateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryUpdateRequest.prototype.setId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string name = 2;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.CategoryUpdateRequest.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.CategoryUpdateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryUpdateRequest.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional int32 parent_id = 3;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.CategoryUpdateRequest.prototype.getParentId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.CategoryUpdateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryUpdateRequest.prototype.setParentId = function(value) {
+  return jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.CategoryUpdateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryUpdateRequest.prototype.clearParentId = function() {
+  return jspb.Message.setField(this, 3, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.CategoryUpdateRequest.prototype.hasParentId = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional int32 priority = 11;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.CategoryUpdateRequest.prototype.getPriority = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 11, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.CategoryUpdateRequest} returns this
+ */
+proto.palm.plugins.nut.v1.CategoryUpdateRequest.prototype.setPriority = function(value) {
+  return jspb.Message.setProto3IntField(this, 11, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.AttachemtShowRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.AttachemtShowRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.AttachemtShowRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.AttachemtShowRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    ttl: (f = msg.getTtl()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.AttachemtShowRequest}
+ */
+proto.palm.plugins.nut.v1.AttachemtShowRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.AttachemtShowRequest;
+  return proto.palm.plugins.nut.v1.AttachemtShowRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.AttachemtShowRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.AttachemtShowRequest}
+ */
+proto.palm.plugins.nut.v1.AttachemtShowRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setId(value);
+      break;
+    case 2:
+      var value = new google_protobuf_duration_pb.Duration;
+      reader.readMessage(value,google_protobuf_duration_pb.Duration.deserializeBinaryFromReader);
+      msg.setTtl(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.AttachemtShowRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.AttachemtShowRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.AttachemtShowRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.AttachemtShowRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getId();
+  if (f !== 0) {
+    writer.writeInt32(
+      1,
+      f
+    );
+  }
+  f = message.getTtl();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      google_protobuf_duration_pb.Duration.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional int32 id = 1;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.AttachemtShowRequest.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.AttachemtShowRequest} returns this
+ */
+proto.palm.plugins.nut.v1.AttachemtShowRequest.prototype.setId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional google.protobuf.Duration ttl = 2;
+ * @return {?proto.google.protobuf.Duration}
+ */
+proto.palm.plugins.nut.v1.AttachemtShowRequest.prototype.getTtl = function() {
+  return /** @type{?proto.google.protobuf.Duration} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_duration_pb.Duration, 2));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Duration|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.AttachemtShowRequest} returns this
+*/
+proto.palm.plugins.nut.v1.AttachemtShowRequest.prototype.setTtl = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.AttachemtShowRequest} returns this
+ */
+proto.palm.plugins.nut.v1.AttachemtShowRequest.prototype.clearTtl = function() {
+  return this.setTtl(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.AttachemtShowRequest.prototype.hasTtl = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.AttachemtShowResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.AttachemtShowResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.AttachemtShowResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.AttachemtShowResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    item: (f = msg.getItem()) && proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.toObject(includeInstance, f),
+    url: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.AttachemtShowResponse}
+ */
+proto.palm.plugins.nut.v1.AttachemtShowResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.AttachemtShowResponse;
+  return proto.palm.plugins.nut.v1.AttachemtShowResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.AttachemtShowResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.AttachemtShowResponse}
+ */
+proto.palm.plugins.nut.v1.AttachemtShowResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.deserializeBinaryFromReader);
+      msg.setItem(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUrl(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.AttachemtShowResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.AttachemtShowResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.AttachemtShowResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.AttachemtShowResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getItem();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.serializeBinaryToWriter
+    );
+  }
+  f = message.getUrl();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional AttachmetIndexResponse.Item item = 1;
+ * @return {?proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item}
+ */
+proto.palm.plugins.nut.v1.AttachemtShowResponse.prototype.getItem = function() {
+  return /** @type{?proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item} */ (
+    jspb.Message.getWrapperField(this, proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item, 1));
+};
+
+
+/**
+ * @param {?proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.AttachemtShowResponse} returns this
+*/
+proto.palm.plugins.nut.v1.AttachemtShowResponse.prototype.setItem = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.AttachemtShowResponse} returns this
+ */
+proto.palm.plugins.nut.v1.AttachemtShowResponse.prototype.clearItem = function() {
+  return this.setItem(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.AttachemtShowResponse.prototype.hasItem = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional string url = 2;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.AttachemtShowResponse.prototype.getUrl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.AttachemtShowResponse} returns this
+ */
+proto.palm.plugins.nut.v1.AttachemtShowResponse.prototype.setUrl = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.repeatedFields_ = [11];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.AttachmetIndexResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.AttachmetIndexResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    pagination: (f = msg.getPagination()) && proto.palm.plugins.nut.v1.Pagination.toObject(includeInstance, f),
+    itemsList: jspb.Message.toObjectList(msg.getItemsList(),
+    proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.AttachmetIndexResponse;
+  return proto.palm.plugins.nut.v1.AttachmetIndexResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.AttachmetIndexResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.palm.plugins.nut.v1.Pagination;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.Pagination.deserializeBinaryFromReader);
+      msg.setPagination(value);
+      break;
+    case 11:
+      var value = new proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item;
+      reader.readMessage(value,proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.deserializeBinaryFromReader);
+      msg.addItems(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.AttachmetIndexResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.AttachmetIndexResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getPagination();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.palm.plugins.nut.v1.Pagination.serializeBinaryToWriter
+    );
+  }
+  f = message.getItemsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      11,
+      f,
+      proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.serializeBinaryToWriter
+    );
+  }
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    bucket: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    name: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    title: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    size: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    contentType: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    region: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    status: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    updatedAt: (f = msg.getUpdatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item;
+  return proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setId(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBucket(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setSize(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setContentType(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setRegion(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setStatus(value);
+      break;
+    case 11:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setUpdatedAt(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getId();
+  if (f !== 0) {
+    writer.writeInt32(
+      1,
+      f
+    );
+  }
+  f = message.getBucket();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getTitle();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getSize();
+  if (f !== 0) {
+    writer.writeInt64(
+      5,
+      f
+    );
+  }
+  f = message.getContentType();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
+      f
+    );
+  }
+  f = message.getRegion();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
+  f = message.getStatus();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
+      f
+    );
+  }
+  f = message.getUpdatedAt();
+  if (f != null) {
+    writer.writeMessage(
+      11,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional int32 id = 1;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.setId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string bucket = 2;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.getBucket = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.setBucket = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string name = 3;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string title = 4;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.getTitle = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.setTitle = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional int64 size = 5;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.getSize = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.setSize = function(value) {
+  return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+/**
+ * optional string content_type = 6;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.getContentType = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.setContentType = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * optional string region = 7;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.getRegion = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.setRegion = function(value) {
+  return jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional string status = 8;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.getStatus = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.setStatus = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp updated_at = 11;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.getUpdatedAt = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 11));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item} returns this
+*/
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.setUpdatedAt = function(value) {
+  return jspb.Message.setWrapperField(this, 11, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item} returns this
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.clearUpdatedAt = function() {
+  return this.setUpdatedAt(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item.prototype.hasUpdatedAt = function() {
+  return jspb.Message.getField(this, 11) != null;
+};
+
+
+/**
+ * optional Pagination pagination = 1;
+ * @return {?proto.palm.plugins.nut.v1.Pagination}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.prototype.getPagination = function() {
+  return /** @type{?proto.palm.plugins.nut.v1.Pagination} */ (
+    jspb.Message.getWrapperField(this, proto.palm.plugins.nut.v1.Pagination, 1));
+};
+
+
+/**
+ * @param {?proto.palm.plugins.nut.v1.Pagination|undefined} value
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse} returns this
+*/
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.prototype.setPagination = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse} returns this
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.prototype.clearPagination = function() {
+  return this.setPagination(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.prototype.hasPagination = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * repeated Item items = 11;
+ * @return {!Array<!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item>}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.prototype.getItemsList = function() {
+  return /** @type{!Array<!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item, 11));
+};
+
+
+/**
+ * @param {!Array<!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item>} value
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse} returns this
+*/
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.prototype.setItemsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 11, value);
+};
+
+
+/**
+ * @param {!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item}
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.prototype.addItems = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 11, opt_value, proto.palm.plugins.nut.v1.AttachmetIndexResponse.Item, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.palm.plugins.nut.v1.AttachmetIndexResponse} returns this
+ */
+proto.palm.plugins.nut.v1.AttachmetIndexResponse.prototype.clearItemsList = function() {
+  return this.setItemsList([]);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.SettingGetResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.SettingGetResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.SettingGetResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.SettingGetResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    value: msg.getValue_asB64()
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.SettingGetResponse}
+ */
+proto.palm.plugins.nut.v1.SettingGetResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.SettingGetResponse;
+  return proto.palm.plugins.nut.v1.SettingGetResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.SettingGetResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.SettingGetResponse}
+ */
+proto.palm.plugins.nut.v1.SettingGetResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setValue(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.SettingGetResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.SettingGetResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.SettingGetResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.SettingGetResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getValue_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional bytes value = 1;
+ * @return {!(string|Uint8Array)}
+ */
+proto.palm.plugins.nut.v1.SettingGetResponse.prototype.getValue = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * optional bytes value = 1;
+ * This is a type-conversion wrapper around `getValue()`
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.SettingGetResponse.prototype.getValue_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getValue()));
+};
+
+
+/**
+ * optional bytes value = 1;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getValue()`
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.SettingGetResponse.prototype.getValue_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getValue()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
+ * @return {!proto.palm.plugins.nut.v1.SettingGetResponse} returns this
+ */
+proto.palm.plugins.nut.v1.SettingGetResponse.prototype.setValue = function(value) {
+  return jspb.Message.setProto3BytesField(this, 1, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.SettingGetRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.SettingGetRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.SettingGetRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.SettingGetRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    user: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    key: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.SettingGetRequest}
+ */
+proto.palm.plugins.nut.v1.SettingGetRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.SettingGetRequest;
+  return proto.palm.plugins.nut.v1.SettingGetRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.SettingGetRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.SettingGetRequest}
+ */
+proto.palm.plugins.nut.v1.SettingGetRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setUser(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setKey(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.SettingGetRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.SettingGetRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.SettingGetRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.SettingGetRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = /** @type {number} */ (jspb.Message.getField(message, 1));
+  if (f != null) {
+    writer.writeInt32(
+      1,
+      f
+    );
+  }
+  f = message.getKey();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional int32 user = 1;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.SettingGetRequest.prototype.getUser = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.SettingGetRequest} returns this
+ */
+proto.palm.plugins.nut.v1.SettingGetRequest.prototype.setUser = function(value) {
+  return jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.SettingGetRequest} returns this
+ */
+proto.palm.plugins.nut.v1.SettingGetRequest.prototype.clearUser = function() {
+  return jspb.Message.setField(this, 1, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.SettingGetRequest.prototype.hasUser = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional string key = 2;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.SettingGetRequest.prototype.getKey = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.SettingGetRequest} returns this
+ */
+proto.palm.plugins.nut.v1.SettingGetRequest.prototype.setKey = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.palm.plugins.nut.v1.SettingSetRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.palm.plugins.nut.v1.SettingSetRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    user: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    key: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    value: msg.getValue_asB64(),
+    encrypt: jspb.Message.getBooleanFieldWithDefault(msg, 9, false)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.palm.plugins.nut.v1.SettingSetRequest}
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.palm.plugins.nut.v1.SettingSetRequest;
+  return proto.palm.plugins.nut.v1.SettingSetRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.palm.plugins.nut.v1.SettingSetRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.palm.plugins.nut.v1.SettingSetRequest}
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setUser(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setKey(value);
+      break;
+    case 3:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setValue(value);
+      break;
+    case 9:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setEncrypt(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.palm.plugins.nut.v1.SettingSetRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.palm.plugins.nut.v1.SettingSetRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = /** @type {number} */ (jspb.Message.getField(message, 1));
+  if (f != null) {
+    writer.writeInt32(
+      1,
+      f
+    );
+  }
+  f = message.getKey();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getValue_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      3,
+      f
+    );
+  }
+  f = message.getEncrypt();
+  if (f) {
+    writer.writeBool(
+      9,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional int32 user = 1;
+ * @return {number}
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.prototype.getUser = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.plugins.nut.v1.SettingSetRequest} returns this
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.prototype.setUser = function(value) {
+  return jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.plugins.nut.v1.SettingSetRequest} returns this
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.prototype.clearUser = function() {
+  return jspb.Message.setField(this, 1, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.prototype.hasUser = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional string key = 2;
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.prototype.getKey = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.plugins.nut.v1.SettingSetRequest} returns this
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.prototype.setKey = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional bytes value = 3;
+ * @return {!(string|Uint8Array)}
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.prototype.getValue = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * optional bytes value = 3;
+ * This is a type-conversion wrapper around `getValue()`
+ * @return {string}
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.prototype.getValue_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getValue()));
+};
+
+
+/**
+ * optional bytes value = 3;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getValue()`
+ * @return {!Uint8Array}
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.prototype.getValue_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getValue()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
+ * @return {!proto.palm.plugins.nut.v1.SettingSetRequest} returns this
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.prototype.setValue = function(value) {
+  return jspb.Message.setProto3BytesField(this, 3, value);
+};
+
+
+/**
+ * optional bool encrypt = 9;
+ * @return {boolean}
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.prototype.getEncrypt = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 9, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.palm.plugins.nut.v1.SettingSetRequest} returns this
+ */
+proto.palm.plugins.nut.v1.SettingSetRequest.prototype.setEncrypt = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 9, value);
+};
+
 
 goog.object.extend(exports, proto.palm.plugins.nut.v1);

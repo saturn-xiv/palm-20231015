@@ -11,7 +11,7 @@
             <column name="code" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="parent" type="varchar(255)" />
+            <column name="parent_id" type="integer" />
             <column name="version" type="integer" defaultValue="0">
                 <constraints nullable="false" />
             </column>
@@ -30,13 +30,13 @@
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="x" type="varchar(255)">
+            <column name="x" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="term" type="varchar(32)">
                 <constraints nullable="false" />
             </column>
-            <column name="y" type="varchar(255)">
+            <column name="y" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
@@ -48,27 +48,21 @@
             <column name="term" />
             <column name="y" />
         </createIndex>
-        <createIndex tableName="roles_constraints" indexName="idx_roles_constraints_x">
-            <column name="x" />
-        </createIndex>
-        <createIndex tableName="roles_constraints" indexName="idx_roles_constraints_y">
-            <column name="y" />
-        </createIndex>
 
         <createTable tableName="roles_users">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="role" type="varchar(255)">
+            <column name="role" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="user" type="integer">
                 <constraints nullable="false" />
             </column>
-            <column name="nbf" type="date">
+            <column name="not_before" type="datetime">
                 <constraints nullable="false" />
             </column>
-            <column name="exp" type="date">
+            <column name="expired_at" type="datetime">
                 <constraints nullable="false" />
             </column>
             <column name="version" type="integer" defaultValue="0">
@@ -91,7 +85,7 @@
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="role" type="varchar(255)">
+            <column name="role" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="operation" type="varchar(255)">
@@ -105,9 +99,6 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="permissions" indexName="idx_permissions_role">
-            <column name="role" />
-        </createIndex>
         <createIndex tableName="permissions" indexName="idx_permissions_resource">
             <column name="resource_type" />
         </createIndex>

@@ -2,16 +2,12 @@ use std::default::Default;
 use std::fmt;
 use std::net::{IpAddr, Ipv4Addr, SocketAddr};
 use std::path::Path;
-use std::sync::Arc;
 
-use casbin::{CoreApi, DefaultModel as CasbinModel, Enforcer as CasbinEnforcer};
 use serde::{Deserialize, Serialize};
-use sqlx_adapter::SqlxAdapter;
-use tokio::sync::Mutex as TokioMutex;
 
 use super::{
     cache::redis::Config as Redis, crypto::Key, orm::postgresql::Config as PostgreSql,
-    plugins::nut, queue::amqp::Config as RabbitMqConfig, search::Config as OpenSearch, Result,
+    queue::amqp::Config as RabbitMqConfig, search::Config as OpenSearch,
 };
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
@@ -104,39 +100,6 @@ pub struct Config {
     pub redis: Redis,
     pub rabbitmq: RabbitMqConfig,
     pub opensearch: OpenSearch,
-}
-
-impl Config {
-    pub async fn enforcer(&self, id: String, pool: u32) -> Result<Arc<TokioMutex<CasbinEnforcer>>> {
-        let queue = self.rabbitmq.open();
-        let model = CasbinModel::from_str(include_str!("rbac_model.conf")).await?;
-        let adapter = SqlxAdapter::new(self.postgresql.to_string(), pool).await?;
-        let enforcer = Arc::new(TokioMutex::new({
-            let mut it = CasbinEnforcer::new(model, adapter).await?;
-            it.set_watcher(Box::new(nut::tasks::casbin::Watcher::new(
-                id.clone(),
-                queue.clone(),
-            )));
-            it
-        }));
-
-        {
-            let enforcer = enforcer.clone();
-            tokio::task::spawn(async move {
-                let hnd = nut::tasks::casbin::Handler {
-                    id: id.clone(),
-                    enforcer,
-                };
-                loop {
-                    if let Err(e) = nut::tasks::casbin::Watcher::consume(&id, &queue, &hnd).await {
-                        error!("error on consume casbin watcher queue {:?}", e);
-                    }
-                }
-            });
-        }
-
-        Ok(enforcer)
-    }
 }
 
 pub fn is_stopped() -> bool {

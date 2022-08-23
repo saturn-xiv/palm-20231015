@@ -85,7 +85,7 @@
             <column name="user_id" type="integer">
                 <constraints nullable="false" />
             </column>
-            <column name="level" type="varchar(16)" defaultValue="info">
+            <column name="level" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="ip" type="varchar(45)">
@@ -104,10 +104,6 @@
         </createTable>
         <createIndex tableName="logs" indexName="idx_logs_ip">
             <column name="ip" />
-        </createIndex>
-        <createIndex tableName="logs" indexName="idx_logs_user_level">
-            <column name="user_id" />
-            <column name="level" />
         </createIndex>
         <createIndex tableName="logs" indexName="idx_logs_user_ip">
             <column name="user_id" />

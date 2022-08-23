@@ -2,8 +2,6 @@ use std::any::type_name;
 use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
-use casbin::Enforcer;
-use tokio::sync::Mutex;
 use tonic::{Request, Response, Status};
 
 use super::super::super::super::{
@@ -20,7 +18,6 @@ pub struct Service {
     pub pgsql: PostgreSqlPool,
     pub jwt: Arc<Jwt>,
     pub aes: Arc<Aes>,
-    pub enforcer: Arc<Mutex<Enforcer>>,
 }
 
 #[tonic::async_trait]
@@ -35,12 +32,9 @@ impl v1::setting_server::Setting for Service {
 
         let key = to_code!(req.key);
 
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
-
         let can = match req.user {
-            None => user.is_administrator(enf),
-            Some(id) => user.id == id || user.is_administrator(enf),
+            None => user.is_administrator(),
+            Some(id) => user.id == id || user.is_administrator(),
         };
         if !can {
             return Err(Status::permission_denied(type_name::<Setting>()));
@@ -64,12 +58,9 @@ impl v1::setting_server::Setting for Service {
         let user = try_grpc!(ss.current_user(db, jwt))?;
         let req = req.into_inner();
 
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
-
         let can = match req.user {
-            None => user.is_administrator(enf),
-            Some(id) => user.id == id || user.is_administrator(enf),
+            None => user.is_administrator(),
+            Some(id) => user.id == id || user.is_administrator(),
         };
         if !can {
             return Err(Status::permission_denied(type_name::<Setting>()));

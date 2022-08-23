@@ -1,8 +1,6 @@
 use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
-use casbin::Enforcer;
-use tokio::sync::Mutex;
 use tonic::{Request, Response, Status};
 
 use super::super::super::super::{
@@ -21,7 +19,6 @@ pub struct Service {
     pub pgsql: PostgreSqlPool,
     pub jwt: Arc<Jwt>,
     pub aes: Arc<Aes>,
-    pub enforcer: Arc<Mutex<Enforcer>>,
 }
 
 #[tonic::async_trait]
@@ -35,10 +32,7 @@ impl v1::attachment_server::Attachment for Service {
         let user = try_grpc!(ss.current_user(db, jwt))?;
         let req = req.into_inner();
 
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
-
-        let (total, items) = if user.is_administrator(enf) {
+        let (total, items) = if user.is_administrator() {
             let total = try_grpc!(AttachmentDao::count(db))?;
             let items = try_grpc!(AttachmentDao::all(db, req.offset(total), req.size()))?;
             (total, items)
@@ -67,9 +61,7 @@ impl v1::attachment_server::Attachment for Service {
         let req = req.into_inner();
         let it = try_grpc!(AttachmentDao::by_id(db, req.id))?;
 
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
-        let can = user.can::<Attachment, _>(enf, &Operation::Remove, Some(it.id));
+        let can = user.can::<Attachment, _>(&Operation::Remove, Some(it.id));
 
         if can {
             let aws = try_grpc!(v1::AwsProfile::new(db, aes))?;
@@ -98,10 +90,7 @@ impl v1::attachment_server::Attachment for Service {
         let ttl = req.ttl.unwrap_or_default();
         let it = try_grpc!(AttachmentDao::by_id(db, req.id))?;
 
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
-
-        if user.can::<Attachment, _>(enf, &Operation::Read, Some(it.id)) {
+        if user.can::<Attachment, _>(&Operation::Read, Some(it.id)) {
             let aws = try_grpc!(v1::AwsProfile::new(db, aes))?;
             let s3 = try_grpc!(aws.s3())?;
             let url = s3.get_object(it.bucket.clone(), it.name.clone(), to_std_duration!(ttl));

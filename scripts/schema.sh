@@ -26,6 +26,7 @@ function generate_grpc_by_lang() {
         $WORKSPACE/protos/*.proto
 }
 
+# https://github.com/grpc/grpc-web#code-generator-plugin
 function generate_grpc_web() {
     echo "generate code for grpc-web"
     local target=$WORKSPACE/dashboard/src/protocols
@@ -47,9 +48,11 @@ function generate_diesel_postgresql() {
     
     DATABASE_URL=$1 diesel print-schema -o settings > src/setting/schema.rs
     DATABASE_URL=$1 diesel print-schema -o locales > src/i18n/schema.rs
-    DATABASE_URL=$1 diesel print-schema -o users logs leave_words \
+    DATABASE_URL=$1 diesel print-schema -o users logs \
+        roles roles_constraints roles_users permissions \
+        leave_words notifications \
         attachments attachments_resources \
-        tags tags_resources\
+        tags tags_resources \
         categories categories_resources \
         vote_items vote_logs \
         shorter_links > src/plugins/nut/schema.rs
@@ -60,7 +63,7 @@ function generate_diesel_postgresql() {
 
 # ----------------------------------------------------------
 
-generate_diesel_postgresql "postgres://postgres@127.0.0.1:5432/palm"
+generate_diesel_postgresql "postgres://www:change-me@127.0.0.1:5432/palm"
 
 
 declare -a languages=(

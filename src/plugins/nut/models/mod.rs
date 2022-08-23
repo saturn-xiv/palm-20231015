@@ -2,6 +2,8 @@ pub mod attachment;
 pub mod category;
 pub mod leave_word;
 pub mod log;
+pub mod permission;
+pub mod role;
 pub mod shorter_link;
 pub mod tag;
 pub mod user;

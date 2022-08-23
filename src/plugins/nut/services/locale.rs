@@ -2,8 +2,6 @@ use std::any::type_name;
 use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
-use casbin::Enforcer;
-use tokio::sync::Mutex;
 use tonic::{Request, Response, Status};
 
 use super::super::super::super::{
@@ -18,7 +16,6 @@ use super::Session;
 pub struct Service {
     pub pgsql: PostgreSqlPool,
     pub jwt: Arc<Jwt>,
-    pub enforcer: Arc<Mutex<Enforcer>>,
 }
 
 impl From<Locale> for v1::locale_index_response::Item {
@@ -42,10 +39,7 @@ impl v1::locale_server::Locale for Service {
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
 
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
-
-        if !user.can::<Locale, _>(enf, &Operation::Write, None) {
+        if !user.can::<Locale, _>(&Operation::Write, None) {
             return Err(Status::permission_denied(type_name::<Locale>()));
         }
 
@@ -89,9 +83,7 @@ impl v1::locale_server::Locale for Service {
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, jwt))?;
 
-        let mut enf = self.enforcer.lock().await;
-        let enf = enf.deref_mut();
-        if !user.can::<Locale, _>(enf, &Operation::Remove, None) {
+        if !user.can::<Locale, _>(&Operation::Remove, None) {
             return Err(Status::permission_denied(type_name::<Locale>()));
         }
         let req = req.into_inner();

@@ -1,4 +1,3 @@
-use casbin::{Enforcer, RbacApi};
 use chrono::{Duration, Utc};
 use diesel::Connection as DieselConntection;
 
@@ -6,9 +5,12 @@ use super::super::{
     crypto::Hmac,
     jwt::Jwt,
     orm::postgresql::Connection as Db,
-    plugins::nut::models::{
-        log::{Dao as LogDao, Level},
-        user::{Dao as UserDao, Item as User},
+    plugins::nut::{
+        models::{
+            log::Dao as LogDao,
+            user::{Dao as UserDao, Item as User},
+        },
+        v1::user_logs_response::item::Level::Info as LogLevelInfo,
     },
     Error, Result,
 };
@@ -37,19 +39,19 @@ pub struct ApplyPolicy {
 }
 
 impl ApplyPolicy {
-    pub async fn execute(&self, db: &mut Db, enf: &mut Enforcer) -> Result<()> {
+    pub fn execute(&self, db: &mut Db) -> Result<()> {
         let now = Utc::now().naive_utc();
         let nbf = now.date();
         let exp = (now + Duration::weeks(1 << 10)).date();
 
         let user = UserDao::by_uid(db, &self.user)?;
-        enf.add_role_for_user(&user.subject(), &to_role!(self.role), None)
-            .await?;
+
+        // TODO
         let un = nix::sys::utsname::uname()?;
         LogDao::add::<String, User>(
             db,
             user.id,
-            &Level::Info,
+            LogLevelInfo as i32,
             &format!("{:?}", un.nodename().to_str()),
             Some(user.id),
             format!(
@@ -87,7 +89,7 @@ impl ResetPassword {
             LogDao::add::<String, User>(
                 db,
                 user.id,
-                &Level::Info,
+                LogLevelInfo as i32,
                 &format!("{:?}", un.nodename().to_str()),
                 Some(user.id),
                 format!("Reset password by system user {}.", nix::unistd::getuid()),
