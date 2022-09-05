@@ -111,6 +111,7 @@ build_deb() {
         "mdb-ui-kit/css"
         "mdb-ui-kit/js"
         "mdb-ui-kit/img"
+        "qrcodejs/qrcode.min.js"
     )
     for i in "${packages[@]}"
     do
