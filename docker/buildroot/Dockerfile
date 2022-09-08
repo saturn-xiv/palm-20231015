@@ -38,10 +38,18 @@ RUN git config --global pull.rebase false
 RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf
 
 # https://buildroot.org/downloads/manual/manual.html
-ENV BUILDROOT_VERSION "2022.05.1"
+ENV BUILDROOT_VERSION "2022.05.2"
 RUN git clone https://git.buildroot.net/buildroot $HOME/downloads/buildroot \
     && cd $HOME/downloads/buildroot \
     && git checkout ${BUILDROOT_VERSION}
+
+ENV CROSSTOOLNG_VERSION "crosstool-ng-1.25.0"
+RUN git clone https://github.com/crosstool-ng/crosstool-ng.git $HOME/downloads/crosstool-ng \
+    && cd $HOME/downloads/crosstool-ng \
+    && git checkout ${CROSSTOOLNG_VERSION} \
+    && ./configure --prefix=$HOME/.local \
+    && make \
+    && make install
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
