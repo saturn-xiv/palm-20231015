@@ -8,13 +8,13 @@ A total free education &amp; translation &amp; ops solution.
 
   ```bash
   # for centos
-  sudo yum install dejavu-sans-fonts
+  sudo yum install dejavu-sans-fonts snmp
   # for archlinux
-  sudo pacman -S ttf-dejavu
+  sudo pacman -S ttf-dejavu snmp
   # for ubuntu
-  sudo apt install fonts-dejavu
+  sudo apt install fonts-dejavu snmp
   # for alpine
-  sudo apk add ttf-dejavu
+  sudo apk add ttf-dejavu snmp
   ```
 
 - Generate a random secret key: `openssl rand -base64 32`

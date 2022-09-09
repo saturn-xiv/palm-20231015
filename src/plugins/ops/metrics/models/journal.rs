@@ -2,6 +2,7 @@ use std::fmt;
 
 use serde::{Deserialize, Serialize};
 
+// apt install systemd-journal-remote
 // LANG=en_US.utf8 sudo journalctl -o json --utc --all -f
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]

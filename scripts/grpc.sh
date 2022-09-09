@@ -46,7 +46,7 @@ function build_grpc() {
     -DgRPC_SSL_PROVIDER=package \
     -DgRPC_BUILD_TESTS=OFF \
     -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc
-    make
+    make -j
     make install
 }
 
