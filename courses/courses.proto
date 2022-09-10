@@ -1,6 +1,7 @@
 syntax = "proto3";
 option java_multiple_files = true;
-package palm.plugins.cms.v1;
+option java_package = "com.github.saturn_xiv.palm.plugins.courses.v1";
+package courses.v1;
 
 service Article {}
 

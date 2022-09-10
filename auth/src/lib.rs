@@ -1,14 +1,2 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
+#[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
+pub mod v1;

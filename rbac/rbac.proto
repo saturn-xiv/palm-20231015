@@ -1,6 +1,7 @@
 syntax = "proto3";
 option java_multiple_files = true;
-package palm.plugins.forum.v1;
+option java_package = "com.github.saturn_xiv.palm.plugins.rbac.v1";
+package rbac.v1;
 
 service Topic {}
 
