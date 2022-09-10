@@ -12,11 +12,6 @@ fn shell(cmd: &mut Command) -> String {
 }
 
 fn main() {
-    // for it in read_dir("protos").unwrap() {
-    //     let it = it.unwrap();
-    //     let it = it.path();
-    //     tonic_build::compile_protos(&it.display().to_string()).unwrap();
-    // }
     {
         let out_dir = env::var("OUT_DIR").unwrap();
         let git_version = shell(

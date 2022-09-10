@@ -29,8 +29,6 @@ r2d2 = "0.8"
 rand = "0.8"
 tonic = "0.8"
 xml-rs = "0.8"
-env_logger = "0.9"
-rusttype = "0.9"
 ssh2 = "0.9"
 lettre = "0.10"
 paho-mqtt = "0.11"
@@ -42,8 +40,6 @@ git2 = "0.15"
 aws-sdk-s3 = "0.18"
 aws-sdk-sqs = "0.18"
 ipnetwork = "0.20"
-imageproc = "0.23"
-image = "0.24"
 nix = "0.25"
 aws-config = "0.48"
 bytes = "1"
@@ -131,10 +127,6 @@ features = ["validation"]
 version = "2"
 features = ["serde"]
 
-[dependencies.clap]
-version = "3"
-features = ["derive"]
-
 [dependencies.actix-web]
 version = "4"
 features = ["cookies"]
@@ -143,5 +135,3 @@ features = ["cookies"]
 version = "*"
 features = ["vendored"]
 
-[build-dependencies]
-tonic-build = "0.8"

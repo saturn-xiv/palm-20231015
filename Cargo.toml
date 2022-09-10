@@ -13,6 +13,7 @@ members = [
     "forum",
     "courses",
     "mall",
+    
     "ops/mail",
     "ops/vpn",
     "ops/metrics",
