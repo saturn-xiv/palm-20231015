@@ -42,6 +42,10 @@ aws-sdk-sqs = "0.18"
 ipnetwork = "0.20"
 nix = "0.25"
 aws-config = "0.48"
+rusoto_core = "0.48"
+rusoto_credential = "0.48"
+rusoto_s3 = "0.48"
+rusoto_sqs = "0.48"
 bytes = "1"
 bytesize = "1"
 lazy_static = "1"
@@ -135,3 +139,6 @@ features = ["cookies"]
 version = "*"
 features = ["vendored"]
 
+[dependencies.minio]
+git = "https://github.com/minio/minio-rs.git"
+rev = "4da529a"

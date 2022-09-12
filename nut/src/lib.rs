@@ -13,12 +13,14 @@ extern crate serde_json;
 #[macro_use]
 pub mod macros;
 
+pub mod aws;
 pub mod cache;
 pub mod crypto;
 pub mod currency;
 pub mod env;
 pub mod i18n;
 pub mod jwt;
+pub mod minio;
 pub mod oauth;
 pub mod orm;
 pub mod parser;
