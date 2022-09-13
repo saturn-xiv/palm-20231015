@@ -15,6 +15,7 @@ pub mod macros;
 
 pub mod aws;
 pub mod cache;
+pub mod captcha;
 pub mod crypto;
 pub mod currency;
 pub mod env;
