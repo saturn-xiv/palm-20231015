@@ -24,10 +24,10 @@ RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
     imagemagick ffmpeg fonts-dejavu \
     clang clang-format lldb lld \
-    build-essential pkg-config libtool automake autoconf binutils cpio mold \
+    build-essential cmake pkg-config libtool automake autoconf binutils cpio mold \
     debhelper bison flex ninja-build \
     crossbuild-essential-armhf crossbuild-essential-arm64 \
-    python3 python3-distutils python3-dev python3-pip \
+    python3 python3-distutils python3-dev python3-pip virtualenv \
     php-fpm php-mbstring php-mysql php-pgsql php-redis php-amqp \
     nginx rabbitmq-server redis postgresql mariadb-server
 
@@ -74,8 +74,6 @@ RUN git config --global pull.rebase false
 RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf
 
 RUN sh -c ". $HOME/.profile \
-    && pip3 install --user cmake"
-RUN sh -c ". $HOME/.profile \
     && pip3 install --user ansible paramiko"
 RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.profile
 RUN echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.profile
@@ -87,8 +85,13 @@ RUN sh -c ". $HOME/.profile \
     && conan profile update settings.compiler.libcxx=libstdc++11 default"
 
 # https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos
-RUN wget -O $HOME/.local/bin/composer https://getcomposer.org/installer
+RUN wget -q -O $HOME/.local/bin/composer https://getcomposer.org/installer
 RUN chmod +x $HOME/.local/bin/composer
+
+ENV BAZEL_VERSION "v1.14.0"
+RUN wget -q -O $HOME/.local/bin/bazel \
+    https://github.com/bazelbuild/bazelisk/releases/download/${BAZEL_VERSION}/bazelisk-linux-amd64
+RUN chmod +x $HOME/.local/bin/bazel
 
 # https://github.com/nvm-sh/nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | sh
@@ -122,7 +125,9 @@ RUN cd $HOME/.rbenv && src/configure && make -C src
 RUN echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> $HOME/.zshrc
 RUN echo 'eval "$(rbenv init -)"' >> $HOME/.zshrc
 RUN git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build
+RUN git clone https://github.com/rbenv/rbenv-vars.git $HOME/.rbenv/plugins/rbenv-vars
 ENV RUBY_VERSION "3.1.2"
+RUN apt install -y libssl-dev
 RUN zsh -c "source $HOME/.zshrc \
     && rbenv install ${RUBY_VERSION} \
     && rbenv global ${RUBY_VERSION} \
@@ -130,7 +135,7 @@ RUN zsh -c "source $HOME/.zshrc \
 
 ENV GO_VERSION "1.19.1"
 RUN wget -q -P $HOME/downloads https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
-RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local/go
+RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local
 RUN echo 'export GOROOT=$HOME/local/go:$PATH' >> $HOME/.zshrc
 RUN echo 'export PATH=$GOROOT/bin:$PATH' >> $HOME/.zshrc
 RUN echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc
@@ -141,41 +146,6 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 RUN zsh -c "source $HOME/.cargo/env \
     && rustup target add armv7-unknown-linux-gnueabihf \
     && rustup target add aarch64-unknown-linux-gnu"
-
-
-# https://opensearch.org/downloads.html#opensearch
-ENV OPENSEARCH_VERSION "2.2.0"
-RUN wget -q -P $HOME/downloads \
-    https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
-RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C $HOME/local
-
-
-RUN apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
-RUN zsh -c "source $HOME/.zshrc \
-    && cargo install diesel_cli \
-    && cargo install --locked cargo-outdated \
-    && cargo install mdbook"
-
-ENV GRPC_VERSION "v1.49.0"
-RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
-RUN zsh -c "source $HOME/.cargo/env \
-    && mkdir -pv $HOME/build/grpc \
-    && cd $HOME/build/grpc \
-    && cmake -DCMAKE_BUILD_TYPE=Release \
-        -DgRPC_INSTALL=ON \
-        -DgRPC_SSL_PROVIDER=package \
-        -DgRPC_BUILD_TESTS=OFF \
-        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
-    && make \
-    && make install"
-# https://github.com/grpc/grpc-web#code-generator-plugin
-RUN wget -O $HOME/.local/bin/protoc-gen-grpc-web \
-    https://github.com/grpc/grpc-web/releases/download/1.3.1/protoc-gen-grpc-web-1.3.1-linux-x86_64
-RUN chmod +x $HOME/.local/bin/protoc-gen-grpc-web
-# https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/
-RUN wget -O $HOME/.local/bin/grpc_java_plugin \
-    https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.49.0/protoc-gen-grpc-java-1.49.0-linux-x86_64.exe
-RUN chmod +x $HOME/.local/bin/grpc_java_plugin
 
 # https://github.com/richfelker/musl-cross-make
 RUN git clone https://github.com/richfelker/musl-cross-make.git $HOME/build/musl-cross-make
@@ -194,6 +164,49 @@ RUN cd $HOME/build/musl-cross-make \
     && echo "OUTPUT=/opt/cross" >> config.mak \
     && make \
     && make install
+
+
+
+RUN apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
+RUN zsh -c "source $HOME/.zshrc \
+    && cargo install diesel_cli \
+    && cargo install --locked cargo-outdated \
+    && cargo install mdbook"
+
+ENV GRPC_VERSION "v1.49.0"
+RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
+RUN zsh -c "source $HOME/.zshrc \
+    && mkdir -pv $HOME/build/grpc \
+    && cd $HOME/build/grpc \
+    && cmake -DCMAKE_BUILD_TYPE=Release \
+        -DgRPC_INSTALL=ON \
+        -DgRPC_SSL_PROVIDER=package \
+        -DgRPC_BUILD_TESTS=OFF \
+        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
+    && make -j \
+    && make install"
+# https://github.com/grpc/grpc-web#code-generator-plugin
+RUN wget -q -O $HOME/.local/bin/protoc-gen-grpc-web \
+    https://github.com/grpc/grpc-web/releases/download/1.3.1/protoc-gen-grpc-web-1.3.1-linux-x86_64
+RUN chmod +x $HOME/.local/bin/protoc-gen-grpc-web
+# https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/
+RUN wget -q -O $HOME/.local/bin/grpc_java_plugin \
+    https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.49.0/protoc-gen-grpc-java-1.49.0-linux-x86_64.exe
+RUN chmod +x $HOME/.local/bin/grpc_java_plugin
+
+# https://opensearch.org/downloads.html#opensearch
+ENV OPENSEARCH_VERSION "2.3.0"
+RUN wget -q -P $HOME/downloads \
+    https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
+RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C $HOME/local
+
+# https://github.com/envoyproxy/envoy/tree/main/bazel
+ENV ENVOY_VERSION "v1.23.1"
+RUN git clone --recurse-submodules -b ${ENVOY_VERSION} https://github.com/envoyproxy/envoy.git $HOME/downloads/envoy
+RUN RUN zsh -c "source $HOME/.zshrc \
+    && cd $HOME/downloads/envoy \
+    && bazel build -c opt envoy"
+
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
