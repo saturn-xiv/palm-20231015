@@ -28,6 +28,7 @@ RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     debhelper bison flex ninja-build \
     crossbuild-essential-armhf crossbuild-essential-arm64 \
     python3 python3-distutils python3-dev python3-pip \
+    php-fpm php-mbstring php-mysql php-pgsql php-redis php-amqp \
     nginx rabbitmq-server redis postgresql mariadb-server
 
 # https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
@@ -58,7 +59,6 @@ RUN locale-gen
 RUN update-locale LANG=en_US.UTF-8
 RUN update-alternatives --set editor /usr/bin/vim.basic
 
-
 RUN mkdir -p $HOME/downloads $HOME/build $HOME/local $HOME/tmp
 
 # https://github.com/ohmyzsh/ohmyzsh
@@ -86,6 +86,10 @@ RUN sh -c ". $HOME/.profile \
     && conan profile new default --detect \
     && conan profile update settings.compiler.libcxx=libstdc++11 default"
 
+# https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos
+RUN wget -O $HOME/.local/bin/composer https://getcomposer.org/installer
+RUN chmod +x $HOME/.local/bin/composer
+
 # https://github.com/nvm-sh/nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | sh
 RUN sh -c ". $HOME/.profile \
@@ -103,18 +107,33 @@ RUN sh -c ". $HOME/.profile \
     && npm i yarn -g"
 RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
 
+ENV JDK_VERSION "18.0.2.1-open"
 RUN curl -s "https://get.sdkman.io" | zsh
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
-    && sdk install java 18.0.2.1-open \
+    && sdk install java ${JDK_VERSION} \
     && sdk install maven \
     && sdk install gradle"
 
-# https://opensearch.org/downloads.html#opensearch
-ENV OPENSEARCH_VERSION "2.2.0"
-RUN wget -q -P $HOME/downloads \
-    https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
-RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C $HOME/local
+
+# https://github.com/rbenv/rbenv
+RUN git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
+RUN cd $HOME/.rbenv && src/configure && make -C src
+RUN echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> $HOME/.zshrc
+RUN echo 'eval "$(rbenv init -)"' >> $HOME/.zshrc
+RUN git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build
+ENV RUBY_VERSION "3.1.2"
+RUN zsh -c "source $HOME/.zshrc \
+    && rbenv install ${RUBY_VERSION} \
+    && rbenv global ${RUBY_VERSION} \
+    && gem install bundler"
+
+ENV GO_VERSION "1.19.1"
+RUN wget -q -P $HOME/downloads https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
+RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local/go
+RUN echo 'export GOROOT=$HOME/local/go:$PATH' >> $HOME/.zshrc
+RUN echo 'export PATH=$GOROOT/bin:$PATH' >> $HOME/.zshrc
+RUN echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc
 
 # https://www.rust-lang.org/tools/install
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -122,24 +141,59 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 RUN zsh -c "source $HOME/.cargo/env \
     && rustup target add armv7-unknown-linux-gnueabihf \
     && rustup target add aarch64-unknown-linux-gnu"
+
+
+# https://opensearch.org/downloads.html#opensearch
+ENV OPENSEARCH_VERSION "2.2.0"
+RUN wget -q -P $HOME/downloads \
+    https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
+RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C $HOME/local
+
+
 RUN apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
 RUN zsh -c "source $HOME/.zshrc \
     && cargo install diesel_cli \
     && cargo install --locked cargo-outdated \
     && cargo install mdbook"
 
-# ENV GRPC_VERSION "v1.48.0"
-# RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
-# RUN zsh -c "source $HOME/.cargo/env \
-#     && mkdir -pv $HOME/build/grpc \
-#     && cd $HOME/build/grpc \
-#     && cmake -DCMAKE_BUILD_TYPE=Release \
-#         -DgRPC_INSTALL=ON \
-#         -DgRPC_SSL_PROVIDER=package \
-#         -DgRPC_BUILD_TESTS=OFF \
-#         -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
-#     && make \
-#     && make install"
+ENV GRPC_VERSION "v1.49.0"
+RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
+RUN zsh -c "source $HOME/.cargo/env \
+    && mkdir -pv $HOME/build/grpc \
+    && cd $HOME/build/grpc \
+    && cmake -DCMAKE_BUILD_TYPE=Release \
+        -DgRPC_INSTALL=ON \
+        -DgRPC_SSL_PROVIDER=package \
+        -DgRPC_BUILD_TESTS=OFF \
+        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
+    && make \
+    && make install"
+# https://github.com/grpc/grpc-web#code-generator-plugin
+RUN wget -O $HOME/.local/bin/protoc-gen-grpc-web \
+    https://github.com/grpc/grpc-web/releases/download/1.3.1/protoc-gen-grpc-web-1.3.1-linux-x86_64
+RUN chmod +x $HOME/.local/bin/protoc-gen-grpc-web
+# https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/
+RUN wget -O $HOME/.local/bin/grpc_java_plugin \
+    https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.49.0/protoc-gen-grpc-java-1.49.0-linux-x86_64.exe
+RUN chmod +x $HOME/.local/bin/grpc_java_plugin
+
+# https://github.com/richfelker/musl-cross-make
+RUN git clone https://github.com/richfelker/musl-cross-make.git $HOME/build/musl-cross-make
+RUN cd $HOME/build/musl-cross-make \
+    && echo "TARGET=x86_64-linux-musl" > config.mak \
+    && echo "OUTPUT=/opt/cross" >> config.mak \
+    && make \
+    && make install 
+RUN cd $HOME/build/musl-cross-make \
+    && echo "TARGET=aarch64-linux-musl" > config.mak \
+    && echo "OUTPUT=/opt/cross" >> config.mak \
+    && make \
+    && make install
+RUN cd $HOME/build/musl-cross-make \
+    && echo "TARGET=arm-linux-musleabihf" > config.mak \
+    && echo "OUTPUT=/opt/cross" >> config.mak \
+    && make \
+    && make install
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
