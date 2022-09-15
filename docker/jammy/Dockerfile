@@ -165,13 +165,16 @@ RUN cd $HOME/build/musl-cross-make \
     && make \
     && make install
 
-
-
 RUN apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
 RUN zsh -c "source $HOME/.zshrc \
     && cargo install diesel_cli \
     && cargo install --locked cargo-outdated \
     && cargo install mdbook"
+
+ADD conan /opt/
+RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh amd64"
+RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh arm64"
+RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh armhf"
 
 ENV GRPC_VERSION "v1.49.0"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
