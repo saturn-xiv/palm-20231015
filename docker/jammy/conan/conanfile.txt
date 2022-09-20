@@ -1,7 +1,8 @@
 [requires]
+zlib/1.2.12
 libxcrypt/4.4.28
 openssl/1.1.1q
-boost/1.79.0
+boost/1.80.0
 cpp-httplib/0.11.1
 cpr/1.9.0
 nlohmann_json/3.11.2
@@ -22,10 +23,10 @@ zmqpp/4.2.0
 paho-mqtt-cpp/1.2.0
 libgit2/1.5.0
 libssh2/1.10.0
-libpng/1.6.37
+# libpng/1.6.37
 serial/1.2.1
 # net-snmp/5.9.1
-imgui/1.88
+# imgui/1.88
 flatbuffers/2.0.5
 protobuf/3.21.4
 grpc/1.48.0 

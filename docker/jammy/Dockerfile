@@ -136,7 +136,7 @@ RUN zsh -c "source $HOME/.zshrc \
 ENV GO_VERSION "1.19.1"
 RUN wget -q -P $HOME/downloads https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
 RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local
-RUN echo 'export GOROOT=$HOME/local/go:$PATH' >> $HOME/.zshrc
+RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc
 RUN echo 'export PATH=$GOROOT/bin:$PATH' >> $HOME/.zshrc
 RUN echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc
 
@@ -171,7 +171,7 @@ RUN zsh -c "source $HOME/.zshrc \
     && cargo install --locked cargo-outdated \
     && cargo install mdbook"
 
-ADD conan /opt/
+ADD conan /opt/conan
 RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh amd64"
 RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh arm64"
 RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh armhf"
@@ -206,9 +206,9 @@ RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C 
 # https://github.com/envoyproxy/envoy/tree/main/bazel
 ENV ENVOY_VERSION "v1.23.1"
 RUN git clone --recurse-submodules -b ${ENVOY_VERSION} https://github.com/envoyproxy/envoy.git $HOME/downloads/envoy
-RUN RUN zsh -c "source $HOME/.zshrc \
-    && cd $HOME/downloads/envoy \
-    && bazel build -c opt envoy"
+# RUN zsh -c "source $HOME/.zshrc \
+#     && cd $HOME/downloads/envoy \
+#     && bazel build -c opt envoy"
 
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
