@@ -148,3 +148,9 @@ rev = "4da529a"
 
 [dependencies.palm]
 path = '../palm'
+
+[dependencies.auth]
+path = '../auth'
+
+[dependencies.rbac]
+path = '../rbac'

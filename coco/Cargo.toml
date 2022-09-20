@@ -12,3 +12,39 @@ env_logger = "0.9"
 [dependencies.clap]
 version = "3"
 features = ["derive"]
+
+[dependencies.auth]
+path = '../auth'
+
+[dependencies.rbac]
+path = '../rbac'
+
+[dependencies.nut]
+path = '../nut'
+
+[dependencies.cms]
+path = '../cms'
+
+[dependencies.forum]
+path = '../forum'
+
+[dependencies.courses]
+path = '../courses'
+
+[dependencies.mall]
+path = '../mall'
+
+[dependencies.chats]
+path = '../chats'
+
+[dependencies.ops-mail]
+path = '../ops/mail'
+
+[dependencies.ops-vpn]
+path = '../ops/vpn'
+
+[dependencies.ops-ddns]
+path = '../ops/ddns'
+
+[dependencies.ops-metrics]
+path = '../ops/metrics'
