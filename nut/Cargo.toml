@@ -146,3 +146,5 @@ features = ["vendored"]
 git = "https://github.com/minio/minio-rs.git"
 rev = "4da529a"
 
+[dependencies.palm]
+path = '../palm'

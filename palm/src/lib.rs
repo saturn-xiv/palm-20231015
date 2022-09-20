@@ -1,4 +1,4 @@
-include!(concat!(env!("OUT_DIR"), "/env.rs"));
+pub mod schema;
 
 pub mod auth {
     #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
@@ -92,3 +92,7 @@ pub mod ops {
         }
     }
 }
+
+include!(concat!(env!("OUT_DIR"), "/env.rs"));
+
+pub const FONT_DEJAVUSANS: &[u8] = include_bytes!("DejaVuSans.ttf");

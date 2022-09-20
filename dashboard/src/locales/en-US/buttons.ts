@@ -16,7 +16,7 @@ const items = {
   "buttons.unlock": "Unlock",
   "buttons.copy-to-clipboard": "Copy to clipboard",
   "buttons.associate": "Associate",
-  "buttons.unassociate": "Unassociate",
+  unassociated: "Unassociated",
   "buttons.clear": "Clear",
   "buttons.fetch": "Fetch",
   "buttons.refresh": "Refresh",
