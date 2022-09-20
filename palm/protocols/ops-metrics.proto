@@ -1,7 +1,7 @@
 syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.github.saturn_xiv.palm.plugins.ops.metrics.v1";
-package metrics.v1;
+package palm.ops.metrics.v1;
 
 service Topic {}
 

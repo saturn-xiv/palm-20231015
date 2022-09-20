@@ -5,6 +5,7 @@ strip = true
 [workspace]
 
 members = [
+    "palm",
     "nut",
     
     "auth",

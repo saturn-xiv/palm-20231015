@@ -38,7 +38,6 @@ use xml::writer::{EventWriter, Result as XmlWriterResult};
 
 pub use self::result::{Error, GrpcResult, HttpError, HttpResult, Result};
 
-include!(concat!(env!("OUT_DIR"), "/env.rs"));
 
 pub const NAME: &str = env!("CARGO_PKG_NAME");
 pub const DESCRIPTION: &str = env!("CARGO_PKG_DESCRIPTION");

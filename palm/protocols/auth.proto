@@ -1,8 +1,4 @@
 syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.github.saturn_xiv.palm.plugins.auth.v1";
-package auth.v1;
-
-service Topic {}
-
-service Post {}
+package palm.auth.v1;

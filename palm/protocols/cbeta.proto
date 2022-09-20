@@ -1,7 +1,7 @@
 syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.github.saturn_xiv.palm.plugins.cbeta.v1";
-package cbeta.v1;
+package palm.cbeta.v1;
 
 service Section {}
 

@@ -1,7 +1,7 @@
 syntax = "proto3";
 option java_multiple_files = true;
-option java_package = "com.github.saturn_xiv.palm.plugins.ops.ddns.v1";
-package ddns.v1;
+option java_package = "com.github.saturn_xiv.palm.plugins.ops.mail.v1";
+package palm.ops.mail.v1;
 
 service Vpn {}
 
