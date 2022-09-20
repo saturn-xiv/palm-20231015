@@ -2,9 +2,9 @@
 
 set -e
 
-if [ "$#" -ne 1 ]
+if [ "$#" -ne 2 ]
 then
-    echo "USAGE: $0 GRPC_VERSION"
+    echo "USAGE: $0 GRPC_VERSION PROTOBUF_VERSION"
     exit 1
 fi
 
@@ -28,8 +28,8 @@ function build_grpc() {
         git clone --recurse-submodules -b $1 https://github.com/grpc/grpc.git $HOME/downloads/grpc
     fi
 
-    # cd $HOME/downloads/grpc/third_party/protobuf
-    # git checkout $2
+    cd $HOME/downloads/grpc/third_party/protobuf
+    git checkout $2
 
     # fix build for glibc 2.34: https://github.com/abseil/abseil-cpp/issues/952
     # cd $HOME/downloads/grpc/third_party/abseil-cpp
