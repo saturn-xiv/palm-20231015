@@ -20,5 +20,3 @@ path = '../../auth'
 [dependencies.rbac]
 path = '../../rbac'
 
-[dependencies.nut]
-path = '../../nut'

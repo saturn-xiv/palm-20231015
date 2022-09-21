@@ -7,8 +7,22 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
 
-import "palm.proto";
 import "rbac.proto";
+
+message Pager {
+  int32 page = 1;
+  int32 size = 2;
+}
+
+message Pagination {
+  int32 page = 1;
+  int32 size = 2;
+  int32 total = 3;
+  bool has_next = 11;
+  bool has_previous = 12;
+}
+
+message IdRequest { int32 id = 1; }
 
 // ----------------------------------------------------------------------------
 
@@ -29,7 +43,7 @@ service User {
       returns (google.protobuf.Empty) {}
   rpc SignOut(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
-  rpc Index(palm.v1.Pager) returns (UserIndexResponse) {}
+  rpc Index(Pager) returns (UserIndexResponse) {}
   rpc Show(UserQueryRequest) returns (UserIndexResponse.Item) {}
   rpc Disable(UserQueryRequest) returns (google.protobuf.Empty) {}
   rpc Enable(UserQueryRequest) returns (google.protobuf.Empty) {}
@@ -121,7 +135,7 @@ message UserGetProfileResponse {
 }
 
 message UserLogsRequest {
-  palm.v1.Pager pager = 1;
+  Pager pager = 1;
 
   optional UserLogsResponse.Item.Level level = 11;
   optional string ip = 12;
@@ -145,7 +159,7 @@ message UserLogsResponse {
     google.protobuf.Timestamp created_at = 11;
   }
 
-  palm.v1.Pagination pagination = 1;
+  Pagination pagination = 1;
   repeated Item items = 11;
 }
 message UserChangePasswordRequest {
@@ -175,15 +189,15 @@ message UserIndexResponse {
     optional google.protobuf.Timestamp deleted_at = 29;
   }
 
-  palm.v1.Pagination pagination = 1;
+  Pagination pagination = 1;
   repeated Item items = 11;
 }
 
 // ----------------------------------------------------------------------------
 
 service Attachment {
-  rpc Index(palm.v1.Pager) returns (AttachmetIndexResponse) {}
-  rpc Destroy(palm.v1.IdRequest) returns (google.protobuf.Empty) {}
+  rpc Index(Pager) returns (AttachmetIndexResponse) {}
+  rpc Destroy(IdRequest) returns (google.protobuf.Empty) {}
   rpc Show(AttachemtShowRequest) returns (AttachemtShowResponse) {}
 }
 message AttachemtShowRequest {
@@ -208,7 +222,7 @@ message AttachmetIndexResponse {
 
     google.protobuf.Timestamp updated_at = 11;
   }
-  palm.v1.Pagination pagination = 1;
+  Pagination pagination = 1;
   repeated Item items = 11;
 }
 

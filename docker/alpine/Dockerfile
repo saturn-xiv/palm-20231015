@@ -3,16 +3,10 @@ LABEL maintainer="Jeremy Zheng"
 
 RUN apk update
 RUN apk upgrade
-RUN apk add perl vim curl bash zsh sudo pwgen openssl git tmux \
+RUN apk add vim curl bash zsh pwgen openssl git tmux rsync \
     build-base cmake \
-    clang llvm lld clang-extra-tools \
-    nodejs npm yarn \
-    ttf-dejavu \
-    libudev-zero-dev yaml-cpp-dev pugixml-dev cppcodec \
-    openssl-dev curl-dev \
-    postgresql-dev mariadb-dev sqlite-dev mongo-c-driver-dev hiredis-dev \
-    poco-dev boost-dev boost-static rabbitmq-c-dev czmq-dev re2-dev \
-    grpc-dev protobuf-dev c-ares-dev
+    python3 python-dev \
+    openssl-dev 
 
 RUN mkdir -p $HOME/downloads $HOME/local $HOME/tmp
 
@@ -27,8 +21,12 @@ RUN git config --global http.version HTTP/1.1
 RUN git config --global pull.rebase false
 RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf
 
-# https://www.rust-lang.org/tools/install
-# RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+RUN sh -c ". $HOME/.profile \
+    && pip3 install --user ansible paramiko"
+RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.profile
+RUN echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.profile
+RUN echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/tmp/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.profile
+
 
 VOLUME /workspace
 WORKDIR /workspace

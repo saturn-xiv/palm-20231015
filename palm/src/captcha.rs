@@ -5,7 +5,7 @@ use imageproc::drawing::{draw_cross_mut, draw_text_mut, text_size};
 use rand::{thread_rng, Rng};
 use rusttype::{Font, Scale};
 
-use super::Result;
+use super::{Result, FONT_DEJAVUSANS};
 
 pub struct Captcha {
     pub text: String,
@@ -27,7 +27,7 @@ impl Captcha {
 
         let (w, h) = {
             // https://www.fontsquirrel.com/fonts/dejavu-sans
-            let font = Font::try_from_bytes(palm::FONT_DEJAVUSANS).ok_or("parse font")?;
+            let font = Font::try_from_bytes(FONT_DEJAVUSANS).ok_or("parse font")?;
 
             let scale = Scale {
                 x: self.height as f32,
