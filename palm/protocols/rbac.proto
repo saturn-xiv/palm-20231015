@@ -2,3 +2,98 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.github.saturn_xiv.palm.plugins.rbac.v1";
 package palm.rbac.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+message Resource {
+  string type = 1;
+  optional int32 id = 2;
+}
+
+message Permission {
+  string subject = 1;
+  string operation = 2;
+  Resource resource = 3;
+}
+
+// ----------------------------------------------------------------------------
+
+service Policy {
+  rpc GetAllRoles(google.protobuf.Empty) returns (PolicyRoleListResponse) {}
+  rpc GetAllUsers(google.protobuf.Empty) returns (PolicyUserListResponse) {}
+  rpc DeleteUser(PolicyUserRequest) returns (google.protobuf.Empty) {}
+  rpc DeleteRole(PolicyRoleRequest) returns (google.protobuf.Empty) {}
+  rpc GetRolesForUser(PolicyUserRequest) returns (PolicyRoleListResponse) {}
+  rpc GetUsersForRole(PolicyRoleRequest) returns (PolicyUserListResponse) {}
+  rpc AddRolesForUser(PolicyAddRolesForUserRequest)
+      returns (google.protobuf.Empty) {}
+  rpc DeleteRolesForUser(PolicyDeleteRolesForUserRequest)
+      returns (google.protobuf.Empty) {}
+  rpc GetImplicitRolesForUser(PolicyUserRequest)
+      returns (PolicyRoleListResponse) {}
+  rpc GetImplicitUsersForRole(PolicyRoleRequest)
+      returns (PolicyRoleListResponse) {}
+
+  rpc GetPermissionsForUser(PolicyUserRequest)
+      returns (PolicyPermissionListResponse) {}
+  rpc GetPermissionsForRole(PolicyRoleRequest)
+      returns (PolicyPermissionListResponse) {}
+  rpc GetImplicitPermissionsForUser(PolicyUserRequest)
+      returns (PolicyPermissionListResponse) {}
+  rpc GetImplicitPermissionsForRole(PolicyRoleRequest)
+      returns (PolicyPermissionListResponse) {}
+
+  rpc GetImplicitResourcesForUser(PolicyUserRequest)
+      returns (PolicyResourceListResponse) {}
+  rpc GetImplicitResourcesForRole(PolicyRoleRequest)
+      returns (PolicyResourceListResponse) {}
+
+  rpc AddPermissions(PolicyPermissionsRequest) returns (google.protobuf.Empty) {
+  }
+  rpc DeletePermissions(PolicyPermissionsRequest)
+      returns (google.protobuf.Empty) {}
+}
+
+message PolicyUserRequest { string id = 1; }
+
+message PolicyUserListResponse { repeated string items = 1; }
+
+message PolicyRoleRequest { string code = 1; }
+
+message PolicyRoleListResponse { repeated string items = 1; }
+
+message PolicyAddRolesForUserRequest {
+  string user = 1;
+  repeated string roles = 2;
+  google.protobuf.Timestamp not_before = 11;
+  google.protobuf.Timestamp expired_at = 12;
+}
+
+message PolicyDeleteRolesForUserRequest {
+  string user = 1;
+  repeated string roles = 2;
+}
+
+message PolicyPermissionListResponse {
+  message Item {
+    oneof who {
+      string user = 1;
+      string role = 2;
+    }
+    string operation = 8;
+    Resource resource = 9;
+  }
+  repeated Item items = 1;
+}
+
+message PolicyPermissionsRequest {
+  oneof who {
+    string user = 1;
+    string role = 2;
+  }
+  string operation = 8;
+  Resource resource = 9;
+}
+
+message PolicyResourceListResponse { repeated Resource item = 1; }

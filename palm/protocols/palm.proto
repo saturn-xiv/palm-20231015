@@ -1,0 +1,19 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.github.saturn_xiv.palm.v1";
+package palm.v1;
+
+message Pager {
+  int32 page = 1;
+  int32 size = 2;
+}
+
+message Pagination {
+  int32 page = 1;
+  int32 size = 2;
+  int32 total = 3;
+  bool has_next = 11;
+  bool has_previous = 12;
+}
+
+message IdRequest { int32 id = 1; }

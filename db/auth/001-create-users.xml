@@ -25,7 +25,7 @@
             <column name="uid" type="char(36)">
                 <constraints unique="true" nullable="false" />
             </column>
-            <column name="provider_type" type="varchar(16)">
+            <column name="provider_type" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="provider_id" type="varchar(255)">
@@ -73,9 +73,6 @@
         <createIndex tableName="users" indexName="idx_users_provider" unique="true">
             <column name="provider_type" />
             <column name="provider_id" />
-        </createIndex>
-        <createIndex tableName="users" indexName="idx_users_provider_type">
-            <column name="provider_type" />
         </createIndex>
 
     </changeSet>
