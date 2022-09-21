@@ -73,6 +73,8 @@ RUN git config --global http.version HTTP/1.1
 RUN git config --global pull.rebase false
 RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf
 
+RUN sh -c ". $HOME/.profile && pip3 install --user cmake"
+
 RUN sh -c ". $HOME/.profile \
     && pip3 install --user ansible paramiko"
 RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.profile
@@ -83,6 +85,8 @@ RUN sh -c ". $HOME/.profile \
     && pip3 install --user conan \
     && conan profile new default --detect \
     && conan profile update settings.compiler.libcxx=libstdc++11 default"
+
+RUN sh -c ". $HOME/.profile && pip3 install --user supervisor"
 
 # https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos
 RUN wget -q -O $HOME/.local/bin/composer https://getcomposer.org/installer
