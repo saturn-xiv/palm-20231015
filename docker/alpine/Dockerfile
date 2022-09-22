@@ -5,7 +5,7 @@ RUN apk update
 RUN apk upgrade
 RUN apk add vim curl bash zsh pwgen openssl git tmux rsync \
     build-base cmake \
-    python3 python-dev \
+    python3 py3-pip python3-dev \
     openssl-dev 
 
 RUN mkdir -p $HOME/downloads $HOME/local $HOME/tmp
@@ -22,7 +22,7 @@ RUN git config --global pull.rebase false
 RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf
 
 RUN sh -c ". $HOME/.profile \
-    && pip3 install --user ansible paramiko"
+    && pip install --user ansible paramiko"
 RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.profile
 RUN echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.profile
 RUN echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/tmp/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.profile

@@ -207,6 +207,11 @@ RUN wget -q -P $HOME/downloads \
     https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
 RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C $HOME/local
 
+# https://min.io/download#/linux
+RUN wget -q -O $HOME/.local/bin/minio \
+    https://dl.min.io/server/minio/release/linux-amd64/minio
+RUN chmod +x $HOME/.local/bin/minio
+
 # https://github.com/envoyproxy/envoy/tree/main/bazel
 ENV ENVOY_VERSION "v1.23.1"
 RUN git clone --recurse-submodules -b ${ENVOY_VERSION} https://github.com/envoyproxy/envoy.git $HOME/downloads/envoy
