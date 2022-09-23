@@ -30,7 +30,7 @@
             <column name="region" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="status" type="varchar(16)">
+            <column name="status" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="version" type="integer" defaultValue="0">
@@ -51,9 +51,6 @@
         </createIndex>
         <createIndex tableName="attachments" indexName="idx_attachments_region">
             <column name="region" />
-        </createIndex>
-        <createIndex tableName="attachments" indexName="idx_attachments_status">
-            <column name="status" />
         </createIndex>
 
         <createTable tableName="attachments_resources">

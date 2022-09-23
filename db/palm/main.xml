@@ -5,11 +5,6 @@
 
     <include file="001-create-locales.xml" relativeToChangelogFile="true" />
     <include file="002-create-settings.xml" relativeToChangelogFile="true" />
-    <include file="003-create-tags.xml" relativeToChangelogFile="true" />
-    <include file="004-create-categories.xml" relativeToChangelogFile="true" />
-    <include file="005-create-leave-words.xml" relativeToChangelogFile="true" />
-    <include file="006-create-votes.xml" relativeToChangelogFile="true" />
-    <include file="007-create-shorter-links.xml" relativeToChangelogFile="true" />
-    <include file="008-create-notifications.xml" relativeToChangelogFile="true" />
+    <include file="003-create-sms-logs.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>
