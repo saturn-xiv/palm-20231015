@@ -2,12 +2,6 @@
 
 set -e
 
-if [ "$#" -ne 2 ]
-then
-    echo "USAGE: $0 GRPC_VERSION PROTOBUF_VERSION"
-    exit 1
-fi
-
 function build_grpc() {
     # https://grpc.io/docs/languages/cpp/quickstart/
     if [ -L $HOME/.local/bin/protoc ]
@@ -20,7 +14,7 @@ function build_grpc() {
         cd $HOME/downloads/grpc
         git checkout master
         git pull
-        echo "switch protobuf to $1"
+        echo "switch grpc to $1"
         git checkout $1
         # fix unable to find current revision in submodule path
         # git pull --recurse-submodules
@@ -29,9 +23,14 @@ function build_grpc() {
         git clone --recurse-submodules -b $1 https://github.com/grpc/grpc.git $HOME/downloads/grpc
     fi
 
-    echo "switch protobuf to $2"
-    cd $HOME/downloads/grpc/third_party/protobuf
-    git checkout $2
+    if [ -z "$2" ]
+    then
+        echo "use default protobuf version"
+    else
+        echo "switch protobuf to $2"
+        cd $HOME/downloads/grpc/third_party/protobuf
+        git checkout $2
+    fi
 
     if [ -d $HOME/build/grpc-amd64 ]
     then
@@ -48,7 +47,17 @@ function build_grpc() {
     make install
 }
 
-build_grpc $1 $2
+if [ "$#" -eq 1 ]
+then
+    build_grpc $1
+elif [ "$#" -eq 2 ]
+then
+    build_grpc $1 $2
+else
+    echo "USAGE: $0 GRPC_VERSION PROTOBUF_VERSION"
+    exit 1
+fi
+
 
 echo 'done.'
 
