@@ -48,7 +48,11 @@ function generate_grpc_web() {
 
 function generate_diesel_postgresql() {
     echo "generate diesel schema for postgresql"
-    DATABASE_URL=$1 diesel print-schema -e databasechangelog > palm/src/schema.rs
+    DATABASE_URL=$1 diesel print-schema -o locales > palm/src/i18n/schema.rs
+    DATABASE_URL=$1 diesel print-schema -o settings > palm/src/setting/schema.rs
+    DATABASE_URL=$1 diesel print-schema -e databasechangelog \
+    locales settings \
+    > palm/src/schema.rs
 }
 
 # # ----------------------------------------------------------
