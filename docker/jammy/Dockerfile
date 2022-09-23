@@ -28,7 +28,9 @@ RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     debhelper bison flex ninja-build \
     crossbuild-essential-armhf crossbuild-essential-arm64 \
     python3 python3-distutils python3-dev python3-pip virtualenv \
-    php-fpm php-mbstring php-mysql php-pgsql php-redis php-amqp \
+    php-fpm php-mbstring php-json php-xml php-pear php-bcmath php-curl php-zip \
+    php-mysql php-pgsql php-redis php-amqp \
+    php-imagick php-gd \
     nginx rabbitmq-server redis postgresql mariadb-server
 
 # https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
