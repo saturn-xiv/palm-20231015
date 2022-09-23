@@ -6,15 +6,20 @@ package palm.rbac.v1;
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 
+// ----------------------------------------------------------------------------
+
 message Resource {
   string type = 1;
   optional int32 id = 2;
 }
 
 message Permission {
-  string subject = 1;
-  string operation = 2;
-  Resource resource = 3;
+  oneof subject {
+    string user = 1;
+    string role = 2;
+  }
+  string operation = 11;
+  Resource resource = 12;
 }
 
 // ----------------------------------------------------------------------------
@@ -36,18 +41,18 @@ service Policy {
       returns (PolicyRoleListResponse) {}
 
   rpc GetPermissionsForUser(PolicyUserRequest)
-      returns (PolicyPermissionListResponse) {}
+      returns (PolicyPermissionsResponse) {}
   rpc GetPermissionsForRole(PolicyRoleRequest)
-      returns (PolicyPermissionListResponse) {}
+      returns (PolicyPermissionsResponse) {}
   rpc GetImplicitPermissionsForUser(PolicyUserRequest)
-      returns (PolicyPermissionListResponse) {}
+      returns (PolicyPermissionsResponse) {}
   rpc GetImplicitPermissionsForRole(PolicyRoleRequest)
-      returns (PolicyPermissionListResponse) {}
+      returns (PolicyPermissionsResponse) {}
 
   rpc GetImplicitResourcesForUser(PolicyUserRequest)
-      returns (PolicyResourceListResponse) {}
+      returns (PolicyResourceResponse) {}
   rpc GetImplicitResourcesForRole(PolicyRoleRequest)
-      returns (PolicyResourceListResponse) {}
+      returns (PolicyResourceResponse) {}
 
   rpc AddPermissions(PolicyPermissionsRequest) returns (google.protobuf.Empty) {
   }
@@ -55,7 +60,7 @@ service Policy {
       returns (google.protobuf.Empty) {}
 }
 
-message PolicyUserRequest { string id = 1; }
+message PolicyUserRequest { string code = 1; }
 
 message PolicyUserListResponse { repeated string items = 1; }
 
@@ -75,25 +80,8 @@ message PolicyDeleteRolesForUserRequest {
   repeated string roles = 2;
 }
 
-message PolicyPermissionListResponse {
-  message Item {
-    oneof who {
-      string user = 1;
-      string role = 2;
-    }
-    string operation = 8;
-    Resource resource = 9;
-  }
-  repeated Item items = 1;
-}
+message PolicyPermissionsRequest { repeated Permission items = 1; }
 
-message PolicyPermissionsRequest {
-  oneof who {
-    string user = 1;
-    string role = 2;
-  }
-  string operation = 8;
-  Resource resource = 9;
-}
+message PolicyPermissionsResponse { repeated Permission items = 1; }
 
-message PolicyResourceListResponse { repeated Resource item = 1; }
+message PolicyResourceResponse { repeated Resource items = 1; }

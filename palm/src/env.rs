@@ -1,14 +1,8 @@
 use std::default::Default;
 use std::fmt;
 use std::net::{IpAddr, Ipv4Addr, SocketAddr};
-use std::path::Path;
 
 use serde::{Deserialize, Serialize};
-
-use super::{
-    cache::redis::Config as Redis, crypto::Key, orm::postgresql::Config as PostgreSql,
-    queue::amqp::Config as RabbitMqConfig, search::Config as OpenSearch,
-};
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -87,21 +81,4 @@ impl Default for Rpc {
             web_port: 10002,
         }
     }
-}
-
-#[derive(Serialize, Deserialize, Default, Debug, Clone)]
-#[serde(rename_all = "camelCase")]
-pub struct Config {
-    pub env: Environment,
-    pub secrets: Key,
-    pub http: Http,
-    pub rpc: Rpc,
-    pub postgresql: PostgreSql,
-    pub redis: Redis,
-    pub rabbitmq: RabbitMqConfig,
-    pub opensearch: OpenSearch,
-}
-
-pub fn is_stopped() -> bool {
-    Path::new(".stop").exists()
 }
