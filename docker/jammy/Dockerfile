@@ -114,7 +114,7 @@ RUN sh -c ". $HOME/.profile \
     && npm i yarn -g"
 RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
 
-ENV JDK_VERSION "18.0.2.1-open"
+ENV JDK_VERSION "19-open"
 RUN curl -s "https://get.sdkman.io" | zsh
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
@@ -148,6 +148,7 @@ RUN echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 # https://doc.rust-lang.org/nightly/rustc/platform-support.html
 RUN zsh -c "source $HOME/.cargo/env \
+    && rustup component add rust-analyzer \
     && rustup target add armv7-unknown-linux-gnueabihf \
     && rustup target add aarch64-unknown-linux-gnu"
 
