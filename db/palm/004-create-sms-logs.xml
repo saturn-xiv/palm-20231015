@@ -3,28 +3,32 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
     http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
 
-    <changeSet id="20220730092817" author="jeremy.zheng" labels="shorter_links">
+    <changeSet id="20220925120850" author="jeremy.zheng" labels="create sms logs">
 
-        <createTable tableName="shorter_links">
+        <createTable tableName="sms_logs">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="url" type="varchar(255)">
-                <constraints nullable="false" unique="true" />
-            </column>
-            <column name="details" type="text">
+            <column name="from" type="varchar(32)">
                 <constraints nullable="false" />
             </column>
-            <column name="version" type="integer" defaultValue="0">
+            <column name="to" type="varchar(32)">
                 <constraints nullable="false" />
             </column>
-            <column name="updated_at" type="datetime">
+            <column name="body" type="text">
                 <constraints nullable="false" />
             </column>
             <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
                 <constraints nullable="false" />
             </column>
         </createTable>
+        <createIndex tableName="sms_logs" indexName="idx_sms_logs_from">
+            <column name="from" />
+        </createIndex>
+        <createIndex tableName="sms_logs" indexName="idx_sms_logs_to">
+            <column name="to" />
+        </createIndex>
+
     </changeSet>
 
 </databaseChangeLog>

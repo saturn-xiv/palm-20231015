@@ -3,13 +3,13 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
     http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
 
-    <changeSet id="20220613061545" author="jeremy.zheng" labels="create-forum-posts">
+    <changeSet id="20220925124050" author="jeremy.zheng" labels="create forum posts">
 
         <createTable tableName="forum_posts">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="editor" type="varchar(16)">
+            <column name="editor" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="body" type="text">
@@ -25,7 +25,7 @@
                 <constraints nullable="false" />
             </column>
             <column name="post_id" type="integer" />
-            <column name="status" type="varchar(16)">
+            <column name="status" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="version" type="integer" defaultValue="0">
@@ -38,10 +38,6 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="forum_posts" indexName="idx_forum_posts_status">
-            <column name="status" />
-        </createIndex>
-
     </changeSet>
 
 </databaseChangeLog>

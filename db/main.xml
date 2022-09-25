@@ -8,9 +8,6 @@
     </preConditions>
 
     <include file="palm/main.xml" relativeToChangelogFile="true" />
-    <include file="auth/main.xml" relativeToChangelogFile="true" />
-    <include file="rbac/main.xml" relativeToChangelogFile="true" />
-    <include file="cms/main.xml" relativeToChangelogFile="true" />
     <include file="forum/main.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>

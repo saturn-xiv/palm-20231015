@@ -3,7 +3,7 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
     http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
 
-    <changeSet id="20220410123702" author="jeremy.zheng" labels="auth.create-users">
+    <changeSet id="20220925121806" author="jeremy.zheng" labels="create users">
 
         <createTable tableName="users">
             <column name="id" type="integer" autoIncrement="true">
@@ -73,6 +73,34 @@
         <createIndex tableName="users" indexName="idx_users_provider" unique="true">
             <column name="provider_type" />
             <column name="provider_id" />
+        </createIndex>
+
+        <createTable tableName="users_contacts">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="user_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="key" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="value" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="users_contacts" indexName="idx_users_contacts_key" unique="true">
+            <column name="user_id" />
+            <column name="key" />
         </createIndex>
 
     </changeSet>

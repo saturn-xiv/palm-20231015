@@ -5,6 +5,22 @@
 
     <include file="001-create-locales.xml" relativeToChangelogFile="true" />
     <include file="002-create-settings.xml" relativeToChangelogFile="true" />
-    <include file="003-create-sms-logs.xml" relativeToChangelogFile="true" />
+    <include file="003-create-leave-words.xml" relativeToChangelogFile="true" />
+    <include file="004-create-sms-logs.xml" relativeToChangelogFile="true" />
+
+    <include file="101-create-users.xml" relativeToChangelogFile="true" />
+    <include file="102-create-logs.xml" relativeToChangelogFile="true" />
+    <include file="103-create-attachments.xml" relativeToChangelogFile="true" />
+    <include file="181-create-roles.xml" relativeToChangelogFile="true" />
+    <include file="182-create-permissions.xml" relativeToChangelogFile="true" />
+
+    <include file="201-create-tags.xml" relativeToChangelogFile="true" />
+    <include file="202-create-categories.xml" relativeToChangelogFile="true" />
+    <include file="203-create-shorter-links.xml" relativeToChangelogFile="true" />
+    <include file="204-create-votes.xml" relativeToChangelogFile="true" />
+    <include file="205-create-notifications.xml" relativeToChangelogFile="true" />
+
+    <include file="301-create-cms-articles.xml" relativeToChangelogFile="true" />
+    <include file="302-create-cms-comments.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>

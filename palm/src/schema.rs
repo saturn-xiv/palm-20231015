@@ -30,8 +30,7 @@ diesel::table! {
 diesel::table! {
     categories (id) {
         id -> Int4,
-        lang -> Varchar,
-        name -> Varchar,
+        code -> Varchar,
         parent_id -> Nullable<Int4>,
         priority -> Int4,
         version -> Int4,
@@ -46,6 +45,7 @@ diesel::table! {
         category_id -> Int4,
         resource_type -> Varchar,
         resource_id -> Int4,
+        priority -> Int4,
         created_at -> Timestamp,
     }
 }
@@ -56,10 +56,11 @@ diesel::table! {
         lang -> Varchar,
         title -> Varchar,
         summary -> Varchar,
-        editor -> Varchar,
         body -> Text,
+        editor -> Int4,
         user_id -> Int4,
-        status -> Varchar,
+        status -> Int4,
+        published_at -> Timestamp,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
@@ -73,7 +74,7 @@ diesel::table! {
         body -> Text,
         user_id -> Int4,
         article_id -> Int4,
-        status -> Varchar,
+        status -> Int4,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
@@ -83,13 +84,13 @@ diesel::table! {
 diesel::table! {
     forum_posts (id) {
         id -> Int4,
-        editor -> Varchar,
+        editor -> Int4,
         body -> Text,
         reply -> Varchar,
         user_id -> Int4,
         topic_id -> Int4,
         post_id -> Nullable<Int4>,
-        status -> Varchar,
+        status -> Int4,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
@@ -101,10 +102,10 @@ diesel::table! {
         id -> Int4,
         lang -> Varchar,
         title -> Varchar,
-        editor -> Varchar,
+        editor -> Int4,
         body -> Text,
         user_id -> Int4,
-        status -> Varchar,
+        status -> Int4,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
@@ -117,6 +118,8 @@ diesel::table! {
         lang -> Varchar,
         ip -> Varchar,
         body -> Text,
+        editor -> Int4,
+        status -> Int4,
         created_at -> Timestamp,
     }
 }
@@ -137,7 +140,10 @@ diesel::table! {
 diesel::table! {
     notifications (id) {
         id -> Int4,
-        message -> Bytea,
+        from -> Int4,
+        message -> Varchar,
+        url -> Nullable<Varchar>,
+        read_at -> Nullable<Timestamp>,
         created_at -> Timestamp,
     }
 }
@@ -168,7 +174,7 @@ diesel::table! {
     roles_constraints (id) {
         id -> Int4,
         x -> Int4,
-        term -> Varchar,
+        term -> Int4,
         y -> Int4,
         created_at -> Timestamp,
     }
@@ -199,10 +205,19 @@ diesel::table! {
 }
 
 diesel::table! {
+    sms_logs (id) {
+        id -> Int4,
+        from -> Varchar,
+        to -> Varchar,
+        body -> Text,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     tags (id) {
         id -> Int4,
-        lang -> Varchar,
-        name -> Varchar,
+        code -> Varchar,
         priority -> Int4,
         version -> Int4,
         updated_at -> Timestamp,
@@ -216,16 +231,7 @@ diesel::table! {
         tag_id -> Int4,
         resource_type -> Varchar,
         resource_id -> Int4,
-        created_at -> Timestamp,
-    }
-}
-
-diesel::table! {
-    twilio_sms_logs (id) {
-        id -> Int4,
-        from -> Varchar,
-        to -> Varchar,
-        body -> Text,
+        priority -> Int4,
         created_at -> Timestamp,
     }
 }
@@ -260,6 +266,18 @@ diesel::table! {
 }
 
 diesel::table! {
+    users_contacts (id) {
+        id -> Int4,
+        user_id -> Int4,
+        key -> Int4,
+        value -> Text,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     vote_items (id) {
         id -> Int4,
         score -> Int4,
@@ -278,10 +296,9 @@ diesel::table! {
         ip -> Varchar,
         score -> Int4,
         body -> Text,
-        body_editor -> Varchar,
+        editor -> Int4,
         resource_type -> Varchar,
         resource_id -> Int4,
-        status -> Varchar,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
@@ -305,10 +322,11 @@ diesel::allow_tables_to_appear_in_same_query!(
     roles_constraints,
     roles_users,
     shorter_links,
+    sms_logs,
     tags,
     tags_resources,
-    twilio_sms_logs,
     users,
+    users_contacts,
     vote_items,
     vote_logs,
 );

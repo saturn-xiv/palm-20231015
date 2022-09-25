@@ -3,7 +3,7 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
     http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
 
-    <changeSet id="20220513111322" author="jeremy.zheng" labels="create-roles">
+    <changeSet id="20220925121943" author="jeremy.zheng" labels="create roles">
         <createTable tableName="roles">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
@@ -33,7 +33,7 @@
             <column name="x" type="integer">
                 <constraints nullable="false" />
             </column>
-            <column name="term" type="varchar(32)">
+            <column name="term" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="y" type="integer">
