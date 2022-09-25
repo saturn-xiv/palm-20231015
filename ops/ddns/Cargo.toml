@@ -13,10 +13,3 @@ prost-types = "0.11"
 
 [dependencies.palm]
 path = '../../palm'
-
-[dependencies.auth]
-path = '../../auth'
-
-[dependencies.rbac]
-path = '../../rbac'
-

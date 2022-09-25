@@ -10,8 +10,94 @@ extern crate lazy_static;
 #[macro_use]
 extern crate serde_json;
 
-#[macro_use]
-pub mod macros;
+#[macro_export]
+macro_rules! to_timestamp {
+    ($x:expr) => {{
+        let it: std::time::SystemTime =
+            chrono::DateTime::<chrono::Utc>::from_utc($x, chrono::Utc).into();
+        it.into()
+    }};
+}
+
+#[macro_export]
+macro_rules! to_datetime {
+    ($x:expr) => {{
+        chrono::NaiveDateTime::from_timestamp($x.seconds, $x.nanos as u32)
+    }};
+}
+
+#[macro_export]
+macro_rules! to_chrono_duration {
+    ($x:expr) => {{
+        chrono::Duration::seconds($x.seconds)
+    }};
+}
+
+#[macro_export]
+macro_rules! to_std_duration {
+    ($x:expr) => {{
+        std::time::Duration::new($x.seconds as u64, $x.nanos as u32)
+    }};
+}
+
+#[macro_export]
+macro_rules! to_code {
+    ($x:expr) => {{
+        let it = $x.trim();
+        it.to_lowercase()
+    }};
+}
+
+#[macro_export]
+macro_rules! to_role {
+    ($r:expr) => {{
+        format!("role://{}", to_code!($r))
+    }};
+}
+#[macro_export]
+macro_rules! resource_to_object {
+    ($t:expr, $i:expr) => {{
+        format!("{}://{}", $t, $i)
+    }};
+    ($t:expr) => {{
+        $t.to_string()
+    }};
+}
+
+#[macro_export]
+macro_rules! object_to_resource {
+    ($o:expr) => {{
+        let items: Vec<&str> = $o.split("://").collect();
+        if items.len() == 2 {
+            match items[1].parse() {
+                Ok(id) => (items[0].to_string(), Some(id)),
+                Err(_) => ($o.to_string(), None),
+            }
+        } else {
+            ($o.to_string(), None)
+        }
+    }};
+}
+
+#[macro_export]
+macro_rules! try_grpc {
+    ($r:expr, $e:expr) => {{
+        $r.map_err($e)
+    }};
+    ($r:expr) => {{
+        try_grpc!($r, |e| tonic::Status::internal(e.to_string()))
+    }};
+}
+
+#[macro_export]
+macro_rules! try_web {
+    ($r:expr, $e:expr) => {{
+        $r.map_err($e)
+    }};
+    ($r:expr) => {{
+        try_web!($r, actix_web::error::ErrorInternalServerError)
+    }};
+}
 
 pub mod aws;
 pub mod cache;
@@ -19,9 +105,11 @@ pub mod captcha;
 pub mod crypto;
 pub mod currency;
 pub mod env;
+pub mod handlers;
 pub mod i18n;
 pub mod jwt;
 pub mod minio;
+pub mod models;
 pub mod oauth;
 pub mod orm;
 pub mod parser;
@@ -30,6 +118,7 @@ pub mod result;
 pub mod schema;
 pub mod search;
 pub mod setting;
+pub mod tasks;
 pub mod theme;
 
 use std::io::{prelude::*, Error as IoError, ErrorKind as IoErrorKind};
@@ -86,18 +175,6 @@ pub fn content_type<P: AsRef<Path>>(file: P) -> Result<mime::Mime> {
     ))))
 }
 
-pub mod auth {
-    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-    pub mod v1 {
-        tonic::include_proto!("palm.auth.v1");
-    }
-}
-pub mod rbac {
-    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-    pub mod v1 {
-        tonic::include_proto!("palm.rbac.v1");
-    }
-}
 pub mod cms {
     #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
     pub mod v1 {

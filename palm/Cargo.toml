@@ -76,10 +76,6 @@ features = ["serde"]
 version = "0.7"
 features = ["cookie-session", "redis-rs-session"]
 
-[dependencies.uuid]
-version = "1"
-features = ["v4", "serde"]
-
 [dependencies.zmq]
 version = "0.9"
 features = ["vendored"]
@@ -113,11 +109,6 @@ features = ["r2d2"]
 version = "1"
 features = ["serde_bytes"]
 
-[dependencies.diesel]
-version = "2"
-default-features = false
-features = ["bigdecimal", "postgres", "mysql", "sqlite", "extras", "128-column-tables"]
-
 [dependencies.serde]
 version = "1"
 features = ["derive"]
@@ -125,6 +116,15 @@ features = ["derive"]
 [dependencies.tokio]
 version = "1"
 features = ["full"]
+
+[dependencies.uuid]
+version = "1"
+features = ["v4", "serde"]
+
+[dependencies.diesel]
+version = "2"
+default-features = false
+features = ["bigdecimal", "postgres", "mysql", "sqlite", "extras", "128-column-tables"]
 
 [dependencies.rss]
 version = "2"
