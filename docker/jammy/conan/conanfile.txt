@@ -1,5 +1,6 @@
 [requires]
 libxcrypt/4.4.28
+libcurl/7.85.0
 openssl/1.1.1q
 boost/1.80.0
 cpp-httplib/0.11.2
@@ -11,6 +12,8 @@ yaml-cpp/0.7.0
 cppcodec/0.2
 libpq/14.2
 libpqxx/7.7.4
+# libmysqlclient/8.0.17
+mariadb-connector-c/3.1.12
 sqlite3/3.39.3
 sqlitecpp/3.2.0
 soci/4.0.3
@@ -34,6 +37,7 @@ grpc/1.48.0
 zeromq:encryption=None
 sqlite3:build_executable=False
 soci:with_sqlite3=True
+# soci:with_mysql=True
 soci:with_postgresql=True
 soci:with_boost=True
 boost:without_stacktrace=True
