@@ -1,12 +1,9 @@
-#![allow(clippy::too_many_arguments)]
 #![recursion_limit = "256"]
 
 #[macro_use]
 extern crate diesel;
 #[macro_use]
 extern crate log;
-#[macro_use]
-extern crate lazy_static;
 #[macro_use]
 extern crate serde_json;
 
@@ -106,10 +103,8 @@ pub mod crypto;
 pub mod currency;
 pub mod env;
 pub mod handlers;
-pub mod i18n;
 pub mod jwt;
 pub mod minio;
-pub mod models;
 pub mod oauth;
 pub mod orm;
 pub mod parser;
@@ -117,9 +112,7 @@ pub mod queue;
 pub mod result;
 pub mod schema;
 pub mod search;
-pub mod setting;
 pub mod tasks;
-pub mod theme;
 
 use std::io::{prelude::*, Error as IoError, ErrorKind as IoErrorKind};
 use std::path::Path;
@@ -175,6 +168,12 @@ pub fn content_type<P: AsRef<Path>>(file: P) -> Result<mime::Mime> {
     ))))
 }
 
+pub mod nut {
+    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
+    pub mod v1 {
+        tonic::include_proto!("palm.nut.v1");
+    }
+}
 pub mod cms {
     #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
     pub mod v1 {

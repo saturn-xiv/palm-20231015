@@ -4,14 +4,14 @@ use std::result::Result as StdResult;
 use actix_web::{dev::Payload, error::ErrorForbidden, web, Error, FromRequest, HttpRequest};
 use futures::future::{err, ok, Ready};
 use hyper::StatusCode;
-
-use super::super::{
+use palm::{
+    handlers::token::Token,
     jwt::Jwt,
-    models::user::{Action, Dao as UserDao, Item as User, Token as UserToken},
     orm::postgresql::{Connection as Db, Pool as DbPool},
     try_web, HttpError, Result,
 };
-use super::token::Token;
+
+use super::super::models::user::{Action, Dao as UserDao, Item as User, Token as UserToken};
 
 fn user_from_token(token: &str, db: &mut Db, jwt: &Jwt) -> Result<User> {
     let token = jwt.parse::<UserToken>(token)?;

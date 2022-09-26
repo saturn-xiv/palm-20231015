@@ -2,8 +2,7 @@ use std::any::type_name;
 
 use chrono::NaiveDateTime;
 use diesel::{insert_into, prelude::*};
-
-use super::super::{orm::postgresql::Connection, schema::logs, Result};
+use palm::{orm::postgresql::Connection, schema::logs, Result};
 
 #[derive(Queryable)]
 pub struct Item {

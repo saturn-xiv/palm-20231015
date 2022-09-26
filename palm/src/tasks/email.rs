@@ -2,7 +2,7 @@ use lettre::{transport::smtp::authentication::Credentials, Message, SmtpTranspor
 use prost::Message as ProstMessage;
 
 use super::super::{
-    cms::v1::{EmailTask, SmtpProfile},
+    nut::v1::{EmailTask, SmtpProfile},
     queue::amqp::Handler as QueueHandler,
     Result,
 };

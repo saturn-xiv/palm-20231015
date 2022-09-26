@@ -125,6 +125,18 @@ diesel::table! {
 }
 
 diesel::table! {
+    locales (id) {
+        id -> Int4,
+        lang -> Varchar,
+        code -> Varchar,
+        message -> Text,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     logs (id) {
         id -> Int4,
         user_id -> Int4,
@@ -187,6 +199,19 @@ diesel::table! {
         user -> Int4,
         not_before -> Timestamp,
         expired_at -> Timestamp,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    settings (id) {
+        id -> Int4,
+        key -> Varchar,
+        user_id -> Nullable<Int4>,
+        salt -> Nullable<Bytea>,
+        value -> Bytea,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
@@ -315,12 +340,14 @@ diesel::allow_tables_to_appear_in_same_query!(
     forum_posts,
     forum_topics,
     leave_words,
+    locales,
     logs,
     notifications,
     permissions,
     roles,
     roles_constraints,
     roles_users,
+    settings,
     shorter_links,
     sms_logs,
     tags,

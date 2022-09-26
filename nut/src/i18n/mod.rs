@@ -1,11 +1,9 @@
 pub mod locale;
-pub mod schema;
 
 use handlebars::Handlebars;
 use hyper::StatusCode;
+use palm::{orm::postgresql::Connection, HttpError, Result};
 use serde::ser::Serialize;
-
-use super::{orm::postgresql::Connection, HttpError, Result};
 
 use self::locale::Dao;
 

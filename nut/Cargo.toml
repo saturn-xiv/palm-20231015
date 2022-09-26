@@ -1,0 +1,57 @@
+[package]
+name = "nut"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+futures = "0.3"
+language-tags = "0.3"
+log = "0.4"
+yaml-rust = "0.4"
+tonic = "0.8"
+prost = "0.11"
+prost-types = "0.11"
+flexbuffers = "2"
+handlebars = "4"
+
+[dependencies.chrono]
+version = "0.4"
+features = ["serde"]
+
+[dependencies.chrono-tz]
+version = "0.6"
+features = ["serde"]
+
+[dependencies.hyper]
+version = "0.14"
+features = ["full"]
+
+[dependencies.redis]
+version = "0.21"
+features = ["r2d2"]
+
+[dependencies.serde]
+version = "1"
+features = ["derive"]
+
+[dependencies.uuid]
+version = "1"
+features = ["v4", "serde"]
+
+[dependencies.diesel]
+version = "2"
+default-features = false
+features = ["bigdecimal", "postgres", "mysql", "sqlite", "extras", "128-column-tables"]
+
+[dependencies.actix-web]
+version = "4"
+features = ["cookies"]
+
+[dependencies.openssl]
+version = "*"
+features = ["vendored"]
+
+[dependencies.palm]
+path = '../palm'

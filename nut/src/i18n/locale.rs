@@ -2,30 +2,9 @@ use std::collections::HashMap;
 
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
+use palm::{orm::postgresql::Connection, schema::locales, Result};
 use serde::{Deserialize, Serialize};
 use yaml_rust::{Yaml, YamlLoader};
-
-use super::super::{
-    orm::postgresql::{migration::Migration, Connection},
-    Result,
-};
-use super::schema::locales;
-
-lazy_static! {
-    pub static ref MIGRATION: Migration<'static> = Migration {
-        name: "create-locales",
-        version: 20220112115545,
-        up: include_str!("up.sql"),
-        down: include_str!("down.sql")
-    };
-    static ref LOCALES: HashMap<&'static str, &'static str> = {
-        let mut it = HashMap::new();
-        it.insert("en-US", include_str!("en-US.yml"));
-        it.insert("zh-Hans", include_str!("zh-Hans.yml"));
-        it.insert("zh-Hant", include_str!("zh-Hant.yml"));
-        it
-    };
-}
 
 #[derive(Queryable, Serialize, Deserialize, Clone)]
 pub struct Item {
@@ -133,19 +112,21 @@ fn loop_yaml(
 
 impl Dao for Connection {
     fn sync(&mut self) -> Result<(usize, usize)> {
-        let mut find = 0;
-        let mut inserted = 0;
+        // FIXME
+        // let mut find = 0;
+        // let mut inserted = 0;
 
-        for (lang, body) in LOCALES.iter() {
-            info!("find locale {}", lang);
-            for node in YamlLoader::load_from_str(body)? {
-                let (i, f) = loop_yaml(self, lang, None, node)?;
-                inserted += i;
-                find += f;
-            }
-        }
+        // for (lang, body) in LOCALES.iter() {
+        //     info!("find locale {}", lang);
+        //     for node in YamlLoader::load_from_str(body)? {
+        //         let (i, f) = loop_yaml(self, lang, None, node)?;
+        //         inserted += i;
+        //         find += f;
+        //     }
+        // }
 
-        Ok((inserted, find))
+        // Ok((inserted, find))
+        Ok((0, 0))
     }
 
     fn languages(&mut self) -> Result<Vec<String>> {

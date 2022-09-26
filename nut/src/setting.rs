@@ -1,26 +1,9 @@
-pub mod schema;
-
 use std::fmt::Display;
 
 use chrono::{NaiveDateTime, Utc};
 use diesel::{insert_into, prelude::*, update};
+use palm::{crypto::Secret, orm::postgresql::Connection, schema::settings, Result};
 use serde::{de::DeserializeOwned, ser::Serialize};
-
-use self::schema::settings;
-use super::{
-    crypto::Secret,
-    orm::postgresql::{migration::Migration, Connection},
-    Result,
-};
-
-lazy_static! {
-    pub static ref MIGRATION: Migration<'static> = Migration {
-        name: "create-settings",
-        version: 20220112114811,
-        up: include_str!("up.sql"),
-        down: include_str!("down.sql")
-    };
-}
 
 #[derive(Queryable)]
 pub struct Item {

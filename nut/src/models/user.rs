@@ -7,17 +7,16 @@ use diesel::{insert_into, prelude::*, update};
 use hyper::StatusCode;
 use language_tags::LanguageTag;
 use openssl::hash::{hash, MessageDigest};
-use serde::{Deserialize, Serialize};
-use uuid::Uuid;
-
-use super::super::{
-    cms::v1::user_query_request::provider::Type as UserProviderType,
+use palm::{
     crypto::{random::bytes as random_bytes, Password},
+    nut::v1::user_query_request::provider::Type as UserProviderType,
     oauth::google::openid::IdToken,
     orm::postgresql::Connection,
     schema::users,
     HttpError, Result,
 };
+use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
 #[serde(rename_all = "camelCase")]

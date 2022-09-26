@@ -2,12 +2,11 @@ use std::any::type_name;
 
 use actix_web::{http::header::ContentType, HttpResponse};
 use chrono::Duration;
+use palm::{crypto::Secret, orm::postgresql::Connection as Db, Result};
 use redis::Connection as Cache;
 use serde::{Deserialize, Serialize};
 
-use super::{
-    crypto::Secret, orm::postgresql::Connection as Db, setting::Dao as SettingDao, Result,
-};
+use super::setting::Dao as SettingDao;
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub enum Theme {
