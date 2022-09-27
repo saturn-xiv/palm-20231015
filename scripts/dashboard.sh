@@ -13,6 +13,7 @@ function react(){
         react-color @types/react-color \
         react-json-view react-syntax-highlighter \
         emoji-mart react-sparklines react-highlight-words \
+        react-player \
         react-draggable \
         react-intl \
         react-router-dom@latest \
@@ -30,7 +31,8 @@ function material_design(){
 }
 
 react
-material_design
+ant_design
+# material_design
 
 echo 'done.'
 
