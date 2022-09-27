@@ -163,7 +163,8 @@ diesel::table! {
 diesel::table! {
     permissions (id) {
         id -> Int4,
-        role -> Int4,
+        subject_type -> Varchar,
+        subject_id -> Int4,
         operation -> Varchar,
         resource_type -> Varchar,
         resource_id -> Nullable<Int4>,
@@ -195,8 +196,8 @@ diesel::table! {
 diesel::table! {
     roles_users (id) {
         id -> Int4,
-        role -> Int4,
-        user -> Int4,
+        role_id -> Int4,
+        user_id -> Int4,
         not_before -> Timestamp,
         expired_at -> Timestamp,
         version -> Int4,

@@ -8,7 +8,10 @@
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="role" type="integer">
+            <column name="subject_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="subject_id" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="operation" type="varchar(255)">
@@ -22,7 +25,10 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="permissions" indexName="idx_permissions_resource">
+        <createIndex tableName="permissions" indexName="idx_permissions_subject_type">
+            <column name="subject_type" />
+        </createIndex>
+        <createIndex tableName="permissions" indexName="idx_permissions_resource_type">
             <column name="resource_type" />
         </createIndex>
         <createIndex tableName="permissions" indexName="idx_permissions_operation">

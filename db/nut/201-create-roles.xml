@@ -53,10 +53,10 @@
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="role" type="integer">
+            <column name="role_id" type="integer">
                 <constraints nullable="false" />
             </column>
-            <column name="user" type="integer">
+            <column name="user_id" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="not_before" type="datetime">
@@ -76,8 +76,8 @@
             </column>
         </createTable>
         <createIndex tableName="roles_users" indexName="idx_roles_users" unique="true">
-            <column name="role" />
-            <column name="user" />
+            <column name="role_id" />
+            <column name="user_id" />
         </createIndex>
 
     </changeSet>

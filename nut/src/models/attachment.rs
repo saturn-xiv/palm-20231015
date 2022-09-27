@@ -3,15 +3,14 @@ use std::path::Path;
 use chrono::{Datelike, NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
 use mime::Mime;
-use serde::Serialize;
-use uuid::Uuid;
-
-use super::super::{
-    cms::v1::media_content::Status as MediaStatus,
+use palm::{
+    nut::v1::media_content::Status as MediaStatus,
     orm::postgresql::Connection,
     schema::{attachments, attachments_resources},
     Result,
 };
+use serde::Serialize;
+use uuid::Uuid;
 
 #[derive(Queryable, Clone, Serialize)]
 #[serde(rename_all = "camelCase")]

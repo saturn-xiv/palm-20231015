@@ -11,6 +11,11 @@ import "google/protobuf/duration.proto";
 
 message IdRequest { int32 id = 1; }
 
+message UserDetail {
+  string nick_name = 1;
+  string real_name = 2;
+}
+
 message Resource {
   string type = 1;
   optional int32 id = 2;
@@ -18,7 +23,7 @@ message Resource {
 
 message Permission {
   oneof subject {
-    string user = 1;
+    int32 user = 1;
     string role = 2;
   }
   string operation = 11;
@@ -88,13 +93,6 @@ message EmailTask {
   repeated Attachment attachments = 21;
 }
 // ----------------------------------------------------------------------------
-
-message UserDetail {
-  string nick_name = 1;
-  string real_name = 2;
-
-  string home = 11;
-}
 
 service User {
   rpc SignIn(UserSignInRequest) returns (UserSignInResponse) {}
@@ -298,7 +296,6 @@ message AttachmetIndexResponse {
 
 service Policy {
   rpc GetAllRoles(google.protobuf.Empty) returns (PolicyRoleListResponse) {}
-  rpc GetAllUsers(google.protobuf.Empty) returns (PolicyUserListResponse) {}
   rpc DeleteUser(PolicyUserRequest) returns (google.protobuf.Empty) {}
   rpc DeleteRole(PolicyRoleRequest) returns (google.protobuf.Empty) {}
   rpc GetRolesForUser(PolicyUserRequest) returns (PolicyRoleListResponse) {}
@@ -332,23 +329,37 @@ service Policy {
       returns (google.protobuf.Empty) {}
 }
 
-message PolicyUserRequest { string code = 1; }
+message PolicyUserRequest { int32 id = 1; }
 
-message PolicyUserListResponse { repeated string items = 1; }
+message PolicyUserListResponse {
+  message Item {
+    int32 id = 1;
+    string nick_name = 2;
+    string real_name = 3;
+    string email = 4;
+  }
+  repeated Item items = 1;
+}
 
 message PolicyRoleRequest { string code = 1; }
 
-message PolicyRoleListResponse { repeated string items = 1; }
+message PolicyRoleListResponse {
+  message Item {
+    string code = 1;
+    string name = 2;
+  }
+  repeated Item items = 1;
+}
 
 message PolicyAddRolesForUserRequest {
-  string user = 1;
+  int32 user = 1;
   repeated string roles = 2;
   google.protobuf.Timestamp not_before = 11;
   google.protobuf.Timestamp expired_at = 12;
 }
 
 message PolicyDeleteRolesForUserRequest {
-  string user = 1;
+  int32 user = 1;
   repeated string roles = 2;
 }
 
@@ -358,7 +369,6 @@ message PolicyPermissionsResponse { repeated Permission items = 1; }
 
 message PolicyResourceResponse { repeated Resource items = 1; }
 
-// ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
 service Locale {

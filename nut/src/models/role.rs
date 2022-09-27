@@ -1,9 +1,11 @@
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
+use palm::{
+    orm::postgresql::Connection,
+    schema::{roles, roles_constraints, roles_users},
+    Result,
+};
 use serde::Serialize;
-
-use super::super::super::super::{orm::postgresql::Connection, Result};
-use super::super::schema::{permissions, roles, roles_constraints, roles_users};
 
 #[derive(Queryable, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -21,8 +23,6 @@ impl Item {
     pub const ADMINISTRATOR: &'static str = "administrator";
 }
 
-pub enum Constraint {}
-
 pub trait Dao {
     fn by_id(&mut self, id: i32) -> Result<Item>;
     fn create(&mut self, code: &str, parent: Option<i32>) -> Result<()>;
@@ -30,6 +30,14 @@ pub trait Dao {
     fn all(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>>;
     fn by_parent(&mut self, id: i32) -> Result<Vec<Item>>;
     fn destroy(&mut self, id: i32) -> Result<()>;
+    fn associate(
+        &mut self,
+        role: i32,
+        user: i32,
+        not_before: &NaiveDateTime,
+        expired_at: &NaiveDateTime,
+    ) -> Result<()>;
+    fn dissociate(&mut self, role: i32, user: i32) -> Result<()>;
 }
 
 impl Dao for Connection {
@@ -80,40 +88,56 @@ impl Dao for Connection {
             ),
         )
         .execute(self)?;
-        delete(roles_users::dsl::roles_users.filter(roles_users::dsl::role.eq(id)))
-            .execute(self)?;
-        delete(permissions::dsl::permissions.filter(permissions::dsl::role.eq(id)))
+        delete(roles_users::dsl::roles_users.filter(roles_users::dsl::role_id.eq(id)))
             .execute(self)?;
         delete(roles::dsl::roles.filter(roles::dsl::id.eq(id))).execute(self)?;
         Ok(())
     }
-    // fn associate(&mut self, id: i32, resource_type: &str, resource_id: i32) -> Result<()> {
-    //     let cnt: i64 = tags_resources::dsl::tags_resources
-    //         .filter(tags_resources::dsl::tag_id.eq(id))
-    //         .filter(tags_resources::dsl::resource_type.eq(resource_type))
-    //         .filter(tags_resources::dsl::resource_id.eq(resource_id))
-    //         .count()
-    //         .get_result(self)?;
-    //     if cnt == 0 {
-    //         insert_into(tags_resources::dsl::tags_resources)
-    //             .values((
-    //                 tags_resources::dsl::tag_id.eq(id),
-    //                 tags_resources::dsl::resource_type.eq(resource_type),
-    //                 tags_resources::dsl::resource_id.eq(resource_id),
-    //             ))
-    //             .execute(self)?;
-    //     }
+    fn associate(
+        &mut self,
+        role: i32,
+        user: i32,
+        not_before: &NaiveDateTime,
+        expired_at: &NaiveDateTime,
+    ) -> Result<()> {
+        let now = Utc::now().naive_utc();
+        match roles_users::dsl::roles_users
+            .select(roles_users::dsl::id)
+            .filter(roles_users::dsl::role_id.eq(role))
+            .filter(roles_users::dsl::user_id.eq(user))
+            .first::<i32>(self)
+        {
+            Ok(id) => {
+                update(roles_users::dsl::roles_users.filter(roles_users::dsl::id.eq(id)))
+                    .set((
+                        roles_users::dsl::not_before.eq(not_before),
+                        roles_users::dsl::expired_at.eq(expired_at),
+                        roles_users::dsl::updated_at.eq(&now),
+                    ))
+                    .execute(self)?;
+            }
+            Err(_) => {
+                insert_into(roles_users::dsl::roles_users)
+                    .values((
+                        roles_users::dsl::role_id.eq(role),
+                        roles_users::dsl::user_id.eq(user),
+                        roles_users::dsl::not_before.eq(not_before),
+                        roles_users::dsl::expired_at.eq(expired_at),
+                        roles_users::dsl::updated_at.eq(&now),
+                    ))
+                    .execute(self)?;
+            }
+        }
 
-    //     Ok(())
-    // }
-    // fn unassociate(&mut self, id: i32, resource_type: &str, resource_id: i32) -> Result<()> {
-    //     delete(
-    //         tags_resources::dsl::tags_resources
-    //             .filter(tags_resources::dsl::tag_id.eq(id))
-    //             .filter(tags_resources::dsl::resource_type.eq(resource_type))
-    //             .filter(tags_resources::dsl::resource_id.eq(resource_id)),
-    //     )
-    //     .execute(self)?;
-    //     Ok(())
-    // }
+        Ok(())
+    }
+    fn dissociate(&mut self, role: i32, user: i32) -> Result<()> {
+        delete(
+            roles_users::dsl::roles_users
+                .filter(roles_users::dsl::role_id.eq(role))
+                .filter(roles_users::dsl::user_id.eq(user)),
+        )
+        .execute(self)?;
+        Ok(())
+    }
 }
