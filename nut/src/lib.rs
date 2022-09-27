@@ -3,6 +3,7 @@
 #[macro_use]
 extern crate log;
 
+pub mod controllers;
 pub mod handlers;
 pub mod i18n;
 pub mod models;

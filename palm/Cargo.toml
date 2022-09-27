@@ -82,8 +82,6 @@ features = ["vendored"]
 
 [dependencies.askama]
 version = "0.11"
-# features = ["with-actix-web"]
-# askama_actix = "0.12"
 
 [dependencies.reqwest]
 version = "0.11"

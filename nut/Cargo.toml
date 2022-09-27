@@ -7,14 +7,18 @@ edition = "2021"
 
 [dependencies]
 futures = "0.3"
+futures-util = "0.3"
 language-tags = "0.3"
 mime = "0.3"
+actix-multipart = "0.4"
 log = "0.4"
 yaml-rust = "0.4"
+rand = "0.8"
 tonic = "0.8"
 xml-rs = "0.8"
 prost = "0.11"
 prost-types = "0.11"
+bytes = "1"
 serde_json = "1"
 flexbuffers = "2"
 handlebars = "4"
@@ -27,6 +31,13 @@ features = ["serde"]
 version = "0.6"
 features = ["serde"]
 
+[dependencies.actix-session]
+version = "0.7"
+features = ["cookie-session", "redis-rs-session"]
+
+[dependencies.askama]
+version = "0.11"
+
 [dependencies.reqwest]
 version = "0.11"
 features = ["json"]
@@ -34,6 +45,10 @@ features = ["json"]
 [dependencies.hyper]
 version = "0.14"
 features = ["full"]
+
+[dependencies.validator]
+version = "0.16"
+features = ["derive", "phone", "card", "unic"]
 
 [dependencies.redis]
 version = "0.21"
@@ -51,6 +66,10 @@ features = ["v4", "serde"]
 version = "2"
 default-features = false
 features = ["bigdecimal", "postgres", "mysql", "sqlite", "extras", "128-column-tables"]
+
+[dependencies.rss]
+version = "2"
+features = ["validation"]
 
 [dependencies.actix-web]
 version = "4"
