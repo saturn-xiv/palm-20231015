@@ -325,6 +325,7 @@ diesel::table! {
         editor -> Int4,
         resource_type -> Varchar,
         resource_id -> Int4,
+        status -> Int4,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,

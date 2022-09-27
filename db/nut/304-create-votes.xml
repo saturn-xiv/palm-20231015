@@ -61,6 +61,9 @@
             <column name="resource_id" type="integer">
                 <constraints nullable="false" />
             </column>
+            <column name="status" type="integer">
+                <constraints nullable="false" />
+            </column>
             <column name="version" type="integer" defaultValue="0">
                 <constraints nullable="false" />
             </column>
