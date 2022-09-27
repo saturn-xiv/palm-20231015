@@ -1,4 +1,5 @@
-use std::collections::HashMap;
+use std::fs::{read_dir, read_to_string};
+use std::path::Path;
 
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
@@ -27,7 +28,7 @@ pub struct New<'a> {
 }
 
 pub trait Dao {
-    fn sync(&mut self) -> Result<(usize, usize)>;
+    fn sync<P: AsRef<Path>>(&mut self, root: P) -> Result<(usize, usize)>;
     fn languages(&mut self) -> Result<Vec<String>>;
     fn count_by_lang(&mut self, lang: &str) -> Result<i64>;
     fn count(&mut self) -> Result<i64>;
@@ -111,22 +112,39 @@ fn loop_yaml(
 }
 
 impl Dao for Connection {
-    fn sync(&mut self) -> Result<(usize, usize)> {
-        // FIXME
-        // let mut find = 0;
-        // let mut inserted = 0;
+    fn sync<P: AsRef<Path>>(&mut self, root: P) -> Result<(usize, usize)> {
+        // FIXME load from folder
+        let mut find = 0;
+        let mut inserted = 0;
 
-        // for (lang, body) in LOCALES.iter() {
-        //     info!("find locale {}", lang);
-        //     for node in YamlLoader::load_from_str(body)? {
-        //         let (i, f) = loop_yaml(self, lang, None, node)?;
-        //         inserted += i;
-        //         find += f;
-        //     }
-        // }
+        let root = root.as_ref();
 
-        // Ok((inserted, find))
-        Ok((0, 0))
+        for it in read_dir(root)? {
+            let it = it?;
+            let it = it.path();
+            if it.is_dir() {
+                if let Some(lang) = it.file_name() {
+                    if let Some(lang) = lang.to_str() {
+                        info!("find language {}", lang);
+                        for it in read_dir(&it)? {
+                            let it = it?;
+                            let it = it.path();
+                            if it.is_file() {
+                                info!("find locale file {}", it.display());
+                                let buf = read_to_string(it)?;
+                                for node in YamlLoader::load_from_str(&buf)? {
+                                    let (i, f) = loop_yaml(self, lang, None, node)?;
+                                    inserted += i;
+                                    find += f;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        Ok((inserted, find))
     }
 
     fn languages(&mut self) -> Result<Vec<String>> {
