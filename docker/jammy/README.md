@@ -20,7 +20,7 @@ $ ./saturn-xiv/palm/docker/jammy/start.sh
 - PostgreSql
 
   ```bash
-  su - postgres -c "psql -p 5432"
+  psql -h 127.0.0.1 -p 5432 -U postgres
   ```
 
 - MySql
@@ -34,7 +34,7 @@ $ ./saturn-xiv/palm/docker/jammy/start.sh
 
   ```bash
   # connect to redis node-1
-  redis-cli -c -p 16371
+  redis-cli -c -h 127.0.0.1 -p 16371
   ```
 
 - Minio `admin:12345678` http://localhost:9001

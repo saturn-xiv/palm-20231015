@@ -52,7 +52,7 @@ function generate_diesel_postgresql() {
     > palm/src/schema.rs
 }
 
-# # ----------------------------------------------------------
+# -----------------------------------------------------------------------------
 
 generate_diesel_postgresql "postgres://www:change-me@127.0.0.1:5432/palm"
 

@@ -228,6 +228,7 @@ RUN chown -R nobody /var/lib/minio
 RUN sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
 RUN su - postgres -c "/usr/lib/postgresql/14/bin/initdb -D /var/lib/postgresql/data"
 RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/postgresql/data/postgresql.conf
+RUN for i in {1..6}; do mkdir -p /var/lib/redis-$i; done 
 ADD etc/redis/* /etc/redis/
 RUN mkdir /run/php
 RUN echo "<?php phpinfo(); ?>" > /var/www/html/info.php
