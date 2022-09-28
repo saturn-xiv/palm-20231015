@@ -1,3 +1,5 @@
+use std::collections::HashSet;
+
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
 use palm::{
@@ -5,9 +7,9 @@ use palm::{
     schema::{roles, roles_constraints, roles_users},
     Result,
 };
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Queryable, Serialize)]
+#[derive(Hash, Eq, PartialEq, Clone, Queryable, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
     pub id: i32,
@@ -25,6 +27,7 @@ impl Item {
 
 pub trait Dao {
     fn by_id(&mut self, id: i32) -> Result<Item>;
+    fn by_user(&mut self, user: i32) -> Result<Vec<i32>>;
     fn create(&mut self, code: &str, parent: Option<i32>) -> Result<()>;
     fn update(&mut self, id: i32, code: &str) -> Result<()>;
     fn all(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>>;
@@ -38,6 +41,9 @@ pub trait Dao {
         expired_at: &NaiveDateTime,
     ) -> Result<()>;
     fn dissociate(&mut self, role: i32, user: i32) -> Result<()>;
+
+    fn get_implicit_roles_for_role(&mut self, role: i32) -> Result<HashSet<Item>>;
+    fn get_implicit_roles_for_user(&mut self, user: i32) -> Result<HashSet<Item>>;
 }
 
 impl Dao for Connection {
@@ -46,7 +52,12 @@ impl Dao for Connection {
             .filter(roles::dsl::id.eq(id))
             .first::<Item>(self)?)
     }
-
+    fn by_user(&mut self, user: i32) -> Result<Vec<i32>> {
+        Ok(roles_users::dsl::roles_users
+            .select(roles_users::dsl::role_id)
+            .filter(roles_users::dsl::user_id.eq(user))
+            .load::<i32>(self)?)
+    }
     fn create(&mut self, code: &str, parent: Option<i32>) -> Result<()> {
         let now = Utc::now().naive_utc();
         insert_into(roles::dsl::roles)
@@ -139,5 +150,22 @@ impl Dao for Connection {
         )
         .execute(self)?;
         Ok(())
+    }
+    fn get_implicit_roles_for_role(&mut self, role: i32) -> Result<HashSet<Item>> {
+        let mut items = HashSet::new();
+        for it in self.by_parent(role)? {
+            items.insert(it.clone());
+            items.extend(self.get_implicit_roles_for_role(it.id)?);
+        }
+        Ok(items)
+    }
+    fn get_implicit_roles_for_user(&mut self, user: i32) -> Result<HashSet<Item>> {
+        let mut items = HashSet::new();
+        for it in self.by_user(user)? {
+            let it = self.by_id(it)?;
+            items.insert(it.clone());
+            items.extend(self.get_implicit_roles_for_role(it.id)?);
+        }
+        Ok(items)
     }
 }

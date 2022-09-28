@@ -1,9 +1,17 @@
+use std::any::type_name;
+use std::collections::HashSet;
+
 use chrono::NaiveDateTime;
 use diesel::{delete, insert_into, prelude::*};
 use palm::{orm::postgresql::Connection, schema::permissions, Result};
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Queryable, Serialize)]
+use super::{
+    role::{Dao as RoleDao, Item as Role},
+    user::Item as User,
+};
+
+#[derive(Hash, Eq, PartialEq, Clone, Queryable, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
     pub id: i32,
@@ -37,6 +45,8 @@ pub trait Dao {
         resource_type: &str,
         resource_id: Option<i32>,
     ) -> Result<bool>;
+
+    fn get_implicit_permissions_for_user(&mut self, user: i32) -> Result<HashSet<Item>>;
 }
 
 impl Dao for Connection {
@@ -132,5 +142,14 @@ impl Dao for Connection {
                 .get_result(self)?,
         };
         Ok(cnt > 0)
+    }
+
+    fn get_implicit_permissions_for_user(&mut self, user: i32) -> Result<HashSet<Item>> {
+        let mut items = HashSet::new();
+        items.extend(self.by_subject(type_name::<User>(), user)?);
+        for it in RoleDao::get_implicit_roles_for_user(self, user)? {
+            items.extend(self.by_subject(type_name::<Role>(), it.id)?);
+        }
+        Ok(items)
     }
 }

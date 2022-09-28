@@ -105,6 +105,7 @@ pub mod env;
 pub mod handlers;
 pub mod jwt;
 pub mod minio;
+pub mod models;
 pub mod oauth;
 pub mod orm;
 pub mod parser;

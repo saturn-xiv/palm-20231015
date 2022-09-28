@@ -73,9 +73,6 @@ impl fmt::Display for Item {
 }
 
 impl Item {
-    pub const ROLE_ADMINISTRATOR: &'static str = "administrator";
-    pub const ROLE_ROOT: &'static str = "root";
-
     pub fn subject(&self) -> String {
         format!("{}://{}", type_name::<Self>(), self.nick_name)
     }
