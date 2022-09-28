@@ -52,27 +52,27 @@ impl Default for Config {
             nodes: vec![
                 Host {
                     host: "127.0.0.1".to_string(),
-                    port: 63791,
+                    port: 16371,
                 },
                 Host {
                     host: "127.0.0.1".to_string(),
-                    port: 63792,
+                    port: 16372,
                 },
                 Host {
                     host: "127.0.0.1".to_string(),
-                    port: 63793,
+                    port: 16373,
                 },
                 Host {
                     host: "127.0.0.1".to_string(),
-                    port: 63794,
+                    port: 16374,
                 },
                 Host {
                     host: "127.0.0.1".to_string(),
-                    port: 63795,
+                    port: 16375,
                 },
                 Host {
                     host: "127.0.0.1".to_string(),
-                    port: 63796,
+                    port: 16376,
                 },
             ],
             namespace: "demo://".to_string(),
@@ -80,12 +80,6 @@ impl Default for Config {
         }
     }
 }
-
-// impl fmt::Display for Config {
-//     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-//         write!(f, "redis://{}:{}/{}", self.host, self.port, self.db)
-//     }
-// }
 
 // https://redis.io/commands
 impl super::Provider for ClusterConnection {

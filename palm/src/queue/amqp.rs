@@ -33,7 +33,7 @@ impl Default for Config {
             port: 5672,
             user: "guest".to_string(),
             password: "guest".to_string(),
-            virtual_host: "/demo".to_string(),
+            virtual_host: "demo".to_string(),
         }
     }
 }
