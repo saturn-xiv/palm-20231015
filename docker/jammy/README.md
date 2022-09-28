@@ -1,5 +1,14 @@
 # USAGE
 
+- fix systemctl(run as root)
+
+  ```bash
+  echo 'vm.max_map_count=262144' > /etc/sysctl.d/50-opensearch.conf
+  sysctl -p
+  ```
+
+- start container
+
 ```bash
 $ cd ~/workspace
 $ ./saturn-xiv/palm/docker/jammy/start.sh
@@ -38,3 +47,11 @@ $ ./saturn-xiv/palm/docker/jammy/start.sh
   ```
 
 - Php `http://localhost:8080/info.php`
+
+- OpenSearch
+
+  ```bash
+  # show info
+  curl -X GET http://localhost:9200
+  curl -X GET http://localhost:9200/_cat/plugins?v
+  ```

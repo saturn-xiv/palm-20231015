@@ -208,7 +208,7 @@ RUN chmod +x $HOME/.local/bin/grpc_java_plugin
 ENV OPENSEARCH_VERSION "2.3.0"
 RUN wget -q -P $HOME/downloads \
     https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
-RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C $HOME/local
+RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C /opt/local
 
 # https://min.io/download#/linux
 RUN wget -q -O /usr/bin/minio \
@@ -233,6 +233,12 @@ RUN mkdir /run/php
 RUN echo "<?php phpinfo(); ?>" > /var/www/html/info.php
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 ADD etc/nginx.conf /etc/nginx/sites-enabled/default
+# https://opensearch.org/docs/latest/opensearch/install/tar/
+RUN echo "network.host: 0.0.0.0" >> /opt/opensearch-${OPENSEARCH_VERSION}/config/opensearch.yml
+RUN echo "discovery.type: single-node" >> /opt/opensearch-${OPENSEARCH_VERSION}/config/opensearch.yml
+RUN echo "plugins.security.disabled: true" >> /opt/opensearch-${OPENSEARCH_VERSION}/config/opensearch.yml
+RUN chown -R nobody /opt/opensearch-${OPENSEARCH_VERSION}
+
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
