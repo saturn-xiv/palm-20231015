@@ -3,26 +3,41 @@ use std::fmt;
 use std::fmt::Display;
 use std::time::Duration;
 
-use ::redis::{cmd, Client, Commands};
+use ::redis::{
+    cluster::{ClusterClient, ClusterConnection},
+    cmd, Commands,
+};
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 
 use super::super::Result;
 
-pub type Connection = Client;
+pub type Connection = ClusterClient;
 pub type Pool = r2d2::Pool<Connection>;
 pub type PooledConnection = r2d2::PooledConnection<Connection>;
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct Host {
+    host: String,
+    port: u16,
+}
+
+impl fmt::Display for Host {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "redis://{}:{}", self.host, self.port)
+    }
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Config {
-    pub host: String,
-    pub port: u16,
-    pub db: u8,
+    pub nodes: Vec<Host>,
     pub pool: Option<u32>,
+    pub namespace: String,
 }
 
 impl Config {
     pub fn open(&self) -> Result<Pool> {
-        let client = Client::open(self.to_string())?;
+        let client = ClusterClient::open(self.nodes.iter().map(|x| x.to_string()).collect())?;
 
         let pool = r2d2::Pool::builder()
             .max_size(self.pool.unwrap_or(32))
@@ -34,22 +49,46 @@ impl Config {
 impl Default for Config {
     fn default() -> Self {
         Self {
-            host: "127.0.0.1".to_string(),
-            port: 6379,
-            db: 0,
+            nodes: vec![
+                Host {
+                    host: "127.0.0.1".to_string(),
+                    port: 63791,
+                },
+                Host {
+                    host: "127.0.0.1".to_string(),
+                    port: 63792,
+                },
+                Host {
+                    host: "127.0.0.1".to_string(),
+                    port: 63793,
+                },
+                Host {
+                    host: "127.0.0.1".to_string(),
+                    port: 63794,
+                },
+                Host {
+                    host: "127.0.0.1".to_string(),
+                    port: 63795,
+                },
+                Host {
+                    host: "127.0.0.1".to_string(),
+                    port: 63796,
+                },
+            ],
+            namespace: "demo://".to_string(),
             pool: Some(32),
         }
     }
 }
 
-impl fmt::Display for Config {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "redis://{}:{}/{}", self.host, self.port, self.db)
-    }
-}
+// impl fmt::Display for Config {
+//     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+//         write!(f, "redis://{}:{}/{}", self.host, self.port, self.db)
+//     }
+// }
 
 // https://redis.io/commands
-impl super::Provider for redis::Connection {
+impl super::Provider for ClusterConnection {
     fn version(&mut self) -> Result<String> {
         let it: String = cmd("info").query::<String>(self)?;
         Ok(it)

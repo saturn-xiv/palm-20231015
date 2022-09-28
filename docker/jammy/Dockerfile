@@ -222,6 +222,8 @@ RUN git clone --recurse-submodules -b ${ENVOY_VERSION} https://github.com/envoyp
 #     && cd $HOME/downloads/envoy \
 #     && bazel build -c opt envoy"
 
+# http://supervisord.org/installing.html
+ADD etc /etc
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 

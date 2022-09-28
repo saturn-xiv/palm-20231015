@@ -9,7 +9,7 @@ sudo apt install crun podman buildah
 - commands
 
   ```bash
-  podman system reset
-  podman images
-  podman ps -a
+  podman system reset # clean
+  podman images # show images
+  podman ps -a # show containers
   ```

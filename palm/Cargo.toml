@@ -101,7 +101,7 @@ features = ["secure", "private", "percent-encode"]
 
 [dependencies.redis]
 version = "0.21"
-features = ["r2d2"]
+features = ["r2d2", "cluster", "connection-manager"]
 
 [dependencies.eui48]
 version = "1"
