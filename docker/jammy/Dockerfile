@@ -211,9 +211,9 @@ RUN wget -q -P $HOME/downloads \
 RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C $HOME/local
 
 # https://min.io/download#/linux
-RUN wget -q -O $HOME/.local/bin/minio \
+RUN wget -q -O /usr/bin/minio \
     https://dl.min.io/server/minio/release/linux-amd64/minio
-RUN chmod +x $HOME/.local/bin/minio
+RUN chmod +x /usr/bin/minio
 
 # https://github.com/envoyproxy/envoy/tree/main/bazel
 ENV ENVOY_VERSION "v1.23.1"
@@ -222,8 +222,17 @@ RUN git clone --recurse-submodules -b ${ENVOY_VERSION} https://github.com/envoyp
 #     && cd $HOME/downloads/envoy \
 #     && bazel build -c opt envoy"
 
-# http://supervisord.org/installing.html
-ADD etc /etc
+ADD etc/supervisor /etc/supervisor
+RUN mkdir -p /var/lib/minio/data
+RUN chown -R nobody /var/lib/minio
+RUN sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
+RUN su - postgres -c "/usr/lib/postgresql/14/bin/initdb -D /var/lib/postgresql/data"
+RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/postgresql/data/postgresql.conf
+ADD etc/redis/* /etc/redis/
+RUN mkdir /run/php
+RUN echo "<?php phpinfo(); ?>" > /var/www/html/info.php
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+ADD etc/nginx.conf /etc/nginx/sites-enabled/default
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 

@@ -4,11 +4,15 @@
 $ cd ~/workspace
 $ ./saturn-xiv/palm/docker/jammy/start.sh
 > supervisord -c /etc/supervisor/supervisord.conf # http://localhost:10001
-# init postgresql data folder
-> su - postgres -c "/usr/lib/postgresql/14/bin/initdb -D /var/lib/postgresql/data"
 # init redis cluster
 > /etc/redis/clusters-init.sh
 ```
+
+- PostgreSql
+
+  ```bash
+  su - postgres -c "psql -p 5432"
+  ```
 
 - MySql
 
@@ -24,9 +28,13 @@ $ ./saturn-xiv/palm/docker/jammy/start.sh
   redis-cli -c -p 16371
   ```
 
-- RabbitMQ
+- Minio `admin:12345678` http://localhost:9001
+
+- RabbitMQ `guest:guest`
 
   ```bash
   # enable rabbitmq management plugin
-  rabbitmq-plugins enable rabbitmq_management # http://localhost:15672 guest:guest
+  rabbitmq-plugins enable rabbitmq_management # http://localhost:15672
   ```
+
+- Php `http://localhost:8080/info.php`
