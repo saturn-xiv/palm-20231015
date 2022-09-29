@@ -21,7 +21,7 @@
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.37",
     "qrcodejs": "^1.0.0",
-    "swagger-ui-dist": "^4.14.0",
+    "swagger-ui-dist": "^4.14.1",
     "tailwindcss": "^3.1.8"
   }
 }

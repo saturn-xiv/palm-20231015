@@ -196,12 +196,14 @@ RUN zsh -c "source $HOME/.zshrc \
     && make -j \
     && make install"
 # https://github.com/grpc/grpc-web#code-generator-plugin
+ENV GRPC_WEB_PLUGIN_VERSION "1.4.1"
 RUN wget -q -O $HOME/.local/bin/protoc-gen-grpc-web \
-    https://github.com/grpc/grpc-web/releases/download/1.3.1/protoc-gen-grpc-web-1.3.1-linux-x86_64
+    https://github.com/grpc/grpc-web/releases/download/${GRPC_WEB_PLUGIN_VERSION}/protoc-gen-grpc-web-${GRPC_WEB_PLUGIN_VERSION}-linux-x86_64
 RUN chmod +x $HOME/.local/bin/protoc-gen-grpc-web
 # https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/
+ENV GRPC_JAVA_PLUGIN_VERSION "1.49.1"
 RUN wget -q -O $HOME/.local/bin/grpc_java_plugin \
-    https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.49.0/protoc-gen-grpc-java-1.49.0-linux-x86_64.exe
+    https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${GRPC_JAVA_PLUGIN_VERSION}/protoc-gen-grpc-java-${GRPC_JAVA_PLUGIN_VERSION}-linux-x86_64.exe
 RUN chmod +x $HOME/.local/bin/grpc_java_plugin
 
 # https://opensearch.org/downloads.html#opensearch
