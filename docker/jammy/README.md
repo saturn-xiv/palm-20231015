@@ -1,21 +1,21 @@
 # USAGE
 
-- fix systemctl(run as root)
+- add to `/etc/sysctl.d/50-opensearch.conf` and then `reboot` or `sysctl -p`
 
-  ```bash
-  echo 'vm.max_map_count=262144' > /etc/sysctl.d/50-opensearch.conf
-  sysctl -p
+  ```text
+  vm.overcommit_memory = 1
+  vm.max_map_count = 262144
   ```
 
-- start container
+- start container [dashboard](http://localhost:10001)
 
-```bash
-$ cd ~/workspace
-$ ./saturn-xiv/palm/docker/jammy/start.sh
-> supervisord -c /etc/supervisor/supervisord.conf # http://localhost:10001
-# init redis cluster
-> /etc/redis/clusters-init.sh
-```
+  ```bash
+  $ cd ~/workspace
+  $ ./saturn-xiv/palm/docker/jammy/start.sh
+  > supervisord -c /etc/supervisor/supervisord.conf
+  # init redis cluster
+  > /etc/redis/clusters-init.sh
+  ```
 
 - PostgreSql
 
@@ -37,16 +37,16 @@ $ ./saturn-xiv/palm/docker/jammy/start.sh
   redis-cli -c -h 127.0.0.1 -p 16371
   ```
 
-- Minio `admin:12345678` http://localhost:9001
+- Minio [dashboard](http://localhost:9001) (`admin:12345678`)
 
-- RabbitMQ `guest:guest`
+- RabbitMQ [dashboard](http://localhost:15672) (`guest:guest`)
 
   ```bash
   # enable rabbitmq management plugin
-  rabbitmq-plugins enable rabbitmq_management # http://localhost:15672
+  rabbitmq-plugins enable rabbitmq_management
   ```
 
-- Php `http://localhost:8080/info.php`
+- Php [info.php](http://localhost:8080/info.php)
 
 - OpenSearch
 

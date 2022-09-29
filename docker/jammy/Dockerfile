@@ -210,37 +210,45 @@ RUN chmod +x $HOME/.local/bin/grpc_java_plugin
 ENV OPENSEARCH_VERSION "2.3.0"
 RUN wget -q -P $HOME/downloads \
     https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
-RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C /opt/local
+RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C /opt
 
 # https://min.io/download#/linux
 RUN wget -q -O /usr/bin/minio \
     https://dl.min.io/server/minio/release/linux-amd64/minio
 RUN chmod +x /usr/bin/minio
 
-# https://github.com/envoyproxy/envoy/tree/main/bazel
-ENV ENVOY_VERSION "v1.23.1"
-RUN git clone --recurse-submodules -b ${ENVOY_VERSION} https://github.com/envoyproxy/envoy.git $HOME/downloads/envoy
-# RUN zsh -c "source $HOME/.zshrc \
-#     && cd $HOME/downloads/envoy \
-#     && bazel build -c opt envoy"
+# https://www.envoyproxy.io/docs/envoy/latest/start/install#install-envoy-on-ubuntu-linux
+RUN curl -sL 'https://deb.dl.getenvoy.io/public/gpg.8115BA8E629CC074.key' | gpg --dearmor -o /usr/share/keyrings/getenvoy-keyring.gpg
+RUN echo a077cb587a1b622e03aa4bf2f3689de14658a9497a9af2c427bba5f4cc3c4723 /usr/share/keyrings/getenvoy-keyring.gpg | sha256sum --check
+RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/getenvoy-keyring.gpg] https://deb.dl.getenvoy.io/public/deb/ubuntu $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/getenvoy.list
+RUN apt update
+RUN apt install -y getenvoy-envoy
 
-ADD etc/supervisor /etc/supervisor
-RUN mkdir -p /var/lib/minio/data
-RUN chown -R nobody /var/lib/minio
-RUN sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
-RUN su - postgres -c "/usr/lib/postgresql/14/bin/initdb -D /var/lib/postgresql/data"
-RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/postgresql/data/postgresql.conf
-RUN for i in {1..6}; do mkdir -p /var/lib/redis-$i; done 
-ADD etc/redis/* /etc/redis/
-RUN mkdir /run/php
-RUN echo "<?php phpinfo(); ?>" > /var/www/html/info.php
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-ADD etc/nginx.conf /etc/nginx/sites-enabled/default
 # https://opensearch.org/docs/latest/opensearch/install/tar/
 RUN echo "network.host: 0.0.0.0" >> /opt/opensearch-${OPENSEARCH_VERSION}/config/opensearch.yml
 RUN echo "discovery.type: single-node" >> /opt/opensearch-${OPENSEARCH_VERSION}/config/opensearch.yml
 RUN echo "plugins.security.disabled: true" >> /opt/opensearch-${OPENSEARCH_VERSION}/config/opensearch.yml
 RUN chown -R nobody /opt/opensearch-${OPENSEARCH_VERSION}
+
+RUN mkdir -p /var/lib/minio/data
+RUN chown -R nobody /var/lib/minio
+
+RUN sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
+
+RUN su - postgres -c "/usr/lib/postgresql/14/bin/initdb -D /var/lib/postgresql/data"
+RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/postgresql/data/postgresql.conf
+
+RUN mkdir -p /var/lib/redis-1 /var/lib/redis-2 /var/lib/redis-3 /var/lib/redis-4 /var/lib/redis-5 /var/lib/redis-6
+ADD etc/redis/* /etc/redis/
+
+RUN mkdir /run/php
+RUN echo "<?php phpinfo(); ?>" > /var/www/html/info.php
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+ADD etc/nginx.conf /etc/nginx/sites-enabled/default
+
+ADD etc/envoy.yaml /etc/
+
+ADD etc/supervisor /etc/supervisor
 
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION

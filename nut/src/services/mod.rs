@@ -1,6 +1,6 @@
 // pub mod attachment;
 // pub mod category;
-// pub mod locale;
+pub mod locale;
 // pub mod policy;
 // pub mod setting;
 // pub mod shorter_link;
@@ -17,7 +17,10 @@ use language_tags::LanguageTag;
 use palm::{jwt::Jwt, orm::postgresql::Connection as Db, HttpError, Result};
 use tonic::{metadata::MetadataMap, Request};
 
-use super::models::user::{Action, Dao as UserDao, Item as User, Token};
+use super::{
+    models::user::{Action, Dao as UserDao, Item as User, Token},
+    policy::{Adapter as PolicyAdapter, Enforcer},
+};
 
 pub struct Session {
     pub lang: String,
