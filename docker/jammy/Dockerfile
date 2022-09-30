@@ -53,6 +53,19 @@ RUN update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/cl
 RUN update-alternatives --install /usr/bin/lldb lldb /usr/bin/lldb-${CLANG_VERSION} 100
 RUN update-alternatives --install /usr/bin/lld lld /usr/bin/lld-${CLANG_VERSION} 100
 
+# https://www.envoyproxy.io/docs/envoy/latest/start/install#install-envoy-on-ubuntu-linux
+RUN curl -sL 'https://deb.dl.getenvoy.io/public/gpg.8115BA8E629CC074.key' | gpg --dearmor -o /usr/share/keyrings/getenvoy-keyring.gpg
+RUN echo a077cb587a1b622e03aa4bf2f3689de14658a9497a9af2c427bba5f4cc3c4723 /usr/share/keyrings/getenvoy-keyring.gpg | sha256sum --check
+RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/getenvoy-keyring.gpg] https://deb.dl.getenvoy.io/public/deb/ubuntu $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/getenvoy.list
+RUN apt update
+RUN apt install -y getenvoy-envoy
+
+# https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
+# RUN wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | apt-key add -
+# RUN echo "deb [arch=amd64,arm64] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/6.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+# RUN apt update
+# RUN apt install -y mongodb
+
 RUN apt -y autoremove
 RUN apt -y clean
 
@@ -216,13 +229,6 @@ RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C 
 RUN wget -q -O /usr/bin/minio \
     https://dl.min.io/server/minio/release/linux-amd64/minio
 RUN chmod +x /usr/bin/minio
-
-# https://www.envoyproxy.io/docs/envoy/latest/start/install#install-envoy-on-ubuntu-linux
-RUN curl -sL 'https://deb.dl.getenvoy.io/public/gpg.8115BA8E629CC074.key' | gpg --dearmor -o /usr/share/keyrings/getenvoy-keyring.gpg
-RUN echo a077cb587a1b622e03aa4bf2f3689de14658a9497a9af2c427bba5f4cc3c4723 /usr/share/keyrings/getenvoy-keyring.gpg | sha256sum --check
-RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/getenvoy-keyring.gpg] https://deb.dl.getenvoy.io/public/deb/ubuntu $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/getenvoy.list
-RUN apt update
-RUN apt install -y getenvoy-envoy
 
 # https://opensearch.org/docs/latest/opensearch/install/tar/
 RUN echo "network.host: 0.0.0.0" >> /opt/opensearch-${OPENSEARCH_VERSION}/config/opensearch.yml
