@@ -3,8 +3,8 @@ use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
 use palm::{
-    jwt::Jwt, nut::v1, orm::postgresql::Pool as PostgreSqlPool, to_code, to_timestamp, try_grpc,
-    GrpcResult,
+    cache::redis::Pool as RedisPool, jwt::Jwt, nut::v1, orm::postgresql::Pool as PostgreSqlPool,
+    to_code, to_timestamp, try_grpc, GrpcResult,
 };
 use tonic::{Request, Response, Status};
 
@@ -15,6 +15,7 @@ use super::Session;
 pub struct Service {
     pub pgsql: PostgreSqlPool,
     pub jwt: Arc<Jwt>,
+    pub redis: RedisPool,
 }
 
 impl From<Locale> for v1::locale_index_response::Item {
@@ -35,8 +36,10 @@ impl v1::locale_server::Locale for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.can::<Locale, _>(&Operation::Write, None) {
             return Err(Status::permission_denied(type_name::<Locale>()));
@@ -79,8 +82,10 @@ impl v1::locale_server::Locale for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.can::<Locale, _>(&Operation::Remove, None) {
             return Err(Status::permission_denied(type_name::<Locale>()));

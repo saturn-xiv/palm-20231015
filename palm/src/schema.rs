@@ -9,7 +9,6 @@ diesel::table! {
         title -> Varchar,
         size -> Int8,
         content_type -> Varchar,
-        region -> Varchar,
         status -> Int4,
         version -> Int4,
         updated_at -> Timestamp,

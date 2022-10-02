@@ -10,47 +10,29 @@ use ::minio::s3::{
     http::BaseUrl,
 };
 
-use super::Result;
+use super::{nut::v1, Result};
 
-pub struct Client {
-    host: String,
-    region: Option<String>,
-    secure: bool,
-    credentials: Credentials,
-}
-
-pub struct Credentials {
-    pub access_key: String,
-    pub secret_key: String,
-}
-
-impl Credentials {
-    fn open(&self) -> StaticProvider {
-        StaticProvider::new(&self.access_key, &self.secret_key, None)
-    }
-}
-
-impl Client {
+impl v1::MinioProfile {
     pub async fn bucket_exists(&self, name: &str) -> Result<bool> {
-        let cred = self.credentials.open();
+        let cred = StaticProvider::new(&self.access_key_id, &self.secret_access_key, None);
         let cli = self.open(&cred)?;
         let ok = cli.bucket_exists(&BucketExistsArgs::new(name)?).await?;
         Ok(ok)
     }
     pub async fn create_bucket(&self, name: &str) -> Result<()> {
-        let cred = self.credentials.open();
+        let cred = StaticProvider::new(&self.access_key_id, &self.secret_access_key, None);
         let cli = self.open(&cred)?;
         cli.make_bucket(&MakeBucketArgs::new(name)?).await?;
         Ok(())
     }
     pub async fn delete_bucket(&self, name: &str) -> Result<()> {
-        let cred = self.credentials.open();
+        let cred = StaticProvider::new(&self.access_key_id, &self.secret_access_key, None);
         let cli = self.open(&cred)?;
         cli.remove_bucket(&RemoveBucketArgs::new(name)?).await?;
         Ok(())
     }
     pub async fn list_buckets(&self) -> Result<Vec<String>> {
-        let cred = self.credentials.open();
+        let cred = StaticProvider::new(&self.access_key_id, &self.secret_access_key, None);
         let cli = self.open(&cred)?;
         let res = cli.list_buckets(&ListBucketsArgs::new()).await?;
         let items = res.buckets.iter().map(|x| x.name.clone()).collect();
@@ -64,7 +46,7 @@ impl Client {
         stream: &'a mut dyn Read,
         size: usize,
     ) -> Result<()> {
-        let cred = self.credentials.open();
+        let cred = StaticProvider::new(&self.access_key_id, &self.secret_access_key, None);
         let cli = self.open(&cred)?;
 
         let mut req = PutObjectArgs::new(bucket, name, stream, Some(size), None)?;
@@ -73,7 +55,7 @@ impl Client {
         Ok(())
     }
     pub async fn remove_object(&self, bucket: &str, name: &str) -> Result<()> {
-        let cred = self.credentials.open();
+        let cred = StaticProvider::new(&self.access_key_id, &self.secret_access_key, None);
         let cli = self.open(&cred)?;
         cli.remove_object(&RemoveObjectArgs::new(bucket, name)?)
             .await?;
@@ -81,7 +63,7 @@ impl Client {
         Ok(())
     }
     pub async fn list_objects(&self, bucket: &str) -> Result<Vec<String>> {
-        let cred = self.credentials.open();
+        let cred = StaticProvider::new(&self.access_key_id, &self.secret_access_key, None);
         let cli = self.open(&cred)?;
 
         let res = cli
@@ -92,7 +74,7 @@ impl Client {
         Ok(items)
     }
     pub async fn get_object(&self, bucket: &str, name: &str) -> Result<String> {
-        let cred = self.credentials.open();
+        let cred = StaticProvider::new(&self.access_key_id, &self.secret_access_key, None);
         let cli = self.open(&cred)?;
         let res = cli.get_object(&GetObjectArgs::new(bucket, name)?).await?;
         let url = res.text().await?;
@@ -107,7 +89,7 @@ impl Client {
             }
             it
         };
-        // let cred = StaticProvider::new(&self.access_key, &self.secret_key, None);
+
         let mut cli = S3Client::new(url, Some(cred));
         cli.ignore_cert_check = true;
         Ok(cli)

@@ -6,9 +6,12 @@ use bytes::BytesMut;
 use futures_util::TryStreamExt;
 use palm::{crypto::Aes, nut::v1, orm::postgresql::Pool as DbPool, try_web};
 
-use super::super::models::{
-    attachment::{Dao as AttachmentDao, Item as Attachment},
-    user::Item as User,
+use super::super::{
+    models::{
+        attachment::{Dao as AttachmentDao, Item as Attachment},
+        user::Item as User,
+    },
+    services::site::get,
 };
 
 #[post("/api/attachments")]
@@ -21,16 +24,11 @@ pub async fn create(
     let mut db = try_web!(db.get())?;
     let db = db.deref_mut();
     let aes = aes.deref();
-    let aws = try_web!(v1::AwsProfile::new(db, aes))?;
-    let region = {
-        let it = try_web!(aws.region())?;
-        try_web!(serde_json::to_string(&it))?
-    };
+    let aws = try_web!(get::<v1::MinioProfile>(db, aes))?;
 
-    let s3 = try_web!(aws.s3())?;
     let bucket = Attachment::bucket_by_year_month();
-    if s3.bucket_exists(bucket.clone()).await.is_err() {
-        try_web!(s3.create_bucket(bucket.clone()).await)?;
+    if aws.bucket_exists(&bucket).await.is_err() {
+        try_web!(aws.create_bucket(&bucket).await)?;
     }
 
     while let Some(ref mut field) = payload.try_next().await? {
@@ -56,22 +54,17 @@ pub async fn create(
         let body = body.as_ref();
         let size = body.len();
 
-        try_web!(
-            s3.put_object(
-                bucket.clone(),
-                name.to_string(),
-                content_type.to_string(),
-                body.to_vec(),
-            )
-            .await
-        )?;
+        // FIXME
+        // try_web!(
+        //     aws.put_object(&bucket, &name, &content_type, body.to_vec(),)
+        //         .await
+        // )?;
         try_web!(AttachmentDao::create(
             db,
             user.id,
             &bucket,
             &name,
             &title,
-            &region,
             &content_type,
             size
         ))?;

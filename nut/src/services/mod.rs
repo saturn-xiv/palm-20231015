@@ -4,9 +4,12 @@ pub mod locale;
 // pub mod policy;
 // pub mod setting;
 // pub mod shorter_link;
-// pub mod site;
+pub mod site;
 // pub mod tag;
 // pub mod user;
+
+use std::any::type_name;
+use std::fmt::Display;
 
 use chrono::Duration;
 use hyper::{
@@ -15,11 +18,13 @@ use hyper::{
 };
 use language_tags::LanguageTag;
 use palm::{jwt::Jwt, orm::postgresql::Connection as Db, HttpError, Result};
+use redis::cluster::ClusterConnection as Cache;
 use tonic::{metadata::MetadataMap, Request};
 
-use super::{
-    models::user::{Action, Dao as UserDao, Item as User, Token},
-    policy::{Adapter as PolicyAdapter, Enforcer},
+use super::models::{
+    permission::Dao as PermissionDao,
+    role::{Dao as RoleDao, Item as Role},
+    user::{Action, Dao as UserDao, Item as User, Token},
 };
 
 pub struct Session {
@@ -53,6 +58,7 @@ impl Session {
 
     pub fn new<T>(req: &Request<T>) -> Self {
         let meta = req.metadata();
+
         Self {
             lang: Self::detect_locale(meta),
             client_ip: req
@@ -62,14 +68,24 @@ impl Session {
         }
     }
 
-    pub fn current_user(&self, db: &mut Db, jwt: &Jwt) -> Result<User> {
+    pub fn current_user(&self, db: &mut Db, _ch: &mut Cache, jwt: &Jwt) -> Result<CurrentUser> {
         if let Some(ref token) = self.token {
             let token = jwt.parse::<Token>(token)?;
             let token = token.claims;
             if token.act == Action::SignIn {
                 let user = UserDao::by_uid(db, &token.aud)?;
                 user.available()?;
-                return Ok(user);
+                let roles = RoleDao::get_implicit_roles_for_user(db, user.id)?;
+                let permissions = PermissionDao::get_implicit_permissions_for_user(db, user.id)?;
+
+                return Ok(CurrentUser {
+                    payload: user,
+                    roles: roles.iter().map(|x| x.code.clone()).collect::<_>(),
+                    permissions: permissions
+                        .iter()
+                        .map(|x| (x.operation.clone(), x.resource_type.clone(), x.resource_id))
+                        .collect::<Vec<(String, String, Option<i32>)>>(),
+                });
             }
         }
 
@@ -90,5 +106,39 @@ impl User {
             nbf,
         };
         jwt.sum(None, &token)
+    }
+}
+
+pub struct CurrentUser {
+    pub payload: User,
+    pub roles: Vec<String>,
+    pub permissions: Vec<(String, String, Option<i32>)>,
+}
+
+impl CurrentUser {
+    pub fn has<R: Display>(&self, role: R) -> bool {
+        let role = role.to_string();
+        for it in self.roles.iter() {
+            if *it == role {
+                return true;
+            }
+        }
+        false
+    }
+    pub fn is_administrator(&self) -> bool {
+        self.has(Role::ADMINISTRATOR)
+    }
+    pub fn can<R, O: Display>(&self, operation: O, resource_id: Option<i32>) -> bool {
+        if self.is_administrator() {
+            return true;
+        }
+        let resource_type = type_name::<R>();
+        let operation = operation.to_string();
+        for (op, rt, ri) in self.permissions.iter() {
+            if *op == operation && *rt == resource_type && (None == *ri || *ri == resource_id) {
+                return true;
+            }
+        }
+        false
     }
 }

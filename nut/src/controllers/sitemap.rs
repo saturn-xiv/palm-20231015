@@ -6,16 +6,12 @@ use actix_web::{
     Result as WebResult, Result,
 };
 use askama::Template;
-use palm::{
-    crypto::Aes,
-    nut::v1::{BaiduProfile, GoogleProfile},
-    orm::postgresql::Pool as DbPool,
-    try_web, ToXml,
-};
+use palm::{crypto::Aes, nut::v1, orm::postgresql::Pool as DbPool, try_web, ToXml};
 use serde::{Deserialize, Serialize};
 use validator::Validate;
 use xml::writer::{EventWriter, Result as XmlWriterResult, XmlEvent};
 
+use super::super::services::site::get;
 pub struct Item {}
 
 impl ToXml for Item {
@@ -92,7 +88,7 @@ pub async fn google(
     let params = params.into_inner();
     let aes = aes.deref();
     let aes = aes.deref();
-    let cfg = try_web!(GoogleProfile::new(db, aes))?;
+    let cfg = try_web!(get::<v1::GoogleProfile>(db, aes))?;
 
     if let Some(it) = cfg.site_verify_id {
         if params.0 == it {
@@ -130,7 +126,7 @@ pub async fn baidu(
     let params = params.into_inner();
     let aes = aes.deref();
     let aes = aes.deref();
-    let cfg = try_web!(BaiduProfile::new(db, aes))?;
+    let cfg = try_web!(get::<v1::BaiduProfile>(db, aes))?;
     if let Some(it) = cfg.site_verify {
         if params.0 == it.id {
             let body = try_web!(BaiduRequest {

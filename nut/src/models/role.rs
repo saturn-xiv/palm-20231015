@@ -27,6 +27,7 @@ impl Item {
 
 pub trait Dao {
     fn by_id(&mut self, id: i32) -> Result<Item>;
+    fn by_code(&mut self, code: &str) -> Result<Item>;
     fn by_user(&mut self, user: i32) -> Result<Vec<i32>>;
     fn create(&mut self, code: &str, parent: Option<i32>) -> Result<()>;
     fn update(&mut self, id: i32, code: &str) -> Result<()>;
@@ -50,6 +51,11 @@ impl Dao for Connection {
     fn by_id(&mut self, id: i32) -> Result<Item> {
         Ok(roles::dsl::roles
             .filter(roles::dsl::id.eq(id))
+            .first::<Item>(self)?)
+    }
+    fn by_code(&mut self, code: &str) -> Result<Item> {
+        Ok(roles::dsl::roles
+            .filter(roles::dsl::code.eq(code))
             .first::<Item>(self)?)
     }
     fn by_user(&mut self, user: i32) -> Result<Vec<i32>> {

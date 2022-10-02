@@ -423,8 +423,6 @@ message SettingSetRequest {
 
 // ----------------------------------------------------------------------------
 
-// ----------------------------------------------------------------------------
-
 service Site {
   rpc SetMaintenanceMode(SiteMaintenanceModeRequest)
       returns (google.protobuf.Empty) {}
@@ -440,9 +438,9 @@ service Site {
   rpc SetInfo(SiteSetInfoRequest) returns (google.protobuf.Empty) {}
   rpc SetLogo(SiteSetLogoRequest) returns (google.protobuf.Empty) {}
 
-  rpc SetAws(AwsProfile) returns (google.protobuf.Empty) {}
-  rpc GetAws(google.protobuf.Empty) returns (AwsProfile) {}
-  rpc TestAwsS3(google.protobuf.Empty) returns (SiteAwsS3TestResponse) {}
+  rpc SetMinio(MinioProfile) returns (google.protobuf.Empty) {}
+  rpc GetMinio(google.protobuf.Empty) returns (MinioProfile) {}
+  rpc TestMinio(google.protobuf.Empty) returns (SiteMinioTestResponse) {}
   rpc SetSmtp(SmtpProfile) returns (google.protobuf.Empty) {}
   rpc GetSmtp(google.protobuf.Empty) returns (SmtpProfile) {}
   rpc TestSmtp(SiteSmtpTestRequst) returns (google.protobuf.Empty) {}
@@ -472,13 +470,14 @@ message SiteMaintenanceModeRequest {
 
 message SiteInstallRequest { UserSignUpRequest user = 1; }
 
-message AwsProfile {
-  string region = 1;
-  optional string endpoint = 2;
-  string access_key_id = 3;
-  string secret_access_key = 4;
+message MinioProfile {
+  optional string region = 1;
+  string host = 2;
+  bool secure = 3;
+  string access_key_id = 4;
+  string secret_access_key = 5;
 }
-message SiteAwsS3TestResponse { repeated string buckets = 1; }
+message SiteMinioTestResponse { repeated string buckets = 1; }
 
 message SiteSmtpTestRequst {
   string to = 1;
@@ -510,7 +509,7 @@ message SiteLayoutResponse {
   repeated string languages = 9;
 }
 
-message SiteNewLeaveWordRequest { string body = 1; }
+message SiteNewLeaveWordRequest { MediaContent content = 1; }
 message SiteIndexLeaveWordResponse {
   message Item {
     int32 id = 1;

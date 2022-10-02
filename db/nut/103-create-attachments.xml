@@ -27,9 +27,6 @@
             <column name="content_type" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="region" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
             <column name="status" type="integer">
                 <constraints nullable="false" />
             </column>
@@ -48,9 +45,6 @@
         </createIndex>
         <createIndex tableName="attachments" indexName="idx_attachments_content_type">
             <column name="content_type" />
-        </createIndex>
-        <createIndex tableName="attachments" indexName="idx_attachments_region">
-            <column name="region" />
         </createIndex>
 
         <createTable tableName="attachments_resources">

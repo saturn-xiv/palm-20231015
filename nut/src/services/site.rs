@@ -1,5 +1,6 @@
 use std::any::type_name;
 use std::fs::read_to_string;
+use std::ops::Add;
 use std::ops::{Deref, DerefMut};
 use std::process::Command;
 use std::sync::Arc;
@@ -10,109 +11,33 @@ use diesel::{
     sql_types::{Text, Timestamptz},
     Connection as DieselConntection, RunQueryDsl,
 };
-use prost::Message;
-use redis::Connection as RedisConnection;
-use rusoto_core::Region as RusotoRegion;
-use rusoto_credential::{AwsCredentials, StaticProvider as RusotoCredentialStaticProvider};
-use serde::{Deserialize, Serialize};
-use tonic::{Request, Response, Status};
-
-use super::super::super::super::{
-    aws::s3::Client as AwsS3Client,
+use palm::{
     cache::{redis::Pool as RedisPool, Provider as CacheProvider},
     crypto::{Aes, Hmac},
-    i18n::{locale::Dao as LocaleDao, I18n},
     jwt::Jwt,
+    nut::v1,
     orm::postgresql::{Connection as PostgreSqlConnection, Pool as PostgreSqlPool},
     queue::amqp::RabbitMq,
     search::OpenSearch,
-    setting::Dao as SettingDao,
-    Error, GrpcResult, Result,
+    to_code, to_timestamp, try_grpc, Error, GrpcResult, Result,
 };
+use prost::Message;
+use redis::cluster::ClusterConnection as RedisConnection;
+use serde::{Deserialize, Serialize};
+use tonic::{Request, Response, Status};
+
 use super::super::{
+    i18n::{locale::Dao as LocaleDao, I18n},
     models::{
         leave_word::{Dao as LeaveWordDao, Item as LeaveWord},
         log::Dao as LogDao,
+        role::{Dao as RoleDao, Item as Role},
         user::{Dao as UserDao, Item as User},
         Operation,
     },
-    v1,
+    setting::Dao as SettingDao,
 };
 use super::Session;
-
-impl v1::site_layout_response::Author {
-    pub const NAME: &'static str = "site.author.name";
-    pub const EMAIL: &'static str = "site.author.email";
-}
-
-impl v1::SiteSetInfoRequest {
-    pub const TITLE: &'static str = "site.title";
-    pub const SUBHEAD: &'static str = "site.subhead";
-    pub const DESCRIPTION: &'static str = "site.description";
-}
-
-impl v1::SiteLayoutResponse {
-    pub fn new(db: &mut PostgreSqlConnection, aes: &Aes, lang: &str) -> Result<Self> {
-        let keywords: Vec<String> = SettingDao::get(
-            db,
-            aes,
-            &type_name::<v1::SiteSetKeywordsRequest>().to_string(),
-            None,
-        )
-        .unwrap_or_default();
-        let copyright: String = SettingDao::get(
-            db,
-            aes,
-            &type_name::<v1::SiteSetCopyrightRequest>().to_string(),
-            None,
-        )
-        .unwrap_or_else(|_| {
-            let (_, year) = Utc::now().year_ce();
-            format!("2013~{}", year)
-        });
-        let languages = LocaleDao::languages(db).unwrap_or_default();
-        let author_name = SettingDao::get(
-            db,
-            aes,
-            &v1::site_layout_response::Author::NAME.to_string(),
-            None,
-        )
-        .unwrap_or_default();
-        let author_email = SettingDao::get(
-            db,
-            aes,
-            &v1::site_layout_response::Author::EMAIL.to_string(),
-            None,
-        )
-        .unwrap_or_default();
-        let logo: String = SettingDao::get(
-            db,
-            aes,
-            &type_name::<v1::SiteSetLogoRequest>().to_string(),
-            None,
-        )
-        .unwrap_or_else(|_| "/my/favicon.ico".to_string());
-
-        Ok(Self {
-            title: I18n::t(db, lang, v1::SiteSetInfoRequest::TITLE, &None::<String>),
-            subhead: I18n::t(db, lang, v1::SiteSetInfoRequest::SUBHEAD, &None::<String>),
-            description: I18n::t(
-                db,
-                lang,
-                v1::SiteSetInfoRequest::DESCRIPTION,
-                &None::<String>,
-            ),
-            keywords,
-            logo,
-            copyright,
-            languages,
-            author: Some(v1::site_layout_response::Author {
-                email: author_email,
-                name: author_name,
-            }),
-        })
-    }
-}
 
 pub struct Service {
     pub pgsql: PostgreSqlPool,
@@ -124,14 +49,60 @@ pub struct Service {
     pub search: Arc<OpenSearch>,
 }
 
+impl Service {
+    pub const AUTHOR_NAME: &'static str = "site.author.name";
+    pub const AUTHOR_EMAIL: &'static str = "site.author.email";
+    pub const SITE_TITLE: &'static str = "site.title";
+    pub const SITE_SUBHEAD: &'static str = "site.subhead";
+    pub const SITE_DESCRIPTION: &'static str = "site.description";
+}
+
+pub fn get<T: prost::Message + Default>(db: &mut PostgreSqlConnection, aes: &Aes) -> Result<T> {
+    let buf: Vec<u8> = SettingDao::get(db, aes, &type_name::<T>().to_string(), None)?;
+    let it = T::decode(&buf[..])?;
+    Ok(it)
+}
+
 #[tonic::async_trait]
 impl v1::site_server::Site for Service {
+    async fn set_maintenance_mode(
+        &self,
+        req: Request<v1::SiteMaintenanceModeRequest>,
+    ) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
+
+        if !user.is_administrator() {
+            return Err(Status::permission_denied(type_name::<
+                v1::site_layout_response::Author,
+            >()));
+        }
+        let req = req.into_inner();
+        let aes = self.aes.deref();
+        let buf = req.encode_to_vec();
+        try_grpc!(SettingDao::set(
+            db,
+            aes,
+            &type_name::<v1::SiteMaintenanceModeRequest>().to_string(),
+            None,
+            &buf,
+            false,
+        ))?;
+        Ok(Response::new(()))
+    }
     async fn set_author(&self, req: Request<v1::site_layout_response::Author>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
             return Err(Status::permission_denied(type_name::<
@@ -144,7 +115,7 @@ impl v1::site_server::Site for Service {
             SettingDao::set(
                 db,
                 aes,
-                &v1::site_layout_response::Author::NAME.to_string(),
+                &Self::AUTHOR_NAME.to_string(),
                 None,
                 &req.name,
                 false,
@@ -152,7 +123,7 @@ impl v1::site_server::Site for Service {
             SettingDao::set(
                 db,
                 aes,
-                &v1::site_layout_response::Author::EMAIL.to_string(),
+                &Self::AUTHOR_EMAIL.to_string(),
                 None,
                 &req.email,
                 false,
@@ -165,8 +136,10 @@ impl v1::site_server::Site for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
             return Err(Status::permission_denied(type_name::<
@@ -189,8 +162,10 @@ impl v1::site_server::Site for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
             return Err(Status::permission_denied(
@@ -213,8 +188,10 @@ impl v1::site_server::Site for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
             return Err(Status::permission_denied(type_name::<
@@ -237,8 +214,10 @@ impl v1::site_server::Site for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
             return Err(Status::permission_denied(
@@ -247,22 +226,12 @@ impl v1::site_server::Site for Service {
         }
         let req = req.into_inner();
         try_grpc!(db.transaction::<_, Error, _>(move |db| {
+            I18n::set(db, &ss.lang, &Self::SITE_TITLE.to_string(), &req.title)?;
+            I18n::set(db, &ss.lang, &Self::SITE_SUBHEAD.to_string(), &req.subhead)?;
             I18n::set(
                 db,
                 &ss.lang,
-                &v1::SiteSetInfoRequest::TITLE.to_string(),
-                &req.title,
-            )?;
-            I18n::set(
-                db,
-                &ss.lang,
-                &v1::SiteSetInfoRequest::SUBHEAD.to_string(),
-                &req.subhead,
-            )?;
-            I18n::set(
-                db,
-                &ss.lang,
-                &v1::SiteSetInfoRequest::DESCRIPTION.to_string(),
+                &Self::SITE_DESCRIPTION.to_string(),
                 &req.description,
             )?;
             Ok(())
@@ -276,7 +245,7 @@ impl v1::site_server::Site for Service {
         let db = db.deref_mut();
         let aes = self.aes.deref();
 
-        let it = try_grpc!(v1::SiteLayoutResponse::new(db, aes, &ss.lang))?;
+        let it = try_grpc!(new_site_layout_response(db, aes, &ss.lang))?;
         Ok(Response::new(it))
     }
 
@@ -297,7 +266,7 @@ impl v1::site_server::Site for Service {
                 let email = to_code!(req.email);
                 let real_name = req.real_name.trim();
 
-                let user = try_grpc!(db.transaction::<_, Error, _>(move |db| {
+                try_grpc!(db.transaction::<_, Error, _>(move |db| {
                     UserDao::sign_up(
                         db,
                         hmac,
@@ -327,10 +296,12 @@ impl v1::site_server::Site for Service {
                         "confirmed.",
                     )?;
                     {
-                        let now = Utc::now().naive_utc();
-                        let nbf = now.date();
-                        let exp = (now + Duration::weeks(1 << 10)).date();
-                        for role in [User::ROLE_ROOT, User::ROLE_ADMINISTRATOR] {
+                        let nbf = Utc::now().naive_utc();
+                        let exp = nbf.add(Duration::weeks(1 << 12));
+                        for role in [Role::ROOT, Role::ADMINISTRATOR] {
+                            RoleDao::create(db, role, None)?;
+                            let it = RoleDao::by_code(db, role)?;
+                            RoleDao::associate(db, it.id, user.id, &nbf, &exp)?;
                             LogDao::add::<String, User>(
                                 db,
                                 user.id,
@@ -338,19 +309,18 @@ impl v1::site_server::Site for Service {
                                 &ss.client_ip,
                                 Some(user.id),
                                 format!(
-                                    "apply role {} {} from {} to {}.",
+                                    "apply role {} by {} from {} to {}.",
                                     role,
                                     nix::unistd::getuid(),
-                                    nbf,
-                                    exp
+                                    nbf.date(),
+                                    exp.date()
                                 ),
                             )?;
                         }
                     }
-                    Ok(user)
-                }))?;
 
-                // TODO add root administrator roles
+                    Ok(())
+                }))?;
 
                 Ok(Response::new(()))
             }
@@ -358,23 +328,25 @@ impl v1::site_server::Site for Service {
         }
     }
 
-    async fn set_aws(&self, req: Request<v1::AwsProfile>) -> GrpcResult<()> {
+    async fn set_minio(&self, req: Request<v1::MinioProfile>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
-            return Err(Status::permission_denied(type_name::<v1::AwsProfile>()));
+            return Err(Status::permission_denied(type_name::<v1::MinioProfile>()));
         }
         let req = req.into_inner();
         let buf = req.encode_to_vec();
         try_grpc!(SettingDao::set(
             db,
             aes,
-            &type_name::<v1::AwsProfile>().to_string(),
+            &type_name::<v1::MinioProfile>().to_string(),
             None,
             &buf,
             true
@@ -382,50 +354,55 @@ impl v1::site_server::Site for Service {
         Ok(Response::new(()))
     }
 
-    async fn get_aws(&self, req: Request<()>) -> GrpcResult<v1::AwsProfile> {
+    async fn get_minio(&self, req: Request<()>) -> GrpcResult<v1::MinioProfile> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
-            return Err(Status::permission_denied(type_name::<v1::AwsProfile>()));
+            return Err(Status::permission_denied(type_name::<v1::MinioProfile>()));
         }
 
-        let mut it = try_grpc!(v1::AwsProfile::new(db, aes))?;
+        let mut it = try_grpc!(get::<v1::MinioProfile>(db, aes))?;
         it.secret_access_key = "change-me".to_string();
 
         Ok(Response::new(it))
     }
 
-    async fn test_aws_s3(&self, req: Request<()>) -> GrpcResult<v1::SiteAwsS3TestResponse> {
+    async fn test_minio(&self, req: Request<()>) -> GrpcResult<v1::SiteMinioTestResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
-            return Err(Status::permission_denied(type_name::<v1::AwsProfile>()));
+            return Err(Status::permission_denied(type_name::<v1::MinioProfile>()));
         }
 
-        let it = try_grpc!(v1::AwsProfile::new(db, aes))?;
+        let aws = try_grpc!(get::<v1::MinioProfile>(db, aes))?;
 
-        let s3 = try_grpc!(it.s3())?;
-        let buckets = try_grpc!(s3.list_buckets().await)?;
-        Ok(Response::new(v1::SiteAwsS3TestResponse { buckets }))
+        let buckets = try_grpc!(aws.list_buckets().await)?;
+        Ok(Response::new(v1::SiteMinioTestResponse { buckets }))
     }
 
     async fn set_smtp(&self, req: Request<v1::SmtpProfile>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
             return Err(Status::permission_denied(type_name::<v1::SmtpProfile>()));
@@ -447,15 +424,17 @@ impl v1::site_server::Site for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
             return Err(Status::permission_denied(type_name::<v1::SmtpProfile>()));
         }
 
-        let mut it = try_grpc!(v1::SmtpProfile::new(db, aes))?;
+        let mut it = try_grpc!(get::<v1::SmtpProfile>(db, aes))?;
         it.password = "change-me".to_string();
         Ok(Response::new(it))
     }
@@ -464,16 +443,18 @@ impl v1::site_server::Site for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
             return Err(Status::permission_denied(type_name::<v1::SmtpProfile>()));
         }
         let req = req.into_inner();
 
-        let it = try_grpc!(v1::SmtpProfile::new(db, aes))?;
+        let it = try_grpc!(get::<v1::SmtpProfile>(db, aes))?;
         let task = v1::EmailTask {
             subject: req.subject.clone(),
             body: req.body.clone(),
@@ -488,9 +469,11 @@ impl v1::site_server::Site for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
             return Err(Status::permission_denied(type_name::<v1::BingProfile>()));
@@ -512,15 +495,17 @@ impl v1::site_server::Site for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
             return Err(Status::permission_denied(type_name::<v1::BingProfile>()));
         }
 
-        let it = try_grpc!(v1::BingProfile::new(db, aes))?;
+        let it = try_grpc!(get::<v1::BingProfile>(db, aes))?;
         Ok(Response::new(it))
     }
 
@@ -528,9 +513,11 @@ impl v1::site_server::Site for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
             return Err(Status::permission_denied(type_name::<v1::GoogleProfile>()));
@@ -552,15 +539,17 @@ impl v1::site_server::Site for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
             return Err(Status::permission_denied(type_name::<v1::GoogleProfile>()));
         }
 
-        let it = try_grpc!(v1::GoogleProfile::new(db, aes))?;
+        let it = try_grpc!(get::<v1::GoogleProfile>(db, aes))?;
         Ok(Response::new(it))
     }
 
@@ -568,9 +557,11 @@ impl v1::site_server::Site for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
             return Err(Status::permission_denied(type_name::<v1::BaiduProfile>()));
@@ -592,23 +583,27 @@ impl v1::site_server::Site for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
             return Err(Status::permission_denied(type_name::<v1::BaiduProfile>()));
         }
 
-        let it = try_grpc!(v1::BaiduProfile::new(db, aes))?;
+        let it = try_grpc!(get::<v1::BaiduProfile>(db, aes))?;
         Ok(Response::new(it))
     }
     async fn clear_cache(&self, req: Request<()>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
             return Err(Status::permission_denied(type_name::<RedisConnection>()));
@@ -622,8 +617,10 @@ impl v1::site_server::Site for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.is_administrator() {
             return Err(Status::permission_denied(
@@ -634,7 +631,7 @@ impl v1::site_server::Site for Service {
         let ch = ch.deref_mut();
         let se = self.search.deref();
 
-        let postgresql = try_grpc!(v1::site_status_response::PostgreSql::new(db))?;
+        let postgresql = try_grpc!(new_postgresql_status_response(db))?;
         let rabbitmq = v1::site_status_response::RabbitMq {
             protocol: format!(
                 "{} {}.{}.{}",
@@ -644,10 +641,10 @@ impl v1::site_server::Site for Service {
                 lapin::protocol::metadata::REVISION
             ),
         };
-        let system = try_grpc!(v1::site_status_response::System::new())?;
+        let system = try_grpc!(new_system_status_response())?;
 
-        let redis = try_grpc!(v1::site_status_response::Redis::new(ch))?;
-        let opensearch = try_grpc!(v1::site_status_response::OpenSearch::new(se).await)?;
+        let redis = try_grpc!(new_redis_status_response(ch))?;
+        let opensearch = try_grpc!(new_opensearch_status_response(se).await)?;
         Ok(Response::new(v1::SiteStatusResponse {
             postgresql: Some(postgresql),
             rabbitmq: Some(rabbitmq),
@@ -663,7 +660,16 @@ impl v1::site_server::Site for Service {
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
         let req = req.into_inner();
-        try_grpc!(LeaveWordDao::create(db, &ss.lang, &ss.client_ip, &req.body))?;
+        let content = req
+            .content
+            .ok_or_else(|| Status::invalid_argument("empty content"))?;
+        try_grpc!(LeaveWordDao::create(
+            db,
+            &ss.lang,
+            &ss.client_ip,
+            &content.body,
+            content.editor()
+        ))?;
         Ok(Response::new(()))
     }
     async fn index_leave_word(
@@ -673,8 +679,10 @@ impl v1::site_server::Site for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.can::<LeaveWord, _>(&Operation::Read, None) {
             return Err(Status::permission_denied(type_name::<LeaveWord>()));
@@ -701,8 +709,10 @@ impl v1::site_server::Site for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
         if !user.can::<LeaveWord, _>(&Operation::Read, None) {
             return Err(Status::permission_denied(type_name::<LeaveWord>()));
@@ -714,43 +724,63 @@ impl v1::site_server::Site for Service {
 
     async fn index_notification(
         &self,
-        req: Request<v1::Pager>,
+        _req: Request<v1::Pager>,
     ) -> GrpcResult<v1::SiteIndexNotificationResponse> {
         // TODO
         Ok(Response::new(v1::SiteIndexNotificationResponse::default()))
     }
 }
 
-impl v1::SmtpProfile {
-    pub fn new(db: &mut PostgreSqlConnection, aes: &Aes) -> Result<Self> {
-        let buf: Vec<u8> = SettingDao::get(db, aes, &type_name::<Self>().to_string(), None)?;
-        let it = Self::decode(&buf[..])?;
-        Ok(it)
-    }
-}
+// ----------------------------------------------------------------------------
 
-impl v1::GoogleProfile {
-    pub fn new(db: &mut PostgreSqlConnection, aes: &Aes) -> Result<Self> {
-        let buf: Vec<u8> = SettingDao::get(db, aes, &type_name::<Self>().to_string(), None)?;
-        let it = Self::decode(&buf[..])?;
-        Ok(it)
-    }
-}
+pub fn new_site_layout_response(
+    db: &mut PostgreSqlConnection,
+    aes: &Aes,
+    lang: &str,
+) -> Result<v1::SiteLayoutResponse> {
+    let keywords: Vec<String> = SettingDao::get(
+        db,
+        aes,
+        &type_name::<v1::SiteSetKeywordsRequest>().to_string(),
+        None,
+    )
+    .unwrap_or_default();
+    let copyright: String = SettingDao::get(
+        db,
+        aes,
+        &type_name::<v1::SiteSetCopyrightRequest>().to_string(),
+        None,
+    )
+    .unwrap_or_else(|_| {
+        let (_, year) = Utc::now().year_ce();
+        format!("2013~{}", year)
+    });
+    let languages = LocaleDao::languages(db).unwrap_or_default();
+    let author_name =
+        SettingDao::get(db, aes, &Service::AUTHOR_NAME.to_string(), None).unwrap_or_default();
+    let author_email =
+        SettingDao::get(db, aes, &Service::AUTHOR_EMAIL.to_string(), None).unwrap_or_default();
+    let logo: String = SettingDao::get(
+        db,
+        aes,
+        &type_name::<v1::SiteSetLogoRequest>().to_string(),
+        None,
+    )
+    .unwrap_or_else(|_| "/my/favicon.ico".to_string());
 
-impl v1::BaiduProfile {
-    pub fn new(db: &mut PostgreSqlConnection, aes: &Aes) -> Result<Self> {
-        let buf: Vec<u8> = SettingDao::get(db, aes, &type_name::<Self>().to_string(), None)?;
-        let it = Self::decode(&buf[..])?;
-        Ok(it)
-    }
-}
-
-impl v1::BingProfile {
-    pub fn new(db: &mut PostgreSqlConnection, aes: &Aes) -> Result<Self> {
-        let buf: Vec<u8> = SettingDao::get(db, aes, &type_name::<Self>().to_string(), None)?;
-        let it = Self::decode(&buf[..])?;
-        Ok(it)
-    }
+    Ok(v1::SiteLayoutResponse {
+        title: I18n::t(db, lang, Service::SITE_TITLE, &None::<String>),
+        subhead: I18n::t(db, lang, Service::SITE_SUBHEAD, &None::<String>),
+        description: I18n::t(db, lang, Service::SITE_DESCRIPTION, &None::<String>),
+        keywords,
+        logo,
+        copyright,
+        languages,
+        author: Some(v1::site_layout_response::Author {
+            email: author_email,
+            name: author_name,
+        }),
+    })
 }
 
 #[derive(QueryableByName, PartialEq, Debug)]
@@ -773,115 +803,111 @@ struct Database {
     size: String,
 }
 
-impl v1::site_status_response::PostgreSql {
-    pub fn new(db: &mut PostgreSqlConnection) -> Result<Self> {
-        let ver: DatabaseVersion = sql_query("SELECT VERSION() AS value").get_result(db)?;
-        let now: DatabaseNow = sql_query("SELECT CURRENT_TIMESTAMP AS value").get_result(db)?;
-        let databases: Vec<Database> = sql_query(r###"SELECT pg_database.datname as "name", pg_size_pretty(pg_database_size(pg_database.datname)) AS "size" FROM pg_database ORDER by "size" DESC;"###).load(db)?;
+fn new_postgresql_status_response(
+    db: &mut PostgreSqlConnection,
+) -> Result<v1::site_status_response::PostgreSql> {
+    let ver: DatabaseVersion = sql_query("SELECT VERSION() AS value").get_result(db)?;
+    let now: DatabaseNow = sql_query("SELECT CURRENT_TIMESTAMP AS value").get_result(db)?;
+    let databases: Vec<Database> = sql_query(r###"SELECT pg_database.datname as "name", pg_size_pretty(pg_database_size(pg_database.datname)) AS "size" FROM pg_database ORDER by "size" DESC;"###).load(db)?;
 
-        Ok(Self {
-            version: ver.value,
-            now: Some(to_timestamp!(now.value)),
-            databases: databases
-                .iter()
-                .map(|x| v1::site_status_response::Database {
-                    name: x.name.clone(),
-                    size: x.size.clone(),
-                })
-                .collect(),
-        })
-    }
-}
-
-impl v1::site_status_response::System {
-    pub fn new() -> Result<Self> {
-        let it = Self {
-            version: read_to_string("/proc/version")?,
-            cpu: read_to_string("/proc/cpuinfo")?,
-            memory: read_to_string("/proc/meminfo")?,
-            boot: read_to_string("/proc/cmdline")?,
-            disk: {
-                // read_to_string("/proc/diskstats")?
-                let it = Command::new("df").arg("-h").output()?;
-                String::from_utf8(it.stdout)?
-            },
-            load: {
-                let it = Command::new("top").arg("-b").arg("-n").arg("1").output()?;
-                String::from_utf8(it.stdout)?
-            },
-            fs: read_to_string("/proc/mounts")?,
-            swap: read_to_string("/proc/swaps")?,
-            uptime: read_to_string("/proc/uptime")?,
-            network: {
-                let it = Command::new("ip").arg("address").output()?;
-                String::from_utf8(it.stdout)?
-            },
-        };
-        Ok(it)
-    }
-}
-
-impl v1::site_status_response::Redis {
-    pub fn new(db: &mut RedisConnection) -> Result<Self> {
-        let version = db.version()?;
-        let items = db
-            .keys()?
+    Ok(v1::site_status_response::PostgreSql {
+        version: ver.value,
+        now: Some(to_timestamp!(now.value)),
+        databases: databases
             .iter()
-            .map(|(key, ttl)| v1::site_status_response::redis::Item {
-                ttl: *ttl,
-                key: key.clone(),
+            .map(|x| v1::site_status_response::Database {
+                name: x.name.clone(),
+                size: x.size.clone(),
             })
-            .collect();
-        Ok(Self {
-            info: version,
-            items,
+            .collect(),
+    })
+}
+
+fn new_system_status_response() -> Result<v1::site_status_response::System> {
+    let it = v1::site_status_response::System {
+        version: read_to_string("/proc/version")?,
+        cpu: read_to_string("/proc/cpuinfo")?,
+        memory: read_to_string("/proc/meminfo")?,
+        boot: read_to_string("/proc/cmdline")?,
+        disk: {
+            // read_to_string("/proc/diskstats")?
+            let it = Command::new("df").arg("-h").output()?;
+            String::from_utf8(it.stdout)?
+        },
+        load: {
+            let it = Command::new("top").arg("-b").arg("-n").arg("1").output()?;
+            String::from_utf8(it.stdout)?
+        },
+        fs: read_to_string("/proc/mounts")?,
+        swap: read_to_string("/proc/swaps")?,
+        uptime: read_to_string("/proc/uptime")?,
+        network: {
+            let it = Command::new("ip").arg("address").output()?;
+            String::from_utf8(it.stdout)?
+        },
+    };
+    Ok(it)
+}
+
+fn new_redis_status_response(db: &mut RedisConnection) -> Result<v1::site_status_response::Redis> {
+    let version = db.version()?;
+    let items = db
+        .keys()?
+        .iter()
+        .map(|(key, ttl)| v1::site_status_response::redis::Item {
+            ttl: *ttl,
+            key: key.clone(),
         })
-    }
+        .collect();
+    Ok(v1::site_status_response::Redis {
+        info: version,
+        items,
+    })
 }
 
-/// https://console.aws.amazon.com/iam/home
-impl v1::AwsProfile {
-    pub fn new(db: &mut PostgreSqlConnection, aes: &Aes) -> Result<Self> {
-        let buf: Vec<u8> = SettingDao::get(db, aes, &type_name::<Self>().to_string(), None)?;
-        let it = Self::decode(&buf[..])?;
-        Ok(it)
-    }
-    pub fn s3(&self) -> Result<AwsS3Client> {
-        AwsS3Client::new(
-            self.credentials(),
-            self.credential_static_provider(),
-            self.region()?,
-        )
-    }
-    pub fn credential_static_provider(&self) -> RusotoCredentialStaticProvider {
-        RusotoCredentialStaticProvider::new_minimal(
-            self.access_key_id.clone(),
-            self.secret_access_key.clone(),
-        )
-    }
-    pub fn region(&self) -> Result<RusotoRegion> {
-        let it = match self.endpoint {
-            Some(ref it) => RusotoRegion::Custom {
-                name: self.region.clone(),
-                endpoint: it.clone(),
-            },
-            None => self.region.parse()?,
-        };
-        Ok(it)
-    }
-    pub fn credentials(&self) -> AwsCredentials {
-        AwsCredentials::new(
-            self.access_key_id.clone(),
-            self.secret_access_key.clone(),
-            None,
-            None,
-        )
-    }
+async fn new_opensearch_status_response(
+    search: &OpenSearch,
+) -> Result<v1::site_status_response::OpenSearch> {
+    let (url, info) = search.info().await?;
+    Ok(v1::site_status_response::OpenSearch { url, info })
 }
 
-impl v1::site_status_response::OpenSearch {
-    pub async fn new(search: &OpenSearch) -> Result<Self> {
-        let (url, info) = search.info().await?;
-        Ok(Self { url, info })
-    }
-}
+// /// https://console.aws.amazon.com/iam/home
+// impl v1::AwsProfile {
+//     pub fn new(db: &mut PostgreSqlConnection, aes: &Aes) -> Result<Self> {
+//         let buf: Vec<u8> = SettingDao::get(db, aes, &type_name::<Self>().to_string(), None)?;
+//         let it = Self::decode(&buf[..])?;
+//         Ok(it)
+//     }
+//     pub fn s3(&self) -> Result<AwsS3Client> {
+//         AwsS3Client::new(
+//             self.credentials(),
+//             self.credential_static_provider(),
+//             self.region()?,
+//         )
+//     }
+//     pub fn credential_static_provider(&self) -> RusotoCredentialStaticProvider {
+//         RusotoCredentialStaticProvider::new_minimal(
+//             self.access_key_id.clone(),
+//             self.secret_access_key.clone(),
+//         )
+//     }
+//     pub fn region(&self) -> Result<RusotoRegion> {
+//         let it = match self.endpoint {
+//             Some(ref it) => RusotoRegion::Custom {
+//                 name: self.region.clone(),
+//                 endpoint: it.clone(),
+//             },
+//             None => self.region.parse()?,
+//         };
+//         Ok(it)
+//     }
+//     pub fn credentials(&self) -> AwsCredentials {
+//         AwsCredentials::new(
+//             self.access_key_id.clone(),
+//             self.secret_access_key.clone(),
+//             None,
+//             None,
+//         )
+//     }
+// }

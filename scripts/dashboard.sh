@@ -2,7 +2,7 @@
 
 set -e
 
-function react(){
+install_react() {
     yarn add filesize dayjs timezones-list grpc-web \
         google-protobuf @types/google-protobuf \
         js-cookie @types/js-cookie \
@@ -21,17 +21,17 @@ function react(){
 
 }
 
-function ant_design(){
+install_ant_design() {
     yarn add antd @ant-design/pro-components
 }
 
-function material_design(){
+install_material_design() {
     yarn add @mui/material @emotion/react @emotion/styled \
         @mui/icons-material @fontsource/roboto
 }
 
-react
-ant_design
+install_react
+install_ant_design
 # material_design
 
 echo 'done.'

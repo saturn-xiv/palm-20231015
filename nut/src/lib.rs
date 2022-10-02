@@ -1,13 +1,14 @@
 #![allow(clippy::too_many_arguments)]
 
 #[macro_use]
+extern crate diesel;
+#[macro_use]
 extern crate log;
 
-// pub mod controllers;
+pub mod controllers;
 pub mod handlers;
 pub mod i18n;
 pub mod models;
-pub mod policy;
 pub mod services;
 pub mod setting;
 pub mod theme;

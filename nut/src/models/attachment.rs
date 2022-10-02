@@ -22,7 +22,6 @@ pub struct Item {
     pub title: String,
     pub size: i64,
     pub content_type: String,
-    pub region: String,
     pub status: i32,
     pub version: i32,
     pub created_at: NaiveDateTime,
@@ -79,7 +78,6 @@ pub trait Dao {
         bucket: &str,
         name: &str,
         title: &str,
-        region: &str,
         content_type: &Mime,
         size: usize,
     ) -> Result<()>;
@@ -106,7 +104,6 @@ impl Dao for Connection {
         bucket: &str,
         name: &str,
         title: &str,
-        region: &str,
         content_type: &Mime,
         size: usize,
     ) -> Result<()> {
@@ -120,7 +117,6 @@ impl Dao for Connection {
                 attachments::dsl::name.eq(name),
                 attachments::dsl::title.eq(title),
                 attachments::dsl::content_type.eq(content_type),
-                attachments::dsl::region.eq(region),
                 attachments::dsl::size.eq(size as i64),
                 attachments::dsl::status.eq(MediaStatus::Publish as i32),
                 attachments::dsl::updated_at.eq(&now),

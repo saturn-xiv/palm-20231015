@@ -142,7 +142,7 @@ features = ["vendored"]
 
 [dependencies.minio]
 git = "https://github.com/minio/minio-rs.git"
-rev = "4da529a"
+rev = "5fea81d"
 
 [build-dependencies]
 tonic-build = "0.8"
