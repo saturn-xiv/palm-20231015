@@ -3,7 +3,7 @@ LABEL maintainer="Jeremy Zheng"
 
 RUN apk update
 RUN apk upgrade
-RUN apk add vim curl bash zsh pwgen openssl git tmux rsync \
+RUN apk add vim curl bash zsh pwgen openssl git tmux rsync openssh-client \
     build-base cmake \
     python3 py3-pip python3-dev \
     openssl-dev 
@@ -27,6 +27,7 @@ RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.profile
 RUN echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.profile
 RUN echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/tmp/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.profile
 
+RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
 VOLUME /workspace
 WORKDIR /workspace

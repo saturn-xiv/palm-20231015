@@ -1,6 +1,6 @@
 # USAGE
 
-- add to `/etc/sysctl.d/50-opensearch.conf` and then `reboot` or `sysctl -p`
+- add to `/etc/sysctl.d/60-my.conf` and then `reboot` or `sysctl -p`
 
   ```text
   vm.overcommit_memory = 1
