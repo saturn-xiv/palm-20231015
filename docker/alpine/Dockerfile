@@ -4,7 +4,7 @@ LABEL maintainer="Jeremy Zheng"
 RUN apk update
 RUN apk upgrade
 RUN apk add vim curl bash zsh pwgen openssl git tmux rsync openssh-client \
-    build-base cmake \
+    build-base cmake git \
     python3 py3-pip python3-dev \
     openssl-dev 
 
