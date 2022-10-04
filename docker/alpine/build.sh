@@ -8,8 +8,9 @@ export CODE="palm-alpine"
 buildah pull alpine:latest
 buildah bud --layers -t $CODE .
 podman save -o $CODE-$VERSION.tar $CODE
-# tar jcvf - $CODE-$VERSION.tar | split -b 1G - palm.tar.xz
+XZ_OPT=-9 tar -cJf $CODE-$VERSION.tar.xz $CODE-$VERSION.tar
+md5sum $CODE-$VERSION.tar* > md5.txt
 
-echo 'done.'
+echo "done($CODE-$VERSION.tar.xz)."
 
 exit 0
