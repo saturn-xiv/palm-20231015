@@ -11,5 +11,9 @@ tonic = "0.8"
 prost = "0.11"
 prost-types = "0.11"
 
+[dependencies.serde]
+version = "1"
+features = ["derive"]
+
 [dependencies.palm]
 path = '../../palm'

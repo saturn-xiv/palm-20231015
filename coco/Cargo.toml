@@ -7,11 +7,54 @@ edition = "2021"
 
 [dependencies]
 log = "0.4"
+actix-identity = "0.5"
+toml = "0.5"
+actix-cors = "0.6"
+actix-files = "0.6"
+tonic = "0.8"
 env_logger = "0.9"
+askama = "0.11"
+base64 = "0.13"
+nix = "0.25"
+lazy_static = "1"
+serde_json = "1"
+
+[dependencies.chrono]
+version = "0.4"
+features = ["serde"]
+
+[dependencies.actix-session]
+version = "0.7"
+features = ["cookie-session", "redis-rs-session"]
+
+[dependencies.hyper]
+version = "0.14"
+features = ["full"]
+
+[dependencies.cookie]
+version = "0.16"
+features = ["secure", "private", "percent-encode"]
 
 [dependencies.serde]
 version = "1"
 features = ["derive"]
+
+[dependencies.tokio]
+version = "1"
+features = ["full"]
+
+[dependencies.uuid]
+version = "1"
+features = ["v4", "serde"]
+
+[dependencies.diesel]
+version = "2"
+default-features = false
+features = ["bigdecimal", "postgres", "mysql", "sqlite", "extras", "128-column-tables"]
+
+[dependencies.actix-web]
+version = "4"
+features = ["cookies"]
 
 [dependencies.clap]
 version = "4"
@@ -19,6 +62,12 @@ features = ["derive"]
 
 [dependencies.palm]
 path = '../palm'
+
+[dependencies.nut]
+path = '../nut'
+
+[dependencies.cms]
+path = '../cms'
 
 [dependencies.forum]
 path = '../forum'

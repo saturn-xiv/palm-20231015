@@ -1,6 +1,6 @@
 [package]
 name = "palm"
-version = "2022.9.20"
+version = "2022.10.7"
 edition = "2021"
 authors = ["Jeremy Zheng <jitang.zheng@gmail.com>"]
 description = "A total free education & translation & ops solution."
@@ -32,6 +32,7 @@ xml-rs = "0.8"
 rusttype = "0.9"
 ssh2 = "0.9"
 lettre = "0.10"
+askama = "0.11"
 paho-mqtt = "0.11"
 prost = "0.11"
 prost-types = "0.11"
@@ -79,9 +80,6 @@ features = ["cookie-session", "redis-rs-session"]
 [dependencies.zmq]
 version = "0.9"
 features = ["vendored"]
-
-[dependencies.askama]
-version = "0.11"
 
 [dependencies.reqwest]
 version = "0.11"

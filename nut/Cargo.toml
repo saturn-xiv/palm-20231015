@@ -16,6 +16,7 @@ yaml-rust = "0.4"
 rand = "0.8"
 tonic = "0.8"
 xml-rs = "0.8"
+askama = "0.11"
 prost = "0.11"
 prost-types = "0.11"
 nix = "0.25"
@@ -37,9 +38,6 @@ features = ["serde"]
 [dependencies.actix-session]
 version = "0.7"
 features = ["cookie-session", "redis-rs-session"]
-
-[dependencies.askama]
-version = "0.11"
 
 [dependencies.reqwest]
 version = "0.11"

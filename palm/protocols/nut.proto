@@ -295,6 +295,7 @@ message AttachmetIndexResponse {
 // ----------------------------------------------------------------------------
 
 service Policy {
+  rpc AddRole(PolicyAddRoleRequest) returns (google.protobuf.Empty) {}
   rpc GetAllRoles(google.protobuf.Empty) returns (PolicyRoleListResponse) {}
   rpc DeleteRole(PolicyRoleRequest) returns (google.protobuf.Empty) {}
   rpc GetRolesForUser(PolicyUserRequest) returns (PolicyRoleListResponse) {}
@@ -321,6 +322,11 @@ service Policy {
   }
   rpc DeletePermissions(PolicyPermissionsRequest)
       returns (google.protobuf.Empty) {}
+}
+
+message PolicyAddRoleRequest {
+  string code = 1;
+  string nested = 2;
 }
 
 message PolicyUserRequest { int32 id = 1; }

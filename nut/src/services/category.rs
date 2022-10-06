@@ -1,11 +1,15 @@
 use std::sync::Arc;
 
-use palm::{jwt::Jwt, nut::v1, orm::postgresql::Pool as PostgreSqlPool, GrpcResult};
+use palm::{
+    cache::redis::Pool as RedisPool, jwt::Jwt, nut::v1, orm::postgresql::Pool as PostgreSqlPool,
+    GrpcResult,
+};
 use tonic::{Request, Response};
 
 pub struct Service {
     pub pgsql: PostgreSqlPool,
     pub jwt: Arc<Jwt>,
+    pub redis: RedisPool,
 }
 
 #[tonic::async_trait]

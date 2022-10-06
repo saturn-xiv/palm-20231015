@@ -10,7 +10,7 @@ use palm::{
     jwt::Jwt,
     nut::v1,
     orm::postgresql::{Connection as Db, Pool as PostgreSqlPool},
-    to_datetime, try_grpc, Error, GrpcResult, HttpError,
+    to_code, to_datetime, try_grpc, Error, GrpcResult, HttpError,
 };
 use tonic::{Response, Status};
 
@@ -32,6 +32,27 @@ pub struct Service {
 
 #[tonic::async_trait]
 impl v1::policy_server::Policy for Service {
+    async fn add_role(&self, req: tonic::Request<v1::PolicyAddRoleRequest>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let jwt = self.jwt.deref();
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
+
+        if !user.is_administrator() {
+            return Err(Status::permission_denied(type_name::<User>()));
+        }
+        let req = req.into_inner();
+        let code = to_code!(req.code);
+        let nested = to_code!(req.nested);
+        try_grpc!(db.transaction::<_, Error, _>(move |db| {
+            RoleDao::create(db, &code, &nested)?;
+            Ok(())
+        }))?;
+        Ok(Response::new(()))
+    }
     async fn get_all_roles(
         &self,
         req: tonic::Request<()>,

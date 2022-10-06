@@ -362,8 +362,10 @@ impl v1::user_server::User for Service {
                     message: x.message.clone(),
                     level: x.level,
                     ip: x.ip.clone(),
-                    // TODO parse resource
-                    resource: Some(v1::Resource::default()),
+                    resource: Some(v1::Resource {
+                        r#type: x.resource_type.clone(),
+                        id: x.resource_id,
+                    }),
                     created_at: Some(to_timestamp!(x.created_at)),
                 })
                 .collect(),
