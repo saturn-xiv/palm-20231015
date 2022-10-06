@@ -11,7 +11,12 @@
             <column name="code" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="parent_id" type="integer" />
+            <column name="left" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="right" type="integer">
+                <constraints nullable="false" />
+            </column>
             <column name="version" type="integer" defaultValue="0">
                 <constraints nullable="false" />
             </column>

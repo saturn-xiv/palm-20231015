@@ -12,8 +12,10 @@
             <column name="code" type="varchar(255)">
                 <constraints nullable="false" unique="true" />
             </column>
-            <column name="parent_id" type="integer" />
-            <column name="priority" type="integer" defaultValue="0">
+            <column name="left" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="right" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="version" type="integer" defaultValue="0">
