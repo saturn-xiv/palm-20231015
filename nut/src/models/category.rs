@@ -12,8 +12,8 @@ use serde::Serialize;
 pub struct Item {
     pub id: i32,
     pub code: String,
-    pub parent: Option<i32>,
-    pub priority: i32,
+    pub left: i32,
+    pub right: i32,
     pub version: i32,
     pub updated_at: NaiveDateTime,
     pub created_at: NaiveDateTime,
@@ -21,10 +21,9 @@ pub struct Item {
 
 pub trait Dao {
     fn by_id(&mut self, id: i32) -> Result<Item>;
-    fn create(&mut self, code: &str, parent: Option<i32>, priority: i32) -> Result<()>;
-    fn update(&mut self, id: i32, code: &str, priority: i32) -> Result<()>;
+    fn create(&mut self, code: &str, left: i32, right: i32) -> Result<()>;
+    fn update(&mut self, id: i32, code: &str, left: i32, right: i32) -> Result<()>;
     fn all(&mut self) -> Result<Vec<Item>>;
-    fn root(&mut self) -> Result<Vec<Item>>;
     fn children(&mut self, id: i32) -> Result<Vec<Item>>;
     fn destroy(&mut self, id: i32) -> Result<()>;
     fn associate(&mut self, id: i32, resource_type: &str, resource_id: i32) -> Result<()>;
@@ -38,25 +37,26 @@ impl Dao for Connection {
             .first::<Item>(self)?)
     }
 
-    fn create(&mut self, code: &str, parent: Option<i32>, priority: i32) -> Result<()> {
+    fn create(&mut self, code: &str, left: i32, right: i32) -> Result<()> {
         let now = Utc::now().naive_utc();
         insert_into(categories::dsl::categories)
             .values((
                 categories::dsl::code.eq(code),
-                categories::dsl::parent_id.eq(parent),
-                categories::dsl::priority.eq(priority),
+                categories::dsl::left.eq(left),
+                categories::dsl::right.eq(right),
                 categories::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;
         Ok(())
     }
-    fn update(&mut self, id: i32, code: &str, priority: i32) -> Result<()> {
+    fn update(&mut self, id: i32, code: &str, left: i32, right: i32) -> Result<()> {
         let it = categories::dsl::categories.filter(categories::dsl::id.eq(&id));
         let now = Utc::now().naive_utc();
         update(it)
             .set((
                 categories::dsl::code.eq(code),
-                categories::dsl::priority.eq(priority),
+                categories::dsl::left.eq(left),
+                categories::dsl::right.eq(right),
                 categories::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;
@@ -64,19 +64,15 @@ impl Dao for Connection {
     }
     fn all(&mut self) -> Result<Vec<Item>> {
         Ok(categories::dsl::categories
-            .order(categories::dsl::updated_at.desc())
-            .load::<Item>(self)?)
-    }
-    fn root(&mut self) -> Result<Vec<Item>> {
-        Ok(categories::dsl::categories
-            .filter(categories::dsl::parent_id.is_null())
-            .order(categories::dsl::priority.asc())
+            .order(categories::dsl::left.asc())
             .load::<Item>(self)?)
     }
     fn children(&mut self, id: i32) -> Result<Vec<Item>> {
+        let it = self.by_id(id)?;
         Ok(categories::dsl::categories
-            .filter(categories::dsl::parent_id.eq(id))
-            .order(categories::dsl::priority.asc())
+            .filter(categories::dsl::left.gt(it.left))
+            .filter(categories::dsl::right.lt(it.right))
+            .order(categories::dsl::left.asc())
             .load::<Item>(self)?)
     }
     fn destroy(&mut self, id: i32) -> Result<()> {
@@ -117,4 +113,11 @@ impl Dao for Connection {
         .execute(self)?;
         Ok(())
     }
+}
+
+// TODO
+pub trait Adapter {
+    fn create(&mut self, code: &str, left: i32, right: i32) -> Result<()>;
+    fn delete(&mut self, id: i32) -> Result<()>;
+    fn update(&mut self, code: &str, left_id: i32, right_id: i32) -> Result<()>;
 }

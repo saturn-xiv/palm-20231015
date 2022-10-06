@@ -33,6 +33,7 @@ A total free education &amp; translation &amp; ops solution.
 - [Reviewing address formats](https://help.shopify.com/en/manual/shipping/shopify-shipping/reviewing-address-formats)
 - [handlebars](https://handlebarsjs.com/guide/)
 - [Versioning gRPC services](https://docs.microsoft.com/en-us/aspnet/core/grpc/versioning?view=aspnetcore-6.0)
+- [](https://gist.github.com/tmilos/f2f999b5839e2d42d751)
 
 ### UI
 

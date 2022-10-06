@@ -1,4 +1,5 @@
 use std::io::Read;
+use std::time::Duration;
 
 use ::minio::s3::{
     args::{
@@ -73,9 +74,10 @@ impl v1::MinioProfile {
 
         Ok(items)
     }
-    pub async fn get_object(&self, bucket: &str, name: &str) -> Result<String> {
+    pub async fn get_object(&self, bucket: &str, name: &str, _ttl: Duration) -> Result<String> {
         let cred = StaticProvider::new(&self.access_key_id, &self.secret_access_key, None);
         let cli = self.open(&cred)?;
+        // TODO ttl for file
         let res = cli.get_object(&GetObjectArgs::new(bucket, name)?).await?;
         let url = res.text().await?;
         Ok(url)

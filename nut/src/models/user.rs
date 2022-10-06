@@ -37,7 +37,7 @@ pub struct Token {
     pub exp: i64,
 }
 
-#[derive(Queryable, Serialize, Deserialize, Debug, Clone)]
+#[derive(Hash, Eq, PartialEq, Queryable, Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
     pub id: i32,
@@ -154,6 +154,7 @@ pub trait Dao {
     fn by_uid(&mut self, uid: &str) -> Result<Item>;
     fn by_email(&mut self, email: &str) -> Result<Item>;
     fn by_nick_name(&mut self, nick_name: &str) -> Result<Item>;
+    fn by_provider(&mut self, type_: i32, id: &str) -> Result<Item>;
     fn set_profile(
         &mut self,
         id: i32,
@@ -204,7 +205,13 @@ impl Dao for Connection {
             .first(self)?;
         Ok(it)
     }
-
+    fn by_provider(&mut self, type_: i32, id: &str) -> Result<Item> {
+        let it = users::dsl::users
+            .filter(users::dsl::provider_type.eq(type_))
+            .filter(users::dsl::provider_id.eq(id))
+            .first(self)?;
+        Ok(it)
+    }
     fn by_nick_name(&mut self, nick_name: &str) -> Result<Item> {
         let it = users::dsl::users
             .filter(users::dsl::nick_name.eq(nick_name))

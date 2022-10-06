@@ -22,12 +22,13 @@ message Resource {
 }
 
 message Permission {
-  oneof subject {
-    int32 user = 1;
-    string role = 2;
+  message Subject {
+    int32 id = 1;
+    string type = 2;
   }
-  string operation = 11;
-  Resource resource = 12;
+  Subject subject = 1;
+  string operation = 2;
+  Resource resource = 3;
 }
 
 // ----------------------------------------------------------------------------
@@ -136,7 +137,7 @@ message UserQueryRequest {
   oneof who {
     string uid = 1;
     string nick_name = 2;
-    Provider provider = 3;
+    Provider provider = 9;
   }
 }
 
@@ -149,7 +150,7 @@ message UserSignInResponse {
   string token = 1;
   string real_name = 2;
   repeated string roles = 11;
-  Permission permissions = 12;
+  repeated Permission permissions = 12;
 }
 
 message UserSignUpRequest {
@@ -175,7 +176,7 @@ message UserResetPasswordRequest {
 }
 
 message UserSetPasswordRequest {
-  int32 user = 1;
+  UserQueryRequest who = 1;
   string password = 2;
 }
 
@@ -239,7 +240,7 @@ message UserIndexResponse {
     string email = 3;
     string nick_name = 4;
     string real_name = 5;
-    string provider_type = 6;
+    UserQueryRequest.Provider.Type provider_type = 6;
     google.protobuf.Timestamp updated_at = 9;
     optional google.protobuf.Timestamp last_sign_in_at = 11;
     optional string last_sign_in_ip = 12;
@@ -283,8 +284,7 @@ message AttachmetIndexResponse {
     string title = 4;
     int64 size = 5;
     string content_type = 6;
-    string region = 7;
-    MediaContent.Status status = 8;
+    MediaContent.Status status = 7;
 
     google.protobuf.Timestamp updated_at = 11;
   }
@@ -296,7 +296,6 @@ message AttachmetIndexResponse {
 
 service Policy {
   rpc GetAllRoles(google.protobuf.Empty) returns (PolicyRoleListResponse) {}
-  rpc DeleteUser(PolicyUserRequest) returns (google.protobuf.Empty) {}
   rpc DeleteRole(PolicyRoleRequest) returns (google.protobuf.Empty) {}
   rpc GetRolesForUser(PolicyUserRequest) returns (PolicyRoleListResponse) {}
   rpc GetUsersForRole(PolicyRoleRequest) returns (PolicyUserListResponse) {}
@@ -307,21 +306,16 @@ service Policy {
   rpc GetImplicitRolesForUser(PolicyUserRequest)
       returns (PolicyRoleListResponse) {}
   rpc GetImplicitUsersForRole(PolicyRoleRequest)
-      returns (PolicyRoleListResponse) {}
+      returns (PolicyUserListResponse) {}
 
   rpc GetPermissionsForUser(PolicyUserRequest)
-      returns (PolicyPermissionsResponse) {}
+      returns (PolicyPermissionListResponse) {}
   rpc GetPermissionsForRole(PolicyRoleRequest)
-      returns (PolicyPermissionsResponse) {}
+      returns (PolicyPermissionListResponse) {}
   rpc GetImplicitPermissionsForUser(PolicyUserRequest)
-      returns (PolicyPermissionsResponse) {}
+      returns (PolicyPermissionListResponse) {}
   rpc GetImplicitPermissionsForRole(PolicyRoleRequest)
-      returns (PolicyPermissionsResponse) {}
-
-  rpc GetImplicitResourcesForUser(PolicyUserRequest)
-      returns (PolicyResourceResponse) {}
-  rpc GetImplicitResourcesForRole(PolicyRoleRequest)
-      returns (PolicyResourceResponse) {}
+      returns (PolicyPermissionListResponse) {}
 
   rpc AddPermissions(PolicyPermissionsRequest) returns (google.protobuf.Empty) {
   }
@@ -333,7 +327,7 @@ message PolicyUserRequest { int32 id = 1; }
 
 message PolicyUserListResponse {
   message Item {
-    int32 id = 1;
+    string uid = 1;
     string nick_name = 2;
     string real_name = 3;
     string email = 4;
@@ -365,9 +359,7 @@ message PolicyDeleteRolesForUserRequest {
 
 message PolicyPermissionsRequest { repeated Permission items = 1; }
 
-message PolicyPermissionsResponse { repeated Permission items = 1; }
-
-message PolicyResourceResponse { repeated Resource items = 1; }
+message PolicyPermissionListResponse { repeated Permission items = 1; }
 
 // ----------------------------------------------------------------------------
 

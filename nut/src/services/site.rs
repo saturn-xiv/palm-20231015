@@ -298,8 +298,24 @@ impl v1::site_server::Site for Service {
                     {
                         let nbf = Utc::now().naive_utc();
                         let exp = nbf.add(Duration::weeks(1 << 12));
+                        {
+                            use diesel::{insert_into, prelude::*};
+                            use palm::schema::roles;
+
+                            let now = Utc::now().naive_utc();
+                            insert_into(roles::dsl::roles)
+                                .values((
+                                    roles::dsl::code.eq(Role::NULL),
+                                    roles::dsl::left.eq(1),
+                                    roles::dsl::right.eq(2),
+                                    roles::dsl::updated_at.eq(&now),
+                                ))
+                                .execute(db)?;
+
+                            RoleDao::create(db, Role::ROOT, Role::NULL)?;
+                            RoleDao::create(db, Role::ADMINISTRATOR, Role::ROOT)?;
+                        }
                         for role in [Role::ROOT, Role::ADMINISTRATOR] {
-                            RoleDao::create(db, role, None)?;
                             let it = RoleDao::by_code(db, role)?;
                             RoleDao::associate(db, it.id, user.id, &nbf, &exp)?;
                             LogDao::add::<String, User>(

@@ -7,7 +7,7 @@ use palm::{orm::postgresql::Connection, schema::permissions, Result};
 use serde::{Deserialize, Serialize};
 
 use super::{
-    role::{Dao as RoleDao, Item as Role},
+    role::{Adapter as RoleAdapter, Item as Role},
     user::Item as User,
 };
 
@@ -32,6 +32,14 @@ pub trait Dao {
         resource_type: &str,
         resource_id: Option<i32>,
     ) -> Result<()>;
+    fn get(
+        &mut self,
+        subject_type: &str,
+        subject_id: i32,
+        operation: &str,
+        resource_type: &str,
+        resource_id: Option<i32>,
+    ) -> Result<Item>;
     fn by_subject(&mut self, type_: &str, id: i32) -> Result<Vec<Item>>;
     fn by_resource(&mut self, type_: &str, id: Option<i32>) -> Result<Vec<Item>>;
     fn all(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>>;
@@ -45,8 +53,6 @@ pub trait Dao {
         resource_type: &str,
         resource_id: Option<i32>,
     ) -> Result<bool>;
-
-    fn get_implicit_permissions_for_user(&mut self, user: i32) -> Result<HashSet<Item>>;
 }
 
 impl Dao for Connection {
@@ -68,6 +74,32 @@ impl Dao for Connection {
             ))
             .execute(self)?;
         Ok(())
+    }
+    fn get(
+        &mut self,
+        subject_type: &str,
+        subject_id: i32,
+        operation: &str,
+        resource_type: &str,
+        resource_id: Option<i32>,
+    ) -> Result<Item> {
+        let it = match resource_id {
+            Some(resource_id) => permissions::dsl::permissions
+                .filter(permissions::dsl::subject_type.eq(subject_type))
+                .filter(permissions::dsl::subject_id.eq(subject_id))
+                .filter(permissions::dsl::operation.eq(operation))
+                .filter(permissions::dsl::resource_type.eq(resource_type))
+                .filter(permissions::dsl::resource_id.eq(resource_id))
+                .first::<Item>(self)?,
+            None => permissions::dsl::permissions
+                .filter(permissions::dsl::subject_type.eq(subject_type))
+                .filter(permissions::dsl::subject_id.eq(subject_id))
+                .filter(permissions::dsl::operation.eq(operation))
+                .filter(permissions::dsl::resource_type.eq(resource_type))
+                .filter(permissions::dsl::resource_id.is_null())
+                .first::<Item>(self)?,
+        };
+        Ok(it)
     }
     fn by_subject(&mut self, type_: &str, id: i32) -> Result<Vec<Item>> {
         let items = permissions::dsl::permissions
@@ -143,11 +175,26 @@ impl Dao for Connection {
         };
         Ok(cnt > 0)
     }
+}
 
+pub trait Adapter {
+    fn get_implicit_permissions_for_user(&mut self, user: i32) -> Result<HashSet<Item>>;
+    fn get_implicit_permissions_for_role(&mut self, user: i32) -> Result<HashSet<Item>>;
+}
+
+impl Adapter for Connection {
     fn get_implicit_permissions_for_user(&mut self, user: i32) -> Result<HashSet<Item>> {
         let mut items = HashSet::new();
         items.extend(self.by_subject(type_name::<User>(), user)?);
-        for it in RoleDao::get_implicit_roles_for_user(self, user)? {
+        for it in RoleAdapter::get_implicit_roles_for_user(self, user)? {
+            items.extend(self.by_subject(type_name::<Role>(), it.id)?);
+        }
+        Ok(items)
+    }
+    fn get_implicit_permissions_for_role(&mut self, role: i32) -> Result<HashSet<Item>> {
+        let mut items = HashSet::new();
+        items.extend(self.by_subject(type_name::<Role>(), role)?);
+        for it in RoleAdapter::get_implicit_roles_for_role(self, role)? {
             items.extend(self.by_subject(type_name::<Role>(), it.id)?);
         }
         Ok(items)

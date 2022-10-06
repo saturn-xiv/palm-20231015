@@ -1,21 +1,20 @@
 use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
+use palm::{
+    cache::redis::Pool as RedisPool, crypto::Aes, jwt::Jwt, nut::v1,
+    orm::postgresql::Pool as PostgreSqlPool, to_std_duration, to_timestamp, try_grpc, GrpcResult,
+};
 use tonic::{Request, Response, Status};
 
-use super::super::super::super::{
-    crypto::Aes, jwt::Jwt, orm::postgresql::Pool as PostgreSqlPool, GrpcResult,
+use super::super::models::{
+    attachment::{Dao as AttachmentDao, Item as Attachment},
+    Operation,
 };
-use super::super::{
-    models::{
-        attachment::{Dao as AttachmentDao, Item as Attachment},
-        Operation,
-    },
-    v1,
-};
-use super::Session;
+use super::{site::get, Session};
 
 pub struct Service {
+    pub redis: RedisPool,
     pub pgsql: PostgreSqlPool,
     pub jwt: Arc<Jwt>,
     pub aes: Arc<Aes>,
@@ -27,9 +26,11 @@ impl v1::attachment_server::Attachment for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
 
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
         let req = req.into_inner();
 
         let (total, items) = if user.is_administrator() {
@@ -37,10 +38,10 @@ impl v1::attachment_server::Attachment for Service {
             let items = try_grpc!(AttachmentDao::all(db, req.offset(total), req.size()))?;
             (total, items)
         } else {
-            let total = try_grpc!(AttachmentDao::count_by_user(db, user.id))?;
+            let total = try_grpc!(AttachmentDao::count_by_user(db, user.payload.id))?;
             let items = try_grpc!(AttachmentDao::by_user(
                 db,
-                user.id,
+                user.payload.id,
                 req.offset(total),
                 req.size()
             ))?;
@@ -55,18 +56,19 @@ impl v1::attachment_server::Attachment for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
         let req = req.into_inner();
         let it = try_grpc!(AttachmentDao::by_id(db, req.id))?;
 
         let can = user.can::<Attachment, _>(&Operation::Remove, Some(it.id));
 
         if can {
-            let aws = try_grpc!(v1::AwsProfile::new(db, aes))?;
-            let s3 = try_grpc!(aws.s3())?;
-            try_grpc!(s3.delete_object(it.bucket.clone(), it.name.clone()).await)?;
+            let aws = try_grpc!(get::<v1::MinioProfile>(db, aes))?;
+            try_grpc!(aws.remove_object(&it.bucket, &it.name).await)?;
             try_grpc!(AttachmentDao::delete(db, it.id))?;
             return Ok(Response::new(()));
         }
@@ -83,17 +85,21 @@ impl v1::attachment_server::Attachment for Service {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, jwt))?;
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
         let req = req.into_inner();
         let ttl = req.ttl.unwrap_or_default();
         let it = try_grpc!(AttachmentDao::by_id(db, req.id))?;
 
         if user.can::<Attachment, _>(&Operation::Read, Some(it.id)) {
-            let aws = try_grpc!(v1::AwsProfile::new(db, aes))?;
-            let s3 = try_grpc!(aws.s3())?;
-            let url = s3.get_object(it.bucket.clone(), it.name.clone(), to_std_duration!(ttl));
+            let aws = try_grpc!(get::<v1::MinioProfile>(db, aes))?;
+            let url = try_grpc!(
+                aws.get_object(&it.bucket, &it.name, to_std_duration!(ttl))
+                    .await
+            )?;
 
             return Ok(Response::new(v1::AttachemtShowResponse {
                 item: Some(it.into()),
@@ -113,7 +119,6 @@ impl From<Attachment> for v1::attachmet_index_response::Item {
             title: it.title,
             size: it.size,
             content_type: it.content_type,
-            region: it.region,
             status: it.status,
             updated_at: Some(to_timestamp!(it.updated_at)),
         }

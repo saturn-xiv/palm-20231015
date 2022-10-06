@@ -9,18 +9,22 @@ use palm::{
 };
 use serde::{Deserialize, Serialize};
 
+use super::user::{Dao as UserDao, Item as User};
+
 #[derive(Hash, Eq, PartialEq, Clone, Queryable, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
     pub id: i32,
     pub code: String,
-    pub parent_id: Option<i32>,
+    pub left: i32,
+    pub right: i32,
     pub version: i32,
     pub updated_at: NaiveDateTime,
     pub created_at: NaiveDateTime,
 }
 
 impl Item {
+    pub const NULL: &'static str = "null";
     pub const ROOT: &'static str = "root";
     pub const ADMINISTRATOR: &'static str = "administrator";
 }
@@ -28,12 +32,11 @@ impl Item {
 pub trait Dao {
     fn by_id(&mut self, id: i32) -> Result<Item>;
     fn by_code(&mut self, code: &str) -> Result<Item>;
-    fn by_user(&mut self, user: i32) -> Result<Vec<i32>>;
-    fn create(&mut self, code: &str, parent: Option<i32>) -> Result<()>;
+    fn by_user(&mut self, user: i32) -> Result<Vec<Item>>;
+    fn create(&mut self, code: &str, nested: &str) -> Result<()>;
     fn update(&mut self, id: i32, code: &str) -> Result<()>;
-    fn all(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>>;
-    fn by_parent(&mut self, id: i32) -> Result<Vec<Item>>;
-    fn destroy(&mut self, id: i32) -> Result<()>;
+    fn all(&mut self) -> Result<Vec<Item>>;
+    fn destroy(&mut self, code: &str) -> Result<()>;
     fn associate(
         &mut self,
         role: i32,
@@ -43,8 +46,7 @@ pub trait Dao {
     ) -> Result<()>;
     fn dissociate(&mut self, role: i32, user: i32) -> Result<()>;
 
-    fn get_implicit_roles_for_role(&mut self, role: i32) -> Result<HashSet<Item>>;
-    fn get_implicit_roles_for_user(&mut self, user: i32) -> Result<HashSet<Item>>;
+    fn users_for_role(&mut self, role: i32) -> Result<Vec<User>>;
 }
 
 impl Dao for Connection {
@@ -58,18 +60,38 @@ impl Dao for Connection {
             .filter(roles::dsl::code.eq(code))
             .first::<Item>(self)?)
     }
-    fn by_user(&mut self, user: i32) -> Result<Vec<i32>> {
-        Ok(roles_users::dsl::roles_users
+    fn by_user(&mut self, user: i32) -> Result<Vec<Item>> {
+        let mut items = Vec::new();
+        for it in roles_users::dsl::roles_users
             .select(roles_users::dsl::role_id)
             .filter(roles_users::dsl::user_id.eq(user))
-            .load::<i32>(self)?)
+            .load::<i32>(self)?
+        {
+            let it = Dao::by_id(self, it)?;
+            items.push(it);
+        }
+        Ok(items)
     }
-    fn create(&mut self, code: &str, parent: Option<i32>) -> Result<()> {
+    fn create(&mut self, code: &str, nested: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
+        let nested = Dao::by_code(self, nested)?;
+        update(roles::dsl::roles.filter(roles::dsl::left.gt(nested.right)))
+            .set((
+                roles::dsl::left.eq(roles::dsl::left + 2),
+                roles::dsl::updated_at.eq(&now),
+            ))
+            .execute(self)?;
+        update(roles::dsl::roles.filter(roles::dsl::right.gt(nested.right)))
+            .set((
+                roles::dsl::right.eq(roles::dsl::right + 2),
+                roles::dsl::updated_at.eq(&now),
+            ))
+            .execute(self)?;
         insert_into(roles::dsl::roles)
             .values((
                 roles::dsl::code.eq(code),
-                roles::dsl::parent_id.eq(parent),
+                roles::dsl::left.eq(nested.right + 1),
+                roles::dsl::right.eq(nested.right + 2),
                 roles::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;
@@ -83,33 +105,57 @@ impl Dao for Connection {
             .execute(self)?;
         Ok(())
     }
-    fn all(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>> {
+    fn all(&mut self) -> Result<Vec<Item>> {
         Ok(roles::dsl::roles
             .order(roles::dsl::updated_at.desc())
-            .offset(offset)
-            .limit(limit)
             .load::<Item>(self)?)
     }
-    fn by_parent(&mut self, id: i32) -> Result<Vec<Item>> {
-        Ok(roles::dsl::roles
-            .filter(roles::dsl::parent_id.eq(id))
-            .order(roles::dsl::updated_at.asc())
-            .load::<Item>(self)?)
-    }
-    fn destroy(&mut self, id: i32) -> Result<()> {
+
+    fn destroy(&mut self, code: &str) -> Result<()> {
+        let it = Dao::by_code(self, code)?;
+        let width = it.right - it.left + 1;
+        let now = Utc::now().naive_utc();
+
+        for id in roles::dsl::roles
+            .select(roles::dsl::id)
+            .filter(roles::dsl::left.ge(it.left))
+            .filter(roles::dsl::left.le(it.right))
+            .load::<i32>(self)?
+        {
+            delete(
+                roles_constraints::dsl::roles_constraints.filter(
+                    roles_constraints::dsl::x
+                        .eq(id)
+                        .or(roles_constraints::dsl::y.eq(id)),
+                ),
+            )
+            .execute(self)?;
+            delete(roles_users::dsl::roles_users.filter(roles_users::dsl::role_id.eq(id)))
+                .execute(self)?;
+        }
+
         delete(
-            roles_constraints::dsl::roles_constraints.filter(
-                roles_constraints::dsl::x
-                    .eq(id)
-                    .or(roles_constraints::dsl::y.eq(id)),
-            ),
+            roles::dsl::roles
+                .filter(roles::dsl::left.ge(it.left))
+                .filter(roles::dsl::left.le(it.right)),
         )
         .execute(self)?;
-        delete(roles_users::dsl::roles_users.filter(roles_users::dsl::role_id.eq(id)))
+        update(roles::dsl::roles.filter(roles::dsl::left.gt(it.right)))
+            .set((
+                roles::dsl::left.eq(roles::dsl::left - width),
+                roles::dsl::updated_at.eq(&now),
+            ))
             .execute(self)?;
-        delete(roles::dsl::roles.filter(roles::dsl::id.eq(id))).execute(self)?;
+        update(roles::dsl::roles.filter(roles::dsl::right.gt(it.right)))
+            .set((
+                roles::dsl::right.eq(roles::dsl::right - width),
+                roles::dsl::updated_at.eq(&now),
+            ))
+            .execute(self)?;
+
         Ok(())
     }
+
     fn associate(
         &mut self,
         role: i32,
@@ -157,20 +203,48 @@ impl Dao for Connection {
         .execute(self)?;
         Ok(())
     }
-    fn get_implicit_roles_for_role(&mut self, role: i32) -> Result<HashSet<Item>> {
+
+    fn users_for_role(&mut self, role: i32) -> Result<Vec<User>> {
+        let mut items = Vec::new();
+        for it in roles_users::dsl::roles_users
+            .select(roles_users::dsl::user_id)
+            .filter(roles_users::dsl::role_id.eq(role))
+            .load::<i32>(self)?
+        {
+            let it = UserDao::by_id(self, it)?;
+            items.push(it);
+        }
+        Ok(items)
+    }
+}
+
+pub trait Adapter {
+    fn get_implicit_roles_for_role(&mut self, role: i32) -> Result<Vec<Item>>;
+    fn get_implicit_roles_for_user(&mut self, user: i32) -> Result<HashSet<Item>>;
+    fn get_implicit_users_for_role(&mut self, role: i32) -> Result<HashSet<User>>;
+}
+
+impl Adapter for Connection {
+    fn get_implicit_roles_for_role(&mut self, id: i32) -> Result<Vec<Item>> {
+        let it = Dao::by_id(self, id)?;
+        Ok(roles::dsl::roles
+            .filter(roles::dsl::left.gt(it.left))
+            .filter(roles::dsl::right.lt(it.right))
+            .order(roles::dsl::left.asc())
+            .load::<Item>(self)?)
+    }
+    fn get_implicit_roles_for_user(&mut self, user: i32) -> Result<HashSet<Item>> {
         let mut items = HashSet::new();
-        for it in self.by_parent(role)? {
+        for it in Dao::by_user(self, user)?.iter() {
             items.insert(it.clone());
             items.extend(self.get_implicit_roles_for_role(it.id)?);
         }
         Ok(items)
     }
-    fn get_implicit_roles_for_user(&mut self, user: i32) -> Result<HashSet<Item>> {
+    fn get_implicit_users_for_role(&mut self, role: i32) -> Result<HashSet<User>> {
         let mut items = HashSet::new();
-        for it in self.by_user(user)? {
-            let it = self.by_id(it)?;
-            items.insert(it.clone());
-            items.extend(self.get_implicit_roles_for_role(it.id)?);
+        for role in Adapter::get_implicit_roles_for_role(self, role)? {
+            items.extend(Dao::users_for_role(self, role.id)?);
         }
         Ok(items)
     }

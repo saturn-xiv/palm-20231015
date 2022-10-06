@@ -30,8 +30,8 @@ diesel::table! {
     categories (id) {
         id -> Int4,
         code -> Varchar,
-        parent_id -> Nullable<Int4>,
-        priority -> Int4,
+        left -> Int4,
+        right -> Int4,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
@@ -175,7 +175,8 @@ diesel::table! {
     roles (id) {
         id -> Int4,
         code -> Varchar,
-        parent_id -> Nullable<Int4>,
+        left -> Int4,
+        right -> Int4,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,

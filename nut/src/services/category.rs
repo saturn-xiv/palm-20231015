@@ -1,9 +1,7 @@
 use std::sync::Arc;
 
+use palm::{jwt::Jwt, nut::v1, orm::postgresql::Pool as PostgreSqlPool, GrpcResult};
 use tonic::{Request, Response};
-
-use super::super::super::super::{jwt::Jwt, orm::postgresql::Pool as PostgreSqlPool, GrpcResult};
-use super::super::v1;
 
 pub struct Service {
     pub pgsql: PostgreSqlPool,
