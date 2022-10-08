@@ -73,7 +73,7 @@ do
     generate_grpc_by_lang $l
 done
 
-# generate_grpc_web
+generate_grpc_web
 
 echo 'format rust code'
 cargo fmt

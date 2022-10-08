@@ -208,6 +208,12 @@ RUN zsh -c "source $HOME/.zshrc \
         -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
     && make -j \
     && make install"
+# https://github.com/protocolbuffers/protobuf-javascript
+ENV GRPC_JS_PLUGIN_VERSION "v3.21.1"
+RUN wget -q -P $HOME/downloads \
+    https://github.com/protocolbuffers/protobuf-javascript/releases/download/${GRPC_JS_PLUGIN_VERSION}/protobuf-javascript-${GRPC_JS_PLUGIN_VERSION}-linux-x86_64.tar.gz
+RUN mkdir $HOME/tmp/protobuf-javascript && tar xf -C protobuf-javascript $HOME/downloads/protobuf-javascript-${GRPC_JS_PLUGIN_VERSION}-linux-x86_64.tar.gz
+RUN cp $HOME/tmp/protobuf-javascript/bin/protoc-gen-js $HOME/.local/bin/
 # https://github.com/grpc/grpc-web#code-generator-plugin
 ENV GRPC_WEB_PLUGIN_VERSION "1.4.1"
 RUN wget -q -O $HOME/.local/bin/protoc-gen-grpc-web \
