@@ -11,18 +11,24 @@ install_react() {
         react-quill react-dropzone \
         google-map-react qrcode.react react-markdown \
         react-color @types/react-color \
+	    react-pdf @types/react-pdf \
         react-json-view react-syntax-highlighter \
         emoji-mart react-sparklines react-highlight-words \
         react-player \
         react-draggable \
         react-intl \
         react-router-dom@latest \
+        react-hook-form \
         @reduxjs/toolkit react-redux
 
 }
 
 install_ant_design() {
     yarn add antd @ant-design/pro-components
+}
+
+install_fluent_ui(){
+    yarn add @fluentui/react
 }
 
 install_material_design() {
@@ -32,7 +38,8 @@ install_material_design() {
 
 install_react
 install_ant_design
-# material_design
+install_material_design
+install_fluent_ui
 
 echo 'done.'
 
