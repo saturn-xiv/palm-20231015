@@ -41,6 +41,6 @@ install_ant_design
 install_material_design
 install_fluent_ui
 
-echo 'done.'
+echo 'Done.'
 
 exit 0
