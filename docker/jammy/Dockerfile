@@ -29,7 +29,7 @@ RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     crossbuild-essential-armhf crossbuild-essential-arm64 \
     python3 python3-distutils python3-dev python3-pip virtualenv \
     php-fpm php-mbstring php-json php-xml php-pear php-bcmath php-curl php-zip \
-    php-mysql php-pgsql php-redis php-amqp \
+    php-mysql php-pgsql php-sqlite3 php-redis php-amqp \
     php-imagick php-gd \
     nginx rabbitmq-server redis postgresql mariadb-server
 
@@ -104,8 +104,10 @@ RUN sh -c ". $HOME/.profile \
 RUN sh -c ". $HOME/.profile && pip3 install --user supervisor"
 
 # https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos
-RUN wget -q -O $HOME/.local/bin/composer https://getcomposer.org/installer
-RUN chmod +x $HOME/.local/bin/composer
+RUN wget -q -O $HOME/downloads/composer https://getcomposer.org/installer
+RUN cd $HOME/downloads \
+    && php composer \
+    && mv composer.phar $HOME/.local/bin/composer
 
 ENV BAZEL_VERSION "v1.14.0"
 RUN wget -q -O $HOME/.local/bin/bazel \
