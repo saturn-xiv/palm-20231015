@@ -22,7 +22,7 @@ RUN apt -y upgrade
 RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     vim tzdata pwgen zip unzip tree tmux dialog \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
-    imagemagick ffmpeg fonts-dejavu \
+    imagemagick ffmpeg fonts-dejavu-extra \
     clang clang-format lldb lld \
     build-essential cmake pkg-config libtool automake autoconf binutils cpio mold \
     debhelper bison flex ninja-build \
@@ -210,22 +210,27 @@ RUN zsh -c "source $HOME/.zshrc \
         -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
     && make -j \
     && make install"
+
 # https://github.com/protocolbuffers/protobuf-javascript
-ENV GRPC_JS_PLUGIN_VERSION "v3.21.1"
-RUN wget -q -P $HOME/downloads \
-    https://github.com/protocolbuffers/protobuf-javascript/releases/download/${GRPC_JS_PLUGIN_VERSION}/protobuf-javascript-${GRPC_JS_PLUGIN_VERSION}-linux-x86_64.tar.gz
-RUN mkdir $HOME/tmp/protobuf-javascript && tar xf -C protobuf-javascript $HOME/downloads/protobuf-javascript-${GRPC_JS_PLUGIN_VERSION}-linux-x86_64.tar.gz
-RUN cp $HOME/tmp/protobuf-javascript/bin/protoc-gen-js $HOME/.local/bin/
+ENV GRPC_JS_PLUGIN_VERSION "3.21.2"
+RUN wget -P $HOME/downloads \
+    https://github.com/protocolbuffers/protobuf-javascript/releases/download/v${GRPC_JS_PLUGIN_VERSION}/protobuf-javascript-${GRPC_JS_PLUGIN_VERSION}-linux-x86_64.tar.gz
+RUN mkdir -p $HOME/build/protobuf-javascript \
+    cd $HOME/build/protobuf-javascript \
+    && tar xf $HOME/downloads/protobuf-javascript-${GRPC_JS_PLUGIN_VERSION}-linux-x86_64.tar.gz \
+    && cp bin/protoc-gen-js $HOME/.local/bin/
+
+# https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/
+ENV GRPC_JAVA_PLUGIN_VERSION "1.50.0"
+RUN wget -q -O $HOME/.local/bin/grpc_java_plugin \
+    https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${GRPC_JAVA_PLUGIN_VERSION}/protoc-gen-grpc-java-${GRPC_JAVA_PLUGIN_VERSION}-linux-x86_64.exe
+RUN chmod +x $HOME/.local/bin/grpc_java_plugin
+
 # https://github.com/grpc/grpc-web#code-generator-plugin
 ENV GRPC_WEB_PLUGIN_VERSION "1.4.1"
 RUN wget -q -O $HOME/.local/bin/protoc-gen-grpc-web \
     https://github.com/grpc/grpc-web/releases/download/${GRPC_WEB_PLUGIN_VERSION}/protoc-gen-grpc-web-${GRPC_WEB_PLUGIN_VERSION}-linux-x86_64
 RUN chmod +x $HOME/.local/bin/protoc-gen-grpc-web
-# https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/
-ENV GRPC_JAVA_PLUGIN_VERSION "1.49.1"
-RUN wget -q -O $HOME/.local/bin/grpc_java_plugin \
-    https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${GRPC_JAVA_PLUGIN_VERSION}/protoc-gen-grpc-java-${GRPC_JAVA_PLUGIN_VERSION}-linux-x86_64.exe
-RUN chmod +x $HOME/.local/bin/grpc_java_plugin
 
 # https://opensearch.org/downloads.html#opensearch
 ENV OPENSEARCH_VERSION "2.3.0"
