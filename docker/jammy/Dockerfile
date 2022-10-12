@@ -29,7 +29,7 @@ RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     crossbuild-essential-armhf crossbuild-essential-arm64 \
     python3 python3-distutils python3-dev python3-pip virtualenv \
     php-fpm php-mbstring php-json php-xml php-pear php-bcmath php-curl php-zip \
-    php-mysql php-pgsql php-sqlite3 php-redis php-amqp \
+    php-mysql php-pgsql php-sqlite3 php-redis php-mongodb php-amqp php-zmq \
     php-imagick php-gd \
     nginx rabbitmq-server redis postgresql mariadb-server
 
@@ -62,7 +62,7 @@ RUN apt install -y getenvoy-envoy
 
 # https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
 # RUN wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | apt-key add -
-# RUN echo "deb [arch=amd64,arm64] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/6.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+# RUN echo "deb [arch=amd64] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/6.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-6.0.list
 # RUN apt update
 # RUN apt install -y mongodb
 
@@ -109,10 +109,57 @@ RUN cd $HOME/downloads \
     && php composer \
     && mv composer.phar $HOME/.local/bin/composer
 
+# https://github.com/richfelker/musl-cross-make
+RUN git clone https://github.com/richfelker/musl-cross-make.git $HOME/build/musl-cross-make
+RUN cd $HOME/build/musl-cross-make \
+    && echo "TARGET=x86_64-linux-musl" > config.mak \
+    && echo "OUTPUT=/opt/crosstools" >> config.mak \
+    && make \
+    && make install 
+RUN cd $HOME/build/musl-cross-make \
+    && echo "TARGET=aarch64-linux-musl" > config.mak \
+    && echo "OUTPUT=/opt/crosstools" >> config.mak \
+    && make \
+    && make install
+RUN cd $HOME/build/musl-cross-make \
+    && echo "TARGET=arm-linux-musleabihf" > config.mak \
+    && echo "OUTPUT=/opt/crosstools" >> config.mak \
+    && make \
+    && make install
+
 ENV BAZEL_VERSION "v1.14.0"
 RUN wget -q -O $HOME/.local/bin/bazel \
     https://github.com/bazelbuild/bazelisk/releases/download/${BAZEL_VERSION}/bazelisk-linux-amd64
 RUN chmod +x $HOME/.local/bin/bazel
+
+# https://github.com/rbenv/rbenv
+RUN git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
+RUN cd $HOME/.rbenv && src/configure && make -C src
+RUN echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> $HOME/.zshrc
+RUN echo 'eval "$(rbenv init -)"' >> $HOME/.zshrc
+RUN git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build
+RUN git clone https://github.com/rbenv/rbenv-vars.git $HOME/.rbenv/plugins/rbenv-vars
+ENV RUBY_VERSION "3.1.2"
+RUN apt install -y libssl-dev
+RUN zsh -c "source $HOME/.zshrc \
+    && rbenv install ${RUBY_VERSION} \
+    && rbenv global ${RUBY_VERSION} \
+    && gem install bundler"
+
+ENV GO_VERSION "1.19.2"
+RUN wget -q -P $HOME/downloads https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
+RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local
+RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc
+RUN echo 'export PATH=$GOROOT/bin:$PATH' >> $HOME/.zshrc
+RUN echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc
+
+ENV JDK_VERSION "19-open"
+RUN curl -s "https://get.sdkman.io" | zsh
+RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
+RUN zsh -c "source $HOME/.zshrc \
+    && sdk install java ${JDK_VERSION} \
+    && sdk install maven \
+    && sdk install gradle"
 
 # https://github.com/nvm-sh/nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | sh
@@ -131,36 +178,6 @@ RUN sh -c ". $HOME/.profile \
     && npm i yarn -g"
 RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
 
-ENV JDK_VERSION "19-open"
-RUN curl -s "https://get.sdkman.io" | zsh
-RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
-RUN zsh -c "source $HOME/.zshrc \
-    && sdk install java ${JDK_VERSION} \
-    && sdk install maven \
-    && sdk install gradle"
-
-
-# https://github.com/rbenv/rbenv
-RUN git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
-RUN cd $HOME/.rbenv && src/configure && make -C src
-RUN echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> $HOME/.zshrc
-RUN echo 'eval "$(rbenv init -)"' >> $HOME/.zshrc
-RUN git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build
-RUN git clone https://github.com/rbenv/rbenv-vars.git $HOME/.rbenv/plugins/rbenv-vars
-ENV RUBY_VERSION "3.1.2"
-RUN apt install -y libssl-dev
-RUN zsh -c "source $HOME/.zshrc \
-    && rbenv install ${RUBY_VERSION} \
-    && rbenv global ${RUBY_VERSION} \
-    && gem install bundler"
-
-ENV GO_VERSION "1.19.1"
-RUN wget -q -P $HOME/downloads https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
-RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local
-RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc
-RUN echo 'export PATH=$GOROOT/bin:$PATH' >> $HOME/.zshrc
-RUN echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc
-
 # https://www.rust-lang.org/tools/install
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 # https://doc.rust-lang.org/nightly/rustc/platform-support.html
@@ -169,23 +186,6 @@ RUN zsh -c "source $HOME/.cargo/env \
     && rustup target add armv7-unknown-linux-gnueabihf \
     && rustup target add aarch64-unknown-linux-gnu"
 
-# https://github.com/richfelker/musl-cross-make
-RUN git clone https://github.com/richfelker/musl-cross-make.git $HOME/build/musl-cross-make
-RUN cd $HOME/build/musl-cross-make \
-    && echo "TARGET=x86_64-linux-musl" > config.mak \
-    && echo "OUTPUT=/opt/cross" >> config.mak \
-    && make \
-    && make install 
-RUN cd $HOME/build/musl-cross-make \
-    && echo "TARGET=aarch64-linux-musl" > config.mak \
-    && echo "OUTPUT=/opt/cross" >> config.mak \
-    && make \
-    && make install
-RUN cd $HOME/build/musl-cross-make \
-    && echo "TARGET=arm-linux-musleabihf" > config.mak \
-    && echo "OUTPUT=/opt/cross" >> config.mak \
-    && make \
-    && make install
 
 RUN apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
 RUN zsh -c "source $HOME/.zshrc \
