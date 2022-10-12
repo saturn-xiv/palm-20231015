@@ -22,7 +22,7 @@ impl Default for Config {
         Self {
             host: "127.0.0.1".to_string(),
             port: 9200,
-            namespace: "demo".to_string(),
+            namespace: "demo://".to_string(),
         }
     }
 }

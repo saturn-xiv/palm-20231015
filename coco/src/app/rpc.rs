@@ -10,7 +10,7 @@ use tonic::transport::Server;
 use super::super::env::Config;
 
 pub async fn launch(cfg: &Config) -> Result<()> {
-    let addr = cfg.rpc.tcp_addr();
+    let addr = cfg.rpc.addr();
 
     let pgsql = cfg.postgresql.open()?;
     let redis = cfg.redis.open()?;

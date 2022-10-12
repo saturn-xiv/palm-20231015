@@ -56,29 +56,17 @@ impl Default for Http {
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Rpc {
-    #[serde(rename = "tcp-port")]
-    pub tcp_port: u16,
-    #[serde(rename = "web-port")]
-    pub web_port: u16,
+    pub port: u16,
 }
 
 impl Rpc {
-    fn addr(port: u16) -> SocketAddr {
-        SocketAddr::new(IpAddr::V4(Ipv4Addr::new(0, 0, 0, 0)), port)
-    }
-    pub fn tcp_addr(&self) -> SocketAddr {
-        Self::addr(self.tcp_port)
-    }
-    pub fn web_addr(&self) -> SocketAddr {
-        Self::addr(self.web_port)
+    pub fn addr(&self) -> SocketAddr {
+        SocketAddr::new(IpAddr::V4(Ipv4Addr::new(0, 0, 0, 0)), self.port)
     }
 }
 
 impl Default for Rpc {
     fn default() -> Self {
-        Self {
-            tcp_port: 10001,
-            web_port: 10002,
-        }
+        Self { port: 10001 }
     }
 }

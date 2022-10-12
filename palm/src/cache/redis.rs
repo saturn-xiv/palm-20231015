@@ -30,9 +30,9 @@ impl fmt::Display for Host {
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Config {
-    pub nodes: Vec<Host>,
     pub pool: Option<u32>,
     pub namespace: String,
+    pub nodes: Vec<Host>,
 }
 
 impl Config {
@@ -52,27 +52,27 @@ impl Default for Config {
             nodes: vec![
                 Host {
                     host: "127.0.0.1".to_string(),
-                    port: 16371,
+                    port: 6371,
                 },
                 Host {
                     host: "127.0.0.1".to_string(),
-                    port: 16372,
+                    port: 6372,
                 },
                 Host {
                     host: "127.0.0.1".to_string(),
-                    port: 16373,
+                    port: 6373,
                 },
                 Host {
                     host: "127.0.0.1".to_string(),
-                    port: 16374,
+                    port: 6374,
                 },
                 Host {
                     host: "127.0.0.1".to_string(),
-                    port: 16375,
+                    port: 6375,
                 },
                 Host {
                     host: "127.0.0.1".to_string(),
-                    port: 16376,
+                    port: 6376,
                 },
             ],
             namespace: "demo://".to_string(),
