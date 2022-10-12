@@ -252,7 +252,10 @@ RUN sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
 RUN su - postgres -c "/usr/lib/postgresql/14/bin/initdb -D /var/lib/postgresql/data"
 RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/postgresql/data/postgresql.conf
 
-RUN mkdir -p  /var/lib/redis-s /var/lib/redis-1 /var/lib/redis-2 /var/lib/redis-3 /var/lib/redis-4 /var/lib/redis-5 /var/lib/redis-6
+RUN cd /var/lib \
+    && mkdir redis-s redis-1 redis-2 redis-3 redis-4 redis-5 redis-6 \
+    && chown redis:redis redis-s redis-1 redis-2 redis-3 redis-4 redis-5 redis-6 \
+    && chmod 750 redis-s redis-1 redis-2 redis-3 redis-4 redis-5 redis-6
 ADD etc/redis/* /etc/redis/
 
 RUN mkdir /run/php
