@@ -93,13 +93,13 @@ build_deb() {
     then
         rm -rf $(dirname $target)
     fi
-    mkdir -pv $target
+    mkdir -p $target
     cp -r $WORKSPACE/debian $target/
     build_ubuntu_backend $1 $target
 
-    mkdir -pv $target/usr/share/palm
-    cp -av $WORKSPACE/dashboard/build $target/usr/share/palm/dashboard
-    cp -av $WORKSPACE/assets $WORKSPACE/db $WORKSPACE/palm/protocols $target/usr/share/palm/
+    mkdir -p $target/usr/share/palm
+    cp -a $WORKSPACE/dashboard/build $target/usr/share/palm/dashboard
+    cp -a $WORKSPACE/assets $WORKSPACE/db $WORKSPACE/palm/protocols $target/usr/share/palm/
     local -a packages=(
         "bootstrap/dist"
         "bulma/css"
@@ -128,13 +128,13 @@ build_deb() {
         local p=node_modules/$i
         local t=$(dirname "$target/usr/share/palm/$p")
         mkdir -p $t
-        cp -av $WORKSPACE/$p $t/
+        cp -a $WORKSPACE/$p $t/
     done
     
-    mkdir -pv $target/var/lib/palm
-    mkdir -pv $target/lib/systemd/system/
+    mkdir -p $target/var/lib/palm
+    mkdir -p $target/lib/systemd/system/
     
-    mkdir -pv $target/etc/palm
+    mkdir -p $target/etc/palm
     cp -r $WORKSPACE/LICENSE $WORKSPACE/README.md \
         $WORKSPACE/package.json $WORKSPACE/docker/jammy/envoy.yaml \
         $target/etc/palm/
@@ -151,7 +151,7 @@ build_dashboard
 if [[ $ID == "ubuntu" ]]
 then
     sudo apt update
-    
+
     build_deb amd64
     build_deb arm64
     build_deb armhf
