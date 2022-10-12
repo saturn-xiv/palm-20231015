@@ -4,6 +4,8 @@ set -e
 
 install_react() {
     yarn add filesize dayjs timezones-list grpc-web \
+        @fortawesome/fontawesome-free \
+        famfamfam-flags famfamfam-silk famfamfam-mini \
         google-protobuf @types/google-protobuf \
         js-cookie @types/js-cookie \
         jwt-decode dinero.js@alpha video.js \

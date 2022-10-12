@@ -9,7 +9,9 @@ yarn add marked moment moment-timezone d3 mermaid qrcodejs \
     bulma \
     tailwindcss@latest \
     @tabler/core \
-    material-components-web material-design-icons @fontsource/roboto
+    material-components-web material-design-icons @fontsource/roboto \
+    @fortawesome/fontawesome-free \
+    famfamfam-flags famfamfam-silk famfamfam-mini
 
 echo 'done.'
 exit 0

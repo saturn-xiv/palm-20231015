@@ -8,10 +8,6 @@ export WORKSPACE=$PWD
 export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
 export TARGET=$WORKSPACE/tmp/$GIT_VERSION-$VERSION_CODENAME
 
-clean_palm_cache() {
-    rm -rf $WORKSPACE/target/$1/release/build/palm-*
-}
-
 build_ubuntu_backend() {
     echo "build $1..."
 
@@ -30,9 +26,11 @@ build_ubuntu_backend() {
         local PKG_CONFIG_ALL_STATIC=1
         
         local target="x86_64-unknown-linux-gnu"
-        clean_palm_cache $target
-        cargo build --target $target --release --features "ubuntu"
-        cp target/$target/release/palm $root
+        cargo clean --target $target --release -p palm
+        cargo build --target $target --release
+
+        cd target/$target/release
+        cp coco fig $root
     elif [ "$1" = "armhf" ]
     then
         local PKG_CONFIG_ALLOW_CROSS=1
@@ -46,9 +44,11 @@ build_ubuntu_backend() {
         local HOST_CC=gcc
 
         local target="armv7-unknown-linux-gnueabihf"
-        clean_palm_cache $target
-        cargo build --target $target --release --features "ubuntu"
-        cp target/$target/release/palm $root
+        cargo clean --target $target --release -p palm
+        cargo build --target $target --release
+
+        cd target/$target/release
+        cp coco fig $root        
     elif [ "$1" = "arm64" ]
     then
         local PKG_CONFIG_ALLOW_CROSS=1
@@ -62,9 +62,11 @@ build_ubuntu_backend() {
         local HOST_CC=gcc        
 
         local target="aarch64-unknown-linux-gnu"
-        clean_palm_cache $target
-        cargo build --target $target --release --features "ubuntu"
-        cp target/$target/release/palm $root
+        cargo clean --target $target --release -p palm
+        cargo build --target $target --release
+        
+        cd target/$target/release
+        cp coco fig $root
     else
         echo "unknown arch $1"
         exit 1
@@ -82,7 +84,7 @@ build_dashboard() {
     then
         yarn install
     fi
-    NODE_OPTIONS=--openssl-legacy-provider yarn build
+    yarn build
 }
 
 build_deb() {
@@ -97,7 +99,7 @@ build_deb() {
 
     mkdir -pv $target/usr/share/palm
     cp -av $WORKSPACE/dashboard/build $target/usr/share/palm/dashboard
-    cp -av $WORKSPACE/assets $WORKSPACE/db $WORKSPACE/protos $target/usr/share/palm/
+    cp -av $WORKSPACE/assets $WORKSPACE/db $WORKSPACE/palm/protocols $target/usr/share/palm/
     local -a packages=(
         "bootstrap/dist"
         "bulma/css"
@@ -112,6 +114,14 @@ build_deb() {
         "mdb-ui-kit/js"
         "mdb-ui-kit/img"
         "qrcodejs/qrcode.min.js"
+        "@fortawesome/fontawesome-free/js"
+        "@fortawesome/fontawesome-free/css"
+        "@fortawesome/fontawesome-free/svgs"
+        "@fortawesome/fontawesome-free/webfonts"
+        "@fortawesome/fontawesome-free/sprites"
+        "famfamfam-flags/dist"
+        "famfamfam-silk/dist"
+        "famfamfam-mini/dist"
     )
     for i in "${packages[@]}"
     do
@@ -126,7 +136,7 @@ build_deb() {
     
     mkdir -pv $target/etc/palm
     cp -r $WORKSPACE/LICENSE $WORKSPACE/README.md \
-        $WORKSPACE/package.json $WORKSPACE/envoy.yaml \
+        $WORKSPACE/package.json $WORKSPACE/docker/jammy/envoy.yaml \
         $target/etc/palm/
     echo "$GIT_VERSION $(date -R)" > $target/etc/palm/VERSION
 
@@ -139,26 +149,27 @@ build_deb() {
 build_dashboard
 
 if [[ $ID == "ubuntu" ]]
-then    
+then
+    sudo apt update
+    
     build_deb amd64
     build_deb arm64
     build_deb armhf
 elif [[ $ID == "arch" ]]
 then
     cd $WORKSPACE
-
-    clean_palm_cache x86_64-unknown-linux-gnu
+    cargo clean --target x86_64-unknown-linux-gnu --release -p palm
     cargo build --target x86_64-unknown-linux-gnu --release
 elif [[ $ID == "alpine" ]]
 then
-    cd $WORKSPACE
-    clean_palm_cache x86_64-unknown-linux-musl
-    cargo build --target x86_64-unknown-linux-musl --release --features alpine
+    cd $WORKSPACE    
+    cargo clean --target x86_64-unknown-linux-musl --release -p palm
+    cargo build --target x86_64-unknown-linux-musl --release
 else
     echo "Unknown os $ID"
     exit 1
 fi
 
 
-echo "done($TARGET)."
+echo "Done($TARGET)."
 exit 0
