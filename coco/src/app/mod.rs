@@ -22,6 +22,7 @@ use super::env::{is_stopped, Config};
 lazy_static! {
     static ref VERSION: String = format!("{}({})", GIT_VERSION, BUILD_TIME);
 }
+
 #[derive(Parser, Debug)]
 #[clap(about, version=&VERSION.deref()[..], before_help=BANNER, after_help=HOMEPAGE, author)]
 pub struct Args {
