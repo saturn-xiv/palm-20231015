@@ -16,8 +16,10 @@ install_react() {
 	    react-pdf @types/react-pdf \
         react-json-view react-syntax-highlighter \
         emoji-mart react-sparklines react-highlight-words \
+        react-number-format react-image-crop \
         react-player \
         react-draggable \
+        react-big-calendar @types/react-big-calendar \
         react-intl \
         react-router-dom@latest \
         react-hook-form \
@@ -26,7 +28,7 @@ install_react() {
 }
 
 install_ant_design() {
-    yarn add antd @ant-design/pro-components
+    yarn add antd @ant-design/pro-components @ant-design/charts
 }
 
 install_fluent_ui(){

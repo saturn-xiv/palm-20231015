@@ -136,7 +136,7 @@ build_deb() {
     
     mkdir -p $target/etc/palm
     cp -r $WORKSPACE/LICENSE $WORKSPACE/README.md \
-        $WORKSPACE/package.json $WORKSPACE/docker/jammy/envoy.yaml \
+        $WORKSPACE/package.json $WORKSPACE/docker/jammy/etc/envoy.yaml \
         $target/etc/palm/
     echo "$GIT_VERSION $(date -R)" > $target/etc/palm/VERSION
 
@@ -150,7 +150,7 @@ build_dashboard
 
 if [[ $ID == "ubuntu" ]]
 then
-    sudo apt update
+    apt update
 
     build_deb amd64
     build_deb arm64
