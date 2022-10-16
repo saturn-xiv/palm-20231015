@@ -1,4 +1,7 @@
-use std::io::Read;
+use std::fs;
+use std::io::prelude::*;
+use std::os::unix::fs::OpenOptionsExt;
+use std::path::Path;
 use std::time::Duration;
 
 use ::minio::s3::{
@@ -10,8 +13,68 @@ use ::minio::s3::{
     creds::StaticProvider,
     http::BaseUrl,
 };
+use askama::Template;
+use serde::{Deserialize, Serialize};
 
 use super::{nut::v1, Result};
+
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct Credentials {
+    pub url: String,
+    pub access_key: String,
+    pub secret_key: String,
+    pub api: String,
+    pub path: String,
+}
+
+#[derive(Template)]
+#[template(path = "minio/service.conf", escape = "none")]
+pub struct SystemdConfig<'a> {
+    pub domain: &'a str,
+    pub port: u16,
+    pub console_port: u16,
+    pub user: &'a str,
+    pub password: &'a str,
+}
+
+impl SystemdConfig<'_> {
+    pub fn write<P: AsRef<Path>>(&self, file: P) -> Result<()> {
+        let file = file.as_ref();
+        info!("generate file {}", file.display());
+        let tpl = self.render()?;
+        let mut fd = fs::OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .mode(0o644)
+            .open(file)?;
+        fd.write_all(tpl.as_bytes())?;
+        Ok(())
+    }
+}
+
+#[derive(Template)]
+#[template(path = "minio/nginx.conf", escape = "none")]
+pub struct NginxConfig<'a> {
+    pub domain: &'a str,
+    pub port: u16,
+    pub console_port: u16,
+}
+
+impl NginxConfig<'_> {
+    pub fn write<P: AsRef<Path>>(&self, file: P) -> Result<()> {
+        let file = file.as_ref();
+        info!("generate file {}", file.display());
+        let tpl = self.render()?;
+        let mut fd = fs::OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .mode(0o644)
+            .open(file)?;
+        fd.write_all(tpl.as_bytes())?;
+        Ok(())
+    }
+}
 
 impl v1::MinioProfile {
     pub async fn bucket_exists(&self, name: &str) -> Result<bool> {

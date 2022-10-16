@@ -5,7 +5,11 @@ use std::path::Path;
 
 use askama::Template;
 use nix::unistd::{Gid, Uid};
-use palm::{Result, DESCRIPTION, NAME};
+use palm::{
+    crypto::random::string as random_string,
+    minio::{NginxConfig as MinioNginxConfig, SystemdConfig as MinioSystemdConfig},
+    Result, DESCRIPTION, NAME,
+};
 
 use super::super::env::Config;
 
@@ -15,7 +19,6 @@ struct WwwNginxConf<'a> {
     name: &'a str,
     domain: &'a str,
     port: u16,
-    ssl: bool,
 }
 
 impl WwwNginxConf<'_> {
@@ -32,29 +35,8 @@ impl WwwNginxConf<'_> {
         Ok(())
     }
 }
-#[derive(Template)]
-#[template(path = "nginx/api.conf", escape = "none")]
-struct ApiNginxConf<'a> {
-    domain: &'a str,
-    port: u16,
-    ssl: bool,
-}
-impl ApiNginxConf<'_> {
-    pub fn write<P: AsRef<Path>>(&self, file: P) -> Result<()> {
-        let file = file.as_ref();
-        info!("generate file {}", file.display());
-        let tpl = self.render()?;
-        let mut fd = fs::OpenOptions::new()
-            .write(true)
-            .create_new(true)
-            .mode(0o644)
-            .open(file)?;
-        fd.write_all(tpl.as_bytes())?;
-        Ok(())
-    }
-}
 
-pub fn nginx_conf(cfg: &Config, domain: &str, ssl: bool) -> Result<()> {
+pub fn nginx_conf(cfg: &Config, domain: &str) -> Result<()> {
     let root = Path::new("tmp").join("nginx");
     if !root.exists() {
         fs::create_dir_all(&root)?;
@@ -64,17 +46,15 @@ pub fn nginx_conf(cfg: &Config, domain: &str, ssl: bool) -> Result<()> {
             domain,
             name: NAME,
             port: cfg.http.port,
-            ssl,
         };
         let file = root.join(format!("{}.conf", domain));
         tpl.write(&file)?;
     }
-    for (px, pt) in [("rpc", cfg.http.port), ("s3", 9000), ("cli.s3", 9001)] {
-        let domain = format!("{}.{}", px, domain);
-        let tpl = ApiNginxConf {
-            domain: &domain,
-            port: pt,
-            ssl,
+    {
+        let tpl = MinioNginxConfig {
+            domain,
+            port: 9000,
+            console_port: 9001,
         };
         let file = root.join(format!("{}.conf", domain));
         tpl.write(&file)?;
@@ -109,28 +89,6 @@ impl PalmSystemdConfig<'_> {
     }
 }
 
-#[derive(Template)]
-#[template(path = "systemd/s3.conf", escape = "none")]
-struct S3SystemdConfig<'a> {
-    user: &'a str,
-    group: &'a str,
-    domain: &'a str,
-}
-impl S3SystemdConfig<'_> {
-    pub fn write<P: AsRef<Path>>(&self, file: P) -> Result<()> {
-        let file = file.as_ref();
-        info!("generate file {}", file.display());
-        let tpl = self.render()?;
-        let mut fd = fs::OpenOptions::new()
-            .write(true)
-            .create_new(true)
-            .mode(0o644)
-            .open(file)?;
-        fd.write_all(tpl.as_bytes())?;
-        Ok(())
-    }
-}
-
 pub fn systemd_conf(domain: &str) -> Result<()> {
     let user = &Uid::current().to_string();
     let group = &Gid::current().to_string();
@@ -138,7 +96,7 @@ pub fn systemd_conf(domain: &str) -> Result<()> {
     if !root.exists() {
         fs::create_dir_all(&root)?;
     }
-    for it in &["rpc-tcp", "rpc-web", "api", "worker"] {
+    for it in ["www", "rpc", "worker"] {
         let file = root.join(&format!("{}.{}.service", it, domain));
 
         let tpl = PalmSystemdConfig {
@@ -154,10 +112,12 @@ pub fn systemd_conf(domain: &str) -> Result<()> {
     {
         let file = root.join(&format!("s3.{}.service", domain));
 
-        let tpl = S3SystemdConfig {
-            user,
-            group,
+        let tpl = MinioSystemdConfig {
             domain,
+            user,
+            port: 9000,
+            console_port: 9001,
+            password: &random_string(32),
         };
         tpl.write(&file)?;
     }

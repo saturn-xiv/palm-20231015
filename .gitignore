@@ -7,5 +7,6 @@
 /tmp/
 /.stop
 /config.toml
+/s3.json
 
 *.log

@@ -82,8 +82,6 @@ pub struct I18nSync {
 pub struct Nginx {
     #[clap(short, long)]
     pub domain: String,
-    #[clap(short, long)]
-    pub ssl: bool,
 }
 
 #[derive(clap::Parser, PartialEq, Eq, Debug)]
@@ -119,7 +117,7 @@ pub async fn launch() -> Result<()> {
     let cfg: Config = from_toml(&args.config)?;
 
     if let SubCommand::GenerateNginx(it) = args.command {
-        return generate::nginx_conf(&cfg, &it.domain, it.ssl);
+        return generate::nginx_conf(&cfg, &it.domain);
     }
     if SubCommand::JournalImport == args.command {
         return journal::launch(&cfg).await;
