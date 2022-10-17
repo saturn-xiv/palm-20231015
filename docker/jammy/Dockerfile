@@ -199,7 +199,7 @@ RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh amd64"
 RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh arm64"
 RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh armhf"
 
-ENV GRPC_VERSION "v1.49.1"
+ENV GRPC_VERSION "v1.50.0"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir -pv $HOME/build/grpc \

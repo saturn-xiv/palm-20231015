@@ -51,10 +51,6 @@ features = ["full"]
 version = "0.16"
 features = ["derive", "phone", "card", "unic"]
 
-[dependencies.redis]
-version = "0.21"
-features = ["r2d2"]
-
 [dependencies.serde]
 version = "1"
 features = ["derive"]

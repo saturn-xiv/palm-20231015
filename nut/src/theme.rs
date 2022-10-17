@@ -2,8 +2,10 @@ use std::any::type_name;
 
 use actix_web::{http::header::ContentType, HttpResponse};
 use chrono::Duration;
-use palm::{crypto::Secret, orm::postgresql::Connection as Db, Result};
-use redis::cluster::ClusterConnection as Cache;
+use palm::{
+    cache::redis::ClusterConnection as Cache, crypto::Secret, orm::postgresql::Connection as Db,
+    Result,
+};
 use serde::{Deserialize, Serialize};
 
 use super::setting::Dao as SettingDao;

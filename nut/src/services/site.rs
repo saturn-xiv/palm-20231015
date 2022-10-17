@@ -12,7 +12,10 @@ use diesel::{
     Connection as DieselConntection, RunQueryDsl,
 };
 use palm::{
-    cache::{redis::Pool as RedisPool, Provider as CacheProvider},
+    cache::{
+        redis::{ClusterConnection as RedisConnection, Pool as RedisPool},
+        Provider as CacheProvider,
+    },
     crypto::{Aes, Hmac},
     jwt::Jwt,
     nut::v1,
@@ -22,7 +25,6 @@ use palm::{
     to_code, to_timestamp, try_grpc, Error, GrpcResult, Result,
 };
 use prost::Message;
-use redis::cluster::ClusterConnection as RedisConnection;
 use serde::{Deserialize, Serialize};
 use tonic::{Request, Response, Status};
 

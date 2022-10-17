@@ -98,8 +98,8 @@ version = "0.16"
 features = ["secure", "private", "percent-encode"]
 
 [dependencies.redis]
-version = "0.21"
-features = ["r2d2", "cluster", "connection-manager"]
+version = "0.22"
+features = ["tokio-comp", "r2d2", "cluster", "connection-manager"]
 
 [dependencies.eui48]
 version = "1"

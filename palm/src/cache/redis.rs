@@ -3,14 +3,12 @@ use std::fmt;
 use std::fmt::Display;
 use std::time::Duration;
 
-use ::redis::{
-    cluster::{ClusterClient, ClusterConnection},
-    cmd, Commands,
-};
+use ::redis::{cluster::ClusterClient, cmd, Commands};
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 
 use super::super::Result;
 
+pub type ClusterConnection = ::redis::cluster::ClusterConnection;
 pub type Connection = ClusterClient;
 pub type Pool = r2d2::Pool<Connection>;
 pub type PooledConnection = r2d2::PooledConnection<Connection>;
@@ -37,7 +35,7 @@ pub struct Config {
 
 impl Config {
     pub fn open(&self) -> Result<Pool> {
-        let client = ClusterClient::open(self.nodes.iter().map(|x| x.to_string()).collect())?;
+        let client = ClusterClient::new(self.nodes.iter().map(|x| x.to_string()).collect())?;
 
         let pool = r2d2::Pool::builder()
             .max_size(self.pool.unwrap_or(32))

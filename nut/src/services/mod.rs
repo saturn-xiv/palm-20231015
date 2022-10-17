@@ -17,8 +17,10 @@ use hyper::{
     StatusCode,
 };
 use language_tags::LanguageTag;
-use palm::{jwt::Jwt, orm::postgresql::Connection as Db, to_code, HttpError, Result};
-use redis::cluster::ClusterConnection as Cache;
+use palm::{
+    cache::redis::ClusterConnection as Cache, jwt::Jwt, orm::postgresql::Connection as Db, to_code,
+    HttpError, Result,
+};
 use tonic::{metadata::MetadataMap, Request};
 
 use super::models::{
