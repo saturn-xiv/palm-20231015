@@ -1,4 +1,5 @@
 use std::path::PathBuf;
+use std::process::Command;
 
 use serde::{Deserialize, Serialize};
 
@@ -21,6 +22,17 @@ pub struct Config {
 
 impl Config {
     pub fn execute(&self) -> Result<PathBuf> {
+        info!(
+            "backup postgresql://{}@{}:{}/{}",
+            self.user, self.host, self.port, self.name
+        );
+        let out = Command::new("sh").arg("-c").arg("echo hello").output()?;
+        info!(
+            "status: {}\nstdout: {}\nstderr:{}",
+            out.status,
+            std::str::from_utf8(&out.stdout)?,
+            std::str::from_utf8(&out.stderr)?
+        );
         todo!()
     }
 }

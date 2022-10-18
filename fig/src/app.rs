@@ -8,7 +8,10 @@ use super::{
 };
 
 #[derive(Parser, Debug)]
-#[clap(about, version=env!("CARGO_PKG_VERSION"), before_help=env!("CARGO_PKG_DESCRIPTION"), after_help=env!("CARGO_PKG_HOMEPAGE"), author)]
+#[clap(about,
+    version=env!("CARGO_PKG_VERSION"),
+    after_help=env!("CARGO_PKG_HOMEPAGE"), author)
+]
 pub struct Args {
     #[clap(short, long, default_value = "7")]
     pub keep: usize,

@@ -26,6 +26,7 @@ RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     clang clang-format lldb lld \
     build-essential cmake pkg-config libtool automake autoconf binutils cpio mold \
     debhelper bison flex ninja-build \
+    musl-tools musl-dev \
     crossbuild-essential-armhf crossbuild-essential-arm64 \
     python3 python3-distutils python3-dev python3-pip virtualenv \
     php-fpm php-mbstring php-json php-xml php-pear php-bcmath php-curl php-zip \
@@ -185,7 +186,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 RUN zsh -c "source $HOME/.cargo/env \
     && rustup component add rust-analyzer \
     && rustup target add armv7-unknown-linux-gnueabihf \
-    && rustup target add aarch64-unknown-linux-gnu"
+    && rustup target add aarch64-unknown-linux-gnu \
+    && rustup target add x86_64-unknown-linux-musl"
 
 
 RUN apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
