@@ -76,6 +76,17 @@ impl Config {
             }
         }
 
+        info!(
+            r###"USAGE:
+$ unxz {file}.xz
+$ mysql -h {host} -P {port} -u {user} -p {name} < {file}"###,
+            file = name,
+            user = self.user,
+            host = self.host,
+            port = self.port,
+            name = self.name,
+        );
+
         Ok(name)
     }
 }

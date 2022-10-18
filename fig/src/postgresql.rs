@@ -74,6 +74,18 @@ impl Config {
             print_command_output(&out)?;
         }
 
+        info!(
+            r###"USAGE:
+$ tar xf {file}.tar.xz
+$ cd {file}
+$ psql -h {host} -p {port} -U {user} -d {name} < schema.sql
+$ pg_restore -Fc -h {host} -p {port} -U {user} -d {name} < data.dump"###,
+            file = name,
+            user = self.user,
+            host = self.host,
+            port = self.port,
+            name = self.name,
+        );
         Ok(name)
     }
 }
