@@ -1,6 +1,6 @@
 [package]
 name = "fig"
-version = "2022.10.17"
+version = "2022.10.19"
 edition = "2021"
 authors = ["Jeremy Zheng <jitang.zheng@gmail.com>"]
 description = "A crawler for palm system."

@@ -32,7 +32,8 @@ impl Config {
         let name = timestamp_file(&self.user, None);
         let tmp = root.join(&name);
         create_dir_all(root)?;
-        match self.host {
+
+        let out = match self.host {
             Some(ref host) => {
                 info!(
                     "backup ssh://{}@{}:{}:{} to {}",
@@ -42,7 +43,7 @@ impl Config {
                     self.source.display(),
                     root.display()
                 );
-                let out = Command::new("rsync")
+                Command::new("rsync")
                     .arg("-a")
                     .arg("-c")
                     .arg("-z")
@@ -51,19 +52,18 @@ impl Config {
                     .arg(&self.ssh())
                     .arg(&format!("{}:{}:{}", host, self.port, self.source.display()))
                     .arg(&tmp)
-                    .output()?;
-                print_command_output(&out)?;
+                    .output()?
             }
             None => {
                 info!("backup {} to {}", self.source.display(), root.display());
-                let out = Command::new("cp")
+                Command::new("cp")
                     .arg("-a")
                     .arg(&self.source)
                     .arg(&tmp)
-                    .output()?;
-                print_command_output(&out)?;
+                    .output()?
             }
         };
+        print_command_output(&out)?;
         Ok(name)
     }
 

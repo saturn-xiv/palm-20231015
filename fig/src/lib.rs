@@ -8,6 +8,7 @@ pub mod postgresql;
 pub mod rsync;
 
 use std::error::Error as StdError;
+use std::fs::{read_dir, remove_file};
 use std::io::{Error as IoError, ErrorKind as IoErrorKind};
 use std::path::Path;
 use std::process::Command;
@@ -57,11 +58,30 @@ pub fn tar<P: AsRef<Path>>(root: P, name: &str, keep: usize) -> Result<()> {
         print_command_output(&out)?;
     }
     {
-        // debug!(
-        //     "check file {}, keep recent {} records",
-        //     file.display(),
-        //     self.keep
-        // );
+        info!(
+            "check file {}, keep recent {} records",
+            root.display(),
+            keep
+        );
+        let mut items = Vec::new();
+        for it in read_dir(root)? {
+            let it = it?;
+            let it = it.path();
+            if it.is_file() {
+                if let Some(ext) = it.extension() {
+                    if ext == "xz" {
+                        debug!("find file {} {:?}", it.display(), it.extension());
+                        items.push(it);
+                    }
+                }
+            }
+        }
+        items.sort();
+        items.reverse();
+        for it in &items[keep..] {
+            debug!("delete file {}", it.display());
+            remove_file(it)?;
+        }
     }
     Ok(())
 }
