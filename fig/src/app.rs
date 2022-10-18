@@ -22,7 +22,7 @@ pub struct Args {
 }
 
 impl Args {
-    const DEFAULT_TARGET: &'static str = "~/tmp";
+    const DEFAULT_TARGET: &'static str = "~/tmp OR /tmp";
 }
 
 #[derive(Subcommand, PartialEq, Eq, Debug)]
@@ -53,14 +53,12 @@ pub fn launch() -> Result<()> {
         return tar(&target, &name, args.keep);
     }
     if let SubCommand::Oracle(ref it) = args.command {
-        it.execute(&target)?;
-
-        return Ok(());
+        let name = it.execute(&target)?;
+        return tar(&target, &name, args.keep);
     }
     if let SubCommand::Rsync(ref it) = args.command {
-        it.execute(&target)?;
-
-        return Ok(());
+        let name = it.execute(&target)?;
+        return tar(&target, &name, args.keep);
     }
 
     Ok(())
