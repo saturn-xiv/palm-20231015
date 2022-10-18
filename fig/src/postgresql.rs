@@ -1,9 +1,10 @@
-use std::path::PathBuf;
+use std::fs::create_dir_all;
+use std::path::Path;
 use std::process::Command;
 
 use serde::{Deserialize, Serialize};
 
-use super::Result;
+use super::{print_command_output, timestamp_file, Result};
 
 #[derive(clap::Parser, Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -21,18 +22,58 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn execute(&self) -> Result<PathBuf> {
+    pub fn execute<P: AsRef<Path>>(&self, root: P) -> Result<String> {
+        let root = root.as_ref();
         info!(
-            "backup postgresql://{}@{}:{}/{}",
-            self.user, self.host, self.port, self.name
+            "backup postgresql://{}@{}:{}/{} to {}",
+            self.user,
+            self.host,
+            self.port,
+            self.name,
+            root.display()
         );
-        let out = Command::new("sh").arg("-c").arg("echo hello").output()?;
-        info!(
-            "status: {}\nstdout: {}\nstderr:{}",
-            out.status,
-            std::str::from_utf8(&out.stdout)?,
-            std::str::from_utf8(&out.stderr)?
+
+        let db = format!(
+            "postgresql://{}:{}@{}:{}/{}",
+            self.user,
+            self.password.as_deref().unwrap_or_default(),
+            self.host,
+            self.port,
+            self.name
         );
-        todo!()
+
+        let name = timestamp_file(&self.name, None);
+        let tmp = root.join(&name);
+        create_dir_all(&tmp)?;
+        {
+            let file = tmp.join("schema.sql");
+            debug!("generate {}", file.display());
+            let out = Command::new("pg_dump")
+                .arg("-O")
+                .arg("-s")
+                .arg("-w")
+                .arg("-d")
+                .arg(&db)
+                .arg("-f")
+                .arg(file)
+                .output()?;
+            print_command_output(&out)?;
+        }
+        {
+            let file = tmp.join("data.dump");
+            debug!("generate {}", file.display());
+            let out = Command::new("pg_dump")
+                .arg("-Fc")
+                .arg("-O")
+                .arg("-a")
+                .arg("-w")
+                .arg(&db)
+                .arg("-f")
+                .arg(file)
+                .output()?;
+            print_command_output(&out)?;
+        }
+
+        Ok(name)
     }
 }

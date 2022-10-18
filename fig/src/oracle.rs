@@ -1,3 +1,4 @@
+use std::path::Path;
 use std::path::PathBuf;
 
 use serde::{Deserialize, Serialize};
@@ -15,7 +16,7 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn execute(&self) -> Result<PathBuf> {
+    pub fn execute<P: AsRef<Path>>(&self, root: P) -> Result<PathBuf> {
         todo!()
     }
 }

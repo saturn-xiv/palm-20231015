@@ -4,7 +4,7 @@ use clap::{Parser, Subcommand};
 
 use super::{
     mysql::Config as MySql, oracle::Config as Oracle, postgresql::Config as PostgreSql,
-    rsync::Config as Rsync, Result,
+    rsync::Config as Rsync, tar, Result,
 };
 
 #[derive(Parser, Debug)]
@@ -15,20 +15,14 @@ use super::{
 pub struct Args {
     #[clap(short, long, default_value = "7")]
     pub keep: usize,
+    #[clap(short, long, default_value = Self::DEFAULT_TARGET)]
+    pub target: String,
     #[clap(subcommand)]
     pub command: SubCommand,
 }
 
 impl Args {
-    pub fn flush<P: AsRef<Path>>(&self, file: P) -> Result<()> {
-        let file = file.as_ref();
-        debug!(
-            "check file {}, keep recent {} records",
-            file.display(),
-            self.keep
-        );
-        Ok(())
-    }
+    const DEFAULT_TARGET: &'static str = "~/tmp";
 }
 
 #[derive(Subcommand, PartialEq, Eq, Debug)]
@@ -45,24 +39,27 @@ pub enum SubCommand {
 
 pub fn launch() -> Result<()> {
     let args = Args::parse();
+    let target = if args.target == Args::DEFAULT_TARGET {
+        dirs::home_dir().unwrap_or_else(|| Path::new("/tmp").to_path_buf())
+    } else {
+        Path::new(&args.target).to_path_buf()
+    };
     if let SubCommand::Postgresql(ref it) = args.command {
-        let f = it.execute()?;
-        args.flush(f)?;
-        return Ok(());
+        let name = it.execute(&target)?;
+        return tar(&target, &name, args.keep);
     }
     if let SubCommand::Mysql(ref it) = args.command {
-        let f = it.execute()?;
-        args.flush(f)?;
-        return Ok(());
+        let name = it.execute(&target)?;
+        return tar(&target, &name, args.keep);
     }
     if let SubCommand::Oracle(ref it) = args.command {
-        let f = it.execute()?;
-        args.flush(f)?;
+        it.execute(&target)?;
+
         return Ok(());
     }
     if let SubCommand::Rsync(ref it) = args.command {
-        let f = it.execute()?;
-        args.flush(f)?;
+        it.execute(&target)?;
+
         return Ok(());
     }
 

@@ -1,8 +1,11 @@
-use std::path::PathBuf;
+use std::fs::{create_dir_all, File};
+use std::io::{Error as IoError, ErrorKind as IoErrorKind, Write};
+use std::path::Path;
+use std::process::{Command, Stdio};
 
 use serde::{Deserialize, Serialize};
 
-use super::Result;
+use super::{timestamp_file, Result};
 
 #[derive(clap::Parser, Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -20,7 +23,59 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn execute(&self) -> Result<PathBuf> {
-        todo!()
+    pub fn execute<P: AsRef<Path>>(&self, root: P) -> Result<String> {
+        let root = root.as_ref();
+        info!(
+            "backup mysql://{}@{}:{}/{} to {}",
+            self.user,
+            self.host,
+            self.port,
+            self.name,
+            root.display()
+        );
+
+        let name = timestamp_file(&self.name, Some("sql"));
+        let tmp = root.join(&name);
+        create_dir_all(root)?;
+
+        {
+            let out = if let Some(ref password) = self.password {
+                Command::new("mysqldump")
+                    .arg("-h")
+                    .arg(&self.host)
+                    .arg("-P")
+                    .arg(self.port.to_string())
+                    .arg("-u")
+                    .arg(&self.user)
+                    .arg(format!("-p{}", password))
+                    .arg(&self.name)
+                    .stdout(Stdio::piped())
+                    .output()?
+            } else {
+                Command::new("mysqldump")
+                    .arg("-h")
+                    .arg(&self.host)
+                    .arg("-P")
+                    .arg(self.port.to_string())
+                    .arg("-u")
+                    .arg(&self.user)
+                    .arg(&self.name)
+                    .stdout(Stdio::piped())
+                    .output()?
+            };
+
+            if !out.status.success() {
+                error!("({}) {}", out.status, std::str::from_utf8(&out.stderr)?);
+                return Err(Box::new(IoError::from(IoErrorKind::UnexpectedEof)));
+            }
+
+            {
+                debug!("generate {}", tmp.display());
+                let mut file = File::create(&tmp)?;
+                file.write_all(&out.stdout)?;
+            }
+        }
+
+        Ok(name)
     }
 }

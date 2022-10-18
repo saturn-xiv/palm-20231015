@@ -12,6 +12,15 @@ homepage = "https://github.com/saturn-xiv/palm"
 log = "0.4"
 env_logger = "0.9"
 opensearch = "2"
+dirs = "4"
+
+[dependencies.chrono]
+version = "0.4"
+features = ["serde"]
+
+[dependencies.chrono-tz]
+version = "0.6"
+features = ["serde"]
 
 [dependencies.serde]
 version = "1"
