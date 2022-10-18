@@ -1,6 +1,6 @@
 [package]
 name = "fig"
-version = "2022.9.25"
+version = "2022.10.17"
 edition = "2021"
 description = "A crawler for palm system."
 
@@ -9,6 +9,7 @@ description = "A crawler for palm system."
 [dependencies]
 log = "0.4"
 env_logger = "0.9"
+opensearch = "2"
 
 [dependencies.serde]
 version = "1"

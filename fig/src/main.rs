@@ -1,3 +1,6 @@
 fn main() {
-    println!("Hello, world!");
+    env_logger::init();
+    if let Err(e) = fig::app::launch() {
+        log::error!("{:?}", e);
+    }
 }

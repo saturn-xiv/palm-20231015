@@ -1,5 +1,3 @@
-use std::path::Path;
-
 use palm::{
     cache::redis::Config as Redis,
     crypto::Key,
@@ -21,8 +19,4 @@ pub struct Config {
     pub redis: Redis,
     pub rabbitmq: RabbitMqConfig,
     pub opensearch: OpenSearch,
-}
-
-pub fn is_stopped() -> bool {
-    Path::new(".stop").exists()
 }

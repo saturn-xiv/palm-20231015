@@ -134,6 +134,10 @@ pub const FONT_DEJAVUSANS: &[u8] = include_bytes!("DejaVuSans.ttf");
 
 pub const XML_HEADER: &str = r###"<?xml version="1.0" encoding="utf-8" ?>"###;
 
+pub fn is_stopped() -> bool {
+    Path::new(".stop").exists()
+}
+
 pub trait ToXml {
     fn write<W: Write>(&self, wrt: &mut EventWriter<W>) -> XmlWriterResult<()>;
 }

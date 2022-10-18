@@ -13,11 +13,11 @@ use std::path::PathBuf;
 use clap::{Parser, Subcommand};
 use nut::i18n::locale::Dao as LocaleDao;
 use palm::{
-    cache::Provider, crypto::Hmac, jwt::Jwt, parser::from_toml, Result, BANNER, BUILD_TIME,
-    GIT_VERSION, HOMEPAGE,
+    cache::Provider, crypto::Hmac, is_stopped, jwt::Jwt, parser::from_toml, Result, BANNER,
+    BUILD_TIME, GIT_VERSION, HOMEPAGE,
 };
 
-use super::env::{is_stopped, Config};
+use super::env::Config;
 
 lazy_static! {
     static ref VERSION: String = format!("{}({})", GIT_VERSION, BUILD_TIME);
