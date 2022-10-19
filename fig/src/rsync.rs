@@ -50,7 +50,7 @@ impl Config {
                     .arg("-q")
                     .arg("-e")
                     .arg(&self.ssh())
-                    .arg(&format!("{}:{}:{}", host, self.port, self.source.display()))
+                    .arg(&format!("{}:{}", host, self.source.display()))
                     .arg(&tmp)
                     .output()?
             }
@@ -81,7 +81,7 @@ impl Config {
                 password, self.user,
             );
         }
-        format!("ssh -l {}", self.user)
+        format!("ssh -p {} -l {}", self.port, self.user)
     }
 
     fn key_file(&self) -> Option<PathBuf> {
