@@ -2,6 +2,7 @@ use std::fs::create_dir_all;
 use std::path::Path;
 use std::process::Command;
 
+use postgres::{Client as DbClient, NoTls};
 use serde::{Deserialize, Serialize};
 
 use super::{print_command_output, timestamp_file, Result};
@@ -32,7 +33,6 @@ impl Config {
             self.name,
             root.display()
         );
-
         let db = format!(
             "postgresql://{}:{}@{}:{}/{}",
             self.user,
@@ -41,6 +41,12 @@ impl Config {
             self.port,
             self.name
         );
+        {
+            let mut cli = DbClient::connect(&db, NoTls)?;
+            let row = cli.query_one("select version()", &[])?;
+            let it: &str = row.get(0);
+            info!("{}", it);
+        }
 
         let name = timestamp_file(&self.name, None);
         let tmp = root.join(&name);

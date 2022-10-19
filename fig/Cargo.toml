@@ -10,7 +10,10 @@ homepage = "https://github.com/saturn-xiv/palm"
 
 [dependencies]
 log = "0.4"
+oracle = "0.5"
 env_logger = "0.9"
+postgres = "0.19"
+mysql = "22"
 opensearch = "2"
 dirs = "4"
 
@@ -21,6 +24,10 @@ features = ["serde"]
 [dependencies.chrono-tz]
 version = "0.6"
 features = ["serde"]
+
+# [dependencies.zmq]
+# version = "0.9"
+# features = ["vendored"]
 
 [dependencies.serde]
 version = "1"

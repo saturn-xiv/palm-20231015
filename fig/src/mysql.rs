@@ -3,6 +3,7 @@ use std::io::{Error as IoError, ErrorKind as IoErrorKind, Write};
 use std::path::Path;
 use std::process::{Command, Stdio};
 
+use mysql::{prelude::*, Conn as DbConn, Opts as DbOpts};
 use serde::{Deserialize, Serialize};
 
 use super::{timestamp_file, Result};
@@ -33,6 +34,24 @@ impl Config {
             self.name,
             root.display()
         );
+
+        {
+            let opt = DbOpts::from_url(&format!(
+                "mysql://{}:{}@{}:{}/{}",
+                self.user,
+                self.password.as_deref().unwrap_or_default(),
+                self.host,
+                self.port,
+                self.name
+            ))?;
+            let mut cli = DbConn::new(opt)?;
+            let row: Option<String> = cli.query_first("select version()")?;
+
+            info!(
+                "{}",
+                row.ok_or_else(|| Box::new(IoError::from(IoErrorKind::UnexpectedEof)))?
+            );
+        }
 
         let name = timestamp_file(&self.name, Some("sql"));
         let tmp = root.join(&name);
