@@ -70,18 +70,22 @@ impl Config {
     fn ssh(&self) -> String {
         if let Some(key) = self.key_file() {
             return format!(
-                "ssh -o StrictHostKeyChecking=no -l {} -i {}",
+                "ssh -o StrictHostKeyChecking=yes -p {} -l {} -i {}",
+                self.port,
                 self.user,
                 key.display(),
             );
         }
         if let Some(ref password) = self.password {
             return format!(
-                r###"sshpass -p "{}" ssh -o StrictHostKeyChecking=no -l {}"###,
-                password, self.user,
+                r###"sshpass -p "{}" ssh -o StrictHostKeyChecking=yes -p {} -l {}"###,
+                password, self.port, self.user,
             );
         }
-        format!("ssh -p {} -l {}", self.port, self.user)
+        format!(
+            "ssh -o StrictHostKeyChecking=yes -p {} -l {}",
+            self.port, self.user
+        )
     }
 
     fn key_file(&self) -> Option<PathBuf> {
