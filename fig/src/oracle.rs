@@ -63,10 +63,39 @@ impl Config {
         //     Path::new(&it).to_path_buf()
         // };
 
+        // {
+        //     let sql = Command::new("sqlplus")
+        //         .arg(format!("{}/{}", self.user, self.password))
+        //         .stdin(Stdio::piped())
+        //         .spawn()?;
+
+        //     Command::new("echo")
+        //         .arg("select version from v$instance")
+        //         .stdout(sql.stdin.unwrap()) // Converted into a Stdio here
+        //         .output()?;
+
+        //     let out = sql.wait_with_output()?;
+        //     print_command_output(&out)?;
+        // }
+        // {
+        //     let sql = Command::new("sqlplus")
+        //         .arg(format!("{}/{}", self.user, self.password))
+        //         .stdin(Stdio::piped())
+        //         .spawn()?;
+
+        //     Command::new("echo")
+        //         .arg("select directory_path from dba_directories where directory_name='DATA_PUMP_DIR'")
+        //         .stdout(sql.stdin.unwrap()) // Converted into a Stdio here
+        //         .output()
+        //         ?;
+        //     let out = sql.wait_with_output()?;
+        //     print_command_output(&out)?;
+        // }
+
         let name = timestamp_file(&self.sid, None);
 
         let dmp = Path::new(&name).with_extension("dmp");
-        let log = Path::new(&name).with_extension(".dmp.log");
+        let log = Path::new(&name).with_extension("dmp.log");
         debug!("dump => {}, log => {}", dmp.display(), log.display());
         {
             let out = Command::new("expdp")
