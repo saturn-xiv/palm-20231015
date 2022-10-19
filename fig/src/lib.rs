@@ -78,9 +78,11 @@ pub fn tar<P: AsRef<Path>>(root: P, name: &str, keep: usize) -> Result<()> {
         }
         items.sort();
         items.reverse();
-        for it in &items[keep..] {
-            debug!("delete file {}", it.display());
-            remove_file(it)?;
+        if items.len() > keep {
+            for it in &items[keep..] {
+                debug!("delete file {}", it.display());
+                remove_file(it)?;
+            }
         }
     }
     Ok(())

@@ -1,8 +1,7 @@
-use std::fs::create_dir_all;
 use std::path::Path;
 use std::process::Command;
+use std::{fs::create_dir_all, path::PathBuf};
 
-use oracle::Connection as DbConnection;
 use serde::{Deserialize, Serialize};
 
 use super::{print_command_output, timestamp_file, Result};
@@ -14,6 +13,12 @@ pub struct Config {
     pub sid: String,
     #[clap(short, long)]
     pub user: String,
+    #[clap(
+        short,
+        long,
+        help = "select directory_path from dba_directories where directory_name='DATA_PUMP_DIR'"
+    )]
+    pub directory_path: PathBuf,
     #[clap(short = 'P', long)]
     pub password: String,
 }
@@ -38,24 +43,25 @@ impl Config {
         //             target = root.display()
         //         );
 
-        let backup_dir = {
-            let con = DbConnection::connect(
-                &self.user,
-                &self.password,
-                format!("//localhost/{}", self.sid),
-            )?;
-            {
-                let row = con.query_row("select version from v$instance", &[])?;
-                let it: String = row.get(0)?;
-                info!("{}", it);
-            }
-            let row = con.query_row(
-                "select directory_path from dba_directories where directory_name='DATA_PUMP_DIR'",
-                &[],
-            )?;
-            let it: String = row.get(0)?;
-            Path::new(&it).to_path_buf()
-        };
+        // TODO: https://github.com/kubo/rust-oracle/issues/23
+        // let backup_dir = {
+        //     let con = DbConnection::connect(
+        //         &self.user,
+        //         &self.password,
+        //         format!("//localhost/{}", self.sid),
+        //     )?;
+        //     {
+        //         let row = con.query_row("select version from v$instance", &[])?;
+        //         let it: String = row.get(0)?;
+        //         info!("{}", it);
+        //     }
+        //     let row = con.query_row(
+        //         "select directory_path from dba_directories where directory_name='DATA_PUMP_DIR'",
+        //         &[],
+        //     )?;
+        //     let it: String = row.get(0)?;
+        //     Path::new(&it).to_path_buf()
+        // };
 
         let name = timestamp_file(&self.sid, None);
 
@@ -76,8 +82,8 @@ impl Config {
             let tmp = root.join(&name);
             create_dir_all(&tmp)?;
             let out = Command::new("mv")
-                .arg(backup_dir.join(&dmp))
-                .arg(backup_dir.join(&log))
+                .arg(self.directory_path.join(&dmp))
+                .arg(self.directory_path.join(&log))
                 .arg(&tmp)
                 .output()?;
             print_command_output(&out)?;
@@ -90,7 +96,7 @@ $ cp -v {file}/{name}.dmp {backup}
 $ impdp "{user}/CHANGE-TO-PASSWORD" dumpfile={name}.dmp logfile={name}.exp.log schemas={user} REMAP_SCHEMA={user}:CHANGE-TO-NEW-USER"###,
             file = name,
             user = self.user,
-            backup = backup_dir.display(),
+            backup = self.directory_path.display(),
         );
 
         Ok(name)
