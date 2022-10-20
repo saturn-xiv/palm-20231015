@@ -1,3 +1,4 @@
+use std::io::{Error as IoError, ErrorKind as IoErrorKind};
 use std::path::Path;
 use std::process::Command;
 use std::{fs::create_dir_all, path::PathBuf};
@@ -43,16 +44,37 @@ impl Config {
                     self.source.display(),
                     root.display()
                 );
-                Command::new("rsync")
-                    .arg("-a")
-                    .arg("-c")
-                    .arg("-z")
-                    .arg("-q")
-                    .arg("-e")
-                    .arg(&self.ssh())
-                    .arg(&format!("{}:{}", host, self.source.display()))
-                    .arg(&tmp)
-                    .output()?
+                match self.password {
+                    Some(ref password) => Command::new("sshpass")
+                        .arg("-p")
+                        .arg(password)
+                        .arg("rsync")
+                        .arg("-a")
+                        .arg("-z")
+                        .arg("-q")
+                        .arg("-e")
+                        .arg(format!(
+                            "ssh -o StrictHostKeyChecking=yes -p {} -l {}",
+                            self.port, self.user,
+                        ))
+                        .arg(&format!("{}:{}", host, self.source.display()))
+                        .arg(&tmp)
+                        .output(),
+                    None => Command::new("rsync")
+                        .arg("-a")
+                        .arg("-z")
+                        .arg("-q")
+                        .arg("-e")
+                        .arg(format!(
+                            "ssh -o StrictHostKeyChecking=yes -p {} -l {} -i {}",
+                            self.port,
+                            self.user,
+                            self.ssh_key_file()?.display(),
+                        ))
+                        .arg(&format!("{}:{}", host, self.source.display()))
+                        .arg(&tmp)
+                        .output(),
+                }
             }
             None => {
                 info!("backup {} to {}", self.source.display(), root.display());
@@ -60,47 +82,27 @@ impl Config {
                     .arg("-a")
                     .arg(&self.source)
                     .arg(&tmp)
-                    .output()?
+                    .output()
             }
-        };
+        }?;
+
         print_command_output(&out)?;
         Ok(name)
     }
 
-    fn ssh(&self) -> String {
-        if let Some(key) = self.key_file() {
-            return format!(
-                "ssh -o StrictHostKeyChecking=yes -p {} -l {} -i {}",
-                self.port,
-                self.user,
-                key.display(),
-            );
-        }
-        if let Some(ref password) = self.password {
-            return format!(
-                r###"sshpass -p "{}" ssh -o StrictHostKeyChecking=yes -p {} -l {}"###,
-                password, self.port, self.user,
-            );
-        }
-        format!(
-            "ssh -o StrictHostKeyChecking=yes -p {} -l {}",
-            self.port, self.user
-        )
-    }
-
-    fn key_file(&self) -> Option<PathBuf> {
+    fn ssh_key_file(&self) -> Result<PathBuf> {
         if self.key != Self::KEY {
-            return Some(Path::new(&self.key).to_path_buf());
+            return Ok(Path::new(&self.key).to_path_buf());
         }
         if let Some(home) = dirs::home_dir() {
             let home = home.join(".ssh");
             for it in ["id_ed25519", "id_rsa"] {
                 let it = home.join(it);
                 if it.is_file() {
-                    return Some(it);
+                    return Ok(it);
                 }
             }
         }
-        None
+        Err(Box::new(IoError::from(IoErrorKind::UnexpectedEof)))
     }
 }

@@ -70,7 +70,7 @@ pub fn tar<P: AsRef<Path>>(root: P, name: &str, keep: usize) -> Result<()> {
             if it.is_file() {
                 if let Some(ext) = it.extension() {
                     if ext == "xz" {
-                        debug!("find file {} {:?}", it.display(), it.extension());
+                        debug!("find file {}", it.display());
                         items.push(it);
                     }
                 }
