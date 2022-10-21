@@ -1,9 +1,0 @@
-namespace palm.ops.metrics;
-
-struct Cpu {
-    count: uint16;
-}
-
-struct Os {
-    cpu: Cpu;
-}

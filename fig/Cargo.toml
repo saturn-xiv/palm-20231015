@@ -1,6 +1,6 @@
 [package]
 name = "fig"
-version = "2022.10.20"
+version = "2022.10.21"
 edition = "2021"
 authors = ["Jeremy Zheng <jitang.zheng@gmail.com>"]
 description = "A crawler for palm system."
@@ -12,12 +12,14 @@ homepage = "https://github.com/saturn-xiv/palm"
 log = "0.4"
 toml = "0.5"
 oracle = "0.5"
+tonic = "0.8"
 env_logger = "0.9"
+prost = "0.11"
+prost-types = "0.11"
 postgres = "0.19"
 mysql = "22"
 opensearch = "2"
 dirs = "4"
-flatbuffers = "22"
 
 [dependencies.chrono]
 version = "0.4"
@@ -38,3 +40,6 @@ features = ["derive"]
 [dependencies.openssl]
 version = "*"
 features = ["vendored"]
+
+[build-dependencies]
+tonic-build = "0.8"

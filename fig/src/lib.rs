@@ -98,3 +98,14 @@ pub fn print_command_output(out: &Output) -> Result<()> {
     error!("({}) {}", out.status, std::str::from_utf8(&out.stderr)?);
     Err(Box::new(IoError::from(IoErrorKind::UnexpectedEof)))
 }
+
+pub mod palm {
+    pub mod ops {
+        pub mod metrics {
+            #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
+            pub mod v1 {
+                tonic::include_proto!("palm.ops.metrics.v1");
+            }
+        }
+    }
+}

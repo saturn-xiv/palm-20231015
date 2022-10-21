@@ -74,8 +74,8 @@ done
 
 generate_grpc_web
 
-generate_flatbuffers ops/metrics/protocols/rpc ops/metrics/src
-generate_flatbuffers ops/metrics/protocols/rpc fig/src/metrics
+# generate_flatbuffers ops/metrics/protocols/rpc ops/metrics/src
+# generate_flatbuffers ops/metrics/protocols/rpc fig/src/metrics
 
 echo 'format rust code'
 cargo fmt

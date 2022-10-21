@@ -1,10 +1,3 @@
-#[allow(
-    unused_imports,
-    clippy::extra_unused_lifetimes,
-    clippy::derivable_impls,
-    clippy::derive_partial_eq_without_eq
-)]
-pub mod rpc;
 pub mod snmp;
 
 use std::path::PathBuf;
@@ -30,14 +23,7 @@ impl Args {
 #[serde(rename_all = "camelCase")]
 pub struct Config {
     pub files: Vec<PathBuf>,
-    pub opensearch: OpenSearch,
     pub snmp: snmp::Config,
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
-#[serde(rename_all = "camelCase")]
-pub struct OpenSearch {
-    pub host: String,
-    pub port: Option<u16>,
-    pub namespace: String,
-}
+// journalctl --utc --all -f
