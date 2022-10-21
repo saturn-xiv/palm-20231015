@@ -11,9 +11,10 @@ install_react() {
         jwt-decode dinero.js@alpha video.js \
         react-copy-to-clipboard @types/react-copy-to-clipboard \
         react-quill react-dropzone \
-        google-map-react qrcode.react react-markdown \
+        google-map-react qrcode.react \
+        react-markdown @uiw/react-md-editor \
         react-color @types/react-color \
-	    react-pdf @types/react-pdf \
+        react-pdf @types/react-pdf \
         react-json-view react-syntax-highlighter \
         emoji-mart react-sparklines react-highlight-words \
         react-number-format react-image-crop \
