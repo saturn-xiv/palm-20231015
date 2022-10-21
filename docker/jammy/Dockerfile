@@ -202,6 +202,17 @@ RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh amd64"
 RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh arm64"
 RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh armhf"
 
+
+ENV FLATBUFFERS_VERSION "v22.9.29"
+RUN git clone -b $FLATBUFFERS_VERSION https://github.com/google/flatbuffers.git $HOME/downloads/flatbuffers
+RUN zsh -c "source $HOME/.zshrc \
+    && mkdir -pv $HOME/build/flatbuffers \
+    && cd $HOME/build/flatbuffers \
+    && cmake -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/flatbuffers \
+    && make -j \
+    && make install"
+
 ENV GRPC_VERSION "v1.50.0"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 RUN zsh -c "source $HOME/.zshrc \

@@ -32,12 +32,12 @@ function build_grpc() {
         git checkout $2
     fi
 
-    if [ -d $HOME/build/grpc-amd64 ]
+    if [ -d $HOME/build/grpc ]
     then
-        rm -r $HOME/build/grpc-amd64
+        rm -r $HOME/build/grpc
     fi
-    mkdir -pv $HOME/build/grpc-amd64
-    cd $HOME/build/grpc-amd64
+    mkdir -pv $HOME/build/grpc
+    cd $HOME/build/grpc
     cmake -DCMAKE_BUILD_TYPE=Release \
     -DgRPC_INSTALL=ON \
     -DgRPC_SSL_PROVIDER=package \
@@ -50,15 +50,16 @@ function build_grpc() {
 if [ "$#" -eq 1 ]
 then
     build_grpc $1
+    echo "done($1)."
 elif [ "$#" -eq 2 ]
 then
     build_grpc $1 $2
+    echo "done($1, $2)."
 else
     echo "USAGE: $0 GRPC_VERSION PROTOBUF_VERSION"
     exit 1
 fi
 
 
-echo 'done.'
 
 exit 0

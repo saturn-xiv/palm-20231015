@@ -65,6 +65,7 @@ dirs = "4"
 handlebars = "4"
 amq-protocol-uri = "7"
 jsonwebtoken = "8"
+flatbuffers = "22"
 
 [dependencies.chrono]
 version = "0.4"

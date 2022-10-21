@@ -10,12 +10,14 @@ homepage = "https://github.com/saturn-xiv/palm"
 
 [dependencies]
 log = "0.4"
+toml = "0.5"
 oracle = "0.5"
 env_logger = "0.9"
 postgres = "0.19"
 mysql = "22"
 opensearch = "2"
 dirs = "4"
+flatbuffers = "22"
 
 [dependencies.chrono]
 version = "0.4"

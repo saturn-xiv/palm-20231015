@@ -2,6 +2,7 @@
 extern crate log;
 
 pub mod app;
+pub mod metrics;
 pub mod mysql;
 pub mod oracle;
 pub mod postgresql;

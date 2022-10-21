@@ -24,10 +24,9 @@ function generate_grpc_by_lang() {
 
 function generate_flatbuffers(){
     echo "generate flatbuffers"
-    flatc --rust -o $WORKSPACE/src/$2.rs $WORKSPACE/$1.fbs
+    flatc --rust --filename-suffix "" -o $WORKSPACE/$2 $WORKSPACE/$1.fbs
+    flatc --rust --filename-suffix "" -o $WORKSPACE/$2 $WORKSPACE/$1.fbs
 }
-
-
 
 # https://github.com/grpc/grpc-web#code-generator-plugin
 function generate_grpc_web() {
@@ -74,6 +73,9 @@ do
 done
 
 generate_grpc_web
+
+generate_flatbuffers ops/metrics/protocols/rpc ops/metrics/src
+generate_flatbuffers ops/metrics/protocols/rpc fig/src/metrics
 
 echo 'format rust code'
 cargo fmt

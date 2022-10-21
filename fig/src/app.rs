@@ -3,8 +3,8 @@ use std::path::Path;
 use clap::{Parser, Subcommand};
 
 use super::{
-    mysql::Config as MySql, oracle::Config as Oracle, postgresql::Config as PostgreSql,
-    rsync::Config as Rsync, tar, Result,
+    metrics::Args as Metrics, mysql::Config as MySql, oracle::Config as Oracle,
+    postgresql::Config as PostgreSql, rsync::Config as Rsync, tar, Result,
 };
 
 #[derive(Parser, Debug)]
@@ -35,6 +35,8 @@ pub enum SubCommand {
     Oracle(Oracle),
     #[clap(about = "Rsync")]
     Rsync(Rsync),
+    #[clap(about = "Rsync")]
+    Metrics(Metrics),
 }
 
 pub fn launch() -> Result<()> {
@@ -60,6 +62,8 @@ pub fn launch() -> Result<()> {
         let name = it.execute(&target)?;
         return tar(&target, &name, args.keep);
     }
-
+    if let SubCommand::Metrics(ref it) = args.command {
+        return it.execute();
+    }
     Ok(())
 }
