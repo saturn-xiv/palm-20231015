@@ -1,5 +1,4 @@
 pub mod generate;
-pub mod journal;
 pub mod rpc;
 pub mod user;
 pub mod web;
@@ -68,8 +67,6 @@ pub enum SubCommand {
     Rpc,
     #[clap(about = "Worker process")]
     Worker(Worker),
-    #[clap(about = "Import log from journal")]
-    JournalImport,
 }
 
 #[derive(clap::Parser, PartialEq, Eq, Debug)]
@@ -118,9 +115,6 @@ pub async fn launch() -> Result<()> {
 
     if let SubCommand::GenerateNginx(it) = args.command {
         return generate::nginx_conf(&cfg, &it.domain);
-    }
-    if SubCommand::JournalImport == args.command {
-        return journal::launch(&cfg).await;
     }
 
     {

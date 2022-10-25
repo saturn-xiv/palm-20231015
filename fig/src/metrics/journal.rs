@@ -1,9 +1,15 @@
 use std::fmt;
+use std::io::{prelude::*, Error as IoError, ErrorKind as IoErrorKind};
+use std::process::{Command, Stdio};
 
+use bytes::{BufMut, BytesMut};
 use serde::{Deserialize, Serialize};
 
+use super::super::Result;
+
+// https://www.freedesktop.org/software/systemd/man/systemd.journal-fields.html
 // apt install systemd-journal-remote
-// LANG=en_US.utf8 sudo journalctl -o json --utc --all -f
+// journalctl --utc --all -o json -f
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
@@ -62,7 +68,7 @@ pub struct Item {
     #[serde(rename = "_SOURCE_REALTIME_TIMESTAMP")]
     pub source_realtime_timestamp: Option<String>,
     #[serde(rename = "SYSLOG_FACILITY")]
-    pub syslog_facility: String,
+    pub syslog_facility: Option<String>,
     #[serde(rename = "_SYSTEMD_UNIT")]
     pub systemd_unit: Option<String>,
 }
@@ -78,5 +84,78 @@ impl fmt::Display for Item {
             self.pid.as_ref().unwrap_or(&"?".to_string()),
             self.message
         )
+    }
+}
+
+impl Item {
+    const PREFIX: &str = r###"{""###;
+    const SUFFIX: &str = r###""}"###;
+
+    pub fn new(buf: &mut BytesMut) -> Option<Self> {
+        if let Some(begin) = buf
+            .windows(Self::PREFIX.len())
+            .position(|w| w == Self::PREFIX.as_bytes())
+        {
+            if let Some(end) = buf
+                .windows(Self::SUFFIX.len())
+                .position(|w| w == Self::SUFFIX.as_bytes())
+            {
+                if end > begin {
+                    let end = end + Self::SUFFIX.len();
+                    match serde_json::from_slice(&buf[begin..end]) {
+                        Ok(it) => {
+                            {
+                                let tmp = buf.split_to(end);
+                                debug!("clear {:?}", std::str::from_utf8(&tmp));
+                            }
+                            return Some(it);
+                        }
+                        Err(e) => {
+                            error!("{:?}", e);
+                            {
+                                let tmp = buf.split_to(end);
+                                debug!("clear {:?}", std::str::from_utf8(&tmp));
+                            }
+                        }
+                    }
+                } else {
+                    let tmp = buf.split_to(begin);
+                    debug!("clear {:?}", std::str::from_utf8(&tmp));
+                }
+            }
+        }
+        None
+    }
+
+    pub fn execute() -> Result<()> {
+        let mut jo = Command::new("journalctl")
+            .arg("--utc")
+            .arg("--all")
+            .arg("-o")
+            .arg("json")
+            .arg("-f")
+            .stdout(Stdio::piped())
+            .spawn()?;
+        let mut out = jo
+            .stdout
+            .take()
+            .ok_or_else(|| Box::new(IoError::from(IoErrorKind::UnexpectedEof)))?;
+
+        let mut buf = BytesMut::with_capacity(1 << 12);
+
+        let mut line = [0; 1 << 10];
+
+        loop {
+            let len = out.read(&mut line)?;
+
+            if len > 0 {
+                buf.put(&line[0..len]);
+                debug!("receive {} bytes({})", len, buf.len());
+                if let Some(it) = Item::new(&mut buf) {
+                    debug!("get {}", it);
+                    // TODO
+                }
+            }
+        }
     }
 }

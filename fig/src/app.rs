@@ -63,7 +63,8 @@ pub fn launch() -> Result<()> {
         return tar(&target, &name, args.keep);
     }
     if let SubCommand::Metrics(ref it) = args.command {
-        return it.execute();
+        let cfg = it.get()?;
+        return cfg.start();
     }
     Ok(())
 }

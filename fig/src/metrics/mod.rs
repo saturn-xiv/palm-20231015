@@ -1,5 +1,9 @@
+pub mod journal;
+pub mod nginx;
 pub mod snmp;
 
+use std::fs::File;
+use std::io::prelude::*;
 use std::path::PathBuf;
 
 use serde::{Deserialize, Serialize};
@@ -14,16 +18,35 @@ pub struct Args {
 }
 
 impl Args {
-    pub fn execute(&self) -> Result<()> {
-        Ok(())
+    pub fn get(&self) -> Result<Config> {
+        let mut file = File::open(&self.config)?;
+        let mut buf = Vec::new();
+        file.read_to_end(&mut buf)?;
+        let it = toml::from_slice(&buf)?;
+        Ok(it)
     }
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Config {
+    pub token: String,
+    pub services: Vec<String>,
     pub files: Vec<PathBuf>,
+    pub server: Server,
     pub snmp: snmp::Config,
 }
 
-// journalctl --utc --all -f
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct Server {
+    pub host: String,
+    pub port: u16,
+}
+
+impl Config {
+    pub fn start(&self) -> Result<()> {
+        // TODO
+        Ok(())
+    }
+}

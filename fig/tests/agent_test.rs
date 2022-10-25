@@ -17,14 +17,19 @@ fn path() {
 #[test]
 fn metrics() {
     let cfg = fig::metrics::Config {
-        opensearch: fig::metrics::OpenSearch {
-            host: "http://127.0.0.1".to_string(),
-            port: None,
-            namespace: "demo://".to_string(),
-        },
+        id: "pc".to_string(),
+        services: vec![
+            "sshd".to_string(),
+            "redis".to_string(),
+            "postgresql".to_string(),
+        ],
         files: vec![
             Path::new("/opt/opensearchproject/opensearch-2.2.0/logs/opensearch.log").to_path_buf(),
         ],
+        server: fig::metrics::Server {
+            host: "http://127.0.0.1".to_string(),
+            port: 10011,
+        },
         snmp: fig::metrics::snmp::Config {
             duration: 30,
             agents: (1..3)
