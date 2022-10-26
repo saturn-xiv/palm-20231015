@@ -55,6 +55,7 @@
     "react-scripts": "5.0.1",
     "react-sparklines": "^1.7.0",
     "react-syntax-highlighter": "^15.5.0",
+    "redux-thunk": "^2.4.1",
     "timezones-list": "^3.0.1",
     "typescript": "^4.4.2",
     "video.js": "^7.20.3",

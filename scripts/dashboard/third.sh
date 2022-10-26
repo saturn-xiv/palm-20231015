@@ -24,7 +24,7 @@ install_react() {
         react-intl \
         react-router-dom@latest \
         react-hook-form \
-        @reduxjs/toolkit react-redux
+        @reduxjs/toolkit react-redux redux-thunk
 
 }
 
