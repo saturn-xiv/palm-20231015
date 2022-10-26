@@ -28,23 +28,31 @@ install_react() {
 
 }
 
+# https://ant.design/docs/react/getting-started
 install_ant_design() {
     yarn add antd @ant-design/pro-components @ant-design/charts
 }
 
+# https://developer.microsoft.com/en-us/fluentui#/get-started/web
 install_fluent_ui(){
     yarn add @fluentui/react
 }
 
+# https://mui.com/material-ui/getting-started/overview/
 install_material_design() {
     yarn add @mui/material @emotion/react @emotion/styled \
         @mui/icons-material @fontsource/roboto
 }
 
+# https://react-bootstrap.github.io/getting-started/introduction
+install_bootstrap() {
+    yarn add react-bootstrap bootstrap
+}
+
 
 if [ "$#" -ne 1 ]
 then
-    echo "USAGE: $0 material|fluent|ant"
+    echo "USAGE: $0 material|fluent|ant|bootstrap"
     exit 1
 fi
 
@@ -60,15 +68,15 @@ elif [ $1 == "fluent" ]
 then
     install_react
     install_fluent_ui
+elif [ $1 == "bootstrap" ]
+then
+    install_react
+    install_bootstrap
 else
     echo "unknown option $1"
     exit 1
 fi
 
-# install_react
-# install_ant_design
-# install_material_design
-# install_fluent_ui
 
 echo "Done($1)."
 
