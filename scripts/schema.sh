@@ -47,8 +47,25 @@ function generate_grpc_web() {
 
 function generate_diesel_postgresql() {
     echo "generate diesel schema for postgresql"
-    DATABASE_URL=$1 diesel print-schema -e databasechangelog \
-    > palm/src/schema.rs
+    # DATABASE_URL=$1 diesel print-schema -e databasechangelog \
+    # > palm/src/schema.rs
+    DATABASE_URL=$1 diesel print-schema \
+        -o locales settings sms_logs \
+            users users_contacts logs attachments attachments_resources \
+        > auth/src/schema.rs
+    DATABASE_URL=$1 diesel print-schema \
+        -o roles roles_constraints permissions \
+        > rbac/src/schema.rs
+    DATABASE_URL=$1 diesel print-schema \
+        -o leave_words shorter_links notifications \
+            tags tags_resources \
+            categories categories_resources \
+            vote_items votes_logs \
+            articles comments \
+        > cms/src/schema.rs
+    DATABASE_URL=$1 diesel print-schema \
+        -o forum_topics forum_posts \
+        > forum/src/schema.rs
 }
 
 # -----------------------------------------------------------------------------
@@ -82,5 +99,5 @@ cargo fmt
 
 # ----------------------------------------------------------
 
-echo 'done.'
+echo 'Done.'
 exit 0
