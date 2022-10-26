@@ -173,6 +173,20 @@ pub fn content_type<P: AsRef<Path>>(file: P) -> Result<mime::Mime> {
     ))))
 }
 
+pub mod auth {
+    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
+    pub mod v1 {
+        tonic::include_proto!("palm.auth.v1");
+    }
+}
+
+pub mod rbac {
+    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
+    pub mod v1 {
+        tonic::include_proto!("palm.rbac.v1");
+    }
+}
+
 pub mod nut {
     #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
     pub mod v1 {
