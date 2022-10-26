@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
@@ -41,11 +41,35 @@ install_material_design() {
         @mui/icons-material @fontsource/roboto
 }
 
-install_react
-install_ant_design
-install_material_design
-install_fluent_ui
 
-echo 'Done.'
+if [ "$#" -ne 1 ]
+then
+    echo "USAGE: $0 material|fluent|ant"
+    exit 1
+fi
+
+if [ $1 == "material" ]
+then
+    install_react
+    install_material_design
+elif [ $1 == "ant" ]
+then
+    install_react
+    install_ant_design
+elif [ $1 == "fluent" ]
+then
+    install_react
+    install_fluent_ui
+else
+    echo "unknown option $1"
+    exit 1
+fi
+
+# install_react
+# install_ant_design
+# install_material_design
+# install_fluent_ui
+
+echo "Done($1)."
 
 exit 0
