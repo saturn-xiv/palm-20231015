@@ -9,6 +9,9 @@
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
+            <column name="ip" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
             <column name="lang" type="varchar(8)">
                 <constraints nullable="false" />
             </column>
@@ -43,6 +46,9 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
+        <createIndex tableName="articles" indexName="idx_article_ip">
+            <column name="ip" />
+        </createIndex>
         <createIndex tableName="articles" indexName="idx_articles_lang">
             <column name="lang" />
         </createIndex>

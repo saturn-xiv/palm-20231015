@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
-    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
+                                                                                                                                                                                                 http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
 
     <changeSet id="20220925124035" author="jeremy.zheng" labels="create forum topics">
 
         <createTable tableName="forum_topics">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="ip" type="varchar(45)">
+                <constraints nullable="false" />
             </column>
             <column name="lang" type="varchar(8)">
                 <constraints nullable="false" />
@@ -37,6 +40,9 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
+        <createIndex tableName="forum_topics" indexName="idx_forum_topics_ip">
+            <column name="ip" />
+        </createIndex>
         <createIndex tableName="forum_topics" indexName="idx_forum_topics_lang">
             <column name="lang" />
         </createIndex>

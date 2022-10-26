@@ -7,9 +7,9 @@ strip = true
 members = [
     "palm",
     
-    "auth",
-    "rbac",
     "nut",
+    
+    "auth",
     "cms",
     "forum",
     "courses",

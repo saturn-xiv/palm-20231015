@@ -22,8 +22,5 @@ path = '../palm'
 [dependencies.auth]
 path = '../auth'
 
-[dependencies.rbac]
-path = '../rbac'
-
 [dependencies.cms]
 path = '../cms'

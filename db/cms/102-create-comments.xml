@@ -9,6 +9,9 @@
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
+            <column name="ip" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
             <column name="editor" type="varchar(16)">
                 <constraints nullable="false" />
             </column>
@@ -34,6 +37,9 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
+        <createIndex tableName="comments" indexName="idx_comments_ip">
+            <column name="ip" />
+        </createIndex>
 
     </changeSet>
 

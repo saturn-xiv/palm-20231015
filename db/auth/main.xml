@@ -11,4 +11,6 @@
     <include file="102-create-logs.xml" relativeToChangelogFile="true" />
     <include file="103-create-attachments.xml" relativeToChangelogFile="true" />
 
+    <include file="201-create-roles.xml" relativeToChangelogFile="true" />
+    <include file="202-create-permissions.xml" relativeToChangelogFile="true" />
 </databaseChangeLog>
