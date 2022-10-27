@@ -12,7 +12,6 @@ homepage = "https://github.com/saturn-xiv/palm"
 log = "0.4"
 toml = "0.5"
 oracle = "0.5"
-tonic = "0.8"
 env_logger = "0.9"
 prost = "0.11"
 prost-types = "0.11"
@@ -33,9 +32,17 @@ features = ["serde"]
 version = "0.7"
 features = ["serde"]
 
+[dependencies.tonic]
+version = "0.8"
+features = ["transport"]
+
 [dependencies.serde]
 version = "1"
 features = ["derive"]
+
+[dependencies.tokio]
+version = "1"
+features = ["full"]
 
 [dependencies.clap]
 version = "4"

@@ -40,7 +40,7 @@ pub enum SubCommand {
     Metrics(Metrics),
 }
 
-pub fn launch() -> Result<()> {
+pub async fn launch() -> Result<()> {
     let args = Args::parse();
     let target = if args.target == Args::DEFAULT_TARGET {
         dirs::home_dir().unwrap_or_else(|| Path::new("/tmp").to_path_buf())
@@ -65,7 +65,7 @@ pub fn launch() -> Result<()> {
     }
     if let SubCommand::Metrics(ref it) = args.command {
         let cfg = it.get()?;
-        return cfg.start();
+        return cfg.start().await;
     }
     Ok(())
 }

@@ -7,10 +7,12 @@ edition = "2021"
 
 [dependencies]
 log = "0.4"
-tonic = "0.8"
 prost = "0.11"
 prost-types = "0.11"
 
+[dependencies.tonic]
+version = "0.8"
+features = ["transport"]
 
 [dependencies.palm]
 path = '../palm'
