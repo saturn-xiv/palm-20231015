@@ -5,7 +5,6 @@
 
     <include file="001-create-locales.xml" relativeToChangelogFile="true" />
     <include file="002-create-settings.xml" relativeToChangelogFile="true" />
-    <include file="003-create-sms-logs.xml" relativeToChangelogFile="true" />
 
     <include file="101-create-users.xml" relativeToChangelogFile="true" />
     <include file="102-create-logs.xml" relativeToChangelogFile="true" />

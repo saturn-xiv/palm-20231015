@@ -126,6 +126,13 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 )
                 .show_files_listing(),
             )
+            .service(
+                web::scope("/twilio").service(
+                    web::scope("/sms")
+                        .service(cms::controllers::twilio::sms::delivery_status)
+                        .service(cms::controllers::twilio::sms::incoming_messages),
+                ),
+            )
             .service(cms::controllers::swagger_ui)
             .service(cms::controllers::sitemap::google)
             .service(cms::controllers::sitemap::baidu)

@@ -113,6 +113,16 @@ diesel::table! {
 }
 
 diesel::table! {
+    twilio_sms_logs (id) {
+        id -> Int4,
+        from -> Varchar,
+        to -> Varchar,
+        body -> Bytea,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     vote_items (id) {
         id -> Int4,
         score -> Int4,
@@ -151,6 +161,7 @@ diesel::allow_tables_to_appear_in_same_query!(
     shorter_links,
     tags,
     tags_resources,
+    twilio_sms_logs,
     vote_items,
     vote_logs,
 );

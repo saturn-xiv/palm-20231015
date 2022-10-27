@@ -112,11 +112,11 @@ diesel::table! {
 }
 
 diesel::table! {
-    sms_logs (id) {
+    twilio_sms_logs (id) {
         id -> Int4,
         from -> Varchar,
         to -> Varchar,
-        body -> Text,
+        body -> Bytea,
         created_at -> Timestamp,
     }
 }
@@ -189,7 +189,7 @@ diesel::allow_tables_to_appear_in_same_query!(
     roles_constraints,
     roles_users,
     settings,
-    sms_logs,
+    twilio_sms_logs,
     users,
     users_contacts,
     vote_logs,

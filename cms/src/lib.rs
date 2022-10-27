@@ -2,6 +2,8 @@
 
 #[macro_use]
 extern crate diesel;
+#[macro_use]
+extern crate log;
 
 pub mod controllers;
 pub mod models;

@@ -49,12 +49,12 @@ function generate_diesel_postgresql() {
     echo "generate diesel schema for postgresql"
     
     DATABASE_URL=$1 diesel print-schema \
-        -o locales settings sms_logs \
+        -o locales settings \
             users users_contacts logs attachments attachments_resources \
             roles roles_users roles_constraints permissions \
         > auth/src/schema.rs    
     DATABASE_URL=$1 diesel print-schema \
-        -o leave_words shorter_links notifications \
+        -o leave_words shorter_links notifications twilio_sms_logs \
             tags tags_resources \
             categories categories_resources \
             vote_items vote_logs \

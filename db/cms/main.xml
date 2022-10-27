@@ -9,6 +9,7 @@
     <include file="004-create-shorter-links.xml" relativeToChangelogFile="true" />
     <include file="005-create-votes.xml" relativeToChangelogFile="true" />
     <include file="006-create-notifications.xml" relativeToChangelogFile="true" />
+    <include file="007-create-twilio-sms-logs.xml" relativeToChangelogFile="true" />
 
     <include file="101-create-articles.xml" relativeToChangelogFile="true" />
     <include file="102-create-comments.xml" relativeToChangelogFile="true" />

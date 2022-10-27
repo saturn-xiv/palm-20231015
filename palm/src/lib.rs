@@ -110,6 +110,7 @@ pub mod queue;
 pub mod result;
 pub mod search;
 pub mod tasks;
+pub mod twilio;
 
 use std::io::{prelude::*, Error as IoError, ErrorKind as IoErrorKind};
 use std::path::Path;

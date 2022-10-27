@@ -13,11 +13,20 @@ askama = "0.11"
 prost = "0.11"
 prost-types = "0.11"
 nix = "0.25"
+flexbuffers = "2"
 lapin = "2"
 
 [dependencies.chrono]
 version = "0.4"
 features = ["serde"]
+
+[dependencies.reqwest]
+version = "0.11"
+features = ["json"]
+
+[dependencies.hyper]
+version = "0.14"
+features = ["full"]
 
 [dependencies.validator]
 version = "0.16"
