@@ -23,7 +23,6 @@ RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     vim tzdata pwgen zip unzip tree tmux dialog \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
     imagemagick ffmpeg fonts-dejavu-extra texlive-full \
-    clang clang-format lldb lld \
     build-essential cmake pkg-config libtool automake autoconf binutils cpio mold \
     debhelper bison flex ninja-build \
     musl-tools musl-dev \

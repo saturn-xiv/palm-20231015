@@ -1,5 +1,5 @@
-palm (2022.08.15) stable; urgency=medium
+palm (2022.10.27) stable; urgency=medium
 
-  * [bd63d72] add nut plugin.
+  * [ccd8d43] add auth & cms plugin.
 
- -- Jeremy Zheng <jitang.zheng@gmail.com>  Mon, 15 Aug 2022 01:23:35 +0530
+ -- Jeremy Zheng <jitang.zheng@gmail.com>  Thu, 27 Oct 2022 04:37:32 +0530

@@ -136,7 +136,7 @@ build_deb() {
     
     mkdir -p $target/etc/palm
     cp -r $WORKSPACE/LICENSE $WORKSPACE/README.md \
-        $WORKSPACE/package.json $WORKSPACE/docker/jammy/etc/envoy.yaml \
+        $WORKSPACE/docker/jammy/etc/envoy.yaml \
         $target/etc/palm/
     echo "$GIT_VERSION $(date -R)" > $target/etc/palm/VERSION
 
