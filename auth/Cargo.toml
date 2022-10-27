@@ -6,15 +6,63 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+futures = "0.3"
+futures-util = "0.3"
+language-tags = "0.3"
+mime = "0.3"
+actix-multipart = "0.4"
 log = "0.4"
+yaml-rust = "0.4"
+rand = "0.8"
 tonic = "0.8"
 prost = "0.11"
 prost-types = "0.11"
+serde_json = "1"
+flexbuffers = "2"
+percent-encoding = "2"
+tempfile = "3"
+handlebars = "4"
+
+[dependencies.chrono]
+version = "0.4"
+features = ["serde"]
+
+[dependencies.actix-session]
+version = "0.7"
+features = ["cookie-session", "redis-rs-session"]
+
+[dependencies.chrono-tz]
+version = "0.7"
+features = ["serde"]
+
+[dependencies.zmq]
+version = "0.9"
+features = ["vendored"]
+
+[dependencies.hyper]
+version = "0.14"
+features = ["full"]
+
+[dependencies.serde]
+version = "1"
+features = ["derive"]
+
+[dependencies.uuid]
+version = "1"
+features = ["v4", "serde"]
 
 [dependencies.diesel]
 version = "2"
 default-features = false
 features = ["bigdecimal", "postgres", "mysql", "sqlite", "extras", "128-column-tables"]
+
+[dependencies.actix-web]
+version = "4"
+features = ["cookies"]
+
+[dependencies.openssl]
+version = "*"
+features = ["vendored"]
 
 [dependencies.palm]
 path = '../palm'
