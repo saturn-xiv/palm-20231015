@@ -63,8 +63,8 @@ features = ["derive"]
 [dependencies.palm]
 path = '../palm'
 
-[dependencies.nut]
-path = '../nut'
+[dependencies.auth]
+path = '../auth'
 
 [dependencies.cms]
 path = '../cms'

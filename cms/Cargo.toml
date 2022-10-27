@@ -8,13 +8,37 @@ edition = "2021"
 [dependencies]
 log = "0.4"
 tonic = "0.8"
+xml-rs = "0.8"
+askama = "0.11"
 prost = "0.11"
 prost-types = "0.11"
+nix = "0.25"
+lapin = "2"
+
+[dependencies.chrono]
+version = "0.4"
+features = ["serde"]
+
+[dependencies.validator]
+version = "0.16"
+features = ["derive", "phone", "card", "unic"]
+
+[dependencies.serde]
+version = "1"
+features = ["derive"]
 
 [dependencies.diesel]
 version = "2"
 default-features = false
 features = ["bigdecimal", "postgres", "mysql", "sqlite", "extras", "128-column-tables"]
+
+[dependencies.rss]
+version = "2"
+features = ["validation"]
+
+[dependencies.actix-web]
+version = "4"
+features = ["cookies"]
 
 [dependencies.palm]
 path = '../palm'

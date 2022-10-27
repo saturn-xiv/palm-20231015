@@ -9,8 +9,8 @@ use std::ops::{Deref, DerefMut};
 use std::os::unix::fs::PermissionsExt;
 use std::path::PathBuf;
 
+use auth::models::locale::Dao as LocaleDao;
 use clap::{Parser, Subcommand};
-use nut::i18n::locale::Dao as LocaleDao;
 use palm::{
     cache::Provider, crypto::Hmac, is_stopped, jwt::Jwt, parser::from_toml, Result, BANNER,
     BUILD_TIME, GIT_VERSION, HOMEPAGE,

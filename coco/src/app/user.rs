@@ -1,12 +1,15 @@
+use auth::{
+    models::{
+        log::Dao as LogDao,
+        user::{Dao as UserDao, Item as User},
+    },
+    orm::postgresql::Connection as Db,
+};
 use chrono::{Duration, Utc};
 use diesel::Connection as DieselConntection;
-use nut::models::{
-    log::Dao as LogDao,
-    user::{Dao as UserDao, Item as User},
-};
 use palm::{
-    crypto::Hmac, jwt::Jwt, nut::v1::user_logs_response::item::Level::Info as LogLevelInfo,
-    orm::postgresql::Connection as Db, Error, Result,
+    auth::v1::user_logs_response::item::Level::Info as LogLevelInfo, crypto::Hmac, jwt::Jwt, Error,
+    Result,
 };
 
 #[derive(clap::Parser, PartialEq, Eq, Debug)]

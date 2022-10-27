@@ -1,11 +1,12 @@
 use std::any::type_name;
 use std::ops::DerefMut;
 
+use auth::models::setting::get;
 use hyper::StatusCode;
 use palm::{
     crypto::Aes,
-    nut::v1::{EmailTask, SmtpProfile},
     queue::amqp::RabbitMq,
+    v1::{EmailTask, SmtpProfile},
     HttpError, Result,
 };
 
@@ -25,7 +26,7 @@ pub async fn launch(cfg: &Config, name: &str) -> Result<()> {
     let aes = Aes::new(&cfg.secrets.0)?;
     let ch = queue.open().await?;
     if name == type_name::<EmailTask>() {
-        let cfg = nut::services::site::get::<SmtpProfile>(db, &aes)?;
+        let cfg = get::<SmtpProfile, Aes>(db, &aes, None)?;
         RabbitMq::consume(&ch, &id, EmailTask::QUEUE, &cfg).await
     } else {
         Err(Box::new(HttpError(

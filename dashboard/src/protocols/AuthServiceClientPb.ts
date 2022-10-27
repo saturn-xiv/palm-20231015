@@ -17,6 +17,10 @@
 
 import * as grpcWeb from 'grpc-web';
 
+import * as google_protobuf_duration_pb from 'google-protobuf/google/protobuf/duration_pb';
+import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
+import * as auth_pb from './auth_pb';
+import * as palm_pb from './palm_pb';
 
 
 export class UserClient {
@@ -36,6 +40,1918 @@ export class UserClient {
     this.hostname_ = hostname.replace(/\/+$/, '');
     this.credentials_ = credentials;
     this.options_ = options;
+  }
+
+  methodDescriptorSignIn = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/SignIn',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserSignInRequest,
+    auth_pb.UserSignInResponse,
+    (request: auth_pb.UserSignInRequest) => {
+      return request.serializeBinary();
+    },
+    auth_pb.UserSignInResponse.deserializeBinary
+  );
+
+  signIn(
+    request: auth_pb.UserSignInRequest,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.UserSignInResponse>;
+
+  signIn(
+    request: auth_pb.UserSignInRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.UserSignInResponse) => void): grpcWeb.ClientReadableStream<auth_pb.UserSignInResponse>;
+
+  signIn(
+    request: auth_pb.UserSignInRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.UserSignInResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/SignIn',
+        request,
+        metadata || {},
+        this.methodDescriptorSignIn,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/SignIn',
+    request,
+    metadata || {},
+    this.methodDescriptorSignIn);
+  }
+
+  methodDescriptorSignUp = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/SignUp',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserSignUpRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.UserSignUpRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  signUp(
+    request: auth_pb.UserSignUpRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  signUp(
+    request: auth_pb.UserSignUpRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  signUp(
+    request: auth_pb.UserSignUpRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/SignUp',
+        request,
+        metadata || {},
+        this.methodDescriptorSignUp,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/SignUp',
+    request,
+    metadata || {},
+    this.methodDescriptorSignUp);
+  }
+
+  methodDescriptorConfirmByEmail = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/ConfirmByEmail',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserEmailRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.UserEmailRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  confirmByEmail(
+    request: auth_pb.UserEmailRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  confirmByEmail(
+    request: auth_pb.UserEmailRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  confirmByEmail(
+    request: auth_pb.UserEmailRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/ConfirmByEmail',
+        request,
+        metadata || {},
+        this.methodDescriptorConfirmByEmail,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/ConfirmByEmail',
+    request,
+    metadata || {},
+    this.methodDescriptorConfirmByEmail);
+  }
+
+  methodDescriptorConfirmByToken = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/ConfirmByToken',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserTokenRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.UserTokenRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  confirmByToken(
+    request: auth_pb.UserTokenRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  confirmByToken(
+    request: auth_pb.UserTokenRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  confirmByToken(
+    request: auth_pb.UserTokenRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/ConfirmByToken',
+        request,
+        metadata || {},
+        this.methodDescriptorConfirmByToken,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/ConfirmByToken',
+    request,
+    metadata || {},
+    this.methodDescriptorConfirmByToken);
+  }
+
+  methodDescriptorUnlockByEmail = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/UnlockByEmail',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserEmailRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.UserEmailRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  unlockByEmail(
+    request: auth_pb.UserEmailRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  unlockByEmail(
+    request: auth_pb.UserEmailRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  unlockByEmail(
+    request: auth_pb.UserEmailRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/UnlockByEmail',
+        request,
+        metadata || {},
+        this.methodDescriptorUnlockByEmail,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/UnlockByEmail',
+    request,
+    metadata || {},
+    this.methodDescriptorUnlockByEmail);
+  }
+
+  methodDescriptorUnlockByToken = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/UnlockByToken',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserTokenRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.UserTokenRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  unlockByToken(
+    request: auth_pb.UserTokenRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  unlockByToken(
+    request: auth_pb.UserTokenRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  unlockByToken(
+    request: auth_pb.UserTokenRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/UnlockByToken',
+        request,
+        metadata || {},
+        this.methodDescriptorUnlockByToken,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/UnlockByToken',
+    request,
+    metadata || {},
+    this.methodDescriptorUnlockByToken);
+  }
+
+  methodDescriptorForgotPassword = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/ForgotPassword',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserEmailRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.UserEmailRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  forgotPassword(
+    request: auth_pb.UserEmailRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  forgotPassword(
+    request: auth_pb.UserEmailRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  forgotPassword(
+    request: auth_pb.UserEmailRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/ForgotPassword',
+        request,
+        metadata || {},
+        this.methodDescriptorForgotPassword,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/ForgotPassword',
+    request,
+    metadata || {},
+    this.methodDescriptorForgotPassword);
+  }
+
+  methodDescriptorResetPassword = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/ResetPassword',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserResetPasswordRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.UserResetPasswordRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  resetPassword(
+    request: auth_pb.UserResetPasswordRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  resetPassword(
+    request: auth_pb.UserResetPasswordRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  resetPassword(
+    request: auth_pb.UserResetPasswordRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/ResetPassword',
+        request,
+        metadata || {},
+        this.methodDescriptorResetPassword,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/ResetPassword',
+    request,
+    metadata || {},
+    this.methodDescriptorResetPassword);
+  }
+
+  methodDescriptorRefresh = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/Refresh',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_duration_pb.Duration,
+    auth_pb.UserSignInResponse,
+    (request: google_protobuf_duration_pb.Duration) => {
+      return request.serializeBinary();
+    },
+    auth_pb.UserSignInResponse.deserializeBinary
+  );
+
+  refresh(
+    request: google_protobuf_duration_pb.Duration,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.UserSignInResponse>;
+
+  refresh(
+    request: google_protobuf_duration_pb.Duration,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.UserSignInResponse) => void): grpcWeb.ClientReadableStream<auth_pb.UserSignInResponse>;
+
+  refresh(
+    request: google_protobuf_duration_pb.Duration,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.UserSignInResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/Refresh',
+        request,
+        metadata || {},
+        this.methodDescriptorRefresh,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/Refresh',
+    request,
+    metadata || {},
+    this.methodDescriptorRefresh);
+  }
+
+  methodDescriptorLogs = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/Logs',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserLogsRequest,
+    auth_pb.UserLogsResponse,
+    (request: auth_pb.UserLogsRequest) => {
+      return request.serializeBinary();
+    },
+    auth_pb.UserLogsResponse.deserializeBinary
+  );
+
+  logs(
+    request: auth_pb.UserLogsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.UserLogsResponse>;
+
+  logs(
+    request: auth_pb.UserLogsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.UserLogsResponse) => void): grpcWeb.ClientReadableStream<auth_pb.UserLogsResponse>;
+
+  logs(
+    request: auth_pb.UserLogsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.UserLogsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/Logs',
+        request,
+        metadata || {},
+        this.methodDescriptorLogs,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/Logs',
+    request,
+    metadata || {},
+    this.methodDescriptorLogs);
+  }
+
+  methodDescriptorSetProfile = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/SetProfile',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserSetProfileRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.UserSetProfileRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  setProfile(
+    request: auth_pb.UserSetProfileRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  setProfile(
+    request: auth_pb.UserSetProfileRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  setProfile(
+    request: auth_pb.UserSetProfileRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/SetProfile',
+        request,
+        metadata || {},
+        this.methodDescriptorSetProfile,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/SetProfile',
+    request,
+    metadata || {},
+    this.methodDescriptorSetProfile);
+  }
+
+  methodDescriptorChangePassword = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/ChangePassword',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserChangePasswordRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.UserChangePasswordRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  changePassword(
+    request: auth_pb.UserChangePasswordRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  changePassword(
+    request: auth_pb.UserChangePasswordRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  changePassword(
+    request: auth_pb.UserChangePasswordRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/ChangePassword',
+        request,
+        metadata || {},
+        this.methodDescriptorChangePassword,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/ChangePassword',
+    request,
+    metadata || {},
+    this.methodDescriptorChangePassword);
+  }
+
+  methodDescriptorSignOut = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/SignOut',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    google_protobuf_empty_pb.Empty,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  signOut(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  signOut(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  signOut(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/SignOut',
+        request,
+        metadata || {},
+        this.methodDescriptorSignOut,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/SignOut',
+    request,
+    metadata || {},
+    this.methodDescriptorSignOut);
+  }
+
+  methodDescriptorIndex = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/Index',
+    grpcWeb.MethodType.UNARY,
+    palm_pb.Pager,
+    auth_pb.UserIndexResponse,
+    (request: palm_pb.Pager) => {
+      return request.serializeBinary();
+    },
+    auth_pb.UserIndexResponse.deserializeBinary
+  );
+
+  index(
+    request: palm_pb.Pager,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.UserIndexResponse>;
+
+  index(
+    request: palm_pb.Pager,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.UserIndexResponse) => void): grpcWeb.ClientReadableStream<auth_pb.UserIndexResponse>;
+
+  index(
+    request: palm_pb.Pager,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.UserIndexResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/Index',
+        request,
+        metadata || {},
+        this.methodDescriptorIndex,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/Index',
+    request,
+    metadata || {},
+    this.methodDescriptorIndex);
+  }
+
+  methodDescriptorShow = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/Show',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserQueryRequest,
+    auth_pb.UserIndexResponse.Item,
+    (request: auth_pb.UserQueryRequest) => {
+      return request.serializeBinary();
+    },
+    auth_pb.UserIndexResponse.Item.deserializeBinary
+  );
+
+  show(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.UserIndexResponse.Item>;
+
+  show(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.UserIndexResponse.Item) => void): grpcWeb.ClientReadableStream<auth_pb.UserIndexResponse.Item>;
+
+  show(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.UserIndexResponse.Item) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/Show',
+        request,
+        metadata || {},
+        this.methodDescriptorShow,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/Show',
+    request,
+    metadata || {},
+    this.methodDescriptorShow);
+  }
+
+  methodDescriptorDisable = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/Disable',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserQueryRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.UserQueryRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  disable(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  disable(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  disable(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/Disable',
+        request,
+        metadata || {},
+        this.methodDescriptorDisable,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/Disable',
+    request,
+    metadata || {},
+    this.methodDescriptorDisable);
+  }
+
+  methodDescriptorEnable = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/Enable',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserQueryRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.UserQueryRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  enable(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  enable(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  enable(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/Enable',
+        request,
+        metadata || {},
+        this.methodDescriptorEnable,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/Enable',
+    request,
+    metadata || {},
+    this.methodDescriptorEnable);
+  }
+
+  methodDescriptorLock = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/Lock',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserQueryRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.UserQueryRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  lock(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  lock(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  lock(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/Lock',
+        request,
+        metadata || {},
+        this.methodDescriptorLock,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/Lock',
+    request,
+    metadata || {},
+    this.methodDescriptorLock);
+  }
+
+  methodDescriptorUnlock = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/Unlock',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserQueryRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.UserQueryRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  unlock(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  unlock(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  unlock(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/Unlock',
+        request,
+        metadata || {},
+        this.methodDescriptorUnlock,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/Unlock',
+    request,
+    metadata || {},
+    this.methodDescriptorUnlock);
+  }
+
+  methodDescriptorConfirm = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/Confirm',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserQueryRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.UserQueryRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  confirm(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  confirm(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  confirm(
+    request: auth_pb.UserQueryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/Confirm',
+        request,
+        metadata || {},
+        this.methodDescriptorConfirm,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/Confirm',
+    request,
+    metadata || {},
+    this.methodDescriptorConfirm);
+  }
+
+  methodDescriptorSetPassword = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.User/SetPassword',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.UserSetPasswordRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.UserSetPasswordRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  setPassword(
+    request: auth_pb.UserSetPasswordRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  setPassword(
+    request: auth_pb.UserSetPasswordRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  setPassword(
+    request: auth_pb.UserSetPasswordRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.User/SetPassword',
+        request,
+        metadata || {},
+        this.methodDescriptorSetPassword,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.User/SetPassword',
+    request,
+    metadata || {},
+    this.methodDescriptorSetPassword);
+  }
+
+}
+
+export class AttachmentClient {
+  client_: grpcWeb.AbstractClientBase;
+  hostname_: string;
+  credentials_: null | { [index: string]: string; };
+  options_: null | { [index: string]: any; };
+
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; }) {
+    if (!options) options = {};
+    if (!credentials) credentials = {};
+    options['format'] = 'binary';
+
+    this.client_ = new grpcWeb.GrpcWebClientBase(options);
+    this.hostname_ = hostname.replace(/\/+$/, '');
+    this.credentials_ = credentials;
+    this.options_ = options;
+  }
+
+  methodDescriptorIndex = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Attachment/Index',
+    grpcWeb.MethodType.UNARY,
+    palm_pb.Pager,
+    auth_pb.AttachmetIndexResponse,
+    (request: palm_pb.Pager) => {
+      return request.serializeBinary();
+    },
+    auth_pb.AttachmetIndexResponse.deserializeBinary
+  );
+
+  index(
+    request: palm_pb.Pager,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.AttachmetIndexResponse>;
+
+  index(
+    request: palm_pb.Pager,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.AttachmetIndexResponse) => void): grpcWeb.ClientReadableStream<auth_pb.AttachmetIndexResponse>;
+
+  index(
+    request: palm_pb.Pager,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.AttachmetIndexResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Attachment/Index',
+        request,
+        metadata || {},
+        this.methodDescriptorIndex,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Attachment/Index',
+    request,
+    metadata || {},
+    this.methodDescriptorIndex);
+  }
+
+  methodDescriptorDestroy = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Attachment/Destroy',
+    grpcWeb.MethodType.UNARY,
+    palm_pb.IdRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: palm_pb.IdRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  destroy(
+    request: palm_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  destroy(
+    request: palm_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  destroy(
+    request: palm_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Attachment/Destroy',
+        request,
+        metadata || {},
+        this.methodDescriptorDestroy,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Attachment/Destroy',
+    request,
+    metadata || {},
+    this.methodDescriptorDestroy);
+  }
+
+  methodDescriptorShow = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Attachment/Show',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.AttachemtShowRequest,
+    auth_pb.AttachemtShowResponse,
+    (request: auth_pb.AttachemtShowRequest) => {
+      return request.serializeBinary();
+    },
+    auth_pb.AttachemtShowResponse.deserializeBinary
+  );
+
+  show(
+    request: auth_pb.AttachemtShowRequest,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.AttachemtShowResponse>;
+
+  show(
+    request: auth_pb.AttachemtShowRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.AttachemtShowResponse) => void): grpcWeb.ClientReadableStream<auth_pb.AttachemtShowResponse>;
+
+  show(
+    request: auth_pb.AttachemtShowRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.AttachemtShowResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Attachment/Show',
+        request,
+        metadata || {},
+        this.methodDescriptorShow,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Attachment/Show',
+    request,
+    metadata || {},
+    this.methodDescriptorShow);
+  }
+
+}
+
+export class PolicyClient {
+  client_: grpcWeb.AbstractClientBase;
+  hostname_: string;
+  credentials_: null | { [index: string]: string; };
+  options_: null | { [index: string]: any; };
+
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; }) {
+    if (!options) options = {};
+    if (!credentials) credentials = {};
+    options['format'] = 'binary';
+
+    this.client_ = new grpcWeb.GrpcWebClientBase(options);
+    this.hostname_ = hostname.replace(/\/+$/, '');
+    this.credentials_ = credentials;
+    this.options_ = options;
+  }
+
+  methodDescriptorAddRole = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Policy/AddRole',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.PolicyAddRoleRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.PolicyAddRoleRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  addRole(
+    request: auth_pb.PolicyAddRoleRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  addRole(
+    request: auth_pb.PolicyAddRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  addRole(
+    request: auth_pb.PolicyAddRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Policy/AddRole',
+        request,
+        metadata || {},
+        this.methodDescriptorAddRole,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Policy/AddRole',
+    request,
+    metadata || {},
+    this.methodDescriptorAddRole);
+  }
+
+  methodDescriptorGetAllRoles = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Policy/GetAllRoles',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    auth_pb.PolicyRoleListResponse,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    auth_pb.PolicyRoleListResponse.deserializeBinary
+  );
+
+  getAllRoles(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.PolicyRoleListResponse>;
+
+  getAllRoles(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyRoleListResponse) => void): grpcWeb.ClientReadableStream<auth_pb.PolicyRoleListResponse>;
+
+  getAllRoles(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyRoleListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Policy/GetAllRoles',
+        request,
+        metadata || {},
+        this.methodDescriptorGetAllRoles,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Policy/GetAllRoles',
+    request,
+    metadata || {},
+    this.methodDescriptorGetAllRoles);
+  }
+
+  methodDescriptorDeleteRole = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Policy/DeleteRole',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.PolicyRoleRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.PolicyRoleRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  deleteRole(
+    request: auth_pb.PolicyRoleRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  deleteRole(
+    request: auth_pb.PolicyRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  deleteRole(
+    request: auth_pb.PolicyRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Policy/DeleteRole',
+        request,
+        metadata || {},
+        this.methodDescriptorDeleteRole,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Policy/DeleteRole',
+    request,
+    metadata || {},
+    this.methodDescriptorDeleteRole);
+  }
+
+  methodDescriptorGetRolesForUser = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Policy/GetRolesForUser',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.PolicyUserRequest,
+    auth_pb.PolicyRoleListResponse,
+    (request: auth_pb.PolicyUserRequest) => {
+      return request.serializeBinary();
+    },
+    auth_pb.PolicyRoleListResponse.deserializeBinary
+  );
+
+  getRolesForUser(
+    request: auth_pb.PolicyUserRequest,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.PolicyRoleListResponse>;
+
+  getRolesForUser(
+    request: auth_pb.PolicyUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyRoleListResponse) => void): grpcWeb.ClientReadableStream<auth_pb.PolicyRoleListResponse>;
+
+  getRolesForUser(
+    request: auth_pb.PolicyUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyRoleListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Policy/GetRolesForUser',
+        request,
+        metadata || {},
+        this.methodDescriptorGetRolesForUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Policy/GetRolesForUser',
+    request,
+    metadata || {},
+    this.methodDescriptorGetRolesForUser);
+  }
+
+  methodDescriptorGetUsersForRole = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Policy/GetUsersForRole',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.PolicyRoleRequest,
+    auth_pb.PolicyUserListResponse,
+    (request: auth_pb.PolicyRoleRequest) => {
+      return request.serializeBinary();
+    },
+    auth_pb.PolicyUserListResponse.deserializeBinary
+  );
+
+  getUsersForRole(
+    request: auth_pb.PolicyRoleRequest,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.PolicyUserListResponse>;
+
+  getUsersForRole(
+    request: auth_pb.PolicyRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyUserListResponse) => void): grpcWeb.ClientReadableStream<auth_pb.PolicyUserListResponse>;
+
+  getUsersForRole(
+    request: auth_pb.PolicyRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyUserListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Policy/GetUsersForRole',
+        request,
+        metadata || {},
+        this.methodDescriptorGetUsersForRole,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Policy/GetUsersForRole',
+    request,
+    metadata || {},
+    this.methodDescriptorGetUsersForRole);
+  }
+
+  methodDescriptorAddRolesForUser = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Policy/AddRolesForUser',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.PolicyAddRolesForUserRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.PolicyAddRolesForUserRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  addRolesForUser(
+    request: auth_pb.PolicyAddRolesForUserRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  addRolesForUser(
+    request: auth_pb.PolicyAddRolesForUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  addRolesForUser(
+    request: auth_pb.PolicyAddRolesForUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Policy/AddRolesForUser',
+        request,
+        metadata || {},
+        this.methodDescriptorAddRolesForUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Policy/AddRolesForUser',
+    request,
+    metadata || {},
+    this.methodDescriptorAddRolesForUser);
+  }
+
+  methodDescriptorDeleteRolesForUser = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Policy/DeleteRolesForUser',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.PolicyDeleteRolesForUserRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.PolicyDeleteRolesForUserRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  deleteRolesForUser(
+    request: auth_pb.PolicyDeleteRolesForUserRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  deleteRolesForUser(
+    request: auth_pb.PolicyDeleteRolesForUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  deleteRolesForUser(
+    request: auth_pb.PolicyDeleteRolesForUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Policy/DeleteRolesForUser',
+        request,
+        metadata || {},
+        this.methodDescriptorDeleteRolesForUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Policy/DeleteRolesForUser',
+    request,
+    metadata || {},
+    this.methodDescriptorDeleteRolesForUser);
+  }
+
+  methodDescriptorGetImplicitRolesForUser = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Policy/GetImplicitRolesForUser',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.PolicyUserRequest,
+    auth_pb.PolicyRoleListResponse,
+    (request: auth_pb.PolicyUserRequest) => {
+      return request.serializeBinary();
+    },
+    auth_pb.PolicyRoleListResponse.deserializeBinary
+  );
+
+  getImplicitRolesForUser(
+    request: auth_pb.PolicyUserRequest,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.PolicyRoleListResponse>;
+
+  getImplicitRolesForUser(
+    request: auth_pb.PolicyUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyRoleListResponse) => void): grpcWeb.ClientReadableStream<auth_pb.PolicyRoleListResponse>;
+
+  getImplicitRolesForUser(
+    request: auth_pb.PolicyUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyRoleListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Policy/GetImplicitRolesForUser',
+        request,
+        metadata || {},
+        this.methodDescriptorGetImplicitRolesForUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Policy/GetImplicitRolesForUser',
+    request,
+    metadata || {},
+    this.methodDescriptorGetImplicitRolesForUser);
+  }
+
+  methodDescriptorGetImplicitUsersForRole = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Policy/GetImplicitUsersForRole',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.PolicyRoleRequest,
+    auth_pb.PolicyUserListResponse,
+    (request: auth_pb.PolicyRoleRequest) => {
+      return request.serializeBinary();
+    },
+    auth_pb.PolicyUserListResponse.deserializeBinary
+  );
+
+  getImplicitUsersForRole(
+    request: auth_pb.PolicyRoleRequest,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.PolicyUserListResponse>;
+
+  getImplicitUsersForRole(
+    request: auth_pb.PolicyRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyUserListResponse) => void): grpcWeb.ClientReadableStream<auth_pb.PolicyUserListResponse>;
+
+  getImplicitUsersForRole(
+    request: auth_pb.PolicyRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyUserListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Policy/GetImplicitUsersForRole',
+        request,
+        metadata || {},
+        this.methodDescriptorGetImplicitUsersForRole,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Policy/GetImplicitUsersForRole',
+    request,
+    metadata || {},
+    this.methodDescriptorGetImplicitUsersForRole);
+  }
+
+  methodDescriptorGetPermissionsForUser = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Policy/GetPermissionsForUser',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.PolicyUserRequest,
+    auth_pb.PolicyPermissionListResponse,
+    (request: auth_pb.PolicyUserRequest) => {
+      return request.serializeBinary();
+    },
+    auth_pb.PolicyPermissionListResponse.deserializeBinary
+  );
+
+  getPermissionsForUser(
+    request: auth_pb.PolicyUserRequest,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.PolicyPermissionListResponse>;
+
+  getPermissionsForUser(
+    request: auth_pb.PolicyUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyPermissionListResponse) => void): grpcWeb.ClientReadableStream<auth_pb.PolicyPermissionListResponse>;
+
+  getPermissionsForUser(
+    request: auth_pb.PolicyUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyPermissionListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Policy/GetPermissionsForUser',
+        request,
+        metadata || {},
+        this.methodDescriptorGetPermissionsForUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Policy/GetPermissionsForUser',
+    request,
+    metadata || {},
+    this.methodDescriptorGetPermissionsForUser);
+  }
+
+  methodDescriptorGetPermissionsForRole = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Policy/GetPermissionsForRole',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.PolicyRoleRequest,
+    auth_pb.PolicyPermissionListResponse,
+    (request: auth_pb.PolicyRoleRequest) => {
+      return request.serializeBinary();
+    },
+    auth_pb.PolicyPermissionListResponse.deserializeBinary
+  );
+
+  getPermissionsForRole(
+    request: auth_pb.PolicyRoleRequest,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.PolicyPermissionListResponse>;
+
+  getPermissionsForRole(
+    request: auth_pb.PolicyRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyPermissionListResponse) => void): grpcWeb.ClientReadableStream<auth_pb.PolicyPermissionListResponse>;
+
+  getPermissionsForRole(
+    request: auth_pb.PolicyRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyPermissionListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Policy/GetPermissionsForRole',
+        request,
+        metadata || {},
+        this.methodDescriptorGetPermissionsForRole,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Policy/GetPermissionsForRole',
+    request,
+    metadata || {},
+    this.methodDescriptorGetPermissionsForRole);
+  }
+
+  methodDescriptorGetImplicitPermissionsForUser = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Policy/GetImplicitPermissionsForUser',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.PolicyUserRequest,
+    auth_pb.PolicyPermissionListResponse,
+    (request: auth_pb.PolicyUserRequest) => {
+      return request.serializeBinary();
+    },
+    auth_pb.PolicyPermissionListResponse.deserializeBinary
+  );
+
+  getImplicitPermissionsForUser(
+    request: auth_pb.PolicyUserRequest,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.PolicyPermissionListResponse>;
+
+  getImplicitPermissionsForUser(
+    request: auth_pb.PolicyUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyPermissionListResponse) => void): grpcWeb.ClientReadableStream<auth_pb.PolicyPermissionListResponse>;
+
+  getImplicitPermissionsForUser(
+    request: auth_pb.PolicyUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyPermissionListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Policy/GetImplicitPermissionsForUser',
+        request,
+        metadata || {},
+        this.methodDescriptorGetImplicitPermissionsForUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Policy/GetImplicitPermissionsForUser',
+    request,
+    metadata || {},
+    this.methodDescriptorGetImplicitPermissionsForUser);
+  }
+
+  methodDescriptorGetImplicitPermissionsForRole = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Policy/GetImplicitPermissionsForRole',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.PolicyRoleRequest,
+    auth_pb.PolicyPermissionListResponse,
+    (request: auth_pb.PolicyRoleRequest) => {
+      return request.serializeBinary();
+    },
+    auth_pb.PolicyPermissionListResponse.deserializeBinary
+  );
+
+  getImplicitPermissionsForRole(
+    request: auth_pb.PolicyRoleRequest,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.PolicyPermissionListResponse>;
+
+  getImplicitPermissionsForRole(
+    request: auth_pb.PolicyRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyPermissionListResponse) => void): grpcWeb.ClientReadableStream<auth_pb.PolicyPermissionListResponse>;
+
+  getImplicitPermissionsForRole(
+    request: auth_pb.PolicyRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.PolicyPermissionListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Policy/GetImplicitPermissionsForRole',
+        request,
+        metadata || {},
+        this.methodDescriptorGetImplicitPermissionsForRole,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Policy/GetImplicitPermissionsForRole',
+    request,
+    metadata || {},
+    this.methodDescriptorGetImplicitPermissionsForRole);
+  }
+
+  methodDescriptorAddPermissions = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Policy/AddPermissions',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.PolicyPermissionsRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.PolicyPermissionsRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  addPermissions(
+    request: auth_pb.PolicyPermissionsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  addPermissions(
+    request: auth_pb.PolicyPermissionsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  addPermissions(
+    request: auth_pb.PolicyPermissionsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Policy/AddPermissions',
+        request,
+        metadata || {},
+        this.methodDescriptorAddPermissions,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Policy/AddPermissions',
+    request,
+    metadata || {},
+    this.methodDescriptorAddPermissions);
+  }
+
+  methodDescriptorDeletePermissions = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Policy/DeletePermissions',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.PolicyPermissionsRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.PolicyPermissionsRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  deletePermissions(
+    request: auth_pb.PolicyPermissionsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  deletePermissions(
+    request: auth_pb.PolicyPermissionsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  deletePermissions(
+    request: auth_pb.PolicyPermissionsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Policy/DeletePermissions',
+        request,
+        metadata || {},
+        this.methodDescriptorDeletePermissions,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Policy/DeletePermissions',
+    request,
+    metadata || {},
+    this.methodDescriptorDeletePermissions);
+  }
+
+}
+
+export class LocaleClient {
+  client_: grpcWeb.AbstractClientBase;
+  hostname_: string;
+  credentials_: null | { [index: string]: string; };
+  options_: null | { [index: string]: any; };
+
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; }) {
+    if (!options) options = {};
+    if (!credentials) credentials = {};
+    options['format'] = 'binary';
+
+    this.client_ = new grpcWeb.GrpcWebClientBase(options);
+    this.hostname_ = hostname.replace(/\/+$/, '');
+    this.credentials_ = credentials;
+    this.options_ = options;
+  }
+
+  methodDescriptorSet = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Locale/Set',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.LocaleSetRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: auth_pb.LocaleSetRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  set(
+    request: auth_pb.LocaleSetRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  set(
+    request: auth_pb.LocaleSetRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  set(
+    request: auth_pb.LocaleSetRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Locale/Set',
+        request,
+        metadata || {},
+        this.methodDescriptorSet,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Locale/Set',
+    request,
+    metadata || {},
+    this.methodDescriptorSet);
+  }
+
+  methodDescriptorGet = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Locale/Get',
+    grpcWeb.MethodType.UNARY,
+    auth_pb.LocaleGetRequest,
+    auth_pb.LocaleIndexResponse.Item,
+    (request: auth_pb.LocaleGetRequest) => {
+      return request.serializeBinary();
+    },
+    auth_pb.LocaleIndexResponse.Item.deserializeBinary
+  );
+
+  get(
+    request: auth_pb.LocaleGetRequest,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.LocaleIndexResponse.Item>;
+
+  get(
+    request: auth_pb.LocaleGetRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.LocaleIndexResponse.Item) => void): grpcWeb.ClientReadableStream<auth_pb.LocaleIndexResponse.Item>;
+
+  get(
+    request: auth_pb.LocaleGetRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.LocaleIndexResponse.Item) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Locale/Get',
+        request,
+        metadata || {},
+        this.methodDescriptorGet,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Locale/Get',
+    request,
+    metadata || {},
+    this.methodDescriptorGet);
+  }
+
+  methodDescriptorIndex = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Locale/Index',
+    grpcWeb.MethodType.UNARY,
+    palm_pb.Pager,
+    auth_pb.LocaleIndexResponse,
+    (request: palm_pb.Pager) => {
+      return request.serializeBinary();
+    },
+    auth_pb.LocaleIndexResponse.deserializeBinary
+  );
+
+  index(
+    request: palm_pb.Pager,
+    metadata: grpcWeb.Metadata | null): Promise<auth_pb.LocaleIndexResponse>;
+
+  index(
+    request: palm_pb.Pager,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: auth_pb.LocaleIndexResponse) => void): grpcWeb.ClientReadableStream<auth_pb.LocaleIndexResponse>;
+
+  index(
+    request: palm_pb.Pager,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: auth_pb.LocaleIndexResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Locale/Index',
+        request,
+        metadata || {},
+        this.methodDescriptorIndex,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Locale/Index',
+    request,
+    metadata || {},
+    this.methodDescriptorIndex);
+  }
+
+  methodDescriptorDestroy = new grpcWeb.MethodDescriptor(
+    '/palm.auth.v1.Locale/Destroy',
+    grpcWeb.MethodType.UNARY,
+    palm_pb.IdRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: palm_pb.IdRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  destroy(
+    request: palm_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  destroy(
+    request: palm_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  destroy(
+    request: palm_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.auth.v1.Locale/Destroy',
+        request,
+        metadata || {},
+        this.methodDescriptorDestroy,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.auth.v1.Locale/Destroy',
+    request,
+    metadata || {},
+    this.methodDescriptorDestroy);
   }
 
 }

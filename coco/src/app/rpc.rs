@@ -22,52 +22,23 @@ pub async fn launch(cfg: &Config) -> Result<()> {
 
     info!("start rpc-tcp at {}", addr);
     Server::builder()
-        .add_service(palm::nut::v1::attachment_server::AttachmentServer::new(
-            nut::services::attachment::Service {
+        .add_service(palm::auth::v1::attachment_server::AttachmentServer::new(
+            auth::services::attachment::Service {
                 pgsql: pgsql.clone(),
                 jwt: jwt.clone(),
                 aes: aes.clone(),
                 redis: redis.clone(),
             },
         ))
-        .add_service(palm::nut::v1::locale_server::LocaleServer::new(
-            nut::services::locale::Service {
+        .add_service(palm::auth::v1::locale_server::LocaleServer::new(
+            auth::services::locale::Service {
                 pgsql: pgsql.clone(),
                 jwt: jwt.clone(),
                 redis: redis.clone(),
             },
         ))
-        .add_service(palm::nut::v1::setting_server::SettingServer::new(
-            nut::services::setting::Service {
-                pgsql: pgsql.clone(),
-                jwt: jwt.clone(),
-                aes: aes.clone(),
-                redis: redis.clone(),
-            },
-        ))
-        .add_service(palm::nut::v1::tag_server::TagServer::new(
-            nut::services::tag::Service {
-                pgsql: pgsql.clone(),
-                jwt: jwt.clone(),
-                redis: redis.clone(),
-            },
-        ))
-        .add_service(palm::nut::v1::category_server::CategoryServer::new(
-            nut::services::category::Service {
-                pgsql: pgsql.clone(),
-                jwt: jwt.clone(),
-                redis: redis.clone(),
-            },
-        ))
-        .add_service(palm::nut::v1::shorter_link_server::ShorterLinkServer::new(
-            nut::services::shorter_link::Service {
-                pgsql: pgsql.clone(),
-                jwt: jwt.clone(),
-                redis: redis.clone(),
-            },
-        ))
-        .add_service(palm::nut::v1::user_server::UserServer::new(
-            nut::services::user::Service {
+        .add_service(palm::auth::v1::user_server::UserServer::new(
+            auth::services::user::Service {
                 pgsql: pgsql.clone(),
                 redis: redis.clone(),
                 jwt: jwt.clone(),
@@ -75,15 +46,36 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 rabbitmq: rabbitmq.clone(),
             },
         ))
-        .add_service(palm::nut::v1::policy_server::PolicyServer::new(
-            nut::services::policy::Service {
+        .add_service(palm::auth::v1::policy_server::PolicyServer::new(
+            auth::services::policy::Service {
                 pgsql: pgsql.clone(),
                 jwt: jwt.clone(),
                 redis: redis.clone(),
             },
         ))
-        .add_service(palm::nut::v1::site_server::SiteServer::new(
-            nut::services::site::Service {
+        .add_service(palm::cms::v1::tag_server::TagServer::new(
+            cms::services::tag::Service {
+                pgsql: pgsql.clone(),
+                jwt: jwt.clone(),
+                redis: redis.clone(),
+            },
+        ))
+        .add_service(palm::cms::v1::category_server::CategoryServer::new(
+            cms::services::category::Service {
+                pgsql: pgsql.clone(),
+                jwt: jwt.clone(),
+                redis: redis.clone(),
+            },
+        ))
+        .add_service(palm::cms::v1::shorter_link_server::ShorterLinkServer::new(
+            cms::services::shorter_link::Service {
+                pgsql: pgsql.clone(),
+                jwt: jwt.clone(),
+                redis: redis.clone(),
+            },
+        ))
+        .add_service(palm::cms::v1::site_server::SiteServer::new(
+            cms::services::site::Service {
                 pgsql,
                 jwt,
                 aes,

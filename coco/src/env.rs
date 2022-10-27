@@ -1,8 +1,8 @@
+use auth::orm::postgresql::Config as PostgreSql;
 use palm::{
     cache::redis::Config as Redis,
     crypto::Key,
     env::{Environment, Http, Rpc},
-    orm::postgresql::Config as PostgreSql,
     queue::amqp::Config as RabbitMqConfig,
     search::Config as OpenSearch,
 };

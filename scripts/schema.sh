@@ -51,13 +51,13 @@ function generate_diesel_postgresql() {
     DATABASE_URL=$1 diesel print-schema \
         -o locales settings sms_logs \
             users users_contacts logs attachments attachments_resources \
-            roles roles_constraints permissions \
+            roles roles_users roles_constraints permissions \
         > auth/src/schema.rs    
     DATABASE_URL=$1 diesel print-schema \
         -o leave_words shorter_links notifications \
             tags tags_resources \
             categories categories_resources \
-            vote_items votes_logs \
+            vote_items vote_logs \
             articles comments \
         > cms/src/schema.rs
     DATABASE_URL=$1 diesel print-schema \

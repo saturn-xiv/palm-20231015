@@ -19,7 +19,7 @@ import * as grpcWeb from 'grpc-web';
 
 
 
-export class TopicClient {
+export class JournalClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;
   credentials_: null | { [index: string]: string; };
@@ -40,7 +40,7 @@ export class TopicClient {
 
 }
 
-export class PostClient {
+export class HeartbeatClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;
   credentials_: null | { [index: string]: string; };

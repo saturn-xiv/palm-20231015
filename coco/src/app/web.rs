@@ -94,12 +94,8 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 .cookie_secure(is_prod)
                 .build(),
             )
-            .service(nut::controllers::attachments::create)
-            .service(nut::controllers::captcha::get)
-            .service(nut::controllers::sitemap::index)
-            .service(nut::controllers::sitemap::by_lang)
-            .service(nut::controllers::rss_xml)
-            .service(nut::controllers::robots_txt)
+            .service(auth::controllers::attachments::create)
+            .service(auth::controllers::captcha::get)
             .service(
                 actix_files::Files::new(
                     "/3rd",
@@ -130,11 +126,15 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 )
                 .show_files_listing(),
             )
-            .service(nut::controllers::home::by_lang)
-            .service(nut::controllers::sitemap::google)
-            .service(nut::controllers::sitemap::baidu)
-            .service(nut::controllers::swagger_ui)
-            .service(nut::controllers::home::index)
+            .service(cms::controllers::swagger_ui)
+            .service(cms::controllers::sitemap::google)
+            .service(cms::controllers::sitemap::baidu)
+            .service(cms::controllers::sitemap::index)
+            .service(cms::controllers::sitemap::by_lang)
+            .service(cms::controllers::rss_xml)
+            .service(cms::controllers::robots_txt)
+            .service(cms::controllers::home::by_lang)
+            .service(cms::controllers::home::index)
     })
     .bind(addr)?
     .run()
