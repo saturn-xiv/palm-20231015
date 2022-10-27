@@ -11,7 +11,7 @@ export TARGET=$WORKSPACE/tmp/$GIT_VERSION-$VERSION_CODENAME
 build_ubuntu_backend() {
     echo "build $1..."
 
-    apt -y install libc6-dev:$1 libudev-dev:$1 libssl-dev:$1 \
+    apt -qq -y install libc6-dev:$1 libudev-dev:$1 libssl-dev:$1 \
         libpq5:$1 libpq-dev:$1 libmysqlclient-dev:$1 libsqlite3-dev:$1
 
     local root=$2/usr/bin
@@ -26,8 +26,8 @@ build_ubuntu_backend() {
         local PKG_CONFIG_ALL_STATIC=1
         
         local target="x86_64-unknown-linux-gnu"
-        cargo clean --target $target --release -p palm
-        cargo build --target $target --release
+        cargo clean --quiet --release --target $target -p palm
+        cargo build --quiet --release --target $target
 
         cd target/$target/release
         cp coco fig $root
@@ -44,8 +44,8 @@ build_ubuntu_backend() {
         local HOST_CC=gcc
 
         local target="armv7-unknown-linux-gnueabihf"
-        cargo clean --target $target --release -p palm
-        cargo build --target $target --release
+        cargo clean --quiet --release --target $target -p palm
+        cargo build --quiet --release --target $target
 
         cd target/$target/release
         cp coco fig $root        
@@ -62,8 +62,8 @@ build_ubuntu_backend() {
         local HOST_CC=gcc        
 
         local target="aarch64-unknown-linux-gnu"
-        cargo clean --target $target --release -p palm
-        cargo build --target $target --release
+        cargo clean --quiet --release --target $target -p palm
+        cargo build --quiet --release --target $target
         
         cd target/$target/release
         cp coco fig $root
@@ -77,12 +77,12 @@ build_dashboard() {
     cd $WORKSPACE
     if [ ! -d node_modules ]
     then
-        yarn install
+        yarn install --silent
     fi
     cd $WORKSPACE/dashboard
     if [ ! -d node_modules ]
     then
-        yarn install
+        yarn install --silent
     fi
     yarn build
 }
@@ -150,7 +150,7 @@ build_dashboard
 
 if [[ $ID == "ubuntu" ]]
 then
-    apt update
+    apt -qq update
 
     build_deb amd64
     build_deb arm64
@@ -158,13 +158,13 @@ then
 elif [[ $ID == "arch" ]]
 then
     cd $WORKSPACE
-    cargo clean --target x86_64-unknown-linux-gnu --release -p palm
-    cargo build --target x86_64-unknown-linux-gnu --release
+    cargo clean --quiet --release --target x86_64-unknown-linux-gnu -p palm
+    cargo build --quiet --release --target x86_64-unknown-linux-gnu
 elif [[ $ID == "alpine" ]]
 then
     cd $WORKSPACE    
-    cargo clean --target x86_64-unknown-linux-musl --release -p palm
-    cargo build --target x86_64-unknown-linux-musl --release
+    cargo clean --quiet --release --target x86_64-unknown-linux-musl -p palm
+    cargo build --quiet --release --target x86_64-unknown-linux-musl
 else
     echo "Unknown os $ID"
     exit 1
