@@ -16,7 +16,7 @@ use ::minio::s3::{
 use askama::Template;
 use serde::{Deserialize, Serialize};
 
-use super::{nut::v1, Result};
+use super::{v1, Result};
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 #[serde(rename_all = "camelCase")]

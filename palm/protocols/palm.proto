@@ -1,0 +1,81 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.github.saturn_xiv.palm.v1";
+package palm.v1;
+
+message IdRequest { int32 id = 1; }
+
+message Pager {
+  int64 page = 1;
+  int64 size = 2;
+}
+
+message Pagination {
+  int64 page = 1;
+  int64 size = 2;
+  int64 total = 3;
+  bool has_next = 11;
+  bool has_previous = 12;
+}
+
+message MediaContent {
+  enum Editor {
+    TEXTAREA = 0;
+    QUILL = 1;
+  }
+
+  enum Status {
+    Publish = 0;
+    Draft = 1;
+    Pending = 2;
+    Private = 3;
+    Future = 4;
+    Trash = 99;
+  }
+  Editor editor = 1;
+  string body = 2;
+  Status status = 3;
+}
+
+message SmtpProfile {
+  string host = 1;
+  uint32 port = 2;
+  string user = 3;
+  string password = 4;
+  string cc = 5;
+  string bcc = 6;
+}
+
+message SmsTask {
+  string from = 1;
+  repeated string to = 2;
+  string body = 3;
+}
+
+message EmailTask {
+  enum ContentType {
+    TEXT_PLAIN = 0;
+    TEXT_HTML = 1;
+  }
+  message Attachment {
+    string name = 1;
+    ContentType content_type = 2;
+    bytes payload = 11;
+  }
+  string subject = 1;
+  string body = 2;
+  ContentType content_type = 3;
+
+  string to = 11;
+  repeated string cc = 12;
+  repeated string bcc = 13;
+  repeated Attachment attachments = 21;
+}
+
+message MinioProfile {
+  optional string region = 1;
+  string host = 2;
+  bool secure = 3;
+  string access_key_id = 4;
+  string secret_access_key = 5;
+}

@@ -1,8 +1,6 @@
 #![recursion_limit = "256"]
 
 #[macro_use]
-extern crate diesel;
-#[macro_use]
 extern crate log;
 #[macro_use]
 extern crate serde_json;
@@ -107,11 +105,9 @@ pub mod jwt;
 pub mod minio;
 pub mod models;
 pub mod oauth;
-pub mod orm;
 pub mod parser;
 pub mod queue;
 pub mod result;
-pub mod schema;
 pub mod search;
 pub mod tasks;
 
@@ -173,24 +169,15 @@ pub fn content_type<P: AsRef<Path>>(file: P) -> Result<mime::Mime> {
     ))))
 }
 
+#[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
+pub mod v1 {
+    tonic::include_proto!("palm.v1");
+}
+
 pub mod auth {
     #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
     pub mod v1 {
         tonic::include_proto!("palm.auth.v1");
-    }
-}
-
-pub mod rbac {
-    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-    pub mod v1 {
-        tonic::include_proto!("palm.rbac.v1");
-    }
-}
-
-pub mod nut {
-    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-    pub mod v1 {
-        tonic::include_proto!("palm.nut.v1");
     }
 }
 pub mod cms {

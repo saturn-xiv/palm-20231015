@@ -4,9 +4,10 @@ use std::path::Path;
 use std::process::{Command, Stdio};
 
 use mysql::{prelude::*, Conn as DbConn, Opts as DbOpts};
+use palm::Result;
 use serde::{Deserialize, Serialize};
 
-use super::{timestamp_file, Result};
+use super::timestamp_file;
 
 #[derive(clap::Parser, Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
 #[serde(rename_all = "camelCase")]

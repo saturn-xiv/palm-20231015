@@ -3,9 +3,10 @@ use std::path::Path;
 use std::process::Command;
 use std::{fs::create_dir_all, path::PathBuf};
 
+use palm::Result;
 use serde::{Deserialize, Serialize};
 
-use super::{print_command_output, timestamp_file, Result};
+use super::{print_command_output, timestamp_file};
 
 #[derive(clap::Parser, Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
 #[serde(rename_all = "camelCase")]

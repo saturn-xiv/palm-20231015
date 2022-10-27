@@ -1,10 +1,11 @@
 use std::path::Path;
 
 use clap::{Parser, Subcommand};
+use palm::Result;
 
 use super::{
     metrics::Args as Metrics, mysql::Config as MySql, oracle::Config as Oracle,
-    postgresql::Config as PostgreSql, rsync::Config as Rsync, tar, Result,
+    postgresql::Config as PostgreSql, rsync::Config as Rsync, tar,
 };
 
 #[derive(Parser, Debug)]

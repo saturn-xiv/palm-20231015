@@ -2,10 +2,11 @@ use std::fs::create_dir_all;
 use std::path::Path;
 use std::process::Command;
 
+use palm::Result;
 use postgres::{Client as DbClient, NoTls};
 use serde::{Deserialize, Serialize};
 
-use super::{print_command_output, timestamp_file, Result};
+use super::{print_command_output, timestamp_file};
 
 #[derive(clap::Parser, Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
 #[serde(rename_all = "camelCase")]

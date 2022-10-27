@@ -3,9 +3,8 @@ use std::io::{prelude::*, Error as IoError, ErrorKind as IoErrorKind};
 use std::process::{Command, Stdio};
 
 use bytes::{BufMut, BytesMut};
+use palm::Result;
 use serde::{Deserialize, Serialize};
-
-use super::super::Result;
 
 // https://www.freedesktop.org/software/systemd/man/systemd.journal-fields.html
 // apt install systemd-journal-remote

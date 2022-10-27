@@ -5,23 +5,25 @@ package palm.cms.v1;
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
 
-import "nut.proto";
+import "palm.proto";
+import "auth.proto";
 
 // ----------------------------------------------------------------------------
 
 service Article {
   rpc Create(ArticleCreateRequest) returns (google.protobuf.Empty) {}
   rpc Update(ArticleUpdateRequest) returns (google.protobuf.Empty) {}
-  rpc Index(palm.nut.v1.Pager) returns (ArticleIndexResponse) {}
-  rpc Show(palm.nut.v1.IdRequest) returns (ArticleShowResponse) {}
-  rpc Destory(palm.nut.v1.IdRequest) returns (google.protobuf.Empty) {}
+  rpc Index(palm.v1.Pager) returns (ArticleIndexResponse) {}
+  rpc Show(palm.v1.IdRequest) returns (ArticleShowResponse) {}
+  rpc Destory(palm.v1.IdRequest) returns (google.protobuf.Empty) {}
 }
 
 message ArticleCreateRequest {
   string title = 1;
   string summary = 2;
-  palm.nut.v1.MediaContent body = 3;
+  palm.v1.MediaContent body = 3;
   repeated int32 tags = 4;
 }
 
@@ -39,13 +41,13 @@ message ArticleIndexResponse {
     string lang = 2;
     string title = 3;
     string summary = 4;
-    palm.nut.v1.MediaContent body = 5;
+    palm.v1.MediaContent body = 5;
     google.protobuf.Timestamp updated_at = 9;
-    palm.nut.v1.UserDetail author = 11;
-    repeated palm.nut.v1.TagIndexResponse.Item tags = 12;
+    palm.auth.v1.UserDetail author = 11;
+    repeated TagIndexResponse.Item tags = 12;
   }
   repeated Item items = 1;
-  palm.nut.v1.Pagination pagination = 9;
+  palm.v1.Pagination pagination = 9;
 }
 
 message ArticleShowResponse {
@@ -58,12 +60,12 @@ message ArticleShowResponse {
 service Comment {
   rpc Create(CommentCreateRequest) returns (google.protobuf.Empty) {}
   rpc Update(CommentUpdateRequest) returns (google.protobuf.Empty) {}
-  rpc Index(palm.nut.v1.Pager) returns (CommentIndexResponse) {}
-  rpc Destory(palm.nut.v1.IdRequest) returns (google.protobuf.Empty) {}
+  rpc Index(palm.v1.Pager) returns (CommentIndexResponse) {}
+  rpc Destory(palm.v1.IdRequest) returns (google.protobuf.Empty) {}
 }
 message CommentCreateRequest {
   int32 article = 1;
-  palm.nut.v1.MediaContent body = 2;
+  palm.v1.MediaContent body = 2;
 }
 
 message CommentUpdateRequest {
@@ -75,12 +77,286 @@ message CommentIndexResponse {
   message Item {
     int32 id = 1;
     int32 article = 2;
-    palm.nut.v1.MediaContent body = 3;
+    palm.v1.MediaContent body = 3;
     google.protobuf.Timestamp updated_at = 9;
-    palm.nut.v1.UserDetail author = 11;
+    palm.auth.v1.UserDetail author = 11;
   }
   repeated Item items = 1;
-  palm.nut.v1.Pagination pagination = 9;
+  palm.v1.Pagination pagination = 9;
+}
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+service Site {
+  rpc SetMaintenanceMode(SiteMaintenanceModeRequest)
+      returns (google.protobuf.Empty) {}
+
+  rpc Install(SiteInstallRequest) returns (google.protobuf.Empty) {}
+
+  rpc ClearCache(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc Layout(google.protobuf.Empty) returns (SiteLayoutResponse) {}
+  rpc SetAuthor(SiteLayoutResponse.Author) returns (google.protobuf.Empty) {}
+  rpc SetCopyright(SiteSetCopyrightRequest) returns (google.protobuf.Empty) {}
+  rpc SetKeywords(SiteSetKeywordsRequest) returns (google.protobuf.Empty) {}
+  rpc SetInfo(SiteSetInfoRequest) returns (google.protobuf.Empty) {}
+  rpc SetLogo(SiteSetLogoRequest) returns (google.protobuf.Empty) {}
+
+  rpc SetMinio(palm.v1.MinioProfile) returns (google.protobuf.Empty) {}
+  rpc GetMinio(google.protobuf.Empty) returns (palm.v1.MinioProfile) {}
+  rpc TestMinio(google.protobuf.Empty) returns (SiteMinioTestResponse) {}
+  rpc SetSmtp(palm.v1.SmtpProfile) returns (google.protobuf.Empty) {}
+  rpc GetSmtp(google.protobuf.Empty) returns (palm.v1.SmtpProfile) {}
+  rpc TestSmtp(SiteSmtpTestRequst) returns (google.protobuf.Empty) {}
+  rpc SetBing(BingProfile) returns (google.protobuf.Empty) {}
+  rpc GetBing(google.protobuf.Empty) returns (BingProfile) {}
+  rpc SetGoogle(GoogleProfile) returns (google.protobuf.Empty) {}
+  rpc GetGoogle(google.protobuf.Empty) returns (GoogleProfile) {}
+  rpc SetBaidu(BaiduProfile) returns (google.protobuf.Empty) {}
+  rpc GetBaidu(google.protobuf.Empty) returns (BaiduProfile) {}
+
+  rpc Status(google.protobuf.Empty) returns (SiteStatusResponse) {}
+
+  rpc NewLeaveWord(SiteNewLeaveWordRequest) returns (google.protobuf.Empty) {}
+  rpc IndexLeaveWord(palm.v1.Pager) returns (SiteIndexLeaveWordResponse) {}
+  rpc DestroyLeaveWord(palm.v1.IdRequest) returns (google.protobuf.Empty) {}
+
+  rpc IndexNotification(palm.v1.Pager) returns (SiteIndexNotificationResponse) {
+  }
+}
+
+message SiteMaintenanceModeRequest {
+  message Item {
+    google.protobuf.Duration duration = 1;
+    string reason = 2;
+  }
+  optional Item item = 1;
+}
+
+message SiteInstallRequest { palm.auth.v1.UserSignUpRequest user = 1; }
+message SiteMinioTestResponse { repeated string buckets = 1; }
+
+message SiteSmtpTestRequst {
+  string to = 1;
+  string subject = 2;
+  string body = 3;
+}
+
+message SiteSetLogoRequest { string url = 1; }
+message SiteSetCopyrightRequest { string payload = 1; }
+message SiteSetKeywordsRequest { repeated string items = 1; }
+message SiteSetInfoRequest {
+  string title = 1;
+  string subhead = 2;
+  string description = 3;
+}
+
+message SiteLayoutResponse {
+  message Author {
+    string name = 1;
+    string email = 2;
+  }
+  string title = 1;
+  string subhead = 2;
+  repeated string keywords = 3;
+  string description = 4;
+  Author author = 5;
+  string copyright = 6;
+  string logo = 7;
+  repeated string languages = 9;
+}
+
+message SiteNewLeaveWordRequest { palm.v1.MediaContent content = 1; }
+message SiteIndexLeaveWordResponse {
+  message Item {
+    int32 id = 1;
+    string lang = 2;
+    string ip = 3;
+    string body = 4;
+    google.protobuf.Timestamp created_at = 9;
+  }
+  repeated Item items = 1;
+  palm.v1.Pagination pagination = 9;
+}
+
+message GoogleProfile {
+  // https://developers.google.com/recaptcha/intro
+  message ReCaptcha {
+    string site_key = 1;
+    string secret = 2;
+  }
+  optional string site_verify_id = 1;
+  optional ReCaptcha re_captcha = 2;
+}
+message BaiduProfile {
+  message SiteVerify {
+    string id = 1;
+    string content = 2;
+  }
+  optional SiteVerify site_verify = 1;
+}
+message BingProfile { optional string site_verify_id = 1; }
+
+message SiteIndexNotificationResponse {
+  message Item {
+    oneof message {
+      palm.v1.EmailTask email = 1;
+      palm.v1.SmsTask sms = 2;
+    }
+    google.protobuf.Timestamp created_at = 19;
+  }
+  repeated Item items = 1;
+  palm.v1.Pagination pagination = 9;
+}
+
+message SiteStatusResponse {
+  message Database {
+    string name = 1;
+    string size = 2;
+  }
+  message PostgreSql {
+    string version = 1;
+    google.protobuf.Timestamp now = 2;
+    repeated Database databases = 9;
+  }
+  message MySql {
+    uint64 size = 1;
+    string version = 2;
+  }
+  message Redis {
+    message Item {
+      string key = 1;
+      int64 ttl = 2;
+    };
+    string info = 1;
+    repeated Item items = 2;
+  }
+  message RabbitMq { string protocol = 1; }
+  message OpenSearch {
+    string url = 1;
+    string info = 2;
+  }
+  message Health {
+    string name = 1;
+    string status = 2;
+  }
+  message System {
+    string version = 1;
+    string cpu = 2;
+    string memory = 3;
+    string boot = 4;
+    string disk = 5;
+    string load = 6;
+    string fs = 7;
+    string swap = 8;
+    string uptime = 9;
+    string network = 10;
+  }
+
+  PostgreSql postgresql = 1;
+  MySql mysql = 2;
+  Redis redis = 3;
+  RabbitMq rabbitmq = 4;
+  OpenSearch opensearch = 5;
+  System system = 11;
+  repeated Health healthes = 21;
+}
+
+// ----------------------------------------------------------------------------
+
+service ShorterLink {
+  rpc Create(ShorterLinkCreateRequest) returns (google.protobuf.Empty) {}
+  rpc Update(ShorterLinkUpdateRequest) returns (google.protobuf.Empty) {}
+  rpc Destroy(palm.v1.IdRequest) returns (google.protobuf.Empty) {}
+  rpc Index(palm.v1.Pager) returns (ShorterLinkIndexResponse) {}
+}
+
+message ShorterLinkIndexResponse {
+  message Item {
+    int32 id = 1;
+    string url = 2;
+    string details = 3;
+
+    google.protobuf.Timestamp updated_at = 11;
+  }
+  palm.v1.Pagination pagination = 1;
+  repeated Item items = 11;
+}
+
+message ShorterLinkCreateRequest {
+  string url = 1;
+  string details = 2;
+}
+
+message ShorterLinkUpdateRequest {
+  int32 id = 1;
+  string url = 2;
+  string details = 3;
+}
+// ----------------------------------------------------------------------------
+
+service Tag {
+  rpc Create(TagCreateRequest) returns (google.protobuf.Empty) {}
+  rpc Update(TagUpdateRequest) returns (google.protobuf.Empty) {}
+  rpc Destroy(palm.v1.IdRequest) returns (google.protobuf.Empty) {}
+  rpc Index(google.protobuf.Empty) returns (TagIndexResponse) {}
+}
+
+message TagIndexResponse {
+  message Item {
+    int32 id = 1;
+    string code = 2;
+    int32 priority = 3;
+
+    google.protobuf.Timestamp updated_at = 11;
+  }
+  palm.v1.Pagination pagination = 1;
+  repeated Item items = 11;
+}
+
+message TagCreateRequest {
+  string code = 1;
+  int32 priority = 11;
+}
+
+message TagUpdateRequest {
+  int32 id = 1;
+  string code = 2;
+  int32 priority = 11;
+}
+// ----------------------------------------------------------------------------
+
+service Category {
+  rpc Create(CategoryCreateRequest) returns (google.protobuf.Empty) {}
+  rpc Update(CategoryUpdateRequest) returns (google.protobuf.Empty) {}
+  rpc Destroy(palm.v1.IdRequest) returns (google.protobuf.Empty) {}
+  rpc Index(palm.v1.Pager) returns (CategoryIndexResponse) {}
+}
+message CategoryIndexResponse {
+  message Item {
+    int32 id = 1;
+    string code = 2;
+    optional int32 parent_id = 3;
+    int32 priority = 4;
+
+    google.protobuf.Timestamp updated_at = 11;
+  }
+  palm.v1.Pagination pagination = 1;
+  repeated Item items = 11;
+}
+message CategoryCreateRequest {
+  string lang = 1;
+  string code = 2;
+  optional int32 parent_id = 3;
+  int32 priority = 11;
+}
+
+message CategoryUpdateRequest {
+  int32 id = 1;
+  string code = 2;
+  optional int32 parent_id = 3;
+  int32 priority = 11;
 }
 
 // ----------------------------------------------------------------------------

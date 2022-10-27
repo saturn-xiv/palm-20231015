@@ -1,6 +1,5 @@
 pub mod amqp;
 pub mod mqtt;
-pub mod zero;
 
 use std::fmt::Debug;
 

@@ -6,9 +6,8 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::path::PathBuf;
 
+use palm::Result;
 use serde::{Deserialize, Serialize};
-
-use super::Result;
 
 #[derive(clap::Parser, Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
 #[serde(rename_all = "camelCase")]

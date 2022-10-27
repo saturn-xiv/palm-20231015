@@ -3,10 +3,9 @@ use std::path::Path;
 use std::process::{Command, Stdio};
 
 use chrono::NaiveDateTime;
+use palm::Result;
 use regex::Regex;
 use serde::{Deserialize, Serialize};
-
-use super::super::Result;
 
 // https://nginx.org/en/docs/http/ngx_http_log_module.html#log_format
 // log_format custom '$remote_addr - [$time_iso8601] "$request" $status $body_bytes_sent $request_time "$http_referer" "$http_user_agent" "$http_x_forwarded_for"';

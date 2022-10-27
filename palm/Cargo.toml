@@ -79,10 +79,6 @@ features = ["cookie-session", "redis-rs-session"]
 version = "0.7"
 features = ["serde"]
 
-[dependencies.zmq]
-version = "0.9"
-features = ["vendored"]
-
 [dependencies.reqwest]
 version = "0.11"
 features = ["json"]
@@ -118,11 +114,6 @@ features = ["full"]
 [dependencies.uuid]
 version = "1"
 features = ["v4", "serde"]
-
-[dependencies.diesel]
-version = "2"
-default-features = false
-features = ["bigdecimal", "postgres", "mysql", "sqlite", "extras", "128-column-tables"]
 
 [dependencies.rss]
 version = "2"

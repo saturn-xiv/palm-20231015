@@ -1,6 +1,6 @@
 [package]
 name = "fig"
-version = "2022.10.21"
+version = "2022.10.27"
 edition = "2021"
 authors = ["Jeremy Zheng <jitang.zheng@gmail.com>"]
 description = "A crawler for palm system."
@@ -45,5 +45,5 @@ features = ["derive"]
 version = "*"
 features = ["vendored"]
 
-[build-dependencies]
-tonic-build = "0.8"
+[dependencies.palm]
+path = '../palm'

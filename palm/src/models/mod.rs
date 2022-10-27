@@ -1,7 +1,7 @@
-use super::nut;
+use super::v1;
 
-impl nut::v1::Pagination {
-    pub fn new(pager: &nut::v1::Pager, total: i64) -> Self {
+impl v1::Pagination {
+    pub fn new(pager: &v1::Pager, total: i64) -> Self {
         let page = pager.page(total);
         let size = pager.size();
         Self {
@@ -14,7 +14,7 @@ impl nut::v1::Pagination {
     }
 }
 
-impl nut::v1::Pager {
+impl v1::Pager {
     pub fn offset(&self, total: i64) -> i64 {
         (self.page(total) - 1) * self.size()
     }
