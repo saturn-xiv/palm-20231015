@@ -41,7 +41,7 @@ ENV GCC_VERSION 12
 RUN apt install -y g++-${GCC_VERSION} g++-${GCC_VERSION}-aarch64-linux-gnu g++-${GCC_VERSION}-arm-linux-gnueabihf
 
 # https://apt.llvm.org/
-ENV CLANG_VERSION=14
+ENV CLANG_VERSION=15
 RUN echo "deb [arch=amd64] http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-${CLANG_VERSION} main" > /etc/apt/sources.list.d/llvm.list
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 RUN apt update
@@ -155,7 +155,7 @@ RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc
 RUN echo 'export PATH=$GOROOT/bin:$PATH' >> $HOME/.zshrc
 RUN echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc
 
-ENV JDK_VERSION "19-open"
+ENV JDK_VERSION "19.0.1-open"
 RUN curl -s "https://get.sdkman.io" | zsh
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
@@ -164,7 +164,7 @@ RUN zsh -c "source $HOME/.zshrc \
     && sdk install gradle"
 
 # https://github.com/nvm-sh/nvm
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | sh
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | sh
 RUN sh -c ". $HOME/.profile \
     && nvm install node \
     && nvm use node \
@@ -202,16 +202,11 @@ RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh amd64"
 RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh arm64"
 RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh armhf"
 
-
-ENV FLATBUFFERS_VERSION "v22.9.29"
-RUN git clone -b $FLATBUFFERS_VERSION https://github.com/google/flatbuffers.git $HOME/downloads/flatbuffers
-RUN zsh -c "source $HOME/.zshrc \
-    && mkdir -pv $HOME/build/flatbuffers \
-    && cd $HOME/build/flatbuffers \
-    && cmake -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/flatbuffers \
-    && make -j \
-    && make install"
+# https://opensearch.org/downloads.html#opensearch
+ENV OPENSEARCH_VERSION "2.3.0"
+RUN wget -q -P $HOME/downloads \
+    https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
+RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C /opt
 
 ENV GRPC_VERSION "v1.50.0"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
@@ -225,13 +220,6 @@ RUN zsh -c "source $HOME/.zshrc \
         -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
     && make -j \
     && make install"
-
-
-# https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/
-ENV GRPC_JAVA_PLUGIN_VERSION "1.50.0"
-RUN wget -q -O $HOME/.local/bin/grpc_java_plugin \
-    https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${GRPC_JAVA_PLUGIN_VERSION}/protoc-gen-grpc-java-${GRPC_JAVA_PLUGIN_VERSION}-linux-x86_64.exe
-RUN chmod +x $HOME/.local/bin/grpc_java_plugin
 
 # https://github.com/grpc/grpc-web#code-generator-plugin
 ENV GRPC_WEB_PLUGIN_VERSION "1.4.1"
@@ -248,11 +236,21 @@ RUN mkdir -p $HOME/build/protobuf-javascript \
     && tar xf $HOME/downloads/protobuf-javascript-${GRPC_JS_PLUGIN_VERSION}-linux-x86_64.tar.gz \
     && cp bin/protoc-gen-js $HOME/.local/bin/
 
-# https://opensearch.org/downloads.html#opensearch
-ENV OPENSEARCH_VERSION "2.3.0"
-RUN wget -q -P $HOME/downloads \
-    https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
-RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C /opt
+# https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/
+ENV GRPC_JAVA_PLUGIN_VERSION "1.50.2"
+RUN wget -q -O $HOME/.local/bin/grpc_java_plugin \
+    https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${GRPC_JAVA_PLUGIN_VERSION}/protoc-gen-grpc-java-${GRPC_JAVA_PLUGIN_VERSION}-linux-x86_64.exe
+RUN chmod +x $HOME/.local/bin/grpc_java_plugin
+
+ENV FLATBUFFERS_VERSION "v22.10.26"
+RUN git clone -b $FLATBUFFERS_VERSION https://github.com/google/flatbuffers.git $HOME/downloads/flatbuffers
+RUN zsh -c "source $HOME/.zshrc \
+    && mkdir -pv $HOME/build/flatbuffers \
+    && cd $HOME/build/flatbuffers \
+    && cmake -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/flatbuffers \
+    && make -j \
+    && make install"
 
 # https://min.io/download#/linux
 RUN wget -q -O /usr/bin/minio \

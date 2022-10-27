@@ -29,9 +29,9 @@ libssh2/1.10.0
 serial/1.2.1
 # net-snmp/5.9.1
 # imgui/1.88
-flatbuffers/2.0.6
+flatbuffers/2.0.8
 protobuf/3.21.4
-grpc/1.48.0 
+grpc/1.50.0 
 
 [options]
 zeromq:encryption=None
