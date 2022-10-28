@@ -52,7 +52,7 @@ pub struct Service {
     pub hmac: Arc<Hmac>,
     pub redis: RedisPool,
     pub rabbitmq: Arc<RabbitMq>,
-    pub search: Arc<OpenSearch>,
+    pub opensearch: Arc<OpenSearch>,
 }
 
 impl Service {
@@ -610,7 +610,7 @@ impl v1::site_server::Site for Service {
         }
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
-        let se = self.search.deref();
+        let se = self.opensearch.deref();
 
         let postgresql = try_grpc!(new_postgresql_status_response(db))?;
         let rabbitmq = v1::site_status_response::RabbitMq {

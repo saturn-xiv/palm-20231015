@@ -3,6 +3,17 @@ option java_multiple_files = true;
 option java_package = "com.github.saturn_xiv.palm.plugins.ops.metrics.v1";
 package palm.ops.metrics.v1;
 
-service Journal {}
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
 
-service Heartbeat {}
+service Report {
+  rpc heartbeat(ReportHeartbeatRequest) returns (google.protobuf.Empty) {}
+  rpc journal(ReportJournalRequest) returns (google.protobuf.Empty) {}
+  rpc nginx(ReportNginxRequest) returns (google.protobuf.Empty) {}
+}
+
+message ReportHeartbeatRequest { google.protobuf.Timestamp created_at = 11; }
+
+message ReportJournalRequest { google.protobuf.Timestamp created_at = 11; }
+
+message ReportNginxRequest { google.protobuf.Timestamp created_at = 11; }

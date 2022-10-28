@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import type { RootState } from "../store";
+import { SiteLayoutResponse } from "../protocols/cms_pb";
 
 export interface IAuthor {
   name: string;
@@ -16,6 +17,25 @@ export interface ISite {
   copyright: string;
   author: IAuthor;
 }
+
+export const to_site = (response: SiteLayoutResponse): ISite | undefined => {
+  let author = response.getAuthor();
+  if (!author) {
+    return;
+  }
+  return {
+    logo: response.getLogo(),
+    title: response.getTitle(),
+    subhead: response.getSubhead(),
+    keywords: response.getKeywordsList(),
+    description: response.getDescription(),
+    copyright: response.getCopyright(),
+    author: {
+      email: author.getEmail(),
+      name: author.getName(),
+    },
+  };
+};
 
 interface IState {
   site?: ISite;

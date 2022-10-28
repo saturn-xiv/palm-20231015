@@ -766,7 +766,12 @@ pub async fn new_sign_in_response(
 
     Ok(v1::UserSignInResponse {
         token,
-        real_name: user.real_name.clone(),
+        payload: Some(v1::user_sign_in_response::Payload {
+            real_name: user.real_name.clone(),
+            nick_name: user.nick_name.clone(),
+            avatar: user.avatar.clone(),
+            email: user.email.clone(),
+        }),
         permissions: permissions
             .iter()
             .map(|x| v1::Permission {

@@ -212,8 +212,10 @@ export class UserSignInResponse extends jspb.Message {
   getToken(): string;
   setToken(value: string): UserSignInResponse;
 
-  getRealName(): string;
-  setRealName(value: string): UserSignInResponse;
+  getPayload(): UserSignInResponse.Payload | undefined;
+  setPayload(value?: UserSignInResponse.Payload): UserSignInResponse;
+  hasPayload(): boolean;
+  clearPayload(): UserSignInResponse;
 
   getRolesList(): Array<string>;
   setRolesList(value: Array<string>): UserSignInResponse;
@@ -236,10 +238,41 @@ export class UserSignInResponse extends jspb.Message {
 export namespace UserSignInResponse {
   export type AsObject = {
     token: string,
-    realName: string,
+    payload?: UserSignInResponse.Payload.AsObject,
     rolesList: Array<string>,
     permissionsList: Array<Permission.AsObject>,
   }
+
+  export class Payload extends jspb.Message {
+    getNickName(): string;
+    setNickName(value: string): Payload;
+
+    getEmail(): string;
+    setEmail(value: string): Payload;
+
+    getRealName(): string;
+    setRealName(value: string): Payload;
+
+    getAvatar(): string;
+    setAvatar(value: string): Payload;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Payload.AsObject;
+    static toObject(includeInstance: boolean, msg: Payload): Payload.AsObject;
+    static serializeBinaryToWriter(message: Payload, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Payload;
+    static deserializeBinaryFromReader(message: Payload, reader: jspb.BinaryReader): Payload;
+  }
+
+  export namespace Payload {
+    export type AsObject = {
+      nickName: string,
+      email: string,
+      realName: string,
+      avatar: string,
+    }
+  }
+
 }
 
 export class UserSignUpRequest extends jspb.Message {

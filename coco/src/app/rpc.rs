@@ -18,10 +18,18 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
-    let search = Arc::new(cfg.opensearch.open()?);
+    let opensearch = Arc::new(cfg.opensearch.open()?);
 
-    info!("start rpc-tcp at {}", addr);
+    info!("start gRPC at {}", addr);
     Server::builder()
+        .add_service(palm::ops::metrics::v1::report_server::ReportServer::new(
+            ops_metrics::services::report::Service {
+                pgsql: pgsql.clone(),
+                jwt: jwt.clone(),
+                redis: redis.clone(),
+                opensearch: opensearch.clone(),
+            },
+        ))
         .add_service(palm::auth::v1::attachment_server::AttachmentServer::new(
             auth::services::attachment::Service {
                 pgsql: pgsql.clone(),
@@ -82,7 +90,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 hmac,
                 redis,
                 rabbitmq,
-                search,
+                opensearch,
             },
         ))
         .serve(addr)

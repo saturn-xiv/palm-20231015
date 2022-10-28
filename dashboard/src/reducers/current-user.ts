@@ -1,5 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import jwtDecode, { JwtPayload } from "jwt-decode";
 
+import {
+  Permission,
+  UserQueryRequest,
+  UserSignInResponse,
+} from "../protocols/auth_pb";
 import type { RootState } from "../store";
 
 export const ROLE_ROOT = "root";
@@ -48,11 +54,53 @@ export interface IRoleOption {
   name: string;
 }
 
+// nickname or email
+export const to_user_query_request = (account: string): UserQueryRequest => {
+  const query = new UserQueryRequest();
+
+  if (account.includes("@")) {
+    const provider = new UserQueryRequest.Provider();
+    provider.setType(UserQueryRequest.Provider.Type.EMAIL);
+    provider.setId(account);
+    query.setProvider(provider);
+  } else {
+    query.setNickName(account);
+  }
+
+  return query;
+};
+
 export const user_option_to_string = (it: IUserOption): string =>
   `${it.nickName}(${it.realName})`;
 
 export const permission2string = (it: IPermission): string =>
   `${it.resourceType}://${it.resourceId ? it.resourceId : "*"}/${it.operation}`;
+
+export const to_permission = (x: Permission): IPermission => {
+  const it: IPermission = {
+    operation: x.getOperation(),
+    resourceId: x.getResource()?.hasId() ? x.getResource()?.getId() : undefined,
+    resourceType: x.getResource()?.getType() || "",
+  };
+  return it;
+};
+
+export const to_user = (response: UserSignInResponse): IUser | undefined => {
+  const decoded: any = jwtDecode<JwtPayload>(response.getToken());
+  const payload = response.getPayload();
+  if (!payload) {
+    return;
+  }
+  return {
+    uid: decoded.aud,
+    nickName: payload.getNickName(),
+    realName: payload.getRealName(),
+    email: payload.getEmail(),
+    avatar: payload.getAvatar(),
+    permissions: response.getPermissionsList().map(to_permission),
+    roles: response.getRolesList(),
+  };
+};
 
 export interface IUserOption {
   id: number;
@@ -87,8 +135,8 @@ export interface IPermission {
 }
 
 export interface IUser {
-  id: number;
   uid: string;
+  email: string;
   nickName: string;
   realName: string;
   avatar: string;

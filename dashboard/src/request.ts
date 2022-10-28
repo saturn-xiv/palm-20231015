@@ -5,8 +5,11 @@ import { get as getToken } from "./reducers/current-user";
 
 export const backend = (u: string) => `/api${u}`;
 
+export const API_HOST: string =
+  import.meta.env.VITE_APP_API_HOST || "http://localhost:8080";
+
 export const GRPC_HOST: string =
-  import.meta.env.VITE_APP_GRPC_HOST || "http://localhost:9999";
+  import.meta.env.VITE_APP_GRPC_HOST || "http://localhost:9090";
 
 export const grpc_metadata = (): Metadata => {
   return {

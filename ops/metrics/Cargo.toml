@@ -23,5 +23,8 @@ features = ["derive"]
 [dependencies.palm]
 path = '../../palm'
 
+[dependencies.auth]
+path = '../../auth'
+
 [dependencies.fig]
 path = '../../fig'

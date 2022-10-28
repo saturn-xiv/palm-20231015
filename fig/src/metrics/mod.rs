@@ -7,7 +7,7 @@ use std::io::prelude::*;
 use std::path::PathBuf;
 use std::str::FromStr;
 
-use palm::{ops::metrics::v1::heartbeat_client::HeartbeatClient, Result};
+use palm::{ops::metrics::v1::report_client::ReportClient, search::Config as OpenSearch, Result};
 use serde::{Deserialize, Serialize};
 use tonic::transport::Endpoint;
 
@@ -32,15 +32,16 @@ impl Args {
 #[serde(rename_all = "camelCase")]
 pub struct Config {
     pub server: String,
-    pub token: String,
     pub services: Vec<String>,
     pub files: Vec<PathBuf>,
+    pub nginx: Vec<PathBuf>,
+    pub opensearch: OpenSearch,
     pub snmp: snmp::Config,
 }
 
 impl Config {
     pub async fn heartbeat(&self) -> Result<()> {
-        let mut _client = HeartbeatClient::connect(Endpoint::from_str(&self.server)?).await?;
+        let mut _client = ReportClient::connect(Endpoint::from_str(&self.server)?).await?;
         Ok(())
     }
     pub async fn start(&self) -> Result<()> {

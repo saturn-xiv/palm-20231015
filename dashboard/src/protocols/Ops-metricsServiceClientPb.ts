@@ -17,9 +17,11 @@
 
 import * as grpcWeb from 'grpc-web';
 
+import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
+import * as ops$metrics_pb from './ops-metrics_pb';
 
 
-export class JournalClient {
+export class ReportClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;
   credentials_: null | { [index: string]: string; };
@@ -38,25 +40,133 @@ export class JournalClient {
     this.options_ = options;
   }
 
-}
+  methodDescriptorheartbeat = new grpcWeb.MethodDescriptor(
+    '/palm.ops.metrics.v1.Report/heartbeat',
+    grpcWeb.MethodType.UNARY,
+    ops$metrics_pb.ReportHeartbeatRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: ops$metrics_pb.ReportHeartbeatRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
 
-export class HeartbeatClient {
-  client_: grpcWeb.AbstractClientBase;
-  hostname_: string;
-  credentials_: null | { [index: string]: string; };
-  options_: null | { [index: string]: any; };
+  heartbeat(
+    request: ops$metrics_pb.ReportHeartbeatRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
 
-  constructor (hostname: string,
-               credentials?: null | { [index: string]: string; },
-               options?: null | { [index: string]: any; }) {
-    if (!options) options = {};
-    if (!credentials) credentials = {};
-    options['format'] = 'binary';
+  heartbeat(
+    request: ops$metrics_pb.ReportHeartbeatRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
-    this.client_ = new grpcWeb.GrpcWebClientBase(options);
-    this.hostname_ = hostname.replace(/\/+$/, '');
-    this.credentials_ = credentials;
-    this.options_ = options;
+  heartbeat(
+    request: ops$metrics_pb.ReportHeartbeatRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.ops.metrics.v1.Report/heartbeat',
+        request,
+        metadata || {},
+        this.methodDescriptorheartbeat,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.ops.metrics.v1.Report/heartbeat',
+    request,
+    metadata || {},
+    this.methodDescriptorheartbeat);
+  }
+
+  methodDescriptorjournal = new grpcWeb.MethodDescriptor(
+    '/palm.ops.metrics.v1.Report/journal',
+    grpcWeb.MethodType.UNARY,
+    ops$metrics_pb.ReportJournalRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: ops$metrics_pb.ReportJournalRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  journal(
+    request: ops$metrics_pb.ReportJournalRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  journal(
+    request: ops$metrics_pb.ReportJournalRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  journal(
+    request: ops$metrics_pb.ReportJournalRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.ops.metrics.v1.Report/journal',
+        request,
+        metadata || {},
+        this.methodDescriptorjournal,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.ops.metrics.v1.Report/journal',
+    request,
+    metadata || {},
+    this.methodDescriptorjournal);
+  }
+
+  methodDescriptornginx = new grpcWeb.MethodDescriptor(
+    '/palm.ops.metrics.v1.Report/nginx',
+    grpcWeb.MethodType.UNARY,
+    ops$metrics_pb.ReportNginxRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: ops$metrics_pb.ReportNginxRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  nginx(
+    request: ops$metrics_pb.ReportNginxRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  nginx(
+    request: ops$metrics_pb.ReportNginxRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  nginx(
+    request: ops$metrics_pb.ReportNginxRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.ops.metrics.v1.Report/nginx',
+        request,
+        metadata || {},
+        this.methodDescriptornginx,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.ops.metrics.v1.Report/nginx',
+    request,
+    metadata || {},
+    this.methodDescriptornginx);
   }
 
 }
