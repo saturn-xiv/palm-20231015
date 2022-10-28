@@ -200,8 +200,7 @@ pub async fn launch() -> Result<()> {
         //     }
         // }
         if let SubCommand::I18nSync(ref it) = args.command {
-            let (i, j) = LocaleDao::sync(db, &it.folder)?;
-            info!("sync {}/{} items", i, j);
+            LocaleDao::sync(db, &it.folder)?;
             return Ok(());
         }
     }

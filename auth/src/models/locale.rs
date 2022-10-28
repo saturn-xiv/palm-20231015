@@ -58,7 +58,7 @@ fn loop_yaml(
                 Some(p) => p,
                 None => "".to_string(),
             };
-            // debug!("find {} {} => {}", lang, k, v);
+            debug!("find {} {} => {}", lang, k, v);
             find += 1;
 
             let cnt: i64 = locales::dsl::locales
@@ -115,15 +115,16 @@ fn loop_yaml(
 
 impl Dao for Connection {
     fn sync<P: AsRef<Path>>(&mut self, root: P) -> Result<(usize, usize)> {
-        // FIXME load from folder
+        let root = root.as_ref();
+        info!("load items from {}", root.display());
+
         let mut find = 0;
         let mut inserted = 0;
-
-        let root = root.as_ref();
 
         for it in read_dir(root)? {
             let it = it?;
             let it = it.path();
+
             if it.is_dir() {
                 if let Some(lang) = it.file_name() {
                     if let Some(lang) = lang.to_str() {
@@ -132,12 +133,21 @@ impl Dao for Connection {
                             let it = it?;
                             let it = it.path();
                             if it.is_file() {
-                                info!("find locale file {}", it.display());
-                                let buf = read_to_string(it)?;
-                                for node in YamlLoader::load_from_str(&buf)? {
-                                    let (i, f) = loop_yaml(self, lang, None, node)?;
-                                    inserted += i;
-                                    find += f;
+                                info!("find file {}", it.display());
+                                if let Some(zone) = it.file_stem() {
+                                    if let Some(zone) = zone.to_str() {
+                                        let buf = read_to_string(&it)?;
+                                        for node in YamlLoader::load_from_str(&buf)? {
+                                            let (i, f) = loop_yaml(
+                                                self,
+                                                lang,
+                                                Some(zone.to_string()),
+                                                node,
+                                            )?;
+                                            inserted += i;
+                                            find += f;
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -146,6 +156,27 @@ impl Dao for Connection {
             }
         }
 
+        for it in read_dir(root)? {
+            let it = it?;
+            let it = it.path();
+
+            if it.is_file() {
+                if let Some(zone) = it.file_stem() {
+                    if let Some(zone) = zone.to_str() {
+                        for lang in self.languages()?.iter() {
+                            let buf = read_to_string(&it)?;
+                            for node in YamlLoader::load_from_str(&buf)? {
+                                let (i, f) = loop_yaml(self, lang, Some(zone.to_string()), node)?;
+                                inserted += i;
+                                find += f;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        info!("sync {}/{} items", inserted, find);
         Ok((inserted, find))
     }
 

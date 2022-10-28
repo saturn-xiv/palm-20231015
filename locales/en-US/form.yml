@@ -1,0 +1,7 @@
+fields:
+  id:
+    label: ID
+  email:
+    label: Email
+  password:
+    label: Password
