@@ -79,9 +79,9 @@ RUN mkdir -p $HOME/downloads $HOME/build $HOME/local $HOME/tmp
 # https://github.com/ohmyzsh/ohmyzsh
 RUN git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
 RUN cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
-RUN echo 'source $HOME/.profile' >> $HOME/.zshrc
-RUN echo 'export LANG=en_US.UTF-8' >> $HOME/.profile
-RUN echo 'export LC_ALL=en_US.UTF-8' >> $HOME/.profile
+RUN echo 'export LANG=en_US.UTF-8' >> $HOME/.zshrc
+RUN echo 'export LC_ALL=en_US.UTF-8' >> $HOME/.zshrc
+RUN echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.zshrc
 
 RUN git config --global core.quotepath false
 RUN git config --global http.version HTTP/1.1
@@ -89,20 +89,18 @@ RUN git config --global pull.rebase false
 RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf
 RUN echo 'set-option -g default-shell "/bin/zsh"' >> $HOME/.tmux.conf
 
-RUN sh -c ". $HOME/.profile && pip3 install --user cmake"
-
-RUN sh -c ". $HOME/.profile \
+RUN zsh -c "source $HOME/.zshrc && pip3 install --user cmake"
+RUN zsh -c "source $HOME/.zshrc \
     && pip3 install --user ansible paramiko"
-RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.profile
-RUN echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.profile
-RUN echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/tmp/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.profile
+RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.zshrc
+RUN echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/tmp/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.zshrc
 
-RUN sh -c ". $HOME/.profile \
+RUN zsh -c "source $HOME/.zshrc \
     && pip3 install --user conan \
     && conan profile new default --detect \
     && conan profile update settings.compiler.libcxx=libstdc++11 default"
 
-RUN sh -c ". $HOME/.profile && pip3 install --user supervisor"
+RUN zsh -c "source $HOME/.zshrc && pip3 install --user supervisor"
 
 # https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos
 RUN wget -q -O $HOME/downloads/composer https://getcomposer.org/installer
@@ -163,21 +161,25 @@ RUN zsh -c "source $HOME/.zshrc \
     && sdk install gradle"
 
 # https://github.com/nvm-sh/nvm
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | sh
-RUN sh -c ". $HOME/.profile \
+ENV NVM_VERSION "v0.39.2"
+RUN git clone -b ${NVM_VERSION} https://github.com/nvm-sh/nvm.git $HOME/.nvm
+RUN echo 'export NVM_DIR="$HOME/.nvm"' >> $HOME/.zshrc
+RUN echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $HOME/.zshrc
+RUN echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> $HOME/.zshrc
+RUN zsh -c "source $HOME/.zshrc \
     && nvm install node \
     && nvm use node \
     && npm i yarn -g"
-RUN sh -c ". $HOME/.profile \
+RUN zsh -c "source $HOME/.zshrc \
     && nvm install --lts \
     && nvm use --lts \
     && npm i yarn -g"
 # https://stackoverflow.com/questions/37324519/node-sass-does-not-yet-support-your-current-environment-linux-64-bit-with-false
-RUN sh -c ". $HOME/.profile \
+RUN zsh -c "source $HOME/.zshrc \
     && nvm install lts/fermium \
     && nvm use lts/fermium \
     && npm i yarn -g"
-RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.profile
+RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.zshrc
 
 # https://www.rust-lang.org/tools/install
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -207,7 +209,7 @@ RUN wget -q -P $HOME/downloads \
     https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
 RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C /opt
 
-ENV GRPC_VERSION "v1.50.0"
+ENV GRPC_VERSION "v1.50.1"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir -pv $HOME/build/grpc \
