@@ -198,11 +198,6 @@ RUN zsh -c "source $HOME/.zshrc \
     && cargo install --locked cargo-outdated \
     && cargo install mdbook"
 
-ADD conan /opt/conan
-RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh amd64"
-RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh arm64"
-RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh armhf"
-
 # https://opensearch.org/downloads.html#opensearch
 ENV OPENSEARCH_VERSION "2.3.0"
 RUN wget -q -P $HOME/downloads \
@@ -257,6 +252,11 @@ RUN zsh -c "source $HOME/.zshrc \
 RUN wget -q -O /usr/bin/minio \
     https://dl.min.io/server/minio/release/linux-amd64/minio
 RUN chmod +x /usr/bin/minio
+
+ADD conan /opt/conan
+RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh amd64"
+RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh arm64"
+RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh armhf"
 
 # https://opensearch.org/docs/latest/opensearch/install/tar/
 RUN echo "network.host: 0.0.0.0" >> /opt/opensearch-${OPENSEARCH_VERSION}/config/opensearch.yml

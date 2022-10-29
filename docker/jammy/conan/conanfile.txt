@@ -1,6 +1,6 @@
 [requires]
 libxcrypt/4.4.28
-zlib/1.2.12
+zlib/1.2.13
 libcurl/7.85.0
 openssl/1.1.1q
 boost/1.80.0
