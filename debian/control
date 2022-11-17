@@ -1,0 +1,12 @@
+Source: palm
+Section: net
+Priority: optional
+Maintainer: Jeremy Zheng <jitang.zheng@gmail.com>
+Standards-Version: 3.9.5
+Homepage: https://github.com/saturn-xiv/palm
+Vcs-Git: https://github.com/saturn-xiv/palm.git
+
+Package: palm
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: A total free education & translation & ops solution.

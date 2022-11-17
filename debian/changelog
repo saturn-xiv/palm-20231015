@@ -1,0 +1,5 @@
+palm (2022.10.29) stable; urgency=medium
+
+  * [fe0c160] add nut plugin.
+
+ -- Jeremy Zheng <jitang.zheng@gmail.com>  Sat, 29 Oct 2022 02:55:37 +0530
