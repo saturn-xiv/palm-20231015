@@ -84,12 +84,12 @@ RUN echo 'export LANG=en_US.UTF-8' >> $HOME/.zshrc
 RUN echo 'export LC_ALL=en_US.UTF-8' >> $HOME/.zshrc
 RUN echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.zshrc
 
-RUN git config --global core.quotepath false
-RUN git config --global http.version HTTP/1.1
-RUN git config --global pull.rebase false
-RUN git config --global url."https://".insteadOf git://
-RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf
-RUN echo 'set-option -g default-shell "/bin/zsh"' >> $HOME/.tmux.conf
+RUN git config --global core.quotepath false \
+    && git config --global http.version HTTP/1.1 \
+    && git config --global pull.rebase false \
+    && git config --global url."https://".insteadOf git://
+RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf \
+    && echo 'set-option -g default-shell "/bin/zsh"' >> $HOME/.tmux.conf
 
 RUN zsh -c "source $HOME/.zshrc && pip3 install --user cmake"
 RUN zsh -c "source $HOME/.zshrc \
@@ -138,6 +138,7 @@ RUN cd $HOME/build/musl-cross-make \
     && echo "OUTPUT=/opt/crosstools" >> config.mak \
     && make \
     && make install
+RUN echo 'export PATH=/opt/crosstools/bin:$PATH' >> $HOME/.zshrc
 
 ENV BAZEL_VERSION "v1.15.0"
 RUN wget -q -O $HOME/.local/bin/bazel \

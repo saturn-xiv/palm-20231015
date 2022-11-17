@@ -86,7 +86,7 @@ copy_backends() {
         cd $WORKSPACE/target/x86_64-unknown-linux-gnu/release        
     elif [ "$1" = "arm64" ]
     then
-        cd $WORKSPACE/target/aarch64-linux-gnu/release
+        cd $WORKSPACE/target/aarch64-unknown-linux-gnu/release
     elif [ "$1" = "armhf" ]
     then
         cd $WORKSPACE/target/armv7-unknown-linux-gnueabihf/release
@@ -173,10 +173,12 @@ build_deb() {
     cp -r $WORKSPACE/debian $target/
 
 
-    mkdir -p $target/var/lib/palm
-    mkdir -p $target/lib/systemd/system/
+    mkdir -p $target/usr/bin \
+        $target/etc/palm $target/usr/share/palm \
+        $target/var/lib/palm $target/lib/systemd/system
+    
     copy_assets $target/usr/share/palm
-    copy_frontends $target/usr/share/palm
+    copy_frontends $target/usr/share/palm    
     copy_backends $1 $target/usr/bin
 
     # https://wiki.debian.org/CrossCompiling#Building_with_dpkg-buildpackage
@@ -222,7 +224,7 @@ then
 
     if dpkg --print-foreign-architectures | grep -q armhf
     then
-        build_ubuntu_backend armhf
+        build_ubuntu_backend armhf        
         build_deb armhf
         build_zst $UBUNTU_CODENAME armhf
     fi
