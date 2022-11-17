@@ -1,0 +1,144 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.github.saturn_xiv.palm.plugins.ops.router.v1";
+package palm.ops.router.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+service Router {
+  rpc Scan(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc Apply(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc Status(google.protobuf.Empty) returns (RouterStatusResponse) {}
+
+  rpc SetWan(Wan) returns (google.protobuf.Empty) {}
+  rpc SetLan(Lan) returns (google.protobuf.Empty) {}
+  rpc SetBound(Bound) returns (google.protobuf.Empty) {}
+}
+
+message Host {
+  string name = 1;
+  string ip = 2;
+  string mac = 3;
+}
+
+enum Protocol {
+  Icmp = 0;
+  Tcp = 1;
+  Udp = 2;
+}
+
+message Input {
+  string device = 1;
+  Protocol protocol = 2;
+  optional int32 port = 3;
+  optional string source = 4;
+}
+
+message Output {
+  oneof destination {
+    string ip = 1;
+    string domain = 2;
+  }
+  optional Protocol protocol = 11;
+  optional int32 port = 12;
+}
+
+message Nat {
+  message Wan {
+    string device = 1;
+    int32 port = 2;
+  }
+  message Lan {
+    string ip = 1;
+    int32 port = 2;
+  }
+  Wan wan = 1;
+  Protocol protocol = 2;
+  Lan lan = 3;
+}
+
+message RouterStatusResponse {
+  repeated Wan wan = 1;
+  Lan lan = 2;
+  repeated Host hosts = 9;
+  string rules = 11;
+  google.protobuf.Timestamp booted_at = 100;
+}
+
+message ScanTask {
+  google.protobuf.Duration ttl = 9;
+}
+
+message Dhcp {};
+message Static {
+  string address = 1;
+  string netmask = 2;
+  string gateway = 3;
+  string dns1 = 4;
+  optional string dns2 = 5;
+}
+
+message Wan {
+  string device = 1;
+  oneof ip {
+    Dhcp dhcp = 11;
+    Static static = 12;
+  }
+}
+
+message Bound {
+  repeated string devices = 1;
+  string address = 11;
+  string netmask = 22;
+  string gateway = 33;
+  optional int32 miimon = 41;
+  optional int32 mode = 42;
+}
+
+message Lan {
+  message Dhcp {
+    string from = 1;
+    string to = 2;
+    string dns1 = 3;
+    optional string dns2 = 4;
+  }
+  string device = 1;
+  string string = 2;
+  string netmask = 3;
+  Dhcp dhcp = 4;
+}
+
+// ----------------------------------------------------------------------------
+
+service User {
+  rpc SignIn(UserSignInRequest) returns (UserSignInResponse) {}
+  rpc Refresh(google.protobuf.Duration) returns (UserSignInResponse) {}
+  rpc Update(UserUpdateRequest) returns (google.protobuf.Empty) {}
+  rpc SignOut(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc Logs(google.protobuf.Duration) returns (UserLogsResponse) {}
+}
+
+message UserProfile {
+  string nickname = 1;
+  string password = 2;
+}
+
+message UserSignInRequest {
+  UserProfile user = 1;
+  google.protobuf.Duration ttl = 9;
+}
+
+message UserSignInResponse {
+  string token = 1;
+}
+
+message UserUpdateRequest {
+  UserProfile current = 1;
+  UserProfile new = 2;
+}
+
+message UserLogsResponse {
+  repeated string items = 1;
+}
