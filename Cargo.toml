@@ -1,0 +1,32 @@
+[profile.release]
+lto = true
+strip = true
+
+[workspace]
+
+members = [
+    "palm",
+    "nut",
+    
+    "cms",
+    "forum",
+    "courses",
+    "mall",
+    "chats",        
+    "cscd",
+    "cbeta",
+    
+    "ops/mail",
+    "ops/vpn",
+    "ops/metrics",
+    "ops/ddns",
+    "ops/router",
+
+    "aloe",
+    "coconut",
+    "fig",
+    "lemon",
+    "loquat",
+    "orchid",
+
+]
