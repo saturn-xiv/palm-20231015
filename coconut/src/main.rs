@@ -1,3 +1,6 @@
 fn main() {
-    println!("Hello, world!");
+    env_logger::init();
+    if let Err(e) = coconut::launch() {
+        log::error!("{:?}", e);
+    }
 }

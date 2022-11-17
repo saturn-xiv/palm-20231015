@@ -1,8 +1,18 @@
 [package]
 name = "coconut"
-version = "0.1.0"
+version = "2022.11.17"
 edition = "2021"
+authors = ["Jeremy Zheng <jitang.zheng@gmail.com>"]
+description = "A backup tool."
+homepage = "https://github.com/saturn-xiv/palm"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+log = "0.4"
+toml = "0.5"
+env_logger = "0.9"
+
+[dependencies.clap]
+version = "4"
+features = ["derive"]

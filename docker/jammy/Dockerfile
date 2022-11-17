@@ -285,30 +285,28 @@ RUN echo "discovery.type: single-node" >> /opt/opensearch-${OPENSEARCH_VERSION}/
 RUN echo "plugins.security.disabled: true" >> /opt/opensearch-${OPENSEARCH_VERSION}/config/opensearch.yml
 RUN chown -R nobody /opt/opensearch-${OPENSEARCH_VERSION}
 
-RUN mkdir -p /var/lib/minio/data
-RUN chown -R nobody /var/lib/minio
+RUN mkdir -p /var/lib/minio/data \
+    && chown -R nobody /var/lib/minio
 
 RUN sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
 
 RUN su - postgres -c "/usr/lib/postgresql/14/bin/initdb -D /var/lib/postgresql/data"
-RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/postgresql/data/postgresql.conf
-RUN echo "host  all  all 0.0.0.0/0 md5" >> /var/lib/postgresql/data/pg_hba.conf
+RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/postgresql/data/postgresql.conf \
+    && echo "host  all  all 0.0.0.0/0 md5" >> /var/lib/postgresql/data/pg_hba.conf
 
+ADD etc/redis/* /etc/redis/
 RUN cd /var/lib \
     && mkdir redis-s redis-1 redis-2 redis-3 redis-4 redis-5 redis-6 \
     && chown redis:redis redis-s redis-1 redis-2 redis-3 redis-4 redis-5 redis-6 \
     && chmod 750 redis-s redis-1 redis-2 redis-3 redis-4 redis-5 redis-6
-ADD etc/redis/* /etc/redis/
 
-RUN mkdir /run/php
-RUN echo "<?php phpinfo(); ?>" > /var/www/html/info.php
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+RUN mkdir /run/php \
+    && echo "<?php phpinfo(); ?>" > /var/www/html/info.php \
+    && echo "daemon off;" >> /etc/nginx/nginx.conf
 ADD etc/nginx.conf /etc/nginx/sites-enabled/default
 
 ADD etc/envoy.yaml /etc/
-
 ADD etc/supervisor /etc/supervisor
-
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
