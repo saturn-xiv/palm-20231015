@@ -9,10 +9,26 @@ homepage = "https://github.com/saturn-xiv/palm"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+chrono = "0.4"
 log = "0.4"
-toml = "0.5"
 env_logger = "0.9"
+postgres = "0.19"
+dirs = "4"
 
 [dependencies.clap]
 version = "4"
 features = ["derive"]
+
+[dependencies.mysql]
+version = "23"
+# default-features = false
+# features = ["default-rustls"]
+
+[dependencies.openssl]
+version = "*"
+features = ["vendored"]
+
+[dependencies.libz-sys]
+version = "*"
+default-features = false
+features = ["libc"]

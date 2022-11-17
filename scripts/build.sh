@@ -229,6 +229,7 @@ then
 elif [ $ID == "arch" ]
 then
     build_arch_backend
+    yes | sudo pacman -S --needed musl
     cargo build --quiet --release --target x86_64-unknown-linux-musl -p coconut
     build_zst $ID amd64    
 else
