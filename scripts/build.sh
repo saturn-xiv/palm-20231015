@@ -8,7 +8,7 @@ export WORKSPACE=$PWD
 export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
 
 build_dashboard() {
-    cd $WORKSPACE/$1
+    cd $WORKSPACE/$1/dashboard
     if [ ! -d node_modules ]
     then
         yarn install --silent
@@ -81,7 +81,6 @@ build_ubuntu_backend() {
 }
 
 copy_backends() {
-    cd $WORKSPACE/target/$1/release
     if [ "$1" = "amd64" ]
     then
         cd $WORKSPACE/target/x86_64-unknown-linux-gnu/release        
@@ -95,7 +94,7 @@ copy_backends() {
         echo "unsupport arch $1"
         exit 1
     fi
-    cp fig lemon $2/
+    cp fig aloe $2/
 }
 
 copy_frontends() {
@@ -103,7 +102,7 @@ copy_frontends() {
         "fig"
         "aloe"
     )
-    for i in "${packages[@]}"
+    for i in "${projects[@]}"
     do
         cp -r $WORKSPACE/$i/dashboard/build $1/$i
     done
@@ -145,7 +144,8 @@ copy_assets() {
         $WORKSPACE/docker/jammy/etc/envoy.yaml \
         $WORKSPACE/palm/db $WORKSPACE/palm/protocols \
         $1/
-    echo "$GIT_VERSION $(date -R)" > $1/VERSION
+    echo "$GIT_VERSION" > $1/VERSION
+    echo "$(date -R)" >> $1/VERSION
 }
 
 build_zst() {
@@ -159,7 +159,8 @@ build_zst() {
     copy_frontends $target
     copy_backends $2 $target/bin
 
-    XZ_OPT=-9 tar -cJf $target.tar.xz $target
+    cd $target
+    XZ_OPT=-9 tar -cJf $target.tar.xz *
 }
 
 build_deb() {
@@ -202,19 +203,21 @@ then
 fi
 
 build_dashboard fig
-build_dashboard lemon
+build_dashboard aloe
 
 if [ $ID == "ubuntu" ]
 then    
     build_ubuntu_backend amd64
+    cargo build --quiet --release --target x86_64-unknown-linux-musl -p coconut
     build_deb amd64
-    build_zst $UBUNTU_CODENAME amd64
+    build_zst $UBUNTU_CODENAME amd64    
 
     if dpkg --print-foreign-architectures | grep -q arm64
     then         
         build_ubuntu_backend arm64
+        cargo build --quiet --release --target aarch64-unknown-linux-musl -p coconut
         build_deb arm64
-        build_zst $UBUNTU_CODENAME arm64
+        build_zst $UBUNTU_CODENAME arm64        
     fi
 
     if dpkg --print-foreign-architectures | grep -q armhf
@@ -226,7 +229,8 @@ then
 elif [ $ID == "arch" ]
 then
     build_arch_backend
-    build_zst $ID amd64
+    cargo build --quiet --release --target x86_64-unknown-linux-musl -p coconut
+    build_zst $ID amd64    
 else
     echo "unsupported system $ID"
     exit 1

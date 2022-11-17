@@ -1,2 +1,6 @@
 /Cargo.lock
 /target/
+/node_modules/
+/yarn.lock
+
+/tmp/
