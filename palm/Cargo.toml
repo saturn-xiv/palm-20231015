@@ -2,13 +2,142 @@
 name = "palm"
 version = "0.1.0"
 edition = "2021"
+authors = ["Jeremy Zheng <jitang.zheng@gmail.com>"]
+description = "A total free education & translation & ops solution."
+homepage = "https://github.com/saturn-xiv/palm"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-tonic = "0.8"
+async-trait = "0.1"
+rabbitmq-stream-client = "0.1"
+bigdecimal = "0.3"
+futures = "0.3"
+futures-util = "0.3"
+mime = "0.3"
+language-tags = "0.3"
+actix-multipart = "0.4"
+log = "0.4"
+num-complex = "0.4"
+yaml-rust = "0.4"
+actix-identity = "0.5"
+toml = "0.5"
+actix-cors = "0.6"
+actix-files = "0.6"
+encoding_rs = "0.8"
+r2d2 = "0.8"
+rand = "0.8"
+xml-rs = "0.8"
+rusttype = "0.9"
+ssh2 = "0.9"
+lettre = "0.10"
+askama = "0.11"
+paho-mqtt = "0.11"
 prost = "0.11"
 prost-types = "0.11"
+Inflector = "0.11"
+base64 = "0.13"
+git2 = "0.15"
+ipnetwork = "0.20"
+aws-sdk-s3 = "0.21"
+aws-sdk-sqs = "0.21"
+imageproc = "0.23"
+image = "0.24"
+nix = "0.25"
+rusoto_core = "0.48"
+rusoto_credential = "0.48"
+rusoto_s3 = "0.48"
+rusoto_sqs = "0.48"
+aws-config = "0.51"
+bytes = "1"
+bytesize = "1"
+lazy_static = "1"
+regex = "1"
+serde_json = "1"
+flexbuffers = "2"
+humantime = "2"
+lapin = "2"
+opensearch = "2"
+percent-encoding = "2"
+tempfile = "3"
+dirs = "4"
+handlebars = "4"
+amq-protocol-uri = "7"
+jsonwebtoken = "8"
+flatbuffers = "22"
+
+[dependencies.chrono]
+version = "0.4"
+features = ["serde"]
+
+[dependencies.actix-session]
+version = "0.7"
+features = ["cookie-session", "redis-rs-session"]
+
+[dependencies.chrono-tz]
+version = "0.8"
+features = ["serde"]
+
+[dependencies.tonic]
+version = "0.8"
+features = ["transport"]
+
+[dependencies.reqwest]
+version = "0.11"
+features = ["json"]
+
+[dependencies.hyper]
+version = "0.14"
+features = ["full"]
+
+[dependencies.validator]
+version = "0.16"
+features = ["derive", "phone", "card", "unic"]
+
+[dependencies.cookie]
+version = "0.16"
+features = ["secure", "private", "percent-encode"]
+
+[dependencies.redis]
+version = "0.22"
+features = ["tokio-comp", "r2d2", "cluster", "connection-manager"]
+
+[dependencies.eui48]
+version = "1"
+features = ["serde_bytes"]
+
+[dependencies.serde]
+version = "1"
+features = ["derive"]
+
+[dependencies.tokio]
+version = "1"
+features = ["full"]
+
+[dependencies.uuid]
+version = "1"
+features = ["v4", "serde"]
+
+[dependencies.rss]
+version = "2"
+features = ["validation"]
+
+[dependencies.url]
+version = "2"
+features = ["serde"]
+
+[dependencies.actix-web]
+version = "4"
+features = ["cookies"]
+
+[dependencies.openssl]
+version = "*"
+features = ["vendored"]
+
+# FIXME chrono_locale
+# [dependencies.minio]
+# git = "https://github.com/minio/minio-rs.git"
+# rev = "5fea81d"
 
 [build-dependencies]
 tonic-build = "0.8"

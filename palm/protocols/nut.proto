@@ -7,9 +7,7 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
 
-message IdRequest {
-  int32 id = 1;
-}
+message IdRequest { int32 id = 1; }
 
 message Pager {
   int64 page = 1;
@@ -135,9 +133,7 @@ message UserSignUpRequest {
   string home = 21;
 }
 
-message UserTokenRequest {
-  string payload = 1;
-}
+message UserTokenRequest { string payload = 1; }
 
 message UserResetPasswordRequest {
   string token = 1;
@@ -307,9 +303,7 @@ message PolicyUsersForRoleResponse {
   }
   repeated Item items = 1;
 }
-message PolicyImplicitUsersForRoleResponse {
-  repeated UserDetail items = 1;
-}
+message PolicyImplicitUsersForRoleResponse { repeated UserDetail items = 1; }
 
 message PolicyRolesForUserResponse {
   message Item {
@@ -321,9 +315,7 @@ message PolicyRolesForUserResponse {
   repeated Item items = 1;
 }
 
-message PolicyImplicitRolesForUserResponse {
-  repeated string items = 1;
-}
+message PolicyImplicitRolesForUserResponse { repeated string items = 1; }
 
 message PolicyRoleListResponse {
   message Item {
@@ -348,9 +340,7 @@ message PolicyDeleteRolesForUserRequest {
   repeated int32 roles = 2;
 }
 
-message PolicyPermissionList {
-  repeated Permission items = 1;
-}
+message PolicyPermissionList { repeated Permission items = 1; }
 
 // ----------------------------------------------------------------------------
 
@@ -362,13 +352,9 @@ service Locale {
   rpc Destroy(IdRequest) returns (google.protobuf.Empty) {}
 }
 
-message LocaleByLangRequest {
-  string lang = 1;
-}
+message LocaleByLangRequest { string lang = 1; }
 
-message LocaleByLangResponse {
-  repeated LocaleIndexResponse.Item items = 1;
-}
+message LocaleByLangResponse { repeated LocaleIndexResponse.Item items = 1; }
 
 message LocaleIndexResponse {
   message Item {
@@ -476,18 +462,14 @@ service Site {
   rpc Status(google.protobuf.Empty) returns (SiteStatusResponse) {}
 }
 
-message IndexNowProfile {
-  string key = 1;
-}
+message IndexNowProfile { string key = 1; }
 
 message IndexNowPingRequest {
   string key = 1;
   string home = 9;
 }
 
-message SitemapPingRequest {
-  string home = 1;
-}
+message SitemapPingRequest { string home = 1; }
 
 message SiteMaintenanceModeRequest {
   message Item {
@@ -497,9 +479,7 @@ message SiteMaintenanceModeRequest {
   optional Item item = 1;
 }
 
-message SiteInstallRequest {
-  UserSignUpRequest user = 1;
-}
+message SiteInstallRequest { UserSignUpRequest user = 1; }
 
 message MinioProfile {
   optional string region = 1;
@@ -510,9 +490,7 @@ message MinioProfile {
   string secret_key = 9;
 }
 
-message SiteMinioTestResponse {
-  repeated string buckets = 1;
-}
+message SiteMinioTestResponse { repeated string buckets = 1; }
 
 message TwilioProfile {
   string from = 1;
@@ -553,7 +531,7 @@ message EmailTask {
     bytes payload = 3;
   }
   string subject = 1;
-  string content = 2;
+  string body = 2;
   ContentType content_type = 3;
 
   Address to = 11;
@@ -575,15 +553,9 @@ message SiteSmtpTestRequest {
   SmtpProfile profile = 9;
 }
 
-message SiteSetLogoRequest {
-  string url = 1;
-}
-message SiteSetCopyrightRequest {
-  string payload = 1;
-}
-message SiteSetKeywordsRequest {
-  repeated string items = 1;
-}
+message SiteSetLogoRequest { string url = 1; }
+message SiteSetCopyrightRequest { string payload = 1; }
+message SiteSetKeywordsRequest { repeated string items = 1; }
 message SiteSetInfoRequest {
   string lang = 1;
   string title = 11;
@@ -622,9 +594,7 @@ message BaiduProfile {
   }
   optional SiteVerify site_verify = 1;
 }
-message BingProfile {
-  optional string site_verify_id = 1;
-}
+message BingProfile { optional string site_verify_id = 1; }
 
 message SmsTask {
   string from = 1;
@@ -654,9 +624,7 @@ message SiteStatusResponse {
     string info = 1;
     repeated Item items = 2;
   }
-  message RabbitMq {
-    string protocol = 1;
-  }
+  message RabbitMq { string protocol = 1; }
   message OpenSearch {
     string url = 1;
     string info = 2;
