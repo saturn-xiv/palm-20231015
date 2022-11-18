@@ -94,7 +94,6 @@ macro_rules! try_web {
     }};
 }
 
-pub mod aws;
 pub mod cache;
 pub mod captcha;
 pub mod crypto;
@@ -102,7 +101,7 @@ pub mod currency;
 pub mod env;
 pub mod handlers;
 pub mod jwt;
-// pub mod minio;
+pub mod minio;
 pub mod models;
 pub mod oauth;
 pub mod parser;
