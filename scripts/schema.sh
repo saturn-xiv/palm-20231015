@@ -41,7 +41,7 @@ function generate_fig_web() {
     $PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/palm/protocols \
         -I $PROTOBUF_ROOT/include/google/protobuf \
         --js_out=import_style=commonjs,binary:$target \
-        --grpc-web_out=import_style=commonjs+dts,mode=grpcweb:$target \
+        --grpc-web_out=import_style=typescript,mode=grpcweb:$target \
         $WORKSPACE/palm/protocols/*.proto
 }
 function generate_aloe_web() {
@@ -56,7 +56,7 @@ function generate_aloe_web() {
     $PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/palm/protocols \
         -I $PROTOBUF_ROOT/include/google/protobuf \
         --js_out=import_style=commonjs,binary:$target \
-        --grpc-web_out=import_style=commonjs+dts,mode=grpcweb:$target \
+        --grpc-web_out=import_style=typescript,mode=grpcweb:$target \
         $WORKSPACE/palm/protocols/ops-router.proto
 }
 

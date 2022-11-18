@@ -14585,10 +14585,8 @@ proto.palm.nut.v1.MinioProfile.prototype.toObject = function(opt_includeInstance
  */
 proto.palm.nut.v1.MinioProfile.toObject = function(includeInstance, msg) {
   var f, obj = {
-    region: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    host: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    port: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    https: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
+    url: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    region: jspb.Message.getFieldWithDefault(msg, 2, ""),
     accessKey: jspb.Message.getFieldWithDefault(msg, 8, ""),
     secretKey: jspb.Message.getFieldWithDefault(msg, 9, "")
   };
@@ -14629,19 +14627,11 @@ proto.palm.nut.v1.MinioProfile.deserializeBinaryFromReader = function(msg, reade
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setRegion(value);
+      msg.setUrl(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setHost(value);
-      break;
-    case 3:
-      var value = /** @type {number} */ (reader.readInt32());
-      msg.setPort(value);
-      break;
-    case 4:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setHttps(value);
+      msg.setRegion(value);
       break;
     case 8:
       var value = /** @type {string} */ (reader.readString());
@@ -14680,31 +14670,17 @@ proto.palm.nut.v1.MinioProfile.prototype.serializeBinary = function() {
  */
 proto.palm.nut.v1.MinioProfile.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = /** @type {string} */ (jspb.Message.getField(message, 1));
-  if (f != null) {
+  f = message.getUrl();
+  if (f.length > 0) {
     writer.writeString(
       1,
       f
     );
   }
-  f = message.getHost();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
     writer.writeString(
       2,
-      f
-    );
-  }
-  f = message.getPort();
-  if (f !== 0) {
-    writer.writeInt32(
-      3,
-      f
-    );
-  }
-  f = message.getHttps();
-  if (f) {
-    writer.writeBool(
-      4,
       f
     );
   }
@@ -14726,10 +14702,10 @@ proto.palm.nut.v1.MinioProfile.serializeBinaryToWriter = function(message, write
 
 
 /**
- * optional string region = 1;
+ * optional string url = 1;
  * @return {string}
  */
-proto.palm.nut.v1.MinioProfile.prototype.getRegion = function() {
+proto.palm.nut.v1.MinioProfile.prototype.getUrl = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -14738,34 +14714,16 @@ proto.palm.nut.v1.MinioProfile.prototype.getRegion = function() {
  * @param {string} value
  * @return {!proto.palm.nut.v1.MinioProfile} returns this
  */
-proto.palm.nut.v1.MinioProfile.prototype.setRegion = function(value) {
-  return jspb.Message.setField(this, 1, value);
+proto.palm.nut.v1.MinioProfile.prototype.setUrl = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * Clears the field making it undefined.
- * @return {!proto.palm.nut.v1.MinioProfile} returns this
- */
-proto.palm.nut.v1.MinioProfile.prototype.clearRegion = function() {
-  return jspb.Message.setField(this, 1, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.palm.nut.v1.MinioProfile.prototype.hasRegion = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * optional string host = 2;
+ * optional string region = 2;
  * @return {string}
  */
-proto.palm.nut.v1.MinioProfile.prototype.getHost = function() {
+proto.palm.nut.v1.MinioProfile.prototype.getRegion = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -14774,44 +14732,26 @@ proto.palm.nut.v1.MinioProfile.prototype.getHost = function() {
  * @param {string} value
  * @return {!proto.palm.nut.v1.MinioProfile} returns this
  */
-proto.palm.nut.v1.MinioProfile.prototype.setHost = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+proto.palm.nut.v1.MinioProfile.prototype.setRegion = function(value) {
+  return jspb.Message.setField(this, 2, value);
 };
 
 
 /**
- * optional int32 port = 3;
- * @return {number}
- */
-proto.palm.nut.v1.MinioProfile.prototype.getPort = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/**
- * @param {number} value
+ * Clears the field making it undefined.
  * @return {!proto.palm.nut.v1.MinioProfile} returns this
  */
-proto.palm.nut.v1.MinioProfile.prototype.setPort = function(value) {
-  return jspb.Message.setProto3IntField(this, 3, value);
+proto.palm.nut.v1.MinioProfile.prototype.clearRegion = function() {
+  return jspb.Message.setField(this, 2, undefined);
 };
 
 
 /**
- * optional bool https = 4;
+ * Returns whether this field is set.
  * @return {boolean}
  */
-proto.palm.nut.v1.MinioProfile.prototype.getHttps = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.palm.nut.v1.MinioProfile} returns this
- */
-proto.palm.nut.v1.MinioProfile.prototype.setHttps = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 4, value);
+proto.palm.nut.v1.MinioProfile.prototype.hasRegion = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 

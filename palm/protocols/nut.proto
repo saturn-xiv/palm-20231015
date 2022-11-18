@@ -482,10 +482,9 @@ message SiteMaintenanceModeRequest {
 message SiteInstallRequest { UserSignUpRequest user = 1; }
 
 message MinioProfile {
-  optional string region = 1;
-  string host = 2;
-  int32 port = 3;
-  bool https = 4;
+  string url = 1;
+  optional string region = 2;
+
   string access_key = 8;
   string secret_key = 9;
 }

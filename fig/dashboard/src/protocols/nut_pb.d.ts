@@ -1715,19 +1715,13 @@ export namespace SiteInstallRequest {
 }
 
 export class MinioProfile extends jspb.Message {
+  getUrl(): string;
+  setUrl(value: string): MinioProfile;
+
   getRegion(): string;
   setRegion(value: string): MinioProfile;
   hasRegion(): boolean;
   clearRegion(): MinioProfile;
-
-  getHost(): string;
-  setHost(value: string): MinioProfile;
-
-  getPort(): number;
-  setPort(value: number): MinioProfile;
-
-  getHttps(): boolean;
-  setHttps(value: boolean): MinioProfile;
 
   getAccessKey(): string;
   setAccessKey(value: string): MinioProfile;
@@ -1745,17 +1739,15 @@ export class MinioProfile extends jspb.Message {
 
 export namespace MinioProfile {
   export type AsObject = {
+    url: string,
     region?: string,
-    host: string,
-    port: number,
-    https: boolean,
     accessKey: string,
     secretKey: string,
   }
 
   export enum RegionCase { 
     _REGION_NOT_SET = 0,
-    REGION = 1,
+    REGION = 2,
   }
 }
 
