@@ -531,7 +531,7 @@ message EmailTask {
     bytes payload = 3;
   }
   string subject = 1;
-  string body = 2;
+  string content = 2;
   ContentType content_type = 3;
 
   Address to = 11;
