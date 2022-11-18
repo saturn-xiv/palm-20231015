@@ -83,6 +83,7 @@ function generate_diesel_postgresql() {
 # -----------------------------------------------------------------------------
 
 generate_diesel_postgresql "postgres://www:change-me@127.0.0.1:5432/demo"
+DATABASE_URL=tmp/db diesel print-schema > aloe/src/schema.rs
 
 declare -a languages=(
     # "node"
