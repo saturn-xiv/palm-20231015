@@ -14,6 +14,7 @@ use std::time::Duration;
 //     http::BaseUrl,
 // };
 use askama::Template;
+use aws_types::credentials::SharedCredentialsProvider;
 use serde::{Deserialize, Serialize};
 
 use super::{nut::v1, Result};
@@ -77,9 +78,13 @@ impl NginxConfig<'_> {
 }
 
 impl v1::MinioProfile {
-    pub fn open(&self) -> Result<AwsClient> {
-        let cfg = aws_config::SdkConfig::builder().build();
-        // TODO
+    pub async fn open(&self) -> Result<AwsClient> {
+        let cred = aws_sdk_s3::Credentials::new(&self.access_key, &self.secret_key, None, None, "");
+        let cfg = aws_config::SdkConfig::builder()
+            .endpoint_resolver(aws_sdk_s3::Endpoint::immutable(self.url.parse()?))
+            .region(aws_sdk_s3::Region::new(self.region.clone()))
+            .credentials_provider(SharedCredentialsProvider::new(cred))
+            .build();
         Ok(AwsClient(aws_sdk_s3::Client::new(&cfg)))
     }
 }
@@ -97,11 +102,15 @@ impl AwsClient {
                 raw: ref _raw,
             } = e
             {
-                if let aws_sdk_s3::error::CreateBucketErrorKind::BucketAlreadyExists(ref _id) =
-                    err.kind
-                {
-                    return Ok(());
-                }
+                match err.kind {
+                    aws_sdk_s3::error::CreateBucketErrorKind::BucketAlreadyOwnedByYou(ref _id) => {
+                        return Ok(());
+                    }
+                    aws_sdk_s3::error::CreateBucketErrorKind::BucketAlreadyExists(ref _id) => {
+                        return Ok(());
+                    }
+                    _ => {}
+                };
             }
             error!("{}", e);
             return Err(Box::new(IoError::from(IoErrorKind::UnexpectedEof)));

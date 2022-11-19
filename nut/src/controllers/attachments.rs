@@ -28,7 +28,7 @@ pub async fn create(
     let aes = aes.deref();
     let aes = aes.deref();
     let aws = try_web!(get::<MinioProfile, Aes>(db, aes, None))?;
-    let s3 = try_web!(aws.open())?;
+    let s3 = try_web!(aws.open().await)?;
 
     let bucket = Attachment::bucket_by_year_month();
     if !try_web!(s3.bucket_exists(&bucket).await)? {

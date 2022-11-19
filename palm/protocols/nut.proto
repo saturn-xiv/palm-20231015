@@ -483,7 +483,7 @@ message SiteInstallRequest { UserSignUpRequest user = 1; }
 
 message MinioProfile {
   string url = 1;
-  optional string region = 2;
+  string region = 2;
 
   string access_key = 8;
   string secret_key = 9;
