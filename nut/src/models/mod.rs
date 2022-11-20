@@ -1,10 +1,16 @@
 pub mod attachment;
+pub mod category;
+pub mod leave_word;
 pub mod locale;
 pub mod log;
 pub mod permission;
 pub mod role;
 pub mod setting;
+pub mod shorter_link;
+pub mod tag;
+pub mod twilio;
 pub mod user;
+pub mod vote;
 
 use std::fmt;
 use std::str::FromStr;

@@ -3,9 +3,9 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
                                                                                                                                                                                                  http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
 
-    <changeSet id="20220925123536" author="jeremy.zheng" labels="create articles">
+    <changeSet id="20220925123536" author="jeremy.zheng" labels="create cms articles">
 
-        <createTable tableName="articles">
+        <createTable tableName="cms_articles">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
@@ -46,13 +46,13 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="articles" indexName="idx_article_ip">
+        <createIndex tableName="cms_articles" indexName="idx_cms_article_ip">
             <column name="ip" />
         </createIndex>
-        <createIndex tableName="articles" indexName="idx_articles_lang">
+        <createIndex tableName="cms_articles" indexName="idx_cms_articles_lang">
             <column name="lang" />
         </createIndex>
-        <createIndex tableName="articles" indexName="idx_articles_title">
+        <createIndex tableName="cms_articles" indexName="idx_cms_articles_title">
             <column name="title" />
         </createIndex>
 

@@ -67,13 +67,13 @@ function generate_diesel_postgresql() {
         -o locales settings \
             users users_contacts logs attachments attachments_resources \
             roles roles_users roles_constraints permissions \
-        > nut/src/schema.rs    
-    DATABASE_URL=$1 diesel print-schema \
-        -o leave_words shorter_links notifications twilio_sms_logs \
+            leave_words shorter_links notifications twilio_sms_logs \
             tags tags_resources \
             categories categories_resources \
             vote_items vote_logs \
-            articles comments \
+        > nut/src/schema.rs    
+    DATABASE_URL=$1 diesel print-schema \
+        -o cms_articles cms_comments \
         > cms/src/schema.rs
     DATABASE_URL=$1 diesel print-schema \
         -o forum_topics forum_posts \
