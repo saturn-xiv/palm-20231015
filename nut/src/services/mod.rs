@@ -1,6 +1,12 @@
 pub mod attachment;
+pub mod category;
+pub mod leave_word;
 pub mod locale;
+pub mod notification;
 pub mod policy;
+pub mod shorter_link;
+pub mod site;
+pub mod tag;
 pub mod user;
 
 use std::any::type_name;

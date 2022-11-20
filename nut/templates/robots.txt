@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://{{ host }}/sitemap.xml
+Sitemap: {{ home }}/sitemap.xml

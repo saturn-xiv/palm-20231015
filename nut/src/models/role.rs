@@ -24,7 +24,6 @@ pub struct Item {
 }
 
 impl Item {
-    pub const NULL: &'static str = "null";
     pub const ROOT: &'static str = "root";
     pub const ADMINISTRATOR: &'static str = "administrator";
 }

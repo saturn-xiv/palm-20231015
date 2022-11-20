@@ -2,7 +2,7 @@ use std::any::type_name;
 
 use chrono::NaiveDateTime;
 use diesel::{insert_into, prelude::*};
-use palm::Result;
+use palm::{nut::v1::user_logs_response::item::Level, Result};
 
 use super::super::{orm::postgresql::Connection, schema::logs};
 
@@ -22,7 +22,7 @@ pub trait Dao {
     fn add<S: Into<String>, T>(
         &mut self,
         user: i32,
-        level: i32,
+        level: Level,
         ip: &str,
         resource_id: Option<i32>,
         message: S,
@@ -51,11 +51,12 @@ impl Dao for Connection {
     fn add<S: Into<String>, T>(
         &mut self,
         user: i32,
-        level: i32,
+        level: Level,
         ip: &str,
         resource_id: Option<i32>,
         message: S,
     ) -> Result<()> {
+        let level = level as i32;
         insert_into(logs::dsl::logs)
             .values((
                 logs::dsl::user_id.eq(user),

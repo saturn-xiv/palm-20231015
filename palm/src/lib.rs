@@ -108,6 +108,7 @@ pub mod parser;
 pub mod queue;
 pub mod result;
 pub mod search;
+pub mod seo;
 pub mod tasks;
 pub mod twilio;
 

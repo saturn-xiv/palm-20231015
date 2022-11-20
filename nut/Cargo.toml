@@ -14,11 +14,15 @@ actix-multipart = "0.4"
 log = "0.4"
 yaml-rust = "0.4"
 rand = "0.8"
+xml-rs = "0.8"
 zmq = "0.10"
+askama = "0.11"
 prost = "0.11"
 prost-types = "0.11"
+nix = "0.25"
 serde_json = "1"
 flexbuffers = "2"
+lapin = "2"
 percent-encoding = "2"
 tempfile = "3"
 handlebars = "4"
@@ -42,6 +46,10 @@ features = ["transport"]
 [dependencies.hyper]
 version = "0.14"
 features = ["full"]
+
+[dependencies.validator]
+version = "0.16"
+features = ["derive", "phone", "card", "unic"]
 
 [dependencies.serde]
 version = "1"

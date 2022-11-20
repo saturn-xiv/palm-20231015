@@ -54,7 +54,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<_, User>(
                     db,
                     user.id,
-                    v1::user_logs_response::item::Level::Info as i32,
+                    v1::user_logs_response::item::Level::Info,
                     &ss.client_ip,
                     Some(user.id),
                     "sign in success",
@@ -104,7 +104,7 @@ impl v1::user_server::User for Service {
             LogDao::add::<_, User>(
                 db,
                 user.id,
-                v1::user_logs_response::item::Level::Info as i32,
+                v1::user_logs_response::item::Level::Info,
                 &ss.client_ip,
                 Some(user.id),
                 "sign up.",
@@ -167,7 +167,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<String, User>(
                     db,
                     user_id,
-                    v1::user_logs_response::item::Level::Info as i32,
+                    v1::user_logs_response::item::Level::Info,
                     &ip,
                     Some(user.id),
                     "Confirm account.".to_string(),
@@ -223,7 +223,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<String, User>(
                     db,
                     user_id,
-                    v1::user_logs_response::item::Level::Info as i32,
+                    v1::user_logs_response::item::Level::Info,
                     &ip,
                     Some(user.id),
                     "Unlock account.".to_string(),
@@ -272,7 +272,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<String, User>(
                     db,
                     user_id,
-                    v1::user_logs_response::item::Level::Info as i32,
+                    v1::user_logs_response::item::Level::Info,
                     &ip,
                     Some(user.id),
                     "Reset password.".to_string(),
@@ -368,7 +368,7 @@ impl v1::user_server::User for Service {
         try_grpc!(LogDao::add::<_, User>(
             db,
             user.payload.id,
-            v1::user_logs_response::item::Level::Info as i32,
+            v1::user_logs_response::item::Level::Info,
             &ss.client_ip,
             Some(user.payload.id),
             "sign out."
@@ -400,7 +400,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<String, User>(
                     db,
                     user.payload.id,
-                    v1::user_logs_response::item::Level::Info as i32,
+                    v1::user_logs_response::item::Level::Info,
                     &ip,
                     Some(user.payload.id),
                     "Update profile.".to_string(),
@@ -431,7 +431,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<String, User>(
                     db,
                     user.payload.id,
-                    v1::user_logs_response::item::Level::Info as i32,
+                    v1::user_logs_response::item::Level::Info,
                     &ip,
                     Some(user.payload.id),
                     "Change password.".to_string(),
@@ -626,7 +626,7 @@ impl v1::user_server::User for Service {
             LogDao::add::<_, User>(
                 db,
                 it.id,
-                v1::user_logs_response::item::Level::Info as i32,
+                v1::user_logs_response::item::Level::Info,
                 &ss.client_ip,
                 Some(it.id),
                 &format!("reset password by {}", user.payload),
