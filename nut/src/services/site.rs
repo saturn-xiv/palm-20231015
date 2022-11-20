@@ -662,11 +662,13 @@ impl v1::site_server::Site for Service {
 
         let req = req.into_inner();
         let languages = try_grpc!(LocaleDao::languages(db))?;
-        let rss: Vec<String> = languages
-            .iter()
-            .map(|x| format!("/{}/rss.xml", x))
-            .collect::<_>();
-        try_grpc!(palm::seo::baidu::ping(&req.home, &rss).await)?;
+
+        for lang in languages.iter() {
+            let title = I18n::t(db, lang, Self::SITE_TITLE, &None::<String>);
+            try_grpc!(
+                palm::seo::baidu::ping(&req.home, &title, &format!("/{}/rss.xml", lang)).await
+            )?;
+        }
 
         Ok(Response::new(()))
     }
@@ -727,7 +729,7 @@ impl v1::site_server::Site for Service {
         let mut links = Vec::new();
         for lang in try_grpc!(LocaleDao::languages(db))?.iter() {
             let items = try_grpc!(SeoProvider::by_lang(ch, lang))?;
-            let items: Vec<String> = items.iter().map(|x| x.url.clone()).collect::<_>();
+            let items: Vec<String> = items.iter().map(|x| x.path.clone()).collect::<_>();
             links.extend(items);
         }
 

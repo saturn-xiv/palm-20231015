@@ -10,7 +10,7 @@ use palm::{
     crypto::Aes,
     handlers::home::Home,
     nut::v1::{BaiduProfile, GoogleProfile, IndexNowProfile},
-    seo::{sitemap_indexes, sitemap_urlset, Provider as SeoProvider},
+    seo::{sitemap_index, sitemap_urlset, Provider as SeoProvider},
     try_web,
 };
 use serde::{Deserialize, Serialize};
@@ -32,7 +32,7 @@ pub async fn index(home: Home, db: web::Data<DbPool>) -> Result<impl Responder> 
         .map(|x| format!("/{}/sitemap.xml", x))
         .collect::<_>();
 
-    let buf: Vec<u8> = try_web!(sitemap_indexes(&home, &links))?;
+    let buf: Vec<u8> = try_web!(sitemap_index(&home, &links))?;
     Ok(HttpResponse::Ok()
         .content_type(ContentType::xml())
         .body(buf))

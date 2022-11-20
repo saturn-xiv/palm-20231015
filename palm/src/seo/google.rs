@@ -1,19 +1,19 @@
-use super::super::Result;
+use hyper::StatusCode;
 
-pub struct Item {}
+use super::super::{HttpError, Result};
 
 // https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#addsitemap
 pub async fn ping(home: &str) -> Result<()> {
-    /*
-        cpr::Response it =
-        cpr::Get(cpr::Url{"https://www.google.com/ping"},
-                 cpr::Parameters{{"sitemap", request->home() + "/sitemap.xml"}});
+    let cli = reqwest::Client::new();
+    let res = cli
+        .get("https://www.google.com/ping")
+        .query(&("sitemap", format!("{}/sitemap.xml", home)))
+        .send()
+        .await?;
 
-    if (it.status_code != cpr::status::HTTP_OK) {
-      BOOST_LOG_TRIVIAL(error) << it.status_code << " " << it.text;
-      return grpc::Status(grpc::StatusCode::INTERNAL, it.text);
+    debug!("{:#?}", res);
+    if res.status() == reqwest::StatusCode::OK {
+        return Ok(());
     }
-    BOOST_LOG_TRIVIAL(debug) << it.text;
-       */
-    Ok(())
+    Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)))
 }
