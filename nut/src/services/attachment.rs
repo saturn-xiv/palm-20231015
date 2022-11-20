@@ -2,13 +2,8 @@ use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
 use palm::{
-    auth::v1,
-    cache::redis::Pool as RedisPool,
-    crypto::Aes,
-    jwt::Jwt,
-    to_std_duration, to_timestamp, try_grpc,
-    v1::{IdRequest, MinioProfile, Pager, Pagination},
-    GrpcResult,
+    cache::redis::Pool as RedisPool, crypto::Aes, jwt::Jwt, nut::v1, to_std_duration, to_timestamp,
+    try_grpc, GrpcResult,
 };
 use tonic::{Request, Response, Status};
 
@@ -31,7 +26,7 @@ pub struct Service {
 
 #[tonic::async_trait]
 impl v1::attachment_server::Attachment for Service {
-    async fn index(&self, req: Request<Pager>) -> GrpcResult<v1::AttachmetIndexResponse> {
+    async fn index(&self, req: Request<v1::Pager>) -> GrpcResult<v1::AttachmentIndexResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -56,12 +51,12 @@ impl v1::attachment_server::Attachment for Service {
             ))?;
             (total, items)
         };
-        Ok(Response::new(v1::AttachmetIndexResponse {
+        Ok(Response::new(v1::AttachmentIndexResponse {
             items: items.iter().map(|x| x.clone().into()).collect(),
-            pagination: Some(Pagination::new(&req, total)),
+            pagination: Some(v1::Pagination::new(&req, total)),
         }))
     }
-    async fn destroy(&self, req: Request<IdRequest>) -> GrpcResult<()> {
+    async fn destroy(&self, req: Request<v1::IdRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -76,8 +71,9 @@ impl v1::attachment_server::Attachment for Service {
         let can = user.can::<Attachment, _>(&Operation::Remove, Some(it.id));
 
         if can {
-            let aws = try_grpc!(get::<MinioProfile, Aes>(db, aes, None))?;
-            try_grpc!(aws.remove_object(&it.bucket, &it.name).await)?;
+            let aws = try_grpc!(get::<v1::MinioProfile, Aes>(db, aes, None))?;
+            let cli = try_grpc!(aws.open().await)?;
+            try_grpc!(cli.remove_object(&it.bucket, &it.name).await)?;
             try_grpc!(AttachmentDao::delete(db, it.id))?;
             return Ok(Response::new(()));
         }
@@ -89,8 +85,8 @@ impl v1::attachment_server::Attachment for Service {
     }
     async fn show(
         &self,
-        req: Request<v1::AttachemtShowRequest>,
-    ) -> GrpcResult<v1::AttachemtShowResponse> {
+        req: Request<v1::AttachmentShowRequest>,
+    ) -> GrpcResult<v1::AttachmentShowResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -104,13 +100,14 @@ impl v1::attachment_server::Attachment for Service {
         let it = try_grpc!(AttachmentDao::by_id(db, req.id))?;
 
         if user.can::<Attachment, _>(&Operation::Read, Some(it.id)) {
-            let aws = try_grpc!(get::<MinioProfile, Aes>(db, aes, None))?;
+            let aws = try_grpc!(get::<v1::MinioProfile, Aes>(db, aes, None))?;
+            let cli = try_grpc!(aws.open().await)?;
             let url = try_grpc!(
-                aws.get_object(&it.bucket, &it.name, to_std_duration!(ttl))
+                cli.get_object(&it.bucket, &it.name, to_std_duration!(ttl))
                     .await
             )?;
 
-            return Ok(Response::new(v1::AttachemtShowResponse {
+            return Ok(Response::new(v1::AttachmentShowResponse {
                 item: Some(it.into()),
                 url,
             }));
@@ -119,7 +116,7 @@ impl v1::attachment_server::Attachment for Service {
     }
 }
 
-impl From<Attachment> for v1::attachmet_index_response::Item {
+impl From<Attachment> for v1::attachment_index_response::Item {
     fn from(it: Attachment) -> Self {
         Self {
             id: it.id,

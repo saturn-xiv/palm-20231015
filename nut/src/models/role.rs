@@ -33,10 +33,14 @@ pub trait Dao {
     fn by_id(&mut self, id: i32) -> Result<Item>;
     fn by_code(&mut self, code: &str) -> Result<Item>;
     fn by_user(&mut self, user: i32) -> Result<Vec<Item>>;
-    fn create(&mut self, code: &str, nested: &str) -> Result<()>;
+    fn offsprings(&mut self, id: i32) -> Result<Vec<Item>>;
+    fn create(&mut self, code: &str) -> Result<()>;
+    fn create_by_left(&mut self, code: &str, left: i32) -> Result<()>;
+    fn create_by_parent(&mut self, code: &str, parent: i32) -> Result<()>;
     fn update(&mut self, id: i32, code: &str) -> Result<()>;
     fn all(&mut self) -> Result<Vec<Item>>;
-    fn destroy(&mut self, code: &str) -> Result<()>;
+    fn count(&mut self) -> Result<i64>;
+    fn destroy(&mut self, id: i32) -> Result<()>;
     fn associate(
         &mut self,
         role: i32,
@@ -45,6 +49,7 @@ pub trait Dao {
         expired_at: &NaiveDateTime,
     ) -> Result<()>;
     fn dissociate(&mut self, role: i32, user: i32) -> Result<()>;
+    fn range(&mut self, role: i32, user: i32) -> Result<(NaiveDateTime, NaiveDateTime)>;
 
     fn users_for_role(&mut self, role: i32) -> Result<Vec<User>>;
 }
@@ -72,9 +77,54 @@ impl Dao for Connection {
         }
         Ok(items)
     }
-    fn create(&mut self, code: &str, nested: &str) -> Result<()> {
+    fn offsprings(&mut self, id: i32) -> Result<Vec<Item>> {
+        let it = Dao::by_id(self, id)?;
+        Ok(roles::dsl::roles
+            .filter(roles::dsl::left.gt(it.left))
+            .filter(roles::dsl::right.lt(it.right))
+            .order(roles::dsl::updated_at.desc())
+            .load::<Item>(self)?)
+    }
+    fn create(&mut self, code: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
-        let nested = Dao::by_code(self, nested)?;
+        insert_into(roles::dsl::roles)
+            .values((
+                roles::dsl::code.eq(code),
+                roles::dsl::left.eq(1),
+                roles::dsl::right.eq(2),
+                roles::dsl::updated_at.eq(&now),
+            ))
+            .execute(self)?;
+        Ok(())
+    }
+    fn create_by_parent(&mut self, code: &str, parent: i32) -> Result<()> {
+        let now = Utc::now().naive_utc();
+        let nested = Dao::by_id(self, parent)?;
+        update(roles::dsl::roles.filter(roles::dsl::left.gt(nested.left)))
+            .set((
+                roles::dsl::left.eq(roles::dsl::left + 2),
+                roles::dsl::updated_at.eq(&now),
+            ))
+            .execute(self)?;
+        update(roles::dsl::roles.filter(roles::dsl::right.gt(nested.left)))
+            .set((
+                roles::dsl::right.eq(roles::dsl::right + 2),
+                roles::dsl::updated_at.eq(&now),
+            ))
+            .execute(self)?;
+        insert_into(roles::dsl::roles)
+            .values((
+                roles::dsl::code.eq(code),
+                roles::dsl::left.eq(nested.left + 1),
+                roles::dsl::right.eq(nested.left + 2),
+                roles::dsl::updated_at.eq(&now),
+            ))
+            .execute(self)?;
+        Ok(())
+    }
+    fn create_by_left(&mut self, code: &str, left: i32) -> Result<()> {
+        let now = Utc::now().naive_utc();
+        let nested = Dao::by_id(self, left)?;
         update(roles::dsl::roles.filter(roles::dsl::left.gt(nested.right)))
             .set((
                 roles::dsl::left.eq(roles::dsl::left + 2),
@@ -110,9 +160,12 @@ impl Dao for Connection {
             .order(roles::dsl::updated_at.desc())
             .load::<Item>(self)?)
     }
-
-    fn destroy(&mut self, code: &str) -> Result<()> {
-        let it = Dao::by_code(self, code)?;
+    fn count(&mut self) -> Result<i64> {
+        let cnt: i64 = roles::dsl::roles.count().get_result(self)?;
+        Ok(cnt)
+    }
+    fn destroy(&mut self, id: i32) -> Result<()> {
+        let it = Dao::by_id(self, id)?;
         let width = it.right - it.left + 1;
         let now = Utc::now().naive_utc();
 
@@ -202,6 +255,15 @@ impl Dao for Connection {
         )
         .execute(self)?;
         Ok(())
+    }
+
+    fn range(&mut self, role: i32, user: i32) -> Result<(NaiveDateTime, NaiveDateTime)> {
+        let it = roles_users::dsl::roles_users
+            .select((roles_users::dsl::not_before, roles_users::dsl::expired_at))
+            .filter(roles_users::dsl::role_id.eq(role))
+            .filter(roles_users::dsl::user_id.eq(user))
+            .first::<(NaiveDateTime, NaiveDateTime)>(self)?;
+        Ok(it)
     }
 
     fn users_for_role(&mut self, role: i32) -> Result<Vec<User>> {

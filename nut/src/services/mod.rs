@@ -1,7 +1,7 @@
-// pub mod attachment;
-// pub mod locale;
-// pub mod policy;
-// pub mod user;
+pub mod attachment;
+pub mod locale;
+pub mod policy;
+pub mod user;
 
 use std::any::type_name;
 use std::fmt::Display;

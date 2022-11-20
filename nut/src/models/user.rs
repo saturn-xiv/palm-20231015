@@ -9,7 +9,7 @@ use language_tags::LanguageTag;
 use openssl::hash::{hash, MessageDigest};
 use palm::{
     crypto::{random::bytes as random_bytes, Password},
-    nut::v1::user_provider::Type as UserProviderType,
+    nut::v1::{self, user_provider::Type as UserProviderType},
     oauth::google::openid::IdToken,
     HttpError, Result,
 };
@@ -73,6 +73,12 @@ impl fmt::Display for Item {
 }
 
 impl Item {
+    pub fn address(&self) -> v1::email_task::Address {
+        v1::email_task::Address {
+            name: self.real_name.clone(),
+            email: self.email.clone(),
+        }
+    }
     pub fn subject(&self) -> String {
         format!("{}://{}", type_name::<Self>(), self.nickname)
     }

@@ -3,12 +3,7 @@ use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
 use palm::{
-    auth::v1,
-    cache::redis::Pool as RedisPool,
-    jwt::Jwt,
-    to_code, to_timestamp, try_grpc,
-    v1::{IdRequest, Pager, Pagination},
-    GrpcResult,
+    cache::redis::Pool as RedisPool, jwt::Jwt, nut::v1, to_code, to_timestamp, try_grpc, GrpcResult,
 };
 use tonic::{Request, Response, Status};
 
@@ -75,7 +70,19 @@ impl v1::locale_server::Locale for Service {
 
         Ok(Response::new(it.into()))
     }
-    async fn index(&self, req: Request<Pager>) -> GrpcResult<v1::LocaleIndexResponse> {
+    async fn by_lang(
+        &self,
+        req: Request<v1::LocaleByLangRequest>,
+    ) -> GrpcResult<v1::LocaleByLangResponse> {
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let req = req.into_inner();
+        let items = try_grpc!(LocaleDao::by_lang(db, &req.lang))?;
+        Ok(Response::new(v1::LocaleByLangResponse {
+            items: items.iter().map(|x| x.clone().into()).collect(),
+        }))
+    }
+    async fn index(&self, req: Request<v1::Pager>) -> GrpcResult<v1::LocaleIndexResponse> {
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
         let req = req.into_inner();
@@ -83,11 +90,11 @@ impl v1::locale_server::Locale for Service {
         let items = try_grpc!(LocaleDao::all(db, req.offset(total), req.size()))?;
 
         Ok(Response::new(v1::LocaleIndexResponse {
-            pagination: Some(Pagination::new(&req, total)),
+            pagination: Some(v1::Pagination::new(&req, total)),
             items: items.iter().map(|x| x.clone().into()).collect(),
         }))
     }
-    async fn destroy(&self, req: Request<IdRequest>) -> GrpcResult<()> {
+    async fn destroy(&self, req: Request<v1::IdRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();

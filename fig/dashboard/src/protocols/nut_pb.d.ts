@@ -1720,8 +1720,6 @@ export class MinioProfile extends jspb.Message {
 
   getRegion(): string;
   setRegion(value: string): MinioProfile;
-  hasRegion(): boolean;
-  clearRegion(): MinioProfile;
 
   getAccessKey(): string;
   setAccessKey(value: string): MinioProfile;
@@ -1740,14 +1738,9 @@ export class MinioProfile extends jspb.Message {
 export namespace MinioProfile {
   export type AsObject = {
     url: string,
-    region?: string,
+    region: string,
     accessKey: string,
     secretKey: string,
-  }
-
-  export enum RegionCase { 
-    _REGION_NOT_SET = 0,
-    REGION = 2,
   }
 }
 

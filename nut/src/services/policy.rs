@@ -6,19 +6,18 @@ use chrono::Utc;
 use diesel::Connection as DieselConntection;
 use hyper::StatusCode;
 use palm::{
-    auth::v1, cache::redis::Pool as RedisPool, jwt::Jwt, to_code, to_datetime, try_grpc, Error,
-    GrpcResult, HttpError,
+    cache::redis::Pool as RedisPool, jwt::Jwt, nut::v1, to_code, to_datetime, to_timestamp,
+    try_grpc, Error, GrpcResult, HttpError, Result,
 };
 use tonic::{Response, Status};
 
 use super::super::{
-    i18n::I18n,
     models::{
         permission::{Adapter as PermissionAdapter, Dao as PermissionDao, Item as Permission},
         role::{Adapter as RoleAdapter, Dao as RoleDao, Item as Role},
         user::{Dao as UserDao, Item as User},
     },
-    orm::postgresql::{Connection as Db, Pool as PostgreSqlPool},
+    orm::postgresql::Pool as PostgreSqlPool,
 };
 use super::Session;
 
@@ -44,9 +43,19 @@ impl v1::policy_server::Policy for Service {
         }
         let req = req.into_inner();
         let code = to_code!(req.code);
-        let nested = to_code!(req.nested);
+
         try_grpc!(db.transaction::<_, Error, _>(move |db| {
-            RoleDao::create(db, &code, &nested)?;
+            if let Some(ref nested) = req.nested {
+                match nested {
+                    v1::policy_add_role_request::Nested::Left(id) => {
+                        RoleDao::create_by_left(db, &code, *id)?;
+                    }
+                    v1::policy_add_role_request::Nested::Parent(id) => {
+                        RoleDao::create_by_parent(db, &code, *id)?;
+                    }
+                }
+            }
+
             Ok(())
         }))?;
         Ok(Response::new(()))
@@ -72,12 +81,18 @@ impl v1::policy_server::Policy for Service {
         Ok(Response::new(v1::PolicyRoleListResponse {
             items: items
                 .iter()
-                .map(|x| new_role_list_response_item(db, &ss.lang, &x.code))
+                .map(|x| v1::policy_role_list_response::Item {
+                    id: x.id,
+                    code: x.code.clone(),
+                    left: x.left,
+                    right: x.right,
+                    updated_at: Some(to_timestamp!(x.updated_at)),
+                })
                 .collect::<Vec<_>>(),
         }))
     }
 
-    async fn delete_role(&self, req: tonic::Request<v1::PolicyRoleRequest>) -> GrpcResult<()> {
+    async fn delete_role(&self, req: tonic::Request<v1::IdRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -91,16 +106,18 @@ impl v1::policy_server::Policy for Service {
         }
 
         let req = req.into_inner();
+        let role = try_grpc!(RoleDao::by_id(db, req.id))?;
+
         try_grpc!(db.transaction::<_, Error, _>(move |db| {
-            RoleDao::destroy(db, &req.code)?;
+            RoleDao::destroy(db, role.id)?;
             Ok(())
         }))?;
         Ok(Response::new(()))
     }
     async fn get_roles_for_user(
         &self,
-        req: tonic::Request<v1::PolicyUserRequest>,
-    ) -> GrpcResult<v1::PolicyRoleListResponse> {
+        req: tonic::Request<v1::IdRequest>,
+    ) -> GrpcResult<v1::PolicyRolesForUserResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -114,19 +131,24 @@ impl v1::policy_server::Policy for Service {
         }
 
         let req = req.into_inner();
-        let items = try_grpc!(RoleDao::by_user(db, req.id))?;
+        let user = try_grpc!(UserDao::by_id(db, req.id))?;
+        let mut items = Vec::new();
+        for it in try_grpc!(RoleDao::by_user(db, user.id))?.iter() {
+            let (nbf, exp) = try_grpc!(RoleDao::range(db, it.id, user.id))?;
+            items.push(v1::policy_roles_for_user_response::Item {
+                id: it.id,
+                code: it.code.clone(),
+                not_before: Some(to_timestamp!(nbf)),
+                expired_at: Some(to_timestamp!(exp)),
+            })
+        }
 
-        Ok(Response::new(v1::PolicyRoleListResponse {
-            items: items
-                .iter()
-                .map(|x| new_role_list_response_item(db, &ss.lang, &x.code))
-                .collect::<Vec<_>>(),
-        }))
+        Ok(Response::new(v1::PolicyRolesForUserResponse { items }))
     }
     async fn get_users_for_role(
         &self,
-        req: tonic::Request<v1::PolicyRoleRequest>,
-    ) -> GrpcResult<v1::PolicyUserListResponse> {
+        req: tonic::Request<v1::IdRequest>,
+    ) -> GrpcResult<v1::PolicyUsersForRoleResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -140,15 +162,19 @@ impl v1::policy_server::Policy for Service {
         }
         let req = req.into_inner();
 
-        let role = try_grpc!(RoleDao::by_code(db, &req.code))?;
-        let items = try_grpc!(RoleDao::users_for_role(db, role.id))?;
+        let role = try_grpc!(RoleDao::by_id(db, req.id))?;
+        let mut items = Vec::new();
 
-        Ok(Response::new(v1::PolicyUserListResponse {
-            items: items
-                .iter()
-                .map(|x| v1::policy_user_list_response::Item::from(x.clone()))
-                .collect::<Vec<_>>(),
-        }))
+        for it in try_grpc!(RoleDao::users_for_role(db, role.id))?.iter() {
+            let (nbf, exp) = try_grpc!(RoleDao::range(db, role.id, it.id))?;
+            items.push(v1::policy_users_for_role_response::Item {
+                user: Some(v1::UserDetail::from(it.clone())),
+                not_before: Some(to_timestamp!(nbf)),
+                expired_at: Some(to_timestamp!(exp)),
+            });
+        }
+
+        Ok(Response::new(v1::PolicyUsersForRoleResponse { items }))
     }
     async fn add_roles_for_user(
         &self,
@@ -183,11 +209,11 @@ impl v1::policy_server::Policy for Service {
             .unwrap_or_else(|| Utc::now().naive_utc());
 
         try_grpc!(db.transaction::<_, Error, _>(move |db| {
-            for role in req.roles.iter() {
-                if role == Role::ROOT {
+            for role in req.roles {
+                let role = RoleDao::by_id(db, role)?;
+                if role.code == Role::ROOT {
                     return Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)));
                 }
-                let role = try_grpc!(RoleDao::by_code(db, role))?;
                 try_grpc!(RoleDao::associate(db, role.id, req.user, &nbf, &exp))?;
             }
             Ok(())
@@ -218,8 +244,8 @@ impl v1::policy_server::Policy for Service {
             }
         }
         try_grpc!(db.transaction::<_, Error, _>(move |db| {
-            for role in req.roles.iter() {
-                let role = try_grpc!(RoleDao::by_code(db, role))?;
+            for role in req.roles {
+                let role = try_grpc!(RoleDao::by_id(db, role))?;
                 try_grpc!(RoleDao::dissociate(db, role.id, req.user))?;
             }
             Ok(())
@@ -229,8 +255,8 @@ impl v1::policy_server::Policy for Service {
 
     async fn get_implicit_roles_for_user(
         &self,
-        req: tonic::Request<v1::PolicyUserRequest>,
-    ) -> GrpcResult<v1::PolicyRoleListResponse> {
+        req: tonic::Request<v1::IdRequest>,
+    ) -> GrpcResult<v1::PolicyImplicitRolesForUserResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -245,18 +271,15 @@ impl v1::policy_server::Policy for Service {
         let req = req.into_inner();
         let items = try_grpc!(RoleAdapter::get_implicit_roles_for_user(db, req.id))?;
 
-        Ok(Response::new(v1::PolicyRoleListResponse {
-            items: items
-                .iter()
-                .map(|x| new_role_list_response_item(db, &ss.lang, &x.code))
-                .collect::<Vec<_>>(),
+        Ok(Response::new(v1::PolicyImplicitRolesForUserResponse {
+            items: items.iter().map(|x| x.code.clone()).collect::<Vec<_>>(),
         }))
     }
 
     async fn get_implicit_users_for_role(
         &self,
-        req: tonic::Request<v1::PolicyRoleRequest>,
-    ) -> GrpcResult<v1::PolicyUserListResponse> {
+        req: tonic::Request<v1::IdRequest>,
+    ) -> GrpcResult<v1::PolicyImplicitUsersForRoleResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -270,19 +293,19 @@ impl v1::policy_server::Policy for Service {
         }
         let req = req.into_inner();
 
-        let role = try_grpc!(RoleDao::by_code(db, &req.code))?;
+        let role = try_grpc!(RoleDao::by_id(db, req.id))?;
         let items = try_grpc!(RoleAdapter::get_implicit_users_for_role(db, role.id))?;
-        Ok(Response::new(v1::PolicyUserListResponse {
+        Ok(Response::new(v1::PolicyImplicitUsersForRoleResponse {
             items: items
                 .iter()
-                .map(|x| v1::policy_user_list_response::Item::from(x.clone()))
+                .map(|x| v1::UserDetail::from(x.clone()))
                 .collect::<Vec<_>>(),
         }))
     }
     async fn get_permissions_for_user(
         &self,
-        req: tonic::Request<v1::PolicyUserRequest>,
-    ) -> GrpcResult<v1::PolicyPermissionListResponse> {
+        req: tonic::Request<v1::IdRequest>,
+    ) -> GrpcResult<v1::PolicyPermissionList> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -295,18 +318,18 @@ impl v1::policy_server::Policy for Service {
             return Err(Status::permission_denied(type_name::<User>()));
         }
         let req = req.into_inner();
-        let items = try_grpc!(PermissionDao::by_subject(db, type_name::<User>(), req.id))?;
-        Ok(Response::new(v1::PolicyPermissionListResponse {
-            items: items
-                .iter()
-                .map(|x| v1::Permission::from(x.clone()))
-                .collect::<Vec<_>>(),
-        }))
+        let user = try_grpc!(UserDao::by_id(db, req.id))?;
+
+        let mut items = Vec::new();
+        for it in try_grpc!(PermissionDao::by_subject(db, type_name::<User>(), user.id))?.iter() {
+            items.push(try_grpc!(new_permission(it))?);
+        }
+        Ok(Response::new(v1::PolicyPermissionList { items }))
     }
     async fn get_permissions_for_role(
         &self,
-        req: tonic::Request<v1::PolicyRoleRequest>,
-    ) -> GrpcResult<v1::PolicyPermissionListResponse> {
+        req: tonic::Request<v1::IdRequest>,
+    ) -> GrpcResult<v1::PolicyPermissionList> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -319,19 +342,17 @@ impl v1::policy_server::Policy for Service {
             return Err(Status::permission_denied(type_name::<User>()));
         }
         let req = req.into_inner();
-        let role = try_grpc!(RoleDao::by_code(db, &req.code))?;
-        let items = try_grpc!(PermissionDao::by_subject(db, type_name::<Role>(), role.id))?;
-        Ok(Response::new(v1::PolicyPermissionListResponse {
-            items: items
-                .iter()
-                .map(|x| v1::Permission::from(x.clone()))
-                .collect::<Vec<_>>(),
-        }))
+        let role = try_grpc!(RoleDao::by_id(db, req.id))?;
+        let mut items = Vec::new();
+        for it in try_grpc!(PermissionDao::by_subject(db, type_name::<Role>(), role.id))?.iter() {
+            items.push(try_grpc!(new_permission(it))?);
+        }
+        Ok(Response::new(v1::PolicyPermissionList { items }))
     }
     async fn get_implicit_permissions_for_user(
         &self,
-        req: tonic::Request<v1::PolicyUserRequest>,
-    ) -> GrpcResult<v1::PolicyPermissionListResponse> {
+        req: tonic::Request<v1::IdRequest>,
+    ) -> GrpcResult<v1::PolicyPermissionList> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -344,21 +365,23 @@ impl v1::policy_server::Policy for Service {
             return Err(Status::permission_denied(type_name::<User>()));
         }
         let req = req.into_inner();
-        let items = try_grpc!(PermissionAdapter::get_implicit_permissions_for_user(
-            db, req.id
-        ))?;
-        Ok(Response::new(v1::PolicyPermissionListResponse {
-            items: items
-                .iter()
-                .map(|x| v1::Permission::from(x.clone()))
-                .collect::<Vec<_>>(),
-        }))
+        let user = try_grpc!(UserDao::by_id(db, req.id))?;
+
+        let mut items = Vec::new();
+        for it in try_grpc!(PermissionAdapter::get_implicit_permissions_for_user(
+            db, user.id
+        ))?
+        .iter()
+        {
+            items.push(try_grpc!(new_permission(it))?);
+        }
+        Ok(Response::new(v1::PolicyPermissionList { items }))
     }
 
     async fn get_implicit_permissions_for_role(
         &self,
-        req: tonic::Request<v1::PolicyRoleRequest>,
-    ) -> GrpcResult<v1::PolicyPermissionListResponse> {
+        req: tonic::Request<v1::IdRequest>,
+    ) -> GrpcResult<v1::PolicyPermissionList> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -371,21 +394,22 @@ impl v1::policy_server::Policy for Service {
             return Err(Status::permission_denied(type_name::<User>()));
         }
         let req = req.into_inner();
-        let role = try_grpc!(RoleDao::by_code(db, &req.code))?;
-        let items = try_grpc!(PermissionAdapter::get_implicit_permissions_for_role(
+        let role = try_grpc!(RoleDao::by_id(db, req.id))?;
+
+        let mut items = Vec::new();
+        for it in try_grpc!(PermissionAdapter::get_implicit_permissions_for_role(
             db, role.id
-        ))?;
-        Ok(Response::new(v1::PolicyPermissionListResponse {
-            items: items
-                .iter()
-                .map(|x| v1::Permission::from(x.clone()))
-                .collect::<Vec<_>>(),
-        }))
+        ))?
+        .iter()
+        {
+            items.push(try_grpc!(new_permission(it))?);
+        }
+        Ok(Response::new(v1::PolicyPermissionList { items }))
     }
 
     async fn add_permissions(
         &self,
-        req: tonic::Request<v1::PolicyPermissionsRequest>,
+        req: tonic::Request<v1::PolicyPermissionList>,
     ) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
@@ -402,11 +426,12 @@ impl v1::policy_server::Policy for Service {
         try_grpc!(db.transaction::<_, Error, _>(move |db| {
             for it in req.items.iter() {
                 if let Some(ref subject) = it.subject {
+                    let (subject_type, subject_id) = to_subject(subject);
                     if let Some(ref resource) = it.resource {
                         try_grpc!(PermissionDao::create(
                             db,
-                            &subject.r#type,
-                            subject.id,
+                            subject_type,
+                            subject_id,
                             &it.operation,
                             &resource.r#type,
                             resource.id
@@ -421,7 +446,7 @@ impl v1::policy_server::Policy for Service {
 
     async fn delete_permissions(
         &self,
-        req: tonic::Request<v1::PolicyPermissionsRequest>,
+        req: tonic::Request<v1::PolicyPermissionList>,
     ) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
@@ -438,11 +463,12 @@ impl v1::policy_server::Policy for Service {
         try_grpc!(db.transaction::<_, Error, _>(move |db| {
             for it in req.items.iter() {
                 if let Some(ref subject) = it.subject {
+                    let (subject_type, subject_id) = to_subject(subject);
                     if let Some(ref resource) = it.resource {
                         let it = try_grpc!(PermissionDao::get(
                             db,
-                            &subject.r#type,
-                            subject.id,
+                            subject_type,
+                            subject_id,
                             &it.operation,
                             &resource.r#type,
                             resource.id
@@ -457,40 +483,44 @@ impl v1::policy_server::Policy for Service {
     }
 }
 
-fn new_role_list_response_item(
-    db: &mut Db,
-    lang: &str,
-    role: &str,
-) -> v1::policy_role_list_response::Item {
-    v1::policy_role_list_response::Item {
-        code: role.to_string(),
-        name: I18n::t(db, lang, &format!("roles.{role}"), &None::<String>),
+fn to_subject(s: &v1::permission::Subject) -> (&'static str, i32) {
+    match *s {
+        v1::permission::Subject::User(id) => (type_name::<User>(), id),
+        v1::permission::Subject::Role(id) => (type_name::<Role>(), id),
     }
 }
 
-impl From<User> for v1::policy_user_list_response::Item {
+impl From<User> for v1::UserDetail {
     fn from(it: User) -> Self {
         Self {
+            id: it.id,
             uid: it.uid.clone(),
-            nick_name: it.nick_name.clone(),
+            nickname: it.nickname.clone(),
             real_name: it.real_name.clone(),
             email: it.email,
         }
     }
 }
 
-impl From<Permission> for v1::Permission {
-    fn from(it: Permission) -> Self {
-        Self {
-            subject: Some(v1::permission::Subject {
-                r#type: it.subject_type.clone(),
-                id: it.subject_id,
-            }),
-            operation: it.operation.clone(),
-            resource: Some(v1::Resource {
-                r#type: it.resource_type.clone(),
-                id: it.resource_id,
-            }),
-        }
+fn new_permission(p: &Permission) -> Result<v1::Permission> {
+    let mut it = v1::Permission {
+        operation: p.operation.clone(),
+        resource: Some(v1::Resource {
+            r#type: p.resource_type.clone(),
+            id: p.resource_id,
+        }),
+        ..Default::default()
+    };
+    if p.subject_type == type_name::<User>() {
+        it.subject = Some(v1::permission::Subject::User(p.subject_id));
+        return Ok(it);
     }
+    if p.subject_type == type_name::<Role>() {
+        it.subject = Some(v1::permission::Subject::Role(p.subject_id));
+        return Ok(it);
+    }
+    Err(Box::new(HttpError(
+        StatusCode::BAD_REQUEST,
+        Some(p.subject_type.clone()),
+    )))
 }

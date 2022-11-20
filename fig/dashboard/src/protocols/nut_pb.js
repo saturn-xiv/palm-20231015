@@ -14677,8 +14677,8 @@ proto.palm.nut.v1.MinioProfile.serializeBinaryToWriter = function(message, write
       f
     );
   }
-  f = /** @type {string} */ (jspb.Message.getField(message, 2));
-  if (f != null) {
+  f = message.getRegion();
+  if (f.length > 0) {
     writer.writeString(
       2,
       f
@@ -14733,25 +14733,7 @@ proto.palm.nut.v1.MinioProfile.prototype.getRegion = function() {
  * @return {!proto.palm.nut.v1.MinioProfile} returns this
  */
 proto.palm.nut.v1.MinioProfile.prototype.setRegion = function(value) {
-  return jspb.Message.setField(this, 2, value);
-};
-
-
-/**
- * Clears the field making it undefined.
- * @return {!proto.palm.nut.v1.MinioProfile} returns this
- */
-proto.palm.nut.v1.MinioProfile.prototype.clearRegion = function() {
-  return jspb.Message.setField(this, 2, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.palm.nut.v1.MinioProfile.prototype.hasRegion = function() {
-  return jspb.Message.getField(this, 2) != null;
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 

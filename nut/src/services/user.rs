@@ -6,14 +6,8 @@ use chrono::Duration;
 use diesel::Connection as DieselConntection;
 use hyper::StatusCode;
 use palm::{
-    auth::v1,
-    cache::redis::Pool as RedisPool,
-    crypto::Hmac,
-    jwt::Jwt,
-    queue::amqp::RabbitMq,
-    to_chrono_duration, to_code, to_timestamp, try_grpc,
-    v1::{EmailTask, Pager, Pagination},
-    Error, GrpcResult, HttpError, Result,
+    cache::redis::Pool as RedisPool, crypto::Hmac, jwt::Jwt, nut::v1, queue::amqp::RabbitMq,
+    to_chrono_duration, to_code, to_timestamp, try_grpc, Error, GrpcResult, HttpError, Result,
 };
 use tonic::{Request, Response, Status};
 
@@ -91,7 +85,7 @@ impl v1::user_server::User for Service {
         let hmac = self.hmac.deref();
         let req = req.into_inner();
 
-        let nick_name = to_code!(req.nick_name);
+        let nickname = to_code!(req.nickname);
         let email = to_code!(req.email);
         let real_name = req.real_name.trim();
 
@@ -100,7 +94,7 @@ impl v1::user_server::User for Service {
                 db,
                 hmac,
                 real_name,
-                &nick_name,
+                &nickname,
                 &email,
                 &req.password,
                 &req.lang.parse()?,
@@ -125,27 +119,23 @@ impl v1::user_server::User for Service {
 
         Ok(Response::new(()))
     }
-    async fn confirm_by_email(&self, req: Request<v1::UserEmailRequest>) -> GrpcResult<()> {
+    async fn confirm_by_email(&self, req: Request<v1::UserQueryRequest>) -> GrpcResult<()> {
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
         let req = req.into_inner();
 
-        if let Some(ref it) = req.query {
-            let user = try_grpc!(User::from_user_request(it, db))?;
-            if user.confirmed_at.is_some() {
-                return Err(Status::invalid_argument(format!(
-                    "user {} already confirmed!",
-                    user.email
-                )));
-            }
-            try_grpc!(
-                self.send_email(db, &req.home, &user, &Action::Confirm)
-                    .await
-            )?;
-            return Ok(Response::new(()));
+        let user = try_grpc!(User::from_user_request(&req, db))?;
+        if user.confirmed_at.is_some() {
+            return Err(Status::invalid_argument(format!(
+                "user {} already confirmed!",
+                user.email
+            )));
         }
-
-        Err(Status::not_found("user"))
+        try_grpc!(
+            self.send_email(db, &req.home, &user, &Action::Confirm)
+                .await
+        )?;
+        return Ok(Response::new(()));
     }
     async fn confirm_by_token(&self, req: Request<v1::UserTokenRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
@@ -153,7 +143,7 @@ impl v1::user_server::User for Service {
         let db = db.deref_mut();
         let req = req.into_inner();
 
-        let token = try_grpc!(self.jwt.parse::<Token>(&req.token))?;
+        let token = try_grpc!(self.jwt.parse::<Token>(&req.payload))?;
         let token = token.claims;
         if token.act != Action::Confirm {
             return Err(Status::invalid_argument(format!(
@@ -188,24 +178,20 @@ impl v1::user_server::User for Service {
 
         Ok(Response::new(()))
     }
-    async fn unlock_by_email(&self, req: Request<v1::UserEmailRequest>) -> GrpcResult<()> {
+    async fn unlock_by_email(&self, req: Request<v1::UserQueryRequest>) -> GrpcResult<()> {
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
         let req = req.into_inner();
 
-        if let Some(ref it) = req.query {
-            let user = try_grpc!(User::from_user_request(it, db))?;
-            if user.locked_at.is_none() {
-                return Err(Status::invalid_argument(format!(
-                    "user {} isn't locked!",
-                    user.email
-                )));
-            }
-            try_grpc!(self.send_email(db, &req.home, &user, &Action::Unlock).await)?;
-            return Ok(Response::new(()));
+        let user = try_grpc!(User::from_user_request(&req, db))?;
+        if user.locked_at.is_none() {
+            return Err(Status::invalid_argument(format!(
+                "user {} isn't locked!",
+                user.email
+            )));
         }
-
-        Err(Status::not_found("user"))
+        try_grpc!(self.send_email(db, &req.home, &user, &Action::Unlock).await)?;
+        Ok(Response::new(()))
     }
     async fn unlock_by_token(&self, req: Request<v1::UserTokenRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
@@ -213,7 +199,7 @@ impl v1::user_server::User for Service {
         let db = db.deref_mut();
         let req = req.into_inner();
 
-        let token = try_grpc!(self.jwt.parse::<Token>(&req.token))?;
+        let token = try_grpc!(self.jwt.parse::<Token>(&req.payload))?;
         let token = token.claims;
         if token.act != Action::Unlock {
             return Err(Status::invalid_argument(format!(
@@ -248,21 +234,17 @@ impl v1::user_server::User for Service {
 
         Ok(Response::new(()))
     }
-    async fn forgot_password(&self, req: Request<v1::UserEmailRequest>) -> GrpcResult<()> {
+    async fn forgot_password(&self, req: Request<v1::UserQueryRequest>) -> GrpcResult<()> {
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
         let req = req.into_inner();
 
-        if let Some(ref it) = req.query {
-            let user = try_grpc!(User::from_user_request(it, db))?;
-            try_grpc!(
-                self.send_email(db, &req.home, &user, &Action::ResetPassword)
-                    .await
-            )?;
-            return Ok(Response::new(()));
-        }
-
-        Err(Status::not_found("user"))
+        let user = try_grpc!(User::from_user_request(&req, db))?;
+        try_grpc!(
+            self.send_email(db, &req.home, &user, &Action::ResetPassword)
+                .await
+        )?;
+        Ok(Response::new(()))
     }
     async fn reset_password(&self, req: Request<v1::UserResetPasswordRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
@@ -320,7 +302,7 @@ impl v1::user_server::User for Service {
 
         Ok(Response::new(it))
     }
-    async fn logs(&self, req: Request<v1::UserLogsRequest>) -> GrpcResult<v1::UserLogsResponse> {
+    async fn logs(&self, req: Request<v1::Pager>) -> GrpcResult<v1::UserLogsResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -329,13 +311,7 @@ impl v1::user_server::User for Service {
         let jwt = self.jwt.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
         let req = req.into_inner();
-        let total = try_grpc!(LogDao::count_by_queries(
-            db,
-            user.payload.id,
-            req.level,
-            &req.ip
-        ))?;
-        let pager = req.pager.clone().unwrap_or_default();
+        let total = try_grpc!(LogDao::count(db, user.payload.id))?;
 
         // debug!(
         //     "pager={:?}, total={}, page={}, offset={}, size={}, pagination={:?}",
@@ -346,13 +322,20 @@ impl v1::user_server::User for Service {
         //     pager.size(),
         //     v1::Pagination::new(&pager, total)
         // );
-        let items = try_grpc!(LogDao::index_by_queries(
+        // let items = try_grpc!(LogDao::index_by_queries(
+        //     db,
+        //     user.payload.id,
+        //     pager.offset(total),
+        //     pager.size(),
+        //     req.level,
+        //     &req.ip
+        // ))?;
+
+        let items = try_grpc!(LogDao::all(
             db,
             user.payload.id,
-            pager.offset(total),
-            pager.size(),
-            req.level,
-            &req.ip
+            req.offset(total),
+            req.size()
         ))?;
 
         Ok(Response::new(v1::UserLogsResponse {
@@ -371,7 +354,7 @@ impl v1::user_server::User for Service {
                     created_at: Some(to_timestamp!(x.created_at)),
                 })
                 .collect(),
-            pagination: Some(Pagination::new(&pager, total)),
+            pagination: Some(v1::Pagination::new(&req, total)),
         }))
     }
     async fn sign_out(&self, req: Request<()>) -> GrpcResult<()> {
@@ -460,10 +443,7 @@ impl v1::user_server::User for Service {
         Ok(Response::new(()))
     }
 
-    async fn show(
-        &self,
-        req: Request<v1::UserQueryRequest>,
-    ) -> GrpcResult<v1::user_index_response::Item> {
+    async fn show(&self, req: Request<v1::IdRequest>) -> GrpcResult<v1::user_index_response::Item> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -477,11 +457,11 @@ impl v1::user_server::User for Service {
             return Err(Status::permission_denied(type_name::<User>()));
         }
 
-        let user = try_grpc!(User::from_user_request(&req, db))?;
+        let user = try_grpc!(UserDao::by_id(db, req.id))?;
         let it = v1::user_index_response::Item::from(user);
         Ok(Response::new(it))
     }
-    async fn index(&self, req: Request<Pager>) -> GrpcResult<v1::UserIndexResponse> {
+    async fn index(&self, req: Request<v1::Pager>) -> GrpcResult<v1::UserIndexResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -503,11 +483,11 @@ impl v1::user_server::User for Service {
                 .iter()
                 .map(|x| v1::user_index_response::Item::from(x.clone()))
                 .collect(),
-            pagination: Some(Pagination::new(&req, total)),
+            pagination: Some(v1::Pagination::new(&req, total)),
         }))
     }
 
-    async fn disable(&self, req: Request<v1::UserQueryRequest>) -> GrpcResult<()> {
+    async fn disable(&self, req: Request<v1::IdRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -520,7 +500,7 @@ impl v1::user_server::User for Service {
             return Err(Status::permission_denied(type_name::<User>()));
         }
         let req = req.into_inner();
-        let it = try_grpc!(User::from_user_request(&req, db))?;
+        let it = try_grpc!(UserDao::by_id(db, req.id))?;
 
         if it.has(db, Role::ROOT) {
             return Err(Status::permission_denied(type_name::<User>()));
@@ -530,7 +510,7 @@ impl v1::user_server::User for Service {
         Ok(Response::new(()))
     }
 
-    async fn enable(&self, req: Request<v1::UserQueryRequest>) -> GrpcResult<()> {
+    async fn enable(&self, req: Request<v1::IdRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -544,7 +524,7 @@ impl v1::user_server::User for Service {
         }
         let req = req.into_inner();
 
-        let it = try_grpc!(User::from_user_request(&req, db))?;
+        let it = try_grpc!(UserDao::by_id(db, req.id))?;
         if it.has(db, Role::ROOT) {
             return Err(Status::permission_denied(type_name::<User>()));
         }
@@ -553,7 +533,7 @@ impl v1::user_server::User for Service {
         Ok(Response::new(()))
     }
 
-    async fn lock(&self, req: Request<v1::UserQueryRequest>) -> GrpcResult<()> {
+    async fn lock(&self, req: Request<v1::IdRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -567,7 +547,7 @@ impl v1::user_server::User for Service {
         }
         let req = req.into_inner();
 
-        let it = try_grpc!(User::from_user_request(&req, db))?;
+        let it = try_grpc!(UserDao::by_id(db, req.id))?;
         if it.has(db, Role::ROOT) {
             return Err(Status::permission_denied(type_name::<User>()));
         }
@@ -576,7 +556,7 @@ impl v1::user_server::User for Service {
         Ok(Response::new(()))
     }
 
-    async fn unlock(&self, req: Request<v1::UserQueryRequest>) -> GrpcResult<()> {
+    async fn unlock(&self, req: Request<v1::IdRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -590,7 +570,7 @@ impl v1::user_server::User for Service {
         }
         let req = req.into_inner();
 
-        let it = try_grpc!(User::from_user_request(&req, db))?;
+        let it = try_grpc!(UserDao::by_id(db, req.id))?;
         if it.has(db, Role::ROOT) {
             return Err(Status::permission_denied(type_name::<User>()));
         }
@@ -598,7 +578,7 @@ impl v1::user_server::User for Service {
         try_grpc!(UserDao::lock(db, it.id, false))?;
         Ok(Response::new(()))
     }
-    async fn confirm(&self, req: Request<v1::UserQueryRequest>) -> GrpcResult<()> {
+    async fn confirm(&self, req: Request<v1::IdRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -612,7 +592,7 @@ impl v1::user_server::User for Service {
         }
         let req = req.into_inner();
 
-        let it = try_grpc!(User::from_user_request(&req, db))?;
+        let it = try_grpc!(UserDao::by_id(db, req.id))?;
         if it.has(db, Role::ROOT) {
             return Err(Status::permission_denied(type_name::<User>()));
         }
@@ -636,27 +616,24 @@ impl v1::user_server::User for Service {
         }
         let req = req.into_inner();
 
-        if let Some(ref who) = req.who {
-            let it = try_grpc!(User::from_user_request(who, db))?;
-            if it.has(db, Role::ROOT) {
-                return Err(Status::permission_denied(type_name::<User>()));
-            }
-
-            try_grpc!(db.transaction::<_, Error, _>(move |db| {
-                UserDao::password(db, hmac, it.id, &req.password)?;
-                LogDao::add::<_, User>(
-                    db,
-                    it.id,
-                    v1::user_logs_response::item::Level::Info as i32,
-                    &ss.client_ip,
-                    Some(it.id),
-                    &format!("reset password by {}", user.payload),
-                )?;
-                Ok(())
-            }))?;
-            return Ok(Response::new(()));
+        let it = try_grpc!(UserDao::by_id(db, req.id))?;
+        if it.has(db, Role::ROOT) {
+            return Err(Status::permission_denied(type_name::<User>()));
         }
-        Err(Status::not_found(type_name::<User>()))
+
+        try_grpc!(db.transaction::<_, Error, _>(move |db| {
+            UserDao::password(db, hmac, it.id, &req.password)?;
+            LogDao::add::<_, User>(
+                db,
+                it.id,
+                v1::user_logs_response::item::Level::Info as i32,
+                &ss.client_ip,
+                Some(it.id),
+                &format!("reset password by {}", user.payload),
+            )?;
+            Ok(())
+        }))?;
+        return Ok(Response::new(()));
     }
 }
 
@@ -684,24 +661,24 @@ impl Service {
             "home": home
         });
 
-        let task = EmailTask {
+        let task = v1::EmailTask {
             subject: I18n::t(
                 db,
                 &user.lang,
                 format!("auth.mailers.user.{}.subject", act),
                 &Some(&args),
             ),
-            body: I18n::t(
+            content: I18n::t(
                 db,
                 &user.lang,
                 format!("auth.mailers.user.{}.body", act),
                 &Some(&args),
             ),
-            to: user.email.clone(),
+            to: Some(user.address()),
             ..Default::default()
         };
 
-        self.rabbitmq.send("", EmailTask::QUEUE, &task).await?;
+        self.rabbitmq.send("", v1::EmailTask::QUEUE, &task).await?;
 
         Ok(())
     }
@@ -714,7 +691,7 @@ impl From<User> for v1::user_index_response::Item {
             uid: x.uid.clone(),
             email: x.email.clone(),
             real_name: x.real_name.clone(),
-            nick_name: x.nick_name.clone(),
+            nickname: x.nickname.clone(),
             provider_type: x.provider_type,
             updated_at: Some(to_timestamp!(x.updated_at)),
             sign_in_count: x.sign_in_count,
@@ -734,15 +711,10 @@ impl From<User> for v1::user_index_response::Item {
 
 impl User {
     pub fn from_user_request(req: &v1::UserQueryRequest, db: &mut Db) -> Result<Self> {
-        if let Some(ref who) = req.who {
-            let user = match who {
-                v1::user_query_request::Who::Uid(ref uid) => UserDao::by_uid(db, uid)?,
-                v1::user_query_request::Who::NickName(ref nick_name) => {
-                    UserDao::by_nick_name(db, nick_name)?
-                }
-                v1::user_query_request::Who::Provider(ref provider) => {
-                    UserDao::by_provider(db, provider.r#type, &provider.id)?
-                }
+        if let Some(ref it) = req.user {
+            let user = match it {
+                v1::user_query_request::User::Nickname(ref it) => UserDao::by_nickname(db, it)?,
+                v1::user_query_request::User::Email(ref it) => UserDao::by_email(db, it)?,
             };
             return Ok(user);
         }
@@ -768,9 +740,11 @@ pub async fn new_sign_in_response(
         token,
         payload: Some(v1::user_sign_in_response::Payload {
             real_name: user.real_name.clone(),
-            nick_name: user.nick_name.clone(),
+            nickname: user.nickname.clone(),
             avatar: user.avatar.clone(),
             email: user.email.clone(),
+            lang: user.lang.clone(),
+            time_zone: user.time_zone.clone(),
         }),
         permissions: permissions
             .iter()
