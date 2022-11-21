@@ -1,3 +1,5 @@
+#[macro_use]
+extern crate log;
+
 pub mod app;
-pub mod models;
-pub mod schema;
+pub mod env;

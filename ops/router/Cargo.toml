@@ -1,8 +1,42 @@
 [package]
-name = "router"
+name = "ops-router"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+mime = "0.3"
+log = "0.4"
+askama = "0.11"
+prost = "0.11"
+prost-types = "0.11"
+base64 = "0.13"
+nix = "0.25"
+serde_json = "1"
+tempfile = "3"
+dirs = "4"
+
+[dependencies.chrono]
+version = "0.4"
+features = ["serde"]
+
+[dependencies.chrono-tz]
+version = "0.8"
+features = ["serde"]
+
+[dependencies.hyper]
+version = "0.14"
+features = ["full"]
+
+[dependencies.serde]
+version = "1"
+features = ["derive"]
+
+[dependencies.diesel]
+version = "2"
+default-features = false
+features = ["sqlite"]
+
+[dependencies.palm]
+path = '../../palm'

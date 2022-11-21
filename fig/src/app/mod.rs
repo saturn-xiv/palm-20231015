@@ -4,23 +4,17 @@ pub mod user;
 pub mod web;
 pub mod worker;
 
-use std::fs::File;
 use std::ops::{Deref, DerefMut};
-use std::os::unix::fs::PermissionsExt;
 use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
 use nut::models::locale::Dao as LocaleDao;
 use palm::{
     cache::Provider, crypto::Hmac, is_stopped, jwt::Jwt, parser::from_toml, Result, BANNER,
-    BUILD_TIME, GIT_VERSION, HOMEPAGE,
+    HOMEPAGE, VERSION,
 };
 
 use super::env::Config;
-
-lazy_static! {
-    static ref VERSION: String = format!("{}({})", GIT_VERSION, BUILD_TIME);
-}
 
 #[derive(Parser, Debug)]
 #[clap(about, version=&VERSION.deref()[..], before_help=BANNER, after_help=HOMEPAGE, author)]
@@ -104,12 +98,7 @@ pub async fn launch() -> Result<()> {
 
     {
         info!("load config from {}", args.config.display());
-        let f = File::open(&args.config)?;
-        let m = f.metadata()?.permissions().mode();
-        if ![0o100400, 0o100600].contains(&m) {
-            error!("bad file ({}) mode({:#o})", args.config.display(), m);
-            return Ok(());
-        }
+        palm::check_config_permission(&args.config)?;
     }
     let cfg: Config = from_toml(&args.config)?;
 

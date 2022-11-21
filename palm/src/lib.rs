@@ -4,6 +4,8 @@
 extern crate log;
 #[macro_use]
 extern crate serde_json;
+#[macro_use]
+extern crate lazy_static;
 
 #[macro_export]
 macro_rules! to_timestamp {
@@ -112,7 +114,9 @@ pub mod seo;
 pub mod tasks;
 pub mod twilio;
 
+use std::fs::File;
 use std::io::prelude::*;
+use std::os::unix::fs::PermissionsExt;
 use std::path::Path;
 
 use xml::writer::{EventWriter, Result as XmlWriterResult};
@@ -129,8 +133,25 @@ pub const FONT_DEJAVUSANS: &[u8] = include_bytes!("DejaVuSans.ttf");
 
 include!(concat!(env!("OUT_DIR"), "/env.rs"));
 
+lazy_static! {
+    pub static ref VERSION: String = format!("{}({})", GIT_VERSION, BUILD_TIME);
+}
+
 pub fn is_stopped() -> bool {
     Path::new(".stop").exists()
+}
+
+pub fn check_config_permission<P: AsRef<Path>>(file: P) -> Result<()> {
+    let file = file.as_ref();
+    let mode = {
+        let file = File::open(file)?;
+        file.metadata()?.permissions().mode()
+    };
+    if ![0o100400, 0o100600].contains(&mode) {
+        error!("bad file ({}) mode({:#o})", file.display(), mode);
+        return Ok(());
+    }
+    Ok(())
 }
 
 pub trait ToXml {
