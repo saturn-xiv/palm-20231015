@@ -1,4 +1,6 @@
 #[macro_use]
+extern crate lazy_static;
+#[macro_use]
 extern crate log;
 
 pub mod mysql;
@@ -9,6 +11,7 @@ pub mod rsync;
 use std::error::Error as StdError;
 use std::fs::{read_dir, remove_file};
 use std::io::{Error as IoError, ErrorKind as IoErrorKind};
+use std::ops::Deref;
 use std::path::{Path, PathBuf};
 use std::process::{Command, Output};
 use std::result::Result as StdResult;
@@ -23,12 +26,16 @@ pub const AUTHORS: &str = env!("CARGO_PKG_AUTHORS");
 
 include!(concat!(env!("OUT_DIR"), "/env.rs"));
 
+lazy_static! {
+    static ref VERSION: String = format!("{}({})", GIT_VERSION, BUILD_TIME);
+}
+
 pub type Error = Box<dyn StdError + Send + Sync>;
 pub type Result<T> = StdResult<T, Error>;
 
 #[derive(Parser, Debug)]
 #[command(about,
-    version=GIT_VERSION,
+    version=&VERSION.deref()[..],
     after_help=env!("CARGO_PKG_HOMEPAGE"), author)
 ]
 pub struct Args {
