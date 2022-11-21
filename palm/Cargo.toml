@@ -132,10 +132,5 @@ features = ["cookies"]
 version = "*"
 features = ["vendored"]
 
-# FIXME chrono_locale
-# [dependencies.minio]
-# git = "https://github.com/minio/minio-rs.git"
-# rev = "5fea81d"
-
 [build-dependencies]
 tonic-build = "0.8"
