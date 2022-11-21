@@ -1,3 +1,5 @@
+pub mod attachments;
+pub mod captcha;
 pub mod home;
 pub mod sitemap;
 pub mod twilio;

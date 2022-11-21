@@ -1,8 +1,72 @@
 [package]
 name = "fig"
-version = "0.1.0"
+version = "2022.11.21"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+log = "0.4"
+actix-identity = "0.5"
+toml = "0.5"
+actix-cors = "0.6"
+actix-files = "0.6"
+env_logger = "0.9"
+askama = "0.11"
+base64 = "0.13"
+nix = "0.25"
+lazy_static = "1"
+dirs = "4"
+
+[dependencies.chrono]
+version = "0.4"
+features = ["serde"]
+
+[dependencies.actix-session]
+version = "0.7"
+features = ["cookie-session", "redis-rs-session"]
+
+[dependencies.tonic]
+version = "0.8"
+features = ["transport"]
+
+[dependencies.hyper]
+version = "0.14"
+features = ["full"]
+
+[dependencies.cookie]
+version = "0.16"
+features = ["secure", "private", "percent-encode"]
+
+[dependencies.serde]
+version = "1"
+features = ["derive"]
+
+[dependencies.tokio]
+version = "1"
+features = ["full"]
+
+[dependencies.diesel]
+version = "2"
+default-features = false
+features = ["bigdecimal", "postgres", "mysql", "sqlite", "extras", "128-column-tables"]
+
+[dependencies.actix-web]
+version = "4"
+features = ["cookies"]
+
+[dependencies.clap]
+version = "4"
+features = ["derive"]
+
+[dependencies.palm]
+path = '../palm'
+
+[dependencies.nut]
+path = '../nut'
+
+[dependencies.cms]
+path = '../cms'
+
+[dependencies.forum]
+path = '../forum'
