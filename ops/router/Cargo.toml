@@ -40,7 +40,7 @@ features = ["derive"]
 [dependencies.diesel]
 version = "2"
 default-features = false
-features = ["sqlite"]
+features = ["chrono", "sqlite"]
 
 [dependencies.palm]
 path = '../../palm'

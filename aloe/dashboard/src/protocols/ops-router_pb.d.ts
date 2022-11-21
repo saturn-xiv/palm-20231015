@@ -5,6 +5,34 @@ import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/t
 import * as google_protobuf_duration_pb from 'google-protobuf/google/protobuf/duration_pb';
 
 
+export class Rule extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Rule.AsObject;
+  static toObject(includeInstance: boolean, msg: Rule): Rule.AsObject;
+  static serializeBinaryToWriter(message: Rule, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Rule;
+  static deserializeBinaryFromReader(message: Rule, reader: jspb.BinaryReader): Rule;
+}
+
+export namespace Rule {
+  export type AsObject = {
+  }
+}
+
+export class Contact extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Contact.AsObject;
+  static toObject(includeInstance: boolean, msg: Contact): Contact.AsObject;
+  static serializeBinaryToWriter(message: Contact, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Contact;
+  static deserializeBinaryFromReader(message: Contact, reader: jspb.BinaryReader): Contact;
+}
+
+export namespace Contact {
+  export type AsObject = {
+  }
+}
+
 export class Host extends jspb.Message {
   getName(): string;
   setName(value: string): Host;

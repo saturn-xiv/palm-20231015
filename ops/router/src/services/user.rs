@@ -1,9 +1,8 @@
 use std::sync::{Arc, Mutex};
 
+use diesel::sqlite::SqliteConnection as Db;
 use palm::{crypto::Hmac, jwt::Jwt, ops::router::v1, GrpcResult};
 use tonic::{Request, Response};
-
-use super::super::orm::Connection as Db;
 
 pub struct Service {
     pub db: Arc<Mutex<Db>>,

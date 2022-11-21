@@ -17,6 +17,9 @@ service Router {
   // rpc SetBound(Bound) returns (google.protobuf.Empty) {}
 }
 
+message Rule {}
+message Contact {}
+
 message Host {
   string name = 1;
   string ip = 2;

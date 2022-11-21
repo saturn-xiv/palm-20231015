@@ -4,6 +4,7 @@ diesel::table! {
     hosts (id) {
         id -> Integer,
         name -> Text,
+        group -> Text,
         mac -> Text,
         ip -> Text,
         user_id -> Nullable<Integer>,
@@ -17,7 +18,6 @@ diesel::table! {
 diesel::table! {
     rules (id) {
         id -> Integer,
-        zone -> Text,
         name -> Text,
         group -> Text,
         content -> Binary,
@@ -29,7 +29,7 @@ diesel::table! {
     settings (id) {
         id -> Integer,
         key -> Text,
-        value -> Text,
+        value -> Binary,
         updated_at -> Timestamp,
     }
 }
@@ -39,7 +39,7 @@ diesel::table! {
         id -> Integer,
         name -> Text,
         group -> Text,
-        contact -> Text,
+        contact -> Binary,
         updated_at -> Timestamp,
     }
 }

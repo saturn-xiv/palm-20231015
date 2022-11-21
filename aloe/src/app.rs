@@ -8,7 +8,7 @@ use palm::{
 };
 use tonic::transport::Server;
 
-use super::env::Config;
+use super::{env::Config, orm::open as open_db};
 
 #[derive(Parser, Debug)]
 #[clap(about, version=&VERSION.deref()[..], before_help=BANNER, after_help=HOMEPAGE, author)]
@@ -26,7 +26,7 @@ pub async fn launch() -> Result<()> {
     let cfg: Config = from_toml(&args.config)?;
     let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
-    let db = Arc::new(Mutex::new(ops_router::orm::open("tmp/db")?));
+    let db = Arc::new(Mutex::new(open_db("tmp/db")?));
     let addr = cfg.rpc.addr();
 
     info!("start gRPC at {}", addr);
