@@ -118,7 +118,7 @@ service User {
   rpc Refresh(google.protobuf.Duration) returns (UserSignInResponse) {}
   rpc Update(UserUpdateRequest) returns (google.protobuf.Empty) {}
   rpc SignOut(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-  rpc Logs(google.protobuf.Duration) returns (UserLogsResponse) {}
+  rpc Logs(google.protobuf.Empty) returns (UserLogsResponse) {}
 }
 
 message UserProfile {

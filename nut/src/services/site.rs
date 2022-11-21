@@ -22,6 +22,7 @@ use palm::{
     queue::amqp::RabbitMq,
     search::OpenSearch,
     seo::Provider as SeoProvider,
+    session::Session,
     to_code, to_timestamp, try_grpc, Error, GrpcResult, Result,
 };
 use prost::Message;
@@ -39,7 +40,7 @@ use super::super::{
     },
     orm::postgresql::{Connection as PostgreSqlConnection, Pool as PostgreSqlPool},
 };
-use super::Session;
+use super::CurrentUserAdapter;
 
 pub struct Service {
     pub pgsql: PostgreSqlPool,

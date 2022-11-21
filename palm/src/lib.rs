@@ -111,6 +111,7 @@ pub mod queue;
 pub mod result;
 pub mod search;
 pub mod seo;
+pub mod session;
 pub mod tasks;
 pub mod twilio;
 

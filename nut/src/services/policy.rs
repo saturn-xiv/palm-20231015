@@ -6,8 +6,8 @@ use chrono::Utc;
 use diesel::Connection as DieselConntection;
 use hyper::StatusCode;
 use palm::{
-    cache::redis::Pool as RedisPool, jwt::Jwt, nut::v1, to_code, to_datetime, to_timestamp,
-    try_grpc, Error, GrpcResult, HttpError, Result,
+    cache::redis::Pool as RedisPool, jwt::Jwt, nut::v1, session::Session, to_code, to_datetime,
+    to_timestamp, try_grpc, Error, GrpcResult, HttpError, Result,
 };
 use tonic::{Response, Status};
 
@@ -19,7 +19,7 @@ use super::super::{
     },
     orm::postgresql::Pool as PostgreSqlPool,
 };
-use super::Session;
+use super::CurrentUserAdapter;
 
 pub struct Service {
     pub redis: RedisPool,

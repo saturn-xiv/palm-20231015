@@ -13,13 +13,11 @@ use std::any::type_name;
 use std::fmt::Display;
 
 use chrono::Duration;
-use hyper::{
-    header::{ACCEPT_LANGUAGE, AUTHORIZATION},
-    StatusCode,
+use hyper::StatusCode;
+use palm::{
+    cache::redis::ClusterConnection as Cache, jwt::Jwt, session::Session, to_code, HttpError,
+    Result,
 };
-use language_tags::LanguageTag;
-use palm::{cache::redis::ClusterConnection as Cache, jwt::Jwt, to_code, HttpError, Result};
-use tonic::{metadata::MetadataMap, Request};
 
 use super::{
     models::{
@@ -30,48 +28,12 @@ use super::{
     orm::postgresql::Connection as Db,
 };
 
-pub struct Session {
-    pub lang: String,
-    pub client_ip: String,
-    pub token: Option<String>,
+pub trait CurrentUserAdapter {
+    fn current_user(&self, db: &mut Db, _ch: &mut Cache, jwt: &Jwt) -> Result<CurrentUser>;
 }
 
-impl Session {
-    fn detect_locale(meta: &MetadataMap) -> String {
-        if let Some(it) = meta.get(ACCEPT_LANGUAGE.as_str().to_lowercase()) {
-            if let Ok(it) = it.to_str() {
-                if let Ok(it) = LanguageTag::parse(it) {
-                    return it.to_string();
-                }
-            }
-        }
-        "en-US".to_string()
-    }
-
-    fn detect_token(meta: &MetadataMap) -> Option<String> {
-        if let Some(it) = meta.get(AUTHORIZATION.as_str().to_lowercase()) {
-            if let Ok(it) = it.to_str() {
-                if let Some(ref it) = it.strip_prefix(Jwt::BEARER) {
-                    return Some(it.to_string());
-                }
-            }
-        }
-        None
-    }
-
-    pub fn new<T>(req: &Request<T>) -> Self {
-        let meta = req.metadata();
-
-        Self {
-            lang: Self::detect_locale(meta),
-            client_ip: req
-                .remote_addr()
-                .map_or("n/a".to_string(), |x| x.ip().to_string()),
-            token: Self::detect_token(meta),
-        }
-    }
-
-    pub fn current_user(&self, db: &mut Db, _ch: &mut Cache, jwt: &Jwt) -> Result<CurrentUser> {
+impl CurrentUserAdapter for Session {
+    fn current_user(&self, db: &mut Db, _ch: &mut Cache, jwt: &Jwt) -> Result<CurrentUser> {
         if let Some(ref token) = self.token {
             let token = jwt.parse::<Token>(token)?;
             let token = token.claims;

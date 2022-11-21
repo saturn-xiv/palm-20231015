@@ -2,8 +2,8 @@ use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
 use palm::{
-    cache::redis::Pool as RedisPool, crypto::Aes, jwt::Jwt, nut::v1, to_std_duration, to_timestamp,
-    try_grpc, GrpcResult,
+    cache::redis::Pool as RedisPool, crypto::Aes, jwt::Jwt, nut::v1, session::Session,
+    to_std_duration, to_timestamp, try_grpc, GrpcResult,
 };
 use tonic::{Request, Response, Status};
 
@@ -15,7 +15,7 @@ use super::super::{
     },
     orm::postgresql::Pool as PostgreSqlPool,
 };
-use super::Session;
+use super::CurrentUserAdapter;
 
 pub struct Service {
     pub redis: RedisPool,

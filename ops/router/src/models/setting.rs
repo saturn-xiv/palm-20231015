@@ -1,5 +1,4 @@
 use std::any::type_name;
-use std::fmt::Display;
 
 use chrono::{NaiveDateTime, Utc};
 use diesel::{insert_into, prelude::*, sqlite::SqliteConnection as Connection, update};
@@ -16,12 +15,12 @@ pub struct Item {
 }
 
 pub trait Dao {
-    fn get<K: Display, V: prost::Message + Default>(&mut self) -> Result<V>;
-    fn set<K: Display, V: prost::Message>(&mut self, value: &V) -> Result<()>;
+    fn get<V: prost::Message + Default>(&mut self) -> Result<V>;
+    fn set<V: prost::Message>(&mut self, value: &V) -> Result<()>;
 }
 
 impl Dao for Connection {
-    fn get<K: Display, V: prost::Message + Default>(&mut self) -> Result<V> {
+    fn get<V: prost::Message + Default>(&mut self) -> Result<V> {
         let key = type_name::<V>();
 
         let it = settings::dsl::settings
@@ -31,7 +30,7 @@ impl Dao for Connection {
         Ok(it)
     }
 
-    fn set<K: Display, V: prost::Message>(&mut self, value: &V) -> Result<()> {
+    fn set<V: prost::Message>(&mut self, value: &V) -> Result<()> {
         let key = type_name::<V>();
         let mut buf = Vec::new();
         value.encode(&mut buf)?;
