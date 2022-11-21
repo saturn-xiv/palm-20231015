@@ -25,6 +25,10 @@ features = ["serde"]
 version = "0.8"
 features = ["serde"]
 
+[dependencies.tonic]
+version = "0.8"
+features = ["transport"]
+
 [dependencies.hyper]
 version = "0.14"
 features = ["full"]

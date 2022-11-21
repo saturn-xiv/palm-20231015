@@ -9,12 +9,12 @@ import "google/protobuf/duration.proto";
 
 service Router {
   rpc Scan(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-  rpc Apply(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-  rpc Status(google.protobuf.Empty) returns (RouterStatusResponse) {}
+  // rpc Apply(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  // rpc Status(google.protobuf.Empty) returns (RouterStatusResponse) {}
 
-  rpc SetWan(Wan) returns (google.protobuf.Empty) {}
-  rpc SetLan(Lan) returns (google.protobuf.Empty) {}
-  rpc SetBound(Bound) returns (google.protobuf.Empty) {}
+  // rpc SetWan(Wan) returns (google.protobuf.Empty) {}
+  // rpc SetLan(Lan) returns (google.protobuf.Empty) {}
+  // rpc SetBound(Bound) returns (google.protobuf.Empty) {}
 }
 
 message Host {
@@ -67,9 +67,7 @@ message RouterStatusResponse {
   google.protobuf.Timestamp booted_at = 100;
 }
 
-message ScanTask {
-  google.protobuf.Duration ttl = 9;
-}
+message ScanTask { google.protobuf.Duration ttl = 9; }
 
 message Dhcp {};
 message Static {
@@ -130,15 +128,11 @@ message UserSignInRequest {
   google.protobuf.Duration ttl = 9;
 }
 
-message UserSignInResponse {
-  string token = 1;
-}
+message UserSignInResponse { string token = 1; }
 
 message UserUpdateRequest {
   UserProfile current = 1;
   UserProfile new = 2;
 }
 
-message UserLogsResponse {
-  repeated string items = 1;
-}
+message UserLogsResponse { repeated string items = 1; }
