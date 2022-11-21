@@ -19,14 +19,14 @@ use super::{cache::redis::ClusterConnection, Result};
 
 // https://www.sitemaps.org/protocol.html#
 // https://validator.w3.org/feed/docs/rss2.html
-#[derive(Serialize, Deserialize, Eq, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct Link {
     pub path: String,
     pub title: String,
     pub description: String,
     pub change_freq: String,
-    pub priority: i8,
+    pub priority: f32,
     pub updated_at: NaiveDateTime,
 }
 
@@ -35,6 +35,7 @@ impl PartialEq for Link {
         self.path == other.path
     }
 }
+impl Eq for Link {}
 
 impl PartialOrd for Link {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
@@ -98,7 +99,7 @@ pub fn sitemap_urlset(home: &str, links: &[Link]) -> Result<Vec<u8>> {
                         })?,
                     ))
                     .changefreq(it.change_freq.clone().into())
-                    .priority(it.priority as f32 / std::i8::MAX as f32)
+                    .priority(it.priority)
                     .loc(format!("{}{}", home, it.path)),
             )?;
         }
