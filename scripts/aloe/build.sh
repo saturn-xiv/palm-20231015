@@ -51,15 +51,8 @@ build_package() {
     XZ_OPT=-9 tar -cJf $root.tar.xz *
 }
 
-
-
-if [ "$#" -ne 1 ]
-then
-    show_usage
-    exit 1
-fi
-
-build_package $1
+build_package amd64
+build_package arm64
 
 echo "done($GIT_VERSION)."
 
