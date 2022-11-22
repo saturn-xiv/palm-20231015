@@ -5,21 +5,16 @@ import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/t
 import * as google_protobuf_duration_pb from 'google-protobuf/google/protobuf/duration_pb';
 
 
-export class Rule extends jspb.Message {
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Rule.AsObject;
-  static toObject(includeInstance: boolean, msg: Rule): Rule.AsObject;
-  static serializeBinaryToWriter(message: Rule, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Rule;
-  static deserializeBinaryFromReader(message: Rule, reader: jspb.BinaryReader): Rule;
-}
-
-export namespace Rule {
-  export type AsObject = {
-  }
-}
-
 export class Contact extends jspb.Message {
+  getPhone(): string;
+  setPhone(value: string): Contact;
+
+  getWechat(): string;
+  setWechat(value: string): Contact;
+
+  getAddress(): string;
+  setAddress(value: string): Contact;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Contact.AsObject;
   static toObject(includeInstance: boolean, msg: Contact): Contact.AsObject;
@@ -30,18 +25,133 @@ export class Contact extends jspb.Message {
 
 export namespace Contact {
   export type AsObject = {
+    phone: string,
+    wechat: string,
+    address: string,
   }
 }
 
+export class RouterUpdateHostRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): RouterUpdateHostRequest;
+
+  getUser(): number;
+  setUser(value: number): RouterUpdateHostRequest;
+
+  getGroup(): string;
+  setGroup(value: string): RouterUpdateHostRequest;
+
+  getIp(): string;
+  setIp(value: string): RouterUpdateHostRequest;
+  hasIp(): boolean;
+  clearIp(): RouterUpdateHostRequest;
+
+  getLocation(): string;
+  setLocation(value: string): RouterUpdateHostRequest;
+  hasLocation(): boolean;
+  clearLocation(): RouterUpdateHostRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RouterUpdateHostRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RouterUpdateHostRequest): RouterUpdateHostRequest.AsObject;
+  static serializeBinaryToWriter(message: RouterUpdateHostRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RouterUpdateHostRequest;
+  static deserializeBinaryFromReader(message: RouterUpdateHostRequest, reader: jspb.BinaryReader): RouterUpdateHostRequest;
+}
+
+export namespace RouterUpdateHostRequest {
+  export type AsObject = {
+    id: number,
+    user: number,
+    group: string,
+    ip?: string,
+    location?: string,
+  }
+
+  export enum IpCase { 
+    _IP_NOT_SET = 0,
+    IP = 4,
+  }
+
+  export enum LocationCase { 
+    _LOCATION_NOT_SET = 0,
+    LOCATION = 9,
+  }
+}
+
+export class RouterIndexRouleResponse extends jspb.Message {
+  getItemsList(): Array<RouterIndexRouleResponse.Item>;
+  setItemsList(value: Array<RouterIndexRouleResponse.Item>): RouterIndexRouleResponse;
+  clearItemsList(): RouterIndexRouleResponse;
+  addItems(value?: RouterIndexRouleResponse.Item, index?: number): RouterIndexRouleResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RouterIndexRouleResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: RouterIndexRouleResponse): RouterIndexRouleResponse.AsObject;
+  static serializeBinaryToWriter(message: RouterIndexRouleResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RouterIndexRouleResponse;
+  static deserializeBinaryFromReader(message: RouterIndexRouleResponse, reader: jspb.BinaryReader): RouterIndexRouleResponse;
+}
+
+export namespace RouterIndexRouleResponse {
+  export type AsObject = {
+    itemsList: Array<RouterIndexRouleResponse.Item.AsObject>,
+  }
+
+  export class Item extends jspb.Message {
+    getId(): number;
+    setId(value: number): Item;
+
+    getRule(): Rule | undefined;
+    setRule(value?: Rule): Item;
+    hasRule(): boolean;
+    clearRule(): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      id: number,
+      rule?: Rule.AsObject,
+    }
+  }
+
+}
+
 export class Host extends jspb.Message {
+  getId(): number;
+  setId(value: number): Host;
+
   getName(): string;
   setName(value: string): Host;
+
+  getMac(): string;
+  setMac(value: string): Host;
 
   getIp(): string;
   setIp(value: string): Host;
 
-  getMac(): string;
-  setMac(value: string): Host;
+  getFixed(): boolean;
+  setFixed(value: boolean): Host;
+
+  getGroup(): string;
+  setGroup(value: string): Host;
+
+  getLocation(): string;
+  setLocation(value: string): Host;
+  hasLocation(): boolean;
+  clearLocation(): Host;
+
+  getOwner(): Host.Owner | undefined;
+  setOwner(value?: Host.Owner): Host;
+  hasOwner(): boolean;
+  clearOwner(): Host;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Host.AsObject;
@@ -53,182 +163,355 @@ export class Host extends jspb.Message {
 
 export namespace Host {
   export type AsObject = {
+    id: number,
     name: string,
-    ip: string,
     mac: string,
-  }
-}
-
-export class Input extends jspb.Message {
-  getDevice(): string;
-  setDevice(value: string): Input;
-
-  getProtocol(): Protocol;
-  setProtocol(value: Protocol): Input;
-
-  getPort(): number;
-  setPort(value: number): Input;
-  hasPort(): boolean;
-  clearPort(): Input;
-
-  getSource(): string;
-  setSource(value: string): Input;
-  hasSource(): boolean;
-  clearSource(): Input;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Input.AsObject;
-  static toObject(includeInstance: boolean, msg: Input): Input.AsObject;
-  static serializeBinaryToWriter(message: Input, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Input;
-  static deserializeBinaryFromReader(message: Input, reader: jspb.BinaryReader): Input;
-}
-
-export namespace Input {
-  export type AsObject = {
-    device: string,
-    protocol: Protocol,
-    port?: number,
-    source?: string,
-  }
-
-  export enum PortCase { 
-    _PORT_NOT_SET = 0,
-    PORT = 3,
-  }
-
-  export enum SourceCase { 
-    _SOURCE_NOT_SET = 0,
-    SOURCE = 4,
-  }
-}
-
-export class Output extends jspb.Message {
-  getIp(): string;
-  setIp(value: string): Output;
-
-  getDomain(): string;
-  setDomain(value: string): Output;
-
-  getProtocol(): Protocol;
-  setProtocol(value: Protocol): Output;
-  hasProtocol(): boolean;
-  clearProtocol(): Output;
-
-  getPort(): number;
-  setPort(value: number): Output;
-  hasPort(): boolean;
-  clearPort(): Output;
-
-  getDestinationCase(): Output.DestinationCase;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Output.AsObject;
-  static toObject(includeInstance: boolean, msg: Output): Output.AsObject;
-  static serializeBinaryToWriter(message: Output, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Output;
-  static deserializeBinaryFromReader(message: Output, reader: jspb.BinaryReader): Output;
-}
-
-export namespace Output {
-  export type AsObject = {
     ip: string,
-    domain: string,
-    protocol?: Protocol,
-    port?: number,
+    fixed: boolean,
+    group: string,
+    location?: string,
+    owner?: Host.Owner.AsObject,
   }
 
-  export enum DestinationCase { 
-    DESTINATION_NOT_SET = 0,
-    IP = 1,
-    DOMAIN = 2,
-  }
+  export class Owner extends jspb.Message {
+    getName(): string;
+    setName(value: string): Owner;
 
-  export enum ProtocolCase { 
-    _PROTOCOL_NOT_SET = 0,
-    PROTOCOL = 11,
-  }
-
-  export enum PortCase { 
-    _PORT_NOT_SET = 0,
-    PORT = 12,
-  }
-}
-
-export class Nat extends jspb.Message {
-  getWan(): Nat.Wan | undefined;
-  setWan(value?: Nat.Wan): Nat;
-  hasWan(): boolean;
-  clearWan(): Nat;
-
-  getProtocol(): Protocol;
-  setProtocol(value: Protocol): Nat;
-
-  getLan(): Nat.Lan | undefined;
-  setLan(value?: Nat.Lan): Nat;
-  hasLan(): boolean;
-  clearLan(): Nat;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Nat.AsObject;
-  static toObject(includeInstance: boolean, msg: Nat): Nat.AsObject;
-  static serializeBinaryToWriter(message: Nat, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Nat;
-  static deserializeBinaryFromReader(message: Nat, reader: jspb.BinaryReader): Nat;
-}
-
-export namespace Nat {
-  export type AsObject = {
-    wan?: Nat.Wan.AsObject,
-    protocol: Protocol,
-    lan?: Nat.Lan.AsObject,
-  }
-
-  export class Wan extends jspb.Message {
-    getDevice(): string;
-    setDevice(value: string): Wan;
-
-    getPort(): number;
-    setPort(value: number): Wan;
+    getContact(): Contact | undefined;
+    setContact(value?: Contact): Owner;
+    hasContact(): boolean;
+    clearContact(): Owner;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Wan.AsObject;
-    static toObject(includeInstance: boolean, msg: Wan): Wan.AsObject;
-    static serializeBinaryToWriter(message: Wan, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Wan;
-    static deserializeBinaryFromReader(message: Wan, reader: jspb.BinaryReader): Wan;
+    toObject(includeInstance?: boolean): Owner.AsObject;
+    static toObject(includeInstance: boolean, msg: Owner): Owner.AsObject;
+    static serializeBinaryToWriter(message: Owner, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Owner;
+    static deserializeBinaryFromReader(message: Owner, reader: jspb.BinaryReader): Owner;
   }
 
-  export namespace Wan {
+  export namespace Owner {
+    export type AsObject = {
+      name: string,
+      contact?: Contact.AsObject,
+    }
+  }
+
+
+  export enum LocationCase { 
+    _LOCATION_NOT_SET = 0,
+    LOCATION = 11,
+  }
+}
+
+export class Rule extends jspb.Message {
+  getName(): string;
+  setName(value: string): Rule;
+
+  getGroup(): string;
+  setGroup(value: string): Rule;
+
+  getIn(): Rule.InBound | undefined;
+  setIn(value?: Rule.InBound): Rule;
+  hasIn(): boolean;
+  clearIn(): Rule;
+
+  getOut(): Rule.OutBound | undefined;
+  setOut(value?: Rule.OutBound): Rule;
+  hasOut(): boolean;
+  clearOut(): Rule;
+
+  getNat(): Rule.Nat | undefined;
+  setNat(value?: Rule.Nat): Rule;
+  hasNat(): boolean;
+  clearNat(): Rule;
+
+  getPayloadCase(): Rule.PayloadCase;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Rule.AsObject;
+  static toObject(includeInstance: boolean, msg: Rule): Rule.AsObject;
+  static serializeBinaryToWriter(message: Rule, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Rule;
+  static deserializeBinaryFromReader(message: Rule, reader: jspb.BinaryReader): Rule;
+}
+
+export namespace Rule {
+  export type AsObject = {
+    name: string,
+    group: string,
+    pb_in?: Rule.InBound.AsObject,
+    out?: Rule.OutBound.AsObject,
+    nat?: Rule.Nat.AsObject,
+  }
+
+  export class InBound extends jspb.Message {
+    getDevice(): string;
+    setDevice(value: string): InBound;
+
+    getProtocol(): Rule.Protocol;
+    setProtocol(value: Rule.Protocol): InBound;
+
+    getPort(): number;
+    setPort(value: number): InBound;
+
+    getFrom(): string;
+    setFrom(value: string): InBound;
+    hasFrom(): boolean;
+    clearFrom(): InBound;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): InBound.AsObject;
+    static toObject(includeInstance: boolean, msg: InBound): InBound.AsObject;
+    static serializeBinaryToWriter(message: InBound, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): InBound;
+    static deserializeBinaryFromReader(message: InBound, reader: jspb.BinaryReader): InBound;
+  }
+
+  export namespace InBound {
     export type AsObject = {
       device: string,
+      protocol: Rule.Protocol,
       port: number,
+      from?: string,
+    }
+
+    export enum FromCase { 
+      _FROM_NOT_SET = 0,
+      FROM = 4,
     }
   }
 
 
-  export class Lan extends jspb.Message {
-    getIp(): string;
-    setIp(value: string): Lan;
+  export class OutBound extends jspb.Message {
+    getHost(): Rule.OutBound.Host | undefined;
+    setHost(value?: Rule.OutBound.Host): OutBound;
+    hasHost(): boolean;
+    clearHost(): OutBound;
 
-    getPort(): number;
-    setPort(value: number): Lan;
+    getSpeed(): Rule.OutBound.Speed | undefined;
+    setSpeed(value?: Rule.OutBound.Speed): OutBound;
+    hasSpeed(): boolean;
+    clearSpeed(): OutBound;
+
+    getTime(): Rule.OutBound.Time | undefined;
+    setTime(value?: Rule.OutBound.Time): OutBound;
+    hasTime(): boolean;
+    clearTime(): OutBound;
+
+    getPayloadCase(): OutBound.PayloadCase;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Lan.AsObject;
-    static toObject(includeInstance: boolean, msg: Lan): Lan.AsObject;
-    static serializeBinaryToWriter(message: Lan, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Lan;
-    static deserializeBinaryFromReader(message: Lan, reader: jspb.BinaryReader): Lan;
+    toObject(includeInstance?: boolean): OutBound.AsObject;
+    static toObject(includeInstance: boolean, msg: OutBound): OutBound.AsObject;
+    static serializeBinaryToWriter(message: OutBound, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): OutBound;
+    static deserializeBinaryFromReader(message: OutBound, reader: jspb.BinaryReader): OutBound;
   }
 
-  export namespace Lan {
+  export namespace OutBound {
     export type AsObject = {
-      ip: string,
-      port: number,
+      host?: Rule.OutBound.Host.AsObject,
+      speed?: Rule.OutBound.Speed.AsObject,
+      time?: Rule.OutBound.Time.AsObject,
+    }
+
+    export class Host extends jspb.Message {
+      getTo(): string;
+      setTo(value: string): Host;
+
+      getProtocol(): Rule.Protocol;
+      setProtocol(value: Rule.Protocol): Host;
+
+      getPort(): number;
+      setPort(value: number): Host;
+
+      serializeBinary(): Uint8Array;
+      toObject(includeInstance?: boolean): Host.AsObject;
+      static toObject(includeInstance: boolean, msg: Host): Host.AsObject;
+      static serializeBinaryToWriter(message: Host, writer: jspb.BinaryWriter): void;
+      static deserializeBinary(bytes: Uint8Array): Host;
+      static deserializeBinaryFromReader(message: Host, reader: jspb.BinaryReader): Host;
+    }
+
+    export namespace Host {
+      export type AsObject = {
+        to: string,
+        protocol: Rule.Protocol,
+        port: number,
+      }
+    }
+
+
+    export class Speed extends jspb.Message {
+      getUp(): number;
+      setUp(value: number): Speed;
+      hasUp(): boolean;
+      clearUp(): Speed;
+
+      getDown(): number;
+      setDown(value: number): Speed;
+      hasDown(): boolean;
+      clearDown(): Speed;
+
+      serializeBinary(): Uint8Array;
+      toObject(includeInstance?: boolean): Speed.AsObject;
+      static toObject(includeInstance: boolean, msg: Speed): Speed.AsObject;
+      static serializeBinaryToWriter(message: Speed, writer: jspb.BinaryWriter): void;
+      static deserializeBinary(bytes: Uint8Array): Speed;
+      static deserializeBinaryFromReader(message: Speed, reader: jspb.BinaryReader): Speed;
+    }
+
+    export namespace Speed {
+      export type AsObject = {
+        up?: number,
+        down?: number,
+      }
+
+      export enum UpCase { 
+        _UP_NOT_SET = 0,
+        UP = 1,
+      }
+
+      export enum DownCase { 
+        _DOWN_NOT_SET = 0,
+        DOWN = 2,
+      }
+    }
+
+
+    export class Time extends jspb.Message {
+      getFrom(): google_protobuf_timestamp_pb.Timestamp | undefined;
+      setFrom(value?: google_protobuf_timestamp_pb.Timestamp): Time;
+      hasFrom(): boolean;
+      clearFrom(): Time;
+
+      getTo(): google_protobuf_timestamp_pb.Timestamp | undefined;
+      setTo(value?: google_protobuf_timestamp_pb.Timestamp): Time;
+      hasTo(): boolean;
+      clearTo(): Time;
+
+      getMonday(): boolean;
+      setMonday(value: boolean): Time;
+
+      getTuesday(): boolean;
+      setTuesday(value: boolean): Time;
+
+      getWednesday(): boolean;
+      setWednesday(value: boolean): Time;
+
+      getThursday(): boolean;
+      setThursday(value: boolean): Time;
+
+      getFriday(): boolean;
+      setFriday(value: boolean): Time;
+
+      getSaturday(): boolean;
+      setSaturday(value: boolean): Time;
+
+      getSunday(): boolean;
+      setSunday(value: boolean): Time;
+
+      serializeBinary(): Uint8Array;
+      toObject(includeInstance?: boolean): Time.AsObject;
+      static toObject(includeInstance: boolean, msg: Time): Time.AsObject;
+      static serializeBinaryToWriter(message: Time, writer: jspb.BinaryWriter): void;
+      static deserializeBinary(bytes: Uint8Array): Time;
+      static deserializeBinaryFromReader(message: Time, reader: jspb.BinaryReader): Time;
+    }
+
+    export namespace Time {
+      export type AsObject = {
+        from?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        to?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        monday: boolean,
+        tuesday: boolean,
+        wednesday: boolean,
+        thursday: boolean,
+        friday: boolean,
+        saturday: boolean,
+        sunday: boolean,
+      }
+    }
+
+
+    export enum PayloadCase { 
+      PAYLOAD_NOT_SET = 0,
+      HOST = 1,
+      SPEED = 2,
+      TIME = 3,
     }
   }
 
+
+  export class Nat extends jspb.Message {
+    getDevice(): string;
+    setDevice(value: string): Nat;
+
+    getTcp(): boolean;
+    setTcp(value: boolean): Nat;
+
+    getPort(): number;
+    setPort(value: number): Nat;
+
+    getHost(): Rule.Nat.Host | undefined;
+    setHost(value?: Rule.Nat.Host): Nat;
+    hasHost(): boolean;
+    clearHost(): Nat;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Nat.AsObject;
+    static toObject(includeInstance: boolean, msg: Nat): Nat.AsObject;
+    static serializeBinaryToWriter(message: Nat, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Nat;
+    static deserializeBinaryFromReader(message: Nat, reader: jspb.BinaryReader): Nat;
+  }
+
+  export namespace Nat {
+    export type AsObject = {
+      device: string,
+      tcp: boolean,
+      port: number,
+      host?: Rule.Nat.Host.AsObject,
+    }
+
+    export class Host extends jspb.Message {
+      getIp(): string;
+      setIp(value: string): Host;
+
+      getPort(): number;
+      setPort(value: number): Host;
+
+      serializeBinary(): Uint8Array;
+      toObject(includeInstance?: boolean): Host.AsObject;
+      static toObject(includeInstance: boolean, msg: Host): Host.AsObject;
+      static serializeBinaryToWriter(message: Host, writer: jspb.BinaryWriter): void;
+      static deserializeBinary(bytes: Uint8Array): Host;
+      static deserializeBinaryFromReader(message: Host, reader: jspb.BinaryReader): Host;
+    }
+
+    export namespace Host {
+      export type AsObject = {
+        ip: string,
+        port: number,
+      }
+    }
+
+  }
+
+
+  export enum Protocol { 
+    ICMP = 0,
+    TCP = 1,
+    UDP = 2,
+  }
+
+  export enum PayloadCase { 
+    PAYLOAD_NOT_SET = 0,
+    IN = 11,
+    OUT = 12,
+    NAT = 13,
+  }
 }
 
 export class RouterStatusResponse extends jspb.Message {
@@ -242,18 +525,23 @@ export class RouterStatusResponse extends jspb.Message {
   hasLan(): boolean;
   clearLan(): RouterStatusResponse;
 
+  getRulesList(): Array<Rule>;
+  setRulesList(value: Array<Rule>): RouterStatusResponse;
+  clearRulesList(): RouterStatusResponse;
+  addRules(value?: Rule, index?: number): Rule;
+
   getHostsList(): Array<Host>;
   setHostsList(value: Array<Host>): RouterStatusResponse;
   clearHostsList(): RouterStatusResponse;
   addHosts(value?: Host, index?: number): Host;
 
-  getRules(): string;
-  setRules(value: string): RouterStatusResponse;
+  getScript(): string;
+  setScript(value: string): RouterStatusResponse;
 
-  getBootedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setBootedAt(value?: google_protobuf_timestamp_pb.Timestamp): RouterStatusResponse;
-  hasBootedAt(): boolean;
-  clearBootedAt(): RouterStatusResponse;
+  getUptime(): google_protobuf_duration_pb.Duration | undefined;
+  setUptime(value?: google_protobuf_duration_pb.Duration): RouterStatusResponse;
+  hasUptime(): boolean;
+  clearUptime(): RouterStatusResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RouterStatusResponse.AsObject;
@@ -267,176 +555,10 @@ export namespace RouterStatusResponse {
   export type AsObject = {
     wanList: Array<Wan.AsObject>,
     lan?: Lan.AsObject,
+    rulesList: Array<Rule.AsObject>,
     hostsList: Array<Host.AsObject>,
-    rules: string,
-    bootedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
-}
-
-export class ScanTask extends jspb.Message {
-  getTtl(): google_protobuf_duration_pb.Duration | undefined;
-  setTtl(value?: google_protobuf_duration_pb.Duration): ScanTask;
-  hasTtl(): boolean;
-  clearTtl(): ScanTask;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ScanTask.AsObject;
-  static toObject(includeInstance: boolean, msg: ScanTask): ScanTask.AsObject;
-  static serializeBinaryToWriter(message: ScanTask, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ScanTask;
-  static deserializeBinaryFromReader(message: ScanTask, reader: jspb.BinaryReader): ScanTask;
-}
-
-export namespace ScanTask {
-  export type AsObject = {
-    ttl?: google_protobuf_duration_pb.Duration.AsObject,
-  }
-}
-
-export class Dhcp extends jspb.Message {
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Dhcp.AsObject;
-  static toObject(includeInstance: boolean, msg: Dhcp): Dhcp.AsObject;
-  static serializeBinaryToWriter(message: Dhcp, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Dhcp;
-  static deserializeBinaryFromReader(message: Dhcp, reader: jspb.BinaryReader): Dhcp;
-}
-
-export namespace Dhcp {
-  export type AsObject = {
-  }
-}
-
-export class Static extends jspb.Message {
-  getAddress(): string;
-  setAddress(value: string): Static;
-
-  getNetmask(): string;
-  setNetmask(value: string): Static;
-
-  getGateway(): string;
-  setGateway(value: string): Static;
-
-  getDns1(): string;
-  setDns1(value: string): Static;
-
-  getDns2(): string;
-  setDns2(value: string): Static;
-  hasDns2(): boolean;
-  clearDns2(): Static;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Static.AsObject;
-  static toObject(includeInstance: boolean, msg: Static): Static.AsObject;
-  static serializeBinaryToWriter(message: Static, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Static;
-  static deserializeBinaryFromReader(message: Static, reader: jspb.BinaryReader): Static;
-}
-
-export namespace Static {
-  export type AsObject = {
-    address: string,
-    netmask: string,
-    gateway: string,
-    dns1: string,
-    dns2?: string,
-  }
-
-  export enum Dns2Case { 
-    _DNS2_NOT_SET = 0,
-    DNS2 = 5,
-  }
-}
-
-export class Wan extends jspb.Message {
-  getDevice(): string;
-  setDevice(value: string): Wan;
-
-  getDhcp(): Dhcp | undefined;
-  setDhcp(value?: Dhcp): Wan;
-  hasDhcp(): boolean;
-  clearDhcp(): Wan;
-
-  getStatic(): Static | undefined;
-  setStatic(value?: Static): Wan;
-  hasStatic(): boolean;
-  clearStatic(): Wan;
-
-  getIpCase(): Wan.IpCase;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Wan.AsObject;
-  static toObject(includeInstance: boolean, msg: Wan): Wan.AsObject;
-  static serializeBinaryToWriter(message: Wan, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Wan;
-  static deserializeBinaryFromReader(message: Wan, reader: jspb.BinaryReader): Wan;
-}
-
-export namespace Wan {
-  export type AsObject = {
-    device: string,
-    dhcp?: Dhcp.AsObject,
-    pb_static?: Static.AsObject,
-  }
-
-  export enum IpCase { 
-    IP_NOT_SET = 0,
-    DHCP = 11,
-    STATIC = 12,
-  }
-}
-
-export class Bound extends jspb.Message {
-  getDevicesList(): Array<string>;
-  setDevicesList(value: Array<string>): Bound;
-  clearDevicesList(): Bound;
-  addDevices(value: string, index?: number): Bound;
-
-  getAddress(): string;
-  setAddress(value: string): Bound;
-
-  getNetmask(): string;
-  setNetmask(value: string): Bound;
-
-  getGateway(): string;
-  setGateway(value: string): Bound;
-
-  getMiimon(): number;
-  setMiimon(value: number): Bound;
-  hasMiimon(): boolean;
-  clearMiimon(): Bound;
-
-  getMode(): number;
-  setMode(value: number): Bound;
-  hasMode(): boolean;
-  clearMode(): Bound;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Bound.AsObject;
-  static toObject(includeInstance: boolean, msg: Bound): Bound.AsObject;
-  static serializeBinaryToWriter(message: Bound, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Bound;
-  static deserializeBinaryFromReader(message: Bound, reader: jspb.BinaryReader): Bound;
-}
-
-export namespace Bound {
-  export type AsObject = {
-    devicesList: Array<string>,
-    address: string,
-    netmask: string,
-    gateway: string,
-    miimon?: number,
-    mode?: number,
-  }
-
-  export enum MiimonCase { 
-    _MIIMON_NOT_SET = 0,
-    MIIMON = 41,
-  }
-
-  export enum ModeCase { 
-    _MODE_NOT_SET = 0,
-    MODE = 42,
+    script: string,
+    uptime?: google_protobuf_duration_pb.Duration.AsObject,
   }
 }
 
@@ -444,16 +566,11 @@ export class Lan extends jspb.Message {
   getDevice(): string;
   setDevice(value: string): Lan;
 
-  getString(): string;
-  setString(value: string): Lan;
+  getNetwork(): string;
+  setNetwork(value: string): Lan;
 
-  getNetmask(): string;
-  setNetmask(value: string): Lan;
-
-  getDhcp(): Lan.Dhcp | undefined;
-  setDhcp(value?: Lan.Dhcp): Lan;
-  hasDhcp(): boolean;
-  clearDhcp(): Lan;
+  getCidr(): number;
+  setCidr(value: number): Lan;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Lan.AsObject;
@@ -466,26 +583,83 @@ export class Lan extends jspb.Message {
 export namespace Lan {
   export type AsObject = {
     device: string,
-    string: string,
-    netmask: string,
-    dhcp?: Lan.Dhcp.AsObject,
+    network: string,
+    cidr: number,
+  }
+}
+
+export class Wan extends jspb.Message {
+  getDevice(): string;
+  setDevice(value: string): Wan;
+
+  getName(): string;
+  setName(value: string): Wan;
+
+  getCapacity(): number;
+  setCapacity(value: number): Wan;
+
+  getPirority(): number;
+  setPirority(value: number): Wan;
+
+  getEnable(): boolean;
+  setEnable(value: boolean): Wan;
+
+  getMac(): string;
+  setMac(value: string): Wan;
+
+  getIp(): Ip | undefined;
+  setIp(value?: Ip): Wan;
+  hasIp(): boolean;
+  clearIp(): Wan;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Wan.AsObject;
+  static toObject(includeInstance: boolean, msg: Wan): Wan.AsObject;
+  static serializeBinaryToWriter(message: Wan, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Wan;
+  static deserializeBinaryFromReader(message: Wan, reader: jspb.BinaryReader): Wan;
+}
+
+export namespace Wan {
+  export type AsObject = {
+    device: string,
+    name: string,
+    capacity: number,
+    pirority: number,
+    enable: boolean,
+    mac: string,
+    ip?: Ip.AsObject,
+  }
+}
+
+export class Ip extends jspb.Message {
+  getDhcp(): Ip.Dhcp | undefined;
+  setDhcp(value?: Ip.Dhcp): Ip;
+  hasDhcp(): boolean;
+  clearDhcp(): Ip;
+
+  getStatic(): Ip.Static | undefined;
+  setStatic(value?: Ip.Static): Ip;
+  hasStatic(): boolean;
+  clearStatic(): Ip;
+
+  getV4Case(): Ip.V4Case;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Ip.AsObject;
+  static toObject(includeInstance: boolean, msg: Ip): Ip.AsObject;
+  static serializeBinaryToWriter(message: Ip, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Ip;
+  static deserializeBinaryFromReader(message: Ip, reader: jspb.BinaryReader): Ip;
+}
+
+export namespace Ip {
+  export type AsObject = {
+    dhcp?: Ip.Dhcp.AsObject,
+    pb_static?: Ip.Static.AsObject,
   }
 
   export class Dhcp extends jspb.Message {
-    getFrom(): string;
-    setFrom(value: string): Dhcp;
-
-    getTo(): string;
-    setTo(value: string): Dhcp;
-
-    getDns1(): string;
-    setDns1(value: string): Dhcp;
-
-    getDns2(): string;
-    setDns2(value: string): Dhcp;
-    hasDns2(): boolean;
-    clearDns2(): Dhcp;
-
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Dhcp.AsObject;
     static toObject(includeInstance: boolean, msg: Dhcp): Dhcp.AsObject;
@@ -496,18 +670,57 @@ export namespace Lan {
 
   export namespace Dhcp {
     export type AsObject = {
-      from: string,
-      to: string,
+    }
+  }
+
+
+  export class Static extends jspb.Message {
+    getAddress(): string;
+    setAddress(value: string): Static;
+
+    getNetmask(): string;
+    setNetmask(value: string): Static;
+
+    getGateway(): string;
+    setGateway(value: string): Static;
+
+    getDns1(): string;
+    setDns1(value: string): Static;
+
+    getDns2(): string;
+    setDns2(value: string): Static;
+    hasDns2(): boolean;
+    clearDns2(): Static;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Static.AsObject;
+    static toObject(includeInstance: boolean, msg: Static): Static.AsObject;
+    static serializeBinaryToWriter(message: Static, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Static;
+    static deserializeBinaryFromReader(message: Static, reader: jspb.BinaryReader): Static;
+  }
+
+  export namespace Static {
+    export type AsObject = {
+      address: string,
+      netmask: string,
+      gateway: string,
       dns1: string,
       dns2?: string,
     }
 
     export enum Dns2Case { 
       _DNS2_NOT_SET = 0,
-      DNS2 = 4,
+      DNS2 = 5,
     }
   }
 
+
+  export enum V4Case { 
+    V4_NOT_SET = 0,
+    DHCP = 11,
+    STATIC = 12,
+  }
 }
 
 export class UserProfile extends jspb.Message {
@@ -622,8 +835,3 @@ export namespace UserLogsResponse {
   }
 }
 
-export enum Protocol { 
-  ICMP = 0,
-  TCP = 1,
-  UDP = 2,
-}

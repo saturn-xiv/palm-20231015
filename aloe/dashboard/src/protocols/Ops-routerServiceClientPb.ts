@@ -84,6 +84,350 @@ export class RouterClient {
     this.methodDescriptorScan);
   }
 
+  methodDescriptorApply = new grpcWeb.MethodDescriptor(
+    '/palm.ops.router.v1.Router/Apply',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    google_protobuf_empty_pb.Empty,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  apply(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  apply(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  apply(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.ops.router.v1.Router/Apply',
+        request,
+        metadata || {},
+        this.methodDescriptorApply,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.ops.router.v1.Router/Apply',
+    request,
+    metadata || {},
+    this.methodDescriptorApply);
+  }
+
+  methodDescriptorStatus = new grpcWeb.MethodDescriptor(
+    '/palm.ops.router.v1.Router/Status',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    ops$router_pb.RouterStatusResponse,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    ops$router_pb.RouterStatusResponse.deserializeBinary
+  );
+
+  status(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<ops$router_pb.RouterStatusResponse>;
+
+  status(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: ops$router_pb.RouterStatusResponse) => void): grpcWeb.ClientReadableStream<ops$router_pb.RouterStatusResponse>;
+
+  status(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: ops$router_pb.RouterStatusResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.ops.router.v1.Router/Status',
+        request,
+        metadata || {},
+        this.methodDescriptorStatus,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.ops.router.v1.Router/Status',
+    request,
+    metadata || {},
+    this.methodDescriptorStatus);
+  }
+
+  methodDescriptorSetWan = new grpcWeb.MethodDescriptor(
+    '/palm.ops.router.v1.Router/SetWan',
+    grpcWeb.MethodType.UNARY,
+    ops$router_pb.Wan,
+    google_protobuf_empty_pb.Empty,
+    (request: ops$router_pb.Wan) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  setWan(
+    request: ops$router_pb.Wan,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  setWan(
+    request: ops$router_pb.Wan,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  setWan(
+    request: ops$router_pb.Wan,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.ops.router.v1.Router/SetWan',
+        request,
+        metadata || {},
+        this.methodDescriptorSetWan,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.ops.router.v1.Router/SetWan',
+    request,
+    metadata || {},
+    this.methodDescriptorSetWan);
+  }
+
+  methodDescriptorSetLan = new grpcWeb.MethodDescriptor(
+    '/palm.ops.router.v1.Router/SetLan',
+    grpcWeb.MethodType.UNARY,
+    ops$router_pb.Lan,
+    google_protobuf_empty_pb.Empty,
+    (request: ops$router_pb.Lan) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  setLan(
+    request: ops$router_pb.Lan,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  setLan(
+    request: ops$router_pb.Lan,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  setLan(
+    request: ops$router_pb.Lan,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.ops.router.v1.Router/SetLan',
+        request,
+        metadata || {},
+        this.methodDescriptorSetLan,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.ops.router.v1.Router/SetLan',
+    request,
+    metadata || {},
+    this.methodDescriptorSetLan);
+  }
+
+  methodDescriptorCreateRule = new grpcWeb.MethodDescriptor(
+    '/palm.ops.router.v1.Router/CreateRule',
+    grpcWeb.MethodType.UNARY,
+    ops$router_pb.Rule,
+    google_protobuf_empty_pb.Empty,
+    (request: ops$router_pb.Rule) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  createRule(
+    request: ops$router_pb.Rule,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  createRule(
+    request: ops$router_pb.Rule,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  createRule(
+    request: ops$router_pb.Rule,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.ops.router.v1.Router/CreateRule',
+        request,
+        metadata || {},
+        this.methodDescriptorCreateRule,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.ops.router.v1.Router/CreateRule',
+    request,
+    metadata || {},
+    this.methodDescriptorCreateRule);
+  }
+
+  methodDescriptorUpdateRule = new grpcWeb.MethodDescriptor(
+    '/palm.ops.router.v1.Router/UpdateRule',
+    grpcWeb.MethodType.UNARY,
+    ops$router_pb.RouterIndexRouleResponse.Item,
+    google_protobuf_empty_pb.Empty,
+    (request: ops$router_pb.RouterIndexRouleResponse.Item) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  updateRule(
+    request: ops$router_pb.RouterIndexRouleResponse.Item,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  updateRule(
+    request: ops$router_pb.RouterIndexRouleResponse.Item,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  updateRule(
+    request: ops$router_pb.RouterIndexRouleResponse.Item,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.ops.router.v1.Router/UpdateRule',
+        request,
+        metadata || {},
+        this.methodDescriptorUpdateRule,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.ops.router.v1.Router/UpdateRule',
+    request,
+    metadata || {},
+    this.methodDescriptorUpdateRule);
+  }
+
+  methodDescriptorIndexRule = new grpcWeb.MethodDescriptor(
+    '/palm.ops.router.v1.Router/IndexRule',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    ops$router_pb.RouterIndexRouleResponse,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    ops$router_pb.RouterIndexRouleResponse.deserializeBinary
+  );
+
+  indexRule(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<ops$router_pb.RouterIndexRouleResponse>;
+
+  indexRule(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: ops$router_pb.RouterIndexRouleResponse) => void): grpcWeb.ClientReadableStream<ops$router_pb.RouterIndexRouleResponse>;
+
+  indexRule(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: ops$router_pb.RouterIndexRouleResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.ops.router.v1.Router/IndexRule',
+        request,
+        metadata || {},
+        this.methodDescriptorIndexRule,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.ops.router.v1.Router/IndexRule',
+    request,
+    metadata || {},
+    this.methodDescriptorIndexRule);
+  }
+
+  methodDescriptorUpdateHost = new grpcWeb.MethodDescriptor(
+    '/palm.ops.router.v1.Router/UpdateHost',
+    grpcWeb.MethodType.UNARY,
+    ops$router_pb.RouterUpdateHostRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: ops$router_pb.RouterUpdateHostRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  updateHost(
+    request: ops$router_pb.RouterUpdateHostRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  updateHost(
+    request: ops$router_pb.RouterUpdateHostRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  updateHost(
+    request: ops$router_pb.RouterUpdateHostRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.ops.router.v1.Router/UpdateHost',
+        request,
+        metadata || {},
+        this.methodDescriptorUpdateHost,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.ops.router.v1.Router/UpdateHost',
+    request,
+    metadata || {},
+    this.methodDescriptorUpdateHost);
+  }
+
 }
 
 export class UserClient {
@@ -280,26 +624,26 @@ export class UserClient {
   methodDescriptorLogs = new grpcWeb.MethodDescriptor(
     '/palm.ops.router.v1.User/Logs',
     grpcWeb.MethodType.UNARY,
-    google_protobuf_duration_pb.Duration,
+    google_protobuf_empty_pb.Empty,
     ops$router_pb.UserLogsResponse,
-    (request: google_protobuf_duration_pb.Duration) => {
+    (request: google_protobuf_empty_pb.Empty) => {
       return request.serializeBinary();
     },
     ops$router_pb.UserLogsResponse.deserializeBinary
   );
 
   logs(
-    request: google_protobuf_duration_pb.Duration,
+    request: google_protobuf_empty_pb.Empty,
     metadata: grpcWeb.Metadata | null): Promise<ops$router_pb.UserLogsResponse>;
 
   logs(
-    request: google_protobuf_duration_pb.Duration,
+    request: google_protobuf_empty_pb.Empty,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: ops$router_pb.UserLogsResponse) => void): grpcWeb.ClientReadableStream<ops$router_pb.UserLogsResponse>;
 
   logs(
-    request: google_protobuf_duration_pb.Duration,
+    request: google_protobuf_empty_pb.Empty,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: ops$router_pb.UserLogsResponse) => void) {

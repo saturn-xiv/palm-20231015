@@ -9,7 +9,6 @@ use super::super::schema::users;
 pub struct Item {
     pub id: i32,
     pub name: String,
-    pub group: String,
     pub contact: Vec<u8>,
     pub updated_at: NaiveDateTime,
 }
@@ -22,15 +21,15 @@ impl Item {
 }
 
 pub trait Dao {
-    fn create(&mut self, name: &str, group: &str, contact: &v1::Contact) -> Result<()>;
-    fn update(&mut self, id: i32, name: &str, group: &str, contact: &v1::Contact) -> Result<()>;
+    fn create(&mut self, name: &str, contact: &v1::Contact) -> Result<()>;
+    fn update(&mut self, id: i32, name: &str, contact: &v1::Contact) -> Result<()>;
     fn by_id(&mut self, id: i32) -> Result<Item>;
     fn by_name(&mut self, name: &str) -> Result<Item>;
     fn all(&mut self) -> Result<Vec<Item>>;
 }
 
 impl Dao for Connection {
-    fn create(&mut self, name: &str, group: &str, contact: &v1::Contact) -> Result<()> {
+    fn create(&mut self, name: &str, contact: &v1::Contact) -> Result<()> {
         let mut buf = Vec::new();
         contact.encode(&mut buf)?;
 
@@ -38,14 +37,13 @@ impl Dao for Connection {
         insert_into(users::dsl::users)
             .values((
                 users::dsl::name.eq(name),
-                users::dsl::group.eq(group),
                 users::dsl::contact.eq(&buf),
                 users::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;
         Ok(())
     }
-    fn update(&mut self, id: i32, name: &str, group: &str, contact: &v1::Contact) -> Result<()> {
+    fn update(&mut self, id: i32, name: &str, contact: &v1::Contact) -> Result<()> {
         let mut buf = Vec::new();
         contact.encode(&mut buf)?;
 
@@ -55,7 +53,6 @@ impl Dao for Connection {
         update(it)
             .set((
                 users::dsl::name.eq(name),
-                users::dsl::group.eq(group),
                 users::dsl::contact.eq(&buf),
                 users::dsl::updated_at.eq(&now),
             ))

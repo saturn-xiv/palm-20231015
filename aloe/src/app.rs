@@ -26,7 +26,10 @@ pub async fn launch() -> Result<()> {
     let cfg: Config = from_toml(&args.config)?;
     let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
     let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
-    let db = Arc::new(Mutex::new(open_db("tmp/db")?));
+    let db = Arc::new(Mutex::new({
+        let hmac = hmac.deref();
+        open_db("tmp/db", hmac)?
+    }));
     let addr = cfg.rpc.addr();
 
     info!("start gRPC at {}", addr);

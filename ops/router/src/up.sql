@@ -10,14 +10,11 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_settings_key ON settings(key);
 CREATE TABLE IF NOT EXISTS users(
     id INTEGER NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    'group' VARCHAR(255) NOT NULL,
     contact BLOB NOT NULL,
     updated_at DATETIME NOT NULL
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS idx_users_name ON users(name);
-
-CREATE INDEX IF NOT EXISTS idx_users_group ON users('group');
 
 CREATE TABLE IF NOT EXISTS hosts(
     id INTEGER NOT NULL PRIMARY KEY,
@@ -26,7 +23,7 @@ CREATE TABLE IF NOT EXISTS hosts(
     mac VARCHAR(64) NOT NULL,
     ip VARCHAR(64) NOT NULL,
     user_id INTEGER,
-    location VARCHAR(255),
+    location VARCHAR(64),
     fixed BOOLEAN NOT NULL DEFAULT FALSE,
     confirmed_at DATETIME,
     updated_at DATETIME NOT NULL
@@ -48,6 +45,6 @@ CREATE TABLE IF NOT EXISTS rules(
     updated_at DATETIME NOT NULL
 );
 
-CREATE UNIQUE INDEX IF NOT EXISTS idx_rules_name ON rules(name);
+CREATE INDEX IF NOT EXISTS idx_rules_name ON rules(name);
 
 CREATE INDEX IF NOT EXISTS idx_rules_group ON rules('group');

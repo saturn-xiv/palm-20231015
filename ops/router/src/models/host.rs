@@ -21,11 +21,14 @@ pub struct Item {
 
 pub trait Dao {
     fn create(&mut self, name: &str, mac: &str, ip: &str) -> Result<()>;
-    fn set_user(&mut self, id: i32, user: i32) -> Result<()>;
-    fn set_fixed_ip(&mut self, id: i32, ip: &str) -> Result<()>;
-    fn set_dynamic_ip(&mut self, id: i32) -> Result<()>;
-    fn set_location(&mut self, id: i32, location: &str) -> Result<()>;
-    fn set_group(&mut self, id: i32, group: &str) -> Result<()>;
+    fn update(
+        &mut self,
+        id: i32,
+        user: i32,
+        group: &str,
+        location: Option<&str>,
+        fixed_ip: Option<&str>,
+    ) -> Result<()>;
     fn by_id(&mut self, id: i32) -> Result<Item>;
     fn by_mac(&mut self, mac: &str) -> Result<Item>;
     fn all(&mut self) -> Result<Vec<Item>>;
@@ -45,61 +48,46 @@ impl Dao for Connection {
             .execute(self)?;
         Ok(())
     }
-    fn set_user(&mut self, id: i32, user: i32) -> Result<()> {
+    fn update(
+        &mut self,
+        id: i32,
+        user: i32,
+        group: &str,
+        location: Option<&str>,
+        fixed_ip: Option<&str>,
+    ) -> Result<()> {
         let now = Utc::now().naive_utc();
         let it = hosts::dsl::hosts.filter(hosts::dsl::id.eq(&id));
 
-        update(it)
-            .set((
-                hosts::dsl::user_id.eq(user),
-                hosts::dsl::updated_at.eq(&now),
-            ))
-            .execute(self)?;
-        Ok(())
-    }
-    fn set_group(&mut self, id: i32, group: &str) -> Result<()> {
-        let now = Utc::now().naive_utc();
-        let it = hosts::dsl::hosts.filter(hosts::dsl::id.eq(&id));
+        match fixed_ip {
+            Some(ip) => {
+                update(it)
+                    .set((
+                        hosts::dsl::user_id.eq(user),
+                        hosts::dsl::group.eq(group),
+                        hosts::dsl::ip.eq(ip),
+                        hosts::dsl::fixed.eq(true),
+                        hosts::dsl::location.eq(location),
+                        hosts::dsl::updated_at.eq(&now),
+                    ))
+                    .execute(self)?;
+            }
+            None => {
+                update(it)
+                    .set((
+                        hosts::dsl::user_id.eq(user),
+                        hosts::dsl::group.eq(group),
+                        hosts::dsl::fixed.eq(false),
+                        hosts::dsl::location.eq(location),
+                        hosts::dsl::updated_at.eq(&now),
+                    ))
+                    .execute(self)?;
+            }
+        };
 
-        update(it)
-            .set((hosts::dsl::group.eq(group), hosts::dsl::updated_at.eq(&now)))
-            .execute(self)?;
         Ok(())
     }
-    fn set_fixed_ip(&mut self, id: i32, ip: &str) -> Result<()> {
-        let now = Utc::now().naive_utc();
-        let it = hosts::dsl::hosts.filter(hosts::dsl::id.eq(&id));
 
-        update(it)
-            .set((
-                hosts::dsl::ip.eq(ip),
-                hosts::dsl::fixed.eq(true),
-                hosts::dsl::updated_at.eq(&now),
-            ))
-            .execute(self)?;
-        Ok(())
-    }
-    fn set_dynamic_ip(&mut self, id: i32) -> Result<()> {
-        let now = Utc::now().naive_utc();
-        let it = hosts::dsl::hosts.filter(hosts::dsl::id.eq(&id));
-
-        update(it)
-            .set((hosts::dsl::fixed.eq(false), hosts::dsl::updated_at.eq(&now)))
-            .execute(self)?;
-        Ok(())
-    }
-    fn set_location(&mut self, id: i32, location: &str) -> Result<()> {
-        let now = Utc::now().naive_utc();
-        let it = hosts::dsl::hosts.filter(hosts::dsl::id.eq(&id));
-
-        update(it)
-            .set((
-                hosts::dsl::location.eq(location),
-                hosts::dsl::updated_at.eq(&now),
-            ))
-            .execute(self)?;
-        Ok(())
-    }
     fn by_id(&mut self, id: i32) -> Result<Item> {
         let it = hosts::dsl::hosts
             .filter(hosts::dsl::id.eq(id))

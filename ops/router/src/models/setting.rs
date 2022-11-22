@@ -15,30 +15,34 @@ pub struct Item {
 }
 
 pub trait Dao {
-    fn get<V: prost::Message + Default>(&mut self) -> Result<V>;
-    fn set<V: prost::Message>(&mut self, value: &V) -> Result<()>;
+    fn get<V: prost::Message + Default>(&mut self, key: Option<&str>) -> Result<V>;
+    fn set<V: prost::Message>(&mut self, key: Option<&str>, value: &V) -> Result<()>;
+}
+
+fn build_key<T>(key: Option<&str>) -> String {
+    format!("{}://{}", type_name::<T>(), key.unwrap_or_default())
 }
 
 impl Dao for Connection {
-    fn get<V: prost::Message + Default>(&mut self) -> Result<V> {
-        let key = type_name::<V>();
+    fn get<V: prost::Message + Default>(&mut self, key: Option<&str>) -> Result<V> {
+        let key = build_key::<V>(key);
 
         let it = settings::dsl::settings
-            .filter(settings::dsl::key.eq(key))
+            .filter(settings::dsl::key.eq(&key))
             .first::<Item>(self)?;
         let it = V::decode(&it.value[..])?;
         Ok(it)
     }
 
-    fn set<V: prost::Message>(&mut self, value: &V) -> Result<()> {
-        let key = type_name::<V>();
+    fn set<V: prost::Message>(&mut self, key: Option<&str>, value: &V) -> Result<()> {
+        let key = build_key::<V>(key);
         let mut buf = Vec::new();
         value.encode(&mut buf)?;
 
         let now = Utc::now().naive_utc();
 
         let it = settings::dsl::settings
-            .filter(settings::dsl::key.eq(key))
+            .filter(settings::dsl::key.eq(&key))
             .first::<Item>(self);
 
         match it {
@@ -55,7 +59,7 @@ impl Dao for Connection {
             Err(_) => {
                 insert_into(settings::dsl::settings)
                     .values((
-                        settings::dsl::key.eq(key),
+                        settings::dsl::key.eq(&key),
                         settings::dsl::value.eq(&buf),
                         settings::dsl::updated_at.eq(&now),
                     ))

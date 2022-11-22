@@ -1,6 +1,5 @@
 use std::any::type_name;
 use std::ops::{Deref, DerefMut};
-use std::process::Command;
 use std::sync::{Arc, Mutex};
 
 use chrono::Duration;
@@ -33,7 +32,7 @@ impl v1::user_server::User for Service {
         if let Some(ref user) = req.user {
             if let Ok(ref mut db) = self.db.lock() {
                 let db = db.deref_mut();
-                let it: v1::UserProfile = try_grpc!(SettingDao::get(db))?;
+                let it: v1::UserProfile = try_grpc!(SettingDao::get(db, None))?;
                 if user.nickname == it.nickname
                     && try_grpc!(self.hmac.sum(user.password.as_bytes()))? == it.password.as_bytes()
                 {
@@ -71,13 +70,13 @@ impl v1::user_server::User for Service {
                 if let Ok(ref mut db) = self.db.lock() {
                     let db = db.deref_mut();
                     try_grpc!(ss.current_user(db, jwt))?;
-                    let it: v1::UserProfile = try_grpc!(SettingDao::get(db))?;
+                    let it: v1::UserProfile = try_grpc!(SettingDao::get(db, None))?;
                     if cu.nickname == it.nickname
                         && try_grpc!(self.hmac.sum(cu.password.as_bytes()))?
                             == it.password.as_bytes()
                     {
                         info!("update user profile {} => {}", cu.nickname, nu.nickname);
-                        try_grpc!(SettingDao::set(db, nu))?;
+                        try_grpc!(SettingDao::set(db, None, nu))?;
                         return Ok(Response::new(()));
                     }
                 }
@@ -103,16 +102,10 @@ impl v1::user_server::User for Service {
         if let Ok(ref mut db) = self.db.lock() {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
-            let out = try_grpc!(Command::new("journalctl").arg("--boot").output())?;
-            let out = try_grpc!(String::from_utf8(out.stdout))?;
-
-            let mut res = v1::UserLogsResponse::default();
-            for it in out.lines() {
-                res.items.push(it.to_string());
-            }
-            return Ok(Response::new(res));
         }
-        Err(Status::permission_denied(type_name::<v1::UserProfile>()))
+
+        let items = try_grpc!(super::super::env::logs())?;
+        Ok(Response::new(v1::UserLogsResponse { items }))
     }
 }
 
@@ -143,7 +136,7 @@ impl CurrentUserAdapter for Session {
         if let Some(ref token) = self.token {
             let token = jwt.parse::<Token>(token)?;
             let token = token.claims;
-            let it: v1::UserProfile = SettingDao::get(db)?;
+            let it: v1::UserProfile = SettingDao::get(db, None)?;
             if it.nickname == token.aud {
                 return Ok(it.nickname);
             }

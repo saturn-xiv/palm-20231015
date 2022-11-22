@@ -5,7 +5,8 @@ set -e
 setup_ubuntu() {
     apt update
     apt -y upgrade
-    apt -y install iptables
+    apt -y install crun podman buildah \
+        isc-dhcp-server nmap
     apt clean
     apt -y autoremove
 }
@@ -19,6 +20,26 @@ install_aloe() {
     mkdir -p $root
     cd $root
     tar xf $1
+
+    cat > $root/envoy.yml << EOF
+EOF
+
+    cat > $root/start.sh <<EOF
+#!/bin/bash
+
+set -e
+
+
+export ENVOY_NAME=docker.io/envoyproxy/envoy:v1.24-latest
+podman pull \$ENVOY_NAME
+podman run --rm -it --events-backend=file --hostname=palm --network host \
+    -v $root/envoy.yml:/envoy.yml -p 9901:9901 -p 9901:9901 \
+    \$ENVOY_NAME -c /envoy.yml
+
+echo 'done.'
+exit 0
+
+EOF
 }
 
 . /etc/os-release

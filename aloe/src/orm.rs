@@ -3,7 +3,7 @@ use std::path::Path;
 use diesel::{
     connection::SimpleConnection, prelude::*, sql_query, Connection as OpenConnection, RunQueryDsl,
 };
-use palm::Result;
+use palm::{crypto::Hmac, Error, Result};
 use std::time::Duration;
 
 pub type Connection = diesel::sqlite::SqliteConnection;
@@ -16,7 +16,7 @@ pub struct Version {
     pub value: String,
 }
 
-pub fn open<P: AsRef<Path>>(file: P) -> Result<Connection> {
+pub fn open<P: AsRef<Path>>(file: P, hmac: &Hmac) -> Result<Connection> {
     let file = file.as_ref();
     info!("open sqlite db {}", file.display());
     let mut db = Connection::establish(&file.display().to_string())?;
@@ -32,5 +32,11 @@ pub fn open<P: AsRef<Path>>(file: P) -> Result<Connection> {
         info!("sqlite version {}", it.value);
     }
     db.batch_execute(ops_router::UP)?;
+
+    db.transaction::<_, Error, _>(move |db| {
+        ops_router::env::setup(db, hmac)?;
+        Ok(())
+    })?;
+
     Ok(db)
 }

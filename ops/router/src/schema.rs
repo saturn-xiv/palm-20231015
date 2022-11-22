@@ -38,7 +38,6 @@ diesel::table! {
     users (id) {
         id -> Integer,
         name -> Text,
-        group -> Text,
         contact -> Binary,
         updated_at -> Timestamp,
     }
