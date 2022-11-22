@@ -181,7 +181,7 @@ impl v1::router_server::Router for Service {
     }
     async fn update_rule(
         &self,
-        req: Request<v1::router_index_roule_response::Item>,
+        req: Request<v1::router_index_rule_response::Item>,
     ) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let jwt = self.jwt.deref();
@@ -189,22 +189,28 @@ impl v1::router_server::Router for Service {
         if let Ok(ref mut db) = self.db.lock() {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
-            if let Some(ref rule) = req.rule {
-                if let Some(ref payload) = rule.payload {
-                    try_grpc!(RuleDao::update(
-                        db,
-                        req.id,
-                        &rule.name,
-                        &rule.group,
-                        payload
-                    ))?;
-                    return Ok(Response::new(()));
-                }
+
+            if let Some(ref payload) = req.payload {
+                try_grpc!(RuleDao::update(
+                    db,
+                    req.id,
+                    &req.name,
+                    &req.group,
+                    &match payload {
+                        v1::router_index_rule_response::item::Payload::In(ref it) =>
+                            v1::rule::Payload::In(it.clone()),
+                        v1::router_index_rule_response::item::Payload::Out(ref it) =>
+                            v1::rule::Payload::Out(it.clone()),
+                        v1::router_index_rule_response::item::Payload::Nat(ref it) =>
+                            v1::rule::Payload::Nat(it.clone()),
+                    }
+                ))?;
+                return Ok(Response::new(()));
             }
         }
         Err(Status::permission_denied(type_name::<v1::UserProfile>()))
     }
-    async fn index_rule(&self, req: Request<()>) -> GrpcResult<v1::RouterIndexRouleResponse> {
+    async fn index_rule(&self, req: Request<()>) -> GrpcResult<v1::RouterIndexRuleResponse> {
         let ss = Session::new(&req);
         let jwt = self.jwt.deref();
 
@@ -213,13 +219,10 @@ impl v1::router_server::Router for Service {
             try_grpc!(ss.current_user(db, jwt))?;
             let mut items = Vec::new();
             for it in try_grpc!(RuleDao::all(db))? {
-                items.push(v1::router_index_roule_response::Item {
-                    id: it.id,
-                    rule: Some(it.into()),
-                });
+                items.push(it.into());
             }
 
-            return Ok(Response::new(v1::RouterIndexRouleResponse { items }));
+            return Ok(Response::new(v1::RouterIndexRuleResponse { items }));
         }
         Err(Status::permission_denied(type_name::<v1::UserProfile>()))
     }
@@ -243,11 +246,83 @@ impl v1::router_server::Router for Service {
         }
         Err(Status::permission_denied(type_name::<v1::UserProfile>()))
     }
+
+    async fn create_user(&self, req: Request<v1::RouterCreateUserRequest>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let jwt = self.jwt.deref();
+        let req = req.into_inner();
+        if let Ok(ref mut db) = self.db.lock() {
+            let db = db.deref_mut();
+            try_grpc!(ss.current_user(db, jwt))?;
+            if let Some(ref contact) = req.contact {
+                try_grpc!(UserDao::create(db, &req.name, contact))?;
+                return Ok(Response::new(()));
+            }
+        }
+        Err(Status::permission_denied(type_name::<v1::UserProfile>()))
+    }
+    async fn update_user(
+        &self,
+        req: Request<v1::router_index_user_response::Item>,
+    ) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let jwt = self.jwt.deref();
+        let req = req.into_inner();
+        if let Ok(ref mut db) = self.db.lock() {
+            let db = db.deref_mut();
+            try_grpc!(ss.current_user(db, jwt))?;
+            if let Some(ref contact) = req.contact {
+                try_grpc!(UserDao::update(db, req.id, &req.name, contact))?;
+                return Ok(Response::new(()));
+            }
+        }
+        Err(Status::permission_denied(type_name::<v1::UserProfile>()))
+    }
+    async fn index_user(&self, req: Request<()>) -> GrpcResult<v1::RouterIndexUserResponse> {
+        let ss = Session::new(&req);
+        let jwt = self.jwt.deref();
+
+        if let Ok(ref mut db) = self.db.lock() {
+            let db = db.deref_mut();
+            try_grpc!(ss.current_user(db, jwt))?;
+            let mut items = Vec::new();
+            for it in try_grpc!(UserDao::all(db))? {
+                items.push(v1::router_index_user_response::Item {
+                    id: it.id,
+                    name: it.name.clone(),
+                    contact: Some(try_grpc!(v1::Contact::decode(&it.contact[..]))?),
+                });
+            }
+
+            return Ok(Response::new(v1::RouterIndexUserResponse { items }));
+        }
+        Err(Status::permission_denied(type_name::<v1::UserProfile>()))
+    }
 }
 
+impl From<Rule> for v1::router_index_rule_response::Item {
+    fn from(it: Rule) -> Self {
+        let mut rule = Self {
+            id: it.id,
+            name: it.name.clone(),
+            group: it.group.clone(),
+            payload: None,
+        };
+        if let Ok(it) = v1::rule::Nat::decode(&it.content[..]) {
+            rule.payload = Some(v1::router_index_rule_response::item::Payload::Nat(it));
+        } else if let Ok(it) = v1::rule::OutBound::decode(&it.content[..]) {
+            rule.payload = Some(v1::router_index_rule_response::item::Payload::Out(it));
+        } else if let Ok(it) = v1::rule::InBound::decode(&it.content[..]) {
+            rule.payload = Some(v1::router_index_rule_response::item::Payload::In(it));
+        } else {
+            error!("unknown rule({})'s payload", it.id);
+        }
+        rule
+    }
+}
 impl From<Rule> for v1::Rule {
     fn from(it: Rule) -> Self {
-        let mut rule = v1::Rule {
+        let mut rule = Self {
             name: it.name.clone(),
             group: it.group.clone(),
             payload: None,
@@ -264,23 +339,3 @@ impl From<Rule> for v1::Rule {
         rule
     }
 }
-
-// impl Rule {
-//     fn to(&self) -> v1::Rule {
-//         let mut rule = v1::Rule {
-//             name: self.name.clone(),
-//             group: self.group.clone(),
-//             payload: None,
-//         };
-//         if let Ok(it) = v1::rule::Nat::decode(&self.content[..]) {
-//             rule.payload = Some(v1::rule::Payload::Nat(it));
-//         } else if let Ok(it) = v1::rule::OutBound::decode(&self.content[..]) {
-//             rule.payload = Some(v1::rule::Payload::Out(it));
-//         } else if let Ok(it) = v1::rule::InBound::decode(&self.content[..]) {
-//             rule.payload = Some(v1::rule::Payload::In(it));
-//         } else {
-//             error!("unknown rule({})'s payload", self.id);
-//         }
-//         rule
-//     }
-// }

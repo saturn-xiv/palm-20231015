@@ -31,6 +31,79 @@ export namespace Contact {
   }
 }
 
+export class RouterCreateUserRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): RouterCreateUserRequest;
+
+  getContact(): Contact | undefined;
+  setContact(value?: Contact): RouterCreateUserRequest;
+  hasContact(): boolean;
+  clearContact(): RouterCreateUserRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RouterCreateUserRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RouterCreateUserRequest): RouterCreateUserRequest.AsObject;
+  static serializeBinaryToWriter(message: RouterCreateUserRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RouterCreateUserRequest;
+  static deserializeBinaryFromReader(message: RouterCreateUserRequest, reader: jspb.BinaryReader): RouterCreateUserRequest;
+}
+
+export namespace RouterCreateUserRequest {
+  export type AsObject = {
+    name: string,
+    contact?: Contact.AsObject,
+  }
+}
+
+export class RouterIndexUserResponse extends jspb.Message {
+  getItemsList(): Array<RouterIndexUserResponse.Item>;
+  setItemsList(value: Array<RouterIndexUserResponse.Item>): RouterIndexUserResponse;
+  clearItemsList(): RouterIndexUserResponse;
+  addItems(value?: RouterIndexUserResponse.Item, index?: number): RouterIndexUserResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RouterIndexUserResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: RouterIndexUserResponse): RouterIndexUserResponse.AsObject;
+  static serializeBinaryToWriter(message: RouterIndexUserResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RouterIndexUserResponse;
+  static deserializeBinaryFromReader(message: RouterIndexUserResponse, reader: jspb.BinaryReader): RouterIndexUserResponse;
+}
+
+export namespace RouterIndexUserResponse {
+  export type AsObject = {
+    itemsList: Array<RouterIndexUserResponse.Item.AsObject>,
+  }
+
+  export class Item extends jspb.Message {
+    getId(): number;
+    setId(value: number): Item;
+
+    getName(): string;
+    setName(value: string): Item;
+
+    getContact(): Contact | undefined;
+    setContact(value?: Contact): Item;
+    hasContact(): boolean;
+    clearContact(): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      id: number,
+      name: string,
+      contact?: Contact.AsObject,
+    }
+  }
+
+}
+
 export class RouterUpdateHostRequest extends jspb.Message {
   getId(): number;
   setId(value: number): RouterUpdateHostRequest;
@@ -79,33 +152,51 @@ export namespace RouterUpdateHostRequest {
   }
 }
 
-export class RouterIndexRouleResponse extends jspb.Message {
-  getItemsList(): Array<RouterIndexRouleResponse.Item>;
-  setItemsList(value: Array<RouterIndexRouleResponse.Item>): RouterIndexRouleResponse;
-  clearItemsList(): RouterIndexRouleResponse;
-  addItems(value?: RouterIndexRouleResponse.Item, index?: number): RouterIndexRouleResponse.Item;
+export class RouterIndexRuleResponse extends jspb.Message {
+  getItemsList(): Array<RouterIndexRuleResponse.Item>;
+  setItemsList(value: Array<RouterIndexRuleResponse.Item>): RouterIndexRuleResponse;
+  clearItemsList(): RouterIndexRuleResponse;
+  addItems(value?: RouterIndexRuleResponse.Item, index?: number): RouterIndexRuleResponse.Item;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RouterIndexRouleResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: RouterIndexRouleResponse): RouterIndexRouleResponse.AsObject;
-  static serializeBinaryToWriter(message: RouterIndexRouleResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RouterIndexRouleResponse;
-  static deserializeBinaryFromReader(message: RouterIndexRouleResponse, reader: jspb.BinaryReader): RouterIndexRouleResponse;
+  toObject(includeInstance?: boolean): RouterIndexRuleResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: RouterIndexRuleResponse): RouterIndexRuleResponse.AsObject;
+  static serializeBinaryToWriter(message: RouterIndexRuleResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RouterIndexRuleResponse;
+  static deserializeBinaryFromReader(message: RouterIndexRuleResponse, reader: jspb.BinaryReader): RouterIndexRuleResponse;
 }
 
-export namespace RouterIndexRouleResponse {
+export namespace RouterIndexRuleResponse {
   export type AsObject = {
-    itemsList: Array<RouterIndexRouleResponse.Item.AsObject>,
+    itemsList: Array<RouterIndexRuleResponse.Item.AsObject>,
   }
 
   export class Item extends jspb.Message {
     getId(): number;
     setId(value: number): Item;
 
-    getRule(): Rule | undefined;
-    setRule(value?: Rule): Item;
-    hasRule(): boolean;
-    clearRule(): Item;
+    getName(): string;
+    setName(value: string): Item;
+
+    getGroup(): string;
+    setGroup(value: string): Item;
+
+    getIn(): Rule.InBound | undefined;
+    setIn(value?: Rule.InBound): Item;
+    hasIn(): boolean;
+    clearIn(): Item;
+
+    getOut(): Rule.OutBound | undefined;
+    setOut(value?: Rule.OutBound): Item;
+    hasOut(): boolean;
+    clearOut(): Item;
+
+    getNat(): Rule.Nat | undefined;
+    setNat(value?: Rule.Nat): Item;
+    hasNat(): boolean;
+    clearNat(): Item;
+
+    getPayloadCase(): Item.PayloadCase;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Item.AsObject;
@@ -118,7 +209,18 @@ export namespace RouterIndexRouleResponse {
   export namespace Item {
     export type AsObject = {
       id: number,
-      rule?: Rule.AsObject,
+      name: string,
+      group: string,
+      pb_in?: Rule.InBound.AsObject,
+      out?: Rule.OutBound.AsObject,
+      nat?: Rule.Nat.AsObject,
+    }
+
+    export enum PayloadCase { 
+      PAYLOAD_NOT_SET = 0,
+      IN = 11,
+      OUT = 12,
+      NAT = 13,
     }
   }
 
