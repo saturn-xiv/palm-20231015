@@ -7,13 +7,11 @@ fn nmap() {
         PathBuf::from(env!("CARGO_MANIFEST_DIR"))
             .parent()
             .unwrap()
-            .parent()
-            .unwrap()
             .join("tmp")
             .join("nmap.xml"),
     )
     .unwrap();
-    let items = ops_router::env::Host::load(&file).unwrap();
+    let items = palm::network::ethernet::Host::load(&file).unwrap();
     println!("find {} hosts", items.len());
     for it in items.iter() {
         println!("{:?}", it);
@@ -22,13 +20,13 @@ fn nmap() {
 
 #[test]
 fn logs() {
-    let items = ops_router::env::logs().unwrap();
+    let items = palm::network::logs().unwrap();
     println!("receive {} lines logs\n{:?}", items.len(), items.first());
 }
 
 #[test]
 fn ethernet() {
-    let items = ops_router::env::ethernet().unwrap();
+    let items = palm::network::ethernet::detect().unwrap();
     println!("find {} ethernet interfaces", items.len());
     for it in items.iter() {
         println!("{:?}", it);

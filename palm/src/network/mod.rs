@@ -1,22 +1,37 @@
+pub mod dhcpd;
+pub mod ethernet;
+pub mod iptables;
+pub mod netplan;
+
 use std::fs::metadata;
 use std::net::Ipv4Addr;
-use std::path::{Component, Path, PathBuf};
+use std::path::PathBuf;
+use std::process::Command;
+use std::result::Result as StdResult;
 
 use ipnet::Ipv4Net;
 use validator::{Validate, ValidationErrors};
 
-use super::ops::router as ops_router;
+use super::{ops::router as ops_router, Result};
 
-pub fn enternet_root() -> PathBuf {
-    Path::new(&Component::RootDir)
-        .join("sys")
-        .join("class")
-        .join("net")
+pub trait Etc {
+    fn save(&self) -> Result<PathBuf>;
+}
+
+pub fn logs() -> Result<Vec<String>> {
+    let out = Command::new("journalctl").arg("--boot").output()?;
+    let out = String::from_utf8(out.stdout)?;
+
+    let mut items = Vec::new();
+    for it in out.lines() {
+        items.push(it.to_string());
+    }
+    Ok(items)
 }
 
 impl ops_router::v1::Lan {
     fn validate_device(&self) -> bool {
-        if let Ok(ref it) = metadata(&enternet_root().join(&self.device)) {
+        if let Ok(ref it) = metadata(&ethernet::root().join(&self.device)) {
             if it.is_dir() {
                 return true;
             }
@@ -29,7 +44,7 @@ impl ops_router::v1::Lan {
 }
 
 impl Validate for ops_router::v1::Lan {
-    fn validate(&self) -> Result<(), ValidationErrors> {
+    fn validate(&self) -> StdResult<(), ValidationErrors> {
         if self.validate_address() && self.validate_device() {
             return Ok(());
         }
@@ -56,7 +71,7 @@ impl ops_router::v1::Static {
 }
 
 impl Validate for ops_router::v1::Static {
-    fn validate(&self) -> Result<(), ValidationErrors> {
+    fn validate(&self) -> StdResult<(), ValidationErrors> {
         if self.validate_address()
             && self.validate_gateway()
             && self.validate_dns1()
@@ -70,7 +85,7 @@ impl Validate for ops_router::v1::Static {
 
 impl ops_router::v1::Wan {
     fn validate_device(&self) -> bool {
-        if let Ok(ref it) = metadata(&enternet_root().join(&self.device)) {
+        if let Ok(ref it) = metadata(&ethernet::root().join(&self.device)) {
             if it.is_dir() {
                 return true;
             }
@@ -86,7 +101,7 @@ impl ops_router::v1::Wan {
 }
 
 impl Validate for ops_router::v1::Wan {
-    fn validate(&self) -> Result<(), ValidationErrors> {
+    fn validate(&self) -> StdResult<(), ValidationErrors> {
         if self.validate_ip() && self.validate_device() {
             return Ok(());
         }

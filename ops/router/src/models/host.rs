@@ -1,5 +1,5 @@
 use chrono::{NaiveDateTime, Utc};
-use diesel::{insert_into, prelude::*, sqlite::SqliteConnection as Connection, update};
+use diesel::{delete, insert_into, prelude::*, sqlite::SqliteConnection as Connection, update};
 use palm::Result;
 
 use super::super::schema::hosts;
@@ -33,6 +33,7 @@ pub trait Dao {
     fn by_id(&mut self, id: i32) -> Result<Item>;
     fn by_mac(&mut self, mac: &str) -> Result<Item>;
     fn all(&mut self) -> Result<Vec<Item>>;
+    fn destroy(&mut self) -> Result<()>;
 }
 
 impl Dao for Connection {
@@ -97,5 +98,9 @@ impl Dao for Connection {
             .order(hosts::dsl::ip.asc())
             .load::<Item>(self)?;
         Ok(items)
+    }
+    fn destroy(&mut self) -> Result<()> {
+        delete(hosts::dsl::hosts).execute(self)?;
+        Ok(())
     }
 }

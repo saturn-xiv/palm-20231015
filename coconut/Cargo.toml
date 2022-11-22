@@ -1,6 +1,6 @@
 [package]
 name = "coconut"
-version = "2022.11.17"
+version = "2022.11.22"
 edition = "2021"
 authors = ["Jeremy Zheng <jitang.zheng@gmail.com>"]
 description = "A backup tool."
@@ -13,7 +13,6 @@ chrono = "0.4"
 log = "0.4"
 env_logger = "0.9"
 postgres = "0.19"
-lazy_static = "1"
 dirs = "4"
 
 [dependencies.clap]
@@ -33,3 +32,6 @@ features = ["vendored"]
 version = "*"
 default-features = false
 features = ["libc"]
+
+[dependencies.palm]
+path = '../palm'

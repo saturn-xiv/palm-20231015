@@ -7,7 +7,6 @@ use std::thread;
 use std::time::Duration;
 
 use clap::Parser;
-use ops_router::env::LanScanner;
 use palm::{
     crypto::Hmac, jwt::Jwt, ops::router::v1, parser::from_toml, Result, BANNER, HOMEPAGE, VERSION,
 };

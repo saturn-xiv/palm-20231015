@@ -3,9 +3,8 @@ use std::path::Path;
 use std::process::Command;
 
 use clap::Parser;
+use palm::{print_command_output, timestamp_file, Result};
 use postgres::{Client as DbClient, NoTls};
-
-use super::{print_command_output, timestamp_file, Result};
 
 #[derive(Parser, PartialEq, Eq, Debug, Clone)]
 pub struct Config {

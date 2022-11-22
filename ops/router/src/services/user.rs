@@ -104,7 +104,7 @@ impl v1::user_server::User for Service {
             try_grpc!(ss.current_user(db, jwt))?;
         }
 
-        let items = try_grpc!(super::super::env::logs())?;
+        let items = try_grpc!(palm::network::logs())?;
         Ok(Response::new(v1::UserLogsResponse { items }))
     }
 }

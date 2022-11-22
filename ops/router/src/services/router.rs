@@ -4,8 +4,8 @@ use std::ops::{Deref, DerefMut};
 use std::process::Command;
 use std::sync::{Arc, Mutex};
 
-use diesel::sqlite::SqliteConnection as Db;
-use palm::{jwt::Jwt, ops::router::v1, session::Session, try_grpc, GrpcResult};
+use diesel::{connection::Connection as DieselConnection, sqlite::SqliteConnection as Db};
+use palm::{jwt::Jwt, ops::router::v1, session::Session, try_grpc, Error, GrpcResult};
 use prost::Message;
 use tonic::{Request, Response, Status};
 use validator::Validate;
@@ -57,13 +57,17 @@ impl v1::router_server::Router for Service {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
 
+            let lan: v1::Lan = try_grpc!(SettingDao::get(db, None))?;
+
             let mut wan = Vec::new();
-            for (it, _) in try_grpc!(super::super::env::ethernet())?.iter() {
-                let it: v1::Wan = try_grpc!(SettingDao::get(db, Some(it)))?;
+            for (device, _) in try_grpc!(palm::network::ethernet::detect())?.iter() {
+                if device == &lan.device {
+                    continue;
+                }
+                let it: v1::Wan = try_grpc!(SettingDao::get(db, Some(device)))?;
                 wan.push(it);
             }
 
-            let lan: v1::Lan = try_grpc!(SettingDao::get(db, None))?;
             let script = try_grpc!(super::super::env::launch(db))?;
 
             let mut hosts = Vec::new();
@@ -124,9 +128,15 @@ impl v1::router_server::Router for Service {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
             try_grpc!(SettingDao::set(db, Some(req.device.as_str()), &req))?;
-            return Ok(Response::new(()));
-        }
-        Err(Status::permission_denied(type_name::<v1::UserProfile>()))
+            Ok(())
+        } else {
+            Err(Status::permission_denied(type_name::<v1::UserProfile>()))
+        }?;
+
+        try_grpc!(req.save())?;
+        try_grpc!(palm::network::netplan::apply())?;
+
+        Ok(Response::new(()))
     }
     async fn set_lan(&self, req: Request<v1::Lan>) -> GrpcResult<()> {
         let ss = Session::new(&req);
@@ -138,10 +148,25 @@ impl v1::router_server::Router for Service {
         if let Ok(ref mut db) = self.db.lock() {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
-            try_grpc!(SettingDao::set(db, None, &req))?;
-            return Ok(Response::new(()));
-        }
-        Err(Status::permission_denied(type_name::<v1::UserProfile>()))
+
+            let req = req.clone();
+            try_grpc!(db.transaction::<_, Error, _>(move |db| {
+                SettingDao::set(db, None, &req)?;
+                HostDao::destroy(db)?;
+                Ok(())
+            }))?;
+
+            Ok(())
+        } else {
+            Err(Status::permission_denied(type_name::<v1::UserProfile>()))
+        }?;
+
+        try_grpc!(req.save(Vec::new()))?;
+        try_grpc!(palm::network::netplan::apply())?;
+        try_grpc!(palm::network::dhcpd::apply())?;
+        try_grpc!(palm::network::iptables::clear())?;
+
+        Ok(Response::new(()))
     }
     async fn create_rule(&self, req: Request<v1::Rule>) -> GrpcResult<()> {
         let ss = Session::new(&req);

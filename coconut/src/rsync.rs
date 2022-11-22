@@ -4,8 +4,7 @@ use std::path::{Path, PathBuf};
 use std::process::Command;
 
 use clap::Parser;
-
-use super::{print_command_output, timestamp_file, Result};
+use palm::{print_command_output, timestamp_file, Result};
 
 #[derive(Parser, PartialEq, Eq, Debug, Clone)]
 pub struct Config {

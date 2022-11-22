@@ -5,8 +5,7 @@ use std::process::{Command, Stdio};
 
 use clap::Parser;
 use mysql::{prelude::*, Conn as DbConn, Opts as DbOpts};
-
-use super::{timestamp_file, Result};
+use palm::{timestamp_file, Result};
 
 #[derive(Parser, PartialEq, Eq, Debug, Clone)]
 pub struct Config {
