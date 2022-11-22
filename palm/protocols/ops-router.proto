@@ -16,7 +16,6 @@ message Contact {
 // ----------------------------------------------------------------------------
 
 service Router {
-  rpc Scan(google.protobuf.Empty) returns (google.protobuf.Empty) {}
   rpc Apply(google.protobuf.Empty) returns (google.protobuf.Empty) {}
   rpc Status(google.protobuf.Empty) returns (RouterStatusResponse) {}
 
@@ -52,7 +51,7 @@ message RouterUpdateHostRequest {
   int32 id = 1;
   int32 user = 2;
   string group = 3;
-  optional string ip = 4;
+  bool fixed = 4;
   optional string location = 9;
 }
 
@@ -161,8 +160,7 @@ message RouterStatusResponse {
 
 message Lan {
   string device = 1;
-  string network = 2;
-  uint32 cidr = 3;
+  string address = 2;
 }
 
 message Wan {
@@ -173,23 +171,18 @@ message Wan {
   bool enable = 9;
 
   string mac = 11;
-  Ip ip = 12;
+  oneof ip {
+    Dhcp dhcp = 21;
+    Static static = 22;
+  }
 }
 
-message Ip {
-  message Dhcp {};
-  message Static {
-    string address = 1;
-    string netmask = 2;
-    string gateway = 3;
-    string dns1 = 4;
-    optional string dns2 = 5;
-  }
-
-  oneof v4 {
-    Dhcp dhcp = 11;
-    Static static = 12;
-  }
+message Dhcp {};
+message Static {
+  string address = 1;
+  string gateway = 3;
+  string dns1 = 4;
+  optional string dns2 = 5;
 }
 
 // ----------------------------------------------------------------------------

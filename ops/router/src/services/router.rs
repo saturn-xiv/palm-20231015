@@ -4,19 +4,17 @@ use std::ops::{Deref, DerefMut};
 use std::process::Command;
 use std::sync::{Arc, Mutex};
 
-use diesel::{connection::Connection as DieselConntection, sqlite::SqliteConnection as Db};
-use palm::{jwt::Jwt, ops::router::v1, session::Session, try_grpc, Error, GrpcResult};
+use diesel::sqlite::SqliteConnection as Db;
+use palm::{jwt::Jwt, ops::router::v1, session::Session, try_grpc, GrpcResult};
 use prost::Message;
 use tonic::{Request, Response, Status};
+use validator::Validate;
 
-use super::super::{
-    env::LanScanner,
-    models::{
-        host::Dao as HostDao,
-        rule::{Dao as RuleDao, Item as Rule},
-        setting::Dao as SettingDao,
-        user::Dao as UserDao,
-    },
+use super::super::models::{
+    host::Dao as HostDao,
+    rule::{Dao as RuleDao, Item as Rule},
+    setting::Dao as SettingDao,
+    user::Dao as UserDao,
 };
 use super::user::CurrentUserAdapter;
 
@@ -27,32 +25,6 @@ pub struct Service {
 
 #[tonic::async_trait]
 impl v1::router_server::Router for Service {
-    async fn scan(&self, req: Request<()>) -> GrpcResult<()> {
-        let ss = Session::new(&req);
-        let jwt = self.jwt.deref();
-        let lan = if let Ok(ref mut db) = self.db.lock() {
-            let db = db.deref_mut();
-            try_grpc!(ss.current_user(db, jwt))?;
-            let lan: v1::Lan = try_grpc!(SettingDao::get(db, None))?;
-            Ok(lan)
-        } else {
-            Err(Status::permission_denied(type_name::<v1::UserProfile>()))
-        }?;
-
-        {
-            let hosts = try_grpc!(lan.scan())?;
-            if let Ok(ref mut db) = self.db.lock() {
-                try_grpc!(db.transaction::<_, Error, _>(move |db| {
-                    for it in hosts.iter() {
-                        HostDao::create(db, "n/a", &it.mac, &it.ip)?;
-                    }
-                    Ok(())
-                }))?;
-            }
-        }
-
-        Ok(Response::new(()))
-    }
     async fn apply(&self, req: Request<()>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let jwt = self.jwt.deref();
@@ -145,6 +117,9 @@ impl v1::router_server::Router for Service {
         let ss = Session::new(&req);
         let jwt = self.jwt.deref();
         let req = req.into_inner();
+
+        try_grpc!(req.validate())?;
+
         if let Ok(ref mut db) = self.db.lock() {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
@@ -157,6 +132,9 @@ impl v1::router_server::Router for Service {
         let ss = Session::new(&req);
         let jwt = self.jwt.deref();
         let req = req.into_inner();
+
+        try_grpc!(req.validate())?;
+
         if let Ok(ref mut db) = self.db.lock() {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
@@ -239,8 +217,8 @@ impl v1::router_server::Router for Service {
                 it.id,
                 req.user,
                 &req.group,
+                req.fixed,
                 req.location.as_deref(),
-                req.ip.as_deref()
             ))?;
             return Ok(Response::new(()));
         }

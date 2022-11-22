@@ -20,14 +20,15 @@ pub struct Item {
 }
 
 pub trait Dao {
-    fn create(&mut self, name: &str, mac: &str, ip: &str) -> Result<()>;
+    fn create(&mut self, mac: &str, ip: &str) -> Result<()>;
+    fn set_ip(&mut self, id: i32, ip: &str) -> Result<()>;
     fn update(
         &mut self,
         id: i32,
         user: i32,
         group: &str,
+        fixed: bool,
         location: Option<&str>,
-        fixed_ip: Option<&str>,
     ) -> Result<()>;
     fn by_id(&mut self, id: i32) -> Result<Item>;
     fn by_mac(&mut self, mac: &str) -> Result<Item>;
@@ -35,11 +36,11 @@ pub trait Dao {
 }
 
 impl Dao for Connection {
-    fn create(&mut self, name: &str, mac: &str, ip: &str) -> Result<()> {
+    fn create(&mut self, mac: &str, ip: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
         insert_into(hosts::dsl::hosts)
             .values((
-                hosts::dsl::name.eq(name),
+                hosts::dsl::name.eq(mac.replace("::", "-")),
                 hosts::dsl::group.eq(Rule::DEFAULT_GROUP),
                 hosts::dsl::mac.eq(mac),
                 hosts::dsl::ip.eq(ip),
@@ -48,42 +49,33 @@ impl Dao for Connection {
             .execute(self)?;
         Ok(())
     }
+    fn set_ip(&mut self, id: i32, ip: &str) -> Result<()> {
+        let now = Utc::now().naive_utc();
+        let it = hosts::dsl::hosts.filter(hosts::dsl::id.eq(&id));
+        update(it)
+            .set((hosts::dsl::ip.eq(ip), hosts::dsl::updated_at.eq(&now)))
+            .execute(self)?;
+        Ok(())
+    }
     fn update(
         &mut self,
         id: i32,
         user: i32,
         group: &str,
+        fixed: bool,
         location: Option<&str>,
-        fixed_ip: Option<&str>,
     ) -> Result<()> {
         let now = Utc::now().naive_utc();
         let it = hosts::dsl::hosts.filter(hosts::dsl::id.eq(&id));
-
-        match fixed_ip {
-            Some(ip) => {
-                update(it)
-                    .set((
-                        hosts::dsl::user_id.eq(user),
-                        hosts::dsl::group.eq(group),
-                        hosts::dsl::ip.eq(ip),
-                        hosts::dsl::fixed.eq(true),
-                        hosts::dsl::location.eq(location),
-                        hosts::dsl::updated_at.eq(&now),
-                    ))
-                    .execute(self)?;
-            }
-            None => {
-                update(it)
-                    .set((
-                        hosts::dsl::user_id.eq(user),
-                        hosts::dsl::group.eq(group),
-                        hosts::dsl::fixed.eq(false),
-                        hosts::dsl::location.eq(location),
-                        hosts::dsl::updated_at.eq(&now),
-                    ))
-                    .execute(self)?;
-            }
-        };
+        update(it)
+            .set((
+                hosts::dsl::user_id.eq(user),
+                hosts::dsl::group.eq(group),
+                hosts::dsl::fixed.eq(fixed),
+                hosts::dsl::location.eq(location),
+                hosts::dsl::updated_at.eq(&now),
+            ))
+            .execute(self)?;
 
         Ok(())
     }

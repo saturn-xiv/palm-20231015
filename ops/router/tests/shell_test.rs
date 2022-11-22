@@ -25,3 +25,12 @@ fn logs() {
     let items = ops_router::env::logs().unwrap();
     println!("receive {} lines logs\n{:?}", items.len(), items.first());
 }
+
+#[test]
+fn ethernet() {
+    let items = ops_router::env::ethernet().unwrap();
+    println!("find {} ethernet interfaces", items.len());
+    for it in items.iter() {
+        println!("{:?}", it);
+    }
+}

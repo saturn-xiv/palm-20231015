@@ -105,6 +105,7 @@ pub mod handlers;
 pub mod jwt;
 pub mod minio;
 pub mod models;
+pub mod network;
 pub mod oauth;
 pub mod parser;
 pub mod queue;
@@ -120,6 +121,7 @@ use std::io::prelude::*;
 use std::os::unix::fs::PermissionsExt;
 use std::path::Path;
 
+use chrono::Utc;
 use xml::writer::{EventWriter, Result as XmlWriterResult};
 
 pub use self::result::{Error, GrpcResult, HttpError, HttpResult, Result};
@@ -153,6 +155,14 @@ pub fn check_config_permission<P: AsRef<Path>>(file: P) -> Result<()> {
         return Ok(());
     }
     Ok(())
+}
+
+pub fn timestamp_file(name: &str, ext: Option<&str>) -> String {
+    let ts = Utc::now().format("%Y%m%d%H%M%S%3f");
+    match ext {
+        Some(ext) => format!("{}-{}.{}", name, ts, ext),
+        None => format!("{}-{}", name, ts),
+    }
 }
 
 pub trait ToXml {

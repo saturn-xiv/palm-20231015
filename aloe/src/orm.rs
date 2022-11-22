@@ -33,10 +33,12 @@ pub fn open<P: AsRef<Path>>(file: P, hmac: &Hmac) -> Result<Connection> {
     }
     db.batch_execute(ops_router::UP)?;
 
-    db.transaction::<_, Error, _>(move |db| {
-        ops_router::env::setup(db, hmac)?;
-        Ok(())
-    })?;
+    if ops_router::models::user::Dao::all(&mut db)?.is_empty() {
+        db.transaction::<_, Error, _>(move |db| {
+            ops_router::env::setup(db, hmac)?;
+            Ok(())
+        })?;
+    }
 
     Ok(db)
 }

@@ -116,6 +116,10 @@ features = ["full"]
 version = "1"
 features = ["v4", "serde"]
 
+[dependencies.ipnet]
+version = "2"
+features = ["serde"]
+
 [dependencies.rss]
 version = "2"
 features = ["validation"]

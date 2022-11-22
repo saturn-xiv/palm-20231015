@@ -6,7 +6,8 @@ setup_ubuntu() {
     apt update
     apt -y upgrade
     apt -y install crun podman buildah \
-        isc-dhcp-server nmap
+        isc-dhcp-server \
+        netplan.io nmap pwgen iptables
     apt clean
     apt -y autoremove
 }

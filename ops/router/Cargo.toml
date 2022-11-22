@@ -34,6 +34,10 @@ features = ["transport"]
 version = "0.14"
 features = ["full"]
 
+[dependencies.validator]
+version = "0.16"
+features = ["derive", "phone", "card", "unic"]
+
 [dependencies.serde]
 version = "1"
 features = ["derive"]
@@ -42,6 +46,10 @@ features = ["derive"]
 version = "2"
 default-features = false
 features = ["chrono", "sqlite"]
+
+[dependencies.ipnet]
+version = "2"
+features = ["serde"]
 
 [dependencies.palm]
 path = '../../palm'
