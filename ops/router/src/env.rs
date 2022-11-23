@@ -79,6 +79,8 @@ pub fn setup(db: &mut Db, hmac: &Hmac) -> Result<()> {
     }
     let lan = v1::Lan {
         device: palm::network::ethernet::ONBOARD.to_string(),
+        // FIXME
+        mac: "blabla".to_string(),
         address: "192.168.0.1/24".to_string(),
     };
     {

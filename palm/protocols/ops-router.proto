@@ -160,7 +160,8 @@ message RouterStatusResponse {
 
 message Lan {
   string device = 1;
-  string address = 2;
+  string mac = 2;
+  string address = 9;
 }
 
 message Wan {

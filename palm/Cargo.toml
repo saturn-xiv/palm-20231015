@@ -105,7 +105,8 @@ features = ["user"]
 
 [dependencies.eui48]
 version = "1"
-features = ["serde_bytes"]
+default-features = false
+features = ["disp_hexstring", "serde_bytes"]
 
 [dependencies.serde]
 version = "1"

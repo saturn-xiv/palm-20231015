@@ -9,14 +9,30 @@ use std::path::PathBuf;
 use std::process::Command;
 use std::result::Result as StdResult;
 
+use askama::Template;
+use eui48::MacAddress;
 use ipnet::Ipv4Net;
 use validator::{Validate, ValidationErrors};
 
 use super::{ops::router as ops_router, Result};
 
-pub trait Etc {
+pub trait Etc: Template {
     fn file(&self) -> PathBuf;
-    fn save(&self) -> Result<()>;
+}
+
+#[cfg(debug_assertions)]
+pub fn save<T: Etc>(it: &T) -> Result<()> {
+    let file = it.file();
+    info!("{}\n{}", file.display(), it.render()?);
+    Ok(())
+}
+
+#[cfg(not(debug_assertions))]
+pub fn save<T: Etc>(it: &T) -> Result<()> {
+    let file = it.file();
+    info!("write to {}", file.display());
+    std::fs::write(&file, it.render()?)?;
+    Ok(())
 }
 
 pub fn is_root() -> bool {
@@ -46,11 +62,14 @@ impl ops_router::v1::Lan {
     fn validate_address(&self) -> bool {
         self.address.parse::<Ipv4Net>().is_ok()
     }
+    fn validate_mac(&self) -> bool {
+        MacAddress::parse_str(&self.mac).is_ok()
+    }
 }
 
 impl Validate for ops_router::v1::Lan {
     fn validate(&self) -> StdResult<(), ValidationErrors> {
-        if self.validate_address() && self.validate_device() {
+        if self.validate_address() && self.validate_device() && self.validate_mac() {
             return Ok(());
         }
         Err(ValidationErrors::new())
@@ -103,11 +122,14 @@ impl ops_router::v1::Wan {
         }
         false
     }
+    fn validate_mac(&self) -> bool {
+        MacAddress::parse_str(&self.mac).is_ok()
+    }
 }
 
 impl Validate for ops_router::v1::Wan {
     fn validate(&self) -> StdResult<(), ValidationErrors> {
-        if self.validate_ip() && self.validate_device() {
+        if self.validate_ip() && self.validate_device() && self.validate_mac() {
             return Ok(());
         }
         Err(ValidationErrors::new())

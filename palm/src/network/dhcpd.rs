@@ -25,7 +25,7 @@ impl ops_router::v1::Lan {
         let net: Ipv4Net = self.address.parse()?;
         let children = net.hosts();
 
-        Conf {
+        super::save(&Conf {
             netmask: net.netmask().to_string(),
             network: net.network().to_string(),
             broadcast: net.broadcast().to_string(),
@@ -52,8 +52,7 @@ impl ops_router::v1::Lan {
                 .to_string(),
 
             hosts,
-        }
-        .save()?;
+        })?;
         Ok(())
     }
 }
@@ -83,20 +82,5 @@ impl Etc for Conf {
             .join("dhcp")
             .join("dhcpd.conf");
         it.with_extension("yaml")
-    }
-
-    #[cfg(debug_assertions)]
-    fn save(&self) -> Result<()> {
-        let file = self.file();
-        info!("{}\n{}", file.display(), self.render()?);
-        Ok(())
-    }
-
-    #[cfg(not(debug_assertions))]
-    fn save(&self) -> Result<()> {
-        let file = self.file();
-        info!("write {}", file.display());
-        std::fs::write(&file, self.render()?)?;
-        Ok(())
     }
 }

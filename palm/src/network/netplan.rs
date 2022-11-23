@@ -20,20 +20,18 @@ impl ops_router::v1::Wan {
         if let Some(ref ip) = self.ip {
             match ip {
                 ops_router::v1::wan::Ip::Dhcp(_) => {
-                    Dhcp {
+                    super::save(&Dhcp {
                         device: self.device.clone(),
-                    }
-                    .save()?;
+                    })?;
                 }
                 ops_router::v1::wan::Ip::Static(ref ip) => {
-                    Static {
+                    super::save(&Static {
                         device: self.device.clone(),
                         address: ip.address.clone(),
                         gateway: ip.gateway.clone(),
                         dns1: ip.dns1.clone(),
                         dns2: ip.dns2.clone().unwrap_or_else(|| "8.8.8.8".to_string()),
-                    }
-                    .save()?;
+                    })?;
                 }
             }
         }
@@ -55,21 +53,6 @@ impl Etc for Dhcp {
             .join(&self.device);
         it.with_extension("yaml")
     }
-
-    #[cfg(debug_assertions)]
-    fn save(&self) -> Result<()> {
-        let file = self.file();
-        info!("{}\n{}", file.display(), self.render()?);
-        Ok(())
-    }
-
-    #[cfg(not(debug_assertions))]
-    fn save(&self) -> Result<()> {
-        let file = self.file();
-        info!("write {}", file.display());
-        std::fs::write(&file, self.render()?)?;
-        Ok(())
-    }
 }
 
 #[derive(Template)]
@@ -89,20 +72,5 @@ impl Etc for Static {
             .join("netplan")
             .join(&self.device);
         it.with_extension("yaml")
-    }
-
-    #[cfg(debug_assertions)]
-    fn save(&self) -> Result<()> {
-        let file = self.file();
-        info!("{}\n{}", file.display(), self.render()?);
-        Ok(())
-    }
-
-    #[cfg(not(debug_assertions))]
-    fn save(&self) -> Result<()> {
-        let file = self.file();
-        info!("write {}", file.display());
-        std::fs::write(&file, self.render()?)?;
-        Ok(())
     }
 }
