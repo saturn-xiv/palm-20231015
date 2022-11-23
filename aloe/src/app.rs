@@ -1,3 +1,4 @@
+use std::env::temp_dir;
 use std::io::{Error as IoError, ErrorKind as IoErrorKind};
 use std::ops::{Deref, DerefMut};
 use std::path::PathBuf;
@@ -6,9 +7,9 @@ use std::thread;
 use std::time::Duration;
 
 use clap::Parser;
-use palm::timestamp_file;
 use palm::{
-    crypto::Hmac, jwt::Jwt, ops::router::v1, parser::from_toml, Result, BANNER, HOMEPAGE, VERSION,
+    crypto::Hmac, jwt::Jwt, network::dnsmasq::Dnsmasq, ops::router::v1, parser::from_toml,
+    timestamp_file, Result, BANNER, HOMEPAGE, VERSION,
 };
 use tonic::transport::Server;
 
@@ -40,8 +41,26 @@ impl Args {
         if self.debug {
             if let Ok(ref mut db) = db.lock() {
                 let db = db.deref_mut();
-                let script = ops_router::env::iptables::script(db)?;
-                std::fs::write(timestamp_file("iptable", Some("sh")), script)?;
+
+                {}
+                {
+                    let lan: palm::ops::router::v1::Lan =
+                        ops_router::models::setting::Dao::get(db, None)?;
+                    let hosts = ops_router::models::host::Dao::all(db)?
+                        .iter()
+                        .map(|x| palm::network::dnsmasq::Host {
+                            mac: x.mac.clone(),
+                            ip: x.ip.clone(),
+                        })
+                        .collect::<_>();
+                    lan.save(hosts)?;
+                }
+                {
+                    let file = temp_dir().join(timestamp_file("iptable", Some("sh")));
+                    debug!("write to {}", file.display());
+                    let script = ops_router::env::iptables::script(db)?;
+                    std::fs::write(&file, script)?;
+                }
             }
         }
 

@@ -48,9 +48,19 @@ pub trait Dnsmasq {
 impl Dnsmasq for ops_router::v1::Lan {
     // https://wiki.archlinux.org/title/dnsmasq
     // https://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml
+    // https://thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html
     fn save(&self, hosts: Vec<Host>) -> Result<()> {
         let net: Ipv4Net = self.address.parse()?;
         let children = net.hosts();
+
+        super::save(&super::netplan::Static {
+            device: self.device.clone(),
+            address: self.address.clone(),
+            gateway: net.addr().to_string(),
+            dns1: net.addr().to_string(),
+            dns2: "8.8.8.8".to_string(),
+            metric: 100,
+        })?;
 
         super::save(&Conf {
             device: self.device.clone(),

@@ -118,14 +118,12 @@ iptables -t security -X
 }
 
 pub struct Lan {
-    pub wan: String,
-    pub lan: String,
+    pub wan: Vec<String>,
+    pub lan: Ipv4Net,
 }
 
 impl Iptables for Lan {
     fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
-        let wan = &self.wan;
-        let lan = &self.lan;
         writeln!(
             buf,
             r###"
@@ -143,12 +141,26 @@ iptables -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 # Allowing Established Outgoing Connections
 iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
+"###
+        )?;
 
-# Allowing Internal Network to access External
-iptables -A FORWARD -i {wan} -o {lan} -j ACCEPT
+        {
+            let network = self.lan.network();
+            let cidr = self.lan.prefix_len();
+            for wan in self.wan.iter() {
+                writeln!(
+                    buf,
+                    "iptables -t nat -A POSTROUTING -o {wan} -s {network}/{cidr} -j MASQUERADE"
+                )?;
+            }
+        }
+
+        writeln!(
+            buf,
+            r###"
 # Dropping Invalid Packets
 iptables -A INPUT -m conntrack --ctstate INVALID -j DROP        
-"###
+"###,
         )?;
         Ok(())
     }

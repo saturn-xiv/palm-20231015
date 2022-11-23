@@ -189,7 +189,7 @@ impl v1::router_server::Router for Service {
 
         try_grpc!(req.save(Vec::new()))?;
         try_grpc!(palm::network::netplan::apply())?;
-        try_grpc!(palm::network::dhcpd::apply())?;
+        try_grpc!(palm::network::dnsmasq::apply())?;
 
         Ok(Response::new(()))
     }

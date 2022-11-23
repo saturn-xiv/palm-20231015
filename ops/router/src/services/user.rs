@@ -65,6 +65,7 @@ impl v1::user_server::User for Service {
         let ss = Session::new(&req);
         let req = req.into_inner();
         let jwt = self.jwt.deref();
+        let hmac = self.hmac.deref();
         if let Some(ref cu) = req.current {
             if let Some(ref nu) = req.new {
                 if let Ok(ref mut db) = self.db.lock() {
@@ -76,7 +77,17 @@ impl v1::user_server::User for Service {
                             == it.password.as_bytes()
                     {
                         info!("update user profile {} => {}", cu.nickname, nu.nickname);
-                        try_grpc!(SettingDao::set(db, None, nu))?;
+                        try_grpc!(SettingDao::set(
+                            db,
+                            None,
+                            &v1::UserProfile {
+                                nickname: nu.nickname.clone(),
+                                password: String::from_utf8_lossy(&try_grpc!(
+                                    hmac.sum(nu.password.as_bytes())
+                                )?)
+                                .to_string()
+                            }
+                        ))?;
                         return Ok(Response::new(()));
                     }
                 }

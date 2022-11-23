@@ -34,8 +34,8 @@ set -e
 
     Flush {}.write(&mut buf)?;
     Lan {
-        wan: "eth0".to_string(), //FIXME
-        lan: lan.device,
+        wan: wan.iter().map(|x| x.device.clone()).collect::<_>(),
+        lan: lan.address.parse()?,
     }
     .write(&mut buf)?;
 
