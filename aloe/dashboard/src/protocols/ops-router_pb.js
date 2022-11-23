@@ -4457,7 +4457,7 @@ proto.palm.ops.router.v1.Rule.Nat.toObject = function(includeInstance, msg) {
     device: jspb.Message.getFieldWithDefault(msg, 1, ""),
     tcp: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
     port: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    host: (f = msg.getHost()) && proto.palm.ops.router.v1.Rule.Nat.Host.toObject(includeInstance, f)
+    destination: (f = msg.getDestination()) && proto.palm.ops.router.v1.Rule.Nat.Host.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4509,7 +4509,7 @@ proto.palm.ops.router.v1.Rule.Nat.deserializeBinaryFromReader = function(msg, re
     case 4:
       var value = new proto.palm.ops.router.v1.Rule.Nat.Host;
       reader.readMessage(value,proto.palm.ops.router.v1.Rule.Nat.Host.deserializeBinaryFromReader);
-      msg.setHost(value);
+      msg.setDestination(value);
       break;
     default:
       reader.skipField();
@@ -4561,7 +4561,7 @@ proto.palm.ops.router.v1.Rule.Nat.serializeBinaryToWriter = function(message, wr
       f
     );
   }
-  f = message.getHost();
+  f = message.getDestination();
   if (f != null) {
     writer.writeMessage(
       4,
@@ -4787,10 +4787,10 @@ proto.palm.ops.router.v1.Rule.Nat.prototype.setPort = function(value) {
 
 
 /**
- * optional Host host = 4;
+ * optional Host destination = 4;
  * @return {?proto.palm.ops.router.v1.Rule.Nat.Host}
  */
-proto.palm.ops.router.v1.Rule.Nat.prototype.getHost = function() {
+proto.palm.ops.router.v1.Rule.Nat.prototype.getDestination = function() {
   return /** @type{?proto.palm.ops.router.v1.Rule.Nat.Host} */ (
     jspb.Message.getWrapperField(this, proto.palm.ops.router.v1.Rule.Nat.Host, 4));
 };
@@ -4800,7 +4800,7 @@ proto.palm.ops.router.v1.Rule.Nat.prototype.getHost = function() {
  * @param {?proto.palm.ops.router.v1.Rule.Nat.Host|undefined} value
  * @return {!proto.palm.ops.router.v1.Rule.Nat} returns this
 */
-proto.palm.ops.router.v1.Rule.Nat.prototype.setHost = function(value) {
+proto.palm.ops.router.v1.Rule.Nat.prototype.setDestination = function(value) {
   return jspb.Message.setWrapperField(this, 4, value);
 };
 
@@ -4809,8 +4809,8 @@ proto.palm.ops.router.v1.Rule.Nat.prototype.setHost = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.palm.ops.router.v1.Rule.Nat} returns this
  */
-proto.palm.ops.router.v1.Rule.Nat.prototype.clearHost = function() {
-  return this.setHost(undefined);
+proto.palm.ops.router.v1.Rule.Nat.prototype.clearDestination = function() {
+  return this.setDestination(undefined);
 };
 
 
@@ -4818,7 +4818,7 @@ proto.palm.ops.router.v1.Rule.Nat.prototype.clearHost = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.palm.ops.router.v1.Rule.Nat.prototype.hasHost = function() {
+proto.palm.ops.router.v1.Rule.Nat.prototype.hasDestination = function() {
   return jspb.Message.getField(this, 4) != null;
 };
 
@@ -5668,8 +5668,7 @@ proto.palm.ops.router.v1.Wan.toObject = function(includeInstance, msg) {
     device: jspb.Message.getFieldWithDefault(msg, 1, ""),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     capacity: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    pirority: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    enable: jspb.Message.getBooleanFieldWithDefault(msg, 9, false),
+    metric: jspb.Message.getFieldWithDefault(msg, 4, 0),
     mac: jspb.Message.getFieldWithDefault(msg, 11, ""),
     dhcp: (f = msg.getDhcp()) && proto.palm.ops.router.v1.Dhcp.toObject(includeInstance, f),
     pb_static: (f = msg.getStatic()) && proto.palm.ops.router.v1.Static.toObject(includeInstance, f)
@@ -5723,11 +5722,7 @@ proto.palm.ops.router.v1.Wan.deserializeBinaryFromReader = function(msg, reader)
       break;
     case 4:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setPirority(value);
-      break;
-    case 9:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setEnable(value);
+      msg.setMetric(value);
       break;
     case 11:
       var value = /** @type {string} */ (reader.readString());
@@ -5793,17 +5788,10 @@ proto.palm.ops.router.v1.Wan.serializeBinaryToWriter = function(message, writer)
       f
     );
   }
-  f = message.getPirority();
+  f = message.getMetric();
   if (f !== 0) {
     writer.writeUint32(
       4,
-      f
-    );
-  }
-  f = message.getEnable();
-  if (f) {
-    writer.writeBool(
-      9,
       f
     );
   }
@@ -5888,10 +5876,10 @@ proto.palm.ops.router.v1.Wan.prototype.setCapacity = function(value) {
 
 
 /**
- * optional uint32 pirority = 4;
+ * optional uint32 metric = 4;
  * @return {number}
  */
-proto.palm.ops.router.v1.Wan.prototype.getPirority = function() {
+proto.palm.ops.router.v1.Wan.prototype.getMetric = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
@@ -5900,26 +5888,8 @@ proto.palm.ops.router.v1.Wan.prototype.getPirority = function() {
  * @param {number} value
  * @return {!proto.palm.ops.router.v1.Wan} returns this
  */
-proto.palm.ops.router.v1.Wan.prototype.setPirority = function(value) {
+proto.palm.ops.router.v1.Wan.prototype.setMetric = function(value) {
   return jspb.Message.setProto3IntField(this, 4, value);
-};
-
-
-/**
- * optional bool enable = 9;
- * @return {boolean}
- */
-proto.palm.ops.router.v1.Wan.prototype.getEnable = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 9, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.palm.ops.router.v1.Wan} returns this
- */
-proto.palm.ops.router.v1.Wan.prototype.setEnable = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 9, value);
 };
 
 

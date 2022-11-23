@@ -569,10 +569,10 @@ export namespace Rule {
     getPort(): number;
     setPort(value: number): Nat;
 
-    getHost(): Rule.Nat.Host | undefined;
-    setHost(value?: Rule.Nat.Host): Nat;
-    hasHost(): boolean;
-    clearHost(): Nat;
+    getDestination(): Rule.Nat.Host | undefined;
+    setDestination(value?: Rule.Nat.Host): Nat;
+    hasDestination(): boolean;
+    clearDestination(): Nat;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Nat.AsObject;
@@ -587,7 +587,7 @@ export namespace Rule {
       device: string,
       tcp: boolean,
       port: number,
-      host?: Rule.Nat.Host.AsObject,
+      destination?: Rule.Nat.Host.AsObject,
     }
 
     export class Host extends jspb.Message {
@@ -719,11 +719,8 @@ export class Wan extends jspb.Message {
   getCapacity(): number;
   setCapacity(value: number): Wan;
 
-  getPirority(): number;
-  setPirority(value: number): Wan;
-
-  getEnable(): boolean;
-  setEnable(value: boolean): Wan;
+  getMetric(): number;
+  setMetric(value: number): Wan;
 
   getMac(): string;
   setMac(value: string): Wan;
@@ -753,8 +750,7 @@ export namespace Wan {
     device: string,
     name: string,
     capacity: number,
-    pirority: number,
-    enable: boolean,
+    metric: number,
     mac: string,
     dhcp?: Dhcp.AsObject,
     pb_static?: Static.AsObject,

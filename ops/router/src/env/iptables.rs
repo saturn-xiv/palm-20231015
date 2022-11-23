@@ -1,4 +1,3 @@
-use std::collections::BTreeMap;
 use std::fmt::Write as FmtWrite;
 
 use diesel::sqlite::SqliteConnection as Db;
@@ -17,10 +16,10 @@ pub fn script(db: &mut Db) -> Result<String> {
     let lan: v1::Lan = SettingDao::get(db, None)?;
     let wan = {
         let bound: v1::RouterBoundRequest = SettingDao::get(db, None)?;
-        let mut items = BTreeMap::new();
+        let mut items = Vec::new();
         for device in bound.items.iter() {
-            let wan: v1::Wan = SettingDao::get(db, Some(device))?;
-            items.insert(device.clone(), wan);
+            let it: v1::Wan = SettingDao::get(db, Some(device))?;
+            items.push(it);
         }
         items
     };
@@ -32,6 +31,7 @@ pub fn script(db: &mut Db) -> Result<String> {
 set -e
 "###
     )?;
+
     Flush {}.write(&mut buf)?;
     Lan {
         wan: "eth0".to_string(), //FIXME
@@ -39,25 +39,25 @@ set -e
     }
     .write(&mut buf)?;
 
-    for (device, _) in wan.iter() {
+    for wan in wan.iter() {
         // IN
         {
             let mut items = Vec::new();
             {
                 items.push(v1::rule::InBound {
-                    device: device.clone(),
+                    device: wan.device.clone(),
                     tcp: true,
                     port: 22,
                     source: None,
                 });
                 items.push(v1::rule::InBound {
-                    device: device.clone(),
+                    device: wan.device.clone(),
                     tcp: true,
                     port: 80,
                     source: None,
                 });
             }
-            for rule in RuleDao::by_group(db, device)?.iter() {
+            for rule in RuleDao::by_group(db, &wan.device)?.iter() {
                 if let Ok(ref it) = v1::rule::InBound::decode(&rule.content[..]) {
                     items.push(it.clone());
                 }
@@ -69,7 +69,7 @@ set -e
         }
 
         // NAT
-        for rule in RuleDao::by_group(db, device)?.iter() {
+        for rule in RuleDao::by_group(db, &wan.device)?.iter() {
             if let Ok(ref it) = v1::rule::Nat::decode(&rule.content[..]) {
                 it.write(&mut buf)?;
                 if let Some(ref destination) = it.destination {
@@ -84,8 +84,8 @@ set -e
             }
         }
 
-        Input(device.clone()).write(&mut buf)?;
-        Output(device.clone()).write(&mut buf)?;
+        Input(wan.device.clone()).write(&mut buf)?;
+        Output(wan.device.clone()).write(&mut buf)?;
     }
 
     Persistent {}.write(&mut buf)?;

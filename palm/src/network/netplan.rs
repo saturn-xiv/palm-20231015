@@ -22,6 +22,7 @@ impl ops_router::v1::Wan {
                 ops_router::v1::wan::Ip::Dhcp(_) => {
                     super::save(&Dhcp {
                         device: self.device.clone(),
+                        metric: self.metric,
                     })?;
                 }
                 ops_router::v1::wan::Ip::Static(ref ip) => {
@@ -31,6 +32,7 @@ impl ops_router::v1::Wan {
                         gateway: ip.gateway.clone(),
                         dns1: ip.dns1.clone(),
                         dns2: ip.dns2.clone().unwrap_or_else(|| "8.8.8.8".to_string()),
+                        metric: self.metric,
                     })?;
                 }
             }
@@ -43,6 +45,7 @@ impl ops_router::v1::Wan {
 #[template(path = "netplan/dhcp.conf", escape = "none")]
 pub struct Dhcp {
     pub device: String,
+    pub metric: u32,
 }
 
 impl Etc for Dhcp {
@@ -63,6 +66,7 @@ pub struct Static {
     pub gateway: String,
     pub dns1: String,
     pub dns2: String,
+    pub metric: u32,
 }
 
 impl Etc for Static {

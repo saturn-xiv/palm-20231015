@@ -7,7 +7,7 @@ setup_ubuntu() {
     apt -y upgrade
     # isc-dhcp-server
     apt -y install crun podman buildah \
-        dnsmasq netplan.io \
+        dnsmasq netplan.io ifmetric \
         openssl nmap pwgen \
         iptables iptables-persistent
     apt clean

@@ -46,6 +46,18 @@ pub trait Iptables {
     fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError>;
 }
 
+pub struct Metric(pub Vec<ops_router::v1::Wan>);
+
+impl Iptables for Metric {
+    fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
+        for it in self.0.iter() {
+            let device = &it.device;
+            let metric = it.metric;
+            writeln!(buf, "ifmetric {device} {metric}")?;
+        }
+        Ok(())
+    }
+}
 pub struct Persistent {}
 
 impl Iptables for Persistent {
