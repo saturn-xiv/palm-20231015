@@ -7,7 +7,8 @@ setup_ubuntu() {
     apt -y upgrade
     apt -y install crun podman buildah \
         isc-dhcp-server netplan.io \
-        nmap pwgen iptables iptables-persistent
+        openssl nmap pwgen \
+        iptables iptables-persistent
     apt clean
     apt -y autoremove
 }
@@ -22,13 +23,25 @@ install_aloe() {
     cd $root
     tar xf $1
 
-    cat > $root/envoy.yml << EOF
+    cat > $root/envoy.yml <<EOF
 EOF
 
     cat > $root/start.sh <<EOF
 #!/bin/bash
 
 set -e
+
+if [ ! -f $root/config.toml ]
+then
+    cat > $root/config.toml <<EOF_
+secrets = "$(openssl rand -base64 32)"
+
+[rpc]
+port = 9999
+
+EOF_
+    chmod 400 $root/config.toml
+fi
 
 
 export ENVOY_NAME=docker.io/envoyproxy/envoy:v1.24-latest
