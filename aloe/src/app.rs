@@ -8,8 +8,8 @@ use std::time::Duration;
 
 use clap::Parser;
 use palm::{
-    crypto::Hmac, jwt::Jwt, network::dnsmasq::Dnsmasq, ops::router::v1, parser::from_toml,
-    timestamp_file, Result, BANNER, HOMEPAGE, VERSION,
+    crypto::Hmac, jwt::Jwt, network::dnsmasq::Dnsmasq, ops::router::v1 as ops_router_v1,
+    ops::router::v1, parser::from_toml, timestamp_file, Result, BANNER, HOMEPAGE, VERSION,
 };
 use tonic::transport::Server;
 
@@ -41,11 +41,17 @@ impl Args {
         if self.debug {
             if let Ok(ref mut db) = db.lock() {
                 let db = db.deref_mut();
-
-                {}
                 {
-                    let lan: palm::ops::router::v1::Lan =
+                    let bound: ops_router_v1::RouterBoundRequest =
                         ops_router::models::setting::Dao::get(db, None)?;
+                    for it in bound.items.iter() {
+                        let it: ops_router_v1::Wan =
+                            ops_router::models::setting::Dao::get(db, Some(it))?;
+                        it.save()?;
+                    }
+                }
+                {
+                    let lan: ops_router_v1::Lan = ops_router::models::setting::Dao::get(db, None)?;
                     let hosts = ops_router::models::host::Dao::all(db)?
                         .iter()
                         .map(|x| palm::network::dnsmasq::Host {
@@ -62,14 +68,14 @@ impl Args {
                     std::fs::write(&file, script)?;
                 }
             }
+            return Ok(());
         }
 
         info!("start scan thread");
         {
             let lan = if let Ok(ref mut db) = db.lock() {
                 let db = db.deref_mut();
-                let lan: palm::ops::router::v1::Lan =
-                    ops_router::models::setting::Dao::get(db, None)?;
+                let lan: ops_router_v1::Lan = ops_router::models::setting::Dao::get(db, None)?;
                 Ok(lan)
             } else {
                 Err(IoError::new(IoErrorKind::Other, "can't find lan setting"))
