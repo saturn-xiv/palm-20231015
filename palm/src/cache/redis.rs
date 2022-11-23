@@ -121,7 +121,7 @@ impl super::Provider for ClusterConnection {
         }
         debug!("cache expire, set {:?} {:?}", key, ttl);
         let val = fun()?;
-        let _: () = self.set_ex(
+        self.set_ex(
             &key,
             flexbuffers::to_vec(&val)?.as_slice(),
             ttl.as_secs() as usize,

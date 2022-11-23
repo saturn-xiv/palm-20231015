@@ -1,4 +1,3 @@
-use std::fs::write as write_file;
 use std::path::{Component, Path, PathBuf};
 use std::process::Command;
 
@@ -49,15 +48,27 @@ pub struct Dhcp {
 }
 
 impl Etc for Dhcp {
-    fn save(&self) -> Result<PathBuf> {
-        let file = Path::new(&Component::RootDir)
+    fn file(&self) -> PathBuf {
+        let it = Path::new(&Component::RootDir)
             .join("etc")
             .join("netplan")
             .join(&self.device);
-        let file = file.with_extension("yaml");
+        it.with_extension("yaml")
+    }
+
+    #[cfg(debug_assertions)]
+    fn save(&self) -> Result<()> {
+        let file = self.file();
+        info!("{}\n{}", file.display(), self.render()?);
+        Ok(())
+    }
+
+    #[cfg(not(debug_assertions))]
+    fn save(&self) -> Result<()> {
+        let file = self.file();
         info!("write {}", file.display());
-        write_file(&file, self.render()?)?;
-        Ok(file)
+        std::fs::write(&file, self.render()?)?;
+        Ok(())
     }
 }
 
@@ -72,14 +83,26 @@ pub struct Static {
 }
 
 impl Etc for Static {
-    fn save(&self) -> Result<PathBuf> {
-        let file = Path::new(&Component::RootDir)
+    fn file(&self) -> PathBuf {
+        let it = Path::new(&Component::RootDir)
             .join("etc")
             .join("netplan")
             .join(&self.device);
-        let file = file.with_extension("yaml");
+        it.with_extension("yaml")
+    }
+
+    #[cfg(debug_assertions)]
+    fn save(&self) -> Result<()> {
+        let file = self.file();
+        info!("{}\n{}", file.display(), self.render()?);
+        Ok(())
+    }
+
+    #[cfg(not(debug_assertions))]
+    fn save(&self) -> Result<()> {
+        let file = self.file();
         info!("write {}", file.display());
-        write_file(&file, self.render()?)?;
-        Ok(file)
+        std::fs::write(&file, self.render()?)?;
+        Ok(())
     }
 }

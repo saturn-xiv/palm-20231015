@@ -44,7 +44,6 @@ aws-sdk-s3 = "0.21"
 aws-sdk-sqs = "0.21"
 imageproc = "0.23"
 image = "0.24"
-nix = "0.25"
 aws-config = "0.51"
 aws-types = "0.51"
 bytes = "1"
@@ -99,6 +98,10 @@ features = ["secure", "private", "percent-encode"]
 [dependencies.redis]
 version = "0.22"
 features = ["tokio-comp", "r2d2", "cluster", "connection-manager"]
+
+[dependencies.nix]
+version = "0.25"
+features = ["user"]
 
 [dependencies.eui48]
 version = "1"

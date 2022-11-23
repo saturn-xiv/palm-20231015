@@ -15,7 +15,12 @@ use validator::{Validate, ValidationErrors};
 use super::{ops::router as ops_router, Result};
 
 pub trait Etc {
-    fn save(&self) -> Result<PathBuf>;
+    fn file(&self) -> PathBuf;
+    fn save(&self) -> Result<()>;
+}
+
+pub fn is_root() -> bool {
+    nix::unistd::Uid::current().is_root()
 }
 
 pub fn logs() -> Result<Vec<String>> {

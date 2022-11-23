@@ -40,12 +40,23 @@ impl ops_router::v1::Lan {
         let file = NamedTempFile::new()?;
         {
             debug!("write to {}", file.path().display());
-            let out = Command::new("nmap")
-                .arg("-oX")
-                .arg(file.path())
-                .arg("-sn")
-                .arg(&self.address)
-                .output()?;
+            let out = if super::is_root() {
+                Command::new("nmap")
+                    .arg("-oX")
+                    .arg(file.path())
+                    .arg("-sn")
+                    .arg(&self.address)
+                    .output()?
+            } else {
+                Command::new("sudo")
+                    .arg("nmap")
+                    .arg("-oX")
+                    .arg(file.path())
+                    .arg("-sn")
+                    .arg(&self.address)
+                    .output()?
+            };
+
             let out = String::from_utf8(out.stdout)?;
             debug!("{}", out);
         }

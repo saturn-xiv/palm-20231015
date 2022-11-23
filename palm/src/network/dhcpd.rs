@@ -1,4 +1,3 @@
-use std::fs::write as write_file;
 use std::io::{Error as IoError, ErrorKind as IoErrorKind};
 use std::path::{Component, Path, PathBuf};
 use std::process::Command;
@@ -78,14 +77,26 @@ pub struct Host {
 }
 
 impl Etc for Conf {
-    fn save(&self) -> Result<PathBuf> {
-        let file = Path::new(&Component::RootDir)
+    fn file(&self) -> PathBuf {
+        let it = Path::new(&Component::RootDir)
             .join("etc")
             .join("dhcp")
             .join("dhcpd.conf");
-        let file = file.with_extension("yaml");
+        it.with_extension("yaml")
+    }
+
+    #[cfg(debug_assertions)]
+    fn save(&self) -> Result<()> {
+        let file = self.file();
+        info!("{}\n{}", file.display(), self.render()?);
+        Ok(())
+    }
+
+    #[cfg(not(debug_assertions))]
+    fn save(&self) -> Result<()> {
+        let file = self.file();
         info!("write {}", file.display());
-        write_file(&file, self.render()?)?;
-        Ok(file)
+        std::fs::write(&file, self.render()?)?;
+        Ok(())
     }
 }

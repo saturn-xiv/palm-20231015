@@ -114,10 +114,8 @@ export class RouterUpdateHostRequest extends jspb.Message {
   getGroup(): string;
   setGroup(value: string): RouterUpdateHostRequest;
 
-  getIp(): string;
-  setIp(value: string): RouterUpdateHostRequest;
-  hasIp(): boolean;
-  clearIp(): RouterUpdateHostRequest;
+  getFixed(): boolean;
+  setFixed(value: boolean): RouterUpdateHostRequest;
 
   getLocation(): string;
   setLocation(value: string): RouterUpdateHostRequest;
@@ -137,13 +135,8 @@ export namespace RouterUpdateHostRequest {
     id: number,
     user: number,
     group: string,
-    ip?: string,
+    fixed: boolean,
     location?: string,
-  }
-
-  export enum IpCase { 
-    _IP_NOT_SET = 0,
-    IP = 4,
   }
 
   export enum LocationCase { 
@@ -668,11 +661,8 @@ export class Lan extends jspb.Message {
   getDevice(): string;
   setDevice(value: string): Lan;
 
-  getNetwork(): string;
-  setNetwork(value: string): Lan;
-
-  getCidr(): number;
-  setCidr(value: number): Lan;
+  getAddress(): string;
+  setAddress(value: string): Lan;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Lan.AsObject;
@@ -685,8 +675,7 @@ export class Lan extends jspb.Message {
 export namespace Lan {
   export type AsObject = {
     device: string,
-    network: string,
-    cidr: number,
+    address: string,
   }
 }
 
@@ -709,10 +698,17 @@ export class Wan extends jspb.Message {
   getMac(): string;
   setMac(value: string): Wan;
 
-  getIp(): Ip | undefined;
-  setIp(value?: Ip): Wan;
-  hasIp(): boolean;
-  clearIp(): Wan;
+  getDhcp(): Dhcp | undefined;
+  setDhcp(value?: Dhcp): Wan;
+  hasDhcp(): boolean;
+  clearDhcp(): Wan;
+
+  getStatic(): Static | undefined;
+  setStatic(value?: Static): Wan;
+  hasStatic(): boolean;
+  clearStatic(): Wan;
+
+  getIpCase(): Wan.IpCase;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Wan.AsObject;
@@ -730,98 +726,65 @@ export namespace Wan {
     pirority: number,
     enable: boolean,
     mac: string,
-    ip?: Ip.AsObject,
+    dhcp?: Dhcp.AsObject,
+    pb_static?: Static.AsObject,
+  }
+
+  export enum IpCase { 
+    IP_NOT_SET = 0,
+    DHCP = 21,
+    STATIC = 22,
   }
 }
 
-export class Ip extends jspb.Message {
-  getDhcp(): Ip.Dhcp | undefined;
-  setDhcp(value?: Ip.Dhcp): Ip;
-  hasDhcp(): boolean;
-  clearDhcp(): Ip;
+export class Dhcp extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dhcp.AsObject;
+  static toObject(includeInstance: boolean, msg: Dhcp): Dhcp.AsObject;
+  static serializeBinaryToWriter(message: Dhcp, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dhcp;
+  static deserializeBinaryFromReader(message: Dhcp, reader: jspb.BinaryReader): Dhcp;
+}
 
-  getStatic(): Ip.Static | undefined;
-  setStatic(value?: Ip.Static): Ip;
-  hasStatic(): boolean;
-  clearStatic(): Ip;
+export namespace Dhcp {
+  export type AsObject = {
+  }
+}
 
-  getV4Case(): Ip.V4Case;
+export class Static extends jspb.Message {
+  getAddress(): string;
+  setAddress(value: string): Static;
+
+  getGateway(): string;
+  setGateway(value: string): Static;
+
+  getDns1(): string;
+  setDns1(value: string): Static;
+
+  getDns2(): string;
+  setDns2(value: string): Static;
+  hasDns2(): boolean;
+  clearDns2(): Static;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Ip.AsObject;
-  static toObject(includeInstance: boolean, msg: Ip): Ip.AsObject;
-  static serializeBinaryToWriter(message: Ip, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Ip;
-  static deserializeBinaryFromReader(message: Ip, reader: jspb.BinaryReader): Ip;
+  toObject(includeInstance?: boolean): Static.AsObject;
+  static toObject(includeInstance: boolean, msg: Static): Static.AsObject;
+  static serializeBinaryToWriter(message: Static, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Static;
+  static deserializeBinaryFromReader(message: Static, reader: jspb.BinaryReader): Static;
 }
 
-export namespace Ip {
+export namespace Static {
   export type AsObject = {
-    dhcp?: Ip.Dhcp.AsObject,
-    pb_static?: Ip.Static.AsObject,
+    address: string,
+    gateway: string,
+    dns1: string,
+    dns2?: string,
   }
 
-  export class Dhcp extends jspb.Message {
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Dhcp.AsObject;
-    static toObject(includeInstance: boolean, msg: Dhcp): Dhcp.AsObject;
-    static serializeBinaryToWriter(message: Dhcp, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Dhcp;
-    static deserializeBinaryFromReader(message: Dhcp, reader: jspb.BinaryReader): Dhcp;
-  }
-
-  export namespace Dhcp {
-    export type AsObject = {
-    }
-  }
-
-
-  export class Static extends jspb.Message {
-    getAddress(): string;
-    setAddress(value: string): Static;
-
-    getNetmask(): string;
-    setNetmask(value: string): Static;
-
-    getGateway(): string;
-    setGateway(value: string): Static;
-
-    getDns1(): string;
-    setDns1(value: string): Static;
-
-    getDns2(): string;
-    setDns2(value: string): Static;
-    hasDns2(): boolean;
-    clearDns2(): Static;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Static.AsObject;
-    static toObject(includeInstance: boolean, msg: Static): Static.AsObject;
-    static serializeBinaryToWriter(message: Static, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Static;
-    static deserializeBinaryFromReader(message: Static, reader: jspb.BinaryReader): Static;
-  }
-
-  export namespace Static {
-    export type AsObject = {
-      address: string,
-      netmask: string,
-      gateway: string,
-      dns1: string,
-      dns2?: string,
-    }
-
-    export enum Dns2Case { 
-      _DNS2_NOT_SET = 0,
-      DNS2 = 5,
-    }
-  }
-
-
-  export enum V4Case { 
-    V4_NOT_SET = 0,
-    DHCP = 11,
-    STATIC = 12,
+  export enum Dns2Case { 
+    _DNS2_NOT_SET = 0,
+    DNS2 = 5,
   }
 }
 
