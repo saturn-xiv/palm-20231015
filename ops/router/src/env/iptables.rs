@@ -2,7 +2,7 @@ use std::fmt::Write as FmtWrite;
 
 use diesel::sqlite::SqliteConnection as Db;
 use palm::{
-    network::iptables::{Flush, Input, Iptables, Lan, Output, Persistent, SNat},
+    network::iptables::{Flush, Iptables, Local, Persistent, SNat},
     ops::router::v1,
     Result,
 };
@@ -14,6 +14,7 @@ use super::super::models::{rule::Dao as RuleDao, setting::Dao as SettingDao};
 // https://www.digitalocean.com/community/tutorials/iptables-essentials-common-firewall-rules-and-commands
 pub fn script(db: &mut Db) -> Result<String> {
     let lan: v1::Lan = SettingDao::get(db, None)?;
+    let dmz: v1::Dmz = SettingDao::get(db, None)?;
     let wan = {
         let bound: v1::RouterBoundRequest = SettingDao::get(db, None)?;
         let mut items = Vec::new();
@@ -33,9 +34,10 @@ set -e
     )?;
 
     Flush {}.write(&mut buf)?;
-    Lan {
+    Local {
         wan: wan.iter().map(|x| x.device.clone()).collect::<_>(),
         lan: lan.address.parse()?,
+        dmz: dmz.address.parse()?,
     }
     .write(&mut buf)?;
 
@@ -83,9 +85,6 @@ set -e
                 }
             }
         }
-
-        Input(wan.device.clone()).write(&mut buf)?;
-        Output(wan.device.clone()).write(&mut buf)?;
     }
 
     Persistent {}.write(&mut buf)?;

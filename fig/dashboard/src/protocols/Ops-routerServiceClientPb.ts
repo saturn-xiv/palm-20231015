@@ -256,6 +256,49 @@ export class RouterClient {
     this.methodDescriptorSetLan);
   }
 
+  methodDescriptorSetDmz = new grpcWeb.MethodDescriptor(
+    '/palm.ops.router.v1.Router/SetDmz',
+    grpcWeb.MethodType.UNARY,
+    ops$router_pb.Dmz,
+    google_protobuf_empty_pb.Empty,
+    (request: ops$router_pb.Dmz) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  setDmz(
+    request: ops$router_pb.Dmz,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  setDmz(
+    request: ops$router_pb.Dmz,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  setDmz(
+    request: ops$router_pb.Dmz,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.ops.router.v1.Router/SetDmz',
+        request,
+        metadata || {},
+        this.methodDescriptorSetDmz,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.ops.router.v1.Router/SetDmz',
+    request,
+    metadata || {},
+    this.methodDescriptorSetDmz);
+  }
+
   methodDescriptorCreateRule = new grpcWeb.MethodDescriptor(
     '/palm.ops.router.v1.Router/CreateRule',
     grpcWeb.MethodType.UNARY,

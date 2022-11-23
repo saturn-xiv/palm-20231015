@@ -95,6 +95,56 @@ impl Dnsmasq for ops_router::v1::Lan {
     }
 }
 
+impl Dnsmasq for ops_router::v1::Dmz {
+    // https://wiki.archlinux.org/title/dnsmasq
+    // https://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml
+    // https://thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html
+    fn save(&self, hosts: Vec<Host>) -> Result<()> {
+        let net: Ipv4Net = self.address.parse()?;
+        let children = net.hosts();
+
+        super::save(&super::netplan::Static {
+            device: self.device.clone(),
+            address: self.address.clone(),
+            gateway: net.addr().to_string(),
+            dns1: net.addr().to_string(),
+            dns2: "8.8.8.8".to_string(),
+            metric: 100,
+        })?;
+
+        super::save(&Conf {
+            device: self.device.clone(),
+            netmask: net.netmask().to_string(),
+            network: net.network().to_string(),
+            broadcast: net.broadcast().to_string(),
+            address: net.addr().to_string(),
+            begin: children
+                .into_iter()
+                .nth(1)
+                .ok_or_else(|| {
+                    IoError::new(
+                        IoErrorKind::Other,
+                        format!("bad dhcp range({})' first", self.address),
+                    )
+                })?
+                .to_string(),
+            end: children
+                .rev()
+                .nth(1)
+                .ok_or_else(|| {
+                    IoError::new(
+                        IoErrorKind::Other,
+                        format!("bad dhcp range({})' second", self.address),
+                    )
+                })?
+                .to_string(),
+
+            hosts,
+        })?;
+        Ok(())
+    }
+}
+
 #[derive(Template)]
 #[template(path = "dnsmasq.conf", escape = "none")]
 pub struct Conf {
@@ -117,6 +167,7 @@ impl Etc for Conf {
     fn file(&self) -> PathBuf {
         Path::new(&Component::RootDir)
             .join("etc")
-            .join("dnsmasq.conf")
+            .join("dnsmasq.d")
+            .join(format!("{}.conf", self.device))
     }
 }

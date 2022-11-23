@@ -78,6 +78,32 @@ impl Validate for ops_router::v1::Lan {
     }
 }
 
+impl ops_router::v1::Dmz {
+    fn validate_device(&self) -> bool {
+        if let Ok(ref it) = metadata(&ethernet::root().join(&self.device)) {
+            if it.is_dir() {
+                return true;
+            }
+        }
+        false
+    }
+    fn validate_address(&self) -> bool {
+        self.address.parse::<Ipv4Net>().is_ok()
+    }
+    fn validate_mac(&self) -> bool {
+        MacAddress::parse_str(&self.mac).is_ok()
+    }
+}
+
+impl Validate for ops_router::v1::Dmz {
+    fn validate(&self) -> StdResult<(), ValidationErrors> {
+        if self.validate_address() && self.validate_device() && self.validate_mac() {
+            return Ok(());
+        }
+        Err(ValidationErrors::new())
+    }
+}
+
 impl ops_router::v1::Static {
     fn validate_address(&self) -> bool {
         self.address.parse::<Ipv4Net>().is_ok()

@@ -1,5 +1,8 @@
+use std::net::Ipv4Addr;
+
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, sqlite::SqliteConnection as Connection, update};
+use ipnet::Ipv4Net;
 use palm::Result;
 
 use super::super::schema::hosts;
@@ -32,8 +35,9 @@ pub trait Dao {
     ) -> Result<()>;
     fn by_id(&mut self, id: i32) -> Result<Item>;
     fn by_mac(&mut self, mac: &str) -> Result<Item>;
+    fn by_net(&mut self, net: &Ipv4Net) -> Result<Vec<Item>>;
     fn all(&mut self) -> Result<Vec<Item>>;
-    fn destroy(&mut self) -> Result<()>;
+    fn destroy(&mut self, id: i32) -> Result<()>;
 }
 
 impl Dao for Connection {
@@ -99,8 +103,19 @@ impl Dao for Connection {
             .load::<Item>(self)?;
         Ok(items)
     }
-    fn destroy(&mut self) -> Result<()> {
-        delete(hosts::dsl::hosts).execute(self)?;
+    fn by_net(&mut self, net: &Ipv4Net) -> Result<Vec<Item>> {
+        let items = Dao::all(self)?
+            .into_iter()
+            .filter(|x| {
+                x.ip.parse::<Ipv4Addr>()
+                    .map(|x| net.contains(&x))
+                    .unwrap_or(false)
+            })
+            .collect::<_>();
+        Ok(items)
+    }
+    fn destroy(&mut self, id: i32) -> Result<()> {
+        delete(hosts::dsl::hosts.filter(hosts::dsl::id.eq(id))).execute(self)?;
         Ok(())
     }
 }

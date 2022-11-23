@@ -72,24 +72,6 @@ echo $(pwgen 32 1) | chpasswd
         Ok(())
     }
 }
-pub struct Input(pub String);
-
-impl Iptables for Input {
-    fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
-        let device = &self.0;
-        writeln!(buf, "iptables -A -i {device} INPUT DROP")?;
-        Ok(())
-    }
-}
-pub struct Output(pub String);
-
-impl Iptables for Output {
-    fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
-        let device = &self.0;
-        writeln!(buf, "iptables -A -o {device} OUTPUT ACCEPT")?;
-        Ok(())
-    }
-}
 
 pub struct Flush;
 
@@ -100,6 +82,14 @@ impl Iptables for Flush {
             r###"
 # Resetting rules
 echo 1 > /proc/sys/net/ipv4/ip_forward
+echo 1 > /proc/sys/net/ipv4/tcp_syncookies
+echo 1 > /proc/sys/net/ipv4/icmp_ignore_bogus_error_responses
+
+modprobe ip_nat_ftp
+
+iptables -P INPUT DROP
+iptables -P OUTPUT ACCEPT
+iptables -P FORWARD DROP
 
 iptables -F
 iptables -X
@@ -117,12 +107,13 @@ iptables -t security -X
     }
 }
 
-pub struct Lan {
+pub struct Local {
     pub wan: Vec<String>,
     pub lan: Ipv4Net,
+    pub dmz: Ipv4Net,
 }
 
-impl Iptables for Lan {
+impl Iptables for Local {
     fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
         writeln!(
             buf,
@@ -145,13 +136,23 @@ iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
         )?;
 
         {
-            let network = self.lan.network();
-            let cidr = self.lan.prefix_len();
             for wan in self.wan.iter() {
-                writeln!(
-                    buf,
-                    "iptables -t nat -A POSTROUTING -o {wan} -s {network}/{cidr} -j MASQUERADE"
-                )?;
+                {
+                    let network = self.lan.network();
+                    let cidr = self.lan.prefix_len();
+                    writeln!(
+                        buf,
+                        "iptables -t nat -A POSTROUTING -o {wan} -s {network}/{cidr} -j MASQUERADE"
+                    )?;
+                }
+                {
+                    let network = self.dmz.network();
+                    let cidr = self.dmz.prefix_len();
+                    writeln!(
+                        buf,
+                        "iptables -t nat -A POSTROUTING -o {wan} -s {network}/{cidr} -j MASQUERADE"
+                    )?;
+                }
             }
         }
 

@@ -630,15 +630,25 @@ export namespace Rule {
 }
 
 export class RouterStatusResponse extends jspb.Message {
+  getLan(): Lan | undefined;
+  setLan(value?: Lan): RouterStatusResponse;
+  hasLan(): boolean;
+  clearLan(): RouterStatusResponse;
+
+  getDmz(): Dmz | undefined;
+  setDmz(value?: Dmz): RouterStatusResponse;
+  hasDmz(): boolean;
+  clearDmz(): RouterStatusResponse;
+
   getWanList(): Array<Wan>;
   setWanList(value: Array<Wan>): RouterStatusResponse;
   clearWanList(): RouterStatusResponse;
   addWan(value?: Wan, index?: number): Wan;
 
-  getLan(): Lan | undefined;
-  setLan(value?: Lan): RouterStatusResponse;
-  hasLan(): boolean;
-  clearLan(): RouterStatusResponse;
+  getBoundList(): Array<string>;
+  setBoundList(value: Array<string>): RouterStatusResponse;
+  clearBoundList(): RouterStatusResponse;
+  addBound(value: string, index?: number): RouterStatusResponse;
 
   getRulesList(): Array<Rule>;
   setRulesList(value: Array<Rule>): RouterStatusResponse;
@@ -649,11 +659,6 @@ export class RouterStatusResponse extends jspb.Message {
   setHostsList(value: Array<Host>): RouterStatusResponse;
   clearHostsList(): RouterStatusResponse;
   addHosts(value?: Host, index?: number): Host;
-
-  getBoundList(): Array<string>;
-  setBoundList(value: Array<string>): RouterStatusResponse;
-  clearBoundList(): RouterStatusResponse;
-  addBound(value: string, index?: number): RouterStatusResponse;
 
   getScript(): string;
   setScript(value: string): RouterStatusResponse;
@@ -673,11 +678,12 @@ export class RouterStatusResponse extends jspb.Message {
 
 export namespace RouterStatusResponse {
   export type AsObject = {
-    wanList: Array<Wan.AsObject>,
     lan?: Lan.AsObject,
+    dmz?: Dmz.AsObject,
+    wanList: Array<Wan.AsObject>,
+    boundList: Array<string>,
     rulesList: Array<Rule.AsObject>,
     hostsList: Array<Host.AsObject>,
-    boundList: Array<string>,
     script: string,
     uptime?: google_protobuf_duration_pb.Duration.AsObject,
   }
@@ -702,6 +708,32 @@ export class Lan extends jspb.Message {
 }
 
 export namespace Lan {
+  export type AsObject = {
+    device: string,
+    mac: string,
+    address: string,
+  }
+}
+
+export class Dmz extends jspb.Message {
+  getDevice(): string;
+  setDevice(value: string): Dmz;
+
+  getMac(): string;
+  setMac(value: string): Dmz;
+
+  getAddress(): string;
+  setAddress(value: string): Dmz;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dmz.AsObject;
+  static toObject(includeInstance: boolean, msg: Dmz): Dmz.AsObject;
+  static serializeBinaryToWriter(message: Dmz, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dmz;
+  static deserializeBinaryFromReader(message: Dmz, reader: jspb.BinaryReader): Dmz;
+}
+
+export namespace Dmz {
   export type AsObject = {
     device: string,
     mac: string,

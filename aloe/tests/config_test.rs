@@ -20,15 +20,23 @@ fn yt() {
     db.transaction::<_, Error, _>(move |db| {
         let mut items = Vec::new();
         {
-            let lan = ops_router_v1::Lan {
+            let it = ops_router_v1::Lan {
                 device: "enp2s0f0".to_string(),
                 address: "192.168.0.1/24".to_string(),
                 mac: "6c:b3:11:01:eb:f4".to_string(),
             };
-            SettingDao::set(db, None, &lan).unwrap();
-            items.push((lan.device.clone(), lan.mac.clone()));
+            SettingDao::set(db, None, &it).unwrap();
+            items.push((it.device.clone(), it.mac.clone()));
         }
-
+        {
+            let it = ops_router_v1::Dmz {
+                device: "enp2s0f1".to_string(),
+                address: "192.168.10.1/24".to_string(),
+                mac: "6c:b3:11:01:eb:f5".to_string(),
+            };
+            SettingDao::set(db, None, &it).unwrap();
+            items.push((it.device.clone(), it.mac.clone()));
+        }
         {
             let wan = 4;
             for i in 0..wan {

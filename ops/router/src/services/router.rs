@@ -3,6 +3,7 @@ use std::ops::{Deref, DerefMut};
 use std::sync::{Arc, Mutex};
 
 use diesel::{connection::Connection as DieselConnection, sqlite::SqliteConnection as Db};
+use ipnet::Ipv4Net;
 use palm::{
     jwt::Jwt, network::dnsmasq::Dnsmasq, ops::router::v1, session::Session, try_grpc, Error,
     GrpcResult,
@@ -50,6 +51,7 @@ impl v1::router_server::Router for Service {
             try_grpc!(ss.current_user(db, jwt))?;
 
             let lan: v1::Lan = SettingDao::get(db, None).unwrap_or_default();
+            let dmz: v1::Dmz = SettingDao::get(db, None).unwrap_or_default();
 
             let mut wan = Vec::new();
             for (device, mac) in try_grpc!(palm::network::ethernet::detect())?.iter() {
@@ -105,6 +107,7 @@ impl v1::router_server::Router for Service {
                 wan,
                 bound: bound.items,
                 lan: Some(lan),
+                dmz: Some(dmz),
                 script,
                 hosts,
                 rules,
@@ -176,9 +179,44 @@ impl v1::router_server::Router for Service {
             try_grpc!(ss.current_user(db, jwt))?;
 
             let req = req.clone();
+            let net = try_grpc!(req.address.parse::<Ipv4Net>())?;
             try_grpc!(db.transaction::<_, Error, _>(move |db| {
                 SettingDao::set(db, None, &req)?;
-                HostDao::destroy(db)?;
+                for it in try_grpc!(HostDao::by_net(db, &net))?.iter() {
+                    try_grpc!(HostDao::destroy(db, it.id))?;
+                }
+                Ok(())
+            }))?;
+
+            Ok(())
+        } else {
+            Err(Status::permission_denied(type_name::<v1::UserProfile>()))
+        }?;
+
+        try_grpc!(req.save(Vec::new()))?;
+        try_grpc!(palm::network::netplan::apply())?;
+        try_grpc!(palm::network::dnsmasq::apply())?;
+
+        Ok(Response::new(()))
+    }
+    async fn set_dmz(&self, req: Request<v1::Dmz>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let jwt = self.jwt.deref();
+        let req = req.into_inner();
+
+        try_grpc!(req.validate())?;
+
+        if let Ok(ref mut db) = self.db.lock() {
+            let db = db.deref_mut();
+            try_grpc!(ss.current_user(db, jwt))?;
+
+            let req = req.clone();
+            let net = try_grpc!(req.address.parse::<Ipv4Net>())?;
+            try_grpc!(db.transaction::<_, Error, _>(move |db| {
+                SettingDao::set(db, None, &req)?;
+                for it in try_grpc!(HostDao::by_net(db, &net))?.iter() {
+                    try_grpc!(HostDao::destroy(db, it.id))?;
+                }
                 Ok(())
             }))?;
 

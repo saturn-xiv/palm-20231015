@@ -8,8 +8,13 @@ use std::time::Duration;
 
 use clap::Parser;
 use palm::{
-    crypto::Hmac, jwt::Jwt, network::dnsmasq::Dnsmasq, ops::router::v1 as ops_router_v1,
-    ops::router::v1, parser::from_toml, timestamp_file, Result, BANNER, HOMEPAGE, VERSION,
+    crypto::Hmac,
+    jwt::Jwt,
+    network::{dnsmasq::Dnsmasq, ethernet::ArpScanner},
+    ops::router::v1 as ops_router_v1,
+    ops::router::v1,
+    parser::from_toml,
+    timestamp_file, Result, BANNER, HOMEPAGE, VERSION,
 };
 use tonic::transport::Server;
 
@@ -51,15 +56,26 @@ impl Args {
                     }
                 }
                 {
-                    let lan: ops_router_v1::Lan = ops_router::models::setting::Dao::get(db, None)?;
-                    let hosts = ops_router::models::host::Dao::all(db)?
+                    let it: ops_router_v1::Lan = ops_router::models::setting::Dao::get(db, None)?;
+                    let hosts = ops_router::models::host::Dao::by_net(db, &it.address.parse()?)?
                         .iter()
                         .map(|x| palm::network::dnsmasq::Host {
                             mac: x.mac.clone(),
                             ip: x.ip.clone(),
                         })
                         .collect::<_>();
-                    lan.save(hosts)?;
+                    it.save(hosts)?;
+                }
+                {
+                    let it: ops_router_v1::Dmz = ops_router::models::setting::Dao::get(db, None)?;
+                    let hosts = ops_router::models::host::Dao::by_net(db, &it.address.parse()?)?
+                        .iter()
+                        .map(|x| palm::network::dnsmasq::Host {
+                            mac: x.mac.clone(),
+                            ip: x.ip.clone(),
+                        })
+                        .collect::<_>();
+                    it.save(hosts)?;
                 }
                 {
                     let file = temp_dir().join(timestamp_file("iptable", Some("sh")));
@@ -71,34 +87,51 @@ impl Args {
             return Ok(());
         }
 
+        info!("load firewall rules");
+        {
+            let db = db.clone();
+            let script = if let Ok(ref mut db) = db.lock() {
+                let db = db.deref_mut();
+                let script = ops_router::env::iptables::script(db)?;
+                Some(script)
+            } else {
+                None
+            };
+            if let Some(ref it) = script {
+                ops_router::env::iptables::apply(it)?;
+            }
+        }
+
         info!("start scan thread");
         {
-            let lan = if let Ok(ref mut db) = db.lock() {
+            let (lan, dmz) = if let Ok(ref mut db) = db.lock() {
                 let db = db.deref_mut();
                 let lan: ops_router_v1::Lan = ops_router::models::setting::Dao::get(db, None)?;
-                Ok(lan)
+                let dmz: ops_router_v1::Dmz = ops_router::models::setting::Dao::get(db, None)?;
+                Ok((lan, dmz))
             } else {
                 Err(IoError::new(IoErrorKind::Other, "can't find lan setting"))
             }?;
 
             let db = db.clone();
             thread::spawn(move || loop {
-                if let Ok(ref hosts) = lan.scan() {
-                    if let Ok(ref mut db) = db.lock() {
-                        let db = db.deref_mut();
+                let mut hosts = Vec::new();
+                if let Ok(ref it) = ArpScanner(lan.address.clone()).scan() {
+                    hosts.extend(it.clone());
+                }
+                if let Ok(ref it) = ArpScanner(dmz.address.clone()).scan() {
+                    hosts.extend(it.clone());
+                }
 
-                        for it in hosts {
-                            if let Err(e) = match ops_router::models::host::Dao::by_mac(db, &it.mac)
-                            {
-                                Ok(ref it) => {
-                                    ops_router::models::host::Dao::set_ip(db, it.id, &it.ip)
-                                }
-                                Err(_) => {
-                                    ops_router::models::host::Dao::create(db, &it.mac, &it.ip)
-                                }
-                            } {
-                                error!("{:?}", e);
-                            }
+                if let Ok(ref mut db) = db.lock() {
+                    let db = db.deref_mut();
+
+                    for it in hosts {
+                        if let Err(e) = match ops_router::models::host::Dao::by_mac(db, &it.mac) {
+                            Ok(ref it) => ops_router::models::host::Dao::set_ip(db, it.id, &it.ip),
+                            Err(_) => ops_router::models::host::Dao::create(db, &it.mac, &it.ip),
+                        } {
+                            error!("{:?}", e);
                         }
                     }
                 }

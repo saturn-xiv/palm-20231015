@@ -7,7 +7,7 @@ use eui48::MacAddress;
 use tempfile::NamedTempFile;
 use xml::reader::{EventReader, XmlEvent};
 
-use super::super::{ops::router as ops_router, Result};
+use super::super::Result;
 
 pub fn root() -> PathBuf {
     Path::new(&Component::RootDir)
@@ -38,7 +38,9 @@ pub fn detect() -> Result<Vec<(String, MacAddress)>> {
     Ok(items)
 }
 
-impl ops_router::v1::Lan {
+pub struct ArpScanner(pub String);
+
+impl ArpScanner {
     // https://nmap.org/book/man-output.html
     pub fn scan(&self) -> Result<Vec<Host>> {
         let file = NamedTempFile::new()?;
@@ -49,7 +51,7 @@ impl ops_router::v1::Lan {
                     .arg("-oX")
                     .arg(file.path())
                     .arg("-sn")
-                    .arg(&self.address)
+                    .arg(&self.0)
                     .output()?
             } else {
                 Command::new("sudo")
@@ -57,7 +59,7 @@ impl ops_router::v1::Lan {
                     .arg("-oX")
                     .arg(file.path())
                     .arg("-sn")
-                    .arg(&self.address)
+                    .arg(&self.0)
                     .output()?
             };
 

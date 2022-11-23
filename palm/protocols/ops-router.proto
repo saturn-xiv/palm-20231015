@@ -22,6 +22,7 @@ service Router {
 
   rpc SetWan(Wan) returns (google.protobuf.Empty) {}
   rpc SetLan(Lan) returns (google.protobuf.Empty) {}
+  rpc SetDmz(Dmz) returns (google.protobuf.Empty) {}
   rpc CreateRule(Rule) returns (google.protobuf.Empty) {}
   rpc UpdateRule(RouterIndexRuleResponse.Item) returns (google.protobuf.Empty) {
   }
@@ -153,16 +154,24 @@ message Rule {
 }
 
 message RouterStatusResponse {
-  repeated Wan wan = 1;
-  Lan lan = 2;
-  repeated Rule rules = 3;
-  repeated Host hosts = 4;
-  repeated string bound = 5;
-  string script = 9;
-  google.protobuf.Duration uptime = 11;
+  Lan lan = 1;
+  Dmz dmz = 2;
+  repeated Wan wan = 11;
+  repeated string bound = 12;
+  repeated Rule rules = 21;
+  repeated Host hosts = 22;
+
+  string script = 98;
+  google.protobuf.Duration uptime = 99;
 }
 
 message Lan {
+  string device = 1;
+  string mac = 2;
+  string address = 11;
+}
+
+message Dmz {
   string device = 1;
   string mac = 2;
   string address = 11;
