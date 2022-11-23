@@ -1,11 +1,12 @@
 use std::any::type_name;
-use std::io::Write;
 use std::ops::{Deref, DerefMut};
-use std::process::Command;
 use std::sync::{Arc, Mutex};
 
 use diesel::{connection::Connection as DieselConnection, sqlite::SqliteConnection as Db};
-use palm::{jwt::Jwt, ops::router::v1, session::Session, try_grpc, Error, GrpcResult};
+use palm::{
+    jwt::Jwt, network::dnsmasq::Dnsmasq, ops::router::v1, session::Session, try_grpc, Error,
+    GrpcResult,
+};
 use prost::Message;
 use tonic::{Request, Response, Status};
 use validator::Validate;
@@ -29,25 +30,16 @@ impl v1::router_server::Router for Service {
         let ss = Session::new(&req);
         let jwt = self.jwt.deref();
 
-        let mut file = try_grpc!(tempfile::NamedTempFile::new())?;
         let script = if let Ok(ref mut db) = self.db.lock() {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
-            let it = try_grpc!(super::super::env::launch(db))?;
+            let it = try_grpc!(super::super::env::iptables::script(db))?;
             Ok(it)
         } else {
             Err(Status::permission_denied(type_name::<v1::UserProfile>()))
         }?;
-        {
-            let file = file.as_file_mut();
-            try_grpc!(write!(file, "{}", script))?;
-            try_grpc!(file.flush())?;
-        }
-        {
-            let out = try_grpc!(Command::new("bash").arg("-l").arg(file.path()).output())?;
-            let out = try_grpc!(String::from_utf8(out.stdout))?;
-            info!("{}", out);
-        }
+
+        try_grpc!(super::super::env::iptables::apply(&script))?;
         Ok(Response::new(()))
     }
     async fn status(&self, req: Request<()>) -> GrpcResult<v1::RouterStatusResponse> {
@@ -57,18 +49,22 @@ impl v1::router_server::Router for Service {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
 
-            let lan: v1::Lan = try_grpc!(SettingDao::get(db, None))?;
+            let lan: v1::Lan = SettingDao::get(db, None).unwrap_or_default();
 
             let mut wan = Vec::new();
-            for (device, _) in try_grpc!(palm::network::ethernet::detect())?.iter() {
+            for (device, mac) in try_grpc!(palm::network::ethernet::detect())?.iter() {
                 if device == &lan.device {
                     continue;
                 }
-                let it: v1::Wan = try_grpc!(SettingDao::get(db, Some(device)))?;
+                let it: v1::Wan = SettingDao::get(db, Some(device)).unwrap_or_else(|_| v1::Wan {
+                    device: device.clone(),
+                    mac: mac.to_hex_string(),
+                    ..Default::default()
+                });
                 wan.push(it);
             }
 
-            let script = try_grpc!(super::super::env::launch(db))?;
+            let script = try_grpc!(super::super::env::iptables::script(db))?;
 
             let mut hosts = Vec::new();
             for it in try_grpc!(HostDao::all(db))?.iter() {
@@ -103,8 +99,11 @@ impl v1::router_server::Router for Service {
                 si.uptime()
             };
 
+            let bound: v1::RouterBoundRequest = SettingDao::get(db, None).unwrap_or_default();
+
             return Ok(Response::new(v1::RouterStatusResponse {
                 wan,
+                bound: bound.items,
                 lan: Some(lan),
                 script,
                 hosts,
@@ -116,6 +115,33 @@ impl v1::router_server::Router for Service {
             }));
         }
         Err(Status::permission_denied(type_name::<v1::UserProfile>()))
+    }
+    async fn bound(&self, req: Request<v1::RouterBoundRequest>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let jwt = self.jwt.deref();
+        let req = req.into_inner();
+
+        if let Ok(ref mut db) = self.db.lock() {
+            let db = db.deref_mut();
+            try_grpc!(ss.current_user(db, jwt))?;
+
+            let lan = try_grpc!(SettingDao::get::<v1::Lan>(db, None)).unwrap_or_default();
+            for it in req.items.iter() {
+                try_grpc!(palm::network::ethernet::mac_address(it))?;
+                if &lan.device == it {
+                    return Err(Status::invalid_argument(type_name::<v1::Wan>()));
+                }
+            }
+
+            try_grpc!(SettingDao::set(db, None, &req))?;
+            Ok(())
+        } else {
+            Err(Status::permission_denied(type_name::<v1::UserProfile>()))
+        }?;
+
+        try_grpc!(palm::network::netplan::apply())?;
+
+        Ok(Response::new(()))
     }
     async fn set_wan(&self, req: Request<v1::Wan>) -> GrpcResult<()> {
         let ss = Session::new(&req);
@@ -164,7 +190,6 @@ impl v1::router_server::Router for Service {
         try_grpc!(req.save(Vec::new()))?;
         try_grpc!(palm::network::netplan::apply())?;
         try_grpc!(palm::network::dhcpd::apply())?;
-        try_grpc!(palm::network::iptables::clear())?;
 
         Ok(Response::new(()))
     }
@@ -237,6 +262,11 @@ impl v1::router_server::Router for Service {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
             let it = try_grpc!(HostDao::by_id(db, req.id))?;
+            for it in try_grpc!(RuleDao::by_group(db, &req.group))?.iter() {
+                if v1::rule::OutBound::decode(&it.content[..]).is_err() {
+                    return Err(Status::invalid_argument(type_name::<v1::rule::OutBound>()));
+                }
+            }
             try_grpc!(HostDao::update(
                 db,
                 it.id,

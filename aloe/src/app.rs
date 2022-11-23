@@ -1,4 +1,3 @@
-use std::fs::write as write_file;
 use std::io::{Error as IoError, ErrorKind as IoErrorKind};
 use std::ops::{Deref, DerefMut};
 use std::path::PathBuf;
@@ -7,6 +6,7 @@ use std::thread;
 use std::time::Duration;
 
 use clap::Parser;
+use palm::timestamp_file;
 use palm::{
     crypto::Hmac, jwt::Jwt, ops::router::v1, parser::from_toml, Result, BANNER, HOMEPAGE, VERSION,
 };
@@ -20,7 +20,7 @@ pub struct Args {
     #[clap(short, long, default_value = "config.toml")]
     pub config: PathBuf,
     #[clap(short, long)]
-    pub r#try: bool,
+    pub debug: bool,
 }
 
 impl Args {
@@ -37,14 +37,11 @@ impl Args {
             open_db("tmp/db", hmac)?
         }));
 
-        if self.r#try {
-            warn!("run on try mode");
+        if self.debug {
             if let Ok(ref mut db) = db.lock() {
                 let db = db.deref_mut();
-                let script = ops_router::env::launch(db)?;
-                let file = palm::timestamp_file("init", Some("sh"));
-                write_file(file, script)?;
-                return Ok(());
+                let script = ops_router::env::iptables::script(db)?;
+                std::fs::write(timestamp_file("iptable", Some("sh")), script)?;
             }
         }
 

@@ -1,4 +1,5 @@
 pub mod dhcpd;
+pub mod dnsmasq;
 pub mod ethernet;
 pub mod iptables;
 pub mod netplan;

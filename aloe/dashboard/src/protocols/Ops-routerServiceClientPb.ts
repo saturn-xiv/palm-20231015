@@ -127,6 +127,49 @@ export class RouterClient {
     this.methodDescriptorStatus);
   }
 
+  methodDescriptorBound = new grpcWeb.MethodDescriptor(
+    '/palm.ops.router.v1.Router/Bound',
+    grpcWeb.MethodType.UNARY,
+    ops$router_pb.RouterBoundRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: ops$router_pb.RouterBoundRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  bound(
+    request: ops$router_pb.RouterBoundRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  bound(
+    request: ops$router_pb.RouterBoundRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  bound(
+    request: ops$router_pb.RouterBoundRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.ops.router.v1.Router/Bound',
+        request,
+        metadata || {},
+        this.methodDescriptorBound,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.ops.router.v1.Router/Bound',
+    request,
+    metadata || {},
+    this.methodDescriptorBound);
+  }
+
   methodDescriptorSetWan = new grpcWeb.MethodDescriptor(
     '/palm.ops.router.v1.Router/SetWan',
     grpcWeb.MethodType.UNARY,

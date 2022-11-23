@@ -5,7 +5,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt update
 RUN apt -y upgrade
-RUN apt -y install isc-dhcp-server netplan.io \
+# isc-dhcp-server
+RUN apt -y install dnsmasq netplan.io \
     openssl nmap pwgen \
     iptables iptables-persistent
 RUN apt clean

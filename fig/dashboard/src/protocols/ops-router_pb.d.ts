@@ -31,6 +31,26 @@ export namespace Contact {
   }
 }
 
+export class RouterBoundRequest extends jspb.Message {
+  getItemsList(): Array<string>;
+  setItemsList(value: Array<string>): RouterBoundRequest;
+  clearItemsList(): RouterBoundRequest;
+  addItems(value: string, index?: number): RouterBoundRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RouterBoundRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RouterBoundRequest): RouterBoundRequest.AsObject;
+  static serializeBinaryToWriter(message: RouterBoundRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RouterBoundRequest;
+  static deserializeBinaryFromReader(message: RouterBoundRequest, reader: jspb.BinaryReader): RouterBoundRequest;
+}
+
+export namespace RouterBoundRequest {
+  export type AsObject = {
+    itemsList: Array<string>,
+  }
+}
+
 export class RouterCreateUserRequest extends jspb.Message {
   getName(): string;
   setName(value: string): RouterCreateUserRequest;
@@ -344,16 +364,16 @@ export namespace Rule {
     getDevice(): string;
     setDevice(value: string): InBound;
 
-    getProtocol(): Rule.Protocol;
-    setProtocol(value: Rule.Protocol): InBound;
+    getTcp(): boolean;
+    setTcp(value: boolean): InBound;
 
     getPort(): number;
     setPort(value: number): InBound;
 
-    getFrom(): string;
-    setFrom(value: string): InBound;
-    hasFrom(): boolean;
-    clearFrom(): InBound;
+    getSource(): string;
+    setSource(value: string): InBound;
+    hasSource(): boolean;
+    clearSource(): InBound;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): InBound.AsObject;
@@ -366,14 +386,14 @@ export namespace Rule {
   export namespace InBound {
     export type AsObject = {
       device: string,
-      protocol: Rule.Protocol,
+      tcp: boolean,
       port: number,
-      from?: string,
+      source?: string,
     }
 
-    export enum FromCase { 
-      _FROM_NOT_SET = 0,
-      FROM = 4,
+    export enum SourceCase { 
+      _SOURCE_NOT_SET = 0,
+      SOURCE = 4,
     }
   }
 
@@ -630,6 +650,11 @@ export class RouterStatusResponse extends jspb.Message {
   clearHostsList(): RouterStatusResponse;
   addHosts(value?: Host, index?: number): Host;
 
+  getBoundList(): Array<string>;
+  setBoundList(value: Array<string>): RouterStatusResponse;
+  clearBoundList(): RouterStatusResponse;
+  addBound(value: string, index?: number): RouterStatusResponse;
+
   getScript(): string;
   setScript(value: string): RouterStatusResponse;
 
@@ -652,6 +677,7 @@ export namespace RouterStatusResponse {
     lan?: Lan.AsObject,
     rulesList: Array<Rule.AsObject>,
     hostsList: Array<Host.AsObject>,
+    boundList: Array<string>,
     script: string,
     uptime?: google_protobuf_duration_pb.Duration.AsObject,
   }
@@ -660,6 +686,9 @@ export namespace RouterStatusResponse {
 export class Lan extends jspb.Message {
   getDevice(): string;
   setDevice(value: string): Lan;
+
+  getMac(): string;
+  setMac(value: string): Lan;
 
   getAddress(): string;
   setAddress(value: string): Lan;
@@ -675,6 +704,7 @@ export class Lan extends jspb.Message {
 export namespace Lan {
   export type AsObject = {
     device: string,
+    mac: string,
     address: string,
   }
 }

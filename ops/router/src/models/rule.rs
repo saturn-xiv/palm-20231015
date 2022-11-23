@@ -4,7 +4,7 @@ use palm::{ops::router::v1, Result};
 
 use super::super::schema::rules;
 
-#[derive(Queryable)]
+#[derive(Queryable, Clone)]
 pub struct Item {
     pub id: i32,
     pub name: String,

@@ -3,12 +3,11 @@ use std::io::BufReader;
 use std::path::{Component, Path, PathBuf};
 use std::process::Command;
 
+use eui48::MacAddress;
 use tempfile::NamedTempFile;
 use xml::reader::{EventReader, XmlEvent};
 
 use super::super::{ops::router as ops_router, Result};
-
-pub const ONBOARD: &str = "enp3s0";
 
 pub fn root() -> PathBuf {
     Path::new(&Component::RootDir)
@@ -17,16 +16,21 @@ pub fn root() -> PathBuf {
         .join("net")
 }
 
-pub fn detect() -> Result<Vec<(String, String)>> {
+pub fn mac_address(device: &str) -> Result<MacAddress> {
+    let it = read_to_string(root().join(device).join("address"))?;
+    let it = it.trim();
+    let it = MacAddress::parse_str(it)?;
+    Ok(it)
+}
+
+pub fn detect() -> Result<Vec<(String, MacAddress)>> {
     let mut items = Vec::new();
     let root = root();
     for it in read_dir(&root)? {
         let it = it?.path();
         if let Some(Some(device)) = it.file_name().map(|x| x.to_str()) {
             if device != "lo" {
-                let mac = read_to_string(root.join(device).join("address"))?;
-                let mac = mac.trim();
-                items.push((device.to_string(), mac.to_string()));
+                items.push((device.to_string(), mac_address(device)?));
             }
         }
     }

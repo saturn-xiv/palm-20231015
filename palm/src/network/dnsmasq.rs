@@ -9,27 +9,29 @@ use super::super::{ops::router as ops_router, Result};
 use super::Etc;
 
 pub fn apply() -> Result<()> {
-    warn!("apply dhcpd settings");
+    warn!("apply dnsmasq settings");
     let out = Command::new("systemctl")
         .arg("restart")
-        .arg("isc-dhcp-server")
+        .arg("dnsmasq")
         .output()?;
     let out = String::from_utf8(out.stdout)?;
     info!("{}", out);
     Ok(())
 }
 
-pub trait IscDhcp {
+pub trait Dnsmasq {
     fn save(&self, hosts: Vec<Host>) -> Result<()>;
 }
 
-impl IscDhcp for ops_router::v1::Lan {
-    // https://help.ubuntu.com/community/isc-dhcp-server
+impl Dnsmasq for ops_router::v1::Lan {
+    // https://wiki.archlinux.org/title/dnsmasq
+    // https://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml
     fn save(&self, hosts: Vec<Host>) -> Result<()> {
         let net: Ipv4Net = self.address.parse()?;
         let children = net.hosts();
 
         super::save(&Conf {
+            device: self.device.clone(),
             netmask: net.netmask().to_string(),
             network: net.network().to_string(),
             broadcast: net.broadcast().to_string(),
@@ -62,8 +64,9 @@ impl IscDhcp for ops_router::v1::Lan {
 }
 
 #[derive(Template)]
-#[template(path = "dhcp/dhcpd.conf", escape = "none")]
+#[template(path = "dnsmasq.conf", escape = "none")]
 pub struct Conf {
+    pub device: String,
     pub network: String,
     pub broadcast: String,
     pub netmask: String,
@@ -83,7 +86,6 @@ impl Etc for Conf {
     fn file(&self) -> PathBuf {
         Path::new(&Component::RootDir)
             .join("etc")
-            .join("dhcp")
-            .join("dhcpd.conf")
+            .join("dnsmasq.conf")
     }
 }
