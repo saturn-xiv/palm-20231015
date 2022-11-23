@@ -82,6 +82,37 @@ impl Args {
             });
         }
 
+        info!("start arp thread");
+        {
+            let db = db.clone();
+            thread::spawn(move || loop {
+                let hosts = if let Ok(ref mut db) = db.lock() {
+                    let db = db.deref_mut();
+                    let hosts: Vec<palm::network::dnsmasq::Host> =
+                        if let Ok(hosts) = ops_router::models::host::Dao::all(db) {
+                            hosts
+                                .iter()
+                                .filter(|x| x.fixed)
+                                .map(|x| palm::network::dnsmasq::Host {
+                                    mac: x.mac.clone(),
+                                    ip: x.ip.clone(),
+                                })
+                                .collect::<_>()
+                        } else {
+                            Vec::new()
+                        };
+                    hosts
+                } else {
+                    Vec::new()
+                };
+                let arp = palm::network::dnsmasq::Arp { hosts };
+                if let Err(e) = arp.bind() {
+                    error!("{:?}", e);
+                }
+                thread::sleep(Duration::from_secs(60 * 60));
+            });
+        }
+
         let addr = cfg.rpc.addr();
         info!("start gRPC at {}", addr);
         Server::builder()

@@ -2,7 +2,19 @@ use std::fmt::{Error as FmtError, Write};
 use std::process::Command;
 use std::result::Result as StdResult;
 
+use ipnet::Ipv4Net;
+
 use super::super::{ops::router as ops_router, Result};
+
+macro_rules! to_protocol {
+    ($x:expr) => {
+        if $x {
+            "tcp"
+        } else {
+            "udp"
+        }
+    };
+}
 
 #[cfg(not(debug_assertions))]
 pub fn apply() -> Result<()> {
@@ -75,6 +87,8 @@ impl Iptables for Flush {
             buf,
             r###"
 # Resetting rules
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
 iptables -F
 iptables -X
 iptables -t nat -F
@@ -91,12 +105,12 @@ iptables -t security -X
     }
 }
 
-pub struct Nat {
+pub struct Lan {
     pub wan: String,
     pub lan: String,
 }
 
-impl Iptables for Nat {
+impl Iptables for Lan {
     fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
         let wan = &self.wan;
         let lan = &self.lan;
@@ -143,7 +157,7 @@ impl Iptables for Block {
 
 impl Iptables for ops_router::v1::rule::InBound {
     fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
-        let protocol = if self.tcp { "tcp" } else { "udp" };
+        let protocol = to_protocol!(self.tcp);
         let port = self.port;
         let device = &self.device;
         match self.source {
@@ -156,6 +170,49 @@ impl Iptables for ops_router::v1::rule::InBound {
                 writeln!(buf, "iptables -A OUTPUT -o {device} -p {protocol} --sport {port} -m conntrack --ctstate ESTABLISHED -j ACCEPT")?;
             }
         };
+        Ok(())
+    }
+}
+
+pub struct SNat {
+    pub lan: Ipv4Net,
+    pub tcp: bool,
+    pub port: u32,
+    pub destination: ops_router::v1::rule::nat::Host,
+}
+
+impl Iptables for SNat {
+    fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
+        let source_port = self.port;
+        let source_ip = self.lan.addr();
+        let network = self.lan.network();
+        let cidr = self.lan.prefix_len();
+        let protocol = to_protocol!(self.tcp);
+        let destination_port = self.destination.port;
+        let destination_ip = &self.destination.ip;
+
+        writeln!(buf, "iptables -t nat -A POSTROUTING -p {protocol} -s {network}/{cidr} --dport {destination_port} -d {destination_ip} -j SNAT --to-source {source_ip}:{source_port}")?;
+        Ok(())
+    }
+}
+
+impl Iptables for ops_router::v1::rule::Nat {
+    fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
+        let device = &self.device;
+        let protocol = to_protocol!(self.tcp);
+        let source_port = self.port;
+
+        match self.destination {
+            Some(ref it) => {
+                let destination_port = it.port;
+                let destination_ip = &it.ip;
+                writeln!(buf, "iptables -t nat -A PREROUTING -i {device} -p {protocol} --dport {source_port} -j DNAT --to-destination {destination_ip}:{destination_port}")?;
+            }
+            None => {
+                warn!("unknown destination host");
+            }
+        };
+
         Ok(())
     }
 }

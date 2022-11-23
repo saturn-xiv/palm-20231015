@@ -3,7 +3,7 @@ use std::fmt::Write as FmtWrite;
 
 use diesel::sqlite::SqliteConnection as Db;
 use palm::{
-    network::iptables::{Flush, Input, Iptables, Nat, Output, Persistent},
+    network::iptables::{Flush, Input, Iptables, Lan, Output, Persistent, SNat},
     ops::router::v1,
     Result,
 };
@@ -33,13 +33,14 @@ set -e
 "###
     )?;
     Flush {}.write(&mut buf)?;
-    Nat {
+    Lan {
         wan: "eth0".to_string(), //FIXME
         lan: lan.device,
     }
     .write(&mut buf)?;
 
     for (device, _) in wan.iter() {
+        // IN
         {
             let mut items = Vec::new();
             {
@@ -64,6 +65,22 @@ set -e
 
             for it in items.iter() {
                 it.write(&mut buf)?;
+            }
+        }
+
+        // NAT
+        for rule in RuleDao::by_group(db, device)?.iter() {
+            if let Ok(ref it) = v1::rule::Nat::decode(&rule.content[..]) {
+                it.write(&mut buf)?;
+                if let Some(ref destination) = it.destination {
+                    SNat {
+                        tcp: it.tcp,
+                        port: it.port,
+                        lan: lan.address.parse()?,
+                        destination: destination.clone(),
+                    }
+                    .write(&mut buf)?;
+                }
             }
         }
 

@@ -139,7 +139,7 @@ message Rule {
     string device = 1;
     bool tcp = 2;
     uint32 port = 3;
-    Host host = 4;
+    Host destination = 4;
   }
 
   string name = 1;
