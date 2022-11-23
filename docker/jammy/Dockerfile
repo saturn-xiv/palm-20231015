@@ -223,7 +223,7 @@ RUN wget -q -O /usr/bin/minio \
     https://dl.min.io/server/minio/release/linux-amd64/minio
 RUN chmod +x /usr/bin/minio
 
-ENV GRPC_VERSION "v1.50.1"
+ENV GRPC_VERSION "v1.51.0"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 # ENV PROTOBUF_VERSION "v3.21.8"
 # RUN cd $HOME/downloads/grpc/third_party/protobuf \
