@@ -15,6 +15,15 @@ macro_rules! to_protocol {
         }
     };
 }
+macro_rules! to_accept {
+    ($x:expr) => {
+        if $x {
+            "ACCEPT"
+        } else {
+            "DROP"
+        }
+    };
+}
 
 #[cfg(not(debug_assertions))]
 pub fn apply() -> Result<()> {
@@ -73,15 +82,28 @@ echo $(pwgen 32 1) | chpasswd
     }
 }
 
-pub struct Flush;
-//  {
-//     pub input: bool,
-//     pub output: bool,
-//     pub forward: bool,
-// }
+pub struct Flush {
+    pub input: bool,
+    pub output: bool,
+    pub forward: bool,
+}
+
+impl Default for Flush {
+    fn default() -> Self {
+        Self {
+            input: false,
+            output: true,
+            forward: false,
+        }
+    }
+}
 
 impl Iptables for Flush {
     fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
+        let input = to_accept!(self.input);
+        let output = to_accept!(self.output);
+        let forward = to_accept!(self.forward);
+
         writeln!(
             buf,
             r###"
@@ -92,9 +114,9 @@ echo 1 > /proc/sys/net/ipv4/icmp_ignore_bogus_error_responses
 
 modprobe ip_nat_ftp
 
-iptables -P INPUT DROP
-iptables -P OUTPUT ACCEPT
-iptables -P FORWARD DROP
+iptables -P INPUT {input}
+iptables -P OUTPUT {output}
+iptables -P FORWARD {forward}
 
 iptables -F
 iptables -X

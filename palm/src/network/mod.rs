@@ -18,6 +18,14 @@ use validator::{Validate, ValidationErrors};
 
 use super::{ops::router as ops_router, Result};
 
+pub const BASH_HEADER: &str = r###"#!/bin/bash
+set -e
+"###;
+pub const BASH_FOOTER: &str = r###"
+echo 'done.'
+exit 0
+"###;
+
 pub trait Etc: Template {
     fn file(&self) -> PathBuf;
 }

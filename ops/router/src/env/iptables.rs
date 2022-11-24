@@ -2,7 +2,10 @@ use std::fmt::Write as FmtWrite;
 
 use diesel::sqlite::SqliteConnection as Db;
 use palm::{
-    network::iptables::{Flush, Iptables, Local, Persistent, SNat},
+    network::{
+        iptables::{Flush, Iptables, Local, Persistent, SNat},
+        BASH_FOOTER, BASH_HEADER,
+    },
     ops::router::v1,
     Result,
 };
@@ -26,14 +29,14 @@ pub fn script(db: &mut Db) -> Result<String> {
     };
 
     let mut buf = String::new();
-    writeln!(
-        buf,
-        r###"#!/bin/bash
-set -e
-"###
-    )?;
+    writeln!(buf, "{}", BASH_HEADER)?;
 
-    Flush {}.write(&mut buf)?;
+    Flush {
+        input: false,
+        output: true,
+        forward: true,
+    }
+    .write(&mut buf)?;
     Local {
         wan: wan.iter().map(|x| x.device.clone()).collect::<_>(),
         lan: lan.address.parse()?,
@@ -88,13 +91,7 @@ set -e
     }
 
     Persistent {}.write(&mut buf)?;
-    writeln!(
-        buf,
-        r###"
-echo 'done.'
-exit 0
-"###,
-    )?;
+    writeln!(buf, "{}", BASH_FOOTER)?;
 
     Ok(buf)
 }
