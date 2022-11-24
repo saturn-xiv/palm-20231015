@@ -188,6 +188,7 @@ message Wan {
   // preferred interface.
 
   uint32 metric = 4;
+  uint32 priority = 5;
 
   string mac = 11;
   oneof ip {

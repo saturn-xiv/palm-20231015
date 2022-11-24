@@ -144,6 +144,9 @@ impl Validate for ops_router::v1::Static {
 }
 
 impl ops_router::v1::Wan {
+    pub fn route(&self) -> String {
+        format!("rt.{}", self.device)
+    }
     fn validate_device(&self) -> bool {
         if let Ok(ref it) = metadata(&ethernet::root().join(&self.device)) {
             if it.is_dir() {
@@ -161,11 +164,18 @@ impl ops_router::v1::Wan {
     fn validate_mac(&self) -> bool {
         MacAddress::parse_str(&self.mac).is_ok()
     }
+    fn validate_metric(&self) -> bool {
+        self.metric >= 100 && self.metric <= 200
+    }
 }
 
 impl Validate for ops_router::v1::Wan {
     fn validate(&self) -> StdResult<(), ValidationErrors> {
-        if self.validate_ip() && self.validate_device() && self.validate_mac() {
+        if self.validate_ip()
+            && self.validate_device()
+            && self.validate_mac()
+            && self.validate_metric()
+        {
             return Ok(());
         }
         Err(ValidationErrors::new())

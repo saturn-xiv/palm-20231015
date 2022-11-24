@@ -9,7 +9,7 @@ setup_ubuntu() {
     apt -y install crun podman buildah \
         dnsmasq netplan.io ifmetric \
         openssl nmap pwgen \
-        iptables iptables-persistent
+        iptables iptables-persistent iproute2
     apt clean
     apt -y autoremove
 }
@@ -76,4 +76,4 @@ else
 fi
 
 echo "done($1)."
-exit 1
+exit 0

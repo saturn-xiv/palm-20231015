@@ -50,10 +50,10 @@ impl Args {
             return Self::run_debug_mode(db);
         }
         Self::generate_firewall_clean()?;
-        info!("load firewall rules");
+        info!("apply system settings");
         {
             let db = db.clone();
-            if let Err(e) = Self::apply_firewall(db) {
+            if let Err(e) = ops_router::services::router::apply(db) {
                 error!("{:?}", e);
             }
         }
@@ -121,21 +121,6 @@ impl Args {
         }
 
         Ok(())
-    }
-
-    fn apply_firewall(db: Arc<Mutex<Db>>) -> Result<()> {
-        if let Some(ref it) = Self::load_firewall(db)? {
-            ops_router::env::iptables::apply(it)?;
-        }
-        Ok(())
-    }
-    fn load_firewall(db: Arc<Mutex<Db>>) -> Result<Option<String>> {
-        if let Ok(ref mut db) = db.lock() {
-            let db = db.deref_mut();
-            let script = ops_router::env::iptables::script(db)?;
-            return Ok(Some(script));
-        }
-        Ok(None)
     }
 
     fn run_arp_bind(db: Arc<Mutex<Db>>) -> Result<()> {

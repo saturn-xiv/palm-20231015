@@ -55,11 +55,13 @@ impl Dnsmasq for ops_router::v1::Lan {
 
         super::save(&super::netplan::Static {
             device: self.device.clone(),
+            mac: self.mac.clone(),
             address: self.address.clone(),
             gateway: net.addr().to_string(),
             dns1: net.addr().to_string(),
-            dns2: "8.8.8.8".to_string(),
-            metric: 100,
+            dns2: None,
+            priority: 300,
+            table: None,
         })?;
 
         super::save(&Conf {
@@ -105,11 +107,13 @@ impl Dnsmasq for ops_router::v1::Dmz {
 
         super::save(&super::netplan::Static {
             device: self.device.clone(),
+            mac: self.mac.clone(),
             address: self.address.clone(),
             gateway: net.addr().to_string(),
             dns1: net.addr().to_string(),
-            dns2: "8.8.8.8".to_string(),
-            metric: 100,
+            dns2: None,
+            priority: 300,
+            table: None,
         })?;
 
         super::save(&Conf {

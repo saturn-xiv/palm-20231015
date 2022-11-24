@@ -7,17 +7,20 @@ use diesel::{connection::Connection as DieselConnection, sqlite::SqliteConnectio
 use ipnet::Ipv4Net;
 use palm::{
     jwt::Jwt, network::dnsmasq::Dnsmasq, ops::router::v1, session::Session, try_grpc, Error,
-    GrpcResult,
+    GrpcResult, Result,
 };
 use prost::Message;
 use tonic::{Request, Response, Status};
 use validator::Validate;
 
-use super::super::models::{
-    host::Dao as HostDao,
-    rule::{Dao as RuleDao, Item as Rule},
-    setting::Dao as SettingDao,
-    user::Dao as UserDao,
+use super::super::{
+    env::iptables,
+    models::{
+        host::Dao as HostDao,
+        rule::{Dao as RuleDao, Item as Rule},
+        setting::Dao as SettingDao,
+        user::Dao as UserDao,
+    },
 };
 use super::user::CurrentUserAdapter;
 
@@ -32,16 +35,15 @@ impl v1::router_server::Router for Service {
         let ss = Session::new(&req);
         let jwt = self.jwt.deref();
 
-        let script = if let Ok(ref mut db) = self.db.lock() {
+        if let Ok(ref mut db) = self.db.lock() {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
-            let it = try_grpc!(super::super::env::iptables::script(db))?;
-            Ok(it)
+            Ok(())
         } else {
             Err(Status::permission_denied(type_name::<v1::UserProfile>()))
         }?;
 
-        try_grpc!(super::super::env::iptables::apply(&script))?;
+        try_grpc!(apply(self.db.clone()))?;
         Ok(Response::new(()))
     }
     async fn status(&self, req: Request<()>) -> GrpcResult<v1::RouterStatusResponse> {
@@ -67,7 +69,7 @@ impl v1::router_server::Router for Service {
                 wan.push(it);
             }
 
-            let script = try_grpc!(super::super::env::iptables::script(db))?;
+            let script = try_grpc!(iptables::script(db))?;
 
             let mut hosts = Vec::new();
             for it in try_grpc!(HostDao::all(db))?.iter() {
@@ -143,8 +145,6 @@ impl v1::router_server::Router for Service {
             Err(Status::permission_denied(type_name::<v1::UserProfile>()))
         }?;
 
-        try_grpc!(palm::network::netplan::apply())?;
-
         Ok(Response::new(()))
     }
     async fn set_wan(&self, req: Request<v1::Wan>) -> GrpcResult<()> {
@@ -163,9 +163,6 @@ impl v1::router_server::Router for Service {
             Err(Status::permission_denied(type_name::<v1::UserProfile>()))
         }?;
 
-        try_grpc!(req.save())?;
-        try_grpc!(palm::network::netplan::apply())?;
-
         Ok(Response::new(()))
     }
     async fn set_lan(&self, req: Request<v1::Lan>) -> GrpcResult<()> {
@@ -179,7 +176,6 @@ impl v1::router_server::Router for Service {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
 
-            let req = req.clone();
             let net = try_grpc!(req.address.parse::<Ipv4Net>())?;
             try_grpc!(db.transaction::<_, Error, _>(move |db| {
                 SettingDao::set(db, None, &req)?;
@@ -193,10 +189,6 @@ impl v1::router_server::Router for Service {
         } else {
             Err(Status::permission_denied(type_name::<v1::UserProfile>()))
         }?;
-
-        try_grpc!(req.save(Vec::new()))?;
-        try_grpc!(palm::network::netplan::apply())?;
-        try_grpc!(palm::network::dnsmasq::apply())?;
 
         Ok(Response::new(()))
     }
@@ -211,7 +203,6 @@ impl v1::router_server::Router for Service {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
 
-            let req = req.clone();
             let net = try_grpc!(req.address.parse::<Ipv4Net>())?;
             try_grpc!(db.transaction::<_, Error, _>(move |db| {
                 SettingDao::set(db, None, &req)?;
@@ -225,10 +216,6 @@ impl v1::router_server::Router for Service {
         } else {
             Err(Status::permission_denied(type_name::<v1::UserProfile>()))
         }?;
-
-        try_grpc!(req.save(Vec::new()))?;
-        try_grpc!(palm::network::netplan::apply())?;
-        try_grpc!(palm::network::dnsmasq::apply())?;
 
         Ok(Response::new(()))
     }
@@ -418,4 +405,68 @@ impl From<Rule> for v1::Rule {
         }
         rule
     }
+}
+
+pub fn apply(db: Arc<Mutex<Db>>) -> Result<()> {
+    let cfg = if let Ok(ref mut db) = db.lock() {
+        let db = db.deref_mut();
+
+        let lan: v1::Lan = SettingDao::get(db, None)?;
+        let lan_hosts = HostDao::by_net(db, &lan.address.parse()?)?;
+
+        let dmz: v1::Dmz = SettingDao::get(db, None)?;
+        let dmz_hosts = HostDao::by_net(db, &dmz.address.parse()?)?;
+
+        let bound: v1::RouterBoundRequest = SettingDao::get(db, None)?;
+        let mut wan = Vec::new();
+        for it in bound.items.iter() {
+            let it: v1::Wan = SettingDao::get(db, Some(it))?;
+            wan.push(it);
+        }
+
+        let firewall = iptables::script(db)?;
+
+        Some(((lan, lan_hosts), (dmz, dmz_hosts), wan, firewall))
+    } else {
+        None
+    };
+
+    if let Some((ref lan, ref dmz, ref wan, ref firewall)) = cfg {
+        {
+            let hosts: Vec<palm::network::dnsmasq::Host> = lan
+                .1
+                .iter()
+                .filter(|x| x.fixed)
+                .map(|x| palm::network::dnsmasq::Host {
+                    mac: x.mac.clone(),
+                    ip: x.ip.clone(),
+                })
+                .collect::<_>();
+            lan.0.save(hosts)?;
+        }
+        {
+            let hosts: Vec<palm::network::dnsmasq::Host> = dmz
+                .1
+                .iter()
+                .filter(|x| x.fixed)
+                .map(|x| palm::network::dnsmasq::Host {
+                    mac: x.mac.clone(),
+                    ip: x.ip.clone(),
+                })
+                .collect::<_>();
+            dmz.0.save(hosts)?;
+        }
+        {
+            palm::network::save(&palm::network::iproute2::Config::new(wan))?;
+            for it in wan.iter() {
+                it.save()?;
+            }
+        }
+
+        palm::network::netplan::apply()?;
+        palm::network::dnsmasq::apply()?;
+        iptables::apply(firewall)?;
+    }
+
+    Ok(())
 }
