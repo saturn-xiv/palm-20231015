@@ -1603,7 +1603,9 @@ proto.palm.ops.router.v1.RouterUpdateHostRequest.toObject = function(includeInst
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
     user: jspb.Message.getFieldWithDefault(msg, 2, 0),
     group: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    fixed: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
+    ip: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    fixed: jspb.Message.getBooleanFieldWithDefault(msg, 5, false),
+    zone: jspb.Message.getFieldWithDefault(msg, 8, ""),
     location: jspb.Message.getFieldWithDefault(msg, 9, "")
   };
 
@@ -1654,8 +1656,16 @@ proto.palm.ops.router.v1.RouterUpdateHostRequest.deserializeBinaryFromReader = f
       msg.setGroup(value);
       break;
     case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIp(value);
+      break;
+    case 5:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setFixed(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setZone(value);
       break;
     case 9:
       var value = /** @type {string} */ (reader.readString());
@@ -1711,10 +1721,24 @@ proto.palm.ops.router.v1.RouterUpdateHostRequest.serializeBinaryToWriter = funct
       f
     );
   }
+  f = message.getIp();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
   f = message.getFixed();
   if (f) {
     writer.writeBool(
-      4,
+      5,
+      f
+    );
+  }
+  f = message.getZone();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
       f
     );
   }
@@ -1783,11 +1807,29 @@ proto.palm.ops.router.v1.RouterUpdateHostRequest.prototype.setGroup = function(v
 
 
 /**
- * optional bool fixed = 4;
+ * optional string ip = 4;
+ * @return {string}
+ */
+proto.palm.ops.router.v1.RouterUpdateHostRequest.prototype.getIp = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.ops.router.v1.RouterUpdateHostRequest} returns this
+ */
+proto.palm.ops.router.v1.RouterUpdateHostRequest.prototype.setIp = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional bool fixed = 5;
  * @return {boolean}
  */
 proto.palm.ops.router.v1.RouterUpdateHostRequest.prototype.getFixed = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 5, false));
 };
 
 
@@ -1796,7 +1838,25 @@ proto.palm.ops.router.v1.RouterUpdateHostRequest.prototype.getFixed = function()
  * @return {!proto.palm.ops.router.v1.RouterUpdateHostRequest} returns this
  */
 proto.palm.ops.router.v1.RouterUpdateHostRequest.prototype.setFixed = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 4, value);
+  return jspb.Message.setProto3BooleanField(this, 5, value);
+};
+
+
+/**
+ * optional string zone = 8;
+ * @return {string}
+ */
+proto.palm.ops.router.v1.RouterUpdateHostRequest.prototype.getZone = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.ops.router.v1.RouterUpdateHostRequest} returns this
+ */
+proto.palm.ops.router.v1.RouterUpdateHostRequest.prototype.setZone = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 

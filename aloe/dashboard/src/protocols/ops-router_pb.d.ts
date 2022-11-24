@@ -134,8 +134,14 @@ export class RouterUpdateHostRequest extends jspb.Message {
   getGroup(): string;
   setGroup(value: string): RouterUpdateHostRequest;
 
+  getIp(): string;
+  setIp(value: string): RouterUpdateHostRequest;
+
   getFixed(): boolean;
   setFixed(value: boolean): RouterUpdateHostRequest;
+
+  getZone(): string;
+  setZone(value: string): RouterUpdateHostRequest;
 
   getLocation(): string;
   setLocation(value: string): RouterUpdateHostRequest;
@@ -155,7 +161,9 @@ export namespace RouterUpdateHostRequest {
     id: number,
     user: number,
     group: string,
+    ip: string,
     fixed: boolean,
+    zone: string,
     location?: string,
   }
 

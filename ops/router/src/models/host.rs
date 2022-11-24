@@ -30,6 +30,7 @@ pub trait Dao {
         id: i32,
         user: i32,
         group: &str,
+        ip: &str,
         fixed: bool,
         location: Option<&str>,
     ) -> Result<()>;
@@ -67,6 +68,7 @@ impl Dao for Connection {
         id: i32,
         user: i32,
         group: &str,
+        ip: &str,
         fixed: bool,
         location: Option<&str>,
     ) -> Result<()> {
@@ -76,6 +78,7 @@ impl Dao for Connection {
             .set((
                 hosts::dsl::user_id.eq(user),
                 hosts::dsl::group.eq(group),
+                hosts::dsl::ip.eq(ip),
                 hosts::dsl::fixed.eq(fixed),
                 hosts::dsl::location.eq(location),
                 hosts::dsl::updated_at.eq(&now),

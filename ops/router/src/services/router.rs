@@ -1,4 +1,5 @@
 use std::any::type_name;
+use std::net::Ipv4Addr;
 use std::ops::{Deref, DerefMut};
 use std::sync::{Arc, Mutex};
 
@@ -296,6 +297,13 @@ impl v1::router_server::Router for Service {
         let ss = Session::new(&req);
         let jwt = self.jwt.deref();
         let req = req.into_inner();
+        {
+            let net = try_grpc!(req.zone.parse::<Ipv4Net>())?;
+            let addr = try_grpc!(req.ip.parse::<Ipv4Addr>())?;
+            if !net.contains(&addr) {
+                return Err(Status::invalid_argument(type_name::<Ipv4Addr>()));
+            }
+        }
         if let Ok(ref mut db) = self.db.lock() {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
@@ -310,6 +318,7 @@ impl v1::router_server::Router for Service {
                 it.id,
                 req.user,
                 &req.group,
+                &req.ip,
                 req.fixed,
                 req.location.as_deref(),
             ))?;

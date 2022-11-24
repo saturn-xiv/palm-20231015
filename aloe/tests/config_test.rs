@@ -5,6 +5,9 @@ use diesel::connection::Connection as DieselConnection;
 use ops_router::models::setting::Dao as SettingDao;
 use palm::{crypto::Hmac, ops::router::v1 as ops_router_v1, parser::from_toml, Error};
 
+const PCIE_2: &str = "b";
+const PCIE_3: &str = "9";
+
 #[test]
 fn yt() {
     env_logger::init();

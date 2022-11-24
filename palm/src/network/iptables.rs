@@ -74,6 +74,11 @@ echo $(pwgen 32 1) | chpasswd
 }
 
 pub struct Flush;
+//  {
+//     pub input: bool,
+//     pub output: bool,
+//     pub forward: bool,
+// }
 
 impl Iptables for Flush {
     fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
