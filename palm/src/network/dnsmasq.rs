@@ -60,7 +60,7 @@ impl Dnsmasq for ops_router::v1::Lan {
             gateway: net.addr().to_string(),
             dns1: self.dns1.clone(),
             dns2: self.dns2.clone(),
-            metric: 100,
+            metric: 92,
         })?;
 
         super::save(&Conf {
@@ -111,7 +111,7 @@ impl Dnsmasq for ops_router::v1::Dmz {
             gateway: net.addr().to_string(),
             dns1: self.dns1.clone(),
             dns2: self.dns2.clone(),
-            metric: 100,
+            metric: 91,
         })?;
 
         super::save(&Conf {

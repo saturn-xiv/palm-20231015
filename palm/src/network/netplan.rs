@@ -6,6 +6,9 @@ use askama::Template;
 use super::super::{ops::router as ops_router, Result};
 use super::Etc;
 
+// yamllint xxx.yaml
+// netplan generate
+// netplan --debug apply
 pub fn apply() -> Result<()> {
     warn!("apply netplan settings");
     let out = Command::new("netplan").arg("apply").output()?;
@@ -19,11 +22,12 @@ impl ops_router::v1::Wan {
     pub fn save(&self) -> Result<()> {
         if let Some(ref ip) = self.ip {
             match ip {
-                ops_router::v1::wan::Ip::Dhcp(_) => {
+                ops_router::v1::wan::Ip::Dhcp(ref it) => {
                     super::save(&Dhcp {
                         device: self.device.clone(),
                         mac: self.mac.clone(),
                         metric: self.metric,
+                        v6: it.v6,
                     })?;
                 }
                 ops_router::v1::wan::Ip::Static(ref ip) => {
@@ -49,6 +53,7 @@ pub struct Dhcp {
     pub device: String,
     pub mac: String,
     pub metric: u32,
+    pub v6: bool,
 }
 
 impl Etc for Dhcp {

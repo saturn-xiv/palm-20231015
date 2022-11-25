@@ -10,6 +10,7 @@ homepage = "https://github.com/saturn-xiv/palm"
 
 [dependencies]
 async-trait = "0.1"
+noise-protocol = "0.1"
 rabbitmq-stream-client = "0.1"
 bigdecimal = "0.3"
 futures = "0.3"

@@ -2,8 +2,71 @@ use std::any::type_name;
 use std::fs::File;
 use std::path::PathBuf;
 
+use askama::Template;
 use palm::ops::router as ops_router;
 use prost::Message;
+
+#[test]
+fn netplan() {
+    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .parent()
+        .unwrap()
+        .join("tmp");
+    {
+        let file = root.join("eth11.yaml");
+        let buf = palm::network::netplan::Static {
+            device: "eth11".to_string(),
+            mac: "00:00:00:00:00:00".to_string(),
+            address: "192.168.0.1/24".to_string(),
+            gateway: "192.168.0.1".to_string(),
+            dns1: "8.8.8.81".to_string(),
+            dns2: Some("8.8.4.41".to_string()),
+            metric: 12,
+        }
+        .render()
+        .unwrap();
+        std::fs::write(file, buf).unwrap();
+    }
+    {
+        let file = root.join("eth12.yaml");
+        let buf = palm::network::netplan::Static {
+            device: "eth12".to_string(),
+            mac: "00:00:00:00:00:00".to_string(),
+            address: "192.168.0.1/24".to_string(),
+            gateway: "192.168.0.1".to_string(),
+            dns1: "8.8.8.81".to_string(),
+            dns2: None,
+            metric: 12,
+        }
+        .render()
+        .unwrap();
+        std::fs::write(file, buf).unwrap();
+    }
+    {
+        let file = root.join("eth21.yaml");
+        let buf = palm::network::netplan::Dhcp {
+            device: "eth21".to_string(),
+            mac: "00:00:00:00:00:00".to_string(),
+            metric: 12,
+            v6: true,
+        }
+        .render()
+        .unwrap();
+        std::fs::write(file, buf).unwrap();
+    }
+    {
+        let file = root.join("eth22.yaml");
+        let buf = palm::network::netplan::Dhcp {
+            device: "eth22".to_string(),
+            mac: "00:00:00:00:00:00".to_string(),
+            metric: 12,
+            v6: false,
+        }
+        .render()
+        .unwrap();
+        std::fs::write(file, buf).unwrap();
+    }
+}
 
 #[test]
 fn nmap() {
@@ -43,7 +106,7 @@ fn rule() {
         device: "eth0".to_string(),
         tcp: true,
         port: 3389,
-        host: Some(ops_router::v1::rule::nat::Host {
+        destination: Some(ops_router::v1::rule::nat::Host {
             ip: "192.168.0.10".to_string(),
             port: 33890,
         }),

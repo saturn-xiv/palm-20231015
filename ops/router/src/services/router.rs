@@ -458,7 +458,7 @@ pub fn apply(db: Arc<Mutex<Db>>, immediately: bool) -> Result<()> {
             dmz.0.save(hosts)?;
         }
         {
-            palm::network::save(&palm::network::iproute2::Config::new(wan))?;
+            // palm::network::save(&palm::network::iproute2::Config::new(wan))?;
             for it in wan.iter() {
                 it.save()?;
             }

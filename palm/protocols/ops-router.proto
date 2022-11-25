@@ -199,7 +199,7 @@ message Wan {
   }
 }
 
-message Dhcp {};
+message Dhcp { bool v6 = 1; };
 message Static {
   string address = 1;
   string gateway = 3;
