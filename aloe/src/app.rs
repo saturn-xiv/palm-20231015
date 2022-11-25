@@ -11,20 +11,17 @@ use std::time::Duration;
 use clap::Parser;
 use diesel::sqlite::SqliteConnection as Db;
 use palm::{
-    crypto::Hmac,
-    jwt::Jwt,
-    network::iptables::Iptables,
-    network::{dnsmasq::Dnsmasq, ethernet::ArpScanner},
-    ops::router::v1 as ops_router_v1,
-    parser::from_toml,
-    timestamp_file, Result, BANNER, HOMEPAGE, VERSION,
+    crypto::Hmac, jwt::Jwt, network::ethernet::ArpScanner, network::iptables::Iptables,
+    ops::router::v1 as ops_router_v1, parser::from_toml, Result, HOMEPAGE, VERSION,
 };
 use tonic::transport::Server;
 
 use super::{env::Config, orm::open as open_db};
 
 #[derive(Parser, Debug)]
-#[clap(about, version=&VERSION.deref()[..], before_help=BANNER, after_help=HOMEPAGE, author)]
+#[clap(about, author,
+    version=&VERSION.deref()[..],
+    after_help=HOMEPAGE)]
 pub struct Args {
     #[clap(short, long, default_value = "config.toml")]
     pub config: PathBuf,
@@ -34,6 +31,10 @@ pub struct Args {
 
 impl Args {
     pub async fn launch(&self) -> Result<()> {
+        if cfg!(not(debug_assertions)) && !palm::network::is_root() {
+            error!("please run as root");
+            return Ok(());
+        }
         {
             info!("load config from {}", self.config.display());
             palm::check_config_permission(&self.config)?;
@@ -46,14 +47,15 @@ impl Args {
             open_db("tmp/db", hmac)?
         }));
 
-        if self.debug {
-            return Self::run_debug_mode(db);
-        }
         Self::generate_firewall_clean()?;
+        if self.debug {
+            ops_router::services::router::apply(db, false)?;
+            return Ok(());
+        }
         info!("apply system settings");
         {
             let db = db.clone();
-            if let Err(e) = ops_router::services::router::apply(db) {
+            if let Err(e) = ops_router::services::router::apply(db, true) {
                 error!("{:?}", e);
             }
         }
@@ -105,7 +107,7 @@ impl Args {
         let file = temp_dir().join("firewall-clean.sh");
         info!("generate {}", file.display());
         {
-            let mut file = File::open(&file)?;
+            let mut file = File::create(&file)?;
             writeln!(&mut file, "{}", palm::network::BASH_HEADER)?;
             {
                 let mut buf = String::new();
@@ -186,49 +188,6 @@ impl Args {
                         ops_router::models::host::Dao::create(db, &it.mac, &it.ip)?;
                     }
                 }
-            }
-        }
-        Ok(())
-    }
-    fn run_debug_mode(db: Arc<Mutex<Db>>) -> Result<()> {
-        if let Ok(ref mut db) = db.lock() {
-            let db = db.deref_mut();
-            {
-                let bound: ops_router_v1::RouterBoundRequest =
-                    ops_router::models::setting::Dao::get(db, None)?;
-                for it in bound.items.iter() {
-                    let it: ops_router_v1::Wan =
-                        ops_router::models::setting::Dao::get(db, Some(it))?;
-                    it.save()?;
-                }
-            }
-            {
-                let it: ops_router_v1::Lan = ops_router::models::setting::Dao::get(db, None)?;
-                let hosts = ops_router::models::host::Dao::by_net(db, &it.address.parse()?)?
-                    .iter()
-                    .map(|x| palm::network::dnsmasq::Host {
-                        mac: x.mac.clone(),
-                        ip: x.ip.clone(),
-                    })
-                    .collect::<_>();
-                it.save(hosts)?;
-            }
-            {
-                let it: ops_router_v1::Dmz = ops_router::models::setting::Dao::get(db, None)?;
-                let hosts = ops_router::models::host::Dao::by_net(db, &it.address.parse()?)?
-                    .iter()
-                    .map(|x| palm::network::dnsmasq::Host {
-                        mac: x.mac.clone(),
-                        ip: x.ip.clone(),
-                    })
-                    .collect::<_>();
-                it.save(hosts)?;
-            }
-            {
-                let file = temp_dir().join(timestamp_file("iptable", Some("sh")));
-                debug!("write to {}", file.display());
-                let script = ops_router::env::iptables::script(db)?;
-                std::fs::write(&file, script)?;
             }
         }
         Ok(())

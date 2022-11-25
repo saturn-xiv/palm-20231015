@@ -5584,7 +5584,9 @@ proto.palm.ops.router.v1.Lan.toObject = function(includeInstance, msg) {
   var f, obj = {
     device: jspb.Message.getFieldWithDefault(msg, 1, ""),
     mac: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    address: jspb.Message.getFieldWithDefault(msg, 11, "")
+    address: jspb.Message.getFieldWithDefault(msg, 11, ""),
+    dns1: jspb.Message.getFieldWithDefault(msg, 12, ""),
+    dns2: jspb.Message.getFieldWithDefault(msg, 13, "")
   };
 
   if (includeInstance) {
@@ -5633,6 +5635,14 @@ proto.palm.ops.router.v1.Lan.deserializeBinaryFromReader = function(msg, reader)
       var value = /** @type {string} */ (reader.readString());
       msg.setAddress(value);
       break;
+    case 12:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDns1(value);
+      break;
+    case 13:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDns2(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -5680,6 +5690,20 @@ proto.palm.ops.router.v1.Lan.serializeBinaryToWriter = function(message, writer)
   if (f.length > 0) {
     writer.writeString(
       11,
+      f
+    );
+  }
+  f = message.getDns1();
+  if (f.length > 0) {
+    writer.writeString(
+      12,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 13));
+  if (f != null) {
+    writer.writeString(
+      13,
       f
     );
   }
@@ -5740,6 +5764,60 @@ proto.palm.ops.router.v1.Lan.prototype.setAddress = function(value) {
 };
 
 
+/**
+ * optional string dns1 = 12;
+ * @return {string}
+ */
+proto.palm.ops.router.v1.Lan.prototype.getDns1 = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.ops.router.v1.Lan} returns this
+ */
+proto.palm.ops.router.v1.Lan.prototype.setDns1 = function(value) {
+  return jspb.Message.setProto3StringField(this, 12, value);
+};
+
+
+/**
+ * optional string dns2 = 13;
+ * @return {string}
+ */
+proto.palm.ops.router.v1.Lan.prototype.getDns2 = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.ops.router.v1.Lan} returns this
+ */
+proto.palm.ops.router.v1.Lan.prototype.setDns2 = function(value) {
+  return jspb.Message.setField(this, 13, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.ops.router.v1.Lan} returns this
+ */
+proto.palm.ops.router.v1.Lan.prototype.clearDns2 = function() {
+  return jspb.Message.setField(this, 13, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.ops.router.v1.Lan.prototype.hasDns2 = function() {
+  return jspb.Message.getField(this, 13) != null;
+};
+
+
 
 
 
@@ -5774,7 +5852,9 @@ proto.palm.ops.router.v1.Dmz.toObject = function(includeInstance, msg) {
   var f, obj = {
     device: jspb.Message.getFieldWithDefault(msg, 1, ""),
     mac: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    address: jspb.Message.getFieldWithDefault(msg, 11, "")
+    address: jspb.Message.getFieldWithDefault(msg, 11, ""),
+    dns1: jspb.Message.getFieldWithDefault(msg, 12, ""),
+    dns2: jspb.Message.getFieldWithDefault(msg, 13, "")
   };
 
   if (includeInstance) {
@@ -5823,6 +5903,14 @@ proto.palm.ops.router.v1.Dmz.deserializeBinaryFromReader = function(msg, reader)
       var value = /** @type {string} */ (reader.readString());
       msg.setAddress(value);
       break;
+    case 12:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDns1(value);
+      break;
+    case 13:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDns2(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -5870,6 +5958,20 @@ proto.palm.ops.router.v1.Dmz.serializeBinaryToWriter = function(message, writer)
   if (f.length > 0) {
     writer.writeString(
       11,
+      f
+    );
+  }
+  f = message.getDns1();
+  if (f.length > 0) {
+    writer.writeString(
+      12,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 13));
+  if (f != null) {
+    writer.writeString(
+      13,
       f
     );
   }
@@ -5927,6 +6029,60 @@ proto.palm.ops.router.v1.Dmz.prototype.getAddress = function() {
  */
 proto.palm.ops.router.v1.Dmz.prototype.setAddress = function(value) {
   return jspb.Message.setProto3StringField(this, 11, value);
+};
+
+
+/**
+ * optional string dns1 = 12;
+ * @return {string}
+ */
+proto.palm.ops.router.v1.Dmz.prototype.getDns1 = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.ops.router.v1.Dmz} returns this
+ */
+proto.palm.ops.router.v1.Dmz.prototype.setDns1 = function(value) {
+  return jspb.Message.setProto3StringField(this, 12, value);
+};
+
+
+/**
+ * optional string dns2 = 13;
+ * @return {string}
+ */
+proto.palm.ops.router.v1.Dmz.prototype.getDns2 = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.ops.router.v1.Dmz} returns this
+ */
+proto.palm.ops.router.v1.Dmz.prototype.setDns2 = function(value) {
+  return jspb.Message.setField(this, 13, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.ops.router.v1.Dmz} returns this
+ */
+proto.palm.ops.router.v1.Dmz.prototype.clearDns2 = function() {
+  return jspb.Message.setField(this, 13, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.ops.router.v1.Dmz.prototype.hasDns2 = function() {
+  return jspb.Message.getField(this, 13) != null;
 };
 
 

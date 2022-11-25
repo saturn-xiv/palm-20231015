@@ -15,7 +15,7 @@ pub fn setup(db: &mut Db, hmac: &Hmac) -> Result<()> {
             nickname: "admin".to_string(),
             password: String::from_utf8_lossy(&hmac.sum("123456".as_bytes())?).to_string(),
         };
-        info!("set user: {}", it.nickname);
+        warn!("set user: {}", it.nickname);
         SettingDao::set(db, None, &it)?;
     }
 

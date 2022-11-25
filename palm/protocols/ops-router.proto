@@ -171,12 +171,16 @@ message Lan {
   string device = 1;
   string mac = 2;
   string address = 11;
+  string dns1 = 12;
+  optional string dns2 = 13;
 }
 
 message Dmz {
   string device = 1;
   string mac = 2;
   string address = 11;
+  string dns1 = 12;
+  optional string dns2 = 13;
 }
 
 message Wan {
@@ -186,9 +190,7 @@ message Wan {
 
   // Use this to prioritize routes for devices by setting a lower metric on a
   // preferred interface.
-
   uint32 metric = 4;
-  uint32 priority = 5;
 
   string mac = 11;
   oneof ip {

@@ -707,6 +707,14 @@ export class Lan extends jspb.Message {
   getAddress(): string;
   setAddress(value: string): Lan;
 
+  getDns1(): string;
+  setDns1(value: string): Lan;
+
+  getDns2(): string;
+  setDns2(value: string): Lan;
+  hasDns2(): boolean;
+  clearDns2(): Lan;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Lan.AsObject;
   static toObject(includeInstance: boolean, msg: Lan): Lan.AsObject;
@@ -720,6 +728,13 @@ export namespace Lan {
     device: string,
     mac: string,
     address: string,
+    dns1: string,
+    dns2?: string,
+  }
+
+  export enum Dns2Case { 
+    _DNS2_NOT_SET = 0,
+    DNS2 = 13,
   }
 }
 
@@ -732,6 +747,14 @@ export class Dmz extends jspb.Message {
 
   getAddress(): string;
   setAddress(value: string): Dmz;
+
+  getDns1(): string;
+  setDns1(value: string): Dmz;
+
+  getDns2(): string;
+  setDns2(value: string): Dmz;
+  hasDns2(): boolean;
+  clearDns2(): Dmz;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Dmz.AsObject;
@@ -746,6 +769,13 @@ export namespace Dmz {
     device: string,
     mac: string,
     address: string,
+    dns1: string,
+    dns2?: string,
+  }
+
+  export enum Dns2Case { 
+    _DNS2_NOT_SET = 0,
+    DNS2 = 13,
   }
 }
 

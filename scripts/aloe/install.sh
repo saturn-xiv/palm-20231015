@@ -8,7 +8,7 @@ setup_ubuntu() {
     # isc-dhcp-server
     apt -y install crun podman buildah \
         dnsmasq netplan.io ifmetric \
-        openssl nmap pwgen \
+        openssl nmap pwgen sqlite3 \
         iptables iptables-persistent iproute2
     apt clean
     apt -y autoremove

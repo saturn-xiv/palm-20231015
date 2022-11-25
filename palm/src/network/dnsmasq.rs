@@ -58,10 +58,9 @@ impl Dnsmasq for ops_router::v1::Lan {
             mac: self.mac.clone(),
             address: self.address.clone(),
             gateway: net.addr().to_string(),
-            dns1: net.addr().to_string(),
-            dns2: None,
-            priority: 300,
-            table: None,
+            dns1: self.dns1.clone(),
+            dns2: self.dns2.clone(),
+            metric: 100,
         })?;
 
         super::save(&Conf {
@@ -110,10 +109,9 @@ impl Dnsmasq for ops_router::v1::Dmz {
             mac: self.mac.clone(),
             address: self.address.clone(),
             gateway: net.addr().to_string(),
-            dns1: net.addr().to_string(),
-            dns2: None,
-            priority: 300,
-            table: None,
+            dns1: self.dns1.clone(),
+            dns2: self.dns2.clone(),
+            metric: 100,
         })?;
 
         super::save(&Conf {

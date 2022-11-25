@@ -1,4 +1,5 @@
 use std::any::type_name;
+use std::env::temp_dir;
 use std::net::Ipv4Addr;
 use std::ops::{Deref, DerefMut};
 use std::sync::{Arc, Mutex};
@@ -43,7 +44,7 @@ impl v1::router_server::Router for Service {
             Err(Status::permission_denied(type_name::<v1::UserProfile>()))
         }?;
 
-        try_grpc!(apply(self.db.clone()))?;
+        try_grpc!(apply(self.db.clone(), true))?;
         Ok(Response::new(()))
     }
     async fn status(&self, req: Request<()>) -> GrpcResult<v1::RouterStatusResponse> {
@@ -407,7 +408,7 @@ impl From<Rule> for v1::Rule {
     }
 }
 
-pub fn apply(db: Arc<Mutex<Db>>) -> Result<()> {
+pub fn apply(db: Arc<Mutex<Db>>, immediately: bool) -> Result<()> {
     let cfg = if let Ok(ref mut db) = db.lock() {
         let db = db.deref_mut();
 
@@ -463,9 +464,15 @@ pub fn apply(db: Arc<Mutex<Db>>) -> Result<()> {
             }
         }
 
-        palm::network::netplan::apply()?;
-        palm::network::dnsmasq::apply()?;
-        iptables::apply(firewall)?;
+        if immediately {
+            palm::network::netplan::apply()?;
+            palm::network::dnsmasq::apply()?;
+            iptables::apply(firewall)?;
+        } else {
+            let file = temp_dir().join(palm::timestamp_file("firewall", Some("sh")));
+            info!("write fiewwall rule to {}", file.display());
+            std::fs::write(file, firewall)?;
+        }
     }
 
     Ok(())

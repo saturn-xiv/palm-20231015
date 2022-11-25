@@ -75,7 +75,7 @@ impl Iptables for Persistent {
             buf,
             r###"
 netfilter-persistent save
-echo $(pwgen 32 1) | chpasswd
+# echo $(pwgen 32 1) | chpasswd
 "###
         )?;
         Ok(())

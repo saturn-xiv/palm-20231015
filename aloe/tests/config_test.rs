@@ -5,6 +5,9 @@ use diesel::connection::Connection as DieselConnection;
 use ops_router::models::setting::Dao as SettingDao;
 use palm::{crypto::Hmac, ops::router::v1 as ops_router_v1, parser::from_toml, Error};
 
+const DNS1: &str = "211.139.29.150";
+const DNS2: &str = "211.139.29.170";
+
 fn ethernet(i: u32, j: u32) -> (String, String) {
     (
         format!("enp{i}s0f{j}"),
@@ -44,7 +47,9 @@ fn yt() {
             let it = ops_router_v1::Lan {
                 device,
                 mac,
-                address: "192.168.0.1/24".to_string(),
+                address: "192.168.101.1/24".to_string(),
+                dns1: DNS1.to_string(),
+                dns2: Some(DNS2.to_string()),
             };
             SettingDao::set(db, None, &it).unwrap();
             items.push((it.device.clone(), it.mac.clone()));
@@ -54,7 +59,9 @@ fn yt() {
             let it = ops_router_v1::Dmz {
                 device,
                 mac,
-                address: "192.168.10.1/24".to_string(),
+                address: "192.168.102.1/24".to_string(),
+                dns1: DNS1.to_string(),
+                dns2: Some(DNS2.to_string()),
             };
             SettingDao::set(db, None, &it).unwrap();
             items.push((it.device.clone(), it.mac.clone()));
@@ -70,7 +77,6 @@ fn yt() {
                     name: format!("Line{}{}", i, j),
                     metric: 100 + i * 10 + j,
                     capacity: (i + 1) * 4,
-                    priority: 300,
                     ip: Some(ops_router_v1::wan::Ip::Dhcp(ops_router_v1::Dhcp {})),
                 };
                 SettingDao::set(db, Some(&device), &it).unwrap();

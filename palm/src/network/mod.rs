@@ -5,6 +5,7 @@ pub mod iproute2;
 pub mod iptables;
 pub mod netplan;
 
+use std::any::type_name;
 use std::fs::metadata;
 use std::net::Ipv4Addr;
 use std::path::PathBuf;
@@ -33,14 +34,14 @@ pub trait Etc: Template {
 #[cfg(debug_assertions)]
 pub fn save<T: Etc>(it: &T) -> Result<()> {
     let file = it.file();
-    info!("{}\n{}", file.display(), it.render()?);
+    info!("{} {}\n{}", type_name::<T>(), file.display(), it.render()?);
     Ok(())
 }
 
 #[cfg(not(debug_assertions))]
 pub fn save<T: Etc>(it: &T) -> Result<()> {
     let file = it.file();
-    info!("write to {}", file.display());
+    info!("write {} to {}", type_name::<T>(), file.display());
     std::fs::write(&file, it.render()?)?;
     Ok(())
 }

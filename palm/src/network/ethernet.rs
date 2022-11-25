@@ -45,7 +45,7 @@ impl ArpScanner {
     pub fn scan(&self) -> Result<Vec<Host>> {
         let file = NamedTempFile::new()?;
         {
-            debug!("write to {}", file.path().display());
+            debug!("write nmap({}) to {}", self.0, file.path().display());
             let out = if super::is_root() {
                 Command::new("nmap")
                     .arg("-oX")

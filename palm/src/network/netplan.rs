@@ -23,6 +23,7 @@ impl ops_router::v1::Wan {
                     super::save(&Dhcp {
                         device: self.device.clone(),
                         mac: self.mac.clone(),
+                        metric: self.metric,
                     })?;
                 }
                 ops_router::v1::wan::Ip::Static(ref ip) => {
@@ -33,8 +34,7 @@ impl ops_router::v1::Wan {
                         gateway: ip.gateway.clone(),
                         dns1: ip.dns1.clone(),
                         dns2: ip.dns2.clone(),
-                        priority: self.priority,
-                        table: Some(self.route()),
+                        metric: self.metric,
                     })?;
                 }
             }
@@ -48,6 +48,7 @@ impl ops_router::v1::Wan {
 pub struct Dhcp {
     pub device: String,
     pub mac: String,
+    pub metric: u32,
 }
 
 impl Etc for Dhcp {
@@ -69,8 +70,7 @@ pub struct Static {
     pub gateway: String,
     pub dns1: String,
     pub dns2: Option<String>,
-    pub priority: u32,
-    pub table: Option<String>,
+    pub metric: u32,
 }
 
 impl Etc for Static {
