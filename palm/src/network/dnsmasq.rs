@@ -41,14 +41,17 @@ pub fn apply() -> Result<()> {
     Ok(())
 }
 
+/*
+dnsmasq --test
+https://wiki.archlinux.org/title/dnsmasq
+https://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml
+https://thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html
+*/
 pub trait Dnsmasq {
     fn save(&self, hosts: Vec<Host>) -> Result<()>;
 }
 
 impl Dnsmasq for ops_router::v1::Lan {
-    // https://wiki.archlinux.org/title/dnsmasq
-    // https://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml
-    // https://thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html
     fn save(&self, hosts: Vec<Host>) -> Result<()> {
         let net: Ipv4Net = self.address.parse()?;
         let children = net.hosts();
