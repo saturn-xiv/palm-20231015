@@ -6,10 +6,7 @@ use std::sync::{Arc, Mutex};
 
 use diesel::{connection::Connection as DieselConnection, sqlite::SqliteConnection as Db};
 use ipnet::Ipv4Net;
-use palm::{
-    jwt::Jwt, network::dnsmasq::Dnsmasq, ops::router::v1, session::Session, try_grpc, Error,
-    GrpcResult, Result,
-};
+use palm::{jwt::Jwt, ops::router::v1, session::Session, try_grpc, Error, GrpcResult, Result};
 use prost::Message;
 use tonic::{Request, Response, Status};
 use validator::Validate;
@@ -17,7 +14,7 @@ use validator::Validate;
 use super::super::{
     env::iptables,
     models::{
-        host::Dao as HostDao,
+        host::{Dao as HostDao, Item as Host},
         rule::{Dao as RuleDao, Item as Rule},
         setting::Dao as SettingDao,
         user::Dao as UserDao,
@@ -140,6 +137,25 @@ impl v1::router_server::Router for Service {
                 }
             }
 
+            try_grpc!(SettingDao::set(db, None, &req))?;
+            Ok(())
+        } else {
+            Err(Status::permission_denied(type_name::<v1::UserProfile>()))
+        }?;
+
+        Ok(Response::new(()))
+    }
+
+    async fn set_dns(&self, req: Request<v1::Dns>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let jwt = self.jwt.deref();
+        let req = req.into_inner();
+
+        try_grpc!(req.validate())?;
+
+        if let Ok(ref mut db) = self.db.lock() {
+            let db = db.deref_mut();
+            try_grpc!(ss.current_user(db, jwt))?;
             try_grpc!(SettingDao::set(db, None, &req))?;
             Ok(())
         } else {
@@ -408,15 +424,28 @@ impl From<Rule> for v1::Rule {
     }
 }
 
+impl From<Host> for v1::Host {
+    fn from(it: Host) -> Self {
+        Self {
+            id: it.id,
+            group: it.group.clone(),
+            name: it.name.clone(),
+            location: it.location.clone(),
+            owner: None,
+            mac: it.mac.clone(),
+            ip: it.ip.clone(),
+            fixed: it.fixed,
+        }
+    }
+}
 pub fn apply(db: Arc<Mutex<Db>>, immediately: bool) -> Result<()> {
     let cfg = if let Ok(ref mut db) = db.lock() {
         let db = db.deref_mut();
 
         let lan: v1::Lan = SettingDao::get(db, None)?;
-        let lan_hosts = HostDao::by_net(db, &lan.address.parse()?)?;
-
         let dmz: v1::Dmz = SettingDao::get(db, None)?;
-        let dmz_hosts = HostDao::by_net(db, &dmz.address.parse()?)?;
+        let dns: v1::Dns = SettingDao::get(db, None)?;
+        let hosts = HostDao::all(db)?;
 
         let bound: v1::RouterBoundRequest = SettingDao::get(db, None)?;
         let mut wan = Vec::new();
@@ -427,36 +456,17 @@ pub fn apply(db: Arc<Mutex<Db>>, immediately: bool) -> Result<()> {
 
         let firewall = iptables::script(db)?;
 
-        Some(((lan, lan_hosts), (dmz, dmz_hosts), wan, firewall))
+        Some((lan, dmz, wan, dns, hosts, firewall))
     } else {
         None
     };
 
-    if let Some((ref lan, ref dmz, ref wan, ref firewall)) = cfg {
+    if let Some((ref lan, ref dmz, ref wan, ref dns, hosts, ref firewall)) = cfg {
         {
-            let hosts: Vec<palm::network::dnsmasq::Host> = lan
-                .1
-                .iter()
-                .filter(|x| x.fixed)
-                .map(|x| palm::network::dnsmasq::Host {
-                    mac: x.mac.clone(),
-                    ip: x.ip.clone(),
-                })
-                .collect::<_>();
-            lan.0.save(hosts)?;
+            let hosts: Vec<v1::Host> = hosts.into_iter().map(|x| x.into()).collect::<_>();
+            palm::network::dnsmasq::save(lan, dmz, dns, &hosts)?;
         }
-        {
-            let hosts: Vec<palm::network::dnsmasq::Host> = dmz
-                .1
-                .iter()
-                .filter(|x| x.fixed)
-                .map(|x| palm::network::dnsmasq::Host {
-                    mac: x.mac.clone(),
-                    ip: x.ip.clone(),
-                })
-                .collect::<_>();
-            dmz.0.save(hosts)?;
-        }
+
         {
             // palm::network::save(&palm::network::iproute2::Config::new(wan))?;
             for it in wan.iter() {

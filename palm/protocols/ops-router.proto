@@ -20,6 +20,7 @@ service Router {
   rpc Status(google.protobuf.Empty) returns (RouterStatusResponse) {}
   rpc Bound(RouterBoundRequest) returns (google.protobuf.Empty) {}
 
+  rpc SetDns(Dns) returns (google.protobuf.Empty) {}
   rpc SetWan(Wan) returns (google.protobuf.Empty) {}
   rpc SetLan(Lan) returns (google.protobuf.Empty) {}
   rpc SetDmz(Dmz) returns (google.protobuf.Empty) {}
@@ -206,6 +207,8 @@ message Static {
   string dns1 = 4;
   optional string dns2 = 5;
 }
+
+message Dns { repeated string items = 1; }
 
 // ----------------------------------------------------------------------------
 

@@ -182,3 +182,14 @@ impl Validate for ops_router::v1::Wan {
         Err(ValidationErrors::new())
     }
 }
+
+impl Validate for ops_router::v1::Dns {
+    fn validate(&self) -> StdResult<(), ValidationErrors> {
+        for it in self.items.iter() {
+            if it.parse::<Ipv4Addr>().is_err() {
+                return Err(ValidationErrors::new());
+            }
+        }
+        Ok(())
+    }
+}

@@ -77,7 +77,9 @@ fn yt() {
                     name: format!("Line{}{}", i, j),
                     metric: 100 + i * 10 + j,
                     capacity: (i + 1) * 4,
-                    ip: Some(ops_router_v1::wan::Ip::Dhcp(ops_router_v1::Dhcp {})),
+                    ip: Some(ops_router_v1::wan::Ip::Dhcp(ops_router_v1::Dhcp {
+                        v6: true,
+                    })),
                 };
                 SettingDao::set(db, Some(&device), &it).unwrap();
 
@@ -90,6 +92,16 @@ fn yt() {
                 println!("{} <=> {}", d, m);
             }
         }
+
+        SettingDao::set(
+            db,
+            None,
+            &ops_router_v1::Dns {
+                items: vec![DNS1.to_string(), DNS2.to_string()],
+            },
+        )
+        .unwrap();
+
         Ok(())
     })
     .unwrap();

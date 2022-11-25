@@ -7,11 +7,20 @@ setup_ubuntu() {
     apt -y upgrade
     # isc-dhcp-server
     apt -y install crun podman buildah \
-        dnsmasq netplan.io ifmetric \
+        dnsmasq netplan.io ifmetric ldnsutils \
         openssl nmap pwgen sqlite3 yamllint \
         iptables iptables-persistent iproute2
     apt clean
     apt -y autoremove
+    # USEDNS
+    # /etc/reslo
+    systemctl disable systemd-resolved
+
+    cat > /etc/resolv.conf <<EOF
+nameserver ::1
+nameserver 127.0.0.1
+options trust-ad
+EOF
 }
 
 install_aloe() {
