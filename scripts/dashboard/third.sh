@@ -26,7 +26,7 @@ install_react() {
         react-big-calendar @types/react-big-calendar \
         react-intl \
         react-router-dom@latest \
-        react-hook-form \
+        formik yup \
         @reduxjs/toolkit react-redux
 
 }
