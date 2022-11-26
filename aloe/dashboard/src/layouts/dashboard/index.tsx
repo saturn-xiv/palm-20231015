@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -11,28 +11,22 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Outlet } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 import Copyright from "../Copyright";
 import Layout from "..";
 import { useAppSelector } from "../../hooks";
-import { TO_SIGN_IN, currentUser } from "../../reducers/current-user";
+import { currentUser } from "../../reducers/current-user";
 import { pageTitle } from "../../reducers/layout";
 import Drawer from "./Drawer";
 import AppBar from "./AppBar";
 import NavBar from "./NavBar";
+import unauthorised_svg from "../../assets/unauthorised.svg";
 
 export const drawerWidth: number = 240;
 
 const Widget = () => {
-  const navigate = useNavigate();
   const user = useAppSelector(currentUser);
   const page_title = useAppSelector(pageTitle);
-  useEffect(() => {
-    if (!user) {
-      navigate(TO_SIGN_IN);
-    }
-  }, [user, navigate]);
 
   const [open, setOpen] = useState(true);
   const toggleDrawer = () => {
@@ -106,7 +100,13 @@ const Widget = () => {
         <Toolbar />
         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
           <Grid container spacing={3}>
-            <Outlet />
+            {user ? (
+              <Outlet />
+            ) : (
+              <Grid item xs={12} md={8} lg={9}>
+                <img alt="unauthorised" src={unauthorised_svg} />
+              </Grid>
+            )}
           </Grid>
           <Copyright />
         </Container>

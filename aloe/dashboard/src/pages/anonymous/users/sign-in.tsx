@@ -24,8 +24,8 @@ import {
 } from "../../../protocols/ops-router_pb";
 
 const formInputSchema = yup_object({
-  nickname: yup_string().min(2).max(12).defined(),
-  password: yup_string().min(6).max(32).defined(),
+  nickname: yup_string().defined(),
+  password: yup_string().defined(),
 });
 
 interface IFormInput extends InferType<typeof formInputSchema> {

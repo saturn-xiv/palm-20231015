@@ -5,6 +5,7 @@ set -e
 install_react() {
     yarn add filesize dayjs timezones-list grpc-web \
         marked @types/marked \
+        diff @types/diff \
         lodash @types/lodash \
         @fortawesome/fontawesome-free \
         famfamfam-flags famfamfam-silk famfamfam-mini \
