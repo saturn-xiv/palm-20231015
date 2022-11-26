@@ -159,6 +159,7 @@ message Rule {
 message RouterStatusResponse {
   Lan lan = 1;
   Dmz dmz = 2;
+  Dns dns = 3;
   repeated Wan wan = 11;
   repeated string bound = 12;
   repeated Rule rules = 21;
@@ -171,6 +172,7 @@ message RouterStatusResponse {
 message Lan {
   string device = 1;
   string mac = 2;
+  uint32 metric = 3;
   string address = 11;
   string dns1 = 12;
   optional string dns2 = 13;
@@ -179,6 +181,7 @@ message Lan {
 message Dmz {
   string device = 1;
   string mac = 2;
+  uint32 metric = 3;
   string address = 11;
   string dns1 = 12;
   optional string dns2 = 13;

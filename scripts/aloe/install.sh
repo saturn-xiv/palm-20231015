@@ -12,15 +12,9 @@ setup_ubuntu() {
         iptables iptables-persistent iproute2
     apt clean
     apt -y autoremove
-    # USEDNS
-    # /etc/reslo
-    systemctl disable systemd-resolved
-
-    cat > /etc/resolv.conf <<EOF
-nameserver ::1
-nameserver 127.0.0.1
-options trust-ad
-EOF
+    
+    # fix ssh too slow
+    sed -ie 's/#UseDNS yes/UseDNS no/g' /etc/ssh/sshd_config
 }
 
 install_aloe() {
@@ -78,7 +72,7 @@ fi
 if [ $ID == "ubuntu" ]
 then   
     setup_ubuntu
-    install_aloe $1
+    # install_aloe $1
 else
     echo "unknown os $ID"
     eixt 1

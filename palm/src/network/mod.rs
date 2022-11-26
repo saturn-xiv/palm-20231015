@@ -7,7 +7,7 @@ pub mod netplan;
 
 use std::any::type_name;
 use std::fs::metadata;
-use std::net::Ipv4Addr;
+use std::net::{IpAddr, Ipv4Addr};
 use std::path::PathBuf;
 use std::process::Command;
 use std::result::Result as StdResult;
@@ -15,9 +15,21 @@ use std::result::Result as StdResult;
 use askama::Template;
 use eui48::MacAddress;
 use ipnet::Ipv4Net;
+use lazy_static::lazy_static;
 use validator::{Validate, ValidationErrors};
 
 use super::{ops::router as ops_router, Result};
+
+lazy_static! {
+    pub static ref GOOGLE_DNS_V4: Vec<&'static str> = vec!["8.8.8.8", "8.8.4.4",];
+    pub static ref GOOGLE_DNS_V6: Vec<&'static str> =
+        vec!["2001:4860:4860::8888", "2001:4860:4860::8844",];
+    pub static ref GLOBAL_DNS_V4: Vec<&'static str> = vec!["1.1.1.1", "1.0.0.1",];
+    pub static ref GLOBAL_DNS_V6: Vec<&'static str> =
+        vec!["2606:4700:4700::1111", "2606:4700:4700::1001"];
+    pub static ref ALI_DNS_V4: Vec<&'static str> = vec!["223.5.5.5", "223.6.6.6",];
+    pub static ref ALI_DNS_V6: Vec<&'static str> = vec!["2400:3200::1", "2400:3200:baba::1"];
+}
 
 pub const BASH_HEADER: &str = r###"#!/bin/bash
 set -e
@@ -165,18 +177,11 @@ impl ops_router::v1::Wan {
     fn validate_mac(&self) -> bool {
         MacAddress::parse_str(&self.mac).is_ok()
     }
-    fn validate_metric(&self) -> bool {
-        self.metric >= 100 && self.metric <= 200
-    }
 }
 
 impl Validate for ops_router::v1::Wan {
     fn validate(&self) -> StdResult<(), ValidationErrors> {
-        if self.validate_ip()
-            && self.validate_device()
-            && self.validate_mac()
-            && self.validate_metric()
-        {
+        if self.validate_ip() && self.validate_device() && self.validate_mac() {
             return Ok(());
         }
         Err(ValidationErrors::new())
@@ -186,7 +191,7 @@ impl Validate for ops_router::v1::Wan {
 impl Validate for ops_router::v1::Dns {
     fn validate(&self) -> StdResult<(), ValidationErrors> {
         for it in self.items.iter() {
-            if it.parse::<Ipv4Addr>().is_err() {
+            if it.parse::<IpAddr>().is_err() {
                 return Err(ValidationErrors::new());
             }
         }

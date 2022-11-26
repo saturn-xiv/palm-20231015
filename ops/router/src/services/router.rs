@@ -103,12 +103,14 @@ impl v1::router_server::Router for Service {
             };
 
             let bound: v1::RouterBoundRequest = SettingDao::get(db, None).unwrap_or_default();
+            let dns: v1::Dns = SettingDao::get(db, None).unwrap_or_default();
 
             return Ok(Response::new(v1::RouterStatusResponse {
                 wan,
                 bound: bound.items,
                 lan: Some(lan),
                 dmz: Some(dmz),
+                dns: Some(dns),
                 script,
                 hosts,
                 rules,

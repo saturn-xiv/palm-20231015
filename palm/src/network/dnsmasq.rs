@@ -39,6 +39,7 @@ pub fn apply() -> Result<()> {
         .output()?;
     let out = String::from_utf8(out.stdout)?;
     info!("{}", out);
+    super::save(&Reslov)?;
     Ok(())
 }
 
@@ -66,7 +67,7 @@ macro_rules! to_zone {
             gateway: net.addr().to_string(),
             dns1: $x.dns1.clone(),
             dns2: $x.dns2.clone(),
-            metric: 92,
+            metric: $x.metric,
         })?;
         Zone {
             device: $x.device.clone(),
@@ -104,6 +105,8 @@ macro_rules! to_zone {
 dnsmasq --test
 dig @xxx.xxx.xxx.xxx -4 www.google.com
 drill www.google.com
+nslookup www.google.com
+ping -I eth1 www.google.com
 
 https://wiki.archlinux.org/title/dnsmasq
 https://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml
@@ -156,5 +159,17 @@ impl Etc for Conf {
         Path::new(&Component::RootDir)
             .join("etc")
             .join("dnsmasq.conf")
+    }
+}
+
+#[derive(Template)]
+#[template(path = "resolv.conf", escape = "none")]
+pub struct Reslov;
+
+impl Etc for Reslov {
+    fn file(&self) -> PathBuf {
+        Path::new(&Component::RootDir)
+            .join("etc")
+            .join("resolv.conf")
     }
 }
