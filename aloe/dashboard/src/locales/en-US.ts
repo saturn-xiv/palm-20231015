@@ -12,10 +12,14 @@ const items = {
   "pages.dashboard.in-bound.title": "IN-BOUND",
   "pages.dashboard.users.profile.title": "Profile",
   "pages.dashboard.users.sign-out.title": "Sign out",
+  "pages.dashboard.users.sign-out.confirm.title": "Confirmation",
+  "pages.dashboard.users.sign-out.confirm.subject": "Are you sure to sign out?",
   "forms.fields.nickname": "Nickname",
   "forms.fields.password": "Password",
   "buttons.submit": "Submit",
   "buttons.reset": "Reset",
+  "buttons.ok": "Ok",
+  "buttons.cancel": "Cancel",
 };
 
 export default items;
