@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useIntl, FormattedMessage } from "react-intl";
 import Grid from "@mui/material/Grid";
-import Alert from "@mui/material/Alert";
+import Alert, { AlertColor } from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useFormik } from "formik";
@@ -14,6 +14,14 @@ import {
 
 import { useAppDispatch } from "../../../hooks";
 import { setTitle } from "../../../reducers/layout";
+import { useAppSelector } from "../../../hooks";
+import { currentUser } from "../../../reducers/current-user";
+import { UserClient } from "../../../protocols/Ops-routerServiceClientPb";
+import { GRPC_HOST, grpc_metadata } from "../../../request";
+import {
+  UserProfile,
+  UserUpdateRequest,
+} from "../../../protocols/ops-router_pb";
 
 const formInputSchema = yup_object({
   currentNickname: yup_string().defined(),
@@ -36,6 +44,7 @@ interface IFormInput extends InferType<typeof formInputSchema> {
 const Widget = () => {
   const intl = useIntl();
   const dispatch = useAppDispatch();
+  const user = useAppSelector(currentUser);
   useEffect(() => {
     dispatch(
       setTitle(
@@ -44,11 +53,11 @@ const Widget = () => {
     );
   }, [dispatch, intl]);
 
-  const [message, setMessage] = useState<string | undefined>();
+  const [message, setMessage] = useState<[AlertColor, string | undefined]>();
 
   const formik = useFormik<IFormInput>({
     initialValues: {
-      currentNickname: "",
+      currentNickname: user?.nickname || "",
       currentPassword: "",
       newNickname: "",
       newPassword: "",
@@ -56,32 +65,32 @@ const Widget = () => {
     },
     validationSchema: formInputSchema,
     onSubmit: (values) => {
-      // const client = new UserClient(GRPC_HOST);
-      // const request = new UserSignInRequest();
-      // {
-      //   const user = new UserProfile();
-      //   user.setNickname(values.nickname);
-      //   user.setPassword(values.password);
-      //   request.setUser(user);
-      // }
-      // {
-      //   const ttl = new Duration();
-      //   ttl.setSeconds(DURATION);
-      //   request.setTtl(ttl);
-      // }
-      // client.signIn(request, grpc_metadata(), function (err, response) {
-      //   if (err) {
-      //     setMessage(err.message);
-      //   } else {
-      //     try {
-      //       const user = to_user(response);
-      //       if (user) {
-      //         dispatch(signIn([user, response.getToken()]));
-      //         navigate(TO_PROFILE);
-      //       }
-      //     } catch {}
-      //   }
-      // });
+      const client = new UserClient(GRPC_HOST);
+      const request = new UserUpdateRequest();
+      {
+        const user = new UserProfile();
+        user.setNickname(values.currentNickname);
+        user.setPassword(values.currentPassword);
+        request.setCurrent(user);
+      }
+      {
+        const user = new UserProfile();
+        user.setNickname(values.newNickname);
+        user.setPassword(values.newPassword);
+        request.setNew(user);
+      }
+
+      client.update(request, grpc_metadata(), function (err, response) {
+        if (err) {
+          setMessage(["error", err.message]);
+        } else {
+          setMessage([
+            "success",
+            intl.formatMessage({ id: "flashes.successed" }),
+          ]);
+          formik.resetForm();
+        }
+      });
     },
   });
   return (
@@ -91,9 +100,9 @@ const Widget = () => {
           onClose={() => {
             setMessage(undefined);
           }}
-          severity="error"
+          severity={message[0]}
         >
-          {message}
+          {message[1]}
         </Alert>
       )}
       <form onSubmit={formik.handleSubmit}>
@@ -113,7 +122,7 @@ const Widget = () => {
           helperText={
             formik.touched.currentNickname && formik.errors.currentNickname
           }
-          autoFocus
+          disabled
         />
         <TextField
           margin="normal"
@@ -132,6 +141,7 @@ const Widget = () => {
           helperText={
             formik.touched.currentPassword && formik.errors.currentPassword
           }
+          autoFocus
         />
         <TextField
           margin="normal"
@@ -146,7 +156,6 @@ const Widget = () => {
             formik.touched.newNickname && Boolean(formik.errors.newNickname)
           }
           helperText={formik.touched.newNickname && formik.errors.newNickname}
-          autoFocus
         />
         <TextField
           margin="normal"

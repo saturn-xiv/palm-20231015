@@ -6,8 +6,8 @@ use chrono::Duration;
 use diesel::sqlite::SqliteConnection as Db;
 use hyper::StatusCode;
 use palm::{
-    crypto::Hmac, crypto::Password, jwt::Jwt, ops::router::v1, session::Session,
-    to_chrono_duration, try_grpc, GrpcResult, HttpError, Result,
+    crypto::Hmac, jwt::Jwt, ops::router::v1, session::Session, to_chrono_duration, try_grpc,
+    GrpcResult, HttpError, Result,
 };
 use serde::{Deserialize, Serialize};
 use tonic::{Request, Response, Status};
@@ -28,15 +28,13 @@ impl v1::user_server::User for Service {
     ) -> GrpcResult<v1::UserSignInResponse> {
         let req = req.into_inner();
         let jwt = self.jwt.deref();
+        let hmac = self.hmac.deref();
 
         if let Some(ref user) = req.user {
             if let Ok(ref mut db) = self.db.lock() {
                 let db = db.deref_mut();
                 let it: v1::UserProfile = try_grpc!(SettingDao::get(db, None))?;
-                if user.nickname == it.nickname
-                    && String::from_utf8_lossy(&try_grpc!(self.hmac.sum(user.password.as_bytes()))?)
-                        == it.password
-                {
+                if user.nickname == it.nickname && user.verify(hmac, &it.password) {
                     info!("user {} sign in", it.nickname);
                     let ttl = to_chrono_duration!(req.ttl.unwrap_or_default());
                     let token = try_grpc!(build_token(&it.nickname, jwt, ttl))?;
@@ -73,20 +71,14 @@ impl v1::user_server::User for Service {
                     let db = db.deref_mut();
                     try_grpc!(ss.current_user(db, jwt))?;
                     let it: v1::UserProfile = try_grpc!(SettingDao::get(db, None))?;
-                    if cu.nickname == it.nickname
-                        && try_grpc!(self.hmac.sum(cu.password.as_bytes()))?
-                            == it.password.as_bytes()
-                    {
+                    if cu.nickname == it.nickname && cu.verify(hmac, &it.password) {
                         info!("update user profile {} => {}", cu.nickname, nu.nickname);
                         try_grpc!(SettingDao::set(
                             db,
                             None,
                             &v1::UserProfile {
                                 nickname: nu.nickname.clone(),
-                                password: String::from_utf8_lossy(&try_grpc!(
-                                    hmac.sum(nu.password.as_bytes())
-                                )?)
-                                .to_string()
+                                password: try_grpc!(v1::UserProfile::password(hmac, &nu.password))?,
                             }
                         ))?;
                         return Ok(Response::new(()));

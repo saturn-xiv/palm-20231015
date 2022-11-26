@@ -1,7 +1,10 @@
 const items = {
   "site.title": "Your intelligence router",
+  "flashes.successed": "Successed!",
   "dashboard.nav.device": "Device",
   "dashboard.nav.personal": "Personal",
+  "dashboard.apply.confirm.subject": "Are you sure to apply the changes?",
+  "dashboard.reboot.confirm.subject": "Are you sure to reboot the router?",
   "pages.not-found.title": "Not found",
   "pages.forbidden.title": "Forbidden",
   "pages.anonymous.users.sign-in.title": "Sign in",
@@ -20,7 +23,6 @@ const items = {
   "pages.dashboard.users.profile.form.password-confirmation":
     "Password confirmation",
   "pages.dashboard.users.sign-out.title": "Sign out",
-  "pages.dashboard.users.sign-out.confirm.title": "Confirmation",
   "pages.dashboard.users.sign-out.confirm.subject": "Are you sure to sign out?",
   "forms.fields.nickname": "Nickname",
   "forms.fields.password": "Password",
@@ -28,6 +30,7 @@ const items = {
   "buttons.reset": "Reset",
   "buttons.ok": "Ok",
   "buttons.cancel": "Cancel",
+  "dialogs.confirm.title": "Confirmation",
 };
 
 export default items;

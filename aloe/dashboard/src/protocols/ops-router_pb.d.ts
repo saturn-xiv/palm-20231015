@@ -648,6 +648,11 @@ export class RouterStatusResponse extends jspb.Message {
   hasDmz(): boolean;
   clearDmz(): RouterStatusResponse;
 
+  getDns(): Dns | undefined;
+  setDns(value?: Dns): RouterStatusResponse;
+  hasDns(): boolean;
+  clearDns(): RouterStatusResponse;
+
   getWanList(): Array<Wan>;
   setWanList(value: Array<Wan>): RouterStatusResponse;
   clearWanList(): RouterStatusResponse;
@@ -688,6 +693,7 @@ export namespace RouterStatusResponse {
   export type AsObject = {
     lan?: Lan.AsObject,
     dmz?: Dmz.AsObject,
+    dns?: Dns.AsObject,
     wanList: Array<Wan.AsObject>,
     boundList: Array<string>,
     rulesList: Array<Rule.AsObject>,
@@ -703,6 +709,9 @@ export class Lan extends jspb.Message {
 
   getMac(): string;
   setMac(value: string): Lan;
+
+  getMetric(): number;
+  setMetric(value: number): Lan;
 
   getAddress(): string;
   setAddress(value: string): Lan;
@@ -727,6 +736,7 @@ export namespace Lan {
   export type AsObject = {
     device: string,
     mac: string,
+    metric: number,
     address: string,
     dns1: string,
     dns2?: string,
@@ -744,6 +754,9 @@ export class Dmz extends jspb.Message {
 
   getMac(): string;
   setMac(value: string): Dmz;
+
+  getMetric(): number;
+  setMetric(value: number): Dmz;
 
   getAddress(): string;
   setAddress(value: string): Dmz;
@@ -768,6 +781,7 @@ export namespace Dmz {
   export type AsObject = {
     device: string,
     mac: string,
+    metric: number,
     address: string,
     dns1: string,
     dns2?: string,
@@ -834,6 +848,9 @@ export namespace Wan {
 }
 
 export class Dhcp extends jspb.Message {
+  getV6(): boolean;
+  setV6(value: boolean): Dhcp;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Dhcp.AsObject;
   static toObject(includeInstance: boolean, msg: Dhcp): Dhcp.AsObject;
@@ -844,6 +861,7 @@ export class Dhcp extends jspb.Message {
 
 export namespace Dhcp {
   export type AsObject = {
+    v6: boolean,
   }
 }
 
@@ -881,6 +899,26 @@ export namespace Static {
   export enum Dns2Case { 
     _DNS2_NOT_SET = 0,
     DNS2 = 5,
+  }
+}
+
+export class Dns extends jspb.Message {
+  getItemsList(): Array<string>;
+  setItemsList(value: Array<string>): Dns;
+  clearItemsList(): Dns;
+  addItems(value: string, index?: number): Dns;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dns.AsObject;
+  static toObject(includeInstance: boolean, msg: Dns): Dns.AsObject;
+  static serializeBinaryToWriter(message: Dns, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dns;
+  static deserializeBinaryFromReader(message: Dns, reader: jspb.BinaryReader): Dns;
+}
+
+export namespace Dns {
+  export type AsObject = {
+    itemsList: Array<string>,
   }
 }
 

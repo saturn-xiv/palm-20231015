@@ -16,6 +16,7 @@ message Contact {
 // ----------------------------------------------------------------------------
 
 service Router {
+  rpc Reboot(google.protobuf.Empty) returns (google.protobuf.Empty) {}
   rpc Apply(google.protobuf.Empty) returns (google.protobuf.Empty) {}
   rpc Status(google.protobuf.Empty) returns (RouterStatusResponse) {}
   rpc Bound(RouterBoundRequest) returns (google.protobuf.Empty) {}

@@ -16,9 +16,13 @@ use askama::Template;
 use eui48::MacAddress;
 use ipnet::Ipv4Net;
 use lazy_static::lazy_static;
-use validator::{Validate, ValidationErrors};
+use validator::{validate_length, Validate, ValidationErrors};
 
-use super::{ops::router as ops_router, Result};
+use super::{
+    crypto::{Hmac, Password},
+    ops::router as ops_router,
+    Result,
+};
 
 lazy_static! {
     pub static ref GOOGLE_DNS_V4: Vec<&'static str> = vec!["8.8.8.8", "8.8.4.4",];
@@ -196,5 +200,29 @@ impl Validate for ops_router::v1::Dns {
             }
         }
         Ok(())
+    }
+}
+
+impl ops_router::v1::UserProfile {
+    pub fn password(hmac: &Hmac, plain: &str) -> Result<String> {
+        let buf = hmac.sum(plain.as_bytes())?;
+        let it = String::from_utf8_lossy(&buf[..]);
+        Ok(it.to_string())
+    }
+    pub fn verify(&self, hmac: &Hmac, code: &str) -> bool {
+        Self::password(hmac, &self.password)
+            .map(|x| x == code)
+            .unwrap_or(false)
+    }
+}
+
+impl Validate for ops_router::v1::UserProfile {
+    fn validate(&self) -> StdResult<(), ValidationErrors> {
+        if validate_length(&self.nickname, Some(2), Some(32), None)
+            && validate_length(&self.password, Some(6), Some(32), None)
+        {
+            return Ok(());
+        }
+        Err(ValidationErrors::new())
     }
 }

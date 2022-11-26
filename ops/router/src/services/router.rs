@@ -29,6 +29,27 @@ pub struct Service {
 
 #[tonic::async_trait]
 impl v1::router_server::Router for Service {
+    async fn reboot(&self, req: Request<()>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let jwt = self.jwt.deref();
+
+        if let Ok(ref mut db) = self.db.lock() {
+            let db = db.deref_mut();
+            try_grpc!(ss.current_user(db, jwt))?;
+            Ok(())
+        } else {
+            Err(Status::permission_denied(type_name::<v1::UserProfile>()))
+        }?;
+
+        tokio::spawn(async move {
+            warn!("reboot system");
+            if let Err(e) = nix::sys::reboot::reboot(nix::sys::reboot::RebootMode::RB_AUTOBOOT) {
+                error!("{:?}", e);
+            }
+        });
+
+        Ok(Response::new(()))
+    }
     async fn apply(&self, req: Request<()>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let jwt = self.jwt.deref();
