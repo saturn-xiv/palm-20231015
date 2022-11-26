@@ -3,20 +3,33 @@ import { Route, Routes } from "react-router-dom";
 import NotFound from "./pages/not-found";
 import Forbidden from "./pages/forbidden";
 import Home from "./pages/home";
-import SignIn from "./pages/sign-in";
-import Wan from "./pages/wan";
-import Lan from "./pages/lan";
-import Hosts from "./pages/hosts";
-import Nat from "./pages/nat";
+import SignIn from "./pages/anonymous/users/sign-in";
+import Wan from "./pages/dashboard/wan";
+import Lan from "./pages/dashboard/lan";
+import Dmz from "./pages/dashboard/dmz";
+import Nat from "./pages/dashboard/nat";
+import Hosts from "./pages/dashboard/hosts";
+import Status from "./pages/dashboard/status";
+import InBound from "./pages/dashboard/in-bound";
+import Anonymous from "./layouts/anonymous";
 
 const Widget = () => {
   return (
     <Routes>
-      <Route path="sign-in" element={<SignIn />} />
-      <Route path="wan" element={<Wan />} />
-      <Route path="lan" element={<Lan />} />
-      <Route path="hosts" element={<Hosts />} />
-      <Route path="nat" element={<Nat />} />
+      <Route path="anonymous" element={<Anonymous />}>
+        <Route path="users">
+          <Route path="sign-in" element={<SignIn />} />
+        </Route>
+      </Route>
+      <Route path="dashboard">
+        <Route path="wan" element={<Wan />} />
+        <Route path="lan" element={<Lan />} />
+        <Route path="dmz" element={<Dmz />} />
+        <Route path="nat" element={<Nat />} />
+        <Route path="hosts" element={<Hosts />} />
+        <Route path="in-bound" element={<InBound />} />
+        <Route path="status" element={<Status />} />
+      </Route>
 
       <Route path="forbidden" element={<Forbidden />} />
       <Route path="" element={<Home />} />

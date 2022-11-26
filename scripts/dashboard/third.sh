@@ -26,6 +26,7 @@ install_react() {
         react-big-calendar @types/react-big-calendar \
         react-intl \
         react-router-dom@latest \
+        react-helmet-async \
         formik yup \
         @reduxjs/toolkit react-redux
 

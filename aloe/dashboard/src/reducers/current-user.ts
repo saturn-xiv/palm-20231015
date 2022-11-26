@@ -6,6 +6,8 @@ import type { RootState } from "../store";
 
 const KEY = "token";
 export const DURATION = 60 * 60 * 1;
+export const TO_PROFILE = "/dashboard/status";
+export const TO_SIGN_IN = "/anonymous/users/sign-in";
 
 export const get = (): string | null => {
   const token = sessionStorage.getItem(KEY);
