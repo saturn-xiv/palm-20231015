@@ -11,7 +11,9 @@ import Nat from "./pages/dashboard/nat";
 import Hosts from "./pages/dashboard/hosts";
 import Status from "./pages/dashboard/status";
 import InBound from "./pages/dashboard/in-bound";
+import UserProfile from "./pages/dashboard/users/profile";
 import Anonymous from "./layouts/anonymous";
+import Dashboard from "./layouts/dashboard";
 
 const Widget = () => {
   return (
@@ -21,7 +23,7 @@ const Widget = () => {
           <Route path="sign-in" element={<SignIn />} />
         </Route>
       </Route>
-      <Route path="dashboard">
+      <Route path="dashboard" element={<Dashboard />}>
         <Route path="wan" element={<Wan />} />
         <Route path="lan" element={<Lan />} />
         <Route path="dmz" element={<Dmz />} />
@@ -29,6 +31,9 @@ const Widget = () => {
         <Route path="hosts" element={<Hosts />} />
         <Route path="in-bound" element={<InBound />} />
         <Route path="status" element={<Status />} />
+        <Route path="users">
+          <Route path="profile" element={<UserProfile />} />
+        </Route>
       </Route>
 
       <Route path="forbidden" element={<Forbidden />} />

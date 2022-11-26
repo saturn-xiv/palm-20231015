@@ -34,7 +34,8 @@ impl v1::user_server::User for Service {
                 let db = db.deref_mut();
                 let it: v1::UserProfile = try_grpc!(SettingDao::get(db, None))?;
                 if user.nickname == it.nickname
-                    && try_grpc!(self.hmac.sum(user.password.as_bytes()))? == it.password.as_bytes()
+                    && String::from_utf8_lossy(&try_grpc!(self.hmac.sum(user.password.as_bytes()))?)
+                        == it.password
                 {
                     info!("user {} sign in", it.nickname);
                     let ttl = to_chrono_duration!(req.ttl.unwrap_or_default());

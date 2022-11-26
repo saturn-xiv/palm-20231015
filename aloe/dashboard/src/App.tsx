@@ -5,7 +5,9 @@ import { BrowserRouter } from "react-router-dom";
 import store from "./store";
 import messages, { get as getLocale } from "./locales";
 import Router from "./Router";
+import onLoad from "./load";
 
+onLoad();
 const lang = getLocale();
 
 const Widget = () => {

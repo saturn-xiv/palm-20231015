@@ -1,5 +1,7 @@
+import { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import Alert from "@mui/material/Alert";
 import { useIntl, FormattedMessage } from "react-intl";
 import { useFormik } from "formik";
 import { InferType, string as yup_string, object as yup_object } from "yup";
@@ -35,6 +37,7 @@ const Widget = () => {
   const intl = useIntl();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const [message, setMessage] = useState<string | undefined>();
 
   const formik = useFormik<IFormInput>({
     initialValues: {
@@ -59,7 +62,7 @@ const Widget = () => {
 
       client.signIn(request, grpc_metadata(), function (err, response) {
         if (err) {
-          // message.error(err.message);
+          setMessage(err.message);
         } else {
           try {
             const user = to_user(response);
@@ -75,6 +78,16 @@ const Widget = () => {
 
   return (
     <Layout title="pages.anonymous.users.sign-in.title">
+      {message && (
+        <Alert
+          onClose={() => {
+            setMessage(undefined);
+          }}
+          severity="error"
+        >
+          {message}
+        </Alert>
+      )}
       <form onSubmit={formik.handleSubmit}>
         <TextField
           margin="normal"
