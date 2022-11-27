@@ -103,6 +103,7 @@ impl Iptables for Flush {
         let input = to_accept!(self.input);
         let output = to_accept!(self.output);
         let forward = to_accept!(self.forward);
+        let hostname = "rt";
 
         writeln!(
             buf,
@@ -111,6 +112,12 @@ impl Iptables for Flush {
 echo 1 > /proc/sys/net/ipv4/ip_forward
 echo 1 > /proc/sys/net/ipv4/tcp_syncookies
 echo 1 > /proc/sys/net/ipv4/icmp_ignore_bogus_error_responses
+
+echo "{hostname}" > /etc/hostname
+cat > /etc/hosts <EOF
+127.0.0.1       localhost
+::1             localhost
+EOF
 
 modprobe ip_nat_ftp
 
@@ -135,9 +142,8 @@ iptables -t security -X
 }
 
 pub struct Local {
-    pub wan: Vec<String>,
-    pub lan: Ipv4Net,
-    pub dmz: Ipv4Net,
+    pub lan: String,
+    pub dmz: String,
 }
 
 impl Iptables for Local {
@@ -159,40 +165,57 @@ iptables -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 # Allowing Established Outgoing Connections
 iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
+
+# Dropping Invalid Packets
+iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 "###
         )?;
 
-        {
-            for wan in self.wan.iter() {
-                {
-                    let network = self.lan.network();
-                    let cidr = self.lan.prefix_len();
-                    writeln!(
-                        buf,
-                        "iptables -t nat -A POSTROUTING -o {wan} -s {network}/{cidr} -j MASQUERADE"
-                    )?;
+        for (tcp, port) in &[
+            // ssh
+            (true, 22),
+            // http
+            (true, 80),
+            // dns
+            (true, 53),
+            (false, 53),
+            // dhcpcd
+            (false, 67),
+        ] {
+            for device in &[&self.lan, &self.dmz] {
+                ops_router::v1::rule::InBound {
+                    device: device.to_string(),
+                    tcp: *tcp,
+                    port: *port,
+                    source: None,
                 }
-                {
-                    let network = self.dmz.network();
-                    let cidr = self.dmz.prefix_len();
-                    writeln!(
-                        buf,
-                        "iptables -t nat -A POSTROUTING -o {wan} -s {network}/{cidr} -j MASQUERADE"
-                    )?;
-                }
+                .write(buf)?;
             }
         }
 
+        Ok(())
+    }
+}
+
+pub struct Forward {
+    pub wan: String,
+    pub lan: String,
+}
+
+impl Iptables for Forward {
+    fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
+        let wan = &self.wan;
+        let lan = &self.lan;
         writeln!(
             buf,
             r###"
-# Dropping Invalid Packets
-iptables -A INPUT -m conntrack --ctstate INVALID -j DROP        
-"###,
+iptables -t nat -A POSTROUTING -o {wan} -d {lan} -j MASQUERADE
+"###
         )?;
         Ok(())
     }
 }
+
 pub struct Block {
     pub device: String,
     pub source: String,

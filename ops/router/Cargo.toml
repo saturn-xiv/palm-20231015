@@ -25,6 +25,10 @@ features = ["serde"]
 version = "0.8"
 features = ["serde"]
 
+[dependencies.rand]
+version = "0.8"
+features = ["alloc"]
+
 [dependencies.tonic]
 version = "0.8"
 features = ["transport"]

@@ -75,7 +75,11 @@ fn yt() {
         }
         {
             let mut bound = ops_router_v1::RouterBoundRequest::default();
-            for (i, j) in [(2, 2), (2, 3), (3, 0), (3, 1), (3, 2), (3, 3)] {
+            for (i, j) in [
+                (2, 2),
+                (2, 3),
+                // (3, 0), (3, 1), (3, 2), (3, 3)
+            ] {
                 let (device, mac) = ethernet(i, j);
                 bound.items.push(device.clone());
                 let it = ops_router_v1::Wan {
@@ -105,8 +109,11 @@ fn yt() {
                 name: "On boaad".to_string(),
                 metric: 100,
                 capacity: 16,
-                ip: Some(ops_router_v1::wan::Ip::Dhcp(ops_router_v1::Dhcp {
-                    v6: false,
+                ip: Some(ops_router_v1::wan::Ip::Static(ops_router_v1::Static {
+                    address: "192.168.1.5/24".to_string(),
+                    gateway: "192.168.1.1".to_string(),
+                    dns1: "114.114.114.114".to_string(),
+                    dns2: None,
                 })),
             };
             SettingDao::set(db, Some(&device), &it).unwrap();

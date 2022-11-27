@@ -7,13 +7,16 @@ setup_ubuntu() {
     apt -y upgrade
     # isc-dhcp-server
     apt -y install crun podman buildah \
-        dnsmasq netplan.io ifmetric ldnsutils \
+        dnsmasq netplan.io ifmetric ldnsutils net-tools \
         openssl nmap pwgen sqlite3 yamllint \
         iptables iptables-persistent iproute2
     apt clean
     apt -y autoremove
     
-    # fix ssh too slow
+    if [ -f /etc/netplan/00-installer-config.yaml ]
+    then
+        mv /etc/netplan/00-installer-config.yaml $HOME/etc.netplan.00-installer-config.yaml
+    fi
     sed -ie 's/#UseDNS yes/UseDNS no/g' /etc/ssh/sshd_config
 }
 

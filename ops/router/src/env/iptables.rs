@@ -3,13 +3,15 @@ use std::fmt::Write as FmtWrite;
 use diesel::sqlite::SqliteConnection as Db;
 use palm::{
     network::{
-        iptables::{Flush, Iptables, Local, Persistent, SNat},
+        dnsmasq::Dhcpcd,
+        iptables::{Flush, Forward, Iptables, Local, Persistent, SNat},
         BASH_FOOTER, BASH_HEADER,
     },
     ops::router::v1,
     Result,
 };
 use prost::Message;
+use rand::{prelude::*, thread_rng};
 
 use super::super::models::{rule::Dao as RuleDao, setting::Dao as SettingDao};
 
@@ -27,6 +29,7 @@ pub fn script(db: &mut Db) -> Result<String> {
         }
         items
     };
+    let bound: v1::RouterBoundRequest = SettingDao::get(db, None)?;
 
     let mut buf = String::new();
     writeln!(buf, "{}", BASH_HEADER)?;
@@ -37,38 +40,28 @@ pub fn script(db: &mut Db) -> Result<String> {
         forward: true,
     }
     .write(&mut buf)?;
+
     Local {
-        wan: wan.iter().map(|x| x.device.clone()).collect::<_>(),
-        lan: lan.address.parse()?,
-        dmz: dmz.address.parse()?,
+        lan: lan.mac.clone(),
+        dmz: dmz.mac.clone(),
     }
     .write(&mut buf)?;
 
+    // enable ssh
+    for (device, _) in palm::network::ethernet::detect()?.iter() {
+        v1::rule::InBound {
+            device: device.clone(),
+            tcp: true,
+            port: 22,
+            source: None,
+        }
+        .write(&mut buf)?;
+    }
+
     for wan in wan.iter() {
         // IN
-        {
-            let mut items = Vec::new();
-            {
-                items.push(v1::rule::InBound {
-                    device: wan.device.clone(),
-                    tcp: true,
-                    port: 22,
-                    source: None,
-                });
-                items.push(v1::rule::InBound {
-                    device: wan.device.clone(),
-                    tcp: true,
-                    port: 80,
-                    source: None,
-                });
-            }
-            for rule in RuleDao::by_group(db, &wan.device)?.iter() {
-                if let Ok(ref it) = v1::rule::InBound::decode(&rule.content[..]) {
-                    items.push(it.clone());
-                }
-            }
-
-            for it in items.iter() {
+        for rule in RuleDao::by_group(db, &wan.device)?.iter() {
+            if let Ok(ref it) = v1::rule::InBound::decode(&rule.content[..]) {
                 it.write(&mut buf)?;
             }
         }
@@ -87,6 +80,28 @@ pub fn script(db: &mut Db) -> Result<String> {
                     .write(&mut buf)?;
                 }
             }
+        }
+    }
+
+    {
+        let mut wan = Vec::new();
+        for it in bound.items.iter() {
+            let it: v1::Wan = SettingDao::get(db, Some(it))?;
+            wan.push(it);
+        }
+        let mut rng = thread_rng();
+
+        let mut hosts = Vec::new();
+        hosts.extend(lan.hosts()?);
+        hosts.extend(dmz.hosts()?);
+        for ip in hosts.iter() {
+            let ip = ip.to_string();
+            let wan = wan.choose_weighted(&mut rng, |x| x.capacity)?;
+            Forward {
+                lan: ip,
+                wan: wan.device.clone(),
+            }
+            .write(&mut buf)?;
         }
     }
 

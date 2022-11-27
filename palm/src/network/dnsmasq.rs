@@ -46,7 +46,7 @@ pub fn apply() -> Result<()> {
 macro_rules! to_zone {
     ($x:expr, $h:expr) => {{
         let net: Ipv4Net = $x.address.parse()?;
-        let children = net.hosts();
+        let children = $x.hosts()?;
         let hosts: Vec<Host> = $h
             .iter()
             .filter(|x| {
@@ -76,8 +76,8 @@ macro_rules! to_zone {
             broadcast: net.broadcast().to_string(),
             address: net.addr().to_string(),
             begin: children
-                .into_iter()
-                .nth(1)
+                .iter()
+                .next()
                 .ok_or_else(|| {
                     IoError::new(
                         IoErrorKind::Other,
@@ -86,8 +86,9 @@ macro_rules! to_zone {
                 })?
                 .to_string(),
             end: children
+                .iter()
                 .rev()
-                .nth(1)
+                .next()
                 .ok_or_else(|| {
                     IoError::new(
                         IoErrorKind::Other,
@@ -171,5 +172,35 @@ impl Etc for Reslov {
         Path::new(&Component::RootDir)
             .join("etc")
             .join("resolv.conf")
+    }
+}
+
+pub trait Dhcpcd {
+    fn hosts(&self) -> Result<Vec<Ipv4Addr>>;
+}
+
+impl Dhcpcd for ops_router_v1::Lan {
+    fn hosts(&self) -> Result<Vec<Ipv4Addr>> {
+        let net: Ipv4Net = self.address.parse()?;
+        let addr = net.addr();
+        let items: Vec<Ipv4Addr> = net
+            .hosts()
+            .into_iter()
+            .filter(|x| *x != addr)
+            .collect::<_>();
+        Ok(items)
+    }
+}
+
+impl Dhcpcd for ops_router_v1::Dmz {
+    fn hosts(&self) -> Result<Vec<Ipv4Addr>> {
+        let net: Ipv4Net = self.address.parse()?;
+        let addr = net.addr();
+        let items: Vec<Ipv4Addr> = net
+            .hosts()
+            .into_iter()
+            .filter(|x| *x != addr)
+            .collect::<_>();
+        Ok(items)
     }
 }

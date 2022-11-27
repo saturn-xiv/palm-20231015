@@ -470,11 +470,13 @@ pub fn apply(db: Arc<Mutex<Db>>, immediately: bool) -> Result<()> {
         let dns: v1::Dns = SettingDao::get(db, None)?;
         let hosts = HostDao::all(db)?;
 
-        let bound: v1::RouterBoundRequest = SettingDao::get(db, None)?;
         let mut wan = Vec::new();
-        for it in bound.items.iter() {
-            let it: v1::Wan = SettingDao::get(db, Some(it))?;
-            wan.push(it);
+        for (device, _) in palm::network::ethernet::detect().unwrap_or_default() {
+            if let Ok(it) = SettingDao::get::<v1::Wan>(db, Some(&device)) {
+                if it.ip.is_some() {
+                    wan.push(it);
+                }
+            }
         }
 
         let firewall = iptables::script(db)?;
@@ -491,6 +493,7 @@ pub fn apply(db: Arc<Mutex<Db>>, immediately: bool) -> Result<()> {
         }
 
         {
+            // FIXME should save all wan
             // palm::network::save(&palm::network::iproute2::Config::new(wan))?;
             for it in wan.iter() {
                 it.save()?;
