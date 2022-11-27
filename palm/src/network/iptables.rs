@@ -114,7 +114,7 @@ echo 1 > /proc/sys/net/ipv4/tcp_syncookies
 echo 1 > /proc/sys/net/ipv4/icmp_ignore_bogus_error_responses
 
 echo "{hostname}" > /etc/hostname
-cat > /etc/hosts <EOF
+cat > /etc/hosts <<EOF
 127.0.0.1       localhost
 ::1             localhost
 EOF
@@ -208,9 +208,7 @@ impl Iptables for Forward {
         let lan = &self.lan;
         writeln!(
             buf,
-            r###"
-iptables -t nat -A POSTROUTING -o {wan} -d {lan} -j MASQUERADE
-"###
+            r###"iptables -t nat -A POSTROUTING -o {wan} -s {lan} -j MASQUERADE"###
         )?;
         Ok(())
     }

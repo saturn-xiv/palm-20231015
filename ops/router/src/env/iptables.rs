@@ -42,8 +42,8 @@ pub fn script(db: &mut Db) -> Result<String> {
     .write(&mut buf)?;
 
     Local {
-        lan: lan.mac.clone(),
-        dmz: dmz.mac.clone(),
+        lan: lan.device.clone(),
+        dmz: dmz.device.clone(),
     }
     .write(&mut buf)?;
 

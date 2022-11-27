@@ -2,6 +2,7 @@ use std::any::type_name;
 use std::env::temp_dir;
 use std::net::Ipv4Addr;
 use std::ops::{Deref, DerefMut};
+use std::path::{Component, Path};
 use std::sync::{Arc, Mutex};
 
 use diesel::{connection::Connection as DieselConnection, sqlite::SqliteConnection as Db};
@@ -488,6 +489,14 @@ pub fn apply(db: Arc<Mutex<Db>>, immediately: bool) -> Result<()> {
 
     if let Some((ref lan, ref dmz, ref wan, ref dns, hosts, ref firewall)) = cfg {
         {
+            let tmp = Path::new(&Component::RootDir).join("etc").join("netplan");
+            if tmp.exists() {
+                warn!("clean {}", tmp.display());
+                std::fs::remove_dir_all(&tmp)?;
+            }
+            std::fs::create_dir_all(&tmp)?;
+        }
+        {
             let hosts: Vec<v1::Host> = hosts.into_iter().map(|x| x.into()).collect::<_>();
             palm::network::dnsmasq::save(lan, dmz, dns, &hosts)?;
         }
@@ -506,7 +515,7 @@ pub fn apply(db: Arc<Mutex<Db>>, immediately: bool) -> Result<()> {
             iptables::apply(firewall)?;
         } else {
             let file = temp_dir().join(palm::timestamp_file("firewall", Some("sh")));
-            info!("write fiewwall rule to {}", file.display());
+            info!("write firewall rules to {}", file.display());
             std::fs::write(file, firewall)?;
         }
     }
