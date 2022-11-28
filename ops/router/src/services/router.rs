@@ -1,5 +1,6 @@
 use std::any::type_name;
 use std::env::temp_dir;
+use std::io::{Error as IoError, ErrorKind as IoErrorKind};
 use std::net::Ipv4Addr;
 use std::ops::{Deref, DerefMut};
 use std::path::{Component, Path};
@@ -153,15 +154,10 @@ impl v1::router_server::Router for Service {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
 
-            let lan = try_grpc!(SettingDao::get::<v1::Lan>(db, None)).unwrap_or_default();
-            for it in req.items.iter() {
-                try_grpc!(palm::network::ethernet::mac_address(it))?;
-                if &lan.device == it {
-                    return Err(Status::invalid_argument(type_name::<v1::Wan>()));
-                }
-            }
-
-            try_grpc!(SettingDao::set(db, None, &req))?;
+            let mut items = req.items;
+            items.dedup();
+            try_grpc!(validate_bound(db, &items))?;
+            try_grpc!(SettingDao::set(db, None, &v1::RouterBoundRequest { items }))?;
             Ok(())
         } else {
             Err(Status::permission_denied(type_name::<v1::UserProfile>()))
@@ -193,11 +189,10 @@ impl v1::router_server::Router for Service {
         let jwt = self.jwt.deref();
         let req = req.into_inner();
 
-        try_grpc!(req.validate())?;
-
         if let Ok(ref mut db) = self.db.lock() {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
+            try_grpc!(validate_wan(db, &req))?;
             try_grpc!(SettingDao::set(db, Some(req.device.as_str()), &req))?;
             Ok(())
         } else {
@@ -211,11 +206,11 @@ impl v1::router_server::Router for Service {
         let jwt = self.jwt.deref();
         let req = req.into_inner();
 
-        try_grpc!(req.validate())?;
-
         if let Ok(ref mut db) = self.db.lock() {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
+
+            try_grpc!(validate_lan(db, &req))?;
 
             let net = try_grpc!(req.address.parse::<Ipv4Net>())?;
             try_grpc!(db.transaction::<_, Error, _>(move |db| {
@@ -238,11 +233,11 @@ impl v1::router_server::Router for Service {
         let jwt = self.jwt.deref();
         let req = req.into_inner();
 
-        try_grpc!(req.validate())?;
-
         if let Ok(ref mut db) = self.db.lock() {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
+
+            try_grpc!(validate_dmz(db, &req))?;
 
             let net = try_grpc!(req.address.parse::<Ipv4Net>())?;
             try_grpc!(db.transaction::<_, Error, _>(move |db| {
@@ -462,6 +457,41 @@ impl From<Host> for v1::Host {
         }
     }
 }
+
+pub fn validate_bound(db: &mut Db, devices: &[String]) -> Result<()> {
+    if let Ok(ref it) = SettingDao::get::<v1::Lan>(db, None) {
+        if devices.contains(&it.device) {
+            return Err(Box::new(IoError::new(
+                IoErrorKind::Other,
+                format!("{} is lan device", it.device),
+            )));
+        }
+    }
+
+    if let Ok(ref it) = SettingDao::get::<v1::Dmz>(db, None) {
+        if devices.contains(&it.device) {
+            return Err(Box::new(IoError::new(
+                IoErrorKind::Other,
+                format!("{} is dmz device", it.device),
+            )));
+        }
+    }
+
+    for it in devices {
+        palm::network::ethernet::mac_address(it)?;
+        let it = SettingDao::get::<v1::Wan>(db, Some(it))?;
+        if let Some(v1::wan::Ip::Static(_)) = it.ip {
+            continue;
+        }
+        return Err(Box::new(IoError::new(
+            IoErrorKind::Other,
+            format!("wan {} must has static ip address", it.device),
+        )));
+    }
+
+    Ok(())
+}
+
 pub fn apply(db: Arc<Mutex<Db>>, immediately: bool) -> Result<()> {
     let cfg = if let Ok(ref mut db) = db.lock() {
         let db = db.deref_mut();
@@ -501,12 +531,8 @@ pub fn apply(db: Arc<Mutex<Db>>, immediately: bool) -> Result<()> {
             palm::network::dnsmasq::save(lan, dmz, dns, &hosts)?;
         }
 
-        {
-            // FIXME should save all wan
-            // palm::network::save(&palm::network::iproute2::Config::new(wan))?;
-            for it in wan.iter() {
-                it.save()?;
-            }
+        for it in wan.iter() {
+            it.save()?;
         }
 
         if immediately {
@@ -520,5 +546,105 @@ pub fn apply(db: Arc<Mutex<Db>>, immediately: bool) -> Result<()> {
         }
     }
 
+    Ok(())
+}
+
+macro_rules! check_ethernet_metric {
+    ($x:expr, $y:expr) => {{
+        if $x.metric == $y.metric {
+            Err(Box::new(IoError::new(
+                IoErrorKind::Other,
+                format!(
+                    "{} and {} metric({}) conflict",
+                    $x.device, $y.device, $x.metric
+                ),
+            )))
+        } else {
+            Ok(())
+        }
+    }};
+}
+
+macro_rules! check_ethernet_metric_from_db {
+    ($x:expr, $y:expr) => {{
+        for (it, _) in palm::network::ethernet::detect()?.iter() {
+            if it != &$y.device {
+                if let Ok(ref it) = SettingDao::get::<v1::Lan>($x, None) {
+                    check_ethernet_metric!(it, $y)?;
+                } else if let Ok(ref it) = SettingDao::get::<v1::Dmz>($x, None) {
+                    check_ethernet_metric!(it, $y)?;
+                } else if let Ok(ref it) = SettingDao::get::<v1::Wan>($x, Some(it)) {
+                    check_ethernet_metric!(it, $y)?;
+                }
+            }
+        }
+
+        Ok::<(), Error>(())
+    }};
+}
+
+pub fn validate_wan(db: &mut Db, wan: &v1::Wan) -> Result<()> {
+    wan.validate()?;
+    check_ethernet_metric_from_db!(db, wan)?;
+
+    if let Ok(ref it) = SettingDao::get::<v1::Lan>(db, None) {
+        if it.device == wan.device {
+            return Err(Box::new(IoError::new(
+                IoErrorKind::Other,
+                format!("{} is lan device", it.device),
+            )));
+        }
+    }
+
+    if let Ok(ref it) = SettingDao::get::<v1::Dmz>(db, None) {
+        if it.device == wan.device {
+            return Err(Box::new(IoError::new(
+                IoErrorKind::Other,
+                format!("{} is dmz device", it.device),
+            )));
+        }
+    }
+    Ok(())
+}
+
+pub fn validate_lan(db: &mut Db, lan: &v1::Lan) -> Result<()> {
+    lan.validate()?;
+    check_ethernet_metric_from_db!(db, lan)?;
+
+    if let Ok(ref it) = SettingDao::get::<v1::Dmz>(db, None) {
+        if it.device == lan.device {
+            return Err(Box::new(IoError::new(
+                IoErrorKind::Other,
+                format!("{} is dmz device", it.device),
+            )));
+        }
+    }
+    if SettingDao::get::<v1::Wan>(db, Some(&lan.device)).is_ok() {
+        return Err(Box::new(IoError::new(
+            IoErrorKind::Other,
+            format!("{} is wan device", lan.device),
+        )));
+    }
+    Ok(())
+}
+
+pub fn validate_dmz(db: &mut Db, dmz: &v1::Dmz) -> Result<()> {
+    dmz.validate()?;
+    check_ethernet_metric_from_db!(db, dmz)?;
+
+    if let Ok(ref it) = SettingDao::get::<v1::Lan>(db, None) {
+        if it.device == dmz.device {
+            return Err(Box::new(IoError::new(
+                IoErrorKind::Other,
+                format!("{} is lan device", it.device),
+            )));
+        }
+    }
+    if SettingDao::get::<v1::Wan>(db, Some(&dmz.device)).is_ok() {
+        return Err(Box::new(IoError::new(
+            IoErrorKind::Other,
+            format!("{} is wan device", dmz.device),
+        )));
+    }
     Ok(())
 }

@@ -96,7 +96,11 @@ impl ops_router::v1::Lan {
 
 impl Validate for ops_router::v1::Lan {
     fn validate(&self) -> StdResult<(), ValidationErrors> {
-        if self.validate_address() && self.validate_device() && self.validate_mac() {
+        if self.validate_address()
+            && self.validate_device()
+            && self.validate_mac()
+            && self.metric > 0
+        {
             return Ok(());
         }
         Err(ValidationErrors::new())
@@ -122,7 +126,11 @@ impl ops_router::v1::Dmz {
 
 impl Validate for ops_router::v1::Dmz {
     fn validate(&self) -> StdResult<(), ValidationErrors> {
-        if self.validate_address() && self.validate_device() && self.validate_mac() {
+        if self.validate_address()
+            && self.validate_device()
+            && self.validate_mac()
+            && self.metric > 0
+        {
             return Ok(());
         }
         Err(ValidationErrors::new())
@@ -185,7 +193,7 @@ impl ops_router::v1::Wan {
 
 impl Validate for ops_router::v1::Wan {
     fn validate(&self) -> StdResult<(), ValidationErrors> {
-        if self.validate_ip() && self.validate_device() && self.validate_mac() {
+        if self.validate_ip() && self.validate_device() && self.validate_mac() && self.metric > 0 {
             return Ok(());
         }
         Err(ValidationErrors::new())

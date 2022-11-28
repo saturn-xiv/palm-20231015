@@ -192,9 +192,6 @@ message Wan {
   string device = 1;
   string name = 2;
   uint32 capacity = 3;
-
-  // Use this to prioritize routes for devices by setting a lower metric on a
-  // preferred interface.
   uint32 metric = 4;
 
   string mac = 11;
