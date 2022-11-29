@@ -75,7 +75,7 @@ fn yt() {
         }
         {
             let mut bound = ops_router_v1::RouterBoundRequest::default();
-            for (i, j, _k) in [
+            for (i, j, k) in [
                 (2, 2, 100),
                 (2, 3, 101),
                 // (3, 0), (3, 1), (3, 2), (3, 3)
@@ -88,14 +88,15 @@ fn yt() {
                     name: format!("Line{}{}", i, j),
                     metric: 100 + i * 10 + j,
                     capacity: (i + 1) * 4,
-                    ip: Some(ops_router_v1::wan::Ip::Dhcp(ops_router_v1::Dhcp {
-                        v6: false,
-                    })), // ip: Some(ops_router_v1::wan::Ip::Static(ops_router_v1::Static {
-                         //     address: format!("192.168.{}.10/24", k),
-                         //     gateway: format!("192.168.{}.1", k),
-                         //     dns1: DNS_V4_1.to_string(),
-                         //     dns2: Some(DNS_V4_2.to_string()),
-                         // })),
+                    // ip: Some(ops_router_v1::wan::Ip::Dhcp(ops_router_v1::Dhcp {
+                    //     v6: false,
+                    // })),
+                    ip: Some(ops_router_v1::wan::Ip::Static(ops_router_v1::Static {
+                        address: format!("192.168.{}.10/24", k),
+                        gateway: format!("192.168.{}.1", k),
+                        dns1: DNS_V4_1.to_string(),
+                        dns2: Some(DNS_V4_2.to_string()),
+                    })),
                 };
                 SettingDao::set(db, Some(&device), &it).unwrap();
 

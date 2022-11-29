@@ -127,9 +127,11 @@ impl Args {
 
     fn run_arp_bind(db: Arc<Mutex<Db>>) -> Result<()> {
         let hosts = Self::get_arp_hosts(db)?;
-        debug!("total known {} hosts in local networks", hosts.len());
-        let arp = palm::network::dnsmasq::Arp { hosts };
-        arp.bind()?;
+        if !hosts.is_empty() {
+            debug!("total known {} hosts in local networks", hosts.len());
+            let arp = palm::network::dnsmasq::Arp { hosts };
+            arp.bind()?;
+        }
         Ok(())
     }
     fn get_arp_hosts(db: Arc<Mutex<Db>>) -> Result<Vec<palm::network::dnsmasq::Host>> {

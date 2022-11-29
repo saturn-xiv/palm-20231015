@@ -24,9 +24,22 @@ impl Arp {
             }
         }
         warn!("bind arp table {} hosts", self.hosts.len());
-        let out = Command::new("arp").arg("-f").arg(file.path()).output()?;
+        Self::bind_(file.path())
+    }
+
+    #[cfg(not(debug_assertions))]
+    fn bind_<P: AsRef<Path>>(file: P) -> Result<()> {
+        let file = file.as_ref();
+        let out = Command::new("arp").arg("-f").arg(file).output()?;
         let out = String::from_utf8(out.stdout)?;
         info!("{}", out);
+        Ok(())
+    }
+
+    #[cfg(debug_assertions)]
+    fn bind_<P: AsRef<Path>>(file: P) -> Result<()> {
+        let file = file.as_ref();
+        debug!("arp -f {}", file.display());
         Ok(())
     }
 }
