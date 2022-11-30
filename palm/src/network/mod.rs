@@ -4,6 +4,7 @@ pub mod ethernet;
 pub mod iproute2;
 pub mod iptables;
 pub mod netplan;
+pub mod nginx;
 
 use std::any::type_name;
 use std::fs::metadata;

@@ -9,7 +9,7 @@ setup_ubuntu() {
     apt -y install crun podman buildah \
         dnsmasq netplan.io ifmetric ldnsutils net-tools \
         openssl nmap pwgen sqlite3 yamllint \
-        iptables iptables-persistent iproute2
+        iptables iptables-persistent iproute2 traceroute
     apt clean
     apt -y autoremove
     

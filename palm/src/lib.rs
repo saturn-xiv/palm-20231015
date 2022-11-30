@@ -115,6 +115,7 @@ pub mod seo;
 pub mod session;
 pub mod tasks;
 pub mod twilio;
+pub mod wechat;
 pub mod youtube;
 
 use std::fs::{read_dir, remove_file, File};

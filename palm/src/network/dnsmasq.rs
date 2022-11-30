@@ -121,6 +121,7 @@ dig @xxx.xxx.xxx.xxx -4 www.google.com
 drill www.google.com
 nslookup www.google.com
 ping -I eth1 www.google.com
+cat /var/lib/misc/dnsmasq.leases
 
 https://wiki.archlinux.org/title/dnsmasq
 https://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml

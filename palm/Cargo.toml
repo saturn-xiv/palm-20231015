@@ -47,6 +47,7 @@ imageproc = "0.23"
 image = "0.24"
 aws-config = "0.51"
 aws-types = "0.51"
+async-mutex = "1"
 bytes = "1"
 bytesize = "1"
 lazy_static = "1"
@@ -83,7 +84,7 @@ features = ["transport"]
 
 [dependencies.reqwest]
 version = "0.11"
-features = ["json"]
+features = ["json", "cookies"]
 
 [dependencies.hyper]
 version = "0.14"

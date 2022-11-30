@@ -8,33 +8,11 @@ use nix::unistd::{Gid, Uid};
 use palm::{
     crypto::random::string as random_string,
     minio::{NginxConfig as MinioNginxConfig, SystemdConfig as MinioSystemdConfig},
+    network::nginx::Www as WwwNginxConf,
     Result, DESCRIPTION, NAME,
 };
 
 use super::super::env::Config;
-
-#[derive(Template)]
-#[template(path = "nginx/www.conf", escape = "none")]
-struct WwwNginxConf<'a> {
-    name: &'a str,
-    domain: &'a str,
-    port: u16,
-}
-
-impl WwwNginxConf<'_> {
-    pub fn write<P: AsRef<Path>>(&self, file: P) -> Result<()> {
-        let file = file.as_ref();
-        info!("generate file {}", file.display());
-        let tpl = self.render()?;
-        let mut fd = fs::OpenOptions::new()
-            .write(true)
-            .create_new(true)
-            .mode(0o644)
-            .open(file)?;
-        fd.write_all(tpl.as_bytes())?;
-        Ok(())
-    }
-}
 
 pub fn nginx_conf(cfg: &Config, domain: &str) -> Result<()> {
     let root = Path::new("tmp").join("nginx");
