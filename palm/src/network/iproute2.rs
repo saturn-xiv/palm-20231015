@@ -9,6 +9,10 @@ use super::Etc;
 /*
 ip route
 route -n
+tracert/traceroute www.google.com
+ping -c 4 -I wlp0s20f0u5 www.google.com
+ip rule sh
+ip route list
 curl cip.cc --interface wlp0s20f0u5
 */
 

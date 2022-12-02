@@ -511,8 +511,9 @@ impl v1::site_server::Site for Service {
         }
 
         let req = req.into_inner();
-        let res = try_grpc!(WeChatClient::open(req).await)?;
-        let res = try_grpc!(res.get_api_domain_ip().await)?;
+        let token = try_grpc!(req.open(self.redis.clone()).await)?;
+        let cli = WeChatClient { token };
+        let res = try_grpc!(cli.get_api_domain_ip().await)?;
 
         Ok(Response::new(v1::SiteWechatTestResponse { ip: res.items }))
     }

@@ -3,7 +3,7 @@ use std::fmt;
 use std::fmt::Display;
 use std::time::Duration;
 
-use ::redis::{cluster::ClusterClient, cmd, Commands};
+use ::redis::{cluster::ClusterClient, cmd, Commands, Value};
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 
 use super::super::Result;
@@ -82,8 +82,22 @@ impl Default for Config {
 // https://redis.io/commands
 impl super::Provider for ClusterConnection {
     fn version(&mut self) -> Result<String> {
-        let it: String = cmd("info").query::<String>(self)?;
-        Ok(it)
+        let val: Value = cmd("info").query(self)?;
+        let mut items = Vec::new();
+
+        if let Value::Bulk(it) = val {
+            for it in it {
+                if let Value::Bulk(it) = it {
+                    for it in it {
+                        if let Value::Data(it) = it {
+                            items.push(String::from_utf8(it)?);
+                        }
+                    }
+                }
+            }
+        }
+
+        Ok(items.join("\n"))
     }
     fn keys(&mut self) -> Result<Vec<(String, i64)>> {
         let mut items = Vec::new();

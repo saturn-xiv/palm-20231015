@@ -1,73 +1,78 @@
+use std::any::type_name;
 use std::fmt::Debug;
 use std::io::{Error as IoError, ErrorKind as IoErrorKind};
+use std::ops::DerefMut;
 
-use async_mutex::Mutex;
-use chrono::{Duration, NaiveDateTime, Utc};
+use chrono::Duration;
+use redis::Commands;
 use reqwest::{Client as HttpClient, Response};
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 
-use super::{nut::v1::WechatProfile, Result};
+use super::{cache::redis::Pool as RedisPool, nut::v1::WechatProfile, Result};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Error {
-    #[serde(rename(serialize = "errcode"))]
-    code: u32,
-    #[serde(rename(serialize = "errmsg"))]
-    message: String,
+    #[serde(rename = "errcode")]
+    pub code: u32,
+    #[serde(rename = "errmsg")]
+    pub message: String,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ApiDomainIp {
-    #[serde(rename(serialize = "ip_list"))]
+    #[serde(rename = "ip_list")]
     pub items: Vec<String>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Token {
     pub access_token: String,
-    pub expires_in: i64,
+    pub expires_in: usize,
 }
 
 impl WechatProfile {
-    pub async fn open(&self) -> Result<(String, NaiveDateTime)> {
+    pub async fn open(&self, redis: RedisPool) -> Result<String> {
+        let mut ch = redis.get()?;
+        let ch = ch.deref_mut();
+        let key = type_name::<Client>();
+        if let Ok(it) = Commands::get(ch, key) {
+            return Ok(it);
+        }
+
         let cli = HttpClient::builder().build()?;
         let it: Token = Client::body(
             cli.get(&Client::url("token"))
-                .query(&["grant_type", "client_credential"])
-                .query(&["appid", &self.app_id])
-                .query(&["secret", &self.app_secret])
+                .query(&[("grant_type", "client_credential")])
+                .query(&[("appid", &self.app_id)])
+                .query(&[("secret", &self.app_secret)])
                 .send()
                 .await?,
         )
         .await?;
-        Ok((
-            it.access_token,
-            Utc::now().naive_utc() + Duration::seconds(it.expires_in),
-        ))
+
+        Commands::set_ex(
+            ch,
+            key,
+            &it.access_token,
+            it.expires_in - (Duration::minutes(3).num_seconds() as usize),
+        )?;
+        Ok(it.access_token)
     }
 }
 
 pub struct Client {
-    status: Mutex<(String, NaiveDateTime)>,
-    profile: WechatProfile,
+    pub token: String,
 }
 
 impl Client {
     const ACCESS_TOKEN: &str = "access_token";
 
-    pub async fn open(profile: WechatProfile) -> Result<Self> {
-        let it = profile.open().await?;
-        Ok(Self {
-            status: Mutex::new(it),
-            profile,
-        })
-    }
-
     pub async fn get_api_domain_ip(&self) -> Result<ApiDomainIp> {
         let cli = HttpClient::builder().build()?;
+
         let res = cli
             .get(&Self::url("get_api_domain_ip"))
-            .query(&[Self::ACCESS_TOKEN, &self.access_token().await?])
+            .query(&[(Self::ACCESS_TOKEN, &self.token)])
             .send()
             .await?;
 
@@ -75,25 +80,19 @@ impl Client {
     }
 
     async fn body<T: DeserializeOwned + Debug>(res: Response) -> Result<T> {
-        if res.status().is_success() {
-            let body: T = res.json().await?;
-            debug!("{:?}", body);
-            return Ok(body);
+        let status = res.status();
+        let body = res.text().await?;
+        if !status.is_success() {
+            error!("{}\n{}", status, body);
+            return Err(Box::new(IoError::new(IoErrorKind::Other, body)));
+        }
+        if let Ok(it) = serde_json::from_str(&body) {
+            return Ok(it);
         }
 
-        let err: Error = res.json().await?;
+        let err: Error = serde_json::from_str(&body)?;
         error!("{:?}", err);
         Err(Box::new(IoError::new(IoErrorKind::Other, err.message)))
-    }
-
-    async fn access_token(&self) -> Result<String> {
-        let now = Utc::now().naive_utc();
-        let mut it = self.status.lock().await;
-        if now < it.1 + Duration::minutes(3) {
-            let cur = self.profile.open().await?;
-            *it = cur;
-        }
-        Ok(it.0.clone())
     }
 
     fn url(path: &str) -> String {
