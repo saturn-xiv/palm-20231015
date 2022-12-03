@@ -1,0 +1,6 @@
+[submodule "lemon/templates/clean-white"]
+	path = lemon/templates/clean-white
+	url = https://github.com/zhaohuabing/hugo-theme-cleanwhite
+[submodule "lemon/templates/universal"]
+	path = lemon/templates/universal
+	url = https://github.com/devcows/hugo-universal-theme.git
