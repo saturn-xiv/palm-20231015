@@ -103,7 +103,7 @@ version = "0.22"
 features = ["tokio-comp", "r2d2", "cluster", "connection-manager"]
 
 [dependencies.nix]
-version = "0.25"
+version = "0.26"
 features = ["user"]
 
 [dependencies.eui48]

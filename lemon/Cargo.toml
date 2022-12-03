@@ -1,8 +1,30 @@
 [package]
 name = "lemon"
-version = "0.1.0"
+version = "2022.12.3"
 edition = "2021"
+description = "A open-source static site generator."
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+log = "0.4"
+env_logger = "0.10"
+
+[dependencies.hyper]
+version = "0.14"
+features = ["full"]
+
+[dependencies.serde]
+version = "1"
+features = ["derive"]
+
+[dependencies.tokio]
+version = "1"
+features = ["full"]
+
+[dependencies.clap]
+version = "4"
+features = ["derive"]
+
+[dependencies.palm]
+path = '../palm'
