@@ -1,0 +1,6 @@
+pages:
+  tags:
+    index:
+      title: 所有标签
+  home:
+    title: 首页

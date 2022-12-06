@@ -1,0 +1,6 @@
+pages:
+  tags:
+    index:
+      title: Tags
+  home:
+    title: Home

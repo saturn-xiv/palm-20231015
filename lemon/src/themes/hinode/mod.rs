@@ -7,9 +7,12 @@ use std::path::{Component, Path, PathBuf};
 use askama::Template;
 use palm::Result;
 
-use super::super::models::{Config, Html};
+use super::super::{
+    i18n::I18n,
+    models::{Config, Html},
+};
 
-pub fn render(config: &Config, assets: impl AsRef<Path>) -> Result<Vec<Html>> {
+pub fn render(config: &Config, assets: impl AsRef<Path>, i18n: &I18n) -> Result<Vec<Html>> {
     let assets = assets.as_ref();
 
     let main_css = css(assets)?;
@@ -22,11 +25,7 @@ pub fn render(config: &Config, assets: impl AsRef<Path>) -> Result<Vec<Html>> {
             let item = Html {
                 language: site.language.clone(),
                 name: page.name.clone(),
-                body: models::Page {
-                    title: format!("{} | {}", page.title, site.title),
-                    body: page.body.clone(),
-                }
-                .render()?,
+                body: models::Page::new(i18n, config, site, page).render()?,
             };
             items.push(item);
         }
@@ -34,10 +33,7 @@ pub fn render(config: &Config, assets: impl AsRef<Path>) -> Result<Vec<Html>> {
             let item = Html {
                 language: site.language.clone(),
                 name: format!("by-tag/{}", tag.code),
-                body: models::ByTag {
-                    title: format!("{} | {}", tag.name, site.title),
-                }
-                .render()?,
+                body: models::ByTag::new(i18n, config, site, tag).render()?,
             };
             items.push(item);
         }
@@ -48,10 +44,7 @@ pub fn render(config: &Config, assets: impl AsRef<Path>) -> Result<Vec<Html>> {
             let item = Html {
                 language: site.language.clone(),
                 name: format!("by-author/{}", author.code),
-                body: models::ByTag {
-                    title: format!("{} | {}", author.name, site.title),
-                }
-                .render()?,
+                body: models::ByAuthor::new(i18n, config, site, author).render()?,
             };
             items.push(item);
         }
@@ -75,6 +68,7 @@ fn css<P: AsRef<Path>>(assets: P) -> Result<PathBuf> {
     }
     Err(Box::new(IoError::from(IoErrorKind::NotFound)))
 }
+
 fn js<P: AsRef<Path>>(assets: P) -> Result<PathBuf> {
     let assets = assets.as_ref();
     for it in read_dir(assets.join("js"))? {

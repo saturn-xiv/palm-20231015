@@ -18,6 +18,7 @@ use palm::{
 };
 
 use super::{
+    i18n::I18n,
     models::{Config as Layout, Home},
     themes::hinode,
 };
@@ -73,8 +74,9 @@ impl Args {
         }
 
         {
+            let i18n = I18n::new()?;
             let files = match self.theme {
-                Theme::Hinode => hinode::render(&cfg, &assets)?,
+                Theme::Hinode => hinode::render(&cfg, &assets, &i18n)?,
                 _ => {
                     error!("unsupported theme {}", self.theme);
                     Vec::new()

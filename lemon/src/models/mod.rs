@@ -83,6 +83,12 @@ pub struct Config {
     pub sites: Vec<site::Config>,
 }
 
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
+pub struct Language {
+    pub code: String,
+    pub name: String,
+}
+
 pub struct Html {
     pub language: String,
     pub name: String,
