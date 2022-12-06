@@ -1,12 +1,12 @@
 [submodule "lemon/templates/clean-white"]
-	path = lemon/templates/clean-white
+	path = lemon/src/themes/clean_white/theme
 	url = https://github.com/zhaohuabing/hugo-theme-cleanwhite
 [submodule "lemon/templates/universal"]
-	path = lemon/templates/universal
+	path = lemon/src/themes/universal/theme
 	url = https://github.com/devcows/hugo-universal-theme.git
 [submodule "lemon/templates/docsy"]
-	path = lemon/templates/docsy
+	path = lemon/src/themes/docsy/theme
 	url = https://github.com/google/docsy.git
-[submodule "lemon/templates/hugo-theme-hinode"]
-	path = lemon/templates/hugo-theme-hinode
-	url = https://github.com/markdumay/hugo-theme-hinode.git
+[submodule "lemon/src/themes/hinode/theme"]
+	path = lemon/src/themes/hinode/theme
+	url = https://github.com/markdumay/hugo-theme-hinode-child.git

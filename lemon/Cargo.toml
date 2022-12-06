@@ -7,7 +7,9 @@ description = "A open-source static site generator."
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+language-tags = "0.3"
 log = "0.4"
+yaml-rust = "0.4"
 env_logger = "0.10"
 
 [dependencies.hyper]
