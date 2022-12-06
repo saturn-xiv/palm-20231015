@@ -8,7 +8,7 @@ use yaml_rust::{Yaml, YamlLoader};
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Config {
-    pub code: String,
+    pub name: String,
     pub title: String,
     pub author: Option<String>,
     pub body: String,
@@ -63,7 +63,7 @@ impl Config {
             }
         }
 
-        it.code = get_file_name!(root)?;
+        it.name = get_file_name!(root)?;
         it.body = read_to_string(root.join(Self::README))?;
         Ok(it)
     }

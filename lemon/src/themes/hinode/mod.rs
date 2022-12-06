@@ -16,8 +16,47 @@ pub fn render(config: &Config, assets: impl AsRef<Path>) -> Result<Vec<Html>> {
     debug!("find main css {}", main_css.display());
     let main_js = js(assets)?;
     debug!("find main js {}", main_js.display());
-    let items = Vec::new();
-    // TODO
+    let mut items = Vec::new();
+    for site in config.sites.iter() {
+        for page in site.pages.iter() {
+            let item = Html {
+                language: site.language.clone(),
+                name: page.name.clone(),
+                body: models::Page {
+                    title: format!("{} | {}", page.title, site.title),
+                    body: page.body.clone(),
+                }
+                .render()?,
+            };
+            items.push(item);
+        }
+        for tag in site.tags.iter() {
+            let item = Html {
+                language: site.language.clone(),
+                name: format!("by-tag/{}", tag.code),
+                body: models::ByTag {
+                    title: format!("{} | {}", tag.name, site.title),
+                }
+                .render()?,
+            };
+            items.push(item);
+        }
+    }
+
+    for author in config.authors.iter() {
+        for site in config.sites.iter() {
+            let item = Html {
+                language: site.language.clone(),
+                name: format!("by-author/{}", author.code),
+                body: models::ByTag {
+                    title: format!("{} | {}", author.name, site.title),
+                }
+                .render()?,
+            };
+            items.push(item);
+        }
+    }
+
     Ok(items)
 }
 
