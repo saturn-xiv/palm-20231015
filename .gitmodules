@@ -4,3 +4,9 @@
 [submodule "lemon/templates/universal"]
 	path = lemon/templates/universal
 	url = https://github.com/devcows/hugo-universal-theme.git
+[submodule "lemon/templates/docsy"]
+	path = lemon/templates/docsy
+	url = https://github.com/google/docsy.git
+[submodule "lemon/templates/hugo-theme-hinode"]
+	path = lemon/templates/hugo-theme-hinode
+	url = https://github.com/markdumay/hugo-theme-hinode.git
