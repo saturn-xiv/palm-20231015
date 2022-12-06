@@ -66,6 +66,7 @@ pub mod site;
 use std::fs::{copy as copy_file, create_dir_all, read_dir, read_to_string};
 use std::path::Path;
 
+use askama::Template;
 use chrono::{Datelike, Utc};
 use palm::{copy_dir_all, Result};
 use serde::{Deserialize, Serialize};
@@ -73,12 +74,19 @@ use yaml_rust::{Yaml, YamlLoader};
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Config {
+    pub home: String,
     pub default_language: String,
     pub languages: Vec<String>,
     pub authors: Vec<Author>,
     pub copyright: String,
     pub contact: Contact,
     pub sites: Vec<site::Config>,
+}
+
+pub struct Html {
+    pub language: String,
+    pub name: String,
+    pub body: String,
 }
 
 impl Config {
@@ -90,6 +98,8 @@ impl Config {
             let buf = read_to_string(&root.join("config.yml"))?;
             let cfg = YamlLoader::load_from_str(&buf)?;
             let cfg = cfg.into_iter().next().unwrap_or(Yaml::BadValue);
+
+            it.home = get_yaml_string!(cfg, "home");
             it.default_language = get_yaml_string_or!(cfg, "default-language", "en-US");
             load_yaml_strings!(it.languages, cfg, "languages");
             it.copyright =
@@ -183,4 +193,10 @@ impl Author {
         };
         Ok(it)
     }
+}
+
+#[derive(Template)]
+#[template(path = "home.html")]
+pub struct Home {
+    pub locale: String,
 }

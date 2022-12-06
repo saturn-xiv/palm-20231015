@@ -13,18 +13,14 @@ use askama::Template;
 use palm::{
     cache::redis::Pool as CachePool,
     handlers::home::Home,
-    seo::{rss, Provider as SeoProvider},
+    seo::{
+        rss::{build as build_rss, Link as RssLink},
+        Provider as SeoProvider, RobotsTxt,
+    },
     try_web,
 };
 
 use super::{i18n::I18n, orm::postgresql::Pool as DbPool, services::site::Service as SiteService};
-
-// https://developers.google.com/search/docs/advanced/robots/create-robots-txt
-#[derive(Template)]
-#[template(path = "robots.txt", escape = "none")]
-struct RobotsTxt {
-    home: String,
-}
 
 #[get("/robots.txt")]
 pub async fn robots_txt(home: Home) -> WebResult<impl Responder> {
@@ -53,7 +49,9 @@ pub async fn rss_xml(
     let links = try_web!(SeoProvider::by_lang(ch, &lang))?;
     let title = I18n::t(db, &lang, SiteService::SITE_TITLE, &None::<String>);
     let description = I18n::t(db, &lang, SiteService::SITE_DESCRIPTION, &None::<String>);
-    let buf = try_web!(rss(&home, &title, &description, &links))?;
+
+    let links: Vec<RssLink> = links.into_iter().map(|x| x.into()).collect::<_>();
+    let buf = try_web!(build_rss(&home, &title, &description, &links))?;
     Ok(HttpResponse::Ok()
         .content_type(ContentType::xml())
         .body(buf))

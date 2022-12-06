@@ -174,6 +174,7 @@ pub fn copy_dir_all(src: impl AsRef<Path>, dst: impl AsRef<Path>) -> IoResult<()
         if ft.is_dir() {
             copy_dir_all(from, to)?;
         } else {
+            debug!("copy file {} => {}", from.display(), to.display());
             copy_file(from, to)?;
         }
     }

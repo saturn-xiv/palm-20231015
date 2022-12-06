@@ -10,7 +10,10 @@ use palm::{
     crypto::Aes,
     handlers::home::Home,
     nut::v1::{BaiduProfile, GoogleProfile, IndexNowProfile},
-    seo::{sitemap_index, sitemap_urlset, Provider as SeoProvider},
+    seo::{
+        sitemap::{index as sitemap_index, urlset as sitemap_urlset, Link as SitemapLink},
+        Provider as SeoProvider,
+    },
     try_web,
 };
 use serde::{Deserialize, Serialize};
@@ -49,6 +52,7 @@ pub async fn by_lang(
     let ch = ch.deref_mut();
     let home = home.0.unwrap_or_default();
     let links = try_web!(SeoProvider::by_lang(ch, &params.0))?;
+    let links: Vec<SitemapLink> = links.into_iter().map(|x| x.into()).collect::<_>();
     let body = try_web!(sitemap_urlset(&home, &links))?;
     Ok(HttpResponse::Ok()
         .content_type(ContentType::xml())

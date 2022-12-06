@@ -1,21 +1,29 @@
 pub mod baidu;
 pub mod google;
 pub mod index_now;
+pub mod rss;
+pub mod sitemap;
 
 use std::any::type_name;
 use std::cmp::{Ord, Ordering};
-use std::io::{Error as IoError, ErrorKind as IoErrorKind};
 
-use chrono::{DateTime, FixedOffset, NaiveDateTime, Utc};
+use askama::Template;
+use chrono::NaiveDateTime;
 use redis::Commands;
-use rss::ChannelBuilder as RssChannelBuilder;
 use serde::{Deserialize, Serialize};
-use sitemap::{
-    structs::{SiteMapEntry, UrlEntry},
-    writer::SiteMapWriter,
-};
 
 use super::{cache::redis::ClusterConnection, Result};
+
+// https://developers.google.com/search/docs/advanced/robots/create-robots-txt
+#[derive(Template)]
+#[template(path = "robots.txt", escape = "none")]
+pub struct RobotsTxt {
+    pub home: String,
+}
+
+impl RobotsTxt {
+    pub const FILE: &str = "robots.txt";
+}
 
 // https://www.sitemaps.org/protocol.html#
 // https://validator.w3.org/feed/docs/rss2.html
@@ -71,68 +79,4 @@ impl Provider for ClusterConnection {
         Commands::hset(self, type_name::<Link>(), lang, buf.as_slice())?;
         Ok(())
     }
-}
-pub fn sitemap_index(home: &str, links: &[String]) -> Result<Vec<u8>> {
-    let mut buf = Vec::new();
-    let writer = SiteMapWriter::new(&mut buf);
-    {
-        let mut writer = writer.start_sitemapindex()?;
-        for it in links {
-            writer.sitemap(SiteMapEntry::builder().loc(format!("{}{}", home, it)))?;
-        }
-        writer.end()?;
-    }
-
-    Ok(buf)
-}
-pub fn sitemap_urlset(home: &str, links: &[Link]) -> Result<Vec<u8>> {
-    let mut buf = Vec::new();
-    let writer = SiteMapWriter::new(&mut buf);
-    {
-        let mut writer = writer.start_urlset()?;
-        for it in links {
-            writer.url(
-                UrlEntry::builder()
-                    .lastmod(DateTime::<Utc>::from_utc(it.updated_at, Utc).with_timezone(
-                        &FixedOffset::east_opt(0).ok_or_else(|| {
-                            Box::new(IoError::new(IoErrorKind::Other, "bad datetime"))
-                        })?,
-                    ))
-                    .changefreq(it.change_freq.clone().into())
-                    .priority(it.priority)
-                    .loc(format!("{}{}", home, it.path)),
-            )?;
-        }
-        writer.end()?;
-    }
-
-    Ok(buf)
-}
-pub fn rss(home: &str, title: &str, description: &str, links: &[Link]) -> Result<Vec<u8>> {
-    let pub_date: DateTime<Utc> = links
-        .first()
-        .map_or_else(Utc::now, |x| DateTime::<Utc>::from_utc(x.updated_at, Utc));
-    let mut ch = RssChannelBuilder::default()
-        .title(title.to_string())
-        .link(home.to_string())
-        .pub_date(Some(pub_date.to_rfc2822()))
-        .description(description.to_string())
-        .build();
-    for it in links {
-        let url = format!("{}{}", home, it.path);
-        ch.items.push(rss::Item {
-            guid: Some(rss::Guid {
-                value: url.clone(),
-                permalink: true,
-            }),
-            title: Some(it.title.clone()),
-            link: Some(url),
-            description: Some(it.description.clone()),
-            pub_date: Some(DateTime::<Utc>::from_utc(it.updated_at, Utc).to_rfc2822()),
-            ..Default::default()
-        });
-    }
-    let mut buf = Vec::new();
-    ch.write_to(&mut buf)?;
-    Ok(buf)
 }
