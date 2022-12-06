@@ -118,9 +118,8 @@ pub mod twilio;
 pub mod wechat;
 pub mod youtube;
 
-use std::fs::{read_dir, remove_file, File};
-use std::io::prelude::*;
-use std::io::{Error as IoError, ErrorKind as IoErrorKind};
+use std::fs::{copy as copy_file, create_dir_all, read_dir, remove_file, File};
+use std::io::{prelude::*, Error as IoError, ErrorKind as IoErrorKind, Result as IoResult};
 use std::os::unix::fs::PermissionsExt;
 use std::path::Path;
 use std::process::{Command, Output};
@@ -157,6 +156,26 @@ pub fn check_config_permission<P: AsRef<Path>>(file: P) -> Result<()> {
     if ![0o100400, 0o100600].contains(&mode) {
         error!("bad file ({}) mode({:#o})", file.display(), mode);
         return Ok(());
+    }
+    Ok(())
+}
+
+pub fn copy_dir_all(src: impl AsRef<Path>, dst: impl AsRef<Path>) -> IoResult<()> {
+    let src = src.as_ref();
+    let dst = dst.as_ref();
+    create_dir_all(dst)?;
+
+    for it in read_dir(src)? {
+        let it = it?;
+        let ft = it.file_type()?;
+
+        let from = it.path();
+        let to = dst.join(it.file_name());
+        if ft.is_dir() {
+            copy_dir_all(from, to)?;
+        } else {
+            copy_file(from, to)?;
+        }
     }
     Ok(())
 }
