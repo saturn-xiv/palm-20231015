@@ -5,7 +5,14 @@
     <title>{% block title %} {{ title }} {% endblock %} | {{ site.title }}</title>
   </head>
   <body>
-    {% block content %} {% endblock %} 
-    {% include "hinode/layout/footer.html" %}
+    <div class="main d-flex flex-column">
+      {% include "hinode/layout/nav-bar.html" %}
+      <div class="justify-content-center flex-grow-1">
+        <div class=container-fluid>
+          {% block content %} {% endblock %}
+        </div>
+      </div>
+      {% include "hinode/layout/footer.html" %}
+    </div>
   </body>
 </html>

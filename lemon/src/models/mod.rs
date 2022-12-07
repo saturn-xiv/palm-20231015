@@ -75,6 +75,7 @@ use yaml_rust::{Yaml, YamlLoader};
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Config {
     pub home: String,
+    pub logo: String,
     pub favicon: String,
     pub default_language: String,
     pub languages: Vec<String>,
@@ -82,6 +83,9 @@ pub struct Config {
     pub copyright: String,
     pub contact: Contact,
     pub sites: Vec<site::Config>,
+    pub css: Vec<PathBuf>,
+    pub js: Vec<PathBuf>,
+    pub license: Option<String>,
 }
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
@@ -106,6 +110,9 @@ impl Html {
 
 impl Config {
     pub const ASSETS: &str = "assets";
+    pub const APPLICATION_JS: &str = "application.js";
+    pub const MARKED_JS: &str = "marked.min.js";
+
     pub fn new<P: AsRef<Path>>(root: P) -> Result<Self> {
         let root = root.as_ref();
         debug!("load global information from {}", root.display());
@@ -116,11 +123,13 @@ impl Config {
             let cfg = cfg.into_iter().next().unwrap_or(Yaml::BadValue);
 
             it.home = get_yaml_string!(cfg, "home");
+            it.logo = get_yaml_string_or!(cfg, "favicon", "/logo.svg");
             it.favicon = get_yaml_string_or!(cfg, "favicon", "/favicon.ico");
             it.default_language = get_yaml_string_or!(cfg, "default-language", "en-US");
             load_yaml_strings!(it.languages, cfg, "languages");
             it.copyright =
                 get_yaml_string_or_else!(cfg, "copyright", || format!("©{}", Utc::now().year()));
+            it.license = get_yaml_optional_string!(cfg, "license");
 
             if let Some(authors) = cfg["authors"].as_vec() {
                 for author in authors {

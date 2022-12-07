@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 use palm::Result;
 use yaml_rust::{Yaml, YamlLoader};
 
@@ -29,6 +31,16 @@ impl I18n {
         }
 
         Ok(Self { items })
+    }
+
+    pub fn by_lang(&self, lang: &str) -> HashMap<String, String> {
+        let mut items = HashMap::new();
+        for (l, c, m) in self.items.iter() {
+            if l == lang {
+                items.insert(c.clone(), m.clone());
+            }
+        }
+        items
     }
 
     pub fn t(&self, lang: &str, code: &str) -> String {

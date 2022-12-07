@@ -1,0 +1,47 @@
+<div class="justify-content-center">
+    <header>
+        <nav class="navbar navbar-expand-sm bg-white navbar-light m-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{ site.language }}">
+                    <img src="{{ site.logo }}" alt="logo" height=30>
+                </a>
+                <button class="navbar-toggler collapsed me-n3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded=false aria-label="Toggle navigation">
+                    <span class="toggler-icon top-bar"></span>
+                    <span class="toggler-icon middle-bar"></span>
+                    <span class="toggler-icon bottom-bar"></span>
+                </button>
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                    <div class="d-flex d-none d-sm-block">
+                        <form class="search position-relative flex-grow-1 me-auto">
+                            <input id=search class="form-control is-search" type="search" placeholder="Search this site..." aria-label="Search this site..." autocomplete=off>
+                            <div id="suggestions" class="shadow bg-white rounded d-none"></div>
+                        </form>
+                    </div>
+                    <ul class="navbar-nav ms-auto">
+                        {% for it in site.top_nav_bar %}
+                        <li class=nav-item>
+                            <a class="nav-link" href="/{{ site.language }}{{ it.to }}">
+                                <span>{{ it.title }}</span>
+                            </a>
+                        </li>
+                        {% endfor %}                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href=# role=button data-bs-toggle=dropdown aria-expanded=false>
+                                <i class="fa-regular fa-globe"></i> {{ site.i18n["nav-bar.languages"] }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                {% for it in site.languages %}
+                                <li>
+                                    <a class="dropdown-item {% if site.language == it.code %}active{% endif %}" href="/{{ it.code }}/">
+                                        {{ it.name }}
+                                    </a>
+                                </li>
+                                {% endfor %}                                
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+ </div>

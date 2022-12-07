@@ -4,3 +4,5 @@ pages:
       title: Tags
   home:
     title: Home
+nav-bar:
+  languages: Languages

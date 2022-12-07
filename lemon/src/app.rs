@@ -1,5 +1,5 @@
 use std::fmt;
-use std::fs::{create_dir_all, remove_dir_all, File};
+use std::fs::{copy as copy_file, create_dir_all, remove_dir_all, File};
 use std::io::prelude::*;
 use std::path::{Path, PathBuf};
 
@@ -65,13 +65,24 @@ impl Args {
 
         let assets = Path::new("assets").join("themes").join(&theme);
 
-        let cfg = Layout::new(&self.src)?;
+        let cfg = {
+            let mut it = Layout::new(&self.src)?;
+            it.js.push(Path::new(Layout::MARKED_JS).to_path_buf());
+            it
+        };
         debug!("{:?}", cfg);
         {
             if self.target.exists() {
                 remove_dir_all(&self.target)?;
             }
             copy_dir_all(&assets, &self.target)?;
+            {
+                let third = Path::new("node_modules");
+                copy_file(
+                    third.join("marked").join(Layout::MARKED_JS),
+                    &self.target.join(Layout::MARKED_JS),
+                )?;
+            }
             cfg.copy_assets(&self.src, &self.target)?;
         }
 

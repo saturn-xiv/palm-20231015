@@ -1,10 +1,12 @@
+use std::collections::HashMap;
+
 use askama::Template;
 
 use super::super::super::{
     i18n::I18n,
     models::{
         page::Config as PageItem,
-        site::{Config as Site, NavBar, Tag},
+        site::{Config as Site, Contact as SiteContact, NavBar, Tag},
         Author, Config as Env, Contact, Language,
     },
 };
@@ -88,13 +90,20 @@ impl ByTag {
 }
 
 pub struct Layout {
+    pub logo: String,
+    pub favicon: String,
     pub language: String,
     pub languages: Vec<Language>,
     pub title: String,
     pub copyright: String,
+    pub license: Option<String>,
     pub description: String,
     pub contact: Contact,
     pub top_nav_bar: Vec<NavBar>,
+    pub css: Vec<String>,
+    pub js: Vec<String>,
+    pub i18n: HashMap<String, String>,
+    pub footer: SiteContact,
 }
 
 impl Layout {
@@ -108,13 +117,28 @@ impl Layout {
             })
             .collect::<_>();
         Self {
+            logo: env.logo.clone(),
+            favicon: env.favicon.clone(),
             language: site.language.clone(),
             languages,
+            footer: site.contact.clone(),
+            license: env.license.clone(),
             title: site.title.clone(),
             copyright: env.copyright.clone(),
             description: site.description.clone(),
             contact: env.contact.clone(),
             top_nav_bar: site.nav.get("top").cloned().unwrap_or_default(),
+            css: env
+                .css
+                .iter()
+                .map(|x| x.display().to_string())
+                .collect::<_>(),
+            js: env
+                .js
+                .iter()
+                .map(|x| x.display().to_string())
+                .collect::<_>(),
+            i18n: i18n.by_lang(&site.language),
         }
     }
 }

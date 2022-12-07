@@ -1,0 +1,49 @@
+<div class=justify-content-center>
+    <div class=container-fluid>
+        <div class="row row-cols-1 row-cols-sm-4 bg-primary p-3 bg-opacity-10 align-items-center">
+            <div class="col col-md-2 d-none d-md-block"></div>
+            <div class="col col-sm-6 col-md-4">
+                <div class="fs-3 fw-bold">{{ site.footer.title }}</div>
+                <p>{{ site.footer.body }}</p>
+            </div>
+            <div class="col text-sm-start text-center col-sm-6 col-md-4">                
+                {% match site.contact.linkedin %}                
+                    {% when Some with (val) %}
+                        <a href="{{ val }}" target=_blank rel=noopener aria-label=LinkedIn class="text-decoration-none link-secondary d-inline p-2">
+                            <i class="fab fa-linkedin fa-2x"></i>
+                        </a>
+                    {% when None %}
+                {% endmatch %}
+                {% match site.contact.github %}                
+                    {% when Some with (val) %}
+                        <a href="{{ val }}" target=_blank rel=noopener aria-label=GitHub class="text-decoration-none link-secondary d-inline p-2">
+                            <i class="fab fa-github fa-2x"></i>
+                        </a>                        
+                    {% when None %}
+                {% endmatch %}
+                {% match site.contact.medium %}                
+                    {% when Some with (val) %}
+                        <a href="{{ val }}" target=_blank rel=noopener aria-label=Medium class="text-decoration-none link-secondary d-inline p-2">
+                            <i class="fab fa-medium fa-2x"></i>
+                        </a>                        
+                    {% when None %}
+                {% endmatch %}
+            </div>
+            <div class="col col-md-2 d-none d-md-block"></div>
+        </div>
+    </div>
+    <footer class="container-fluid text-center p-3">
+        <small class=text-secondary>
+            {{ site.copyright }}
+            {% match site.license %}                            
+                {% when Some with (val) %}
+                    {% if val == "cc" %}
+                        Licensed under Creative Commons (<a href=https://creativecommons.org/licenses/by-nc-sa/4.0/ class="link-secondary" target="_blank">CC BY-NC-SA 4.0</a>).
+                    {% else %}
+                        {{ val }}
+                    {% endif %}
+                {% when None %}
+            {% endmatch %}            
+        </small>
+    </footer>
+ </div>

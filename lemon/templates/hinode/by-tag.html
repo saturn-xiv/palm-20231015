@@ -1,5 +1,21 @@
+{% extends "hinode/layout/index.html" %}
+
 {% block title %} {{ tag.name }} {% endblock %}
 
 {% block content %}
-<h1>by tag {{ tag.code }}</h1>
+
+<div class="row row-cols-1 row-cols-sm-3 align-items-center p-3">
+    <div class="col col-md-2 d-none d-md-block"></div>
+    <div class="col col-sm-12 col-md-8">
+        <h1>{{ tag.name }}</h1>
+        <div class="row mt-5"></div>
+        {% for it in pages %}
+            <div class="row mt-2">
+                <div class="d-none d-sm-block col-sm-3 mt-auto text-right">{{ it.published_at }}</div>
+                <div class=col><a href="/{{ site.language }}/{{ it.name }}/">{{ it.title }}</a></div>
+            </div>   
+        {% endfor %} 
+    </div>
+    <div class="col col-md-2 d-none d-md-block"></div>
+</div>    
 {% endblock %}
