@@ -34,6 +34,7 @@ pub fn render(config: &Config, assets: impl AsRef<Path>, i18n: &I18n) -> Result<
     let mut items = Vec::new();
     for site in config.sites.iter() {
         for page in site.pages.iter() {
+            debug!("build page {}", page.name);
             let item = Html {
                 language: site.language.clone(),
                 path: Some(Path::new(&page.name).to_path_buf()),
@@ -42,6 +43,7 @@ pub fn render(config: &Config, assets: impl AsRef<Path>, i18n: &I18n) -> Result<
             items.push(item);
         }
         for tag in site.tags.iter() {
+            debug!("build tag {}", tag.name);
             let item = Html {
                 language: site.language.clone(),
                 path: Some(Path::new("by-tag").join(&tag.code)),
@@ -59,6 +61,7 @@ pub fn render(config: &Config, assets: impl AsRef<Path>, i18n: &I18n) -> Result<
     }
 
     for author in config.authors.iter() {
+        debug!("build author {}", author.name);
         for site in config.sites.iter() {
             let item = Html {
                 language: site.language.clone(),

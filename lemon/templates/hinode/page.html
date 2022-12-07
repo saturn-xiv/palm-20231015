@@ -1,5 +1,68 @@
 {% block title %} {{ page.title }} {% endblock %}
 
 {% block content %}
-<div> {{ page.body }}</div>
+
+<div class="row row-cols-1 row-cols-sm-3 align-items-center p-3">
+    <div class="col col-md-2 d-none d-md-block"></div>
+    <div class="col col-sm-12 col-md-8">
+        {% for it in tags %}
+            <a class="btn btn-light btn-sm" href="/{{ site.language }}/by-tag/{{ it.code }}" role="button">
+                {{ it.name }}
+            </a>
+        {% endfor %}            
+        <h1>{{ page.title }}</h1>
+        <small class="text-muted text-uppercase">
+            {{ page.published_at }}
+        </small>
+    </div>
+    <div class="col col-md-2 d-none d-md-block"></div>
+</div>
+<div class="row row-cols-1 row-cols-sm-3 align-items-center p-3">
+    <div class="col col-md-2 d-none d-md-block"></div>
+    <div class="col col-sm-12 col-md-8">
+        {% match page.cover %}                
+            {% when Some with (val) %}
+                <figure class="figure">
+                    <img class="figure-img img-fluid rounded" sizes="100vw" src="{{ val }}" alt="{{ page.title }}">
+                    <figcaption class="figure-caption">
+                        <!-- Photo by -->
+                        <a href=""></a> 
+                        <!-- on  -->
+                        <a href=""></a>
+                    </figcaption>
+                </figure>                       
+            {% when None %}
+        {% endmatch %}
+    </div>
+    <div class="col col-md-2 d-none d-md-block"></div>
+</div>
+<div class="row row-cols-1 row-cols-sm-2 p-3">
+    <div class="col col-md-2 d-none d-md-block"></div>
+    <div class="col col-sm-12 col-md-8">
+        <p class="markdown-content">{{ page.body }}</p>
+        <div class="row row-cols-2 mt-5">
+            <div class="col">
+                {% match page.next %}                
+                    {% when Some with (val) %}
+                        <a class="next" href="/{{ site.language }}/{{ val }}/">
+                            <i class="fas fa-arrow-left"></i>
+                            {{ site.pages[val] }}                            
+                        </a>                        
+                    {% when None %}
+                {% endmatch %}                
+            </div>
+            <div class="col text-end">
+                {% match page.previous %}                
+                    {% when Some with (val) %}
+                        <a class="previous" href="/{{ site.language }}/{{ val }}/">
+                            {{ site.pages[val] }} 
+                            <i class="fas fa-arrow-right"></i>
+                        </a>                      
+                    {% when None %}
+                {% endmatch %}                
+            </div>
+        </div>
+    </div>
+    <div class="col col-md-2 d-none d-md-block"></div>
+</div>
 {% endblock %}

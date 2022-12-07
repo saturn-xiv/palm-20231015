@@ -33,6 +33,7 @@ pub struct Page {
     pub author: Option<Author>,
     pub page: PageItem,
     pub site: Layout,
+    pub tags: Vec<Tag>,
 }
 
 impl Page {
@@ -45,10 +46,19 @@ impl Page {
                 }
             }
         }
+        let mut tags = Vec::new();
+        for code in page.tags.iter() {
+            for it in site.tags.iter() {
+                if &it.code == code {
+                    tags.push(it.clone());
+                }
+            }
+        }
         Self {
             author,
             site: Layout::new(i18n, env, site),
             page: page.clone(),
+            tags,
         }
     }
 }
@@ -104,6 +114,7 @@ pub struct Layout {
     pub js: Vec<String>,
     pub i18n: HashMap<String, String>,
     pub footer: SiteContact,
+    pub pages: HashMap<String, String>,
 }
 
 impl Layout {
@@ -116,6 +127,13 @@ impl Layout {
                 name: i18n.t(x, &format!("languages.{}", x)),
             })
             .collect::<_>();
+        let pages = {
+            let mut items = HashMap::new();
+            for it in site.pages.iter() {
+                items.insert(it.name.clone(), it.title.clone());
+            }
+            items
+        };
         Self {
             logo: env.logo.clone(),
             favicon: env.favicon.clone(),
@@ -139,6 +157,7 @@ impl Layout {
                 .map(|x| x.display().to_string())
                 .collect::<_>(),
             i18n: i18n.by_lang(&site.language),
+            pages,
         }
     }
 }
