@@ -1,5 +1,5 @@
 use std::cmp::Ordering;
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, HashMap};
 use std::fs::{read_dir, read_to_string};
 use std::path::Path;
 
@@ -12,12 +12,13 @@ use super::page::Config as Page;
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Config {
     pub title: String,
-    pub keywords: Vec<String>,
     pub description: String,
     pub language: String,
     pub tags: Vec<Tag>,
     pub pages: Vec<Page>,
+    pub panels: HashMap<String, Panel>,
     pub contact: Contact,
+    pub welcome: Option<Welcome>,
     pub nav: BTreeMap<String, Vec<NavBar>>,
 }
 
@@ -73,8 +74,14 @@ impl Config {
 
             it.title = get_yaml_string!(cfg, "title");
             it.description = get_yaml_string!(cfg, "description");
-            load_yaml_strings!(it.keywords, cfg, "keywords");
 
+            {
+                debug!("load welcome panel");
+                let cfg = &cfg["welcome"];
+                if !cfg.is_badvalue() {
+                    it.welcome = Some(Welcome::new(cfg)?);
+                }
+            }
             debug!("load contact info");
             it.contact = Contact::new(&cfg["contact"])?;
 
@@ -88,7 +95,7 @@ impl Config {
             debug!("load nav list");
             if let Some(nav) = cfg["nav"].as_hash() {
                 for (key, val) in nav {
-                    let code = yaml_to_string!(key);
+                    let id = yaml_to_string!(key);
                     let mut nav = Vec::new();
                     if let Some(items) = val.as_vec() {
                         for val in items {
@@ -96,7 +103,15 @@ impl Config {
                             nav.push(item);
                         }
                     }
-                    it.nav.insert(code, nav);
+                    it.nav.insert(id, nav);
+                }
+            }
+            debug!("load panels");
+            if let Some(nav) = cfg["panels"].as_hash() {
+                for (key, val) in nav {
+                    let id = yaml_to_string!(key);
+                    let item = Panel::new(val)?;
+                    it.panels.insert(id, item);
                 }
             }
         }
@@ -115,21 +130,60 @@ impl Config {
 }
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
+pub struct Welcome {
+    pub title: String,
+    pub body: String,
+    pub to: String,
+    pub logo: String,
+    pub button: String,
+}
+
+impl Welcome {
+    pub fn new(node: &Yaml) -> Result<Self> {
+        let it = Self {
+            title: get_yaml_string!(node, "title"),
+            body: get_yaml_string!(node, "body"),
+            to: get_yaml_string!(node, "to"),
+            logo: get_yaml_string!(node, "logo"),
+            button: get_yaml_string!(node, "button"),
+        };
+        Ok(it)
+    }
+}
+
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Tag {
-    pub code: String,
+    pub id: String,
     pub name: String,
 }
 
 impl Tag {
     pub fn new(node: &Yaml) -> Result<Self> {
         let it = Self {
-            code: get_yaml_string!(node, "code"),
+            id: get_yaml_string!(node, "id"),
             name: get_yaml_string!(node, "name"),
         };
         Ok(it)
     }
 }
 
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
+pub struct Panel {
+    pub tag: String,
+    pub name: String,
+    pub button: String,
+}
+
+impl Panel {
+    pub fn new(node: &Yaml) -> Result<Self> {
+        let it = Self {
+            tag: get_yaml_string!(node, "tag"),
+            name: get_yaml_string!(node, "name"),
+            button: get_yaml_string!(node, "button"),
+        };
+        Ok(it)
+    }
+}
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Contact {
     pub title: String,

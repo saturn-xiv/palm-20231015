@@ -79,6 +79,7 @@ pub struct Config {
     pub favicon: String,
     pub default_language: String,
     pub languages: Vec<String>,
+    pub keywords: Vec<String>,
     pub authors: Vec<Author>,
     pub copyright: String,
     pub contact: Contact,
@@ -130,6 +131,7 @@ impl Config {
             it.copyright =
                 get_yaml_string_or_else!(cfg, "copyright", || format!("©{}", Utc::now().year()));
             it.license = get_yaml_optional_string!(cfg, "license");
+            load_yaml_strings!(it.keywords, cfg, "keywords");
 
             if let Some(authors) = cfg["authors"].as_vec() {
                 for author in authors {
@@ -226,14 +228,14 @@ impl Wechat {
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Author {
-    pub code: String,
+    pub id: String,
     pub name: String,
 }
 
 impl Author {
     pub fn new(node: &Yaml) -> Result<Self> {
         let it = Self {
-            code: get_yaml_string!(node, "code"),
+            id: get_yaml_string!(node, "id"),
             name: get_yaml_string!(node, "name"),
         };
         Ok(it)

@@ -12,6 +12,7 @@ pub struct Config {
     pub title: String,
     pub author: Option<String>,
     pub cover: Option<String>,
+    pub summary: Option<String>,
     pub body: String,
     pub tags: Vec<String>,
     pub previous: Option<String>,
@@ -34,6 +35,7 @@ impl Config {
 
             it.author = get_yaml_optional_string!(cfg, "author");
             it.cover = get_yaml_optional_string!(cfg, "cover");
+            it.summary = get_yaml_optional_string!(cfg, "summary");
             it.previous = get_yaml_optional_string!(cfg, "previous");
             it.next = get_yaml_optional_string!(cfg, "next");
             it.title = get_yaml_string!(cfg, "title");

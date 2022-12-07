@@ -6,3 +6,5 @@ pages:
     title: 首页
 nav-bar:
   languages: 语言列表
+buttons:
+  more: 更多

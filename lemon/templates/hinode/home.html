@@ -1,7 +1,134 @@
 {% extends "hinode/layout/index.html" %}
 
-{% block title %} {{ title }} {% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<h1>Home</h1>
+{% match site.welcome %}                
+    {% when Some with (it) %}
+    <div class="container-fluid">
+        <div class="row row-cols-1 row-cols-sm-4 bg-primary p-3 bg-opacity-10 align-items-center">
+            <div class="col col-md-2 d-none d-md-block"></div>
+            <div class="col col-sm-6 col-md-4">
+                <p class="fs-1 fw-bold">{{ it.title }}</p>
+                <p>{{ it.body }}</p>
+                <p>
+                    <a class="btn btn-secondary" href="/{{ site.language }}/{{ it.to }}/" role="button">
+                        {{ it.button }}
+                    </a>
+                </p>
+            </div>
+            <div class="col col-sm-6 col-md-4">
+                <div class="ratio ratio-4x3 img-wrap">
+                    <img class="img-fluid rounded" sizes="100vw" src="{{ it.logo }}" alt="Welcome">
+                </div>
+            </div>
+            <div class="col col-md-2 d-none d-md-block"></div>
+        </div>
+    </div>
+{% when None %}
+{% endmatch %}
+
+{% match central %}                
+{% when Some with (panel) %}    
+<div class="p-4">
+    <h1>Recent Posts</h1>
+    <div class="container-fluid p-0">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">                    
+            {% for it in panel.pages %}                
+                <div class="col gx-4">
+                    <div class="card border-0">
+                        <a href="" class="text-decoration-none link-dark">
+                            <div class="ratio ratio-16x9 card-img-wrap">
+                                {% match it.cover %}                
+                                {% when Some with (val) %}
+                                    <img class="img-fluid card-img-top" sizes="100vw" src="{{ val }}" alt="{{ it.title }}">                                
+                                {% when None %}
+                                {% endmatch %}
+                            </div>
+                        </a>
+                        <div class="card-body d-flex flex-column p-0">
+                            <p class="card-text">
+                                <small class="text-muted text-uppercase">
+                                    {{ it.published_at }}
+                                    {% for tag in it.tags %}
+                                        •
+                                        <a href="/{{ site.language }}/by-tag/{{ tag }}" class="text-decoration-none text-primary" aria-label="Tag: {{ tag }}">
+                                            {{ site.tags[tag] }}
+                                        </a>
+                                    {% endfor %}
+                                </small>
+                            </p>
+                            <a href="/{{ site.language }}/{{ it.name }}/" class="text-decoration-none link-dark">
+                                <p class="card-title fs-5 fw-bold">{{ it.title }}</p>
+                                <p class="card-text mb-4">
+                                    {% match it.summary %}                
+                                    {% when Some with (val) %}
+                                        {{ val }}
+                                    {% when None %}
+                                    {% endmatch %}
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                {% if loop.last %}
+                {% else %}
+                <div class="col d-block d-sm-none"><hr></div>
+                {% endif %}
+            {% endfor %}            
+        </div>
+    </div>
+    <a class="btn btn-outline-primary" href="/{{ site.language }}/by-tag/{{ panel.tag }}/" role="button">
+        {{ panel.button }}
+    </a>
+</div>
+{% when None %}
+{% endmatch %}
+
+
+{% match bottom %}                
+{% when Some with (panel) %}   
+<div class="p-4">
+    <h1>{{ panel.button }}</h1>
+    <div class="container-fluid">
+        <div class="row row-cols-1 g-4">
+            {% for it in panel.pages %}
+            <div class="col p-0">
+                <div class="card mb-3 project-card">
+                    <div class="row g-0">
+                        <div class="col-12">
+                            <div class="card-body d-flex flex-column">
+                                <a href="/{{ site.language }}/{{ it.name }}/" class="text-decoration-none link-dark">
+                                    <p class="card-title fs-5 fw-bold">
+                                        {{ it.title }}
+                                    </p>
+                                    <p class="card-text mb-4">
+                                        {% match it.summary %}                
+                                        {% when Some with (val) %}
+                                            {{ val }}
+                                        {% when None %}
+                                        {% endmatch %}
+                                    </p>
+                                </a>
+                                <small class="text-muted text-uppercase">
+                                    {% for tag in it.tags %}
+                                        <a href="/{{ site.language }}/by-tag/{{ tag }}" class="text-decoration-none text-primary" aria-label="Tag: {{ tag }}">
+                                            {{ site.tags[tag] }}
+                                        </a>
+                                        {% if loop.last %}{% else %}•{% endif %}
+                                    {% endfor %}                                    
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}            
+        </div>
+    </div>
+</div>
+{% when None %}
+{% endmatch %}
+
 {% endblock %}

@@ -46,7 +46,7 @@ pub fn render(config: &Config, assets: impl AsRef<Path>, i18n: &I18n) -> Result<
             debug!("build tag {}", tag.name);
             let item = Html {
                 language: site.language.clone(),
-                path: Some(Path::new("by-tag").join(&tag.code)),
+                path: Some(Path::new("by-tag").join(&tag.id)),
                 body: models::ByTag::new(i18n, &config, site, tag).render()?,
             };
             items.push(item);
@@ -65,7 +65,7 @@ pub fn render(config: &Config, assets: impl AsRef<Path>, i18n: &I18n) -> Result<
         for site in config.sites.iter() {
             let item = Html {
                 language: site.language.clone(),
-                path: Some(Path::new("by-author").join(&author.code)),
+                path: Some(Path::new("by-author").join(&author.id)),
                 body: models::ByAuthor::new(i18n, &config, site, author).render()?,
             };
             items.push(item);

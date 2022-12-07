@@ -6,3 +6,5 @@ pages:
     title: Home
 nav-bar:
   languages: Languages
+buttons:
+  more: More
