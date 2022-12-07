@@ -11,6 +11,7 @@ pub struct Config {
     pub name: String,
     pub title: String,
     pub author: Option<String>,
+    pub cover: Option<String>,
     pub body: String,
     pub tags: Vec<String>,
     pub previous: Option<String>,
@@ -19,7 +20,7 @@ pub struct Config {
     pub published_at: NaiveDateTime,
 }
 impl Config {
-    const README: &str = "readme.md";
+    const README: &str = "README.md";
     const CONFIG: &str = "config.yml";
 
     pub fn new(root: impl AsRef<Path>) -> Result<Self> {
@@ -32,6 +33,7 @@ impl Config {
             let cfg = cfg.into_iter().next().unwrap_or(Yaml::BadValue);
 
             it.author = get_yaml_optional_string!(cfg, "author");
+            it.cover = get_yaml_optional_string!(cfg, "cover");
             it.previous = get_yaml_optional_string!(cfg, "previous");
             it.next = get_yaml_optional_string!(cfg, "next");
             it.title = get_yaml_string!(cfg, "title");

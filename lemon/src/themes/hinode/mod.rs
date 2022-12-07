@@ -24,7 +24,7 @@ pub fn render(config: &Config, assets: impl AsRef<Path>, i18n: &I18n) -> Result<
         for page in site.pages.iter() {
             let item = Html {
                 language: site.language.clone(),
-                name: page.name.clone(),
+                path: Some(Path::new(&page.name).to_path_buf()),
                 body: models::Page::new(i18n, config, site, page).render()?,
             };
             items.push(item);
@@ -32,18 +32,25 @@ pub fn render(config: &Config, assets: impl AsRef<Path>, i18n: &I18n) -> Result<
         for tag in site.tags.iter() {
             let item = Html {
                 language: site.language.clone(),
-                name: format!("by-tag/{}", tag.code),
+                path: Some(Path::new("by-tag").join(&tag.code)),
                 body: models::ByTag::new(i18n, config, site, tag).render()?,
             };
             items.push(item);
         }
+
+        let item = Html {
+            language: site.language.clone(),
+            path: None,
+            body: models::Home::new(i18n, config, site).render()?,
+        };
+        items.push(item);
     }
 
     for author in config.authors.iter() {
         for site in config.sites.iter() {
             let item = Html {
                 language: site.language.clone(),
-                name: format!("by-author/{}", author.code),
+                path: Some(Path::new("by-author").join(&author.code)),
                 body: models::ByAuthor::new(i18n, config, site, author).render()?,
             };
             items.push(item);

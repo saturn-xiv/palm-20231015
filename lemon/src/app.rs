@@ -55,16 +55,18 @@ impl fmt::Display for Theme {
 
 impl Args {
     pub fn launch(&self) -> Result<()> {
-        let config = self.src.join("config.toml");
-        palm::check_config_permission(&config)?;
         let theme = self.theme.to_string();
-        info!("load config from {} with theme {}", config.display(), theme);
+        info!(
+            "build web-site from {} to {} with theme {}",
+            self.src.display(),
+            self.target.display(),
+            theme
+        );
 
         let assets = Path::new("assets").join("themes").join(&theme);
 
-        info!("generate web-site into folder {}", self.target.display());
-        let cfg = Layout::new(&config)?;
-
+        let cfg = Layout::new(&self.src)?;
+        debug!("{:?}", cfg);
         {
             if self.target.exists() {
                 remove_dir_all(&self.target)?;
@@ -88,7 +90,7 @@ impl Args {
                 let mut links = Vec::new();
                 let now = Utc::now().naive_utc();
                 for it in files.iter() {
-                    let file = self.target.join(&it.language).join(&it.name);
+                    let file = self.target.join(it.folder());
                     if !file.exists() {
                         create_dir_all(&file)?;
                     }
@@ -99,7 +101,10 @@ impl Args {
                         writeln!(file, "{}", it.body)?;
                     }
                     links.push(SitemapLink {
-                        path: format!("/{}/{}/", it.language, it.name),
+                        path: match it.path {
+                            Some(ref v) => Path::new(&it.language).join(v),
+                            None => Path::new(&it.language).to_path_buf(),
+                        },
                         updated_at: now,
                         priority: 0.8,
                         change_freq: ChangeFreq::Monthly,
@@ -118,12 +123,6 @@ impl Args {
                         }
                         .render()?
                     )?;
-                    links.push(SitemapLink {
-                        path: "/".to_string(),
-                        updated_at: now,
-                        priority: 0.9,
-                        change_freq: ChangeFreq::Weekly,
-                    });
                 }
 
                 {
@@ -143,6 +142,7 @@ impl Args {
             }
         }
 
+        info!("done.");
         Ok(())
     }
 }

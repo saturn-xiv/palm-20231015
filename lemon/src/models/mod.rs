@@ -64,7 +64,7 @@ pub mod page;
 pub mod site;
 
 use std::fs::{copy as copy_file, create_dir_all, read_dir, read_to_string};
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 use askama::Template;
 use chrono::{Datelike, Utc};
@@ -75,6 +75,7 @@ use yaml_rust::{Yaml, YamlLoader};
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Config {
     pub home: String,
+    pub favicon: String,
     pub default_language: String,
     pub languages: Vec<String>,
     pub authors: Vec<Author>,
@@ -91,14 +92,23 @@ pub struct Language {
 
 pub struct Html {
     pub language: String,
-    pub name: String,
+    pub path: Option<PathBuf>,
     pub body: String,
+}
+impl Html {
+    pub fn folder(&self) -> PathBuf {
+        match self.path {
+            Some(ref v) => Path::new(&self.language).join(v),
+            None => Path::new(&self.language).to_path_buf(),
+        }
+    }
 }
 
 impl Config {
     pub const ASSETS: &str = "assets";
     pub fn new<P: AsRef<Path>>(root: P) -> Result<Self> {
         let root = root.as_ref();
+        debug!("load global information from {}", root.display());
         let mut it = Self::default();
         {
             let buf = read_to_string(&root.join("config.yml"))?;
@@ -106,6 +116,7 @@ impl Config {
             let cfg = cfg.into_iter().next().unwrap_or(Yaml::BadValue);
 
             it.home = get_yaml_string!(cfg, "home");
+            it.favicon = get_yaml_string_or!(cfg, "favicon", "/favicon.ico");
             it.default_language = get_yaml_string_or!(cfg, "default-language", "en-US");
             load_yaml_strings!(it.languages, cfg, "languages");
             it.copyright =
@@ -126,10 +137,11 @@ impl Config {
             let file = file.path();
             if file.is_dir() {
                 if let Some(name) = file.file_name() {
-                    if name != Self::ASSETS {
-                        let site = site::Config::new(&file)?;
-                        it.sites.push(site);
+                    if name == Self::ASSETS || name == ".git" || name == ".vscode" {
+                        continue;
                     }
+                    let site = site::Config::new(&file)?;
+                    it.sites.push(site);
                 }
             }
         }
@@ -162,26 +174,44 @@ impl Config {
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Contact {
-    pub wechat: Option<String>,
+    pub wechat: Option<Wechat>,
     pub address: Option<String>,
     pub phone: Option<String>,
     pub linkedin: Option<String>,
     pub github: Option<String>,
     pub medium: Option<String>,
     pub weibo: Option<String>,
+    pub email: Option<String>,
 }
 
 impl Contact {
     pub fn new(node: &Yaml) -> Self {
         Self {
-            wechat: get_yaml_optional_string!(node, "wechat"),
+            wechat: Wechat::new(&node["wechat"]).ok(),
             address: get_yaml_optional_string!(node, "address"),
             phone: get_yaml_optional_string!(node, "phone"),
             linkedin: get_yaml_optional_string!(node, "linkedin"),
             github: get_yaml_optional_string!(node, "github"),
             medium: get_yaml_optional_string!(node, "medium"),
             weibo: get_yaml_optional_string!(node, "weibo"),
+            email: get_yaml_optional_string!(node, "email"),
         }
+    }
+}
+
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
+pub struct Wechat {
+    pub id: String,
+    pub qr: String,
+}
+
+impl Wechat {
+    pub fn new(node: &Yaml) -> Result<Self> {
+        let it = Self {
+            id: get_yaml_string!(node, "id"),
+            qr: get_yaml_string!(node, "qr"),
+        };
+        Ok(it)
     }
 }
 

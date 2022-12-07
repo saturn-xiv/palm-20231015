@@ -1,6 +1,6 @@
 [package]
 name = "lemon"
-version = "2022.12.3"
+version = "2022.12.7"
 edition = "2021"
 description = "A open-source static site generator."
 

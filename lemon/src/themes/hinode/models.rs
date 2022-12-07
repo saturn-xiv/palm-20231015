@@ -13,20 +13,38 @@ use super::super::super::{
 #[template(path = "hinode/home.html")]
 pub struct Home {
     pub title: String,
-    pub pages: Vec<PageItem>,
     pub site: Layout,
+}
+
+impl Home {
+    pub fn new(i18n: &I18n, env: &Env, site: &Site) -> Self {
+        Self {
+            title: i18n.t(&site.language, "pages.home.title"),
+            site: Layout::new(i18n, env, site),
+        }
+    }
 }
 
 #[derive(Template)]
 #[template(path = "hinode/page.html")]
 pub struct Page {
+    pub author: Option<Author>,
     pub page: PageItem,
     pub site: Layout,
 }
 
 impl Page {
     pub fn new(i18n: &I18n, env: &Env, site: &Site, page: &PageItem) -> Self {
+        let mut author = None;
+        if let Some(ref code) = page.author {
+            for it in env.authors.iter() {
+                if &it.code == code {
+                    author = Some(it.clone());
+                }
+            }
+        }
         Self {
+            author,
             site: Layout::new(i18n, env, site),
             page: page.clone(),
         }
@@ -96,11 +114,7 @@ impl Layout {
             copyright: env.copyright.clone(),
             description: site.description.clone(),
             contact: env.contact.clone(),
-            top_nav_bar: site
-                .nav
-                .get("top")
-                .map(|x| x.items.clone())
-                .unwrap_or_default(),
+            top_nav_bar: site.nav.get("top").cloned().unwrap_or_default(),
         }
     }
 }

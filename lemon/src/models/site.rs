@@ -18,7 +18,7 @@ pub struct Config {
     pub tags: Vec<Tag>,
     pub pages: Vec<Page>,
     pub contact: Contact,
-    pub nav: BTreeMap<String, NavBar>,
+    pub nav: BTreeMap<String, Vec<NavBar>>,
 }
 
 impl Config {
@@ -60,6 +60,7 @@ impl Config {
     }
     pub fn new<P: AsRef<Path>>(root: P) -> Result<Self> {
         let root = root.as_ref();
+        debug!("load site information from {}", root.display());
         let mut it = Self::default();
         if let Some(lang) = root.file_name() {
             it.language = lang.to_string_lossy().to_string();
@@ -73,19 +74,29 @@ impl Config {
             it.title = get_yaml_string!(cfg, "title");
             it.description = get_yaml_string!(cfg, "description");
             load_yaml_strings!(it.keywords, cfg, "keywords");
+
+            debug!("load contact info");
             it.contact = Contact::new(&cfg["contact"])?;
 
+            debug!("load tag list");
             if let Some(tags) = cfg["tags"].as_vec() {
                 for tag in tags {
                     let tag = Tag::new(tag)?;
                     it.tags.push(tag);
                 }
             }
+            debug!("load nav list");
             if let Some(nav) = cfg["nav"].as_hash() {
                 for (key, val) in nav {
                     let code = yaml_to_string!(key);
-                    let item = NavBar::new(val)?;
-                    it.nav.insert(code, item);
+                    let mut nav = Vec::new();
+                    if let Some(items) = val.as_vec() {
+                        for val in items {
+                            let item = NavBar::new(val)?;
+                            nav.push(item);
+                        }
+                    }
+                    it.nav.insert(code, nav);
                 }
             }
         }

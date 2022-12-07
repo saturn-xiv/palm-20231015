@@ -1,4 +1,5 @@
 use std::io::{Error as IoError, ErrorKind as IoErrorKind};
+use std::path::PathBuf;
 
 use chrono::{DateTime, FixedOffset, NaiveDateTime, Utc};
 pub use sitemap::structs::ChangeFreq;
@@ -12,7 +13,7 @@ use super::super::Result;
 pub const FILE: &str = "sitemap.xml";
 
 pub struct Link {
-    pub path: String,
+    pub path: PathBuf,
     pub change_freq: ChangeFreq,
     pub priority: f32,
     pub updated_at: NaiveDateTime,
@@ -58,7 +59,7 @@ pub fn urlset(home: &str, links: &[Link]) -> Result<Vec<u8>> {
                     ))
                     .changefreq(it.change_freq.clone())
                     .priority(it.priority)
-                    .loc(format!("{}{}", home, it.path)),
+                    .loc(format!("{}/{}", home, it.path.display())),
             )?;
         }
         writer.end()?;

@@ -6,6 +6,7 @@ pub mod sitemap;
 
 use std::any::type_name;
 use std::cmp::{Ord, Ordering};
+use std::path::PathBuf;
 
 use askama::Template;
 use chrono::NaiveDateTime;
@@ -30,7 +31,7 @@ impl RobotsTxt {
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct Link {
-    pub path: String,
+    pub path: PathBuf,
     pub title: String,
     pub description: String,
     pub change_freq: String,

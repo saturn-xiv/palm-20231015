@@ -795,7 +795,10 @@ impl v1::site_server::Site for Service {
         let mut links = Vec::new();
         for lang in try_grpc!(LocaleDao::languages(db))?.iter() {
             let items = try_grpc!(SeoProvider::by_lang(ch, lang))?;
-            let items: Vec<String> = items.iter().map(|x| x.path.clone()).collect::<_>();
+            let items: Vec<String> = items
+                .iter()
+                .map(|x| x.path.display().to_string())
+                .collect::<_>();
             links.extend(items);
         }
 
