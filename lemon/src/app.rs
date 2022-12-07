@@ -63,7 +63,7 @@ impl Args {
             theme
         );
 
-        let assets = Path::new("assets").join("themes").join(&theme);
+        let assets = Path::new(Layout::ASSETS).join("themes").join(&theme);
 
         let cfg = {
             let mut it = Layout::new(&self.src)?;
@@ -83,6 +83,10 @@ impl Args {
                     &self.target.join(Layout::MARKED_JS),
                 )?;
             }
+            copy_file(
+                &Path::new(Layout::ASSETS).join(Layout::APPLICATION_JS),
+                &self.target.join(Layout::APPLICATION_JS),
+            )?;
             cfg.copy_assets(&self.src, &self.target)?;
         }
 
