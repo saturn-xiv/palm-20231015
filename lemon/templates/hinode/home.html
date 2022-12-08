@@ -13,7 +13,7 @@
                 <p>{{ it.body }}</p>
                 <p>
                     <a class="btn btn-secondary" href="/{{ site.language }}/{{ it.to }}/" role="button">
-                        {{ it.button }}
+                        {{ site.i18n["pages.home.welcome.more"] }}
                     </a>
                 </p>
             </div>
@@ -29,12 +29,12 @@
 {% endmatch %}
 
 {% match central %}                
-{% when Some with (panel) %}    
+{% when Some with (pages) %}    
 <div class="p-4">
-    <h1>Recent Posts</h1>
+    <h1>{{ site.i18n["pages.home.central.title"] }}</h1>
     <div class="container-fluid p-0">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">                    
-            {% for it in panel.pages %}                
+            {% for it in pages %}                
                 <div class="col gx-4">
                     <div class="card border-0">
                         <a href="" class="text-decoration-none link-dark">
@@ -79,8 +79,8 @@
             {% endfor %}            
         </div>
     </div>
-    <a class="btn btn-outline-primary" href="/{{ site.language }}/by-tag/{{ panel.tag }}/" role="button">
-        {{ panel.button }}
+    <a class="btn btn-outline-primary" href="/{{ site.language }}/by-tag/{{ site.panels["central"].tag }}/" role="button">
+        {{ site.i18n["pages.home.central.more"] }}
     </a>
 </div>
 {% when None %}
@@ -88,12 +88,12 @@
 
 
 {% match bottom %}                
-{% when Some with (panel) %}   
+{% when Some with (pages) %}   
 <div class="p-4">
-    <h1>{{ panel.button }}</h1>
+    <h1>{{ site.i18n["pages.home.bottom.title"] }}</h1>
     <div class="container-fluid">
         <div class="row row-cols-1 g-4">
-            {% for it in panel.pages %}
+            {% for it in pages %}
             <div class="col p-0">
                 <div class="card mb-3 project-card">
                     <div class="row g-0">

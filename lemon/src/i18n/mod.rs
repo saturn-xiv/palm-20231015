@@ -1,4 +1,7 @@
 use std::collections::HashMap;
+use std::fs::read_to_string;
+use std::io::{Error as IoError, ErrorKind as IoErrorKind};
+use std::path::Path;
 
 use palm::Result;
 use yaml_rust::{Yaml, YamlLoader};
@@ -31,6 +34,26 @@ impl I18n {
         }
 
         Ok(Self { items })
+    }
+
+    pub fn load<P: AsRef<Path>>(&mut self, file: P) -> Result<()> {
+        let file = file.as_ref();
+        debug!("load i18n from {}", file.display());
+        let buf = read_to_string(file)?;
+        let it = YamlLoader::load_from_str(&buf)?;
+        let it = it.into_iter().next().unwrap_or(Yaml::BadValue);
+
+        if let Some(items) = it.as_hash() {
+            for (lang, value) in items {
+                let lang = lang
+                    .as_str()
+                    .ok_or_else(|| IoError::new(IoErrorKind::UnexpectedEof, "can't get language"))?
+                    .to_string();
+                Self::loop_yaml(&mut self.items, &lang, None, value)?;
+            }
+        }
+
+        Ok(())
     }
 
     pub fn by_lang(&self, lang: &str) -> HashMap<String, String> {

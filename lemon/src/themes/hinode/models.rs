@@ -17,62 +17,40 @@ use super::super::super::{
 pub struct Home {
     pub title: String,
     pub site: Layout,
-    pub central: Option<CentralPanel>,
-    pub bottom: Option<BottomPanel>,
-}
-
-pub struct CentralPanel {
-    pub pages: Vec<PageItem>,
-    pub tag: String,
-    pub button: String,
-}
-
-pub struct BottomPanel {
-    pub pages: Vec<PageItem>,
-    pub button: String,
+    pub central: Option<Vec<PageItem>>,
+    pub bottom: Option<Vec<PageItem>>,
 }
 
 impl Home {
     pub fn new(i18n: &I18n, env: &Env, site: &Site) -> Self {
-        let central = {
-            site.panels.get("central").map(|panel| {
-                let mut items = Vec::new();
-                for it in site.pages.iter() {
-                    if it.tags.contains(&panel.tag) {
-                        items.push(it.clone());
-                    }
+        let central = site.panels.get("central").map(|panel| {
+            let mut items = Vec::new();
+            for it in site.pages.iter() {
+                if it.tags.contains(&panel.tag) {
+                    items.push(it.clone());
                 }
-                items.sort_by(|x, y| {
-                    y.published_at
-                        .partial_cmp(&x.published_at)
-                        .unwrap_or(Ordering::Equal)
-                });
-                CentralPanel {
-                    pages: items,
-                    tag: panel.tag.clone(),
-                    button: panel.button.clone(),
+            }
+            items.sort_by(|x, y| {
+                y.published_at
+                    .partial_cmp(&x.published_at)
+                    .unwrap_or(Ordering::Equal)
+            });
+            items
+        });
+        let bottom = site.panels.get("bottom").map(|panel| {
+            let mut items = Vec::new();
+            for it in site.pages.iter() {
+                if it.tags.contains(&panel.tag) {
+                    items.push(it.clone());
                 }
-            })
-        };
-        let bottom = {
-            site.panels.get("bottom").map(|panel| {
-                let mut items = Vec::new();
-                for it in site.pages.iter() {
-                    if it.tags.contains(&panel.tag) {
-                        items.push(it.clone());
-                    }
-                }
-                items.sort_by(|x, y| {
-                    y.published_at
-                        .partial_cmp(&x.published_at)
-                        .unwrap_or(Ordering::Equal)
-                });
-                BottomPanel {
-                    pages: items,
-                    button: panel.button.clone(),
-                }
-            })
-        };
+            }
+            items.sort_by(|x, y| {
+                y.published_at
+                    .partial_cmp(&x.published_at)
+                    .unwrap_or(Ordering::Equal)
+            });
+            items
+        });
         Self {
             title: i18n.t(&site.language, "pages.home.title"),
             site: Layout::new(i18n, env, site),

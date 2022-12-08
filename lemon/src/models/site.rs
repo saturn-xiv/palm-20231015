@@ -135,7 +135,6 @@ pub struct Welcome {
     pub body: String,
     pub to: String,
     pub logo: String,
-    pub button: String,
 }
 
 impl Welcome {
@@ -145,7 +144,6 @@ impl Welcome {
             body: get_yaml_string!(node, "body"),
             to: get_yaml_string!(node, "to"),
             logo: get_yaml_string!(node, "logo"),
-            button: get_yaml_string!(node, "button"),
         };
         Ok(it)
     }
@@ -170,16 +168,12 @@ impl Tag {
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Panel {
     pub tag: String,
-    pub name: String,
-    pub button: String,
 }
 
 impl Panel {
     pub fn new(node: &Yaml) -> Result<Self> {
         let it = Self {
             tag: get_yaml_string!(node, "tag"),
-            name: get_yaml_string!(node, "name"),
-            button: get_yaml_string!(node, "button"),
         };
         Ok(it)
     }

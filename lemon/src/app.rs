@@ -91,7 +91,12 @@ impl Args {
         }
 
         {
-            let i18n = I18n::new()?;
+            let i18n = {
+                let mut it = I18n::new()?;
+                it.load(&self.src.join("locales.yml"))?;
+                it
+            };
+
             let files = match self.theme {
                 Theme::Hinode => hinode::render(&cfg, &assets, &i18n)?,
                 _ => {
