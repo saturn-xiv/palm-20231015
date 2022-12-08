@@ -15,6 +15,7 @@ members = [
     "chats",        
     "cscd",
     "cbeta",
+    "flashcard",
     
     "ops/mail",
     "ops/vpn",
