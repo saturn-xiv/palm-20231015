@@ -1,10 +1,32 @@
 use std::collections::BTreeMap;
 use std::path::{Component, Path, PathBuf};
+use std::process::Command;
 
 use askama::Template;
 
-use super::super::ops::router::v1 as ops_router;
+use super::super::{ops::router::v1 as ops_router, Result};
 use super::Etc;
+
+impl ops_router::WanPool {
+    pub fn apply(&self) -> Result<()> {
+        let mut cmd = Command::new("ip");
+        let mut out = cmd.arg("route").arg("replace").arg("default");
+        for it in self.items.iter() {
+            let gw = super::ethernet::gateway(&it.device)?;
+            out = out
+                .arg("nexthop")
+                .arg("via")
+                .arg(gw.to_string())
+                .arg("weight")
+                .arg(it.weight.to_string());
+        }
+
+        let out = out.output()?;
+        let out = String::from_utf8(out.stdout)?;
+        debug!("{}", out);
+        Ok(())
+    }
+}
 
 /*
 ip route

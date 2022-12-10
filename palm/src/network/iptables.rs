@@ -105,13 +105,27 @@ impl Iptables for Flush {
         let forward = to_accept!(self.forward);
         let hostname = "rt";
 
+        // echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/20-router.conf
+        // echo "net.ipv4.tcp_syncookies=1" >> /etc/sysctl.d/20-router.conf
+        // echo "net.ipv4.icmp_ignore_bogus_error_responses=1" >> /etc/sysctl.d/20-router.conf
+        // echo "net.ipv4.fib_multipath_hash_policy=1" >> /etc/sysctl.d/20-router.conf
+        // echo "net.ipv4.fib_multipath_use_neigh=1" >> /etc/sysctl.d/20-router.conf
+
+        // ip rule add table 916
+        // ip route add 10.173.0.0/16 via 10.170.72.254 dev pppoe-VWAN31 table 916
+        // ip route add 10.170.0.0/16 via 10.170.72.254 dev pppoe-VWAN32 table 916
+
         writeln!(
             buf,
             r###"
 # Resetting rules
+
 echo 1 > /proc/sys/net/ipv4/ip_forward
 echo 1 > /proc/sys/net/ipv4/tcp_syncookies
 echo 1 > /proc/sys/net/ipv4/icmp_ignore_bogus_error_responses
+
+echo 1 > /proc/sys/net/ipv4/fib_multipath_hash_policy
+echo 1 > /proc/sys/net/ipv4/fib_multipath_use_neigh
 
 echo "{hostname}" > /etc/hostname
 cat > /etc/hosts <<EOF
@@ -172,8 +186,6 @@ iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
         )?;
 
         for (tcp, port) in &[
-            // ssh
-            (true, 22),
             // http
             (true, 80),
             // dns
@@ -182,7 +194,7 @@ iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
             // dhcpcd
             (false, 67),
         ] {
-            for device in &[&self.lan, &self.dmz] {
+            for device in [&self.lan, &self.dmz] {
                 ops_router::v1::rule::InBound {
                     device: device.to_string(),
                     tcp: *tcp,
@@ -199,16 +211,17 @@ iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 
 pub struct Forward {
     pub wan: String,
-    pub lan: String,
+    pub lan: Ipv4Net,
 }
 
 impl Iptables for Forward {
     fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
         let wan = &self.wan;
-        let lan = &self.lan;
+        let lan_network = &self.lan.network();
+        let lan_prefix_len = self.lan.prefix_len();
         writeln!(
             buf,
-            r###"iptables -t nat -A POSTROUTING -o {wan} -s {lan} -j MASQUERADE"###
+            r###"iptables -t nat -A POSTROUTING -o {wan} -s {lan_network}/{lan_prefix_len} -j MASQUERADE"###
         )?;
         Ok(())
     }

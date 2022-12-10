@@ -125,15 +125,17 @@ impl v1::router_server::Router for Service {
                 si.uptime()
             };
 
-            let bound: v1::RouterBoundRequest = SettingDao::get(db, None).unwrap_or_default();
+            let wan_pool: v1::WanPool = SettingDao::get(db, None).unwrap_or_default();
             let dns: v1::Dns = SettingDao::get(db, None).unwrap_or_default();
+            let ip = try_grpc!(v1::router_status_response::Ip::new())?;
 
             return Ok(Response::new(v1::RouterStatusResponse {
                 wan,
-                bound: bound.items,
+                wan_pool: Some(wan_pool),
                 lan: Some(lan),
                 dmz: Some(dmz),
                 dns: Some(dns),
+                ip: Some(ip),
                 script,
                 hosts,
                 rules,
@@ -145,7 +147,7 @@ impl v1::router_server::Router for Service {
         }
         Err(Status::permission_denied(type_name::<v1::UserProfile>()))
     }
-    async fn bound(&self, req: Request<v1::RouterBoundRequest>) -> GrpcResult<()> {
+    async fn set_wan_pool(&self, req: Request<v1::WanPool>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let jwt = self.jwt.deref();
         let req = req.into_inner();
@@ -155,9 +157,9 @@ impl v1::router_server::Router for Service {
             try_grpc!(ss.current_user(db, jwt))?;
 
             let mut items = req.items;
-            items.dedup();
-            try_grpc!(validate_bound(db, &items))?;
-            try_grpc!(SettingDao::set(db, None, &v1::RouterBoundRequest { items }))?;
+            items.dedup_by(|x, y| x.device == y.device);
+            try_grpc!(validate_wan_pool(db, &items))?;
+            try_grpc!(SettingDao::set(db, None, &v1::WanPool { items }))?;
             Ok(())
         } else {
             Err(Status::permission_denied(type_name::<v1::UserProfile>()))
@@ -458,35 +460,32 @@ impl From<Host> for v1::Host {
     }
 }
 
-pub fn validate_bound(db: &mut Db, devices: &[String]) -> Result<()> {
-    if let Ok(ref it) = SettingDao::get::<v1::Lan>(db, None) {
-        if devices.contains(&it.device) {
-            return Err(Box::new(IoError::new(
-                IoErrorKind::Other,
-                format!("{} is lan device", it.device),
-            )));
+pub fn validate_wan_pool(db: &mut Db, pool: &[v1::wan_pool::Item]) -> Result<()> {
+    if let Ok(ref lan) = SettingDao::get::<v1::Lan>(db, None) {
+        for it in pool {
+            if it.device == lan.device {
+                return Err(Box::new(IoError::new(
+                    IoErrorKind::Other,
+                    format!("{} is lan device", lan.device),
+                )));
+            }
         }
     }
 
-    if let Ok(ref it) = SettingDao::get::<v1::Dmz>(db, None) {
-        if devices.contains(&it.device) {
-            return Err(Box::new(IoError::new(
-                IoErrorKind::Other,
-                format!("{} is dmz device", it.device),
-            )));
+    if let Ok(ref dmz) = SettingDao::get::<v1::Dmz>(db, None) {
+        for it in pool {
+            if it.device == dmz.device {
+                return Err(Box::new(IoError::new(
+                    IoErrorKind::Other,
+                    format!("{} is dmz device", dmz.device),
+                )));
+            }
         }
     }
 
-    for it in devices {
-        palm::network::ethernet::mac_address(it)?;
-        let it = SettingDao::get::<v1::Wan>(db, Some(it))?;
-        if let Some(v1::wan::Ip::Static(_)) = it.ip {
-            continue;
-        }
-        return Err(Box::new(IoError::new(
-            IoErrorKind::Other,
-            format!("wan {} must has static ip address", it.device),
-        )));
+    for it in pool {
+        palm::network::ethernet::mac_address(&it.device)?;
+        SettingDao::get::<v1::Wan>(db, Some(&it.device))?;
     }
 
     Ok(())
@@ -499,6 +498,7 @@ pub fn apply(db: Arc<Mutex<Db>>, immediately: bool) -> Result<()> {
         let lan: v1::Lan = SettingDao::get(db, None)?;
         let dmz: v1::Dmz = SettingDao::get(db, None)?;
         let dns: v1::Dns = SettingDao::get(db, None)?;
+        let wan_pool: v1::WanPool = SettingDao::get(db, None)?;
         let hosts = HostDao::all(db)?;
 
         let mut wan = Vec::new();
@@ -512,12 +512,12 @@ pub fn apply(db: Arc<Mutex<Db>>, immediately: bool) -> Result<()> {
 
         let firewall = iptables::script(db)?;
 
-        Some((lan, dmz, wan, dns, hosts, firewall))
+        Some((lan, dmz, wan, wan_pool, dns, hosts, firewall))
     } else {
         None
     };
 
-    if let Some((ref lan, ref dmz, ref wan, ref dns, hosts, ref firewall)) = cfg {
+    if let Some((ref lan, ref dmz, ref wan, ref wan_pool, ref dns, hosts, ref firewall)) = cfg {
         {
             let tmp = Path::new(&Component::RootDir).join("etc").join("netplan");
             if tmp.exists() {
@@ -538,6 +538,7 @@ pub fn apply(db: Arc<Mutex<Db>>, immediately: bool) -> Result<()> {
         if immediately {
             palm::network::netplan::apply()?;
             palm::network::dnsmasq::apply()?;
+            wan_pool.apply()?;
             iptables::apply(firewall)?;
         } else {
             let file = temp_dir().join(palm::timestamp_file("firewall", Some("sh")));

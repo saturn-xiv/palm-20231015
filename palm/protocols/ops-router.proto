@@ -19,10 +19,10 @@ service Router {
   rpc Reboot(google.protobuf.Empty) returns (google.protobuf.Empty) {}
   rpc Apply(google.protobuf.Empty) returns (google.protobuf.Empty) {}
   rpc Status(google.protobuf.Empty) returns (RouterStatusResponse) {}
-  rpc Bound(RouterBoundRequest) returns (google.protobuf.Empty) {}
 
   rpc SetDns(Dns) returns (google.protobuf.Empty) {}
   rpc SetWan(Wan) returns (google.protobuf.Empty) {}
+  rpc SetWanPool(WanPool) returns (google.protobuf.Empty) {}
   rpc SetLan(Lan) returns (google.protobuf.Empty) {}
   rpc SetDmz(Dmz) returns (google.protobuf.Empty) {}
   rpc CreateRule(Rule) returns (google.protobuf.Empty) {}
@@ -37,7 +37,13 @@ service Router {
   rpc CreateUser(RouterCreateUserRequest) returns (google.protobuf.Empty) {}
 }
 
-message RouterBoundRequest { repeated string items = 1; }
+message WanPool {
+  message Item {
+    string device = 1;
+    uint32 weight = 2;
+  }
+  repeated Item items = 1;
+}
 
 message RouterCreateUserRequest {
   string name = 1;
@@ -161,8 +167,16 @@ message RouterStatusResponse {
   Lan lan = 1;
   Dmz dmz = 2;
   Dns dns = 3;
+
+  message Ip {
+    string address = 1;
+    string route = 2;
+    string rule = 3;
+  }
+  Ip ip = 4;
+
   repeated Wan wan = 11;
-  repeated string bound = 12;
+  WanPool wan_pool = 12;
   repeated Rule rules = 21;
   repeated Host hosts = 22;
 

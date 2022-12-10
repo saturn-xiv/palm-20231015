@@ -1,9 +1,9 @@
-use std::fmt::Write as FmtWrite;
+use std::{fmt::Write as FmtWrite, str::FromStr};
 
 use diesel::sqlite::SqliteConnection as Db;
+use ipnet::Ipv4Net;
 use palm::{
     network::{
-        dnsmasq::Dhcpcd,
         iptables::{Flush, Forward, Iptables, Local, Persistent, SNat},
         BASH_FOOTER, BASH_HEADER,
     },
@@ -11,7 +11,6 @@ use palm::{
     Result,
 };
 use prost::Message;
-use rand::{prelude::*, thread_rng};
 
 use super::super::models::{rule::Dao as RuleDao, setting::Dao as SettingDao};
 
@@ -20,16 +19,18 @@ use super::super::models::{rule::Dao as RuleDao, setting::Dao as SettingDao};
 pub fn script(db: &mut Db) -> Result<String> {
     let lan: v1::Lan = SettingDao::get(db, None)?;
     let dmz: v1::Dmz = SettingDao::get(db, None)?;
+    let wan_pool: v1::WanPool = SettingDao::get(db, None)?;
     let wan = {
-        let bound: v1::RouterBoundRequest = SettingDao::get(db, None)?;
         let mut items = Vec::new();
-        for device in bound.items.iter() {
-            let it: v1::Wan = SettingDao::get(db, Some(device))?;
-            items.push(it);
+        for (device, _) in palm::network::ethernet::detect()?.iter() {
+            if let Ok(it) = SettingDao::get::<v1::Wan>(db, Some(device)) {
+                items.push(it);
+            } else {
+                warn!("ethernet {} is not set", device);
+            }
         }
         items
     };
-    let bound: v1::RouterBoundRequest = SettingDao::get(db, None)?;
 
     let mut buf = String::new();
     writeln!(buf, "{}", BASH_HEADER)?;
@@ -37,13 +38,13 @@ pub fn script(db: &mut Db) -> Result<String> {
     Flush {
         input: false,
         output: true,
-        forward: true,
+        forward: false,
     }
     .write(&mut buf)?;
 
     Local {
         lan: lan.device.clone(),
-        dmz: dmz.device.clone(),
+        dmz: dmz.device,
     }
     .write(&mut buf)?;
 
@@ -83,23 +84,12 @@ pub fn script(db: &mut Db) -> Result<String> {
         }
     }
 
+    // forward
     {
-        let mut wan = Vec::new();
-        for it in bound.items.iter() {
-            let it: v1::Wan = SettingDao::get(db, Some(it))?;
-            wan.push(it);
-        }
-        let mut rng = thread_rng();
-
-        let mut hosts = Vec::new();
-        hosts.extend(lan.hosts()?);
-        hosts.extend(dmz.hosts()?);
-        for ip in hosts.iter() {
-            let ip = ip.to_string();
-            let wan = wan.choose_weighted(&mut rng, |x| x.capacity)?;
+        for it in wan_pool.items.iter() {
             Forward {
-                lan: ip,
-                wan: wan.device.clone(),
+                lan: Ipv4Net::from_str(&lan.address)?,
+                wan: it.device.clone(),
             }
             .write(&mut buf)?;
         }

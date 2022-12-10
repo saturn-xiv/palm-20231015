@@ -9,8 +9,8 @@ use palm::{crypto::Hmac, ops::router::v1 as ops_router_v1, parser::from_toml, Er
 // const DNS_V4_2: &str = "211.139.29.170";
 const DNS_V4_1: &str = "223.5.5.5";
 const DNS_V4_2: &str = "223.6.6.6";
-const DNS_V6_1: &str = "2400:3200::1";
-const DNS_V6_2: &str = "2400:3200:baba::1";
+// const DNS_V6_1: &str = "2400:3200::1";
+// const DNS_V6_2: &str = "2400:3200:baba::1";
 
 fn ethernet(i: u32, j: u32) -> (String, String) {
     (
@@ -48,7 +48,7 @@ fn yt() {
         let mut items = Vec::new();
 
         {
-            let (device, mac) = ethernet(2, 0);
+            let (device, mac) = ethernet(2, 3);
             let it = ops_router_v1::Lan {
                 device,
                 mac,
@@ -61,7 +61,7 @@ fn yt() {
             items.push((it.device.clone(), it.mac.clone()));
         }
         {
-            let (device, mac) = ethernet(2, 1);
+            let (device, mac) = ethernet(3, 0);
             let it = ops_router_v1::Dmz {
                 device,
                 mac,
@@ -75,11 +75,7 @@ fn yt() {
         }
         {
             let mut bound = ops_router_v1::RouterBoundRequest::default();
-            for (i, j, k) in [
-                (2, 2, 100),
-                (2, 3, 101),
-                // (3, 0), (3, 1), (3, 2), (3, 3)
-            ] {
+            for (i, j, _k) in [(2, 0, 101), (2, 1, 102), (2, 2, 100)] {
                 let (device, mac) = ethernet(i, j);
                 bound.items.push(device.clone());
                 let it = ops_router_v1::Wan {
@@ -88,15 +84,15 @@ fn yt() {
                     name: format!("Line{}{}", i, j),
                     metric: 100 + i * 10 + j,
                     capacity: (i + 1) * 4,
-                    // ip: Some(ops_router_v1::wan::Ip::Dhcp(ops_router_v1::Dhcp {
-                    //     v6: false,
-                    // })),
-                    ip: Some(ops_router_v1::wan::Ip::Static(ops_router_v1::Static {
-                        address: format!("192.168.{}.10/24", k),
-                        gateway: format!("192.168.{}.1", k),
-                        dns1: DNS_V4_1.to_string(),
-                        dns2: Some(DNS_V4_2.to_string()),
+                    ip: Some(ops_router_v1::wan::Ip::Dhcp(ops_router_v1::Dhcp {
+                        v6: false,
                     })),
+                    // ip: Some(ops_router_v1::wan::Ip::Static(ops_router_v1::Static {
+                    //     address: format!("192.168.{}.10/24", k),
+                    //     gateway: format!("192.168.{}.1", k),
+                    //     dns1: DNS_V4_1.to_string(),
+                    //     dns2: Some(DNS_V4_2.to_string()),
+                    // })),
                 };
                 SettingDao::set(db, Some(&device), &it).unwrap();
 
@@ -131,12 +127,7 @@ fn yt() {
             db,
             None,
             &ops_router_v1::Dns {
-                items: vec![
-                    DNS_V4_1.to_string(),
-                    DNS_V4_2.to_string(),
-                    DNS_V6_1.to_string(),
-                    DNS_V6_2.to_string(),
-                ],
+                items: vec![DNS_V4_1.to_string(), DNS_V4_2.to_string()],
             },
         )
         .unwrap();
