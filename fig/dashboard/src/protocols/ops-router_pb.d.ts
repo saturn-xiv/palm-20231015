@@ -31,24 +31,47 @@ export namespace Contact {
   }
 }
 
-export class RouterBoundRequest extends jspb.Message {
-  getItemsList(): Array<string>;
-  setItemsList(value: Array<string>): RouterBoundRequest;
-  clearItemsList(): RouterBoundRequest;
-  addItems(value: string, index?: number): RouterBoundRequest;
+export class WanPool extends jspb.Message {
+  getItemsList(): Array<WanPool.Item>;
+  setItemsList(value: Array<WanPool.Item>): WanPool;
+  clearItemsList(): WanPool;
+  addItems(value?: WanPool.Item, index?: number): WanPool.Item;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RouterBoundRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: RouterBoundRequest): RouterBoundRequest.AsObject;
-  static serializeBinaryToWriter(message: RouterBoundRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RouterBoundRequest;
-  static deserializeBinaryFromReader(message: RouterBoundRequest, reader: jspb.BinaryReader): RouterBoundRequest;
+  toObject(includeInstance?: boolean): WanPool.AsObject;
+  static toObject(includeInstance: boolean, msg: WanPool): WanPool.AsObject;
+  static serializeBinaryToWriter(message: WanPool, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WanPool;
+  static deserializeBinaryFromReader(message: WanPool, reader: jspb.BinaryReader): WanPool;
 }
 
-export namespace RouterBoundRequest {
+export namespace WanPool {
   export type AsObject = {
-    itemsList: Array<string>,
+    itemsList: Array<WanPool.Item.AsObject>,
   }
+
+  export class Item extends jspb.Message {
+    getDevice(): string;
+    setDevice(value: string): Item;
+
+    getWeight(): number;
+    setWeight(value: number): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      device: string,
+      weight: number,
+    }
+  }
+
 }
 
 export class RouterCreateUserRequest extends jspb.Message {
@@ -653,15 +676,20 @@ export class RouterStatusResponse extends jspb.Message {
   hasDns(): boolean;
   clearDns(): RouterStatusResponse;
 
+  getIp(): RouterStatusResponse.Ip | undefined;
+  setIp(value?: RouterStatusResponse.Ip): RouterStatusResponse;
+  hasIp(): boolean;
+  clearIp(): RouterStatusResponse;
+
   getWanList(): Array<Wan>;
   setWanList(value: Array<Wan>): RouterStatusResponse;
   clearWanList(): RouterStatusResponse;
   addWan(value?: Wan, index?: number): Wan;
 
-  getBoundList(): Array<string>;
-  setBoundList(value: Array<string>): RouterStatusResponse;
-  clearBoundList(): RouterStatusResponse;
-  addBound(value: string, index?: number): RouterStatusResponse;
+  getWanPool(): WanPool | undefined;
+  setWanPool(value?: WanPool): RouterStatusResponse;
+  hasWanPool(): boolean;
+  clearWanPool(): RouterStatusResponse;
 
   getRulesList(): Array<Rule>;
   setRulesList(value: Array<Rule>): RouterStatusResponse;
@@ -673,8 +701,8 @@ export class RouterStatusResponse extends jspb.Message {
   clearHostsList(): RouterStatusResponse;
   addHosts(value?: Host, index?: number): Host;
 
-  getScript(): string;
-  setScript(value: string): RouterStatusResponse;
+  getFirewall(): string;
+  setFirewall(value: string): RouterStatusResponse;
 
   getUptime(): google_protobuf_duration_pb.Duration | undefined;
   setUptime(value?: google_protobuf_duration_pb.Duration): RouterStatusResponse;
@@ -694,13 +722,41 @@ export namespace RouterStatusResponse {
     lan?: Lan.AsObject,
     dmz?: Dmz.AsObject,
     dns?: Dns.AsObject,
+    ip?: RouterStatusResponse.Ip.AsObject,
     wanList: Array<Wan.AsObject>,
-    boundList: Array<string>,
+    wanPool?: WanPool.AsObject,
     rulesList: Array<Rule.AsObject>,
     hostsList: Array<Host.AsObject>,
-    script: string,
+    firewall: string,
     uptime?: google_protobuf_duration_pb.Duration.AsObject,
   }
+
+  export class Ip extends jspb.Message {
+    getAddress(): string;
+    setAddress(value: string): Ip;
+
+    getRoute(): string;
+    setRoute(value: string): Ip;
+
+    getRule(): string;
+    setRule(value: string): Ip;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Ip.AsObject;
+    static toObject(includeInstance: boolean, msg: Ip): Ip.AsObject;
+    static serializeBinaryToWriter(message: Ip, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Ip;
+    static deserializeBinaryFromReader(message: Ip, reader: jspb.BinaryReader): Ip;
+  }
+
+  export namespace Ip {
+    export type AsObject = {
+      address: string,
+      route: string,
+      rule: string,
+    }
+  }
+
 }
 
 export class Lan extends jspb.Message {

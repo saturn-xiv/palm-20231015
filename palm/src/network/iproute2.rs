@@ -1,6 +1,5 @@
 use std::collections::BTreeMap;
 use std::path::{Component, Path, PathBuf};
-use std::process::Command;
 
 use askama::Template;
 
@@ -8,8 +7,21 @@ use super::super::{ops::router::v1 as ops_router, Result};
 use super::Etc;
 
 impl ops_router::WanPool {
+    #[cfg(debug_assertions)]
     pub fn apply(&self) -> Result<()> {
-        let mut cmd = Command::new("ip");
+        let mut cmd = "route replace default".to_string();
+        for it in self.items.iter() {
+            let gateway = super::ethernet::gateway(&it.device)?;
+            let weight = it.weight;
+            cmd.push_str(&format!(" nexthop via {gateway} weight {weight}"));
+        }
+        info!("{cmd}");
+        Ok(())
+    }
+
+    #[cfg(not(debug_assertions))]
+    pub fn apply(&self) -> Result<()> {
+        let mut cmd = std::process::Command::new("ip");
         let mut out = cmd.arg("route").arg("replace").arg("default");
         for it in self.items.iter() {
             let gw = super::ethernet::gateway(&it.device)?;

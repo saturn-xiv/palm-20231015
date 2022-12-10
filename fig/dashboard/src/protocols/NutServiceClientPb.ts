@@ -2876,6 +2876,135 @@ export class SiteClient {
     this.methodDescriptorTestTwilio);
   }
 
+  methodDescriptorSetWechat = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Site/SetWechat',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.WechatProfile,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.WechatProfile) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  setWechat(
+    request: nut_pb.WechatProfile,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  setWechat(
+    request: nut_pb.WechatProfile,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  setWechat(
+    request: nut_pb.WechatProfile,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Site/SetWechat',
+        request,
+        metadata || {},
+        this.methodDescriptorSetWechat,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Site/SetWechat',
+    request,
+    metadata || {},
+    this.methodDescriptorSetWechat);
+  }
+
+  methodDescriptorGetWechat = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Site/GetWechat',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    nut_pb.WechatProfile,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    nut_pb.WechatProfile.deserializeBinary
+  );
+
+  getWechat(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.WechatProfile>;
+
+  getWechat(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatProfile) => void): grpcWeb.ClientReadableStream<nut_pb.WechatProfile>;
+
+  getWechat(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatProfile) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Site/GetWechat',
+        request,
+        metadata || {},
+        this.methodDescriptorGetWechat,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Site/GetWechat',
+    request,
+    metadata || {},
+    this.methodDescriptorGetWechat);
+  }
+
+  methodDescriptorTestWechat = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Site/TestWechat',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.WechatProfile,
+    nut_pb.SiteWechatTestResponse,
+    (request: nut_pb.WechatProfile) => {
+      return request.serializeBinary();
+    },
+    nut_pb.SiteWechatTestResponse.deserializeBinary
+  );
+
+  testWechat(
+    request: nut_pb.WechatProfile,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.SiteWechatTestResponse>;
+
+  testWechat(
+    request: nut_pb.WechatProfile,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.SiteWechatTestResponse) => void): grpcWeb.ClientReadableStream<nut_pb.SiteWechatTestResponse>;
+
+  testWechat(
+    request: nut_pb.WechatProfile,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.SiteWechatTestResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Site/TestWechat',
+        request,
+        metadata || {},
+        this.methodDescriptorTestWechat,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Site/TestWechat',
+    request,
+    metadata || {},
+    this.methodDescriptorTestWechat);
+  }
+
   methodDescriptorSetSmtp = new grpcWeb.MethodDescriptor(
     '/palm.nut.v1.Site/SetSmtp',
     grpcWeb.MethodType.UNARY,

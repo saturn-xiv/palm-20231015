@@ -1,7 +1,6 @@
 use std::io::{prelude::*, Error as IoError, ErrorKind as IoErrorKind};
 use std::net::Ipv4Addr;
 use std::path::{Component, Path, PathBuf};
-use std::process::Command;
 
 use askama::Template;
 use ipnet::Ipv4Net;
@@ -30,7 +29,10 @@ impl Arp {
     #[cfg(not(debug_assertions))]
     fn bind_<P: AsRef<Path>>(file: P) -> Result<()> {
         let file = file.as_ref();
-        let out = Command::new("arp").arg("-f").arg(file).output()?;
+        let out = std::process::Command::new("arp")
+            .arg("-f")
+            .arg(file)
+            .output()?;
         let out = String::from_utf8(out.stdout)?;
         info!("{}", out);
         Ok(())
@@ -44,9 +46,16 @@ impl Arp {
     }
 }
 
+#[cfg(debug_assertions)]
+pub fn apply() -> Result<()> {
+    info!("systemctl restart dnsmasq");
+    Ok(())
+}
+
+#[cfg(not(debug_assertions))]
 pub fn apply() -> Result<()> {
     warn!("apply dnsmasq settings");
-    let out = Command::new("systemctl")
+    let out = std::process::Command::new("systemctl")
         .arg("restart")
         .arg("dnsmasq")
         .output()?;

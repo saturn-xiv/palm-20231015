@@ -1801,6 +1801,48 @@ export namespace TwilioProfile {
   }
 }
 
+export class WechatProfile extends jspb.Message {
+  getAppId(): string;
+  setAppId(value: string): WechatProfile;
+
+  getAppSecret(): string;
+  setAppSecret(value: string): WechatProfile;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatProfile.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatProfile): WechatProfile.AsObject;
+  static serializeBinaryToWriter(message: WechatProfile, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatProfile;
+  static deserializeBinaryFromReader(message: WechatProfile, reader: jspb.BinaryReader): WechatProfile;
+}
+
+export namespace WechatProfile {
+  export type AsObject = {
+    appId: string,
+    appSecret: string,
+  }
+}
+
+export class SiteWechatTestResponse extends jspb.Message {
+  getIpList(): Array<string>;
+  setIpList(value: Array<string>): SiteWechatTestResponse;
+  clearIpList(): SiteWechatTestResponse;
+  addIp(value: string, index?: number): SiteWechatTestResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SiteWechatTestResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: SiteWechatTestResponse): SiteWechatTestResponse.AsObject;
+  static serializeBinaryToWriter(message: SiteWechatTestResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SiteWechatTestResponse;
+  static deserializeBinaryFromReader(message: SiteWechatTestResponse, reader: jspb.BinaryReader): SiteWechatTestResponse;
+}
+
+export namespace SiteWechatTestResponse {
+  export type AsObject = {
+    ipList: Array<string>,
+  }
+}
+
 export class SmtpProfile extends jspb.Message {
   getHost(): string;
   setHost(value: string): SmtpProfile;

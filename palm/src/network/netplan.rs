@@ -1,17 +1,25 @@
 use std::path::{Component, Path, PathBuf};
-use std::process::Command;
 
 use askama::Template;
 
 use super::super::{ops::router as ops_router, Result};
 use super::Etc;
 
+#[cfg(debug_assertions)]
+pub fn apply() -> Result<()> {
+    info!("netplan apply");
+    Ok(())
+}
+
 // yamllint xxx.yaml
 // netplan generate
 // netplan --debug apply
+#[cfg(not(debug_assertions))]
 pub fn apply() -> Result<()> {
     warn!("apply netplan settings");
-    let out = Command::new("netplan").arg("apply").output()?;
+    let out = std::process::Command::new("netplan")
+        .arg("apply")
+        .output()?;
     let out = String::from_utf8(out.stdout)?;
     info!("{}", out);
     Ok(())

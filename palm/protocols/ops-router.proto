@@ -180,7 +180,7 @@ message RouterStatusResponse {
   repeated Rule rules = 21;
   repeated Host hosts = 22;
 
-  string script = 98;
+  string firewall = 98;
   google.protobuf.Duration uptime = 99;
 }
 

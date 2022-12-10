@@ -90,7 +90,7 @@ impl v1::router_server::Router for Service {
                 wan.push(it);
             }
 
-            let script = try_grpc!(iptables::script(db))?;
+            let firewall = iptables::script(db).unwrap_or_default();
 
             let mut hosts = Vec::new();
             for it in try_grpc!(HostDao::all(db))?.iter() {
@@ -136,7 +136,7 @@ impl v1::router_server::Router for Service {
                 dmz: Some(dmz),
                 dns: Some(dns),
                 ip: Some(ip),
-                script,
+                firewall,
                 hosts,
                 rules,
                 uptime: Some(prost_types::Duration {
