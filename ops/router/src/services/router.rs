@@ -74,20 +74,14 @@ impl v1::router_server::Router for Service {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
 
-            let lan: v1::Lan = SettingDao::get(db, None).unwrap_or_default();
-            let dmz: v1::Dmz = SettingDao::get(db, None).unwrap_or_default();
+            let lan: Option<v1::Lan> = SettingDao::get(db, None).ok();
+            let dmz: Option<v1::Dmz> = SettingDao::get(db, None).ok();
 
             let mut wan = Vec::new();
-            for (device, mac) in try_grpc!(palm::network::ethernet::detect())?.iter() {
-                if device == &lan.device {
-                    continue;
+            for (device, _) in try_grpc!(palm::network::ethernet::detect())?.iter() {
+                if let Ok(it) = SettingDao::get(db, Some(device)) {
+                    wan.push(it);
                 }
-                let it: v1::Wan = SettingDao::get(db, Some(device)).unwrap_or_else(|_| v1::Wan {
-                    device: device.clone(),
-                    mac: mac.to_hex_string(),
-                    ..Default::default()
-                });
-                wan.push(it);
             }
 
             let firewall = iptables::script(db).unwrap_or_default();
@@ -128,17 +122,25 @@ impl v1::router_server::Router for Service {
             let wan_pool: v1::WanPool = SettingDao::get(db, None).unwrap_or_default();
             let dns: v1::Dns = SettingDao::get(db, None).unwrap_or_default();
             let ip = try_grpc!(v1::router_status_response::Ip::new())?;
+            let interfaces = {
+                let items = try_grpc!(palm::network::ethernet::detect())?;
+                items
+                    .iter()
+                    .map(|(k, v)| (k.clone(), v.to_hex_string()))
+                    .collect::<_>()
+            };
 
             return Ok(Response::new(v1::RouterStatusResponse {
+                interfaces,
                 wan,
-                wan_pool: Some(wan_pool),
-                lan: Some(lan),
-                dmz: Some(dmz),
-                dns: Some(dns),
-                ip: Some(ip),
+                lan,
+                dmz,
                 firewall,
                 hosts,
                 rules,
+                wan_pool: Some(wan_pool),
+                dns: Some(dns),
+                ip: Some(ip),
                 uptime: Some(prost_types::Duration {
                     seconds: uptime.as_secs() as i64,
                     ..Default::default()
@@ -186,7 +188,7 @@ impl v1::router_server::Router for Service {
 
         Ok(Response::new(()))
     }
-    async fn set_wan(&self, req: Request<v1::Wan>) -> GrpcResult<()> {
+    async fn set_wan(&self, req: Request<v1::RouterSetWanRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let jwt = self.jwt.deref();
         let req = req.into_inner();
@@ -195,8 +197,27 @@ impl v1::router_server::Router for Service {
             let db = db.deref_mut();
 
             try_grpc!(ss.current_user(db, jwt))?;
-            try_grpc!(validate_wan(db, &req))?;
-            try_grpc!(SettingDao::set(db, Some(req.device.as_str()), &req))?;
+            if let Some(ref wan) = req.payload {
+                if req.enable {
+                    try_grpc!(validate_wan(db, wan))?;
+                    try_grpc!(SettingDao::set(db, Some(wan.device.as_str()), wan))?;
+                } else {
+                    if let Ok(ref pool) = SettingDao::get::<v1::WanPool>(db, None) {
+                        for it in pool.items.iter() {
+                            if it.device == wan.device {
+                                return Err(Status::permission_denied(format!(
+                                    "{} is in wan pool",
+                                    it.device
+                                )));
+                            }
+                        }
+                    }
+                    try_grpc!(SettingDao::destroy::<v1::Wan>(
+                        db,
+                        Some(wan.device.as_str())
+                    ))?;
+                }
+            }
 
             Ok(())
         } else {
@@ -205,7 +226,7 @@ impl v1::router_server::Router for Service {
 
         Ok(Response::new(()))
     }
-    async fn set_lan(&self, req: Request<v1::Lan>) -> GrpcResult<()> {
+    async fn set_lan(&self, req: Request<v1::RouterSetLanRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let jwt = self.jwt.deref();
         let req = req.into_inner();
@@ -214,16 +235,22 @@ impl v1::router_server::Router for Service {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
 
-            try_grpc!(validate_lan(db, &req))?;
+            if let Some(ref lan) = req.payload {
+                if req.enable {
+                    try_grpc!(validate_lan(db, lan))?;
 
-            let net = try_grpc!(req.address.parse::<Ipv4Net>())?;
-            try_grpc!(db.transaction::<_, Error, _>(move |db| {
-                SettingDao::set(db, None, &req)?;
-                for it in try_grpc!(HostDao::by_net(db, &net))?.iter() {
-                    try_grpc!(HostDao::destroy(db, it.id))?;
+                    let net = try_grpc!(lan.address.parse::<Ipv4Net>())?;
+                    try_grpc!(db.transaction::<_, Error, _>(move |db| {
+                        SettingDao::set(db, None, lan)?;
+                        for it in try_grpc!(HostDao::by_net(db, &net))?.iter() {
+                            try_grpc!(HostDao::destroy(db, it.id))?;
+                        }
+                        Ok(())
+                    }))?;
+                } else {
+                    try_grpc!(SettingDao::destroy::<v1::Lan>(db, None))?;
                 }
-                Ok(())
-            }))?;
+            }
 
             Ok(())
         } else {
@@ -232,7 +259,7 @@ impl v1::router_server::Router for Service {
 
         Ok(Response::new(()))
     }
-    async fn set_dmz(&self, req: Request<v1::Dmz>) -> GrpcResult<()> {
+    async fn set_dmz(&self, req: Request<v1::RouterSetDmzRequest>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let jwt = self.jwt.deref();
         let req = req.into_inner();
@@ -241,16 +268,21 @@ impl v1::router_server::Router for Service {
             let db = db.deref_mut();
             try_grpc!(ss.current_user(db, jwt))?;
 
-            try_grpc!(validate_dmz(db, &req))?;
-
-            let net = try_grpc!(req.address.parse::<Ipv4Net>())?;
-            try_grpc!(db.transaction::<_, Error, _>(move |db| {
-                SettingDao::set(db, None, &req)?;
-                for it in try_grpc!(HostDao::by_net(db, &net))?.iter() {
-                    try_grpc!(HostDao::destroy(db, it.id))?;
+            if let Some(ref dmz) = req.payload {
+                if req.enable {
+                    try_grpc!(validate_dmz(db, dmz))?;
+                    let net = try_grpc!(dmz.address.parse::<Ipv4Net>())?;
+                    try_grpc!(db.transaction::<_, Error, _>(move |db| {
+                        SettingDao::set(db, None, dmz)?;
+                        for it in try_grpc!(HostDao::by_net(db, &net))?.iter() {
+                            try_grpc!(HostDao::destroy(db, it.id))?;
+                        }
+                        Ok(())
+                    }))?;
+                } else {
+                    try_grpc!(SettingDao::destroy::<v1::Dmz>(db, None))?;
                 }
-                Ok(())
-            }))?;
+            }
 
             Ok(())
         } else {
@@ -463,28 +495,6 @@ impl From<Host> for v1::Host {
 }
 
 pub fn validate_wan_pool(db: &mut Db, pool: &[v1::wan_pool::Item]) -> Result<()> {
-    if let Ok(ref lan) = SettingDao::get::<v1::Lan>(db, None) {
-        for it in pool {
-            if it.device == lan.device {
-                return Err(Box::new(IoError::new(
-                    IoErrorKind::Other,
-                    format!("{} is lan device", lan.device),
-                )));
-            }
-        }
-    }
-
-    if let Ok(ref dmz) = SettingDao::get::<v1::Dmz>(db, None) {
-        for it in pool {
-            if it.device == dmz.device {
-                return Err(Box::new(IoError::new(
-                    IoErrorKind::Other,
-                    format!("{} is dmz device", dmz.device),
-                )));
-            }
-        }
-    }
-
     for it in pool {
         palm::network::ethernet::mac_address(&it.device)?;
         SettingDao::get::<v1::Wan>(db, Some(&it.device))?;
@@ -608,6 +618,7 @@ pub fn validate_wan(db: &mut Db, wan: &v1::Wan) -> Result<()> {
             )));
         }
     }
+
     Ok(())
 }
 
@@ -615,12 +626,22 @@ pub fn validate_lan(db: &mut Db, lan: &v1::Lan) -> Result<()> {
     lan.validate()?;
     check_ethernet_metric_from_db!(db, lan)?;
 
-    if let Ok(ref it) = SettingDao::get::<v1::Dmz>(db, None) {
-        if it.device == lan.device {
+    if let Ok(ref dmz) = SettingDao::get::<v1::Dmz>(db, None) {
+        if dmz.device == lan.device {
             return Err(Box::new(IoError::new(
                 IoErrorKind::Other,
-                format!("{} is dmz device", it.device),
+                format!("{} is dmz device", dmz.device),
             )));
+        }
+        {
+            let lan = lan.address.parse::<Ipv4Net>()?.network();
+            let dmz = dmz.address.parse::<Ipv4Net>()?.network();
+            if lan == dmz {
+                return Err(Box::new(IoError::new(
+                    IoErrorKind::Other,
+                    format!("{} is dmz network", dmz),
+                )));
+            }
         }
     }
     if SettingDao::get::<v1::Wan>(db, Some(&lan.device)).is_ok() {
@@ -636,12 +657,22 @@ pub fn validate_dmz(db: &mut Db, dmz: &v1::Dmz) -> Result<()> {
     dmz.validate()?;
     check_ethernet_metric_from_db!(db, dmz)?;
 
-    if let Ok(ref it) = SettingDao::get::<v1::Lan>(db, None) {
-        if it.device == dmz.device {
+    if let Ok(ref lan) = SettingDao::get::<v1::Lan>(db, None) {
+        if lan.device == dmz.device {
             return Err(Box::new(IoError::new(
                 IoErrorKind::Other,
-                format!("{} is lan device", it.device),
+                format!("{} is lan device", lan.device),
             )));
+        }
+        {
+            let lan = lan.address.parse::<Ipv4Net>()?.network();
+            let dmz = dmz.address.parse::<Ipv4Net>()?.network();
+            if lan == dmz {
+                return Err(Box::new(IoError::new(
+                    IoErrorKind::Other,
+                    format!("{} is lan network", lan),
+                )));
+            }
         }
     }
     if SettingDao::get::<v1::Wan>(db, Some(&dmz.device)).is_ok() {

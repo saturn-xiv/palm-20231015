@@ -13,6 +13,7 @@ import MessageBox from "../../components/MessageBox";
 import InterfaceForm from "../../components/wan/Interface";
 import PoolForm from "../../components/wan/Pool";
 import DnsForm from "../../components/wan/Dns";
+import { IEthernet } from "../../components";
 
 const Widget = () => {
   const [status, setStatus] = useState<RouterStatusResponse | undefined>();
@@ -37,6 +38,17 @@ const Widget = () => {
     refresh();
   }, [dispatch, intl]);
 
+  const interfaces: IEthernet[] = [];
+  status?.getInterfacesMap().forEach((mac, device) => {
+    if (device === status?.getLan()?.getDevice()) {
+      return;
+    }
+    if (device === status?.getDmz()?.getDevice()) {
+      return;
+    }
+    interfaces.push({ device, mac });
+  });
+
   return (
     <>
       <Grid item xs={12}>
@@ -53,6 +65,7 @@ const Widget = () => {
       </Grid>
       <Grid item xs={12} md={4} lg={6}>
         <InterfaceForm
+          interfaces={interfaces}
           devices={status?.getWanList() || []}
           refresh={refresh}
           setMessage={(color, message) => {

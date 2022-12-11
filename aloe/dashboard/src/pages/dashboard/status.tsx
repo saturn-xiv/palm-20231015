@@ -8,12 +8,7 @@ import { useAppDispatch } from "../../hooks";
 import { RouterClient } from "../../protocols/Ops-routerServiceClientPb";
 import { setTitle } from "../../reducers/layout";
 import { GRPC_HOST, grpc_metadata } from "../../request";
-import {
-  RouterStatusResponse,
-  WanPool,
-  Lan,
-  Dmz,
-} from "../../protocols/ops-router_pb";
+import { RouterStatusResponse, WanPool } from "../../protocols/ops-router_pb";
 import WanPanel from "../../components/status/Wan";
 import LanPanel from "../../components/status/Lan";
 import DmzPanel from "../../components/status/Dmz";
@@ -40,6 +35,9 @@ const Widget = () => {
     });
   }, [dispatch, intl]);
 
+  const lan = status?.getLan();
+  const dmz = status?.getDmz();
+
   return (
     <Grid item xs={12} md={8} lg={9}>
       <MessageBox
@@ -57,8 +55,8 @@ const Widget = () => {
         devices={status?.getWanList() || []}
         dns={status?.getDns()?.getItemsList() || []}
       />
-      <LanPanel lan={status?.getLan() || new Lan()} />
-      <DmzPanel dmz={status?.getDmz() || new Dmz()} />
+      {lan && <LanPanel lan={lan} />}
+      {dmz && <DmzPanel dmz={dmz} />}
       <OsPanel
         ip={status?.getIp() || new RouterStatusResponse.Ip()}
         firewall={status?.getFirewall() || ""}

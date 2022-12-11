@@ -216,26 +216,26 @@ export class RouterClient {
   methodDescriptorSetWan = new grpcWeb.MethodDescriptor(
     '/palm.ops.router.v1.Router/SetWan',
     grpcWeb.MethodType.UNARY,
-    ops$router_pb.Wan,
+    ops$router_pb.RouterSetWanRequest,
     google_protobuf_empty_pb.Empty,
-    (request: ops$router_pb.Wan) => {
+    (request: ops$router_pb.RouterSetWanRequest) => {
       return request.serializeBinary();
     },
     google_protobuf_empty_pb.Empty.deserializeBinary
   );
 
   setWan(
-    request: ops$router_pb.Wan,
+    request: ops$router_pb.RouterSetWanRequest,
     metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
 
   setWan(
-    request: ops$router_pb.Wan,
+    request: ops$router_pb.RouterSetWanRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
   setWan(
-    request: ops$router_pb.Wan,
+    request: ops$router_pb.RouterSetWanRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void) {
@@ -302,26 +302,26 @@ export class RouterClient {
   methodDescriptorSetLan = new grpcWeb.MethodDescriptor(
     '/palm.ops.router.v1.Router/SetLan',
     grpcWeb.MethodType.UNARY,
-    ops$router_pb.Lan,
+    ops$router_pb.RouterSetLanRequest,
     google_protobuf_empty_pb.Empty,
-    (request: ops$router_pb.Lan) => {
+    (request: ops$router_pb.RouterSetLanRequest) => {
       return request.serializeBinary();
     },
     google_protobuf_empty_pb.Empty.deserializeBinary
   );
 
   setLan(
-    request: ops$router_pb.Lan,
+    request: ops$router_pb.RouterSetLanRequest,
     metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
 
   setLan(
-    request: ops$router_pb.Lan,
+    request: ops$router_pb.RouterSetLanRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
   setLan(
-    request: ops$router_pb.Lan,
+    request: ops$router_pb.RouterSetLanRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void) {
@@ -345,26 +345,26 @@ export class RouterClient {
   methodDescriptorSetDmz = new grpcWeb.MethodDescriptor(
     '/palm.ops.router.v1.Router/SetDmz',
     grpcWeb.MethodType.UNARY,
-    ops$router_pb.Dmz,
+    ops$router_pb.RouterSetDmzRequest,
     google_protobuf_empty_pb.Empty,
-    (request: ops$router_pb.Dmz) => {
+    (request: ops$router_pb.RouterSetDmzRequest) => {
       return request.serializeBinary();
     },
     google_protobuf_empty_pb.Empty.deserializeBinary
   );
 
   setDmz(
-    request: ops$router_pb.Dmz,
+    request: ops$router_pb.RouterSetDmzRequest,
     metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
 
   setDmz(
-    request: ops$router_pb.Dmz,
+    request: ops$router_pb.RouterSetDmzRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
   setDmz(
-    request: ops$router_pb.Dmz,
+    request: ops$router_pb.RouterSetDmzRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void) {

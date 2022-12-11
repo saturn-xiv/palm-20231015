@@ -20,10 +20,17 @@ import {
 import FormControl from "@mui/material/FormControl";
 
 import { RouterClient } from "../../protocols/Ops-routerServiceClientPb";
-import { Wan, Dhcp, Static } from "../../protocols/ops-router_pb";
+import {
+  Wan,
+  Dhcp,
+  Static,
+  RouterSetWanRequest,
+} from "../../protocols/ops-router_pb";
 import { GRPC_HOST, grpc_metadata } from "../../request";
+import { IEthernet } from "..";
 
 interface IProps {
+  interfaces: IEthernet[];
   devices: Wan[];
   refresh: () => void;
   setMessage: (color: AlertColor, message: string) => void;
@@ -31,10 +38,6 @@ interface IProps {
 
 const formInputSchema = yup_object({
   name: yup_string().min(2).max(12).defined(),
-  capacity: yup_number()
-    .min(2)
-    .max(1 << 12)
-    .defined(),
   metric: yup_number().min(100).max(300).defined(),
   address: yup_string().nullable().min(7).max(64),
   gateway: yup_string().nullable().min(7).max(64),
@@ -46,7 +49,6 @@ interface IFormInput extends InferType<typeof formInputSchema> {
   device: string;
   mac: string;
   name: string;
-  capacity: number;
   metric: number;
   dhcp: boolean;
   address: string;
@@ -56,14 +58,13 @@ interface IFormInput extends InferType<typeof formInputSchema> {
   enable: boolean;
 }
 
-const Widget = ({ devices, refresh, setMessage }: IProps) => {
+const Widget = ({ interfaces, devices, refresh, setMessage }: IProps) => {
   const intl = useIntl();
 
   const formik = useFormik<IFormInput>({
     initialValues: {
       device: "",
       mac: "",
-      capacity: 10,
       metric: 100,
       name: "",
       dhcp: false,
@@ -76,17 +77,19 @@ const Widget = ({ devices, refresh, setMessage }: IProps) => {
     validationSchema: formInputSchema,
     onSubmit: (values) => {
       const client = new RouterClient(GRPC_HOST);
-      const request = new Wan();
-      request.setDevice(values.device);
-      request.setMac(values.mac);
-      request.setName(values.name);
-      request.setCapacity(values.capacity);
-      request.setMetric(values.metric);
-      if (values.enable) {
+      const request = new RouterSetWanRequest();
+      request.setEnable(values.enable);
+      {
+        const payload = new Wan();
+        payload.setDevice(values.device);
+        payload.setMac(values.mac);
+        payload.setName(values.name);
+        payload.setMetric(values.metric);
+
         if (values.dhcp) {
           const it = new Dhcp();
           it.setV6(false);
-          request.setDhcp(it);
+          payload.setDhcp(it);
         } else {
           const it = new Static();
           it.setAddress(values.address);
@@ -95,8 +98,9 @@ const Widget = ({ devices, refresh, setMessage }: IProps) => {
           if (values.dns2 !== "") {
             it.setDns2(values.dns2);
           }
-          request.setStatic(it);
+          payload.setStatic(it);
         }
+        request.setPayload(payload);
       }
       client.setWan(request, grpc_metadata(), function (err, response) {
         if (err) {
@@ -118,16 +122,21 @@ const Widget = ({ devices, refresh, setMessage }: IProps) => {
   ) => {
     formik.handleChange(event);
 
+    for (var jt of interfaces) {
+      if (jt.device === event.target.value) {
+        formik.setFieldValue("mac", jt.mac);
+        formik.setFieldValue("name", "Change me");
+        formik.setFieldValue("dhcp", true);
+      }
+    }
+
     for (var it of devices) {
       if (it.getDevice() === event.target.value) {
-        formik.setFieldValue("mac", it.getMac());
         formik.setFieldValue("name", it.getName());
-        formik.setFieldValue("capacity", it.getCapacity());
         formik.setFieldValue("metric", it.getMetric());
 
         if (it.hasDhcp()) {
           formik.setFieldValue("dhcp", true);
-          formik.setFieldValue("enable", true);
         } else if (it.hasStatic()) {
           const ip = it.getStatic();
           formik.setFieldValue("dhcp", false);
@@ -175,9 +184,9 @@ const Widget = ({ devices, refresh, setMessage }: IProps) => {
             value={formik.values.device}
             onChange={onChangeDevice}
           >
-            {devices.map((it) => (
-              <MenuItem key={it.getDevice()} value={it.getDevice()}>
-                {it.getDevice()} ({it.getName()})
+            {interfaces.map((it) => (
+              <MenuItem key={it.device} value={it.device}>
+                {it.device} ({it.mac})
               </MenuItem>
             ))}
           </Select>
@@ -203,18 +212,6 @@ const Widget = ({ devices, refresh, setMessage }: IProps) => {
           onChange={formik.handleChange}
           error={formik.touched.name && Boolean(formik.errors.name)}
           helperText={formik.touched.name && formik.errors.name}
-        />
-        <TextField
-          margin="normal"
-          fullWidth
-          name="capacity"
-          label={intl.formatMessage({
-            id: "forms.fields.capacity",
-          })}
-          value={formik.values.capacity}
-          onChange={formik.handleChange}
-          error={formik.touched.capacity && Boolean(formik.errors.capacity)}
-          helperText={formik.touched.capacity && formik.errors.capacity}
         />
         <TextField
           margin="normal"

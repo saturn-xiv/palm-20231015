@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::fs::{read_dir, read_to_string, File};
 use std::io::{prelude::*, BufReader, Error as IoError, ErrorKind as IoErrorKind};
 use std::net::Ipv4Addr;
@@ -76,14 +77,14 @@ pub fn mac_address(device: &str) -> Result<MacAddress> {
     Ok(it)
 }
 
-pub fn detect() -> Result<Vec<(String, MacAddress)>> {
-    let mut items = Vec::new();
+pub fn detect() -> Result<HashMap<String, MacAddress>> {
+    let mut items = HashMap::new();
     let root = root();
     for it in read_dir(&root)? {
         let it = it?.path();
         if let Some(Some(device)) = it.file_name().map(|x| x.to_str()) {
             if device != "lo" {
-                items.push((device.to_string(), mac_address(device)?));
+                items.insert(device.to_string(), mac_address(device)?);
             }
         }
     }

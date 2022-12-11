@@ -1,7 +1,7 @@
 use std::any::type_name;
 
 use chrono::{NaiveDateTime, Utc};
-use diesel::{insert_into, prelude::*, sqlite::SqliteConnection as Connection, update};
+use diesel::{delete, insert_into, prelude::*, sqlite::SqliteConnection as Connection, update};
 use palm::Result;
 
 use super::super::schema::settings;
@@ -17,6 +17,7 @@ pub struct Item {
 pub trait Dao {
     fn get<V: prost::Message + Default>(&mut self, key: Option<&str>) -> Result<V>;
     fn set<V: prost::Message>(&mut self, key: Option<&str>, value: &V) -> Result<()>;
+    fn destroy<V: prost::Message>(&mut self, key: Option<&str>) -> Result<()>;
 }
 
 fn build_key<T>(key: Option<&str>) -> String {
@@ -66,6 +67,12 @@ impl Dao for Connection {
                     .execute(self)?;
             }
         };
+        Ok(())
+    }
+
+    fn destroy<V: prost::Message>(&mut self, key: Option<&str>) -> Result<()> {
+        let key = build_key::<V>(key);
+        delete(settings::dsl::settings.filter(settings::dsl::key.eq(key))).execute(self)?;
         Ok(())
     }
 }

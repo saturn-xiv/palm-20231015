@@ -91,10 +91,6 @@ const Widget = ({ pool, devices, dns }: IProps) => {
                 <FormattedMessage id="forms.fields.mac" />: {it.getMac()}
               </li>
               <li>
-                <FormattedMessage id="forms.fields.capacity" />:
-                {it.getCapacity()}
-              </li>
-              <li>
                 <FormattedMessage id="forms.fields.metric" />: {it.getMetric()}
               </li>
 

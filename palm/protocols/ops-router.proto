@@ -21,10 +21,10 @@ service Router {
   rpc Status(google.protobuf.Empty) returns (RouterStatusResponse) {}
 
   rpc SetDns(Dns) returns (google.protobuf.Empty) {}
-  rpc SetWan(Wan) returns (google.protobuf.Empty) {}
+  rpc SetWan(RouterSetWanRequest) returns (google.protobuf.Empty) {}
   rpc SetWanPool(WanPool) returns (google.protobuf.Empty) {}
-  rpc SetLan(Lan) returns (google.protobuf.Empty) {}
-  rpc SetDmz(Dmz) returns (google.protobuf.Empty) {}
+  rpc SetLan(RouterSetLanRequest) returns (google.protobuf.Empty) {}
+  rpc SetDmz(RouterSetDmzRequest) returns (google.protobuf.Empty) {}
   rpc CreateRule(Rule) returns (google.protobuf.Empty) {}
   rpc UpdateRule(RouterIndexRuleResponse.Item) returns (google.protobuf.Empty) {
   }
@@ -35,6 +35,21 @@ service Router {
   rpc UpdateUser(RouterIndexUserResponse.Item) returns (google.protobuf.Empty) {
   }
   rpc CreateUser(RouterCreateUserRequest) returns (google.protobuf.Empty) {}
+}
+
+message RouterSetLanRequest {
+  Lan payload = 1;
+  bool enable = 2;
+}
+
+message RouterSetDmzRequest {
+  Dmz payload = 1;
+  bool enable = 2;
+}
+
+message RouterSetWanRequest {
+  Wan payload = 1;
+  bool enable = 2;
 }
 
 message WanPool {
@@ -143,14 +158,17 @@ message Rule {
     }
   }
   message Nat {
-    message Host {
+    message Source {
+      string device = 1;
+      uint32 port = 3;
+    }
+    message Destination {
       string ip = 1;
       uint32 port = 3;
     }
-    string device = 1;
+    Source source = 1;
     bool tcp = 2;
-    uint32 port = 3;
-    Host destination = 4;
+    Destination destination = 3;
   }
 
   string name = 1;
@@ -164,22 +182,23 @@ message Rule {
 }
 
 message RouterStatusResponse {
-  Lan lan = 1;
-  Dmz dmz = 2;
-  Dns dns = 3;
+  map<string, string> interfaces = 1;
+
+  Lan lan = 11;
+  Dmz dmz = 12;
+  Dns dns = 13;
+  repeated Wan wan = 14;
+  WanPool wan_pool = 15;
+
+  repeated Rule rules = 21;
+  repeated Host hosts = 22;
 
   message Ip {
     string address = 1;
     string route = 2;
     string rule = 3;
   }
-  Ip ip = 4;
-
-  repeated Wan wan = 11;
-  WanPool wan_pool = 12;
-  repeated Rule rules = 21;
-  repeated Host hosts = 22;
-
+  Ip ip = 97;
   string firewall = 98;
   google.protobuf.Duration uptime = 99;
 }
@@ -189,8 +208,6 @@ message Lan {
   string mac = 2;
   uint32 metric = 3;
   string address = 11;
-  string dns1 = 12;
-  optional string dns2 = 13;
 }
 
 message Dmz {
@@ -198,15 +215,12 @@ message Dmz {
   string mac = 2;
   uint32 metric = 3;
   string address = 11;
-  string dns1 = 12;
-  optional string dns2 = 13;
 }
 
 message Wan {
   string device = 1;
   string name = 2;
-  uint32 capacity = 3;
-  uint32 metric = 4;
+  uint32 metric = 3;
 
   string mac = 11;
   oneof ip {

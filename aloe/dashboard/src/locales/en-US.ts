@@ -40,7 +40,6 @@ const items = {
   "forms.fields.name": "Name",
   "forms.fields.device": "Device",
   "forms.fields.mac": "Mac address",
-  "forms.fields.capacity": "Capacity",
   "forms.fields.dhcp": "DHCP",
   "forms.fields.metric": "Metric",
   "forms.fields.address": "Address",

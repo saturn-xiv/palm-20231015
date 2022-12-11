@@ -34,8 +34,6 @@ const Widget = ({ dmz }: IProps) => {
               <FormattedMessage id="forms.fields.metric" />: {dmz.getMetric()}
             </li>
             <li>Address: {dmz.getAddress()}</li>
-            <li>DNS 1: {dmz.getDns1()}</li>
-            {dmz.getDns2() && <li>DNS 2:{dmz.getDns2()}</li>}
           </ul>
         </fieldset>
       </AccordionDetails>

@@ -34,8 +34,6 @@ const Widget = ({ lan }: IProps) => {
               <FormattedMessage id="forms.fields.metric" />: {lan.getMetric()}
             </li>
             <li>Address: {lan.getAddress()}</li>
-            <li>DNS 1: {lan.getDns1()}</li>
-            {lan.getDns2() && <li>DNS 2:{lan.getDns2()}</li>}
           </ul>
         </fieldset>
       </AccordionDetails>

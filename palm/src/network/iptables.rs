@@ -6,6 +6,8 @@ use ipnet::Ipv4Net;
 
 use super::super::{ops::router as ops_router, Result};
 
+// https://www.digitalocean.com/community/tutorials/iptables-essentials-common-firewall-rules-and-commands
+
 macro_rules! to_protocol {
     ($x:expr) => {
         if $x {
@@ -156,8 +158,8 @@ iptables -t security -X
 }
 
 pub struct Local {
-    pub lan: String,
-    pub dmz: String,
+    pub lan: Option<String>,
+    pub dmz: Option<String>,
 }
 
 impl Iptables for Local {
@@ -194,9 +196,18 @@ iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
             // dhcpcd
             (false, 67),
         ] {
-            for device in [&self.lan, &self.dmz] {
+            if let Some(ref device) = self.lan {
                 ops_router::v1::rule::InBound {
-                    device: device.to_string(),
+                    device: device.clone(),
+                    tcp: *tcp,
+                    port: *port,
+                    source: None,
+                }
+                .write(buf)?;
+            }
+            if let Some(ref device) = self.dmz {
+                ops_router::v1::rule::InBound {
+                    device: device.clone(),
                     tcp: *tcp,
                     port: *port,
                     source: None,
@@ -260,44 +271,18 @@ impl Iptables for ops_router::v1::rule::InBound {
     }
 }
 
-pub struct SNat {
-    pub lan: Ipv4Net,
-    pub tcp: bool,
-    pub port: u32,
-    pub destination: ops_router::v1::rule::nat::Host,
-}
-
-impl Iptables for SNat {
-    fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
-        let source_port = self.port;
-        let source_ip = self.lan.addr();
-        let network = self.lan.network();
-        let cidr = self.lan.prefix_len();
-        let protocol = to_protocol!(self.tcp);
-        let destination_port = self.destination.port;
-        let destination_ip = &self.destination.ip;
-
-        writeln!(buf, "iptables -t nat -A POSTROUTING -p {protocol} -s {network}/{cidr} --dport {destination_port} -d {destination_ip} -j SNAT --to-source {source_ip}:{source_port}")?;
-        Ok(())
-    }
-}
-
 impl Iptables for ops_router::v1::rule::Nat {
     fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
-        let device = &self.device;
-        let protocol = to_protocol!(self.tcp);
-        let source_port = self.port;
+        let source = self.source.as_ref().ok_or_else(FmtError::default)?;
+        let destination = self.destination.as_ref().ok_or_else(FmtError::default)?;
 
-        match self.destination {
-            Some(ref it) => {
-                let destination_port = it.port;
-                let destination_ip = &it.ip;
-                writeln!(buf, "iptables -t nat -A PREROUTING -i {device} -p {protocol} --dport {source_port} -j DNAT --to-destination {destination_ip}:{destination_port}")?;
-            }
-            None => {
-                warn!("unknown destination host");
-            }
-        };
+        let source_port = source.port;
+        let source_device = &source.device;
+        let protocol = to_protocol!(self.tcp);
+        let destination_port = destination.port;
+        let destination_ip = &destination.ip;
+
+        writeln!(buf, "iptables -t nat -A PREROUTING -i {source_device} -p {protocol} --dport {source_port} -j DNAT --to-destination {destination_ip}:{destination_port}")?;
 
         Ok(())
     }

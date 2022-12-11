@@ -87,8 +87,8 @@ macro_rules! to_zone {
             mac: $x.mac.clone(),
             address: $x.address.clone(),
             gateway: net.addr().to_string(),
-            dns1: $x.dns1.clone(),
-            dns2: $x.dns2.clone(),
+            dns1: net.addr().to_string(),
+            dns2: None,
             metric: $x.metric,
         })?;
         Zone {
