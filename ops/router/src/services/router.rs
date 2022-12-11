@@ -193,9 +193,11 @@ impl v1::router_server::Router for Service {
 
         if let Ok(ref mut db) = self.db.lock() {
             let db = db.deref_mut();
+
             try_grpc!(ss.current_user(db, jwt))?;
             try_grpc!(validate_wan(db, &req))?;
             try_grpc!(SettingDao::set(db, Some(req.device.as_str()), &req))?;
+
             Ok(())
         } else {
             Err(Status::permission_denied(type_name::<v1::UserProfile>()))
@@ -586,6 +588,7 @@ macro_rules! check_ethernet_metric_from_db {
 
 pub fn validate_wan(db: &mut Db, wan: &v1::Wan) -> Result<()> {
     wan.validate()?;
+
     check_ethernet_metric_from_db!(db, wan)?;
 
     if let Ok(ref it) = SettingDao::get::<v1::Lan>(db, None) {

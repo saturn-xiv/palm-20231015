@@ -185,7 +185,7 @@ impl ops_router::v1::Wan {
         if let Some(ops_router::v1::wan::Ip::Static(ref it)) = self.ip {
             return it.validate().is_ok();
         }
-        false
+        true
     }
     fn validate_mac(&self) -> bool {
         MacAddress::parse_str(&self.mac).is_ok()

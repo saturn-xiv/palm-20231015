@@ -52,7 +52,7 @@ const Widget = () => {
     );
   }, [dispatch, intl]);
 
-  const [message, setMessage] = useState<[AlertColor, string | undefined]>();
+  const [message, setMessage] = useState<[AlertColor, string]>();
 
   const formik = useFormik<IFormInput>({
     initialValues: {
@@ -85,7 +85,7 @@ const Widget = () => {
         } else {
           setMessage([
             "success",
-            intl.formatMessage({ id: "flashes.successed" }),
+            intl.formatMessage({ id: "flashes.succeeded" }),
           ]);
           formik.resetForm();
         }
