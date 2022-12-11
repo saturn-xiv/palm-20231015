@@ -55,6 +55,7 @@ const Widget = () => {
       <WanPanel
         pool={status?.getWanPool() || new WanPool()}
         devices={status?.getWanList() || []}
+        dns={status?.getDns()?.getItemsList() || []}
       />
       <LanPanel lan={status?.getLan() || new Lan()} />
       <DmzPanel dmz={status?.getDmz() || new Dmz()} />

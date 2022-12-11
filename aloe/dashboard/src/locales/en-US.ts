@@ -18,6 +18,9 @@ const items = {
   "pages.dashboard.wan.title": "WAN",
   "pages.dashboard.wan.pool": "Pool",
   "pages.dashboard.wan.interfaces": "Interfaces",
+  "pages.dashboard.wan.dns": "Global DNS",
+  "pages.dashboard.wan.dns.remove.confirm.title":
+    "Are you sure to remove {host} from the list?",
   "pages.dashboard.lan.title": "LAN",
   "pages.dashboard.dmz.title": "DMZ",
   "pages.dashboard.hosts.title": "Hosts",
@@ -46,6 +49,7 @@ const items = {
   "forms.fields.dns2": "DNS 2",
   "forms.fields.weight": "Weight",
   "forms.fields.enable": "Enable",
+  "forms.fields.host": "Host",
   "buttons.submit": "Submit",
   "buttons.reset": "Reset",
   "buttons.ok": "Ok",

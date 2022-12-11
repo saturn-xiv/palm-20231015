@@ -44,9 +44,10 @@ const StatusPanel = ({ wan }: IStatusPanelProps) => {
 interface IProps {
   devices: Wan[];
   pool: WanPool;
+  dns: string[];
 }
 
-const Widget = ({ pool, devices }: IProps) => {
+const Widget = ({ pool, devices, dns }: IProps) => {
   return (
     <Accordion>
       <AccordionSummary
@@ -69,7 +70,16 @@ const Widget = ({ pool, devices }: IProps) => {
             </span>
           ))}
         </fieldset>
-
+        <fieldset>
+          <legend>
+            <FormattedMessage id="pages.dashboard.wan.dns" />
+          </legend>
+          {dns.map((it) => (
+            <ol key={it}>
+              <li>{it}</li>
+            </ol>
+          ))}
+        </fieldset>
         {devices.map((it) => (
           <fieldset key={it.getDevice()}>
             <legend>{it.getDevice()}</legend>

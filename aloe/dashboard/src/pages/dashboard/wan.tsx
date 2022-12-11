@@ -12,6 +12,7 @@ import { GRPC_HOST, grpc_metadata } from "../../request";
 import MessageBox from "../../components/MessageBox";
 import InterfaceForm from "../../components/wan/Interface";
 import PoolForm from "../../components/wan/Pool";
+import DnsForm from "../../components/wan/Dns";
 
 const Widget = () => {
   const [status, setStatus] = useState<RouterStatusResponse | undefined>();
@@ -63,6 +64,15 @@ const Widget = () => {
         <PoolForm
           pool={status?.getWanPool()?.getItemsList() || []}
           devices={status?.getWanList() || []}
+          refresh={refresh}
+          setMessage={(color, message) => {
+            setMessage([color, message]);
+          }}
+        />
+      </Grid>
+      <Grid item xs={12} md={3} lg={4}>
+        <DnsForm
+          servers={status?.getDns()?.getItemsList() || []}
           refresh={refresh}
           setMessage={(color, message) => {
             setMessage([color, message]);
