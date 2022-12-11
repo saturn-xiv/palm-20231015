@@ -53,6 +53,7 @@ interface IFormInput extends InferType<typeof formInputSchema> {
   gateway: string;
   dns1: string;
   dns2: string;
+  enable: boolean;
 }
 
 const Widget = ({ devices, refresh, setMessage }: IProps) => {
@@ -70,6 +71,7 @@ const Widget = ({ devices, refresh, setMessage }: IProps) => {
       gateway: "",
       dns1: "",
       dns2: "",
+      enable: false,
     },
     validationSchema: formInputSchema,
     onSubmit: (values) => {
@@ -80,19 +82,21 @@ const Widget = ({ devices, refresh, setMessage }: IProps) => {
       request.setName(values.name);
       request.setCapacity(values.capacity);
       request.setMetric(values.metric);
-      if (values.dhcp) {
-        const it = new Dhcp();
-        it.setV6(false);
-        request.setDhcp(it);
-      } else {
-        const it = new Static();
-        it.setAddress(values.address);
-        it.setGateway(values.gateway);
-        it.setDns1(values.dns1);
-        if (values.dns2 !== "") {
-          it.setDns2(values.dns2);
+      if (values.enable) {
+        if (values.dhcp) {
+          const it = new Dhcp();
+          it.setV6(false);
+          request.setDhcp(it);
+        } else {
+          const it = new Static();
+          it.setAddress(values.address);
+          it.setGateway(values.gateway);
+          it.setDns1(values.dns1);
+          if (values.dns2 !== "") {
+            it.setDns2(values.dns2);
+          }
+          request.setStatic(it);
         }
-        request.setStatic(it);
       }
       client.setWan(request, grpc_metadata(), function (err, response) {
         if (err) {
@@ -123,14 +127,18 @@ const Widget = ({ devices, refresh, setMessage }: IProps) => {
 
         if (it.hasDhcp()) {
           formik.setFieldValue("dhcp", true);
-        }
-        if (it.hasStatic()) {
+          formik.setFieldValue("enable", true);
+        } else if (it.hasStatic()) {
           const ip = it.getStatic();
           formik.setFieldValue("dhcp", false);
           formik.setFieldValue("address", ip?.getAddress());
           formik.setFieldValue("gateway", ip?.getGateway());
           formik.setFieldValue("dns1", ip?.getDns1());
           formik.setFieldValue("dns2", ip?.getDns2());
+          formik.setFieldValue("enable", true);
+        } else {
+          formik.setFieldValue("enable", false);
+          formik.setFieldValue("dhcp", true);
         }
 
         break;
@@ -182,7 +190,6 @@ const Widget = ({ devices, refresh, setMessage }: IProps) => {
             id: "forms.fields.mac",
           })}
           value={formik.values.mac}
-          onChange={formik.handleChange}
           disabled
         />
         <TextField
@@ -281,6 +288,14 @@ const Widget = ({ devices, refresh, setMessage }: IProps) => {
             />
           </>
         )}
+
+        <FormGroup>
+          <FormControlLabel
+            control={<Switch name="enable" checked={formik.values.enable} />}
+            onChange={formik.handleChange}
+            label={intl.formatMessage({ id: "forms.fields.enable" })}
+          />
+        </FormGroup>
         <Button color="primary" variant="contained" fullWidth type="submit">
           <FormattedMessage id="buttons.submit" />
         </Button>

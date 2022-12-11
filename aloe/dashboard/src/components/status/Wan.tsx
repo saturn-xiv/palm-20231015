@@ -2,13 +2,12 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
-import Badge from "@mui/material/Badge";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import DevicesIcon from "@mui/icons-material/Devices";
 import { FormattedMessage } from "react-intl";
 import Button from "@mui/material/Button";
 
 import { Wan, WanPool } from "../../protocols/ops-router_pb";
+import WanPoolItem from "./WanPool";
 
 interface IStatusPanelProps {
   wan: Wan;
@@ -65,13 +64,9 @@ const Widget = ({ pool, devices }: IProps) => {
             <FormattedMessage id="pages.dashboard.wan.pool" />
           </legend>
           {pool.getItemsList().map((it) => (
-            <Badge
-              badgeContent={it.getWeight()}
-              key={it.getDevice()}
-              color="primary"
-            >
-              <DevicesIcon color="action" /> {it.getDevice()}
-            </Badge>
+            <span key={it.getDevice()} style={{ marginRight: "30px" }}>
+              <WanPoolItem device={it.getDevice()} weight={it.getWeight()} />
+            </span>
           ))}
         </fieldset>
 

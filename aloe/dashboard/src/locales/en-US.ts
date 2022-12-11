@@ -44,6 +44,8 @@ const items = {
   "forms.fields.gateway": "Gateway",
   "forms.fields.dns1": "DNS 1",
   "forms.fields.dns2": "DNS 2",
+  "forms.fields.weight": "Weight",
+  "forms.fields.enable": "Enable",
   "buttons.submit": "Submit",
   "buttons.reset": "Reset",
   "buttons.ok": "Ok",

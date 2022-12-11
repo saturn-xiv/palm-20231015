@@ -11,6 +11,7 @@ import { RouterStatusResponse } from "../../protocols/ops-router_pb";
 import { GRPC_HOST, grpc_metadata } from "../../request";
 import MessageBox from "../../components/MessageBox";
 import InterfaceForm from "../../components/wan/Interface";
+import PoolForm from "../../components/wan/Pool";
 
 const Widget = () => {
   const [status, setStatus] = useState<RouterStatusResponse | undefined>();
@@ -51,6 +52,16 @@ const Widget = () => {
       </Grid>
       <Grid item xs={12} md={4} lg={6}>
         <InterfaceForm
+          devices={status?.getWanList() || []}
+          refresh={refresh}
+          setMessage={(color, message) => {
+            setMessage([color, message]);
+          }}
+        />
+      </Grid>
+      <Grid item xs={12} md={3} lg={4}>
+        <PoolForm
+          pool={status?.getWanPool()?.getItemsList() || []}
           devices={status?.getWanList() || []}
           refresh={refresh}
           setMessage={(color, message) => {
