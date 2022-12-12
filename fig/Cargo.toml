@@ -13,7 +13,7 @@ actix-cors = "0.6"
 actix-files = "0.6"
 env_logger = "0.10"
 askama = "0.11"
-base64 = "0.13"
+base64 = "0.20"
 nix = "0.26"
 dirs = "4"
 
