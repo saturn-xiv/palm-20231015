@@ -69,3 +69,6 @@ path = '../cms'
 
 [dependencies.forum]
 path = '../forum'
+
+[dependencies.flashcard]
+path = '../flashcard'

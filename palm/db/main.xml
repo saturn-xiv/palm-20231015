@@ -10,5 +10,6 @@
     <include file="nut/main.xml" relativeToChangelogFile="true" />
     <include file="cms/main.xml" relativeToChangelogFile="true" />
     <include file="forum/main.xml" relativeToChangelogFile="true" />
+    <include file="flashcard/main.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>

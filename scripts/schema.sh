@@ -78,6 +78,9 @@ function generate_diesel_postgresql() {
     DATABASE_URL=$1 diesel print-schema \
         -o forum_topics forum_posts \
         > forum/src/schema.rs
+    DATABASE_URL=$1 diesel print-schema \
+        -o flashcard_quizzes flashcard_scores \
+        > flashcard/src/schema.rs
 }
 
 # -----------------------------------------------------------------------------
