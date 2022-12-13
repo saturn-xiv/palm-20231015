@@ -1,0 +1,13 @@
+{
+  "description": "A flash card app",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": false
+  },
+  "compileType": "miniprogram",
+  "appid": "wx64f9f30c153bd2d2",
+  "projectname": "flashcard",
+  "miniprogramRoot": "./weapp"
+}
