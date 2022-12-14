@@ -60,6 +60,7 @@ macro_rules! load_yaml_strings {
     };
 }
 
+pub mod beian;
 pub mod page;
 pub mod site;
 
@@ -87,6 +88,7 @@ pub struct Config {
     pub css: Vec<PathBuf>,
     pub js: Vec<PathBuf>,
     pub license: Option<String>,
+    pub beian: Option<beian::Config>,
 }
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
@@ -141,6 +143,13 @@ impl Config {
             }
 
             it.contact = Contact::new(&cfg["contact"]);
+
+            {
+                let node = &cfg["beian"];
+                if !node.is_badvalue() {
+                    it.beian = Some(beian::Config::new(node)?);
+                }
+            }
         }
 
         for file in read_dir(root)? {
