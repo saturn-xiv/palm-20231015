@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                                                                                                                                                                                                 http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
+
+    <changeSet id="20221212123208" author="jeremy.zheng" labels="create flashcard quizzes">
+
+        <createTable tableName="flashcard_quizzes">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="book_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="subject" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="content" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="editor" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="flashcard_quizzes" indexName="idx_flashcard_quizzes_subject">
+            <column name="subject" />
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>

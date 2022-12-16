@@ -3,9 +3,9 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
                                                                                                                                                                                                  http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
 
-    <changeSet id="20221212123208" author="jeremy.zheng" labels="create flashcard quizzes">
+    <changeSet id="20221212123008" author="jeremy.zheng" labels="create flashcard books">
 
-        <createTable tableName="flashcard_quizzes">
+        <createTable tableName="flashcard_books">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
@@ -15,9 +15,10 @@
             <column name="editor" type="integer">
                 <constraints nullable="false" />
             </column>
-            <column name="body" type="text">
+            <column name="description" type="text">
                 <constraints nullable="false" />
             </column>
+            <column name="cover" type="varchar(255)" />
             <column name="user_id" type="integer">
                 <constraints nullable="false" />
             </column>
@@ -37,7 +38,7 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="flashcard_quizzes" indexName="idx_flashcard_quizzes_subject">
+        <createIndex tableName="flashcard_books" indexName="idx_flashcard_books_subject">
             <column name="subject" />
         </createIndex>
 
