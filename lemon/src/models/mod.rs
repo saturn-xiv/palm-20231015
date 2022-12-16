@@ -121,7 +121,7 @@ impl Config {
         debug!("load global information from {}", root.display());
         let mut it = Self::default();
         {
-            let buf = read_to_string(&root.join("config.yml"))?;
+            let buf = read_to_string(root.join("config.yml"))?;
             let cfg = YamlLoader::load_from_str(&buf)?;
             let cfg = cfg.into_iter().next().unwrap_or(Yaml::BadValue);
 
@@ -172,7 +172,7 @@ impl Config {
         let src = src.as_ref();
         let target = target.as_ref();
         debug!("copy assets {} => {}", src.display(), target.display());
-        copy_dir_all(&src.join(Self::ASSETS), target)?;
+        copy_dir_all(src.join(Self::ASSETS), target)?;
 
         for site in self.sites.iter() {
             for page in site.pages.iter() {

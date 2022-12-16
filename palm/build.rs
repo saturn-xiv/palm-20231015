@@ -17,7 +17,7 @@ fn main() {
         let it = it.path();
         if let Some(ext) = it.extension() {
             if ext == "proto" {
-                tonic_build::compile_protos(&it.display().to_string()).unwrap();
+                tonic_build::compile_protos(it.display().to_string()).unwrap();
             }
         }
     }
@@ -34,7 +34,7 @@ fn main() {
         let build_time = shell(Command::new("date").arg("-R"));
 
         let dest_path = Path::new(&out_dir).join("env.rs");
-        let mut fd = File::create(&dest_path).unwrap();
+        let mut fd = File::create(dest_path).unwrap();
 
         writeln!(fd, r#"pub const GIT_VERSION: &str = "{}";"#, git_version).unwrap();
         writeln!(fd, r#"pub const BUILD_TIME: &str = "{}";"#, build_time).unwrap();

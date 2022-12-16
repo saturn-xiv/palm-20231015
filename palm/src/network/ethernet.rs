@@ -36,7 +36,7 @@ impl ops_router_v1::router_status_response::Ip {
 
 pub fn gateway(device: &str) -> Result<Ipv4Addr> {
     let file = File::open(
-        &Path::new(&Component::RootDir)
+        Path::new(&Component::RootDir)
             .join("proc")
             .join("net")
             .join("route"),
@@ -80,7 +80,7 @@ pub fn mac_address(device: &str) -> Result<MacAddress> {
 pub fn detect() -> Result<HashMap<String, MacAddress>> {
     let mut items = HashMap::new();
     let root = root();
-    for it in read_dir(&root)? {
+    for it in read_dir(root)? {
         let it = it?.path();
         if let Some(Some(device)) = it.file_name().map(|x| x.to_str()) {
             if device != "lo" {

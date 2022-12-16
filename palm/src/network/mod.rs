@@ -80,7 +80,7 @@ pub fn logs() -> Result<Vec<String>> {
 
 impl ops_router::v1::Lan {
     fn validate_device(&self) -> bool {
-        if let Ok(ref it) = metadata(&ethernet::root().join(&self.device)) {
+        if let Ok(ref it) = metadata(ethernet::root().join(&self.device)) {
             if it.is_dir() {
                 return true;
             }
@@ -110,7 +110,7 @@ impl Validate for ops_router::v1::Lan {
 
 impl ops_router::v1::Dmz {
     fn validate_device(&self) -> bool {
-        if let Ok(ref it) = metadata(&ethernet::root().join(&self.device)) {
+        if let Ok(ref it) = metadata(ethernet::root().join(&self.device)) {
             if it.is_dir() {
                 return true;
             }
@@ -174,7 +174,7 @@ impl ops_router::v1::Wan {
         format!("rt.{}", self.device)
     }
     fn validate_device(&self) -> bool {
-        if let Ok(ref it) = metadata(&ethernet::root().join(&self.device)) {
+        if let Ok(ref it) = metadata(ethernet::root().join(&self.device)) {
             if it.is_dir() {
                 return true;
             }

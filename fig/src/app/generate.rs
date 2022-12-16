@@ -75,7 +75,7 @@ pub fn systemd_conf(domain: &str) -> Result<()> {
         fs::create_dir_all(&root)?;
     }
     for it in ["www", "rpc", "worker"] {
-        let file = root.join(&format!("{}.{}.service", it, domain));
+        let file = root.join(format!("{}.{}.service", it, domain));
 
         let tpl = PalmSystemdConfig {
             user,
@@ -88,7 +88,7 @@ pub fn systemd_conf(domain: &str) -> Result<()> {
         tpl.write(&file)?;
     }
     {
-        let file = root.join(&format!("s3.{}.service", domain));
+        let file = root.join(format!("s3.{}.service", domain));
 
         let tpl = MinioSystemdConfig {
             domain,

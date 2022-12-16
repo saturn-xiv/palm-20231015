@@ -68,7 +68,7 @@ impl Config {
         }
 
         {
-            let buf = read_to_string(&root.join("config.yml"))?;
+            let buf = read_to_string(root.join("config.yml"))?;
             let cfg = YamlLoader::load_from_str(&buf)?;
             let cfg = cfg.into_iter().next().unwrap_or(Yaml::BadValue);
 

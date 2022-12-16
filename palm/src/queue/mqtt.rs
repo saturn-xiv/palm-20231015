@@ -157,7 +157,7 @@ impl Config {
             CreateOptionsBuilder::new()
                 .mqtt_version(MQTT_VERSION_5)
                 .server_uri(format!("{}:{}", self.host, self.port))
-                .client_id(&name)
+                .client_id(name)
                 .finalize(),
         )?;
 

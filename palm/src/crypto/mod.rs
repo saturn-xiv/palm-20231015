@@ -27,13 +27,13 @@ pub struct Key(pub String);
 
 impl Default for Key {
     fn default() -> Self {
-        Self(base64::encode(&random::bytes(32)))
+        Self(base64::encode(random::bytes(32)))
     }
 }
 
 impl From<Key> for Result<Vec<u8>> {
     fn from(it: Key) -> Self {
-        let buf = base64::decode(&it.0)?;
+        let buf = base64::decode(it.0)?;
         Ok(buf)
     }
 }

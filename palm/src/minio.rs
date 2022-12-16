@@ -81,7 +81,7 @@ impl v1::MinioProfile {
     pub async fn open(&self) -> Result<AwsClient> {
         let cred = aws_sdk_s3::Credentials::new(&self.access_key, &self.secret_key, None, None, "");
         let cfg = aws_config::SdkConfig::builder()
-            .endpoint_resolver(aws_sdk_s3::Endpoint::immutable(self.url.parse()?))
+            .endpoint_resolver(aws_sdk_s3::Endpoint::immutable(&self.url)?)
             .region(aws_sdk_s3::Region::new(self.region.clone()))
             .credentials_provider(SharedCredentialsProvider::new(cred))
             .build();
@@ -96,12 +96,9 @@ impl AwsClient {
         Ok(false)
     }
     pub async fn create_bucket(&self, name: &str) -> Result<()> {
-        if let Err(ref e) = self.0.create_bucket().bucket(name).send().await {
-            if let aws_sdk_s3::types::SdkError::<_>::ServiceError {
-                ref err,
-                raw: ref _raw,
-            } = e
-            {
+        if let Err(ref err) = self.0.create_bucket().bucket(name).send().await {
+            if let aws_sdk_s3::types::SdkError::<_>::ServiceError(ref err) = err {
+                let err = err.err();
                 match err.kind {
                     aws_sdk_s3::error::CreateBucketErrorKind::BucketAlreadyOwnedByYou(ref _id) => {
                         return Ok(());
@@ -112,7 +109,7 @@ impl AwsClient {
                     _ => {}
                 };
             }
-            error!("{}", e);
+            error!("{}", err);
             return Err(Box::new(IoError::from(IoErrorKind::UnexpectedEof)));
         }
         Ok(())

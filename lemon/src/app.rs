@@ -80,12 +80,12 @@ impl Args {
                 let third = Path::new("node_modules");
                 copy_file(
                     third.join("marked").join(Layout::MARKED_JS),
-                    &self.target.join(Layout::MARKED_JS),
+                    self.target.join(Layout::MARKED_JS),
                 )?;
             }
             copy_file(
-                &Path::new(Layout::ASSETS).join(Layout::APPLICATION_JS),
-                &self.target.join(Layout::APPLICATION_JS),
+                Path::new(Layout::ASSETS).join(Layout::APPLICATION_JS),
+                self.target.join(Layout::APPLICATION_JS),
             )?;
             cfg.copy_assets(&self.src, &self.target)?;
         }
