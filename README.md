@@ -10,7 +10,8 @@ A total free education &amp; translation &amp; ops solution.
   # for centos
   sudo yum install dejavu-sans-fonts snmp
   # for archlinux
-  sudo pacman -S ttf-dejavu snmp
+  sudo pacman -S ttf-dejavu ttf-hanazono ttf-hannom \
+    snmp
   # for ubuntu
   sudo apt install fonts-dejavu snmp
   # for alpine
