@@ -133,6 +133,18 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                         .service(nut::controllers::twilio::sms::incoming_messages),
                 ),
             )
+            .service(
+                web::scope("/api")
+                    .service(
+                        web::scope("/flashcard").service(
+                            web::scope("/books")
+                                .service(flashcard::controllers::books::show)
+                                .service(flashcard::controllers::books::create)
+                                .service(flashcard::controllers::books::index),
+                        ),
+                    )
+                    .service(nut::controllers::version),
+            )
             .service(nut::controllers::swagger_ui)
             .service(nut::controllers::sitemap::google)
             .service(nut::controllers::sitemap::baidu)

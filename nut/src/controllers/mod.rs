@@ -17,10 +17,17 @@ use palm::{
         rss::{build as build_rss, Link as RssLink},
         Provider as SeoProvider, RobotsTxt,
     },
-    try_web,
+    try_web, BUILD_TIME, GIT_VERSION,
 };
 
 use super::{i18n::I18n, orm::postgresql::Pool as DbPool, services::site::Service as SiteService};
+
+#[get("/version")]
+pub async fn version() -> WebResult<impl Responder> {
+    Ok(HttpResponse::Ok()
+        .content_type(ContentType::plaintext())
+        .body(format!("{}({})", GIT_VERSION, BUILD_TIME)))
+}
 
 #[get("/robots.txt")]
 pub async fn robots_txt(home: Home) -> WebResult<impl Responder> {
