@@ -7,7 +7,7 @@ pub mod twilio;
 use std::ops::DerefMut;
 
 use actix_web::{
-    get, http::header::ContentType, web, HttpResponse, Responder, Result as WebResult,
+    get, http::header::ContentType, post, web, HttpResponse, Responder, Result as WebResult,
 };
 use askama::Template;
 use palm::{
@@ -27,6 +27,14 @@ pub async fn version() -> WebResult<impl Responder> {
     Ok(HttpResponse::Ok()
         .content_type(ContentType::plaintext())
         .body(format!("{}({})", GIT_VERSION, BUILD_TIME)))
+}
+
+#[post("/echo")]
+pub async fn echo(body: web::Bytes) -> WebResult<impl Responder> {
+    let body = try_web!(String::from_utf8(body.to_vec()))?;
+    Ok(HttpResponse::Ok()
+        .content_type(ContentType::plaintext())
+        .body(body))
 }
 
 #[get("/robots.txt")]

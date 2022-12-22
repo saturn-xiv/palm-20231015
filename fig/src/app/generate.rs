@@ -20,8 +20,9 @@ pub fn nginx_conf(cfg: &Config, domain: &str) -> Result<()> {
         fs::create_dir_all(&root)?;
     }
     {
+        let domain = format!("www.{}", domain);
         let tpl = WwwNginxConf {
-            domain,
+            domain: &domain,
             name: NAME,
             port: cfg.http.port,
         };
@@ -29,8 +30,9 @@ pub fn nginx_conf(cfg: &Config, domain: &str) -> Result<()> {
         tpl.write(&file)?;
     }
     {
+        let domain = format!("s3.{}", domain);
         let tpl = MinioNginxConfig {
-            domain,
+            domain: &domain,
             port: 9000,
             console_port: 9001,
         };

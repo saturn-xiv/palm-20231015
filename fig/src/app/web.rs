@@ -143,6 +143,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                                 .service(flashcard::controllers::books::index),
                         ),
                     )
+                    .service(nut::controllers::echo)
                     .service(nut::controllers::version),
             )
             .service(nut::controllers::swagger_ui)
