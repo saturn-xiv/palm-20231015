@@ -1,5 +1,4 @@
-use hyper::StatusCode;
-use palm::{HttpError, Result};
+use palm::Result;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 
@@ -17,8 +16,6 @@ pub struct Query {
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Response {
-    pub errcode: i32,
-    pub errmsg: String,
     pub phone_info: PhoneInfo,
 }
 
@@ -55,13 +52,7 @@ impl Config {
             })
             .send()
             .await?;
-        let response: Response = response.json().await?;
-        if response.errcode == 0 {
-            return Ok(response);
-        }
-        Err(Box::new(HttpError(
-            StatusCode::INTERNAL_SERVER_ERROR,
-            Some(response.errmsg),
-        )))
+        let response: Response = Self::body(response).await?;
+        Ok(response)
     }
 }

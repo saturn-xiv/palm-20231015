@@ -1,5 +1,4 @@
-use hyper::StatusCode;
-use palm::{HttpError, Result};
+use palm::Result;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 
@@ -19,8 +18,6 @@ impl Query {
 pub struct Response {
     pub access_token: String,
     pub expires_in: usize,
-    pub errcode: i32,
-    pub errmsg: String,
 }
 
 // https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/mp-access-token/getAccessToken.html
@@ -37,13 +34,7 @@ impl Config {
             })
             .send()
             .await?;
-        let response: Response = response.json().await?;
-        if response.errcode == 0 {
-            return Ok(response);
-        }
-        Err(Box::new(HttpError(
-            StatusCode::INTERNAL_SERVER_ERROR,
-            Some(response.errmsg),
-        )))
+        let response: Response = Self::body(response).await?;
+        Ok(response)
     }
 }

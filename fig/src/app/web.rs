@@ -143,6 +143,13 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                                 .service(flashcard::controllers::books::index),
                         ),
                     )
+                    .service(
+                        web::scope("/wechat").service(
+                            web::scope("/mini-program")
+                                .service(nut::controllers::wechat::mini_program::sign_in)
+                                .service(nut::controllers::wechat::mini_program::profile),
+                        ),
+                    )
                     .service(nut::controllers::echo)
                     .service(nut::controllers::version),
             )

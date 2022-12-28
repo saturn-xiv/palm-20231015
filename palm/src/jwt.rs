@@ -1,11 +1,15 @@
 use std::ops::Add;
 
 use chrono::{Datelike, Duration, Utc};
-use hyper::http::StatusCode;
+use hyper::{header::AUTHORIZATION, http::StatusCode};
 use jsonwebtoken::{
     decode, encode, Algorithm, DecodingKey, EncodingKey, Header, TokenData, Validation,
 };
 use serde::{de::DeserializeOwned, ser::Serialize};
+use tonic::{
+    metadata::{MetadataKey, MetadataValue},
+    Request as GrpcRequest,
+};
 
 use super::{HttpError, Result};
 
@@ -19,6 +23,20 @@ pub struct Jwt {
 
 impl Jwt {
     pub const BEARER: &'static str = "Bearer ";
+    pub fn authorization<R>(&self, request: &mut GrpcRequest<R>, token: &str) -> Result<()> {
+        let token: MetadataValue<_> = {
+            let it = format!("{} {}", Self::BEARER, token);
+            it.parse()?
+        };
+
+        let key: MetadataKey<_> = {
+            let it = AUTHORIZATION.as_str();
+            let it = it.to_lowercase();
+            it.parse()?
+        };
+        request.metadata_mut().insert(key, token);
+        Ok(())
+    }
     pub fn new(key: String) -> Self {
         Self { key }
     }

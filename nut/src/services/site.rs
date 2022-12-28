@@ -23,9 +23,7 @@ use palm::{
     search::OpenSearch,
     seo::Provider as SeoProvider,
     session::Session,
-    to_code, to_timestamp, try_grpc,
-    wechat::Client as WeChatClient,
-    Error, GrpcResult, Result,
+    to_code, to_timestamp, try_grpc, Error, GrpcResult, Result,
 };
 use prost::Message;
 use serde::{Deserialize, Serialize};
@@ -453,69 +451,6 @@ impl v1::site_server::Site for Service {
         }
 
         Ok(Response::new(()))
-    }
-
-    async fn set_wechat(&self, req: Request<v1::WechatProfile>) -> GrpcResult<()> {
-        let ss = Session::new(&req);
-        let mut db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref_mut();
-        let mut ch = try_grpc!(self.redis.get())?;
-        let ch = ch.deref_mut();
-        let jwt = self.jwt.deref();
-        let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
-
-        if !user.is_administrator() {
-            return Err(Status::permission_denied(type_name::<v1::WechatProfile>()));
-        }
-        let req = req.into_inner();
-
-        try_grpc!(set(db, aes, None, &req, true))?;
-        Ok(Response::new(()))
-    }
-
-    async fn get_wechat(&self, req: Request<()>) -> GrpcResult<v1::WechatProfile> {
-        let ss = Session::new(&req);
-        let mut db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref_mut();
-        let mut ch = try_grpc!(self.redis.get())?;
-        let ch = ch.deref_mut();
-        let jwt = self.jwt.deref();
-        let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
-
-        if !user.is_administrator() {
-            return Err(Status::permission_denied(type_name::<v1::WechatProfile>()));
-        }
-
-        let it = try_grpc!(get::<v1::WechatProfile, Aes>(db, aes, None))?;
-
-        Ok(Response::new(it))
-    }
-
-    async fn test_wechat(
-        &self,
-        req: Request<v1::WechatProfile>,
-    ) -> GrpcResult<v1::SiteWechatTestResponse> {
-        let ss = Session::new(&req);
-        let mut db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref_mut();
-        let mut ch = try_grpc!(self.redis.get())?;
-        let ch = ch.deref_mut();
-        let jwt = self.jwt.deref();
-
-        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
-
-        if !user.is_administrator() {
-            return Err(Status::permission_denied(type_name::<v1::WechatProfile>()));
-        }
-
-        let req = req.into_inner();
-        let token = try_grpc!(req.open(self.redis.clone()).await)?;
-        let cli = WeChatClient { token };
-        let res = try_grpc!(cli.get_api_domain_ip().await)?;
-
-        Ok(Response::new(v1::SiteWechatTestResponse { ip: res.items }))
     }
 
     async fn set_smtp(&self, req: Request<v1::SmtpProfile>) -> GrpcResult<()> {

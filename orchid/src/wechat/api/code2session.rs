@@ -1,5 +1,4 @@
-use hyper::StatusCode;
-use palm::{HttpError, Result};
+use palm::Result;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 
@@ -20,9 +19,7 @@ impl Query {
 pub struct Response {
     pub session_key: String,
     pub unionid: Option<String>,
-    pub errmsg: String,
     pub openid: String,
-    pub errcode: i32,
 }
 
 // https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-login/code2Session.html
@@ -40,13 +37,7 @@ impl Config {
             })
             .send()
             .await?;
-        let response: Response = response.json().await?;
-        if response.errcode == 0 {
-            return Ok(response);
-        }
-        Err(Box::new(HttpError(
-            StatusCode::INTERNAL_SERVER_ERROR,
-            Some(response.errmsg),
-        )))
+        let response: Response = Self::body(response).await?;
+        Ok(response)
     }
 }

@@ -11,6 +11,7 @@ use palm::{
     crypto::{random::bytes as random_bytes, Password},
     nut::v1::{self, user_provider::Type as UserProviderType},
     oauth::google::openid::IdToken,
+    orchid::v1::WeChatLoginResponse,
     HttpError, Result,
 };
 use serde::{Deserialize, Serialize};
@@ -73,6 +74,13 @@ impl fmt::Display for Item {
 }
 
 impl Item {
+    const GUEST_NAME: &str = "Guest";
+    const GUEST_LANG: &str = "en-US";
+    const GUEST_TIMEZONE: &str = "UTC";
+    fn guest_email() -> String {
+        format!("{}@local", Uuid::new_v4())
+    }
+
     pub fn address(&self) -> v1::email_task::Address {
         v1::email_task::Address {
             name: self.real_name.clone(),
@@ -160,7 +168,7 @@ pub trait Dao {
     fn by_uid(&mut self, uid: &str) -> Result<Item>;
     fn by_email(&mut self, email: &str) -> Result<Item>;
     fn by_nickname(&mut self, nickname: &str) -> Result<Item>;
-    fn by_provider(&mut self, type_: i32, id: &str) -> Result<Item>;
+    fn by_provider(&mut self, type_: UserProviderType, id: &str) -> Result<Item>;
     fn set_profile(
         &mut self,
         id: i32,
@@ -188,6 +196,8 @@ pub trait Dao {
     fn all(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>>;
     fn options(&mut self) -> Result<Vec<(i32, String, String)>>;
     fn password<P: Password>(&mut self, enc: &P, id: i32, password: &str) -> Result<()>;
+    fn sync_wechat(&mut self, id: i32, name: &str, avatar: &str) -> Result<()>;
+    fn wechat(&mut self, ip: &str, app_id: &str, who: &WeChatLoginResponse) -> Result<Item>;
 }
 
 impl Dao for Connection {
@@ -211,7 +221,8 @@ impl Dao for Connection {
             .first(self)?;
         Ok(it)
     }
-    fn by_provider(&mut self, type_: i32, id: &str) -> Result<Item> {
+    fn by_provider(&mut self, type_: UserProviderType, id: &str) -> Result<Item> {
+        let type_ = type_ as i32;
         let it = users::dsl::users
             .filter(users::dsl::provider_type.eq(type_))
             .filter(users::dsl::provider_id.eq(id))
@@ -227,11 +238,7 @@ impl Dao for Connection {
 
     fn google(&mut self, access_token: &str, id_token: &IdToken, ip: &str) -> Result<Item> {
         let now = Utc::now().naive_utc();
-        let it = match users::dsl::users
-            .filter(users::dsl::provider_id.eq(&id_token.sub))
-            .filter(users::dsl::provider_type.eq(UserProviderType::Gmail as i32))
-            .first::<Item>(self)
-        {
+        let it = match Self::by_provider(self, UserProviderType::Google, &id_token.sub) {
             Ok(it) => {
                 if let Some(ref name) = id_token.name {
                     update(users::dsl::users.filter(users::dsl::id.eq(it.id)))
@@ -253,7 +260,7 @@ impl Dao for Connection {
             Err(_) => {
                 let email = match id_token.email {
                     Some(ref v) => v.clone(),
-                    None => format!("{}@gmail.com", id_token.sub),
+                    None => Item::guest_email(),
                 };
 
                 let uid = Uuid::new_v4().to_string();
@@ -262,17 +269,17 @@ impl Dao for Connection {
                     .values(&New {
                         real_name: &match id_token.name {
                             Some(ref v) => v.clone(),
-                            None => "Guest".to_string(),
+                            None => Item::GUEST_NAME.to_string(),
                         },
-                        nickname: &format!("g{}", id_token.sub),
+                        nickname: &format!("g{}", Uuid::new_v4()),
                         email: &email,
                         uid: &uid,
                         password: None,
                         salt: &random_bytes(New::SALT_SIZE),
-                        provider_type: UserProviderType::Gmail as i32,
+                        provider_type: UserProviderType::Google as i32,
                         provider_id: &id_token.sub,
-                        lang: "en-US",
-                        time_zone: "UTC",
+                        lang: Item::GUEST_LANG,
+                        time_zone: Item::GUEST_TIMEZONE,
                         avatar: &match id_token.picture {
                             Some(ref v) => v.clone(),
                             None => Item::gravatar(&email)?,
@@ -280,7 +287,7 @@ impl Dao for Connection {
                         updated_at: &now,
                     })
                     .execute(self)?;
-                self.by_email(&email)?
+                self.by_uid(&uid)?
             }
         };
         update(users::dsl::users.filter(users::dsl::id.eq(it.id)))
@@ -429,5 +436,72 @@ impl Dao for Connection {
             ))
             .execute(self)?;
         Ok(())
+    }
+    fn sync_wechat(&mut self, id: i32, name: &str, avatar: &str) -> Result<()> {
+        let now = Utc::now().naive_utc();
+
+        let it = users::dsl::users.filter(users::dsl::id.eq(id));
+        update(it)
+            .set((
+                users::dsl::real_name.eq(name),
+                users::dsl::avatar.eq(avatar),
+                users::dsl::updated_at.eq(&now),
+            ))
+            .execute(self)?;
+        Ok(())
+    }
+    fn wechat(&mut self, ip: &str, app_id: &str, who: &WeChatLoginResponse) -> Result<Item> {
+        let now = Utc::now().naive_utc();
+
+        if let Some(ref id) = who.unionid {
+            if let Ok(it) = Self::by_provider(self, UserProviderType::Wechat, id) {
+                return Ok(it);
+            }
+        }
+
+        let provider_id = format!("{}.{}", app_id, who.openid);
+        if let Ok(it) = Self::by_provider(self, UserProviderType::Wechat, &provider_id) {
+            if let Some(ref id) = who.unionid {
+                update(users::dsl::users.filter(users::dsl::id.eq(it.id)))
+                    .set((
+                        users::dsl::provider_id.eq(id),
+                        users::dsl::updated_at.eq(&now),
+                    ))
+                    .execute(self)?;
+            }
+            return Ok(it);
+        }
+
+        let provider_id = who.unionid.as_ref().map_or(provider_id, |x| x.clone());
+
+        let email = Item::guest_email();
+        let uid = Uuid::new_v4().to_string();
+
+        insert_into(users::dsl::users)
+            .values(&New {
+                real_name: Item::GUEST_NAME,
+                nickname: &format!("w{}", Uuid::new_v4()),
+                email: &email,
+                uid: &uid,
+                password: None,
+                salt: &random_bytes(New::SALT_SIZE),
+                provider_type: UserProviderType::Wechat as i32,
+                provider_id: &provider_id,
+                lang: Item::GUEST_LANG,
+                time_zone: Item::GUEST_TIMEZONE,
+                avatar: &Item::gravatar(&email)?,
+                updated_at: &now,
+            })
+            .execute(self)?;
+
+        let it = self.by_uid(&uid)?;
+
+        let access_token = who.access_token();
+        update(users::dsl::users.filter(users::dsl::id.eq(it.id)))
+            .set(users::dsl::access_token.eq(&Some(access_token)))
+            .execute(self)?;
+        self.sign_in(it.id, ip)?;
+
+        self.by_id(it.id)
     }
 }

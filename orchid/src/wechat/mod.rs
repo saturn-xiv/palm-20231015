@@ -14,12 +14,6 @@ pub struct Config {
     pub app_secret: String,
 }
 
-impl Config {
-    pub fn url(path: &str) -> String {
-        format!("https://api.weixin.qq.com{path}")
-    }
-}
-
 pub struct Client {
     pub config: Config,
     pub redis: RedisPool,

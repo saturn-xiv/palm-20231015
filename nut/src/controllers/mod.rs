@@ -3,6 +3,7 @@ pub mod captcha;
 pub mod home;
 pub mod sitemap;
 pub mod twilio;
+pub mod wechat;
 
 use std::ops::DerefMut;
 

@@ -14,3 +14,21 @@ pub mod schema;
 pub mod services;
 pub mod theme;
 pub mod zero;
+
+use palm::{orchid::v1::we_chat_client::WeChatClient, Result};
+use serde::{Deserialize, Serialize};
+use tonic::transport::{channel::Channel, Endpoint};
+
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
+pub struct Oauth {
+    pub endpoint: String,
+    pub token: String,
+}
+
+impl Oauth {
+    pub async fn open(&self) -> Result<WeChatClient<Channel>> {
+        let endpoint = self.endpoint.parse::<Endpoint>()?;
+        let it = WeChatClient::connect(endpoint).await?;
+        Ok(it)
+    }
+}
