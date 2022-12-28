@@ -1,8 +1,8 @@
 # SPRING
 
 - [Install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-- [Install Vagrant](https://developer.hashicorp.com/vagrant/docs/vagrantfile)
-- Usage(**RUN IN spring FOLDER**)
+- [Install Vagrant](https://developer.hashicorp.com/vagrant/downloads)
+- Usage(**RUN IN the spring FOLDER**)
 
   ```bash
   # start virtual machine

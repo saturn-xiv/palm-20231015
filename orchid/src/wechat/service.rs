@@ -1,0 +1,47 @@
+use std::sync::Arc;
+
+use hyper::StatusCode;
+use palm::{
+    cache::redis::Pool as RedisPool, orchid::v1, session::Session, try_grpc, GrpcResult, HttpError,
+    Result,
+};
+use tonic::{Request, Response};
+
+use super::super::env::Config;
+use super::Client;
+
+pub struct Service {
+    pub config: Arc<Config>,
+    pub redis: RedisPool,
+}
+
+#[tonic::async_trait]
+impl v1::we_chat_server::WeChat for Service {
+    async fn login(
+        &self,
+        req: Request<v1::WeChatLoginRequest>,
+    ) -> GrpcResult<v1::WeChatLoginResponse> {
+        let ss = Session::new(&req);
+        try_grpc!(self.config.auth(&ss))?;
+
+        let req = req.into_inner();
+        let cli = try_grpc!(self.client(&req.app_id))?;
+        let it = try_grpc!(cli.login(&req.code).await)?;
+
+        Ok(Response::new(it))
+    }
+}
+
+impl Service {
+    fn client(&self, app_id: &str) -> Result<Client> {
+        for it in self.config.wechat.iter() {
+            if it.app_id == app_id {
+                return Ok(Client {
+                    config: it.clone(),
+                    redis: self.redis.clone(),
+                });
+            }
+        }
+        Err(Box::new(HttpError(StatusCode::NOT_FOUND, None)))
+    }
+}
