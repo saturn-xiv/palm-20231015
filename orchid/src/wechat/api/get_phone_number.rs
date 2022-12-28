@@ -25,7 +25,7 @@ pub struct Response {
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct PhoneInfo {
     #[serde(rename = "phoneNumber")]
-    pub phone_umber: String,
+    pub phone_number: String,
     #[serde(rename = "purePhoneNumber")]
     pub pure_phone_number: String,
     #[serde(rename = "countryCode")]

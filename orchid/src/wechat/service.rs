@@ -30,6 +30,25 @@ impl v1::we_chat_server::WeChat for Service {
 
         Ok(Response::new(it))
     }
+    async fn phone_number(
+        &self,
+        req: Request<v1::WeChatPhoneNumberRequest>,
+    ) -> GrpcResult<v1::WeChatPhoneNumberResponse> {
+        let ss = Session::new(&req);
+        try_grpc!(self.config.auth(&ss))?;
+
+        let req = req.into_inner();
+        let cli = try_grpc!(self.client(&req.app_id))?;
+        let token = try_grpc!(cli.access_token().await)?;
+        let it = try_grpc!(cli.config.get_phone_number(&req.code, &token).await)?;
+
+        Ok(Response::new(v1::WeChatPhoneNumberResponse {
+            phone_number: it.phone_info.phone_number.clone(),
+            pure_phone_number: it.phone_info.pure_phone_number.clone(),
+            country_code: it.phone_info.country_code.clone(),
+            water_mark: it.phone_info.water_mark.timestamp,
+        }))
+    }
 }
 
 impl Service {

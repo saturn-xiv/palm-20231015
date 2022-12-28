@@ -17,11 +17,10 @@
 
 import * as grpcWeb from 'grpc-web';
 
-import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
 import * as orchid_pb from './orchid_pb';
 
 
-export class AesClient {
+export class WeChatClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;
   credentials_: null | { [index: string]: string; };
@@ -40,304 +39,90 @@ export class AesClient {
     this.options_ = options;
   }
 
-  methodDescriptorEncrypt = new grpcWeb.MethodDescriptor(
-    '/palm.orchid.v1.Aes/Encrypt',
+  methodDescriptorLogin = new grpcWeb.MethodDescriptor(
+    '/palm.orchid.v1.WeChat/Login',
     grpcWeb.MethodType.UNARY,
-    orchid_pb.AesPlainMessage,
-    orchid_pb.AesCodeMessage,
-    (request: orchid_pb.AesPlainMessage) => {
+    orchid_pb.WeChatLoginRequest,
+    orchid_pb.WeChatLoginResponse,
+    (request: orchid_pb.WeChatLoginRequest) => {
       return request.serializeBinary();
     },
-    orchid_pb.AesCodeMessage.deserializeBinary
+    orchid_pb.WeChatLoginResponse.deserializeBinary
   );
 
-  encrypt(
-    request: orchid_pb.AesPlainMessage,
-    metadata: grpcWeb.Metadata | null): Promise<orchid_pb.AesCodeMessage>;
+  login(
+    request: orchid_pb.WeChatLoginRequest,
+    metadata: grpcWeb.Metadata | null): Promise<orchid_pb.WeChatLoginResponse>;
 
-  encrypt(
-    request: orchid_pb.AesPlainMessage,
+  login(
+    request: orchid_pb.WeChatLoginRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: orchid_pb.AesCodeMessage) => void): grpcWeb.ClientReadableStream<orchid_pb.AesCodeMessage>;
+               response: orchid_pb.WeChatLoginResponse) => void): grpcWeb.ClientReadableStream<orchid_pb.WeChatLoginResponse>;
 
-  encrypt(
-    request: orchid_pb.AesPlainMessage,
+  login(
+    request: orchid_pb.WeChatLoginRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: orchid_pb.AesCodeMessage) => void) {
+               response: orchid_pb.WeChatLoginResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.orchid.v1.Aes/Encrypt',
+          '/palm.orchid.v1.WeChat/Login',
         request,
         metadata || {},
-        this.methodDescriptorEncrypt,
+        this.methodDescriptorLogin,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.orchid.v1.Aes/Encrypt',
+      '/palm.orchid.v1.WeChat/Login',
     request,
     metadata || {},
-    this.methodDescriptorEncrypt);
+    this.methodDescriptorLogin);
   }
 
-  methodDescriptorDecrypt = new grpcWeb.MethodDescriptor(
-    '/palm.orchid.v1.Aes/Decrypt',
+  methodDescriptorPhoneNumber = new grpcWeb.MethodDescriptor(
+    '/palm.orchid.v1.WeChat/PhoneNumber',
     grpcWeb.MethodType.UNARY,
-    orchid_pb.AesCodeMessage,
-    orchid_pb.AesPlainMessage,
-    (request: orchid_pb.AesCodeMessage) => {
+    orchid_pb.WeChatPhoneNumberRequest,
+    orchid_pb.WeChatPhoneNumberResponse,
+    (request: orchid_pb.WeChatPhoneNumberRequest) => {
       return request.serializeBinary();
     },
-    orchid_pb.AesPlainMessage.deserializeBinary
+    orchid_pb.WeChatPhoneNumberResponse.deserializeBinary
   );
 
-  decrypt(
-    request: orchid_pb.AesCodeMessage,
-    metadata: grpcWeb.Metadata | null): Promise<orchid_pb.AesPlainMessage>;
+  phoneNumber(
+    request: orchid_pb.WeChatPhoneNumberRequest,
+    metadata: grpcWeb.Metadata | null): Promise<orchid_pb.WeChatPhoneNumberResponse>;
 
-  decrypt(
-    request: orchid_pb.AesCodeMessage,
+  phoneNumber(
+    request: orchid_pb.WeChatPhoneNumberRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: orchid_pb.AesPlainMessage) => void): grpcWeb.ClientReadableStream<orchid_pb.AesPlainMessage>;
+               response: orchid_pb.WeChatPhoneNumberResponse) => void): grpcWeb.ClientReadableStream<orchid_pb.WeChatPhoneNumberResponse>;
 
-  decrypt(
-    request: orchid_pb.AesCodeMessage,
+  phoneNumber(
+    request: orchid_pb.WeChatPhoneNumberRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: orchid_pb.AesPlainMessage) => void) {
+               response: orchid_pb.WeChatPhoneNumberResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.orchid.v1.Aes/Decrypt',
+          '/palm.orchid.v1.WeChat/PhoneNumber',
         request,
         metadata || {},
-        this.methodDescriptorDecrypt,
+        this.methodDescriptorPhoneNumber,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.orchid.v1.Aes/Decrypt',
+      '/palm.orchid.v1.WeChat/PhoneNumber',
     request,
     metadata || {},
-    this.methodDescriptorDecrypt);
-  }
-
-}
-
-export class HMacClient {
-  client_: grpcWeb.AbstractClientBase;
-  hostname_: string;
-  credentials_: null | { [index: string]: string; };
-  options_: null | { [index: string]: any; };
-
-  constructor (hostname: string,
-               credentials?: null | { [index: string]: string; },
-               options?: null | { [index: string]: any; }) {
-    if (!options) options = {};
-    if (!credentials) credentials = {};
-    options['format'] = 'binary';
-
-    this.client_ = new grpcWeb.GrpcWebClientBase(options);
-    this.hostname_ = hostname.replace(/\/+$/, '');
-    this.credentials_ = credentials;
-    this.options_ = options;
-  }
-
-  methodDescriptorSign = new grpcWeb.MethodDescriptor(
-    '/palm.orchid.v1.HMac/Sign',
-    grpcWeb.MethodType.UNARY,
-    orchid_pb.HMacSignRequest,
-    orchid_pb.HMacSignResponse,
-    (request: orchid_pb.HMacSignRequest) => {
-      return request.serializeBinary();
-    },
-    orchid_pb.HMacSignResponse.deserializeBinary
-  );
-
-  sign(
-    request: orchid_pb.HMacSignRequest,
-    metadata: grpcWeb.Metadata | null): Promise<orchid_pb.HMacSignResponse>;
-
-  sign(
-    request: orchid_pb.HMacSignRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: orchid_pb.HMacSignResponse) => void): grpcWeb.ClientReadableStream<orchid_pb.HMacSignResponse>;
-
-  sign(
-    request: orchid_pb.HMacSignRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: orchid_pb.HMacSignResponse) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/palm.orchid.v1.HMac/Sign',
-        request,
-        metadata || {},
-        this.methodDescriptorSign,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/palm.orchid.v1.HMac/Sign',
-    request,
-    metadata || {},
-    this.methodDescriptorSign);
-  }
-
-  methodDescriptorVerify = new grpcWeb.MethodDescriptor(
-    '/palm.orchid.v1.HMac/Verify',
-    grpcWeb.MethodType.UNARY,
-    orchid_pb.HMacVerifyRequest,
-    google_protobuf_empty_pb.Empty,
-    (request: orchid_pb.HMacVerifyRequest) => {
-      return request.serializeBinary();
-    },
-    google_protobuf_empty_pb.Empty.deserializeBinary
-  );
-
-  verify(
-    request: orchid_pb.HMacVerifyRequest,
-    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
-
-  verify(
-    request: orchid_pb.HMacVerifyRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
-
-  verify(
-    request: orchid_pb.HMacVerifyRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/palm.orchid.v1.HMac/Verify',
-        request,
-        metadata || {},
-        this.methodDescriptorVerify,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/palm.orchid.v1.HMac/Verify',
-    request,
-    metadata || {},
-    this.methodDescriptorVerify);
-  }
-
-}
-
-export class JwtClient {
-  client_: grpcWeb.AbstractClientBase;
-  hostname_: string;
-  credentials_: null | { [index: string]: string; };
-  options_: null | { [index: string]: any; };
-
-  constructor (hostname: string,
-               credentials?: null | { [index: string]: string; },
-               options?: null | { [index: string]: any; }) {
-    if (!options) options = {};
-    if (!credentials) credentials = {};
-    options['format'] = 'binary';
-
-    this.client_ = new grpcWeb.GrpcWebClientBase(options);
-    this.hostname_ = hostname.replace(/\/+$/, '');
-    this.credentials_ = credentials;
-    this.options_ = options;
-  }
-
-  methodDescriptorSign = new grpcWeb.MethodDescriptor(
-    '/palm.orchid.v1.Jwt/Sign',
-    grpcWeb.MethodType.UNARY,
-    orchid_pb.JwtSignRequest,
-    orchid_pb.JwtSignResponse,
-    (request: orchid_pb.JwtSignRequest) => {
-      return request.serializeBinary();
-    },
-    orchid_pb.JwtSignResponse.deserializeBinary
-  );
-
-  sign(
-    request: orchid_pb.JwtSignRequest,
-    metadata: grpcWeb.Metadata | null): Promise<orchid_pb.JwtSignResponse>;
-
-  sign(
-    request: orchid_pb.JwtSignRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: orchid_pb.JwtSignResponse) => void): grpcWeb.ClientReadableStream<orchid_pb.JwtSignResponse>;
-
-  sign(
-    request: orchid_pb.JwtSignRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: orchid_pb.JwtSignResponse) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/palm.orchid.v1.Jwt/Sign',
-        request,
-        metadata || {},
-        this.methodDescriptorSign,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/palm.orchid.v1.Jwt/Sign',
-    request,
-    metadata || {},
-    this.methodDescriptorSign);
-  }
-
-  methodDescriptorVerify = new grpcWeb.MethodDescriptor(
-    '/palm.orchid.v1.Jwt/Verify',
-    grpcWeb.MethodType.UNARY,
-    orchid_pb.JwtVerifyRequest,
-    orchid_pb.JwtVerifyResponse,
-    (request: orchid_pb.JwtVerifyRequest) => {
-      return request.serializeBinary();
-    },
-    orchid_pb.JwtVerifyResponse.deserializeBinary
-  );
-
-  verify(
-    request: orchid_pb.JwtVerifyRequest,
-    metadata: grpcWeb.Metadata | null): Promise<orchid_pb.JwtVerifyResponse>;
-
-  verify(
-    request: orchid_pb.JwtVerifyRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: orchid_pb.JwtVerifyResponse) => void): grpcWeb.ClientReadableStream<orchid_pb.JwtVerifyResponse>;
-
-  verify(
-    request: orchid_pb.JwtVerifyRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: orchid_pb.JwtVerifyResponse) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/palm.orchid.v1.Jwt/Verify',
-        request,
-        metadata || {},
-        this.methodDescriptorVerify,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/palm.orchid.v1.Jwt/Verify',
-    request,
-    metadata || {},
-    this.methodDescriptorVerify);
+    this.methodDescriptorPhoneNumber);
   }
 
 }

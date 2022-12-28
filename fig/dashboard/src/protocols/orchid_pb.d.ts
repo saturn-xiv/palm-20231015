@@ -1,190 +1,107 @@
 import * as jspb from 'google-protobuf'
 
-import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
-import * as google_protobuf_duration_pb from 'google-protobuf/google/protobuf/duration_pb';
 
 
-export class AesPlainMessage extends jspb.Message {
-  getPayload(): string;
-  setPayload(value: string): AesPlainMessage;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AesPlainMessage.AsObject;
-  static toObject(includeInstance: boolean, msg: AesPlainMessage): AesPlainMessage.AsObject;
-  static serializeBinaryToWriter(message: AesPlainMessage, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AesPlainMessage;
-  static deserializeBinaryFromReader(message: AesPlainMessage, reader: jspb.BinaryReader): AesPlainMessage;
-}
-
-export namespace AesPlainMessage {
-  export type AsObject = {
-    payload: string,
-  }
-}
-
-export class AesCodeMessage extends jspb.Message {
-  getPayload(): string;
-  setPayload(value: string): AesCodeMessage;
-
-  getSalt(): string;
-  setSalt(value: string): AesCodeMessage;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AesCodeMessage.AsObject;
-  static toObject(includeInstance: boolean, msg: AesCodeMessage): AesCodeMessage.AsObject;
-  static serializeBinaryToWriter(message: AesCodeMessage, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AesCodeMessage;
-  static deserializeBinaryFromReader(message: AesCodeMessage, reader: jspb.BinaryReader): AesCodeMessage;
-}
-
-export namespace AesCodeMessage {
-  export type AsObject = {
-    payload: string,
-    salt: string,
-  }
-}
-
-export class HMacSignRequest extends jspb.Message {
-  getPlain(): string;
-  setPlain(value: string): HMacSignRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): HMacSignRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: HMacSignRequest): HMacSignRequest.AsObject;
-  static serializeBinaryToWriter(message: HMacSignRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): HMacSignRequest;
-  static deserializeBinaryFromReader(message: HMacSignRequest, reader: jspb.BinaryReader): HMacSignRequest;
-}
-
-export namespace HMacSignRequest {
-  export type AsObject = {
-    plain: string,
-  }
-}
-
-export class HMacSignResponse extends jspb.Message {
-  getCode(): string;
-  setCode(value: string): HMacSignResponse;
-
-  getSalt(): string;
-  setSalt(value: string): HMacSignResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): HMacSignResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: HMacSignResponse): HMacSignResponse.AsObject;
-  static serializeBinaryToWriter(message: HMacSignResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): HMacSignResponse;
-  static deserializeBinaryFromReader(message: HMacSignResponse, reader: jspb.BinaryReader): HMacSignResponse;
-}
-
-export namespace HMacSignResponse {
-  export type AsObject = {
-    code: string,
-    salt: string,
-  }
-}
-
-export class HMacVerifyRequest extends jspb.Message {
-  getPlain(): string;
-  setPlain(value: string): HMacVerifyRequest;
+export class WeChatLoginRequest extends jspb.Message {
+  getAppId(): string;
+  setAppId(value: string): WeChatLoginRequest;
 
   getCode(): string;
-  setCode(value: string): HMacVerifyRequest;
-
-  getSalt(): string;
-  setSalt(value: string): HMacVerifyRequest;
+  setCode(value: string): WeChatLoginRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): HMacVerifyRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: HMacVerifyRequest): HMacVerifyRequest.AsObject;
-  static serializeBinaryToWriter(message: HMacVerifyRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): HMacVerifyRequest;
-  static deserializeBinaryFromReader(message: HMacVerifyRequest, reader: jspb.BinaryReader): HMacVerifyRequest;
+  toObject(includeInstance?: boolean): WeChatLoginRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WeChatLoginRequest): WeChatLoginRequest.AsObject;
+  static serializeBinaryToWriter(message: WeChatLoginRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WeChatLoginRequest;
+  static deserializeBinaryFromReader(message: WeChatLoginRequest, reader: jspb.BinaryReader): WeChatLoginRequest;
 }
 
-export namespace HMacVerifyRequest {
+export namespace WeChatLoginRequest {
   export type AsObject = {
-    plain: string,
+    appId: string,
     code: string,
-    salt: string,
   }
 }
 
-export class JwtSignRequest extends jspb.Message {
-  getTtl(): google_protobuf_duration_pb.Duration | undefined;
-  setTtl(value?: google_protobuf_duration_pb.Duration): JwtSignRequest;
-  hasTtl(): boolean;
-  clearTtl(): JwtSignRequest;
+export class WeChatLoginResponse extends jspb.Message {
+  getUnionid(): string;
+  setUnionid(value: string): WeChatLoginResponse;
+  hasUnionid(): boolean;
+  clearUnionid(): WeChatLoginResponse;
+
+  getOpenid(): string;
+  setOpenid(value: string): WeChatLoginResponse;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): JwtSignRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: JwtSignRequest): JwtSignRequest.AsObject;
-  static serializeBinaryToWriter(message: JwtSignRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): JwtSignRequest;
-  static deserializeBinaryFromReader(message: JwtSignRequest, reader: jspb.BinaryReader): JwtSignRequest;
+  toObject(includeInstance?: boolean): WeChatLoginResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: WeChatLoginResponse): WeChatLoginResponse.AsObject;
+  static serializeBinaryToWriter(message: WeChatLoginResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WeChatLoginResponse;
+  static deserializeBinaryFromReader(message: WeChatLoginResponse, reader: jspb.BinaryReader): WeChatLoginResponse;
 }
 
-export namespace JwtSignRequest {
+export namespace WeChatLoginResponse {
   export type AsObject = {
-    ttl?: google_protobuf_duration_pb.Duration.AsObject,
+    unionid?: string,
+    openid: string,
+  }
+
+  export enum UnionidCase { 
+    _UNIONID_NOT_SET = 0,
+    UNIONID = 1,
   }
 }
 
-export class JwtSignResponse extends jspb.Message {
-  getToken(): string;
-  setToken(value: string): JwtSignResponse;
+export class WeChatPhoneNumberRequest extends jspb.Message {
+  getAppId(): string;
+  setAppId(value: string): WeChatPhoneNumberRequest;
+
+  getCode(): string;
+  setCode(value: string): WeChatPhoneNumberRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): JwtSignResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: JwtSignResponse): JwtSignResponse.AsObject;
-  static serializeBinaryToWriter(message: JwtSignResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): JwtSignResponse;
-  static deserializeBinaryFromReader(message: JwtSignResponse, reader: jspb.BinaryReader): JwtSignResponse;
+  toObject(includeInstance?: boolean): WeChatPhoneNumberRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WeChatPhoneNumberRequest): WeChatPhoneNumberRequest.AsObject;
+  static serializeBinaryToWriter(message: WeChatPhoneNumberRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WeChatPhoneNumberRequest;
+  static deserializeBinaryFromReader(message: WeChatPhoneNumberRequest, reader: jspb.BinaryReader): WeChatPhoneNumberRequest;
 }
 
-export namespace JwtSignResponse {
+export namespace WeChatPhoneNumberRequest {
   export type AsObject = {
-    token: string,
+    appId: string,
+    code: string,
   }
 }
 
-export class JwtVerifyRequest extends jspb.Message {
-  getIss(): string;
-  setIss(value: string): JwtVerifyRequest;
+export class WeChatPhoneNumberResponse extends jspb.Message {
+  getPhoneNumber(): string;
+  setPhoneNumber(value: string): WeChatPhoneNumberResponse;
 
-  getToken(): string;
-  setToken(value: string): JwtVerifyRequest;
+  getPurePhoneNumber(): string;
+  setPurePhoneNumber(value: string): WeChatPhoneNumberResponse;
 
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): JwtVerifyRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: JwtVerifyRequest): JwtVerifyRequest.AsObject;
-  static serializeBinaryToWriter(message: JwtVerifyRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): JwtVerifyRequest;
-  static deserializeBinaryFromReader(message: JwtVerifyRequest, reader: jspb.BinaryReader): JwtVerifyRequest;
-}
+  getCountryCode(): string;
+  setCountryCode(value: string): WeChatPhoneNumberResponse;
 
-export namespace JwtVerifyRequest {
-  export type AsObject = {
-    iss: string,
-    token: string,
-  }
-}
-
-export class JwtVerifyResponse extends jspb.Message {
-  getAud(): string;
-  setAud(value: string): JwtVerifyResponse;
+  getWaterMark(): number;
+  setWaterMark(value: number): WeChatPhoneNumberResponse;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): JwtVerifyResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: JwtVerifyResponse): JwtVerifyResponse.AsObject;
-  static serializeBinaryToWriter(message: JwtVerifyResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): JwtVerifyResponse;
-  static deserializeBinaryFromReader(message: JwtVerifyResponse, reader: jspb.BinaryReader): JwtVerifyResponse;
+  toObject(includeInstance?: boolean): WeChatPhoneNumberResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: WeChatPhoneNumberResponse): WeChatPhoneNumberResponse.AsObject;
+  static serializeBinaryToWriter(message: WeChatPhoneNumberResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WeChatPhoneNumberResponse;
+  static deserializeBinaryFromReader(message: WeChatPhoneNumberResponse, reader: jspb.BinaryReader): WeChatPhoneNumberResponse;
 }
 
-export namespace JwtVerifyResponse {
+export namespace WeChatPhoneNumberResponse {
   export type AsObject = {
-    aud: string,
+    phoneNumber: string,
+    purePhoneNumber: string,
+    countryCode: string,
+    waterMark: number,
   }
 }
 

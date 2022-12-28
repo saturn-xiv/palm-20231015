@@ -5,9 +5,10 @@ package palm.orchid.v1;
 
 service WeChat {
   rpc Login(WeChatLoginRequest) returns (WeChatLoginResponse) {}
+  rpc PhoneNumber(WeChatPhoneNumberRequest)
+      returns (WeChatPhoneNumberResponse) {}
 }
 
-// https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html
 message WeChatLoginRequest {
   string app_id = 1;
   string code = 2;
@@ -16,6 +17,18 @@ message WeChatLoginRequest {
 message WeChatLoginResponse {
   optional string unionid = 1;
   string openid = 2;
+}
+
+message WeChatPhoneNumberRequest {
+  string app_id = 1;
+  string code = 2;
+}
+
+message WeChatPhoneNumberResponse {
+  string phone_number = 1;
+  string pure_phone_number = 2;
+  string country_code = 3;
+  uint64 water_mark = 4;
 }
 
 // import "google/protobuf/empty.proto";
