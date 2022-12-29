@@ -23,13 +23,13 @@ pub struct Response {
 // https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/mp-access-token/getAccessToken.html
 impl Config {
     pub async fn get_access_token(&self) -> Result<Response> {
+        debug!("wechat get access token");
         let client = Client::new();
         let response = client
-            .get(Self::url("/sns/jscode2session"))
+            .get(Self::url("/cgi-bin/token"))
             .query(&Query {
                 appid: self.app_id.to_string(),
                 secret: self.app_secret.to_string(),
-
                 grant_type: Query::GRANT_TYPE.to_string(),
             })
             .send()

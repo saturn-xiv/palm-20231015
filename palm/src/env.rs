@@ -40,7 +40,7 @@ pub struct Http {
 
 impl Http {
     pub fn addr(&self) -> SocketAddr {
-        SocketAddr::new(IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1)), self.port)
+        SocketAddr::new(IpAddr::V4(Ipv4Addr::new(0, 0, 0, 0)), self.port)
     }
 }
 

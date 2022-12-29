@@ -1,7 +1,8 @@
-use std::ops::DerefMut;
+use std::ops::{Deref, DerefMut};
 
 use actix_web::{post, web, HttpResponse, Responder, Result as WebResult};
-use palm::{handlers::peer::ClientIp, orchid::v1::WeChatLoginRequest, try_web};
+use chrono::Duration;
+use palm::{handlers::peer::ClientIp, jwt::Jwt, orchid::v1::WeChatLoginRequest, try_web};
 use serde::{Deserialize, Serialize};
 use tonic::Request;
 
@@ -11,36 +12,54 @@ use super::super::super::{
     Oauth,
 };
 
-#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
 pub struct SignInRequest {
     pub app_id: String,
     pub code: String,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct SignInResponse {
+    pub token: String,
+    pub real_name: String,
 }
 
 #[post("/sign-in")]
 pub async fn sign_in(
     db: web::Data<DbPool>,
     client_ip: ClientIp,
+    jwt: web::Data<Jwt>,
     oauth: web::Data<Oauth>,
     form: web::Json<SignInRequest>,
 ) -> WebResult<impl Responder> {
-    let mut cli = try_web!(oauth.open().await)?;
-    let res = try_web!(
-        cli.login(Request::new(WeChatLoginRequest {
-            app_id: form.app_id.clone(),
-            code: form.code.clone(),
-        }))
-        .await
-    )?;
+    let form = form.into_inner();
     let client_ip = client_ip.to_string();
+    let jwt = jwt.deref();
+    debug!("try to sign in wechat user {:?} from {}", form, client_ip);
+    let mut cli = try_web!(oauth.open().await)?;
+    let mut req = Request::new(WeChatLoginRequest {
+        app_id: form.app_id.clone(),
+        code: form.code.clone(),
+    });
+    try_web!(Jwt::authorization(&mut req, &oauth.token))?;
+
+    let res = try_web!(cli.login(req).await)?;
+    debug!("fetch wechat user {:?}", res);
     let mut db = try_web!(db.get())?;
     let db = db.deref_mut();
     let res = res.into_inner();
-    try_web!(UserDao::wechat(db, &client_ip, &form.app_id, &res))?;
-    Ok(HttpResponse::Ok())
+    let user = try_web!(UserDao::wechat(db, &client_ip, &form.app_id, &res))?;
+    let token = try_web!(user.token(jwt, Duration::days(1)))?;
+    Ok(web::Json(SignInResponse {
+        real_name: user.real_name,
+        token,
+    }))
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
 pub struct ProfileRequest {
     pub name: String,
     pub avatar: String,

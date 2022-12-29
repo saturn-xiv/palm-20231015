@@ -686,7 +686,7 @@ export namespace UserProvider {
 
   export enum Type { 
     EMAIL = 0,
-    GMAIL = 1,
+    GOOGLE = 1,
     WECHAT = 2,
     FACEBOOK = 3,
     GITHUB = 4,
@@ -1798,28 +1798,6 @@ export namespace TwilioProfile {
   export enum SmsStatusCallbackCase { 
     _SMS_STATUS_CALLBACK_NOT_SET = 0,
     SMS_STATUS_CALLBACK = 9,
-  }
-}
-
-export class WechatProfile extends jspb.Message {
-  getAppId(): string;
-  setAppId(value: string): WechatProfile;
-
-  getAppSecret(): string;
-  setAppSecret(value: string): WechatProfile;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): WechatProfile.AsObject;
-  static toObject(includeInstance: boolean, msg: WechatProfile): WechatProfile.AsObject;
-  static serializeBinaryToWriter(message: WechatProfile, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): WechatProfile;
-  static deserializeBinaryFromReader(message: WechatProfile, reader: jspb.BinaryReader): WechatProfile;
-}
-
-export namespace WechatProfile {
-  export type AsObject = {
-    appId: string,
-    appSecret: string,
   }
 }
 

@@ -29,6 +29,7 @@ impl Config {
     pub async fn body<T: DeserializeOwned + Debug>(res: Response) -> Result<T> {
         let status = res.status();
         let body = res.text().await?;
+        debug!("receive {body}");
         if !status.is_success() {
             error!("{}\n{}", status, body);
             return Err(Box::new(HttpError(status, Some(body))));

@@ -7,7 +7,7 @@ use jsonwebtoken::{
 };
 use serde::{de::DeserializeOwned, ser::Serialize};
 use tonic::{
-    metadata::{MetadataKey, MetadataValue},
+    metadata::{Ascii, MetadataKey, MetadataValue},
     Request as GrpcRequest,
 };
 
@@ -23,18 +23,23 @@ pub struct Jwt {
 
 impl Jwt {
     pub const BEARER: &'static str = "Bearer ";
-    pub fn authorization<R>(&self, request: &mut GrpcRequest<R>, token: &str) -> Result<()> {
-        let token: MetadataValue<_> = {
-            let it = format!("{} {}", Self::BEARER, token);
+    pub fn bearer(token: &str) -> String {
+        format!("{}{}", Self::BEARER, token)
+    }
+    pub fn authorization<R>(request: &mut GrpcRequest<R>, token: &str) -> Result<()> {
+        let val: MetadataValue<Ascii> = {
+            let it = Self::bearer(token);
             it.parse()?
         };
 
-        let key: MetadataKey<_> = {
+        let key: MetadataKey<Ascii> = {
             let it = AUTHORIZATION.as_str();
             let it = it.to_lowercase();
             it.parse()?
         };
-        request.metadata_mut().insert(key, token);
+        request.metadata_mut().insert(key, val);
+
+        debug!("request header {:?}", request.metadata());
         Ok(())
     }
     pub fn new(key: String) -> Self {

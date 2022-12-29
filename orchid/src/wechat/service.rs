@@ -61,6 +61,9 @@ impl Service {
                 });
             }
         }
-        Err(Box::new(HttpError(StatusCode::NOT_FOUND, None)))
+        Err(Box::new(HttpError(
+            StatusCode::NOT_FOUND,
+            Some(format!("can't find app id {app_id}")),
+        )))
     }
 }

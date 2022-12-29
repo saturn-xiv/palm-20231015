@@ -24,6 +24,9 @@ impl Config {
             if self.agents.contains(&payload.claims.aud) {
                 return Ok(());
             }
+            error!("unknown agent {}", payload.claims.aud);
+        } else {
+            error!("agent token is nil");
         }
         Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))
     }

@@ -26,9 +26,10 @@ pub struct Response {
 // https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html
 impl Config {
     pub async fn code2session(&self, code: &str) -> Result<Response> {
+        debug!("wechat code to session {code}");
         let client = Client::new();
         let response = client
-            .get(Self::url("/cgi-bin/token"))
+            .get(Self::url("/sns/jscode2session"))
             .query(&Query {
                 appid: self.app_id.to_string(),
                 secret: self.app_secret.to_string(),

@@ -13,10 +13,10 @@
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="real_name" type="varchar(32)">
+            <column name="real_name" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="nickname" type="varchar(32)">
+            <column name="nickname" type="varchar(255)">
                 <constraints unique="true" nullable="false" />
             </column>
             <column name="email" type="varchar(255)">
