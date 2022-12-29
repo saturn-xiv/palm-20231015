@@ -10,6 +10,7 @@ use actix_session::{
 use actix_web::{middleware, web, App, HttpServer};
 use chrono::Duration;
 use cookie::{time::Duration as CookieDuration, Key as CookieKey, SameSite};
+use data_encoding::BASE64;
 
 use hyper::{
     header::{ACCEPT_LANGUAGE, AUTHORIZATION, CONTENT_TYPE, COOKIE},
@@ -29,19 +30,16 @@ pub async fn launch(cfg: &Config) -> Result<()> {
 
     let pgsql = web::Data::new(pg_pool);
     let cache = web::Data::new(cfg.redis.open()?);
-    let aes = web::Data::new(Aes::new(&cfg.secrets.0)?);
-    let hmac = web::Data::new(Hmac::new(&cfg.secrets.0)?);
-    let jwt = web::Data::new(Jwt::new(cfg.secrets.0.clone()));
+    let aes = web::Data::new(Aes::new(&cfg.secret_key.0)?);
+    let hmac = web::Data::new(Hmac::new(&cfg.secret_key.0)?);
+    let jwt = web::Data::new(Jwt::new(cfg.jwt_key.0.clone()));
     let queue = web::Data::new(cfg.rabbitmq.open());
     let oauth = web::Data::new(cfg.oauth.clone());
 
     let addr = cfg.http.addr();
     info!("run on http://{addr}");
 
-    let cookie_key = {
-        let it = base64::encode(base64::encode(&cfg.secrets.0));
-        it.as_bytes().to_vec()
-    };
+    let cookie_key = BASE64.decode(cfg.cookie_key.0.as_bytes())?;
     let is_prod = cfg.env == Environment::Production;
 
     let allow_origins = cfg.http.allow_origins.clone();
@@ -146,11 +144,33 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                         ),
                     )
                     .service(
-                        web::scope("/wechat").service(
-                            web::scope("/mini-program")
-                                .service(nut::controllers::wechat::mini_program::sign_in)
-                                .service(nut::controllers::wechat::mini_program::profile),
-                        ),
+                        web::scope("/wechat")
+                            .service(
+                                web::scope("/web")
+                                    .service(
+                                        web::scope("/messaging")
+                                            .service(
+                                                nut::controllers::wechat::web::messaging::verify,
+                                            )
+                                            .service(
+                                                nut::controllers::wechat::web::messaging::callback,
+                                            ),
+                                    )
+                                    .service(
+                                        web::scope("/sign-in")
+                                            .service(
+                                                nut::controllers::wechat::web::sign_in::redirect,
+                                            )
+                                            .service(
+                                                nut::controllers::wechat::web::sign_in::callback,
+                                            ),
+                                    ),
+                            )
+                            .service(
+                                web::scope("/mini-program")
+                                    .service(nut::controllers::wechat::mini_program::sign_in)
+                                    .service(nut::controllers::wechat::mini_program::profile),
+                            ),
                     )
                     .service(nut::controllers::echo)
                     .service(nut::controllers::version),

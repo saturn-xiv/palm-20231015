@@ -7,9 +7,9 @@ use serde::{Deserialize, Serialize};
 use super::{google::Config as Google, wechat::Config as WeChat};
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
-#[serde(rename_all = "camelCase")]
 pub struct Config {
-    pub secrets: Key,
+    #[serde(rename = "jwt-key")]
+    pub jwt_key: Key,
     pub redis: Redis,
     pub wechat: Vec<WeChat>,
     pub google: Vec<Google>,
@@ -18,7 +18,7 @@ pub struct Config {
 
 impl Config {
     pub fn auth(&self, ss: &Session) -> Result<()> {
-        let jwt = Jwt::new(self.secrets.0.clone());
+        let jwt = Jwt::new(self.jwt_key.0.clone());
         if let Some(ref token) = ss.token {
             let payload = jwt.parse::<Agent>(token)?;
             if self.agents.contains(&payload.claims.aud) {

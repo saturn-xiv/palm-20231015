@@ -1,6 +1,8 @@
 pub mod random;
+pub mod sha1;
 pub mod ssha512;
 
+use data_encoding::BASE64;
 use openssl::{
     hash::MessageDigest,
     memcmp,
@@ -27,13 +29,13 @@ pub struct Key(pub String);
 
 impl Default for Key {
     fn default() -> Self {
-        Self(base64::encode(random::bytes(32)))
+        Self(BASE64.encode(&random::bytes(32)))
     }
 }
 
 impl From<Key> for Result<Vec<u8>> {
     fn from(it: Key) -> Self {
-        let buf = base64::decode(it.0)?;
+        let buf = BASE64.decode(it.0.as_bytes())?;
         Ok(buf)
     }
 }
@@ -46,7 +48,7 @@ pub struct Hmac {
 
 impl Hmac {
     pub fn new(key: &str) -> Result<Self> {
-        let key = base64::decode(key)?;
+        let key = BASE64.decode(key.as_bytes())?;
         Ok(Self {
             key: PKey::hmac(&key)?,
             digest: MessageDigest::sha512(),
@@ -78,7 +80,7 @@ pub struct Aes {
 
 impl Aes {
     pub fn new(key: &str) -> Result<Self> {
-        let key = base64::decode(key)?;
+        let key = BASE64.decode(key.as_bytes())?;
         Ok(Self {
             key,
             cipher: Cipher::aes_256_cbc(),

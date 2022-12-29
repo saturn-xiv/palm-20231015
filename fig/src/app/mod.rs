@@ -129,7 +129,7 @@ pub async fn launch() -> Result<()> {
         let db = cfg.postgresql.open()?;
         let mut db = db.get()?;
         let db = db.deref_mut();
-        let hmac = Hmac::new(&cfg.secrets.0)?;
+        let hmac = Hmac::new(&cfg.secret_key.0)?;
 
         {
             if args.command == SubCommand::UserList {
@@ -142,7 +142,7 @@ pub async fn launch() -> Result<()> {
                 return it.execute(db, &hmac);
             }
             if let SubCommand::UserToken(ref it) = args.command {
-                let jwt = Jwt::new(cfg.secrets.0.clone());
+                let jwt = Jwt::new(cfg.jwt_key.0.clone());
                 let token = it.execute(db, &jwt)?;
                 println!("{:?}", token);
                 return Ok(());

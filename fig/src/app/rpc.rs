@@ -14,9 +14,9 @@ pub async fn launch(cfg: &Config) -> Result<()> {
 
     let pgsql = cfg.postgresql.open()?;
     let redis = cfg.redis.open()?;
-    let aes = Arc::new(Aes::new(&cfg.secrets.0)?);
-    let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
-    let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
+    let aes = Arc::new(Aes::new(&cfg.secret_key.0)?);
+    let hmac = Arc::new(Hmac::new(&cfg.secret_key.0)?);
+    let jwt = Arc::new(Jwt::new(cfg.jwt_key.0.clone()));
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
     let opensearch = Arc::new(cfg.opensearch.open()?);
 

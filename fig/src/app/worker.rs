@@ -23,7 +23,7 @@ pub async fn launch(cfg: &Config, name: &str) -> Result<()> {
     let db = cfg.postgresql.open()?;
     let mut db = db.get()?;
     let db = db.deref_mut();
-    let aes = Aes::new(&cfg.secrets.0)?;
+    let aes = Aes::new(&cfg.secret_key.0)?;
     let ch = queue.open().await?;
     if name == type_name::<EmailTask>() {
         let cfg = get::<SmtpProfile, Aes>(db, &aes, None)?;

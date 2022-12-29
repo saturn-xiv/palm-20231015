@@ -20,7 +20,6 @@ use serde::{Deserialize, Serialize};
 use tonic::transport::{channel::Channel, Endpoint};
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone, PartialEq, Eq)]
-#[serde(rename_all = "camelCase")]
 pub struct Oauth {
     pub endpoint: String,
     pub token: String,

@@ -1,6 +1,6 @@
-extern crate base64;
 extern crate palm;
 
+use data_encoding::BASE64;
 use palm::crypto::{random, ssha512, Aes, Hmac, Password, Secret};
 
 #[test]
@@ -30,7 +30,7 @@ fn hmac() {
     let key = random::bytes(24);
     let plain = random::bytes(128);
 
-    let hmac = Hmac::new(&base64::encode(key)).unwrap();
+    let hmac = Hmac::new(&BASE64.encode(&key)).unwrap();
 
     println!("hmac plain: {:?}", plain);
     let cipher = hmac.sum(&plain).unwrap();
@@ -42,7 +42,7 @@ fn hmac() {
 fn aes() {
     let key = random::bytes(32);
 
-    let aes = Aes::new(&base64::encode(key)).unwrap();
+    let aes = Aes::new(&BASE64.encode(&key)).unwrap();
 
     for plain in vec!["hi", "hello, aes!", "中文"] {
         for i in 1..5 {

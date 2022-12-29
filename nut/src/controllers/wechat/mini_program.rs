@@ -11,19 +11,13 @@ use super::super::super::{
     orm::postgresql::Pool as DbPool,
     Oauth,
 };
+use super::SignInResponse;
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct SignInRequest {
     pub app_id: String,
     pub code: String,
-}
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
-#[serde(rename_all = "camelCase")]
-pub struct SignInResponse {
-    pub token: String,
-    pub real_name: String,
 }
 
 #[post("/sign-in")]

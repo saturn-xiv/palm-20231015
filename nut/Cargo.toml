@@ -64,6 +64,10 @@ version = "2"
 default-features = false
 features = ["bigdecimal", "postgres", "mysql", "sqlite", "extras", "128-column-tables"]
 
+[dependencies.url]
+version = "2"
+features = ["serde"]
+
 [dependencies.actix-web]
 version = "4"
 features = ["cookies"]

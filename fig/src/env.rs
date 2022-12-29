@@ -9,10 +9,14 @@ use palm::{
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
-#[serde(rename_all = "camelCase")]
 pub struct Config {
     pub env: Environment,
-    pub secrets: Key,
+    #[serde(rename = "secret-key")]
+    pub secret_key: Key,
+    #[serde(rename = "cookie-key")]
+    pub cookie_key: Key,
+    #[serde(rename = "jwt-key")]
+    pub jwt_key: Key,
     pub http: Http,
     pub rpc: Rpc,
     pub postgresql: PostgreSql,

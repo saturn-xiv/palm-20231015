@@ -33,7 +33,7 @@ impl Args {
                 it.launch(env).await?;
             }
             SubCommand::Token(ref it) => {
-                let token = it.launch(&env.secrets)?;
+                let token = it.launch(&env.jwt_key)?;
                 println!("{}", token);
             }
         };
