@@ -2,13 +2,12 @@ use std::sync::Arc;
 
 use hyper::StatusCode;
 use palm::{
-    cache::redis::Pool as RedisPool, orchid::v1, session::Session, try_grpc, GrpcResult, HttpError,
-    Result,
+    cache::redis::Pool as RedisPool, orchid::v1, session::Session, try_grpc, wechat::Client,
+    GrpcResult, HttpError, Result,
 };
 use tonic::{Request, Response};
 
 use super::super::env::Config;
-use super::Client;
 
 pub struct Service {
     pub config: Arc<Config>,

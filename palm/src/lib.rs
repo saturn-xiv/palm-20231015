@@ -101,6 +101,7 @@ pub mod captcha;
 pub mod crypto;
 pub mod currency;
 pub mod env;
+pub mod google;
 pub mod handlers;
 pub mod jwt;
 pub mod minio;
@@ -116,7 +117,6 @@ pub mod session;
 pub mod tasks;
 pub mod twilio;
 pub mod wechat;
-pub mod youtube;
 
 use std::fs::{copy as copy_file, create_dir_all, read_dir, remove_file, File};
 use std::io::{prelude::*, Error as IoError, ErrorKind as IoErrorKind, Result as IoResult};

@@ -6,10 +6,10 @@ pub mod get_phone_number;
 use std::fmt::Debug;
 
 use hyper::StatusCode;
-use palm::{HttpError, Result};
 use reqwest::Response;
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 
+use super::super::{HttpError, Result};
 use super::Config;
 
 #[derive(Serialize, Deserialize, Debug)]

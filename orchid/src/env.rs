@@ -1,10 +1,11 @@
 use hyper::StatusCode;
 use palm::{
-    cache::redis::Config as Redis, crypto::Key, jwt::Jwt, session::Session, HttpError, Result,
+    cache::redis::Config as Redis, crypto::Key, jwt::Jwt, session::Session,
+    wechat::Config as WeChat, HttpError, Result,
 };
 use serde::{Deserialize, Serialize};
 
-use super::{google::Config as Google, wechat::Config as WeChat};
+use super::google::Config as Google;
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Config {

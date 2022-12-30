@@ -1,7 +1,7 @@
-use palm::Result;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 
+use super::super::super::Result;
 use super::super::Config;
 use super::Query;
 
