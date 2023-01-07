@@ -96,6 +96,7 @@ macro_rules! try_web {
     }};
 }
 
+pub mod aws;
 pub mod cache;
 pub mod captcha;
 pub mod crypto;

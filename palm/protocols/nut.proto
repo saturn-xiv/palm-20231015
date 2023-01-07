@@ -432,10 +432,6 @@ service Site {
   rpc SetInfo(SiteSetInfoRequest) returns (google.protobuf.Empty) {}
   rpc SetLogo(SiteSetLogoRequest) returns (google.protobuf.Empty) {}
 
-  rpc SetMinio(MinioProfile) returns (google.protobuf.Empty) {}
-  rpc GetMinio(google.protobuf.Empty) returns (MinioProfile) {}
-  rpc TestMinio(MinioProfile) returns (SiteMinioTestResponse) {}
-
   rpc SetTwilio(TwilioProfile) returns (google.protobuf.Empty) {}
   rpc GetTwilio(google.protobuf.Empty) returns (TwilioProfile) {}
   rpc TestTwilio(SiteTwilioTestRequest) returns (google.protobuf.Empty) {}
@@ -481,24 +477,12 @@ message SiteMaintenanceModeRequest {
 
 message SiteInstallRequest { UserSignUpRequest user = 1; }
 
-message MinioProfile {
-  string url = 1;
-  string region = 2;
-
-  string access_key = 8;
-  string secret_key = 9;
-}
-
-message SiteMinioTestResponse { repeated string buckets = 1; }
-
 message TwilioProfile {
   string from = 1;
   string account_sid = 2;
   string auth_token = 3;
   optional string sms_status_callback = 9;
 }
-
-message SiteWechatTestResponse { repeated string ip = 1; }
 
 message SmtpProfile {
   // https://github.com/karastojko/mailio/blob/master/include/mailio/smtp.hpp#L229

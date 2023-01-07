@@ -1,16 +1,18 @@
 use std::io::{Seek, SeekFrom, Write};
-use std::ops::{Deref, DerefMut};
+use std::ops::DerefMut;
 
 use actix_multipart::Multipart;
 use actix_web::{post, web, HttpResponse, Responder, Result as WebResult};
 use futures_util::TryStreamExt;
-use palm::{crypto::Aes, minio::AwsClient, nut::v1::MinioProfile, try_web, Result};
+use palm::{
+    aws::s3::{Client as S3Client, Config as S3},
+    try_web, Result,
+};
 use tempfile::NamedTempFile;
 
 use super::super::{
     models::{
         attachment::{Dao as AttachmentDao, Item as Attachment},
-        setting::get,
         user::Item as User,
     },
     orm::postgresql::{Connection as Db, Pool as DbPool},
@@ -20,15 +22,13 @@ use super::super::{
 pub async fn create(
     user: User,
     db: web::Data<DbPool>,
-    aes: web::Data<Aes>,
+
+    s3: web::Data<S3>,
     payload: Multipart,
 ) -> WebResult<impl Responder> {
     let mut db = try_web!(db.get())?;
     let db = db.deref_mut();
-    let aes = aes.deref();
-    let aes = aes.deref();
-    let aws = try_web!(get::<MinioProfile, Aes>(db, aes, None))?;
-    let s3 = try_web!(aws.open().await)?;
+    let s3 = try_web!(s3.open().await)?;
 
     let bucket = Attachment::bucket_by_year_month();
     if !try_web!(s3.bucket_exists(&bucket).await)? {
@@ -43,7 +43,7 @@ pub async fn create(
 async fn save(
     db: &mut Db,
     user: i32,
-    aws: &AwsClient,
+    s3: &S3Client,
     bucket: &str,
     mut payload: Multipart,
 ) -> Result<()> {
@@ -71,7 +71,7 @@ async fn save(
                 let size = file.metadata()?.len();
                 AttachmentDao::create(db, user, bucket, &name, &title, &content_type, size)?;
             }
-            aws.put_object(bucket, &name, content_type.as_ref(), file)
+            s3.put_object(bucket, &name, content_type.as_ref(), file)
                 .await?;
         }
     }

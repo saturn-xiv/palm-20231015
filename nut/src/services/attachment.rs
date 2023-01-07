@@ -2,7 +2,7 @@ use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
 use palm::{
-    cache::redis::Pool as RedisPool, crypto::Aes, jwt::Jwt, nut::v1, session::Session,
+    aws::s3::Config as S3, cache::redis::Pool as RedisPool, jwt::Jwt, nut::v1, session::Session,
     to_std_duration, to_timestamp, try_grpc, GrpcResult,
 };
 use tonic::{Request, Response, Status};
@@ -10,7 +10,6 @@ use tonic::{Request, Response, Status};
 use super::super::{
     models::{
         attachment::{Dao as AttachmentDao, Item as Attachment},
-        setting::get,
         Operation,
     },
     orm::postgresql::Pool as PostgreSqlPool,
@@ -21,7 +20,7 @@ pub struct Service {
     pub redis: RedisPool,
     pub pgsql: PostgreSqlPool,
     pub jwt: Arc<Jwt>,
-    pub aes: Arc<Aes>,
+    pub s3: Arc<S3>,
 }
 
 #[tonic::async_trait]
@@ -63,7 +62,6 @@ impl v1::attachment_server::Attachment for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
-        let aes = self.aes.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
         let req = req.into_inner();
         let it = try_grpc!(AttachmentDao::by_id(db, req.id))?;
@@ -71,8 +69,7 @@ impl v1::attachment_server::Attachment for Service {
         let can = user.can::<Attachment, _>(&Operation::Remove, Some(it.id));
 
         if can {
-            let aws = try_grpc!(get::<v1::MinioProfile, Aes>(db, aes, None))?;
-            let cli = try_grpc!(aws.open().await)?;
+            let cli = try_grpc!(self.s3.open().await)?;
             try_grpc!(cli.remove_object(&it.bucket, &it.name).await)?;
             try_grpc!(AttachmentDao::delete(db, it.id))?;
             return Ok(Response::new(()));
@@ -93,15 +90,13 @@ impl v1::attachment_server::Attachment for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
-        let aes = self.aes.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
         let req = req.into_inner();
         let ttl = req.ttl.unwrap_or_default();
         let it = try_grpc!(AttachmentDao::by_id(db, req.id))?;
 
         if user.can::<Attachment, _>(&Operation::Read, Some(it.id)) {
-            let aws = try_grpc!(get::<v1::MinioProfile, Aes>(db, aes, None))?;
-            let cli = try_grpc!(aws.open().await)?;
+            let cli = try_grpc!(self.s3.open().await)?;
             let url = try_grpc!(
                 cli.get_object(&it.bucket, &it.name, to_std_duration!(ttl))
                     .await

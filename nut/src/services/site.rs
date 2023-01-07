@@ -331,67 +331,6 @@ impl v1::site_server::Site for Service {
         }
     }
 
-    async fn set_minio(&self, req: Request<v1::MinioProfile>) -> GrpcResult<()> {
-        let ss = Session::new(&req);
-        let mut db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref_mut();
-        let mut ch = try_grpc!(self.redis.get())?;
-        let ch = ch.deref_mut();
-        let jwt = self.jwt.deref();
-        let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
-
-        if !user.is_administrator() {
-            return Err(Status::permission_denied(type_name::<v1::MinioProfile>()));
-        }
-        let req = req.into_inner();
-
-        try_grpc!(set(db, aes, None, &req, true))?;
-        Ok(Response::new(()))
-    }
-
-    async fn get_minio(&self, req: Request<()>) -> GrpcResult<v1::MinioProfile> {
-        let ss = Session::new(&req);
-        let mut db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref_mut();
-        let mut ch = try_grpc!(self.redis.get())?;
-        let ch = ch.deref_mut();
-        let jwt = self.jwt.deref();
-        let aes = self.aes.deref();
-        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
-
-        if !user.is_administrator() {
-            return Err(Status::permission_denied(type_name::<v1::MinioProfile>()));
-        }
-
-        let it = try_grpc!(get::<v1::MinioProfile, Aes>(db, aes, None))?;
-
-        Ok(Response::new(it))
-    }
-
-    async fn test_minio(
-        &self,
-        req: Request<v1::MinioProfile>,
-    ) -> GrpcResult<v1::SiteMinioTestResponse> {
-        let ss = Session::new(&req);
-        let mut db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref_mut();
-        let mut ch = try_grpc!(self.redis.get())?;
-        let ch = ch.deref_mut();
-        let jwt = self.jwt.deref();
-
-        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
-
-        if !user.is_administrator() {
-            return Err(Status::permission_denied(type_name::<v1::MinioProfile>()));
-        }
-
-        let req = req.into_inner();
-        let cli = try_grpc!(req.open().await)?;
-        let buckets = try_grpc!(cli.list_buckets().await)?;
-        Ok(Response::new(v1::SiteMinioTestResponse { buckets }))
-    }
-
     async fn set_twilio(&self, req: Request<v1::TwilioProfile>) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;

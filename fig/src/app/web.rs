@@ -17,6 +17,7 @@ use hyper::{
     Method,
 };
 use palm::{
+    aws::s3::Config as S3,
     crypto::{Aes, Hmac},
     env::Environment,
     jwt::Jwt,
@@ -36,6 +37,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let queue = web::Data::new(cfg.rabbitmq.open());
     let oauth = web::Data::new(cfg.oauth.clone());
     let wechat = web::Data::new(cfg.wechat.clone());
+    let s3 = web::Data::new(S3::from(cfg.minio.clone()));
 
     let addr = cfg.http.addr();
     info!("run on http://{addr}");
@@ -77,6 +79,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .app_data(queue.clone())
             .app_data(oauth.clone())
             .app_data(wechat.clone())
+            .app_data(s3.clone())
             .wrap(cors)
             .wrap(middleware::Logger::default())
             .wrap(IdentityMiddleware::default())

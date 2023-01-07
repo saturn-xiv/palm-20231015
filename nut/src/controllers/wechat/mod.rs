@@ -7,6 +7,8 @@ use serde::{Deserialize, Serialize};
 pub struct Config {
     #[serde(rename = "app-id")]
     pub app_id: String,
+    #[serde(rename = "app-secret")]
+    pub app_secret: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]

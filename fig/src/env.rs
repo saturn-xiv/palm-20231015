@@ -3,6 +3,7 @@ use palm::{
     cache::redis::Config as Redis,
     crypto::Key,
     env::{Environment, Http, Rpc},
+    minio::Config as Minio,
     queue::amqp::Config as RabbitMqConfig,
     search::Config as OpenSearch,
 };
@@ -25,4 +26,5 @@ pub struct Config {
     pub opensearch: OpenSearch,
     pub oauth: Oauth,
     pub wechat: WeChat,
+    pub minio: Minio,
 }
