@@ -18,6 +18,7 @@ use super::SignInResponse;
 pub struct SignInRequest {
     pub app_id: String,
     pub code: String,
+    pub version: String,
 }
 
 #[post("/sign-in")]

@@ -1,6 +1,6 @@
 use std::fs::{create_dir_all, File};
 use std::io::{Error as IoError, ErrorKind as IoErrorKind, Write};
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
 
 use clap::Parser;
@@ -9,6 +9,10 @@ use palm::{timestamp_file, Result};
 
 #[derive(Parser, PartialEq, Eq, Debug, Clone)]
 pub struct Config {
+    #[arg(short, long, default_value = super::Args::DEFAULT_KEEP)]
+    pub keep: usize,
+    #[arg(short, long, default_value = super::Args::DEFAULT_TARGET)]
+    pub target: PathBuf,
     #[arg(short = 'H', long, default_value = "127.0.0.1")]
     pub host: String,
     #[arg(short, long, default_value = "3306")]

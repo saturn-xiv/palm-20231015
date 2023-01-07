@@ -290,6 +290,7 @@ impl Dao for Connection {
                 self.by_uid(&uid)?
             }
         };
+        Self::confirm(self, it.id)?;
         update(users::dsl::users.filter(users::dsl::id.eq(it.id)))
             .set(users::dsl::access_token.eq(&Some(access_token)))
             .execute(self)?;
@@ -496,6 +497,7 @@ impl Dao for Connection {
 
         let it = self.by_uid(&uid)?;
 
+        Self::confirm(self, it.id)?;
         let access_token = who.access_token();
         update(users::dsl::users.filter(users::dsl::id.eq(it.id)))
             .set(users::dsl::access_token.eq(&Some(access_token)))

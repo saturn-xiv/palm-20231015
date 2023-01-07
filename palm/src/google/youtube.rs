@@ -1,23 +1,41 @@
 use std::fs::File;
 use std::io::{Error as IoError, ErrorKind as IoErrorKind};
 use std::path::Path;
+use std::path::PathBuf;
 
 use google_youtube3::{
     api::{Caption, CaptionSnippet},
-    hyper::{client::connect::HttpConnector, Client},
+    hyper::{client::connect::HttpConnector, Client as YouTubeClient},
     hyper_rustls::{HttpsConnector, HttpsConnectorBuilder},
-    oauth2::{ApplicationSecret, InstalledFlowAuthenticator, InstalledFlowReturnMethod},
+    oauth2::{read_application_secret, InstalledFlowAuthenticator, InstalledFlowReturnMethod},
     Error, Result, YouTube,
 };
 
 // https://developers.google.com/youtube/v3/getting-started
-pub struct Config {
-    pub client_id: String,
-    pub client_secret: String,
+pub struct Client {
+    pub config: PathBuf,
 }
 
-impl Config {
-    pub async fn upload<C: AsRef<Path>, F: AsRef<Path>>(
+impl Client {
+    pub async fn playlists(&self) -> Result<Vec<String>> {
+        let hub = self.open().await?;
+
+        let (_, playlists) = hub
+            .playlists()
+            .list(&vec!["snippet".to_string()])
+            .doit()
+            .await?;
+        let mut items = Vec::new();
+        for it in playlists.items.iter() {
+            for it in it.iter() {
+                if let Some(ref it) = it.id {
+                    items.push(it.clone());
+                }
+            }
+        }
+        Ok(items)
+    }
+    pub async fn upload_video<C: AsRef<Path>, F: AsRef<Path>>(
         &self,
         name: &str,
         cover: C,
@@ -58,18 +76,19 @@ impl Config {
         Ok(())
     }
     async fn open(&self) -> Result<YouTube<HttpsConnector<HttpConnector>>> {
-        let secret = ApplicationSecret {
-            client_id: self.client_id.clone(),
-            client_secret: self.client_secret.clone(),
-            ..Default::default()
-        };
+        // let secret = ApplicationSecret {
+        //     client_id: self.client_id.clone(),
+        //     client_secret: self.client_secret.clone(),
+        //     ..Default::default()
+        // };
+        let secret = read_application_secret(&self.config).await?;
 
         let auth =
             InstalledFlowAuthenticator::builder(secret, InstalledFlowReturnMethod::HTTPRedirect)
                 .build()
                 .await?;
         let hub = YouTube::new(
-            Client::builder().build(
+            YouTubeClient::builder().build(
                 HttpsConnectorBuilder::new()
                     .with_native_roots()
                     .https_or_http()

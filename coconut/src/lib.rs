@@ -5,9 +5,9 @@ pub mod mysql;
 pub mod oracle;
 pub mod postgresql;
 pub mod rsync;
+pub mod youtube;
 
 use std::ops::Deref;
-use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
 use palm::{tar, Result, VERSION};
@@ -23,34 +23,34 @@ pub const AUTHORS: &str = env!("CARGO_PKG_AUTHORS");
     after_help=env!("CARGO_PKG_HOMEPAGE"), author)
 ]
 pub struct Args {
-    #[arg(short, long, default_value = "7")]
-    pub keep: usize,
-    #[arg(short, long, default_value = Self::DEFAULT_TARGET)]
-    pub target: PathBuf,
     #[command(subcommand)]
     pub command: SubCommand,
 }
 
 impl Args {
-    const DEFAULT_TARGET: &'static str = "/tmp";
+    const DEFAULT_TARGET: &str = "/tmp";
+    const DEFAULT_KEEP: &str = "7";
 
-    pub fn launch(&self) -> Result<()> {
+    pub async fn launch(&self) -> Result<()> {
         match &self.command {
             SubCommand::Postgresql(ref cfg) => {
-                let name = cfg.launch(&self.target)?;
-                tar(&self.target, &name, self.keep)?;
+                let name = cfg.launch(&cfg.target)?;
+                tar(&cfg.target, &name, cfg.keep)?;
             }
             SubCommand::Mysql(ref cfg) => {
-                let name = cfg.launch(&self.target)?;
-                tar(&self.target, &name, self.keep)?;
+                let name = cfg.launch(&cfg.target)?;
+                tar(&cfg.target, &name, cfg.keep)?;
             }
             SubCommand::Oracle(ref cfg) => {
-                let name = cfg.launch(&self.target)?;
-                tar(&self.target, &name, self.keep)?;
+                let name = cfg.launch(&cfg.target)?;
+                tar(&cfg.target, &name, cfg.keep)?;
             }
             SubCommand::Rsync(ref cfg) => {
-                let name = cfg.launch(&self.target)?;
-                tar(&self.target, &name, self.keep)?;
+                let name = cfg.launch(&cfg.target)?;
+                tar(&cfg.target, &name, cfg.keep)?;
+            }
+            SubCommand::Youtube(ref cfg) => {
+                cfg.launch().await?;
             }
         };
         info!("done.");
@@ -68,4 +68,6 @@ pub enum SubCommand {
     Oracle(oracle::Config),
     #[clap(about = "Backup folder from remote/local host")]
     Rsync(rsync::Config),
+    #[clap(about = "YouTube management")]
+    Youtube(youtube::Action),
 }

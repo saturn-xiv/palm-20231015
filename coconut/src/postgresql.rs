@@ -1,5 +1,5 @@
 use std::fs::create_dir_all;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use std::process::Command;
 
 use clap::Parser;
@@ -8,6 +8,10 @@ use postgres::{Client as DbClient, NoTls};
 
 #[derive(Parser, PartialEq, Eq, Debug, Clone)]
 pub struct Config {
+    #[arg(short, long, default_value = super::Args::DEFAULT_KEEP)]
+    pub keep: usize,
+    #[arg(short, long, default_value = super::Args::DEFAULT_TARGET)]
+    pub target: PathBuf,
     #[arg(short = 'H', long, default_value = "127.0.0.1")]
     pub host: String,
     #[arg(short, long, default_value = "5432")]

@@ -8,6 +8,10 @@ use palm::{print_command_output, timestamp_file, Result};
 
 #[derive(Parser, PartialEq, Eq, Debug, Clone)]
 pub struct Config {
+    #[arg(short, long, default_value = super::Args::DEFAULT_KEEP)]
+    pub keep: usize,
+    #[arg(short, long, default_value = super::Args::DEFAULT_TARGET)]
+    pub target: PathBuf,
     #[arg(short = 'H', long, help = "Keep it empty if backup from local")]
     pub host: Option<String>,
     #[arg(short, long, default_value = "22")]

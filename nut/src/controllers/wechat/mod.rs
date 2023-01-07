@@ -5,8 +5,6 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone, PartialEq, Eq)]
 pub struct Config {
-    pub secret: String,
-    pub token: String,
     #[serde(rename = "app-id")]
     pub app_id: String,
 }
