@@ -1,8 +1,7 @@
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 
-use super::super::super::Result;
-use super::super::Config;
+use super::super::super::{nut::v1::WechatProfile, Result};
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Query {
@@ -24,7 +23,7 @@ pub struct Response {
 
 // https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-login/code2Session.html
 // https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html
-impl Config {
+impl WechatProfile {
     pub async fn code2session(&self, code: &str) -> Result<Response> {
         debug!("wechat code to session {code}");
         let client = Client::new();

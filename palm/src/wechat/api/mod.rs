@@ -2,6 +2,7 @@ pub mod code2session;
 pub mod get_access_token;
 pub mod get_api_domain_ip;
 pub mod get_phone_number;
+pub mod qr_connect;
 
 use std::fmt::Debug;
 
@@ -9,8 +10,7 @@ use hyper::StatusCode;
 use reqwest::Response;
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 
-use super::super::{HttpError, Result};
-use super::Config;
+use super::super::{nut::v1::WechatProfile, HttpError, Result};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Query {
@@ -25,7 +25,7 @@ pub struct Error {
     pub message: String,
 }
 
-impl Config {
+impl WechatProfile {
     pub async fn body<T: DeserializeOwned + Debug>(res: Response) -> Result<T> {
         let status = res.status();
         let body = res.text().await?;

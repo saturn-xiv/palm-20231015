@@ -4,9 +4,9 @@ use std::any::type_name;
 use std::ops::DerefMut;
 
 use redis::Commands;
-use serde::{Deserialize, Serialize};
 
 use super::{
+    nut::v1::WechatProfile,
     orchid::v1::WeChatLoginResponse,
     {cache::redis::Pool as RedisPool, orchid::v1, Result},
 };
@@ -20,14 +20,8 @@ impl WeChatLoginResponse {
     }
 }
 
-#[derive(Serialize, Deserialize, Default, Debug, Clone)]
-pub struct Config {
-    pub app_id: String,
-    pub app_secret: String,
-}
-
 pub struct Client {
-    pub config: Config,
+    pub config: WechatProfile,
     pub redis: RedisPool,
 }
 
@@ -43,7 +37,7 @@ impl Client {
     fn _session_key(&self, openid: &str) -> String {
         format!(
             "{}://{}/{}/session-key",
-            type_name::<Config>(),
+            type_name::<WechatProfile>(),
             self.config.app_id,
             openid
         )
@@ -64,7 +58,7 @@ impl Client {
     pub async fn access_token(&self) -> Result<String> {
         let key = format!(
             "{}://{}/access-token",
-            type_name::<Config>(),
+            type_name::<WechatProfile>(),
             self.config.app_id
         );
         let mut ch = self.redis.get()?;

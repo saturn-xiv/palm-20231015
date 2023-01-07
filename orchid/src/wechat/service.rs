@@ -2,8 +2,8 @@ use std::sync::Arc;
 
 use hyper::StatusCode;
 use palm::{
-    cache::redis::Pool as RedisPool, orchid::v1, session::Session, try_grpc, wechat::Client,
-    GrpcResult, HttpError, Result,
+    cache::redis::Pool as RedisPool, nut::v1::WechatProfile, orchid::v1, session::Session,
+    try_grpc, wechat::Client, GrpcResult, HttpError, Result,
 };
 use tonic::{Request, Response};
 
@@ -55,7 +55,7 @@ impl Service {
         for it in self.config.wechat.iter() {
             if it.app_id == app_id {
                 return Ok(Client {
-                    config: it.clone(),
+                    config: WechatProfile::from(it.clone()),
                     redis: self.redis.clone(),
                 });
             }

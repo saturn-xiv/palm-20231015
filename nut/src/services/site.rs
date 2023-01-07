@@ -23,7 +23,9 @@ use palm::{
     search::OpenSearch,
     seo::Provider as SeoProvider,
     session::Session,
-    to_code, to_timestamp, try_grpc, Error, GrpcResult, Result,
+    to_code, to_timestamp, try_grpc,
+    wechat::Client as WechatClient,
+    Error, GrpcResult, Result,
 };
 use prost::Message;
 use serde::{Deserialize, Serialize};
@@ -329,6 +331,71 @@ impl v1::site_server::Site for Service {
             }
             None => Err(Status::invalid_argument("user cann't be empty")),
         }
+    }
+
+    async fn set_wechat(&self, req: Request<v1::WechatProfile>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let jwt = self.jwt.deref();
+        let aes = self.aes.deref();
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
+
+        if !user.is_administrator() {
+            return Err(Status::permission_denied(type_name::<v1::WechatProfile>()));
+        }
+        let req = req.into_inner();
+
+        try_grpc!(set(db, aes, None, &req, true))?;
+        Ok(Response::new(()))
+    }
+
+    async fn get_wechat(&self, req: Request<()>) -> GrpcResult<v1::WechatProfile> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let jwt = self.jwt.deref();
+        let aes = self.aes.deref();
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
+
+        if !user.is_administrator() {
+            return Err(Status::permission_denied(type_name::<v1::TwilioProfile>()));
+        }
+
+        let it = try_grpc!(get::<v1::WechatProfile, Aes>(db, aes, None))?;
+
+        Ok(Response::new(it))
+    }
+
+    async fn test_wechat(&self, req: Request<()>) -> GrpcResult<v1::SiteWechatTestResponse> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let jwt = self.jwt.deref();
+        let aes = self.aes.deref();
+
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
+
+        if !user.is_administrator() {
+            return Err(Status::permission_denied(type_name::<v1::TwilioProfile>()));
+        }
+
+        let cfg = try_grpc!(get::<v1::WechatProfile, Aes>(db, aes, None))?;
+        let cli = WechatClient {
+            config: cfg,
+            redis: self.redis.clone(),
+        };
+        let token = try_grpc!(cli.access_token().await)?;
+        let res = try_grpc!(cli.config.get_api_domain_ip(&token).await)?;
+        Ok(Response::new(v1::SiteWechatTestResponse {
+            items: res.items,
+        }))
     }
 
     async fn set_twilio(&self, req: Request<v1::TwilioProfile>) -> GrpcResult<()> {

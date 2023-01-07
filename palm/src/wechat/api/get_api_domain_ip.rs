@@ -1,8 +1,8 @@
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 
-use super::super::super::Result;
-use super::super::Config;
+use super::super::super::{nut::v1::WechatProfile, Result};
+
 use super::Query;
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -12,7 +12,7 @@ pub struct Response {
 }
 
 // https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/Get_the_WeChat_server_IP_address.html
-impl Config {
+impl WechatProfile {
     pub async fn get_api_domain_ip(&self, access_token: &str) -> Result<Response> {
         let client = Client::new();
         let response = client

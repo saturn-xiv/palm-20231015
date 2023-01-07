@@ -1,11 +1,26 @@
 use hyper::StatusCode;
 use palm::{
-    cache::redis::Config as Redis, crypto::Key, jwt::Jwt, session::Session,
-    wechat::Config as WeChat, HttpError, Result,
+    cache::redis::Config as Redis, crypto::Key, jwt::Jwt, nut::v1::WechatProfile, session::Session,
+    HttpError, Result,
 };
 use serde::{Deserialize, Serialize};
 
 use super::google::Config as Google;
+
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
+pub struct WeChat {
+    pub app_id: String,
+    pub app_secret: String,
+}
+
+impl From<WeChat> for WechatProfile {
+    fn from(item: WeChat) -> Self {
+        Self {
+            app_id: item.app_id.clone(),
+            app_secret: item.app_secret,
+        }
+    }
+}
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Config {

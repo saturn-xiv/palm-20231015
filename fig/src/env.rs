@@ -1,4 +1,4 @@
-use nut::{controllers::wechat::Config as WeChat, orm::postgresql::Config as PostgreSql, Oauth};
+use nut::{orm::postgresql::Config as PostgreSql, Oauth};
 use palm::{
     cache::redis::Config as Redis,
     crypto::Key,
@@ -25,6 +25,5 @@ pub struct Config {
     pub rabbitmq: RabbitMqConfig,
     pub opensearch: OpenSearch,
     pub oauth: Oauth,
-    pub wechat: WeChat,
     pub minio: Minio,
 }

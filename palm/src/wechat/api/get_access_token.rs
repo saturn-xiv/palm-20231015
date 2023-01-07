@@ -1,8 +1,7 @@
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 
-use super::super::super::Result;
-use super::super::Config;
+use super::super::super::{nut::v1::WechatProfile, Result};
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Query {
@@ -21,7 +20,7 @@ pub struct Response {
 }
 
 // https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/mp-access-token/getAccessToken.html
-impl Config {
+impl WechatProfile {
     pub async fn get_access_token(&self) -> Result<Response> {
         debug!("wechat get access token");
         let client = Client::new();
