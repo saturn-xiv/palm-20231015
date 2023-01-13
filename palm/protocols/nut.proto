@@ -229,6 +229,8 @@ message UserIndexResponse {
   repeated Item items = 11;
 }
 
+message CasbinSyncTask {}
+
 // ----------------------------------------------------------------------------
 
 service Attachment {

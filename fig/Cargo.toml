@@ -45,6 +45,10 @@ features = ["derive"]
 version = "1"
 features = ["full"]
 
+[dependencies.casbin]
+version = "2"
+features = ["watcher", "cached"]
+
 [dependencies.diesel]
 version = "2"
 default-features = false

@@ -65,8 +65,7 @@ impl super::Publisher for Config {
             cli.set_timeout(Duration::from_secs(5));
             {
                 let rsp = cli.connect(
-                    ConnectOptionsBuilder::new()
-                        .mqtt_version(MQTT_VERSION_5)
+                    ConnectOptionsBuilder::new_ws_v5()
                         .user_name(&self.username)
                         .password(&self.password)
                         .finalize(),
@@ -94,8 +93,7 @@ impl super::Subscriber for Config {
             let rx = cli.start_consuming();
             {
                 let rsp = cli.connect(
-                    ConnectOptionsBuilder::new()
-                        .mqtt_version(MQTT_VERSION_5)
+                    ConnectOptionsBuilder::new_ws_v5()
                         .user_name(&self.username)
                         .password(&self.password)
                         .clean_session(false)

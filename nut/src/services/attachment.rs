@@ -1,10 +1,12 @@
 use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
+use casbin::Enforcer;
 use palm::{
     aws::s3::Config as S3, cache::redis::Pool as RedisPool, jwt::Jwt, nut::v1, session::Session,
     to_std_duration, to_timestamp, try_grpc, GrpcResult,
 };
+use tokio::sync::Mutex;
 use tonic::{Request, Response, Status};
 
 use super::super::{
@@ -21,6 +23,7 @@ pub struct Service {
     pub pgsql: PostgreSqlPool,
     pub jwt: Arc<Jwt>,
     pub s3: Arc<S3>,
+    pub enforcer: Arc<Mutex<Enforcer>>,
 }
 
 #[tonic::async_trait]

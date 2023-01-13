@@ -10,6 +10,7 @@ pub mod handlers;
 pub mod i18n;
 pub mod models;
 pub mod orm;
+pub mod rbac;
 pub mod schema;
 pub mod services;
 pub mod theme;

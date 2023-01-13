@@ -2,6 +2,7 @@ use std::any::type_name;
 use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
+use casbin::Enforcer;
 use chrono::Duration;
 use diesel::Connection as DieselConntection;
 use hyper::StatusCode;
@@ -10,6 +11,7 @@ use palm::{
     session::Session, to_chrono_duration, to_code, to_timestamp, try_grpc, Error, GrpcResult,
     HttpError, Result,
 };
+use tokio::sync::Mutex;
 use tonic::{Request, Response, Status};
 
 use super::super::{
@@ -30,6 +32,7 @@ pub struct Service {
     pub jwt: Arc<Jwt>,
     pub hmac: Arc<Hmac>,
     pub rabbitmq: Arc<RabbitMq>,
+    pub enforcer: Arc<Mutex<Enforcer>>,
 }
 
 #[tonic::async_trait]
@@ -679,7 +682,7 @@ impl Service {
             ..Default::default()
         };
 
-        self.rabbitmq.send("", v1::EmailTask::QUEUE, &task).await?;
+        self.rabbitmq.produce(&task).await?;
 
         Ok(())
     }

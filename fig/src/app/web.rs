@@ -8,9 +8,11 @@ use actix_session::{
     SessionMiddleware,
 };
 use actix_web::{middleware, web, App, HttpServer};
+use casbin::CoreApi;
 use chrono::Duration;
 use cookie::{time::Duration as CookieDuration, Key as CookieKey, SameSite};
 use data_encoding::BASE64;
+use tokio::sync::Mutex;
 
 use hyper::{
     header::{ACCEPT_LANGUAGE, AUTHORIZATION, CONTENT_TYPE, COOKIE},
@@ -30,13 +32,26 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let pg_pool = cfg.postgresql.open()?;
 
     let pgsql = web::Data::new(pg_pool);
-    let cache = web::Data::new(cfg.redis.open()?);
+    let redis = web::Data::new(cfg.redis.open()?);
     let aes = web::Data::new(Aes::new(&cfg.secret_key.0)?);
     let hmac = web::Data::new(Hmac::new(&cfg.secret_key.0)?);
     let jwt = web::Data::new(Jwt::new(cfg.jwt_key.0.clone()));
-    let queue = web::Data::new(cfg.rabbitmq.open());
+    let rabbitmq = web::Data::new(cfg.rabbitmq.open());
     let oauth = web::Data::new(cfg.oauth.clone());
     let s3 = web::Data::new(S3::from(cfg.minio.clone()));
+
+    let enforcer = web::Data::new(Mutex::new(cfg.postgresql.casbin().await?));
+    {
+        let enforcer = enforcer.clone();
+        let enforcer = enforcer.into_inner();
+        let rabbitmq = rabbitmq.clone();
+        let rabbitmq = rabbitmq.into_inner();
+        let watcher = nut::rbac::watcher::Watcher::new(enforcer.clone(), rabbitmq.clone()).await?;
+        {
+            let mut enf = enforcer.lock().await;
+            enf.set_watcher(Box::new(watcher));
+        }
+    }
 
     let addr = cfg.http.addr();
     info!("run on http://{addr}");
@@ -71,13 +86,14 @@ pub async fn launch(cfg: &Config) -> Result<()> {
         };
         App::new()
             .app_data(pgsql.clone())
-            .app_data(cache.clone())
+            .app_data(redis.clone())
             .app_data(aes.clone())
             .app_data(hmac.clone())
             .app_data(jwt.clone())
-            .app_data(queue.clone())
+            .app_data(rabbitmq.clone())
             .app_data(oauth.clone())
             .app_data(s3.clone())
+            .app_data(enforcer.clone())
             .wrap(cors)
             .wrap(middleware::Logger::default())
             .wrap(IdentityMiddleware::default())

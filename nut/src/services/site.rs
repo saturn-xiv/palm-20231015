@@ -5,6 +5,7 @@ use std::ops::{Deref, DerefMut};
 use std::process::Command;
 use std::sync::Arc;
 
+use casbin::Enforcer;
 use chrono::{Datelike, Duration, NaiveDateTime, Utc};
 use diesel::{
     sql_query,
@@ -29,6 +30,7 @@ use palm::{
 };
 use prost::Message;
 use serde::{Deserialize, Serialize};
+use tokio::sync::Mutex;
 use tonic::{Request, Response, Status};
 
 use super::super::{
@@ -52,6 +54,7 @@ pub struct Service {
     pub redis: RedisPool,
     pub rabbitmq: Arc<RabbitMq>,
     pub opensearch: Arc<OpenSearch>,
+    pub enforcer: Arc<Mutex<Enforcer>>,
 }
 
 impl Service {

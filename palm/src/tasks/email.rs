@@ -16,10 +16,6 @@ use super::super::{
     Result,
 };
 
-impl EmailTask {
-    pub const QUEUE: &'static str = "mails";
-}
-
 // https://support.google.com/mail/answer/7126229#zippy=%2Cstep-change-smtp-other-settings-in-your-email-client
 
 impl QueueHandler for SmtpProfile {

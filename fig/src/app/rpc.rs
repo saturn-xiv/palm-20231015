@@ -1,11 +1,13 @@
 use std::sync::Arc;
 
+use casbin::CoreApi;
 use palm::{
     aws::s3::Config as S3,
     crypto::{Aes, Hmac},
     jwt::Jwt,
     Result,
 };
+use tokio::sync::Mutex;
 use tonic::transport::Server;
 
 use super::super::env::Config;
@@ -22,6 +24,17 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
     let opensearch = Arc::new(cfg.opensearch.open()?);
 
+    let enforcer = Arc::new(Mutex::new(cfg.postgresql.casbin().await?));
+    {
+        let enforcer = enforcer.clone();
+        let rabbitmq = rabbitmq.clone();
+        let watcher = nut::rbac::watcher::Watcher::new(enforcer.clone(), rabbitmq.clone()).await?;
+        {
+            let mut enf = enforcer.lock().await;
+            enf.set_watcher(Box::new(watcher));
+        }
+    }
+
     info!("start gRPC at {}", addr);
     Server::builder()
         .add_service(palm::nut::v1::attachment_server::AttachmentServer::new(
@@ -29,6 +42,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 pgsql: pgsql.clone(),
                 jwt: jwt.clone(),
                 redis: redis.clone(),
+                enforcer: enforcer.clone(),
                 s3,
             },
         ))
@@ -37,6 +51,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 pgsql: pgsql.clone(),
                 jwt: jwt.clone(),
                 redis: redis.clone(),
+                enforcer: enforcer.clone(),
             },
         ))
         .add_service(palm::nut::v1::user_server::UserServer::new(
@@ -46,6 +61,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 jwt: jwt.clone(),
                 hmac: hmac.clone(),
                 rabbitmq: rabbitmq.clone(),
+                enforcer: enforcer.clone(),
             },
         ))
         .add_service(palm::nut::v1::policy_server::PolicyServer::new(
@@ -53,6 +69,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 pgsql: pgsql.clone(),
                 jwt: jwt.clone(),
                 redis: redis.clone(),
+                enforcer: enforcer.clone(),
             },
         ))
         .add_service(palm::nut::v1::tag_server::TagServer::new(
@@ -60,6 +77,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 pgsql: pgsql.clone(),
                 jwt: jwt.clone(),
                 redis: redis.clone(),
+                enforcer: enforcer.clone(),
             },
         ))
         .add_service(palm::nut::v1::category_server::CategoryServer::new(
@@ -67,6 +85,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 pgsql: pgsql.clone(),
                 jwt: jwt.clone(),
                 redis: redis.clone(),
+                enforcer: enforcer.clone(),
             },
         ))
         .add_service(palm::nut::v1::shorter_link_server::ShorterLinkServer::new(
@@ -74,6 +93,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 pgsql: pgsql.clone(),
                 jwt: jwt.clone(),
                 redis: redis.clone(),
+                enforcer: enforcer.clone(),
             },
         ))
         .add_service(palm::nut::v1::leave_word_server::LeaveWordServer::new(
@@ -81,6 +101,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 pgsql: pgsql.clone(),
                 jwt: jwt.clone(),
                 redis: redis.clone(),
+                enforcer: enforcer.clone(),
             },
         ))
         .add_service(palm::nut::v1::notification_server::NotificationServer::new(
@@ -88,10 +109,12 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 pgsql: pgsql.clone(),
                 jwt: jwt.clone(),
                 redis: redis.clone(),
+                enforcer: enforcer.clone(),
             },
         ))
         .add_service(palm::nut::v1::site_server::SiteServer::new(
             nut::services::site::Service {
+                enforcer,
                 pgsql,
                 jwt,
                 aes,

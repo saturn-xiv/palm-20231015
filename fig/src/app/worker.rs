@@ -25,13 +25,17 @@ pub async fn launch(cfg: &Config, name: &str) -> Result<()> {
     let db = db.deref_mut();
     let aes = Aes::new(&cfg.secret_key.0)?;
     let ch = queue.open().await?;
-    if name == type_name::<EmailTask>() {
-        let cfg = get::<SmtpProfile, Aes>(db, &aes, None)?;
-        RabbitMq::consume(&ch, &id, EmailTask::QUEUE, &cfg).await
-    } else {
-        Err(Box::new(HttpError(
-            StatusCode::BAD_REQUEST,
-            Some(format!("unknown queue {}", name)),
-        )))
+
+    {
+        let queue = type_name::<EmailTask>();
+        if name == queue {
+            let cfg = get::<SmtpProfile, Aes>(db, &aes, None)?;
+            return RabbitMq::consume(&ch, &id, queue, &cfg).await;
+        }
     }
+
+    Err(Box::new(HttpError(
+        StatusCode::BAD_REQUEST,
+        Some(format!("unknown queue {}", name)),
+    )))
 }

@@ -1,15 +1,15 @@
+use std::any::type_name;
 use std::time::{SystemTime, UNIX_EPOCH};
 
 use amq_protocol_uri::{AMQPAuthority, AMQPUri, AMQPUserInfo};
 use futures::StreamExt;
 use hyper::StatusCode;
-use lapin::options::{ExchangeDeclareOptions, QueueBindOptions};
-use lapin::ExchangeKind;
 use lapin::{
     message::Delivery,
     options::{BasicAckOptions, BasicConsumeOptions, BasicPublishOptions, QueueDeclareOptions},
+    options::{ExchangeDeclareOptions, QueueBindOptions},
     types::FieldTable,
-    BasicProperties, Channel, Connection, ConnectionProperties,
+    BasicProperties, Channel, Connection, ConnectionProperties, ExchangeKind,
 };
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -122,14 +122,21 @@ impl RabbitMq {
 }
 
 impl RabbitMq {
-    pub async fn send<T: prost::Message>(
+    pub async fn produce<T: prost::Message>(&self, task: &T) -> Result<()> {
+        self.send("", type_name::<T>(), task).await
+    }
+    pub async fn publish<T: prost::Message>(&self, task: &T) -> Result<()> {
+        self.send(type_name::<T>(), "", task).await
+    }
+    async fn send<T: prost::Message>(
         &self,
         exchange: &str,
         routing_key: &str,
-        payload: &T,
+        task: &T,
     ) -> Result<()> {
-        let mut buf = Vec::new();
-        payload.encode(&mut buf)?;
+        let mut payload = Vec::new();
+        task.encode(&mut payload)?;
+
         let ch = self.open().await?;
 
         let id = Uuid::new_v4().to_string();
@@ -139,7 +146,7 @@ impl RabbitMq {
             exchange,
             routing_key,
             BasicPublishOptions::default(),
-            &buf,
+            &payload,
             BasicProperties::default()
                 .with_message_id(id.into())
                 .with_content_type("protobuf".into())

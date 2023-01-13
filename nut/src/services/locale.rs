@@ -2,10 +2,12 @@ use std::any::type_name;
 use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
+use casbin::Enforcer;
 use palm::{
     cache::redis::Pool as RedisPool, jwt::Jwt, nut::v1, session::Session, to_code, to_timestamp,
     try_grpc, GrpcResult,
 };
+use tokio::sync::Mutex;
 use tonic::{Request, Response, Status};
 
 use super::super::{
@@ -21,6 +23,7 @@ pub struct Service {
     pub pgsql: PostgreSqlPool,
     pub jwt: Arc<Jwt>,
     pub redis: RedisPool,
+    pub enforcer: Arc<Mutex<Enforcer>>,
 }
 
 impl From<Locale> for v1::locale_index_response::Item {

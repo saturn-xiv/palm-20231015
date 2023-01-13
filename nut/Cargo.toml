@@ -31,6 +31,10 @@ handlebars = "4"
 version = "0.4"
 features = ["serde"]
 
+[dependencies.sqlx-adapter]
+version = "0.4"
+features = ["postgres"]
+
 [dependencies.actix-session]
 version = "0.7"
 features = ["cookie-session", "redis-rs-session"]
@@ -55,9 +59,17 @@ features = ["derive", "phone", "card", "unic"]
 version = "1"
 features = ["derive"]
 
+[dependencies.tokio]
+version = "1"
+features = ["full"]
+
 [dependencies.uuid]
 version = "1"
 features = ["v4", "serde"]
+
+[dependencies.casbin]
+version = "2"
+features = ["watcher", "cached"]
 
 [dependencies.diesel]
 version = "2"

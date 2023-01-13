@@ -2,6 +2,7 @@ use std::any::type_name;
 use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
+use casbin::Enforcer;
 use chrono::Utc;
 use diesel::Connection as DieselConntection;
 use hyper::StatusCode;
@@ -9,6 +10,7 @@ use palm::{
     cache::redis::Pool as RedisPool, jwt::Jwt, nut::v1, session::Session, to_code, to_datetime,
     to_timestamp, try_grpc, Error, GrpcResult, HttpError, Result,
 };
+use tokio::sync::Mutex;
 use tonic::{Response, Status};
 
 use super::super::{
@@ -25,6 +27,7 @@ pub struct Service {
     pub redis: RedisPool,
     pub pgsql: PostgreSqlPool,
     pub jwt: Arc<Jwt>,
+    pub enforcer: Arc<Mutex<Enforcer>>,
 }
 
 #[tonic::async_trait]
