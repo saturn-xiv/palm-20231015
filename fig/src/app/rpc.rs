@@ -1,10 +1,13 @@
 use std::sync::Arc;
 
 use casbin::CoreApi;
+use nix::unistd::getpid;
 use palm::{
     aws::s3::Config as S3,
     crypto::{Aes, Hmac},
     jwt::Jwt,
+    queue::amqp::RabbitMq,
+    rbac::{Handler as RbacHandler, Watcher as RbacWatcher},
     Result,
 };
 use tokio::sync::Mutex;
@@ -25,10 +28,24 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let opensearch = Arc::new(cfg.opensearch.open()?);
 
     let enforcer = Arc::new(Mutex::new(cfg.postgresql.casbin().await?));
+
     {
-        let enforcer = enforcer.clone();
-        let rabbitmq = rabbitmq.clone();
-        let watcher = nut::rbac::watcher::Watcher::new(enforcer.clone(), rabbitmq.clone()).await?;
+        let watcher = RbacWatcher::new(rabbitmq.clone()).await?;
+        {
+            let name = format!("{}-casbin-rpc-{}", palm::NAME, getpid());
+            let queue = watcher.queue.clone();
+            let ch = rabbitmq.open().await?;
+            let handler = RbacHandler {
+                enforcer: enforcer.clone(),
+            };
+            tokio::task::spawn(async move {
+                loop {
+                    if let Err(e) = RabbitMq::consume(&ch, &name, &queue, &handler).await {
+                        error!("{:?}", e);
+                    }
+                }
+            });
+        }
         {
             let mut enf = enforcer.lock().await;
             enf.set_watcher(Box::new(watcher));

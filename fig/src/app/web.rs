@@ -12,19 +12,21 @@ use casbin::CoreApi;
 use chrono::Duration;
 use cookie::{time::Duration as CookieDuration, Key as CookieKey, SameSite};
 use data_encoding::BASE64;
-use tokio::sync::Mutex;
-
 use hyper::{
     header::{ACCEPT_LANGUAGE, AUTHORIZATION, CONTENT_TYPE, COOKIE},
     Method,
 };
+use nix::unistd::getpid;
 use palm::{
     aws::s3::Config as S3,
     crypto::{Aes, Hmac},
     env::Environment,
     jwt::Jwt,
+    queue::amqp::RabbitMq,
+    rbac::{Handler as RbacHandler, Watcher as RbacWatcher},
     Result, NAME,
 };
+use tokio::sync::Mutex;
 
 use super::super::env::Config;
 
@@ -44,9 +46,28 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     {
         let enforcer = enforcer.clone();
         let enforcer = enforcer.into_inner();
-        let rabbitmq = rabbitmq.clone();
-        let rabbitmq = rabbitmq.into_inner();
-        let watcher = nut::rbac::watcher::Watcher::new(enforcer.clone(), rabbitmq.clone()).await?;
+
+        let watcher = {
+            let rabbitmq = rabbitmq.clone();
+            let rabbitmq = rabbitmq.into_inner();
+            RbacWatcher::new(rabbitmq.clone()).await?
+        };
+
+        {
+            let name = format!("{}-casbin-web-{}", palm::NAME, getpid());
+            let queue = watcher.queue.clone();
+            let ch = rabbitmq.open().await?;
+            let handler = RbacHandler {
+                enforcer: enforcer.clone(),
+            };
+            tokio::task::spawn(async move {
+                loop {
+                    if let Err(e) = RabbitMq::consume(&ch, &name, &queue, &handler).await {
+                        error!("{:?}", e);
+                    }
+                }
+            });
+        }
         {
             let mut enf = enforcer.lock().await;
             enf.set_watcher(Box::new(watcher));

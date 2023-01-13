@@ -70,19 +70,20 @@ impl RabbitMq {
         name: &str,
         exclusive: bool,
         temporary: bool,
-    ) -> Result<()> {
-        ch.queue_declare(
-            name,
-            QueueDeclareOptions {
-                exclusive,
-                auto_delete: temporary,
-                durable: !temporary,
-                ..Default::default()
-            },
-            FieldTable::default(),
-        )
-        .await?;
-        Ok(())
+    ) -> Result<String> {
+        let qu = ch
+            .queue_declare(
+                name,
+                QueueDeclareOptions {
+                    exclusive,
+                    auto_delete: temporary,
+                    durable: !temporary,
+                    ..Default::default()
+                },
+                FieldTable::default(),
+            )
+            .await?;
+        Ok(qu.name().to_string())
     }
     pub async fn exchange_declare(
         ch: &Channel,
@@ -122,9 +123,11 @@ impl RabbitMq {
 }
 
 impl RabbitMq {
+    // https://www.rabbitmq.com/tutorials/tutorial-two-python.html
     pub async fn produce<T: prost::Message>(&self, task: &T) -> Result<()> {
         self.send("", type_name::<T>(), task).await
     }
+    // https://www.rabbitmq.com/tutorials/tutorial-three-python.html
     pub async fn publish<T: prost::Message>(&self, task: &T) -> Result<()> {
         self.send(type_name::<T>(), "", task).await
     }
