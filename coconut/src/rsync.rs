@@ -37,12 +37,13 @@ impl Config {
         let out = match self.host {
             Some(ref host) => {
                 info!(
-                    "backup ssh://{}@{}:{}:{} to {}",
+                    "backup ssh://{}@{}:{}:{} to {} by {}",
                     self.user,
                     host,
                     self.port,
                     self.source.display(),
-                    target.display()
+                    target.display(),
+                    self.password.as_deref().unwrap_or("password")
                 );
                 match self.password {
                     Some(ref password) => Command::new("sshpass")

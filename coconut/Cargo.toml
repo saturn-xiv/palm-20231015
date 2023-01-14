@@ -1,6 +1,6 @@
 [package]
 name = "coconut"
-version = "2022.12.30"
+version = "2023.1.13"
 edition = "2021"
 authors = ["Jeremy Zheng <jitang.zheng@gmail.com>"]
 description = "An ops tool."
