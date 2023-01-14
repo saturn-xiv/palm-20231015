@@ -857,6 +857,20 @@ export namespace UserIndexResponse {
 
 }
 
+export class CasbinSyncTask extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CasbinSyncTask.AsObject;
+  static toObject(includeInstance: boolean, msg: CasbinSyncTask): CasbinSyncTask.AsObject;
+  static serializeBinaryToWriter(message: CasbinSyncTask, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CasbinSyncTask;
+  static deserializeBinaryFromReader(message: CasbinSyncTask, reader: jspb.BinaryReader): CasbinSyncTask;
+}
+
+export namespace CasbinSyncTask {
+  export type AsObject = {
+  }
+}
+
 export class AttachmentShowRequest extends jspb.Message {
   getId(): number;
   setId(value: number): AttachmentShowRequest;
@@ -1714,56 +1728,6 @@ export namespace SiteInstallRequest {
   }
 }
 
-export class MinioProfile extends jspb.Message {
-  getUrl(): string;
-  setUrl(value: string): MinioProfile;
-
-  getRegion(): string;
-  setRegion(value: string): MinioProfile;
-
-  getAccessKey(): string;
-  setAccessKey(value: string): MinioProfile;
-
-  getSecretKey(): string;
-  setSecretKey(value: string): MinioProfile;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MinioProfile.AsObject;
-  static toObject(includeInstance: boolean, msg: MinioProfile): MinioProfile.AsObject;
-  static serializeBinaryToWriter(message: MinioProfile, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MinioProfile;
-  static deserializeBinaryFromReader(message: MinioProfile, reader: jspb.BinaryReader): MinioProfile;
-}
-
-export namespace MinioProfile {
-  export type AsObject = {
-    url: string,
-    region: string,
-    accessKey: string,
-    secretKey: string,
-  }
-}
-
-export class SiteMinioTestResponse extends jspb.Message {
-  getBucketsList(): Array<string>;
-  setBucketsList(value: Array<string>): SiteMinioTestResponse;
-  clearBucketsList(): SiteMinioTestResponse;
-  addBuckets(value: string, index?: number): SiteMinioTestResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SiteMinioTestResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: SiteMinioTestResponse): SiteMinioTestResponse.AsObject;
-  static serializeBinaryToWriter(message: SiteMinioTestResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SiteMinioTestResponse;
-  static deserializeBinaryFromReader(message: SiteMinioTestResponse, reader: jspb.BinaryReader): SiteMinioTestResponse;
-}
-
-export namespace SiteMinioTestResponse {
-  export type AsObject = {
-    bucketsList: Array<string>,
-  }
-}
-
 export class TwilioProfile extends jspb.Message {
   getFrom(): string;
   setFrom(value: string): TwilioProfile;
@@ -1801,11 +1765,33 @@ export namespace TwilioProfile {
   }
 }
 
+export class WechatProfile extends jspb.Message {
+  getAppId(): string;
+  setAppId(value: string): WechatProfile;
+
+  getAppSecret(): string;
+  setAppSecret(value: string): WechatProfile;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatProfile.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatProfile): WechatProfile.AsObject;
+  static serializeBinaryToWriter(message: WechatProfile, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatProfile;
+  static deserializeBinaryFromReader(message: WechatProfile, reader: jspb.BinaryReader): WechatProfile;
+}
+
+export namespace WechatProfile {
+  export type AsObject = {
+    appId: string,
+    appSecret: string,
+  }
+}
+
 export class SiteWechatTestResponse extends jspb.Message {
-  getIpList(): Array<string>;
-  setIpList(value: Array<string>): SiteWechatTestResponse;
-  clearIpList(): SiteWechatTestResponse;
-  addIp(value: string, index?: number): SiteWechatTestResponse;
+  getItemsList(): Array<string>;
+  setItemsList(value: Array<string>): SiteWechatTestResponse;
+  clearItemsList(): SiteWechatTestResponse;
+  addItems(value: string, index?: number): SiteWechatTestResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SiteWechatTestResponse.AsObject;
@@ -1817,7 +1803,7 @@ export class SiteWechatTestResponse extends jspb.Message {
 
 export namespace SiteWechatTestResponse {
   export type AsObject = {
-    ipList: Array<string>,
+    itemsList: Array<string>,
   }
 }
 

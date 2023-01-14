@@ -2,7 +2,7 @@ use std::io::{Error as IoError, ErrorKind as IoErrorKind};
 use std::path::Path;
 use std::time::Duration;
 
-use aws_types::credentials::SharedCredentialsProvider;
+use aws_credential_types::provider::SharedCredentialsProvider;
 use serde::{Deserialize, Serialize};
 
 use super::super::{minio::Config as Minio, Result};
@@ -32,7 +32,7 @@ impl Config {
     pub async fn open(&self) -> Result<Client> {
         let cred = aws_sdk_s3::Credentials::new(&self.access_key, &self.secret_key, None, None, "");
         let cfg = aws_config::SdkConfig::builder()
-            .endpoint_resolver(aws_sdk_s3::Endpoint::immutable(&self.url)?)
+            .endpoint_url(&self.url)
             .region(aws_sdk_s3::Region::new(self.region.clone()))
             .credentials_provider(SharedCredentialsProvider::new(cred))
             .build();
