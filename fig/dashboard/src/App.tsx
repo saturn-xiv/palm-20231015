@@ -4,6 +4,10 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { pdfjs } from "react-pdf";
 import mermaid from "mermaid";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { CssBaseline } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import store from "./store";
 import Loading from "./components/Loading";
@@ -22,6 +26,7 @@ mermaid.initialize({ startOnLoad: true });
 onLoad();
 
 const lang = getLocale();
+const theme = createTheme();
 
 const Widget = () => {
   const [messages, setMessages] = useState<Record<string, string>>({});
@@ -41,6 +46,7 @@ const Widget = () => {
       }
     });
   }, [setMessages]);
+
   return (
     <Provider store={store}>
       <IntlProvider
@@ -48,11 +54,16 @@ const Widget = () => {
         locale={lang}
         defaultLocale={process.env.REACT_APP_DEFAULT_LOCALE}
       >
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
-          <Suspense fallback={<Loading />}>
-            <Router />
-          </Suspense>
-        </BrowserRouter>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
+              <Suspense fallback={<Loading />}>
+                <Router />
+              </Suspense>
+            </BrowserRouter>
+          </ThemeProvider>
+        </LocalizationProvider>
       </IntlProvider>
     </Provider>
   );

@@ -1,4 +1,5 @@
 use std::sync::Arc;
+use std::time::Duration as StdDuration;
 
 use casbin::CoreApi;
 use nix::unistd::getpid;
@@ -33,8 +34,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
         let watcher = RbacWatcher::new(rabbitmq.clone()).await?;
         {
             let name = format!("{}-casbin-rpc-{}", palm::NAME, getpid());
-            let queue = watcher.queue.clone();
-            let ch = rabbitmq.open().await?;
+            let (ch, queue) = watcher.consume().await?;
             let handler = RbacHandler {
                 enforcer: enforcer.clone(),
             };
@@ -43,6 +43,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                     if let Err(e) = RabbitMq::consume(&ch, &name, &queue, &handler).await {
                         error!("{:?}", e);
                     }
+                    tokio::time::sleep(StdDuration::from_secs(5)).await;
                 }
             });
         }

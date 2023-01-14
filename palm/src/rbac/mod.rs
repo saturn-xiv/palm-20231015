@@ -2,7 +2,7 @@ use std::any::type_name;
 use std::sync::Arc;
 
 use casbin::{CoreApi, Enforcer, EventData, Watcher as CasbinWatcher};
-use lapin::ExchangeKind;
+use lapin::{Channel, ExchangeKind};
 use tokio::sync::Mutex;
 
 use super::{
@@ -15,7 +15,6 @@ pub const MODEL: &str = include_str!("rbac_model.conf");
 
 pub struct Watcher {
     rabbitmq: Arc<RabbitMq>,
-    pub queue: String,
 }
 
 impl Watcher {
@@ -25,13 +24,19 @@ impl Watcher {
         let exchange = type_name::<CasbinSyncTask>();
         info!("declare rabbitmq exchange {}", exchange);
         RabbitMq::exchange_declare(&ch, exchange, ExchangeKind::Fanout, false).await?;
+        Ok(Self { rabbitmq })
+    }
+
+    pub async fn consume(&self) -> Result<(Channel, String)> {
+        let ch = self.rabbitmq.open().await?;
+        let exchange = type_name::<CasbinSyncTask>();
         let queue = {
             let name = RabbitMq::queue_declare(&ch, "", true, true).await?;
             RabbitMq::queue_bind(&ch, &name, exchange, "").await?;
             name
         };
         info!("declare rabbitmq queue {} and bind to {}", queue, exchange);
-        Ok(Self { rabbitmq, queue })
+        Ok((ch, queue))
     }
 }
 

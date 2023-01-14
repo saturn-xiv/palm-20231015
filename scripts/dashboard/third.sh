@@ -4,6 +4,7 @@ set -e
 
 install_react() {
     yarn add filesize dayjs timezones-list grpc-web \
+        moment moment-timezone date-fns \
         marked @types/marked \
         diff @types/diff \
         lodash @types/lodash \
@@ -47,7 +48,8 @@ install_fluent_ui(){
 # https://mui.com/material-ui/getting-started/overview/
 install_material_design() {
     yarn add @mui/material @emotion/react @emotion/styled \
-        @mui/icons-material @fontsource/roboto
+        @mui/icons-material @fontsource/roboto \
+        @mui/x-date-pickers
 }
 
 # https://react-bootstrap.github.io/getting-started/introduction

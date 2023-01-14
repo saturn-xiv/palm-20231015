@@ -47,6 +47,7 @@ const Widget = () => {
       </Route>
       <Route path="loading" element={<Loading />} />
       <Route path="forbidden" element={<Forbidden />} />
+      <Route path="not-found" element={<NotFound />} />
       <Route path="" element={<Home />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
