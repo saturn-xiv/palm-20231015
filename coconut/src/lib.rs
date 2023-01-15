@@ -17,6 +17,9 @@ pub const DESCRIPTION: &str = env!("CARGO_PKG_DESCRIPTION");
 pub const HOMEPAGE: &str = env!("CARGO_PKG_HOMEPAGE");
 pub const AUTHORS: &str = env!("CARGO_PKG_AUTHORS");
 
+/*
+crontab ONLY allow /bin;/usr/bin
+*/
 #[derive(Parser, Debug)]
 #[command(about,
     version=&VERSION.deref()[..],

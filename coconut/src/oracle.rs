@@ -13,6 +13,8 @@ pub struct Config {
     pub target: PathBuf,
     #[arg(short, long, default_value = "orclcdb")]
     pub sid: String,
+    #[arg(short = 'H', long)]
+    pub oracle_home: Option<PathBuf>,
     #[arg(short, long)]
     pub user: String,
     #[arg(short = 'P', long)]
@@ -100,7 +102,11 @@ impl Config {
         let log = Path::new(&name).with_extension("dmp.log");
         debug!("dump => {}, log => {}", dmp.display(), log.display());
         {
-            let out = Command::new("expdp")
+            let bin = self.oracle_home.as_ref().map_or_else(
+                || "expdp".to_string(),
+                |x| x.join("bin").join("expdp").display().to_string(),
+            );
+            let out = Command::new(bin)
                 .arg(format!("{}/{}", self.user, self.password))
                 .arg("full=Y")
                 .arg(format!("dumpfile={}", dmp.display()))
