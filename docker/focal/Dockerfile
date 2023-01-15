@@ -1,8 +1,10 @@
-FROM ubuntu:jammy
+FROM ubuntu:focal
 LABEL maintainer="Jeremy Zheng"
 
 ENV DEBIAN_FRONTEND noninteractive
 
+RUN apt update
+RUN apt install -y lsb-release
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
@@ -15,7 +17,7 @@ RUN apt -y upgrade
 
 RUN apt -y install zsh git locales locales-all \
     vim tzdata zip unzip tree tmux \
-    build-essential crossbuild-essential-arm64 clang lldb lld mold \
+    build-essential crossbuild-essential-arm64 clang lldb lld \
     cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio \
     debhelper bison flex ninja-build \
     python3 python3-distutils python3-dev python3-pip virtualenv
@@ -59,6 +61,17 @@ RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.zshrc
 # https://www.rust-lang.org/tools/install
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 RUN zsh -c "source $HOME/.cargo/env && rustup target add aarch64-unknown-linux-gnu"
+
+# https://github.com/rui314/mold
+RUN git clone -b v1.9.0 https://github.com/rui314/mold.git $HOME/downloads/mold
+RUN apt install -y libssl-dev libxxhash-dev zlib1g-dev \
+    file bsdmainutils
+RUN zsh -c "source $HOME/.zshrc \
+    && mkdir $HOME/build/mold \
+    && cd $HOME/build/mold \
+    && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++ $HOME/downloads/mold \
+    && make -j \
+    && make install"
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
