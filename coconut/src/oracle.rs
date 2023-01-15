@@ -13,8 +13,8 @@ pub struct Config {
     pub target: PathBuf,
     #[arg(short, long, default_value = "orclcdb")]
     pub sid: String,
-    #[arg(short = 'H', long)]
-    pub oracle_home: Option<PathBuf>,
+    #[arg(short = 'H', long, default_value = "/opt/oracle/product/19c/dbhome_1")]
+    pub oracle_home: PathBuf,
     #[arg(short, long)]
     pub user: String,
     #[arg(short = 'P', long)]
@@ -102,16 +102,20 @@ impl Config {
         let log = Path::new(&name).with_extension("dmp.log");
         debug!("dump => {}, log => {}", dmp.display(), log.display());
         {
-            let bin = self.oracle_home.as_ref().map_or_else(
-                || "expdp".to_string(),
-                |x| x.join("bin").join("expdp").display().to_string(),
-            );
-            let out = Command::new(bin)
-                .arg(format!("{}/{}", self.user, self.password))
-                .arg("full=Y")
-                .arg(format!("dumpfile={}", dmp.display()))
-                .arg(format!("logfile={}", log.display()))
-                .output()?;
+            let out = Command::new(
+                self.oracle_home
+                    .join("bin")
+                    .join("expdp")
+                    .display()
+                    .to_string(),
+            )
+            .env("ORACLE_HOME", self.oracle_home.display().to_string())
+            .env("ORACLE_SID", &self.sid)
+            .arg(format!("{}/{}", self.user, self.password))
+            .arg("full=Y")
+            .arg(format!("dumpfile={}", dmp.display()))
+            .arg(format!("logfile={}", log.display()))
+            .output()?;
             print_command_output(&out)?;
         }
 
