@@ -8,7 +8,7 @@ export CODE="palm-focal"
 buildah pull ubuntu:focal
 buildah bud --layers -t $CODE .
 podman save -o $CODE-$VERSION.tar $CODE
-XZ_OPT=-9 tar -cJf - $CODE-$VERSION.tar | split -d -b 1G - $CODE-$VERSION.tar.xz.
+XZ_OPT=-9 tar -cJf $CODE-$VERSION.tar.xz $CODE-$VERSION.tar
 md5sum $CODE-$VERSION.tar* > md5.txt
 
 echo "done($CODE-$VERSION.tar.xz)."

@@ -182,7 +182,7 @@ impl RabbitMq {
             )
             .await?;
         info!(
-            "consuming from channel {}@{}/{}...",
+            "consuming from channel {}@{}/{} ...",
             consumer,
             queue,
             ch.id()

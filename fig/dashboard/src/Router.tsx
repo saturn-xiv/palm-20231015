@@ -1,7 +1,6 @@
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import Anonymous from "./layouts/anonymous";
 import Dashboard from "./layouts/dashboard";
 
 const Home = lazy(() => import("./pages/home"));
@@ -21,25 +20,21 @@ const UsersResetPassword = lazy(() => import("./pages/users/reset-password"));
 const Widget = () => {
   return (
     <Routes>
-      <Route path="anonymous" element={<Anonymous />}>
-        <Route path="users">
-          <Route path="sign-in" element={<UsersSignIn />} />
-          <Route path="sign-up" element={<UsersSignUp />} />
-          <Route path="confirm">
-            <Route path="new" element={<UsersConfirmNew />} />
-            <Route path="verify/:token" element={<UsersConfirmVerify />} />
-          </Route>
-          <Route path="unlock">
-            <Route path="new" element={<UsersUnlockNew />} />
-            <Route path="verify/:token" element={<UsersUnlockVerify />} />
-          </Route>
-          <Route
-            path="reset-password/:token"
-            element={<UsersResetPassword />}
-          />
-          <Route path="forgot-password" element={<UsersForgotPassword />} />
+      <Route path="users">
+        <Route path="sign-in" element={<UsersSignIn />} />
+        <Route path="sign-up" element={<UsersSignUp />} />
+        <Route path="confirm">
+          <Route path="new" element={<UsersConfirmNew />} />
+          <Route path="verify/:token" element={<UsersConfirmVerify />} />
         </Route>
+        <Route path="unlock">
+          <Route path="new" element={<UsersUnlockNew />} />
+          <Route path="verify/:token" element={<UsersUnlockVerify />} />
+        </Route>
+        <Route path="reset-password/:token" element={<UsersResetPassword />} />
+        <Route path="forgot-password" element={<UsersForgotPassword />} />
       </Route>
+
       <Route path="dashboard" element={<Dashboard />}>
         <Route path="users">
           <Route path="logs" element={<UsersLogs />} />

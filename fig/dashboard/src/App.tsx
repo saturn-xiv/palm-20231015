@@ -8,6 +8,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { CssBaseline } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 import store from "./store";
 import Loading from "./components/Loading";
@@ -55,14 +56,18 @@ const Widget = () => {
         defaultLocale={process.env.REACT_APP_DEFAULT_LOCALE}
       >
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <BrowserRouter basename={process.env.PUBLIC_URL}>
-              <Suspense fallback={<Loading />}>
-                <Router />
-              </Suspense>
-            </BrowserRouter>
-          </ThemeProvider>
+          <GoogleOAuthProvider
+            clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID || ""}
+          >
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              <BrowserRouter basename={process.env.PUBLIC_URL}>
+                <Suspense fallback={<Loading />}>
+                  <Router />
+                </Suspense>
+              </BrowserRouter>
+            </ThemeProvider>
+          </GoogleOAuthProvider>
         </LocalizationProvider>
       </IntlProvider>
     </Provider>

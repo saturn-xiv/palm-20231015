@@ -1,5 +1,7 @@
+import RefreshIcon from "@mui/icons-material/Refresh";
+
 const Widget = () => {
-  return <div>loading</div>;
+  return <RefreshIcon />;
 };
 
 export default Widget;

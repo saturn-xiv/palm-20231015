@@ -64,12 +64,28 @@ RUN zsh -c "source $HOME/.cargo/env && rustup target add aarch64-unknown-linux-g
 
 # https://github.com/rui314/mold
 RUN git clone -b v1.9.0 https://github.com/rui314/mold.git $HOME/downloads/mold
-RUN apt install -y libssl-dev libxxhash-dev zlib1g-dev \
+RUN apt install -y g++-10 \
+    libssl-dev libxxhash-dev zlib1g-dev \
     file bsdmainutils
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir $HOME/build/mold \
     && cd $HOME/build/mold \
-    && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++ $HOME/downloads/mold \
+    && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-10 \
+        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/mold \
+    && make -j \
+    && make install"
+
+# https://github.com/grpc/grpc
+ENV GRPC_VERSION "v1.51.1"
+RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
+RUN zsh -c "source $HOME/.zshrc \
+    && mkdir -pv $HOME/build/grpc \
+    && cd $HOME/build/grpc \
+    && cmake -DCMAKE_BUILD_TYPE=Release \
+        -DgRPC_INSTALL=ON \
+        -DgRPC_SSL_PROVIDER=package \
+        -DgRPC_BUILD_TESTS=OFF \
+        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
     && make -j \
     && make install"
 
