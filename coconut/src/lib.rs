@@ -19,6 +19,9 @@ pub const AUTHORS: &str = env!("CARGO_PKG_AUTHORS");
 
 /*
 crontab ONLY allow /bin;/usr/bin
+
+tail -f /var/spool/mail/$USER
+tail -f /var/log/cron
 */
 #[derive(Parser, Debug)]
 #[command(about,
