@@ -2,6 +2,10 @@
 
 set -e
 
+install_oauth() {
+    yarn add @react-oauth/google@latest react-facebook-login
+}
+
 install_react() {
     yarn add filesize dayjs timezones-list grpc-web \
         moment moment-timezone date-fns \
