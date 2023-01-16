@@ -7,6 +7,7 @@ set -e
 export WORKSPACE=$PWD
 export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
 
+
 build_dashboard() {
     cd $WORKSPACE/$1/dashboard
     if [ ! -d node_modules ]
@@ -17,13 +18,33 @@ build_dashboard() {
 }
 
 build_arch_backend() {
-    echo "build archlinux..."
+    echo "build backend@archlinux..."
 
     yes | sudo pacman -S --needed postgresql-libs mariadb-libs
     cd $WORKSPACE
-    local target="x86_64-unknown-linux-gnu"
-    cargo clean --quiet --release --target $target -p palm
-    cargo build --quiet --release --target $target
+    
+    cargo clean --quiet --release --target x86_64-unknown-linux-gnu -p palm
+    cargo build --quiet --release --target x86_64-unknown-linux-gnu
+
+    local -a projects=(
+        "aloe"
+        "coconut"
+        "lemon"
+        "orchid"
+        "loquat"
+    )
+    local -a targets=(
+        "x86_64-unknown-linux-musl"
+        "aarch64-unknown-linux-musl"
+    )
+    for t in "${targets[@]}"
+    do
+        cargo clean --quiet --release --target $t
+        for p in "${projects[@]}"
+        do
+            cargo build --quiet --release --target $t -p $p
+        done
+    done
 }
 
 build_ubuntu_backend() {
@@ -80,35 +101,15 @@ build_ubuntu_backend() {
     fi
 }
 
-copy_backends() {
-    if [ "$1" = "amd64" ]
-    then
-        cd $WORKSPACE/target/x86_64-unknown-linux-gnu/release        
-    elif [ "$1" = "arm64" ]
-    then
-        cd $WORKSPACE/target/aarch64-unknown-linux-gnu/release
-    elif [ "$1" = "armhf" ]
-    then
-        cd $WORKSPACE/target/armv7-unknown-linux-gnueabihf/release
-    else
-        echo "unsupport arch $1"
-        exit 1
-    fi
-    cp fig aloe $2/
-}
-
-copy_frontends() {
-    local -a projects=(
-        "fig"
-        "aloe"
-    )
-    for i in "${projects[@]}"
-    do
-        cp -r $WORKSPACE/$i/dashboard/build $1/$i
-    done
-}
 
 copy_assets() {
+    cd $WORKSPACE
+    
+    if [ ! -d node_modules ]
+    then
+        yarn install --silent
+    fi
+
     local -a packages=(
         "bootstrap/dist"
         "bulma/css"
@@ -137,30 +138,56 @@ copy_assets() {
         local p=node_modules/$i
         local t=$(dirname "$1/$p")
         mkdir -p $t
-        cp -a $WORKSPACE/$p $t/
+        cp -a $p $t/
     done
 
-    cp -a $WORKSPACE/README.md $WORKSPACE/LICENSE $WORKSPACE/locales \
-        $WORKSPACE/docker/jammy/etc/envoy.yaml \
-        $WORKSPACE/palm/db $WORKSPACE/palm/protocols \
+    cp -a README.md LICENSE locales \
+        docker/jammy/etc/envoy.yaml \
+        palm/db palm/protocols \
         $1/
     echo "$GIT_VERSION" > $1/VERSION
     echo "$(date -R)" >> $1/VERSION
 }
 
 build_zst() {
-    local target=$WORKSPACE/tmp/$1-$2-$GIT_VERSION
+    local pkg_name=$1-$2-$GIT_VERSION
+    local target=$WORKSPACE/tmp/$pkg_name
     if [ -d $target ]
     then
-        rm -r $(dirname $target)
+        rm -r $target
     fi
-    mkdir -p $target/bin
-    copy_assets $target
-    copy_frontends $target
-    copy_backends $2 $target/bin
 
-    cd $target
-    XZ_OPT=-9 tar -cJf $target.tar.xz *
+    mkdir -p $target/bin
+    if [ "$2" = "amd64" ]
+    then
+        cd $WORKSPACE/target/x86_64-unknown-linux-gnu/release
+        cp fig $target/bin/
+
+        cd $WORKSPACE/target/x86_64-unknown-linux-musl/release
+        cp aloe coconut lemon orchid loquat $target/bin/
+    elif [ "$2" = "arm64" ]
+    then
+        cd $WORKSPACE/target/aarch64-unknown-linux-gnu/release
+        cp fig $target/bin/
+
+        cd $WORKSPACE/target/aarch64-unknown-linux-musl/release
+        cp aloe coconut lemon orchid loquat $target/bin/
+    elif [ "$2" = "armhf" ]
+    then
+        cd $WORKSPACE/target/armv7-unknown-linux-gnueabihf/release
+        cp fig aloe coconut lemon orchid loquat $target/bin/
+    else
+        echo "unsupprt arch $2"
+    fi
+
+    copy_assets $target
+
+    mkdir $target/dashboard
+    cp -r $WORKSPACE/aloe/dashboard/build $target/dashboard/aloe
+    cp -r $WORKSPACE/fig/dashboard/build $target/dashboard/fig
+    
+    cd $(dirname $target)
+    XZ_OPT=-9 tar -cJf palm-$pkg_name.tar.xz $pkg_name
 }
 
 build_deb() {
@@ -174,23 +201,41 @@ build_deb() {
 
 
     mkdir -p $target/usr/bin \
-        $target/etc/palm $target/usr/share/palm \
+        $target/etc/palm $target/usr/share/palm/dashboard \
         $target/var/lib/palm $target/lib/systemd/system
     
     copy_assets $target/usr/share/palm
-    copy_frontends $target/usr/share/palm    
-    copy_backends $1 $target/usr/bin
+    cp -r $WORKSPACE/aloe/dashboard/build $target/usr/share/palm/dashboard/aloe
+    cp -r $WORKSPACE/fig/dashboard/build $target/usr/share/palm/dashboard/fig
+    
 
-    # https://wiki.debian.org/CrossCompiling#Building_with_dpkg-buildpackage
-    cd $target  
+    # https://wiki.debian.org/CrossCompiling#Building_with_dpkg-buildpackage     
     if [ "$1" = "amd64" ]
-    then        
+    then
+        cd $WORKSPACE/target/x86_64-unknown-linux-gnu/release
+        cp fig $target/usr/bin/
+
+        cd $WORKSPACE/target/x86_64-unknown-linux-musl/release
+        cp aloe coconut lemon orchid loquat $target/usr/bin/
+
+        cd $target
         CC=gcc CXX=g++ dpkg-buildpackage -us -uc -b --host-arch $1
     elif [ "$1" = "arm64" ]
-    then        
+    then
+        cd $WORKSPACE/target/aarch64-unknown-linux-gnu/release
+        cp fig $target/usr/bin/
+
+        cd $WORKSPACE/target/aarch64-unknown-linux-musl/release
+        cp aloe coconut lemon orchid loquat $target/usr/bin/
+
+        cd $target
         CC=aarch64-linux-gnu-gcc CXX=aarch64-linux-gnu-g++ dpkg-buildpackage -us -uc -b --host-arch $1
     elif [ "$1" = "armhf" ]
     then
+        cd $WORKSPACE/target/armv7-unknown-linux-gnueabihf/release
+        cp fig aloe coconut lemon orchid loquat $target/usr/bin/
+
+        cd $target
         CC=arm-linux-gnueabihf-gcc CXX=arm-linux-gnueabihf-g++ dpkg-buildpackage -us -uc -b --host-arch $1
     else
         echo "unsupport arch $1"
@@ -199,41 +244,35 @@ build_deb() {
 }
 
 cd $WORKSPACE
-if [ ! -d node_modules ]
-then
-    yarn install --silent
-fi
-
 build_dashboard fig
 build_dashboard aloe
 
 if [ $ID == "ubuntu" ]
-then    
+then
     build_ubuntu_backend amd64
-    cargo build --quiet --release --target x86_64-unknown-linux-musl -p coconut
+    build_zst $UBUNTU_CODENAME amd64
     build_deb amd64
-    build_zst $UBUNTU_CODENAME amd64    
 
     if dpkg --print-foreign-architectures | grep -q arm64
-    then         
+    then
         build_ubuntu_backend arm64
-        cargo build --quiet --release --target aarch64-unknown-linux-musl -p coconut
-        build_deb arm64
-        build_zst $UBUNTU_CODENAME arm64        
+        build_zst $UBUNTU_CODENAME arm64
+        build_deb arm64      
     fi
 
     if dpkg --print-foreign-architectures | grep -q armhf
     then
-        build_ubuntu_backend armhf        
-        build_deb armhf
+        build_ubuntu_backend armhf
         build_zst $UBUNTU_CODENAME armhf
+        build_deb armhf
     fi
 elif [ $ID == "arch" ]
 then
-    build_arch_backend
-    yes | sudo pacman -S --needed musl
-    cargo build --quiet --release --target x86_64-unknown-linux-musl -p coconut
-    build_zst $ID amd64    
+    build_arch_backend amd64
+    build_zst $ID amd64
+
+    build_arch_backend arm64
+    build_zst $ID arm64
 else
     echo "unsupported system $ID"
     exit 1
