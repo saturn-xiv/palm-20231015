@@ -1,7 +1,9 @@
-use std::fs::create_dir_all;
+use std::fs::{create_dir_all, File};
 use std::io::{Error as IoError, ErrorKind as IoErrorKind};
+use std::os::unix::prelude::MetadataExt;
 use std::path::{Path, PathBuf};
 use std::process::Command;
+use std::vec;
 
 use clap::Parser;
 use palm::{print_command_output, timestamp_file, Result};
@@ -43,7 +45,9 @@ impl Config {
                     self.port,
                     self.source.display(),
                     target.display(),
-                    self.password.as_deref().unwrap_or("password")
+                    self.key
+                        .as_deref()
+                        .map_or_else(|| "password".to_string(), |x| x.display().to_string())
                 );
                 match self.password {
                     Some(ref password) => Command::new("sshpass")
@@ -93,6 +97,24 @@ impl Config {
 
     fn ssh_key_file(&self) -> Result<PathBuf> {
         if let Some(ref it) = self.key {
+            if let Some(ext) = it.extension() {
+                if ext == "pub" {
+                    error!("it seems like you use a public key({})", it.display());
+                    return Err(Box::new(IoError::from(IoErrorKind::InvalidInput)));
+                }
+            }
+            {
+                let file = File::open(it)?;
+                let mt = file.metadata()?;
+                let mode = mt.mode();
+
+                let items = vec![0o400, 0o600];
+                if !items.contains(&mode) {
+                    error!("key file {} too open({})", it.display(), mode);
+                    return Err(Box::new(IoError::from(IoErrorKind::InvalidData)));
+                }
+            }
+
             return Ok(it.clone());
         }
         if let Some(ref home) = dirs::home_dir() {
