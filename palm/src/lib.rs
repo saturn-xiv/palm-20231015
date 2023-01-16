@@ -120,7 +120,7 @@ pub mod tasks;
 pub mod twilio;
 pub mod wechat;
 
-use std::fs::{copy as copy_file, create_dir_all, read_dir, remove_file, File};
+use std::fs::{copy as copy_file, create_dir_all, read_dir, remove_dir_all, remove_file, File};
 use std::io::{prelude::*, Error as IoError, ErrorKind as IoErrorKind, Result as IoResult};
 use std::os::unix::fs::PermissionsExt;
 use std::path::Path;
@@ -247,6 +247,9 @@ pub fn tar<P: AsRef<Path>>(root: P, name: &str, keep: usize) -> Result<()> {
                         items.push(it);
                     }
                 }
+            } else if it.is_dir() {
+                debug!("find folder {} and remove it", it.display());
+                remove_dir_all(&it)?;
             }
         }
         items.sort();
