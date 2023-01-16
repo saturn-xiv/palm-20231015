@@ -15,12 +15,18 @@ RUN echo "deb [arch=arm64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates m
 RUN apt update
 RUN apt -y upgrade
 
+ENV CLANG_VERSION 12
 RUN apt -y install zsh git locales locales-all \
     vim tzdata zip unzip tree tmux \
-    build-essential crossbuild-essential-arm64 clang lldb lld \
+    build-essential crossbuild-essential-arm64 \
+    clang-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
     cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio \
     debhelper bison flex ninja-build \
     python3 python3-distutils python3-dev python3-pip virtualenv
+RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CLANG_VERSION} 100 \
+    && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${CLANG_VERSION} 100 \
+    && update-alternatives --install /usr/bin/lldb lldb /usr/bin/lldb-${CLANG_VERSION} 100 \
+    && update-alternatives --install /usr/bin/lld lld /usr/bin/lld-${CLANG_VERSION} 100
 
 RUN apt -y autoremove
 RUN apt -y clean
@@ -74,6 +80,7 @@ RUN zsh -c "source $HOME/.zshrc \
         -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/mold \
     && make -j \
     && make install"
+RUN cp $HOME/.local/bin/mold /usr/bin/
 
 # https://github.com/grpc/grpc
 ENV GRPC_VERSION "v1.51.1"
