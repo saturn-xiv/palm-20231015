@@ -150,11 +150,12 @@ RUN git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-
 RUN git clone https://github.com/rbenv/rbenv-vars.git $HOME/.rbenv/plugins/rbenv-vars
 # https://github.com/rbenv/ruby-build
 ENV RUBY_VERSION "3.2.0"
-RUN apt install -y libssl-dev
+RUN apt install -y libssl-dev libyaml-dev
 RUN zsh -c "source $HOME/.zshrc \
     && rbenv install ${RUBY_VERSION} \
     && rbenv global ${RUBY_VERSION} \
     && gem install bundler"
+RUN zsh -c "source $HOME/.zshrc && rbenv global ${RUBY_VERSION}"
 
 ENV GO_VERSION "1.19.5"
 RUN wget -q -P $HOME/downloads https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
