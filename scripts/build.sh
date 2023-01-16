@@ -23,7 +23,7 @@ build_arch_backend() {
     yes | sudo pacman -S --needed postgresql-libs mariadb-libs
     cd $WORKSPACE
     
-    cargo clean --quiet --release --target x86_64-unknown-linux-gnu -p palm
+    cargo clean --quiet --release --target x86_64-unknown-linux-gnu
     cargo build --quiet --release --target x86_64-unknown-linux-gnu
 
     local -a projects=(
@@ -63,7 +63,7 @@ build_ubuntu_backend() {
         local PKG_CONFIG_ALL_STATIC=1
         
         local target="x86_64-unknown-linux-gnu"
-        cargo clean --quiet --release --target $target -p palm
+        cargo clean --quiet --release --target $target
         cargo build --quiet --release --target $target
     elif [ "$1" = "armhf" ]
     then
@@ -77,7 +77,7 @@ build_ubuntu_backend() {
         local PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig
 
         local target="armv7-unknown-linux-gnueabihf"
-        cargo clean --quiet --release --target $target -p palm
+        cargo clean --quiet --release --target $target
         cargo build --quiet --release --target $target
 
     elif [ "$1" = "arm64" ]
@@ -92,7 +92,7 @@ build_ubuntu_backend() {
         local PKG_CONFIG_LIBDIR=/usr/lib/aarch64-linux-gnu/pkgconfig
         
         local target="aarch64-unknown-linux-gnu"
-        cargo clean --quiet --release --target $target -p palm
+        cargo clean --quiet --release --target $target
         cargo build --quiet --release --target $target
         
     else
@@ -142,7 +142,7 @@ copy_assets() {
     done
 
     cp -a README.md LICENSE locales \
-        docker/jammy/etc/envoy.yaml \
+        docker/spring/etc/envoy.yaml \
         palm/db palm/protocols \
         $1/
     echo "$GIT_VERSION" > $1/VERSION
@@ -150,35 +150,22 @@ copy_assets() {
 }
 
 build_zst() {
-    local pkg_name=$1-$2-$GIT_VERSION
+    local pkg_name=$GIT_VERSION
     local target=$WORKSPACE/tmp/$pkg_name
     if [ -d $target ]
     then
         rm -r $target
     fi
 
-    mkdir -p $target/bin
-    if [ "$2" = "amd64" ]
-    then
-        cd $WORKSPACE/target/x86_64-unknown-linux-gnu/release
-        cp fig $target/bin/
+    mkdir -p $target/x86_64
+    cd $WORKSPACE/target/x86_64-unknown-linux-gnu/release
+    cp fig $target/x86_64/
+    cd $WORKSPACE/target/x86_64-unknown-linux-musl/release
+    cp aloe coconut lemon orchid loquat $target/x86_64/
 
-        cd $WORKSPACE/target/x86_64-unknown-linux-musl/release
-        cp aloe coconut lemon orchid loquat $target/bin/
-    elif [ "$2" = "arm64" ]
-    then
-        cd $WORKSPACE/target/aarch64-unknown-linux-gnu/release
-        cp fig $target/bin/
-
-        cd $WORKSPACE/target/aarch64-unknown-linux-musl/release
-        cp aloe coconut lemon orchid loquat $target/bin/
-    elif [ "$2" = "armhf" ]
-    then
-        cd $WORKSPACE/target/armv7-unknown-linux-gnueabihf/release
-        cp fig aloe coconut lemon orchid loquat $target/bin/
-    else
-        echo "unsupprt arch $2"
-    fi
+    mkdir -p $target/aarch64
+    cd $WORKSPACE/target/aarch64-unknown-linux-musl/release
+    cp aloe coconut lemon orchid loquat $target/aarch64/
 
     copy_assets $target
 
@@ -213,20 +200,14 @@ build_deb() {
     if [ "$1" = "amd64" ]
     then
         cd $WORKSPACE/target/x86_64-unknown-linux-gnu/release
-        cp fig $target/usr/bin/
-
-        cd $WORKSPACE/target/x86_64-unknown-linux-musl/release
-        cp aloe coconut lemon orchid loquat $target/usr/bin/
+        cp fig aloe coconut lemon orchid loquat $target/usr/bin/
 
         cd $target
         CC=gcc CXX=g++ dpkg-buildpackage -us -uc -b --host-arch $1
     elif [ "$1" = "arm64" ]
     then
         cd $WORKSPACE/target/aarch64-unknown-linux-gnu/release
-        cp fig $target/usr/bin/
-
-        cd $WORKSPACE/target/aarch64-unknown-linux-musl/release
-        cp aloe coconut lemon orchid loquat $target/usr/bin/
+        cp fig aloe coconut lemon orchid loquat $target/usr/bin/
 
         cd $target
         CC=aarch64-linux-gnu-gcc CXX=aarch64-linux-gnu-g++ dpkg-buildpackage -us -uc -b --host-arch $1
@@ -249,30 +230,24 @@ build_dashboard aloe
 
 if [ $ID == "ubuntu" ]
 then
-    build_ubuntu_backend amd64
-    build_zst $UBUNTU_CODENAME amd64
+    build_ubuntu_backend amd64    
     build_deb amd64
 
     if dpkg --print-foreign-architectures | grep -q arm64
     then
-        build_ubuntu_backend arm64
-        build_zst $UBUNTU_CODENAME arm64
+        build_ubuntu_backend arm64        
         build_deb arm64      
     fi
 
     if dpkg --print-foreign-architectures | grep -q armhf
     then
-        build_ubuntu_backend armhf
-        build_zst $UBUNTU_CODENAME armhf
+        build_ubuntu_backend armhf        
         build_deb armhf
     fi
 elif [ $ID == "arch" ]
 then
-    build_arch_backend amd64
-    build_zst $ID amd64
-
-    build_arch_backend arm64
-    build_zst $ID arm64
+    build_arch_backend
+    build_zst
 else
     echo "unsupported system $ID"
     exit 1
