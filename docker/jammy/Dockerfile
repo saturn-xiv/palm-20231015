@@ -66,6 +66,7 @@ RUN zsh -c "source $HOME/.cargo/env && rustup target add aarch64-unknown-linux-g
 # https://github.com/grpc/grpc
 ENV GRPC_VERSION "v1.51.1"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
+RUN apt install -y libssl-dev
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir -pv $HOME/build/grpc \
     && cd $HOME/build/grpc \
