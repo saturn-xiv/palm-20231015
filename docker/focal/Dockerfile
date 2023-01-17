@@ -12,13 +12,15 @@ RUN dpkg --add-architecture arm64
 RUN echo "deb [arch=arm64] http://ports.ubuntu.com/ $(lsb_release -cs) main restricted universe multiverse" >> /etc/apt/sources.list
 RUN echo "deb [arch=arm64] http://ports.ubuntu.com/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
 RUN echo "deb [arch=arm64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
-RUN apt update
-RUN apt -y upgrade
+RUN apt update && apt -y upgrade
 
+ENV GCC_VERSION 10
 ENV CLANG_VERSION 12
 RUN apt -y install zsh git locales locales-all \
     vim tzdata zip unzip tree tmux \
     build-essential crossbuild-essential-arm64 \
+    g++-${GCC_VERSION} g++-${GCC_VERSION}-aarch64-linux-gnu \
+    libstdc++-${GCC_VERSION}-dev:amd64 libstdc++-${GCC_VERSION}-dev:arm64 \
     clang-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
     cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio \
     debhelper bison flex ninja-build \
@@ -26,11 +28,15 @@ RUN apt -y install zsh git locales locales-all \
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/lldb lldb /usr/bin/lldb-${CLANG_VERSION} 100 \
-    && update-alternatives --install /usr/bin/lld lld /usr/bin/lld-${CLANG_VERSION} 100
+    && update-alternatives --install /usr/bin/lld lld /usr/bin/lld-${CLANG_VERSION} 100 \
+    && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/aarch64-linux-gnu-gcc aarch64-linux-gnu-gcc /usr/bin/aarch64-linux-gnu-gcc-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/aarch64-linux-gnu-g++ aarch64-linux-gnu-g++ /usr/bin/aarch64-linux-gnu-g++-${GCC_VERSION} 100
 
-RUN apt -y autoremove
-RUN apt -y clean
+RUN apt -y autoremove && apt -y clean
 
+RUN cd /usr/bin && ln -s make gmake
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 RUN locale-gen
 RUN update-locale LANG=en_US.UTF-8
