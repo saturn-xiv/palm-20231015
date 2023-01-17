@@ -141,7 +141,7 @@ copy_assets() {
         cp -a $p $t/
     done
 
-    cp -a README.md LICENSE locales \
+    cp -a README.md LICENSE \
         docker/spring/etc/envoy.yaml \
         palm/db palm/protocols \
         $1/
