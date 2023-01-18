@@ -111,6 +111,8 @@ impl Config {
             )
             .env("ORACLE_HOME", self.oracle_home.display().to_string())
             .env("ORACLE_SID", &self.sid)
+            .env("NLS_LANG", "AMERICAN_AMERICA.AL32UTF8")
+            .env("LANG", "en_US.utf8")
             .arg(format!("{}/{}", self.user, self.password))
             .arg("full=Y")
             .arg(format!("dumpfile={}", dmp.display()))
@@ -121,7 +123,14 @@ impl Config {
 
         {
             let tmp = target.join(&name);
+            debug!("create folder {}", tmp.display());
             create_dir_all(&tmp)?;
+            debug!(
+                "move {} and {} to {}",
+                dmp.display(),
+                log.display(),
+                tmp.display()
+            );
             let out = Command::new("mv")
                 .arg(self.directory_path.join(&dmp))
                 .arg(self.directory_path.join(&log))
