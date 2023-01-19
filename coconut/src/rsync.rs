@@ -1,12 +1,10 @@
-use std::fs::{create_dir_all, File};
+use std::fs::create_dir_all;
 use std::io::{Error as IoError, ErrorKind as IoErrorKind};
-use std::os::unix::prelude::MetadataExt;
 use std::path::{Path, PathBuf};
 use std::process::Command;
-use std::vec;
 
 use clap::Parser;
-use palm::{print_command_output, timestamp_file, Result};
+use palm::{check_config_permission, print_command_output, timestamp_file, Result};
 
 #[derive(Parser, PartialEq, Eq, Debug, Clone)]
 pub struct Config {
@@ -103,18 +101,7 @@ impl Config {
                     return Err(Box::new(IoError::from(IoErrorKind::InvalidInput)));
                 }
             }
-            {
-                let file = File::open(it)?;
-                let mt = file.metadata()?;
-                let mode = mt.mode();
-
-                let items = vec![0o400, 0o600];
-                if !items.contains(&mode) {
-                    error!("key file {} too open({})", it.display(), mode);
-                    return Err(Box::new(IoError::from(IoErrorKind::InvalidData)));
-                }
-            }
-
+            check_config_permission(it)?;
             return Ok(it.clone());
         }
         if let Some(ref home) = dirs::home_dir() {
