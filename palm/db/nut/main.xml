@@ -14,9 +14,6 @@
     <include file="102-create-logs.xml" relativeToChangelogFile="true" />
     <include file="103-create-attachments.xml" relativeToChangelogFile="true" />
 
-    <include file="201-create-roles.xml" relativeToChangelogFile="true" />
-    <include file="202-create-permissions.xml" relativeToChangelogFile="true" />
-
     <include file="301-create-leave-words.xml" relativeToChangelogFile="true" />
     <include file="302-create-tags.xml" relativeToChangelogFile="true" />
     <include file="303-create-categories.xml" relativeToChangelogFile="true" />

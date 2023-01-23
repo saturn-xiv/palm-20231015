@@ -18,8 +18,6 @@ use super::super::{
     i18n::I18n,
     models::{
         log::Dao as LogDao,
-        permission::Adapter as PermissionAdapter,
-        role::{Adapter as RoleAdapter, Item as Role},
         user::{Action, Dao as UserDao, Item as User, Token},
     },
     orm::postgresql::{Connection as Db, Pool as PostgreSqlPool},

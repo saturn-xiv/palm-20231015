@@ -14,11 +14,7 @@ use tokio::sync::Mutex;
 use tonic::{Response, Status};
 
 use super::super::{
-    models::{
-        permission::{Adapter as PermissionAdapter, Dao as PermissionDao, Item as Permission},
-        role::{Adapter as RoleAdapter, Dao as RoleDao, Item as Role},
-        user::{Dao as UserDao, Item as User},
-    },
+    models::user::{Dao as UserDao, Item as User},
     orm::postgresql::Pool as PostgreSqlPool,
 };
 use super::CurrentUserAdapter;

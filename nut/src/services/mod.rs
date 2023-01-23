@@ -12,47 +12,31 @@ pub mod user;
 use std::any::type_name;
 use std::fmt::Display;
 
+use casbin::{Enforcer, RbacApi};
 use chrono::Duration;
 use hyper::StatusCode;
-use palm::{
-    cache::redis::ClusterConnection as Cache, jwt::Jwt, session::Session, to_code, HttpError,
-    Result,
-};
+use palm::{jwt::Jwt, session::Session, HttpError, Result};
+use tokio::sync::Mutex;
 
 use super::{
-    models::{
-        permission::Adapter as PermissionAdapter,
-        role::{Adapter as RoleAdapter, Dao as RoleDao, Item as Role},
-        user::{Action, Dao as UserDao, Item as User, Token},
-    },
+    models::user::{Action, Dao as UserDao, Item as User, Token},
     orm::postgresql::Connection as Db,
+    rbac::{Subject, ROLE_ADMINISTRATOR},
 };
 
 pub trait CurrentUserAdapter {
-    fn current_user(&self, db: &mut Db, _ch: &mut Cache, jwt: &Jwt) -> Result<CurrentUser>;
+    fn current_user(&self, db: &mut Db, jwt: &Jwt) -> Result<User>;
 }
 
 impl CurrentUserAdapter for Session {
-    fn current_user(&self, db: &mut Db, _ch: &mut Cache, jwt: &Jwt) -> Result<CurrentUser> {
+    fn current_user(&self, db: &mut Db, jwt: &Jwt) -> Result<User> {
         if let Some(ref token) = self.token {
             let token = jwt.parse::<Token>(token)?;
             let token = token.claims;
             if token.act == Action::SignIn {
-                let user = UserDao::by_uid(db, &token.aud)?;
-                user.available()?;
-                // TODO cache
-                let roles = RoleAdapter::get_implicit_roles_for_user(db, user.id)?;
-                let permissions =
-                    PermissionAdapter::get_implicit_permissions_for_user(db, user.id)?;
-
-                return Ok(CurrentUser {
-                    payload: user,
-                    roles: roles.iter().map(|x| x.code.clone()).collect::<_>(),
-                    permissions: permissions
-                        .iter()
-                        .map(|x| (x.operation.clone(), x.resource_type.clone(), x.resource_id))
-                        .collect::<Vec<_>>(),
-                });
+                let it = UserDao::by_uid(db, &token.aud)?;
+                it.available()?;
+                return Ok(it);
             }
         }
 
@@ -74,54 +58,52 @@ impl User {
         };
         jwt.sum(None, &token)
     }
-}
 
-pub struct CurrentUser {
-    pub payload: User,
-    pub roles: Vec<String>,
-    pub permissions: Vec<(String, String, Option<i32>)>,
-}
-
-impl User {
-    pub fn has<R: Display>(&self, db: &mut Db, role: R) -> bool {
-        let code = role.to_string();
-        let code = to_code!(code);
-        if let Ok(items) = RoleDao::by_user(db, self.id) {
-            for it in items.iter() {
-                if it.code == code {
-                    return true;
-                }
-            }
-        }
-
-        false
-    }
-}
-
-impl CurrentUser {
-    pub fn has<R: Display>(&self, role: R) -> bool {
+    pub async fn has<R: Display>(&self, enforcer: &Mutex<Enforcer>, role: R) -> bool {
         let role = role.to_string();
-        for it in self.roles.iter() {
-            if *it == role || it == Role::ADMINISTRATOR {
-                return true;
-            }
-        }
-        false
+        let user = Subject::to_code(self);
+        let mut enforcer = enforcer.lock().await;
+        enforcer
+            .get_implicit_roles_for_user(&user, None)
+            .contains(&role)
     }
-    pub fn is_administrator(&self) -> bool {
-        self.has(Role::ADMINISTRATOR)
+    pub async fn is_administrator(&self, enforcer: &Mutex<Enforcer>) -> bool {
+        self.has(enforcer, ROLE_ADMINISTRATOR).await
     }
-    pub fn can<R, O: Display>(&self, operation: O, resource_id: Option<i32>) -> bool {
-        if self.is_administrator() {
-            return true;
-        }
-        let resource_type = type_name::<R>();
+    pub async fn can<RType, RID: Display, O: Display>(
+        &self,
+        enforcer: &Mutex<Enforcer>,
+        operation: O,
+        resource_id: Option<RID>,
+    ) -> bool {
+        let user = Subject::to_code(self);
         let operation = operation.to_string();
-        for (op, rt, ri) in self.permissions.iter() {
-            if *op == operation && *rt == resource_type && (ri.is_none() || *ri == resource_id) {
-                return true;
+        let resource = format!(
+            "{}://{}",
+            type_name::<RType>(),
+            resource_id.map(|x| x.to_string()).unwrap_or_default()
+        );
+
+        let mut enforcer = enforcer.lock().await;
+        for it in enforcer
+            .get_implicit_permissions_for_user(&user, None)
+            .iter()
+        {
+            if it.len() == 3 {
+                if let Some()
             }
         }
         false
+        // if self.is_administrator() {
+        //     return true;
+        // }
+        // let resource_type = type_name::<R>();
+        // let operation = operation.to_string();
+        // for (op, rt, ri) in self.permissions.iter() {
+        //     if *op == operation && *rt == resource_type && (ri.is_none() || *ri == resource_id) {
+        //         return true;
+        //     }
+        // }
+        // false
     }
 }

@@ -19,7 +19,7 @@ $HOME/local/liquibase/liquibase status
   \c palm
   CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
   CREATE USER www WITH PASSWORD 'CHANGE-ME';
-  GRANT ALL PRIVILEGES ON DATABASE samoyed TO www;
+  CREATE DATABASE palm WITH ENCODING = 'UTF8' OWNER www;
   ```
 
 - backup

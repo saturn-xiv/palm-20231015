@@ -17,7 +17,7 @@ use palm::{
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
-use super::super::{orm::postgresql::Connection, schema::users};
+use super::super::{orm::postgresql::Connection, rbac::Subject as RbacSubject, schema::users};
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -73,10 +73,21 @@ impl fmt::Display for Item {
     }
 }
 
+impl RbacSubject for Item {
+    fn to_code(&self) -> String {
+        format!("{}://{}", type_name::<Self>(), self.nickname)
+    }
+    fn from_code(code: &str) -> Option<String> {
+        code.strip_prefix(&format!("{}://", type_name::<Self>()))
+            .map(|x| x.to_string())
+    }
+}
+
 impl Item {
     const GUEST_NAME: &str = "Guest";
     const GUEST_LANG: &str = "en-US";
     const GUEST_TIMEZONE: &str = "UTC";
+
     fn guest_email() -> String {
         format!("{}@local", Uuid::new_v4())
     }

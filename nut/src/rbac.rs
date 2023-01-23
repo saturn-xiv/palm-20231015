@@ -13,3 +13,11 @@ impl PostgreSql {
         Ok(e)
     }
 }
+
+pub trait Subject {
+    fn to_code(&self) -> String;
+    fn from_code(code: &str) -> Option<String>;
+}
+
+pub const ROLE_ADMINISTRATOR: &str = "administrator";
+pub const ROLE_ROOT: &str = "root";

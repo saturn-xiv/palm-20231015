@@ -38,7 +38,6 @@ use super::super::{
     models::{
         locale::Dao as LocaleDao,
         log::Dao as LogDao,
-        role::{Dao as RoleDao, Item as Role},
         setting::{get, set, Dao as SettingDao},
         user::{Dao as UserDao, Item as User},
     },
