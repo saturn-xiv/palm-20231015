@@ -10,3 +10,9 @@
 [submodule "lemon/src/themes/hinode/theme"]
 	path = lemon/src/themes/hinode/theme
 	url = https://github.com/markdumay/hugo-theme-hinode-child.git
+[submodule "loquat/3rd/tink"]
+	path = loquat/3rd/tink
+	url = https://github.com/google/tink.git
+[submodule "loquat/3rd/grpc"]
+	path = loquat/3rd/grpc
+	url = https://github.com/grpc/grpc.git
