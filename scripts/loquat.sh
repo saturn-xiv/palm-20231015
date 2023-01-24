@@ -17,10 +17,11 @@ then
     if [ $VERSION_CODENAME == "focal" ]
     then
         apt install -y libssl-dev
+        export CMAKE_ARGS="${CMAKE_ARGS} -DOPENSSL_USE_STATIC_LIBS=TRUE"
     elif [ $VERSION_CODENAME == "jammy" ]
     then
         apt install -y libssl-dev
-        export CMAKE_ARGS="${CMAKE_ARGS}"
+        # export CMAKE_ARGS="${CMAKE_ARGS}"
     else
         echo "unsupported system $ID/$VERSION_CODENAME"
         exit 1
