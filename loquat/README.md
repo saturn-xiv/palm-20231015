@@ -6,7 +6,7 @@
 git submodule update --init --recursive
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Release -DgRPC_BUILD_TESTS=OFF -DgRPC_SSL_PROVIDER=package ..
+../../scripts/loquat.sh ..
 ```
 
 - [gRPC C++ - Building from source](https://chromium.googlesource.com/external/github.com/grpc/grpc/+/HEAD/BUILDING.md)

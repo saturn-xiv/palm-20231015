@@ -1,7 +1,15 @@
 #pragma once
 
-#include "absl/flags/flag.h"
-#include "absl/flags/parse.h"
-#include "absl/status/status.h"
+#include <cstdint>
+#include <iostream>
 
-namespace loquat {}
+namespace loquat {
+class Application {
+ public:
+  Application(const uint16_t port) : _port(port) {}
+  void launch();
+
+ private:
+  uint16_t _port;
+};
+}  // namespace loquat

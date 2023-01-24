@@ -1,15 +1,19 @@
 #pragma once
 
-#include <iostream>
-#include <memory>
-#include <ostream>
-#include <string>
+#include <httplib.h>
+#include <nlohmann/json.hpp>
 
-#include "tink/aead.h"
-#include "tink/aead/aead_config.h"
-#include "tink/config.h"
-#include "tink/json_keyset_reader.h"
-#include "tink/keyset_handle.h"
-#include "tink/util/status.h"
+namespace loquat {
+namespace jwt {
 
-namespace loquat {}
+class Request {
+ private:
+  std::string _id;
+  std::string _aud;
+
+ public:
+  NLOHMANN_DEFINE_TYPE_INTRUSIVE(Request, _id, _aud)
+};
+
+}  // namespace jwt
+}  // namespace loquat
