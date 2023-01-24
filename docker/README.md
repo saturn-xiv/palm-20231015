@@ -4,7 +4,14 @@
 sudo apt install crun podman buildah
 ```
 
-- commands
+- Uncompress
+
+  ```bash
+  cat palm-spring-TIMESTAMP.tar.xz.0* > palm-spring-TIMESTAMP.tar.xz
+  unxz palm-spring-TIMESTAMP.tar.xz
+  ```
+
+- Podman commands
 
   ```bash
   podman image prune # removes all dangling images
