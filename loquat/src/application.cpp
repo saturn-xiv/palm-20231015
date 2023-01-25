@@ -1,12 +1,14 @@
 #include "loquat/application.hpp"
 #include "loquat/env.hpp"
 #include "loquat/service.hpp"
+#include "loquat/version.hpp"
 
 #include <absl/strings/numbers.h>
 
-void loquat::Application::launch() {
+void loquat::Application::launch(const uint16_t port,
+                                 const std::vector<std::string>& clients) {
   const std::string host = "0.0.0.0";
-  SPDLOG_INFO("listen on http://{}:{}", host, this->_port);
+  SPDLOG_INFO("listen on http://{}:{}", host, port);
   httplib::Server svr;
 
   svr.Post(R"(/(\w+)/jwt/sign)", [](const httplib::Request& req,
@@ -112,10 +114,29 @@ void loquat::Application::launch() {
 
     res.status = loquat::http::status::BAD_REQUEST;
   });
-  svr.set_logger([](const auto& req, const auto& res) {
-    SPDLOG_INFO("{} {} {} {} {}", req.remote_addr, req.version, res.status,
-                req.method, req.path);
+
+  svr.set_pre_routing_handler([clients](const auto& req, auto& res) {
+    if (req.has_header(loquat::http::header::AUTHORIZATION)) {
+      auto auth = req.get_header_value(loquat::http::header::AUTHORIZATION);
+      if (auth.starts_with(loquat::http::header::BEARER)) {
+        const auto token = auth.substr(loquat::http::header::BEARER.size());
+        loquat::Jwt jwt(loquat::PROJECT_NAME);
+        const auto subject = jwt.verify(token);
+        if (std::find(clients.begin(), clients.end(), subject) !=
+            clients.end()) {
+          return httplib::Server::HandlerResponse::Unhandled;
+        }
+        spdlog::error("unknown client {}", subject);
+      }
+    }
+    res.status = loquat::http::status::FORBIDDEN;
+    return httplib::Server::HandlerResponse::Handled;
   });
 
-  svr.listen(host, this->_port);
+  svr.set_logger([](const auto& req, const auto& res) {
+    spdlog::info("{} {} {} {} {}", req.remote_addr, req.version, res.status,
+                 req.method, req.path);
+  });
+
+  svr.listen(host, port);
 }

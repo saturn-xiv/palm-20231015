@@ -15,9 +15,14 @@ namespace status {
 constexpr int BAD_REQUEST = 400;
 constexpr int INTERNAL_SERVER_ERROR = 500;
 constexpr int NOT_FOUND = 404;
+constexpr int FORBIDDEN = 403;
 constexpr int OK = 200;
 }  // namespace status
 
+namespace header {
+inline static const std::string AUTHORIZATION = "Authorization";
+inline static const std::string BEARER = "Bearer ";
+}  // namespace header
 namespace content_type {
 inline static const std::string TEXT_HTML = "text/html; charset=utf-8";
 inline static const std::string TEXT_PLAIN = "text/plain; charset=utf-8";
@@ -32,7 +37,11 @@ class Config {
  public:
   Config(const std::filesystem::path& file);
   inline uint32_t port() const { return this->_port; }
-  inline std::vector<std::string> clients() const { return this->_clients; }
+  inline std::vector<std::string> clients() const {
+    const std::vector<std::string> items(this->_clients.begin(),
+                                         this->_clients.end());
+    return items;
+  }
 
  private:
   uint16_t _port;

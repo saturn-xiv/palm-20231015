@@ -4,7 +4,7 @@ include(FetchContent)
 
 project(
     palm
-    VERSION 2023.1.20
+    VERSION 2023.1.25
     DESCRIPTION "Cryptographic service."
     LANGUAGES C CXX)
 # --------------------------------------------------------

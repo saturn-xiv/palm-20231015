@@ -10,6 +10,7 @@
 #include <absl/flags/flag.h>
 #include <absl/flags/internal/commandlineflag.h>
 #include <absl/flags/parse.h>
+#include <absl/flags/usage.h>
 #include <absl/flags/usage_config.h>
 #include <absl/status/status.h>
 #include <absl/types/optional.h>
@@ -20,9 +21,9 @@
 ABSL_FLAG(bool, debug, false, "run on debug mode");
 ABSL_FLAG(std::string, config, "config.toml", "load config from file");
 
-ABSL_FLAG(bool, generate_token, false, "generate a client token");
+ABSL_FLAG(bool, generate_token, false, "to generate a client token");
 ABSL_FLAG(std::string, client, "", "client id");
-ABSL_FLAG(uint16_t, years, 1, "Years");
+ABSL_FLAG(uint16_t, years, 1, "years");
 
 namespace loquat {
 static std::string version() {
@@ -30,12 +31,21 @@ static std::string version() {
   ss << loquat::GIT_VERSION << "(" << loquat::BUILD_TIME << ")" << std::endl;
   return ss.str();
 }
+static std::string normalize_file_name(absl::string_view name) {
+  return std::string(name);
+}
 }  // namespace loquat
 
 int main(int argc, char** argv) {
   absl::FlagsUsageConfig usage;
   usage.version_string = &loquat::version;
+  usage.normalize_filename = &loquat::normalize_file_name;
   absl::SetFlagsUsageConfig(usage);
+  {
+    std::stringstream ss;
+    ss << loquat::PROJECT_DESCRIPTION << "(" << loquat::PROJECT_HOMEPAGE << ")";
+    absl::SetProgramUsageMessage(ss.str());
+  }
 
   absl::ParseCommandLine(argc, argv);
 
@@ -86,8 +96,8 @@ int main(int argc, char** argv) {
     return EXIT_SUCCESS;
   }
 
-  loquat::Application app(config.port());
-  app.launch();
+  loquat::Application app;
+  app.launch(config.port(), config.clients());
 
   return EXIT_SUCCESS;
 }

@@ -16,12 +16,12 @@ then
 
     if [ $VERSION_CODENAME == "focal" ]
     then
-        apt install -y libssl-dev
-        export CMAKE_ARGS="${CMAKE_ARGS} -DTINK_USE_SYSTEM_OPENSSL=ON -DOPENSSL_USE_STATIC_LIBS=TRUE"
+        apt install -y libunwind-dev libssl-dev golang
+        export CMAKE_ARGS="${CMAKE_ARGS} -DTINK_USE_SYSTEM_OPENSSL=OFF"        
     elif [ $VERSION_CODENAME == "jammy" ]
     then
         apt install -y libssl-dev
-        # export CMAKE_ARGS="${CMAKE_ARGS}"
+        export CMAKE_ARGS="${CMAKE_ARGS} -DTINK_USE_SYSTEM_OPENSSL=ON -DOPENSSL_USE_STATIC_LIBS=TRUE"
     else
         echo "unsupported system $ID/$VERSION_CODENAME"
         exit 1
@@ -37,6 +37,6 @@ else
 fi
 
 cmake $CMAKE_ARGS $1 
-make loquat
+# make loquat
 
 echo 'done.'

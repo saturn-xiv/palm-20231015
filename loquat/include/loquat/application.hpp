@@ -1,14 +1,12 @@
 #pragma once
 
 #include <cstdint>
+#include <string>
+#include <vector>
 
 namespace loquat {
 class Application {
  public:
-  Application(const uint16_t port) : _port(port) {}
-  void launch();
-
- private:
-  uint16_t _port;
+  void launch(const uint16_t port, const std::vector<std::string>& clients);
 };
 }  // namespace loquat
