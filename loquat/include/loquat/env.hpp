@@ -3,10 +3,10 @@
 #include <chrono>
 #include <filesystem>
 #include <mutex>
-#include <string>
 
 #include <spdlog/spdlog.h>
 #include <tink/aead/aead_key_templates.h>
+#include <tink/jwt/jwt_mac.h>
 #include <tink/keyset_handle.h>
 
 namespace loquat {
@@ -25,14 +25,23 @@ inline static const std::string APPLICATION_JSON = "application/json";
 
 }  // namespace http
 
+class Config {
+ public:
+  Config(const std::filesystem::path& file);
+  inline uint32_t port() const { return this->_port; }
+  inline std::vector<std::string> clients() const { return this->_clients; }
+
+ private:
+  uint16_t _port;
+  std::optional<std::string> _jwt_secret_key;
+  std::vector<std::string> _clients;
+};
+
 class Keyset {
  public:
   Keyset(const std::string& name) : _name(name) {}
-  std::string jwt_signature(const std::string& audience,
-                            const std::chrono::seconds& ttl);
-  std::optional<std::string> verified_jwt(const std::string& token);
 
- private:
+ protected:
   std::unique_ptr<crypto::tink::KeysetHandle> load(
       const google::crypto::tink::KeyTemplate& tpl);
   inline std::filesystem::path keyset() const {
@@ -50,10 +59,22 @@ class Keyset {
     std::string msg(it.begin(), it.end());
     if (!status.ok()) {
       spdlog::error("{}", msg);
+      throw std::runtime_error("");
     }
   }
+
+ private:
   std::string _name;
   std::mutex _locker;
+};
+
+class Jwt : public Keyset {
+ public:
+  Jwt(const std::string& name) : Keyset(name) {}
+  std::string sign(const std::string& audience,
+                   const std::chrono::seconds& ttl);
+  std::optional<std::string> verify(const std::string& token);
+  std::unique_ptr<crypto::tink::JwtMac> load();
 };
 
 }  // namespace loquat

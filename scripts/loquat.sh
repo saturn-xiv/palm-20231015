@@ -9,7 +9,7 @@ then
 fi
 
 . /etc/os-release
-export CMAKE_ARGS="-DCMAKE_BUILD_TYPE=Release -DABSL_PROPAGATE_CXX_STD=ON -DTINK_USE_SYSTEM_OPENSSL=ON"
+export CMAKE_ARGS="-DCMAKE_BUILD_TYPE=Release -DABSL_PROPAGATE_CXX_STD=ON"
 
 if [ $ID == "ubuntu" ]
 then
@@ -17,7 +17,7 @@ then
     if [ $VERSION_CODENAME == "focal" ]
     then
         apt install -y libssl-dev
-        export CMAKE_ARGS="${CMAKE_ARGS} -DOPENSSL_USE_STATIC_LIBS=TRUE"
+        export CMAKE_ARGS="${CMAKE_ARGS} -DTINK_USE_SYSTEM_OPENSSL=ON -DOPENSSL_USE_STATIC_LIBS=TRUE"
     elif [ $VERSION_CODENAME == "jammy" ]
     then
         apt install -y libssl-dev
