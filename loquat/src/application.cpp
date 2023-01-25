@@ -77,10 +77,41 @@ void loquat::Application::launch() {
 
              res.status = loquat::http::status::BAD_REQUEST;
            });
-  svr.Post(R"(/(\w+)/aehd)",
+
+  svr.Post(R"(/(\w+)/aes/encrypt)",
            [](const httplib::Request& req, httplib::Response& res) {
-             res.set_content("Hello World aehd!", "text/plain");
+             const std::string k_message = "message";
+             const std::string id = req.matches[1];
+
+             if (req.has_param(k_message)) {
+               const auto message = req.get_param_value(k_message);
+
+               loquat::Aes aes(id);
+               const auto code = aes.encrypt(message);
+               res.set_content(
+                   code, loquat::http::content_type::APPLICATION_OCTET_STREAM);
+               return;
+             }
+
+             res.status = loquat::http::status::BAD_REQUEST;
            });
+  svr.Post(R"(/(\w+)/aes/decrypt)", [](const httplib::Request& req,
+                                       httplib::Response& res) {
+    const std::string k_code = "code";
+    const std::string id = req.matches[1];
+
+    if (req.has_param(k_code)) {
+      const auto code = req.get_param_value(k_code);
+
+      loquat::Aes aes(id);
+      const auto message = aes.decrypt(code);
+      res.set_content(message,
+                      loquat::http::content_type::APPLICATION_OCTET_STREAM);
+      return;
+    }
+
+    res.status = loquat::http::status::BAD_REQUEST;
+  });
   svr.set_logger([](const auto& req, const auto& res) {
     SPDLOG_INFO("{} {} {} {} {}", req.remote_addr, req.version, res.status,
                 req.method, req.path);

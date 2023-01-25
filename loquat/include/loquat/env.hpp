@@ -86,9 +86,15 @@ class HMac : public Keyset {
   HMac(const std::string& name) : Keyset(name) {}
   std::string sign(const std::string& plain);
   void verify(const std::string& code, const std::string& plain);
-
- private:
-  // std::unique_ptr<crypto::tink::JwtMac> load();
 };
 
+class Aes : public Keyset {
+ public:
+  Aes(const std::string& name) : Keyset(name) {}
+  std::string encrypt(const std::string& plain);
+  std::string decrypt(const std::string& code);
+
+ private:
+  std::unique_ptr<crypto::tink::Aead> load();
+};
 }  // namespace loquat
