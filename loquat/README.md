@@ -26,3 +26,10 @@ sudo qemu-system-aarch64 -m 4096 -cpu cortex-a57 -M virt -nographic -pflash /usr
 - [Ubuntu 22.04 (Jammy Jellyfish) Daily Build](https://cloud-images.ubuntu.com/jammy/current/)
 - [QEMU](https://wiki.archlinux.org/title/QEMU)
 - [Network bridge](https://wiki.archlinux.org/title/Network_bridge)
+
+## Test api
+
+```bash
+curl -v -X POST http://localhost:8080/hi_j/jwt/sign -H "Content-Type: application/x-www-form-urlencoded" -d "subject=aa1a&ttl=2023"
+curl -v --output hello.out -X POST http://localhost:8080/hi_h/hmac/sign -H "Content-Type: application/x-www-form-urlencoded" -d "message=hello"
+```

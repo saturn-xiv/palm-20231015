@@ -16,6 +16,9 @@
 #include <tink/jwt/jwt_key_templates.h>
 #include <tink/jwt/jwt_validator.h>
 #include <tink/jwt/raw_jwt.h>
+#include <tink/public_key_sign.h>
+#include <tink/public_key_verify.h>
+#include <tink/signature/signature_key_templates.h>
 #include <tink/util/status.h>
 
 #define TOML_EXCEPTIONS 1
@@ -38,11 +41,11 @@ loquat::Config::Config(const std::filesystem::path& file) {
   }
 }
 
-std::string loquat::Jwt::sign(const std::string& audience,
+std::string loquat::Jwt::sign(const std::string& subject,
                               const std::chrono::seconds& ttl) {
   auto now = absl::Now();
   auto raw_r = crypto::tink::RawJwtBuilder()
-                   .SetAudience(audience)
+                   .SetSubject(subject)
                    .SetNotBefore(now - absl::Seconds(1))
                    .SetIssuedAt(now)
                    .SetExpiration(now + absl::Seconds(ttl.count()))
@@ -55,9 +58,23 @@ std::string loquat::Jwt::sign(const std::string& audience,
   auto token = std::move(token_r.ValueOrDie());
   return token;
 }
-std::optional<std::string> loquat::Jwt::verify(const std::string& token) {
-  // TODO
-  return std::nullopt;
+
+std::string loquat::Jwt::verify(const std::string& token) {
+  auto validator_r = crypto::tink::JwtValidatorBuilder()
+                         .IgnoreTypeHeader()
+                         .IgnoreIssuer()
+                         .Build();
+  this->check(validator_r);
+  auto validator = std::move(validator_r.ValueOrDie());
+
+  auto jwt = this->load();
+  auto payload_r = jwt->VerifyMacAndDecode(token, validator);
+  this->check(payload_r);
+  auto payload = std::move(payload_r.ValueOrDie());
+  auto subject_r = payload.GetSubject();
+  this->check(subject_r);
+  auto subject = std::move(subject_r.ValueOrDie());
+  return subject;
 }
 
 std::unique_ptr<crypto::tink::JwtMac> loquat::Jwt::load() {
@@ -66,6 +83,28 @@ std::unique_ptr<crypto::tink::JwtMac> loquat::Jwt::load() {
   this->check(jwt_r);
   auto jwt = std::move(jwt_r.ValueOrDie());
   return jwt;
+}
+
+std::string loquat::HMac::sign(const std::string& plain) {
+  auto keyset =
+      this->Keyset::load(crypto::tink::SignatureKeyTemplates::EcdsaP521());
+  auto signer_r = keyset->GetPrimitive<crypto::tink::PublicKeySign>();
+  this->check(signer_r);
+  auto signer = std::move(signer_r.ValueOrDie());
+  auto code_r = signer->Sign(plain);
+  this->check(code_r);
+  auto code = std::move(code_r.ValueOrDie());
+  return code;
+}
+
+void loquat::HMac::verify(const std::string& code, const std::string& plain) {
+  auto keyset =
+      this->Keyset::load(crypto::tink::SignatureKeyTemplates::EcdsaP521());
+  auto verifier_r = keyset->GetPrimitive<crypto::tink::PublicKeyVerify>();
+  this->check(verifier_r);
+  auto verifier = std::move(verifier_r.ValueOrDie());
+  auto status = verifier->Verify(code, plain);
+  this->check(status);
 }
 
 std::unique_ptr<crypto::tink::KeysetHandle> loquat::Keyset::load(

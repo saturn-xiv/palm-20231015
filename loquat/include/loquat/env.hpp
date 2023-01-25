@@ -15,12 +15,15 @@ namespace status {
 constexpr int BAD_REQUEST = 400;
 constexpr int INTERNAL_SERVER_ERROR = 500;
 constexpr int NOT_FOUND = 404;
+constexpr int OK = 200;
 }  // namespace status
 
 namespace content_type {
 inline static const std::string TEXT_HTML = "text/html; charset=utf-8";
 inline static const std::string TEXT_PLAIN = "text/plain; charset=utf-8";
 inline static const std::string APPLICATION_JSON = "application/json";
+inline static const std::string APPLICATION_OCTET_STREAM =
+    "application/octet-stream";
 }  // namespace content_type
 
 }  // namespace http
@@ -71,10 +74,21 @@ class Keyset {
 class Jwt : public Keyset {
  public:
   Jwt(const std::string& name) : Keyset(name) {}
-  std::string sign(const std::string& audience,
-                   const std::chrono::seconds& ttl);
-  std::optional<std::string> verify(const std::string& token);
+  std::string sign(const std::string& subject, const std::chrono::seconds& ttl);
+  std::string verify(const std::string& token);
+
+ private:
   std::unique_ptr<crypto::tink::JwtMac> load();
+};
+
+class HMac : public Keyset {
+ public:
+  HMac(const std::string& name) : Keyset(name) {}
+  std::string sign(const std::string& plain);
+  void verify(const std::string& code, const std::string& plain);
+
+ private:
+  // std::unique_ptr<crypto::tink::JwtMac> load();
 };
 
 }  // namespace loquat

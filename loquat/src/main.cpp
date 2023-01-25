@@ -82,7 +82,7 @@ int main(int argc, char** argv) {
     const auto token =
         jwt.sign(client, std::chrono::duration_cast<std::chrono::seconds>(ttl));
     std::cout << token << std::endl;
-    spd::log::info("done.");
+    spdlog::info("done.");
     return EXIT_SUCCESS;
   }
 
