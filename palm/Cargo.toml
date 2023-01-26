@@ -17,21 +17,21 @@ futures = "0.3"
 futures-util = "0.3"
 mime = "0.3"
 language-tags = "0.3"
-actix-multipart = "0.4"
 log = "0.4"
 num-complex = "0.4"
 sitemap = "0.4"
 yaml-rust = "0.4"
 actix-identity = "0.5"
-toml = "0.5"
+actix-multipart = "0.5"
 actix-cors = "0.6"
 actix-files = "0.6"
+toml = "0.6"
 encoding_rs = "0.8"
 r2d2 = "0.8"
 rand = "0.8"
 xml-rs = "0.8"
 rusttype = "0.9"
-ssh2 = "0.9"
+#ssh2 = "0.9"
 lettre = "0.10"
 askama = "0.11"
 prost = "0.11"
@@ -65,7 +65,7 @@ handlebars = "4"
 google-youtube3 = "4"
 amq-protocol-uri = "7"
 jsonwebtoken = "8"
-flatbuffers = "22"
+flatbuffers = "23"
 
 [dependencies.chrono]
 version = "0.4"
@@ -96,7 +96,7 @@ version = "0.16"
 features = ["derive", "phone", "card", "unic"]
 
 [dependencies.cookie]
-version = "0.16"
+version = "0.17"
 features = ["secure", "private", "percent-encode"]
 
 [dependencies.redis]
