@@ -73,7 +73,7 @@ inline static const std::string GRPC = "application/grpc";
 
 namespace loquat {
 
-class Config {
+class Config final {
  public:
   Config(const std::filesystem::path& file);
   inline uint32_t port() const { return this->_port; }
@@ -120,7 +120,7 @@ class Keyset {
   std::mutex _locker;
 };
 
-class Jwt : public Keyset {
+class Jwt final : public Keyset {
  public:
   Jwt(const std::string& name) : Keyset(name) {}
   std::string sign(const std::string& subject, const std::chrono::seconds& ttl);
@@ -130,7 +130,7 @@ class Jwt : public Keyset {
   std::unique_ptr<crypto::tink::JwtMac> load();
 };
 
-class HMac : public Keyset {
+class HMac final : public Keyset {
  public:
   HMac(const std::string& name) : Keyset(name) {}
   std::string sign(const std::string& plain);
@@ -140,7 +140,7 @@ class HMac : public Keyset {
   std::unique_ptr<crypto::tink::Mac> load();
 };
 
-class Aes : public Keyset {
+class Aes final : public Keyset {
  public:
   Aes(const std::string& name) : Keyset(name) {}
   std::string encrypt(const std::string& plain);
