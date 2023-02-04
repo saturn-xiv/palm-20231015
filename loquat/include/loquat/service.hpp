@@ -2,29 +2,41 @@
 
 #include "loquat/env.hpp"
 
-#include <rest_rpc.hpp>
+#include "Aes.h"
+#include "Hmac.h"
+#include "Jwt.h"
 
 namespace loquat {
-namespace services {
-std::string echo(rest_rpc::rpc_service::rpc_conn con,
-                 const std::string& message);
-namespace jwt {
-std::string sign(rest_rpc::rpc_service::rpc_conn con, const std::string& zone,
-                 const std::string& subject, const size_t ttl);
-std::string verify(rest_rpc::rpc_service::rpc_conn con, const std::string& zone,
-                   const std::string& token);
-}  // namespace jwt
-namespace hmac {
-std::string sign(rest_rpc::rpc_service::rpc_conn con, const std::string& zone,
-                 const std::string& plain);
-void verify(rest_rpc::rpc_service::rpc_conn con, const std::string& zone,
-            const std::string& code, const std::string& plain);
-}  // namespace hmac
-namespace aes {
-std::string encrypt(rest_rpc::rpc_service::rpc_conn con,
-                    const std::string& zone, const std::string& plain);
-std::string decrypt(rest_rpc::rpc_service::rpc_conn con,
-                    const std::string& zone, const std::string& code);
-}  // namespace aes
-}  // namespace services
+void launch(const uint16_t port, const size_t worker_count);
+
+class AesHandler final : public AesIf {
+ public:
+  AesHandler() = default;
+
+  void encrypt(std::string& code, const std::string& zone,
+               const std::string& plain) override;
+  void decrypt(std::string& plain, const std::string& zone,
+               const std::string& code) override;
+};
+
+class HmacHandler final : public HmacIf {
+ public:
+  HmacHandler() = default;
+
+  void sign(std::string& code, const std::string& zone,
+            const std::string& plain) override;
+  void verify(const std::string& zone, const std::string& code,
+              const std::string& plain) override;
+};
+
+class JwtHandler final : public JwtIf {
+ public:
+  JwtHandler() = default;
+
+  void sign(std::string& token, const std::string& zone,
+            const std::string& subject, const int64_t ttl) override;
+  void verify(std::string& subject, const std::string& zone,
+              const std::string& token) override;
+};
+
 }  // namespace loquat

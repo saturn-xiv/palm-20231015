@@ -1,7 +1,5 @@
 #pragma once
 
-#include "palm/version.hpp"
-
 // clang-format off
 namespace loquat {
 

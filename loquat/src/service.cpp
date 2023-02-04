@@ -1,60 +1,100 @@
 #include "loquat/service.hpp"
 #include "loquat/env.hpp"
 
-std::string loquat::services::echo(rest_rpc::rpc_service::rpc_conn con,
-                                   const std::string& message) {
-  spdlog::info("call {}", __PRETTY_FUNCTION__);
-  return message;
+#include <thrift/concurrency/ThreadFactory.h>
+#include <thrift/concurrency/ThreadManager.h>
+#include <thrift/processor/TMultiplexedProcessor.h>
+#include <thrift/protocol/TBinaryProtocol.h>
+#include <thrift/server/TThreadPoolServer.h>
+#include <thrift/transport/TServerSocket.h>
+#include <thrift/transport/TSocket.h>
+#include <thrift/transport/TTransportUtils.h>
+
+void loquat::launch(const uint16_t port, const size_t worker_count) {
+  std::shared_ptr<AesHandler> aesHandler = std::make_shared<AesHandler>();
+  std::shared_ptr<AesProcessor> aesProcessor =
+      std::make_shared<AesProcessor>(aesHandler);
+  std::shared_ptr<HmacHandler> hmacHandler = std::make_shared<HmacHandler>();
+  std::shared_ptr<HmacProcessor> hmacProcessor =
+      std::make_shared<HmacProcessor>(hmacHandler);
+  std::shared_ptr<JwtHandler> jwtHandler = std::make_shared<JwtHandler>();
+  std::shared_ptr<JwtProcessor> jwtProcessor =
+      std::make_shared<JwtProcessor>(jwtHandler);
+
+  std::shared_ptr<apache::thrift::TMultiplexedProcessor> multiplexedProcessor =
+      std::make_shared<apache::thrift::TMultiplexedProcessor>();
+  multiplexedProcessor->registerProcessor("aes", aesProcessor);
+  multiplexedProcessor->registerProcessor("hmac", hmacProcessor);
+  multiplexedProcessor->registerProcessor("jwt", jwtProcessor);
+  std::shared_ptr<apache::thrift::TProcessor> processor =
+      std::dynamic_pointer_cast<apache::thrift::TProcessor>(
+          multiplexedProcessor);
+
+  std::shared_ptr<apache::thrift::concurrency::ThreadFactory> threadFactory =
+      std::make_shared<apache::thrift::concurrency::ThreadFactory>();
+  std::shared_ptr<apache::thrift::concurrency::ThreadManager> threadManager =
+      apache::thrift::concurrency::ThreadManager::newSimpleThreadManager(
+          worker_count);
+  threadManager->threadFactory(threadFactory);
+  threadManager->start();
+
+  std::shared_ptr<apache::thrift::transport::TServerSocket> serverSocket =
+      std::make_shared<apache::thrift::transport::TServerSocket>(port);
+  std::shared_ptr<apache::thrift::transport::TBufferedTransportFactory>
+      transportFactory = std::make_shared<
+          apache::thrift::transport::TBufferedTransportFactory>();
+  std::shared_ptr<apache::thrift::protocol::TBinaryProtocolFactory>
+      protocolFactory =
+          std::make_shared<apache::thrift::protocol::TBinaryProtocolFactory>();
+
+  apache::thrift::server::TThreadPoolServer server(
+      processor, serverSocket, transportFactory, protocolFactory,
+      threadManager);
+
+  spdlog::info("listening on tcp://0.0.0.0:{} with {} threads", port,
+               worker_count);
+  server.serve();
 }
 
-std::string loquat::services::jwt::sign(rest_rpc::rpc_service::rpc_conn con,
-                                        const std::string& zone,
-                                        const std::string& subject,
-                                        const size_t ttl) {
+void loquat::AesHandler::encrypt(std::string& code, const std::string& zone,
+                                 const std::string& plain) {
   spdlog::info("call {}", __PRETTY_FUNCTION__);
-  loquat::Jwt jwt(zone);
-  const auto token = jwt.sign(subject, std::chrono::seconds(ttl));
-  return token;
-}
-std::string loquat::services::jwt::verify(rest_rpc::rpc_service::rpc_conn con,
-                                          const std::string& zone,
-                                          const std::string& token) {
-  spdlog::info("call {}", __PRETTY_FUNCTION__);
-  loquat::Jwt jwt(zone);
-  const auto subject = jwt.verify(token);
-  return subject;
+  loquat::Aes aes(zone);
+  code = aes.encrypt(plain);
 }
 
-std::string loquat::services::hmac::sign(rest_rpc::rpc_service::rpc_conn con,
-                                         const std::string& zone,
-                                         const std::string& plain) {
+void loquat::AesHandler::decrypt(std::string& plain, const std::string& zone,
+                                 const std::string& code) {
+  spdlog::info("call {}", __PRETTY_FUNCTION__);
+  loquat::Aes aes(zone);
+  plain = aes.decrypt(code);
+}
+
+void loquat::HmacHandler::sign(std::string& code, const std::string& zone,
+                               const std::string& plain) {
   spdlog::info("call {}", __PRETTY_FUNCTION__);
   loquat::HMac mac(zone);
-  const auto code = mac.sign(plain);
-  return code;
+  code = mac.sign(plain);
 }
-void loquat::services::hmac::verify(rest_rpc::rpc_service::rpc_conn con,
-                                    const std::string& zone,
-                                    const std::string& code,
-                                    const std::string& plain) {
+
+void loquat::HmacHandler::verify(const std::string& zone,
+                                 const std::string& code,
+                                 const std::string& plain) {
   spdlog::info("call {}", __PRETTY_FUNCTION__);
   loquat::HMac mac(zone);
   mac.verify(code, plain);
 }
 
-std::string loquat::services::aes::encrypt(rest_rpc::rpc_service::rpc_conn con,
-                                           const std::string& zone,
-                                           const std::string& plain) {
+void loquat::JwtHandler::sign(std::string& token, const std::string& zone,
+                              const std::string& subject, const int64_t ttl) {
   spdlog::info("call {}", __PRETTY_FUNCTION__);
-  loquat::Aes aes(zone);
-  const auto code = aes.encrypt(plain);
-  return code;
+  loquat::Jwt jwt(zone);
+  token = jwt.sign(subject, std::chrono::seconds(ttl));
 }
-std::string loquat::services::aes::decrypt(rest_rpc::rpc_service::rpc_conn con,
-                                           const std::string& zone,
-                                           const std::string& code) {
+
+void loquat::JwtHandler::verify(std::string& subject, const std::string& zone,
+                                const std::string& token) {
   spdlog::info("call {}", __PRETTY_FUNCTION__);
-  loquat::Aes aes(zone);
-  const auto message = aes.decrypt(code);
-  return message;
+  loquat::Jwt jwt(zone);
+  subject = jwt.verify(token);
 }

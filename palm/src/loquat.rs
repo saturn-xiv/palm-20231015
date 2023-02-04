@@ -31,7 +31,7 @@ use thrift::server::TProcessor;
 
 pub trait TJwtSyncClient {
   fn sign(&mut self, zone: String, subject: String, ttl: i64) -> thrift::Result<String>;
-  fn verify(&mut self, zone: String, token: String) -> thrift::Result<()>;
+  fn verify(&mut self, zone: String, token: String) -> thrift::Result<String>;
 }
 
 pub trait TJwtSyncClientMarker {}
@@ -85,7 +85,7 @@ impl <C: TThriftClient + TJwtSyncClientMarker> TJwtSyncClient for C {
       result.ok_or()
     }
   }
-  fn verify(&mut self, zone: String, token: String) -> thrift::Result<()> {
+  fn verify(&mut self, zone: String, token: String) -> thrift::Result<String> {
     (
       {
         self.increment_sequence_number();
@@ -120,7 +120,7 @@ impl <C: TThriftClient + TJwtSyncClientMarker> TJwtSyncClient for C {
 
 pub trait JwtSyncHandler {
   fn handle_sign(&self, zone: String, subject: String, ttl: i64) -> thrift::Result<String>;
-  fn handle_verify(&self, zone: String, token: String) -> thrift::Result<()>;
+  fn handle_verify(&self, zone: String, token: String) -> thrift::Result<String>;
 }
 
 pub struct JwtSyncProcessor<H: JwtSyncHandler> {
@@ -184,10 +184,10 @@ impl TJwtProcessFunctions {
   pub fn process_verify<H: JwtSyncHandler>(handler: &H, incoming_sequence_number: i32, i_prot: &mut dyn TInputProtocol, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {
     let args = JwtVerifyArgs::read_from_in_protocol(i_prot)?;
     match handler.handle_verify(args.zone, args.token) {
-      Ok(_) => {
+      Ok(handler_return) => {
         let message_ident = TMessageIdentifier::new("verify", TMessageType::Reply, incoming_sequence_number);
         o_prot.write_message_begin(&message_ident)?;
-        let ret = JwtVerifyResult {  };
+        let ret = JwtVerifyResult { result_value: Some(handler_return) };
         ret.write_to_out_protocol(o_prot)?;
         o_prot.write_message_end()?;
         o_prot.flush()
@@ -443,14 +443,27 @@ impl JwtVerifyArgs {
 
 #[derive(Clone, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
 struct JwtVerifyResult {
+  result_value: Option<String>,
 }
 
 impl JwtVerifyResult {
-  fn ok_or(self) -> thrift::Result<()> {
-    Ok(())
+  fn ok_or(self) -> thrift::Result<String> {
+    if self.result_value.is_some() {
+      Ok(self.result_value.unwrap())
+    } else {
+      Err(
+        thrift::Error::Application(
+          ApplicationError::new(
+            ApplicationErrorKind::MissingResult,
+            "no result received for JwtVerify"
+          )
+        )
+      )
+    }
   }
   fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<JwtVerifyResult> {
     i_prot.read_struct_begin()?;
+    let mut f_0: Option<String> = None;
     loop {
       let field_ident = i_prot.read_field_begin()?;
       if field_ident.field_type == TType::Stop {
@@ -458,6 +471,10 @@ impl JwtVerifyResult {
       }
       let field_id = field_id(&field_ident)?;
       match field_id {
+        0 => {
+          let val = i_prot.read_string()?;
+          f_0 = Some(val);
+        },
         _ => {
           i_prot.skip(field_ident.field_type)?;
         },
@@ -465,12 +482,19 @@ impl JwtVerifyResult {
       i_prot.read_field_end()?;
     }
     i_prot.read_struct_end()?;
-    let ret = JwtVerifyResult {};
+    let ret = JwtVerifyResult {
+      result_value: f_0,
+    };
     Ok(ret)
   }
   fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {
     let struct_ident = TStructIdentifier::new("JwtVerifyResult");
     o_prot.write_struct_begin(&struct_ident)?;
+    if let Some(ref fld_var) = self.result_value {
+      o_prot.write_field_begin(&TFieldIdentifier::new("result_value", TType::String, 0))?;
+      o_prot.write_string(fld_var)?;
+      o_prot.write_field_end()?
+    }
     o_prot.write_field_stop()?;
     o_prot.write_struct_end()
   }

@@ -52,18 +52,17 @@ FetchContent_Declare(argparse
 
 FetchContent_MakeAvailable(spdlog argparse tomlplusplus nlohmann_json httplib tink)
 
-FetchContent_Declare(thrift
-  GIT_REPOSITORY    "https://github.com/apache/thrift.git"
-  GIT_TAG           "v0.17.0"
-)
-FetchContent_MakeAvailable(thrift)
+# --------------------------------------------------------
+
+add_subdirectory(protocols)
+
 # --------------------------------------------------------
 
 file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.cpp")
 
 add_executable(loquat ${SOURCE_LIST})
 set_target_properties(loquat PROPERTIES LINK_FLAGS_RELEASE -s)
-target_link_libraries(loquat
+target_link_libraries(loquat protocols
   tink::static 
   tink::jwt::jwt_key_templates tink::jwt::jwt_mac tink::jwt::jwt_mac_config
   absl::base absl::flags absl::flags_parse

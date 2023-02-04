@@ -3,7 +3,7 @@ namespace java loquat
 
 service Jwt {
     string sign(1:string zone, 2:string subject, 3:i64 ttl),
-    void verify(1:string zone, 2:string token),
+    string verify(1:string zone, 2:string token),
 }
 
 service Hmac {
