@@ -23,9 +23,22 @@ void loquat::launch(const uint16_t port, const size_t worker_count) {
 
   std::shared_ptr<apache::thrift::TMultiplexedProcessor> multiplexedProcessor =
       std::make_shared<apache::thrift::TMultiplexedProcessor>();
-  multiplexedProcessor->registerProcessor("aes", aesProcessor);
-  multiplexedProcessor->registerProcessor("hmac", hmacProcessor);
-  multiplexedProcessor->registerProcessor("jwt", jwtProcessor);
+
+  {
+    const auto name = typeid(AesHandler).name();
+    spdlog::info("register service {}", name);
+    multiplexedProcessor->registerProcessor(name, aesProcessor);
+  }
+  {
+    const auto name = typeid(HmacHandler).name();
+    spdlog::info("register service {}", name);
+    multiplexedProcessor->registerProcessor(name, hmacProcessor);
+  }
+  {
+    const auto name = typeid(JwtHandler).name();
+    spdlog::info("register service {}", name);
+    multiplexedProcessor->registerProcessor(name, jwtProcessor);
+  }
   std::shared_ptr<apache::thrift::TProcessor> processor =
       std::dynamic_pointer_cast<apache::thrift::TProcessor>(
           multiplexedProcessor);

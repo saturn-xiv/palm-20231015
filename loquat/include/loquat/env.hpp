@@ -26,6 +26,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <string>
+#include <typeinfo>
 #include <unordered_map>
 #include <utility>
 #include <variant>
