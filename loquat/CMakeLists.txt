@@ -3,9 +3,9 @@ include(ExternalProject)
 include(FetchContent)
 
 project(
-    palm
-    VERSION 2023.1.25
-    DESCRIPTION "Cryptographic service."
+    loquat
+    VERSION 2023.1.26
+    DESCRIPTION "A cryptographic rpc service."
     LANGUAGES C CXX)
 # --------------------------------------------------------
 
@@ -45,10 +45,21 @@ FetchContent_Declare(tink
   GIT_TAG         "v1.7.0"
 )
 
-FetchContent_MakeAvailable(spdlog tomlplusplus nlohmann_json httplib tink)
+FetchContent_Declare(argparse
+  GIT_REPOSITORY  "https://github.com/p-ranav/argparse.git"
+  GIT_TAG         "15d745f"
+)
+
+FetchContent_MakeAvailable(spdlog argparse tomlplusplus nlohmann_json httplib tink)
+
+FetchContent_Declare(thrift
+  GIT_REPOSITORY    "https://github.com/apache/thrift.git"
+  GIT_TAG           "v0.17.0"
+)
+FetchContent_MakeAvailable(thrift)
 # --------------------------------------------------------
 
-file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${palm_SOURCE_DIR}/src/*.cpp")
+file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.cpp")
 
 add_executable(loquat ${SOURCE_LIST})
 set_target_properties(loquat PROPERTIES LINK_FLAGS_RELEASE -s)
@@ -60,10 +71,15 @@ target_link_libraries(loquat
 )
 
 target_include_directories(loquat PUBLIC
-  ${palm_SOURCE_DIR}/include
+  ${PROJECT_SOURCE_DIR}/include
+    
   ${spdlog_SOURCE_DIR}/include
+  ${argparse_SOURCE_DIR}/include
   ${httplib_SOURCE_DIR}
-  ${tomlplusplus_SOURCE_DIR}
+  ${tomlplusplus_SOURCE_DIR}/include
+  ${rest_rpc_SOURCE_DIR}/include
+  ${rest_rpc_SOURCE_DIR}/thirdparty/msgpack-c/include
+  ${rest_rpc_SOURCE_DIR}/thirdparty/asio
 )
 
 

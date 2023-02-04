@@ -111,6 +111,9 @@ generate_aloe_web
 # generate_flatbuffers ops/metrics/protocols/rpc ops/metrics/src
 # generate_flatbuffers ops/metrics/protocols/rpc fig/src/metrics
 
+thrift -out palm/src --gen rs -r loquat/loquat.thrift
+thrift -out loquat/protocols/palm --gen cpp -r loquat/loquat.thrift
+
 echo 'format rust code'
 cargo fmt
 

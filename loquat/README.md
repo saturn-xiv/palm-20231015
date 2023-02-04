@@ -1,16 +1,14 @@
 # LOQUAT
 
-## By Cmake
+## By Cmake(ONLY support focal yet)
 
 ```bash
-git submodule update --init --recursive
 mkdir build
 cd build
-../../scripts/loquat.sh ..
+apt install -y g++10 golang libunwind-dev libboost-all-dev
+CC=gcc-10 CXX=g++-10 cmake -DCMAKE_BUILD_TYPE=Release -DABSL_PROPAGATE_CXX_STD=ON -DTINK_USE_SYSTEM_OPENSSL=OFF ..
+make loquat
 ```
-
-- [gRPC C++ - Building from source](https://chromium.googlesource.com/external/github.com/grpc/grpc/+/HEAD/BUILDING.md)
-- [Build and install gRPC and Protocol Buffers](https://grpc.io/docs/languages/cpp/quickstart/#build-and-install-grpc-and-protocol-buffers)
 
 ## By Qemu
 
@@ -26,10 +24,3 @@ sudo qemu-system-aarch64 -m 4096 -cpu cortex-a57 -M virt -nographic -pflash /usr
 - [Ubuntu 22.04 (Jammy Jellyfish) Daily Build](https://cloud-images.ubuntu.com/jammy/current/)
 - [QEMU](https://wiki.archlinux.org/title/QEMU)
 - [Network bridge](https://wiki.archlinux.org/title/Network_bridge)
-
-## Test api
-
-```bash
-curl -v -X POST http://localhost:8080/hi_j/jwt/sign -H "Content-Type: application/x-www-form-urlencoded" -d "subject=aa1a&ttl=2023"
-curl -v --output hello.out -X POST http://localhost:8080/hi_h/hmac/sign -H "Content-Type: application/x-www-form-urlencoded" -d "message=hello"
-```

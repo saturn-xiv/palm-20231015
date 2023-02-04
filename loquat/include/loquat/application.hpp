@@ -1,8 +1,6 @@
 #pragma once
 
-#include <cstdint>
-#include <string>
-#include <vector>
+#include "loquat/env.hpp"
 
 namespace loquat {
 class Application {

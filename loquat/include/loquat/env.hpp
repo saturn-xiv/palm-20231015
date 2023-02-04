@@ -1,37 +1,14 @@
 #pragma once
 
-#include <chrono>
-#include <filesystem>
-#include <mutex>
+#include "palm/env.hpp"
 
-#include <spdlog/spdlog.h>
 #include <tink/aead/aead_key_templates.h>
 #include <tink/jwt/jwt_mac.h>
 #include <tink/keyset_handle.h>
+#include <tink/mac.h>
+#include <tink/mac/mac_key_templates.h>
 
 namespace loquat {
-namespace http {
-namespace status {
-constexpr int BAD_REQUEST = 400;
-constexpr int INTERNAL_SERVER_ERROR = 500;
-constexpr int NOT_FOUND = 404;
-constexpr int FORBIDDEN = 403;
-constexpr int OK = 200;
-}  // namespace status
-
-namespace header {
-inline static const std::string AUTHORIZATION = "Authorization";
-inline static const std::string BEARER = "Bearer ";
-}  // namespace header
-namespace content_type {
-inline static const std::string TEXT_HTML = "text/html; charset=utf-8";
-inline static const std::string TEXT_PLAIN = "text/plain; charset=utf-8";
-inline static const std::string APPLICATION_JSON = "application/json";
-inline static const std::string APPLICATION_OCTET_STREAM =
-    "application/octet-stream";
-}  // namespace content_type
-
-}  // namespace http
 
 class Config {
  public:
@@ -95,6 +72,9 @@ class HMac : public Keyset {
   HMac(const std::string& name) : Keyset(name) {}
   std::string sign(const std::string& plain);
   void verify(const std::string& code, const std::string& plain);
+
+ private:
+  std::unique_ptr<crypto::tink::Mac> load();
 };
 
 class Aes : public Keyset {

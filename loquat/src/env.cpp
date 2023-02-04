@@ -1,9 +1,5 @@
 #include "loquat/env.hpp"
 
-#include <chrono>
-#include <exception>
-#include <fstream>
-
 #include <tink/aead.h>
 #include <tink/aead/aead_config.h>
 #include <tink/aead/aes_gcm_key_manager.h>
@@ -16,13 +12,11 @@
 #include <tink/jwt/jwt_key_templates.h>
 #include <tink/jwt/jwt_validator.h>
 #include <tink/jwt/raw_jwt.h>
+#include <tink/mac/mac_factory.h>
 #include <tink/public_key_sign.h>
 #include <tink/public_key_verify.h>
 #include <tink/signature/signature_key_templates.h>
 #include <tink/util/status.h>
-
-#define TOML_EXCEPTIONS 1
-#include <toml.hpp>
 
 loquat::Config::Config(const std::filesystem::path& file) {
   spdlog::info("load config from {}", file.string());
@@ -86,25 +80,25 @@ std::unique_ptr<crypto::tink::JwtMac> loquat::Jwt::load() {
 }
 
 std::string loquat::HMac::sign(const std::string& plain) {
-  auto keyset =
-      this->Keyset::load(crypto::tink::SignatureKeyTemplates::EcdsaP521());
-  auto signer_r = keyset->GetPrimitive<crypto::tink::PublicKeySign>();
-  this->check(signer_r);
-  auto signer = std::move(signer_r.ValueOrDie());
-  auto code_r = signer->Sign(plain);
+  auto mac = this->load();
+  auto code_r = mac->ComputeMac(plain);
   this->check(code_r);
   auto code = std::move(code_r.ValueOrDie());
   return code;
 }
 
 void loquat::HMac::verify(const std::string& code, const std::string& plain) {
-  auto keyset =
-      this->Keyset::load(crypto::tink::SignatureKeyTemplates::EcdsaP521());
-  auto verifier_r = keyset->GetPrimitive<crypto::tink::PublicKeyVerify>();
-  this->check(verifier_r);
-  auto verifier = std::move(verifier_r.ValueOrDie());
-  auto status = verifier->Verify(code, plain);
+  auto mac = this->load();
+  auto status = mac->VerifyMac(code, plain);
   this->check(status);
+}
+
+std::unique_ptr<crypto::tink::Mac> loquat::HMac::load() {
+  auto keyset = this->Keyset::load(crypto::tink::MacKeyTemplates::HmacSha512());
+  auto mac_r = keyset->GetPrimitive<crypto::tink::Mac>();
+  this->check(mac_r);
+  auto mac = std::move(mac_r.ValueOrDie());
+  return mac;
 }
 
 std::string loquat::Aes::encrypt(const std::string& plain) {
