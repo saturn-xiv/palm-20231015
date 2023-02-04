@@ -59,7 +59,7 @@ pub fn gateway(device: &str) -> Result<Ipv4Addr> {
     }
     Err(Box::new(IoError::new(
         IoErrorKind::NotFound,
-        format!("gateway of {}", device),
+        format!("gateway of {device}"),
     )))
 }
 

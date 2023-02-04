@@ -117,7 +117,7 @@ impl Args {
                     forward: true,
                 }
                 .write(&mut buf)?;
-                writeln!(&mut file, "{}", buf)?;
+                writeln!(&mut file, "{buf}")?;
             }
             writeln!(&mut file, "{}", palm::network::BASH_FOOTER)?;
         }

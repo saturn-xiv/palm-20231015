@@ -157,7 +157,7 @@ impl super::Provider for ClusterConnection {
 
     fn destroy<K: Display>(&mut self, key: &K) -> Result<()> {
         warn!("clear cache with prefix {}", key);
-        let keys: Vec<String> = Commands::keys(self, &format!("{}*", key))?;
+        let keys: Vec<String> = Commands::keys(self, &format!("{key}*"))?;
         self.del::<_, ()>(&keys)?;
         Ok(())
     }

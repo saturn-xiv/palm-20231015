@@ -34,7 +34,7 @@ impl Args {
             }
             SubCommand::Token(ref it) => {
                 let token = it.launch(&env.jwt_key)?;
-                println!("{}", token);
+                println!("{token}");
             }
         };
         Ok(())

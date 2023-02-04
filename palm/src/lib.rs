@@ -105,7 +105,6 @@ pub mod env;
 pub mod google;
 pub mod handlers;
 pub mod jwt;
-pub mod loquat;
 pub mod minio;
 pub mod models;
 pub mod network;
@@ -143,7 +142,7 @@ pub const FONT_DEJAVUSANS: &[u8] = include_bytes!("DejaVuSans.ttf");
 include!(concat!(env!("OUT_DIR"), "/env.rs"));
 
 lazy_static! {
-    pub static ref VERSION: String = format!("{}({})", GIT_VERSION, BUILD_TIME);
+    pub static ref VERSION: String = format!("{GIT_VERSION}({BUILD_TIME})");
 }
 
 pub fn is_stopped() -> bool {
@@ -187,8 +186,8 @@ pub fn copy_dir_all(src: impl AsRef<Path>, dst: impl AsRef<Path>) -> IoResult<()
 pub fn timestamp_file(name: &str, ext: Option<&str>) -> String {
     let ts = Utc::now().format("%Y%m%d%H%M%S%3f");
     match ext {
-        Some(ext) => format!("{}-{}.{}", name, ts, ext),
-        None => format!("{}-{}", name, ts),
+        Some(ext) => format!("{name}-{ts}.{ext}"),
+        None => format!("{name}-{ts}"),
     }
 }
 
@@ -361,3 +360,6 @@ pub mod ops {
         }
     }
 }
+
+#[allow(clippy::uninlined_format_args, clippy::match_single_binding)]
+pub mod loquat;

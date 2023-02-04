@@ -14,7 +14,7 @@ impl fmt::Display for Locale {
         match self.0 {
             Some(ref it) => {
                 // TODO
-                write!(f, "{}", it)
+                write!(f, "{it}")
             }
             None => write!(f, "en-US"),
         }

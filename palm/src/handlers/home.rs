@@ -10,7 +10,7 @@ pub struct Home(pub Option<String>);
 impl fmt::Display for Home {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self.0 {
-            Some(ref it) => write!(f, "{}", it),
+            Some(ref it) => write!(f, "{it}"),
             None => write!(f, "n/a"),
         }
     }
@@ -21,7 +21,7 @@ impl Home {
         let uri = req.uri();
         if let Some(scheme) = uri.scheme() {
             if let Some(authority) = uri.authority() {
-                return Some(format!("{}://{}", scheme, authority));
+                return Some(format!("{scheme}://{authority}"));
             }
         }
         None

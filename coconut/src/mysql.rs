@@ -68,7 +68,7 @@ impl Config {
                     .arg(self.port.to_string())
                     .arg("-u")
                     .arg(&self.user)
-                    .arg(format!("-p{}", password))
+                    .arg(format!("-p{password}"))
                     .arg(&self.name)
                     .stdout(Stdio::piped())
                     .output()?

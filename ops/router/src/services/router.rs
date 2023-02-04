@@ -639,7 +639,7 @@ pub fn validate_lan(db: &mut Db, lan: &v1::Lan) -> Result<()> {
             if lan == dmz {
                 return Err(Box::new(IoError::new(
                     IoErrorKind::Other,
-                    format!("{} is dmz network", dmz),
+                    format!("{dmz} is dmz network"),
                 )));
             }
         }
@@ -670,7 +670,7 @@ pub fn validate_dmz(db: &mut Db, dmz: &v1::Dmz) -> Result<()> {
             if lan == dmz {
                 return Err(Box::new(IoError::new(
                     IoErrorKind::Other,
-                    format!("{} is lan network", lan),
+                    format!("{lan} is lan network"),
                 )));
             }
         }

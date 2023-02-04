@@ -54,7 +54,7 @@ pub async fn ping(home: &str, title: &str, rss: &str) -> Result<()> {
         Body {
             title: title.to_string(),
             home: home.to_string(),
-            rss: format!("{}{}", home, rss),
+            rss: format!("{home}{rss}"),
         }
         .write(&mut writer)?;
     }

@@ -7,7 +7,7 @@ pub async fn ping(home: &str) -> Result<()> {
     let cli = reqwest::Client::new();
     let res = cli
         .get("https://www.google.com/ping")
-        .query(&("sitemap", format!("{}/sitemap.xml", home)))
+        .query(&("sitemap", format!("{home}/sitemap.xml")))
         .send()
         .await?;
 

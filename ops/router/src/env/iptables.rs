@@ -26,14 +26,14 @@ pub fn script(db: &mut Db) -> Result<String> {
             if let Ok(it) = SettingDao::get::<v1::Wan>(db, Some(device)) {
                 items.push(it);
             } else {
-                warn!("ethernet {} is not set", device);
+                warn!("ethernet {device} is not set");
             }
         }
         items
     };
 
     let mut buf = String::new();
-    writeln!(buf, "{}", BASH_HEADER)?;
+    writeln!(buf, "{BASH_HEADER}")?;
 
     Flush {
         input: false,
@@ -96,7 +96,7 @@ pub fn script(db: &mut Db) -> Result<String> {
     }
 
     Persistent {}.write(&mut buf)?;
-    writeln!(buf, "{}", BASH_FOOTER)?;
+    writeln!(buf, "{BASH_FOOTER}")?;
 
     Ok(buf)
 }

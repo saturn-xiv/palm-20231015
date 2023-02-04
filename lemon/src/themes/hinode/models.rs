@@ -153,7 +153,7 @@ impl Layout {
             .iter()
             .map(|x| Language {
                 code: x.clone(),
-                name: i18n.t(x, &format!("languages.{}", x)),
+                name: i18n.t(x, &format!("languages.{x}")),
             })
             .collect::<_>();
         let pages = {

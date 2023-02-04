@@ -157,7 +157,7 @@ impl Args {
                     debug!("generate {}", file.display());
                     let mut file = File::create(&file)?;
                     let body = RobotsTxt { home: cfg.home }.render()?;
-                    writeln!(file, "{}", body)?;
+                    writeln!(file, "{body}")?;
                 }
             }
         }

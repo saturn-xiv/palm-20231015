@@ -53,7 +53,7 @@ pub async fn video_list(_cli: &Client) -> Result<()> {
 
 pub async fn playlist_list(cli: &Client) -> Result<()> {
     for it in cli.playlists().await?.iter() {
-        println!("{}", it);
+        println!("{it}");
     }
     Ok(())
 }

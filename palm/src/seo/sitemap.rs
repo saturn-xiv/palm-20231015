@@ -36,7 +36,7 @@ pub fn index(home: &str, links: &[String]) -> Result<Vec<u8>> {
     {
         let mut writer = writer.start_sitemapindex()?;
         for it in links {
-            writer.sitemap(SiteMapEntry::builder().loc(format!("{}{}", home, it)))?;
+            writer.sitemap(SiteMapEntry::builder().loc(format!("{home}{it}")))?;
         }
         writer.end()?;
     }
