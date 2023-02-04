@@ -162,7 +162,7 @@ RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc \
     && echo 'export PATH=$GOROOT/bin:$PATH' >> $HOME/.zshrc \
     && echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc
 
-ENV JDK_VERSION "19.0.1-open"
+ENV JDK_VERSION "19.0.2-open"
 RUN curl -s "https://get.sdkman.io" | zsh
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
@@ -212,7 +212,8 @@ RUN zsh -c "source $HOME/.zshrc \
 ENV OPENSEARCH_VERSION "2.4.1"
 RUN wget -q -P $HOME/downloads \
     https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
-RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C /opt
+RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C /opt \
+    && mv /opt/opensearch-${OPENSEARCH_VERSION} /opt/opensearch
 
 # https://min.io/download#/linux
 RUN wget -q -O /usr/bin/minio \
@@ -280,10 +281,10 @@ ADD conan /opt/conan
 # RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh armhf"
 
 # https://opensearch.org/docs/latest/opensearch/install/tar/
-RUN echo "network.host: 0.0.0.0" >> /opt/opensearch-${OPENSEARCH_VERSION}/config/opensearch.yml \
-    && echo "discovery.type: single-node" >> /opt/opensearch-${OPENSEARCH_VERSION}/config/opensearch.yml \
-    && echo "plugins.security.disabled: true" >> /opt/opensearch-${OPENSEARCH_VERSION}/config/opensearch.yml \
-    && chown -R nobody /opt/opensearch-${OPENSEARCH_VERSION}
+RUN echo "network.host: 0.0.0.0" >> /opt/opensearch/config/opensearch.yml \
+    && echo "discovery.type: single-node" >> /opt/opensearch/config/opensearch.yml \
+    && echo "plugins.security.disabled: true" >> /opt/opensearch/config/opensearch.yml \
+    && chown -R nobody /opt/opensearch
 
 RUN mkdir -p /var/lib/minio/data \
     && chown -R nobody /var/lib/minio

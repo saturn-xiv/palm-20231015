@@ -16,7 +16,7 @@ RUN apt update && apt -y upgrade
 
 ENV GCC_VERSION 10
 ENV CLANG_VERSION 12
-RUN apt -y install zsh git locales locales-all \
+RUN apt -y install wget curl zsh git locales locales-all \
     vim tzdata zip unzip tree tmux \
     build-essential crossbuild-essential-arm64 \
     g++-${GCC_VERSION} g++-${GCC_VERSION}-aarch64-linux-gnu \
@@ -75,21 +75,20 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 RUN zsh -c "source $HOME/.cargo/env && rustup target add aarch64-unknown-linux-gnu"
 
 # https://github.com/rui314/mold
-RUN git clone -b v1.9.0 https://github.com/rui314/mold.git $HOME/downloads/mold
-RUN apt install -y g++-10 \
-    libssl-dev libxxhash-dev zlib1g-dev \
+RUN git clone -b v1.10.1 https://github.com/rui314/mold.git $HOME/downloads/mold
+RUN apt install -y libssl-dev libxxhash-dev zlib1g-dev \
     file bsdmainutils
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir $HOME/build/mold \
     && cd $HOME/build/mold \
-    && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-10 \
+    && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-${GCC_VERSION} \
         -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/mold \
-    && make -j \
+    && make \
     && make install"
 RUN cp $HOME/.local/bin/mold /usr/bin/
 
 # https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.51.1"
+ENV GRPC_VERSION "v1.52.0"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir -pv $HOME/build/grpc \

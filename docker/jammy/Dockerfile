@@ -15,7 +15,7 @@ RUN echo "deb [arch=arm64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates m
 RUN apt update
 RUN apt -y upgrade
 
-RUN apt -y install zsh git locales locales-all \
+RUN apt -y install wget curl zsh git locales locales-all \
     vim tzdata zip unzip tree tmux \
     build-essential crossbuild-essential-arm64 clang lldb lld mold \
     cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio \
@@ -62,9 +62,35 @@ RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.zshrc
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 RUN zsh -c "source $HOME/.cargo/env && rustup target add aarch64-unknown-linux-gnu"
 
+# https://github.com/richfelker/musl-cross-make
+RUN git clone https://github.com/richfelker/musl-cross-make.git $HOME/build/musl-cross-make
+RUN cd $HOME/build/musl-cross-make \
+    && echo "TARGET=x86_64-linux-musl" > config.mak \
+    && echo "OUTPUT=/opt/crosstools" >> config.mak \
+    && make \
+    && make install \
+    && make clean 
+RUN cd $HOME/build/musl-cross-make \
+    && echo "TARGET=aarch64-linux-musl" > config.mak \
+    && echo "OUTPUT=/opt/crosstools" >> config.mak \
+    && make \
+    && make install \
+    && make clean
+RUN cd $HOME/build/musl-cross-make \
+    && echo "TARGET=arm-linux-musleabihf" > config.mak \
+    && echo "OUTPUT=/opt/crosstools" >> config.mak \
+    && make \
+    && make install \
+    && make clean
+RUN echo 'export PATH=/opt/crosstools/bin:$PATH' >> $HOME/.zshrc
+
+# https://github.com/microsoft/vcpkg
+RUN git clone https://github.com/microsoft/vcpkg.git $HOME/local/vcpkg
+RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
+    && echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.zshrc
 
 # https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.51.1"
+ENV GRPC_VERSION "v1.52.0"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 RUN apt install -y libssl-dev
 RUN zsh -c "source $HOME/.zshrc \
