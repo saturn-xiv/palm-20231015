@@ -7,11 +7,11 @@ service Jwt {
 }
 
 service Hmac {
-    string sign(1:string auth, 2:string plain),
-    void verify(1:string auth, 2:string code, 3:string plain),
+    binary sign(1:string auth, 2:binary plain),
+    void verify(1:string auth, 2:binary code, 3:binary plain),
 }
 
 service Aes {
-    string encrypt(1:string auth, 2:string plain),
-    string decrypt(1:string auth, 2:string code),
+    binary encrypt(1:string auth, 2:binary plain),
+    binary decrypt(1:string auth, 2:binary code),
 }

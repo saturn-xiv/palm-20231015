@@ -2,7 +2,7 @@ use hyper::header::{ACCEPT_LANGUAGE, AUTHORIZATION};
 use language_tags::LanguageTag;
 use tonic::{metadata::MetadataMap, Request};
 
-use super::jwt::Jwt;
+use super::jwt::BEARER;
 
 pub struct Session {
     pub lang: String,
@@ -25,7 +25,7 @@ impl Session {
     fn detect_token(meta: &MetadataMap) -> Option<String> {
         if let Some(it) = meta.get(AUTHORIZATION.as_str().to_lowercase()) {
             if let Ok(it) = it.to_str() {
-                if let Some(ref it) = it.strip_prefix(Jwt::BEARER) {
+                if let Some(ref it) = it.strip_prefix(BEARER) {
                     return Some(it.to_string());
                 }
             }

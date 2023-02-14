@@ -6,7 +6,7 @@ use chrono::Duration;
 use diesel::sqlite::SqliteConnection as Db;
 use hyper::StatusCode;
 use palm::{
-    crypto::Hmac, jwt::Jwt, ops::router::v1, session::Session, to_chrono_duration, try_grpc,
+    jwt::Jwt, ops::router::v1, session::Session, tink::Loquat, to_chrono_duration, try_grpc,
     GrpcResult, HttpError, Result,
 };
 use serde::{Deserialize, Serialize};
@@ -16,8 +16,7 @@ use super::super::models::setting::Dao as SettingDao;
 
 pub struct Service {
     pub db: Arc<Mutex<Db>>,
-    pub jwt: Arc<Jwt>,
-    pub hmac: Arc<Hmac>,
+    pub loquat: Arc<Loquat>,
 }
 
 #[tonic::async_trait]
@@ -111,14 +110,6 @@ impl v1::user_server::User for Service {
         let items = try_grpc!(palm::network::logs())?;
         Ok(Response::new(v1::UserLogsResponse { items }))
     }
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Token {
-    pub aud: String,
-    pub nbf: i64,
-    pub exp: i64,
 }
 
 pub fn build_token(user: &str, jwt: &Jwt, ttl: Duration) -> Result<String> {

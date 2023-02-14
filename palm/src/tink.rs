@@ -1,4 +1,5 @@
 use chrono::Duration;
+use serde::{Deserialize, Serialize};
 use thrift::{
     protocol::{TBinaryInputProtocol, TBinaryOutputProtocol, TMultiplexedOutputProtocol},
     transport::{
@@ -8,6 +9,8 @@ use thrift::{
 };
 
 use super::{
+    crypto::{Password, Secret},
+    jwt::Jwt,
     loquat::{
         AesSyncClient, HmacSyncClient, JwtSyncClient, TAesSyncClient, THmacSyncClient,
         TJwtSyncClient,
@@ -15,9 +18,11 @@ use super::{
     Result,
 };
 
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Loquat {
     pub host: String,
     pub port: u16,
+    pub token: String,
 }
 
 impl Default for Loquat {
@@ -25,7 +30,57 @@ impl Default for Loquat {
         Self {
             host: "127.0.0.1".to_string(),
             port: 8080,
+            token: "demo".to_string(),
         }
+    }
+}
+
+impl Jwt for Loquat {
+    fn sign(&self, subject: &str, ttl: Duration) -> Result<String> {
+        let (i_prot, o_prot) = self.open(Self::JWT)?;
+        let mut client = JwtSyncClient::new(i_prot, o_prot);
+        let token = client.sign(self.token.clone(), subject.to_string(), ttl.num_seconds())?;
+        Ok(token)
+    }
+
+    fn verify(&self, token: &str) -> Result<String> {
+        let (i_prot, o_prot) = self.open(Self::JWT)?;
+        let mut client = JwtSyncClient::new(i_prot, o_prot);
+        let subject = client.verify(self.token.clone(), token.to_string())?;
+        Ok(subject)
+    }
+}
+
+impl Password for Loquat {
+    fn sign(&self, plain: &[u8]) -> Result<Vec<u8>> {
+        let (i_prot, o_prot) = self.open(Self::HMAC)?;
+        let mut client = HmacSyncClient::new(i_prot, o_prot);
+        let token = client.sign(self.token.clone(), plain.to_vec())?;
+        Ok(token)
+    }
+    fn verify(&self, code: &[u8], plain: &[u8]) -> bool {
+        if let Ok((i_prot, o_prot)) = self.open(Self::HMAC) {
+            let mut client = HmacSyncClient::new(i_prot, o_prot);
+            return client
+                .verify(self.token.clone(), code.to_vec(), plain.to_vec())
+                .is_ok();
+        }
+        false
+    }
+}
+
+impl Secret for Loquat {
+    fn encrypt(&self, plain: &[u8]) -> Result<(Vec<u8>, Vec<u8>)> {
+        let (i_prot, o_prot) = self.open(Self::AES)?;
+        let mut client = AesSyncClient::new(i_prot, o_prot);
+        let token = client.encrypt(self.token.clone(), plain.to_vec())?;
+        Ok((token, Vec::new()))
+    }
+    fn decrypt(&self, code: &[u8], _iv: &[u8]) -> Result<Vec<u8>> {
+        let (i_prot, o_prot) = self.open(Self::AES)?;
+        let mut client = AesSyncClient::new(i_prot, o_prot);
+        let subject = client.decrypt(self.token.clone(), code.to_vec())?;
+        Ok(subject)
     }
 }
 
@@ -38,48 +93,6 @@ impl Loquat {
     const JWT: &str = "N6loquat10JwtHandlerE";
     const AES: &str = "N6loquat10AesHandlerE";
     const HMAC: &str = "N6loquat11HmacHandlerE";
-
-    pub fn jwt_sign(&self, zone: &str, subject: &str, ttl: Duration) -> Result<String> {
-        let (i_prot, o_prot) = self.open(Self::JWT)?;
-        let mut client = JwtSyncClient::new(i_prot, o_prot);
-        let token = client.sign(zone.to_string(), subject.to_string(), ttl.num_seconds())?;
-        Ok(token)
-    }
-
-    pub fn jwt_verify(&self, zone: &str, token: &str) -> Result<String> {
-        let (i_prot, o_prot) = self.open(Self::JWT)?;
-        let mut client = JwtSyncClient::new(i_prot, o_prot);
-        let subject = client.verify(zone.to_string(), token.to_string())?;
-        Ok(subject)
-    }
-
-    pub fn hmac_sign(&self, zone: &str, plain: &str) -> Result<String> {
-        let (i_prot, o_prot) = self.open(Self::HMAC)?;
-        let mut client = HmacSyncClient::new(i_prot, o_prot);
-        let token = client.sign(zone.to_string(), plain.to_string())?;
-        Ok(token)
-    }
-
-    pub fn hmac_verify(&self, zone: &str, code: &str, plain: &str) -> Result<()> {
-        let (i_prot, o_prot) = self.open(Self::HMAC)?;
-        let mut client = HmacSyncClient::new(i_prot, o_prot);
-        client.verify(zone.to_string(), code.to_string(), plain.to_string())?;
-        Ok(())
-    }
-
-    pub fn aes_encrypt(&self, zone: &str, plain: &str) -> Result<String> {
-        let (i_prot, o_prot) = self.open(Self::AES)?;
-        let mut client = AesSyncClient::new(i_prot, o_prot);
-        let token = client.encrypt(zone.to_string(), plain.to_string())?;
-        Ok(token)
-    }
-
-    pub fn aes_decrypt(&self, zone: &str, code: &str) -> Result<String> {
-        let (i_prot, o_prot) = self.open(Self::AES)?;
-        let mut client = AesSyncClient::new(i_prot, o_prot);
-        let subject = client.decrypt(zone.to_string(), code.to_string())?;
-        Ok(subject)
-    }
 
     fn open(&self, service: &str) -> Result<(Input, Output)> {
         let mut ch = TTcpChannel::new();

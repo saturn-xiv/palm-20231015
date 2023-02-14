@@ -1,5 +1,4 @@
 pub mod server;
-pub mod token;
 
 use std::ops::Deref;
 use std::path::PathBuf;
@@ -32,10 +31,6 @@ impl Args {
                 let env = Arc::new(env);
                 it.launch(env).await?;
             }
-            SubCommand::Token(ref it) => {
-                let token = it.launch(&env.jwt_key)?;
-                println!("{token}");
-            }
         };
         Ok(())
     }
@@ -45,6 +40,4 @@ impl Args {
 pub enum SubCommand {
     #[clap(about = "Start a rpc server")]
     Server(server::Config),
-    #[clap(about = "Generate a client token")]
-    Token(token::Config),
 }

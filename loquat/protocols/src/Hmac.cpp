@@ -44,7 +44,7 @@ uint32_t Hmac_sign_args::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->plain);
+          xfer += iprot->readBinary(this->plain);
           this->__isset.plain = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -72,7 +72,7 @@ uint32_t Hmac_sign_args::write(::apache::thrift::protocol::TProtocol* oprot) con
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("plain", ::apache::thrift::protocol::T_STRING, 2);
-  xfer += oprot->writeString(this->plain);
+  xfer += oprot->writeBinary(this->plain);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -95,7 +95,7 @@ uint32_t Hmac_sign_pargs::write(::apache::thrift::protocol::TProtocol* oprot) co
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("plain", ::apache::thrift::protocol::T_STRING, 2);
-  xfer += oprot->writeString((*(this->plain)));
+  xfer += oprot->writeBinary((*(this->plain)));
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -131,7 +131,7 @@ uint32_t Hmac_sign_result::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 0:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->success);
+          xfer += iprot->readBinary(this->success);
           this->__isset.success = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -157,7 +157,7 @@ uint32_t Hmac_sign_result::write(::apache::thrift::protocol::TProtocol* oprot) c
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRING, 0);
-    xfer += oprot->writeString(this->success);
+    xfer += oprot->writeBinary(this->success);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -193,7 +193,7 @@ uint32_t Hmac_sign_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 0:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString((*(this->success)));
+          xfer += iprot->readBinary((*(this->success)));
           this->__isset.success = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -247,7 +247,7 @@ uint32_t Hmac_verify_args::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->code);
+          xfer += iprot->readBinary(this->code);
           this->__isset.code = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -255,7 +255,7 @@ uint32_t Hmac_verify_args::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 3:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->plain);
+          xfer += iprot->readBinary(this->plain);
           this->__isset.plain = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -283,11 +283,11 @@ uint32_t Hmac_verify_args::write(::apache::thrift::protocol::TProtocol* oprot) c
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("code", ::apache::thrift::protocol::T_STRING, 2);
-  xfer += oprot->writeString(this->code);
+  xfer += oprot->writeBinary(this->code);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("plain", ::apache::thrift::protocol::T_STRING, 3);
-  xfer += oprot->writeString(this->plain);
+  xfer += oprot->writeBinary(this->plain);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -310,11 +310,11 @@ uint32_t Hmac_verify_pargs::write(::apache::thrift::protocol::TProtocol* oprot) 
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("code", ::apache::thrift::protocol::T_STRING, 2);
-  xfer += oprot->writeString((*(this->code)));
+  xfer += oprot->writeBinary((*(this->code)));
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("plain", ::apache::thrift::protocol::T_STRING, 3);
-  xfer += oprot->writeString((*(this->plain)));
+  xfer += oprot->writeBinary((*(this->plain)));
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();

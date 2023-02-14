@@ -217,7 +217,7 @@ impl Validate for ops_router::v1::Dns {
 
 impl ops_router::v1::UserProfile {
     pub fn password(hmac: &Hmac, plain: &str) -> Result<String> {
-        let buf = hmac.sum(plain.as_bytes())?;
+        let buf = hmac.sign(plain.as_bytes())?;
         let it = String::from_utf8_lossy(&buf[..]);
         Ok(it.to_string())
     }

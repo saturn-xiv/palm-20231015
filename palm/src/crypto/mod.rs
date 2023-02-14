@@ -15,7 +15,7 @@ use serde::{Deserialize, Serialize};
 use super::Result;
 
 pub trait Password {
-    fn sum(&self, plain: &[u8]) -> Result<Vec<u8>>;
+    fn sign(&self, plain: &[u8]) -> Result<Vec<u8>>;
     fn verify(&self, cipher: &[u8], plain: &[u8]) -> bool;
 }
 
@@ -57,14 +57,14 @@ impl Hmac {
 }
 
 impl Password for Hmac {
-    fn sum(&self, plain: &[u8]) -> Result<Vec<u8>> {
+    fn sign(&self, plain: &[u8]) -> Result<Vec<u8>> {
         let mut signer = Signer::new(self.digest, &self.key)?;
         signer.update(plain)?;
         let cipher = signer.sign_to_vec()?;
         Ok(cipher)
     }
     fn verify(&self, cipher: &[u8], plain: &[u8]) -> bool {
-        if let Ok(buf) = self.sum(plain) {
+        if let Ok(buf) = self.sign(plain) {
             return memcmp::eq(&buf, cipher);
         }
         false

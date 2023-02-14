@@ -5,7 +5,7 @@ use futures::future::{ok, Ready};
 use hyper::header::AUTHORIZATION;
 use serde::{Deserialize, Serialize};
 
-use super::super::jwt::Jwt;
+use super::super::jwt::BEARER;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Token(pub Option<String>);
@@ -21,7 +21,7 @@ impl Token {
         // 1. Check header
         if let Some(it) = req.headers().get(AUTHORIZATION) {
             if let Ok(it) = it.to_str() {
-                if let Some(it) = it.strip_prefix(Jwt::BEARER) {
+                if let Some(it) = it.strip_prefix(BEARER) {
                     return Some(it.to_string());
                 }
             }

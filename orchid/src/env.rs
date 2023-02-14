@@ -1,6 +1,6 @@
 use hyper::StatusCode;
 use palm::{
-    cache::redis::Config as Redis, crypto::Key, jwt::Jwt, nut::v1::WechatProfile, session::Session,
+    cache::redis::Config as Redis, nut::v1::WechatProfile, session::Session, tink::Loquat,
     HttpError, Result,
 };
 use serde::{Deserialize, Serialize};
@@ -24,8 +24,9 @@ impl From<WeChat> for WechatProfile {
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Config {
-    #[serde(rename = "jwt-key")]
-    pub jwt_key: Key,
+    #[serde(rename = "cluster-token")]
+    pub cluster_token: String,
+    pub loquat: Loquat,
     pub redis: Redis,
     pub wechat: Vec<WeChat>,
     pub google: Vec<Google>,
@@ -34,24 +35,15 @@ pub struct Config {
 
 impl Config {
     pub fn auth(&self, ss: &Session) -> Result<()> {
-        let jwt = Jwt::new(self.jwt_key.0.clone());
         if let Some(ref token) = ss.token {
-            let payload = jwt.parse::<Agent>(token)?;
-            if self.agents.contains(&payload.claims.aud) {
+            let sub = self.loquat.jwt_verify(&self.cluster_token, token)?;
+            if self.agents.contains(&sub) {
                 return Ok(());
             }
-            error!("unknown agent {}", payload.claims.aud);
+            error!("unknown agent {}", sub);
         } else {
             error!("agent token is nil");
         }
         Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))
     }
-}
-
-#[derive(Serialize, Deserialize, Default, Debug, Clone)]
-#[serde(rename_all = "camelCase")]
-pub struct Agent {
-    pub aud: String,
-    pub nbf: i64,
-    pub exp: i64,
 }
