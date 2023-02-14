@@ -3,13 +3,13 @@ use diesel::Connection as DieselConntection;
 use nut::{
     models::{
         log::Dao as LogDao,
-        user::{Dao as UserDao, Item as User},
+        user::{Action, Dao as UserDao, Item as User},
     },
     orm::postgresql::Connection as Db,
 };
 use palm::{
-    crypto::Hmac, jwt::Jwt, nut::v1::user_logs_response::item::Level::Info as LogLevelInfo, Error,
-    Result,
+    crypto::Password, jwt::Jwt, nut::v1::user_logs_response::item::Level::Info as LogLevelInfo,
+    Error, Result,
 };
 
 #[derive(clap::Parser, PartialEq, Eq, Debug)]
@@ -20,9 +20,13 @@ pub struct Token {
     pub weeks: u32,
 }
 impl Token {
-    pub fn execute(&self, db: &mut Db, jwt: &Jwt) -> Result<String> {
+    pub fn execute<P: Jwt>(&self, db: &mut Db, jwt: &P) -> Result<String> {
         let user = UserDao::by_uid(db, &self.user)?;
-        let token = user.token(jwt, Duration::weeks(self.weeks as i64))?;
+        let token = jwt.sign(
+            &user.nickname,
+            &Action::SignIn.to_string(),
+            Duration::weeks(self.weeks as i64),
+        )?;
         Ok(token)
     }
 }
@@ -77,7 +81,7 @@ pub struct ResetPassword {
 }
 
 impl ResetPassword {
-    pub fn execute(&self, db: &mut Db, hmac: &Hmac) -> Result<()> {
+    pub fn execute<P: Password>(&self, db: &mut Db, hmac: &P) -> Result<()> {
         let user = UserDao::by_uid(db, &self.user)?;
         db.transaction::<_, Error, _>(move |db| {
             let un = nix::sys::utsname::uname()?;

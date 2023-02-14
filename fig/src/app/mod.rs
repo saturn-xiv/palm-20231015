@@ -9,10 +9,7 @@ use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
 use nut::models::locale::Dao as LocaleDao;
-use palm::{
-    cache::Provider, crypto::Hmac, is_stopped, jwt::Jwt, parser::from_toml, Result, BANNER,
-    HOMEPAGE, VERSION,
-};
+use palm::{cache::Provider, is_stopped, parser::from_toml, Result, BANNER, HOMEPAGE, VERSION};
 
 use super::env::Config;
 
@@ -129,7 +126,6 @@ pub async fn launch() -> Result<()> {
         let db = cfg.postgresql.open()?;
         let mut db = db.get()?;
         let db = db.deref_mut();
-        let hmac = Hmac::new(&cfg.secret_key.0)?;
 
         {
             if args.command == SubCommand::UserList {
@@ -139,11 +135,10 @@ pub async fn launch() -> Result<()> {
                 return it.execute(db);
             }
             if let SubCommand::UserResetPassword(ref it) = args.command {
-                return it.execute(db, &hmac);
+                return it.execute(db, &cfg.hmac);
             }
             if let SubCommand::UserToken(ref it) = args.command {
-                let jwt = Jwt::new(cfg.jwt_key.0.clone());
-                let token = it.execute(db, &jwt)?;
+                let token = it.execute(db, &cfg.jwt)?;
                 println!("{:?}", token);
                 return Ok(());
             }

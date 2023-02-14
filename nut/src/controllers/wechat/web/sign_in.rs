@@ -6,13 +6,17 @@ use actix_web::{
 use chrono::Duration;
 use palm::{
     crypto::Aes, handlers::peer::ClientIp, jwt::Jwt, nut::v1::WechatProfile,
-    orchid::v1::WeChatLoginRequest, try_web, wechat::api::qr_connect::Request as UrlRequest,
+    orchid::v1::WeChatLoginRequest, tink::Loquat, try_web,
+    wechat::api::qr_connect::Request as UrlRequest,
 };
 use serde::{Deserialize, Serialize};
 use tonic::Request;
 
 use super::super::super::super::{
-    models::{setting::get as get_setting, user::Dao as UserDao},
+    models::{
+        setting::get as get_setting,
+        user::{Action, Dao as UserDao},
+    },
     orm::postgresql::Pool as DbPool,
     Oauth,
 };
@@ -21,7 +25,7 @@ use super::super::SignInResponse;
 #[get("/url")]
 pub async fn url(
     db: web::Data<DbPool>,
-    aes: web::Data<Aes>,
+    aes: web::Data<Loquat>,
     form: web::Json<UrlRequest>,
 ) -> WebResult<impl Responder> {
     let form = form.into_inner();
@@ -45,7 +49,7 @@ pub struct CallbackQuery {
 pub async fn callback(
     db: web::Data<DbPool>,
     client_ip: ClientIp,
-    jwt: web::Data<Jwt>,
+    jwt: web::Data<Loquat>,
     aes: web::Data<Aes>,
     form: web::Query<CallbackQuery>,
     oauth: web::Data<Oauth>,
@@ -64,13 +68,17 @@ pub async fn callback(
         app_id: cfg.app_id.clone(),
         code: form.code.clone(),
     });
-    try_web!(Jwt::authorization(&mut req, &oauth.token))?;
+    try_web!(Loquat::authorization(&mut req, &oauth.token))?;
 
     let res = try_web!(cli.login(req).await)?;
     debug!("fetch wechat user {:?}", res);
     let res = res.into_inner();
     let user = try_web!(UserDao::wechat(db, &client_ip, &cfg.app_id, &res))?;
-    let token = try_web!(user.token(jwt, Duration::days(1)))?;
+    let token = try_web!(jwt.sign(
+        &user.nickname,
+        &Action::SignIn.to_string(),
+        Duration::days(1)
+    ))?;
     Ok(web::Json(SignInResponse {
         real_name: user.real_name,
         token,

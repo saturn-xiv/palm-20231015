@@ -3,10 +3,9 @@ use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
 use casbin::{Enforcer, MgmtApi, RbacApi};
-use palm::rbac::v1::UserRequest;
 use palm::{
-    cache::redis::Pool as RedisPool, has_permission, has_role, jwt::Jwt, rbac::v1,
-    session::Session, try_grpc, GrpcResult,
+    cache::redis::Pool as RedisPool, has_permission, has_role, rbac::v1, rbac::v1::UserRequest,
+    session::Session, tink::Loquat, try_grpc, GrpcResult,
 };
 use tokio::sync::Mutex;
 use tonic::{Response, Status};
@@ -17,7 +16,7 @@ use super::CurrentUserAdapter;
 pub struct Service {
     pub redis: RedisPool,
     pub pgsql: PostgreSqlPool,
-    pub jwt: Arc<Jwt>,
+    pub jwt: Arc<Loquat>,
     pub enforcer: Arc<Mutex<Enforcer>>,
 }
 

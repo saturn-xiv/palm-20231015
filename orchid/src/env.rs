@@ -1,7 +1,7 @@
 use hyper::StatusCode;
 use palm::{
-    cache::redis::Config as Redis, nut::v1::WechatProfile, session::Session, tink::Loquat,
-    HttpError, Result,
+    cache::redis::Config as Redis, jwt::Jwt, nut::v1::WechatProfile, session::Session,
+    tink::Loquat, HttpError, Result,
 };
 use serde::{Deserialize, Serialize};
 
@@ -24,9 +24,7 @@ impl From<WeChat> for WechatProfile {
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Config {
-    #[serde(rename = "cluster-token")]
-    pub cluster_token: String,
-    pub loquat: Loquat,
+    pub jwt: Loquat,
     pub redis: Redis,
     pub wechat: Vec<WeChat>,
     pub google: Vec<Google>,
@@ -36,7 +34,7 @@ pub struct Config {
 impl Config {
     pub fn auth(&self, ss: &Session) -> Result<()> {
         if let Some(ref token) = ss.token {
-            let sub = self.loquat.jwt_verify(&self.cluster_token, token)?;
+            let sub = self.jwt.verify(token, "")?;
             if self.agents.contains(&sub) {
                 return Ok(());
             }

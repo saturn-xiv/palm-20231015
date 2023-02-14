@@ -6,18 +6,18 @@ use palm::{
     minio::Config as Minio,
     queue::amqp::Config as RabbitMqConfig,
     search::Config as OpenSearch,
+    tink::Loquat,
 };
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Config {
     pub env: Environment,
-    #[serde(rename = "secret-key")]
-    pub secret_key: Key,
     #[serde(rename = "cookie-key")]
     pub cookie_key: Key,
-    #[serde(rename = "jwt-key")]
-    pub jwt_key: Key,
+    pub aes: Loquat,
+    pub hmac: Loquat,
+    pub jwt: Loquat,
     pub http: Http,
     pub rpc: Rpc,
     pub postgresql: PostgreSql,

@@ -12,7 +12,6 @@ pub mod user;
 use std::fmt::Display;
 
 use casbin::{Enforcer, RbacApi};
-use chrono::Duration;
 use hyper::StatusCode;
 use palm::{
     cache::redis::ClusterConnection as Cache,
@@ -25,24 +24,22 @@ use palm::{
 use tokio::sync::Mutex;
 
 use super::{
-    models::user::{Action, Dao as UserDao, Item as User, Token},
+    models::user::{Action, Dao as UserDao, Item as User},
     orm::postgresql::Connection as Db,
 };
 
 pub trait CurrentUserAdapter {
-    fn current_user(&self, db: &mut Db, ch: &mut Cache, jwt: &Jwt) -> Result<User>;
+    fn current_user<P: Jwt>(&self, db: &mut Db, ch: &mut Cache, jwt: &P) -> Result<User>;
 }
 
 impl CurrentUserAdapter for Session {
-    fn current_user(&self, db: &mut Db, _ch: &mut Cache, jwt: &Jwt) -> Result<User> {
+    fn current_user<P: Jwt>(&self, db: &mut Db, _ch: &mut Cache, jwt: &P) -> Result<User> {
         if let Some(ref token) = self.token {
-            let token = jwt.parse::<Token>(token)?;
-            let token = token.claims;
-            if token.act == Action::SignIn {
-                let it = UserDao::by_uid(db, &token.aud)?;
-                it.available()?;
-                return Ok(it);
-            }
+            let nickname = jwt.verify(token, &Action::SignIn.to_string())?;
+
+            let it = UserDao::by_nickname(db, &nickname)?;
+            it.available()?;
+            return Ok(it);
         }
 
         Err(Box::new(HttpError(
@@ -53,17 +50,6 @@ impl CurrentUserAdapter for Session {
 }
 
 impl User {
-    pub fn token(&self, jwt: &Jwt, ttl: Duration) -> Result<String> {
-        let (nbf, exp) = Jwt::timestamps(ttl);
-        let token = Token {
-            aud: self.uid.clone(),
-            act: Action::SignIn,
-            exp,
-            nbf,
-        };
-        jwt.sum(None, &token)
-    }
-
     pub async fn has(&self, enforcer: &Mutex<Enforcer>, role: &str) -> bool {
         let role = RoleRequest {
             code: role.to_string(),

@@ -22,9 +22,7 @@ use hyper::{
 use nix::unistd::getpid;
 use palm::{
     aws::s3::Config as S3,
-    crypto::{Aes, Hmac},
     env::Environment,
-    jwt::Jwt,
     queue::amqp::RabbitMq,
     rbac::{Handler as RbacHandler, Watcher as RbacWatcher},
     Result, NAME,
@@ -38,9 +36,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
 
     let pgsql = web::Data::new(pg_pool);
     let redis = web::Data::new(cfg.redis.open()?);
-    let aes = web::Data::new(Aes::new(&cfg.secret_key.0)?);
-    let hmac = web::Data::new(Hmac::new(&cfg.secret_key.0)?);
-    let jwt = web::Data::new(Jwt::new(cfg.jwt_key.0.clone()));
+    let jwt = web::Data::new(cfg.jwt.clone());
     let rabbitmq = web::Data::new(cfg.rabbitmq.open());
     let oauth = web::Data::new(cfg.oauth.clone());
     let s3 = web::Data::new(S3::from(cfg.minio.clone()));
@@ -111,8 +107,6 @@ pub async fn launch(cfg: &Config) -> Result<()> {
         App::new()
             .app_data(pgsql.clone())
             .app_data(redis.clone())
-            .app_data(aes.clone())
-            .app_data(hmac.clone())
             .app_data(jwt.clone())
             .app_data(rabbitmq.clone())
             .app_data(oauth.clone())

@@ -1,7 +1,7 @@
 use std::sync::Arc;
 
 use casbin::Enforcer;
-use palm::{cache::redis::Pool as RedisPool, jwt::Jwt, nut::v1, GrpcResult};
+use palm::{cache::redis::Pool as RedisPool, nut::v1, tink::Loquat, GrpcResult};
 use tokio::sync::Mutex;
 use tonic::{Request, Response};
 
@@ -9,7 +9,7 @@ use super::super::orm::postgresql::Pool as PostgreSqlPool;
 
 pub struct Service {
     pub pgsql: PostgreSqlPool,
-    pub jwt: Arc<Jwt>,
+    pub jwt: Arc<Loquat>,
     pub redis: RedisPool,
     pub enforcer: Arc<Mutex<Enforcer>>,
 }

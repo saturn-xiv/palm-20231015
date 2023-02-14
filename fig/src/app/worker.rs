@@ -4,9 +4,9 @@ use std::ops::DerefMut;
 use hyper::StatusCode;
 use nut::models::setting::get;
 use palm::{
-    crypto::Aes,
     nut::v1::{EmailTask, SmtpProfile},
     queue::amqp::RabbitMq,
+    tink::Loquat,
     HttpError, Result,
 };
 
@@ -23,13 +23,12 @@ pub async fn launch(cfg: &Config, name: &str) -> Result<()> {
     let db = cfg.postgresql.open()?;
     let mut db = db.get()?;
     let db = db.deref_mut();
-    let aes = Aes::new(&cfg.secret_key.0)?;
     let ch = queue.open().await?;
 
     {
         let queue = type_name::<EmailTask>();
         if name == queue {
-            let cfg = get::<SmtpProfile, Aes>(db, &aes, None)?;
+            let cfg = get::<SmtpProfile, Loquat>(db, &cfg.aes, None)?;
             return RabbitMq::consume(&ch, &id, queue, &cfg).await;
         }
     }

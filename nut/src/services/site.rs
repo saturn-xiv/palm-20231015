@@ -17,14 +17,14 @@ use palm::{
         redis::{ClusterConnection as RedisConnection, Pool as RedisPool},
         Provider as CacheProvider,
     },
-    crypto::{Aes, Hmac},
-    jwt::Jwt,
+    crypto::Secret,
     nut::v1,
     queue::amqp::RabbitMq,
     rbac::v1::{RoleRequest, UserRequest},
     search::OpenSearch,
     seo::Provider as SeoProvider,
     session::Session,
+    tink::Loquat,
     to_code, to_timestamp, try_grpc,
     wechat::Client as WechatClient,
     Error, GrpcResult, Result,
@@ -48,9 +48,9 @@ use super::CurrentUserAdapter;
 
 pub struct Service {
     pub pgsql: PostgreSqlPool,
-    pub jwt: Arc<Jwt>,
-    pub aes: Arc<Aes>,
-    pub hmac: Arc<Hmac>,
+    pub jwt: Arc<Loquat>,
+    pub aes: Arc<Loquat>,
+    pub hmac: Arc<Loquat>,
     pub redis: RedisPool,
     pub rabbitmq: Arc<RabbitMq>,
     pub opensearch: Arc<OpenSearch>,
@@ -368,7 +368,7 @@ impl v1::site_server::Site for Service {
             return Err(Status::permission_denied(type_name::<v1::TwilioProfile>()));
         }
 
-        let it = try_grpc!(get::<v1::WechatProfile, Aes>(db, aes, None))?;
+        let it = try_grpc!(get::<v1::WechatProfile, Loquat>(db, aes, None))?;
 
         Ok(Response::new(it))
     }
@@ -389,7 +389,7 @@ impl v1::site_server::Site for Service {
             return Err(Status::permission_denied(type_name::<v1::TwilioProfile>()));
         }
 
-        let cfg = try_grpc!(get::<v1::WechatProfile, Aes>(db, aes, None))?;
+        let cfg = try_grpc!(get::<v1::WechatProfile, Loquat>(db, aes, None))?;
         let cli = WechatClient {
             config: cfg,
             redis: self.redis.clone(),
@@ -436,7 +436,7 @@ impl v1::site_server::Site for Service {
             return Err(Status::permission_denied(type_name::<v1::TwilioProfile>()));
         }
 
-        let it = try_grpc!(get::<v1::TwilioProfile, Aes>(db, aes, None))?;
+        let it = try_grpc!(get::<v1::TwilioProfile, Loquat>(db, aes, None))?;
 
         Ok(Response::new(it))
     }
@@ -500,7 +500,7 @@ impl v1::site_server::Site for Service {
             return Err(Status::permission_denied(type_name::<v1::SmtpProfile>()));
         }
 
-        let it = try_grpc!(get::<v1::SmtpProfile, Aes>(db, aes, None))?;
+        let it = try_grpc!(get::<v1::SmtpProfile, Loquat>(db, aes, None))?;
 
         Ok(Response::new(it))
     }
@@ -831,9 +831,9 @@ impl v1::site_server::Site for Service {
 
 // ----------------------------------------------------------------------------
 
-pub fn new_site_layout_response(
+pub fn new_site_layout_response<P: Secret>(
     db: &mut PostgreSqlConnection,
-    aes: &Aes,
+    aes: &P,
     lang: &str,
 ) -> Result<v1::SiteLayoutResponse> {
     let keywords: Vec<String> = SettingDao::get(

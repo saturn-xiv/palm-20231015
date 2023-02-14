@@ -8,12 +8,12 @@ use diesel::Connection as DieselConntection;
 use hyper::StatusCode;
 use palm::{
     cache::redis::Pool as RedisPool,
-    crypto::Hmac,
     jwt::Jwt,
     nut::v1,
     queue::amqp::RabbitMq,
     rbac::v1::{resources_response::Item as Resource, RoleRequest, UserRequest},
     session::Session,
+    tink::Loquat,
     to_chrono_duration, to_code, to_timestamp, try_grpc, Error, GrpcResult, HttpError, Result,
 };
 use tokio::sync::Mutex;
@@ -23,7 +23,7 @@ use super::super::{
     i18n::I18n,
     models::{
         log::Dao as LogDao,
-        user::{Action, Dao as UserDao, Item as User, Token},
+        user::{Action, Dao as UserDao, Item as User},
     },
     orm::postgresql::{Connection as Db, Pool as PostgreSqlPool},
 };
@@ -32,8 +32,8 @@ use super::CurrentUserAdapter;
 pub struct Service {
     pub redis: RedisPool,
     pub pgsql: PostgreSqlPool,
-    pub jwt: Arc<Jwt>,
-    pub hmac: Arc<Hmac>,
+    pub jwt: Arc<Loquat>,
+    pub hmac: Arc<Loquat>,
     pub rabbitmq: Arc<RabbitMq>,
     pub enforcer: Arc<Mutex<Enforcer>>,
 }
@@ -151,16 +151,8 @@ impl v1::user_server::User for Service {
         let db = db.deref_mut();
         let req = req.into_inner();
 
-        let token = try_grpc!(self.jwt.parse::<Token>(&req.payload))?;
-        let token = token.claims;
-        if token.act != Action::Confirm {
-            return Err(Status::invalid_argument(format!(
-                "bad request {:?}",
-                token.act
-            )));
-        }
-
-        let user = try_grpc!(UserDao::by_uid(db, &token.aud))?;
+        let nickname = try_grpc!(self.jwt.verify(&req.payload, &Action::Confirm.to_string()))?;
+        let user = try_grpc!(UserDao::by_nickname(db, &nickname))?;
         if user.confirmed_at.is_some() {
             return Err(Status::invalid_argument(format!(
                 "user {} already confirmed!",
@@ -207,16 +199,8 @@ impl v1::user_server::User for Service {
         let db = db.deref_mut();
         let req = req.into_inner();
 
-        let token = try_grpc!(self.jwt.parse::<Token>(&req.payload))?;
-        let token = token.claims;
-        if token.act != Action::Unlock {
-            return Err(Status::invalid_argument(format!(
-                "bad request {:?}",
-                token.act
-            )));
-        }
-
-        let user = try_grpc!(UserDao::by_uid(db, &token.aud))?;
+        let nickname = try_grpc!(self.jwt.verify(&req.payload, &Action::Unlock.to_string()))?;
+        let user = try_grpc!(UserDao::by_nickname(db, &nickname))?;
         if user.locked_at.is_none() {
             return Err(Status::invalid_argument(format!(
                 "user {} isn't locked!",
@@ -261,16 +245,11 @@ impl v1::user_server::User for Service {
         let req = req.into_inner();
         let hmac = self.hmac.deref();
 
-        let token = try_grpc!(self.jwt.parse::<Token>(&req.token))?;
-        let token = token.claims;
-        if token.act != Action::ResetPassword {
-            return Err(Status::invalid_argument(format!(
-                "bad request {:?}",
-                token.act
-            )));
-        }
+        let nickname = try_grpc!(self
+            .jwt
+            .verify(&req.token, &Action::ResetPassword.to_string()))?;
 
-        let user = try_grpc!(UserDao::by_uid(db, &token.aud))?;
+        let user = try_grpc!(UserDao::by_nickname(db, &nickname))?;
 
         {
             let ip = ss.client_ip;
@@ -649,14 +628,9 @@ impl v1::user_server::User for Service {
 
 impl Service {
     async fn send_email(&self, db: &mut Db, home: &str, user: &User, act: &Action) -> Result<()> {
-        let (nbf, exp) = Jwt::timestamps(Duration::hours(1));
-        let token = Token {
-            aud: user.uid.clone(),
-            act: act.clone(),
-            nbf,
-            exp,
-        };
-        let token = self.jwt.sum(None, &token)?;
+        let token = self
+            .jwt
+            .sign(&user.nickname, &act.to_string(), Duration::hours(1))?;
 
         let act = match *act {
             Action::Confirm => Ok("confirm"),
@@ -736,13 +710,13 @@ impl User {
     }
 }
 
-pub async fn new_sign_in_response(
+pub async fn new_sign_in_response<P: Jwt>(
     enforcer: &Mutex<Enforcer>,
     user: &User,
-    jwt: &Jwt,
+    jwt: &P,
     ttl: Duration,
 ) -> Result<v1::UserSignInResponse> {
-    let token = user.token(jwt, ttl)?;
+    let token = jwt.sign(&user.nickname, &Action::SignIn.to_string(), ttl)?;
     let name = UserRequest { id: user.id }.to_string();
     let mut enforcer = enforcer.lock().await;
 

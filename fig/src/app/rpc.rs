@@ -5,8 +5,6 @@ use casbin::CoreApi;
 use nix::unistd::getpid;
 use palm::{
     aws::s3::Config as S3,
-    crypto::{Aes, Hmac},
-    jwt::Jwt,
     queue::amqp::RabbitMq,
     rbac::{Handler as RbacHandler, Watcher as RbacWatcher},
     Result,
@@ -21,10 +19,10 @@ pub async fn launch(cfg: &Config) -> Result<()> {
 
     let pgsql = cfg.postgresql.open()?;
     let redis = cfg.redis.open()?;
-    let aes = Arc::new(Aes::new(&cfg.secret_key.0)?);
-    let hmac = Arc::new(Hmac::new(&cfg.secret_key.0)?);
+    let aes = Arc::new(cfg.aes.clone());
+    let hmac = Arc::new(cfg.hmac.clone());
     let s3 = Arc::new(S3::from(cfg.minio.clone()));
-    let jwt = Arc::new(Jwt::new(cfg.jwt_key.0.clone()));
+    let jwt = Arc::new(cfg.jwt.clone());
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
     let opensearch = Arc::new(cfg.opensearch.open()?);
 

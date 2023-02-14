@@ -2,12 +2,14 @@ use std::ops::{Deref, DerefMut};
 
 use actix_web::{post, web, HttpResponse, Responder, Result as WebResult};
 use chrono::Duration;
-use palm::{handlers::peer::ClientIp, jwt::Jwt, orchid::v1::WeChatLoginRequest, try_web};
+use palm::{
+    handlers::peer::ClientIp, jwt::Jwt, orchid::v1::WeChatLoginRequest, tink::Loquat, try_web,
+};
 use serde::{Deserialize, Serialize};
 use tonic::Request;
 
 use super::super::super::{
-    models::user::{Dao as UserDao, Item as User},
+    models::user::{Action, Dao as UserDao, Item as User},
     orm::postgresql::Pool as DbPool,
     Oauth,
 };
@@ -25,7 +27,7 @@ pub struct SignInRequest {
 pub async fn sign_in(
     db: web::Data<DbPool>,
     client_ip: ClientIp,
-    jwt: web::Data<Jwt>,
+    jwt: web::Data<Loquat>,
     oauth: web::Data<Oauth>,
     form: web::Json<SignInRequest>,
 ) -> WebResult<impl Responder> {
@@ -38,7 +40,7 @@ pub async fn sign_in(
         app_id: form.app_id.clone(),
         code: form.code.clone(),
     });
-    try_web!(Jwt::authorization(&mut req, &oauth.token))?;
+    try_web!(Loquat::authorization(&mut req, &oauth.token))?;
 
     let res = try_web!(cli.login(req).await)?;
     debug!("fetch wechat user {:?}", res);
@@ -46,7 +48,11 @@ pub async fn sign_in(
     let db = db.deref_mut();
     let res = res.into_inner();
     let user = try_web!(UserDao::wechat(db, &client_ip, &form.app_id, &res))?;
-    let token = try_web!(user.token(jwt, Duration::days(1)))?;
+    let token = try_web!(jwt.sign(
+        &user.nickname,
+        &Action::SignIn.to_string(),
+        Duration::days(1)
+    ))?;
     Ok(web::Json(SignInResponse {
         real_name: user.real_name,
         token,

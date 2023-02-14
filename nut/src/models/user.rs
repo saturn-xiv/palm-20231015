@@ -29,13 +29,16 @@ pub enum Action {
     Other(String),
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Token {
-    pub aud: String,
-    pub act: Action,
-    pub nbf: i64,
-    pub exp: i64,
+impl fmt::Display for Action {
+    fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
+        match *self {
+            Self::SignIn => write!(fmt, "user.sign-in"),
+            Self::ResetPassword => write!(fmt, "user.reset-password"),
+            Self::Unlock => write!(fmt, "user.unlock"),
+            Self::Confirm => write!(fmt, "user.confirm"),
+            Self::Other(ref it) => write!(fmt, "other.{}", it),
+        }
+    }
 }
 
 #[derive(Hash, Eq, PartialEq, Queryable, Serialize, Deserialize, Debug, Clone)]
@@ -358,7 +361,7 @@ impl Dao for Connection {
                 nickname,
                 email,
                 uid: &uid,
-                password: Some(&enc.sum(password.as_bytes())?),
+                password: Some(&enc.sign(password.as_bytes())?),
                 salt: &random_bytes(New::SALT_SIZE),
                 provider_type: UserProviderType::Email as i32,
                 provider_id: email,
@@ -448,7 +451,7 @@ impl Dao for Connection {
     }
     fn password<P: Password>(&mut self, enc: &P, id: i32, password: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
-        let password = enc.sum(password.as_bytes())?;
+        let password = enc.sign(password.as_bytes())?;
         let it = users::dsl::users.filter(users::dsl::id.eq(id));
         update(it)
             .set((
