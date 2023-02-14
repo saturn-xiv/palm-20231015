@@ -47,9 +47,10 @@ impl v1::locale_server::Locale for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.can::<Locale, _>(&Operation::Write, None) {
+        if !user.can::<Locale, _>(enf, &Operation::Write, None).await {
             return Err(Status::permission_denied(type_name::<Locale>()));
         }
 
@@ -105,9 +106,10 @@ impl v1::locale_server::Locale for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.can::<Locale, _>(&Operation::Remove, None) {
+        if !user.can::<Locale, _>(enf, &Operation::Remove, None).await {
             return Err(Status::permission_denied(type_name::<Locale>()));
         }
         let req = req.into_inner();

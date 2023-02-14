@@ -55,6 +55,14 @@ pub async fn launch(cfg: &Config) -> Result<()> {
 
     info!("start gRPC at {}", addr);
     Server::builder()
+        .add_service(palm::rbac::v1::policy_server::PolicyServer::new(
+            nut::services::policy::Service {
+                pgsql: pgsql.clone(),
+                jwt: jwt.clone(),
+                redis: redis.clone(),
+                enforcer: enforcer.clone(),
+            },
+        ))
         .add_service(palm::nut::v1::attachment_server::AttachmentServer::new(
             nut::services::attachment::Service {
                 pgsql: pgsql.clone(),
@@ -79,14 +87,6 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 jwt: jwt.clone(),
                 hmac: hmac.clone(),
                 rabbitmq: rabbitmq.clone(),
-                enforcer: enforcer.clone(),
-            },
-        ))
-        .add_service(palm::nut::v1::policy_server::PolicyServer::new(
-            nut::services::policy::Service {
-                pgsql: pgsql.clone(),
-                jwt: jwt.clone(),
-                redis: redis.clone(),
                 enforcer: enforcer.clone(),
             },
         ))

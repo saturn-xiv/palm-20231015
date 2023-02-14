@@ -7,6 +7,8 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
 
+import "rbac.proto";
+
 message IdRequest { int32 id = 1; }
 
 message Pager {
@@ -44,25 +46,8 @@ message MediaContent {
 }
 
 message UserDetail {
-  int32 id = 1;
-  string uid = 2;
-  string nickname = 3;
-  string real_name = 4;
-  string email = 5;
-}
-
-message Resource {
-  string type = 1;
-  optional int32 id = 2;
-}
-
-message Permission {
-  oneof subject {
-    int32 user = 1;
-    int32 role = 2;
-  }
-  string operation = 11;
-  Resource resource = 12;
+  string nickname = 1;
+  string real_name = 2;
 }
 
 // ----------------------------------------------------------------------------
@@ -120,6 +105,11 @@ message UserSignInResponse {
   string token = 1;
   Payload payload = 2;
   repeated string roles = 11;
+
+  message Permission {
+    string operation = 1;
+    palm.rbac.v1.ResourcesResponse.Item resource = 2;
+  }
   repeated Permission permissions = 12;
 }
 
@@ -179,7 +169,7 @@ message UserLogsResponse {
     string ip = 3;
     Level level = 4;
     string message = 5;
-    Resource resource = 6;
+    palm.rbac.v1.ResourcesResponse.Item resource = 6;
     google.protobuf.Timestamp created_at = 11;
   }
 
@@ -229,8 +219,6 @@ message UserIndexResponse {
   repeated Item items = 11;
 }
 
-message CasbinSyncTask {}
-
 // ----------------------------------------------------------------------------
 
 service Attachment {
@@ -262,87 +250,6 @@ message AttachmentIndexResponse {
   Pagination pagination = 1;
   repeated Item items = 11;
 }
-
-// ----------------------------------------------------------------------------
-
-service Policy {
-  rpc AddRole(PolicyAddRoleRequest) returns (google.protobuf.Empty) {}
-  rpc GetAllRoles(google.protobuf.Empty) returns (PolicyRoleListResponse) {}
-  rpc DeleteRole(IdRequest) returns (google.protobuf.Empty) {}
-  rpc GetRolesForUser(IdRequest) returns (PolicyRolesForUserResponse) {}
-  rpc GetUsersForRole(IdRequest) returns (PolicyUsersForRoleResponse) {}
-  rpc AddRolesForUser(PolicyAddRolesForUserRequest)
-      returns (google.protobuf.Empty) {}
-  rpc DeleteRolesForUser(PolicyDeleteRolesForUserRequest)
-      returns (google.protobuf.Empty) {}
-  rpc GetImplicitRolesForUser(IdRequest)
-      returns (PolicyImplicitRolesForUserResponse) {}
-  rpc GetImplicitUsersForRole(IdRequest)
-      returns (PolicyImplicitUsersForRoleResponse) {}
-
-  rpc GetPermissionsForUser(IdRequest) returns (PolicyPermissionList) {}
-  rpc GetPermissionsForRole(IdRequest) returns (PolicyPermissionList) {}
-  rpc GetImplicitPermissionsForUser(IdRequest) returns (PolicyPermissionList) {}
-  rpc GetImplicitPermissionsForRole(IdRequest) returns (PolicyPermissionList) {}
-
-  rpc AddPermissions(PolicyPermissionList) returns (google.protobuf.Empty) {}
-  rpc DeletePermissions(PolicyPermissionList) returns (google.protobuf.Empty) {}
-}
-
-message PolicyAddRoleRequest {
-  string code = 1;
-  oneof nested {
-    int32 left = 2;
-    int32 parent = 3;
-  }
-}
-
-message PolicyUsersForRoleResponse {
-  message Item {
-    UserDetail user = 1;
-    google.protobuf.Timestamp not_before = 11;
-    google.protobuf.Timestamp expired_at = 12;
-  }
-  repeated Item items = 1;
-}
-message PolicyImplicitUsersForRoleResponse { repeated UserDetail items = 1; }
-
-message PolicyRolesForUserResponse {
-  message Item {
-    int32 id = 1;
-    string code = 2;
-    google.protobuf.Timestamp not_before = 11;
-    google.protobuf.Timestamp expired_at = 12;
-  }
-  repeated Item items = 1;
-}
-
-message PolicyImplicitRolesForUserResponse { repeated string items = 1; }
-
-message PolicyRoleListResponse {
-  message Item {
-    int32 id = 1;
-    string code = 2;
-    int32 left = 3;
-    int32 right = 4;
-    google.protobuf.Timestamp updated_at = 9;
-  }
-  repeated Item items = 1;
-}
-
-message PolicyAddRolesForUserRequest {
-  int32 user = 1;
-  repeated int32 roles = 2;
-  google.protobuf.Timestamp not_before = 11;
-  google.protobuf.Timestamp expired_at = 12;
-}
-
-message PolicyDeleteRolesForUserRequest {
-  int32 user = 1;
-  repeated int32 roles = 2;
-}
-
-message PolicyPermissionList { repeated Permission items = 1; }
 
 // ----------------------------------------------------------------------------
 

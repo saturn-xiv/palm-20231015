@@ -5,7 +5,7 @@ use std::ops::{Deref, DerefMut};
 use std::process::Command;
 use std::sync::Arc;
 
-use casbin::Enforcer;
+use casbin::{Enforcer, RbacApi};
 use chrono::{Datelike, Duration, NaiveDateTime, Utc};
 use diesel::{
     sql_query,
@@ -21,6 +21,7 @@ use palm::{
     jwt::Jwt,
     nut::v1,
     queue::amqp::RabbitMq,
+    rbac::v1::{RoleRequest, UserRequest},
     search::OpenSearch,
     seo::Provider as SeoProvider,
     session::Session,
@@ -76,9 +77,10 @@ impl v1::site_server::Site for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<
                 v1::site_layout_response::Author,
             >()));
@@ -103,9 +105,10 @@ impl v1::site_server::Site for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<
                 v1::site_layout_response::Author,
             >()));
@@ -140,9 +143,10 @@ impl v1::site_server::Site for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<
                 v1::SiteSetCopyrightRequest,
             >()));
@@ -166,9 +170,10 @@ impl v1::site_server::Site for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(
                 type_name::<v1::SiteSetLogoRequest>(),
             ));
@@ -192,9 +197,10 @@ impl v1::site_server::Site for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<
                 v1::SiteSetKeywordsRequest,
             >()));
@@ -218,9 +224,10 @@ impl v1::site_server::Site for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(
                 type_name::<v1::SiteSetInfoRequest>(),
             ));
@@ -256,6 +263,7 @@ impl v1::site_server::Site for Service {
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
         let hmac = self.hmac.deref();
+        let enf = self.enforcer.deref();
         let req = req.into_inner();
 
         if try_grpc!(UserDao::count(db))? > 0 {
@@ -267,7 +275,7 @@ impl v1::site_server::Site for Service {
                 let email = to_code!(req.email);
                 let real_name = req.real_name.trim();
 
-                try_grpc!(db.transaction::<_, Error, _>(move |db| {
+                let user = try_grpc!(db.transaction::<_, Error, _>(move |db| {
                     UserDao::sign_up(
                         db,
                         hmac,
@@ -296,38 +304,28 @@ impl v1::site_server::Site for Service {
                         Some(user.id),
                         "confirmed.",
                     )?;
-                    {
-                        let nbf = Utc::now().naive_utc();
-                        let exp = nbf.add(Duration::weeks(1 << 12));
-                        {
-                            RoleDao::create(db, Role::ROOT)?;
-                            {
-                                let it = RoleDao::by_code(db, Role::ROOT)?;
-                                RoleDao::create_by_left(db, Role::ADMINISTRATOR, it.id)?;
-                            }
-                        }
-                        for role in [Role::ROOT, Role::ADMINISTRATOR] {
-                            let it = RoleDao::by_code(db, role)?;
-                            RoleDao::associate(db, it.id, user.id, &nbf, &exp)?;
-                            LogDao::add::<String, User>(
-                                db,
-                                user.id,
-                                v1::user_logs_response::item::Level::Info,
-                                &ss.client_ip,
-                                Some(user.id),
-                                format!(
-                                    "apply role {} by {} from {} to {}.",
-                                    role,
-                                    nix::unistd::getuid(),
-                                    nbf.date(),
-                                    exp.date()
-                                ),
-                            )?;
-                        }
-                    }
 
-                    Ok(())
+                    Ok(user)
                 }))?;
+
+                {
+                    let nbf = Utc::now().naive_utc();
+                    let _exp = nbf.add(Duration::weeks(1 << 12));
+                    // TODO not before & expired at
+                    let mut enf = enf.lock().await;
+                    let name = UserRequest { id: user.id }.to_string();
+                    try_grpc!(
+                        enf.add_roles_for_user(
+                            &name,
+                            vec![
+                                RoleRequest::root().to_string(),
+                                RoleRequest::administrator().to_string()
+                            ],
+                            None,
+                        )
+                        .await
+                    )?;
+                }
 
                 Ok(Response::new(()))
             }
@@ -343,9 +341,10 @@ impl v1::site_server::Site for Service {
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::WechatProfile>()));
         }
         let req = req.into_inner();
@@ -362,9 +361,10 @@ impl v1::site_server::Site for Service {
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::TwilioProfile>()));
         }
 
@@ -380,11 +380,12 @@ impl v1::site_server::Site for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
         let aes = self.aes.deref();
 
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::TwilioProfile>()));
         }
 
@@ -408,9 +409,10 @@ impl v1::site_server::Site for Service {
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::TwilioProfile>()));
         }
         let req = req.into_inner();
@@ -427,9 +429,10 @@ impl v1::site_server::Site for Service {
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::TwilioProfile>()));
         }
 
@@ -445,10 +448,11 @@ impl v1::site_server::Site for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
 
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::TwilioProfile>()));
         }
 
@@ -468,10 +472,11 @@ impl v1::site_server::Site for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
         let aes = self.aes.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::SmtpProfile>()));
         }
         let req = req.into_inner();
@@ -487,10 +492,11 @@ impl v1::site_server::Site for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
         let aes = self.aes.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::SmtpProfile>()));
         }
 
@@ -506,10 +512,10 @@ impl v1::site_server::Site for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
-
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::SmtpProfile>()));
         }
         let req = req.into_inner();
@@ -534,9 +540,10 @@ impl v1::site_server::Site for Service {
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::BingProfile>()));
         }
         let req = req.into_inner();
@@ -553,9 +560,10 @@ impl v1::site_server::Site for Service {
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::BingProfile>()));
         }
 
@@ -571,9 +579,10 @@ impl v1::site_server::Site for Service {
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::GoogleProfile>()));
         }
         let req = req.into_inner();
@@ -590,9 +599,10 @@ impl v1::site_server::Site for Service {
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::GoogleProfile>()));
         }
 
@@ -606,10 +616,11 @@ impl v1::site_server::Site for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
 
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::BaiduProfile>()));
         }
 
@@ -626,9 +637,10 @@ impl v1::site_server::Site for Service {
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::BaiduProfile>()));
         }
         let req = req.into_inner();
@@ -645,9 +657,10 @@ impl v1::site_server::Site for Service {
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::BaiduProfile>()));
         }
 
@@ -662,10 +675,11 @@ impl v1::site_server::Site for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
 
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::BaiduProfile>()));
         }
 
@@ -690,9 +704,10 @@ impl v1::site_server::Site for Service {
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::IndexNowProfile>()));
         }
         let req = req.into_inner();
@@ -709,9 +724,10 @@ impl v1::site_server::Site for Service {
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::IndexNowProfile>()));
         }
 
@@ -727,9 +743,10 @@ impl v1::site_server::Site for Service {
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
         let aes = self.aes.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<v1::BaiduProfile>()));
         }
         let it: v1::IndexNowProfile = try_grpc!(get(db, aes, None))?;
@@ -757,9 +774,10 @@ impl v1::site_server::Site for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(type_name::<RedisConnection>()));
         }
         let mut ch = try_grpc!(self.redis.get())?;
@@ -774,9 +792,10 @@ impl v1::site_server::Site for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.is_administrator() {
+        if !user.is_administrator(enf).await {
             return Err(Status::permission_denied(
                 type_name::<v1::SiteStatusResponse>(),
             ));

@@ -3,6 +3,7 @@ use std::path::Path;
 use std::time::Duration;
 
 use aws_credential_types::provider::SharedCredentialsProvider;
+use mime::Mime;
 use serde::{Deserialize, Serialize};
 
 use super::super::{minio::Config as Minio, Result};
@@ -85,9 +86,10 @@ impl Client {
         &self,
         bucket: &str,
         name: &str,
-        content_type: &str,
+        content_type: &Mime,
         file: P,
     ) -> Result<()> {
+        let content_type = content_type.to_string();
         self.0
             .put_object()
             .bucket(bucket)

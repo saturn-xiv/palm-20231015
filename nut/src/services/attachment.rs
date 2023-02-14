@@ -34,20 +34,21 @@ impl v1::attachment_server::Attachment for Service {
         let db = db.deref_mut();
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
+        let enf = self.enforcer.deref();
         let jwt = self.jwt.deref();
 
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
         let req = req.into_inner();
 
-        let (total, items) = if user.is_administrator() {
+        let (total, items) = if user.is_administrator(enf).await {
             let total = try_grpc!(AttachmentDao::count(db))?;
             let items = try_grpc!(AttachmentDao::all(db, req.offset(total), req.size()))?;
             (total, items)
         } else {
-            let total = try_grpc!(AttachmentDao::count_by_user(db, user.payload.id))?;
+            let total = try_grpc!(AttachmentDao::count_by_user(db, user.id))?;
             let items = try_grpc!(AttachmentDao::by_user(
                 db,
-                user.payload.id,
+                user.id,
                 req.offset(total),
                 req.size()
             ))?;
@@ -65,11 +66,14 @@ impl v1::attachment_server::Attachment for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
         let req = req.into_inner();
         let it = try_grpc!(AttachmentDao::by_id(db, req.id))?;
 
-        let can = user.can::<Attachment, _>(&Operation::Remove, Some(it.id));
+        let can = user
+            .can::<Attachment, _>(enf, &Operation::Remove, Some(it.id))
+            .await;
 
         if can {
             let cli = try_grpc!(self.s3.open().await)?;
@@ -93,12 +97,16 @@ impl v1::attachment_server::Attachment for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
         let req = req.into_inner();
         let ttl = req.ttl.unwrap_or_default();
         let it = try_grpc!(AttachmentDao::by_id(db, req.id))?;
 
-        if user.can::<Attachment, _>(&Operation::Read, Some(it.id)) {
+        if user
+            .can::<Attachment, _>(enf, &Operation::Read, Some(it.id))
+            .await
+        {
             let cli = try_grpc!(self.s3.open().await)?;
             let url = try_grpc!(
                 cli.get_object(&it.bucket, &it.name, to_std_duration!(ttl))

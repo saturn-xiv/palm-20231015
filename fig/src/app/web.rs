@@ -8,10 +8,12 @@ use actix_session::{
     storage::CookieSessionStore,
     SessionMiddleware,
 };
-use actix_web::{middleware, web, App, HttpServer};
+use actix_web::{
+    cookie::{time::Duration as CookieDuration, Key as CookieKey, SameSite},
+    middleware, web, App, HttpServer,
+};
 use casbin::CoreApi;
 use chrono::Duration;
-use cookie::{time::Duration as CookieDuration, Key as CookieKey, SameSite};
 use data_encoding::BASE64;
 use hyper::{
     header::{ACCEPT_LANGUAGE, AUTHORIZATION, CONTENT_TYPE, COOKIE},

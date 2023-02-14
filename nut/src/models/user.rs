@@ -1,4 +1,3 @@
-use std::any::type_name;
 use std::fmt;
 
 use chrono::{NaiveDateTime, Utc};
@@ -12,12 +11,13 @@ use palm::{
     nut::v1::{self, user_provider::Type as UserProviderType},
     oauth::google::openid::IdToken,
     orchid::v1::WeChatLoginResponse,
+    rbac::v1::users_response::Item as RbacUser,
     HttpError, Result,
 };
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
-use super::super::{orm::postgresql::Connection, rbac::Subject as RbacSubject, schema::users};
+use super::super::{orm::postgresql::Connection, schema::users};
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -73,13 +73,24 @@ impl fmt::Display for Item {
     }
 }
 
-impl RbacSubject for Item {
-    fn to_code(&self) -> String {
-        format!("{}://{}", type_name::<Self>(), self.nickname)
+impl From<Item> for v1::UserDetail {
+    fn from(it: Item) -> Self {
+        Self {
+            nickname: it.nickname.clone(),
+            real_name: it.real_name,
+        }
     }
-    fn from_code(code: &str) -> Option<String> {
-        code.strip_prefix(&format!("{}://", type_name::<Self>()))
-            .map(|x| x.to_string())
+}
+
+impl From<Item> for RbacUser {
+    fn from(it: Item) -> Self {
+        Self {
+            id: it.id,
+            uid: it.uid.clone(),
+            nickname: it.nickname.clone(),
+            real_name: it.real_name.clone(),
+            email: it.email,
+        }
     }
 }
 
@@ -98,9 +109,7 @@ impl Item {
             email: self.email.clone(),
         }
     }
-    pub fn subject(&self) -> String {
-        format!("{}://{}", type_name::<Self>(), self.nickname)
-    }
+
     pub fn available(&self) -> Result<()> {
         if self.deleted_at.is_some() {
             return Err(Box::new(HttpError(

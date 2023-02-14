@@ -1,9 +1,10 @@
-use std::io::{Seek, SeekFrom, Write};
+use std::io::{Seek, Write};
 use std::ops::DerefMut;
 
 use actix_multipart::Multipart;
 use actix_web::{post, web, HttpResponse, Responder, Result as WebResult};
 use futures_util::TryStreamExt;
+use mime::APPLICATION_OCTET_STREAM;
 use palm::{
     aws::s3::{Client as S3Client, Config as S3},
     try_web, Result,
@@ -56,7 +57,7 @@ async fn save(
         let name = Attachment::name(&title);
         let content_type = {
             let it = field.content_type();
-            it.clone()
+            it.map_or_else(|| APPLICATION_OCTET_STREAM, |x| x.clone())
         };
 
         {
@@ -67,12 +68,11 @@ async fn save(
                     file.write_all(&chunk)?;
                 }
                 file.sync_all()?;
-                file.seek(SeekFrom::Start(0))?;
+                file.rewind()?;
                 let size = file.metadata()?.len();
                 AttachmentDao::create(db, user, bucket, &name, &title, &content_type, size)?;
             }
-            s3.put_object(bucket, &name, content_type.as_ref(), file)
-                .await?;
+            s3.put_object(bucket, &name, &content_type, file).await?;
         }
     }
 

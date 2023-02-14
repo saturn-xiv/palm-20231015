@@ -46,37 +46,6 @@ macro_rules! to_code {
 }
 
 #[macro_export]
-macro_rules! to_role {
-    ($r:expr) => {{
-        format!("role://{}", to_code!($r))
-    }};
-}
-#[macro_export]
-macro_rules! resource_to_object {
-    ($t:expr, $i:expr) => {{
-        format!("{}://{}", $t, $i)
-    }};
-    ($t:expr) => {{
-        $t.to_string()
-    }};
-}
-
-#[macro_export]
-macro_rules! object_to_resource {
-    ($o:expr) => {{
-        let items: Vec<&str> = $o.split("://").collect();
-        if items.len() == 2 {
-            match items[1].parse() {
-                Ok(id) => (items[0].to_string(), Some(id)),
-                Err(_) => ($o.to_string(), None),
-            }
-        } else {
-            ($o.to_string(), None)
-        }
-    }};
-}
-
-#[macro_export]
 macro_rules! try_grpc {
     ($r:expr, $e:expr) => {{
         $r.map_err($e)
@@ -93,6 +62,42 @@ macro_rules! try_web {
     }};
     ($r:expr) => {{
         try_web!($r, actix_web::error::ErrorInternalServerError)
+    }};
+}
+
+#[macro_export]
+macro_rules! has_role {
+    ($e:expr, $s:expr, $r:expr) => {{
+        let mut e = $e.lock().await;
+        e.get_implicit_roles_for_user($s, None).contains($r)
+    }};
+}
+
+#[macro_export]
+macro_rules! has_permission {
+    ($e:expr, $s:expr, $o:expr, $a:expr) => {{
+        let mut e = $e.lock().await;
+        let mut ok = false;
+
+        for r in e.get_implicit_roles_for_user($s, None).iter() {
+            if e.has_permission_for_user(r, vec![$o.clone(), $a.clone()]) {
+                ok = true;
+                break;
+            }
+        }
+
+        ok
+    }};
+    ($e:expr, $s:expr, $a:expr) => {{
+        let mut e = $e.lock().await;
+        let mut ok = false;
+        for r in e.get_implicit_roles_for_user($s, None).iter() {
+            if e.has_permission_for_user(r, vec![$a.clone()]) {
+                ok = true;
+                break;
+            }
+        }
+        ok
     }};
 }
 

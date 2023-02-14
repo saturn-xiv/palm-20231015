@@ -107,15 +107,18 @@ pub fn systemd_conf(domain: &str) -> Result<()> {
 }
 
 pub fn config_toml<P: AsRef<Path>>(file: P) -> Result<()> {
-    let buf = toml::to_vec(&Config::default())?;
+    let buf = toml::to_string_pretty(&Config::default())?;
 
     let file = file.as_ref();
     info!("generate file {}", file.display());
-    let mut file = fs::OpenOptions::new()
-        .write(true)
-        .create_new(true)
-        .mode(0o600)
-        .open(file)?;
-    file.write_all(&buf)?;
+    {
+        let mut file = fs::OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .mode(0o600)
+            .open(file)?;
+        file.write_all(buf.as_bytes())?;
+    }
+
     Ok(())
 }

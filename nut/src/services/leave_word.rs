@@ -50,9 +50,10 @@ impl v1::leave_word_server::LeaveWord for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.can::<LeaveWord, _>(&Operation::Read, None) {
+        if !user.can::<LeaveWord, _>(enf, &Operation::Read, None).await {
             return Err(Status::permission_denied(type_name::<LeaveWord>()));
         }
         let req = req.into_inner();
@@ -86,9 +87,10 @@ impl v1::leave_word_server::LeaveWord for Service {
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
         let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
 
-        if !user.can::<LeaveWord, _>(&Operation::Read, None) {
+        if !user.can::<LeaveWord, _>(enf, &Operation::Read, None).await {
             return Err(Status::permission_denied(type_name::<LeaveWord>()));
         }
         let req = req.into_inner();
