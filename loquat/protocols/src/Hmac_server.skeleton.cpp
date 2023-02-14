@@ -20,12 +20,12 @@ class HmacHandler : virtual public HmacIf {
     // Your initialization goes here
   }
 
-  void sign(std::string& _return, const std::string& zone, const std::string& plain) {
+  void sign(std::string& _return, const std::string& auth, const std::string& plain) {
     // Your implementation goes here
     printf("sign\n");
   }
 
-  void verify(const std::string& zone, const std::string& code, const std::string& plain) {
+  void verify(const std::string& auth, const std::string& code, const std::string& plain) {
     // Your implementation goes here
     printf("verify\n");
   }

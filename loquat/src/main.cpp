@@ -16,10 +16,27 @@ int main(int argc, char** argv) {
       .default_value(false)
       .help("run on debug mode")
       .implicit_value(true);
-  program.add_argument("-p", "--port").default_value(8080).scan<'i', int>();
-  program.add_argument("-w", "--worker-count")
-      .default_value(8)
-      .scan<'i', int>();
+
+  argparse::ArgumentParser generate_token_command("generate-token");
+  {
+    generate_token_command.add_argument("-y", "--years")
+        .default_value(10)
+        .scan<'i', int>();
+    generate_token_command.add_argument("-c", "--client-id").required();
+  }
+
+  argparse::ArgumentParser rpc_command("rpc");
+  {
+    rpc_command.add_argument("-p", "--port")
+        .default_value(8080)
+        .scan<'i', int>();
+    rpc_command.add_argument("-w", "--worker-count")
+        .default_value(8)
+        .scan<'i', int>();
+  }
+
+  program.add_subparser(rpc_command);
+  program.add_subparser(generate_token_command);
 
   try {
     program.parse_args(argc, argv);
@@ -52,10 +69,23 @@ int main(int argc, char** argv) {
     }
   }
 
-  const int port = program.get<int>("--port");
-  const int worker_count = program.get<int>("--worker-count");
-  loquat::launch(static_cast<uint16_t>(port),
-                 static_cast<size_t>(worker_count));
+  if (program.is_subcommand_used(rpc_command)) {
+    const int port = rpc_command.get<int>("--port");
+    const int worker_count = rpc_command.get<int>("--worker-count");
+    loquat::launch(static_cast<uint16_t>(port),
+                   static_cast<size_t>(worker_count));
+  } else if (program.is_subcommand_used(generate_token_command)) {
+    const int years = generate_token_command.get<int>("--years");
+    const std::string client_id =
+        generate_token_command.get<std::string>("--client-id");
+    spdlog::warn("generate token to {} for {}-years", client_id, years);
+
+    loquat::Jwt jwt(loquat::PROJECT_NAME);
+    const auto token =
+        jwt.sign(client_id, std::chrono::duration_cast<std::chrono::seconds>(
+                                std::chrono::years(years)));
+    std::cout << token << std::endl;
+  }
 
   return EXIT_SUCCESS;
 }

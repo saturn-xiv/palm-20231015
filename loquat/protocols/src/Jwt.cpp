@@ -36,8 +36,8 @@ uint32_t Jwt_sign_args::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->zone);
-          this->__isset.zone = true;
+          xfer += iprot->readString(this->auth);
+          this->__isset.auth = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -75,8 +75,8 @@ uint32_t Jwt_sign_args::write(::apache::thrift::protocol::TProtocol* oprot) cons
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("Jwt_sign_args");
 
-  xfer += oprot->writeFieldBegin("zone", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->zone);
+  xfer += oprot->writeFieldBegin("auth", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->auth);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("subject", ::apache::thrift::protocol::T_STRING, 2);
@@ -102,8 +102,8 @@ uint32_t Jwt_sign_pargs::write(::apache::thrift::protocol::TProtocol* oprot) con
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("Jwt_sign_pargs");
 
-  xfer += oprot->writeFieldBegin("zone", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString((*(this->zone)));
+  xfer += oprot->writeFieldBegin("auth", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString((*(this->auth)));
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("subject", ::apache::thrift::protocol::T_STRING, 2);
@@ -255,8 +255,8 @@ uint32_t Jwt_verify_args::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->zone);
-          this->__isset.zone = true;
+          xfer += iprot->readString(this->auth);
+          this->__isset.auth = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -286,8 +286,8 @@ uint32_t Jwt_verify_args::write(::apache::thrift::protocol::TProtocol* oprot) co
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("Jwt_verify_args");
 
-  xfer += oprot->writeFieldBegin("zone", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->zone);
+  xfer += oprot->writeFieldBegin("auth", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->auth);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRING, 2);
@@ -309,8 +309,8 @@ uint32_t Jwt_verify_pargs::write(::apache::thrift::protocol::TProtocol* oprot) c
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("Jwt_verify_pargs");
 
-  xfer += oprot->writeFieldBegin("zone", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString((*(this->zone)));
+  xfer += oprot->writeFieldBegin("auth", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString((*(this->auth)));
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRING, 2);
@@ -430,19 +430,19 @@ uint32_t Jwt_verify_presult::read(::apache::thrift::protocol::TProtocol* iprot) 
   return xfer;
 }
 
-void JwtClient::sign(std::string& _return, const std::string& zone, const std::string& subject, const int64_t ttl)
+void JwtClient::sign(std::string& _return, const std::string& auth, const std::string& subject, const int64_t ttl)
 {
-  send_sign(zone, subject, ttl);
+  send_sign(auth, subject, ttl);
   recv_sign(_return);
 }
 
-void JwtClient::send_sign(const std::string& zone, const std::string& subject, const int64_t ttl)
+void JwtClient::send_sign(const std::string& auth, const std::string& subject, const int64_t ttl)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("sign", ::apache::thrift::protocol::T_CALL, cseqid);
 
   Jwt_sign_pargs args;
-  args.zone = &zone;
+  args.auth = &auth;
   args.subject = &subject;
   args.ttl = &ttl;
   args.write(oprot_);
@@ -490,19 +490,19 @@ void JwtClient::recv_sign(std::string& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "sign failed: unknown result");
 }
 
-void JwtClient::verify(std::string& _return, const std::string& zone, const std::string& token)
+void JwtClient::verify(std::string& _return, const std::string& auth, const std::string& token)
 {
-  send_verify(zone, token);
+  send_verify(auth, token);
   recv_verify(_return);
 }
 
-void JwtClient::send_verify(const std::string& zone, const std::string& token)
+void JwtClient::send_verify(const std::string& auth, const std::string& token)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("verify", ::apache::thrift::protocol::T_CALL, cseqid);
 
   Jwt_verify_pargs args;
-  args.zone = &zone;
+  args.auth = &auth;
   args.token = &token;
   args.write(oprot_);
 
@@ -591,7 +591,7 @@ void JwtProcessor::process_sign(int32_t seqid, ::apache::thrift::protocol::TProt
 
   Jwt_sign_result result;
   try {
-    iface_->sign(result.success, args.zone, args.subject, args.ttl);
+    iface_->sign(result.success, args.auth, args.subject, args.ttl);
     result.__isset.success = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != nullptr) {
@@ -645,7 +645,7 @@ void JwtProcessor::process_verify(int32_t seqid, ::apache::thrift::protocol::TPr
 
   Jwt_verify_result result;
   try {
-    iface_->verify(result.success, args.zone, args.token);
+    iface_->verify(result.success, args.auth, args.token);
     result.__isset.success = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != nullptr) {
@@ -683,20 +683,20 @@ void JwtProcessor::process_verify(int32_t seqid, ::apache::thrift::protocol::TPr
   return processor;
 }
 
-void JwtConcurrentClient::sign(std::string& _return, const std::string& zone, const std::string& subject, const int64_t ttl)
+void JwtConcurrentClient::sign(std::string& _return, const std::string& auth, const std::string& subject, const int64_t ttl)
 {
-  int32_t seqid = send_sign(zone, subject, ttl);
+  int32_t seqid = send_sign(auth, subject, ttl);
   recv_sign(_return, seqid);
 }
 
-int32_t JwtConcurrentClient::send_sign(const std::string& zone, const std::string& subject, const int64_t ttl)
+int32_t JwtConcurrentClient::send_sign(const std::string& auth, const std::string& subject, const int64_t ttl)
 {
   int32_t cseqid = this->sync_->generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(this->sync_.get());
   oprot_->writeMessageBegin("sign", ::apache::thrift::protocol::T_CALL, cseqid);
 
   Jwt_sign_pargs args;
-  args.zone = &zone;
+  args.auth = &auth;
   args.subject = &subject;
   args.ttl = &ttl;
   args.write(oprot_);
@@ -769,20 +769,20 @@ void JwtConcurrentClient::recv_sign(std::string& _return, const int32_t seqid)
   } // end while(true)
 }
 
-void JwtConcurrentClient::verify(std::string& _return, const std::string& zone, const std::string& token)
+void JwtConcurrentClient::verify(std::string& _return, const std::string& auth, const std::string& token)
 {
-  int32_t seqid = send_verify(zone, token);
+  int32_t seqid = send_verify(auth, token);
   recv_verify(_return, seqid);
 }
 
-int32_t JwtConcurrentClient::send_verify(const std::string& zone, const std::string& token)
+int32_t JwtConcurrentClient::send_verify(const std::string& auth, const std::string& token)
 {
   int32_t cseqid = this->sync_->generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(this->sync_.get());
   oprot_->writeMessageBegin("verify", ::apache::thrift::protocol::T_CALL, cseqid);
 
   Jwt_verify_pargs args;
-  args.zone = &zone;
+  args.auth = &auth;
   args.token = &token;
   args.write(oprot_);
 

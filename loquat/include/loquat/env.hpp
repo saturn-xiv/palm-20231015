@@ -149,4 +149,6 @@ class Aes final : public Keyset {
  private:
   std::unique_ptr<crypto::tink::Aead> load();
 };
+
+std::string auth(const std::string& token);
 }  // namespace loquat

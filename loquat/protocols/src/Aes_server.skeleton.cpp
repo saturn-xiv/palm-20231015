@@ -20,12 +20,12 @@ class AesHandler : virtual public AesIf {
     // Your initialization goes here
   }
 
-  void encrypt(std::string& _return, const std::string& zone, const std::string& plain) {
+  void encrypt(std::string& _return, const std::string& auth, const std::string& plain) {
     // Your implementation goes here
     printf("encrypt\n");
   }
 
-  void decrypt(std::string& _return, const std::string& zone, const std::string& code) {
+  void decrypt(std::string& _return, const std::string& auth, const std::string& code) {
     // Your implementation goes here
     printf("decrypt\n");
   }

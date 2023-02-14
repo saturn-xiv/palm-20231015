@@ -26,17 +26,17 @@ void loquat::launch(const uint16_t port, const size_t worker_count) {
 
   {
     const auto name = typeid(AesHandler).name();
-    spdlog::info("register service {}", name);
+    spdlog::info("register aes service {}", name);
     multiplexedProcessor->registerProcessor(name, aesProcessor);
   }
   {
     const auto name = typeid(HmacHandler).name();
-    spdlog::info("register service {}", name);
+    spdlog::info("register hmac service {}", name);
     multiplexedProcessor->registerProcessor(name, hmacProcessor);
   }
   {
     const auto name = typeid(JwtHandler).name();
-    spdlog::info("register service {}", name);
+    spdlog::info("register jwt service {}", name);
     multiplexedProcessor->registerProcessor(name, jwtProcessor);
   }
   std::shared_ptr<apache::thrift::TProcessor> processor =
@@ -69,45 +69,51 @@ void loquat::launch(const uint16_t port, const size_t worker_count) {
   server.serve();
 }
 
-void loquat::AesHandler::encrypt(std::string& code, const std::string& zone,
+void loquat::AesHandler::encrypt(std::string& code, const std::string& auth,
                                  const std::string& plain) {
   spdlog::info("call {}", __PRETTY_FUNCTION__);
+  const auto zone = loquat::auth(auth);
   loquat::Aes aes(zone);
   code = aes.encrypt(plain);
 }
 
-void loquat::AesHandler::decrypt(std::string& plain, const std::string& zone,
+void loquat::AesHandler::decrypt(std::string& plain, const std::string& auth,
                                  const std::string& code) {
   spdlog::info("call {}", __PRETTY_FUNCTION__);
+  const auto zone = loquat::auth(auth);
   loquat::Aes aes(zone);
   plain = aes.decrypt(code);
 }
 
-void loquat::HmacHandler::sign(std::string& code, const std::string& zone,
+void loquat::HmacHandler::sign(std::string& code, const std::string& auth,
                                const std::string& plain) {
   spdlog::info("call {}", __PRETTY_FUNCTION__);
+  const auto zone = loquat::auth(auth);
   loquat::HMac mac(zone);
   code = mac.sign(plain);
 }
 
-void loquat::HmacHandler::verify(const std::string& zone,
+void loquat::HmacHandler::verify(const std::string& auth,
                                  const std::string& code,
                                  const std::string& plain) {
   spdlog::info("call {}", __PRETTY_FUNCTION__);
+  const auto zone = loquat::auth(auth);
   loquat::HMac mac(zone);
   mac.verify(code, plain);
 }
 
-void loquat::JwtHandler::sign(std::string& token, const std::string& zone,
+void loquat::JwtHandler::sign(std::string& token, const std::string& auth,
                               const std::string& subject, const int64_t ttl) {
   spdlog::info("call {}", __PRETTY_FUNCTION__);
+  const auto zone = loquat::auth(auth);
   loquat::Jwt jwt(zone);
   token = jwt.sign(subject, std::chrono::seconds(ttl));
 }
 
-void loquat::JwtHandler::verify(std::string& subject, const std::string& zone,
+void loquat::JwtHandler::verify(std::string& subject, const std::string& auth,
                                 const std::string& token) {
   spdlog::info("call {}", __PRETTY_FUNCTION__);
+  const auto zone = loquat::auth(auth);
   loquat::Jwt jwt(zone);
   subject = jwt.verify(token);
 }

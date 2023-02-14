@@ -4,7 +4,7 @@ include(FetchContent)
 
 project(
     loquat
-    VERSION 2023.2.4
+    VERSION 2023.2.14
     DESCRIPTION "A cryptographic rpc service."
     LANGUAGES C CXX)
 # --------------------------------------------------------
@@ -30,7 +30,7 @@ FetchContent_Declare(spdlog
 )
 FetchContent_Declare(tomlplusplus
   GIT_REPOSITORY  "https://github.com/marzer/tomlplusplus.git"
-  GIT_TAG         "v3.2.0"
+  GIT_TAG         "v3.3.0"
 )
 FetchContent_Declare(nlohmann_json
   GIT_REPOSITORY  "https://github.com/nlohmann/json.git"
@@ -38,7 +38,7 @@ FetchContent_Declare(nlohmann_json
 )
 FetchContent_Declare(httplib
   GIT_REPOSITORY  "https://github.com/yhirose/cpp-httplib.git"
-  GIT_TAG         "v0.11.4"
+  GIT_TAG         "v0.12.0"
 )
 FetchContent_Declare(tink
   GIT_REPOSITORY  "https://github.com/google/tink.git"
