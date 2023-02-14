@@ -17,8 +17,8 @@ pub const BEARER: &str = "Bearer ";
 // https://jwt.io/
 // https://tools.ietf.org/html/rfc7519
 pub trait Jwt {
-    fn sign(&self, subject: &str, ttl: Duration) -> Result<String>;
-    fn verify(&self, token: &str) -> Result<String>;
+    fn sign(&self, subject: &str, audience: &str, ttl: Duration) -> Result<String>;
+    fn verify(&self, token: &str, audience: &str) -> Result<String>;
 
     fn bearer(token: &str) -> String {
         format!("{}{}", BEARER, token)

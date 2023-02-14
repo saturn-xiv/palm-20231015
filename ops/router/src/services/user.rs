@@ -2,21 +2,23 @@ use std::any::type_name;
 use std::ops::{Deref, DerefMut};
 use std::sync::{Arc, Mutex};
 
-use chrono::Duration;
 use diesel::sqlite::SqliteConnection as Db;
 use hyper::StatusCode;
 use palm::{
-    jwt::Jwt, ops::router::v1, session::Session, tink::Loquat, to_chrono_duration, try_grpc,
-    GrpcResult, HttpError, Result,
+    crypto::Hmac,
+    jwt::{openssl::OpenSsl as SslJwt, Jwt},
+    ops::router::v1,
+    session::Session,
+    to_chrono_duration, try_grpc, GrpcResult, HttpError, Result,
 };
-use serde::{Deserialize, Serialize};
 use tonic::{Request, Response, Status};
 
 use super::super::models::setting::Dao as SettingDao;
 
 pub struct Service {
     pub db: Arc<Mutex<Db>>,
-    pub loquat: Arc<Loquat>,
+    pub hmac: Arc<Hmac>,
+    pub jwt: Arc<SslJwt>,
 }
 
 #[tonic::async_trait]
@@ -36,7 +38,7 @@ impl v1::user_server::User for Service {
                 if user.nickname == it.nickname && user.verify(hmac, &it.password) {
                     info!("user {} sign in", it.nickname);
                     let ttl = to_chrono_duration!(req.ttl.unwrap_or_default());
-                    let token = try_grpc!(build_token(&it.nickname, jwt, ttl))?;
+                    let token = try_grpc!(Jwt::sign(jwt, &it.nickname, ACTION_SIGN_IN, ttl))?;
                     return Ok(Response::new(v1::UserSignInResponse { token }));
                 }
             }
@@ -54,7 +56,7 @@ impl v1::user_server::User for Service {
             let user = try_grpc!(ss.current_user(db, jwt))?;
             info!("refresh token for {}", user);
             let ttl = to_chrono_duration!(req);
-            let token = try_grpc!(build_token(&user, jwt, ttl))?;
+            let token = try_grpc!(Jwt::sign(jwt, &user, ACTION_SIGN_IN, ttl))?;
             return Ok(Response::new(v1::UserSignInResponse { token }));
         }
         Err(Status::permission_denied(type_name::<v1::UserProfile>()))
@@ -112,27 +114,16 @@ impl v1::user_server::User for Service {
     }
 }
 
-pub fn build_token(user: &str, jwt: &Jwt, ttl: Duration) -> Result<String> {
-    let (nbf, exp) = Jwt::timestamps(ttl);
-    let token = Token {
-        aud: user.to_string(),
-        exp,
-        nbf,
-    };
-    jwt.sum(None, &token)
-}
-
 pub trait CurrentUserAdapter {
-    fn current_user(&self, db: &mut Db, jwt: &Jwt) -> Result<String>;
+    fn current_user<P: Jwt>(&self, db: &mut Db, jwt: &P) -> Result<String>;
 }
 
 impl CurrentUserAdapter for Session {
-    fn current_user(&self, db: &mut Db, jwt: &Jwt) -> Result<String> {
+    fn current_user<P: Jwt>(&self, db: &mut Db, jwt: &P) -> Result<String> {
         if let Some(ref token) = self.token {
-            let token = jwt.parse::<Token>(token)?;
-            let token = token.claims;
+            let subject = Jwt::verify(jwt, token, ACTION_SIGN_IN)?;
             let it: v1::UserProfile = SettingDao::get(db, None)?;
-            if it.nickname == token.aud {
+            if it.nickname == subject {
                 return Ok(it.nickname);
             }
         }
@@ -143,3 +134,5 @@ impl CurrentUserAdapter for Session {
         )))
     }
 }
+
+const ACTION_SIGN_IN: &str = "sign-in";

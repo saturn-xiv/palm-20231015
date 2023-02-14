@@ -36,17 +36,22 @@ impl Default for Loquat {
 }
 
 impl Jwt for Loquat {
-    fn sign(&self, subject: &str, ttl: Duration) -> Result<String> {
+    fn sign(&self, subject: &str, audience: &str, ttl: Duration) -> Result<String> {
         let (i_prot, o_prot) = self.open(Self::JWT)?;
         let mut client = JwtSyncClient::new(i_prot, o_prot);
-        let token = client.sign(self.token.clone(), subject.to_string(), ttl.num_seconds())?;
+        let token = client.sign(
+            self.token.clone(),
+            subject.to_string(),
+            audience.to_string(),
+            ttl.num_seconds(),
+        )?;
         Ok(token)
     }
 
-    fn verify(&self, token: &str) -> Result<String> {
+    fn verify(&self, token: &str, audience: &str) -> Result<String> {
         let (i_prot, o_prot) = self.open(Self::JWT)?;
         let mut client = JwtSyncClient::new(i_prot, o_prot);
-        let subject = client.verify(self.token.clone(), token.to_string())?;
+        let subject = client.verify(self.token.clone(), token.to_string(), audience.to_string())?;
         Ok(subject)
     }
 }

@@ -9,7 +9,8 @@ use std::sync::{Arc, Mutex};
 use diesel::{connection::Connection as DieselConnection, sqlite::SqliteConnection as Db};
 use ipnet::Ipv4Net;
 use palm::{
-    jwt::Jwt, ops::router::v1, session::Session, tink::Loquat, try_grpc, Error, GrpcResult, Result,
+    jwt::openssl::OpenSsl as SslJwt, ops::router::v1, session::Session, try_grpc, Error,
+    GrpcResult, Result,
 };
 use prost::Message;
 use tonic::{Request, Response, Status};
@@ -28,7 +29,7 @@ use super::user::CurrentUserAdapter;
 
 pub struct Service {
     pub db: Arc<Mutex<Db>>,
-    pub loquat: Arc<Loquat>,
+    pub jwt: Arc<SslJwt>,
 }
 
 #[tonic::async_trait]

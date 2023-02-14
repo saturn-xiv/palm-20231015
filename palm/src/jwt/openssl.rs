@@ -16,21 +16,23 @@ pub struct OpenSsl {
 #[serde(rename_all = "camelCase")]
 pub struct Token {
     pub sub: String,
+    pub aud: String,
     pub nbf: i64,
     pub exp: i64,
 }
 
 impl Jwt for OpenSsl {
-    fn sign(&self, subject: &str, ttl: Duration) -> Result<String> {
+    fn sign(&self, subject: &str, audience: &str, ttl: Duration) -> Result<String> {
         let (nbf, exp) = Self::timestamps(ttl);
         let token = Token {
             sub: subject.to_string(),
+            aud: audience.to_string(),
             exp,
             nbf,
         };
         self.sum(None, &token)
     }
-    fn verify(&self, token: &str) -> Result<String> {
+    fn verify(&self, token: &str, _audience: &str) -> Result<String> {
         let token: TokenData<Token> = self.parse(token)?;
         Ok(token.claims.sub)
     }

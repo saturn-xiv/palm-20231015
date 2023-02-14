@@ -30,8 +30,8 @@ use thrift::server::TProcessor;
 //
 
 pub trait TJwtSyncClient {
-  fn sign(&mut self, auth: String, subject: String, ttl: i64) -> thrift::Result<String>;
-  fn verify(&mut self, auth: String, token: String) -> thrift::Result<String>;
+  fn sign(&mut self, auth: String, subject: String, audience: String, ttl: i64) -> thrift::Result<String>;
+  fn verify(&mut self, auth: String, token: String, audience: String) -> thrift::Result<String>;
 }
 
 pub trait TJwtSyncClientMarker {}
@@ -58,12 +58,12 @@ impl <IP, OP> TThriftClient for JwtSyncClient<IP, OP> where IP: TInputProtocol, 
 impl <IP, OP> TJwtSyncClientMarker for JwtSyncClient<IP, OP> where IP: TInputProtocol, OP: TOutputProtocol {}
 
 impl <C: TThriftClient + TJwtSyncClientMarker> TJwtSyncClient for C {
-  fn sign(&mut self, auth: String, subject: String, ttl: i64) -> thrift::Result<String> {
+  fn sign(&mut self, auth: String, subject: String, audience: String, ttl: i64) -> thrift::Result<String> {
     (
       {
         self.increment_sequence_number();
         let message_ident = TMessageIdentifier::new("sign", TMessageType::Call, self.sequence_number());
-        let call_args = JwtSignArgs { auth, subject, ttl };
+        let call_args = JwtSignArgs { auth, subject, audience, ttl };
         self.o_prot_mut().write_message_begin(&message_ident)?;
         call_args.write_to_out_protocol(self.o_prot_mut())?;
         self.o_prot_mut().write_message_end()?;
@@ -85,12 +85,12 @@ impl <C: TThriftClient + TJwtSyncClientMarker> TJwtSyncClient for C {
       result.ok_or()
     }
   }
-  fn verify(&mut self, auth: String, token: String) -> thrift::Result<String> {
+  fn verify(&mut self, auth: String, token: String, audience: String) -> thrift::Result<String> {
     (
       {
         self.increment_sequence_number();
         let message_ident = TMessageIdentifier::new("verify", TMessageType::Call, self.sequence_number());
-        let call_args = JwtVerifyArgs { auth, token };
+        let call_args = JwtVerifyArgs { auth, token, audience };
         self.o_prot_mut().write_message_begin(&message_ident)?;
         call_args.write_to_out_protocol(self.o_prot_mut())?;
         self.o_prot_mut().write_message_end()?;
@@ -119,8 +119,8 @@ impl <C: TThriftClient + TJwtSyncClientMarker> TJwtSyncClient for C {
 //
 
 pub trait JwtSyncHandler {
-  fn handle_sign(&self, auth: String, subject: String, ttl: i64) -> thrift::Result<String>;
-  fn handle_verify(&self, auth: String, token: String) -> thrift::Result<String>;
+  fn handle_sign(&self, auth: String, subject: String, audience: String, ttl: i64) -> thrift::Result<String>;
+  fn handle_verify(&self, auth: String, token: String, audience: String) -> thrift::Result<String>;
 }
 
 pub struct JwtSyncProcessor<H: JwtSyncHandler> {
@@ -146,7 +146,7 @@ pub struct TJwtProcessFunctions;
 impl TJwtProcessFunctions {
   pub fn process_sign<H: JwtSyncHandler>(handler: &H, incoming_sequence_number: i32, i_prot: &mut dyn TInputProtocol, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {
     let args = JwtSignArgs::read_from_in_protocol(i_prot)?;
-    match handler.handle_sign(args.auth, args.subject, args.ttl) {
+    match handler.handle_sign(args.auth, args.subject, args.audience, args.ttl) {
       Ok(handler_return) => {
         let message_ident = TMessageIdentifier::new("sign", TMessageType::Reply, incoming_sequence_number);
         o_prot.write_message_begin(&message_ident)?;
@@ -183,7 +183,7 @@ impl TJwtProcessFunctions {
   }
   pub fn process_verify<H: JwtSyncHandler>(handler: &H, incoming_sequence_number: i32, i_prot: &mut dyn TInputProtocol, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {
     let args = JwtVerifyArgs::read_from_in_protocol(i_prot)?;
-    match handler.handle_verify(args.auth, args.token) {
+    match handler.handle_verify(args.auth, args.token, args.audience) {
       Ok(handler_return) => {
         let message_ident = TMessageIdentifier::new("verify", TMessageType::Reply, incoming_sequence_number);
         o_prot.write_message_begin(&message_ident)?;
@@ -253,6 +253,7 @@ impl <H: JwtSyncHandler> TProcessor for JwtSyncProcessor<H> {
 struct JwtSignArgs {
   auth: String,
   subject: String,
+  audience: String,
   ttl: i64,
 }
 
@@ -261,7 +262,8 @@ impl JwtSignArgs {
     i_prot.read_struct_begin()?;
     let mut f_1: Option<String> = None;
     let mut f_2: Option<String> = None;
-    let mut f_3: Option<i64> = None;
+    let mut f_3: Option<String> = None;
+    let mut f_4: Option<i64> = None;
     loop {
       let field_ident = i_prot.read_field_begin()?;
       if field_ident.field_type == TType::Stop {
@@ -278,8 +280,12 @@ impl JwtSignArgs {
           f_2 = Some(val);
         },
         3 => {
-          let val = i_prot.read_i64()?;
+          let val = i_prot.read_string()?;
           f_3 = Some(val);
+        },
+        4 => {
+          let val = i_prot.read_i64()?;
+          f_4 = Some(val);
         },
         _ => {
           i_prot.skip(field_ident.field_type)?;
@@ -290,11 +296,13 @@ impl JwtSignArgs {
     i_prot.read_struct_end()?;
     verify_required_field_exists("JwtSignArgs.auth", &f_1)?;
     verify_required_field_exists("JwtSignArgs.subject", &f_2)?;
-    verify_required_field_exists("JwtSignArgs.ttl", &f_3)?;
+    verify_required_field_exists("JwtSignArgs.audience", &f_3)?;
+    verify_required_field_exists("JwtSignArgs.ttl", &f_4)?;
     let ret = JwtSignArgs {
       auth: f_1.expect("auto-generated code should have checked for presence of required fields"),
       subject: f_2.expect("auto-generated code should have checked for presence of required fields"),
-      ttl: f_3.expect("auto-generated code should have checked for presence of required fields"),
+      audience: f_3.expect("auto-generated code should have checked for presence of required fields"),
+      ttl: f_4.expect("auto-generated code should have checked for presence of required fields"),
     };
     Ok(ret)
   }
@@ -307,7 +315,10 @@ impl JwtSignArgs {
     o_prot.write_field_begin(&TFieldIdentifier::new("subject", TType::String, 2))?;
     o_prot.write_string(&self.subject)?;
     o_prot.write_field_end()?;
-    o_prot.write_field_begin(&TFieldIdentifier::new("ttl", TType::I64, 3))?;
+    o_prot.write_field_begin(&TFieldIdentifier::new("audience", TType::String, 3))?;
+    o_prot.write_string(&self.audience)?;
+    o_prot.write_field_end()?;
+    o_prot.write_field_begin(&TFieldIdentifier::new("ttl", TType::I64, 4))?;
     o_prot.write_i64(self.ttl)?;
     o_prot.write_field_end()?;
     o_prot.write_field_stop()?;
@@ -386,6 +397,7 @@ impl JwtSignResult {
 struct JwtVerifyArgs {
   auth: String,
   token: String,
+  audience: String,
 }
 
 impl JwtVerifyArgs {
@@ -393,6 +405,7 @@ impl JwtVerifyArgs {
     i_prot.read_struct_begin()?;
     let mut f_1: Option<String> = None;
     let mut f_2: Option<String> = None;
+    let mut f_3: Option<String> = None;
     loop {
       let field_ident = i_prot.read_field_begin()?;
       if field_ident.field_type == TType::Stop {
@@ -408,6 +421,10 @@ impl JwtVerifyArgs {
           let val = i_prot.read_string()?;
           f_2 = Some(val);
         },
+        3 => {
+          let val = i_prot.read_string()?;
+          f_3 = Some(val);
+        },
         _ => {
           i_prot.skip(field_ident.field_type)?;
         },
@@ -417,9 +434,11 @@ impl JwtVerifyArgs {
     i_prot.read_struct_end()?;
     verify_required_field_exists("JwtVerifyArgs.auth", &f_1)?;
     verify_required_field_exists("JwtVerifyArgs.token", &f_2)?;
+    verify_required_field_exists("JwtVerifyArgs.audience", &f_3)?;
     let ret = JwtVerifyArgs {
       auth: f_1.expect("auto-generated code should have checked for presence of required fields"),
       token: f_2.expect("auto-generated code should have checked for presence of required fields"),
+      audience: f_3.expect("auto-generated code should have checked for presence of required fields"),
     };
     Ok(ret)
   }
@@ -431,6 +450,9 @@ impl JwtVerifyArgs {
     o_prot.write_field_end()?;
     o_prot.write_field_begin(&TFieldIdentifier::new("token", TType::String, 2))?;
     o_prot.write_string(&self.token)?;
+    o_prot.write_field_end()?;
+    o_prot.write_field_begin(&TFieldIdentifier::new("audience", TType::String, 3))?;
+    o_prot.write_string(&self.audience)?;
     o_prot.write_field_end()?;
     o_prot.write_field_stop()?;
     o_prot.write_struct_end()

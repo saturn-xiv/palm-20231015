@@ -43,14 +43,19 @@ loquat::Config::Config(const std::filesystem::path& file) {
 }
 
 std::string loquat::Jwt::sign(const std::string& subject,
+                              const std::optional<std::string> audience,
                               const std::chrono::seconds& ttl) {
   auto now = absl::Now();
-  auto raw_r = crypto::tink::RawJwtBuilder()
-                   .SetSubject(subject)
-                   .SetNotBefore(now - absl::Seconds(1))
-                   .SetIssuedAt(now)
-                   .SetExpiration(now + absl::Seconds(ttl.count()))
-                   .Build();
+  auto raw_rb = crypto::tink::RawJwtBuilder()
+                    .SetIssuer(loquat::PROJECT_NAME)
+                    .SetSubject(subject)
+                    .SetNotBefore(now - absl::Seconds(1))
+                    .SetIssuedAt(now)
+                    .SetExpiration(now + absl::Seconds(ttl.count()));
+  if (audience) {
+    raw_rb = raw_rb.AddAudience(audience.value());
+  }
+  auto raw_r = raw_rb.Build();
   this->check(raw_r);
   auto raw = std::move(raw_r.ValueOrDie());
   auto jwt = this->load();
@@ -60,7 +65,8 @@ std::string loquat::Jwt::sign(const std::string& subject,
   return token;
 }
 
-std::string loquat::Jwt::verify(const std::string& token) {
+std::string loquat::Jwt::verify(const std::string& token,
+                                const std::optional<std::string> audience) {
   auto validator_r = crypto::tink::JwtValidatorBuilder()
                          .IgnoreTypeHeader()
                          .IgnoreIssuer()
@@ -72,6 +78,16 @@ std::string loquat::Jwt::verify(const std::string& token) {
   auto payload_r = jwt->VerifyMacAndDecode(token, validator);
   this->check(payload_r);
   auto payload = std::move(payload_r.ValueOrDie());
+  if (audience) {
+    auto audiences_r = payload.GetAudiences();
+    this->check(audiences_r);
+    auto audiences = std::move(audiences_r.ValueOrDie());
+    if (std::find(audiences.begin(), audiences.end(), audience.value()) ==
+        audiences.end()) {
+      spdlog::error("can't find audience {}", audience.value());
+      throw std::runtime_error("");
+    }
+  }
   auto subject_r = payload.GetSubject();
   this->check(subject_r);
   auto subject = std::move(subject_r.ValueOrDie());

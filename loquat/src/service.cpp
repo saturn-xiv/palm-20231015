@@ -103,17 +103,21 @@ void loquat::HmacHandler::verify(const std::string& auth,
 }
 
 void loquat::JwtHandler::sign(std::string& token, const std::string& auth,
-                              const std::string& subject, const int64_t ttl) {
+                              const std::string& subject,
+                              const std::string& audience, const int64_t ttl) {
   spdlog::info("call {}", __PRETTY_FUNCTION__);
   const auto zone = loquat::auth(auth);
   loquat::Jwt jwt(zone);
-  token = jwt.sign(subject, std::chrono::seconds(ttl));
+  token = audience.empty()
+              ? jwt.sign(subject, std::chrono::seconds(ttl))
+              : jwt.sign(subject, audience, std::chrono::seconds(ttl));
 }
 
 void loquat::JwtHandler::verify(std::string& subject, const std::string& auth,
-                                const std::string& token) {
+                                const std::string& token,
+                                const std::string& audience) {
   spdlog::info("call {}", __PRETTY_FUNCTION__);
   const auto zone = loquat::auth(auth);
   loquat::Jwt jwt(zone);
-  subject = jwt.verify(token);
+  subject = audience.empty() ? jwt.verify(token) : jwt.verify(token, audience);
 }

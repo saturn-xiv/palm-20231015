@@ -120,11 +120,22 @@ class Keyset {
   std::mutex _locker;
 };
 
+// https://github.com/google/tink/blob/master/docs/JWT-HOWTO.md
 class Jwt final : public Keyset {
  public:
   Jwt(const std::string& name) : Keyset(name) {}
-  std::string sign(const std::string& subject, const std::chrono::seconds& ttl);
-  std::string verify(const std::string& token);
+  inline std::string sign(const std::string& subject,
+                          const std::chrono::seconds& ttl) {
+    return this->sign(subject, std::nullopt, ttl);
+  }
+  std::string sign(const std::string& subject,
+                   const std::optional<std::string> audience,
+                   const std::chrono::seconds& ttl);
+  std::string verify(const std::string& token,
+                     const std::optional<std::string> audience);
+  inline std::string verify(const std::string& token) {
+    return this->verify(token, std::nullopt);
+  }
 
  private:
   std::unique_ptr<crypto::tink::JwtMac> load();

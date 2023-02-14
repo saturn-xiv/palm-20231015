@@ -20,12 +20,12 @@ class JwtHandler : virtual public JwtIf {
     // Your initialization goes here
   }
 
-  void sign(std::string& _return, const std::string& auth, const std::string& subject, const int64_t ttl) {
+  void sign(std::string& _return, const std::string& auth, const std::string& subject, const std::string& audience, const int64_t ttl) {
     // Your implementation goes here
     printf("sign\n");
   }
 
-  void verify(std::string& _return, const std::string& auth, const std::string& token) {
+  void verify(std::string& _return, const std::string& auth, const std::string& token, const std::string& audience) {
     // Your implementation goes here
     printf("verify\n");
   }

@@ -11,8 +11,9 @@ use std::time::Duration;
 use clap::Parser;
 use diesel::sqlite::SqliteConnection as Db;
 use palm::{
-    crypto::Hmac, jwt::Jwt, network::ethernet::ArpScanner, network::iptables::Iptables,
-    ops::router::v1 as ops_router_v1, parser::from_toml, Result, HOMEPAGE, VERSION,
+    crypto::Hmac, jwt::openssl::OpenSsl as SslJwt, network::ethernet::ArpScanner,
+    network::iptables::Iptables, ops::router::v1 as ops_router_v1, parser::from_toml, Result,
+    HOMEPAGE, VERSION,
 };
 use tonic::transport::Server;
 
@@ -41,7 +42,7 @@ impl Args {
         }
         let cfg: Config = from_toml(&self.config)?;
         let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
-        let jwt = Arc::new(Jwt::new(cfg.secrets.0.clone()));
+        let jwt = Arc::new(SslJwt::new(cfg.secrets.0.clone()));
         let db = Arc::new(Mutex::new({
             let hmac = hmac.deref();
             open_db("tmp/db", hmac)?

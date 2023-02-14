@@ -1,6 +1,6 @@
 [package]
 name = "aloe"
-version = "2022.12.10"
+version = "2023.2.15"
 edition = "2021"
 authors = ["Jeremy Zheng <jitang.zheng@gmail.com>"]
 description = "A router software inspired by OpenWrt"
