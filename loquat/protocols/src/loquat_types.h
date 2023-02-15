@@ -19,8 +19,8 @@
 #include <memory>
 
 
-namespace loquat {
+namespace loquat { namespace v1 {
 
-} // namespace
+}} // namespace
 
 #endif

@@ -22,10 +22,31 @@ function generate_grpc_by_lang() {
         $WORKSPACE/palm/protocols/*.proto
 }
 
-function generate_flatbuffers(){
+function generate_flatbuffers() {
     echo "generate flatbuffers"
     flatc --rust --filename-suffix "" -o $WORKSPACE/$2 $WORKSPACE/$1.fbs
     flatc --rust --filename-suffix "" -o $WORKSPACE/$2 $WORKSPACE/$1.fbs
+}
+
+function generate_loquat() {
+    echo 'generate loquat for rust'
+    thrift -out palm/src --gen rs -r $WORKSPACE/loquat/loquat.thrift
+    
+    echo 'generate loquat for cpp'
+    if [ -d $WORKSPACE/loquat/protocols/src ]
+    then
+        rm -r $WORKSPACE/loquat/protocols/src
+    fi
+    mkdir -p $WORKSPACE/loquat/protocols/src
+    thrift -out $WORKSPACE/loquat/protocols/src --gen cpp -r $WORKSPACE/loquat/loquat.thrift
+    
+    echo 'generate loquat for java'
+    if [ -d $WORKSPACE/tmp/loquat-java ]
+    then
+        rm -r $WORKSPACE/tmp/loquat-java
+    fi
+    mkdir -p $WORKSPACE/tmp/loquat-java
+    thrift -out $WORKSPACE/tmp/loquat-java --gen java -r loquat/loquat.thrift
 }
 
 # https://github.com/grpc/grpc-web#code-generator-plugin
@@ -107,17 +128,8 @@ done
 
 generate_fig_web
 generate_aloe_web
+generate_loquat
 
-# generate_flatbuffers ops/metrics/protocols/rpc ops/metrics/src
-# generate_flatbuffers ops/metrics/protocols/rpc fig/src/metrics
-
-thrift -out palm/src --gen rs -r loquat/loquat.thrift
-if [ -d loquat/protocols/src ]
-then
-    rm -r loquat/protocols/src
-fi
-mkdir -p loquat/protocols/src
-thrift -out loquat/protocols/src --gen cpp -r loquat/loquat.thrift
 
 echo 'format rust code'
 cargo fmt

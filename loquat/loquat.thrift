@@ -1,5 +1,5 @@
-namespace cpp loquat
-namespace java loquat
+namespace cpp loquat.v1
+namespace java com.github.saturn_xiv.palm.plugins.loquat.v1
 
 service Jwt {
     string sign(1:string auth, 2:string subject, 3:string audience, 4:i64 ttl);

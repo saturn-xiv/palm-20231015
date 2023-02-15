@@ -6,7 +6,7 @@
  */
 #include "Aes.h"
 
-namespace loquat {
+namespace loquat { namespace v1 {
 
 
 Aes_encrypt_args::~Aes_encrypt_args() noexcept {
@@ -836,5 +836,5 @@ void AesConcurrentClient::recv_decrypt(std::string& _return, const int32_t seqid
   } // end while(true)
 }
 
-} // namespace
+}} // namespace
 

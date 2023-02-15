@@ -6,7 +6,7 @@
  */
 #include "Hmac.h"
 
-namespace loquat {
+namespace loquat { namespace v1 {
 
 
 Hmac_sign_args::~Hmac_sign_args() noexcept {
@@ -811,5 +811,5 @@ void HmacConcurrentClient::recv_verify(const int32_t seqid)
   } // end while(true)
 }
 
-} // namespace
+}} // namespace
 

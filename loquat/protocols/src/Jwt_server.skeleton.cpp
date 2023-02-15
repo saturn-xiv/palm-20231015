@@ -12,7 +12,7 @@ using namespace ::apache::thrift::protocol;
 using namespace ::apache::thrift::transport;
 using namespace ::apache::thrift::server;
 
-using namespace  ::loquat;
+using namespace  ::loquat::v1;
 
 class JwtHandler : virtual public JwtIf {
  public:

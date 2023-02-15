@@ -9,7 +9,7 @@
 namespace loquat {
 void launch(const uint16_t port, const size_t worker_count);
 
-class AesHandler final : public AesIf {
+class AesHandler final : public v1::AesIf {
  public:
   AesHandler() = default;
 
@@ -19,7 +19,7 @@ class AesHandler final : public AesIf {
                const std::string& code) override;
 };
 
-class HmacHandler final : public HmacIf {
+class HmacHandler final : public v1::HmacIf {
  public:
   HmacHandler() = default;
 
@@ -29,7 +29,7 @@ class HmacHandler final : public HmacIf {
               const std::string& plain) override;
 };
 
-class JwtHandler final : public JwtIf {
+class JwtHandler final : public v1::JwtIf {
  public:
   JwtHandler() = default;
 

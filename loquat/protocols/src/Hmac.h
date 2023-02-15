@@ -12,7 +12,7 @@
 #include <memory>
 #include "loquat_types.h"
 
-namespace loquat {
+namespace loquat { namespace v1 {
 
 #ifdef _MSC_VER
   #pragma warning( push )
@@ -428,6 +428,6 @@ class HmacConcurrentClient : virtual public HmacIf {
   #pragma warning( pop )
 #endif
 
-} // namespace
+}} // namespace
 
 #endif

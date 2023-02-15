@@ -12,7 +12,7 @@
 #include <memory>
 #include "loquat_types.h"
 
-namespace loquat {
+namespace loquat { namespace v1 {
 
 #ifdef _MSC_VER
   #pragma warning( push )
@@ -464,6 +464,6 @@ class JwtConcurrentClient : virtual public JwtIf {
   #pragma warning( pop )
 #endif
 
-} // namespace
+}} // namespace
 
 #endif

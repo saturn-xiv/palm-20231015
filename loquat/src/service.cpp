@@ -12,14 +12,14 @@
 
 void loquat::launch(const uint16_t port, const size_t worker_count) {
   std::shared_ptr<AesHandler> aesHandler = std::make_shared<AesHandler>();
-  std::shared_ptr<AesProcessor> aesProcessor =
-      std::make_shared<AesProcessor>(aesHandler);
+  std::shared_ptr<v1::AesProcessor> aesProcessor =
+      std::make_shared<v1::AesProcessor>(aesHandler);
   std::shared_ptr<HmacHandler> hmacHandler = std::make_shared<HmacHandler>();
-  std::shared_ptr<HmacProcessor> hmacProcessor =
-      std::make_shared<HmacProcessor>(hmacHandler);
+  std::shared_ptr<v1::HmacProcessor> hmacProcessor =
+      std::make_shared<v1::HmacProcessor>(hmacHandler);
   std::shared_ptr<JwtHandler> jwtHandler = std::make_shared<JwtHandler>();
-  std::shared_ptr<JwtProcessor> jwtProcessor =
-      std::make_shared<JwtProcessor>(jwtHandler);
+  std::shared_ptr<v1::JwtProcessor> jwtProcessor =
+      std::make_shared<v1::JwtProcessor>(jwtHandler);
 
   std::shared_ptr<apache::thrift::TMultiplexedProcessor> multiplexedProcessor =
       std::make_shared<apache::thrift::TMultiplexedProcessor>();

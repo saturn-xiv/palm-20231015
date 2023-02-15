@@ -6,7 +6,7 @@
  */
 #include "Jwt.h"
 
-namespace loquat {
+namespace loquat { namespace v1 {
 
 
 Jwt_sign_args::~Jwt_sign_args() noexcept {
@@ -890,5 +890,5 @@ void JwtConcurrentClient::recv_verify(std::string& _return, const int32_t seqid)
   } // end while(true)
 }
 
-} // namespace
+}} // namespace
 
