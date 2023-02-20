@@ -31,7 +31,7 @@ service Policy {
   rpc DeletePermissionsForUser(UserPermissionsRequest)
       returns (google.protobuf.Empty) {}
   rpc GetPermissionsForUser(UserRequest) returns (PermissionsResponse) {}
-  rpc GetPermissionsForRole(UserRequest) returns (PermissionsResponse) {}
+  rpc GetPermissionsForRole(RoleRequest) returns (PermissionsResponse) {}
   rpc GetImplicitPermissionsForUser(UserRequest) returns (PermissionsResponse) {
   }
 

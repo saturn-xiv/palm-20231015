@@ -479,7 +479,7 @@ impl v1::policy_server::Policy for Service {
     }
     async fn get_permissions_for_role(
         &self,
-        req: tonic::Request<v1::UserRequest>,
+        req: tonic::Request<v1::RoleRequest>,
     ) -> GrpcResult<v1::PermissionsResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;

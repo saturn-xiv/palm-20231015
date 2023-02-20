@@ -728,14 +728,7 @@ pub async fn new_sign_in_response<P: Jwt>(
 
     Ok(v1::UserSignInResponse {
         token,
-        payload: Some(v1::user_sign_in_response::Payload {
-            real_name: user.real_name.clone(),
-            nickname: user.nickname.clone(),
-            avatar: user.avatar.clone(),
-            email: user.email.clone(),
-            lang: user.lang.clone(),
-            time_zone: user.time_zone.clone(),
-        }),
+        payload: Some(user.clone().into()),
         permissions,
         roles,
     })

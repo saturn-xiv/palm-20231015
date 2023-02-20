@@ -731,26 +731,26 @@ export class PolicyClient {
   methodDescriptorGetPermissionsForRole = new grpcWeb.MethodDescriptor(
     '/palm.rbac.v1.Policy/GetPermissionsForRole',
     grpcWeb.MethodType.UNARY,
-    rbac_pb.UserRequest,
+    rbac_pb.RoleRequest,
     rbac_pb.PermissionsResponse,
-    (request: rbac_pb.UserRequest) => {
+    (request: rbac_pb.RoleRequest) => {
       return request.serializeBinary();
     },
     rbac_pb.PermissionsResponse.deserializeBinary
   );
 
   getPermissionsForRole(
-    request: rbac_pb.UserRequest,
+    request: rbac_pb.RoleRequest,
     metadata: grpcWeb.Metadata | null): Promise<rbac_pb.PermissionsResponse>;
 
   getPermissionsForRole(
-    request: rbac_pb.UserRequest,
+    request: rbac_pb.RoleRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: rbac_pb.PermissionsResponse) => void): grpcWeb.ClientReadableStream<rbac_pb.PermissionsResponse>;
 
   getPermissionsForRole(
-    request: rbac_pb.UserRequest,
+    request: rbac_pb.RoleRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: rbac_pb.PermissionsResponse) => void) {

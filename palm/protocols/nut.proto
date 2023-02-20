@@ -94,16 +94,8 @@ message UserQueryRequest {
 }
 
 message UserSignInResponse {
-  message Payload {
-    string nickname = 1;
-    string email = 2;
-    string real_name = 11;
-    string lang = 12;
-    string time_zone = 13;
-    string avatar = 99;
-  }
   string token = 1;
-  Payload payload = 2;
+  UserIndexResponse.Item payload = 2;
   repeated string roles = 11;
 
   message Permission {

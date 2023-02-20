@@ -221,8 +221,8 @@ export class UserSignInResponse extends jspb.Message {
   getToken(): string;
   setToken(value: string): UserSignInResponse;
 
-  getPayload(): UserSignInResponse.Payload | undefined;
-  setPayload(value?: UserSignInResponse.Payload): UserSignInResponse;
+  getPayload(): UserIndexResponse.Item | undefined;
+  setPayload(value?: UserIndexResponse.Item): UserSignInResponse;
   hasPayload(): boolean;
   clearPayload(): UserSignInResponse;
 
@@ -247,49 +247,10 @@ export class UserSignInResponse extends jspb.Message {
 export namespace UserSignInResponse {
   export type AsObject = {
     token: string,
-    payload?: UserSignInResponse.Payload.AsObject,
+    payload?: UserIndexResponse.Item.AsObject,
     rolesList: Array<string>,
     permissionsList: Array<UserSignInResponse.Permission.AsObject>,
   }
-
-  export class Payload extends jspb.Message {
-    getNickname(): string;
-    setNickname(value: string): Payload;
-
-    getEmail(): string;
-    setEmail(value: string): Payload;
-
-    getRealName(): string;
-    setRealName(value: string): Payload;
-
-    getLang(): string;
-    setLang(value: string): Payload;
-
-    getTimeZone(): string;
-    setTimeZone(value: string): Payload;
-
-    getAvatar(): string;
-    setAvatar(value: string): Payload;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Payload.AsObject;
-    static toObject(includeInstance: boolean, msg: Payload): Payload.AsObject;
-    static serializeBinaryToWriter(message: Payload, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Payload;
-    static deserializeBinaryFromReader(message: Payload, reader: jspb.BinaryReader): Payload;
-  }
-
-  export namespace Payload {
-    export type AsObject = {
-      nickname: string,
-      email: string,
-      realName: string,
-      lang: string,
-      timeZone: string,
-      avatar: string,
-    }
-  }
-
 
   export class Permission extends jspb.Message {
     getOperation(): string;
