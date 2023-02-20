@@ -60,7 +60,12 @@ RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.zshrc
 
 # https://www.rust-lang.org/tools/install
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-RUN zsh -c "source $HOME/.cargo/env && rustup target add aarch64-unknown-linux-gnu"
+# https://doc.rust-lang.org/nightly/rustc/platform-support.html
+RUN zsh -c "source $HOME/.cargo/env \
+    && rustup target add x86_64-unknown-linux-musl \
+    && rustup target add armv7-unknown-linux-gnueabihf \
+    && rustup target add aarch64-unknown-linux-gnu \
+    && rustup target add aarch64-unknown-linux-musl"
 
 # https://github.com/richfelker/musl-cross-make
 RUN git clone https://github.com/richfelker/musl-cross-make.git $HOME/build/musl-cross-make
