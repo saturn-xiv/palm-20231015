@@ -29,10 +29,10 @@ function generate_flatbuffers() {
 }
 
 function generate_loquat() {
-    echo 'generate loquat for rust'
+    echo 'generate code for loquat-rust'
     thrift -out palm/src --gen rs -r $WORKSPACE/loquat/loquat.thrift
     
-    echo 'generate loquat for cpp'
+    echo 'generate code for loquat-cpp'
     if [ -d $WORKSPACE/loquat/protocols/src ]
     then
         rm -r $WORKSPACE/loquat/protocols/src
@@ -40,13 +40,8 @@ function generate_loquat() {
     mkdir -p $WORKSPACE/loquat/protocols/src
     thrift -out $WORKSPACE/loquat/protocols/src --gen cpp -r $WORKSPACE/loquat/loquat.thrift
     
-    echo 'generate loquat for java'
-    if [ -d $WORKSPACE/tmp/loquat-java ]
-    then
-        rm -r $WORKSPACE/tmp/loquat-java
-    fi
-    mkdir -p $WORKSPACE/tmp/loquat-java
-    thrift -out $WORKSPACE/tmp/loquat-java --gen java -r loquat/loquat.thrift
+    echo 'generate code for loquat-java'    
+    thrift -out $WORKSPACE/tmp/protocols/java --gen java -r loquat/loquat.thrift
 }
 
 # https://github.com/grpc/grpc-web#code-generator-plugin
