@@ -1,6 +1,6 @@
 FetchContent_Declare(thrift
   GIT_REPOSITORY    "https://github.com/apache/thrift.git"
-  GIT_TAG           "v0.17.0"
+  GIT_TAG           "v0.18.0"
 )
 FetchContent_MakeAvailable(thrift)
 
