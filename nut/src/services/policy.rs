@@ -3,6 +3,7 @@ use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 
 use casbin::{Enforcer, MgmtApi, RbacApi};
+use palm::rbac::v1::RoleRequest;
 use palm::{
     cache::redis::Pool as RedisPool, has_permission, has_role, rbac::v1, rbac::v1::UserRequest,
     session::Session, tink::Loquat, try_grpc, GrpcResult,
@@ -232,12 +233,13 @@ impl v1::policy_server::Policy for Service {
         }
 
         let req = req.into_inner();
+        let user = try_grpc!(UserDao::by_id(db, req.user))?;
+        if user.has(enf, v1::RoleRequest::ROOT).await {
+            return Err(Status::permission_denied(type_name::<Self>()));
+        }
         {
             let mut enf = enf.lock().await;
-            let user = {
-                let it = try_grpc!(UserDao::by_id(db, req.user))?;
-                UserRequest { id: it.id }.to_string()
-            };
+            let user = UserRequest { id: user.id }.to_string();
             let roles: Vec<String> = req
                 .roles
                 .iter()
@@ -267,12 +269,14 @@ impl v1::policy_server::Policy for Service {
         }
 
         let req = req.into_inner();
+        let user = try_grpc!(UserDao::by_id(db, req.user))?;
+        if user.has(enf, v1::RoleRequest::ROOT).await {
+            return Err(Status::permission_denied(type_name::<Self>()));
+        }
         {
             let mut enf = enf.lock().await;
-            let user = {
-                let it = try_grpc!(UserDao::by_id(db, req.user))?;
-                UserRequest { id: it.id }.to_string()
-            };
+            let user = UserRequest { id: user.id }.to_string();
+
             let roles: Vec<String> = req
                 .roles
                 .iter()
@@ -298,12 +302,13 @@ impl v1::policy_server::Policy for Service {
         }
 
         let req = req.into_inner();
+        let user = try_grpc!(UserDao::by_id(db, req.id))?;
+        if user.has(enf, v1::RoleRequest::ROOT).await {
+            return Err(Status::permission_denied(type_name::<Self>()));
+        }
         {
             let mut enf = enf.lock().await;
-            let user = {
-                let it = try_grpc!(UserDao::by_id(db, req.id))?;
-                UserRequest { id: it.id }.to_string()
-            };
+            let user = UserRequest { id: user.id }.to_string();
             try_grpc!(enf.delete_user(&user).await)?;
         }
         Ok(Response::new(()))
@@ -322,6 +327,14 @@ impl v1::policy_server::Policy for Service {
         }
 
         let req = req.into_inner();
+        if vec![
+            RoleRequest::ROOT.to_string(),
+            RoleRequest::ADMINISTRATOR.to_string(),
+        ]
+        .contains(&req.code)
+        {
+            return Err(Status::permission_denied(type_name::<Self>()));
+        }
 
         {
             let mut enf = enf.lock().await;
