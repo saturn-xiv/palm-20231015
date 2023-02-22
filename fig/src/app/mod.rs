@@ -37,7 +37,9 @@ pub enum SubCommand {
     #[clap(about = "List all users")]
     UserList,
     #[clap(about = "Apply role to user(by uid)")]
-    UserApplyPolicy(user::ApplyPolicy),
+    UserApplyRole(user::Role),
+    #[clap(about = "Exempt role from user(by uid)")]
+    UserExemptRole(user::Role),
     #[clap(about = "Reset user's password(by uid)")]
     UserResetPassword(user::ResetPassword),
     #[clap(about = "Generate user token(by uid)")]
@@ -126,13 +128,17 @@ pub async fn launch() -> Result<()> {
         let db = cfg.postgresql.open()?;
         let mut db = db.get()?;
         let db = db.deref_mut();
+        let mut enf = cfg.postgresql.casbin().await?;
 
         {
             if args.command == SubCommand::UserList {
                 return user::list(db);
             }
-            if let SubCommand::UserApplyPolicy(ref it) = args.command {
-                return it.execute(db);
+            if let SubCommand::UserApplyRole(ref it) = args.command {
+                return it.apply(db, &mut enf).await;
+            }
+            if let SubCommand::UserExemptRole(ref it) = args.command {
+                return it.exempt(db, &mut enf).await;
             }
             if let SubCommand::UserResetPassword(ref it) = args.command {
                 return it.execute(db, &cfg.hmac);

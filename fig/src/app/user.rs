@@ -1,4 +1,5 @@
-use chrono::{Duration, Utc};
+use casbin::{Enforcer, RbacApi};
+use chrono::Duration;
 use diesel::Connection as DieselConntection;
 use nut::{
     models::{
@@ -8,7 +9,10 @@ use nut::{
     orm::postgresql::Connection as Db,
 };
 use palm::{
-    crypto::Password, jwt::Jwt, nut::v1::user_logs_response::item::Level::Info as LogLevelInfo,
+    crypto::Password,
+    jwt::Jwt,
+    nut::v1::user_logs_response::item::Level::Info as LogLevelInfo,
+    rbac::v1::{RoleRequest, UserRequest},
     Error, Result,
 };
 
@@ -32,22 +36,26 @@ impl Token {
 }
 
 #[derive(clap::Parser, PartialEq, Eq, Debug)]
-pub struct ApplyPolicy {
+pub struct Role {
     #[clap(short, long)]
     pub user: String,
     #[clap(short, long)]
     pub role: String,
 }
 
-impl ApplyPolicy {
-    pub fn execute(&self, db: &mut Db) -> Result<()> {
-        let now = Utc::now().naive_utc();
-        let nbf = now.date();
-        let exp = (now + Duration::weeks(1 << 10)).date();
-
+impl Role {
+    pub async fn apply(&self, db: &mut Db, enf: &mut Enforcer) -> Result<()> {
         let user = UserDao::by_uid(db, &self.user)?;
 
-        // TODO
+        {
+            let user = UserRequest { id: user.id }.to_string();
+            let role = RoleRequest {
+                code: self.role.clone(),
+            }
+            .to_string();
+            enf.add_role_for_user(&user, &role, None).await?;
+        }
+
         let un = nix::sys::utsname::uname()?;
         LogDao::add::<String, User>(
             db,
@@ -56,18 +64,43 @@ impl ApplyPolicy {
             &format!("{:?}", un.nodename().to_str()),
             Some(user.id),
             format!(
-                "Apply role {} by system user {} from {} to {}.",
+                "Apply role {} by system user {}",
                 self.role,
-                nix::unistd::getuid(),
-                nbf,
-                exp
+                nix::unistd::getuid()
             ),
         )?;
 
-        info!(
-            "apple role {} to user {} from {} to {}",
-            self.role, user, nbf, exp
-        );
+        info!("apple role {} to user {}", self.role, user,);
+        Ok(())
+    }
+
+    pub async fn exempt(&self, db: &mut Db, enf: &mut Enforcer) -> Result<()> {
+        let user = UserDao::by_uid(db, &self.user)?;
+
+        {
+            let user = UserRequest { id: user.id }.to_string();
+            let role = RoleRequest {
+                code: self.role.clone(),
+            }
+            .to_string();
+            enf.delete_role_for_user(&user, &role, None).await?;
+        }
+
+        let un = nix::sys::utsname::uname()?;
+        LogDao::add::<String, User>(
+            db,
+            user.id,
+            LogLevelInfo,
+            &format!("{:?}", un.nodename().to_str()),
+            Some(user.id),
+            format!(
+                "Exempt role {} by system user {}.",
+                self.role,
+                nix::unistd::getuid(),
+            ),
+        )?;
+
+        info!("exempt role {} to user {}", self.role, user);
         Ok(())
     }
 }
