@@ -24,7 +24,7 @@ impl From<WeChat> for WechatProfile {
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Config {
-    pub jwt: Loquat,
+    pub loquat: Loquat,
     pub redis: Redis,
     pub wechat: Vec<WeChat>,
     pub google: Vec<Google>,
@@ -34,7 +34,7 @@ pub struct Config {
 impl Config {
     pub fn auth(&self, ss: &Session) -> Result<()> {
         if let Some(ref token) = ss.token {
-            let sub = self.jwt.verify(token, "")?;
+            let sub = self.loquat.verify(token, "")?;
             if self.agents.contains(&sub) {
                 return Ok(());
             }

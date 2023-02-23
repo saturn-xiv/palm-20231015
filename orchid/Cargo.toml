@@ -1,8 +1,8 @@
 [package]
 name = "orchid"
-version = "2023.2.14"
+version = "2023.2.23"
 edition = "2021"
-description = "Oauth services."
+description = "OAuth services."
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
