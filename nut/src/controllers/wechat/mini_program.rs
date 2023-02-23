@@ -11,7 +11,7 @@ use tonic::Request;
 use super::super::super::{
     models::user::{Action, Dao as UserDao, Item as User},
     orm::postgresql::Pool as DbPool,
-    Oauth,
+    Orchid,
 };
 use super::SignInResponse;
 
@@ -28,7 +28,7 @@ pub async fn sign_in(
     db: web::Data<DbPool>,
     client_ip: ClientIp,
     jwt: web::Data<Loquat>,
-    oauth: web::Data<Oauth>,
+    oauth: web::Data<Orchid>,
     form: web::Json<SignInRequest>,
 ) -> WebResult<impl Responder> {
     let form = form.into_inner();

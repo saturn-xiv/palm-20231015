@@ -18,7 +18,7 @@ use super::super::super::super::{
         user::{Action, Dao as UserDao},
     },
     orm::postgresql::Pool as DbPool,
-    Oauth,
+    Orchid,
 };
 use super::super::SignInResponse;
 
@@ -52,7 +52,7 @@ pub async fn callback(
     jwt: web::Data<Loquat>,
     aes: web::Data<Aes>,
     form: web::Query<CallbackQuery>,
-    oauth: web::Data<Oauth>,
+    oauth: web::Data<Orchid>,
 ) -> WebResult<impl Responder> {
     let form = form.into_inner();
     let client_ip = client_ip.to_string();

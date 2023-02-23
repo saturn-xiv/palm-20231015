@@ -21,12 +21,12 @@ use serde::{Deserialize, Serialize};
 use tonic::transport::{channel::Channel, Endpoint};
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone, PartialEq, Eq)]
-pub struct Oauth {
+pub struct Orchid {
     pub endpoint: String,
     pub token: String,
 }
 
-impl Oauth {
+impl Orchid {
     pub async fn open(&self) -> Result<WeChatClient<Channel>> {
         let endpoint = self.endpoint.parse::<Endpoint>()?;
         let it = WeChatClient::connect(endpoint).await?;

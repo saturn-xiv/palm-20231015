@@ -29,7 +29,7 @@ Type=simple
 User=www-data
 Group=www-data
 WorkingDirectory=/var/lib/$1
-ExecStart=/opt/palm/bin/amd64/fig web -p 8080
+ExecStart=/opt/palm/bin/amd64/fig -c fig.toml web
 Restart=always
 RestartSec=10s
 
@@ -56,7 +56,7 @@ Type=simple
 User=www-data
 Group=www-data
 WorkingDirectory=/var/lib/$1
-ExecStart=/opt/palm/bin/amd64/fig rpc -p 8080
+ExecStart=/opt/palm/bin/amd64/fig -c fig.toml rpc 
 Restart=always
 RestartSec=10s
 

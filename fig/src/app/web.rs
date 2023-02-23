@@ -38,7 +38,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let redis = web::Data::new(cfg.redis.open()?);
     let jwt = web::Data::new(cfg.loquat.clone());
     let rabbitmq = web::Data::new(cfg.rabbitmq.open());
-    let oauth = web::Data::new(cfg.oauth.clone());
+    let orchid = web::Data::new(cfg.orchid.clone());
     let s3 = web::Data::new(S3::from(cfg.minio.clone()));
 
     let enforcer = web::Data::new(Mutex::new(cfg.postgresql.casbin().await?));
@@ -109,7 +109,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .app_data(redis.clone())
             .app_data(jwt.clone())
             .app_data(rabbitmq.clone())
-            .app_data(oauth.clone())
+            .app_data(orchid.clone())
             .app_data(s3.clone())
             .app_data(enforcer.clone())
             .wrap(cors)
