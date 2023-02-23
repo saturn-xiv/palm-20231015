@@ -141,10 +141,10 @@ pub async fn launch() -> Result<()> {
                 return it.exempt(db, &mut enf).await;
             }
             if let SubCommand::UserResetPassword(ref it) = args.command {
-                return it.execute(db, &cfg.hmac);
+                return it.execute(db, &cfg.loquat);
             }
             if let SubCommand::UserToken(ref it) = args.command {
-                let token = it.execute(db, &cfg.jwt)?;
+                let token = it.execute(db, &cfg.loquat)?;
                 println!("{:?}", token);
                 return Ok(());
             }

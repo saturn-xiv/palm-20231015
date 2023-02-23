@@ -15,9 +15,7 @@ pub struct Config {
     pub env: Environment,
     #[serde(rename = "cookie-key")]
     pub cookie_key: Key,
-    pub aes: Loquat,
-    pub hmac: Loquat,
-    pub jwt: Loquat,
+    pub loquat: Loquat,
     pub http: Http,
     pub rpc: Rpc,
     pub postgresql: PostgreSql,

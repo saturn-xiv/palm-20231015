@@ -28,7 +28,7 @@ pub async fn launch(cfg: &Config, name: &str) -> Result<()> {
     {
         let queue = type_name::<EmailTask>();
         if name == queue {
-            let cfg = get::<SmtpProfile, Loquat>(db, &cfg.aes, None)?;
+            let cfg = get::<SmtpProfile, Loquat>(db, &cfg.loquat, None)?;
             return RabbitMq::consume(&ch, &id, queue, &cfg).await;
         }
     }

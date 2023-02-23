@@ -36,7 +36,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
 
     let pgsql = web::Data::new(pg_pool);
     let redis = web::Data::new(cfg.redis.open()?);
-    let jwt = web::Data::new(cfg.jwt.clone());
+    let jwt = web::Data::new(cfg.loquat.clone());
     let rabbitmq = web::Data::new(cfg.rabbitmq.open());
     let oauth = web::Data::new(cfg.oauth.clone());
     let s3 = web::Data::new(S3::from(cfg.minio.clone()));

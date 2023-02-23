@@ -19,10 +19,10 @@ pub async fn launch(cfg: &Config) -> Result<()> {
 
     let pgsql = cfg.postgresql.open()?;
     let redis = cfg.redis.open()?;
-    let aes = Arc::new(cfg.aes.clone());
-    let hmac = Arc::new(cfg.hmac.clone());
+    let aes = Arc::new(cfg.loquat.clone());
+    let hmac = Arc::new(cfg.loquat.clone());
     let s3 = Arc::new(S3::from(cfg.minio.clone()));
-    let jwt = Arc::new(cfg.jwt.clone());
+    let jwt = Arc::new(cfg.loquat.clone());
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
     let opensearch = Arc::new(cfg.opensearch.open()?);
 
