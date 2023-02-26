@@ -34,6 +34,8 @@ pub enum SubCommand {
     CacheList,
     #[clap(about = "Clear cache items")]
     CacheClear,
+    #[clap(about = "Create a new user")]
+    UserCreate(user::Create),
     #[clap(about = "List all users")]
     UserList,
     #[clap(about = "Apply role to user(by uid)")]

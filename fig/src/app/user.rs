@@ -1,6 +1,7 @@
 use casbin::{Enforcer, RbacApi};
 use chrono::Duration;
 use diesel::Connection as DieselConntection;
+use hyper::StatusCode;
 use nut::{
     models::{
         log::Dao as LogDao,
@@ -13,8 +14,62 @@ use palm::{
     jwt::Jwt,
     nut::v1::user_logs_response::item::Level::Info as LogLevelInfo,
     rbac::v1::{RoleRequest, UserRequest},
-    Error, Result,
+    Error, HttpError, Result,
 };
+
+#[derive(clap::Parser, PartialEq, Eq, Debug)]
+pub struct Create {
+    #[clap(short, long)]
+    pub nickname: String,
+    #[clap(short, long)]
+    pub email: String,
+    #[clap(short, long)]
+    pub password: String,
+}
+
+impl Create {
+    pub fn execute<P: Password>(&self, db: &mut Db, hmac: &P) -> Result<()> {
+        if UserDao::by_nickname(db, &self.nickname).is_ok() {
+            return Err(Box::new(HttpError(
+                StatusCode::BAD_REQUEST,
+                Some(format!("user {} already existed", self.nickname)),
+            )));
+        }
+        if UserDao::by_email(db, &self.email).is_ok() {
+            return Err(Box::new(HttpError(
+                StatusCode::BAD_REQUEST,
+                Some(format!("user {} already existed", self.email)),
+            )));
+        }
+        let user = db.transaction::<_, Error, _>(move |db| {
+            let un = nix::sys::utsname::uname()?;
+
+            UserDao::sign_up(
+                db,
+                hmac,
+                "NilGate",
+                &self.nickname,
+                &self.email,
+                &self.password,
+                &"en-US".parse()?,
+                &"UTC".parse()?,
+            )?;
+            let user = UserDao::by_email(db, &self.email)?;
+            UserDao::confirm(db, user.id)?;
+            LogDao::add::<String, User>(
+                db,
+                user.id,
+                LogLevelInfo,
+                &format!("{:?}", un.nodename().to_str()),
+                Some(user.id),
+                format!("Created by system user {}.", nix::unistd::getuid()),
+            )?;
+            Ok(user)
+        })?;
+        info!("create user {}", user);
+        Ok(())
+    }
+}
 
 #[derive(clap::Parser, PartialEq, Eq, Debug)]
 pub struct Token {
