@@ -45,5 +45,5 @@ pub enum SubCommand {
     #[clap(about = "Start a rpc server")]
     Server(server::Config),
     #[clap(about = "Generate a client token")]
-    GenerateToken(generate::Config),
+    GenerateToken(generate::Token),
 }
