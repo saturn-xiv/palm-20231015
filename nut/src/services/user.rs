@@ -720,7 +720,15 @@ pub async fn new_sign_in_response<P: Jwt>(
     let name = UserRequest { id: user.id }.to_string();
     let mut enforcer = enforcer.lock().await;
 
-    let roles = enforcer.get_implicit_roles_for_user(&name, None);
+    let mut roles = Vec::new();
+    {
+        let items = enforcer.get_implicit_roles_for_user(&name, None);
+        for it in items.iter() {
+            if let Ok(it) = try_grpc!(it.parse::<RoleRequest>()) {
+                roles.push(it.code);
+            }
+        }
+    }
     let permissions = {
         let items = enforcer.get_implicit_permissions_for_user(&name, None);
         new_permission_list_response(&items)?

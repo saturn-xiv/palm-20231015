@@ -67,10 +67,12 @@ std::string loquat::Jwt::sign(const std::string& subject,
 
 std::string loquat::Jwt::verify(const std::string& token,
                                 const std::optional<std::string> audience) {
-  auto validator_r = crypto::tink::JwtValidatorBuilder()
-                         .IgnoreTypeHeader()
-                         .IgnoreIssuer()
-                         .Build();
+  auto validator_b =
+      crypto::tink::JwtValidatorBuilder().IgnoreTypeHeader().IgnoreIssuer();
+  if (audience) {
+    validator_b = validator_b.ExpectAudience(audience.value());
+  }
+  auto validator_r = validator_b.Build();
   this->check(validator_r);
   auto validator = std::move(validator_r.ValueOrDie());
 
@@ -78,16 +80,16 @@ std::string loquat::Jwt::verify(const std::string& token,
   auto payload_r = jwt->VerifyMacAndDecode(token, validator);
   this->check(payload_r);
   auto payload = std::move(payload_r.ValueOrDie());
-  if (audience) {
-    auto audiences_r = payload.GetAudiences();
-    this->check(audiences_r);
-    auto audiences = std::move(audiences_r.ValueOrDie());
-    if (std::find(audiences.begin(), audiences.end(), audience.value()) ==
-        audiences.end()) {
-      spdlog::error("can't find audience {}", audience.value());
-      throw std::runtime_error("");
-    }
-  }
+  // if (audience) {
+  //   auto audiences_r = payload.GetAudiences();
+  //   this->check(audiences_r);
+  //   auto audiences = std::move(audiences_r.ValueOrDie());
+  //   if (std::find(audiences.begin(), audiences.end(), audience.value()) ==
+  //       audiences.end()) {
+  //     spdlog::error("can't find audience {}", audience.value());
+  //     throw std::runtime_error("");
+  //   }
+  // }
   auto subject_r = payload.GetSubject();
   this->check(subject_r);
   auto subject = std::move(subject_r.ValueOrDie());

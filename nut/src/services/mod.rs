@@ -36,6 +36,7 @@ pub trait CurrentUserAdapter {
 impl CurrentUserAdapter for Session {
     fn current_user<P: Jwt>(&self, db: &mut Db, _ch: &mut Cache, jwt: &P) -> Result<User> {
         if let Some(ref token) = self.token {
+            // debug!("### check token {} with aud {}", token, Action::SignIn);
             let nickname = jwt.verify(token, &Action::SignIn.to_string())?;
 
             let it = UserDao::by_nickname(db, &nickname)?;
