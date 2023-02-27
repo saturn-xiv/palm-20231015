@@ -69,6 +69,9 @@ impl User {
         operation: O,
         resource_id: Option<i32>,
     ) -> bool {
+        if self.is_administrator(enforcer).await {
+            return true;
+        }
         let subject = UserRequest { id: self.id }.to_string();
         let action = operation.to_string();
         let object = Resource::new::<R>(resource_id).to_string();

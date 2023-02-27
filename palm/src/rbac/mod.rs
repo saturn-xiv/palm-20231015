@@ -11,7 +11,7 @@ use super::{
     Result,
 };
 
-pub const MODEL: &str = include_str!("rbac_model.conf");
+pub const MODEL: &str = include_str!("rbac_with_resource_roles_model.conf");
 
 pub struct Watcher {
     rabbitmq: Arc<RabbitMq>,

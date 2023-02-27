@@ -368,7 +368,12 @@ impl v1::policy_server::Policy for Service {
             }
             .to_string();
             let permissions = v1::permissions_response::Item::to_rules(&req.permissions);
-            try_grpc!(enf.add_permissions_for_user(&role, permissions).await)?;
+            // try_grpc!(enf.add_permissions_for_user(&role, permissions).await)?;
+            for permission in permissions.iter() {
+                if !enf.has_permission_for_user(&role, permission.clone()) {
+                    try_grpc!(enf.add_permission_for_user(&role, permission.clone()).await)?;
+                }
+            }
         }
         Ok(Response::new(()))
     }
@@ -425,7 +430,12 @@ impl v1::policy_server::Policy for Service {
                 v1::UserRequest { id: it.id }.to_string()
             };
             let permissions = v1::permissions_response::Item::to_rules(&req.permissions);
-            try_grpc!(enf.add_permissions_for_user(&user, permissions).await)?;
+            // try_grpc!(enf.add_permissions_for_user(&user, permissions).await)?;
+            for permission in permissions.iter() {
+                if !enf.has_permission_for_user(&user, permission.clone()) {
+                    try_grpc!(enf.add_permission_for_user(&user, permission.clone()).await)?;
+                }
+            }
         }
         Ok(Response::new(()))
     }
