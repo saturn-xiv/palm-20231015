@@ -75,7 +75,7 @@ impl Create {
 pub struct Token {
     #[clap(short, long)]
     pub user: String,
-    #[clap(short, long)]
+    #[clap(short, long, default_value_t = 1<<12)]
     pub weeks: u32,
 }
 impl Token {

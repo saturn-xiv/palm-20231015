@@ -3,6 +3,7 @@
 #include "loquat/env.hpp"
 
 #include "Aes.h"
+#include "Health.h"
 #include "Hmac.h"
 #include "Jwt.h"
 
@@ -40,4 +41,10 @@ class JwtHandler final : public v1::JwtIf {
               const std::string& token, const std::string& action) override;
 };
 
+class HealthHandler final : public v1::HealthIf {
+ public:
+  HealthHandler() = default;
+
+  void Check() override;
+};
 }  // namespace loquat

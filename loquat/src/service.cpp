@@ -14,12 +14,19 @@ void loquat::launch(const uint16_t port, const size_t worker_count) {
   std::shared_ptr<AesHandler> aesHandler = std::make_shared<AesHandler>();
   std::shared_ptr<v1::AesProcessor> aesProcessor =
       std::make_shared<v1::AesProcessor>(aesHandler);
+
   std::shared_ptr<HmacHandler> hmacHandler = std::make_shared<HmacHandler>();
   std::shared_ptr<v1::HmacProcessor> hmacProcessor =
       std::make_shared<v1::HmacProcessor>(hmacHandler);
+
   std::shared_ptr<JwtHandler> jwtHandler = std::make_shared<JwtHandler>();
   std::shared_ptr<v1::JwtProcessor> jwtProcessor =
       std::make_shared<v1::JwtProcessor>(jwtHandler);
+
+  std::shared_ptr<HealthHandler> healthHandler =
+      std::make_shared<HealthHandler>();
+  std::shared_ptr<v1::HealthProcessor> healthProcessor =
+      std::make_shared<v1::HealthProcessor>(healthHandler);
 
   std::shared_ptr<apache::thrift::TMultiplexedProcessor> multiplexedProcessor =
       std::make_shared<apache::thrift::TMultiplexedProcessor>();
@@ -39,6 +46,12 @@ void loquat::launch(const uint16_t port, const size_t worker_count) {
     spdlog::info("register jwt service {}", name);
     multiplexedProcessor->registerProcessor(name, jwtProcessor);
   }
+  {
+    const auto name = typeid(HealthHandler).name();
+    spdlog::info("register health service {}", name);
+    multiplexedProcessor->registerProcessor(name, healthProcessor);
+  }
+
   std::shared_ptr<apache::thrift::TProcessor> processor =
       std::dynamic_pointer_cast<apache::thrift::TProcessor>(
           multiplexedProcessor);
@@ -120,4 +133,8 @@ void loquat::JwtHandler::verify(std::string& subject, const std::string& auth,
   const auto zone = loquat::auth(auth);
   loquat::Jwt jwt(zone);
   subject = audience.empty() ? jwt.verify(token) : jwt.verify(token, audience);
+}
+
+void loquat::HealthHandler::Check() {
+  spdlog::info("call {}", __PRETTY_FUNCTION__);
 }

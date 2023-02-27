@@ -3,6 +3,8 @@ option java_multiple_files = true;
 option java_package = "com.github.saturn_xiv.palm.plugins.orchid.v1";
 package palm.orchid.v1;
 
+import "google/protobuf/empty.proto";
+
 service WeChat {
   rpc Login(WeChatLoginRequest) returns (WeChatLoginResponse) {}
   rpc PhoneNumber(WeChatPhoneNumberRequest)
@@ -31,49 +33,6 @@ message WeChatPhoneNumberResponse {
   uint64 water_mark = 4;
 }
 
-// import "google/protobuf/empty.proto";
-// import "google/protobuf/duration.proto";
-
-// service Aes {
-//   rpc Encrypt(AesPlainMessage) returns (AesCodeMessage) {}
-//   rpc Decrypt(AesCodeMessage) returns (AesPlainMessage) {}
-// }
-
-// message AesPlainMessage { string payload = 1; }
-// message AesCodeMessage {
-//   string payload = 1;
-//   string salt = 2;
-// }
-
-// service HMac {
-//   rpc Sign(HMacSignRequest) returns (HMacSignResponse) {}
-//   rpc Verify(HMacVerifyRequest) returns (google.protobuf.Empty) {}
-// }
-
-// service Jwt {
-//   rpc Sign(JwtSignRequest) returns (JwtSignResponse) {}
-//   rpc Verify(JwtVerifyRequest) returns (JwtVerifyResponse) {}
-// }
-
-// message HMacSignRequest { string plain = 1; }
-// message HMacSignResponse {
-//   string code = 1;
-//   string salt = 2;
-// }
-
-// message HMacVerifyRequest {
-//   string plain = 1;
-//   string code = 2;
-//   string salt = 3;
-// }
-
-// message JwtSignRequest { google.protobuf.Duration ttl = 9; }
-
-// message JwtSignResponse { string token = 1; }
-
-// message JwtVerifyRequest {
-//   string iss = 1;
-//   string token = 9;
-// }
-
-// message JwtVerifyResponse { string aud = 1; }
+service Health {
+  rpc Check(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}

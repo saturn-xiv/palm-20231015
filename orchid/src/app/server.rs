@@ -5,7 +5,9 @@ use clap::Parser;
 use palm::{orchid::v1, Result};
 use tonic::transport::Server;
 
-use super::super::{env::Config as Env, wechat::service::Service as WeChatService};
+use super::super::{
+    env::Config as Env, health::Service as HealthService, wechat::service::Service as WeChatService,
+};
 
 #[derive(Parser, PartialEq, Eq, Debug, Clone)]
 pub struct Config {
@@ -24,6 +26,7 @@ impl Config {
                 config,
                 redis,
             }))
+            .add_service(v1::health_server::HealthServer::new(HealthService {}))
             .serve(addr)
             .await?;
         Ok(())

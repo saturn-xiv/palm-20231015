@@ -8,6 +8,8 @@ use thrift::{
     },
 };
 
+use crate::loquat::{HealthSyncClient, THealthSyncClient};
+
 use super::{
     crypto::{Password, Secret},
     jwt::Jwt,
@@ -98,6 +100,7 @@ impl Loquat {
     const JWT: &str = "N6loquat10JwtHandlerE";
     const AES: &str = "N6loquat10AesHandlerE";
     const HMAC: &str = "N6loquat11HmacHandlerE";
+    const HEALTH: &str = "N6loquat13HealthHandlerE";
 
     fn open(&self, service: &str) -> Result<(Input, Output)> {
         let mut ch = TTcpChannel::new();
@@ -111,5 +114,17 @@ impl Loquat {
             TBinaryOutputProtocol::new(TBufferedWriteTransport::new(o_chan), true),
         );
         Ok((i_prot, o_prot))
+    }
+}
+
+pub trait Health {
+    fn check(&self) -> Result<()>;
+}
+impl Health for Loquat {
+    fn check(&self) -> Result<()> {
+        let (i_prot, o_prot) = self.open(Self::HEALTH)?;
+        let mut client = HealthSyncClient::new(i_prot, o_prot);
+        client.check()?;
+        Ok(())
     }
 }

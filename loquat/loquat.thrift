@@ -15,3 +15,7 @@ service Aes {
     binary encrypt(1:string auth, 2:binary plain);
     binary decrypt(1:string auth, 2:binary code);
 }
+
+service Health {
+  void Check();
+}

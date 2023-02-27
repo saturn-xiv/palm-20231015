@@ -140,6 +140,9 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 opensearch,
             },
         ))
+        .add_service(palm::nut::v1::health_server::HealthServer::new(
+            nut::services::health::Service {},
+        ))
         .serve(addr)
         .await?;
     Ok(())
