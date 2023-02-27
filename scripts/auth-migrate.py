@@ -15,7 +15,8 @@ import psycopg2
 
 
 class User:
-    def __init__(self, nickname, real_name, email, uid, provider_type, provider_id, avatar) -> None:
+    def __init__(self, id, nickname, real_name, email, uid, provider_type, provider_id, avatar):
+        self.id = id
         self.nickname = nickname
         self.real_name = real_name
         self.email = email
@@ -31,11 +32,11 @@ def load_from_20230227(config, items):
                           (config['host'], config['port'], config['name'], config['user'], config['password'])) as con:
         with con.cursor() as cur:
             cur.execute(
-                "SELECT nick_name, real_name, email, uid, provider_type, provider_id, avatar FROM users ORDER BY nick_name ASC")
-            for (nickname, real_name, email, uid, provider_type, provider_id, avatar) in cur:
+                "SELECT id, nick_name, real_name, email, uid, provider_type, provider_id, avatar FROM users ORDER BY nick_name ASC")
+            for (id, nickname, real_name, email, uid, provider_type, provider_id, avatar) in cur:
                 logging.debug("find user %s" % nickname)
                 items.append(
-                    User(nickname, real_name, email, uid, provider_type, provider_id, avatar))
+                    User(id, nickname, real_name, email, uid, provider_type, provider_id, avatar))
 
 
 def save_to(config, items=[]):
@@ -53,8 +54,8 @@ def save_to(config, items=[]):
 
             with con.cursor() as cur:
                 cur.execute(
-                    "INSERT INTO users(nickname, real_name, email, uid, provider_type, provider_id, avatar, salt, updated_at) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, CURRENT_TIMESTAMP)",
-                    (it.nickname, it.real_name, it.email, it.uid, it.provider_type, it.provider_id, it.avatar, os.urandom(16)))
+                    "INSERT INTO users(id,nickname, real_name, email, uid, provider_type, provider_id, avatar, salt, updated_at) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, CURRENT_TIMESTAMP)",
+                    (it.id, it.nickname, it.real_name, it.email, it.uid, it.provider_type, it.provider_id, it.avatar, os.urandom(16)))
         con.commit()
 
 
