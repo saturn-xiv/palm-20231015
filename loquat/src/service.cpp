@@ -135,6 +135,6 @@ void loquat::JwtHandler::verify(std::string& subject, const std::string& auth,
   subject = audience.empty() ? jwt.verify(token) : jwt.verify(token, audience);
 }
 
-void loquat::HealthHandler::Check() {
+void loquat::HealthHandler::check() {
   spdlog::info("call {}", __PRETTY_FUNCTION__);
 }

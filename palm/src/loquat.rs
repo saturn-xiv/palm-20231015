@@ -1469,7 +1469,7 @@ impl <C: TThriftClient + THealthSyncClientMarker> THealthSyncClient for C {
     (
       {
         self.increment_sequence_number();
-        let message_ident = TMessageIdentifier::new("Check", TMessageType::Call, self.sequence_number());
+        let message_ident = TMessageIdentifier::new("check", TMessageType::Call, self.sequence_number());
         let call_args = HealthCheckArgs {  };
         self.o_prot_mut().write_message_begin(&message_ident)?;
         call_args.write_to_out_protocol(self.o_prot_mut())?;
@@ -1480,7 +1480,7 @@ impl <C: TThriftClient + THealthSyncClientMarker> THealthSyncClient for C {
     {
       let message_ident = self.i_prot_mut().read_message_begin()?;
       verify_expected_sequence_number(self.sequence_number(), message_ident.sequence_number)?;
-      verify_expected_service_call("Check", &message_ident.name)?;
+      verify_expected_service_call("check", &message_ident.name)?;
       if message_ident.message_type == TMessageType::Exception {
         let remote_error = thrift::Error::read_application_error_from_in_protocol(self.i_prot_mut())?;
         self.i_prot_mut().read_message_end()?;
@@ -1524,7 +1524,7 @@ impl THealthProcessFunctions {
     let _ = HealthCheckArgs::read_from_in_protocol(i_prot)?;
     match handler.handle_check() {
       Ok(_) => {
-        let message_ident = TMessageIdentifier::new("Check", TMessageType::Reply, incoming_sequence_number);
+        let message_ident = TMessageIdentifier::new("check", TMessageType::Reply, incoming_sequence_number);
         o_prot.write_message_begin(&message_ident)?;
         let ret = HealthCheckResult {  };
         ret.write_to_out_protocol(o_prot)?;
@@ -1534,7 +1534,7 @@ impl THealthProcessFunctions {
       Err(e) => {
         match e {
           thrift::Error::Application(app_err) => {
-            let message_ident = TMessageIdentifier::new("Check", TMessageType::Exception, incoming_sequence_number);
+            let message_ident = TMessageIdentifier::new("check", TMessageType::Exception, incoming_sequence_number);
             o_prot.write_message_begin(&message_ident)?;
             thrift::Error::write_application_error_to_out_protocol(&app_err, o_prot)?;
             o_prot.write_message_end()?;
@@ -1547,7 +1547,7 @@ impl THealthProcessFunctions {
                 e.to_string()
               )
             };
-            let message_ident = TMessageIdentifier::new("Check", TMessageType::Exception, incoming_sequence_number);
+            let message_ident = TMessageIdentifier::new("check", TMessageType::Exception, incoming_sequence_number);
             o_prot.write_message_begin(&message_ident)?;
             thrift::Error::write_application_error_to_out_protocol(&ret_err, o_prot)?;
             o_prot.write_message_end()?;
@@ -1563,7 +1563,7 @@ impl <H: HealthSyncHandler> TProcessor for HealthSyncProcessor<H> {
   fn process(&self, i_prot: &mut dyn TInputProtocol, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {
     let message_ident = i_prot.read_message_begin()?;
     let res = match &*message_ident.name {
-      "Check" => {
+      "check" => {
         self.process_check(message_ident.sequence_number, i_prot, o_prot)
       },
       method => {
@@ -1605,7 +1605,7 @@ impl HealthCheckArgs {
     Ok(ret)
   }
   fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {
-    let struct_ident = TStructIdentifier::new("Check_args");
+    let struct_ident = TStructIdentifier::new("check_args");
     o_prot.write_struct_begin(&struct_ident)?;
     o_prot.write_field_stop()?;
     o_prot.write_struct_end()

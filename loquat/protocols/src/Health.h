@@ -22,7 +22,7 @@ namespace loquat { namespace v1 {
 class HealthIf {
  public:
   virtual ~HealthIf() {}
-  virtual void Check() = 0;
+  virtual void check() = 0;
 };
 
 class HealthIfFactory {
@@ -52,31 +52,31 @@ class HealthIfSingletonFactory : virtual public HealthIfFactory {
 class HealthNull : virtual public HealthIf {
  public:
   virtual ~HealthNull() {}
-  void Check() override {
+  void check() override {
     return;
   }
 };
 
 
-class Health_Check_args {
+class Health_check_args {
  public:
 
-  Health_Check_args(const Health_Check_args&) noexcept;
-  Health_Check_args& operator=(const Health_Check_args&) noexcept;
-  Health_Check_args() noexcept {
+  Health_check_args(const Health_check_args&) noexcept;
+  Health_check_args& operator=(const Health_check_args&) noexcept;
+  Health_check_args() noexcept {
   }
 
-  virtual ~Health_Check_args() noexcept;
+  virtual ~Health_check_args() noexcept;
 
-  bool operator == (const Health_Check_args & /* rhs */) const
+  bool operator == (const Health_check_args & /* rhs */) const
   {
     return true;
   }
-  bool operator != (const Health_Check_args &rhs) const {
+  bool operator != (const Health_check_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const Health_Check_args & ) const;
+  bool operator < (const Health_check_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -84,36 +84,36 @@ class Health_Check_args {
 };
 
 
-class Health_Check_pargs {
+class Health_check_pargs {
  public:
 
 
-  virtual ~Health_Check_pargs() noexcept;
+  virtual ~Health_check_pargs() noexcept;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
 
-class Health_Check_result {
+class Health_check_result {
  public:
 
-  Health_Check_result(const Health_Check_result&) noexcept;
-  Health_Check_result& operator=(const Health_Check_result&) noexcept;
-  Health_Check_result() noexcept {
+  Health_check_result(const Health_check_result&) noexcept;
+  Health_check_result& operator=(const Health_check_result&) noexcept;
+  Health_check_result() noexcept {
   }
 
-  virtual ~Health_Check_result() noexcept;
+  virtual ~Health_check_result() noexcept;
 
-  bool operator == (const Health_Check_result & /* rhs */) const
+  bool operator == (const Health_check_result & /* rhs */) const
   {
     return true;
   }
-  bool operator != (const Health_Check_result &rhs) const {
+  bool operator != (const Health_check_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const Health_Check_result & ) const;
+  bool operator < (const Health_check_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -121,11 +121,11 @@ class Health_Check_result {
 };
 
 
-class Health_Check_presult {
+class Health_check_presult {
  public:
 
 
-  virtual ~Health_Check_presult() noexcept;
+  virtual ~Health_check_presult() noexcept;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -156,9 +156,9 @@ class HealthClient : virtual public HealthIf {
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  void Check() override;
-  void send_Check();
-  void recv_Check();
+  void check() override;
+  void send_check();
+  void recv_check();
  protected:
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -174,11 +174,11 @@ class HealthProcessor : public ::apache::thrift::TDispatchProcessor {
   typedef  void (HealthProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
-  void process_Check(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_check(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   HealthProcessor(::std::shared_ptr<HealthIf> iface) :
     iface_(iface) {
-    processMap_["Check"] = &HealthProcessor::process_Check;
+    processMap_["check"] = &HealthProcessor::process_check;
   }
 
   virtual ~HealthProcessor() {}
@@ -207,13 +207,13 @@ class HealthMultiface : virtual public HealthIf {
     ifaces_.push_back(iface);
   }
  public:
-  void Check() override {
+  void check() override {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->Check();
+      ifaces_[i]->check();
     }
-    ifaces_[i]->Check();
+    ifaces_[i]->check();
   }
 
 };
@@ -248,9 +248,9 @@ class HealthConcurrentClient : virtual public HealthIf {
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  void Check() override;
-  int32_t send_Check();
-  void recv_Check(const int32_t seqid);
+  void check() override;
+  int32_t send_check();
+  void recv_check(const int32_t seqid);
  protected:
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;

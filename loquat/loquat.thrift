@@ -17,5 +17,5 @@ service Aes {
 }
 
 service Health {
-  void Check();
+  void check();
 }

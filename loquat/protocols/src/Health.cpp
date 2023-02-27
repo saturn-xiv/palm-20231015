@@ -9,11 +9,11 @@
 namespace loquat { namespace v1 {
 
 
-Health_Check_args::~Health_Check_args() noexcept {
+Health_check_args::~Health_check_args() noexcept {
 }
 
 
-uint32_t Health_Check_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t Health_check_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -41,10 +41,10 @@ uint32_t Health_Check_args::read(::apache::thrift::protocol::TProtocol* iprot) {
   return xfer;
 }
 
-uint32_t Health_Check_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t Health_check_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("Health_Check_args");
+  xfer += oprot->writeStructBegin("Health_check_args");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -52,14 +52,14 @@ uint32_t Health_Check_args::write(::apache::thrift::protocol::TProtocol* oprot) 
 }
 
 
-Health_Check_pargs::~Health_Check_pargs() noexcept {
+Health_check_pargs::~Health_check_pargs() noexcept {
 }
 
 
-uint32_t Health_Check_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t Health_check_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("Health_Check_pargs");
+  xfer += oprot->writeStructBegin("Health_check_pargs");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -67,11 +67,11 @@ uint32_t Health_Check_pargs::write(::apache::thrift::protocol::TProtocol* oprot)
 }
 
 
-Health_Check_result::~Health_Check_result() noexcept {
+Health_check_result::~Health_check_result() noexcept {
 }
 
 
-uint32_t Health_Check_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t Health_check_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -99,11 +99,11 @@ uint32_t Health_Check_result::read(::apache::thrift::protocol::TProtocol* iprot)
   return xfer;
 }
 
-uint32_t Health_Check_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t Health_check_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("Health_Check_result");
+  xfer += oprot->writeStructBegin("Health_check_result");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -111,11 +111,11 @@ uint32_t Health_Check_result::write(::apache::thrift::protocol::TProtocol* oprot
 }
 
 
-Health_Check_presult::~Health_Check_presult() noexcept {
+Health_check_presult::~Health_check_presult() noexcept {
 }
 
 
-uint32_t Health_Check_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t Health_check_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -143,18 +143,18 @@ uint32_t Health_Check_presult::read(::apache::thrift::protocol::TProtocol* iprot
   return xfer;
 }
 
-void HealthClient::Check()
+void HealthClient::check()
 {
-  send_Check();
-  recv_Check();
+  send_check();
+  recv_check();
 }
 
-void HealthClient::send_Check()
+void HealthClient::send_check()
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("Check", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("check", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  Health_Check_pargs args;
+  Health_check_pargs args;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -162,7 +162,7 @@ void HealthClient::send_Check()
   oprot_->getTransport()->flush();
 }
 
-void HealthClient::recv_Check()
+void HealthClient::recv_check()
 {
 
   int32_t rseqid = 0;
@@ -182,12 +182,12 @@ void HealthClient::recv_Check()
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("Check") != 0) {
+  if (fname.compare("check") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  Health_Check_presult result;
+  Health_check_presult result;
   result.read(iprot_);
   iprot_->readMessageEnd();
   iprot_->getTransport()->readEnd();
@@ -214,37 +214,37 @@ bool HealthProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot,
   return true;
 }
 
-void HealthProcessor::process_Check(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void HealthProcessor::process_check(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = nullptr;
   if (this->eventHandler_.get() != nullptr) {
-    ctx = this->eventHandler_->getContext("Health.Check", callContext);
+    ctx = this->eventHandler_->getContext("Health.check", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "Health.Check");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "Health.check");
 
   if (this->eventHandler_.get() != nullptr) {
-    this->eventHandler_->preRead(ctx, "Health.Check");
+    this->eventHandler_->preRead(ctx, "Health.check");
   }
 
-  Health_Check_args args;
+  Health_check_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != nullptr) {
-    this->eventHandler_->postRead(ctx, "Health.Check", bytes);
+    this->eventHandler_->postRead(ctx, "Health.check", bytes);
   }
 
-  Health_Check_result result;
+  Health_check_result result;
   try {
-    iface_->Check();
+    iface_->check();
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != nullptr) {
-      this->eventHandler_->handlerError(ctx, "Health.Check");
+      this->eventHandler_->handlerError(ctx, "Health.check");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("Check", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("check", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -253,17 +253,17 @@ void HealthProcessor::process_Check(int32_t seqid, ::apache::thrift::protocol::T
   }
 
   if (this->eventHandler_.get() != nullptr) {
-    this->eventHandler_->preWrite(ctx, "Health.Check");
+    this->eventHandler_->preWrite(ctx, "Health.check");
   }
 
-  oprot->writeMessageBegin("Check", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("check", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != nullptr) {
-    this->eventHandler_->postWrite(ctx, "Health.Check", bytes);
+    this->eventHandler_->postWrite(ctx, "Health.check", bytes);
   }
 }
 
@@ -274,19 +274,19 @@ void HealthProcessor::process_Check(int32_t seqid, ::apache::thrift::protocol::T
   return processor;
 }
 
-void HealthConcurrentClient::Check()
+void HealthConcurrentClient::check()
 {
-  int32_t seqid = send_Check();
-  recv_Check(seqid);
+  int32_t seqid = send_check();
+  recv_check(seqid);
 }
 
-int32_t HealthConcurrentClient::send_Check()
+int32_t HealthConcurrentClient::send_check()
 {
   int32_t cseqid = this->sync_->generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(this->sync_.get());
-  oprot_->writeMessageBegin("Check", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("check", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  Health_Check_pargs args;
+  Health_check_pargs args;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -297,7 +297,7 @@ int32_t HealthConcurrentClient::send_Check()
   return cseqid;
 }
 
-void HealthConcurrentClient::recv_Check(const int32_t seqid)
+void HealthConcurrentClient::recv_check(const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -326,7 +326,7 @@ void HealthConcurrentClient::recv_Check(const int32_t seqid)
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("Check") != 0) {
+      if (fname.compare("check") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -335,7 +335,7 @@ void HealthConcurrentClient::recv_Check(const int32_t seqid)
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      Health_Check_presult result;
+      Health_check_presult result;
       result.read(iprot_);
       iprot_->readMessageEnd();
       iprot_->getTransport()->readEnd();

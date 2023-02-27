@@ -45,6 +45,6 @@ class HealthHandler final : public v1::HealthIf {
  public:
   HealthHandler() = default;
 
-  void Check() override;
+  void check() override;
 };
 }  // namespace loquat

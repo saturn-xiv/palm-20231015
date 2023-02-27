@@ -20,9 +20,9 @@ class HealthHandler : virtual public HealthIf {
     // Your initialization goes here
   }
 
-  void Check() {
+  void check() {
     // Your implementation goes here
-    printf("Check\n");
+    printf("check\n");
   }
 
 };
