@@ -150,6 +150,10 @@ pub async fn launch() -> Result<()> {
                 println!("{:?}", token);
                 return Ok(());
             }
+            if let SubCommand::UserCreate(ref it) = args.command {
+                it.execute(db, &cfg.loquat)?;
+                return Ok(());
+            }
         }
         // https://en.wikibooks.org/wiki/Ruby_on_Rails/ActiveRecord/Migrations
 
