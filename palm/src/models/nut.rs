@@ -40,6 +40,6 @@ impl v1::Pager {
         }
         self.size
     }
-    const MAX_SIZE: i64 = 1 << 10;
+    const MAX_SIZE: i64 = 1 << 12;
     const MIN_SIZE: i64 = 1 << 2;
 }
