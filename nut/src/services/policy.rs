@@ -527,7 +527,7 @@ impl v1::policy_server::Policy for Service {
                 items.push(it);
             }
         }
-        Ok(Response::new(v1::PermissionsResponse::default()))
+        Ok(Response::new(v1::PermissionsResponse { items }))
     }
     async fn get_implicit_permissions_for_user(
         &self,
@@ -559,7 +559,7 @@ impl v1::policy_server::Policy for Service {
                 items.push(it);
             }
         }
-        Ok(Response::new(v1::PermissionsResponse::default()))
+        Ok(Response::new(v1::PermissionsResponse { items }))
     }
 
     async fn has_role_for_user(

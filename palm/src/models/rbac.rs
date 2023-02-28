@@ -130,15 +130,18 @@ impl v1::permissions_response::Item {
 
     pub fn new(arg: &Vec<String>) -> Result<Self> {
         match arg.len() {
-            1 => Ok(Self {
-                operation: arg[0].clone(),
+            2 => Ok(Self {
+                operation: arg[1].clone(),
                 resource: None,
             }),
-            2 => Ok(Self {
-                resource: Some(arg[0].parse()?),
-                operation: arg[1].clone(),
+            3 => Ok(Self {
+                resource: Some(arg[1].parse()?),
+                operation: arg[2].clone(),
             }),
-            _ => Err(Box::new(IoError::from(IoErrorKind::UnexpectedEof))),
+            _ => Err(Box::new(IoError::new(
+                IoErrorKind::UnexpectedEof,
+                format!("unexpected permission: {:?}", arg),
+            ))),
         }
     }
 }
