@@ -17,6 +17,21 @@ use palm::{
     Error, HttpError, Result,
 };
 
+fn hostname() -> String {
+    if let Ok(ref it) = nix::sys::utsname::uname() {
+        if let Some(it) = it.nodename().to_str() {
+            return it.to_string();
+        }
+    }
+    "unknown".to_string()
+}
+
+fn current_user() -> String {
+    nix::unistd::User::from_uid(nix::unistd::getuid())
+        .map_or_else(|_| None, |x| x.map(|y| y.name))
+        .unwrap_or("unknown".to_string())
+}
+
 #[derive(clap::Parser, PartialEq, Eq, Debug)]
 pub struct Create {
     #[clap(short, long)]
@@ -42,8 +57,6 @@ impl Create {
             )));
         }
         let user = db.transaction::<_, Error, _>(move |db| {
-            let un = nix::sys::utsname::uname()?;
-
             UserDao::sign_up(
                 db,
                 hmac,
@@ -60,14 +73,9 @@ impl Create {
                 db,
                 user.id,
                 LogLevelInfo,
-                un.nodename().to_str().unwrap_or("unknown"),
+                &hostname(),
                 Some(user.id),
-                format!(
-                    "Created by system user {}.",
-                    nix::unistd::User::from_uid(nix::unistd::getuid())
-                        .map_or_else(|_| None, |x| x.map(|y| y.name))
-                        .unwrap_or("unknown".to_string())
-                ),
+                format!("Created by system user {}.", current_user()),
             )?;
             Ok(user)
         })?;
@@ -116,18 +124,13 @@ impl Role {
             enf.add_role_for_user(&user, &role, None).await?;
         }
 
-        let un = nix::sys::utsname::uname()?;
         LogDao::add::<String, User>(
             db,
             user.id,
             LogLevelInfo,
-            &format!("{:?}", un.nodename().to_str()),
+            &hostname(),
             Some(user.id),
-            format!(
-                "Apply role {} by system user {}",
-                self.role,
-                nix::unistd::getuid()
-            ),
+            format!("Apply role {} by system user {}", self.role, current_user()),
         )?;
 
         info!("apple role {} to user {}", self.role, user,);
@@ -146,17 +149,16 @@ impl Role {
             enf.delete_role_for_user(&user, &role, None).await?;
         }
 
-        let un = nix::sys::utsname::uname()?;
         LogDao::add::<String, User>(
             db,
             user.id,
             LogLevelInfo,
-            &format!("{:?}", un.nodename().to_str()),
+            &hostname(),
             Some(user.id),
             format!(
                 "Exempt role {} by system user {}.",
                 self.role,
-                nix::unistd::getuid(),
+                current_user(),
             ),
         )?;
 
@@ -177,16 +179,14 @@ impl ResetPassword {
     pub fn execute<P: Password>(&self, db: &mut Db, hmac: &P) -> Result<()> {
         let user = UserDao::by_uid(db, &self.user)?;
         db.transaction::<_, Error, _>(move |db| {
-            let un = nix::sys::utsname::uname()?;
-
             UserDao::password(db, hmac, user.id, &self.password)?;
             LogDao::add::<String, User>(
                 db,
                 user.id,
                 LogLevelInfo,
-                &format!("{:?}", un.nodename().to_str()),
+                &hostname(),
                 Some(user.id),
-                format!("Reset password by system user {}.", nix::unistd::getuid()),
+                format!("Reset password by system user {}.", current_user()),
             )?;
             Ok(())
         })?;
