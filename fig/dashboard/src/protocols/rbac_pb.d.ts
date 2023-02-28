@@ -365,3 +365,63 @@ export namespace HasPermissionForUserRequest {
   }
 }
 
+export class UpdatePermissionsForUserRequest extends jspb.Message {
+  getUser(): number;
+  setUser(value: number): UpdatePermissionsForUserRequest;
+
+  getRemovedList(): Array<PermissionsResponse.Item>;
+  setRemovedList(value: Array<PermissionsResponse.Item>): UpdatePermissionsForUserRequest;
+  clearRemovedList(): UpdatePermissionsForUserRequest;
+  addRemoved(value?: PermissionsResponse.Item, index?: number): PermissionsResponse.Item;
+
+  getSavedList(): Array<PermissionsResponse.Item>;
+  setSavedList(value: Array<PermissionsResponse.Item>): UpdatePermissionsForUserRequest;
+  clearSavedList(): UpdatePermissionsForUserRequest;
+  addSaved(value?: PermissionsResponse.Item, index?: number): PermissionsResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdatePermissionsForUserRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdatePermissionsForUserRequest): UpdatePermissionsForUserRequest.AsObject;
+  static serializeBinaryToWriter(message: UpdatePermissionsForUserRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdatePermissionsForUserRequest;
+  static deserializeBinaryFromReader(message: UpdatePermissionsForUserRequest, reader: jspb.BinaryReader): UpdatePermissionsForUserRequest;
+}
+
+export namespace UpdatePermissionsForUserRequest {
+  export type AsObject = {
+    user: number,
+    removedList: Array<PermissionsResponse.Item.AsObject>,
+    savedList: Array<PermissionsResponse.Item.AsObject>,
+  }
+}
+
+export class UpdatePermissionsForRoleRequest extends jspb.Message {
+  getRole(): string;
+  setRole(value: string): UpdatePermissionsForRoleRequest;
+
+  getRemovedList(): Array<PermissionsResponse.Item>;
+  setRemovedList(value: Array<PermissionsResponse.Item>): UpdatePermissionsForRoleRequest;
+  clearRemovedList(): UpdatePermissionsForRoleRequest;
+  addRemoved(value?: PermissionsResponse.Item, index?: number): PermissionsResponse.Item;
+
+  getSavedList(): Array<PermissionsResponse.Item>;
+  setSavedList(value: Array<PermissionsResponse.Item>): UpdatePermissionsForRoleRequest;
+  clearSavedList(): UpdatePermissionsForRoleRequest;
+  addSaved(value?: PermissionsResponse.Item, index?: number): PermissionsResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdatePermissionsForRoleRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdatePermissionsForRoleRequest): UpdatePermissionsForRoleRequest.AsObject;
+  static serializeBinaryToWriter(message: UpdatePermissionsForRoleRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdatePermissionsForRoleRequest;
+  static deserializeBinaryFromReader(message: UpdatePermissionsForRoleRequest, reader: jspb.BinaryReader): UpdatePermissionsForRoleRequest;
+}
+
+export namespace UpdatePermissionsForRoleRequest {
+  export type AsObject = {
+    role: string,
+    removedList: Array<PermissionsResponse.Item.AsObject>,
+    savedList: Array<PermissionsResponse.Item.AsObject>,
+  }
+}
+

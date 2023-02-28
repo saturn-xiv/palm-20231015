@@ -900,5 +900,91 @@ export class PolicyClient {
     this.methodDescriptorHasPermissionForUser);
   }
 
+  methodDescriptorUpdatePermissionsForRole = new grpcWeb.MethodDescriptor(
+    '/palm.rbac.v1.Policy/UpdatePermissionsForRole',
+    grpcWeb.MethodType.UNARY,
+    rbac_pb.UpdatePermissionsForRoleRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: rbac_pb.UpdatePermissionsForRoleRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  updatePermissionsForRole(
+    request: rbac_pb.UpdatePermissionsForRoleRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  updatePermissionsForRole(
+    request: rbac_pb.UpdatePermissionsForRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  updatePermissionsForRole(
+    request: rbac_pb.UpdatePermissionsForRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.rbac.v1.Policy/UpdatePermissionsForRole',
+        request,
+        metadata || {},
+        this.methodDescriptorUpdatePermissionsForRole,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.rbac.v1.Policy/UpdatePermissionsForRole',
+    request,
+    metadata || {},
+    this.methodDescriptorUpdatePermissionsForRole);
+  }
+
+  methodDescriptorUpdatePermissionsForUser = new grpcWeb.MethodDescriptor(
+    '/palm.rbac.v1.Policy/UpdatePermissionsForUser',
+    grpcWeb.MethodType.UNARY,
+    rbac_pb.UpdatePermissionsForUserRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: rbac_pb.UpdatePermissionsForUserRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  updatePermissionsForUser(
+    request: rbac_pb.UpdatePermissionsForUserRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  updatePermissionsForUser(
+    request: rbac_pb.UpdatePermissionsForUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  updatePermissionsForUser(
+    request: rbac_pb.UpdatePermissionsForUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.rbac.v1.Policy/UpdatePermissionsForUser',
+        request,
+        metadata || {},
+        this.methodDescriptorUpdatePermissionsForUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.rbac.v1.Policy/UpdatePermissionsForUser',
+    request,
+    metadata || {},
+    this.methodDescriptorUpdatePermissionsForUser);
+  }
+
 }
 
