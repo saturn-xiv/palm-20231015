@@ -367,11 +367,12 @@ impl v1::policy_server::Policy for Service {
                 code: req.role.clone(),
             }
             .to_string();
-            let permissions = v1::permissions_response::Item::to_rules(&req.permissions);
+
             // try_grpc!(enf.add_permissions_for_user(&role, permissions).await)?;
-            for permission in permissions.iter() {
+            for permission in req.permissions.iter() {
+                let permission = try_grpc!(permission.to_rule())?;
                 if !enf.has_permission_for_user(&role, permission.clone()) {
-                    try_grpc!(enf.add_permission_for_user(&role, permission.clone()).await)?;
+                    try_grpc!(enf.add_permission_for_user(&role, permission).await)?;
                 }
             }
         }
@@ -400,7 +401,8 @@ impl v1::policy_server::Policy for Service {
                 code: req.role.clone(),
             }
             .to_string();
-            for permission in v1::permissions_response::Item::to_rules(&req.permissions) {
+            for permission in req.permissions.iter() {
+                let permission = try_grpc!(permission.to_rule())?;
                 try_grpc!(enf.delete_permission_for_user(&role, permission).await)?;
             }
         }
@@ -429,11 +431,12 @@ impl v1::policy_server::Policy for Service {
                 let it = try_grpc!(UserDao::by_id(db, req.user))?;
                 v1::UserRequest { id: it.id }.to_string()
             };
-            let permissions = v1::permissions_response::Item::to_rules(&req.permissions);
+
             // try_grpc!(enf.add_permissions_for_user(&user, permissions).await)?;
-            for permission in permissions.iter() {
+            for permission in req.permissions.iter() {
+                let permission = try_grpc!(permission.to_rule())?;
                 if !enf.has_permission_for_user(&user, permission.clone()) {
-                    try_grpc!(enf.add_permission_for_user(&user, permission.clone()).await)?;
+                    try_grpc!(enf.add_permission_for_user(&user, permission).await)?;
                 }
             }
         }
@@ -462,7 +465,8 @@ impl v1::policy_server::Policy for Service {
                 let it = try_grpc!(UserDao::by_id(db, req.user))?;
                 v1::UserRequest { id: it.id }.to_string()
             };
-            for permission in v1::permissions_response::Item::to_rules(&req.permissions) {
+            for permission in req.permissions.iter() {
+                let permission = try_grpc!(permission.to_rule())?;
                 try_grpc!(enf.delete_permission_for_user(&user, permission).await)?;
             }
         }
@@ -593,6 +597,7 @@ impl v1::policy_server::Policy for Service {
         }
         Err(Status::permission_denied(type_name::<Self>()))
     }
+
     async fn has_permission_for_user(
         &self,
         req: tonic::Request<v1::HasPermissionForUserRequest>,
@@ -618,7 +623,8 @@ impl v1::policy_server::Policy for Service {
 
         let ok = match req.resource {
             Some(ref resource) => {
-                has_permission!(enf, &user, &req.operation, &resource.to_string())
+                let resource = try_grpc!(resource.to_rule())?;
+                has_permission!(enf, &user, &req.operation, &resource)
             }
             None => {
                 has_permission!(enf, &user, &req.operation)
@@ -630,43 +636,73 @@ impl v1::policy_server::Policy for Service {
         Err(Status::permission_denied(type_name::<Self>()))
     }
 
-    // async fn has_permission(
-    //     &self,
-    //     req: tonic::Request<v1::permission_list::Item>,
-    // ) -> GrpcResult<()> {
-    //     let ss = Session::new(&req);
-    //     let mut db = try_grpc!(self.pgsql.get())?;
-    //     let db = db.deref_mut();
-    //     let mut ch = try_grpc!(self.redis.get())?;
-    //     let ch = ch.deref_mut();
-    //     let jwt = self.jwt.deref();
-    //     let enf = self.enforcer.deref();
-    //     let user = try_grpc!(ss.current_user(db, ch, jwt))?;
-    //     let req = req.into_inner();
+    async fn update_permissions_for_role(
+        &self,
+        req: tonic::Request<v1::UpdatePermissionsForRoleRequest>,
+    ) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
+        if !user.is_administrator(enf).await {
+            return Err(Status::permission_denied(type_name::<Self>()));
+        }
 
-    //     // let object = ;
-    //     // if has_permission!(enf, &user.subject(), &req.value) {
-    //     //     return Ok(Response::new(()));
-    //     // }
-    //     Err(Status::permission_denied(type_name::<Self>()))
-    // }
-    // async fn has_role(&self, req: tonic::Request<v1::CodeRequest>) -> GrpcResult<()> {
-    //     let ss = Session::new(&req);
-    //     let mut db = try_grpc!(self.pgsql.get())?;
-    //     let db = db.deref_mut();
-    //     let mut ch = try_grpc!(self.redis.get())?;
-    //     let ch = ch.deref_mut();
-    //     let jwt = self.jwt.deref();
-    //     let enf = self.enforcer.deref();
-    //     let user = try_grpc!(ss.current_user(db, ch, jwt))?;
+        let req = req.into_inner();
+        {
+            let mut enf = enf.lock().await;
+            let role = v1::RoleRequest {
+                code: req.role.clone(),
+            }
+            .to_string();
+            for permission in req.removed.iter() {
+                let permission = try_grpc!(permission.to_rule())?;
+                try_grpc!(enf.delete_permission_for_user(&role, permission).await)?;
+            }
+            for permission in req.saved.iter() {
+                let permission = try_grpc!(permission.to_rule())?;
+                try_grpc!(enf.add_permission_for_user(&role, permission).await)?;
+            }
+        }
+        Ok(Response::new(()))
+    }
 
-    //     // if !user.is_administrator(enf).await {
-    //     //     return Err(Status::permission_denied(type_name::<Self>()));
-    //     // }
-    //     let req = req.into_inner();
-    //     if has_role!(enf, &user.subject(), &req.value) {
-    //         return Ok(Response::new(()));
-    //     }
-    //     Err(Status::permission_denied(type_name::<Self>()))
-    // }
+    async fn update_permissions_for_user(
+        &self,
+        req: tonic::Request<v1::UpdatePermissionsForUserRequest>,
+    ) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
+        if !user.is_administrator(enf).await {
+            return Err(Status::permission_denied(type_name::<Self>()));
+        }
+
+        let req = req.into_inner();
+        {
+            let mut enf = enf.lock().await;
+            let user = {
+                let it = try_grpc!(UserDao::by_id(db, req.user))?;
+                v1::UserRequest { id: it.id }.to_string()
+            };
+            for permission in req.removed.iter() {
+                let permission = try_grpc!(permission.to_rule())?;
+                try_grpc!(enf.delete_permission_for_user(&user, permission).await)?;
+            }
+            for permission in req.saved.iter() {
+                let permission = try_grpc!(permission.to_rule())?;
+                try_grpc!(enf.add_permission_for_user(&user, permission).await)?;
+            }
+        }
+        Ok(Response::new(()))
+    }
 }

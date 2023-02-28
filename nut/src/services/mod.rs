@@ -20,7 +20,7 @@ use palm::{
     jwt::Jwt,
     rbac::v1::{resources_response::Item as Resource, RoleRequest, UserRequest},
     session::Session,
-    HttpError, Result,
+    to_code, HttpError, Result,
 };
 use tokio::sync::Mutex;
 
@@ -73,8 +73,13 @@ impl User {
             return true;
         }
         let subject = UserRequest { id: self.id }.to_string();
-        let action = operation.to_string();
-        let object = Resource::new::<R>(resource_id).to_string();
-        has_permission!(enforcer, &subject, &object, &action)
+        let action = {
+            let it = operation.to_string();
+            to_code!(it)
+        };
+        if let Ok(object) = Resource::new::<R>(resource_id).to_rule() {
+            return has_permission!(enforcer, &subject, &object, &action);
+        }
+        false
     }
 }

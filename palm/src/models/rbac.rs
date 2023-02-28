@@ -5,6 +5,8 @@ use std::num::ParseIntError;
 use std::result::Result as StdResult;
 use std::str::FromStr;
 
+use serde::{Deserialize, Serialize};
+
 use super::super::{rbac::v1, to_code, Result};
 
 impl v1::UserRequest {
@@ -71,8 +73,6 @@ impl FromStr for v1::RoleRequest {
 }
 
 impl v1::resources_response::Item {
-    const SEP: &str = "://";
-
     pub fn new<T>(id: Option<i32>) -> Self {
         Self {
             r#type: type_name::<T>().to_string(),
@@ -81,51 +81,60 @@ impl v1::resources_response::Item {
     }
 }
 
-impl fmt::Display for v1::resources_response::Item {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        match self.id {
-            Some(id) => write!(f, "{}{}{}", self.r#type, Self::SEP, id),
-            None => write!(f, "{}", self.r#type),
+// FIXME protobuf <==> json/string
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
+struct Resource {
+    #[serde(rename = "t")]
+    r#type: String,
+    #[serde(rename = "i")]
+    pub id: Option<i32>,
+}
+impl From<v1::resources_response::Item> for Resource {
+    fn from(x: v1::resources_response::Item) -> Self {
+        Self {
+            r#type: x.r#type,
+            id: x.id,
+        }
+    }
+}
+impl From<Resource> for v1::resources_response::Item {
+    fn from(x: Resource) -> Self {
+        Self {
+            r#type: x.r#type,
+            id: x.id,
         }
     }
 }
 
 impl FromStr for v1::resources_response::Item {
-    type Err = ParseIntError;
-
+    type Err = serde_json::Error;
     fn from_str(s: &str) -> StdResult<Self, Self::Err> {
-        let it = match s.find(Self::SEP) {
-            Some(i) => Self {
-                r#type: s[..i].to_string(),
-                id: Some(s[(i + Self::SEP.len())..].parse()?),
-            },
-            None => Self {
-                r#type: s.to_string(),
-                id: None,
-            },
-        };
-        Ok(it)
+        let it: Resource = serde_json::from_str(s)?;
+        Ok(it.into())
     }
 }
 
-impl From<v1::permissions_response::Item> for Vec<String> {
-    fn from(x: v1::permissions_response::Item) -> Self {
-        let mut it = Vec::new();
-        if let Some(ref resource) = x.resource {
-            let object = resource.to_string();
-            it.push(object);
-        }
-        {
-            let action = to_code!(x.operation);
-            it.push(action);
-        }
-        it
+impl v1::resources_response::Item {
+    pub fn to_rule(&self) -> Result<String> {
+        let it: Resource = self.clone().into();
+        let s = serde_json::to_string(&it)?;
+        Ok(s)
     }
 }
 
 impl v1::permissions_response::Item {
-    pub fn to_rules(args: &[Self]) -> Vec<Vec<String>> {
-        args.iter().map(|x| x.clone().into()).collect::<_>()
+    pub fn to_rule(&self) -> Result<Vec<String>> {
+        let mut it = Vec::new();
+        if let Some(ref resource) = self.resource {
+            let object = resource.to_rule()?;
+            it.push(object);
+        }
+        {
+            let action = to_code!(self.operation);
+            it.push(action);
+        }
+        Ok(it)
     }
 
     pub fn new(arg: &Vec<String>) -> Result<Self> {
