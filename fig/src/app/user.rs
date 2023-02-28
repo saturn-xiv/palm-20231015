@@ -60,9 +60,14 @@ impl Create {
                 db,
                 user.id,
                 LogLevelInfo,
-                &format!("{:?}", un.nodename().to_str()),
+                un.nodename().to_str().unwrap_or("unknown"),
                 Some(user.id),
-                format!("Created by system user {}.", nix::unistd::getuid()),
+                format!(
+                    "Created by system user {}.",
+                    nix::unistd::User::from_uid(nix::unistd::getuid())
+                        .map_or_else(|_| None, |x| x.map(|y| y.name))
+                        .unwrap_or("unknown".to_string())
+                ),
             )?;
             Ok(user)
         })?;

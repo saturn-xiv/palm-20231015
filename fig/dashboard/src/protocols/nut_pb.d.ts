@@ -231,10 +231,10 @@ export class UserSignInResponse extends jspb.Message {
   clearRolesList(): UserSignInResponse;
   addRoles(value: string, index?: number): UserSignInResponse;
 
-  getPermissionsList(): Array<UserSignInResponse.Permission>;
-  setPermissionsList(value: Array<UserSignInResponse.Permission>): UserSignInResponse;
+  getPermissionsList(): Array<rbac_pb.PermissionsResponse.Item>;
+  setPermissionsList(value: Array<rbac_pb.PermissionsResponse.Item>): UserSignInResponse;
   clearPermissionsList(): UserSignInResponse;
-  addPermissions(value?: UserSignInResponse.Permission, index?: number): UserSignInResponse.Permission;
+  addPermissions(value?: rbac_pb.PermissionsResponse.Item, index?: number): rbac_pb.PermissionsResponse.Item;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UserSignInResponse.AsObject;
@@ -249,33 +249,8 @@ export namespace UserSignInResponse {
     token: string,
     payload?: UserIndexResponse.Item.AsObject,
     rolesList: Array<string>,
-    permissionsList: Array<UserSignInResponse.Permission.AsObject>,
+    permissionsList: Array<rbac_pb.PermissionsResponse.Item.AsObject>,
   }
-
-  export class Permission extends jspb.Message {
-    getOperation(): string;
-    setOperation(value: string): Permission;
-
-    getResource(): rbac_pb.ResourcesResponse.Item | undefined;
-    setResource(value?: rbac_pb.ResourcesResponse.Item): Permission;
-    hasResource(): boolean;
-    clearResource(): Permission;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Permission.AsObject;
-    static toObject(includeInstance: boolean, msg: Permission): Permission.AsObject;
-    static serializeBinaryToWriter(message: Permission, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Permission;
-    static deserializeBinaryFromReader(message: Permission, reader: jspb.BinaryReader): Permission;
-  }
-
-  export namespace Permission {
-    export type AsObject = {
-      operation: string,
-      resource?: rbac_pb.ResourcesResponse.Item.AsObject,
-    }
-  }
-
 }
 
 export class UserSignUpRequest extends jspb.Message {

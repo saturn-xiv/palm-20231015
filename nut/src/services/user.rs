@@ -11,7 +11,10 @@ use palm::{
     jwt::Jwt,
     nut::v1,
     queue::amqp::RabbitMq,
-    rbac::v1::{resources_response::Item as Resource, RoleRequest, UserRequest},
+    rbac::v1::{
+        permissions_response::Item as Permission, resources_response::Item as Resource,
+        RoleRequest, UserRequest,
+    },
     session::Session,
     tink::Loquat,
     to_chrono_duration, to_code, to_timestamp, try_grpc, Error, GrpcResult, HttpError, Result,
@@ -742,20 +745,11 @@ pub async fn new_sign_in_response<P: Jwt>(
     })
 }
 
-fn new_permission_list_response(
-    rules: &Vec<Vec<String>>,
-) -> Result<Vec<v1::user_sign_in_response::Permission>> {
+fn new_permission_list_response(rules: &[Vec<String>]) -> Result<Vec<Permission>> {
     let mut items = Vec::new();
 
-    for rule in rules {
-        let mut it = v1::user_sign_in_response::Permission::default();
-        if rule.len() == 1 {
-            it.operation = rule[0].clone();
-        }
-        if rule.len() == 2 {
-            it.operation = rule[0].clone();
-            it.resource = Some(rule[1].parse()?);
-        }
+    for rule in rules.iter() {
+        let it = Permission::new(rule)?;
         items.push(it);
     }
 
