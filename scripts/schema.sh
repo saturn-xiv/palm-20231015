@@ -33,12 +33,12 @@ function generate_loquat() {
     thrift -out palm/src --gen rs -r $WORKSPACE/loquat/loquat.thrift
     
     echo 'generate code for loquat-cpp'
-    if [ -d $WORKSPACE/loquat/protocols/src ]
+    if [ -d $WORKSPACE/loquat/gourd/src ]
     then
-        rm -r $WORKSPACE/loquat/protocols/src
+        rm -r $WORKSPACE/loquat/gourd/src
     fi
-    mkdir -p $WORKSPACE/loquat/protocols/src
-    thrift -out $WORKSPACE/loquat/protocols/src --gen cpp -r $WORKSPACE/loquat/loquat.thrift
+    mkdir -p $WORKSPACE/loquat/gourd/src
+    thrift -out $WORKSPACE/loquat/gourd/src --gen cpp -r $WORKSPACE/loquat/loquat.thrift
     
     echo 'generate code for loquat-java'    
     thrift -out $WORKSPACE/tmp/protocols/java --gen java -r loquat/loquat.thrift

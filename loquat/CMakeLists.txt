@@ -47,14 +47,14 @@ FetchContent_Declare(tink
 
 FetchContent_Declare(argparse
   GIT_REPOSITORY  "https://github.com/p-ranav/argparse.git"
-  GIT_TAG         "15d745f"
+  GIT_TAG         "e516556"
 )
 
 FetchContent_MakeAvailable(spdlog argparse tomlplusplus nlohmann_json httplib tink)
 
 # --------------------------------------------------------
 
-add_subdirectory(protocols)
+add_subdirectory(gourd)
 
 # --------------------------------------------------------
 
@@ -62,7 +62,7 @@ file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.cpp")
 
 add_executable(loquat ${SOURCE_LIST})
 set_target_properties(loquat PROPERTIES LINK_FLAGS_RELEASE -s)
-target_link_libraries(loquat protocols
+target_link_libraries(loquat gourd
   tink::static 
   tink::jwt::jwt_key_templates tink::jwt::jwt_mac tink::jwt::jwt_mac_config
   absl::base absl::flags absl::flags_parse
@@ -75,10 +75,7 @@ target_include_directories(loquat PUBLIC
   ${spdlog_SOURCE_DIR}/include
   ${argparse_SOURCE_DIR}/include
   ${httplib_SOURCE_DIR}
-  ${tomlplusplus_SOURCE_DIR}/include
-  ${rest_rpc_SOURCE_DIR}/include
-  ${rest_rpc_SOURCE_DIR}/thirdparty/msgpack-c/include
-  ${rest_rpc_SOURCE_DIR}/thirdparty/asio
+  ${tomlplusplus_SOURCE_DIR}/include  
 )
 
 
