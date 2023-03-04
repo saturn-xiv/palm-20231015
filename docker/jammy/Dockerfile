@@ -9,15 +9,17 @@ RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) 
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
 RUN dpkg --add-architecture arm64
-RUN echo "deb [arch=arm64] http://ports.ubuntu.com/ $(lsb_release -cs) main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb [arch=arm64] http://ports.ubuntu.com/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb [arch=arm64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
+RUN dpkg --add-architecture riscv64
+RUN echo "deb [arch=arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs) main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb [arch=arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb [arch=arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 RUN apt update
 RUN apt -y upgrade
 
 RUN apt -y install wget curl zsh git locales locales-all \
     vim tzdata zip unzip tree tmux \
-    build-essential crossbuild-essential-arm64 clang lldb lld mold \
+    build-essential clang lldb lld mold \
+    crossbuild-essential-arm64 crossbuild-essential-riscv64 \
     cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio \
     debhelper bison flex ninja-build \
     python3 python3-distutils python3-dev python3-pip virtualenv
@@ -65,7 +67,8 @@ RUN zsh -c "source $HOME/.cargo/env \
     && rustup target add x86_64-unknown-linux-musl \
     && rustup target add armv7-unknown-linux-gnueabihf \
     && rustup target add aarch64-unknown-linux-gnu \
-    && rustup target add aarch64-unknown-linux-musl"
+    && rustup target add aarch64-unknown-linux-musl \
+    && rustup target add riscv64gc-unknown-linux-gnu"
 
 # https://github.com/richfelker/musl-cross-make
 RUN git clone https://github.com/richfelker/musl-cross-make.git $HOME/build/musl-cross-make

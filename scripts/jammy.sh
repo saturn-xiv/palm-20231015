@@ -6,46 +6,109 @@ export WORKSPACE=$PWD
 export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
 export TARGET_DIR=$PWD/tmp/palm-$GIT_VERSION
 
-build_rust_amd64_gnu() {
-    cd $WORKSPACE
-    cargo build --release --target x86_64-unknown-linux-gnu -p $1
-    cp $WORKSPACE/target/x86_64-unknown-linux-gnu/release/$1 $TARGET_DIR/bin/amd64/
+
+build_dashboard() {
+    cd $WORKSPACE/$1/dashboard
+    if [ ! -d node_modules ]
+    then
+        yarn install --silent
+    fi
+    yarn build
+    cp -r build $TARGET_DIR/$1
 }
 
-build_rust_amd64_musl() {
+build_rust_gnu() {
     cd $WORKSPACE
-    CC=x86_64-linux-musl-gcc CXX=x86_64-linux-musl-g++ \
-        cargo build --release --target x86_64-unknown-linux-musl -p $1
-    cp $WORKSPACE/target/x86_64-unknown-linux-musl/release/$1 $TARGET_DIR/bin/amd64/
+    apt -qq -y install libc6-dev:$1 libudev-dev:$1 libssl-dev:$1 \
+        libpq5:$1 libpq-dev:$1 libmysqlclient-dev:$1 libsqlite3-dev:$1
+    cargo build --release --target $1-unknown-linux-gnu -p $3
+    cp $WORKSPACE/target/$1-unknown-linux-gnu/release/$3 $TARGET_DIR/bin/$1/
 }
 
-build_loquat_amd64() {
+build_rust_musl() {
+    cd $WORKSPACE
+    CC=$1-linux-musl-gcc CXX=$1-linux-musl-g++ \
+        cargo build --release --target $1-unknown-linux-musl -p $2
+    cp $WORKSPACE/target/$1-unknown-linux-musl/release/$2 $TARGET_DIR/bin/$1/
+}
+
+build_loquat_x86_64() {
     apt install -y g++-10 golang libunwind-dev libboost-all-dev
 
-    mkdir -p $WORKSPACE/loquat/build/amd64
-    cd $WORKSPACE/loquat/build/amd64
+    mkdir -p $WORKSPACE/loquat/build/x86_64
+    cd $WORKSPACE/loquat/build/x86_64
     CC=gcc-10 CXX=g++-10 cmake -DCMAKE_BUILD_TYPE=Release \
         -DABSL_PROPAGATE_CXX_STD=ON -DTINK_USE_SYSTEM_OPENSSL=OFF \
         -DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF \
         ../..
     make -j loquat
-    cp loquat $TARGET_DIR/bin/amd64/
+    cp loquat $TARGET_DIR/bin/x86_64/
 }
+
+
+copy_assets() {
+    cd $WORKSPACE
+    
+    if [ ! -d node_modules ]
+    then
+        yarn install --silent
+    fi
+
+    local -a packages=(
+        "bootstrap/dist"
+        "bulma/css"
+        "marked/marked.min.js"
+        "material-design-icons/iconfont"
+        "d3/dist"
+        "@fontsource/roboto"
+        "moment/dist"
+        "moment-timezone/builds/moment-timezone-with-data.min.js"
+        "@popperjs/core/dist"
+        "mdb-ui-kit/css"
+        "mdb-ui-kit/js"
+        "mdb-ui-kit/img"
+        "qrcodejs/qrcode.min.js"
+        "@fortawesome/fontawesome-free/js"
+        "@fortawesome/fontawesome-free/css"
+        "@fortawesome/fontawesome-free/svgs"
+        "@fortawesome/fontawesome-free/webfonts"
+        "@fortawesome/fontawesome-free/sprites"
+        "famfamfam-flags/dist"
+        "famfamfam-silk/dist"
+        "famfamfam-mini/dist"
+    )
+    for i in "${packages[@]}"
+    do
+        local p=node_modules/$i
+        local t=$(dirname "$TARGET/$p")
+        mkdir -p $t
+        cp -a $p $t/
+    done
+
+    cp -a README.md LICENSE package.json \
+        docker/spring/etc/envoy.yaml \
+        palm/db palm/protocols loquat/loquat.thrift \
+        $TARGET_DIR/
+    echo "$GIT_VERSION" > $TARGET/VERSION
+    echo "$(date -R)" >> $TARGET/VERSION
+}
+
 
 if [ -d $TARGET_DIR ]
 then
     rm -r $TARGET_DIR
 fi
-mkdir -p $TARGET_DIR/bin/amd64 $TARGET_DIR/bin/arm64
+mkdir -p $TARGET_DIR/bin/x86_64 $TARGET_DIR/bin/aarch64 $TARGET_DIR/bin/riscv64gc
 
-cd $WORKSPACE
-cp -r palm/db palm/protocols \
-    README.md LICENSE package.json $TARGET_DIR/
-cp -r aloe/dashboard/build $TARGET_DIR/aloe
-cp -r fig/dashboard/build $TARGET_DIR/fig
 
-build_rust_amd64_gnu fig
-build_loquat_amd64
+# FIXME
+# build_dashboard fig
+# build_dashboard aloe
+
+
+build_rust_gnu x86_64 amd64 fig
+build_rust_gnu aarch64 arm64 fig
+build_rust_gnu riscv64gc riscv64 fig
 
 declare -a musl_projects=(
     "aloe"
@@ -55,8 +118,13 @@ declare -a musl_projects=(
 
 for p in "${musl_projects[@]}"
 do
-    build_rust_amd64_musl $p
+    build_rust_musl x86_64 $p
+    build_rust_musl aarch64 $p
+
+    build_rust_gnu riscv64gc riscv64 $p
 done
+
+build_loquat_x86_64
 
 cd $WORKSPACE/tmp
 XZ_OPT=-9 tar jcf palm-$GIT_VERSION.tar.xz palm-$GIT_VERSION
