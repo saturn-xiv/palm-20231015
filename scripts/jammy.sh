@@ -34,7 +34,7 @@ build_rust_musl() {
 }
 
 build_loquat() {
-    apt install -y g++-10 golang libunwind-dev libboost-all-dev
+    apt install -y g++-10 golang libunwind-dev libboost-all-dev libssl-dev libevent-dev
 
     mkdir -p $WORKSPACE/loquat/build/$1
     cd $WORKSPACE/loquat/build/$1

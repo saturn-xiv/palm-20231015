@@ -3,8 +3,7 @@ use serde::{Deserialize, Serialize};
 use thrift::{
     protocol::{TBinaryInputProtocol, TBinaryOutputProtocol, TMultiplexedOutputProtocol},
     transport::{
-        ReadHalf, TBufferedReadTransport, TBufferedWriteTransport, TIoChannel, TTcpChannel,
-        WriteHalf,
+        ReadHalf, TFramedReadTransport, TFramedWriteTransport, TIoChannel, TTcpChannel, WriteHalf,
     },
 };
 
@@ -91,9 +90,9 @@ impl Secret for Loquat {
     }
 }
 
-type Input = TBinaryInputProtocol<TBufferedReadTransport<ReadHalf<TTcpChannel>>>;
+type Input = TBinaryInputProtocol<TFramedReadTransport<ReadHalf<TTcpChannel>>>;
 type Output = TMultiplexedOutputProtocol<
-    TBinaryOutputProtocol<TBufferedWriteTransport<WriteHalf<TTcpChannel>>>,
+    TBinaryOutputProtocol<TFramedWriteTransport<WriteHalf<TTcpChannel>>>,
 >;
 
 impl Loquat {
@@ -108,10 +107,10 @@ impl Loquat {
 
         let (i_chan, o_chan) = ch.split()?;
 
-        let i_prot = TBinaryInputProtocol::new(TBufferedReadTransport::new(i_chan), true);
+        let i_prot = TBinaryInputProtocol::new(TFramedReadTransport::new(i_chan), true);
         let o_prot = TMultiplexedOutputProtocol::new(
             service,
-            TBinaryOutputProtocol::new(TBufferedWriteTransport::new(o_chan), true),
+            TBinaryOutputProtocol::new(TFramedWriteTransport::new(o_chan), true),
         );
         Ok((i_prot, o_prot))
     }

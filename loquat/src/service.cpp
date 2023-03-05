@@ -5,8 +5,10 @@
 #include <thrift/concurrency/ThreadManager.h>
 #include <thrift/processor/TMultiplexedProcessor.h>
 #include <thrift/protocol/TBinaryProtocol.h>
+#include <thrift/server/TNonblockingServer.h>
 #include <thrift/server/TThreadPoolServer.h>
 #include <thrift/server/TThreadedServer.h>
+#include <thrift/transport/TNonblockingServerSocket.h>
 #include <thrift/transport/TServerSocket.h>
 #include <thrift/transport/TSocket.h>
 #include <thrift/transport/TTransportUtils.h>
@@ -57,18 +59,30 @@ void loquat::application::launch(const uint16_t port) {
       std::dynamic_pointer_cast<apache::thrift::TProcessor>(
           multiplexedProcessor);
 
-  spdlog::info("listening on tcp://0.0.0.0:{} ", port);
-  std::shared_ptr<apache::thrift::transport::TServerSocket> serverSocket =
-      std::make_shared<apache::thrift::transport::TServerSocket>(port);
-  std::shared_ptr<apache::thrift::transport::TBufferedTransportFactory>
-      transportFactory = std::make_shared<
-          apache::thrift::transport::TBufferedTransportFactory>();
-  std::shared_ptr<apache::thrift::protocol::TBinaryProtocolFactory>
-      protocolFactory =
-          std::make_shared<apache::thrift::protocol::TBinaryProtocolFactory>();
+  auto threads_count = std::thread::hardware_concurrency();
+  spdlog::info("listening on tcp://0.0.0.0:{}", port);
+  std::shared_ptr<apache::thrift::concurrency::ThreadFactory> threadFactory =
+      std::make_shared<apache::thrift::concurrency::ThreadFactory>();
+  std::shared_ptr<apache::thrift::concurrency::ThreadManager> threadManager =
+      apache::thrift::concurrency::ThreadManager::newSimpleThreadManager(
+          threads_count * 4 + 1);
+  threadManager->threadFactory(threadFactory);
+  threadManager->start();
 
-  apache::thrift::server::TThreadedServer server(
-      multiplexedProcessor, serverSocket, transportFactory, protocolFactory);
+  std::shared_ptr<apache::thrift::transport::TNonblockingServerSocket>
+      serverSocket =
+          std::make_shared<apache::thrift::transport::TNonblockingServerSocket>(
+              port);
+
+  std::shared_ptr<apache::thrift::protocol::TBinaryProtocolFactoryT<
+      apache::thrift::transport::TFramedTransport>>
+      protocolFactory =
+          std::make_shared<apache::thrift::protocol::TBinaryProtocolFactoryT<
+              apache::thrift::transport::TFramedTransport>>();
+
+  apache::thrift::server::TNonblockingServer server(
+      multiplexedProcessor, protocolFactory, serverSocket, threadManager);
+  server.setNumIOThreads(threads_count * 2 + 1);
   server.serve();
 }
 
