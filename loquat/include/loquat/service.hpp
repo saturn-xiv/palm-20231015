@@ -8,7 +8,10 @@
 #include "Jwt.h"
 
 namespace loquat {
-void launch(const uint16_t port, const size_t worker_count);
+
+namespace application {
+void launch(const uint16_t port);
+}
 
 class AesHandler final : public v1::AesIf {
  public:

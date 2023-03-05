@@ -30,9 +30,6 @@ int main(int argc, char** argv) {
     rpc_command.add_argument("-p", "--port")
         .default_value(8080)
         .scan<'i', int>();
-    rpc_command.add_argument("-w", "--worker-count")
-        .default_value(8)
-        .scan<'i', int>();
   }
 
   program.add_subparser(rpc_command);
@@ -71,9 +68,7 @@ int main(int argc, char** argv) {
 
   if (program.is_subcommand_used(rpc_command)) {
     const int port = rpc_command.get<int>("--port");
-    const int worker_count = rpc_command.get<int>("--worker-count");
-    loquat::launch(static_cast<uint16_t>(port),
-                   static_cast<size_t>(worker_count));
+    loquat::application::launch(static_cast<uint16_t>(port));
   } else if (program.is_subcommand_used(generate_token_command)) {
     const int years = generate_token_command.get<int>("--years");
     const std::string id = generate_token_command.get<std::string>("--id");

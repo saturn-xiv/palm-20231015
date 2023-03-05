@@ -80,16 +80,7 @@ std::string loquat::Jwt::verify(const std::string& token,
   auto payload_r = jwt->VerifyMacAndDecode(token, validator);
   this->check(payload_r);
   auto payload = std::move(payload_r.ValueOrDie());
-  // if (audience) {
-  //   auto audiences_r = payload.GetAudiences();
-  //   this->check(audiences_r);
-  //   auto audiences = std::move(audiences_r.ValueOrDie());
-  //   if (std::find(audiences.begin(), audiences.end(), audience.value()) ==
-  //       audiences.end()) {
-  //     spdlog::error("can't find audience {}", audience.value());
-  //     throw std::runtime_error("");
-  //   }
-  // }
+
   auto subject_r = payload.GetSubject();
   this->check(subject_r);
   auto subject = std::move(subject_r.ValueOrDie());

@@ -6,11 +6,12 @@
 #include <thrift/processor/TMultiplexedProcessor.h>
 #include <thrift/protocol/TBinaryProtocol.h>
 #include <thrift/server/TThreadPoolServer.h>
+#include <thrift/server/TThreadedServer.h>
 #include <thrift/transport/TServerSocket.h>
 #include <thrift/transport/TSocket.h>
 #include <thrift/transport/TTransportUtils.h>
 
-void loquat::launch(const uint16_t port, const size_t worker_count) {
+void loquat::application::launch(const uint16_t port) {
   std::shared_ptr<AesHandler> aesHandler = std::make_shared<AesHandler>();
   std::shared_ptr<v1::AesProcessor> aesProcessor =
       std::make_shared<v1::AesProcessor>(aesHandler);
@@ -56,14 +57,7 @@ void loquat::launch(const uint16_t port, const size_t worker_count) {
       std::dynamic_pointer_cast<apache::thrift::TProcessor>(
           multiplexedProcessor);
 
-  std::shared_ptr<apache::thrift::concurrency::ThreadFactory> threadFactory =
-      std::make_shared<apache::thrift::concurrency::ThreadFactory>();
-  std::shared_ptr<apache::thrift::concurrency::ThreadManager> threadManager =
-      apache::thrift::concurrency::ThreadManager::newSimpleThreadManager(
-          worker_count);
-  threadManager->threadFactory(threadFactory);
-  threadManager->start();
-
+  spdlog::info("listening on tcp://0.0.0.0:{} ", port);
   std::shared_ptr<apache::thrift::transport::TServerSocket> serverSocket =
       std::make_shared<apache::thrift::transport::TServerSocket>(port);
   std::shared_ptr<apache::thrift::transport::TBufferedTransportFactory>
@@ -73,12 +67,8 @@ void loquat::launch(const uint16_t port, const size_t worker_count) {
       protocolFactory =
           std::make_shared<apache::thrift::protocol::TBinaryProtocolFactory>();
 
-  apache::thrift::server::TThreadPoolServer server(
-      processor, serverSocket, transportFactory, protocolFactory,
-      threadManager);
-
-  spdlog::info("listening on tcp://0.0.0.0:{} with {} threads", port,
-               worker_count);
+  apache::thrift::server::TThreadedServer server(
+      multiplexedProcessor, serverSocket, transportFactory, protocolFactory);
   server.serve();
 }
 
