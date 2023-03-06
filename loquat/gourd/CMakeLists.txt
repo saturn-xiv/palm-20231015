@@ -1,9 +1,3 @@
-FetchContent_Declare(libevent
-  GIT_REPOSITORY    "https://github.com/libevent/libevent.git"
-  GIT_TAG           "release-2.1.12-stable"
-)
-FetchContent_MakeAvailable(libevent)
-
 FetchContent_Declare(thrift
   GIT_REPOSITORY    "https://github.com/apache/thrift.git"
   GIT_TAG           "v0.18.1"
@@ -22,7 +16,7 @@ target_include_directories(gourd PUBLIC
   ${thrift_BINARY_DIR}
 )
 
-target_link_libraries(gourd PUBLIC libevent::core thrift thriftnb)
+target_link_libraries(gourd PUBLIC thrift thriftnb)
 
 source_group(
   TREE "${CMAKE_CURRENT_SOURCE_DIR}/src"

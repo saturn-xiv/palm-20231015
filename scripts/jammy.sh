@@ -40,11 +40,9 @@ build_loquat() {
     cd $WORKSPACE/loquat/build/$1
     CC=gcc-10 CXX=g++-10 cmake -DCMAKE_BUILD_TYPE=Release \
         -DABSL_PROPAGATE_CXX_STD=ON -DTINK_USE_SYSTEM_OPENSSL=OFF \
-        -DEVENT__LIBRARY_TYPE=STATIC \
-        -DLIBEVENT_STATIC_LINK=TRUE \
         -DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF \
         ../..
-    make
+    make loquat
     cp loquat $TARGET_DIR/bin/$1/
 }
 
