@@ -61,15 +61,11 @@ impl fmt::Display for Scope {
     }
 }
 
+#[derive(Default)]
 pub enum AccessType {
+    #[default]
     Online,
     Offline,
-}
-
-impl Default for AccessType {
-    fn default() -> Self {
-        AccessType::Online
-    }
 }
 
 impl fmt::Display for AccessType {

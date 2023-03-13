@@ -10,7 +10,7 @@ description = "A open-source static site generator."
 log = "0.4"
 yaml-rust = "0.4"
 env_logger = "0.10"
-askama = "0.11"
+askama = "0.12"
 
 [dependencies.chrono]
 version = "0.4"
