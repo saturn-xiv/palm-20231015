@@ -511,8 +511,9 @@ message SiteStatusResponse {
   }
   message Redis {
     message Item {
-      string key = 1;
-      int64 ttl = 2;
+      string node = 1;
+      string key = 2;
+      int64 ttl = 3;
     };
     string info = 1;
     repeated Item items = 2;

@@ -22,7 +22,9 @@ async fn cache() {
         println!("redis version: {}", ch.version().unwrap());
     }
 
-    for i in 1..5 {
+    let len: usize = 100;
+
+    for i in 0..len {
         let mut ch = pool.get().unwrap();
         let ch = ch.deref_mut();
 
@@ -30,12 +32,19 @@ async fn cache() {
             &format!("test.{}", i),
             &|| {
                 Ok(Item {
-                    id: i,
+                    id: i as i32,
                     name: format!("hello, {}!", i),
                 })
             },
             Duration::from_secs(1 << 12),
         )
         .unwrap();
+    }
+    {
+        let mut ch = pool.get().unwrap();
+        let ch = ch.deref_mut();
+        let keys = ch.keys().unwrap();
+        println!("{} vs {}", keys.len(), len);
+        assert!(keys.len() >= len);
     }
 }

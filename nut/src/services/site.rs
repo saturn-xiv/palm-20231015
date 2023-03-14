@@ -949,12 +949,14 @@ fn new_system_status_response() -> Result<v1::site_status_response::System> {
 
 fn new_redis_status_response(db: &mut RedisConnection) -> Result<v1::site_status_response::Redis> {
     let version = db.version()?;
+    // FIXME
     let items = db
         .keys()?
         .iter()
-        .map(|(key, ttl)| v1::site_status_response::redis::Item {
+        .map(|(node, key, ttl)| v1::site_status_response::redis::Item {
             ttl: *ttl,
             key: key.clone(),
+            node: node.clone(),
         })
         .collect();
     Ok(v1::site_status_response::Redis {

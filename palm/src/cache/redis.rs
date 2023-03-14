@@ -99,25 +99,42 @@ impl super::Provider for ClusterConnection {
 
         Ok(items.join("\n"))
     }
-    fn keys(&mut self) -> Result<Vec<(String, i64)>> {
+    fn keys(&mut self) -> Result<Vec<(String, String, i64)>> {
         let mut items = Vec::new();
-        let keys: Vec<String> = Commands::keys(self, "*")?;
-        for it in keys {
-            let ttl = self.ttl(&it)?;
-            items.push((it, ttl));
+
+        let keys: Vec<Value> = Commands::keys(self, "*")?;
+
+        for it in keys.iter() {
+            if let Value::Bulk(ref it) = it {
+                if it.len() == 2 {
+                    if let Value::Data(ref node) = it[0] {
+                        let node = std::str::from_utf8(node)?;
+
+                        if let Value::Bulk(ref keys) = it[1] {
+                            for key in keys {
+                                if let Value::Data(ref key) = key {
+                                    let key = std::str::from_utf8(key)?;
+                                    let ttl: i64 = self.ttl(key)?;
+                                    items.push((node.to_string(), key.to_string(), ttl));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         Ok(items)
     }
-    #[cfg(debug_assertions)]
-    fn get<K, V, F>(&mut self, _key: &K, fun: F, _ttl: Duration) -> Result<V>
-    where
-        F: FnOnce() -> Result<V>,
-        K: Display,
-        V: DeserializeOwned + Serialize,
-    {
-        fun()
-    }
-    #[cfg(not(debug_assertions))]
+    // #[cfg(debug_assertions)]
+    // fn get<K, V, F>(&mut self, _key: &K, fun: F, _ttl: Duration) -> Result<V>
+    // where
+    //     F: FnOnce() -> Result<V>,
+    //     K: Display,
+    //     V: DeserializeOwned + Serialize,
+    // {
+    //     fun()
+    // }
+    // #[cfg(not(debug_assertions))]
     fn get<K, V, F>(&mut self, key: &K, fun: F, ttl: Duration) -> Result<V>
     where
         F: FnOnce() -> Result<V>,

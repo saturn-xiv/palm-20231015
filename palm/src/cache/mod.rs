@@ -14,7 +14,7 @@ pub trait Provider {
         K: Display,
         V: DeserializeOwned + Serialize;
     fn clear(&mut self) -> Result<()>;
-    fn keys(&mut self) -> Result<Vec<(String, i64)>>;
+    fn keys(&mut self) -> Result<Vec<(String, String, i64)>>;
     fn version(&mut self) -> Result<String>;
     fn heartbeat(&mut self) -> Result<()>;
     fn destroy<K: Display>(&mut self, key: &K) -> Result<()>;

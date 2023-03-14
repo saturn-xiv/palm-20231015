@@ -118,8 +118,8 @@ pub async fn launch() -> Result<()> {
             if args.command == SubCommand::CacheList {
                 let items = ch.keys()?;
                 println!("{:<14} KEY", "TTL");
-                for (key, ttl) in items {
-                    println!("{:<14} {}", ttl, key);
+                for (node, key, ttl) in items.iter() {
+                    println!("{:<32} {:<14} {}", node, ttl, key);
                 }
                 return Ok(());
             }
