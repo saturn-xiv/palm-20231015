@@ -1,4 +1,4 @@
-use chrono::NaiveDateTime;
+use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*};
 use palm::{
     nut::v1::media_content::{Editor, Status},
@@ -39,6 +39,7 @@ impl Dao for Connection {
     }
 
     fn create(&mut self, lang: &str, ip: &str, body: &str, editor: Editor) -> Result<()> {
+        let now = Utc::now().naive_utc();
         insert_into(leave_words::dsl::leave_words)
             .values((
                 leave_words::dsl::lang.eq(lang),
@@ -46,6 +47,7 @@ impl Dao for Connection {
                 leave_words::dsl::body.eq(body),
                 leave_words::dsl::editor.eq(editor as i32),
                 leave_words::dsl::status.eq(Status::Pending as i32),
+                leave_words::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;
         Ok(())
