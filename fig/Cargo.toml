@@ -14,7 +14,7 @@ toml = "0.7"
 env_logger = "0.10"
 askama = "0.12"
 data-encoding = "2"
-dirs = "4"
+dirs = "5"
 
 [dependencies.chrono]
 version = "0.4"
