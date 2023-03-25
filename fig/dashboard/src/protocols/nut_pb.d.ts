@@ -2055,6 +2055,9 @@ export namespace SiteStatusResponse {
     }
 
     export class Item extends jspb.Message {
+      getNode(): string;
+      setNode(value: string): Item;
+
       getKey(): string;
       setKey(value: string): Item;
 
@@ -2071,6 +2074,7 @@ export namespace SiteStatusResponse {
 
     export namespace Item {
       export type AsObject = {
+        node: string,
         key: string,
         ttl: number,
       }

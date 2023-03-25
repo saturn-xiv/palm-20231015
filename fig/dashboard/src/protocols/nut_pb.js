@@ -16278,8 +16278,9 @@ proto.palm.nut.v1.SiteStatusResponse.Redis.Item.prototype.toObject = function(op
  */
 proto.palm.nut.v1.SiteStatusResponse.Redis.Item.toObject = function(includeInstance, msg) {
   var f, obj = {
-    key: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    ttl: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    node: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    key: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    ttl: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -16318,9 +16319,13 @@ proto.palm.nut.v1.SiteStatusResponse.Redis.Item.deserializeBinaryFromReader = fu
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setKey(value);
+      msg.setNode(value);
       break;
     case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setKey(value);
+      break;
+    case 3:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setTtl(value);
       break;
@@ -16353,17 +16358,24 @@ proto.palm.nut.v1.SiteStatusResponse.Redis.Item.prototype.serializeBinary = func
  */
 proto.palm.nut.v1.SiteStatusResponse.Redis.Item.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getKey();
+  f = message.getNode();
   if (f.length > 0) {
     writer.writeString(
       1,
       f
     );
   }
+  f = message.getKey();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
   f = message.getTtl();
   if (f !== 0) {
     writer.writeInt64(
-      2,
+      3,
       f
     );
   }
@@ -16371,10 +16383,10 @@ proto.palm.nut.v1.SiteStatusResponse.Redis.Item.serializeBinaryToWriter = functi
 
 
 /**
- * optional string key = 1;
+ * optional string node = 1;
  * @return {string}
  */
-proto.palm.nut.v1.SiteStatusResponse.Redis.Item.prototype.getKey = function() {
+proto.palm.nut.v1.SiteStatusResponse.Redis.Item.prototype.getNode = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -16383,17 +16395,35 @@ proto.palm.nut.v1.SiteStatusResponse.Redis.Item.prototype.getKey = function() {
  * @param {string} value
  * @return {!proto.palm.nut.v1.SiteStatusResponse.Redis.Item} returns this
  */
-proto.palm.nut.v1.SiteStatusResponse.Redis.Item.prototype.setKey = function(value) {
+proto.palm.nut.v1.SiteStatusResponse.Redis.Item.prototype.setNode = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * optional int64 ttl = 2;
+ * optional string key = 2;
+ * @return {string}
+ */
+proto.palm.nut.v1.SiteStatusResponse.Redis.Item.prototype.getKey = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.nut.v1.SiteStatusResponse.Redis.Item} returns this
+ */
+proto.palm.nut.v1.SiteStatusResponse.Redis.Item.prototype.setKey = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional int64 ttl = 3;
  * @return {number}
  */
 proto.palm.nut.v1.SiteStatusResponse.Redis.Item.prototype.getTtl = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
@@ -16402,7 +16432,7 @@ proto.palm.nut.v1.SiteStatusResponse.Redis.Item.prototype.getTtl = function() {
  * @return {!proto.palm.nut.v1.SiteStatusResponse.Redis.Item} returns this
  */
 proto.palm.nut.v1.SiteStatusResponse.Redis.Item.prototype.setTtl = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 
