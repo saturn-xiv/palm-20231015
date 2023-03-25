@@ -8,8 +8,10 @@ use language_tags::LanguageTag;
 use openssl::hash::{hash, MessageDigest};
 use palm::{
     crypto::{random::bytes as random_bytes, Password},
-    nut::v1::{self, user_provider::Type as UserProviderType},
-    oauth::google::openid::IdToken,
+    google::oauth::openid::{
+        AuthorizationCode as GoogleAuthorizationCode, IdToken as GoogleOpenIdToken,
+    },
+    nut::v1,
     orchid::v1::WeChatLoginResponse,
     rbac::v1::users_response::Item as RbacUser,
     HttpError, Result,
@@ -17,7 +19,10 @@ use palm::{
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
-use super::super::{orm::postgresql::Connection, schema::users};
+use super::super::{
+    orm::postgresql::Connection,
+    schema::{google_users, users, wechat_users},
+};
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -51,9 +56,6 @@ pub struct Item {
     pub password: Option<Vec<u8>>,
     pub salt: Vec<u8>,
     pub uid: String,
-    pub provider_type: i32,
-    pub provider_id: String,
-    pub access_token: Option<String>,
     pub avatar: String,
     pub lang: String,
     pub time_zone: String,
@@ -174,8 +176,6 @@ pub struct New<'a> {
     pub password: Option<&'a [u8]>,
     pub salt: &'a [u8],
     pub uid: &'a str,
-    pub provider_type: i32,
-    pub provider_id: &'a str,
     pub avatar: &'a str,
     pub lang: &'a str,
     pub time_zone: &'a str,
@@ -186,12 +186,35 @@ impl<'a> New<'a> {
     pub const SALT_SIZE: usize = 16;
 }
 
+#[derive(Hash, Eq, PartialEq, Queryable, Serialize, Deserialize, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct GoogleUserItem {
+    pub id: i32,
+    pub user_id: i32,
+    pub sub: String,
+    pub code: Vec<u8>,
+    pub token: String,
+    pub version: i32,
+    pub created_at: NaiveDateTime,
+    pub updated_at: NaiveDateTime,
+}
+
+impl GoogleUserItem {
+    pub fn code(&self) -> Result<GoogleAuthorizationCode> {
+        let it = flexbuffers::from_slice(&self.code)?;
+        Ok(it)
+    }
+    pub fn token(&self) -> Result<GoogleOpenIdToken> {
+        let it = serde_json::from_str(&self.token)?;
+        Ok(it)
+    }
+}
+
 pub trait Dao {
     fn by_id(&mut self, id: i32) -> Result<Item>;
     fn by_uid(&mut self, uid: &str) -> Result<Item>;
     fn by_email(&mut self, email: &str) -> Result<Item>;
     fn by_nickname(&mut self, nickname: &str) -> Result<Item>;
-    fn by_provider(&mut self, type_: UserProviderType, id: &str) -> Result<Item>;
     fn set_profile(
         &mut self,
         id: i32,
@@ -201,7 +224,13 @@ pub trait Dao {
         time_zone: &Tz,
     ) -> Result<()>;
     fn sign_in(&mut self, id: i32, ip: &str) -> Result<()>;
-    fn google(&mut self, access_token: &str, token: &IdToken, ip: &str) -> Result<Item>;
+    fn google(
+        &mut self,
+        id: Option<i32>,
+        code: &GoogleAuthorizationCode,
+        token: &GoogleOpenIdToken,
+        ip: &str,
+    ) -> Result<Item>;
     fn sign_up<P: Password>(
         &mut self,
         enc: &P,
@@ -244,14 +273,7 @@ impl Dao for Connection {
             .first(self)?;
         Ok(it)
     }
-    fn by_provider(&mut self, type_: UserProviderType, id: &str) -> Result<Item> {
-        let type_ = type_ as i32;
-        let it = users::dsl::users
-            .filter(users::dsl::provider_type.eq(type_))
-            .filter(users::dsl::provider_id.eq(id))
-            .first(self)?;
-        Ok(it)
-    }
+
     fn by_nickname(&mut self, nickname: &str) -> Result<Item> {
         let it = users::dsl::users
             .filter(users::dsl::nickname.eq(nickname))
@@ -259,29 +281,20 @@ impl Dao for Connection {
         Ok(it)
     }
 
-    fn google(&mut self, access_token: &str, id_token: &IdToken, ip: &str) -> Result<Item> {
+    fn google(
+        &mut self,
+        id: Option<i32>,
+        code: &GoogleAuthorizationCode,
+        token: &GoogleOpenIdToken,
+        ip: &str,
+    ) -> Result<Item> {
+        let code_v = flexbuffers::to_vec(code)?;
+        let token_v = serde_json::to_string(token)?;
         let now = Utc::now().naive_utc();
-        let it = match Self::by_provider(self, UserProviderType::Google, &id_token.sub) {
-            Ok(it) => {
-                if let Some(ref name) = id_token.name {
-                    update(users::dsl::users.filter(users::dsl::id.eq(it.id)))
-                        .set(users::dsl::real_name.eq(&name))
-                        .execute(self)?;
-                }
-                if let Some(ref email) = id_token.email {
-                    update(users::dsl::users.filter(users::dsl::id.eq(it.id)))
-                        .set(users::dsl::email.eq(&email))
-                        .execute(self)?;
-                }
-                if let Some(ref avatar) = id_token.picture {
-                    update(users::dsl::users.filter(users::dsl::id.eq(it.id)))
-                        .set(users::dsl::avatar.eq(&avatar))
-                        .execute(self)?;
-                }
-                it
-            }
-            Err(_) => {
-                let email = match id_token.email {
+        let user = match id {
+            Some(id) => Self::by_id(self, id)?,
+            None => {
+                let email = match token.email {
                     Some(ref v) => v.clone(),
                     None => Item::guest_email(),
                 };
@@ -290,7 +303,7 @@ impl Dao for Connection {
 
                 insert_into(users::dsl::users)
                     .values(&New {
-                        real_name: &match id_token.name {
+                        real_name: &match token.name {
                             Some(ref v) => v.clone(),
                             None => Item::GUEST_NAME.to_string(),
                         },
@@ -299,27 +312,70 @@ impl Dao for Connection {
                         uid: &uid,
                         password: None,
                         salt: &random_bytes(New::SALT_SIZE),
-                        provider_type: UserProviderType::Google as i32,
-                        provider_id: &id_token.sub,
                         lang: Item::GUEST_LANG,
                         time_zone: Item::GUEST_TIMEZONE,
-                        avatar: &match id_token.picture {
+                        avatar: &match token.picture {
                             Some(ref v) => v.clone(),
                             None => Item::gravatar(&email)?,
                         },
                         updated_at: &now,
                     })
                     .execute(self)?;
-                self.by_uid(&uid)?
+                let it = self.by_uid(&uid)?;
+                Self::confirm(self, it.id)?;
+                it
             }
         };
-        Self::confirm(self, it.id)?;
-        update(users::dsl::users.filter(users::dsl::id.eq(it.id)))
-            .set(users::dsl::access_token.eq(&Some(access_token)))
-            .execute(self)?;
-        self.sign_in(it.id, ip)?;
+        match google_users::dsl::google_users
+            .select(google_users::dsl::id)
+            .filter(google_users::dsl::sub.eq(&token.sub))
+            .first::<i32>(self)
+        {
+            Ok(id) => {
+                if let Some(ref name) = token.name {
+                    if &user.real_name != name {
+                        update(users::dsl::users.filter(users::dsl::id.eq(user.id)))
+                            .set(users::dsl::real_name.eq(&name))
+                            .execute(self)?;
+                    }
+                }
+                if let Some(ref email) = token.email {
+                    if &user.email != email {
+                        update(users::dsl::users.filter(users::dsl::id.eq(user.id)))
+                            .set(users::dsl::email.eq(&email))
+                            .execute(self)?;
+                    }
+                }
+                if let Some(ref avatar) = token.picture {
+                    if &user.avatar != avatar {
+                        update(users::dsl::users.filter(users::dsl::id.eq(user.id)))
+                            .set(users::dsl::avatar.eq(&avatar))
+                            .execute(self)?;
+                    }
+                }
+                update(google_users::dsl::google_users.filter(google_users::dsl::id.eq(user.id)))
+                    .set((
+                        google_users::dsl::code.eq(&code_v),
+                        google_users::dsl::token.eq(&token_v),
+                        google_users::dsl::updated_at.eq(&now),
+                    ))
+                    .execute(self)?;
+            }
+            Err(_) => {
+                insert_into(google_users::dsl::google_users)
+                    .values((
+                        google_users::dsl::user_id.eq(user.id),
+                        google_users::dsl::sub.eq(&token.sub),
+                        google_users::dsl::code.eq(&code_v),
+                        google_users::dsl::token.eq(&token_v),
+                        google_users::dsl::updated_at.eq(&now),
+                    ))
+                    .execute(self)?;
+            }
+        };
 
-        self.by_id(it.id)
+        self.sign_in(user.id, ip)?;
+        Ok(user)
     }
 
     fn sign_in(&mut self, id: i32, ip: &str) -> Result<()> {
@@ -363,8 +419,6 @@ impl Dao for Connection {
                 uid: &uid,
                 password: Some(&enc.sign(password.as_bytes())?),
                 salt: &random_bytes(New::SALT_SIZE),
-                provider_type: UserProviderType::Email as i32,
-                provider_id: email,
                 avatar: &Item::gravatar(&email)?,
                 lang: &lang.to_string(),
                 time_zone: &time_zone.to_string(),
@@ -477,26 +531,25 @@ impl Dao for Connection {
     fn wechat(&mut self, ip: &str, app_id: &str, who: &WeChatLoginResponse) -> Result<Item> {
         let now = Utc::now().naive_utc();
 
-        if let Some(ref id) = who.unionid {
-            if let Ok(it) = Self::by_provider(self, UserProviderType::Wechat, id) {
-                return Ok(it);
-            }
-        }
+        // if let Some(ref id) = who.unionid {
+        //     if let Ok(it) = Self::by_provider(self, UserProviderType::Wechat, id) {
+        //         return Ok(it);
+        //     }
+        // }
 
-        let provider_id = format!("{}.{}", app_id, who.openid);
-        if let Ok(it) = Self::by_provider(self, UserProviderType::Wechat, &provider_id) {
-            if let Some(ref id) = who.unionid {
-                update(users::dsl::users.filter(users::dsl::id.eq(it.id)))
-                    .set((
-                        users::dsl::provider_id.eq(id),
-                        users::dsl::updated_at.eq(&now),
-                    ))
-                    .execute(self)?;
-            }
-            return Ok(it);
-        }
-
-        let provider_id = who.unionid.as_ref().map_or(provider_id, |x| x.clone());
+        // FIXME
+        // let provider_id = format!("{}.{}", app_id, who.openid);
+        // if let Ok(it) = Self::by_provider(self, UserProviderType::Wechat, &provider_id) {
+        //     if let Some(ref id) = who.unionid {
+        //         update(users::dsl::users.filter(users::dsl::id.eq(it.id)))
+        //             .set((
+        //                 users::dsl::provider_id.eq(id),
+        //                 users::dsl::updated_at.eq(&now),
+        //             ))
+        //             .execute(self)?;
+        //     }
+        //     return Ok(it);
+        // }
 
         let email = Item::guest_email();
         let uid = Uuid::new_v4().to_string();
@@ -509,8 +562,6 @@ impl Dao for Connection {
                 uid: &uid,
                 password: None,
                 salt: &random_bytes(New::SALT_SIZE),
-                provider_type: UserProviderType::Wechat as i32,
-                provider_id: &provider_id,
                 lang: Item::GUEST_LANG,
                 time_zone: Item::GUEST_TIMEZONE,
                 avatar: &Item::gravatar(&email)?,
@@ -521,10 +572,11 @@ impl Dao for Connection {
         let it = self.by_uid(&uid)?;
 
         Self::confirm(self, it.id)?;
-        let access_token = who.access_token();
-        update(users::dsl::users.filter(users::dsl::id.eq(it.id)))
-            .set(users::dsl::access_token.eq(&Some(access_token)))
-            .execute(self)?;
+        // FIXME
+        // let access_token = who.access_token();
+        // update(users::dsl::users.filter(users::dsl::id.eq(it.id)))
+        //     .set(users::dsl::access_token.eq(&Some(access_token)))
+        //     .execute(self)?;
         self.sign_in(it.id, ip)?;
 
         self.by_id(it.id)

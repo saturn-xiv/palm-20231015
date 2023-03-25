@@ -1,4 +1,17 @@
+use std::any::type_name;
+
 use super::super::nut::v1;
+
+impl v1::google_sign_in_url_request::State {
+    pub fn key(&self) -> String {
+        format!(
+            "{}://{}/{}",
+            type_name::<Self>(),
+            self.host,
+            self.user.as_deref().unwrap_or_default()
+        )
+    }
+}
 
 impl v1::Pagination {
     pub fn new(pager: &v1::Pager, total: i64) -> Self {

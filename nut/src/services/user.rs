@@ -4,10 +4,14 @@ use std::sync::Arc;
 
 use casbin::{Enforcer, RbacApi};
 use chrono::Duration;
+use data_encoding::BASE64;
 use diesel::Connection as DieselConntection;
 use hyper::StatusCode;
 use palm::{
-    cache::redis::Pool as RedisPool,
+    cache::{redis::Pool as RedisPool, Provider as CacheProvider},
+    google::oauth::{
+        openid::IdToken as GoogleIdToken, ClientSecret as GoogleClientSecret, Scope as GoogleScope,
+    },
     jwt::Jwt,
     nut::v1,
     queue::amqp::RabbitMq,
@@ -19,6 +23,7 @@ use palm::{
     tink::Loquat,
     to_chrono_duration, to_code, to_timestamp, try_grpc, Error, GrpcResult, HttpError, Result,
 };
+use prost::Message as ProstMessage;
 use tokio::sync::Mutex;
 use tonic::{Request, Response, Status};
 
@@ -26,6 +31,7 @@ use super::super::{
     i18n::I18n,
     models::{
         log::Dao as LogDao,
+        setting::Dao as SettingDao,
         user::{Action, Dao as UserDao, Item as User},
     },
     orm::postgresql::{Connection as Db, Pool as PostgreSqlPool},
@@ -36,6 +42,7 @@ pub struct Service {
     pub redis: RedisPool,
     pub pgsql: PostgreSqlPool,
     pub jwt: Arc<Loquat>,
+    pub aes: Arc<Loquat>,
     pub hmac: Arc<Loquat>,
     pub rabbitmq: Arc<RabbitMq>,
     pub enforcer: Arc<Mutex<Enforcer>>,
@@ -625,7 +632,128 @@ impl v1::user_server::User for Service {
             )?;
             Ok(())
         }))?;
-        return Ok(Response::new(()));
+        Ok(Response::new(()))
+    }
+
+    async fn google_sign_in_url(
+        &self,
+        req: Request<v1::GoogleSignInUrlRequest>,
+    ) -> GrpcResult<v1::GoogleSignInUrlResponse> {
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let aes = self.aes.deref();
+        let req = req.into_inner();
+
+        let cfg: GoogleClientSecret = try_grpc!(SettingDao::get(
+            db,
+            aes,
+            &type_name::<GoogleClientSecret>().to_string(),
+            None,
+        ))?;
+
+        if let Some(ref state) = req.state {
+            let state_key = state.key();
+            let state = {
+                let mut buf = Vec::new();
+                try_grpc!(state.encode(&mut buf))?;
+                BASE64.encode(&buf)
+            };
+
+            let it = cfg.web.openid_connect(
+                vec![
+                    GoogleScope::Openid,
+                    GoogleScope::Email,
+                    GoogleScope::Profile,
+                ],
+                &state,
+                &req.redirect_uri,
+            );
+            try_grpc!(ch.set(&state_key, &it.nonce, Duration::minutes(1)))?;
+            return Ok(Response::new(it));
+        }
+        Err(Status::permission_denied(type_name::<
+            v1::GoogleSignInUrlRequest,
+        >()))
+    }
+    async fn sign_in_by_google(
+        &self,
+        req: Request<v1::SignInByGoogleRequest>,
+    ) -> GrpcResult<v1::UserSignInResponse> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+
+        let aes = self.aes.deref();
+        let enf = self.enforcer.deref();
+        let jwt = self.jwt.deref();
+
+        let req = req.into_inner();
+
+        let cfg: GoogleClientSecret = try_grpc!(SettingDao::get(
+            db,
+            aes,
+            &type_name::<GoogleClientSecret>().to_string(),
+            None,
+        ))?;
+
+        if let Some(ref state) = req.state {
+            if let Some(ref nonce) = req.nonce {
+                let mut ch = try_grpc!(self.redis.get())?;
+                let ch = ch.deref_mut();
+                let tmp: String = try_grpc!(ch.fetch(&state.key()))?;
+                if nonce != &tmp {
+                    return Err(Status::permission_denied(type_name::<
+                        v1::SignInByGoogleRequest,
+                    >()));
+                }
+            }
+
+            let code = try_grpc!(
+                cfg.web
+                    .exchange_authorization_code(&req.redirect_uri, &req.code)
+                    .await
+            )?;
+            let token: GoogleIdToken = try_grpc!(serde_json::from_str(&code.id_token))?;
+
+            let user = try_grpc!(db.transaction::<_, Error, _>(move |db| {
+                let user = match state.user {
+                    Some(ref it) => {
+                        let it = UserDao::by_uid(db, it)?;
+                        it.available()?;
+                        Some(it.id)
+                    }
+                    None => None,
+                };
+                let user = UserDao::google(db, user, &code, &token, &ss.client_ip)?;
+                LogDao::add::<_, User>(
+                    db,
+                    user.id,
+                    v1::user_logs_response::item::Level::Info,
+                    &ss.client_ip,
+                    Some(user.id),
+                    "sign in by google",
+                )?;
+                Ok(user)
+            }))?;
+
+            let it = try_grpc!(
+                new_sign_in_response(
+                    enf,
+                    &user,
+                    jwt,
+                    req.ttl
+                        .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds)),
+                )
+                .await
+            )?;
+            return Ok(Response::new(it));
+        }
+
+        Err(Status::permission_denied(type_name::<
+            v1::SignInByGoogleRequest,
+        >()))
     }
 }
 
@@ -679,7 +807,6 @@ impl From<User> for v1::user_index_response::Item {
             email: x.email.clone(),
             real_name: x.real_name.clone(),
             nickname: x.nickname.clone(),
-            provider_type: x.provider_type,
             updated_at: Some(to_timestamp!(x.updated_at)),
             sign_in_count: x.sign_in_count,
             lang: x.lang.clone(),

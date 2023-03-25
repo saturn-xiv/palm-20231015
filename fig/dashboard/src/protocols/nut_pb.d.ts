@@ -544,36 +544,6 @@ export namespace UserChangePasswordRequest {
   }
 }
 
-export class UserProvider extends jspb.Message {
-  getType(): UserProvider.Type;
-  setType(value: UserProvider.Type): UserProvider;
-
-  getId(): string;
-  setId(value: string): UserProvider;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): UserProvider.AsObject;
-  static toObject(includeInstance: boolean, msg: UserProvider): UserProvider.AsObject;
-  static serializeBinaryToWriter(message: UserProvider, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): UserProvider;
-  static deserializeBinaryFromReader(message: UserProvider, reader: jspb.BinaryReader): UserProvider;
-}
-
-export namespace UserProvider {
-  export type AsObject = {
-    type: UserProvider.Type,
-    id: string,
-  }
-
-  export enum Type { 
-    EMAIL = 0,
-    GOOGLE = 1,
-    WECHAT = 2,
-    FACEBOOK = 3,
-    GITHUB = 4,
-  }
-}
-
 export class UserIndexResponse extends jspb.Message {
   getPagination(): Pagination | undefined;
   setPagination(value?: Pagination): UserIndexResponse;
@@ -614,9 +584,6 @@ export namespace UserIndexResponse {
 
     getRealName(): string;
     setRealName(value: string): Item;
-
-    getProviderType(): UserProvider.Type;
-    setProviderType(value: UserProvider.Type): Item;
 
     getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
     setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
@@ -685,7 +652,6 @@ export namespace UserIndexResponse {
       email: string,
       nickname: string,
       realName: string,
-      providerType: UserProvider.Type,
       updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
       lastSignInAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
       lastSignInIp?: string,
@@ -736,6 +702,137 @@ export namespace UserIndexResponse {
     }
   }
 
+}
+
+export class SignInByGoogleRequest extends jspb.Message {
+  getScopesList(): Array<string>;
+  setScopesList(value: Array<string>): SignInByGoogleRequest;
+  clearScopesList(): SignInByGoogleRequest;
+  addScopes(value: string, index?: number): SignInByGoogleRequest;
+
+  getCode(): string;
+  setCode(value: string): SignInByGoogleRequest;
+
+  getState(): GoogleSignInUrlRequest.State | undefined;
+  setState(value?: GoogleSignInUrlRequest.State): SignInByGoogleRequest;
+  hasState(): boolean;
+  clearState(): SignInByGoogleRequest;
+
+  getRedirectUri(): string;
+  setRedirectUri(value: string): SignInByGoogleRequest;
+
+  getNonce(): string;
+  setNonce(value: string): SignInByGoogleRequest;
+  hasNonce(): boolean;
+  clearNonce(): SignInByGoogleRequest;
+
+  getTtl(): google_protobuf_duration_pb.Duration | undefined;
+  setTtl(value?: google_protobuf_duration_pb.Duration): SignInByGoogleRequest;
+  hasTtl(): boolean;
+  clearTtl(): SignInByGoogleRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SignInByGoogleRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: SignInByGoogleRequest): SignInByGoogleRequest.AsObject;
+  static serializeBinaryToWriter(message: SignInByGoogleRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SignInByGoogleRequest;
+  static deserializeBinaryFromReader(message: SignInByGoogleRequest, reader: jspb.BinaryReader): SignInByGoogleRequest;
+}
+
+export namespace SignInByGoogleRequest {
+  export type AsObject = {
+    scopesList: Array<string>,
+    code: string,
+    state?: GoogleSignInUrlRequest.State.AsObject,
+    redirectUri: string,
+    nonce?: string,
+    ttl?: google_protobuf_duration_pb.Duration.AsObject,
+  }
+
+  export enum NonceCase { 
+    _NONCE_NOT_SET = 0,
+    NONCE = 9,
+  }
+}
+
+export class GoogleSignInUrlRequest extends jspb.Message {
+  getRedirectUri(): string;
+  setRedirectUri(value: string): GoogleSignInUrlRequest;
+
+  getState(): GoogleSignInUrlRequest.State | undefined;
+  setState(value?: GoogleSignInUrlRequest.State): GoogleSignInUrlRequest;
+  hasState(): boolean;
+  clearState(): GoogleSignInUrlRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GoogleSignInUrlRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GoogleSignInUrlRequest): GoogleSignInUrlRequest.AsObject;
+  static serializeBinaryToWriter(message: GoogleSignInUrlRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GoogleSignInUrlRequest;
+  static deserializeBinaryFromReader(message: GoogleSignInUrlRequest, reader: jspb.BinaryReader): GoogleSignInUrlRequest;
+}
+
+export namespace GoogleSignInUrlRequest {
+  export type AsObject = {
+    redirectUri: string,
+    state?: GoogleSignInUrlRequest.State.AsObject,
+  }
+
+  export class State extends jspb.Message {
+    getGoto(): string;
+    setGoto(value: string): State;
+
+    getHost(): string;
+    setHost(value: string): State;
+
+    getUser(): string;
+    setUser(value: string): State;
+    hasUser(): boolean;
+    clearUser(): State;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): State.AsObject;
+    static toObject(includeInstance: boolean, msg: State): State.AsObject;
+    static serializeBinaryToWriter(message: State, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): State;
+    static deserializeBinaryFromReader(message: State, reader: jspb.BinaryReader): State;
+  }
+
+  export namespace State {
+    export type AsObject = {
+      pb_goto: string,
+      host: string,
+      user?: string,
+    }
+
+    export enum UserCase { 
+      _USER_NOT_SET = 0,
+      USER = 3,
+    }
+  }
+
+}
+
+export class GoogleSignInUrlResponse extends jspb.Message {
+  getUrl(): string;
+  setUrl(value: string): GoogleSignInUrlResponse;
+
+  getNonce(): string;
+  setNonce(value: string): GoogleSignInUrlResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GoogleSignInUrlResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: GoogleSignInUrlResponse): GoogleSignInUrlResponse.AsObject;
+  static serializeBinaryToWriter(message: GoogleSignInUrlResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GoogleSignInUrlResponse;
+  static deserializeBinaryFromReader(message: GoogleSignInUrlResponse, reader: jspb.BinaryReader): GoogleSignInUrlResponse;
+}
+
+export namespace GoogleSignInUrlResponse {
+  export type AsObject = {
+    url: string,
+    nonce: string,
+  }
 }
 
 export class AttachmentShowRequest extends jspb.Message {

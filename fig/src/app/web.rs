@@ -131,8 +131,6 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 .cookie_secure(is_prod)
                 .build(),
             )
-            .service(nut::controllers::attachments::create)
-            .service(nut::controllers::captcha::get)
             .service(
                 actix_files::Files::new(
                     "/3rd",
@@ -170,6 +168,8 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                         .service(nut::controllers::twilio::sms::incoming_messages),
                 ),
             )
+            .service(nut::controllers::attachments::create)
+            .service(nut::controllers::captcha::get)
             .service(
                 web::scope("/api")
                     .service(

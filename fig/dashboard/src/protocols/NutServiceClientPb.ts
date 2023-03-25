@@ -944,6 +944,92 @@ export class UserClient {
     this.methodDescriptorSetPassword);
   }
 
+  methodDescriptorGoogleSignInUrl = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.User/GoogleSignInUrl',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.GoogleSignInUrlRequest,
+    nut_pb.GoogleSignInUrlResponse,
+    (request: nut_pb.GoogleSignInUrlRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.GoogleSignInUrlResponse.deserializeBinary
+  );
+
+  googleSignInUrl(
+    request: nut_pb.GoogleSignInUrlRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.GoogleSignInUrlResponse>;
+
+  googleSignInUrl(
+    request: nut_pb.GoogleSignInUrlRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.GoogleSignInUrlResponse) => void): grpcWeb.ClientReadableStream<nut_pb.GoogleSignInUrlResponse>;
+
+  googleSignInUrl(
+    request: nut_pb.GoogleSignInUrlRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.GoogleSignInUrlResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.User/GoogleSignInUrl',
+        request,
+        metadata || {},
+        this.methodDescriptorGoogleSignInUrl,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.User/GoogleSignInUrl',
+    request,
+    metadata || {},
+    this.methodDescriptorGoogleSignInUrl);
+  }
+
+  methodDescriptorSignInByGoogle = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.User/SignInByGoogle',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.SignInByGoogleRequest,
+    nut_pb.UserSignInResponse,
+    (request: nut_pb.SignInByGoogleRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.UserSignInResponse.deserializeBinary
+  );
+
+  signInByGoogle(
+    request: nut_pb.SignInByGoogleRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.UserSignInResponse>;
+
+  signInByGoogle(
+    request: nut_pb.SignInByGoogleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.UserSignInResponse) => void): grpcWeb.ClientReadableStream<nut_pb.UserSignInResponse>;
+
+  signInByGoogle(
+    request: nut_pb.SignInByGoogleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.UserSignInResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.User/SignInByGoogle',
+        request,
+        metadata || {},
+        this.methodDescriptorSignInByGoogle,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.User/SignInByGoogle',
+    request,
+    metadata || {},
+    this.methodDescriptorSignInByGoogle);
+  }
+
 }
 
 export class AttachmentClient {

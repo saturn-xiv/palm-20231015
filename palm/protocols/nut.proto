@@ -77,6 +77,10 @@ service User {
   rpc Unlock(IdRequest) returns (google.protobuf.Empty) {}
   rpc Confirm(IdRequest) returns (google.protobuf.Empty) {}
   rpc SetPassword(UserSetPasswordRequest) returns (google.protobuf.Empty) {}
+
+  rpc GoogleSignInUrl(GoogleSignInUrlRequest)
+      returns (GoogleSignInUrlResponse) {}
+  rpc SignInByGoogle(SignInByGoogleRequest) returns (UserSignInResponse) {}
 }
 
 message UserSignInRequest {
@@ -169,18 +173,6 @@ message UserChangePasswordRequest {
   string new_password = 2;
 }
 
-message UserProvider {
-  enum Type {
-    EMAIL = 0;
-    GOOGLE = 1;
-    WECHAT = 2;
-    FACEBOOK = 3;
-    GITHUB = 4;
-  }
-  Type type = 1;
-  string id = 2;
-}
-
 message UserIndexResponse {
   message Item {
     int32 id = 1;
@@ -188,7 +180,6 @@ message UserIndexResponse {
     string email = 3;
     string nickname = 4;
     string real_name = 5;
-    UserProvider.Type provider_type = 6;
     google.protobuf.Timestamp updated_at = 9;
     optional google.protobuf.Timestamp last_sign_in_at = 11;
     optional string last_sign_in_ip = 12;
@@ -205,6 +196,31 @@ message UserIndexResponse {
 
   Pagination pagination = 1;
   repeated Item items = 11;
+}
+
+message SignInByGoogleRequest {
+  repeated string scopes = 1;
+  string code = 2;
+  GoogleSignInUrlRequest.State state = 3;
+  string redirect_uri = 4;
+
+  optional string nonce = 9;
+  google.protobuf.Duration ttl = 11;
+}
+
+message GoogleSignInUrlRequest {
+  message State {
+    string goto = 1;
+    string host = 2;
+    optional string user = 3;
+  }
+  string redirect_uri = 1;
+  State state = 2;
+}
+
+message GoogleSignInUrlResponse {
+  string url = 1;
+  string nonce = 2;
 }
 
 // ----------------------------------------------------------------------------

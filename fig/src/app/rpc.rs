@@ -80,6 +80,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
         ))
         .add_service(palm::nut::v1::user_server::UserServer::new(
             nut::services::user::Service {
+                aes: aes.clone(),
                 pgsql: pgsql.clone(),
                 redis: redis.clone(),
                 jwt: jwt.clone(),

@@ -1,9 +1,9 @@
 use std::default::Default;
 use std::fmt;
 use std::fmt::Display;
-use std::time::Duration;
 
-use ::redis::{cluster::ClusterClient, cmd, Commands, Value};
+use ::redis::{cluster::ClusterClient, cmd, Commands, RedisResult, Value};
+use chrono::Duration;
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 
 use super::super::Result;
@@ -125,6 +125,30 @@ impl super::Provider for ClusterConnection {
         }
         Ok(items)
     }
+
+    fn fetch<K, V>(&mut self, key: &K) -> Result<V>
+    where
+        K: Display,
+        V: DeserializeOwned,
+    {
+        let key = key.to_string();
+        let buf: RedisResult<Vec<u8>> = Commands::get(self, &key);
+        let it = flexbuffers::from_slice(buf?.as_slice())?;
+        Ok(it)
+    }
+    fn set<K, V>(&mut self, key: &K, val: &V, ttl: Duration) -> Result<()>
+    where
+        K: Display,
+        V: Serialize,
+    {
+        let key = key.to_string();
+        self.set_ex(
+            &key,
+            flexbuffers::to_vec(val)?.as_slice(),
+            ttl.num_seconds() as usize,
+        )?;
+        Ok(())
+    }
     // #[cfg(debug_assertions)]
     // fn get<K, V, F>(&mut self, _key: &K, fun: F, _ttl: Duration) -> Result<V>
     // where
@@ -141,8 +165,6 @@ impl super::Provider for ClusterConnection {
         K: Display,
         V: DeserializeOwned + Serialize,
     {
-        use ::redis::RedisResult;
-
         let key = key.to_string();
         let buf: RedisResult<Vec<u8>> = Commands::get(self, &key);
         if let Ok(buf) = buf {
@@ -155,7 +177,7 @@ impl super::Provider for ClusterConnection {
         self.set_ex(
             &key,
             flexbuffers::to_vec(&val)?.as_slice(),
-            ttl.as_secs() as usize,
+            ttl.num_seconds() as usize,
         )?;
         Ok(val)
     }

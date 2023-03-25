@@ -13,6 +13,8 @@
     <include file="101-create-users.xml" relativeToChangelogFile="true" />
     <include file="102-create-logs.xml" relativeToChangelogFile="true" />
     <include file="103-create-attachments.xml" relativeToChangelogFile="true" />
+    <include file="104-create-wechat-users.xml" relativeToChangelogFile="true" />
+    <include file="105-create-google-users.xml" relativeToChangelogFile="true" />
 
     <include file="301-create-leave-words.xml" relativeToChangelogFile="true" />
     <include file="302-create-tags.xml" relativeToChangelogFile="true" />

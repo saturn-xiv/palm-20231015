@@ -22,7 +22,7 @@ pub struct UploadForm {
     pub files: Vec<TempFile>,
 }
 
-#[post("/api/attachments")]
+#[post("/attachments")]
 pub async fn create(
     user: User,
     db: web::Data<DbPool>,

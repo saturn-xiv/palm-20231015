@@ -1,13 +1,21 @@
 pub mod redis;
 
 use std::fmt::Display;
-use std::time::Duration;
 
+use chrono::Duration;
 use serde::{de::DeserializeOwned, ser::Serialize};
 
 use super::Result;
 
 pub trait Provider {
+    fn fetch<K, V>(&mut self, key: &K) -> Result<V>
+    where
+        K: Display,
+        V: DeserializeOwned;
+    fn set<K, V>(&mut self, key: &K, val: &V, ttl: Duration) -> Result<()>
+    where
+        K: Display,
+        V: Serialize;
     fn get<K, V, F>(&mut self, key: &K, fun: F, ttl: Duration) -> Result<V>
     where
         F: FnOnce() -> Result<V>,

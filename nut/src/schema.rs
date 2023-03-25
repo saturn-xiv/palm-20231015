@@ -50,6 +50,19 @@ diesel::table! {
 }
 
 diesel::table! {
+    google_users (id) {
+        id -> Int4,
+        user_id -> Int4,
+        sub -> Varchar,
+        code -> Bytea,
+        token -> Text,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     leave_words (id) {
         id -> Int4,
         lang -> Varchar,
@@ -165,9 +178,6 @@ diesel::table! {
         password -> Nullable<Bytea>,
         salt -> Bytea,
         uid -> Bpchar,
-        provider_type -> Int4,
-        provider_id -> Varchar,
-        access_token -> Nullable<Varchar>,
         avatar -> Varchar,
         lang -> Varchar,
         time_zone -> Varchar,
@@ -226,11 +236,23 @@ diesel::table! {
     }
 }
 
+diesel::table! {
+    wechat_users (id) {
+        id -> Int4,
+        user_id -> Nullable<Int4>,
+        union_id -> Varchar,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
 diesel::allow_tables_to_appear_in_same_query!(
     attachments,
     attachments_resources,
     categories,
     categories_resources,
+    google_users,
     leave_words,
     locales,
     logs,
@@ -244,4 +266,5 @@ diesel::allow_tables_to_appear_in_same_query!(
     users_contacts,
     vote_items,
     vote_logs,
+    wechat_users,
 );

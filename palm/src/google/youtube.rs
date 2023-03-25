@@ -1,15 +1,42 @@
 use std::fs::File;
 use std::io::{Error as IoError, ErrorKind as IoErrorKind};
-use std::path::Path;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 use google_youtube3::{
     api::{Caption, CaptionSnippet},
     hyper::{client::connect::HttpConnector, Client as YouTubeClient},
     hyper_rustls::{HttpsConnector, HttpsConnectorBuilder},
     oauth2::{read_application_secret, InstalledFlowAuthenticator, InstalledFlowReturnMethod},
-    Error, Result, YouTube,
+    Error as YoutubeError, Result as YoutubeResult, YouTube,
 };
+use serde::{Deserialize, Serialize};
+
+use super::super::Result;
+
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
+pub struct Credential {
+    pub client_id: String,
+    pub project_id: String,
+    pub auth_uri: String,
+    pub token_uri: String,
+    pub auth_provider_x509_cert_url: String,
+    pub client_secret: String,
+    pub redirect_uris: Vec<String>,
+}
+
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
+pub struct Layout {
+    pub installed: Credential,
+}
+impl Credential {
+    pub fn new<P: AsRef<Path>>(file: P) -> Result<Self> {
+        let file = file.as_ref();
+        debug!("load google credential from {}", file.display());
+        let file = File::open(file)?;
+        let it: Layout = serde_json::from_reader(file)?;
+        Ok(it.installed)
+    }
+}
 
 // https://developers.google.com/youtube/v3/getting-started
 pub struct Client {
@@ -17,7 +44,7 @@ pub struct Client {
 }
 
 impl Client {
-    pub async fn playlists(&self) -> Result<Vec<String>> {
+    pub async fn playlists(&self) -> YoutubeResult<Vec<String>> {
         let hub = self.open().await?;
 
         let (_, playlists) = hub
@@ -40,7 +67,7 @@ impl Client {
         name: &str,
         cover: C,
         file: F,
-    ) -> Result<()> {
+    ) -> YoutubeResult<()> {
         let file = file.as_ref();
         let cover = cover.as_ref();
         info!(
@@ -62,9 +89,9 @@ impl Client {
             .sync(false)
             .upload(
                 File::open(file)?,
-                "application/octet-stream"
-                    .parse()
-                    .map_err(|_| Error::Io(IoError::new(IoErrorKind::Other, "bad mime type")))?,
+                "application/octet-stream".parse().map_err(|_| {
+                    YoutubeError::Io(IoError::new(IoErrorKind::Other, "bad mime type"))
+                })?,
             )
             .await?;
         {
@@ -75,7 +102,7 @@ impl Client {
 
         Ok(())
     }
-    async fn open(&self) -> Result<YouTube<HttpsConnector<HttpConnector>>> {
+    async fn open(&self) -> YoutubeResult<YouTube<HttpsConnector<HttpConnector>>> {
         // let secret = ApplicationSecret {
         //     client_id: self.client_id.clone(),
         //     client_secret: self.client_secret.clone(),

@@ -29,13 +29,6 @@
             <column name="uid" type="char(36)">
                 <constraints unique="true" nullable="false" />
             </column>
-            <column name="provider_type" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="provider_id" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-            <column name="access_token" type="varchar(255)" />
             <column name="avatar" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
@@ -73,10 +66,6 @@
         </createIndex>
         <createIndex tableName="users" indexName="idx_users_time_zone">
             <column name="time_zone" />
-        </createIndex>
-        <createIndex tableName="users" indexName="idx_users_provider" unique="true">
-            <column name="provider_type" />
-            <column name="provider_id" />
         </createIndex>
 
         <createTable tableName="users_contacts">
