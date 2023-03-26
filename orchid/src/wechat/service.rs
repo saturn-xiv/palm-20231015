@@ -2,8 +2,15 @@ use std::sync::Arc;
 
 use hyper::StatusCode;
 use palm::{
-    cache::redis::Pool as RedisPool, nut::v1::WechatProfile, orchid::v1, session::Session,
-    try_grpc, wechat::Client, GrpcResult, HttpError, Result,
+    cache::redis::Pool as RedisPool,
+    orchid::v1,
+    session::Session,
+    try_grpc,
+    wechat::{
+        mini_program::{Client as MiniProgramClient, MiniProgram as MiniProgramConfig},
+        Client as WechatClient, Config as WechatConfig,
+    },
+    GrpcResult, HttpError, Result,
 };
 use tonic::{Request, Response};
 
@@ -39,7 +46,7 @@ impl v1::we_chat_server::WeChat for Service {
         let req = req.into_inner();
         let cli = try_grpc!(self.client(&req.app_id))?;
         let token = try_grpc!(cli.access_token().await)?;
-        let it = try_grpc!(cli.config.get_phone_number(&req.code, &token).await)?;
+        let it = try_grpc!(WechatConfig::get_phone_number(&req.code, &token).await)?;
 
         Ok(Response::new(v1::WeChatPhoneNumberResponse {
             phone_number: it.phone_info.phone_number.clone(),
@@ -51,11 +58,11 @@ impl v1::we_chat_server::WeChat for Service {
 }
 
 impl Service {
-    fn client(&self, app_id: &str) -> Result<Client> {
+    fn client(&self, app_id: &str) -> Result<WechatClient> {
         for it in self.config.wechat.iter() {
             if it.app_id == app_id {
-                return Ok(Client {
-                    config: WechatProfile::from(it.clone()),
+                return Ok(WechatClient {
+                    config: it.clone(),
                     redis: self.redis.clone(),
                 });
             }

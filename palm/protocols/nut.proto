@@ -81,6 +81,8 @@ service User {
   rpc GoogleSignInUrl(GoogleSignInUrlRequest)
       returns (GoogleSignInUrlResponse) {}
   rpc SignInByGoogle(SignInByGoogleRequest) returns (UserSignInResponse) {}
+
+  rpc SignInByWechat(SignInByWechatRequest) returns (UserSignInResponse) {}
 }
 
 message UserSignInRequest {
@@ -213,6 +215,8 @@ message GoogleSignInUrlRequest {
     string goto = 1;
     string host = 2;
     optional string user = 3;
+
+    string project = 11;
   }
   string redirect_uri = 1;
   State state = 2;
@@ -221,6 +225,18 @@ message GoogleSignInUrlRequest {
 message GoogleSignInUrlResponse {
   string url = 1;
   string nonce = 2;
+}
+
+message SignInByWechatRequest {
+  message MiniProgram {
+    string app_id = 1;
+    string code = 2;
+  }
+  message QrCode {}
+  oneof payload {
+    QrCode qr_code = 1;
+    MiniProgram mini_program = 2;
+  }
 }
 
 // ----------------------------------------------------------------------------
@@ -349,10 +365,6 @@ service Site {
   rpc GetTwilio(google.protobuf.Empty) returns (TwilioProfile) {}
   rpc TestTwilio(SiteTwilioTestRequest) returns (google.protobuf.Empty) {}
 
-  rpc SetWechat(WechatProfile) returns (google.protobuf.Empty) {}
-  rpc GetWechat(google.protobuf.Empty) returns (WechatProfile) {}
-  rpc TestWechat(google.protobuf.Empty) returns (SiteWechatTestResponse) {}
-
   rpc SetSmtp(SmtpProfile) returns (google.protobuf.Empty) {}
   rpc GetSmtp(google.protobuf.Empty) returns (SmtpProfile) {}
   rpc TestSmtp(SiteSmtpTestRequest) returns (google.protobuf.Empty) {}
@@ -400,13 +412,6 @@ message TwilioProfile {
   string auth_token = 3;
   optional string sms_status_callback = 9;
 }
-
-message WechatProfile {
-  string app_id = 1;
-  string app_secret = 2;
-}
-
-message SiteWechatTestResponse { repeated string items = 1; }
 
 message SmtpProfile {
   // https://github.com/karastojko/mailio/blob/master/include/mailio/smtp.hpp#L229

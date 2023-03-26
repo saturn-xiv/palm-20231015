@@ -1,3 +1,5 @@
+use std::fmt;
+
 use serde::{Deserialize, Serialize};
 use url::{ParseError as UrlParseError, Url};
 
@@ -5,7 +7,7 @@ use url::{ParseError as UrlParseError, Url};
 pub struct Request {
     pub home: String,
     pub state: String,
-    pub english: bool,
+    pub lang: Language,
 }
 
 impl Request {
@@ -21,9 +23,39 @@ impl Request {
             .append_pair("response_type", "code")
             .append_pair("scope", "snsapi_login")
             .append_pair("state", &self.state)
-            .append_pair("lang", if self.english { "en" } else { "cn" });
+            .append_pair("lang", &self.lang.to_string());
         it.set_fragment(Some("wechat_redirect"));
 
         Ok(it)
+    }
+}
+
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
+pub struct Query {
+    pub code: String,
+    pub state: String,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub enum Language {
+    CN,
+    EN,
+}
+impl fmt::Display for Language {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(
+            f,
+            "{}",
+            match self {
+                Self::CN => "cn",
+                Self::EN => "en",
+            }
+        )
+    }
+}
+
+impl Default for Language {
+    fn default() -> Self {
+        Self::CN
     }
 }

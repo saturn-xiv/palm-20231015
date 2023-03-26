@@ -1,5 +1,6 @@
 pub mod openid;
 
+use std::any::type_name;
 use std::fmt;
 
 use hyper::StatusCode;
@@ -11,6 +12,12 @@ use super::super::{HttpError, Result};
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct ClientSecret {
     pub web: Web,
+}
+
+impl ClientSecret {
+    pub fn key(project: &str) -> String {
+        format!("{}://{}", type_name::<Self>(), project)
+    }
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]

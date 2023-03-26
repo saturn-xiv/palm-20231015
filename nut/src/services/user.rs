@@ -646,15 +646,9 @@ impl v1::user_server::User for Service {
         let aes = self.aes.deref();
         let req = req.into_inner();
 
-        let cfg: GoogleClientSecret = try_grpc!(SettingDao::get(
-            db,
-            aes,
-            &type_name::<GoogleClientSecret>().to_string(),
-            None,
-        ))?;
-
         if let Some(ref state) = req.state {
-            let state_key = state.key();
+            let key = GoogleClientSecret::key(&state.project);
+            let cfg: GoogleClientSecret = try_grpc!(SettingDao::get(db, aes, &key, None,))?;
             let state = {
                 let mut buf = Vec::new();
                 try_grpc!(state.encode(&mut buf))?;
@@ -670,7 +664,7 @@ impl v1::user_server::User for Service {
                 &state,
                 &req.redirect_uri,
             );
-            try_grpc!(ch.set(&state_key, &it.nonce, Duration::minutes(1)))?;
+            try_grpc!(ch.set(&key, &it.nonce, Duration::minutes(1)))?;
             return Ok(Response::new(it));
         }
         Err(Status::permission_denied(type_name::<
@@ -691,14 +685,13 @@ impl v1::user_server::User for Service {
 
         let req = req.into_inner();
 
-        let cfg: GoogleClientSecret = try_grpc!(SettingDao::get(
-            db,
-            aes,
-            &type_name::<GoogleClientSecret>().to_string(),
-            None,
-        ))?;
-
         if let Some(ref state) = req.state {
+            let cfg: GoogleClientSecret = try_grpc!(SettingDao::get(
+                db,
+                aes,
+                &GoogleClientSecret::key(&state.project),
+                None,
+            ))?;
             if let Some(ref nonce) = req.nonce {
                 let mut ch = try_grpc!(self.redis.get())?;
                 let ch = ch.deref_mut();
@@ -753,6 +746,24 @@ impl v1::user_server::User for Service {
 
         Err(Status::permission_denied(type_name::<
             v1::SignInByGoogleRequest,
+        >()))
+    }
+
+    async fn sign_in_by_wechat(
+        &self,
+        req: Request<v1::SignInByWechatRequest>,
+    ) -> GrpcResult<v1::UserSignInResponse> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+
+        let aes = self.aes.deref();
+        let enf = self.enforcer.deref();
+        let jwt = self.jwt.deref();
+
+        let req = req.into_inner();
+        Err(Status::permission_denied(type_name::<
+            v1::SignInByWechatRequest,
         >()))
     }
 }

@@ -5,9 +5,13 @@ use actix_web::{
 };
 use chrono::Duration;
 use palm::{
-    crypto::Aes, handlers::peer::ClientIp, jwt::Jwt, nut::v1::WechatProfile,
-    orchid::v1::WeChatLoginRequest, tink::Loquat, try_web,
-    wechat::api::qr_connect::Request as UrlRequest,
+    crypto::Aes,
+    handlers::peer::ClientIp,
+    jwt::Jwt,
+    orchid::v1::WeChatLoginRequest,
+    tink::Loquat,
+    try_web,
+    wechat::{oauth2::qr_connect::Request as UrlRequest, Config},
 };
 use serde::{Deserialize, Serialize};
 use tonic::Request;
@@ -32,11 +36,11 @@ pub async fn url(
     let mut db = try_web!(db.get())?;
     let db = db.deref_mut();
     let aes = aes.as_ref();
-    let cfg: WechatProfile = try_web!(get_setting(db, aes, None))?;
-    let url = try_web!(form.build(&cfg.app_id))?;
+    // let cfg: WechatProfile = try_web!(get_setting(db, aes, None))?;
+    // let url = try_web!(form.build(&cfg.app_id))?;
     Ok(HttpResponse::Ok()
         .content_type(ContentType::plaintext())
-        .body(url.to_string()))
+        .body("".to_string()))
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -59,28 +63,29 @@ pub async fn callback(
     let jwt = jwt.deref();
     let mut db = try_web!(db.get())?;
     let db = db.deref_mut();
-    let aes = aes.as_ref();
-    let cfg: WechatProfile = try_web!(get_setting(db, aes, None))?;
+    // let aes = aes.as_ref();
+    // let cfg: WechatProfile = try_web!(get_setting(db, aes, None))?;
 
-    debug!("try to sign in wechat user {:?} from {}", form, client_ip);
-    let mut cli = try_web!(oauth.open().await)?;
-    let mut req = Request::new(WeChatLoginRequest {
-        app_id: cfg.app_id.clone(),
-        code: form.code.clone(),
-    });
-    try_web!(Loquat::authorization(&mut req, &oauth.token))?;
+    // debug!("try to sign in wechat user {:?} from {}", form, client_ip);
+    // let mut cli = try_web!(oauth.open().await)?;
+    // let mut req = Request::new(WeChatLoginRequest {
+    //     app_id: cfg.app_id.clone(),
+    //     code: form.code.clone(),
+    // });
+    // try_web!(Loquat::authorization(&mut req, &oauth.token))?;
 
-    let res = try_web!(cli.login(req).await)?;
-    debug!("fetch wechat user {:?}", res);
-    let res = res.into_inner();
-    let user = try_web!(UserDao::wechat(db, &client_ip, &cfg.app_id, &res))?;
-    let token = try_web!(jwt.sign(
-        &user.nickname,
-        &Action::SignIn.to_string(),
-        Duration::days(1)
-    ))?;
-    Ok(web::Json(SignInResponse {
-        real_name: user.real_name,
-        token,
-    }))
+    // let res = try_web!(cli.login(req).await)?;
+    // debug!("fetch wechat user {:?}", res);
+    // let res = res.into_inner();
+    // let user = try_web!(UserDao::wechat(db, &client_ip, &cfg.app_id, &res))?;
+    // let token = try_web!(jwt.sign(
+    //     &user.nickname,
+    //     &Action::SignIn.to_string(),
+    //     Duration::days(1)
+    // ))?;
+    // Ok(web::Json(SignInResponse {
+    //     real_name: user.real_name,
+    //     token,
+    // }))
+    Ok(web::Json(()))
 }

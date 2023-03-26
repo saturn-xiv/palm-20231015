@@ -1,79 +1,62 @@
-pub mod api;
+pub mod mini_program;
+pub mod oauth2;
 
 use std::any::type_name;
+use std::fmt::Debug;
 use std::ops::DerefMut;
 
+use hyper::StatusCode;
 use redis::Commands;
+use reqwest::Response;
+use serde::{de::DeserializeOwned, Deserialize, Serialize};
 
-use super::{
-    nut::v1::WechatProfile,
-    orchid::v1::WeChatLoginResponse,
-    {cache::redis::Pool as RedisPool, orchid::v1, Result},
-};
+use super::{cache::redis::Pool as RedisPool, HttpError, Result};
 
-impl WeChatLoginResponse {
-    pub fn access_token(&self) -> String {
-        if let Some(ref it) = self.unionid {
-            return it.clone();
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
+pub struct Config {
+    pub app_id: String,
+    pub app_secret: String,
+}
+
+impl Config {
+    pub async fn body<T: DeserializeOwned + Debug>(res: Response) -> Result<T> {
+        let status = res.status();
+        let body = res.text().await?;
+        debug!("receive {body}");
+        if !status.is_success() {
+            error!("{}\n{}", status, body);
+            return Err(Box::new(HttpError(status, Some(body))));
         }
-        self.openid.clone()
+        if let Ok(it) = serde_json::from_str(&body) {
+            return Ok(it);
+        }
+
+        let err: Error = serde_json::from_str(&body)?;
+        error!("{:?}", err);
+        Err(Box::new(HttpError(
+            StatusCode::INTERNAL_SERVER_ERROR,
+            Some(err.message),
+        )))
     }
+    pub fn url(path: &str) -> String {
+        format!("https://api.weixin.qq.com{path}")
+    }
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Query {
+    pub access_token: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Error {
+    #[serde(rename = "errcode")]
+    pub code: u32,
+    #[serde(rename = "errmsg")]
+    pub message: String,
 }
 
 pub struct Client {
-    pub config: WechatProfile,
+    pub config: Config,
     pub redis: RedisPool,
-}
-
-impl Client {
-    pub fn session_key(&self, openid: &str) -> Result<String> {
-        let key = self._session_key(openid);
-
-        let mut ch = self.redis.get()?;
-        let ch = ch.deref_mut();
-        let it: String = Commands::get(ch, &key)?;
-        Ok(it)
-    }
-    fn _session_key(&self, openid: &str) -> String {
-        format!(
-            "{}://{}/{}/session-key",
-            type_name::<WechatProfile>(),
-            self.config.app_id,
-            openid
-        )
-    }
-    pub async fn login(&self, code: &str) -> Result<v1::WeChatLoginResponse> {
-        let res = self.config.code2session(code).await?;
-        let key = self._session_key(&res.openid);
-
-        let mut ch = self.redis.get()?;
-        let ch = ch.deref_mut();
-        Commands::set(ch, &key, &res.session_key)?;
-
-        Ok(v1::WeChatLoginResponse {
-            openid: res.openid.clone(),
-            unionid: res.unionid.clone(),
-        })
-    }
-    pub async fn access_token(&self) -> Result<String> {
-        let key = format!(
-            "{}://{}/access-token",
-            type_name::<WechatProfile>(),
-            self.config.app_id
-        );
-        let mut ch = self.redis.get()?;
-        let ch = ch.deref_mut();
-
-        if let Ok(it) = Commands::get::<&String, String>(ch, &key) {
-            return Ok(it);
-        }
-        let response = self.config.get_access_token().await?;
-        Commands::set_ex(
-            ch,
-            &key,
-            &response.access_token,
-            response.expires_in - 60 * 5 - 1,
-        )?;
-        Ok(response.access_token)
-    }
 }
