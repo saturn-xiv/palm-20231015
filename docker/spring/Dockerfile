@@ -221,7 +221,7 @@ RUN wget -q -O /usr/bin/minio \
 RUN chmod +x /usr/bin/minio
 
 # https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.52.1"
+ENV GRPC_VERSION "v1.53.0"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 # ENV PROTOBUF_VERSION "v3.21.8"
 # RUN cd $HOME/downloads/grpc/third_party/protobuf \
@@ -254,7 +254,7 @@ RUN mkdir -p $HOME/build/protobuf-javascript \
     && cp bin/protoc-gen-js $HOME/.local/bin/
 
 # https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/
-ENV GRPC_JAVA_PLUGIN_VERSION "1.53.0"
+ENV GRPC_JAVA_PLUGIN_VERSION "1.54.0"
 RUN wget -q -O $HOME/.local/bin/grpc_java_plugin \
     https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${GRPC_JAVA_PLUGIN_VERSION}/protoc-gen-grpc-java-${GRPC_JAVA_PLUGIN_VERSION}-linux-x86_64.exe
 RUN chmod +x $HOME/.local/bin/grpc_java_plugin
