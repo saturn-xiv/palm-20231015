@@ -183,29 +183,27 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                     .service(
                         web::scope("/wechat")
                             .service(
-                                web::scope("/oauth2")
-                                    .service(                                        
-                                        web::scope("/messaging")
-                                            .service(
-                                                nut::controllers::wechat::oauth2::messaging::verify,
-                                            )
-                                            .service(
-                                                nut::controllers::wechat::oauth2::messaging::callback,
-                                            ),
-                                    )
-                                    .service(
-                                        web::scope("/sign-in")
-                                            .service(nut::controllers::wechat::oauth2::sign_in::url)
-                                            .service(
-                                                nut::controllers::wechat::oauth2::sign_in::callback,
-                                            ),
-                                    ),
+                                web::scope("/oauth2").service(
+                                    web::scope("/messaging")
+                                        .service(
+                                            nut::controllers::wechat::oauth2::messaging::verify,
+                                        )
+                                        .service(
+                                            nut::controllers::wechat::oauth2::messaging::callback,
+                                        ),
+                                ),
                             )
                             .service(
-                                web::scope("/mini-program")
-                                    .service(nut::controllers::wechat::mini_program::sign_in)
-                                    .service(nut::controllers::wechat::mini_program::profile),
-                            ),
+                                web::scope("/mini-program").service(
+                                    web::scope("/messaging")
+                                        .service(
+                                            nut::controllers::wechat::mini_program::messaging::verify,
+                                        )
+                                        .service(
+                                            nut::controllers::wechat::mini_program::messaging::callback,
+                                        ),
+                                ),
+                            )
                     )
                     .service(nut::controllers::echo)
                     .service(nut::controllers::version),

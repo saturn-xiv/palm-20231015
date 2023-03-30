@@ -651,11 +651,11 @@ impl v1::user_server::User for Service {
         let db = db.deref_mut();
 
         if let Some(ref state) = req.state {
-            let key = GoogleClientSecret::key(&state.project);
+            let key = GoogleClientSecret::key(&req.project);
             let cfg: GoogleClientSecret = try_grpc!(SettingDao::get(
                 db,
                 aes,
-                &GoogleClientSecret::key(&state.project),
+                &GoogleClientSecret::key(&req.project),
                 None
             ))?;
             let state = Oauth2State::new(state);
@@ -695,7 +695,7 @@ impl v1::user_server::User for Service {
         let cfg: GoogleClientSecret = try_grpc!(SettingDao::get(
             db,
             aes,
-            &GoogleClientSecret::key(&state.project),
+            &GoogleClientSecret::key(&req.project),
             None
         ))?;
         if let Some(ref nonce) = req.nonce {
@@ -798,7 +798,7 @@ impl v1::user_server::User for Service {
                 v1::user_logs_response::item::Level::Info,
                 &ss.client_ip,
                 Some(user.id),
-                "sign in by google",
+                "sign in by wechat oauth",
             )?;
             Ok(user)
         }))?;

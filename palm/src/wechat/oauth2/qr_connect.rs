@@ -4,13 +4,6 @@ use serde::{Deserialize, Serialize};
 
 use super::super::super::orchid::v1;
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Request {
-    pub home: String,
-    pub state: String,
-    pub lang: String,
-}
-
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Query {
     pub code: String,

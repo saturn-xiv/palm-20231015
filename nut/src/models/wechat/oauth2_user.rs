@@ -1,5 +1,5 @@
 use chrono::{NaiveDateTime, Utc};
-use diesel::{insert_into, prelude::*, update};
+use diesel::{delete, insert_into, prelude::*, update};
 use palm::{
     crypto::random::bytes as random_bytes,
     orchid::v1::{wechat_oauth2_login_request::Language, WechatOauth2LoginResponse},
@@ -38,6 +38,7 @@ pub struct Item {
 pub trait Dao {
     fn all(&mut self) -> Result<Vec<Item>>;
     fn by_id(&mut self, id: i32) -> Result<Item>;
+    fn by_open_id(&mut self, app_id: &str, open_id: &str) -> Result<Item>;
     fn set_profile(&mut self, id: i32, user_info: &WechatOauth2LoginResponse) -> Result<()>;
     fn sign_in(
         &mut self,
@@ -47,6 +48,7 @@ pub trait Dao {
         lang: Language,
         ip: &str,
     ) -> Result<User>;
+    fn destroy(&mut self, id: i32) -> Result<()>;
 }
 
 impl Dao for Connection {
@@ -62,7 +64,13 @@ impl Dao for Connection {
             .first::<Item>(self)?;
         Ok(it)
     }
-
+    fn by_open_id(&mut self, app_id: &str, open_id: &str) -> Result<Item> {
+        let it = wechat_oauth2_users::dsl::wechat_oauth2_users
+            .filter(wechat_oauth2_users::dsl::app_id.eq(app_id))
+            .filter(wechat_oauth2_users::dsl::open_id.eq(open_id))
+            .first::<Item>(self)?;
+        Ok(it)
+    }
     fn set_profile(&mut self, id: i32, info: &WechatOauth2LoginResponse) -> Result<()> {
         let now = Utc::now().naive_utc();
         let user = UserDao::by_id(self, id)?;
@@ -91,11 +99,7 @@ impl Dao for Connection {
         let lang = lang.to_string();
         let now = Utc::now().naive_utc();
 
-        let user = match wechat_oauth2_users::dsl::wechat_oauth2_users
-            .filter(wechat_oauth2_users::dsl::app_id.eq(&app_id))
-            .filter(wechat_oauth2_users::dsl::open_id.eq(&info.openid))
-            .first::<Item>(self)
-        {
+        let user = match Dao::by_open_id(self, app_id, &info.openid) {
             Ok(ref it) => {
                 update(
                     wechat_oauth2_users::dsl::wechat_oauth2_users
@@ -169,5 +173,14 @@ impl Dao for Connection {
         };
         UserDao::sign_in(self, user.id, ip)?;
         Ok(user)
+    }
+
+    fn destroy(&mut self, id: i32) -> Result<()> {
+        delete(
+            wechat_oauth2_users::dsl::wechat_oauth2_users
+                .filter(wechat_oauth2_users::dsl::id.eq(id)),
+        )
+        .execute(self)?;
+        Ok(())
     }
 }

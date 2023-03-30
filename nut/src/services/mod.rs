@@ -93,7 +93,6 @@ pub struct Oauth2State {
     pub user: Option<String>,
     pub goto: String,
     pub host: String,
-    pub project: String,
     pub id: String,
 }
 
@@ -127,7 +126,6 @@ impl Oauth2State {
             goto: x.goto.clone(),
             host: x.host.clone(),
             user: x.user.clone(),
-            project: x.project.clone(),
             id: x.id.clone(),
         }
     }

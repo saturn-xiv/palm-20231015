@@ -21,6 +21,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let redis = cfg.redis.open()?;
     let aes = Arc::new(cfg.loquat.clone());
     let hmac = Arc::new(cfg.loquat.clone());
+    let orchid = Arc::new(cfg.orchid.clone());
     let s3 = Arc::new(S3::from(cfg.minio.clone()));
     let jwt = Arc::new(cfg.loquat.clone());
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
@@ -83,6 +84,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 aes: aes.clone(),
                 pgsql: pgsql.clone(),
                 redis: redis.clone(),
+                orchid: orchid.clone(),
                 jwt: jwt.clone(),
                 hmac: hmac.clone(),
                 rabbitmq: rabbitmq.clone(),
@@ -139,6 +141,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 redis,
                 rabbitmq,
                 opensearch,
+                orchid,
             },
         ))
         .add_service(palm::nut::v1::health_server::HealthServer::new(

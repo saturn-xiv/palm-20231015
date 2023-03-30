@@ -208,7 +208,8 @@ message SignInByGoogleRequest {
   string state = 3;
   string redirect_uri = 4;
 
-  optional string nonce = 9;
+  optional string nonce = 8;
+  string project = 9;
   google.protobuf.Duration ttl = 11;
 }
 
@@ -217,12 +218,11 @@ message Oauth2State {
   string host = 2;
   optional string user = 3;
   string id = 9;
-
-  string project = 11;
 }
 message GoogleSignInUrlRequest {
   string redirect_uri = 1;
   Oauth2State state = 2;
+  string project = 11;
 }
 
 message GoogleSignInUrlResponse {

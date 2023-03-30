@@ -1,5 +1,6 @@
 pub mod access_token;
 pub mod get_api_domain_ip;
+pub mod message_push;
 pub mod qr_connect;
 pub mod refresh_token;
 pub mod userinfo;

@@ -9,6 +9,8 @@ use serde::{de::DeserializeOwned, Deserialize, Serialize};
 
 use super::{cache::redis::Pool as RedisPool, HttpError, Result};
 
+pub const SUCCESS: &str = "success";
+
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Config {
     pub app_id: String,

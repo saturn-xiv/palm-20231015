@@ -1,3 +1,5 @@
+pub mod messaging;
+
 use std::ops::{Deref, DerefMut};
 
 use actix_web::{post, web, HttpResponse, Responder, Result as WebResult};

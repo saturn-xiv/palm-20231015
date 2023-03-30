@@ -725,6 +725,9 @@ export class SignInByGoogleRequest extends jspb.Message {
   hasNonce(): boolean;
   clearNonce(): SignInByGoogleRequest;
 
+  getProject(): string;
+  setProject(value: string): SignInByGoogleRequest;
+
   getTtl(): google_protobuf_duration_pb.Duration | undefined;
   setTtl(value?: google_protobuf_duration_pb.Duration): SignInByGoogleRequest;
   hasTtl(): boolean;
@@ -745,12 +748,13 @@ export namespace SignInByGoogleRequest {
     state: string,
     redirectUri: string,
     nonce?: string,
+    project: string,
     ttl?: google_protobuf_duration_pb.Duration.AsObject,
   }
 
   export enum NonceCase { 
     _NONCE_NOT_SET = 0,
-    NONCE = 9,
+    NONCE = 8,
   }
 }
 
@@ -769,9 +773,6 @@ export class Oauth2State extends jspb.Message {
   getId(): string;
   setId(value: string): Oauth2State;
 
-  getProject(): string;
-  setProject(value: string): Oauth2State;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Oauth2State.AsObject;
   static toObject(includeInstance: boolean, msg: Oauth2State): Oauth2State.AsObject;
@@ -786,7 +787,6 @@ export namespace Oauth2State {
     host: string,
     user?: string,
     id: string,
-    project: string,
   }
 
   export enum UserCase { 
@@ -804,6 +804,9 @@ export class GoogleSignInUrlRequest extends jspb.Message {
   hasState(): boolean;
   clearState(): GoogleSignInUrlRequest;
 
+  getProject(): string;
+  setProject(value: string): GoogleSignInUrlRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GoogleSignInUrlRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GoogleSignInUrlRequest): GoogleSignInUrlRequest.AsObject;
@@ -816,6 +819,7 @@ export namespace GoogleSignInUrlRequest {
   export type AsObject = {
     redirectUri: string,
     state?: Oauth2State.AsObject,
+    project: string,
   }
 }
 
@@ -845,6 +849,9 @@ export class SignInByWechatOauth2Request extends jspb.Message {
   getState(): string;
   setState(value: string): SignInByWechatOauth2Request;
 
+  getCode(): string;
+  setCode(value: string): SignInByWechatOauth2Request;
+
   getAppId(): string;
   setAppId(value: string): SignInByWechatOauth2Request;
 
@@ -872,6 +879,7 @@ export class SignInByWechatOauth2Request extends jspb.Message {
 export namespace SignInByWechatOauth2Request {
   export type AsObject = {
     state: string,
+    code: string,
     appId: string,
     language: orchid_pb.WechatOauth2LoginRequest.Language,
     userInfo?: orchid_pb.WechatOauth2LoginResponse.AsObject,
