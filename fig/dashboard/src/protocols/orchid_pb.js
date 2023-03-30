@@ -28,7 +28,6 @@ goog.exportSymbol('proto.palm.orchid.v1.WechatMiniProgramLoginResponse', null, g
 goog.exportSymbol('proto.palm.orchid.v1.WechatMiniProgramPhoneNumberRequest', null, global);
 goog.exportSymbol('proto.palm.orchid.v1.WechatMiniProgramPhoneNumberResponse', null, global);
 goog.exportSymbol('proto.palm.orchid.v1.WechatOauth2LoginRequest', null, global);
-goog.exportSymbol('proto.palm.orchid.v1.WechatOauth2LoginRequest.Language', null, global);
 goog.exportSymbol('proto.palm.orchid.v1.WechatOauth2LoginResponse', null, global);
 goog.exportSymbol('proto.palm.orchid.v1.WechatOauth2LoginResponse.Sex', null, global);
 goog.exportSymbol('proto.palm.orchid.v1.WechatOauth2QrConnectRequest', null, global);
@@ -1085,7 +1084,8 @@ proto.palm.orchid.v1.WechatOauth2QrConnectRequest.serializeBinaryToWriter = func
  */
 proto.palm.orchid.v1.WechatOauth2QrConnectRequest.Language = {
   EN: 0,
-  CN: 1
+  CN: 1,
+  TW: 2
 };
 
 /**
@@ -1797,7 +1797,7 @@ proto.palm.orchid.v1.WechatOauth2LoginRequest.deserializeBinaryFromReader = func
       msg.setState(value);
       break;
     case 9:
-      var value = /** @type {!proto.palm.orchid.v1.WechatOauth2LoginRequest.Language} */ (reader.readEnum());
+      var value = /** @type {!proto.palm.orchid.v1.WechatOauth2QrConnectRequest.Language} */ (reader.readEnum());
       msg.setLanguage(value);
       break;
     default:
@@ -1861,15 +1861,6 @@ proto.palm.orchid.v1.WechatOauth2LoginRequest.serializeBinaryToWriter = function
 
 
 /**
- * @enum {number}
- */
-proto.palm.orchid.v1.WechatOauth2LoginRequest.Language = {
-  EN: 0,
-  CN: 1,
-  TW: 2
-};
-
-/**
  * optional string app_id = 1;
  * @return {string}
  */
@@ -1924,16 +1915,16 @@ proto.palm.orchid.v1.WechatOauth2LoginRequest.prototype.setState = function(valu
 
 
 /**
- * optional Language language = 9;
- * @return {!proto.palm.orchid.v1.WechatOauth2LoginRequest.Language}
+ * optional WechatOauth2QrConnectRequest.Language language = 9;
+ * @return {!proto.palm.orchid.v1.WechatOauth2QrConnectRequest.Language}
  */
 proto.palm.orchid.v1.WechatOauth2LoginRequest.prototype.getLanguage = function() {
-  return /** @type {!proto.palm.orchid.v1.WechatOauth2LoginRequest.Language} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
+  return /** @type {!proto.palm.orchid.v1.WechatOauth2QrConnectRequest.Language} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
 };
 
 
 /**
- * @param {!proto.palm.orchid.v1.WechatOauth2LoginRequest.Language} value
+ * @param {!proto.palm.orchid.v1.WechatOauth2QrConnectRequest.Language} value
  * @return {!proto.palm.orchid.v1.WechatOauth2LoginRequest} returns this
  */
 proto.palm.orchid.v1.WechatOauth2LoginRequest.prototype.setLanguage = function(value) {

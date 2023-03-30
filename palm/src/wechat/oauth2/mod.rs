@@ -12,7 +12,6 @@ use std::ops::DerefMut;
 use async_trait::async_trait;
 use redis::{cluster::ClusterConnection as RedisClusterConnection, Commands};
 use reqwest::Client as HttpClient;
-use url::Url;
 
 use super::super::{orchid::v1, Result};
 use super::{Config, Query};
@@ -27,7 +26,7 @@ pub trait Oauth2 {
     async fn userinfo(
         access_token: &str,
         openid: &str,
-        lang: v1::wechat_oauth2_login_request::Language,
+        lang: v1::wechat_oauth2_qr_connect_request::Language,
     ) -> Result<userinfo::Response>;
     // https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html
     fn qr_connect<S: Display>(
@@ -85,7 +84,7 @@ impl Oauth2 for Config {
     async fn userinfo(
         access_token: &str,
         openid: &str,
-        lang: v1::wechat_oauth2_login_request::Language,
+        lang: v1::wechat_oauth2_qr_connect_request::Language,
     ) -> Result<userinfo::Response> {
         let client = HttpClient::new();
         let response = client
@@ -107,17 +106,7 @@ impl Oauth2 for Config {
         state: &S,
         lang: v1::wechat_oauth2_qr_connect_request::Language,
     ) -> Result<String> {
-        let mut it = Url::parse("https://open.weixin.qq.com/connect/qrconnect")?;
-        it.query_pairs_mut()
-            .append_pair("appid", &self.app_id)
-            .append_pair("redirect_uri", redirect_uri)
-            .append_pair("response_type", "code")
-            .append_pair("scope", "snsapi_login")
-            .append_pair("state", &state.to_string())
-            .append_pair("lang", &lang.to_string());
-        it.set_fragment(Some("wechat_redirect"));
-
-        Ok(it.to_string())
+        qr_connect::url(&self.app_id, redirect_uri, state, lang)
     }
 }
 

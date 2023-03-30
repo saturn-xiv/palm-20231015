@@ -855,8 +855,8 @@ export class SignInByWechatOauth2Request extends jspb.Message {
   getAppId(): string;
   setAppId(value: string): SignInByWechatOauth2Request;
 
-  getLanguage(): orchid_pb.WechatOauth2LoginRequest.Language;
-  setLanguage(value: orchid_pb.WechatOauth2LoginRequest.Language): SignInByWechatOauth2Request;
+  getLanguage(): orchid_pb.WechatOauth2QrConnectRequest.Language;
+  setLanguage(value: orchid_pb.WechatOauth2QrConnectRequest.Language): SignInByWechatOauth2Request;
 
   getUserInfo(): orchid_pb.WechatOauth2LoginResponse | undefined;
   setUserInfo(value?: orchid_pb.WechatOauth2LoginResponse): SignInByWechatOauth2Request;
@@ -881,9 +881,85 @@ export namespace SignInByWechatOauth2Request {
     state: string,
     code: string,
     appId: string,
-    language: orchid_pb.WechatOauth2LoginRequest.Language,
+    language: orchid_pb.WechatOauth2QrConnectRequest.Language,
     userInfo?: orchid_pb.WechatOauth2LoginResponse.AsObject,
     ttl?: google_protobuf_duration_pb.Duration.AsObject,
+  }
+}
+
+export class WechatOauth2SignInStateRequest extends jspb.Message {
+  getGoto(): string;
+  setGoto(value: string): WechatOauth2SignInStateRequest;
+
+  getHost(): string;
+  setHost(value: string): WechatOauth2SignInStateRequest;
+
+  getId(): string;
+  setId(value: string): WechatOauth2SignInStateRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatOauth2SignInStateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatOauth2SignInStateRequest): WechatOauth2SignInStateRequest.AsObject;
+  static serializeBinaryToWriter(message: WechatOauth2SignInStateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatOauth2SignInStateRequest;
+  static deserializeBinaryFromReader(message: WechatOauth2SignInStateRequest, reader: jspb.BinaryReader): WechatOauth2SignInStateRequest;
+}
+
+export namespace WechatOauth2SignInStateRequest {
+  export type AsObject = {
+    pb_goto: string,
+    host: string,
+    id: string,
+  }
+}
+
+export class WechatOauth2SignInStateResponse extends jspb.Message {
+  getState(): string;
+  setState(value: string): WechatOauth2SignInStateResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatOauth2SignInStateResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatOauth2SignInStateResponse): WechatOauth2SignInStateResponse.AsObject;
+  static serializeBinaryToWriter(message: WechatOauth2SignInStateResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatOauth2SignInStateResponse;
+  static deserializeBinaryFromReader(message: WechatOauth2SignInStateResponse, reader: jspb.BinaryReader): WechatOauth2SignInStateResponse;
+}
+
+export namespace WechatOauth2SignInStateResponse {
+  export type AsObject = {
+    state: string,
+  }
+}
+
+export class WechatOauth2SignInUrlRequest extends jspb.Message {
+  getAppId(): string;
+  setAppId(value: string): WechatOauth2SignInUrlRequest;
+
+  getRedirectUri(): string;
+  setRedirectUri(value: string): WechatOauth2SignInUrlRequest;
+
+  getLanguage(): orchid_pb.WechatOauth2QrConnectRequest.Language;
+  setLanguage(value: orchid_pb.WechatOauth2QrConnectRequest.Language): WechatOauth2SignInUrlRequest;
+
+  getState(): WechatOauth2SignInStateRequest | undefined;
+  setState(value?: WechatOauth2SignInStateRequest): WechatOauth2SignInUrlRequest;
+  hasState(): boolean;
+  clearState(): WechatOauth2SignInUrlRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatOauth2SignInUrlRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatOauth2SignInUrlRequest): WechatOauth2SignInUrlRequest.AsObject;
+  static serializeBinaryToWriter(message: WechatOauth2SignInUrlRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatOauth2SignInUrlRequest;
+  static deserializeBinaryFromReader(message: WechatOauth2SignInUrlRequest, reader: jspb.BinaryReader): WechatOauth2SignInUrlRequest;
+}
+
+export namespace WechatOauth2SignInUrlRequest {
+  export type AsObject = {
+    appId: string,
+    redirectUri: string,
+    language: orchid_pb.WechatOauth2QrConnectRequest.Language,
+    state?: WechatOauth2SignInStateRequest.AsObject,
   }
 }
 

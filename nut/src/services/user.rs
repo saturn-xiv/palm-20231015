@@ -22,7 +22,9 @@ use palm::{
     },
     session::Session,
     tink::Loquat,
-    to_chrono_duration, to_code, to_timestamp, try_grpc, Error, GrpcResult, HttpError, Result,
+    to_chrono_duration, to_code, to_timestamp, try_grpc,
+    wechat::oauth2::qr_connect::url as wechat_oauth2_qr_connect_url,
+    Error, GrpcResult, HttpError, Result,
 };
 use tokio::sync::Mutex;
 use tonic::{Request, Response, Status};
@@ -805,6 +807,68 @@ impl v1::user_server::User for Service {
 
         let it = try_grpc!(new_sign_in_response(enf, &user, jwt, ttl,).await)?;
         Ok(Response::new(it))
+    }
+
+    async fn wechat_oauth2_sign_in_state(
+        &self,
+        req: Request<v1::WechatOauth2SignInStateRequest>,
+    ) -> GrpcResult<v1::WechatOauth2SignInStateResponse> {
+        let ss = Session::new(&req);
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let req = req.into_inner();
+
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+
+        let user = try_grpc!(ss.current_user(db, ch, jwt)).map(|x| x.uid).ok();
+
+        let state = Oauth2State {
+            user,
+            goto: req.goto.clone(),
+            host: req.host.clone(),
+            id: req.id,
+        };
+        Ok(Response::new(v1::WechatOauth2SignInStateResponse {
+            state: state.to_string(),
+        }))
+    }
+    async fn wechat_oauth2_sign_in_url(
+        &self,
+        req: Request<v1::WechatOauth2SignInUrlRequest>,
+    ) -> GrpcResult<orchid::WechatOauth2QrConnectResponse> {
+        let ss = Session::new(&req);
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let req = req.into_inner();
+
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let jwt = self.jwt.deref();
+
+        let user = try_grpc!(ss.current_user(db, ch, jwt)).map(|x| x.uid).ok();
+
+        let lang = req.language();
+        if let Some(ref state) = req.state {
+            let state = Oauth2State {
+                user,
+                goto: state.goto.clone(),
+                host: state.host.clone(),
+                id: state.id.clone(),
+            };
+            let url = try_grpc!(wechat_oauth2_qr_connect_url(
+                &req.app_id,
+                &req.redirect_uri,
+                &state.to_string(),
+                lang
+            ))?;
+            return Ok(Response::new(orchid::WechatOauth2QrConnectResponse { url }));
+        }
+
+        Err(Status::permission_denied(type_name::<
+            v1::WechatOauth2SignInUrlRequest,
+        >()))
     }
 }
 

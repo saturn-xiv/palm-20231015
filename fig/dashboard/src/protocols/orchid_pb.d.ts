@@ -135,6 +135,7 @@ export namespace WechatOauth2QrConnectRequest {
   export enum Language { 
     EN = 0,
     CN = 1,
+    TW = 2,
   }
 }
 
@@ -230,8 +231,8 @@ export class WechatOauth2LoginRequest extends jspb.Message {
   getState(): string;
   setState(value: string): WechatOauth2LoginRequest;
 
-  getLanguage(): WechatOauth2LoginRequest.Language;
-  setLanguage(value: WechatOauth2LoginRequest.Language): WechatOauth2LoginRequest;
+  getLanguage(): WechatOauth2QrConnectRequest.Language;
+  setLanguage(value: WechatOauth2QrConnectRequest.Language): WechatOauth2LoginRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WechatOauth2LoginRequest.AsObject;
@@ -246,13 +247,7 @@ export namespace WechatOauth2LoginRequest {
     appId: string,
     code: string,
     state: string,
-    language: WechatOauth2LoginRequest.Language,
-  }
-
-  export enum Language { 
-    EN = 0,
-    CN = 1,
-    TW = 2,
+    language: WechatOauth2QrConnectRequest.Language,
   }
 }
 

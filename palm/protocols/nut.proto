@@ -83,6 +83,10 @@ service User {
       returns (GoogleSignInUrlResponse) {}
   rpc SignInByGoogle(SignInByGoogleRequest) returns (UserSignInResponse) {}
 
+  rpc WechatOauth2SignInState(WechatOauth2SignInStateRequest)
+      returns (WechatOauth2SignInStateResponse) {}
+  rpc WechatOauth2SignInUrl(WechatOauth2SignInUrlRequest)
+      returns (palm.orchid.v1.WechatOauth2QrConnectResponse) {}
   rpc SignInByWechatOauth2(SignInByWechatOauth2Request)
       returns (UserSignInResponse) {}
 }
@@ -235,10 +239,26 @@ message SignInByWechatOauth2Request {
   string code = 2;
   string app_id = 3;
 
-  palm.orchid.v1.WechatOauth2LoginRequest.Language language = 8;
+  palm.orchid.v1.WechatOauth2QrConnectRequest.Language language = 8;
   palm.orchid.v1.WechatOauth2LoginResponse user_info = 9;
 
   google.protobuf.Duration ttl = 11;
+}
+
+message WechatOauth2SignInStateRequest {
+  string goto = 1;
+  string host = 2;
+  string id = 9;
+}
+
+message WechatOauth2SignInStateResponse { string state = 1; }
+
+message WechatOauth2SignInUrlRequest {
+  string app_id = 1;
+  string redirect_uri = 2;
+  palm.orchid.v1.WechatOauth2QrConnectRequest.Language language = 3;
+
+  WechatOauth2SignInStateRequest state = 9;
 }
 
 // ----------------------------------------------------------------------------

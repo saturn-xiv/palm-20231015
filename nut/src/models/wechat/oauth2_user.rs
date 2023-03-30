@@ -2,7 +2,7 @@ use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
 use palm::{
     crypto::random::bytes as random_bytes,
-    orchid::v1::{wechat_oauth2_login_request::Language, WechatOauth2LoginResponse},
+    orchid::v1::{wechat_oauth2_qr_connect_request::Language, WechatOauth2LoginResponse},
     Result,
 };
 use serde::{Deserialize, Serialize};
