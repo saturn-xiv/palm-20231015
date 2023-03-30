@@ -21,7 +21,7 @@ import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty
 import * as orchid_pb from './orchid_pb';
 
 
-export class WeChatClient {
+export class WechatMiniProgramClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;
   credentials_: null | { [index: string]: string; };
@@ -41,35 +41,35 @@ export class WeChatClient {
   }
 
   methodDescriptorLogin = new grpcWeb.MethodDescriptor(
-    '/palm.orchid.v1.WeChat/Login',
+    '/palm.orchid.v1.WechatMiniProgram/Login',
     grpcWeb.MethodType.UNARY,
-    orchid_pb.WeChatLoginRequest,
-    orchid_pb.WeChatLoginResponse,
-    (request: orchid_pb.WeChatLoginRequest) => {
+    orchid_pb.WechatMiniProgramLoginRequest,
+    orchid_pb.WechatMiniProgramLoginResponse,
+    (request: orchid_pb.WechatMiniProgramLoginRequest) => {
       return request.serializeBinary();
     },
-    orchid_pb.WeChatLoginResponse.deserializeBinary
+    orchid_pb.WechatMiniProgramLoginResponse.deserializeBinary
   );
 
   login(
-    request: orchid_pb.WeChatLoginRequest,
-    metadata: grpcWeb.Metadata | null): Promise<orchid_pb.WeChatLoginResponse>;
+    request: orchid_pb.WechatMiniProgramLoginRequest,
+    metadata: grpcWeb.Metadata | null): Promise<orchid_pb.WechatMiniProgramLoginResponse>;
 
   login(
-    request: orchid_pb.WeChatLoginRequest,
+    request: orchid_pb.WechatMiniProgramLoginRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: orchid_pb.WeChatLoginResponse) => void): grpcWeb.ClientReadableStream<orchid_pb.WeChatLoginResponse>;
+               response: orchid_pb.WechatMiniProgramLoginResponse) => void): grpcWeb.ClientReadableStream<orchid_pb.WechatMiniProgramLoginResponse>;
 
   login(
-    request: orchid_pb.WeChatLoginRequest,
+    request: orchid_pb.WechatMiniProgramLoginRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: orchid_pb.WeChatLoginResponse) => void) {
+               response: orchid_pb.WechatMiniProgramLoginResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.orchid.v1.WeChat/Login',
+          '/palm.orchid.v1.WechatMiniProgram/Login',
         request,
         metadata || {},
         this.methodDescriptorLogin,
@@ -77,42 +77,42 @@ export class WeChatClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.orchid.v1.WeChat/Login',
+      '/palm.orchid.v1.WechatMiniProgram/Login',
     request,
     metadata || {},
     this.methodDescriptorLogin);
   }
 
   methodDescriptorPhoneNumber = new grpcWeb.MethodDescriptor(
-    '/palm.orchid.v1.WeChat/PhoneNumber',
+    '/palm.orchid.v1.WechatMiniProgram/PhoneNumber',
     grpcWeb.MethodType.UNARY,
-    orchid_pb.WeChatPhoneNumberRequest,
-    orchid_pb.WeChatPhoneNumberResponse,
-    (request: orchid_pb.WeChatPhoneNumberRequest) => {
+    orchid_pb.WechatMiniProgramPhoneNumberRequest,
+    orchid_pb.WechatMiniProgramPhoneNumberResponse,
+    (request: orchid_pb.WechatMiniProgramPhoneNumberRequest) => {
       return request.serializeBinary();
     },
-    orchid_pb.WeChatPhoneNumberResponse.deserializeBinary
+    orchid_pb.WechatMiniProgramPhoneNumberResponse.deserializeBinary
   );
 
   phoneNumber(
-    request: orchid_pb.WeChatPhoneNumberRequest,
-    metadata: grpcWeb.Metadata | null): Promise<orchid_pb.WeChatPhoneNumberResponse>;
+    request: orchid_pb.WechatMiniProgramPhoneNumberRequest,
+    metadata: grpcWeb.Metadata | null): Promise<orchid_pb.WechatMiniProgramPhoneNumberResponse>;
 
   phoneNumber(
-    request: orchid_pb.WeChatPhoneNumberRequest,
+    request: orchid_pb.WechatMiniProgramPhoneNumberRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: orchid_pb.WeChatPhoneNumberResponse) => void): grpcWeb.ClientReadableStream<orchid_pb.WeChatPhoneNumberResponse>;
+               response: orchid_pb.WechatMiniProgramPhoneNumberResponse) => void): grpcWeb.ClientReadableStream<orchid_pb.WechatMiniProgramPhoneNumberResponse>;
 
   phoneNumber(
-    request: orchid_pb.WeChatPhoneNumberRequest,
+    request: orchid_pb.WechatMiniProgramPhoneNumberRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: orchid_pb.WeChatPhoneNumberResponse) => void) {
+               response: orchid_pb.WechatMiniProgramPhoneNumberResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.orchid.v1.WeChat/PhoneNumber',
+          '/palm.orchid.v1.WechatMiniProgram/PhoneNumber',
         request,
         metadata || {},
         this.methodDescriptorPhoneNumber,
@@ -120,10 +120,117 @@ export class WeChatClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.orchid.v1.WeChat/PhoneNumber',
+      '/palm.orchid.v1.WechatMiniProgram/PhoneNumber',
     request,
     metadata || {},
     this.methodDescriptorPhoneNumber);
+  }
+
+}
+
+export class WechatOauth2Client {
+  client_: grpcWeb.AbstractClientBase;
+  hostname_: string;
+  credentials_: null | { [index: string]: string; };
+  options_: null | { [index: string]: any; };
+
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; }) {
+    if (!options) options = {};
+    if (!credentials) credentials = {};
+    options['format'] = 'binary';
+
+    this.client_ = new grpcWeb.GrpcWebClientBase(options);
+    this.hostname_ = hostname.replace(/\/+$/, '');
+    this.credentials_ = credentials;
+    this.options_ = options;
+  }
+
+  methodDescriptorQrConnect = new grpcWeb.MethodDescriptor(
+    '/palm.orchid.v1.WechatOauth2/QrConnect',
+    grpcWeb.MethodType.UNARY,
+    orchid_pb.WechatOauth2QrConnectRequest,
+    orchid_pb.WechatOauth2QrConnectResponse,
+    (request: orchid_pb.WechatOauth2QrConnectRequest) => {
+      return request.serializeBinary();
+    },
+    orchid_pb.WechatOauth2QrConnectResponse.deserializeBinary
+  );
+
+  qrConnect(
+    request: orchid_pb.WechatOauth2QrConnectRequest,
+    metadata: grpcWeb.Metadata | null): Promise<orchid_pb.WechatOauth2QrConnectResponse>;
+
+  qrConnect(
+    request: orchid_pb.WechatOauth2QrConnectRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: orchid_pb.WechatOauth2QrConnectResponse) => void): grpcWeb.ClientReadableStream<orchid_pb.WechatOauth2QrConnectResponse>;
+
+  qrConnect(
+    request: orchid_pb.WechatOauth2QrConnectRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: orchid_pb.WechatOauth2QrConnectResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.orchid.v1.WechatOauth2/QrConnect',
+        request,
+        metadata || {},
+        this.methodDescriptorQrConnect,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.orchid.v1.WechatOauth2/QrConnect',
+    request,
+    metadata || {},
+    this.methodDescriptorQrConnect);
+  }
+
+  methodDescriptorLogin = new grpcWeb.MethodDescriptor(
+    '/palm.orchid.v1.WechatOauth2/Login',
+    grpcWeb.MethodType.UNARY,
+    orchid_pb.WechatOauth2LoginRequest,
+    orchid_pb.WechatOauth2LoginResponse,
+    (request: orchid_pb.WechatOauth2LoginRequest) => {
+      return request.serializeBinary();
+    },
+    orchid_pb.WechatOauth2LoginResponse.deserializeBinary
+  );
+
+  login(
+    request: orchid_pb.WechatOauth2LoginRequest,
+    metadata: grpcWeb.Metadata | null): Promise<orchid_pb.WechatOauth2LoginResponse>;
+
+  login(
+    request: orchid_pb.WechatOauth2LoginRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: orchid_pb.WechatOauth2LoginResponse) => void): grpcWeb.ClientReadableStream<orchid_pb.WechatOauth2LoginResponse>;
+
+  login(
+    request: orchid_pb.WechatOauth2LoginRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: orchid_pb.WechatOauth2LoginResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.orchid.v1.WechatOauth2/Login',
+        request,
+        metadata || {},
+        this.methodDescriptorLogin,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.orchid.v1.WechatOauth2/Login',
+    request,
+    metadata || {},
+    this.methodDescriptorLogin);
   }
 
 }

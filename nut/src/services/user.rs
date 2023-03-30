@@ -4,9 +4,9 @@ use std::sync::Arc;
 
 use casbin::{Enforcer, RbacApi};
 use chrono::Duration;
-use data_encoding::BASE64;
 use diesel::Connection as DieselConntection;
 use hyper::StatusCode;
+
 use palm::{
     cache::{redis::Pool as RedisPool, Provider as CacheProvider},
     google::oauth::{
@@ -14,6 +14,7 @@ use palm::{
     },
     jwt::Jwt,
     nut::v1,
+    orchid::v1 as orchid,
     queue::amqp::RabbitMq,
     rbac::v1::{
         permissions_response::Item as Permission, resources_response::Item as Resource,
@@ -23,20 +24,22 @@ use palm::{
     tink::Loquat,
     to_chrono_duration, to_code, to_timestamp, try_grpc, Error, GrpcResult, HttpError, Result,
 };
-use prost::Message as ProstMessage;
 use tokio::sync::Mutex;
 use tonic::{Request, Response, Status};
 
 use super::super::{
     i18n::I18n,
     models::{
+        google::user::Dao as GoogleUserDao,
         log::Dao as LogDao,
         setting::Dao as SettingDao,
         user::{Action, Dao as UserDao, Item as User},
+        wechat::oauth2_user::Dao as WechatOauth2UserDao,
     },
     orm::postgresql::{Connection as Db, Pool as PostgreSqlPool},
+    Orchid,
 };
-use super::CurrentUserAdapter;
+use super::{CurrentUserAdapter, Oauth2State};
 
 pub struct Service {
     pub redis: RedisPool,
@@ -46,6 +49,7 @@ pub struct Service {
     pub hmac: Arc<Loquat>,
     pub rabbitmq: Arc<RabbitMq>,
     pub enforcer: Arc<Mutex<Enforcer>>,
+    pub orchid: Arc<Orchid>,
 }
 
 #[tonic::async_trait]
@@ -639,21 +643,22 @@ impl v1::user_server::User for Service {
         &self,
         req: Request<v1::GoogleSignInUrlRequest>,
     ) -> GrpcResult<v1::GoogleSignInUrlResponse> {
-        let mut db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref_mut();
         let mut ch = try_grpc!(self.redis.get())?;
         let ch = ch.deref_mut();
-        let aes = self.aes.deref();
         let req = req.into_inner();
+        let aes = self.aes.deref();
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
 
         if let Some(ref state) = req.state {
             let key = GoogleClientSecret::key(&state.project);
-            let cfg: GoogleClientSecret = try_grpc!(SettingDao::get(db, aes, &key, None,))?;
-            let state = {
-                let mut buf = Vec::new();
-                try_grpc!(state.encode(&mut buf))?;
-                BASE64.encode(&buf)
-            };
+            let cfg: GoogleClientSecret = try_grpc!(SettingDao::get(
+                db,
+                aes,
+                &GoogleClientSecret::key(&state.project),
+                None
+            ))?;
+            let state = Oauth2State::new(state);
 
             let it = cfg.web.openid_connect(
                 vec![
@@ -679,92 +684,127 @@ impl v1::user_server::User for Service {
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
 
-        let aes = self.aes.deref();
         let enf = self.enforcer.deref();
         let jwt = self.jwt.deref();
+        let aes = self.aes.deref();
 
         let req = req.into_inner();
 
-        if let Some(ref state) = req.state {
-            let cfg: GoogleClientSecret = try_grpc!(SettingDao::get(
-                db,
-                aes,
-                &GoogleClientSecret::key(&state.project),
-                None,
-            ))?;
-            if let Some(ref nonce) = req.nonce {
-                let mut ch = try_grpc!(self.redis.get())?;
-                let ch = ch.deref_mut();
-                let tmp: String = try_grpc!(ch.fetch(&state.key()))?;
-                if nonce != &tmp {
-                    return Err(Status::permission_denied(type_name::<
-                        v1::SignInByGoogleRequest,
-                    >()));
-                }
+        let state = try_grpc!(req.state.parse::<Oauth2State>())?;
+
+        let cfg: GoogleClientSecret = try_grpc!(SettingDao::get(
+            db,
+            aes,
+            &GoogleClientSecret::key(&state.project),
+            None
+        ))?;
+        if let Some(ref nonce) = req.nonce {
+            let mut ch = try_grpc!(self.redis.get())?;
+            let ch = ch.deref_mut();
+            let tmp: String = try_grpc!(ch.fetch(&state.id))?;
+            if nonce != &tmp {
+                return Err(Status::permission_denied(type_name::<
+                    v1::SignInByGoogleRequest,
+                >()));
             }
-
-            let code = try_grpc!(
-                cfg.web
-                    .exchange_authorization_code(&req.redirect_uri, &req.code)
-                    .await
-            )?;
-            let token: GoogleIdToken = try_grpc!(serde_json::from_str(&code.id_token))?;
-
-            let user = try_grpc!(db.transaction::<_, Error, _>(move |db| {
-                let user = match state.user {
-                    Some(ref it) => {
-                        let it = UserDao::by_uid(db, it)?;
-                        it.available()?;
-                        Some(it.id)
-                    }
-                    None => None,
-                };
-                let user = UserDao::google(db, user, &code, &token, &ss.client_ip)?;
-                LogDao::add::<_, User>(
-                    db,
-                    user.id,
-                    v1::user_logs_response::item::Level::Info,
-                    &ss.client_ip,
-                    Some(user.id),
-                    "sign in by google",
-                )?;
-                Ok(user)
-            }))?;
-
-            let it = try_grpc!(
-                new_sign_in_response(
-                    enf,
-                    &user,
-                    jwt,
-                    req.ttl
-                        .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds)),
-                )
-                .await
-            )?;
-            return Ok(Response::new(it));
         }
 
-        Err(Status::permission_denied(type_name::<
-            v1::SignInByGoogleRequest,
-        >()))
+        let code = try_grpc!(
+            cfg.web
+                .exchange_authorization_code(&req.redirect_uri, &req.code)
+                .await
+        )?;
+        let token: GoogleIdToken = try_grpc!(serde_json::from_str(&code.id_token))?;
+
+        let user = try_grpc!(db.transaction::<_, Error, _>(move |db| {
+            let user = match state.user {
+                Some(ref it) => {
+                    let it = UserDao::by_uid(db, it)?;
+                    it.available()?;
+                    Some(it.id)
+                }
+                None => None,
+            };
+            let user = GoogleUserDao::sign_in(db, user, &code, &token, &ss.client_ip)?;
+            LogDao::add::<_, User>(
+                db,
+                user.id,
+                v1::user_logs_response::item::Level::Info,
+                &ss.client_ip,
+                Some(user.id),
+                "sign in by google",
+            )?;
+            Ok(user)
+        }))?;
+
+        let it = try_grpc!(
+            new_sign_in_response(
+                enf,
+                &user,
+                jwt,
+                req.ttl
+                    .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds)),
+            )
+            .await
+        )?;
+        Ok(Response::new(it))
     }
 
-    async fn sign_in_by_wechat(
+    async fn sign_in_by_wechat_oauth2(
         &self,
-        req: Request<v1::SignInByWechatRequest>,
+        req: Request<v1::SignInByWechatOauth2Request>,
     ) -> GrpcResult<v1::UserSignInResponse> {
         let ss = Session::new(&req);
-        let mut db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref_mut();
 
-        let aes = self.aes.deref();
         let enf = self.enforcer.deref();
         let jwt = self.jwt.deref();
-
         let req = req.into_inner();
-        Err(Status::permission_denied(type_name::<
-            v1::SignInByWechatRequest,
-        >()))
+
+        let lang = req.language();
+        let ttl = req
+            .ttl
+            .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds));
+
+        let info = {
+            let mut cli = try_grpc!(self.orchid.wechat_oauth2().await)?;
+            let req = Request::new(orchid::WechatOauth2LoginRequest {
+                app_id: req.app_id.clone(),
+                code: req.code.clone(),
+                state: req.state.clone(),
+                language: req.language,
+            });
+            let res = try_grpc!(cli.login(req).await)?;
+            debug!("fetch wechat user {:?}", res);
+            res.into_inner()
+        };
+        let state = try_grpc!(req.state.parse::<Oauth2State>())?;
+
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let user = try_grpc!(db.transaction::<_, Error, _>(move |db| {
+            let user = match state.user {
+                Some(ref it) => {
+                    let it = UserDao::by_uid(db, it)?;
+                    it.available()?;
+                    Some(it.id)
+                }
+                None => None,
+            };
+            let user =
+                WechatOauth2UserDao::sign_in(db, user, &req.app_id, &info, lang, &ss.client_ip)?;
+            LogDao::add::<_, User>(
+                db,
+                user.id,
+                v1::user_logs_response::item::Level::Info,
+                &ss.client_ip,
+                Some(user.id),
+                "sign in by google",
+            )?;
+            Ok(user)
+        }))?;
+
+        let it = try_grpc!(new_sign_in_response(enf, &user, jwt, ttl,).await)?;
+        Ok(Response::new(it))
     }
 }
 

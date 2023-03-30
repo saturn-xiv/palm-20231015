@@ -1,12 +1,9 @@
 pub mod mini_program;
 pub mod oauth2;
 
-use std::any::type_name;
 use std::fmt::Debug;
-use std::ops::DerefMut;
 
 use hyper::StatusCode;
-use redis::Commands;
 use reqwest::Response;
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 

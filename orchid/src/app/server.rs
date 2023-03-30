@@ -6,7 +6,14 @@ use palm::{orchid::v1, Result};
 use tonic::transport::Server;
 
 use super::super::{
-    env::Config as Env, health::Service as HealthService, wechat::service::Service as WeChatService,
+    env::Config as Env,
+    services::{
+        health::Service as HealthService,
+        wechat::{
+            mini_program::Service as WechatMiniProgramService,
+            oauth2::Service as WechatOauth2Service,
+        },
+    },
 };
 
 #[derive(Parser, PartialEq, Eq, Debug, Clone)]
@@ -22,10 +29,17 @@ impl Config {
         info!("start oauth gRPC at {}", addr);
         let redis = config.redis.open()?;
         Server::builder()
-            .add_service(v1::we_chat_server::WeChatServer::new(WeChatService {
-                config,
-                redis,
-            }))
+            .add_service(v1::wechat_oauth2_server::WechatOauth2Server::new(
+                WechatOauth2Service {
+                    config: config.clone(),
+                    redis: redis.clone(),
+                },
+            ))
+            .add_service(
+                v1::wechat_mini_program_server::WechatMiniProgramServer::new(
+                    WechatMiniProgramService { config, redis },
+                ),
+            )
             .add_service(v1::health_server::HealthServer::new(HealthService {}))
             .serve(addr)
             .await?;

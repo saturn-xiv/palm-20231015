@@ -5,33 +5,86 @@ package palm.orchid.v1;
 
 import "google/protobuf/empty.proto";
 
-service WeChat {
-  rpc Login(WeChatLoginRequest) returns (WeChatLoginResponse) {}
-  rpc PhoneNumber(WeChatPhoneNumberRequest)
-      returns (WeChatPhoneNumberResponse) {}
+// ----------------------------------------------------------------------------
+
+service WechatMiniProgram {
+  rpc Login(WechatMiniProgramLoginRequest)
+      returns (WechatMiniProgramLoginResponse) {}
+  rpc PhoneNumber(WechatMiniProgramPhoneNumberRequest)
+      returns (WechatMiniProgramPhoneNumberResponse) {}
 }
 
-message WeChatLoginRequest {
+message WechatMiniProgramLoginRequest {
   string app_id = 1;
   string code = 2;
 }
 
-message WeChatLoginResponse {
-  optional string unionid = 1;
+message WechatMiniProgramLoginResponse {
+  string unionid = 1;
   string openid = 2;
+  string session_key = 3;
 }
 
-message WeChatPhoneNumberRequest {
+message WechatMiniProgramPhoneNumberRequest {
   string app_id = 1;
   string code = 2;
 }
 
-message WeChatPhoneNumberResponse {
+message WechatMiniProgramPhoneNumberResponse {
   string phone_number = 1;
   string pure_phone_number = 2;
   string country_code = 3;
   uint64 water_mark = 4;
 }
+
+// ----------------------------------------------------------------------------
+
+service WechatOauth2 {
+  rpc QrConnect(WechatOauth2QrConnectRequest)
+      returns (WechatOauth2QrConnectResponse) {}
+  rpc Login(WechatOauth2LoginRequest) returns (WechatOauth2LoginResponse) {}
+}
+message WechatOauth2QrConnectRequest {
+  enum Language {
+    EN = 0;
+    CN = 1;
+  }
+  string app_id = 1;
+  string redirect_uri = 2;
+  string state = 3;
+  Language language = 9;
+}
+message WechatOauth2QrConnectResponse { string url = 1; }
+
+message WechatOauth2LoginResponse {
+  enum Sex {
+    MALE = 0;
+    FEMALE = 1;
+  }
+
+  string unionid = 1;
+  string openid = 2;
+  string nickname = 11;
+  Sex sex = 12;
+  string province = 13;
+  string city = 14;
+  string country = 15;
+  optional string headimgurl = 16;
+  repeated string privilege = 17;
+}
+
+message WechatOauth2LoginRequest {
+  enum Language {
+    EN = 0;
+    CN = 1;
+    TW = 2;
+  }
+  string app_id = 1;
+  string code = 2;
+  string state = 3;
+  Language language = 9;
+}
+// ----------------------------------------------------------------------------
 
 service Health {
   rpc Check(google.protobuf.Empty) returns (google.protobuf.Empty) {}

@@ -1,5 +1,6 @@
 pub mod attachment;
 pub mod category;
+pub mod google;
 pub mod leave_word;
 pub mod locale;
 pub mod log;
@@ -9,6 +10,7 @@ pub mod tag;
 pub mod twilio;
 pub mod user;
 pub mod vote;
+pub mod wechat;
 
 use std::fmt;
 use std::str::FromStr;

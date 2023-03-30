@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::fmt::Display;
 
 use hyper::StatusCode;
 use rand::{distributions::Alphanumeric, thread_rng, Rng};
@@ -20,10 +21,10 @@ pub struct AuthorizationCode {
 
 impl super::Web {
     // https://developers.google.com/identity/openid-connect/openid-connect
-    pub fn openid_connect(
+    pub fn openid_connect<T: Display>(
         &self,
         scope: Vec<Scope>,
-        state: &str,
+        state: &T,
         redirect_uri: &str,
     ) -> GoogleSignInUrlResponse {
         let nonce: String = thread_rng()
@@ -45,7 +46,7 @@ impl super::Web {
                 .join(" "),
         )
         .append_pair("access_type", &AccessType::default().to_string())
-        .append_pair("state", state)
+        .append_pair("state", &state.to_string())
         .append_pair("include_granted_scopes", &true.to_string())
         .append_pair("response_type", "code")
         .finish();

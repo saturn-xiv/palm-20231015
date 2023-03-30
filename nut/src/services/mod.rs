@@ -10,18 +10,22 @@ pub mod site;
 pub mod tag;
 pub mod user;
 
-use std::fmt::Display;
+use std::fmt::{self, Display};
+use std::str::FromStr;
 
 use casbin::{Enforcer, RbacApi};
+use data_encoding::BASE64;
 use hyper::StatusCode;
 use palm::{
     cache::redis::ClusterConnection as Cache,
     has_permission, has_role,
     jwt::Jwt,
+    nut::v1,
     rbac::v1::{resources_response::Item as Resource, RoleRequest, UserRequest},
     session::Session,
-    to_code, HttpError, Result,
+    to_code, Error, HttpError, Result,
 };
+use serde::{Deserialize, Serialize};
 use tokio::sync::Mutex;
 
 use super::{
@@ -81,5 +85,50 @@ impl User {
             return has_permission!(enforcer, &subject, &object, &action);
         }
         false
+    }
+}
+
+#[derive(Serialize, Deserialize, Default, PartialEq, Debug, Clone)]
+pub struct Oauth2State {
+    pub user: Option<String>,
+    pub goto: String,
+    pub host: String,
+    pub project: String,
+    pub id: String,
+}
+
+impl fmt::Display for Oauth2State {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let it = {
+            let buf = rmp_serde::to_vec(self).map_err(|e| {
+                error!("{:?}", e);
+                fmt::Error::default()
+            })?;
+            BASE64.encode(&buf)
+        };
+        write!(f, "{}", it)
+    }
+}
+
+impl FromStr for Oauth2State {
+    type Err = Error;
+
+    fn from_str(s: &str) -> Result<Self> {
+        let buf = BASE64.decode(s.as_bytes())?;
+        let it = rmp_serde::from_slice(&buf)?;
+
+        Ok(it)
+    }
+}
+
+impl Oauth2State {
+    pub fn new(x: &v1::Oauth2State) -> Self {
+        Self {
+            goto: x.goto.clone(),
+            host: x.host.clone(),
+            user: x.user.clone(),
+            project: x.project.clone(),
+            id: x.id.clone(),
+        }
     }
 }

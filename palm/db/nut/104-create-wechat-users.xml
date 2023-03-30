@@ -8,13 +8,43 @@
                         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
 
     <changeSet id="20230314123451" author="jeremy.zheng" labels="create wechat oauth users">
-        <createTable tableName="wechat_users">
+        <createTable tableName="wechat_oauth2_users">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="user_id" type="integer" />
+            <column name="user_id" type="integer">
+                <constraints nullable="false" />
+            </column>
             <column name="union_id" type="varchar(255)">
-                <constraints nullable="false" unique="true" />
+                <constraints nullable="false" />
+            </column>
+            <column name="app_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="open_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="nickname" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="sex" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="city" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="province" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="country" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="head_img_url" type="varchar(255)" />
+            <column name="privilege" type="bytea">
+                <constraints nullable="false" />
+            </column>
+            <column name="lang" type="varchar(8)">
+                <constraints nullable="false" />
             </column>
             <column name="version" type="integer" defaultValue="0">
                 <constraints nullable="false" />
@@ -26,6 +56,83 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
+
+        <createIndex tableName="wechat_oauth2_users" indexName="idx_wechat_oauth2_users_app_open_id"
+            unique="true">
+            <column name="app_id" />
+            <column name="open_id" />
+        </createIndex>
+        <createIndex tableName="wechat_oauth2_users" indexName="idx_wechat_oauth2_users_app_id">
+            <column name="app_id" />
+        </createIndex>
+        <createIndex tableName="wechat_oauth2_users" indexName="idx_wechat_oauth2_users_open_id">
+            <column name="open_id" />
+        </createIndex>
+        <createIndex tableName="wechat_oauth2_users" indexName="idx_wechat_oauth2_users_union_id">
+            <column name="union_id" />
+        </createIndex>
+        <createIndex tableName="wechat_oauth2_users" indexName="idx_wechat_oauth2_users_nickname">
+            <column name="nickname" />
+        </createIndex>
+        <createIndex tableName="wechat_oauth2_users" indexName="idx_wechat_oauth2_users_city">
+            <column name="city" />
+        </createIndex>
+        <createIndex tableName="wechat_oauth2_users" indexName="idx_wechat_oauth2_users_province">
+            <column name="province" />
+        </createIndex>
+        <createIndex tableName="wechat_oauth2_users" indexName="idx_wechat_oauth2_users_country">
+            <column name="country" />
+        </createIndex>
+        <createIndex tableName="wechat_oauth2_users" indexName="idx_wechat_oauth2_users_lang">
+            <column name="lang" />
+        </createIndex>
+
+        <createTable tableName="wechat_mini_program_users">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="user_id" type="integer" />
+            <column name="uid" type="char(36)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="union_id" type="varchar(255)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="app_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="open_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="nickname" type="varchar(255)" />
+            <column name="avatar_url" type="varchar(255)" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="wechat_mini_program_users"
+            indexName="idx_wechat_mini_program_users_app_open_id" unique="true">
+            <column name="app_id" />
+            <column name="open_id" />
+        </createIndex>
+        <createIndex tableName="wechat_mini_program_users"
+            indexName="idx_wechat_mini_program_users_nickname">
+            <column name="nickname" />
+        </createIndex>
+        <createIndex tableName="wechat_mini_program_users"
+            indexName="idx_wechat_mini_program_users_app_id">
+            <column name="app_id" />
+        </createIndex>
+        <createIndex tableName="wechat_mini_program_users"
+            indexName="idx_wechat_mini_program_users_open_id">
+            <column name="open_id" />
+        </createIndex>
 
     </changeSet>
 </databaseChangeLog>

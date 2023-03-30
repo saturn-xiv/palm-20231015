@@ -9,7 +9,7 @@ use async_trait::async_trait;
 use redis::Commands;
 use reqwest::Client as HttpClient;
 
-use super::super::{orchid::v1, Result};
+use super::super::Result;
 use super::{Config, Query};
 
 #[async_trait]
@@ -81,37 +81,15 @@ impl MiniProgram for Config {
 
 #[async_trait]
 pub trait Client {
-    async fn login(&self, code: &str) -> Result<v1::WeChatLoginResponse>;
     async fn access_token(&self) -> Result<String>;
+
+    fn access_token_key(&self) -> String;
 }
 
 #[async_trait]
 impl Client for super::Client {
-    async fn login(&self, code: &str) -> Result<v1::WeChatLoginResponse> {
-        let res = self.config.code2session(code).await?;
-        let key = format!(
-            "{}://{}/{}/session-key",
-            type_name::<dyn Client>(),
-            self.config.app_id,
-            res.openid
-        );
-
-        let mut ch = self.redis.get()?;
-        let ch = ch.deref_mut();
-        Commands::set(ch, &key, &res.session_key)?;
-
-        Ok(v1::WeChatLoginResponse {
-            openid: res.openid.clone(),
-            unionid: res.unionid.clone(),
-        })
-    }
-
     async fn access_token(&self) -> Result<String> {
-        let key = format!(
-            "{}://{}/access-token",
-            type_name::<Self>(),
-            self.config.app_id
-        );
+        let key = self.access_token_key();
         let mut ch = self.redis.get()?;
         let ch = ch.deref_mut();
 
@@ -123,8 +101,16 @@ impl Client for super::Client {
             ch,
             &key,
             &response.access_token,
-            response.expires_in - 60 * 5 - 1,
+            response.expires_in - 60 * (5 - 1),
         )?;
         Ok(response.access_token)
+    }
+
+    fn access_token_key(&self) -> String {
+        format!(
+            "{}://{}/access-token",
+            type_name::<Self>(),
+            self.config.app_id
+        )
     }
 }

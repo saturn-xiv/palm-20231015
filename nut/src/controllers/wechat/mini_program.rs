@@ -2,41 +2,125 @@ use std::ops::{Deref, DerefMut};
 
 use actix_web::{post, web, HttpResponse, Responder, Result as WebResult};
 use chrono::Duration;
+use diesel::Connection as DieselConnection;
+use hyper::StatusCode;
 use palm::{
-    handlers::peer::ClientIp, jwt::Jwt, orchid::v1::WeChatLoginRequest, tink::Loquat, try_web,
+    handlers::{peer::ClientIp, token::Token},
+    jwt::Jwt,
+    nut::v1,
+    orchid::v1::WechatMiniProgramLoginRequest,
+    tink::Loquat,
+    try_web, Error, HttpError,
 };
 use serde::{Deserialize, Serialize};
 use tonic::Request;
 
 use super::super::super::{
-    models::user::{Action, Dao as UserDao, Item as User},
+    models::{
+        log::Dao as LogDao,
+        user::{Action, Dao as UserDao, Item as User},
+        wechat::mini_program_user::Dao as WechatMiniProgramUserDao,
+    },
     orm::postgresql::Pool as DbPool,
     Orchid,
 };
-use super::SignInResponse;
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct BindRequest {
+    pub nickname: String,
+    pub password: String,
+}
+
+#[post("/bind")]
+pub async fn bind(
+    db: web::Data<DbPool>,
+    token: Token,
+    client_ip: ClientIp,
+    loquat: web::Data<Loquat>,
+    form: web::Json<BindRequest>,
+) -> WebResult<impl Responder> {
+    let client_ip = client_ip.to_string();
+    let mut db = try_web!(db.get())?;
+    let db = db.deref_mut();
+    let form = form.into_inner();
+    let loquat = loquat.deref();
+    let loquat = loquat.deref();
+
+    try_web!(db.transaction::<_, Error, _>(move |db| {
+        let user = UserDao::by_nickname(db, &form.nickname)?;
+        {
+            user.available()?;
+            user.auth(loquat, &form.password)?;
+        }
+        let wu = {
+            let uid = Jwt::verify(
+                loquat,
+                &token.0.unwrap_or_default(),
+                &Action::SignIn.to_string(),
+            )?;
+            WechatMiniProgramUserDao::by_uid(db, &uid)?
+        };
+        if let Some(user_id) = wu.user_id {
+            if user_id != user.id {
+                return Err(Box::new(HttpError(
+                    StatusCode::BAD_REQUEST,
+                    Some("Already bound to other user".to_string()),
+                )));
+            }
+        }
+
+        if wu.user_id.is_none() {
+            WechatMiniProgramUserDao::bind(db, wu.id, user.id)?;
+            LogDao::add::<_, User>(
+                db,
+                user.id,
+                v1::user_logs_response::item::Level::Info,
+                &client_ip,
+                Some(user.id),
+                &format!(
+                    "bind to wechat mini-program user({}, {})",
+                    wu.app_id, wu.open_id
+                ),
+            )?;
+        }
+        Ok(())
+    }))?;
+    Ok(web::Json(()))
+}
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct SignInRequest {
     pub app_id: String,
     pub code: String,
+    pub ttl: i64,
     pub version: String,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct SignInResponse {
+    pub token: String,
+    pub nickname: Option<String>,
+    pub avatar_url: Option<String>,
 }
 
 #[post("/sign-in")]
 pub async fn sign_in(
     db: web::Data<DbPool>,
     client_ip: ClientIp,
-    jwt: web::Data<Loquat>,
+    loquat: web::Data<Loquat>,
     oauth: web::Data<Orchid>,
     form: web::Json<SignInRequest>,
 ) -> WebResult<impl Responder> {
     let form = form.into_inner();
     let client_ip = client_ip.to_string();
-    let jwt = jwt.deref();
+    let loquat = loquat.deref();
+    let loquat = loquat.deref();
     debug!("try to sign in wechat user {:?} from {}", form, client_ip);
-    let mut cli = try_web!(oauth.open().await)?;
-    let mut req = Request::new(WeChatLoginRequest {
+    let mut cli = try_web!(oauth.wechat_mini_program().await)?;
+    let mut req = Request::new(WechatMiniProgramLoginRequest {
         app_id: form.app_id.clone(),
         code: form.code.clone(),
     });
@@ -47,14 +131,37 @@ pub async fn sign_in(
     let mut db = try_web!(db.get())?;
     let db = db.deref_mut();
     let res = res.into_inner();
-    let user = try_web!(UserDao::wechat(db, &client_ip, &form.app_id, &res))?;
-    let token = try_web!(jwt.sign(
-        &user.nickname,
+
+    let user = try_web!(db.transaction::<_, Error, _>(move |db| {
+        let user = WechatMiniProgramUserDao::sign_in(
+            db,
+            &form.app_id,
+            &res.openid,
+            &res.unionid,
+            &client_ip,
+        )?;
+        if let Some(user) = user.user_id {
+            LogDao::add::<_, User>(
+                db,
+                user,
+                v1::user_logs_response::item::Level::Info,
+                &client_ip,
+                Some(user),
+                "sign in by wechat mini-program",
+            )?;
+        }
+        Ok(user)
+    }))?;
+
+    let token = try_web!(Jwt::sign(
+        loquat,
+        &user.uid,
         &Action::SignIn.to_string(),
-        Duration::days(1)
+        Duration::minutes(form.ttl)
     ))?;
     Ok(web::Json(SignInResponse {
-        real_name: user.real_name,
+        nickname: user.nickname.clone(),
+        avatar_url: user.avatar_url,
         token,
     }))
 }

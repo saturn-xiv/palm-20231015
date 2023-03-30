@@ -14,6 +14,6 @@ impl Query {
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Response {
     pub session_key: String,
-    pub unionid: Option<String>,
+    pub unionid: String,
     pub openid: String,
 }

@@ -237,10 +237,36 @@ diesel::table! {
 }
 
 diesel::table! {
-    wechat_users (id) {
+    wechat_mini_program_users (id) {
         id -> Int4,
         user_id -> Nullable<Int4>,
+        uid -> Bpchar,
         union_id -> Varchar,
+        app_id -> Varchar,
+        open_id -> Varchar,
+        nickname -> Nullable<Varchar>,
+        avatar_url -> Nullable<Varchar>,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    wechat_oauth2_users (id) {
+        id -> Int4,
+        user_id -> Int4,
+        union_id -> Varchar,
+        app_id -> Varchar,
+        open_id -> Varchar,
+        nickname -> Varchar,
+        sex -> Int4,
+        city -> Varchar,
+        province -> Varchar,
+        country -> Varchar,
+        head_img_url -> Nullable<Varchar>,
+        privilege -> Bytea,
+        lang -> Varchar,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
@@ -266,5 +292,6 @@ diesel::allow_tables_to_appear_in_same_query!(
     users_contacts,
     vote_items,
     vote_logs,
-    wechat_users,
+    wechat_mini_program_users,
+    wechat_oauth2_users,
 );

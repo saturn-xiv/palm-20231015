@@ -4,6 +4,7 @@ import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as google_protobuf_duration_pb from 'google-protobuf/google/protobuf/duration_pb';
 import * as rbac_pb from './rbac_pb';
+import * as orchid_pb from './orchid_pb';
 
 
 export class IdRequest extends jspb.Message {
@@ -713,10 +714,8 @@ export class SignInByGoogleRequest extends jspb.Message {
   getCode(): string;
   setCode(value: string): SignInByGoogleRequest;
 
-  getState(): GoogleSignInUrlRequest.State | undefined;
-  setState(value?: GoogleSignInUrlRequest.State): SignInByGoogleRequest;
-  hasState(): boolean;
-  clearState(): SignInByGoogleRequest;
+  getState(): string;
+  setState(value: string): SignInByGoogleRequest;
 
   getRedirectUri(): string;
   setRedirectUri(value: string): SignInByGoogleRequest;
@@ -743,7 +742,7 @@ export namespace SignInByGoogleRequest {
   export type AsObject = {
     scopesList: Array<string>,
     code: string,
-    state?: GoogleSignInUrlRequest.State.AsObject,
+    state: string,
     redirectUri: string,
     nonce?: string,
     ttl?: google_protobuf_duration_pb.Duration.AsObject,
@@ -755,12 +754,53 @@ export namespace SignInByGoogleRequest {
   }
 }
 
+export class Oauth2State extends jspb.Message {
+  getGoto(): string;
+  setGoto(value: string): Oauth2State;
+
+  getHost(): string;
+  setHost(value: string): Oauth2State;
+
+  getUser(): string;
+  setUser(value: string): Oauth2State;
+  hasUser(): boolean;
+  clearUser(): Oauth2State;
+
+  getId(): string;
+  setId(value: string): Oauth2State;
+
+  getProject(): string;
+  setProject(value: string): Oauth2State;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Oauth2State.AsObject;
+  static toObject(includeInstance: boolean, msg: Oauth2State): Oauth2State.AsObject;
+  static serializeBinaryToWriter(message: Oauth2State, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Oauth2State;
+  static deserializeBinaryFromReader(message: Oauth2State, reader: jspb.BinaryReader): Oauth2State;
+}
+
+export namespace Oauth2State {
+  export type AsObject = {
+    pb_goto: string,
+    host: string,
+    user?: string,
+    id: string,
+    project: string,
+  }
+
+  export enum UserCase { 
+    _USER_NOT_SET = 0,
+    USER = 3,
+  }
+}
+
 export class GoogleSignInUrlRequest extends jspb.Message {
   getRedirectUri(): string;
   setRedirectUri(value: string): GoogleSignInUrlRequest;
 
-  getState(): GoogleSignInUrlRequest.State | undefined;
-  setState(value?: GoogleSignInUrlRequest.State): GoogleSignInUrlRequest;
+  getState(): Oauth2State | undefined;
+  setState(value?: Oauth2State): GoogleSignInUrlRequest;
   hasState(): boolean;
   clearState(): GoogleSignInUrlRequest;
 
@@ -775,42 +815,8 @@ export class GoogleSignInUrlRequest extends jspb.Message {
 export namespace GoogleSignInUrlRequest {
   export type AsObject = {
     redirectUri: string,
-    state?: GoogleSignInUrlRequest.State.AsObject,
+    state?: Oauth2State.AsObject,
   }
-
-  export class State extends jspb.Message {
-    getGoto(): string;
-    setGoto(value: string): State;
-
-    getHost(): string;
-    setHost(value: string): State;
-
-    getUser(): string;
-    setUser(value: string): State;
-    hasUser(): boolean;
-    clearUser(): State;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): State.AsObject;
-    static toObject(includeInstance: boolean, msg: State): State.AsObject;
-    static serializeBinaryToWriter(message: State, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): State;
-    static deserializeBinaryFromReader(message: State, reader: jspb.BinaryReader): State;
-  }
-
-  export namespace State {
-    export type AsObject = {
-      pb_goto: string,
-      host: string,
-      user?: string,
-    }
-
-    export enum UserCase { 
-      _USER_NOT_SET = 0,
-      USER = 3,
-    }
-  }
-
 }
 
 export class GoogleSignInUrlResponse extends jspb.Message {
@@ -832,6 +838,44 @@ export namespace GoogleSignInUrlResponse {
   export type AsObject = {
     url: string,
     nonce: string,
+  }
+}
+
+export class SignInByWechatOauth2Request extends jspb.Message {
+  getState(): string;
+  setState(value: string): SignInByWechatOauth2Request;
+
+  getAppId(): string;
+  setAppId(value: string): SignInByWechatOauth2Request;
+
+  getLanguage(): orchid_pb.WechatOauth2LoginRequest.Language;
+  setLanguage(value: orchid_pb.WechatOauth2LoginRequest.Language): SignInByWechatOauth2Request;
+
+  getUserInfo(): orchid_pb.WechatOauth2LoginResponse | undefined;
+  setUserInfo(value?: orchid_pb.WechatOauth2LoginResponse): SignInByWechatOauth2Request;
+  hasUserInfo(): boolean;
+  clearUserInfo(): SignInByWechatOauth2Request;
+
+  getTtl(): google_protobuf_duration_pb.Duration | undefined;
+  setTtl(value?: google_protobuf_duration_pb.Duration): SignInByWechatOauth2Request;
+  hasTtl(): boolean;
+  clearTtl(): SignInByWechatOauth2Request;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SignInByWechatOauth2Request.AsObject;
+  static toObject(includeInstance: boolean, msg: SignInByWechatOauth2Request): SignInByWechatOauth2Request.AsObject;
+  static serializeBinaryToWriter(message: SignInByWechatOauth2Request, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SignInByWechatOauth2Request;
+  static deserializeBinaryFromReader(message: SignInByWechatOauth2Request, reader: jspb.BinaryReader): SignInByWechatOauth2Request;
+}
+
+export namespace SignInByWechatOauth2Request {
+  export type AsObject = {
+    state: string,
+    appId: string,
+    language: orchid_pb.WechatOauth2LoginRequest.Language,
+    userInfo?: orchid_pb.WechatOauth2LoginResponse.AsObject,
+    ttl?: google_protobuf_duration_pb.Duration.AsObject,
   }
 }
 
@@ -1407,48 +1451,6 @@ export namespace TwilioProfile {
   export enum SmsStatusCallbackCase { 
     _SMS_STATUS_CALLBACK_NOT_SET = 0,
     SMS_STATUS_CALLBACK = 9,
-  }
-}
-
-export class WechatProfile extends jspb.Message {
-  getAppId(): string;
-  setAppId(value: string): WechatProfile;
-
-  getAppSecret(): string;
-  setAppSecret(value: string): WechatProfile;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): WechatProfile.AsObject;
-  static toObject(includeInstance: boolean, msg: WechatProfile): WechatProfile.AsObject;
-  static serializeBinaryToWriter(message: WechatProfile, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): WechatProfile;
-  static deserializeBinaryFromReader(message: WechatProfile, reader: jspb.BinaryReader): WechatProfile;
-}
-
-export namespace WechatProfile {
-  export type AsObject = {
-    appId: string,
-    appSecret: string,
-  }
-}
-
-export class SiteWechatTestResponse extends jspb.Message {
-  getItemsList(): Array<string>;
-  setItemsList(value: Array<string>): SiteWechatTestResponse;
-  clearItemsList(): SiteWechatTestResponse;
-  addItems(value: string, index?: number): SiteWechatTestResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SiteWechatTestResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: SiteWechatTestResponse): SiteWechatTestResponse.AsObject;
-  static serializeBinaryToWriter(message: SiteWechatTestResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SiteWechatTestResponse;
-  static deserializeBinaryFromReader(message: SiteWechatTestResponse, reader: jspb.BinaryReader): SiteWechatTestResponse;
-}
-
-export namespace SiteWechatTestResponse {
-  export type AsObject = {
-    itemsList: Array<string>,
   }
 }
 

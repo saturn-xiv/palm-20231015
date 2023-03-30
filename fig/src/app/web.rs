@@ -183,21 +183,21 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                     .service(
                         web::scope("/wechat")
                             .service(
-                                web::scope("/web")
-                                    .service(
+                                web::scope("/oauth2")
+                                    .service(                                        
                                         web::scope("/messaging")
                                             .service(
-                                                nut::controllers::wechat::web::messaging::verify,
+                                                nut::controllers::wechat::oauth2::messaging::verify,
                                             )
                                             .service(
-                                                nut::controllers::wechat::web::messaging::callback,
+                                                nut::controllers::wechat::oauth2::messaging::callback,
                                             ),
                                     )
                                     .service(
                                         web::scope("/sign-in")
-                                            .service(nut::controllers::wechat::web::sign_in::url)
+                                            .service(nut::controllers::wechat::oauth2::sign_in::url)
                                             .service(
-                                                nut::controllers::wechat::web::sign_in::callback,
+                                                nut::controllers::wechat::oauth2::sign_in::callback,
                                             ),
                                     ),
                             )

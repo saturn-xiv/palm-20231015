@@ -8,7 +8,6 @@ use palm::{
     crypto::Aes,
     handlers::peer::ClientIp,
     jwt::Jwt,
-    orchid::v1::WeChatLoginRequest,
     tink::Loquat,
     try_web,
     wechat::{oauth2::qr_connect::Request as UrlRequest, Config},
@@ -24,12 +23,12 @@ use super::super::super::super::{
     orm::postgresql::Pool as DbPool,
     Orchid,
 };
-use super::super::SignInResponse;
 
 #[get("/url")]
 pub async fn url(
     db: web::Data<DbPool>,
     aes: web::Data<Loquat>,
+    oauth: web::Data<Orchid>,
     form: web::Json<UrlRequest>,
 ) -> WebResult<impl Responder> {
     let form = form.into_inner();
@@ -54,9 +53,9 @@ pub async fn callback(
     db: web::Data<DbPool>,
     client_ip: ClientIp,
     jwt: web::Data<Loquat>,
+    oauth: web::Data<Orchid>,
     aes: web::Data<Aes>,
     form: web::Query<CallbackQuery>,
-    oauth: web::Data<Orchid>,
 ) -> WebResult<impl Responder> {
     let form = form.into_inner();
     let client_ip = client_ip.to_string();

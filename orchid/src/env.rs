@@ -1,7 +1,7 @@
 use hyper::StatusCode;
 use palm::{
     cache::redis::Config as Redis, jwt::Jwt, session::Session, tink::Loquat,
-    wechat::Config as WeChat, HttpError, Result,
+    wechat::Config as WechatConfig, HttpError, Result,
 };
 use serde::{Deserialize, Serialize};
 
@@ -9,7 +9,7 @@ use serde::{Deserialize, Serialize};
 pub struct Config {
     pub loquat: Loquat,
     pub redis: Redis,
-    pub wechat: Vec<WeChat>,
+    pub wechat: Vec<WechatConfig>,
     pub agents: Vec<String>,
 }
 
@@ -25,5 +25,17 @@ impl Config {
             error!("agent token is nil");
         }
         Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)))
+    }
+
+    pub fn wechat(&self, app_id: &str) -> Result<WechatConfig> {
+        for it in self.wechat.iter() {
+            if it.app_id == app_id {
+                return Ok(it.clone());
+            }
+        }
+        Err(Box::new(HttpError(
+            StatusCode::NOT_FOUND,
+            Some(format!("can't find app id {app_id}")),
+        )))
     }
 }

@@ -8,6 +8,7 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
 
 import "rbac.proto";
+import "orchid.proto";
 
 message IdRequest { int32 id = 1; }
 
@@ -82,7 +83,8 @@ service User {
       returns (GoogleSignInUrlResponse) {}
   rpc SignInByGoogle(SignInByGoogleRequest) returns (UserSignInResponse) {}
 
-  rpc SignInByWechat(SignInByWechatRequest) returns (UserSignInResponse) {}
+  rpc SignInByWechatOauth2(SignInByWechatOauth2Request)
+      returns (UserSignInResponse) {}
 }
 
 message UserSignInRequest {
@@ -203,23 +205,24 @@ message UserIndexResponse {
 message SignInByGoogleRequest {
   repeated string scopes = 1;
   string code = 2;
-  GoogleSignInUrlRequest.State state = 3;
+  string state = 3;
   string redirect_uri = 4;
 
   optional string nonce = 9;
   google.protobuf.Duration ttl = 11;
 }
 
-message GoogleSignInUrlRequest {
-  message State {
-    string goto = 1;
-    string host = 2;
-    optional string user = 3;
+message Oauth2State {
+  string goto = 1;
+  string host = 2;
+  optional string user = 3;
+  string id = 9;
 
-    string project = 11;
-  }
+  string project = 11;
+}
+message GoogleSignInUrlRequest {
   string redirect_uri = 1;
-  State state = 2;
+  Oauth2State state = 2;
 }
 
 message GoogleSignInUrlResponse {
@@ -227,16 +230,15 @@ message GoogleSignInUrlResponse {
   string nonce = 2;
 }
 
-message SignInByWechatRequest {
-  message MiniProgram {
-    string app_id = 1;
-    string code = 2;
-  }
-  message QrCode {}
-  oneof payload {
-    QrCode qr_code = 1;
-    MiniProgram mini_program = 2;
-  }
+message SignInByWechatOauth2Request {
+  string state = 1;
+  string code = 2;
+  string app_id = 3;
+
+  palm.orchid.v1.WechatOauth2LoginRequest.Language language = 8;
+  palm.orchid.v1.WechatOauth2LoginResponse user_info = 9;
+
+  google.protobuf.Duration ttl = 11;
 }
 
 // ----------------------------------------------------------------------------
