@@ -4,7 +4,7 @@ LABEL maintainer="Jeremy Zheng"
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt update
-RUN apt install -y lsb-release
+RUN apt install -y lsb-release apt-utils
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
@@ -99,7 +99,7 @@ RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
     && echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.zshrc
 
 # https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.52.1"
+ENV GRPC_VERSION "v1.53.0"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 RUN apt install -y libssl-dev
 RUN zsh -c "source $HOME/.zshrc \
