@@ -20,7 +20,7 @@ build_dashboard() {
 
 build_rust_gnu() {
     cd $WORKSPACE
-    apt -qq -y install libc6-dev:$2 libudev-dev:$2 libssl-dev:$2 \
+    apt-get -qq -y install libc6-dev:$2 libudev-dev:$2 libssl-dev:$2 \
         libpq5:$2 libpq-dev:$2 libmysqlclient-dev:$2 libsqlite3-dev:$2
     cargo build --release --target $1-unknown-linux-gnu -p $3
     cp $WORKSPACE/target/$1-unknown-linux-gnu/release/$3 $TARGET_DIR/bin/$1/
@@ -34,7 +34,7 @@ build_rust_musl() {
 }
 
 build_loquat() {
-    apt install -y g++-10 golang libunwind-dev libboost-all-dev libssl-dev libevent-dev
+    apt-get install -y g++-10 golang libunwind-dev libboost-all-dev libssl-dev libevent-dev
 
     mkdir -p $WORKSPACE/loquat/build/$1
     cd $WORKSPACE/loquat/build/$1
@@ -130,9 +130,12 @@ declare -a musl_projects=(
 )
 
 for p in "${musl_projects[@]}"
-do
-    build_rust_musl x86_64 $p
-    build_rust_musl aarch64 $p
+do    
+    build_rust_gnu x86_64 amd64 $p
+    # build_rust_musl x86_64 $p
+
+    build_rust_gnu aarch64 arm64 $p
+    # build_rust_musl aarch64 $p
 
     # build_rust_gnu riscv64gc riscv64 $p
 done
