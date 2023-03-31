@@ -110,7 +110,7 @@ RUN zsh -c "source $HOME/.zshrc \
         -DgRPC_SSL_PROVIDER=package \
         -DgRPC_BUILD_TESTS=OFF \
         -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
-    && make -j \
+    && make \
     && make install"
     
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
