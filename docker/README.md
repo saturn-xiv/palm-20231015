@@ -27,3 +27,5 @@ sudo apt install crun podman buildah
   podman pull docker.io/envoyproxy/envoy-dev:latest
   podman run --rm -it docker.io/envoyproxy/envoy-dev:latest
   ```
+
+- Merge file `~/.config/containers/storage.conf`
