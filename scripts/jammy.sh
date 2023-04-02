@@ -27,14 +27,14 @@ build_rust_gnu() {
     cd $WORKSPACE
     apt-get -qq -y install libc6-dev:$2 libudev-dev:$2 libssl-dev:$2 \
         libpq5:$2 libpq-dev:$2 libmysqlclient-dev:$2 libsqlite3-dev:$2
-    cargo build --release --target $1-unknown-linux-gnu -p $3
+    cargo build --quiet --release --target $1-unknown-linux-gnu -p $3
     cp $WORKSPACE/target/$1-unknown-linux-gnu/release/$3 $TARGET_DIR/bin/$1/
 }
 
 build_rust_musl() {
     cd $WORKSPACE
     CC=$1-linux-musl-gcc CXX=$1-linux-musl-g++ \
-        cargo build --release --target $1-unknown-linux-musl -p $2
+        cargo build --quiet --release --target $1-unknown-linux-musl -p $2
     cp $WORKSPACE/target/$1-unknown-linux-musl/release/$2 $TARGET_DIR/bin/$1/
 }
 
@@ -47,7 +47,7 @@ build_loquat() {
         -DABSL_PROPAGATE_CXX_STD=ON -DTINK_USE_SYSTEM_OPENSSL=OFF \
         -DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF \
         ../..
-    make loquat
+    make --silent loquat
     cp loquat $TARGET_DIR/bin/$1/
 }
 
