@@ -161,19 +161,19 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 )
                 .show_files_listing(),
             )
-            .service(
-                web::scope("/twilio").service(
-                    web::scope("/sms")
-                        .service(nut::controllers::twilio::sms::delivery_status)
-                        .service(nut::controllers::twilio::sms::incoming_messages),
-                ),
-            )
             .service(nut::controllers::attachments::create)
             .service(nut::controllers::captcha::get)
             .service(
                 web::scope("/api")
                     .service(
-                        web::scope("/flashcard").service(
+                        web::scope("/twilio").service(
+                            web::scope("/sms")
+                                .service(nut::controllers::twilio::sms::delivery_status)
+                                .service(nut::controllers::twilio::sms::incoming_messages),
+                        ),
+                    )
+                    .service(
+                        web::scope( "/flashcard").service(
                             web::scope("/books")
                                 .service(flashcard::controllers::books::show)
                                 .service(flashcard::controllers::books::create)
@@ -194,15 +194,18 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                                 ),
                             )
                             .service(
-                                web::scope("/mini-program").service(
-                                    web::scope("/messaging")
-                                        .service(
-                                            nut::controllers::wechat::mini_program::messaging::verify,
-                                        )
-                                        .service(
-                                            nut::controllers::wechat::mini_program::messaging::callback,
-                                        ),
-                                ),
+                                web::scope("/mini-program")
+                                            .service(nut::controllers::wechat::mini_program::sign_in)
+                                            .service(nut::controllers::wechat::mini_program::profile)
+                                            .service(
+                                                web::scope("/messaging")
+                                                    .service(
+                                                        nut::controllers::wechat::mini_program::messaging::verify,
+                                                    )
+                                                    .service(
+                                                        nut::controllers::wechat::mini_program::messaging::callback,
+                                                    ),
+                                            ),
                             )
                     )
                     .service(nut::controllers::echo)
