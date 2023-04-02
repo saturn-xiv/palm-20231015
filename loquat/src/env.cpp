@@ -70,6 +70,7 @@ std::string loquat::Jwt::verify(const std::string& token,
   auto validator_b =
       crypto::tink::JwtValidatorBuilder().IgnoreTypeHeader().IgnoreIssuer();
   if (audience) {
+    spdlog::debug("test with audience({})", audience.value());
     validator_b = validator_b.ExpectAudience(audience.value());
   }
   auto validator_r = validator_b.Build();
@@ -84,6 +85,7 @@ std::string loquat::Jwt::verify(const std::string& token,
   auto subject_r = payload.GetSubject();
   this->check(subject_r);
   auto subject = std::move(subject_r.ValueOrDie());
+  spdlog::debug("get subject({})", subject);
   return subject;
 }
 
