@@ -19,6 +19,11 @@ build_dashboard() {
 }
 
 build_rust_gnu() {
+    # PKG_CONFIG_ALLOW_CROSS=1
+    # PKG_CONFIG_DIR=
+    # PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig
+    # export PKG_CONFIG_ALLOW_CROSS PKG_CONFIG_DIR PKG_CONFIG_LIBDIR
+
     cd $WORKSPACE
     apt-get -qq -y install libc6-dev:$2 libudev-dev:$2 libssl-dev:$2 \
         libpq5:$2 libpq-dev:$2 libmysqlclient-dev:$2 libsqlite3-dev:$2
@@ -131,11 +136,11 @@ declare -a musl_projects=(
 
 for p in "${musl_projects[@]}"
 do    
-    build_rust_gnu x86_64 amd64 $p
-    # build_rust_musl x86_64 $p
+    # build_rust_gnu x86_64 amd64 $p
+    build_rust_musl x86_64 $p
 
-    build_rust_gnu aarch64 arm64 $p
-    # build_rust_musl aarch64 $p
+    # build_rust_gnu aarch64 arm64 $p
+    build_rust_musl aarch64 $p
 
     # build_rust_gnu riscv64gc riscv64 $p
 done
