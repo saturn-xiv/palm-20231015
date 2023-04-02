@@ -30,6 +30,7 @@ use super::super::super::{
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct BindRequest {
+    pub app_id: String,
     pub nickname: String,
     pub password: String,
 }
@@ -52,16 +53,16 @@ pub async fn bind(
     try_web!(db.transaction::<_, Error, _>(move |db| {
         let user = UserDao::by_nickname(db, &form.nickname)?;
         {
-            user.available()?;
             user.auth(loquat, &form.password)?;
+            user.available()?;
         }
         let wu = {
-            let uid = Jwt::verify(
+            let open_id = Jwt::verify(
                 loquat,
                 &token.0.unwrap_or_default(),
                 &Action::SignIn.to_string(),
             )?;
-            WechatMiniProgramUserDao::by_uid(db, &uid)?
+            WechatMiniProgramUserDao::by_openid(db, &form.app_id, &open_id)?
         };
         if let Some(user_id) = wu.user_id {
             if user_id != user.id {
@@ -120,7 +121,10 @@ pub async fn sign_in(
     let client_ip = client_ip.to_string();
     let loquat = loquat.deref();
     let loquat = loquat.deref();
-    debug!("try to sign in wechat user {:?} from {}", form, client_ip);
+    debug!(
+        "try to sign in wechat mini-program user {:?} from {}",
+        form, client_ip
+    );
     let mut cli = try_web!(oauth.wechat_mini_program().await)?;
     let mut req = Request::new(WechatMiniProgramLoginRequest {
         app_id: form.app_id.clone(),
@@ -129,7 +133,7 @@ pub async fn sign_in(
     try_web!(Loquat::authorization(&mut req, &oauth.token))?;
 
     let res = try_web!(cli.login(req).await)?;
-    debug!("fetch wechat user {:?}", res);
+    debug!("fetch wechat mini-program user {:?}", res);
     let mut db = try_web!(db.get())?;
     let db = db.deref_mut();
     let res = res.into_inner();
@@ -157,7 +161,7 @@ pub async fn sign_in(
 
     let token = try_web!(Jwt::sign(
         loquat,
-        &user.uid,
+        &user.open_id,
         &Action::SignIn.to_string(),
         Duration::minutes(form.ttl)
     ))?;

@@ -92,9 +92,6 @@
                 <constraints primaryKey="true" nullable="false" />
             </column>
             <column name="user_id" type="integer" />
-            <column name="uid" type="char(36)">
-                <constraints nullable="false" unique="true" />
-            </column>
             <column name="union_id" type="varchar(255)">
                 <constraints nullable="false" unique="true" />
             </column>

@@ -240,7 +240,6 @@ diesel::table! {
     wechat_mini_program_users (id) {
         id -> Int4,
         user_id -> Nullable<Int4>,
-        uid -> Bpchar,
         union_id -> Varchar,
         app_id -> Varchar,
         open_id -> Varchar,

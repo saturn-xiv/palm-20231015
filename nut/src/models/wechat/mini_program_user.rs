@@ -11,7 +11,6 @@ use super::super::user::Dao as UserDao;
 pub struct Item {
     pub id: i32,
     pub user_id: Option<i32>,
-    pub uid: String,
     pub union_id: String,
     pub app_id: String,
     pub open_id: String,
@@ -24,8 +23,8 @@ pub struct Item {
 
 pub trait Dao {
     fn all(&mut self) -> Result<Vec<Item>>;
-    fn by_uid(&mut self, uid: &str) -> Result<Item>;
     fn by_id(&mut self, id: i32) -> Result<Item>;
+    fn by_openid(&mut self, app_id: &str, open_id: &str) -> Result<Item>;
     fn bind(&mut self, id: i32, user: i32) -> Result<()>;
     fn set_profile(&mut self, id: i32, nickname: &str, avatar_url: &str) -> Result<()>;
     fn sign_in(&mut self, app_id: &str, open_id: &str, union_id: &str, ip: &str) -> Result<Item>;
@@ -38,9 +37,10 @@ impl Dao for Connection {
             .load::<Item>(self)?;
         Ok(items)
     }
-    fn by_uid(&mut self, uid: &str) -> Result<Item> {
+    fn by_openid(&mut self, app_id: &str, open_id: &str) -> Result<Item> {
         let it = wechat_mini_program_users::dsl::wechat_mini_program_users
-            .filter(wechat_mini_program_users::dsl::uid.eq(uid))
+            .filter(wechat_mini_program_users::dsl::app_id.eq(app_id))
+            .filter(wechat_mini_program_users::dsl::open_id.eq(open_id))
             .first::<Item>(self)?;
         Ok(it)
     }
