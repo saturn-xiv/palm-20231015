@@ -136,11 +136,11 @@ declare -a musl_projects=(
 
 for p in "${musl_projects[@]}"
 do    
-    # build_rust_gnu x86_64 amd64 $p
-    build_rust_musl x86_64 $p
+    build_rust_gnu x86_64 amd64 $p
+    # build_rust_musl x86_64 $p
 
-    # build_rust_gnu aarch64 arm64 $p
-    build_rust_musl aarch64 $p
+    build_rust_gnu aarch64 arm64 $p
+    # build_rust_musl aarch64 $p
 
     # build_rust_gnu riscv64gc riscv64 $p
 done
