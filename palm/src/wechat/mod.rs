@@ -50,7 +50,7 @@ pub struct Query {
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Error {
     #[serde(rename = "errcode")]
-    pub code: u32,
+    pub code: i32,
     #[serde(rename = "errmsg")]
     pub message: String,
 }
