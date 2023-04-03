@@ -36,6 +36,9 @@ use super::super::{
         log::Dao as LogDao,
         setting::Dao as SettingDao,
         user::{Action, Dao as UserDao, Item as User},
+        wechat::mini_program_user::{
+            Dao as WechatMiniProgramUserDao, Item as WechatMiniProgramUser,
+        },
         wechat::oauth2_user::Dao as WechatOauth2UserDao,
     },
     orm::postgresql::{Connection as Db, Pool as PostgreSqlPool},
@@ -870,6 +873,51 @@ impl v1::user_server::User for Service {
             v1::WechatOauth2SignInUrlRequest,
         >()))
     }
+
+    async fn current_wechat_mini_program_user(
+        &self,
+        req: Request<v1::CurrentWechatMiniProgramUserRequest>,
+    ) -> GrpcResult<v1::CurrentWechatMiniProgramUserResponse> {
+        let ss = Session::new(&req);
+        // let mut ch = try_grpc!(self.redis.get())?;
+        // let ch = ch.deref_mut();
+        let req = req.into_inner();
+
+        if let Some(ref token) = ss.token {
+            let jwt = self.jwt.deref();
+            let enf = self.enforcer.deref();
+            let open_id = try_grpc!(jwt.verify(token, &Action::SignIn.to_string()))?;
+
+            let mut db = try_grpc!(self.pgsql.get())?;
+            let db = db.deref_mut();
+            let wu = try_grpc!(WechatMiniProgramUserDao::by_openid(
+                db,
+                &req.app_id,
+                &open_id
+            ))?;
+
+            let ur = match wu.user_id {
+                Some(id) => {
+                    let user = try_grpc!(UserDao::by_id(db, id))?;
+                    let it = try_grpc!(
+                        new_sign_in_response(enf, &user, jwt, Duration::seconds(5)).await
+                    )?;
+                    Some(it)
+                }
+                None => None,
+            };
+            return Ok(Response::new(v1::CurrentWechatMiniProgramUserResponse {
+                wechat: Some(wu.into()),
+                user: ur,
+            }));
+        }
+
+        // let user = try_grpc!(ss.current_user(db, ch, jwt)).map(|x| x.uid).ok();
+
+        Err(Status::permission_denied(type_name::<
+            v1::CurrentWechatMiniProgramUserRequest,
+        >()))
+    }
 }
 
 impl Service {
@@ -911,6 +959,18 @@ impl Service {
         self.rabbitmq.produce(&task).await?;
 
         Ok(())
+    }
+}
+
+impl From<WechatMiniProgramUser> for v1::WechatMiniProgramUser {
+    fn from(x: WechatMiniProgramUser) -> Self {
+        Self {
+            app_id: x.app_id.clone(),
+            open_id: x.open_id.clone(),
+            union_id: x.union_id.clone(),
+            nickname: x.nickname.clone(),
+            avatar_url: x.avatar_url,
+        }
     }
 }
 

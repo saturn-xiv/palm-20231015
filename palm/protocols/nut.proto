@@ -89,6 +89,8 @@ service User {
       returns (palm.orchid.v1.WechatOauth2QrConnectResponse) {}
   rpc SignInByWechatOauth2(SignInByWechatOauth2Request)
       returns (UserSignInResponse) {}
+  rpc CurrentWechatMiniProgramUser(CurrentWechatMiniProgramUserRequest)
+      returns (CurrentWechatMiniProgramUserResponse) {}
 }
 
 message UserSignInRequest {
@@ -261,6 +263,18 @@ message WechatOauth2SignInUrlRequest {
   WechatOauth2SignInStateRequest state = 9;
 }
 
+message WechatMiniProgramUser {
+  string app_id = 11;
+  string open_id = 12;
+  string union_id = 13;
+  optional string nickname = 21;
+  optional string avatar_url = 22;
+}
+message CurrentWechatMiniProgramUserRequest { string app_id = 1; }
+message CurrentWechatMiniProgramUserResponse {
+  optional UserSignInResponse user = 1;
+  WechatMiniProgramUser wechat = 2;
+}
 // ----------------------------------------------------------------------------
 
 service Attachment {

@@ -1160,6 +1160,49 @@ export class UserClient {
     this.methodDescriptorSignInByWechatOauth2);
   }
 
+  methodDescriptorCurrentWechatMiniProgramUser = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.User/CurrentWechatMiniProgramUser',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.CurrentWechatMiniProgramUserRequest,
+    nut_pb.CurrentWechatMiniProgramUserResponse,
+    (request: nut_pb.CurrentWechatMiniProgramUserRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.CurrentWechatMiniProgramUserResponse.deserializeBinary
+  );
+
+  currentWechatMiniProgramUser(
+    request: nut_pb.CurrentWechatMiniProgramUserRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.CurrentWechatMiniProgramUserResponse>;
+
+  currentWechatMiniProgramUser(
+    request: nut_pb.CurrentWechatMiniProgramUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.CurrentWechatMiniProgramUserResponse) => void): grpcWeb.ClientReadableStream<nut_pb.CurrentWechatMiniProgramUserResponse>;
+
+  currentWechatMiniProgramUser(
+    request: nut_pb.CurrentWechatMiniProgramUserRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.CurrentWechatMiniProgramUserResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.User/CurrentWechatMiniProgramUser',
+        request,
+        metadata || {},
+        this.methodDescriptorCurrentWechatMiniProgramUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.User/CurrentWechatMiniProgramUser',
+    request,
+    metadata || {},
+    this.methodDescriptorCurrentWechatMiniProgramUser);
+  }
+
 }
 
 export class AttachmentClient {

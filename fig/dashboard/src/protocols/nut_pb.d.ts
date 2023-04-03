@@ -963,6 +963,103 @@ export namespace WechatOauth2SignInUrlRequest {
   }
 }
 
+export class WechatMiniProgramUser extends jspb.Message {
+  getAppId(): string;
+  setAppId(value: string): WechatMiniProgramUser;
+
+  getOpenId(): string;
+  setOpenId(value: string): WechatMiniProgramUser;
+
+  getUnionId(): string;
+  setUnionId(value: string): WechatMiniProgramUser;
+
+  getNickname(): string;
+  setNickname(value: string): WechatMiniProgramUser;
+  hasNickname(): boolean;
+  clearNickname(): WechatMiniProgramUser;
+
+  getAvatarUrl(): string;
+  setAvatarUrl(value: string): WechatMiniProgramUser;
+  hasAvatarUrl(): boolean;
+  clearAvatarUrl(): WechatMiniProgramUser;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatMiniProgramUser.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatMiniProgramUser): WechatMiniProgramUser.AsObject;
+  static serializeBinaryToWriter(message: WechatMiniProgramUser, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatMiniProgramUser;
+  static deserializeBinaryFromReader(message: WechatMiniProgramUser, reader: jspb.BinaryReader): WechatMiniProgramUser;
+}
+
+export namespace WechatMiniProgramUser {
+  export type AsObject = {
+    appId: string,
+    openId: string,
+    unionId: string,
+    nickname?: string,
+    avatarUrl?: string,
+  }
+
+  export enum NicknameCase { 
+    _NICKNAME_NOT_SET = 0,
+    NICKNAME = 21,
+  }
+
+  export enum AvatarUrlCase { 
+    _AVATAR_URL_NOT_SET = 0,
+    AVATAR_URL = 22,
+  }
+}
+
+export class CurrentWechatMiniProgramUserRequest extends jspb.Message {
+  getAppId(): string;
+  setAppId(value: string): CurrentWechatMiniProgramUserRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CurrentWechatMiniProgramUserRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CurrentWechatMiniProgramUserRequest): CurrentWechatMiniProgramUserRequest.AsObject;
+  static serializeBinaryToWriter(message: CurrentWechatMiniProgramUserRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CurrentWechatMiniProgramUserRequest;
+  static deserializeBinaryFromReader(message: CurrentWechatMiniProgramUserRequest, reader: jspb.BinaryReader): CurrentWechatMiniProgramUserRequest;
+}
+
+export namespace CurrentWechatMiniProgramUserRequest {
+  export type AsObject = {
+    appId: string,
+  }
+}
+
+export class CurrentWechatMiniProgramUserResponse extends jspb.Message {
+  getUser(): UserSignInResponse | undefined;
+  setUser(value?: UserSignInResponse): CurrentWechatMiniProgramUserResponse;
+  hasUser(): boolean;
+  clearUser(): CurrentWechatMiniProgramUserResponse;
+
+  getWechat(): WechatMiniProgramUser | undefined;
+  setWechat(value?: WechatMiniProgramUser): CurrentWechatMiniProgramUserResponse;
+  hasWechat(): boolean;
+  clearWechat(): CurrentWechatMiniProgramUserResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CurrentWechatMiniProgramUserResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: CurrentWechatMiniProgramUserResponse): CurrentWechatMiniProgramUserResponse.AsObject;
+  static serializeBinaryToWriter(message: CurrentWechatMiniProgramUserResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CurrentWechatMiniProgramUserResponse;
+  static deserializeBinaryFromReader(message: CurrentWechatMiniProgramUserResponse, reader: jspb.BinaryReader): CurrentWechatMiniProgramUserResponse;
+}
+
+export namespace CurrentWechatMiniProgramUserResponse {
+  export type AsObject = {
+    user?: UserSignInResponse.AsObject,
+    wechat?: WechatMiniProgramUser.AsObject,
+  }
+
+  export enum UserCase { 
+    _USER_NOT_SET = 0,
+    USER = 1,
+  }
+}
+
 export class AttachmentShowRequest extends jspb.Message {
   getId(): number;
   setId(value: number): AttachmentShowRequest;
