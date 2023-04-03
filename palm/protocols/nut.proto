@@ -108,7 +108,7 @@ message UserQueryRequest {
 }
 
 message UserSignInResponse {
-  string token = 1;
+  optional string token = 1;
   UserIndexResponse.Item payload = 2;
   repeated string roles = 11;
 

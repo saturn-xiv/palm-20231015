@@ -221,6 +221,8 @@ export namespace UserQueryRequest {
 export class UserSignInResponse extends jspb.Message {
   getToken(): string;
   setToken(value: string): UserSignInResponse;
+  hasToken(): boolean;
+  clearToken(): UserSignInResponse;
 
   getPayload(): UserIndexResponse.Item | undefined;
   setPayload(value?: UserIndexResponse.Item): UserSignInResponse;
@@ -247,10 +249,15 @@ export class UserSignInResponse extends jspb.Message {
 
 export namespace UserSignInResponse {
   export type AsObject = {
-    token: string,
+    token?: string,
     payload?: UserIndexResponse.Item.AsObject,
     rolesList: Array<string>,
     permissionsList: Array<rbac_pb.PermissionsResponse.Item.AsObject>,
+  }
+
+  export enum TokenCase { 
+    _TOKEN_NOT_SET = 0,
+    TOKEN = 1,
   }
 }
 

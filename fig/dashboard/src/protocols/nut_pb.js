@@ -3613,8 +3613,8 @@ proto.palm.nut.v1.UserSignInResponse.prototype.serializeBinary = function() {
  */
 proto.palm.nut.v1.UserSignInResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getToken();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 1));
+  if (f != null) {
     writer.writeString(
       1,
       f
@@ -3660,7 +3660,25 @@ proto.palm.nut.v1.UserSignInResponse.prototype.getToken = function() {
  * @return {!proto.palm.nut.v1.UserSignInResponse} returns this
  */
 proto.palm.nut.v1.UserSignInResponse.prototype.setToken = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.nut.v1.UserSignInResponse} returns this
+ */
+proto.palm.nut.v1.UserSignInResponse.prototype.clearToken = function() {
+  return jspb.Message.setField(this, 1, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.nut.v1.UserSignInResponse.prototype.hasToken = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 

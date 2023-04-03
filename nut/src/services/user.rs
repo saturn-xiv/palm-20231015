@@ -94,8 +94,10 @@ impl v1::user_server::User for Service {
                     enf,
                     &user,
                     jwt,
-                    req.ttl
-                        .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds)),
+                    Some(
+                        req.ttl
+                            .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds))
+                    ),
                 )
                 .await
             )?;
@@ -303,7 +305,8 @@ impl v1::user_server::User for Service {
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
         let req = req.into_inner();
 
-        let it = try_grpc!(new_sign_in_response(enf, &user, jwt, to_chrono_duration!(req)).await)?;
+        let it =
+            try_grpc!(new_sign_in_response(enf, &user, jwt, Some(to_chrono_duration!(req))).await)?;
 
         Ok(Response::new(it))
     }
@@ -747,8 +750,10 @@ impl v1::user_server::User for Service {
                 enf,
                 &user,
                 jwt,
-                req.ttl
-                    .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds)),
+                Some(
+                    req.ttl
+                        .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds))
+                ),
             )
             .await
         )?;
@@ -808,7 +813,7 @@ impl v1::user_server::User for Service {
             Ok(user)
         }))?;
 
-        let it = try_grpc!(new_sign_in_response(enf, &user, jwt, ttl,).await)?;
+        let it = try_grpc!(new_sign_in_response(enf, &user, jwt, Some(ttl)).await)?;
         Ok(Response::new(it))
     }
 
@@ -899,9 +904,7 @@ impl v1::user_server::User for Service {
             let ur = match wu.user_id {
                 Some(id) => {
                     let user = try_grpc!(UserDao::by_id(db, id))?;
-                    let it = try_grpc!(
-                        new_sign_in_response(enf, &user, jwt, Duration::seconds(5)).await
-                    )?;
+                    let it = try_grpc!(new_sign_in_response(enf, &user, jwt, None).await)?;
                     Some(it)
                 }
                 None => None,
@@ -1019,9 +1022,15 @@ pub async fn new_sign_in_response<P: Jwt>(
     enforcer: &Mutex<Enforcer>,
     user: &User,
     jwt: &P,
-    ttl: Duration,
+    ttl: Option<Duration>,
 ) -> Result<v1::UserSignInResponse> {
-    let token = jwt.sign(&user.nickname, &Action::SignIn.to_string(), ttl)?;
+    let token = match ttl {
+        Some(ttl) => {
+            let it = jwt.sign(&user.nickname, &Action::SignIn.to_string(), ttl)?;
+            Some(it)
+        }
+        None => None,
+    };
     let name = UserRequest { id: user.id }.to_string();
     let mut enforcer = enforcer.lock().await;
 
