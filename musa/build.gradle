@@ -18,10 +18,14 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 
 	implementation 'com.github.wechatpay-apiv3:wechatpay-java:0.2.7'
+
+	// https://mvnrepository.com/artifact/io.grpc/grpc-protobuf
+	implementation group: 'io.grpc', name: 'grpc-protobuf', version: '1.54.0'
+	//	https://github.com/grpc/grpc-java
 	runtimeOnly 'io.grpc:grpc-netty-shaded:1.54.0'
 	implementation 'io.grpc:grpc-protobuf:1.54.0'
 	implementation 'io.grpc:grpc-stub:1.54.0'
-	compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
+	implementation 'org.apache.tomcat:annotations-api:6.0.53'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
