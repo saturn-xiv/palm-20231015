@@ -113,6 +113,13 @@ message UserSignInResponse {
   repeated string roles = 11;
 
   repeated palm.rbac.v1.PermissionsResponse.Item permissions = 12;
+
+  message Wechat {
+    bool mini_program = 1;
+    bool oauth2 = 2;
+  }
+  bool google = 21;
+  Wechat wechat = 22;
 }
 
 message UserSignUpRequest {

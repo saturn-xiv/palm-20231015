@@ -40,6 +40,7 @@ pub trait Dao {
         ip: &str,
     ) -> Result<User>;
     fn set_profile(&mut self, user: i32, token: &GoogleOpenIdToken) -> Result<()>;
+    fn count_by_user(&mut self, user: i32) -> Result<i64>;
 }
 
 impl Dao for Connection {
@@ -161,5 +162,13 @@ impl Dao for Connection {
 
         UserDao::sign_in(self, user.id, ip)?;
         Ok(user)
+    }
+
+    fn count_by_user(&mut self, user: i32) -> Result<i64> {
+        let cnt: i64 = google_users::dsl::google_users
+            .filter(google_users::dsl::user_id.eq(user))
+            .count()
+            .get_result(self)?;
+        Ok(cnt)
     }
 }

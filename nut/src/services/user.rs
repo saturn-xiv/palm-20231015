@@ -91,6 +91,7 @@ impl v1::user_server::User for Service {
 
             let it = try_grpc!(
                 new_sign_in_response(
+                    db,
                     enf,
                     &user,
                     jwt,
@@ -305,8 +306,9 @@ impl v1::user_server::User for Service {
         let user = try_grpc!(ss.current_user(db, ch, jwt))?;
         let req = req.into_inner();
 
-        let it =
-            try_grpc!(new_sign_in_response(enf, &user, jwt, Some(to_chrono_duration!(req))).await)?;
+        let it = try_grpc!(
+            new_sign_in_response(db, enf, &user, jwt, Some(to_chrono_duration!(req))).await
+        )?;
 
         Ok(Response::new(it))
     }
@@ -747,6 +749,7 @@ impl v1::user_server::User for Service {
 
         let it = try_grpc!(
             new_sign_in_response(
+                db,
                 enf,
                 &user,
                 jwt,
@@ -813,7 +816,7 @@ impl v1::user_server::User for Service {
             Ok(user)
         }))?;
 
-        let it = try_grpc!(new_sign_in_response(enf, &user, jwt, Some(ttl)).await)?;
+        let it = try_grpc!(new_sign_in_response(db, enf, &user, jwt, Some(ttl)).await)?;
         Ok(Response::new(it))
     }
 
@@ -904,7 +907,7 @@ impl v1::user_server::User for Service {
             let ur = match wu.user_id {
                 Some(id) => {
                     let user = try_grpc!(UserDao::by_id(db, id))?;
-                    let it = try_grpc!(new_sign_in_response(enf, &user, jwt, None).await)?;
+                    let it = try_grpc!(new_sign_in_response(db, enf, &user, jwt, None).await)?;
                     Some(it)
                 }
                 None => None,
@@ -1019,6 +1022,7 @@ impl User {
 }
 
 pub async fn new_sign_in_response<P: Jwt>(
+    db: &mut Db,
     enforcer: &Mutex<Enforcer>,
     user: &User,
     jwt: &P,
@@ -1053,6 +1057,11 @@ pub async fn new_sign_in_response<P: Jwt>(
         payload: Some(user.clone().into()),
         permissions,
         roles,
+        google: GoogleUserDao::count_by_user(db, user.id)? > 0,
+        wechat: Some(v1::user_sign_in_response::Wechat {
+            mini_program: WechatMiniProgramUserDao::count_by_user(db, user.id)? > 0,
+            oauth2: WechatOauth2UserDao::count_by_user(db, user.id)? > 0,
+        }),
     })
 }
 

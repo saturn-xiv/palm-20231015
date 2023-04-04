@@ -239,6 +239,14 @@ export class UserSignInResponse extends jspb.Message {
   clearPermissionsList(): UserSignInResponse;
   addPermissions(value?: rbac_pb.PermissionsResponse.Item, index?: number): rbac_pb.PermissionsResponse.Item;
 
+  getGoogle(): boolean;
+  setGoogle(value: boolean): UserSignInResponse;
+
+  getWechat(): UserSignInResponse.Wechat | undefined;
+  setWechat(value?: UserSignInResponse.Wechat): UserSignInResponse;
+  hasWechat(): boolean;
+  clearWechat(): UserSignInResponse;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UserSignInResponse.AsObject;
   static toObject(includeInstance: boolean, msg: UserSignInResponse): UserSignInResponse.AsObject;
@@ -253,7 +261,32 @@ export namespace UserSignInResponse {
     payload?: UserIndexResponse.Item.AsObject,
     rolesList: Array<string>,
     permissionsList: Array<rbac_pb.PermissionsResponse.Item.AsObject>,
+    google: boolean,
+    wechat?: UserSignInResponse.Wechat.AsObject,
   }
+
+  export class Wechat extends jspb.Message {
+    getMiniProgram(): boolean;
+    setMiniProgram(value: boolean): Wechat;
+
+    getOauth2(): boolean;
+    setOauth2(value: boolean): Wechat;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Wechat.AsObject;
+    static toObject(includeInstance: boolean, msg: Wechat): Wechat.AsObject;
+    static serializeBinaryToWriter(message: Wechat, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Wechat;
+    static deserializeBinaryFromReader(message: Wechat, reader: jspb.BinaryReader): Wechat;
+  }
+
+  export namespace Wechat {
+    export type AsObject = {
+      miniProgram: boolean,
+      oauth2: boolean,
+    }
+  }
+
 
   export enum TokenCase { 
     _TOKEN_NOT_SET = 0,

@@ -28,6 +28,7 @@ pub trait Dao {
     fn bind(&mut self, id: i32, user: i32) -> Result<()>;
     fn set_profile(&mut self, id: i32, nickname: &str, avatar_url: &str) -> Result<()>;
     fn sign_in(&mut self, app_id: &str, open_id: &str, union_id: &str, ip: &str) -> Result<Item>;
+    fn count_by_user(&mut self, user: i32) -> Result<i64>;
 }
 
 impl Dao for Connection {
@@ -116,5 +117,13 @@ impl Dao for Connection {
             .filter(wechat_mini_program_users::dsl::open_id.eq(open_id))
             .first::<Item>(self)?;
         Ok(it)
+    }
+
+    fn count_by_user(&mut self, user: i32) -> Result<i64> {
+        let cnt: i64 = wechat_mini_program_users::dsl::wechat_mini_program_users
+            .filter(wechat_mini_program_users::dsl::user_id.eq(user))
+            .count()
+            .get_result(self)?;
+        Ok(cnt)
     }
 }

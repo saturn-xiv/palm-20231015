@@ -49,6 +49,7 @@ pub trait Dao {
         ip: &str,
     ) -> Result<User>;
     fn destroy(&mut self, id: i32) -> Result<()>;
+    fn count_by_user(&mut self, user: i32) -> Result<i64>;
 }
 
 impl Dao for Connection {
@@ -182,5 +183,13 @@ impl Dao for Connection {
         )
         .execute(self)?;
         Ok(())
+    }
+
+    fn count_by_user(&mut self, user: i32) -> Result<i64> {
+        let cnt: i64 = wechat_oauth2_users::dsl::wechat_oauth2_users
+            .filter(wechat_oauth2_users::dsl::user_id.eq(user))
+            .count()
+            .get_result(self)?;
+        Ok(cnt)
     }
 }
