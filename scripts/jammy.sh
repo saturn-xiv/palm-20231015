@@ -57,7 +57,9 @@ build_musa() {
     gradle clean
     gradle build
     cp build/libs/musa-73dc6a4.dirty.jar $TARGET_DIR/
-    find build/libs ! -name '*plain*' -type f -exec cp '{}' $TARGET_DIR/ \;
+    mkdir -p $TARGET_DIR/musa
+    find build/libs ! -name '*plain*' -type f -exec cp '{}' $TARGET_DIR/musa \;
+    cp README.md application.properties $TARGET_DIR/musa/
 }
 
 copy_assets() {

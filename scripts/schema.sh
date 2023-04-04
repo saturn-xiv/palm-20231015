@@ -22,6 +22,16 @@ function generate_grpc_by_lang() {
         $WORKSPACE/palm/protocols/*.proto
 }
 
+function copy_musa() {
+    local package=com/github/saturn_xiv/palm/plugins/musa/v1
+    local target=$WORKSPACE/musa/src/main/java/$package
+    if [ -d $target ]
+    then
+        rm -r $target
+    fi
+    cp -r $WORKSPACE/tmp/protocols/java/$package $target
+}
+
 function generate_flatbuffers() {
     echo "generate flatbuffers"
     flatc --rust --filename-suffix "" -o $WORKSPACE/$2 $WORKSPACE/$1.fbs
@@ -127,6 +137,7 @@ done
 generate_fig_web
 generate_aloe_web
 generate_loquat
+copy_musa
 
 
 echo 'format rust code'

@@ -334,6 +334,12 @@ pub mod orchid {
         tonic::include_proto!("palm.orchid.v1");
     }
 }
+pub mod musa {
+    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
+    pub mod v1 {
+        tonic::include_proto!("palm.musa.v1");
+    }
+}
 pub mod ops {
     pub mod mail {
         #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]

@@ -1,0 +1,18 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.github.saturn_xiv.palm.plugins.musa.v1";
+package palm.musa.v1;
+
+import "google/protobuf/empty.proto";
+
+// ----------------------------------------------------------------------------
+
+service WechatPay {
+  rpc Query(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+// ----------------------------------------------------------------------------
+
+service Health {
+  rpc Check(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
