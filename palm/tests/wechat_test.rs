@@ -8,7 +8,7 @@ pub struct Config {
 }
 
 #[tokio::test]
-async fn api() {
+async fn config() {
     let mut cfg = Config::default();
     for i in 1..3 {
         cfg.wechat.push(WechatProfile {

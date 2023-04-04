@@ -41,6 +41,7 @@ impl v1::wechat_oauth2_server::WechatOauth2 for Service {
         try_grpc!(self.config.auth(&ss))?;
 
         let req = req.into_inner();
+        debug!("wechat oauth2 login {:?}", req);
         let cli = WechatClient {
             redis: self.redis.clone(),
             config: try_grpc!(self.config.wechat(&req.app_id))?,

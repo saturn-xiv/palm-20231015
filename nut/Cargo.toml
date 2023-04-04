@@ -33,6 +33,10 @@ handlebars = "4"
 version = "0.4"
 features = ["serde"]
 
+[dependencies.hex]
+version = "0.4"
+features = ["serde"]
+
 [dependencies.sqlx-adapter]
 version = "0.4"
 features = ["postgres"]

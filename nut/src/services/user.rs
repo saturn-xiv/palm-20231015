@@ -701,6 +701,7 @@ impl v1::user_server::User for Service {
         let req = req.into_inner();
 
         let state = try_grpc!(req.state.parse::<Oauth2State>())?;
+        debug!("google oauth2 sign {:?}, {:?}", req, state);
 
         let cfg: GoogleClientSecret = try_grpc!(SettingDao::get(
             db,
@@ -773,6 +774,11 @@ impl v1::user_server::User for Service {
         let jwt = self.jwt.deref();
         let req = req.into_inner();
 
+        {
+            let it = try_grpc!(req.state.parse::<Oauth2State>())?;
+            debug!("wechat oauth2 sign {:?}, {:?}", req, it);
+        }
+
         let lang = req.language();
         let ttl = req
             .ttl
@@ -780,12 +786,13 @@ impl v1::user_server::User for Service {
 
         let info = {
             let mut cli = try_grpc!(self.orchid.wechat_oauth2().await)?;
-            let req = Request::new(orchid::WechatOauth2LoginRequest {
+            let mut req = Request::new(orchid::WechatOauth2LoginRequest {
                 app_id: req.app_id.clone(),
                 code: req.code.clone(),
                 state: req.state.clone(),
                 language: req.language,
             });
+            try_grpc!(Loquat::authorization(&mut req, &self.orchid.token))?;
             let res = try_grpc!(cli.login(req).await)?;
             debug!("fetch wechat user {:?}", res);
             res.into_inner()

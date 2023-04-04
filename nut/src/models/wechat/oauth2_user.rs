@@ -158,6 +158,9 @@ impl Dao for Connection {
                 insert_into(wechat_oauth2_users::dsl::wechat_oauth2_users)
                     .values((
                         wechat_oauth2_users::dsl::user_id.eq(user.id),
+                        wechat_oauth2_users::dsl::app_id.eq(app_id),
+                        wechat_oauth2_users::dsl::open_id.eq(&info.openid),
+                        wechat_oauth2_users::dsl::union_id.eq(&info.unionid),
                         wechat_oauth2_users::dsl::nickname.eq(&info.nickname),
                         wechat_oauth2_users::dsl::sex.eq(info.sex),
                         wechat_oauth2_users::dsl::city.eq(&info.city),
