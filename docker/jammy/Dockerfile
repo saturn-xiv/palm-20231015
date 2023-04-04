@@ -114,6 +114,16 @@ RUN zsh -c "source $HOME/.zshrc \
     && make install \
     && make clean"
     
+ENV JDK_VERSION "20-open"
+# https://docs.gradle.org/current/userguide/compatibility.html
+ENV GRADLE_VERSION "8.1-rc-2"
+RUN curl -s "https://get.sdkman.io" | zsh
+RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
+RUN zsh -c "source $HOME/.zshrc \
+    && sdk install java ${JDK_VERSION} \
+    && sdk install maven \
+    && sdk install gradle ${GRADLE_VERSION}"
+
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
 VOLUME /workspace

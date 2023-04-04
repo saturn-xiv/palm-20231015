@@ -4,6 +4,7 @@ set -e
 
 export WORKSPACE=$PWD
 export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
+export BUILD_TIME=$(date -u -R)
 export TARGET_DIR=$PWD/tmp/palm-$GIT_VERSION
 
 # -----------------------------------------------------------------------------
@@ -51,6 +52,13 @@ build_loquat() {
     cp loquat $TARGET_DIR/bin/$1/
 }
 
+build_musa() {
+    cd $WORKSPACE/musa
+    gradle clean
+    gradle build
+    cp build/libs/musa-73dc6a4.dirty.jar $TARGET_DIR/
+    find build/libs ! -name '*plain*' -type f -exec cp '{}' $TARGET_DIR/ \;
+}
 
 copy_assets() {
     cd $WORKSPACE
@@ -163,6 +171,8 @@ fi
 # build_dashboard fig
 # build_dashboard aloe
 copy_assets
+
+build_musa
 
 # -----------------------------------------------------------------------------
 

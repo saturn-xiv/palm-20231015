@@ -80,6 +80,7 @@ message WechatOauth2LoginRequest {
   string state = 3;
   WechatOauth2QrConnectRequest.Language language = 9;
 }
+
 // ----------------------------------------------------------------------------
 
 service Health {
