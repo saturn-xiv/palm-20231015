@@ -8174,7 +8174,6 @@ proto.palm.nut.v1.SignInByWechatOauth2Request.toObject = function(includeInstanc
     code: jspb.Message.getFieldWithDefault(msg, 2, ""),
     appId: jspb.Message.getFieldWithDefault(msg, 3, ""),
     language: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    userInfo: (f = msg.getUserInfo()) && orchid_pb.WechatOauth2LoginResponse.toObject(includeInstance, f),
     ttl: (f = msg.getTtl()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
   };
 
@@ -8227,11 +8226,6 @@ proto.palm.nut.v1.SignInByWechatOauth2Request.deserializeBinaryFromReader = func
     case 8:
       var value = /** @type {!proto.palm.orchid.v1.WechatOauth2QrConnectRequest.Language} */ (reader.readEnum());
       msg.setLanguage(value);
-      break;
-    case 9:
-      var value = new orchid_pb.WechatOauth2LoginResponse;
-      reader.readMessage(value,orchid_pb.WechatOauth2LoginResponse.deserializeBinaryFromReader);
-      msg.setUserInfo(value);
       break;
     case 11:
       var value = new google_protobuf_duration_pb.Duration;
@@ -8293,14 +8287,6 @@ proto.palm.nut.v1.SignInByWechatOauth2Request.serializeBinaryToWriter = function
     writer.writeEnum(
       8,
       f
-    );
-  }
-  f = message.getUserInfo();
-  if (f != null) {
-    writer.writeMessage(
-      9,
-      f,
-      orchid_pb.WechatOauth2LoginResponse.serializeBinaryToWriter
     );
   }
   f = message.getTtl();
@@ -8383,43 +8369,6 @@ proto.palm.nut.v1.SignInByWechatOauth2Request.prototype.getLanguage = function()
  */
 proto.palm.nut.v1.SignInByWechatOauth2Request.prototype.setLanguage = function(value) {
   return jspb.Message.setProto3EnumField(this, 8, value);
-};
-
-
-/**
- * optional palm.orchid.v1.WechatOauth2LoginResponse user_info = 9;
- * @return {?proto.palm.orchid.v1.WechatOauth2LoginResponse}
- */
-proto.palm.nut.v1.SignInByWechatOauth2Request.prototype.getUserInfo = function() {
-  return /** @type{?proto.palm.orchid.v1.WechatOauth2LoginResponse} */ (
-    jspb.Message.getWrapperField(this, orchid_pb.WechatOauth2LoginResponse, 9));
-};
-
-
-/**
- * @param {?proto.palm.orchid.v1.WechatOauth2LoginResponse|undefined} value
- * @return {!proto.palm.nut.v1.SignInByWechatOauth2Request} returns this
-*/
-proto.palm.nut.v1.SignInByWechatOauth2Request.prototype.setUserInfo = function(value) {
-  return jspb.Message.setWrapperField(this, 9, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.palm.nut.v1.SignInByWechatOauth2Request} returns this
- */
-proto.palm.nut.v1.SignInByWechatOauth2Request.prototype.clearUserInfo = function() {
-  return this.setUserInfo(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.palm.nut.v1.SignInByWechatOauth2Request.prototype.hasUserInfo = function() {
-  return jspb.Message.getField(this, 9) != null;
 };
 
 

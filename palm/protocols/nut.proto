@@ -249,7 +249,6 @@ message SignInByWechatOauth2Request {
   string app_id = 3;
 
   palm.orchid.v1.WechatOauth2QrConnectRequest.Language language = 8;
-  palm.orchid.v1.WechatOauth2LoginResponse user_info = 9;
 
   google.protobuf.Duration ttl = 11;
 }

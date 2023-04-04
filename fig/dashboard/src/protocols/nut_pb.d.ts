@@ -898,11 +898,6 @@ export class SignInByWechatOauth2Request extends jspb.Message {
   getLanguage(): orchid_pb.WechatOauth2QrConnectRequest.Language;
   setLanguage(value: orchid_pb.WechatOauth2QrConnectRequest.Language): SignInByWechatOauth2Request;
 
-  getUserInfo(): orchid_pb.WechatOauth2LoginResponse | undefined;
-  setUserInfo(value?: orchid_pb.WechatOauth2LoginResponse): SignInByWechatOauth2Request;
-  hasUserInfo(): boolean;
-  clearUserInfo(): SignInByWechatOauth2Request;
-
   getTtl(): google_protobuf_duration_pb.Duration | undefined;
   setTtl(value?: google_protobuf_duration_pb.Duration): SignInByWechatOauth2Request;
   hasTtl(): boolean;
@@ -922,7 +917,6 @@ export namespace SignInByWechatOauth2Request {
     code: string,
     appId: string,
     language: orchid_pb.WechatOauth2QrConnectRequest.Language,
-    userInfo?: orchid_pb.WechatOauth2LoginResponse.AsObject,
     ttl?: google_protobuf_duration_pb.Duration.AsObject,
   }
 }
