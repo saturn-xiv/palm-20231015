@@ -1,4 +1,3 @@
-use std::ops::Deref;
 use std::ops::DerefMut;
 
 use actix_web::{
@@ -7,9 +6,7 @@ use actix_web::{
 use diesel::Connection as DieselConnection;
 use palm::{
     handlers::peer::ClientIp,
-    jwt::Jwt,
     nut::v1,
-    tink::Loquat,
     try_web,
     wechat::{
         oauth2::message_push::{MessageRequest, VerifyRequest},
@@ -24,42 +21,43 @@ use super::super::super::super::{
     },
     orm::postgresql::Pool as DbPool,
 };
+use super::super::get_config_by_project;
 
-#[get("/{token}")]
+#[get("/{project}")]
 pub async fn verify(
     form: web::Query<VerifyRequest>,
     params: web::Path<String>,
-    loquat: web::Data<Loquat>,
 ) -> WebResult<impl Responder> {
     let form = form.into_inner();
-    {
-        let token = params.into_inner();
-        let loquat = loquat.deref();
-        let loquat = loquat.deref();
-        try_web!(Jwt::verify(loquat, &token, AUDIENCE))?;
-    }
-    // TODO fix token
-    try_web!(form.check(""))?;
+
+    let cfg = {
+        let project = params.into_inner();
+        try_web!(get_config_by_project(&project))?
+    };
+
+    try_web!(form.check(&cfg.messaging.token))?;
     Ok(HttpResponse::Ok()
         .content_type(ContentType::plaintext())
-        .body(SUCCESS))
+        .body(form.echostr))
 }
 
-#[post("/{token}")]
+#[post("/{project}")]
 pub async fn callback(
     client_ip: ClientIp,
     form: web::Json<MessageRequest>,
     params: web::Path<String>,
     db: web::Data<DbPool>,
-    loquat: web::Data<Loquat>,
 ) -> WebResult<impl Responder> {
-    {
-        let token = params.into_inner();
-        let loquat = loquat.deref();
-        let loquat = loquat.deref();
-        try_web!(Jwt::verify(loquat, &token, AUDIENCE))?;
-    }
     let form = form.into_inner();
+    debug!("receive wechat oauth message \n {:?}", form);
+
+    let cfg = {
+        let project = params.into_inner();
+        try_web!(get_config_by_project(&project))?
+    };
+    if cfg.app_id != form.app_id {
+        return Ok(HttpResponse::BadRequest().finish());
+    }
 
     let mut db = try_web!(db.get())?;
     let db = db.deref_mut();
@@ -84,7 +82,7 @@ pub async fn callback(
             }))?;
         }
         _ => {
-            warn!("receive wechat oauth message \n {:?}", form);
+            warn!("unhandle message");
         }
     };
 

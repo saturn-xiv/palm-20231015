@@ -13,8 +13,16 @@ pub const SUCCESS: &str = "success";
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Config {
+    #[serde(rename = "app-id")]
     pub app_id: String,
+    #[serde(rename = "app-secret")]
     pub app_secret: String,
+    pub messaging: Messaging,
+}
+
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
+pub struct Messaging {
+    pub token: String,
 }
 
 impl Config {
