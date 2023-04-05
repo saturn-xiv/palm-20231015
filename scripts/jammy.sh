@@ -61,6 +61,25 @@ build_musa() {
     cp README.md application.properties $TARGET_DIR/musa/
 }
 
+copy_jdk() {
+    cd $TARGET_DIR
+    local jdk_version=20
+    
+    if [ ! -f $HOME/download/openjdk-${jdk_version}_linux-x64_bin.tar.gz ]
+    then
+        wget -q -P $HOME/downloads https://download.java.net/java/GA/jdk20/bdc68b4b9cbc4ebcb30745c85038d91d/36/GPL/openjdk-20_linux-x64_bin.tar.gz
+    fi
+    tar xf $HOME/download/openjdk-${jdk_version}_linux-x64_bin.tar.gz
+    mv jdk-${jdk_version} jdk-${jdk_version}-x64
+
+    if [ ! -f $HOME/download/openjdk-${jdk_version}_linux-aarch64_bin.tar.gz ]
+    then
+        wget -q -P $HOME/downloads https://download.java.net/java/GA/jdk20/bdc68b4b9cbc4ebcb30745c85038d91d/36/GPL/openjdk-20_linux-aarch64_bin.tar.gz
+    fi    
+    tar xf $HOME/download/openjdk-${jdk_version}_linux-aarch64_bin.tar.gz
+    mv jdk-${jdk_version} jdk-${jdk_version}-aarch64
+}
+
 copy_assets() {
     cd $WORKSPACE
     
@@ -171,9 +190,10 @@ fi
 # FIXME
 # build_dashboard fig
 # build_dashboard aloe
-copy_assets
 
 build_musa
+copy_jdk
+copy_assets
 
 # -----------------------------------------------------------------------------
 
