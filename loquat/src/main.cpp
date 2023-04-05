@@ -6,6 +6,10 @@
 #include <tink/version.h>
 #include <argparse/argparse.hpp>
 
+namespace loquat {
+static void set_thrift_logger(const char* s) { spdlog::debug("{}", s); }
+}  // namespace loquat
+
 int main(int argc, char** argv) {
   const std::string version =
       loquat::GIT_VERSION + "(" + loquat::BUILD_TIME + ")";
@@ -68,6 +72,7 @@ int main(int argc, char** argv) {
 
   if (program.is_subcommand_used(rpc_command)) {
     const int port = rpc_command.get<int>("--port");
+    apache::thrift::GlobalOutput.setOutputFunction(loquat::set_thrift_logger);
     loquat::application::launch(static_cast<uint16_t>(port));
   } else if (program.is_subcommand_used(generate_token_command)) {
     const int years = generate_token_command.get<int>("--years");
