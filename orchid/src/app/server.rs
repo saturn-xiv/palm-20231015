@@ -18,7 +18,7 @@ use super::super::{
 
 #[derive(Parser, PartialEq, Eq, Debug, Clone)]
 pub struct Config {
-    #[arg(short = 'p', long, default_value = "9999")]
+    #[arg(short = 'p', long, default_value = "8080")]
     pub port: u16,
 }
 

@@ -126,11 +126,10 @@ pub async fn sign_in(
         form, client_ip
     );
     let mut cli = try_web!(oauth.wechat_mini_program().await)?;
-    let mut req = Request::new(WechatMiniProgramLoginRequest {
+    let req = Request::new(WechatMiniProgramLoginRequest {
         app_id: form.app_id.clone(),
         code: form.code.clone(),
     });
-    try_web!(Thrift::authorization(&mut req, &oauth.token))?;
 
     let res = try_web!(cli.login(req).await)?;
     debug!("fetch wechat mini-program user {:?}", res);

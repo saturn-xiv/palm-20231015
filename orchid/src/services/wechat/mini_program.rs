@@ -3,7 +3,6 @@ use std::sync::Arc;
 use palm::{
     cache::redis::Pool as RedisPool,
     orchid::v1,
-    session::Session,
     try_grpc,
     wechat::{
         mini_program::{Client as MiniProgramClient, MiniProgram as MiniProgramConfig},
@@ -26,9 +25,6 @@ impl v1::wechat_mini_program_server::WechatMiniProgram for Service {
         &self,
         req: Request<v1::WechatMiniProgramLoginRequest>,
     ) -> GrpcResult<v1::WechatMiniProgramLoginResponse> {
-        let ss = Session::new(&req);
-        try_grpc!(self.config.auth(&ss))?;
-
         let req = req.into_inner();
         let cfg = try_grpc!(self.config.wechat(&req.app_id))?;
         let it = try_grpc!(cfg.code2session(&req.code).await)?;
@@ -43,9 +39,6 @@ impl v1::wechat_mini_program_server::WechatMiniProgram for Service {
         &self,
         req: Request<v1::WechatMiniProgramPhoneNumberRequest>,
     ) -> GrpcResult<v1::WechatMiniProgramPhoneNumberResponse> {
-        let ss = Session::new(&req);
-        try_grpc!(self.config.auth(&ss))?;
-
         let req = req.into_inner();
         let cli = WechatClient {
             redis: self.redis.clone(),

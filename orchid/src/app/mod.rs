@@ -1,4 +1,3 @@
-pub mod generate;
 pub mod server;
 
 use std::ops::Deref;
@@ -32,9 +31,6 @@ impl Args {
                 let env = Arc::new(env);
                 it.launch(env).await?;
             }
-            SubCommand::GenerateToken(ref it) => {
-                it.launch(&env)?;
-            }
         };
         Ok(())
     }
@@ -44,6 +40,4 @@ impl Args {
 pub enum SubCommand {
     #[clap(about = "Start a rpc server")]
     Server(server::Config),
-    #[clap(about = "Generate a client token")]
-    GenerateToken(generate::Token),
 }

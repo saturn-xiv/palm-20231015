@@ -3,7 +3,6 @@ use std::sync::Arc;
 use palm::{
     cache::redis::Pool as RedisPool,
     orchid::v1,
-    session::Session,
     try_grpc,
     wechat::{
         oauth2::{Client as Oauth2Client, Oauth2 as Oauth2Config},
@@ -37,9 +36,6 @@ impl v1::wechat_oauth2_server::WechatOauth2 for Service {
         &self,
         req: Request<v1::WechatOauth2LoginRequest>,
     ) -> GrpcResult<v1::WechatOauth2LoginResponse> {
-        let ss = Session::new(&req);
-        try_grpc!(self.config.auth(&ss))?;
-
         let req = req.into_inner();
         debug!("wechat oauth2 login {:?}", req);
         let cli = WechatClient {

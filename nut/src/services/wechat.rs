@@ -61,13 +61,12 @@ impl v1::wechat_server::Wechat for Service {
 
         let info = {
             let mut cli = try_grpc!(self.orchid.wechat_oauth2().await)?;
-            let mut req = Request::new(orchid::WechatOauth2LoginRequest {
+            let req = Request::new(orchid::WechatOauth2LoginRequest {
                 app_id: req.app_id.clone(),
                 code: req.code.clone(),
                 state: req.state.clone(),
                 language: req.language,
             });
-            try_grpc!(Thrift::authorization(&mut req, &self.orchid.token))?;
             let res = try_grpc!(cli.login(req).await)?;
             debug!("fetch wechat user {:?}", res);
             res.into_inner()
