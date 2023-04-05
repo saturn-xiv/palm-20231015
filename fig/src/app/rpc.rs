@@ -91,6 +91,27 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 enforcer: enforcer.clone(),
             },
         ))
+        .add_service(palm::nut::v1::wechat_server::WechatServer::new(
+            nut::services::wechat::Service {
+                aes: aes.clone(),
+                pgsql: pgsql.clone(),
+                redis: redis.clone(),
+                orchid: orchid.clone(),
+                jwt: jwt.clone(),
+                hmac: hmac.clone(),
+                enforcer: enforcer.clone(),
+            },
+        ))
+        .add_service(palm::nut::v1::google_server::GoogleServer::new(
+            nut::services::google::Service {
+                aes: aes.clone(),
+                pgsql: pgsql.clone(),
+                redis: redis.clone(),
+                jwt: jwt.clone(),
+                hmac: hmac.clone(),
+                enforcer: enforcer.clone(),
+            },
+        ))
         .add_service(palm::nut::v1::tag_server::TagServer::new(
             nut::services::tag::Service {
                 pgsql: pgsql.clone(),

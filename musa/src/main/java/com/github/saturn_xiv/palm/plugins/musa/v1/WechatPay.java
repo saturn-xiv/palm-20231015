@@ -12,13 +12,13 @@ public class WechatPay {
 
   public interface Iface {
 
-    public java.lang.String query(java.lang.String subject, java.lang.String audience, long ttl) throws org.apache.thrift.TException;
+    public java.lang.String query(java.lang.String id) throws org.apache.thrift.TException;
 
   }
 
   public interface AsyncIface {
 
-    public void query(java.lang.String subject, java.lang.String audience, long ttl, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler) throws org.apache.thrift.TException;
+    public void query(java.lang.String id, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler) throws org.apache.thrift.TException;
 
   }
 
@@ -45,18 +45,16 @@ public class WechatPay {
     }
 
     @Override
-    public java.lang.String query(java.lang.String subject, java.lang.String audience, long ttl) throws org.apache.thrift.TException
+    public java.lang.String query(java.lang.String id) throws org.apache.thrift.TException
     {
-      send_query(subject, audience, ttl);
+      send_query(id);
       return recv_query();
     }
 
-    public void send_query(java.lang.String subject, java.lang.String audience, long ttl) throws org.apache.thrift.TException
+    public void send_query(java.lang.String id) throws org.apache.thrift.TException
     {
       query_args args = new query_args();
-      args.setSubject(subject);
-      args.setAudience(audience);
-      args.setTtl(ttl);
+      args.setId(id);
       sendBase("query", args);
     }
 
@@ -90,31 +88,25 @@ public class WechatPay {
     }
 
     @Override
-    public void query(java.lang.String subject, java.lang.String audience, long ttl, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler) throws org.apache.thrift.TException {
+    public void query(java.lang.String id, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      query_call method_call = new query_call(subject, audience, ttl, resultHandler, this, ___protocolFactory, ___transport);
+      query_call method_call = new query_call(id, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
     public static class query_call extends org.apache.thrift.async.TAsyncMethodCall<java.lang.String> {
-      private java.lang.String subject;
-      private java.lang.String audience;
-      private long ttl;
-      public query_call(java.lang.String subject, java.lang.String audience, long ttl, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      private java.lang.String id;
+      public query_call(java.lang.String id, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
-        this.subject = subject;
-        this.audience = audience;
-        this.ttl = ttl;
+        this.id = id;
       }
 
       @Override
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("query", org.apache.thrift.protocol.TMessageType.CALL, 0));
         query_args args = new query_args();
-        args.setSubject(subject);
-        args.setAudience(audience);
-        args.setTtl(ttl);
+        args.setId(id);
         args.write(prot);
         prot.writeMessageEnd();
       }
@@ -170,7 +162,7 @@ public class WechatPay {
       @Override
       public query_result getResult(I iface, query_args args) throws org.apache.thrift.TException {
         query_result result = new query_result();
-        result.success = iface.query(args.subject, args.audience, args.ttl);
+        result.success = iface.query(args.id);
         return result;
       }
     }
@@ -255,7 +247,7 @@ public class WechatPay {
 
       @Override
       public void start(I iface, query_args args, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler) throws org.apache.thrift.TException {
-        iface.query(args.subject, args.audience, args.ttl,resultHandler);
+        iface.query(args.id,resultHandler);
       }
     }
 
@@ -265,22 +257,16 @@ public class WechatPay {
   public static class query_args implements org.apache.thrift.TBase<query_args, query_args._Fields>, java.io.Serializable, Cloneable, Comparable<query_args>   {
     private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("query_args");
 
-    private static final org.apache.thrift.protocol.TField SUBJECT_FIELD_DESC = new org.apache.thrift.protocol.TField("subject", org.apache.thrift.protocol.TType.STRING, (short)1);
-    private static final org.apache.thrift.protocol.TField AUDIENCE_FIELD_DESC = new org.apache.thrift.protocol.TField("audience", org.apache.thrift.protocol.TType.STRING, (short)2);
-    private static final org.apache.thrift.protocol.TField TTL_FIELD_DESC = new org.apache.thrift.protocol.TField("ttl", org.apache.thrift.protocol.TType.I64, (short)3);
+    private static final org.apache.thrift.protocol.TField ID_FIELD_DESC = new org.apache.thrift.protocol.TField("id", org.apache.thrift.protocol.TType.STRING, (short)1);
 
     private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new query_argsStandardSchemeFactory();
     private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new query_argsTupleSchemeFactory();
 
-    public @org.apache.thrift.annotation.Nullable java.lang.String subject; // required
-    public @org.apache.thrift.annotation.Nullable java.lang.String audience; // required
-    public long ttl; // required
+    public @org.apache.thrift.annotation.Nullable java.lang.String id; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-      SUBJECT((short)1, "subject"),
-      AUDIENCE((short)2, "audience"),
-      TTL((short)3, "ttl");
+      ID((short)1, "id");
 
       private static final java.util.Map<java.lang.String, _Fields> byName = new java.util.HashMap<java.lang.String, _Fields>();
 
@@ -296,12 +282,8 @@ public class WechatPay {
       @org.apache.thrift.annotation.Nullable
       public static _Fields findByThriftId(int fieldId) {
         switch(fieldId) {
-          case 1: // SUBJECT
-            return SUBJECT;
-          case 2: // AUDIENCE
-            return AUDIENCE;
-          case 3: // TTL
-            return TTL;
+          case 1: // ID
+            return ID;
           default:
             return null;
         }
@@ -345,17 +327,11 @@ public class WechatPay {
     }
 
     // isset id assignments
-    private static final int __TTL_ISSET_ID = 0;
-    private byte __isset_bitfield = 0;
     public static final java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new java.util.EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-      tmpMap.put(_Fields.SUBJECT, new org.apache.thrift.meta_data.FieldMetaData("subject", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+      tmpMap.put(_Fields.ID, new org.apache.thrift.meta_data.FieldMetaData("id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-      tmpMap.put(_Fields.AUDIENCE, new org.apache.thrift.meta_data.FieldMetaData("audience", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-      tmpMap.put(_Fields.TTL, new org.apache.thrift.meta_data.FieldMetaData("ttl", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
       metaDataMap = java.util.Collections.unmodifiableMap(tmpMap);
       org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(query_args.class, metaDataMap);
     }
@@ -364,29 +340,19 @@ public class WechatPay {
     }
 
     public query_args(
-      java.lang.String subject,
-      java.lang.String audience,
-      long ttl)
+      java.lang.String id)
     {
       this();
-      this.subject = subject;
-      this.audience = audience;
-      this.ttl = ttl;
-      setTtlIsSet(true);
+      this.id = id;
     }
 
     /**
      * Performs a deep copy on <i>other</i>.
      */
     public query_args(query_args other) {
-      __isset_bitfield = other.__isset_bitfield;
-      if (other.isSetSubject()) {
-        this.subject = other.subject;
+      if (other.isSetId()) {
+        this.id = other.id;
       }
-      if (other.isSetAudience()) {
-        this.audience = other.audience;
-      }
-      this.ttl = other.ttl;
     }
 
     @Override
@@ -396,109 +362,42 @@ public class WechatPay {
 
     @Override
     public void clear() {
-      this.subject = null;
-      this.audience = null;
-      setTtlIsSet(false);
-      this.ttl = 0;
+      this.id = null;
     }
 
     @org.apache.thrift.annotation.Nullable
-    public java.lang.String getSubject() {
-      return this.subject;
+    public java.lang.String getId() {
+      return this.id;
     }
 
-    public query_args setSubject(@org.apache.thrift.annotation.Nullable java.lang.String subject) {
-      this.subject = subject;
+    public query_args setId(@org.apache.thrift.annotation.Nullable java.lang.String id) {
+      this.id = id;
       return this;
     }
 
-    public void unsetSubject() {
-      this.subject = null;
+    public void unsetId() {
+      this.id = null;
     }
 
-    /** Returns true if field subject is set (has been assigned a value) and false otherwise */
-    public boolean isSetSubject() {
-      return this.subject != null;
+    /** Returns true if field id is set (has been assigned a value) and false otherwise */
+    public boolean isSetId() {
+      return this.id != null;
     }
 
-    public void setSubjectIsSet(boolean value) {
+    public void setIdIsSet(boolean value) {
       if (!value) {
-        this.subject = null;
+        this.id = null;
       }
-    }
-
-    @org.apache.thrift.annotation.Nullable
-    public java.lang.String getAudience() {
-      return this.audience;
-    }
-
-    public query_args setAudience(@org.apache.thrift.annotation.Nullable java.lang.String audience) {
-      this.audience = audience;
-      return this;
-    }
-
-    public void unsetAudience() {
-      this.audience = null;
-    }
-
-    /** Returns true if field audience is set (has been assigned a value) and false otherwise */
-    public boolean isSetAudience() {
-      return this.audience != null;
-    }
-
-    public void setAudienceIsSet(boolean value) {
-      if (!value) {
-        this.audience = null;
-      }
-    }
-
-    public long getTtl() {
-      return this.ttl;
-    }
-
-    public query_args setTtl(long ttl) {
-      this.ttl = ttl;
-      setTtlIsSet(true);
-      return this;
-    }
-
-    public void unsetTtl() {
-      __isset_bitfield = org.apache.thrift.EncodingUtils.clearBit(__isset_bitfield, __TTL_ISSET_ID);
-    }
-
-    /** Returns true if field ttl is set (has been assigned a value) and false otherwise */
-    public boolean isSetTtl() {
-      return org.apache.thrift.EncodingUtils.testBit(__isset_bitfield, __TTL_ISSET_ID);
-    }
-
-    public void setTtlIsSet(boolean value) {
-      __isset_bitfield = org.apache.thrift.EncodingUtils.setBit(__isset_bitfield, __TTL_ISSET_ID, value);
     }
 
     @Override
     public void setFieldValue(_Fields field, @org.apache.thrift.annotation.Nullable java.lang.Object value) {
       switch (field) {
-      case SUBJECT:
+      case ID:
         if (value == null) {
-          unsetSubject();
+          unsetId();
         } else {
-          setSubject((java.lang.String)value);
-        }
-        break;
-
-      case AUDIENCE:
-        if (value == null) {
-          unsetAudience();
-        } else {
-          setAudience((java.lang.String)value);
-        }
-        break;
-
-      case TTL:
-        if (value == null) {
-          unsetTtl();
-        } else {
-          setTtl((java.lang.Long)value);
+          setId((java.lang.String)value);
         }
         break;
 
@@ -509,14 +408,8 @@ public class WechatPay {
     @Override
     public java.lang.Object getFieldValue(_Fields field) {
       switch (field) {
-      case SUBJECT:
-        return getSubject();
-
-      case AUDIENCE:
-        return getAudience();
-
-      case TTL:
-        return getTtl();
+      case ID:
+        return getId();
 
       }
       throw new java.lang.IllegalStateException();
@@ -530,12 +423,8 @@ public class WechatPay {
       }
 
       switch (field) {
-      case SUBJECT:
-        return isSetSubject();
-      case AUDIENCE:
-        return isSetAudience();
-      case TTL:
-        return isSetTtl();
+      case ID:
+        return isSetId();
       }
       throw new java.lang.IllegalStateException();
     }
@@ -553,30 +442,12 @@ public class WechatPay {
       if (this == that)
         return true;
 
-      boolean this_present_subject = true && this.isSetSubject();
-      boolean that_present_subject = true && that.isSetSubject();
-      if (this_present_subject || that_present_subject) {
-        if (!(this_present_subject && that_present_subject))
+      boolean this_present_id = true && this.isSetId();
+      boolean that_present_id = true && that.isSetId();
+      if (this_present_id || that_present_id) {
+        if (!(this_present_id && that_present_id))
           return false;
-        if (!this.subject.equals(that.subject))
-          return false;
-      }
-
-      boolean this_present_audience = true && this.isSetAudience();
-      boolean that_present_audience = true && that.isSetAudience();
-      if (this_present_audience || that_present_audience) {
-        if (!(this_present_audience && that_present_audience))
-          return false;
-        if (!this.audience.equals(that.audience))
-          return false;
-      }
-
-      boolean this_present_ttl = true;
-      boolean that_present_ttl = true;
-      if (this_present_ttl || that_present_ttl) {
-        if (!(this_present_ttl && that_present_ttl))
-          return false;
-        if (this.ttl != that.ttl)
+        if (!this.id.equals(that.id))
           return false;
       }
 
@@ -587,15 +458,9 @@ public class WechatPay {
     public int hashCode() {
       int hashCode = 1;
 
-      hashCode = hashCode * 8191 + ((isSetSubject()) ? 131071 : 524287);
-      if (isSetSubject())
-        hashCode = hashCode * 8191 + subject.hashCode();
-
-      hashCode = hashCode * 8191 + ((isSetAudience()) ? 131071 : 524287);
-      if (isSetAudience())
-        hashCode = hashCode * 8191 + audience.hashCode();
-
-      hashCode = hashCode * 8191 + org.apache.thrift.TBaseHelper.hashCode(ttl);
+      hashCode = hashCode * 8191 + ((isSetId()) ? 131071 : 524287);
+      if (isSetId())
+        hashCode = hashCode * 8191 + id.hashCode();
 
       return hashCode;
     }
@@ -608,32 +473,12 @@ public class WechatPay {
 
       int lastComparison = 0;
 
-      lastComparison = java.lang.Boolean.compare(isSetSubject(), other.isSetSubject());
+      lastComparison = java.lang.Boolean.compare(isSetId(), other.isSetId());
       if (lastComparison != 0) {
         return lastComparison;
       }
-      if (isSetSubject()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.subject, other.subject);
-        if (lastComparison != 0) {
-          return lastComparison;
-        }
-      }
-      lastComparison = java.lang.Boolean.compare(isSetAudience(), other.isSetAudience());
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-      if (isSetAudience()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.audience, other.audience);
-        if (lastComparison != 0) {
-          return lastComparison;
-        }
-      }
-      lastComparison = java.lang.Boolean.compare(isSetTtl(), other.isSetTtl());
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-      if (isSetTtl()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.ttl, other.ttl);
+      if (isSetId()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.id, other.id);
         if (lastComparison != 0) {
           return lastComparison;
         }
@@ -662,24 +507,12 @@ public class WechatPay {
       java.lang.StringBuilder sb = new java.lang.StringBuilder("query_args(");
       boolean first = true;
 
-      sb.append("subject:");
-      if (this.subject == null) {
+      sb.append("id:");
+      if (this.id == null) {
         sb.append("null");
       } else {
-        sb.append(this.subject);
+        sb.append(this.id);
       }
-      first = false;
-      if (!first) sb.append(", ");
-      sb.append("audience:");
-      if (this.audience == null) {
-        sb.append("null");
-      } else {
-        sb.append(this.audience);
-      }
-      first = false;
-      if (!first) sb.append(", ");
-      sb.append("ttl:");
-      sb.append(this.ttl);
       first = false;
       sb.append(")");
       return sb.toString();
@@ -700,8 +533,6 @@ public class WechatPay {
 
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, java.lang.ClassNotFoundException {
       try {
-        // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
-        __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
       } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
@@ -728,26 +559,10 @@ public class WechatPay {
             break;
           }
           switch (schemeField.id) {
-            case 1: // SUBJECT
+            case 1: // ID
               if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-                struct.subject = iprot.readString();
-                struct.setSubjectIsSet(true);
-              } else { 
-                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-              }
-              break;
-            case 2: // AUDIENCE
-              if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-                struct.audience = iprot.readString();
-                struct.setAudienceIsSet(true);
-              } else { 
-                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-              }
-              break;
-            case 3: // TTL
-              if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
-                struct.ttl = iprot.readI64();
-                struct.setTtlIsSet(true);
+                struct.id = iprot.readString();
+                struct.setIdIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
@@ -768,19 +583,11 @@ public class WechatPay {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
-        if (struct.subject != null) {
-          oprot.writeFieldBegin(SUBJECT_FIELD_DESC);
-          oprot.writeString(struct.subject);
+        if (struct.id != null) {
+          oprot.writeFieldBegin(ID_FIELD_DESC);
+          oprot.writeString(struct.id);
           oprot.writeFieldEnd();
         }
-        if (struct.audience != null) {
-          oprot.writeFieldBegin(AUDIENCE_FIELD_DESC);
-          oprot.writeString(struct.audience);
-          oprot.writeFieldEnd();
-        }
-        oprot.writeFieldBegin(TTL_FIELD_DESC);
-        oprot.writeI64(struct.ttl);
-        oprot.writeFieldEnd();
         oprot.writeFieldStop();
         oprot.writeStructEnd();
       }
@@ -800,42 +607,22 @@ public class WechatPay {
       public void write(org.apache.thrift.protocol.TProtocol prot, query_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TTupleProtocol oprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
         java.util.BitSet optionals = new java.util.BitSet();
-        if (struct.isSetSubject()) {
+        if (struct.isSetId()) {
           optionals.set(0);
         }
-        if (struct.isSetAudience()) {
-          optionals.set(1);
-        }
-        if (struct.isSetTtl()) {
-          optionals.set(2);
-        }
-        oprot.writeBitSet(optionals, 3);
-        if (struct.isSetSubject()) {
-          oprot.writeString(struct.subject);
-        }
-        if (struct.isSetAudience()) {
-          oprot.writeString(struct.audience);
-        }
-        if (struct.isSetTtl()) {
-          oprot.writeI64(struct.ttl);
+        oprot.writeBitSet(optionals, 1);
+        if (struct.isSetId()) {
+          oprot.writeString(struct.id);
         }
       }
 
       @Override
       public void read(org.apache.thrift.protocol.TProtocol prot, query_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TTupleProtocol iprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
-        java.util.BitSet incoming = iprot.readBitSet(3);
+        java.util.BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          struct.subject = iprot.readString();
-          struct.setSubjectIsSet(true);
-        }
-        if (incoming.get(1)) {
-          struct.audience = iprot.readString();
-          struct.setAudienceIsSet(true);
-        }
-        if (incoming.get(2)) {
-          struct.ttl = iprot.readI64();
-          struct.setTtlIsSet(true);
+          struct.id = iprot.readString();
+          struct.setIdIsSet(true);
         }
       }
     }

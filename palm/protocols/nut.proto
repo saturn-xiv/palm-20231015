@@ -51,6 +51,13 @@ message UserDetail {
   string real_name = 2;
 }
 
+message Oauth2State {
+  string goto = 1;
+  string host = 2;
+  optional string user = 3;
+  string id = 9;
+}
+
 // ----------------------------------------------------------------------------
 
 service User {
@@ -78,19 +85,6 @@ service User {
   rpc Unlock(IdRequest) returns (google.protobuf.Empty) {}
   rpc Confirm(IdRequest) returns (google.protobuf.Empty) {}
   rpc SetPassword(UserSetPasswordRequest) returns (google.protobuf.Empty) {}
-
-  rpc GoogleSignInUrl(GoogleSignInUrlRequest)
-      returns (GoogleSignInUrlResponse) {}
-  rpc SignInByGoogle(SignInByGoogleRequest) returns (UserSignInResponse) {}
-
-  rpc WechatOauth2SignInState(WechatOauth2SignInStateRequest)
-      returns (WechatOauth2SignInStateResponse) {}
-  rpc WechatOauth2SignInUrl(WechatOauth2SignInUrlRequest)
-      returns (palm.orchid.v1.WechatOauth2QrConnectResponse) {}
-  rpc SignInByWechatOauth2(SignInByWechatOauth2Request)
-      returns (UserSignInResponse) {}
-  rpc CurrentWechatMiniProgramUser(CurrentWechatMiniProgramUserRequest)
-      returns (CurrentWechatMiniProgramUserResponse) {}
 }
 
 message UserSignInRequest {
@@ -215,6 +209,12 @@ message UserIndexResponse {
   repeated Item items = 11;
 }
 
+// ----------------------------------------------------------------------------
+service Google {
+  rpc SignInUrl(GoogleSignInUrlRequest) returns (GoogleSignInUrlResponse) {}
+  rpc SignIn(SignInByGoogleRequest) returns (UserSignInResponse) {}
+}
+
 message SignInByGoogleRequest {
   repeated string scopes = 1;
   string code = 2;
@@ -226,12 +226,6 @@ message SignInByGoogleRequest {
   google.protobuf.Duration ttl = 11;
 }
 
-message Oauth2State {
-  string goto = 1;
-  string host = 2;
-  optional string user = 3;
-  string id = 9;
-}
 message GoogleSignInUrlRequest {
   string redirect_uri = 1;
   Oauth2State state = 2;
@@ -241,6 +235,17 @@ message GoogleSignInUrlRequest {
 message GoogleSignInUrlResponse {
   string url = 1;
   string nonce = 2;
+}
+// ----------------------------------------------------------------------------
+service Wechat {
+  rpc Oauth2SignInState(WechatOauth2SignInStateRequest)
+      returns (WechatOauth2SignInStateResponse) {}
+  rpc Oauth2SignInUrl(WechatOauth2SignInUrlRequest)
+      returns (palm.orchid.v1.WechatOauth2QrConnectResponse) {}
+  rpc SignInByOauth2(SignInByWechatOauth2Request) returns (UserSignInResponse) {
+  }
+  rpc CurrentMiniProgramUser(CurrentWechatMiniProgramUserRequest)
+      returns (CurrentWechatMiniProgramUserResponse) {}
 }
 
 message SignInByWechatOauth2Request {

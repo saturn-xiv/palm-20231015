@@ -945,8 +945,29 @@ export class UserClient {
     this.methodDescriptorSetPassword);
   }
 
-  methodDescriptorGoogleSignInUrl = new grpcWeb.MethodDescriptor(
-    '/palm.nut.v1.User/GoogleSignInUrl',
+}
+
+export class GoogleClient {
+  client_: grpcWeb.AbstractClientBase;
+  hostname_: string;
+  credentials_: null | { [index: string]: string; };
+  options_: null | { [index: string]: any; };
+
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; }) {
+    if (!options) options = {};
+    if (!credentials) credentials = {};
+    options['format'] = 'binary';
+
+    this.client_ = new grpcWeb.GrpcWebClientBase(options);
+    this.hostname_ = hostname.replace(/\/+$/, '');
+    this.credentials_ = credentials;
+    this.options_ = options;
+  }
+
+  methodDescriptorSignInUrl = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Google/SignInUrl',
     grpcWeb.MethodType.UNARY,
     nut_pb.GoogleSignInUrlRequest,
     nut_pb.GoogleSignInUrlResponse,
@@ -956,17 +977,17 @@ export class UserClient {
     nut_pb.GoogleSignInUrlResponse.deserializeBinary
   );
 
-  googleSignInUrl(
+  signInUrl(
     request: nut_pb.GoogleSignInUrlRequest,
     metadata: grpcWeb.Metadata | null): Promise<nut_pb.GoogleSignInUrlResponse>;
 
-  googleSignInUrl(
+  signInUrl(
     request: nut_pb.GoogleSignInUrlRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: nut_pb.GoogleSignInUrlResponse) => void): grpcWeb.ClientReadableStream<nut_pb.GoogleSignInUrlResponse>;
 
-  googleSignInUrl(
+  signInUrl(
     request: nut_pb.GoogleSignInUrlRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
@@ -974,22 +995,22 @@ export class UserClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.nut.v1.User/GoogleSignInUrl',
+          '/palm.nut.v1.Google/SignInUrl',
         request,
         metadata || {},
-        this.methodDescriptorGoogleSignInUrl,
+        this.methodDescriptorSignInUrl,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.nut.v1.User/GoogleSignInUrl',
+      '/palm.nut.v1.Google/SignInUrl',
     request,
     metadata || {},
-    this.methodDescriptorGoogleSignInUrl);
+    this.methodDescriptorSignInUrl);
   }
 
-  methodDescriptorSignInByGoogle = new grpcWeb.MethodDescriptor(
-    '/palm.nut.v1.User/SignInByGoogle',
+  methodDescriptorSignIn = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Google/SignIn',
     grpcWeb.MethodType.UNARY,
     nut_pb.SignInByGoogleRequest,
     nut_pb.UserSignInResponse,
@@ -999,17 +1020,17 @@ export class UserClient {
     nut_pb.UserSignInResponse.deserializeBinary
   );
 
-  signInByGoogle(
+  signIn(
     request: nut_pb.SignInByGoogleRequest,
     metadata: grpcWeb.Metadata | null): Promise<nut_pb.UserSignInResponse>;
 
-  signInByGoogle(
+  signIn(
     request: nut_pb.SignInByGoogleRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: nut_pb.UserSignInResponse) => void): grpcWeb.ClientReadableStream<nut_pb.UserSignInResponse>;
 
-  signInByGoogle(
+  signIn(
     request: nut_pb.SignInByGoogleRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
@@ -1017,22 +1038,43 @@ export class UserClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.nut.v1.User/SignInByGoogle',
+          '/palm.nut.v1.Google/SignIn',
         request,
         metadata || {},
-        this.methodDescriptorSignInByGoogle,
+        this.methodDescriptorSignIn,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.nut.v1.User/SignInByGoogle',
+      '/palm.nut.v1.Google/SignIn',
     request,
     metadata || {},
-    this.methodDescriptorSignInByGoogle);
+    this.methodDescriptorSignIn);
   }
 
-  methodDescriptorWechatOauth2SignInState = new grpcWeb.MethodDescriptor(
-    '/palm.nut.v1.User/WechatOauth2SignInState',
+}
+
+export class WechatClient {
+  client_: grpcWeb.AbstractClientBase;
+  hostname_: string;
+  credentials_: null | { [index: string]: string; };
+  options_: null | { [index: string]: any; };
+
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; }) {
+    if (!options) options = {};
+    if (!credentials) credentials = {};
+    options['format'] = 'binary';
+
+    this.client_ = new grpcWeb.GrpcWebClientBase(options);
+    this.hostname_ = hostname.replace(/\/+$/, '');
+    this.credentials_ = credentials;
+    this.options_ = options;
+  }
+
+  methodDescriptorOauth2SignInState = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/Oauth2SignInState',
     grpcWeb.MethodType.UNARY,
     nut_pb.WechatOauth2SignInStateRequest,
     nut_pb.WechatOauth2SignInStateResponse,
@@ -1042,17 +1084,17 @@ export class UserClient {
     nut_pb.WechatOauth2SignInStateResponse.deserializeBinary
   );
 
-  wechatOauth2SignInState(
+  oauth2SignInState(
     request: nut_pb.WechatOauth2SignInStateRequest,
     metadata: grpcWeb.Metadata | null): Promise<nut_pb.WechatOauth2SignInStateResponse>;
 
-  wechatOauth2SignInState(
+  oauth2SignInState(
     request: nut_pb.WechatOauth2SignInStateRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: nut_pb.WechatOauth2SignInStateResponse) => void): grpcWeb.ClientReadableStream<nut_pb.WechatOauth2SignInStateResponse>;
 
-  wechatOauth2SignInState(
+  oauth2SignInState(
     request: nut_pb.WechatOauth2SignInStateRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
@@ -1060,22 +1102,22 @@ export class UserClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.nut.v1.User/WechatOauth2SignInState',
+          '/palm.nut.v1.Wechat/Oauth2SignInState',
         request,
         metadata || {},
-        this.methodDescriptorWechatOauth2SignInState,
+        this.methodDescriptorOauth2SignInState,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.nut.v1.User/WechatOauth2SignInState',
+      '/palm.nut.v1.Wechat/Oauth2SignInState',
     request,
     metadata || {},
-    this.methodDescriptorWechatOauth2SignInState);
+    this.methodDescriptorOauth2SignInState);
   }
 
-  methodDescriptorWechatOauth2SignInUrl = new grpcWeb.MethodDescriptor(
-    '/palm.nut.v1.User/WechatOauth2SignInUrl',
+  methodDescriptorOauth2SignInUrl = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/Oauth2SignInUrl',
     grpcWeb.MethodType.UNARY,
     nut_pb.WechatOauth2SignInUrlRequest,
     orchid_pb.WechatOauth2QrConnectResponse,
@@ -1085,17 +1127,17 @@ export class UserClient {
     orchid_pb.WechatOauth2QrConnectResponse.deserializeBinary
   );
 
-  wechatOauth2SignInUrl(
+  oauth2SignInUrl(
     request: nut_pb.WechatOauth2SignInUrlRequest,
     metadata: grpcWeb.Metadata | null): Promise<orchid_pb.WechatOauth2QrConnectResponse>;
 
-  wechatOauth2SignInUrl(
+  oauth2SignInUrl(
     request: nut_pb.WechatOauth2SignInUrlRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: orchid_pb.WechatOauth2QrConnectResponse) => void): grpcWeb.ClientReadableStream<orchid_pb.WechatOauth2QrConnectResponse>;
 
-  wechatOauth2SignInUrl(
+  oauth2SignInUrl(
     request: nut_pb.WechatOauth2SignInUrlRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
@@ -1103,22 +1145,22 @@ export class UserClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.nut.v1.User/WechatOauth2SignInUrl',
+          '/palm.nut.v1.Wechat/Oauth2SignInUrl',
         request,
         metadata || {},
-        this.methodDescriptorWechatOauth2SignInUrl,
+        this.methodDescriptorOauth2SignInUrl,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.nut.v1.User/WechatOauth2SignInUrl',
+      '/palm.nut.v1.Wechat/Oauth2SignInUrl',
     request,
     metadata || {},
-    this.methodDescriptorWechatOauth2SignInUrl);
+    this.methodDescriptorOauth2SignInUrl);
   }
 
-  methodDescriptorSignInByWechatOauth2 = new grpcWeb.MethodDescriptor(
-    '/palm.nut.v1.User/SignInByWechatOauth2',
+  methodDescriptorSignInByOauth2 = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/SignInByOauth2',
     grpcWeb.MethodType.UNARY,
     nut_pb.SignInByWechatOauth2Request,
     nut_pb.UserSignInResponse,
@@ -1128,17 +1170,17 @@ export class UserClient {
     nut_pb.UserSignInResponse.deserializeBinary
   );
 
-  signInByWechatOauth2(
+  signInByOauth2(
     request: nut_pb.SignInByWechatOauth2Request,
     metadata: grpcWeb.Metadata | null): Promise<nut_pb.UserSignInResponse>;
 
-  signInByWechatOauth2(
+  signInByOauth2(
     request: nut_pb.SignInByWechatOauth2Request,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: nut_pb.UserSignInResponse) => void): grpcWeb.ClientReadableStream<nut_pb.UserSignInResponse>;
 
-  signInByWechatOauth2(
+  signInByOauth2(
     request: nut_pb.SignInByWechatOauth2Request,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
@@ -1146,22 +1188,22 @@ export class UserClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.nut.v1.User/SignInByWechatOauth2',
+          '/palm.nut.v1.Wechat/SignInByOauth2',
         request,
         metadata || {},
-        this.methodDescriptorSignInByWechatOauth2,
+        this.methodDescriptorSignInByOauth2,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.nut.v1.User/SignInByWechatOauth2',
+      '/palm.nut.v1.Wechat/SignInByOauth2',
     request,
     metadata || {},
-    this.methodDescriptorSignInByWechatOauth2);
+    this.methodDescriptorSignInByOauth2);
   }
 
-  methodDescriptorCurrentWechatMiniProgramUser = new grpcWeb.MethodDescriptor(
-    '/palm.nut.v1.User/CurrentWechatMiniProgramUser',
+  methodDescriptorCurrentMiniProgramUser = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/CurrentMiniProgramUser',
     grpcWeb.MethodType.UNARY,
     nut_pb.CurrentWechatMiniProgramUserRequest,
     nut_pb.CurrentWechatMiniProgramUserResponse,
@@ -1171,17 +1213,17 @@ export class UserClient {
     nut_pb.CurrentWechatMiniProgramUserResponse.deserializeBinary
   );
 
-  currentWechatMiniProgramUser(
+  currentMiniProgramUser(
     request: nut_pb.CurrentWechatMiniProgramUserRequest,
     metadata: grpcWeb.Metadata | null): Promise<nut_pb.CurrentWechatMiniProgramUserResponse>;
 
-  currentWechatMiniProgramUser(
+  currentMiniProgramUser(
     request: nut_pb.CurrentWechatMiniProgramUserRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: nut_pb.CurrentWechatMiniProgramUserResponse) => void): grpcWeb.ClientReadableStream<nut_pb.CurrentWechatMiniProgramUserResponse>;
 
-  currentWechatMiniProgramUser(
+  currentMiniProgramUser(
     request: nut_pb.CurrentWechatMiniProgramUserRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
@@ -1189,18 +1231,18 @@ export class UserClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.nut.v1.User/CurrentWechatMiniProgramUser',
+          '/palm.nut.v1.Wechat/CurrentMiniProgramUser',
         request,
         metadata || {},
-        this.methodDescriptorCurrentWechatMiniProgramUser,
+        this.methodDescriptorCurrentMiniProgramUser,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.nut.v1.User/CurrentWechatMiniProgramUser',
+      '/palm.nut.v1.Wechat/CurrentMiniProgramUser',
     request,
     metadata || {},
-    this.methodDescriptorCurrentWechatMiniProgramUser);
+    this.methodDescriptorCurrentMiniProgramUser);
   }
 
 }

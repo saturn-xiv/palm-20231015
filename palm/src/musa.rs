@@ -31,7 +31,7 @@ use thrift::server::TProcessor;
 //
 
 pub trait TWechatPaySyncClient {
-  fn query(&mut self, subject: String, audience: String, ttl: i64) -> thrift::Result<String>;
+  fn query(&mut self, id: String) -> thrift::Result<String>;
 }
 
 pub trait TWechatPaySyncClientMarker {}
@@ -58,12 +58,12 @@ impl <IP, OP> TThriftClient for WechatPaySyncClient<IP, OP> where IP: TInputProt
 impl <IP, OP> TWechatPaySyncClientMarker for WechatPaySyncClient<IP, OP> where IP: TInputProtocol, OP: TOutputProtocol {}
 
 impl <C: TThriftClient + TWechatPaySyncClientMarker> TWechatPaySyncClient for C {
-  fn query(&mut self, subject: String, audience: String, ttl: i64) -> thrift::Result<String> {
+  fn query(&mut self, id: String) -> thrift::Result<String> {
     (
       {
         self.increment_sequence_number();
         let message_ident = TMessageIdentifier::new("query", TMessageType::Call, self.sequence_number());
-        let call_args = WechatPayQueryArgs { subject, audience, ttl };
+        let call_args = WechatPayQueryArgs { id };
         self.o_prot_mut().write_message_begin(&message_ident)?;
         call_args.write_to_out_protocol(self.o_prot_mut())?;
         self.o_prot_mut().write_message_end()?;
@@ -92,7 +92,7 @@ impl <C: TThriftClient + TWechatPaySyncClientMarker> TWechatPaySyncClient for C 
 //
 
 pub trait WechatPaySyncHandler {
-  fn handle_query(&self, subject: String, audience: String, ttl: i64) -> thrift::Result<String>;
+  fn handle_query(&self, id: String) -> thrift::Result<String>;
 }
 
 pub struct WechatPaySyncProcessor<H: WechatPaySyncHandler> {
@@ -115,7 +115,7 @@ pub struct TWechatPayProcessFunctions;
 impl TWechatPayProcessFunctions {
   pub fn process_query<H: WechatPaySyncHandler>(handler: &H, incoming_sequence_number: i32, i_prot: &mut dyn TInputProtocol, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {
     let args = WechatPayQueryArgs::read_from_in_protocol(i_prot)?;
-    match handler.handle_query(args.subject, args.audience, args.ttl) {
+    match handler.handle_query(args.id) {
       Ok(handler_return) => {
         let message_ident = TMessageIdentifier::new("query", TMessageType::Reply, incoming_sequence_number);
         o_prot.write_message_begin(&message_ident)?;
@@ -180,17 +180,13 @@ impl <H: WechatPaySyncHandler> TProcessor for WechatPaySyncProcessor<H> {
 
 #[derive(Clone, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
 struct WechatPayQueryArgs {
-  subject: String,
-  audience: String,
-  ttl: i64,
+  id: String,
 }
 
 impl WechatPayQueryArgs {
   fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<WechatPayQueryArgs> {
     i_prot.read_struct_begin()?;
     let mut f_1: Option<String> = None;
-    let mut f_2: Option<String> = None;
-    let mut f_3: Option<i64> = None;
     loop {
       let field_ident = i_prot.read_field_begin()?;
       if field_ident.field_type == TType::Stop {
@@ -202,14 +198,6 @@ impl WechatPayQueryArgs {
           let val = i_prot.read_string()?;
           f_1 = Some(val);
         },
-        2 => {
-          let val = i_prot.read_string()?;
-          f_2 = Some(val);
-        },
-        3 => {
-          let val = i_prot.read_i64()?;
-          f_3 = Some(val);
-        },
         _ => {
           i_prot.skip(field_ident.field_type)?;
         },
@@ -217,27 +205,17 @@ impl WechatPayQueryArgs {
       i_prot.read_field_end()?;
     }
     i_prot.read_struct_end()?;
-    verify_required_field_exists("WechatPayQueryArgs.subject", &f_1)?;
-    verify_required_field_exists("WechatPayQueryArgs.audience", &f_2)?;
-    verify_required_field_exists("WechatPayQueryArgs.ttl", &f_3)?;
+    verify_required_field_exists("WechatPayQueryArgs.id", &f_1)?;
     let ret = WechatPayQueryArgs {
-      subject: f_1.expect("auto-generated code should have checked for presence of required fields"),
-      audience: f_2.expect("auto-generated code should have checked for presence of required fields"),
-      ttl: f_3.expect("auto-generated code should have checked for presence of required fields"),
+      id: f_1.expect("auto-generated code should have checked for presence of required fields"),
     };
     Ok(ret)
   }
   fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {
     let struct_ident = TStructIdentifier::new("query_args");
     o_prot.write_struct_begin(&struct_ident)?;
-    o_prot.write_field_begin(&TFieldIdentifier::new("subject", TType::String, 1))?;
-    o_prot.write_string(&self.subject)?;
-    o_prot.write_field_end()?;
-    o_prot.write_field_begin(&TFieldIdentifier::new("audience", TType::String, 2))?;
-    o_prot.write_string(&self.audience)?;
-    o_prot.write_field_end()?;
-    o_prot.write_field_begin(&TFieldIdentifier::new("ttl", TType::I64, 3))?;
-    o_prot.write_i64(self.ttl)?;
+    o_prot.write_field_begin(&TFieldIdentifier::new("id", TType::String, 1))?;
+    o_prot.write_string(&self.id)?;
     o_prot.write_field_end()?;
     o_prot.write_field_stop()?;
     o_prot.write_struct_end()

@@ -4,10 +4,9 @@ use super::super::{
     crypto::{Password, Secret},
     jwt::Jwt,
     loquat::{
-        AesSyncClient, HmacSyncClient, JwtSyncClient, TAesSyncClient, THmacSyncClient,
-        TJwtSyncClient,
+        AesSyncClient, HealthSyncClient, HmacSyncClient, JwtSyncClient, TAesSyncClient,
+        THealthSyncClient, THmacSyncClient, TJwtSyncClient,
     },
-    loquat::{HealthSyncClient, THealthSyncClient},
     Result,
 };
 use super::Thrift;
@@ -67,6 +66,7 @@ impl Secret for Thrift {
 pub trait Health {
     fn check(&self) -> Result<()>;
 }
+
 impl Health for Thrift {
     fn check(&self) -> Result<()> {
         let (i_prot, o_prot) = self.open(HEALTH)?;

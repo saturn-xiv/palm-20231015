@@ -154,6 +154,43 @@ export namespace UserDetail {
   }
 }
 
+export class Oauth2State extends jspb.Message {
+  getGoto(): string;
+  setGoto(value: string): Oauth2State;
+
+  getHost(): string;
+  setHost(value: string): Oauth2State;
+
+  getUser(): string;
+  setUser(value: string): Oauth2State;
+  hasUser(): boolean;
+  clearUser(): Oauth2State;
+
+  getId(): string;
+  setId(value: string): Oauth2State;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Oauth2State.AsObject;
+  static toObject(includeInstance: boolean, msg: Oauth2State): Oauth2State.AsObject;
+  static serializeBinaryToWriter(message: Oauth2State, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Oauth2State;
+  static deserializeBinaryFromReader(message: Oauth2State, reader: jspb.BinaryReader): Oauth2State;
+}
+
+export namespace Oauth2State {
+  export type AsObject = {
+    pb_goto: string,
+    host: string,
+    user?: string,
+    id: string,
+  }
+
+  export enum UserCase { 
+    _USER_NOT_SET = 0,
+    USER = 3,
+  }
+}
+
 export class UserSignInRequest extends jspb.Message {
   getQuery(): UserQueryRequest | undefined;
   setQuery(value?: UserQueryRequest): UserSignInRequest;
@@ -795,43 +832,6 @@ export namespace SignInByGoogleRequest {
   export enum NonceCase { 
     _NONCE_NOT_SET = 0,
     NONCE = 8,
-  }
-}
-
-export class Oauth2State extends jspb.Message {
-  getGoto(): string;
-  setGoto(value: string): Oauth2State;
-
-  getHost(): string;
-  setHost(value: string): Oauth2State;
-
-  getUser(): string;
-  setUser(value: string): Oauth2State;
-  hasUser(): boolean;
-  clearUser(): Oauth2State;
-
-  getId(): string;
-  setId(value: string): Oauth2State;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Oauth2State.AsObject;
-  static toObject(includeInstance: boolean, msg: Oauth2State): Oauth2State.AsObject;
-  static serializeBinaryToWriter(message: Oauth2State, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Oauth2State;
-  static deserializeBinaryFromReader(message: Oauth2State, reader: jspb.BinaryReader): Oauth2State;
-}
-
-export namespace Oauth2State {
-  export type AsObject = {
-    pb_goto: string,
-    host: string,
-    user?: string,
-    id: string,
-  }
-
-  export enum UserCase { 
-    _USER_NOT_SET = 0,
-    USER = 3,
   }
 }
 
