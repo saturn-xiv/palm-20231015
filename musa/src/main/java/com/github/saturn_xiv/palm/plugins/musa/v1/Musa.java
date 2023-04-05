@@ -4,44 +4,40 @@
 package com.github.saturn_xiv.palm.plugins.musa.v1;
 
 public final class Musa {
-    private Musa() {
-    }
+  private Musa() {}
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
 
-    public static void registerAllExtensions(
-            com.google.protobuf.ExtensionRegistryLite registry) {
-    }
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
+  }
 
-    public static void registerAllExtensions(
-            com.google.protobuf.ExtensionRegistry registry) {
-        registerAllExtensions(
-                (com.google.protobuf.ExtensionRegistryLite) registry);
-    }
+  public static com.google.protobuf.Descriptors.FileDescriptor
+      getDescriptor() {
+    return descriptor;
+  }
+  private static  com.google.protobuf.Descriptors.FileDescriptor
+      descriptor;
+  static {
+    java.lang.String[] descriptorData = {
+      "\n\nmusa.proto\022\014palm.musa.v1\032\033google/proto" +
+      "buf/empty.proto2F\n\tWechatPay\0229\n\005Query\022\026." +
+      "google.protobuf.Empty\032\026.google.protobuf." +
+      "Empty\"\0002C\n\006Health\0229\n\005Check\022\026.google.prot" +
+      "obuf.Empty\032\026.google.protobuf.Empty\"\000B.\n*" +
+      "com.github.saturn_xiv.palm.plugins.musa." +
+      "v1P\001b\006proto3"
+    };
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
+      .internalBuildGeneratedFileFrom(descriptorData,
+        new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.google.protobuf.EmptyProto.getDescriptor(),
+        });
+    com.google.protobuf.EmptyProto.getDescriptor();
+  }
 
-    public static com.google.protobuf.Descriptors.FileDescriptor
-    getDescriptor() {
-        return descriptor;
-    }
-
-    private static com.google.protobuf.Descriptors.FileDescriptor
-            descriptor;
-
-    static {
-        java.lang.String[] descriptorData = {
-                "\n\nmusa.proto\022\014palm.musa.v1\032\033google/proto" +
-                        "buf/empty.proto2F\n\tWechatPay\0229\n\005Query\022\026." +
-                        "google.protobuf.Empty\032\026.google.protobuf." +
-                        "Empty\"\0002C\n\006Health\0229\n\005Check\022\026.google.prot" +
-                        "obuf.Empty\032\026.google.protobuf.Empty\"\000B.\n*" +
-                        "com.github.saturn_xiv.palm.plugins.musa." +
-                        "v1P\001b\006proto3"
-        };
-        descriptor = com.google.protobuf.Descriptors.FileDescriptor
-                .internalBuildGeneratedFileFrom(descriptorData,
-                        new com.google.protobuf.Descriptors.FileDescriptor[]{
-                                com.google.protobuf.EmptyProto.getDescriptor(),
-                        });
-        com.google.protobuf.EmptyProto.getDescriptor();
-    }
-
-    // @@protoc_insertion_point(outer_class_scope)
+  // @@protoc_insertion_point(outer_class_scope)
 }

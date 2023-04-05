@@ -340,6 +340,12 @@ pub mod musa {
         tonic::include_proto!("palm.musa.v1");
     }
 }
+pub mod tex {
+    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
+    pub mod v1 {
+        tonic::include_proto!("palm.tex.v1");
+    }
+}
 pub mod ops {
     pub mod mail {
         #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
