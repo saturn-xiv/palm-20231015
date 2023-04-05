@@ -1,7 +1,5 @@
 package com.github.saturn_xiv.palm.plugins.musa;
 
-import com.github.saturn_xiv.palm.plugins.musa.services.HealthServiceImpl;
-import com.github.saturn_xiv.palm.plugins.musa.services.WechatPayServiceImpl;
 import com.github.saturn_xiv.palm.plugins.musa.v1.HealthGrpc;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayGrpc;
 import io.grpc.Grpc;
@@ -23,7 +21,6 @@ public class RpcServer {
 
     void run() throws InterruptedException {
         server.awaitTermination();
-
     }
 
     @PostConstruct
@@ -55,11 +52,4 @@ public class RpcServer {
 
     private final static Logger logger = LoggerFactory.getLogger(RpcServer.class);
 
-    public void setHealthService(HealthServiceImpl healthService) {
-        this.healthService = healthService;
-    }
-
-    public void setWechatPayService(WechatPayServiceImpl wechatPayService) {
-        this.wechatPayService = wechatPayService;
-    }
 }
