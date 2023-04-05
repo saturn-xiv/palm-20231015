@@ -3,274 +3,287 @@ package com.github.saturn_xiv.palm.plugins.musa.v1;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
+ *
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.53.0)",
-    comments = "Source: musa.proto")
+        value = "by gRPC proto compiler (version 1.53.0)",
+        comments = "Source: musa.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class WechatPayGrpc {
 
-  private WechatPayGrpc() {}
+    private WechatPayGrpc() {
+    }
 
-  public static final String SERVICE_NAME = "palm.musa.v1.WechatPay";
+    public static final String SERVICE_NAME = "palm.musa.v1.WechatPay";
 
-  // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.google.protobuf.Empty,
-      com.google.protobuf.Empty> getQueryMethod;
+    // Static method descriptors that strictly reflect the proto.
+    private static volatile io.grpc.MethodDescriptor<com.google.protobuf.Empty,
+            com.google.protobuf.Empty> getQueryMethod;
 
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "Query",
-      requestType = com.google.protobuf.Empty.class,
-      responseType = com.google.protobuf.Empty.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.google.protobuf.Empty,
-      com.google.protobuf.Empty> getQueryMethod() {
-    io.grpc.MethodDescriptor<com.google.protobuf.Empty, com.google.protobuf.Empty> getQueryMethod;
-    if ((getQueryMethod = WechatPayGrpc.getQueryMethod) == null) {
-      synchronized (WechatPayGrpc.class) {
+    @io.grpc.stub.annotations.RpcMethod(
+            fullMethodName = SERVICE_NAME + '/' + "Query",
+            requestType = com.google.protobuf.Empty.class,
+            responseType = com.google.protobuf.Empty.class,
+            methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+    public static io.grpc.MethodDescriptor<com.google.protobuf.Empty,
+            com.google.protobuf.Empty> getQueryMethod() {
+        io.grpc.MethodDescriptor<com.google.protobuf.Empty, com.google.protobuf.Empty> getQueryMethod;
         if ((getQueryMethod = WechatPayGrpc.getQueryMethod) == null) {
-          WechatPayGrpc.getQueryMethod = getQueryMethod =
-              io.grpc.MethodDescriptor.<com.google.protobuf.Empty, com.google.protobuf.Empty>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Query"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.google.protobuf.Empty.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.google.protobuf.Empty.getDefaultInstance()))
-              .setSchemaDescriptor(new WechatPayMethodDescriptorSupplier("Query"))
-              .build();
+            synchronized (WechatPayGrpc.class) {
+                if ((getQueryMethod = WechatPayGrpc.getQueryMethod) == null) {
+                    WechatPayGrpc.getQueryMethod = getQueryMethod =
+                            io.grpc.MethodDescriptor.<com.google.protobuf.Empty, com.google.protobuf.Empty>newBuilder()
+                                    .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                                    .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Query"))
+                                    .setSampledToLocalTracing(true)
+                                    .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                            com.google.protobuf.Empty.getDefaultInstance()))
+                                    .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                            com.google.protobuf.Empty.getDefaultInstance()))
+                                    .setSchemaDescriptor(new WechatPayMethodDescriptorSupplier("Query"))
+                                    .build();
+                }
+            }
         }
-      }
+        return getQueryMethod;
     }
-    return getQueryMethod;
-  }
 
-  /**
-   * Creates a new async stub that supports all call types for the service
-   */
-  public static WechatPayStub newStub(io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<WechatPayStub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<WechatPayStub>() {
+    /**
+     * Creates a new async stub that supports all call types for the service
+     */
+    public static WechatPayStub newStub(io.grpc.Channel channel) {
+        io.grpc.stub.AbstractStub.StubFactory<WechatPayStub> factory =
+                new io.grpc.stub.AbstractStub.StubFactory<WechatPayStub>() {
+                    @java.lang.Override
+                    public WechatPayStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+                        return new WechatPayStub(channel, callOptions);
+                    }
+                };
+        return WechatPayStub.newStub(factory, channel);
+    }
+
+    /**
+     * Creates a new blocking-style stub that supports unary and streaming output calls on the service
+     */
+    public static WechatPayBlockingStub newBlockingStub(
+            io.grpc.Channel channel) {
+        io.grpc.stub.AbstractStub.StubFactory<WechatPayBlockingStub> factory =
+                new io.grpc.stub.AbstractStub.StubFactory<WechatPayBlockingStub>() {
+                    @java.lang.Override
+                    public WechatPayBlockingStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+                        return new WechatPayBlockingStub(channel, callOptions);
+                    }
+                };
+        return WechatPayBlockingStub.newStub(factory, channel);
+    }
+
+    /**
+     * Creates a new ListenableFuture-style stub that supports unary calls on the service
+     */
+    public static WechatPayFutureStub newFutureStub(
+            io.grpc.Channel channel) {
+        io.grpc.stub.AbstractStub.StubFactory<WechatPayFutureStub> factory =
+                new io.grpc.stub.AbstractStub.StubFactory<WechatPayFutureStub>() {
+                    @java.lang.Override
+                    public WechatPayFutureStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+                        return new WechatPayFutureStub(channel, callOptions);
+                    }
+                };
+        return WechatPayFutureStub.newStub(factory, channel);
+    }
+
+    /**
+     *
+     */
+    public static abstract class WechatPayImplBase implements io.grpc.BindableService {
+
+        /**
+         *
+         */
+        public void query(com.google.protobuf.Empty request,
+                          io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
+            io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getQueryMethod(), responseObserver);
+        }
+
         @java.lang.Override
-        public WechatPayStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new WechatPayStub(channel, callOptions);
+        public final io.grpc.ServerServiceDefinition bindService() {
+            return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+                    .addMethod(
+                            getQueryMethod(),
+                            io.grpc.stub.ServerCalls.asyncUnaryCall(
+                                    new MethodHandlers<
+                                            com.google.protobuf.Empty,
+                                            com.google.protobuf.Empty>(
+                                            this, METHODID_QUERY)))
+                    .build();
         }
-      };
-    return WechatPayStub.newStub(factory, channel);
-  }
+    }
 
-  /**
-   * Creates a new blocking-style stub that supports unary and streaming output calls on the service
-   */
-  public static WechatPayBlockingStub newBlockingStub(
-      io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<WechatPayBlockingStub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<WechatPayBlockingStub>() {
+    /**
+     *
+     */
+    public static final class WechatPayStub extends io.grpc.stub.AbstractAsyncStub<WechatPayStub> {
+        private WechatPayStub(
+                io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            super(channel, callOptions);
+        }
+
         @java.lang.Override
-        public WechatPayBlockingStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new WechatPayBlockingStub(channel, callOptions);
+        protected WechatPayStub build(
+                io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            return new WechatPayStub(channel, callOptions);
         }
-      };
-    return WechatPayBlockingStub.newStub(factory, channel);
-  }
 
-  /**
-   * Creates a new ListenableFuture-style stub that supports unary calls on the service
-   */
-  public static WechatPayFutureStub newFutureStub(
-      io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<WechatPayFutureStub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<WechatPayFutureStub>() {
+        /**
+         *
+         */
+        public void query(com.google.protobuf.Empty request,
+                          io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
+            io.grpc.stub.ClientCalls.asyncUnaryCall(
+                    getChannel().newCall(getQueryMethod(), getCallOptions()), request, responseObserver);
+        }
+    }
+
+    /**
+     *
+     */
+    public static final class WechatPayBlockingStub extends io.grpc.stub.AbstractBlockingStub<WechatPayBlockingStub> {
+        private WechatPayBlockingStub(
+                io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            super(channel, callOptions);
+        }
+
         @java.lang.Override
-        public WechatPayFutureStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new WechatPayFutureStub(channel, callOptions);
+        protected WechatPayBlockingStub build(
+                io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            return new WechatPayBlockingStub(channel, callOptions);
         }
-      };
-    return WechatPayFutureStub.newStub(factory, channel);
-  }
 
-  /**
-   */
-  public static abstract class WechatPayImplBase implements io.grpc.BindableService {
-
-    /**
-     */
-    public void query(com.google.protobuf.Empty request,
-        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getQueryMethod(), responseObserver);
-    }
-
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getQueryMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                com.google.protobuf.Empty,
-                com.google.protobuf.Empty>(
-                  this, METHODID_QUERY)))
-          .build();
-    }
-  }
-
-  /**
-   */
-  public static final class WechatPayStub extends io.grpc.stub.AbstractAsyncStub<WechatPayStub> {
-    private WechatPayStub(
-        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      super(channel, callOptions);
-    }
-
-    @java.lang.Override
-    protected WechatPayStub build(
-        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new WechatPayStub(channel, callOptions);
+        /**
+         *
+         */
+        public com.google.protobuf.Empty query(com.google.protobuf.Empty request) {
+            return io.grpc.stub.ClientCalls.blockingUnaryCall(
+                    getChannel(), getQueryMethod(), getCallOptions(), request);
+        }
     }
 
     /**
+     *
      */
-    public void query(com.google.protobuf.Empty request,
-        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getQueryMethod(), getCallOptions()), request, responseObserver);
-    }
-  }
+    public static final class WechatPayFutureStub extends io.grpc.stub.AbstractFutureStub<WechatPayFutureStub> {
+        private WechatPayFutureStub(
+                io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            super(channel, callOptions);
+        }
 
-  /**
-   */
-  public static final class WechatPayBlockingStub extends io.grpc.stub.AbstractBlockingStub<WechatPayBlockingStub> {
-    private WechatPayBlockingStub(
-        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      super(channel, callOptions);
-    }
+        @java.lang.Override
+        protected WechatPayFutureStub build(
+                io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            return new WechatPayFutureStub(channel, callOptions);
+        }
 
-    @java.lang.Override
-    protected WechatPayBlockingStub build(
-        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new WechatPayBlockingStub(channel, callOptions);
-    }
-
-    /**
-     */
-    public com.google.protobuf.Empty query(com.google.protobuf.Empty request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getQueryMethod(), getCallOptions(), request);
-    }
-  }
-
-  /**
-   */
-  public static final class WechatPayFutureStub extends io.grpc.stub.AbstractFutureStub<WechatPayFutureStub> {
-    private WechatPayFutureStub(
-        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      super(channel, callOptions);
+        /**
+         *
+         */
+        public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> query(
+                com.google.protobuf.Empty request) {
+            return io.grpc.stub.ClientCalls.futureUnaryCall(
+                    getChannel().newCall(getQueryMethod(), getCallOptions()), request);
+        }
     }
 
-    @java.lang.Override
-    protected WechatPayFutureStub build(
-        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new WechatPayFutureStub(channel, callOptions);
+    private static final int METHODID_QUERY = 0;
+
+    private static final class MethodHandlers<Req, Resp> implements
+            io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
+            io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
+            io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
+            io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
+        private final WechatPayImplBase serviceImpl;
+        private final int methodId;
+
+        MethodHandlers(WechatPayImplBase serviceImpl, int methodId) {
+            this.serviceImpl = serviceImpl;
+            this.methodId = methodId;
+        }
+
+        @java.lang.Override
+        @java.lang.SuppressWarnings("unchecked")
+        public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
+            switch (methodId) {
+                case METHODID_QUERY:
+                    serviceImpl.query((com.google.protobuf.Empty) request,
+                            (io.grpc.stub.StreamObserver<com.google.protobuf.Empty>) responseObserver);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+        }
+
+        @java.lang.Override
+        @java.lang.SuppressWarnings("unchecked")
+        public io.grpc.stub.StreamObserver<Req> invoke(
+                io.grpc.stub.StreamObserver<Resp> responseObserver) {
+            switch (methodId) {
+                default:
+                    throw new AssertionError();
+            }
+        }
     }
 
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> query(
-        com.google.protobuf.Empty request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getQueryMethod(), getCallOptions()), request);
-    }
-  }
+    private static abstract class WechatPayBaseDescriptorSupplier
+            implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
+        WechatPayBaseDescriptorSupplier() {
+        }
 
-  private static final int METHODID_QUERY = 0;
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
+            return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.getDescriptor();
+        }
 
-  private static final class MethodHandlers<Req, Resp> implements
-      io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
-      io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
-      io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
-      io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final WechatPayImplBase serviceImpl;
-    private final int methodId;
-
-    MethodHandlers(WechatPayImplBase serviceImpl, int methodId) {
-      this.serviceImpl = serviceImpl;
-      this.methodId = methodId;
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
+            return getFileDescriptor().findServiceByName("WechatPay");
+        }
     }
 
-    @java.lang.Override
-    @java.lang.SuppressWarnings("unchecked")
-    public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
-      switch (methodId) {
-        case METHODID_QUERY:
-          serviceImpl.query((com.google.protobuf.Empty) request,
-              (io.grpc.stub.StreamObserver<com.google.protobuf.Empty>) responseObserver);
-          break;
-        default:
-          throw new AssertionError();
-      }
+    private static final class WechatPayFileDescriptorSupplier
+            extends WechatPayBaseDescriptorSupplier {
+        WechatPayFileDescriptorSupplier() {
+        }
     }
 
-    @java.lang.Override
-    @java.lang.SuppressWarnings("unchecked")
-    public io.grpc.stub.StreamObserver<Req> invoke(
-        io.grpc.stub.StreamObserver<Resp> responseObserver) {
-      switch (methodId) {
-        default:
-          throw new AssertionError();
-      }
-    }
-  }
+    private static final class WechatPayMethodDescriptorSupplier
+            extends WechatPayBaseDescriptorSupplier
+            implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
+        private final String methodName;
 
-  private static abstract class WechatPayBaseDescriptorSupplier
-      implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    WechatPayBaseDescriptorSupplier() {}
+        WechatPayMethodDescriptorSupplier(String methodName) {
+            this.methodName = methodName;
+        }
 
-    @java.lang.Override
-    public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.getDescriptor();
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
+            return getServiceDescriptor().findMethodByName(methodName);
+        }
     }
 
-    @java.lang.Override
-    public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("WechatPay");
-    }
-  }
+    private static volatile io.grpc.ServiceDescriptor serviceDescriptor;
 
-  private static final class WechatPayFileDescriptorSupplier
-      extends WechatPayBaseDescriptorSupplier {
-    WechatPayFileDescriptorSupplier() {}
-  }
-
-  private static final class WechatPayMethodDescriptorSupplier
-      extends WechatPayBaseDescriptorSupplier
-      implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final String methodName;
-
-    WechatPayMethodDescriptorSupplier(String methodName) {
-      this.methodName = methodName;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
-      return getServiceDescriptor().findMethodByName(methodName);
-    }
-  }
-
-  private static volatile io.grpc.ServiceDescriptor serviceDescriptor;
-
-  public static io.grpc.ServiceDescriptor getServiceDescriptor() {
-    io.grpc.ServiceDescriptor result = serviceDescriptor;
-    if (result == null) {
-      synchronized (WechatPayGrpc.class) {
-        result = serviceDescriptor;
+    public static io.grpc.ServiceDescriptor getServiceDescriptor() {
+        io.grpc.ServiceDescriptor result = serviceDescriptor;
         if (result == null) {
-          serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new WechatPayFileDescriptorSupplier())
-              .addMethod(getQueryMethod())
-              .build();
+            synchronized (WechatPayGrpc.class) {
+                result = serviceDescriptor;
+                if (result == null) {
+                    serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
+                            .setSchemaDescriptor(new WechatPayFileDescriptorSupplier())
+                            .addMethod(getQueryMethod())
+                            .build();
+                }
+            }
         }
-      }
+        return result;
     }
-    return result;
-  }
 }

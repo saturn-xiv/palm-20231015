@@ -1,6 +1,5 @@
-package com.github.saturn_xiv.palm.plugins.musa.helpers.impl;
+package com.github.saturn_xiv.palm.plugins.musa.models;
 
-import com.github.saturn_xiv.palm.plugins.musa.helpers.WechatPayHelper;
 import com.wechat.pay.java.core.RSAAutoCertificateConfig;
 import com.wechat.pay.java.core.exception.ServiceException;
 import com.wechat.pay.java.service.payments.nativepay.NativePayService;
@@ -10,17 +9,19 @@ import com.wechat.pay.java.service.payments.nativepay.model.PrepayRequest;
 import com.wechat.pay.java.service.payments.nativepay.model.QueryOrderByIdRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.Serializable;
+import java.nio.file.Paths;
+import java.util.Properties;
 
-@Component("palm.musa.helper.wechat-pay")
-public class WechatPayHelperImpl implements WechatPayHelper {
+public class WechatPayConfig implements Serializable {
 
-    @Override
     public String getCodeUrl(String appId, String mchId, String description, String outTradeNo,
                              String amountCurrency, int amountTotal, String notifyUrl) {
+        var service = this.open();
+
         final var amount = new Amount();
         amount.setTotal(amountTotal);
         amount.setCurrency(amountCurrency);
@@ -36,8 +37,10 @@ public class WechatPayHelperImpl implements WechatPayHelper {
         return response.getCodeUrl();
     }
 
-    @Override
+
     public String queryOrderById(String mchId, String transactionId) {
+        var service = this.open();
+
         final var request = new QueryOrderByIdRequest();
         request.setMchid(mchId);
         request.setTransactionId(transactionId);
@@ -50,34 +53,43 @@ public class WechatPayHelperImpl implements WechatPayHelper {
         return null;
     }
 
-    @Override
+
     public void closeOrder(String mchId, String outTradeNo) {
+        var service = this.open();
+
         final var request = new CloseOrderRequest();
         request.setMchid(mchId);
         request.setOutTradeNo(outTradeNo);
         service.closeOrder(request);
     }
 
-    @PostConstruct
-    void startUp() {
+    public WechatPayConfig(String project) throws IOException {
+        var props = new Properties();
+        try (var file = new FileInputStream(Paths.get("wechat-pay", (project + ".properties")).toFile())) {
+            props.load(file);
+        }
+        this.merchantId = props.getProperty("wechat.merchant-id");
+        this.privateKeyPath = props.getProperty("wechat.private-key-path");
+        this.merchantSerialNumber = props.getProperty("wechat.merchant-serial-number");
+        this.apiV3Key = props.getProperty("wechat.api-v3-key");
+
+    }
+
+    public NativePayService open() {
         var config = new RSAAutoCertificateConfig.Builder()
                 .merchantId(merchantId)
                 .privateKeyFromPath(privateKeyPath)
                 .merchantSerialNumber(merchantSerialNumber)
                 .apiV3Key(apiV3Key)
                 .build();
-        service = new NativePayService.Builder().config(config).build();
+        return new NativePayService.Builder().config(config).build();
     }
 
-    @Value("${app.wechat.merchant-id}")
-    String merchantId;
-    @Value("${app.wechat.private-key-path}")
-    String privateKeyPath;
-    @Value("${app.wechat.merchant-serial-number}")
-    String merchantSerialNumber;
-    @Value("${app.wechat.api-v3-key}")
-    String apiV3Key;
 
-    private NativePayService service;
-    private final static Logger logger = LoggerFactory.getLogger(WechatPayHelperImpl.class);
+    final private String merchantId;
+    final private String privateKeyPath;
+    final private String merchantSerialNumber;
+    final private String apiV3Key;
+
+    private final static Logger logger = LoggerFactory.getLogger(WechatPayConfig.class);
 }

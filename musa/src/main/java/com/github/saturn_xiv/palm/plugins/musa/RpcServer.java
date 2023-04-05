@@ -25,18 +25,16 @@ public class RpcServer {
 
     @PostConstruct
     void startUp() throws IOException {
-        logger.debug("{} {}", wechatPayService == null, healthService == null);
         server = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
                 .addService(wechatPayService)
                 .addService(healthService)
                 .build().start();
-        logger.info("start gRPC server on http://0.0.0.0:{}", port);
-
+        logger.info("Start gRPC server on http://0.0.0.0:{}", port);
     }
 
     @PreDestroy
     void shutDown() throws InterruptedException {
-        logger.warn("showdown gRPC server");
+        logger.warn("Showdown gRPC server");
         server.shutdown().awaitTermination(1, TimeUnit.MINUTES);
     }
 
