@@ -328,10 +328,17 @@ pub mod cbeta {
         tonic::include_proto!("palm.cbeta.v1");
     }
 }
+
 pub mod orchid {
     #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
     pub mod v1 {
         tonic::include_proto!("palm.orchid.v1");
+    }
+}
+pub mod musa {
+    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
+    pub mod v1 {
+        tonic::include_proto!("palm.musa.v1");
     }
 }
 
@@ -370,5 +377,3 @@ pub mod ops {
 
 #[allow(clippy::uninlined_format_args, clippy::match_single_binding)]
 pub mod loquat;
-#[allow(clippy::uninlined_format_args, clippy::match_single_binding)]
-pub mod musa;

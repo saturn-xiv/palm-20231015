@@ -43,21 +43,6 @@ function generate_loquat() {
     thrift -out $cpp_target --gen cpp -r palm/protocols/loquat.thrift        
 }
 
-function generate_musa() {
-    cd $WORKSPACE
-
-    echo 'generate code for musa-rust'
-    thrift -out palm/src --gen rs -r palm/protocols/musa.thrift
-
-    echo 'generate code for musa-java'
-    local java_target=musa/src/main/java/com/github/saturn_xiv/palm/plugins/musa/v1
-    if [ -d $java_target ]
-    then
-        rm -r $java_target
-    fi
-    thrift -out musa/src/main/java --gen java -r palm/protocols/musa.thrift    
-}
-
 # https://github.com/grpc/grpc-web#code-generator-plugin
 function generate_fig_web() {
     echo "generate code for fig@grpc-web"
@@ -116,6 +101,19 @@ function generate_diesel_postgresql() {
         > flashcard/src/schema.rs
 }
 
+function copy_musa() {
+    cd $WORKSPACE
+
+    local package=com/github/saturn_xiv/palm/plugins/musa/v1
+    local target=musa/src/main/java/$package
+    if [ -d $target ]
+    then
+        rm -r $target
+    fi
+    cp -r tmp/protocols/java/$package $target
+}
+
+
 # -----------------------------------------------------------------------------
 
 generate_diesel_postgresql "postgres://www:change-me@127.0.0.1:5432/demo"
@@ -141,7 +139,7 @@ done
 generate_fig_web
 generate_aloe_web
 generate_loquat
-generate_musa
+copy_musa
 
 echo 'format rust code'
 cargo fmt
