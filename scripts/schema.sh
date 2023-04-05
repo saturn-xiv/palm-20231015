@@ -22,16 +22,6 @@ function generate_grpc_by_lang() {
         $WORKSPACE/palm/protocols/*.proto
 }
 
-function copy_musa() {
-    local package=com/github/saturn_xiv/palm/plugins/musa/v1
-    local target=$WORKSPACE/musa/src/main/java/$package
-    if [ -d $target ]
-    then
-        rm -r $target
-    fi
-    cp -r $WORKSPACE/tmp/protocols/java/$package $target
-}
-
 function generate_flatbuffers() {
     echo "generate flatbuffers"
     flatc --rust --filename-suffix "" -o $WORKSPACE/$2 $WORKSPACE/$1.fbs
@@ -48,10 +38,20 @@ function generate_loquat() {
         rm -r $WORKSPACE/loquat/gourd/src
     fi
     mkdir -p $WORKSPACE/loquat/gourd/src
-    thrift -out $WORKSPACE/loquat/gourd/src --gen cpp -r $WORKSPACE/loquat/loquat.thrift
-    
-    echo 'generate code for loquat-java'    
-    thrift -out $WORKSPACE/tmp/protocols/java --gen java -r loquat/loquat.thrift
+    thrift -out $WORKSPACE/loquat/gourd/src --gen cpp -r $WORKSPACE/loquat/loquat.thrift        
+}
+
+function generate_musa() {
+    echo 'generate code for musa-rust'
+    thrift -out palm/src --gen rs -r $WORKSPACE/musa/musa.thrift
+
+    echo 'generate code for musa-java'
+    local java_target=$WORKSPACE/musa/src/main/java/com/github/saturn_xiv/palm/plugins/musa/v1
+    if [ -d $java_target ]
+    then
+        rm -r $java_target
+    fi
+    thrift -out $WORKSPACE/musa/src/main/java --gen java -r musa/musa.thrift    
 }
 
 # https://github.com/grpc/grpc-web#code-generator-plugin
@@ -137,8 +137,7 @@ done
 generate_fig_web
 generate_aloe_web
 generate_loquat
-copy_musa
-
+generate_musa
 
 echo 'format rust code'
 cargo fmt
