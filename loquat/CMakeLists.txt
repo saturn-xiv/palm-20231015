@@ -4,7 +4,7 @@ include(FetchContent)
 
 project(
     loquat
-    VERSION 2023.2.20
+    VERSION 2023.4.5
     DESCRIPTION "A cryptographic rpc service."
     LANGUAGES C CXX)
 # --------------------------------------------------------
@@ -38,7 +38,7 @@ FetchContent_Declare(nlohmann_json
 )
 FetchContent_Declare(httplib
   GIT_REPOSITORY  "https://github.com/yhirose/cpp-httplib.git"
-  GIT_TAG         "v0.12.0"
+  GIT_TAG         "v0.12.2"
 )
 FetchContent_Declare(tink
   GIT_REPOSITORY  "https://github.com/google/tink.git"
@@ -47,7 +47,7 @@ FetchContent_Declare(tink
 
 FetchContent_Declare(argparse
   GIT_REPOSITORY  "https://github.com/p-ranav/argparse.git"
-  GIT_TAG         "e516556"
+  GIT_TAG         "557948f"
 )
 
 FetchContent_MakeAvailable(spdlog argparse tomlplusplus nlohmann_json httplib tink)

@@ -19,12 +19,6 @@
 #include <tink/signature/signature_key_templates.h>
 #include <tink/util/status.h>
 
-std::string loquat::auth(const std::string& token) {
-  loquat::Jwt jwt(loquat::PROJECT_NAME);
-  const auto subject = jwt.verify(token);
-  return subject;
-}
-
 loquat::Config::Config(const std::filesystem::path& file) {
   spdlog::info("load config from {}", file.string());
   std::ifstream in(file);
