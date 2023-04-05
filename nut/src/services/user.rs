@@ -21,7 +21,7 @@ use palm::{
         RoleRequest, UserRequest,
     },
     session::Session,
-    tink::Loquat,
+    thrift::Thrift,
     to_chrono_duration, to_code, to_timestamp, try_grpc,
     wechat::oauth2::qr_connect::url as wechat_oauth2_qr_connect_url,
     Error, GrpcResult, HttpError, Result,
@@ -49,9 +49,9 @@ use super::{CurrentUserAdapter, Oauth2State};
 pub struct Service {
     pub redis: RedisPool,
     pub pgsql: PostgreSqlPool,
-    pub jwt: Arc<Loquat>,
-    pub aes: Arc<Loquat>,
-    pub hmac: Arc<Loquat>,
+    pub jwt: Arc<Thrift>,
+    pub aes: Arc<Thrift>,
+    pub hmac: Arc<Thrift>,
     pub rabbitmq: Arc<RabbitMq>,
     pub enforcer: Arc<Mutex<Enforcer>>,
     pub orchid: Arc<Orchid>,
@@ -792,7 +792,7 @@ impl v1::user_server::User for Service {
                 state: req.state.clone(),
                 language: req.language,
             });
-            try_grpc!(Loquat::authorization(&mut req, &self.orchid.token))?;
+            try_grpc!(Thrift::authorization(&mut req, &self.orchid.token))?;
             let res = try_grpc!(cli.login(req).await)?;
             debug!("fetch wechat user {:?}", res);
             res.into_inner()

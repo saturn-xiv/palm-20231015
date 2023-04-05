@@ -4,7 +4,7 @@ use std::sync::Arc;
 
 use casbin::Enforcer;
 use palm::{
-    cache::redis::Pool as RedisPool, nut::v1, session::Session, tink::Loquat, to_timestamp,
+    cache::redis::Pool as RedisPool, nut::v1, session::Session, thrift::Thrift, to_timestamp,
     try_grpc, GrpcResult,
 };
 use tokio::sync::Mutex;
@@ -21,7 +21,7 @@ use super::CurrentUserAdapter;
 
 pub struct Service {
     pub pgsql: PostgreSqlPool,
-    pub jwt: Arc<Loquat>,
+    pub jwt: Arc<Thrift>,
     pub redis: RedisPool,
     pub enforcer: Arc<Mutex<Enforcer>>,
 }

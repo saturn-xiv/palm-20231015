@@ -1,13 +1,13 @@
 use hyper::StatusCode;
 use palm::{
-    cache::redis::Config as Redis, jwt::Jwt, session::Session, tink::Loquat,
+    cache::redis::Config as Redis, jwt::Jwt, session::Session, thrift::Thrift,
     wechat::Config as WechatConfig, HttpError, Result,
 };
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Config {
-    pub loquat: Loquat,
+    pub loquat: Thrift,
     pub redis: Redis,
     pub wechat: Vec<WechatConfig>,
     pub agents: Vec<String>,

@@ -6,7 +6,7 @@ use palm::{
     minio::Config as Minio,
     queue::amqp::Config as RabbitMqConfig,
     search::Config as OpenSearch,
-    tink::Loquat,
+    thrift::Thrift,
 };
 use serde::{Deserialize, Serialize};
 
@@ -15,7 +15,7 @@ pub struct Config {
     pub env: Environment,
     #[serde(rename = "cookie-key")]
     pub cookie_key: Key,
-    pub loquat: Loquat,
+    pub loquat: Thrift,
     pub http: Http,
     pub rpc: Rpc,
     pub postgresql: PostgreSql,

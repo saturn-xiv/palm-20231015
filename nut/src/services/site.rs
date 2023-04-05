@@ -24,7 +24,7 @@ use palm::{
     search::OpenSearch,
     seo::Provider as SeoProvider,
     session::Session,
-    tink::Loquat,
+    thrift::Thrift,
     to_code, to_timestamp, try_grpc, Error, GrpcResult, Result,
 };
 use prost::Message;
@@ -47,9 +47,9 @@ use super::CurrentUserAdapter;
 
 pub struct Service {
     pub pgsql: PostgreSqlPool,
-    pub jwt: Arc<Loquat>,
-    pub aes: Arc<Loquat>,
-    pub hmac: Arc<Loquat>,
+    pub jwt: Arc<Thrift>,
+    pub aes: Arc<Thrift>,
+    pub hmac: Arc<Thrift>,
     pub redis: RedisPool,
     pub rabbitmq: Arc<RabbitMq>,
     pub opensearch: Arc<OpenSearch>,
@@ -368,7 +368,7 @@ impl v1::site_server::Site for Service {
             return Err(Status::permission_denied(type_name::<v1::TwilioProfile>()));
         }
 
-        let it = try_grpc!(get::<v1::TwilioProfile, Loquat>(db, aes, None))?;
+        let it = try_grpc!(get::<v1::TwilioProfile, Thrift>(db, aes, None))?;
 
         Ok(Response::new(it))
     }
@@ -432,7 +432,7 @@ impl v1::site_server::Site for Service {
             return Err(Status::permission_denied(type_name::<v1::SmtpProfile>()));
         }
 
-        let it = try_grpc!(get::<v1::SmtpProfile, Loquat>(db, aes, None))?;
+        let it = try_grpc!(get::<v1::SmtpProfile, Thrift>(db, aes, None))?;
 
         Ok(Response::new(it))
     }

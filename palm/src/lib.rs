@@ -122,7 +122,7 @@ pub mod search;
 pub mod seo;
 pub mod session;
 pub mod tasks;
-pub mod tink;
+pub mod thrift;
 pub mod twilio;
 pub mod wechat;
 

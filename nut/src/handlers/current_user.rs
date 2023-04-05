@@ -3,7 +3,7 @@ use std::result::Result as StdResult;
 
 use actix_web::{dev::Payload, error::ErrorForbidden, web, Error, FromRequest, HttpRequest};
 use futures::future::{err, ok, Ready};
-use palm::{handlers::token::Token, jwt::Jwt, tink::Loquat, try_web, Result};
+use palm::{handlers::token::Token, jwt::Jwt, thrift::Thrift, try_web, Result};
 
 use super::super::{
     models::user::{Action, Dao as UserDao, Item as User},
@@ -23,7 +23,7 @@ impl FromRequest for User {
 
     fn from_request(req: &HttpRequest, _pl: &mut Payload) -> Self::Future {
         let token = Token::detect(req);
-        if let Some(jwt) = req.app_data::<web::Data<Loquat>>() {
+        if let Some(jwt) = req.app_data::<web::Data<Thrift>>() {
             if let Some(db) = req.app_data::<web::Data<DbPool>>() {
                 if let Ok(mut db) = try_web!(db.get()) {
                     let db = db.deref_mut();

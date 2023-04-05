@@ -6,7 +6,7 @@ use nut::models::setting::get;
 use palm::{
     nut::v1::{EmailTask, SmtpProfile},
     queue::amqp::RabbitMq,
-    tink::Loquat,
+    thrift::Thrift,
     HttpError, Result,
 };
 
@@ -28,7 +28,7 @@ pub async fn launch(cfg: &Config, name: &str) -> Result<()> {
     {
         let queue = type_name::<EmailTask>();
         if name == queue {
-            let cfg = get::<SmtpProfile, Loquat>(db, &cfg.loquat, None)?;
+            let cfg = get::<SmtpProfile, Thrift>(db, &cfg.loquat, None)?;
             return RabbitMq::consume(&ch, &id, queue, &cfg).await;
         }
     }

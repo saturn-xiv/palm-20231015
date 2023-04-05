@@ -29,29 +29,33 @@ function generate_flatbuffers() {
 }
 
 function generate_loquat() {
+    cd $WORKSPACE
     echo 'generate code for loquat-rust'
-    thrift -out palm/src --gen rs -r $WORKSPACE/loquat/loquat.thrift
+    thrift -out palm/src --gen rs -r palm/protocols/loquat.thrift
     
     echo 'generate code for loquat-cpp'
-    if [ -d $WORKSPACE/loquat/gourd/src ]
+    local cpp_target=loquat/gourd/src
+    if [ -d $cpp_target ]
     then
-        rm -r $WORKSPACE/loquat/gourd/src
+        rm -r $cpp_target
     fi
-    mkdir -p $WORKSPACE/loquat/gourd/src
-    thrift -out $WORKSPACE/loquat/gourd/src --gen cpp -r $WORKSPACE/loquat/loquat.thrift        
+    mkdir -p $cpp_target
+    thrift -out $cpp_target --gen cpp -r palm/protocols/loquat.thrift        
 }
 
 function generate_musa() {
+    cd $WORKSPACE
+
     echo 'generate code for musa-rust'
-    thrift -out palm/src --gen rs -r $WORKSPACE/musa/musa.thrift
+    thrift -out palm/src --gen rs -r palm/protocols/musa.thrift
 
     echo 'generate code for musa-java'
-    local java_target=$WORKSPACE/musa/src/main/java/com/github/saturn_xiv/palm/plugins/musa/v1
+    local java_target=musa/src/main/java/com/github/saturn_xiv/palm/plugins/musa/v1
     if [ -d $java_target ]
     then
         rm -r $java_target
     fi
-    thrift -out $WORKSPACE/musa/src/main/java --gen java -r musa/musa.thrift    
+    thrift -out musa/src/main/java --gen java -r palm/protocols/musa.thrift    
 }
 
 # https://github.com/grpc/grpc-web#code-generator-plugin

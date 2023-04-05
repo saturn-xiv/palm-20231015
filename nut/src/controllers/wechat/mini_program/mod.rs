@@ -11,7 +11,7 @@ use palm::{
     jwt::Jwt,
     nut::v1,
     orchid::v1::WechatMiniProgramLoginRequest,
-    tink::Loquat,
+    thrift::Thrift,
     try_web, Error, HttpError,
 };
 use serde::{Deserialize, Serialize};
@@ -40,7 +40,7 @@ pub async fn bind(
     db: web::Data<DbPool>,
     token: Token,
     client_ip: ClientIp,
-    loquat: web::Data<Loquat>,
+    loquat: web::Data<Thrift>,
     form: web::Json<BindRequest>,
 ) -> WebResult<impl Responder> {
     let client_ip = client_ip.to_string();
@@ -113,7 +113,7 @@ pub struct SignInResponse {
 pub async fn sign_in(
     db: web::Data<DbPool>,
     client_ip: ClientIp,
-    loquat: web::Data<Loquat>,
+    loquat: web::Data<Thrift>,
     oauth: web::Data<Orchid>,
     form: web::Json<SignInRequest>,
 ) -> WebResult<impl Responder> {
@@ -130,7 +130,7 @@ pub async fn sign_in(
         app_id: form.app_id.clone(),
         code: form.code.clone(),
     });
-    try_web!(Loquat::authorization(&mut req, &oauth.token))?;
+    try_web!(Thrift::authorization(&mut req, &oauth.token))?;
 
     let res = try_web!(cli.login(req).await)?;
     debug!("fetch wechat mini-program user {:?}", res);
