@@ -65,18 +65,18 @@ copy_jdk() {
     cd $TARGET_DIR
     local jdk_version=20
     
-    if [ ! -f $HOME/download/openjdk-${jdk_version}_linux-x64_bin.tar.gz ]
+    if [ ! -f $HOME/downloads/openjdk-${jdk_version}_linux-x64_bin.tar.gz ]
     then
         wget -q -P $HOME/downloads https://download.java.net/java/GA/jdk20/bdc68b4b9cbc4ebcb30745c85038d91d/36/GPL/openjdk-20_linux-x64_bin.tar.gz
     fi
-    tar xf $HOME/download/openjdk-${jdk_version}_linux-x64_bin.tar.gz
+    tar xf $HOME/downloads/openjdk-${jdk_version}_linux-x64_bin.tar.gz
     mv jdk-${jdk_version} jdk-${jdk_version}-x64
 
-    if [ ! -f $HOME/download/openjdk-${jdk_version}_linux-aarch64_bin.tar.gz ]
+    if [ ! -f $HOME/downloads/openjdk-${jdk_version}_linux-aarch64_bin.tar.gz ]
     then
         wget -q -P $HOME/downloads https://download.java.net/java/GA/jdk20/bdc68b4b9cbc4ebcb30745c85038d91d/36/GPL/openjdk-20_linux-aarch64_bin.tar.gz
     fi    
-    tar xf $HOME/download/openjdk-${jdk_version}_linux-aarch64_bin.tar.gz
+    tar xf $HOME/downloads/openjdk-${jdk_version}_linux-aarch64_bin.tar.gz
     mv jdk-${jdk_version} jdk-${jdk_version}-aarch64
 }
 
@@ -123,8 +123,7 @@ copy_assets() {
         docker/spring/etc/envoy.yaml \
         palm/db palm/protocols \
         $TARGET_DIR/
-    cp loquat/loquat.thrift $TARGET_DIR/protocols/
-
+    
     echo "$GIT_VERSION" > $TARGET_DIR/VERSION
     echo "$(date -R)" >> $TARGET_DIR/VERSION
 }
@@ -198,7 +197,7 @@ copy_assets
 # -----------------------------------------------------------------------------
 
 cd $WORKSPACE/tmp
-XZ_OPT=-9 tar jcf palm-$GIT_VERSION.tar.xz palm-$GIT_VERSION
+XZ_OPT=-9 tar -cJf palm-$GIT_VERSION.tar.xz palm-$GIT_VERSION
 md5sum palm-$GIT_VERSION.tar.xz
 
 echo "done($GIT_VERSION)."
