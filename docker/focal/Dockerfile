@@ -14,7 +14,7 @@ RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-
 # https://apt.llvm.org/
 ENV CLANG_VERSION 15
 RUN echo "deb [arch=amd64] http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-${CLANG_VERSION} main" > /etc/apt/sources.list.d/llvm.list
-RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key apt-key add -
+RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 # https://wiki.debian.org/ToolChain/Cross
 RUN dpkg --add-architecture armhf
 RUN dpkg --add-architecture arm64
@@ -37,7 +37,7 @@ RUN apt -y install zsh git locales locales-all \
     python3 python3-distutils python3-dev python3-pip virtualenv
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${CLANG_VERSION} 100 \
-    update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${CLANG_VERSION} 100 \
+    && update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/lldb lldb /usr/bin/lldb-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/lld lld /usr/bin/lld-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_VERSION} 100 \
@@ -74,6 +74,8 @@ RUN git config --global core.quotepath false \
 RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf \
     && echo 'set-option -g default-shell "/bin/zsh"' >> $HOME/.tmux.conf
 
+RUN sh -c ". $HOME/.profile && pip3 install --user cmake"
+
 # https://github.com/nvm-sh/nvm
 ENV NVM_VERSION "v0.39.3"
 RUN git clone -b ${NVM_VERSION} https://github.com/nvm-sh/nvm.git $HOME/.nvm
@@ -88,22 +90,39 @@ RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.zshrc
 
 # https://www.rust-lang.org/tools/install
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-RUN zsh -c "source $HOME/.cargo/env && rustup target add aarch64-unknown-linux-gnu \
+RUN zsh -c "source $HOME/.cargo/env \
+    && rustup target add x86_64-unknown-linux-musl \
     && rustup target add armv7-unknown-linux-gnueabihf \
+    && rustup target add aarch64-unknown-linux-gnu \
+    && rustup target add aarch64-unknown-linux-musl \
     && rustup target add riscv64gc-unknown-linux-gnu"
 
-# https://github.com/rui314/mold
-RUN git clone -b v1.11.0 https://github.com/rui314/mold.git $HOME/downloads/mold
-RUN apt install -y libssl-dev libxxhash-dev zlib1g-dev \
-    file bsdmainutils
-RUN zsh -c "source $HOME/.zshrc \
-    && mkdir $HOME/build/mold \
-    && cd $HOME/build/mold \
-    && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-${GCC_VERSION} \
-        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/mold \
+# https://github.com/richfelker/musl-cross-make
+RUN git clone https://github.com/richfelker/musl-cross-make.git $HOME/build/musl-cross-make
+RUN cd $HOME/build/musl-cross-make \
+    && echo "TARGET=x86_64-linux-musl" > config.mak \
+    && echo "OUTPUT=/opt/crosstools" >> config.mak \
     && make \
-    && make install"
-RUN cp $HOME/.local/bin/mold /usr/bin/
+    && make install \
+    && make clean 
+RUN cd $HOME/build/musl-cross-make \
+    && echo "TARGET=aarch64-linux-musl" > config.mak \
+    && echo "OUTPUT=/opt/crosstools" >> config.mak \
+    && make \
+    && make install \
+    && make clean
+RUN cd $HOME/build/musl-cross-make \
+    && echo "TARGET=arm-linux-musleabihf" > config.mak \
+    && echo "OUTPUT=/opt/crosstools" >> config.mak \
+    && make \
+    && make install \
+    && make clean
+RUN echo 'export PATH=/opt/crosstools/bin:$PATH' >> $HOME/.zshrc
+
+# https://github.com/microsoft/vcpkg
+RUN git clone https://github.com/microsoft/vcpkg.git $HOME/local/vcpkg
+RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
+    && echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.zshrc
 
 # https://github.com/grpc/grpc
 ENV GRPC_VERSION "v1.53.0"
@@ -118,6 +137,29 @@ RUN zsh -c "source $HOME/.zshrc \
         -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
     && make -j \
     && make install"
+
+# https://github.com/rui314/mold
+RUN git clone -b v1.11.0 https://github.com/rui314/mold.git $HOME/downloads/mold
+RUN apt install -y libssl-dev libxxhash-dev zlib1g-dev \
+    file bsdmainutils
+RUN zsh -c "source $HOME/.zshrc \
+    && mkdir $HOME/build/mold \
+    && cd $HOME/build/mold \
+    && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-${GCC_VERSION} \
+        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/mold \
+    && make \
+    && make install"
+RUN cp $HOME/.local/bin/mold /usr/bin/
+
+ENV JDK_VERSION "20-open"
+# https://docs.gradle.org/current/userguide/compatibility.html
+ENV GRADLE_VERSION "8.1-rc-3"
+RUN curl -s "https://get.sdkman.io" | zsh
+RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
+RUN zsh -c "source $HOME/.zshrc \
+    && sdk install java ${JDK_VERSION} \
+    && sdk install maven \
+    && sdk install gradle ${GRADLE_VERSION}"
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
