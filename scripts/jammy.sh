@@ -36,12 +36,12 @@ build_rust_armhf_gnu() {
     install_gnu_deb armhf
 
     cd $WORKSPACE
-    PKG_CONFIG_ALLOW_CROSS=1
-    PKG_CONFIG_DIR=
-    PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig
-    export PKG_CONFIG_ALLOW_CROSS PKG_CONFIG_DIR PKG_CONFIG_LIBDIR
-
-    cargo build --quiet --release --target armv7-unknown-linux-gnueabihf -p $1
+    # local PKG_CONFIG_ALLOW_CROSS=1
+    # local PKG_CONFIG_DIR=
+    # local PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig
+    
+    PKG_CONFIG_DIR= PKG_CONFIG_ALLOW_CROSS=1 PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig \
+        cargo build --quiet --release --target armv7-unknown-linux-gnueabihf -p $1
     cp $WORKSPACE/target/armv7-unknown-linux-gnueabihf/release/$1 $TARGET_DIR/bin/aarch64/
 }
 
@@ -49,12 +49,12 @@ build_rust_arm64_gnu() {
     install_gnu_deb arm64
 
     cd $WORKSPACE
-    PKG_CONFIG_ALLOW_CROSS=1
-    PKG_CONFIG_DIR=
-    PKG_CONFIG_LIBDIR=/usr/lib/aarch64-unknown-linux-gnu/pkgconfig
-    export PKG_CONFIG_ALLOW_CROSS PKG_CONFIG_DIR PKG_CONFIG_LIBDIR
-
-    cargo build --quiet --release --target aarch64-unknown-linux-gnu -p $1
+    # local PKG_CONFIG_ALLOW_CROSS=1
+    # local PKG_CONFIG_DIR=
+    # local PKG_CONFIG_LIBDIR=/usr/lib/aarch64-linux-gnu/pkgconfig
+    
+    PKG_CONFIG_DIR= PKG_CONFIG_ALLOW_CROSS=1 PKG_CONFIG_LIBDIR=/usr/lib/aarch64-linux-gnu/pkgconfig \
+        cargo build --quiet --release --target aarch64-unknown-linux-gnu -p $1
     cp $WORKSPACE/target/aarch64-unknown-linux-gnu/release/$1 $TARGET_DIR/bin/aarch64/
 }
 
