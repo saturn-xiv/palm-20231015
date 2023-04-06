@@ -4,35 +4,51 @@ LABEL maintainer="Jeremy Zheng"
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt update
-RUN apt install -y lsb-release
+RUN apt install -y lsb-release apt-utils \
+    debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
+# https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
+RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
+# https://apt.llvm.org/
+ENV CLANG_VERSION 15
+RUN echo "deb [arch=amd64] http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-${CLANG_VERSION} main" > /etc/apt/sources.list.d/llvm.list
+RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key apt-key add -
+# https://wiki.debian.org/ToolChain/Cross
+RUN dpkg --add-architecture armhf
 RUN dpkg --add-architecture arm64
-RUN echo "deb [arch=arm64] http://ports.ubuntu.com/ $(lsb_release -cs) main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb [arch=arm64] http://ports.ubuntu.com/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb [arch=arm64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
+RUN dpkg --add-architecture riscv64
+RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs) main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 RUN apt update && apt -y upgrade
 
 ENV GCC_VERSION 10
-ENV CLANG_VERSION 12
-RUN apt -y install wget curl zsh git locales locales-all \
+RUN apt -y install zsh git locales locales-all \
     vim tzdata zip unzip tree tmux \
-    build-essential crossbuild-essential-arm64 \
-    g++-${GCC_VERSION} g++-${GCC_VERSION}-aarch64-linux-gnu \
-    libstdc++-${GCC_VERSION}-dev:amd64 libstdc++-${GCC_VERSION}-dev:arm64 \
-    clang-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
+    build-essential g++-${GCC_VERSION} libstdc++-${GCC_VERSION}-dev \
+    crossbuild-essential-arm64 g++-${GCC_VERSION}-aarch64-linux-gnu libstdc++-${GCC_VERSION}-dev:arm64 \
+    crossbuild-essential-armhf g++-${GCC_VERSION}-arm-linux-gnueabihf libstdc++-${GCC_VERSION}-dev:armhf \
+    crossbuild-essential-riscv64 g++-${GCC_VERSION}-riscv64-linux-gnu libstdc++-${GCC_VERSION}-dev:riscv64 \
+    clang-${CLANG_VERSION} clangd-${CLANG_VERSION} clang-tools-${CLANG_VERSION} clang-format-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
     cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio \
     debhelper bison flex ninja-build \
     python3 python3-distutils python3-dev python3-pip virtualenv
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${CLANG_VERSION} 100 \
+    update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/lldb lldb /usr/bin/lldb-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/lld lld /usr/bin/lld-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/aarch64-linux-gnu-gcc aarch64-linux-gnu-gcc /usr/bin/aarch64-linux-gnu-gcc-${GCC_VERSION} 100 \
-    && update-alternatives --install /usr/bin/aarch64-linux-gnu-g++ aarch64-linux-gnu-g++ /usr/bin/aarch64-linux-gnu-g++-${GCC_VERSION} 100
+    && update-alternatives --install /usr/bin/aarch64-linux-gnu-g++ aarch64-linux-gnu-g++ /usr/bin/aarch64-linux-gnu-g++-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/arm-linux-gnueabihf-gcc arm-linux-gnueabihf-gcc /usr/bin/arm-linux-gnueabihf-gcc-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/arm-linux-gnueabihf-g++ arm-linux-gnueabihf-g++ /usr/bin/arm-linux-gnueabihf-g++-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/riscv64-linux-gnu-gcc riscv64-linux-gnu-gcc /usr/bin/riscv64-linux-gnu-gcc-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/riscv64-linux-gnu-g++ riscv64-linux-gnu-g++ /usr/bin/riscv64-linux-gnu-g++-${GCC_VERSION} 100
+   
 
 RUN apt -y autoremove && apt -y clean
 
@@ -72,10 +88,12 @@ RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.zshrc
 
 # https://www.rust-lang.org/tools/install
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-RUN zsh -c "source $HOME/.cargo/env && rustup target add aarch64-unknown-linux-gnu"
+RUN zsh -c "source $HOME/.cargo/env && rustup target add aarch64-unknown-linux-gnu \
+    && rustup target add armv7-unknown-linux-gnueabihf \
+    && rustup target add riscv64gc-unknown-linux-gnu"
 
 # https://github.com/rui314/mold
-RUN git clone -b v1.10.1 https://github.com/rui314/mold.git $HOME/downloads/mold
+RUN git clone -b v1.11.0 https://github.com/rui314/mold.git $HOME/downloads/mold
 RUN apt install -y libssl-dev libxxhash-dev zlib1g-dev \
     file bsdmainutils
 RUN zsh -c "source $HOME/.zshrc \
@@ -88,7 +106,7 @@ RUN zsh -c "source $HOME/.zshrc \
 RUN cp $HOME/.local/bin/mold /usr/bin/
 
 # https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.52.0"
+ENV GRPC_VERSION "v1.53.0"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir -pv $HOME/build/grpc \

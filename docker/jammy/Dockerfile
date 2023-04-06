@@ -8,10 +8,10 @@ RUN apt install -y lsb-release apt-utils \
     debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
 # https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
-# https://wiki.debian.org/ToolChain/Cross
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
+# https://wiki.debian.org/ToolChain/Cross
 RUN dpkg --add-architecture armhf
 RUN dpkg --add-architecture arm64
 RUN dpkg --add-architecture riscv64
