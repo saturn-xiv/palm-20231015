@@ -6,6 +6,7 @@ strip = true
 
 members = [
     "palm",
+    "bamboo",
     "nut",
     
     "cms",

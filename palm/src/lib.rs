@@ -123,7 +123,6 @@ pub mod seo;
 pub mod session;
 pub mod tasks;
 pub mod thrift;
-pub mod tty;
 pub mod twilio;
 pub mod wechat;
 

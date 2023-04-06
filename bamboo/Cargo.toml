@@ -1,0 +1,42 @@
+[package]
+name = "bamboo"
+version = "0.1.0"
+edition = "2021"
+authors = ["Jeremy Zheng <jitang.zheng@gmail.com>"]
+description = "GNU utils."
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+log = "0.4"
+prost = "0.11"
+prost-types = "0.11"
+bytes = "1"
+serialport = "4"
+
+[dependencies.chrono]
+version = "0.4"
+features = ["serde", "std"]
+
+[dependencies.tonic]
+version = "0.8"
+features = ["transport"]
+
+[dependencies.hyper]
+version = "0.14"
+features = ["full"]
+
+[dependencies.serde]
+version = "1"
+features = ["derive"]
+
+[dependencies.tokio]
+version = "1"
+features = ["full"]
+
+[dependencies.uuid]
+version = "1"
+features = ["v4", "serde"]
+
+[dependencies.palm]
+path = '../palm'

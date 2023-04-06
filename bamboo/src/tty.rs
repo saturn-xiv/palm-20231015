@@ -8,9 +8,8 @@ use std::time::Duration;
 use bytes::BytesMut;
 use chrono::Utc;
 use hyper::StatusCode;
+use palm::{HttpError, Result};
 use serialport::{DataBits, FlowControl, Parity, SerialPort, StopBits, TTYPort};
-
-use super::{HttpError, Result};
 
 pub trait Decoder: Debug {
     type Item;

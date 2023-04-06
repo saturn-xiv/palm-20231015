@@ -71,6 +71,9 @@ path = '../palm'
 [dependencies.nut]
 path = '../nut'
 
+[dependencies.bamboo]
+path = '../bamboo'
+
 [dependencies.cms]
 path = '../cms'
 

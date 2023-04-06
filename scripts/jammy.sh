@@ -19,17 +19,43 @@ build_dashboard() {
     cp -r build $TARGET_DIR/$1
 }
 
-build_rust_gnu() {
-    # PKG_CONFIG_ALLOW_CROSS=1
-    # PKG_CONFIG_DIR=
-    # PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig
-    # export PKG_CONFIG_ALLOW_CROSS PKG_CONFIG_DIR PKG_CONFIG_LIBDIR
+install_gnu_deb() {
+    apt-get -qq -y install libc6-dev:$1 libudev-dev:$1 libssl-dev:$1 \
+        libpq5:$1 libpq-dev:$1 libmysqlclient-dev:$1 libsqlite3-dev:$1
+}
+
+build_rust_amd64_gnu() {    
+    cd $WORKSPACE
+    install_gnu_deb amd64
+
+    cargo build --quiet --release --target x86_64-unknown-linux-gnu -p $1
+    cp $WORKSPACE/target/x86_64-unknown-linux-gnu/release/$1 $TARGET_DIR/bin/x86_64/
+}
+
+build_rust_armhf_gnu() {
+    install_gnu_deb armhf
 
     cd $WORKSPACE
-    apt-get -qq -y install libc6-dev:$2 libudev-dev:$2 libssl-dev:$2 \
-        libpq5:$2 libpq-dev:$2 libmysqlclient-dev:$2 libsqlite3-dev:$2
-    cargo build --quiet --release --target $1-unknown-linux-gnu -p $3
-    cp $WORKSPACE/target/$1-unknown-linux-gnu/release/$3 $TARGET_DIR/bin/$1/
+    PKG_CONFIG_ALLOW_CROSS=1
+    PKG_CONFIG_DIR=
+    PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig
+    export PKG_CONFIG_ALLOW_CROSS PKG_CONFIG_DIR PKG_CONFIG_LIBDIR
+
+    cargo build --quiet --release --target armv7-unknown-linux-gnueabihf -p $1
+    cp $WORKSPACE/target/armv7-unknown-linux-gnueabihf/release/$1 $TARGET_DIR/bin/aarch64/
+}
+
+build_rust_arm64_gnu() {
+    install_gnu_deb arm64
+
+    cd $WORKSPACE
+    PKG_CONFIG_ALLOW_CROSS=1
+    PKG_CONFIG_DIR=
+    PKG_CONFIG_LIBDIR=/usr/lib/aarch64-unknown-linux-gnu/pkgconfig
+    export PKG_CONFIG_ALLOW_CROSS PKG_CONFIG_DIR PKG_CONFIG_LIBDIR
+
+    cargo build --quiet --release --target aarch64-unknown-linux-gnu -p $1
+    cp $WORKSPACE/target/aarch64-unknown-linux-gnu/release/$1 $TARGET_DIR/bin/aarch64/
 }
 
 build_rust_musl() {
@@ -151,9 +177,9 @@ mkdir -p $TARGET_DIR/bin/x86_64 $TARGET_DIR/bin/aarch64 $TARGET_DIR/bin/riscv64g
 
 
 
-build_rust_gnu x86_64 amd64 fig
-build_rust_gnu aarch64 arm64 fig
-# build_rust_gnu riscv64gc riscv64 fig
+build_rust_amd64_gnu fig
+build_rust_arm64_gnu fig
+# build_rust_riscv64_gnu riscv64gc fig
 
 declare -a musl_projects=(
     "aloe"
@@ -163,11 +189,11 @@ declare -a musl_projects=(
 
 for p in "${musl_projects[@]}"
 do    
-    build_rust_gnu x86_64 amd64 $p
-    # build_rust_musl x86_64 $p
+    # build_rust_gnu x86_64 amd64 $p
+    build_rust_musl x86_64 $p
 
-    build_rust_gnu aarch64 arm64 $p
-    # build_rust_musl aarch64 $p
+    # build_rust_gnu aarch64 arm64 $p
+    build_rust_musl aarch64 $p
 
     # build_rust_gnu riscv64gc riscv64 $p
 done
