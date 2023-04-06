@@ -4,7 +4,11 @@ LABEL maintainer="Jeremy Zheng"
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt update
-RUN apt install -y lsb-release apt-utils
+RUN apt install -y lsb-release apt-utils \
+    debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
+# https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
+RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
+# https://wiki.debian.org/ToolChain/Cross
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
@@ -17,7 +21,7 @@ RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release 
 RUN apt update
 RUN apt -y upgrade
 
-RUN apt -y install wget curl zsh git locales locales-all \
+RUN apt -y install zsh git locales locales-all \
     vim tzdata zip unzip tree tmux \
     build-essential clang lldb lld mold \
     crossbuild-essential-armhf crossbuild-essential-arm64 crossbuild-essential-riscv64 \
