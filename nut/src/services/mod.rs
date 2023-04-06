@@ -16,6 +16,7 @@ use std::fmt::{self, Display};
 use std::str::FromStr;
 
 use casbin::{Enforcer, RbacApi};
+use data_encoding::BASE64URL_NOPAD;
 use hyper::StatusCode;
 use palm::{
     cache::redis::ClusterConnection as Cache,
@@ -104,7 +105,7 @@ impl fmt::Display for Oauth2State {
                 error!("{:?}", e);
                 fmt::Error::default()
             })?;
-            hex::encode(buf)
+            BASE64URL_NOPAD.encode(&buf)
         };
         write!(f, "{}", it)
     }
@@ -114,7 +115,7 @@ impl FromStr for Oauth2State {
     type Err = Error;
 
     fn from_str(s: &str) -> Result<Self> {
-        let buf = hex::decode(s.as_bytes())?;
+        let buf = BASE64URL_NOPAD.decode(s.as_bytes())?;
         let it = rmp_serde::from_slice(&buf)?;
 
         Ok(it)
