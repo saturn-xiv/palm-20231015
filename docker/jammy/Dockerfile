@@ -27,8 +27,7 @@ RUN apt -y install zsh git locales locales-all \
     crossbuild-essential-armhf crossbuild-essential-arm64 crossbuild-essential-riscv64 \
     cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio \
     debhelper bison flex ninja-build \
-    python3 python3-distutils python3-dev python3-pip virtualenv \
-    libssl-dev
+    python3 python3-distutils python3-dev python3-pip virtualenv 
 
 RUN apt -y autoremove
 RUN apt -y clean
@@ -106,6 +105,7 @@ RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
 # https://github.com/grpc/grpc
 ENV GRPC_VERSION "v1.53.0"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
+RUN apt install -y libssl-dev
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir -pv $HOME/build/grpc \
     && cd $HOME/build/grpc \
