@@ -151,7 +151,7 @@ copy_assets() {
 . /etc/os-release
 
 
-if [[ $UBUNTU_CODENAME != "jammy" ]]
+if [[ $UBUNTU_CODENAME != "jammy" ]] && [[ $UBUNTU_CODENAME != "focal" ]]
 then
     echo "unsupported system($PRETTY_NAME)"
     exit 1
