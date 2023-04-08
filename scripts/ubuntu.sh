@@ -5,7 +5,7 @@ set -e
 export WORKSPACE=$PWD
 export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
 export BUILD_TIME=$(date -u -R)
-export TARGET_DIR=$PWD/tmp/palm-$GIT_VERSION
+export TARGET_DIR=$PWD/tmp/palm-$UBUNTU_CODENAME-$GIT_VERSION
 
 # -----------------------------------------------------------------------------
 
