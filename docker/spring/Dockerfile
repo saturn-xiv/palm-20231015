@@ -140,7 +140,7 @@ RUN wget -q -O $HOME/.local/bin/bazel \
 RUN chmod +x $HOME/.local/bin/bazel
 
 # https://github.com/rbenv/rbenv
-ENV RUBY_VERSION "3.2.0"
+ENV RUBY_VERSION "3.2.2"
 RUN git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv \
     && git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build \
     && git clone https://github.com/rbenv/rbenv-vars.git $HOME/.rbenv/plugins/rbenv-vars 
@@ -155,20 +155,21 @@ RUN zsh -c "source $HOME/.zshrc \
     && gem install bundler"
 RUN zsh -c "source $HOME/.zshrc && rbenv global ${RUBY_VERSION}"
 
-ENV GO_VERSION "1.19.5"
+ENV GO_VERSION "1.20.3"
 RUN wget -q -P $HOME/downloads https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
 RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local
 RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc \
     && echo 'export PATH=$GOROOT/bin:$PATH' >> $HOME/.zshrc \
     && echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc
 
-ENV JDK_VERSION "19.0.2-open"
+ENV JDK_VERSION "20-open"
+ENV GRADLE_VERSION "8.1-rc-3"
 RUN curl -s "https://get.sdkman.io" | zsh
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
     && sdk install java ${JDK_VERSION} \
     && sdk install maven \
-    && sdk install gradle"
+    && sdk install gradle ${GRADLE_VERSION}"
 
 # https://github.com/nvm-sh/nvm
 ENV NVM_VERSION "v0.39.3"
@@ -209,7 +210,7 @@ RUN zsh -c "source $HOME/.zshrc \
     && cargo install mdbook"
 
 # https://opensearch.org/downloads.html#opensearch
-ENV OPENSEARCH_VERSION "2.4.1"
+ENV OPENSEARCH_VERSION "2.6.0"
 RUN wget -q -P $HOME/downloads \
     https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
 RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C /opt \
@@ -254,14 +255,15 @@ RUN mkdir -p $HOME/build/protobuf-javascript \
     && cp bin/protoc-gen-js $HOME/.local/bin/
 
 # https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/
+# https://github.com/grpc/grpc-java
 ENV GRPC_JAVA_PLUGIN_VERSION "1.54.0"
 RUN wget -q -O $HOME/.local/bin/grpc_java_plugin \
     https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${GRPC_JAVA_PLUGIN_VERSION}/protoc-gen-grpc-java-${GRPC_JAVA_PLUGIN_VERSION}-linux-x86_64.exe
 RUN chmod +x $HOME/.local/bin/grpc_java_plugin
-# https://github.com/grpc/grpc-java
+
 
 # https://github.com/google/flatbuffers
-ENV FLATBUFFERS_VERSION "v23.1.4"
+ENV FLATBUFFERS_VERSION "v23.3.3"
 RUN git clone -b $FLATBUFFERS_VERSION https://github.com/google/flatbuffers.git $HOME/downloads/flatbuffers
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir -pv $HOME/build/flatbuffers \
