@@ -101,10 +101,7 @@ RUN zsh -c "source $HOME/.zshrc \
 RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.zshrc \
     && echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/tmp/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.zshrc
 
-RUN zsh -c "source $HOME/.zshrc \
-    && pip3 install --user conan \
-    && conan profile new default --detect \
-    && conan profile update settings.compiler.libcxx=libstdc++11 default"
+RUN zsh -c "source $HOME/.zshrc && pip3 install --user conan"
 
 RUN zsh -c "source $HOME/.zshrc && pip3 install --user supervisor"
 
