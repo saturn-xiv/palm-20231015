@@ -29,6 +29,9 @@ impl Config {
         info!("start oauth gRPC at {}", addr);
         let redis = config.redis.open()?;
         Server::builder()
+            .add_service(v1::health_server::HealthServer::new(HealthService {
+                config: config.clone(),
+            }))
             .add_service(v1::wechat_oauth2_server::WechatOauth2Server::new(
                 WechatOauth2Service {
                     config: config.clone(),
@@ -40,7 +43,6 @@ impl Config {
                     WechatMiniProgramService { config, redis },
                 ),
             )
-            .add_service(v1::health_server::HealthServer::new(HealthService {}))
             .serve(addr)
             .await?;
         Ok(())

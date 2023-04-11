@@ -25,6 +25,7 @@ impl v1::wechat_mini_program_server::WechatMiniProgram for Service {
         &self,
         req: Request<v1::WechatMiniProgramLoginRequest>,
     ) -> GrpcResult<v1::WechatMiniProgramLoginResponse> {
+        try_grpc!(self.config.verify(&req))?;
         let req = req.into_inner();
         let cfg = try_grpc!(self.config.wechat(&req.app_id))?;
         let it = try_grpc!(cfg.code2session(&req.code).await)?;
@@ -39,6 +40,7 @@ impl v1::wechat_mini_program_server::WechatMiniProgram for Service {
         &self,
         req: Request<v1::WechatMiniProgramPhoneNumberRequest>,
     ) -> GrpcResult<v1::WechatMiniProgramPhoneNumberResponse> {
+        try_grpc!(self.config.verify(&req))?;
         let req = req.into_inner();
         let cli = WechatClient {
             redis: self.redis.clone(),

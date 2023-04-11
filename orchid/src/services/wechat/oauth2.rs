@@ -36,6 +36,7 @@ impl v1::wechat_oauth2_server::WechatOauth2 for Service {
         &self,
         req: Request<v1::WechatOauth2LoginRequest>,
     ) -> GrpcResult<v1::WechatOauth2LoginResponse> {
+        try_grpc!(self.config.verify(&req))?;
         let req = req.into_inner();
         debug!("wechat oauth2 login {:?}", req);
         let cli = WechatClient {
