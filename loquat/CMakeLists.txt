@@ -4,8 +4,8 @@ include(FetchContent)
 
 project(
     loquat
-    VERSION 2023.4.5
-    DESCRIPTION "A cryptographic rpc service."
+    VERSION 2023.4.12
+    DESCRIPTION "A cryptographic rpc service(google tink)."
     LANGUAGES C CXX)
 # --------------------------------------------------------
 

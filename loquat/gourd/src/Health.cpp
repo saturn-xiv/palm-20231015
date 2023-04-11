@@ -32,7 +32,20 @@ uint32_t Health_check_args::read(::apache::thrift::protocol::TProtocol* iprot) {
     if (ftype == ::apache::thrift::protocol::T_STOP) {
       break;
     }
-    xfer += iprot->skip(ftype);
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->auth);
+          this->__isset.auth = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
     xfer += iprot->readFieldEnd();
   }
 
@@ -45,6 +58,10 @@ uint32_t Health_check_args::write(::apache::thrift::protocol::TProtocol* oprot) 
   uint32_t xfer = 0;
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("Health_check_args");
+
+  xfer += oprot->writeFieldBegin("auth", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->auth);
+  xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -60,6 +77,10 @@ uint32_t Health_check_pargs::write(::apache::thrift::protocol::TProtocol* oprot)
   uint32_t xfer = 0;
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("Health_check_pargs");
+
+  xfer += oprot->writeFieldBegin("auth", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString((*(this->auth)));
+  xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -143,18 +164,19 @@ uint32_t Health_check_presult::read(::apache::thrift::protocol::TProtocol* iprot
   return xfer;
 }
 
-void HealthClient::check()
+void HealthClient::check(const std::string& auth)
 {
-  send_check();
+  send_check(auth);
   recv_check();
 }
 
-void HealthClient::send_check()
+void HealthClient::send_check(const std::string& auth)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("check", ::apache::thrift::protocol::T_CALL, cseqid);
 
   Health_check_pargs args;
+  args.auth = &auth;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -237,7 +259,7 @@ void HealthProcessor::process_check(int32_t seqid, ::apache::thrift::protocol::T
 
   Health_check_result result;
   try {
-    iface_->check();
+    iface_->check(args.auth);
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != nullptr) {
       this->eventHandler_->handlerError(ctx, "Health.check");
@@ -274,19 +296,20 @@ void HealthProcessor::process_check(int32_t seqid, ::apache::thrift::protocol::T
   return processor;
 }
 
-void HealthConcurrentClient::check()
+void HealthConcurrentClient::check(const std::string& auth)
 {
-  int32_t seqid = send_check();
+  int32_t seqid = send_check(auth);
   recv_check(seqid);
 }
 
-int32_t HealthConcurrentClient::send_check()
+int32_t HealthConcurrentClient::send_check(const std::string& auth)
 {
   int32_t cseqid = this->sync_->generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(this->sync_.get());
   oprot_->writeMessageBegin("check", ::apache::thrift::protocol::T_CALL, cseqid);
 
   Health_check_pargs args;
+  args.auth = &auth;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();

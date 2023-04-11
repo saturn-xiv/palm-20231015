@@ -21,12 +21,12 @@ int main(int argc, char** argv) {
       .help("run on debug mode")
       .implicit_value(true);
 
-  argparse::ArgumentParser generate_token_command("generate-key");
+  argparse::ArgumentParser generate_token_command("generate-token");
   {
     generate_token_command.add_argument("-y", "--years")
         .default_value(10)
         .scan<'i', int>();
-    generate_token_command.add_argument("-i", "--id").required();
+    generate_token_command.add_argument("-c", "--client").required();
   }
 
   argparse::ArgumentParser rpc_command("rpc");
@@ -76,13 +76,14 @@ int main(int argc, char** argv) {
     loquat::application::launch(static_cast<uint16_t>(port));
   } else if (program.is_subcommand_used(generate_token_command)) {
     const int years = generate_token_command.get<int>("--years");
-    const std::string id = generate_token_command.get<std::string>("--id");
-    spdlog::warn("generate token to {} for {}-years", id, years);
+    const std::string client =
+        generate_token_command.get<std::string>("--client");
+    spdlog::warn("generate token to {} for {}-years", client, years);
 
-    loquat::Jwt jwt;
+    loquat::Jwt jwt(loquat::PROJECT_NAME);
     const auto token =
-        jwt.sign(id, std::chrono::duration_cast<std::chrono::seconds>(
-                         std::chrono::years(years)));
+        jwt.sign(client, std::chrono::duration_cast<std::chrono::seconds>(
+                             std::chrono::years(years)));
     std::cout << token << std::endl;
   }
 
