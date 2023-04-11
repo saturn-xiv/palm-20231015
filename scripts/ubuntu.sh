@@ -2,6 +2,8 @@
 
 set -e
 
+. /etc/os-release
+
 export WORKSPACE=$PWD
 export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
 export BUILD_TIME=$(date -u -R)
@@ -147,9 +149,6 @@ copy_assets() {
 }
 
 # -----------------------------------------------------------------------------
-
-. /etc/os-release
-
 
 if [[ $UBUNTU_CODENAME != "jammy" ]] && [[ $UBUNTU_CODENAME != "focal" ]]
 then
