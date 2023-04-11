@@ -1,0 +1,9 @@
+logging.level.root=info
+logging.level.com.github.saturn_xiv.palm=debug
+
+app.rpc.port=18080
+
+app.wechatpay.merchant-id=change-me
+app.wechatpay.merchant-serial-number=change-me
+app.wechatpay.private-key-path=change-me
+app.wechatpay.api-v3-key=change-me
