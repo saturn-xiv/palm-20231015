@@ -1,8 +1,8 @@
 [package]
 name = "orchid"
-version = "2023.4.5"
+version = "2023.4.12"
 edition = "2021"
-description = "WeChate mini-program services."
+description = "WeChat mini-program services."
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

@@ -16,6 +16,8 @@ pub struct Config {
 }
 
 impl Config {
+    pub const AUDIENCE: &str = env!("CARGO_PKG_NAME");
+
     pub fn wechat(&self, app_id: &str) -> Result<WechatConfig> {
         let file = Path::new("wechat").join(app_id).with_extension("toml");
         let it = from_toml(&file)?;
@@ -25,7 +27,7 @@ impl Config {
     pub fn verify<T>(&self, req: &Request<T>) -> Result<()> {
         let ss = Session::new(req);
         if let Some(ref token) = ss.token {
-            let subject = self.jwt.verify(token, env!("CARGO_PKG_NAME"))?;
+            let subject = self.jwt.verify(token, Self::AUDIENCE)?;
             if self.clients.contains(&subject) {
                 return Ok(());
             }
