@@ -35,7 +35,7 @@ impl Session {
 
     pub fn new<T>(req: &Request<T>) -> Self {
         let meta = req.metadata();
-
+        debug!("{:?}", meta);
         Self {
             lang: Self::detect_locale(meta),
             client_ip: req

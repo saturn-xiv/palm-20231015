@@ -24,12 +24,12 @@ impl Config {
         Ok(it)
     }
 
-    pub fn verify<T>(&self, req: &Request<T>) -> Result<()> {
+    pub fn verify<T>(&self, req: &Request<T>) -> Result<String> {
         let ss = Session::new(req);
         if let Some(ref token) = ss.token {
             let subject = self.loquat.verify(token, Self::AUDIENCE)?;
             if self.clients.contains(&subject) {
-                return Ok(());
+                return Ok(subject);
             }
             return Err(Box::new(HttpError(
                 StatusCode::BAD_REQUEST,

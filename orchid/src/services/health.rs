@@ -12,7 +12,8 @@ pub struct Service {
 #[tonic::async_trait]
 impl v1::health_server::Health for Service {
     async fn check(&self, req: Request<()>) -> GrpcResult<()> {
-        try_grpc!(self.config.verify(&req))?;
+        let subject = try_grpc!(self.config.verify(&req))?;
+        info!("health check from {subject}");
         Ok(Response::new(()))
     }
 }

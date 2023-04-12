@@ -61,6 +61,7 @@ std::string loquat::Jwt::sign(const std::string& subject,
 
 std::string loquat::Jwt::verify(const std::string& token,
                                 const std::optional<std::string> audience) {
+  spdlog::debug("{}", token);
   auto validator_b =
       crypto::tink::JwtValidatorBuilder().IgnoreTypeHeader().IgnoreIssuer();
   if (audience) {
