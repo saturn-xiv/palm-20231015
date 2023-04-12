@@ -2,7 +2,7 @@
 
 ```bash
 gradle build
-java -jar build/libs/musa-XXX.jar --spring.profiles.active=production
+java -jar build/libs/musa-XXX.jar
 ```
 
 - [Externalized Configuration](https://docs.spring.io/spring-boot/docs/1.0.1.RELEASE/reference/html/boot-features-external-config.html)

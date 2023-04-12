@@ -1,3 +1,4 @@
+spring.profiles.active=production
 logging.level.root=info
 logging.level.com.github.saturn_xiv.palm=debug
 
