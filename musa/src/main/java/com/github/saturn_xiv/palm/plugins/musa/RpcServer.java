@@ -1,5 +1,6 @@
 package com.github.saturn_xiv.palm.plugins.musa;
 
+import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerInterceptor;
 import com.github.saturn_xiv.palm.plugins.musa.v1.HealthGrpc;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayGrpc;
 import io.grpc.Grpc;
@@ -28,6 +29,7 @@ public class RpcServer {
         server = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
                 .addService(wechatPayService)
                 .addService(healthService)
+                .intercept(new TokenServerInterceptor())
                 .build().start();
         logger.info("Start gRPC server on http://0.0.0.0:{}", port);
     }

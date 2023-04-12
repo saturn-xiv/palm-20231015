@@ -1,5 +1,6 @@
 package com.github.saturn_xiv.palm.plugins.musa.services;
 
+import com.github.saturn_xiv.palm.plugins.musa.helpers.JwtHelper;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayGrpc;
 import com.wechat.pay.java.core.RSAAutoCertificateConfig;
 import com.wechat.pay.java.core.exception.ServiceException;
@@ -10,6 +11,7 @@ import com.wechat.pay.java.service.payments.nativepay.model.PrepayRequest;
 import com.wechat.pay.java.service.payments.nativepay.model.QueryOrderByIdRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -77,6 +79,9 @@ public class WechatPayServiceImpl extends WechatPayGrpc.WechatPayImplBase {
     String merchantSerialNumber;
     @Value("${app.wechatpay.api-v3-key}")
     String apiV3Key;
+
+    @Autowired
+    JwtHelper jwtHelper;
 
     private NativePayService service;
     private final static Logger logger = LoggerFactory.getLogger(WechatPayServiceImpl.class);

@@ -40,7 +40,10 @@ function generate_loquat() {
         rm -r $cpp_target
     fi
     mkdir -p $cpp_target
-    thrift -out $cpp_target --gen cpp -r palm/protocols/loquat.thrift        
+    thrift -out $cpp_target --gen cpp -r palm/protocols/loquat.thrift
+
+    echo 'generate code for loquat-java'
+    thrift -out tmp/protocols/java --gen java -r palm/protocols/loquat.thrift    
 }
 
 # https://github.com/grpc/grpc-web#code-generator-plugin
@@ -104,13 +107,21 @@ function generate_diesel_postgresql() {
 function copy_musa() {
     cd $WORKSPACE
 
-    local package=com/github/saturn_xiv/palm/plugins/musa/v1
-    local target=musa/src/main/java/$package
-    if [ -d $target ]
-    then
-        rm -r $target
-    fi
-    cp -r tmp/protocols/java/$package $target
+
+    local -a plugins=(
+        "loquat"
+        "musa"
+    )
+    for p in "${plugins[@]}"
+    do
+        local package=com/github/saturn_xiv/palm/plugins/$p/v1
+        local target=musa/src/main/java/$package
+        if [ -d $target ]
+        then
+            rm -r $target
+        fi
+        cp -r tmp/protocols/java/$package $target        
+    done
 }
 
 
