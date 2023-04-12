@@ -25,7 +25,7 @@ version = "0.7"
 features = ["cookie-session", "redis-rs-session"]
 
 [dependencies.tonic]
-version = "0.8"
+version = "0.9"
 features = ["transport"]
 
 [dependencies.hyper]

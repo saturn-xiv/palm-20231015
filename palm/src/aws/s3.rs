@@ -31,10 +31,16 @@ impl From<Minio> for Config {
 
 impl Config {
     pub async fn open(&self) -> Result<Client> {
-        let cred = aws_sdk_s3::Credentials::new(&self.access_key, &self.secret_key, None, None, "");
+        let cred = aws_sdk_s3::config::Credentials::new(
+            &self.access_key,
+            &self.secret_key,
+            None,
+            None,
+            "",
+        );
         let cfg = aws_config::SdkConfig::builder()
             .endpoint_url(&self.url)
-            .region(aws_sdk_s3::Region::new(self.region.clone()))
+            .region(aws_sdk_s3::config::Region::new(self.region.clone()))
             .credentials_provider(SharedCredentialsProvider::new(cred))
             .build();
         Ok(Client(aws_sdk_s3::Client::new(&cfg)))
@@ -49,13 +55,13 @@ impl Client {
     }
     pub async fn create_bucket(&self, name: &str) -> Result<()> {
         if let Err(ref err) = self.0.create_bucket().bucket(name).send().await {
-            if let aws_sdk_s3::types::SdkError::<_>::ServiceError(ref err) = err {
+            if let aws_sdk_s3::error::SdkError::<_>::ServiceError(ref err) = err {
                 let err = err.err();
-                match err.kind {
-                    aws_sdk_s3::error::CreateBucketErrorKind::BucketAlreadyOwnedByYou(ref _id) => {
+                match err {
+                    aws_sdk_s3::operation::create_bucket::CreateBucketError::BucketAlreadyOwnedByYou(ref _id) => {
                         return Ok(());
                     }
-                    aws_sdk_s3::error::CreateBucketErrorKind::BucketAlreadyExists(ref _id) => {
+                    aws_sdk_s3::operation::create_bucket::CreateBucketError::BucketAlreadyExists(ref _id) => {
                         return Ok(());
                     }
                     _ => {}
@@ -95,7 +101,7 @@ impl Client {
             .bucket(bucket)
             .key(name)
             .content_type(content_type)
-            .body(aws_sdk_s3::types::ByteStream::from_path(file).await?)
+            .body(aws_sdk_s3::primitives::ByteStream::from_path(file).await?)
             .send()
             .await?;
         Ok(())
@@ -135,7 +141,7 @@ impl Client {
             .bucket(bucket)
             .key(name)
             .presigned(
-                aws_sdk_s3::presigning::config::PresigningConfig::builder()
+                aws_sdk_s3::presigning::PresigningConfig::builder()
                     .expires_in(ttl)
                     .build()?,
             )

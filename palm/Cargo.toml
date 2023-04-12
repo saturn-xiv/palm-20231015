@@ -39,15 +39,15 @@ prost-types = "0.11"
 Inflector = "0.11"
 askama = "0.12"
 paho-mqtt = "0.12"
-git2 = "0.16"
+git2 = "0.17"
 thrift = "0.17"
 ipnetwork = "0.20"
 imageproc = "0.23"
-aws-sdk-s3 = "0.24"
-aws-sdk-sqs = "0.24"
 image = "0.24"
-aws-config = "0.54"
-aws-credential-types = "0.54"
+aws-sdk-s3 = "0.25"
+aws-sdk-sqs = "0.25"
+aws-config = "0.55"
+aws-credential-types = "0.55"
 async-mutex = "1"
 bytes = "1"
 bytesize = "1"
@@ -83,7 +83,7 @@ version = "0.8"
 features = ["serde"]
 
 [dependencies.tonic]
-version = "0.8"
+version = "0.9"
 features = ["transport"]
 
 [dependencies.reqwest]
@@ -103,7 +103,7 @@ version = "0.17"
 features = ["secure", "private", "percent-encode"]
 
 [dependencies.redis]
-version = "0.22"
+version = "0.23"
 features = ["tokio-comp", "r2d2", "cluster", "connection-manager"]
 
 [dependencies.nix]
@@ -156,4 +156,4 @@ features = ["vendored"]
 # rev = "67d92a3"
 
 [build-dependencies]
-tonic-build = "0.8"
+tonic-build = "0.9"
