@@ -15,8 +15,7 @@ public class ShellCommand {
     @ShellMethod("Generate a token")
     public String generateToken(String subject, int years) throws TException {
         logger.info("generate token to {}@{} for {} years", subject, jwtHelper.AUDIENCE, years);
-        var token = jwtHelper.sign(subject, years);
-        return token;
+        return jwtHelper.sign(subject, years);
     }
 
     @ShellMethod("Start a gRPC server")

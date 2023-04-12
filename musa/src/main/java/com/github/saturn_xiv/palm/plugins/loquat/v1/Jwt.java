@@ -456,7 +456,9 @@ public class Jwt {
         public @org.apache.thrift.annotation.Nullable java.lang.String audience; // required
         public long ttl; // required
 
-        /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+        /**
+         * The set of fields this struct contains, along with convenience methods for finding and manipulating them.
+         */
         public enum _Fields implements org.apache.thrift.TFieldIdEnum {
             AUTH((short) 1, "auth"),
             SUBJECT((short) 2, "subject"),
@@ -608,7 +610,9 @@ public class Jwt {
             this.auth = null;
         }
 
-        /** Returns true if field auth is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field auth is set (has been assigned a value) and false otherwise
+         */
         public boolean isSetAuth() {
             return this.auth != null;
         }
@@ -633,7 +637,9 @@ public class Jwt {
             this.subject = null;
         }
 
-        /** Returns true if field subject is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field subject is set (has been assigned a value) and false otherwise
+         */
         public boolean isSetSubject() {
             return this.subject != null;
         }
@@ -658,7 +664,9 @@ public class Jwt {
             this.audience = null;
         }
 
-        /** Returns true if field audience is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field audience is set (has been assigned a value) and false otherwise
+         */
         public boolean isSetAudience() {
             return this.audience != null;
         }
@@ -683,7 +691,9 @@ public class Jwt {
             __isset_bitfield = org.apache.thrift.EncodingUtils.clearBit(__isset_bitfield, __TTL_ISSET_ID);
         }
 
-        /** Returns true if field ttl is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field ttl is set (has been assigned a value) and false otherwise
+         */
         public boolean isSetTtl() {
             return org.apache.thrift.EncodingUtils.testBit(__isset_bitfield, __TTL_ISSET_ID);
         }
@@ -750,7 +760,9 @@ public class Jwt {
             throw new java.lang.IllegalStateException();
         }
 
-        /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise
+         */
         @Override
         public boolean isSet(_Fields field) {
             if (field == null) {
@@ -1139,7 +1151,9 @@ public class Jwt {
 
         public @org.apache.thrift.annotation.Nullable java.lang.String success; // required
 
-        /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+        /**
+         * The set of fields this struct contains, along with convenience methods for finding and manipulating them.
+         */
         public enum _Fields implements org.apache.thrift.TFieldIdEnum {
             SUCCESS((short) 0, "success");
 
@@ -1255,7 +1269,9 @@ public class Jwt {
             this.success = null;
         }
 
-        /** Returns true if field success is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field success is set (has been assigned a value) and false otherwise
+         */
         public boolean isSetSuccess() {
             return this.success != null;
         }
@@ -1291,7 +1307,9 @@ public class Jwt {
             throw new java.lang.IllegalStateException();
         }
 
-        /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise
+         */
         @Override
         public boolean isSet(_Fields field) {
             if (field == null) {
@@ -1521,7 +1539,9 @@ public class Jwt {
         public @org.apache.thrift.annotation.Nullable java.lang.String token; // required
         public @org.apache.thrift.annotation.Nullable java.lang.String audience; // required
 
-        /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+        /**
+         * The set of fields this struct contains, along with convenience methods for finding and manipulating them.
+         */
         public enum _Fields implements org.apache.thrift.TFieldIdEnum {
             AUTH((short) 1, "auth"),
             TOKEN((short) 2, "token"),
@@ -1659,7 +1679,9 @@ public class Jwt {
             this.auth = null;
         }
 
-        /** Returns true if field auth is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field auth is set (has been assigned a value) and false otherwise
+         */
         public boolean isSetAuth() {
             return this.auth != null;
         }
@@ -1684,7 +1706,9 @@ public class Jwt {
             this.token = null;
         }
 
-        /** Returns true if field token is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field token is set (has been assigned a value) and false otherwise
+         */
         public boolean isSetToken() {
             return this.token != null;
         }
@@ -1709,7 +1733,9 @@ public class Jwt {
             this.audience = null;
         }
 
-        /** Returns true if field audience is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field audience is set (has been assigned a value) and false otherwise
+         */
         public boolean isSetAudience() {
             return this.audience != null;
         }
@@ -1767,7 +1793,9 @@ public class Jwt {
             throw new java.lang.IllegalStateException();
         }
 
-        /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise
+         */
         @Override
         public boolean isSet(_Fields field) {
             if (field == null) {
@@ -2106,7 +2134,9 @@ public class Jwt {
 
         public @org.apache.thrift.annotation.Nullable java.lang.String success; // required
 
-        /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+        /**
+         * The set of fields this struct contains, along with convenience methods for finding and manipulating them.
+         */
         public enum _Fields implements org.apache.thrift.TFieldIdEnum {
             SUCCESS((short) 0, "success");
 
@@ -2222,7 +2252,9 @@ public class Jwt {
             this.success = null;
         }
 
-        /** Returns true if field success is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field success is set (has been assigned a value) and false otherwise
+         */
         public boolean isSetSuccess() {
             return this.success != null;
         }
@@ -2258,7 +2290,9 @@ public class Jwt {
             throw new java.lang.IllegalStateException();
         }
 
-        /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise
+         */
         @Override
         public boolean isSet(_Fields field) {
             if (field == null) {

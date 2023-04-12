@@ -6,6 +6,7 @@ import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayGrpc;
 import io.grpc.Grpc;
 import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
+import io.grpc.ServerInterceptors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,8 @@ public class RpcServer {
     @PostConstruct
     void startUp() throws IOException {
         server = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
-                .addService(wechatPayService)
-                .addService(healthService)
+                .addService(ServerInterceptors.intercept(wechatPayService, tokenServerInterceptor))
+                .addService(ServerInterceptors.intercept(healthService, tokenServerInterceptor))
                 .intercept(new TokenServerInterceptor())
                 .build().start();
         logger.info("Start gRPC server on http://0.0.0.0:{}", port);
@@ -47,6 +48,8 @@ public class RpcServer {
     HealthGrpc.HealthImplBase healthService;
     @Autowired
     WechatPayGrpc.WechatPayImplBase wechatPayService;
+    @Autowired
+    TokenServerInterceptor tokenServerInterceptor;
 
     private Server server;
 
