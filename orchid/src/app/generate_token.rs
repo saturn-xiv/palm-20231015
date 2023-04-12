@@ -8,22 +8,24 @@ use super::super::env::Config as Env;
 pub struct Config {
     #[arg(short = 's', long)]
     pub subject: String,
-    #[arg(short = 'w', long, default_value = "20")]
+    #[arg(short = 'w', long, default_value = "1024")]
     pub weeks: i64,
 }
 
 impl Config {
     pub fn launch(&self, config: &Env) -> Result<()> {
-        let token = config
-            .jwt
-            .sign(&self.subject, Env::AUDIENCE, Duration::weeks(self.weeks))?;
         info!(
-            "generate token to {}@{} for {} weeks:\n{}",
+            "generate token to {}@{} for {} weeks:",
             self.subject,
             Env::AUDIENCE,
-            self.weeks,
-            token
+            self.weeks
         );
+        let token =
+            config
+                .loquat
+                .sign(&self.subject, Env::AUDIENCE, Duration::weeks(self.weeks))?;
+        println!("{token}");
+
         Ok(())
     }
 }

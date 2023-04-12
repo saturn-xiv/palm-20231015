@@ -1,5 +1,5 @@
 pub mod generate_token;
-pub mod server;
+pub mod rpc;
 
 use std::ops::Deref;
 use std::path::PathBuf;
@@ -28,7 +28,7 @@ impl Args {
     pub async fn launch(&self) -> Result<()> {
         let env: Config = from_toml(&self.config)?;
         match &self.command {
-            SubCommand::Server(ref it) => {
+            SubCommand::Rpc(ref it) => {
                 let env = Arc::new(env);
                 it.launch(env).await?;
             }
@@ -42,8 +42,8 @@ impl Args {
 
 #[derive(Subcommand, PartialEq, Eq, Debug)]
 pub enum SubCommand {
-    #[clap(about = "Start a rpc server")]
-    Server(server::Config),
-    #[clap(about = "Generate a token")]
+    #[clap(about = "Start a gRPC server")]
+    Rpc(rpc::Config),
+    #[clap(about = "Generate a jwt token")]
     GenerateToken(generate_token::Config),
 }

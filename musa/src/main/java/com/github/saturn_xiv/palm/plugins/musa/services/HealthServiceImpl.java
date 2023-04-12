@@ -6,6 +6,8 @@ import com.github.saturn_xiv.palm.plugins.musa.v1.HealthGrpc;
 import com.google.protobuf.Empty;
 import io.grpc.stub.StreamObserver;
 import org.apache.thrift.TException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +19,8 @@ public class HealthServiceImpl extends HealthGrpc.HealthImplBase {
     public void check(Empty request, StreamObserver<Empty> responseObserver) {
         try {
             var auth = TokenServerInterceptor.AUTHORIZATION.get();
-            jwt.verify(auth);
+            var subject = jwt.verify(auth);
+            logger.info("health check from {}", subject);
         } catch (TException e) {
             responseObserver.onError(e);
             return;
@@ -28,4 +31,5 @@ public class HealthServiceImpl extends HealthGrpc.HealthImplBase {
 
     @Autowired
     JwtHelper jwt;
+    private final static Logger logger = LoggerFactory.getLogger(HealthServiceImpl.class);
 }

@@ -135,4 +135,5 @@ class Aes final : public Keyset {
 };
 
 std::string auth(const std::string& token);
+std::string audience();
 }  // namespace loquat

@@ -11,7 +11,7 @@ use tonic::Request;
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Config {
     pub redis: Redis,
-    pub jwt: Thrift,
+    pub loquat: Thrift,
     pub clients: Vec<String>,
 }
 
@@ -27,7 +27,7 @@ impl Config {
     pub fn verify<T>(&self, req: &Request<T>) -> Result<()> {
         let ss = Session::new(req);
         if let Some(ref token) = ss.token {
-            let subject = self.jwt.verify(token, Self::AUDIENCE)?;
+            let subject = self.loquat.verify(token, Self::AUDIENCE)?;
             if self.clients.contains(&subject) {
                 return Ok(());
             }
