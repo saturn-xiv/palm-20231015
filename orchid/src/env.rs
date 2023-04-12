@@ -25,7 +25,7 @@ impl Config {
     pub fn verify<T>(&self, req: &Request<T>) -> Result<()> {
         let ss = Session::new(req);
         if let Some(ref token) = ss.token {
-            let subject = self.jwt.verify(token, "")?;
+            let subject = self.jwt.verify(token, env!("CARGO_PKG_NAME"))?;
             if self.clients.contains(&subject) {
                 return Ok(());
             }

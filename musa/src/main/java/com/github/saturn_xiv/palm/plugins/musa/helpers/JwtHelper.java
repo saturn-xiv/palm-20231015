@@ -16,7 +16,7 @@ public class JwtHelper {
         if (auth.startsWith(BEARER)) {
             var token = auth.substring(BEARER.length());
             var jwt = loquat.jwt();
-            var subject = jwt.verify(loquat.token, token, null);
+            var subject = jwt.verify(loquat.token, token, AUDIENCE);
             if (Arrays.asList(clients).contains(subject)) {
                 return;
             }
@@ -32,5 +32,6 @@ public class JwtHelper {
     LoquatClient loquat;
 
     private final static String BEARER = "Bearer ";
+    private final String AUDIENCE = getClass().getPackage().getImplementationTitle();
     private final static Logger logger = LoggerFactory.getLogger(JwtHelper.class);
 }
