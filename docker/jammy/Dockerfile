@@ -120,7 +120,7 @@ RUN zsh -c "source $HOME/.zshrc \
     
 ENV JDK_VERSION "20-open"
 # https://docs.gradle.org/current/userguide/compatibility.html
-ENV GRADLE_VERSION "8.1-rc-3"
+ENV GRADLE_VERSION "8.1"
 RUN curl -s "https://get.sdkman.io" | zsh
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
