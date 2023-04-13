@@ -121,15 +121,17 @@ pub async fn sign_in(
     let client_ip = client_ip.to_string();
     let loquat = loquat.deref();
     let loquat = loquat.deref();
+    let oauth = oauth.deref();
     debug!(
         "try to sign in wechat mini-program user {:?} from {}",
         form, client_ip
     );
     let mut cli = try_web!(oauth.wechat_mini_program().await)?;
-    let req = Request::new(WechatMiniProgramLoginRequest {
+    let mut req = Request::new(WechatMiniProgramLoginRequest {
         app_id: form.app_id.clone(),
         code: form.code.clone(),
     });
+    try_web!(Thrift::authorization(&mut req, &oauth.token))?;
 
     let res = try_web!(cli.login(req).await)?;
     debug!("fetch wechat mini-program user {:?}", res);

@@ -29,6 +29,7 @@ use tonic::transport::{channel::Channel, Endpoint};
 #[derive(Serialize, Deserialize, Default, Debug, Clone, PartialEq, Eq)]
 pub struct Orchid {
     pub endpoint: String,
+    pub token: String,
 }
 
 impl Orchid {
