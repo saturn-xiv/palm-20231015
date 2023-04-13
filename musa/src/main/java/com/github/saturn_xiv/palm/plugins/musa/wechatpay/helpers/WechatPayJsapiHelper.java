@@ -28,7 +28,6 @@ public class WechatPayJsapiHelper {
         request.setNotifyUrl(notifyUrl);
         request.setOutTradeNo(outTradeNo);
 
-
         return service.prepayWithRequestPayment(request);
     }
 

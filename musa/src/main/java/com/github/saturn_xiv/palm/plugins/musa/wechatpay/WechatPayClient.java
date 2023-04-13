@@ -4,12 +4,14 @@ import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayFundFlowBillRequest;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTarType;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.BillDownloadResponse;
 import com.wechat.pay.java.core.RSAAutoCertificateConfig;
 import com.wechat.pay.java.core.RSAConfig;
 import com.wechat.pay.java.core.http.DefaultHttpClientBuilder;
 import com.wechat.pay.java.core.http.HttpMethod;
 import com.wechat.pay.java.core.http.HttpRequest;
 import com.wechat.pay.java.core.notification.NotificationParser;
+import com.wechat.pay.java.core.util.IOUtil;
 import com.wechat.pay.java.service.payments.jsapi.JsapiServiceExtension;
 import com.wechat.pay.java.service.payments.nativepay.NativePayService;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -20,6 +22,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.annotation.PostConstruct;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -29,40 +33,42 @@ import java.util.List;
 
 @Component("palm.musa.model.wechatpay")
 public class WechatPayClient {
-    public byte[] downloadFundFlowBill(String billDate, String accountType) {
+    public byte[] downloadFundFlowBill(String billDate, String accountType) throws IllegalArgumentException {
 
         final var url = UriComponentsBuilder.fromUriString("https://api.mch.weixin.qq.com/v3/bill/fundflowbill")
                 .queryParam("bill_date", billDate)
                 .queryParam("account_type", accountType)
                 .build().toUriString();
-
-        var client = new DefaultHttpClientBuilder().build();
-
-
-        var request = new HttpRequest.Builder()
-                .httpMethod(HttpMethod.GET)
-                .url(url)
-                .build();
-//        TODO
-        return null;
+        return downloadBill(url);
     }
 
-    public byte[] downloadTradeBill(String billDate, String billType) {
-
+    public byte[] downloadTradeBill(String billDate, String billType) throws IllegalArgumentException {
         final var url = UriComponentsBuilder.fromUriString("https://api.mch.weixin.qq.com/v3/bill/tradebill")
                 .queryParam("bill_date", billDate)
                 .queryParam("bill_type", billType)
                 .build().toUriString();
+        return downloadBill(url);
+    }
 
-        var client = new DefaultHttpClientBuilder().build();
-
-
+    private byte[] downloadBill(final String url) throws IllegalArgumentException {
+        final var client = new DefaultHttpClientBuilder().config(config).build();
         var request = new HttpRequest.Builder()
                 .httpMethod(HttpMethod.GET)
                 .url(url)
                 .build();
-//        TODO
-        return null;
+        final var httpResponse = client.execute(request, BillDownloadResponse.class);
+        final var response = httpResponse.getServiceResponse();
+        try (InputStream stream = client.download(response.getDownloadUrl())) {
+            final var content = IOUtil.toByteArray(stream);
+            if (!response.verify(content)) {
+                throw new IllegalArgumentException("signature bill failed");
+            }
+
+            return content;
+        } catch (IOException e) {
+            logger.error("download {} ", response.getDownloadUrl(), e);
+            throw new IllegalArgumentException("can't download the bill");
+        }
     }
 
     public static List<String> latestBillDates() {
