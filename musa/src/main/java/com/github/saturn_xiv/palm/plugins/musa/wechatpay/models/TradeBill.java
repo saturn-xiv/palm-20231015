@@ -1,7 +1,6 @@
 package com.github.saturn_xiv.palm.plugins.musa.wechatpay.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 import java.io.Serializable;
@@ -10,37 +9,41 @@ import java.util.Date;
 @Entity(name = "wechat-pay.trade.bill")
 @Table(name = "wechat_pay_trade_bills")
 public class TradeBill implements Serializable {
-    public enum BillType {
-        ALL, SUCCESS, REFUND
-    }
-
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Integer id;
-
-
-    @Length(min = 1, max = 255)
-    @Column(name = "app_id", nullable = false)
-    private String appId;
 
 
     @Length(min = 1, max = 10)
     @Column(name = "bill_date", nullable = false)
     private String billDate;
 
-    @Enumerated(EnumType.STRING)
+
     @Column(name = "bill_type", nullable = false)
-    private BillType billType;
+    private int billType;
 
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "tar_type")
-    private TarType tarType;
+    private int tarType;
 
-    @NotNull
+
+    @Column(nullable = false)
+    private byte[] content;
+
+
     @Column(name = "created_at", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+    public byte[] getContent() {
+        return content;
+    }
+
+    public void setContent(byte[] content) {
+        this.content = content;
+    }
 
     public Integer getId() {
         return id;
@@ -58,27 +61,20 @@ public class TradeBill implements Serializable {
         this.billDate = billDate;
     }
 
-    public String getAppId() {
-        return appId;
-    }
 
-    public void setAppId(String appId) {
-        this.appId = appId;
-    }
-
-    public BillType getBillType() {
+    public int getBillType() {
         return billType;
     }
 
-    public void setBillType(BillType billType) {
+    public void setBillType(int billType) {
         this.billType = billType;
     }
 
-    public TarType getTarType() {
+    public int getTarType() {
         return tarType;
     }
 
-    public void setTarType(TarType tarType) {
+    public void setTarType(int tarType) {
         this.tarType = tarType;
     }
 

@@ -9,20 +9,26 @@ import org.slf4j.LoggerFactory;
 public class WechatPayJsapiHelper {
 
 
-    public PrepayWithRequestPaymentResponse prepayWithRequestPayment(String appId, String description, String outTradeNo,
-                                                                     String amountCurrency, int amountTotal, String notifyUrl) {
+    public PrepayWithRequestPaymentResponse prepayWithRequestPayment(String appId, String payerOpenId, String outTradeNo,
+                                                                     String amountCurrency, int amountTotal, String description, String notifyUrl) {
 
         final var amount = new Amount();
         amount.setTotal(amountTotal);
         amount.setCurrency(amountCurrency);
 
+        final var payer = new Payer();
+        payer.setOpenid(payerOpenId);
+
         final var request = new PrepayRequest();
+        request.setPayer(payer);
         request.setAmount(amount);
         request.setAppid(appId);
         request.setMchid(merchantId);
         request.setDescription(description);
         request.setNotifyUrl(notifyUrl);
         request.setOutTradeNo(outTradeNo);
+
+
         return service.prepayWithRequestPayment(request);
     }
 

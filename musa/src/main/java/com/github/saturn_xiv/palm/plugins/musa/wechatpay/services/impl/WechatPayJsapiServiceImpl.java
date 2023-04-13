@@ -5,6 +5,7 @@ import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerIntercept
 import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers.WechatPayJsapiHelper;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayBillService;
 import com.google.protobuf.Empty;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
@@ -56,12 +57,14 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
         final var outTradeNo = WechatPayClient.outTradeNo();
-        var currency = WechatPayClient.currency(request.getAmount().getCurrenty());
-        var response = wechatPay.prepayWithRequestPayment(request.getAppId(),
-                request.getDescription(),
+        var response = wechatPay.prepayWithRequestPayment(request.getAppId(), request.getPayerOpenId(),
                 outTradeNo,
-                currency, request.getAmount().getTotal(),
+                WechatPayClient.currency(request.getAmount().getCurrenty()), request.getAmount().getTotal(), request.getDescription(),
                 request.getNotifyUrl());
+
+        billService.addOrder(request.getAppId(), request.getPayerOpenId(), outTradeNo, request.getAmount().getTotal(),
+                request.getAmount().getCurrenty(),
+                request.getDescription());
 
         responseObserver.onNext(WechatPayJsapiPrepayIdResponse.newBuilder()
                 .setAppId(response.getAppId())
@@ -84,6 +87,8 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
     JwtHelper jwt;
     @Autowired
     WechatPayClient config;
+    @Autowired
+    WechatPayBillService billService;
 
     private WechatPayJsapiHelper wechatPay;
     private final static Logger logger = LoggerFactory.getLogger(WechatPayJsapiHelper.class);

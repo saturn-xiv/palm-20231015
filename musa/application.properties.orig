@@ -23,5 +23,5 @@ app.loquat.token=change-me
 
 app.clients=staging,production
 
-app.tasks.wechatpay.trade-bill=5 10 * * * *
-app.tasks.wechatpay.fund-flow-bill=10 10 * * * *
+app.tasks.wechatpay.trade-bill=0 5 10 * * *
+app.tasks.wechatpay.fund-flow-bill=0 10 10 * * *

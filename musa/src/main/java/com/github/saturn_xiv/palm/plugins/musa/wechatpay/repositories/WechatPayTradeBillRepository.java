@@ -8,9 +8,9 @@ import java.util.List;
 public interface WechatPayTradeBillRepository extends CrudRepository<TradeBill, Integer> {
     TradeBill findById(int id);
 
-    List<TradeBill> findByAppIdAndBillDateAndBillType(String appId, String billDate, TradeBill.BillType billType);
+    TradeBill findByBillDateAndBillType(String billDate, int billType);
 
-    List<TradeBill> findByAppId(String appId);
+    List<TradeBill> findByBillType(int billType);
 
     List<TradeBill> findByBillDate(String billDate);
 

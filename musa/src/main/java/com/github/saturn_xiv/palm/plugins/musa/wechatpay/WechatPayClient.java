@@ -18,14 +18,18 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.annotation.PostConstruct;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Component("palm.musa.model.wechatpay")
 public class WechatPayClient {
-    public String downloadFundFlowBill(Date date) {
+    public byte[] downloadFundFlowBill(String billDate) {
 
         final var url = UriComponentsBuilder.fromUriString("https://api.mch.weixin.qq.com/v3/bill/fundflowbill")
-                .queryParam("bill_date", billDate(date))
+                .queryParam("bill_date", billDate)
                 .build().toUriString();
 
         var client = new DefaultHttpClientBuilder().build();
@@ -39,10 +43,10 @@ public class WechatPayClient {
         return null;
     }
 
-    public String downloadTradeBill(Date date) {
+    public byte[] downloadTradeBill(String billDate) {
 
         final var url = UriComponentsBuilder.fromUriString("https://api.mch.weixin.qq.com/v3/bill/tradebill")
-                .queryParam("bill_date", billDate(date))
+                .queryParam("bill_date", billDate)
                 .build().toUriString();
 
         var client = new DefaultHttpClientBuilder().build();
@@ -54,6 +58,18 @@ public class WechatPayClient {
                 .build();
 //        TODO
         return null;
+    }
+
+    public static List<String> latestBillDates() {
+        final DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        List<String> items = new ArrayList<>();
+        final var now = LocalDate.now();
+        final var from = now.minusMonths(3);
+        for (var it = from; it.isBefore(now); it = it.plusDays(1)) {
+            items.add(it.format(format));
+        }
+        return items;
+
     }
 
     public static String billDate(Date date) {
@@ -125,4 +141,6 @@ public class WechatPayClient {
     public String getMerchantId() {
         return merchantId;
     }
+
+
 }

@@ -8,35 +8,42 @@ import java.util.Date;
 
 @Entity(name = "wechat-pay.fund-flow-bill")
 @Table(name = "wechat_pay_fund_flow_bills")
-public class FondFlowBill implements Serializable {
-    public enum AccountType {
-        BASIC, OPERATION, FEES
-    }
+public class FundFlowBill implements Serializable {
+
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Integer id;
 
-
-    @Length(min = 1, max = 255)
-    @Column(name = "app_id", nullable = false)
-    private String appId;
 
     @Length(min = 1, max = 10)
     @Column(name = "bill_date", nullable = false)
     private String billDate;
 
-    @Enumerated(EnumType.STRING)
+
     @Column(name = "account_type", nullable = false)
-    private AccountType accountType;
+    private int accountType;
 
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "tar_type")
-    private TarType tar_type;
+    private int tarType;
+
+
+    @Column(nullable = false)
+    private byte[] content;
 
     @Column(name = "created_at", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+    public byte[] getContent() {
+        return content;
+    }
+
+    public void setContent(byte[] content) {
+        this.content = content;
+    }
 
     public Integer getId() {
         return id;
@@ -46,13 +53,6 @@ public class FondFlowBill implements Serializable {
         this.id = id;
     }
 
-    public String getAppId() {
-        return appId;
-    }
-
-    public void setAppId(String appId) {
-        this.appId = appId;
-    }
 
     public String getBillDate() {
         return billDate;
@@ -62,20 +62,21 @@ public class FondFlowBill implements Serializable {
         this.billDate = billDate;
     }
 
-    public AccountType getAccountType() {
+
+    public int getAccountType() {
         return accountType;
     }
 
-    public void setAccountType(AccountType accountType) {
+    public void setAccountType(int accountType) {
         this.accountType = accountType;
     }
 
-    public TarType getTar_type() {
-        return tar_type;
+    public int getTarType() {
+        return tarType;
     }
 
-    public void setTar_type(TarType tar_type) {
-        this.tar_type = tar_type;
+    public void setTarType(int tarType) {
+        this.tarType = tarType;
     }
 
     public Date getCreatedAt() {

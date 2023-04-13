@@ -11,66 +11,53 @@
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="app_id" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
             <column name="bill_date" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
-            <column name="bill_type" type="varchar(32)">
+            <column name="bill_type" type="integer">
                 <constraints nullable="false"/>
             </column>
-            <column name="tar_type" type="varchar(32)"/>
+            <column name="content" type="bytea">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tar_type" type="integer"/>
             <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
                 <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex tableName="wechat_pay_trade_bills" indexName="idx_wechat_pay_trade_bills" unique="true">
-            <column name="app_id"/>
             <column name="bill_date"/>
             <column name="bill_type"/>
-        </createIndex>
-        <createIndex tableName="wechat_pay_trade_bills" indexName="idx_wechat_pay_trade_bills_app_id">
-            <column name="app_id"/>
         </createIndex>
         <createIndex tableName="wechat_pay_trade_bills" indexName="idx_wechat_pay_trade_bills_bill_date">
             <column name="bill_date"/>
         </createIndex>
-        <createIndex tableName="wechat_pay_trade_bills" indexName="idx_wechat_pay_trade_bills_bill_type">
-            <column name="bill_type"/>
-        </createIndex>
+
 
         <createTable tableName="wechat_pay_fund_flow_bills">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="app_id" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
             <column name="bill_date" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
-            <column name="account_type" type="varchar(32)">
+            <column name="account_type" type="integer">
                 <constraints nullable="false"/>
             </column>
-            <column name="tar_type" type="varchar(32)"/>
+            <column name="tar_type" type="integer"/>
+            <column name="content" type="bytea">
+                <constraints nullable="false"/>
+            </column>
             <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
                 <constraints nullable="false"/>
             </column>
         </createTable>
         <createIndex tableName="wechat_pay_fund_flow_bills" indexName="idx_wechat_pay_fund_flow_bills" unique="true">
-            <column name="app_id"/>
             <column name="bill_date"/>
             <column name="account_type"/>
-        </createIndex>
-        <createIndex tableName="wechat_pay_fund_flow_bills" indexName="idx_wechat_pay_fund_flow_bills_app_id">
-            <column name="app_id"/>
         </createIndex>
         <createIndex tableName="wechat_pay_fund_flow_bills" indexName="idx_wechat_pay_fund_flow_bills_bill_date">
             <column name="bill_date"/>
-        </createIndex>
-        <createIndex tableName="wechat_pay_fund_flow_bills" indexName="idx_wechat_pay_fund_flow_bills_account_type">
-            <column name="account_type"/>
         </createIndex>
 
     </changeSet>

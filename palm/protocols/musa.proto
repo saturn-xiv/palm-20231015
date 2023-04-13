@@ -19,7 +19,8 @@ message WechatPayPrepayRequest {
   }
 
   string app_id = 1;
-  Amount amount = 2;
+  string payer_open_id = 2;
+  Amount amount = 3;
 
   string description = 9;
   string notify_url = 11;
@@ -41,6 +42,7 @@ message WechatPayNativeQrCodeUrlResponse {
 }
 
 message WechatPayTradeResponse {}
+
 message WechatPayQueryOrderByIdRequest { string id = 1; }
 message WechatPayQueryOrderByOutTradeNoRequest { string no = 1; }
 
@@ -82,6 +84,35 @@ message WechatPayNotificationRequest {
 message WechatPayNotificationTransactionResponse {}
 
 message WechatPayNotificationRefundResponse {}
+
+service WechatPayBill {
+  rpc Trade(WechatPayTradeBillRequest) returns (WechatPayBillResponse) {}
+  rpc FundFlow(WechatPayFundFlowBillRequest) returns (WechatPayBillResponse) {}
+}
+
+enum WechatPayTarType {
+  GZIP = 0;
+}
+
+message WechatPayBillResponse { bytes content = 1; }
+message WechatPayTradeBillRequest {
+  enum BillType {
+    ALL = 0;
+    SUCCESS = 1;
+    REFUND = 2;
+  }
+  string bill_date = 1;
+  BillType bill_type = 2;
+}
+message WechatPayFundFlowBillRequest {
+  enum AccountType {
+    BASIC = 0;
+    OPERATION = 1;
+    FEES = 2;
+  }
+  string bill_date = 1;
+  AccountType account_type = 2;
+}
 
 // ----------------------------------------------------------------------------
 

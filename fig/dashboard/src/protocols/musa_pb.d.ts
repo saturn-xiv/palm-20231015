@@ -7,6 +7,9 @@ export class WechatPayPrepayRequest extends jspb.Message {
   getAppId(): string;
   setAppId(value: string): WechatPayPrepayRequest;
 
+  getPayerOpenId(): string;
+  setPayerOpenId(value: string): WechatPayPrepayRequest;
+
   getAmount(): WechatPayPrepayRequest.Amount | undefined;
   setAmount(value?: WechatPayPrepayRequest.Amount): WechatPayPrepayRequest;
   hasAmount(): boolean;
@@ -29,6 +32,7 @@ export class WechatPayPrepayRequest extends jspb.Message {
 export namespace WechatPayPrepayRequest {
   export type AsObject = {
     appId: string,
+    payerOpenId: string,
     amount?: WechatPayPrepayRequest.Amount.AsObject,
     description: string,
     notifyUrl: string,
@@ -260,3 +264,82 @@ export namespace WechatPayNotificationRefundResponse {
   }
 }
 
+export class WechatPayBillResponse extends jspb.Message {
+  getContent(): Uint8Array | string;
+  getContent_asU8(): Uint8Array;
+  getContent_asB64(): string;
+  setContent(value: Uint8Array | string): WechatPayBillResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatPayBillResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatPayBillResponse): WechatPayBillResponse.AsObject;
+  static serializeBinaryToWriter(message: WechatPayBillResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatPayBillResponse;
+  static deserializeBinaryFromReader(message: WechatPayBillResponse, reader: jspb.BinaryReader): WechatPayBillResponse;
+}
+
+export namespace WechatPayBillResponse {
+  export type AsObject = {
+    content: Uint8Array | string,
+  }
+}
+
+export class WechatPayTradeBillRequest extends jspb.Message {
+  getBillDate(): string;
+  setBillDate(value: string): WechatPayTradeBillRequest;
+
+  getBillType(): WechatPayTradeBillRequest.BillType;
+  setBillType(value: WechatPayTradeBillRequest.BillType): WechatPayTradeBillRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatPayTradeBillRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatPayTradeBillRequest): WechatPayTradeBillRequest.AsObject;
+  static serializeBinaryToWriter(message: WechatPayTradeBillRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatPayTradeBillRequest;
+  static deserializeBinaryFromReader(message: WechatPayTradeBillRequest, reader: jspb.BinaryReader): WechatPayTradeBillRequest;
+}
+
+export namespace WechatPayTradeBillRequest {
+  export type AsObject = {
+    billDate: string,
+    billType: WechatPayTradeBillRequest.BillType,
+  }
+
+  export enum BillType { 
+    ALL = 0,
+    SUCCESS = 1,
+    REFUND = 2,
+  }
+}
+
+export class WechatPayFundFlowBillRequest extends jspb.Message {
+  getBillDate(): string;
+  setBillDate(value: string): WechatPayFundFlowBillRequest;
+
+  getAccountType(): WechatPayFundFlowBillRequest.AccountType;
+  setAccountType(value: WechatPayFundFlowBillRequest.AccountType): WechatPayFundFlowBillRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatPayFundFlowBillRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatPayFundFlowBillRequest): WechatPayFundFlowBillRequest.AsObject;
+  static serializeBinaryToWriter(message: WechatPayFundFlowBillRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatPayFundFlowBillRequest;
+  static deserializeBinaryFromReader(message: WechatPayFundFlowBillRequest, reader: jspb.BinaryReader): WechatPayFundFlowBillRequest;
+}
+
+export namespace WechatPayFundFlowBillRequest {
+  export type AsObject = {
+    billDate: string,
+    accountType: WechatPayFundFlowBillRequest.AccountType,
+  }
+
+  export enum AccountType { 
+    BASIC = 0,
+    OPERATION = 1,
+    FEES = 2,
+  }
+}
+
+export enum WechatPayTarType { 
+  GZIP = 0,
+}
