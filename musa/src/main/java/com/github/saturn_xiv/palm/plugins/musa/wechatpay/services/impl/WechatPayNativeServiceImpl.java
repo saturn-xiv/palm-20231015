@@ -1,12 +1,12 @@
-package com.github.saturn_xiv.palm.plugins.musa.services.impl;
+package com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.impl;
 
-import com.github.saturn_xiv.palm.plugins.musa.WechatPayConfig;
 import com.github.saturn_xiv.palm.plugins.musa.helpers.JwtHelper;
-import com.github.saturn_xiv.palm.plugins.musa.helpers.wechatpay.WechatPayNativeHelper;
 import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerInterceptor;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeGrpc;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers.WechatPayNativeHelper;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,8 +21,8 @@ public class WechatPayNativeServiceImpl extends WechatPayNativeGrpc.WechatPayNat
     public void prepay(WechatPayPrepayRequest request, StreamObserver<WechatPayNativeQrCodeUrlResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
-        final var outTradeNo = WechatPayConfig.outTradeNo();
-        var currency = WechatPayConfig.currency(request.getAmount().getCurrenty());
+        final var outTradeNo = WechatPayClient.outTradeNo();
+        var currency = WechatPayClient.currency(request.getAmount().getCurrenty());
         var url = wechatPay.prepay(request.getAppId(),
                 request.getDescription(),
                 outTradeNo,
@@ -44,7 +44,7 @@ public class WechatPayNativeServiceImpl extends WechatPayNativeGrpc.WechatPayNat
     @Autowired
     JwtHelper jwt;
     @Autowired
-    WechatPayConfig config;
+    WechatPayClient config;
 
     private WechatPayNativeHelper wechatPay;
 

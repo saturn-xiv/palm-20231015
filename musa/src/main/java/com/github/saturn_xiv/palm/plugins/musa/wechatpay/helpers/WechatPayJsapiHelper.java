@@ -1,35 +1,13 @@
-package com.github.saturn_xiv.palm.plugins.musa.helpers.wechatpay;
+package com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers;
 
-import com.wechat.pay.java.core.http.DefaultHttpClientBuilder;
-import com.wechat.pay.java.core.http.HttpMethod;
-import com.wechat.pay.java.core.http.HttpRequest;
 import com.wechat.pay.java.service.payments.jsapi.JsapiServiceExtension;
 import com.wechat.pay.java.service.payments.jsapi.model.*;
 import com.wechat.pay.java.service.payments.model.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.util.UriComponentsBuilder;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class WechatPayJsapiHelper {
-    public void downloadTradeBill(Date date) {
-        final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        final var url = UriComponentsBuilder.fromUriString("https://api.mch.weixin.qq.com/v3/bill/tradebill")
-                .queryParam("bill_date", format.format(date))
-                .build().toUriString();
 
-        var client = new DefaultHttpClientBuilder().build();
-
-
-        var request = new HttpRequest.Builder()
-                .httpMethod(HttpMethod.GET)
-                .url(url)
-                .build();
-//        TODO
-
-    }
 
     public PrepayWithRequestPaymentResponse prepayWithRequestPayment(String appId, String description, String outTradeNo,
                                                                      String amountCurrency, int amountTotal, String notifyUrl) {

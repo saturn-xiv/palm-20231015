@@ -1,4 +1,4 @@
-package com.github.saturn_xiv.palm.plugins.musa.helpers.wechatpay;
+package com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers;
 
 import com.wechat.pay.java.service.payments.model.Transaction;
 import com.wechat.pay.java.service.payments.nativepay.NativePayService;
