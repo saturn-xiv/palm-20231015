@@ -1,5 +1,6 @@
 pub mod mini_program;
 pub mod oauth2;
+pub mod pay;
 
 use std::path::Path;
 

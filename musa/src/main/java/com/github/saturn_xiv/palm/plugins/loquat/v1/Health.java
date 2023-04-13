@@ -268,9 +268,7 @@ public class Health {
 
         public @org.apache.thrift.annotation.Nullable java.lang.String auth; // required
 
-        /**
-         * The set of fields this struct contains, along with convenience methods for finding and manipulating them.
-         */
+        /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
         public enum _Fields implements org.apache.thrift.TFieldIdEnum {
             AUTH((short) 1, "auth");
 
@@ -386,9 +384,7 @@ public class Health {
             this.auth = null;
         }
 
-        /**
-         * Returns true if field auth is set (has been assigned a value) and false otherwise
-         */
+        /** Returns true if field auth is set (has been assigned a value) and false otherwise */
         public boolean isSetAuth() {
             return this.auth != null;
         }
@@ -424,9 +420,7 @@ public class Health {
             throw new java.lang.IllegalStateException();
         }
 
-        /**
-         * Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise
-         */
+        /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
         @Override
         public boolean isSet(_Fields field) {
             if (field == null) {
@@ -651,9 +645,7 @@ public class Health {
         private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new check_resultTupleSchemeFactory();
 
 
-        /**
-         * The set of fields this struct contains, along with convenience methods for finding and manipulating them.
-         */
+        /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
         public enum _Fields implements org.apache.thrift.TFieldIdEnum {
             ;
 
@@ -754,9 +746,7 @@ public class Health {
             throw new java.lang.IllegalStateException();
         }
 
-        /**
-         * Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise
-         */
+        /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
         @Override
         public boolean isSet(_Fields field) {
             if (field == null) {

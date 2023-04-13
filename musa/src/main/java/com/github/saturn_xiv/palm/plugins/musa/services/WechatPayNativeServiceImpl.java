@@ -22,7 +22,7 @@ public class WechatPayNativeServiceImpl extends WechatPayNativeGrpc.WechatPayNat
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
         var currency = WechatPayConfig.currency(request.getAmount().getCurrenty());
-        var url = wechatPay.prepayCodeUrl(request.getAppId(), request.getMchId(),
+        var url = wechatPay.prepayCodeUrl(request.getAppId(), config.getMerchantId(),
                 request.getDescription(),
                 request.getOutTradeNo(),
                 currency, request.getAmount().getTotal(),

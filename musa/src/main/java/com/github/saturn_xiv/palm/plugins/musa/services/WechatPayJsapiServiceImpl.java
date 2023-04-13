@@ -23,7 +23,7 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
         var currency = WechatPayConfig.currency(request.getAmount().getCurrenty());
-        var response = wechatPay.prepay(request.getAppId(), request.getMchId(),
+        var response = wechatPay.prepay(request.getAppId(), config.getMerchantId(),
                 request.getDescription(),
                 request.getOutTradeNo(),
                 currency, request.getAmount().getTotal(),

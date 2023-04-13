@@ -18,17 +18,13 @@ message WechatPayPrepayRequest {
   }
 
   string app_id = 1;
-  string mch_id = 2;
-  string out_trade_no = 3;
-  Amount amount = 4;
+  string out_trade_no = 2;
+  Amount amount = 3;
   string description = 9;
   string notify_url = 11;
 }
 
-message WechatPayCloseOrderRequest {
-  string mch_id = 1;
-  string out_trade_no = 2;
-}
+message WechatPayCloseOrderRequest { string out_trade_no = 1; }
 
 service WechatPayNative {
   rpc QrCodeUrl(WechatPayPrepayRequest)

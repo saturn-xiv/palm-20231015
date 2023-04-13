@@ -69,4 +69,8 @@ public class WechatPayConfig {
     private RSAAutoCertificateConfig config;
 
     private final static Logger logger = LoggerFactory.getLogger(WechatPayConfig.class);
+
+    public String getMerchantId() {
+        return merchantId;
+    }
 }

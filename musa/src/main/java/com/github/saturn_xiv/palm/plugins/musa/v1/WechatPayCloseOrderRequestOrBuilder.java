@@ -8,29 +8,14 @@ public interface WechatPayCloseOrderRequestOrBuilder extends
         com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string mch_id = 1;</code>
-     *
-     * @return The mchId.
-     */
-    java.lang.String getMchId();
-
-    /**
-     * <code>string mch_id = 1;</code>
-     *
-     * @return The bytes for mchId.
-     */
-    com.google.protobuf.ByteString
-    getMchIdBytes();
-
-    /**
-     * <code>string out_trade_no = 2;</code>
+     * <code>string out_trade_no = 1;</code>
      *
      * @return The outTradeNo.
      */
     java.lang.String getOutTradeNo();
 
     /**
-     * <code>string out_trade_no = 2;</code>
+     * <code>string out_trade_no = 1;</code>
      *
      * @return The bytes for outTradeNo.
      */
