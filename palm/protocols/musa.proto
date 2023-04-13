@@ -7,9 +7,68 @@ import "google/protobuf/empty.proto";
 
 // ----------------------------------------------------------------------------
 
-service WechatPay {
-  rpc Query(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+message WechatPayPrepayRequest {
+  message Amount {
+    enum Currency {
+      CNY = 0;
+    }
+
+    int32 total = 1;
+    Currency currenty = 2;
+  }
+
+  string app_id = 1;
+  string mch_id = 2;
+  string out_trade_no = 3;
+  Amount amount = 4;
+  string description = 9;
+  string notify_url = 11;
 }
+
+message WechatPayCloseOrderRequest {
+  string mch_id = 1;
+  string out_trade_no = 2;
+}
+
+service WechatPayNative {
+  rpc QrCodeUrl(WechatPayPrepayRequest)
+      returns (WechatPayNativeQrCodeUrlResponse) {}
+}
+
+message WechatPayNativeQrCodeUrlResponse { string url = 1; }
+
+service WechatPayJsapi {
+  rpc PrepayId(WechatPayPrepayRequest)
+      returns (WechatPayJsapiPrepayIdResponse) {}
+}
+
+message WechatPayJsapiPrepayIdResponse {
+  string app_id = 1;
+  string time_stamp = 2;
+  string nonce_str = 3;
+  string package = 4;
+  string sign_type = 5;
+  string pay_sign = 6;
+}
+
+service WechatPayNotification {
+  rpc transaction(WechatPayNotificationRequest)
+      returns (WechatPayNotificationTransactionResponse) {}
+  rpc refund(WechatPayNotificationRequest)
+      returns (WechatPayNotificationRefundResponse) {}
+}
+
+message WechatPayNotificationRequest {
+  string serial_number = 1;
+  string nonce = 2;
+  string signature = 3;
+  string timestamp = 4;
+  string body = 5;
+}
+
+message WechatPayNotificationTransactionResponse {}
+
+message WechatPayNotificationRefundResponse {}
 
 // ----------------------------------------------------------------------------
 

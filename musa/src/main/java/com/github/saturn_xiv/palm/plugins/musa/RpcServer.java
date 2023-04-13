@@ -2,7 +2,9 @@ package com.github.saturn_xiv.palm.plugins.musa;
 
 import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerInterceptor;
 import com.github.saturn_xiv.palm.plugins.musa.v1.HealthGrpc;
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayGrpc;
+import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayJsapiGrpc;
+import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeGrpc;
+import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotificationGrpc;
 import io.grpc.Grpc;
 import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
@@ -28,7 +30,9 @@ public class RpcServer {
     @PostConstruct
     void startUp() throws IOException {
         server = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
-                .addService(ServerInterceptors.intercept(wechatPayService, tokenServerInterceptor))
+                .addService(ServerInterceptors.intercept(wechatPayNativeService, tokenServerInterceptor))
+                .addService(ServerInterceptors.intercept(wechatPayJsapiService, tokenServerInterceptor))
+                .addService(ServerInterceptors.intercept(wechatPayNotificationService, tokenServerInterceptor))
                 .addService(ServerInterceptors.intercept(healthService, tokenServerInterceptor))
                 .intercept(new TokenServerInterceptor())
                 .build().start();
@@ -47,7 +51,11 @@ public class RpcServer {
     @Autowired
     HealthGrpc.HealthImplBase healthService;
     @Autowired
-    WechatPayGrpc.WechatPayImplBase wechatPayService;
+    WechatPayNativeGrpc.WechatPayNativeImplBase wechatPayNativeService;
+    @Autowired
+    WechatPayJsapiGrpc.WechatPayJsapiImplBase wechatPayJsapiService;
+    @Autowired
+    WechatPayNotificationGrpc.WechatPayNotificationImplBase wechatPayNotificationService;
     @Autowired
     TokenServerInterceptor tokenServerInterceptor;
 
