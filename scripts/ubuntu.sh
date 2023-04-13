@@ -7,7 +7,8 @@ set -e
 export WORKSPACE=$PWD
 export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
 export BUILD_TIME=$(date -u -R)
-export TARGET_DIR=$PWD/tmp/palm-$UBUNTU_CODENAME-$GIT_VERSION
+export PACKAGE_NAME=palm-$UBUNTU_CODENAME-$GIT_VERSION
+export TARGET_DIR=$PWD/tmp/$PACKAGE_NAME
 
 
 # if [[ $UBUNTU_CODENAME == "jammy" ]]
@@ -233,8 +234,8 @@ copy_assets
 # -----------------------------------------------------------------------------
 
 cd $WORKSPACE/tmp
-XZ_OPT=-9 tar -cJf palm-$GIT_VERSION.tar.xz palm-$GIT_VERSION
-md5sum palm-$GIT_VERSION.tar.xz
+XZ_OPT=-9 tar -cJf $PACKAGE_NAME.tar.xz $PACKAGE_NAME
+md5sum $PACKAGE_NAME.tar.xz
 
 echo "done($GIT_VERSION)."
 exit 0
