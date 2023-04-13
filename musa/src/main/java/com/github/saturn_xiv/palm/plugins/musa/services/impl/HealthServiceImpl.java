@@ -1,4 +1,4 @@
-package com.github.saturn_xiv.palm.plugins.musa.services;
+package com.github.saturn_xiv.palm.plugins.musa.services.impl;
 
 import com.github.saturn_xiv.palm.plugins.musa.helpers.JwtHelper;
 import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerInterceptor;

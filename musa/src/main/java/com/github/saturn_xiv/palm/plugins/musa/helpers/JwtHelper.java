@@ -10,20 +10,24 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 @Component("palm.musa.helper.jwt")
 public class JwtHelper {
 
     public String verify(@NotNull final String token) throws IllegalArgumentException {
-//        var jwt = loquat.jwt();
-//        var subject = jwt.verify(loquat.token, token, AUDIENCE);
-//        if (Arrays.asList(clients).contains(subject)) {
-//            return subject;
-//        }
-//        throw new IllegalArgumentException("invalid client " + subject);
-
-        return "";
+        try {
+            var jwt = loquat.jwt();
+            var subject = jwt.verify(loquat.token, token, AUDIENCE);
+            if (Arrays.asList(clients).contains(subject)) {
+                return subject;
+            }
+            logger.error("invalid subject {}", subject);
+        } catch (TException e) {
+            logger.error("verify token ", e);
+        }
+        throw new IllegalArgumentException("invalid token");
     }
 
     public String sign(final String subject, final int years) throws TException {

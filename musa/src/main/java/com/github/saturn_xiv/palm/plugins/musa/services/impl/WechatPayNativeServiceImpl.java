@@ -1,9 +1,9 @@
-package com.github.saturn_xiv.palm.plugins.musa.services;
+package com.github.saturn_xiv.palm.plugins.musa.services.impl;
 
+import com.github.saturn_xiv.palm.plugins.musa.WechatPayConfig;
 import com.github.saturn_xiv.palm.plugins.musa.helpers.JwtHelper;
 import com.github.saturn_xiv.palm.plugins.musa.helpers.wechatpay.WechatPayNativeHelper;
 import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerInterceptor;
-import com.github.saturn_xiv.palm.plugins.musa.models.WechatPayConfig;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeGrpc;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest;

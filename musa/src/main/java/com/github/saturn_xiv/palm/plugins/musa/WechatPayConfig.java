@@ -1,4 +1,4 @@
-package com.github.saturn_xiv.palm.plugins.musa.models;
+package com.github.saturn_xiv.palm.plugins.musa;
 
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest;
 import com.wechat.pay.java.core.RSAAutoCertificateConfig;

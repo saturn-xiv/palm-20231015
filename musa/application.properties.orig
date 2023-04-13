@@ -1,6 +1,12 @@
 spring.profiles.active=production
 logging.level.root=info
 logging.level.com.github.saturn_xiv.palm=debug
+server.port=8080
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/musa
+spring.datasource.username=postgres
+#spring.datasource.password=
+spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.PostgreSQLDialect
 
 app.rpc.port=18080
 
@@ -15,3 +21,6 @@ app.loquat.port=8080
 app.loquat.token=change-me
 
 app.clients=staging,production
+
+app.tasks.wechatpay.trade-bill=5 10 * * * *
+app.tasks.wechatpay.fund-flow-bill=10 10 * * * *

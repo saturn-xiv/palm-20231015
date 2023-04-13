@@ -5,3 +5,5 @@
 /wechatpay/
 /application.properties
 /*.log
+
+/tmp/

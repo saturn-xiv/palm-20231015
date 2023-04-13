@@ -13,6 +13,7 @@ message WechatPayPrepayRequest {
       CNY = 0;
     }
 
+    // cent
     int32 total = 1;
     Currency currenty = 2;
   }
