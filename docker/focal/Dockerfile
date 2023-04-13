@@ -123,7 +123,8 @@ RUN echo 'export PATH=/opt/crosstools/bin:$PATH' >> $HOME/.zshrc
 # https://github.com/rui314/mold
 RUN git clone -b v1.11.0 https://github.com/rui314/mold.git $HOME/downloads/mold
 RUN apt install -y libssl-dev libxxhash-dev zlib1g-dev \
-    file bsdmainutils
+    file bsdmainutils \
+    libstdc++-11-dev:amd64 libstdc++-11-dev:arm64 libstdc++-11-dev:armhf
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir $HOME/build/mold \
     && cd $HOME/build/mold \

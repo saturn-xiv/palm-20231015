@@ -30,7 +30,8 @@ build_rust_amd64_gnu() {
     cd $WORKSPACE
     install_gnu_deb amd64
 
-    cargo build --quiet --release --target x86_64-unknown-linux-gnu -p $1
+    CC=gcc-$GCC_VERSION CXX=g++-$GCC_VERSION \
+        cargo build --quiet --release --target x86_64-unknown-linux-gnu -p $1
     cp $WORKSPACE/target/x86_64-unknown-linux-gnu/release/$1 $TARGET_DIR/bin/x86_64/
 }
 
@@ -38,7 +39,8 @@ build_rust_armhf_gnu() {
     install_gnu_deb armhf
 
     cd $WORKSPACE        
-    PKG_CONFIG_DIR= PKG_CONFIG_ALLOW_CROSS=1 PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig \
+    CC=arm-linux-gnueabihf-gcc-$GCC_VERSION CXX=arm-linux-gnueabihf-g++-$GCC_VERSION \
+        PKG_CONFIG_DIR= PKG_CONFIG_ALLOW_CROSS=1 PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig \
         cargo build --quiet --release --target armv7-unknown-linux-gnueabihf -p $1
     cp $WORKSPACE/target/armv7-unknown-linux-gnueabihf/release/$1 $TARGET_DIR/bin/armhf/
 }
@@ -47,7 +49,8 @@ build_rust_arm64_gnu() {
     install_gnu_deb arm64
 
     cd $WORKSPACE       
-    PKG_CONFIG_DIR= PKG_CONFIG_ALLOW_CROSS=1 PKG_CONFIG_LIBDIR=/usr/lib/aarch64-linux-gnu/pkgconfig \
+    CC=aarch64-linux-gnu-gcc-$GCC_VERSION CXX=aarch64-linux-gnu-g++-$GCC_VERSION \
+        PKG_CONFIG_DIR= PKG_CONFIG_ALLOW_CROSS=1 PKG_CONFIG_LIBDIR=/usr/lib/aarch64-linux-gnu/pkgconfig \
         cargo build --quiet --release --target aarch64-unknown-linux-gnu -p $1
     cp $WORKSPACE/target/aarch64-unknown-linux-gnu/release/$1 $TARGET_DIR/bin/aarch64/
 }
@@ -78,7 +81,7 @@ build_musa() {
     gradle build    
     mkdir -p $TARGET_DIR/musa
     find build/libs ! -name '*plain*' -type f -exec cp '{}' $TARGET_DIR/musa \;
-    cp README.md application.properties $TARGET_DIR/musa/
+    cp README.md application.properties.orig $TARGET_DIR/musa/
 }
 
 copy_jdk() {
