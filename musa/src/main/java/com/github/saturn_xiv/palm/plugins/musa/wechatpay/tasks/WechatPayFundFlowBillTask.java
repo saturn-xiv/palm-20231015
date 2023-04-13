@@ -18,7 +18,7 @@ public class WechatPayFundFlowBillTask {
             for (var accountType : WechatPayFundFlowBillRequest.AccountType.values()) {
                 if (wechatPayBillService.getFundFlowBill(billDate, accountType) == null) {
                     logger.info("fetch wechat pay fund flow bill  {} {}", billDate, accountType);
-                    final var content = wechatPayClient.downloadTradeBill(billDate);
+                    final var content = wechatPayClient.downloadTradeBill(billDate, WechatPayClient.accountType(accountType));
                     wechatPayBillService.addFundFlowBill(billDate, accountType, null, content);
                 }
             }

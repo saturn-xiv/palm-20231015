@@ -1,4 +1,4 @@
-package com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.impl;
+package com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.impl.rpc;
 
 import com.github.saturn_xiv.palm.plugins.musa.helpers.JwtHelper;
 import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerInterceptor;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
-@Component("palm.musa.service.wechat-pay.notification")
+@Component("palm.musa.service.rpc.wechat-pay.notification")
 public class WechatPayNotificationServiceImpl extends WechatPayNotificationGrpc.WechatPayNotificationImplBase {
     @Override
     public void transaction(WechatPayNotificationRequest request, StreamObserver<WechatPayNotificationTransactionResponse> responseObserver) {
@@ -60,14 +60,14 @@ public class WechatPayNotificationServiceImpl extends WechatPayNotificationGrpc.
 
     @PostConstruct
     void init() {
-        notificationParser = config.notificationParser();
+        notificationParser = client.notificationParser();
     }
 
 
     @Autowired
     JwtHelper jwt;
     @Autowired
-    WechatPayClient config;
+    WechatPayClient client;
 
     private NotificationParser notificationParser;
 

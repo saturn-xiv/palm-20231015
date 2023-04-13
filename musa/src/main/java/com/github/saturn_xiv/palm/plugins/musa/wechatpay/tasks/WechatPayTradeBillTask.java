@@ -19,7 +19,7 @@ public class WechatPayTradeBillTask {
             for (var billType : WechatPayTradeBillRequest.BillType.values()) {
                 if (wechatPayBillService.getTradeBill(billDate, billType) == null) {
                     logger.info("fetch wechat pay trade bill {} {}", billDate, billType);
-                    final var content = wechatPayClient.downloadTradeBill(billDate);
+                    final var content = wechatPayClient.downloadTradeBill(billDate, WechatPayClient.billType(billType));
                     wechatPayBillService.addTradeBill(billDate, billType, null, content);
                 }
             }

@@ -1,4 +1,4 @@
-package com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.impl;
+package com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.impl.rpc;
 
 import com.github.saturn_xiv.palm.plugins.musa.helpers.JwtHelper;
 import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerInterceptor;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
-@Component("palm.musa.service.wechat-pay.native")
+@Component("palm.musa.service.rpc.wechat-pay.native")
 public class WechatPayNativeServiceImpl extends WechatPayNativeGrpc.WechatPayNativeImplBase {
     @Override
     public void prepay(WechatPayPrepayRequest request, StreamObserver<WechatPayNativeQrCodeUrlResponse> responseObserver) {
@@ -37,14 +37,14 @@ public class WechatPayNativeServiceImpl extends WechatPayNativeGrpc.WechatPayNat
 
     @PostConstruct
     void init() {
-        wechatPay = new WechatPayNativeHelper(config.getMerchantId(), config.nativePayService());
+        wechatPay = new WechatPayNativeHelper(client.getMerchantId(), client.nativePayService());
     }
 
 
     @Autowired
     JwtHelper jwt;
     @Autowired
-    WechatPayClient config;
+    WechatPayClient client;
 
     private WechatPayNativeHelper wechatPay;
 

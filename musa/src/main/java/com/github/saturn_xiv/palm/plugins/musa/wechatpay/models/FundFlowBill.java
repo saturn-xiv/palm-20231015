@@ -15,24 +15,15 @@ public class FundFlowBill implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Integer id;
-
-
     @Length(min = 1, max = 10)
     @Column(name = "bill_date", nullable = false)
     private String billDate;
-
-
     @Column(name = "account_type", nullable = false)
     private int accountType;
-
-
     @Column(name = "tar_type")
-    private int tarType;
-
-
+    private Integer tarType;
     @Column(nullable = false)
     private byte[] content;
-
     @Column(name = "created_at", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
@@ -71,11 +62,11 @@ public class FundFlowBill implements Serializable {
         this.accountType = accountType;
     }
 
-    public int getTarType() {
+    public Integer getTarType() {
         return tarType;
     }
 
-    public void setTarType(int tarType) {
+    public void setTarType(Integer tarType) {
         this.tarType = tarType;
     }
 

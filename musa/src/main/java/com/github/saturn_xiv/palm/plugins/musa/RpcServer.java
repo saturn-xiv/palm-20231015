@@ -1,14 +1,10 @@
 package com.github.saturn_xiv.palm.plugins.musa;
 
 import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerInterceptor;
-import com.github.saturn_xiv.palm.plugins.musa.v1.HealthGrpc;
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayJsapiGrpc;
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeGrpc;
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotificationGrpc;
+import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import io.grpc.Grpc;
 import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
-import io.grpc.ServerInterceptors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +26,12 @@ public class RpcServer {
     @PostConstruct
     void startUp() throws IOException {
         server = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
-                .addService(ServerInterceptors.intercept(wechatPayNativeService, tokenServerInterceptor))
-                .addService(ServerInterceptors.intercept(wechatPayJsapiService, tokenServerInterceptor))
-                .addService(ServerInterceptors.intercept(wechatPayNotificationService, tokenServerInterceptor))
-                .addService(ServerInterceptors.intercept(healthService, tokenServerInterceptor))
-                .intercept(new TokenServerInterceptor())
+                .addService(wechatPayBillService)
+                .addService(wechatPayJsapiService)
+                .addService(wechatPayNativeService)
+                .addService(wechatPayNotificationService)
+                .addService(healthService)
+                .intercept(tokenServerInterceptor)
                 .build().start();
         logger.info("Start gRPC server on http://0.0.0.0:{}", port);
     }
@@ -56,6 +53,8 @@ public class RpcServer {
     WechatPayJsapiGrpc.WechatPayJsapiImplBase wechatPayJsapiService;
     @Autowired
     WechatPayNotificationGrpc.WechatPayNotificationImplBase wechatPayNotificationService;
+    @Autowired
+    WechatPayBillGrpc.WechatPayBillImplBase wechatPayBillService;
     @Autowired
     TokenServerInterceptor tokenServerInterceptor;
 

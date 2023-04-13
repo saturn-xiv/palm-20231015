@@ -1,6 +1,9 @@
 package com.github.saturn_xiv.palm.plugins.musa.wechatpay;
 
+import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayFundFlowBillRequest;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest;
+import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTarType;
+import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest;
 import com.wechat.pay.java.core.RSAAutoCertificateConfig;
 import com.wechat.pay.java.core.RSAConfig;
 import com.wechat.pay.java.core.http.DefaultHttpClientBuilder;
@@ -26,10 +29,11 @@ import java.util.List;
 
 @Component("palm.musa.model.wechatpay")
 public class WechatPayClient {
-    public byte[] downloadFundFlowBill(String billDate) {
+    public byte[] downloadFundFlowBill(String billDate, String accountType) {
 
         final var url = UriComponentsBuilder.fromUriString("https://api.mch.weixin.qq.com/v3/bill/fundflowbill")
                 .queryParam("bill_date", billDate)
+                .queryParam("account_type", accountType)
                 .build().toUriString();
 
         var client = new DefaultHttpClientBuilder().build();
@@ -43,10 +47,11 @@ public class WechatPayClient {
         return null;
     }
 
-    public byte[] downloadTradeBill(String billDate) {
+    public byte[] downloadTradeBill(String billDate, String billType) {
 
         final var url = UriComponentsBuilder.fromUriString("https://api.mch.weixin.qq.com/v3/bill/tradebill")
                 .queryParam("bill_date", billDate)
+                .queryParam("bill_type", billType)
                 .build().toUriString();
 
         var client = new DefaultHttpClientBuilder().build();
@@ -78,10 +83,35 @@ public class WechatPayClient {
     }
 
     public static String currency(WechatPayPrepayRequest.Amount.Currency currency) {
-        switch (currency) {
-            default:
-                return "CNY";
-        }
+        return switch (currency) {
+            case CNY -> "CNY";
+            case UNRECOGNIZED -> null;
+        };
+    }
+
+    public static String billType(WechatPayTradeBillRequest.BillType billType) {
+        return switch (billType) {
+            case ALL -> "ALL";
+            case SUCCESS -> "SUCCESS";
+            case REFUND -> "REFUND";
+            case UNRECOGNIZED -> null;
+        };
+    }
+
+    public static String accountType(WechatPayFundFlowBillRequest.AccountType accountType) {
+        return switch (accountType) {
+            case FEES -> "FEES";
+            case BASIC -> "BASIC";
+            case OPERATION -> "OPERATION";
+            case UNRECOGNIZED -> null;
+        };
+    }
+
+    public static String tarType(WechatPayTarType tarType) {
+        return switch (tarType) {
+            case GZIP -> "GZIP";
+            case UNRECOGNIZED -> null;
+        };
     }
 
 
