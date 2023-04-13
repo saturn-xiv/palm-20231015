@@ -8,6 +8,17 @@ export WORKSPACE=$PWD
 export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
 export TARGET_DIR=$PWD/tmp/palm-$GIT_VERSION
 
+
+if [[ $UBUNTU_CODENAME == "jammy" ]]
+then
+    export GCC_VERSION=11
+fi
+
+if [[ $UBUNTU_CODENAME == "focal" ]]
+then
+    export GCC_VERSION=10
+fi
+
 apt-get -qq -y install libc6-dev libudev-dev libssl-dev \
         libpq5 libpq-dev libmysqlclient-dev libsqlite3-dev
 
@@ -18,8 +29,8 @@ make loquat
 cp loquat $TARGET_DIR/
 
 cd $WORKSPACE/
-CC=gcc-$GCC_VERSION CXX=g++-$GCC_VERSION \
-    cargo build --release --target x86_64-unknown-linux-gnu
+# CC=gcc-$GCC_VERSION CXX=g++-$GCC_VERSION \
+cargo build --release --target x86_64-unknown-linux-gnu
 cd $WORKSPACE/target/x86_64-unknown-linux-gnu/release/
 cp aloe coconut fig lemon orchid $TARGET_DIR/
 
