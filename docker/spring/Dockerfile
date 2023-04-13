@@ -233,7 +233,7 @@ RUN zsh -c "source $HOME/.zshrc \
         -DgRPC_SSL_PROVIDER=package \
         -DgRPC_BUILD_TESTS=OFF \
         -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
-    && make -j \
+    && make \
     && make install"
 
 # https://github.com/grpc/grpc-web#code-generator-plugin
@@ -267,7 +267,7 @@ RUN zsh -c "source $HOME/.zshrc \
     && cd $HOME/build/flatbuffers \
     && cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/flatbuffers \
-    && make -j \
+    && make \
     && make install"
 
 # https://github.com/microsoft/vcpkg
