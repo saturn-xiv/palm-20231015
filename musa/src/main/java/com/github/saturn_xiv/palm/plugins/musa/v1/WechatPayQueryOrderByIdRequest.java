@@ -4,29 +4,28 @@
 package com.github.saturn_xiv.palm.plugins.musa.v1;
 
 /**
- * Protobuf type {@code palm.musa.v1.WechatPayCloseOrderRequest}
+ * Protobuf type {@code palm.musa.v1.WechatPayQueryOrderByIdRequest}
  */
-public final class WechatPayCloseOrderRequest extends
+public final class WechatPayQueryOrderByIdRequest extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:palm.musa.v1.WechatPayCloseOrderRequest)
-        WechatPayCloseOrderRequestOrBuilder {
+        // @@protoc_insertion_point(message_implements:palm.musa.v1.WechatPayQueryOrderByIdRequest)
+        WechatPayQueryOrderByIdRequestOrBuilder {
     private static final long serialVersionUID = 0L;
 
-    // Use WechatPayCloseOrderRequest.newBuilder() to construct.
-    private WechatPayCloseOrderRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use WechatPayQueryOrderByIdRequest.newBuilder() to construct.
+    private WechatPayQueryOrderByIdRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
     }
 
-    private WechatPayCloseOrderRequest() {
-        outTradeNo_ = "";
-        reason_ = "";
+    private WechatPayQueryOrderByIdRequest() {
+        id_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
             UnusedPrivateParameter unused) {
-        return new WechatPayCloseOrderRequest();
+        return new WechatPayQueryOrderByIdRequest();
     }
 
     @java.lang.Override
@@ -37,97 +36,54 @@ public final class WechatPayCloseOrderRequest extends
 
     public static final com.google.protobuf.Descriptors.Descriptor
     getDescriptor() {
-        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCloseOrderRequest_descriptor;
+        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayQueryOrderByIdRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
     internalGetFieldAccessorTable() {
-        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCloseOrderRequest_fieldAccessorTable
+        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayQueryOrderByIdRequest_fieldAccessorTable
                 .ensureFieldAccessorsInitialized(
-                        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest.Builder.class);
+                        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest.Builder.class);
     }
 
-    public static final int OUT_TRADE_NO_FIELD_NUMBER = 1;
+    public static final int ID_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
-    private volatile java.lang.Object outTradeNo_ = "";
+    private volatile java.lang.Object id_ = "";
 
     /**
-     * <code>string out_trade_no = 1;</code>
+     * <code>string id = 1;</code>
      *
-     * @return The outTradeNo.
+     * @return The id.
      */
     @java.lang.Override
-    public java.lang.String getOutTradeNo() {
-        java.lang.Object ref = outTradeNo_;
+    public java.lang.String getId() {
+        java.lang.Object ref = id_;
         if (ref instanceof java.lang.String) {
             return (java.lang.String) ref;
         } else {
             com.google.protobuf.ByteString bs =
                     (com.google.protobuf.ByteString) ref;
             java.lang.String s = bs.toStringUtf8();
-            outTradeNo_ = s;
+            id_ = s;
             return s;
         }
     }
 
     /**
-     * <code>string out_trade_no = 1;</code>
+     * <code>string id = 1;</code>
      *
-     * @return The bytes for outTradeNo.
+     * @return The bytes for id.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-    getOutTradeNoBytes() {
-        java.lang.Object ref = outTradeNo_;
+    getIdBytes() {
+        java.lang.Object ref = id_;
         if (ref instanceof java.lang.String) {
             com.google.protobuf.ByteString b =
                     com.google.protobuf.ByteString.copyFromUtf8(
                             (java.lang.String) ref);
-            outTradeNo_ = b;
-            return b;
-        } else {
-            return (com.google.protobuf.ByteString) ref;
-        }
-    }
-
-    public static final int REASON_FIELD_NUMBER = 2;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object reason_ = "";
-
-    /**
-     * <code>string reason = 2;</code>
-     *
-     * @return The reason.
-     */
-    @java.lang.Override
-    public java.lang.String getReason() {
-        java.lang.Object ref = reason_;
-        if (ref instanceof java.lang.String) {
-            return (java.lang.String) ref;
-        } else {
-            com.google.protobuf.ByteString bs =
-                    (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            reason_ = s;
-            return s;
-        }
-    }
-
-    /**
-     * <code>string reason = 2;</code>
-     *
-     * @return The bytes for reason.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-    getReasonBytes() {
-        java.lang.Object ref = reason_;
-        if (ref instanceof java.lang.String) {
-            com.google.protobuf.ByteString b =
-                    com.google.protobuf.ByteString.copyFromUtf8(
-                            (java.lang.String) ref);
-            reason_ = b;
+            id_ = b;
             return b;
         } else {
             return (com.google.protobuf.ByteString) ref;
@@ -149,11 +105,8 @@ public final class WechatPayCloseOrderRequest extends
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
             throws java.io.IOException {
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(outTradeNo_)) {
-            com.google.protobuf.GeneratedMessageV3.writeString(output, 1, outTradeNo_);
-        }
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(reason_)) {
-            com.google.protobuf.GeneratedMessageV3.writeString(output, 2, reason_);
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+            com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
         }
         getUnknownFields().writeTo(output);
     }
@@ -164,11 +117,8 @@ public final class WechatPayCloseOrderRequest extends
         if (size != -1) return size;
 
         size = 0;
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(outTradeNo_)) {
-            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, outTradeNo_);
-        }
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(reason_)) {
-            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, reason_);
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSize = size;
@@ -180,15 +130,13 @@ public final class WechatPayCloseOrderRequest extends
         if (obj == this) {
             return true;
         }
-        if (!(obj instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest)) {
+        if (!(obj instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest)) {
             return super.equals(obj);
         }
-        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest other = (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest) obj;
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest other = (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest) obj;
 
-        if (!getOutTradeNo()
-                .equals(other.getOutTradeNo())) return false;
-        if (!getReason()
-                .equals(other.getReason())) return false;
+        if (!getId()
+                .equals(other.getId())) return false;
         if (!getUnknownFields().equals(other.getUnknownFields())) return false;
         return true;
     }
@@ -200,60 +148,58 @@ public final class WechatPayCloseOrderRequest extends
         }
         int hash = 41;
         hash = (19 * hash) + getDescriptor().hashCode();
-        hash = (37 * hash) + OUT_TRADE_NO_FIELD_NUMBER;
-        hash = (53 * hash) + getOutTradeNo().hashCode();
-        hash = (37 * hash) + REASON_FIELD_NUMBER;
-        hash = (53 * hash) + getReason().hashCode();
+        hash = (37 * hash) + ID_FIELD_NUMBER;
+        hash = (53 * hash) + getId().hashCode();
         hash = (29 * hash) + getUnknownFields().hashCode();
         memoizedHashCode = hash;
         return hash;
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest parseFrom(
             java.nio.ByteBuffer data)
             throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest parseFrom(
             java.nio.ByteBuffer data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest parseFrom(
             com.google.protobuf.ByteString data)
             throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest parseFrom(
             com.google.protobuf.ByteString data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest parseFrom(byte[] data)
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest parseFrom(byte[] data)
             throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest parseFrom(
             byte[] data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest parseFrom(java.io.InputStream input)
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest parseFrom(java.io.InputStream input)
             throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
                 .parseWithIOException(PARSER, input);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest parseFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
@@ -261,13 +207,13 @@ public final class WechatPayCloseOrderRequest extends
                 .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest parseDelimitedFrom(java.io.InputStream input)
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest parseDelimitedFrom(java.io.InputStream input)
             throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
                 .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest parseDelimitedFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest parseDelimitedFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
@@ -275,14 +221,14 @@ public final class WechatPayCloseOrderRequest extends
                 .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest parseFrom(
             com.google.protobuf.CodedInputStream input)
             throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
                 .parseWithIOException(PARSER, input);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest parseFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
@@ -299,7 +245,7 @@ public final class WechatPayCloseOrderRequest extends
         return DEFAULT_INSTANCE.toBuilder();
     }
 
-    public static Builder newBuilder(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest prototype) {
+    public static Builder newBuilder(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
@@ -317,26 +263,26 @@ public final class WechatPayCloseOrderRequest extends
     }
 
     /**
-     * Protobuf type {@code palm.musa.v1.WechatPayCloseOrderRequest}
+     * Protobuf type {@code palm.musa.v1.WechatPayQueryOrderByIdRequest}
      */
     public static final class Builder extends
             com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-            // @@protoc_insertion_point(builder_implements:palm.musa.v1.WechatPayCloseOrderRequest)
-            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequestOrBuilder {
+            // @@protoc_insertion_point(builder_implements:palm.musa.v1.WechatPayQueryOrderByIdRequest)
+            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequestOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-            return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCloseOrderRequest_descriptor;
+            return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayQueryOrderByIdRequest_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCloseOrderRequest_fieldAccessorTable
+            return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayQueryOrderByIdRequest_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(
-                            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest.Builder.class);
+                            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest.Builder.class);
         }
 
-        // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest.newBuilder()
+        // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest.newBuilder()
         private Builder() {
 
         }
@@ -351,25 +297,24 @@ public final class WechatPayCloseOrderRequest extends
         public Builder clear() {
             super.clear();
             bitField0_ = 0;
-            outTradeNo_ = "";
-            reason_ = "";
+            id_ = "";
             return this;
         }
 
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-            return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCloseOrderRequest_descriptor;
+            return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayQueryOrderByIdRequest_descriptor;
         }
 
         @java.lang.Override
-        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest getDefaultInstanceForType() {
-            return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest.getDefaultInstance();
+        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest getDefaultInstanceForType() {
+            return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest.getDefaultInstance();
         }
 
         @java.lang.Override
-        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest build() {
-            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest result = buildPartial();
+        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest build() {
+            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest result = buildPartial();
             if (!result.isInitialized()) {
                 throw newUninitializedMessageException(result);
             }
@@ -377,8 +322,8 @@ public final class WechatPayCloseOrderRequest extends
         }
 
         @java.lang.Override
-        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest buildPartial() {
-            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest result = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest(this);
+        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest buildPartial() {
+            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest result = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest(this);
             if (bitField0_ != 0) {
                 buildPartial0(result);
             }
@@ -386,13 +331,10 @@ public final class WechatPayCloseOrderRequest extends
             return result;
         }
 
-        private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest result) {
+        private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest result) {
             int from_bitField0_ = bitField0_;
             if (((from_bitField0_ & 0x00000001) != 0)) {
-                result.outTradeNo_ = outTradeNo_;
-            }
-            if (((from_bitField0_ & 0x00000002) != 0)) {
-                result.reason_ = reason_;
+                result.id_ = id_;
             }
         }
 
@@ -436,25 +378,20 @@ public final class WechatPayCloseOrderRequest extends
 
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-            if (other instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest) {
-                return mergeFrom((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest) other);
+            if (other instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest) {
+                return mergeFrom((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest) other);
             } else {
                 super.mergeFrom(other);
                 return this;
             }
         }
 
-        public Builder mergeFrom(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest other) {
-            if (other == com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest.getDefaultInstance())
+        public Builder mergeFrom(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest other) {
+            if (other == com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest.getDefaultInstance())
                 return this;
-            if (!other.getOutTradeNo().isEmpty()) {
-                outTradeNo_ = other.outTradeNo_;
+            if (!other.getId().isEmpty()) {
+                id_ = other.id_;
                 bitField0_ |= 0x00000001;
-                onChanged();
-            }
-            if (!other.getReason().isEmpty()) {
-                reason_ = other.reason_;
-                bitField0_ |= 0x00000002;
                 onChanged();
             }
             this.mergeUnknownFields(other.getUnknownFields());
@@ -484,15 +421,10 @@ public final class WechatPayCloseOrderRequest extends
                             done = true;
                             break;
                         case 10: {
-                            outTradeNo_ = input.readStringRequireUtf8();
+                            id_ = input.readStringRequireUtf8();
                             bitField0_ |= 0x00000001;
                             break;
                         } // case 10
-                        case 18: {
-                            reason_ = input.readStringRequireUtf8();
-                            bitField0_ |= 0x00000002;
-                            break;
-                        } // case 18
                         default: {
                             if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                 done = true; // was an endgroup tag
@@ -511,20 +443,20 @@ public final class WechatPayCloseOrderRequest extends
 
         private int bitField0_;
 
-        private java.lang.Object outTradeNo_ = "";
+        private java.lang.Object id_ = "";
 
         /**
-         * <code>string out_trade_no = 1;</code>
+         * <code>string id = 1;</code>
          *
-         * @return The outTradeNo.
+         * @return The id.
          */
-        public java.lang.String getOutTradeNo() {
-            java.lang.Object ref = outTradeNo_;
+        public java.lang.String getId() {
+            java.lang.Object ref = id_;
             if (!(ref instanceof java.lang.String)) {
                 com.google.protobuf.ByteString bs =
                         (com.google.protobuf.ByteString) ref;
                 java.lang.String s = bs.toStringUtf8();
-                outTradeNo_ = s;
+                id_ = s;
                 return s;
             } else {
                 return (java.lang.String) ref;
@@ -532,18 +464,18 @@ public final class WechatPayCloseOrderRequest extends
         }
 
         /**
-         * <code>string out_trade_no = 1;</code>
+         * <code>string id = 1;</code>
          *
-         * @return The bytes for outTradeNo.
+         * @return The bytes for id.
          */
         public com.google.protobuf.ByteString
-        getOutTradeNoBytes() {
-            java.lang.Object ref = outTradeNo_;
+        getIdBytes() {
+            java.lang.Object ref = id_;
             if (ref instanceof String) {
                 com.google.protobuf.ByteString b =
                         com.google.protobuf.ByteString.copyFromUtf8(
                                 (java.lang.String) ref);
-                outTradeNo_ = b;
+                id_ = b;
                 return b;
             } else {
                 return (com.google.protobuf.ByteString) ref;
@@ -551,134 +483,48 @@ public final class WechatPayCloseOrderRequest extends
         }
 
         /**
-         * <code>string out_trade_no = 1;</code>
+         * <code>string id = 1;</code>
          *
-         * @param value The outTradeNo to set.
+         * @param value The id to set.
          * @return This builder for chaining.
          */
-        public Builder setOutTradeNo(
+        public Builder setId(
                 java.lang.String value) {
             if (value == null) {
                 throw new NullPointerException();
             }
-            outTradeNo_ = value;
+            id_ = value;
             bitField0_ |= 0x00000001;
             onChanged();
             return this;
         }
 
         /**
-         * <code>string out_trade_no = 1;</code>
+         * <code>string id = 1;</code>
          *
          * @return This builder for chaining.
          */
-        public Builder clearOutTradeNo() {
-            outTradeNo_ = getDefaultInstance().getOutTradeNo();
+        public Builder clearId() {
+            id_ = getDefaultInstance().getId();
             bitField0_ = (bitField0_ & ~0x00000001);
             onChanged();
             return this;
         }
 
         /**
-         * <code>string out_trade_no = 1;</code>
+         * <code>string id = 1;</code>
          *
-         * @param value The bytes for outTradeNo to set.
+         * @param value The bytes for id to set.
          * @return This builder for chaining.
          */
-        public Builder setOutTradeNoBytes(
+        public Builder setIdBytes(
                 com.google.protobuf.ByteString value) {
             if (value == null) {
                 throw new NullPointerException();
             }
             checkByteStringIsUtf8(value);
-            outTradeNo_ = value;
+            id_ = value;
             bitField0_ |= 0x00000001;
-            onChanged();
-            return this;
-        }
-
-        private java.lang.Object reason_ = "";
-
-        /**
-         * <code>string reason = 2;</code>
-         *
-         * @return The reason.
-         */
-        public java.lang.String getReason() {
-            java.lang.Object ref = reason_;
-            if (!(ref instanceof java.lang.String)) {
-                com.google.protobuf.ByteString bs =
-                        (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                reason_ = s;
-                return s;
-            } else {
-                return (java.lang.String) ref;
-            }
-        }
-
-        /**
-         * <code>string reason = 2;</code>
-         *
-         * @return The bytes for reason.
-         */
-        public com.google.protobuf.ByteString
-        getReasonBytes() {
-            java.lang.Object ref = reason_;
-            if (ref instanceof String) {
-                com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
-                reason_ = b;
-                return b;
-            } else {
-                return (com.google.protobuf.ByteString) ref;
-            }
-        }
-
-        /**
-         * <code>string reason = 2;</code>
-         *
-         * @param value The reason to set.
-         * @return This builder for chaining.
-         */
-        public Builder setReason(
-                java.lang.String value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            reason_ = value;
-            bitField0_ |= 0x00000002;
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>string reason = 2;</code>
-         *
-         * @return This builder for chaining.
-         */
-        public Builder clearReason() {
-            reason_ = getDefaultInstance().getReason();
-            bitField0_ = (bitField0_ & ~0x00000002);
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>string reason = 2;</code>
-         *
-         * @param value The bytes for reason to set.
-         * @return This builder for chaining.
-         */
-        public Builder setReasonBytes(
-                com.google.protobuf.ByteString value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            checkByteStringIsUtf8(value);
-            reason_ = value;
-            bitField0_ |= 0x00000002;
             onChanged();
             return this;
         }
@@ -696,24 +542,24 @@ public final class WechatPayCloseOrderRequest extends
         }
 
 
-        // @@protoc_insertion_point(builder_scope:palm.musa.v1.WechatPayCloseOrderRequest)
+        // @@protoc_insertion_point(builder_scope:palm.musa.v1.WechatPayQueryOrderByIdRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:palm.musa.v1.WechatPayCloseOrderRequest)
-    private static final com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:palm.musa.v1.WechatPayQueryOrderByIdRequest)
+    private static final com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest DEFAULT_INSTANCE;
 
     static {
-        DEFAULT_INSTANCE = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest();
+        DEFAULT_INSTANCE = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest();
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest getDefaultInstance() {
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest getDefaultInstance() {
         return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<WechatPayCloseOrderRequest>
-            PARSER = new com.google.protobuf.AbstractParser<WechatPayCloseOrderRequest>() {
+    private static final com.google.protobuf.Parser<WechatPayQueryOrderByIdRequest>
+            PARSER = new com.google.protobuf.AbstractParser<WechatPayQueryOrderByIdRequest>() {
         @java.lang.Override
-        public WechatPayCloseOrderRequest parsePartialFrom(
+        public WechatPayQueryOrderByIdRequest parsePartialFrom(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
@@ -732,17 +578,17 @@ public final class WechatPayCloseOrderRequest extends
         }
     };
 
-    public static com.google.protobuf.Parser<WechatPayCloseOrderRequest> parser() {
+    public static com.google.protobuf.Parser<WechatPayQueryOrderByIdRequest> parser() {
         return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<WechatPayCloseOrderRequest> getParserForType() {
+    public com.google.protobuf.Parser<WechatPayQueryOrderByIdRequest> getParserForType() {
         return PARSER;
     }
 
     @java.lang.Override
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest getDefaultInstanceForType() {
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
     }
 

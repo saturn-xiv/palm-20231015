@@ -18,34 +18,34 @@ public final class WechatPayNativeGrpc {
 
     // Static method descriptors that strictly reflect the proto.
     private static volatile io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest,
-            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse> getQrCodeUrlMethod;
+            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse> getPrepayMethod;
 
     @io.grpc.stub.annotations.RpcMethod(
-            fullMethodName = SERVICE_NAME + '/' + "QrCodeUrl",
+            fullMethodName = SERVICE_NAME + '/' + "Prepay",
             requestType = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.class,
             responseType = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse.class,
             methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
     public static io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest,
-            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse> getQrCodeUrlMethod() {
-        io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse> getQrCodeUrlMethod;
-        if ((getQrCodeUrlMethod = WechatPayNativeGrpc.getQrCodeUrlMethod) == null) {
+            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse> getPrepayMethod() {
+        io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse> getPrepayMethod;
+        if ((getPrepayMethod = WechatPayNativeGrpc.getPrepayMethod) == null) {
             synchronized (WechatPayNativeGrpc.class) {
-                if ((getQrCodeUrlMethod = WechatPayNativeGrpc.getQrCodeUrlMethod) == null) {
-                    WechatPayNativeGrpc.getQrCodeUrlMethod = getQrCodeUrlMethod =
+                if ((getPrepayMethod = WechatPayNativeGrpc.getPrepayMethod) == null) {
+                    WechatPayNativeGrpc.getPrepayMethod = getPrepayMethod =
                             io.grpc.MethodDescriptor.<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse>newBuilder()
                                     .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                                    .setFullMethodName(generateFullMethodName(SERVICE_NAME, "QrCodeUrl"))
+                                    .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Prepay"))
                                     .setSampledToLocalTracing(true)
                                     .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                             com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.getDefaultInstance()))
                                     .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                             com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse.getDefaultInstance()))
-                                    .setSchemaDescriptor(new WechatPayNativeMethodDescriptorSupplier("QrCodeUrl"))
+                                    .setSchemaDescriptor(new WechatPayNativeMethodDescriptorSupplier("Prepay"))
                                     .build();
                 }
             }
         }
-        return getQrCodeUrlMethod;
+        return getPrepayMethod;
     }
 
     /**
@@ -100,21 +100,21 @@ public final class WechatPayNativeGrpc {
         /**
          *
          */
-        public void qrCodeUrl(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest request,
-                              io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse> responseObserver) {
-            io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getQrCodeUrlMethod(), responseObserver);
+        public void prepay(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest request,
+                           io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse> responseObserver) {
+            io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getPrepayMethod(), responseObserver);
         }
 
         @java.lang.Override
         public final io.grpc.ServerServiceDefinition bindService() {
             return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
                     .addMethod(
-                            getQrCodeUrlMethod(),
+                            getPrepayMethod(),
                             io.grpc.stub.ServerCalls.asyncUnaryCall(
                                     new MethodHandlers<
                                             com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest,
                                             com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse>(
-                                            this, METHODID_QR_CODE_URL)))
+                                            this, METHODID_PREPAY)))
                     .build();
         }
     }
@@ -137,10 +137,10 @@ public final class WechatPayNativeGrpc {
         /**
          *
          */
-        public void qrCodeUrl(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest request,
-                              io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse> responseObserver) {
+        public void prepay(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest request,
+                           io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse> responseObserver) {
             io.grpc.stub.ClientCalls.asyncUnaryCall(
-                    getChannel().newCall(getQrCodeUrlMethod(), getCallOptions()), request, responseObserver);
+                    getChannel().newCall(getPrepayMethod(), getCallOptions()), request, responseObserver);
         }
     }
 
@@ -162,9 +162,9 @@ public final class WechatPayNativeGrpc {
         /**
          *
          */
-        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse qrCodeUrl(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest request) {
+        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse prepay(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest request) {
             return io.grpc.stub.ClientCalls.blockingUnaryCall(
-                    getChannel(), getQrCodeUrlMethod(), getCallOptions(), request);
+                    getChannel(), getPrepayMethod(), getCallOptions(), request);
         }
     }
 
@@ -186,14 +186,14 @@ public final class WechatPayNativeGrpc {
         /**
          *
          */
-        public com.google.common.util.concurrent.ListenableFuture<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse> qrCodeUrl(
+        public com.google.common.util.concurrent.ListenableFuture<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse> prepay(
                 com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest request) {
             return io.grpc.stub.ClientCalls.futureUnaryCall(
-                    getChannel().newCall(getQrCodeUrlMethod(), getCallOptions()), request);
+                    getChannel().newCall(getPrepayMethod(), getCallOptions()), request);
         }
     }
 
-    private static final int METHODID_QR_CODE_URL = 0;
+    private static final int METHODID_PREPAY = 0;
 
     private static final class MethodHandlers<Req, Resp> implements
             io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -212,8 +212,8 @@ public final class WechatPayNativeGrpc {
         @java.lang.SuppressWarnings("unchecked")
         public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
             switch (methodId) {
-                case METHODID_QR_CODE_URL:
-                    serviceImpl.qrCodeUrl((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest) request,
+                case METHODID_PREPAY:
+                    serviceImpl.prepay((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest) request,
                             (io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse>) responseObserver);
                     break;
                 default:
@@ -279,7 +279,7 @@ public final class WechatPayNativeGrpc {
                 if (result == null) {
                     serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
                             .setSchemaDescriptor(new WechatPayNativeFileDescriptorSupplier())
-                            .addMethod(getQrCodeUrlMethod())
+                            .addMethod(getPrepayMethod())
                             .build();
                 }
             }

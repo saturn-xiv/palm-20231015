@@ -66,6 +66,9 @@ export class WechatPayCloseOrderRequest extends jspb.Message {
   getOutTradeNo(): string;
   setOutTradeNo(value: string): WechatPayCloseOrderRequest;
 
+  getReason(): string;
+  setReason(value: string): WechatPayCloseOrderRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WechatPayCloseOrderRequest.AsObject;
   static toObject(includeInstance: boolean, msg: WechatPayCloseOrderRequest): WechatPayCloseOrderRequest.AsObject;
@@ -77,6 +80,7 @@ export class WechatPayCloseOrderRequest extends jspb.Message {
 export namespace WechatPayCloseOrderRequest {
   export type AsObject = {
     outTradeNo: string,
+    reason: string,
   }
 }
 
@@ -99,6 +103,56 @@ export namespace WechatPayNativeQrCodeUrlResponse {
   export type AsObject = {
     url: string,
     outTradeNo: string,
+  }
+}
+
+export class WechatPayTradeResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatPayTradeResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatPayTradeResponse): WechatPayTradeResponse.AsObject;
+  static serializeBinaryToWriter(message: WechatPayTradeResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatPayTradeResponse;
+  static deserializeBinaryFromReader(message: WechatPayTradeResponse, reader: jspb.BinaryReader): WechatPayTradeResponse;
+}
+
+export namespace WechatPayTradeResponse {
+  export type AsObject = {
+  }
+}
+
+export class WechatPayQueryOrderByIdRequest extends jspb.Message {
+  getId(): string;
+  setId(value: string): WechatPayQueryOrderByIdRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatPayQueryOrderByIdRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatPayQueryOrderByIdRequest): WechatPayQueryOrderByIdRequest.AsObject;
+  static serializeBinaryToWriter(message: WechatPayQueryOrderByIdRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatPayQueryOrderByIdRequest;
+  static deserializeBinaryFromReader(message: WechatPayQueryOrderByIdRequest, reader: jspb.BinaryReader): WechatPayQueryOrderByIdRequest;
+}
+
+export namespace WechatPayQueryOrderByIdRequest {
+  export type AsObject = {
+    id: string,
+  }
+}
+
+export class WechatPayQueryOrderByOutTradeNoRequest extends jspb.Message {
+  getNo(): string;
+  setNo(value: string): WechatPayQueryOrderByOutTradeNoRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatPayQueryOrderByOutTradeNoRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatPayQueryOrderByOutTradeNoRequest): WechatPayQueryOrderByOutTradeNoRequest.AsObject;
+  static serializeBinaryToWriter(message: WechatPayQueryOrderByOutTradeNoRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatPayQueryOrderByOutTradeNoRequest;
+  static deserializeBinaryFromReader(message: WechatPayQueryOrderByOutTradeNoRequest, reader: jspb.BinaryReader): WechatPayQueryOrderByOutTradeNoRequest;
+}
+
+export namespace WechatPayQueryOrderByOutTradeNoRequest {
+  export type AsObject = {
+    no: string,
   }
 }
 

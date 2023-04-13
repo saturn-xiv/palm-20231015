@@ -18,12 +18,12 @@ import javax.annotation.PostConstruct;
 @Component("palm.musa.service.wechat-pay.native")
 public class WechatPayNativeServiceImpl extends WechatPayNativeGrpc.WechatPayNativeImplBase {
     @Override
-    public void qrCodeUrl(WechatPayPrepayRequest request, StreamObserver<WechatPayNativeQrCodeUrlResponse> responseObserver) {
+    public void prepay(WechatPayPrepayRequest request, StreamObserver<WechatPayNativeQrCodeUrlResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
         final var outTradeNo = WechatPayConfig.outTradeNo();
         var currency = WechatPayConfig.currency(request.getAmount().getCurrenty());
-        var url = wechatPay.prepayCodeUrl(request.getAppId(), config.getMerchantId(),
+        var url = wechatPay.prepay(request.getAppId(),
                 request.getDescription(),
                 outTradeNo,
                 currency, request.getAmount().getTotal(),
@@ -37,7 +37,7 @@ public class WechatPayNativeServiceImpl extends WechatPayNativeGrpc.WechatPayNat
 
     @PostConstruct
     void init() {
-        wechatPay = new WechatPayNativeHelper(config.nativePayService());
+        wechatPay = new WechatPayNativeHelper(config.getMerchantId(), config.nativePayService());
     }
 
 

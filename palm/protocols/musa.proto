@@ -24,10 +24,13 @@ message WechatPayPrepayRequest {
   string notify_url = 11;
 }
 
-message WechatPayCloseOrderRequest { string out_trade_no = 1; }
+message WechatPayCloseOrderRequest {
+  string out_trade_no = 1;
+  string reason = 2;
+}
 
 service WechatPayNative {
-  rpc QrCodeUrl(WechatPayPrepayRequest)
+  rpc Prepay(WechatPayPrepayRequest)
       returns (WechatPayNativeQrCodeUrlResponse) {}
 }
 
@@ -36,9 +39,17 @@ message WechatPayNativeQrCodeUrlResponse {
   string out_trade_no = 2;
 }
 
+message WechatPayTradeResponse {}
+message WechatPayQueryOrderByIdRequest { string id = 1; }
+message WechatPayQueryOrderByOutTradeNoRequest { string no = 1; }
+
 service WechatPayJsapi {
-  rpc PrepayId(WechatPayPrepayRequest)
-      returns (WechatPayJsapiPrepayIdResponse) {}
+  rpc Prepay(WechatPayPrepayRequest) returns (WechatPayJsapiPrepayIdResponse) {}
+  rpc QueryOrderByOutTradeNo(WechatPayQueryOrderByOutTradeNoRequest)
+      returns (WechatPayTradeResponse) {}
+  rpc QueryOrderById(WechatPayQueryOrderByIdRequest)
+      returns (WechatPayTradeResponse) {}
+  rpc CloseOrder(WechatPayCloseOrderRequest) returns (google.protobuf.Empty) {}
 }
 
 message WechatPayJsapiPrepayIdResponse {

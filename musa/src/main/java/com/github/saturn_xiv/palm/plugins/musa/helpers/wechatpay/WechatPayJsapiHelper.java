@@ -2,12 +2,13 @@ package com.github.saturn_xiv.palm.plugins.musa.helpers.wechatpay;
 
 import com.wechat.pay.java.service.payments.jsapi.JsapiServiceExtension;
 import com.wechat.pay.java.service.payments.jsapi.model.*;
+import com.wechat.pay.java.service.payments.model.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class WechatPayJsapiHelper {
-    public PrepayWithRequestPaymentResponse prepay(String appId, String mchId, String description, String outTradeNo,
-                                                   String amountCurrency, int amountTotal, String notifyUrl) {
+    public PrepayWithRequestPaymentResponse prepayWithRequestPayment(String appId, String description, String outTradeNo,
+                                                                     String amountCurrency, int amountTotal, String notifyUrl) {
 
         final var amount = new Amount();
         amount.setTotal(amountTotal);
@@ -16,7 +17,7 @@ public class WechatPayJsapiHelper {
         final var request = new PrepayRequest();
         request.setAmount(amount);
         request.setAppid(appId);
-        request.setMchid(mchId);
+        request.setMchid(merchantId);
         request.setDescription(description);
         request.setNotifyUrl(notifyUrl);
         request.setOutTradeNo(outTradeNo);
@@ -24,25 +25,34 @@ public class WechatPayJsapiHelper {
     }
 
 
-    public void closeOrder(String mchId, String outTradeNo) {
+    public void closeOrder(String outTradeNo) {
         final var request = new CloseOrderRequest();
-        request.setMchid(mchId);
+        request.setMchid(merchantId);
         request.setOutTradeNo(outTradeNo);
         service.closeOrder(request);
     }
 
-    public void queryOrderById(String mchId, String transactionId) {
-        final var request = new QueryOrderByIdRequest();
-        request.setMchid(mchId);
-        request.setTransactionId(transactionId);
-        final var response = service.queryOrderById(request);
+    public Transaction queryOrderByOutTradeNo(String outTradeNo) {
+        final var request = new QueryOrderByOutTradeNoRequest();
+        request.setMchid(merchantId);
+        request.setOutTradeNo(outTradeNo);
+        return service.queryOrderByOutTradeNo(request);
     }
 
-    public WechatPayJsapiHelper(JsapiServiceExtension service) {
+    public Transaction queryOrderById(String transactionId) {
+        final var request = new QueryOrderByIdRequest();
+        request.setMchid(merchantId);
+        request.setTransactionId(transactionId);
+        return service.queryOrderById(request);
+    }
+
+    public WechatPayJsapiHelper(String merchantId, JsapiServiceExtension service) {
+        this.merchantId = merchantId;
         this.service = service;
     }
 
     private final JsapiServiceExtension service;
+    private final String merchantId;
 
     private final static Logger logger = LoggerFactory.getLogger(WechatPayJsapiHelper.class);
 }

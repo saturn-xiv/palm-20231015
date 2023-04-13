@@ -4,9 +4,8 @@ import com.github.saturn_xiv.palm.plugins.musa.helpers.JwtHelper;
 import com.github.saturn_xiv.palm.plugins.musa.helpers.wechatpay.WechatPayJsapiHelper;
 import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerInterceptor;
 import com.github.saturn_xiv.palm.plugins.musa.models.WechatPayConfig;
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayJsapiGrpc;
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayJsapiPrepayIdResponse;
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest;
+import com.github.saturn_xiv.palm.plugins.musa.v1.*;
+import com.google.protobuf.Empty;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,12 +18,46 @@ import javax.annotation.PostConstruct;
 public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapiImplBase {
 
     @Override
-    public void prepayId(WechatPayPrepayRequest request, StreamObserver<WechatPayJsapiPrepayIdResponse> responseObserver) {
+    public void closeOrder(WechatPayCloseOrderRequest request, StreamObserver<Empty> responseObserver) {
+        jwt.verify(TokenServerInterceptor.TOKEN.get());
+
+        logger.warn("close order {}, reason: {}", request.getOutTradeNo(), request.getReason());
+        wechatPay.closeOrder(request.getOutTradeNo());
+
+        responseObserver.onNext(Empty.newBuilder()
+                .build());
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void queryOrderById(WechatPayQueryOrderByIdRequest request, StreamObserver<WechatPayTradeResponse> responseObserver) {
+        jwt.verify(TokenServerInterceptor.TOKEN.get());
+
+        final var response = wechatPay.queryOrderById(request.getId());
+        //        TODO
+        responseObserver.onNext(WechatPayTradeResponse.newBuilder()
+                .build());
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void queryOrderByOutTradeNo(WechatPayQueryOrderByOutTradeNoRequest request, StreamObserver<WechatPayTradeResponse> responseObserver) {
+        jwt.verify(TokenServerInterceptor.TOKEN.get());
+
+        final var response = wechatPay.queryOrderByOutTradeNo(request.getNo());
+//        TODO
+        responseObserver.onNext(WechatPayTradeResponse.newBuilder()
+                .build());
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void prepay(WechatPayPrepayRequest request, StreamObserver<WechatPayJsapiPrepayIdResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
         final var outTradeNo = WechatPayConfig.outTradeNo();
         var currency = WechatPayConfig.currency(request.getAmount().getCurrenty());
-        var response = wechatPay.prepay(request.getAppId(), config.getMerchantId(),
+        var response = wechatPay.prepayWithRequestPayment(request.getAppId(),
                 request.getDescription(),
                 outTradeNo,
                 currency, request.getAmount().getTotal(),
@@ -44,7 +77,7 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
 
     @PostConstruct
     void init() {
-        wechatPay = new WechatPayJsapiHelper(config.jsapiService());
+        wechatPay = new WechatPayJsapiHelper(config.getMerchantId(), config.jsapiService());
     }
 
     @Autowired

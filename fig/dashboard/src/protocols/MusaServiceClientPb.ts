@@ -40,8 +40,8 @@ export class WechatPayNativeClient {
     this.options_ = options;
   }
 
-  methodDescriptorQrCodeUrl = new grpcWeb.MethodDescriptor(
-    '/palm.musa.v1.WechatPayNative/QrCodeUrl',
+  methodDescriptorPrepay = new grpcWeb.MethodDescriptor(
+    '/palm.musa.v1.WechatPayNative/Prepay',
     grpcWeb.MethodType.UNARY,
     musa_pb.WechatPayPrepayRequest,
     musa_pb.WechatPayNativeQrCodeUrlResponse,
@@ -51,17 +51,17 @@ export class WechatPayNativeClient {
     musa_pb.WechatPayNativeQrCodeUrlResponse.deserializeBinary
   );
 
-  qrCodeUrl(
+  prepay(
     request: musa_pb.WechatPayPrepayRequest,
     metadata: grpcWeb.Metadata | null): Promise<musa_pb.WechatPayNativeQrCodeUrlResponse>;
 
-  qrCodeUrl(
+  prepay(
     request: musa_pb.WechatPayPrepayRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: musa_pb.WechatPayNativeQrCodeUrlResponse) => void): grpcWeb.ClientReadableStream<musa_pb.WechatPayNativeQrCodeUrlResponse>;
 
-  qrCodeUrl(
+  prepay(
     request: musa_pb.WechatPayPrepayRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
@@ -69,18 +69,18 @@ export class WechatPayNativeClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.musa.v1.WechatPayNative/QrCodeUrl',
+          '/palm.musa.v1.WechatPayNative/Prepay',
         request,
         metadata || {},
-        this.methodDescriptorQrCodeUrl,
+        this.methodDescriptorPrepay,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.musa.v1.WechatPayNative/QrCodeUrl',
+      '/palm.musa.v1.WechatPayNative/Prepay',
     request,
     metadata || {},
-    this.methodDescriptorQrCodeUrl);
+    this.methodDescriptorPrepay);
   }
 
 }
@@ -104,8 +104,8 @@ export class WechatPayJsapiClient {
     this.options_ = options;
   }
 
-  methodDescriptorPrepayId = new grpcWeb.MethodDescriptor(
-    '/palm.musa.v1.WechatPayJsapi/PrepayId',
+  methodDescriptorPrepay = new grpcWeb.MethodDescriptor(
+    '/palm.musa.v1.WechatPayJsapi/Prepay',
     grpcWeb.MethodType.UNARY,
     musa_pb.WechatPayPrepayRequest,
     musa_pb.WechatPayJsapiPrepayIdResponse,
@@ -115,17 +115,17 @@ export class WechatPayJsapiClient {
     musa_pb.WechatPayJsapiPrepayIdResponse.deserializeBinary
   );
 
-  prepayId(
+  prepay(
     request: musa_pb.WechatPayPrepayRequest,
     metadata: grpcWeb.Metadata | null): Promise<musa_pb.WechatPayJsapiPrepayIdResponse>;
 
-  prepayId(
+  prepay(
     request: musa_pb.WechatPayPrepayRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: musa_pb.WechatPayJsapiPrepayIdResponse) => void): grpcWeb.ClientReadableStream<musa_pb.WechatPayJsapiPrepayIdResponse>;
 
-  prepayId(
+  prepay(
     request: musa_pb.WechatPayPrepayRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
@@ -133,18 +133,147 @@ export class WechatPayJsapiClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.musa.v1.WechatPayJsapi/PrepayId',
+          '/palm.musa.v1.WechatPayJsapi/Prepay',
         request,
         metadata || {},
-        this.methodDescriptorPrepayId,
+        this.methodDescriptorPrepay,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.musa.v1.WechatPayJsapi/PrepayId',
+      '/palm.musa.v1.WechatPayJsapi/Prepay',
     request,
     metadata || {},
-    this.methodDescriptorPrepayId);
+    this.methodDescriptorPrepay);
+  }
+
+  methodDescriptorQueryOrderByOutTradeNo = new grpcWeb.MethodDescriptor(
+    '/palm.musa.v1.WechatPayJsapi/QueryOrderByOutTradeNo',
+    grpcWeb.MethodType.UNARY,
+    musa_pb.WechatPayQueryOrderByOutTradeNoRequest,
+    musa_pb.WechatPayTradeResponse,
+    (request: musa_pb.WechatPayQueryOrderByOutTradeNoRequest) => {
+      return request.serializeBinary();
+    },
+    musa_pb.WechatPayTradeResponse.deserializeBinary
+  );
+
+  queryOrderByOutTradeNo(
+    request: musa_pb.WechatPayQueryOrderByOutTradeNoRequest,
+    metadata: grpcWeb.Metadata | null): Promise<musa_pb.WechatPayTradeResponse>;
+
+  queryOrderByOutTradeNo(
+    request: musa_pb.WechatPayQueryOrderByOutTradeNoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: musa_pb.WechatPayTradeResponse) => void): grpcWeb.ClientReadableStream<musa_pb.WechatPayTradeResponse>;
+
+  queryOrderByOutTradeNo(
+    request: musa_pb.WechatPayQueryOrderByOutTradeNoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: musa_pb.WechatPayTradeResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.musa.v1.WechatPayJsapi/QueryOrderByOutTradeNo',
+        request,
+        metadata || {},
+        this.methodDescriptorQueryOrderByOutTradeNo,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.musa.v1.WechatPayJsapi/QueryOrderByOutTradeNo',
+    request,
+    metadata || {},
+    this.methodDescriptorQueryOrderByOutTradeNo);
+  }
+
+  methodDescriptorQueryOrderById = new grpcWeb.MethodDescriptor(
+    '/palm.musa.v1.WechatPayJsapi/QueryOrderById',
+    grpcWeb.MethodType.UNARY,
+    musa_pb.WechatPayQueryOrderByIdRequest,
+    musa_pb.WechatPayTradeResponse,
+    (request: musa_pb.WechatPayQueryOrderByIdRequest) => {
+      return request.serializeBinary();
+    },
+    musa_pb.WechatPayTradeResponse.deserializeBinary
+  );
+
+  queryOrderById(
+    request: musa_pb.WechatPayQueryOrderByIdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<musa_pb.WechatPayTradeResponse>;
+
+  queryOrderById(
+    request: musa_pb.WechatPayQueryOrderByIdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: musa_pb.WechatPayTradeResponse) => void): grpcWeb.ClientReadableStream<musa_pb.WechatPayTradeResponse>;
+
+  queryOrderById(
+    request: musa_pb.WechatPayQueryOrderByIdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: musa_pb.WechatPayTradeResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.musa.v1.WechatPayJsapi/QueryOrderById',
+        request,
+        metadata || {},
+        this.methodDescriptorQueryOrderById,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.musa.v1.WechatPayJsapi/QueryOrderById',
+    request,
+    metadata || {},
+    this.methodDescriptorQueryOrderById);
+  }
+
+  methodDescriptorCloseOrder = new grpcWeb.MethodDescriptor(
+    '/palm.musa.v1.WechatPayJsapi/CloseOrder',
+    grpcWeb.MethodType.UNARY,
+    musa_pb.WechatPayCloseOrderRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: musa_pb.WechatPayCloseOrderRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  closeOrder(
+    request: musa_pb.WechatPayCloseOrderRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  closeOrder(
+    request: musa_pb.WechatPayCloseOrderRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  closeOrder(
+    request: musa_pb.WechatPayCloseOrderRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.musa.v1.WechatPayJsapi/CloseOrder',
+        request,
+        metadata || {},
+        this.methodDescriptorCloseOrder,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.musa.v1.WechatPayJsapi/CloseOrder',
+    request,
+    metadata || {},
+    this.methodDescriptorCloseOrder);
   }
 
 }

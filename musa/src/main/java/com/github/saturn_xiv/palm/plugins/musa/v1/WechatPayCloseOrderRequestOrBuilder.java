@@ -21,4 +21,19 @@ public interface WechatPayCloseOrderRequestOrBuilder extends
      */
     com.google.protobuf.ByteString
     getOutTradeNoBytes();
+
+    /**
+     * <code>string reason = 2;</code>
+     *
+     * @return The reason.
+     */
+    java.lang.String getReason();
+
+    /**
+     * <code>string reason = 2;</code>
+     *
+     * @return The bytes for reason.
+     */
+    com.google.protobuf.ByteString
+    getReasonBytes();
 }
