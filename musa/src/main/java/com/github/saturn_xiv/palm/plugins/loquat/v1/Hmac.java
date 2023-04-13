@@ -441,7 +441,9 @@ public class Hmac {
         public @org.apache.thrift.annotation.Nullable java.lang.String auth; // required
         public @org.apache.thrift.annotation.Nullable java.nio.ByteBuffer plain; // required
 
-        /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+        /**
+         * The set of fields this struct contains, along with convenience methods for finding and manipulating them.
+         */
         public enum _Fields implements org.apache.thrift.TFieldIdEnum {
             AUTH((short) 1, "auth"),
             PLAIN((short) 2, "plain");
@@ -568,7 +570,9 @@ public class Hmac {
             this.auth = null;
         }
 
-        /** Returns true if field auth is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field auth is set (has been assigned a value) and false otherwise
+         */
         public boolean isSetAuth() {
             return this.auth != null;
         }
@@ -602,7 +606,9 @@ public class Hmac {
             this.plain = null;
         }
 
-        /** Returns true if field plain is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field plain is set (has been assigned a value) and false otherwise
+         */
         public boolean isSetPlain() {
             return this.plain != null;
         }
@@ -653,7 +659,9 @@ public class Hmac {
             throw new java.lang.IllegalStateException();
         }
 
-        /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise
+         */
         @Override
         public boolean isSet(_Fields field) {
             if (field == null) {
@@ -936,7 +944,9 @@ public class Hmac {
 
         public @org.apache.thrift.annotation.Nullable java.nio.ByteBuffer success; // required
 
-        /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+        /**
+         * The set of fields this struct contains, along with convenience methods for finding and manipulating them.
+         */
         public enum _Fields implements org.apache.thrift.TFieldIdEnum {
             SUCCESS((short) 0, "success");
 
@@ -1061,7 +1071,9 @@ public class Hmac {
             this.success = null;
         }
 
-        /** Returns true if field success is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field success is set (has been assigned a value) and false otherwise
+         */
         public boolean isSetSuccess() {
             return this.success != null;
         }
@@ -1101,7 +1113,9 @@ public class Hmac {
             throw new java.lang.IllegalStateException();
         }
 
-        /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise
+         */
         @Override
         public boolean isSet(_Fields field) {
             if (field == null) {
@@ -1331,7 +1345,9 @@ public class Hmac {
         public @org.apache.thrift.annotation.Nullable java.nio.ByteBuffer code; // required
         public @org.apache.thrift.annotation.Nullable java.nio.ByteBuffer plain; // required
 
-        /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+        /**
+         * The set of fields this struct contains, along with convenience methods for finding and manipulating them.
+         */
         public enum _Fields implements org.apache.thrift.TFieldIdEnum {
             AUTH((short) 1, "auth"),
             CODE((short) 2, "code"),
@@ -1469,7 +1485,9 @@ public class Hmac {
             this.auth = null;
         }
 
-        /** Returns true if field auth is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field auth is set (has been assigned a value) and false otherwise
+         */
         public boolean isSetAuth() {
             return this.auth != null;
         }
@@ -1503,7 +1521,9 @@ public class Hmac {
             this.code = null;
         }
 
-        /** Returns true if field code is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field code is set (has been assigned a value) and false otherwise
+         */
         public boolean isSetCode() {
             return this.code != null;
         }
@@ -1537,7 +1557,9 @@ public class Hmac {
             this.plain = null;
         }
 
-        /** Returns true if field plain is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field plain is set (has been assigned a value) and false otherwise
+         */
         public boolean isSetPlain() {
             return this.plain != null;
         }
@@ -1603,7 +1625,9 @@ public class Hmac {
             throw new java.lang.IllegalStateException();
         }
 
-        /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise
+         */
         @Override
         public boolean isSet(_Fields field) {
             if (field == null) {
@@ -1940,7 +1964,9 @@ public class Hmac {
         private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new verify_resultTupleSchemeFactory();
 
 
-        /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+        /**
+         * The set of fields this struct contains, along with convenience methods for finding and manipulating them.
+         */
         public enum _Fields implements org.apache.thrift.TFieldIdEnum {
             ;
 
@@ -2041,7 +2067,9 @@ public class Hmac {
             throw new java.lang.IllegalStateException();
         }
 
-        /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+        /**
+         * Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise
+         */
         @Override
         public boolean isSet(_Fields field) {
             if (field == null) {

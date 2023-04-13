@@ -23,36 +23,21 @@ public interface WechatPayPrepayRequestOrBuilder extends
     getAppIdBytes();
 
     /**
-     * <code>string out_trade_no = 2;</code>
-     *
-     * @return The outTradeNo.
-     */
-    java.lang.String getOutTradeNo();
-
-    /**
-     * <code>string out_trade_no = 2;</code>
-     *
-     * @return The bytes for outTradeNo.
-     */
-    com.google.protobuf.ByteString
-    getOutTradeNoBytes();
-
-    /**
-     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 2;</code>
      *
      * @return Whether the amount field is set.
      */
     boolean hasAmount();
 
     /**
-     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 2;</code>
      *
      * @return The amount.
      */
     com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount getAmount();
 
     /**
-     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 2;</code>
      */
     com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.AmountOrBuilder getAmountOrBuilder();
 

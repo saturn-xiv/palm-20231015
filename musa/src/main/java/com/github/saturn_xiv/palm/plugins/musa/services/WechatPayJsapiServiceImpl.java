@@ -22,15 +22,17 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
     public void prepayId(WechatPayPrepayRequest request, StreamObserver<WechatPayJsapiPrepayIdResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
+        final var outTradeNo = WechatPayConfig.outTradeNo();
         var currency = WechatPayConfig.currency(request.getAmount().getCurrenty());
         var response = wechatPay.prepay(request.getAppId(), config.getMerchantId(),
                 request.getDescription(),
-                request.getOutTradeNo(),
+                outTradeNo,
                 currency, request.getAmount().getTotal(),
                 request.getNotifyUrl());
 
         responseObserver.onNext(WechatPayJsapiPrepayIdResponse.newBuilder()
                 .setAppId(response.getAppId())
+                .setOutTradeNo(outTradeNo)
                 .setTimeStamp(response.getTimeStamp())
                 .setNonceStr(response.getNonceStr())
                 .setPackage(response.getPackageVal())

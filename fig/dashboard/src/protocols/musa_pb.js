@@ -233,8 +233,6 @@ proto.palm.musa.v1.WechatPayPrepayRequest.prototype.toObject = function(opt_incl
 proto.palm.musa.v1.WechatPayPrepayRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     appId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    mchId: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    outTradeNo: jspb.Message.getFieldWithDefault(msg, 3, ""),
     amount: (f = msg.getAmount()) && proto.palm.musa.v1.WechatPayPrepayRequest.Amount.toObject(includeInstance, f),
     description: jspb.Message.getFieldWithDefault(msg, 9, ""),
     notifyUrl: jspb.Message.getFieldWithDefault(msg, 11, "")
@@ -279,14 +277,6 @@ proto.palm.musa.v1.WechatPayPrepayRequest.deserializeBinaryFromReader = function
       msg.setAppId(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setMchId(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setOutTradeNo(value);
-      break;
-    case 4:
       var value = new proto.palm.musa.v1.WechatPayPrepayRequest.Amount;
       reader.readMessage(value,proto.palm.musa.v1.WechatPayPrepayRequest.Amount.deserializeBinaryFromReader);
       msg.setAmount(value);
@@ -335,24 +325,10 @@ proto.palm.musa.v1.WechatPayPrepayRequest.serializeBinaryToWriter = function(mes
       f
     );
   }
-  f = message.getMchId();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
-  f = message.getOutTradeNo();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
-  }
   f = message.getAmount();
   if (f != null) {
     writer.writeMessage(
-      4,
+      2,
       f,
       proto.palm.musa.v1.WechatPayPrepayRequest.Amount.serializeBinaryToWriter
     );
@@ -560,48 +536,12 @@ proto.palm.musa.v1.WechatPayPrepayRequest.prototype.setAppId = function(value) {
 
 
 /**
- * optional string mch_id = 2;
- * @return {string}
- */
-proto.palm.musa.v1.WechatPayPrepayRequest.prototype.getMchId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.palm.musa.v1.WechatPayPrepayRequest} returns this
- */
-proto.palm.musa.v1.WechatPayPrepayRequest.prototype.setMchId = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-/**
- * optional string out_trade_no = 3;
- * @return {string}
- */
-proto.palm.musa.v1.WechatPayPrepayRequest.prototype.getOutTradeNo = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.palm.musa.v1.WechatPayPrepayRequest} returns this
- */
-proto.palm.musa.v1.WechatPayPrepayRequest.prototype.setOutTradeNo = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
-};
-
-
-/**
- * optional Amount amount = 4;
+ * optional Amount amount = 2;
  * @return {?proto.palm.musa.v1.WechatPayPrepayRequest.Amount}
  */
 proto.palm.musa.v1.WechatPayPrepayRequest.prototype.getAmount = function() {
   return /** @type{?proto.palm.musa.v1.WechatPayPrepayRequest.Amount} */ (
-    jspb.Message.getWrapperField(this, proto.palm.musa.v1.WechatPayPrepayRequest.Amount, 4));
+    jspb.Message.getWrapperField(this, proto.palm.musa.v1.WechatPayPrepayRequest.Amount, 2));
 };
 
 
@@ -610,7 +550,7 @@ proto.palm.musa.v1.WechatPayPrepayRequest.prototype.getAmount = function() {
  * @return {!proto.palm.musa.v1.WechatPayPrepayRequest} returns this
 */
 proto.palm.musa.v1.WechatPayPrepayRequest.prototype.setAmount = function(value) {
-  return jspb.Message.setWrapperField(this, 4, value);
+  return jspb.Message.setWrapperField(this, 2, value);
 };
 
 
@@ -628,7 +568,7 @@ proto.palm.musa.v1.WechatPayPrepayRequest.prototype.clearAmount = function() {
  * @return {boolean}
  */
 proto.palm.musa.v1.WechatPayPrepayRequest.prototype.hasAmount = function() {
-  return jspb.Message.getField(this, 4) != null;
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -700,8 +640,7 @@ proto.palm.musa.v1.WechatPayCloseOrderRequest.prototype.toObject = function(opt_
  */
 proto.palm.musa.v1.WechatPayCloseOrderRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mchId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    outTradeNo: jspb.Message.getFieldWithDefault(msg, 2, "")
+    outTradeNo: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -740,10 +679,6 @@ proto.palm.musa.v1.WechatPayCloseOrderRequest.deserializeBinaryFromReader = func
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setMchId(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
       msg.setOutTradeNo(value);
       break;
     default:
@@ -775,17 +710,10 @@ proto.palm.musa.v1.WechatPayCloseOrderRequest.prototype.serializeBinary = functi
  */
 proto.palm.musa.v1.WechatPayCloseOrderRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getMchId();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
   f = message.getOutTradeNo();
   if (f.length > 0) {
     writer.writeString(
-      2,
+      1,
       f
     );
   }
@@ -793,10 +721,10 @@ proto.palm.musa.v1.WechatPayCloseOrderRequest.serializeBinaryToWriter = function
 
 
 /**
- * optional string mch_id = 1;
+ * optional string out_trade_no = 1;
  * @return {string}
  */
-proto.palm.musa.v1.WechatPayCloseOrderRequest.prototype.getMchId = function() {
+proto.palm.musa.v1.WechatPayCloseOrderRequest.prototype.getOutTradeNo = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -805,26 +733,8 @@ proto.palm.musa.v1.WechatPayCloseOrderRequest.prototype.getMchId = function() {
  * @param {string} value
  * @return {!proto.palm.musa.v1.WechatPayCloseOrderRequest} returns this
  */
-proto.palm.musa.v1.WechatPayCloseOrderRequest.prototype.setMchId = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-/**
- * optional string out_trade_no = 2;
- * @return {string}
- */
-proto.palm.musa.v1.WechatPayCloseOrderRequest.prototype.getOutTradeNo = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.palm.musa.v1.WechatPayCloseOrderRequest} returns this
- */
 proto.palm.musa.v1.WechatPayCloseOrderRequest.prototype.setOutTradeNo = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -860,7 +770,8 @@ proto.palm.musa.v1.WechatPayNativeQrCodeUrlResponse.prototype.toObject = functio
  */
 proto.palm.musa.v1.WechatPayNativeQrCodeUrlResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    url: jspb.Message.getFieldWithDefault(msg, 1, "")
+    url: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    outTradeNo: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -901,6 +812,10 @@ proto.palm.musa.v1.WechatPayNativeQrCodeUrlResponse.deserializeBinaryFromReader 
       var value = /** @type {string} */ (reader.readString());
       msg.setUrl(value);
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setOutTradeNo(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -937,6 +852,13 @@ proto.palm.musa.v1.WechatPayNativeQrCodeUrlResponse.serializeBinaryToWriter = fu
       f
     );
   }
+  f = message.getOutTradeNo();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -955,6 +877,24 @@ proto.palm.musa.v1.WechatPayNativeQrCodeUrlResponse.prototype.getUrl = function(
  */
 proto.palm.musa.v1.WechatPayNativeQrCodeUrlResponse.prototype.setUrl = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string out_trade_no = 2;
+ * @return {string}
+ */
+proto.palm.musa.v1.WechatPayNativeQrCodeUrlResponse.prototype.getOutTradeNo = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.musa.v1.WechatPayNativeQrCodeUrlResponse} returns this
+ */
+proto.palm.musa.v1.WechatPayNativeQrCodeUrlResponse.prototype.setOutTradeNo = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -995,7 +935,8 @@ proto.palm.musa.v1.WechatPayJsapiPrepayIdResponse.toObject = function(includeIns
     nonceStr: jspb.Message.getFieldWithDefault(msg, 3, ""),
     pb_package: jspb.Message.getFieldWithDefault(msg, 4, ""),
     signType: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    paySign: jspb.Message.getFieldWithDefault(msg, 6, "")
+    paySign: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    outTradeNo: jspb.Message.getFieldWithDefault(msg, 11, "")
   };
 
   if (includeInstance) {
@@ -1055,6 +996,10 @@ proto.palm.musa.v1.WechatPayJsapiPrepayIdResponse.deserializeBinaryFromReader = 
     case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.setPaySign(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setOutTradeNo(value);
       break;
     default:
       reader.skipField();
@@ -1124,6 +1069,13 @@ proto.palm.musa.v1.WechatPayJsapiPrepayIdResponse.serializeBinaryToWriter = func
   if (f.length > 0) {
     writer.writeString(
       6,
+      f
+    );
+  }
+  f = message.getOutTradeNo();
+  if (f.length > 0) {
+    writer.writeString(
+      11,
       f
     );
   }
@@ -1235,6 +1187,24 @@ proto.palm.musa.v1.WechatPayJsapiPrepayIdResponse.prototype.getPaySign = functio
  */
 proto.palm.musa.v1.WechatPayJsapiPrepayIdResponse.prototype.setPaySign = function(value) {
   return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * optional string out_trade_no = 11;
+ * @return {string}
+ */
+proto.palm.musa.v1.WechatPayJsapiPrepayIdResponse.prototype.getOutTradeNo = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.musa.v1.WechatPayJsapiPrepayIdResponse} returns this
+ */
+proto.palm.musa.v1.WechatPayJsapiPrepayIdResponse.prototype.setOutTradeNo = function(value) {
+  return jspb.Message.setProto3StringField(this, 11, value);
 };
 
 

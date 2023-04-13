@@ -7,12 +7,6 @@ export class WechatPayPrepayRequest extends jspb.Message {
   getAppId(): string;
   setAppId(value: string): WechatPayPrepayRequest;
 
-  getMchId(): string;
-  setMchId(value: string): WechatPayPrepayRequest;
-
-  getOutTradeNo(): string;
-  setOutTradeNo(value: string): WechatPayPrepayRequest;
-
   getAmount(): WechatPayPrepayRequest.Amount | undefined;
   setAmount(value?: WechatPayPrepayRequest.Amount): WechatPayPrepayRequest;
   hasAmount(): boolean;
@@ -35,8 +29,6 @@ export class WechatPayPrepayRequest extends jspb.Message {
 export namespace WechatPayPrepayRequest {
   export type AsObject = {
     appId: string,
-    mchId: string,
-    outTradeNo: string,
     amount?: WechatPayPrepayRequest.Amount.AsObject,
     description: string,
     notifyUrl: string,
@@ -71,9 +63,6 @@ export namespace WechatPayPrepayRequest {
 }
 
 export class WechatPayCloseOrderRequest extends jspb.Message {
-  getMchId(): string;
-  setMchId(value: string): WechatPayCloseOrderRequest;
-
   getOutTradeNo(): string;
   setOutTradeNo(value: string): WechatPayCloseOrderRequest;
 
@@ -87,7 +76,6 @@ export class WechatPayCloseOrderRequest extends jspb.Message {
 
 export namespace WechatPayCloseOrderRequest {
   export type AsObject = {
-    mchId: string,
     outTradeNo: string,
   }
 }
@@ -95,6 +83,9 @@ export namespace WechatPayCloseOrderRequest {
 export class WechatPayNativeQrCodeUrlResponse extends jspb.Message {
   getUrl(): string;
   setUrl(value: string): WechatPayNativeQrCodeUrlResponse;
+
+  getOutTradeNo(): string;
+  setOutTradeNo(value: string): WechatPayNativeQrCodeUrlResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WechatPayNativeQrCodeUrlResponse.AsObject;
@@ -107,6 +98,7 @@ export class WechatPayNativeQrCodeUrlResponse extends jspb.Message {
 export namespace WechatPayNativeQrCodeUrlResponse {
   export type AsObject = {
     url: string,
+    outTradeNo: string,
   }
 }
 
@@ -129,6 +121,9 @@ export class WechatPayJsapiPrepayIdResponse extends jspb.Message {
   getPaySign(): string;
   setPaySign(value: string): WechatPayJsapiPrepayIdResponse;
 
+  getOutTradeNo(): string;
+  setOutTradeNo(value: string): WechatPayJsapiPrepayIdResponse;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WechatPayJsapiPrepayIdResponse.AsObject;
   static toObject(includeInstance: boolean, msg: WechatPayJsapiPrepayIdResponse): WechatPayJsapiPrepayIdResponse.AsObject;
@@ -145,6 +140,7 @@ export namespace WechatPayJsapiPrepayIdResponse {
     pb_package: string,
     signType: string,
     paySign: string,
+    outTradeNo: string,
   }
 }
 

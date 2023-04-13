@@ -21,13 +21,16 @@ public class WechatPayNativeServiceImpl extends WechatPayNativeGrpc.WechatPayNat
     public void qrCodeUrl(WechatPayPrepayRequest request, StreamObserver<WechatPayNativeQrCodeUrlResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
+        final var outTradeNo = WechatPayConfig.outTradeNo();
         var currency = WechatPayConfig.currency(request.getAmount().getCurrenty());
         var url = wechatPay.prepayCodeUrl(request.getAppId(), config.getMerchantId(),
                 request.getDescription(),
-                request.getOutTradeNo(),
+                outTradeNo,
                 currency, request.getAmount().getTotal(),
                 request.getNotifyUrl());
-        responseObserver.onNext(WechatPayNativeQrCodeUrlResponse.newBuilder().setUrl(url).build());
+        responseObserver.onNext(WechatPayNativeQrCodeUrlResponse.newBuilder()
+                .setOutTradeNo(outTradeNo)
+                .setUrl(url).build());
         responseObserver.onCompleted();
     }
 

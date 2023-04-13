@@ -18,8 +18,8 @@ message WechatPayPrepayRequest {
   }
 
   string app_id = 1;
-  string out_trade_no = 2;
-  Amount amount = 3;
+  Amount amount = 2;
+
   string description = 9;
   string notify_url = 11;
 }
@@ -31,7 +31,10 @@ service WechatPayNative {
       returns (WechatPayNativeQrCodeUrlResponse) {}
 }
 
-message WechatPayNativeQrCodeUrlResponse { string url = 1; }
+message WechatPayNativeQrCodeUrlResponse {
+  string url = 1;
+  string out_trade_no = 2;
+}
 
 service WechatPayJsapi {
   rpc PrepayId(WechatPayPrepayRequest)
@@ -45,6 +48,8 @@ message WechatPayJsapiPrepayIdResponse {
   string package = 4;
   string sign_type = 5;
   string pay_sign = 6;
+
+  string out_trade_no = 11;
 }
 
 service WechatPayNotification {

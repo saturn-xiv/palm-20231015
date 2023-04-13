@@ -96,4 +96,19 @@ public interface WechatPayJsapiPrepayIdResponseOrBuilder extends
      */
     com.google.protobuf.ByteString
     getPaySignBytes();
+
+    /**
+     * <code>string out_trade_no = 11;</code>
+     *
+     * @return The outTradeNo.
+     */
+    java.lang.String getOutTradeNo();
+
+    /**
+     * <code>string out_trade_no = 11;</code>
+     *
+     * @return The bytes for outTradeNo.
+     */
+    com.google.protobuf.ByteString
+    getOutTradeNoBytes();
 }

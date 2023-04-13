@@ -21,4 +21,19 @@ public interface WechatPayNativeQrCodeUrlResponseOrBuilder extends
      */
     com.google.protobuf.ByteString
     getUrlBytes();
+
+    /**
+     * <code>string out_trade_no = 2;</code>
+     *
+     * @return The outTradeNo.
+     */
+    java.lang.String getOutTradeNo();
+
+    /**
+     * <code>string out_trade_no = 2;</code>
+     *
+     * @return The bytes for outTradeNo.
+     */
+    com.google.protobuf.ByteString
+    getOutTradeNoBytes();
 }

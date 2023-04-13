@@ -6,12 +6,15 @@ import com.wechat.pay.java.core.RSAConfig;
 import com.wechat.pay.java.core.notification.NotificationParser;
 import com.wechat.pay.java.service.payments.jsapi.JsapiServiceExtension;
 import com.wechat.pay.java.service.payments.nativepay.NativePayService;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Component("palm.musa.model.wechatpay")
 public class WechatPayConfig {
@@ -21,6 +24,11 @@ public class WechatPayConfig {
             default:
                 return "CNY";
         }
+    }
+
+
+    public static String outTradeNo() {
+        return dateFormat.format(new Date()) + RandomStringUtils.randomAlphabetic(15).toUpperCase();
     }
 
     public JsapiServiceExtension jsapiService() {
@@ -67,6 +75,8 @@ public class WechatPayConfig {
     String apiV3Key;
 
     private RSAAutoCertificateConfig config;
+
+    final static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 
     private final static Logger logger = LoggerFactory.getLogger(WechatPayConfig.class);
 
