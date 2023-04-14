@@ -4,21 +4,25 @@
 package com.github.saturn_xiv.palm.plugins.musa.v1;
 
 /**
- * Protobuf enum {@code palm.musa.v1.WechatPayTarType}
+ * <pre>
+ * ----------------------------------------------------------------------------
+ * </pre>
+ * <p>
+ * Protobuf enum {@code palm.musa.v1.WechatPayCurrency}
  */
-public enum WechatPayTarType
+public enum WechatPayCurrency
         implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>GZIP = 0;</code>
+     * <code>CNY = 0;</code>
      */
-    GZIP(0),
+    CNY(0),
     UNRECOGNIZED(-1),
     ;
 
     /**
-     * <code>GZIP = 0;</code>
+     * <code>CNY = 0;</code>
      */
-    public static final int GZIP_VALUE = 0;
+    public static final int CNY_VALUE = 0;
 
 
     public final int getNumber() {
@@ -35,7 +39,7 @@ public enum WechatPayTarType
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
-    public static WechatPayTarType valueOf(int value) {
+    public static WechatPayCurrency valueOf(int value) {
         return forNumber(value);
     }
 
@@ -43,25 +47,25 @@ public enum WechatPayTarType
      * @param value The numeric wire value of the corresponding enum entry.
      * @return The enum associated with the given numeric wire value.
      */
-    public static WechatPayTarType forNumber(int value) {
+    public static WechatPayCurrency forNumber(int value) {
         switch (value) {
             case 0:
-                return GZIP;
+                return CNY;
             default:
                 return null;
         }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<WechatPayTarType>
+    public static com.google.protobuf.Internal.EnumLiteMap<WechatPayCurrency>
     internalGetValueMap() {
         return internalValueMap;
     }
 
     private static final com.google.protobuf.Internal.EnumLiteMap<
-            WechatPayTarType> internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<WechatPayTarType>() {
-                public WechatPayTarType findValueByNumber(int number) {
-                    return WechatPayTarType.forNumber(number);
+            WechatPayCurrency> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<WechatPayCurrency>() {
+                public WechatPayCurrency findValueByNumber(int number) {
+                    return WechatPayCurrency.forNumber(number);
                 }
             };
 
@@ -81,12 +85,12 @@ public enum WechatPayTarType
 
     public static final com.google.protobuf.Descriptors.EnumDescriptor
     getDescriptor() {
-        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.getDescriptor().getEnumTypes().get(1);
+        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.getDescriptor().getEnumTypes().get(0);
     }
 
-    private static final WechatPayTarType[] VALUES = values();
+    private static final WechatPayCurrency[] VALUES = values();
 
-    public static WechatPayTarType valueOf(
+    public static WechatPayCurrency valueOf(
             com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
             throw new java.lang.IllegalArgumentException(
@@ -100,10 +104,10 @@ public enum WechatPayTarType
 
     private final int value;
 
-    private WechatPayTarType(int value) {
+    private WechatPayCurrency(int value) {
         this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:palm.musa.v1.WechatPayTarType)
+    // @@protoc_insertion_point(enum_scope:palm.musa.v1.WechatPayCurrency)
 }
 

@@ -71,6 +71,7 @@ public class WechatPayBillServiceImpl extends WechatPayBillGrpc.WechatPayBillImp
         responseObserver.onCompleted();
     }
 
+
     @Autowired
     JwtHelper jwt;
     @Autowired

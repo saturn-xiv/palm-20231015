@@ -1,14 +1,13 @@
 package com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.impl;
 
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayFundFlowBillRequest;
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest;
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTarType;
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest;
+import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.FundFlowBill;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.Order;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.Refund;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.TradeBill;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.WechatPayFundFlowBillRepository;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.WechatPayOrderRepository;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.WechatPayRefundRepository;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.WechatPayTradeBillRepository;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayBillService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +19,26 @@ import java.util.Date;
 public class WechatPayBillServiceImpl implements WechatPayBillService {
 
     @Override
-    public void addOrder(String appId, String payerOpenId, String outTradeNo, int amountTotal, WechatPayPrepayRequest.Amount.Currency amountCurrency, String description) {
+    public void addRefund(String outTradeNo, String outRefundNo, WechatPayCreateRefundRequest.Amount amount, String reason) {
+        var it = new Refund();
+        it.setOutRefundNo(outRefundNo);
+        it.setOutTradeNo(outTradeNo);
+        it.setAmountTotal(amount.getTotal());
+        it.setAmountRefund(amount.getRefund());
+        it.setAmountCurrency(amount.getCurrency().getNumber());
+        it.setReason(reason);
+        it.setCreatedAt(new Date());
+        refundRepository.save(it);
+    }
+
+    @Override
+    public void addOrder(String appId, String payerOpenId, String outTradeNo, WechatPayPrepayRequest.Amount amount, String description) {
         var it = new Order();
         it.setAppId(appId);
         it.setPayerOpenId(payerOpenId);
         it.setOutTradeNo(outTradeNo);
-        it.setAmountTotal(amountTotal);
-        it.setAmountCurrency(amountCurrency.getNumber());
+        it.setAmountTotal(amount.getTotal());
+        it.setAmountCurrency(amount.getCurrency().getNumber());
         it.setDescription(description);
         it.setCreatedAt(new Date());
         orderRepository.save(it);
@@ -71,6 +83,8 @@ public class WechatPayBillServiceImpl implements WechatPayBillService {
     WechatPayFundFlowBillRepository fundFlowBillRepository;
     @Autowired
     WechatPayOrderRepository orderRepository;
+    @Autowired
+    WechatPayRefundRepository refundRepository;
 
 
 }

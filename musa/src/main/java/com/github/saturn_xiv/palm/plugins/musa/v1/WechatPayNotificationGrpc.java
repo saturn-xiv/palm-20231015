@@ -21,7 +21,7 @@ public final class WechatPayNotificationGrpc {
             com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotificationTransactionResponse> getTransactionMethod;
 
     @io.grpc.stub.annotations.RpcMethod(
-            fullMethodName = SERVICE_NAME + '/' + "transaction",
+            fullMethodName = SERVICE_NAME + '/' + "Transaction",
             requestType = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotificationRequest.class,
             responseType = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotificationTransactionResponse.class,
             methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
@@ -34,13 +34,13 @@ public final class WechatPayNotificationGrpc {
                     WechatPayNotificationGrpc.getTransactionMethod = getTransactionMethod =
                             io.grpc.MethodDescriptor.<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotificationRequest, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotificationTransactionResponse>newBuilder()
                                     .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                                    .setFullMethodName(generateFullMethodName(SERVICE_NAME, "transaction"))
+                                    .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Transaction"))
                                     .setSampledToLocalTracing(true)
                                     .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                             com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotificationRequest.getDefaultInstance()))
                                     .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                             com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotificationTransactionResponse.getDefaultInstance()))
-                                    .setSchemaDescriptor(new WechatPayNotificationMethodDescriptorSupplier("transaction"))
+                                    .setSchemaDescriptor(new WechatPayNotificationMethodDescriptorSupplier("Transaction"))
                                     .build();
                 }
             }
@@ -52,7 +52,7 @@ public final class WechatPayNotificationGrpc {
             com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotificationRefundResponse> getRefundMethod;
 
     @io.grpc.stub.annotations.RpcMethod(
-            fullMethodName = SERVICE_NAME + '/' + "refund",
+            fullMethodName = SERVICE_NAME + '/' + "Refund",
             requestType = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotificationRequest.class,
             responseType = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotificationRefundResponse.class,
             methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
@@ -65,13 +65,13 @@ public final class WechatPayNotificationGrpc {
                     WechatPayNotificationGrpc.getRefundMethod = getRefundMethod =
                             io.grpc.MethodDescriptor.<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotificationRequest, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotificationRefundResponse>newBuilder()
                                     .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                                    .setFullMethodName(generateFullMethodName(SERVICE_NAME, "refund"))
+                                    .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Refund"))
                                     .setSampledToLocalTracing(true)
                                     .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                             com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotificationRequest.getDefaultInstance()))
                                     .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                             com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotificationRefundResponse.getDefaultInstance()))
-                                    .setSchemaDescriptor(new WechatPayNotificationMethodDescriptorSupplier("refund"))
+                                    .setSchemaDescriptor(new WechatPayNotificationMethodDescriptorSupplier("Refund"))
                                     .build();
                 }
             }

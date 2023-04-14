@@ -6,27 +6,26 @@ import org.hibernate.validator.constraints.Length;
 import java.io.Serializable;
 import java.util.Date;
 
-@Entity(name = "wechat-pay.order")
-@Table(name = "wechat_pay_orders")
-public class Order implements Serializable {
+@Entity(name = "wechat-pay.refund")
+@Table(name = "wechat_pay_refunds")
+public class Refund implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Integer id;
-    @Length(min = 1, max = 255)
-    @Column(name = "app_id", nullable = false)
-    private String appId;
-    @Length(min = 1, max = 255)
-    @Column(name = "payer_openId", nullable = false)
-    private String payerOpenId;
     @Length(min = 6, max = 32)
     @Column(name = "out_trade_no", nullable = false)
     private String outTradeNo;
-    @Length(min = 1, max = 127)
+    @Length(min = 6, max = 64)
+    @Column(name = "out_refund_no", nullable = false)
+    private String outRefundNo;
+    @Length(min = 1, max = 80)
     @Column(nullable = false)
-    private String description;
+    private String reason;
     @Column(name = "amount_total", nullable = false)
     private int amountTotal;
+    @Column(name = "amount_refund", nullable = false)
+    private int amountRefund;
     @Column(name = "amount_currency", nullable = false)
     private int amountCurrency;
     @Column(name = "created_at", nullable = false)
@@ -41,22 +40,6 @@ public class Order implements Serializable {
         this.id = id;
     }
 
-    public String getAppId() {
-        return appId;
-    }
-
-    public void setAppId(String appId) {
-        this.appId = appId;
-    }
-
-    public String getPayerOpenId() {
-        return payerOpenId;
-    }
-
-    public void setPayerOpenId(String payerOpenId) {
-        this.payerOpenId = payerOpenId;
-    }
-
     public String getOutTradeNo() {
         return outTradeNo;
     }
@@ -65,12 +48,20 @@ public class Order implements Serializable {
         this.outTradeNo = outTradeNo;
     }
 
-    public String getDescription() {
-        return description;
+    public String getOutRefundNo() {
+        return outRefundNo;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setOutRefundNo(String outRefundNo) {
+        this.outRefundNo = outRefundNo;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
     public int getAmountTotal() {
@@ -79,6 +70,14 @@ public class Order implements Serializable {
 
     public void setAmountTotal(int amountTotal) {
         this.amountTotal = amountTotal;
+    }
+
+    public int getAmountRefund() {
+        return amountRefund;
+    }
+
+    public void setAmountRefund(int amountRefund) {
+        this.amountRefund = amountRefund;
     }
 
     public int getAmountCurrency() {

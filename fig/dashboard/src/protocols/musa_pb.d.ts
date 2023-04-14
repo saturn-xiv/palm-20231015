@@ -9,6 +9,8 @@ export class WechatPayPrepayRequest extends jspb.Message {
 
   getPayerOpenId(): string;
   setPayerOpenId(value: string): WechatPayPrepayRequest;
+  hasPayerOpenId(): boolean;
+  clearPayerOpenId(): WechatPayPrepayRequest;
 
   getAmount(): WechatPayPrepayRequest.Amount | undefined;
   setAmount(value?: WechatPayPrepayRequest.Amount): WechatPayPrepayRequest;
@@ -32,7 +34,7 @@ export class WechatPayPrepayRequest extends jspb.Message {
 export namespace WechatPayPrepayRequest {
   export type AsObject = {
     appId: string,
-    payerOpenId: string,
+    payerOpenId?: string,
     amount?: WechatPayPrepayRequest.Amount.AsObject,
     description: string,
     notifyUrl: string,
@@ -42,8 +44,8 @@ export namespace WechatPayPrepayRequest {
     getTotal(): number;
     setTotal(value: number): Amount;
 
-    getCurrenty(): WechatPayPrepayRequest.Amount.Currency;
-    setCurrenty(value: WechatPayPrepayRequest.Amount.Currency): Amount;
+    getCurrency(): WechatPayCurrency;
+    setCurrency(value: WechatPayCurrency): Amount;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Amount.AsObject;
@@ -56,14 +58,15 @@ export namespace WechatPayPrepayRequest {
   export namespace Amount {
     export type AsObject = {
       total: number,
-      currenty: WechatPayPrepayRequest.Amount.Currency,
-    }
-
-    export enum Currency { 
-      CNY = 0,
+      currency: WechatPayCurrency,
     }
   }
 
+
+  export enum PayerOpenIdCase { 
+    _PAYER_OPEN_ID_NOT_SET = 0,
+    PAYER_OPEN_ID = 2,
+  }
 }
 
 export class WechatPayCloseOrderRequest extends jspb.Message {
@@ -370,6 +373,100 @@ export namespace WechatPayFundFlowBillRequest {
   }
 }
 
+export class WechatPayCreateRefundRequest extends jspb.Message {
+  getOutTradeNo(): string;
+  setOutTradeNo(value: string): WechatPayCreateRefundRequest;
+
+  getReason(): string;
+  setReason(value: string): WechatPayCreateRefundRequest;
+
+  getAmount(): WechatPayCreateRefundRequest.Amount | undefined;
+  setAmount(value?: WechatPayCreateRefundRequest.Amount): WechatPayCreateRefundRequest;
+  hasAmount(): boolean;
+  clearAmount(): WechatPayCreateRefundRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatPayCreateRefundRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatPayCreateRefundRequest): WechatPayCreateRefundRequest.AsObject;
+  static serializeBinaryToWriter(message: WechatPayCreateRefundRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatPayCreateRefundRequest;
+  static deserializeBinaryFromReader(message: WechatPayCreateRefundRequest, reader: jspb.BinaryReader): WechatPayCreateRefundRequest;
+}
+
+export namespace WechatPayCreateRefundRequest {
+  export type AsObject = {
+    outTradeNo: string,
+    reason: string,
+    amount?: WechatPayCreateRefundRequest.Amount.AsObject,
+  }
+
+  export class Amount extends jspb.Message {
+    getTotal(): number;
+    setTotal(value: number): Amount;
+
+    getRefund(): number;
+    setRefund(value: number): Amount;
+
+    getCurrency(): WechatPayCurrency;
+    setCurrency(value: WechatPayCurrency): Amount;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Amount.AsObject;
+    static toObject(includeInstance: boolean, msg: Amount): Amount.AsObject;
+    static serializeBinaryToWriter(message: Amount, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Amount;
+    static deserializeBinaryFromReader(message: Amount, reader: jspb.BinaryReader): Amount;
+  }
+
+  export namespace Amount {
+    export type AsObject = {
+      total: number,
+      refund: number,
+      currency: WechatPayCurrency,
+    }
+  }
+
+}
+
+export class WechatPayQueryRefundResponse extends jspb.Message {
+  getOutRefundNo(): string;
+  setOutRefundNo(value: string): WechatPayQueryRefundResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatPayQueryRefundResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatPayQueryRefundResponse): WechatPayQueryRefundResponse.AsObject;
+  static serializeBinaryToWriter(message: WechatPayQueryRefundResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatPayQueryRefundResponse;
+  static deserializeBinaryFromReader(message: WechatPayQueryRefundResponse, reader: jspb.BinaryReader): WechatPayQueryRefundResponse;
+}
+
+export namespace WechatPayQueryRefundResponse {
+  export type AsObject = {
+    outRefundNo: string,
+  }
+}
+
+export class WechatPayRefundResponse extends jspb.Message {
+  getOutRefundNo(): string;
+  setOutRefundNo(value: string): WechatPayRefundResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatPayRefundResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatPayRefundResponse): WechatPayRefundResponse.AsObject;
+  static serializeBinaryToWriter(message: WechatPayRefundResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatPayRefundResponse;
+  static deserializeBinaryFromReader(message: WechatPayRefundResponse, reader: jspb.BinaryReader): WechatPayRefundResponse;
+}
+
+export namespace WechatPayRefundResponse {
+  export type AsObject = {
+    outRefundNo: string,
+  }
+}
+
+export enum WechatPayCurrency { 
+  CNY = 0,
+}
 export enum WechatPayTarType { 
   GZIP = 0,
 }

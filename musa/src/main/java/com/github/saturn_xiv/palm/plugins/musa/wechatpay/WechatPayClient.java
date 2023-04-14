@@ -2,6 +2,7 @@ package com.github.saturn_xiv.palm.plugins.musa.wechatpay;
 
 import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.BillDownloadResponse;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.OutNoType;
 import com.wechat.pay.java.core.RSAAutoCertificateConfig;
 import com.wechat.pay.java.core.RSAConfig;
 import com.wechat.pay.java.core.http.*;
@@ -9,6 +10,7 @@ import com.wechat.pay.java.core.notification.NotificationParser;
 import com.wechat.pay.java.core.util.IOUtil;
 import com.wechat.pay.java.service.payments.jsapi.JsapiServiceExtension;
 import com.wechat.pay.java.service.payments.nativepay.NativePayService;
+import com.wechat.pay.java.service.refund.RefundService;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,9 +32,10 @@ import java.util.TimeZone;
 
 @Component("palm.musa.model.wechatpay")
 public class WechatPayClient {
+
     public byte[] downloadFundFlowBill(String billDate, String accountType) throws IllegalArgumentException {
         logger.info("download wechat-pay fund flow bill {} {}", billDate, accountType);
-        final var url = UriComponentsBuilder.fromUriString("https://api.mch.weixin.qq.com/v3/bill/fundflowbill")
+        final var url = UriComponentsBuilder.fromUriString(API_HOME + "/bill/fundflowbill")
                 .queryParam("bill_date", billDate)
                 .queryParam("account_type", accountType)
                 .build().toUriString();
@@ -41,7 +44,7 @@ public class WechatPayClient {
 
     public byte[] downloadTradeBill(String billDate, String billType) throws IllegalArgumentException {
         logger.info("download wechat-pay trade bill {} {}", billDate, billType);
-        final var url = UriComponentsBuilder.fromUriString("https://api.mch.weixin.qq.com/v3/bill/tradebill")
+        final var url = UriComponentsBuilder.fromUriString(API_HOME + "/bill/tradebill")
                 .queryParam("bill_date", billDate)
                 .queryParam("bill_type", billType)
                 .build().toUriString();
@@ -75,7 +78,7 @@ public class WechatPayClient {
         }
     }
 
-    public static String currency(WechatPayPrepayRequest.Amount.Currency currency) {
+    public static String currency(WechatPayCurrency currency) {
         return switch (currency) {
             case CNY -> "CNY";
             case UNRECOGNIZED -> null;
@@ -151,8 +154,13 @@ public class WechatPayClient {
     }
 
 
-    public static String outTradeNo() {
-        return dateFormat.format(new Date()) + RandomStringUtils.randomAlphabetic(15).toUpperCase();
+    public static String outNo(OutNoType type) {
+        final var id = dateFormat.format(new Date()) + RandomStringUtils.randomAlphabetic(14).toUpperCase();
+        return switch (type) {
+            case TRADE -> "T" + id;
+            case REFUND -> "R" + id;
+        };
+
     }
 
     public JsapiServiceExtension jsapiService() {
@@ -165,6 +173,10 @@ public class WechatPayClient {
 
     public NotificationParser notificationParser() {
         return new NotificationParser(config);
+    }
+
+    public RefundService refundService() {
+        return new RefundService.Builder().config(config).build();
     }
 
     @PostConstruct
@@ -203,6 +215,7 @@ public class WechatPayClient {
     final static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 
     private final static Logger logger = LoggerFactory.getLogger(WechatPayClient.class);
+    private final static String API_HOME = "https://api.mch.weixin.qq.com/v3";
 
     public String getMerchantId() {
         return merchantId;

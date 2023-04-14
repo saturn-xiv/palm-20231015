@@ -23,14 +23,21 @@ public interface WechatPayPrepayRequestOrBuilder extends
     getAppIdBytes();
 
     /**
-     * <code>string payer_open_id = 2;</code>
+     * <code>optional string payer_open_id = 2;</code>
+     *
+     * @return Whether the payerOpenId field is set.
+     */
+    boolean hasPayerOpenId();
+
+    /**
+     * <code>optional string payer_open_id = 2;</code>
      *
      * @return The payerOpenId.
      */
     java.lang.String getPayerOpenId();
 
     /**
-     * <code>string payer_open_id = 2;</code>
+     * <code>optional string payer_open_id = 2;</code>
      *
      * @return The bytes for payerOpenId.
      */

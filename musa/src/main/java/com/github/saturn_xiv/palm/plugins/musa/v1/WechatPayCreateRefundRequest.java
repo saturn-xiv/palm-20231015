@@ -4,31 +4,29 @@
 package com.github.saturn_xiv.palm.plugins.musa.v1;
 
 /**
- * Protobuf type {@code palm.musa.v1.WechatPayPrepayRequest}
+ * Protobuf type {@code palm.musa.v1.WechatPayCreateRefundRequest}
  */
-public final class WechatPayPrepayRequest extends
+public final class WechatPayCreateRefundRequest extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:palm.musa.v1.WechatPayPrepayRequest)
-        WechatPayPrepayRequestOrBuilder {
+        // @@protoc_insertion_point(message_implements:palm.musa.v1.WechatPayCreateRefundRequest)
+        WechatPayCreateRefundRequestOrBuilder {
     private static final long serialVersionUID = 0L;
 
-    // Use WechatPayPrepayRequest.newBuilder() to construct.
-    private WechatPayPrepayRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use WechatPayCreateRefundRequest.newBuilder() to construct.
+    private WechatPayCreateRefundRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
     }
 
-    private WechatPayPrepayRequest() {
-        appId_ = "";
-        payerOpenId_ = "";
-        description_ = "";
-        notifyUrl_ = "";
+    private WechatPayCreateRefundRequest() {
+        outTradeNo_ = "";
+        reason_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
             UnusedPrivateParameter unused) {
-        return new WechatPayPrepayRequest();
+        return new WechatPayCreateRefundRequest();
     }
 
     @java.lang.Override
@@ -39,19 +37,19 @@ public final class WechatPayPrepayRequest extends
 
     public static final com.google.protobuf.Descriptors.Descriptor
     getDescriptor() {
-        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayPrepayRequest_descriptor;
+        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateRefundRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
     internalGetFieldAccessorTable() {
-        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayPrepayRequest_fieldAccessorTable
+        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateRefundRequest_fieldAccessorTable
                 .ensureFieldAccessorsInitialized(
-                        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Builder.class);
+                        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Builder.class);
     }
 
     public interface AmountOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayPrepayRequest.Amount)
+            // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayCreateRefundRequest.Amount)
             com.google.protobuf.MessageOrBuilder {
 
         /**
@@ -62,14 +60,21 @@ public final class WechatPayPrepayRequest extends
         int getTotal();
 
         /**
-         * <code>.palm.musa.v1.WechatPayCurrency currency = 2;</code>
+         * <code>int32 refund = 2;</code>
+         *
+         * @return The refund.
+         */
+        int getRefund();
+
+        /**
+         * <code>.palm.musa.v1.WechatPayCurrency currency = 3;</code>
          *
          * @return The enum numeric value on the wire for currency.
          */
         int getCurrencyValue();
 
         /**
-         * <code>.palm.musa.v1.WechatPayCurrency currency = 2;</code>
+         * <code>.palm.musa.v1.WechatPayCurrency currency = 3;</code>
          *
          * @return The currency.
          */
@@ -77,11 +82,11 @@ public final class WechatPayPrepayRequest extends
     }
 
     /**
-     * Protobuf type {@code palm.musa.v1.WechatPayPrepayRequest.Amount}
+     * Protobuf type {@code palm.musa.v1.WechatPayCreateRefundRequest.Amount}
      */
     public static final class Amount extends
             com.google.protobuf.GeneratedMessageV3 implements
-            // @@protoc_insertion_point(message_implements:palm.musa.v1.WechatPayPrepayRequest.Amount)
+            // @@protoc_insertion_point(message_implements:palm.musa.v1.WechatPayCreateRefundRequest.Amount)
             AmountOrBuilder {
         private static final long serialVersionUID = 0L;
 
@@ -109,15 +114,15 @@ public final class WechatPayPrepayRequest extends
 
         public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-            return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayPrepayRequest_Amount_descriptor;
+            return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateRefundRequest_Amount_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayPrepayRequest_Amount_fieldAccessorTable
+            return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateRefundRequest_Amount_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(
-                            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.Builder.class);
+                            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.Builder.class);
         }
 
         public static final int TOTAL_FIELD_NUMBER = 1;
@@ -133,11 +138,24 @@ public final class WechatPayPrepayRequest extends
             return total_;
         }
 
-        public static final int CURRENCY_FIELD_NUMBER = 2;
+        public static final int REFUND_FIELD_NUMBER = 2;
+        private int refund_ = 0;
+
+        /**
+         * <code>int32 refund = 2;</code>
+         *
+         * @return The refund.
+         */
+        @java.lang.Override
+        public int getRefund() {
+            return refund_;
+        }
+
+        public static final int CURRENCY_FIELD_NUMBER = 3;
         private int currency_ = 0;
 
         /**
-         * <code>.palm.musa.v1.WechatPayCurrency currency = 2;</code>
+         * <code>.palm.musa.v1.WechatPayCurrency currency = 3;</code>
          *
          * @return The enum numeric value on the wire for currency.
          */
@@ -147,7 +165,7 @@ public final class WechatPayPrepayRequest extends
         }
 
         /**
-         * <code>.palm.musa.v1.WechatPayCurrency currency = 2;</code>
+         * <code>.palm.musa.v1.WechatPayCurrency currency = 3;</code>
          *
          * @return The currency.
          */
@@ -175,8 +193,11 @@ public final class WechatPayPrepayRequest extends
             if (total_ != 0) {
                 output.writeInt32(1, total_);
             }
+            if (refund_ != 0) {
+                output.writeInt32(2, refund_);
+            }
             if (currency_ != com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCurrency.CNY.getNumber()) {
-                output.writeEnum(2, currency_);
+                output.writeEnum(3, currency_);
             }
             getUnknownFields().writeTo(output);
         }
@@ -191,9 +212,13 @@ public final class WechatPayPrepayRequest extends
                 size += com.google.protobuf.CodedOutputStream
                         .computeInt32Size(1, total_);
             }
+            if (refund_ != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(2, refund_);
+            }
             if (currency_ != com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCurrency.CNY.getNumber()) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeEnumSize(2, currency_);
+                        .computeEnumSize(3, currency_);
             }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
@@ -205,13 +230,15 @@ public final class WechatPayPrepayRequest extends
             if (obj == this) {
                 return true;
             }
-            if (!(obj instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount)) {
+            if (!(obj instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount)) {
                 return super.equals(obj);
             }
-            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount other = (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount) obj;
+            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount other = (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount) obj;
 
             if (getTotal()
                     != other.getTotal()) return false;
+            if (getRefund()
+                    != other.getRefund()) return false;
             if (currency_ != other.currency_) return false;
             if (!getUnknownFields().equals(other.getUnknownFields())) return false;
             return true;
@@ -226,6 +253,8 @@ public final class WechatPayPrepayRequest extends
             hash = (19 * hash) + getDescriptor().hashCode();
             hash = (37 * hash) + TOTAL_FIELD_NUMBER;
             hash = (53 * hash) + getTotal();
+            hash = (37 * hash) + REFUND_FIELD_NUMBER;
+            hash = (53 * hash) + getRefund();
             hash = (37 * hash) + CURRENCY_FIELD_NUMBER;
             hash = (53 * hash) + currency_;
             hash = (29 * hash) + getUnknownFields().hashCode();
@@ -233,51 +262,51 @@ public final class WechatPayPrepayRequest extends
             return hash;
         }
 
-        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount parseFrom(
+        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount parseFrom(
                 java.nio.ByteBuffer data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount parseFrom(
+        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount parseFrom(
                 java.nio.ByteBuffer data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
-        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount parseFrom(
+        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount parseFrom(
                 com.google.protobuf.ByteString data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount parseFrom(
+        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount parseFrom(
                 com.google.protobuf.ByteString data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
-        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount parseFrom(byte[] data)
+        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount parseFrom(byte[] data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount parseFrom(
+        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount parseFrom(
                 byte[] data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
-        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount parseFrom(java.io.InputStream input)
+        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount parseFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
 
-        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount parseFrom(
+        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount parseFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -285,13 +314,13 @@ public final class WechatPayPrepayRequest extends
                     .parseWithIOException(PARSER, input, extensionRegistry);
         }
 
-        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount parseDelimitedFrom(java.io.InputStream input)
+        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount parseDelimitedFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseDelimitedWithIOException(PARSER, input);
         }
 
-        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount parseDelimitedFrom(
+        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount parseDelimitedFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -299,14 +328,14 @@ public final class WechatPayPrepayRequest extends
                     .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
 
-        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount parseFrom(
+        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount parseFrom(
                 com.google.protobuf.CodedInputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
 
-        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount parseFrom(
+        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount parseFrom(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -323,7 +352,7 @@ public final class WechatPayPrepayRequest extends
             return DEFAULT_INSTANCE.toBuilder();
         }
 
-        public static Builder newBuilder(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount prototype) {
+        public static Builder newBuilder(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount prototype) {
             return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
 
@@ -341,26 +370,26 @@ public final class WechatPayPrepayRequest extends
         }
 
         /**
-         * Protobuf type {@code palm.musa.v1.WechatPayPrepayRequest.Amount}
+         * Protobuf type {@code palm.musa.v1.WechatPayCreateRefundRequest.Amount}
          */
         public static final class Builder extends
                 com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:palm.musa.v1.WechatPayPrepayRequest.Amount)
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.AmountOrBuilder {
+                // @@protoc_insertion_point(builder_implements:palm.musa.v1.WechatPayCreateRefundRequest.Amount)
+                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.AmountOrBuilder {
             public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-                return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayPrepayRequest_Amount_descriptor;
+                return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateRefundRequest_Amount_descriptor;
             }
 
             @java.lang.Override
             protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-                return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayPrepayRequest_Amount_fieldAccessorTable
+                return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateRefundRequest_Amount_fieldAccessorTable
                         .ensureFieldAccessorsInitialized(
-                                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.Builder.class);
+                                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.Builder.class);
             }
 
-            // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.newBuilder()
+            // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.newBuilder()
             private Builder() {
 
             }
@@ -376,6 +405,7 @@ public final class WechatPayPrepayRequest extends
                 super.clear();
                 bitField0_ = 0;
                 total_ = 0;
+                refund_ = 0;
                 currency_ = 0;
                 return this;
             }
@@ -383,17 +413,17 @@ public final class WechatPayPrepayRequest extends
             @java.lang.Override
             public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-                return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayPrepayRequest_Amount_descriptor;
+                return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateRefundRequest_Amount_descriptor;
             }
 
             @java.lang.Override
-            public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount getDefaultInstanceForType() {
-                return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.getDefaultInstance();
+            public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount getDefaultInstanceForType() {
+                return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.getDefaultInstance();
             }
 
             @java.lang.Override
-            public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount build() {
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount result = buildPartial();
+            public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount build() {
+                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount result = buildPartial();
                 if (!result.isInitialized()) {
                     throw newUninitializedMessageException(result);
                 }
@@ -401,8 +431,8 @@ public final class WechatPayPrepayRequest extends
             }
 
             @java.lang.Override
-            public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount buildPartial() {
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount result = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount(this);
+            public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount buildPartial() {
+                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount result = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount(this);
                 if (bitField0_ != 0) {
                     buildPartial0(result);
                 }
@@ -410,12 +440,15 @@ public final class WechatPayPrepayRequest extends
                 return result;
             }
 
-            private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount result) {
+            private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount result) {
                 int from_bitField0_ = bitField0_;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
                     result.total_ = total_;
                 }
                 if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.refund_ = refund_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
                     result.currency_ = currency_;
                 }
             }
@@ -460,19 +493,22 @@ public final class WechatPayPrepayRequest extends
 
             @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.Message other) {
-                if (other instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount) {
-                    return mergeFrom((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount) other);
+                if (other instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount) {
+                    return mergeFrom((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount) other);
                 } else {
                     super.mergeFrom(other);
                     return this;
                 }
             }
 
-            public Builder mergeFrom(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount other) {
-                if (other == com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.getDefaultInstance())
+            public Builder mergeFrom(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount other) {
+                if (other == com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.getDefaultInstance())
                     return this;
                 if (other.getTotal() != 0) {
                     setTotal(other.getTotal());
+                }
+                if (other.getRefund() != 0) {
+                    setRefund(other.getRefund());
                 }
                 if (other.currency_ != 0) {
                     setCurrencyValue(other.getCurrencyValue());
@@ -509,10 +545,15 @@ public final class WechatPayPrepayRequest extends
                                 break;
                             } // case 8
                             case 16: {
-                                currency_ = input.readEnum();
+                                refund_ = input.readInt32();
                                 bitField0_ |= 0x00000002;
                                 break;
                             } // case 16
+                            case 24: {
+                                currency_ = input.readEnum();
+                                bitField0_ |= 0x00000004;
+                                break;
+                            } // case 24
                             default: {
                                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                     done = true; // was an endgroup tag
@@ -569,10 +610,48 @@ public final class WechatPayPrepayRequest extends
                 return this;
             }
 
+            private int refund_;
+
+            /**
+             * <code>int32 refund = 2;</code>
+             *
+             * @return The refund.
+             */
+            @java.lang.Override
+            public int getRefund() {
+                return refund_;
+            }
+
+            /**
+             * <code>int32 refund = 2;</code>
+             *
+             * @param value The refund to set.
+             * @return This builder for chaining.
+             */
+            public Builder setRefund(int value) {
+
+                refund_ = value;
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 refund = 2;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearRefund() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                refund_ = 0;
+                onChanged();
+                return this;
+            }
+
             private int currency_ = 0;
 
             /**
-             * <code>.palm.musa.v1.WechatPayCurrency currency = 2;</code>
+             * <code>.palm.musa.v1.WechatPayCurrency currency = 3;</code>
              *
              * @return The enum numeric value on the wire for currency.
              */
@@ -582,20 +661,20 @@ public final class WechatPayPrepayRequest extends
             }
 
             /**
-             * <code>.palm.musa.v1.WechatPayCurrency currency = 2;</code>
+             * <code>.palm.musa.v1.WechatPayCurrency currency = 3;</code>
              *
              * @param value The enum numeric value on the wire for currency to set.
              * @return This builder for chaining.
              */
             public Builder setCurrencyValue(int value) {
                 currency_ = value;
-                bitField0_ |= 0x00000002;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
 
             /**
-             * <code>.palm.musa.v1.WechatPayCurrency currency = 2;</code>
+             * <code>.palm.musa.v1.WechatPayCurrency currency = 3;</code>
              *
              * @return The currency.
              */
@@ -606,7 +685,7 @@ public final class WechatPayPrepayRequest extends
             }
 
             /**
-             * <code>.palm.musa.v1.WechatPayCurrency currency = 2;</code>
+             * <code>.palm.musa.v1.WechatPayCurrency currency = 3;</code>
              *
              * @param value The currency to set.
              * @return This builder for chaining.
@@ -615,19 +694,19 @@ public final class WechatPayPrepayRequest extends
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000002;
+                bitField0_ |= 0x00000004;
                 currency_ = value.getNumber();
                 onChanged();
                 return this;
             }
 
             /**
-             * <code>.palm.musa.v1.WechatPayCurrency currency = 2;</code>
+             * <code>.palm.musa.v1.WechatPayCurrency currency = 3;</code>
              *
              * @return This builder for chaining.
              */
             public Builder clearCurrency() {
-                bitField0_ = (bitField0_ & ~0x00000002);
+                bitField0_ = (bitField0_ & ~0x00000004);
                 currency_ = 0;
                 onChanged();
                 return this;
@@ -646,17 +725,17 @@ public final class WechatPayPrepayRequest extends
             }
 
 
-            // @@protoc_insertion_point(builder_scope:palm.musa.v1.WechatPayPrepayRequest.Amount)
+            // @@protoc_insertion_point(builder_scope:palm.musa.v1.WechatPayCreateRefundRequest.Amount)
         }
 
-        // @@protoc_insertion_point(class_scope:palm.musa.v1.WechatPayPrepayRequest.Amount)
-        private static final com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount DEFAULT_INSTANCE;
+        // @@protoc_insertion_point(class_scope:palm.musa.v1.WechatPayCreateRefundRequest.Amount)
+        private static final com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount DEFAULT_INSTANCE;
 
         static {
-            DEFAULT_INSTANCE = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount();
+            DEFAULT_INSTANCE = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount();
         }
 
-        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount getDefaultInstance() {
+        public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount getDefaultInstance() {
             return DEFAULT_INSTANCE;
         }
 
@@ -692,103 +771,92 @@ public final class WechatPayPrepayRequest extends
         }
 
         @java.lang.Override
-        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount getDefaultInstanceForType() {
+        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount getDefaultInstanceForType() {
             return DEFAULT_INSTANCE;
         }
 
     }
 
-    private int bitField0_;
-    public static final int APP_ID_FIELD_NUMBER = 1;
+    public static final int OUT_TRADE_NO_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
-    private volatile java.lang.Object appId_ = "";
+    private volatile java.lang.Object outTradeNo_ = "";
 
     /**
-     * <code>string app_id = 1;</code>
+     * <code>string out_trade_no = 1;</code>
      *
-     * @return The appId.
+     * @return The outTradeNo.
      */
     @java.lang.Override
-    public java.lang.String getAppId() {
-        java.lang.Object ref = appId_;
+    public java.lang.String getOutTradeNo() {
+        java.lang.Object ref = outTradeNo_;
         if (ref instanceof java.lang.String) {
             return (java.lang.String) ref;
         } else {
             com.google.protobuf.ByteString bs =
                     (com.google.protobuf.ByteString) ref;
             java.lang.String s = bs.toStringUtf8();
-            appId_ = s;
+            outTradeNo_ = s;
             return s;
         }
     }
 
     /**
-     * <code>string app_id = 1;</code>
+     * <code>string out_trade_no = 1;</code>
      *
-     * @return The bytes for appId.
+     * @return The bytes for outTradeNo.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-    getAppIdBytes() {
-        java.lang.Object ref = appId_;
+    getOutTradeNoBytes() {
+        java.lang.Object ref = outTradeNo_;
         if (ref instanceof java.lang.String) {
             com.google.protobuf.ByteString b =
                     com.google.protobuf.ByteString.copyFromUtf8(
                             (java.lang.String) ref);
-            appId_ = b;
+            outTradeNo_ = b;
             return b;
         } else {
             return (com.google.protobuf.ByteString) ref;
         }
     }
 
-    public static final int PAYER_OPEN_ID_FIELD_NUMBER = 2;
+    public static final int REASON_FIELD_NUMBER = 2;
     @SuppressWarnings("serial")
-    private volatile java.lang.Object payerOpenId_ = "";
+    private volatile java.lang.Object reason_ = "";
 
     /**
-     * <code>optional string payer_open_id = 2;</code>
+     * <code>string reason = 2;</code>
      *
-     * @return Whether the payerOpenId field is set.
+     * @return The reason.
      */
     @java.lang.Override
-    public boolean hasPayerOpenId() {
-        return ((bitField0_ & 0x00000001) != 0);
-    }
-
-    /**
-     * <code>optional string payer_open_id = 2;</code>
-     *
-     * @return The payerOpenId.
-     */
-    @java.lang.Override
-    public java.lang.String getPayerOpenId() {
-        java.lang.Object ref = payerOpenId_;
+    public java.lang.String getReason() {
+        java.lang.Object ref = reason_;
         if (ref instanceof java.lang.String) {
             return (java.lang.String) ref;
         } else {
             com.google.protobuf.ByteString bs =
                     (com.google.protobuf.ByteString) ref;
             java.lang.String s = bs.toStringUtf8();
-            payerOpenId_ = s;
+            reason_ = s;
             return s;
         }
     }
 
     /**
-     * <code>optional string payer_open_id = 2;</code>
+     * <code>string reason = 2;</code>
      *
-     * @return The bytes for payerOpenId.
+     * @return The bytes for reason.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-    getPayerOpenIdBytes() {
-        java.lang.Object ref = payerOpenId_;
+    getReasonBytes() {
+        java.lang.Object ref = reason_;
         if (ref instanceof java.lang.String) {
             com.google.protobuf.ByteString b =
                     com.google.protobuf.ByteString.copyFromUtf8(
                             (java.lang.String) ref);
-            payerOpenId_ = b;
+            reason_ = b;
             return b;
         } else {
             return (com.google.protobuf.ByteString) ref;
@@ -796,10 +864,10 @@ public final class WechatPayPrepayRequest extends
     }
 
     public static final int AMOUNT_FIELD_NUMBER = 3;
-    private com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount amount_;
+    private com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount amount_;
 
     /**
-     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+     * <code>.palm.musa.v1.WechatPayCreateRefundRequest.Amount amount = 3;</code>
      *
      * @return Whether the amount field is set.
      */
@@ -809,107 +877,21 @@ public final class WechatPayPrepayRequest extends
     }
 
     /**
-     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+     * <code>.palm.musa.v1.WechatPayCreateRefundRequest.Amount amount = 3;</code>
      *
      * @return The amount.
      */
     @java.lang.Override
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount getAmount() {
-        return amount_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.getDefaultInstance() : amount_;
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount getAmount() {
+        return amount_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.getDefaultInstance() : amount_;
     }
 
     /**
-     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+     * <code>.palm.musa.v1.WechatPayCreateRefundRequest.Amount amount = 3;</code>
      */
     @java.lang.Override
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.AmountOrBuilder getAmountOrBuilder() {
-        return amount_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.getDefaultInstance() : amount_;
-    }
-
-    public static final int DESCRIPTION_FIELD_NUMBER = 9;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object description_ = "";
-
-    /**
-     * <code>string description = 9;</code>
-     *
-     * @return The description.
-     */
-    @java.lang.Override
-    public java.lang.String getDescription() {
-        java.lang.Object ref = description_;
-        if (ref instanceof java.lang.String) {
-            return (java.lang.String) ref;
-        } else {
-            com.google.protobuf.ByteString bs =
-                    (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            description_ = s;
-            return s;
-        }
-    }
-
-    /**
-     * <code>string description = 9;</code>
-     *
-     * @return The bytes for description.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-    getDescriptionBytes() {
-        java.lang.Object ref = description_;
-        if (ref instanceof java.lang.String) {
-            com.google.protobuf.ByteString b =
-                    com.google.protobuf.ByteString.copyFromUtf8(
-                            (java.lang.String) ref);
-            description_ = b;
-            return b;
-        } else {
-            return (com.google.protobuf.ByteString) ref;
-        }
-    }
-
-    public static final int NOTIFY_URL_FIELD_NUMBER = 11;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object notifyUrl_ = "";
-
-    /**
-     * <code>string notify_url = 11;</code>
-     *
-     * @return The notifyUrl.
-     */
-    @java.lang.Override
-    public java.lang.String getNotifyUrl() {
-        java.lang.Object ref = notifyUrl_;
-        if (ref instanceof java.lang.String) {
-            return (java.lang.String) ref;
-        } else {
-            com.google.protobuf.ByteString bs =
-                    (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            notifyUrl_ = s;
-            return s;
-        }
-    }
-
-    /**
-     * <code>string notify_url = 11;</code>
-     *
-     * @return The bytes for notifyUrl.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-    getNotifyUrlBytes() {
-        java.lang.Object ref = notifyUrl_;
-        if (ref instanceof java.lang.String) {
-            com.google.protobuf.ByteString b =
-                    com.google.protobuf.ByteString.copyFromUtf8(
-                            (java.lang.String) ref);
-            notifyUrl_ = b;
-            return b;
-        } else {
-            return (com.google.protobuf.ByteString) ref;
-        }
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.AmountOrBuilder getAmountOrBuilder() {
+        return amount_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.getDefaultInstance() : amount_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -927,20 +909,14 @@ public final class WechatPayPrepayRequest extends
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
             throws java.io.IOException {
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(appId_)) {
-            com.google.protobuf.GeneratedMessageV3.writeString(output, 1, appId_);
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(outTradeNo_)) {
+            com.google.protobuf.GeneratedMessageV3.writeString(output, 1, outTradeNo_);
         }
-        if (((bitField0_ & 0x00000001) != 0)) {
-            com.google.protobuf.GeneratedMessageV3.writeString(output, 2, payerOpenId_);
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(reason_)) {
+            com.google.protobuf.GeneratedMessageV3.writeString(output, 2, reason_);
         }
         if (amount_ != null) {
             output.writeMessage(3, getAmount());
-        }
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
-            com.google.protobuf.GeneratedMessageV3.writeString(output, 9, description_);
-        }
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(notifyUrl_)) {
-            com.google.protobuf.GeneratedMessageV3.writeString(output, 11, notifyUrl_);
         }
         getUnknownFields().writeTo(output);
     }
@@ -951,21 +927,15 @@ public final class WechatPayPrepayRequest extends
         if (size != -1) return size;
 
         size = 0;
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(appId_)) {
-            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, appId_);
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(outTradeNo_)) {
+            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, outTradeNo_);
         }
-        if (((bitField0_ & 0x00000001) != 0)) {
-            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, payerOpenId_);
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(reason_)) {
+            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, reason_);
         }
         if (amount_ != null) {
             size += com.google.protobuf.CodedOutputStream
                     .computeMessageSize(3, getAmount());
-        }
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
-            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, description_);
-        }
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(notifyUrl_)) {
-            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, notifyUrl_);
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSize = size;
@@ -977,27 +947,20 @@ public final class WechatPayPrepayRequest extends
         if (obj == this) {
             return true;
         }
-        if (!(obj instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest)) {
+        if (!(obj instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest)) {
             return super.equals(obj);
         }
-        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest other = (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest) obj;
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest other = (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest) obj;
 
-        if (!getAppId()
-                .equals(other.getAppId())) return false;
-        if (hasPayerOpenId() != other.hasPayerOpenId()) return false;
-        if (hasPayerOpenId()) {
-            if (!getPayerOpenId()
-                    .equals(other.getPayerOpenId())) return false;
-        }
+        if (!getOutTradeNo()
+                .equals(other.getOutTradeNo())) return false;
+        if (!getReason()
+                .equals(other.getReason())) return false;
         if (hasAmount() != other.hasAmount()) return false;
         if (hasAmount()) {
             if (!getAmount()
                     .equals(other.getAmount())) return false;
         }
-        if (!getDescription()
-                .equals(other.getDescription())) return false;
-        if (!getNotifyUrl()
-                .equals(other.getNotifyUrl())) return false;
         if (!getUnknownFields().equals(other.getUnknownFields())) return false;
         return true;
     }
@@ -1009,70 +972,64 @@ public final class WechatPayPrepayRequest extends
         }
         int hash = 41;
         hash = (19 * hash) + getDescriptor().hashCode();
-        hash = (37 * hash) + APP_ID_FIELD_NUMBER;
-        hash = (53 * hash) + getAppId().hashCode();
-        if (hasPayerOpenId()) {
-            hash = (37 * hash) + PAYER_OPEN_ID_FIELD_NUMBER;
-            hash = (53 * hash) + getPayerOpenId().hashCode();
-        }
+        hash = (37 * hash) + OUT_TRADE_NO_FIELD_NUMBER;
+        hash = (53 * hash) + getOutTradeNo().hashCode();
+        hash = (37 * hash) + REASON_FIELD_NUMBER;
+        hash = (53 * hash) + getReason().hashCode();
         if (hasAmount()) {
             hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
             hash = (53 * hash) + getAmount().hashCode();
         }
-        hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
-        hash = (53 * hash) + getDescription().hashCode();
-        hash = (37 * hash) + NOTIFY_URL_FIELD_NUMBER;
-        hash = (53 * hash) + getNotifyUrl().hashCode();
         hash = (29 * hash) + getUnknownFields().hashCode();
         memoizedHashCode = hash;
         return hash;
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest parseFrom(
             java.nio.ByteBuffer data)
             throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest parseFrom(
             java.nio.ByteBuffer data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest parseFrom(
             com.google.protobuf.ByteString data)
             throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest parseFrom(
             com.google.protobuf.ByteString data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest parseFrom(byte[] data)
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest parseFrom(byte[] data)
             throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest parseFrom(
             byte[] data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest parseFrom(java.io.InputStream input)
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest parseFrom(java.io.InputStream input)
             throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
                 .parseWithIOException(PARSER, input);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest parseFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
@@ -1080,13 +1037,13 @@ public final class WechatPayPrepayRequest extends
                 .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest parseDelimitedFrom(java.io.InputStream input)
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest parseDelimitedFrom(java.io.InputStream input)
             throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
                 .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest parseDelimitedFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest parseDelimitedFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
@@ -1094,14 +1051,14 @@ public final class WechatPayPrepayRequest extends
                 .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest parseFrom(
             com.google.protobuf.CodedInputStream input)
             throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
                 .parseWithIOException(PARSER, input);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest parseFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
@@ -1118,7 +1075,7 @@ public final class WechatPayPrepayRequest extends
         return DEFAULT_INSTANCE.toBuilder();
     }
 
-    public static Builder newBuilder(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest prototype) {
+    public static Builder newBuilder(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
@@ -1136,26 +1093,26 @@ public final class WechatPayPrepayRequest extends
     }
 
     /**
-     * Protobuf type {@code palm.musa.v1.WechatPayPrepayRequest}
+     * Protobuf type {@code palm.musa.v1.WechatPayCreateRefundRequest}
      */
     public static final class Builder extends
             com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-            // @@protoc_insertion_point(builder_implements:palm.musa.v1.WechatPayPrepayRequest)
-            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequestOrBuilder {
+            // @@protoc_insertion_point(builder_implements:palm.musa.v1.WechatPayCreateRefundRequest)
+            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequestOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-            return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayPrepayRequest_descriptor;
+            return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateRefundRequest_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayPrepayRequest_fieldAccessorTable
+            return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateRefundRequest_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(
-                            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Builder.class);
+                            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Builder.class);
         }
 
-        // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.newBuilder()
+        // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.newBuilder()
         private Builder() {
 
         }
@@ -1170,32 +1127,30 @@ public final class WechatPayPrepayRequest extends
         public Builder clear() {
             super.clear();
             bitField0_ = 0;
-            appId_ = "";
-            payerOpenId_ = "";
+            outTradeNo_ = "";
+            reason_ = "";
             amount_ = null;
             if (amountBuilder_ != null) {
                 amountBuilder_.dispose();
                 amountBuilder_ = null;
             }
-            description_ = "";
-            notifyUrl_ = "";
             return this;
         }
 
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-            return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayPrepayRequest_descriptor;
+            return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateRefundRequest_descriptor;
         }
 
         @java.lang.Override
-        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest getDefaultInstanceForType() {
-            return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.getDefaultInstance();
+        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest getDefaultInstanceForType() {
+            return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.getDefaultInstance();
         }
 
         @java.lang.Override
-        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest build() {
-            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest result = buildPartial();
+        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest build() {
+            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest result = buildPartial();
             if (!result.isInitialized()) {
                 throw newUninitializedMessageException(result);
             }
@@ -1203,8 +1158,8 @@ public final class WechatPayPrepayRequest extends
         }
 
         @java.lang.Override
-        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest buildPartial() {
-            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest result = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest(this);
+        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest buildPartial() {
+            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest result = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest(this);
             if (bitField0_ != 0) {
                 buildPartial0(result);
             }
@@ -1212,28 +1167,19 @@ public final class WechatPayPrepayRequest extends
             return result;
         }
 
-        private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest result) {
+        private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest result) {
             int from_bitField0_ = bitField0_;
             if (((from_bitField0_ & 0x00000001) != 0)) {
-                result.appId_ = appId_;
+                result.outTradeNo_ = outTradeNo_;
             }
-            int to_bitField0_ = 0;
             if (((from_bitField0_ & 0x00000002) != 0)) {
-                result.payerOpenId_ = payerOpenId_;
-                to_bitField0_ |= 0x00000001;
+                result.reason_ = reason_;
             }
             if (((from_bitField0_ & 0x00000004) != 0)) {
                 result.amount_ = amountBuilder_ == null
                         ? amount_
                         : amountBuilder_.build();
             }
-            if (((from_bitField0_ & 0x00000008) != 0)) {
-                result.description_ = description_;
-            }
-            if (((from_bitField0_ & 0x00000010) != 0)) {
-                result.notifyUrl_ = notifyUrl_;
-            }
-            result.bitField0_ |= to_bitField0_;
         }
 
         @java.lang.Override
@@ -1276,39 +1222,29 @@ public final class WechatPayPrepayRequest extends
 
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-            if (other instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest) {
-                return mergeFrom((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest) other);
+            if (other instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest) {
+                return mergeFrom((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest) other);
             } else {
                 super.mergeFrom(other);
                 return this;
             }
         }
 
-        public Builder mergeFrom(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest other) {
-            if (other == com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.getDefaultInstance())
+        public Builder mergeFrom(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest other) {
+            if (other == com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.getDefaultInstance())
                 return this;
-            if (!other.getAppId().isEmpty()) {
-                appId_ = other.appId_;
+            if (!other.getOutTradeNo().isEmpty()) {
+                outTradeNo_ = other.outTradeNo_;
                 bitField0_ |= 0x00000001;
                 onChanged();
             }
-            if (other.hasPayerOpenId()) {
-                payerOpenId_ = other.payerOpenId_;
+            if (!other.getReason().isEmpty()) {
+                reason_ = other.reason_;
                 bitField0_ |= 0x00000002;
                 onChanged();
             }
             if (other.hasAmount()) {
                 mergeAmount(other.getAmount());
-            }
-            if (!other.getDescription().isEmpty()) {
-                description_ = other.description_;
-                bitField0_ |= 0x00000008;
-                onChanged();
-            }
-            if (!other.getNotifyUrl().isEmpty()) {
-                notifyUrl_ = other.notifyUrl_;
-                bitField0_ |= 0x00000010;
-                onChanged();
             }
             this.mergeUnknownFields(other.getUnknownFields());
             onChanged();
@@ -1337,12 +1273,12 @@ public final class WechatPayPrepayRequest extends
                             done = true;
                             break;
                         case 10: {
-                            appId_ = input.readStringRequireUtf8();
+                            outTradeNo_ = input.readStringRequireUtf8();
                             bitField0_ |= 0x00000001;
                             break;
                         } // case 10
                         case 18: {
-                            payerOpenId_ = input.readStringRequireUtf8();
+                            reason_ = input.readStringRequireUtf8();
                             bitField0_ |= 0x00000002;
                             break;
                         } // case 18
@@ -1353,16 +1289,6 @@ public final class WechatPayPrepayRequest extends
                             bitField0_ |= 0x00000004;
                             break;
                         } // case 26
-                        case 74: {
-                            description_ = input.readStringRequireUtf8();
-                            bitField0_ |= 0x00000008;
-                            break;
-                        } // case 74
-                        case 90: {
-                            notifyUrl_ = input.readStringRequireUtf8();
-                            bitField0_ |= 0x00000010;
-                            break;
-                        } // case 90
                         default: {
                             if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                 done = true; // was an endgroup tag
@@ -1381,20 +1307,20 @@ public final class WechatPayPrepayRequest extends
 
         private int bitField0_;
 
-        private java.lang.Object appId_ = "";
+        private java.lang.Object outTradeNo_ = "";
 
         /**
-         * <code>string app_id = 1;</code>
+         * <code>string out_trade_no = 1;</code>
          *
-         * @return The appId.
+         * @return The outTradeNo.
          */
-        public java.lang.String getAppId() {
-            java.lang.Object ref = appId_;
+        public java.lang.String getOutTradeNo() {
+            java.lang.Object ref = outTradeNo_;
             if (!(ref instanceof java.lang.String)) {
                 com.google.protobuf.ByteString bs =
                         (com.google.protobuf.ByteString) ref;
                 java.lang.String s = bs.toStringUtf8();
-                appId_ = s;
+                outTradeNo_ = s;
                 return s;
             } else {
                 return (java.lang.String) ref;
@@ -1402,18 +1328,18 @@ public final class WechatPayPrepayRequest extends
         }
 
         /**
-         * <code>string app_id = 1;</code>
+         * <code>string out_trade_no = 1;</code>
          *
-         * @return The bytes for appId.
+         * @return The bytes for outTradeNo.
          */
         public com.google.protobuf.ByteString
-        getAppIdBytes() {
-            java.lang.Object ref = appId_;
+        getOutTradeNoBytes() {
+            java.lang.Object ref = outTradeNo_;
             if (ref instanceof String) {
                 com.google.protobuf.ByteString b =
                         com.google.protobuf.ByteString.copyFromUtf8(
                                 (java.lang.String) ref);
-                appId_ = b;
+                outTradeNo_ = b;
                 return b;
             } else {
                 return (com.google.protobuf.ByteString) ref;
@@ -1421,75 +1347,66 @@ public final class WechatPayPrepayRequest extends
         }
 
         /**
-         * <code>string app_id = 1;</code>
+         * <code>string out_trade_no = 1;</code>
          *
-         * @param value The appId to set.
+         * @param value The outTradeNo to set.
          * @return This builder for chaining.
          */
-        public Builder setAppId(
+        public Builder setOutTradeNo(
                 java.lang.String value) {
             if (value == null) {
                 throw new NullPointerException();
             }
-            appId_ = value;
+            outTradeNo_ = value;
             bitField0_ |= 0x00000001;
             onChanged();
             return this;
         }
 
         /**
-         * <code>string app_id = 1;</code>
+         * <code>string out_trade_no = 1;</code>
          *
          * @return This builder for chaining.
          */
-        public Builder clearAppId() {
-            appId_ = getDefaultInstance().getAppId();
+        public Builder clearOutTradeNo() {
+            outTradeNo_ = getDefaultInstance().getOutTradeNo();
             bitField0_ = (bitField0_ & ~0x00000001);
             onChanged();
             return this;
         }
 
         /**
-         * <code>string app_id = 1;</code>
+         * <code>string out_trade_no = 1;</code>
          *
-         * @param value The bytes for appId to set.
+         * @param value The bytes for outTradeNo to set.
          * @return This builder for chaining.
          */
-        public Builder setAppIdBytes(
+        public Builder setOutTradeNoBytes(
                 com.google.protobuf.ByteString value) {
             if (value == null) {
                 throw new NullPointerException();
             }
             checkByteStringIsUtf8(value);
-            appId_ = value;
+            outTradeNo_ = value;
             bitField0_ |= 0x00000001;
             onChanged();
             return this;
         }
 
-        private java.lang.Object payerOpenId_ = "";
+        private java.lang.Object reason_ = "";
 
         /**
-         * <code>optional string payer_open_id = 2;</code>
+         * <code>string reason = 2;</code>
          *
-         * @return Whether the payerOpenId field is set.
+         * @return The reason.
          */
-        public boolean hasPayerOpenId() {
-            return ((bitField0_ & 0x00000002) != 0);
-        }
-
-        /**
-         * <code>optional string payer_open_id = 2;</code>
-         *
-         * @return The payerOpenId.
-         */
-        public java.lang.String getPayerOpenId() {
-            java.lang.Object ref = payerOpenId_;
+        public java.lang.String getReason() {
+            java.lang.Object ref = reason_;
             if (!(ref instanceof java.lang.String)) {
                 com.google.protobuf.ByteString bs =
                         (com.google.protobuf.ByteString) ref;
                 java.lang.String s = bs.toStringUtf8();
-                payerOpenId_ = s;
+                reason_ = s;
                 return s;
             } else {
                 return (java.lang.String) ref;
@@ -1497,18 +1414,18 @@ public final class WechatPayPrepayRequest extends
         }
 
         /**
-         * <code>optional string payer_open_id = 2;</code>
+         * <code>string reason = 2;</code>
          *
-         * @return The bytes for payerOpenId.
+         * @return The bytes for reason.
          */
         public com.google.protobuf.ByteString
-        getPayerOpenIdBytes() {
-            java.lang.Object ref = payerOpenId_;
+        getReasonBytes() {
+            java.lang.Object ref = reason_;
             if (ref instanceof String) {
                 com.google.protobuf.ByteString b =
                         com.google.protobuf.ByteString.copyFromUtf8(
                                 (java.lang.String) ref);
-                payerOpenId_ = b;
+                reason_ = b;
                 return b;
             } else {
                 return (com.google.protobuf.ByteString) ref;
@@ -1516,58 +1433,58 @@ public final class WechatPayPrepayRequest extends
         }
 
         /**
-         * <code>optional string payer_open_id = 2;</code>
+         * <code>string reason = 2;</code>
          *
-         * @param value The payerOpenId to set.
+         * @param value The reason to set.
          * @return This builder for chaining.
          */
-        public Builder setPayerOpenId(
+        public Builder setReason(
                 java.lang.String value) {
             if (value == null) {
                 throw new NullPointerException();
             }
-            payerOpenId_ = value;
+            reason_ = value;
             bitField0_ |= 0x00000002;
             onChanged();
             return this;
         }
 
         /**
-         * <code>optional string payer_open_id = 2;</code>
+         * <code>string reason = 2;</code>
          *
          * @return This builder for chaining.
          */
-        public Builder clearPayerOpenId() {
-            payerOpenId_ = getDefaultInstance().getPayerOpenId();
+        public Builder clearReason() {
+            reason_ = getDefaultInstance().getReason();
             bitField0_ = (bitField0_ & ~0x00000002);
             onChanged();
             return this;
         }
 
         /**
-         * <code>optional string payer_open_id = 2;</code>
+         * <code>string reason = 2;</code>
          *
-         * @param value The bytes for payerOpenId to set.
+         * @param value The bytes for reason to set.
          * @return This builder for chaining.
          */
-        public Builder setPayerOpenIdBytes(
+        public Builder setReasonBytes(
                 com.google.protobuf.ByteString value) {
             if (value == null) {
                 throw new NullPointerException();
             }
             checkByteStringIsUtf8(value);
-            payerOpenId_ = value;
+            reason_ = value;
             bitField0_ |= 0x00000002;
             onChanged();
             return this;
         }
 
-        private com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount amount_;
+        private com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount amount_;
         private com.google.protobuf.SingleFieldBuilderV3<
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.AmountOrBuilder> amountBuilder_;
+                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.AmountOrBuilder> amountBuilder_;
 
         /**
-         * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+         * <code>.palm.musa.v1.WechatPayCreateRefundRequest.Amount amount = 3;</code>
          *
          * @return Whether the amount field is set.
          */
@@ -1576,22 +1493,22 @@ public final class WechatPayPrepayRequest extends
         }
 
         /**
-         * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+         * <code>.palm.musa.v1.WechatPayCreateRefundRequest.Amount amount = 3;</code>
          *
          * @return The amount.
          */
-        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount getAmount() {
+        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount getAmount() {
             if (amountBuilder_ == null) {
-                return amount_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.getDefaultInstance() : amount_;
+                return amount_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.getDefaultInstance() : amount_;
             } else {
                 return amountBuilder_.getMessage();
             }
         }
 
         /**
-         * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+         * <code>.palm.musa.v1.WechatPayCreateRefundRequest.Amount amount = 3;</code>
          */
-        public Builder setAmount(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount value) {
+        public Builder setAmount(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount value) {
             if (amountBuilder_ == null) {
                 if (value == null) {
                     throw new NullPointerException();
@@ -1606,10 +1523,10 @@ public final class WechatPayPrepayRequest extends
         }
 
         /**
-         * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+         * <code>.palm.musa.v1.WechatPayCreateRefundRequest.Amount amount = 3;</code>
          */
         public Builder setAmount(
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.Builder builderForValue) {
+                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.Builder builderForValue) {
             if (amountBuilder_ == null) {
                 amount_ = builderForValue.build();
             } else {
@@ -1621,13 +1538,13 @@ public final class WechatPayPrepayRequest extends
         }
 
         /**
-         * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+         * <code>.palm.musa.v1.WechatPayCreateRefundRequest.Amount amount = 3;</code>
          */
-        public Builder mergeAmount(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount value) {
+        public Builder mergeAmount(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount value) {
             if (amountBuilder_ == null) {
                 if (((bitField0_ & 0x00000004) != 0) &&
                         amount_ != null &&
-                        amount_ != com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.getDefaultInstance()) {
+                        amount_ != com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.getDefaultInstance()) {
                     getAmountBuilder().mergeFrom(value);
                 } else {
                     amount_ = value;
@@ -1641,7 +1558,7 @@ public final class WechatPayPrepayRequest extends
         }
 
         /**
-         * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+         * <code>.palm.musa.v1.WechatPayCreateRefundRequest.Amount amount = 3;</code>
          */
         public Builder clearAmount() {
             bitField0_ = (bitField0_ & ~0x00000004);
@@ -1655,213 +1572,41 @@ public final class WechatPayPrepayRequest extends
         }
 
         /**
-         * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+         * <code>.palm.musa.v1.WechatPayCreateRefundRequest.Amount amount = 3;</code>
          */
-        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.Builder getAmountBuilder() {
+        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.Builder getAmountBuilder() {
             bitField0_ |= 0x00000004;
             onChanged();
             return getAmountFieldBuilder().getBuilder();
         }
 
         /**
-         * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+         * <code>.palm.musa.v1.WechatPayCreateRefundRequest.Amount amount = 3;</code>
          */
-        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.AmountOrBuilder getAmountOrBuilder() {
+        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.AmountOrBuilder getAmountOrBuilder() {
             if (amountBuilder_ != null) {
                 return amountBuilder_.getMessageOrBuilder();
             } else {
                 return amount_ == null ?
-                        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.getDefaultInstance() : amount_;
+                        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.getDefaultInstance() : amount_;
             }
         }
 
         /**
-         * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+         * <code>.palm.musa.v1.WechatPayCreateRefundRequest.Amount amount = 3;</code>
          */
         private com.google.protobuf.SingleFieldBuilderV3<
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.AmountOrBuilder>
+                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.AmountOrBuilder>
         getAmountFieldBuilder() {
             if (amountBuilder_ == null) {
                 amountBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-                        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.AmountOrBuilder>(
+                        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.AmountOrBuilder>(
                         getAmount(),
                         getParentForChildren(),
                         isClean());
                 amount_ = null;
             }
             return amountBuilder_;
-        }
-
-        private java.lang.Object description_ = "";
-
-        /**
-         * <code>string description = 9;</code>
-         *
-         * @return The description.
-         */
-        public java.lang.String getDescription() {
-            java.lang.Object ref = description_;
-            if (!(ref instanceof java.lang.String)) {
-                com.google.protobuf.ByteString bs =
-                        (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                description_ = s;
-                return s;
-            } else {
-                return (java.lang.String) ref;
-            }
-        }
-
-        /**
-         * <code>string description = 9;</code>
-         *
-         * @return The bytes for description.
-         */
-        public com.google.protobuf.ByteString
-        getDescriptionBytes() {
-            java.lang.Object ref = description_;
-            if (ref instanceof String) {
-                com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
-                description_ = b;
-                return b;
-            } else {
-                return (com.google.protobuf.ByteString) ref;
-            }
-        }
-
-        /**
-         * <code>string description = 9;</code>
-         *
-         * @param value The description to set.
-         * @return This builder for chaining.
-         */
-        public Builder setDescription(
-                java.lang.String value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            description_ = value;
-            bitField0_ |= 0x00000008;
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>string description = 9;</code>
-         *
-         * @return This builder for chaining.
-         */
-        public Builder clearDescription() {
-            description_ = getDefaultInstance().getDescription();
-            bitField0_ = (bitField0_ & ~0x00000008);
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>string description = 9;</code>
-         *
-         * @param value The bytes for description to set.
-         * @return This builder for chaining.
-         */
-        public Builder setDescriptionBytes(
-                com.google.protobuf.ByteString value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            checkByteStringIsUtf8(value);
-            description_ = value;
-            bitField0_ |= 0x00000008;
-            onChanged();
-            return this;
-        }
-
-        private java.lang.Object notifyUrl_ = "";
-
-        /**
-         * <code>string notify_url = 11;</code>
-         *
-         * @return The notifyUrl.
-         */
-        public java.lang.String getNotifyUrl() {
-            java.lang.Object ref = notifyUrl_;
-            if (!(ref instanceof java.lang.String)) {
-                com.google.protobuf.ByteString bs =
-                        (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                notifyUrl_ = s;
-                return s;
-            } else {
-                return (java.lang.String) ref;
-            }
-        }
-
-        /**
-         * <code>string notify_url = 11;</code>
-         *
-         * @return The bytes for notifyUrl.
-         */
-        public com.google.protobuf.ByteString
-        getNotifyUrlBytes() {
-            java.lang.Object ref = notifyUrl_;
-            if (ref instanceof String) {
-                com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
-                notifyUrl_ = b;
-                return b;
-            } else {
-                return (com.google.protobuf.ByteString) ref;
-            }
-        }
-
-        /**
-         * <code>string notify_url = 11;</code>
-         *
-         * @param value The notifyUrl to set.
-         * @return This builder for chaining.
-         */
-        public Builder setNotifyUrl(
-                java.lang.String value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            notifyUrl_ = value;
-            bitField0_ |= 0x00000010;
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>string notify_url = 11;</code>
-         *
-         * @return This builder for chaining.
-         */
-        public Builder clearNotifyUrl() {
-            notifyUrl_ = getDefaultInstance().getNotifyUrl();
-            bitField0_ = (bitField0_ & ~0x00000010);
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>string notify_url = 11;</code>
-         *
-         * @param value The bytes for notifyUrl to set.
-         * @return This builder for chaining.
-         */
-        public Builder setNotifyUrlBytes(
-                com.google.protobuf.ByteString value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            checkByteStringIsUtf8(value);
-            notifyUrl_ = value;
-            bitField0_ |= 0x00000010;
-            onChanged();
-            return this;
         }
 
         @java.lang.Override
@@ -1877,24 +1622,24 @@ public final class WechatPayPrepayRequest extends
         }
 
 
-        // @@protoc_insertion_point(builder_scope:palm.musa.v1.WechatPayPrepayRequest)
+        // @@protoc_insertion_point(builder_scope:palm.musa.v1.WechatPayCreateRefundRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:palm.musa.v1.WechatPayPrepayRequest)
-    private static final com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:palm.musa.v1.WechatPayCreateRefundRequest)
+    private static final com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest DEFAULT_INSTANCE;
 
     static {
-        DEFAULT_INSTANCE = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest();
+        DEFAULT_INSTANCE = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest();
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest getDefaultInstance() {
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest getDefaultInstance() {
         return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<WechatPayPrepayRequest>
-            PARSER = new com.google.protobuf.AbstractParser<WechatPayPrepayRequest>() {
+    private static final com.google.protobuf.Parser<WechatPayCreateRefundRequest>
+            PARSER = new com.google.protobuf.AbstractParser<WechatPayCreateRefundRequest>() {
         @java.lang.Override
-        public WechatPayPrepayRequest parsePartialFrom(
+        public WechatPayCreateRefundRequest parsePartialFrom(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1913,17 +1658,17 @@ public final class WechatPayPrepayRequest extends
         }
     };
 
-    public static com.google.protobuf.Parser<WechatPayPrepayRequest> parser() {
+    public static com.google.protobuf.Parser<WechatPayCreateRefundRequest> parser() {
         return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<WechatPayPrepayRequest> getParserForType() {
+    public com.google.protobuf.Parser<WechatPayCreateRefundRequest> getParserForType() {
         return PARSER;
     }
 
     @java.lang.Override
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest getDefaultInstanceForType() {
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
     }
 

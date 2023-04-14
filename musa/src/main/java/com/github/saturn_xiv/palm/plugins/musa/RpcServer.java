@@ -30,6 +30,7 @@ public class RpcServer {
                 .addService(wechatPayJsapiService)
                 .addService(wechatPayNativeService)
                 .addService(wechatPayNotificationService)
+                .addService(wechatPayRefundService)
                 .addService(healthService)
                 .intercept(tokenServerInterceptor)
                 .build().start();
@@ -55,6 +56,8 @@ public class RpcServer {
     WechatPayNotificationGrpc.WechatPayNotificationImplBase wechatPayNotificationService;
     @Autowired
     WechatPayBillGrpc.WechatPayBillImplBase wechatPayBillService;
+    @Autowired
+    WechatPayRefundGrpc.WechatPayRefundImplBase wechatPayRefundService;
     @Autowired
     TokenServerInterceptor tokenServerInterceptor;
 

@@ -7,5 +7,6 @@
 
     <include file="001-create-bills.xml" relativeToChangelogFile="true"/>
     <include file="002-create-orders.xml" relativeToChangelogFile="true"/>
+    <include file="003-create-refunds.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

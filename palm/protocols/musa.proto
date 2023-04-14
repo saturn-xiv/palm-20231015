@@ -6,20 +6,17 @@ package palm.musa.v1;
 import "google/protobuf/empty.proto";
 
 // ----------------------------------------------------------------------------
-
+enum WechatPayCurrency {
+  CNY = 0;
+}
 message WechatPayPrepayRequest {
   message Amount {
-    enum Currency {
-      CNY = 0;
-    }
-
-    // cent
     int32 total = 1;
-    Currency currenty = 2;
+    WechatPayCurrency currency = 2;
   }
 
   string app_id = 1;
-  string payer_open_id = 2;
+  optional string payer_open_id = 2;
   Amount amount = 3;
 
   string description = 9;
@@ -67,9 +64,9 @@ message WechatPayJsapiPrepayIdResponse {
 }
 
 service WechatPayNotification {
-  rpc transaction(WechatPayNotificationRequest)
+  rpc Transaction(WechatPayNotificationRequest)
       returns (WechatPayNotificationTransactionResponse) {}
-  rpc refund(WechatPayNotificationRequest)
+  rpc Refund(WechatPayNotificationRequest)
       returns (WechatPayNotificationRefundResponse) {}
 }
 
@@ -110,6 +107,7 @@ message WechatPayTradeBillRequest {
   WechatPayBillDate bill_date = 1;
   BillType bill_type = 2;
 }
+
 message WechatPayFundFlowBillRequest {
   enum AccountType {
     BASIC = 0;
@@ -119,6 +117,24 @@ message WechatPayFundFlowBillRequest {
   WechatPayBillDate bill_date = 1;
   AccountType account_type = 2;
 }
+
+service WechatPayRefund {
+  rpc Create(WechatPayCreateRefundRequest) returns (WechatPayRefundResponse) {}
+  rpc Query(WechatPayQueryRefundResponse) returns (WechatPayRefundResponse) {}
+}
+
+message WechatPayCreateRefundRequest {
+  message Amount {
+    int32 total = 1;
+    int32 refund = 2;
+    WechatPayCurrency currency = 3;
+  }
+  string out_trade_no = 1;
+  string reason = 2;
+  Amount amount = 3;
+}
+message WechatPayQueryRefundResponse { string out_refund_no = 1; }
+message WechatPayRefundResponse { string out_refund_no = 1; }
 
 // ----------------------------------------------------------------------------
 
