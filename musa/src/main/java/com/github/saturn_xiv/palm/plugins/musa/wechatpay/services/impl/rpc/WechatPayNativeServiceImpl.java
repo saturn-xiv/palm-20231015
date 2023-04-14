@@ -4,10 +4,10 @@ import com.github.saturn_xiv.palm.plugins.musa.helpers.JwtHelper;
 import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerInterceptor;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeGrpc;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse;
+import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotifyAction;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers.WechatPayNativeHelper;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.NotifyAction;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.OutNoType;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
@@ -24,7 +24,7 @@ public class WechatPayNativeServiceImpl extends WechatPayNativeGrpc.WechatPayNat
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
         final var outTradeNo = WechatPayClient.outNo(OutNoType.TRADE);
-        final var notifyUrl = WechatPayClient.notifyUrl(request.getNotifyHost(), NotifyAction.PAY);
+        final var notifyUrl = WechatPayClient.notifyUrl(request.getNotifyHost(), WechatPayNotifyAction.TRANSCATION);
         var currency = WechatPayClient.currency(request.getAmount().getCurrency());
         var url = wechatPay.prepay(request.getAppId(),
                 request.getDescription(),

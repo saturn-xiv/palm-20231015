@@ -4,25 +4,29 @@
 package com.github.saturn_xiv.palm.plugins.musa.v1;
 
 /**
- * <pre>
- * ----------------------------------------------------------------------------
- * </pre>
- *
- * Protobuf enum {@code palm.musa.v1.WechatPayCurrency}
+ * Protobuf enum {@code palm.musa.v1.WechatPayNotifyAction}
  */
-public enum WechatPayCurrency
+public enum WechatPayNotifyAction
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>CNY = 0;</code>
+   * <code>TRANSCATION = 0;</code>
    */
-  CNY(0),
+  TRANSCATION(0),
+  /**
+   * <code>REFUND = 1;</code>
+   */
+  REFUND(1),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>CNY = 0;</code>
+   * <code>TRANSCATION = 0;</code>
    */
-  public static final int CNY_VALUE = 0;
+  public static final int TRANSCATION_VALUE = 0;
+  /**
+   * <code>REFUND = 1;</code>
+   */
+  public static final int REFUND_VALUE = 1;
 
 
   public final int getNumber() {
@@ -39,7 +43,7 @@ public enum WechatPayCurrency
    * @deprecated Use {@link #forNumber(int)} instead.
    */
   @java.lang.Deprecated
-  public static WechatPayCurrency valueOf(int value) {
+  public static WechatPayNotifyAction valueOf(int value) {
     return forNumber(value);
   }
 
@@ -47,22 +51,23 @@ public enum WechatPayCurrency
    * @param value The numeric wire value of the corresponding enum entry.
    * @return The enum associated with the given numeric wire value.
    */
-  public static WechatPayCurrency forNumber(int value) {
+  public static WechatPayNotifyAction forNumber(int value) {
     switch (value) {
-      case 0: return CNY;
+      case 0: return TRANSCATION;
+      case 1: return REFUND;
       default: return null;
     }
   }
 
-  public static com.google.protobuf.Internal.EnumLiteMap<WechatPayCurrency>
+  public static com.google.protobuf.Internal.EnumLiteMap<WechatPayNotifyAction>
       internalGetValueMap() {
     return internalValueMap;
   }
   private static final com.google.protobuf.Internal.EnumLiteMap<
-      WechatPayCurrency> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<WechatPayCurrency>() {
-          public WechatPayCurrency findValueByNumber(int number) {
-            return WechatPayCurrency.forNumber(number);
+      WechatPayNotifyAction> internalValueMap =
+        new com.google.protobuf.Internal.EnumLiteMap<WechatPayNotifyAction>() {
+          public WechatPayNotifyAction findValueByNumber(int number) {
+            return WechatPayNotifyAction.forNumber(number);
           }
         };
 
@@ -80,12 +85,12 @@ public enum WechatPayCurrency
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.getDescriptor().getEnumTypes().get(0);
+    return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.getDescriptor().getEnumTypes().get(1);
   }
 
-  private static final WechatPayCurrency[] VALUES = values();
+  private static final WechatPayNotifyAction[] VALUES = values();
 
-  public static WechatPayCurrency valueOf(
+  public static WechatPayNotifyAction valueOf(
       com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {
       throw new java.lang.IllegalArgumentException(
@@ -99,10 +104,10 @@ public enum WechatPayCurrency
 
   private final int value;
 
-  private WechatPayCurrency(int value) {
+  private WechatPayNotifyAction(int value) {
     this.value = value;
   }
 
-  // @@protoc_insertion_point(enum_scope:palm.musa.v1.WechatPayCurrency)
+  // @@protoc_insertion_point(enum_scope:palm.musa.v1.WechatPayNotifyAction)
 }
 

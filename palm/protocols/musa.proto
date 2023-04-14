@@ -9,6 +9,11 @@ import "google/protobuf/empty.proto";
 enum WechatPayCurrency {
   CNY = 0;
 }
+enum WechatPayNotifyAction {
+  TRANSCATION = 0;
+  REFUND = 1;
+}
+
 message WechatPayPrepayRequest {
   message Amount {
     int32 total = 1;
@@ -62,25 +67,6 @@ message WechatPayJsapiPrepayIdResponse {
 
   string out_trade_no = 11;
 }
-
-service WechatPayNotification {
-  rpc Transaction(WechatPayNotificationRequest)
-      returns (WechatPayNotificationTransactionResponse) {}
-  rpc Refund(WechatPayNotificationRequest)
-      returns (WechatPayNotificationRefundResponse) {}
-}
-
-message WechatPayNotificationRequest {
-  string serial_number = 1;
-  string nonce = 2;
-  string signature = 3;
-  string timestamp = 4;
-  string body = 5;
-}
-
-message WechatPayNotificationTransactionResponse {}
-
-message WechatPayNotificationRefundResponse {}
 
 service WechatPayBill {
   rpc Trade(WechatPayTradeBillRequest) returns (WechatPayBillResponse) {}

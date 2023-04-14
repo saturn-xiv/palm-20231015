@@ -4,21 +4,18 @@
 package com.github.saturn_xiv.palm.plugins.musa.v1;
 
 public interface WechatPayQueryOrderByOutTradeNoRequestOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayQueryOrderByOutTradeNoRequest)
-        com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayQueryOrderByOutTradeNoRequest)
+    com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>string no = 1;</code>
-     *
-     * @return The no.
-     */
-    java.lang.String getNo();
-
-    /**
-     * <code>string no = 1;</code>
-     *
-     * @return The bytes for no.
-     */
-    com.google.protobuf.ByteString
-    getNoBytes();
+  /**
+   * <code>string no = 1;</code>
+   * @return The no.
+   */
+  java.lang.String getNo();
+  /**
+   * <code>string no = 1;</code>
+   * @return The bytes for no.
+   */
+  com.google.protobuf.ByteString
+      getNoBytes();
 }

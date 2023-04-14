@@ -205,68 +205,6 @@ export namespace WechatPayJsapiPrepayIdResponse {
   }
 }
 
-export class WechatPayNotificationRequest extends jspb.Message {
-  getSerialNumber(): string;
-  setSerialNumber(value: string): WechatPayNotificationRequest;
-
-  getNonce(): string;
-  setNonce(value: string): WechatPayNotificationRequest;
-
-  getSignature(): string;
-  setSignature(value: string): WechatPayNotificationRequest;
-
-  getTimestamp(): string;
-  setTimestamp(value: string): WechatPayNotificationRequest;
-
-  getBody(): string;
-  setBody(value: string): WechatPayNotificationRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): WechatPayNotificationRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: WechatPayNotificationRequest): WechatPayNotificationRequest.AsObject;
-  static serializeBinaryToWriter(message: WechatPayNotificationRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): WechatPayNotificationRequest;
-  static deserializeBinaryFromReader(message: WechatPayNotificationRequest, reader: jspb.BinaryReader): WechatPayNotificationRequest;
-}
-
-export namespace WechatPayNotificationRequest {
-  export type AsObject = {
-    serialNumber: string,
-    nonce: string,
-    signature: string,
-    timestamp: string,
-    body: string,
-  }
-}
-
-export class WechatPayNotificationTransactionResponse extends jspb.Message {
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): WechatPayNotificationTransactionResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: WechatPayNotificationTransactionResponse): WechatPayNotificationTransactionResponse.AsObject;
-  static serializeBinaryToWriter(message: WechatPayNotificationTransactionResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): WechatPayNotificationTransactionResponse;
-  static deserializeBinaryFromReader(message: WechatPayNotificationTransactionResponse, reader: jspb.BinaryReader): WechatPayNotificationTransactionResponse;
-}
-
-export namespace WechatPayNotificationTransactionResponse {
-  export type AsObject = {
-  }
-}
-
-export class WechatPayNotificationRefundResponse extends jspb.Message {
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): WechatPayNotificationRefundResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: WechatPayNotificationRefundResponse): WechatPayNotificationRefundResponse.AsObject;
-  static serializeBinaryToWriter(message: WechatPayNotificationRefundResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): WechatPayNotificationRefundResponse;
-  static deserializeBinaryFromReader(message: WechatPayNotificationRefundResponse, reader: jspb.BinaryReader): WechatPayNotificationRefundResponse;
-}
-
-export namespace WechatPayNotificationRefundResponse {
-  export type AsObject = {
-  }
-}
-
 export class WechatPayBillDate extends jspb.Message {
   getYear(): number;
   setYear(value: number): WechatPayBillDate;
@@ -470,6 +408,10 @@ export namespace WechatPayRefundResponse {
 
 export enum WechatPayCurrency { 
   CNY = 0,
+}
+export enum WechatPayNotifyAction { 
+  TRANSCATION = 0,
+  REFUND = 1,
 }
 export enum WechatPayTarType { 
   GZIP = 0,

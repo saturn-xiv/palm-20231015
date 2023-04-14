@@ -2,7 +2,6 @@ package com.github.saturn_xiv.palm.plugins.musa.wechatpay;
 
 import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.BillDownloadResponse;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.NotifyAction;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.OutNoType;
 import com.wechat.pay.java.core.RSAAutoCertificateConfig;
 import com.wechat.pay.java.core.RSAConfig;
@@ -86,10 +85,11 @@ public class WechatPayClient {
         };
     }
 
-    public static String notifyUrl(String host, NotifyAction action) {
+    public static String notifyUrl(String host, WechatPayNotifyAction action) {
         final var it = switch (action) {
-            case PAY -> "pay";
+            case TRANSCATION -> "transaction";
             case REFUND -> "refund";
+            case UNRECOGNIZED -> "nil";
         };
         return "https://" + host + "/api/wechat-pay/notification/" + it;
     }

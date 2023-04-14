@@ -4,21 +4,18 @@
 package com.github.saturn_xiv.palm.plugins.musa.v1;
 
 public interface WechatPayRefundResponseOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayRefundResponse)
-        com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayRefundResponse)
+    com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>string out_refund_no = 1;</code>
-     *
-     * @return The outRefundNo.
-     */
-    java.lang.String getOutRefundNo();
-
-    /**
-     * <code>string out_refund_no = 1;</code>
-     *
-     * @return The bytes for outRefundNo.
-     */
-    com.google.protobuf.ByteString
-    getOutRefundNoBytes();
+  /**
+   * <code>string out_refund_no = 1;</code>
+   * @return The outRefundNo.
+   */
+  java.lang.String getOutRefundNo();
+  /**
+   * <code>string out_refund_no = 1;</code>
+   * @return The bytes for outRefundNo.
+   */
+  com.google.protobuf.ByteString
+      getOutRefundNoBytes();
 }

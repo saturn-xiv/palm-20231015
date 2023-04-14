@@ -4,21 +4,18 @@
 package com.github.saturn_xiv.palm.plugins.musa.v1;
 
 public interface WechatPayQueryOrderByIdRequestOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayQueryOrderByIdRequest)
-        com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayQueryOrderByIdRequest)
+    com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>string id = 1;</code>
-     *
-     * @return The id.
-     */
-    java.lang.String getId();
-
-    /**
-     * <code>string id = 1;</code>
-     *
-     * @return The bytes for id.
-     */
-    com.google.protobuf.ByteString
-    getIdBytes();
+  /**
+   * <code>string id = 1;</code>
+   * @return The id.
+   */
+  java.lang.String getId();
+  /**
+   * <code>string id = 1;</code>
+   * @return The bytes for id.
+   */
+  com.google.protobuf.ByteString
+      getIdBytes();
 }

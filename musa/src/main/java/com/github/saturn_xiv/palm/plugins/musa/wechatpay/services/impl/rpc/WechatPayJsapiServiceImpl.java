@@ -5,7 +5,6 @@ import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerIntercept
 import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers.WechatPayJsapiHelper;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.NotifyAction;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.OutNoType;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayBillService;
 import com.google.protobuf.Empty;
@@ -59,7 +58,7 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
         final var outTradeNo = WechatPayClient.outNo(OutNoType.TRADE);
-        final var notifyUrl = WechatPayClient.notifyUrl(request.getNotifyHost(), NotifyAction.PAY);
+        final var notifyUrl = WechatPayClient.notifyUrl(request.getNotifyHost(), WechatPayNotifyAction.TRANSCATION);
         var response = wechatPay.prepayWithRequestPayment(request.getAppId(), request.getPayerOpenId(),
                 outTradeNo,
                 WechatPayClient.currency(request.getAmount().getCurrency()), request.getAmount().getTotal(), request.getDescription(),

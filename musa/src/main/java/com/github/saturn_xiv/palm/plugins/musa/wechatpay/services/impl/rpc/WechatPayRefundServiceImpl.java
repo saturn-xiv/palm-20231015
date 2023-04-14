@@ -2,13 +2,9 @@ package com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.impl.rpc;
 
 import com.github.saturn_xiv.palm.plugins.musa.helpers.JwtHelper;
 import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerInterceptor;
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest;
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundResponse;
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundGrpc;
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundResponse;
+import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers.WechatPayRefundHelper;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.NotifyAction;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.OutNoType;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayBillService;
 import io.grpc.stub.StreamObserver;
@@ -27,7 +23,7 @@ public class WechatPayRefundServiceImpl extends WechatPayRefundGrpc.WechatPayRef
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
         final var outRefundNo = WechatPayClient.outNo(OutNoType.REFUND);
-        final var notifyUrl = WechatPayClient.notifyUrl(request.getNotifyHost(), NotifyAction.REFUND);
+        final var notifyUrl = WechatPayClient.notifyUrl(request.getNotifyHost(), WechatPayNotifyAction.REFUND);
         final var currency = WechatPayClient.currency(request.getAmount().getCurrency());
         final var response = refundHelper.create(request.getOutTradeNo(), outRefundNo,
                 request.getAmount().getRefund(), request.getAmount().getTotal(), currency,

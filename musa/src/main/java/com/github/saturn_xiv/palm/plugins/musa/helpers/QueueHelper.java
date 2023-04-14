@@ -12,25 +12,34 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.UUID;
 
+//    https://www.rabbitmq.com/tutorials/tutorial-three-python.html
+//    https://www.rabbitmq.com/tutorials/tutorial-two-python.html
 @Component("palm.musa.helper.queue")
 public class QueueHelper {
-    //    https://www.rabbitmq.com/tutorials/tutorial-three-python.html
+
     public <T extends GeneratedMessageV3> void publish(T message) {
-        send(message.getClass().getCanonicalName(), "", message);
+        publish(message.getClass().getCanonicalName(), MediaType.APPLICATION_PROTOBUF, message.toByteArray());
     }
 
-    //    https://www.rabbitmq.com/tutorials/tutorial-two-python.html
     public <T extends GeneratedMessageV3> void produce(T message) {
-        send("", message.getClass().getCanonicalName(), message);
+        produce(message.getClass().getCanonicalName(), MediaType.APPLICATION_PROTOBUF, message.toByteArray());
     }
 
-    private <T extends GeneratedMessageV3> void send(String exchange, String routingKey, T message) {
-        final var id = UUID.randomUUID().toString();
-        final var msg = MessageBuilder.withBody(message.toByteArray())
-                .setContentType(MediaType.APPLICATION_PROTOBUF.toString())
-                .setMessageId(id)
+    public void publish(String exchange, MediaType contentType, byte[] body) {
+        send(exchange, "", contentType, body);
+    }
+
+    public void produce(String routingKey, MediaType contentType, byte[] body) {
+        send("", routingKey, contentType, body);
+    }
+
+    private void send(String exchange, String routingKey, MediaType contentType, byte[] body) {
+        final var id = UUID.randomUUID();
+        final var msg = MessageBuilder.withBody(body)
+                .setContentType(contentType.toString())
+                .setMessageId(id.toString())
                 .setTimestamp(new Date()).build();
-        logger.info("send message({}) to ({}, {})", id, exchange, routingKey);
+        logger.info("send message({}, {})@({}, {})", id, contentType, exchange, routingKey);
         rabbitTemplate.convertAndSend(exchange, routingKey, msg);
     }
 

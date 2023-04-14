@@ -4,36 +4,30 @@
 package com.github.saturn_xiv.palm.plugins.musa.v1;
 
 public interface WechatPayCloseOrderRequestOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayCloseOrderRequest)
-        com.google.protobuf.MessageOrBuilder {
+    // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayCloseOrderRequest)
+    com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>string out_trade_no = 1;</code>
-     *
-     * @return The outTradeNo.
-     */
-    java.lang.String getOutTradeNo();
+  /**
+   * <code>string out_trade_no = 1;</code>
+   * @return The outTradeNo.
+   */
+  java.lang.String getOutTradeNo();
+  /**
+   * <code>string out_trade_no = 1;</code>
+   * @return The bytes for outTradeNo.
+   */
+  com.google.protobuf.ByteString
+      getOutTradeNoBytes();
 
-    /**
-     * <code>string out_trade_no = 1;</code>
-     *
-     * @return The bytes for outTradeNo.
-     */
-    com.google.protobuf.ByteString
-    getOutTradeNoBytes();
-
-    /**
-     * <code>string reason = 2;</code>
-     *
-     * @return The reason.
-     */
-    java.lang.String getReason();
-
-    /**
-     * <code>string reason = 2;</code>
-     *
-     * @return The bytes for reason.
-     */
-    com.google.protobuf.ByteString
-    getReasonBytes();
+  /**
+   * <code>string reason = 2;</code>
+   * @return The reason.
+   */
+  java.lang.String getReason();
+  /**
+   * <code>string reason = 2;</code>
+   * @return The bytes for reason.
+   */
+  com.google.protobuf.ByteString
+      getReasonBytes();
 }
