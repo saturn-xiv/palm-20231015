@@ -94,6 +94,12 @@ enum WechatPayTarType {
   GZIP = 0;
 }
 
+message WechatPayBillDate {
+  int32 year = 1;
+  int32 month = 2;
+  int32 day = 3;
+}
+
 message WechatPayBillResponse { bytes content = 1; }
 message WechatPayTradeBillRequest {
   enum BillType {
@@ -101,7 +107,7 @@ message WechatPayTradeBillRequest {
     SUCCESS = 1;
     REFUND = 2;
   }
-  string bill_date = 1;
+  WechatPayBillDate bill_date = 1;
   BillType bill_type = 2;
 }
 message WechatPayFundFlowBillRequest {
@@ -110,7 +116,7 @@ message WechatPayFundFlowBillRequest {
     OPERATION = 1;
     FEES = 2;
   }
-  string bill_date = 1;
+  WechatPayBillDate bill_date = 1;
   AccountType account_type = 2;
 }
 

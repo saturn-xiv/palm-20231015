@@ -264,6 +264,32 @@ export namespace WechatPayNotificationRefundResponse {
   }
 }
 
+export class WechatPayBillDate extends jspb.Message {
+  getYear(): number;
+  setYear(value: number): WechatPayBillDate;
+
+  getMonth(): number;
+  setMonth(value: number): WechatPayBillDate;
+
+  getDay(): number;
+  setDay(value: number): WechatPayBillDate;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatPayBillDate.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatPayBillDate): WechatPayBillDate.AsObject;
+  static serializeBinaryToWriter(message: WechatPayBillDate, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatPayBillDate;
+  static deserializeBinaryFromReader(message: WechatPayBillDate, reader: jspb.BinaryReader): WechatPayBillDate;
+}
+
+export namespace WechatPayBillDate {
+  export type AsObject = {
+    year: number,
+    month: number,
+    day: number,
+  }
+}
+
 export class WechatPayBillResponse extends jspb.Message {
   getContent(): Uint8Array | string;
   getContent_asU8(): Uint8Array;
@@ -285,8 +311,10 @@ export namespace WechatPayBillResponse {
 }
 
 export class WechatPayTradeBillRequest extends jspb.Message {
-  getBillDate(): string;
-  setBillDate(value: string): WechatPayTradeBillRequest;
+  getBillDate(): WechatPayBillDate | undefined;
+  setBillDate(value?: WechatPayBillDate): WechatPayTradeBillRequest;
+  hasBillDate(): boolean;
+  clearBillDate(): WechatPayTradeBillRequest;
 
   getBillType(): WechatPayTradeBillRequest.BillType;
   setBillType(value: WechatPayTradeBillRequest.BillType): WechatPayTradeBillRequest;
@@ -301,7 +329,7 @@ export class WechatPayTradeBillRequest extends jspb.Message {
 
 export namespace WechatPayTradeBillRequest {
   export type AsObject = {
-    billDate: string,
+    billDate?: WechatPayBillDate.AsObject,
     billType: WechatPayTradeBillRequest.BillType,
   }
 
@@ -313,8 +341,10 @@ export namespace WechatPayTradeBillRequest {
 }
 
 export class WechatPayFundFlowBillRequest extends jspb.Message {
-  getBillDate(): string;
-  setBillDate(value: string): WechatPayFundFlowBillRequest;
+  getBillDate(): WechatPayBillDate | undefined;
+  setBillDate(value?: WechatPayBillDate): WechatPayFundFlowBillRequest;
+  hasBillDate(): boolean;
+  clearBillDate(): WechatPayFundFlowBillRequest;
 
   getAccountType(): WechatPayFundFlowBillRequest.AccountType;
   setAccountType(value: WechatPayFundFlowBillRequest.AccountType): WechatPayFundFlowBillRequest;
@@ -329,7 +359,7 @@ export class WechatPayFundFlowBillRequest extends jspb.Message {
 
 export namespace WechatPayFundFlowBillRequest {
   export type AsObject = {
-    billDate: string,
+    billDate?: WechatPayBillDate.AsObject,
     accountType: WechatPayFundFlowBillRequest.AccountType,
   }
 

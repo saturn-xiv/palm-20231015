@@ -18,7 +18,6 @@ public final class WechatPayTradeBillRequest extends
     }
 
     private WechatPayTradeBillRequest() {
-        billDate_ = "";
         billType_ = 0;
     }
 
@@ -173,46 +172,34 @@ public final class WechatPayTradeBillRequest extends
     }
 
     public static final int BILL_DATE_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object billDate_ = "";
+    private com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate billDate_;
 
     /**
-     * <code>string bill_date = 1;</code>
+     * <code>.palm.musa.v1.WechatPayBillDate bill_date = 1;</code>
+     *
+     * @return Whether the billDate field is set.
+     */
+    @java.lang.Override
+    public boolean hasBillDate() {
+        return billDate_ != null;
+    }
+
+    /**
+     * <code>.palm.musa.v1.WechatPayBillDate bill_date = 1;</code>
      *
      * @return The billDate.
      */
     @java.lang.Override
-    public java.lang.String getBillDate() {
-        java.lang.Object ref = billDate_;
-        if (ref instanceof java.lang.String) {
-            return (java.lang.String) ref;
-        } else {
-            com.google.protobuf.ByteString bs =
-                    (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            billDate_ = s;
-            return s;
-        }
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate getBillDate() {
+        return billDate_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate.getDefaultInstance() : billDate_;
     }
 
     /**
-     * <code>string bill_date = 1;</code>
-     *
-     * @return The bytes for billDate.
+     * <code>.palm.musa.v1.WechatPayBillDate bill_date = 1;</code>
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-    getBillDateBytes() {
-        java.lang.Object ref = billDate_;
-        if (ref instanceof java.lang.String) {
-            com.google.protobuf.ByteString b =
-                    com.google.protobuf.ByteString.copyFromUtf8(
-                            (java.lang.String) ref);
-            billDate_ = b;
-            return b;
-        } else {
-            return (com.google.protobuf.ByteString) ref;
-        }
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDateOrBuilder getBillDateOrBuilder() {
+        return billDate_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate.getDefaultInstance() : billDate_;
     }
 
     public static final int BILL_TYPE_FIELD_NUMBER = 2;
@@ -254,8 +241,8 @@ public final class WechatPayTradeBillRequest extends
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
             throws java.io.IOException {
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(billDate_)) {
-            com.google.protobuf.GeneratedMessageV3.writeString(output, 1, billDate_);
+        if (billDate_ != null) {
+            output.writeMessage(1, getBillDate());
         }
         if (billType_ != com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest.BillType.ALL.getNumber()) {
             output.writeEnum(2, billType_);
@@ -269,8 +256,9 @@ public final class WechatPayTradeBillRequest extends
         if (size != -1) return size;
 
         size = 0;
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(billDate_)) {
-            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, billDate_);
+        if (billDate_ != null) {
+            size += com.google.protobuf.CodedOutputStream
+                    .computeMessageSize(1, getBillDate());
         }
         if (billType_ != com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest.BillType.ALL.getNumber()) {
             size += com.google.protobuf.CodedOutputStream
@@ -291,8 +279,11 @@ public final class WechatPayTradeBillRequest extends
         }
         com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest other = (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest) obj;
 
-        if (!getBillDate()
-                .equals(other.getBillDate())) return false;
+        if (hasBillDate() != other.hasBillDate()) return false;
+        if (hasBillDate()) {
+            if (!getBillDate()
+                    .equals(other.getBillDate())) return false;
+        }
         if (billType_ != other.billType_) return false;
         if (!getUnknownFields().equals(other.getUnknownFields())) return false;
         return true;
@@ -305,8 +296,10 @@ public final class WechatPayTradeBillRequest extends
         }
         int hash = 41;
         hash = (19 * hash) + getDescriptor().hashCode();
-        hash = (37 * hash) + BILL_DATE_FIELD_NUMBER;
-        hash = (53 * hash) + getBillDate().hashCode();
+        if (hasBillDate()) {
+            hash = (37 * hash) + BILL_DATE_FIELD_NUMBER;
+            hash = (53 * hash) + getBillDate().hashCode();
+        }
         hash = (37 * hash) + BILL_TYPE_FIELD_NUMBER;
         hash = (53 * hash) + billType_;
         hash = (29 * hash) + getUnknownFields().hashCode();
@@ -456,7 +449,11 @@ public final class WechatPayTradeBillRequest extends
         public Builder clear() {
             super.clear();
             bitField0_ = 0;
-            billDate_ = "";
+            billDate_ = null;
+            if (billDateBuilder_ != null) {
+                billDateBuilder_.dispose();
+                billDateBuilder_ = null;
+            }
             billType_ = 0;
             return this;
         }
@@ -494,7 +491,9 @@ public final class WechatPayTradeBillRequest extends
         private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest result) {
             int from_bitField0_ = bitField0_;
             if (((from_bitField0_ & 0x00000001) != 0)) {
-                result.billDate_ = billDate_;
+                result.billDate_ = billDateBuilder_ == null
+                        ? billDate_
+                        : billDateBuilder_.build();
             }
             if (((from_bitField0_ & 0x00000002) != 0)) {
                 result.billType_ = billType_;
@@ -552,10 +551,8 @@ public final class WechatPayTradeBillRequest extends
         public Builder mergeFrom(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest other) {
             if (other == com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest.getDefaultInstance())
                 return this;
-            if (!other.getBillDate().isEmpty()) {
-                billDate_ = other.billDate_;
-                bitField0_ |= 0x00000001;
-                onChanged();
+            if (other.hasBillDate()) {
+                mergeBillDate(other.getBillDate());
             }
             if (other.billType_ != 0) {
                 setBillTypeValue(other.getBillTypeValue());
@@ -587,7 +584,9 @@ public final class WechatPayTradeBillRequest extends
                             done = true;
                             break;
                         case 10: {
-                            billDate_ = input.readStringRequireUtf8();
+                            input.readMessage(
+                                    getBillDateFieldBuilder().getBuilder(),
+                                    extensionRegistry);
                             bitField0_ |= 0x00000001;
                             break;
                         } // case 10
@@ -614,90 +613,134 @@ public final class WechatPayTradeBillRequest extends
 
         private int bitField0_;
 
-        private java.lang.Object billDate_ = "";
+        private com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate billDate_;
+        private com.google.protobuf.SingleFieldBuilderV3<
+                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDateOrBuilder> billDateBuilder_;
 
         /**
-         * <code>string bill_date = 1;</code>
+         * <code>.palm.musa.v1.WechatPayBillDate bill_date = 1;</code>
+         *
+         * @return Whether the billDate field is set.
+         */
+        public boolean hasBillDate() {
+            return ((bitField0_ & 0x00000001) != 0);
+        }
+
+        /**
+         * <code>.palm.musa.v1.WechatPayBillDate bill_date = 1;</code>
          *
          * @return The billDate.
          */
-        public java.lang.String getBillDate() {
-            java.lang.Object ref = billDate_;
-            if (!(ref instanceof java.lang.String)) {
-                com.google.protobuf.ByteString bs =
-                        (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                billDate_ = s;
-                return s;
+        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate getBillDate() {
+            if (billDateBuilder_ == null) {
+                return billDate_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate.getDefaultInstance() : billDate_;
             } else {
-                return (java.lang.String) ref;
+                return billDateBuilder_.getMessage();
             }
         }
 
         /**
-         * <code>string bill_date = 1;</code>
-         *
-         * @return The bytes for billDate.
+         * <code>.palm.musa.v1.WechatPayBillDate bill_date = 1;</code>
          */
-        public com.google.protobuf.ByteString
-        getBillDateBytes() {
-            java.lang.Object ref = billDate_;
-            if (ref instanceof String) {
-                com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
-                billDate_ = b;
-                return b;
+        public Builder setBillDate(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate value) {
+            if (billDateBuilder_ == null) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                billDate_ = value;
             } else {
-                return (com.google.protobuf.ByteString) ref;
+                billDateBuilder_.setMessage(value);
             }
+            bitField0_ |= 0x00000001;
+            onChanged();
+            return this;
         }
 
         /**
-         * <code>string bill_date = 1;</code>
-         *
-         * @param value The billDate to set.
-         * @return This builder for chaining.
+         * <code>.palm.musa.v1.WechatPayBillDate bill_date = 1;</code>
          */
         public Builder setBillDate(
-                java.lang.String value) {
-            if (value == null) {
-                throw new NullPointerException();
+                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate.Builder builderForValue) {
+            if (billDateBuilder_ == null) {
+                billDate_ = builderForValue.build();
+            } else {
+                billDateBuilder_.setMessage(builderForValue.build());
             }
-            billDate_ = value;
             bitField0_ |= 0x00000001;
             onChanged();
             return this;
         }
 
         /**
-         * <code>string bill_date = 1;</code>
-         *
-         * @return This builder for chaining.
+         * <code>.palm.musa.v1.WechatPayBillDate bill_date = 1;</code>
+         */
+        public Builder mergeBillDate(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate value) {
+            if (billDateBuilder_ == null) {
+                if (((bitField0_ & 0x00000001) != 0) &&
+                        billDate_ != null &&
+                        billDate_ != com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate.getDefaultInstance()) {
+                    getBillDateBuilder().mergeFrom(value);
+                } else {
+                    billDate_ = value;
+                }
+            } else {
+                billDateBuilder_.mergeFrom(value);
+            }
+            bitField0_ |= 0x00000001;
+            onChanged();
+            return this;
+        }
+
+        /**
+         * <code>.palm.musa.v1.WechatPayBillDate bill_date = 1;</code>
          */
         public Builder clearBillDate() {
-            billDate_ = getDefaultInstance().getBillDate();
             bitField0_ = (bitField0_ & ~0x00000001);
+            billDate_ = null;
+            if (billDateBuilder_ != null) {
+                billDateBuilder_.dispose();
+                billDateBuilder_ = null;
+            }
             onChanged();
             return this;
         }
 
         /**
-         * <code>string bill_date = 1;</code>
-         *
-         * @param value The bytes for billDate to set.
-         * @return This builder for chaining.
+         * <code>.palm.musa.v1.WechatPayBillDate bill_date = 1;</code>
          */
-        public Builder setBillDateBytes(
-                com.google.protobuf.ByteString value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            checkByteStringIsUtf8(value);
-            billDate_ = value;
+        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate.Builder getBillDateBuilder() {
             bitField0_ |= 0x00000001;
             onChanged();
-            return this;
+            return getBillDateFieldBuilder().getBuilder();
+        }
+
+        /**
+         * <code>.palm.musa.v1.WechatPayBillDate bill_date = 1;</code>
+         */
+        public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDateOrBuilder getBillDateOrBuilder() {
+            if (billDateBuilder_ != null) {
+                return billDateBuilder_.getMessageOrBuilder();
+            } else {
+                return billDate_ == null ?
+                        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate.getDefaultInstance() : billDate_;
+            }
+        }
+
+        /**
+         * <code>.palm.musa.v1.WechatPayBillDate bill_date = 1;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDateOrBuilder>
+        getBillDateFieldBuilder() {
+            if (billDateBuilder_ == null) {
+                billDateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDateOrBuilder>(
+                        getBillDate(),
+                        getParentForChildren(),
+                        isClean());
+                billDate_ = null;
+            }
+            return billDateBuilder_;
         }
 
         private int billType_ = 0;

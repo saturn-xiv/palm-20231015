@@ -9,6 +9,9 @@ import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayBillService;
 import com.google.protobuf.ByteString;
+import com.google.rpc.Code;
+import com.google.rpc.Status;
+import io.grpc.protobuf.StatusProto;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,12 +24,19 @@ public class WechatPayBillServiceImpl extends WechatPayBillGrpc.WechatPayBillImp
     public void trade(WechatPayTradeBillRequest request, StreamObserver<WechatPayBillResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
-        var it = billService.getTradeBill(request.getBillDate(), request.getBillType());
+        final var billDate = WechatPayClient.billDate(request.getBillDate());
+        var it = billService.getTradeBill(billDate, request.getBillType());
         byte[] content;
         if (it == null) {
-            content = client.downloadTradeBill(request.getBillDate(), WechatPayClient.billType(request.getBillType()));
-            billService.addTradeBill(request.getBillDate(), request.getBillType(), null, content);
-
+            if (!WechatPayClient.canDownload(request.getBillDate())) {
+                logger.error("invalid bill date {}", billDate);
+                responseObserver.onError(StatusProto.toStatusRuntimeException(
+                        Status.newBuilder().setCode(Code.INVALID_ARGUMENT.getNumber()).build()
+                ));
+                return;
+            }
+            content = client.downloadTradeBill(billDate, WechatPayClient.billType(request.getBillType()));
+            billService.addTradeBill(billDate, request.getBillType(), null, content);
         } else {
             content = it.getContent();
         }
@@ -39,11 +49,20 @@ public class WechatPayBillServiceImpl extends WechatPayBillGrpc.WechatPayBillImp
     public void fundFlow(WechatPayFundFlowBillRequest request, StreamObserver<WechatPayBillResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
-        var it = billService.getFundFlowBill(request.getBillDate(), request.getAccountType());
+
+        final var billDate = WechatPayClient.billDate(request.getBillDate());
+        var it = billService.getFundFlowBill(billDate, request.getAccountType());
         byte[] content;
         if (it == null) {
-            content = client.downloadFundFlowBill(request.getBillDate(), WechatPayClient.accountType(request.getAccountType()));
-            billService.addFundFlowBill(request.getBillDate(), request.getAccountType(), null, content);
+            if (!WechatPayClient.canDownload(request.getBillDate())) {
+                logger.error("invalid bill date {}", billDate);
+                responseObserver.onError(StatusProto.toStatusRuntimeException(
+                        Status.newBuilder().setCode(Code.INVALID_ARGUMENT.getNumber()).build()
+                ));
+                return;
+            }
+            content = client.downloadFundFlowBill(billDate, WechatPayClient.accountType(request.getAccountType()));
+            billService.addFundFlowBill(billDate, request.getAccountType(), null, content);
 
         } else {
             content = it.getContent();

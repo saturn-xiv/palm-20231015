@@ -8,19 +8,23 @@ public interface WechatPayTradeBillRequestOrBuilder extends
         com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string bill_date = 1;</code>
+     * <code>.palm.musa.v1.WechatPayBillDate bill_date = 1;</code>
+     *
+     * @return Whether the billDate field is set.
+     */
+    boolean hasBillDate();
+
+    /**
+     * <code>.palm.musa.v1.WechatPayBillDate bill_date = 1;</code>
      *
      * @return The billDate.
      */
-    java.lang.String getBillDate();
+    com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate getBillDate();
 
     /**
-     * <code>string bill_date = 1;</code>
-     *
-     * @return The bytes for billDate.
+     * <code>.palm.musa.v1.WechatPayBillDate bill_date = 1;</code>
      */
-    com.google.protobuf.ByteString
-    getBillDateBytes();
+    com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDateOrBuilder getBillDateOrBuilder();
 
     /**
      * <code>.palm.musa.v1.WechatPayTradeBillRequest.BillType bill_type = 2;</code>

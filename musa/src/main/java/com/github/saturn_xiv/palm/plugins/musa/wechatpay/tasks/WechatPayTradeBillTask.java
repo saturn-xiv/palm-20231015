@@ -10,18 +10,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.time.Duration;
+
 @Component("palm.musa.task.wechat-pay.trade-bill")
 public class WechatPayTradeBillTask {
     @Scheduled(cron = "${app.tasks.wechatpay.trade-bill}")
-    public void execute() {
+    public void execute() throws InterruptedException {
         logger.info("start to download trade bill");
         for (var billDate : WechatPayClient.latestBillDates()) {
             for (var billType : WechatPayTradeBillRequest.BillType.values()) {
                 if (wechatPayBillService.getTradeBill(billDate, billType) == null) {
-                    logger.info("fetch wechat pay trade bill {} {}", billDate, billType);
                     final var content = wechatPayClient.downloadTradeBill(billDate, WechatPayClient.billType(billType));
                     wechatPayBillService.addTradeBill(billDate, billType, null, content);
                 }
+
+                Thread.sleep(Duration.ofSeconds(5));
             }
         }
     }

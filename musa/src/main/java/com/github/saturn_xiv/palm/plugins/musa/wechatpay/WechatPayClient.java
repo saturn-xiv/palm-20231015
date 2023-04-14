@@ -1,15 +1,10 @@
 package com.github.saturn_xiv.palm.plugins.musa.wechatpay;
 
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayFundFlowBillRequest;
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest;
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTarType;
-import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest;
+import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.BillDownloadResponse;
 import com.wechat.pay.java.core.RSAAutoCertificateConfig;
 import com.wechat.pay.java.core.RSAConfig;
-import com.wechat.pay.java.core.http.DefaultHttpClientBuilder;
-import com.wechat.pay.java.core.http.HttpMethod;
-import com.wechat.pay.java.core.http.HttpRequest;
+import com.wechat.pay.java.core.http.*;
 import com.wechat.pay.java.core.notification.NotificationParser;
 import com.wechat.pay.java.core.util.IOUtil;
 import com.wechat.pay.java.service.payments.jsapi.JsapiServiceExtension;
@@ -26,15 +21,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 @Component("palm.musa.model.wechatpay")
 public class WechatPayClient {
     public byte[] downloadFundFlowBill(String billDate, String accountType) throws IllegalArgumentException {
-
+        logger.info("download wechat-pay fund flow bill {} {}", billDate, accountType);
         final var url = UriComponentsBuilder.fromUriString("https://api.mch.weixin.qq.com/v3/bill/fundflowbill")
                 .queryParam("bill_date", billDate)
                 .queryParam("account_type", accountType)
@@ -43,6 +40,7 @@ public class WechatPayClient {
     }
 
     public byte[] downloadTradeBill(String billDate, String billType) throws IllegalArgumentException {
+        logger.info("download wechat-pay trade bill {} {}", billDate, billType);
         final var url = UriComponentsBuilder.fromUriString("https://api.mch.weixin.qq.com/v3/bill/tradebill")
                 .queryParam("bill_date", billDate)
                 .queryParam("bill_type", billType)
@@ -52,8 +50,14 @@ public class WechatPayClient {
 
     private byte[] downloadBill(final String url) throws IllegalArgumentException {
         final var client = new DefaultHttpClientBuilder().config(config).build();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.addHeader(Constant.ACCEPT, MediaType.APPLICATION_JSON.getValue());
+        headers.addHeader(Constant.CONTENT_TYPE, MediaType.APPLICATION_JSON.getValue());
+
         var request = new HttpRequest.Builder()
                 .httpMethod(HttpMethod.GET)
+                .headers(headers)
                 .url(url)
                 .build();
         final var httpResponse = client.execute(request, BillDownloadResponse.class);
@@ -71,6 +75,44 @@ public class WechatPayClient {
         }
     }
 
+    public static String currency(WechatPayPrepayRequest.Amount.Currency currency) {
+        return switch (currency) {
+            case CNY -> "CNY";
+            case UNRECOGNIZED -> null;
+        };
+    }
+
+    public static String billDate(WechatPayBillDate date) {
+        LocalDate it = LocalDate.of(date.getYear(), date.getMonth(), date.getDay());
+        return billDate(it);
+    }
+
+    public static String billDate(LocalDate date) {
+        final DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return date.format(format);
+    }
+
+    public static String billDate(Date date) {
+        final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return format.format(date);
+    }
+
+    public static boolean canDownload(WechatPayBillDate date) {
+        final var zone = TimeZone.getTimeZone("Asia/Shanghai").toZoneId();
+        LocalDateTime now = LocalDateTime.now(zone);
+        LocalDateTime end = now.withHour(10).withMinute(5).withSecond(0);
+        LocalDateTime begin = end.minusMonths(3);
+        if (end.isAfter(now)) {
+            end = end.minusDays(1);
+        }
+        LocalDate it = LocalDate.of(date.getYear(), date.getMonth(), date.getDay());
+        logger.debug("{}, {} vs {} vs {}, {} {}", now,
+                begin.toLocalDate(), it, end.toLocalDate(),
+                it.isBefore(begin.toLocalDate()),
+                it.isAfter(end.toLocalDate()));
+        return !it.isBefore(begin.toLocalDate()) && !it.isAfter(end.toLocalDate());
+    }
+
     public static List<String> latestBillDates() {
         final DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         List<String> items = new ArrayList<>();
@@ -81,18 +123,6 @@ public class WechatPayClient {
         }
         return items;
 
-    }
-
-    public static String billDate(Date date) {
-        final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        return format.format(date);
-    }
-
-    public static String currency(WechatPayPrepayRequest.Amount.Currency currency) {
-        return switch (currency) {
-            case CNY -> "CNY";
-            case UNRECOGNIZED -> null;
-        };
     }
 
     public static String billType(WechatPayTradeBillRequest.BillType billType) {
