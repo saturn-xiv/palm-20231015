@@ -20,7 +20,7 @@ message WechatPayPrepayRequest {
   Amount amount = 3;
 
   string description = 9;
-  string notify_url = 11;
+  string notify_host = 11;
 }
 
 message WechatPayCloseOrderRequest {
@@ -132,6 +132,7 @@ message WechatPayCreateRefundRequest {
   string out_trade_no = 1;
   string reason = 2;
   Amount amount = 3;
+  string notify_host = 11;
 }
 message WechatPayQueryRefundResponse { string out_refund_no = 1; }
 message WechatPayRefundResponse { string out_refund_no = 1; }

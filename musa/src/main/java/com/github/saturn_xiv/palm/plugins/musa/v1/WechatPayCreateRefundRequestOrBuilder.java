@@ -55,4 +55,19 @@ public interface WechatPayCreateRefundRequestOrBuilder extends
      * <code>.palm.musa.v1.WechatPayCreateRefundRequest.Amount amount = 3;</code>
      */
     com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.AmountOrBuilder getAmountOrBuilder();
+
+    /**
+     * <code>string notify_host = 11;</code>
+     *
+     * @return The notifyHost.
+     */
+    java.lang.String getNotifyHost();
+
+    /**
+     * <code>string notify_host = 11;</code>
+     *
+     * @return The bytes for notifyHost.
+     */
+    com.google.protobuf.ByteString
+    getNotifyHostBytes();
 }

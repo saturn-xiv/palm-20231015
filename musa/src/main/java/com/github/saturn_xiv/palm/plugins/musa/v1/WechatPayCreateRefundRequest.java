@@ -20,6 +20,7 @@ public final class WechatPayCreateRefundRequest extends
     private WechatPayCreateRefundRequest() {
         outTradeNo_ = "";
         reason_ = "";
+        notifyHost_ = "";
     }
 
     @java.lang.Override
@@ -894,6 +895,49 @@ public final class WechatPayCreateRefundRequest extends
         return amount_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateRefundRequest.Amount.getDefaultInstance() : amount_;
     }
 
+    public static final int NOTIFY_HOST_FIELD_NUMBER = 11;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object notifyHost_ = "";
+
+    /**
+     * <code>string notify_host = 11;</code>
+     *
+     * @return The notifyHost.
+     */
+    @java.lang.Override
+    public java.lang.String getNotifyHost() {
+        java.lang.Object ref = notifyHost_;
+        if (ref instanceof java.lang.String) {
+            return (java.lang.String) ref;
+        } else {
+            com.google.protobuf.ByteString bs =
+                    (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            notifyHost_ = s;
+            return s;
+        }
+    }
+
+    /**
+     * <code>string notify_host = 11;</code>
+     *
+     * @return The bytes for notifyHost.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+    getNotifyHostBytes() {
+        java.lang.Object ref = notifyHost_;
+        if (ref instanceof java.lang.String) {
+            com.google.protobuf.ByteString b =
+                    com.google.protobuf.ByteString.copyFromUtf8(
+                            (java.lang.String) ref);
+            notifyHost_ = b;
+            return b;
+        } else {
+            return (com.google.protobuf.ByteString) ref;
+        }
+    }
+
     private byte memoizedIsInitialized = -1;
 
     @java.lang.Override
@@ -918,6 +962,9 @@ public final class WechatPayCreateRefundRequest extends
         if (amount_ != null) {
             output.writeMessage(3, getAmount());
         }
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(notifyHost_)) {
+            com.google.protobuf.GeneratedMessageV3.writeString(output, 11, notifyHost_);
+        }
         getUnknownFields().writeTo(output);
     }
 
@@ -936,6 +983,9 @@ public final class WechatPayCreateRefundRequest extends
         if (amount_ != null) {
             size += com.google.protobuf.CodedOutputStream
                     .computeMessageSize(3, getAmount());
+        }
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(notifyHost_)) {
+            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, notifyHost_);
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSize = size;
@@ -961,6 +1011,8 @@ public final class WechatPayCreateRefundRequest extends
             if (!getAmount()
                     .equals(other.getAmount())) return false;
         }
+        if (!getNotifyHost()
+                .equals(other.getNotifyHost())) return false;
         if (!getUnknownFields().equals(other.getUnknownFields())) return false;
         return true;
     }
@@ -980,6 +1032,8 @@ public final class WechatPayCreateRefundRequest extends
             hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
             hash = (53 * hash) + getAmount().hashCode();
         }
+        hash = (37 * hash) + NOTIFY_HOST_FIELD_NUMBER;
+        hash = (53 * hash) + getNotifyHost().hashCode();
         hash = (29 * hash) + getUnknownFields().hashCode();
         memoizedHashCode = hash;
         return hash;
@@ -1134,6 +1188,7 @@ public final class WechatPayCreateRefundRequest extends
                 amountBuilder_.dispose();
                 amountBuilder_ = null;
             }
+            notifyHost_ = "";
             return this;
         }
 
@@ -1179,6 +1234,9 @@ public final class WechatPayCreateRefundRequest extends
                 result.amount_ = amountBuilder_ == null
                         ? amount_
                         : amountBuilder_.build();
+            }
+            if (((from_bitField0_ & 0x00000008) != 0)) {
+                result.notifyHost_ = notifyHost_;
             }
         }
 
@@ -1246,6 +1304,11 @@ public final class WechatPayCreateRefundRequest extends
             if (other.hasAmount()) {
                 mergeAmount(other.getAmount());
             }
+            if (!other.getNotifyHost().isEmpty()) {
+                notifyHost_ = other.notifyHost_;
+                bitField0_ |= 0x00000008;
+                onChanged();
+            }
             this.mergeUnknownFields(other.getUnknownFields());
             onChanged();
             return this;
@@ -1289,6 +1352,11 @@ public final class WechatPayCreateRefundRequest extends
                             bitField0_ |= 0x00000004;
                             break;
                         } // case 26
+                        case 90: {
+                            notifyHost_ = input.readStringRequireUtf8();
+                            bitField0_ |= 0x00000008;
+                            break;
+                        } // case 90
                         default: {
                             if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                 done = true; // was an endgroup tag
@@ -1607,6 +1675,92 @@ public final class WechatPayCreateRefundRequest extends
                 amount_ = null;
             }
             return amountBuilder_;
+        }
+
+        private java.lang.Object notifyHost_ = "";
+
+        /**
+         * <code>string notify_host = 11;</code>
+         *
+         * @return The notifyHost.
+         */
+        public java.lang.String getNotifyHost() {
+            java.lang.Object ref = notifyHost_;
+            if (!(ref instanceof java.lang.String)) {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                notifyHost_ = s;
+                return s;
+            } else {
+                return (java.lang.String) ref;
+            }
+        }
+
+        /**
+         * <code>string notify_host = 11;</code>
+         *
+         * @return The bytes for notifyHost.
+         */
+        public com.google.protobuf.ByteString
+        getNotifyHostBytes() {
+            java.lang.Object ref = notifyHost_;
+            if (ref instanceof String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                notifyHost_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        /**
+         * <code>string notify_host = 11;</code>
+         *
+         * @param value The notifyHost to set.
+         * @return This builder for chaining.
+         */
+        public Builder setNotifyHost(
+                java.lang.String value) {
+            if (value == null) {
+                throw new NullPointerException();
+            }
+            notifyHost_ = value;
+            bitField0_ |= 0x00000008;
+            onChanged();
+            return this;
+        }
+
+        /**
+         * <code>string notify_host = 11;</code>
+         *
+         * @return This builder for chaining.
+         */
+        public Builder clearNotifyHost() {
+            notifyHost_ = getDefaultInstance().getNotifyHost();
+            bitField0_ = (bitField0_ & ~0x00000008);
+            onChanged();
+            return this;
+        }
+
+        /**
+         * <code>string notify_host = 11;</code>
+         *
+         * @param value The bytes for notifyHost to set.
+         * @return This builder for chaining.
+         */
+        public Builder setNotifyHostBytes(
+                com.google.protobuf.ByteString value) {
+            if (value == null) {
+                throw new NullPointerException();
+            }
+            checkByteStringIsUtf8(value);
+            notifyHost_ = value;
+            bitField0_ |= 0x00000008;
+            onChanged();
+            return this;
         }
 
         @java.lang.Override

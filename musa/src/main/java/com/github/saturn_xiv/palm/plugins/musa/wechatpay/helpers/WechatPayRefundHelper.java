@@ -8,7 +8,9 @@ import com.wechat.pay.java.service.refund.model.Refund;
 
 public class WechatPayRefundHelper {
 
-    public Refund create(String outTradeNo, String outRefundNo, long refundAmount, long amountTotal, String amountCurrency, String reason) {
+    public Refund create(String outTradeNo, String outRefundNo,
+                         long refundAmount, long amountTotal, String amountCurrency,
+                         String reason, String notifyUrl) {
         final var amount = new AmountReq();
         amount.setCurrency(amountCurrency);
         amount.setRefund(refundAmount);
@@ -19,6 +21,7 @@ public class WechatPayRefundHelper {
         request.setOutTradeNo(outTradeNo);
         request.setOutRefundNo(outRefundNo);
         request.setReason(reason);
+        request.setNotifyUrl(notifyUrl);
         return refundService.create(request);
     }
 

@@ -20,8 +20,8 @@ export class WechatPayPrepayRequest extends jspb.Message {
   getDescription(): string;
   setDescription(value: string): WechatPayPrepayRequest;
 
-  getNotifyUrl(): string;
-  setNotifyUrl(value: string): WechatPayPrepayRequest;
+  getNotifyHost(): string;
+  setNotifyHost(value: string): WechatPayPrepayRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WechatPayPrepayRequest.AsObject;
@@ -37,7 +37,7 @@ export namespace WechatPayPrepayRequest {
     payerOpenId?: string,
     amount?: WechatPayPrepayRequest.Amount.AsObject,
     description: string,
-    notifyUrl: string,
+    notifyHost: string,
   }
 
   export class Amount extends jspb.Message {
@@ -385,6 +385,9 @@ export class WechatPayCreateRefundRequest extends jspb.Message {
   hasAmount(): boolean;
   clearAmount(): WechatPayCreateRefundRequest;
 
+  getNotifyHost(): string;
+  setNotifyHost(value: string): WechatPayCreateRefundRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WechatPayCreateRefundRequest.AsObject;
   static toObject(includeInstance: boolean, msg: WechatPayCreateRefundRequest): WechatPayCreateRefundRequest.AsObject;
@@ -398,6 +401,7 @@ export namespace WechatPayCreateRefundRequest {
     outTradeNo: string,
     reason: string,
     amount?: WechatPayCreateRefundRequest.Amount.AsObject,
+    notifyHost: string,
   }
 
   export class Amount extends jspb.Message {

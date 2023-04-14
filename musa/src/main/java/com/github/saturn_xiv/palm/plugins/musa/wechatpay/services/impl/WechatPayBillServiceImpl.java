@@ -11,13 +11,15 @@ import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.WechatPayR
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.WechatPayTradeBillRepository;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayBillService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
-@Component("palm.musa.service.wechat-pay.bill")
+@Service("palm.musa.service.wechat-pay.bill")
 public class WechatPayBillServiceImpl implements WechatPayBillService {
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void addRefund(String outTradeNo, String outRefundNo, WechatPayCreateRefundRequest.Amount amount, String reason) {
         var it = new Refund();
@@ -31,6 +33,7 @@ public class WechatPayBillServiceImpl implements WechatPayBillService {
         refundRepository.save(it);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void addOrder(String appId, String payerOpenId, String outTradeNo, WechatPayPrepayRequest.Amount amount, String description) {
         var it = new Order();
@@ -44,16 +47,19 @@ public class WechatPayBillServiceImpl implements WechatPayBillService {
         orderRepository.save(it);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public FundFlowBill getFundFlowBill(String billDate, WechatPayFundFlowBillRequest.AccountType accountType) {
         return fundFlowBillRepository.findByBillDateAndAccountType(billDate, accountType.getNumber());
     }
 
+    @Transactional(readOnly = true)
     @Override
     public TradeBill getTradeBill(String billDate, WechatPayTradeBillRequest.BillType billType) {
         return tradeBillRepository.findByBillDateAndBillType(billDate, billType.getNumber());
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void addFundFlowBill(String billDate, WechatPayFundFlowBillRequest.AccountType accountType, WechatPayTarType tarType, byte[] content) {
         var it = new FundFlowBill();
@@ -66,6 +72,7 @@ public class WechatPayBillServiceImpl implements WechatPayBillService {
         fundFlowBillRepository.save(it);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void addTradeBill(String billDate, WechatPayTradeBillRequest.BillType billType, WechatPayTarType tarType, byte[] content) {
         var it = new TradeBill();

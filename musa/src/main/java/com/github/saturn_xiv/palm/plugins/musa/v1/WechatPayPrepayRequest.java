@@ -21,7 +21,7 @@ public final class WechatPayPrepayRequest extends
         appId_ = "";
         payerOpenId_ = "";
         description_ = "";
-        notifyUrl_ = "";
+        notifyHost_ = "";
     }
 
     @java.lang.Override
@@ -869,43 +869,43 @@ public final class WechatPayPrepayRequest extends
         }
     }
 
-    public static final int NOTIFY_URL_FIELD_NUMBER = 11;
+    public static final int NOTIFY_HOST_FIELD_NUMBER = 11;
     @SuppressWarnings("serial")
-    private volatile java.lang.Object notifyUrl_ = "";
+    private volatile java.lang.Object notifyHost_ = "";
 
     /**
-     * <code>string notify_url = 11;</code>
+     * <code>string notify_host = 11;</code>
      *
-     * @return The notifyUrl.
+     * @return The notifyHost.
      */
     @java.lang.Override
-    public java.lang.String getNotifyUrl() {
-        java.lang.Object ref = notifyUrl_;
+    public java.lang.String getNotifyHost() {
+        java.lang.Object ref = notifyHost_;
         if (ref instanceof java.lang.String) {
             return (java.lang.String) ref;
         } else {
             com.google.protobuf.ByteString bs =
                     (com.google.protobuf.ByteString) ref;
             java.lang.String s = bs.toStringUtf8();
-            notifyUrl_ = s;
+            notifyHost_ = s;
             return s;
         }
     }
 
     /**
-     * <code>string notify_url = 11;</code>
+     * <code>string notify_host = 11;</code>
      *
-     * @return The bytes for notifyUrl.
+     * @return The bytes for notifyHost.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-    getNotifyUrlBytes() {
-        java.lang.Object ref = notifyUrl_;
+    getNotifyHostBytes() {
+        java.lang.Object ref = notifyHost_;
         if (ref instanceof java.lang.String) {
             com.google.protobuf.ByteString b =
                     com.google.protobuf.ByteString.copyFromUtf8(
                             (java.lang.String) ref);
-            notifyUrl_ = b;
+            notifyHost_ = b;
             return b;
         } else {
             return (com.google.protobuf.ByteString) ref;
@@ -939,8 +939,8 @@ public final class WechatPayPrepayRequest extends
         if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
             com.google.protobuf.GeneratedMessageV3.writeString(output, 9, description_);
         }
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(notifyUrl_)) {
-            com.google.protobuf.GeneratedMessageV3.writeString(output, 11, notifyUrl_);
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(notifyHost_)) {
+            com.google.protobuf.GeneratedMessageV3.writeString(output, 11, notifyHost_);
         }
         getUnknownFields().writeTo(output);
     }
@@ -964,8 +964,8 @@ public final class WechatPayPrepayRequest extends
         if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
             size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, description_);
         }
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(notifyUrl_)) {
-            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, notifyUrl_);
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(notifyHost_)) {
+            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, notifyHost_);
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSize = size;
@@ -996,8 +996,8 @@ public final class WechatPayPrepayRequest extends
         }
         if (!getDescription()
                 .equals(other.getDescription())) return false;
-        if (!getNotifyUrl()
-                .equals(other.getNotifyUrl())) return false;
+        if (!getNotifyHost()
+                .equals(other.getNotifyHost())) return false;
         if (!getUnknownFields().equals(other.getUnknownFields())) return false;
         return true;
     }
@@ -1021,8 +1021,8 @@ public final class WechatPayPrepayRequest extends
         }
         hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
         hash = (53 * hash) + getDescription().hashCode();
-        hash = (37 * hash) + NOTIFY_URL_FIELD_NUMBER;
-        hash = (53 * hash) + getNotifyUrl().hashCode();
+        hash = (37 * hash) + NOTIFY_HOST_FIELD_NUMBER;
+        hash = (53 * hash) + getNotifyHost().hashCode();
         hash = (29 * hash) + getUnknownFields().hashCode();
         memoizedHashCode = hash;
         return hash;
@@ -1178,7 +1178,7 @@ public final class WechatPayPrepayRequest extends
                 amountBuilder_ = null;
             }
             description_ = "";
-            notifyUrl_ = "";
+            notifyHost_ = "";
             return this;
         }
 
@@ -1231,7 +1231,7 @@ public final class WechatPayPrepayRequest extends
                 result.description_ = description_;
             }
             if (((from_bitField0_ & 0x00000010) != 0)) {
-                result.notifyUrl_ = notifyUrl_;
+                result.notifyHost_ = notifyHost_;
             }
             result.bitField0_ |= to_bitField0_;
         }
@@ -1305,8 +1305,8 @@ public final class WechatPayPrepayRequest extends
                 bitField0_ |= 0x00000008;
                 onChanged();
             }
-            if (!other.getNotifyUrl().isEmpty()) {
-                notifyUrl_ = other.notifyUrl_;
+            if (!other.getNotifyHost().isEmpty()) {
+                notifyHost_ = other.notifyHost_;
                 bitField0_ |= 0x00000010;
                 onChanged();
             }
@@ -1359,7 +1359,7 @@ public final class WechatPayPrepayRequest extends
                             break;
                         } // case 74
                         case 90: {
-                            notifyUrl_ = input.readStringRequireUtf8();
+                            notifyHost_ = input.readStringRequireUtf8();
                             bitField0_ |= 0x00000010;
                             break;
                         } // case 90
@@ -1778,20 +1778,20 @@ public final class WechatPayPrepayRequest extends
             return this;
         }
 
-        private java.lang.Object notifyUrl_ = "";
+        private java.lang.Object notifyHost_ = "";
 
         /**
-         * <code>string notify_url = 11;</code>
+         * <code>string notify_host = 11;</code>
          *
-         * @return The notifyUrl.
+         * @return The notifyHost.
          */
-        public java.lang.String getNotifyUrl() {
-            java.lang.Object ref = notifyUrl_;
+        public java.lang.String getNotifyHost() {
+            java.lang.Object ref = notifyHost_;
             if (!(ref instanceof java.lang.String)) {
                 com.google.protobuf.ByteString bs =
                         (com.google.protobuf.ByteString) ref;
                 java.lang.String s = bs.toStringUtf8();
-                notifyUrl_ = s;
+                notifyHost_ = s;
                 return s;
             } else {
                 return (java.lang.String) ref;
@@ -1799,18 +1799,18 @@ public final class WechatPayPrepayRequest extends
         }
 
         /**
-         * <code>string notify_url = 11;</code>
+         * <code>string notify_host = 11;</code>
          *
-         * @return The bytes for notifyUrl.
+         * @return The bytes for notifyHost.
          */
         public com.google.protobuf.ByteString
-        getNotifyUrlBytes() {
-            java.lang.Object ref = notifyUrl_;
+        getNotifyHostBytes() {
+            java.lang.Object ref = notifyHost_;
             if (ref instanceof String) {
                 com.google.protobuf.ByteString b =
                         com.google.protobuf.ByteString.copyFromUtf8(
                                 (java.lang.String) ref);
-                notifyUrl_ = b;
+                notifyHost_ = b;
                 return b;
             } else {
                 return (com.google.protobuf.ByteString) ref;
@@ -1818,47 +1818,47 @@ public final class WechatPayPrepayRequest extends
         }
 
         /**
-         * <code>string notify_url = 11;</code>
+         * <code>string notify_host = 11;</code>
          *
-         * @param value The notifyUrl to set.
+         * @param value The notifyHost to set.
          * @return This builder for chaining.
          */
-        public Builder setNotifyUrl(
+        public Builder setNotifyHost(
                 java.lang.String value) {
             if (value == null) {
                 throw new NullPointerException();
             }
-            notifyUrl_ = value;
+            notifyHost_ = value;
             bitField0_ |= 0x00000010;
             onChanged();
             return this;
         }
 
         /**
-         * <code>string notify_url = 11;</code>
+         * <code>string notify_host = 11;</code>
          *
          * @return This builder for chaining.
          */
-        public Builder clearNotifyUrl() {
-            notifyUrl_ = getDefaultInstance().getNotifyUrl();
+        public Builder clearNotifyHost() {
+            notifyHost_ = getDefaultInstance().getNotifyHost();
             bitField0_ = (bitField0_ & ~0x00000010);
             onChanged();
             return this;
         }
 
         /**
-         * <code>string notify_url = 11;</code>
+         * <code>string notify_host = 11;</code>
          *
-         * @param value The bytes for notifyUrl to set.
+         * @param value The bytes for notifyHost to set.
          * @return This builder for chaining.
          */
-        public Builder setNotifyUrlBytes(
+        public Builder setNotifyHostBytes(
                 com.google.protobuf.ByteString value) {
             if (value == null) {
                 throw new NullPointerException();
             }
             checkByteStringIsUtf8(value);
-            notifyUrl_ = value;
+            notifyHost_ = value;
             bitField0_ |= 0x00000010;
             onChanged();
             return this;

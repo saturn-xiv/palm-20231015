@@ -481,7 +481,7 @@ proto.palm.musa.v1.WechatPayPrepayRequest.toObject = function(includeInstance, m
     payerOpenId: jspb.Message.getFieldWithDefault(msg, 2, ""),
     amount: (f = msg.getAmount()) && proto.palm.musa.v1.WechatPayPrepayRequest.Amount.toObject(includeInstance, f),
     description: jspb.Message.getFieldWithDefault(msg, 9, ""),
-    notifyUrl: jspb.Message.getFieldWithDefault(msg, 11, "")
+    notifyHost: jspb.Message.getFieldWithDefault(msg, 11, "")
   };
 
   if (includeInstance) {
@@ -537,7 +537,7 @@ proto.palm.musa.v1.WechatPayPrepayRequest.deserializeBinaryFromReader = function
       break;
     case 11:
       var value = /** @type {string} */ (reader.readString());
-      msg.setNotifyUrl(value);
+      msg.setNotifyHost(value);
       break;
     default:
       reader.skipField();
@@ -597,7 +597,7 @@ proto.palm.musa.v1.WechatPayPrepayRequest.serializeBinaryToWriter = function(mes
       f
     );
   }
-  f = message.getNotifyUrl();
+  f = message.getNotifyHost();
   if (f.length > 0) {
     writer.writeString(
       11,
@@ -877,10 +877,10 @@ proto.palm.musa.v1.WechatPayPrepayRequest.prototype.setDescription = function(va
 
 
 /**
- * optional string notify_url = 11;
+ * optional string notify_host = 11;
  * @return {string}
  */
-proto.palm.musa.v1.WechatPayPrepayRequest.prototype.getNotifyUrl = function() {
+proto.palm.musa.v1.WechatPayPrepayRequest.prototype.getNotifyHost = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
 };
 
@@ -889,7 +889,7 @@ proto.palm.musa.v1.WechatPayPrepayRequest.prototype.getNotifyUrl = function() {
  * @param {string} value
  * @return {!proto.palm.musa.v1.WechatPayPrepayRequest} returns this
  */
-proto.palm.musa.v1.WechatPayPrepayRequest.prototype.setNotifyUrl = function(value) {
+proto.palm.musa.v1.WechatPayPrepayRequest.prototype.setNotifyHost = function(value) {
   return jspb.Message.setProto3StringField(this, 11, value);
 };
 
@@ -3095,7 +3095,8 @@ proto.palm.musa.v1.WechatPayCreateRefundRequest.toObject = function(includeInsta
   var f, obj = {
     outTradeNo: jspb.Message.getFieldWithDefault(msg, 1, ""),
     reason: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    amount: (f = msg.getAmount()) && proto.palm.musa.v1.WechatPayCreateRefundRequest.Amount.toObject(includeInstance, f)
+    amount: (f = msg.getAmount()) && proto.palm.musa.v1.WechatPayCreateRefundRequest.Amount.toObject(includeInstance, f),
+    notifyHost: jspb.Message.getFieldWithDefault(msg, 11, "")
   };
 
   if (includeInstance) {
@@ -3144,6 +3145,10 @@ proto.palm.musa.v1.WechatPayCreateRefundRequest.deserializeBinaryFromReader = fu
       var value = new proto.palm.musa.v1.WechatPayCreateRefundRequest.Amount;
       reader.readMessage(value,proto.palm.musa.v1.WechatPayCreateRefundRequest.Amount.deserializeBinaryFromReader);
       msg.setAmount(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setNotifyHost(value);
       break;
     default:
       reader.skipField();
@@ -3194,6 +3199,13 @@ proto.palm.musa.v1.WechatPayCreateRefundRequest.serializeBinaryToWriter = functi
       3,
       f,
       proto.palm.musa.v1.WechatPayCreateRefundRequest.Amount.serializeBinaryToWriter
+    );
+  }
+  f = message.getNotifyHost();
+  if (f.length > 0) {
+    writer.writeString(
+      11,
+      f
     );
   }
 };
@@ -3459,6 +3471,24 @@ proto.palm.musa.v1.WechatPayCreateRefundRequest.prototype.clearAmount = function
  */
 proto.palm.musa.v1.WechatPayCreateRefundRequest.prototype.hasAmount = function() {
   return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional string notify_host = 11;
+ * @return {string}
+ */
+proto.palm.musa.v1.WechatPayCreateRefundRequest.prototype.getNotifyHost = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.musa.v1.WechatPayCreateRefundRequest} returns this
+ */
+proto.palm.musa.v1.WechatPayCreateRefundRequest.prototype.setNotifyHost = function(value) {
+  return jspb.Message.setProto3StringField(this, 11, value);
 };
 
 

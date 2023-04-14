@@ -79,17 +79,17 @@ public interface WechatPayPrepayRequestOrBuilder extends
     getDescriptionBytes();
 
     /**
-     * <code>string notify_url = 11;</code>
+     * <code>string notify_host = 11;</code>
      *
-     * @return The notifyUrl.
+     * @return The notifyHost.
      */
-    java.lang.String getNotifyUrl();
+    java.lang.String getNotifyHost();
 
     /**
-     * <code>string notify_url = 11;</code>
+     * <code>string notify_host = 11;</code>
      *
-     * @return The bytes for notifyUrl.
+     * @return The bytes for notifyHost.
      */
     com.google.protobuf.ByteString
-    getNotifyUrlBytes();
+    getNotifyHostBytes();
 }
