@@ -36,10 +36,6 @@ features = ["sqlite"]
 version = "4"
 features = ["derive"]
 
-[dependencies.libsqlite3-sys]
-version = "0.25"
-features = ["bundled"]
-
 [dependencies.palm]
 path = '../palm'
 
