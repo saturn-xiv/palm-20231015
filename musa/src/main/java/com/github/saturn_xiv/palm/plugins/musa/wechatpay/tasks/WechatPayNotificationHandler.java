@@ -12,19 +12,24 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class WechatPayNotificationHandler {
-    public WechatPayNotificationHandler(String name) {
+    public WechatPayNotificationHandler(String name, String tpl) {
         this.name = name;
+        this.tpl = tpl;
     }
 
     public <T> void execute(T context) throws IOException, SQLException {
         final var root = Paths.get("wechatpay", name);
         logger.info("load from {}", root);
-        final var sql = this.sql(root.resolve("sql.mustache").toFile(), context);
+        final var sql = this.sql(root.resolve(this.tpl + "-sql.mustache").toFile(), context);
 
 
         final var props = new Properties();
-        try (var file = new FileInputStream(root.resolve("datasource.properties").toFile())) {
-            props.load(file);
+        {
+            final var config = root.resolve("datasource.properties").toFile();
+            logger.debug("load datasource from {}", config);
+            try (var file = new FileInputStream(config)) {
+                props.load(file);
+            }
         }
 
         final var url = props.getProperty("url");
@@ -41,6 +46,7 @@ public class WechatPayNotificationHandler {
     }
 
     private <T> String sql(File file, T context) throws IOException {
+        logger.debug("load sql template {} for {}", file, context.getClass().getCanonicalName());
         try (var reader = new BufferedReader(new FileReader(file))) {
             var tpl = Mustache.compiler().compile(reader);
             return tpl.execute(context).trim();
@@ -48,5 +54,6 @@ public class WechatPayNotificationHandler {
     }
 
     private final String name;
+    private final String tpl;
     private final static Logger logger = LoggerFactory.getLogger(WechatPayNotificationHandler.class);
 }

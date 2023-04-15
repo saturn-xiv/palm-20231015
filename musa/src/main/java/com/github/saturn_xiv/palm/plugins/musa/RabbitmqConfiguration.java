@@ -52,7 +52,7 @@ public class RabbitmqConfiguration {
     @Bean(name = "palm.musa.rabbitmq.message-listener.wechat-pay.transaction")
     MessageListenerAdapter wechatPayNotificationTransactionListener() {
         return new MessageListenerAdapter(
-                new WechatPayNotificationReceiver<>(clients, Transaction.class),
+                new WechatPayNotificationReceiver<>(clients, Transaction.class, "wechat-pay-transaction"),
                 "receiveMessage"
         );
     }
@@ -60,7 +60,7 @@ public class RabbitmqConfiguration {
     @Bean(name = "palm.musa.rabbitmq.message-listener.wechat-pay.refund")
     MessageListenerAdapter wechatPayNotificationRefundListener() {
         return new MessageListenerAdapter(
-                new WechatPayNotificationReceiver<>(clients, RefundNotification.class),
+                new WechatPayNotificationReceiver<>(clients, RefundNotification.class, "wechat-pay-refund"),
                 "receiveMessage"
         );
     }

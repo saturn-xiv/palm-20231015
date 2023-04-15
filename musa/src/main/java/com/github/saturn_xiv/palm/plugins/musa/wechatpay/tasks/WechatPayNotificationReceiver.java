@@ -10,9 +10,10 @@ import java.sql.SQLException;
 
 
 public class WechatPayNotificationReceiver<T> {
-    public WechatPayNotificationReceiver(String[] clients, Class<T> clazz) {
+    public WechatPayNotificationReceiver(String[] clients, Class<T> clazz, String tpl) {
         this.clients = clients;
         this.clazz = clazz;
+        this.tpl = tpl;
     }
 
     public void receiveMessage(Message message) throws IOException, SQLException {
@@ -21,7 +22,7 @@ public class WechatPayNotificationReceiver<T> {
         final var context = gson.fromJson(new String(message.getBody()), clazz);
 
         for (var client : clients) {
-            var handler = new WechatPayNotificationHandler(client);
+            var handler = new WechatPayNotificationHandler(client, tpl);
             handler.execute(context);
         }
     }
@@ -29,6 +30,7 @@ public class WechatPayNotificationReceiver<T> {
 
     private final String[] clients;
     private final Class<T> clazz;
+    private final String tpl;
 
 
     private final static Logger logger = LoggerFactory.getLogger(WechatPayNotificationReceiver.class);
