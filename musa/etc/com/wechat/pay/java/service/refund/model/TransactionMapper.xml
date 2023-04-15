@@ -3,13 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wechat.pay.java.service.payments.model.TransactionMapper">
-    <update id="callback.aaa">
+    <update id="callback.aaa" parameterMap="com.wechat.pay.java.service.payments.model.Transaction">
         UPDATE xxx SET aaa = #{aaa}, bbb = #{bbb} WHERE id = #{id}
     </update>
-    <update id="callback.bbb">
+    <update id="callback.bbb" parameterMap="com.wechat.pay.java.service.payments.model.Transaction">
         UPDATE xxx SET aaa = #{aaa}, bbb = #{bbb} WHERE id = #{id}
     </update>
-    <update id="callback.ccc">
+    <update id="callback.ccc" parameterMap="com.wechat.pay.java.service.payments.model.Transaction">
         UPDATE xxx SET aaa = #{aaa}, bbb = #{bbb} WHERE id = #{id}
     </update>
 </mapper>
