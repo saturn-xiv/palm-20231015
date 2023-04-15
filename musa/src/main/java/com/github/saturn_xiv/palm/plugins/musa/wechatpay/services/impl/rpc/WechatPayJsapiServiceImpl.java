@@ -6,7 +6,7 @@ import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers.WechatPayJsapiHelper;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.OutNoType;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayBillService;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
 import com.google.protobuf.Empty;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
@@ -64,7 +64,7 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
                 WechatPayClient.currency(request.getAmount().getCurrency()), request.getAmount().getTotal(), request.getDescription(),
                 notifyUrl);
 
-        billService.addOrder(request.getAppId(), request.getPayerOpenId(), outTradeNo, request.getAmount(),
+        storageService.addOrder(request.getAppId(), request.getPayerOpenId(), outTradeNo, request.getAmount(),
                 request.getDescription());
 
         responseObserver.onNext(WechatPayJsapiPrepayIdResponse.newBuilder()
@@ -89,7 +89,7 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
     @Autowired
     WechatPayClient client;
     @Autowired
-    WechatPayBillService billService;
+    WechatPayStorageService storageService;
 
     private WechatPayJsapiHelper wechatPay;
     private final static Logger logger = LoggerFactory.getLogger(WechatPayJsapiHelper.class);

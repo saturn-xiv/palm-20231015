@@ -6,7 +6,7 @@ import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers.WechatPayRefundHelper;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.OutNoType;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayBillService;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +28,7 @@ public class WechatPayRefundServiceImpl extends WechatPayRefundGrpc.WechatPayRef
         final var response = refundHelper.create(request.getOutTradeNo(), outRefundNo,
                 request.getAmount().getRefund(), request.getAmount().getTotal(), currency,
                 request.getReason(), notifyUrl);
-        billService.addRefund(request.getOutTradeNo(), outRefundNo, request.getAmount(), request.getReason());
+        storageService.addRefund(request.getOutTradeNo(), outRefundNo, request.getAmount(), request.getReason());
 
 //        TODO
         responseObserver.onNext(WechatPayRefundResponse.newBuilder()
@@ -60,7 +60,7 @@ public class WechatPayRefundServiceImpl extends WechatPayRefundGrpc.WechatPayRef
     @Autowired
     WechatPayClient client;
     @Autowired
-    WechatPayBillService billService;
+    WechatPayStorageService storageService;
 
     private WechatPayRefundHelper refundHelper;
 

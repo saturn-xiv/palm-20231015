@@ -9,6 +9,7 @@ import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers.WechatPayNativeHelper;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.OutNoType;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,6 +49,8 @@ public class WechatPayNativeServiceImpl extends WechatPayNativeGrpc.WechatPayNat
     JwtHelper jwt;
     @Autowired
     WechatPayClient client;
+    @Autowired
+    WechatPayStorageService storageService;
 
     private WechatPayNativeHelper wechatPay;
 

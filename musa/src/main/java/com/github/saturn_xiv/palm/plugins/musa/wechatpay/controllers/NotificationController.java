@@ -5,7 +5,7 @@ import com.github.saturn_xiv.palm.plugins.musa.RabbitmqConfiguration;
 import com.github.saturn_xiv.palm.plugins.musa.helpers.QueueHelper;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.NotificationResponse;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayBillService;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
 import com.google.gson.Gson;
 import com.wechat.pay.java.core.http.Constant;
 import com.wechat.pay.java.core.notification.Notification;
@@ -22,7 +22,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
-import java.io.IOException;
 
 
 @RestController("palm.musa.controller.wechat-pay.notification")
@@ -37,7 +36,7 @@ public class NotificationController {
             @RequestHeader(value = WECHAT_PAY_SIGNATURE_TYPE) String signatureType,
             @RequestBody String body
     ) {
-
+        logger.info("receive refund notification {} {} {}", serial, signatureType, timestamp);
         try {
             final var param = new RequestParam.Builder()
                     .serialNumber(serial)
@@ -49,11 +48,11 @@ public class NotificationController {
                     .build();
             final RefundNotification resource = notificationParser.parse(param, RefundNotification.class);
 
-            publish(RabbitmqConfiguration.WECHAT_PAY_TRANSACTION, body, resource);
+            publish(RabbitmqConfiguration.WECHAT_PAY_REFUND, body, resource);
             return new ResponseEntity<>(NotificationResponse.success(), HttpStatus.OK);
 
         } catch (Exception e) {
-            logger.error("receive refund notification ", e);
+            logger.error("process refund notification ", e);
             return new ResponseEntity<>(NotificationResponse.fail(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -65,6 +64,7 @@ public class NotificationController {
                                                             @RequestHeader(value = Constant.WECHAT_PAY_SIGNATURE) String signature,
                                                             @RequestHeader(value = WECHAT_PAY_SIGNATURE_TYPE) String signatureType,
                                                             @RequestBody String body) {
+        logger.info("receive refund notification {} {} {}", serial, signatureType, timestamp);
         try {
             final var param = new RequestParam.Builder()
                     .serialNumber(serial)
@@ -78,18 +78,18 @@ public class NotificationController {
             publish(RabbitmqConfiguration.WECHAT_PAY_TRANSACTION, body, resource);
             return new ResponseEntity<>(NotificationResponse.success(), HttpStatus.OK);
         } catch (Exception e) {
-            logger.error("receive transaction notification ", e);
+            logger.error("process transaction notification ", e);
             return new ResponseEntity<>(NotificationResponse.fail(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    <T> void publish(String exchange, String body, T response) throws IOException {
+    <T> void publish(String exchange, String body, T response) {
 
         Gson gson = new Gson();
         final var notification = gson.fromJson(body, Notification.class);
         final var resource = gson.toJson(response);
-        billService.addNotification(notification, resource);
-        queueHelper.publish(RabbitmqConfiguration.WECHAT_PAY_REFUND,
+        storageService.addNotification(notification, resource);
+        queueHelper.publish(exchange,
                 MediaType.APPLICATION_JSON, resource.getBytes());
     }
 
@@ -100,7 +100,7 @@ public class NotificationController {
     }
 
     @Autowired
-    WechatPayBillService billService;
+    WechatPayStorageService storageService;
     @Autowired
     QueueHelper queueHelper;
     @Autowired

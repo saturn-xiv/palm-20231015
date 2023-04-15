@@ -2,7 +2,7 @@ package com.github.saturn_xiv.palm.plugins.musa.wechatpay.tasks;
 
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayFundFlowBillRequest;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayBillService;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +18,9 @@ public class WechatPayFundFlowBillTask {
         logger.info("start wechat-pay download fund flow bill");
         for (var billDate : WechatPayClient.latestBillDates()) {
             for (var accountType : WechatPayFundFlowBillRequest.AccountType.values()) {
-                if (wechatPayBillService.getFundFlowBill(billDate, accountType) == null) {
+                if (wechatPayStorageService.getFundFlowBill(billDate, accountType) == null) {
                     final var content = wechatPayClient.downloadFundFlowBill(billDate, WechatPayClient.accountType(accountType));
-                    wechatPayBillService.addFundFlowBill(billDate, accountType, null, content);
+                    wechatPayStorageService.addFundFlowBill(billDate, accountType, null, content);
                 }
 
                 Thread.sleep(Duration.ofSeconds(5));
@@ -29,7 +29,7 @@ public class WechatPayFundFlowBillTask {
     }
 
     @Autowired
-    WechatPayBillService wechatPayBillService;
+    WechatPayStorageService wechatPayStorageService;
     @Autowired
     WechatPayClient wechatPayClient;
     private final static Logger logger = LoggerFactory.getLogger(WechatPayFundFlowBillTask.class);

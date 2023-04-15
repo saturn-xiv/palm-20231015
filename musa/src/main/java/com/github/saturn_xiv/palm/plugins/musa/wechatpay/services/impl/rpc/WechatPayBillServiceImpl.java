@@ -7,7 +7,7 @@ import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillResponse;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayFundFlowBillRequest;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayBillService;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
 import com.google.protobuf.ByteString;
 import com.google.rpc.Code;
 import com.google.rpc.Status;
@@ -25,7 +25,7 @@ public class WechatPayBillServiceImpl extends WechatPayBillGrpc.WechatPayBillImp
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
         final var billDate = WechatPayClient.billDate(request.getBillDate());
-        var it = billService.getTradeBill(billDate, request.getBillType());
+        var it = storageService.getTradeBill(billDate, request.getBillType());
         byte[] content;
         if (it == null) {
             if (!WechatPayClient.canDownload(request.getBillDate())) {
@@ -36,7 +36,7 @@ public class WechatPayBillServiceImpl extends WechatPayBillGrpc.WechatPayBillImp
                 return;
             }
             content = client.downloadTradeBill(billDate, WechatPayClient.billType(request.getBillType()));
-            billService.addTradeBill(billDate, request.getBillType(), null, content);
+            storageService.addTradeBill(billDate, request.getBillType(), null, content);
         } else {
             content = it.getContent();
         }
@@ -51,7 +51,7 @@ public class WechatPayBillServiceImpl extends WechatPayBillGrpc.WechatPayBillImp
 
 
         final var billDate = WechatPayClient.billDate(request.getBillDate());
-        var it = billService.getFundFlowBill(billDate, request.getAccountType());
+        var it = storageService.getFundFlowBill(billDate, request.getAccountType());
         byte[] content;
         if (it == null) {
             if (!WechatPayClient.canDownload(request.getBillDate())) {
@@ -62,7 +62,7 @@ public class WechatPayBillServiceImpl extends WechatPayBillGrpc.WechatPayBillImp
                 return;
             }
             content = client.downloadFundFlowBill(billDate, WechatPayClient.accountType(request.getAccountType()));
-            billService.addFundFlowBill(billDate, request.getAccountType(), null, content);
+            storageService.addFundFlowBill(billDate, request.getAccountType(), null, content);
 
         } else {
             content = it.getContent();
@@ -77,7 +77,7 @@ public class WechatPayBillServiceImpl extends WechatPayBillGrpc.WechatPayBillImp
     @Autowired
     WechatPayClient client;
     @Autowired
-    WechatPayBillService billService;
+    WechatPayStorageService storageService;
 
     private final static Logger logger = LoggerFactory.getLogger(WechatPayNativeServiceImpl.class);
 }

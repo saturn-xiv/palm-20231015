@@ -3,15 +3,15 @@ package com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.impl;
 import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.*;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayBillService;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
-@Service("palm.musa.service.wechat-pay.bill")
-public class WechatPayBillServiceImpl implements WechatPayBillService {
+@Service("palm.musa.service.wechat-pay")
+public class WechatPayServiceImpl implements WechatPayStorageService {
 
 
     @Override
@@ -23,6 +23,7 @@ public class WechatPayBillServiceImpl implements WechatPayBillService {
         it.setSummary(notification.getSummary());
         it.setResourceType(notification.getResourceType());
         it.setResource(resource);
+        it.setCreatedAt(new Date());
         notificationRepository.save(it);
     }
 

@@ -4,7 +4,7 @@ import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.FundFlowBill;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.TradeBill;
 
-public interface WechatPayBillService {
+public interface WechatPayStorageService {
     void addFundFlowBill(String billDate, WechatPayFundFlowBillRequest.AccountType accountType, WechatPayTarType tarType, byte[] content);
 
     void addTradeBill(String billDate, WechatPayTradeBillRequest.BillType billType, WechatPayTarType tarType, byte[] content);
