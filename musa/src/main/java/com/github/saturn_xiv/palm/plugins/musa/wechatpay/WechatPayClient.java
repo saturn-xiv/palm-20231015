@@ -129,8 +129,8 @@ public class WechatPayClient {
         final DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         List<String> items = new ArrayList<>();
         final var now = LocalDate.now();
-        final var from = now.minusMonths(3);
-        for (var it = from; it.isBefore(now); it = it.plusDays(1)) {
+        final var begin = now.minusMonths(3);
+        for (var it = now; it.isAfter(begin); it = it.minusDays(1)) {
             items.add(it.format(format));
         }
         return items;
