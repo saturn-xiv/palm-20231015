@@ -1,14 +1,8 @@
 package com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.impl;
 
 import com.github.saturn_xiv.palm.plugins.musa.v1.*;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.FundFlowBill;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.Order;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.Refund;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.TradeBill;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.WechatPayFundFlowBillRepository;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.WechatPayOrderRepository;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.WechatPayRefundRepository;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.WechatPayTradeBillRepository;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.*;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayBillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +12,19 @@ import java.util.Date;
 
 @Service("palm.musa.service.wechat-pay.bill")
 public class WechatPayBillServiceImpl implements WechatPayBillService {
+
+
+    @Override
+    public void addNotification(com.wechat.pay.java.core.notification.Notification notification, String resource) {
+        var it = new Notification();
+        it.setUid(notification.getId());
+        it.setCreateTime(notification.getCreateTime());
+        it.setEventType(notification.getEventType());
+        it.setSummary(notification.getSummary());
+        it.setResourceType(notification.getResourceType());
+        it.setResource(resource);
+        notificationRepository.save(it);
+    }
 
     @Transactional(rollbackFor = Exception.class)
     @Override
@@ -92,6 +99,7 @@ public class WechatPayBillServiceImpl implements WechatPayBillService {
     WechatPayOrderRepository orderRepository;
     @Autowired
     WechatPayRefundRepository refundRepository;
-
+    @Autowired
+    WechatPayNotificationRepository notificationRepository;
 
 }

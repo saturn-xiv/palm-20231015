@@ -181,20 +181,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                         ),
                     )
                     .service(
-                        web::scope("/wechat")
-                            .service(
-                                web::scope("/pay").service(
-                                    web::scope("/notification")
-                                        .service(
-                                            web::scope("/refund")
-                                            .service(nut::controllers::wechat::pay::notification::refund::callback),
-                                        )
-                                        .service(
-                                            web::scope("/transaction")
-                                            .service(nut::controllers::wechat::pay::notification::transaction::callback),
-                                        ),
-                                ),
-                            )
+                        web::scope("/wechat")                            
                             .service(
                                 web::scope("/oauth2").service(
                                     web::scope("/messaging")

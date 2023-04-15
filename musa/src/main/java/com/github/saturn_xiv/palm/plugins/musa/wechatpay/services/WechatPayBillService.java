@@ -16,4 +16,7 @@ public interface WechatPayBillService {
     void addOrder(String appId, String payerOpenId, String outTradeNo, WechatPayPrepayRequest.Amount amount, String description);
 
     void addRefund(String outTradeNo, String outRefundNo, WechatPayCreateRefundRequest.Amount amount, String reason);
+
+
+    void addNotification(com.wechat.pay.java.core.notification.Notification notification, String resource);
 }

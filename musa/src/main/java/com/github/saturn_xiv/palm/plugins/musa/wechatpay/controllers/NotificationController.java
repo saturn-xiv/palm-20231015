@@ -6,7 +6,9 @@ import com.github.saturn_xiv.palm.plugins.musa.helpers.QueueHelper;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.NotificationResponse;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayBillService;
+import com.google.gson.Gson;
 import com.wechat.pay.java.core.http.Constant;
+import com.wechat.pay.java.core.notification.Notification;
 import com.wechat.pay.java.core.notification.NotificationParser;
 import com.wechat.pay.java.core.notification.RequestParam;
 import com.wechat.pay.java.service.payments.model.Transaction;
@@ -20,6 +22,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.io.IOException;
 
 
 @RestController("palm.musa.controller.wechat-pay.notification")
@@ -44,9 +47,9 @@ public class NotificationController {
                     .timestamp(timestamp)
                     .body(body)
                     .build();
-            RefundNotification message = notificationParser.parse(param, RefundNotification.class);
-            queueHelper.publish(RabbitmqConfiguration.WECHAT_PAY_REFUND,
-                    MediaType.APPLICATION_JSON, message.toString().getBytes());
+            final RefundNotification resource = notificationParser.parse(param, RefundNotification.class);
+
+            publish(RabbitmqConfiguration.WECHAT_PAY_TRANSACTION, body, resource);
             return new ResponseEntity<>(NotificationResponse.success(), HttpStatus.OK);
 
         } catch (Exception e) {
@@ -71,16 +74,23 @@ public class NotificationController {
                     .timestamp(timestamp)
                     .body(body)
                     .build();
-            Transaction message = notificationParser.parse(param, Transaction.class);
-            queueHelper.publish(RabbitmqConfiguration.WECHAT_PAY_TRANSACTION,
-                    MediaType.APPLICATION_JSON, message.toString().getBytes());
-
+            Transaction resource = notificationParser.parse(param, Transaction.class);
+            publish(RabbitmqConfiguration.WECHAT_PAY_TRANSACTION, body, resource);
             return new ResponseEntity<>(NotificationResponse.success(), HttpStatus.OK);
-
         } catch (Exception e) {
             logger.error("receive transaction notification ", e);
             return new ResponseEntity<>(NotificationResponse.fail(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    <T> void publish(String exchange, String body, T response) throws IOException {
+
+        Gson gson = new Gson();
+        final var notification = gson.fromJson(body, Notification.class);
+        final var resource = gson.toJson(response);
+        billService.addNotification(notification, resource);
+        queueHelper.publish(RabbitmqConfiguration.WECHAT_PAY_REFUND,
+                MediaType.APPLICATION_JSON, resource.getBytes());
     }
 
 
