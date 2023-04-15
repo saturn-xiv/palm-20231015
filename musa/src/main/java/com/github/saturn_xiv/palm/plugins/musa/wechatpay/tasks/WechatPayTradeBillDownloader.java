@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 
-@Component("palm.musa.task.wechat-pay.trade-bill")
-public class WechatPayTradeBillTask {
-    @Scheduled(cron = "${app.tasks.wechatpay.trade-bill}")
+@Component("palm.musa.task.wechat-pay.downloader.trade-bill")
+public class WechatPayTradeBillDownloader {
+    @Scheduled(cron = "${app.wechatpay.trade-bill.downloader-cron}")
     public void execute() throws InterruptedException {
-        logger.info("start to download trade bill");
+        logger.info("start to download trade bills");
         for (var billDate : WechatPayClient.latestBillDates()) {
             for (var billType : WechatPayTradeBillRequest.BillType.values()) {
                 if (wechatPayStorageService.getTradeBill(billDate, billType) == null) {
@@ -34,5 +34,5 @@ public class WechatPayTradeBillTask {
     WechatPayStorageService wechatPayStorageService;
     @Autowired
     WechatPayClient wechatPayClient;
-    private final static Logger logger = LoggerFactory.getLogger(WechatPayFundFlowBillTask.class);
+    private final static Logger logger = LoggerFactory.getLogger(WechatPayFundFlowBillDownloader.class);
 }

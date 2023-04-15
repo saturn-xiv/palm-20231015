@@ -43,7 +43,7 @@ public class JwtHelper {
         );
     }
 
-    @Value("${app.clients}")
+    @Value("${app.loquat.clients}")
     String[] clients;
 
     @Autowired
