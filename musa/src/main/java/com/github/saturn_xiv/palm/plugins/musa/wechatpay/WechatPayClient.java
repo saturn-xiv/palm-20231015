@@ -25,9 +25,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.TimeZone;
 
 @Component("palm.musa.model.wechatpay")
@@ -125,9 +125,9 @@ public class WechatPayClient {
         return !it.isBefore(begin.toLocalDate()) && !it.isAfter(end.toLocalDate());
     }
 
-    public static List<String> latestBillDates() {
+    public static Set<String> latestBillDates() {
         final DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        List<String> items = new ArrayList<>();
+        Set<String> items = new HashSet<>();
         final var now = LocalDate.now();
         final var begin = now.minusMonths(3);
         for (var it = now; it.isAfter(begin); it = it.minusDays(1)) {

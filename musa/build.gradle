@@ -40,6 +40,8 @@ dependencies {
 	implementation 'org.postgresql:postgresql:42.6.0'
 	// https://mvnrepository.com/artifact/org.liquibase/liquibase-core
 	implementation 'org.liquibase:liquibase-core:4.20.0'
+	// https://mvnrepository.com/artifact/org.mybatis/mybatis
+	implementation 'org.mybatis:mybatis:3.5.13'
 
 	// https://mvnrepository.com/artifact/org.springframework.shell/spring-shell-starter
 	implementation 'org.springframework.shell:spring-shell-starter:3.0.1'

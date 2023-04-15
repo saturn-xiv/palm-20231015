@@ -1,13 +1,14 @@
 package com.github.saturn_xiv.palm.plugins.musa;
 
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.tasks.WechatPayNotificationRefundReceiver;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.tasks.WechatPayNotificationTransactionReceiver;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.tasks.WechatPayNotificationReceiver;
+import com.wechat.pay.java.service.payments.model.Transaction;
+import com.wechat.pay.java.service.refund.model.RefundNotification;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -50,12 +51,18 @@ public class RabbitmqConfiguration {
 
     @Bean(name = "palm.musa.rabbitmq.message-listener.wechat-pay.transaction")
     MessageListenerAdapter wechatPayNotificationTransactionListener() {
-        return new MessageListenerAdapter(wechatPayNotificationTransactionReceiver, "receiveMessage");
+        return new MessageListenerAdapter(
+                new WechatPayNotificationReceiver<>(clients, Transaction.class),
+                "receiveMessage"
+        );
     }
 
     @Bean(name = "palm.musa.rabbitmq.message-listener.wechat-pay.refund")
     MessageListenerAdapter wechatPayNotificationRefundListener() {
-        return new MessageListenerAdapter(wechatPayNotificationRefundReceiver, "receiveMessage");
+        return new MessageListenerAdapter(
+                new WechatPayNotificationReceiver<>(clients, RefundNotification.class),
+                "receiveMessage"
+        );
     }
 
     @Bean(name = "palm.musa.rabbitmq.message-listener-container.wechat-pay.refund")
@@ -84,10 +91,8 @@ public class RabbitmqConfiguration {
         return container;
     }
 
-    @Autowired
-    WechatPayNotificationTransactionReceiver wechatPayNotificationTransactionReceiver;
-    @Autowired
-    WechatPayNotificationRefundReceiver wechatPayNotificationRefundReceiver;
+    @Value("${app.loquat.clients}")
+    String[] clients;
 
     public final static String WECHAT_PAY_TRANSACTION = "wechat-pay.transaction";
     public final static String WECHAT_PAY_REFUND = "wechat-pay.refund";
