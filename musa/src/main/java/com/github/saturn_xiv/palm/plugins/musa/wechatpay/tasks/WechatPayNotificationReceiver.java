@@ -6,23 +6,21 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 
 public class WechatPayNotificationReceiver<T> {
-    public WechatPayNotificationReceiver(String[] clients, Class<T> clazz, String tpl) {
+    public WechatPayNotificationReceiver(String[] clients, Class<T> clazz) {
         this.clients = clients;
         this.clazz = clazz;
-        this.tpl = tpl;
     }
 
-    public void receiveMessage(Message message) throws IOException, SQLException {
+    public void receiveMessage(Message message) throws IOException {
         logger.info("handle message {}@{}", message.getMessageProperties().getMessageId(), message.getMessageProperties().getMessageId());
         var gson = new Gson();
         final var context = gson.fromJson(new String(message.getBody()), clazz);
 
         for (var client : clients) {
-            var handler = new WechatPayNotificationHandler(client, tpl);
+            var handler = new WechatPayNotificationHandler<>(client, clazz);
             handler.execute(context);
         }
     }
@@ -30,7 +28,6 @@ public class WechatPayNotificationReceiver<T> {
 
     private final String[] clients;
     private final Class<T> clazz;
-    private final String tpl;
 
 
     private final static Logger logger = LoggerFactory.getLogger(WechatPayNotificationReceiver.class);

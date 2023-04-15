@@ -1,59 +1,48 @@
 package com.github.saturn_xiv.palm.plugins.musa.wechatpay.tasks;
 
-import com.samskivert.mustache.Mustache;
-import org.apache.ibatis.jdbc.ScriptRunner;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.file.Paths;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Properties;
 
-public class WechatPayNotificationHandler {
-    public WechatPayNotificationHandler(String name, String tpl) {
-        this.name = name;
-        this.tpl = tpl;
+public class WechatPayNotificationHandler<T> {
+    public WechatPayNotificationHandler(String env, Class<T> clazz) {
+        this.env = env;
+        this.clazz = clazz;
     }
 
-    public <T> void execute(T context) throws IOException, SQLException {
-        final var root = Paths.get("wechatpay", name);
-        logger.info("load from {}", root);
-        final var sql = this.sql(root.resolve(this.tpl + "-sql.mustache").toFile(), context);
-
-
+    public void execute(T context) throws IOException {
         final var props = new Properties();
         {
-            final var config = root.resolve("datasource.properties").toFile();
-            logger.debug("load datasource from {}", config);
-            try (var file = new FileInputStream(config)) {
-                props.load(file);
+            final var file = Paths.get("wechatpay", "datasource", env + ".properties").toFile();
+            logger.debug("load datasource from {}", file);
+            try (var stream = new FileInputStream(file)) {
+                props.load(stream);
             }
         }
 
-        final var url = props.getProperty("url");
-        logger.debug("open {}", url);
-        try (var db = DriverManager.getConnection(
-                url,
-                props.getProperty("username"),
-                props.getProperty("password"))
-        ) {
-            logger.debug("{}", sql);
-            var script = new ScriptRunner(db);
-            script.runScript(new StringReader(sql));
+        try (var config = new FileInputStream("mybitis-config.xml")) {
+            var factory = new SqlSessionFactoryBuilder().build(config, props);
+            try (var session = factory.openSession(false)) {
+                final var scripts = props.getProperty("scripts").split(",");
+                Arrays.sort(scripts);
+                for (var it : scripts) {
+                    final var statement = clazz.getCanonicalName() + "Mapper.callback." + it;
+                    logger.debug("run statement {}", statement);
+                    session.update(statement, context);
+                }
+                session.commit();
+            }
         }
     }
 
-    private <T> String sql(File file, T context) throws IOException {
-        logger.debug("load sql template {} for {}", file, context.getClass().getCanonicalName());
-        try (var reader = new BufferedReader(new FileReader(file))) {
-            var tpl = Mustache.compiler().compile(reader);
-            return tpl.execute(context).trim();
-        }
-    }
 
-    private final String name;
-    private final String tpl;
+    private final String env;
+    private final Class<T> clazz;
     private final static Logger logger = LoggerFactory.getLogger(WechatPayNotificationHandler.class);
 }
