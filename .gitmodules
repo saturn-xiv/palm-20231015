@@ -10,3 +10,6 @@
 [submodule "lemon/src/themes/hinode/theme"]
 	path = lemon/src/themes/hinode/theme
 	url = https://github.com/markdumay/hugo-theme-hinode-child.git
+[submodule "lemon/src/themes/x_corporation/theme"]
+	path = lemon/src/themes/x_corporation/theme
+	url = https://github.com/tranduyhung/grav-theme-x-corporation.git
