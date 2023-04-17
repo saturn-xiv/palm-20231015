@@ -131,12 +131,13 @@ RUN cd $HOME/build/musl-cross-make \
 RUN echo 'export PATH=/opt/crosstools/bin:$PATH' >> $HOME/.zshrc
 
 # https://github.com/bazelbuild/bazelisk
-ENV BAZEL_VERSION "v1.15.0"
+ENV BAZEL_VERSION "v1.16.0"
 RUN wget -q -O $HOME/.local/bin/bazel \
     https://github.com/bazelbuild/bazelisk/releases/download/${BAZEL_VERSION}/bazelisk-linux-amd64
 RUN chmod +x $HOME/.local/bin/bazel
 
 # https://github.com/rbenv/rbenv
+# https://github.com/rbenv/ruby-build
 ENV RUBY_VERSION "3.2.2"
 RUN git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv \
     && git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build \
@@ -152,6 +153,7 @@ RUN zsh -c "source $HOME/.zshrc \
     && gem install bundler"
 RUN zsh -c "source $HOME/.zshrc && rbenv global ${RUBY_VERSION}"
 
+# https://go.dev/doc/install
 ENV GO_VERSION "1.20.3"
 RUN wget -q -P $HOME/downloads https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
 RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local
@@ -165,6 +167,7 @@ RUN curl -s "https://get.sdkman.io" | zsh
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
     && sdk install java ${JDK_VERSION} \
+    && sdk install ant \
     && sdk install maven \
     && sdk install gradle ${GRADLE_VERSION}"
 
@@ -199,12 +202,16 @@ RUN zsh -c "source $HOME/.cargo/env \
     && rustup target add x86_64-unknown-linux-musl \
     && rustup target add aarch64-unknown-linux-musl"
 
-
 RUN apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
 RUN zsh -c "source $HOME/.zshrc \
     && cargo install diesel_cli \
     && cargo install --locked cargo-outdated \
     && cargo install mdbook"
+
+# https://github.com/microsoft/vcpkg
+RUN git clone https://github.com/microsoft/vcpkg.git $HOME/local/vcpkg
+RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
+    && echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.zshrc
 
 # https://opensearch.org/downloads.html#opensearch
 ENV OPENSEARCH_VERSION "2.6.0"
@@ -219,7 +226,7 @@ RUN wget -q -O /usr/bin/minio \
 RUN chmod +x /usr/bin/minio
 
 # https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.53.0"
+ENV GRPC_VERSION "v1.54.0"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 # ENV PROTOBUF_VERSION "v3.21.8"
 # RUN cd $HOME/downloads/grpc/third_party/protobuf \
@@ -270,12 +277,23 @@ RUN zsh -c "source $HOME/.zshrc \
     && make \
     && make install"
 
-# https://github.com/microsoft/vcpkg
-RUN git clone https://github.com/microsoft/vcpkg.git $HOME/local/vcpkg
-RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
-    && echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.zshrc
 
-ADD conan /opt/conan
+
+# https://github.com/apache/thrift
+# https://thrift.apache.org/docs/install/
+ENV THRIFT_VERSION "v0.18.1"
+RUN git clone -b $THRIFT_VERSION https://github.com/apache/thrift.git $HOME/downloads/thrift
+RUN apt install -y libboost-all-dev libevent-dev libz-dev zlib1g-dev \
+        mono-devel erlang \
+        libbit-vector-perl libclass-accessor-perl
+# FIXME Could not find method classifier() for arguments [test] on task ':testJar'
+RUN zsh -c "source $HOME/.zshrc \
+    && cd $HOME/downloads/thrift \
+    && ./bootstrap.sh \
+    && ./configure MAKE='gmake' CXXFLAGS='-g -O2' CFLAGS='-g -O2' --prefix=$HOME/.local --without-java --disable-tests \
+    && make"
+
+# ADD conan /opt/conan
 # RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh amd64"
 # RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh arm64"
 # RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh armhf"
