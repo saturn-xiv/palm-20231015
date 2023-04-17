@@ -26,13 +26,12 @@ public class WechatPayNotificationHandler<T> {
             }
         }
 
-        try (var config = new FileInputStream("mybitis-config.xml")) {
+        try (var config = new FileInputStream( "mybatis-config.xml")) {
             var factory = new SqlSessionFactoryBuilder().build(config, props);
             try (var session = factory.openSession(false)) {
                 final var scripts = props.getProperty("scripts").split(",");
-                Arrays.sort(scripts);
                 for (var it : scripts) {
-                    final var statement = clazz.getCanonicalName() + "Mapper.callback." + it;
+                    final var statement = clazz.getCanonicalName() + "Mapper.callback-" + it;
                     logger.debug("run statement {}", statement);
                     session.update(statement, context);
                 }

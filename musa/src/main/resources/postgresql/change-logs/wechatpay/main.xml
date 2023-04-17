@@ -9,5 +9,6 @@
     <include file="002-create-orders.xml" relativeToChangelogFile="true"/>
     <include file="003-create-refunds.xml" relativeToChangelogFile="true"/>
     <include file="004-create-notifications.xml" relativeToChangelogFile="true"/>
+    <include file="005-create-notification-callback-demo.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

@@ -1,14 +1,7 @@
 package com.github.saturn_xiv.palm.plugins.musa;
 
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.tasks.WechatPayNotificationReceiver;
-import com.wechat.pay.java.service.payments.model.Transaction;
-import com.wechat.pay.java.service.refund.model.RefundNotification;
 import org.springframework.amqp.core.*;
-import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
-import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -48,51 +41,6 @@ public class RabbitmqConfiguration {
         return BindingBuilder.bind(queue).to(exchange);
     }
 
-
-    @Bean(name = "palm.musa.rabbitmq.message-listener.wechat-pay.transaction")
-    MessageListenerAdapter wechatPayNotificationTransactionListener() {
-        return new MessageListenerAdapter(
-                new WechatPayNotificationReceiver<>(clients, Transaction.class),
-                "receiveMessage"
-        );
-    }
-
-    @Bean(name = "palm.musa.rabbitmq.message-listener.wechat-pay.refund")
-    MessageListenerAdapter wechatPayNotificationRefundListener() {
-        return new MessageListenerAdapter(
-                new WechatPayNotificationReceiver<>(clients, RefundNotification.class),
-                "receiveMessage"
-        );
-    }
-
-    @Bean(name = "palm.musa.rabbitmq.message-listener-container.wechat-pay.refund")
-    SimpleMessageListenerContainer wechatPayMessageNotificationRefundListenerContainer(
-            ConnectionFactory connectionFactory,
-            @Qualifier("palm.musa.rabbitmq.message-listener.wechat-pay.refund") MessageListenerAdapter listenerAdapter
-
-    ) {
-        var container = new SimpleMessageListenerContainer();
-        container.setConnectionFactory(connectionFactory);
-        container.setQueueNames(WECHAT_PAY_REFUND);
-        container.setMessageListener(listenerAdapter);
-        return container;
-    }
-
-    @Bean(name = "palm.musa.rabbitmq.message-listener-container.wechat-pay.transaction")
-    SimpleMessageListenerContainer wechatPayMessageNotificationTransactionListenerContainer(
-            ConnectionFactory connectionFactory,
-            @Qualifier("palm.musa.rabbitmq.message-listener.wechat-pay.transaction") MessageListenerAdapter listenerAdapter
-
-    ) {
-        var container = new SimpleMessageListenerContainer();
-        container.setConnectionFactory(connectionFactory);
-        container.setQueueNames(WECHAT_PAY_TRANSACTION);
-        container.setMessageListener(listenerAdapter);
-        return container;
-    }
-
-    @Value("${app.loquat.clients}")
-    String[] clients;
 
     public final static String WECHAT_PAY_TRANSACTION = "wechat-pay.transaction";
     public final static String WECHAT_PAY_REFUND = "wechat-pay.refund";

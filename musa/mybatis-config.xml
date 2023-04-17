@@ -15,7 +15,7 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="com/wechat/pay/java/service/refund/model/RefundNotificationMapper.xml"/>
-        <mapper resource="com/wechat/pay/java/service/payments/model/TransactionMapper.xml"/>
+        <mapper url="file:///tmp/com/wechat/pay/java/service/refund/model/RefundNotificationMapper.xml"/>
+        <mapper url="file:///tmp/com/wechat/pay/java/service/payments/model/TransactionMapper.xml"/>
     </mappers>
 </configuration>

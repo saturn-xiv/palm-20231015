@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="20230417193220" author="Jeremy Zheng" labels="create callback notifications message">
+
+        <createTable tableName="wechat_pay_notification_transaction_demo">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="out_trade_no" type="varchar(32)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="trade_state" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex tableName="wechat_pay_notification_transaction_demo"
+                     indexName="idx_wechat_pay_notification_transaction_demo_trade_status">
+            <column name="trade_state"/>
+        </createIndex>
+
+        <createTable tableName="wechat_pay_notification_refund_demo">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="out_refund_no" type="varchar(64)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="refund_status" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex tableName="wechat_pay_notification_refund_demo"
+                     indexName="idx_wechat_pay_notification_refund_demo_refund_status">
+            <column name="refund_status"/>
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>
