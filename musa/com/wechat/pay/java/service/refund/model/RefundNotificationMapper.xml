@@ -3,13 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wechat.pay.java.service.refund.model.RefundNotificationMapper">
-    <update id="callback-first" parameterType="com.wechat.pay.java.service.refund.model.RefundNotification">
-        UPDATE wechat_pay_notification_refund_demo SET refund_status = #{refundStatus} WHERE out_refund_no = #{outRefundNo}
-    </update>
-    <update id="callback-second" parameterType="com.wechat.pay.java.service.refund.model.RefundNotification">
-        UPDATE wechat_pay_notification_refund_demo SET refund_status = #{refundStatus} WHERE out_refund_no = #{outRefundNo}
-    </update>
-    <update id="callback-third" parameterType="com.wechat.pay.java.service.refund.model.RefundNotification">
+    <update id="callback" parameterType="com.wechat.pay.java.service.refund.model.RefundNotification">
         UPDATE wechat_pay_notification_refund_demo SET refund_status = #{refundStatus} WHERE out_refund_no = #{outRefundNo}
     </update>
 </mapper>

@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.Properties;
 
 public class WechatPayNotificationHandler<T> {
@@ -26,15 +25,12 @@ public class WechatPayNotificationHandler<T> {
             }
         }
 
-        try (var config = new FileInputStream( "mybatis-config.xml")) {
+        try (var config = new FileInputStream("mybatis-config.xml")) {
             var factory = new SqlSessionFactoryBuilder().build(config, props);
             try (var session = factory.openSession(false)) {
-                final var scripts = props.getProperty("scripts").split(",");
-                for (var it : scripts) {
-                    final var statement = clazz.getCanonicalName() + "Mapper.callback-" + it;
-                    logger.debug("run statement {}", statement);
-                    session.update(statement, context);
-                }
+                final var statement = clazz.getCanonicalName() + "Mapper.callback";
+                logger.debug("run statement {}", statement);
+                session.update(statement, context);
                 session.commit();
             }
         }

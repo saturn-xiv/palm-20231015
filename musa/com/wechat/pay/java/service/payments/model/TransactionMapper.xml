@@ -3,13 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wechat.pay.java.service.payments.model.TransactionMapper">
-    <update id="callback-first" parameterType="com.wechat.pay.java.service.payments.model.Transaction">
-        UPDATE wechat_pay_notification_transaction_demo SET trade_state = #{tradeState} WHERE out_trade_no = #{outTradeNo}
-    </update>
-    <update id="callback-second" parameterType="com.wechat.pay.java.service.payments.model.Transaction">
-        UPDATE wechat_pay_notification_transaction_demo SET trade_state = #{tradeState} WHERE out_trade_no = #{outTradeNo}
-    </update>
-    <update id="callback-third" parameterType="com.wechat.pay.java.service.payments.model.Transaction">
+    <update id="callback" parameterType="com.wechat.pay.java.service.payments.model.Transaction">
         UPDATE wechat_pay_notification_transaction_demo SET trade_state = #{tradeState} WHERE out_trade_no = #{outTradeNo}
     </update>
 </mapper>
