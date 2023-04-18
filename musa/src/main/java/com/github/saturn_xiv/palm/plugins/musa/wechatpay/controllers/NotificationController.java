@@ -7,6 +7,7 @@ import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.NotificationResponse;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
 import com.google.gson.Gson;
+import com.wechat.pay.java.core.exception.ServiceException;
 import com.wechat.pay.java.core.http.Constant;
 import com.wechat.pay.java.core.notification.Notification;
 import com.wechat.pay.java.core.notification.NotificationParser;
@@ -47,10 +48,16 @@ public class NotificationController {
                     .body(body)
                     .build();
             final RefundNotification resource = notificationParser.parse(param, RefundNotification.class);
-
+            logger.info("{} ({}, {})",
+                    resource.getOutTradeNo(),
+                    resource.getOutRefundNo(), resource.getRefundStatus()
+            );
             publish(RabbitmqConfiguration.WECHAT_PAY_REFUND, body, resource);
             return new ResponseEntity<>(NotificationResponse.success(), HttpStatus.OK);
 
+        } catch (ServiceException e) {
+            logger.error("{} {}", e.getErrorCode(), e.getMessage());
+            return new ResponseEntity<>(NotificationResponse.success(), HttpStatus.OK);
         } catch (Exception e) {
             logger.error("process refund notification ", e);
             return new ResponseEntity<>(NotificationResponse.fail(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -64,7 +71,7 @@ public class NotificationController {
                                                             @RequestHeader(value = Constant.WECHAT_PAY_SIGNATURE) String signature,
                                                             @RequestHeader(value = WECHAT_PAY_SIGNATURE_TYPE) String signatureType,
                                                             @RequestBody String body) {
-        logger.info("receive refund notification {} {} {}", serial, signatureType, timestamp);
+        logger.info("receive transaction notification {} {} {}", serial, signatureType, timestamp);
         try {
             final var param = new RequestParam.Builder()
                     .serialNumber(serial)
@@ -75,7 +82,15 @@ public class NotificationController {
                     .body(body)
                     .build();
             Transaction resource = notificationParser.parse(param, Transaction.class);
+            logger.info("trade: {}({},{}) payer:{}@{}",
+                    resource.getOutTradeNo(), resource.getOutTradeNo(), resource.getTradeType(),
+                    resource.getPayer().getOpenid(), resource.getAppid()
+            );
             publish(RabbitmqConfiguration.WECHAT_PAY_TRANSACTION, body, resource);
+
+            return new ResponseEntity<>(NotificationResponse.success(), HttpStatus.OK);
+        } catch (ServiceException e) {
+            logger.error("{} {}", e.getErrorCode(), e.getMessage());
             return new ResponseEntity<>(NotificationResponse.success(), HttpStatus.OK);
         } catch (Exception e) {
             logger.error("process transaction notification ", e);

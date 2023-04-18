@@ -35,5 +35,5 @@ public class WechatPayRefundHelper {
         this.refundService = refundService;
     }
 
-    RefundService refundService;
+    private RefundService refundService;
 }

@@ -125,6 +125,66 @@ message WechatPayRefundResponse { string out_refund_no = 1; }
 
 // ----------------------------------------------------------------------------
 
+service WechatPayTransfer {
+  rpc Create(WechatPayCreateTransferRequest)
+      returns (WechatPayCreateTransferResponse) {}
+  rpc Query(WechatPayQueryTransferRequest)
+      returns (WechatPayQueryTransferResponse) {}
+}
+message WechatPayCreateTransferRequest {
+  message Batch {
+    string name = 1;
+    string remark = 2;
+  }
+
+  message TransferDetail {
+    int64 transfer_amount = 1;
+    string transfer_remark = 2;
+    string open_id = 3;
+    string user_name = 4;
+  }
+  string app_id = 1;
+  Batch batch = 2;
+  repeated TransferDetail transfer_detail_list = 3;
+
+  string transfer_scene_id = 9;
+}
+message WechatPayCreateTransferResponse {
+  message TransferDetail {
+    string out_detail_no = 1;
+    string open_id = 2;
+  }
+  string out_batch_no = 1;
+  repeated TransferDetail transfer_detail_list = 2;
+}
+message WechatPayQueryTransferRequest {
+  enum DetailStatus {
+    ALL = 0;
+    SUCCESS = 1;
+    FAIL = 2;
+  }
+  string out_batch_no = 1;
+  int32 offset = 2;
+  int32 limit = 3;
+  DetailStatus detail_status = 9;
+}
+message WechatPayQueryTransferResponse {
+  message TransferDetail {
+    string out_detail_no = 1;
+    string detail_status = 2;
+  }
+  message TransferBatch {
+    string batch_status = 1;
+    string batch_type = 2;
+    optional string close_reason = 9;
+  }
+
+  TransferBatch transfer_batch = 1;
+  repeated TransferDetail transfer_detail_list = 9;
+}
+
+// ----------------------------------------------------------------------------
+
 service Health {
   rpc Check(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }

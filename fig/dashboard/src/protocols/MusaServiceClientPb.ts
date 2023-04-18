@@ -492,6 +492,113 @@ export class WechatPayRefundClient {
 
 }
 
+export class WechatPayTransferClient {
+  client_: grpcWeb.AbstractClientBase;
+  hostname_: string;
+  credentials_: null | { [index: string]: string; };
+  options_: null | { [index: string]: any; };
+
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; }) {
+    if (!options) options = {};
+    if (!credentials) credentials = {};
+    options['format'] = 'binary';
+
+    this.client_ = new grpcWeb.GrpcWebClientBase(options);
+    this.hostname_ = hostname.replace(/\/+$/, '');
+    this.credentials_ = credentials;
+    this.options_ = options;
+  }
+
+  methodDescriptorCreate = new grpcWeb.MethodDescriptor(
+    '/palm.musa.v1.WechatPayTransfer/Create',
+    grpcWeb.MethodType.UNARY,
+    musa_pb.WechatPayCreateTransferRequest,
+    musa_pb.WechatPayCreateTransferResponse,
+    (request: musa_pb.WechatPayCreateTransferRequest) => {
+      return request.serializeBinary();
+    },
+    musa_pb.WechatPayCreateTransferResponse.deserializeBinary
+  );
+
+  create(
+    request: musa_pb.WechatPayCreateTransferRequest,
+    metadata: grpcWeb.Metadata | null): Promise<musa_pb.WechatPayCreateTransferResponse>;
+
+  create(
+    request: musa_pb.WechatPayCreateTransferRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: musa_pb.WechatPayCreateTransferResponse) => void): grpcWeb.ClientReadableStream<musa_pb.WechatPayCreateTransferResponse>;
+
+  create(
+    request: musa_pb.WechatPayCreateTransferRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: musa_pb.WechatPayCreateTransferResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.musa.v1.WechatPayTransfer/Create',
+        request,
+        metadata || {},
+        this.methodDescriptorCreate,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.musa.v1.WechatPayTransfer/Create',
+    request,
+    metadata || {},
+    this.methodDescriptorCreate);
+  }
+
+  methodDescriptorQuery = new grpcWeb.MethodDescriptor(
+    '/palm.musa.v1.WechatPayTransfer/Query',
+    grpcWeb.MethodType.UNARY,
+    musa_pb.WechatPayQueryTransferRequest,
+    musa_pb.WechatPayQueryTransferResponse,
+    (request: musa_pb.WechatPayQueryTransferRequest) => {
+      return request.serializeBinary();
+    },
+    musa_pb.WechatPayQueryTransferResponse.deserializeBinary
+  );
+
+  query(
+    request: musa_pb.WechatPayQueryTransferRequest,
+    metadata: grpcWeb.Metadata | null): Promise<musa_pb.WechatPayQueryTransferResponse>;
+
+  query(
+    request: musa_pb.WechatPayQueryTransferRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: musa_pb.WechatPayQueryTransferResponse) => void): grpcWeb.ClientReadableStream<musa_pb.WechatPayQueryTransferResponse>;
+
+  query(
+    request: musa_pb.WechatPayQueryTransferRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: musa_pb.WechatPayQueryTransferResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.musa.v1.WechatPayTransfer/Query',
+        request,
+        metadata || {},
+        this.methodDescriptorQuery,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.musa.v1.WechatPayTransfer/Query',
+    request,
+    metadata || {},
+    this.methodDescriptorQuery);
+  }
+
+}
+
 export class HealthClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;

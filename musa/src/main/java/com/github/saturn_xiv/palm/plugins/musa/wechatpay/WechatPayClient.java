@@ -11,6 +11,7 @@ import com.wechat.pay.java.core.util.IOUtil;
 import com.wechat.pay.java.service.payments.jsapi.JsapiServiceExtension;
 import com.wechat.pay.java.service.payments.nativepay.NativePayService;
 import com.wechat.pay.java.service.refund.RefundService;
+import com.wechat.pay.java.service.transferbatch.TransferBatchService;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -168,8 +169,19 @@ public class WechatPayClient {
         return switch (type) {
             case TRADE -> "T" + id;
             case REFUND -> "R" + id;
+            case BATCH_TRANSFER -> "B" + id;
+            case BATCH_TRANSFER_DETAIL -> "D" + id;
         };
 
+    }
+
+    public static String batchTransferDetailStatus(WechatPayQueryTransferRequest.DetailStatus status) {
+        return switch (status) {
+            case SUCCESS -> "SUCCESS";
+            case ALL -> "ALL";
+            case FAIL -> "FAIL";
+            case UNRECOGNIZED -> null;
+        };
     }
 
     public JsapiServiceExtension jsapiService() {
@@ -186,6 +198,10 @@ public class WechatPayClient {
 
     public RefundService refundService() {
         return new RefundService.Builder().config(config).build();
+    }
+
+    public TransferBatchService transferBatchService() {
+        return new TransferBatchService.Builder().config(config).build();
     }
 
     @PostConstruct

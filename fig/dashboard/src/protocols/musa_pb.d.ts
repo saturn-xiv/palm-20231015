@@ -406,6 +406,260 @@ export namespace WechatPayRefundResponse {
   }
 }
 
+export class WechatPayCreateTransferRequest extends jspb.Message {
+  getAppId(): string;
+  setAppId(value: string): WechatPayCreateTransferRequest;
+
+  getBatch(): WechatPayCreateTransferRequest.Batch | undefined;
+  setBatch(value?: WechatPayCreateTransferRequest.Batch): WechatPayCreateTransferRequest;
+  hasBatch(): boolean;
+  clearBatch(): WechatPayCreateTransferRequest;
+
+  getTransferDetailListList(): Array<WechatPayCreateTransferRequest.TransferDetail>;
+  setTransferDetailListList(value: Array<WechatPayCreateTransferRequest.TransferDetail>): WechatPayCreateTransferRequest;
+  clearTransferDetailListList(): WechatPayCreateTransferRequest;
+  addTransferDetailList(value?: WechatPayCreateTransferRequest.TransferDetail, index?: number): WechatPayCreateTransferRequest.TransferDetail;
+
+  getTransferSceneId(): string;
+  setTransferSceneId(value: string): WechatPayCreateTransferRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatPayCreateTransferRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatPayCreateTransferRequest): WechatPayCreateTransferRequest.AsObject;
+  static serializeBinaryToWriter(message: WechatPayCreateTransferRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatPayCreateTransferRequest;
+  static deserializeBinaryFromReader(message: WechatPayCreateTransferRequest, reader: jspb.BinaryReader): WechatPayCreateTransferRequest;
+}
+
+export namespace WechatPayCreateTransferRequest {
+  export type AsObject = {
+    appId: string,
+    batch?: WechatPayCreateTransferRequest.Batch.AsObject,
+    transferDetailListList: Array<WechatPayCreateTransferRequest.TransferDetail.AsObject>,
+    transferSceneId: string,
+  }
+
+  export class Batch extends jspb.Message {
+    getName(): string;
+    setName(value: string): Batch;
+
+    getRemark(): string;
+    setRemark(value: string): Batch;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Batch.AsObject;
+    static toObject(includeInstance: boolean, msg: Batch): Batch.AsObject;
+    static serializeBinaryToWriter(message: Batch, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Batch;
+    static deserializeBinaryFromReader(message: Batch, reader: jspb.BinaryReader): Batch;
+  }
+
+  export namespace Batch {
+    export type AsObject = {
+      name: string,
+      remark: string,
+    }
+  }
+
+
+  export class TransferDetail extends jspb.Message {
+    getTransferAmount(): number;
+    setTransferAmount(value: number): TransferDetail;
+
+    getTransferRemark(): string;
+    setTransferRemark(value: string): TransferDetail;
+
+    getOpenId(): string;
+    setOpenId(value: string): TransferDetail;
+
+    getUserName(): string;
+    setUserName(value: string): TransferDetail;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): TransferDetail.AsObject;
+    static toObject(includeInstance: boolean, msg: TransferDetail): TransferDetail.AsObject;
+    static serializeBinaryToWriter(message: TransferDetail, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): TransferDetail;
+    static deserializeBinaryFromReader(message: TransferDetail, reader: jspb.BinaryReader): TransferDetail;
+  }
+
+  export namespace TransferDetail {
+    export type AsObject = {
+      transferAmount: number,
+      transferRemark: string,
+      openId: string,
+      userName: string,
+    }
+  }
+
+}
+
+export class WechatPayCreateTransferResponse extends jspb.Message {
+  getOutBatchNo(): string;
+  setOutBatchNo(value: string): WechatPayCreateTransferResponse;
+
+  getTransferDetailListList(): Array<WechatPayCreateTransferResponse.TransferDetail>;
+  setTransferDetailListList(value: Array<WechatPayCreateTransferResponse.TransferDetail>): WechatPayCreateTransferResponse;
+  clearTransferDetailListList(): WechatPayCreateTransferResponse;
+  addTransferDetailList(value?: WechatPayCreateTransferResponse.TransferDetail, index?: number): WechatPayCreateTransferResponse.TransferDetail;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatPayCreateTransferResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatPayCreateTransferResponse): WechatPayCreateTransferResponse.AsObject;
+  static serializeBinaryToWriter(message: WechatPayCreateTransferResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatPayCreateTransferResponse;
+  static deserializeBinaryFromReader(message: WechatPayCreateTransferResponse, reader: jspb.BinaryReader): WechatPayCreateTransferResponse;
+}
+
+export namespace WechatPayCreateTransferResponse {
+  export type AsObject = {
+    outBatchNo: string,
+    transferDetailListList: Array<WechatPayCreateTransferResponse.TransferDetail.AsObject>,
+  }
+
+  export class TransferDetail extends jspb.Message {
+    getOutDetailNo(): string;
+    setOutDetailNo(value: string): TransferDetail;
+
+    getOpenId(): string;
+    setOpenId(value: string): TransferDetail;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): TransferDetail.AsObject;
+    static toObject(includeInstance: boolean, msg: TransferDetail): TransferDetail.AsObject;
+    static serializeBinaryToWriter(message: TransferDetail, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): TransferDetail;
+    static deserializeBinaryFromReader(message: TransferDetail, reader: jspb.BinaryReader): TransferDetail;
+  }
+
+  export namespace TransferDetail {
+    export type AsObject = {
+      outDetailNo: string,
+      openId: string,
+    }
+  }
+
+}
+
+export class WechatPayQueryTransferRequest extends jspb.Message {
+  getOutBatchNo(): string;
+  setOutBatchNo(value: string): WechatPayQueryTransferRequest;
+
+  getOffset(): number;
+  setOffset(value: number): WechatPayQueryTransferRequest;
+
+  getLimit(): number;
+  setLimit(value: number): WechatPayQueryTransferRequest;
+
+  getDetailStatus(): WechatPayQueryTransferRequest.DetailStatus;
+  setDetailStatus(value: WechatPayQueryTransferRequest.DetailStatus): WechatPayQueryTransferRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatPayQueryTransferRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatPayQueryTransferRequest): WechatPayQueryTransferRequest.AsObject;
+  static serializeBinaryToWriter(message: WechatPayQueryTransferRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatPayQueryTransferRequest;
+  static deserializeBinaryFromReader(message: WechatPayQueryTransferRequest, reader: jspb.BinaryReader): WechatPayQueryTransferRequest;
+}
+
+export namespace WechatPayQueryTransferRequest {
+  export type AsObject = {
+    outBatchNo: string,
+    offset: number,
+    limit: number,
+    detailStatus: WechatPayQueryTransferRequest.DetailStatus,
+  }
+
+  export enum DetailStatus { 
+    ALL = 0,
+    SUCCESS = 1,
+    FAIL = 2,
+  }
+}
+
+export class WechatPayQueryTransferResponse extends jspb.Message {
+  getTransferBatch(): WechatPayQueryTransferResponse.TransferBatch | undefined;
+  setTransferBatch(value?: WechatPayQueryTransferResponse.TransferBatch): WechatPayQueryTransferResponse;
+  hasTransferBatch(): boolean;
+  clearTransferBatch(): WechatPayQueryTransferResponse;
+
+  getTransferDetailListList(): Array<WechatPayQueryTransferResponse.TransferDetail>;
+  setTransferDetailListList(value: Array<WechatPayQueryTransferResponse.TransferDetail>): WechatPayQueryTransferResponse;
+  clearTransferDetailListList(): WechatPayQueryTransferResponse;
+  addTransferDetailList(value?: WechatPayQueryTransferResponse.TransferDetail, index?: number): WechatPayQueryTransferResponse.TransferDetail;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatPayQueryTransferResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatPayQueryTransferResponse): WechatPayQueryTransferResponse.AsObject;
+  static serializeBinaryToWriter(message: WechatPayQueryTransferResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatPayQueryTransferResponse;
+  static deserializeBinaryFromReader(message: WechatPayQueryTransferResponse, reader: jspb.BinaryReader): WechatPayQueryTransferResponse;
+}
+
+export namespace WechatPayQueryTransferResponse {
+  export type AsObject = {
+    transferBatch?: WechatPayQueryTransferResponse.TransferBatch.AsObject,
+    transferDetailListList: Array<WechatPayQueryTransferResponse.TransferDetail.AsObject>,
+  }
+
+  export class TransferDetail extends jspb.Message {
+    getOutDetailNo(): string;
+    setOutDetailNo(value: string): TransferDetail;
+
+    getDetailStatus(): string;
+    setDetailStatus(value: string): TransferDetail;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): TransferDetail.AsObject;
+    static toObject(includeInstance: boolean, msg: TransferDetail): TransferDetail.AsObject;
+    static serializeBinaryToWriter(message: TransferDetail, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): TransferDetail;
+    static deserializeBinaryFromReader(message: TransferDetail, reader: jspb.BinaryReader): TransferDetail;
+  }
+
+  export namespace TransferDetail {
+    export type AsObject = {
+      outDetailNo: string,
+      detailStatus: string,
+    }
+  }
+
+
+  export class TransferBatch extends jspb.Message {
+    getBatchStatus(): string;
+    setBatchStatus(value: string): TransferBatch;
+
+    getBatchType(): string;
+    setBatchType(value: string): TransferBatch;
+
+    getCloseReason(): string;
+    setCloseReason(value: string): TransferBatch;
+    hasCloseReason(): boolean;
+    clearCloseReason(): TransferBatch;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): TransferBatch.AsObject;
+    static toObject(includeInstance: boolean, msg: TransferBatch): TransferBatch.AsObject;
+    static serializeBinaryToWriter(message: TransferBatch, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): TransferBatch;
+    static deserializeBinaryFromReader(message: TransferBatch, reader: jspb.BinaryReader): TransferBatch;
+  }
+
+  export namespace TransferBatch {
+    export type AsObject = {
+      batchStatus: string,
+      batchType: string,
+      closeReason?: string,
+    }
+
+    export enum CloseReasonCase { 
+      _CLOSE_REASON_NOT_SET = 0,
+      CLOSE_REASON = 9,
+    }
+  }
+
+}
+
 export enum WechatPayCurrency { 
   CNY = 0,
 }
