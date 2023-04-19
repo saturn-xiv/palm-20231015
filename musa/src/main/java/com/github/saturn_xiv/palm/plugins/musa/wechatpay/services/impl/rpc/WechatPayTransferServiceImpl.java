@@ -55,6 +55,7 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
 
         responseObserver.onNext(WechatPayCreateTransferResponse.newBuilder()
                 .setOutBatchNo(response.getOutBatchNo())
+                .addAllTransferDetailList(transferDetailList)
                 .build());
         responseObserver.onCompleted();
     }
