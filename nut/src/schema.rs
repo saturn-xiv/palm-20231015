@@ -52,7 +52,6 @@ diesel::table! {
 diesel::table! {
     crawler_logs (id) {
         id -> Int4,
-        name -> Varchar,
         url -> Varchar,
         body -> Text,
         created_at -> Timestamp,

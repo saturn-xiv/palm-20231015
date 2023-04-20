@@ -13,9 +13,6 @@
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="name" type="varchar(64)">
-                <constraints nullable="false" />
-            </column>
             <column name="url" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
@@ -26,9 +23,6 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="crawler_logs" indexName="idx_crawler_logs_name">
-            <column name="name" />
-        </createIndex>
         <createIndex tableName="crawler_logs" indexName="idx_crawler_logs_url">
             <column name="url" />
         </createIndex>

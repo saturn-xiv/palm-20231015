@@ -1,5 +1,3 @@
-use std::any::type_name;
-
 use actix_web::http::StatusCode;
 use chrono::NaiveDateTime;
 use diesel::{
@@ -13,21 +11,20 @@ use serde::Serialize;
 
 use super::super::{orm::postgresql::Connection, schema::crawler_logs};
 
-pub async fn pull<T>(db: &mut Connection, url: &str) -> Result<()> {
-    let name = type_name::<T>();
-    info!("fetch {} {}", name, url);
+pub async fn pull(db: &mut Connection, url: &str) -> Result<()> {
+    info!("fetch {}", url);
     let res = reqwest::get(url).await?;
     let status = res.status();
     let body = res.text().await?;
     match status {
         StatusCode::OK => {
-            if let Ok(last) = db.latest::<T>() {
+            if let Ok(last) = db.latest(url) {
                 if last.body == body {
-                    debug!("ignore to save {}", name);
+                    debug!("ignore to save {}", url);
                     return Ok(());
                 }
             }
-            db.create::<T>(url, &body)?;
+            db.create(url, &body)?;
             Ok(())
         }
         _ => Err(Box::new(HttpError(StatusCode::BAD_REQUEST, Some(body)))),
@@ -38,32 +35,28 @@ pub async fn pull<T>(db: &mut Connection, url: &str) -> Result<()> {
 #[serde(rename_all = "camelCase")]
 pub struct Item {
     pub id: i32,
-    pub name: String,
     pub url: String,
     pub body: String,
     pub created_at: NaiveDateTime,
 }
 
 pub trait Dao {
-    fn latest<T>(&mut self) -> Result<Item>;
-    fn create<T>(&mut self, url: &str, body: &str) -> Result<()>;
+    fn latest(&mut self, url: &str) -> Result<Item>;
+    fn create(&mut self, url: &str, body: &str) -> Result<()>;
     fn delete(&mut self, years: i32) -> Result<()>;
 }
 
 impl Dao for Connection {
-    fn latest<T>(&mut self) -> Result<Item> {
-        let name = type_name::<T>();
+    fn latest(&mut self, url: &str) -> Result<Item> {
         let it = crawler_logs::dsl::crawler_logs
-            .filter(crawler_logs::dsl::name.eq(name))
+            .filter(crawler_logs::dsl::url.eq(url))
             .order(crawler_logs::dsl::created_at.desc())
             .first::<Item>(self)?;
         Ok(it)
     }
-    fn create<T>(&mut self, url: &str, body: &str) -> Result<()> {
-        let name = type_name::<T>();
+    fn create(&mut self, url: &str, body: &str) -> Result<()> {
         insert_into(crawler_logs::dsl::crawler_logs)
             .values((
-                crawler_logs::dsl::name.eq(name),
                 crawler_logs::dsl::url.eq(url),
                 crawler_logs::dsl::body.eq(body),
             ))
