@@ -1,3 +1,5 @@
+use std::any::type_name;
+
 use actix_web::http::StatusCode;
 use chrono::NaiveDateTime;
 use diesel::{
@@ -11,20 +13,21 @@ use serde::Serialize;
 
 use super::super::{orm::postgresql::Connection, schema::crawler_logs};
 
-pub async fn pull(db: &mut Connection, name: &str, url: &str) -> Result<()> {
+pub async fn pull<T>(db: &mut Connection, url: &str) -> Result<()> {
+    let name = type_name::<T>();
     info!("fetch {} {}", name, url);
     let res = reqwest::get(url).await?;
     let status = res.status();
     let body = res.text().await?;
     match status {
         StatusCode::OK => {
-            if let Ok(last) = db.latest(name) {
+            if let Ok(last) = db.latest::<T>() {
                 if last.body == body {
                     debug!("ignore to save {}", name);
                     return Ok(());
                 }
             }
-            db.create(name, url, &body)?;
+            db.create::<T>(url, &body)?;
             Ok(())
         }
         _ => Err(Box::new(HttpError(StatusCode::BAD_REQUEST, Some(body)))),
@@ -42,20 +45,22 @@ pub struct Item {
 }
 
 pub trait Dao {
-    fn latest(&mut self, name: &str) -> Result<Item>;
-    fn create(&mut self, name: &str, url: &str, body: &str) -> Result<()>;
+    fn latest<T>(&mut self) -> Result<Item>;
+    fn create<T>(&mut self, url: &str, body: &str) -> Result<()>;
     fn delete(&mut self, years: i32) -> Result<()>;
 }
 
 impl Dao for Connection {
-    fn latest(&mut self, name: &str) -> Result<Item> {
+    fn latest<T>(&mut self) -> Result<Item> {
+        let name = type_name::<T>();
         let it = crawler_logs::dsl::crawler_logs
             .filter(crawler_logs::dsl::name.eq(name))
             .order(crawler_logs::dsl::created_at.desc())
             .first::<Item>(self)?;
         Ok(it)
     }
-    fn create(&mut self, name: &str, url: &str, body: &str) -> Result<()> {
+    fn create<T>(&mut self, url: &str, body: &str) -> Result<()> {
+        let name = type_name::<T>();
         insert_into(crawler_logs::dsl::crawler_logs)
             .values((
                 crawler_logs::dsl::name.eq(name),
