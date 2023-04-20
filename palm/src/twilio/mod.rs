@@ -19,6 +19,8 @@ pub struct Config {
     pub account_sid: String,
     #[serde(rename = "auth-token")]
     pub auth_token: String,
+    #[serde(rename = "auth-token")]
+    pub sms_status_callback: Option<String>,
 }
 
 impl Default for Config {
@@ -27,6 +29,18 @@ impl Default for Config {
             from: "+1xxxxxxxxxx".to_string(),
             account_sid: "Account Sid".to_string(),
             auth_token: "Auth Token".to_string(),
+            sms_status_callback: None,
+        }
+    }
+}
+
+impl From<Config> for v1::TwilioProfile {
+    fn from(item: Config) -> Self {
+        Self {
+            from: item.from.clone(),
+            account_sid: item.account_sid.clone(),
+            auth_token: item.auth_token.clone(),
+            sms_status_callback: item.sms_status_callback,
         }
     }
 }
