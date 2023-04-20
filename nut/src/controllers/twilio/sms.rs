@@ -2,8 +2,11 @@ use std::ops::{Deref, DerefMut};
 
 use actix_web::{post, web, HttpResponse, Responder, Result as WebResult};
 use palm::{
+    parser::to_xml_response,
     try_web,
-    twilio::sms::{DeliveryStatusCallbackForm, IncomingMessagesCallbackForm},
+    twilio::sms::{
+        DeliveryStatusCallbackForm, InboundResponse, IncomingMessagesCallbackForm, ReplyForm,
+    },
 };
 
 use super::super::super::{
@@ -31,4 +34,13 @@ pub async fn delivery_status(
     let form = form.deref();
     info!("{:?}", form);
     Ok(HttpResponse::Ok().finish())
+}
+
+#[post("/reply")]
+async fn reply(db: web::Data<DbPool>, form: web::Form<ReplyForm>) -> WebResult<impl Responder> {
+    let mut db = try_web!(db.get())?;
+    let _db = db.deref_mut();
+    let form = form.into_inner();
+    info!("receive {:?}", form);
+    to_xml_response(&InboundResponse { message: None })
 }

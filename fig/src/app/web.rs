@@ -169,8 +169,9 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                         web::scope("/twilio").service(
                             web::scope("/sms")
                                 .service(nut::controllers::twilio::sms::delivery_status)
-                                .service(nut::controllers::twilio::sms::incoming_messages),
-                        ),
+                                .service(nut::controllers::twilio::sms::incoming_messages)
+                                .service(nut::controllers::twilio::sms::reply),
+                        ).service(web::scope("/voice").service(nut::controllers::twilio::voice::call_in)),
                     )
                     .service(
                         web::scope( "/flashcard").service(
