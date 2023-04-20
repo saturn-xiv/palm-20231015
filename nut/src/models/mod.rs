@@ -1,5 +1,6 @@
 pub mod attachment;
 pub mod category;
+pub mod crawler;
 pub mod google;
 pub mod leave_word;
 pub mod locale;

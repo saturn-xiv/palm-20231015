@@ -23,5 +23,6 @@
     <include file="305-create-votes.xml" relativeToChangelogFile="true" />
     <include file="306-create-notifications.xml" relativeToChangelogFile="true" />
     <include file="307-create-twilio-sms-logs.xml" relativeToChangelogFile="true" />
+    <include file="308-create-crawler-logs.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>

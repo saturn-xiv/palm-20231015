@@ -88,7 +88,7 @@ function generate_diesel_postgresql() {
             wechat_oauth2_users wechat_mini_program_users \
             logs attachments attachments_resources \
             roles roles_users roles_constraints permissions \
-            leave_words shorter_links notifications twilio_sms_logs \
+            leave_words shorter_links notifications twilio_sms_logs crawler_logs \
             tags tags_resources \
             categories categories_resources \
             vote_items vote_logs \

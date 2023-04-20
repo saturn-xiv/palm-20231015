@@ -8,7 +8,7 @@ RUN apt -y upgrade
 # isc-dhcp-server
 RUN apt -y install dnsmasq netplan.io \
     openssl nmap pwgen \
-    iptables iptables-persistent
+    iptables iptables-persistent traceroute mtr
 RUN apt clean
 RUN apt -y autoremove
 

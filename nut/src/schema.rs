@@ -50,6 +50,16 @@ diesel::table! {
 }
 
 diesel::table! {
+    crawler_logs (id) {
+        id -> Int4,
+        name -> Varchar,
+        url -> Varchar,
+        body -> Text,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     google_users (id) {
         id -> Int4,
         user_id -> Int4,
@@ -277,6 +287,7 @@ diesel::allow_tables_to_appear_in_same_query!(
     attachments_resources,
     categories,
     categories_resources,
+    crawler_logs,
     google_users,
     leave_words,
     locales,
