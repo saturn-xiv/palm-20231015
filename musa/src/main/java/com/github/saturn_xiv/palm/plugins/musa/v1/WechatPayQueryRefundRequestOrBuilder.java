@@ -3,8 +3,8 @@
 
 package com.github.saturn_xiv.palm.plugins.musa.v1;
 
-public interface WechatPayQueryRefundResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayQueryRefundResponse)
+public interface WechatPayQueryRefundRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayQueryRefundRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**

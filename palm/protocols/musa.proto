@@ -43,7 +43,10 @@ message WechatPayNativeQrCodeUrlResponse {
   string out_trade_no = 2;
 }
 
-message WechatPayTradeResponse {}
+message WechatPayTradeResponse {
+  string trade_state = 1;
+  string trade_state_desc = 2;
+}
 
 message WechatPayQueryOrderByIdRequest { string id = 1; }
 message WechatPayQueryOrderByOutTradeNoRequest { string no = 1; }
@@ -106,7 +109,7 @@ message WechatPayFundFlowBillRequest {
 
 service WechatPayRefund {
   rpc Create(WechatPayCreateRefundRequest) returns (WechatPayRefundResponse) {}
-  rpc Query(WechatPayQueryRefundResponse) returns (WechatPayRefundResponse) {}
+  rpc Query(WechatPayQueryRefundRequest) returns (WechatPayRefundResponse) {}
 }
 
 message WechatPayCreateRefundRequest {
@@ -120,8 +123,14 @@ message WechatPayCreateRefundRequest {
   Amount amount = 3;
   string notify_host = 11;
 }
-message WechatPayQueryRefundResponse { string out_refund_no = 1; }
-message WechatPayRefundResponse { string out_refund_no = 1; }
+message WechatPayQueryRefundRequest { string out_refund_no = 1; }
+message WechatPayRefundResponse {
+  string out_refund_no = 1;
+  string channel = 2;
+  string status = 3;
+  string user_received_account = 4;
+  string create_time = 99;
+}
 
 // ----------------------------------------------------------------------------
 

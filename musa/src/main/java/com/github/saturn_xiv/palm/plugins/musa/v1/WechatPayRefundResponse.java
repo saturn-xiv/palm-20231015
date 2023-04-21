@@ -17,6 +17,10 @@ private static final long serialVersionUID = 0L;
   }
   private WechatPayRefundResponse() {
     outRefundNo_ = "";
+    channel_ = "";
+    status_ = "";
+    userReceivedAccount_ = "";
+    createTime_ = "";
   }
 
   @java.lang.Override
@@ -83,6 +87,162 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int CHANNEL_FIELD_NUMBER = 2;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object channel_ = "";
+  /**
+   * <code>string channel = 2;</code>
+   * @return The channel.
+   */
+  @java.lang.Override
+  public java.lang.String getChannel() {
+    java.lang.Object ref = channel_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      channel_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string channel = 2;</code>
+   * @return The bytes for channel.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getChannelBytes() {
+    java.lang.Object ref = channel_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      channel_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int STATUS_FIELD_NUMBER = 3;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object status_ = "";
+  /**
+   * <code>string status = 3;</code>
+   * @return The status.
+   */
+  @java.lang.Override
+  public java.lang.String getStatus() {
+    java.lang.Object ref = status_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      status_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string status = 3;</code>
+   * @return The bytes for status.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getStatusBytes() {
+    java.lang.Object ref = status_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      status_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int USER_RECEIVED_ACCOUNT_FIELD_NUMBER = 4;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object userReceivedAccount_ = "";
+  /**
+   * <code>string user_received_account = 4;</code>
+   * @return The userReceivedAccount.
+   */
+  @java.lang.Override
+  public java.lang.String getUserReceivedAccount() {
+    java.lang.Object ref = userReceivedAccount_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      userReceivedAccount_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string user_received_account = 4;</code>
+   * @return The bytes for userReceivedAccount.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getUserReceivedAccountBytes() {
+    java.lang.Object ref = userReceivedAccount_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      userReceivedAccount_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int CREATE_TIME_FIELD_NUMBER = 99;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object createTime_ = "";
+  /**
+   * <code>string create_time = 99;</code>
+   * @return The createTime.
+   */
+  @java.lang.Override
+  public java.lang.String getCreateTime() {
+    java.lang.Object ref = createTime_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      createTime_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string create_time = 99;</code>
+   * @return The bytes for createTime.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getCreateTimeBytes() {
+    java.lang.Object ref = createTime_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      createTime_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -100,6 +260,18 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(outRefundNo_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, outRefundNo_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(channel_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, channel_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, status_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(userReceivedAccount_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, userReceivedAccount_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createTime_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 99, createTime_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -111,6 +283,18 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(outRefundNo_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, outRefundNo_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(channel_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, channel_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, status_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(userReceivedAccount_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, userReceivedAccount_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createTime_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(99, createTime_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -129,6 +313,14 @@ private static final long serialVersionUID = 0L;
 
     if (!getOutRefundNo()
         .equals(other.getOutRefundNo())) return false;
+    if (!getChannel()
+        .equals(other.getChannel())) return false;
+    if (!getStatus()
+        .equals(other.getStatus())) return false;
+    if (!getUserReceivedAccount()
+        .equals(other.getUserReceivedAccount())) return false;
+    if (!getCreateTime()
+        .equals(other.getCreateTime())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -142,6 +334,14 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + OUT_REFUND_NO_FIELD_NUMBER;
     hash = (53 * hash) + getOutRefundNo().hashCode();
+    hash = (37 * hash) + CHANNEL_FIELD_NUMBER;
+    hash = (53 * hash) + getChannel().hashCode();
+    hash = (37 * hash) + STATUS_FIELD_NUMBER;
+    hash = (53 * hash) + getStatus().hashCode();
+    hash = (37 * hash) + USER_RECEIVED_ACCOUNT_FIELD_NUMBER;
+    hash = (53 * hash) + getUserReceivedAccount().hashCode();
+    hash = (37 * hash) + CREATE_TIME_FIELD_NUMBER;
+    hash = (53 * hash) + getCreateTime().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -272,6 +472,10 @@ private static final long serialVersionUID = 0L;
       super.clear();
       bitField0_ = 0;
       outRefundNo_ = "";
+      channel_ = "";
+      status_ = "";
+      userReceivedAccount_ = "";
+      createTime_ = "";
       return this;
     }
 
@@ -307,6 +511,18 @@ private static final long serialVersionUID = 0L;
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.outRefundNo_ = outRefundNo_;
+      }
+      if (((from_bitField0_ & 0x00000002) != 0)) {
+        result.channel_ = channel_;
+      }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.status_ = status_;
+      }
+      if (((from_bitField0_ & 0x00000008) != 0)) {
+        result.userReceivedAccount_ = userReceivedAccount_;
+      }
+      if (((from_bitField0_ & 0x00000010) != 0)) {
+        result.createTime_ = createTime_;
       }
     }
 
@@ -359,6 +575,26 @@ private static final long serialVersionUID = 0L;
         bitField0_ |= 0x00000001;
         onChanged();
       }
+      if (!other.getChannel().isEmpty()) {
+        channel_ = other.channel_;
+        bitField0_ |= 0x00000002;
+        onChanged();
+      }
+      if (!other.getStatus().isEmpty()) {
+        status_ = other.status_;
+        bitField0_ |= 0x00000004;
+        onChanged();
+      }
+      if (!other.getUserReceivedAccount().isEmpty()) {
+        userReceivedAccount_ = other.userReceivedAccount_;
+        bitField0_ |= 0x00000008;
+        onChanged();
+      }
+      if (!other.getCreateTime().isEmpty()) {
+        createTime_ = other.createTime_;
+        bitField0_ |= 0x00000010;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -390,6 +626,26 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000001;
               break;
             } // case 10
+            case 18: {
+              channel_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 18
+            case 26: {
+              status_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 26
+            case 34: {
+              userReceivedAccount_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 34
+            case 794: {
+              createTime_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 794
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -475,6 +731,294 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       outRefundNo_ = value;
       bitField0_ |= 0x00000001;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object channel_ = "";
+    /**
+     * <code>string channel = 2;</code>
+     * @return The channel.
+     */
+    public java.lang.String getChannel() {
+      java.lang.Object ref = channel_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        channel_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string channel = 2;</code>
+     * @return The bytes for channel.
+     */
+    public com.google.protobuf.ByteString
+        getChannelBytes() {
+      java.lang.Object ref = channel_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        channel_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string channel = 2;</code>
+     * @param value The channel to set.
+     * @return This builder for chaining.
+     */
+    public Builder setChannel(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      channel_ = value;
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string channel = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearChannel() {
+      channel_ = getDefaultInstance().getChannel();
+      bitField0_ = (bitField0_ & ~0x00000002);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string channel = 2;</code>
+     * @param value The bytes for channel to set.
+     * @return This builder for chaining.
+     */
+    public Builder setChannelBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      channel_ = value;
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object status_ = "";
+    /**
+     * <code>string status = 3;</code>
+     * @return The status.
+     */
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        status_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string status = 3;</code>
+     * @return The bytes for status.
+     */
+    public com.google.protobuf.ByteString
+        getStatusBytes() {
+      java.lang.Object ref = status_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        status_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string status = 3;</code>
+     * @param value The status to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStatus(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      status_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string status = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearStatus() {
+      status_ = getDefaultInstance().getStatus();
+      bitField0_ = (bitField0_ & ~0x00000004);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string status = 3;</code>
+     * @param value The bytes for status to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStatusBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      status_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object userReceivedAccount_ = "";
+    /**
+     * <code>string user_received_account = 4;</code>
+     * @return The userReceivedAccount.
+     */
+    public java.lang.String getUserReceivedAccount() {
+      java.lang.Object ref = userReceivedAccount_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        userReceivedAccount_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string user_received_account = 4;</code>
+     * @return The bytes for userReceivedAccount.
+     */
+    public com.google.protobuf.ByteString
+        getUserReceivedAccountBytes() {
+      java.lang.Object ref = userReceivedAccount_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userReceivedAccount_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string user_received_account = 4;</code>
+     * @param value The userReceivedAccount to set.
+     * @return This builder for chaining.
+     */
+    public Builder setUserReceivedAccount(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      userReceivedAccount_ = value;
+      bitField0_ |= 0x00000008;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string user_received_account = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearUserReceivedAccount() {
+      userReceivedAccount_ = getDefaultInstance().getUserReceivedAccount();
+      bitField0_ = (bitField0_ & ~0x00000008);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string user_received_account = 4;</code>
+     * @param value The bytes for userReceivedAccount to set.
+     * @return This builder for chaining.
+     */
+    public Builder setUserReceivedAccountBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      userReceivedAccount_ = value;
+      bitField0_ |= 0x00000008;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object createTime_ = "";
+    /**
+     * <code>string create_time = 99;</code>
+     * @return The createTime.
+     */
+    public java.lang.String getCreateTime() {
+      java.lang.Object ref = createTime_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        createTime_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string create_time = 99;</code>
+     * @return The bytes for createTime.
+     */
+    public com.google.protobuf.ByteString
+        getCreateTimeBytes() {
+      java.lang.Object ref = createTime_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        createTime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string create_time = 99;</code>
+     * @param value The createTime to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCreateTime(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      createTime_ = value;
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string create_time = 99;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearCreateTime() {
+      createTime_ = getDefaultInstance().getCreateTime();
+      bitField0_ = (bitField0_ & ~0x00000010);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string create_time = 99;</code>
+     * @param value The bytes for createTime to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCreateTimeBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      createTime_ = value;
+      bitField0_ |= 0x00000010;
       onChanged();
       return this;
     }

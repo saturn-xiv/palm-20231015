@@ -18,4 +18,52 @@ public interface WechatPayRefundResponseOrBuilder extends
    */
   com.google.protobuf.ByteString
       getOutRefundNoBytes();
+
+  /**
+   * <code>string channel = 2;</code>
+   * @return The channel.
+   */
+  java.lang.String getChannel();
+  /**
+   * <code>string channel = 2;</code>
+   * @return The bytes for channel.
+   */
+  com.google.protobuf.ByteString
+      getChannelBytes();
+
+  /**
+   * <code>string status = 3;</code>
+   * @return The status.
+   */
+  java.lang.String getStatus();
+  /**
+   * <code>string status = 3;</code>
+   * @return The bytes for status.
+   */
+  com.google.protobuf.ByteString
+      getStatusBytes();
+
+  /**
+   * <code>string user_received_account = 4;</code>
+   * @return The userReceivedAccount.
+   */
+  java.lang.String getUserReceivedAccount();
+  /**
+   * <code>string user_received_account = 4;</code>
+   * @return The bytes for userReceivedAccount.
+   */
+  com.google.protobuf.ByteString
+      getUserReceivedAccountBytes();
+
+  /**
+   * <code>string create_time = 99;</code>
+   * @return The createTime.
+   */
+  java.lang.String getCreateTime();
+  /**
+   * <code>string create_time = 99;</code>
+   * @return The bytes for createTime.
+   */
+  com.google.protobuf.ByteString
+      getCreateTimeBytes();
 }

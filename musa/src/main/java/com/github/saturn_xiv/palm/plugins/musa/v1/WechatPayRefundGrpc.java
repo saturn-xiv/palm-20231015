@@ -46,27 +46,27 @@ public final class WechatPayRefundGrpc {
     return getCreateMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundResponse,
+  private static volatile io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundRequest,
       com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundResponse> getQueryMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Query",
-      requestType = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundResponse.class,
+      requestType = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundRequest.class,
       responseType = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundResponse,
+  public static io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundRequest,
       com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundResponse> getQueryMethod() {
-    io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundResponse, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundResponse> getQueryMethod;
+    io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundRequest, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundResponse> getQueryMethod;
     if ((getQueryMethod = WechatPayRefundGrpc.getQueryMethod) == null) {
       synchronized (WechatPayRefundGrpc.class) {
         if ((getQueryMethod = WechatPayRefundGrpc.getQueryMethod) == null) {
           WechatPayRefundGrpc.getQueryMethod = getQueryMethod =
-              io.grpc.MethodDescriptor.<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundResponse, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundRequest, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Query"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundResponse.getDefaultInstance()))
+                  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundResponse.getDefaultInstance()))
               .setSchemaDescriptor(new WechatPayRefundMethodDescriptorSupplier("Query"))
@@ -134,7 +134,7 @@ public final class WechatPayRefundGrpc {
 
     /**
      */
-    public void query(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundResponse request,
+    public void query(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundRequest request,
         io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getQueryMethod(), responseObserver);
     }
@@ -152,7 +152,7 @@ public final class WechatPayRefundGrpc {
             getQueryMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundResponse,
+                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundRequest,
                 com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundResponse>(
                   this, METHODID_QUERY)))
           .build();
@@ -183,7 +183,7 @@ public final class WechatPayRefundGrpc {
 
     /**
      */
-    public void query(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundResponse request,
+    public void query(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundRequest request,
         io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getQueryMethod(), getCallOptions()), request, responseObserver);
@@ -213,7 +213,7 @@ public final class WechatPayRefundGrpc {
 
     /**
      */
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundResponse query(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundResponse request) {
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundResponse query(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getQueryMethod(), getCallOptions(), request);
     }
@@ -244,7 +244,7 @@ public final class WechatPayRefundGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundResponse> query(
-        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundResponse request) {
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getQueryMethod(), getCallOptions()), request);
     }
@@ -275,7 +275,7 @@ public final class WechatPayRefundGrpc {
               (io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundResponse>) responseObserver);
           break;
         case METHODID_QUERY:
-          serviceImpl.query((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundResponse) request,
+          serviceImpl.query((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryRefundRequest) request,
               (io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayRefundResponse>) responseObserver);
           break;
         default:

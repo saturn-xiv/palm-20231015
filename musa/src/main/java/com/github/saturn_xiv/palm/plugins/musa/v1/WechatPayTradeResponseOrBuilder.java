@@ -6,4 +6,28 @@ package com.github.saturn_xiv.palm.plugins.musa.v1;
 public interface WechatPayTradeResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayTradeResponse)
     com.google.protobuf.MessageOrBuilder {
+
+  /**
+   * <code>string trade_state = 1;</code>
+   * @return The tradeState.
+   */
+  java.lang.String getTradeState();
+  /**
+   * <code>string trade_state = 1;</code>
+   * @return The bytes for tradeState.
+   */
+  com.google.protobuf.ByteString
+      getTradeStateBytes();
+
+  /**
+   * <code>string trade_state_desc = 2;</code>
+   * @return The tradeStateDesc.
+   */
+  java.lang.String getTradeStateDesc();
+  /**
+   * <code>string trade_state_desc = 2;</code>
+   * @return The bytes for tradeStateDesc.
+   */
+  com.google.protobuf.ByteString
+      getTradeStateDescBytes();
 }

@@ -7,6 +7,7 @@ import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers.WechatPayRefundHelper;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.OutNoType;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
+import com.wechat.pay.java.service.refund.model.Refund;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,22 +31,17 @@ public class WechatPayRefundServiceImpl extends WechatPayRefundGrpc.WechatPayRef
                 request.getReason(), notifyUrl);
         storageService.addRefund(request.getOutTradeNo(), outRefundNo, request.getAmount(), request.getReason());
 
-//        TODO
-        responseObserver.onNext(WechatPayRefundResponse.newBuilder()
-                .setOutRefundNo(response.getOutRefundNo())
-                .build());
+        responseObserver.onNext(refund2response(response));
         responseObserver.onCompleted();
     }
 
     @Override
-    public void query(WechatPayQueryRefundResponse request, StreamObserver<WechatPayRefundResponse> responseObserver) {
+    public void query(WechatPayQueryRefundRequest request, StreamObserver<WechatPayRefundResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
         final var response = refundHelper.queryByOutRefundNo(request.getOutRefundNo());
-//        TODO
-        responseObserver.onNext(WechatPayRefundResponse.newBuilder()
-                .setOutRefundNo(response.getOutRefundNo())
-                .build());
+
+        responseObserver.onNext(refund2response(response));
         responseObserver.onCompleted();
     }
 
@@ -54,6 +50,15 @@ public class WechatPayRefundServiceImpl extends WechatPayRefundGrpc.WechatPayRef
         refundHelper = new WechatPayRefundHelper(client.refundService());
     }
 
+    WechatPayRefundResponse refund2response(Refund refund) {
+        return WechatPayRefundResponse.newBuilder()
+                .setOutRefundNo(refund.getOutRefundNo())
+                .setChannel(refund.getChannel().name())
+                .setUserReceivedAccount(refund.getUserReceivedAccount())
+                .setStatus(refund.getStatus().name())
+                .setCreateTime(refund.getCreateTime())
+                .build();
+    }
 
     @Autowired
     JwtHelper jwt;

@@ -8,6 +8,7 @@ import com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers.WechatPayJsapiH
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.OutNoType;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
 import com.google.protobuf.Empty;
+import com.wechat.pay.java.service.payments.model.Transaction;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,9 +37,8 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
         final var response = wechatPay.queryOrderById(request.getId());
-        //        TODO
-        responseObserver.onNext(WechatPayTradeResponse.newBuilder()
-                .build());
+
+        responseObserver.onNext(transaction2response(response));
         responseObserver.onCompleted();
     }
 
@@ -47,9 +47,8 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
         final var response = wechatPay.queryOrderByOutTradeNo(request.getNo());
-//        TODO
-        responseObserver.onNext(WechatPayTradeResponse.newBuilder()
-                .build());
+
+        responseObserver.onNext(transaction2response(response));
         responseObserver.onCompleted();
     }
 
@@ -82,6 +81,13 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
     @PostConstruct
     void init() {
         wechatPay = new WechatPayJsapiHelper(client.getMerchantId(), client.jsapiService());
+    }
+
+    WechatPayTradeResponse transaction2response(Transaction transaction) {
+        return WechatPayTradeResponse.newBuilder()
+                .setTradeState(transaction.getTradeState().name())
+                .setTradeStateDesc(transaction.getTradeStateDesc())
+                .build();
     }
 
     @Autowired

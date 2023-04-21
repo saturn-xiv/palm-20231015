@@ -450,26 +450,26 @@ export class WechatPayRefundClient {
   methodDescriptorQuery = new grpcWeb.MethodDescriptor(
     '/palm.musa.v1.WechatPayRefund/Query',
     grpcWeb.MethodType.UNARY,
-    musa_pb.WechatPayQueryRefundResponse,
+    musa_pb.WechatPayQueryRefundRequest,
     musa_pb.WechatPayRefundResponse,
-    (request: musa_pb.WechatPayQueryRefundResponse) => {
+    (request: musa_pb.WechatPayQueryRefundRequest) => {
       return request.serializeBinary();
     },
     musa_pb.WechatPayRefundResponse.deserializeBinary
   );
 
   query(
-    request: musa_pb.WechatPayQueryRefundResponse,
+    request: musa_pb.WechatPayQueryRefundRequest,
     metadata: grpcWeb.Metadata | null): Promise<musa_pb.WechatPayRefundResponse>;
 
   query(
-    request: musa_pb.WechatPayQueryRefundResponse,
+    request: musa_pb.WechatPayQueryRefundRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: musa_pb.WechatPayRefundResponse) => void): grpcWeb.ClientReadableStream<musa_pb.WechatPayRefundResponse>;
 
   query(
-    request: musa_pb.WechatPayQueryRefundResponse,
+    request: musa_pb.WechatPayQueryRefundRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: musa_pb.WechatPayRefundResponse) => void) {
