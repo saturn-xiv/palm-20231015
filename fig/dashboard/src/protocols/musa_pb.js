@@ -1540,7 +1540,7 @@ proto.palm.musa.v1.WechatPayQueryOrderByIdRequest.prototype.toObject = function(
  */
 proto.palm.musa.v1.WechatPayQueryOrderByIdRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, "")
+    transactionId: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -1579,7 +1579,7 @@ proto.palm.musa.v1.WechatPayQueryOrderByIdRequest.deserializeBinaryFromReader = 
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setId(value);
+      msg.setTransactionId(value);
       break;
     default:
       reader.skipField();
@@ -1610,7 +1610,7 @@ proto.palm.musa.v1.WechatPayQueryOrderByIdRequest.prototype.serializeBinary = fu
  */
 proto.palm.musa.v1.WechatPayQueryOrderByIdRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getId();
+  f = message.getTransactionId();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -1621,10 +1621,10 @@ proto.palm.musa.v1.WechatPayQueryOrderByIdRequest.serializeBinaryToWriter = func
 
 
 /**
- * optional string id = 1;
+ * optional string transaction_id = 1;
  * @return {string}
  */
-proto.palm.musa.v1.WechatPayQueryOrderByIdRequest.prototype.getId = function() {
+proto.palm.musa.v1.WechatPayQueryOrderByIdRequest.prototype.getTransactionId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -1633,7 +1633,7 @@ proto.palm.musa.v1.WechatPayQueryOrderByIdRequest.prototype.getId = function() {
  * @param {string} value
  * @return {!proto.palm.musa.v1.WechatPayQueryOrderByIdRequest} returns this
  */
-proto.palm.musa.v1.WechatPayQueryOrderByIdRequest.prototype.setId = function(value) {
+proto.palm.musa.v1.WechatPayQueryOrderByIdRequest.prototype.setTransactionId = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -1670,7 +1670,7 @@ proto.palm.musa.v1.WechatPayQueryOrderByOutTradeNoRequest.prototype.toObject = f
  */
 proto.palm.musa.v1.WechatPayQueryOrderByOutTradeNoRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    no: jspb.Message.getFieldWithDefault(msg, 1, "")
+    outTradeNo: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -1709,7 +1709,7 @@ proto.palm.musa.v1.WechatPayQueryOrderByOutTradeNoRequest.deserializeBinaryFromR
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setNo(value);
+      msg.setOutTradeNo(value);
       break;
     default:
       reader.skipField();
@@ -1740,7 +1740,7 @@ proto.palm.musa.v1.WechatPayQueryOrderByOutTradeNoRequest.prototype.serializeBin
  */
 proto.palm.musa.v1.WechatPayQueryOrderByOutTradeNoRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getNo();
+  f = message.getOutTradeNo();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -1751,10 +1751,10 @@ proto.palm.musa.v1.WechatPayQueryOrderByOutTradeNoRequest.serializeBinaryToWrite
 
 
 /**
- * optional string no = 1;
+ * optional string out_trade_no = 1;
  * @return {string}
  */
-proto.palm.musa.v1.WechatPayQueryOrderByOutTradeNoRequest.prototype.getNo = function() {
+proto.palm.musa.v1.WechatPayQueryOrderByOutTradeNoRequest.prototype.getOutTradeNo = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -1763,7 +1763,7 @@ proto.palm.musa.v1.WechatPayQueryOrderByOutTradeNoRequest.prototype.getNo = func
  * @param {string} value
  * @return {!proto.palm.musa.v1.WechatPayQueryOrderByOutTradeNoRequest} returns this
  */
-proto.palm.musa.v1.WechatPayQueryOrderByOutTradeNoRequest.prototype.setNo = function(value) {
+proto.palm.musa.v1.WechatPayQueryOrderByOutTradeNoRequest.prototype.setOutTradeNo = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 

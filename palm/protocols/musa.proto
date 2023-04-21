@@ -48,8 +48,8 @@ message WechatPayTradeResponse {
   string trade_state_desc = 2;
 }
 
-message WechatPayQueryOrderByIdRequest { string id = 1; }
-message WechatPayQueryOrderByOutTradeNoRequest { string no = 1; }
+message WechatPayQueryOrderByIdRequest { string transaction_id = 1; }
+message WechatPayQueryOrderByOutTradeNoRequest { string out_trade_no = 1; }
 
 service WechatPayJsapi {
   rpc Prepay(WechatPayPrepayRequest) returns (WechatPayJsapiPrepayIdResponse) {}

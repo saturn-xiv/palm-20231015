@@ -8,14 +8,14 @@ public interface WechatPayQueryOrderByOutTradeNoRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string no = 1;</code>
-   * @return The no.
+   * <code>string out_trade_no = 1;</code>
+   * @return The outTradeNo.
    */
-  java.lang.String getNo();
+  java.lang.String getOutTradeNo();
   /**
-   * <code>string no = 1;</code>
-   * @return The bytes for no.
+   * <code>string out_trade_no = 1;</code>
+   * @return The bytes for outTradeNo.
    */
   com.google.protobuf.ByteString
-      getNoBytes();
+      getOutTradeNoBytes();
 }

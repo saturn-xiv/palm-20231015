@@ -36,7 +36,7 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
     public void queryOrderById(WechatPayQueryOrderByIdRequest request, StreamObserver<WechatPayTradeResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
-        final var response = wechatPay.queryOrderById(request.getId());
+        final var response = wechatPay.queryOrderById(request.getTransactionId());
 
         responseObserver.onNext(transaction2response(response));
         responseObserver.onCompleted();
@@ -46,7 +46,7 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
     public void queryOrderByOutTradeNo(WechatPayQueryOrderByOutTradeNoRequest request, StreamObserver<WechatPayTradeResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
-        final var response = wechatPay.queryOrderByOutTradeNo(request.getNo());
+        final var response = wechatPay.queryOrderByOutTradeNo(request.getOutTradeNo());
 
         responseObserver.onNext(transaction2response(response));
         responseObserver.onCompleted();

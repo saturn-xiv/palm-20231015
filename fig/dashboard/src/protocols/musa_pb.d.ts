@@ -136,8 +136,8 @@ export namespace WechatPayTradeResponse {
 }
 
 export class WechatPayQueryOrderByIdRequest extends jspb.Message {
-  getId(): string;
-  setId(value: string): WechatPayQueryOrderByIdRequest;
+  getTransactionId(): string;
+  setTransactionId(value: string): WechatPayQueryOrderByIdRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WechatPayQueryOrderByIdRequest.AsObject;
@@ -149,13 +149,13 @@ export class WechatPayQueryOrderByIdRequest extends jspb.Message {
 
 export namespace WechatPayQueryOrderByIdRequest {
   export type AsObject = {
-    id: string,
+    transactionId: string,
   }
 }
 
 export class WechatPayQueryOrderByOutTradeNoRequest extends jspb.Message {
-  getNo(): string;
-  setNo(value: string): WechatPayQueryOrderByOutTradeNoRequest;
+  getOutTradeNo(): string;
+  setOutTradeNo(value: string): WechatPayQueryOrderByOutTradeNoRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WechatPayQueryOrderByOutTradeNoRequest.AsObject;
@@ -167,7 +167,7 @@ export class WechatPayQueryOrderByOutTradeNoRequest extends jspb.Message {
 
 export namespace WechatPayQueryOrderByOutTradeNoRequest {
   export type AsObject = {
-    no: string,
+    outTradeNo: string,
   }
 }
 

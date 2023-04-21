@@ -8,14 +8,14 @@ public interface WechatPayQueryOrderByIdRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string id = 1;</code>
-   * @return The id.
+   * <code>string transaction_id = 1;</code>
+   * @return The transactionId.
    */
-  java.lang.String getId();
+  java.lang.String getTransactionId();
   /**
-   * <code>string id = 1;</code>
-   * @return The bytes for id.
+   * <code>string transaction_id = 1;</code>
+   * @return The bytes for transactionId.
    */
   com.google.protobuf.ByteString
-      getIdBytes();
+      getTransactionIdBytes();
 }
