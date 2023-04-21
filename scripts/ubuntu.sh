@@ -93,7 +93,7 @@ build_musa() {
     gradle build    
     mkdir -p $TARGET_DIR/musa
     find build/libs ! -name '*plain*' -type f -exec cp '{}' $TARGET_DIR/musa \;
-    cp README.md application.properties.orig $TARGET_DIR/musa/
+    cp README.md application-orig.properties $TARGET_DIR/musa/
 }
 
 copy_jdk() {
