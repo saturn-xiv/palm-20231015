@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export CODE="palm-bonic"
+export CODE="palm-bionic"
 export NAME="$CODE-$USER"
 
 if podman container exists $NAME

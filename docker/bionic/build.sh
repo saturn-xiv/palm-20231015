@@ -3,9 +3,9 @@
 set -e
 
 export VERSION=$(date "+%4Y%m%d%H%M%S")
-export CODE="palm-bonic"
+export CODE="palm-bionic"
 
-buildah pull ubuntu:bonic
+buildah pull ubuntu:bionic
 buildah bud --layers -t $CODE .
 podman save -o $CODE-$VERSION.tar $CODE
 XZ_OPT=-9 tar -cJf $CODE-$VERSION.tar.xz $CODE-$VERSION.tar
