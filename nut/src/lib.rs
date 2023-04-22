@@ -16,6 +16,8 @@ pub mod services;
 pub mod theme;
 pub mod zero;
 
+use chrono::{DateTime, NaiveDateTime};
+use chrono_tz::Tz;
 use palm::{
     orchid::v1::{
         wechat_mini_program_client::WechatMiniProgramClient,
@@ -25,6 +27,13 @@ use palm::{
 };
 use serde::{Deserialize, Serialize};
 use tonic::transport::{channel::Channel, Endpoint};
+
+pub fn timestamp2datetime(ts: i64, tz: Tz) -> Option<DateTime<Tz>> {
+    if let Some(it) = NaiveDateTime::from_timestamp_opt(ts, 0) {
+        return it.and_local_timezone(tz).single();
+    }
+    None
+}
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone, PartialEq, Eq)]
 pub struct Orchid {
