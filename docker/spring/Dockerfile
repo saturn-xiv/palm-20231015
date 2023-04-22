@@ -161,8 +161,8 @@ RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc \
     && echo 'export PATH=$GOROOT/bin:$PATH' >> $HOME/.zshrc \
     && echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc
 
-ENV JDK_VERSION "20-open"
-ENV GRADLE_VERSION "8.1"
+ENV JDK_VERSION "20.0.1-open"
+ENV GRADLE_VERSION "8.1.1"
 RUN curl -s "https://get.sdkman.io" | zsh
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
