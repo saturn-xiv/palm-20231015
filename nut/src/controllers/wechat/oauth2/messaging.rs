@@ -82,7 +82,7 @@ pub async fn callback(
             }))?;
         }
         _ => {
-            warn!("unhandle message");
+            warn!("unhandled message");
         }
     };
 

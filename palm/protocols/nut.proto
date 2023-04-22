@@ -244,8 +244,44 @@ service Wechat {
       returns (palm.orchid.v1.WechatOauth2QrConnectResponse) {}
   rpc SignInByOauth2(SignInByWechatOauth2Request) returns (UserSignInResponse) {
   }
+  rpc AllOauth2User(google.protobuf.Empty)
+      returns (WechatAllOauth2UserResponse) {}
+  rpc DestroyOauth2User(IdRequest) returns (google.protobuf.Empty) {}
+
   rpc CurrentMiniProgramUser(CurrentWechatMiniProgramUserRequest)
       returns (CurrentWechatMiniProgramUserResponse) {}
+  rpc AllMiniProgramUser(google.protobuf.Empty)
+      returns (WechatAllMiniProgramUserResponse) {}
+  rpc DestroyMiniProgramUser(IdRequest) returns (google.protobuf.Empty) {}
+}
+
+message WechatAllMiniProgramUserResponse {
+  message Item {
+    optional int32 user_id = 1;
+    string union_id = 2;
+    string app_id = 3;
+    string open_id = 4;
+    optional string nickname = 11;
+    optional string avatar_url = 12;
+  }
+  repeated Item items = 1;
+}
+message WechatAllOauth2UserResponse {
+  message Item {
+    int32 user_id = 1;
+    string union_id = 2;
+    string app_id = 3;
+    string open_id = 4;
+    string nickname = 11;
+    int32 sex = 12;
+    string city = 13;
+    string province = 14;
+    string country = 15;
+    optional string head_img_url = 16;
+    repeated string privilege = 17;
+    string lang = 18;
+  }
+  repeated Item items = 1;
 }
 
 message SignInByWechatOauth2Request {

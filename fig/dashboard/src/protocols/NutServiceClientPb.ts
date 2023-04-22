@@ -1202,6 +1202,92 @@ export class WechatClient {
     this.methodDescriptorSignInByOauth2);
   }
 
+  methodDescriptorAllOauth2User = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/AllOauth2User',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    nut_pb.WechatAllOauth2UserResponse,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    nut_pb.WechatAllOauth2UserResponse.deserializeBinary
+  );
+
+  allOauth2User(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.WechatAllOauth2UserResponse>;
+
+  allOauth2User(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatAllOauth2UserResponse) => void): grpcWeb.ClientReadableStream<nut_pb.WechatAllOauth2UserResponse>;
+
+  allOauth2User(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatAllOauth2UserResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Wechat/AllOauth2User',
+        request,
+        metadata || {},
+        this.methodDescriptorAllOauth2User,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Wechat/AllOauth2User',
+    request,
+    metadata || {},
+    this.methodDescriptorAllOauth2User);
+  }
+
+  methodDescriptorDestroyOauth2User = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/DestroyOauth2User',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.IdRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.IdRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  destroyOauth2User(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  destroyOauth2User(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  destroyOauth2User(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Wechat/DestroyOauth2User',
+        request,
+        metadata || {},
+        this.methodDescriptorDestroyOauth2User,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Wechat/DestroyOauth2User',
+    request,
+    metadata || {},
+    this.methodDescriptorDestroyOauth2User);
+  }
+
   methodDescriptorCurrentMiniProgramUser = new grpcWeb.MethodDescriptor(
     '/palm.nut.v1.Wechat/CurrentMiniProgramUser',
     grpcWeb.MethodType.UNARY,
@@ -1243,6 +1329,92 @@ export class WechatClient {
     request,
     metadata || {},
     this.methodDescriptorCurrentMiniProgramUser);
+  }
+
+  methodDescriptorAllMiniProgramUser = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/AllMiniProgramUser',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    nut_pb.WechatAllMiniProgramUserResponse,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    nut_pb.WechatAllMiniProgramUserResponse.deserializeBinary
+  );
+
+  allMiniProgramUser(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.WechatAllMiniProgramUserResponse>;
+
+  allMiniProgramUser(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatAllMiniProgramUserResponse) => void): grpcWeb.ClientReadableStream<nut_pb.WechatAllMiniProgramUserResponse>;
+
+  allMiniProgramUser(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatAllMiniProgramUserResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Wechat/AllMiniProgramUser',
+        request,
+        metadata || {},
+        this.methodDescriptorAllMiniProgramUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Wechat/AllMiniProgramUser',
+    request,
+    metadata || {},
+    this.methodDescriptorAllMiniProgramUser);
+  }
+
+  methodDescriptorDestroyMiniProgramUser = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/DestroyMiniProgramUser',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.IdRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.IdRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  destroyMiniProgramUser(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  destroyMiniProgramUser(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  destroyMiniProgramUser(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Wechat/DestroyMiniProgramUser',
+        request,
+        metadata || {},
+        this.methodDescriptorDestroyMiniProgramUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Wechat/DestroyMiniProgramUser',
+    request,
+    metadata || {},
+    this.methodDescriptorDestroyMiniProgramUser);
   }
 
 }

@@ -885,6 +885,178 @@ export namespace GoogleSignInUrlResponse {
   }
 }
 
+export class WechatAllMiniProgramUserResponse extends jspb.Message {
+  getItemsList(): Array<WechatAllMiniProgramUserResponse.Item>;
+  setItemsList(value: Array<WechatAllMiniProgramUserResponse.Item>): WechatAllMiniProgramUserResponse;
+  clearItemsList(): WechatAllMiniProgramUserResponse;
+  addItems(value?: WechatAllMiniProgramUserResponse.Item, index?: number): WechatAllMiniProgramUserResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatAllMiniProgramUserResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatAllMiniProgramUserResponse): WechatAllMiniProgramUserResponse.AsObject;
+  static serializeBinaryToWriter(message: WechatAllMiniProgramUserResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatAllMiniProgramUserResponse;
+  static deserializeBinaryFromReader(message: WechatAllMiniProgramUserResponse, reader: jspb.BinaryReader): WechatAllMiniProgramUserResponse;
+}
+
+export namespace WechatAllMiniProgramUserResponse {
+  export type AsObject = {
+    itemsList: Array<WechatAllMiniProgramUserResponse.Item.AsObject>,
+  }
+
+  export class Item extends jspb.Message {
+    getUserId(): number;
+    setUserId(value: number): Item;
+    hasUserId(): boolean;
+    clearUserId(): Item;
+
+    getUnionId(): string;
+    setUnionId(value: string): Item;
+
+    getAppId(): string;
+    setAppId(value: string): Item;
+
+    getOpenId(): string;
+    setOpenId(value: string): Item;
+
+    getNickname(): string;
+    setNickname(value: string): Item;
+    hasNickname(): boolean;
+    clearNickname(): Item;
+
+    getAvatarUrl(): string;
+    setAvatarUrl(value: string): Item;
+    hasAvatarUrl(): boolean;
+    clearAvatarUrl(): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      userId?: number,
+      unionId: string,
+      appId: string,
+      openId: string,
+      nickname?: string,
+      avatarUrl?: string,
+    }
+
+    export enum UserIdCase { 
+      _USER_ID_NOT_SET = 0,
+      USER_ID = 1,
+    }
+
+    export enum NicknameCase { 
+      _NICKNAME_NOT_SET = 0,
+      NICKNAME = 11,
+    }
+
+    export enum AvatarUrlCase { 
+      _AVATAR_URL_NOT_SET = 0,
+      AVATAR_URL = 12,
+    }
+  }
+
+}
+
+export class WechatAllOauth2UserResponse extends jspb.Message {
+  getItemsList(): Array<WechatAllOauth2UserResponse.Item>;
+  setItemsList(value: Array<WechatAllOauth2UserResponse.Item>): WechatAllOauth2UserResponse;
+  clearItemsList(): WechatAllOauth2UserResponse;
+  addItems(value?: WechatAllOauth2UserResponse.Item, index?: number): WechatAllOauth2UserResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatAllOauth2UserResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatAllOauth2UserResponse): WechatAllOauth2UserResponse.AsObject;
+  static serializeBinaryToWriter(message: WechatAllOauth2UserResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatAllOauth2UserResponse;
+  static deserializeBinaryFromReader(message: WechatAllOauth2UserResponse, reader: jspb.BinaryReader): WechatAllOauth2UserResponse;
+}
+
+export namespace WechatAllOauth2UserResponse {
+  export type AsObject = {
+    itemsList: Array<WechatAllOauth2UserResponse.Item.AsObject>,
+  }
+
+  export class Item extends jspb.Message {
+    getUserId(): number;
+    setUserId(value: number): Item;
+
+    getUnionId(): string;
+    setUnionId(value: string): Item;
+
+    getAppId(): string;
+    setAppId(value: string): Item;
+
+    getOpenId(): string;
+    setOpenId(value: string): Item;
+
+    getNickname(): string;
+    setNickname(value: string): Item;
+
+    getSex(): number;
+    setSex(value: number): Item;
+
+    getCity(): string;
+    setCity(value: string): Item;
+
+    getProvince(): string;
+    setProvince(value: string): Item;
+
+    getCountry(): string;
+    setCountry(value: string): Item;
+
+    getHeadImgUrl(): string;
+    setHeadImgUrl(value: string): Item;
+    hasHeadImgUrl(): boolean;
+    clearHeadImgUrl(): Item;
+
+    getPrivilegeList(): Array<string>;
+    setPrivilegeList(value: Array<string>): Item;
+    clearPrivilegeList(): Item;
+    addPrivilege(value: string, index?: number): Item;
+
+    getLang(): string;
+    setLang(value: string): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      userId: number,
+      unionId: string,
+      appId: string,
+      openId: string,
+      nickname: string,
+      sex: number,
+      city: string,
+      province: string,
+      country: string,
+      headImgUrl?: string,
+      privilegeList: Array<string>,
+      lang: string,
+    }
+
+    export enum HeadImgUrlCase { 
+      _HEAD_IMG_URL_NOT_SET = 0,
+      HEAD_IMG_URL = 16,
+    }
+  }
+
+}
+
 export class SignInByWechatOauth2Request extends jspb.Message {
   getState(): string;
   setState(value: string): SignInByWechatOauth2Request;

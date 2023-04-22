@@ -1,5 +1,5 @@
 use chrono::{NaiveDateTime, Utc};
-use diesel::{insert_into, prelude::*, update};
+use diesel::{delete, insert_into, prelude::*, update};
 use palm::Result;
 use serde::{Deserialize, Serialize};
 
@@ -29,6 +29,7 @@ pub trait Dao {
     fn set_profile(&mut self, id: i32, nickname: &str, avatar_url: &str) -> Result<()>;
     fn sign_in(&mut self, app_id: &str, open_id: &str, union_id: &str, ip: &str) -> Result<Item>;
     fn count_by_user(&mut self, user: i32) -> Result<i64>;
+    fn destroy(&mut self, id: i32) -> Result<()>;
 }
 
 impl Dao for Connection {
@@ -125,5 +126,13 @@ impl Dao for Connection {
             .count()
             .get_result(self)?;
         Ok(cnt)
+    }
+    fn destroy(&mut self, id: i32) -> Result<()> {
+        delete(
+            wechat_mini_program_users::dsl::wechat_mini_program_users
+                .filter(wechat_mini_program_users::dsl::id.eq(id)),
+        )
+        .execute(self)?;
+        Ok(())
     }
 }
