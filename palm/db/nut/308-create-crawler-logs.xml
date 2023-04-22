@@ -16,7 +16,7 @@
             <column name="url" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="body" type="text">
+            <column name="body" type="bytea">
                 <constraints nullable="false" />
             </column>
             <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">

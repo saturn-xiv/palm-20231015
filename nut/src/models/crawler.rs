@@ -15,8 +15,8 @@ pub async fn pull(db: &mut Connection, url: &str) -> Result<()> {
     info!("fetch {}", url);
     let res = reqwest::get(url).await?;
     let status = res.status();
-    let body = res.text().await?;
-    let body = body.replace(char::from(0), "");
+    let body = res.bytes().await?;
+    // let body = body.replace(char::from(0), "");
     match status {
         StatusCode::OK => {
             if let Ok(last) = db.latest(url) {
@@ -28,7 +28,7 @@ pub async fn pull(db: &mut Connection, url: &str) -> Result<()> {
             db.create(url, &body)?;
             Ok(())
         }
-        _ => Err(Box::new(HttpError(StatusCode::BAD_REQUEST, Some(body)))),
+        _ => Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None))),
     }
 }
 
@@ -37,13 +37,13 @@ pub async fn pull(db: &mut Connection, url: &str) -> Result<()> {
 pub struct Item {
     pub id: i32,
     pub url: String,
-    pub body: String,
+    pub body: Vec<u8>,
     pub created_at: NaiveDateTime,
 }
 
 pub trait Dao {
     fn latest(&mut self, url: &str) -> Result<Item>;
-    fn create(&mut self, url: &str, body: &str) -> Result<()>;
+    fn create(&mut self, url: &str, body: &[u8]) -> Result<()>;
     fn delete(&mut self, years: i32) -> Result<()>;
 }
 
@@ -55,7 +55,7 @@ impl Dao for Connection {
             .first::<Item>(self)?;
         Ok(it)
     }
-    fn create(&mut self, url: &str, body: &str) -> Result<()> {
+    fn create(&mut self, url: &str, body: &[u8]) -> Result<()> {
         insert_into(crawler_logs::dsl::crawler_logs)
             .values((
                 crawler_logs::dsl::url.eq(url),

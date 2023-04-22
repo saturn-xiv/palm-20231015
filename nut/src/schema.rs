@@ -53,7 +53,7 @@ diesel::table! {
     crawler_logs (id) {
         id -> Int4,
         url -> Varchar,
-        body -> Text,
+        body -> Bytea,
         created_at -> Timestamp,
     }
 }
