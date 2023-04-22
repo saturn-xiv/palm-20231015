@@ -35,6 +35,13 @@ pub struct Item {
     pub updated_at: NaiveDateTime,
 }
 
+impl Item {
+    pub fn privilege(&self) -> Result<Vec<String>> {
+        let it = flexbuffers::from_slice(&self.privilege)?;
+        Ok(it)
+    }
+}
+
 pub trait Dao {
     fn all(&mut self) -> Result<Vec<Item>>;
     fn by_id(&mut self, id: i32) -> Result<Item>;

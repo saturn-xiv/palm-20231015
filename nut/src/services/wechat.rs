@@ -299,7 +299,7 @@ impl From<Oauth2User> for v1::wechat_all_oauth2_user_response::Item {
             city: x.city.clone(),
             province: x.provence.clone(),
             country: x.country.clone(),
-            privilege: flexbuffers::from_slice(&x.privilege).unwrap_or_default(),
+            privilege: x.privilege().unwrap_or_default(),
             lang: x.lang,
         }
     }
