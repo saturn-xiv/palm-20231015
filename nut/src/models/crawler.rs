@@ -16,6 +16,7 @@ pub async fn pull(db: &mut Connection, url: &str) -> Result<()> {
     let res = reqwest::get(url).await?;
     let status = res.status();
     let body = res.text().await?;
+    let body = body.replace(char::from(0), "");
     match status {
         StatusCode::OK => {
             if let Ok(last) = db.latest(url) {
