@@ -101,6 +101,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .allowed_header(ACCEPT_LANGUAGE)
             .allowed_header(COOKIE)
             .allowed_header("X-Requested-With")
+            // .send_wildcard()
             .supports_credentials()
             .max_age(Duration::hours(1).num_seconds() as usize)
         };

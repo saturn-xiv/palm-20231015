@@ -6,6 +6,8 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt update
 RUN apt install -y lsb-release apt-utils \
     debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
+# https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa
+RUN add-apt-repository -y ppa:deadsnakes/ppa
 # https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
@@ -24,17 +26,19 @@ RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release 
 RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 RUN apt update && apt -y upgrade
 
-ENV GCC_VERSION 10
+ENV GCC_VERSION 8
+ENV PYTHON_VERSION 3.11
+# crossbuild-essential-riscv64 libstdc++-${GCC_VERSION}-dev:riscv64 
 RUN apt -y install zsh git locales locales-all \
     vim tzdata zip unzip tree tmux \
-    build-essential g++-${GCC_VERSION} libstdc++-${GCC_VERSION}-dev \
+    g++-10 build-essential g++-${GCC_VERSION} libstdc++-${GCC_VERSION}-dev \
     crossbuild-essential-arm64 g++-${GCC_VERSION}-aarch64-linux-gnu libstdc++-${GCC_VERSION}-dev:arm64 \
     crossbuild-essential-armhf g++-${GCC_VERSION}-arm-linux-gnueabihf libstdc++-${GCC_VERSION}-dev:armhf \
-    crossbuild-essential-riscv64 g++-${GCC_VERSION}-riscv64-linux-gnu libstdc++-${GCC_VERSION}-dev:riscv64 \
+    g++-${GCC_VERSION}-riscv64-linux-gnu \
     clang-${CLANG_VERSION} clangd-${CLANG_VERSION} clang-tools-${CLANG_VERSION} clang-format-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
     cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio \
     debhelper bison flex ninja-build \
-    python3 python3-distutils python3-dev python3-pip virtualenv
+    python${PYTHON_VERSION} python${PYTHON_VERSION}-distutils python${PYTHON_VERSION}-dev virtualenv
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${CLANG_VERSION} 100 \
@@ -52,7 +56,6 @@ RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CL
 
 RUN apt -y autoremove && apt -y clean
 
-RUN cd /usr/bin && ln -s make gmake
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 RUN locale-gen
 RUN update-locale LANG=en_US.UTF-8
@@ -74,7 +77,9 @@ RUN git config --global core.quotepath false \
 RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf \
     && echo 'set-option -g default-shell "/bin/zsh"' >> $HOME/.tmux.conf
 
-RUN sh -c ". $HOME/.profile && pip3 install --user cmake"
+RUN curl -sSL https://bootstrap.pypa.io/get-pip.py -o $HOME/downloads/get-pip.py
+RUN sh -c ". $HOME/.profile && python${PYTHON_VERSION} $HOME/downloads/get-pip.py"
+RUN sh -c ". $HOME/.profile && python${PYTHON_VERSION} -m pip install --user cmake"
 
 # https://github.com/nvm-sh/nvm
 ENV NVM_VERSION "v0.39.3"
@@ -82,9 +87,10 @@ RUN git clone -b ${NVM_VERSION} https://github.com/nvm-sh/nvm.git $HOME/.nvm
 RUN echo 'export NVM_DIR="$HOME/.nvm"' >> $HOME/.zshrc
 RUN echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $HOME/.zshrc
 RUN echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> $HOME/.zshrc
+# version `GLIBC_2.28' not found (required by node)
 RUN zsh -c "source $HOME/.zshrc \
-    && nvm install node \
-    && nvm use node \
+    && nvm install lts/gallium \
+    && nvm use lts/gallium \
     && npm i yarn -g"
 RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.zshrc
 
@@ -128,7 +134,7 @@ RUN apt install -y libssl-dev libxxhash-dev zlib1g-dev \
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir $HOME/build/mold \
     && cd $HOME/build/mold \
-    && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-${GCC_VERSION} \
+    && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-10 \
         -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/mold \
     && make \
     && make install"

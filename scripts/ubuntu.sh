@@ -11,16 +11,6 @@ export PACKAGE_NAME=palm-$UBUNTU_CODENAME-$GIT_VERSION
 export TARGET_DIR=$PWD/tmp/$PACKAGE_NAME
 
 
-# if [[ $UBUNTU_CODENAME == "jammy" ]]
-# then
-#     export GCC_VERSION=11
-# fi
-
-# if [[ $UBUNTU_CODENAME == "focal" ]]
-# then
-#     export GCC_VERSION=10
-# fi
-
 # -----------------------------------------------------------------------------
 
 build_dashboard() {
@@ -165,7 +155,7 @@ copy_assets() {
 
 # -----------------------------------------------------------------------------
 
-if [[ $UBUNTU_CODENAME != "jammy" ]] && [[ $UBUNTU_CODENAME != "focal" ]]
+if [[ $UBUNTU_CODENAME != "jammy" ]] && [[ $UBUNTU_CODENAME != "focal" ]] && [[ $UBUNTU_CODENAME != "bionic" ]]
 then
     echo "unsupported system($PRETTY_NAME)"
     exit 1

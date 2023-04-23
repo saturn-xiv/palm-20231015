@@ -9,10 +9,12 @@ then
     exit 1
 fi
 
-echo "check /etc/nginx/sites-enabled/$1.conf"
-if [ ! -f /etc/nginx/sites-enabled/$1.conf ]
-then
-    cat > aaa.confg <<EOF
+nginx_conf() {
+  local file=/etc/nginx/sites-enabled/$1.conf
+  echo "create $file"
+  if [ ! -f $file ]
+  then
+      cat > $file <<EOF
 server {
 
   server_name $1;
@@ -51,8 +53,11 @@ server {
 }
 EOF
 
-    chmod 644 /etc/nginx/sites-enabled/$1.conf
-fi
+      chmod 644 $file
+  fi
+}
+
+nginx_conf $1 $2
 
 echo "done($1)."
 exit 0

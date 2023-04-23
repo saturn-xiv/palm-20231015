@@ -52,7 +52,6 @@ RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CL
 
 RUN apt -y autoremove && apt -y clean
 
-RUN cd /usr/bin && ln -s make gmake
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 RUN locale-gen
 RUN update-locale LANG=en_US.UTF-8

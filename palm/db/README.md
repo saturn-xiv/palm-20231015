@@ -1,5 +1,11 @@
 # Setup
 
+## Install
+
+```bash
+sudo apt install openjdk-17-jdk
+```
+
 ## Usage
 
 ```bash
@@ -47,3 +53,7 @@ $HOME/local/liquibase/liquibase status
   # import database
   cat 3rd/*.sql | mysql -u www -p palm
   ```
+
+## Resources
+
+- [Download Liquibase](https://www.liquibase.com/download)
