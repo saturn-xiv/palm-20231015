@@ -1288,6 +1288,178 @@ export class WechatClient {
     this.methodDescriptorDestroyOauth2User);
   }
 
+  methodDescriptorBindOauth2User = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/BindOauth2User',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.WechatUserBindRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.WechatUserBindRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  bindOauth2User(
+    request: nut_pb.WechatUserBindRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  bindOauth2User(
+    request: nut_pb.WechatUserBindRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  bindOauth2User(
+    request: nut_pb.WechatUserBindRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Wechat/BindOauth2User',
+        request,
+        metadata || {},
+        this.methodDescriptorBindOauth2User,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Wechat/BindOauth2User',
+    request,
+    metadata || {},
+    this.methodDescriptorBindOauth2User);
+  }
+
+  methodDescriptorGetOauth2UserById = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/GetOauth2UserById',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.IdRequest,
+    nut_pb.WechatAllOauth2UserResponse.Item,
+    (request: nut_pb.IdRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.WechatAllOauth2UserResponse.Item.deserializeBinary
+  );
+
+  getOauth2UserById(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.WechatAllOauth2UserResponse.Item>;
+
+  getOauth2UserById(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatAllOauth2UserResponse.Item) => void): grpcWeb.ClientReadableStream<nut_pb.WechatAllOauth2UserResponse.Item>;
+
+  getOauth2UserById(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatAllOauth2UserResponse.Item) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Wechat/GetOauth2UserById',
+        request,
+        metadata || {},
+        this.methodDescriptorGetOauth2UserById,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Wechat/GetOauth2UserById',
+    request,
+    metadata || {},
+    this.methodDescriptorGetOauth2UserById);
+  }
+
+  methodDescriptorGetOauth2UserByOpenId = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/GetOauth2UserByOpenId',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.WechatUserQueryByOpenIdRequest,
+    nut_pb.WechatAllOauth2UserResponse.Item,
+    (request: nut_pb.WechatUserQueryByOpenIdRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.WechatAllOauth2UserResponse.Item.deserializeBinary
+  );
+
+  getOauth2UserByOpenId(
+    request: nut_pb.WechatUserQueryByOpenIdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.WechatAllOauth2UserResponse.Item>;
+
+  getOauth2UserByOpenId(
+    request: nut_pb.WechatUserQueryByOpenIdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatAllOauth2UserResponse.Item) => void): grpcWeb.ClientReadableStream<nut_pb.WechatAllOauth2UserResponse.Item>;
+
+  getOauth2UserByOpenId(
+    request: nut_pb.WechatUserQueryByOpenIdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatAllOauth2UserResponse.Item) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Wechat/GetOauth2UserByOpenId',
+        request,
+        metadata || {},
+        this.methodDescriptorGetOauth2UserByOpenId,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Wechat/GetOauth2UserByOpenId',
+    request,
+    metadata || {},
+    this.methodDescriptorGetOauth2UserByOpenId);
+  }
+
+  methodDescriptorGetOauth2UserByUnionId = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/GetOauth2UserByUnionId',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.WechatUserQueryByUnionIdRequest,
+    nut_pb.WechatAllOauth2UserResponse,
+    (request: nut_pb.WechatUserQueryByUnionIdRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.WechatAllOauth2UserResponse.deserializeBinary
+  );
+
+  getOauth2UserByUnionId(
+    request: nut_pb.WechatUserQueryByUnionIdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.WechatAllOauth2UserResponse>;
+
+  getOauth2UserByUnionId(
+    request: nut_pb.WechatUserQueryByUnionIdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatAllOauth2UserResponse) => void): grpcWeb.ClientReadableStream<nut_pb.WechatAllOauth2UserResponse>;
+
+  getOauth2UserByUnionId(
+    request: nut_pb.WechatUserQueryByUnionIdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatAllOauth2UserResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Wechat/GetOauth2UserByUnionId',
+        request,
+        metadata || {},
+        this.methodDescriptorGetOauth2UserByUnionId,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Wechat/GetOauth2UserByUnionId',
+    request,
+    metadata || {},
+    this.methodDescriptorGetOauth2UserByUnionId);
+  }
+
   methodDescriptorCurrentMiniProgramUser = new grpcWeb.MethodDescriptor(
     '/palm.nut.v1.Wechat/CurrentMiniProgramUser',
     grpcWeb.MethodType.UNARY,
@@ -1415,6 +1587,178 @@ export class WechatClient {
     request,
     metadata || {},
     this.methodDescriptorDestroyMiniProgramUser);
+  }
+
+  methodDescriptorBindMiniProgramUser = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/BindMiniProgramUser',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.WechatUserBindRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.WechatUserBindRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  bindMiniProgramUser(
+    request: nut_pb.WechatUserBindRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  bindMiniProgramUser(
+    request: nut_pb.WechatUserBindRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  bindMiniProgramUser(
+    request: nut_pb.WechatUserBindRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Wechat/BindMiniProgramUser',
+        request,
+        metadata || {},
+        this.methodDescriptorBindMiniProgramUser,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Wechat/BindMiniProgramUser',
+    request,
+    metadata || {},
+    this.methodDescriptorBindMiniProgramUser);
+  }
+
+  methodDescriptorGetMiniProgramUserById = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/GetMiniProgramUserById',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.IdRequest,
+    nut_pb.WechatAllMiniProgramUserResponse.Item,
+    (request: nut_pb.IdRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.WechatAllMiniProgramUserResponse.Item.deserializeBinary
+  );
+
+  getMiniProgramUserById(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.WechatAllMiniProgramUserResponse.Item>;
+
+  getMiniProgramUserById(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatAllMiniProgramUserResponse.Item) => void): grpcWeb.ClientReadableStream<nut_pb.WechatAllMiniProgramUserResponse.Item>;
+
+  getMiniProgramUserById(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatAllMiniProgramUserResponse.Item) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Wechat/GetMiniProgramUserById',
+        request,
+        metadata || {},
+        this.methodDescriptorGetMiniProgramUserById,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Wechat/GetMiniProgramUserById',
+    request,
+    metadata || {},
+    this.methodDescriptorGetMiniProgramUserById);
+  }
+
+  methodDescriptorGetMiniProgramUserByOpenId = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/GetMiniProgramUserByOpenId',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.WechatUserQueryByOpenIdRequest,
+    nut_pb.WechatAllMiniProgramUserResponse.Item,
+    (request: nut_pb.WechatUserQueryByOpenIdRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.WechatAllMiniProgramUserResponse.Item.deserializeBinary
+  );
+
+  getMiniProgramUserByOpenId(
+    request: nut_pb.WechatUserQueryByOpenIdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.WechatAllMiniProgramUserResponse.Item>;
+
+  getMiniProgramUserByOpenId(
+    request: nut_pb.WechatUserQueryByOpenIdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatAllMiniProgramUserResponse.Item) => void): grpcWeb.ClientReadableStream<nut_pb.WechatAllMiniProgramUserResponse.Item>;
+
+  getMiniProgramUserByOpenId(
+    request: nut_pb.WechatUserQueryByOpenIdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatAllMiniProgramUserResponse.Item) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Wechat/GetMiniProgramUserByOpenId',
+        request,
+        metadata || {},
+        this.methodDescriptorGetMiniProgramUserByOpenId,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Wechat/GetMiniProgramUserByOpenId',
+    request,
+    metadata || {},
+    this.methodDescriptorGetMiniProgramUserByOpenId);
+  }
+
+  methodDescriptorGetMiniProgramUserByUnionId = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/GetMiniProgramUserByUnionId',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.WechatUserQueryByUnionIdRequest,
+    nut_pb.WechatAllMiniProgramUserResponse,
+    (request: nut_pb.WechatUserQueryByUnionIdRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.WechatAllMiniProgramUserResponse.deserializeBinary
+  );
+
+  getMiniProgramUserByUnionId(
+    request: nut_pb.WechatUserQueryByUnionIdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.WechatAllMiniProgramUserResponse>;
+
+  getMiniProgramUserByUnionId(
+    request: nut_pb.WechatUserQueryByUnionIdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatAllMiniProgramUserResponse) => void): grpcWeb.ClientReadableStream<nut_pb.WechatAllMiniProgramUserResponse>;
+
+  getMiniProgramUserByUnionId(
+    request: nut_pb.WechatUserQueryByUnionIdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.WechatAllMiniProgramUserResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Wechat/GetMiniProgramUserByUnionId',
+        request,
+        metadata || {},
+        this.methodDescriptorGetMiniProgramUserByUnionId,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Wechat/GetMiniProgramUserByUnionId',
+    request,
+    metadata || {},
+    this.methodDescriptorGetMiniProgramUserByUnionId);
   }
 
 }

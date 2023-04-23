@@ -179,7 +179,7 @@ impl v1::wechat_server::Wechat for Service {
 
             let mut db = try_grpc!(self.pgsql.get())?;
             let db = db.deref_mut();
-            let wu = try_grpc!(WechatMiniProgramUserDao::by_openid(
+            let wu = try_grpc!(WechatMiniProgramUserDao::by_open_id(
                 db,
                 &req.app_id,
                 &open_id
@@ -283,6 +283,197 @@ impl v1::wechat_server::Wechat for Service {
         let req = req.into_inner();
         try_grpc!(WechatMiniProgramUserDao::destroy(db, req.id))?;
         Ok(Response::new(()))
+    }
+    async fn bind_mini_program_user(
+        &self,
+        req: Request<v1::WechatUserBindRequest>,
+    ) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
+
+        if !user.is_administrator(enf).await {
+            return Err(Status::permission_denied(type_name::<User>()));
+        }
+        let req = req.into_inner();
+
+        let iu = try_grpc!(UserDao::by_id(db, req.user_id))?;
+        let wu = try_grpc!(WechatMiniProgramUserDao::by_open_id(
+            db,
+            &req.app_id,
+            &req.open_id
+        ))?;
+        try_grpc!(WechatMiniProgramUserDao::bind(db, wu.id, iu.id))?;
+        Ok(Response::new(()))
+    }
+    async fn bind_oauth2_user(&self, req: Request<v1::WechatUserBindRequest>) -> GrpcResult<()> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
+
+        if !user.is_administrator(enf).await {
+            return Err(Status::permission_denied(type_name::<User>()));
+        }
+        let req = req.into_inner();
+
+        let iu = try_grpc!(UserDao::by_id(db, req.user_id))?;
+        let wu = try_grpc!(WechatOauth2UserDao::by_open_id(
+            db,
+            &req.app_id,
+            &req.open_id
+        ))?;
+        try_grpc!(WechatOauth2UserDao::bind(db, wu.id, iu.id))?;
+        Ok(Response::new(()))
+    }
+
+    async fn get_oauth2_user_by_id(
+        &self,
+        req: Request<v1::IdRequest>,
+    ) -> GrpcResult<v1::wechat_all_oauth2_user_response::Item> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
+
+        if !user.is_administrator(enf).await {
+            return Err(Status::permission_denied(type_name::<User>()));
+        }
+        let req = req.into_inner();
+
+        let it = try_grpc!(WechatOauth2UserDao::by_id(db, req.id))?;
+        Ok(Response::new(it.into()))
+    }
+    async fn get_oauth2_user_by_open_id(
+        &self,
+        req: Request<v1::WechatUserQueryByOpenIdRequest>,
+    ) -> GrpcResult<v1::wechat_all_oauth2_user_response::Item> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
+
+        if !user.is_administrator(enf).await {
+            return Err(Status::permission_denied(type_name::<User>()));
+        }
+        let req = req.into_inner();
+
+        let it = try_grpc!(WechatOauth2UserDao::by_open_id(
+            db,
+            &req.app_id,
+            &req.open_id
+        ))?;
+        Ok(Response::new(it.into()))
+    }
+    async fn get_oauth2_user_by_union_id(
+        &self,
+        req: Request<v1::WechatUserQueryByUnionIdRequest>,
+    ) -> GrpcResult<v1::WechatAllOauth2UserResponse> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
+
+        if !user.is_administrator(enf).await {
+            return Err(Status::permission_denied(type_name::<User>()));
+        }
+        let req = req.into_inner();
+
+        let items = try_grpc!(WechatOauth2UserDao::by_union_id(db, &req.union_id))?;
+        Ok(Response::new(v1::WechatAllOauth2UserResponse {
+            items: items.iter().map(|x| x.clone().into()).collect(),
+        }))
+    }
+
+    async fn get_mini_program_user_by_id(
+        &self,
+        req: Request<v1::IdRequest>,
+    ) -> GrpcResult<v1::wechat_all_mini_program_user_response::Item> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
+
+        if !user.is_administrator(enf).await {
+            return Err(Status::permission_denied(type_name::<User>()));
+        }
+        let req = req.into_inner();
+
+        let it = try_grpc!(WechatMiniProgramUserDao::by_id(db, req.id))?;
+        Ok(Response::new(it.into()))
+    }
+    async fn get_mini_program_user_by_open_id(
+        &self,
+        req: Request<v1::WechatUserQueryByOpenIdRequest>,
+    ) -> GrpcResult<v1::wechat_all_mini_program_user_response::Item> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
+
+        if !user.is_administrator(enf).await {
+            return Err(Status::permission_denied(type_name::<User>()));
+        }
+        let req = req.into_inner();
+
+        let it = try_grpc!(WechatMiniProgramUserDao::by_open_id(
+            db,
+            &req.app_id,
+            &req.open_id
+        ))?;
+        Ok(Response::new(it.into()))
+    }
+    async fn get_mini_program_user_by_union_id(
+        &self,
+        req: Request<v1::WechatUserQueryByUnionIdRequest>,
+    ) -> GrpcResult<v1::WechatAllMiniProgramUserResponse> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.redis.get())?;
+        let ch = ch.deref_mut();
+        let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
+        let user = try_grpc!(ss.current_user(db, ch, jwt))?;
+
+        if !user.is_administrator(enf).await {
+            return Err(Status::permission_denied(type_name::<User>()));
+        }
+        let req = req.into_inner();
+
+        let items = try_grpc!(WechatMiniProgramUserDao::by_union_id(db, &req.union_id))?;
+        Ok(Response::new(v1::WechatAllMiniProgramUserResponse {
+            items: items.iter().map(|x| x.clone().into()).collect(),
+        }))
     }
 }
 

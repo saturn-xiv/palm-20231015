@@ -247,13 +247,40 @@ service Wechat {
   rpc AllOauth2User(google.protobuf.Empty)
       returns (WechatAllOauth2UserResponse) {}
   rpc DestroyOauth2User(IdRequest) returns (google.protobuf.Empty) {}
+  rpc BindOauth2User(WechatUserBindRequest) returns (google.protobuf.Empty) {}
+  rpc GetOauth2UserById(IdRequest) returns (WechatAllOauth2UserResponse.Item) {}
+  rpc GetOauth2UserByOpenId(WechatUserQueryByOpenIdRequest)
+      returns (WechatAllOauth2UserResponse.Item) {}
+  rpc GetOauth2UserByUnionId(WechatUserQueryByUnionIdRequest)
+      returns (WechatAllOauth2UserResponse) {}
 
   rpc CurrentMiniProgramUser(CurrentWechatMiniProgramUserRequest)
       returns (CurrentWechatMiniProgramUserResponse) {}
   rpc AllMiniProgramUser(google.protobuf.Empty)
       returns (WechatAllMiniProgramUserResponse) {}
   rpc DestroyMiniProgramUser(IdRequest) returns (google.protobuf.Empty) {}
+  rpc BindMiniProgramUser(WechatUserBindRequest)
+      returns (google.protobuf.Empty) {}
+  rpc GetMiniProgramUserById(IdRequest)
+      returns (WechatAllMiniProgramUserResponse.Item) {}
+  rpc GetMiniProgramUserByOpenId(WechatUserQueryByOpenIdRequest)
+      returns (WechatAllMiniProgramUserResponse.Item) {}
+  rpc GetMiniProgramUserByUnionId(WechatUserQueryByUnionIdRequest)
+      returns (WechatAllMiniProgramUserResponse) {}
 }
+
+message WechatUserBindRequest {
+  int32 user_id = 1;
+  string app_id = 2;
+  string open_id = 3;
+}
+
+message WechatUserQueryByOpenIdRequest {
+  string app_id = 1;
+  string open_id = 2;
+}
+
+message WechatUserQueryByUnionIdRequest { string union_id = 1; }
 
 message WechatAllMiniProgramUserResponse {
   message Item {

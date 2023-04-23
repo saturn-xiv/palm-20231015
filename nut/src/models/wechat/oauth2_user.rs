@@ -46,6 +46,7 @@ pub trait Dao {
     fn all(&mut self) -> Result<Vec<Item>>;
     fn by_id(&mut self, id: i32) -> Result<Item>;
     fn by_open_id(&mut self, app_id: &str, open_id: &str) -> Result<Item>;
+    fn by_union_id(&mut self, union_id: &str) -> Result<Vec<Item>>;
     fn set_profile(&mut self, id: i32, user_info: &WechatOauth2LoginResponse) -> Result<()>;
     fn sign_in(
         &mut self,
@@ -56,6 +57,7 @@ pub trait Dao {
         ip: &str,
     ) -> Result<User>;
     fn destroy(&mut self, id: i32) -> Result<()>;
+    fn bind(&mut self, id: i32, user: i32) -> Result<()>;
     fn count_by_user(&mut self, user: i32) -> Result<i64>;
 }
 
@@ -77,6 +79,12 @@ impl Dao for Connection {
             .filter(wechat_oauth2_users::dsl::app_id.eq(app_id))
             .filter(wechat_oauth2_users::dsl::open_id.eq(open_id))
             .first::<Item>(self)?;
+        Ok(it)
+    }
+    fn by_union_id(&mut self, union_id: &str) -> Result<Vec<Item>> {
+        let it = wechat_oauth2_users::dsl::wechat_oauth2_users
+            .filter(wechat_oauth2_users::dsl::union_id.eq(union_id))
+            .load::<Item>(self)?;
         Ok(it)
     }
     fn set_profile(&mut self, id: i32, info: &WechatOauth2LoginResponse) -> Result<()> {
@@ -194,7 +202,19 @@ impl Dao for Connection {
         .execute(self)?;
         Ok(())
     }
-
+    fn bind(&mut self, id: i32, user: i32) -> Result<()> {
+        let now = Utc::now().naive_utc();
+        update(
+            wechat_oauth2_users::dsl::wechat_oauth2_users
+                .filter(wechat_oauth2_users::dsl::id.eq(id)),
+        )
+        .set((
+            wechat_oauth2_users::dsl::user_id.eq(user),
+            wechat_oauth2_users::dsl::updated_at.eq(&now),
+        ))
+        .execute(self)?;
+        Ok(())
+    }
     fn count_by_user(&mut self, user: i32) -> Result<i64> {
         let cnt: i64 = wechat_oauth2_users::dsl::wechat_oauth2_users
             .filter(wechat_oauth2_users::dsl::user_id.eq(user))

@@ -62,7 +62,7 @@ pub async fn bind(
                 &token.0.unwrap_or_default(),
                 &Action::SignIn.to_string(),
             )?;
-            WechatMiniProgramUserDao::by_openid(db, &form.app_id, &open_id)?
+            WechatMiniProgramUserDao::by_open_id(db, &form.app_id, &open_id)?
         };
         if let Some(user_id) = wu.user_id {
             if user_id != user.id {

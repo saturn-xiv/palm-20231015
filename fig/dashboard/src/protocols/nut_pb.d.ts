@@ -885,6 +885,72 @@ export namespace GoogleSignInUrlResponse {
   }
 }
 
+export class WechatUserBindRequest extends jspb.Message {
+  getUserId(): number;
+  setUserId(value: number): WechatUserBindRequest;
+
+  getAppId(): string;
+  setAppId(value: string): WechatUserBindRequest;
+
+  getOpenId(): string;
+  setOpenId(value: string): WechatUserBindRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatUserBindRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatUserBindRequest): WechatUserBindRequest.AsObject;
+  static serializeBinaryToWriter(message: WechatUserBindRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatUserBindRequest;
+  static deserializeBinaryFromReader(message: WechatUserBindRequest, reader: jspb.BinaryReader): WechatUserBindRequest;
+}
+
+export namespace WechatUserBindRequest {
+  export type AsObject = {
+    userId: number,
+    appId: string,
+    openId: string,
+  }
+}
+
+export class WechatUserQueryByOpenIdRequest extends jspb.Message {
+  getAppId(): string;
+  setAppId(value: string): WechatUserQueryByOpenIdRequest;
+
+  getOpenId(): string;
+  setOpenId(value: string): WechatUserQueryByOpenIdRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatUserQueryByOpenIdRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatUserQueryByOpenIdRequest): WechatUserQueryByOpenIdRequest.AsObject;
+  static serializeBinaryToWriter(message: WechatUserQueryByOpenIdRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatUserQueryByOpenIdRequest;
+  static deserializeBinaryFromReader(message: WechatUserQueryByOpenIdRequest, reader: jspb.BinaryReader): WechatUserQueryByOpenIdRequest;
+}
+
+export namespace WechatUserQueryByOpenIdRequest {
+  export type AsObject = {
+    appId: string,
+    openId: string,
+  }
+}
+
+export class WechatUserQueryByUnionIdRequest extends jspb.Message {
+  getUnionId(): string;
+  setUnionId(value: string): WechatUserQueryByUnionIdRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatUserQueryByUnionIdRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatUserQueryByUnionIdRequest): WechatUserQueryByUnionIdRequest.AsObject;
+  static serializeBinaryToWriter(message: WechatUserQueryByUnionIdRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatUserQueryByUnionIdRequest;
+  static deserializeBinaryFromReader(message: WechatUserQueryByUnionIdRequest, reader: jspb.BinaryReader): WechatUserQueryByUnionIdRequest;
+}
+
+export namespace WechatUserQueryByUnionIdRequest {
+  export type AsObject = {
+    unionId: string,
+  }
+}
+
 export class WechatAllMiniProgramUserResponse extends jspb.Message {
   getItemsList(): Array<WechatAllMiniProgramUserResponse.Item>;
   setItemsList(value: Array<WechatAllMiniProgramUserResponse.Item>): WechatAllMiniProgramUserResponse;
