@@ -123,6 +123,12 @@ RUN cd $HOME/build/musl-cross-make \
     && make \
     && make install \
     && make clean
+RUN cd $HOME/build/musl-cross-make \
+    && echo "TARGET=riscv64-linux-musl" > config.mak \
+    && echo "OUTPUT=/opt/crosstools" >> config.mak \
+    && make \
+    && make install \
+    && make clean    
 RUN echo 'export PATH=/opt/crosstools/bin:$PATH' >> $HOME/.zshrc
 
 
