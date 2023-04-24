@@ -18,6 +18,11 @@ pub struct Config {
 
     pub sites: BTreeMap<String, site::Site>,
     pub i18n: HashMap<String, String>,
+
+    pub google: Option<site::Google>,
+    pub baidu: Option<site::Baidu>,
+    #[serde(rename = "index-now")]
+    pub index_now: Option<site::IndexNow>,
 }
 
 impl Config {

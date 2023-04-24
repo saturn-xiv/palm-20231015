@@ -1,8 +1,9 @@
 use std::fmt;
+use std::ops::Deref;
 use std::path::{Path, PathBuf};
 
 use clap::{Parser, ValueEnum};
-use palm::Result;
+use palm::{Result, HOMEPAGE, VERSION};
 
 use super::{
     models::Config,
@@ -10,7 +11,10 @@ use super::{
 };
 
 #[derive(Parser)]
-#[command(author, version, about, long_about = None)]
+#[command(author, about, long_about = None,
+    version=&VERSION.deref()[..],
+    after_help=&HOMEPAGE.deref()[..],
+)]
 pub struct Args {
     #[arg(short = 'c', long, default_value = "content")]
     content_dir: PathBuf,

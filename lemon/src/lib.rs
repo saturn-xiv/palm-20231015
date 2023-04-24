@@ -170,6 +170,40 @@ pub fn build<P: AsRef<Path>, T: models::Theme>(
             let mut file = File::create(&file)?;
             file.write_all(&buf)?;
         }
+        // google
+        if let Some(ref google) = config.google {
+            let buf = GoogleRequest {
+                site_verify_code: google.site_verify_code.clone(),
+            }
+            .render()?;
+            let file = target.join(format!("google{}.html", google.site_verify_id));
+            debug!("generate {}", file.display());
+            let mut file = File::create(&file)?;
+            file.write_all(buf.as_bytes())?;
+        }
+        // baidu
+        if let Some(ref baidu) = config.baidu {
+            let buf = BaiduRequest {
+                site_verify_code: baidu.site_verify_code.clone(),
+                site_verify_content: baidu.site_verify_content.clone(),
+            }
+            .render()?;
+            let file = target.join(format!("baidu_verify_code-{}.html", baidu.site_verify_code));
+            debug!("generate {}", file.display());
+            let mut file = File::create(&file)?;
+            file.write_all(buf.as_bytes())?;
+        }
+        // indexNow
+        if let Some(ref index_now) = config.index_now {
+            let buf = IndexNowRequest {
+                key: index_now.key.clone(),
+            }
+            .render()?;
+            let file = target.join(format!("{}.txt", index_now.id));
+            debug!("generate {}", file.display());
+            let mut file = File::create(&file)?;
+            file.write_all(buf.as_bytes())?;
+        }
     }
 
     Ok(())

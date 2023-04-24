@@ -17,6 +17,28 @@ pub struct Site {
     pub tags: Vec<Tag>,
 }
 
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
+pub struct Google {
+    #[serde(rename = "site-verify-code")]
+    pub site_verify_code: String,
+    #[serde(rename = "site-verify-id")]
+    pub site_verify_id: String,
+}
+
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
+pub struct Baidu {
+    #[serde(rename = "site-verify-code")]
+    pub site_verify_code: String,
+    #[serde(rename = "site-verify-content")]
+    pub site_verify_content: String,
+}
+
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
+pub struct IndexNow {
+    pub id: String,
+    pub key: String,
+}
+
 // use std::cmp::Ordering;
 // use std::collections::{BTreeMap, HashMap};
 // use std::fs::{read_dir, read_to_string};
