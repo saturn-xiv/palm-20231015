@@ -25,6 +25,7 @@ pub async fn pull(db: &mut Connection, url: &str) -> Result<()> {
                     return Ok(());
                 }
             }
+            info!("save {}", url);
             db.create(url, &body)?;
             Ok(())
         }
