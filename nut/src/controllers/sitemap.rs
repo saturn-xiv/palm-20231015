@@ -5,6 +5,7 @@ use actix_web::{
     Result as WebResult, Result,
 };
 use askama::Template;
+use lemon::{BaiduRequest, GoogleRequest, IndexNowRequest};
 use palm::{
     cache::redis::Pool as CachePool,
     crypto::Aes,
@@ -16,8 +17,6 @@ use palm::{
     },
     try_web,
 };
-use serde::{Deserialize, Serialize};
-use validator::Validate;
 
 use super::super::{
     models::{locale::Dao as LocaleDao, setting::get},
@@ -59,14 +58,6 @@ pub async fn by_lang(
         .body(body))
 }
 
-#[derive(Template, Validate, Serialize, Deserialize)]
-#[template(path = "google/verify.html", escape = "none")]
-
-pub struct GoogleRequest {
-    #[validate(length(min = 1))]
-    pub site_verify_code: String,
-}
-
 #[get("/google{id}.html")]
 pub async fn google(
     (db, aes): (web::Data<DbPool>, web::Data<Aes>),
@@ -95,16 +86,6 @@ pub async fn google(
     Err(ErrorBadRequest("bad google verify site id"))
 }
 
-#[derive(Template, Validate, Serialize, Deserialize)]
-#[template(path = "baidu/verify.html", escape = "none")]
-
-pub struct BaiduRequest {
-    #[validate(length(min = 1))]
-    pub site_verify_code: String,
-    #[validate(length(min = 1))]
-    pub site_verify_content: String,
-}
-
 #[get("/baidu_verify_code-{id}.html")]
 pub async fn baidu(
     (db, aes): (web::Data<DbPool>, web::Data<Aes>),
@@ -130,14 +111,6 @@ pub async fn baidu(
         }
     }
     Err(ErrorBadRequest("bad baidu verify site id"))
-}
-
-#[derive(Template, Validate, Serialize, Deserialize)]
-#[template(path = "index-now/verify.txt", escape = "none")]
-
-pub struct IndexNowRequest {
-    #[validate(length(min = 1))]
-    pub key: String,
 }
 
 #[get("/{id}.txt")]

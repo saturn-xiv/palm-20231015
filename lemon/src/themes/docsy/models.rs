@@ -25,7 +25,6 @@ impl super::super::super::models::Theme for Theme {
         // TODO
         todo!()
     }
-
     fn assets() -> Vec<PathBuf> {
         vec![]
     }

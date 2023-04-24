@@ -16,6 +16,7 @@ impl Theme {
         todo!()
     }
 }
+
 impl super::super::super::models::Theme for Theme {
     fn tag(&self, _tag: &Tag) -> Result<String> {
         // TODO
@@ -25,7 +26,6 @@ impl super::super::super::models::Theme for Theme {
         // TODO
         todo!()
     }
-
     fn assets() -> Vec<PathBuf> {
         vec![]
     }

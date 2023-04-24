@@ -1,12 +1,12 @@
-use std::path::PathBuf;
-
 use chrono::{DateTime, NaiveDateTime, Utc};
 use rss::ChannelBuilder as RssChannelBuilder;
 
 use super::super::Result;
 
+pub const RSS: &str = "rss.xml";
+
 pub struct Link {
-    pub path: PathBuf,
+    pub path: String,
     pub title: String,
     pub description: String,
     pub updated_at: NaiveDateTime,
@@ -34,7 +34,7 @@ pub fn build(home: &str, title: &str, description: &str, links: &[Link]) -> Resu
         .description(description.to_string())
         .build();
     for it in links {
-        let url = format!("{}/{}", home, it.path.display());
+        let url = format!("{}{}", home, it.path);
         ch.items.push(rss::Item {
             guid: Some(rss::Guid {
                 value: url.clone(),
