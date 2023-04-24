@@ -26,8 +26,8 @@ After=network.target
 
 [Service]
 Type=simple
-User=www-data
-Group=www-data
+User=nobody
+Group=nogroup
 WorkingDirectory=/var/lib/$1
 ExecStart=/opt/palm/bin/amd64/fig -c fig.toml web
 Restart=always

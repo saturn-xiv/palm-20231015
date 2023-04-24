@@ -26,8 +26,8 @@ After=network.target
 
 [Service]
 Type=simple
-User=www-data
-Group=www-data
+User=nobody
+Group=nogroup
 WorkingDirectory=/var/lib/minio
 ExecStart=/usr/bin/minio server data
 Restart=always
