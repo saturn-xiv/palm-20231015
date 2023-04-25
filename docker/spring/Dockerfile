@@ -310,12 +310,20 @@ RUN git clone -b $THRIFT_VERSION https://github.com/apache/thrift.git $HOME/down
 RUN apt install -y libboost-all-dev libevent-dev libz-dev zlib1g-dev \
         mono-devel erlang \
         libbit-vector-perl libclass-accessor-perl
-# FIXME Could not find method classifier() for arguments [test] on task ':testJar'
-# RUN zsh -c "source $HOME/.zshrc \
-#     && cd $HOME/downloads/thrift \
-#     && ./bootstrap.sh \
-#     && ./configure MAKE='gmake' CXXFLAGS='-g -O2' CFLAGS='-g -O2' --prefix=$HOME/.local --without-java --disable-tests \
-#     && make"
+# Could not find method classifier() for arguments [test] on task ':testJar'
+RUN zsh -c "source $HOME/.zshrc \
+    && sdk install java 19.0.2-open \
+    && sdk install gradle 7.6.1"
+# FIXME make install
+# MAKE='gmake' --without-java --disable-tests
+RUN zsh -c "source $HOME/.zshrc \
+    && cd $HOME/downloads/thrift \
+    && ./bootstrap.sh \
+    && ./configure CXXFLAGS='-g -O2' CFLAGS='-g -O2' --prefix=$HOME/.local \
+    && make"
+RUN zsh -c "source $HOME/.zshrc \
+    && sdk use java ${JDK_VERSION} \
+    && sdk use gradle ${GRADLE_VERSION}"
 
 # ADD conan /opt/conan
 # RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh amd64"
