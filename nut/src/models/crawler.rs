@@ -7,15 +7,31 @@ use diesel::{
     prelude::*,
 };
 use palm::{HttpError, Result};
+use rand::{rngs::SmallRng, seq::SliceRandom, SeedableRng};
 use serde::Serialize;
 
 use super::super::{orm::postgresql::Connection, schema::crawler_logs};
 
 pub async fn pull(db: &mut Connection, url: &str) -> Result<()> {
-    info!("fetch {}", url);
-    let res = reqwest::get(url).await?;
-    let status = res.status();
-    let body = res.bytes().await?;
+    // https://www.useragentstring.com/pages/useragentstring.php
+    let agents =
+        vec![
+            "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19582",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:99.0) Gecko/20100101 Firefox/99.0"];
+    let mut rng = SmallRng::from_entropy();
+    let agent = agents
+        .choose(&mut rng)
+        .map_or_else(
+            || "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 OPR/98.0.4759.3".to_string(), 
+        |x| x.to_string()
+    );
+    info!("fetch({}) {}", agent, url);
+
+    let client = reqwest::Client::builder().user_agent(agent).build()?;
+    let response = client.get(url).send().await?;
+    let status = response.status();
+    let body = response.bytes().await?;
     // let body = body.replace(char::from(0), "");
     match status {
         StatusCode::OK => {
