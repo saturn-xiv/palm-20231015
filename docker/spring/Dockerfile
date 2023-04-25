@@ -81,6 +81,24 @@ RUN update-alternatives --set editor /usr/bin/vim.basic
 
 RUN mkdir -p $HOME/downloads $HOME/build $HOME/local $HOME/tmp
 
+# https://musl.cc/
+RUN wget -q -P $HOME/downloads https://musl.cc/x86_64-linux-musl-cross.tgz \
+    && cd /opt \
+    && tar xf $HOME/downloads/x86_64-linux-musl-cross.tgz \
+    && echo 'export PATH=/opt/x86_64-linux-musl-cross/bin:$PATH' >> $HOME/.zshrc
+RUN wget -q -P $HOME/downloads https://musl.cc/armv7l-linux-musleabihf-cross.tgz\
+    && cd /opt \
+    && tar xf $HOME/downloads/armv7l-linux-musleabihf-cross.tgz \
+    && echo 'export PATH=/opt/armv7l-linux-musleabihf-cross/bin:$PATH' >> $HOME/.zshrc
+RUN wget -q -P $HOME/downloads https://musl.cc/aarch64-linux-musl-cross.tgz\
+    && cd /opt \
+    && tar xf $HOME/downloads/aarch64-linux-musl-cross.tgz \
+    && echo 'export PATH=/opt/aarch64-linux-musl-cross/bin:$PATH' >> $HOME/.zshrc
+RUN wget -q -P $HOME/downloads https://musl.cc/riscv64-linux-musl-cross.tgz\
+    && cd /opt \
+    && tar xf $HOME/downloads/riscv64-linux-musl-cross.tgz \
+    && echo 'export PATH=/opt/riscv64-linux-musl-cross/bin:$PATH' >> $HOME/.zshrc
+
 # https://github.com/ohmyzsh/ohmyzsh
 RUN git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
 RUN cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
@@ -112,29 +130,29 @@ RUN cd $HOME/downloads \
     && mv composer.phar $HOME/.local/bin/composer
 
 # https://github.com/richfelker/musl-cross-make
-RUN git clone https://github.com/richfelker/musl-cross-make.git $HOME/build/musl-cross-make
-RUN cd $HOME/build/musl-cross-make \
-    && echo "TARGET=x86_64-linux-musl" > config.mak \
-    && echo "OUTPUT=/opt/crosstools" >> config.mak \
-    && make \
-    && make install 
-RUN cd $HOME/build/musl-cross-make \
-    && echo "TARGET=aarch64-linux-musl" > config.mak \
-    && echo "OUTPUT=/opt/crosstools" >> config.mak \
-    && make \
-    && make install
-RUN cd $HOME/build/musl-cross-make \
-    && echo "TARGET=arm-linux-musleabihf" > config.mak \
-    && echo "OUTPUT=/opt/crosstools" >> config.mak \
-    && make \
-    && make install
-RUN cd $HOME/build/musl-cross-make \
-    && echo "TARGET=riscv64-linux-musl" > config.mak \
-    && echo "OUTPUT=/opt/crosstools" >> config.mak \
-    && make \
-    && make install \
-    && make clean
-RUN echo 'export PATH=/opt/crosstools/bin:$PATH' >> $HOME/.zshrc
+# RUN git clone https://github.com/richfelker/musl-cross-make.git $HOME/build/musl-cross-make
+# RUN cd $HOME/build/musl-cross-make \
+#     && echo "TARGET=x86_64-linux-musl" > config.mak \
+#     && echo "OUTPUT=/opt/crosstools" >> config.mak \
+#     && make \
+#     && make install 
+# RUN cd $HOME/build/musl-cross-make \
+#     && echo "TARGET=aarch64-linux-musl" > config.mak \
+#     && echo "OUTPUT=/opt/crosstools" >> config.mak \
+#     && make \
+#     && make install
+# RUN cd $HOME/build/musl-cross-make \
+#     && echo "TARGET=arm-linux-musleabihf" > config.mak \
+#     && echo "OUTPUT=/opt/crosstools" >> config.mak \
+#     && make \
+#     && make install
+# RUN cd $HOME/build/musl-cross-make \
+#     && echo "TARGET=riscv64-linux-musl" > config.mak \
+#     && echo "OUTPUT=/opt/crosstools" >> config.mak \
+#     && make \
+#     && make install \
+#     && make clean
+# RUN echo 'export PATH=/opt/crosstools/bin:$PATH' >> $HOME/.zshrc
 
 # https://github.com/bazelbuild/bazelisk
 ENV BAZEL_VERSION "v1.16.0"
