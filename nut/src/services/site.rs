@@ -17,7 +17,7 @@ use palm::{
         redis::{ClusterConnection as RedisConnection, Pool as RedisPool},
         Provider as CacheProvider,
     },
-    crypto::Secret,
+    crypto::{random::string as random_string, Secret},
     nut::v1,
     queue::amqp::RabbitMq,
     rbac::v1::{RoleRequest, UserRequest},
@@ -276,6 +276,21 @@ impl v1::site_server::Site for Service {
                 let real_name = req.real_name.trim();
 
                 let user = try_grpc!(db.transaction::<_, Error, _>(move |db| {
+                    {
+                        UserDao::sign_up(
+                            db,
+                            hmac,
+                            "Null",
+                            User::NIL,
+                            "nobody@local",
+                            &random_string(32),
+                            &User::GUEST_LANG.parse()?,
+                            &User::GUEST_TIMEZONE.parse()?,
+                        )?;
+                        let user = UserDao::by_nickname(db, User::NIL)?;
+                        UserDao::lock(db, user.id, true)?;
+                        UserDao::enable(db, user.id, false)?;
+                    }
                     UserDao::sign_up(
                         db,
                         hmac,

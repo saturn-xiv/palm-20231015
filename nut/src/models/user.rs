@@ -96,6 +96,7 @@ impl Item {
     pub const GUEST_NAME: &str = "Guest";
     pub const GUEST_LANG: &str = "en-US";
     pub const GUEST_TIMEZONE: &str = "UTC";
+    pub const NIL: &str = "nil";
 
     pub fn guest_email() -> String {
         format!("{}@local", Uuid::new_v4())
