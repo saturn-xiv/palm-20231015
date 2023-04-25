@@ -81,6 +81,21 @@ RUN update-alternatives --set editor /usr/bin/vim.basic
 
 RUN mkdir -p $HOME/downloads $HOME/build $HOME/local $HOME/tmp
 
+
+# https://github.com/ohmyzsh/ohmyzsh
+RUN git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
+RUN cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
+RUN echo 'export LANG=en_US.UTF-8' >> $HOME/.zshrc \
+    && echo 'export LC_ALL=en_US.UTF-8' >> $HOME/.zshrc \
+    && echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.zshrc
+
+RUN git config --global core.quotepath false \
+    && git config --global http.version HTTP/1.1 \
+    && git config --global pull.rebase false \
+    && git config --global url."https://".insteadOf git://
+RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf \
+    && echo 'set-option -g default-shell "/bin/zsh"' >> $HOME/.tmux.conf
+
 # https://musl.cc/
 RUN wget -q -P $HOME/downloads https://musl.cc/x86_64-linux-musl-cross.tgz \
     && cd /opt \
@@ -98,20 +113,6 @@ RUN wget -q -P $HOME/downloads https://musl.cc/riscv64-linux-musl-cross.tgz\
     && cd /opt \
     && tar xf $HOME/downloads/riscv64-linux-musl-cross.tgz \
     && echo 'export PATH=/opt/riscv64-linux-musl-cross/bin:$PATH' >> $HOME/.zshrc
-
-# https://github.com/ohmyzsh/ohmyzsh
-RUN git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
-RUN cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
-RUN echo 'export LANG=en_US.UTF-8' >> $HOME/.zshrc \
-    && echo 'export LC_ALL=en_US.UTF-8' >> $HOME/.zshrc \
-    && echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.zshrc
-
-RUN git config --global core.quotepath false \
-    && git config --global http.version HTTP/1.1 \
-    && git config --global pull.rebase false \
-    && git config --global url."https://".insteadOf git://
-RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf \
-    && echo 'set-option -g default-shell "/bin/zsh"' >> $HOME/.tmux.conf
 
 RUN zsh -c "source $HOME/.zshrc && pip3 install --user cmake"
 RUN zsh -c "source $HOME/.zshrc \
