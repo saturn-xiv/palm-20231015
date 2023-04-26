@@ -59,6 +59,15 @@ build_rust_arm64_gnu() {
 
 build_rust_musl() {
     cd $WORKSPACE
+        
+    if [[ $1 == "aarch64" ]]
+    then
+        # https://github.com/rust-lang/rust/issues/89626
+        CC=$1-linux-musl-gcc CXX=$1-linux-musl-g++ CFLAGS="-mno-outline-atomics" \
+            cargo build --quiet --release --target $1-unknown-linux-musl -p $2
+        cp $WORKSPACE/target/$1-unknown-linux-musl/release/$2 $TARGET_DIR/bin/$1/
+        return
+    fi
     CC=$1-linux-musl-gcc CXX=$1-linux-musl-g++ \
         cargo build --quiet --release --target $1-unknown-linux-musl -p $2
     cp $WORKSPACE/target/$1-unknown-linux-musl/release/$2 $TARGET_DIR/bin/$1/
