@@ -317,14 +317,14 @@ RUN zsh -c "source $HOME/.zshrc \
     && sdk install gradle 7.6.1"
 # FIXME make install
 # MAKE='gmake' --without-java --disable-tests
+# RUN zsh -c "source $HOME/.zshrc \
+#     && cd $HOME/downloads/thrift \
+#     && ./bootstrap.sh \
+#     && ./configure CXXFLAGS='-g -O2' CFLAGS='-g -O2' --prefix=$HOME/.local \
+#     && make"
 RUN zsh -c "source $HOME/.zshrc \
-    && cd $HOME/downloads/thrift \
-    && ./bootstrap.sh \
-    && ./configure CXXFLAGS='-g -O2' CFLAGS='-g -O2' --prefix=$HOME/.local \
-    && make"
-RUN zsh -c "source $HOME/.zshrc \
-    && sdk use java ${JDK_VERSION} \
-    && sdk use gradle ${GRADLE_VERSION}"
+    && sdk default java ${JDK_VERSION} \
+    && sdk default gradle ${GRADLE_VERSION}"
 
 # ADD conan /opt/conan
 # RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh amd64"
