@@ -1288,47 +1288,90 @@ export class WechatClient {
     this.methodDescriptorDestroyOauth2User);
   }
 
-  methodDescriptorBindOauth2User = new grpcWeb.MethodDescriptor(
-    '/palm.nut.v1.Wechat/BindOauth2User',
+  methodDescriptorBindOauth2UserById = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/BindOauth2UserById',
     grpcWeb.MethodType.UNARY,
-    nut_pb.WechatUserBindRequest,
+    nut_pb.WechatUserBindByIdRequest,
     google_protobuf_empty_pb.Empty,
-    (request: nut_pb.WechatUserBindRequest) => {
+    (request: nut_pb.WechatUserBindByIdRequest) => {
       return request.serializeBinary();
     },
     google_protobuf_empty_pb.Empty.deserializeBinary
   );
 
-  bindOauth2User(
-    request: nut_pb.WechatUserBindRequest,
+  bindOauth2UserById(
+    request: nut_pb.WechatUserBindByIdRequest,
     metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
 
-  bindOauth2User(
-    request: nut_pb.WechatUserBindRequest,
+  bindOauth2UserById(
+    request: nut_pb.WechatUserBindByIdRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
-  bindOauth2User(
-    request: nut_pb.WechatUserBindRequest,
+  bindOauth2UserById(
+    request: nut_pb.WechatUserBindByIdRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.nut.v1.Wechat/BindOauth2User',
+          '/palm.nut.v1.Wechat/BindOauth2UserById',
         request,
         metadata || {},
-        this.methodDescriptorBindOauth2User,
+        this.methodDescriptorBindOauth2UserById,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.nut.v1.Wechat/BindOauth2User',
+      '/palm.nut.v1.Wechat/BindOauth2UserById',
     request,
     metadata || {},
-    this.methodDescriptorBindOauth2User);
+    this.methodDescriptorBindOauth2UserById);
+  }
+
+  methodDescriptorBindOauth2UserByAccount = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/BindOauth2UserByAccount',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.WechatUserBindByAccountRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.WechatUserBindByAccountRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  bindOauth2UserByAccount(
+    request: nut_pb.WechatUserBindByAccountRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  bindOauth2UserByAccount(
+    request: nut_pb.WechatUserBindByAccountRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  bindOauth2UserByAccount(
+    request: nut_pb.WechatUserBindByAccountRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Wechat/BindOauth2UserByAccount',
+        request,
+        metadata || {},
+        this.methodDescriptorBindOauth2UserByAccount,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Wechat/BindOauth2UserByAccount',
+    request,
+    metadata || {},
+    this.methodDescriptorBindOauth2UserByAccount);
   }
 
   methodDescriptorGetOauth2UserById = new grpcWeb.MethodDescriptor(
@@ -1589,47 +1632,90 @@ export class WechatClient {
     this.methodDescriptorDestroyMiniProgramUser);
   }
 
-  methodDescriptorBindMiniProgramUser = new grpcWeb.MethodDescriptor(
-    '/palm.nut.v1.Wechat/BindMiniProgramUser',
+  methodDescriptorBindMiniProgramUserById = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/BindMiniProgramUserById',
     grpcWeb.MethodType.UNARY,
-    nut_pb.WechatUserBindRequest,
+    nut_pb.WechatUserBindByIdRequest,
     google_protobuf_empty_pb.Empty,
-    (request: nut_pb.WechatUserBindRequest) => {
+    (request: nut_pb.WechatUserBindByIdRequest) => {
       return request.serializeBinary();
     },
     google_protobuf_empty_pb.Empty.deserializeBinary
   );
 
-  bindMiniProgramUser(
-    request: nut_pb.WechatUserBindRequest,
+  bindMiniProgramUserById(
+    request: nut_pb.WechatUserBindByIdRequest,
     metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
 
-  bindMiniProgramUser(
-    request: nut_pb.WechatUserBindRequest,
+  bindMiniProgramUserById(
+    request: nut_pb.WechatUserBindByIdRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
-  bindMiniProgramUser(
-    request: nut_pb.WechatUserBindRequest,
+  bindMiniProgramUserById(
+    request: nut_pb.WechatUserBindByIdRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.nut.v1.Wechat/BindMiniProgramUser',
+          '/palm.nut.v1.Wechat/BindMiniProgramUserById',
         request,
         metadata || {},
-        this.methodDescriptorBindMiniProgramUser,
+        this.methodDescriptorBindMiniProgramUserById,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.nut.v1.Wechat/BindMiniProgramUser',
+      '/palm.nut.v1.Wechat/BindMiniProgramUserById',
     request,
     metadata || {},
-    this.methodDescriptorBindMiniProgramUser);
+    this.methodDescriptorBindMiniProgramUserById);
+  }
+
+  methodDescriptorBindMiniProgramUserByAccount = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Wechat/BindMiniProgramUserByAccount',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.WechatUserBindByAccountRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.WechatUserBindByAccountRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  bindMiniProgramUserByAccount(
+    request: nut_pb.WechatUserBindByAccountRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  bindMiniProgramUserByAccount(
+    request: nut_pb.WechatUserBindByAccountRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  bindMiniProgramUserByAccount(
+    request: nut_pb.WechatUserBindByAccountRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Wechat/BindMiniProgramUserByAccount',
+        request,
+        metadata || {},
+        this.methodDescriptorBindMiniProgramUserByAccount,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Wechat/BindMiniProgramUserByAccount',
+    request,
+    metadata || {},
+    this.methodDescriptorBindMiniProgramUserByAccount);
   }
 
   methodDescriptorGetMiniProgramUserById = new grpcWeb.MethodDescriptor(

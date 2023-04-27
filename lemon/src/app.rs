@@ -1,6 +1,6 @@
 use std::fmt;
 use std::ops::Deref;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 use clap::{Parser, ValueEnum};
 use palm::{Result, HOMEPAGE, VERSION};
@@ -180,12 +180,5 @@ impl Args {
 
         info!("done.");
         Ok(())
-    }
-}
-
-impl Config {
-    pub fn new<P: AsRef<Path>>(_root: P) -> Result<Self> {
-        // TODO
-        todo!()
     }
 }

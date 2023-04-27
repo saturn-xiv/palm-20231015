@@ -29,7 +29,6 @@ serde-xml-rs = "0.6"
 toml = "0.7"
 encoding_rs = "0.8"
 r2d2 = "0.8"
-rand = "0.8"
 xml-rs = "0.8"
 rusttype = "0.9"
 #ssh2 = "0.9"
@@ -82,6 +81,10 @@ features = ["cookie-session", "redis-rs-session"]
 [dependencies.chrono-tz]
 version = "0.8"
 features = ["serde"]
+
+[dependencies.rand]
+version = "0.8"
+features = ["small_rng"]
 
 [dependencies.tonic]
 version = "0.9"

@@ -885,27 +885,57 @@ export namespace GoogleSignInUrlResponse {
   }
 }
 
-export class WechatUserBindRequest extends jspb.Message {
+export class WechatUserBindByIdRequest extends jspb.Message {
   getUserId(): number;
-  setUserId(value: number): WechatUserBindRequest;
+  setUserId(value: number): WechatUserBindByIdRequest;
 
   getAppId(): string;
-  setAppId(value: string): WechatUserBindRequest;
+  setAppId(value: string): WechatUserBindByIdRequest;
 
   getOpenId(): string;
-  setOpenId(value: string): WechatUserBindRequest;
+  setOpenId(value: string): WechatUserBindByIdRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): WechatUserBindRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: WechatUserBindRequest): WechatUserBindRequest.AsObject;
-  static serializeBinaryToWriter(message: WechatUserBindRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): WechatUserBindRequest;
-  static deserializeBinaryFromReader(message: WechatUserBindRequest, reader: jspb.BinaryReader): WechatUserBindRequest;
+  toObject(includeInstance?: boolean): WechatUserBindByIdRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatUserBindByIdRequest): WechatUserBindByIdRequest.AsObject;
+  static serializeBinaryToWriter(message: WechatUserBindByIdRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatUserBindByIdRequest;
+  static deserializeBinaryFromReader(message: WechatUserBindByIdRequest, reader: jspb.BinaryReader): WechatUserBindByIdRequest;
 }
 
-export namespace WechatUserBindRequest {
+export namespace WechatUserBindByIdRequest {
   export type AsObject = {
     userId: number,
+    appId: string,
+    openId: string,
+  }
+}
+
+export class WechatUserBindByAccountRequest extends jspb.Message {
+  getNickname(): string;
+  setNickname(value: string): WechatUserBindByAccountRequest;
+
+  getPassword(): string;
+  setPassword(value: string): WechatUserBindByAccountRequest;
+
+  getAppId(): string;
+  setAppId(value: string): WechatUserBindByAccountRequest;
+
+  getOpenId(): string;
+  setOpenId(value: string): WechatUserBindByAccountRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatUserBindByAccountRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatUserBindByAccountRequest): WechatUserBindByAccountRequest.AsObject;
+  static serializeBinaryToWriter(message: WechatUserBindByAccountRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatUserBindByAccountRequest;
+  static deserializeBinaryFromReader(message: WechatUserBindByAccountRequest, reader: jspb.BinaryReader): WechatUserBindByAccountRequest;
+}
+
+export namespace WechatUserBindByAccountRequest {
+  export type AsObject = {
+    nickname: string,
+    password: string,
     appId: string,
     openId: string,
   }
@@ -971,6 +1001,9 @@ export namespace WechatAllMiniProgramUserResponse {
   }
 
   export class Item extends jspb.Message {
+    getId(): number;
+    setId(value: number): Item;
+
     getUserId(): number;
     setUserId(value: number): Item;
     hasUserId(): boolean;
@@ -1005,6 +1038,7 @@ export namespace WechatAllMiniProgramUserResponse {
 
   export namespace Item {
     export type AsObject = {
+      id: number,
       userId?: number,
       unionId: string,
       appId: string,
@@ -1015,7 +1049,7 @@ export namespace WechatAllMiniProgramUserResponse {
 
     export enum UserIdCase { 
       _USER_ID_NOT_SET = 0,
-      USER_ID = 1,
+      USER_ID = 2,
     }
 
     export enum NicknameCase { 
@@ -1051,6 +1085,9 @@ export namespace WechatAllOauth2UserResponse {
   }
 
   export class Item extends jspb.Message {
+    getId(): number;
+    setId(value: number): Item;
+
     getUserId(): number;
     setUserId(value: number): Item;
 
@@ -1101,6 +1138,7 @@ export namespace WechatAllOauth2UserResponse {
 
   export namespace Item {
     export type AsObject = {
+      id: number,
       userId: number,
       unionId: string,
       appId: string,

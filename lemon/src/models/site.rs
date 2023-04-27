@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 use serde::{Deserialize, Serialize};
 
 use super::{page::Page, tag::Tag, Author};
@@ -15,6 +17,7 @@ pub struct Site {
     pub home: Page,
     pub pages: Vec<Page>,
     pub tags: Vec<Tag>,
+    pub menus: HashMap<String, Menu>,
 }
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
@@ -37,6 +40,13 @@ pub struct Baidu {
 pub struct IndexNow {
     pub id: String,
     pub key: String,
+}
+
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
+pub struct Menu {
+    pub href: String,
+    pub title: String,
+    pub children: Vec<Self>,
 }
 
 // use std::cmp::Ordering;

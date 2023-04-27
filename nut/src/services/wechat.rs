@@ -241,6 +241,8 @@ impl v1::wechat_server::Wechat for Service {
             return Err(Status::permission_denied(type_name::<User>()));
         }
         let req = req.into_inner();
+        let wu = try_grpc!(WechatOauth2UserDao::by_id(db, req.id))?;
+        warn!("destroy wechat oauth user {}", wu);
         try_grpc!(WechatOauth2UserDao::destroy(db, req.id))?;
         Ok(Response::new(()))
     }
@@ -281,12 +283,14 @@ impl v1::wechat_server::Wechat for Service {
             return Err(Status::permission_denied(type_name::<User>()));
         }
         let req = req.into_inner();
+        let wu = try_grpc!(WechatMiniProgramUserDao::by_id(db, req.id))?;
+        warn!("destroy wechat mini-program user {}", wu);
         try_grpc!(WechatMiniProgramUserDao::destroy(db, req.id))?;
         Ok(Response::new(()))
     }
-    async fn bind_mini_program_user(
+    async fn bind_mini_program_user_by_id(
         &self,
-        req: Request<v1::WechatUserBindRequest>,
+        req: Request<v1::WechatUserBindByIdRequest>,
     ) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
@@ -308,10 +312,14 @@ impl v1::wechat_server::Wechat for Service {
             &req.app_id,
             &req.open_id
         ))?;
+        warn!("bind wechat mini-program user {} to {}", wu, iu);
         try_grpc!(WechatMiniProgramUserDao::bind(db, wu.id, iu.id))?;
         Ok(Response::new(()))
     }
-    async fn bind_oauth2_user(&self, req: Request<v1::WechatUserBindRequest>) -> GrpcResult<()> {
+    async fn bind_oauth2_user_by_id(
+        &self,
+        req: Request<v1::WechatUserBindByIdRequest>,
+    ) -> GrpcResult<()> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.pgsql.get())?;
         let db = db.deref_mut();
@@ -332,6 +340,48 @@ impl v1::wechat_server::Wechat for Service {
             &req.app_id,
             &req.open_id
         ))?;
+        warn!("bind wechat oauth2 user {} to {}", wu, iu);
+        try_grpc!(WechatOauth2UserDao::bind(db, wu.id, iu.id))?;
+        Ok(Response::new(()))
+    }
+
+    async fn bind_mini_program_user_by_account(
+        &self,
+        req: Request<v1::WechatUserBindByAccountRequest>,
+    ) -> GrpcResult<()> {
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let hmac = self.hmac.deref();
+        let req = req.into_inner();
+
+        let iu = try_grpc!(UserDao::by_nickname(db, &req.nickname))?;
+        try_grpc!(iu.auth(hmac, &req.password))?;
+        let wu = try_grpc!(WechatMiniProgramUserDao::by_open_id(
+            db,
+            &req.app_id,
+            &req.open_id
+        ))?;
+        warn!("bind wechat mini-program user {} to {}", wu, iu);
+        try_grpc!(WechatMiniProgramUserDao::bind(db, wu.id, iu.id))?;
+        Ok(Response::new(()))
+    }
+    async fn bind_oauth2_user_by_account(
+        &self,
+        req: Request<v1::WechatUserBindByAccountRequest>,
+    ) -> GrpcResult<()> {
+        let mut db = try_grpc!(self.pgsql.get())?;
+        let db = db.deref_mut();
+        let hmac = self.hmac.deref();
+        let req = req.into_inner();
+
+        let iu = try_grpc!(UserDao::by_nickname(db, &req.nickname))?;
+        try_grpc!(iu.auth(hmac, &req.password))?;
+        let wu = try_grpc!(WechatOauth2UserDao::by_open_id(
+            db,
+            &req.app_id,
+            &req.open_id
+        ))?;
+        warn!("bind wechat oauth2 user {} to {}", wu, iu);
         try_grpc!(WechatOauth2UserDao::bind(db, wu.id, iu.id))?;
         Ok(Response::new(()))
     }
@@ -480,6 +530,7 @@ impl v1::wechat_server::Wechat for Service {
 impl From<Oauth2User> for v1::wechat_all_oauth2_user_response::Item {
     fn from(x: Oauth2User) -> Self {
         Self {
+            id: x.id,
             user_id: x.user_id,
             sex: x.sex,
             union_id: x.union_id.clone(),
@@ -499,6 +550,7 @@ impl From<Oauth2User> for v1::wechat_all_oauth2_user_response::Item {
 impl From<MiniProgramUser> for v1::wechat_all_mini_program_user_response::Item {
     fn from(x: MiniProgramUser) -> Self {
         Self {
+            id: x.id,
             user_id: x.user_id,
             union_id: x.union_id.clone(),
             app_id: x.app_id.clone(),

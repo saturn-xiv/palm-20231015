@@ -1,3 +1,5 @@
+use std::fmt;
+
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
 use palm::{
@@ -39,6 +41,12 @@ impl Item {
     pub fn privilege(&self) -> Result<Vec<String>> {
         let it = flexbuffers::from_slice(&self.privilege)?;
         Ok(it)
+    }
+}
+
+impl fmt::Display for Item {
+    fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
+        write!(fmt, "{}://{}", self.app_id, self.open_id)
     }
 }
 

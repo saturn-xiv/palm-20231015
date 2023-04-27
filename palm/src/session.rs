@@ -1,4 +1,4 @@
-use hyper::header::{ACCEPT_LANGUAGE, AUTHORIZATION};
+use hyper::header::{ACCEPT_LANGUAGE, AUTHORIZATION, USER_AGENT};
 use language_tags::LanguageTag;
 use tonic::{metadata::MetadataMap, Request};
 
@@ -34,13 +34,20 @@ impl Session {
     }
 
     pub fn new<T>(req: &Request<T>) -> Self {
+        let client_ip = req
+            .remote_addr()
+            .map_or("n/a".to_string(), |x| x.ip().to_string());
         let meta = req.metadata();
-        debug!("{:?}", meta);
+
+        debug!(
+            "{} {:?} auth({})",
+            client_ip,
+            meta.get(USER_AGENT.as_str().to_lowercase()),
+            meta.get(AUTHORIZATION.as_str().to_lowercase()).is_some()
+        );
         Self {
             lang: Self::detect_locale(meta),
-            client_ip: req
-                .remote_addr()
-                .map_or("n/a".to_string(), |x| x.ip().to_string()),
+            client_ip,
             token: Self::detect_token(meta),
         }
     }

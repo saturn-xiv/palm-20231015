@@ -5,98 +5,48 @@ import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/t
 import * as nut_pb from './nut_pb';
 
 
-export class ArticleCreateRequest extends jspb.Message {
-  getTitle(): string;
-  setTitle(value: string): ArticleCreateRequest;
-
-  getSummary(): string;
-  setSummary(value: string): ArticleCreateRequest;
-
-  getBody(): nut_pb.MediaContent | undefined;
-  setBody(value?: nut_pb.MediaContent): ArticleCreateRequest;
-  hasBody(): boolean;
-  clearBody(): ArticleCreateRequest;
-
-  getTagsList(): Array<number>;
-  setTagsList(value: Array<number>): ArticleCreateRequest;
-  clearTagsList(): ArticleCreateRequest;
-  addTags(value: number, index?: number): ArticleCreateRequest;
+export class WebSite extends jspb.Message {
+  getTaxonomiesList(): Array<string>;
+  setTaxonomiesList(value: Array<string>): WebSite;
+  clearTaxonomiesList(): WebSite;
+  addTaxonomies(value: string, index?: number): WebSite;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ArticleCreateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: ArticleCreateRequest): ArticleCreateRequest.AsObject;
-  static serializeBinaryToWriter(message: ArticleCreateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ArticleCreateRequest;
-  static deserializeBinaryFromReader(message: ArticleCreateRequest, reader: jspb.BinaryReader): ArticleCreateRequest;
+  toObject(includeInstance?: boolean): WebSite.AsObject;
+  static toObject(includeInstance: boolean, msg: WebSite): WebSite.AsObject;
+  static serializeBinaryToWriter(message: WebSite, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WebSite;
+  static deserializeBinaryFromReader(message: WebSite, reader: jspb.BinaryReader): WebSite;
 }
 
-export namespace ArticleCreateRequest {
+export namespace WebSite {
   export type AsObject = {
-    title: string,
-    summary: string,
-    body?: nut_pb.MediaContent.AsObject,
-    tagsList: Array<number>,
+    taxonomiesList: Array<string>,
   }
 }
 
-export class ArticleUpdateRequest extends jspb.Message {
-  getId(): number;
-  setId(value: number): ArticleUpdateRequest;
-
-  getTitle(): string;
-  setTitle(value: string): ArticleUpdateRequest;
-
-  getSummary(): string;
-  setSummary(value: string): ArticleUpdateRequest;
-
-  getBody(): string;
-  setBody(value: string): ArticleUpdateRequest;
-
-  getTagsList(): Array<number>;
-  setTagsList(value: Array<number>): ArticleUpdateRequest;
-  clearTagsList(): ArticleUpdateRequest;
-  addTags(value: number, index?: number): ArticleUpdateRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ArticleUpdateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: ArticleUpdateRequest): ArticleUpdateRequest.AsObject;
-  static serializeBinaryToWriter(message: ArticleUpdateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ArticleUpdateRequest;
-  static deserializeBinaryFromReader(message: ArticleUpdateRequest, reader: jspb.BinaryReader): ArticleUpdateRequest;
-}
-
-export namespace ArticleUpdateRequest {
-  export type AsObject = {
-    id: number,
-    title: string,
-    summary: string,
-    body: string,
-    tagsList: Array<number>,
-  }
-}
-
-export class ArticleIndexResponse extends jspb.Message {
-  getItemsList(): Array<ArticleIndexResponse.Item>;
-  setItemsList(value: Array<ArticleIndexResponse.Item>): ArticleIndexResponse;
-  clearItemsList(): ArticleIndexResponse;
-  addItems(value?: ArticleIndexResponse.Item, index?: number): ArticleIndexResponse.Item;
+export class NotificationIndexResponse extends jspb.Message {
+  getItemsList(): Array<NotificationIndexResponse.Item>;
+  setItemsList(value: Array<NotificationIndexResponse.Item>): NotificationIndexResponse;
+  clearItemsList(): NotificationIndexResponse;
+  addItems(value?: NotificationIndexResponse.Item, index?: number): NotificationIndexResponse.Item;
 
   getPagination(): nut_pb.Pagination | undefined;
-  setPagination(value?: nut_pb.Pagination): ArticleIndexResponse;
+  setPagination(value?: nut_pb.Pagination): NotificationIndexResponse;
   hasPagination(): boolean;
-  clearPagination(): ArticleIndexResponse;
+  clearPagination(): NotificationIndexResponse;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ArticleIndexResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: ArticleIndexResponse): ArticleIndexResponse.AsObject;
-  static serializeBinaryToWriter(message: ArticleIndexResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ArticleIndexResponse;
-  static deserializeBinaryFromReader(message: ArticleIndexResponse, reader: jspb.BinaryReader): ArticleIndexResponse;
+  toObject(includeInstance?: boolean): NotificationIndexResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: NotificationIndexResponse): NotificationIndexResponse.AsObject;
+  static serializeBinaryToWriter(message: NotificationIndexResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): NotificationIndexResponse;
+  static deserializeBinaryFromReader(message: NotificationIndexResponse, reader: jspb.BinaryReader): NotificationIndexResponse;
 }
 
-export namespace ArticleIndexResponse {
+export namespace NotificationIndexResponse {
   export type AsObject = {
-    itemsList: Array<ArticleIndexResponse.Item.AsObject>,
+    itemsList: Array<NotificationIndexResponse.Item.AsObject>,
     pagination?: nut_pb.Pagination.AsObject,
   }
 
@@ -104,34 +54,22 @@ export namespace ArticleIndexResponse {
     getId(): number;
     setId(value: number): Item;
 
-    getLang(): string;
-    setLang(value: string): Item;
+    getLevel(): NotificationIndexResponse.Item.Level;
+    setLevel(value: NotificationIndexResponse.Item.Level): Item;
 
     getTitle(): string;
     setTitle(value: string): Item;
 
-    getSummary(): string;
-    setSummary(value: string): Item;
+    getUrl(): string;
+    setUrl(value: string): Item;
 
-    getBody(): nut_pb.MediaContent | undefined;
-    setBody(value?: nut_pb.MediaContent): Item;
-    hasBody(): boolean;
-    clearBody(): Item;
+    getLang(): string;
+    setLang(value: string): Item;
 
     getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
     setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
     hasUpdatedAt(): boolean;
     clearUpdatedAt(): Item;
-
-    getAuthor(): nut_pb.UserDetail | undefined;
-    setAuthor(value?: nut_pb.UserDetail): Item;
-    hasAuthor(): boolean;
-    clearAuthor(): Item;
-
-    getTagsList(): Array<nut_pb.TagIndexResponse.Item>;
-    setTagsList(value: Array<nut_pb.TagIndexResponse.Item>): Item;
-    clearTagsList(): Item;
-    addTags(value?: nut_pb.TagIndexResponse.Item, index?: number): nut_pb.TagIndexResponse.Item;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Item.AsObject;
@@ -144,154 +82,78 @@ export namespace ArticleIndexResponse {
   export namespace Item {
     export type AsObject = {
       id: number,
-      lang: string,
+      level: NotificationIndexResponse.Item.Level,
       title: string,
-      summary: string,
-      body?: nut_pb.MediaContent.AsObject,
+      url: string,
+      lang: string,
       updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      author?: nut_pb.UserDetail.AsObject,
-      tagsList: Array<nut_pb.TagIndexResponse.Item.AsObject>,
+    }
+
+    export enum Level { 
+      NOTE = 0,
+      INFO = 1,
     }
   }
 
 }
 
-export class ArticleShowResponse extends jspb.Message {
-  getItem(): ArticleIndexResponse.Item | undefined;
-  setItem(value?: ArticleIndexResponse.Item): ArticleShowResponse;
-  hasItem(): boolean;
-  clearItem(): ArticleShowResponse;
+export class NotificationCreateRequest extends jspb.Message {
+  getLevel(): NotificationIndexResponse.Item.Level;
+  setLevel(value: NotificationIndexResponse.Item.Level): NotificationCreateRequest;
 
-  getCommentsList(): Array<CommentIndexResponse.Item>;
-  setCommentsList(value: Array<CommentIndexResponse.Item>): ArticleShowResponse;
-  clearCommentsList(): ArticleShowResponse;
-  addComments(value?: CommentIndexResponse.Item, index?: number): CommentIndexResponse.Item;
+  getTitle(): string;
+  setTitle(value: string): NotificationCreateRequest;
+
+  getUrl(): string;
+  setUrl(value: string): NotificationCreateRequest;
+
+  getLang(): string;
+  setLang(value: string): NotificationCreateRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ArticleShowResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: ArticleShowResponse): ArticleShowResponse.AsObject;
-  static serializeBinaryToWriter(message: ArticleShowResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ArticleShowResponse;
-  static deserializeBinaryFromReader(message: ArticleShowResponse, reader: jspb.BinaryReader): ArticleShowResponse;
+  toObject(includeInstance?: boolean): NotificationCreateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: NotificationCreateRequest): NotificationCreateRequest.AsObject;
+  static serializeBinaryToWriter(message: NotificationCreateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): NotificationCreateRequest;
+  static deserializeBinaryFromReader(message: NotificationCreateRequest, reader: jspb.BinaryReader): NotificationCreateRequest;
 }
 
-export namespace ArticleShowResponse {
+export namespace NotificationCreateRequest {
   export type AsObject = {
-    item?: ArticleIndexResponse.Item.AsObject,
-    commentsList: Array<CommentIndexResponse.Item.AsObject>,
+    level: NotificationIndexResponse.Item.Level,
+    title: string,
+    url: string,
+    lang: string,
   }
 }
 
-export class CommentCreateRequest extends jspb.Message {
-  getArticle(): number;
-  setArticle(value: number): CommentCreateRequest;
-
-  getBody(): nut_pb.MediaContent | undefined;
-  setBody(value?: nut_pb.MediaContent): CommentCreateRequest;
-  hasBody(): boolean;
-  clearBody(): CommentCreateRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CommentCreateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: CommentCreateRequest): CommentCreateRequest.AsObject;
-  static serializeBinaryToWriter(message: CommentCreateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CommentCreateRequest;
-  static deserializeBinaryFromReader(message: CommentCreateRequest, reader: jspb.BinaryReader): CommentCreateRequest;
-}
-
-export namespace CommentCreateRequest {
-  export type AsObject = {
-    article: number,
-    body?: nut_pb.MediaContent.AsObject,
-  }
-}
-
-export class CommentUpdateRequest extends jspb.Message {
+export class NotificationUpdateRequest extends jspb.Message {
   getId(): number;
-  setId(value: number): CommentUpdateRequest;
+  setId(value: number): NotificationUpdateRequest;
 
-  getBody(): string;
-  setBody(value: string): CommentUpdateRequest;
+  getLevel(): NotificationIndexResponse.Item.Level;
+  setLevel(value: NotificationIndexResponse.Item.Level): NotificationUpdateRequest;
+
+  getTitle(): string;
+  setTitle(value: string): NotificationUpdateRequest;
+
+  getUrl(): string;
+  setUrl(value: string): NotificationUpdateRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CommentUpdateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: CommentUpdateRequest): CommentUpdateRequest.AsObject;
-  static serializeBinaryToWriter(message: CommentUpdateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CommentUpdateRequest;
-  static deserializeBinaryFromReader(message: CommentUpdateRequest, reader: jspb.BinaryReader): CommentUpdateRequest;
+  toObject(includeInstance?: boolean): NotificationUpdateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: NotificationUpdateRequest): NotificationUpdateRequest.AsObject;
+  static serializeBinaryToWriter(message: NotificationUpdateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): NotificationUpdateRequest;
+  static deserializeBinaryFromReader(message: NotificationUpdateRequest, reader: jspb.BinaryReader): NotificationUpdateRequest;
 }
 
-export namespace CommentUpdateRequest {
+export namespace NotificationUpdateRequest {
   export type AsObject = {
     id: number,
-    body: string,
+    level: NotificationIndexResponse.Item.Level,
+    title: string,
+    url: string,
   }
-}
-
-export class CommentIndexResponse extends jspb.Message {
-  getItemsList(): Array<CommentIndexResponse.Item>;
-  setItemsList(value: Array<CommentIndexResponse.Item>): CommentIndexResponse;
-  clearItemsList(): CommentIndexResponse;
-  addItems(value?: CommentIndexResponse.Item, index?: number): CommentIndexResponse.Item;
-
-  getPagination(): nut_pb.Pagination | undefined;
-  setPagination(value?: nut_pb.Pagination): CommentIndexResponse;
-  hasPagination(): boolean;
-  clearPagination(): CommentIndexResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CommentIndexResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: CommentIndexResponse): CommentIndexResponse.AsObject;
-  static serializeBinaryToWriter(message: CommentIndexResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CommentIndexResponse;
-  static deserializeBinaryFromReader(message: CommentIndexResponse, reader: jspb.BinaryReader): CommentIndexResponse;
-}
-
-export namespace CommentIndexResponse {
-  export type AsObject = {
-    itemsList: Array<CommentIndexResponse.Item.AsObject>,
-    pagination?: nut_pb.Pagination.AsObject,
-  }
-
-  export class Item extends jspb.Message {
-    getId(): number;
-    setId(value: number): Item;
-
-    getArticle(): number;
-    setArticle(value: number): Item;
-
-    getBody(): nut_pb.MediaContent | undefined;
-    setBody(value?: nut_pb.MediaContent): Item;
-    hasBody(): boolean;
-    clearBody(): Item;
-
-    getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Item;
-    hasUpdatedAt(): boolean;
-    clearUpdatedAt(): Item;
-
-    getAuthor(): nut_pb.UserDetail | undefined;
-    setAuthor(value?: nut_pb.UserDetail): Item;
-    hasAuthor(): boolean;
-    clearAuthor(): Item;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Item.AsObject;
-    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
-    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Item;
-    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
-  }
-
-  export namespace Item {
-    export type AsObject = {
-      id: number,
-      article: number,
-      body?: nut_pb.MediaContent.AsObject,
-      updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      author?: nut_pb.UserDetail.AsObject,
-    }
-  }
-
 }
 

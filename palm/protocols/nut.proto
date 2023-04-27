@@ -247,7 +247,10 @@ service Wechat {
   rpc AllOauth2User(google.protobuf.Empty)
       returns (WechatAllOauth2UserResponse) {}
   rpc DestroyOauth2User(IdRequest) returns (google.protobuf.Empty) {}
-  rpc BindOauth2User(WechatUserBindRequest) returns (google.protobuf.Empty) {}
+  rpc BindOauth2UserById(WechatUserBindByIdRequest)
+      returns (google.protobuf.Empty) {}
+  rpc BindOauth2UserByAccount(WechatUserBindByAccountRequest)
+      returns (google.protobuf.Empty) {}
   rpc GetOauth2UserById(IdRequest) returns (WechatAllOauth2UserResponse.Item) {}
   rpc GetOauth2UserByOpenId(WechatUserQueryByOpenIdRequest)
       returns (WechatAllOauth2UserResponse.Item) {}
@@ -259,7 +262,9 @@ service Wechat {
   rpc AllMiniProgramUser(google.protobuf.Empty)
       returns (WechatAllMiniProgramUserResponse) {}
   rpc DestroyMiniProgramUser(IdRequest) returns (google.protobuf.Empty) {}
-  rpc BindMiniProgramUser(WechatUserBindRequest)
+  rpc BindMiniProgramUserById(WechatUserBindByIdRequest)
+      returns (google.protobuf.Empty) {}
+  rpc BindMiniProgramUserByAccount(WechatUserBindByAccountRequest)
       returns (google.protobuf.Empty) {}
   rpc GetMiniProgramUserById(IdRequest)
       returns (WechatAllMiniProgramUserResponse.Item) {}
@@ -269,10 +274,17 @@ service Wechat {
       returns (WechatAllMiniProgramUserResponse) {}
 }
 
-message WechatUserBindRequest {
+message WechatUserBindByIdRequest {
   int32 user_id = 1;
   string app_id = 2;
   string open_id = 3;
+}
+
+message WechatUserBindByAccountRequest {
+  string nickname = 1;
+  string password = 2;
+  string app_id = 3;
+  string open_id = 4;
 }
 
 message WechatUserQueryByOpenIdRequest {
@@ -284,10 +296,11 @@ message WechatUserQueryByUnionIdRequest { string union_id = 1; }
 
 message WechatAllMiniProgramUserResponse {
   message Item {
-    optional int32 user_id = 1;
-    string union_id = 2;
-    string app_id = 3;
-    string open_id = 4;
+    int32 id = 1;
+    optional int32 user_id = 2;
+    string union_id = 3;
+    string app_id = 4;
+    string open_id = 5;
     optional string nickname = 11;
     optional string avatar_url = 12;
   }
@@ -295,10 +308,11 @@ message WechatAllMiniProgramUserResponse {
 }
 message WechatAllOauth2UserResponse {
   message Item {
-    int32 user_id = 1;
-    string union_id = 2;
-    string app_id = 3;
-    string open_id = 4;
+    int32 id = 1;
+    int32 user_id = 2;
+    string union_id = 3;
+    string app_id = 4;
+    string open_id = 5;
     string nickname = 11;
     int32 sex = 12;
     string city = 13;

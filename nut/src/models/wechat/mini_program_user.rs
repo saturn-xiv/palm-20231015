@@ -1,3 +1,5 @@
+use std::fmt;
+
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
 use palm::Result;
@@ -19,6 +21,12 @@ pub struct Item {
     pub version: i32,
     pub created_at: NaiveDateTime,
     pub updated_at: NaiveDateTime,
+}
+
+impl fmt::Display for Item {
+    fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
+        write!(fmt, "{}://{}", self.app_id, self.open_id)
+    }
 }
 
 pub trait Dao {

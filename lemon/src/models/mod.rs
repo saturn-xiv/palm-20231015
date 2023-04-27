@@ -4,7 +4,7 @@ pub mod site;
 pub mod tag;
 
 use std::collections::{BTreeMap, HashMap};
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 use palm::Result;
 use serde::{Deserialize, Serialize};
@@ -28,6 +28,11 @@ pub struct Config {
 impl Config {
     pub fn home(&self) -> String {
         format!("https://{}", self.domain)
+    }
+
+    pub fn new<P: AsRef<Path>>(_root: P) -> Result<Self> {
+        // TODO
+        todo!()
     }
 }
 

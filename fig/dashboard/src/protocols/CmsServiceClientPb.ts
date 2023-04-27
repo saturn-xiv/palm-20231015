@@ -22,7 +22,7 @@ import * as cms_pb from './cms_pb';
 import * as nut_pb from './nut_pb';
 
 
-export class ArticleClient {
+export class NotificationClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;
   credentials_: null | { [index: string]: string; };
@@ -42,35 +42,35 @@ export class ArticleClient {
   }
 
   methodDescriptorCreate = new grpcWeb.MethodDescriptor(
-    '/palm.cms.v1.Article/Create',
+    '/palm.cms.v1.Notification/Create',
     grpcWeb.MethodType.UNARY,
-    cms_pb.ArticleCreateRequest,
+    cms_pb.NotificationCreateRequest,
     google_protobuf_empty_pb.Empty,
-    (request: cms_pb.ArticleCreateRequest) => {
+    (request: cms_pb.NotificationCreateRequest) => {
       return request.serializeBinary();
     },
     google_protobuf_empty_pb.Empty.deserializeBinary
   );
 
   create(
-    request: cms_pb.ArticleCreateRequest,
+    request: cms_pb.NotificationCreateRequest,
     metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
 
   create(
-    request: cms_pb.ArticleCreateRequest,
+    request: cms_pb.NotificationCreateRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
   create(
-    request: cms_pb.ArticleCreateRequest,
+    request: cms_pb.NotificationCreateRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.cms.v1.Article/Create',
+          '/palm.cms.v1.Notification/Create',
         request,
         metadata || {},
         this.methodDescriptorCreate,
@@ -78,42 +78,42 @@ export class ArticleClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.cms.v1.Article/Create',
+      '/palm.cms.v1.Notification/Create',
     request,
     metadata || {},
     this.methodDescriptorCreate);
   }
 
   methodDescriptorUpdate = new grpcWeb.MethodDescriptor(
-    '/palm.cms.v1.Article/Update',
+    '/palm.cms.v1.Notification/Update',
     grpcWeb.MethodType.UNARY,
-    cms_pb.ArticleUpdateRequest,
+    cms_pb.NotificationUpdateRequest,
     google_protobuf_empty_pb.Empty,
-    (request: cms_pb.ArticleUpdateRequest) => {
+    (request: cms_pb.NotificationUpdateRequest) => {
       return request.serializeBinary();
     },
     google_protobuf_empty_pb.Empty.deserializeBinary
   );
 
   update(
-    request: cms_pb.ArticleUpdateRequest,
+    request: cms_pb.NotificationUpdateRequest,
     metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
 
   update(
-    request: cms_pb.ArticleUpdateRequest,
+    request: cms_pb.NotificationUpdateRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
   update(
-    request: cms_pb.ArticleUpdateRequest,
+    request: cms_pb.NotificationUpdateRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.cms.v1.Article/Update',
+          '/palm.cms.v1.Notification/Update',
         request,
         metadata || {},
         this.methodDescriptorUpdate,
@@ -121,42 +121,42 @@ export class ArticleClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.cms.v1.Article/Update',
+      '/palm.cms.v1.Notification/Update',
     request,
     metadata || {},
     this.methodDescriptorUpdate);
   }
 
   methodDescriptorIndex = new grpcWeb.MethodDescriptor(
-    '/palm.cms.v1.Article/Index',
+    '/palm.cms.v1.Notification/Index',
     grpcWeb.MethodType.UNARY,
     nut_pb.Pager,
-    cms_pb.ArticleIndexResponse,
+    cms_pb.NotificationIndexResponse,
     (request: nut_pb.Pager) => {
       return request.serializeBinary();
     },
-    cms_pb.ArticleIndexResponse.deserializeBinary
+    cms_pb.NotificationIndexResponse.deserializeBinary
   );
 
   index(
     request: nut_pb.Pager,
-    metadata: grpcWeb.Metadata | null): Promise<cms_pb.ArticleIndexResponse>;
+    metadata: grpcWeb.Metadata | null): Promise<cms_pb.NotificationIndexResponse>;
 
   index(
     request: nut_pb.Pager,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: cms_pb.ArticleIndexResponse) => void): grpcWeb.ClientReadableStream<cms_pb.ArticleIndexResponse>;
+               response: cms_pb.NotificationIndexResponse) => void): grpcWeb.ClientReadableStream<cms_pb.NotificationIndexResponse>;
 
   index(
     request: nut_pb.Pager,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: cms_pb.ArticleIndexResponse) => void) {
+               response: cms_pb.NotificationIndexResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.cms.v1.Article/Index',
+          '/palm.cms.v1.Notification/Index',
         request,
         metadata || {},
         this.methodDescriptorIndex,
@@ -164,42 +164,42 @@ export class ArticleClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.cms.v1.Article/Index',
+      '/palm.cms.v1.Notification/Index',
     request,
     metadata || {},
     this.methodDescriptorIndex);
   }
 
   methodDescriptorShow = new grpcWeb.MethodDescriptor(
-    '/palm.cms.v1.Article/Show',
+    '/palm.cms.v1.Notification/Show',
     grpcWeb.MethodType.UNARY,
     nut_pb.IdRequest,
-    cms_pb.ArticleShowResponse,
+    cms_pb.NotificationIndexResponse.Item,
     (request: nut_pb.IdRequest) => {
       return request.serializeBinary();
     },
-    cms_pb.ArticleShowResponse.deserializeBinary
+    cms_pb.NotificationIndexResponse.Item.deserializeBinary
   );
 
   show(
     request: nut_pb.IdRequest,
-    metadata: grpcWeb.Metadata | null): Promise<cms_pb.ArticleShowResponse>;
+    metadata: grpcWeb.Metadata | null): Promise<cms_pb.NotificationIndexResponse.Item>;
 
   show(
     request: nut_pb.IdRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: cms_pb.ArticleShowResponse) => void): grpcWeb.ClientReadableStream<cms_pb.ArticleShowResponse>;
+               response: cms_pb.NotificationIndexResponse.Item) => void): grpcWeb.ClientReadableStream<cms_pb.NotificationIndexResponse.Item>;
 
   show(
     request: nut_pb.IdRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: cms_pb.ArticleShowResponse) => void) {
+               response: cms_pb.NotificationIndexResponse.Item) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.cms.v1.Article/Show',
+          '/palm.cms.v1.Notification/Show',
         request,
         metadata || {},
         this.methodDescriptorShow,
@@ -207,14 +207,14 @@ export class ArticleClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.cms.v1.Article/Show',
+      '/palm.cms.v1.Notification/Show',
     request,
     metadata || {},
     this.methodDescriptorShow);
   }
 
   methodDescriptorDestory = new grpcWeb.MethodDescriptor(
-    '/palm.cms.v1.Article/Destory',
+    '/palm.cms.v1.Notification/Destory',
     grpcWeb.MethodType.UNARY,
     nut_pb.IdRequest,
     google_protobuf_empty_pb.Empty,
@@ -242,7 +242,7 @@ export class ArticleClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.cms.v1.Article/Destory',
+          '/palm.cms.v1.Notification/Destory',
         request,
         metadata || {},
         this.methodDescriptorDestory,
@@ -250,7 +250,7 @@ export class ArticleClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.cms.v1.Article/Destory',
+      '/palm.cms.v1.Notification/Destory',
     request,
     metadata || {},
     this.methodDescriptorDestory);
@@ -258,7 +258,7 @@ export class ArticleClient {
 
 }
 
-export class CommentClient {
+export class FolderClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;
   credentials_: null | { [index: string]: string; };
@@ -275,178 +275,6 @@ export class CommentClient {
     this.hostname_ = hostname.replace(/\/+$/, '');
     this.credentials_ = credentials;
     this.options_ = options;
-  }
-
-  methodDescriptorCreate = new grpcWeb.MethodDescriptor(
-    '/palm.cms.v1.Comment/Create',
-    grpcWeb.MethodType.UNARY,
-    cms_pb.CommentCreateRequest,
-    google_protobuf_empty_pb.Empty,
-    (request: cms_pb.CommentCreateRequest) => {
-      return request.serializeBinary();
-    },
-    google_protobuf_empty_pb.Empty.deserializeBinary
-  );
-
-  create(
-    request: cms_pb.CommentCreateRequest,
-    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
-
-  create(
-    request: cms_pb.CommentCreateRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
-
-  create(
-    request: cms_pb.CommentCreateRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/palm.cms.v1.Comment/Create',
-        request,
-        metadata || {},
-        this.methodDescriptorCreate,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/palm.cms.v1.Comment/Create',
-    request,
-    metadata || {},
-    this.methodDescriptorCreate);
-  }
-
-  methodDescriptorUpdate = new grpcWeb.MethodDescriptor(
-    '/palm.cms.v1.Comment/Update',
-    grpcWeb.MethodType.UNARY,
-    cms_pb.CommentUpdateRequest,
-    google_protobuf_empty_pb.Empty,
-    (request: cms_pb.CommentUpdateRequest) => {
-      return request.serializeBinary();
-    },
-    google_protobuf_empty_pb.Empty.deserializeBinary
-  );
-
-  update(
-    request: cms_pb.CommentUpdateRequest,
-    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
-
-  update(
-    request: cms_pb.CommentUpdateRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
-
-  update(
-    request: cms_pb.CommentUpdateRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/palm.cms.v1.Comment/Update',
-        request,
-        metadata || {},
-        this.methodDescriptorUpdate,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/palm.cms.v1.Comment/Update',
-    request,
-    metadata || {},
-    this.methodDescriptorUpdate);
-  }
-
-  methodDescriptorIndex = new grpcWeb.MethodDescriptor(
-    '/palm.cms.v1.Comment/Index',
-    grpcWeb.MethodType.UNARY,
-    nut_pb.Pager,
-    cms_pb.CommentIndexResponse,
-    (request: nut_pb.Pager) => {
-      return request.serializeBinary();
-    },
-    cms_pb.CommentIndexResponse.deserializeBinary
-  );
-
-  index(
-    request: nut_pb.Pager,
-    metadata: grpcWeb.Metadata | null): Promise<cms_pb.CommentIndexResponse>;
-
-  index(
-    request: nut_pb.Pager,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: cms_pb.CommentIndexResponse) => void): grpcWeb.ClientReadableStream<cms_pb.CommentIndexResponse>;
-
-  index(
-    request: nut_pb.Pager,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: cms_pb.CommentIndexResponse) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/palm.cms.v1.Comment/Index',
-        request,
-        metadata || {},
-        this.methodDescriptorIndex,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/palm.cms.v1.Comment/Index',
-    request,
-    metadata || {},
-    this.methodDescriptorIndex);
-  }
-
-  methodDescriptorDestory = new grpcWeb.MethodDescriptor(
-    '/palm.cms.v1.Comment/Destory',
-    grpcWeb.MethodType.UNARY,
-    nut_pb.IdRequest,
-    google_protobuf_empty_pb.Empty,
-    (request: nut_pb.IdRequest) => {
-      return request.serializeBinary();
-    },
-    google_protobuf_empty_pb.Empty.deserializeBinary
-  );
-
-  destory(
-    request: nut_pb.IdRequest,
-    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
-
-  destory(
-    request: nut_pb.IdRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
-
-  destory(
-    request: nut_pb.IdRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/palm.cms.v1.Comment/Destory',
-        request,
-        metadata || {},
-        this.methodDescriptorDestory,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/palm.cms.v1.Comment/Destory',
-    request,
-    metadata || {},
-    this.methodDescriptorDestory);
   }
 
 }
