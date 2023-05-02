@@ -19,12 +19,16 @@ FetchContent_Declare(httplib
   GIT_REPOSITORY  "https://github.com/yhirose/cpp-httplib.git"
   GIT_TAG         "v0.12.2"
 )
+FetchContent_Declare(inja 
+  GIT_REPOSITORY  "https://github.com/pantor/inja.git"
+  GIT_TAG         "v3.4.0"
+)
 FetchContent_Declare(argparse
   GIT_REPOSITORY  "https://github.com/p-ranav/argparse.git"
   GIT_TAG         "557948f"
 )
 
-FetchContent_MakeAvailable(spdlog argparse tomlplusplus nlohmann_json httplib)
+FetchContent_MakeAvailable(spdlog argparse tomlplusplus nlohmann_json httplib inja)
 
 target_include_directories(palm PUBLIC
   ${PROJECT_SOURCE_DIR}/include
@@ -33,6 +37,8 @@ target_include_directories(palm PUBLIC
   ${argparse_SOURCE_DIR}/include
   ${httplib_SOURCE_DIR}
   ${tomlplusplus_SOURCE_DIR}/include
+  ${inja_SOURCE_DIR}/single_include
+  ${inja_SOURCE_DIR}/third_party/include
 )
 
 target_link_libraries(palm PUBLIC

@@ -34,14 +34,31 @@ build_gnu() {
     local target=$WORKSPACE/build/$UBUNTU_CODENAME-$1-$2
     mkdir -p $target
     cd $target
+    # https://stackoverflow.com/questions/52202453/cross-compiling-grpc-using-cmake
+    # -DgRPC_PROTOBUF_PROVIDER=package -DgRPC_PROTOBUF_PACKAGE_TYPE=MODULE
     cmake $WORKSPACE \
+        -DABSL_PROPAGATE_CXX_STD=ON \
+        -DgRPC_SSL_PROVIDER=package -DgRPC_PROTOBUF_PROVIDER=module -DProtobuf_PROTOC_EXECUTABLE=$PROTOBUF_ROOT/bin/protoc \
         -DCMAKE_BUILD_TYPE=$2 -DCMAKE_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$1.cmake
     make
 
     if [[ $2 == "Release" ]]
     then
         cd $target/apps
-        cp -v fig mint $TARGET_DIR/bin/$1
+        cp -v fig mint $TARGET_DIR/bin/$1/
+    fi
+}
+
+build_musl() {
+    local target=$WORKSPACE/build/$1-$2
+    mkdir -p $target
+    cd $target
+    CXX=$2-g++ cmake -DCMAKE_BUILD_TYPE=$3 $WORKSPACE/$1
+    make
+
+    if [[ $3 == "Release" ]]
+    then
+        cp -v $1 $TARGET_DIR/bin/$4/
     fi
 }
 
@@ -173,6 +190,11 @@ build_gnu amd64 Debug
 build_gnu amd64 Release
 build_gnu arm64 Release
 build_gnu armhf Release
+
+build_musl coconut x86_64-linux-musl Debug amd64
+build_musl coconut x86_64-linux-musl Release amd64
+build_musl coconut aarch64-linux-musl Release arm64
+build_musl coconut armv7l-linux-musleabihf Release armhf
 
 # -----------------------------------------------------------------------------
 
