@@ -1,27 +1,44 @@
-file(GLOB HEADER_LIST CONFIGURE_DEPENDS "${palm_SOURCE_DIR}/include/palm/*.hpp")
-file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${palm_SOURCE_DIR}/src/*.cpp")
+file(GLOB HEADER_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/include/palm/*.hpp")
+file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.cpp")
 
 add_library(palm STATIC ${SOURCE_LIST})
 
+FetchContent_Declare(spdlog
+  GIT_REPOSITORY  "https://github.com/gabime/spdlog.git"
+  GIT_TAG         "v1.11.0"
+)
+FetchContent_Declare(tomlplusplus
+  GIT_REPOSITORY  "https://github.com/marzer/tomlplusplus.git"
+  GIT_TAG         "v3.3.0"
+)
+FetchContent_Declare(nlohmann_json
+  GIT_REPOSITORY  "https://github.com/nlohmann/json.git"
+  GIT_TAG         "v3.11.2"
+)
+FetchContent_Declare(httplib
+  GIT_REPOSITORY  "https://github.com/yhirose/cpp-httplib.git"
+  GIT_TAG         "v0.12.2"
+)
+FetchContent_Declare(argparse
+  GIT_REPOSITORY  "https://github.com/p-ranav/argparse.git"
+  GIT_TAG         "557948f"
+)
 
-FetchContent_Declare(
-    casbin
-    GIT_REPOSITORY  "https://github.com/casbin/casbin-cpp.git"
-    GIT_TAG         "v1.50.1"
-)
-FetchContent_Declare(
-  Poco
-    GIT_REPOSITORY  "https://github.com/pocoproject/poco.git"
-    GIT_TAG         "poco-1.11.2-release"
-)
-FetchContent_MakeAvailable(casbin Poco)
+FetchContent_MakeAvailable(spdlog argparse tomlplusplus nlohmann_json httplib)
 
 target_include_directories(palm PUBLIC
-  ${palm_SOURCE_DIR}/include
-  ${casbin_SOURCE_DIR}/include
+  ${PROJECT_SOURCE_DIR}/include
+
+  ${spdlog_SOURCE_DIR}/include
+  ${argparse_SOURCE_DIR}/include
+  ${httplib_SOURCE_DIR}
+  ${tomlplusplus_SOURCE_DIR}/include
 )
 
-target_link_libraries(palm PUBLIC casbin gourd)
+# gourd
+target_link_libraries(palm PUBLIC
+  nlohmann_json::nlohmann_json
+)
 
 source_group(
   TREE "${PROJECT_SOURCE_DIR}/include"

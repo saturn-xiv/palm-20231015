@@ -1,2 +1,4 @@
 /tmp/
 /build/
+
+/include/palm/version.hpp
