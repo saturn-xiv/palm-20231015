@@ -22,6 +22,20 @@ function generate_grpc_by_lang() {
         $WORKSPACE/protocols/*.proto
 }
 
+function generate_bamboo() {
+    local target=$WORKSPACE/bamboo/cpp
+    if [ -d $target ]
+    then
+        rm -r $target
+    fi
+    mkdir -p $target
+    $PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/protocols \
+        -I $PROTOBUF_ROOT/include/google/protobuf \
+        --cpp_out=$target --grpc_out=$target \
+        --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_cpp_plugin \
+        $WORKSPACE/protocols/*.proto
+}
+
 function generate_flatbuffers() {
     echo "generate flatbuffers"
     flatc --rust --filename-suffix "" -o $WORKSPACE/$2 $WORKSPACE/$1.fbs
@@ -29,19 +43,18 @@ function generate_flatbuffers() {
 }
 
 function generate_loquat() {
-    cd $WORKSPACE
         
     echo 'generate code for loquat-cpp'
-    local cpp_target=loquat/gourd/src
+    local cpp_target=$WORKSPACE/loquat/gourd/src
     if [ -d $cpp_target ]
     then
         rm -r $cpp_target
     fi
     mkdir -p $cpp_target
-    thrift -out $cpp_target --gen cpp -r protocols/loquat.thrift
+    thrift -out $cpp_target --gen cpp -r $WORKSPACE/protocols/loquat.thrift
 
     echo 'generate code for loquat-java'
-    thrift -out tmp/protocols/java --gen java -r protocols/loquat.thrift    
+    thrift -out $WORKSPACE/tmp/protocols/java --gen java -r $WORKSPACE/protocols/loquat.thrift    
 }
 
 # https://github.com/grpc/grpc-web#code-generator-plugin
@@ -64,7 +77,6 @@ function generate_web() {
 function copy_musa() {
     cd $WORKSPACE
 
-
     local -a plugins=(
         "loquat"
         "musa"
@@ -86,13 +98,12 @@ function copy_musa() {
 
 declare -a languages=(
     # "node"
-    # "php"
-    # "python"
-    # "ruby"
+    "php"
+    "python"
+    "ruby"
     "cpp"
-    # "csharp"
-    # https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/
-    # "java" 
+    "csharp"
+    "java" 
     # "objective_c"
 )
 
@@ -101,23 +112,15 @@ do
     generate_grpc_by_lang $l
 done
 
-# generate_web fig
-# generate_web aloe
-# generate_loquat
+generate_web fig
+generate_web aloe
+generate_loquat
+generate_bamboo
 # copy_musa
 
 # -----------------------------------------------------------------------------
 
-if [ -d $WORKSPACE/bamboo/cpp ]
-then
-    rm -r $WORKSPACE/bamboo/cpp
-fi
-mkdir -p $WORKSPACE/bamboo/cpp
-$PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/protocols \
-        -I $PROTOBUF_ROOT/include/google/protobuf \
-        --cpp_out=$WORKSPACE/bamboo/cpp --grpc_out=$WORKSPACE/bamboo/cpp \
-        --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_cpp_plugin \
-        $WORKSPACE/protocols/*.proto
+
 
 # ----------------------------------------------------------
 
