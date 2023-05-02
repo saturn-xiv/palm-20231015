@@ -26,7 +26,8 @@ then
     exit 1
 fi
 
-sudo pacman -S --needed postgresql-libs boost
+sudo pacman -S --needed postgresql-libs mariadb-clients \
+    boost zeromq
 
 # -----------------------------------------------------------------------------
 

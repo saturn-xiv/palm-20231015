@@ -40,6 +40,7 @@ build_gnu() {
     cmake $WORKSPACE \
         -DABSL_PROPAGATE_CXX_STD=ON \
         -DgRPC_SSL_PROVIDER=package -DgRPC_PROTOBUF_PROVIDER=module -DProtobuf_PROTOC_EXECUTABLE=$PROTOBUF_ROOT/bin/protoc \
+        -DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF \
         -DCMAKE_BUILD_TYPE=$3 -DCMAKE_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$2.cmake
     make
 
@@ -175,17 +176,6 @@ mkdir x86_64 aarch64 riscv64gc armv7l
 
 # -----------------------------------------------------------------------------
 
-build_gnu amd64 x86_64 Debug
-build_gnu amd64 x86_64 Release
-build_gnu arm64 aarch64 Release
-# build_gnu riscv64 riscv64gc Release
-# build_gnu armhf armv7l Release
-
-build_musl coconut x86_64-linux-musl Debug x86_64
-build_musl coconut x86_64-linux-musl Release x86_64
-build_musl coconut aarch64-linux-musl Release aarch64
-# build_musl coconut armv7l-linux-musleabihf Release armv7l
-
 if [[ $(uname -p) == "aarch64" ]]
 then
     build_loquat aarch64 Debug
@@ -198,6 +188,16 @@ then
     build_loquat x86_64 Release
 fi
 
+build_gnu amd64 x86_64 Debug
+build_gnu amd64 x86_64 Release
+build_gnu arm64 aarch64 Release
+# build_gnu riscv64 riscv64gc Release
+# build_gnu armhf armv7l Release
+
+build_musl coconut x86_64-linux-musl Debug x86_64
+build_musl coconut x86_64-linux-musl Release x86_64
+build_musl coconut aarch64-linux-musl Release aarch64
+# build_musl coconut armv7l-linux-musleabihf Release armv7l
 
 # -----------------------------------------------------------------------------
 

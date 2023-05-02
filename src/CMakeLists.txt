@@ -28,7 +28,7 @@ FetchContent_Declare(argparse
   GIT_TAG         "557948f"
 )
 
-FetchContent_MakeAvailable(spdlog argparse tomlplusplus nlohmann_json httplib inja)
+FetchContent_MakeAvailable(spdlog argparse tomlplusplus httplib inja nlohmann_json)
 
 target_include_directories(palm PUBLIC
   ${PROJECT_SOURCE_DIR}/include

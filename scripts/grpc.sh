@@ -29,11 +29,10 @@ function build_grpc() {
     mkdir -pv $HOME/build/grpc
     cd $HOME/build/grpc
     cmake -DCMAKE_BUILD_TYPE=Release \
-    -DgRPC_INSTALL=ON \
-    -DgRPC_SSL_PROVIDER=package \
-    -DgRPC_BUILD_TESTS=OFF \
+    -DABSL_PROPAGATE_CXX_STD=ON \
+    -DgRPC_INSTALL=ON -DgRPC_SSL_PROVIDER=package -DgRPC_BUILD_TESTS=OFF \
     -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc
-    make -j
+    make
     make install
 }
 

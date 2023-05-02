@@ -7,10 +7,17 @@ RUN apt update \
     && apt -y upgrade \
     && apt -y install debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
 
-# https://wiki.ubuntu.com/ToolChain
+# https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
+ENV GCC_VERSION 12
+RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
+# https://apt.llvm.org/
+ENV CLANG_VERSION 15
+RUN echo "deb [arch=amd64] http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-${CLANG_VERSION} main" > /etc/apt/sources.list.d/llvm.list
+RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+# https://wiki.debian.org/ToolChain/Cross
 RUN dpkg --add-architecture armhf
 RUN dpkg --add-architecture arm64
 RUN dpkg --add-architecture riscv64
@@ -19,7 +26,7 @@ RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release 
 RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 # https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
 ENV GCC_VERSION 12
-RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
+
 RUN apt update && apt -y upgrade
 
 RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
@@ -30,6 +37,7 @@ RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     crossbuild-essential-arm64 g++-${GCC_VERSION}-aarch64-linux-gnu libstdc++-${GCC_VERSION}-dev:arm64 \
     crossbuild-essential-armhf g++-${GCC_VERSION}-arm-linux-gnueabihf libstdc++-${GCC_VERSION}-dev:armhf \
     crossbuild-essential-riscv64 g++-${GCC_VERSION}-riscv64-linux-gnu libstdc++-${GCC_VERSION}-dev:riscv64 \
+    clang-${CLANG_VERSION} clangd-${CLANG_VERSION} clang-tools-${CLANG_VERSION} clang-format-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
     cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio mold \
     debhelper bison flex ninja-build \
     musl-tools musl-dev \
