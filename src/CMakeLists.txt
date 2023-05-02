@@ -35,8 +35,8 @@ target_include_directories(palm PUBLIC
   ${tomlplusplus_SOURCE_DIR}/include
 )
 
-# gourd
 target_link_libraries(palm PUBLIC
+  gourd
   nlohmann_json::nlohmann_json
 )
 

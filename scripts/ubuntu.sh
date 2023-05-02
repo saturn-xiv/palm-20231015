@@ -9,6 +9,7 @@ export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
 export BUILD_TIME=$(date -u -R)
 export PACKAGE_NAME=palm-$UBUNTU_CODENAME-$GIT_VERSION
 export TARGET_DIR=$PWD/tmp/$PACKAGE_NAME
+export PROTOBUF_ROOT=$HOME/.local
 
 # -----------------------------------------------------------------------------
 
@@ -36,6 +37,12 @@ build_gnu() {
     cmake $WORKSPACE \
         -DCMAKE_BUILD_TYPE=$2 -DCMAKE_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$1.cmake
     make
+
+    if [[ $2 == "Release" ]]
+    then
+        cd $target/apps
+        cp -v fig mint $TARGET_DIR/bin/$1
+    fi
 }
 
 
@@ -48,6 +55,7 @@ build_loquat() {
         -DABSL_PROPAGATE_CXX_STD=ON -DTINK_USE_SYSTEM_OPENSSL=OFF \
         -DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF \
         ../..
+    
     make --silent loquat
     cp loquat $TARGET_DIR/bin/$1/
 }
@@ -148,9 +156,23 @@ mkdir amd64 armhf arm64 riscv64
 
 # -----------------------------------------------------------------------------
 
+if [ -d $WORKSPACE/gourd/cpp ]
+then
+    rm -r $WORKSPACE/gourd/cpp
+fi
+mkdir -p $WORKSPACE/gourd/cpp
+$PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/protocols \
+        -I $PROTOBUF_ROOT/include/google/protobuf \
+        --cpp_out=$WORKSPACE/gourd/cpp --grpc_out=$WORKSPACE/gourd/cpp \
+        --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_cpp_plugin \
+        $WORKSPACE/protocols/*.proto
+
+# -----------------------------------------------------------------------------
+
 build_gnu amd64 Debug
 build_gnu amd64 Release
 build_gnu arm64 Release
+build_gnu armhf Release
 
 # -----------------------------------------------------------------------------
 
