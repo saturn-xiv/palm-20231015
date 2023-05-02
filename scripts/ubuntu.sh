@@ -25,13 +25,14 @@ build_dashboard() {
 
 install_deb() {
     apt-get -y install libc6-dev:$1 libudev-dev:$1 libssl-dev:$1 \
-        libpq5:$1 libpq-dev:$1 libmysqlclient-dev:$1 libsqlite3-dev:$1
+        libpq5:$1 libpq-dev:$1 libmysqlclient-dev:$1 libsqlite3-dev:$1 \
+        libboost-all-dev:$1
 }
 
 build_gnu() {
     install_deb $1
 
-    local target=$WORKSPACE/build/$UBUNTU_CODENAME-$1-$2
+    local target=$WORKSPACE/build/$UBUNTU_CODENAME-$2-$3
     mkdir -p $target
     cd $target
     # https://stackoverflow.com/questions/52202453/cross-compiling-grpc-using-cmake
@@ -39,10 +40,10 @@ build_gnu() {
     cmake $WORKSPACE \
         -DABSL_PROPAGATE_CXX_STD=ON \
         -DgRPC_SSL_PROVIDER=package -DgRPC_PROTOBUF_PROVIDER=module -DProtobuf_PROTOC_EXECUTABLE=$PROTOBUF_ROOT/bin/protoc \
-        -DCMAKE_BUILD_TYPE=$2 -DCMAKE_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$1.cmake
+        -DCMAKE_BUILD_TYPE=$3 -DCMAKE_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$2.cmake
     make
 
-    if [[ $2 == "Release" ]]
+    if [[ $3 == "Release" ]]
     then
         cd $target/apps
         cp -v fig mint $TARGET_DIR/bin/$1/
@@ -66,14 +67,15 @@ build_musl() {
 build_loquat() {
     apt-get install -y g++-10 golang libunwind-dev libboost-all-dev libssl-dev libevent-dev
 
-    mkdir -p $WORKSPACE/loquat/build/$1
-    cd $WORKSPACE/loquat/build/$1
-    CC=gcc-10 CXX=g++-10 cmake -DCMAKE_BUILD_TYPE=Release \
+    local target=$WORKSPACE/build/loquat-$UBUNTU_CODENAME-$1-$2
+    mkdir -p $target    
+    cd $target
+    CC=gcc-10 CXX=g++-10 cmake -DCMAKE_BUILD_TYPE=$2 \
         -DABSL_PROPAGATE_CXX_STD=ON -DTINK_USE_SYSTEM_OPENSSL=OFF \
         -DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF \
-        ../..
+        $WORKSPACE/loquat
     
-    make --silent loquat
+    make
     cp loquat $TARGET_DIR/bin/$1/
 }
 
@@ -169,32 +171,33 @@ then
 fi
 mkdir -p $TARGET_DIR/bin
 cd $TARGET_DIR/bin
-mkdir amd64 armhf arm64 riscv64
+mkdir x86_64 aarch64 riscv64gc armv7l
 
 # -----------------------------------------------------------------------------
 
-if [ -d $WORKSPACE/gourd/cpp ]
+build_gnu amd64 x86_64 Debug
+build_gnu amd64 x86_64 Release
+build_gnu arm64 aarch64 Release
+# build_gnu riscv64 riscv64gc Release
+# build_gnu armhf armv7l Release
+
+build_musl coconut x86_64-linux-musl Debug x86_64
+build_musl coconut x86_64-linux-musl Release x86_64
+build_musl coconut aarch64-linux-musl Release aarch64
+# build_musl coconut armv7l-linux-musleabihf Release armv7l
+
+if [[ $(uname -p) == "aarch64" ]]
 then
-    rm -r $WORKSPACE/gourd/cpp
+    build_loquat aarch64 Debug
+    build_loquat aarch64 Release
 fi
-mkdir -p $WORKSPACE/gourd/cpp
-$PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/protocols \
-        -I $PROTOBUF_ROOT/include/google/protobuf \
-        --cpp_out=$WORKSPACE/gourd/cpp --grpc_out=$WORKSPACE/gourd/cpp \
-        --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_cpp_plugin \
-        $WORKSPACE/protocols/*.proto
 
-# -----------------------------------------------------------------------------
+if [[ $(uname -p) == "x86_64" ]]
+then
+    build_loquat x86_64 Debug
+    build_loquat x86_64 Release
+fi
 
-build_gnu amd64 Debug
-build_gnu amd64 Release
-build_gnu arm64 Release
-build_gnu armhf Release
-
-build_musl coconut x86_64-linux-musl Debug amd64
-build_musl coconut x86_64-linux-musl Release amd64
-build_musl coconut aarch64-linux-musl Release arm64
-build_musl coconut armv7l-linux-musleabihf Release armhf
 
 # -----------------------------------------------------------------------------
 

@@ -106,7 +106,21 @@ done
 # generate_loquat
 # copy_musa
 
+# -----------------------------------------------------------------------------
+
+if [ -d $WORKSPACE/bamboo/cpp ]
+then
+    rm -r $WORKSPACE/bamboo/cpp
+fi
+mkdir -p $WORKSPACE/bamboo/cpp
+$PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/protocols \
+        -I $PROTOBUF_ROOT/include/google/protobuf \
+        --cpp_out=$WORKSPACE/bamboo/cpp --grpc_out=$WORKSPACE/bamboo/cpp \
+        --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_cpp_plugin \
+        $WORKSPACE/protocols/*.proto
+
 # ----------------------------------------------------------
+
 
 echo 'done.'
 exit 0

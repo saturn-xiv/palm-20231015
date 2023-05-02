@@ -41,8 +41,7 @@ target_include_directories(palm PUBLIC
   ${inja_SOURCE_DIR}/third_party/include
 )
 
-target_link_libraries(palm PUBLIC
-  gourd
+target_link_libraries(palm PUBLIC bamboo
   nlohmann_json::nlohmann_json
 )
 

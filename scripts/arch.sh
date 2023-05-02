@@ -27,18 +27,6 @@ then
 fi
 
 sudo pacman -S --needed postgresql-libs boost
-# -----------------------------------------------------------------------------
-
-if [ -d $WORKSPACE/gourd/cpp ]
-then
-    rm -r $WORKSPACE/gourd/cpp
-fi
-mkdir -p $WORKSPACE/gourd/cpp
-$PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/protocols \
-        -I $PROTOBUF_ROOT/include/google/protobuf \
-        --cpp_out=$WORKSPACE/gourd/cpp --grpc_out=$WORKSPACE/gourd/cpp \
-        --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_cpp_plugin \
-        $WORKSPACE/protocols/*.proto
 
 # -----------------------------------------------------------------------------
 

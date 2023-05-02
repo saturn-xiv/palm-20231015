@@ -23,7 +23,7 @@ string(TIMESTAMP BUILD_TIME UTC)
 configure_file(include/palm/version.h.in ${PROJECT_SOURCE_DIR}/include/palm/version.hpp)
 # --------------------------------------------------------
 
-add_subdirectory(gourd)
+add_subdirectory(bamboo)
 add_subdirectory(src)
 add_subdirectory(apps)
 add_subdirectory(tests)

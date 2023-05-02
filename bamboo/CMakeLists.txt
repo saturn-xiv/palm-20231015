@@ -7,13 +7,13 @@ FetchContent_Declare(gRPC
 )
 FetchContent_MakeAvailable(gRPC)
 
-add_library(gourd STATIC ${SOURCE_LIST})
+add_library(bamboo STATIC ${SOURCE_LIST})
 
-target_include_directories(gourd PUBLIC
+target_include_directories(bamboo PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/cpp/
 )
 
-target_link_libraries(gourd PUBLIC
+target_link_libraries(bamboo PUBLIC
   dl crypt m
   grpc++
 )
