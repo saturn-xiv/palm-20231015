@@ -1,0 +1,18 @@
+[submodule "themes/hugo-cleanwhite"]
+	path = themes/hugo-cleanwhite
+	url = https://github.com/zhaohuabing/hugo-theme-cleanwhite
+[submodule "themes/hugo-universal"]
+	path = themes/hugo-universal
+	url = https://github.com/devcows/hugo-universal-theme.git
+[submodule "themes/hugo-docsy"]
+	path = themes/hugo-docsy
+	url = https://github.com/google/docsy.git
+[submodule "themes/hugo-hinode"]
+	path = themes/hugo-hinode
+	url = https://github.com/markdumay/hugo-theme-hinode-child.git
+[submodule "themes/grav-x-corporation"]
+	path = themes/grav-x-corporation
+	url = https://github.com/tranduyhung/grav-theme-x-corporation.git
+[submodule "themes/gantry5"]
+	path = themes/gantry5
+	url = https://github.com/gantry/gantry5.git
