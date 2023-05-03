@@ -38,7 +38,7 @@ RUN apt -y install zsh git locales locales-all \
     clang-${CLANG_VERSION} clangd-${CLANG_VERSION} clang-tools-${CLANG_VERSION} clang-format-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
     cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio \
     debhelper bison flex ninja-build \
-    python${PYTHON_VERSION} python${PYTHON_VERSION}-distutils python${PYTHON_VERSION}-dev virtualenv
+    python${PYTHON_VERSION} python${PYTHON_VERSION}-distutils python${PYTHON_VERSION}-dev python${PYTHON_VERSION}-venv virtualenv
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${CLANG_VERSION} 100 \
@@ -94,10 +94,6 @@ RUN wget -q -P $HOME/downloads https://more.musl.cc/x86_64-linux-musl/riscv64-li
     && cd /opt \
     && tar xf $HOME/downloads/riscv64-linux-musl-cross.tgz \
     && echo 'export PATH=/opt/riscv64-linux-musl-cross/bin:$PATH' >> $HOME/.zshrc
-
-RUN curl -sSL https://bootstrap.pypa.io/get-pip.py -o $HOME/downloads/get-pip.py
-RUN sh -c ". $HOME/.profile && python${PYTHON_VERSION} $HOME/downloads/get-pip.py"
-RUN sh -c ". $HOME/.profile && python${PYTHON_VERSION} -m pip install --user cmake"
 
 # https://github.com/nvm-sh/nvm
 ENV NVM_VERSION "v0.39.3"
