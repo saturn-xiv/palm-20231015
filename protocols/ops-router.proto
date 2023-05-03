@@ -1,0 +1,81 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.github.saturn_xiv.palm.plugins.ops.router.v1";
+package palm.ops.router.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+service Router {
+  rpc Reboot(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+// ----------------------------------------------------------------------------
+
+message Administrator {
+  string nickname = 1;
+  string password = 2;
+}
+
+message Log {
+  enum Level {
+    DEBUG = 0;
+    INFO = 1;
+    WARNING = 2;
+    ERROR = 3;
+  }
+  string ip = 1;
+  Level level = 2;
+  string message = 3;
+  google.protobuf.Timestamp created_at = 4;
+}
+
+message Wan {
+  message Static {
+    string ip_address = 1;
+    uint32 subnet_prefix_length = 2;
+    string gateway = 3;
+    string preferred_dns = 4;
+    optional string alternate_dns = 5;
+  }
+  message Dhcp {}
+
+  message Nat {}
+  message In {}
+  message Out {}
+
+  oneof ip {
+    Dhcp dhcp = 1;
+    Static static = 2;
+  }
+  uint32 route_metric = 9;
+
+  bool v6 = 11;
+  repeated Nat nat = 12;
+  repeated In in = 13;
+  repeated Out out = 14;
+}
+
+message Dhcpd {
+  string device = 1;
+  string network = 2;
+  uint32 subnet_prefix_length = 3;
+  bool v6 = 9;
+
+  string begin = 11;
+  string end = 12;
+  map<string, string> fixed_clients = 19;
+}
+
+message Profile {
+  Administrator administrator = 1;
+  map<string, Wan> wan = 11;
+  Dhcpd lan = 12;
+  optional Dhcpd dmz = 13;
+}
+
+message Status {
+  Profile profile = 1;
+  repeated Log logs = 2;
+  google.protobuf.Timestamp created_at = 9;
+}

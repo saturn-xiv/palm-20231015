@@ -11,7 +11,7 @@ target_include_directories(bamboo PUBLIC
 )
 
 target_link_libraries(bamboo PUBLIC
-  dl crypt m
+  dl m
   re2::re2 c-ares::cares
   gRPC::gpr gRPC::grpc gRPC::grpc++ gRPC::grpc++_alts # gRPC::grpc++_reflection
 )
