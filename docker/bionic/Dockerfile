@@ -95,6 +95,9 @@ RUN wget -q -P $HOME/downloads https://more.musl.cc/x86_64-linux-musl/riscv64-li
     && tar xf $HOME/downloads/riscv64-linux-musl-cross.tgz \
     && echo 'export PATH=/opt/riscv64-linux-musl-cross/bin:$PATH' >> $HOME/.zshrc
 
+RUN sh -c ". $HOME/.profile && python${PYTHON_VERSION} -m ensurepip --upgrade"
+RUN sh -c ". $HOME/.profile && python${PYTHON_VERSION} -m pip install --user cmake"
+
 # https://github.com/nvm-sh/nvm
 ENV NVM_VERSION "v0.39.3"
 RUN git clone -b ${NVM_VERSION} https://github.com/nvm-sh/nvm.git $HOME/.nvm
