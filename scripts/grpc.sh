@@ -21,6 +21,12 @@ function build_grpc() {
     else
         git clone --recurse-submodules -b $1 https://github.com/grpc/grpc.git $HOME/downloads/grpc
     fi
+
+    cd $HOME/downloads/grpc/third_party/protobuf
+    git checkout main
+    git pull
+    git checkout $2
+    git submodule update --init --recursive
    
     if [ -d $HOME/build/grpc ]
     then
@@ -32,16 +38,10 @@ function build_grpc() {
     -DABSL_PROPAGATE_CXX_STD=ON \
     -DgRPC_INSTALL=ON -DgRPC_SSL_PROVIDER=package -DgRPC_BUILD_TESTS=OFF \
     -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc
-    make
+    make -j
     make install
 }
 
-if [ "$#" -ne 1 ]
-then
-    echo "USAGE: $0 GRPC_VERSION"
-    exit 1
-fi
-
-build_grpc $1
+build_grpc "v1.51.1" "v3.21.12"
 
 exit 0
