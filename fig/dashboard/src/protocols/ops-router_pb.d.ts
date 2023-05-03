@@ -231,23 +231,23 @@ export class Dhcpd extends jspb.Message {
   getDevice(): string;
   setDevice(value: string): Dhcpd;
 
-  getNetwork(): string;
-  setNetwork(value: string): Dhcpd;
+  getAddress(): string;
+  setAddress(value: string): Dhcpd;
 
-  getSubnetPrefixLength(): number;
-  setSubnetPrefixLength(value: number): Dhcpd;
+  getNetmask(): string;
+  setNetmask(value: string): Dhcpd;
 
   getV6(): boolean;
   setV6(value: boolean): Dhcpd;
 
-  getBegin(): string;
-  setBegin(value: string): Dhcpd;
+  getStartAddr(): string;
+  setStartAddr(value: string): Dhcpd;
 
-  getEnd(): string;
-  setEnd(value: string): Dhcpd;
+  getEndAddr(): string;
+  setEndAddr(value: string): Dhcpd;
 
-  getFixedClientsMap(): jspb.Map<string, string>;
-  clearFixedClientsMap(): Dhcpd;
+  getHostsMap(): jspb.Map<string, string>;
+  clearHostsMap(): Dhcpd;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Dhcpd.AsObject;
@@ -260,12 +260,36 @@ export class Dhcpd extends jspb.Message {
 export namespace Dhcpd {
   export type AsObject = {
     device: string,
-    network: string,
-    subnetPrefixLength: number,
+    address: string,
+    netmask: string,
     v6: boolean,
-    begin: string,
-    end: string,
-    fixedClientsMap: Array<[string, string]>,
+    startAddr: string,
+    endAddr: string,
+    hostsMap: Array<[string, string]>,
+  }
+}
+
+export class Dns extends jspb.Message {
+  getServersList(): Array<string>;
+  setServersList(value: Array<string>): Dns;
+  clearServersList(): Dns;
+  addServers(value: string, index?: number): Dns;
+
+  getSec(): boolean;
+  setSec(value: boolean): Dns;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dns.AsObject;
+  static toObject(includeInstance: boolean, msg: Dns): Dns.AsObject;
+  static serializeBinaryToWriter(message: Dns, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dns;
+  static deserializeBinaryFromReader(message: Dns, reader: jspb.BinaryReader): Dns;
+}
+
+export namespace Dns {
+  export type AsObject = {
+    serversList: Array<string>,
+    sec: boolean,
   }
 }
 
@@ -288,6 +312,11 @@ export class Profile extends jspb.Message {
   hasDmz(): boolean;
   clearDmz(): Profile;
 
+  getDns(): Dns | undefined;
+  setDns(value?: Dns): Profile;
+  hasDns(): boolean;
+  clearDns(): Profile;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Profile.AsObject;
   static toObject(includeInstance: boolean, msg: Profile): Profile.AsObject;
@@ -302,11 +331,12 @@ export namespace Profile {
     wanMap: Array<[string, Wan.AsObject]>,
     lan?: Dhcpd.AsObject,
     dmz?: Dhcpd.AsObject,
+    dns?: Dns.AsObject,
   }
 
   export enum DmzCase { 
     _DMZ_NOT_SET = 0,
-    DMZ = 13,
+    DMZ = 22,
   }
 }
 

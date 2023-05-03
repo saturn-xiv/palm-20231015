@@ -61,9 +61,12 @@ extern AdministratorDefaultTypeInternal _Administrator_default_instance_;
 class Dhcpd;
 struct DhcpdDefaultTypeInternal;
 extern DhcpdDefaultTypeInternal _Dhcpd_default_instance_;
-class Dhcpd_FixedClientsEntry_DoNotUse;
-struct Dhcpd_FixedClientsEntry_DoNotUseDefaultTypeInternal;
-extern Dhcpd_FixedClientsEntry_DoNotUseDefaultTypeInternal _Dhcpd_FixedClientsEntry_DoNotUse_default_instance_;
+class Dhcpd_HostsEntry_DoNotUse;
+struct Dhcpd_HostsEntry_DoNotUseDefaultTypeInternal;
+extern Dhcpd_HostsEntry_DoNotUseDefaultTypeInternal _Dhcpd_HostsEntry_DoNotUse_default_instance_;
+class Dns;
+struct DnsDefaultTypeInternal;
+extern DnsDefaultTypeInternal _Dns_default_instance_;
 class Log;
 struct LogDefaultTypeInternal;
 extern LogDefaultTypeInternal _Log_default_instance_;
@@ -101,7 +104,8 @@ extern Wan_StaticDefaultTypeInternal _Wan_Static_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
 template<> ::palm::ops::router::v1::Administrator* Arena::CreateMaybeMessage<::palm::ops::router::v1::Administrator>(Arena*);
 template<> ::palm::ops::router::v1::Dhcpd* Arena::CreateMaybeMessage<::palm::ops::router::v1::Dhcpd>(Arena*);
-template<> ::palm::ops::router::v1::Dhcpd_FixedClientsEntry_DoNotUse* Arena::CreateMaybeMessage<::palm::ops::router::v1::Dhcpd_FixedClientsEntry_DoNotUse>(Arena*);
+template<> ::palm::ops::router::v1::Dhcpd_HostsEntry_DoNotUse* Arena::CreateMaybeMessage<::palm::ops::router::v1::Dhcpd_HostsEntry_DoNotUse>(Arena*);
+template<> ::palm::ops::router::v1::Dns* Arena::CreateMaybeMessage<::palm::ops::router::v1::Dns>(Arena*);
 template<> ::palm::ops::router::v1::Log* Arena::CreateMaybeMessage<::palm::ops::router::v1::Log>(Arena*);
 template<> ::palm::ops::router::v1::Profile* Arena::CreateMaybeMessage<::palm::ops::router::v1::Profile>(Arena*);
 template<> ::palm::ops::router::v1::Profile_WanEntry_DoNotUse* Arena::CreateMaybeMessage<::palm::ops::router::v1::Profile_WanEntry_DoNotUse>(Arena*);
@@ -1523,26 +1527,26 @@ class Wan final :
 };
 // -------------------------------------------------------------------
 
-class Dhcpd_FixedClientsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Dhcpd_FixedClientsEntry_DoNotUse, 
+class Dhcpd_HostsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Dhcpd_HostsEntry_DoNotUse, 
     std::string, std::string,
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> {
 public:
-  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Dhcpd_FixedClientsEntry_DoNotUse, 
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Dhcpd_HostsEntry_DoNotUse, 
     std::string, std::string,
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> SuperType;
-  Dhcpd_FixedClientsEntry_DoNotUse();
-  explicit PROTOBUF_CONSTEXPR Dhcpd_FixedClientsEntry_DoNotUse(
+  Dhcpd_HostsEntry_DoNotUse();
+  explicit PROTOBUF_CONSTEXPR Dhcpd_HostsEntry_DoNotUse(
       ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-  explicit Dhcpd_FixedClientsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  void MergeFrom(const Dhcpd_FixedClientsEntry_DoNotUse& other);
-  static const Dhcpd_FixedClientsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const Dhcpd_FixedClientsEntry_DoNotUse*>(&_Dhcpd_FixedClientsEntry_DoNotUse_default_instance_); }
+  explicit Dhcpd_HostsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const Dhcpd_HostsEntry_DoNotUse& other);
+  static const Dhcpd_HostsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const Dhcpd_HostsEntry_DoNotUse*>(&_Dhcpd_HostsEntry_DoNotUse_default_instance_); }
   static bool ValidateKey(std::string* s) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "palm.ops.router.v1.Dhcpd.FixedClientsEntry.key");
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "palm.ops.router.v1.Dhcpd.HostsEntry.key");
  }
   static bool ValidateValue(std::string* s) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "palm.ops.router.v1.Dhcpd.FixedClientsEntry.value");
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "palm.ops.router.v1.Dhcpd.HostsEntry.value");
  }
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
   ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
@@ -1675,30 +1679,30 @@ class Dhcpd final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kFixedClientsFieldNumber = 19,
+    kHostsFieldNumber = 19,
     kDeviceFieldNumber = 1,
-    kNetworkFieldNumber = 2,
-    kBeginFieldNumber = 11,
-    kEndFieldNumber = 12,
-    kSubnetPrefixLengthFieldNumber = 3,
+    kAddressFieldNumber = 2,
+    kNetmaskFieldNumber = 3,
+    kStartAddrFieldNumber = 11,
+    kEndAddrFieldNumber = 12,
     kV6FieldNumber = 9,
   };
-  // map<string, string> fixed_clients = 19;
-  int fixed_clients_size() const;
+  // map<string, string> hosts = 19;
+  int hosts_size() const;
   private:
-  int _internal_fixed_clients_size() const;
+  int _internal_hosts_size() const;
   public:
-  void clear_fixed_clients();
+  void clear_hosts();
   private:
   const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
-      _internal_fixed_clients() const;
+      _internal_hosts() const;
   ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
-      _internal_mutable_fixed_clients();
+      _internal_mutable_hosts();
   public:
   const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
-      fixed_clients() const;
+      hosts() const;
   ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
-      mutable_fixed_clients();
+      mutable_hosts();
 
   // string device = 1;
   void clear_device();
@@ -1714,55 +1718,60 @@ class Dhcpd final :
   std::string* _internal_mutable_device();
   public:
 
-  // string network = 2;
-  void clear_network();
-  const std::string& network() const;
+  // string address = 2;
+  void clear_address();
+  const std::string& address() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_network(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_network();
-  PROTOBUF_NODISCARD std::string* release_network();
-  void set_allocated_network(std::string* network);
+  void set_address(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_address();
+  PROTOBUF_NODISCARD std::string* release_address();
+  void set_allocated_address(std::string* address);
   private:
-  const std::string& _internal_network() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_network(const std::string& value);
-  std::string* _internal_mutable_network();
+  const std::string& _internal_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_address(const std::string& value);
+  std::string* _internal_mutable_address();
   public:
 
-  // string begin = 11;
-  void clear_begin();
-  const std::string& begin() const;
+  // string netmask = 3;
+  void clear_netmask();
+  const std::string& netmask() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_begin(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_begin();
-  PROTOBUF_NODISCARD std::string* release_begin();
-  void set_allocated_begin(std::string* begin);
+  void set_netmask(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_netmask();
+  PROTOBUF_NODISCARD std::string* release_netmask();
+  void set_allocated_netmask(std::string* netmask);
   private:
-  const std::string& _internal_begin() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_begin(const std::string& value);
-  std::string* _internal_mutable_begin();
+  const std::string& _internal_netmask() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_netmask(const std::string& value);
+  std::string* _internal_mutable_netmask();
   public:
 
-  // string end = 12;
-  void clear_end();
-  const std::string& end() const;
+  // string start_addr = 11;
+  void clear_start_addr();
+  const std::string& start_addr() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_end(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_end();
-  PROTOBUF_NODISCARD std::string* release_end();
-  void set_allocated_end(std::string* end);
+  void set_start_addr(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_start_addr();
+  PROTOBUF_NODISCARD std::string* release_start_addr();
+  void set_allocated_start_addr(std::string* start_addr);
   private:
-  const std::string& _internal_end() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_end(const std::string& value);
-  std::string* _internal_mutable_end();
+  const std::string& _internal_start_addr() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_start_addr(const std::string& value);
+  std::string* _internal_mutable_start_addr();
   public:
 
-  // uint32 subnet_prefix_length = 3;
-  void clear_subnet_prefix_length();
-  uint32_t subnet_prefix_length() const;
-  void set_subnet_prefix_length(uint32_t value);
+  // string end_addr = 12;
+  void clear_end_addr();
+  const std::string& end_addr() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_end_addr(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_end_addr();
+  PROTOBUF_NODISCARD std::string* release_end_addr();
+  void set_allocated_end_addr(std::string* end_addr);
   private:
-  uint32_t _internal_subnet_prefix_length() const;
-  void _internal_set_subnet_prefix_length(uint32_t value);
+  const std::string& _internal_end_addr() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_end_addr(const std::string& value);
+  std::string* _internal_mutable_end_addr();
   public:
 
   // bool v6 = 9;
@@ -1783,16 +1792,190 @@ class Dhcpd final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::MapField<
-        Dhcpd_FixedClientsEntry_DoNotUse,
+        Dhcpd_HostsEntry_DoNotUse,
         std::string, std::string,
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> fixed_clients_;
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> hosts_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr network_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr begin_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr end_;
-    uint32_t subnet_prefix_length_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr address_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr netmask_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr start_addr_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr end_addr_;
     bool v6_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_ops_2drouter_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Dns final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Dns) */ {
+ public:
+  inline Dns() : Dns(nullptr) {}
+  ~Dns() override;
+  explicit PROTOBUF_CONSTEXPR Dns(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Dns(const Dns& from);
+  Dns(Dns&& from) noexcept
+    : Dns() {
+    *this = ::std::move(from);
+  }
+
+  inline Dns& operator=(const Dns& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Dns& operator=(Dns&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Dns& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Dns* internal_default_instance() {
+    return reinterpret_cast<const Dns*>(
+               &_Dns_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(Dns& a, Dns& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Dns* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Dns* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Dns* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Dns>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Dns& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const Dns& from) {
+    Dns::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Dns* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "palm.ops.router.v1.Dns";
+  }
+  protected:
+  explicit Dns(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kServersFieldNumber = 1,
+    kSecFieldNumber = 2,
+  };
+  // repeated string servers = 1;
+  int servers_size() const;
+  private:
+  int _internal_servers_size() const;
+  public:
+  void clear_servers();
+  const std::string& servers(int index) const;
+  std::string* mutable_servers(int index);
+  void set_servers(int index, const std::string& value);
+  void set_servers(int index, std::string&& value);
+  void set_servers(int index, const char* value);
+  void set_servers(int index, const char* value, size_t size);
+  std::string* add_servers();
+  void add_servers(const std::string& value);
+  void add_servers(std::string&& value);
+  void add_servers(const char* value);
+  void add_servers(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& servers() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_servers();
+  private:
+  const std::string& _internal_servers(int index) const;
+  std::string* _internal_add_servers();
+  public:
+
+  // bool sec = 2;
+  void clear_sec();
+  bool sec() const;
+  void set_sec(bool value);
+  private:
+  bool _internal_sec() const;
+  void _internal_set_sec(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Dns)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> servers_;
+    bool sec_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -1874,7 +2057,7 @@ class Profile final :
                &_Profile_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    12;
 
   friend void swap(Profile& a, Profile& b) {
     a.Swap(&b);
@@ -1952,8 +2135,9 @@ class Profile final :
   enum : int {
     kWanFieldNumber = 11,
     kAdministratorFieldNumber = 1,
-    kLanFieldNumber = 12,
-    kDmzFieldNumber = 13,
+    kLanFieldNumber = 21,
+    kDmzFieldNumber = 22,
+    kDnsFieldNumber = 29,
   };
   // map<string, .palm.ops.router.v1.Wan> wan = 11;
   int wan_size() const;
@@ -1990,7 +2174,7 @@ class Profile final :
       ::palm::ops::router::v1::Administrator* administrator);
   ::palm::ops::router::v1::Administrator* unsafe_arena_release_administrator();
 
-  // .palm.ops.router.v1.Dhcpd lan = 12;
+  // .palm.ops.router.v1.Dhcpd lan = 21;
   bool has_lan() const;
   private:
   bool _internal_has_lan() const;
@@ -2008,7 +2192,7 @@ class Profile final :
       ::palm::ops::router::v1::Dhcpd* lan);
   ::palm::ops::router::v1::Dhcpd* unsafe_arena_release_lan();
 
-  // optional .palm.ops.router.v1.Dhcpd dmz = 13;
+  // optional .palm.ops.router.v1.Dhcpd dmz = 22;
   bool has_dmz() const;
   private:
   bool _internal_has_dmz() const;
@@ -2025,6 +2209,24 @@ class Profile final :
   void unsafe_arena_set_allocated_dmz(
       ::palm::ops::router::v1::Dhcpd* dmz);
   ::palm::ops::router::v1::Dhcpd* unsafe_arena_release_dmz();
+
+  // .palm.ops.router.v1.Dns dns = 29;
+  bool has_dns() const;
+  private:
+  bool _internal_has_dns() const;
+  public:
+  void clear_dns();
+  const ::palm::ops::router::v1::Dns& dns() const;
+  PROTOBUF_NODISCARD ::palm::ops::router::v1::Dns* release_dns();
+  ::palm::ops::router::v1::Dns* mutable_dns();
+  void set_allocated_dns(::palm::ops::router::v1::Dns* dns);
+  private:
+  const ::palm::ops::router::v1::Dns& _internal_dns() const;
+  ::palm::ops::router::v1::Dns* _internal_mutable_dns();
+  public:
+  void unsafe_arena_set_allocated_dns(
+      ::palm::ops::router::v1::Dns* dns);
+  ::palm::ops::router::v1::Dns* unsafe_arena_release_dns();
 
   // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Profile)
  private:
@@ -2044,6 +2246,7 @@ class Profile final :
     ::palm::ops::router::v1::Administrator* administrator_;
     ::palm::ops::router::v1::Dhcpd* lan_;
     ::palm::ops::router::v1::Dhcpd* dmz_;
+    ::palm::ops::router::v1::Dns* dns_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_ops_2drouter_2eproto;
@@ -2098,7 +2301,7 @@ class Status final :
                &_Status_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    13;
 
   friend void swap(Status& a, Status& b) {
     a.Swap(&b);
@@ -3200,74 +3403,104 @@ inline void Dhcpd::set_allocated_device(std::string* device) {
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Dhcpd.device)
 }
 
-// string network = 2;
-inline void Dhcpd::clear_network() {
-  _impl_.network_.ClearToEmpty();
+// string address = 2;
+inline void Dhcpd::clear_address() {
+  _impl_.address_.ClearToEmpty();
 }
-inline const std::string& Dhcpd::network() const {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Dhcpd.network)
-  return _internal_network();
+inline const std::string& Dhcpd::address() const {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Dhcpd.address)
+  return _internal_address();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void Dhcpd::set_network(ArgT0&& arg0, ArgT... args) {
+void Dhcpd::set_address(ArgT0&& arg0, ArgT... args) {
  
- _impl_.network_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Dhcpd.network)
+ _impl_.address_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Dhcpd.address)
 }
-inline std::string* Dhcpd::mutable_network() {
-  std::string* _s = _internal_mutable_network();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Dhcpd.network)
+inline std::string* Dhcpd::mutable_address() {
+  std::string* _s = _internal_mutable_address();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Dhcpd.address)
   return _s;
 }
-inline const std::string& Dhcpd::_internal_network() const {
-  return _impl_.network_.Get();
+inline const std::string& Dhcpd::_internal_address() const {
+  return _impl_.address_.Get();
 }
-inline void Dhcpd::_internal_set_network(const std::string& value) {
+inline void Dhcpd::_internal_set_address(const std::string& value) {
   
-  _impl_.network_.Set(value, GetArenaForAllocation());
+  _impl_.address_.Set(value, GetArenaForAllocation());
 }
-inline std::string* Dhcpd::_internal_mutable_network() {
+inline std::string* Dhcpd::_internal_mutable_address() {
   
-  return _impl_.network_.Mutable(GetArenaForAllocation());
+  return _impl_.address_.Mutable(GetArenaForAllocation());
 }
-inline std::string* Dhcpd::release_network() {
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Dhcpd.network)
-  return _impl_.network_.Release();
+inline std::string* Dhcpd::release_address() {
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Dhcpd.address)
+  return _impl_.address_.Release();
 }
-inline void Dhcpd::set_allocated_network(std::string* network) {
-  if (network != nullptr) {
+inline void Dhcpd::set_allocated_address(std::string* address) {
+  if (address != nullptr) {
     
   } else {
     
   }
-  _impl_.network_.SetAllocated(network, GetArenaForAllocation());
+  _impl_.address_.SetAllocated(address, GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.network_.IsDefault()) {
-    _impl_.network_.Set("", GetArenaForAllocation());
+  if (_impl_.address_.IsDefault()) {
+    _impl_.address_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Dhcpd.network)
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Dhcpd.address)
 }
 
-// uint32 subnet_prefix_length = 3;
-inline void Dhcpd::clear_subnet_prefix_length() {
-  _impl_.subnet_prefix_length_ = 0u;
+// string netmask = 3;
+inline void Dhcpd::clear_netmask() {
+  _impl_.netmask_.ClearToEmpty();
 }
-inline uint32_t Dhcpd::_internal_subnet_prefix_length() const {
-  return _impl_.subnet_prefix_length_;
+inline const std::string& Dhcpd::netmask() const {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Dhcpd.netmask)
+  return _internal_netmask();
 }
-inline uint32_t Dhcpd::subnet_prefix_length() const {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Dhcpd.subnet_prefix_length)
-  return _internal_subnet_prefix_length();
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Dhcpd::set_netmask(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.netmask_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Dhcpd.netmask)
 }
-inline void Dhcpd::_internal_set_subnet_prefix_length(uint32_t value) {
+inline std::string* Dhcpd::mutable_netmask() {
+  std::string* _s = _internal_mutable_netmask();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Dhcpd.netmask)
+  return _s;
+}
+inline const std::string& Dhcpd::_internal_netmask() const {
+  return _impl_.netmask_.Get();
+}
+inline void Dhcpd::_internal_set_netmask(const std::string& value) {
   
-  _impl_.subnet_prefix_length_ = value;
+  _impl_.netmask_.Set(value, GetArenaForAllocation());
 }
-inline void Dhcpd::set_subnet_prefix_length(uint32_t value) {
-  _internal_set_subnet_prefix_length(value);
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Dhcpd.subnet_prefix_length)
+inline std::string* Dhcpd::_internal_mutable_netmask() {
+  
+  return _impl_.netmask_.Mutable(GetArenaForAllocation());
+}
+inline std::string* Dhcpd::release_netmask() {
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Dhcpd.netmask)
+  return _impl_.netmask_.Release();
+}
+inline void Dhcpd::set_allocated_netmask(std::string* netmask) {
+  if (netmask != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.netmask_.SetAllocated(netmask, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.netmask_.IsDefault()) {
+    _impl_.netmask_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Dhcpd.netmask)
 }
 
 // bool v6 = 9;
@@ -3290,133 +3523,232 @@ inline void Dhcpd::set_v6(bool value) {
   // @@protoc_insertion_point(field_set:palm.ops.router.v1.Dhcpd.v6)
 }
 
-// string begin = 11;
-inline void Dhcpd::clear_begin() {
-  _impl_.begin_.ClearToEmpty();
+// string start_addr = 11;
+inline void Dhcpd::clear_start_addr() {
+  _impl_.start_addr_.ClearToEmpty();
 }
-inline const std::string& Dhcpd::begin() const {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Dhcpd.begin)
-  return _internal_begin();
+inline const std::string& Dhcpd::start_addr() const {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Dhcpd.start_addr)
+  return _internal_start_addr();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void Dhcpd::set_begin(ArgT0&& arg0, ArgT... args) {
+void Dhcpd::set_start_addr(ArgT0&& arg0, ArgT... args) {
  
- _impl_.begin_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Dhcpd.begin)
+ _impl_.start_addr_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Dhcpd.start_addr)
 }
-inline std::string* Dhcpd::mutable_begin() {
-  std::string* _s = _internal_mutable_begin();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Dhcpd.begin)
+inline std::string* Dhcpd::mutable_start_addr() {
+  std::string* _s = _internal_mutable_start_addr();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Dhcpd.start_addr)
   return _s;
 }
-inline const std::string& Dhcpd::_internal_begin() const {
-  return _impl_.begin_.Get();
+inline const std::string& Dhcpd::_internal_start_addr() const {
+  return _impl_.start_addr_.Get();
 }
-inline void Dhcpd::_internal_set_begin(const std::string& value) {
+inline void Dhcpd::_internal_set_start_addr(const std::string& value) {
   
-  _impl_.begin_.Set(value, GetArenaForAllocation());
+  _impl_.start_addr_.Set(value, GetArenaForAllocation());
 }
-inline std::string* Dhcpd::_internal_mutable_begin() {
+inline std::string* Dhcpd::_internal_mutable_start_addr() {
   
-  return _impl_.begin_.Mutable(GetArenaForAllocation());
+  return _impl_.start_addr_.Mutable(GetArenaForAllocation());
 }
-inline std::string* Dhcpd::release_begin() {
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Dhcpd.begin)
-  return _impl_.begin_.Release();
+inline std::string* Dhcpd::release_start_addr() {
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Dhcpd.start_addr)
+  return _impl_.start_addr_.Release();
 }
-inline void Dhcpd::set_allocated_begin(std::string* begin) {
-  if (begin != nullptr) {
+inline void Dhcpd::set_allocated_start_addr(std::string* start_addr) {
+  if (start_addr != nullptr) {
     
   } else {
     
   }
-  _impl_.begin_.SetAllocated(begin, GetArenaForAllocation());
+  _impl_.start_addr_.SetAllocated(start_addr, GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.begin_.IsDefault()) {
-    _impl_.begin_.Set("", GetArenaForAllocation());
+  if (_impl_.start_addr_.IsDefault()) {
+    _impl_.start_addr_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Dhcpd.begin)
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Dhcpd.start_addr)
 }
 
-// string end = 12;
-inline void Dhcpd::clear_end() {
-  _impl_.end_.ClearToEmpty();
+// string end_addr = 12;
+inline void Dhcpd::clear_end_addr() {
+  _impl_.end_addr_.ClearToEmpty();
 }
-inline const std::string& Dhcpd::end() const {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Dhcpd.end)
-  return _internal_end();
+inline const std::string& Dhcpd::end_addr() const {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Dhcpd.end_addr)
+  return _internal_end_addr();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void Dhcpd::set_end(ArgT0&& arg0, ArgT... args) {
+void Dhcpd::set_end_addr(ArgT0&& arg0, ArgT... args) {
  
- _impl_.end_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Dhcpd.end)
+ _impl_.end_addr_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Dhcpd.end_addr)
 }
-inline std::string* Dhcpd::mutable_end() {
-  std::string* _s = _internal_mutable_end();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Dhcpd.end)
+inline std::string* Dhcpd::mutable_end_addr() {
+  std::string* _s = _internal_mutable_end_addr();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Dhcpd.end_addr)
   return _s;
 }
-inline const std::string& Dhcpd::_internal_end() const {
-  return _impl_.end_.Get();
+inline const std::string& Dhcpd::_internal_end_addr() const {
+  return _impl_.end_addr_.Get();
 }
-inline void Dhcpd::_internal_set_end(const std::string& value) {
+inline void Dhcpd::_internal_set_end_addr(const std::string& value) {
   
-  _impl_.end_.Set(value, GetArenaForAllocation());
+  _impl_.end_addr_.Set(value, GetArenaForAllocation());
 }
-inline std::string* Dhcpd::_internal_mutable_end() {
+inline std::string* Dhcpd::_internal_mutable_end_addr() {
   
-  return _impl_.end_.Mutable(GetArenaForAllocation());
+  return _impl_.end_addr_.Mutable(GetArenaForAllocation());
 }
-inline std::string* Dhcpd::release_end() {
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Dhcpd.end)
-  return _impl_.end_.Release();
+inline std::string* Dhcpd::release_end_addr() {
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Dhcpd.end_addr)
+  return _impl_.end_addr_.Release();
 }
-inline void Dhcpd::set_allocated_end(std::string* end) {
-  if (end != nullptr) {
+inline void Dhcpd::set_allocated_end_addr(std::string* end_addr) {
+  if (end_addr != nullptr) {
     
   } else {
     
   }
-  _impl_.end_.SetAllocated(end, GetArenaForAllocation());
+  _impl_.end_addr_.SetAllocated(end_addr, GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.end_.IsDefault()) {
-    _impl_.end_.Set("", GetArenaForAllocation());
+  if (_impl_.end_addr_.IsDefault()) {
+    _impl_.end_addr_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Dhcpd.end)
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Dhcpd.end_addr)
 }
 
-// map<string, string> fixed_clients = 19;
-inline int Dhcpd::_internal_fixed_clients_size() const {
-  return _impl_.fixed_clients_.size();
+// map<string, string> hosts = 19;
+inline int Dhcpd::_internal_hosts_size() const {
+  return _impl_.hosts_.size();
 }
-inline int Dhcpd::fixed_clients_size() const {
-  return _internal_fixed_clients_size();
+inline int Dhcpd::hosts_size() const {
+  return _internal_hosts_size();
 }
-inline void Dhcpd::clear_fixed_clients() {
-  _impl_.fixed_clients_.Clear();
-}
-inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
-Dhcpd::_internal_fixed_clients() const {
-  return _impl_.fixed_clients_.GetMap();
+inline void Dhcpd::clear_hosts() {
+  _impl_.hosts_.Clear();
 }
 inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
-Dhcpd::fixed_clients() const {
-  // @@protoc_insertion_point(field_map:palm.ops.router.v1.Dhcpd.fixed_clients)
-  return _internal_fixed_clients();
+Dhcpd::_internal_hosts() const {
+  return _impl_.hosts_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+Dhcpd::hosts() const {
+  // @@protoc_insertion_point(field_map:palm.ops.router.v1.Dhcpd.hosts)
+  return _internal_hosts();
 }
 inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
-Dhcpd::_internal_mutable_fixed_clients() {
-  return _impl_.fixed_clients_.MutableMap();
+Dhcpd::_internal_mutable_hosts() {
+  return _impl_.hosts_.MutableMap();
 }
 inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
-Dhcpd::mutable_fixed_clients() {
-  // @@protoc_insertion_point(field_mutable_map:palm.ops.router.v1.Dhcpd.fixed_clients)
-  return _internal_mutable_fixed_clients();
+Dhcpd::mutable_hosts() {
+  // @@protoc_insertion_point(field_mutable_map:palm.ops.router.v1.Dhcpd.hosts)
+  return _internal_mutable_hosts();
+}
+
+// -------------------------------------------------------------------
+
+// Dns
+
+// repeated string servers = 1;
+inline int Dns::_internal_servers_size() const {
+  return _impl_.servers_.size();
+}
+inline int Dns::servers_size() const {
+  return _internal_servers_size();
+}
+inline void Dns::clear_servers() {
+  _impl_.servers_.Clear();
+}
+inline std::string* Dns::add_servers() {
+  std::string* _s = _internal_add_servers();
+  // @@protoc_insertion_point(field_add_mutable:palm.ops.router.v1.Dns.servers)
+  return _s;
+}
+inline const std::string& Dns::_internal_servers(int index) const {
+  return _impl_.servers_.Get(index);
+}
+inline const std::string& Dns::servers(int index) const {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Dns.servers)
+  return _internal_servers(index);
+}
+inline std::string* Dns::mutable_servers(int index) {
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Dns.servers)
+  return _impl_.servers_.Mutable(index);
+}
+inline void Dns::set_servers(int index, const std::string& value) {
+  _impl_.servers_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Dns.servers)
+}
+inline void Dns::set_servers(int index, std::string&& value) {
+  _impl_.servers_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Dns.servers)
+}
+inline void Dns::set_servers(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.servers_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:palm.ops.router.v1.Dns.servers)
+}
+inline void Dns::set_servers(int index, const char* value, size_t size) {
+  _impl_.servers_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:palm.ops.router.v1.Dns.servers)
+}
+inline std::string* Dns::_internal_add_servers() {
+  return _impl_.servers_.Add();
+}
+inline void Dns::add_servers(const std::string& value) {
+  _impl_.servers_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:palm.ops.router.v1.Dns.servers)
+}
+inline void Dns::add_servers(std::string&& value) {
+  _impl_.servers_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:palm.ops.router.v1.Dns.servers)
+}
+inline void Dns::add_servers(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.servers_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:palm.ops.router.v1.Dns.servers)
+}
+inline void Dns::add_servers(const char* value, size_t size) {
+  _impl_.servers_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:palm.ops.router.v1.Dns.servers)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+Dns::servers() const {
+  // @@protoc_insertion_point(field_list:palm.ops.router.v1.Dns.servers)
+  return _impl_.servers_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+Dns::mutable_servers() {
+  // @@protoc_insertion_point(field_mutable_list:palm.ops.router.v1.Dns.servers)
+  return &_impl_.servers_;
+}
+
+// bool sec = 2;
+inline void Dns::clear_sec() {
+  _impl_.sec_ = false;
+}
+inline bool Dns::_internal_sec() const {
+  return _impl_.sec_;
+}
+inline bool Dns::sec() const {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Dns.sec)
+  return _internal_sec();
+}
+inline void Dns::_internal_set_sec(bool value) {
+  
+  _impl_.sec_ = value;
+}
+inline void Dns::set_sec(bool value) {
+  _internal_set_sec(value);
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Dns.sec)
 }
 
 // -------------------------------------------------------------------
@@ -3544,7 +3876,7 @@ Profile::mutable_wan() {
   return _internal_mutable_wan();
 }
 
-// .palm.ops.router.v1.Dhcpd lan = 12;
+// .palm.ops.router.v1.Dhcpd lan = 21;
 inline bool Profile::_internal_has_lan() const {
   return this != internal_default_instance() && _impl_.lan_ != nullptr;
 }
@@ -3634,7 +3966,7 @@ inline void Profile::set_allocated_lan(::palm::ops::router::v1::Dhcpd* lan) {
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.lan)
 }
 
-// optional .palm.ops.router.v1.Dhcpd dmz = 13;
+// optional .palm.ops.router.v1.Dhcpd dmz = 22;
 inline bool Profile::_internal_has_dmz() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.dmz_ != nullptr);
@@ -3722,6 +4054,96 @@ inline void Profile::set_allocated_dmz(::palm::ops::router::v1::Dhcpd* dmz) {
   }
   _impl_.dmz_ = dmz;
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.dmz)
+}
+
+// .palm.ops.router.v1.Dns dns = 29;
+inline bool Profile::_internal_has_dns() const {
+  return this != internal_default_instance() && _impl_.dns_ != nullptr;
+}
+inline bool Profile::has_dns() const {
+  return _internal_has_dns();
+}
+inline void Profile::clear_dns() {
+  if (GetArenaForAllocation() == nullptr && _impl_.dns_ != nullptr) {
+    delete _impl_.dns_;
+  }
+  _impl_.dns_ = nullptr;
+}
+inline const ::palm::ops::router::v1::Dns& Profile::_internal_dns() const {
+  const ::palm::ops::router::v1::Dns* p = _impl_.dns_;
+  return p != nullptr ? *p : reinterpret_cast<const ::palm::ops::router::v1::Dns&>(
+      ::palm::ops::router::v1::_Dns_default_instance_);
+}
+inline const ::palm::ops::router::v1::Dns& Profile::dns() const {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.dns)
+  return _internal_dns();
+}
+inline void Profile::unsafe_arena_set_allocated_dns(
+    ::palm::ops::router::v1::Dns* dns) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.dns_);
+  }
+  _impl_.dns_ = dns;
+  if (dns) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.ops.router.v1.Profile.dns)
+}
+inline ::palm::ops::router::v1::Dns* Profile::release_dns() {
+  
+  ::palm::ops::router::v1::Dns* temp = _impl_.dns_;
+  _impl_.dns_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::palm::ops::router::v1::Dns* Profile::unsafe_arena_release_dns() {
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.dns)
+  
+  ::palm::ops::router::v1::Dns* temp = _impl_.dns_;
+  _impl_.dns_ = nullptr;
+  return temp;
+}
+inline ::palm::ops::router::v1::Dns* Profile::_internal_mutable_dns() {
+  
+  if (_impl_.dns_ == nullptr) {
+    auto* p = CreateMaybeMessage<::palm::ops::router::v1::Dns>(GetArenaForAllocation());
+    _impl_.dns_ = p;
+  }
+  return _impl_.dns_;
+}
+inline ::palm::ops::router::v1::Dns* Profile::mutable_dns() {
+  ::palm::ops::router::v1::Dns* _msg = _internal_mutable_dns();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.dns)
+  return _msg;
+}
+inline void Profile::set_allocated_dns(::palm::ops::router::v1::Dns* dns) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.dns_;
+  }
+  if (dns) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(dns);
+    if (message_arena != submessage_arena) {
+      dns = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, dns, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.dns_ = dns;
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.dns)
 }
 
 // -------------------------------------------------------------------
@@ -3946,6 +4368,8 @@ inline void Status::set_allocated_created_at(::PROTOBUF_NAMESPACE_ID::Timestamp*
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
