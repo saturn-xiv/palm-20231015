@@ -119,22 +119,6 @@ RUN zsh -c "source $HOME/.zshrc \
 RUN git clone https://github.com/microsoft/vcpkg.git $HOME/local/vcpkg
 RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
     && echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.zshrc
-    
-# https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.54.1"
-RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
-RUN apt install -y libssl-dev
-RUN zsh -c "source $HOME/.zshrc \
-    && mkdir -pv $HOME/build/grpc \
-    && cd $HOME/build/grpc \
-    && cmake -DCMAKE_BUILD_TYPE=Release \
-        -DgRPC_INSTALL=ON \
-        -DgRPC_SSL_PROVIDER=package \
-        -DgRPC_BUILD_TESTS=OFF \
-        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
-    && make \
-    && make install \
-    && make clean"
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 

@@ -123,21 +123,6 @@ RUN git clone https://github.com/microsoft/vcpkg.git $HOME/local/vcpkg
 RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
     && echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.zshrc
 
-# https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.54.1"
-RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
-RUN apt install -y libssl-dev
-RUN zsh -c "source $HOME/.zshrc \
-    && mkdir -pv $HOME/build/grpc \
-    && cd $HOME/build/grpc \
-    && cmake -DCMAKE_BUILD_TYPE=Release \
-        -DgRPC_INSTALL=ON \
-        -DgRPC_SSL_PROVIDER=package \
-        -DgRPC_BUILD_TESTS=OFF \
-        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
-    && make \
-    && make install"
-
 # https://github.com/rui314/mold
 RUN git clone -b v1.11.0 https://github.com/rui314/mold.git $HOME/downloads/mold
 RUN apt install -y libssl-dev libxxhash-dev zlib1g-dev \
