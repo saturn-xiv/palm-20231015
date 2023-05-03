@@ -43,7 +43,7 @@ build_gnu() {
 }
 
 build_musl() {
-    local target=$WORKSPACE/build/$4-$3
+    local target=$WORKSPACE/build/$1-$UBUNTU_CODENAME-$4-$3
     mkdir -p $target
     cd $target
     CXX=$2-g++ cmake -DCMAKE_BUILD_TYPE=$3 $WORKSPACE/$1
