@@ -12,7 +12,7 @@ project(
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_EXE_LINKER_FLAGS "-static -s -Wl,--build-id=sha1")
+set(CMAKE_EXE_LINKER_FLAGS "-static -Wl,--build-id=sha1")
 
 # --------------------------------------------------------
 
@@ -51,6 +51,7 @@ FetchContent_MakeAvailable(tomlplusplus inja spdlog argparse)
 file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.cpp")
 
 add_executable(coconut ${SOURCE_LIST})
+set_target_properties(coconut PROPERTIES LINK_FLAGS_RELEASE -s)
 
 target_include_directories(coconut PUBLIC
   ${PROJECT_SOURCE_DIR}/include

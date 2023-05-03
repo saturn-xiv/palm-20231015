@@ -36,8 +36,8 @@ build_package() {
         "sail[core,png]"
 
         "jwt-cpp"
-        "zeromq[core,draft]"
-        "cppzmq[draft]"
+        # "zeromq[core,draft]"
+        # "cppzmq[draft]"
         "paho-mqttpp3[ssl]"
         # "amqpcpp" 
         "libevent"
@@ -115,7 +115,7 @@ $VCPKG_HOME/vcpkg upgrade --no-dry-run
 declare -a triplets=(
     "x64-linux"
     "arm64-linux"
-    "riscv64-linux"
+    # "riscv64-linux"
 )
 for t in "${triplets[@]}"
 do

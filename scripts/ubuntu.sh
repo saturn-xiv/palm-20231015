@@ -29,7 +29,8 @@ build_gnu() {
     mkdir -p $target
     cd $target
     
-    cmake $WORKSPACE -DCMAKE_BUILD_TYPE=$3 -DBoost_NO_WARN_NEW_VERSIONS=1 $THRIFT_FLAGS \
+    cmake $WORKSPACE -DCMAKE_BUILD_TYPE=$2 -DBUILD_TESTING=OFF -DBoost_NO_WARN_NEW_VERSIONS=1 $THRIFT_FLAGS \
+        -DCASBIN_BUILD_TEST=OFF -DCASBIN_BUILD_BENCHMARK=OFF -DCASBIN_BUILD_PYTHON_BINDINGS=OFF -DCASBIN_INSTALL=OFF \
         -DMAILIO_BUILD_EXAMPLES=OFF -DMAILIO_BUILD_DOCUMENTATION=OFF -DMAILIO_BUILD_SHARED_LIBRARY=OFF -DMAILIO_BUILD_TESTS=OFF \
         -DVCPKG_HOST_TRIPLET=x64-linux -DVCPKG_TARGET_TRIPLET=$1 -DCMAKE_TOOLCHAIN_FILE=$HOME/local/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$3.cmake
     make
@@ -42,7 +43,7 @@ build_gnu() {
 }
 
 build_musl() {
-    local target=$WORKSPACE/build/$1-$2
+    local target=$WORKSPACE/build/$4-$3
     mkdir -p $target
     cd $target
     CXX=$2-g++ cmake -DCMAKE_BUILD_TYPE=$3 $WORKSPACE/$1
@@ -165,6 +166,11 @@ mkdir x86_64 aarch64 riscv64 armv7l
 
 # -----------------------------------------------------------------------------
 
+build_gnu x64-linux Debug x86_64
+build_gnu x64-linux Release x86_64
+build_gnu arm64-linux Release aarch64
+# build_gnu riscv64-linux Release riscv64
+
 if [[ $(uname -p) == "aarch64" ]]
 then
     build_loquat aarch64 Debug
@@ -177,16 +183,13 @@ then
     build_loquat x86_64 Release
 fi
 
+
 build_musl coconut x86_64-linux-musl Debug x86_64
 build_musl coconut x86_64-linux-musl Release x86_64
 build_musl coconut aarch64-linux-musl Release aarch64
 build_musl coconut riscv64-linux-musl Release riscv64
 build_musl coconut armv7l-linux-musleabihf Release armv7l
 
-build_gnu x64-linux Debug x86_64
-build_gnu x64-linux Release x86_64
-build_gnu arm64-linux Release aarch64
-build_gnu riscv64-linux Release riscv64
 
 # -----------------------------------------------------------------------------
 

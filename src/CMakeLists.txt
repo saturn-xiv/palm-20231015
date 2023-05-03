@@ -3,47 +3,88 @@ file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.cpp")
 
 add_library(palm STATIC ${SOURCE_LIST})
 
-FetchContent_Declare(spdlog
-  GIT_REPOSITORY  "https://github.com/gabime/spdlog.git"
-  GIT_TAG         "v1.11.0"
-)
-FetchContent_Declare(tomlplusplus
-  GIT_REPOSITORY  "https://github.com/marzer/tomlplusplus.git"
-  GIT_TAG         "v3.3.0"
-)
-FetchContent_Declare(nlohmann_json
-  GIT_REPOSITORY  "https://github.com/nlohmann/json.git"
-  GIT_TAG         "v3.11.2"
-)
-FetchContent_Declare(httplib
-  GIT_REPOSITORY  "https://github.com/yhirose/cpp-httplib.git"
-  GIT_TAG         "v0.12.2"
-)
-FetchContent_Declare(inja 
-  GIT_REPOSITORY  "https://github.com/pantor/inja.git"
-  GIT_TAG         "v3.4.0"
-)
-FetchContent_Declare(argparse
-  GIT_REPOSITORY  "https://github.com/p-ranav/argparse.git"
-  GIT_TAG         "557948f"
-)
+find_package(OpenSSL REQUIRED)
+find_package(Poco REQUIRED Util)
+find_package(PahoMqttCpp CONFIG REQUIRED)
+find_package(rabbitmq-c CONFIG REQUIRED)
+find_package(cpr CONFIG REQUIRED)
+find_package(aws-cpp-sdk-s3 CONFIG REQUIRED)
+find_package(aws-cpp-sdk-sqs CONFIG REQUIRED)
+find_package(Libssh2 CONFIG REQUIRED)
+find_package(LibLZMA REQUIRED)
+find_package(Libevent CONFIG REQUIRED)
+find_package(unofficial-git2 CONFIG REQUIRED)
+find_package(SailC++ CONFIG REQUIRED)
+find_package(pugixml CONFIG REQUIRED)
+find_package(tomlplusplus CONFIG REQUIRED)
+find_package(yaml-cpp CONFIG REQUIRED)
+find_package(nlohmann_json CONFIG REQUIRED)
+find_package(mstch CONFIG REQUIRED)
+find_package(inja CONFIG REQUIRED)
+find_package(PostgreSQL REQUIRED)
+find_package(libpqxx CONFIG REQUIRED)
+find_package(unofficial-libmariadb CONFIG REQUIRED)
+find_package(unofficial-sqlite3 CONFIG REQUIRED)
+find_package(redis++ CONFIG REQUIRED)
+find_package(Flatbuffers CONFIG REQUIRED)
+find_package(spdlog CONFIG REQUIRED)
+find_package(argparse CONFIG REQUIRED)
+find_package(magic_enum CONFIG REQUIRED)
+find_package(Lua REQUIRED)
 
-FetchContent_MakeAvailable(spdlog argparse tomlplusplus httplib inja nlohmann_json)
+find_path(CPPCODEC_INCLUDE_DIRS "cppcodec/base32_crockford.hpp")
+find_path(CPP_HTTPLIB_INCLUDE_DIRS "httplib.h")
+
+find_library(MINIO_LIBRARY miniocpp)
+find_library(CURLPP_LIBRARY curlpp)
+find_library(INIH_LIBRARY inih)
+
+FetchContent_Declare(casbin
+  GIT_REPOSITORY    "https://github.com/casbin/casbin-cpp.git"
+  GIT_TAG           "v1.52.3"
+)
+FetchContent_MakeAvailable(casbin)
+
+FetchContent_Declare(mailio
+  GIT_REPOSITORY    "https://github.com/karastojko/mailio.git"
+  GIT_TAG           "5a28a0f"
+)
+FetchContent_MakeAvailable(mailio)
 
 target_include_directories(palm PUBLIC
   ${PROJECT_SOURCE_DIR}/include
 
-  ${spdlog_SOURCE_DIR}/include
-  ${argparse_SOURCE_DIR}/include
-  ${httplib_SOURCE_DIR}
-  ${tomlplusplus_SOURCE_DIR}/include
-  ${inja_SOURCE_DIR}/single_include
-  ${inja_SOURCE_DIR}/third_party/include
+  ${CPPCODEC_INCLUDE_DIRS}
+  ${CPP_HTTPLIB_INCLUDE_DIRS}
+  ${LUA_INCLUDE_DIR}
+  
+  ${casbin_SOURCE_DIR}/include
+  ${mailio_SOURCE_DIR}/include
 )
 
-target_link_libraries(palm PUBLIC 
-  bamboo gourd
-  nlohmann_json::nlohmann_json
+target_link_libraries(palm PUBLIC bamboo gourd
+  casbin mailio
+  
+  OpenSSL::SSL OpenSSL::Crypto
+  Poco::Util
+
+  spdlog::spdlog argparse::argparse magic_enum::magic_enum
+
+  libevent::core libevent::extra libevent::pthreads
+  Libssh2::libssh2 unofficial::git2::git2 LibLZMA::LibLZMA
+  ${LUA_LIBRARIES}
+
+  PahoMqttCpp::paho-mqttpp3-static rabbitmq::rabbitmq-static
+    
+  aws-cpp-sdk-s3 aws-cpp-sdk-sqs 
+  ${MINIO_LIBRARY} CURL::libcurl ${CURLPP_LIBRARY} ${INIH_LIBRARY}
+  cpr::cpr SAIL::sail-c++
+  pugixml::static tomlplusplus::tomlplusplus yaml-cpp nlohmann_json::nlohmann_json
+  mstch::mstch pantor::inja
+  PostgreSQL::PostgreSQL libpqxx::pqxx unofficial::libmariadb unofficial::sqlite3::sqlite3 
+  redis++::redis++_static 
+
+  flatbuffers::flatbuffers
 )
 
 source_group(

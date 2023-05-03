@@ -51,7 +51,7 @@ function generate_loquat() {
         rm -r $cpp_target
     fi
     mkdir -p $cpp_target
-    thrift -out $cpp_target --gen cpp -r $WORKSPACE/protocols/loquat.thrift
+    thrift -out $cpp_target --gen cpp:no_skeleton -r $WORKSPACE/protocols/loquat.thrift
 
     echo 'generate code for loquat-java'
     thrift -out $WORKSPACE/tmp/protocols/java --gen java -r $WORKSPACE/protocols/loquat.thrift    
