@@ -106,6 +106,8 @@ build_package() {
 }
 
 cd $VCPKG_HOME
+git checkout master
+git pull
 git checkout "2023.04.15"
 # rm -rf installed packages buildtrees
 $VCPKG_HOME/vcpkg upgrade --no-dry-run

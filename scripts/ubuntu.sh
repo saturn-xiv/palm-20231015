@@ -9,7 +9,7 @@ export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
 export BUILD_TIME=$(date -u -R)
 export PACKAGE_NAME=palm-$UBUNTU_CODENAME-$GIT_VERSION
 export TARGET_DIR=$PWD/tmp/$PACKAGE_NAME
-export PROTOBUF_ROOT=$HOME/.local
+export THRIFT_FLAGS="-DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF"
 
 # -----------------------------------------------------------------------------
 
@@ -23,25 +23,15 @@ build_dashboard() {
     cp -r build $TARGET_DIR/$1
 }
 
-install_deb() {
-    apt-get -y install libc6-dev:$1 libudev-dev:$1 libssl-dev:$1 \
-        libpq5:$1 libpq-dev:$1 libmysqlclient-dev:$1 libsqlite3-dev:$1 \
-        libboost-all-dev:$1
-}
-
 build_gnu() {
-    install_deb $1
 
-    local target=$WORKSPACE/build/$UBUNTU_CODENAME-$2-$3
+    local target=$WORKSPACE/build/palm-$UBUNTU_CODENAME-$3-$2
     mkdir -p $target
     cd $target
-    # https://stackoverflow.com/questions/52202453/cross-compiling-grpc-using-cmake
-    # -DgRPC_PROTOBUF_PROVIDER=package -DgRPC_PROTOBUF_PACKAGE_TYPE=MODULE
-    cmake $WORKSPACE \
-        -DABSL_PROPAGATE_CXX_STD=ON \
-        -DgRPC_SSL_PROVIDER=package -DgRPC_PROTOBUF_PROVIDER=module -DProtobuf_PROTOC_EXECUTABLE=$PROTOBUF_ROOT/bin/protoc \
-        -DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF \
-        -DCMAKE_BUILD_TYPE=$3 -DCMAKE_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$2.cmake
+    
+    cmake $WORKSPACE -DCMAKE_BUILD_TYPE=$3 -DBoost_NO_WARN_NEW_VERSIONS=1 $THRIFT_FLAGS \
+        -DMAILIO_BUILD_EXAMPLES=OFF -DMAILIO_BUILD_DOCUMENTATION=OFF -DMAILIO_BUILD_SHARED_LIBRARY=OFF -DMAILIO_BUILD_TESTS=OFF \
+        -DVCPKG_HOST_TRIPLET=x64-linux -DVCPKG_TARGET_TRIPLET=$1 -DCMAKE_TOOLCHAIN_FILE=$HOME/local/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$3.cmake
     make
 
     if [[ $3 == "Release" ]]
@@ -73,8 +63,7 @@ build_loquat() {
     cd $target
     CC=gcc-10 CXX=g++-10 cmake -DCMAKE_BUILD_TYPE=$2 \
         -DABSL_PROPAGATE_CXX_STD=ON -DTINK_USE_SYSTEM_OPENSSL=OFF \
-        -DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF \
-        $WORKSPACE/loquat
+        $THRIFT_FLAGS $WORKSPACE/loquat
     
     make
     cp loquat $TARGET_DIR/bin/$1/
@@ -172,7 +161,7 @@ then
 fi
 mkdir -p $TARGET_DIR/bin
 cd $TARGET_DIR/bin
-mkdir x86_64 aarch64 riscv64gc armv7l
+mkdir x86_64 aarch64 riscv64 armv7l
 
 # -----------------------------------------------------------------------------
 
@@ -188,16 +177,16 @@ then
     build_loquat x86_64 Release
 fi
 
-build_gnu amd64 x86_64 Debug
-build_gnu amd64 x86_64 Release
-build_gnu arm64 aarch64 Release
-# build_gnu riscv64 riscv64gc Release
-# build_gnu armhf armv7l Release
-
 build_musl coconut x86_64-linux-musl Debug x86_64
 build_musl coconut x86_64-linux-musl Release x86_64
 build_musl coconut aarch64-linux-musl Release aarch64
-# build_musl coconut armv7l-linux-musleabihf Release armv7l
+build_musl coconut riscv64-linux-musl Release riscv64
+build_musl coconut armv7l-linux-musleabihf Release armv7l
+
+build_gnu x64-linux Debug x86_64
+build_gnu x64-linux Release x86_64
+build_gnu arm64-linux Release aarch64
+build_gnu riscv64-linux Release riscv64
 
 # -----------------------------------------------------------------------------
 
