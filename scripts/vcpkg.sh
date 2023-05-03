@@ -48,7 +48,7 @@ build_package() {
         "cserialport"
         "libssh2[zlib]"
         # "libharu"
-        "libgit2[core,pcre2,openssl,ssh]"
+        # "libgit2[core,pcre2,openssl,ssh]" # ubuntu
         "abseil[cxx17]"
         # "mailio" # boost asio openssl
         "gtest"
