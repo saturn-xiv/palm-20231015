@@ -82,21 +82,6 @@ export class Wan extends jspb.Message {
   getV6(): boolean;
   setV6(value: boolean): Wan;
 
-  getNatList(): Array<Wan.Nat>;
-  setNatList(value: Array<Wan.Nat>): Wan;
-  clearNatList(): Wan;
-  addNat(value?: Wan.Nat, index?: number): Wan.Nat;
-
-  getInList(): Array<Wan.In>;
-  setInList(value: Array<Wan.In>): Wan;
-  clearInList(): Wan;
-  addIn(value?: Wan.In, index?: number): Wan.In;
-
-  getOutList(): Array<Wan.Out>;
-  setOutList(value: Array<Wan.Out>): Wan;
-  clearOutList(): Wan;
-  addOut(value?: Wan.Out, index?: number): Wan.Out;
-
   getIpCase(): Wan.IpCase;
 
   serializeBinary(): Uint8Array;
@@ -113,9 +98,6 @@ export namespace Wan {
     pb_static?: Wan.Static.AsObject,
     routeMetric: number,
     v6: boolean,
-    natList: Array<Wan.Nat.AsObject>,
-    inList: Array<Wan.In.AsObject>,
-    outList: Array<Wan.Out.AsObject>,
   }
 
   export class Static extends jspb.Message {
@@ -170,51 +152,6 @@ export namespace Wan {
   }
 
   export namespace Dhcp {
-    export type AsObject = {
-    }
-  }
-
-
-  export class Nat extends jspb.Message {
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Nat.AsObject;
-    static toObject(includeInstance: boolean, msg: Nat): Nat.AsObject;
-    static serializeBinaryToWriter(message: Nat, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Nat;
-    static deserializeBinaryFromReader(message: Nat, reader: jspb.BinaryReader): Nat;
-  }
-
-  export namespace Nat {
-    export type AsObject = {
-    }
-  }
-
-
-  export class In extends jspb.Message {
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): In.AsObject;
-    static toObject(includeInstance: boolean, msg: In): In.AsObject;
-    static serializeBinaryToWriter(message: In, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): In;
-    static deserializeBinaryFromReader(message: In, reader: jspb.BinaryReader): In;
-  }
-
-  export namespace In {
-    export type AsObject = {
-    }
-  }
-
-
-  export class Out extends jspb.Message {
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Out.AsObject;
-    static toObject(includeInstance: boolean, msg: Out): Out.AsObject;
-    static serializeBinaryToWriter(message: Out, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Out;
-    static deserializeBinaryFromReader(message: Out, reader: jspb.BinaryReader): Out;
-  }
-
-  export namespace Out {
     export type AsObject = {
     }
   }
@@ -317,6 +254,21 @@ export class Profile extends jspb.Message {
   hasDns(): boolean;
   clearDns(): Profile;
 
+  getInList(): Array<Profile.In>;
+  setInList(value: Array<Profile.In>): Profile;
+  clearInList(): Profile;
+  addIn(value?: Profile.In, index?: number): Profile.In;
+
+  getOutList(): Array<Profile.Out>;
+  setOutList(value: Array<Profile.Out>): Profile;
+  clearOutList(): Profile;
+  addOut(value?: Profile.Out, index?: number): Profile.Out;
+
+  getNatList(): Array<Profile.Nat>;
+  setNatList(value: Array<Profile.Nat>): Profile;
+  clearNatList(): Profile;
+  addNat(value?: Profile.Nat, index?: number): Profile.Nat;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Profile.AsObject;
   static toObject(includeInstance: boolean, msg: Profile): Profile.AsObject;
@@ -332,7 +284,148 @@ export namespace Profile {
     lan?: Dhcpd.AsObject,
     dmz?: Dhcpd.AsObject,
     dns?: Dns.AsObject,
+    inList: Array<Profile.In.AsObject>,
+    outList: Array<Profile.Out.AsObject>,
+    natList: Array<Profile.Nat.AsObject>,
   }
+
+  export class Nat extends jspb.Message {
+    getSource(): Profile.Nat.Source | undefined;
+    setSource(value?: Profile.Nat.Source): Nat;
+    hasSource(): boolean;
+    clearSource(): Nat;
+
+    getDestination(): Profile.Nat.Destination | undefined;
+    setDestination(value?: Profile.Nat.Destination): Nat;
+    hasDestination(): boolean;
+    clearDestination(): Nat;
+
+    getTcp(): boolean;
+    setTcp(value: boolean): Nat;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Nat.AsObject;
+    static toObject(includeInstance: boolean, msg: Nat): Nat.AsObject;
+    static serializeBinaryToWriter(message: Nat, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Nat;
+    static deserializeBinaryFromReader(message: Nat, reader: jspb.BinaryReader): Nat;
+  }
+
+  export namespace Nat {
+    export type AsObject = {
+      source?: Profile.Nat.Source.AsObject,
+      destination?: Profile.Nat.Destination.AsObject,
+      tcp: boolean,
+    }
+
+    export class Source extends jspb.Message {
+      getDevice(): string;
+      setDevice(value: string): Source;
+
+      getIp(): string;
+      setIp(value: string): Source;
+
+      getPort(): number;
+      setPort(value: number): Source;
+
+      serializeBinary(): Uint8Array;
+      toObject(includeInstance?: boolean): Source.AsObject;
+      static toObject(includeInstance: boolean, msg: Source): Source.AsObject;
+      static serializeBinaryToWriter(message: Source, writer: jspb.BinaryWriter): void;
+      static deserializeBinary(bytes: Uint8Array): Source;
+      static deserializeBinaryFromReader(message: Source, reader: jspb.BinaryReader): Source;
+    }
+
+    export namespace Source {
+      export type AsObject = {
+        device: string,
+        ip: string,
+        port: number,
+      }
+    }
+
+
+    export class Destination extends jspb.Message {
+      getDevice(): string;
+      setDevice(value: string): Destination;
+
+      getIp(): string;
+      setIp(value: string): Destination;
+
+      getPort(): number;
+      setPort(value: number): Destination;
+
+      serializeBinary(): Uint8Array;
+      toObject(includeInstance?: boolean): Destination.AsObject;
+      static toObject(includeInstance: boolean, msg: Destination): Destination.AsObject;
+      static serializeBinaryToWriter(message: Destination, writer: jspb.BinaryWriter): void;
+      static deserializeBinary(bytes: Uint8Array): Destination;
+      static deserializeBinaryFromReader(message: Destination, reader: jspb.BinaryReader): Destination;
+    }
+
+    export namespace Destination {
+      export type AsObject = {
+        device: string,
+        ip: string,
+        port: number,
+      }
+    }
+
+  }
+
+
+  export class In extends jspb.Message {
+    getDevice(): string;
+    setDevice(value: string): In;
+
+    getSourceIp(): string;
+    setSourceIp(value: string): In;
+    hasSourceIp(): boolean;
+    clearSourceIp(): In;
+
+    getPort(): number;
+    setPort(value: number): In;
+
+    getTcp(): boolean;
+    setTcp(value: boolean): In;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): In.AsObject;
+    static toObject(includeInstance: boolean, msg: In): In.AsObject;
+    static serializeBinaryToWriter(message: In, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): In;
+    static deserializeBinaryFromReader(message: In, reader: jspb.BinaryReader): In;
+  }
+
+  export namespace In {
+    export type AsObject = {
+      device: string,
+      sourceIp?: string,
+      port: number,
+      tcp: boolean,
+    }
+
+    export enum SourceIpCase { 
+      _SOURCE_IP_NOT_SET = 0,
+      SOURCE_IP = 2,
+    }
+  }
+
+
+  export class Out extends jspb.Message {
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Out.AsObject;
+    static toObject(includeInstance: boolean, msg: Out): Out.AsObject;
+    static serializeBinaryToWriter(message: Out, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Out;
+    static deserializeBinaryFromReader(message: Out, reader: jspb.BinaryReader): Out;
+  }
+
+  export namespace Out {
+    export type AsObject = {
+    }
+  }
+
 
   export enum DmzCase { 
     _DMZ_NOT_SET = 0,

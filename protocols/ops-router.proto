@@ -40,10 +40,6 @@ message Wan {
   }
   message Dhcp {}
 
-  message Nat {}
-  message In {}
-  message Out {}
-
   oneof ip {
     Dhcp dhcp = 1;
     Static static = 2;
@@ -51,9 +47,6 @@ message Wan {
   uint32 route_metric = 9;
 
   bool v6 = 11;
-  repeated Nat nat = 12;
-  repeated In in = 13;
-  repeated Out out = 14;
 }
 
 message Dhcpd {
@@ -73,11 +66,37 @@ message Dns {
 }
 
 message Profile {
+  message Nat {
+    message Source {
+      string device = 1;
+      string ip = 2;
+      int32 port = 3;
+    }
+    message Destination {
+      string device = 1;
+      string ip = 2;
+      int32 port = 3;
+    }
+    Source source = 1;
+    Destination destination = 2;
+    bool tcp = 9;
+  }
+  message In {
+    string device = 1;
+    optional string source_ip = 2;
+    int32 port = 3;
+    bool tcp = 9;
+  }
+  message Out {}
+
   Administrator administrator = 1;
   map<string, Wan> wan = 11;
   Dhcpd lan = 21;
   optional Dhcpd dmz = 22;
   Dns dns = 29;
+  repeated In in = 31;
+  repeated Out out = 32;
+  repeated Nat nat = 33;
 }
 
 message Status {
