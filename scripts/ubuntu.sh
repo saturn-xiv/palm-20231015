@@ -187,9 +187,8 @@ fi
 build_musl coconut x86_64-linux-musl Debug x86_64
 build_musl coconut x86_64-linux-musl Release x86_64
 build_musl coconut aarch64-linux-musl Release aarch64
-build_musl coconut riscv64-linux-musl Release riscv64
-build_musl coconut armv7l-linux-musleabihf Release armv7l
-
+# build_musl coconut armv7l-linux-musleabihf Release armv7l
+# build_musl coconut riscv64-linux-musl Release riscv64
 
 # -----------------------------------------------------------------------------
 
