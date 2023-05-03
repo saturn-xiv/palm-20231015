@@ -13,7 +13,7 @@ find_package(aws-cpp-sdk-sqs CONFIG REQUIRED)
 find_package(Libssh2 CONFIG REQUIRED)
 find_package(LibLZMA REQUIRED)
 find_package(Libevent CONFIG REQUIRED)
-find_package(unofficial-git2 CONFIG REQUIRED)
+# find_package(unofficial-git2 CONFIG REQUIRED)
 find_package(SailC++ CONFIG REQUIRED)
 find_package(pugixml CONFIG REQUIRED)
 find_package(tomlplusplus CONFIG REQUIRED)
@@ -71,7 +71,7 @@ target_link_libraries(palm PUBLIC bamboo gourd
   spdlog::spdlog argparse::argparse magic_enum::magic_enum
 
   libevent::core libevent::extra libevent::pthreads
-  Libssh2::libssh2 unofficial::git2::git2 LibLZMA::LibLZMA
+  Libssh2::libssh2 LibLZMA::LibLZMA # unofficial::git2::git2
   ${LUA_LIBRARIES}
 
   PahoMqttCpp::paho-mqttpp3-static rabbitmq::rabbitmq-static
