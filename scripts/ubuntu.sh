@@ -25,7 +25,7 @@ build_dashboard() {
 
 build_gnu() {
 
-    local target=$WORKSPACE/build/palm-$UBUNTU_CODENAME-$3-$2
+    local target=$HOME/build/palm-$UBUNTU_CODENAME-$3-$2
     mkdir -p $target
     cd $target
     
@@ -44,7 +44,7 @@ build_gnu() {
 }
 
 build_musl() {
-    local target=$WORKSPACE/build/$1-$UBUNTU_CODENAME-$4-$3
+    local target=$HOME/build/$1-$UBUNTU_CODENAME-$4-$3
     mkdir -p $target
     cd $target
     CXX=$2-g++ cmake -DCMAKE_BUILD_TYPE=$3 $WORKSPACE/$1
@@ -60,7 +60,7 @@ build_musl() {
 build_loquat() {
     apt-get install -y g++-10 golang libunwind-dev libboost-all-dev libssl-dev libevent-dev
 
-    local target=$WORKSPACE/build/loquat-$UBUNTU_CODENAME-$1-$2
+    local target=$HOME/build/loquat-$UBUNTU_CODENAME-$1-$2
     mkdir -p $target    
     cd $target
     CC=gcc-10 CXX=g++-10 cmake -DCMAKE_BUILD_TYPE=$2 \
@@ -169,8 +169,12 @@ mkdir x86_64 aarch64 riscv64 armv7l
 
 build_gnu x64-linux Debug x86_64
 build_gnu x64-linux Release x86_64
-build_gnu arm64-linux Release aarch64
-# build_gnu riscv64-linux Release riscv64
+
+if [[ $UBUNTU_CODENAME == "jammy" ]]
+then
+    build_gnu arm64-linux Release aarch64
+    # build_gnu riscv64-linux Release riscv64
+fi
 
 if [[ $(uname -p) == "aarch64" ]]
 then

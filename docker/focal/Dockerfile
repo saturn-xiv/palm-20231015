@@ -7,6 +7,8 @@ RUN apt update
 RUN apt install -y lsb-release apt-utils \
     debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
 # https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
+ENV AMD64_GCC_VERSION 11
+ENV GCC_VERSION 10
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
@@ -24,9 +26,9 @@ RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release 
 RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 RUN apt update && apt -y upgrade
 
-ENV GCC_VERSION 10
 RUN apt -y install zsh git locales locales-all \
     vim tzdata zip unzip tree tmux \
+    g++-${AMD64_GCC_VERSION} libstdc++-${AMD64_GCC_VERSION}-dev libstdc++-${AMD64_GCC_VERSION}-dev:arm64 libstdc++-${AMD64_GCC_VERSION}-dev:armhf libstdc++-${AMD64_GCC_VERSION}-dev:riscv64 \
     build-essential g++-${GCC_VERSION} libstdc++-${GCC_VERSION}-dev \
     crossbuild-essential-arm64 g++-${GCC_VERSION}-aarch64-linux-gnu libstdc++-${GCC_VERSION}-dev:arm64 \
     crossbuild-essential-armhf g++-${GCC_VERSION}-arm-linux-gnueabihf libstdc++-${GCC_VERSION}-dev:armhf \
@@ -40,8 +42,8 @@ RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CL
     && update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/lldb lldb /usr/bin/lldb-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/lld lld /usr/bin/lld-${CLANG_VERSION} 100 \
-    && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_VERSION} 100 \
-    && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${AMD64_GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${AMD64_GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/aarch64-linux-gnu-gcc aarch64-linux-gnu-gcc /usr/bin/aarch64-linux-gnu-gcc-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/aarch64-linux-gnu-g++ aarch64-linux-gnu-g++ /usr/bin/aarch64-linux-gnu-g++-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/arm-linux-gnueabihf-gcc arm-linux-gnueabihf-gcc /usr/bin/arm-linux-gnueabihf-gcc-${GCC_VERSION} 100 \
@@ -124,12 +126,11 @@ RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
 # https://github.com/rui314/mold
 RUN git clone -b v1.11.0 https://github.com/rui314/mold.git $HOME/downloads/mold
 RUN apt install -y libssl-dev libxxhash-dev zlib1g-dev \
-    file bsdmainutils \
-    libstdc++-11-dev:amd64 libstdc++-11-dev:arm64 libstdc++-11-dev:armhf
+    file bsdmainutils
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir $HOME/build/mold \
     && cd $HOME/build/mold \
-    && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-${GCC_VERSION} $HOME/downloads/mold \
+    && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-${AMD64_GCC_VERSION} $HOME/downloads/mold \
     && make \
     && make install"
 
