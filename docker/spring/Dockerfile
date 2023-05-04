@@ -24,8 +24,6 @@ RUN dpkg --add-architecture riscv64
 RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs) main restricted universe multiverse" >> /etc/apt/sources.list
 RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
 RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
-# https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
-ENV GCC_VERSION 12
 
 RUN apt update && apt -y upgrade
 

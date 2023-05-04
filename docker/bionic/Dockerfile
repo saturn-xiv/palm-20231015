@@ -121,10 +121,34 @@ RUN zsh -c "source $HOME/.zshrc \
     && sdk install maven \
     && sdk install gradle ${GRADLE_VERSION}"
 
+# https://www.rust-lang.org/tools/install
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+RUN zsh -c "source $HOME/.cargo/env \
+    && rustup target add x86_64-unknown-linux-musl \
+    && rustup target add armv7-unknown-linux-gnueabihf \
+    && rustup target add aarch64-unknown-linux-gnu \
+    && rustup target add aarch64-unknown-linux-musl \
+    && rustup target add riscv64gc-unknown-linux-gnu"
+
 # https://github.com/microsoft/vcpkg
 RUN git clone https://github.com/microsoft/vcpkg.git $HOME/local/vcpkg
 RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
     && echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.zshrc
+
+# https://github.com/grpc/grpc
+ENV GRPC_VERSION "v1.54.1"
+RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
+RUN apt install -y libssl-dev
+RUN zsh -c "source $HOME/.zshrc \
+    && mkdir -pv $HOME/build/grpc \
+    && cd $HOME/build/grpc \
+    && cmake -DCMAKE_BUILD_TYPE=Release \
+        -DgRPC_INSTALL=ON \
+        -DgRPC_SSL_PROVIDER=package \
+        -DgRPC_BUILD_TESTS=OFF \
+        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
+    && make \
+    && make install"
 
 # https://github.com/rui314/mold
 RUN git clone -b v1.11.0 https://github.com/rui314/mold.git $HOME/downloads/mold
