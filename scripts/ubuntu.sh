@@ -25,7 +25,7 @@ build_dashboard() {
 
 build_gnu() {
 
-    local target=$HOME/build/palm-$UBUNTU_CODENAME-$3-$2
+    local target=$WORKSPACE/build/palm-$UBUNTU_CODENAME-$1-$2
     mkdir -p $target
     cd $target
     
@@ -33,7 +33,8 @@ build_gnu() {
         -DBUILD_TESTING=OFF -DBoost_NO_WARN_NEW_VERSIONS=1 $THRIFT_FLAGS \
         -DCASBIN_BUILD_TEST=OFF -DCASBIN_BUILD_BENCHMARK=OFF -DCASBIN_BUILD_PYTHON_BINDINGS=OFF -DCASBIN_INSTALL=OFF \
         -DMAILIO_BUILD_EXAMPLES=OFF -DMAILIO_BUILD_DOCUMENTATION=OFF -DMAILIO_BUILD_SHARED_LIBRARY=OFF -DMAILIO_BUILD_TESTS=OFF \
-        -DVCPKG_HOST_TRIPLET=x64-linux -DVCPKG_TARGET_TRIPLET=$1 -DCMAKE_TOOLCHAIN_FILE=$HOME/local/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$3.cmake
+        -DVCPKG_HOST_TRIPLET=x86_64-linux -DVCPKG_TARGET_TRIPLET=$1-linux -DCMAKE_TOOLCHAIN_FILE=$HOME/local/vcpkg/scripts/buildsystems/vcpkg.cmake 
+        # -DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$1.cmake
     make
 
     if [[ $3 == "Release" ]]
@@ -44,7 +45,7 @@ build_gnu() {
 }
 
 build_musl() {
-    local target=$HOME/build/$1-$UBUNTU_CODENAME-$4-$3
+    local target=$WORKSPACE/build/$1-$UBUNTU_CODENAME-$4-$3
     mkdir -p $target
     cd $target
     CXX=$2-g++ cmake -DCMAKE_BUILD_TYPE=$3 $WORKSPACE/$1
@@ -60,7 +61,7 @@ build_musl() {
 build_loquat() {
     apt-get install -y g++-10 golang libunwind-dev libboost-all-dev libssl-dev libevent-dev
 
-    local target=$HOME/build/loquat-$UBUNTU_CODENAME-$1-$2
+    local target=$WORKSPACE/build/loquat-$UBUNTU_CODENAME-$1-$2
     mkdir -p $target    
     cd $target
     CC=gcc-10 CXX=g++-10 cmake -DCMAKE_BUILD_TYPE=$2 \
@@ -149,7 +150,7 @@ copy_assets() {
 
 # -----------------------------------------------------------------------------
 
-if [[ $ID != "ubuntu" ]]
+if [[ $UBUNTU_CODENAME != "jammy" ]]
 then
     echo "unsupported system($PRETTY_NAME)"
     exit 1
@@ -167,14 +168,12 @@ mkdir x86_64 aarch64 riscv64 armv7l
 
 # -----------------------------------------------------------------------------
 
-build_gnu x64-linux Debug x86_64
-build_gnu x64-linux Release x86_64
+build_gnu x86_64 Debug
+build_gnu x86_64 Release 
+build_gnu aarch64 Release 
+# build_gnu armv7l Release 
+# build_gnu riscv64 Release 
 
-if [[ $UBUNTU_CODENAME == "jammy" ]]
-then
-    build_gnu arm64-linux Release aarch64
-    # build_gnu riscv64-linux Release riscv64
-fi
 
 if [[ $(uname -p) == "aarch64" ]]
 then

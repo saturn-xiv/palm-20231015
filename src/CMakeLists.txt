@@ -45,12 +45,6 @@ FetchContent_Declare(casbin
 )
 FetchContent_MakeAvailable(casbin)
 
-FetchContent_Declare(mailio
-  GIT_REPOSITORY    "https://github.com/karastojko/mailio.git"
-  GIT_TAG           "5a28a0f"
-)
-FetchContent_MakeAvailable(mailio)
-
 target_include_directories(palm PUBLIC
   ${PROJECT_SOURCE_DIR}/include
 
@@ -59,11 +53,10 @@ target_include_directories(palm PUBLIC
   ${LUA_INCLUDE_DIR}
   
   ${casbin_SOURCE_DIR}/include
-  ${mailio_SOURCE_DIR}/include
 )
 
 target_link_libraries(palm PUBLIC bamboo gourd
-  casbin mailio
+  casbin
   
   OpenSSL::SSL OpenSSL::Crypto
   Poco::Util

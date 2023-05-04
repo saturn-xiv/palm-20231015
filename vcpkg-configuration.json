@@ -1,1 +1,1 @@
-{ "overlay-triplets": "triplets" }
+{ "overlay-triplets": ["./triplets"] }
