@@ -1,8 +1,10 @@
 {
+  "name": "palm",
+  "version": "2023.5.4",
   "dependencies": [
     "openssl",
     "boost-algorithm",
-    "boost-asio[ssl]",
+    { "name": "boost-asio", "features": ["ssl"] },
     "boost-date-time",
     "boost-detail",
     "boost-exception",
@@ -22,16 +24,16 @@
     "boost-timer",
     "boost-uuid",
 
-    "liblzma",
-    "sail[core,png]",
-
-    "paho-mqttpp3[ssl]",
     "libevent",
+    "liblzma",
+    { "name": "sail", "default-features": false, "features": ["png"] },
+
+    { "name": "paho-mqttpp3", "features": ["ssl"] },
     "librabbitmq",
 
-    "cpr[ssl]",
-    "aws-sdk-cpp[s3,sqs]",
-    "libssh2[zlib]",
+    { "name": "cpr", "features": ["ssl"] },
+    { "name": "aws-sdk-cpp", "features": ["s3", "sqs"] },
+    { "name": "libssh2", "features": ["zlib"] },
     "minio-cpp",
     "cserialport",
 
@@ -39,22 +41,22 @@
     "pugixml",
     "tomlplusplus",
     "yaml-cpp",
-    "lua[cpp]",
+    { "name": "lua", "features": ["cpp"] },
 
-    "nlohmann-json[diagnostics]",
+    { "name": "nlohmann-json", "features": ["diagnostics"] },
     "mstch",
     "inja",
     "cpp-httplib",
-    "poco[core]",
+    { "name": "poco", "default-features": false },
     "jwt-cpp",
 
-    "libpq[nls,openssl,zlib]",
+    { "name": "libpq", "features": ["nls", "openssl", "zlib"] },
     "libpqxx",
-    "libmariadb[openssl,zlib]",
-    "sqlite3[math,zlib]",
-    "soci[boost,sqlite3,postgresql]",
-    "redis-plus-plus[cxx17]",
-    "leveldb[crc32c]",
+    { "name": "libmariadb", "features": ["openssl", "zlib"] },
+    { "name": "sqlite3", "features": ["math", "zlib"] },
+    { "name": "soci", "features": ["boost", "sqlite3", "postgresql"] },
+    { "name": "redis-plus-plus", "features": ["cxx17"] },
+    { "name": "leveldb", "features": ["crc32c"] },
 
     "fruit",
     "gflags",
@@ -62,7 +64,7 @@
     "gtest",
     "flatbuffers",
     "protobuf",
-    "abseil[cxx17]",
+    { "name": "abseil", "features": ["cxx17"] },
     "grpc",
 
     "spdlog",
