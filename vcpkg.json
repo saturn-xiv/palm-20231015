@@ -1,0 +1,73 @@
+{
+  "dependencies": [
+    "openssl",
+    "boost-algorithm",
+    "boost-asio[ssl]",
+    "boost-date-time",
+    "boost-detail",
+    "boost-exception",
+    "boost-filesystem",
+    "boost-json",
+    "boost-locale",
+    "boost-log",
+    "boost-math",
+    "boost-program-options",
+    "boost-property-tree",
+    "boost-random",
+    "boost-range",
+    "boost-regex",
+    "boost-system",
+    "boost-test",
+    "boost-thread",
+    "boost-timer",
+    "boost-uuid",
+
+    "liblzma",
+    "sail[core,png]",
+
+    "paho-mqttpp3[ssl]",
+    "libevent",
+    "librabbitmq",
+
+    "cpr[ssl]",
+    "aws-sdk-cpp[s3,sqs]",
+    "libssh2[zlib]",
+    "minio-cpp",
+    "cserialport",
+
+    "cppcodec",
+    "pugixml",
+    "tomlplusplus",
+    "yaml-cpp",
+    "lua[cpp]",
+
+    "nlohmann-json[diagnostics]",
+    "mstch",
+    "inja",
+    "cpp-httplib",
+    "poco[core]",
+    "jwt-cpp",
+
+    "libpq[nls,openssl,zlib]",
+    "libpqxx",
+    "libmariadb[openssl,zlib]",
+    "sqlite3[math,zlib]",
+    "soci[boost,sqlite3,postgresql]",
+    "redis-plus-plus[cxx17]",
+    "leveldb[crc32c]",
+
+    "fruit",
+    "gflags",
+    "glog",
+    "gtest",
+    "flatbuffers",
+    "protobuf",
+    "abseil[cxx17]",
+    "grpc",
+
+    "spdlog",
+    "catch2",
+    "argparse",
+    "magic-enum"
+  ]
+}
