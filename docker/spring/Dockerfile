@@ -7,43 +7,57 @@ RUN apt update \
     && apt -y upgrade \
     && apt -y install debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
 
-# https://wiki.ubuntu.com/ToolChain
+# https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
+ENV GCC_VERSION 12
+RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
+# https://apt.llvm.org/
+ENV CLANG_VERSION 15
+RUN echo "deb [arch=amd64] http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-${CLANG_VERSION} main" > /etc/apt/sources.list.d/llvm.list
+RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+# https://wiki.debian.org/ToolChain/Cross
 RUN dpkg --add-architecture armhf
 RUN dpkg --add-architecture arm64
-RUN echo "deb [arch=armhf,arm64] http://ports.ubuntu.com/ $(lsb_release -cs) main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb [arch=armhf,arm64] http://ports.ubuntu.com/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb [arch=armhf,arm64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
+RUN dpkg --add-architecture riscv64
+RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs) main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
+
 RUN apt update && apt -y upgrade
 
 RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     vim tzdata pwgen zip unzip tree tmux dialog asciidoc doxygen \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
     imagemagick ffmpeg fonts-dejavu-extra texlive-full \
-    build-essential cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio mold \
+    build-essential g++-${GCC_VERSION} libstdc++-${GCC_VERSION}-dev \
+    crossbuild-essential-arm64 g++-${GCC_VERSION}-aarch64-linux-gnu libstdc++-${GCC_VERSION}-dev:arm64 \
+    crossbuild-essential-armhf g++-${GCC_VERSION}-arm-linux-gnueabihf libstdc++-${GCC_VERSION}-dev:armhf \
+    crossbuild-essential-riscv64 g++-${GCC_VERSION}-riscv64-linux-gnu libstdc++-${GCC_VERSION}-dev:riscv64 \
+    clang-${CLANG_VERSION} clangd-${CLANG_VERSION} clang-tools-${CLANG_VERSION} clang-format-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
+    cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio mold \
     debhelper bison flex ninja-build \
     musl-tools musl-dev \
-    crossbuild-essential-armhf crossbuild-essential-arm64 \
     python3 python3-distutils python3-dev python3-pip virtualenv \
     php-fpm php-mbstring php-json php-xml php-pear php-bcmath php-curl php-zip \
     php-mysql php-pgsql php-sqlite3 php-redis php-mongodb php-amqp php-zmq \
     php-imagick php-gd \
     nginx rabbitmq-server redis postgresql mariadb-server
 
-# https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
-ENV GCC_VERSION 12
-RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
-RUN apt update
-RUN apt install -y g++-${GCC_VERSION} g++-${GCC_VERSION}-aarch64-linux-gnu g++-${GCC_VERSION}-arm-linux-gnueabihf \
-    libstdc++-${GCC_VERSION}-dev:amd64 libstdc++-${GCC_VERSION}-dev:arm64 libstdc++-${GCC_VERSION}-dev:armhf
-RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_VERSION} 100 \
+RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CLANG_VERSION} 100 \
+    && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${CLANG_VERSION} 100 \
+    && update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${CLANG_VERSION} 100 \
+    && update-alternatives --install /usr/bin/lldb lldb /usr/bin/lldb-${CLANG_VERSION} 100 \
+    && update-alternatives --install /usr/bin/lld lld /usr/bin/lld-${CLANG_VERSION} 100 \
+    && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/aarch64-linux-gnu-gcc aarch64-linux-gnu-gcc /usr/bin/aarch64-linux-gnu-gcc-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/aarch64-linux-gnu-g++ aarch64-linux-gnu-g++ /usr/bin/aarch64-linux-gnu-g++-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/arm-linux-gnueabihf-gcc arm-linux-gnueabihf-gcc /usr/bin/arm-linux-gnueabihf-gcc-${GCC_VERSION} 100 \
-    && update-alternatives --install /usr/bin/arm-linux-gnueabihf-g++ arm-linux-gnueabihf-g++ /usr/bin/arm-linux-gnueabihf-g++-${GCC_VERSION} 100
+    && update-alternatives --install /usr/bin/arm-linux-gnueabihf-g++ arm-linux-gnueabihf-g++ /usr/bin/arm-linux-gnueabihf-g++-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/riscv64-linux-gnu-gcc riscv64-linux-gnu-gcc /usr/bin/riscv64-linux-gnu-gcc-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/riscv64-linux-gnu-g++ riscv64-linux-gnu-g++ /usr/bin/riscv64-linux-gnu-g++-${GCC_VERSION} 100
 
 # https://apt.llvm.org/
 ENV CLANG_VERSION=15
@@ -130,30 +144,6 @@ RUN cd $HOME/downloads \
     && php composer \
     && mv composer.phar $HOME/.local/bin/composer
 
-# https://github.com/richfelker/musl-cross-make
-# RUN git clone https://github.com/richfelker/musl-cross-make.git $HOME/build/musl-cross-make
-# RUN cd $HOME/build/musl-cross-make \
-#     && echo "TARGET=x86_64-linux-musl" > config.mak \
-#     && echo "OUTPUT=/opt/crosstools" >> config.mak \
-#     && make \
-#     && make install 
-# RUN cd $HOME/build/musl-cross-make \
-#     && echo "TARGET=aarch64-linux-musl" > config.mak \
-#     && echo "OUTPUT=/opt/crosstools" >> config.mak \
-#     && make \
-#     && make install
-# RUN cd $HOME/build/musl-cross-make \
-#     && echo "TARGET=arm-linux-musleabihf" > config.mak \
-#     && echo "OUTPUT=/opt/crosstools" >> config.mak \
-#     && make \
-#     && make install
-# RUN cd $HOME/build/musl-cross-make \
-#     && echo "TARGET=riscv64-linux-musl" > config.mak \
-#     && echo "OUTPUT=/opt/crosstools" >> config.mak \
-#     && make \
-#     && make install \
-#     && make clean
-# RUN echo 'export PATH=/opt/crosstools/bin:$PATH' >> $HOME/.zshrc
 
 # https://github.com/bazelbuild/bazelisk
 ENV BAZEL_VERSION "v1.16.0"
@@ -251,7 +241,7 @@ RUN wget -q -O /usr/bin/minio \
 RUN chmod +x /usr/bin/minio
 
 # https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.54.0"
+ENV GRPC_VERSION "v1.54.1"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 # ENV PROTOBUF_VERSION "v3.21.8"
 # RUN cd $HOME/downloads/grpc/third_party/protobuf \

@@ -7,6 +7,8 @@ RUN apt update
 RUN apt install -y lsb-release apt-utils \
     debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
 # https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
+ENV AMD64_GCC_VERSION 11
+ENV GCC_VERSION 10
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
@@ -24,9 +26,9 @@ RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release 
 RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 RUN apt update && apt -y upgrade
 
-ENV GCC_VERSION 10
 RUN apt -y install zsh git locales locales-all \
     vim tzdata zip unzip tree tmux \
+    g++-${AMD64_GCC_VERSION} libstdc++-${AMD64_GCC_VERSION}-dev libstdc++-${AMD64_GCC_VERSION}-dev:arm64 libstdc++-${AMD64_GCC_VERSION}-dev:armhf libstdc++-${AMD64_GCC_VERSION}-dev:riscv64 \
     build-essential g++-${GCC_VERSION} libstdc++-${GCC_VERSION}-dev \
     crossbuild-essential-arm64 g++-${GCC_VERSION}-aarch64-linux-gnu libstdc++-${GCC_VERSION}-dev:arm64 \
     crossbuild-essential-armhf g++-${GCC_VERSION}-arm-linux-gnueabihf libstdc++-${GCC_VERSION}-dev:armhf \
@@ -40,8 +42,8 @@ RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CL
     && update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/lldb lldb /usr/bin/lldb-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/lld lld /usr/bin/lld-${CLANG_VERSION} 100 \
-    && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_VERSION} 100 \
-    && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${AMD64_GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${AMD64_GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/aarch64-linux-gnu-gcc aarch64-linux-gnu-gcc /usr/bin/aarch64-linux-gnu-gcc-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/aarch64-linux-gnu-g++ aarch64-linux-gnu-g++ /usr/bin/aarch64-linux-gnu-g++-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/arm-linux-gnueabihf-gcc arm-linux-gnueabihf-gcc /usr/bin/arm-linux-gnueabihf-gcc-${GCC_VERSION} 100 \
@@ -105,57 +107,6 @@ RUN zsh -c "source $HOME/.zshrc \
     && npm i yarn -g"
 RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.zshrc
 
-# https://www.rust-lang.org/tools/install
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-RUN zsh -c "source $HOME/.cargo/env \
-    && rustup target add x86_64-unknown-linux-musl \
-    && rustup target add armv7-unknown-linux-gnueabihf \
-    && rustup target add aarch64-unknown-linux-gnu \
-    && rustup target add aarch64-unknown-linux-musl \
-    && rustup target add riscv64gc-unknown-linux-gnu"
-
-# https://github.com/richfelker/musl-cross-make
-# RUN git clone https://github.com/richfelker/musl-cross-make.git $HOME/build/musl-cross-make
-# RUN cd $HOME/build/musl-cross-make \
-#     && echo "TARGET=x86_64-linux-musl" > config.mak \
-#     && echo "OUTPUT=/opt/crosstools" >> config.mak \
-#     && make \
-#     && make install \
-#     && make clean 
-# RUN cd $HOME/build/musl-cross-make \
-#     && echo "TARGET=aarch64-linux-musl" > config.mak \
-#     && echo "OUTPUT=/opt/crosstools" >> config.mak \
-#     && make \
-#     && make install \
-#     && make clean
-# RUN cd $HOME/build/musl-cross-make \
-#     && echo "TARGET=arm-linux-musleabihf" > config.mak \
-#     && echo "OUTPUT=/opt/crosstools" >> config.mak \
-#     && make \
-#     && make install \
-#     && make clean
-# RUN cd $HOME/build/musl-cross-make \
-#     && echo "TARGET=riscv64-linux-musl" > config.mak \
-#     && echo "OUTPUT=/opt/crosstools" >> config.mak \
-#     && make \
-#     && make install \
-#     && make clean
-# RUN echo 'export PATH=/opt/crosstools/bin:$PATH' >> $HOME/.zshrc
-
-
-# https://github.com/rui314/mold
-RUN git clone -b v1.11.0 https://github.com/rui314/mold.git $HOME/downloads/mold
-RUN apt install -y libssl-dev libxxhash-dev zlib1g-dev \
-    file bsdmainutils \
-    libstdc++-11-dev:amd64 libstdc++-11-dev:arm64 libstdc++-11-dev:armhf
-RUN zsh -c "source $HOME/.zshrc \
-    && mkdir $HOME/build/mold \
-    && cd $HOME/build/mold \
-    && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-${GCC_VERSION} \
-        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/mold \
-    && make \
-    && make install"
-RUN cp $HOME/.local/bin/mold /usr/bin/
 
 ENV JDK_VERSION "20.0.1-open"
 # https://docs.gradle.org/current/userguide/compatibility.html
@@ -167,13 +118,22 @@ RUN zsh -c "source $HOME/.zshrc \
     && sdk install maven \
     && sdk install gradle ${GRADLE_VERSION}"
 
+# https://www.rust-lang.org/tools/install
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+RUN zsh -c "source $HOME/.cargo/env \
+    && rustup target add x86_64-unknown-linux-musl \
+    && rustup target add armv7-unknown-linux-gnueabihf \
+    && rustup target add aarch64-unknown-linux-gnu \
+    && rustup target add aarch64-unknown-linux-musl \
+    && rustup target add riscv64gc-unknown-linux-gnu"
+
 # https://github.com/microsoft/vcpkg
 RUN git clone https://github.com/microsoft/vcpkg.git $HOME/local/vcpkg
 RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
     && echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.zshrc
 
 # https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.54.0"
+ENV GRPC_VERSION "v1.54.1"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 RUN apt install -y libssl-dev
 RUN zsh -c "source $HOME/.zshrc \
@@ -184,6 +144,17 @@ RUN zsh -c "source $HOME/.zshrc \
         -DgRPC_SSL_PROVIDER=package \
         -DgRPC_BUILD_TESTS=OFF \
         -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
+    && make \
+    && make install"
+
+# https://github.com/rui314/mold
+RUN git clone -b v1.11.0 https://github.com/rui314/mold.git $HOME/downloads/mold
+RUN apt install -y libssl-dev libxxhash-dev zlib1g-dev \
+    file bsdmainutils
+RUN zsh -c "source $HOME/.zshrc \
+    && mkdir $HOME/build/mold \
+    && cd $HOME/build/mold \
+    && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-${AMD64_GCC_VERSION} $HOME/downloads/mold \
     && make \
     && make install"
 
