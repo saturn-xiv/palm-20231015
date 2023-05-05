@@ -152,14 +152,14 @@ RUN zsh -c "source $HOME/.zshrc \
 
 # https://github.com/rui314/mold
 RUN git clone -b v1.11.0 https://github.com/rui314/mold.git $HOME/downloads/mold
-RUN apt install -y libssl-dev libxxhash-dev zlib1g-dev \
-    file bsdmainutils
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir $HOME/build/mold \
     && cd $HOME/build/mold \
-    && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-${AMD64_GCC_VERSION} $HOME/downloads/mold \
+    && $HOME/downloads/mold/install-build-deps.sh \
+    && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++ $HOME/downloads/mold \
     && make \
     && make install"
+RUN ln -s /usr/local/bin/mold /usr/bin/mold
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
