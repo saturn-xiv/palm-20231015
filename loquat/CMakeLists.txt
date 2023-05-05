@@ -65,8 +65,10 @@ file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.cpp")
 
 add_executable(loquat ${SOURCE_LIST})
 set_target_properties(loquat PROPERTIES LINK_FLAGS_RELEASE -s)
+target_link_directories(loquat PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/lib)
 target_link_libraries(loquat gourd
-  # ${OPENSSL_LIBRARIES}
+  event thrift thriftnb thriftz
+
   tink::static tink::jwt::jwt_key_templates tink::jwt::jwt_mac tink::jwt::jwt_mac_config
   absl::base absl::flags absl::flags_parse
   nlohmann_json::nlohmann_json

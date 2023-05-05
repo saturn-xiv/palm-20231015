@@ -12,7 +12,7 @@ fi
 
 if [ $ID == "ubuntu" ]
 then
-    apt-get install -y golang libunwind-dev libboost-all-dev libevent-dev libssl-dev
+    apt-get install -y golang libunwind-dev libboost-all-dev 
     export CMAKE_ARGS="-DTINK_USE_SYSTEM_OPENSSL=OFF"
 elif [ $ID == "arch" ]
 then
@@ -24,6 +24,7 @@ else
 fi
  
 cmake -DCMAKE_BUILD_TYPE=Release $CMAKE_ARGS -DABSL_PROPAGATE_CXX_STD=ON \
+    -DEVENT__LIBRARY_TYPE=STATIC -DEVENT__DISABLE_OPENSSL=ON \
     -DWITH_LIBEVENT=ON -DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF \
     $1
 make -j $(nproc --ignore=2)
