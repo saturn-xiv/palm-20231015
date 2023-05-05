@@ -44,4 +44,5 @@ fi
 
 build_grpc $1
 
+echo "done($1)."
 exit 0

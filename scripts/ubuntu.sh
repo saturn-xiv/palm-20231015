@@ -74,13 +74,14 @@ build_rust_musl() {
 }
 
 build_loquat() {
-    apt-get install -y g++-10 golang libunwind-dev libboost-all-dev libssl-dev libevent-dev
+    apt-get install -y golang libunwind-dev libboost-all-dev libssl-dev libevent-dev
 
     mkdir -p $WORKSPACE/loquat/build/$1
     cd $WORKSPACE/loquat/build/$1
-    CC=gcc-10 CXX=g++-10 cmake -DCMAKE_BUILD_TYPE=Release \
-        -DABSL_PROPAGATE_CXX_STD=ON -DTINK_USE_SYSTEM_OPENSSL=OFF \
-        -DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF \
+    cmake -DCMAKE_BUILD_TYPE=Release \
+        -DABSL_PROPAGATE_CXX_STD=ON \
+        -DTINK_USE_SYSTEM_OPENSSL=OFF \
+        -DWITH_LIBEVENT=ON -DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF \
         ../..
     make --silent loquat
     cp loquat $TARGET_DIR/bin/$1/

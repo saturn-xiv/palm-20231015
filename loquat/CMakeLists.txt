@@ -24,6 +24,10 @@ string(TIMESTAMP BUILD_TIME UTC)
 configure_file(include/loquat/version.h.in ${PROJECT_SOURCE_DIR}/include/loquat/version.hpp)
 
 # --------------------------------------------------------
+
+# find_package(OpenSSL REQUIRED)
+
+# --------------------------------------------------------
 FetchContent_Declare(spdlog
   GIT_REPOSITORY  "https://github.com/gabime/spdlog.git"
   GIT_TAG         "v1.11.0"
@@ -38,19 +42,18 @@ FetchContent_Declare(nlohmann_json
 )
 FetchContent_Declare(httplib
   GIT_REPOSITORY  "https://github.com/yhirose/cpp-httplib.git"
-  GIT_TAG         "v0.12.2"
+  GIT_TAG         "v0.12.3"
 )
-FetchContent_Declare(tink
-  GIT_REPOSITORY  "https://github.com/google/tink.git"
-  GIT_TAG         "v1.7.0"
-)
-
 FetchContent_Declare(argparse
   GIT_REPOSITORY  "https://github.com/p-ranav/argparse.git"
   GIT_TAG         "557948f"
 )
-
+FetchContent_Declare(tink
+  GIT_REPOSITORY  "https://github.com/tink-crypto/tink-cc.git"
+  GIT_TAG         "v2.0.0"
+)
 FetchContent_MakeAvailable(spdlog argparse tomlplusplus nlohmann_json httplib tink)
+
 
 # --------------------------------------------------------
 
@@ -63,8 +66,8 @@ file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.cpp")
 add_executable(loquat ${SOURCE_LIST})
 set_target_properties(loquat PROPERTIES LINK_FLAGS_RELEASE -s)
 target_link_libraries(loquat gourd
-  tink::static 
-  tink::jwt::jwt_key_templates tink::jwt::jwt_mac tink::jwt::jwt_mac_config
+  # ${OPENSSL_LIBRARIES}
+  tink::static tink::jwt::jwt_key_templates tink::jwt::jwt_mac tink::jwt::jwt_mac_config
   absl::base absl::flags absl::flags_parse
   nlohmann_json::nlohmann_json
 )

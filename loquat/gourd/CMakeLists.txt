@@ -9,7 +9,6 @@ file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 
 add_library(gourd STATIC ${SOURCE_LIST})
 
-
 target_include_directories(gourd PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/src
   ${thrift_SOURCE_DIR}/lib/cpp/src

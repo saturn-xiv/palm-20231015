@@ -9,23 +9,23 @@ then
 fi
 
 . /etc/os-release
-export CMAKE_ARGS="-DCMAKE_BUILD_TYPE=Release -DABSL_PROPAGATE_CXX_STD=ON"
 
 if [ $ID == "ubuntu" ]
 then
-    apt install -y libunwind-dev golang
-    export CMAKE_ARGS="${CMAKE_ARGS} -DTINK_USE_SYSTEM_OPENSSL=OFF"
+    apt-get install -y golang libunwind-dev libboost-all-dev libevent-dev libssl-dev
+    export CMAKE_ARGS="-DTINK_USE_SYSTEM_OPENSSL=OFF"
 elif [ $ID == "arch" ]
 then
-    sudo pacman -S --needed openssl-1.1
-    export CMAKE_ARGS="${CMAKE_ARGS} -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.1 -DOPENSSL_LIBRARIES=/usr/lib/openssl-1.1"
+    sudo pacman -Sy --needed go openssl-1.1 boost libunwind libevent
+    export CMAKE_ARGS="-DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.1 -DOPENSSL_LIBRARIES=/usr/lib/openssl-1.1"
 else
     echo "unsupported system $ID"
     exit 1
 fi
-
-cmake $CMAKE_ARGS $1 
-make clean
-make -j
+ 
+cmake -DCMAKE_BUILD_TYPE=Release $CMAKE_ARGS -DABSL_PROPAGATE_CXX_STD=ON \
+    -DWITH_LIBEVENT=ON -DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF \
+    $1
+make -j $(nproc --ignore=2)
 
 echo 'done.'
