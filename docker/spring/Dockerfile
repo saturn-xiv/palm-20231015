@@ -16,7 +16,10 @@ RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-
 # https://apt.llvm.org/
 ENV CLANG_VERSION 15
 RUN echo "deb [arch=amd64] http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-${CLANG_VERSION} main" > /etc/apt/sources.list.d/llvm.list
-RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+RUN wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+# https://dart.dev/get-dart
+RUN wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/dart.gpg
+RUN echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | tee /etc/apt/sources.list.d/dart_stable.list
 # https://wiki.debian.org/ToolChain/Cross
 RUN dpkg --add-architecture armhf
 RUN dpkg --add-architecture arm64
@@ -27,6 +30,7 @@ RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release 
 
 RUN apt update && apt -y upgrade
 
+ENV LUA_VERSION "5.4"
 RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     vim tzdata pwgen zip unzip tree tmux dialog asciidoc doxygen \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
@@ -42,7 +46,9 @@ RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     python3 python3-distutils python3-dev python3-pip virtualenv \
     php-fpm php-mbstring php-json php-xml php-pear php-bcmath php-curl php-zip \
     php-mysql php-pgsql php-sqlite3 php-redis php-mongodb php-amqp php-zmq \
-    php-imagick php-gd \
+    php-imagick php-gd phpunit \
+    liblua${LUA_VERSION}-dev dart haxe \
+    erlang rebar \
     nginx rabbitmq-server redis postgresql mariadb-server
 
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CLANG_VERSION} 100 \
@@ -169,7 +175,7 @@ RUN zsh -c "source $HOME/.zshrc \
 RUN zsh -c "source $HOME/.zshrc && rbenv global ${RUBY_VERSION}"
 
 # https://go.dev/doc/install
-ENV GO_VERSION "1.20.3"
+ENV GO_VERSION "1.20.4"
 RUN wget -q -P $HOME/downloads https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
 RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local
 RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc \
@@ -184,7 +190,8 @@ RUN zsh -c "source $HOME/.zshrc \
     && sdk install java ${JDK_VERSION} \
     && sdk install ant \
     && sdk install maven \
-    && sdk install gradle ${GRADLE_VERSION}"
+    && sdk install gradle ${GRADLE_VERSION} \
+    && sdk install kotlin"
 
 # https://github.com/nvm-sh/nvm
 ENV NVM_VERSION "v0.39.3"
@@ -192,16 +199,14 @@ RUN git clone -b ${NVM_VERSION} https://github.com/nvm-sh/nvm.git $HOME/.nvm
 RUN echo 'export NVM_DIR="$HOME/.nvm"' >> $HOME/.zshrc \
     && echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $HOME/.zshrc \
     && echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> $HOME/.zshrc
+# https://stackoverflow.com/questions/37324519/node-sass-does-not-yet-support-your-current-environment-linux-64-bit-with-false
 RUN zsh -c "source $HOME/.zshrc \
     && nvm install node \
     && nvm use node \
-    && npm i yarn -g"
-RUN zsh -c "source $HOME/.zshrc \
+    && npm i yarn -g \
     && nvm install --lts \
     && nvm use --lts \
-    && npm i yarn -g"
-# https://stackoverflow.com/questions/37324519/node-sass-does-not-yet-support-your-current-environment-linux-64-bit-with-false
-RUN zsh -c "source $HOME/.zshrc \
+    && npm i yarn -g \
     && nvm install lts/fermium \
     && nvm use lts/fermium \
     && npm i yarn -g"
@@ -229,7 +234,7 @@ RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
     && echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.zshrc
 
 # https://opensearch.org/downloads.html#opensearch
-ENV OPENSEARCH_VERSION "2.6.0"
+ENV OPENSEARCH_VERSION "2.7.0"
 RUN wget -q -P $HOME/downloads \
     https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
 RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C /opt \
@@ -299,19 +304,27 @@ RUN zsh -c "source $HOME/.zshrc \
 ENV THRIFT_VERSION "v0.18.1"
 RUN git clone -b $THRIFT_VERSION https://github.com/apache/thrift.git $HOME/downloads/thrift
 RUN apt install -y libboost-all-dev libevent-dev libz-dev zlib1g-dev \
-        mono-devel erlang \
+        mono-devel \
+        libglib2.0-dev \
         libbit-vector-perl libclass-accessor-perl
 # Could not find method classifier() for arguments [test] on task ':testJar'
+ENV THRIFT_JAVA_VERSION "19.0.2-open"
+ENV THRIFT_GRADLE_VERSION "7.6.1"
 RUN zsh -c "source $HOME/.zshrc \
-    && sdk install java 19.0.2-open \
-    && sdk install gradle 7.6.1"
-# FIXME make install
-# MAKE='gmake' --without-java --disable-tests
-# RUN zsh -c "source $HOME/.zshrc \
-#     && cd $HOME/downloads/thrift \
-#     && ./bootstrap.sh \
-#     && ./configure CXXFLAGS='-g -O2' CFLAGS='-g -O2' --prefix=$HOME/.local \
-#     && make"
+    && sdk install java  ${THRIFT_JAVA_VERSION} \
+    && sdk install gradle ${THRIFT_GRADLE_VERSION}"
+# TODO 
+# composer: Continue as root/super user confirm
+# haxelib setup
+# haxelib install uuid
+# haxelib install hxcpp
+# FIXME make install && make install/fast
+RUN zsh -c "source $HOME/.zshrc \
+    && cd $HOME/downloads/thrift \
+    && sdk use java ${THRIFT_JAVA_VERSION} \
+    && sdk use gradle ${THRIFT_GRADLE_VERSION} \
+    && ./bootstrap.sh \
+    && ./configure MAKE=gmake CXXFLAGS='-g -O2' CFLAGS='-g -O2' --prefix=$HOME/.local --disable-tests"
 RUN zsh -c "source $HOME/.zshrc \
     && sdk default java ${JDK_VERSION} \
     && sdk default gradle ${GRADLE_VERSION}"
