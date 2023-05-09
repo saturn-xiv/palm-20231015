@@ -8,9 +8,7 @@ target_include_directories(palm PUBLIC
   ${PROJECT_SOURCE_DIR}/include
 )
 
-target_link_libraries(palm PUBLIC bamboo gourd
-  
-)
+# target_link_libraries(palm PUBLIC bamboo gourd)
 
 source_group(
   TREE "${PROJECT_SOURCE_DIR}/include"
