@@ -64,7 +64,7 @@ install_bootstrap() {
 
 if [ "$#" -ne 1 ]
 then
-    echo "USAGE: $0 material|fluent|ant|bootstrap"
+    echo "USAGE: $0 material|fluent|antd|bootstrap"
     exit 1
 fi
 
@@ -74,7 +74,7 @@ if [ $1 == "material" ]
 then
     install_react
     install_material_design
-elif [ $1 == "ant" ]
+elif [ $1 == "antd" ]
 then
     install_react
     install_ant_design
