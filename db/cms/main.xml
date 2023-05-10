@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                                                                                                                                                                                                 http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
+
+    <include file="001-create-leave-words.xml" relativeToChangelogFile="true" />
+    <include file="002-create-tags.xml" relativeToChangelogFile="true" />
+    <include file="003-create-categories.xml" relativeToChangelogFile="true" />
+    <include file="004-create-shorter-links.xml" relativeToChangelogFile="true" />
+    <include file="005-create-votes.xml" relativeToChangelogFile="true" />
+    <include file="006-create-notifications.xml" relativeToChangelogFile="true" />
+    <include file="007-create-twilio-sms-logs.xml" relativeToChangelogFile="true" />
+
+    <include file="101-create-articles.xml" relativeToChangelogFile="true" />
+    <include file="102-create-comments.xml" relativeToChangelogFile="true" />
+
+</databaseChangeLog>

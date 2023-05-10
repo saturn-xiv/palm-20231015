@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
+
+    <changeSet id="20220925122425" author="jeremy.zheng" labels="create categories">
+
+        <createTable tableName="categories">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="left" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="right" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+
+        <createTable tableName="categories_resources">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="category_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="resource_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="resource_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="priority" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="categories_resources" indexName="idx_categories_resources" unique="true">
+            <column name="category_id" />
+            <column name="resource_type" />
+            <column name="resource_id" />
+        </createIndex>
+        <createIndex tableName="categories_resources" indexName="idx_categories_resources_type">
+            <column name="resource_type" />
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>

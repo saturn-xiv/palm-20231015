@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
+
+    <changeSet id="20220925121806" author="jeremy.zheng" labels="create users">
+
+        <createTable tableName="users">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="real_name" type="varchar(32)">
+                <constraints nullable="false" />
+            </column>
+            <column name="nick_name" type="varchar(32)">
+                <constraints unique="true" nullable="false" />
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints unique="true" nullable="false" />
+            </column>
+            <column name="password" type="bytea" />
+            <column name="salt" type="bytea">
+                <constraints nullable="false" />
+            </column>
+            <column name="uid" type="char(36)">
+                <constraints unique="true" nullable="false" />
+            </column>
+            <column name="provider_type" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="provider_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="access_token" type="varchar(255)" />
+            <column name="avatar" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="lang" type="varchar(16)" defaultValue="en-US">
+                <constraints nullable="false" />
+            </column>
+            <column name="time_zone" type="varchar(32)" defaultValue="UTC">
+                <constraints nullable="false" />
+            </column>
+            <column name="sign_in_count" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="current_sign_in_at" type="datetime" />
+            <column name="current_sign_in_ip" type="varchar(45)" />
+            <column name="last_sign_in_at" type="datetime" />
+            <column name="last_sign_in_ip" type="varchar(45)" />
+            <column name="confirmed_at" type="datetime" />
+            <column name="locked_at" type="datetime" />
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="users" indexName="idx_users_real_name">
+            <column name="real_name" />
+        </createIndex>
+        <createIndex tableName="users" indexName="idx_users_lang">
+            <column name="lang" />
+        </createIndex>
+        <createIndex tableName="users" indexName="idx_users_time_zone">
+            <column name="time_zone" />
+        </createIndex>
+        <createIndex tableName="users" indexName="idx_users_provider" unique="true">
+            <column name="provider_type" />
+            <column name="provider_id" />
+        </createIndex>
+
+        <createTable tableName="users_contacts">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="user_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="key" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="value" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="users_contacts" indexName="idx_users_contacts_key" unique="true">
+            <column name="user_id" />
+            <column name="key" />
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>
