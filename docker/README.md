@@ -1,7 +1,10 @@
 # Usage
 
 ```bash
-sudo apt install crun podman buildah
+# For Ubuntu
+sudo apt install crun podman buildah fuse-overlayfs
+# For ArchLinux
+sudo pacman -S crun podman buildah fuse-overlayfs
 ```
 
 - Uncompress
