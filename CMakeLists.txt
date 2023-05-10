@@ -16,6 +16,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # --------------------------------------------------------
+
 execute_process(COMMAND git describe --tags --always --dirty
     OUTPUT_VARIABLE GIT_REV
     ERROR_QUIET
@@ -26,6 +27,7 @@ configure_file(include/palm/version.h.in ${PROJECT_SOURCE_DIR}/include/palm/vers
 
 # --------------------------------------------------------
 
+add_subdirectory(bamboo)
 add_subdirectory(src)
 add_subdirectory(apps)
 add_subdirectory(tests)

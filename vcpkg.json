@@ -1,0 +1,38 @@
+{
+  "name": "palm",
+  "version": "2023.5.4",
+  "dependencies": [
+    "openssl",
+
+    { "name": "paho-mqttpp3", "features": ["ssl"] },
+    "librabbitmq",
+
+    { "name": "cpr", "features": ["ssl"] },
+    { "name": "aws-sdk-cpp", "features": ["s3", "sqs"] },
+    "minio-cpp",
+
+    "cppcodec",
+    "pugixml",
+    "tomlplusplus",
+    "yaml-cpp",
+
+    { "name": "nlohmann-json", "features": ["diagnostics"] },
+    "inja",
+    "cpp-httplib",
+    { "name": "poco", "default-features": false },
+
+    { "name": "libpq", "features": ["nls", "openssl", "zlib"] },
+    "libpqxx",
+    { "name": "libmariadb", "features": ["openssl", "zlib"] },
+    { "name": "sqlite3", "features": ["math", "zlib"] },
+
+    "protobuf",
+    { "name": "abseil", "features": ["cxx17"] },
+    "grpc",
+
+    "spdlog",
+    "catch2",
+    "argparse",
+    "magic-enum"
+  ]
+}
