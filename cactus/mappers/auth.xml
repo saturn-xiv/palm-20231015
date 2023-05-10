@@ -1,0 +1,13 @@
+<project namespace="palm::auth::models">
+    <class name="User" table="users" autoIncrementID="true">
+        <property name="id" type="int32" />
+        <property name="nickname" type="string" />
+        <property name="real_name" type="string" />
+    </class>
+
+    <class name="Log" table="logs" autoIncrementID="true">
+        <property name="id" type="int32" />
+        <property name="user_id" type="int32" />
+        <property name="message" type="string" />
+    </class>
+</project>

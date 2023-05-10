@@ -28,6 +28,7 @@ configure_file(include/palm/version.h.in ${PROJECT_SOURCE_DIR}/include/palm/vers
 # --------------------------------------------------------
 
 add_subdirectory(bamboo)
+add_subdirectory(cactus)
 add_subdirectory(src)
 add_subdirectory(apps)
 add_subdirectory(tests)

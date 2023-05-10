@@ -5,8 +5,8 @@ set -e
 
 export WORKSPACE=$PWD
 
-build_cpsp() {
-    echo "generate page templates"
+build_pages() {
+    echo "generate pages"
     cd $WORKSPACE
     local target=bamboo/src
     if [ -d $target ]
@@ -17,8 +17,14 @@ build_cpsp() {
     find themes -type f -name "*.cpsp" -exec cpspc -N -o $target "{}" \;
 }
 
+build_active_records() {
+    echo "generate active records"
+    cd $WORKSPACE/cactus
+    arc mappers/*.xml
+}
 
-build_cpsp  
+build_pages
+build_active_records
 
 echo 'done.'
 

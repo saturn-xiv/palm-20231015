@@ -1,0 +1,12 @@
+<project namespace="palm::rbac::models">
+    <class name="Rule" table="users" autoIncrementID="true">
+        <property name="id" type="int32" />
+        <property name="ptype" type="string" />
+        <property name="v0" type="string" />
+        <property name="v1" type="string" />
+        <property name="v2" type="string" />
+        <property name="v3" type="string" />
+        <property name="v4" type="string" />
+        <property name="v5" type="string" />
+    </class>
+</project>

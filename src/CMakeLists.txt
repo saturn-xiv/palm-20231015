@@ -8,7 +8,10 @@ target_include_directories(palm PUBLIC
   ${PROJECT_SOURCE_DIR}/include
 )
 
-# target_link_libraries(palm PUBLIC bamboo gourd)
+target_link_libraries(palm PUBLIC bamboo cactus
+  Poco::Foundation Poco::Crypto Poco::JWT Poco::Util Poco::XML Poco::Zip Poco::Net
+  Poco::Data Poco::Data::MySQL Poco::Data::SQLite Poco::Data::PostgreSQL Poco::Redis
+)
 
 source_group(
   TREE "${PROJECT_SOURCE_DIR}/include"
