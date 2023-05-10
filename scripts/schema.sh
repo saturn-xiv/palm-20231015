@@ -6,13 +6,15 @@ set -e
 export WORKSPACE=$PWD
 
 build_cpsp() {
-    local target=$WORKSPACE/bamboo/src
+    echo "generate page templates"
+    cd $WORKSPACE
+    local target=bamboo/src
     if [ -d $target ]
         then rm -r $target
     fi
     mkdir -p $target
-    # cpspc $1
-    find $WORKSPACE/themes -type f -name "*.cpsp" -exec cpspc -o $target "{}" \;
+    
+    find themes -type f -name "*.cpsp" -exec cpspc -N -o $target "{}" \;
 }
 
 

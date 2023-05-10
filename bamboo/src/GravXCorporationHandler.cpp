@@ -2,7 +2,6 @@
 #include "Poco/Net/HTTPServerRequest.h"
 #include "Poco/Net/HTTPServerResponse.h"
 #include "Poco/Net/HTMLForm.h"
-#line 2 "/home/jeremy/workspace/saturn-xiv/palm-poco/themes/grav-x-corporation/home.cpsp"
 
     #include "Poco/DateTime.h"
     #include "Poco/DateTimeFormatter.h"
@@ -29,7 +28,6 @@ void GravXCorporationHandler::handleRequest(Poco::Net::HTTPServerRequest& reques
 	Poco::Net::HTMLForm form(request, request.stream());
 	std::ostream& responseStream = response.send();
 	responseStream << "\n";
-#line 13 "/home/jeremy/workspace/saturn-xiv/palm-poco/themes/grav-x-corporation/home.cpsp"
 
     DateTime now;
     std::string dt(DateTimeFormatter::format(now, DateTimeFormat::SORTABLE_FORMAT));
@@ -41,7 +39,6 @@ void GravXCorporationHandler::handleRequest(Poco::Net::HTTPServerRequest& reques
 	responseStream << "<body>\n";
 	responseStream << "<h1>Time Sample</h1>\n";
 	responseStream << "<p>";
-#line 23 "/home/jeremy/workspace/saturn-xiv/palm-poco/themes/grav-x-corporation/home.cpsp"
 	responseStream << ( dt );
 	responseStream << "</p>\n";
 	responseStream << "</body>\n";
