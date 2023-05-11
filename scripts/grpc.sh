@@ -7,7 +7,7 @@ function build_grpc() {
     if [ -L $HOME/.local/bin/protoc ]
     then
         echo 'already exists!'
-        return
+        exit 0
     fi
     if [ -d $HOME/downloads/grpc ]
     then
