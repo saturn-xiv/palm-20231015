@@ -11,7 +11,6 @@ sudo pacman -S crun podman buildah fuse-overlayfs
 
   ```bash
   cat palm-spring-TIMESTAMP.tar.xz.0* > palm-spring-TIMESTAMP.tar.xz
-  unxz palm-spring-TIMESTAMP.tar.xz
   ```
 
 - Podman commands
@@ -21,7 +20,7 @@ sudo pacman -S crun podman buildah fuse-overlayfs
   podman system reset # clean
   podman images # show images
   podman ps -a # show containers
-  podman load -i tmp/palm-CODE-TIMESTAMP.tar # import image
+  podman load -i tmp/palm-CODE-TIMESTAMP.tar.xz # import image
   ```
 
 - Envoy build
