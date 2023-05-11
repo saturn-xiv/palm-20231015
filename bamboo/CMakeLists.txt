@@ -1,7 +1,8 @@
 file(GLOB HEADER_LIST CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h")
 file(GLOB PAGE_SOURCE_LIST CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+file(GLOB GRPC_SOURCE_LIST CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cc")
 
-add_library(bamboo STATIC ${PAGE_SOURCE_LIST})
+add_library(bamboo STATIC ${PAGE_SOURCE_LIST} ${GRPC_SOURCE_LIST})
 
 find_package(OpenSSL REQUIRED)
 
@@ -17,10 +18,8 @@ target_include_directories(bamboo PUBLIC
 )
 
 target_link_libraries(bamboo PUBLIC
-  dl m
-  ${OPENSSL_LIBRARIES} ${PostgreSQL_LIBRARIES}
-  Poco::Foundation Poco::Crypto Poco::JWT Poco::Util Poco::XML Poco::Zip Poco::Net
-  Poco::ActiveRecord Poco::Data Poco::Data::MySQL Poco::Data::SQLite Poco::Data::PostgreSQL Poco::Redis
+  dl m ${OPENSSL_LIBRARIES}
+  Poco::Foundation Poco::Net  
   re2::re2 c-ares::cares
   gRPC::gpr gRPC::grpc gRPC::grpc++ gRPC::grpc++_alts # gRPC::grpc++_reflection
 )

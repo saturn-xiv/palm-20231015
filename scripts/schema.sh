@@ -2,10 +2,10 @@
 
 set -e
 
-
+export PROTOBUF_ROOT=$HOME/.local
 export WORKSPACE=$PWD
 
-build_pages() {
+generate_bamboo() {
     echo "generate pages"
     cd $WORKSPACE
     local target=bamboo/src
@@ -15,16 +15,21 @@ build_pages() {
     mkdir -p $target
     
     find themes -type f -name "*.cpsp" -exec cpspc -N -o $target "{}" \;
+    $PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/protocols \
+        -I $PROTOBUF_ROOT/include/google/protobuf \
+        --cpp_out=$target --grpc_out=$target \
+        --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_cpp_plugin \
+        $WORKSPACE/protocols/*.proto
 }
 
-build_active_records() {
+generate_cactus() {
     echo "generate active records"
     cd $WORKSPACE/cactus
     arc mappers/*.xml
 }
 
-build_pages
-build_active_records
+generate_bamboo
+generate_cactus
 
 echo 'done.'
 
