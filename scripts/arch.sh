@@ -46,7 +46,7 @@ cargo build --release --target x86_64-unknown-linux-gnu
 declare -a musl_projects=(
     "aloe"
     "coconut"
-    # "orchid"
+    "orchid"
 )
 for p in "${musl_projects[@]}"
 do
