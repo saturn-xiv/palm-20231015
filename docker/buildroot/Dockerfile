@@ -9,9 +9,7 @@ RUN apt install -y lsb-release apt-utils \
     debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg \
     zsh git locales locales-all \
     vim tzdata zip unzip tree tmux \
-    build-essential clang lldb lld mold \
-    crossbuild-essential-armhf crossbuild-essential-arm64 crossbuild-essential-riscv64 \
-    cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio \
+    build-essential cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio \
     debhelper bison flex ninja-build \
     python3 python3-distutils python3-dev python3-pip virtualenv \
     rsync bc bzr cvs mercurial subversion asciidoc w3m dblatex graphviz python3-matplotlib 
@@ -41,14 +39,28 @@ RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf \
     && echo 'set-option -g default-shell "/bin/zsh"' >> $HOME/.tmux.conf
 
 # https://buildroot.org/downloads/manual/manual.html#requirement
-ENV BUILDROOT_VERSION "2023.02"
+ENV BUILDROOT_VERSION "2023.02.1"
 RUN git clone -b ${BUILDROOT_VERSION} https://git.buildroot.net/buildroot $HOME/downloads/buildroot
+RUN echo 'export BR2_DL_DIR=$HOME/downloads' >> $HOME/.zshrc
 # make list-defconfigs
 RUN zsh -c "source $HOME/.zshrc \
     && cd $HOME/downloads/buildroot \
     && make distclean \
-    && make raspberrypi4_64_defconfig \
-    && make all"
+    && make O=$HOME/build/rpi raspberrypi_defconfig \
+    && cd $HOME/build/rpi \
+    && make source"
+RUN zsh -c "source $HOME/.zshrc \
+    && cd $HOME/downloads/buildroot \
+    && make distclean \
+    && make O=$HOME/build/rpi4 raspberrypi4_defconfig \
+    && cd $HOME/build/rpi4 \
+    && make source"
+RUN zsh -c "source $HOME/.zshrc \
+    && cd $HOME/downloads/buildroot \
+    && make distclean \
+    && make O=$HOME/build/rpi4-64 raspberrypi4_64_defconfig \
+    && cd $HOME/build/rpi4-64 \
+    && make source"
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
