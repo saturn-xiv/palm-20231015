@@ -28,10 +28,23 @@ function generate_flatbuffers() {
     flatc --rust --filename-suffix "" -o $WORKSPACE/$2 $WORKSPACE/$1.fbs
 }
 
-function generate_loquat() {
+function generate_twift_rs() {
     cd $WORKSPACE
-    echo 'generate code for loquat-rust'
-    thrift -out palm/src --gen rs -r palm/protocols/loquat.thrift
+    echo "generate code for $1-rust"
+    thrift -out palm/src/thrift/$1/ --gen rs -r palm/protocols/$1.thrift
+    mv palm/src/thrift/$1/$1.rs palm/src/thrift/$1/protocols.rs
+}
+
+function generate_twift_java() {
+    cd $WORKSPACE
+    echo "generate code for $1-java"
+    thrift -out tmp/protocols/java --gen java -r palm/protocols/$1.thrift
+}
+
+function generate_loquat() {
+    generate_twift_rs loquat
+    generate_twift_java loquat
+    cd $WORKSPACE
     
     echo 'generate code for loquat-cpp'
     local cpp_target=loquat/gourd/src
@@ -42,8 +55,6 @@ function generate_loquat() {
     mkdir -p $cpp_target
     thrift -out $cpp_target --gen cpp -r palm/protocols/loquat.thrift
 
-    echo 'generate code for loquat-java'
-    thrift -out tmp/protocols/java --gen java -r palm/protocols/loquat.thrift    
 }
 
 # https://github.com/grpc/grpc-web#code-generator-plugin
@@ -150,6 +161,8 @@ done
 generate_fig_web
 generate_aloe_web
 generate_loquat
+generate_twift_rs musa
+generate_twift_java musa
 copy_musa
 
 echo 'format rust code'
@@ -157,5 +170,5 @@ cargo fmt
 
 # ----------------------------------------------------------
 
-echo 'Done.'
+echo 'done.'
 exit 0

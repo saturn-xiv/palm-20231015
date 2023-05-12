@@ -1,4 +1,5 @@
 pub mod loquat;
+pub mod musa;
 
 use ::thrift::{
     protocol::{TBinaryInputProtocol, TBinaryOutputProtocol, TMultiplexedOutputProtocol},

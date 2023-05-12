@@ -1,15 +1,19 @@
+#[allow(clippy::uninlined_format_args, clippy::match_single_binding)]
+pub mod protocols;
+
 use chrono::Duration;
 
 use super::super::{
     crypto::{Password, Secret},
     jwt::Jwt,
-    loquat::{
-        AesSyncClient, HealthSyncClient, HmacSyncClient, JwtSyncClient, TAesSyncClient,
-        THealthSyncClient, THmacSyncClient, TJwtSyncClient,
-    },
     Result,
 };
 use super::Thrift;
+
+use self::protocols::{
+    AesSyncClient, HealthSyncClient, HmacSyncClient, JwtSyncClient, TAesSyncClient,
+    THealthSyncClient, THmacSyncClient, TJwtSyncClient,
+};
 
 const JWT: &str = "N6loquat10JwtHandlerE";
 const AES: &str = "N6loquat10AesHandlerE";

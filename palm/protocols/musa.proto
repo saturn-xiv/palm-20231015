@@ -33,6 +33,8 @@ message WechatPayCloseOrderRequest {
   string reason = 2;
 }
 
+// ----------------------------------------------------------------------------
+
 service WechatPayNative {
   rpc Prepay(WechatPayPrepayRequest)
       returns (WechatPayNativeQrCodeUrlResponse) {}
@@ -50,6 +52,8 @@ message WechatPayTradeResponse {
 
 message WechatPayQueryOrderByIdRequest { string transaction_id = 1; }
 message WechatPayQueryOrderByOutTradeNoRequest { string out_trade_no = 1; }
+
+// ----------------------------------------------------------------------------
 
 service WechatPayJsapi {
   rpc Prepay(WechatPayPrepayRequest) returns (WechatPayJsapiPrepayIdResponse) {}
@@ -70,6 +74,8 @@ message WechatPayJsapiPrepayIdResponse {
 
   string out_trade_no = 11;
 }
+
+// ----------------------------------------------------------------------------
 
 service WechatPayBill {
   rpc Trade(WechatPayTradeBillRequest) returns (WechatPayBillResponse) {}
@@ -106,6 +112,8 @@ message WechatPayFundFlowBillRequest {
   WechatPayBillDate bill_date = 1;
   AccountType account_type = 2;
 }
+
+// ----------------------------------------------------------------------------
 
 service WechatPayRefund {
   rpc Create(WechatPayCreateRefundRequest) returns (WechatPayRefundResponse) {}
