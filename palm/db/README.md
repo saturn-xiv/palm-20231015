@@ -20,9 +20,7 @@ $HOME/local/liquibase/liquibase status
 
 - setup uuid
 
-  ```sql
-  CREATE DATABASE palm;
-  \c palm
+  ```sql  
   CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
   CREATE USER www WITH PASSWORD 'CHANGE-ME';
   CREATE DATABASE palm WITH ENCODING = 'UTF8' OWNER www;
