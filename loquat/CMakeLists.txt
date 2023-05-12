@@ -25,7 +25,8 @@ configure_file(include/loquat/version.h.in ${PROJECT_SOURCE_DIR}/include/loquat/
 
 # --------------------------------------------------------
 
-# find_package(OpenSSL REQUIRED)
+find_package(OpenSSL REQUIRED)
+# find_package(Libevent REQUIRED)
 
 # --------------------------------------------------------
 FetchContent_Declare(spdlog
@@ -50,10 +51,9 @@ FetchContent_Declare(argparse
 )
 FetchContent_Declare(tink
   GIT_REPOSITORY  "https://github.com/tink-crypto/tink-cc.git"
-  GIT_TAG         "v2.0.0"
+  GIT_TAG         "6b16bea" # TODO openssl v3 v2.0.0
 )
 FetchContent_MakeAvailable(spdlog argparse tomlplusplus nlohmann_json httplib tink)
-
 
 # --------------------------------------------------------
 
@@ -65,10 +65,9 @@ file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.cpp")
 
 add_executable(loquat ${SOURCE_LIST})
 set_target_properties(loquat PROPERTIES LINK_FLAGS_RELEASE -s)
-target_link_directories(loquat PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/lib)
-target_link_libraries(loquat gourd
-  event thrift thriftnb thriftz
 
+target_link_libraries(loquat gourd
+  ${OPENSSL_LIBRARIES}
   tink::static tink::jwt::jwt_key_templates tink::jwt::jwt_mac tink::jwt::jwt_mac_config
   absl::base absl::flags absl::flags_parse
   nlohmann_json::nlohmann_json

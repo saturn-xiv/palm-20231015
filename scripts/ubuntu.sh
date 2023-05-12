@@ -76,13 +76,17 @@ build_rust_musl() {
 build_loquat() {
     apt-get install -y golang libunwind-dev libboost-all-dev
 
-    mkdir -p $WORKSPACE/loquat/build/$1
-    cd $WORKSPACE/loquat/build/$1
+    local target=$WORKSPACE/loquat/build/$1
+
+    mkdir -p $target
+    cd $target    
+    # TODO: since v2.1: -DLIBEVENT_STATIC_LINK=TRUE 
     cmake -DCMAKE_BUILD_TYPE=Release \
         -DABSL_PROPAGATE_CXX_STD=ON \
-        -DTINK_USE_SYSTEM_OPENSSL=OFF \
+        -DOPENSSL_USE_STATIC_LIBS=TRUE \
+        -DTINK_USE_SYSTEM_OPENSSL=ON \
         -DEVENT__LIBRARY_TYPE=STATIC -DEVENT__DISABLE_OPENSSL=ON \
-        -DWITH_LIBEVENT=ON -DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF \
+        -DWITH_LIBEVENT=ON -DBUILD_COMPILER=OFF -DWITH_OPENSSL=ON -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF \
         ../..
     make --silent loquat
     cp loquat $TARGET_DIR/bin/$1/
