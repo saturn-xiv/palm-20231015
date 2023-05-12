@@ -36,14 +36,6 @@ uint32_t Hmac_sign_args::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->auth);
-          this->__isset.auth = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readBinary(this->plain);
           this->__isset.plain = true;
         } else {
@@ -67,11 +59,7 @@ uint32_t Hmac_sign_args::write(::apache::thrift::protocol::TProtocol* oprot) con
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("Hmac_sign_args");
 
-  xfer += oprot->writeFieldBegin("auth", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->auth);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("plain", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeFieldBegin("plain", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeBinary(this->plain);
   xfer += oprot->writeFieldEnd();
 
@@ -90,11 +78,7 @@ uint32_t Hmac_sign_pargs::write(::apache::thrift::protocol::TProtocol* oprot) co
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("Hmac_sign_pargs");
 
-  xfer += oprot->writeFieldBegin("auth", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString((*(this->auth)));
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("plain", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeFieldBegin("plain", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeBinary((*(this->plain)));
   xfer += oprot->writeFieldEnd();
 
@@ -239,21 +223,13 @@ uint32_t Hmac_verify_args::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->auth);
-          this->__isset.auth = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readBinary(this->code);
           this->__isset.code = true;
         } else {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 3:
+      case 2:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readBinary(this->plain);
           this->__isset.plain = true;
@@ -278,15 +254,11 @@ uint32_t Hmac_verify_args::write(::apache::thrift::protocol::TProtocol* oprot) c
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("Hmac_verify_args");
 
-  xfer += oprot->writeFieldBegin("auth", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->auth);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("code", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeFieldBegin("code", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeBinary(this->code);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("plain", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeFieldBegin("plain", ::apache::thrift::protocol::T_STRING, 2);
   xfer += oprot->writeBinary(this->plain);
   xfer += oprot->writeFieldEnd();
 
@@ -305,15 +277,11 @@ uint32_t Hmac_verify_pargs::write(::apache::thrift::protocol::TProtocol* oprot) 
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("Hmac_verify_pargs");
 
-  xfer += oprot->writeFieldBegin("auth", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString((*(this->auth)));
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("code", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeFieldBegin("code", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeBinary((*(this->code)));
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("plain", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeFieldBegin("plain", ::apache::thrift::protocol::T_STRING, 2);
   xfer += oprot->writeBinary((*(this->plain)));
   xfer += oprot->writeFieldEnd();
 
@@ -399,19 +367,18 @@ uint32_t Hmac_verify_presult::read(::apache::thrift::protocol::TProtocol* iprot)
   return xfer;
 }
 
-void HmacClient::sign(std::string& _return, const std::string& auth, const std::string& plain)
+void HmacClient::sign(std::string& _return, const std::string& plain)
 {
-  send_sign(auth, plain);
+  send_sign(plain);
   recv_sign(_return);
 }
 
-void HmacClient::send_sign(const std::string& auth, const std::string& plain)
+void HmacClient::send_sign(const std::string& plain)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("sign", ::apache::thrift::protocol::T_CALL, cseqid);
 
   Hmac_sign_pargs args;
-  args.auth = &auth;
   args.plain = &plain;
   args.write(oprot_);
 
@@ -458,19 +425,18 @@ void HmacClient::recv_sign(std::string& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "sign failed: unknown result");
 }
 
-void HmacClient::verify(const std::string& auth, const std::string& code, const std::string& plain)
+void HmacClient::verify(const std::string& code, const std::string& plain)
 {
-  send_verify(auth, code, plain);
+  send_verify(code, plain);
   recv_verify();
 }
 
-void HmacClient::send_verify(const std::string& auth, const std::string& code, const std::string& plain)
+void HmacClient::send_verify(const std::string& code, const std::string& plain)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("verify", ::apache::thrift::protocol::T_CALL, cseqid);
 
   Hmac_verify_pargs args;
-  args.auth = &auth;
   args.code = &code;
   args.plain = &plain;
   args.write(oprot_);
@@ -555,7 +521,7 @@ void HmacProcessor::process_sign(int32_t seqid, ::apache::thrift::protocol::TPro
 
   Hmac_sign_result result;
   try {
-    iface_->sign(result.success, args.auth, args.plain);
+    iface_->sign(result.success, args.plain);
     result.__isset.success = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != nullptr) {
@@ -609,7 +575,7 @@ void HmacProcessor::process_verify(int32_t seqid, ::apache::thrift::protocol::TP
 
   Hmac_verify_result result;
   try {
-    iface_->verify(args.auth, args.code, args.plain);
+    iface_->verify(args.code, args.plain);
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != nullptr) {
       this->eventHandler_->handlerError(ctx, "Hmac.verify");
@@ -646,20 +612,19 @@ void HmacProcessor::process_verify(int32_t seqid, ::apache::thrift::protocol::TP
   return processor;
 }
 
-void HmacConcurrentClient::sign(std::string& _return, const std::string& auth, const std::string& plain)
+void HmacConcurrentClient::sign(std::string& _return, const std::string& plain)
 {
-  int32_t seqid = send_sign(auth, plain);
+  int32_t seqid = send_sign(plain);
   recv_sign(_return, seqid);
 }
 
-int32_t HmacConcurrentClient::send_sign(const std::string& auth, const std::string& plain)
+int32_t HmacConcurrentClient::send_sign(const std::string& plain)
 {
   int32_t cseqid = this->sync_->generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(this->sync_.get());
   oprot_->writeMessageBegin("sign", ::apache::thrift::protocol::T_CALL, cseqid);
 
   Hmac_sign_pargs args;
-  args.auth = &auth;
   args.plain = &plain;
   args.write(oprot_);
 
@@ -731,20 +696,19 @@ void HmacConcurrentClient::recv_sign(std::string& _return, const int32_t seqid)
   } // end while(true)
 }
 
-void HmacConcurrentClient::verify(const std::string& auth, const std::string& code, const std::string& plain)
+void HmacConcurrentClient::verify(const std::string& code, const std::string& plain)
 {
-  int32_t seqid = send_verify(auth, code, plain);
+  int32_t seqid = send_verify(code, plain);
   recv_verify(seqid);
 }
 
-int32_t HmacConcurrentClient::send_verify(const std::string& auth, const std::string& code, const std::string& plain)
+int32_t HmacConcurrentClient::send_verify(const std::string& code, const std::string& plain)
 {
   int32_t cseqid = this->sync_->generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(this->sync_.get());
   oprot_->writeMessageBegin("verify", ::apache::thrift::protocol::T_CALL, cseqid);
 
   Hmac_verify_pargs args;
-  args.auth = &auth;
   args.code = &code;
   args.plain = &plain;
   args.write(oprot_);

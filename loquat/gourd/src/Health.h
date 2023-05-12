@@ -22,7 +22,7 @@ namespace loquat { namespace v1 {
 class HealthIf {
  public:
   virtual ~HealthIf() {}
-  virtual void check(const std::string& auth) = 0;
+  virtual void check() = 0;
 };
 
 class HealthIfFactory {
@@ -52,36 +52,24 @@ class HealthIfSingletonFactory : virtual public HealthIfFactory {
 class HealthNull : virtual public HealthIf {
  public:
   virtual ~HealthNull() {}
-  void check(const std::string& /* auth */) override {
+  void check() override {
     return;
   }
 };
 
-typedef struct _Health_check_args__isset {
-  _Health_check_args__isset() : auth(false) {}
-  bool auth :1;
-} _Health_check_args__isset;
 
 class Health_check_args {
  public:
 
-  Health_check_args(const Health_check_args&);
-  Health_check_args& operator=(const Health_check_args&);
-  Health_check_args() noexcept
-                    : auth() {
+  Health_check_args(const Health_check_args&) noexcept;
+  Health_check_args& operator=(const Health_check_args&) noexcept;
+  Health_check_args() noexcept {
   }
 
   virtual ~Health_check_args() noexcept;
-  std::string auth;
 
-  _Health_check_args__isset __isset;
-
-  void __set_auth(const std::string& val);
-
-  bool operator == (const Health_check_args & rhs) const
+  bool operator == (const Health_check_args & /* rhs */) const
   {
-    if (!(auth == rhs.auth))
-      return false;
     return true;
   }
   bool operator != (const Health_check_args &rhs) const {
@@ -101,7 +89,6 @@ class Health_check_pargs {
 
 
   virtual ~Health_check_pargs() noexcept;
-  const std::string* auth;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
@@ -169,8 +156,8 @@ class HealthClient : virtual public HealthIf {
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  void check(const std::string& auth) override;
-  void send_check(const std::string& auth);
+  void check() override;
+  void send_check();
   void recv_check();
  protected:
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
@@ -220,13 +207,13 @@ class HealthMultiface : virtual public HealthIf {
     ifaces_.push_back(iface);
   }
  public:
-  void check(const std::string& auth) override {
+  void check() override {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->check(auth);
+      ifaces_[i]->check();
     }
-    ifaces_[i]->check(auth);
+    ifaces_[i]->check();
   }
 
 };
@@ -261,8 +248,8 @@ class HealthConcurrentClient : virtual public HealthIf {
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  void check(const std::string& auth) override;
-  int32_t send_check(const std::string& auth);
+  void check() override;
+  int32_t send_check();
   void recv_check(const int32_t seqid);
  protected:
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;

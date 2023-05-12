@@ -1,6 +1,8 @@
 #include "loquat/service.hpp"
 #include "loquat/version.hpp"
 
+#include <event2/event.h>
+#include <thrift/version.h>
 #include <tink/config/tink_config.h>
 #include <tink/jwt/jwt_mac_config.h>
 #include <tink/version.h>
@@ -51,9 +53,11 @@ int main(int argc, char** argv) {
                                                    : spdlog::level::info);
     spdlog::debug("run on debug mode {}", version);
 
+    spdlog::debug("libevent v{}", event_get_version());
     spdlog::debug("tink v{}", crypto::tink::Version::kTinkVersion);
     spdlog::debug("protobuffer v{}", google::protobuf::internal::VersionString(
                                          GOOGLE_PROTOBUF_VERSION));
+    spdlog::debug("thrift v{}", THRIFT_VERSION);
   }
   {
     const auto status = crypto::tink::TinkConfig::Register();
@@ -82,7 +86,7 @@ int main(int argc, char** argv) {
     spdlog::warn("generate token to {}@{} for {}-years", subject, audience,
                  years);
 
-    loquat::Jwt jwt(loquat::PROJECT_NAME);
+    loquat::Jwt jwt;
     const auto token =
         jwt.sign(subject, audience,
                  std::chrono::duration_cast<std::chrono::seconds>(

@@ -25,6 +25,7 @@ target_include_directories(gourd PUBLIC
   ${libevent_SOURCE_DIR}/include
   ${libevent_BINARY_DIR}/include
   ${thrift_SOURCE_DIR}/lib/cpp/src
+  ${thrift_SOURCE_DIR}/compiler/cpp/src
   ${thrift_BINARY_DIR}
 )
 

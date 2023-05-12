@@ -20,7 +20,7 @@ class HealthHandler : virtual public HealthIf {
     // Your initialization goes here
   }
 
-  void check(const std::string& auth) {
+  void check() {
     // Your implementation goes here
     printf("check\n");
   }
