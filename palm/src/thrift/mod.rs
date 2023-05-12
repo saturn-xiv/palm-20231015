@@ -14,7 +14,6 @@ use super::Result;
 pub struct Thrift {
     pub host: String,
     pub port: u16,
-    pub token: String,
 }
 
 impl Default for Thrift {
@@ -22,7 +21,6 @@ impl Default for Thrift {
         Self {
             host: "127.0.0.1".to_string(),
             port: 8080,
-            token: "change-me".to_string(),
         }
     }
 }
