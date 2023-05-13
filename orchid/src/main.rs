@@ -5,7 +5,7 @@ async fn main() {
     env_logger::init();
 
     let it = orchid::app::Args::parse();
-    if let Err(e) = it.launch().await {
+    if let Err(e) = it.launch() {
         log::error!("{:?}", e);
     }
 }

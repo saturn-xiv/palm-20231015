@@ -8,7 +8,7 @@ use palm::{
     musa::v1 as musa,
     session::Session,
     thrift::{
-        cactus::{protocols::Action, Rpc},
+        cactus::{protocols::Action, Rpc, WECHAT_PAY},
         Thrift,
     },
     try_grpc, GrpcResult,
@@ -48,7 +48,9 @@ impl musa::wechat_pay_native_server::WechatPayNative for Service {
             >()));
         }
 
-        let it = try_grpc!(self.musa.call(Action::WECHAT_PAY_NATIVE_PREPAY, req))?;
+        let it = try_grpc!(self
+            .musa
+            .call(WECHAT_PAY, Action::WECHAT_PAY_NATIVE_PREPAY, req))?;
         Ok(Response::new(it))
     }
 }
@@ -74,9 +76,11 @@ impl musa::wechat_pay_jsapi_server::WechatPayJsapi for Service {
             >()));
         }
 
-        let it = try_grpc!(self
-            .musa
-            .call(Action::WECHAT_PAY_JSAPI_QUERY_ORDER_BY_OUT_TRADE_NO, req))?;
+        let it = try_grpc!(self.musa.call(
+            WECHAT_PAY,
+            Action::WECHAT_PAY_JSAPI_QUERY_ORDER_BY_OUT_TRADE_NO,
+            req
+        ))?;
         Ok(Response::new(it))
     }
     async fn query_order_by_id(
@@ -98,9 +102,10 @@ impl musa::wechat_pay_jsapi_server::WechatPayJsapi for Service {
             >()));
         }
 
-        let it = try_grpc!(self
-            .musa
-            .call(Action::WECHAT_PAY_JSAPI_QUERY_ORDER_BY_ID, req))?;
+        let it =
+            try_grpc!(self
+                .musa
+                .call(WECHAT_PAY, Action::WECHAT_PAY_JSAPI_QUERY_ORDER_BY_ID, req))?;
         Ok(Response::new(it))
     }
     async fn close_order(&self, req: Request<musa::WechatPayCloseOrderRequest>) -> GrpcResult<()> {
@@ -119,7 +124,9 @@ impl musa::wechat_pay_jsapi_server::WechatPayJsapi for Service {
             >()));
         }
 
-        let it = try_grpc!(self.musa.call(Action::WECHAT_PAY_JSAPI_CLOSE_ORDER, req))?;
+        let it = try_grpc!(self
+            .musa
+            .call(WECHAT_PAY, Action::WECHAT_PAY_JSAPI_CLOSE_ORDER, req))?;
         Ok(Response::new(it))
     }
     async fn prepay(
@@ -141,7 +148,9 @@ impl musa::wechat_pay_jsapi_server::WechatPayJsapi for Service {
             >()));
         }
 
-        let it = try_grpc!(self.musa.call(Action::WECHAT_PAY_JSAPI_PREPAY, req))?;
+        let it = try_grpc!(self
+            .musa
+            .call(WECHAT_PAY, Action::WECHAT_PAY_JSAPI_PREPAY, req))?;
         Ok(Response::new(it))
     }
 }
@@ -167,7 +176,9 @@ impl musa::wechat_pay_bill_server::WechatPayBill for Service {
             >()));
         }
 
-        let it = try_grpc!(self.musa.call(Action::WECHAT_PAY_BILL_TRADE, req))?;
+        let it = try_grpc!(self
+            .musa
+            .call(WECHAT_PAY, Action::WECHAT_PAY_BILL_TRADE, req))?;
         Ok(Response::new(it))
     }
     async fn fund_flow(
@@ -189,7 +200,9 @@ impl musa::wechat_pay_bill_server::WechatPayBill for Service {
             >()));
         }
 
-        let it = try_grpc!(self.musa.call(Action::WECHAT_PAY_BILL_FUND_FLOW, req))?;
+        let it = try_grpc!(self
+            .musa
+            .call(WECHAT_PAY, Action::WECHAT_PAY_BILL_FUND_FLOW, req))?;
         Ok(Response::new(it))
     }
 }
@@ -215,7 +228,9 @@ impl musa::wechat_pay_refund_server::WechatPayRefund for Service {
             >()));
         }
 
-        let it = try_grpc!(self.musa.call(Action::WECHAT_PAY_REFUND_CREATE, req))?;
+        let it = try_grpc!(self
+            .musa
+            .call(WECHAT_PAY, Action::WECHAT_PAY_REFUND_CREATE, req))?;
         Ok(Response::new(it))
     }
     async fn query(
@@ -237,7 +252,9 @@ impl musa::wechat_pay_refund_server::WechatPayRefund for Service {
             >()));
         }
 
-        let it = try_grpc!(self.musa.call(Action::WECHAT_PAY_REFUND_QUERY, req))?;
+        let it = try_grpc!(self
+            .musa
+            .call(WECHAT_PAY, Action::WECHAT_PAY_REFUND_QUERY, req))?;
         Ok(Response::new(it))
     }
 }
@@ -263,7 +280,9 @@ impl musa::wechat_pay_transfer_server::WechatPayTransfer for Service {
             >()));
         }
 
-        let it = try_grpc!(self.musa.call(Action::WECHAT_PAY_TRANSFER_CREATE, req))?;
+        let it = try_grpc!(self
+            .musa
+            .call(WECHAT_PAY, Action::WECHAT_PAY_TRANSFER_CREATE, req))?;
         Ok(Response::new(it))
     }
     async fn query(
@@ -285,7 +304,9 @@ impl musa::wechat_pay_transfer_server::WechatPayTransfer for Service {
             >()));
         }
 
-        let it = try_grpc!(self.musa.call(Action::WECHAT_PAY_TRANSFER_QUERY, req))?;
+        let it = try_grpc!(self
+            .musa
+            .call(WECHAT_PAY, Action::WECHAT_PAY_TRANSFER_QUERY, req))?;
         Ok(Response::new(it))
     }
 }

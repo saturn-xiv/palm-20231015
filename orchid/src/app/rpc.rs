@@ -1,9 +1,17 @@
+use std::any::type_name;
 use std::net::{IpAddr, Ipv4Addr, SocketAddr};
 use std::sync::Arc;
 
 use clap::Parser;
-use palm::{orchid::v1, Result};
-use tonic::transport::Server;
+use palm::{
+    thrift::cactus::protocols::{HealthSyncProcessor, RpcSyncProcessor},
+    Result,
+};
+use thrift::{
+    protocol::{TBinaryInputProtocolFactory, TBinaryOutputProtocolFactory},
+    server::{TMultiplexedProcessor, TServer},
+    transport::{TFramedReadTransportFactory, TFramedWriteTransportFactory},
+};
 
 use super::super::{
     env::Config as Env,
@@ -23,28 +31,61 @@ pub struct Config {
 }
 
 impl Config {
-    pub async fn launch(&self, config: Arc<Env>) -> Result<()> {
+    pub fn launch(&self, config: Arc<Env>) -> Result<()> {
         let addr = SocketAddr::new(IpAddr::V4(Ipv4Addr::new(0, 0, 0, 0)), self.port);
 
-        info!("start oauth gRPC at {}", addr);
+        info!("start orchid rpc at {}", addr);
         let redis = config.redis.open()?;
-        Server::builder()
-            .add_service(v1::health_server::HealthServer::new(HealthService {
-                config: config.clone(),
-            }))
-            .add_service(v1::wechat_oauth2_server::WechatOauth2Server::new(
-                WechatOauth2Service {
-                    config: config.clone(),
-                    redis: redis.clone(),
-                },
-            ))
-            .add_service(
-                v1::wechat_mini_program_server::WechatMiniProgramServer::new(
-                    WechatMiniProgramService { config, redis },
-                ),
-            )
-            .serve(addr)
-            .await?;
+
+        let processor = {
+            let mut it = TMultiplexedProcessor::new();
+            {
+                let name = type_name::<HealthService>();
+                info!("register processor {}", name);
+                it.register(
+                    name,
+                    Box::new(HealthSyncProcessor::new(HealthService {})),
+                    false,
+                )?;
+            }
+            {
+                let name = type_name::<WechatOauth2Service>();
+                info!("register processor {}", name);
+                it.register(
+                    name,
+                    Box::new(RpcSyncProcessor::new(WechatOauth2Service {
+                        config: config.clone(),
+                        redis: redis.clone(),
+                    })),
+                    false,
+                )?;
+            }
+            {
+                let name = type_name::<WechatMiniProgramService>();
+                info!("register processor {}", name);
+                it.register(
+                    name,
+                    Box::new(RpcSyncProcessor::new(WechatMiniProgramService {
+                        config: config.clone(),
+                        redis,
+                    })),
+                    false,
+                )?;
+            }
+            it
+        };
+
+        let mut server = TServer::new(
+            TFramedReadTransportFactory::new(),
+            TBinaryInputProtocolFactory::new(),
+            TFramedWriteTransportFactory::new(),
+            TBinaryOutputProtocolFactory::new(),
+            processor,
+            config.threads,
+        );
+
+        server.listen(addr)?;
+
         Ok(())
     }
 }

@@ -1,19 +1,10 @@
-use std::sync::Arc;
+use palm::thrift::cactus::protocols::HealthSyncHandler;
 
-use palm::{orchid::v1, try_grpc, GrpcResult};
-use tonic::{Request, Response};
+pub struct Service;
 
-use super::super::env::Config;
-
-pub struct Service {
-    pub config: Arc<Config>,
-}
-
-#[tonic::async_trait]
-impl v1::health_server::Health for Service {
-    async fn check(&self, req: Request<()>) -> GrpcResult<()> {
-        let subject = try_grpc!(self.config.verify(&req))?;
-        info!("health check from {subject}");
-        Ok(Response::new(()))
+impl HealthSyncHandler for Service {
+    fn handle_check(&self) -> thrift::Result<()> {
+        info!("health check");
+        Ok(())
     }
 }

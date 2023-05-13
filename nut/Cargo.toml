@@ -99,3 +99,6 @@ path = '../palm'
 
 [dependencies.lemon]
 path = '../lemon'
+
+[dependencies.orchid]
+path = '../orchid'
