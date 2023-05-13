@@ -1,5 +1,5 @@
-namespace cpp musa.v1
-namespace java com.github.saturn_xiv.palm.plugins.musa.v1
+namespace cpp cactus.v1
+namespace java com.github.saturn_xiv.palm.plugins.cactus.v1
 
 enum Action {
     WechatPayNativePrepay = 1101;
@@ -12,7 +12,11 @@ enum Action {
     WechatPayRefundCreate = 1401;
     WechatPayRefundQuery = 1402;
     WechatPayTransferCreate = 1501;
-    WechatPayTransferQuery = 1502;
+    WechatPayTransferQuery = 1502;    
+    WechatMiniProgramLogin = 2101;
+    WechatMiniProgramPhoneNumber = 2102;
+    WechatOauth2QrConnect = 2201;
+    WechatOauth2Login = 2202;
 }
 
 service Rpc {

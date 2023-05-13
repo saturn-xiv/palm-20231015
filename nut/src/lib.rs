@@ -15,32 +15,3 @@ pub mod schema;
 pub mod services;
 pub mod theme;
 pub mod zero;
-
-use palm::{
-    orchid::v1::{
-        wechat_mini_program_client::WechatMiniProgramClient,
-        wechat_oauth2_client::WechatOauth2Client,
-    },
-    Result,
-};
-use serde::{Deserialize, Serialize};
-use tonic::transport::{channel::Channel, Endpoint};
-
-#[derive(Serialize, Deserialize, Default, Debug, Clone, PartialEq, Eq)]
-pub struct Orchid {
-    pub endpoint: String,
-    pub token: String,
-}
-
-impl Orchid {
-    pub async fn wechat_mini_program(&self) -> Result<WechatMiniProgramClient<Channel>> {
-        let endpoint = self.endpoint.parse::<Endpoint>()?;
-        let it = WechatMiniProgramClient::connect(endpoint).await?;
-        Ok(it)
-    }
-    pub async fn wechat_oauth2(&self) -> Result<WechatOauth2Client<Channel>> {
-        let endpoint = self.endpoint.parse::<Endpoint>()?;
-        let it = WechatOauth2Client::connect(endpoint).await?;
-        Ok(it)
-    }
-}

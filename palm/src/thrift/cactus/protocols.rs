@@ -41,6 +41,10 @@ impl Action {
   pub const WECHAT_PAY_REFUND_QUERY: Action = Action(1402);
   pub const WECHAT_PAY_TRANSFER_CREATE: Action = Action(1501);
   pub const WECHAT_PAY_TRANSFER_QUERY: Action = Action(1502);
+  pub const WECHAT_MINI_PROGRAM_LOGIN: Action = Action(2101);
+  pub const WECHAT_MINI_PROGRAM_PHONE_NUMBER: Action = Action(2102);
+  pub const WECHAT_OAUTH2_QR_CONNECT: Action = Action(2201);
+  pub const WECHAT_OAUTH2_LOGIN: Action = Action(2202);
   pub const ENUM_VALUES: &'static [Self] = &[
     Self::WECHAT_PAY_NATIVE_PREPAY,
     Self::WECHAT_PAY_JSAPI_PREPAY,
@@ -53,6 +57,10 @@ impl Action {
     Self::WECHAT_PAY_REFUND_QUERY,
     Self::WECHAT_PAY_TRANSFER_CREATE,
     Self::WECHAT_PAY_TRANSFER_QUERY,
+    Self::WECHAT_MINI_PROGRAM_LOGIN,
+    Self::WECHAT_MINI_PROGRAM_PHONE_NUMBER,
+    Self::WECHAT_OAUTH2_QR_CONNECT,
+    Self::WECHAT_OAUTH2_LOGIN,
   ];
 }
 
@@ -81,6 +89,10 @@ impl From<i32> for Action {
       1402 => Action::WECHAT_PAY_REFUND_QUERY,
       1501 => Action::WECHAT_PAY_TRANSFER_CREATE,
       1502 => Action::WECHAT_PAY_TRANSFER_QUERY,
+      2101 => Action::WECHAT_MINI_PROGRAM_LOGIN,
+      2102 => Action::WECHAT_MINI_PROGRAM_PHONE_NUMBER,
+      2201 => Action::WECHAT_OAUTH2_QR_CONNECT,
+      2202 => Action::WECHAT_OAUTH2_LOGIN,
       _ => Action(i)
     }
   }

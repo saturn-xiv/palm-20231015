@@ -3,9 +3,10 @@ use std::result::Result as StdResult;
 
 use actix_web::{dev::Payload, error::ErrorForbidden, web, Error, FromRequest, HttpRequest};
 use futures::future::{err, ok, Ready};
-use palm::{handlers::token::Token, jwt::Jwt, thrift::Thrift, try_web, Result};
+use palm::{handlers::token::Token, jwt::Jwt, try_web, Result};
 
 use super::super::{
+    controllers::Loquat,
     models::user::{Action, Dao as UserDao, Item as User},
     orm::postgresql::{Connection as Db, Pool as DbPool},
 };
@@ -23,7 +24,7 @@ impl FromRequest for User {
 
     fn from_request(req: &HttpRequest, _pl: &mut Payload) -> Self::Future {
         let token = Token::detect(req);
-        if let Some(jwt) = req.app_data::<web::Data<Thrift>>() {
+        if let Some(jwt) = req.app_data::<web::Data<Loquat>>() {
             if let Some(db) = req.app_data::<web::Data<DbPool>>() {
                 if let Ok(mut db) = try_web!(db.get()) {
                     let db = db.deref_mut();
@@ -31,7 +32,7 @@ impl FromRequest for User {
                     if let Some(ref token) = token {
                         let jwt = jwt.deref();
                         let jwt = jwt.deref();
-                        if let Ok(it) = user_from_token(token, db, jwt) {
+                        if let Ok(it) = user_from_token(token, db, &jwt.0) {
                             return ok(it);
                         }
                     }

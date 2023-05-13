@@ -1,4 +1,4 @@
-use nut::{orm::postgresql::Config as PostgreSql, Orchid};
+use nut::orm::postgresql::Config as PostgreSql;
 use palm::{
     cache::redis::Config as Redis,
     crypto::Key,
@@ -17,12 +17,12 @@ pub struct Config {
     pub cookie_key: Key,
     pub loquat: Thrift,
     pub musa: Thrift,
+    pub orchid: Thrift,
     pub http: Http,
     pub rpc: Rpc,
     pub postgresql: PostgreSql,
     pub redis: Redis,
     pub rabbitmq: RabbitMqConfig,
     pub opensearch: OpenSearch,
-    pub orchid: Orchid,
     pub minio: Minio,
 }

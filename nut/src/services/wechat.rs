@@ -6,8 +6,17 @@ use casbin::Enforcer;
 use chrono::Duration;
 use diesel::Connection as DieselConntection;
 use palm::{
-    cache::redis::Pool as RedisPool, jwt::Jwt, nut::v1, orchid::v1 as orchid, session::Session,
-    thrift::Thrift, try_grpc, wechat::oauth2::qr_connect::url as wechat_oauth2_qr_connect_url,
+    cache::redis::Pool as RedisPool,
+    jwt::Jwt,
+    nut::v1,
+    orchid::v1 as orchid,
+    session::Session,
+    thrift::{
+        cactus::{protocols::Action as CactusAction, Rpc as CactusRpc},
+        Thrift,
+    },
+    try_grpc,
+    wechat::oauth2::qr_connect::url as wechat_oauth2_qr_connect_url,
     Error, GrpcResult,
 };
 use tokio::sync::Mutex;
@@ -23,7 +32,6 @@ use super::super::{
         },
     },
     orm::postgresql::Pool as PostgreSqlPool,
-    Orchid,
 };
 use super::{user::new_sign_in_response, CurrentUserAdapter, Oauth2State};
 
@@ -34,7 +42,7 @@ pub struct Service {
     pub aes: Arc<Thrift>,
     pub hmac: Arc<Thrift>,
     pub enforcer: Arc<Mutex<Enforcer>>,
-    pub orchid: Arc<Orchid>,
+    pub orchid: Arc<Thrift>,
 }
 
 #[tonic::async_trait]
@@ -59,19 +67,16 @@ impl v1::wechat_server::Wechat for Service {
             .ttl
             .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds));
 
-        let info = {
-            let mut cli = try_grpc!(self.orchid.wechat_oauth2().await)?;
-            let mut req = Request::new(orchid::WechatOauth2LoginRequest {
+        let info: orchid::WechatOauth2LoginResponse = try_grpc!(self.orchid.call(
+            CactusAction::WECHAT_OAUTH2_LOGIN,
+            Request::new(orchid::WechatOauth2LoginRequest {
                 app_id: req.app_id.clone(),
                 code: req.code.clone(),
                 state: req.state.clone(),
                 language: req.language,
-            });
-            try_grpc!(Thrift::authorization(&mut req, &self.orchid.token))?;
-            let res = try_grpc!(cli.login(req).await)?;
-            debug!("fetch wechat user {:?}", res);
-            res.into_inner()
-        };
+            })
+        ))?;
+        debug!("fetch wechat user {:?}", info);
         let state = try_grpc!(req.state.parse::<Oauth2State>())?;
 
         let mut db = try_grpc!(self.pgsql.get())?;

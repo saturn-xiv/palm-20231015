@@ -1,8 +1,8 @@
 use casbin::prelude::*;
-use palm::rbac::MODEL;
+use palm::{rbac::MODEL, Result};
 use sqlx_adapter::SqlxAdapter;
 
-use super::{orm::postgresql::Config as PostgreSql, Result};
+use super::orm::postgresql::Config as PostgreSql;
 
 impl PostgreSql {
     pub async fn casbin(&self) -> Result<Enforcer> {

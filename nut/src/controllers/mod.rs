@@ -18,10 +18,14 @@ use palm::{
         rss::{build as build_rss, Link as RssLink},
         Provider as SeoProvider, RobotsTxt,
     },
+    thrift::Thrift,
     try_web, BUILD_TIME, GIT_VERSION,
 };
 
 use super::{i18n::I18n, orm::postgresql::Pool as DbPool, services::site::Service as SiteService};
+
+pub struct Loquat(pub Thrift);
+pub struct Orchid(pub Thrift);
 
 #[get("/version")]
 pub async fn version() -> WebResult<impl Responder> {

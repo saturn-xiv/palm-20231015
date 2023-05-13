@@ -34,7 +34,6 @@ use super::super::{
         wechat::oauth2_user::Dao as WechatOauth2UserDao,
     },
     orm::postgresql::{Connection as Db, Pool as PostgreSqlPool},
-    Orchid,
 };
 use super::CurrentUserAdapter;
 
@@ -46,7 +45,7 @@ pub struct Service {
     pub hmac: Arc<Thrift>,
     pub rabbitmq: Arc<RabbitMq>,
     pub enforcer: Arc<Mutex<Enforcer>>,
-    pub orchid: Arc<Orchid>,
+    pub orchid: Arc<Thrift>,
 }
 
 #[tonic::async_trait]

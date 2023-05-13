@@ -21,8 +21,6 @@ var global =
     (function () { return this; }).call(null) ||
     Function('return this')();
 
-var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
-goog.object.extend(proto, google_protobuf_empty_pb);
 goog.exportSymbol('proto.palm.orchid.v1.WechatMiniProgramLoginRequest', null, global);
 goog.exportSymbol('proto.palm.orchid.v1.WechatMiniProgramLoginResponse', null, global);
 goog.exportSymbol('proto.palm.orchid.v1.WechatMiniProgramPhoneNumberRequest', null, global);

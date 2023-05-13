@@ -41,7 +41,6 @@ use super::super::{
         user::{Dao as UserDao, Item as User},
     },
     orm::postgresql::{Connection as PostgreSqlConnection, Pool as PostgreSqlPool},
-    Orchid,
 };
 use super::CurrentUserAdapter;
 
@@ -54,7 +53,7 @@ pub struct Service {
     pub rabbitmq: Arc<RabbitMq>,
     pub opensearch: Arc<OpenSearch>,
     pub enforcer: Arc<Mutex<Enforcer>>,
-    pub orchid: Arc<Orchid>,
+    pub orchid: Arc<Thrift>,
 }
 
 impl Service {
