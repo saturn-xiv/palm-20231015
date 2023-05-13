@@ -27,94 +27,121 @@ use thrift::protocol::verify_required_field_exists;
 use thrift::server::TProcessor;
 
 #[derive(Copy, Clone, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
-pub struct WechatPayAction(pub i32);
+pub struct Action(pub i32);
 
-impl WechatPayAction {
-  pub const CREATE_TRANSFER: WechatPayAction = WechatPayAction(601);
-  pub const QUERY_TRANSFER: WechatPayAction = WechatPayAction(602);
+impl Action {
+  pub const WECHAT_PAY_NATIVE_PREPAY: Action = Action(1101);
+  pub const WECHAT_PAY_JSAPI_PREPAY: Action = Action(1201);
+  pub const WECHAT_PAY_JSAPI_QUERY_ORDER_BY_OUT_TRADE_NO: Action = Action(1202);
+  pub const WECHAT_PAY_JSAPI_QUERY_ORDER_BY_ID: Action = Action(1203);
+  pub const WECHAT_PAY_JSAPI_CLOSE_ORDER: Action = Action(1204);
+  pub const WECHAT_PAY_BILL_TRADE: Action = Action(1301);
+  pub const WECHAT_PAY_BILL_FUND_FLOW: Action = Action(1302);
+  pub const WECHAT_PAY_REFUND_CREATE: Action = Action(1401);
+  pub const WECHAT_PAY_REFUND_QUERY: Action = Action(1402);
+  pub const WECHAT_PAY_TRANSFER_CREATE: Action = Action(1501);
+  pub const WECHAT_PAY_TRANSFER_QUERY: Action = Action(1502);
   pub const ENUM_VALUES: &'static [Self] = &[
-    Self::CREATE_TRANSFER,
-    Self::QUERY_TRANSFER,
+    Self::WECHAT_PAY_NATIVE_PREPAY,
+    Self::WECHAT_PAY_JSAPI_PREPAY,
+    Self::WECHAT_PAY_JSAPI_QUERY_ORDER_BY_OUT_TRADE_NO,
+    Self::WECHAT_PAY_JSAPI_QUERY_ORDER_BY_ID,
+    Self::WECHAT_PAY_JSAPI_CLOSE_ORDER,
+    Self::WECHAT_PAY_BILL_TRADE,
+    Self::WECHAT_PAY_BILL_FUND_FLOW,
+    Self::WECHAT_PAY_REFUND_CREATE,
+    Self::WECHAT_PAY_REFUND_QUERY,
+    Self::WECHAT_PAY_TRANSFER_CREATE,
+    Self::WECHAT_PAY_TRANSFER_QUERY,
   ];
 }
 
-impl TSerializable for WechatPayAction {
+impl TSerializable for Action {
   #[allow(clippy::trivially_copy_pass_by_ref)]
   fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {
     o_prot.write_i32(self.0)
   }
-  fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<WechatPayAction> {
+  fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Action> {
     let enum_value = i_prot.read_i32()?;
-    Ok(WechatPayAction::from(enum_value))
+    Ok(Action::from(enum_value))
   }
 }
 
-impl From<i32> for WechatPayAction {
+impl From<i32> for Action {
   fn from(i: i32) -> Self {
     match i {
-      601 => WechatPayAction::CREATE_TRANSFER,
-      602 => WechatPayAction::QUERY_TRANSFER,
-      _ => WechatPayAction(i)
+      1101 => Action::WECHAT_PAY_NATIVE_PREPAY,
+      1201 => Action::WECHAT_PAY_JSAPI_PREPAY,
+      1202 => Action::WECHAT_PAY_JSAPI_QUERY_ORDER_BY_OUT_TRADE_NO,
+      1203 => Action::WECHAT_PAY_JSAPI_QUERY_ORDER_BY_ID,
+      1204 => Action::WECHAT_PAY_JSAPI_CLOSE_ORDER,
+      1301 => Action::WECHAT_PAY_BILL_TRADE,
+      1302 => Action::WECHAT_PAY_BILL_FUND_FLOW,
+      1401 => Action::WECHAT_PAY_REFUND_CREATE,
+      1402 => Action::WECHAT_PAY_REFUND_QUERY,
+      1501 => Action::WECHAT_PAY_TRANSFER_CREATE,
+      1502 => Action::WECHAT_PAY_TRANSFER_QUERY,
+      _ => Action(i)
     }
   }
 }
 
-impl From<&i32> for WechatPayAction {
+impl From<&i32> for Action {
   fn from(i: &i32) -> Self {
-    WechatPayAction::from(*i)
+    Action::from(*i)
   }
 }
 
-impl From<WechatPayAction> for i32 {
-  fn from(e: WechatPayAction) -> i32 {
+impl From<Action> for i32 {
+  fn from(e: Action) -> i32 {
     e.0
   }
 }
 
-impl From<&WechatPayAction> for i32 {
-  fn from(e: &WechatPayAction) -> i32 {
+impl From<&Action> for i32 {
+  fn from(e: &Action) -> i32 {
     e.0
   }
 }
 
 //
-// WechatPay service client
+// Rpc service client
 //
 
-pub trait TWechatPaySyncClient {
-  fn call(&mut self, name: WechatPayAction, request: Vec<u8>) -> thrift::Result<Vec<u8>>;
+pub trait TRpcSyncClient {
+  fn call(&mut self, action: Action, request: Vec<u8>) -> thrift::Result<Vec<u8>>;
 }
 
-pub trait TWechatPaySyncClientMarker {}
+pub trait TRpcSyncClientMarker {}
 
-pub struct WechatPaySyncClient<IP, OP> where IP: TInputProtocol, OP: TOutputProtocol {
+pub struct RpcSyncClient<IP, OP> where IP: TInputProtocol, OP: TOutputProtocol {
   _i_prot: IP,
   _o_prot: OP,
   _sequence_number: i32,
 }
 
-impl <IP, OP> WechatPaySyncClient<IP, OP> where IP: TInputProtocol, OP: TOutputProtocol {
-  pub fn new(input_protocol: IP, output_protocol: OP) -> WechatPaySyncClient<IP, OP> {
-    WechatPaySyncClient { _i_prot: input_protocol, _o_prot: output_protocol, _sequence_number: 0 }
+impl <IP, OP> RpcSyncClient<IP, OP> where IP: TInputProtocol, OP: TOutputProtocol {
+  pub fn new(input_protocol: IP, output_protocol: OP) -> RpcSyncClient<IP, OP> {
+    RpcSyncClient { _i_prot: input_protocol, _o_prot: output_protocol, _sequence_number: 0 }
   }
 }
 
-impl <IP, OP> TThriftClient for WechatPaySyncClient<IP, OP> where IP: TInputProtocol, OP: TOutputProtocol {
+impl <IP, OP> TThriftClient for RpcSyncClient<IP, OP> where IP: TInputProtocol, OP: TOutputProtocol {
   fn i_prot_mut(&mut self) -> &mut dyn TInputProtocol { &mut self._i_prot }
   fn o_prot_mut(&mut self) -> &mut dyn TOutputProtocol { &mut self._o_prot }
   fn sequence_number(&self) -> i32 { self._sequence_number }
   fn increment_sequence_number(&mut self) -> i32 { self._sequence_number += 1; self._sequence_number }
 }
 
-impl <IP, OP> TWechatPaySyncClientMarker for WechatPaySyncClient<IP, OP> where IP: TInputProtocol, OP: TOutputProtocol {}
+impl <IP, OP> TRpcSyncClientMarker for RpcSyncClient<IP, OP> where IP: TInputProtocol, OP: TOutputProtocol {}
 
-impl <C: TThriftClient + TWechatPaySyncClientMarker> TWechatPaySyncClient for C {
-  fn call(&mut self, name: WechatPayAction, request: Vec<u8>) -> thrift::Result<Vec<u8>> {
+impl <C: TThriftClient + TRpcSyncClientMarker> TRpcSyncClient for C {
+  fn call(&mut self, action: Action, request: Vec<u8>) -> thrift::Result<Vec<u8>> {
     (
       {
         self.increment_sequence_number();
         let message_ident = TMessageIdentifier::new("call", TMessageType::Call, self.sequence_number());
-        let call_args = WechatPayCallArgs { name, request };
+        let call_args = RpcCallArgs { action, request };
         self.o_prot_mut().write_message_begin(&message_ident)?;
         call_args.write_to_out_protocol(self.o_prot_mut())?;
         self.o_prot_mut().write_message_end()?;
@@ -131,7 +158,7 @@ impl <C: TThriftClient + TWechatPaySyncClientMarker> TWechatPaySyncClient for C 
         return Err(thrift::Error::Application(remote_error))
       }
       verify_expected_message_type(TMessageType::Reply, message_ident.message_type)?;
-      let result = WechatPayCallResult::read_from_in_protocol(self.i_prot_mut())?;
+      let result = RpcCallResult::read_from_in_protocol(self.i_prot_mut())?;
       self.i_prot_mut().read_message_end()?;
       result.ok_or()
     }
@@ -139,38 +166,38 @@ impl <C: TThriftClient + TWechatPaySyncClientMarker> TWechatPaySyncClient for C 
 }
 
 //
-// WechatPay service processor
+// Rpc service processor
 //
 
-pub trait WechatPaySyncHandler {
-  fn handle_call(&self, name: WechatPayAction, request: Vec<u8>) -> thrift::Result<Vec<u8>>;
+pub trait RpcSyncHandler {
+  fn handle_call(&self, action: Action, request: Vec<u8>) -> thrift::Result<Vec<u8>>;
 }
 
-pub struct WechatPaySyncProcessor<H: WechatPaySyncHandler> {
+pub struct RpcSyncProcessor<H: RpcSyncHandler> {
   handler: H,
 }
 
-impl <H: WechatPaySyncHandler> WechatPaySyncProcessor<H> {
-  pub fn new(handler: H) -> WechatPaySyncProcessor<H> {
-    WechatPaySyncProcessor {
+impl <H: RpcSyncHandler> RpcSyncProcessor<H> {
+  pub fn new(handler: H) -> RpcSyncProcessor<H> {
+    RpcSyncProcessor {
       handler,
     }
   }
   fn process_call(&self, incoming_sequence_number: i32, i_prot: &mut dyn TInputProtocol, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {
-    TWechatPayProcessFunctions::process_call(&self.handler, incoming_sequence_number, i_prot, o_prot)
+    TRpcProcessFunctions::process_call(&self.handler, incoming_sequence_number, i_prot, o_prot)
   }
 }
 
-pub struct TWechatPayProcessFunctions;
+pub struct TRpcProcessFunctions;
 
-impl TWechatPayProcessFunctions {
-  pub fn process_call<H: WechatPaySyncHandler>(handler: &H, incoming_sequence_number: i32, i_prot: &mut dyn TInputProtocol, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {
-    let args = WechatPayCallArgs::read_from_in_protocol(i_prot)?;
-    match handler.handle_call(args.name, args.request) {
+impl TRpcProcessFunctions {
+  pub fn process_call<H: RpcSyncHandler>(handler: &H, incoming_sequence_number: i32, i_prot: &mut dyn TInputProtocol, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {
+    let args = RpcCallArgs::read_from_in_protocol(i_prot)?;
+    match handler.handle_call(args.action, args.request) {
       Ok(handler_return) => {
         let message_ident = TMessageIdentifier::new("call", TMessageType::Reply, incoming_sequence_number);
         o_prot.write_message_begin(&message_ident)?;
-        let ret = WechatPayCallResult { result_value: Some(handler_return) };
+        let ret = RpcCallResult { result_value: Some(handler_return) };
         ret.write_to_out_protocol(o_prot)?;
         o_prot.write_message_end()?;
         o_prot.flush()
@@ -203,7 +230,7 @@ impl TWechatPayProcessFunctions {
   }
 }
 
-impl <H: WechatPaySyncHandler> TProcessor for WechatPaySyncProcessor<H> {
+impl <H: RpcSyncHandler> TProcessor for RpcSyncProcessor<H> {
   fn process(&self, i_prot: &mut dyn TInputProtocol, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {
     let message_ident = i_prot.read_message_begin()?;
     let res = match &*message_ident.name {
@@ -226,19 +253,19 @@ impl <H: WechatPaySyncHandler> TProcessor for WechatPaySyncProcessor<H> {
 }
 
 //
-// WechatPayCallArgs
+// RpcCallArgs
 //
 
 #[derive(Clone, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
-struct WechatPayCallArgs {
-  name: WechatPayAction,
+struct RpcCallArgs {
+  action: Action,
   request: Vec<u8>,
 }
 
-impl WechatPayCallArgs {
-  fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<WechatPayCallArgs> {
+impl RpcCallArgs {
+  fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<RpcCallArgs> {
     i_prot.read_struct_begin()?;
-    let mut f_1: Option<WechatPayAction> = None;
+    let mut f_1: Option<Action> = None;
     let mut f_2: Option<Vec<u8>> = None;
     loop {
       let field_ident = i_prot.read_field_begin()?;
@@ -248,7 +275,7 @@ impl WechatPayCallArgs {
       let field_id = field_id(&field_ident)?;
       match field_id {
         1 => {
-          let val = WechatPayAction::read_from_in_protocol(i_prot)?;
+          let val = Action::read_from_in_protocol(i_prot)?;
           f_1 = Some(val);
         },
         2 => {
@@ -262,10 +289,10 @@ impl WechatPayCallArgs {
       i_prot.read_field_end()?;
     }
     i_prot.read_struct_end()?;
-    verify_required_field_exists("WechatPayCallArgs.name", &f_1)?;
-    verify_required_field_exists("WechatPayCallArgs.request", &f_2)?;
-    let ret = WechatPayCallArgs {
-      name: f_1.expect("auto-generated code should have checked for presence of required fields"),
+    verify_required_field_exists("RpcCallArgs.action", &f_1)?;
+    verify_required_field_exists("RpcCallArgs.request", &f_2)?;
+    let ret = RpcCallArgs {
+      action: f_1.expect("auto-generated code should have checked for presence of required fields"),
       request: f_2.expect("auto-generated code should have checked for presence of required fields"),
     };
     Ok(ret)
@@ -273,8 +300,8 @@ impl WechatPayCallArgs {
   fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {
     let struct_ident = TStructIdentifier::new("call_args");
     o_prot.write_struct_begin(&struct_ident)?;
-    o_prot.write_field_begin(&TFieldIdentifier::new("name", TType::I32, 1))?;
-    self.name.write_to_out_protocol(o_prot)?;
+    o_prot.write_field_begin(&TFieldIdentifier::new("action", TType::I32, 1))?;
+    self.action.write_to_out_protocol(o_prot)?;
     o_prot.write_field_end()?;
     o_prot.write_field_begin(&TFieldIdentifier::new("request", TType::String, 2))?;
     o_prot.write_bytes(&self.request)?;
@@ -285,15 +312,15 @@ impl WechatPayCallArgs {
 }
 
 //
-// WechatPayCallResult
+// RpcCallResult
 //
 
 #[derive(Clone, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
-struct WechatPayCallResult {
+struct RpcCallResult {
   result_value: Option<Vec<u8>>,
 }
 
-impl WechatPayCallResult {
+impl RpcCallResult {
   fn ok_or(self) -> thrift::Result<Vec<u8>> {
     if self.result_value.is_some() {
       Ok(self.result_value.unwrap())
@@ -302,13 +329,13 @@ impl WechatPayCallResult {
         thrift::Error::Application(
           ApplicationError::new(
             ApplicationErrorKind::MissingResult,
-            "no result received for WechatPayCall"
+            "no result received for RpcCall"
           )
         )
       )
     }
   }
-  fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<WechatPayCallResult> {
+  fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<RpcCallResult> {
     i_prot.read_struct_begin()?;
     let mut f_0: Option<Vec<u8>> = None;
     loop {
@@ -329,13 +356,13 @@ impl WechatPayCallResult {
       i_prot.read_field_end()?;
     }
     i_prot.read_struct_end()?;
-    let ret = WechatPayCallResult {
+    let ret = RpcCallResult {
       result_value: f_0,
     };
     Ok(ret)
   }
   fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {
-    let struct_ident = TStructIdentifier::new("WechatPayCallResult");
+    let struct_ident = TStructIdentifier::new("RpcCallResult");
     o_prot.write_struct_begin(&struct_ident)?;
     if let Some(ref fld_var) = self.result_value {
       o_prot.write_field_begin(&TFieldIdentifier::new("result_value", TType::String, 0))?;

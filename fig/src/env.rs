@@ -16,6 +16,7 @@ pub struct Config {
     #[serde(rename = "cookie-key")]
     pub cookie_key: Key,
     pub loquat: Thrift,
+    pub musa: Thrift,
     pub http: Http,
     pub rpc: Rpc,
     pub postgresql: PostgreSql,

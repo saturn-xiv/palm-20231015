@@ -199,9 +199,3 @@ message WechatPayQueryTransferResponse {
   TransferBatch transfer_batch = 1;
   repeated TransferDetail transfer_detail_list = 9;
 }
-
-// ----------------------------------------------------------------------------
-
-service Health {
-  rpc Check(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-}
