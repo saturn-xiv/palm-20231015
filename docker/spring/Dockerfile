@@ -183,7 +183,7 @@ RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc \
 
 ENV JDK_VERSION "20.0.1-open"
 ENV GRADLE_VERSION "8.1.1"
-RUN curl -s "https://get.sdkman.io" | zsh
+RUN curl -s "https://get.sdkman.io" | bash
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
     && sdk install java ${JDK_VERSION} \
