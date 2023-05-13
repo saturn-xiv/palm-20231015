@@ -1,4 +1,5 @@
 pub mod attachment;
+pub mod cactus;
 pub mod category;
 pub mod google;
 pub mod health;

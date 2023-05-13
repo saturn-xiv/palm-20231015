@@ -115,24 +115,30 @@ function generate_diesel_postgresql() {
         > flashcard/src/schema.rs
 }
 
-function copy_musa() {
+function generate_musa() {
     cd $WORKSPACE
+    # TODO
 
+    # $PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/palm/protocols \
+    #     -I $PROTOBUF_ROOT/include/google/protobuf \
+    #     --java_out=$target --grpc_out=$target \
+    #     --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_java_plugin \
+    #     $WORKSPACE/palm/protocols/*.proto
 
-    local -a plugins=(
-        "loquat"
-        "musa"
-    )
-    for p in "${plugins[@]}"
-    do
-        local package=com/github/saturn_xiv/palm/plugins/$p/v1
-        local target=musa/src/main/java/$package
-        if [ -d $target ]
-        then
-            rm -r $target
-        fi
-        cp -r tmp/protocols/java/$package $target        
-    done
+    # local -a plugins=(
+    #     "loquat"
+    #     "musa"
+    # )
+    # for p in "${plugins[@]}"
+    # do
+    #     local package=com/github/saturn_xiv/palm/plugins/$p/v1
+    #     local target=musa/src/main/java/$package
+    #     if [ -d $target ]
+    #     then
+    #         rm -r $target
+    #     fi
+    #     cp -r tmp/protocols/java/$package $target        
+    # done
 }
 
 
@@ -161,9 +167,8 @@ done
 generate_fig_web
 generate_aloe_web
 generate_loquat
-generate_twift_rs musa
-generate_twift_java musa
-copy_musa
+generate_twift_rs cactus
+generate_musa
 
 echo 'format rust code'
 cargo fmt

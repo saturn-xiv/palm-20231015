@@ -21,6 +21,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let redis = cfg.redis.open()?;
     let aes = Arc::new(cfg.loquat.clone());
     let hmac = Arc::new(cfg.loquat.clone());
+    let musa = Arc::new(cfg.musa.clone());
     let orchid = Arc::new(cfg.orchid.clone());
     let s3 = Arc::new(S3::from(cfg.minio.clone()));
     let jwt = Arc::new(cfg.loquat.clone());
@@ -54,6 +55,61 @@ pub async fn launch(cfg: &Config) -> Result<()> {
 
     info!("start gRPC at {}", addr);
     Server::builder()
+        .add_service(
+            palm::musa::v1::wechat_pay_native_server::WechatPayNativeServer::new(
+                nut::services::cactus::musa::Service {
+                    pgsql: pgsql.clone(),
+                    jwt: jwt.clone(),
+                    redis: redis.clone(),
+                    enforcer: enforcer.clone(),
+                    musa: musa.clone(),
+                },
+            ),
+        )
+        .add_service(
+            palm::musa::v1::wechat_pay_jsapi_server::WechatPayJsapiServer::new(
+                nut::services::cactus::musa::Service {
+                    pgsql: pgsql.clone(),
+                    jwt: jwt.clone(),
+                    redis: redis.clone(),
+                    enforcer: enforcer.clone(),
+                    musa: musa.clone(),
+                },
+            ),
+        )
+        .add_service(
+            palm::musa::v1::wechat_pay_bill_server::WechatPayBillServer::new(
+                nut::services::cactus::musa::Service {
+                    pgsql: pgsql.clone(),
+                    jwt: jwt.clone(),
+                    redis: redis.clone(),
+                    enforcer: enforcer.clone(),
+                    musa: musa.clone(),
+                },
+            ),
+        )
+        .add_service(
+            palm::musa::v1::wechat_pay_refund_server::WechatPayRefundServer::new(
+                nut::services::cactus::musa::Service {
+                    pgsql: pgsql.clone(),
+                    jwt: jwt.clone(),
+                    redis: redis.clone(),
+                    enforcer: enforcer.clone(),
+                    musa: musa.clone(),
+                },
+            ),
+        )
+        .add_service(
+            palm::musa::v1::wechat_pay_transfer_server::WechatPayTransferServer::new(
+                nut::services::cactus::musa::Service {
+                    pgsql: pgsql.clone(),
+                    jwt: jwt.clone(),
+                    redis: redis.clone(),
+                    enforcer: enforcer.clone(),
+                    musa,
+                },
+            ),
+        )
         .add_service(palm::rbac::v1::policy_server::PolicyServer::new(
             nut::services::policy::Service {
                 pgsql: pgsql.clone(),
