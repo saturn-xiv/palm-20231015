@@ -291,7 +291,7 @@ RUN git clone -b $FLATBUFFERS_VERSION https://github.com/google/flatbuffers.git 
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir -pv $HOME/build/flatbuffers \
     && cd $HOME/build/flatbuffers \
-    && cmake -DCMAKE_BUILD_TYPE=Release \
+    && CC=/usr/bin/clang CXX=/usr/bin/clang++ cmake -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release -DFLATBUFFERS_BUILD_TESTS=OFF \
         -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/flatbuffers \
     && make \
     && make install"
@@ -318,12 +318,12 @@ RUN zsh -c "source $HOME/.zshrc \
 # haxelib install uuid
 # haxelib install hxcpp
 # FIXME make install && make install/fast
-RUN zsh -c "source $HOME/.zshrc \
-    && cd $HOME/downloads/thrift \
-    && sdk use java ${THRIFT_JAVA_VERSION} \
-    && sdk use gradle ${THRIFT_GRADLE_VERSION} \
-    && ./bootstrap.sh \
-    && ./configure MAKE=gmake CXXFLAGS='-g -O2' CFLAGS='-g -O2' --prefix=$HOME/.local --disable-tests"
+# RUN zsh -c "source $HOME/.zshrc \
+#     && cd $HOME/downloads/thrift \
+#     && sdk use java ${THRIFT_JAVA_VERSION} \
+#     && sdk use gradle ${THRIFT_GRADLE_VERSION} \
+#     && ./bootstrap.sh \
+#     && ./configure MAKE=gmake CXXFLAGS='-g -O2' CFLAGS='-g -O2' --prefix=$HOME/.local --disable-tests"
 RUN zsh -c "source $HOME/.zshrc \
     && sdk default java ${JDK_VERSION} \
     && sdk default gradle ${GRADLE_VERSION}"
