@@ -46,6 +46,19 @@ macro_rules! to_code {
 }
 
 #[macro_export]
+macro_rules! try_thrift {
+    ($r:expr, $e:expr) => {{
+        $r.map_err($e)
+    }};
+    ($r:expr) => {{
+        try_thrift!($r, |e| Error::Application(ApplicationError::new(
+            ApplicationErrorKind::InternalError,
+            e.to_string(),
+        )))
+    }};
+}
+
+#[macro_export]
 macro_rules! try_grpc {
     ($r:expr, $e:expr) => {{
         $r.map_err($e)

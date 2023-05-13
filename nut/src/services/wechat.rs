@@ -68,6 +68,7 @@ impl v1::wechat_server::Wechat for Service {
             .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds));
 
         let info: orchid::WechatOauth2LoginResponse = try_grpc!(self.orchid.call(
+            type_name::<::orchid::services::wechat::oauth2::Service>(),
             CactusAction::WECHAT_OAUTH2_LOGIN,
             Request::new(orchid::WechatOauth2LoginRequest {
                 app_id: req.app_id.clone(),

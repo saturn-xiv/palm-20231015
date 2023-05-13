@@ -10,6 +10,7 @@ use tonic::Request;
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Config {
+    pub threads: usize,
     pub redis: Redis,
     pub loquat: Thrift,
     pub clients: Vec<String>,

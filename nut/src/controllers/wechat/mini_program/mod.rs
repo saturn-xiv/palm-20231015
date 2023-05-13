@@ -1,5 +1,6 @@
 pub mod messaging;
 
+use std::any::type_name;
 use std::ops::DerefMut;
 
 use actix_web::{post, web, HttpResponse, Responder, Result as WebResult};
@@ -124,6 +125,7 @@ pub async fn sign_in(
     );
 
     let res: WechatMiniProgramLoginResponse = try_web!(orchid.0.call(
+        type_name::<orchid::services::wechat::mini_program::Service>(),
         CactusAction::WECHAT_MINI_PROGRAM_LOGIN,
         Request::new(WechatMiniProgramLoginRequest {
             app_id: form.app_id.clone(),
