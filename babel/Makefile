@@ -7,16 +7,21 @@ SOURCES += imgui/backends/imgui_impl_glfw.cpp imgui/backends/imgui_impl_opengl3.
 
 OBJS = $(addsuffix .o, $(basename $(notdir $(SOURCES))))
 
-CXXFLAGS = -std=c++20 -O2
+CXXFLAGS = -std=c++20 -O2 -s
+CXXFLAGS += -DBOOST_LOG_DYN_LINK -lboost_log -lpthread
 CXXFLAGS += -Iimgui -Iimgui/backends -Iprotocols -Isrc
-CXXFLAGS += `pkg-config --cflags glfw3`
+
 
 ifeq ($(UNAME_S), Linux)
-	LIBS = -lGL `pkg-config --static --libs glfw3`
+	LIBS = -lGL `pkg-config --static --libs glfw3` `pkg-config --static --libs protobuf` `pkg-config --static --libs grpc`
+	CXXFLAGS += `pkg-config --cflags glfw3` `pkg-config --cflags protobuf` `pkg-config --cflags grpc`
 endif
 
 
-%.o:%.cpp
+%.o:src/%.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+%.o:protocols/%.cc
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 %.o:imgui/%.cpp

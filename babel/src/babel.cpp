@@ -2,11 +2,12 @@
 
 static void glfw_error_callback(int error, const char *description)
 {
-    std::cout << "GLFW Error" << error << " " << description << std::endl;
+    BOOST_LOG_TRIVIAL(error) << "GLFW error(" << error << ")" << description;
 }
 
 palm::babel::Application::Application(int argc, char **argv)
 {
+
     if (!glfwInit())
     {
         return;
