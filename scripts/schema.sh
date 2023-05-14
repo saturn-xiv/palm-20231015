@@ -142,6 +142,19 @@ function generate_musa() {
 }
 
 
+function generate_babel() {
+    local target=$WORKSPACE/babel/protocols
+    if [ -d $target ]
+    then
+        rm -r $target
+    fi
+    mkdir -p $target
+    $PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/palm/protocols \
+        -I $PROTOBUF_ROOT/include/google/protobuf \
+        --cpp_out=$target --grpc_out=$target \
+        --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_cpp_plugin \
+        $WORKSPACE/palm/protocols/babel.proto
+}
 # -----------------------------------------------------------------------------
 
 generate_diesel_postgresql "postgres://www:change-me@127.0.0.1:5432/demo"
@@ -169,6 +182,7 @@ generate_aloe_web
 generate_loquat
 generate_twift_rs cactus
 generate_musa
+generate_babel
 
 echo 'format rust code'
 cargo fmt

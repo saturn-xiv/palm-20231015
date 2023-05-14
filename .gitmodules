@@ -16,3 +16,6 @@
 [submodule "lemon/src/themes/gantry/theme"]
 	path = lemon/src/themes/gantry/theme
 	url = https://github.com/gantry/gantry5.git
+[submodule "babel/imgui"]
+	path = babel/imgui
+	url = https://github.com/ocornut/imgui.git
