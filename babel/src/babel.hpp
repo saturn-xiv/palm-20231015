@@ -22,5 +22,14 @@ namespace palm
         public:
             Application(int argc, char **argv);
         };
+        class Client
+        {
+        public:
+            Client(std::string host = "127.0.0.1", uint16_t port = 80) : host(host), port(port) {}
+
+        private:
+            std::string host;
+            uint16_t port;
+        };
     }
 }

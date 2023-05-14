@@ -18,10 +18,10 @@ ifeq ($(UNAME_S), Linux)
 endif
 
 
-%.o:src/%.cpp
+%.o:src/%.cpp src/babel.hpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-%.o:protocols/%.cc
+%.o:protocols/%.cc protocols/%.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 %.o:imgui/%.cpp
