@@ -1,4 +1,3 @@
-pub mod generate_token;
 pub mod rpc;
 
 use std::ops::Deref;
@@ -32,9 +31,6 @@ impl Args {
                 let env = Arc::new(env);
                 it.launch(env)?;
             }
-            SubCommand::GenerateToken(ref it) => {
-                it.launch(&env)?;
-            }
         };
         Ok(())
     }
@@ -42,8 +38,6 @@ impl Args {
 
 #[derive(Subcommand, PartialEq, Eq, Debug)]
 pub enum SubCommand {
-    #[clap(about = "Start a gRPC server")]
+    #[clap(about = "Start a rpc server")]
     Rpc(rpc::Config),
-    #[clap(about = "Generate a jwt token")]
-    GenerateToken(generate_token::Config),
 }
