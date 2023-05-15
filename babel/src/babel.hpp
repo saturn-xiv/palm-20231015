@@ -1,6 +1,7 @@
 #pragma once
 
 #include <boost/log/trivial.hpp>
+#include <boost/property_tree/ptree.hpp>
 
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
@@ -17,19 +18,28 @@ namespace palm
 {
     namespace babel
     {
-        class Application
-        {
-        public:
-            Application(int argc, char **argv);
-        };
+
         class Client
         {
         public:
-            Client(std::string host = "127.0.0.1", uint16_t port = 80) : host(host), port(port) {}
+            Client(const boost::property_tree::ptree &tree);
+            Client(std::string host = "127.0.0.1", uint16_t port = 8080) : host(host), port(port) {}
 
         private:
             std::string host;
             uint16_t port;
         };
+
+        class Application
+        {
+        public:
+            Application(int argc, char **argv);
+
+        private:
+            void launch() const;
+
+            std::shared_ptr<Client> client;
+        };
+
     }
 }

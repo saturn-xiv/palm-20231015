@@ -1,11 +1,13 @@
 #include "babel.hpp"
 
+#include <boost/property_tree/ini_parser.hpp>
+
 static void glfw_error_callback(int error, const char *description)
 {
     BOOST_LOG_TRIVIAL(error) << "GLFW error(" << error << ")" << description;
 }
 
-palm::babel::Application::Application(int argc, char **argv)
+void palm::babel::Application::launch() const
 {
 
     if (!glfwInit())
@@ -160,4 +162,22 @@ palm::babel::Application::Application(int argc, char **argv)
 
     glfwDestroyWindow(window);
     glfwTerminate();
+}
+
+palm::babel::Application::Application(int argc, char **argv)
+{
+    boost::property_tree::ptree tree;
+
+    {
+        const std::string file = "config.ini";
+        BOOST_LOG_TRIVIAL(debug) << "load config from " << file;
+        boost::property_tree::ini_parser::read_ini(file, tree);
+    }
+    this->client = std::make_shared<Client>(tree);
+}
+
+palm::babel::Client::Client(const boost::property_tree::ptree &tree)
+{
+    this->host = tree.get<std::string>("rpc.server-host");
+    this->port = tree.get<uint16_t>("rpc.server-port");
 }
