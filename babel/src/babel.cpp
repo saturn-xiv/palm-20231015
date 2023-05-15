@@ -10,6 +10,7 @@ palm::babel::Application::Application(int argc, char **argv)
 
     if (!glfwInit())
     {
+        BOOST_LOG_TRIVIAL(error) << "init glfw failed";
         return;
     }
 
@@ -40,6 +41,7 @@ palm::babel::Application::Application(int argc, char **argv)
     GLFWwindow *window = glfwCreateWindow(1280, 720, "Dear ImGui GLFW+OpenGL3 example", nullptr, nullptr);
     if (window == nullptr)
     {
+        BOOST_LOG_TRIVIAL(error) << "create windows failed";
         return;
     }
     glfwMakeContextCurrent(window);
