@@ -54,10 +54,11 @@ int main(int argc, char** argv) {
     spdlog::debug("run on debug mode {}", version);
 
     spdlog::debug("libevent v{}", event_get_version());
-    spdlog::debug("tink v{}", crypto::tink::Version::kTinkVersion);
-    spdlog::debug("protobuffer v{}", google::protobuf::internal::VersionString(
-                                         GOOGLE_PROTOBUF_VERSION));
-    spdlog::debug("thrift v{}", THRIFT_VERSION);
+    spdlog::debug("Tink v{}", crypto::tink::Version::kTinkVersion);
+    spdlog::debug(
+        "Protocol Buffers v{}",
+        google::protobuf::internal::VersionString(GOOGLE_PROTOBUF_VERSION));
+    spdlog::debug("Thrift v{}", THRIFT_VERSION);
   }
   {
     const auto status = crypto::tink::TinkConfig::Register();

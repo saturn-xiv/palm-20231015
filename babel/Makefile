@@ -13,8 +13,8 @@ CXXFLAGS += -Iimgui -Iimgui/backends -Iprotocols -Isrc
 
 
 ifeq ($(UNAME_S), Linux)
-	LIBS = -lGL `pkg-config --static --libs glfw3` `pkg-config --static --libs protobuf` `pkg-config --static --libs grpc`
-	CXXFLAGS += `pkg-config --cflags glfw3` `pkg-config --cflags protobuf` `pkg-config --cflags grpc`
+	LIBS = -lGL `pkg-config --static --libs glfw3` `pkg-config --static --libs protobuf grpc grpc++`
+	CXXFLAGS += `pkg-config --cflags glfw3` `pkg-config --cflags protobuf grpc grpc++`
 endif
 
 
