@@ -2,6 +2,12 @@
 
 set -e
 
+. /etc/os-release
+
+export SOURCE_ROOT=$HOME/downloads/grpc
+export BUILD_ROOT=$HOME/build/grpc
+export INSTALL_ROOT=$HOME/.local
+
 function build_grpc() {
     # https://grpc.io/docs/languages/cpp/quickstart/
     if [ -L $HOME/.local/bin/protoc ]
@@ -9,9 +15,9 @@ function build_grpc() {
         echo 'already exists!'
         exit 0
     fi
-    if [ -d $HOME/downloads/grpc ]
+    if [ -d $SOURCE_ROOT ]
     then
-        cd $HOME/downloads/grpc
+        cd $SOURCE_ROOT
         git checkout master
         git pull        
         git checkout $1
@@ -19,19 +25,19 @@ function build_grpc() {
         # git pull --recurse-submodules
         git submodule update --init --recursive
     else
-        git clone --recurse-submodules -b $1 https://github.com/grpc/grpc.git $HOME/downloads/grpc
+        git clone --recurse-submodules -b $1 https://github.com/grpc/grpc.git $SOURCE_ROOT
     fi
    
-    if [ -d $HOME/build/grpc ]
+    if [ -d $BUILD_ROOT ]
     then
-        rm -r $HOME/build/grpc
+        rm -r $BUILD_ROOT
     fi
-    mkdir -pv $HOME/build/grpc
-    cd $HOME/build/grpc
+    mkdir -p $BUILD_ROOT
+    cd $BUILD_ROOT
     cmake -DCMAKE_BUILD_TYPE=Release \
     -DABSL_PROPAGATE_CXX_STD=ON \
     -DgRPC_INSTALL=ON -DgRPC_SSL_PROVIDER=package -DgRPC_BUILD_TESTS=OFF \
-    -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc
+    -DCMAKE_INSTALL_PREFIX=$INSTALL_ROOT $SOURCE_ROOT
     make -j $(nproc --ignore=2)
     make install
 }
@@ -43,6 +49,12 @@ then
 fi
 
 build_grpc $1
+
+
+if [[ $UBUNTU_CODENAME == "bionic" ]]
+then
+    cp $SOURCE_ROOT/third_party/re2/re2.pc $HOME/.local/lib/pkgconfig/
+fi
 
 echo "done($1)."
 exit 0

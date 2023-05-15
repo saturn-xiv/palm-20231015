@@ -92,6 +92,17 @@ build_loquat() {
     cp loquat $TARGET_DIR/bin/$1/
 }
 
+
+build_babel() {
+    apt-get install -y libboost-all-dev libglfw3-dev libre2-dev
+
+    cd $WORKSPACE/babel
+
+    make --silent clean
+    PKG_CONFIG_PATH=$HOME/.local/lib/pkgconfig make --silent
+    cp babel $TARGET_DIR/bin/$1/
+}
+
 build_musa() {
     cd $WORKSPACE/musa
     gradle clean
@@ -219,18 +230,19 @@ done
 if [[ $(uname -p) == "aarch64" ]]
 then
     build_loquat aarch64
+    build_babel aarch64
 fi
 
 if [[ $(uname -p) == "x86_64" ]]
 then
     build_loquat x86_64
+    build_babel x86_64
 fi
 
 # -----------------------------------------------------------------------------
 
-# FIXME
-# build_dashboard fig
-# build_dashboard aloe
+build_dashboard fig
+build_dashboard aloe
 
 build_musa
 copy_jdk
