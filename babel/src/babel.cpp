@@ -71,7 +71,8 @@ palm::babel::Application::Application(int argc, char **argv)
     // - Remember that in C/C++ if you want to include a backslash \ in a string literal you need to write a double backslash \\ !
     // - Our Emscripten build process allows embedding fonts to be accessible at runtime from the "fonts/" folder. See Makefile.emscripten for details.
     // io.Fonts->AddFontDefault();
-    // io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\segoeui.ttf", 18.0f);
+
+    io.Fonts->AddFontFromFileTTF("/usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc", 18.0f, nullptr, io.Fonts->GetGlyphRangesChineseFull());
     // io.Fonts->AddFontFromFileTTF("../../misc/fonts/DroidSans.ttf", 16.0f);
     // io.Fonts->AddFontFromFileTTF("../../misc/fonts/Roboto-Medium.ttf", 16.0f);
     // io.Fonts->AddFontFromFileTTF("../../misc/fonts/Cousine-Regular.ttf", 15.0f);
@@ -109,7 +110,8 @@ palm::babel::Application::Application(int argc, char **argv)
 
             ImGui::Begin("Hello, world!"); // Create a window called "Hello, world!" and append into it.
 
-            ImGui::Text("This is some useful text.");          // Display some text (you can use a format strings too)
+            ImGui::Text("Български, Deutsch, English, Español, Français, Bahasa Indonesia, Italiano");
+            ImGui::Text("日本語, 한국어, polski, Português, Русский, Türkçe, Tiếng Việt, 简体中文, 繁體中文");
             ImGui::Checkbox("Demo Window", &show_demo_window); // Edit bools storing our window open/close state
             ImGui::Checkbox("Another Window", &show_another_window);
 
@@ -131,7 +133,9 @@ palm::babel::Application::Application(int argc, char **argv)
             ImGui::Begin("Another Window", &show_another_window); // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
             ImGui::Text("Hello from another window!");
             if (ImGui::Button("Close Me"))
+            {
                 show_another_window = false;
+            }
             ImGui::End();
         }
 
