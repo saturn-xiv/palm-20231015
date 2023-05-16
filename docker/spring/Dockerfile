@@ -134,15 +134,9 @@ RUN wget -q -P $HOME/downloads https://more.musl.cc/x86_64-linux-musl/riscv64-li
     && tar xf $HOME/downloads/riscv64-linux-musl-cross.tgz \
     && echo 'export PATH=/opt/riscv64-linux-musl-cross/bin:$PATH' >> $HOME/.zshrc
 
-RUN zsh -c "source $HOME/.zshrc && pip3 install --user cmake"
-RUN zsh -c "source $HOME/.zshrc \
-    && pip3 install --user ansible paramiko"
+RUN zsh -c "source $HOME/.zshrc && pip3 install --user cmake ansible paramiko conan supervisor"
 RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.zshrc \
     && echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/tmp/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.zshrc
-
-RUN zsh -c "source $HOME/.zshrc && pip3 install --user conan"
-
-RUN zsh -c "source $HOME/.zshrc && pip3 install --user supervisor"
 
 # https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos
 RUN wget -q -O $HOME/downloads/composer https://getcomposer.org/installer
@@ -181,8 +175,11 @@ RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc \
     && echo 'export PATH=$GOROOT/bin:$PATH' >> $HOME/.zshrc \
     && echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc
 
+# https://github.com/sdkman/sdkman-cli
 ENV JDK_VERSION "20.0.1-open"
 ENV GRADLE_VERSION "8.1.1"
+ENV THRIFT_JAVA_VERSION "19.0.2-open"
+ENV THRIFT_GRADLE_VERSION "7.6.1"  
 RUN curl -s "https://get.sdkman.io" | bash
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
@@ -190,7 +187,11 @@ RUN zsh -c "source $HOME/.zshrc \
     && sdk install ant \
     && sdk install maven \
     && sdk install gradle ${GRADLE_VERSION} \
-    && sdk install kotlin"
+    && sdk install kotlin \
+    && sdk install java  ${THRIFT_JAVA_VERSION} \
+    && sdk install gradle ${THRIFT_GRADLE_VERSION} \
+    && sdk default java ${JDK_VERSION} \
+    && sdk default gradle ${GRADLE_VERSION}"
 
 # https://github.com/nvm-sh/nvm
 ENV NVM_VERSION "v0.39.3"
@@ -284,6 +285,10 @@ RUN wget -q -O $HOME/.local/bin/grpc_java_plugin \
     https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${GRPC_JAVA_PLUGIN_VERSION}/protoc-gen-grpc-java-${GRPC_JAVA_PLUGIN_VERSION}-linux-x86_64.exe
 RUN chmod +x $HOME/.local/bin/grpc_java_plugin
 
+# https://grpc.io/docs/languages/go/quickstart/
+RUN zsh -c "source $HOME/.zshrc \
+    && go install google.golang.org/protobuf/cmd/protoc-gen-go@latest \
+    && go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest"
 
 # https://github.com/google/flatbuffers
 ENV FLATBUFFERS_VERSION "v23.5.9"
@@ -307,11 +312,7 @@ RUN apt install -y libboost-all-dev libevent-dev libz-dev zlib1g-dev \
         libglib2.0-dev \
         libbit-vector-perl libclass-accessor-perl
 # Could not find method classifier() for arguments [test] on task ':testJar'
-ENV THRIFT_JAVA_VERSION "19.0.2-open"
-ENV THRIFT_GRADLE_VERSION "7.6.1"
-RUN zsh -c "source $HOME/.zshrc \
-    && sdk install java  ${THRIFT_JAVA_VERSION} \
-    && sdk install gradle ${THRIFT_GRADLE_VERSION}"
+
 # TODO 
 # composer: Continue as root/super user confirm
 # haxelib setup
@@ -324,9 +325,7 @@ RUN zsh -c "source $HOME/.zshrc \
 #     && sdk use gradle ${THRIFT_GRADLE_VERSION} \
 #     && ./bootstrap.sh \
 #     && ./configure MAKE=gmake CXXFLAGS='-g -O2' CFLAGS='-g -O2' --prefix=$HOME/.local --disable-tests"
-RUN zsh -c "source $HOME/.zshrc \
-    && sdk default java ${JDK_VERSION} \
-    && sdk default gradle ${GRADLE_VERSION}"
+   
 
 # ADD conan /opt/conan
 # RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh amd64"
