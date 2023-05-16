@@ -187,6 +187,9 @@ then
     exit 1
 fi
 
+cd $WORKSPACE
+git submodule update --init --recursive
+
 # -----------------------------------------------------------------------------
 
 if [ -d $TARGET_DIR ]
@@ -198,8 +201,6 @@ cd $TARGET_DIR/bin
 mkdir x86_64 aarch64 riscv64gc armhf
 
 # -----------------------------------------------------------------------------
-
-
 
 build_rust_amd64_gnu fig
 build_rust_arm64_gnu fig
