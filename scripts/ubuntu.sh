@@ -74,7 +74,7 @@ build_rust_musl() {
 }
 
 build_loquat() {
-    apt-get install -y golang libunwind-dev libboost-all-dev
+    apt-get install -y golang libunwind-dev libboost-all-dev libevent-dev
 
     local target=$WORKSPACE/loquat/build/$1
 
