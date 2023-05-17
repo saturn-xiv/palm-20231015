@@ -12,6 +12,7 @@ members = [
     "cms",
     "forum",
     "courses",
+    "grocery",
     "mall",
     "chats",        
     "cscd",
