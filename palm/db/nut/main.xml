@@ -30,5 +30,6 @@
     <include file="312-create-issues.xml" relativeToChangelogFile="true" />
     <include file="313-create-comments.xml" relativeToChangelogFile="true" />
     <include file="314-create-search-histories.xml" relativeToChangelogFile="true" />
+    <include file="315-create-menu-bars.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>

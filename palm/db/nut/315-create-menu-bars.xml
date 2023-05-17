@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
+
+    <changeSet id="20230417170551" author="Jeremy Zheng" labels="create menu bars">
+
+        <createTable tableName="menu_bars">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="lang" type="varchar(8)">
+                <constraints nullable="false" />
+            </column>
+            <column name="code" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="title" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="sort_order" type="integer" defaultValue="100">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="menu_bars" indexName="idx_menu_bars_lang">
+            <column name="lang" />
+        </createIndex>
+        <createIndex tableName="menu_bars" indexName="idx_menu_bars_title">
+            <column name="title" />
+        </createIndex>
+
+
+        <createTable tableName="menu_links">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="bar_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="title" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="url" type="varchar(255)" defaultValue="#">
+                <constraints nullable="false" />
+            </column>
+            <column name="sort_order" type="integer" defaultValue="100">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="menu_links" indexName="idx_menu_links_title">
+            <column name="title" />
+        </createIndex>
+
+
+    </changeSet>
+
+</databaseChangeLog>
