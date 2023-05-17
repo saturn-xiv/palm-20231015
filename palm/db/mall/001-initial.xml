@@ -141,6 +141,9 @@
             <column name="currency" type="char(3)">
                 <constraints nullable="false" />
             </column>
+            <column name="editor" type="integer">
+                <constraints nullable="false" />
+            </column>
             <column name="comment" type="text">
                 <constraints nullable="false" />
             </column>
@@ -174,6 +177,9 @@
                 <constraints primaryKey="true" nullable="false" />
             </column>
             <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="editor" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="detail" type="text">
@@ -261,53 +267,6 @@
         <createIndex tableName="mall_cart" indexName="idx_mall_cart_currency">
             <column name="currency" />
         </createIndex>
-
-        <createTable tableName="mall_category">
-            <column name="id" type="integer" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false" />
-            </column>
-            <column name="sn" type="varchar(31)">
-                <constraints nullable="false" />
-            </column>
-            <column name="name" type="varchar(63)">
-                <constraints nullable="false" />
-            </column>
-            <column name="keywords" type="bytea">
-                <constraints nullable="false" />
-            </column>
-            <column name="detail" type="text">
-                <constraints nullable="false" />
-            </column>
-            <column name="icon_url" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-            <column name="picture_url" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-            <column name="left" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="right" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="deleted_at" type="datetime" />
-            <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
-            </column>
-            <column name="updated_at" type="datetime">
-                <constraints nullable="false" />
-            </column>
-            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
-                <constraints nullable="false" />
-            </column>
-        </createTable>
-        <createIndex tableName="mall_category" indexName="idx_mall_category_sn" unique="true">
-            <column name="sn" />
-        </createIndex>
-        <createIndex tableName="mall_category" indexName="idx_mall_category_name">
-            <column name="name" />
-        </createIndex>
-
 
         <createTable tableName="mall_coupon">
             <column name="id" type="integer" autoIncrement="true">
@@ -440,6 +399,9 @@
                 <constraints nullable="false" />
             </column>
             <column name="currency" type="char(3)">
+                <constraints nullable="false" />
+            </column>
+            <column name="editor" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="detail" type="text">
@@ -858,6 +820,65 @@
             <column name="currency" />
         </createIndex>
 
+
+        <createTable tableName="mall_topic">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="title" type="varchar(127)">
+                <constraints nullable="false" />
+            </column>
+            <column name="summary" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="editor" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="body" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="price" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="currency" type="char(3)">
+                <constraints nullable="false" />
+            </column>
+            <column name="read_count" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="picture_url" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="sort_order" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="goods" type="bytea">
+                <constraints nullable="false" />
+            </column>
+            <column name="status" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createIndex tableName="mall_topic" indexName="idx_mall_topic_title">
+            <column name="title" />
+        </createIndex>
+        <createIndex tableName="mall_topic" indexName="idx_mall_topic_sumamry">
+            <column name="summary" />
+        </createIndex>
+        <createIndex tableName="mall_topic" indexName="idx_mall_topic_currency">
+            <column name="currency" />
+        </createIndex>
 
     </changeSet>
 

@@ -16,10 +16,16 @@
             <column name="user_id" type="integer">
                 <constraints nullable="false" />
             </column>
+            <column name="ip" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
             <column name="resource_id" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="resource_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="editor" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="content" type="text">
@@ -39,6 +45,9 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
+        <createIndex tableName="comments" indexName="idx_comments_ip">
+            <column name="ip" />
+        </createIndex>
         <createIndex tableName="comments" indexName="idx_comments_resource_type">
             <column name="resource_type" />
         </createIndex>

@@ -13,22 +13,19 @@
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="ip" type="varchar(45)">
-                <constraints nullable="false" />
-            </column>
             <column name="lang" type="varchar(8)">
                 <constraints nullable="false" />
             </column>
-            <column name="title" type="varchar(255)">
+            <column name="title" type="varchar(127)">
                 <constraints nullable="false" />
             </column>
-            <column name="summary" type="varchar(1000)">
-                <constraints nullable="false" />
-            </column>
-            <column name="body" type="text">
+            <column name="summary" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
             <column name="editor" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="body" type="text">
                 <constraints nullable="false" />
             </column>
             <column name="user_id" type="integer">
@@ -37,9 +34,8 @@
             <column name="status" type="integer">
                 <constraints nullable="false" />
             </column>
-            <column name="published_at" type="datetime">
-                <constraints nullable="false" />
-            </column>
+            <column name="published_at" type="datetime" />
+            <column name="deleted_at" type="datetime" />
             <column name="version" type="integer" defaultValue="0">
                 <constraints nullable="false" />
             </column>
@@ -50,14 +46,14 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="cms_articles" indexName="idx_cms_article_ip">
-            <column name="ip" />
-        </createIndex>
         <createIndex tableName="cms_articles" indexName="idx_cms_articles_lang">
             <column name="lang" />
         </createIndex>
         <createIndex tableName="cms_articles" indexName="idx_cms_articles_title">
             <column name="title" />
+        </createIndex>
+        <createIndex tableName="cms_articles" indexName="idx_cms_articles_summary">
+            <column name="summary" />
         </createIndex>
 
     </changeSet>

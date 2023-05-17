@@ -16,6 +16,9 @@
             <column name="question" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
+            <column name="editor" type="integer">
+                <constraints nullable="false" />
+            </column>
             <column name="answer" type="text">
                 <constraints nullable="false" />
             </column>
