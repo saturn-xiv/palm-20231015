@@ -7,7 +7,7 @@ SOURCES += imgui/backends/imgui_impl_glfw.cpp imgui/backends/imgui_impl_opengl3.
 
 OBJS = $(addsuffix .o, $(basename $(notdir $(SOURCES))))
 
-CXXFLAGS = -std=c++17 -O2 -s
+CXXFLAGS = -O2 -s
 CXXFLAGS += -DBOOST_LOG_DYN_LINK -lboost_system -lboost_log -lpthread
 CXXFLAGS += -Iimgui -Iimgui/backends -Iprotocols -Isrc
 
@@ -16,6 +16,8 @@ ifeq ($(UNAME_S), Linux)
 	LIBS = -lGL `pkg-config --static --libs glfw3` `pkg-config --static --libs protobuf grpc grpc++`
 	CXXFLAGS += `pkg-config --cflags glfw3` `pkg-config --cflags protobuf grpc grpc++`
 endif
+
+CXXFLAGS += -std=c++17
 
 
 %.o:src/%.cpp src/babel.hpp
