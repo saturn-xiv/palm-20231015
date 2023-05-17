@@ -7,30 +7,27 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
                         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
 
-    <changeSet id="20220925120850" author="Jeremy Zheng" labels="create twilio sms logs">
+    <changeSet id="20230417170547" author="Jeremy Zheng" labels="create favorites">
 
-        <createTable tableName="twilio_sms_logs">
+        <createTable tableName="favorites">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="from" type="varchar(32)">
+            <column name="user_id" type="integer">
                 <constraints nullable="false" />
             </column>
-            <column name="to" type="varchar(32)">
+            <column name="resource_id" type="integer">
                 <constraints nullable="false" />
             </column>
-            <column name="body" type="bytea">
+            <column name="resource_type" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
             <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="twilio_sms_logs" indexName="idx_twilio_sms_logs_from">
-            <column name="from" />
-        </createIndex>
-        <createIndex tableName="twilio_sms_logs" indexName="idx_twilio_sms_logs_to">
-            <column name="to" />
+        <createIndex tableName="favorites" indexName="idx_favorites_resource_type">
+            <column name="resource_type" />
         </createIndex>
 
     </changeSet>

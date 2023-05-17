@@ -7,7 +7,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
                         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
 
-    <changeSet id="20220925122538" author="jeremy.zheng" labels="create votes">
+    <changeSet id="20220925122538" author="Jeremy Zheng" labels="create votes">
 
         <createTable tableName="vote_items">
             <column name="id" type="integer" autoIncrement="true">

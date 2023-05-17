@@ -7,9 +7,9 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
                         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
 
-    <changeSet id="20220925124035" author="jeremy.zheng" labels="create forum topics">
+    <changeSet id="20230517144118" author="Jeremy Zheng" labels="init forum tables">
 
-        <createTable tableName="forum_topics">
+        <createTable tableName="cms_articles">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
@@ -22,16 +22,22 @@
             <column name="title" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="editor" type="integer">
+            <column name="summary" type="varchar(1000)">
                 <constraints nullable="false" />
             </column>
             <column name="body" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="editor" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="user_id" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="status" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="published_at" type="datetime">
                 <constraints nullable="false" />
             </column>
             <column name="version" type="integer" defaultValue="0">
@@ -44,13 +50,13 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="forum_topics" indexName="idx_forum_topics_ip">
+        <createIndex tableName="cms_articles" indexName="idx_cms_article_ip">
             <column name="ip" />
         </createIndex>
-        <createIndex tableName="forum_topics" indexName="idx_forum_topics_lang">
+        <createIndex tableName="cms_articles" indexName="idx_cms_articles_lang">
             <column name="lang" />
         </createIndex>
-        <createIndex tableName="forum_topics" indexName="idx_forum_topics_title">
+        <createIndex tableName="cms_articles" indexName="idx_cms_articles_title">
             <column name="title" />
         </createIndex>
 

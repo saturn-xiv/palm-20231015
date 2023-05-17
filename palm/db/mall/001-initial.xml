@@ -1,0 +1,864 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
+
+    <changeSet id="20230517144141" author="Jeremy Zheng" labels="init mall tables">
+
+        <createTable tableName="mall_ad">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="name" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="link" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="url" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="position" type="int" defaultValue="1">
+                <constraints nullable="false" />
+            </column>
+            <column name="content" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="start_at" type="datetime" />
+            <column name="end_at" type="datetime" />
+            <column name="enabled_at" type="datetime" />
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="mall_ad" indexName="idx_mall_ad_name">
+            <column name="name" />
+        </createIndex>
+        <createIndex tableName="mall_ad" indexName="idx_mall_ad_content">
+            <column name="content" />
+        </createIndex>
+
+        <createTable tableName="mall_address">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="name" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="user_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="country" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="province" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="city" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="county" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="detail" type="varchar(127)" />
+            <column name="postal_code" type="varchar(15)">
+                <constraints nullable="false" />
+            </column>
+            <column name="tel" type="varchar(20)">
+                <constraints nullable="false" />
+            </column>
+            <column name="comment" type="varchar(127)" />
+            <column name="is_default" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="mall_address" indexName="idx_mall_address_name">
+            <column name="name" />
+        </createIndex>
+        <createIndex tableName="mall_address" indexName="idx_mall_address_country">
+            <column name="country" />
+        </createIndex>
+        <createIndex tableName="mall_address" indexName="idx_mall_address_province">
+            <column name="province" />
+        </createIndex>
+        <createIndex tableName="mall_address" indexName="idx_mall_address_city">
+            <column name="city" />
+        </createIndex>
+        <createIndex tableName="mall_address" indexName="idx_mall_address_county">
+            <column name="county" />
+        </createIndex>
+        <createIndex tableName="mall_address" indexName="idx_mall_address_postal_code">
+            <column name="postal_code" />
+        </createIndex>
+        <createIndex tableName="mall_address" indexName="idx_mall_address_tel">
+            <column name="tel" />
+        </createIndex>
+
+
+        <createTable tableName="mall_aftersale">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="sn" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="order_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="user_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="type" type="int" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="reason" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="amount" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="currency" type="char(3)">
+                <constraints nullable="false" />
+            </column>
+            <column name="comment" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="status" type="int" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="handled_at" type="datetime" />
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="mall_aftersale" indexName="idx_mall_aftersale_sn" unique="true">
+            <column name="sn" />
+        </createIndex>
+        <createIndex tableName="mall_aftersale" indexName="idx_mall_aftersale_reason">
+            <column name="reason" />
+        </createIndex>
+        <createIndex tableName="mall_aftersale" indexName="idx_mall_aftersale_currency">
+            <column name="currency" />
+        </createIndex>
+
+        <createTable tableName="mall_brand">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="detail" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="sort_order" type="int" defaultValue="100">
+                <constraints nullable="false" />
+            </column>
+            <column name="floor_price" type="integer" />
+            <column name="currency" type="char(3)">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="mall_brand" indexName="idx_mall_brand_name">
+            <column name="name" />
+        </createIndex>
+        <createIndex tableName="mall_brand" indexName="idx_mall_brand_currency">
+            <column name="currency" />
+        </createIndex>
+
+        <createTable tableName="mall_cart">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="user_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="goods_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="goods_sn" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="goods_name" type="varchar(127)">
+                <constraints nullable="false" />
+            </column>
+            <column name="product_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="amount" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="price" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="currency" type="char(3)">
+                <constraints nullable="false" />
+            </column>
+            <column name="specifications" type="bytea">
+                <constraints nullable="false" />
+            </column>
+            <column name="checked" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="picture_url" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="mall_cart" indexName="idx_mall_cart_goods_sn">
+            <column name="goods_sn" />
+        </createIndex>
+        <createIndex tableName="mall_cart" indexName="idx_mall_cart_goods_name">
+            <column name="goods_name" />
+        </createIndex>
+        <createIndex tableName="mall_cart" indexName="idx_mall_cart_currency">
+            <column name="currency" />
+        </createIndex>
+
+        <createTable tableName="mall_category">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="sn" type="varchar(31)">
+                <constraints nullable="false" />
+            </column>
+            <column name="name" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="keywords" type="bytea">
+                <constraints nullable="false" />
+            </column>
+            <column name="detail" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="icon_url" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="picture_url" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="left" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="right" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="mall_category" indexName="idx_mall_category_sn" unique="true">
+            <column name="sn" />
+        </createIndex>
+        <createIndex tableName="mall_category" indexName="idx_mall_category_name">
+            <column name="name" />
+        </createIndex>
+
+
+        <createTable tableName="mall_coupon">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="sn" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="name" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="usage" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="total" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="discount" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="min" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="limit" type="integer" defaultValue="1">
+                <constraints nullable="false" />
+            </column>
+            <column name="type" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="status" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="goods" type="bytea">
+                <constraints nullable="false" />
+            </column>
+            <column name="start_at" type="datetime" />
+            <column name="end_at" type="datetime" />
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="mall_coupon" indexName="idx_mall_coupon_sn" unique="true">
+            <column name="sn" />
+        </createIndex>
+        <createIndex tableName="mall_coupon" indexName="idx_mall_coupon_name">
+            <column name="name" />
+        </createIndex>
+
+
+        <createTable tableName="mall_coupon_user">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="user_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="coupon_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="order_id" type="integer" />
+            <column name="used_at" type="datetime" />
+            <column name="start_at" type="datetime" />
+            <column name="end_at" type="datetime" />
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+
+        <createTable tableName="mall_goods">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="sn" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="name" type="varchar(127)">
+                <constraints nullable="false" />
+            </column>
+            <column name="category_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="band_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="gallery" type="bytea">
+                <constraints nullable="false" />
+            </column>
+            <column name="keywords" type="bytea">
+                <constraints nullable="false" />
+            </column>
+            <column name="brief" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="is_on_sale" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="is_new" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="is_hot" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="sort_order" type="integer" defaultValue="100">
+                <constraints nullable="false" />
+            </column>
+            <column name="picture_url" type="varchar(255)" />
+            <column name="poster_url" type="varchar(255)" />
+            <column name="unit" type="varchar(31)">
+                <constraints nullable="false" />
+            </column>
+            <column name="counter_price" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="retail_price" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="currency" type="char(3)">
+                <constraints nullable="false" />
+            </column>
+            <column name="detail" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="mall_goods" indexName="idx_mall_goods_sn" unique="true">
+            <column name="sn" />
+        </createIndex>
+        <createIndex tableName="mall_goods" indexName="idx_mall_goods_name">
+            <column name="name" />
+        </createIndex>
+        <createIndex tableName="mall_goods" indexName="idx_mall_goods_currency">
+            <column name="currency" />
+        </createIndex>
+
+
+        <createTable tableName="mall_goods_attribute">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="goods_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="value" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="mall_goods_attribute" indexName="idx_mall_goods_attribute_name">
+            <column name="name" />
+        </createIndex>
+
+        <createTable tableName="mall_goods_product">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="goods_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="specifications" type="bytea">
+                <constraints nullable="false" />
+            </column>
+            <column name="value" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="price" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="currency" type="char(3)">
+                <constraints nullable="false" />
+            </column>
+            <column name="balance" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="picture_url" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="mall_goods_product" indexName="idx_mall_goods_product_currency">
+            <column name="currency" />
+        </createIndex>
+
+        <createTable tableName="mall_goods_specification">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="goods_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="value" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="picture_url" type="varchar(255)" />
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="mall_goods_specification"
+            indexName="idx_mall_goods_specification_name">
+            <column name="name" />
+        </createIndex>
+
+
+        <createTable tableName="mall_groupon">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="order_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="user_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="owner_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="start_at" type="datetime" />
+            <column name="poster_url" type="varchar(255)" />
+            <column name="status" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createTable tableName="mall_groupon_rules">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="goods_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="goods_name" type="varchar(127)">
+                <constraints nullable="false" />
+            </column>
+            <column name="poster_url" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="discount_price" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="currency" type="char(3)">
+                <constraints nullable="false" />
+            </column>
+            <column name="discount_member" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="expired_at" type="datetime" />
+            <column name="status" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="mall_groupon_rules" indexName="idx_mall_groupon_rules_goods_name">
+            <column name="goods_name" />
+        </createIndex>
+        <createIndex tableName="mall_groupon_rules" indexName="idx_mall_groupon_rules_currency">
+            <column name="currency" />
+        </createIndex>
+
+        <createTable tableName="mall_order">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="user_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="sn" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="status" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="aftersale" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="consignee" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="mobile" type="varchar(20)">
+                <constraints nullable="false" />
+            </column>
+            <column name="address" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="message" type="varchar(255)" />
+            <column name="goods_price" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="freight_price" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="coupon_price" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="integral_price" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="order_price" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="actual_price" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="currency" type="char(3)">
+                <constraints nullable="false" />
+            </column>
+            <column name="payment_id" type="integer" />
+            <column name="shipment_id" type="integer" />
+            <column name="refund_id" type="integer" />
+            <column name="confirmed_at" type="datetime" />
+            <column name="closed_at" type="datetime" />
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="mall_order" indexName="idx_mall_order_sn" unique="true">
+            <column name="sn" />
+        </createIndex>
+
+        <createTable tableName="mall_payment">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="user_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="order_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="status" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="channel" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="profile" type="bytea">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createTable tableName="mall_shipment">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="order_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="sn" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="channel" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="status" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="mall_shipment" indexName="idx_mall_shipment_sn" unique="true">
+            <column name="sn" />
+        </createIndex>
+
+        <createTable tableName="mall_refund">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="order_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="status" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="amount" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="type" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="comment" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createTable tableName="mall_order_goods">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="order_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="goods_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="goods_name" type="varchar(127)">
+                <constraints nullable="false" />
+            </column>
+            <column name="goods_sn" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="product_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="amount" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="price" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="currency" type="char(3)">
+                <constraints nullable="false" />
+            </column>
+            <column name="specifications" type="bytea">
+                <constraints nullable="false" />
+            </column>
+            <column name="picture_url" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="comment_status" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="mall_order_goods" indexName="idx_mall_order_goods_sn">
+            <column name="goods_sn" />
+        </createIndex>
+        <createIndex tableName="mall_order_goods" indexName="idx_mall_order_goods_name">
+            <column name="goods_name" />
+        </createIndex>
+        <createIndex tableName="mall_order_goods" indexName="idx_mall_order_goods_currency">
+            <column name="currency" />
+        </createIndex>
+
+
+    </changeSet>
+
+</databaseChangeLog>

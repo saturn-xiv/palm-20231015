@@ -7,16 +7,22 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
                         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
 
-    <changeSet id="20220925120950" author="Jeremy Zheng" labels="create leave words">
+    <changeSet id="20230517144106" author="Jeremy Zheng" labels="init cms tables">
 
-        <createTable tableName="leave_words">
+        <createTable tableName="cms_articles">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="lang" type="varchar(16)">
+            <column name="ip" type="varchar(45)">
                 <constraints nullable="false" />
             </column>
-            <column name="ip" type="varchar(45)">
+            <column name="lang" type="varchar(8)">
+                <constraints nullable="false" />
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="summary" type="varchar(1000)">
                 <constraints nullable="false" />
             </column>
             <column name="body" type="text">
@@ -25,11 +31,15 @@
             <column name="editor" type="integer">
                 <constraints nullable="false" />
             </column>
+            <column name="user_id" type="integer">
+                <constraints nullable="false" />
+            </column>
             <column name="status" type="integer">
                 <constraints nullable="false" />
             </column>
-            <column name="published_at" type="datetime" />
-            <column name="deleted_at" type="datetime" />
+            <column name="published_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
             <column name="version" type="integer" defaultValue="0">
                 <constraints nullable="false" />
             </column>
@@ -40,11 +50,14 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="leave_words" indexName="idx_leave_words_ip">
+        <createIndex tableName="cms_articles" indexName="idx_cms_article_ip">
             <column name="ip" />
         </createIndex>
-        <createIndex tableName="leave_words" indexName="idx_leave_words_lang">
+        <createIndex tableName="cms_articles" indexName="idx_cms_articles_lang">
             <column name="lang" />
+        </createIndex>
+        <createIndex tableName="cms_articles" indexName="idx_cms_articles_title">
+            <column name="title" />
         </createIndex>
 
     </changeSet>

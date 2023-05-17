@@ -7,7 +7,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
                         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
 
-    <changeSet id="20230314123504" author="jeremy.zheng" labels="create google oauth users">
+    <changeSet id="20230314123504" author="Jeremy Zheng" labels="create google oauth users">
         <createTable tableName="google_users">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />

@@ -18,11 +18,11 @@ $HOME/local/liquibase/liquibase status
 
 ## PostgreSql
 
-- setup uuid
+- Create Database
 
-  ```sql  
+  ```sql
   CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-  CREATE USER www WITH PASSWORD 'CHANGE-ME';
+  CREATE USER www WITH PASSWORD '123456';
   CREATE DATABASE palm WITH ENCODING = 'UTF8' OWNER www;
   ```
 
@@ -34,7 +34,7 @@ $HOME/local/liquibase/liquibase status
 
 ## MySql
 
-- create database
+- Create database
 
   ```sql
   CREATE USER 'www'@'localhost' IDENTIFIED BY '123456';
@@ -43,13 +43,6 @@ $HOME/local/liquibase/liquibase status
   FLUSH PRIVILEGES;
   # fix caching_sha2_password could not be loaded
   ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'change-me'
-  ```
-
-- import databases
-
-  ```bash
-  # import database
-  cat 3rd/*.sql | mysql -u www -p palm
   ```
 
 ## Resources

@@ -7,13 +7,13 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
                         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
 
-    <changeSet id="20220925121806" author="jeremy.zheng" labels="create users">
+    <changeSet id="20220925121806" author="Jeremy Zheng" labels="create users">
 
         <createTable tableName="users">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="real_name" type="varchar(255)">
+            <column name="real_name" type="varchar(31)">
                 <constraints nullable="false" />
             </column>
             <column name="nickname" type="varchar(255)">

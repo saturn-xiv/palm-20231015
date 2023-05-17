@@ -7,7 +7,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
                         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
 
-    <changeSet id="20220925122859" author="jeremy.zheng" labels="create shorter links">
+    <changeSet id="20220925122859" author="Jeremy Zheng" labels="create shorter links">
 
         <createTable tableName="shorter_links">
             <column name="id" type="integer" autoIncrement="true">

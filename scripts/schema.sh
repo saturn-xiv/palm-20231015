@@ -103,6 +103,7 @@ function generate_diesel_postgresql() {
             tags tags_resources \
             categories categories_resources \
             vote_items vote_logs \
+            footprints feedbacks favorites issues comments search_histories \
         > nut/src/schema.rs    
     DATABASE_URL=$1 diesel print-schema \
         -o cms_articles cms_comments \

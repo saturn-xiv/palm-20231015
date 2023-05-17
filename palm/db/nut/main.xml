@@ -24,5 +24,11 @@
     <include file="306-create-notifications.xml" relativeToChangelogFile="true" />
     <include file="307-create-twilio-sms-logs.xml" relativeToChangelogFile="true" />
     <include file="308-create-crawler-logs.xml" relativeToChangelogFile="true" />
+    <include file="309-create-footprints.xml" relativeToChangelogFile="true" />
+    <include file="310-create-feedbacks.xml" relativeToChangelogFile="true" />
+    <include file="311-create-favorites.xml" relativeToChangelogFile="true" />
+    <include file="312-create-issues.xml" relativeToChangelogFile="true" />
+    <include file="313-create-comments.xml" relativeToChangelogFile="true" />
+    <include file="314-create-search-histories.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>

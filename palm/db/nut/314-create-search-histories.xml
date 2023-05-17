@@ -7,42 +7,30 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
                         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
 
-    <changeSet id="20220925123726" author="jeremy.zheng" labels="create cms comments">
+    <changeSet id="20230417170550" author="Jeremy Zheng" labels="create search histories">
 
-        <createTable tableName="cms_comments">
+        <createTable tableName="search_histories">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
-            </column>
-            <column name="ip" type="varchar(45)">
-                <constraints nullable="false" />
-            </column>
-            <column name="editor" type="varchar(16)">
-                <constraints nullable="false" />
-            </column>
-            <column name="body" type="text">
-                <constraints nullable="false" />
             </column>
             <column name="user_id" type="integer">
                 <constraints nullable="false" />
             </column>
-            <column name="article_id" type="integer">
+            <column name="keyword" type="varchar(63)">
                 <constraints nullable="false" />
             </column>
-            <column name="status" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
-            </column>
-            <column name="updated_at" type="datetime">
+            <column name="from" type="varchar(63)">
                 <constraints nullable="false" />
             </column>
             <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="cms_comments" indexName="idx_cms_comments_ip">
-            <column name="ip" />
+        <createIndex tableName="search_histories" indexName="idx_search_histories_keyword">
+            <column name="keyword" />
+        </createIndex>
+        <createIndex tableName="search_histories" indexName="idx_search_histories_from">
+            <column name="from" />
         </createIndex>
 
     </changeSet>

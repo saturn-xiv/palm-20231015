@@ -7,34 +7,22 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
                         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
 
-    <changeSet id="20220925124050" author="jeremy.zheng" labels="create forum posts">
+    <changeSet id="20230417170548" author="Jeremy Zheng" labels="create issues">
 
-        <createTable tableName="forum_posts">
+        <createTable tableName="issues">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="ip" type="varchar(45)">
+            <column name="question" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="editor" type="integer">
+            <column name="answer" type="text">
                 <constraints nullable="false" />
             </column>
-            <column name="body" type="text">
+            <column name="resource_type" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="reply" type="varchar(1024)">
-                <constraints nullable="false" />
-            </column>
-            <column name="user_id" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="topic_id" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="post_id" type="integer" />
-            <column name="status" type="integer">
-                <constraints nullable="false" />
-            </column>
+            <column name="deleted_at" type="datetime" />
             <column name="version" type="integer" defaultValue="0">
                 <constraints nullable="false" />
             </column>
@@ -45,9 +33,13 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="forum_posts" indexName="idx_forum_posts_ip">
-            <column name="ip" />
+        <createIndex tableName="issues" indexName="idx_issues_question">
+            <column name="question" />
         </createIndex>
+        <createIndex tableName="issues" indexName="idx_issues_resource_type">
+            <column name="resource_type" />
+        </createIndex>
+
     </changeSet>
 
 </databaseChangeLog>

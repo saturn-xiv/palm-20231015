@@ -7,7 +7,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
                         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
 
-    <changeSet id="20220925121933" author="jeremy.zheng" labels="create attachments">
+    <changeSet id="20220925121933" author="Jeremy Zheng" labels="create attachments">
 
         <createTable tableName="attachments">
             <column name="id" type="integer" autoIncrement="true">
@@ -34,6 +34,7 @@
             <column name="status" type="integer">
                 <constraints nullable="false" />
             </column>
+            <column name="deleted_at" type="datetime" />
             <column name="version" type="integer" defaultValue="0">
                 <constraints nullable="false" />
             </column>
@@ -66,12 +67,14 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="attachments_resources" indexName="idx_attachments_resources" unique="true">
+        <createIndex tableName="attachments_resources" indexName="idx_attachments_resources"
+            unique="true">
             <column name="attachment_id" />
             <column name="resource_type" />
             <column name="resource_id" />
         </createIndex>
-        <createIndex tableName="attachments_resources" indexName="idx_attachments_resources_resource">
+        <createIndex tableName="attachments_resources"
+            indexName="idx_attachments_resources_resource">
             <column name="resource_type" />
             <column name="resource_id" />
         </createIndex>

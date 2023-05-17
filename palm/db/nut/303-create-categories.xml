@@ -7,7 +7,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
                         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
 
-    <changeSet id="20220925122425" author="jeremy.zheng" labels="create categories">
+    <changeSet id="20220925122425" author="Jeremy Zheng" labels="create categories">
 
         <createTable tableName="categories">
             <column name="id" type="integer" autoIncrement="true">
@@ -22,6 +22,7 @@
             <column name="right" type="integer">
                 <constraints nullable="false" />
             </column>
+            <column name="deleted_at" type="datetime" />
             <column name="version" type="integer" defaultValue="0">
                 <constraints nullable="false" />
             </column>
@@ -54,7 +55,8 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="categories_resources" indexName="idx_categories_resources" unique="true">
+        <createIndex tableName="categories_resources" indexName="idx_categories_resources"
+            unique="true">
             <column name="category_id" />
             <column name="resource_type" />
             <column name="resource_id" />
