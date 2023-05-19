@@ -26,7 +26,7 @@ $HOME/local/liquibase/liquibase status
   CREATE DATABASE palm WITH ENCODING = 'UTF8' OWNER www;
   ```
 
-- backup
+- Backup
 
   ```bash
   pg_dump -U postgres -O --inserts palm -f palm.sql
@@ -43,6 +43,12 @@ $HOME/local/liquibase/liquibase status
   FLUSH PRIVILEGES;
   # fix caching_sha2_password could not be loaded
   ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'change-me'
+  ```
+
+- backup
+
+  ```sql
+  mysqldump -h 127.0.0.1 -P 3306 -u www palm -p > palm.sql
   ```
 
 ## Resources

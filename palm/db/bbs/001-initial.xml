@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
+
+    <changeSet id="20230517144118" author="Jeremy Zheng" labels="inspired by fluxbb v1.5.11">
+
+        <createTable tableName="bbs_categories">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="lang" type="varchar(8)">
+                <constraints nullable="false" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="position" type="integer" defaultValue="100">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="bbs_categories" indexName="idx_bbs_categories_lang">
+            <column name="lang" />
+        </createIndex>
+        <createIndex tableName="bbs_categories" indexName="idx_bbs_categories_title">
+            <column name="name" />
+        </createIndex>
+
+        <createTable tableName="bbs_censoring">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="search_for" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="replace_with" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="bbs_censoring" indexName="idx_bbs_censoring_search_for">
+            <column name="search_for" />
+        </createIndex>
+        <createIndex tableName="bbs_censoring" indexName="idx_bbs_censoring_replace_with">
+            <column name="replace_with" />
+        </createIndex>
+
+        <createTable tableName="bbs_forums">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="name" type="varchar(127)">
+                <constraints nullable="false" />
+            </column>
+            <column name="detail" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="moderators" type="bytea">
+                <constraints nullable="false" />
+            </column>
+            <column name="num_topics" type="bigint" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="num_posts" type="bigint" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_post_at" type="datetime" />
+            <column name="last_post_id" type="integer" />
+            <column name="last_poster" type="varchar(63)" />
+            <column name="sort_by" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="position" type="integer" defaultValue="100">
+                <constraints nullable="false" />
+            </column>
+            <column name="category_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="status" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="bbs_forums" indexName="idx_bbs_forums_name">
+            <column name="name" />
+        </createIndex>
+
+
+        <createTable tableName="bbs_forum_permissions">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="group_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="forum_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="read_forum" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="post_replies" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="post_topics" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="bbs_forum_permissions" indexName="idx_bbs_forum_permissions"
+            unique="true">
+            <column name="group_id" />
+            <column name="forum_id" />
+        </createIndex>
+
+        <createTable tableName="bbs_forum_subscriptions">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="user_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="forum_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="bbs_forum_subscriptions" indexName="idx_bbs_forum_subscriptions"
+            unique="true">
+            <column name="user_id" />
+            <column name="forum_id" />
+        </createIndex>
+
+
+        <createTable tableName="bbs_groups">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="title" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="user_title" type="varchar(63)" />
+            <column name="promote_min_posts" type="integer" />
+            <column name="promote_next_group" type="integer" />
+            <column name="moderator" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="moderator_edit_users" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="moderator_rename_users" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="moderator_change_passwords" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="moderator_ban_users" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="moderator_promote_users" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="read_board" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="view_users" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="post_replies" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="post_topics" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="edit_posts" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="delete_posts" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="delete_topics" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="post_links" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="set_title" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="search" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="search_users" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="send_email" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="post_flood" type="integer" defaultValue="30" />
+            <column name="search_flood" type="integer" defaultValue="30" />
+            <column name="email_flood" type="integer" defaultValue="60" />
+            <column name="report_flood" type="integer" defaultValue="60" />
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="bbs_groups" indexName="idx_bbs_groups_title" unique="true">
+            <column name="title" />
+        </createIndex>
+        <insert tableName="bbs_groups">
+            <column name="title" value="Administrators" />
+            <column name="read_board" value="true" />
+            <column name="view_users" value="true" />
+            <column name="post_replies" value="true" />
+            <column name="post_topics" value="true" />
+            <column name="edit_posts" value="true" />
+            <column name="delete_posts" value="true" />
+            <column name="delete_topics" value="true" />
+            <column name="post_links" value="true" />
+            <column name="set_title" value="true" />
+            <column name="search" value="true" />
+            <column name="search_users" value="true" />
+            <column name="send_email" value="true" />
+            <column name="updated_at" valueComputed="current_timestamp" />
+        </insert>
+        <insert tableName="bbs_groups">
+            <column name="title" value="Moderators" />
+            <column name="moderator" value="true" />
+            <column name="moderator_edit_users" value="true" />
+            <column name="moderator_rename_users" value="true" />
+            <column name="moderator_change_passwords" value="true" />
+            <column name="moderator_ban_users" value="true" />
+            <column name="moderator_promote_users" value="true" />
+            <column name="read_board" value="true" />
+            <column name="view_users" value="true" />
+            <column name="post_replies" value="true" />
+            <column name="post_topics" value="true" />
+            <column name="edit_posts" value="true" />
+            <column name="delete_posts" value="true" />
+            <column name="delete_topics" value="true" />
+            <column name="post_links" value="true" />
+            <column name="set_title" value="true" />
+            <column name="search" value="true" />
+            <column name="search_users" value="true" />
+            <column name="send_email" value="true" />
+            <column name="updated_at" valueComputed="current_timestamp" />
+        </insert>
+        <insert tableName="bbs_groups">
+            <column name="title" value="Members" />
+            <column name="read_board" value="true" />
+            <column name="view_users" value="true" />
+            <column name="post_replies" value="true" />
+            <column name="post_topics" value="true" />
+            <column name="edit_posts" value="true" />
+            <column name="delete_posts" value="true" />
+            <column name="delete_topics" value="true" />
+            <column name="post_links" value="true" />
+            <column name="search" value="true" />
+            <column name="search_users" value="true" />
+            <column name="send_email" value="true" />
+            <column name="post_flood" value="60" />
+            <column name="search_flood" value="30" />
+            <column name="email_flood" value="60" />
+            <column name="report_flood" value="30" />
+            <column name="updated_at" valueComputed="current_timestamp" />
+        </insert>
+        <insert tableName="bbs_groups">
+            <column name="title" value="Guests" />
+            <column name="read_board" value="true" />
+            <column name="view_users" value="true" />
+            <column name="search" value="true" />
+            <column name="search_users" value="true" />
+            <column name="post_flood" value="60" />
+            <column name="search_flood" value="30" />
+            <column name="email_flood" value="0" />
+            <column name="report_flood" value="0" />
+            <column name="updated_at" valueComputed="current_timestamp" />
+        </insert>
+
+
+        <createTable tableName="bbs_online">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="user_id" type="integer">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="ip" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+            <column name="logged_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="idle" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_post_at" type="datetime" />
+            <column name="last_search_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="bbs_online" indexName="idx_bbs_online_ip">
+            <column name="ip" />
+        </createIndex>
+
+
+        <createTable tableName="bbs_posts">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="topic_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="poster_nick" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="poster_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="poster_name" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="ip" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+            <column name="content" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="content_editor" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="hide_smilies" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="posted_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="edited_at" type="datetime" />
+            <column name="editor_nick" type="varchar(63)" />
+            <column name="editor_id" type="integer" />
+            <column name="editor_name" type="varchar(63)" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="bbs_posts" indexName="idx_bbs_posts_ip">
+            <column name="ip" />
+        </createIndex>
+        <createIndex tableName="bbs_posts" indexName="idx_bbs_poster_nick">
+            <column name="poster_nick" />
+        </createIndex>
+        <createIndex tableName="bbs_posts" indexName="idx_bbs_poster_name">
+            <column name="poster_name" />
+        </createIndex>
+        <createIndex tableName="bbs_posts" indexName="idx_bbs_editor_nick">
+            <column name="editor_nick" />
+        </createIndex>
+        <createIndex tableName="bbs_posts" indexName="idx_bbs_editor_name">
+            <column name="editor_name" />
+        </createIndex>
+
+        <createTable tableName="bbs_reports">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="post_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="topic_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="forum_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="reported_by" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="message" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="message_editor" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="ip" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+            <column name="zapped_at" type="datetime" />
+            <column name="zapped_by" type="integer" />
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="bbs_reports" indexName="idx_bbs_reports_ip">
+            <column name="ip" />
+        </createIndex>
+
+        <createTable tableName="bbs_search_cache">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="keyword" type="varchar(255)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="result" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createTable tableName="bbs_search_matches">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="post_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="word_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="subject_match" type="boolean" value="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="bbs_search_matches" indexName="idx_bbs_search_matches">
+            <column name="post_id" />
+            <column name="word_id" />
+        </createIndex>
+
+        <createTable tableName="bbs_search_words">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="word" type="varchar(63)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createTable tableName="bbs_topics">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="forum_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="poster_nick" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="poster_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="poster_name" type="varchar(63)">
+                <constraints nullable="false" />
+            </column>
+            <column name="subject" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="content" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="content_editor" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="posted_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="ip" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+            <column name="first_post_id" type="integer" />
+            <column name="last_post_id" type="integer" />
+            <column name="last_post_at" type="datetime" />
+            <column name="last_poster" type="varchar(255)" />
+            <column name="num_views" type="bigint" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="num_replies" type="bigint" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="closed_at" type="datetime" />
+            <column name="sticky" type="boolean" defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="moved_to" type="integer" />
+            <column name="deleted_at" type="datetime" />
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="bbs_topics" indexName="idx_bbs_topics_poster_nick">
+            <column name="poster_nick" />
+        </createIndex>
+        <createIndex tableName="bbs_topics" indexName="idx_bbs_topics_poster_name">
+            <column name="poster_name" />
+        </createIndex>
+        <createIndex tableName="bbs_topics" indexName="idx_bbs_topics_ip">
+            <column name="ip" />
+        </createIndex>
+        <createIndex tableName="bbs_topics" indexName="idx_bbs_topics_subject">
+            <column name="subject" />
+        </createIndex>
+
+
+        <createTable tableName="bbs_topic_subscriptions">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="user_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="topic_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createIndex tableName="bbs_topic_subscriptions" indexName="idx_bbs_topic_subscriptions"
+            unique="true">
+            <column name="user_id" />
+            <column name="topic_id" />
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>

@@ -56,7 +56,7 @@
             <column name="body" type="text">
                 <constraints nullable="false" />
             </column>
-            <column name="editor" type="integer">
+            <column name="body_editor" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="resource_type" type="varchar(255)">

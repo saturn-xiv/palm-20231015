@@ -7,9 +7,8 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
                         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd">
 
-    <changeSet id="20230417170549" author="Jeremy Zheng" labels="create comments">
-
-        <createTable tableName="comments">
+    <changeSet id="20230314123506" author="Jeremy Zheng" labels="create bans">
+        <createTable tableName="user_bans">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
@@ -19,39 +18,21 @@
             <column name="ip" type="varchar(45)">
                 <constraints nullable="false" />
             </column>
-            <column name="resource_id" type="integer">
+            <column name="reason" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="resource_type" type="varchar(255)">
+            <column name="expired_at" type="datetime">
                 <constraints nullable="false" />
             </column>
-            <column name="content" type="text">
-                <constraints nullable="false" />
-            </column>
-            <column name="content_editor" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="star" type="integer" defaultValue="1">
-                <constraints nullable="false" />
-            </column>
-            <column name="deleted_at" type="datetime" />
-            <column name="version" type="integer" defaultValue="0">
-                <constraints nullable="false" />
-            </column>
-            <column name="updated_at" type="datetime">
+            <column name="creator_id" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
                 <constraints nullable="false" />
             </column>
         </createTable>
-        <createIndex tableName="comments" indexName="idx_comments_ip">
+        <createIndex tableName="user_bans" indexName="idx_user_bans_ip">
             <column name="ip" />
         </createIndex>
-        <createIndex tableName="comments" indexName="idx_comments_resource_type">
-            <column name="resource_type" />
-        </createIndex>
-
     </changeSet>
-
 </databaseChangeLog>

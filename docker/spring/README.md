@@ -28,6 +28,7 @@
   ```bash
   # reset root's password
   mysql_secure_installation
+  mysql -h 127.0.0.1 -P 3306 -u root -p
   ```
 
 - Redis
