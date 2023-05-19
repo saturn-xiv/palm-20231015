@@ -10,6 +10,7 @@ diesel::table! {
         size -> Int8,
         content_type -> Varchar,
         status -> Int4,
+        deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
@@ -27,11 +28,35 @@ diesel::table! {
 }
 
 diesel::table! {
+    bbs_categories (id) {
+        id -> Int4,
+        lang -> Varchar,
+        name -> Varchar,
+        position -> Int4,
+        deleted_at -> Nullable<Timestamp>,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    bbs_logs (id) {
+        id -> Int4,
+        user_id -> Int4,
+        ip -> Varchar,
+        message -> Text,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     categories (id) {
         id -> Int4,
         code -> Varchar,
         left -> Int4,
         right -> Int4,
+        deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
@@ -50,10 +75,111 @@ diesel::table! {
 }
 
 diesel::table! {
+    cms_comments (id) {
+        id -> Int4,
+        page_id -> Int4,
+        comment_id -> Nullable<Int4>,
+        body -> Text,
+        body_editor -> Int4,
+        owner_id -> Int4,
+        owner_nick -> Varchar,
+        owner_name -> Varchar,
+        ip -> Varchar,
+        auth_by -> Int4,
+        published_at -> Nullable<Timestamp>,
+        locked_at -> Nullable<Timestamp>,
+        deleted_at -> Nullable<Timestamp>,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    cms_logs (id) {
+        id -> Int4,
+        user_id -> Int4,
+        ip -> Varchar,
+        message -> Text,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    cms_tags (id) {
+        id -> Int4,
+        name -> Varchar,
+        lang -> Varchar,
+        slug -> Varchar,
+        position -> Int4,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    comments (id) {
+        id -> Int4,
+        user_id -> Int4,
+        ip -> Varchar,
+        resource_id -> Int4,
+        resource_type -> Varchar,
+        content -> Text,
+        content_editor -> Int4,
+        star -> Int4,
+        deleted_at -> Nullable<Timestamp>,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     crawler_logs (id) {
         id -> Int4,
         url -> Varchar,
         body -> Bytea,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    favorites (id) {
+        id -> Int4,
+        user_id -> Int4,
+        resource_id -> Int4,
+        resource_type -> Varchar,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    feedbacks (id) {
+        id -> Int4,
+        user_id -> Int4,
+        username -> Varchar,
+        mobile -> Nullable<Varchar>,
+        email -> Nullable<Varchar>,
+        content -> Text,
+        resource_id -> Int4,
+        resource_type -> Varchar,
+        #[sql_name = "type"]
+        type_ -> Int4,
+        status -> Int4,
+        deleted_at -> Nullable<Timestamp>,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    footprints (id) {
+        id -> Int4,
+        user_id -> Int4,
+        resource_id -> Int4,
+        resource_type -> Varchar,
         created_at -> Timestamp,
     }
 }
@@ -72,14 +198,29 @@ diesel::table! {
 }
 
 diesel::table! {
+    issues (id) {
+        id -> Int4,
+        question -> Varchar,
+        answer -> Text,
+        answer_editor -> Int4,
+        resource_type -> Varchar,
+        deleted_at -> Nullable<Timestamp>,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     leave_words (id) {
         id -> Int4,
         lang -> Varchar,
         ip -> Varchar,
         body -> Text,
-        editor -> Int4,
+        body_editor -> Int4,
         status -> Int4,
         published_at -> Nullable<Timestamp>,
+        deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
@@ -112,12 +253,44 @@ diesel::table! {
 }
 
 diesel::table! {
+    menu_bars (id) {
+        id -> Int4,
+        lang -> Varchar,
+        code -> Varchar,
+        title -> Varchar,
+        sort_order -> Int4,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    menu_links (id) {
+        id -> Int4,
+        bar_id -> Int4,
+        title -> Varchar,
+        url -> Varchar,
+        sort_order -> Int4,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     notifications (id) {
         id -> Int4,
         from -> Int4,
         message -> Varchar,
         url -> Nullable<Varchar>,
         read_at -> Nullable<Timestamp>,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    search_histories (id) {
+        id -> Int4,
+        user_id -> Int4,
+        keyword -> Varchar,
+        from -> Varchar,
         created_at -> Timestamp,
     }
 }
@@ -151,6 +324,7 @@ diesel::table! {
         id -> Int4,
         code -> Varchar,
         priority -> Int4,
+        deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
@@ -174,6 +348,18 @@ diesel::table! {
         from -> Varchar,
         to -> Varchar,
         body -> Bytea,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    user_bans (id) {
+        id -> Int4,
+        user_id -> Int4,
+        ip -> Varchar,
+        reason -> Varchar,
+        expired_at -> Timestamp,
+        creator_id -> Int4,
         created_at -> Timestamp,
     }
 }
@@ -235,7 +421,7 @@ diesel::table! {
         ip -> Varchar,
         score -> Int4,
         body -> Text,
-        editor -> Int4,
+        body_editor -> Int4,
         resource_type -> Varchar,
         resource_id -> Int4,
         status -> Int4,
@@ -284,19 +470,33 @@ diesel::table! {
 diesel::allow_tables_to_appear_in_same_query!(
     attachments,
     attachments_resources,
+    bbs_categories,
+    bbs_logs,
     categories,
     categories_resources,
+    cms_comments,
+    cms_logs,
+    cms_tags,
+    comments,
     crawler_logs,
+    favorites,
+    feedbacks,
+    footprints,
     google_users,
+    issues,
     leave_words,
     locales,
     logs,
+    menu_bars,
+    menu_links,
     notifications,
+    search_histories,
     settings,
     shorter_links,
     tags,
     tags_resources,
     twilio_sms_logs,
+    user_bans,
     users,
     users_contacts,
     vote_items,
