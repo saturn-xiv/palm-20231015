@@ -18,17 +18,19 @@
     <include file="106-create-user-bans.xml" relativeToChangelogFile="true" />
 
     <include file="301-create-leave-words.xml" relativeToChangelogFile="true" />
-    <include file="302-create-shorter-links.xml" relativeToChangelogFile="true" />
-    <include file="303-create-votes.xml" relativeToChangelogFile="true" />
-    <include file="304-create-notifications.xml" relativeToChangelogFile="true" />
-    <include file="305-create-twilio-sms-logs.xml" relativeToChangelogFile="true" />
-    <include file="306-create-crawler-logs.xml" relativeToChangelogFile="true" />
-    <include file="307-create-footprints.xml" relativeToChangelogFile="true" />
-    <include file="308-create-feedbacks.xml" relativeToChangelogFile="true" />
-    <include file="309-create-favorites.xml" relativeToChangelogFile="true" />
-    <include file="310-create-issues.xml" relativeToChangelogFile="true" />
-    <include file="311-create-comments.xml" relativeToChangelogFile="true" />
-    <include file="312-create-search-histories.xml" relativeToChangelogFile="true" />
-    <include file="313-create-menu-bars.xml" relativeToChangelogFile="true" />
+    <include file="302-create-tags.xml" relativeToChangelogFile="true" />
+    <include file="303-create-categories.xml" relativeToChangelogFile="true" />
+    <include file="304-create-shorter-links.xml" relativeToChangelogFile="true" />
+    <include file="305-create-votes.xml" relativeToChangelogFile="true" />
+    <include file="306-create-notifications.xml" relativeToChangelogFile="true" />
+    <include file="307-create-twilio-sms-logs.xml" relativeToChangelogFile="true" />
+    <include file="308-create-crawler-logs.xml" relativeToChangelogFile="true" />
+    <include file="309-create-footprints.xml" relativeToChangelogFile="true" />
+    <include file="310-create-feedbacks.xml" relativeToChangelogFile="true" />
+    <include file="311-create-favorites.xml" relativeToChangelogFile="true" />
+    <include file="312-create-issues.xml" relativeToChangelogFile="true" />
+    <include file="313-create-comments.xml" relativeToChangelogFile="true" />
+    <include file="314-create-search-histories.xml" relativeToChangelogFile="true" />
+    <include file="315-create-menu-bars.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>

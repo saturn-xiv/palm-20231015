@@ -10,7 +10,7 @@
         <dbms type="postgresql" />
     </preConditions>
 
-    <!-- <include file="nut/main.xml" relativeToChangelogFile="true" /> -->
+    <include file="nut/main.xml" relativeToChangelogFile="true" />
     <include file="cms/main.xml" relativeToChangelogFile="true" />
     <include file="bbs/main.xml" relativeToChangelogFile="true" />
     <include file="cart/main.xml" relativeToChangelogFile="true" />
