@@ -20,7 +20,7 @@
                 <constraints nullable="false" />
             </column>
             <column name="mobile" type="varchar(20)" />
-            <column name="email" type="varchar(63)" />
+            <column name="email" type="varchar(127)" />
             <column name="content" type="text">
                 <constraints nullable="false" />
             </column>

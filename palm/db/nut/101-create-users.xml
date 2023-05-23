@@ -19,15 +19,12 @@
             <column name="nickname" type="varchar(63)">
                 <constraints unique="true" nullable="false" />
             </column>
-            <column name="email" type="varchar(255)">
+            <column name="email" type="varchar(127)">
                 <constraints unique="true" nullable="false" />
             </column>
             <column name="password" type="bytea" />
             <column name="salt" type="bytea">
                 <constraints nullable="false" />
-            </column>
-            <column name="uid" type="char(36)">
-                <constraints unique="true" nullable="false" />
             </column>
             <column name="avatar" type="varchar(255)">
                 <constraints nullable="false" />
