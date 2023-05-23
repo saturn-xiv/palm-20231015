@@ -94,7 +94,7 @@ function generate_diesel_postgresql() {
     
     DATABASE_URL=$1 diesel print-schema \
         -o locales settings \
-            users users_contacts user_bans \
+            users users_contacts user_bans user_sessions \
             google_users \
             wechat_oauth2_users wechat_mini_program_users \
             logs attachments attachments_resources \
@@ -108,6 +108,7 @@ function generate_diesel_postgresql() {
         > nut/src/schema.rs    
     DATABASE_URL=$1 diesel print-schema -o cms_* > cms/src/schema.rs
     DATABASE_URL=$1 diesel print-schema -o bbs_* > forum/src/schema.rs
+    DATABASE_URL=$1 diesel print-schema -o cart_* > mall/src/schema.rs
     DATABASE_URL=$1 diesel print-schema \
         -o flashcard_books flashcard_quizzes flashcard_scores \
         > flashcard/src/schema.rs
