@@ -31,7 +31,7 @@
             <column name="content_editor" type="integer">
                 <constraints nullable="false" />
             </column>
-            <column name="star" type="integer" defaultValue="1">
+            <column name="star_" type="integer" defaultValue="1">
                 <constraints nullable="false" />
             </column>
             <column name="deleted_at" type="datetime" />

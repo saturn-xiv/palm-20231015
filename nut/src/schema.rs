@@ -127,7 +127,7 @@ diesel::table! {
         resource_type -> Varchar,
         content -> Text,
         content_editor -> Int4,
-        star -> Int4,
+        star_ -> Int4,
         deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         updated_at -> Timestamp,
