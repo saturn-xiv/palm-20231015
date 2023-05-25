@@ -16,6 +16,7 @@
     <include file="104-create-wechat-users.xml" relativeToChangelogFile="true" />
     <include file="105-create-google-users.xml" relativeToChangelogFile="true" />
     <include file="106-create-user-bans.xml" relativeToChangelogFile="true" />
+    <include file="107-create-user-sessions.xml" relativeToChangelogFile="true" />
 
     <include file="301-create-leave-words.xml" relativeToChangelogFile="true" />
     <include file="302-create-tags.xml" relativeToChangelogFile="true" />

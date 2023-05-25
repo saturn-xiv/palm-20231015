@@ -15,6 +15,7 @@ pub struct Item {
     pub code: String,
     pub left: i32,
     pub right: i32,
+    pub deleted_at: Option<NaiveDateTime>,
     pub version: i32,
     pub updated_at: NaiveDateTime,
     pub created_at: NaiveDateTime,

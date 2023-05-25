@@ -1,3 +1,6 @@
+pub mod ban;
+pub mod session;
+
 use std::fmt;
 
 use chrono::{NaiveDateTime, Utc};
@@ -48,7 +51,6 @@ pub struct Item {
     pub email: String,
     pub password: Option<Vec<u8>>,
     pub salt: Vec<u8>,
-    pub uid: String,
     pub avatar: String,
     pub lang: String,
     pub time_zone: String,
@@ -84,7 +86,6 @@ impl From<Item> for RbacUser {
     fn from(it: Item) -> Self {
         Self {
             id: it.id,
-            uid: it.uid.clone(),
             nickname: it.nickname.clone(),
             real_name: it.real_name.clone(),
             email: it.email,
@@ -169,7 +170,6 @@ pub struct New<'a> {
     pub email: &'a str,
     pub password: Option<&'a [u8]>,
     pub salt: &'a [u8],
-    pub uid: &'a str,
     pub avatar: &'a str,
     pub lang: &'a str,
     pub time_zone: &'a str,
@@ -182,7 +182,6 @@ impl<'a> New<'a> {
 
 pub trait Dao {
     fn by_id(&mut self, id: i32) -> Result<Item>;
-    fn by_uid(&mut self, uid: &str) -> Result<Item>;
     fn by_email(&mut self, email: &str) -> Result<Item>;
     fn by_nickname(&mut self, nickname: &str) -> Result<Item>;
     fn set_profile(
@@ -219,13 +218,6 @@ impl Dao for Connection {
     fn by_id(&mut self, id: i32) -> Result<Item> {
         let it = users::dsl::users
             .filter(users::dsl::id.eq(id))
-            .first(self)?;
-        Ok(it)
-    }
-
-    fn by_uid(&mut self, uid: &str) -> Result<Item> {
-        let it = users::dsl::users
-            .filter(users::dsl::uid.eq(uid))
             .first(self)?;
         Ok(it)
     }
@@ -276,13 +268,11 @@ impl Dao for Connection {
         lang: &LanguageTag,
         time_zone: &Tz,
     ) -> Result<()> {
-        let uid = Uuid::new_v4().to_string();
         insert_into(users::dsl::users)
             .values(&New {
                 real_name,
                 nickname,
                 email,
-                uid: &uid,
                 password: Some(&enc.sign(password.as_bytes())?),
                 salt: &random_bytes(New::SALT_SIZE),
                 avatar: &Item::gravatar(&email)?,

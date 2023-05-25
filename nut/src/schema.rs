@@ -365,6 +365,17 @@ diesel::table! {
 }
 
 diesel::table! {
+    user_sessions (id) {
+        id -> Int4,
+        user_id -> Int4,
+        uid -> Bpchar,
+        ip -> Varchar,
+        expired_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     users (id) {
         id -> Int4,
         real_name -> Varchar,
@@ -496,6 +507,7 @@ diesel::allow_tables_to_appear_in_same_query!(
     tags_resources,
     twilio_sms_logs,
     user_bans,
+    user_sessions,
     users,
     users_contacts,
     vote_items,

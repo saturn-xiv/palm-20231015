@@ -675,10 +675,9 @@ proto.palm.rbac.v1.UsersResponse.Item.prototype.toObject = function(opt_includeI
 proto.palm.rbac.v1.UsersResponse.Item.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    uid: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    nickname: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    realName: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    email: jspb.Message.getFieldWithDefault(msg, 5, "")
+    nickname: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    realName: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    email: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -721,17 +720,13 @@ proto.palm.rbac.v1.UsersResponse.Item.deserializeBinaryFromReader = function(msg
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setUid(value);
+      msg.setNickname(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setNickname(value);
-      break;
-    case 4:
-      var value = /** @type {string} */ (reader.readString());
       msg.setRealName(value);
       break;
-    case 5:
+    case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setEmail(value);
       break;
@@ -771,31 +766,24 @@ proto.palm.rbac.v1.UsersResponse.Item.serializeBinaryToWriter = function(message
       f
     );
   }
-  f = message.getUid();
+  f = message.getNickname();
   if (f.length > 0) {
     writer.writeString(
       2,
       f
     );
   }
-  f = message.getNickname();
+  f = message.getRealName();
   if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
-  f = message.getRealName();
-  if (f.length > 0) {
-    writer.writeString(
-      4,
-      f
-    );
-  }
   f = message.getEmail();
   if (f.length > 0) {
     writer.writeString(
-      5,
+      4,
       f
     );
   }
@@ -821,10 +809,10 @@ proto.palm.rbac.v1.UsersResponse.Item.prototype.setId = function(value) {
 
 
 /**
- * optional string uid = 2;
+ * optional string nickname = 2;
  * @return {string}
  */
-proto.palm.rbac.v1.UsersResponse.Item.prototype.getUid = function() {
+proto.palm.rbac.v1.UsersResponse.Item.prototype.getNickname = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -833,16 +821,16 @@ proto.palm.rbac.v1.UsersResponse.Item.prototype.getUid = function() {
  * @param {string} value
  * @return {!proto.palm.rbac.v1.UsersResponse.Item} returns this
  */
-proto.palm.rbac.v1.UsersResponse.Item.prototype.setUid = function(value) {
+proto.palm.rbac.v1.UsersResponse.Item.prototype.setNickname = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * optional string nickname = 3;
+ * optional string real_name = 3;
  * @return {string}
  */
-proto.palm.rbac.v1.UsersResponse.Item.prototype.getNickname = function() {
+proto.palm.rbac.v1.UsersResponse.Item.prototype.getRealName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
@@ -851,16 +839,16 @@ proto.palm.rbac.v1.UsersResponse.Item.prototype.getNickname = function() {
  * @param {string} value
  * @return {!proto.palm.rbac.v1.UsersResponse.Item} returns this
  */
-proto.palm.rbac.v1.UsersResponse.Item.prototype.setNickname = function(value) {
+proto.palm.rbac.v1.UsersResponse.Item.prototype.setRealName = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * optional string real_name = 4;
+ * optional string email = 4;
  * @return {string}
  */
-proto.palm.rbac.v1.UsersResponse.Item.prototype.getRealName = function() {
+proto.palm.rbac.v1.UsersResponse.Item.prototype.getEmail = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
@@ -869,26 +857,8 @@ proto.palm.rbac.v1.UsersResponse.Item.prototype.getRealName = function() {
  * @param {string} value
  * @return {!proto.palm.rbac.v1.UsersResponse.Item} returns this
  */
-proto.palm.rbac.v1.UsersResponse.Item.prototype.setRealName = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
-};
-
-
-/**
- * optional string email = 5;
- * @return {string}
- */
-proto.palm.rbac.v1.UsersResponse.Item.prototype.getEmail = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.palm.rbac.v1.UsersResponse.Item} returns this
- */
 proto.palm.rbac.v1.UsersResponse.Item.prototype.setEmail = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 

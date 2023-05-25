@@ -15,11 +15,11 @@
             <column name="user_id" type="integer">
                 <constraints nullable="false" />
             </column>
-            <column name="ip" type="varchar(45)">
-                <constraints nullable="false" />
-            </column>
             <column name="uid" type="char(36)">
                 <constraints unique="true" nullable="false" />
+            </column>
+            <column name="ip" type="varchar(45)">
+                <constraints nullable="false" />
             </column>
             <column name="expired_at" type="datetime">
                 <constraints nullable="false" />
@@ -28,5 +28,8 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
+        <createIndex tableName="user_sessions" indexName="idx_user_sessions_ip">
+            <column name="ip" />
+        </createIndex>
     </changeSet>
 </databaseChangeLog>

@@ -40,9 +40,6 @@ export namespace UsersResponse {
     getId(): number;
     setId(value: number): Item;
 
-    getUid(): string;
-    setUid(value: string): Item;
-
     getNickname(): string;
     setNickname(value: string): Item;
 
@@ -63,7 +60,6 @@ export namespace UsersResponse {
   export namespace Item {
     export type AsObject = {
       id: number,
-      uid: string,
       nickname: string,
       realName: string,
       email: string,

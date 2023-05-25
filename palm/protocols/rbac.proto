@@ -48,10 +48,9 @@ service Policy {
 message UsersResponse {
   message Item {
     int32 id = 1;
-    string uid = 2;
-    string nickname = 3;
-    string real_name = 4;
-    string email = 5;
+    string nickname = 2;
+    string real_name = 3;
+    string email = 4;
   }
   repeated Item items = 1;
 }
