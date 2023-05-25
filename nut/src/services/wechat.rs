@@ -85,7 +85,8 @@ impl v1::wechat_server::Wechat for Service {
         let user = try_grpc!(db.transaction::<_, Error, _>(move |db| {
             let user = match state.user {
                 Some(ref it) => {
-                    let it = UserDao::by_uid(db, it)?;
+                    // FIXME
+                    let it = UserDao::by_nickname(db, it)?;
                     it.available()?;
                     Some(it.id)
                 }
@@ -121,7 +122,10 @@ impl v1::wechat_server::Wechat for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
 
-        let user = try_grpc!(ss.current_user(db, ch, jwt)).map(|x| x.uid).ok();
+        // FIXME
+        let user = try_grpc!(ss.current_user(db, ch, jwt))
+            .map(|x| x.nickname.clone())
+            .ok();
 
         let state = Oauth2State {
             user,
@@ -146,7 +150,10 @@ impl v1::wechat_server::Wechat for Service {
         let db = db.deref_mut();
         let jwt = self.jwt.deref();
 
-        let user = try_grpc!(ss.current_user(db, ch, jwt)).map(|x| x.uid).ok();
+        // FIXME
+        let user = try_grpc!(ss.current_user(db, ch, jwt))
+            .map(|x| x.nickname.to_string())
+            .ok();
 
         let lang = req.language();
         if let Some(ref state) = req.state {

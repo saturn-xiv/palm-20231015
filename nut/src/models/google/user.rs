@@ -119,8 +119,6 @@ impl Dao for Connection {
                             None => User::guest_email(),
                         };
 
-                        let uid = Uuid::new_v4().to_string();
-
                         insert_into(users::dsl::users)
                             .values(&NewUser {
                                 real_name: &match token.name {

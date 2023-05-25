@@ -178,9 +178,9 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                     .service(
                         web::scope( "/flashcard").service(
                             web::scope("/books")
-                                .service(flashcard::controllers::books::show)
-                                .service(flashcard::controllers::books::create)
-                                .service(flashcard::controllers::books::index),
+                                // .service(flashcard::controllers::books::show)
+                                // .service(flashcard::controllers::books::create)
+                                // .service(flashcard::controllers::books::index),
                         ),
                     )
                     .service(

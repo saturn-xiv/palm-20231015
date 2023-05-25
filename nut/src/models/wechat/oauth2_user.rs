@@ -153,8 +153,6 @@ impl Dao for Connection {
                     None => {
                         let email = User::guest_email();
 
-                        let uid = Uuid::new_v4().to_string();
-
                         insert_into(users::dsl::users)
                             .values(&NewUser {
                                 real_name: &info.nickname,

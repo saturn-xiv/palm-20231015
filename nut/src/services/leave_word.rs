@@ -69,7 +69,7 @@ impl v1::leave_word_server::LeaveWord for Service {
                     ip: x.ip.clone(),
                     content: Some(v1::MediaContent {
                         body: x.body.clone(),
-                        editor: x.editor,
+                        editor: x.body_editor,
                         status: x.status,
                         published_at: x.published_at.map(|x| to_timestamp!(x)),
                     }),

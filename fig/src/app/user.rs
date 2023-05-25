@@ -93,7 +93,8 @@ pub struct Token {
 }
 impl Token {
     pub fn execute<P: Jwt>(&self, db: &mut Db, jwt: &P) -> Result<String> {
-        let user = UserDao::by_uid(db, &self.user)?;
+        // FIXME
+        let user = UserDao::by_nickname(db, &self.user)?;
         let token = jwt.sign(
             &user.nickname,
             &Action::SignIn.to_string(),
@@ -113,7 +114,8 @@ pub struct Role {
 
 impl Role {
     pub async fn apply(&self, db: &mut Db, enf: &mut Enforcer) -> Result<()> {
-        let user = UserDao::by_uid(db, &self.user)?;
+        // FIXME
+        let user = UserDao::by_nickname(db, &self.user)?;
 
         {
             let user = UserRequest { id: user.id }.to_string();
@@ -138,7 +140,8 @@ impl Role {
     }
 
     pub async fn exempt(&self, db: &mut Db, enf: &mut Enforcer) -> Result<()> {
-        let user = UserDao::by_uid(db, &self.user)?;
+        // FIXME
+        let user = UserDao::by_nickname(db, &self.user)?;
 
         {
             let user = UserRequest { id: user.id }.to_string();
@@ -177,7 +180,8 @@ pub struct ResetPassword {
 
 impl ResetPassword {
     pub fn execute<P: Password>(&self, db: &mut Db, hmac: &P) -> Result<()> {
-        let user = UserDao::by_uid(db, &self.user)?;
+        // FIXME
+        let user = UserDao::by_nickname(db, &self.user)?;
         db.transaction::<_, Error, _>(move |db| {
             UserDao::password(db, hmac, user.id, &self.password)?;
             LogDao::add::<String, User>(
@@ -195,17 +199,18 @@ impl ResetPassword {
     }
 }
 
-pub fn list(db: &mut Db) -> Result<()> {
-    let total = UserDao::count(db)?;
-    let page = 20;
+pub fn list(_db: &mut Db) -> Result<()> {
+    // FIXME
+    // let total = UserDao::count(db)?;
+    // let page = 20;
     println!("{:<36} NAME", "UID");
-    for i in 1.. {
-        for it in UserDao::all(db, (i - 1) * page, page)?.iter() {
-            println!("{:<36} {}", it.uid, it);
-        }
-        if i * page >= total {
-            break;
-        }
-    }
+    // for i in 1.. {
+    //     for it in UserDao::all(db, (i - 1) * page, page)?.iter() {
+    //         println!("{:<36} {}", it.uid, it);
+    //     }
+    //     if i * page >= total {
+    //         break;
+    //     }
+    // }
     Ok(())
 }

@@ -23,7 +23,7 @@ use super::super::{
         google::user::Dao as GoogleUserDao,
         log::Dao as LogDao,
         setting::Dao as SettingDao,
-        user::{Dao as UserDao,  Item as User},
+        user::{Dao as UserDao, Item as User},
     },
     orm::postgresql::Pool as PostgreSqlPool,
 };
@@ -121,7 +121,8 @@ impl v1::google_server::Google for Service {
         let user = try_grpc!(db.transaction::<_, Error, _>(move |db| {
             let user = match state.user {
                 Some(ref it) => {
-                    let it = UserDao::by_uid(db, it)?;
+                    // FIXME
+                    let it = UserDao::by_nickname(db, it)?;
                     it.available()?;
                     Some(it.id)
                 }

@@ -699,7 +699,8 @@ impl From<User> for v1::user_index_response::Item {
     fn from(x: User) -> Self {
         Self {
             id: x.id,
-            uid: x.uid.clone(),
+            // FIXME
+            uid: "todo".to_string(),
             email: x.email.clone(),
             real_name: x.real_name.clone(),
             nickname: x.nickname.clone(),
