@@ -6,6 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+juniper_actix = "0.4"
 log = "0.4"
 actix-identity = "0.5"
 actix-cors = "0.6"

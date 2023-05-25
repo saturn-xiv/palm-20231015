@@ -145,6 +145,7 @@ use std::os::unix::fs::PermissionsExt;
 use std::path::Path;
 use std::process::{Command, Output};
 
+use async_trait::async_trait;
 use chrono::{DateTime, NaiveDateTime, Utc};
 use chrono_tz::Tz;
 use xml::writer::{EventWriter, Result as XmlWriterResult};
@@ -163,6 +164,11 @@ include!(concat!(env!("OUT_DIR"), "/env.rs"));
 
 lazy_static! {
     pub static ref VERSION: String = format!("{GIT_VERSION}({BUILD_TIME})");
+}
+
+#[async_trait]
+pub trait GraphQLHandler {
+    async fn handle(&self) -> Result<()>;
 }
 
 pub fn timestamp2datetime(ts: i64, tz: Tz) -> Option<DateTime<Tz>> {

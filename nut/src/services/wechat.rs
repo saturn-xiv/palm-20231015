@@ -124,7 +124,7 @@ impl v1::wechat_server::Wechat for Service {
 
         // FIXME
         let user = try_grpc!(ss.current_user(db, ch, jwt))
-            .map(|x| x.nickname.clone())
+            .map(|x| x.nickname)
             .ok();
 
         let state = Oauth2State {
@@ -152,7 +152,7 @@ impl v1::wechat_server::Wechat for Service {
 
         // FIXME
         let user = try_grpc!(ss.current_user(db, ch, jwt))
-            .map(|x| x.nickname.to_string())
+            .map(|x| x.nickname)
             .ok();
 
         let lang = req.language();
