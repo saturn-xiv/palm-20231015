@@ -1,19 +1,7 @@
-use std::fmt;
-
-use chrono::{NaiveDateTime, Utc};
-use chrono_tz::Tz;
-use diesel::{insert_into, prelude::*, update};
-use hyper::StatusCode;
-use language_tags::LanguageTag;
-use openssl::hash::{hash, MessageDigest};
-use palm::{
-    crypto::{random::bytes as random_bytes, Password},
-    nut::v1,
-    rbac::v1::users_response::Item as RbacUser,
-    HttpError, Result,
-};
+use chrono::{Duration, NaiveDateTime, Utc};
+use diesel::{insert_into, prelude::*};
+use palm::Result;
 use serde::{Deserialize, Serialize};
-use uuid::Uuid;
 
 use super::super::super::{orm::postgresql::Connection, schema::user_bans};
 
@@ -30,15 +18,43 @@ pub struct Item {
 }
 
 pub trait Dao {
+    fn create(
+        &mut self,
+        creator: i32,
+        user: i32,
+        ip: &str,
+        reason: &str,
+        ttl: Duration,
+    ) -> Result<()>;
     fn by_id(&mut self, id: i32) -> Result<Item>;
     fn by_ip(&mut self, ip: &str) -> Result<Vec<Item>>;
     fn by_user(&mut self, user: i32) -> Result<Vec<Item>>;
 }
 
 impl Dao for Connection {
+    fn create(
+        &mut self,
+        creator: i32,
+        user: i32,
+        ip: &str,
+        reason: &str,
+        ttl: Duration,
+    ) -> Result<()> {
+        let expired_at = Utc::now().naive_local() + ttl;
+        insert_into(user_bans::dsl::user_bans)
+            .values((
+                user_bans::dsl::creator_id.eq(creator),
+                user_bans::dsl::user_id.eq(user),
+                user_bans::dsl::ip.eq(ip),
+                user_bans::dsl::reason.eq(reason),
+                user_bans::dsl::expired_at.eq(expired_at),
+            ))
+            .execute(self)?;
+        Ok(())
+    }
     fn by_id(&mut self, id: i32) -> Result<Item> {
-        let it = user_sessions::dsl::user_sessions
-            .filter(user_sessions::dsl::id.eq(id))
+        let it = user_bans::dsl::user_bans
+            .filter(user_bans::dsl::id.eq(id))
             .first(self)?;
         Ok(it)
     }

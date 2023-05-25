@@ -23,7 +23,7 @@ use super::super::{
         google::user::Dao as GoogleUserDao,
         log::Dao as LogDao,
         setting::Dao as SettingDao,
-        user::{Dao as UserDao, Item as User},
+        user::{Dao as UserDao,  Item as User},
     },
     orm::postgresql::Pool as PostgreSqlPool,
 };

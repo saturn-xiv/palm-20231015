@@ -129,7 +129,6 @@ impl Dao for Connection {
                                 },
                                 nickname: &format!("g{}", Uuid::new_v4()),
                                 email: &email,
-                                uid: &uid,
                                 password: None,
                                 salt: &random_bytes(NewUser::SALT_SIZE),
                                 lang: User::GUEST_LANG,
@@ -142,7 +141,7 @@ impl Dao for Connection {
                             })
                             .execute(self)?;
 
-                        let user = self.by_uid(&uid)?;
+                        let user = self.by_email(&email)?;
                         Self::confirm(self, user.id)?;
                         user
                     }
