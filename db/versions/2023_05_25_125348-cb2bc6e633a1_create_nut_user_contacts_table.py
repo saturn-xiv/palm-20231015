@@ -28,7 +28,7 @@ def upgrade() -> None:
         sa.Column('created_at', sa.DateTime,
                   nullable=False, server_default=sa.func.current_timestamp())
     )
-    op.create_index('idx_user_contacts', 'user_contacts',
+    op.create_index('idx_user_contacts_user_key', 'user_contacts',
                     ['user_id', 'key'], unique=True)
 
 
