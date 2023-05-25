@@ -1,0 +1,8 @@
+# Usage
+
+```bash
+pip install --user alembic
+alembic revision -m "create xxx table"
+alembic upgrade head
+alembic downgrade base
+```
