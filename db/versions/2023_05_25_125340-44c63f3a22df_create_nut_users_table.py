@@ -29,7 +29,7 @@ def upgrade() -> None:
         sa.Column('salt', sa.LargeBinary, nullable=False),
         sa.Column('avatar', sa.String(length=255),
                   nullable=False),
-        sa.Column('lang', sa.Integer, nullable=False, server_default='0'),
+        sa.Column('lang', sa.String(length=8), nullable=False),
         sa.Column('time_zone', sa.String(length=32),
                   nullable=False, server_default='UTC'),
         sa.Column('sign_in_count', sa.Integer,
@@ -42,7 +42,7 @@ def upgrade() -> None:
         sa.Column('locked_at', sa.DateTime),
         sa.Column('deleted_at', sa.DateTime),
         sa.Column('version', sa.Integer, nullable=False, server_default='0'),
-        sa.Column('updated_at', sa.DateTime),
+        sa.Column('updated_at', sa.DateTime, nullable=False),
         sa.Column('created_at', sa.DateTime,
                   nullable=False, server_default=sa.func.current_timestamp())
     )

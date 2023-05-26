@@ -21,9 +21,10 @@ def upgrade() -> None:
         'shorter_links',
         sa.Column('id', sa.Integer, primary_key=True),
         sa.Column('url', sa.String(length=255), nullable=False, unique=True),
-        sa.Column('detail', sa.Text, nullable=False, server_default=''),
+        sa.Column('summary', sa.String(length=255),
+                  nullable=False, server_default=''),
         sa.Column('version', sa.Integer, nullable=False, server_default='0'),
-        sa.Column('updated_at', sa.DateTime),
+        sa.Column('updated_at', sa.DateTime, nullable=False),
         sa.Column('created_at', sa.DateTime,
                   nullable=False, server_default=sa.func.current_timestamp())
     )

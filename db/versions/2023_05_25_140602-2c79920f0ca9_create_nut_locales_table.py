@@ -20,17 +20,18 @@ def upgrade() -> None:
     op.create_table(
         'locales',
         sa.Column('id', sa.Integer, primary_key=True),
-        sa.Column('lang', sa.Integer, nullable=False, server_default='0'),
+        sa.Column('lang', sa.String(length=8), nullable=False),
         sa.Column('code', sa.String(length=255), nullable=False),
         sa.Column('message', sa.Text, nullable=False),
         sa.Column('version', sa.Integer, nullable=False, server_default='0'),
-        sa.Column('updated_at', sa.DateTime),
+        sa.Column('updated_at', sa.DateTime, nullable=False),
         sa.Column('created_at', sa.DateTime,
                   nullable=False, server_default=sa.func.current_timestamp())
     )
     op.create_index('idx_locales_lang_code', 'locales',
                     ['lang', 'code'], unique=True)
     op.create_index('idx_locales_code', 'locales', ['code'])
+    op.create_index('idx_locales_lang', 'locales', ['lang'])
 
 
 def downgrade() -> None:

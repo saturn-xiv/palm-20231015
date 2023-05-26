@@ -20,32 +20,9 @@ diesel::table! {
 diesel::table! {
     attachments_resources (id) {
         id -> Int4,
-        attachment_id -> Nullable<Int4>,
+        attachment_id -> Int4,
         resource_type -> Varchar,
         resource_id -> Int4,
-        created_at -> Timestamp,
-    }
-}
-
-diesel::table! {
-    bbs_categories (id) {
-        id -> Int4,
-        lang -> Varchar,
-        name -> Varchar,
-        position -> Int4,
-        deleted_at -> Nullable<Timestamp>,
-        version -> Int4,
-        updated_at -> Timestamp,
-        created_at -> Timestamp,
-    }
-}
-
-diesel::table! {
-    bbs_logs (id) {
-        id -> Int4,
-        user_id -> Int4,
-        ip -> Varchar,
-        message -> Text,
         created_at -> Timestamp,
     }
 }
@@ -69,51 +46,7 @@ diesel::table! {
         category_id -> Int4,
         resource_type -> Varchar,
         resource_id -> Int4,
-        priority -> Int4,
-        created_at -> Timestamp,
-    }
-}
-
-diesel::table! {
-    cms_comments (id) {
-        id -> Int4,
-        page_id -> Int4,
-        comment_id -> Nullable<Int4>,
-        body -> Text,
-        body_editor -> Int4,
-        owner_id -> Int4,
-        owner_nick -> Varchar,
-        owner_name -> Varchar,
-        ip -> Varchar,
-        auth_by -> Int4,
-        published_at -> Nullable<Timestamp>,
-        locked_at -> Nullable<Timestamp>,
-        deleted_at -> Nullable<Timestamp>,
-        version -> Int4,
-        updated_at -> Timestamp,
-        created_at -> Timestamp,
-    }
-}
-
-diesel::table! {
-    cms_logs (id) {
-        id -> Int4,
-        user_id -> Int4,
-        ip -> Varchar,
-        message -> Text,
-        created_at -> Timestamp,
-    }
-}
-
-diesel::table! {
-    cms_tags (id) {
-        id -> Int4,
-        name -> Varchar,
-        lang -> Varchar,
-        slug -> Varchar,
-        position -> Int4,
-        version -> Int4,
-        updated_at -> Timestamp,
+        sort_order -> Int4,
         created_at -> Timestamp,
     }
 }
@@ -122,12 +55,12 @@ diesel::table! {
     comments (id) {
         id -> Int4,
         user_id -> Int4,
+        username -> Varchar,
         ip -> Varchar,
-        resource_id -> Int4,
-        resource_type -> Varchar,
+        comment_id -> Nullable<Int4>,
         content -> Text,
         content_editor -> Int4,
-        star_ -> Int4,
+        resource_type -> Varchar,
         deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         updated_at -> Timestamp,
@@ -148,8 +81,12 @@ diesel::table! {
     favorites (id) {
         id -> Int4,
         user_id -> Int4,
-        resource_id -> Int4,
+        subject -> Varchar,
+        url -> Varchar,
         resource_type -> Varchar,
+        resource_id -> Int4,
+        version -> Int4,
+        updated_at -> Timestamp,
         created_at -> Timestamp,
     }
 }
@@ -159,13 +96,12 @@ diesel::table! {
         id -> Int4,
         user_id -> Int4,
         username -> Varchar,
-        mobile -> Nullable<Varchar>,
-        email -> Nullable<Varchar>,
+        mobile -> Varchar,
+        email -> Varchar,
         content -> Text,
-        resource_id -> Int4,
+        content_editor -> Int4,
         resource_type -> Varchar,
-        #[sql_name = "type"]
-        type_ -> Int4,
+        resource_id -> Int4,
         status -> Int4,
         deleted_at -> Nullable<Timestamp>,
         version -> Int4,
@@ -178,8 +114,8 @@ diesel::table! {
     footprints (id) {
         id -> Int4,
         user_id -> Int4,
-        resource_id -> Int4,
         resource_type -> Varchar,
+        resource_id -> Int4,
         created_at -> Timestamp,
     }
 }
@@ -190,7 +126,7 @@ diesel::table! {
         user_id -> Int4,
         sub -> Varchar,
         code -> Bytea,
-        token -> Text,
+        token -> Varchar,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
@@ -253,23 +189,15 @@ diesel::table! {
 }
 
 diesel::table! {
-    menu_bars (id) {
+    menus (id) {
         id -> Int4,
-        lang -> Varchar,
         code -> Varchar,
-        title -> Varchar,
-        sort_order -> Int4,
-        created_at -> Timestamp,
-    }
-}
-
-diesel::table! {
-    menu_links (id) {
-        id -> Int4,
-        bar_id -> Int4,
-        title -> Varchar,
-        url -> Varchar,
-        sort_order -> Int4,
+        location -> Varchar,
+        left -> Int4,
+        right -> Int4,
+        deleted_at -> Nullable<Timestamp>,
+        version -> Int4,
+        updated_at -> Timestamp,
         created_at -> Timestamp,
     }
 }
@@ -277,10 +205,15 @@ diesel::table! {
 diesel::table! {
     notifications (id) {
         id -> Int4,
-        from -> Int4,
-        message -> Varchar,
-        url -> Nullable<Varchar>,
+        user_id -> Int4,
+        subject -> Varchar,
+        body -> Text,
+        url -> Varchar,
+        status -> Int4,
         read_at -> Nullable<Timestamp>,
+        deleted_at -> Nullable<Timestamp>,
+        version -> Int4,
+        updated_at -> Timestamp,
         created_at -> Timestamp,
     }
 }
@@ -289,6 +222,7 @@ diesel::table! {
     search_histories (id) {
         id -> Int4,
         user_id -> Int4,
+        ip -> Varchar,
         keyword -> Varchar,
         from -> Varchar,
         created_at -> Timestamp,
@@ -312,7 +246,7 @@ diesel::table! {
     shorter_links (id) {
         id -> Int4,
         url -> Varchar,
-        details -> Text,
+        summary -> Varchar,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
@@ -323,7 +257,7 @@ diesel::table! {
     tags (id) {
         id -> Int4,
         code -> Varchar,
-        priority -> Int4,
+        sort_order -> Int4,
         deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         updated_at -> Timestamp,
@@ -337,7 +271,7 @@ diesel::table! {
         tag_id -> Int4,
         resource_type -> Varchar,
         resource_id -> Int4,
-        priority -> Int4,
+        sort_order -> Int4,
         created_at -> Timestamp,
     }
 }
@@ -365,10 +299,22 @@ diesel::table! {
 }
 
 diesel::table! {
+    user_contacts (id) {
+        id -> Int4,
+        user_id -> Int4,
+        key -> Varchar,
+        value -> Bytea,
+        version -> Int4,
+        updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     user_sessions (id) {
         id -> Int4,
         user_id -> Int4,
-        uid -> Bpchar,
+        uid -> Varchar,
         ip -> Varchar,
         expired_at -> Timestamp,
         created_at -> Timestamp,
@@ -401,21 +347,9 @@ diesel::table! {
 }
 
 diesel::table! {
-    users_contacts (id) {
-        id -> Int4,
-        user_id -> Int4,
-        key -> Int4,
-        value -> Text,
-        version -> Int4,
-        updated_at -> Timestamp,
-        created_at -> Timestamp,
-    }
-}
-
-diesel::table! {
     vote_items (id) {
         id -> Int4,
-        score -> Int4,
+        star_ -> Int4,
         resource_type -> Varchar,
         resource_id -> Int4,
         version -> Int4,
@@ -429,12 +363,13 @@ diesel::table! {
         id -> Int4,
         user_id -> Int4,
         ip -> Varchar,
-        score -> Int4,
-        body -> Text,
-        body_editor -> Int4,
+        star_ -> Int4,
+        comment -> Text,
+        comment_editor -> Int4,
         resource_type -> Varchar,
         resource_id -> Int4,
         status -> Int4,
+        deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
@@ -480,13 +415,8 @@ diesel::table! {
 diesel::allow_tables_to_appear_in_same_query!(
     attachments,
     attachments_resources,
-    bbs_categories,
-    bbs_logs,
     categories,
     categories_resources,
-    cms_comments,
-    cms_logs,
-    cms_tags,
     comments,
     crawler_logs,
     favorites,
@@ -497,8 +427,7 @@ diesel::allow_tables_to_appear_in_same_query!(
     leave_words,
     locales,
     logs,
-    menu_bars,
-    menu_links,
+    menus,
     notifications,
     search_histories,
     settings,
@@ -507,9 +436,9 @@ diesel::allow_tables_to_appear_in_same_query!(
     tags_resources,
     twilio_sms_logs,
     user_bans,
+    user_contacts,
     user_sessions,
     users,
-    users_contacts,
     vote_items,
     vote_logs,
     wechat_mini_program_users,

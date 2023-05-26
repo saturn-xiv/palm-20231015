@@ -12,7 +12,7 @@ use super::super::user::Dao as UserDao;
 #[serde(rename_all = "camelCase")]
 pub struct Item {
     pub id: i32,
-    pub user_id: Option<i32>,
+    pub user_id: Option<i32>, // FIXME bind to a temp user
     pub union_id: String,
     pub app_id: String,
     pub open_id: String,

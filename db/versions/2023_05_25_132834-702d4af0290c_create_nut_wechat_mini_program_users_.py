@@ -20,14 +20,14 @@ def upgrade() -> None:
     op.create_table(
         'wechat_mini_program_users',
         sa.Column('id', sa.Integer, primary_key=True),
-        sa.Column('user_id', sa.Integer, nullable=False),
+        sa.Column('user_id', sa.Integer),
         sa.Column('union_id', sa.String(length=127), nullable=False),
         sa.Column('app_id', sa.String(length=63), nullable=False),
         sa.Column('open_id', sa.String(length=127), nullable=False),
-        sa.Column('nickname', sa.String(length=63), nullable=False),
-        sa.Column('avatar_url', sa.String(length=255), nullable=False),
+        sa.Column('nickname', sa.String(length=63)),
+        sa.Column('avatar_url', sa.String(length=255)),
         sa.Column('version', sa.Integer, nullable=False, server_default='0'),
-        sa.Column('updated_at', sa.DateTime),
+        sa.Column('updated_at', sa.DateTime, nullable=False),
         sa.Column('created_at', sa.DateTime,
                   nullable=False, server_default=sa.func.current_timestamp())
     )

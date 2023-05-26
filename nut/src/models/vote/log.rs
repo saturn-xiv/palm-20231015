@@ -14,12 +14,13 @@ pub struct Item {
     pub id: i32,
     pub user_id: i32,
     pub ip: String,
-    pub score: i32,
-    pub body: String,
-    pub body_editor: i32,
+    pub star: i32,
+    pub comment: String,
+    pub comment_editor: i32,
     pub resource_type: String,
     pub resource_id: i32,
     pub status: i32,
+    pub deleted_at: Option<NaiveDateTime>,
     pub version: i32,
     pub updated_at: NaiveDateTime,
     pub created_at: NaiveDateTime,
@@ -35,13 +36,13 @@ pub trait Dao {
         &mut self,
         user: i32,
         ip: &str,
-        score: i32,
-        body: &str,
+        star: i32,
+        comment: &str,
         editor: MediaContentEditor,
         resource_type: &str,
         resource_id: i32,
     ) -> Result<()>;
-    fn update(&mut self, id: i32, score: i32, body: &str) -> Result<()>;
+    fn update(&mut self, id: i32, star: i32, comment: &str) -> Result<()>;
     fn destroy(&mut self, id: i32) -> Result<()>;
 }
 
@@ -92,8 +93,8 @@ impl Dao for Connection {
         &mut self,
         user: i32,
         ip: &str,
-        score: i32,
-        body: &str,
+        star: i32,
+        comment: &str,
         editor: MediaContentEditor,
         resource_type: &str,
         resource_id: i32,
@@ -104,9 +105,9 @@ impl Dao for Connection {
             .values((
                 vote_logs::dsl::user_id.eq(user),
                 vote_logs::dsl::ip.eq(ip),
-                vote_logs::dsl::score.eq(score),
-                vote_logs::dsl::body.eq(body),
-                vote_logs::dsl::body_editor.eq(editor as i32),
+                vote_logs::dsl::star_.eq(star),
+                vote_logs::dsl::comment.eq(comment),
+                vote_logs::dsl::comment_editor.eq(editor as i32),
                 vote_logs::dsl::resource_id.eq(resource_id),
                 vote_logs::dsl::resource_type.eq(resource_type),
                 vote_logs::dsl::status.eq(MediaContentStatus::Pending as i32),
@@ -115,12 +116,12 @@ impl Dao for Connection {
             .execute(self)?;
         Ok(())
     }
-    fn update(&mut self, id: i32, score: i32, body: &str) -> Result<()> {
+    fn update(&mut self, id: i32, star: i32, comment: &str) -> Result<()> {
         let now = Utc::now().naive_utc();
         update(vote_logs::dsl::vote_logs.filter(vote_logs::dsl::id.eq(id)))
             .set((
-                vote_logs::dsl::score.eq(score),
-                vote_logs::dsl::body.eq(body),
+                vote_logs::dsl::star_.eq(star),
+                vote_logs::dsl::comment.eq(comment),
                 vote_logs::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;

@@ -33,7 +33,7 @@ def upgrade() -> None:
         sa.Column('privilege', sa.LargeBinary, nullable=False),
         sa.Column('lang', sa.String(length=8), nullable=False),
         sa.Column('version', sa.Integer, nullable=False, server_default='0'),
-        sa.Column('updated_at', sa.DateTime),
+        sa.Column('updated_at', sa.DateTime, nullable=False),
         sa.Column('created_at', sa.DateTime,
                   nullable=False, server_default=sa.func.current_timestamp())
     )

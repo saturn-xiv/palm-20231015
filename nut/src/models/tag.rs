@@ -13,7 +13,7 @@ use super::super::{
 pub struct Item {
     pub id: i32,
     pub code: String,
-    pub priority: i32,
+    pub sort_order: i32,
     pub deleted_at: Option<NaiveDateTime>,
     pub version: i32,
     pub updated_at: NaiveDateTime,
@@ -22,8 +22,8 @@ pub struct Item {
 
 pub trait Dao {
     fn by_id(&mut self, id: i32) -> Result<Item>;
-    fn create(&mut self, code: &str, priority: i32) -> Result<()>;
-    fn update(&mut self, id: i32, code: &str, priority: i32) -> Result<()>;
+    fn create(&mut self, code: &str, sort_order: i32) -> Result<()>;
+    fn update(&mut self, id: i32, code: &str, sort_order: i32) -> Result<()>;
     fn all(&mut self) -> Result<Vec<Item>>;
     fn destroy(&mut self, id: i32) -> Result<()>;
     fn associate(&mut self, id: i32, resource_type: &str, resource_id: i32) -> Result<()>;
@@ -37,24 +37,24 @@ impl Dao for Connection {
             .first::<Item>(self)?)
     }
 
-    fn create(&mut self, code: &str, priority: i32) -> Result<()> {
+    fn create(&mut self, code: &str, sort_order: i32) -> Result<()> {
         let now = Utc::now().naive_utc();
         insert_into(tags::dsl::tags)
             .values((
                 tags::dsl::code.eq(code),
-                tags::dsl::priority.eq(priority),
+                tags::dsl::sort_order.eq(sort_order),
                 tags::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;
         Ok(())
     }
-    fn update(&mut self, id: i32, code: &str, priority: i32) -> Result<()> {
+    fn update(&mut self, id: i32, code: &str, sort_order: i32) -> Result<()> {
         let it = tags::dsl::tags.filter(tags::dsl::id.eq(&id));
         let now = Utc::now().naive_utc();
         update(it)
             .set((
                 tags::dsl::code.eq(code),
-                tags::dsl::priority.eq(priority),
+                tags::dsl::sort_order.eq(sort_order),
                 tags::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;

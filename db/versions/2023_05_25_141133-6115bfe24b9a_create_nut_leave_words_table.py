@@ -20,7 +20,7 @@ def upgrade() -> None:
     op.create_table(
         'leave_words',
         sa.Column('id', sa.Integer, primary_key=True),
-        sa.Column('lang', sa.Integer, nullable=False),
+        sa.Column('lang', sa.String(length=8), nullable=False),
         sa.Column('ip', sa.String(length=45), nullable=False),
         sa.Column('body', sa.Text, nullable=False),
         sa.Column('body_editor', sa.Integer, nullable=False),
@@ -28,11 +28,12 @@ def upgrade() -> None:
         sa.Column('published_at', sa.DateTime),
         sa.Column('deleted_at', sa.DateTime),
         sa.Column('version', sa.Integer, nullable=False, server_default='0'),
-        sa.Column('updated_at', sa.DateTime),
+        sa.Column('updated_at', sa.DateTime, nullable=False),
         sa.Column('created_at', sa.DateTime,
                   nullable=False, server_default=sa.func.current_timestamp())
     )
     op.create_index('idx_leave_words_ip', 'leave_words', ['ip'])
+    op.create_index('idx_leave_words_lang', 'leave_words', ['lang'])
 
 
 def downgrade() -> None:

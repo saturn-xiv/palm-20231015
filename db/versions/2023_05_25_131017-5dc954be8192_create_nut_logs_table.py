@@ -24,7 +24,7 @@ def upgrade() -> None:
         sa.Column('level', sa.Integer, nullable=False, server_default='0'),
         sa.Column('ip', sa.String(length=45), nullable=False),
         sa.Column('resource_type', sa.String(length=255), nullable=False),
-        sa.Column('resource_id', sa.Integer, nullable=False),
+        sa.Column('resource_id', sa.Integer),
         sa.Column('message', sa.Text, nullable=False),
         sa.Column('created_at', sa.DateTime,
                   nullable=False, server_default=sa.func.current_timestamp())
