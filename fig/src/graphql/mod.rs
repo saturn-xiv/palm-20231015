@@ -9,14 +9,19 @@ use juniper::{
 };
 use nut::graphql::Context;
 
-pub type Schema = RootNode<'static, query::Query, mutation::Mutation, EmptySubscription<Context>>;
-
-pub fn create_schema() -> Schema {
-    Schema::new(query::Query, mutation::Mutation, EmptySubscription::new())
+pub fn register(config: &mut web::ServiceConfig) {
+    let schema = web::Data::new(Schema::new(
+        query::Query,
+        mutation::Mutation,
+        EmptySubscription::new(),
+    ));
+    config.app_data(schema).service(source).service(playground);
 }
 
+type Schema = RootNode<'static, query::Query, mutation::Mutation, EmptySubscription<Context>>;
+
 #[route("/graphql", method = "GET", method = "POST")]
-pub async fn source(
+async fn source(
     schema: web::Data<Schema>,
     data: web::Json<GraphQLRequest>,
 ) -> Result<HttpResponse> {
@@ -26,6 +31,6 @@ pub async fn source(
 }
 
 #[get("/graphiql")]
-pub async fn playground() -> impl Responder {
+async fn playground() -> impl Responder {
     Html(graphiql_source("/graphql", None))
 }

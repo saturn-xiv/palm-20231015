@@ -6,6 +6,7 @@ pub mod twilio;
 pub mod wechat;
 
 use std::ops::DerefMut;
+use std::path::{Component, Path};
 
 use actix_web::{
     get, http::header::ContentType, post, web, HttpResponse, Responder, Result as WebResult,
@@ -19,13 +20,90 @@ use palm::{
         Provider as SeoProvider, RobotsTxt,
     },
     thrift::Thrift,
-    try_web, BUILD_TIME, GIT_VERSION,
+    try_web, BUILD_TIME, GIT_VERSION, NAME,
 };
 
 use super::{i18n::I18n, orm::postgresql::Pool as DbPool, services::site::Service as SiteService};
 
-pub fn register(_config: &mut web::ServiceConfig) {
-    // TODO
+pub fn register(config: &mut web::ServiceConfig) {
+    config
+        .service(
+            actix_files::Files::new(
+                "/3rd",
+                if cfg!(debug_assertions) {
+                    Path::new("node_modules").to_path_buf()
+                } else {
+                    Path::new(&Component::RootDir)
+                        .join("usr")
+                        .join("share")
+                        .join(NAME)
+                        .join("node_modules")
+                },
+            )
+            .show_files_listing(),
+        )
+        .service(
+            actix_files::Files::new(
+                "/assets",
+                if cfg!(debug_assertions) {
+                    Path::new("assets").to_path_buf()
+                } else {
+                    Path::new(&Component::RootDir)
+                        .join("usr")
+                        .join("share")
+                        .join(NAME)
+                        .join("assets")
+                },
+            )
+            .show_files_listing(),
+        )
+        .service(attachments::create)
+        .service(captcha::get)
+        .service(
+            web::scope("/api")
+                .service(
+                    web::scope("/twilio")
+                        .service(
+                            web::scope("/sms")
+                                .service(twilio::sms::delivery_status)
+                                .service(twilio::sms::incoming_messages)
+                                .service(twilio::sms::reply),
+                        )
+                        .service(web::scope("/voice").service(twilio::voice::call_in)),
+                )
+                .service(
+                    web::scope("/wechat")
+                        .service(
+                            web::scope("/oauth2").service(
+                                web::scope("/messaging")
+                                    .service(wechat::oauth2::messaging::verify)
+                                    .service(wechat::oauth2::messaging::callback),
+                            ),
+                        )
+                        .service(
+                            web::scope("/mini-program")
+                                .service(wechat::mini_program::sign_in)
+                                .service(wechat::mini_program::profile)
+                                .service(
+                                    web::scope("/messaging")
+                                        .service(wechat::mini_program::messaging::verify)
+                                        .service(wechat::mini_program::messaging::callback),
+                                ),
+                        ),
+                )
+                .service(echo)
+                .service(version),
+        )
+        .service(swagger_ui)
+        .service(sitemap::google)
+        .service(sitemap::baidu)
+        .service(sitemap::index_now)
+        .service(sitemap::by_lang)
+        .service(sitemap::index)
+        .service(rss_xml)
+        .service(robots_txt)
+        .service(home::by_lang)
+        .service(home::index);
 }
 
 pub struct Loquat(pub Thrift);

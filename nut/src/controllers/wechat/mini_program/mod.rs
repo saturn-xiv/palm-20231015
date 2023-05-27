@@ -118,7 +118,7 @@ pub async fn sign_in(
 ) -> WebResult<impl Responder> {
     let form = form.into_inner();
     let client_ip = client_ip.to_string();
-
+    // FIXME move into hql
     debug!(
         "try to sign in wechat mini-program user {:?} from {}",
         form, client_ip
@@ -183,6 +183,7 @@ pub async fn profile(
     db: web::Data<DbPool>,
     form: web::Json<ProfileRequest>,
 ) -> WebResult<impl Responder> {
+    // FIXME move into HQL
     let mut db = try_web!(db.get())?;
     let db = db.deref_mut();
     let form = form.into_inner();

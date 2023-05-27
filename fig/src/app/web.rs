@@ -1,4 +1,3 @@
-use std::path::{Component, Path};
 use std::time::Duration as StdDuration;
 
 use actix_cors::Cors;
@@ -114,8 +113,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .app_data(orchid.clone())
             .app_data(s3.clone())
             .app_data(enforcer.clone())
-            .app_data(web::Data::new(graphql:: create_schema()))
-            .wrap(Cors::permissive())
+            .wrap(if is_prod { cors } else { Cors::permissive() })
             .wrap(middleware::Logger::default())
             .wrap(IdentityMiddleware::default())
             .wrap(
@@ -134,100 +132,10 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 .cookie_secure(is_prod)
                 .build(),
             )
-            .service(
-                actix_files::Files::new(
-                    "/3rd",
-                    if cfg!(debug_assertions) {
-                        Path::new("node_modules").to_path_buf()
-                    } else {
-                        Path::new(&Component::RootDir)
-                            .join("usr")
-                            .join("share")
-                            .join(NAME)
-                            .join("node_modules")
-                    },
-                )
-                .show_files_listing(),
-            )
-            .service(
-                actix_files::Files::new(
-                    "/assets",
-                    if cfg!(debug_assertions) {
-                        Path::new("assets").to_path_buf()
-                    } else {
-                        Path::new(&Component::RootDir)
-                            .join("usr")
-                            .join("share")
-                            .join(NAME)
-                            .join("assets")
-                    },
-                )
-                .show_files_listing(),
-            )
-            .service(nut::controllers::attachments::create)
-            .service(nut::controllers::captcha::get)
-            .service(graphql::source)
-            .service(graphql::playground)
-            .service(
-                web::scope("/api")
-                    .service(
-                        web::scope("/twilio").service(
-                            web::scope("/sms")
-                                .service(nut::controllers::twilio::sms::delivery_status)
-                                .service(nut::controllers::twilio::sms::incoming_messages)
-                                .service(nut::controllers::twilio::sms::reply),
-                        ).service(web::scope("/voice").service(nut::controllers::twilio::voice::call_in)),
-                    )
-                    .service(
-                        web::scope( "/flashcard").service(
-                            web::scope("/books")
-                                // .service(flashcard::controllers::books::show)
-                                // .service(flashcard::controllers::books::create)
-                                // .service(flashcard::controllers::books::index),
-                        ),
-                    )
-                    .service(
-                        web::scope("/wechat")                            
-                            .service(
-                                web::scope("/oauth2").service(
-                                    web::scope("/messaging")
-                                        .service(
-                                            nut::controllers::wechat::oauth2::messaging::verify,
-                                        )
-                                        .service(
-                                            nut::controllers::wechat::oauth2::messaging::callback,
-                                        ),
-                                ),
-                            )
-                            .service(
-                                web::scope("/mini-program")
-                                            .service(nut::controllers::wechat::mini_program::sign_in)
-                                            .service(nut::controllers::wechat::mini_program::profile)
-                                            .service(
-                                                web::scope("/messaging")
-                                                    .service(
-                                                        nut::controllers::wechat::mini_program::messaging::verify,
-                                                    )
-                                                    .service(
-                                                        nut::controllers::wechat::mini_program::messaging::callback,
-                                                    ),
-                                            ),
-                            )
-                    )
-                    .service(nut::controllers::echo)
-                    .service(nut::controllers::version),
-            )
-            .service(nut::controllers::swagger_ui)
-            .service(nut::controllers::sitemap::google)
-            .service(nut::controllers::sitemap::baidu)
-            .service(nut::controllers::sitemap::index_now)
-            .service(nut::controllers::sitemap::by_lang)
-            .service(nut::controllers::sitemap::index)
-            .service(nut::controllers::rss_xml)
-            .service(nut::controllers::robots_txt)
-            .service(nut::controllers::home::by_lang)
-            .service(nut::controllers::home::index)
-
+            .configure(graphql::register)
+            .configure(nut::controllers::register)
+            .configure(cms::controllers::register)
+            .configure(forum::controllers::register)
     })
     .bind(addr)?
     .run()
