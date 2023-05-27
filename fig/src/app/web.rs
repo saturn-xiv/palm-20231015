@@ -30,7 +30,7 @@ use palm::{
 };
 use tokio::sync::Mutex;
 
-use super::super::env::Config;
+use super::super::{env::Config, graphql};
 
 pub async fn launch(cfg: &Config) -> Result<()> {
     let pg_pool = cfg.postgresql.open()?;
@@ -114,7 +114,8 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .app_data(orchid.clone())
             .app_data(s3.clone())
             .app_data(enforcer.clone())
-            .wrap(cors)
+            .app_data(web::Data::new(graphql:: create_schema()))
+            .wrap(Cors::permissive())
             .wrap(middleware::Logger::default())
             .wrap(IdentityMiddleware::default())
             .wrap(
@@ -165,6 +166,8 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             )
             .service(nut::controllers::attachments::create)
             .service(nut::controllers::captcha::get)
+            .service(graphql::source)
+            .service(graphql::playground)
             .service(
                 web::scope("/api")
                     .service(
@@ -224,6 +227,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .service(nut::controllers::robots_txt)
             .service(nut::controllers::home::by_lang)
             .service(nut::controllers::home::index)
+
     })
     .bind(addr)?
     .run()

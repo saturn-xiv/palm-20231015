@@ -1,13 +1,26 @@
 [package]
 name = "forum"
-version = "0.1.0"
+version = "2023.5.27"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+log = "0.4"
+juniper = "0.15"
 
 [dependencies.diesel]
 version = "2"
 default-features = false
 features = ["bigdecimal", "postgres", "mysql", "sqlite", "extras", "128-column-tables"]
+
+[dependencies.actix-web]
+version = "4"
+features = ["cookies"]
+
+[dependencies.palm]
+path = '../palm'
+
+[dependencies.nut]
+path = '../nut'
+

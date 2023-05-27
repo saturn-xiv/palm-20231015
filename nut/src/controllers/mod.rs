@@ -24,6 +24,10 @@ use palm::{
 
 use super::{i18n::I18n, orm::postgresql::Pool as DbPool, services::site::Service as SiteService};
 
+pub fn register(_config: &mut web::ServiceConfig) {
+    // TODO
+}
+
 pub struct Loquat(pub Thrift);
 pub struct Orchid(pub Thrift);
 
