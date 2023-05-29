@@ -14,7 +14,7 @@ export VCPKG_HOME=$HOME/local/vcpkg
 
 function build_loquat() {
     apt-get install -y g++-10
-    local target=$WORKSPACE/build/loquat-$UBUNTU_CODENAME-$1-$2     
+    local target=$WORKSPACE/build/loquat-$UBUNTU_CODENAME-$1-$2
     CC=gcc-10 CXX=g++-10 cmake -B $target -S $WORKSPACE/loquat -DCMAKE_TOOLCHAIN_FILE=$HOME/local/vcpkg/scripts/buildsystems/vcpkg.cmake \
         -DABSL_PROPAGATE_CXX_STD=ON -DTINK_USE_SYSTEM_OPENSSL=OFF $THRIFT_FLAGS \
         -DCMAKE_BUILD_TYPE=$2
@@ -36,7 +36,15 @@ function build_babel() {
 }
 
 function build_coconut() {
-    CXX=$1 
+    local target=$WORKSPACE/build/coconut-$UBUNTU_CODENAME-$2-$3
+    CXX=$1 cmake -B $target -S $WORKSPACE/coconut -DCMAKE_BUILD_TYPE=$3
+    cd $target
+    make -j $(nproc --ignore=2) coconut
+
+    if [[ "$3" == "Release" ]]
+    then
+        cp -v $target/coconut $TARGET_DIR/bin/$2/
+    fi
 }
 
 # -----------------------------------------------------------------------------
@@ -57,10 +65,11 @@ mkdir -pv $TARGET_DIR/bin/{x86_64,aarch64,riscv64,armv7l}
 
 # -----------------------------------------------------------------------------
 
-build_coconut x86_64-linux-musl-g++ x86_64
-build_coconut aarch64-linux-musl-g++ aarch64
-build_coconut armv7l-linux-musleabihf-g++ armv7l
-build_coconut riscv64-linux-musl-g++ riscv64
+build_coconut x86_64-linux-musl-g++ x86_64 Debug
+build_coconut x86_64-linux-musl-g++ x86_64 Release
+build_coconut aarch64-linux-musl-g++ aarch64 Release
+build_coconut armv7l-linux-musleabihf-g++ armv7l Release
+# build_coconut riscv64-linux-musl-g++ riscv64 Release
 
 if [[ $(uname -p) == "aarch64" ]]
 then
@@ -72,8 +81,8 @@ fi
 
 if [[ $(uname -p) == "x86_64" ]]
 then
-    # build_loquat x86_64 Debug
-    # build_loquat x86_64 Release
+    build_loquat x86_64 Debug
+    build_loquat x86_64 Release
 
     build_babel x86_64
 fi

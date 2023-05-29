@@ -4,15 +4,15 @@
 #include "coconut/oracle.hpp"
 #include "coconut/postgresql.hpp"
 #include "coconut/rsync.hpp"
+#include "coconut/version.hpp"
 #include "coconut/web-site.hpp"
-#include "palm/version.hpp"
 
 #include <spdlog/spdlog.h>
 #include <args.hxx>
 
 coconut::Application::Application(int argc, char** argv) {
-  args::ArgumentParser parser(palm::PROJECT_DESCRIPTION,
-                              palm::PROJECT_HOMEPAGE);
+  args::ArgumentParser parser(coconut::PROJECT_DESCRIPTION,
+                              coconut::PROJECT_HOMEPAGE);
   args::HelpFlag help(parser, "help", "print help information", {'h', "help"});
   args::Flag debug(parser, "debug", "run on debug mode", {'d', "debug"});
 
@@ -47,14 +47,14 @@ coconut::Application::Application(int argc, char** argv) {
     return;
   }
   if (version) {
-    std::cout << palm::GIT_VERSION << "(" << palm::BUILD_TIME << ")"
+    std::cout << coconut::GIT_VERSION << "(" << coconut::BUILD_TIME << ")"
               << std::endl;
     return;
   }
 
   spdlog::set_level(debug ? spdlog::level::debug : spdlog::level::info);
   spdlog::debug("run on debug mode");
-  spdlog::info("version {}({})", palm::GIT_VERSION, palm::BUILD_TIME);
+  spdlog::info("version {}({})", coconut::GIT_VERSION, coconut::BUILD_TIME);
 
   const std::string config_file = config ? args::get(config) : "config.toml";
   const size_t keep_count = keep ? args::get(keep) : 7;
