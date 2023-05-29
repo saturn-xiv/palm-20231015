@@ -25,10 +25,10 @@ configure_file(include/loquat/version.h.in ${PROJECT_SOURCE_DIR}/include/loquat/
 
 # --------------------------------------------------------
 
-find_package(OpenSSL REQUIRED)
-# find_package(Libevent REQUIRED)
+find_package(Libevent CONFIG REQUIRED)
 
 # --------------------------------------------------------
+
 FetchContent_Declare(spdlog
   GIT_REPOSITORY  "https://github.com/gabime/spdlog.git"
   GIT_TAG         "v1.11.0"
@@ -36,14 +36,6 @@ FetchContent_Declare(spdlog
 FetchContent_Declare(tomlplusplus
   GIT_REPOSITORY  "https://github.com/marzer/tomlplusplus.git"
   GIT_TAG         "v3.3.0"
-)
-FetchContent_Declare(nlohmann_json
-  GIT_REPOSITORY  "https://github.com/nlohmann/json.git"
-  GIT_TAG         "v3.11.2"
-)
-FetchContent_Declare(httplib
-  GIT_REPOSITORY  "https://github.com/yhirose/cpp-httplib.git"
-  GIT_TAG         "v0.12.4"
 )
 FetchContent_Declare(argparse
   GIT_REPOSITORY  "https://github.com/p-ranav/argparse.git"
@@ -53,7 +45,7 @@ FetchContent_Declare(tink
   GIT_REPOSITORY  "https://github.com/tink-crypto/tink-cc.git"
   GIT_TAG         "6b16bea" # TODO openssl v3 v2.0.0
 )
-FetchContent_MakeAvailable(spdlog argparse tomlplusplus nlohmann_json httplib tink)
+FetchContent_MakeAvailable(spdlog argparse tomlplusplus tink)
 
 # --------------------------------------------------------
 
@@ -69,8 +61,6 @@ set_target_properties(loquat PROPERTIES LINK_FLAGS_RELEASE -s)
 target_link_libraries(loquat gourd
   ${OPENSSL_LIBRARIES}
   tink::static tink::jwt::jwt_key_templates tink::jwt::jwt_mac tink::jwt::jwt_mac_config
-  absl::base absl::flags absl::flags_parse
-  nlohmann_json::nlohmann_json
 )
 
 target_include_directories(loquat PUBLIC
@@ -78,7 +68,6 @@ target_include_directories(loquat PUBLIC
     
   ${spdlog_SOURCE_DIR}/include
   ${argparse_SOURCE_DIR}/include
-  ${httplib_SOURCE_DIR}
   ${tomlplusplus_SOURCE_DIR}/include  
 )
 

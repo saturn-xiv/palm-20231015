@@ -41,7 +41,6 @@
 #include <tink/keyset_handle.h>
 #include <tink/mac.h>
 #include <tink/mac/mac_key_templates.h>
-#include <nlohmann/json.hpp>
 
 namespace loquat {
 
