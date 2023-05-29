@@ -4,9 +4,10 @@ include(FetchContent)
 
 project(
     palm
-    VERSION 2022.10.30
+    VERSION 2023.5.29
     DESCRIPTION "A total free education & translation & ops solution."
-    LANGUAGES C CXX)
+    LANGUAGES CXX
+)
 # --------------------------------------------------------
 
 set(CMAKE_CXX_STANDARD 20)
@@ -24,7 +25,7 @@ string(TIMESTAMP BUILD_TIME UTC)
 configure_file(include/palm/version.h.in ${PROJECT_SOURCE_DIR}/include/palm/version.hpp)
 
 # --------------------------------------------------------
-add_subdirectory(loquat)
+add_subdirectory(gourd)
 add_subdirectory(src)
 add_subdirectory(apps)
 add_subdirectory(tests)

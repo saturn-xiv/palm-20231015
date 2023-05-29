@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "fig",
+  "version": "2023.5.29",
+  "dependencies": [
+    "openssl",
+
+    "boost-algorithm",
+    { "name": "boost-asio", "features": ["ssl"] },
+    "boost-date-time",
+    "boost-detail",
+    "boost-exception",
+    "boost-filesystem",
+    "boost-json",
+    "boost-log",
+    "boost-math",
+    "boost-program-options",
+    "boost-property-tree",
+    "boost-random",
+    "boost-range",
+    "boost-regex",
+    "boost-system",
+    "boost-thread",
+    "boost-timer",
+    "boost-uuid",
+
+    "libevent",
+    "liblzma",
+    { "name": "sail", "features": ["png"] },
+
+    { "name": "cpr", "features": ["ssl"] },
+    { "name": "aws-sdk-cpp", "features": ["s3", "sqs"] },
+    "cserialport",
+    { "name": "libssh2", "features": ["zlib"] },
+    { "name": "libgit2", "features": ["pcre2", "openssl", "ssh"] },
+    "mailio",
+
+    { "name": "czmq", "features": ["lz4", "uuid"] },
+    "cppzmq",
+    { "name": "paho-mqttpp3", "features": ["ssl"] },
+    "librabbitmq",
+
+    { "name": "libpq", "features": ["nls", "openssl", "zlib"] },
+    "libpqxx",
+    { "name": "libmariadb", "features": ["openssl", "zlib"] },
+    { "name": "sqlite3", "features": ["math", "zlib"] },
+    { "name": "soci", "features": ["boost", "sqlite3", "postgresql"] },
+    { "name": "redis-plus-plus", "features": ["cxx17"] },
+    { "name": "leveldb", "features": ["crc32c"] },
+    "minio-cpp",
+
+    "cppcodec",
+    "msgpack",
+    "pugixml",
+    "tomlplusplus",
+    "yaml-cpp",
+    "nlohmann-json",
+    "mstch",
+    "inja",
+    "cpp-httplib",
+
+    { "name": "abseil", "features": ["cxx17"] },
+    "spdlog",
+    "argparse",
+    "catch2"
+  ]
+}
