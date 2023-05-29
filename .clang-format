@@ -1,0 +1,6 @@
+﻿---
+BasedOnStyle: Google
+IncludeBlocks: Preserve
+SortIncludes: true
+TabWidth: 2
+MaxEmptyLinesToKeep: 1
