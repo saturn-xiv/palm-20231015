@@ -23,6 +23,7 @@
     "boost-thread",
     "boost-timer",
     "boost-uuid",
+    "boost-test",
 
     "libevent",
     "liblzma",
@@ -32,8 +33,6 @@
     { "name": "aws-sdk-cpp", "features": ["s3", "sqs"] },
     "cserialport",
     { "name": "libssh2", "features": ["zlib"] },
-    { "name": "libgit2", "features": ["pcre2", "openssl", "ssh"] },
-    "mailio",
 
     { "name": "czmq", "features": ["lz4", "uuid"] },
     "cppzmq",
@@ -50,7 +49,7 @@
     "minio-cpp",
 
     "cppcodec",
-    "msgpack",
+    "msgpack-c",
     "pugixml",
     "tomlplusplus",
     "yaml-cpp",
@@ -60,6 +59,9 @@
     "cpp-httplib",
 
     { "name": "abseil", "features": ["cxx17"] },
+    "flatbuffers",
+    "protobuf",
+    "grpc",
     "spdlog",
     "argparse",
     "catch2"

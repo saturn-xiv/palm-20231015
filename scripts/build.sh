@@ -54,8 +54,9 @@ function build_fig() {
     mkdir -p $target
     cd $target
     cmake -S $WORKSPACE/fig -DCMAKE_BUILD_TYPE=$4 \
-        -DBoost_NO_WARN_NEW_VERSIONS=1 \
+        $THRIFT_FLAGS -DBoost_NO_WARN_NEW_VERSIONS=1 \
         -DVCPKG_HOST_TRIPLET=$1 -DVCPKG_TARGET_TRIPLET=$2 \
+        -DCMAKE_MAKE_PROGRAM=make \
         -DCMAKE_TOOLCHAIN_FILE=$HOME/local/vcpkg/scripts/buildsystems/vcpkg.cmake \
         -DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$3.cmake    
     make -j $(nproc --ignore=2)

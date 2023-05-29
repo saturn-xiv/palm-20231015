@@ -18,7 +18,7 @@ target_link_libraries(lemon PUBLIC
 )
 
 source_group(
-  TREE "${CMAKE_CURRENT_SOURCE_DIR}/cpp"
+  TREE "${CMAKE_CURRENT_SOURCE_DIR}/src"
   PREFIX "Header Files"
   FILES ${HEADER_LIST}
 )

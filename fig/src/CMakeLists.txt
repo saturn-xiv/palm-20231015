@@ -8,10 +8,10 @@ find_package(Boost REQUIRED
   filesystem system thread program_options  
   random regex exception json
 )
-find_package(Poco REQUIRED 
-  Util
-)
-# find_package(cppzmq CONFIG REQUIRED)
+# find_package(Poco REQUIRED 
+#   Util
+# )
+find_package(cppzmq CONFIG REQUIRED)
 find_package(PahoMqttCpp CONFIG REQUIRED)
 find_package(rabbitmq-c CONFIG REQUIRED)
 find_package(cpr CONFIG REQUIRED)
@@ -19,9 +19,8 @@ find_package(aws-cpp-sdk-s3 CONFIG REQUIRED)
 find_package(aws-cpp-sdk-sqs CONFIG REQUIRED)
 find_package(Libssh2 CONFIG REQUIRED)
 find_package(LibLZMA REQUIRED)
-find_package(unofficial-sodium CONFIG REQUIRED)
 find_package(SailC++ CONFIG REQUIRED)
-find_package(msgpack CONFIG REQUIRED)
+find_package(msgpack-c CONFIG REQUIRED)
 find_package(pugixml CONFIG REQUIRED)
 find_package(tomlplusplus CONFIG REQUIRED)
 find_package(yaml-cpp CONFIG REQUIRED)
@@ -32,12 +31,9 @@ find_package(PostgreSQL REQUIRED)
 find_package(libpqxx CONFIG REQUIRED)
 find_package(unofficial-libmariadb CONFIG REQUIRED)
 find_package(unofficial-sqlite3 CONFIG REQUIRED)
-# find_package(bsoncxx CONFIG REQUIRED)
-# find_package(mongocxx CONFIG REQUIRED)
 find_package(SOCI CONFIG REQUIRED)
 find_package(redis++ CONFIG REQUIRED)
 find_package(Flatbuffers CONFIG REQUIRED)
-find_package(mailio CONFIG REQUIRED)
 
 find_path(CPPCODEC_INCLUDE_DIRS "cppcodec/base32_crockford.hpp")
 find_path(CPP_HTTPLIB_INCLUDE_DIRS "httplib.h")
@@ -57,22 +53,20 @@ target_link_libraries(palm PUBLIC loquat
   Boost::filesystem Boost::system Boost::thread Boost::program_options
   Boost::random Boost::regex Boost::exception Boost::json
 
-  Poco::Util
-  mailio
-  unofficial-sodium::sodium Libssh2::libssh2 LibLZMA::LibLZMA
+  Libssh2::libssh2 LibLZMA::LibLZMA
 
-  # cppzmq-static 
+  cppzmq-static 
   PahoMqttCpp::paho-mqttpp3-static rabbitmq::rabbitmq-static
     
   aws-cpp-sdk-s3 aws-cpp-sdk-sqs 
   ${MINIO_LIBRARY} CURL::libcurl ${CURLPP_LIBRARY} ${INIH_LIBRARY}
   cpr::cpr SAIL::sail-c++
-  msgpackc msgpackc-cxx 
-  pugixml::static tomlplusplus::tomlplusplus yaml-cpp nlohmann_json::nlohmann_json
+  
+  pugixml::static tomlplusplus::tomlplusplus yaml-cpp nlohmann_json::nlohmann_json msgpack-c
   mstch::mstch pantor::inja
   PostgreSQL::PostgreSQL libpqxx::pqxx unofficial::libmariadb unofficial::sqlite3::sqlite3 
   redis++::redis++_static 
-  # mongo::bsoncxx_static mongo::mongocxx_static
+  
   SOCI::soci_core_static SOCI::soci_empty_static SOCI::soci_sqlite3_static SOCI::soci_postgresql_static  
   flatbuffers::flatbuffers
 )
