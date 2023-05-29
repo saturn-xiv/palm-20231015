@@ -21,8 +21,7 @@ endif
 
 CXXFLAGS += -std=c++17
 
-
-%.o:src/%.cpp src/babel.hpp
+%.o:src/%.cpp src/babel.hpp src/version.hpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 %.o:$(PROTOCOLS)/%.cc $(PROTOCOLS)/%.h
@@ -40,5 +39,12 @@ all: $(EXE)
 $(EXE): $(OBJS)
 	$(CXX) -o $@ $^ $(CXXFLAGS) $(LIBS)
 
+src/version.hpp:
+	echo '#pragma once' > $@
+	echo 'namespace babel {' >> $@
+	echo "inline static const std::string GIT_VERSION = \"$(shell git describe --tags --always --dirty)\";" >> $@
+	echo "inline static const std::string BUILD_TIME = \"$(shell date -u)\";" >> $@
+	echo '}' >> $@
+
 clean:
-	-rm $(EXE) $(OBJS)
+	-rm $(EXE) $(OBJS) src/version.hpp

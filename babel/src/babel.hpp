@@ -14,32 +14,29 @@
 
 #include "babel.grpc.pb.h"
 
-namespace palm
-{
-    namespace babel
-    {
+namespace palm {
+namespace babel {
 
-        class Client
-        {
-        public:
-            Client(const boost::property_tree::ptree &tree);
-            Client(std::string host = "127.0.0.1", uint16_t port = 8080) : host(host), port(port) {}
+class Client {
+ public:
+  Client(const boost::property_tree::ptree &tree);
+  Client(std::string host = "127.0.0.1", uint16_t port = 8080)
+      : host(host), port(port) {}
 
-        private:
-            std::string host;
-            uint16_t port;
-        };
+ private:
+  std::string host;
+  uint16_t port;
+};
 
-        class Application
-        {
-        public:
-            Application(int argc, char **argv);
+class Application {
+ public:
+  Application(int argc, char **argv);
 
-        private:
-            void launch() const;
+ private:
+  void launch() const;
 
-            std::shared_ptr<Client> client;
-        };
+  std::shared_ptr<Client> client;
+};
 
-    }
-}
+}  // namespace babel
+}  // namespace palm
