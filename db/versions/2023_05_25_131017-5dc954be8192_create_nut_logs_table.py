@@ -21,7 +21,7 @@ def upgrade() -> None:
         'logs',
         sa.Column('id', sa.Integer, primary_key=True),
         sa.Column('user_id', sa.Integer, nullable=False),
-        sa.Column('level', sa.Integer, nullable=False, server_default='0'),
+        sa.Column('level', sa.String(length=16), nullable=False),
         sa.Column('ip', sa.String(length=45), nullable=False),
         sa.Column('resource_type', sa.String(length=255), nullable=False),
         sa.Column('resource_id', sa.Integer),
@@ -31,6 +31,7 @@ def upgrade() -> None:
     )
     op.create_index('idx_logs_resource_type', 'logs', ['resource_type'])
     op.create_index('idx_logs_ip', 'logs', ['ip'])
+    op.create_index('idx_logs_level', 'logs', ['level'])
 
 
 def downgrade() -> None:

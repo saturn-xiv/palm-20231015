@@ -29,9 +29,11 @@ def upgrade() -> None:
         sa.Column('salt', sa.LargeBinary, nullable=False),
         sa.Column('avatar', sa.String(length=255),
                   nullable=False),
-        sa.Column('lang', sa.String(length=8), nullable=False),
+        sa.Column('lang', sa.String(length=8),
+                  nullable=False, server_default='en-US'),
         sa.Column('time_zone', sa.String(length=32),
                   nullable=False, server_default='UTC'),
+        sa.Column('status', sa.String(length=16), nullable=False),
         sa.Column('sign_in_count', sa.Integer,
                   nullable=False, server_default='0'),
         sa.Column('current_sign_in_at', sa.DateTime),
@@ -48,6 +50,7 @@ def upgrade() -> None:
     )
     op.create_index('idx_users_real_name', 'users', ['real_name'])
     op.create_index('idx_users_lang', 'users', ['lang'])
+    op.create_index('idx_users_status', 'users', ['status'])
     op.create_index('idx_users_time_zone', 'users', ['time_zone'])
 
 

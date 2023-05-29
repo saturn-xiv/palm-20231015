@@ -26,7 +26,7 @@ def upgrade() -> None:
         sa.Column('title', sa.String(length=255), nullable=False),
         sa.Column('size', sa.BigInteger, nullable=False),
         sa.Column('content_type', sa.String(length=63), nullable=False),
-        sa.Column('status', sa.Integer, nullable=False),
+        sa.Column('status', sa.String(length=16), nullable=False),
         sa.Column('deleted_at', sa.DateTime),
         sa.Column('version', sa.Integer, nullable=False, server_default='0'),
         sa.Column('updated_at', sa.DateTime, nullable=False),
@@ -40,6 +40,7 @@ def upgrade() -> None:
     op.create_index('idx_attachments_title', 'attachments', ['title'])
     op.create_index('idx_attachments_content_type',
                     'attachments', ['content_type'])
+    op.create_index('idx_attachments_status', 'attachments', ['status'])
 
 
 def downgrade() -> None:

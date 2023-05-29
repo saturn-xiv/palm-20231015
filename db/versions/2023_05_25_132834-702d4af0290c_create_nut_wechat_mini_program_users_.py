@@ -20,8 +20,9 @@ def upgrade() -> None:
     op.create_table(
         'wechat_mini_program_users',
         sa.Column('id', sa.Integer, primary_key=True),
-        sa.Column('user_id', sa.Integer),
-        sa.Column('union_id', sa.String(length=127), nullable=False),
+        sa.Column('user_id', sa.Integer, nullable=False),
+        sa.Column('union_id', sa.String(length=127),
+                  nullable=False, unique=True),
         sa.Column('app_id', sa.String(length=63), nullable=False),
         sa.Column('open_id', sa.String(length=127), nullable=False),
         sa.Column('nickname', sa.String(length=63)),
