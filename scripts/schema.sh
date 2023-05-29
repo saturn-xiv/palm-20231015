@@ -8,35 +8,27 @@ export WORKSPACE=$PWD
 # -----------------------------------------------------------------------------
 
 function generate_grpc_by_lang() {
-    local target=$WORKSPACE/$3
-    echo "generate grpc($1) $2 => $3"
-    if [ -d $target ]
-    then 
-        rm -r $target
-    fi
-    mkdir -p $target
-    
+    local target=$WORKSPACE/$2
+    echo "generate grpc($1) => $2"
     $PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/protocols \
         -I $PROTOBUF_ROOT/include/google/protobuf \
         --${1}_out=$target --grpc_out=$target \
         --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_${1}_plugin \
-        $WORKSPACE/$2
+        $WORKSPACE/protocols/*.proto
 }
 
 function generate_thrift_by_lang() {
-    echo "generate thrift($1) $2 => $3"
-    local target=$WORKSPACE/$3
-    
+    echo "generate thrift($1) => $2"
+    local target=$WORKSPACE/$2
     mkdir -p $target
-
-    thrift -out $3 --gen $1 -r $WORKSPACE/$2
+    thrift -out $2 --gen $1 -r $WORKSPACE/protocols/*.thrift
 }
 
 # -----------------------------------------------------------------------------
 cd $WORKSPACE
 declare -a tmp_folders=(
-    "babel/protocols"
-    "loquat/gourd/src"
+    "gourd/src"
+    "lemon/src"
 )
 for t in "${tmp_folders[@]}"
 do
@@ -44,11 +36,12 @@ do
     then 
         rm -r $t
     fi
+    mkdir -p $t
 done
 
 
-generate_grpc_by_lang cpp protocols/babel.proto babel/protocols
-generate_thrift_by_lang cpp protocols/loquat.thrift loquat/gourd/src
+generate_grpc_by_lang cpp lemon/src
+generate_thrift_by_lang cpp gourd/src
 # -----------------------------------------------------------------------------
 
 echo 'done.'

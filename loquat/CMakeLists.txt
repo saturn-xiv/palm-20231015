@@ -49,7 +49,7 @@ FetchContent_MakeAvailable(spdlog argparse tomlplusplus tink)
 
 # --------------------------------------------------------
 
-add_subdirectory(gourd)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../gourd ${CMAKE_CURRENT_BINARY_DIR}/gourd)
 
 # --------------------------------------------------------
 
