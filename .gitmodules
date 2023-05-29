@@ -1,3 +1,21 @@
 [submodule "babel/imgui"]
 	path = babel/imgui
 	url = https://github.com/ocornut/imgui.git
+[submodule "fig/themes/hugo-clean-white"]
+	path = fig/themes/hugo-clean-white
+	url = https://github.com/zhaohuabing/hugo-theme-cleanwhite
+[submodule "fig/themes/hugo-universal"]
+	path = fig/themes/hugo-universal
+	url = https://github.com/devcows/hugo-universal-theme.git
+[submodule "fig/themes/hugo-docsy"]
+	path = fig/themes/hugo-docsy
+	url = https://github.com/google/docsy.git
+[submodule "fig/themes/hugo-hinode"]
+	path = fig/themes/hugo-hinode
+	url = https://github.com/markdumay/hugo-theme-hinode-child.git
+[submodule "fig/themes/grav-x-corporation"]
+	path = fig/themes/grav-x-corporation
+	url = https://github.com/tranduyhung/grav-theme-x-corporation.git
+[submodule "fig/themes/gantry5"]
+	path = fig/themes/gantry5
+	url = https://github.com/gantry/gantry5.git
