@@ -40,13 +40,30 @@ function build_coconut() {
     local target=$WORKSPACE/build/coconut-$UBUNTU_CODENAME-$2-$3
     mkdir -p $target
     cd $target
-    CXX=$1 cmake -S $WORKSPACE/coconut -DCMAKE_BUILD_TYPE=$3
-    
+    CXX=$1 cmake -S $WORKSPACE/coconut -DCMAKE_BUILD_TYPE=$3    
     make -j $(nproc --ignore=2) coconut
 
     if [[ "$3" == "Release" ]]
     then
         cp -v $target/coconut $TARGET_DIR/bin/$2/
+    fi
+}
+
+function build_fig() {
+    local target=$WORKSPACE/build/fig-$UBUNTU_CODENAME-$3-$4
+    mkdir -p $target
+    cd $target
+    cmake -S $WORKSPACE/fig -DCMAKE_BUILD_TYPE=$4 \
+        -DBoost_NO_WARN_NEW_VERSIONS=1 \
+        -DVCPKG_HOST_TRIPLET=$1 -DVCPKG_TARGET_TRIPLET=$2 \
+        -DCMAKE_TOOLCHAIN_FILE=$HOME/local/vcpkg/scripts/buildsystems/vcpkg.cmake \
+        -DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$3.cmake    
+    make -j $(nproc --ignore=2)
+
+    if [[ "$4" == "Release" ]]
+    then
+        cd $target/apps
+        cp -v aloe fig mint orchid $TARGET_DIR/bin/$3/
     fi
 }
 
@@ -87,6 +104,10 @@ then
     build_loquat x86_64 Release
 
     build_babel x86_64
+
+    build_fig x64-linux x64-linux x86_64 Debug
+    build_fig x64-linux x64-linux x86_64 Release
+    build_fig x64-linux arm64-linux aarch64 Release
 fi
 
 # -----------------------------------------------------------------------------
