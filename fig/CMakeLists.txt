@@ -6,7 +6,7 @@ project(
     palm
     VERSION 2023.5.29
     DESCRIPTION "A total free education & translation & ops solution."
-    LANGUAGES CXX
+    LANGUAGES C CXX
 )
 # --------------------------------------------------------
 

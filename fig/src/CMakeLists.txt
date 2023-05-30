@@ -8,9 +8,9 @@ find_package(Boost REQUIRED
   filesystem system thread program_options  
   random regex exception json
 )
-# find_package(Poco REQUIRED 
-#   Util
-# )
+find_package(Poco REQUIRED 
+  Util
+)
 find_package(cppzmq CONFIG REQUIRED)
 find_package(PahoMqttCpp CONFIG REQUIRED)
 find_package(rabbitmq-c CONFIG REQUIRED)
@@ -29,6 +29,7 @@ find_package(mstch CONFIG REQUIRED)
 find_package(inja CONFIG REQUIRED)
 find_package(PostgreSQL REQUIRED)
 find_package(libpqxx CONFIG REQUIRED)
+find_package(unofficial-sodium CONFIG REQUIRED)
 find_package(unofficial-libmariadb CONFIG REQUIRED)
 find_package(unofficial-sqlite3 CONFIG REQUIRED)
 find_package(SOCI CONFIG REQUIRED)
@@ -42,18 +43,21 @@ find_library(MINIO_LIBRARY miniocpp)
 find_library(CURLPP_LIBRARY curlpp)
 find_library(INIH_LIBRARY inih)
 
-target_include_directories(palm PUBLIC
-  ${palm_SOURCE_DIR}/include
-  ${CPPCODEC_INCLUDE_DIRS}
-  ${CPP_HTTPLIB_INCLUDE_DIRS}
+FetchContent_Declare(mailio
+  GIT_REPOSITORY    "https://github.com/karastojko/mailio.git"
+  GIT_TAG           "0.22.0"
 )
+FetchContent_MakeAvailable(mailio)
 
-target_link_libraries(palm PUBLIC loquat
+target_link_libraries(palm PUBLIC 
+  lemon gourd mailio
+
   Boost::chrono Boost::date_time Boost::timer Boost::log Boost::log_setup
   Boost::filesystem Boost::system Boost::thread Boost::program_options
   Boost::random Boost::regex Boost::exception Boost::json
 
-  Libssh2::libssh2 LibLZMA::LibLZMA
+  unofficial-sodium::sodium Libssh2::libssh2 LibLZMA::LibLZMA
+  Poco::Util
 
   cppzmq-static 
   PahoMqttCpp::paho-mqttpp3-static rabbitmq::rabbitmq-static
@@ -69,6 +73,13 @@ target_link_libraries(palm PUBLIC loquat
   
   SOCI::soci_core_static SOCI::soci_empty_static SOCI::soci_sqlite3_static SOCI::soci_postgresql_static  
   flatbuffers::flatbuffers
+)
+
+target_include_directories(palm PUBLIC
+  ${palm_SOURCE_DIR}/include
+
+  ${CPPCODEC_INCLUDE_DIRS}
+  ${CPP_HTTPLIB_INCLUDE_DIRS}
 )
 
 source_group(

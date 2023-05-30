@@ -9,7 +9,7 @@ export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
 export BUILD_TIME=$(date -u -R)
 export PACKAGE_NAME=palm-$UBUNTU_CODENAME-$GIT_VERSION
 export TARGET_DIR=$PWD/tmp/$PACKAGE_NAME
-export THRIFT_FLAGS="-DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF"
+export THRIFT_FLAGS="-DBUILD_TESTING=OFF -DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF"
 export VCPKG_HOME=$HOME/local/vcpkg
 
 function build_loquat() {
@@ -50,15 +50,16 @@ function build_coconut() {
 }
 
 function build_fig() {
+    local mailio_args="-DMAILIO_BUILD_DOCUMENTATION=OFF -DMAILIO_BUILD_EXAMPLES=OFF -DMAILIO_BUILD_SHARED_LIBRARY=OFF -DMAILIO_BUILD_TESTS=OFF"
     local target=$WORKSPACE/build/fig-$UBUNTU_CODENAME-$3-$4
     mkdir -p $target
     cd $target
-    cmake -S $WORKSPACE/fig -DCMAKE_BUILD_TYPE=$4 \
-        $THRIFT_FLAGS -DBoost_NO_WARN_NEW_VERSIONS=1 \
-        -DVCPKG_HOST_TRIPLET=$1 -DVCPKG_TARGET_TRIPLET=$2 \
-        -DCMAKE_MAKE_PROGRAM=make \
+    cmake -S $WORKSPACE/fig -DCMAKE_MAKE_PROGRAM=make -DCMAKE_BUILD_TYPE=$4 \
+        -DVCPKG_HOST_TRIPLET=$1 -DVCPKG_TARGET_TRIPLET=$2 -DVCPKG_INSTALLED_DIR=$HOME/local/vcpkg/out \
         -DCMAKE_TOOLCHAIN_FILE=$HOME/local/vcpkg/scripts/buildsystems/vcpkg.cmake \
-        -DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$3.cmake    
+        -DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$3.cmake \
+        $mailio_args $THRIFT_FLAGS -DBoost_NO_WARN_NEW_VERSIONS=1
+        
     make -j $(nproc --ignore=2)
 
     if [[ "$4" == "Release" ]]

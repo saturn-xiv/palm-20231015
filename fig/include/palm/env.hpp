@@ -1,5 +1,7 @@
 #pragma once
 
+#include <boost/type_index.hpp>
+
 #include <nlohmann/json.hpp>
 
 namespace palm {

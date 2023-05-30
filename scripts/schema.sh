@@ -17,11 +17,11 @@ function generate_grpc_by_lang() {
         $WORKSPACE/protocols/*.proto
 }
 
-function generate_thrift_by_lang() {
-    echo "generate thrift($1) => $2"
-    local target=$WORKSPACE/$2
+function generate_thrift_cpp() {
+    echo "generate thrift(cpp) => $1"
+    local target=$WORKSPACE/$1
     mkdir -p $target
-    thrift -out $2 --gen $1 -r $WORKSPACE/protocols/*.thrift
+    thrift -out $1 --gen cpp:no_skeleton -r $WORKSPACE/protocols/*.thrift
 }
 
 # -----------------------------------------------------------------------------
@@ -41,7 +41,7 @@ done
 
 
 generate_grpc_by_lang cpp lemon/src
-generate_thrift_by_lang cpp gourd/src
+generate_thrift_cpp gourd/src
 # -----------------------------------------------------------------------------
 
 echo 'done.'
