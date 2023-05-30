@@ -8,6 +8,10 @@
 #include <openssl/hmac.h>
 #include <openssl/md5.h>
 #include <openssl/sha.h>
+#include <thrift/protocol/TBinaryProtocol.h>
+#include <thrift/protocol/TMultiplexedProtocol.h>
+#include <thrift/transport/TSocket.h>
+#include <thrift/transport/TTransportUtils.h>
 #include <cppcodec/base64_rfc4648.hpp>
 #include <cppcodec/base64_url_unpadded.hpp>
 
@@ -432,4 +436,101 @@ std::vector<uint8_t> palm::SecretBox::decrypt(
     throw std::runtime_error("decode encrypted message");
   }
   return plain;
+}
+
+palm::loquat::Client::Client(const toml::table& root,
+                             const std::string& service) {
+  const std::string host = root["host"].value_or("127.0.0.1");
+  const uint16_t port = root["port"].value_or(8080);
+  this->open(host, port, service);
+}
+
+void palm::loquat::Client::open(const std::string& host, const uint16_t port,
+                                const std::string& service) {
+  std::shared_ptr<apache::thrift::transport::TTransport> socket =
+      std::make_shared<apache::thrift::transport::TSocket>(host, port);
+  this->_transport =
+      std::make_shared<apache::thrift::transport::TFramedTransport>(socket);
+  std::shared_ptr<apache::thrift::protocol::TProtocol> protocol =
+      std::make_shared<apache::thrift::protocol::TBinaryProtocol>(
+          this->_transport);
+  this->_protocol =
+      std::make_shared<apache::thrift::protocol::TMultiplexedProtocol>(protocol,
+                                                                       service);
+  this->_transport->open();
+}
+
+std::vector<uint8_t> palm::loquat::Aes::encrypt(
+    const std::vector<uint8_t>& plain) const {
+  std::string p(plain.begin(), plain.end());
+  std::string c = this->encrypt(p);
+  std::vector<uint8_t> code(c.begin(), c.end());
+  return code;
+}
+std::vector<uint8_t> palm::loquat::Aes::decrypt(
+    const std::vector<uint8_t>& code) const {
+  std::string c(code.begin(), code.end());
+  std::string p = this->decrypt(c);
+  std::vector<uint8_t> plain(p.begin(), p.end());
+  return plain;
+}
+
+std::string palm::loquat::Aes::encrypt(const std::string& plain) const {
+  ::loquat::v1::AesClient client(this->_protocol);
+  std::string code;
+  client.encrypt(code, plain);
+  return code;
+}
+std::string palm::loquat::Aes::decrypt(const std::string& code) const {
+  ::loquat::v1::AesClient client(this->_protocol);
+  std::string plain;
+  client.decrypt(plain, code);
+  return plain;
+}
+
+std::string palm::loquat::Jwt::sign(const std::string& subject,
+                                    const std::optional<std::string> audience,
+                                    const std::chrono::seconds& ttl) const {
+  ::loquat::v1::JwtClient client(this->_protocol);
+  std::string token;
+  client.sign(token, subject, audience.value_or(""), ttl.count());
+  return token;
+}
+
+std::string palm::loquat::Jwt::verify(
+    const std::string& token, const std::optional<std::string> audience) const {
+  ::loquat::v1::JwtClient client(this->_protocol);
+  std::string subject;
+  client.verify(subject, token, audience.value_or(""));
+  return subject;
+}
+std::vector<uint8_t> palm::loquat::Hmac::sign(
+    const std::vector<uint8_t>& plain) const {
+  std::string p(plain.begin(), plain.end());
+  std::string c = this->sign(p);
+  std::vector<uint8_t> code(c.begin(), c.end());
+  return code;
+}
+void palm::loquat::Hmac::verify(const std::vector<uint8_t>& code,
+                                const std::vector<uint8_t>& plain) const {
+  std::string c(code.begin(), code.end());
+  std::string p(plain.begin(), plain.end());
+  this->verify(c, p);
+}
+
+std::string palm::loquat::Hmac::sign(const std::string& plain) const {
+  ::loquat::v1::HmacClient client(this->_protocol);
+  std::string code;
+  client.sign(code, plain);
+  return code;
+}
+void palm::loquat::Hmac::verify(const std::string& code,
+                                const std::string& plain) const {
+  ::loquat::v1::HmacClient client(this->_protocol);
+  client.verify(code, plain);
+}
+
+void palm::loquat::Health::check() const {
+  ::loquat::v1::HealthClient client(this->_protocol);
+  client.check();
 }

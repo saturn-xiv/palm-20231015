@@ -196,7 +196,74 @@ TEST_CASE("OpenSSL", "[ssl]") {
 }
 
 TEST_CASE("tink", "[loquat]") {
-  REQUIRE(sodium_init() >= 0);
+  const std::string host = "127.0.0.1";
+  const uint16_t port = 18080;
 
-  SECTION("serial") {}
+  SECTION("health") {
+    palm::loquat::Health it(host, port);
+    it.check();
+  }
+
+  SECTION("aes") {
+    const std::string hi = "hello, loquat!";
+    palm::loquat::Aes it(host, port);
+    for (auto i = 1; i <= 3; i++) {
+      const auto code = it.encrypt(hi);
+      std::cout << "aes(" << i << ") encrypt(" << hi << "): " << code
+                << std::endl;
+      const auto plain = it.decrypt(code);
+      std::cout << "aes(" << i << ") decrypt(" << code << "): " << plain
+                << std::endl;
+      REQUIRE(code != plain);
+      REQUIRE(hi == plain);
+    }
+  }
+
+  SECTION("hmac") {
+    const std::string plain = "hello, loquat!";
+    palm::loquat::Hmac it(host, port);
+    for (auto i = 1; i <= 3; i++) {
+      const auto code = it.sign(plain);
+      std::cout << "hmac(" << i << ") sign(" << plain << "): " << code
+                << std::endl;
+      it.verify(code, plain);
+      REQUIRE(code != plain);
+    }
+  }
+
+  SECTION("jwt") {
+    const std::string subject = "loquat";
+    palm::loquat::Jwt it(host, port);
+
+    for (auto i = 1; i <= 3; i++) {
+      {
+        const auto token =
+            it.sign(subject, std::nullopt, std::chrono::minutes(1));
+        std::cout << "jwt(" << i << ") sign(" << subject << ",null): " << token
+                  << std::endl;
+        REQUIRE(token != subject);
+        {
+          std::this_thread::sleep_for(std::chrono::seconds(2));
+          const auto s = it.verify(token, std::nullopt);
+          std::cout << "jwt(" << i << ") verify(" << subject << ",null): " << s
+                    << std::endl;
+          REQUIRE(s == subject);
+        }
+      }
+      {
+        const std::string audience = "testing";
+        const auto token = it.sign(subject, audience, std::chrono::minutes(1));
+        std::cout << "jwt(" << i << ") sign(" << subject << "," << audience
+                  << "): " << token << std::endl;
+        REQUIRE(token != subject);
+        {
+          std::this_thread::sleep_for(std::chrono::seconds(2));
+          const auto s = it.verify(token, audience);
+          std::cout << "jwt(" << i << ") verify(" << subject << "," << audience
+                    << "): " << s << std::endl;
+          REQUIRE(s == subject);
+        }
+      }
+    }
+  }
 }

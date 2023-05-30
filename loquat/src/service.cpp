@@ -35,22 +35,22 @@ void loquat::application::launch(const uint16_t port) {
       std::make_shared<apache::thrift::TMultiplexedProcessor>();
 
   {
-    const auto name = typeid(AesHandler).name();
+    const auto name = typeid(v1::AesIf).name();
     spdlog::info("register aes service {}", name);
     multiplexedProcessor->registerProcessor(name, aesProcessor);
   }
   {
-    const auto name = typeid(HmacHandler).name();
+    const auto name = typeid(v1::HmacIf).name();
     spdlog::info("register hmac service {}", name);
     multiplexedProcessor->registerProcessor(name, hmacProcessor);
   }
   {
-    const auto name = typeid(JwtHandler).name();
+    const auto name = typeid(v1::JwtIf).name();
     spdlog::info("register jwt service {}", name);
     multiplexedProcessor->registerProcessor(name, jwtProcessor);
   }
   {
-    const auto name = typeid(HealthHandler).name();
+    const auto name = typeid(v1::HealthIf).name();
     spdlog::info("register health service {}", name);
     multiplexedProcessor->registerProcessor(name, healthProcessor);
   }

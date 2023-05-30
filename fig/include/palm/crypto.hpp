@@ -2,7 +2,20 @@
 
 #include "palm/env.hpp"
 
+// TODO
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#include <thrift/Thrift.h>
+#pragma clang diagnostic pop
+
+#include "Aes.h"
+#include "Health.h"
+#include "Hmac.h"
+#include "Jwt.h"
+
 #include <openssl/evp.h>
+#include <thrift/protocol/TProtocol.h>
+#include <thrift/transport/TTransport.h>
 #include <nlohmann/json.hpp>
 
 namespace palm {
@@ -225,4 +238,77 @@ class SecretBox {
   std::vector<uint8_t> _key;
 };
 
+namespace loquat {
+
+class Client {
+ public:
+ protected:
+  Client(const std::string& host, const uint16_t port,
+         const std::string& service) {
+    this->open(host, port, service);
+  }
+  Client(const toml::table& root, const std::string& service);
+  ~Client() { this->_transport->close(); }
+
+  std::shared_ptr<apache::thrift::protocol::TProtocol> _protocol;
+
+ private:
+  void open(const std::string& host, const uint16_t port,
+            const std::string& service);
+  std::shared_ptr<apache::thrift::transport::TTransport> _transport;
+};
+
+class Aes : public Client {
+ public:
+  Aes(const std::string& host = "127.0.0.1", const uint16_t port = 8080)
+      : Client(host, port, typeid(::loquat::v1::AesIf).name()) {}
+  Aes(const toml::table& root)
+      : Client(root, typeid(::loquat::v1::AesIf).name()) {}
+
+  std::vector<uint8_t> encrypt(const std::vector<uint8_t>& plain) const;
+  std::vector<uint8_t> decrypt(const std::vector<uint8_t>& code) const;
+  std::string encrypt(const std::string& plain) const;
+  std::string decrypt(const std::string& code) const;
+};
+
+class Jwt : public Client {
+ public:
+  Jwt(const std::string& host = "127.0.0.1", const uint16_t port = 8080)
+      : Client(host, port, typeid(::loquat::v1::JwtIf).name()) {}
+  Jwt(const toml::table& root)
+      : Client(root, typeid(::loquat::v1::JwtIf).name()) {}
+
+  std::string sign(const std::string& subject,
+                   const std::optional<std::string> audience = std::nullopt,
+                   const std::chrono::seconds& ttl =
+                       std::chrono::duration_cast<std::chrono::seconds>(
+                           std::chrono::days(1))) const;
+  std::string verify(
+      const std::string& token,
+      const std::optional<std::string> audience = std::nullopt) const;
+};
+class Hmac : public Client {
+ public:
+  Hmac(const std::string& host = "127.0.0.1", const uint16_t port = 8080)
+      : Client(host, port, typeid(::loquat::v1::HmacIf).name()) {}
+  Hmac(const toml::table& root)
+      : Client(root, typeid(::loquat::v1::HmacIf).name()) {}
+
+  std::vector<uint8_t> sign(const std::vector<uint8_t>& plain) const;
+  void verify(const std::vector<uint8_t>& code,
+              const std::vector<uint8_t>& plain) const;
+  std::string sign(const std::string& plain) const;
+  void verify(const std::string& code, const std::string& plain) const;
+};
+class Health : public Client {
+ public:
+  Health(const std::string& host = "127.0.0.1", const uint16_t port = 8080)
+      : Client(host, port, typeid(::loquat::v1::HealthIf).name()) {}
+  Health(const toml::table& root)
+      : Client(root, typeid(::loquat::v1::HealthIf).name()) {}
+
+  void check() const;
+};
+
+}  // namespace loquat
 }  // namespace palm
