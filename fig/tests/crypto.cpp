@@ -223,11 +223,23 @@ TEST_CASE("tink", "[loquat]") {
     const std::string plain = "hello, loquat!";
     palm::loquat::Hmac it(host, port);
     for (auto i = 1; i <= 3; i++) {
-      const auto code = it.sign(plain);
-      std::cout << "hmac(" << i << ") sign(" << plain << "): " << code
-                << std::endl;
-      it.verify(code, plain);
-      REQUIRE(code != plain);
+      {
+        const auto code = it.sign(plain);
+        std::cout << "hmac(" << i << ") sign(" << plain << ",null): " << code
+                  << std::endl;
+        it.verify(code, plain);
+        REQUIRE(code != plain);
+      }
+      {
+        const auto salt = palm::random::string(8);
+        const auto code = it.sign(plain, salt);
+        std::cout << "hmac(" << i << ") sign(" << plain << "," << salt
+                  << "): " << code << std::endl;
+        it.verify(code, plain, salt);
+        REQUIRE(code != plain);
+        REQUIRE(salt != plain);
+        REQUIRE(code != salt);
+      }
     }
   }
 

@@ -294,11 +294,15 @@ class Hmac : public Client {
   Hmac(const toml::table& root)
       : Client(root, typeid(::loquat::v1::HmacIf).name()) {}
 
-  std::vector<uint8_t> sign(const std::vector<uint8_t>& plain) const;
+  std::vector<uint8_t> sign(const std::vector<uint8_t>& plain,
+                            const std::vector<uint8_t> salt = {}) const;
   void verify(const std::vector<uint8_t>& code,
-              const std::vector<uint8_t>& plain) const;
-  std::string sign(const std::string& plain) const;
-  void verify(const std::string& code, const std::string& plain) const;
+              const std::vector<uint8_t>& plain,
+              const std::vector<uint8_t> salt = {}) const;
+  std::string sign(const std::string& plain,
+                   const std::optional<std::string> salt = std::nullopt) const;
+  void verify(const std::string& code, const std::string& plain,
+              const std::optional<std::string> salt = std::nullopt) const;
 };
 class Health : public Client {
  public:

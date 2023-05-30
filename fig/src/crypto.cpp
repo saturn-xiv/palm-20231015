@@ -505,29 +505,36 @@ std::string palm::loquat::Jwt::verify(
   return subject;
 }
 std::vector<uint8_t> palm::loquat::Hmac::sign(
-    const std::vector<uint8_t>& plain) const {
+    const std::vector<uint8_t>& plain, const std::vector<uint8_t> salt) const {
   std::string p(plain.begin(), plain.end());
-  std::string c = this->sign(p);
+  std::string s(salt.begin(), salt.end());
+  std::string c = this->sign(p, s);
   std::vector<uint8_t> code(c.begin(), c.end());
   return code;
 }
 void palm::loquat::Hmac::verify(const std::vector<uint8_t>& code,
-                                const std::vector<uint8_t>& plain) const {
+                                const std::vector<uint8_t>& plain,
+                                const std::vector<uint8_t> salt) const {
   std::string c(code.begin(), code.end());
   std::string p(plain.begin(), plain.end());
-  this->verify(c, p);
+  std::string s(salt.begin(), salt.end());
+  this->verify(c, p, s);
 }
 
-std::string palm::loquat::Hmac::sign(const std::string& plain) const {
+std::string palm::loquat::Hmac::sign(
+    const std::string& plain, const std::optional<std::string> salt) const {
   ::loquat::v1::HmacClient client(this->_protocol);
   std::string code;
-  client.sign(code, plain);
+  const std::string p = plain + salt.value_or("");
+  client.sign(code, p);
   return code;
 }
 void palm::loquat::Hmac::verify(const std::string& code,
-                                const std::string& plain) const {
+                                const std::string& plain,
+                                const std::optional<std::string> salt) const {
   ::loquat::v1::HmacClient client(this->_protocol);
-  client.verify(code, plain);
+  const std::string p = plain + salt.value_or("");
+  client.verify(code, p);
 }
 
 void palm::loquat::Health::check() const {
