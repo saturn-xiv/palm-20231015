@@ -47,10 +47,15 @@ FetchContent_Declare(mailio
   GIT_REPOSITORY    "https://github.com/karastojko/mailio.git"
   GIT_TAG           "0.22.0"
 )
-FetchContent_MakeAvailable(mailio)
+FetchContent_Declare(casbin
+  GIT_REPOSITORY    "https://github.com/casbin/casbin-cpp.git"
+  GIT_TAG           "v1.52.3"
+  PATCH_COMMAND     touch FindExtPackages
+)
+FetchContent_MakeAvailable(mailio casbin)
 
 target_link_libraries(palm PUBLIC 
-  lemon gourd mailio
+  lemon gourd mailio casbin
 
   Boost::chrono Boost::date_time Boost::timer Boost::log Boost::log_setup
   Boost::filesystem Boost::system Boost::thread Boost::program_options

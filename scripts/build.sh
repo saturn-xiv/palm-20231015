@@ -51,6 +51,7 @@ function build_coconut() {
 
 function build_fig() {
     local mailio_args="-DMAILIO_BUILD_DOCUMENTATION=OFF -DMAILIO_BUILD_EXAMPLES=OFF -DMAILIO_BUILD_SHARED_LIBRARY=OFF -DMAILIO_BUILD_TESTS=OFF"
+    local casbin_args="-DCASBIN_BUILD_TEST=OFF -DCASBIN_BUILD_BENCHMARK=OFF -DCASBIN_BUILD_PYTHON_BINDINGS=OFF -DCASBIN_INSTALL=OFF"
     local target=$WORKSPACE/build/fig-$UBUNTU_CODENAME-$3-$4
     mkdir -p $target
     cd $target
@@ -58,7 +59,7 @@ function build_fig() {
         -DVCPKG_HOST_TRIPLET=$1 -DVCPKG_TARGET_TRIPLET=$2 -DVCPKG_INSTALLED_DIR=$HOME/local/vcpkg/out \
         -DCMAKE_TOOLCHAIN_FILE=$HOME/local/vcpkg/scripts/buildsystems/vcpkg.cmake \
         -DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$3.cmake \
-        $mailio_args $THRIFT_FLAGS -DBoost_NO_WARN_NEW_VERSIONS=1
+        $mailio_args $casbin_args $THRIFT_FLAGS -DBoost_NO_WARN_NEW_VERSIONS=1
         
     make -j $(nproc --ignore=2)
 
