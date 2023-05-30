@@ -55,7 +55,7 @@
     "pugixml",
     "tomlplusplus",
     "yaml-cpp",
-    "nlohmann-json",
+    { "name": "nlohmann-json", "features": ["diagnostics"] },
     "mstch",
     "inja",
     "cpp-httplib",

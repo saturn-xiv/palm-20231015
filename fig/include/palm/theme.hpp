@@ -1,7 +1,6 @@
 #pragma once
 
 // #include <soci/soci.h>
-// #include <inja/inja.hpp>
 
 // namespace palm {
 

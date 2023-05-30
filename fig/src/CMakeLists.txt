@@ -22,6 +22,7 @@ find_package(LibLZMA REQUIRED)
 find_package(SailC++ CONFIG REQUIRED)
 find_package(msgpack-c CONFIG REQUIRED)
 find_package(pugixml CONFIG REQUIRED)
+find_package(spdlog CONFIG REQUIRED)
 find_package(tomlplusplus CONFIG REQUIRED)
 find_package(yaml-cpp CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
@@ -78,6 +79,8 @@ target_link_libraries(palm PUBLIC
   
   SOCI::soci_core_static SOCI::soci_empty_static SOCI::soci_sqlite3_static SOCI::soci_postgresql_static  
   flatbuffers::flatbuffers
+
+  spdlog::spdlog
 )
 
 target_include_directories(palm PUBLIC

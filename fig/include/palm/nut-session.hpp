@@ -6,10 +6,6 @@
 #include "palm/i18n.hpp"
 #include "palm/orm.hpp"
 
-#include <typeinfo>
-
-#include <httplib.h>
-
 // namespace palm {
 // namespace nut {
 // inline std::pair<int32_t, int32_t> set(const palm::nut::v1::Pager* pager,
