@@ -23,27 +23,146 @@ namespace _pbi = _pb::internal;
 namespace palm {
 namespace nut {
 namespace v1 {
+PROTOBUF_CONSTEXPR EmailTask_Address::EmailTask_Address(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.email_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct EmailTask_AddressDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR EmailTask_AddressDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~EmailTask_AddressDefaultTypeInternal() {}
+  union {
+    EmailTask_Address _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 EmailTask_AddressDefaultTypeInternal _EmailTask_Address_default_instance_;
+PROTOBUF_CONSTEXPR EmailTask_Body::EmailTask_Body(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.text_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.html_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct EmailTask_BodyDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR EmailTask_BodyDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~EmailTask_BodyDefaultTypeInternal() {}
+  union {
+    EmailTask_Body _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 EmailTask_BodyDefaultTypeInternal _EmailTask_Body_default_instance_;
+PROTOBUF_CONSTEXPR EmailTask_Attachment::EmailTask_Attachment(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.payload_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct EmailTask_AttachmentDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR EmailTask_AttachmentDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~EmailTask_AttachmentDefaultTypeInternal() {}
+  union {
+    EmailTask_Attachment _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 EmailTask_AttachmentDefaultTypeInternal _EmailTask_Attachment_default_instance_;
+PROTOBUF_CONSTEXPR EmailTask::EmailTask(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.cc_)*/{}
+  , /*decltype(_impl_.bcc_)*/{}
+  , /*decltype(_impl_.attachments_)*/{}
+  , /*decltype(_impl_.subject_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.to_)*/nullptr
+  , /*decltype(_impl_.body_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct EmailTaskDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR EmailTaskDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~EmailTaskDefaultTypeInternal() {}
+  union {
+    EmailTask _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 EmailTaskDefaultTypeInternal _EmailTask_default_instance_;
 }  // namespace v1
 }  // namespace nut
 }  // namespace palm
+static ::_pb::Metadata file_level_metadata_nut_2eproto[4];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_nut_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_nut_2eproto = nullptr;
-const uint32_t TableStruct_nut_2eproto::offsets[1] = {};
-static constexpr ::_pbi::MigrationSchema* schemas = nullptr;
-static constexpr ::_pb::Message* const* file_default_instances = nullptr;
+
+const uint32_t TableStruct_nut_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::nut::v1::EmailTask_Address, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::nut::v1::EmailTask_Address, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::palm::nut::v1::EmailTask_Address, _impl_.email_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::nut::v1::EmailTask_Body, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::nut::v1::EmailTask_Body, _impl_.text_),
+  PROTOBUF_FIELD_OFFSET(::palm::nut::v1::EmailTask_Body, _impl_.html_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::nut::v1::EmailTask_Attachment, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::nut::v1::EmailTask_Attachment, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::palm::nut::v1::EmailTask_Attachment, _impl_.payload_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::nut::v1::EmailTask, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::nut::v1::EmailTask, _impl_.to_),
+  PROTOBUF_FIELD_OFFSET(::palm::nut::v1::EmailTask, _impl_.cc_),
+  PROTOBUF_FIELD_OFFSET(::palm::nut::v1::EmailTask, _impl_.bcc_),
+  PROTOBUF_FIELD_OFFSET(::palm::nut::v1::EmailTask, _impl_.subject_),
+  PROTOBUF_FIELD_OFFSET(::palm::nut::v1::EmailTask, _impl_.body_),
+  PROTOBUF_FIELD_OFFSET(::palm::nut::v1::EmailTask, _impl_.attachments_),
+};
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  { 0, -1, -1, sizeof(::palm::nut::v1::EmailTask_Address)},
+  { 8, -1, -1, sizeof(::palm::nut::v1::EmailTask_Body)},
+  { 16, -1, -1, sizeof(::palm::nut::v1::EmailTask_Attachment)},
+  { 24, -1, -1, sizeof(::palm::nut::v1::EmailTask)},
+};
+
+static const ::_pb::Message* const file_default_instances[] = {
+  &::palm::nut::v1::_EmailTask_Address_default_instance_._instance,
+  &::palm::nut::v1::_EmailTask_Body_default_instance_._instance,
+  &::palm::nut::v1::_EmailTask_Attachment_default_instance_._instance,
+  &::palm::nut::v1::_EmailTask_default_instance_._instance,
+};
 
 const char descriptor_table_protodef_nut_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\tnut.proto\022\013palm.nut.v12\006\n\004UserB-\n)com."
-  "github.saturn_xiv.palm.plugins.nut.v1P\001b"
-  "\006proto3"
+  "\n\tnut.proto\022\013palm.nut.v1\"\375\002\n\tEmailTask\022*"
+  "\n\002to\030\001 \001(\0132\036.palm.nut.v1.EmailTask.Addre"
+  "ss\022*\n\002cc\030\002 \003(\0132\036.palm.nut.v1.EmailTask.A"
+  "ddress\022+\n\003bcc\030\003 \003(\0132\036.palm.nut.v1.EmailT"
+  "ask.Address\022\017\n\007subject\030\013 \001(\t\022)\n\004body\030\014 \001"
+  "(\0132\033.palm.nut.v1.EmailTask.Body\0226\n\013attac"
+  "hments\030\r \003(\0132!.palm.nut.v1.EmailTask.Att"
+  "achment\032&\n\007Address\022\014\n\004name\030\001 \001(\t\022\r\n\005emai"
+  "l\030\002 \001(\t\032\"\n\004Body\022\014\n\004text\030\001 \001(\t\022\014\n\004html\030\002 "
+  "\001(\010\032+\n\nAttachment\022\014\n\004name\030\001 \001(\t\022\017\n\007paylo"
+  "ad\030\002 \001(\0142\006\n\004UserB-\n)com.github.saturn_xi"
+  "v.palm.plugins.nut.v1P\001b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_nut_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_nut_2eproto = {
-    false, false, 87, descriptor_table_protodef_nut_2eproto,
+    false, false, 471, descriptor_table_protodef_nut_2eproto,
     "nut.proto",
-    &descriptor_table_nut_2eproto_once, nullptr, 0, 0,
+    &descriptor_table_nut_2eproto_once, nullptr, 0, 4,
     schemas, file_default_instances, TableStruct_nut_2eproto::offsets,
-    nullptr, file_level_enum_descriptors_nut_2eproto,
+    file_level_metadata_nut_2eproto, file_level_enum_descriptors_nut_2eproto,
     file_level_service_descriptors_nut_2eproto,
 };
 PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_nut_2eproto_getter() {
@@ -56,11 +175,1151 @@ namespace palm {
 namespace nut {
 namespace v1 {
 
+// ===================================================================
+
+class EmailTask_Address::_Internal {
+ public:
+};
+
+EmailTask_Address::EmailTask_Address(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:palm.nut.v1.EmailTask.Address)
+}
+EmailTask_Address::EmailTask_Address(const EmailTask_Address& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  EmailTask_Address* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.name_){}
+    , decltype(_impl_.email_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_name().empty()) {
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.email_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.email_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_email().empty()) {
+    _this->_impl_.email_.Set(from._internal_email(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:palm.nut.v1.EmailTask.Address)
+}
+
+inline void EmailTask_Address::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.name_){}
+    , decltype(_impl_.email_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.email_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.email_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+EmailTask_Address::~EmailTask_Address() {
+  // @@protoc_insertion_point(destructor:palm.nut.v1.EmailTask.Address)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void EmailTask_Address::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.name_.Destroy();
+  _impl_.email_.Destroy();
+}
+
+void EmailTask_Address::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void EmailTask_Address::Clear() {
+// @@protoc_insertion_point(message_clear_start:palm.nut.v1.EmailTask.Address)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.name_.ClearToEmpty();
+  _impl_.email_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* EmailTask_Address::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string name = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.nut.v1.EmailTask.Address.name"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string email = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_email();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.nut.v1.EmailTask.Address.email"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* EmailTask_Address::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:palm.nut.v1.EmailTask.Address)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string name = 1;
+  if (!this->_internal_name().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.nut.v1.EmailTask.Address.name");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
+  }
+
+  // string email = 2;
+  if (!this->_internal_email().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_email().data(), static_cast<int>(this->_internal_email().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.nut.v1.EmailTask.Address.email");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_email(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:palm.nut.v1.EmailTask.Address)
+  return target;
+}
+
+size_t EmailTask_Address::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:palm.nut.v1.EmailTask.Address)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string name = 1;
+  if (!this->_internal_name().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
+  }
+
+  // string email = 2;
+  if (!this->_internal_email().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_email());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData EmailTask_Address::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    EmailTask_Address::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*EmailTask_Address::GetClassData() const { return &_class_data_; }
+
+
+void EmailTask_Address::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<EmailTask_Address*>(&to_msg);
+  auto& from = static_cast<const EmailTask_Address&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.nut.v1.EmailTask.Address)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
+  }
+  if (!from._internal_email().empty()) {
+    _this->_internal_set_email(from._internal_email());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void EmailTask_Address::CopyFrom(const EmailTask_Address& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:palm.nut.v1.EmailTask.Address)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool EmailTask_Address::IsInitialized() const {
+  return true;
+}
+
+void EmailTask_Address::InternalSwap(EmailTask_Address* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.email_, lhs_arena,
+      &other->_impl_.email_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata EmailTask_Address::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_nut_2eproto_getter, &descriptor_table_nut_2eproto_once,
+      file_level_metadata_nut_2eproto[0]);
+}
+
+// ===================================================================
+
+class EmailTask_Body::_Internal {
+ public:
+};
+
+EmailTask_Body::EmailTask_Body(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:palm.nut.v1.EmailTask.Body)
+}
+EmailTask_Body::EmailTask_Body(const EmailTask_Body& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  EmailTask_Body* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.text_){}
+    , decltype(_impl_.html_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.text_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.text_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_text().empty()) {
+    _this->_impl_.text_.Set(from._internal_text(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.html_ = from._impl_.html_;
+  // @@protoc_insertion_point(copy_constructor:palm.nut.v1.EmailTask.Body)
+}
+
+inline void EmailTask_Body::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.text_){}
+    , decltype(_impl_.html_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.text_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.text_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+EmailTask_Body::~EmailTask_Body() {
+  // @@protoc_insertion_point(destructor:palm.nut.v1.EmailTask.Body)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void EmailTask_Body::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.text_.Destroy();
+}
+
+void EmailTask_Body::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void EmailTask_Body::Clear() {
+// @@protoc_insertion_point(message_clear_start:palm.nut.v1.EmailTask.Body)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.text_.ClearToEmpty();
+  _impl_.html_ = false;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* EmailTask_Body::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string text = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_text();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.nut.v1.EmailTask.Body.text"));
+        } else
+          goto handle_unusual;
+        continue;
+      // bool html = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.html_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* EmailTask_Body::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:palm.nut.v1.EmailTask.Body)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string text = 1;
+  if (!this->_internal_text().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_text().data(), static_cast<int>(this->_internal_text().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.nut.v1.EmailTask.Body.text");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_text(), target);
+  }
+
+  // bool html = 2;
+  if (this->_internal_html() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(2, this->_internal_html(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:palm.nut.v1.EmailTask.Body)
+  return target;
+}
+
+size_t EmailTask_Body::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:palm.nut.v1.EmailTask.Body)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string text = 1;
+  if (!this->_internal_text().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_text());
+  }
+
+  // bool html = 2;
+  if (this->_internal_html() != 0) {
+    total_size += 1 + 1;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData EmailTask_Body::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    EmailTask_Body::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*EmailTask_Body::GetClassData() const { return &_class_data_; }
+
+
+void EmailTask_Body::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<EmailTask_Body*>(&to_msg);
+  auto& from = static_cast<const EmailTask_Body&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.nut.v1.EmailTask.Body)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_text().empty()) {
+    _this->_internal_set_text(from._internal_text());
+  }
+  if (from._internal_html() != 0) {
+    _this->_internal_set_html(from._internal_html());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void EmailTask_Body::CopyFrom(const EmailTask_Body& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:palm.nut.v1.EmailTask.Body)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool EmailTask_Body::IsInitialized() const {
+  return true;
+}
+
+void EmailTask_Body::InternalSwap(EmailTask_Body* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.text_, lhs_arena,
+      &other->_impl_.text_, rhs_arena
+  );
+  swap(_impl_.html_, other->_impl_.html_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata EmailTask_Body::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_nut_2eproto_getter, &descriptor_table_nut_2eproto_once,
+      file_level_metadata_nut_2eproto[1]);
+}
+
+// ===================================================================
+
+class EmailTask_Attachment::_Internal {
+ public:
+};
+
+EmailTask_Attachment::EmailTask_Attachment(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:palm.nut.v1.EmailTask.Attachment)
+}
+EmailTask_Attachment::EmailTask_Attachment(const EmailTask_Attachment& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  EmailTask_Attachment* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.name_){}
+    , decltype(_impl_.payload_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_name().empty()) {
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.payload_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.payload_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_payload().empty()) {
+    _this->_impl_.payload_.Set(from._internal_payload(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:palm.nut.v1.EmailTask.Attachment)
+}
+
+inline void EmailTask_Attachment::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.name_){}
+    , decltype(_impl_.payload_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.payload_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.payload_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+EmailTask_Attachment::~EmailTask_Attachment() {
+  // @@protoc_insertion_point(destructor:palm.nut.v1.EmailTask.Attachment)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void EmailTask_Attachment::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.name_.Destroy();
+  _impl_.payload_.Destroy();
+}
+
+void EmailTask_Attachment::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void EmailTask_Attachment::Clear() {
+// @@protoc_insertion_point(message_clear_start:palm.nut.v1.EmailTask.Attachment)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.name_.ClearToEmpty();
+  _impl_.payload_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* EmailTask_Attachment::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string name = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.nut.v1.EmailTask.Attachment.name"));
+        } else
+          goto handle_unusual;
+        continue;
+      // bytes payload = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_payload();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* EmailTask_Attachment::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:palm.nut.v1.EmailTask.Attachment)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string name = 1;
+  if (!this->_internal_name().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.nut.v1.EmailTask.Attachment.name");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
+  }
+
+  // bytes payload = 2;
+  if (!this->_internal_payload().empty()) {
+    target = stream->WriteBytesMaybeAliased(
+        2, this->_internal_payload(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:palm.nut.v1.EmailTask.Attachment)
+  return target;
+}
+
+size_t EmailTask_Attachment::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:palm.nut.v1.EmailTask.Attachment)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string name = 1;
+  if (!this->_internal_name().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
+  }
+
+  // bytes payload = 2;
+  if (!this->_internal_payload().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_payload());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData EmailTask_Attachment::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    EmailTask_Attachment::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*EmailTask_Attachment::GetClassData() const { return &_class_data_; }
+
+
+void EmailTask_Attachment::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<EmailTask_Attachment*>(&to_msg);
+  auto& from = static_cast<const EmailTask_Attachment&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.nut.v1.EmailTask.Attachment)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
+  }
+  if (!from._internal_payload().empty()) {
+    _this->_internal_set_payload(from._internal_payload());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void EmailTask_Attachment::CopyFrom(const EmailTask_Attachment& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:palm.nut.v1.EmailTask.Attachment)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool EmailTask_Attachment::IsInitialized() const {
+  return true;
+}
+
+void EmailTask_Attachment::InternalSwap(EmailTask_Attachment* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.payload_, lhs_arena,
+      &other->_impl_.payload_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata EmailTask_Attachment::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_nut_2eproto_getter, &descriptor_table_nut_2eproto_once,
+      file_level_metadata_nut_2eproto[2]);
+}
+
+// ===================================================================
+
+class EmailTask::_Internal {
+ public:
+  static const ::palm::nut::v1::EmailTask_Address& to(const EmailTask* msg);
+  static const ::palm::nut::v1::EmailTask_Body& body(const EmailTask* msg);
+};
+
+const ::palm::nut::v1::EmailTask_Address&
+EmailTask::_Internal::to(const EmailTask* msg) {
+  return *msg->_impl_.to_;
+}
+const ::palm::nut::v1::EmailTask_Body&
+EmailTask::_Internal::body(const EmailTask* msg) {
+  return *msg->_impl_.body_;
+}
+EmailTask::EmailTask(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:palm.nut.v1.EmailTask)
+}
+EmailTask::EmailTask(const EmailTask& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  EmailTask* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.cc_){from._impl_.cc_}
+    , decltype(_impl_.bcc_){from._impl_.bcc_}
+    , decltype(_impl_.attachments_){from._impl_.attachments_}
+    , decltype(_impl_.subject_){}
+    , decltype(_impl_.to_){nullptr}
+    , decltype(_impl_.body_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.subject_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.subject_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_subject().empty()) {
+    _this->_impl_.subject_.Set(from._internal_subject(), 
+      _this->GetArenaForAllocation());
+  }
+  if (from._internal_has_to()) {
+    _this->_impl_.to_ = new ::palm::nut::v1::EmailTask_Address(*from._impl_.to_);
+  }
+  if (from._internal_has_body()) {
+    _this->_impl_.body_ = new ::palm::nut::v1::EmailTask_Body(*from._impl_.body_);
+  }
+  // @@protoc_insertion_point(copy_constructor:palm.nut.v1.EmailTask)
+}
+
+inline void EmailTask::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.cc_){arena}
+    , decltype(_impl_.bcc_){arena}
+    , decltype(_impl_.attachments_){arena}
+    , decltype(_impl_.subject_){}
+    , decltype(_impl_.to_){nullptr}
+    , decltype(_impl_.body_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.subject_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.subject_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+EmailTask::~EmailTask() {
+  // @@protoc_insertion_point(destructor:palm.nut.v1.EmailTask)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void EmailTask::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.cc_.~RepeatedPtrField();
+  _impl_.bcc_.~RepeatedPtrField();
+  _impl_.attachments_.~RepeatedPtrField();
+  _impl_.subject_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.to_;
+  if (this != internal_default_instance()) delete _impl_.body_;
+}
+
+void EmailTask::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void EmailTask::Clear() {
+// @@protoc_insertion_point(message_clear_start:palm.nut.v1.EmailTask)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.cc_.Clear();
+  _impl_.bcc_.Clear();
+  _impl_.attachments_.Clear();
+  _impl_.subject_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && _impl_.to_ != nullptr) {
+    delete _impl_.to_;
+  }
+  _impl_.to_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.body_ != nullptr) {
+    delete _impl_.body_;
+  }
+  _impl_.body_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* EmailTask::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .palm.nut.v1.EmailTask.Address to = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_to(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .palm.nut.v1.EmailTask.Address cc = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_cc(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .palm.nut.v1.EmailTask.Address bcc = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_bcc(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // string subject = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+          auto str = _internal_mutable_subject();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.nut.v1.EmailTask.subject"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.nut.v1.EmailTask.Body body = 12;
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 98)) {
+          ptr = ctx->ParseMessage(_internal_mutable_body(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .palm.nut.v1.EmailTask.Attachment attachments = 13;
+      case 13:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 106)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_attachments(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<106>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* EmailTask::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:palm.nut.v1.EmailTask)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .palm.nut.v1.EmailTask.Address to = 1;
+  if (this->_internal_has_to()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::to(this),
+        _Internal::to(this).GetCachedSize(), target, stream);
+  }
+
+  // repeated .palm.nut.v1.EmailTask.Address cc = 2;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_cc_size()); i < n; i++) {
+    const auto& repfield = this->_internal_cc(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  // repeated .palm.nut.v1.EmailTask.Address bcc = 3;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_bcc_size()); i < n; i++) {
+    const auto& repfield = this->_internal_bcc(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(3, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  // string subject = 11;
+  if (!this->_internal_subject().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_subject().data(), static_cast<int>(this->_internal_subject().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.nut.v1.EmailTask.subject");
+    target = stream->WriteStringMaybeAliased(
+        11, this->_internal_subject(), target);
+  }
+
+  // .palm.nut.v1.EmailTask.Body body = 12;
+  if (this->_internal_has_body()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(12, _Internal::body(this),
+        _Internal::body(this).GetCachedSize(), target, stream);
+  }
+
+  // repeated .palm.nut.v1.EmailTask.Attachment attachments = 13;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_attachments_size()); i < n; i++) {
+    const auto& repfield = this->_internal_attachments(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(13, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:palm.nut.v1.EmailTask)
+  return target;
+}
+
+size_t EmailTask::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:palm.nut.v1.EmailTask)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .palm.nut.v1.EmailTask.Address cc = 2;
+  total_size += 1UL * this->_internal_cc_size();
+  for (const auto& msg : this->_impl_.cc_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // repeated .palm.nut.v1.EmailTask.Address bcc = 3;
+  total_size += 1UL * this->_internal_bcc_size();
+  for (const auto& msg : this->_impl_.bcc_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // repeated .palm.nut.v1.EmailTask.Attachment attachments = 13;
+  total_size += 1UL * this->_internal_attachments_size();
+  for (const auto& msg : this->_impl_.attachments_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // string subject = 11;
+  if (!this->_internal_subject().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_subject());
+  }
+
+  // .palm.nut.v1.EmailTask.Address to = 1;
+  if (this->_internal_has_to()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.to_);
+  }
+
+  // .palm.nut.v1.EmailTask.Body body = 12;
+  if (this->_internal_has_body()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.body_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData EmailTask::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    EmailTask::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*EmailTask::GetClassData() const { return &_class_data_; }
+
+
+void EmailTask::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<EmailTask*>(&to_msg);
+  auto& from = static_cast<const EmailTask&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.nut.v1.EmailTask)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.cc_.MergeFrom(from._impl_.cc_);
+  _this->_impl_.bcc_.MergeFrom(from._impl_.bcc_);
+  _this->_impl_.attachments_.MergeFrom(from._impl_.attachments_);
+  if (!from._internal_subject().empty()) {
+    _this->_internal_set_subject(from._internal_subject());
+  }
+  if (from._internal_has_to()) {
+    _this->_internal_mutable_to()->::palm::nut::v1::EmailTask_Address::MergeFrom(
+        from._internal_to());
+  }
+  if (from._internal_has_body()) {
+    _this->_internal_mutable_body()->::palm::nut::v1::EmailTask_Body::MergeFrom(
+        from._internal_body());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void EmailTask::CopyFrom(const EmailTask& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:palm.nut.v1.EmailTask)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool EmailTask::IsInitialized() const {
+  return true;
+}
+
+void EmailTask::InternalSwap(EmailTask* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.cc_.InternalSwap(&other->_impl_.cc_);
+  _impl_.bcc_.InternalSwap(&other->_impl_.bcc_);
+  _impl_.attachments_.InternalSwap(&other->_impl_.attachments_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.subject_, lhs_arena,
+      &other->_impl_.subject_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(EmailTask, _impl_.body_)
+      + sizeof(EmailTask::_impl_.body_)
+      - PROTOBUF_FIELD_OFFSET(EmailTask, _impl_.to_)>(
+          reinterpret_cast<char*>(&_impl_.to_),
+          reinterpret_cast<char*>(&other->_impl_.to_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata EmailTask::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_nut_2eproto_getter, &descriptor_table_nut_2eproto_once,
+      file_level_metadata_nut_2eproto[3]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1
 }  // namespace nut
 }  // namespace palm
 PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::palm::nut::v1::EmailTask_Address*
+Arena::CreateMaybeMessage< ::palm::nut::v1::EmailTask_Address >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::nut::v1::EmailTask_Address >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::nut::v1::EmailTask_Body*
+Arena::CreateMaybeMessage< ::palm::nut::v1::EmailTask_Body >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::nut::v1::EmailTask_Body >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::nut::v1::EmailTask_Attachment*
+Arena::CreateMaybeMessage< ::palm::nut::v1::EmailTask_Attachment >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::nut::v1::EmailTask_Attachment >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::nut::v1::EmailTask*
+Arena::CreateMaybeMessage< ::palm::nut::v1::EmailTask >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::nut::v1::EmailTask >(arena);
+}
 PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)

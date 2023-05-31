@@ -4,3 +4,29 @@ option java_package = "com.github.saturn_xiv.palm.plugins.nut.v1";
 package palm.nut.v1;
 
 service User {}
+
+// ----------------------------------------------------------------------------
+
+message EmailTask {
+  message Address {
+    string name = 1;
+    string email = 2;
+  }
+  message Body {
+    string text = 1;
+    bool html = 2;
+  }
+  message Attachment {
+    string name = 1;
+    bytes payload = 2;
+  }
+
+  Address to = 1;
+  repeated Address cc = 2;
+  repeated Address bcc = 3;
+  string subject = 11;
+  Body body = 12;
+  repeated Attachment attachments = 13;
+}
+
+// ----------------------------------------------------------------------------

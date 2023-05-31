@@ -2,6 +2,8 @@
 
 #include "palm/env.hpp"
 
+#include "nut.pb.h"
+
 #include <mailio/message.hpp>
 
 namespace palm {
@@ -31,6 +33,8 @@ class Config {
         _password(password),
         _cc(cc),
         _bcc(bcc) {}
+
+  void send(const palm::nut::v1::EmailTask* task) const;
   void send(
       const Address& to, const std::string& subject, const std::string& content,
       const bool html = true,
@@ -38,6 +42,11 @@ class Config {
                                    std::string>>& attachments = {}) const;
 
  private:
+  static std::pair<mailio::message::media_type_t, std::string> detect(
+      const std::string& name);
+
+  void send(const mailio::message& msg) const;
+
   std::string _host;
   uint16_t _port;
   std::shared_ptr<Address> _user;
