@@ -64,9 +64,15 @@ TEST_CASE("Send email", "[smtp]") {
       to.email = std::getenv("SMTP_TO_EMAIL");
     }
 
-    cfg.send(to, "It is a test email",
-             R"RAW(Hello, <b>Palm!</b>:<p><a href = 'https://www.google.com'
-        >Google</a></p>)RAW",
-             true, {"Makefile", "demo.png"});
+    cfg.send(
+        to, "It is a test email",
+        R"RAW(Hello, <b>Palm!</b>:<p><a href = 'https://www.google.com'>Google</a></p>)RAW",
+        true,
+        {std::make_tuple<std::string, mailio::message::media_type_t,
+                         std::string>(
+             "Makefile", mailio::message::media_type_t::TEXT, "plain"),
+         std::make_tuple<std::string, mailio::message::media_type_t,
+                         std::string>(
+             "demo.png", mailio::message::media_type_t::IMAGE, "png")});
   }
 }

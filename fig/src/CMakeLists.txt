@@ -36,6 +36,7 @@ find_package(unofficial-sqlite3 CONFIG REQUIRED)
 find_package(SOCI CONFIG REQUIRED)
 find_package(redis++ CONFIG REQUIRED)
 find_package(Flatbuffers CONFIG REQUIRED)
+find_package(fmt CONFIG REQUIRED)
 
 find_path(CPPCODEC_INCLUDE_DIRS "cppcodec/base32_crockford.hpp")
 find_path(CPP_HTTPLIB_INCLUDE_DIRS "httplib.h")
@@ -46,6 +47,7 @@ find_library(INIH_LIBRARY inih)
 
 FetchContent_Declare(mailio
   GIT_REPOSITORY    "https://github.com/karastojko/mailio.git"
+  # TODO
   GIT_TAG           "0.22.0"
 )
 FetchContent_Declare(casbin
@@ -72,7 +74,7 @@ target_link_libraries(palm PUBLIC
   ${MINIO_LIBRARY} CURL::libcurl ${CURLPP_LIBRARY} ${INIH_LIBRARY}
   cpr::cpr SAIL::sail-c++
   
-  pugixml::static tomlplusplus::tomlplusplus yaml-cpp nlohmann_json::nlohmann_json msgpack-c
+  pugixml::static yaml-cpp msgpack-c
   mstch::mstch pantor::inja
   PostgreSQL::PostgreSQL libpqxx::pqxx unofficial::libmariadb unofficial::sqlite3::sqlite3 
   redis++::redis++_static 
@@ -80,7 +82,7 @@ target_link_libraries(palm PUBLIC
   SOCI::soci_core_static SOCI::soci_empty_static SOCI::soci_sqlite3_static SOCI::soci_postgresql_static  
   flatbuffers::flatbuffers
 
-  spdlog::spdlog
+  fmt::fmt-header-only spdlog::spdlog_header_only
 )
 
 target_include_directories(palm PUBLIC

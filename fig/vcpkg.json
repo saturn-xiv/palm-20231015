@@ -30,7 +30,6 @@
     "libsodium",
     "liblzma",
     { "name": "sail", "features": ["png"] },
-
     { "name": "cpr", "features": ["ssl"] },
     { "name": "aws-sdk-cpp", "features": ["s3", "sqs"] },
     "cserialport",

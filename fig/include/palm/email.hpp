@@ -2,6 +2,8 @@
 
 #include "palm/env.hpp"
 
+#include <mailio/message.hpp>
+
 namespace palm {
 
 namespace smtp {
@@ -29,9 +31,11 @@ class Config {
         _password(password),
         _cc(cc),
         _bcc(bcc) {}
-  void send(const Address& to, const std::string& subject,
-            const std::string& content, const bool html = true,
-            const std::vector<std::string>& attachments = {}) const;
+  void send(
+      const Address& to, const std::string& subject, const std::string& content,
+      const bool html = true,
+      const std::vector<std::tuple<std::string, mailio::message::media_type_t,
+                                   std::string>>& attachments = {}) const;
 
  private:
   std::string _host;

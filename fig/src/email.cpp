@@ -1,6 +1,5 @@
 #include "palm/email.hpp"
 
-#include <mailio/message.hpp>
 #include <mailio/smtp.hpp>
 
 palm::smtp::Address::Address(const toml::table& root) {
@@ -41,14 +40,21 @@ palm::smtp::Config::Config(const toml::table& root) {
 
 void palm::smtp::Config::send(
     const Address& to, const std::string& subject, const std::string& content,
-    const bool html, const std::vector<std::string>& attachments) const {
+    const bool html,
+    const std::vector<std::tuple<std::string, mailio::message::media_type_t,
+                                 std::string>>& attachments) const {
   mailio::message msg;
 
-  if (html) {
-    msg.content_transfer_encoding(
+  msg.subject(subject);
+  mailio::mime body;
+  {
+    body.content_transfer_encoding(
         mailio::mime::content_transfer_encoding_t::BASE_64);
-    msg.content_type(mailio::message::media_type_t::TEXT, "html", "utf-8");
+    body.content_type(mailio::message::media_type_t::TEXT,
+                      (html ? "html" : "plain"), "utf-8");
+    body.content(content);
   }
+  msg.add_part(body);
 
   msg.from(mailio::mail_address(this->_user->name, this->_user->email));
   msg.add_recipient(mailio::mail_address(to.name, to.email));
@@ -58,19 +64,25 @@ void palm::smtp::Config::send(
   for (const auto& it : this->_bcc) {
     msg.add_bcc_recipient(mailio::mail_address(it.name, it.email));
   }
-  msg.subject(subject);
-  msg.content(content);
 
-  std::list<
-      std::tuple<std::istream&, std::string, mailio::message::content_type_t>>
-      items;
-  for (const auto& it : attachments) {
-    std::ifstream ifs(it, std::ios::binary);
-    auto ift =
-        std::make_tuple(std::ref(ifs), it, mailio::message::content_type_t());
-    items.push_back(ift);
+  // {
+  //   std::list<
+  //       std::tuple<std::istream&, std::string,
+  //       mailio::message::content_type_t>> atts;
+  //   for (const auto& [att_name, type_, sub_type] : attachments) {
+  //     std::ifstream ifs(att_name, std::ios::binary);
+  //     auto it =
+  //         std::make_tuple(std::ref(ifs), att_name,
+  //                         mailio::message::content_type_t(type_, sub_type));
+  //     atts.push_back(it);
+  //   }
+  //   msg.attach(atts);
+  // }
+
+  for (const auto& [att_name, type_, sub_type] : attachments) {
+    std::ifstream ifs(att_name, std::ios::binary);
+    msg.attach(std::ref(ifs), att_name, type_, sub_type);
   }
-  msg.attach(items);
 
   spdlog::info("send email '{}' to {} by {}:{}", subject, to.email, this->_host,
                this->_port);
