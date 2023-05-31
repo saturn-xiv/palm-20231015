@@ -1,19 +1,35 @@
 #pragma once
 
-// #include <soci/soci.h>
+#include "palm/env.hpp"
 
-// namespace palm {
+#include <google/protobuf/util/json_util.h>
 
-// class Theme {
-//  public:
-//   Theme(const std::filesystem::path& folder);
-//   inline std::string render(const std::filesystem::path& tpl,
-//                             const nlohmann::json& args) {
-//     return this->_env.render_file("pages" / tpl, args);
-//   }
+namespace palm {
 
-//  private:
-//   inja::Environment _env;
-// };
+class Theme {
+ public:
+  Theme(const std::filesystem::path& folder);
+  inline std::string render(const std::filesystem::path& tpl,
+                            const nlohmann::json& js) {
+    return this->_env.render_file("pages" / tpl, js);
+  }
+  template <class M>
+  std::optional<std::string> render(const std::filesystem::path& tpl,
+                                    const M& args) {
+    std::string buf;
+    const auto status = google::protobuf::util::MessageToJsonString(args, buf);
+    if (!status) {
+      spdlog::error("serial to json string");
+      return std::nullopt;
+    }
+    const nlohmann::json js = buf;
+    return this->render(tpl, js);
+  }
 
-// }  // namespace palm
+ private:
+  inja::Environment _env;
+  std::string _host;
+  uint16_t _port;
+};
+
+}  // namespace palm

@@ -44,8 +44,7 @@ class Config {
  private:
   static std::pair<mailio::message::media_type_t, std::string> detect(
       const std::string& name);
-
-  void send(const mailio::message& msg) const;
+  void send(mailio::message& msg) const;
 
   std::string _host;
   uint16_t _port;

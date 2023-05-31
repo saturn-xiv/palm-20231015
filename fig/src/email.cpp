@@ -56,14 +56,7 @@ void palm::smtp::Config::send(
   }
   msg.add_part(body);
 
-  msg.from(mailio::mail_address(this->_user->name, this->_user->email));
   msg.add_recipient(mailio::mail_address(to.name, to.email));
-  for (const auto& it : this->_cc) {
-    msg.add_cc_recipient(mailio::mail_address(it.name, it.email));
-  }
-  for (const auto& it : this->_bcc) {
-    msg.add_bcc_recipient(mailio::mail_address(it.name, it.email));
-  }
 
   // {
   //   std::list<
@@ -105,18 +98,13 @@ void palm::smtp::Config::send(const palm::nut::v1::EmailTask* task) const {
     msg.add_part(body);
   }
 
-  msg.from(mailio::mail_address(this->_user->name, this->_user->email));
   msg.add_recipient(
       mailio::mail_address(task->to().name(), task->to().email()));
-  for (const auto& it : this->_cc) {
-    msg.add_cc_recipient(mailio::mail_address(it.name, it.email));
-  }
+
   for (const auto& it : task->cc()) {
     msg.add_cc_recipient(mailio::mail_address(it.name(), it.email()));
   }
-  for (const auto& it : this->_bcc) {
-    msg.add_bcc_recipient(mailio::mail_address(it.name, it.email));
-  }
+
   for (const auto& it : task->bcc()) {
     msg.add_bcc_recipient(mailio::mail_address(it.name(), it.email()));
   }
@@ -132,7 +120,15 @@ void palm::smtp::Config::send(const palm::nut::v1::EmailTask* task) const {
   this->send(msg);
 }
 
-void palm::smtp::Config::send(const mailio::message& msg) const {
+void palm::smtp::Config::send(mailio::message& msg) const {
+  msg.from(mailio::mail_address(this->_user->name, this->_user->email));
+  for (const auto& it : this->_cc) {
+    msg.add_cc_recipient(mailio::mail_address(it.name, it.email));
+  }
+  for (const auto& it : this->_bcc) {
+    msg.add_bcc_recipient(mailio::mail_address(it.name, it.email));
+  }
+
   mailio::smtps con(this->_host, this->_port, std::chrono::minutes(1));
   con.authenticate(
       this->_user->email, this->_password,
