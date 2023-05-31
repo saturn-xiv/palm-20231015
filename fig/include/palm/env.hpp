@@ -35,6 +35,7 @@
 
 #include <boost/algorithm/hex.hpp>
 #include <boost/algorithm/string.hpp>
+#include <boost/optional.hpp>
 #include <boost/type_index.hpp>
 
 #include <grpcpp/grpcpp.h>
@@ -51,23 +52,41 @@
 // inline static const std::string CONTENT_TYPE_GRPC = "application/grpc";
 // }
 
-// namespace nlohmann {
-// template <typename T>
-// struct adl_serializer<std::optional<T>> {
-//   static void to_json(json& j, const std::optional<T>& i) {
-//     if (i.has_value()) {
-//       j = *i;
-//     } else {
-//       j = nullptr;
-//     }
-//   }
+NLOHMANN_JSON_NAMESPACE_BEGIN
+template <typename T>
+struct adl_serializer<std::optional<T>> {
+  static void to_json(json& j, const std::optional<T>& o) {
+    if (o == std::nullopt) {
+      j = nullptr;
+    } else {
+      j = *o;
+    }
+  }
+  static void from_json(const json& j, std::optional<T>& o) {
+    if (j.is_null()) {
+      o = std::nullopt;
+    } else {
+      o = j.get<T>();
+    }
+  }
+};
 
-//   static void from_json(const json& j, std::optional<T>& i) {
-//     if (j.is_null()) {
-//       i = std::nullopt;
-//     } else {
-//       i = j.get<T>();
-//     }
-//   }
-// };
-// }  // namespace nlohmann
+template <typename T>
+struct adl_serializer<boost::optional<T>> {
+  static void to_json(json& j, const boost::optional<T>& o) {
+    if (o == boost::none) {
+      j = nullptr;
+    } else {
+      j = *o;
+    }
+  }
+
+  static void from_json(const json& j, boost::optional<T>& o) {
+    if (j.is_null()) {
+      o = boost::none;
+    } else {
+      o = j.get<T>();
+    }
+  }
+};
+NLOHMANN_JSON_NAMESPACE_END
