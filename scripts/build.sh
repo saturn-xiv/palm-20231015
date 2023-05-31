@@ -110,7 +110,9 @@ then
 
     build_fig x64-linux x64-linux x86_64 Debug
     build_fig x64-linux x64-linux x86_64 Release
+    # build_fig x64-linux arm-linux armv7l Release
     build_fig x64-linux arm64-linux aarch64 Release
+    # build_fig x64-linux riscv64-linux riscv64 Release
 fi
 
 # -----------------------------------------------------------------------------
