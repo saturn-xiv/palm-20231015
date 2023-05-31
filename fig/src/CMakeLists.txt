@@ -8,9 +8,6 @@ find_package(Boost REQUIRED
   filesystem system thread program_options  
   random regex exception json
 )
-find_package(Poco REQUIRED 
-  Util
-)
 find_package(cppzmq CONFIG REQUIRED)
 find_package(PahoMqttCpp CONFIG REQUIRED)
 find_package(rabbitmq-c CONFIG REQUIRED)
@@ -65,7 +62,6 @@ target_link_libraries(palm PUBLIC
   Boost::random Boost::regex Boost::exception Boost::json
 
   unofficial-sodium::sodium Libssh2::libssh2 LibLZMA::LibLZMA
-  Poco::Util
 
   cppzmq-static 
   PahoMqttCpp::paho-mqttpp3-static rabbitmq::rabbitmq-static
