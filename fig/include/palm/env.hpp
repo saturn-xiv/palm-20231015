@@ -48,9 +48,10 @@
 #define TOML_EXCEPTIONS 1
 #include <toml++/toml.h>
 
-// namespace palm {
-// inline static const std::string CONTENT_TYPE_GRPC = "application/grpc";
-// }
+namespace palm {
+// https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md
+inline static const std::string CONTENT_TYPE_GRPC = "application/grpc";
+}  // namespace palm
 
 NLOHMANN_JSON_NAMESPACE_BEGIN
 template <typename T>
