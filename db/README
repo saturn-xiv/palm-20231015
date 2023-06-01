@@ -6,3 +6,22 @@ alembic revision -m "create xxx table"
 alembic upgrade head
 alembic downgrade base
 ```
+
+## PostgreSql
+
+```sql
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE USER www WITH PASSWORD 'change-me';
+CREATE DATABASE demo WITH ENCODING = 'UTF8' OWNER www;
+```
+
+## MySql
+
+```sql
+CREATE USER 'www'@'localhost' IDENTIFIED BY 'change-me';
+CREATE DATABASE demo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL PRIVILEGES ON demo.* TO 'www'@'localhost';
+FLUSH PRIVILEGES;
+# fix caching_sha2_password could not be loaded
+ALTER USER 'demo'@'localhost' IDENTIFIED WITH mysql_native_password BY 'change-me'
+```

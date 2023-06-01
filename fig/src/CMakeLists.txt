@@ -30,8 +30,9 @@ find_package(libpqxx CONFIG REQUIRED)
 find_package(unofficial-sodium CONFIG REQUIRED)
 find_package(unofficial-libmariadb CONFIG REQUIRED)
 find_package(unofficial-sqlite3 CONFIG REQUIRED)
-find_package(SOCI CONFIG REQUIRED)
+find_package(SQLiteCpp CONFIG REQUIRED)
 find_package(redis++ CONFIG REQUIRED)
+find_package(SOCI CONFIG REQUIRED)
 find_package(Flatbuffers CONFIG REQUIRED)
 find_package(fmt CONFIG REQUIRED)
 
@@ -52,6 +53,10 @@ FetchContent_Declare(casbin
   GIT_TAG           "v1.52.3"
   PATCH_COMMAND     touch FindExtPackages
 )
+# FetchContent_Declare(mariadb_cpp
+#   GIT_REPOSITORY    "https://github.com/mariadb-corporation/mariadb-connector-cpp.git"
+#   GIT_TAG           "1.1.2"
+# )
 FetchContent_MakeAvailable(mailio casbin)
 
 target_link_libraries(palm PUBLIC 
@@ -72,10 +77,12 @@ target_link_libraries(palm PUBLIC
   
   pugixml::static yaml-cpp msgpack-c
   mstch::mstch pantor::inja
-  PostgreSQL::PostgreSQL libpqxx::pqxx unofficial::libmariadb unofficial::sqlite3::sqlite3 
+  PostgreSQL::PostgreSQL libpqxx::pqxx 
+  unofficial::libmariadb # mariadbcpp
+  unofficial::sqlite3::sqlite3 SQLiteCpp
+  SOCI::soci_core_static SOCI::soci_empty_static SOCI::soci_postgresql_static
   redis++::redis++_static 
-  
-  SOCI::soci_core_static SOCI::soci_empty_static SOCI::soci_sqlite3_static SOCI::soci_postgresql_static  
+    
   flatbuffers::flatbuffers
 
   fmt::fmt-header-only spdlog::spdlog_header_only
