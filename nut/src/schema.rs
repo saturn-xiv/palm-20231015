@@ -9,7 +9,7 @@ diesel::table! {
         title -> Varchar,
         size -> Int8,
         content_type -> Varchar,
-        status -> Int4,
+        status -> Varchar,
         deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         updated_at -> Timestamp,
@@ -179,7 +179,7 @@ diesel::table! {
     logs (id) {
         id -> Int4,
         user_id -> Int4,
-        level -> Int4,
+        level -> Varchar,
         ip -> Varchar,
         resource_type -> Varchar,
         resource_id -> Nullable<Int4>,
@@ -332,6 +332,7 @@ diesel::table! {
         avatar -> Varchar,
         lang -> Varchar,
         time_zone -> Varchar,
+        status -> Varchar,
         sign_in_count -> Int4,
         current_sign_in_at -> Nullable<Timestamp>,
         current_sign_in_ip -> Nullable<Varchar>,
@@ -379,7 +380,7 @@ diesel::table! {
 diesel::table! {
     wechat_mini_program_users (id) {
         id -> Int4,
-        user_id -> Nullable<Int4>,
+        user_id -> Int4,
         union_id -> Varchar,
         app_id -> Varchar,
         open_id -> Varchar,

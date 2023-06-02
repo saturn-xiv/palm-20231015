@@ -30,66 +30,7 @@ use super::super::super::{
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
-pub struct BindRequest {
-    pub app_id: String,
-    pub nickname: String,
-    pub password: String,
-}
-
-#[post("/bind")]
-pub async fn bind(
-    db: web::Data<DbPool>,
-    token: Token,
-    client_ip: ClientIp,
-    loquat: web::Data<Loquat>,
-    form: web::Json<BindRequest>,
-) -> WebResult<impl Responder> {
-    let client_ip = client_ip.to_string();
-    let mut db = try_web!(db.get())?;
-    let db = db.deref_mut();
-    let form = form.into_inner();
-
-    try_web!(db.transaction::<_, Error, _>(move |db| {
-        let user = UserDao::by_nickname(db, &form.nickname)?;
-        {
-            user.auth(&loquat.0, &form.password)?;
-            user.available()?;
-        }
-        let wu = {
-            let open_id = Jwt::verify(
-                &loquat.0,
-                &token.0.unwrap_or_default(),
-                &Action::SignIn.to_string(),
-            )?;
-            WechatMiniProgramUserDao::by_open_id(db, &form.app_id, &open_id)?
-        };
-        if let Some(user_id) = wu.user_id {
-            if user_id != user.id {
-                return Err(Box::new(HttpError(
-                    StatusCode::BAD_REQUEST,
-                    Some("Already bound to other user".to_string()),
-                )));
-            }
-        }
-
-        if wu.user_id.is_none() {
-            WechatMiniProgramUserDao::bind(db, wu.id, user.id)?;
-            LogDao::add::<_, User>(
-                db,
-                user.id,
-                v1::user_logs_response::item::Level::Info,
-                &client_ip,
-                Some(user.id),
-                &format!(
-                    "bind to wechat mini-program user({}, {})",
-                    wu.app_id, wu.open_id
-                ),
-            )?;
-        }
-        Ok(())
-    }))?;
-    Ok(web::Json(()))
-}
+pub struct BindRequest {}
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
