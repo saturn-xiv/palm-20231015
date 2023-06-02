@@ -17,14 +17,14 @@ build_dashboard() {
     cd $WORKSPACE/$1/dashboard
     if [ ! -d node_modules ]
     then
-        yarn install --silent
+        yarn install
     fi
     yarn build
     cp -r build $TARGET_DIR/$1
 }
 
 install_gnu_deb() {
-    apt-get -qq -y install libc6-dev:$1 libudev-dev:$1 libssl-dev:$1 \
+    apt-get -y install libc6-dev:$1 libudev-dev:$1 libssl-dev:$1 \
         libpq5:$1 libpq-dev:$1 libmysqlclient-dev:$1 libsqlite3-dev:$1
 }
 
@@ -132,7 +132,7 @@ copy_assets() {
     
     if [ ! -d node_modules ]
     then
-        yarn install --silent
+        yarn install
     fi
 
     local -a packages=(
@@ -185,6 +185,7 @@ fi
 
 cd $WORKSPACE
 git submodule update --init --recursive
+apt-get update
 
 # -----------------------------------------------------------------------------
 
