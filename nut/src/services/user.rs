@@ -26,7 +26,7 @@ use super::super::{
     i18n::I18n,
     models::{
         google::user::Dao as GoogleUserDao,
-        log::Dao as LogDao,
+        log::{Dao as LogDao, Level as LogLevel},
         user::{Action, Dao as UserDao, Item as User},
         wechat::mini_program_user::{
             Dao as WechatMiniProgramUserDao, Item as WechatMiniProgramUser,
@@ -72,7 +72,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<_, User>(
                     db,
                     user.id,
-                    v1::user_logs_response::item::Level::Info,
+                    &LogLevel::Info,
                     &ss.client_ip,
                     Some(user.id),
                     "sign in success",
@@ -125,7 +125,7 @@ impl v1::user_server::User for Service {
             LogDao::add::<_, User>(
                 db,
                 user.id,
-                v1::user_logs_response::item::Level::Info,
+                &LogLevel::Info,
                 &ss.client_ip,
                 Some(user.id),
                 "sign up.",
@@ -180,7 +180,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<String, User>(
                     db,
                     user_id,
-                    v1::user_logs_response::item::Level::Info,
+                    &LogLevel::Info,
                     &ip,
                     Some(user.id),
                     "Confirm account.".to_string(),
@@ -228,7 +228,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<String, User>(
                     db,
                     user_id,
-                    v1::user_logs_response::item::Level::Info,
+                    &LogLevel::Info,
                     &ip,
                     Some(user.id),
                     "Unlock account.".to_string(),
@@ -272,7 +272,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<String, User>(
                     db,
                     user_id,
-                    v1::user_logs_response::item::Level::Info,
+                    &LogLevel::Info,
                     &ip,
                     Some(user.id),
                     "Reset password.".to_string(),
@@ -341,7 +341,8 @@ impl v1::user_server::User for Service {
                     id: x.id,
                     user_id: x.user_id,
                     message: x.message.clone(),
-                    level: x.level,
+                    // TODO
+                    level: 0,
                     ip: x.ip.clone(),
                     resource: Some(Resource {
                         r#type: x.resource_type.clone(),
@@ -364,7 +365,7 @@ impl v1::user_server::User for Service {
         try_grpc!(LogDao::add::<_, User>(
             db,
             user.id,
-            v1::user_logs_response::item::Level::Info,
+            &LogLevel::Info,
             &ss.client_ip,
             Some(user.id),
             "sign out."
@@ -396,7 +397,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<String, User>(
                     db,
                     user.id,
-                    v1::user_logs_response::item::Level::Info,
+                    &LogLevel::Info,
                     &ip,
                     Some(user.id),
                     "Update profile.".to_string(),
@@ -427,7 +428,7 @@ impl v1::user_server::User for Service {
                 LogDao::add::<String, User>(
                     db,
                     user.id,
-                    v1::user_logs_response::item::Level::Info,
+                    &LogLevel::Info,
                     &ip,
                     Some(user.id),
                     "Change password.".to_string(),
@@ -630,7 +631,7 @@ impl v1::user_server::User for Service {
             LogDao::add::<_, User>(
                 db,
                 it.id,
-                v1::user_logs_response::item::Level::Info,
+                &LogLevel::Info,
                 &ss.client_ip,
                 Some(it.id),
                 &format!("reset password by {}", user),

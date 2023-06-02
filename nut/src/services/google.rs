@@ -21,7 +21,7 @@ use tonic::{Request, Response, Status};
 use super::super::{
     models::{
         google::user::Dao as GoogleUserDao,
-        log::Dao as LogDao,
+        log::{Dao as LogDao, Level as LogLevel},
         setting::Dao as SettingDao,
         user::{Dao as UserDao, Item as User},
     },
@@ -132,7 +132,7 @@ impl v1::google_server::Google for Service {
             LogDao::add::<_, User>(
                 db,
                 user.id,
-                v1::user_logs_response::item::Level::Info,
+                &LogLevel::Info,
                 &ss.client_ip,
                 Some(user.id),
                 "sign in by google",

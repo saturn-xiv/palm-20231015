@@ -24,7 +24,7 @@ use tonic::{Request, Response, Status};
 
 use super::super::{
     models::{
-        log::Dao as LogDao,
+        log::{Dao as LogDao, Level as LogLevel},
         user::{Action, Dao as UserDao, Item as User},
         wechat::{
             mini_program_user::{Dao as WechatMiniProgramUserDao, Item as MiniProgramUser},
@@ -97,7 +97,7 @@ impl v1::wechat_server::Wechat for Service {
             LogDao::add::<_, User>(
                 db,
                 user.id,
-                v1::user_logs_response::item::Level::Info,
+                &LogLevel::Info,
                 &ss.client_ip,
                 Some(user.id),
                 "sign in by wechat oauth",
@@ -187,7 +187,7 @@ impl v1::wechat_server::Wechat for Service {
 
         if let Some(ref token) = ss.token {
             let jwt = self.jwt.deref();
-            let enf = self.enforcer.deref();
+
             let open_id = try_grpc!(jwt.verify(token, &Action::SignIn.to_string()))?;
 
             let mut db = try_grpc!(self.pgsql.get())?;
@@ -198,14 +198,18 @@ impl v1::wechat_server::Wechat for Service {
                 &open_id
             ))?;
 
-            let ur = match wu.user_id {
-                Some(id) => {
-                    let user = try_grpc!(UserDao::by_id(db, id))?;
-                    let it = try_grpc!(new_sign_in_response(db, enf, &user, jwt, None).await)?;
-                    Some(it)
-                }
-                None => None,
-            };
+            // TODO
+            // let ur = match wu.user_id {
+
+            //     Some(_id) => {
+            //         let user = try_grpc!(UserDao::by_id(db, id))?;
+            //         let it = try_grpc!(new_sign_in_response(db, enf, &user, jwt, None).await)?;
+            //         Some(it)
+            //         None
+            //     }
+            //     None => None,
+            // };
+            let ur = None;
             return Ok(Response::new(v1::CurrentWechatMiniProgramUserResponse {
                 wechat: Some(wu.into()),
                 user: ur,
@@ -564,7 +568,8 @@ impl From<MiniProgramUser> for v1::wechat_all_mini_program_user_response::Item {
     fn from(x: MiniProgramUser) -> Self {
         Self {
             id: x.id,
-            user_id: x.user_id,
+            // TODO
+            user_id: None,
             union_id: x.union_id.clone(),
             app_id: x.app_id.clone(),
             open_id: x.open_id.clone(),

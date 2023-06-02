@@ -36,7 +36,7 @@ use super::super::{
     i18n::I18n,
     models::{
         locale::Dao as LocaleDao,
-        log::Dao as LogDao,
+        log::{Dao as LogDao, Level as LogLevel},
         setting::{get, set, Dao as SettingDao},
         user::{Dao as UserDao, Item as User},
     },
@@ -304,7 +304,7 @@ impl v1::site_server::Site for Service {
                     LogDao::add::<_, User>(
                         db,
                         user.id,
-                        v1::user_logs_response::item::Level::Info,
+                        &LogLevel::Info,
                         &ss.client_ip,
                         Some(user.id),
                         "sign up.",
@@ -313,7 +313,7 @@ impl v1::site_server::Site for Service {
                     LogDao::add::<_, User>(
                         db,
                         user.id,
-                        v1::user_logs_response::item::Level::Info,
+                        &LogLevel::Info,
                         &ss.client_ip,
                         Some(user.id),
                         "confirmed.",

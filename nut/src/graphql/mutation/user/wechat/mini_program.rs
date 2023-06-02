@@ -1,4 +1,4 @@
-use std::ops::{Deref, DerefMut};
+use std::ops::DerefMut;
 
 use diesel::Connection as DieselConnection;
 use juniper::GraphQLInputObject;
@@ -39,13 +39,13 @@ impl BindRequest {
         let db = db.deref_mut();
         let mut ch = context.cache.get()?;
         let ch = ch.deref_mut();
-        let loquat = context.loquat.deref();
+        // let loquat = context.loquat.deref();
 
-        let user = context.session.current_user(db, ch, loquat)?;
+        let user = context.session.current_user(db, ch, &context.loquat)?;
         db.transaction::<_, Error, _>(move |db| {
             let iu = UserDao::by_nickname(db, &self.nickname)?;
             {
-                iu.auth(loquat, &self.password)?;
+                iu.auth(&context.loquat, &self.password)?;
                 iu.available()?;
             }
 

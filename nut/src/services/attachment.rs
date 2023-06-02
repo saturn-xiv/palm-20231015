@@ -131,7 +131,8 @@ impl From<Attachment> for v1::attachment_index_response::Item {
             title: it.title,
             size: it.size,
             content_type: it.content_type,
-            status: it.status,
+            // TODO
+            status: 0,
             updated_at: Some(to_timestamp!(it.updated_at)),
         }
     }

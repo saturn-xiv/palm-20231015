@@ -6,14 +6,13 @@ use std::ops::DerefMut;
 use actix_web::{post, web, HttpResponse, Responder, Result as WebResult};
 use chrono::Duration;
 use diesel::Connection as DieselConnection;
-use hyper::StatusCode;
+
 use palm::{
-    handlers::{peer::ClientIp, token::Token},
+    handlers::peer::ClientIp,
     jwt::Jwt,
-    nut::v1,
     orchid::v1::{WechatMiniProgramLoginRequest, WechatMiniProgramLoginResponse},
     thrift::cactus::{protocols::Action as CactusAction, Rpc as CactusRpc},
-    try_web, Error, HttpError,
+    try_web, Error,
 };
 use serde::{Deserialize, Serialize};
 use tonic::Request;
@@ -21,7 +20,6 @@ use tonic::Request;
 use super::super::super::{
     controllers::{Loquat, Orchid},
     models::{
-        log::Dao as LogDao,
         user::{Action, Dao as UserDao, Item as User},
         wechat::mini_program_user::Dao as WechatMiniProgramUserDao,
     },
@@ -85,16 +83,17 @@ pub async fn sign_in(
             &res.unionid,
             &client_ip,
         )?;
-        if let Some(user) = user.user_id {
-            LogDao::add::<_, User>(
-                db,
-                user,
-                v1::user_logs_response::item::Level::Info,
-                &client_ip,
-                Some(user),
-                "sign in by wechat mini-program",
-            )?;
-        }
+        // FIXME move to ghl
+        // if let Some(user) = user.user_id {
+        //     LogDao::add::<_, User>(
+        //         db,
+        //         user,
+        //         v1::user_logs_response::item::Level::Info,
+        //         &client_ip,
+        //         Some(user),
+        //         "sign in by wechat mini-program",
+        //     )?;
+        // }
         Ok(user)
     }))?;
 
