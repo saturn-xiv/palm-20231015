@@ -1,10 +1,12 @@
 use std::path::Path;
+use std::string::ToString;
 
 use chrono::{Datelike, NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
 use mime::Mime;
-use palm::{nut::v1::media_content::Status as MediaStatus, Result};
-use serde::Serialize;
+use palm::Result;
+use serde::{Deserialize, Serialize};
+use strum_macros::{Display as EnumDisplay, EnumString};
 use uuid::Uuid;
 
 use super::super::{
@@ -22,7 +24,7 @@ pub struct Item {
     pub title: String,
     pub size: i64,
     pub content_type: String,
-    pub status: i32,
+    pub status: String,
     pub deleted_at: Option<NaiveDateTime>,
     pub version: i32,
     pub created_at: NaiveDateTime,
@@ -71,6 +73,13 @@ impl Item {
     }
 }
 
+#[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone, EnumString, EnumDisplay)]
+#[serde(rename_all = "camelCase")]
+pub enum Status {
+    Public,
+    Private,
+}
+
 pub trait Dao {
     fn by_id(&mut self, id: i32) -> Result<Item>;
     fn create(
@@ -109,7 +118,7 @@ impl Dao for Connection {
         size: u64,
     ) -> Result<()> {
         let now = Utc::now().naive_utc();
-
+        let status = Status::Public.to_string();
         let content_type = content_type.to_string();
         insert_into(attachments::dsl::attachments)
             .values((
@@ -119,7 +128,7 @@ impl Dao for Connection {
                 attachments::dsl::title.eq(title),
                 attachments::dsl::content_type.eq(content_type),
                 attachments::dsl::size.eq(size as i64),
-                attachments::dsl::status.eq(MediaStatus::Published as i32),
+                attachments::dsl::status.eq(&status),
                 attachments::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;

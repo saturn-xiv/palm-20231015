@@ -2,6 +2,7 @@ pub mod ban;
 pub mod session;
 
 use std::fmt;
+use std::string::ToString;
 
 use chrono::{NaiveDateTime, Utc};
 use chrono_tz::Tz;
@@ -16,6 +17,7 @@ use palm::{
     HttpError, Result,
 };
 use serde::{Deserialize, Serialize};
+use strum_macros::{Display as EnumDisplay, EnumString};
 use uuid::Uuid;
 
 use super::super::{orm::postgresql::Connection, schema::users};
@@ -42,6 +44,15 @@ impl fmt::Display for Action {
     }
 }
 
+#[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone, EnumString, EnumDisplay)]
+#[serde(rename_all = "camelCase")]
+pub enum Status {
+    Email,
+    Google,
+    WechatMiniProgram,
+    WechatOauth2,
+}
+
 #[derive(Hash, Eq, PartialEq, Queryable, Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
@@ -54,6 +65,7 @@ pub struct Item {
     pub avatar: String,
     pub lang: String,
     pub time_zone: String,
+    pub status: String,
     pub sign_in_count: i32,
     pub current_sign_in_at: Option<NaiveDateTime>,
     pub current_sign_in_ip: Option<String>,
@@ -100,7 +112,10 @@ impl Item {
     pub const NIL: &str = "nil";
 
     pub fn guest_email() -> String {
-        format!("{}@local", Uuid::new_v4())
+        format!("{}@local", Uuid::new_v4().simple())
+    }
+    pub fn guest_nickname() -> String {
+        Uuid::new_v4().simple().to_string()
     }
 
     pub fn address(&self) -> v1::email_task::Address {
@@ -173,6 +188,7 @@ pub struct New<'a> {
     pub avatar: &'a str,
     pub lang: &'a str,
     pub time_zone: &'a str,
+    pub status: &'a str,
     pub updated_at: &'a NaiveDateTime,
 }
 
@@ -277,6 +293,7 @@ impl Dao for Connection {
                 salt: &random_bytes(New::SALT_SIZE),
                 avatar: &Item::gravatar(&email)?,
                 lang: &lang.to_string(),
+                status: &Status::Email.to_string(),
                 time_zone: &time_zone.to_string(),
                 updated_at: &Utc::now().naive_utc(),
             })

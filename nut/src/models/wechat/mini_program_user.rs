@@ -2,17 +2,20 @@ use std::fmt;
 
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
-use palm::Result;
+use palm::{crypto::random::bytes as random_bytes, Result};
 use serde::{Deserialize, Serialize};
 
-use super::super::super::{orm::postgresql::Connection, schema::wechat_mini_program_users};
-use super::super::user::Dao as UserDao;
+use super::super::super::{
+    orm::postgresql::Connection,
+    schema::{users, wechat_mini_program_users},
+};
+use super::super::user::{Dao as UserDao, Item as User, New as NewUser, Status};
 
 #[derive(Hash, Eq, PartialEq, Queryable, Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Item {
     pub id: i32,
-    pub user_id: Option<i32>, // FIXME bind to a temp user
+    pub user_id: i32,
     pub union_id: String,
     pub app_id: String,
     pub open_id: String,
@@ -74,7 +77,7 @@ impl Dao for Connection {
                 .filter(wechat_mini_program_users::dsl::id.eq(id)),
         )
         .set((
-            wechat_mini_program_users::dsl::user_id.eq(Some(user)),
+            wechat_mini_program_users::dsl::user_id.eq(user),
             wechat_mini_program_users::dsl::updated_at.eq(&now),
         ))
         .execute(self)?;
@@ -96,14 +99,14 @@ impl Dao for Connection {
     }
     fn sign_in(&mut self, app_id: &str, open_id: &str, union_id: &str, ip: &str) -> Result<Item> {
         let now = Utc::now().naive_utc();
-        match wechat_mini_program_users::dsl::wechat_mini_program_users
+        let user = match wechat_mini_program_users::dsl::wechat_mini_program_users
             .select((
                 wechat_mini_program_users::dsl::id,
                 wechat_mini_program_users::dsl::user_id,
             ))
             .filter(wechat_mini_program_users::dsl::app_id.eq(app_id))
             .filter(wechat_mini_program_users::dsl::open_id.eq(open_id))
-            .first::<(i32, Option<i32>)>(self)
+            .first::<(i32, i32)>(self)
         {
             Ok((id, user)) => {
                 update(
@@ -112,11 +115,27 @@ impl Dao for Connection {
                 )
                 .set(wechat_mini_program_users::dsl::updated_at.eq(&now))
                 .execute(self)?;
-                if let Some(user) = user {
-                    UserDao::sign_in(self, user, ip)?;
-                }
+                user
             }
             Err(_) => {
+                let email = User::guest_email();
+                insert_into(users::dsl::users)
+                    .values(&NewUser {
+                        real_name: User::GUEST_NAME,
+                        nickname: &User::guest_nickname(),
+                        email: &email,
+                        password: None,
+                        salt: &random_bytes(NewUser::SALT_SIZE),
+                        lang: User::GUEST_LANG,
+                        time_zone: User::GUEST_TIMEZONE,
+                        avatar: &User::gravatar(&email)?,
+                        status: &Status::WechatMiniProgram.to_string(),
+                        updated_at: &now,
+                    })
+                    .execute(self)?;
+
+                let user = self.by_email(&email)?;
+                Self::confirm(self, user.id)?;
                 insert_into(wechat_mini_program_users::dsl::wechat_mini_program_users)
                     .values((
                         wechat_mini_program_users::dsl::app_id.eq(app_id),
@@ -125,8 +144,10 @@ impl Dao for Connection {
                         wechat_mini_program_users::dsl::updated_at.eq(&now),
                     ))
                     .execute(self)?;
+                user.id
             }
         };
+        UserDao::sign_in(self, user, ip)?;
 
         let it = wechat_mini_program_users::dsl::wechat_mini_program_users
             .filter(wechat_mini_program_users::dsl::app_id.eq(app_id))

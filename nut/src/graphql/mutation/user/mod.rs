@@ -1,3 +1,5 @@
+pub mod wechat;
+
 use juniper::GraphQLInputObject;
 use palm::Result;
 use validator::Validate;

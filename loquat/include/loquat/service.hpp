@@ -2,6 +2,12 @@
 
 #include "loquat/env.hpp"
 
+// TODO
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#include <thrift/Thrift.h>
+#pragma GCC diagnostic pop
+
 #include "Aes.h"
 #include "Health.h"
 #include "Hmac.h"

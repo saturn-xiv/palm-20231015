@@ -8,13 +8,12 @@ use palm::{
     Result,
 };
 use serde::{Deserialize, Serialize};
-use uuid::Uuid;
 
 use super::super::super::{
     orm::postgresql::Connection,
     schema::{google_users, users},
 };
-use super::super::user::{Dao as UserDao, Item as User, New as NewUser};
+use super::super::user::{Dao as UserDao, Item as User, New as NewUser, Status};
 
 #[derive(Hash, Eq, PartialEq, Queryable, Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -125,7 +124,7 @@ impl Dao for Connection {
                                     Some(ref v) => v.clone(),
                                     None => User::GUEST_NAME.to_string(),
                                 },
-                                nickname: &format!("g{}", Uuid::new_v4()),
+                                nickname: &User::guest_nickname(),
                                 email: &email,
                                 password: None,
                                 salt: &random_bytes(NewUser::SALT_SIZE),
@@ -135,6 +134,7 @@ impl Dao for Connection {
                                     Some(ref v) => v.clone(),
                                     None => User::gravatar(&email)?,
                                 },
+                                status: &Status::Google.to_string(),
                                 updated_at: &now,
                             })
                             .execute(self)?;
