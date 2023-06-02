@@ -9,7 +9,6 @@ use palm::{
 };
 use serde::{Deserialize, Serialize};
 
-
 use super::super::super::{
     orm::postgresql::Connection,
     schema::{google_users, users},

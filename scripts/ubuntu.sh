@@ -33,7 +33,7 @@ build_rust_amd64_gnu() {
     install_gnu_deb amd64
 
     # CC=gcc-$GCC_VERSION CXX=g++-$GCC_VERSION \
-    cargo build --quiet --release --target x86_64-unknown-linux-gnu -p $1
+    cargo build --release --target x86_64-unknown-linux-gnu -p $1
     cp $WORKSPACE/target/x86_64-unknown-linux-gnu/release/$1 $TARGET_DIR/bin/x86_64/
 }
 
@@ -43,7 +43,7 @@ build_rust_armhf_gnu() {
     cd $WORKSPACE        
     # CC=arm-linux-gnueabihf-gcc-$GCC_VERSION CXX=arm-linux-gnueabihf-g++-$GCC_VERSION \
     PKG_CONFIG_DIR= PKG_CONFIG_ALLOW_CROSS=1 PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig \
-        cargo build --quiet --release --target armv7-unknown-linux-gnueabihf -p $1
+        cargo build --release --target armv7-unknown-linux-gnueabihf -p $1
     cp $WORKSPACE/target/armv7-unknown-linux-gnueabihf/release/$1 $TARGET_DIR/bin/armhf/
 }
 
@@ -53,7 +53,7 @@ build_rust_arm64_gnu() {
     cd $WORKSPACE       
     # CC=aarch64-linux-gnu-gcc-$GCC_VERSION CXX=aarch64-linux-gnu-g++-$GCC_VERSION \
     PKG_CONFIG_DIR= PKG_CONFIG_ALLOW_CROSS=1 PKG_CONFIG_LIBDIR=/usr/lib/aarch64-linux-gnu/pkgconfig \
-        cargo build --quiet --release --target aarch64-unknown-linux-gnu -p $1
+        cargo build --release --target aarch64-unknown-linux-gnu -p $1
     cp $WORKSPACE/target/aarch64-unknown-linux-gnu/release/$1 $TARGET_DIR/bin/aarch64/
 }
 
@@ -64,31 +64,27 @@ build_rust_musl() {
     then
         # https://github.com/rust-lang/rust/issues/89626
         CC=$1-linux-musl-gcc CXX=$1-linux-musl-g++ CFLAGS="-mno-outline-atomics" \
-            cargo build --quiet --release --target $1-unknown-linux-musl -p $2
+            cargo build --release --target $1-unknown-linux-musl -p $2
         cp $WORKSPACE/target/$1-unknown-linux-musl/release/$2 $TARGET_DIR/bin/$1/
         return
     fi
     CC=$1-linux-musl-gcc CXX=$1-linux-musl-g++ \
-        cargo build --quiet --release --target $1-unknown-linux-musl -p $2
+        cargo build --release --target $1-unknown-linux-musl -p $2
     cp $WORKSPACE/target/$1-unknown-linux-musl/release/$2 $TARGET_DIR/bin/$1/
 }
 
 build_loquat() {
-    apt-get install -y golang libunwind-dev libboost-all-dev libevent-dev
+    apt-get install -y golang
 
     local target=$WORKSPACE/loquat/build/$1
+    local thrift_flags="-DBUILD_TESTING=OFF -DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF"
 
     mkdir -p $target
-    cd $target    
-    # TODO: since v2.1: -DLIBEVENT_STATIC_LINK=TRUE 
-    cmake -DCMAKE_BUILD_TYPE=Release \
-        -DABSL_PROPAGATE_CXX_STD=ON \
-        -DOPENSSL_USE_STATIC_LIBS=TRUE \
-        -DTINK_USE_SYSTEM_OPENSSL=ON \
-        -DEVENT__LIBRARY_TYPE=STATIC -DEVENT__DISABLE_OPENSSL=ON \
-        -DWITH_LIBEVENT=ON -DBUILD_COMPILER=OFF -DWITH_OPENSSL=ON -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF \
+    cd $target
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=$HOME/local/vcpkg/scripts/buildsystems/vcpkg.cmake \
+        -DABSL_PROPAGATE_CXX_STD=ON -DTINK_USE_SYSTEM_OPENSSL=OFF $THRIFT_FLAGS \
         ../..
-    make --silent loquat
+    make loquat
     cp loquat $TARGET_DIR/bin/$1/
 }
 
