@@ -146,7 +146,7 @@ RUN cd $HOME/downloads \
 
 
 # https://github.com/bazelbuild/bazelisk
-ENV BAZEL_VERSION "v1.16.0"
+ENV BAZEL_VERSION "v1.17.0"
 RUN wget -q -O $HOME/.local/bin/bazel \
     https://github.com/bazelbuild/bazelisk/releases/download/${BAZEL_VERSION}/bazelisk-linux-amd64
 RUN chmod +x $HOME/.local/bin/bazel
@@ -291,7 +291,7 @@ RUN zsh -c "source $HOME/.zshrc \
     && go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest"
 
 # https://github.com/google/flatbuffers
-ENV FLATBUFFERS_VERSION "v23.5.9"
+ENV FLATBUFFERS_VERSION "v23.5.26"
 RUN git clone -b $FLATBUFFERS_VERSION https://github.com/google/flatbuffers.git $HOME/downloads/flatbuffers
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir -pv $HOME/build/flatbuffers \
