@@ -10,6 +10,7 @@
     "boost-chrono",
     "boost-random",
     "boost-program-options",
-    "boost-locale"
+    "boost-locale",
+    "boost-test"
   ]
 }
