@@ -6,9 +6,11 @@ install_oauth() {
     yarn add @react-oauth/google@latest react-facebook-login
 }
 
+# react-json-view 
+# dayjs date-fns grpc-web
 install_react() {
-    yarn add filesize dayjs timezones-list grpc-web \
-        moment moment-timezone date-fns \
+    yarn add filesize timezones-list \
+        moment moment-timezone \
         marked @types/marked \
         diff @types/diff \
         lodash @types/lodash \
@@ -24,8 +26,8 @@ install_react() {
         google-map-react qrcode.react \
         react-markdown @uiw/react-md-editor \
         react-color @types/react-color \
-        react-pdf @types/react-pdf \
-        react-json-view react-syntax-highlighter \
+        react-pdf \
+        react-syntax-highlighter \
         emoji-mart react-sparklines react-highlight-words \
         react-number-format react-image-crop \
         react-player \
