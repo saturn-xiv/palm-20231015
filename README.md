@@ -48,9 +48,4 @@ A total free education &amp; translation &amp; ops solution.
 - [Casbin is a powerful and efficient open-source access control library](https://casbin.org/docs/en/overview)
 - [The RBAC96 Model](https://profsandhu.com/cs6393_s12/lecture-rbac96.pdf)
 - [Password Hashing Competition](https://www.password-hashing.net/)
-
-### Credits
-
-- [Joomla! is a free and open-source content management system (CMS) for publishing web content.](https://www.joomla.org)
-- [FluxBB is fast, light, user-friendly forum software for your website.](https://fluxbb.org/docs/v1.5/installing)
-- [OpenCart is an open source PHP-based online e-commerce solution.](https://docs.opencart.com/en-gb/introduction/)
+- [Security DO's and DON'Ts](https://quasar.dev/security/dos-and-donts)
