@@ -1,4 +1,3 @@
-pub mod cactus;
 pub mod loquat;
 
 use ::thrift::{

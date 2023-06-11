@@ -23,18 +23,9 @@ pub trait Oauth2 {
     // https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html
     async fn access_token(&self, code: &str) -> Result<access_token::Response>;
     async fn refresh_token(&self, code: &str) -> Result<refresh_token::Response>;
-    async fn userinfo(
-        access_token: &str,
-        openid: &str,
-        lang: &qr_connect::Language,
-    ) -> Result<userinfo::Response>;
+    async fn userinfo(access_token: &str, openid: &str, lang: &str) -> Result<userinfo::Response>;
     // https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html
-    fn qr_connect<S: Display>(
-        &self,
-        redirect_uri: &str,
-        state: &S,
-        lang: &qr_connect::Language,
-    ) -> Result<String>;
+    fn qr_connect<S: Display>(&self, redirect_uri: &str, state: &S, lang: &str) -> Result<String>;
 }
 
 #[async_trait]
@@ -81,11 +72,7 @@ impl Oauth2 for Config {
         Ok(response)
     }
 
-    async fn userinfo(
-        access_token: &str,
-        openid: &str,
-        lang: &qr_connect::Language,
-    ) -> Result<userinfo::Response> {
+    async fn userinfo(access_token: &str, openid: &str, lang: &str) -> Result<userinfo::Response> {
         let client = HttpClient::new();
         let response = client
             .get(Self::url("/sns/userinfo"))
@@ -100,12 +87,7 @@ impl Oauth2 for Config {
         Ok(response)
     }
 
-    fn qr_connect<S: Display>(
-        &self,
-        redirect_uri: &str,
-        state: &S,
-        lang: &qr_connect::Language,
-    ) -> Result<String> {
+    fn qr_connect<S: Display>(&self, redirect_uri: &str, state: &S, lang: &str) -> Result<String> {
         qr_connect::url(&self.app_id, redirect_uri, state, lang)
     }
 }

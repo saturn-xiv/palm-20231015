@@ -24,12 +24,12 @@ pub struct Args {
 }
 
 impl Args {
-    pub fn launch(&self) -> Result<()> {
+    pub async fn launch(&self) -> Result<()> {
         let env: Config = from_toml(&self.config)?;
         match &self.command {
             SubCommand::Rpc(ref it) => {
                 let env = Arc::new(env);
-                it.launch(env)?;
+                it.launch(env).await?;
             }
         };
         Ok(())
