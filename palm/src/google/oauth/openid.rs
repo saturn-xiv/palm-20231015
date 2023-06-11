@@ -6,7 +6,7 @@ use rand::{distributions::Alphanumeric, thread_rng, Rng};
 use serde::{Deserialize, Serialize};
 use url::form_urlencoded;
 
-use super::super::super::{nut::v1::GoogleSignInUrlResponse, HttpError, Result};
+use super::super::super::{HttpError, Result};
 use super::{AccessType, Scope};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -26,7 +26,7 @@ impl super::Web {
         scope: Vec<Scope>,
         state: &T,
         redirect_uri: &str,
-    ) -> GoogleSignInUrlResponse {
+    ) -> (String, String) {
         let nonce: String = thread_rng()
             .sample_iter(&Alphanumeric)
             .take(8)
@@ -51,7 +51,7 @@ impl super::Web {
         .append_pair("response_type", "code")
         .finish();
 
-        GoogleSignInUrlResponse { url, nonce }
+        (url, nonce)
     }
 
     pub async fn exchange_authorization_code(

@@ -8,7 +8,7 @@ pub mod nginx;
 
 use std::any::type_name;
 use std::fs::metadata;
-use std::net::{IpAddr, Ipv4Addr};
+use std::net::IpAddr;
 use std::path::PathBuf;
 use std::process::Command;
 use std::result::Result as StdResult;
@@ -17,9 +17,10 @@ use askama::Template;
 use eui48::MacAddress;
 use ipnet::Ipv4Net;
 use lazy_static::lazy_static;
-use validator::{validate_length, Validate, ValidationErrors};
+use serde::{Deserialize, Serialize};
+use validator::{Validate, ValidationErrors};
 
-use super::{crypto::Password, ops::router as ops_router, Result};
+use super::Result;
 
 lazy_static! {
     pub static ref GOOGLE_DNS_V4: Vec<&'static str> = vec!["8.8.8.8", "8.8.4.4",];
@@ -74,7 +75,15 @@ pub fn logs() -> Result<Vec<String>> {
     Ok(items)
 }
 
-impl ops_router::v1::Lan {
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct Lan {
+    pub device: String,
+    pub address: String,
+    pub mac: String,
+    pub metric: u8,
+}
+
+impl Lan {
     fn validate_device(&self) -> bool {
         if let Ok(ref it) = metadata(ethernet::root().join(&self.device)) {
             if it.is_dir() {
@@ -83,19 +92,13 @@ impl ops_router::v1::Lan {
         }
         false
     }
-    fn validate_address(&self) -> bool {
-        self.address.parse::<Ipv4Net>().is_ok()
-    }
-    fn validate_mac(&self) -> bool {
-        MacAddress::parse_str(&self.mac).is_ok()
-    }
 }
 
-impl Validate for ops_router::v1::Lan {
+impl Validate for Lan {
     fn validate(&self) -> StdResult<(), ValidationErrors> {
-        if self.validate_address()
+        if self.address.parse::<Ipv4Net>().is_ok()
             && self.validate_device()
-            && self.validate_mac()
+            && MacAddress::parse_str(&self.mac).is_ok()
             && self.metric > 0
         {
             return Ok(());
@@ -103,8 +106,14 @@ impl Validate for ops_router::v1::Lan {
         Err(ValidationErrors::new())
     }
 }
-
-impl ops_router::v1::Dmz {
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct Dmz {
+    pub device: String,
+    pub metric: u8,
+    pub address: String,
+    pub mac: String,
+}
+impl Dmz {
     fn validate_device(&self) -> bool {
         if let Ok(ref it) = metadata(ethernet::root().join(&self.device)) {
             if it.is_dir() {
@@ -113,19 +122,13 @@ impl ops_router::v1::Dmz {
         }
         false
     }
-    fn validate_address(&self) -> bool {
-        self.address.parse::<Ipv4Net>().is_ok()
-    }
-    fn validate_mac(&self) -> bool {
-        MacAddress::parse_str(&self.mac).is_ok()
-    }
 }
 
-impl Validate for ops_router::v1::Dmz {
+impl Validate for Dmz {
     fn validate(&self) -> StdResult<(), ValidationErrors> {
-        if self.validate_address()
+        if self.address.parse::<Ipv4Net>().is_ok()
             && self.validate_device()
-            && self.validate_mac()
+            && MacAddress::parse_str(&self.mac).is_ok()
             && self.metric > 0
         {
             return Ok(());
@@ -134,38 +137,54 @@ impl Validate for ops_router::v1::Dmz {
     }
 }
 
-impl ops_router::v1::Static {
-    fn validate_address(&self) -> bool {
-        self.address.parse::<Ipv4Net>().is_ok()
-    }
-    fn validate_gateway(&self) -> bool {
-        self.gateway.parse::<Ipv4Addr>().is_ok()
-    }
-    fn validate_dns1(&self) -> bool {
-        self.dns1.parse::<Ipv4Addr>().is_ok()
-    }
-    fn validate_dns2(&self) -> bool {
-        if let Some(ref it) = self.dns2 {
-            return it.parse::<Ipv4Addr>().is_ok();
-        }
-        true
-    }
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub enum Ip {
+    Dhcp {
+        v6: bool,
+    },
+    Static {
+        address: String,
+        gateway: String,
+        dns1: String,
+        dns2: Option<String>,
+    },
 }
 
-impl Validate for ops_router::v1::Static {
+impl Validate for Ip {
     fn validate(&self) -> StdResult<(), ValidationErrors> {
-        if self.validate_address()
-            && self.validate_gateway()
-            && self.validate_dns1()
-            && self.validate_dns2()
-        {
-            return Ok(());
+        match *self {
+            Self::Dhcp { .. } => Ok(()),
+            Self::Static {
+                ref address,
+                ref gateway,
+                ref dns1,
+                ref dns2,
+            } => {
+                if address.parse::<Ipv4Net>().is_ok()
+                    && gateway.parse::<Ipv4Net>().is_ok()
+                    && dns1.parse::<Ipv4Net>().is_ok()
+                {
+                    if let Some(dns2) = dns2 {
+                        if dns2.parse::<Ipv4Net>().is_ok() {
+                            return Ok(());
+                        }
+                        return Ok(());
+                    }
+                }
+                Err(ValidationErrors::new())
+            }
         }
-        Err(ValidationErrors::new())
     }
 }
 
-impl ops_router::v1::Wan {
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct Wan {
+    pub device: String,
+    pub ip: Ip,
+    pub mac: String,
+    pub metric: u8,
+}
+impl Wan {
     pub fn route(&self) -> String {
         format!("rt.{}", self.device)
     }
@@ -177,30 +196,27 @@ impl ops_router::v1::Wan {
         }
         false
     }
-    fn validate_ip(&self) -> bool {
-        if let Some(ops_router::v1::wan::Ip::Dhcp(_)) = self.ip {
-            return true;
-        }
-        if let Some(ops_router::v1::wan::Ip::Static(ref it)) = self.ip {
-            return it.validate().is_ok();
-        }
-        false
-    }
-    fn validate_mac(&self) -> bool {
-        MacAddress::parse_str(&self.mac).is_ok()
-    }
 }
 
-impl Validate for ops_router::v1::Wan {
+impl Validate for Wan {
     fn validate(&self) -> StdResult<(), ValidationErrors> {
-        if self.validate_ip() && self.validate_device() && self.validate_mac() && self.metric > 0 {
+        if self.ip.validate().is_ok()
+            && self.validate_device()
+            && MacAddress::parse_str(&self.mac).is_ok()
+            && self.metric > 0
+        {
             return Ok(());
         }
         Err(ValidationErrors::new())
     }
 }
 
-impl Validate for ops_router::v1::Dns {
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct Dns {
+    pub items: Vec<String>,
+}
+
+impl Validate for Dns {
     fn validate(&self) -> StdResult<(), ValidationErrors> {
         for it in self.items.iter() {
             if it.parse::<IpAddr>().is_err() {
@@ -211,24 +227,14 @@ impl Validate for ops_router::v1::Dns {
     }
 }
 
-impl ops_router::v1::UserProfile {
-    pub fn password<P: Password>(hmac: &P, plain: &str) -> Result<String> {
-        let buf = hmac.sign(plain.as_bytes())?;
-        let it = String::from_utf8_lossy(&buf[..]);
-        Ok(it.to_string())
-    }
-    pub fn verify<P: Password>(&self, hmac: &P, code: &str) -> bool {
-        hmac.verify(code.as_bytes(), self.password.as_bytes())
-    }
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct Host {
+    pub mac: String,
+    pub name: String,
+    pub ip: String,
 }
 
-impl Validate for ops_router::v1::UserProfile {
-    fn validate(&self) -> StdResult<(), ValidationErrors> {
-        if validate_length(&self.nickname, Some(2), Some(32), None)
-            && validate_length(&self.password, Some(6), Some(32), None)
-        {
-            return Ok(());
-        }
-        Err(ValidationErrors::new())
-    }
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct WanPool {
+    pub items: Vec<(Wan, u8)>,
 }

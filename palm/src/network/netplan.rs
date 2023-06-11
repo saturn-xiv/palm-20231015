@@ -2,7 +2,7 @@ use std::path::{Component, Path, PathBuf};
 
 use askama::Template;
 
-use super::super::{ops::router as ops_router, Result};
+use super::super::Result;
 use super::Etc;
 
 #[cfg(debug_assertions)]
@@ -26,31 +26,35 @@ pub fn apply() -> Result<()> {
 }
 
 // https://ubuntu.com/server/docs/network-configuration
-impl ops_router::v1::Wan {
+impl super::Wan {
     pub fn save(&self) -> Result<()> {
-        if let Some(ref ip) = self.ip {
-            match ip {
-                ops_router::v1::wan::Ip::Dhcp(ref it) => {
-                    super::save(&Dhcp {
-                        device: self.device.clone(),
-                        mac: self.mac.clone(),
-                        metric: self.metric,
-                        v6: it.v6,
-                    })?;
-                }
-                ops_router::v1::wan::Ip::Static(ref ip) => {
-                    super::save(&Static {
-                        device: self.device.clone(),
-                        mac: self.mac.clone(),
-                        address: ip.address.clone(),
-                        gateway: ip.gateway.clone(),
-                        dns1: ip.dns1.clone(),
-                        dns2: ip.dns2.clone(),
-                        metric: self.metric,
-                    })?;
-                }
+        match self.ip {
+            super::Ip::Dhcp { v6 } => {
+                super::save(&Dhcp {
+                    device: self.device.clone(),
+                    mac: self.mac.clone(),
+                    metric: self.metric,
+                    v6,
+                })?;
+            }
+            super::Ip::Static {
+                ref address,
+                ref gateway,
+                ref dns1,
+                ref dns2,
+            } => {
+                super::save(&Static {
+                    device: self.device.clone(),
+                    mac: self.mac.clone(),
+                    address: address.clone(),
+                    gateway: gateway.clone(),
+                    dns1: dns1.clone(),
+                    dns2: dns2.clone(),
+                    metric: self.metric,
+                })?;
             }
         }
+
         Ok(())
     }
 }
@@ -60,7 +64,7 @@ impl ops_router::v1::Wan {
 pub struct Dhcp {
     pub device: String,
     pub mac: String,
-    pub metric: u32,
+    pub metric: u8,
     pub v6: bool,
 }
 
@@ -83,7 +87,7 @@ pub struct Static {
     pub gateway: String,
     pub dns1: String,
     pub dns2: Option<String>,
-    pub metric: u32,
+    pub metric: u8,
 }
 
 impl Etc for Static {

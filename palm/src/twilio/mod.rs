@@ -7,11 +7,10 @@ use std::default::Default;
 use hyper::StatusCode;
 use serde::{Deserialize, Serialize};
 
-use super::{nut::v1, HttpError, Result};
+use super::{HttpError, Result};
 
 // https://www.twilio.com/docs/api
 // https://support.twilio.com/hc/en-us/articles/223136047-Configure-a-Twilio-Phone-Number-to-Receive-and-Respond-to-Messages
-
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Config {
     pub from: String,
@@ -34,18 +33,7 @@ impl Default for Config {
     }
 }
 
-impl From<Config> for v1::TwilioProfile {
-    fn from(item: Config) -> Self {
-        Self {
-            from: item.from.clone(),
-            account_sid: item.account_sid.clone(),
-            auth_token: item.auth_token.clone(),
-            sms_status_callback: item.sms_status_callback,
-        }
-    }
-}
-
-impl v1::TwilioProfile {
+impl Config {
     pub fn credentials(&self) -> String {
         format!("{}:{}", self.account_sid, self.auth_token)
     }

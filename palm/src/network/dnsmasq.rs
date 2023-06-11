@@ -6,7 +6,7 @@ use askama::Template;
 use ipnet::Ipv4Net;
 use tempfile::NamedTempFile;
 
-use super::super::{ops::router::v1 as ops_router_v1, Result};
+use super::super::Result;
 use super::Etc;
 
 pub struct Arp {
@@ -139,10 +139,10 @@ https://thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html
 */
 
 pub fn save(
-    lan: &ops_router_v1::Lan,
-    dmz: &ops_router_v1::Dmz,
-    dns: &ops_router_v1::Dns,
-    hosts: &[ops_router_v1::Host],
+    lan: &super::Lan,
+    dmz: &super::Dmz,
+    dns: &super::Dns,
+    hosts: &[super::Host],
 ) -> Result<()> {
     let lan = to_zone!(lan, hosts);
     let dmz = to_zone!(dmz, hosts);
@@ -202,7 +202,7 @@ pub trait Dhcpcd {
     fn hosts(&self) -> Result<Vec<Ipv4Addr>>;
 }
 
-impl Dhcpcd for ops_router_v1::Lan {
+impl Dhcpcd for super::Lan {
     fn hosts(&self) -> Result<Vec<Ipv4Addr>> {
         let net: Ipv4Net = self.address.parse()?;
         let addr = net.addr();
@@ -215,7 +215,7 @@ impl Dhcpcd for ops_router_v1::Lan {
     }
 }
 
-impl Dhcpcd for ops_router_v1::Dmz {
+impl Dhcpcd for super::Dmz {
     fn hosts(&self) -> Result<Vec<Ipv4Addr>> {
         let net: Ipv4Net = self.address.parse()?;
         let addr = net.addr();

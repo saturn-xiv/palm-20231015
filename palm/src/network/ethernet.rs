@@ -10,9 +10,15 @@ use eui48::MacAddress;
 use tempfile::NamedTempFile;
 use xml::reader::{EventReader, XmlEvent};
 
-use super::super::{ops::router::v1 as ops_router_v1, Result};
+use super::super::Result;
 
-impl ops_router_v1::router_status_response::Ip {
+pub struct Status {
+    pub address: String,
+    pub route: String,
+    pub rule: String,
+}
+
+impl Status {
     pub fn new() -> Result<Self> {
         let address = {
             let out = Command::new("ip").arg("address").output()?;

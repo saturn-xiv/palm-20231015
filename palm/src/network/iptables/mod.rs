@@ -1,13 +1,3 @@
-use std::fmt::{Error as FmtError, Write};
-use std::process::Command;
-use std::result::Result as StdResult;
-
-use ipnet::Ipv4Net;
-
-use super::super::{ops::router as ops_router, Result};
-
-// https://www.digitalocean.com/community/tutorials/iptables-essentials-common-firewall-rules-and-commands
-
 macro_rules! to_protocol {
     ($x:expr) => {
         if $x {
@@ -26,6 +16,21 @@ macro_rules! to_accept {
         }
     };
 }
+
+pub mod r#in;
+pub mod nat;
+pub mod out;
+
+use std::fmt::{Error as FmtError, Write};
+use std::process::Command;
+use std::result::Result as StdResult;
+
+use ipnet::Ipv4Net;
+use serde::{Deserialize, Serialize};
+
+use super::super::Result;
+
+// https://www.digitalocean.com/community/tutorials/iptables-essentials-common-firewall-rules-and-commands
 
 #[cfg(not(debug_assertions))]
 pub fn apply() -> Result<()> {
@@ -57,7 +62,7 @@ pub trait Iptables {
     fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError>;
 }
 
-pub struct Metric(pub Vec<ops_router::v1::Wan>);
+pub struct Metric(pub Vec<super::Wan>);
 
 impl Iptables for Metric {
     fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
@@ -157,6 +162,7 @@ iptables -t security -X
     }
 }
 
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Local {
     pub lan: Option<String>,
     pub dmz: Option<String>,
@@ -197,7 +203,7 @@ iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
             (false, 67),
         ] {
             if let Some(ref device) = self.lan {
-                ops_router::v1::rule::InBound {
+                r#in::InBound {
                     device: device.clone(),
                     tcp: *tcp,
                     port: *port,
@@ -206,7 +212,7 @@ iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
                 .write(buf)?;
             }
             if let Some(ref device) = self.dmz {
-                ops_router::v1::rule::InBound {
+                r#in::InBound {
                     device: device.clone(),
                     tcp: *tcp,
                     port: *port,
@@ -248,42 +254,6 @@ impl Iptables for Block {
         let device = &self.device;
         let source = &self.source;
         writeln!(buf, "iptables -A INPUT -i {device} -s {source} -j DROP")?;
-        Ok(())
-    }
-}
-
-impl Iptables for ops_router::v1::rule::InBound {
-    fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
-        let protocol = to_protocol!(self.tcp);
-        let port = self.port;
-        let device = &self.device;
-        match self.source {
-            Some(ref source) => {
-                writeln!(buf, "iptables -A INPUT -i {device} -p {protocol} -s {source} --dport {port} -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT")?;
-                writeln!(buf, "iptables -A OUTPUT -o {device} -p {protocol} --sport {port} -m conntrack --ctstate ESTABLISHED -j ACCEPT")?;
-            }
-            None => {
-                writeln!(buf, "iptables -A INPUT -i {device} -p {protocol} --dport {port} -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT")?;
-                writeln!(buf, "iptables -A OUTPUT -o {device} -p {protocol} --sport {port} -m conntrack --ctstate ESTABLISHED -j ACCEPT")?;
-            }
-        };
-        Ok(())
-    }
-}
-
-impl Iptables for ops_router::v1::rule::Nat {
-    fn write<T: Write>(&self, buf: &mut T) -> StdResult<(), FmtError> {
-        let source = self.source.as_ref().ok_or_else(FmtError::default)?;
-        let destination = self.destination.as_ref().ok_or_else(FmtError::default)?;
-
-        let source_port = source.port;
-        let source_device = &source.device;
-        let protocol = to_protocol!(self.tcp);
-        let destination_port = destination.port;
-        let destination_ip = &destination.ip;
-
-        writeln!(buf, "iptables -t nat -A PREROUTING -i {source_device} -p {protocol} --dport {source_port} -j DNAT --to-destination {destination_ip}:{destination_port}")?;
-
         Ok(())
     }
 }

@@ -5,7 +5,7 @@ use std::process::Command;
 use askama::Template;
 use ipnet::Ipv4Net;
 
-use super::super::{ops::router as ops_router, Result};
+use super::super::Result;
 use super::Etc;
 
 pub fn apply() -> Result<()> {
@@ -23,7 +23,7 @@ pub trait IscDhcp {
     fn save(&self, hosts: Vec<Host>) -> Result<()>;
 }
 
-impl IscDhcp for ops_router::v1::Lan {
+impl IscDhcp for super::Lan {
     // https://help.ubuntu.com/community/isc-dhcp-server
     fn save(&self, hosts: Vec<Host>) -> Result<()> {
         let net: Ipv4Net = self.address.parse()?;

@@ -13,7 +13,7 @@ use async_trait::async_trait;
 use redis::{cluster::ClusterConnection as RedisClusterConnection, Commands};
 use reqwest::Client as HttpClient;
 
-use super::super::{orchid::v1, Result};
+use super::super::Result;
 use super::{Config, Query};
 
 #[async_trait]
@@ -26,14 +26,14 @@ pub trait Oauth2 {
     async fn userinfo(
         access_token: &str,
         openid: &str,
-        lang: v1::wechat_oauth2_qr_connect_request::Language,
+        lang: &qr_connect::Language,
     ) -> Result<userinfo::Response>;
     // https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html
     fn qr_connect<S: Display>(
         &self,
         redirect_uri: &str,
         state: &S,
-        lang: v1::wechat_oauth2_qr_connect_request::Language,
+        lang: &qr_connect::Language,
     ) -> Result<String>;
 }
 
@@ -84,7 +84,7 @@ impl Oauth2 for Config {
     async fn userinfo(
         access_token: &str,
         openid: &str,
-        lang: v1::wechat_oauth2_qr_connect_request::Language,
+        lang: &qr_connect::Language,
     ) -> Result<userinfo::Response> {
         let client = HttpClient::new();
         let response = client
@@ -104,7 +104,7 @@ impl Oauth2 for Config {
         &self,
         redirect_uri: &str,
         state: &S,
-        lang: v1::wechat_oauth2_qr_connect_request::Language,
+        lang: &qr_connect::Language,
     ) -> Result<String> {
         qr_connect::url(&self.app_id, redirect_uri, state, lang)
     }

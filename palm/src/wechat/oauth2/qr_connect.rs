@@ -3,7 +3,7 @@ use std::fmt::{self, Display};
 use serde::{Deserialize, Serialize};
 use url::Url;
 
-use super::super::super::{orchid::v1, Result};
+use super::super::super::Result;
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Query {
@@ -11,7 +11,13 @@ pub struct Query {
     pub state: String,
 }
 
-impl fmt::Display for v1::wechat_oauth2_qr_connect_request::Language {
+pub enum Language {
+    Cn,
+    En,
+    Tw,
+}
+
+impl fmt::Display for Language {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(
             f,
@@ -29,7 +35,7 @@ pub fn url<S: Display>(
     app_id: &str,
     redirect_uri: &str,
     state: &S,
-    lang: v1::wechat_oauth2_qr_connect_request::Language,
+    lang: &Language,
 ) -> Result<String> {
     let mut it = Url::parse("https://open.weixin.qq.com/connect/qrconnect")?;
     it.query_pairs_mut()

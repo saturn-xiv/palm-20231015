@@ -1,6 +1,7 @@
 pub mod ban;
 pub mod session;
 
+use std::any::type_name;
 use std::fmt;
 use std::string::ToString;
 
@@ -102,6 +103,12 @@ impl From<Item> for RbacUser {
             real_name: it.real_name.clone(),
             email: it.email,
         }
+    }
+}
+
+impl super::ToSubject for Item {
+    fn to_subject(&self) -> String {
+        format!("{}://{}", type_name::<Self>(), self.nickname)
     }
 }
 

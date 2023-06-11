@@ -35,6 +35,7 @@ A total free education &amp; translation &amp; ops solution.
 - [handlebars](https://handlebarsjs.com/guide/)
 - [Versioning gRPC services](https://docs.microsoft.com/en-us/aspnet/core/grpc/versioning?view=aspnetcore-6.0)
 - [Modified Preorder Tree Traversal](https://gist.github.com/tmilos/f2f999b5839e2d42d751)
+- [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml)
 
 ### UI
 

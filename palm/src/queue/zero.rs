@@ -1,11 +1,17 @@
 use std::fmt;
 use std::sync::Mutex;
 
+use async_trait::async_trait;
 use hyper::StatusCode;
 use percent_encoding::{percent_encode, NON_ALPHANUMERIC};
 use serde::{Deserialize, Serialize};
 
 use super::super::{HttpError, Result};
+
+#[async_trait]
+pub trait Handler: Sync + Send {
+    async fn handle(&self, envelop: &str, payload: &[u8]) -> Result<()>;
+}
 
 pub struct ZeroMq {
     pub socket: zmq::Context,
@@ -132,8 +138,8 @@ impl Publisher {
     }
 }
 
-impl super::Publisher for Publisher {
-    fn send(&self, topic: &str, payload: &[u8]) -> Result<()> {
+impl Publisher {
+    pub fn send(&self, topic: &str, payload: &[u8]) -> Result<()> {
         if let Ok(sck) = self.socket.lock() {
             sck.send(topic.as_bytes(), zmq::SNDMORE)?;
             sck.send(payload, 0)?;
@@ -156,17 +162,17 @@ impl Subscriber {
     }
 }
 
-impl super::Subscriber for Subscriber {
-    fn consume<H>(&self, topic: &str, hnd: &H) -> Result<()>
+impl Subscriber {
+    pub async fn consume<H>(&self, topic: &str, handler: &H) -> Result<()>
     where
-        H: Fn(&str, &[u8]) -> Result<()>,
+        H: Handler,
     {
         let sck = Queue::Tcp(Some(self.host.clone()), self.port).sub(Some(topic.to_string()))?;
         loop {
-            let evp = sck.recv_bytes(0)?;
+            let envelop = sck.recv_bytes(0)?;
             let payload = sck.recv_bytes(0)?;
-            let evp = std::str::from_utf8(&evp)?;
-            hnd(evp, &payload)?;
+            let envelop = std::str::from_utf8(&envelop)?;
+            handler.handle(envelop, &payload).await?;
         }
     }
 }

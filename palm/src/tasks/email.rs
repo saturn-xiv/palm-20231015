@@ -1,30 +1,55 @@
-use std::io::{Error as IoError, ErrorKind as IoErrorKind};
-
+use async_trait::async_trait;
 use lettre::{
     message::{header::ContentType as MessageContentType, Mailbox, MultiPart, SinglePart},
     transport::smtp::authentication::Credentials,
     Message, SmtpTransport, Transport,
 };
-use prost::Message as ProstMessage;
+use serde::{Deserialize, Serialize};
 
-use super::super::{
-    nut::v1::{
-        email_task::{Address, ContentType},
-        EmailTask, SmtpProfile,
-    },
-    queue::amqp::Handler as QueueHandler,
-    Result,
-};
+use super::super::{queue::amqp::Handler as QueueHandler, Result};
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct Task {
+    pub subject: String,
+    pub body: String,
+    pub content_type: String,
+    pub attachments: Vec<Attachment>,
+    pub to: Address,
+    pub cc: Vec<Address>,
+    pub bcc: Vec<Address>,
+}
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct Attachment {
+    pub payload: Vec<u8>,
+    pub title: String,
+    pub content_type: String,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct Profile {
+    pub host: String,
+    pub port: u16,
+    pub password: String,
+    pub from: Address,
+    pub cc: Vec<Address>,
+    pub bcc: Vec<Address>,
+}
 
 // https://support.google.com/mail/answer/7126229#zippy=%2Cstep-change-smtp-other-settings-in-your-email-client
-
-impl QueueHandler for SmtpProfile {
-    fn handle(&self, id: &str, content_type: &str, payload: &[u8]) -> Result<()> {
+#[async_trait]
+impl QueueHandler for Profile {
+    async fn handle(&self, id: &str, content_type: &str, payload: &[u8]) -> Result<()> {
         info!("receive message {} {}", id, content_type);
-        let task = EmailTask::decode(payload)?;
+        let task: Task = flexbuffers::from_slice(payload)?;
         info!("send {} to {:?}", task.subject, task.to);
         self.send(&task)
     }
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct Address {
+    pub name: String,
+    pub email: String,
 }
 
 impl Address {
@@ -37,17 +62,10 @@ impl Address {
     }
 }
 
-impl SmtpProfile {
-    pub fn send(&self, task: &EmailTask) -> Result<()> {
-        let from = self.user.as_ref().ok_or_else(|| {
-            Box::new(IoError::new(IoErrorKind::Other, "bad smtp account setting"))
-        })?;
-        let account = from.mailbox()?;
-        let to = task
-            .to
-            .as_ref()
-            .ok_or_else(|| Box::new(IoError::new(IoErrorKind::Other, "bad smtp to setting")))?
-            .mailbox()?;
+impl Profile {
+    pub fn send(&self, task: &Task) -> Result<()> {
+        let account = self.from.mailbox()?;
+        let to = task.to.mailbox()?;
 
         let msg = {
             let mut builder = Message::builder()
@@ -76,14 +94,11 @@ impl SmtpProfile {
             // attachments
             let mut part = MultiPart::alternative().build();
             {
-                part = part.singlepart(match task.content_type() {
-                    ContentType::Html => SinglePart::builder()
-                        .header(MessageContentType::TEXT_HTML)
-                        .body(task.content.clone()),
-                    ContentType::Plain => SinglePart::builder()
-                        .header(MessageContentType::TEXT_PLAIN)
-                        .body(task.content.clone()),
-                });
+                part = part.singlepart(
+                    SinglePart::builder()
+                        .header(task.content_type.parse::<MessageContentType>()?)
+                        .body(task.body.clone()),
+                );
                 for it in task.attachments.iter() {
                     part = part.singlepart(
                         SinglePart::builder()
@@ -97,7 +112,10 @@ impl SmtpProfile {
         };
 
         let mailer = SmtpTransport::relay(&self.host)?
-            .credentials(Credentials::new(from.email.clone(), self.password.clone()))
+            .credentials(Credentials::new(
+                self.from.email.clone(),
+                self.password.clone(),
+            ))
             .build();
         mailer.send(&msg)?;
         Ok(())

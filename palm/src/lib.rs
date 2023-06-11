@@ -125,7 +125,6 @@ pub mod handlers;
 pub mod jwt;
 pub mod line;
 pub mod minio;
-pub mod models;
 pub mod network;
 pub mod parser;
 pub mod queue;
@@ -164,6 +163,12 @@ include!(concat!(env!("OUT_DIR"), "/env.rs"));
 lazy_static! {
     pub static ref VERSION: String = format!("{GIT_VERSION}({BUILD_TIME})");
 }
+
+// https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md
+// https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md
+// https://developers.cloudflare.com/support/speed/optimization-file-size/what-will-cloudflare-compress/
+pub const PROTOBUF: &str = "application/x-protobuf";
+pub const FLATBUFFER: &str = "application/x-flatbuffer";
 
 pub fn timestamp2datetime(ts: i64, tz: Tz) -> Option<DateTime<Tz>> {
     if let Some(it) = NaiveDateTime::from_timestamp_opt(ts, 0) {
@@ -295,104 +300,59 @@ pub trait ToXml {
     fn write<W: Write>(&self, wrt: &mut EventWriter<W>) -> XmlWriterResult<()>;
 }
 
-pub mod nut {
-    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-    pub mod v1 {
-        tonic::include_proto!("palm.nut.v1");
-    }
+pub struct Pagination {
+    pub page: i32,
+    pub size: i32,
+    pub total: i32,
+    pub has_next: bool,
+    pub has_previous: bool,
 }
-pub mod cms {
-    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-    pub mod v1 {
-        tonic::include_proto!("palm.cms.v1");
-    }
-}
-pub mod forum {
-    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-    pub mod v1 {
-        tonic::include_proto!("palm.forum.v1");
-    }
-}
-pub mod courses {
-    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-    pub mod v1 {
-        tonic::include_proto!("palm.courses.v1");
-    }
-}
-pub mod mall {
-    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-    pub mod v1 {
-        tonic::include_proto!("palm.mall.v1");
-    }
-}
-pub mod chats {
-    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-    pub mod v1 {
-        tonic::include_proto!("palm.chats.v1");
-    }
-}
-pub mod babel {
-    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-    pub mod v1 {
-        tonic::include_proto!("palm.babel.v1");
-    }
-}
-pub mod cscd {
-    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-    pub mod v1 {
-        tonic::include_proto!("palm.cscd.v1");
-    }
-}
-pub mod cbeta {
-    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-    pub mod v1 {
-        tonic::include_proto!("palm.cbeta.v1");
+
+impl Pagination {
+    pub fn new(pager: &Pager, total: i32) -> Self {
+        let page = pager.page(total);
+        let size = pager.size();
+        Self {
+            page,
+            size,
+            total,
+            has_next: (page * size < total),
+            has_previous: (page > 1),
+        }
     }
 }
 
-pub mod orchid {
-    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-    pub mod v1 {
-        tonic::include_proto!("palm.orchid.v1");
-    }
+pub struct Pager {
+    pub size: i32,
+    pub page: i32,
 }
 
-pub mod musa {
-    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-    pub mod v1 {
-        tonic::include_proto!("palm.musa.v1");
+impl Pager {
+    pub fn offset(&self, total: i32) -> i32 {
+        (self.page(total) - 1) * self.size()
     }
-}
 
-pub mod ops {
-    pub mod mail {
-        #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-        pub mod v1 {
-            tonic::include_proto!("palm.ops.mail.v1");
+    pub fn page(&self, total: i32) -> i32 {
+        let size = self.size();
+        if total < size || self.page < 1 {
+            return 1;
         }
-    }
-    pub mod vpn {
-        #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-        pub mod v1 {
-            tonic::include_proto!("palm.ops.vpn.v1");
+        if self.page * size > total {
+            let it = total / size;
+            return if total % size == 0 { it } else { it + 1 };
         }
+        self.page
     }
-    pub mod ddns {
-        #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-        pub mod v1 {
-            tonic::include_proto!("palm.ops.ddns.v1");
+
+    pub fn size(&self) -> i32 {
+        if self.size < Self::MIN_SIZE {
+            return Self::MIN_SIZE;
         }
-    }
-    pub mod metrics {
-        #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-        pub mod v1 {
-            tonic::include_proto!("palm.ops.metrics.v1");
+        if self.size > Self::MAX_SIZE {
+            return Self::MAX_SIZE;
         }
+        self.size
     }
-    pub mod router {
-        #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
-        pub mod v1 {
-            tonic::include_proto!("palm.ops.router.v1");
-        }
-    }
+    const MAX_SIZE: i32 = 1 << 12;
+    const MIN_SIZE: i32 = 1 << 2;
 }

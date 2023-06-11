@@ -1,7 +1,9 @@
 use std::any::type_name;
+use std::fmt::Debug;
 use std::time::{SystemTime, UNIX_EPOCH};
 
 use amq_protocol_uri::{AMQPAuthority, AMQPUri, AMQPUserInfo};
+use async_trait::async_trait;
 use futures::StreamExt;
 use hyper::StatusCode;
 use lapin::{
@@ -14,7 +16,12 @@ use lapin::{
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
-use super::super::{HttpError, Result};
+use super::super::{HttpError, Result, FLATBUFFER, PROTOBUF};
+
+#[async_trait]
+pub trait Handler: Sync + Send {
+    async fn handle(&self, id: &str, content_type: &str, payload: &[u8]) -> Result<()>;
+}
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Config {
@@ -122,24 +129,61 @@ impl RabbitMq {
     }
 }
 
+#[async_trait]
+pub trait Protobuf {
+    async fn produce<T: prost::Message>(&self, task: &T) -> Result<()>;
+    async fn publish<T: prost::Message>(&self, task: &T) -> Result<()>;
+}
+
+#[async_trait]
+impl Protobuf for RabbitMq {
+    async fn produce<T: prost::Message>(&self, task: &T) -> Result<()> {
+        let mut payload = Vec::new();
+        task.encode(&mut payload)?;
+        self.produce(type_name::<T>(), PROTOBUF, &payload).await
+    }
+    async fn publish<T: prost::Message>(&self, task: &T) -> Result<()> {
+        let mut payload = Vec::new();
+        task.encode(&mut payload)?;
+        self.publish(type_name::<T>(), PROTOBUF, &payload).await
+    }
+}
+
+#[async_trait]
+pub trait Flatbuffer {
+    async fn produce<T: Serialize + Debug + Send + Sync>(&self, task: &T) -> Result<()>;
+    async fn publish<T: Serialize + Debug + Send + Sync>(&self, task: &T) -> Result<()>;
+}
+
+#[async_trait]
+impl Flatbuffer for RabbitMq {
+    async fn produce<T: Serialize + Debug + Send + Sync>(&self, task: &T) -> Result<()> {
+        let payload = flexbuffers::to_vec(task)?;
+        self.produce(type_name::<T>(), FLATBUFFER, &payload).await
+    }
+    async fn publish<T: Serialize + Debug + Send + Sync>(&self, task: &T) -> Result<()> {
+        let payload = flexbuffers::to_vec(task)?;
+        self.publish(type_name::<T>(), FLATBUFFER, &payload).await
+    }
+}
+
 impl RabbitMq {
-    // https://www.rabbitmq.com/tutorials/tutorial-two-python.html
-    pub async fn produce<T: prost::Message>(&self, task: &T) -> Result<()> {
-        self.send("", type_name::<T>(), task).await
-    }
     // https://www.rabbitmq.com/tutorials/tutorial-three-python.html
-    pub async fn publish<T: prost::Message>(&self, task: &T) -> Result<()> {
-        self.send(type_name::<T>(), "", task).await
+    pub async fn publish(&self, queue: &str, content_type: &str, task: &[u8]) -> Result<()> {
+        self.send(queue, "", content_type, task).await
     }
-    async fn send<T: prost::Message>(
+    // https://www.rabbitmq.com/tutorials/tutorial-two-python.html
+    pub async fn produce(&self, queue: &str, content_type: &str, task: &[u8]) -> Result<()> {
+        self.send("", queue, content_type, task).await
+    }
+
+    async fn send(
         &self,
         exchange: &str,
         routing_key: &str,
-        task: &T,
+        content_type: &str,
+        payload: &[u8],
     ) -> Result<()> {
-        let mut payload = Vec::new();
-        task.encode(&mut payload)?;
-
         let ch = self.open().await?;
 
         let id = Uuid::new_v4().to_string();
@@ -149,10 +193,10 @@ impl RabbitMq {
             exchange,
             routing_key,
             BasicPublishOptions::default(),
-            &payload,
+            payload,
             BasicProperties::default()
                 .with_message_id(id.into())
-                .with_content_type("protobuf".into())
+                .with_content_type(content_type.into())
                 .with_timestamp(SystemTime::now().duration_since(UNIX_EPOCH)?.as_secs()),
         )
         .await?
@@ -194,10 +238,6 @@ impl RabbitMq {
     }
 }
 
-pub trait Handler {
-    fn handle(&self, id: &str, content_type: &str, payload: &[u8]) -> Result<()>;
-}
-
 async fn handle_message<H: Handler>(delivery: Delivery, hnd: &H) -> Result<()> {
     debug!("received message: {:?}", delivery);
     let props = &delivery.properties;
@@ -206,7 +246,7 @@ async fn handle_message<H: Handler>(delivery: Delivery, hnd: &H) -> Result<()> {
             let id = id.to_string();
             let content_type = content_type.to_string();
             info!("got message: {}[{}]", id, content_type);
-            hnd.handle(&id, &content_type, &delivery.data)?;
+            hnd.handle(&id, &content_type, &delivery.data).await?;
             delivery.ack(BasicAckOptions::default()).await?;
             return Ok(());
         }

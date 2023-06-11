@@ -54,48 +54,6 @@ impl v1::user_server::User for Service {
         &self,
         req: Request<v1::UserSignInRequest>,
     ) -> GrpcResult<v1::UserSignInResponse> {
-        let ss = Session::new(&req);
-        let mut db = try_grpc!(self.pgsql.get())?;
-        let db = db.deref_mut();
-        let jwt = self.jwt.deref();
-        let enf = self.enforcer.deref();
-        let hmac = self.hmac.deref();
-        let req = req.into_inner();
-
-        if let Some(ref it) = req.query {
-            let user = try_grpc!(User::from_user_request(it, db))?;
-            try_grpc!(user.auth(hmac, &req.password))?;
-            try_grpc!(user.available())?;
-
-            try_grpc!(db.transaction::<_, Error, _>(move |db| {
-                UserDao::sign_in(db, user.id, &ss.client_ip)?;
-                LogDao::add::<_, User>(
-                    db,
-                    user.id,
-                    &LogLevel::Info,
-                    &ss.client_ip,
-                    Some(user.id),
-                    "sign in success",
-                )?;
-                Ok(())
-            }))?;
-
-            let it = try_grpc!(
-                new_sign_in_response(
-                    db,
-                    enf,
-                    &user,
-                    jwt,
-                    Some(
-                        req.ttl
-                            .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds))
-                    ),
-                )
-                .await
-            )?;
-            return Ok(Response::new(it));
-        }
-
         Err(Status::permission_denied("can't sign in"))
     }
     async fn sign_up(&self, req: Request<v1::UserSignUpRequest>) -> GrpcResult<()> {
