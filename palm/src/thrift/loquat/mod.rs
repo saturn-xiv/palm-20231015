@@ -20,7 +20,7 @@ use self::protocols::{
 pub struct Config {
     pub host: String,
     pub port: u16,
-    pub zone: String,
+    pub token: String,
 }
 
 impl Default for Config {
@@ -28,7 +28,7 @@ impl Default for Config {
         Self {
             host: "127.0.0.1".to_string(),
             port: 8080,
-            zone: "demo".to_string(),
+            token: "change-me".to_string(),
         }
     }
 }
@@ -52,7 +52,7 @@ impl Jwt for Config {
         let (i_prot, o_prot) = self.open(Self::JWT)?;
         let mut client = JwtSyncClient::new(i_prot, o_prot);
         let token = client.sign(
-            self.zone.clone(),
+            self.token.clone(),
             subject.to_string(),
             audience.to_string(),
             ttl.num_seconds(),
@@ -63,7 +63,7 @@ impl Jwt for Config {
     fn verify(&self, token: &str, audience: &str) -> Result<String> {
         let (i_prot, o_prot) = self.open(Self::JWT)?;
         let mut client = JwtSyncClient::new(i_prot, o_prot);
-        let subject = client.verify(self.zone.clone(), token.to_string(), audience.to_string())?;
+        let subject = client.verify(self.token.clone(), token.to_string(), audience.to_string())?;
         Ok(subject)
     }
 }
@@ -72,14 +72,14 @@ impl Password for Config {
     fn sign(&self, plain: &[u8]) -> Result<Vec<u8>> {
         let (i_prot, o_prot) = self.open(Self::HMAC)?;
         let mut client = HmacSyncClient::new(i_prot, o_prot);
-        let token = client.sign(self.zone.clone(), plain.to_vec())?;
+        let token = client.sign(self.token.clone(), plain.to_vec())?;
         Ok(token)
     }
     fn verify(&self, code: &[u8], plain: &[u8]) -> bool {
         if let Ok((i_prot, o_prot)) = self.open(Self::HMAC) {
             let mut client = HmacSyncClient::new(i_prot, o_prot);
             return client
-                .verify(self.zone.clone(), code.to_vec(), plain.to_vec())
+                .verify(self.token.clone(), code.to_vec(), plain.to_vec())
                 .is_ok();
         }
         false
@@ -90,13 +90,13 @@ impl Secret for Config {
     fn encrypt(&self, plain: &[u8]) -> Result<(Vec<u8>, Vec<u8>)> {
         let (i_prot, o_prot) = self.open(Self::AES)?;
         let mut client = AesSyncClient::new(i_prot, o_prot);
-        let token = client.encrypt(self.zone.clone(), plain.to_vec())?;
+        let token = client.encrypt(self.token.clone(), plain.to_vec())?;
         Ok((token, Vec::new()))
     }
     fn decrypt(&self, code: &[u8], _iv: &[u8]) -> Result<Vec<u8>> {
         let (i_prot, o_prot) = self.open(Self::AES)?;
         let mut client = AesSyncClient::new(i_prot, o_prot);
-        let subject = client.decrypt(self.zone.clone(), code.to_vec())?;
+        let subject = client.decrypt(self.token.clone(), code.to_vec())?;
         Ok(subject)
     }
 }
@@ -109,7 +109,7 @@ impl Health for Config {
     fn check(&self) -> Result<()> {
         let (i_prot, o_prot) = self.open(Self::HEALTH)?;
         let mut client = HealthSyncClient::new(i_prot, o_prot);
-        client.check()?;
+        client.check(self.token.clone())?;
         Ok(())
     }
 }
