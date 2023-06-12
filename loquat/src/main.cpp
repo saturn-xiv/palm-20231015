@@ -87,7 +87,7 @@ int main(int argc, char** argv) {
     spdlog::warn("generate token to {}@{} for {}-years", subject, audience,
                  years);
 
-    loquat::Jwt jwt;
+    loquat::Jwt jwt(loquat::PROJECT_NAME);
     const auto token =
         jwt.sign(subject, audience,
                  std::chrono::duration_cast<std::chrono::seconds>(
