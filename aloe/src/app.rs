@@ -4,20 +4,40 @@ use std::fs::File;
 use std::io::{prelude::*, Error as IoError, ErrorKind as IoErrorKind};
 use std::ops::{Deref, DerefMut};
 use std::path::PathBuf;
-use std::sync::{Arc, Mutex};
+use std::sync::Mutex;
 use std::thread;
-use std::time::Duration;
+use std::time::Duration as StdDuration;
 
-use clap::Parser;
-use diesel::sqlite::SqliteConnection as Db;
-use palm::{
-    crypto::Hmac, jwt::openssl::OpenSsl as SslJwt, network::ethernet::ArpScanner,
-    network::iptables::Iptables, ops::router::v1 as ops_router_v1, parser::from_toml, Result,
-    HOMEPAGE, VERSION,
+use actix_cors::Cors;
+use actix_identity::IdentityMiddleware;
+use actix_session::{
+    config::{BrowserSession, CookieContentSecurity, SessionLifecycle},
+    storage::CookieSessionStore,
+    SessionMiddleware,
 };
-use tonic::transport::Server;
+use actix_web::{
+    cookie::{time::Duration as CookieDuration, Key as CookieKey, SameSite},
+    middleware, web, App, HttpServer,
+};
+use chrono::Duration;
+use clap::Parser;
+use data_encoding::BASE64;
+use diesel::sqlite::SqliteConnection as Db;
+use hyper::{
+    header::{ACCEPT_LANGUAGE, AUTHORIZATION, CONTENT_TYPE, COOKIE},
+    Method,
+};
+use palm::{
+    crypto::Hmac,
+    env::Environment,
+    jwt::openssl::OpenSsl as SslJwt,
+    network::ethernet::ArpScanner,
+    network::{iptables::Iptables, Dmz, Lan},
+    parser::from_toml,
+    Result, HOMEPAGE, VERSION,
+};
 
-use super::{env::Config, orm::open as open_db};
+use super::{env::Config, graphql, orm::open as open_db};
 
 #[derive(Parser, Debug)]
 #[clap(about, author,
@@ -41,23 +61,28 @@ impl Args {
             palm::check_config_permission(&self.config)?;
         }
         let cfg: Config = from_toml(&self.config)?;
-        let hmac = Arc::new(Hmac::new(&cfg.secrets.0)?);
-        let jwt = Arc::new(SslJwt::new(cfg.secrets.0.clone()));
-        let db = Arc::new(Mutex::new({
+        let hmac = web::Data::new(Hmac::new(&cfg.secrets.0)?);
+        let jwt = web::Data::new(SslJwt::new(cfg.secrets.0.clone()));
+        let db = web::Data::new(Mutex::new({
+            let hmac = hmac.deref();
             let hmac = hmac.deref();
             open_db("tmp/db", hmac)?
         }));
 
         Self::generate_firewall_clean()?;
         if self.debug {
-            ops_router::services::router::apply(db, false)?;
+            if let Ok(mut db) = db.lock() {
+                let db = db.deref_mut();
+                ops_router::graphql::mutation::router::ApplyRequest::apply(db, false)?;
+            }
             return Ok(());
         }
         info!("apply system settings");
         {
-            let db = db.clone();
-            if let Err(e) = ops_router::services::router::apply(db, true) {
-                error!("{:?}", e);
+            if let Ok(mut db) = db.lock() {
+                let db = db.deref_mut();
+                ops_router::graphql::mutation::router::ApplyRequest::apply(db, true)?;
+                return Ok(());
             }
         }
 
@@ -65,10 +90,12 @@ impl Args {
         {
             let db = db.clone();
             thread::spawn(move || loop {
-                if let Err(e) = Self::run_arp_scan(db.clone()) {
+                let db = db.deref();
+                let db = db.deref();
+                if let Err(e) = Self::run_arp_scan(db) {
                     error!("arp scan thread {:?}", e);
                 }
-                thread::sleep(Duration::from_secs(5));
+                thread::sleep(StdDuration::from_secs(5));
             });
         }
 
@@ -76,31 +103,74 @@ impl Args {
         {
             let db = db.clone();
             thread::spawn(move || loop {
-                if let Err(e) = Self::run_arp_bind(db.clone()) {
+                let db = db.deref();
+                let db = db.deref();
+                if let Err(e) = Self::run_arp_bind(db) {
                     error!("arp bind {:?}", e);
                 }
-                thread::sleep(Duration::from_secs(60 * 60));
+                thread::sleep(StdDuration::from_secs(60 * 60));
             });
         }
 
-        let addr = cfg.rpc.addr();
-        info!("start gRPC at {}", addr);
-        Server::builder()
-            .add_service(ops_router_v1::router_server::RouterServer::new(
-                ops_router::services::router::Service {
-                    db: db.clone(),
-                    jwt: jwt.clone(),
-                },
-            ))
-            .add_service(ops_router_v1::user_server::UserServer::new(
-                ops_router::services::user::Service {
-                    db: db.clone(),
-                    jwt: jwt.clone(),
-                    hmac,
-                },
-            ))
-            .serve(addr)
-            .await?;
+        let addr = cfg.http.addr();
+        info!("run on http://{}", addr);
+        let cookie_key = BASE64.decode(cfg.cookie_key.0.as_bytes())?;
+        let is_prod = cfg.env == Environment::Production;
+
+        let allow_origins = cfg.http.allow_origins.clone();
+        HttpServer::new(move || {
+            // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+            let cors = {
+                let mut cs = Cors::default();
+                for it in allow_origins.iter() {
+                    cs = cs.allowed_origin(it);
+                }
+                cs.allowed_methods(vec![
+                    Method::OPTIONS,
+                    Method::DELETE,
+                    Method::PATCH,
+                    Method::PUT,
+                    Method::POST,
+                    Method::GET,
+                    Method::HEAD,
+                ])
+                .allowed_header(CONTENT_TYPE)
+                .allowed_header(AUTHORIZATION)
+                .allowed_header(ACCEPT_LANGUAGE)
+                .allowed_header(COOKIE)
+                .allowed_header("X-Requested-With")
+                // .send_wildcard()
+                .supports_credentials()
+                .max_age(Duration::hours(1).num_seconds() as usize)
+            };
+            App::new()
+                .app_data(db.clone())
+                .app_data(jwt.clone())
+                .app_data(hmac.clone())
+                .wrap(if is_prod { cors } else { Cors::permissive() })
+                .wrap(middleware::Logger::default())
+                .wrap(IdentityMiddleware::default())
+                .wrap(
+                    SessionMiddleware::builder(
+                        CookieSessionStore::default(),
+                        CookieKey::from(&cookie_key),
+                    )
+                    .cookie_name(format!("{}.ss", env!("CARGO_PKG_NAME")))
+                    .cookie_same_site(SameSite::Strict)
+                    .cookie_http_only(true)
+                    .cookie_content_security(CookieContentSecurity::Private)
+                    .cookie_path("/".to_string())
+                    .session_lifecycle(SessionLifecycle::BrowserSession(
+                        BrowserSession::default().state_ttl(CookieDuration::hours(1)),
+                    ))
+                    .cookie_secure(is_prod)
+                    .build(),
+                )
+                .configure(graphql::register)
+        })
+        .bind(addr)?
+        .run()
+        .await?;
         Ok(())
     }
 
@@ -126,7 +196,7 @@ impl Args {
         Ok(())
     }
 
-    fn run_arp_bind(db: Arc<Mutex<Db>>) -> Result<()> {
+    fn run_arp_bind(db: &Mutex<Db>) -> Result<()> {
         let hosts = Self::get_arp_hosts(db)?;
         if !hosts.is_empty() {
             debug!("total known {} hosts in local networks", hosts.len());
@@ -135,7 +205,7 @@ impl Args {
         }
         Ok(())
     }
-    fn get_arp_hosts(db: Arc<Mutex<Db>>) -> Result<Vec<palm::network::dnsmasq::Host>> {
+    fn get_arp_hosts(db: &Mutex<Db>) -> Result<Vec<palm::network::dnsmasq::Host>> {
         if let Ok(ref mut db) = db.lock() {
             let db = db.deref_mut();
             let hosts: Vec<palm::network::dnsmasq::Host> = ops_router::models::host::Dao::all(db)?
@@ -151,11 +221,11 @@ impl Args {
         Ok(Vec::new())
     }
 
-    fn run_arp_scan(db: Arc<Mutex<Db>>) -> Result<()> {
+    fn run_arp_scan(db: &Mutex<Db>) -> Result<()> {
         let (lan, dmz) = if let Ok(ref mut db) = db.lock() {
             let db = db.deref_mut();
-            let lan: ops_router_v1::Lan = ops_router::models::setting::Dao::get(db, None)?;
-            let dmz: ops_router_v1::Dmz = ops_router::models::setting::Dao::get(db, None)?;
+            let lan: Lan = ops_router::models::setting::Dao::get(db, None)?;
+            let dmz: Dmz = ops_router::models::setting::Dao::get(db, None)?;
             Ok((lan, dmz))
         } else {
             Err(IoError::new(IoErrorKind::Other, "can't find lan setting"))
@@ -163,19 +233,11 @@ impl Args {
 
         let mut hosts = Vec::new();
         if let Ok(ref it) = ArpScanner(lan.address).scan() {
-            debug!(
-                "found {} hosts in {}",
-                it.len(),
-                type_name::<ops_router_v1::Lan>()
-            );
+            debug!("found {} hosts in {}", it.len(), type_name::<Lan>());
             hosts.extend(it.clone());
         }
         if let Ok(ref it) = ArpScanner(dmz.address).scan() {
-            debug!(
-                "found {} hosts in {}",
-                it.len(),
-                type_name::<ops_router_v1::Dmz>()
-            );
+            debug!("found {} hosts in {}", it.len(), type_name::<Dmz>());
             hosts.extend(it.clone());
         }
 

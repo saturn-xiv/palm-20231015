@@ -3,6 +3,7 @@ use std::any::type_name;
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, sqlite::SqliteConnection as Connection, update};
 use palm::Result;
+use serde::{de::DeserializeOwned, ser::Serialize};
 
 use super::super::schema::settings;
 
@@ -15,30 +16,33 @@ pub struct Item {
 }
 
 pub trait Dao {
-    fn get<V: prost::Message + Default>(&mut self, key: Option<&str>) -> Result<V>;
-    fn set<V: prost::Message>(&mut self, key: Option<&str>, value: &V) -> Result<()>;
-    fn destroy<V: prost::Message>(&mut self, key: Option<&str>) -> Result<()>;
+    fn get<V: DeserializeOwned>(&mut self, key: Option<&str>) -> Result<V>;
+    fn set<V: Serialize>(&mut self, key: Option<&str>, value: &V) -> Result<()>;
+    fn destroy<V>(&mut self, key: Option<&str>) -> Result<()>;
 }
 
 fn build_key<T>(key: Option<&str>) -> String {
-    format!("{}://{}", type_name::<T>(), key.unwrap_or_default())
+    let it = type_name::<T>();
+    if let Some(key) = key {
+        return format!("{}://{}", it, key);
+    }
+    it.to_string()
 }
 
 impl Dao for Connection {
-    fn get<V: prost::Message + Default>(&mut self, key: Option<&str>) -> Result<V> {
+    fn get<V: DeserializeOwned>(&mut self, key: Option<&str>) -> Result<V> {
         let key = build_key::<V>(key);
 
         let it = settings::dsl::settings
             .filter(settings::dsl::key.eq(&key))
             .first::<Item>(self)?;
-        let it = V::decode(&it.value[..])?;
+        let it = flexbuffers::from_slice(&it.value)?;
         Ok(it)
     }
 
-    fn set<V: prost::Message>(&mut self, key: Option<&str>, value: &V) -> Result<()> {
+    fn set<V: Serialize>(&mut self, key: Option<&str>, value: &V) -> Result<()> {
         let key = build_key::<V>(key);
-        let mut buf = Vec::new();
-        value.encode(&mut buf)?;
+        let value = flexbuffers::to_vec(value)?;
 
         let now = Utc::now().naive_utc();
 
@@ -52,7 +56,7 @@ impl Dao for Connection {
 
                 update(it)
                     .set((
-                        settings::dsl::value.eq(&buf),
+                        settings::dsl::value.eq(&value),
                         settings::dsl::updated_at.eq(&now),
                     ))
                     .execute(self)?;
@@ -61,7 +65,7 @@ impl Dao for Connection {
                 insert_into(settings::dsl::settings)
                     .values((
                         settings::dsl::key.eq(&key),
-                        settings::dsl::value.eq(&buf),
+                        settings::dsl::value.eq(&value),
                         settings::dsl::updated_at.eq(&now),
                     ))
                     .execute(self)?;
@@ -70,7 +74,7 @@ impl Dao for Connection {
         Ok(())
     }
 
-    fn destroy<V: prost::Message>(&mut self, key: Option<&str>) -> Result<()> {
+    fn destroy<V>(&mut self, key: Option<&str>) -> Result<()> {
         let key = build_key::<V>(key);
         delete(settings::dsl::settings.filter(settings::dsl::key.eq(key))).execute(self)?;
         Ok(())

@@ -11,7 +11,7 @@ impl super::WanPool {
     pub fn apply(&self) -> Result<()> {
         let mut cmd = "route replace default".to_string();
         for (wan, weight) in self.items.iter() {
-            let gateway = super::ethernet::gateway(&wan.device)?;
+            let gateway = super::ethernet::gateway(wan)?;
             cmd.push_str(&format!(" nexthop via {gateway} weight {weight}"));
         }
         info!("{cmd}");
@@ -23,7 +23,7 @@ impl super::WanPool {
         let mut cmd = std::process::Command::new("ip");
         let mut out = cmd.arg("route").arg("replace").arg("default");
         for (wan, weight) in self.items.iter() {
-            let gw = super::ethernet::gateway(&wan.device)?;
+            let gw = super::ethernet::gateway(wan)?;
             out = out
                 .arg("nexthop")
                 .arg("via")

@@ -1,6 +1,6 @@
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, sqlite::SqliteConnection as Connection, update};
-use palm::{ops::router::v1, Result};
+use palm::{network::iptables::rule::Rule, Result};
 
 use super::super::schema::rules;
 
@@ -18,14 +18,8 @@ impl Item {
 }
 
 pub trait Dao {
-    fn create(&mut self, name: &str, group: &str, content: &v1::rule::Payload) -> Result<()>;
-    fn update(
-        &mut self,
-        id: i32,
-        name: &str,
-        group: &str,
-        content: &v1::rule::Payload,
-    ) -> Result<()>;
+    fn create(&mut self, name: &str, group: &str, content: &Rule) -> Result<()>;
+    fn update(&mut self, id: i32, name: &str, group: &str, content: &Rule) -> Result<()>;
     fn by_id(&mut self, id: i32) -> Result<Item>;
     fn destroy(&mut self, id: i32) -> Result<()>;
     fn groups(&mut self) -> Result<Vec<String>>;
@@ -34,30 +28,22 @@ pub trait Dao {
 }
 
 impl Dao for Connection {
-    fn create(&mut self, name: &str, group: &str, content: &v1::rule::Payload) -> Result<()> {
-        let mut buf = Vec::new();
-        content.encode(&mut buf);
+    fn create(&mut self, name: &str, group: &str, content: &Rule) -> Result<()> {
+        let content = flexbuffers::to_vec(content)?;
 
         let now = Utc::now().naive_utc();
         insert_into(rules::dsl::rules)
             .values((
                 rules::dsl::name.eq(name),
                 rules::dsl::group.eq(group),
-                rules::dsl::content.eq(&buf),
+                rules::dsl::content.eq(&content),
                 rules::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;
         Ok(())
     }
-    fn update(
-        &mut self,
-        id: i32,
-        name: &str,
-        group: &str,
-        content: &v1::rule::Payload,
-    ) -> Result<()> {
-        let mut buf = Vec::new();
-        content.encode(&mut buf);
+    fn update(&mut self, id: i32, name: &str, group: &str, content: &Rule) -> Result<()> {
+        let content = flexbuffers::to_vec(content)?;
 
         let now = Utc::now().naive_utc();
         let it = rules::dsl::rules.filter(rules::dsl::id.eq(&id));
@@ -66,7 +52,7 @@ impl Dao for Connection {
             .set((
                 rules::dsl::name.eq(name),
                 rules::dsl::group.eq(group),
-                rules::dsl::content.eq(&buf),
+                rules::dsl::content.eq(&content),
                 rules::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;

@@ -146,6 +146,7 @@ use std::process::{Command, Output};
 
 use chrono::{DateTime, NaiveDateTime, Utc};
 use chrono_tz::Tz;
+use juniper::GraphQLObject;
 use xml::writer::{EventWriter, Result as XmlWriterResult};
 
 pub use self::result::{Error, GrpcResult, HttpError, HttpResult, Result};
@@ -169,6 +170,20 @@ lazy_static! {
 // https://developers.cloudflare.com/support/speed/optimization-file-size/what-will-cloudflare-compress/
 pub const PROTOBUF: &str = "application/x-protobuf";
 pub const FLATBUFFER: &str = "application/x-flatbuffer";
+
+#[derive(GraphQLObject)]
+#[graphql(name = "Succeeded", description = "Succeeded response")]
+pub struct Succeeded {
+    pub created_at: NaiveDateTime,
+}
+
+impl Default for Succeeded {
+    fn default() -> Self {
+        Self {
+            created_at: Utc::now().naive_local(),
+        }
+    }
+}
 
 pub fn timestamp2datetime(ts: i64, tz: Tz) -> Option<DateTime<Tz>> {
     if let Some(it) = NaiveDateTime::from_timestamp_opt(ts, 0) {

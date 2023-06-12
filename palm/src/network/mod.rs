@@ -7,6 +7,7 @@ pub mod netplan;
 pub mod nginx;
 
 use std::any::type_name;
+use std::collections::BTreeMap;
 use std::fs::metadata;
 use std::net::IpAddr;
 use std::path::PathBuf;
@@ -183,6 +184,7 @@ pub struct Wan {
     pub ip: Ip,
     pub mac: String,
     pub metric: u8,
+    pub enable: bool,
 }
 impl Wan {
     pub fn route(&self) -> String {
@@ -211,7 +213,7 @@ impl Validate for Wan {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Dns {
     pub items: Vec<String>,
 }
@@ -234,7 +236,7 @@ pub struct Host {
     pub ip: String,
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct WanPool {
-    pub items: Vec<(Wan, u8)>,
+    pub items: BTreeMap<String, u8>,
 }

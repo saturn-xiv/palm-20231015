@@ -3,7 +3,7 @@ use std::path::Path;
 use diesel::{
     connection::SimpleConnection, prelude::*, sql_query, Connection as OpenConnection, RunQueryDsl,
 };
-use palm::{crypto::Password, ops::router::v1 as ops_router_v1, Error, Result};
+use palm::{crypto::Password, Error, Result};
 use std::time::Duration;
 
 pub type Connection = diesel::sqlite::SqliteConnection;
@@ -33,7 +33,9 @@ pub fn open<P: AsRef<Path>, H: Password>(file: P, hmac: &H) -> Result<Connection
     }
     db.batch_execute(ops_router::UP)?;
 
-    if ops_router::models::setting::Dao::get::<ops_router_v1::UserProfile>(&mut db, None).is_err() {
+    if ops_router::models::setting::Dao::get::<ops_router::models::Administrator>(&mut db, None)
+        .is_err()
+    {
         db.transaction::<_, Error, _>(move |db| {
             ops_router::env::setup(db, hmac)?;
             Ok(())

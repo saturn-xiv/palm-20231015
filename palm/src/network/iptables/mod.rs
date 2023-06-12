@@ -17,9 +17,7 @@ macro_rules! to_accept {
     };
 }
 
-pub mod r#in;
-pub mod nat;
-pub mod out;
+pub mod rule;
 
 use std::fmt::{Error as FmtError, Write};
 use std::process::Command;
@@ -203,7 +201,7 @@ iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
             (false, 67),
         ] {
             if let Some(ref device) = self.lan {
-                r#in::InBound {
+                rule::Rule::In {
                     device: device.clone(),
                     tcp: *tcp,
                     port: *port,
@@ -212,7 +210,7 @@ iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
                 .write(buf)?;
             }
             if let Some(ref device) = self.dmz {
-                r#in::InBound {
+                rule::Rule::In {
                     device: device.clone(),
                     tcp: *tcp,
                     port: *port,

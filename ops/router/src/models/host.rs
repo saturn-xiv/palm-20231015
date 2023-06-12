@@ -30,8 +30,7 @@ pub trait Dao {
         id: i32,
         user: i32,
         group: &str,
-        ip: &str,
-        fixed: bool,
+        ip: Option<&str>,
         location: Option<&str>,
     ) -> Result<()>;
     fn by_id(&mut self, id: i32) -> Result<Item>;
@@ -68,22 +67,37 @@ impl Dao for Connection {
         id: i32,
         user: i32,
         group: &str,
-        ip: &str,
-        fixed: bool,
+        ip: Option<&str>,
         location: Option<&str>,
     ) -> Result<()> {
         let now = Utc::now().naive_utc();
         let it = hosts::dsl::hosts.filter(hosts::dsl::id.eq(&id));
-        update(it)
-            .set((
-                hosts::dsl::user_id.eq(user),
-                hosts::dsl::group.eq(group),
-                hosts::dsl::ip.eq(ip),
-                hosts::dsl::fixed.eq(fixed),
-                hosts::dsl::location.eq(location),
-                hosts::dsl::updated_at.eq(&now),
-            ))
-            .execute(self)?;
+
+        match ip {
+            Some(ip) => {
+                update(it)
+                    .set((
+                        hosts::dsl::user_id.eq(user),
+                        hosts::dsl::group.eq(group),
+                        hosts::dsl::ip.eq(ip),
+                        hosts::dsl::fixed.eq(true),
+                        hosts::dsl::location.eq(location),
+                        hosts::dsl::updated_at.eq(&now),
+                    ))
+                    .execute(self)?;
+            }
+            None => {
+                update(it)
+                    .set((
+                        hosts::dsl::user_id.eq(user),
+                        hosts::dsl::group.eq(group),
+                        hosts::dsl::fixed.eq(false),
+                        hosts::dsl::location.eq(location),
+                        hosts::dsl::updated_at.eq(&now),
+                    ))
+                    .execute(self)?;
+            }
+        };
 
         Ok(())
     }
