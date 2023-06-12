@@ -12,7 +12,7 @@ use nut::{
 use palm::{
     crypto::Password,
     jwt::Jwt,
-    rbac::v1::{RoleRequest, UserRequest},
+    rbac::{Role as RbacRole, ToSubject},
     Error, HttpError, Result,
 };
 
@@ -113,15 +113,14 @@ pub struct Role {
 
 impl Role {
     pub async fn apply(&self, db: &mut Db, enf: &mut Enforcer) -> Result<()> {
-        // FIXME
         let user = UserDao::by_nickname(db, &self.user)?;
 
         {
-            let user = UserRequest { id: user.id }.to_string();
-            let role = RoleRequest {
-                code: self.role.clone(),
-            }
-            .to_string();
+            let user = user.to_subject();
+            let role = {
+                let it: RbacRole = self.role.parse()?;
+                it.to_subject()
+            };
             enf.add_role_for_user(&user, &role, None).await?;
         }
 
@@ -139,15 +138,14 @@ impl Role {
     }
 
     pub async fn exempt(&self, db: &mut Db, enf: &mut Enforcer) -> Result<()> {
-        // FIXME
         let user = UserDao::by_nickname(db, &self.user)?;
 
         {
-            let user = UserRequest { id: user.id }.to_string();
-            let role = RoleRequest {
-                code: self.role.clone(),
-            }
-            .to_string();
+            let user = user.to_subject();
+            let role = {
+                let it: RbacRole = self.role.parse()?;
+                it.to_subject()
+            };
             enf.delete_role_for_user(&user, &role, None).await?;
         }
 

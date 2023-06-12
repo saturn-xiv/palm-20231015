@@ -1,13 +1,1 @@
-pub mod attachment;
-pub mod category;
-pub mod google;
 pub mod health;
-pub mod leave_word;
-pub mod locale;
-pub mod notification;
-pub mod policy;
-pub mod shorter_link;
-pub mod site;
-pub mod tag;
-pub mod user;
-pub mod wechat;

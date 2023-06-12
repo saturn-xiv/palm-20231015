@@ -4,7 +4,6 @@ use std::time::Duration as StdDuration;
 use casbin::CoreApi;
 use nix::unistd::getpid;
 use palm::{
-    aws::s3::Config as S3,
     queue::amqp::RabbitMq,
     rbac::{Handler as RbacHandler, Watcher as RbacWatcher},
     Result,
@@ -17,16 +16,7 @@ use super::super::env::Config;
 pub async fn launch(cfg: &Config) -> Result<()> {
     let addr = cfg.rpc.addr();
 
-    let pgsql = cfg.postgresql.open()?;
-    let redis = cfg.redis.open()?;
-    let aes = Arc::new(cfg.loquat.clone());
-    let hmac = Arc::new(cfg.loquat.clone());
-    let musa = Arc::new(cfg.musa.clone());
-    let orchid = Arc::new(cfg.orchid.clone());
-    let s3 = Arc::new(S3::from(cfg.minio.clone()));
-    let jwt = Arc::new(cfg.loquat.clone());
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
-    let opensearch = Arc::new(cfg.opensearch.open()?);
 
     let enforcer = Arc::new(Mutex::new(cfg.postgresql.casbin().await?));
 
@@ -55,173 +45,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
 
     info!("start gRPC at {}", addr);
     Server::builder()
-        .add_service(
-            palm::musa::v1::wechat_pay_native_server::WechatPayNativeServer::new(
-                nut::services::cactus::musa::Service {
-                    pgsql: pgsql.clone(),
-                    jwt: jwt.clone(),
-                    redis: redis.clone(),
-                    enforcer: enforcer.clone(),
-                    musa: musa.clone(),
-                },
-            ),
-        )
-        .add_service(
-            palm::musa::v1::wechat_pay_jsapi_server::WechatPayJsapiServer::new(
-                nut::services::cactus::musa::Service {
-                    pgsql: pgsql.clone(),
-                    jwt: jwt.clone(),
-                    redis: redis.clone(),
-                    enforcer: enforcer.clone(),
-                    musa: musa.clone(),
-                },
-            ),
-        )
-        .add_service(
-            palm::musa::v1::wechat_pay_bill_server::WechatPayBillServer::new(
-                nut::services::cactus::musa::Service {
-                    pgsql: pgsql.clone(),
-                    jwt: jwt.clone(),
-                    redis: redis.clone(),
-                    enforcer: enforcer.clone(),
-                    musa: musa.clone(),
-                },
-            ),
-        )
-        .add_service(
-            palm::musa::v1::wechat_pay_refund_server::WechatPayRefundServer::new(
-                nut::services::cactus::musa::Service {
-                    pgsql: pgsql.clone(),
-                    jwt: jwt.clone(),
-                    redis: redis.clone(),
-                    enforcer: enforcer.clone(),
-                    musa: musa.clone(),
-                },
-            ),
-        )
-        .add_service(
-            palm::musa::v1::wechat_pay_transfer_server::WechatPayTransferServer::new(
-                nut::services::cactus::musa::Service {
-                    pgsql: pgsql.clone(),
-                    jwt: jwt.clone(),
-                    redis: redis.clone(),
-                    enforcer: enforcer.clone(),
-                    musa,
-                },
-            ),
-        )
-        .add_service(palm::rbac::v1::policy_server::PolicyServer::new(
-            nut::services::policy::Service {
-                pgsql: pgsql.clone(),
-                jwt: jwt.clone(),
-                redis: redis.clone(),
-                enforcer: enforcer.clone(),
-            },
-        ))
-        .add_service(palm::nut::v1::attachment_server::AttachmentServer::new(
-            nut::services::attachment::Service {
-                pgsql: pgsql.clone(),
-                jwt: jwt.clone(),
-                redis: redis.clone(),
-                enforcer: enforcer.clone(),
-                s3,
-            },
-        ))
-        .add_service(palm::nut::v1::locale_server::LocaleServer::new(
-            nut::services::locale::Service {
-                pgsql: pgsql.clone(),
-                jwt: jwt.clone(),
-                redis: redis.clone(),
-                enforcer: enforcer.clone(),
-            },
-        ))
-        .add_service(palm::nut::v1::user_server::UserServer::new(
-            nut::services::user::Service {
-                aes: aes.clone(),
-                pgsql: pgsql.clone(),
-                redis: redis.clone(),
-                orchid: orchid.clone(),
-                jwt: jwt.clone(),
-                hmac: hmac.clone(),
-                rabbitmq: rabbitmq.clone(),
-                enforcer: enforcer.clone(),
-            },
-        ))
-        .add_service(palm::nut::v1::wechat_server::WechatServer::new(
-            nut::services::wechat::Service {
-                aes: aes.clone(),
-                pgsql: pgsql.clone(),
-                redis: redis.clone(),
-                orchid: orchid.clone(),
-                jwt: jwt.clone(),
-                hmac: hmac.clone(),
-                enforcer: enforcer.clone(),
-            },
-        ))
-        .add_service(palm::nut::v1::google_server::GoogleServer::new(
-            nut::services::google::Service {
-                aes: aes.clone(),
-                pgsql: pgsql.clone(),
-                redis: redis.clone(),
-                jwt: jwt.clone(),
-                hmac: hmac.clone(),
-                enforcer: enforcer.clone(),
-            },
-        ))
-        .add_service(palm::nut::v1::tag_server::TagServer::new(
-            nut::services::tag::Service {
-                pgsql: pgsql.clone(),
-                jwt: jwt.clone(),
-                redis: redis.clone(),
-                enforcer: enforcer.clone(),
-            },
-        ))
-        .add_service(palm::nut::v1::category_server::CategoryServer::new(
-            nut::services::category::Service {
-                pgsql: pgsql.clone(),
-                jwt: jwt.clone(),
-                redis: redis.clone(),
-                enforcer: enforcer.clone(),
-            },
-        ))
-        .add_service(palm::nut::v1::shorter_link_server::ShorterLinkServer::new(
-            nut::services::shorter_link::Service {
-                pgsql: pgsql.clone(),
-                jwt: jwt.clone(),
-                redis: redis.clone(),
-                enforcer: enforcer.clone(),
-            },
-        ))
-        .add_service(palm::nut::v1::leave_word_server::LeaveWordServer::new(
-            nut::services::leave_word::Service {
-                pgsql: pgsql.clone(),
-                jwt: jwt.clone(),
-                redis: redis.clone(),
-                enforcer: enforcer.clone(),
-            },
-        ))
-        .add_service(palm::nut::v1::notification_server::NotificationServer::new(
-            nut::services::notification::Service {
-                pgsql: pgsql.clone(),
-                jwt: jwt.clone(),
-                redis: redis.clone(),
-                enforcer: enforcer.clone(),
-            },
-        ))
-        .add_service(palm::nut::v1::site_server::SiteServer::new(
-            nut::services::site::Service {
-                enforcer,
-                pgsql,
-                jwt,
-                aes,
-                hmac,
-                redis,
-                rabbitmq,
-                opensearch,
-                orchid,
-            },
-        ))
-        .add_service(palm::nut::v1::health_server::HealthServer::new(
+        .add_service(nut::v1::health_server::HealthServer::new(
             nut::services::health::Service {},
         ))
         .serve(addr)

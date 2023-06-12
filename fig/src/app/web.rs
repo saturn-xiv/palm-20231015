@@ -19,7 +19,6 @@ use hyper::{
     Method,
 };
 use nix::unistd::getpid;
-use nut::controllers::{Loquat, Orchid};
 use palm::{
     aws::s3::Config as S3,
     env::Environment,
@@ -36,9 +35,10 @@ pub async fn launch(cfg: &Config) -> Result<()> {
 
     let pgsql = web::Data::new(pg_pool);
     let redis = web::Data::new(cfg.redis.open()?);
-    let loquat = web::Data::new(Loquat(cfg.loquat.clone()));
+    let loquat = web::Data::new(cfg.loquat.clone());
+    let musa = web::Data::new(cfg.musa.clone());
     let rabbitmq = web::Data::new(cfg.rabbitmq.open());
-    let orchid = web::Data::new(Orchid(cfg.orchid.clone()));
+    let orchid = web::Data::new(cfg.orchid.clone());
     let s3 = web::Data::new(S3::from(cfg.minio.clone()));
 
     let enforcer = web::Data::new(Mutex::new(cfg.postgresql.casbin().await?));
@@ -111,6 +111,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .app_data(loquat.clone())
             .app_data(rabbitmq.clone())
             .app_data(orchid.clone())
+            .app_data(musa.clone())
             .app_data(s3.clone())
             .app_data(enforcer.clone())
             .wrap(if is_prod { cors } else { Cors::permissive() })

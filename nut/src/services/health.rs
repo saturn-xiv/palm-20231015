@@ -1,5 +1,7 @@
-use palm::{nut::v1, GrpcResult};
+use palm::GrpcResult;
 use tonic::{Request, Response};
+
+use super::super::v1;
 
 pub struct Service {}
 

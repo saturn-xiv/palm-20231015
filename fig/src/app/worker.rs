@@ -2,11 +2,10 @@ use std::any::type_name;
 use std::ops::DerefMut;
 
 use hyper::StatusCode;
-use nut::models::setting::get;
+use nut::models::setting::FlatBuffer;
 use palm::{
-    nut::v1::{EmailTask, SmtpProfile},
     queue::amqp::RabbitMq,
-    thrift::Thrift,
+    tasks::email::{Profile as SmtpProfile, Task as EmailTask},
     HttpError, Result,
 };
 
@@ -28,7 +27,7 @@ pub async fn launch(cfg: &Config, name: &str) -> Result<()> {
     {
         let queue = type_name::<EmailTask>();
         if name == queue {
-            let cfg = get::<SmtpProfile, Thrift>(db, &cfg.loquat, None)?;
+            let cfg = FlatBuffer::get::<SmtpProfile, _>(db, &cfg.loquat, None)?;
             return RabbitMq::consume(&ch, &id, queue, &cfg).await;
         }
     }

@@ -3,23 +3,20 @@ pub mod query;
 
 use std::ops::Deref;
 
-use actix_web::{get, route, web, HttpResponse, Responder, Result};
-use actix_web_lab::respond::Html;
+use actix_web::{route, web, HttpResponse, Result};
 use casbin::Enforcer;
-use juniper::{
-    http::{graphiql::graphiql_source, GraphQLRequest},
-    EmptySubscription, RootNode,
-};
+use juniper::{http::GraphQLRequest, EmptySubscription, RootNode};
 use nut::{
-    controllers::{Loquat, Orchid},
-    graphql::Context,
+    graphql::{Context, Musa},
     orm::postgresql::Pool as DbPool,
 };
+use orchid::Client as Orchid;
 use palm::{
     cache::redis::Pool as CachePool,
     graphql_playground,
     handlers::{locale::Locale, peer::ClientIp, token::Token},
     session::Session,
+    thrift::loquat::Config as Loquat,
 };
 use tokio::sync::Mutex;
 
@@ -41,13 +38,14 @@ type Services = (
     web::Data<CachePool>,
     web::Data<Loquat>,
     web::Data<Orchid>,
+    web::Data<Musa>,
     web::Data<Mutex<Enforcer>>,
 );
 
 #[route("/graphql", method = "GET", method = "POST")]
 async fn source(
     (client_ip, locale, token): (ClientIp, Locale, Token),
-    (db, cache, loquat, orchid, enforcer): Services,
+    (db, cache, loquat, orchid, musa, enforcer): Services,
     schema: web::Data<Schema>,
     data: web::Json<GraphQLRequest>,
 ) -> Result<HttpResponse> {
@@ -56,17 +54,21 @@ async fn source(
     let cache = cache.deref();
     let cache = cache.deref();
     let enforcer = enforcer.into_inner();
+    let loquat = loquat.into_inner();
+    let orchid = orchid.into_inner();
+    let musa = musa.into_inner();
     let ctx = Context {
         db: db.clone(),
         cache: cache.clone(),
-        loquat: loquat.0.clone(),
-        orchid: orchid.0.clone(),
+        loquat,
+        orchid,
+        musa,
+        enforcer,
         session: Session {
             lang: locale.to_string(),
             client_ip: client_ip.to_string(),
             token: token.0,
         },
-        enforcer,
     };
     let res = data.execute(&schema, &ctx).await;
     Ok(HttpResponse::Ok().json(res))
