@@ -83,7 +83,7 @@ int main(int argc, char** argv) {
     const int years = generate_token_command.get<int>("--years");
     const std::string subject =
         generate_token_command.get<std::string>("--subject");
-    const std::string audience = loquat::audience();
+    const std::string audience = typeid(loquat::Jwt).name();
     spdlog::warn("generate token to {}@{} for {}-years", subject, audience,
                  years);
 

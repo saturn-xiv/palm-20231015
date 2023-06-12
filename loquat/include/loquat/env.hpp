@@ -115,7 +115,7 @@ class Jwt final : public Keyset {
 
 class HMac final : public Keyset {
  public:
-  HMac(const std::string& name) : Keyset(name + ".mac") {}
+  HMac(const std::string& name) : Keyset(name + ".hmac") {}
   std::string sign(const std::string& plain);
   void verify(const std::string& code, const std::string& plain);
 
