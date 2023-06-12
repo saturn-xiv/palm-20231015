@@ -22,8 +22,8 @@ namespace loquat { namespace v1 {
 class HmacIf {
  public:
   virtual ~HmacIf() {}
-  virtual void sign(std::string& _return, const std::string& plain) = 0;
-  virtual void verify(const std::string& code, const std::string& plain) = 0;
+  virtual void sign(std::string& _return, const std::string& zone, const std::string& plain) = 0;
+  virtual void verify(const std::string& zone, const std::string& code, const std::string& plain) = 0;
 };
 
 class HmacIfFactory {
@@ -53,16 +53,17 @@ class HmacIfSingletonFactory : virtual public HmacIfFactory {
 class HmacNull : virtual public HmacIf {
  public:
   virtual ~HmacNull() {}
-  void sign(std::string& /* _return */, const std::string& /* plain */) override {
+  void sign(std::string& /* _return */, const std::string& /* zone */, const std::string& /* plain */) override {
     return;
   }
-  void verify(const std::string& /* code */, const std::string& /* plain */) override {
+  void verify(const std::string& /* zone */, const std::string& /* code */, const std::string& /* plain */) override {
     return;
   }
 };
 
 typedef struct _Hmac_sign_args__isset {
-  _Hmac_sign_args__isset() : plain(false) {}
+  _Hmac_sign_args__isset() : zone(false), plain(false) {}
+  bool zone :1;
   bool plain :1;
 } _Hmac_sign_args__isset;
 
@@ -72,18 +73,24 @@ class Hmac_sign_args {
   Hmac_sign_args(const Hmac_sign_args&);
   Hmac_sign_args& operator=(const Hmac_sign_args&);
   Hmac_sign_args() noexcept
-                 : plain() {
+                 : zone(),
+                   plain() {
   }
 
   virtual ~Hmac_sign_args() noexcept;
+  std::string zone;
   std::string plain;
 
   _Hmac_sign_args__isset __isset;
+
+  void __set_zone(const std::string& val);
 
   void __set_plain(const std::string& val);
 
   bool operator == (const Hmac_sign_args & rhs) const
   {
+    if (!(zone == rhs.zone))
+      return false;
     if (!(plain == rhs.plain))
       return false;
     return true;
@@ -105,6 +112,7 @@ class Hmac_sign_pargs {
 
 
   virtual ~Hmac_sign_pargs() noexcept;
+  const std::string* zone;
   const std::string* plain;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -168,7 +176,8 @@ class Hmac_sign_presult {
 };
 
 typedef struct _Hmac_verify_args__isset {
-  _Hmac_verify_args__isset() : code(false), plain(false) {}
+  _Hmac_verify_args__isset() : zone(false), code(false), plain(false) {}
+  bool zone :1;
   bool code :1;
   bool plain :1;
 } _Hmac_verify_args__isset;
@@ -179,15 +188,19 @@ class Hmac_verify_args {
   Hmac_verify_args(const Hmac_verify_args&);
   Hmac_verify_args& operator=(const Hmac_verify_args&);
   Hmac_verify_args() noexcept
-                   : code(),
+                   : zone(),
+                     code(),
                      plain() {
   }
 
   virtual ~Hmac_verify_args() noexcept;
+  std::string zone;
   std::string code;
   std::string plain;
 
   _Hmac_verify_args__isset __isset;
+
+  void __set_zone(const std::string& val);
 
   void __set_code(const std::string& val);
 
@@ -195,6 +208,8 @@ class Hmac_verify_args {
 
   bool operator == (const Hmac_verify_args & rhs) const
   {
+    if (!(zone == rhs.zone))
+      return false;
     if (!(code == rhs.code))
       return false;
     if (!(plain == rhs.plain))
@@ -218,6 +233,7 @@ class Hmac_verify_pargs {
 
 
   virtual ~Hmac_verify_pargs() noexcept;
+  const std::string* zone;
   const std::string* code;
   const std::string* plain;
 
@@ -287,11 +303,11 @@ class HmacClient : virtual public HmacIf {
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  void sign(std::string& _return, const std::string& plain) override;
-  void send_sign(const std::string& plain);
+  void sign(std::string& _return, const std::string& zone, const std::string& plain) override;
+  void send_sign(const std::string& zone, const std::string& plain);
   void recv_sign(std::string& _return);
-  void verify(const std::string& code, const std::string& plain) override;
-  void send_verify(const std::string& code, const std::string& plain);
+  void verify(const std::string& zone, const std::string& code, const std::string& plain) override;
+  void send_verify(const std::string& zone, const std::string& code, const std::string& plain);
   void recv_verify();
  protected:
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
@@ -343,23 +359,23 @@ class HmacMultiface : virtual public HmacIf {
     ifaces_.push_back(iface);
   }
  public:
-  void sign(std::string& _return, const std::string& plain) override {
+  void sign(std::string& _return, const std::string& zone, const std::string& plain) override {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->sign(_return, plain);
+      ifaces_[i]->sign(_return, zone, plain);
     }
-    ifaces_[i]->sign(_return, plain);
+    ifaces_[i]->sign(_return, zone, plain);
     return;
   }
 
-  void verify(const std::string& code, const std::string& plain) override {
+  void verify(const std::string& zone, const std::string& code, const std::string& plain) override {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->verify(code, plain);
+      ifaces_[i]->verify(zone, code, plain);
     }
-    ifaces_[i]->verify(code, plain);
+    ifaces_[i]->verify(zone, code, plain);
   }
 
 };
@@ -394,11 +410,11 @@ class HmacConcurrentClient : virtual public HmacIf {
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  void sign(std::string& _return, const std::string& plain) override;
-  int32_t send_sign(const std::string& plain);
+  void sign(std::string& _return, const std::string& zone, const std::string& plain) override;
+  int32_t send_sign(const std::string& zone, const std::string& plain);
   void recv_sign(std::string& _return, const int32_t seqid);
-  void verify(const std::string& code, const std::string& plain) override;
-  int32_t send_verify(const std::string& code, const std::string& plain);
+  void verify(const std::string& zone, const std::string& code, const std::string& plain) override;
+  int32_t send_verify(const std::string& zone, const std::string& code, const std::string& plain);
   void recv_verify(const int32_t seqid);
  protected:
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;

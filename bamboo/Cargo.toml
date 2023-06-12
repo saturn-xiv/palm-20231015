@@ -1,6 +1,6 @@
 [package]
 name = "bamboo"
-version = "0.1.0"
+version = "2023.6.12"
 edition = "2021"
 authors = ["Jeremy Zheng <jitang.zheng@gmail.com>"]
 description = "GNU utils."

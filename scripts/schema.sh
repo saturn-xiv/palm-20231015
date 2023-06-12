@@ -53,7 +53,7 @@ function generate_loquat() {
         rm -r $cpp_target
     fi
     mkdir -p $cpp_target
-    thrift -out $cpp_target --gen cpp -r palm/protocols/loquat.thrift
+    thrift -out $cpp_target --gen cpp:no_skeleton -r palm/protocols/loquat.thrift
 
 }
 
