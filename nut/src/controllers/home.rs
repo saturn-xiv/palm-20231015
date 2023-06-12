@@ -2,11 +2,13 @@ use std::ops::{Deref, DerefMut};
 
 use actix_web::{get, web, Responder, Result as WebResult};
 use askama::Template;
+use chrono::Duration;
+use lemon::themes::Theme;
 use palm::{cache::redis::Pool as CachePool, crypto::Aes, try_web, Result};
 
 use super::super::{
     orm::postgresql::{Connection as DbConnection, Pool as DbPool},
-    theme::{render, Page, Theme},
+    theme::{render, Page},
 };
 
 #[derive(Template)]
@@ -32,26 +34,18 @@ pub async fn index() -> impl Responder {
     "home"
 }
 
-pub struct HomeByLang {}
+pub struct HomeByLang;
 
 impl Page for HomeByLang {
-    fn render(&self, _db: &mut DbConnection, theme: &Theme, lang: &str) -> Result<String> {
-        let body = match *theme {
-            Theme::Bootstrap => {
-                // TODO
+    fn render(&self, _db: &mut DbConnection, lang: &str, theme: &Theme) -> Result<String> {
+        let it = match *theme {
+            Theme::CleanWhite => {
                 let tpl = BoostrapHome {
                     lang: lang.to_string(),
                 };
                 tpl.render()?
             }
-            Theme::Bulma => {
-                // TODO
-                let tpl = BulmlHome {
-                    lang: lang.to_string(),
-                };
-                tpl.render()?
-            }
-            Theme::MaterialDesign => {
+            _ => {
                 // TODO
                 let tpl = MaterialDesignHome {
                     lang: lang.to_string(),
@@ -59,7 +53,7 @@ impl Page for HomeByLang {
                 tpl.render()?
             }
         };
-        Ok(body)
+        Ok(it)
     }
     fn key(&self) -> String {
         "home".to_string()
@@ -78,5 +72,5 @@ pub async fn by_lang(
     let aes = aes.deref();
     let aes = aes.deref();
     let lang = params.into_inner();
-    try_web!(render(db, ch, aes, &HomeByLang {}, &lang))
+    try_web!(render(db, ch, aes, &HomeByLang, &lang, Duration::days(1)))
 }

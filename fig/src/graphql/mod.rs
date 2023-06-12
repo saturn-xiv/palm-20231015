@@ -17,6 +17,7 @@ use nut::{
 };
 use palm::{
     cache::redis::Pool as CachePool,
+    graphql_playground,
     handlers::{locale::Locale, peer::ClientIp, token::Token},
     session::Session,
 };
@@ -28,7 +29,10 @@ pub fn register(config: &mut web::ServiceConfig) {
         mutation::Mutation,
         EmptySubscription::new(),
     ));
-    config.app_data(schema).service(source).service(playground);
+    config
+        .app_data(schema)
+        .service(source)
+        .service(graphql_playground);
 }
 
 type Schema = RootNode<'static, query::Query, mutation::Mutation, EmptySubscription<Context>>;
@@ -66,9 +70,4 @@ async fn source(
     };
     let res = data.execute(&schema, &ctx).await;
     Ok(HttpResponse::Ok().json(res))
-}
-
-#[get("/graphiql")]
-async fn playground() -> impl Responder {
-    Html(graphiql_source("/graphql", None))
 }

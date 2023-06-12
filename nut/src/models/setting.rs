@@ -8,27 +8,75 @@ use serde::{de::DeserializeOwned, ser::Serialize};
 
 use super::super::{orm::postgresql::Connection, schema::settings};
 
-pub fn get<V: prost::Message + Default, E: Secret>(
-    db: &mut Connection,
-    enc: &E,
-    user: Option<i32>,
-) -> Result<V> {
-    let buf: Vec<u8> = Dao::get(db, enc, &type_name::<V>().to_string(), user)?;
-    let it = V::decode(&buf[..])?;
-    Ok(it)
+pub trait Protobuf {
+    fn get<V: prost::Message + Default, E: Secret>(
+        &mut self,
+        enc: &E,
+        user: Option<i32>,
+    ) -> Result<V>;
+    fn set<V: prost::Message + Default, E: Secret>(
+        &mut self,
+        enc: &E,
+        user: Option<i32>,
+        value: &V,
+        encode: bool,
+    ) -> Result<()>;
 }
 
-pub fn set<V: prost::Message + Default, E: Secret>(
-    db: &mut Connection,
-    enc: &E,
-    user: Option<i32>,
-    value: &V,
-    encode: bool,
-) -> Result<()> {
-    let mut buf = Vec::new();
-    value.encode(&mut buf)?;
-    Dao::set(db, enc, &type_name::<V>().to_string(), user, &buf, encode)?;
-    Ok(())
+impl Protobuf for Connection {
+    fn get<V: prost::Message + Default, E: Secret>(
+        &mut self,
+        enc: &E,
+        user: Option<i32>,
+    ) -> Result<V> {
+        let buf: Vec<u8> = Dao::get(self, enc, &type_name::<V>().to_string(), user)?;
+        let it = V::decode(&buf[..])?;
+        Ok(it)
+    }
+
+    fn set<V: prost::Message + Default, E: Secret>(
+        &mut self,
+        enc: &E,
+        user: Option<i32>,
+        value: &V,
+        encode: bool,
+    ) -> Result<()> {
+        let mut buf = Vec::new();
+        value.encode(&mut buf)?;
+        Dao::set(self, enc, &type_name::<V>().to_string(), user, &buf, encode)?;
+        Ok(())
+    }
+}
+
+pub trait FlatBuffer {
+    fn get<V: DeserializeOwned, E: Secret>(&mut self, enc: &E, user: Option<i32>) -> Result<V>;
+    fn set<V: Serialize, E: Secret>(
+        &mut self,
+        enc: &E,
+        user: Option<i32>,
+        value: &V,
+        encode: bool,
+    ) -> Result<()>;
+}
+
+impl FlatBuffer for Connection {
+    fn get<V: DeserializeOwned, E: Secret>(&mut self, enc: &E, user: Option<i32>) -> Result<V> {
+        let buf: Vec<u8> = Dao::get(self, enc, &type_name::<V>().to_string(), user)?;
+        let it = flexbuffers::from_slice(&buf)?;
+        Ok(it)
+    }
+
+    fn set<V: Serialize, E: Secret>(
+        &mut self,
+        enc: &E,
+        user: Option<i32>,
+        value: &V,
+        encode: bool,
+    ) -> Result<()> {
+        let buf = flexbuffers::to_vec(value)?;
+        Dao::set(self, enc, &type_name::<V>().to_string(), user, &buf, encode)?;
+        Ok(())
+    }
 }
 
 #[derive(Queryable)]
@@ -44,29 +92,19 @@ pub struct Item {
 }
 
 pub trait Dao {
-    fn get<K: Display, V: DeserializeOwned, E: Secret>(
-        &mut self,
-        e: &E,
-        key: &K,
-        u: Option<i32>,
-    ) -> Result<V>;
-    fn set<K: Display, V: Serialize, E: Secret>(
+    fn get<K: Display, E: Secret>(&mut self, e: &E, k: &K, u: Option<i32>) -> Result<Vec<u8>>;
+    fn set<K: Display, E: Secret>(
         &mut self,
         e: &E,
         k: &K,
         u: Option<i32>,
-        v: &V,
+        v: &[u8],
         f: bool,
     ) -> Result<()>;
 }
 
 impl Dao for Connection {
-    fn get<K: Display, V: DeserializeOwned, E: Secret>(
-        &mut self,
-        e: &E,
-        k: &K,
-        u: Option<i32>,
-    ) -> Result<V> {
+    fn get<K: Display, E: Secret>(&mut self, e: &E, k: &K, u: Option<i32>) -> Result<Vec<u8>> {
         let k = k.to_string();
 
         let it = match u {
@@ -84,25 +122,24 @@ impl Dao for Connection {
             Some(ref salt) => e.decrypt(&it.value, salt)?,
             None => it.value,
         };
-        Ok(flexbuffers::from_slice(val.as_slice())?)
+        Ok(val)
     }
 
-    fn set<K: Display, V: Serialize, E: Secret>(
+    fn set<K: Display, E: Secret>(
         &mut self,
         e: &E,
         k: &K,
         u: Option<i32>,
-        v: &V,
+        v: &[u8],
         f: bool,
     ) -> Result<()> {
         let k = k.to_string();
-        let buf = flexbuffers::to_vec(v)?;
 
         let (val, salt) = if f {
-            let (val, salt) = e.encrypt(&buf)?;
+            let (val, salt) = e.encrypt(v)?;
             (val, Some(salt))
         } else {
-            (buf, None)
+            (v.to_vec(), None)
         };
 
         let now = Utc::now().naive_utc();

@@ -5,29 +5,26 @@ use std::ops::{Deref, DerefMut};
 use casbin::{Enforcer, RbacApi};
 use chrono::Duration;
 use diesel::Connection as DieselConntection;
-use juniper::{GraphQLInputObject, GraphQLObject};
-use palm::{jwt::Jwt, Error, Result};
+use juniper::{GraphQLEnum, GraphQLInputObject, GraphQLObject};
+use palm::{
+    jwt::Jwt,
+    rbac::{Permission as RbacPermission, Role, ToSubject},
+    Error, Result,
+};
 use tokio::sync::Mutex;
 use validator::Validate;
 
-use crate::models::ToRole;
-
-use super::super::super::services::CurrentUserAdapter;
 use super::super::super::{
-    i18n::I18n,
     models::{
         google::user::Dao as GoogleUserDao,
         log::{Dao as LogDao, Level as LogLevel},
         user::{Action, Dao as UserDao, Item as User},
-        wechat::mini_program_user::{
-            Dao as WechatMiniProgramUserDao, Item as WechatMiniProgramUser,
-        },
+        wechat::mini_program_user::Dao as WechatMiniProgramUserDao,
         wechat::oauth2_user::Dao as WechatOauth2UserDao,
-        ToSubject,
     },
-    orm::postgresql::{Connection as Db, Pool as PostgreSqlPool},
+    orm::postgresql::Connection as Db,
 };
-use super::super::{Context, Succeeded};
+use super::super::Context;
 
 #[derive(GraphQLInputObject, Validate)]
 #[graphql(name = "UserSignUpRequest", description = "User SignUp form")]
@@ -45,10 +42,12 @@ pub struct SignInRequest {
     pub user: String,
     #[validate(length(min = 1, max = 32))]
     pub password: String,
+    #[validate(range(min = 5, max = 604800))]
+    pub ttl: i32,
 }
 
 impl SignInRequest {
-    pub fn handle(&self, context: &Context) -> Result<SignInResponse> {
+    pub async fn handle(&self, context: &Context) -> Result<SignInResponse> {
         self.validate()?;
 
         let mut db = context.db.get()?;
@@ -59,7 +58,8 @@ impl SignInRequest {
         } else {
             UserDao::by_nickname(db, &self.user)?
         };
-        user.auth(&context.loquat, &self.password)?;
+        let loquat = context.loquat.deref();
+        user.auth(loquat, &self.password)?;
         user.available()?;
 
         db.transaction::<_, Error, _>(move |db| {
@@ -75,28 +75,15 @@ impl SignInRequest {
             Ok(())
         })?;
 
-        // if let Some(ref it) = req.query {
-        //     let user = try_grpc!()?;
-        //     try_grpc!()?;
-        //     try_grpc!()?;
-
-        //     let it = try_grpc!(
-        //         new_sign_in_response(
-        //             db,
-        //             enf,
-        //             &user,
-        //             jwt,
-        //             Some(
-        //                 req.ttl
-        //                     .map_or(Duration::weeks(1), |x| Duration::seconds(x.seconds))
-        //             ),
-        //         )
-        //         .await
-        //     )?;
-        //     return Ok(Response::new(it));
-        // }
-        // TODO
-        Ok(Succeeded::default())
+        SignInResponse::new(
+            db,
+            enforcer,
+            &user,
+            loquat,
+            Duration::seconds(self.ttl as i64),
+            ProviderType::Email,
+        )
+        .await
     }
 }
 
@@ -105,6 +92,7 @@ impl SignInRequest {
 pub struct Detail {
     pub real_name: String,
     pub avatar: String,
+    pub r#type: ProviderType,
 }
 
 #[derive(GraphQLObject)]
@@ -114,13 +102,25 @@ pub struct Permission {
     pub operation: String,
 }
 
+#[derive(GraphQLEnum)]
+#[graphql(name = "UserProviderType", description = "User account type")]
+pub enum ProviderType {
+    Email,
+    Google,
+    WeChatMiniProgram,
+    WeChatOauth2,
+}
+
 #[derive(GraphQLObject)]
-#[graphql(name = "UserSignInResponse", description = "User SignIn response")]
+#[graphql(name = "UserSignInResponse", description = "User sign-in response")]
 pub struct SignInResponse {
     pub token: String,
     pub user: Detail,
     pub roles: Vec<String>,
     pub permissions: Vec<Permission>,
+    pub has_google: bool,
+    pub has_wechat_mini_program: bool,
+    pub has_wechat_oauth2: bool,
 }
 
 impl SignInResponse {
@@ -130,6 +130,7 @@ impl SignInResponse {
         user: &User,
         jwt: &P,
         ttl: Duration,
+        provider_type: ProviderType,
     ) -> Result<Self> {
         let token = jwt.sign(&user.nickname, &Action::SignIn.to_string(), ttl)?;
         let name = user.to_subject();
@@ -139,27 +140,42 @@ impl SignInResponse {
         {
             let items = enforcer.get_implicit_roles_for_user(&name, None);
             for it in items.iter() {
-                if let Ok(it) = it.parse::<RoleRequest>() {
-                    roles.push(it.code);
+                if let Ok(ref it) = it.parse::<Role>() {
+                    roles.push(it.to_string());
                 }
             }
         }
-        // let permissions = {
-        //     let items = enforcer.get_implicit_permissions_for_user(&name, None);
-        //     new_permission_list_response(&items)?
-        // };
+        let permissions = {
+            let mut items = Vec::new();
+            for it in enforcer
+                .get_implicit_permissions_for_user(&name, None)
+                .iter()
+            {
+                let it = RbacPermission::new(it)?;
+                if let Some(ref resource) = it.resource {
+                    items.push(Permission {
+                        operation: it.operation.clone(),
+                        resource_type: resource.r#type.clone(),
+                        resource_id: resource.id,
+                    });
+                }
+            }
 
-        // Ok(v1::UserSignInResponse {
-        //     token,
-        //     payload: Some(user.clone().into()),
-        //     permissions,
-        //     roles,
-        //     google: GoogleUserDao::count_by_user(db, user.id)? > 0,
-        //     wechat: Some(v1::user_sign_in_response::Wechat {
-        //         mini_program: WechatMiniProgramUserDao::count_by_user(db, user.id)? > 0,
-        //         oauth2: WechatOauth2UserDao::count_by_user(db, user.id)? > 0,
-        //     }),
-        // })
-        todo!()
+            items
+        };
+
+        Ok(Self {
+            token,
+            roles,
+            permissions,
+            user: Detail {
+                real_name: user.real_name.clone(),
+                avatar: user.avatar.clone(),
+                r#type: provider_type,
+            },
+            has_google: GoogleUserDao::count_by_user(db, user.id)? > 0,
+            has_wechat_mini_program: WechatMiniProgramUserDao::count_by_user(db, user.id)? > 0,
+            has_wechat_oauth2: WechatOauth2UserDao::count_by_user(db, user.id)? > 0,
+        })
     }
 }

@@ -131,8 +131,8 @@ impl Publisher {
     }
 }
 
-impl palm::queue::Publisher for Publisher {
-    fn send(&self, topic: &str, payload: &[u8]) -> Result<()> {
+impl Publisher {
+    pub fn send(&self, topic: &str, payload: &[u8]) -> Result<()> {
         if let Ok(sck) = self.socket.lock() {
             sck.send(topic.as_bytes(), zmq::SNDMORE)?;
             sck.send(payload, 0)?;
@@ -155,8 +155,8 @@ impl Subscriber {
     }
 }
 
-impl palm::queue::Subscriber for Subscriber {
-    fn consume<H>(&self, topic: &str, hnd: &H) -> Result<()>
+impl Subscriber {
+    pub fn consume<H>(&self, topic: &str, hnd: &H) -> Result<()>
     where
         H: Fn(&str, &[u8]) -> Result<()>,
     {

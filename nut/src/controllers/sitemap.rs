@@ -10,8 +10,10 @@ use palm::{
     cache::redis::Pool as CachePool,
     crypto::Aes,
     handlers::home::Home,
-    nut::v1::{BaiduProfile, GoogleProfile, IndexNowProfile},
     seo::{
+        baidu::Profile as BaiduProfile,
+        google::Profile as GoogleProfile,
+        index_now::Profile as IndexNowProfile,
         sitemap::{index as sitemap_index, urlset as sitemap_urlset, Link as SitemapLink},
         Provider as SeoProvider,
     },
@@ -19,7 +21,7 @@ use palm::{
 };
 
 use super::super::{
-    models::{locale::Dao as LocaleDao, setting::get},
+    models::{locale::Dao as LocaleDao, setting::FlatBuffer},
     orm::postgresql::Pool as DbPool,
 };
 
@@ -68,7 +70,7 @@ pub async fn google(
     let params = params.into_inner();
     let aes = aes.deref();
     let aes = aes.deref();
-    let cfg = try_web!(get::<GoogleProfile, Aes>(db, aes, None))?;
+    let cfg = try_web!(FlatBuffer::get::<GoogleProfile, Aes>(db, aes, None))?;
 
     if let Some(it) = cfg.site_verify_id {
         if params.0 == it {
@@ -96,7 +98,7 @@ pub async fn baidu(
     let params = params.into_inner();
     let aes = aes.deref();
     let aes = aes.deref();
-    let cfg = try_web!(get::<BaiduProfile, Aes>(db, aes, None))?;
+    let cfg = try_web!(FlatBuffer::get::<BaiduProfile, Aes>(db, aes, None))?;
     if let Some(it) = cfg.site_verify {
         if params.0 == it.id {
             let body = try_web!(BaiduRequest {
@@ -123,7 +125,7 @@ pub async fn index_now(
     let params = params.into_inner();
     let aes = aes.deref();
     let aes = aes.deref();
-    let cfg = try_web!(get::<IndexNowProfile, Aes>(db, aes, None))?;
+    let cfg = try_web!(FlatBuffer::get::<IndexNowProfile, Aes>(db, aes, None))?;
 
     if params.0 == cfg.key {
         let body = try_web!(IndexNowRequest { key: cfg.key }.render())?;

@@ -1,6 +1,6 @@
 [package]
 name = "orchid"
-version = "2023.4.12"
+version = "2023.6.12"
 edition = "2021"
 description = "WeChat mini-program services."
 

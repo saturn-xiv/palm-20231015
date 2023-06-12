@@ -179,8 +179,10 @@ diesel::table! {
         #[max_length = 45]
         ip -> Varchar,
         body -> Text,
-        body_editor -> Int4,
-        status -> Int4,
+        #[max_length = 15]
+        body_editor -> Varchar,
+        #[max_length = 15]
+        status -> Varchar,
         published_at -> Nullable<Timestamp>,
         deleted_at -> Nullable<Timestamp>,
         version -> Int4,
@@ -427,11 +429,13 @@ diesel::table! {
         ip -> Varchar,
         star_ -> Int4,
         comment -> Text,
-        comment_editor -> Int4,
+        #[max_length = 15]
+        comment_editor -> Varchar,
         #[max_length = 255]
         resource_type -> Varchar,
         resource_id -> Int4,
-        status -> Int4,
+        #[max_length = 15]
+        status -> Varchar,
         deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         updated_at -> Timestamp,

@@ -2,8 +2,8 @@ use std::path::Path;
 
 use hyper::StatusCode;
 use palm::{
-    cache::redis::Config as Redis, jwt::Jwt, parser::from_toml, session::Session, thrift::Thrift,
-    wechat::Config as WechatConfig, HttpError, Result,
+    cache::redis::Config as Redis, jwt::Jwt, parser::from_toml, session::Session,
+    thrift::loquat::Config as Loquat, wechat::Config as WechatConfig, HttpError, Result,
 };
 use serde::{Deserialize, Serialize};
 use tonic::Request;
@@ -11,7 +11,7 @@ use tonic::Request;
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]
 pub struct Config {
     pub redis: Redis,
-    pub loquat: Thrift,
+    pub loquat: Loquat,
     pub clients: Vec<String>,
 }
 

@@ -13,6 +13,5 @@ pub mod models;
 pub mod orm;
 pub mod rbac;
 pub mod schema;
-pub mod services;
 pub mod theme;
 pub mod zero;

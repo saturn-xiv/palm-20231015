@@ -24,10 +24,12 @@ def upgrade() -> None:
         sa.Column('ip', sa.String(length=45), nullable=False),
         sa.Column('star_', sa.Integer, nullable=False),
         sa.Column('comment', sa.Text, nullable=False),
-        sa.Column('comment_editor', sa.Integer, nullable=False),
+        sa.Column('comment_editor', sa.String(length=15),
+                  nullable=False, server_default='textarea'),
         sa.Column('resource_type', sa.String(length=255), nullable=False),
         sa.Column('resource_id', sa.Integer, nullable=False),
-        sa.Column('status', sa.Integer, nullable=False),
+        sa.Column('status', sa.String(length=15),
+                  nullable=False, server_default='pending'),
         sa.Column('deleted_at', sa.DateTime),
         sa.Column('version', sa.Integer, nullable=False, server_default='0'),
         sa.Column('updated_at', sa.DateTime, nullable=False),
@@ -37,6 +39,9 @@ def upgrade() -> None:
     op.create_index('idx_vote_logs_resource_type',
                     'vote_logs', ['resource_type'])
     op.create_index('idx_vote_logs_ip', 'vote_logs', ['ip'])
+    op.create_index('idx_vote_logs_comment_editor',
+                    'vote_logs', ['comment_editor'])
+    op.create_index('idx_vote_logs_status', 'vote_logs', ['status'])
 
 
 def downgrade() -> None:

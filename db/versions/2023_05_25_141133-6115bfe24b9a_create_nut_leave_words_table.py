@@ -23,8 +23,10 @@ def upgrade() -> None:
         sa.Column('lang', sa.String(length=8), nullable=False),
         sa.Column('ip', sa.String(length=45), nullable=False),
         sa.Column('body', sa.Text, nullable=False),
-        sa.Column('body_editor', sa.Integer, nullable=False),
-        sa.Column('status', sa.Integer, nullable=False),
+        sa.Column('body_editor', sa.String(length=15),
+                  nullable=False, server_default='textarea'),
+        sa.Column('status', sa.String(length=15),
+                  nullable=False, server_default='pending'),
         sa.Column('published_at', sa.DateTime),
         sa.Column('deleted_at', sa.DateTime),
         sa.Column('version', sa.Integer, nullable=False, server_default='0'),
@@ -34,6 +36,9 @@ def upgrade() -> None:
     )
     op.create_index('idx_leave_words_ip', 'leave_words', ['ip'])
     op.create_index('idx_leave_words_lang', 'leave_words', ['lang'])
+    op.create_index('idx_leave_words_body_editor',
+                    'leave_words', ['body_editor'])
+    op.create_index('idx_leave_words_status', 'leave_words', ['status'])
 
 
 def downgrade() -> None:

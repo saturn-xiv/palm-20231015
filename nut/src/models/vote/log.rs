@@ -1,9 +1,6 @@
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
-use palm::{
-    nut::v1::media_content::{Editor as MediaContentEditor, Status as MediaContentStatus},
-    Result,
-};
+use palm::Result;
 use serde::Serialize;
 
 use super::super::super::{orm::postgresql::Connection, schema::vote_logs};
@@ -16,10 +13,10 @@ pub struct Item {
     pub ip: String,
     pub star: i32,
     pub comment: String,
-    pub comment_editor: i32,
+    pub comment_editor: String,
     pub resource_type: String,
     pub resource_id: i32,
-    pub status: i32,
+    pub status: String,
     pub deleted_at: Option<NaiveDateTime>,
     pub version: i32,
     pub updated_at: NaiveDateTime,
@@ -38,7 +35,7 @@ pub trait Dao {
         ip: &str,
         star: i32,
         comment: &str,
-        editor: MediaContentEditor,
+        editor: &str,
         resource_type: &str,
         resource_id: i32,
     ) -> Result<()>;
@@ -95,7 +92,7 @@ impl Dao for Connection {
         ip: &str,
         star: i32,
         comment: &str,
-        editor: MediaContentEditor,
+        editor: &str,
         resource_type: &str,
         resource_id: i32,
     ) -> Result<()> {
@@ -107,10 +104,9 @@ impl Dao for Connection {
                 vote_logs::dsl::ip.eq(ip),
                 vote_logs::dsl::star_.eq(star),
                 vote_logs::dsl::comment.eq(comment),
-                vote_logs::dsl::comment_editor.eq(editor as i32),
+                vote_logs::dsl::comment_editor.eq(editor),
                 vote_logs::dsl::resource_id.eq(resource_id),
                 vote_logs::dsl::resource_type.eq(resource_type),
-                vote_logs::dsl::status.eq(MediaContentStatus::Pending as i32),
                 vote_logs::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;

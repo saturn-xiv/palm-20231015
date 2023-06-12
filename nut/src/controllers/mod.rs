@@ -12,6 +12,7 @@ use actix_web::{
     get, http::header::ContentType, post, web, HttpResponse, Responder, Result as WebResult,
 };
 use askama::Template;
+use lemon::themes::Layout;
 use palm::{
     cache::redis::Pool as CachePool,
     handlers::home::Home,
@@ -19,11 +20,10 @@ use palm::{
         rss::{build as build_rss, Link as RssLink},
         Provider as SeoProvider, RobotsTxt,
     },
-    thrift::Thrift,
     try_web, BUILD_TIME, GIT_VERSION, NAME,
 };
 
-use super::{i18n::I18n, orm::postgresql::Pool as DbPool, services::site::Service as SiteService};
+use super::{i18n::I18n, orm::postgresql::Pool as DbPool};
 
 pub fn register(config: &mut web::ServiceConfig) {
     config
@@ -81,14 +81,11 @@ pub fn register(config: &mut web::ServiceConfig) {
                             ),
                         )
                         .service(
-                            web::scope("/mini-program")
-                                .service(wechat::mini_program::sign_in)
-                                .service(wechat::mini_program::profile)
-                                .service(
-                                    web::scope("/messaging")
-                                        .service(wechat::mini_program::messaging::verify)
-                                        .service(wechat::mini_program::messaging::callback),
-                                ),
+                            web::scope("/mini-program").service(
+                                web::scope("/messaging")
+                                    .service(wechat::mini_program::messaging::verify)
+                                    .service(wechat::mini_program::messaging::callback),
+                            ),
                         ),
                 )
                 .service(echo)
@@ -105,9 +102,6 @@ pub fn register(config: &mut web::ServiceConfig) {
         .service(home::by_lang)
         .service(home::index);
 }
-
-pub struct Loquat(pub Thrift);
-pub struct Orchid(pub Thrift);
 
 #[get("/version")]
 pub async fn version() -> WebResult<impl Responder> {
@@ -149,8 +143,8 @@ pub async fn rss_xml(
     let lang = params.0;
 
     let links = try_web!(SeoProvider::by_lang(ch, &lang))?;
-    let title = I18n::t(db, &lang, SiteService::SITE_TITLE, &None::<String>);
-    let description = I18n::t(db, &lang, SiteService::SITE_DESCRIPTION, &None::<String>);
+    let title = I18n::t(db, &lang, Layout::SITE_TITLE, &None::<String>);
+    let description = I18n::t(db, &lang, Layout::SITE_DESCRIPTION, &None::<String>);
 
     let links: Vec<RssLink> = links.into_iter().map(|x| x.into()).collect::<_>();
     let buf = try_web!(build_rss(&home, &title, &description, &links))?;

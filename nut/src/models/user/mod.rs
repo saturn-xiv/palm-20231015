@@ -13,8 +13,8 @@ use language_tags::LanguageTag;
 use openssl::hash::{hash, MessageDigest};
 use palm::{
     crypto::{random::bytes as random_bytes, Password},
-    nut::v1,
-    rbac::v1::users_response::Item as RbacUser,
+    rbac::ToSubject,
+    tasks::email::Address,
     HttpError, Result,
 };
 use serde::{Deserialize, Serialize};
@@ -86,27 +86,7 @@ impl fmt::Display for Item {
     }
 }
 
-impl From<Item> for v1::UserDetail {
-    fn from(it: Item) -> Self {
-        Self {
-            nickname: it.nickname.clone(),
-            real_name: it.real_name,
-        }
-    }
-}
-
-impl From<Item> for RbacUser {
-    fn from(it: Item) -> Self {
-        Self {
-            id: it.id,
-            nickname: it.nickname.clone(),
-            real_name: it.real_name.clone(),
-            email: it.email,
-        }
-    }
-}
-
-impl super::ToSubject for Item {
+impl ToSubject for Item {
     fn to_subject(&self) -> String {
         format!("{}://{}", type_name::<Self>(), self.nickname)
     }
@@ -125,8 +105,8 @@ impl Item {
         Uuid::new_v4().simple().to_string()
     }
 
-    pub fn address(&self) -> v1::email_task::Address {
-        v1::email_task::Address {
+    pub fn address(&self) -> Address {
+        Address {
             name: self.real_name.clone(),
             email: self.email.clone(),
         }
