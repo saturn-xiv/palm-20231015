@@ -5,7 +5,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.53.0)",
+    value = "by gRPC proto compiler (version 1.55.1)",
     comments = "Source: musa.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class WechatPayJsapiGrpc {
@@ -185,73 +185,53 @@ public final class WechatPayJsapiGrpc {
 
   /**
    */
-  public static abstract class WechatPayJsapiImplBase implements io.grpc.BindableService {
+  public interface AsyncService {
 
     /**
      */
-    public void prepay(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest request,
+    default void prepay(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest request,
         io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayJsapiPrepayIdResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getPrepayMethod(), responseObserver);
     }
 
     /**
      */
-    public void queryOrderByOutTradeNo(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByOutTradeNoRequest request,
+    default void queryOrderByOutTradeNo(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByOutTradeNoRequest request,
         io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getQueryOrderByOutTradeNoMethod(), responseObserver);
     }
 
     /**
      */
-    public void queryOrderById(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest request,
+    default void queryOrderById(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest request,
         io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getQueryOrderByIdMethod(), responseObserver);
     }
 
     /**
      */
-    public void closeOrder(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest request,
+    default void closeOrder(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest request,
         io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCloseOrderMethod(), responseObserver);
-    }
-
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getPrepayMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest,
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayJsapiPrepayIdResponse>(
-                  this, METHODID_PREPAY)))
-          .addMethod(
-            getQueryOrderByOutTradeNoMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByOutTradeNoRequest,
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeResponse>(
-                  this, METHODID_QUERY_ORDER_BY_OUT_TRADE_NO)))
-          .addMethod(
-            getQueryOrderByIdMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest,
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeResponse>(
-                  this, METHODID_QUERY_ORDER_BY_ID)))
-          .addMethod(
-            getCloseOrderMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest,
-                com.google.protobuf.Empty>(
-                  this, METHODID_CLOSE_ORDER)))
-          .build();
     }
   }
 
   /**
+   * Base class for the server implementation of the service WechatPayJsapi.
    */
-  public static final class WechatPayJsapiStub extends io.grpc.stub.AbstractAsyncStub<WechatPayJsapiStub> {
+  public static abstract class WechatPayJsapiImplBase
+      implements io.grpc.BindableService, AsyncService {
+
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+      return WechatPayJsapiGrpc.bindService(this);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do asynchronous rpc calls to service WechatPayJsapi.
+   */
+  public static final class WechatPayJsapiStub
+      extends io.grpc.stub.AbstractAsyncStub<WechatPayJsapiStub> {
     private WechatPayJsapiStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -297,8 +277,10 @@ public final class WechatPayJsapiGrpc {
   }
 
   /**
+   * A stub to allow clients to do synchronous rpc calls to service WechatPayJsapi.
    */
-  public static final class WechatPayJsapiBlockingStub extends io.grpc.stub.AbstractBlockingStub<WechatPayJsapiBlockingStub> {
+  public static final class WechatPayJsapiBlockingStub
+      extends io.grpc.stub.AbstractBlockingStub<WechatPayJsapiBlockingStub> {
     private WechatPayJsapiBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -340,8 +322,10 @@ public final class WechatPayJsapiGrpc {
   }
 
   /**
+   * A stub to allow clients to do ListenableFuture-style rpc calls to service WechatPayJsapi.
    */
-  public static final class WechatPayJsapiFutureStub extends io.grpc.stub.AbstractFutureStub<WechatPayJsapiFutureStub> {
+  public static final class WechatPayJsapiFutureStub
+      extends io.grpc.stub.AbstractFutureStub<WechatPayJsapiFutureStub> {
     private WechatPayJsapiFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -396,10 +380,10 @@ public final class WechatPayJsapiGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final WechatPayJsapiImplBase serviceImpl;
+    private final AsyncService serviceImpl;
     private final int methodId;
 
-    MethodHandlers(WechatPayJsapiImplBase serviceImpl, int methodId) {
+    MethodHandlers(AsyncService serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -438,6 +422,39 @@ public final class WechatPayJsapiGrpc {
           throw new AssertionError();
       }
     }
+  }
+
+  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+        .addMethod(
+          getPrepayMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest,
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayJsapiPrepayIdResponse>(
+                service, METHODID_PREPAY)))
+        .addMethod(
+          getQueryOrderByOutTradeNoMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByOutTradeNoRequest,
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeResponse>(
+                service, METHODID_QUERY_ORDER_BY_OUT_TRADE_NO)))
+        .addMethod(
+          getQueryOrderByIdMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryOrderByIdRequest,
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeResponse>(
+                service, METHODID_QUERY_ORDER_BY_ID)))
+        .addMethod(
+          getCloseOrderMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCloseOrderRequest,
+              com.google.protobuf.Empty>(
+                service, METHODID_CLOSE_ORDER)))
+        .build();
   }
 
   private static abstract class WechatPayJsapiBaseDescriptorSupplier

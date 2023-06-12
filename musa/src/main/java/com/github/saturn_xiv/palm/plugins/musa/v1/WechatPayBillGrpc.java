@@ -5,7 +5,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.53.0)",
+    value = "by gRPC proto compiler (version 1.55.1)",
     comments = "Source: musa.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class WechatPayBillGrpc {
@@ -123,45 +123,39 @@ public final class WechatPayBillGrpc {
 
   /**
    */
-  public static abstract class WechatPayBillImplBase implements io.grpc.BindableService {
+  public interface AsyncService {
 
     /**
      */
-    public void trade(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest request,
+    default void trade(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest request,
         io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getTradeMethod(), responseObserver);
     }
 
     /**
      */
-    public void fundFlow(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayFundFlowBillRequest request,
+    default void fundFlow(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayFundFlowBillRequest request,
         io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getFundFlowMethod(), responseObserver);
-    }
-
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getTradeMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest,
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillResponse>(
-                  this, METHODID_TRADE)))
-          .addMethod(
-            getFundFlowMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayFundFlowBillRequest,
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillResponse>(
-                  this, METHODID_FUND_FLOW)))
-          .build();
     }
   }
 
   /**
+   * Base class for the server implementation of the service WechatPayBill.
    */
-  public static final class WechatPayBillStub extends io.grpc.stub.AbstractAsyncStub<WechatPayBillStub> {
+  public static abstract class WechatPayBillImplBase
+      implements io.grpc.BindableService, AsyncService {
+
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+      return WechatPayBillGrpc.bindService(this);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do asynchronous rpc calls to service WechatPayBill.
+   */
+  public static final class WechatPayBillStub
+      extends io.grpc.stub.AbstractAsyncStub<WechatPayBillStub> {
     private WechatPayBillStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -191,8 +185,10 @@ public final class WechatPayBillGrpc {
   }
 
   /**
+   * A stub to allow clients to do synchronous rpc calls to service WechatPayBill.
    */
-  public static final class WechatPayBillBlockingStub extends io.grpc.stub.AbstractBlockingStub<WechatPayBillBlockingStub> {
+  public static final class WechatPayBillBlockingStub
+      extends io.grpc.stub.AbstractBlockingStub<WechatPayBillBlockingStub> {
     private WechatPayBillBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -220,8 +216,10 @@ public final class WechatPayBillGrpc {
   }
 
   /**
+   * A stub to allow clients to do ListenableFuture-style rpc calls to service WechatPayBill.
    */
-  public static final class WechatPayBillFutureStub extends io.grpc.stub.AbstractFutureStub<WechatPayBillFutureStub> {
+  public static final class WechatPayBillFutureStub
+      extends io.grpc.stub.AbstractFutureStub<WechatPayBillFutureStub> {
     private WechatPayBillFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -258,10 +256,10 @@ public final class WechatPayBillGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final WechatPayBillImplBase serviceImpl;
+    private final AsyncService serviceImpl;
     private final int methodId;
 
-    MethodHandlers(WechatPayBillImplBase serviceImpl, int methodId) {
+    MethodHandlers(AsyncService serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -292,6 +290,25 @@ public final class WechatPayBillGrpc {
           throw new AssertionError();
       }
     }
+  }
+
+  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+        .addMethod(
+          getTradeMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest,
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillResponse>(
+                service, METHODID_TRADE)))
+        .addMethod(
+          getFundFlowMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayFundFlowBillRequest,
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillResponse>(
+                service, METHODID_FUND_FLOW)))
+        .build();
   }
 
   private static abstract class WechatPayBillBaseDescriptorSupplier
