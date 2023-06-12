@@ -144,9 +144,11 @@ use std::os::unix::fs::PermissionsExt;
 use std::path::Path;
 use std::process::{Command, Output};
 
+use actix_web::{get, Responder};
+use actix_web_lab::respond::Html;
 use chrono::{DateTime, NaiveDateTime, Utc};
 use chrono_tz::Tz;
-use juniper::GraphQLObject;
+use juniper::{http::graphiql::graphiql_source, GraphQLObject};
 use xml::writer::{EventWriter, Result as XmlWriterResult};
 
 pub use self::result::{Error, GrpcResult, HttpError, HttpResult, Result};
@@ -370,4 +372,9 @@ impl Pager {
     }
     const MAX_SIZE: i32 = 1 << 12;
     const MIN_SIZE: i32 = 1 << 2;
+}
+
+#[get("/graphiql")]
+pub async fn graphql_playground() -> impl Responder {
+    Html(graphiql_source("/graphql", None))
 }

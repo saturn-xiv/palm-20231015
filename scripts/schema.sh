@@ -172,15 +172,15 @@ declare -a languages=(
     # "objective_c"
 )
 
-for l in "${languages[@]}"
-do
-    generate_grpc_by_lang $l
-done
+# for l in "${languages[@]}"
+# do
+#     generate_grpc_by_lang $l
+# done
 
-generate_fig_web
-generate_aloe_web
+# generate_fig_web
+# generate_aloe_web
 generate_loquat
-generate_twift_rs cactus
+# generate_twift_rs cactus
 generate_musa
 generate_babel
 

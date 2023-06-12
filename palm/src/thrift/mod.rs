@@ -25,13 +25,13 @@ impl Default for Thrift {
     }
 }
 
-type Input = TBinaryInputProtocol<TFramedReadTransport<ReadHalf<TTcpChannel>>>;
-type Output = TMultiplexedOutputProtocol<
+pub type Input = TBinaryInputProtocol<TFramedReadTransport<ReadHalf<TTcpChannel>>>;
+pub type Output = TMultiplexedOutputProtocol<
     TBinaryOutputProtocol<TFramedWriteTransport<WriteHalf<TTcpChannel>>>,
 >;
 
 impl Thrift {
-    fn open(&self, service: &str) -> Result<(Input, Output)> {
+    pub fn open(&self, service: &str) -> Result<(Input, Output)> {
         let mut ch = TTcpChannel::new();
         ch.open(format!("{}:{}", self.host, self.port))?;
 

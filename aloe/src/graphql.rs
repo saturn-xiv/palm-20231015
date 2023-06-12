@@ -1,16 +1,12 @@
 use std::ops::Deref;
 use std::sync::{Arc, Mutex};
 
-use actix_web::{get, route, web, HttpResponse, Responder, Result as WebResult};
-use actix_web_lab::respond::Html;
+use actix_web::{route, web, HttpResponse, Result as WebResult};
 use diesel::sqlite::SqliteConnection as Db;
-use juniper::{
-    graphql_object,
-    http::{graphiql::graphiql_source, GraphQLRequest},
-    EmptySubscription, FieldResult, RootNode,
-};
+use juniper::{graphql_object, http::GraphQLRequest, EmptySubscription, FieldResult, RootNode};
 use palm::{
     crypto::Hmac,
+    graphql_playground,
     handlers::{locale::Locale, peer::ClientIp, token::Token},
     jwt::openssl::OpenSsl as Jwt,
     session::Session,
@@ -19,7 +15,10 @@ use palm::{
 
 pub fn register(config: &mut web::ServiceConfig) {
     let schema = web::Data::new(Schema::new(Query, Mutation, EmptySubscription::new()));
-    config.app_data(schema).service(source).service(playground);
+    config
+        .app_data(schema)
+        .service(source)
+        .service(graphql_playground);
 }
 pub struct Context {
     pub session: Session,
@@ -258,9 +257,4 @@ async fn source(
     };
     let res = data.execute(&schema, &ctx).await;
     Ok(HttpResponse::Ok().json(res))
-}
-
-#[get("/graphiql")]
-async fn playground() -> impl Responder {
-    Html(graphiql_source("/graphql", None))
 }

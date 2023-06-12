@@ -3,6 +3,12 @@ use serde::{Deserialize, Serialize};
 
 use super::super::{HttpError, Result};
 
+// https://www.indexnow.org/documentation
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Profile {
+    pub key: String,
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct Body {

@@ -2,9 +2,22 @@ use std::io::Write;
 
 use hyper::StatusCode;
 use reqwest::header::CONTENT_TYPE;
+use serde::{Deserialize, Serialize};
 use xml::writer::{EmitterConfig, EventWriter, Result as XmlResult, XmlEvent};
 
 use super::super::{HttpError, Result, ToXml};
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Profile {
+    #[serde(rename = "site-verify")]
+    pub site_verify: Option<SiteVerify>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct SiteVerify {
+    pub id: String,
+    pub content: String,
+}
 
 pub struct Body {
     pub title: String,
