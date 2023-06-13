@@ -1,3 +1,4 @@
+pub mod attachment;
 pub mod user;
 
 use std::fmt::{self, Display};
@@ -10,6 +11,7 @@ use hyper::StatusCode;
 use juniper::Context as GraphQLContext;
 use orchid::Client as Orchid;
 use palm::{
+    aws::s3::Config as S3,
     cache::redis::{ClusterConnection as Cache, Pool as CachePool},
     has_permission, has_role,
     jwt::Jwt,
@@ -52,6 +54,7 @@ pub struct Context {
     pub orchid: Arc<Orchid>,
     pub musa: Arc<Musa>,
     pub queue: Arc<RabbitMq>,
+    pub s3: Arc<S3>,
     pub session: Session,
     pub enforcer: Arc<Mutex<Enforcer>>,
 }

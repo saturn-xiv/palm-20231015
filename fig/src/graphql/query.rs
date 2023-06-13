@@ -28,4 +28,20 @@ impl Query {
         let it = nut::graphql::user::UserItem::show(context, id).await?;
         Ok(it)
     }
+    #[graphql(description = "Index attachments")]
+    fn index_attachment(
+        context: &Context,
+        pager: Pager,
+    ) -> FieldResult<nut::graphql::attachment::IndexResponse> {
+        let it = nut::graphql::attachment::IndexResponse::new(context, &pager)?;
+        Ok(it)
+    }
+    #[graphql(description = "Show attachments")]
+    async fn show_attachment(
+        context: &Context,
+        form: nut::graphql::attachment::ShowRequest,
+    ) -> FieldResult<nut::graphql::attachment::ShowResponse> {
+        let it = form.handle(context).await?;
+        Ok(it)
+    }
 }
