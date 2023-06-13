@@ -11,7 +11,10 @@ use validator::Validate;
 
 use super::super::super::super::models::{
     log::{Dao as LogDao, Level as LogLevel},
-    user::{Action, Dao as UserDao, Item as User},
+    user::{
+        session::{Dao as UserSessionDao, ProviderType},
+        Action, Dao as UserDao, Item as User,
+    },
     wechat::mini_program_user::Dao as WechatMiniProgramUserDao,
 };
 use super::super::super::{Context, CurrentUserAdapter};
@@ -75,13 +78,19 @@ impl LoginRequest {
             Ok(user)
         })?;
 
-        let loquat = context.loquat.deref();
-        let token = Jwt::sign(
-            loquat,
-            &user.open_id,
-            &Action::SignIn.to_string(),
-            Duration::minutes(self.ttl as i64),
-        )?;
+        let jwt = context.loquat.deref();
+
+        let token = {
+            let ttl = Duration::seconds(self.ttl as i64);
+            let uid = UserSessionDao::create(
+                db,
+                user.user_id,
+                &ProviderType::WechatMiniProgram,
+                &context.session.client_ip,
+                ttl,
+            )?;
+            Jwt::sign(jwt, &uid, &Action::SignIn.to_string(), ttl)?
+        };
         Ok(LoginResponse {
             nickname: user.nickname.clone(),
             avatar_url: user.avatar_url,
@@ -134,7 +143,7 @@ impl BindRequest {
                 &context.session.client_ip,
                 Some(user.id),
                 &format!(
-                    "bind to wechat mini-program user({}, {}) ",
+                    "bind to wechat mini-program user({}, {})",
                     wu.app_id, wu.open_id
                 ),
             )?;

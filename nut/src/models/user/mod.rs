@@ -210,6 +210,7 @@ pub trait Dao {
     fn lock(&mut self, id: i32, on: bool) -> Result<()>;
     fn enable(&mut self, id: i32, on: bool) -> Result<()>;
     fn confirm(&mut self, id: i32) -> Result<()>;
+    fn delete(&mut self, id: i32) -> Result<()>;
     fn count(&mut self) -> Result<i64>;
     fn all(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>>;
     fn options(&mut self) -> Result<Vec<(i32, String, String)>>;
@@ -337,6 +338,17 @@ impl Dao for Connection {
         update(it)
             .set((
                 users::dsl::confirmed_at.eq(&Some(now)),
+                users::dsl::updated_at.eq(&now),
+            ))
+            .execute(self)?;
+        Ok(())
+    }
+    fn delete(&mut self, id: i32) -> Result<()> {
+        let now = Utc::now().naive_utc();
+        let it = users::dsl::users.filter(users::dsl::id.eq(id));
+        update(it)
+            .set((
+                users::dsl::deleted_at.eq(&Some(now)),
                 users::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;

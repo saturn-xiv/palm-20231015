@@ -148,7 +148,8 @@ use actix_web::{get, Responder};
 use actix_web_lab::respond::Html;
 use chrono::{DateTime, NaiveDateTime, Utc};
 use chrono_tz::Tz;
-use juniper::{http::graphiql::graphiql_source, GraphQLObject};
+use juniper::{http::graphiql::graphiql_source, GraphQLInputObject, GraphQLObject};
+use validator::Validate;
 use xml::writer::{EventWriter, Result as XmlWriterResult};
 
 pub use self::result::{Error, GrpcResult, HttpError, HttpResult, Result};
@@ -317,6 +318,8 @@ pub trait ToXml {
     fn write<W: Write>(&self, wrt: &mut EventWriter<W>) -> XmlWriterResult<()>;
 }
 
+#[derive(GraphQLObject)]
+#[graphql(name = "Pagination")]
 pub struct Pagination {
     pub page: i32,
     pub size: i32,
@@ -326,9 +329,11 @@ pub struct Pagination {
 }
 
 impl Pagination {
-    pub fn new(pager: &Pager, total: i32) -> Self {
+    pub fn new(pager: &Pager, total: i64) -> Self {
         let page = pager.page(total);
         let size = pager.size();
+
+        let total = total as i32;
         Self {
             page,
             size,
@@ -339,17 +344,23 @@ impl Pagination {
     }
 }
 
+#[derive(GraphQLInputObject, Validate)]
+#[graphql(name = "Pager")]
 pub struct Pager {
+    #[validate(range(min = 5, max = 1_000))]
     pub size: i32,
+    #[validate(range(min = 1))]
     pub page: i32,
 }
 
 impl Pager {
-    pub fn offset(&self, total: i32) -> i32 {
-        (self.page(total) - 1) * self.size()
+    pub fn offset(&self, total: i64) -> i64 {
+        let v = (self.page(total) - 1) * self.size();
+        v as i64
     }
 
-    pub fn page(&self, total: i32) -> i32 {
+    pub fn page(&self, total: i64) -> i32 {
+        let total = total as i32;
         let size = self.size();
         if total < size || self.page < 1 {
             return 1;
