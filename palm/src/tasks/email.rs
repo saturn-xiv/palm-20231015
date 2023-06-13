@@ -18,6 +18,7 @@ pub struct Task {
     pub cc: Vec<Address>,
     pub bcc: Vec<Address>,
 }
+
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Attachment {
     pub payload: Vec<u8>,

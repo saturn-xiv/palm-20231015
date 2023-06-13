@@ -15,6 +15,7 @@ use palm::{
     cache::redis::Pool as CachePool,
     graphql_playground,
     handlers::{locale::Locale, peer::ClientIp, token::Token},
+    queue::amqp::RabbitMq,
     session::Session,
     thrift::loquat::Config as Loquat,
 };
@@ -36,6 +37,7 @@ type Schema = RootNode<'static, query::Query, mutation::Mutation, EmptySubscript
 type Services = (
     web::Data<DbPool>,
     web::Data<CachePool>,
+    web::Data<RabbitMq>,
     web::Data<Loquat>,
     web::Data<Orchid>,
     web::Data<Musa>,
@@ -45,7 +47,7 @@ type Services = (
 #[route("/graphql", method = "GET", method = "POST")]
 async fn source(
     (client_ip, locale, token): (ClientIp, Locale, Token),
-    (db, cache, loquat, orchid, musa, enforcer): Services,
+    (db, cache, queue, loquat, orchid, musa, enforcer): Services,
     schema: web::Data<Schema>,
     data: web::Json<GraphQLRequest>,
 ) -> Result<HttpResponse> {
@@ -56,10 +58,12 @@ async fn source(
     let enforcer = enforcer.into_inner();
     let loquat = loquat.into_inner();
     let orchid = orchid.into_inner();
+    let queue = queue.into_inner();
     let musa = musa.into_inner();
     let ctx = Context {
         db: db.clone(),
         cache: cache.clone(),
+        queue,
         loquat,
         orchid,
         musa,

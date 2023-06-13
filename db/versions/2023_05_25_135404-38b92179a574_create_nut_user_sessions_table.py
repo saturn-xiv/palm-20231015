@@ -22,12 +22,16 @@ def upgrade() -> None:
         sa.Column('id', sa.Integer, primary_key=True),
         sa.Column('user_id', sa.Integer, nullable=False),
         sa.Column('uid', sa.String(length=36), nullable=False, unique=True),
+        sa.Column('provider_type', sa.String(
+            length=31), nullable=False, unique=True),
         sa.Column('ip', sa.String(length=45), nullable=False),
         sa.Column('expired_at', sa.DateTime, nullable=False),
         sa.Column('created_at', sa.DateTime,
                   nullable=False, server_default=sa.func.current_timestamp())
     )
     op.create_index('idx_user_sessions_ip', 'user_sessions', ['ip'])
+    op.create_index('idx_user_sessions_provider_type',
+                    'user_sessions', ['provider_type'])
 
 
 def downgrade() -> None:

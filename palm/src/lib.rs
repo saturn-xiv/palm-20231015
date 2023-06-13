@@ -182,7 +182,7 @@ pub struct Succeeded {
 impl Default for Succeeded {
     fn default() -> Self {
         Self {
-            created_at: Utc::now().naive_local(),
+            created_at: Utc::now().naive_utc(),
         }
     }
 }

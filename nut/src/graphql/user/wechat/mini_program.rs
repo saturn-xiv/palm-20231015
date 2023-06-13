@@ -9,12 +9,12 @@ use orchid::v1::{
 use palm::{jwt::Jwt, thrift::loquat::Config as Loquat, Error, Result};
 use validator::Validate;
 
-use super::super::super::super::super::models::{
+use super::super::super::super::models::{
     log::{Dao as LogDao, Level as LogLevel},
     user::{Action, Dao as UserDao, Item as User},
     wechat::mini_program_user::Dao as WechatMiniProgramUserDao,
 };
-use super::super::super::super::{Context, CurrentUserAdapter};
+use super::super::super::{Context, CurrentUserAdapter};
 
 #[derive(GraphQLInputObject, Validate, Debug)]
 #[graphql(
@@ -116,7 +116,7 @@ impl BindRequest {
         let ch = ch.deref_mut();
         let loquat = context.loquat.deref();
 
-        let user = context.session.current_user(db, ch, loquat)?;
+        let (user, _) = context.session.current_user(db, ch, loquat)?;
         db.transaction::<_, Error, _>(move |db| {
             let iu = UserDao::by_nickname(db, &self.nickname)?;
             {
@@ -170,7 +170,7 @@ impl UpdateProfileRequest {
         let ch = ch.deref_mut();
         let loquat = context.loquat.deref();
 
-        let user = context.session.current_user(db, ch, loquat)?;
+        let (user, _) = context.session.current_user(db, ch, loquat)?;
         db.transaction::<_, Error, _>(move |db| {
             {
                 let it = WechatMiniProgramUserDao::by_open_id(db, &self.app_id, &self.open_id)?;

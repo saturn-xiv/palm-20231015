@@ -1,5 +1,4 @@
-pub mod mutation;
-pub mod query;
+pub mod user;
 
 use std::fmt::{self, Display};
 use std::str::FromStr;
@@ -14,6 +13,7 @@ use palm::{
     cache::redis::{ClusterConnection as Cache, Pool as CachePool},
     has_permission, has_role,
     jwt::Jwt,
+    queue::amqp::RabbitMq,
     rbac::{Resource, Role, ToSubject},
     session::Session,
     thrift::loquat::Config as Loquat,
@@ -23,7 +23,10 @@ use serde::{Deserialize, Serialize};
 use tokio::sync::Mutex;
 
 use super::{
-    models::user::{Action, Dao as UserDao, Item as User},
+    models::user::{
+        session::{Dao as UserSessionDao, ProviderType as UserProviderType},
+        Action, Dao as UserDao, Item as User,
+    },
     orm::postgresql::{Connection as Db, Pool as DbPool},
 };
 
@@ -48,6 +51,7 @@ pub struct Context {
     pub loquat: Arc<Loquat>,
     pub orchid: Arc<Orchid>,
     pub musa: Arc<Musa>,
+    pub queue: Arc<RabbitMq>,
     pub session: Session,
     pub enforcer: Arc<Mutex<Enforcer>>,
 }
@@ -55,18 +59,27 @@ pub struct Context {
 impl GraphQLContext for Context {}
 
 pub trait CurrentUserAdapter {
-    fn current_user<P: Jwt>(&self, db: &mut Db, ch: &mut Cache, jwt: &P) -> Result<User>;
+    fn current_user<P: Jwt>(
+        &self,
+        db: &mut Db,
+        ch: &mut Cache,
+        jwt: &P,
+    ) -> Result<(User, UserProviderType)>;
 }
 
 impl CurrentUserAdapter for Session {
-    fn current_user<P: Jwt>(&self, db: &mut Db, _ch: &mut Cache, jwt: &P) -> Result<User> {
+    fn current_user<P: Jwt>(
+        &self,
+        db: &mut Db,
+        _ch: &mut Cache,
+        jwt: &P,
+    ) -> Result<(User, UserProviderType)> {
         if let Some(ref token) = self.token {
-            // debug!("### check token {} with aud {}", token, Action::SignIn);
-            let nickname = jwt.verify(token, &Action::SignIn.to_string())?;
-
-            let it = UserDao::by_nickname(db, &nickname)?;
-            it.available()?;
-            return Ok(it);
+            let uid = jwt.verify(token, &Action::SignIn.to_string())?;
+            let su = UserSessionDao::by_uid(db, &uid)?;
+            let iu = UserDao::by_id(db, su.user_id)?;
+            iu.available()?;
+            return Ok((iu, su.provider_type.parse()?));
         }
 
         Err(Box::new(HttpError(

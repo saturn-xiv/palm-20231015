@@ -4,19 +4,14 @@ use std::net::{IpAddr, Ipv4Addr, SocketAddr};
 
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
+#[derive(Serialize, Deserialize, Default, PartialEq, Eq, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub enum Environment {
     Production,
     Staging,
+    #[default]
     Development,
     Test,
-}
-
-impl Default for Environment {
-    fn default() -> Self {
-        Self::Development
-    }
 }
 
 impl fmt::Display for Environment {

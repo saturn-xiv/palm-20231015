@@ -1,5 +1,5 @@
 use chrono::{Duration, NaiveDateTime, Utc};
-use diesel::{insert_into, prelude::*};
+use diesel::{delete, insert_into, prelude::*};
 use palm::Result;
 use serde::{Deserialize, Serialize};
 
@@ -29,6 +29,7 @@ pub trait Dao {
     fn by_id(&mut self, id: i32) -> Result<Item>;
     fn by_ip(&mut self, ip: &str) -> Result<Vec<Item>>;
     fn by_user(&mut self, user: i32) -> Result<Vec<Item>>;
+    fn clean(&mut self) -> Result<()>;
 }
 
 impl Dao for Connection {
@@ -40,7 +41,7 @@ impl Dao for Connection {
         reason: &str,
         ttl: Duration,
     ) -> Result<()> {
-        let expired_at = Utc::now().naive_local() + ttl;
+        let expired_at = Utc::now().naive_utc() + ttl;
         insert_into(user_bans::dsl::user_bans)
             .values((
                 user_bans::dsl::creator_id.eq(creator),
@@ -69,5 +70,11 @@ impl Dao for Connection {
             .filter(user_bans::dsl::user_id.eq(user))
             .load(self)?;
         Ok(items)
+    }
+    fn clean(&mut self) -> Result<()> {
+        let now = Utc::now().naive_utc();
+        delete(user_bans::dsl::user_bans.filter(user_bans::dsl::expired_at.lt(now)))
+            .execute(self)?;
+        Ok(())
     }
 }
