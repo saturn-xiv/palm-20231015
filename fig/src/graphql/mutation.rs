@@ -143,4 +143,151 @@ impl Mutation {
         nut::graphql::attachment::delete(context, id).await?;
         Ok(Succeeded::default())
     }
+
+    #[graphql(description = "Init web-site system")]
+    async fn install(
+        context: &Context,
+        form: nut::graphql::site::InstallRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Clear cache")]
+    async fn clear_cache(context: &Context) -> FieldResult<Succeeded> {
+        nut::graphql::site::clear_cache(context).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Set site into maintenance mode")]
+    async fn set_site_maintenance_mode(
+        context: &Context,
+        form: nut::graphql::site::SetMaintenanceModeRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Set site author")]
+    async fn set_site_author(
+        context: &Context,
+        form: nut::graphql::site::info::SetAuthorRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Set site copyright")]
+    async fn set_site_copyright(
+        context: &Context,
+        form: nut::graphql::site::info::SetCopyrightRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Set site logo")]
+    async fn set_site_logo(
+        context: &Context,
+        form: nut::graphql::site::info::SetLogoRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Set site keywords")]
+    async fn set_site_keywords(
+        context: &Context,
+        form: nut::graphql::site::info::SetKeywordsRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Set site info")]
+    async fn set_site_info(
+        context: &Context,
+        form: nut::graphql::site::info::SetRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Set site twilio profile")]
+    async fn site_set_twilio_profile(
+        context: &Context,
+        form: nut::graphql::site::twilio::SetRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Ping site twilio profile")]
+    async fn site_ping_twilio(
+        context: &Context,
+        form: nut::graphql::site::twilio::PingRequest,
+        profile: nut::graphql::site::twilio::SetRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context, &profile).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Set site smtp profile")]
+    async fn site_set_smtp_profile(
+        context: &Context,
+        form: nut::graphql::site::smtp::SetRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Ping site smtp profile")]
+    async fn site_ping_smtp(
+        context: &Context,
+        form: nut::graphql::site::smtp::PingRequest,
+        profile: nut::graphql::site::smtp::SetRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context, &profile).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Set site google profile")]
+    async fn site_set_google_profile(
+        context: &Context,
+        form: nut::graphql::site::google::SetRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Ping site google profile")]
+    async fn site_ping_google(
+        context: &Context,
+        form: nut::graphql::site::google::PingRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context).await?;
+        Ok(Succeeded::default())
+    }
+
+    #[graphql(description = "Set site baidu profile")]
+    async fn site_set_baidu_profile(
+        context: &Context,
+        form: nut::graphql::site::baidu::SetRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Ping site baidu profile")]
+    async fn site_ping_baidu(
+        context: &Context,
+        form: nut::graphql::site::baidu::PingRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context).await?;
+        Ok(Succeeded::default())
+    }
+
+    #[graphql(description = "Set site index-now profile")]
+    async fn site_set_index_now_profile(
+        context: &Context,
+        form: nut::graphql::site::index_now::SetRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Ping site index-now profile")]
+    async fn site_ping_index_now(
+        context: &Context,
+        form: nut::graphql::site::index_now::PingRequest,
+        profile: nut::graphql::site::index_now::SetRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context, &profile).await?;
+        Ok(Succeeded::default())
+    }
 }

@@ -1,3 +1,4 @@
+pub mod google;
 pub mod wechat;
 
 use std::ops::{Deref, DerefMut};

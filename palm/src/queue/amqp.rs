@@ -67,8 +67,8 @@ impl Config {
 
 #[derive(Clone)]
 pub struct RabbitMq {
-    uri: AMQPUri,
-    conn: ConnectionProperties,
+    pub uri: AMQPUri,
+    pub conn: ConnectionProperties,
 }
 
 impl RabbitMq {

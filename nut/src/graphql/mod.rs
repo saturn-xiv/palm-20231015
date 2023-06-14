@@ -1,4 +1,6 @@
 pub mod attachment;
+pub mod category;
+pub mod site;
 pub mod user;
 
 use std::fmt::{self, Display};
@@ -17,6 +19,7 @@ use palm::{
     jwt::Jwt,
     queue::amqp::RabbitMq,
     rbac::{Resource, Role, ToSubject},
+    search::OpenSearch,
     session::Session,
     thrift::loquat::Config as Loquat,
     to_code, Error, HttpError, Result,
@@ -54,6 +57,7 @@ pub struct Context {
     pub orchid: Arc<Orchid>,
     pub musa: Arc<Musa>,
     pub queue: Arc<RabbitMq>,
+    pub search: Arc<OpenSearch>,
     pub s3: Arc<S3>,
     pub session: Session,
     pub enforcer: Arc<Mutex<Enforcer>>,
@@ -127,8 +131,6 @@ impl User {
 #[derive(Serialize, Deserialize, Default, PartialEq, Debug, Clone)]
 pub struct Oauth2State {
     pub user: Option<String>,
-    pub goto: String,
-    pub host: String,
     pub id: String,
 }
 

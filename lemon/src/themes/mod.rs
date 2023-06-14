@@ -36,6 +36,9 @@ impl fmt::Display for Theme {
 pub struct Layout {}
 
 impl Layout {
-    pub const SITE_TITLE: &str = "site.title";
-    pub const SITE_DESCRIPTION: &str = "site.description";
+    pub const AUTHOR_NAME: &'static str = "site.author.name";
+    pub const AUTHOR_EMAIL: &'static str = "site.author.email";
+    pub const SITE_TITLE: &'static str = "site.title";
+    pub const SITE_SUBHEAD: &'static str = "site.subhead";
+    pub const SITE_DESCRIPTION: &'static str = "site.description";
 }

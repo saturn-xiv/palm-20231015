@@ -40,6 +40,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let rabbitmq = web::Data::new(cfg.rabbitmq.open());
     let orchid = web::Data::new(cfg.orchid.clone());
     let s3 = web::Data::new(S3::from(cfg.minio.clone()));
+    let opensearch = web::Data::new(cfg.opensearch.open()?);
 
     let enforcer = web::Data::new(Mutex::new(cfg.postgresql.casbin().await?));
     {
@@ -113,6 +114,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .app_data(orchid.clone())
             .app_data(musa.clone())
             .app_data(s3.clone())
+            .app_data(opensearch.clone())
             .app_data(enforcer.clone())
             .wrap(if is_prod { cors } else { Cors::permissive() })
             .wrap(middleware::Logger::default())
