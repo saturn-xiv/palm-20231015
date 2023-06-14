@@ -34,7 +34,7 @@ function build_grpc() {
     fi
     mkdir -p $BUILD_ROOT
     cd $BUILD_ROOT
-    cmake -DCMAKE_BUILD_TYPE=Release \
+    CC=clang CXX=clang++ cmake -DCMAKE_BUILD_TYPE=Release \
     -DABSL_PROPAGATE_CXX_STD=ON \
     -DgRPC_INSTALL=ON -DgRPC_SSL_PROVIDER=package -DgRPC_BUILD_TESTS=OFF \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_ROOT $SOURCE_ROOT
