@@ -124,4 +124,43 @@ impl Query {
         let it = nut::graphql::site::index_now::GetResponse::new(context).await?;
         Ok(it)
     }
+
+    #[graphql(description = "Load locale by id")]
+    fn show_locale(context: &Context, id: i32) -> FieldResult<nut::graphql::locale::Item> {
+        let it = nut::graphql::locale::show(context, id)?;
+        Ok(it)
+    }
+    #[graphql(description = "Load locale by lang")]
+    fn index_locale_by_lang(
+        context: &Context,
+        lang: String,
+    ) -> FieldResult<Vec<nut::graphql::locale::Item>> {
+        let items = nut::graphql::locale::by_lang(context, &lang)?;
+        Ok(items)
+    }
+    #[graphql(description = "Load all locale")]
+    fn index_locale(
+        context: &Context,
+        pager: Pager,
+    ) -> FieldResult<nut::graphql::locale::IndexResponse> {
+        let it = nut::graphql::locale::IndexResponse::new(context, &pager)?;
+        Ok(it)
+    }
+
+    #[graphql(description = "Load leave-word by id")]
+    async fn show_leave_word(
+        context: &Context,
+        id: i32,
+    ) -> FieldResult<nut::graphql::leave_word::Item> {
+        let it = nut::graphql::leave_word::show(context, id).await?;
+        Ok(it)
+    }
+    #[graphql(description = "Load all leave-word")]
+    async fn index_leave_word(
+        context: &Context,
+        pager: Pager,
+    ) -> FieldResult<nut::graphql::leave_word::IndexResponse> {
+        let it = nut::graphql::leave_word::IndexResponse::new(context, &pager).await?;
+        Ok(it)
+    }
 }

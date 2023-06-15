@@ -290,4 +290,41 @@ impl Mutation {
         form.handle(context, &profile).await?;
         Ok(Succeeded::default())
     }
+
+    #[graphql(description = "Create a new locale")]
+    async fn create_locale(
+        context: &Context,
+        form: nut::graphql::locale::Create,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Update a locale")]
+    async fn update_locale(
+        context: &Context,
+        id: i32,
+        form: nut::graphql::locale::Update,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context, id).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Delete a locale")]
+    async fn delete_locale(context: &Context, id: i32) -> FieldResult<Succeeded> {
+        nut::graphql::locale::delete(context, id).await?;
+        Ok(Succeeded::default())
+    }
+
+    #[graphql(description = "Create a leave-word")]
+    fn create_leave_word(
+        context: &Context,
+        form: nut::graphql::leave_word::Create,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context)?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Delete a leave-word")]
+    async fn delete_leave_word(context: &Context, id: i32) -> FieldResult<Succeeded> {
+        nut::graphql::leave_word::delete(context, id).await?;
+        Ok(Succeeded::default())
+    }
 }
