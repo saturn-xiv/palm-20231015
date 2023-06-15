@@ -31,6 +31,7 @@ pub struct Item {
 pub trait Dao {
     fn all(&mut self) -> Result<Vec<Item>>;
     fn by_id(&mut self, id: i32) -> Result<Item>;
+    fn by_token(&mut self, token: &GoogleOpenIdToken) -> Result<Item>;
     fn sign_in(
         &mut self,
         user_id: Option<i32>,
@@ -79,6 +80,13 @@ impl Dao for Connection {
             }
         }
         Ok(())
+    }
+
+    fn by_token(&mut self, token: &GoogleOpenIdToken) -> Result<Item> {
+        let it = google_users::dsl::google_users
+            .filter(google_users::dsl::sub.eq(&token.sub))
+            .first::<Item>(self)?;
+        Ok(it)
     }
     fn sign_in(
         &mut self,

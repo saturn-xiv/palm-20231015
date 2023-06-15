@@ -17,19 +17,16 @@ use super::super::super::models::{
     google::user::Dao as GoogleUserDao,
     log::{Dao as LogDao, Level as LogLevel},
     setting::Dao as SettingDao,
-    user::{
-        session::{Dao as UserSessionDao, ProviderType},
-        Dao as UserDao, Item as User,
-    },
+    user::{session::ProviderType, Dao as UserDao, Item as User},
 };
-use super::super::{Context, Oauth2State};
+use super::super::{Context, CurrentUserAdapter, Oauth2State};
 use super::SignInResponse;
 
 #[derive(GraphQLInputObject, Validate)]
 #[graphql(name = "GoogleUserSignInUrlRequest")]
 pub struct SignInUrlRequest {
     #[validate(length(min = 1, max = 127))]
-    pub state: String,
+    pub id: String,
     #[validate(length(min = 1, max = 63))]
     pub project: String,
     #[validate(url, length(min = 1, max = 255))]
@@ -45,13 +42,23 @@ impl SignInUrlRequest {
         let mut db = context.db.get()?;
         let db = db.deref_mut();
 
+        let jwt = context.loquat.deref();
+        let user = context
+            .session
+            .current_user(db, ch, jwt)
+            .map(|(x, _, _)| x.nickname)
+            .ok();
+        let state = Oauth2State {
+            user,
+            id: self.id.clone(),
+        };
+
         let key = GoogleClientSecret::key(&self.project);
         let cfg: GoogleClientSecret = {
             let aes = context.loquat.deref();
             let buf = SettingDao::get(db, aes, &key, None)?;
             flexbuffers::from_slice(&buf)?
         };
-        let state: Oauth2State = self.state.parse()?;
 
         let (url, nonce) = cfg.web.openid_connect(
             vec![
@@ -77,10 +84,8 @@ pub struct SignInUrlResponse {
 #[derive(GraphQLInputObject, Validate, Debug)]
 #[graphql(name = "GoogleUserSignInRequest")]
 pub struct SignInRequest {
-    #[validate(length(max = 63))]
-    pub id: String,
-    #[validate(length(equal = 36))]
-    pub user: Option<String>,
+    #[validate(length(max = 255))]
+    pub state: String,
     #[validate(length(min = 1, max = 63))]
     pub project: String,
     #[validate(length(min = 1, max = 63))]
@@ -102,10 +107,7 @@ impl SignInRequest {
         let mut db = context.db.get()?;
         let db = db.deref_mut();
 
-        let state = Oauth2State {
-            user: self.user.clone(),
-            id: self.id.clone(),
-        };
+        let state: Oauth2State = self.state.parse()?;
         debug!("google oauth2 sign {:?}, {:?}", self, state);
 
         let cfg: GoogleClientSecret = {
@@ -129,29 +131,31 @@ impl SignInRequest {
             .await?;
         let token: GoogleIdToken = serde_json::from_str(&code.id_token)?;
 
-        let user = db.transaction::<_, Error, _>(move |db| {
-            let user = match state.user {
-                Some(ref uid) => {
-                    let it = {
-                        let su = UserSessionDao::by_uid(db, uid)?;
-                        UserDao::by_id(db, su.id)?
-                    };
-                    it.available()?;
-                    Some(it.id)
-                }
-                None => None,
-            };
-            let user = GoogleUserDao::sign_in(db, user, &code, &token, &context.session.client_ip)?;
-            LogDao::add::<_, User>(
-                db,
-                user.id,
-                &LogLevel::Info,
-                &context.session.client_ip,
-                Some(user.id),
-                "sign in by google",
-            )?;
-            Ok(user)
-        })?;
+        let user = {
+            let token = token.clone();
+            db.transaction::<_, Error, _>(move |db| {
+                let user = match state.user {
+                    Some(ref nickname) => {
+                        let it = UserDao::by_nickname(db, nickname)?;
+                        it.available()?;
+                        Some(it.id)
+                    }
+                    None => None,
+                };
+                let user =
+                    GoogleUserDao::sign_in(db, user, &code, &token, &context.session.client_ip)?;
+                LogDao::add::<_, User>(
+                    db,
+                    user.id,
+                    &LogLevel::Info,
+                    &context.session.client_ip,
+                    Some(user.id),
+                    "sign in by google",
+                )?;
+                Ok(user)
+            })?
+        };
+        let google_user_id = GoogleUserDao::by_token(db, &token)?.id;
 
         let jwt = context.loquat.deref();
         let enf = context.enforcer.deref();
@@ -162,6 +166,7 @@ impl SignInRequest {
             jwt,
             Duration::seconds(self.ttl as i64),
             ProviderType::Google,
+            google_user_id,
             &context.session.client_ip,
         )
         .await?;

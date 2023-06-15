@@ -63,7 +63,7 @@ impl SetRequest {
         let db = db.deref_mut();
         let mut ch = context.cache.get()?;
         let ch = ch.deref_mut();
-        let (user, _) = {
+        let (user, _, _) = {
             let jwt = context.loquat.deref();
             context.session.current_user(db, ch, jwt)?
         };
@@ -106,7 +106,7 @@ impl PingRequest {
         let db = db.deref_mut();
         let mut ch = context.cache.get()?;
         let ch = ch.deref_mut();
-        let (user, _) = {
+        let (user, _, _) = {
             let jwt = context.loquat.deref();
             context.session.current_user(db, ch, jwt)?
         };
@@ -176,7 +176,7 @@ impl GetResponse {
         let db = db.deref_mut();
         let mut ch = context.cache.get()?;
         let ch = ch.deref_mut();
-        let (user, _) = {
+        let (user, _, _) = {
             let jwt = context.loquat.deref();
             context.session.current_user(db, ch, jwt)?
         };

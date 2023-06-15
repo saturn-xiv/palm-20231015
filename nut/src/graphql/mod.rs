@@ -2,6 +2,7 @@ pub mod attachment;
 pub mod category;
 pub mod leave_word;
 pub mod locale;
+pub mod policy;
 pub mod site;
 pub mod user;
 
@@ -20,7 +21,7 @@ use palm::{
     has_permission, has_role,
     jwt::Jwt,
     queue::amqp::RabbitMq,
-    rbac::{Resource, Role, ToSubject},
+    rbac::{Resource, Role, Subject},
     search::OpenSearch,
     session::Session,
     thrift::loquat::Config as Loquat,
@@ -73,7 +74,7 @@ pub trait CurrentUserAdapter {
         db: &mut Db,
         ch: &mut Cache,
         jwt: &P,
-    ) -> Result<(User, UserProviderType)>;
+    ) -> Result<(User, String, UserProviderType)>;
 }
 
 impl CurrentUserAdapter for Session {
@@ -82,13 +83,13 @@ impl CurrentUserAdapter for Session {
         db: &mut Db,
         _ch: &mut Cache,
         jwt: &P,
-    ) -> Result<(User, UserProviderType)> {
+    ) -> Result<(User, String, UserProviderType)> {
         if let Some(ref token) = self.token {
             let uid = jwt.verify(token, &Action::SignIn.to_string())?;
             let su = UserSessionDao::by_uid(db, &uid)?;
             let iu = UserDao::by_id(db, su.user_id)?;
             iu.available()?;
-            return Ok((iu, su.provider_type.parse()?));
+            return Ok((iu, su.uid, su.provider_type.parse()?));
         }
 
         Err(Box::new(HttpError(
@@ -100,9 +101,9 @@ impl CurrentUserAdapter for Session {
 
 impl User {
     pub async fn has(&self, enforcer: &Mutex<Enforcer>, role: &Role) -> bool {
-        let role = role.to_subject();
-        let subject = self.to_subject();
-        has_role!(enforcer, &subject, &role)
+        let role = Subject::to(role);
+        let user = Subject::to(self);
+        has_role!(enforcer, &user, &role)
     }
     pub async fn is_administrator(&self, enforcer: &Mutex<Enforcer>) -> bool {
         self.has(enforcer, &Role::Administrator).await
@@ -119,14 +120,14 @@ impl User {
         if self.is_administrator(enforcer).await {
             return true;
         }
-        let subject = self.to_subject();
+        let user = Subject::to(self);
         let action = {
             let it = operation.to_string();
             to_code!(it)
         };
 
         let object = Resource::new::<R>(resource_id).to_string();
-        has_permission!(enforcer, &subject, &object, &action)
+        has_permission!(enforcer, &user, &object, &action)
     }
 }
 

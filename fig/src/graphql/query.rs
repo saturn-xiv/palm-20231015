@@ -29,6 +29,36 @@ impl Query {
         let it = nut::graphql::user::UserItem::show(context, id).await?;
         Ok(it)
     }
+    #[graphql(description = "Get wechat oauth2 sign in state")]
+    async fn wechat_oauth2_sign_in_state(
+        context: &Context,
+        form: nut::graphql::user::wechat::oauth2::LoginStateRequest,
+    ) -> FieldResult<String> {
+        let it = form.handle(context).await?;
+        Ok(it)
+    }
+    #[graphql(description = "Get wechat oauth2 sign in url")]
+    async fn wechat_oauth2_sign_in_url(
+        context: &Context,
+        form: nut::graphql::user::wechat::oauth2::LoginUrlRequest,
+    ) -> FieldResult<String> {
+        let it = form.handle(context).await?;
+        Ok(it)
+    }
+    #[graphql(description = "List wechat oauth2 user")]
+    async fn index_wechat_oauth2_user(
+        context: &Context,
+    ) -> FieldResult<Vec<nut::graphql::user::wechat::oauth2::UserItem>> {
+        let items = nut::graphql::user::wechat::oauth2::UserItem::index(context).await?;
+        Ok(items)
+    }
+    #[graphql(description = "List wechat mini-program user")]
+    async fn index_wechat_mini_program_user(
+        context: &Context,
+    ) -> FieldResult<Vec<nut::graphql::user::wechat::mini_program::UserItem>> {
+        let items = nut::graphql::user::wechat::mini_program::UserItem::index(context).await?;
+        Ok(items)
+    }
 
     #[graphql(description = "Index attachments")]
     fn index_attachment(
@@ -162,5 +192,65 @@ impl Query {
     ) -> FieldResult<nut::graphql::leave_word::IndexResponse> {
         let it = nut::graphql::leave_word::IndexResponse::new(context, &pager).await?;
         Ok(it)
+    }
+
+    #[graphql(description = "All rbac user")]
+    async fn index_rbac_user(context: &Context) -> FieldResult<Vec<nut::graphql::user::UserItem>> {
+        let items = nut::graphql::policy::all_users(context).await?;
+        Ok(items)
+    }
+    #[graphql(description = "All rbac resource")]
+    async fn index_rbac_resource(
+        context: &Context,
+    ) -> FieldResult<Vec<nut::graphql::policy::ResourceItem>> {
+        let items = nut::graphql::policy::ResourceItem::all(context).await?;
+        Ok(items)
+    }
+    #[graphql(description = "All rbac operation")]
+    async fn index_rbac_operation(context: &Context) -> FieldResult<Vec<String>> {
+        let items = nut::graphql::policy::all_operations(context).await?;
+        Ok(items)
+    }
+    #[graphql(description = "All rbac role")]
+    async fn index_rbac_role(context: &Context) -> FieldResult<Vec<String>> {
+        let items = nut::graphql::policy::all_roles(context).await?;
+        Ok(items)
+    }
+    #[graphql(description = "Get rbac role by user")]
+    async fn index_rbac_role_by_user(context: &Context, user: i32) -> FieldResult<Vec<String>> {
+        let items = nut::graphql::policy::roles_for_user(context, user).await?;
+        Ok(items)
+    }
+    #[graphql(description = "Get rbac implicit role by user")]
+    async fn index_rbac_implicit_role_by_user(
+        context: &Context,
+        user: i32,
+    ) -> FieldResult<Vec<String>> {
+        let items = nut::graphql::policy::implicit_roles_for_user(context, user).await?;
+        Ok(items)
+    }
+    #[graphql(description = "Get rbac user by role")]
+    async fn index_rbac_user_by_role(
+        context: &Context,
+        role: String,
+    ) -> FieldResult<Vec<nut::graphql::user::UserItem>> {
+        let items = nut::graphql::policy::users_by_role(context, &role).await?;
+        Ok(items)
+    }
+    #[graphql(description = "Get rbac permissions by user")]
+    async fn index_rbac_permissions_by_role(
+        context: &Context,
+        user: i32,
+    ) -> FieldResult<Vec<nut::graphql::policy::PermissionItem>> {
+        let items = nut::graphql::policy::get_permissions_for_user(context, user).await?;
+        Ok(items)
+    }
+    #[graphql(description = "Get rbac implicit permissions by user")]
+    async fn index_rbac_implicit_permissions_by_role(
+        context: &Context,
+        user: i32,
+    ) -> FieldResult<Vec<nut::graphql::policy::PermissionItem>> {
+        let items = nut::graphql::policy::get_implicit_permissions_for_user(context, user).await?;
+        Ok(items)
     }
 }

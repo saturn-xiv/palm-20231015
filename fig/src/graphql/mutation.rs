@@ -138,6 +138,80 @@ impl Mutation {
         Ok(Succeeded::default())
     }
 
+    #[graphql(description = "Sign in by wechat oauth2")]
+    async fn sign_in_by_wechat_oauth2(
+        context: &Context,
+        form: nut::graphql::user::wechat::oauth2::LoginRequest,
+    ) -> FieldResult<nut::graphql::user::SignInResponse> {
+        let it = form.handle(context).await?;
+        Ok(it)
+    }
+    #[graphql(description = "Delete wechat oauth2 user")]
+    async fn delete_wechat_oauth2_user(context: &Context, id: i32) -> FieldResult<Succeeded> {
+        nut::graphql::user::wechat::oauth2::delete(context, id).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Bind wechat oauth2 user")]
+    async fn bind_wechat_oauth2_user_by_id(
+        context: &Context,
+        oauth2_user_id: i32,
+        user_id: i32,
+    ) -> FieldResult<Succeeded> {
+        nut::graphql::user::wechat::oauth2::bind_by_id(context, oauth2_user_id, user_id).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Bind wechat oauth2 user")]
+    fn bind_wechat_oauth2_user_by_account(
+        context: &Context,
+        form: nut::graphql::user::wechat::oauth2::BindByAccountRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context)?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Sign in by wechat mini-program")]
+    async fn sign_in_by_wechat_mini_program(
+        context: &Context,
+        form: nut::graphql::user::wechat::mini_program::LoginRequest,
+    ) -> FieldResult<nut::graphql::user::SignInResponse> {
+        let it = form.handle(context).await?;
+        Ok(it)
+    }
+    #[graphql(description = "Bind wechat mini-program user")]
+    fn bind_wechat_mini_program_user_by_account(
+        context: &Context,
+        form: nut::graphql::user::wechat::mini_program::BindByAccountRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context)?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Bind wechat mini-program user")]
+    async fn bind_wechat_mini_program_user_by_id(
+        context: &Context,
+        mini_program_user_id: i32,
+        user_id: i32,
+    ) -> FieldResult<Succeeded> {
+        nut::graphql::user::wechat::mini_program::bind_by_id(
+            context,
+            mini_program_user_id,
+            user_id,
+        )
+        .await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Update wechat mini-program profile")]
+    fn update_wechat_mini_program_user_profile(
+        context: &Context,
+        form: nut::graphql::user::wechat::mini_program::UpdateProfileRequest,
+    ) -> FieldResult<Succeeded> {
+        form.handle(context)?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Delete wechat mini-program user")]
+    async fn delete_wechat_mini_program_user(context: &Context, id: i32) -> FieldResult<Succeeded> {
+        nut::graphql::user::wechat::mini_program::delete(context, id).await?;
+        Ok(Succeeded::default())
+    }
+
     #[graphql(description = "Delete attachment")]
     async fn delete_attachment(context: &Context, id: i32) -> FieldResult<Succeeded> {
         nut::graphql::attachment::delete(context, id).await?;
@@ -325,6 +399,81 @@ impl Mutation {
     #[graphql(description = "Delete a leave-word")]
     async fn delete_leave_word(context: &Context, id: i32) -> FieldResult<Succeeded> {
         nut::graphql::leave_word::delete(context, id).await?;
+        Ok(Succeeded::default())
+    }
+
+    #[graphql(description = "Delete roles for user")]
+    async fn rbac_delete_roles_for_user(
+        context: &Context,
+        user: i32,
+        roles: Vec<String>,
+    ) -> FieldResult<Succeeded> {
+        nut::graphql::policy::delete_roles_for_user(context, user, &roles).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Add roles for user")]
+    async fn rbac_add_roles_for_user(
+        context: &Context,
+        user: i32,
+        roles: Vec<String>,
+    ) -> FieldResult<Succeeded> {
+        nut::graphql::policy::add_roles_for_user(context, user, &roles).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Add permissions for role")]
+    async fn rbac_add_permissions_for_role(
+        context: &Context,
+        role: String,
+        permissions: Vec<nut::graphql::policy::PermissionRequest>,
+    ) -> FieldResult<Succeeded> {
+        nut::graphql::policy::add_permissions_for_role(context, &role, &permissions).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Delete permissions for role")]
+    async fn rbac_delete_permissions_for_role(
+        context: &Context,
+        role: String,
+        permissions: Vec<nut::graphql::policy::PermissionRequest>,
+    ) -> FieldResult<Succeeded> {
+        nut::graphql::policy::delete_permissions_for_role(context, &role, &permissions).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Add permissions for user")]
+    async fn rbac_add_permissions_for_user(
+        context: &Context,
+        user: i32,
+        permissions: Vec<nut::graphql::policy::PermissionRequest>,
+    ) -> FieldResult<Succeeded> {
+        nut::graphql::policy::add_permissions_for_user(context, user, &permissions).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Delete permissions for user")]
+    async fn rbac_delete_permissions_for_user(
+        context: &Context,
+        user: i32,
+        permissions: Vec<nut::graphql::policy::PermissionRequest>,
+    ) -> FieldResult<Succeeded> {
+        nut::graphql::policy::delete_permissions_for_user(context, user, &permissions).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Update permissions for role")]
+    async fn rbac_update_permissions_for_role(
+        context: &Context,
+        role: String,
+        removed: Vec<nut::graphql::policy::PermissionRequest>,
+        saved: Vec<nut::graphql::policy::PermissionRequest>,
+    ) -> FieldResult<Succeeded> {
+        nut::graphql::policy::update_permissions_for_role(context, &role, &removed, &saved).await?;
+        Ok(Succeeded::default())
+    }
+    #[graphql(description = "Update permissions for user")]
+    async fn rbac_update_permissions_for_user(
+        context: &Context,
+        user: i32,
+        removed: Vec<nut::graphql::policy::PermissionRequest>,
+        saved: Vec<nut::graphql::policy::PermissionRequest>,
+    ) -> FieldResult<Succeeded> {
+        nut::graphql::policy::update_permissions_for_user(context, user, &removed, &saved).await?;
         Ok(Succeeded::default())
     }
 }

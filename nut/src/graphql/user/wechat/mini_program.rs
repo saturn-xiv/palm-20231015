@@ -1,23 +1,22 @@
 use std::ops::{Deref, DerefMut};
 
-use chrono::Duration;
+use chrono::{Duration, NaiveDateTime};
 use diesel::Connection as DieselConnection;
-use juniper::GraphQLInputObject;
+use hyper::StatusCode;
+use juniper::{GraphQLInputObject, GraphQLObject};
 use orchid::v1::{
     wechat_mini_program_client::WechatMiniProgramClient, WechatMiniProgramLoginRequest,
 };
-use palm::{jwt::Jwt, thrift::loquat::Config as Loquat, Error, Result};
+use palm::{jwt::Jwt, thrift::loquat::Config as Loquat, Error, HttpError, Result};
 use validator::Validate;
 
 use super::super::super::super::models::{
     log::{Dao as LogDao, Level as LogLevel},
-    user::{
-        session::{Dao as UserSessionDao, ProviderType},
-        Action, Dao as UserDao, Item as User,
-    },
-    wechat::mini_program_user::Dao as WechatMiniProgramUserDao,
+    user::{session::ProviderType, Dao as UserDao, Item as User},
+    wechat::mini_program_user::{Dao as WechatMiniProgramUserDao, Item as WechatMiniProgramUser},
 };
 use super::super::super::{Context, CurrentUserAdapter};
+use super::super::SignInResponse;
 
 #[derive(GraphQLInputObject, Validate, Debug)]
 #[graphql(
@@ -35,16 +34,8 @@ pub struct LoginRequest {
     pub version: String,
 }
 
-#[derive(GraphQLInputObject, Validate)]
-#[graphql(name = "WechatMiniProgramUserLoginResponse")]
-pub struct LoginResponse {
-    pub token: String,
-    pub nickname: Option<String>,
-    pub avatar_url: Option<String>,
-}
-
 impl LoginRequest {
-    pub async fn handle(&self, context: &Context) -> Result<LoginResponse> {
+    pub async fn handle(&self, context: &Context) -> Result<SignInResponse> {
         self.validate()?;
 
         debug!(
@@ -66,45 +57,57 @@ impl LoginRequest {
         let mut db = context.db.get()?;
         let db = db.deref_mut();
 
-        let user = db.transaction::<_, Error, _>(move |db| {
-            let user = WechatMiniProgramUserDao::sign_in(
-                db,
-                &self.app_id,
-                &res.openid,
-                &res.unionid,
-                &context.session.client_ip,
-            )?;
+        let user = {
+            let res = res.clone();
+            db.transaction::<_, Error, _>(move |db| {
+                let user = WechatMiniProgramUserDao::sign_in(
+                    db,
+                    &self.app_id,
+                    &res.openid,
+                    &res.unionid,
+                    &context.session.client_ip,
+                )?;
 
-            Ok(user)
-        })?;
+                Ok(user)
+            })?
+        };
 
         let jwt = context.loquat.deref();
+        let mini_program_user_id =
+            WechatMiniProgramUserDao::by_open_id(db, &self.app_id, &res.openid)?.id;
 
-        let token = {
-            let ttl = Duration::seconds(self.ttl as i64);
-            let uid = UserSessionDao::create(
+        let mut it = {
+            let user = UserDao::by_id(db, user.user_id)?;
+            let enf = context.enforcer.deref();
+            SignInResponse::new(
                 db,
-                user.user_id,
-                &ProviderType::WechatMiniProgram,
+                enf,
+                &user,
+                jwt,
+                Duration::seconds(self.ttl as i64),
+                ProviderType::WechatMiniProgram,
+                mini_program_user_id,
                 &context.session.client_ip,
-                ttl,
-            )?;
-            Jwt::sign(jwt, &uid, &Action::SignIn.to_string(), ttl)?
+            )
+            .await?
         };
-        Ok(LoginResponse {
-            nickname: user.nickname.clone(),
-            avatar_url: user.avatar_url,
-            token,
-        })
+        if let Some(ref nickname) = user.nickname {
+            it.user.real_name = nickname.clone();
+        }
+        if let Some(ref avatar) = user.avatar_url {
+            it.user.avatar = avatar.clone();
+        }
+
+        Ok(it)
     }
 }
 
 #[derive(GraphQLInputObject, Validate)]
 #[graphql(
-    name = "WechatMiniProgramUserBindRequest",
+    name = "WechatMiniProgramUserBindByAccountRequest",
     description = "Bind WeChat mini-program user to system account"
 )]
-pub struct BindRequest {
+pub struct BindByAccountRequest {
     #[validate(length(min = 1, max = 63))]
     pub app_id: String,
     #[validate(length(min = 1, max = 63))]
@@ -115,7 +118,7 @@ pub struct BindRequest {
     pub password: String,
 }
 
-impl BindRequest {
+impl BindByAccountRequest {
     pub fn handle(&self, context: &Context) -> Result<()> {
         self.validate()?;
 
@@ -125,7 +128,7 @@ impl BindRequest {
         let ch = ch.deref_mut();
         let loquat = context.loquat.deref();
 
-        let (user, _) = context.session.current_user(db, ch, loquat)?;
+        let (user, _, _) = context.session.current_user(db, ch, loquat)?;
         db.transaction::<_, Error, _>(move |db| {
             let iu = UserDao::by_nickname(db, &self.nickname)?;
             {
@@ -179,7 +182,7 @@ impl UpdateProfileRequest {
         let ch = ch.deref_mut();
         let loquat = context.loquat.deref();
 
-        let (user, _) = context.session.current_user(db, ch, loquat)?;
+        let (user, _, _) = context.session.current_user(db, ch, loquat)?;
         db.transaction::<_, Error, _>(move |db| {
             {
                 let it = WechatMiniProgramUserDao::by_open_id(db, &self.app_id, &self.open_id)?;
@@ -191,4 +194,99 @@ impl UpdateProfileRequest {
         })?;
         Ok(())
     }
+}
+
+#[derive(GraphQLObject)]
+#[graphql(name = "WechatOauth2UserItem")]
+pub struct UserItem {
+    pub id: i32,
+    pub user_id: i32,
+    pub union_id: String,
+    pub app_id: String,
+    pub open_id: String,
+    pub nickname: Option<String>,
+    pub avatar_url: Option<String>,
+    pub updated_at: NaiveDateTime,
+}
+
+impl UserItem {
+    pub async fn index(context: &Context) -> Result<Vec<Self>> {
+        let mut db = context.db.get()?;
+        let db = db.deref_mut();
+        let mut ch = context.cache.get()?;
+        let ch = ch.deref_mut();
+        let (cur, _, _) = {
+            let jwt = context.loquat.deref();
+            context.session.current_user(db, ch, jwt)?
+        };
+        let enf = context.enforcer.deref();
+        if !cur.is_administrator(enf).await {
+            return Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)));
+        }
+
+        let mut items = Vec::new();
+
+        for it in WechatMiniProgramUserDao::all(db)?.iter() {
+            items.push(Self::new(it)?);
+        }
+
+        Ok(items)
+    }
+    fn new(x: &WechatMiniProgramUser) -> Result<Self> {
+        let it = Self {
+            id: x.id,
+            union_id: x.union_id.clone(),
+            app_id: x.app_id.clone(),
+            open_id: x.open_id.clone(),
+            nickname: x.nickname.clone(),
+            user_id: x.user_id,
+            avatar_url: x.avatar_url.clone(),
+            updated_at: x.updated_at,
+        };
+        Ok(it)
+    }
+}
+pub async fn delete(context: &Context, id: i32) -> Result<()> {
+    let mut db = context.db.get()?;
+    let db = db.deref_mut();
+    let mut ch = context.cache.get()?;
+    let ch = ch.deref_mut();
+    let (cur, _, _) = {
+        let jwt = context.loquat.deref();
+        context.session.current_user(db, ch, jwt)?
+    };
+    let enf = context.enforcer.deref();
+    if !cur.is_administrator(enf).await {
+        return Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)));
+    }
+    let wu = WechatMiniProgramUserDao::by_id(db, id)?;
+    warn!("destroy wechat mini-program user {}", wu);
+    WechatMiniProgramUserDao::destroy(db, id)?;
+    Ok(())
+}
+
+pub async fn bind_by_id(
+    context: &Context,
+    wechat_mini_program_user_id: i32,
+    user_id: i32,
+) -> Result<()> {
+    let mut db = context.db.get()?;
+    let db = db.deref_mut();
+    let mut ch = context.cache.get()?;
+    let ch = ch.deref_mut();
+    let (cur, _, _) = {
+        let jwt = context.loquat.deref();
+        context.session.current_user(db, ch, jwt)?
+    };
+    let enf = context.enforcer.deref();
+    if !cur.is_administrator(enf).await {
+        return Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)));
+    }
+
+    let iu = UserDao::by_id(db, user_id)?;
+    iu.available()?;
+    let wu = WechatMiniProgramUserDao::by_id(db, wechat_mini_program_user_id)?;
+    warn!("bind wechat mini-program user {} to {}", wu, iu);
+    WechatMiniProgramUserDao::bind(db, wu.id, iu.id)?;
+    Ok(())
 }

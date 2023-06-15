@@ -17,6 +17,7 @@ pub struct Item {
     pub user_id: i32,
     pub uid: String,
     pub provider_type: String,
+    pub provider_id: i32,
     pub ip: String,
     pub expired_at: NaiveDateTime,
     pub created_at: NaiveDateTime,
@@ -49,6 +50,7 @@ pub trait Dao {
         &mut self,
         user: i32,
         provider_type: &ProviderType,
+        provider_id: i32,
         ip: &str,
         ttl: Duration,
     ) -> Result<String>;
@@ -69,6 +71,7 @@ impl Dao for Connection {
         &mut self,
         user: i32,
         provider_type: &ProviderType,
+        provider_id: i32,
         ip: &str,
         ttl: Duration,
     ) -> Result<String> {
@@ -79,6 +82,7 @@ impl Dao for Connection {
             .values((
                 user_sessions::dsl::user_id.eq(user),
                 user_sessions::dsl::provider_type.eq(provider_type),
+                user_sessions::dsl::provider_id.eq(provider_id),
                 user_sessions::dsl::ip.eq(ip),
                 user_sessions::dsl::expired_at.eq(expired_at),
             ))

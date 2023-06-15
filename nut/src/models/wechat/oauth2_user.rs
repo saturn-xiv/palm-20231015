@@ -2,8 +2,12 @@ use std::fmt;
 
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
-use orchid::v1::{wechat_oauth2_qr_connect_request::Language, WechatOauth2LoginResponse};
-use palm::{crypto::random::bytes as random_bytes, Result};
+use hyper::StatusCode;
+use orchid::v1::{
+    wechat_oauth2_login_response::Sex, wechat_oauth2_qr_connect_request::Language,
+    WechatOauth2LoginResponse,
+};
+use palm::{crypto::random::bytes as random_bytes, HttpError, Result};
 use serde::{Deserialize, Serialize};
 
 use super::super::super::{
@@ -34,6 +38,16 @@ pub struct Item {
 }
 
 impl Item {
+    pub fn sex(&self) -> Result<String> {
+        let it = Sex::from_i32(self.sex).ok_or_else(|| {
+            HttpError(
+                StatusCode::FORBIDDEN,
+                Some(format!("unknown sex {}", self.sex)),
+            )
+        })?;
+        let it = it.as_str_name();
+        Ok(it.to_string())
+    }
     pub fn privilege(&self) -> Result<Vec<String>> {
         let it = flexbuffers::from_slice(&self.privilege)?;
         Ok(it)

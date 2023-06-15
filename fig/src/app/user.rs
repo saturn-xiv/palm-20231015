@@ -12,7 +12,7 @@ use nut::{
 use palm::{
     crypto::Password,
     jwt::Jwt,
-    rbac::{Role as RbacRole, ToSubject},
+    rbac::{Role as RbacRole, Subject},
     Error, HttpError, Result,
 };
 
@@ -116,10 +116,10 @@ impl Role {
         let user = UserDao::by_nickname(db, &self.user)?;
 
         {
-            let user = user.to_subject();
+            let user = Subject::to(&user);
             let role = {
                 let it: RbacRole = self.role.parse()?;
-                it.to_subject()
+                Subject::to(&it)
             };
             enf.add_role_for_user(&user, &role, None).await?;
         }
@@ -141,10 +141,10 @@ impl Role {
         let user = UserDao::by_nickname(db, &self.user)?;
 
         {
-            let user = user.to_subject();
+            let user = Subject::to(&user);
             let role = {
                 let it: RbacRole = self.role.parse()?;
-                it.to_subject()
+                Subject::to(&it)
             };
             enf.delete_role_for_user(&user, &role, None).await?;
         }

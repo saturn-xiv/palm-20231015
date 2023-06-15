@@ -9,13 +9,14 @@ use std::sync::Arc;
 
 use async_trait::async_trait;
 use casbin::{CoreApi, Enforcer, EventData, Watcher as CasbinWatcher};
+use hyper::StatusCode;
 use lapin::{Channel, ExchangeKind};
 use serde::{Deserialize, Serialize};
 use tokio::sync::Mutex;
 
 use super::{
     queue::amqp::{Flatbuffer, Handler as QueueHandler, RabbitMq},
-    Result,
+    HttpError, Result,
 };
 
 pub const MODEL: &str = include_str!("rbac_with_resource_roles_model.conf");
@@ -80,8 +81,11 @@ impl QueueHandler for Handler {
     }
 }
 
-pub trait ToSubject {
-    fn to_subject(&self) -> String;
+pub trait Subject {
+    type ID;
+    type Err;
+    fn to(&self) -> String;
+    fn from(s: &str) -> StdResult<Self::ID, Self::Err>;
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -96,9 +100,20 @@ impl Role {
     pub const ROOT: &str = "root";
 }
 
-impl ToSubject for Role {
-    fn to_subject(&self) -> String {
+impl Subject for Role {
+    type ID = String;
+    type Err = HttpError;
+    fn to(&self) -> String {
         format!("{}://{}", type_name::<Self>(), self)
+    }
+    fn from(s: &str) -> StdResult<Self::ID, Self::Err> {
+        match s.strip_prefix(&format!("{}://", type_name::<Self>())) {
+            Some(it) => Ok(it.to_string()),
+            None => Err(HttpError(
+                StatusCode::BAD_REQUEST,
+                Some(format!("unknown role {}", s)),
+            )),
+        }
     }
 }
 
@@ -179,14 +194,14 @@ impl FromStr for Resource {
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Permission {
     pub operation: String,
-    pub resource: Option<Resource>,
+    pub resource: Resource,
 }
 
 impl Permission {
     pub fn to_rule(&self) -> Vec<String> {
         let mut it = Vec::new();
-        if let Some(ref resource) = self.resource {
-            let object = resource.to_string();
+        {
+            let object = self.resource.to_string();
             it.push(object);
         }
         {
@@ -198,12 +213,8 @@ impl Permission {
 
     pub fn new(arg: &Vec<String>) -> Result<Self> {
         match arg.len() {
-            2 => Ok(Self {
-                operation: arg[1].clone(),
-                resource: None,
-            }),
             3 => Ok(Self {
-                resource: Some(arg[1].parse()?),
+                resource: arg[1].parse()?,
                 operation: arg[2].clone(),
             }),
             _ => Err(Box::new(IoError::new(

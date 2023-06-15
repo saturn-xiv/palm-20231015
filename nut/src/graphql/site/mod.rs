@@ -15,7 +15,7 @@ use lemon::themes::Layout;
 use palm::{
     cache::Provider as CacheProvider,
     crypto::random::string as random_string,
-    rbac::{Role, ToSubject},
+    rbac::{Role, Subject},
     to_code, try_grpc, Error, HttpError, Result,
 };
 use serde::{Deserialize, Serialize};
@@ -38,7 +38,7 @@ pub async fn heartbeat(context: &Context) -> Result<()> {
     let db = db.deref_mut();
     let mut ch = context.cache.get()?;
     let ch = ch.deref_mut();
-    let (user, _) = {
+    let (user, _, _) = {
         let jwt = context.loquat.deref();
         context.session.current_user(db, ch, jwt)?
     };
@@ -55,7 +55,7 @@ pub async fn clear_cache(context: &Context) -> Result<()> {
     let db = db.deref_mut();
     let mut ch = context.cache.get()?;
     let ch = ch.deref_mut();
-    let (user, _) = {
+    let (user, _, _) = {
         let jwt = context.loquat.deref();
         context.session.current_user(db, ch, jwt)?
     };
@@ -88,7 +88,7 @@ impl SetMaintenanceModeRequest {
         let db = db.deref_mut();
         let mut ch = context.cache.get()?;
         let ch = ch.deref_mut();
-        let (user, _) = {
+        let (user, _, _) = {
             let jwt = context.loquat.deref();
             context.session.current_user(db, ch, jwt)?
         };
@@ -196,7 +196,7 @@ impl InstallRequest {
         {
             let enf = context.enforcer.deref();
             let mut enf = enf.lock().await;
-            let name = user.to_subject();
+            let name = Subject::to(&user);
             try_grpc!(
                 enf.add_roles_for_user(
                     &name,

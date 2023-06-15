@@ -11,7 +11,7 @@ use juniper::{GraphQLInputObject, GraphQLObject};
 use palm::{
     jwt::Jwt,
     queue::amqp::{Flatbuffer as FlatbufferQueue, RabbitMq},
-    rbac::{Permission as RbacPermission, Role, ToSubject},
+    rbac::{Permission as RbacPermission, Role, Subject},
     tasks::email::Task as EmailTask,
     to_code, Error, HttpError, Pager, Pagination, Result,
 };
@@ -79,6 +79,7 @@ impl SignInRequest {
             loquat,
             Duration::seconds(self.ttl as i64),
             ProviderType::Email,
+            user.id,
             &context.session.client_ip,
         )
         .await
@@ -120,13 +121,14 @@ impl SignInResponse {
         jwt: &P,
         ttl: Duration,
         provider_type: ProviderType,
+        provider_id: i32,
         ip: &str,
     ) -> Result<Self> {
         let token = {
-            let uid = UserSessionDao::create(db, user.id, &provider_type, ip, ttl)?;
+            let uid = UserSessionDao::create(db, user.id, &provider_type, provider_id, ip, ttl)?;
             jwt.sign(&uid, &Action::SignIn.to_string(), ttl)?
         };
-        let name = user.to_subject();
+        let name = Subject::to(user);
         let mut enforcer = enforcer.lock().await;
 
         let mut roles = Vec::new();
@@ -145,13 +147,11 @@ impl SignInResponse {
                 .iter()
             {
                 let it = RbacPermission::new(it)?;
-                if let Some(ref resource) = it.resource {
-                    items.push(Permission {
-                        operation: it.operation.clone(),
-                        resource_type: resource.r#type.clone(),
-                        resource_id: resource.id,
-                    });
-                }
+                items.push(Permission {
+                    operation: it.operation.clone(),
+                    resource_type: it.resource.r#type.clone(),
+                    resource_id: it.resource.id,
+                });
             }
 
             items
@@ -475,8 +475,18 @@ impl RefreshTokenRequest {
         let ch = ch.deref_mut();
         let jwt = context.loquat.deref();
         let enf = context.enforcer.deref();
-        let (user, provider_type) = context.session.current_user(db, ch, jwt)?;
+        let (user, uid, provider_type) = context.session.current_user(db, ch, jwt)?;
 
+        let su = UserSessionDao::by_uid(db, &uid)?;
+        if su.provider_type.parse::<ProviderType>()? != provider_type {
+            return Err(Box::new(HttpError(
+                StatusCode::BAD_REQUEST,
+                Some(format!(
+                    "unmatched provider {} vs {}",
+                    su.provider_type, provider_type,
+                )),
+            )));
+        }
         let it = SignInResponse::new(
             db,
             enf,
@@ -484,6 +494,7 @@ impl RefreshTokenRequest {
             jwt,
             Duration::seconds(self.ttl as i64),
             provider_type,
+            su.provider_id,
             &context.session.client_ip,
         )
         .await?;
@@ -547,7 +558,7 @@ impl LogsResponse {
         let mut ch = context.cache.get()?;
         let ch = ch.deref_mut();
         let jwt = context.loquat.deref();
-        let (user, _) = context.session.current_user(db, ch, jwt)?;
+        let (user, _, _) = context.session.current_user(db, ch, jwt)?;
 
         let total = LogDao::count(db, user.id)?;
         let items = LogDao::all(db, user.id, pager.offset(total), pager.size() as i64)?;
@@ -565,7 +576,7 @@ pub fn sign_out(context: &Context) -> Result<()> {
     let mut ch = context.cache.get()?;
     let ch = ch.deref_mut();
     let jwt = context.loquat.deref();
-    let (user, _) = context.session.current_user(db, ch, jwt)?;
+    let (user, _, _) = context.session.current_user(db, ch, jwt)?;
     LogDao::add::<_, User>(
         db,
         user.id,
@@ -598,7 +609,7 @@ impl UpdateProfileRequest {
         let mut ch = context.cache.get()?;
         let ch = ch.deref_mut();
         let jwt = context.loquat.deref();
-        let (user, _) = context.session.current_user(db, ch, jwt)?;
+        let (user, _, _) = context.session.current_user(db, ch, jwt)?;
 
         db.transaction::<_, Error, _>(move |db| {
             UserDao::set_profile(
@@ -639,7 +650,7 @@ impl ChangePasswordRequest {
         let db = db.deref_mut();
         let mut ch = context.cache.get()?;
         let ch = ch.deref_mut();
-        let (user, _) = {
+        let (user, _, _) = {
             let jwt = context.loquat.deref();
             context.session.current_user(db, ch, jwt)?
         };
@@ -678,7 +689,7 @@ impl IndexUserResponse {
         let db = db.deref_mut();
         let mut ch = context.cache.get()?;
         let ch = ch.deref_mut();
-        let (user, _) = {
+        let (user, _, _) = {
             let jwt = context.loquat.deref();
             context.session.current_user(db, ch, jwt)?
         };
@@ -724,7 +735,7 @@ impl UserItem {
         let db = db.deref_mut();
         let mut ch = context.cache.get()?;
         let ch = ch.deref_mut();
-        let (user, _) = {
+        let (user, _, _) = {
             let jwt = context.loquat.deref();
             context.session.current_user(db, ch, jwt)?
         };
@@ -737,7 +748,7 @@ impl UserItem {
         Ok(Self::new(&user))
     }
 
-    fn new(x: &User) -> Self {
+    pub fn new(x: &User) -> Self {
         Self {
             id: x.id,
             real_name: x.real_name.clone(),
@@ -765,7 +776,7 @@ pub async fn enable(context: &Context, id: i32) -> Result<()> {
     let db = db.deref_mut();
     let mut ch = context.cache.get()?;
     let ch = ch.deref_mut();
-    let (user, _) = {
+    let (user, _, _) = {
         let jwt = context.loquat.deref();
         context.session.current_user(db, ch, jwt)?
     };
@@ -798,7 +809,7 @@ pub async fn disable(context: &Context, id: i32) -> Result<()> {
     let db = db.deref_mut();
     let mut ch = context.cache.get()?;
     let ch = ch.deref_mut();
-    let (user, _) = {
+    let (user, _, _) = {
         let jwt = context.loquat.deref();
         context.session.current_user(db, ch, jwt)?
     };
@@ -831,7 +842,7 @@ pub async fn lock(context: &Context, id: i32) -> Result<()> {
     let db = db.deref_mut();
     let mut ch = context.cache.get()?;
     let ch = ch.deref_mut();
-    let (user, _) = {
+    let (user, _, _) = {
         let jwt = context.loquat.deref();
         context.session.current_user(db, ch, jwt)?
     };
@@ -864,7 +875,7 @@ pub async fn unlock(context: &Context, id: i32) -> Result<()> {
     let db = db.deref_mut();
     let mut ch = context.cache.get()?;
     let ch = ch.deref_mut();
-    let (user, _) = {
+    let (user, _, _) = {
         let jwt = context.loquat.deref();
         context.session.current_user(db, ch, jwt)?
     };
@@ -897,7 +908,7 @@ pub async fn confirm(context: &Context, id: i32) -> Result<()> {
     let db = db.deref_mut();
     let mut ch = context.cache.get()?;
     let ch = ch.deref_mut();
-    let (user, _) = {
+    let (user, _, _) = {
         let jwt = context.loquat.deref();
         context.session.current_user(db, ch, jwt)?
     };
@@ -939,7 +950,7 @@ impl SetPasswordRequest {
         let db = db.deref_mut();
         let mut ch = context.cache.get()?;
         let ch = ch.deref_mut();
-        let (user, _) = {
+        let (user, _, _) = {
             let jwt = context.loquat.deref();
             context.session.current_user(db, ch, jwt)?
         };
@@ -974,7 +985,7 @@ pub async fn delete(context: &Context, id: i32) -> Result<()> {
     let db = db.deref_mut();
     let mut ch = context.cache.get()?;
     let ch = ch.deref_mut();
-    let (user, _) = {
+    let (user, _, _) = {
         let jwt = context.loquat.deref();
         context.session.current_user(db, ch, jwt)?
     };

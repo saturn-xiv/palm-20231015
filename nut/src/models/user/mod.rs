@@ -3,6 +3,7 @@ pub mod session;
 
 use std::any::type_name;
 use std::fmt;
+use std::result::Result as StdResult;
 use std::string::ToString;
 
 use chrono::{NaiveDateTime, Utc};
@@ -13,7 +14,7 @@ use language_tags::LanguageTag;
 use openssl::hash::{hash, MessageDigest};
 use palm::{
     crypto::{random::bytes as random_bytes, Password},
-    rbac::ToSubject,
+    rbac::Subject as RbacSubject,
     tasks::email::Address,
     HttpError, Result,
 };
@@ -86,9 +87,20 @@ impl fmt::Display for Item {
     }
 }
 
-impl ToSubject for Item {
-    fn to_subject(&self) -> String {
+impl RbacSubject for Item {
+    type ID = String;
+    type Err = HttpError;
+    fn to(&self) -> String {
         format!("{}://{}", type_name::<Self>(), self.nickname)
+    }
+    fn from(s: &str) -> StdResult<Self::ID, Self::Err> {
+        match s.strip_prefix(&format!("{}://", type_name::<Self>())) {
+            Some(it) => Ok(it.to_string()),
+            None => Err(HttpError(
+                StatusCode::BAD_REQUEST,
+                Some(format!("unknown user {}", s)),
+            )),
+        }
     }
 }
 

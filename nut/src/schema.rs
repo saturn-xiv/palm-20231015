@@ -368,6 +368,7 @@ diesel::table! {
         uid -> Varchar,
         #[max_length = 31]
         provider_type -> Varchar,
+        provider_id -> Int4,
         #[max_length = 45]
         ip -> Varchar,
         expired_at -> Timestamp,

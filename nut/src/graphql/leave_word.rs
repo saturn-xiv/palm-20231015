@@ -27,7 +27,7 @@ impl IndexResponse {
         let db = db.deref_mut();
         let mut ch = context.cache.get()?;
         let ch = ch.deref_mut();
-        let (user, _) = {
+        let (user, _, _) = {
             let jwt = context.loquat.deref();
             context.session.current_user(db, ch, jwt)?
         };
@@ -107,7 +107,7 @@ pub async fn show(context: &Context, id: i32) -> Result<Item> {
     let db = db.deref_mut();
     let mut ch = context.cache.get()?;
     let ch = ch.deref_mut();
-    let (user, _) = {
+    let (user, _, _) = {
         let jwt = context.loquat.deref();
         context.session.current_user(db, ch, jwt)?
     };
@@ -124,7 +124,7 @@ pub async fn delete(context: &Context, id: i32) -> Result<()> {
     let db = db.deref_mut();
     let mut ch = context.cache.get()?;
     let ch = ch.deref_mut();
-    let (user, _) = {
+    let (user, _, _) = {
         let jwt = context.loquat.deref();
         context.session.current_user(db, ch, jwt)?
     };

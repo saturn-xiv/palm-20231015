@@ -24,6 +24,7 @@ def upgrade() -> None:
         sa.Column('uid', sa.String(length=36), nullable=False, unique=True),
         sa.Column('provider_type', sa.String(
             length=31), nullable=False, unique=True),
+        sa.Column('provider_id', sa.Integer, nullable=False),
         sa.Column('ip', sa.String(length=45), nullable=False),
         sa.Column('expired_at', sa.DateTime, nullable=False),
         sa.Column('created_at', sa.DateTime,
