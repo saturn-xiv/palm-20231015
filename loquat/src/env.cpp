@@ -185,7 +185,6 @@ std::unique_ptr<crypto::tink::KeysetHandle> loquat::Keyset::load(
 
 std::string loquat::auth(const std::string& token) {
   loquat::Jwt jwt(loquat::PROJECT_NAME);
-  const std::string audience = typeid(loquat::Jwt).name();
-  const auto subject = jwt.verify(token, std::optional<std::string>{audience});
+  const auto subject = jwt.verify(token);
   return subject;
 }

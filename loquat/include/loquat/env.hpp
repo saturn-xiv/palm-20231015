@@ -100,16 +100,26 @@ class Jwt final : public Keyset {
                           const std::chrono::seconds& ttl) {
     return this->sign(subject, std::nullopt, ttl);
   }
-  std::string sign(const std::string& subject,
-                   const std::optional<std::string> audience,
-                   const std::chrono::seconds& ttl);
-  std::string verify(const std::string& token,
-                     const std::optional<std::string> audience);
+  inline std::string sign(const std::string& subject,
+                          const std::string& audience,
+                          const std::chrono::seconds& ttl) {
+    return this->sign(subject, std::optional<std::string>{audience}, ttl);
+  }
   inline std::string verify(const std::string& token) {
     return this->verify(token, std::nullopt);
   }
+  inline std::string verify(const std::string& token,
+                            const std::string& audience) {
+    return this->verify(token, std::optional<std::string>{audience});
+  }
 
  private:
+  std::string verify(const std::string& token,
+                     const std::optional<std::string> audience);
+  std::string sign(const std::string& subject,
+                   const std::optional<std::string> audience,
+                   const std::chrono::seconds& ttl);
+
   std::unique_ptr<crypto::tink::JwtMac> load();
 };
 
