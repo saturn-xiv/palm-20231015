@@ -93,7 +93,7 @@ function generate_diesel_postgresql() {
     echo "generate diesel schema for postgresql"
     
     DATABASE_URL=$1 diesel print-schema \
-        -o locales settings \
+        -o casbin_rule locales settings \
             users user_contacts user_bans user_sessions \
             google_users \
             wechat_oauth2_users wechat_mini_program_users \

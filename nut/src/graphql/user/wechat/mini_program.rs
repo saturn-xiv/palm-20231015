@@ -44,7 +44,7 @@ impl LoginRequest {
         );
 
         let res = {
-            let mut cli = WechatMiniProgramClient::connect(context.orchid.url.clone()).await?;
+            let mut cli = WechatMiniProgramClient::connect(context.orchid.endpoint.clone()).await?;
             let mut req = tonic::Request::new(WechatMiniProgramLoginRequest {
                 app_id: self.app_id.clone(),
                 code: self.code.clone(),

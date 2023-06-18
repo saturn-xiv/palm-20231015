@@ -50,7 +50,7 @@ impl LoginRequest {
         let language = Language::from_str_name(&self.language).unwrap_or_default();
 
         let info = {
-            let mut cli = WechatOauth2Client::connect(context.orchid.url.clone()).await?;
+            let mut cli = WechatOauth2Client::connect(context.orchid.endpoint.clone()).await?;
             let mut req = tonic::Request::new(WechatOauth2LoginRequest {
                 app_id: self.app_id.clone(),
                 code: self.code.clone(),

@@ -40,14 +40,14 @@ use super::{
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Musa {
-    pub url: String,
+    pub endpoint: String,
     pub token: String,
 }
 
 impl Default for Musa {
     fn default() -> Self {
         Self {
-            url: "http://127.0.0.1:8080".to_string(),
+            endpoint: "http://127.0.0.1:8080".to_string(),
             token: "change-me".to_string(),
         }
     }

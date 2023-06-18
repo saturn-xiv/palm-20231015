@@ -253,4 +253,11 @@ impl Query {
         let items = nut::graphql::policy::get_implicit_permissions_for_user(context, user).await?;
         Ok(items)
     }
+    #[graphql(description = "Load casbin rules")]
+    async fn casbin_rules(
+        context: &Context,
+    ) -> FieldResult<Vec<nut::graphql::policy::CasbinRuleItem>> {
+        let items = nut::graphql::policy::casbin_rules(context).await?;
+        Ok(items)
+    }
 }

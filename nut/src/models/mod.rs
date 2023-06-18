@@ -1,4 +1,5 @@
 pub mod attachment;
+pub mod casbin_rule;
 pub mod category;
 pub mod crawler;
 pub mod google;

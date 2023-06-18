@@ -9,7 +9,10 @@ use palm::{
 };
 use validator::Validate;
 
-use super::super::models::user::{Dao as UserDao, Item as User};
+use super::super::models::{
+    casbin_rule::{Dao as CasbinRuleDao, Item as CasbinRule},
+    user::{Dao as UserDao, Item as User},
+};
 use super::{user::UserItem, Context, CurrentUserAdapter};
 
 pub async fn all_users(context: &Context) -> Result<Vec<UserItem>> {
@@ -714,4 +717,54 @@ pub async fn update_permissions_for_role(
         }
     }
     Ok(())
+}
+
+#[derive(GraphQLObject)]
+#[graphql(name = "CasbinRuleItem")]
+pub struct CasbinRuleItem {
+    pub id: i32,
+    pub ptype: String,
+    pub v0: String,
+    pub v1: String,
+    pub v2: String,
+    pub v3: String,
+    pub v4: String,
+    pub v5: String,
+}
+
+impl CasbinRuleItem {
+    pub fn new(x: &CasbinRule) -> Self {
+        Self {
+            id: x.id,
+            ptype: x.ptype.clone(),
+            v0: x.v0.clone(),
+            v1: x.v1.clone(),
+            v2: x.v2.clone(),
+            v3: x.v3.clone(),
+            v4: x.v4.clone(),
+            v5: x.v5.clone(),
+        }
+    }
+}
+
+pub async fn casbin_rules(context: &Context) -> Result<Vec<CasbinRuleItem>> {
+    let mut db = context.db.get()?;
+    let db = db.deref_mut();
+    let mut ch = context.cache.get()?;
+    let ch = ch.deref_mut();
+    let (user, _, _) = {
+        let jwt = context.loquat.deref();
+        context.session.current_user(db, ch, jwt)?
+    };
+    let enf = context.enforcer.deref();
+
+    if !user.is_administrator(enf).await {
+        return Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)));
+    }
+
+    let items = CasbinRuleDao::all(db)?
+        .iter()
+        .map(CasbinRuleItem::new)
+        .collect();
+    Ok(items)
 }

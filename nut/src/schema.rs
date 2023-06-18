@@ -34,6 +34,19 @@ diesel::table! {
 }
 
 diesel::table! {
+    casbin_rule (id) {
+        id -> Int4,
+        ptype -> Varchar,
+        v0 -> Varchar,
+        v1 -> Varchar,
+        v2 -> Varchar,
+        v3 -> Varchar,
+        v4 -> Varchar,
+        v5 -> Varchar,
+    }
+}
+
+diesel::table! {
     categories (id) {
         id -> Int4,
         #[max_length = 63]
@@ -499,6 +512,7 @@ diesel::table! {
 diesel::allow_tables_to_appear_in_same_query!(
     attachments,
     attachments_resources,
+    casbin_rule,
     categories,
     categories_resources,
     comments,
