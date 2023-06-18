@@ -15,7 +15,7 @@ use casbin::CoreApi;
 use chrono::Duration;
 use data_encoding::BASE64;
 use hyper::{
-    header::{ACCEPT_LANGUAGE, AUTHORIZATION, CONTENT_TYPE, COOKIE},
+    header::{ACCEPT, ACCEPT_LANGUAGE, AUTHORIZATION, CONTENT_TYPE, COOKIE},
     Method,
 };
 use nix::unistd::getpid;
@@ -80,32 +80,8 @@ pub async fn launch(cfg: &Config) -> Result<()> {
     let cookie_key = BASE64.decode(cfg.cookie_key.0.as_bytes())?;
     let is_prod = cfg.env == Environment::Production;
 
-    let allow_origins = cfg.http.allow_origins.clone();
     HttpServer::new(move || {
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-        let cors = {
-            let mut cs = Cors::default();
-            for it in allow_origins.iter() {
-                cs = cs.allowed_origin(it);
-            }
-            cs.allowed_methods(vec![
-                Method::OPTIONS,
-                Method::DELETE,
-                Method::PATCH,
-                Method::PUT,
-                Method::POST,
-                Method::GET,
-                Method::HEAD,
-            ])
-            .allowed_header(CONTENT_TYPE)
-            .allowed_header(AUTHORIZATION)
-            .allowed_header(ACCEPT_LANGUAGE)
-            .allowed_header(COOKIE)
-            .allowed_header("X-Requested-With")
-            // .send_wildcard()
-            .supports_credentials()
-            .max_age(Duration::hours(1).num_seconds() as usize)
-        };
         App::new()
             .app_data(pgsql.clone())
             .app_data(redis.clone())
@@ -116,7 +92,22 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             .app_data(s3.clone())
             .app_data(opensearch.clone())
             .app_data(enforcer.clone())
-            .wrap(if is_prod { cors } else { Cors::permissive() })
+            .wrap(
+                Cors::default()
+                    .allow_any_origin()
+                    .allowed_methods(vec![Method::POST, Method::GET])
+                    .allowed_headers(vec![
+                        AUTHORIZATION,
+                        ACCEPT,
+                        CONTENT_TYPE,
+                        ACCEPT_LANGUAGE,
+                        COOKIE,
+                    ])
+                    .allowed_header("X-Requested-With")
+                    .supports_credentials()
+                    .allow_any_origin()
+                    .max_age(Duration::hours(1).num_seconds() as usize),
+            )
             .wrap(middleware::Logger::default())
             .wrap(IdentityMiddleware::default())
             .wrap(
