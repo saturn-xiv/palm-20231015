@@ -69,6 +69,7 @@ dependencies {
 	runtimeOnly 'io.grpc:grpc-netty-shaded:1.56.0'
 	implementation 'io.grpc:grpc-protobuf:1.56.0'
 	implementation 'io.grpc:grpc-stub:1.56.0'
+	implementation 'io.grpc:grpc-netty:1.56.0'
 	implementation 'org.apache.tomcat:annotations-api:6.0.53'
 
 	// https://mvnrepository.com/artifact/org.springframework.shell/spring-shell-starter

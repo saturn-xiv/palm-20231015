@@ -3,9 +3,9 @@ package com.github.saturn_xiv.palm.plugins.musa;
 import com.github.saturn_xiv.palm.plugins.musa.interceptors.ExceptionServerInterceptor;
 import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerInterceptor;
 import com.github.saturn_xiv.palm.plugins.musa.v1.*;
-import io.grpc.Grpc;
 import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
+import io.grpc.netty.NettyServerBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.util.concurrent.TimeUnit;
 
 @Component("palm.musa.server.rpc")
@@ -26,7 +27,10 @@ public class RpcServer {
 
     @PostConstruct
     void startUp() throws IOException {
-        server = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
+        logger.info("Start gRPC server on http://{}:{}", address, port);
+        server = NettyServerBuilder.forAddress(
+                        new InetSocketAddress(address, port),
+                        InsecureServerCredentials.create())
                 .addService(wechatPayBillService)
                 .addService(wechatPayJsapiService)
                 .addService(wechatPayNativeService)
@@ -36,7 +40,6 @@ public class RpcServer {
                 .intercept(tokenServerInterceptor)
                 .intercept(exceptionServerInterceptor)
                 .build().start();
-        logger.info("Start gRPC server on http://0.0.0.0:{}", port);
     }
 
     @PreDestroy
@@ -47,6 +50,8 @@ public class RpcServer {
 
     @Value("${app.rpc.port}")
     int port;
+    @Value("${app.rpc.address}")
+    String address;
 
     @Autowired
     HealthGrpc.HealthImplBase healthService;
@@ -69,4 +74,11 @@ public class RpcServer {
 
     private final static Logger logger = LoggerFactory.getLogger(RpcServer.class);
 
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }
