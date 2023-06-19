@@ -92,10 +92,10 @@ impl LoginRequest {
             .await?
         };
         if let Some(ref nickname) = user.nickname {
-            it.user.real_name = nickname.clone();
+            it.payload.user.real_name = nickname.clone();
         }
         if let Some(ref avatar) = user.avatar_url {
-            it.user.avatar = avatar.clone();
+            it.payload.user.avatar = avatar.clone();
         }
 
         Ok(it)

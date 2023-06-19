@@ -320,7 +320,7 @@ impl BindByAccountRequest {
         let ch = ch.deref_mut();
         let loquat = context.loquat.deref();
 
-        let (cur, uid, provider_type) = context.session.current_user(db, ch, loquat)?;
+        let (cur, uid, (provider_type, _)) = context.session.current_user(db, ch, loquat)?;
         if provider_type != ProviderType::WechatOauth2 {
             return Err(Box::new(HttpError(
                 StatusCode::BAD_REQUEST,

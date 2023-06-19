@@ -16,6 +16,13 @@ impl Query {
         let it = nut::graphql::user::LogsResponse::new(context, &pager)?;
         Ok(it)
     }
+    #[graphql(description = "Current user-info")]
+    async fn current_user(
+        context: &Context,
+    ) -> FieldResult<nut::graphql::user::CurrentUserResponse> {
+        let it = nut::graphql::user::CurrentUserResponse::handle(context).await?;
+        Ok(it)
+    }
     #[graphql(description = "Users list")]
     async fn index_user(
         context: &Context,

@@ -74,7 +74,7 @@ pub trait CurrentUserAdapter {
         db: &mut Db,
         ch: &mut Cache,
         jwt: &P,
-    ) -> Result<(User, String, UserProviderType)>;
+    ) -> Result<(User, String, (UserProviderType, i32))>;
 }
 
 impl CurrentUserAdapter for Session {
@@ -83,13 +83,13 @@ impl CurrentUserAdapter for Session {
         db: &mut Db,
         _ch: &mut Cache,
         jwt: &P,
-    ) -> Result<(User, String, UserProviderType)> {
+    ) -> Result<(User, String, (UserProviderType, i32))> {
         if let Some(ref token) = self.token {
             let uid = jwt.verify(token, &Action::SignIn.to_string())?;
             let su = UserSessionDao::by_uid(db, &uid)?;
             let iu = UserDao::by_id(db, su.user_id)?;
             iu.available()?;
-            return Ok((iu, su.uid, su.provider_type.parse()?));
+            return Ok((iu, su.uid, (su.provider_type.parse()?, su.provider_id)));
         }
 
         Err(Box::new(HttpError(

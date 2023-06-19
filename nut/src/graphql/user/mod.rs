@@ -87,14 +87,6 @@ impl SignInRequest {
 }
 
 #[derive(GraphQLObject)]
-#[graphql(name = "UserDetail", description = "User details")]
-pub struct Detail {
-    pub real_name: String,
-    pub avatar: String,
-    pub r#type: String,
-}
-
-#[derive(GraphQLObject)]
 pub struct Permission {
     pub resource_type: String,
     pub resource_id: Option<i32>,
@@ -105,12 +97,7 @@ pub struct Permission {
 #[graphql(name = "UserSignInResponse", description = "User sign-in response")]
 pub struct SignInResponse {
     pub token: String,
-    pub user: Detail,
-    pub roles: Vec<String>,
-    pub permissions: Vec<Permission>,
-    pub has_google: bool,
-    pub has_wechat_mini_program: bool,
-    pub has_wechat_oauth2: bool,
+    pub payload: CurrentUserResponse,
 }
 
 impl SignInResponse {
@@ -128,47 +115,10 @@ impl SignInResponse {
             let uid = UserSessionDao::create(db, user.id, &provider_type, provider_id, ip, ttl)?;
             jwt.sign(&uid, &Action::SignIn.to_string(), ttl)?
         };
-        let name = Subject::to(user);
-        let mut enforcer = enforcer.lock().await;
-
-        let mut roles = Vec::new();
-        {
-            let items = enforcer.get_implicit_roles_for_user(&name, None);
-            for it in items.iter() {
-                if let Ok(ref it) = it.parse::<Role>() {
-                    roles.push(it.to_string());
-                }
-            }
-        }
-        let permissions = {
-            let mut items = Vec::new();
-            for it in enforcer
-                .get_implicit_permissions_for_user(&name, None)
-                .iter()
-            {
-                let it = RbacPermission::new(it)?;
-                items.push(Permission {
-                    operation: it.operation.clone(),
-                    resource_type: it.resource.r#type.clone(),
-                    resource_id: it.resource.id,
-                });
-            }
-
-            items
-        };
 
         Ok(Self {
             token,
-            roles,
-            permissions,
-            user: Detail {
-                real_name: user.real_name.clone(),
-                avatar: user.avatar.clone(),
-                r#type: provider_type.to_string(),
-            },
-            has_google: GoogleUserDao::count_by_user(db, user.id)? > 0,
-            has_wechat_mini_program: WechatMiniProgramUserDao::count_by_user(db, user.id)? > 0,
-            has_wechat_oauth2: WechatOauth2UserDao::count_by_user(db, user.id)? > 0,
+            payload: CurrentUserResponse::new(db, enforcer, user, provider_type).await?,
         })
     }
 }
@@ -475,18 +425,8 @@ impl RefreshTokenRequest {
         let ch = ch.deref_mut();
         let jwt = context.loquat.deref();
         let enf = context.enforcer.deref();
-        let (user, uid, provider_type) = context.session.current_user(db, ch, jwt)?;
+        let (user, _, (provider_type, provider_id)) = context.session.current_user(db, ch, jwt)?;
 
-        let su = UserSessionDao::by_uid(db, &uid)?;
-        if su.provider_type.parse::<ProviderType>()? != provider_type {
-            return Err(Box::new(HttpError(
-                StatusCode::BAD_REQUEST,
-                Some(format!(
-                    "unmatched provider {} vs {}",
-                    su.provider_type, provider_type,
-                )),
-            )));
-        }
         let it = SignInResponse::new(
             db,
             enf,
@@ -494,11 +434,83 @@ impl RefreshTokenRequest {
             jwt,
             Duration::seconds(self.ttl as i64),
             provider_type,
-            su.provider_id,
+            provider_id,
             &context.session.client_ip,
         )
         .await?;
         Ok(it)
+    }
+}
+
+#[derive(GraphQLObject)]
+#[graphql(name = "CurrentUserResponse")]
+pub struct CurrentUserResponse {
+    pub user: UserItem,
+    pub roles: Vec<String>,
+    pub permissions: Vec<Permission>,
+    pub has_google: bool,
+    pub has_wechat_mini_program: bool,
+    pub has_wechat_oauth2: bool,
+    pub provider_type: String,
+}
+
+impl CurrentUserResponse {
+    pub async fn handle(context: &Context) -> Result<Self> {
+        let mut db = context.db.get()?;
+        let db = db.deref_mut();
+        let mut ch = context.cache.get()?;
+        let ch = ch.deref_mut();
+        let jwt = context.loquat.deref();
+        let enf = context.enforcer.deref();
+        let (user, _, (provider_type, _)) = context.session.current_user(db, ch, jwt)?;
+
+        Self::new(db, enf, &user, provider_type).await
+    }
+
+    pub async fn new(
+        db: &mut Db,
+        enforcer: &Mutex<Enforcer>,
+        user: &User,
+        provider_type: ProviderType,
+    ) -> Result<Self> {
+        let name = Subject::to(user);
+        let mut enforcer = enforcer.lock().await;
+
+        let mut roles = Vec::new();
+        {
+            let items = enforcer.get_implicit_roles_for_user(&name, None);
+            for it in items.iter() {
+                if let Ok(ref it) = it.parse::<Role>() {
+                    roles.push(it.to_string());
+                }
+            }
+        }
+        let permissions = {
+            let mut items = Vec::new();
+            for it in enforcer
+                .get_implicit_permissions_for_user(&name, None)
+                .iter()
+            {
+                let it = RbacPermission::new(it)?;
+                items.push(Permission {
+                    operation: it.operation.clone(),
+                    resource_type: it.resource.r#type.clone(),
+                    resource_id: it.resource.id,
+                });
+            }
+
+            items
+        };
+
+        Ok(Self {
+            roles,
+            permissions,
+            user: UserItem::new(user),
+            has_google: GoogleUserDao::count_by_user(db, user.id)? > 0,
+            has_wechat_mini_program: WechatMiniProgramUserDao::count_by_user(db, user.id)? > 0,
+            has_wechat_oauth2: WechatOauth2UserDao::count_by_user(db, user.id)? > 0,
+            provider_type: provider_type.to_string(),
+        })
     }
 }
 
