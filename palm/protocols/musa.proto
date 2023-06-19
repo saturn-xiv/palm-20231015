@@ -50,8 +50,12 @@ message WechatPayTradeResponse {
   string trade_state_desc = 2;
 }
 
-message WechatPayQueryOrderByIdRequest { string transaction_id = 1; }
-message WechatPayQueryOrderByOutTradeNoRequest { string out_trade_no = 1; }
+message WechatPayQueryOrderByIdRequest {
+  string transaction_id = 1;
+}
+message WechatPayQueryOrderByOutTradeNoRequest {
+  string out_trade_no = 1;
+}
 
 // ----------------------------------------------------------------------------
 
@@ -92,7 +96,9 @@ message WechatPayBillDate {
   int32 day = 3;
 }
 
-message WechatPayBillResponse { bytes content = 1; }
+message WechatPayBillResponse {
+  bytes content = 1;
+}
 message WechatPayTradeBillRequest {
   enum BillType {
     ALL = 0;
@@ -131,7 +137,9 @@ message WechatPayCreateRefundRequest {
   Amount amount = 3;
   string notify_host = 11;
 }
-message WechatPayQueryRefundRequest { string out_refund_no = 1; }
+message WechatPayQueryRefundRequest {
+  string out_refund_no = 1;
+}
 message WechatPayRefundResponse {
   string out_refund_no = 1;
   string channel = 2;
@@ -198,4 +206,10 @@ message WechatPayQueryTransferResponse {
 
   TransferBatch transfer_batch = 1;
   repeated TransferDetail transfer_detail_list = 9;
+}
+
+// ----------------------------------------------------------------------------
+
+service Health {
+  rpc Check(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
