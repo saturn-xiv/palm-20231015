@@ -7,7 +7,9 @@ use palm::{Error, HttpError, Result};
 use serde::{Deserialize, Serialize};
 use validator::Validate;
 
-use super::super::super::{i18n::I18n, controllers::Layout, models::setting::FlatBuffer as FlatbufferSetting};
+use super::super::super::{
+    controllers::Layout, i18n::I18n, models::setting::FlatBuffer as FlatbufferSetting,
+};
 use super::super::{Context, CurrentUserAdapter};
 
 #[derive(GraphQLInputObject, Validate, Debug)]

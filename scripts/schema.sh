@@ -121,6 +121,23 @@ function generate_musa() {
 }
 
 
+function generate_lemon() {
+    cd $WORKSPACE
+    local target=lemon/gourd/src
+
+    echo "generate lemon"
+    if [ -d $target ]
+    then
+        rm -r $target
+    fi
+    mkdir -p $target
+    $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
+        -I $PROTOBUF_ROOT/include/google/protobuf \
+        --cpp_out=$target --grpc_out=$target \
+        --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_cpp_plugin \
+        $PALM_PROTOCOLS/*.proto
+}
+
 function generate_babel() {
     local target=$WORKSPACE/babel/protocols
     if [ -d $target ]
@@ -172,6 +189,7 @@ done
 generate_loquat
 generate_musa
 generate_babel
+generate_lemon
 
 echo 'format rust code'
 cargo fmt

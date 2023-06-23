@@ -1,0 +1,10 @@
+pages:
+  tags:
+    index:
+      title: Tags
+  home:
+    title: Home
+nav-bar:
+  languages: Languages
+buttons:
+  more: More
