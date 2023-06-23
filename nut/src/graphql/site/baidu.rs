@@ -2,7 +2,6 @@ use std::ops::{Deref, DerefMut};
 
 use hyper::StatusCode;
 use juniper::{GraphQLInputObject, GraphQLObject};
-use lemon::themes::Layout;
 use palm::{
     seo::baidu::{Profile as BaiduProfile, SiteVerify},
     HttpError, Result,
@@ -10,6 +9,7 @@ use palm::{
 use validator::Validate;
 
 use super::super::super::{
+    controllers::Layout,
     i18n::I18n,
     models::{locale::Dao as LocaleDao, setting::FlatBuffer as FlatbufferSetting},
 };

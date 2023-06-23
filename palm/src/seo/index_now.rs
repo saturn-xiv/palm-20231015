@@ -1,7 +1,17 @@
+use askama::Template;
 use hyper::StatusCode;
 use serde::{Deserialize, Serialize};
+use validator::Validate;
 
 use super::super::{HttpError, Result};
+
+#[derive(Template, Validate, Serialize, Deserialize)]
+#[template(path = "index-now/verify.txt", escape = "none")]
+
+pub struct Request {
+    #[validate(length(min = 1))]
+    pub key: String,
+}
 
 // https://www.indexnow.org/documentation
 #[derive(Serialize, Deserialize, Debug)]

@@ -101,8 +101,5 @@ features = ["vendored"]
 [dependencies.palm]
 path = '../palm'
 
-[dependencies.lemon]
-path = '../lemon'
-
 [dependencies.orchid]
 path = '../orchid'

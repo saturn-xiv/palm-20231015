@@ -5,7 +5,6 @@ use actix_web::{
     Result as WebResult, Result,
 };
 use askama::Template;
-use lemon::{BaiduRequest, GoogleRequest, IndexNowRequest};
 use palm::{
     cache::redis::Pool as CachePool,
     crypto::Aes,
@@ -16,6 +15,10 @@ use palm::{
         index_now::Profile as IndexNowProfile,
         sitemap::{index as sitemap_index, urlset as sitemap_urlset, Link as SitemapLink},
         Provider as SeoProvider,
+    },
+    seo::{
+        baidu::Request as BaiduRequest, google::Request as GoogleRequest,
+        index_now::Request as IndexNowRequest,
     },
     try_web,
 };

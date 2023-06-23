@@ -1,11 +1,23 @@
 use std::io::Write;
 
+use askama::Template;
 use hyper::StatusCode;
 use reqwest::header::CONTENT_TYPE;
 use serde::{Deserialize, Serialize};
+use validator::Validate;
 use xml::writer::{EmitterConfig, EventWriter, Result as XmlResult, XmlEvent};
 
 use super::super::{HttpError, Result, ToXml};
+
+#[derive(Template, Validate, Serialize, Deserialize)]
+#[template(path = "baidu/verify.html", escape = "none")]
+
+pub struct Request {
+    #[validate(length(min = 1))]
+    pub site_verify_code: String,
+    #[validate(length(min = 1))]
+    pub site_verify_content: String,
+}
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Profile {

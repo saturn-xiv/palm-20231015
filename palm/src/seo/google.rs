@@ -1,7 +1,17 @@
+use askama::Template;
 use hyper::StatusCode;
 use serde::{Deserialize, Serialize};
+use validator::Validate;
 
 use super::super::{HttpError, Result};
+
+#[derive(Template, Validate, Serialize, Deserialize)]
+#[template(path = "google/verify.html", escape = "none")]
+
+pub struct Request {
+    #[validate(length(min = 1))]
+    pub site_verify_code: String,
+}
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Profile {

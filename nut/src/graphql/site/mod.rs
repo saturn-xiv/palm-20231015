@@ -11,7 +11,6 @@ use chrono::{Datelike, Utc};
 use diesel::Connection as DieselConntection;
 use hyper::StatusCode;
 use juniper::{GraphQLInputObject, GraphQLObject};
-use lemon::themes::Layout;
 use palm::{
     cache::Provider as CacheProvider,
     crypto::random::string as random_string,
@@ -23,6 +22,7 @@ use std::ops::{Deref, DerefMut};
 use validator::Validate;
 
 use super::super::{
+    controllers::Layout,
     i18n::I18n,
     models::{
         locale::Dao as LocaleDao,

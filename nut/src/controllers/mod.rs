@@ -1,6 +1,5 @@
 pub mod attachments;
 pub mod captcha;
-pub mod home;
 pub mod sitemap;
 pub mod twilio;
 pub mod wechat;
@@ -12,7 +11,6 @@ use actix_web::{
     get, http::header::ContentType, post, web, HttpResponse, Responder, Result as WebResult,
 };
 use askama::Template;
-use lemon::themes::Layout;
 use palm::{
     cache::redis::Pool as CachePool,
     handlers::home::Home,
@@ -98,9 +96,7 @@ pub fn register(config: &mut web::ServiceConfig) {
         .service(sitemap::by_lang)
         .service(sitemap::index)
         .service(rss_xml)
-        .service(robots_txt)
-        .service(home::by_lang)
-        .service(home::index);
+        .service(robots_txt);
 }
 
 #[get("/version")]
@@ -163,4 +159,14 @@ pub async fn swagger_ui() -> WebResult<impl Responder> {
     Ok(HttpResponse::Ok()
         .content_type(ContentType::html())
         .body(body))
+}
+
+pub struct Layout;
+
+impl Layout {
+    pub const AUTHOR_NAME: &'static str = "site.author.name";
+    pub const AUTHOR_EMAIL: &'static str = "site.author.email";
+    pub const SITE_TITLE: &'static str = "site.title";
+    pub const SITE_SUBHEAD: &'static str = "site.subhead";
+    pub const SITE_DESCRIPTION: &'static str = "site.description";
 }

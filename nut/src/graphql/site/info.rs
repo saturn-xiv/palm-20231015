@@ -3,12 +3,11 @@ use std::ops::{Deref, DerefMut};
 use diesel::Connection as DieselConntection;
 use hyper::StatusCode;
 use juniper::{GraphQLInputObject, GraphQLObject};
-use lemon::themes::Layout;
 use palm::{Error, HttpError, Result};
 use serde::{Deserialize, Serialize};
 use validator::Validate;
 
-use super::super::super::{i18n::I18n, models::setting::FlatBuffer as FlatbufferSetting};
+use super::super::super::{i18n::I18n, controllers::Layout, models::setting::FlatBuffer as FlatbufferSetting};
 use super::super::{Context, CurrentUserAdapter};
 
 #[derive(GraphQLInputObject, Validate, Debug)]
