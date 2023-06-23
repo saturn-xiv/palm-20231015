@@ -45,7 +45,13 @@ FetchContent_Declare(httplib
   GIT_REPOSITORY  "https://github.com/yhirose/cpp-httplib.git"
   GIT_TAG         "v0.12.6"
 )
-FetchContent_MakeAvailable(spdlog argparse tomlplusplus inja httplib)
+
+FetchContent_Declare(magic_enum
+  GIT_REPOSITORY  "https://github.com/Neargye/magic_enum.git"
+  GIT_TAG         "v0.9.3"
+)
+
+FetchContent_MakeAvailable(spdlog argparse tomlplusplus inja httplib magic_enum)
 
 # --------------------------------------------------------
 
@@ -66,9 +72,10 @@ target_include_directories(lemon PUBLIC
   ${spdlog_SOURCE_DIR}/include
   ${argparse_SOURCE_DIR}/include
   ${tomlplusplus_SOURCE_DIR}/include
-  ${httplib_SOURCE_DIR}/include
+  ${httplib_SOURCE_DIR}
   ${inja_SOURCE_DIR}/include
   ${inja_SOURCE_DIR}/third_party/include
+  ${magic_enum_SOURCE_DIR}/include
 )
 
 
