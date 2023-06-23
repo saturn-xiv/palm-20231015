@@ -9,7 +9,7 @@ project(
     LANGUAGES C CXX)
 # --------------------------------------------------------
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -58,16 +58,17 @@ file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.cpp")
 add_executable(lemon ${SOURCE_LIST})
 set_target_properties(lemon PROPERTIES LINK_FLAGS_RELEASE -s)
 
-target_link_libraries(lemon gourd
-  ${OPENSSL_LIBRARIES}
-)
+target_link_libraries(lemon gourd)
 
 target_include_directories(lemon PUBLIC
   ${PROJECT_SOURCE_DIR}/include
     
   ${spdlog_SOURCE_DIR}/include
   ${argparse_SOURCE_DIR}/include
-  ${tomlplusplus_SOURCE_DIR}/include  
+  ${tomlplusplus_SOURCE_DIR}/include
+  ${httplib_SOURCE_DIR}/include
+  ${inja_SOURCE_DIR}/include
+  ${inja_SOURCE_DIR}/third_party/include
 )
 
 
