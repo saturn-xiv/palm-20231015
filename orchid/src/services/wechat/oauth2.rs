@@ -1,8 +1,8 @@
-use std::fmt;
 use std::sync::Arc;
 
 use palm::{
     cache::redis::Pool as RedisPool,
+    orchid::v1,
     try_grpc,
     wechat::{
         oauth2::{Client as Oauth2Client, Oauth2 as Oauth2Config},
@@ -12,7 +12,7 @@ use palm::{
 };
 use tonic::{Request, Response};
 
-use super::super::super::{env::Config, v1};
+use super::super::super::env::Config;
 
 pub struct Service {
     pub redis: RedisPool,
@@ -61,19 +61,5 @@ impl v1::wechat_oauth2_server::WechatOauth2 for Service {
             privilege: it.privilege.clone(),
             sex: it.sex,
         }))
-    }
-}
-
-impl fmt::Display for v1::wechat_oauth2_qr_connect_request::Language {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(
-            f,
-            "{}",
-            match self {
-                Self::Cn => "cn",
-                Self::En => "en",
-                Self::Tw => "tw",
-            }
-        )
     }
 }

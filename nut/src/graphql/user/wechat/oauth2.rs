@@ -4,13 +4,15 @@ use chrono::{Duration, NaiveDateTime};
 use diesel::Connection as DieselConnection;
 use hyper::StatusCode;
 use juniper::{GraphQLInputObject, GraphQLObject};
-use orchid::v1::{
-    wechat_oauth2_client::WechatOauth2Client, wechat_oauth2_qr_connect_request::Language,
-    WechatOauth2LoginRequest,
-};
 use palm::{
-    jwt::Jwt, thrift::loquat::Config as Loquat,
-    wechat::oauth2::qr_connect::url as wechat_oauth2_qr_connect_url, Error, HttpError, Result,
+    jwt::Jwt,
+    orchid::v1::{
+        wechat_oauth2_client::WechatOauth2Client, wechat_oauth2_qr_connect_request::Language,
+        WechatOauth2LoginRequest,
+    },
+    thrift::loquat::Config as Loquat,
+    wechat::oauth2::qr_connect::url as wechat_oauth2_qr_connect_url,
+    Error, HttpError, Result,
 };
 use validator::Validate;
 

@@ -1,6 +1,6 @@
 [package]
 name = "palm"
-version = "2023.6.11"
+version = "2023.6.23"
 edition = "2021"
 authors = ["Jeremy Zheng <jitang.zheng@gmail.com>"]
 description = "A total free education & translation & ops solution."

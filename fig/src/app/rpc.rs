@@ -4,6 +4,7 @@ use std::time::Duration as StdDuration;
 use casbin::CoreApi;
 use nix::unistd::getpid;
 use palm::{
+    nut::v1 as nut_v1,
     queue::amqp::RabbitMq,
     rbac::{Handler as RbacHandler, Watcher as RbacWatcher},
     Result,
@@ -45,7 +46,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
 
     info!("start gRPC at {}", addr);
     Server::builder()
-        .add_service(nut::v1::health_server::HealthServer::new(
+        .add_service(nut_v1::health_server::HealthServer::new(
             nut::services::health::Service {},
         ))
         .serve(addr)

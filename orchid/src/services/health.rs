@@ -1,9 +1,9 @@
 use std::sync::Arc;
 
-use palm::{try_grpc, GrpcResult};
+use palm::{orchid::v1, try_grpc, GrpcResult};
 use tonic::{Request, Response};
 
-use super::super::{env::Config, v1};
+use super::super::env::Config;
 
 pub struct Service {
     pub config: Arc<Config>,

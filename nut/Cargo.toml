@@ -106,6 +106,3 @@ path = '../lemon'
 
 [dependencies.orchid]
 path = '../orchid'
-
-[build-dependencies]
-tonic-build = "0.9"

@@ -2,7 +2,7 @@ use std::net::{IpAddr, Ipv4Addr, SocketAddr};
 use std::sync::Arc;
 
 use clap::Parser;
-use palm::Result;
+use palm::{orchid::v1, Result};
 use tonic::transport::Server;
 
 use super::super::{
@@ -14,7 +14,6 @@ use super::super::{
             oauth2::Service as WechatOauth2Service,
         },
     },
-    v1,
 };
 
 #[derive(Parser, PartialEq, Eq, Debug, Clone)]

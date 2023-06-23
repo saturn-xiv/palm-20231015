@@ -19,6 +19,11 @@ use super::{
     HttpError, Result,
 };
 
+#[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
+pub mod v1 {
+    tonic::include_proto!("palm.rbac.v1");
+}
+
 pub const MODEL: &str = include_str!("rbac_with_resource_roles_model.conf");
 
 #[derive(Serialize, Deserialize, Debug, Clone)]

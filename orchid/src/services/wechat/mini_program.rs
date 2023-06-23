@@ -7,11 +7,11 @@ use palm::{
         mini_program::{Client as MiniProgramClient, MiniProgram as MiniProgramConfig},
         Client as WechatClient, Config as WechatConfig,
     },
-    GrpcResult,
+    GrpcResult,orchid::v1
 };
 use tonic::{Request, Response};
 
-use super::super::super::{env::Config, v1};
+use super::super::super::{env::Config, };
 
 pub struct Service {
     pub redis: RedisPool,

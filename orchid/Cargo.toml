@@ -1,6 +1,6 @@
 [package]
 name = "orchid"
-version = "2023.6.12"
+version = "2023.6.23"
 edition = "2021"
 description = "WeChat mini-program services."
 
@@ -56,6 +56,3 @@ features = ["derive"]
 
 [dependencies.palm]
 path = '../palm'
-
-[build-dependencies]
-tonic-build = "0.9"
