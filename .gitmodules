@@ -1,20 +1,20 @@
 [submodule "lemon/templates/clean-white"]
-	path = lemon/src/themes/clean_white/theme
+	path = lemon/themes/clean-white
 	url = https://github.com/zhaohuabing/hugo-theme-cleanwhite
 [submodule "lemon/templates/universal"]
-	path = lemon/src/themes/universal/theme
+	path = lemon/themes/universal
 	url = https://github.com/devcows/hugo-universal-theme.git
 [submodule "lemon/templates/docsy"]
-	path = lemon/src/themes/docsy/theme
+	path = lemon/themes/docsy
 	url = https://github.com/google/docsy.git
 [submodule "lemon/src/themes/hinode/theme"]
-	path = lemon/src/themes/hinode/theme
+	path = lemon/themes/hinode
 	url = https://github.com/markdumay/hugo-theme-hinode-child.git
 [submodule "lemon/src/themes/x_corporation/theme"]
-	path = lemon/src/themes/x_corporation/theme
+	path = lemon/themes/x-corporation
 	url = https://github.com/tranduyhung/grav-theme-x-corporation.git
 [submodule "lemon/src/themes/gantry/theme"]
-	path = lemon/src/themes/gantry/theme
+	path = lemon/themes/gantry
 	url = https://github.com/gantry/gantry5.git
 [submodule "babel/imgui"]
 	path = babel/imgui
