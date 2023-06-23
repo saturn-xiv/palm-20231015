@@ -2,16 +2,17 @@ use std::sync::Arc;
 
 use palm::{
     cache::redis::Pool as RedisPool,
+    orchid::v1,
     try_grpc,
     wechat::{
         mini_program::{Client as MiniProgramClient, MiniProgram as MiniProgramConfig},
         Client as WechatClient, Config as WechatConfig,
     },
-    GrpcResult,orchid::v1
+    GrpcResult,
 };
 use tonic::{Request, Response};
 
-use super::super::super::{env::Config, };
+use super::super::super::env::Config;
 
 pub struct Service {
     pub redis: RedisPool,

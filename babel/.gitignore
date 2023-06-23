@@ -1,3 +1,4 @@
+src/version.hpp
 babel
 *.o
 imgui.ini

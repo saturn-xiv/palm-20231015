@@ -3,10 +3,14 @@ use std::fmt;
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
 use hyper::StatusCode;
-use palm::{crypto::random::bytes as random_bytes,orchid::v1::{
-    wechat_oauth2_login_response::Sex, wechat_oauth2_qr_connect_request::Language,
-    WechatOauth2LoginResponse,
-}, HttpError, Result};
+use palm::{
+    crypto::random::bytes as random_bytes,
+    orchid::v1::{
+        wechat_oauth2_login_response::Sex, wechat_oauth2_qr_connect_request::Language,
+        WechatOauth2LoginResponse,
+    },
+    HttpError, Result,
+};
 use serde::{Deserialize, Serialize};
 
 use super::super::super::{

@@ -4,6 +4,7 @@ set -e
 
 export PROTOBUF_ROOT=$HOME/.local
 export WORKSPACE=$PWD
+export PALM_PROTOCOLS=$WORKSPACE/palm/protocols
 
 # -----------------------------------------------------------------------------
 
@@ -15,46 +16,24 @@ function generate_grpc_by_lang() {
         rm -r $target
     fi
     mkdir -p $target
-    $PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/palm/protocols \
+    $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
         -I $PROTOBUF_ROOT/include/google/protobuf \
         --${1}_out=$target --grpc_out=$target \
         --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_${1}_plugin \
-        $WORKSPACE/palm/protocols/*.proto
+        $PALM_PROTOCOLS/*.proto
 }
 
-function generate_flatbuffers() {
-    echo "generate flatbuffers"
-    flatc --rust --filename-suffix "" -o $WORKSPACE/$2 $WORKSPACE/$1.fbs
-    flatc --rust --filename-suffix "" -o $WORKSPACE/$2 $WORKSPACE/$1.fbs
-}
-
-function generate_twift_rs() {
+function generate_loquat() {    
     cd $WORKSPACE
-    echo "generate code for $1-rust"
-    thrift -out palm/src/thrift/$1/ --gen rs -r palm/protocols/$1.thrift
-    mv palm/src/thrift/$1/$1.rs palm/src/thrift/$1/protocols.rs
-}
 
-function generate_twift_java() {
-    cd $WORKSPACE
-    echo "generate code for $1-java"
-    thrift -out tmp/protocols/java --gen java -r palm/protocols/$1.thrift
-}
-
-function generate_loquat() {
-    generate_twift_rs loquat
-    generate_twift_java loquat
-    cd $WORKSPACE
-    
-    echo 'generate code for loquat-cpp'
+    echo 'generate code for loquat'
     local cpp_target=loquat/gourd/src
     if [ -d $cpp_target ]
     then
         rm -r $cpp_target
     fi
     mkdir -p $cpp_target
-    thrift -out $cpp_target --gen cpp:no_skeleton -r palm/protocols/loquat.thrift
-
+    thrift -out $cpp_target --gen cpp:no_skeleton -r $PALM_PROTOCOLS/loquat.thrift
 }
 
 # https://github.com/grpc/grpc-web#code-generator-plugin
@@ -117,29 +96,28 @@ function generate_diesel_postgresql() {
 
 function generate_musa() {
     cd $WORKSPACE
-    local target=musa/src/main/java/$package
+    local target=musa/src/main/java
 
-    $PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/palm/protocols \
+    echo "generate loquat protocol for musa"
+    local loquat_target=$target/com/github/saturn_xiv/palm/plugins/loquat/v1
+    if [ -d $loquat_target ]
+    then
+        rm -r $loquat_target
+    fi
+    thrift -out $target --gen java -r $PALM_PROTOCOLS/loquat.thrift
+
+    echo "generate musa"
+    local musa_target=$target/com/github/saturn_xiv/palm/plugins/musa/v1
+    if [ -d $musa_target ]
+    then
+        rm -r $musa_target
+    fi
+    $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
         -I $PROTOBUF_ROOT/include/google/protobuf \
         --java_out=$target --grpc_out=$target \
         --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_java_plugin \
-        $WORKSPACE/palm/protocols/musa.proto
+        $PALM_PROTOCOLS/musa.proto
 
-    thrift -out $target --gen java -r palm/protocols/loquat.thrift
-    # local -a plugins=(
-    #     "loquat"
-    #     "musa"
-    # )
-    # for p in "${plugins[@]}"
-    # do
-    #     local package=com/github/saturn_xiv/palm/plugins/$p/v1
-    #     
-    #     if [ -d $target ]
-    #     then
-    #         rm -r $target
-    #     fi
-    #     cp -r tmp/protocols/java/$package $target        
-    # done
 }
 
 
@@ -150,11 +128,22 @@ function generate_babel() {
         rm -r $target
     fi
     mkdir -p $target
-    $PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/palm/protocols \
-        -I $PROTOBUF_ROOT/include/google/protobuf \
-        --cpp_out=$target --grpc_out=$target \
-        --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_cpp_plugin \
-        $WORKSPACE/palm/protocols/babel.proto
+
+    declare -a plugins=(
+        "rbac"
+        "nut"
+        "orchid"
+        "babel"
+    )
+
+    for p in "${plugins[@]}"
+    do
+        $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
+            -I $PROTOBUF_ROOT/include/google/protobuf \
+            --cpp_out=$target --grpc_out=$target \
+            --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_cpp_plugin \
+            $PALM_PROTOCOLS/$p.proto        
+    done
 }
 # -----------------------------------------------------------------------------
 
@@ -173,10 +162,10 @@ declare -a languages=(
     # "objective_c"
 )
 
-# for l in "${languages[@]}"
-# do
-#     generate_grpc_by_lang $l
-# done
+for l in "${languages[@]}"
+do
+    generate_grpc_by_lang $l
+done
 
 # generate_fig_web
 # generate_aloe_web

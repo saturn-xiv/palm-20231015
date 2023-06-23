@@ -4,9 +4,14 @@ use chrono::{Duration, NaiveDateTime};
 use diesel::Connection as DieselConnection;
 use hyper::StatusCode;
 use juniper::{GraphQLInputObject, GraphQLObject};
-use palm::{jwt::Jwt, thrift::loquat::Config as Loquat, Error, HttpError, Result,orchid::v1::{
-    wechat_mini_program_client::WechatMiniProgramClient, WechatMiniProgramLoginRequest,
-}};
+use palm::{
+    jwt::Jwt,
+    orchid::v1::{
+        wechat_mini_program_client::WechatMiniProgramClient, WechatMiniProgramLoginRequest,
+    },
+    thrift::loquat::Config as Loquat,
+    Error, HttpError, Result,
+};
 use validator::Validate;
 
 use super::super::super::super::models::{
