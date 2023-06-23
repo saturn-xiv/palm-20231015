@@ -1,0 +1,28 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.github.saturn_xiv.palm.plugins.mall.v1";
+package palm.mall.v1;
+
+service Sku {}
+
+service Spu {}
+
+message Order {
+  enum Status {
+    Voided = 0;
+
+    Pending = 1;
+    Processing = 2;
+    Shiped = 3;
+    Complete = 4;
+    Canceled = 5;
+    Denied = 6;
+    CanceledReversal = 7;
+    Failed = 8;
+    Refunded = 9;
+    Reversed = 10;
+    Chargeback = 11;
+    Expired = 12;
+    Processed = 13;
+  }
+}
