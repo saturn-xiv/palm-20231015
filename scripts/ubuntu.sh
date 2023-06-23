@@ -89,6 +89,20 @@ build_loquat() {
 }
 
 
+build_lemon() {    
+    local target=$WORKSPACE/lemon/build/$1-Release
+    mkdir -p $target
+    cd $target
+    cmake -DCMAKE_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$1.cmake -DCMAKE_BUILD_TYPE=Release \
+        -DABSL_ENABLE_INSTALL=ON -DABSL_PROPAGATE_CXX_STD=ON \
+        -DgRPC_SSL_PROVIDER=package \
+        -DgRPC_PROTOBUF_PROVIDER=module -DgRPC_PROTOBUF_PACKAGE_TYPE=module -DProtobuf_PROTOC_EXECUTABLE=$HOME/.local/bin/protoc \
+        -DgRPC_BUILD_TESTS=OFF \
+        ../..
+    make lemon
+    cp lemon $TARGET_DIR/bin/$1/
+}
+
 build_babel() {
     apt-get install -y libboost-all-dev libglfw3-dev libre2-dev
 
@@ -236,6 +250,9 @@ then
     build_loquat x86_64
     build_babel x86_64
 fi
+
+build_lemon x86_64
+build_lemon aarch64
 
 # -----------------------------------------------------------------------------
 
