@@ -301,7 +301,9 @@ RUN zsh -c "source $HOME/.zshrc \
     && make \
     && make install"
 
-
+# https://github.com/amacneil/dbmate
+RUN curl -fsSL -o $HOME/.local/bin/dbmate https://github.com/amacneil/dbmate/releases/latest/download/dbmate-linux-amd64
+RUN chmod +x $HOME/.local/bin/dbmate
 
 # https://github.com/apache/thrift
 # https://thrift.apache.org/docs/install/
