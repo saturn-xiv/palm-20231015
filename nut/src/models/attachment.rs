@@ -11,7 +11,7 @@ use uuid::Uuid;
 
 use super::super::{
     orm::postgresql::Connection,
-    schema::{attachments, attachments_resources},
+    schema::{attachment_resources, attachments},
 };
 
 #[derive(Queryable, Clone, Serialize)]
@@ -176,26 +176,26 @@ impl Dao for Connection {
     }
     fn delete(&mut self, id: i32) -> Result<()> {
         delete(
-            attachments_resources::dsl::attachments_resources
-                .filter(attachments_resources::dsl::attachment_id.eq(id)),
+            attachment_resources::dsl::attachment_resources
+                .filter(attachment_resources::dsl::attachment_id.eq(id)),
         )
         .execute(self)?;
         delete(attachments::dsl::attachments.filter(attachments::dsl::id.eq(id))).execute(self)?;
         Ok(())
     }
     fn associate(&mut self, id: i32, resource_type: &str, resource_id: i32) -> Result<()> {
-        let cnt: i64 = attachments_resources::dsl::attachments_resources
-            .filter(attachments_resources::dsl::attachment_id.eq(id))
-            .filter(attachments_resources::dsl::resource_type.eq(resource_type))
-            .filter(attachments_resources::dsl::resource_id.eq(resource_id))
+        let cnt: i64 = attachment_resources::dsl::attachment_resources
+            .filter(attachment_resources::dsl::attachment_id.eq(id))
+            .filter(attachment_resources::dsl::resource_type.eq(resource_type))
+            .filter(attachment_resources::dsl::resource_id.eq(resource_id))
             .count()
             .get_result(self)?;
         if cnt == 0 {
-            insert_into(attachments_resources::dsl::attachments_resources)
+            insert_into(attachment_resources::dsl::attachment_resources)
                 .values((
-                    attachments_resources::dsl::attachment_id.eq(id),
-                    attachments_resources::dsl::resource_type.eq(resource_type),
-                    attachments_resources::dsl::resource_id.eq(resource_id),
+                    attachment_resources::dsl::attachment_id.eq(id),
+                    attachment_resources::dsl::resource_type.eq(resource_type),
+                    attachment_resources::dsl::resource_id.eq(resource_id),
                 ))
                 .execute(self)?;
         }
@@ -203,10 +203,10 @@ impl Dao for Connection {
     }
     fn dissociate(&mut self, id: i32, resource_type: &str, resource_id: i32) -> Result<()> {
         delete(
-            attachments_resources::dsl::attachments_resources
-                .filter(attachments_resources::dsl::attachment_id.eq(id))
-                .filter(attachments_resources::dsl::resource_type.eq(resource_type))
-                .filter(attachments_resources::dsl::resource_id.eq(resource_id)),
+            attachment_resources::dsl::attachment_resources
+                .filter(attachment_resources::dsl::attachment_id.eq(id))
+                .filter(attachment_resources::dsl::resource_type.eq(resource_type))
+                .filter(attachment_resources::dsl::resource_id.eq(resource_id)),
         )
         .execute(self)?;
         Ok(())

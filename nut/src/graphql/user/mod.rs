@@ -135,7 +135,7 @@ pub struct SignUpRequest {
     #[validate(length(min = 1, max = 32))]
     pub password: String,
     #[validate(length(min = 1, max = 31))]
-    pub time_zone: String,
+    pub timezone: String,
     #[validate(url, length(min = 1, max = 255))]
     pub home: String,
 }
@@ -161,7 +161,7 @@ impl SignUpRequest {
                 &email,
                 &self.password,
                 &context.session.lang.parse()?,
-                &self.time_zone.parse()?,
+                &self.timezone.parse()?,
             )?;
             let user = UserDao::by_email(db, &email)?;
             LogDao::add::<_, User>(
@@ -610,7 +610,7 @@ pub struct UpdateProfileRequest {
     #[validate(length(min = 2, max = 15))]
     pub lang: String,
     #[validate(length(min = 2, max = 32))]
-    pub time_zone: String,
+    pub timezone: String,
 }
 
 impl UpdateProfileRequest {
@@ -630,7 +630,7 @@ impl UpdateProfileRequest {
                 &self.real_name,
                 &self.avatar,
                 &self.lang.parse()?,
-                &self.time_zone.parse()?,
+                &self.timezone.parse()?,
             )?;
             LogDao::add::<String, User>(
                 db,
@@ -728,7 +728,7 @@ pub struct UserItem {
     pub email: String,
     pub avatar: String,
     pub lang: String,
-    pub time_zone: String,
+    pub timezone: String,
     pub status: String,
     pub sign_in_count: i32,
     pub current_sign_in_at: Option<NaiveDateTime>,
@@ -768,7 +768,7 @@ impl UserItem {
             email: x.email.clone(),
             avatar: x.avatar.clone(),
             lang: x.lang.clone(),
-            time_zone: x.time_zone.clone(),
+            timezone: x.timezone.clone(),
             status: x.status.clone(),
             sign_in_count: x.sign_in_count,
             current_sign_in_at: x.current_sign_in_at,

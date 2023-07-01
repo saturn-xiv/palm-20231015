@@ -137,7 +137,7 @@ impl Dao for Connection {
                                 password: None,
                                 salt: &random_bytes(NewUser::SALT_SIZE),
                                 lang: User::GUEST_LANG,
-                                time_zone: User::GUEST_TIMEZONE,
+                                timezone: User::GUEST_TIMEZONE,
                                 avatar: &match token.picture {
                                     Some(ref v) => v.clone(),
                                     None => User::gravatar(&email)?,

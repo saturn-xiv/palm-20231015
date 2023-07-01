@@ -5,7 +5,7 @@ use serde::Serialize;
 
 use super::super::{
     orm::postgresql::Connection,
-    schema::{tags, tags_resources},
+    schema::{tag_resources, tags},
 };
 
 #[derive(Queryable, Serialize)]
@@ -66,24 +66,24 @@ impl Dao for Connection {
             .load::<Item>(self)?)
     }
     fn destroy(&mut self, id: i32) -> Result<()> {
-        delete(tags_resources::dsl::tags_resources.filter(tags_resources::dsl::tag_id.eq(id)))
+        delete(tag_resources::dsl::tag_resources.filter(tag_resources::dsl::tag_id.eq(id)))
             .execute(self)?;
         delete(tags::dsl::tags.filter(tags::dsl::id.eq(id))).execute(self)?;
         Ok(())
     }
     fn associate(&mut self, id: i32, resource_type: &str, resource_id: i32) -> Result<()> {
-        let cnt: i64 = tags_resources::dsl::tags_resources
-            .filter(tags_resources::dsl::tag_id.eq(id))
-            .filter(tags_resources::dsl::resource_type.eq(resource_type))
-            .filter(tags_resources::dsl::resource_id.eq(resource_id))
+        let cnt: i64 = tag_resources::dsl::tag_resources
+            .filter(tag_resources::dsl::tag_id.eq(id))
+            .filter(tag_resources::dsl::resource_type.eq(resource_type))
+            .filter(tag_resources::dsl::resource_id.eq(resource_id))
             .count()
             .get_result(self)?;
         if cnt == 0 {
-            insert_into(tags_resources::dsl::tags_resources)
+            insert_into(tag_resources::dsl::tag_resources)
                 .values((
-                    tags_resources::dsl::tag_id.eq(id),
-                    tags_resources::dsl::resource_type.eq(resource_type),
-                    tags_resources::dsl::resource_id.eq(resource_id),
+                    tag_resources::dsl::tag_id.eq(id),
+                    tag_resources::dsl::resource_type.eq(resource_type),
+                    tag_resources::dsl::resource_id.eq(resource_id),
                 ))
                 .execute(self)?;
         }
@@ -92,10 +92,10 @@ impl Dao for Connection {
     }
     fn dissociate(&mut self, id: i32, resource_type: &str, resource_id: i32) -> Result<()> {
         delete(
-            tags_resources::dsl::tags_resources
-                .filter(tags_resources::dsl::tag_id.eq(id))
-                .filter(tags_resources::dsl::resource_type.eq(resource_type))
-                .filter(tags_resources::dsl::resource_id.eq(resource_id)),
+            tag_resources::dsl::tag_resources
+                .filter(tag_resources::dsl::tag_id.eq(id))
+                .filter(tag_resources::dsl::resource_type.eq(resource_type))
+                .filter(tag_resources::dsl::resource_id.eq(resource_id)),
         )
         .execute(self)?;
         Ok(())

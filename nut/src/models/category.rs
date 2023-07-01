@@ -5,7 +5,7 @@ use serde::Serialize;
 
 use super::super::{
     orm::postgresql::Connection,
-    schema::{categories, categories_resources},
+    schema::{categories, category_resources},
 };
 
 #[derive(Queryable, Serialize)]
@@ -79,26 +79,26 @@ impl Dao for Connection {
     }
     fn destroy(&mut self, id: i32) -> Result<()> {
         delete(
-            categories_resources::dsl::categories_resources
-                .filter(categories_resources::dsl::category_id.eq(id)),
+            category_resources::dsl::category_resources
+                .filter(category_resources::dsl::category_id.eq(id)),
         )
         .execute(self)?;
         delete(categories::dsl::categories.filter(categories::dsl::id.eq(id))).execute(self)?;
         Ok(())
     }
     fn associate(&mut self, id: i32, resource_type: &str, resource_id: i32) -> Result<()> {
-        let cnt: i64 = categories_resources::dsl::categories_resources
-            .filter(categories_resources::dsl::category_id.eq(id))
-            .filter(categories_resources::dsl::resource_type.eq(resource_type))
-            .filter(categories_resources::dsl::resource_id.eq(resource_id))
+        let cnt: i64 = category_resources::dsl::category_resources
+            .filter(category_resources::dsl::category_id.eq(id))
+            .filter(category_resources::dsl::resource_type.eq(resource_type))
+            .filter(category_resources::dsl::resource_id.eq(resource_id))
             .count()
             .get_result(self)?;
         if cnt == 0 {
-            insert_into(categories_resources::dsl::categories_resources)
+            insert_into(category_resources::dsl::category_resources)
                 .values((
-                    categories_resources::dsl::category_id.eq(id),
-                    categories_resources::dsl::resource_type.eq(resource_type),
-                    categories_resources::dsl::resource_id.eq(resource_id),
+                    category_resources::dsl::category_id.eq(id),
+                    category_resources::dsl::resource_type.eq(resource_type),
+                    category_resources::dsl::resource_id.eq(resource_id),
                 ))
                 .execute(self)?;
         }
@@ -107,10 +107,10 @@ impl Dao for Connection {
     }
     fn dissociate(&mut self, id: i32, resource_type: &str, resource_id: i32) -> Result<()> {
         delete(
-            categories_resources::dsl::categories_resources
-                .filter(categories_resources::dsl::category_id.eq(id))
-                .filter(categories_resources::dsl::resource_type.eq(resource_type))
-                .filter(categories_resources::dsl::resource_id.eq(resource_id)),
+            category_resources::dsl::category_resources
+                .filter(category_resources::dsl::category_id.eq(id))
+                .filter(category_resources::dsl::resource_type.eq(resource_type))
+                .filter(category_resources::dsl::resource_id.eq(resource_id)),
         )
         .execute(self)?;
         Ok(())

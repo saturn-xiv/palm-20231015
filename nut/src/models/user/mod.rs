@@ -66,7 +66,7 @@ pub struct Item {
     pub salt: Vec<u8>,
     pub avatar: String,
     pub lang: String,
-    pub time_zone: String,
+    pub timezone: String,
     pub status: String,
     pub sign_in_count: i32,
     pub current_sign_in_at: Option<NaiveDateTime>,
@@ -186,7 +186,7 @@ pub struct New<'a> {
     pub salt: &'a [u8],
     pub avatar: &'a str,
     pub lang: &'a str,
-    pub time_zone: &'a str,
+    pub timezone: &'a str,
     pub status: &'a str,
     pub updated_at: &'a NaiveDateTime,
 }
@@ -205,7 +205,7 @@ pub trait Dao {
         real_name: &str,
         avatar: &str,
         lang: &LanguageTag,
-        time_zone: &Tz,
+        timezone: &Tz,
     ) -> Result<()>;
     fn sign_in(&mut self, id: i32, ip: &str) -> Result<()>;
 
@@ -217,7 +217,7 @@ pub trait Dao {
         email: &str,
         password: &str,
         lang: &LanguageTag,
-        time_zone: &Tz,
+        timezone: &Tz,
     ) -> Result<()>;
     fn lock(&mut self, id: i32, on: bool) -> Result<()>;
     fn enable(&mut self, id: i32, on: bool) -> Result<()>;
@@ -282,7 +282,7 @@ impl Dao for Connection {
         email: &str,
         password: &str,
         lang: &LanguageTag,
-        time_zone: &Tz,
+        timezone: &Tz,
     ) -> Result<()> {
         insert_into(users::dsl::users)
             .values(&New {
@@ -294,7 +294,7 @@ impl Dao for Connection {
                 avatar: &Item::gravatar(&email)?,
                 lang: &lang.to_string(),
                 status: &Status::Email.to_string(),
-                time_zone: &time_zone.to_string(),
+                timezone: &timezone.to_string(),
                 updated_at: &Utc::now().naive_utc(),
             })
             .execute(self)?;
@@ -329,7 +329,7 @@ impl Dao for Connection {
         real_name: &str,
         avatar: &str,
         lang: &LanguageTag,
-        time_zone: &Tz,
+        timezone: &Tz,
     ) -> Result<()> {
         let now = Utc::now().naive_utc();
         update(users::dsl::users.filter(users::dsl::id.eq(id)))
@@ -337,7 +337,7 @@ impl Dao for Connection {
                 users::dsl::real_name.eq(real_name),
                 users::dsl::avatar.eq(avatar),
                 users::dsl::lang.eq(&lang.to_string()),
-                users::dsl::time_zone.eq(&time_zone.to_string()),
+                users::dsl::timezone.eq(&timezone.to_string()),
                 users::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;

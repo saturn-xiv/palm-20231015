@@ -134,7 +134,7 @@ impl Dao for Connection {
                         password: None,
                         salt: &random_bytes(NewUser::SALT_SIZE),
                         lang: User::GUEST_LANG,
-                        time_zone: User::GUEST_TIMEZONE,
+                        timezone: User::GUEST_TIMEZONE,
                         avatar: &User::gravatar(&email)?,
                         status: &Status::WechatMiniProgram.to_string(),
                         updated_at: &now,

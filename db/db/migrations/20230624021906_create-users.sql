@@ -74,7 +74,42 @@ CREATE INDEX idx_logs_ip ON logs(ip);
 
 CREATE INDEX idx_logs_resource_type ON logs(resource_type);
 
+CREATE TABLE user_bans(
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    ip VARCHAR(45) NOT NULL,
+    reason VARCHAR(255) NOT NULL,
+    expired_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    creator_id INT NOT NULL,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_user_bans_ip ON user_bans(ip);
+
+CREATE INDEX idx_user_bans_reason ON user_bans(reason);
+
+CREATE TABLE user_sessions(
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    "uid" VARCHAR(36) NOT NULL,
+    provider_type VARCHAR(31) NOT NULL,
+    provider_id INT NOT NULL,
+    ip VARCHAR(45) NOT NULL,
+    expired_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE UNIQUE INDEX idx_user_sessions_uid ON user_sessions("uid");
+
+CREATE INDEX idx_user_sessions_provider_type ON user_sessions(provider_type);
+
+CREATE INDEX idx_user_sessions_ip ON user_sessions(ip);
+
 -- migrate:down
+DROP TABLE user_sessions;
+
+DROP TABLE user_bans;
+
 DROP TABLE logs;
 
 DROP TABLE user_contacts;

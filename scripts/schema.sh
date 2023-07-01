@@ -72,15 +72,16 @@ function generate_diesel_postgresql() {
     echo "generate diesel schema for postgresql"
     
     DATABASE_URL=$1 diesel print-schema \
-        -o casbin_rule locales settings \
-            users user_contacts user_bans user_sessions \
+        -o schema_migrations \
+            casbin_rule locales settings \
+            users user_contacts user_bans user_sessions logs \
             google_users \
             wechat_oauth2_users wechat_mini_program_users \
-            logs attachments attachments_resources \
+            attachments attachment_resources \
             roles roles_users roles_constraints permissions \
             leave_words shorter_links notifications twilio_sms_logs crawler_logs \
-            tags tags_resources \
-            categories categories_resources \
+            tags tag_resources \
+            categories category_resources \
             vote_items vote_logs \
             footprints feedbacks favorites issues comments search_histories \
             menus \

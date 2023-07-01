@@ -1,34 +1,34 @@
 // @generated automatically by Diesel CLI.
 
 diesel::table! {
-    attachments (id) {
-        id -> Int4,
-        user_id -> Int4,
-        #[max_length = 255]
-        bucket -> Varchar,
-        #[max_length = 63]
-        name -> Varchar,
-        #[max_length = 255]
-        title -> Varchar,
-        size -> Int8,
-        #[max_length = 63]
-        content_type -> Varchar,
-        #[max_length = 16]
-        status -> Varchar,
-        deleted_at -> Nullable<Timestamp>,
-        version -> Int4,
-        updated_at -> Timestamp,
-        created_at -> Timestamp,
-    }
-}
-
-diesel::table! {
-    attachments_resources (id) {
+    attachment_resources (id) {
         id -> Int4,
         attachment_id -> Int4,
         #[max_length = 255]
         resource_type -> Varchar,
         resource_id -> Int4,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    attachments (id) {
+        id -> Int4,
+        user_id -> Int4,
+        #[max_length = 63]
+        bucket -> Varchar,
+        #[max_length = 63]
+        name -> Varchar,
+        #[max_length = 127]
+        title -> Varchar,
+        size -> Int8,
+        #[max_length = 63]
+        content_type -> Varchar,
+        #[max_length = 15]
+        status -> Varchar,
+        deleted_at -> Nullable<Timestamp>,
+        version -> Int4,
+        updated_at -> Timestamp,
         created_at -> Timestamp,
     }
 }
@@ -61,7 +61,7 @@ diesel::table! {
 }
 
 diesel::table! {
-    categories_resources (id) {
+    category_resources (id) {
         id -> Int4,
         category_id -> Int4,
         #[max_length = 255]
@@ -82,9 +82,11 @@ diesel::table! {
         ip -> Varchar,
         comment_id -> Nullable<Int4>,
         content -> Text,
-        content_editor -> Int4,
+        #[max_length = 15]
+        content_editor -> Varchar,
         #[max_length = 255]
         resource_type -> Varchar,
+        resource_id -> Int4,
         deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         updated_at -> Timestamp,
@@ -130,11 +132,13 @@ diesel::table! {
         #[max_length = 127]
         email -> Varchar,
         content -> Text,
-        content_editor -> Int4,
+        #[max_length = 15]
+        content_editor -> Varchar,
         #[max_length = 255]
         resource_type -> Varchar,
         resource_id -> Int4,
-        status -> Int4,
+        #[max_length = 15]
+        status -> Varchar,
         deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         updated_at -> Timestamp,
@@ -171,10 +175,13 @@ diesel::table! {
 diesel::table! {
     issues (id) {
         id -> Int4,
+        #[max_length = 15]
+        lang -> Varchar,
         #[max_length = 255]
         question -> Varchar,
         answer -> Text,
-        answer_editor -> Int4,
+        #[max_length = 15]
+        answer_editor -> Varchar,
         #[max_length = 255]
         resource_type -> Varchar,
         deleted_at -> Nullable<Timestamp>,
@@ -187,7 +194,7 @@ diesel::table! {
 diesel::table! {
     leave_words (id) {
         id -> Int4,
-        #[max_length = 8]
+        #[max_length = 15]
         lang -> Varchar,
         #[max_length = 45]
         ip -> Varchar,
@@ -256,15 +263,24 @@ diesel::table! {
         user_id -> Int4,
         #[max_length = 127]
         subject -> Varchar,
-        body -> Text,
+        #[max_length = 511]
+        body -> Varchar,
         #[max_length = 255]
         url -> Varchar,
-        status -> Int4,
+        #[max_length = 15]
+        status -> Varchar,
         read_at -> Nullable<Timestamp>,
         deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         updated_at -> Timestamp,
         created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    schema_migrations (version) {
+        #[max_length = 128]
+        version -> Varchar,
     }
 }
 
@@ -301,10 +317,22 @@ diesel::table! {
         id -> Int4,
         #[max_length = 255]
         url -> Varchar,
-        #[max_length = 255]
+        #[max_length = 511]
         summary -> Varchar,
         version -> Int4,
         updated_at -> Timestamp,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    tag_resources (id) {
+        id -> Int4,
+        tag_id -> Int4,
+        #[max_length = 255]
+        resource_type -> Varchar,
+        resource_id -> Int4,
+        sort_order -> Int4,
         created_at -> Timestamp,
     }
 }
@@ -318,18 +346,6 @@ diesel::table! {
         deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         updated_at -> Timestamp,
-        created_at -> Timestamp,
-    }
-}
-
-diesel::table! {
-    tags_resources (id) {
-        id -> Int4,
-        tag_id -> Int4,
-        #[max_length = 255]
-        resource_type -> Varchar,
-        resource_id -> Int4,
-        sort_order -> Int4,
         created_at -> Timestamp,
     }
 }
@@ -405,7 +421,7 @@ diesel::table! {
         #[max_length = 8]
         lang -> Varchar,
         #[max_length = 32]
-        time_zone -> Varchar,
+        timezone -> Varchar,
         #[max_length = 16]
         status -> Varchar,
         sign_in_count -> Int4,
@@ -510,11 +526,11 @@ diesel::table! {
 }
 
 diesel::allow_tables_to_appear_in_same_query!(
+    attachment_resources,
     attachments,
-    attachments_resources,
     casbin_rule,
     categories,
-    categories_resources,
+    category_resources,
     comments,
     crawler_logs,
     favorites,
@@ -527,11 +543,12 @@ diesel::allow_tables_to_appear_in_same_query!(
     logs,
     menus,
     notifications,
+    schema_migrations,
     search_histories,
     settings,
     shorter_links,
+    tag_resources,
     tags,
-    tags_resources,
     twilio_sms_logs,
     user_bans,
     user_contacts,
