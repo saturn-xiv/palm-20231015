@@ -168,7 +168,7 @@ RUN zsh -c "source $HOME/.zshrc \
 RUN zsh -c "source $HOME/.zshrc && rbenv global ${RUBY_VERSION}"
 
 # https://go.dev/doc/install
-ENV GO_VERSION "1.20.4"
+ENV GO_VERSION "1.20.5"
 RUN wget -q -P $HOME/downloads https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
 RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local
 RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc \
@@ -177,9 +177,9 @@ RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc \
 
 # https://github.com/sdkman/sdkman-cli
 ENV JDK_VERSION "20.0.1-open"
-ENV GRADLE_VERSION "8.1.1"
+ENV GRADLE_VERSION "8.2"
 ENV THRIFT_JAVA_VERSION "19.0.2-open"
-ENV THRIFT_GRADLE_VERSION "7.6.1"  
+ENV THRIFT_GRADLE_VERSION "7.6.2"
 RUN curl -s "https://get.sdkman.io" | bash
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
@@ -234,7 +234,7 @@ RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
     && echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.zshrc
 
 # https://opensearch.org/downloads.html#opensearch
-ENV OPENSEARCH_VERSION "2.7.0"
+ENV OPENSEARCH_VERSION "2.8.0"
 RUN wget -q -P $HOME/downloads \
     https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
 RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C /opt \
@@ -246,7 +246,7 @@ RUN wget -q -O /usr/bin/minio \
 RUN chmod +x /usr/bin/minio
 
 # https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.55.1"
+ENV GRPC_VERSION "v1.56.0"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 # ENV PROTOBUF_VERSION "v3.21.8"
 # RUN cd $HOME/downloads/grpc/third_party/protobuf \
@@ -280,7 +280,7 @@ RUN mkdir -p $HOME/build/protobuf-javascript \
 
 # https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/
 # https://github.com/grpc/grpc-java
-ENV GRPC_JAVA_PLUGIN_VERSION "1.55.1"
+ENV GRPC_JAVA_PLUGIN_VERSION "1.56.1"
 RUN wget -q -O $HOME/.local/bin/grpc_java_plugin \
     https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${GRPC_JAVA_PLUGIN_VERSION}/protoc-gen-grpc-java-${GRPC_JAVA_PLUGIN_VERSION}-linux-x86_64.exe
 RUN chmod +x $HOME/.local/bin/grpc_java_plugin
