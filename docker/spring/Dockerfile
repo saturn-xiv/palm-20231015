@@ -228,6 +228,13 @@ RUN zsh -c "source $HOME/.zshrc \
     && cargo install --locked cargo-outdated \
     && cargo install mdbook"
 
+# https://www.swift.org/download/#releases
+ENV SWIFT_VERSION "5.8.1"
+RUN wget -q -P $HOME/downloads https://download.swift.org/swift-${SWIFT_VERSION}-release/ubuntu2204/swift-${SWIFT_VERSION}-RELEASE/swift-${SWIFT_VERSION}-RELEASE-ubuntu22.04.tar.gz \
+    && cd /opt \
+    && tar xf $HOME/downloads/swift-${SWIFT_VERSION}-RELEASE-ubuntu22.04.tar.gz \
+    && echo "export PATH=/opt/swift-${SWIFT_VERSION}-RELEASE-ubuntu22.04/bin:\$PATH" >> $HOME/.zshrc
+
 # https://github.com/microsoft/vcpkg
 RUN git clone https://github.com/microsoft/vcpkg.git $HOME/local/vcpkg
 RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
