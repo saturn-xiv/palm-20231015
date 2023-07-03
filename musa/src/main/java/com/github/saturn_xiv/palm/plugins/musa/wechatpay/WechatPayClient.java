@@ -53,7 +53,7 @@ public class WechatPayClient {
     }
 
     private byte[] downloadBill(final String url) throws IllegalArgumentException {
-        final var client = new DefaultHttpClientBuilder().config(config).build();
+        final var client = this.client();
 
         HttpHeaders headers = new HttpHeaders();
         headers.addHeader(Constant.ACCEPT, MediaType.APPLICATION_JSON.getValue());
@@ -77,6 +77,10 @@ public class WechatPayClient {
             logger.error("download {} ", response.getDownloadUrl(), e);
             throw new IllegalArgumentException("can't download the bill");
         }
+    }
+
+    private HttpClient client(){
+        return new DefaultHttpClientBuilder().config(config).build();
     }
 
     public static String currency(WechatPayCurrency currency) {
@@ -199,6 +203,7 @@ public class WechatPayClient {
     public RefundService refundService() {
         return new RefundService.Builder().config(config).build();
     }
+
 
     public TransferBatchService transferBatchService() {
         return new TransferBatchService.Builder().config(config).build();
