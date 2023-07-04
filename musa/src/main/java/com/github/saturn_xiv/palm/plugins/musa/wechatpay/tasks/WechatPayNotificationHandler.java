@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 import java.util.Properties;
 
 public class WechatPayNotificationHandler<T> {
-    public WechatPayNotificationHandler(String env, Class<T> clazz) {
+    public WechatPayNotificationHandler(String merchantId, String env, Class<T> clazz) {
         this.env = env;
         this.clazz = clazz;
     }

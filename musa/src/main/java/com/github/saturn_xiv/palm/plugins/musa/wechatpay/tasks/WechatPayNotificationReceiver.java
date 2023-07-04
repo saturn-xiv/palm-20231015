@@ -9,7 +9,8 @@ import java.io.IOException;
 
 
 public class WechatPayNotificationReceiver<T> {
-    protected WechatPayNotificationReceiver(String[] clients, Class<T> clazz) {
+    protected WechatPayNotificationReceiver(String merchantId, String[] clients, Class<T> clazz) {
+        this.merchantId = merchantId;
         this.clients = clients;
         this.clazz = clazz;
     }
@@ -20,7 +21,7 @@ public class WechatPayNotificationReceiver<T> {
         final var context = gson.fromJson(new String(message.getBody()), clazz);
 
         for (var client : clients) {
-            var handler = new WechatPayNotificationHandler<>(client, clazz);
+            var handler = new WechatPayNotificationHandler<>(merchantId, client, clazz);
             handler.execute(context);
         }
     }
@@ -28,6 +29,7 @@ public class WechatPayNotificationReceiver<T> {
 
     private final String[] clients;
     private final Class<T> clazz;
+    private final String merchantId;
 
 
     private final static Logger logger = LoggerFactory.getLogger(WechatPayNotificationReceiver.class);

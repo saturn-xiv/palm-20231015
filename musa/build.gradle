@@ -1,15 +1,21 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.1.0'
+	id 'org.springframework.boot' version '3.1.1'
 	id 'io.spring.dependency-management' version '1.1.0'
 
+//	https://plugins.gradle.org/plugin/com.palantir.git-version
 	id 'com.palantir.git-version' version '3.0.0'
+//	https://plugins.gradle.org/plugin/com.gorylenko.gradle-git-properties
 	id "com.gorylenko.gradle-git-properties" version "2.4.1"
 }
 
 group = 'com.github.saturn_xiv.palm.plugins'
 version = gitVersion()
 sourceCompatibility = '20'
+
+jar {
+	enabled = false
+}
 
 repositories {
 	mavenCentral()
@@ -39,12 +45,12 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.postgresql/postgresql
 	implementation 'org.postgresql:postgresql:42.6.0'
 	// https://mvnrepository.com/artifact/org.liquibase/liquibase-core
-	implementation 'org.liquibase:liquibase-core:4.22.0'
+	implementation 'org.liquibase:liquibase-core:4.23.0'
 	// https://mvnrepository.com/artifact/org.mybatis/mybatis
 	implementation 'org.mybatis:mybatis:3.5.13'
 
 	// https://mvnrepository.com/artifact/com.github.wechatpay-apiv3/wechatpay-java
-	implementation 'com.github.wechatpay-apiv3:wechatpay-java:0.2.8'
+	implementation 'com.github.wechatpay-apiv3:wechatpay-java:0.2.9'
 
 	// https://mvnrepository.com/artifact/org.apache.poi/poi
 	implementation 'org.apache.poi:poi:5.2.3'
@@ -64,16 +70,16 @@ dependencies {
 	implementation 'org.apache.thrift:libthrift:0.18.1'
 
 	// https://mvnrepository.com/artifact/io.grpc/grpc-protobuf
-	implementation group: 'io.grpc', name: 'grpc-protobuf', version: '1.56.0'
+	implementation group: 'io.grpc', name: 'grpc-protobuf', version: '1.56.1'
 	// https://github.com/grpc/grpc-java
-	runtimeOnly 'io.grpc:grpc-netty-shaded:1.56.0'
-	implementation 'io.grpc:grpc-protobuf:1.56.0'
-	implementation 'io.grpc:grpc-stub:1.56.0'
-	implementation 'io.grpc:grpc-netty:1.56.0'
+	runtimeOnly 'io.grpc:grpc-netty-shaded:1.56.1'
+	implementation 'io.grpc:grpc-protobuf:1.56.1'
+	implementation 'io.grpc:grpc-stub:1.56.1'
+	implementation 'io.grpc:grpc-netty:1.56.1'
 	implementation 'org.apache.tomcat:annotations-api:6.0.53'
 
 	// https://mvnrepository.com/artifact/org.springframework.shell/spring-shell-starter
-	implementation 'org.springframework.shell:spring-shell-starter:3.1.1'
+	implementation 'org.springframework.shell:spring-shell-starter:3.1.2'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

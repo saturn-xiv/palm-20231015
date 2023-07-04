@@ -22,6 +22,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -79,7 +80,7 @@ public class WechatPayClient {
         }
     }
 
-    private HttpClient client(){
+    private HttpClient client() {
         return new DefaultHttpClientBuilder().config(config).build();
     }
 
@@ -211,9 +212,10 @@ public class WechatPayClient {
 
     @PostConstruct
     void startUp() {
+        logger.info("load merchant {}", merchantId);
         config = new RSAAutoCertificateConfig.Builder()
                 .merchantId(merchantId)
-                .privateKeyFromPath(privateKeyPath)
+                .privateKeyFromPath(privateKeyPath())
                 .merchantSerialNumber(merchantSerialNumber)
                 .apiV3Key(apiV3Key)
                 .build();
@@ -222,19 +224,25 @@ public class WechatPayClient {
     private RSAConfig open() {
         return new RSAConfig.Builder()
                 .merchantId(merchantId)
-                .privateKeyFromPath(privateKeyPath)
+                .privateKeyFromPath(privateKeyPath())
                 .merchantSerialNumber(merchantSerialNumber)
-                .wechatPayCertificatesFromPath(certificatePath)
+                .wechatPayCertificatesFromPath(certificatePath())
                 .build();
     }
+
+    private String privateKeyPath() {
+        return Paths.get(ROOT, merchantId, "apiclient_key.pem").toString();
+    }
+
+    private String certificatePath() {
+        return Paths.get(ROOT, merchantId, "apiclient_cert.p12").toString();
+    }
+
+    final static String ROOT = "wechatpay";
 
 
     @Value("${app.wechatpay.merchant-id}")
     String merchantId;
-    @Value("${app.wechatpay.private-key-path}")
-    String privateKeyPath;
-    @Value("${app.wechatpay.certificate-path}")
-    String certificatePath;
     @Value("${app.wechatpay.merchant-serial-number}")
     String merchantSerialNumber;
     @Value("${app.wechatpay.api-v3-key}")

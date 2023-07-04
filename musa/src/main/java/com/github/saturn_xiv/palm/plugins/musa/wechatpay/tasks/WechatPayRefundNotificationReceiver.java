@@ -11,8 +11,9 @@ import java.io.IOException;
 
 @Component("palm.musa.task.wechat-pay.receiver.notification.refund")
 public class WechatPayRefundNotificationReceiver extends WechatPayNotificationReceiver<RefundNotification> {
-    public WechatPayRefundNotificationReceiver(@Value("${app.loquat.clients}") String[] clients) {
-        super(clients, RefundNotification.class);
+    public WechatPayRefundNotificationReceiver(@Value("${app.wechatpay.merchant-id}") String merchantId,
+                                               @Value("${app.loquat.clients}") String[] clients) {
+        super(merchantId, clients, RefundNotification.class);
     }
 
     @RabbitListener(queues = RabbitmqConfiguration.WECHAT_PAY_REFUND)

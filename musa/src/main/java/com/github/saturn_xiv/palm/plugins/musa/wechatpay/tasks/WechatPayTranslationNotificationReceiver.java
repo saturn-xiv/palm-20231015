@@ -11,12 +11,15 @@ import java.io.IOException;
 
 @Component("palm.musa.task.wechat-pay.receiver.notification.translation")
 public class WechatPayTranslationNotificationReceiver extends WechatPayNotificationReceiver<Transaction> {
-    public WechatPayTranslationNotificationReceiver(@Value("${app.loquat.clients}") String[] clients) {
-        super(clients, Transaction.class);
+    public WechatPayTranslationNotificationReceiver(@Value("${app.wechatpay.merchant-id}") String merchantId,
+                                                    @Value("${app.loquat.clients}") String[] clients) {
+        super(merchantId, clients, Transaction.class);
     }
 
     @RabbitListener(queues = RabbitmqConfiguration.WECHAT_PAY_TRANSACTION)
     public void handleMessage(Message message) throws IOException {
         super.receiveMessage(message);
     }
+
+
 }
