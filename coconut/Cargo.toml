@@ -15,6 +15,7 @@ env_logger = "0.10"
 postgres = "0.19"
 dirs = "5"
 
+
 [dependencies.tokio]
 version = "1"
 features = ["full"]
@@ -24,9 +25,8 @@ version = "4"
 features = ["derive"]
 
 [dependencies.mysql]
-version = "24"
-# default-features = false
-# features = ["default-rustls"]
+# FIXME unresolved import `bitflags::Flags`
+version = "23"
 
 [dependencies.openssl]
 version = "*"
