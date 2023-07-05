@@ -145,12 +145,8 @@ use std::os::unix::fs::PermissionsExt;
 use std::path::Path;
 use std::process::{Command, Output};
 
-use actix_web::{get, Responder};
-use actix_web_lab::respond::Html;
 use chrono::{DateTime, NaiveDateTime, Utc};
 use chrono_tz::Tz;
-use juniper::{http::graphiql::graphiql_source, GraphQLInputObject, GraphQLObject};
-use validator::Validate;
 use xml::writer::{EventWriter, Result as XmlWriterResult};
 
 pub use self::result::{Error, GrpcResult, HttpError, HttpResult, Result};
@@ -174,20 +170,6 @@ lazy_static! {
 // https://developers.cloudflare.com/support/speed/optimization-file-size/what-will-cloudflare-compress/
 pub const PROTOBUF: &str = "application/x-protobuf";
 pub const FLATBUFFER: &str = "application/x-flatbuffer";
-
-#[derive(GraphQLObject)]
-#[graphql(name = "Succeeded", description = "Succeeded response")]
-pub struct Succeeded {
-    pub created_at: NaiveDateTime,
-}
-
-impl Default for Succeeded {
-    fn default() -> Self {
-        Self {
-            created_at: Utc::now().naive_utc(),
-        }
-    }
-}
 
 pub fn timestamp2datetime(ts: i64, tz: Tz) -> Option<DateTime<Tz>> {
     if let Some(it) = NaiveDateTime::from_timestamp_opt(ts, 0) {
@@ -319,22 +301,11 @@ pub trait ToXml {
     fn write<W: Write>(&self, wrt: &mut EventWriter<W>) -> XmlWriterResult<()>;
 }
 
-#[derive(GraphQLObject)]
-#[graphql(name = "Pagination")]
-pub struct Pagination {
-    pub page: i32,
-    pub size: i32,
-    pub total: i32,
-    pub has_next: bool,
-    pub has_previous: bool,
-}
-
-impl Pagination {
-    pub fn new(pager: &Pager, total: i64) -> Self {
+impl nut::v1::Pagination {
+    pub fn new(pager: &nut::v1::Pager, total: i64) -> Self {
         let page = pager.page(total);
         let size = pager.size();
 
-        let total = total as i32;
         Self {
             page,
             size,
@@ -345,23 +316,12 @@ impl Pagination {
     }
 }
 
-#[derive(GraphQLInputObject, Validate)]
-#[graphql(name = "Pager")]
-pub struct Pager {
-    #[validate(range(min = 5, max = 1_000))]
-    pub size: i32,
-    #[validate(range(min = 1))]
-    pub page: i32,
-}
-
-impl Pager {
+impl nut::v1::Pager {
     pub fn offset(&self, total: i64) -> i64 {
-        let v = (self.page(total) - 1) * self.size();
-        v as i64
+        (self.page(total) - 1) * self.size()
     }
 
-    pub fn page(&self, total: i64) -> i32 {
-        let total = total as i32;
+    pub fn page(&self, total: i64) -> i64 {
         let size = self.size();
         if total < size || self.page < 1 {
             return 1;
@@ -373,7 +333,7 @@ impl Pager {
         self.page
     }
 
-    pub fn size(&self) -> i32 {
+    pub fn size(&self) -> i64 {
         if self.size < Self::MIN_SIZE {
             return Self::MIN_SIZE;
         }
@@ -382,13 +342,8 @@ impl Pager {
         }
         self.size
     }
-    const MAX_SIZE: i32 = 1 << 12;
-    const MIN_SIZE: i32 = 1 << 2;
-}
-
-#[get("/graphiql")]
-pub async fn graphql_playground() -> impl Responder {
-    Html(graphiql_source("/graphql", None))
+    const MAX_SIZE: i64 = 1 << 12;
+    const MIN_SIZE: i64 = 1 << 2;
 }
 
 pub mod babel {
