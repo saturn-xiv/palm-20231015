@@ -85,6 +85,7 @@ function generate_diesel_postgresql() {
             vote_items vote_logs \
             footprints feedbacks favorites issues comments search_histories \
             menus \
+            excel_files excel_sheets excel_items \
         > nut/src/schema.rs    
     # FIXME
     # DATABASE_URL=$1 diesel print-schema -o cms_* > cms/src/schema.rs    
