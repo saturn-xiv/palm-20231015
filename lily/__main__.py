@@ -3,7 +3,7 @@ import argparse
 import sys
 import tomllib
 
-from palm import VERSION, excel, open_postgresql
+from palm import VERSION, excel, postgresql_url
 
 NAME = 'lily'
 
@@ -35,8 +35,8 @@ if __name__ == '__main__':
     logging.info('load configuration from %s', args.config.name)
 
     config = tomllib.load(args.config)
-    db = open_postgresql(config['postgresql'])
+    db_url = postgresql_url(config['postgresql'])
     if args.load_excel:
-        excel.to_pg(args.load_excel, db)
+        excel.file_to_pg(args.load_excel, db_url)
         sys.exit(0)
     logging.info('start queue listener')

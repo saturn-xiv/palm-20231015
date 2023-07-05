@@ -105,6 +105,39 @@ diesel::table! {
 }
 
 diesel::table! {
+    excel_files (id) {
+        id -> Int4,
+        #[max_length = 255]
+        name -> Varchar,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    excel_items (id) {
+        id -> Int8,
+        sheet_id -> Int4,
+        #[max_length = 255]
+        row -> Varchar,
+        #[max_length = 255]
+        column -> Varchar,
+        #[max_length = 255]
+        value -> Varchar,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
+    excel_sheets (id) {
+        id -> Int4,
+        file_id -> Int4,
+        #[max_length = 255]
+        name -> Varchar,
+        created_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     favorites (id) {
         id -> Int4,
         user_id -> Int4,
@@ -533,6 +566,9 @@ diesel::allow_tables_to_appear_in_same_query!(
     category_resources,
     comments,
     crawler_logs,
+    excel_files,
+    excel_items,
+    excel_sheets,
     favorites,
     feedbacks,
     footprints,
