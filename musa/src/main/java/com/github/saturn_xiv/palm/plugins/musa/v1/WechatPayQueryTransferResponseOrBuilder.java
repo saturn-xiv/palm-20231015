@@ -8,41 +8,41 @@ public interface WechatPayQueryTransferResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.palm.musa.v1.WechatPayQueryTransferResponse.TransferBatch transfer_batch = 1;</code>
-   * @return Whether the transferBatch field is set.
+   * <code>.palm.musa.v1.WechatPayQueryTransferResponse.Batch batch = 1;</code>
+   * @return Whether the batch field is set.
    */
-  boolean hasTransferBatch();
+  boolean hasBatch();
   /**
-   * <code>.palm.musa.v1.WechatPayQueryTransferResponse.TransferBatch transfer_batch = 1;</code>
-   * @return The transferBatch.
+   * <code>.palm.musa.v1.WechatPayQueryTransferResponse.Batch batch = 1;</code>
+   * @return The batch.
    */
-  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferResponse.TransferBatch getTransferBatch();
+  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferResponse.Batch getBatch();
   /**
-   * <code>.palm.musa.v1.WechatPayQueryTransferResponse.TransferBatch transfer_batch = 1;</code>
+   * <code>.palm.musa.v1.WechatPayQueryTransferResponse.Batch batch = 1;</code>
    */
-  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferResponse.TransferBatchOrBuilder getTransferBatchOrBuilder();
+  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferResponse.BatchOrBuilder getBatchOrBuilder();
 
   /**
-   * <code>repeated .palm.musa.v1.WechatPayQueryTransferResponse.TransferDetail transfer_detail_list = 9;</code>
+   * <code>repeated .palm.musa.v1.WechatPayQueryTransferResponse.Detail details = 9;</code>
    */
-  java.util.List<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferResponse.TransferDetail> 
-      getTransferDetailListList();
+  java.util.List<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferResponse.Detail> 
+      getDetailsList();
   /**
-   * <code>repeated .palm.musa.v1.WechatPayQueryTransferResponse.TransferDetail transfer_detail_list = 9;</code>
+   * <code>repeated .palm.musa.v1.WechatPayQueryTransferResponse.Detail details = 9;</code>
    */
-  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferResponse.TransferDetail getTransferDetailList(int index);
+  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferResponse.Detail getDetails(int index);
   /**
-   * <code>repeated .palm.musa.v1.WechatPayQueryTransferResponse.TransferDetail transfer_detail_list = 9;</code>
+   * <code>repeated .palm.musa.v1.WechatPayQueryTransferResponse.Detail details = 9;</code>
    */
-  int getTransferDetailListCount();
+  int getDetailsCount();
   /**
-   * <code>repeated .palm.musa.v1.WechatPayQueryTransferResponse.TransferDetail transfer_detail_list = 9;</code>
+   * <code>repeated .palm.musa.v1.WechatPayQueryTransferResponse.Detail details = 9;</code>
    */
-  java.util.List<? extends com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferResponse.TransferDetailOrBuilder> 
-      getTransferDetailListOrBuilderList();
+  java.util.List<? extends com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferResponse.DetailOrBuilder> 
+      getDetailsOrBuilderList();
   /**
-   * <code>repeated .palm.musa.v1.WechatPayQueryTransferResponse.TransferDetail transfer_detail_list = 9;</code>
+   * <code>repeated .palm.musa.v1.WechatPayQueryTransferResponse.Detail details = 9;</code>
    */
-  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferResponse.TransferDetailOrBuilder getTransferDetailListOrBuilder(
+  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferResponse.DetailOrBuilder getDetailsOrBuilder(
       int index);
 }

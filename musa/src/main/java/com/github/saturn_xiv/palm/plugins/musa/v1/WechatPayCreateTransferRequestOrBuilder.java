@@ -35,38 +35,38 @@ public interface WechatPayCreateTransferRequestOrBuilder extends
   com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.BatchOrBuilder getBatchOrBuilder();
 
   /**
-   * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.TransferDetail transfer_detail_list = 3;</code>
+   * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
    */
-  java.util.List<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.TransferDetail> 
-      getTransferDetailListList();
+  java.util.List<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail> 
+      getDetailsList();
   /**
-   * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.TransferDetail transfer_detail_list = 3;</code>
+   * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
    */
-  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.TransferDetail getTransferDetailList(int index);
+  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail getDetails(int index);
   /**
-   * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.TransferDetail transfer_detail_list = 3;</code>
+   * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
    */
-  int getTransferDetailListCount();
+  int getDetailsCount();
   /**
-   * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.TransferDetail transfer_detail_list = 3;</code>
+   * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
    */
-  java.util.List<? extends com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.TransferDetailOrBuilder> 
-      getTransferDetailListOrBuilderList();
+  java.util.List<? extends com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.DetailOrBuilder> 
+      getDetailsOrBuilderList();
   /**
-   * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.TransferDetail transfer_detail_list = 3;</code>
+   * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
    */
-  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.TransferDetailOrBuilder getTransferDetailListOrBuilder(
+  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.DetailOrBuilder getDetailsOrBuilder(
       int index);
 
   /**
-   * <code>string transfer_scene_id = 9;</code>
-   * @return The transferSceneId.
+   * <code>string scene_id = 9;</code>
+   * @return The sceneId.
    */
-  java.lang.String getTransferSceneId();
+  java.lang.String getSceneId();
   /**
-   * <code>string transfer_scene_id = 9;</code>
-   * @return The bytes for transferSceneId.
+   * <code>string scene_id = 9;</code>
+   * @return The bytes for sceneId.
    */
   com.google.protobuf.ByteString
-      getTransferSceneIdBytes();
+      getSceneIdBytes();
 }

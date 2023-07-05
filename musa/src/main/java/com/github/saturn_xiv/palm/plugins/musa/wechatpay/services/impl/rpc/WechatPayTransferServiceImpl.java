@@ -24,24 +24,24 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
     public void create(WechatPayCreateTransferRequest request, StreamObserver<WechatPayCreateTransferResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
-        List<WechatPayCreateTransferResponse.TransferDetail> transferDetailList = new ArrayList<>();
+        List<WechatPayCreateTransferResponse.Detail> transferDetailList = new ArrayList<>();
         List<TransferDetailInput> transferDetailInputList = new ArrayList<>();
         long totalAmount = 0;
-        for (var it : request.getTransferDetailListList()) {
+        for (var it : request.getDetailsList()) {
 
             final var outDetailsNo = WechatPayClient.outNo(OutNoType.BATCH_TRANSFER_DETAIL);
 
-            totalAmount += it.getTransferAmount();
+            totalAmount += it.getAmount();
             {
                 var tdi = new TransferDetailInput();
-                tdi.setTransferAmount(it.getTransferAmount());
-                tdi.setTransferRemark(it.getTransferRemark());
+                tdi.setTransferAmount(it.getAmount());
+                tdi.setTransferRemark(it.getRemark());
                 tdi.setOutDetailNo(outDetailsNo);
                 tdi.setOpenid(it.getOpenId());
-                tdi.setUserName(it.getUserName());
+                tdi.setUserName(it.getUsername());
                 transferDetailInputList.add(tdi);
             }
-            transferDetailList.add(WechatPayCreateTransferResponse.TransferDetail.newBuilder()
+            transferDetailList.add(WechatPayCreateTransferResponse.Detail.newBuilder()
                     .setOpenId(it.getOpenId())
                     .setOutDetailNo(outDetailsNo)
                     .build());
@@ -50,12 +50,12 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
         final var response = transferBatchHelper.create(request.getAppId(), WechatPayClient.outNo(OutNoType.BATCH_TRANSFER),
                 request.getBatch().getName(), request.getBatch().getRemark(),
                 totalAmount, transferDetailInputList.size(), transferDetailInputList,
-                request.getTransferSceneId());
+                request.getSceneId());
 
 
         responseObserver.onNext(WechatPayCreateTransferResponse.newBuilder()
                 .setOutBatchNo(response.getOutBatchNo())
-                .addAllTransferDetailList(transferDetailList)
+                .addAllDetails(transferDetailList)
                 .build());
         responseObserver.onCompleted();
     }
@@ -71,25 +71,25 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
         );
 
 
-        List<WechatPayQueryTransferResponse.TransferDetail> transferDetailList = new ArrayList<>();
+        List<WechatPayQueryTransferResponse.Detail> transferDetailList = new ArrayList<>();
         for (var it : response.getTransferDetailList()) {
             transferDetailList.add(
-                    WechatPayQueryTransferResponse.TransferDetail.newBuilder()
+                    WechatPayQueryTransferResponse.Detail.newBuilder()
                             .setOutDetailNo(it.getOutDetailNo())
-                            .setDetailStatus(it.getDetailStatus())
+                            .setStatus(it.getDetailStatus())
                             .build()
             );
         }
-        var tb = WechatPayQueryTransferResponse.TransferBatch.newBuilder()
-                .setBatchStatus(response.getTransferBatch().getBatchStatus())
-                .setBatchType(response.getTransferBatch().getBatchType());
+        var tb = WechatPayQueryTransferResponse.Batch.newBuilder()
+                .setStatus(response.getTransferBatch().getBatchStatus())
+                .setType(response.getTransferBatch().getBatchType());
         if (response.getTransferBatch().getCloseReason() != null) {
             tb.setCloseReason(response.getTransferBatch().getCloseReason().name());
         }
 
         responseObserver.onNext(WechatPayQueryTransferResponse.newBuilder()
-                .setTransferBatch(tb.build())
-                .addAllTransferDetailList(transferDetailList)
+                .setBatch(tb.build())
+                .addAllDetails(transferDetailList)
                 .build());
         responseObserver.onCompleted();
 

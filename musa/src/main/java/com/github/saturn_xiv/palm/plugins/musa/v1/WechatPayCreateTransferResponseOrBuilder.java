@@ -20,26 +20,26 @@ public interface WechatPayCreateTransferResponseOrBuilder extends
       getOutBatchNoBytes();
 
   /**
-   * <code>repeated .palm.musa.v1.WechatPayCreateTransferResponse.TransferDetail transfer_detail_list = 2;</code>
+   * <code>repeated .palm.musa.v1.WechatPayCreateTransferResponse.Detail details = 2;</code>
    */
-  java.util.List<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.TransferDetail> 
-      getTransferDetailListList();
+  java.util.List<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Detail> 
+      getDetailsList();
   /**
-   * <code>repeated .palm.musa.v1.WechatPayCreateTransferResponse.TransferDetail transfer_detail_list = 2;</code>
+   * <code>repeated .palm.musa.v1.WechatPayCreateTransferResponse.Detail details = 2;</code>
    */
-  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.TransferDetail getTransferDetailList(int index);
+  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Detail getDetails(int index);
   /**
-   * <code>repeated .palm.musa.v1.WechatPayCreateTransferResponse.TransferDetail transfer_detail_list = 2;</code>
+   * <code>repeated .palm.musa.v1.WechatPayCreateTransferResponse.Detail details = 2;</code>
    */
-  int getTransferDetailListCount();
+  int getDetailsCount();
   /**
-   * <code>repeated .palm.musa.v1.WechatPayCreateTransferResponse.TransferDetail transfer_detail_list = 2;</code>
+   * <code>repeated .palm.musa.v1.WechatPayCreateTransferResponse.Detail details = 2;</code>
    */
-  java.util.List<? extends com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.TransferDetailOrBuilder> 
-      getTransferDetailListOrBuilderList();
+  java.util.List<? extends com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.DetailOrBuilder> 
+      getDetailsOrBuilderList();
   /**
-   * <code>repeated .palm.musa.v1.WechatPayCreateTransferResponse.TransferDetail transfer_detail_list = 2;</code>
+   * <code>repeated .palm.musa.v1.WechatPayCreateTransferResponse.Detail details = 2;</code>
    */
-  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.TransferDetailOrBuilder getTransferDetailListOrBuilder(
+  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.DetailOrBuilder getDetailsOrBuilder(
       int index);
 }
