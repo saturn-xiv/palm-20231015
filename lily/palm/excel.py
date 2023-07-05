@@ -4,6 +4,11 @@ import psycopg
 from pandas import ExcelFile
 
 
+def queue_message_callback(ch, method, properties, body):
+    # TODO
+    print("[x] received %r" % body)
+
+
 def to_pg(name, doc, db):
     cur = db.cursor()
     cur.execute(psycopg.sql.SQL(

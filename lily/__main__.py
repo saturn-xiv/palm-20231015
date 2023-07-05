@@ -2,8 +2,9 @@ import logging
 import argparse
 import sys
 import tomllib
+import pika
 
-from palm import VERSION, excel, postgresql_url
+from palm import VERSION, excel, postgresql_url, rabbitmq_parameters
 
 NAME = 'lily'
 
@@ -39,4 +40,15 @@ if __name__ == '__main__':
     if args.load_excel:
         excel.file_to_pg(args.load_excel, db_url)
         sys.exit(0)
-    logging.info('start queue listener')
+    queue_params = rabbitmq_parameters(config['rabbitmq'])
+    with pika.BlockingConnection(queue_params) as queue:
+        queue_name = '%s.excel.parser' % NAME
+        logging.info('start queue consumer(%s)', queue_name)
+        channel = queue.channel()
+        channel.queue_declare(queue=queue_name, exclusive=True,
+                              durable=True, auto_delete=False)
+        channel.basic_consume(queue=queue_name,
+                              auto_ack=True,
+                              on_message_callback=excel.queue_message_callback)
+        logging.info('[*] waiting for messages. to exit press CTRL+C')
+        channel.start_consuming()
