@@ -8,9 +8,10 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
 
 message Contact {
-  string phone = 1;
-  string wechat = 2;
-  string address = 99;
+  optional string phone = 1;
+  optional string wechat = 2;
+  optional string email = 3;
+  optional string address = 99;
 }
 
 // ----------------------------------------------------------------------------
@@ -219,17 +220,19 @@ message Dmz {
 
 message Wan {
   string device = 1;
-  string name = 2;
-  uint32 metric = 3;
+  uint32 metric = 2;
 
   string mac = 11;
   oneof ip {
     Dhcp dhcp = 21;
     Static static = 22;
   }
+  bool enable = 99;
 }
 
-message Dhcp { bool v6 = 1; };
+message Dhcp {
+  bool v6 = 1;
+};
 message Static {
   string address = 1;
   string gateway = 3;
@@ -237,7 +240,9 @@ message Static {
   optional string dns2 = 5;
 }
 
-message Dns { repeated string items = 1; }
+message Dns {
+  repeated string items = 1;
+}
 
 // ----------------------------------------------------------------------------
 
@@ -259,11 +264,15 @@ message UserSignInRequest {
   google.protobuf.Duration ttl = 9;
 }
 
-message UserSignInResponse { string token = 1; }
+message UserSignInResponse {
+  string token = 1;
+}
 
 message UserUpdateRequest {
   UserProfile current = 1;
   UserProfile new = 2;
 }
 
-message UserLogsResponse { repeated string items = 1; }
+message UserLogsResponse {
+  repeated string items = 1;
+}
