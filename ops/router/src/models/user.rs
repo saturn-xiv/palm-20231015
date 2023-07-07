@@ -1,6 +1,6 @@
 use chrono::{NaiveDateTime, Utc};
 use diesel::{insert_into, prelude::*, sqlite::SqliteConnection as Connection, update};
-use palm::Result;
+use palm::{ops::router::v1, Result};
 use serde::{Deserialize, Serialize};
 
 use super::super::schema::users;
@@ -13,11 +13,30 @@ pub struct Item {
     pub updated_at: NaiveDateTime,
 }
 
+impl Item {
+    pub fn contact(&self) -> Result<Contact> {
+        let it = flexbuffers::from_slice(&self.contact)?;
+        Ok(it)
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Contact {
     pub wechat: Option<String>,
     pub phone: Option<String>,
     pub email: Option<String>,
+    pub address: Option<String>,
+}
+
+impl From<Contact> for v1::Contact {
+    fn from(x: Contact) -> Self {
+        Self {
+            wechat: x.wechat.clone(),
+            phone: x.phone.clone(),
+            email: x.email.clone(),
+            address: x.address,
+        }
+    }
 }
 
 pub trait Dao {

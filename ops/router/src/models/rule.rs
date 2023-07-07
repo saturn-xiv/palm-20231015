@@ -15,6 +15,11 @@ pub struct Item {
 
 impl Item {
     pub const DEFAULT_GROUP: &'static str = "default";
+
+    pub fn rule(&self) -> Result<Rule> {
+        let it = flexbuffers::from_slice(&self.content)?;
+        Ok(it)
+    }
 }
 
 pub trait Dao {

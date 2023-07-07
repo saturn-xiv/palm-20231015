@@ -1,5 +1,5 @@
-pub mod mutation;
-pub mod query;
+pub mod router;
+pub mod user;
 
 use diesel::sqlite::SqliteConnection as Db;
 use hyper::StatusCode;

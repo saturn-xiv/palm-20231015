@@ -3,10 +3,10 @@ use std::net::Ipv4Addr;
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, sqlite::SqliteConnection as Connection, update};
 use ipnet::Ipv4Net;
-use palm::Result;
+use palm::{ops::router::v1, Result};
 
 use super::super::schema::hosts;
-use super::rule::Item as Rule;
+use super::{rule::Item as Rule, user::Dao as UserDao};
 
 #[derive(Queryable)]
 pub struct Item {
@@ -20,6 +20,31 @@ pub struct Item {
     pub fixed: bool,
     pub confirmed_at: Option<NaiveDateTime>,
     pub updated_at: NaiveDateTime,
+}
+
+impl Item {
+    pub fn to_host(&self, db: &mut Connection) -> Result<v1::Host> {
+        let it = v1::Host {
+            id: self.id,
+            name: self.name.clone(),
+            mac: self.mac.clone(),
+            ip: self.ip.clone(),
+            fixed: self.fixed,
+            group: self.group.clone(),
+            location: self.location.clone(),
+            owner: match self.user_id {
+                Some(id) => {
+                    let it = UserDao::by_id(db, id)?;
+                    Some(v1::host::Owner {
+                        name: it.name.clone(),
+                        contact: Some(it.contact()?.into()),
+                    })
+                }
+                None => None,
+            },
+        };
+        Ok(it)
+    }
 }
 
 pub trait Dao {
