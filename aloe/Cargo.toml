@@ -8,22 +8,13 @@ description = "A router software inspired by OpenWrt"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-juniper_actix = "0.4"
 log = "0.4"
-actix-identity = "0.5"
-actix-cors = "0.6"
 env_logger = "0.10"
-juniper = "0.15"
-actix-web-lab = "0.19"
 data-encoding = "2"
 
 [dependencies.chrono]
 version = "0.4"
 features = ["serde"]
-
-[dependencies.actix-session]
-version = "0.7"
-features = ["cookie-session"]
 
 [dependencies.tonic]
 version = "0.9"
@@ -49,10 +40,6 @@ features = ["sqlite"]
 [dependencies.clap]
 version = "4"
 features = ["derive"]
-
-[dependencies.actix-web]
-version = "4"
-features = ["cookies"]
 
 [dependencies.libsqlite3-sys]
 version = "*"
