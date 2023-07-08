@@ -27,7 +27,7 @@ configure_file(include/lemon/version.h.in ${PROJECT_SOURCE_DIR}/include/lemon/ve
 
 FetchContent_Declare(spdlog
   GIT_REPOSITORY  "https://github.com/gabime/spdlog.git"
-  GIT_TAG         "v1.11.0"
+  GIT_TAG         "v1.12.0"
 )
 FetchContent_Declare(tomlplusplus
   GIT_REPOSITORY  "https://github.com/marzer/tomlplusplus.git"
@@ -43,7 +43,7 @@ FetchContent_Declare(inja
 )
 FetchContent_Declare(httplib
   GIT_REPOSITORY  "https://github.com/yhirose/cpp-httplib.git"
-  GIT_TAG         "v0.13.0"
+  GIT_TAG         "v0.13.1"
 )
 
 FetchContent_Declare(magic_enum
