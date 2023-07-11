@@ -143,24 +143,30 @@ extern LeaveWordIndexResponseDefaultTypeInternal _LeaveWordIndexResponse_default
 class LeaveWordIndexResponse_Item;
 struct LeaveWordIndexResponse_ItemDefaultTypeInternal;
 extern LeaveWordIndexResponse_ItemDefaultTypeInternal _LeaveWordIndexResponse_Item_default_instance_;
+class LocaleByCodeRequest;
+struct LocaleByCodeRequestDefaultTypeInternal;
+extern LocaleByCodeRequestDefaultTypeInternal _LocaleByCodeRequest_default_instance_;
+class LocaleByLangAndCodeRequest;
+struct LocaleByLangAndCodeRequestDefaultTypeInternal;
+extern LocaleByLangAndCodeRequestDefaultTypeInternal _LocaleByLangAndCodeRequest_default_instance_;
 class LocaleByLangRequest;
 struct LocaleByLangRequestDefaultTypeInternal;
 extern LocaleByLangRequestDefaultTypeInternal _LocaleByLangRequest_default_instance_;
-class LocaleByLangResponse;
-struct LocaleByLangResponseDefaultTypeInternal;
-extern LocaleByLangResponseDefaultTypeInternal _LocaleByLangResponse_default_instance_;
-class LocaleGetRequest;
-struct LocaleGetRequestDefaultTypeInternal;
-extern LocaleGetRequestDefaultTypeInternal _LocaleGetRequest_default_instance_;
+class LocaleCreateRequest;
+struct LocaleCreateRequestDefaultTypeInternal;
+extern LocaleCreateRequestDefaultTypeInternal _LocaleCreateRequest_default_instance_;
 class LocaleIndexResponse;
 struct LocaleIndexResponseDefaultTypeInternal;
 extern LocaleIndexResponseDefaultTypeInternal _LocaleIndexResponse_default_instance_;
 class LocaleIndexResponse_Item;
 struct LocaleIndexResponse_ItemDefaultTypeInternal;
 extern LocaleIndexResponse_ItemDefaultTypeInternal _LocaleIndexResponse_Item_default_instance_;
-class LocaleSetRequest;
-struct LocaleSetRequestDefaultTypeInternal;
-extern LocaleSetRequestDefaultTypeInternal _LocaleSetRequest_default_instance_;
+class LocaleListResponse;
+struct LocaleListResponseDefaultTypeInternal;
+extern LocaleListResponseDefaultTypeInternal _LocaleListResponse_default_instance_;
+class LocaleUpdateRequest;
+struct LocaleUpdateRequestDefaultTypeInternal;
+extern LocaleUpdateRequestDefaultTypeInternal _LocaleUpdateRequest_default_instance_;
 class MediaContent;
 struct MediaContentDefaultTypeInternal;
 extern MediaContentDefaultTypeInternal _MediaContent_default_instance_;
@@ -423,17 +429,21 @@ template <>
 template <>
 ::palm::nut::v1::LeaveWordIndexResponse_Item* Arena::CreateMaybeMessage<::palm::nut::v1::LeaveWordIndexResponse_Item>(Arena*);
 template <>
+::palm::nut::v1::LocaleByCodeRequest* Arena::CreateMaybeMessage<::palm::nut::v1::LocaleByCodeRequest>(Arena*);
+template <>
+::palm::nut::v1::LocaleByLangAndCodeRequest* Arena::CreateMaybeMessage<::palm::nut::v1::LocaleByLangAndCodeRequest>(Arena*);
+template <>
 ::palm::nut::v1::LocaleByLangRequest* Arena::CreateMaybeMessage<::palm::nut::v1::LocaleByLangRequest>(Arena*);
 template <>
-::palm::nut::v1::LocaleByLangResponse* Arena::CreateMaybeMessage<::palm::nut::v1::LocaleByLangResponse>(Arena*);
-template <>
-::palm::nut::v1::LocaleGetRequest* Arena::CreateMaybeMessage<::palm::nut::v1::LocaleGetRequest>(Arena*);
+::palm::nut::v1::LocaleCreateRequest* Arena::CreateMaybeMessage<::palm::nut::v1::LocaleCreateRequest>(Arena*);
 template <>
 ::palm::nut::v1::LocaleIndexResponse* Arena::CreateMaybeMessage<::palm::nut::v1::LocaleIndexResponse>(Arena*);
 template <>
 ::palm::nut::v1::LocaleIndexResponse_Item* Arena::CreateMaybeMessage<::palm::nut::v1::LocaleIndexResponse_Item>(Arena*);
 template <>
-::palm::nut::v1::LocaleSetRequest* Arena::CreateMaybeMessage<::palm::nut::v1::LocaleSetRequest>(Arena*);
+::palm::nut::v1::LocaleListResponse* Arena::CreateMaybeMessage<::palm::nut::v1::LocaleListResponse>(Arena*);
+template <>
+::palm::nut::v1::LocaleUpdateRequest* Arena::CreateMaybeMessage<::palm::nut::v1::LocaleUpdateRequest>(Arena*);
 template <>
 ::palm::nut::v1::MediaContent* Arena::CreateMaybeMessage<::palm::nut::v1::MediaContent>(Arena*);
 template <>
@@ -10398,25 +10408,25 @@ class LocaleByLangRequest final :
   friend struct ::TableStruct_nut_2eproto;
 };// -------------------------------------------------------------------
 
-class LocaleByLangResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.nut.v1.LocaleByLangResponse) */ {
+class LocaleListResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.nut.v1.LocaleListResponse) */ {
  public:
-  inline LocaleByLangResponse() : LocaleByLangResponse(nullptr) {}
-  ~LocaleByLangResponse() override;
+  inline LocaleListResponse() : LocaleListResponse(nullptr) {}
+  ~LocaleListResponse() override;
   template<typename = void>
-  explicit PROTOBUF_CONSTEXPR LocaleByLangResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit PROTOBUF_CONSTEXPR LocaleListResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  LocaleByLangResponse(const LocaleByLangResponse& from);
-  LocaleByLangResponse(LocaleByLangResponse&& from) noexcept
-    : LocaleByLangResponse() {
+  LocaleListResponse(const LocaleListResponse& from);
+  LocaleListResponse(LocaleListResponse&& from) noexcept
+    : LocaleListResponse() {
     *this = ::std::move(from);
   }
 
-  inline LocaleByLangResponse& operator=(const LocaleByLangResponse& from) {
+  inline LocaleListResponse& operator=(const LocaleListResponse& from) {
     CopyFrom(from);
     return *this;
   }
-  inline LocaleByLangResponse& operator=(LocaleByLangResponse&& from) noexcept {
+  inline LocaleListResponse& operator=(LocaleListResponse&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -10446,20 +10456,20 @@ class LocaleByLangResponse final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const LocaleByLangResponse& default_instance() {
+  static const LocaleListResponse& default_instance() {
     return *internal_default_instance();
   }
-  static inline const LocaleByLangResponse* internal_default_instance() {
-    return reinterpret_cast<const LocaleByLangResponse*>(
-               &_LocaleByLangResponse_default_instance_);
+  static inline const LocaleListResponse* internal_default_instance() {
+    return reinterpret_cast<const LocaleListResponse*>(
+               &_LocaleListResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     44;
 
-  friend void swap(LocaleByLangResponse& a, LocaleByLangResponse& b) {
+  friend void swap(LocaleListResponse& a, LocaleListResponse& b) {
     a.Swap(&b);
   }
-  inline void Swap(LocaleByLangResponse* other) {
+  inline void Swap(LocaleListResponse* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -10472,7 +10482,7 @@ class LocaleByLangResponse final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(LocaleByLangResponse* other) {
+  void UnsafeArenaSwap(LocaleListResponse* other) {
     if (other == this) return;
     ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -10480,14 +10490,14 @@ class LocaleByLangResponse final :
 
   // implements Message ----------------------------------------------
 
-  LocaleByLangResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<LocaleByLangResponse>(arena);
+  LocaleListResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<LocaleListResponse>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const LocaleByLangResponse& from);
+  void CopyFrom(const LocaleListResponse& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const LocaleByLangResponse& from) {
-    LocaleByLangResponse::MergeImpl(*this, from);
+  void MergeFrom( const LocaleListResponse& from) {
+    LocaleListResponse::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
@@ -10505,15 +10515,15 @@ class LocaleByLangResponse final :
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(LocaleByLangResponse* other);
+  void InternalSwap(LocaleListResponse* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::absl::string_view FullMessageName() {
-    return "palm.nut.v1.LocaleByLangResponse";
+    return "palm.nut.v1.LocaleListResponse";
   }
   protected:
-  explicit LocaleByLangResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit LocaleListResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   public:
 
   static const ClassData _class_data_;
@@ -10548,7 +10558,7 @@ class LocaleByLangResponse final :
   ::palm::nut::v1::LocaleIndexResponse_Item* add_items();
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::nut::v1::LocaleIndexResponse_Item >&
       items() const;
-  // @@protoc_insertion_point(class_scope:palm.nut.v1.LocaleByLangResponse)
+  // @@protoc_insertion_point(class_scope:palm.nut.v1.LocaleListResponse)
  private:
   class _Internal;
 
@@ -10985,25 +10995,25 @@ class LocaleIndexResponse final :
   friend struct ::TableStruct_nut_2eproto;
 };// -------------------------------------------------------------------
 
-class LocaleGetRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.nut.v1.LocaleGetRequest) */ {
+class LocaleByCodeRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.nut.v1.LocaleByCodeRequest) */ {
  public:
-  inline LocaleGetRequest() : LocaleGetRequest(nullptr) {}
-  ~LocaleGetRequest() override;
+  inline LocaleByCodeRequest() : LocaleByCodeRequest(nullptr) {}
+  ~LocaleByCodeRequest() override;
   template<typename = void>
-  explicit PROTOBUF_CONSTEXPR LocaleGetRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit PROTOBUF_CONSTEXPR LocaleByCodeRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  LocaleGetRequest(const LocaleGetRequest& from);
-  LocaleGetRequest(LocaleGetRequest&& from) noexcept
-    : LocaleGetRequest() {
+  LocaleByCodeRequest(const LocaleByCodeRequest& from);
+  LocaleByCodeRequest(LocaleByCodeRequest&& from) noexcept
+    : LocaleByCodeRequest() {
     *this = ::std::move(from);
   }
 
-  inline LocaleGetRequest& operator=(const LocaleGetRequest& from) {
+  inline LocaleByCodeRequest& operator=(const LocaleByCodeRequest& from) {
     CopyFrom(from);
     return *this;
   }
-  inline LocaleGetRequest& operator=(LocaleGetRequest&& from) noexcept {
+  inline LocaleByCodeRequest& operator=(LocaleByCodeRequest&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -11033,20 +11043,20 @@ class LocaleGetRequest final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const LocaleGetRequest& default_instance() {
+  static const LocaleByCodeRequest& default_instance() {
     return *internal_default_instance();
   }
-  static inline const LocaleGetRequest* internal_default_instance() {
-    return reinterpret_cast<const LocaleGetRequest*>(
-               &_LocaleGetRequest_default_instance_);
+  static inline const LocaleByCodeRequest* internal_default_instance() {
+    return reinterpret_cast<const LocaleByCodeRequest*>(
+               &_LocaleByCodeRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     47;
 
-  friend void swap(LocaleGetRequest& a, LocaleGetRequest& b) {
+  friend void swap(LocaleByCodeRequest& a, LocaleByCodeRequest& b) {
     a.Swap(&b);
   }
-  inline void Swap(LocaleGetRequest* other) {
+  inline void Swap(LocaleByCodeRequest* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -11059,7 +11069,7 @@ class LocaleGetRequest final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(LocaleGetRequest* other) {
+  void UnsafeArenaSwap(LocaleByCodeRequest* other) {
     if (other == this) return;
     ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -11067,14 +11077,14 @@ class LocaleGetRequest final :
 
   // implements Message ----------------------------------------------
 
-  LocaleGetRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<LocaleGetRequest>(arena);
+  LocaleByCodeRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<LocaleByCodeRequest>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const LocaleGetRequest& from);
+  void CopyFrom(const LocaleByCodeRequest& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const LocaleGetRequest& from) {
-    LocaleGetRequest::MergeImpl(*this, from);
+  void MergeFrom( const LocaleByCodeRequest& from) {
+    LocaleByCodeRequest::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
@@ -11092,15 +11102,180 @@ class LocaleGetRequest final :
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(LocaleGetRequest* other);
+  void InternalSwap(LocaleByCodeRequest* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::absl::string_view FullMessageName() {
-    return "palm.nut.v1.LocaleGetRequest";
+    return "palm.nut.v1.LocaleByCodeRequest";
   }
   protected:
-  explicit LocaleGetRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit LocaleByCodeRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCodeFieldNumber = 1,
+  };
+  // string code = 1;
+  void clear_code() ;
+  const std::string& code() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_code(Arg_&& arg, Args_... args);
+  std::string* mutable_code();
+  PROTOBUF_NODISCARD std::string* release_code();
+  void set_allocated_code(std::string* ptr);
+
+  private:
+  const std::string& _internal_code() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_code(
+      const std::string& value);
+  std::string* _internal_mutable_code();
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.nut.v1.LocaleByCodeRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr code_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_nut_2eproto;
+};// -------------------------------------------------------------------
+
+class LocaleByLangAndCodeRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.nut.v1.LocaleByLangAndCodeRequest) */ {
+ public:
+  inline LocaleByLangAndCodeRequest() : LocaleByLangAndCodeRequest(nullptr) {}
+  ~LocaleByLangAndCodeRequest() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR LocaleByLangAndCodeRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  LocaleByLangAndCodeRequest(const LocaleByLangAndCodeRequest& from);
+  LocaleByLangAndCodeRequest(LocaleByLangAndCodeRequest&& from) noexcept
+    : LocaleByLangAndCodeRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline LocaleByLangAndCodeRequest& operator=(const LocaleByLangAndCodeRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline LocaleByLangAndCodeRequest& operator=(LocaleByLangAndCodeRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const LocaleByLangAndCodeRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const LocaleByLangAndCodeRequest* internal_default_instance() {
+    return reinterpret_cast<const LocaleByLangAndCodeRequest*>(
+               &_LocaleByLangAndCodeRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    48;
+
+  friend void swap(LocaleByLangAndCodeRequest& a, LocaleByLangAndCodeRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(LocaleByLangAndCodeRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(LocaleByLangAndCodeRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  LocaleByLangAndCodeRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<LocaleByLangAndCodeRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const LocaleByLangAndCodeRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const LocaleByLangAndCodeRequest& from) {
+    LocaleByLangAndCodeRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(LocaleByLangAndCodeRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.nut.v1.LocaleByLangAndCodeRequest";
+  }
+  protected:
+  explicit LocaleByLangAndCodeRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   public:
 
   static const ClassData _class_data_;
@@ -11156,7 +11331,7 @@ class LocaleGetRequest final :
   std::string* _internal_mutable_code();
 
   public:
-  // @@protoc_insertion_point(class_scope:palm.nut.v1.LocaleGetRequest)
+  // @@protoc_insertion_point(class_scope:palm.nut.v1.LocaleByLangAndCodeRequest)
  private:
   class _Internal;
 
@@ -11172,25 +11347,25 @@ class LocaleGetRequest final :
   friend struct ::TableStruct_nut_2eproto;
 };// -------------------------------------------------------------------
 
-class LocaleSetRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.nut.v1.LocaleSetRequest) */ {
+class LocaleCreateRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.nut.v1.LocaleCreateRequest) */ {
  public:
-  inline LocaleSetRequest() : LocaleSetRequest(nullptr) {}
-  ~LocaleSetRequest() override;
+  inline LocaleCreateRequest() : LocaleCreateRequest(nullptr) {}
+  ~LocaleCreateRequest() override;
   template<typename = void>
-  explicit PROTOBUF_CONSTEXPR LocaleSetRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit PROTOBUF_CONSTEXPR LocaleCreateRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  LocaleSetRequest(const LocaleSetRequest& from);
-  LocaleSetRequest(LocaleSetRequest&& from) noexcept
-    : LocaleSetRequest() {
+  LocaleCreateRequest(const LocaleCreateRequest& from);
+  LocaleCreateRequest(LocaleCreateRequest&& from) noexcept
+    : LocaleCreateRequest() {
     *this = ::std::move(from);
   }
 
-  inline LocaleSetRequest& operator=(const LocaleSetRequest& from) {
+  inline LocaleCreateRequest& operator=(const LocaleCreateRequest& from) {
     CopyFrom(from);
     return *this;
   }
-  inline LocaleSetRequest& operator=(LocaleSetRequest&& from) noexcept {
+  inline LocaleCreateRequest& operator=(LocaleCreateRequest&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -11220,20 +11395,20 @@ class LocaleSetRequest final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const LocaleSetRequest& default_instance() {
+  static const LocaleCreateRequest& default_instance() {
     return *internal_default_instance();
   }
-  static inline const LocaleSetRequest* internal_default_instance() {
-    return reinterpret_cast<const LocaleSetRequest*>(
-               &_LocaleSetRequest_default_instance_);
+  static inline const LocaleCreateRequest* internal_default_instance() {
+    return reinterpret_cast<const LocaleCreateRequest*>(
+               &_LocaleCreateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    48;
+    49;
 
-  friend void swap(LocaleSetRequest& a, LocaleSetRequest& b) {
+  friend void swap(LocaleCreateRequest& a, LocaleCreateRequest& b) {
     a.Swap(&b);
   }
-  inline void Swap(LocaleSetRequest* other) {
+  inline void Swap(LocaleCreateRequest* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -11246,7 +11421,7 @@ class LocaleSetRequest final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(LocaleSetRequest* other) {
+  void UnsafeArenaSwap(LocaleCreateRequest* other) {
     if (other == this) return;
     ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -11254,14 +11429,14 @@ class LocaleSetRequest final :
 
   // implements Message ----------------------------------------------
 
-  LocaleSetRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<LocaleSetRequest>(arena);
+  LocaleCreateRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<LocaleCreateRequest>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const LocaleSetRequest& from);
+  void CopyFrom(const LocaleCreateRequest& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const LocaleSetRequest& from) {
-    LocaleSetRequest::MergeImpl(*this, from);
+  void MergeFrom( const LocaleCreateRequest& from) {
+    LocaleCreateRequest::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
@@ -11279,15 +11454,15 @@ class LocaleSetRequest final :
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(LocaleSetRequest* other);
+  void InternalSwap(LocaleCreateRequest* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::absl::string_view FullMessageName() {
-    return "palm.nut.v1.LocaleSetRequest";
+    return "palm.nut.v1.LocaleCreateRequest";
   }
   protected:
-  explicit LocaleSetRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit LocaleCreateRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   public:
 
   static const ClassData _class_data_;
@@ -11364,7 +11539,7 @@ class LocaleSetRequest final :
   std::string* _internal_mutable_message();
 
   public:
-  // @@protoc_insertion_point(class_scope:palm.nut.v1.LocaleSetRequest)
+  // @@protoc_insertion_point(class_scope:palm.nut.v1.LocaleCreateRequest)
  private:
   class _Internal;
 
@@ -11375,6 +11550,183 @@ class LocaleSetRequest final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr lang_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr code_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_nut_2eproto;
+};// -------------------------------------------------------------------
+
+class LocaleUpdateRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.nut.v1.LocaleUpdateRequest) */ {
+ public:
+  inline LocaleUpdateRequest() : LocaleUpdateRequest(nullptr) {}
+  ~LocaleUpdateRequest() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR LocaleUpdateRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  LocaleUpdateRequest(const LocaleUpdateRequest& from);
+  LocaleUpdateRequest(LocaleUpdateRequest&& from) noexcept
+    : LocaleUpdateRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline LocaleUpdateRequest& operator=(const LocaleUpdateRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline LocaleUpdateRequest& operator=(LocaleUpdateRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const LocaleUpdateRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const LocaleUpdateRequest* internal_default_instance() {
+    return reinterpret_cast<const LocaleUpdateRequest*>(
+               &_LocaleUpdateRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    50;
+
+  friend void swap(LocaleUpdateRequest& a, LocaleUpdateRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(LocaleUpdateRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(LocaleUpdateRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  LocaleUpdateRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<LocaleUpdateRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const LocaleUpdateRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const LocaleUpdateRequest& from) {
+    LocaleUpdateRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(LocaleUpdateRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.nut.v1.LocaleUpdateRequest";
+  }
+  protected:
+  explicit LocaleUpdateRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMessageFieldNumber = 2,
+    kIdFieldNumber = 1,
+  };
+  // string message = 2;
+  void clear_message() ;
+  const std::string& message() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_message(Arg_&& arg, Args_... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* ptr);
+
+  private:
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(
+      const std::string& value);
+  std::string* _internal_mutable_message();
+
+  public:
+  // int32 id = 1;
+  void clear_id() ;
+  ::int32_t id() const;
+  void set_id(::int32_t value);
+
+  private:
+  ::int32_t _internal_id() const;
+  void _internal_set_id(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.nut.v1.LocaleUpdateRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+    ::int32_t id_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -11443,7 +11795,7 @@ class IndexNotificationResponse_Item final :
                &_IndexNotificationResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    49;
+    51;
 
   friend void swap(IndexNotificationResponse_Item& a, IndexNotificationResponse_Item& b) {
     a.Swap(&b);
@@ -11656,7 +12008,7 @@ class IndexNotificationResponse final :
                &_IndexNotificationResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    50;
+    52;
 
   friend void swap(IndexNotificationResponse& a, IndexNotificationResponse& b) {
     a.Swap(&b);
@@ -11840,7 +12192,7 @@ class LeaveWordIndexResponse_Item final :
                &_LeaveWordIndexResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    51;
+    53;
 
   friend void swap(LeaveWordIndexResponse_Item& a, LeaveWordIndexResponse_Item& b) {
     a.Swap(&b);
@@ -12088,7 +12440,7 @@ class LeaveWordIndexResponse final :
                &_LeaveWordIndexResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    52;
+    54;
 
   friend void swap(LeaveWordIndexResponse& a, LeaveWordIndexResponse& b) {
     a.Swap(&b);
@@ -12272,7 +12624,7 @@ class IndexNowProfile final :
                &_IndexNowProfile_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    53;
+    55;
 
   friend void swap(IndexNowProfile& a, IndexNowProfile& b) {
     a.Swap(&b);
@@ -12437,7 +12789,7 @@ class IndexNowPingRequest final :
                &_IndexNowPingRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    54;
+    56;
 
   friend void swap(IndexNowPingRequest& a, IndexNowPingRequest& b) {
     a.Swap(&b);
@@ -12624,7 +12976,7 @@ class SitemapPingRequest final :
                &_SitemapPingRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    55;
+    57;
 
   friend void swap(SitemapPingRequest& a, SitemapPingRequest& b) {
     a.Swap(&b);
@@ -12789,7 +13141,7 @@ class SiteMaintenanceModeRequest_Item final :
                &_SiteMaintenanceModeRequest_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    56;
+    58;
 
   friend void swap(SiteMaintenanceModeRequest_Item& a, SiteMaintenanceModeRequest_Item& b) {
     a.Swap(&b);
@@ -12971,7 +13323,7 @@ class SiteMaintenanceModeRequest final :
                &_SiteMaintenanceModeRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    57;
+    59;
 
   friend void swap(SiteMaintenanceModeRequest& a, SiteMaintenanceModeRequest& b) {
     a.Swap(&b);
@@ -13133,7 +13485,7 @@ class SiteInstallRequest final :
                &_SiteInstallRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    58;
+    60;
 
   friend void swap(SiteInstallRequest& a, SiteInstallRequest& b) {
     a.Swap(&b);
@@ -13293,7 +13645,7 @@ class TwilioProfile final :
                &_TwilioProfile_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    59;
+    61;
 
   friend void swap(TwilioProfile& a, TwilioProfile& b) {
     a.Swap(&b);
@@ -13526,7 +13878,7 @@ class SmtpProfile final :
                &_SmtpProfile_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    60;
+    62;
 
   friend void swap(SmtpProfile& a, SmtpProfile& b) {
     a.Swap(&b);
@@ -13819,7 +14171,7 @@ class EmailTask_Address final :
                &_EmailTask_Address_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    61;
+    63;
 
   friend void swap(EmailTask_Address& a, EmailTask_Address& b) {
     a.Swap(&b);
@@ -14006,7 +14358,7 @@ class EmailTask_Body final :
                &_EmailTask_Body_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    62;
+    64;
 
   friend void swap(EmailTask_Body& a, EmailTask_Body& b) {
     a.Swap(&b);
@@ -14183,7 +14535,7 @@ class EmailTask_Attachment final :
                &_EmailTask_Attachment_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    63;
+    65;
 
   friend void swap(EmailTask_Attachment& a, EmailTask_Attachment& b) {
     a.Swap(&b);
@@ -14370,7 +14722,7 @@ class EmailTask final :
                &_EmailTask_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    64;
+    66;
 
   friend void swap(EmailTask& a, EmailTask& b) {
     a.Swap(&b);
@@ -14638,7 +14990,7 @@ class SiteTwilioTestRequest final :
                &_SiteTwilioTestRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    65;
+    67;
 
   friend void swap(SiteTwilioTestRequest& a, SiteTwilioTestRequest& b) {
     a.Swap(&b);
@@ -14842,7 +15194,7 @@ class SiteSmtpTestRequest final :
                &_SiteSmtpTestRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    66;
+    68;
 
   friend void swap(SiteSmtpTestRequest& a, SiteSmtpTestRequest& b) {
     a.Swap(&b);
@@ -15062,7 +15414,7 @@ class SiteSetLogoRequest final :
                &_SiteSetLogoRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    67;
+    69;
 
   friend void swap(SiteSetLogoRequest& a, SiteSetLogoRequest& b) {
     a.Swap(&b);
@@ -15227,7 +15579,7 @@ class SiteSetCopyrightRequest final :
                &_SiteSetCopyrightRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    68;
+    70;
 
   friend void swap(SiteSetCopyrightRequest& a, SiteSetCopyrightRequest& b) {
     a.Swap(&b);
@@ -15392,7 +15744,7 @@ class SiteSetKeywordsRequest final :
                &_SiteSetKeywordsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    69;
+    71;
 
   friend void swap(SiteSetKeywordsRequest& a, SiteSetKeywordsRequest& b) {
     a.Swap(&b);
@@ -15567,7 +15919,7 @@ class SiteSetInfoRequest final :
                &_SiteSetInfoRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    70;
+    72;
 
   friend void swap(SiteSetInfoRequest& a, SiteSetInfoRequest& b) {
     a.Swap(&b);
@@ -15798,7 +16150,7 @@ class SiteLayoutResponse_Author final :
                &_SiteLayoutResponse_Author_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    71;
+    73;
 
   friend void swap(SiteLayoutResponse_Author& a, SiteLayoutResponse_Author& b) {
     a.Swap(&b);
@@ -15985,7 +16337,7 @@ class SiteLayoutResponse final :
                &_SiteLayoutResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    72;
+    74;
 
   friend void swap(SiteLayoutResponse& a, SiteLayoutResponse& b) {
     a.Swap(&b);
@@ -16321,7 +16673,7 @@ class GoogleProfile_ReCaptcha final :
                &_GoogleProfile_ReCaptcha_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    73;
+    75;
 
   friend void swap(GoogleProfile_ReCaptcha& a, GoogleProfile_ReCaptcha& b) {
     a.Swap(&b);
@@ -16508,7 +16860,7 @@ class GoogleProfile final :
                &_GoogleProfile_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    74;
+    76;
 
   friend void swap(GoogleProfile& a, GoogleProfile& b) {
     a.Swap(&b);
@@ -16693,7 +17045,7 @@ class BaiduProfile_SiteVerify final :
                &_BaiduProfile_SiteVerify_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    75;
+    77;
 
   friend void swap(BaiduProfile_SiteVerify& a, BaiduProfile_SiteVerify& b) {
     a.Swap(&b);
@@ -16880,7 +17232,7 @@ class BaiduProfile final :
                &_BaiduProfile_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    76;
+    78;
 
   friend void swap(BaiduProfile& a, BaiduProfile& b) {
     a.Swap(&b);
@@ -17042,7 +17394,7 @@ class BingProfile final :
                &_BingProfile_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    77;
+    79;
 
   friend void swap(BingProfile& a, BingProfile& b) {
     a.Swap(&b);
@@ -17209,7 +17561,7 @@ class SmsTask final :
                &_SmsTask_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    78;
+    80;
 
   friend void swap(SmsTask& a, SmsTask& b) {
     a.Swap(&b);
@@ -17428,7 +17780,7 @@ class SiteStatusResponse_Database final :
                &_SiteStatusResponse_Database_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    79;
+    81;
 
   friend void swap(SiteStatusResponse_Database& a, SiteStatusResponse_Database& b) {
     a.Swap(&b);
@@ -17615,7 +17967,7 @@ class SiteStatusResponse_PostgreSql final :
                &_SiteStatusResponse_PostgreSql_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    80;
+    82;
 
   friend void swap(SiteStatusResponse_PostgreSql& a, SiteStatusResponse_PostgreSql& b) {
     a.Swap(&b);
@@ -17819,7 +18171,7 @@ class SiteStatusResponse_MySql final :
                &_SiteStatusResponse_MySql_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    81;
+    83;
 
   friend void swap(SiteStatusResponse_MySql& a, SiteStatusResponse_MySql& b) {
     a.Swap(&b);
@@ -17996,7 +18348,7 @@ class SiteStatusResponse_Redis_Item final :
                &_SiteStatusResponse_Redis_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    82;
+    84;
 
   friend void swap(SiteStatusResponse_Redis_Item& a, SiteStatusResponse_Redis_Item& b) {
     a.Swap(&b);
@@ -18195,7 +18547,7 @@ class SiteStatusResponse_Redis final :
                &_SiteStatusResponse_Redis_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    83;
+    85;
 
   friend void swap(SiteStatusResponse_Redis& a, SiteStatusResponse_Redis& b) {
     a.Swap(&b);
@@ -18384,7 +18736,7 @@ class SiteStatusResponse_RabbitMq final :
                &_SiteStatusResponse_RabbitMq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    84;
+    86;
 
   friend void swap(SiteStatusResponse_RabbitMq& a, SiteStatusResponse_RabbitMq& b) {
     a.Swap(&b);
@@ -18549,7 +18901,7 @@ class SiteStatusResponse_OpenSearch final :
                &_SiteStatusResponse_OpenSearch_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    85;
+    87;
 
   friend void swap(SiteStatusResponse_OpenSearch& a, SiteStatusResponse_OpenSearch& b) {
     a.Swap(&b);
@@ -18736,7 +19088,7 @@ class SiteStatusResponse_Health final :
                &_SiteStatusResponse_Health_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    86;
+    88;
 
   friend void swap(SiteStatusResponse_Health& a, SiteStatusResponse_Health& b) {
     a.Swap(&b);
@@ -18923,7 +19275,7 @@ class SiteStatusResponse_System final :
                &_SiteStatusResponse_System_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    87;
+    89;
 
   friend void swap(SiteStatusResponse_System& a, SiteStatusResponse_System& b) {
     a.Swap(&b);
@@ -19286,7 +19638,7 @@ class SiteStatusResponse final :
                &_SiteStatusResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    88;
+    90;
 
   friend void swap(SiteStatusResponse& a, SiteStatusResponse& b) {
     a.Swap(&b);
@@ -19557,7 +19909,7 @@ class ShorterLinkIndexResponse_Item final :
                &_ShorterLinkIndexResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    89;
+    91;
 
   friend void swap(ShorterLinkIndexResponse_Item& a, ShorterLinkIndexResponse_Item& b) {
     a.Swap(&b);
@@ -19795,7 +20147,7 @@ class ShorterLinkIndexResponse final :
                &_ShorterLinkIndexResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    90;
+    92;
 
   friend void swap(ShorterLinkIndexResponse& a, ShorterLinkIndexResponse& b) {
     a.Swap(&b);
@@ -19979,7 +20331,7 @@ class ShorterLinkCreateRequest final :
                &_ShorterLinkCreateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    91;
+    93;
 
   friend void swap(ShorterLinkCreateRequest& a, ShorterLinkCreateRequest& b) {
     a.Swap(&b);
@@ -20166,7 +20518,7 @@ class ShorterLinkUpdateRequest final :
                &_ShorterLinkUpdateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    92;
+    94;
 
   friend void swap(ShorterLinkUpdateRequest& a, ShorterLinkUpdateRequest& b) {
     a.Swap(&b);
@@ -20365,7 +20717,7 @@ class TagIndexResponse_Item final :
                &_TagIndexResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    93;
+    95;
 
   friend void swap(TagIndexResponse_Item& a, TagIndexResponse_Item& b) {
     a.Swap(&b);
@@ -20571,7 +20923,7 @@ class TagIndexResponse final :
                &_TagIndexResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    94;
+    96;
 
   friend void swap(TagIndexResponse& a, TagIndexResponse& b) {
     a.Swap(&b);
@@ -20738,7 +21090,7 @@ class TagCreateRequest final :
                &_TagCreateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    95;
+    97;
 
   friend void swap(TagCreateRequest& a, TagCreateRequest& b) {
     a.Swap(&b);
@@ -20915,7 +21267,7 @@ class TagUpdateRequest final :
                &_TagUpdateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    96;
+    98;
 
   friend void swap(TagUpdateRequest& a, TagUpdateRequest& b) {
     a.Swap(&b);
@@ -21104,7 +21456,7 @@ class CategoryIndexResponse_Item final :
                &_CategoryIndexResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    97;
+    99;
 
   friend void swap(CategoryIndexResponse_Item& a, CategoryIndexResponse_Item& b) {
     a.Swap(&b);
@@ -21322,7 +21674,7 @@ class CategoryIndexResponse final :
                &_CategoryIndexResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    98;
+    100;
 
   friend void swap(CategoryIndexResponse& a, CategoryIndexResponse& b) {
     a.Swap(&b);
@@ -21495,7 +21847,7 @@ class CategoryCreateRequest final :
                &_CategoryCreateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    99;
+    101;
 
   friend void swap(CategoryCreateRequest& a, CategoryCreateRequest& b) {
     a.Swap(&b);
@@ -21699,7 +22051,7 @@ class CategoryUpdateRequest final :
                &_CategoryUpdateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    100;
+    102;
 
   friend void swap(CategoryUpdateRequest& a, CategoryUpdateRequest& b) {
     a.Swap(&b);
@@ -30426,53 +30778,53 @@ inline void LocaleByLangRequest::set_allocated_lang(std::string* value) {
 
 // -------------------------------------------------------------------
 
-// LocaleByLangResponse
+// LocaleListResponse
 
 // repeated .palm.nut.v1.LocaleIndexResponse.Item items = 1;
-inline int LocaleByLangResponse::_internal_items_size() const {
+inline int LocaleListResponse::_internal_items_size() const {
   return _impl_.items_.size();
 }
-inline int LocaleByLangResponse::items_size() const {
+inline int LocaleListResponse::items_size() const {
   return _internal_items_size();
 }
-inline void LocaleByLangResponse::clear_items() {
+inline void LocaleListResponse::clear_items() {
   _internal_mutable_items()->Clear();
 }
-inline ::palm::nut::v1::LocaleIndexResponse_Item* LocaleByLangResponse::mutable_items(int index) {
-  // @@protoc_insertion_point(field_mutable:palm.nut.v1.LocaleByLangResponse.items)
+inline ::palm::nut::v1::LocaleIndexResponse_Item* LocaleListResponse::mutable_items(int index) {
+  // @@protoc_insertion_point(field_mutable:palm.nut.v1.LocaleListResponse.items)
   return _internal_mutable_items()->Mutable(index);
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::nut::v1::LocaleIndexResponse_Item >*
-LocaleByLangResponse::mutable_items() {
-  // @@protoc_insertion_point(field_mutable_list:palm.nut.v1.LocaleByLangResponse.items)
+LocaleListResponse::mutable_items() {
+  // @@protoc_insertion_point(field_mutable_list:palm.nut.v1.LocaleListResponse.items)
   return _internal_mutable_items();
 }
-inline const ::palm::nut::v1::LocaleIndexResponse_Item& LocaleByLangResponse::_internal_items(int index) const {
+inline const ::palm::nut::v1::LocaleIndexResponse_Item& LocaleListResponse::_internal_items(int index) const {
   return _internal_items().Get(index);
 }
-inline const ::palm::nut::v1::LocaleIndexResponse_Item& LocaleByLangResponse::items(int index) const {
-  // @@protoc_insertion_point(field_get:palm.nut.v1.LocaleByLangResponse.items)
+inline const ::palm::nut::v1::LocaleIndexResponse_Item& LocaleListResponse::items(int index) const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.LocaleListResponse.items)
   return _internal_items(index);
 }
-inline ::palm::nut::v1::LocaleIndexResponse_Item* LocaleByLangResponse::_internal_add_items() {
+inline ::palm::nut::v1::LocaleIndexResponse_Item* LocaleListResponse::_internal_add_items() {
   return _internal_mutable_items()->Add();
 }
-inline ::palm::nut::v1::LocaleIndexResponse_Item* LocaleByLangResponse::add_items() {
+inline ::palm::nut::v1::LocaleIndexResponse_Item* LocaleListResponse::add_items() {
   ::palm::nut::v1::LocaleIndexResponse_Item* _add = _internal_add_items();
-  // @@protoc_insertion_point(field_add:palm.nut.v1.LocaleByLangResponse.items)
+  // @@protoc_insertion_point(field_add:palm.nut.v1.LocaleListResponse.items)
   return _add;
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::nut::v1::LocaleIndexResponse_Item >&
-LocaleByLangResponse::items() const {
-  // @@protoc_insertion_point(field_list:palm.nut.v1.LocaleByLangResponse.items)
+LocaleListResponse::items() const {
+  // @@protoc_insertion_point(field_list:palm.nut.v1.LocaleListResponse.items)
   return _internal_items();
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<::palm::nut::v1::LocaleIndexResponse_Item>&
-LocaleByLangResponse::_internal_items() const {
+LocaleListResponse::_internal_items() const {
   return _impl_.items_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<::palm::nut::v1::LocaleIndexResponse_Item>*
-LocaleByLangResponse::_internal_mutable_items() {
+LocaleListResponse::_internal_mutable_items() {
   return &_impl_.items_;
 }
 
@@ -30866,245 +31218,367 @@ inline void LocaleIndexResponse::set_allocated_pagination(::palm::nut::v1::Pagin
 
 // -------------------------------------------------------------------
 
-// LocaleGetRequest
+// LocaleByCodeRequest
 
-// string lang = 1;
-inline void LocaleGetRequest::clear_lang() {
-  _impl_.lang_.ClearToEmpty();
-}
-inline const std::string& LocaleGetRequest::lang() const {
-  // @@protoc_insertion_point(field_get:palm.nut.v1.LocaleGetRequest.lang)
-  return _internal_lang();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void LocaleGetRequest::set_lang(Arg_&& arg,
-                                                     Args_... args) {
-  ;
-  _impl_.lang_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.nut.v1.LocaleGetRequest.lang)
-}
-inline std::string* LocaleGetRequest::mutable_lang() {
-  std::string* _s = _internal_mutable_lang();
-  // @@protoc_insertion_point(field_mutable:palm.nut.v1.LocaleGetRequest.lang)
-  return _s;
-}
-inline const std::string& LocaleGetRequest::_internal_lang() const {
-  return _impl_.lang_.Get();
-}
-inline void LocaleGetRequest::_internal_set_lang(const std::string& value) {
-  ;
-
-
-  _impl_.lang_.Set(value, GetArenaForAllocation());
-}
-inline std::string* LocaleGetRequest::_internal_mutable_lang() {
-  ;
-  return _impl_.lang_.Mutable( GetArenaForAllocation());
-}
-inline std::string* LocaleGetRequest::release_lang() {
-  // @@protoc_insertion_point(field_release:palm.nut.v1.LocaleGetRequest.lang)
-  return _impl_.lang_.Release();
-}
-inline void LocaleGetRequest::set_allocated_lang(std::string* value) {
-  _impl_.lang_.SetAllocated(value, GetArenaForAllocation());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.lang_.IsDefault()) {
-          _impl_.lang_.Set("", GetArenaForAllocation());
-        }
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.LocaleGetRequest.lang)
-}
-
-// string code = 2;
-inline void LocaleGetRequest::clear_code() {
+// string code = 1;
+inline void LocaleByCodeRequest::clear_code() {
   _impl_.code_.ClearToEmpty();
 }
-inline const std::string& LocaleGetRequest::code() const {
-  // @@protoc_insertion_point(field_get:palm.nut.v1.LocaleGetRequest.code)
+inline const std::string& LocaleByCodeRequest::code() const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.LocaleByCodeRequest.code)
   return _internal_code();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void LocaleGetRequest::set_code(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void LocaleByCodeRequest::set_code(Arg_&& arg,
                                                      Args_... args) {
   ;
   _impl_.code_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.nut.v1.LocaleGetRequest.code)
+  // @@protoc_insertion_point(field_set:palm.nut.v1.LocaleByCodeRequest.code)
 }
-inline std::string* LocaleGetRequest::mutable_code() {
+inline std::string* LocaleByCodeRequest::mutable_code() {
   std::string* _s = _internal_mutable_code();
-  // @@protoc_insertion_point(field_mutable:palm.nut.v1.LocaleGetRequest.code)
+  // @@protoc_insertion_point(field_mutable:palm.nut.v1.LocaleByCodeRequest.code)
   return _s;
 }
-inline const std::string& LocaleGetRequest::_internal_code() const {
+inline const std::string& LocaleByCodeRequest::_internal_code() const {
   return _impl_.code_.Get();
 }
-inline void LocaleGetRequest::_internal_set_code(const std::string& value) {
+inline void LocaleByCodeRequest::_internal_set_code(const std::string& value) {
   ;
 
 
   _impl_.code_.Set(value, GetArenaForAllocation());
 }
-inline std::string* LocaleGetRequest::_internal_mutable_code() {
+inline std::string* LocaleByCodeRequest::_internal_mutable_code() {
   ;
   return _impl_.code_.Mutable( GetArenaForAllocation());
 }
-inline std::string* LocaleGetRequest::release_code() {
-  // @@protoc_insertion_point(field_release:palm.nut.v1.LocaleGetRequest.code)
+inline std::string* LocaleByCodeRequest::release_code() {
+  // @@protoc_insertion_point(field_release:palm.nut.v1.LocaleByCodeRequest.code)
   return _impl_.code_.Release();
 }
-inline void LocaleGetRequest::set_allocated_code(std::string* value) {
+inline void LocaleByCodeRequest::set_allocated_code(std::string* value) {
   _impl_.code_.SetAllocated(value, GetArenaForAllocation());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         if (_impl_.code_.IsDefault()) {
           _impl_.code_.Set("", GetArenaForAllocation());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.LocaleGetRequest.code)
+  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.LocaleByCodeRequest.code)
 }
 
 // -------------------------------------------------------------------
 
-// LocaleSetRequest
+// LocaleByLangAndCodeRequest
 
 // string lang = 1;
-inline void LocaleSetRequest::clear_lang() {
+inline void LocaleByLangAndCodeRequest::clear_lang() {
   _impl_.lang_.ClearToEmpty();
 }
-inline const std::string& LocaleSetRequest::lang() const {
-  // @@protoc_insertion_point(field_get:palm.nut.v1.LocaleSetRequest.lang)
+inline const std::string& LocaleByLangAndCodeRequest::lang() const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.LocaleByLangAndCodeRequest.lang)
   return _internal_lang();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void LocaleSetRequest::set_lang(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void LocaleByLangAndCodeRequest::set_lang(Arg_&& arg,
                                                      Args_... args) {
   ;
   _impl_.lang_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.nut.v1.LocaleSetRequest.lang)
+  // @@protoc_insertion_point(field_set:palm.nut.v1.LocaleByLangAndCodeRequest.lang)
 }
-inline std::string* LocaleSetRequest::mutable_lang() {
+inline std::string* LocaleByLangAndCodeRequest::mutable_lang() {
   std::string* _s = _internal_mutable_lang();
-  // @@protoc_insertion_point(field_mutable:palm.nut.v1.LocaleSetRequest.lang)
+  // @@protoc_insertion_point(field_mutable:palm.nut.v1.LocaleByLangAndCodeRequest.lang)
   return _s;
 }
-inline const std::string& LocaleSetRequest::_internal_lang() const {
+inline const std::string& LocaleByLangAndCodeRequest::_internal_lang() const {
   return _impl_.lang_.Get();
 }
-inline void LocaleSetRequest::_internal_set_lang(const std::string& value) {
+inline void LocaleByLangAndCodeRequest::_internal_set_lang(const std::string& value) {
   ;
 
 
   _impl_.lang_.Set(value, GetArenaForAllocation());
 }
-inline std::string* LocaleSetRequest::_internal_mutable_lang() {
+inline std::string* LocaleByLangAndCodeRequest::_internal_mutable_lang() {
   ;
   return _impl_.lang_.Mutable( GetArenaForAllocation());
 }
-inline std::string* LocaleSetRequest::release_lang() {
-  // @@protoc_insertion_point(field_release:palm.nut.v1.LocaleSetRequest.lang)
+inline std::string* LocaleByLangAndCodeRequest::release_lang() {
+  // @@protoc_insertion_point(field_release:palm.nut.v1.LocaleByLangAndCodeRequest.lang)
   return _impl_.lang_.Release();
 }
-inline void LocaleSetRequest::set_allocated_lang(std::string* value) {
+inline void LocaleByLangAndCodeRequest::set_allocated_lang(std::string* value) {
   _impl_.lang_.SetAllocated(value, GetArenaForAllocation());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         if (_impl_.lang_.IsDefault()) {
           _impl_.lang_.Set("", GetArenaForAllocation());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.LocaleSetRequest.lang)
+  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.LocaleByLangAndCodeRequest.lang)
 }
 
 // string code = 2;
-inline void LocaleSetRequest::clear_code() {
+inline void LocaleByLangAndCodeRequest::clear_code() {
   _impl_.code_.ClearToEmpty();
 }
-inline const std::string& LocaleSetRequest::code() const {
-  // @@protoc_insertion_point(field_get:palm.nut.v1.LocaleSetRequest.code)
+inline const std::string& LocaleByLangAndCodeRequest::code() const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.LocaleByLangAndCodeRequest.code)
   return _internal_code();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void LocaleSetRequest::set_code(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void LocaleByLangAndCodeRequest::set_code(Arg_&& arg,
                                                      Args_... args) {
   ;
   _impl_.code_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.nut.v1.LocaleSetRequest.code)
+  // @@protoc_insertion_point(field_set:palm.nut.v1.LocaleByLangAndCodeRequest.code)
 }
-inline std::string* LocaleSetRequest::mutable_code() {
+inline std::string* LocaleByLangAndCodeRequest::mutable_code() {
   std::string* _s = _internal_mutable_code();
-  // @@protoc_insertion_point(field_mutable:palm.nut.v1.LocaleSetRequest.code)
+  // @@protoc_insertion_point(field_mutable:palm.nut.v1.LocaleByLangAndCodeRequest.code)
   return _s;
 }
-inline const std::string& LocaleSetRequest::_internal_code() const {
+inline const std::string& LocaleByLangAndCodeRequest::_internal_code() const {
   return _impl_.code_.Get();
 }
-inline void LocaleSetRequest::_internal_set_code(const std::string& value) {
+inline void LocaleByLangAndCodeRequest::_internal_set_code(const std::string& value) {
   ;
 
 
   _impl_.code_.Set(value, GetArenaForAllocation());
 }
-inline std::string* LocaleSetRequest::_internal_mutable_code() {
+inline std::string* LocaleByLangAndCodeRequest::_internal_mutable_code() {
   ;
   return _impl_.code_.Mutable( GetArenaForAllocation());
 }
-inline std::string* LocaleSetRequest::release_code() {
-  // @@protoc_insertion_point(field_release:palm.nut.v1.LocaleSetRequest.code)
+inline std::string* LocaleByLangAndCodeRequest::release_code() {
+  // @@protoc_insertion_point(field_release:palm.nut.v1.LocaleByLangAndCodeRequest.code)
   return _impl_.code_.Release();
 }
-inline void LocaleSetRequest::set_allocated_code(std::string* value) {
+inline void LocaleByLangAndCodeRequest::set_allocated_code(std::string* value) {
   _impl_.code_.SetAllocated(value, GetArenaForAllocation());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         if (_impl_.code_.IsDefault()) {
           _impl_.code_.Set("", GetArenaForAllocation());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.LocaleSetRequest.code)
+  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.LocaleByLangAndCodeRequest.code)
+}
+
+// -------------------------------------------------------------------
+
+// LocaleCreateRequest
+
+// string lang = 1;
+inline void LocaleCreateRequest::clear_lang() {
+  _impl_.lang_.ClearToEmpty();
+}
+inline const std::string& LocaleCreateRequest::lang() const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.LocaleCreateRequest.lang)
+  return _internal_lang();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void LocaleCreateRequest::set_lang(Arg_&& arg,
+                                                     Args_... args) {
+  ;
+  _impl_.lang_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.nut.v1.LocaleCreateRequest.lang)
+}
+inline std::string* LocaleCreateRequest::mutable_lang() {
+  std::string* _s = _internal_mutable_lang();
+  // @@protoc_insertion_point(field_mutable:palm.nut.v1.LocaleCreateRequest.lang)
+  return _s;
+}
+inline const std::string& LocaleCreateRequest::_internal_lang() const {
+  return _impl_.lang_.Get();
+}
+inline void LocaleCreateRequest::_internal_set_lang(const std::string& value) {
+  ;
+
+
+  _impl_.lang_.Set(value, GetArenaForAllocation());
+}
+inline std::string* LocaleCreateRequest::_internal_mutable_lang() {
+  ;
+  return _impl_.lang_.Mutable( GetArenaForAllocation());
+}
+inline std::string* LocaleCreateRequest::release_lang() {
+  // @@protoc_insertion_point(field_release:palm.nut.v1.LocaleCreateRequest.lang)
+  return _impl_.lang_.Release();
+}
+inline void LocaleCreateRequest::set_allocated_lang(std::string* value) {
+  _impl_.lang_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.lang_.IsDefault()) {
+          _impl_.lang_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.LocaleCreateRequest.lang)
+}
+
+// string code = 2;
+inline void LocaleCreateRequest::clear_code() {
+  _impl_.code_.ClearToEmpty();
+}
+inline const std::string& LocaleCreateRequest::code() const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.LocaleCreateRequest.code)
+  return _internal_code();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void LocaleCreateRequest::set_code(Arg_&& arg,
+                                                     Args_... args) {
+  ;
+  _impl_.code_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.nut.v1.LocaleCreateRequest.code)
+}
+inline std::string* LocaleCreateRequest::mutable_code() {
+  std::string* _s = _internal_mutable_code();
+  // @@protoc_insertion_point(field_mutable:palm.nut.v1.LocaleCreateRequest.code)
+  return _s;
+}
+inline const std::string& LocaleCreateRequest::_internal_code() const {
+  return _impl_.code_.Get();
+}
+inline void LocaleCreateRequest::_internal_set_code(const std::string& value) {
+  ;
+
+
+  _impl_.code_.Set(value, GetArenaForAllocation());
+}
+inline std::string* LocaleCreateRequest::_internal_mutable_code() {
+  ;
+  return _impl_.code_.Mutable( GetArenaForAllocation());
+}
+inline std::string* LocaleCreateRequest::release_code() {
+  // @@protoc_insertion_point(field_release:palm.nut.v1.LocaleCreateRequest.code)
+  return _impl_.code_.Release();
+}
+inline void LocaleCreateRequest::set_allocated_code(std::string* value) {
+  _impl_.code_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.code_.IsDefault()) {
+          _impl_.code_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.LocaleCreateRequest.code)
 }
 
 // string message = 3;
-inline void LocaleSetRequest::clear_message() {
+inline void LocaleCreateRequest::clear_message() {
   _impl_.message_.ClearToEmpty();
 }
-inline const std::string& LocaleSetRequest::message() const {
-  // @@protoc_insertion_point(field_get:palm.nut.v1.LocaleSetRequest.message)
+inline const std::string& LocaleCreateRequest::message() const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.LocaleCreateRequest.message)
   return _internal_message();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void LocaleSetRequest::set_message(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void LocaleCreateRequest::set_message(Arg_&& arg,
                                                      Args_... args) {
   ;
   _impl_.message_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.nut.v1.LocaleSetRequest.message)
+  // @@protoc_insertion_point(field_set:palm.nut.v1.LocaleCreateRequest.message)
 }
-inline std::string* LocaleSetRequest::mutable_message() {
+inline std::string* LocaleCreateRequest::mutable_message() {
   std::string* _s = _internal_mutable_message();
-  // @@protoc_insertion_point(field_mutable:palm.nut.v1.LocaleSetRequest.message)
+  // @@protoc_insertion_point(field_mutable:palm.nut.v1.LocaleCreateRequest.message)
   return _s;
 }
-inline const std::string& LocaleSetRequest::_internal_message() const {
+inline const std::string& LocaleCreateRequest::_internal_message() const {
   return _impl_.message_.Get();
 }
-inline void LocaleSetRequest::_internal_set_message(const std::string& value) {
+inline void LocaleCreateRequest::_internal_set_message(const std::string& value) {
   ;
 
 
   _impl_.message_.Set(value, GetArenaForAllocation());
 }
-inline std::string* LocaleSetRequest::_internal_mutable_message() {
+inline std::string* LocaleCreateRequest::_internal_mutable_message() {
   ;
   return _impl_.message_.Mutable( GetArenaForAllocation());
 }
-inline std::string* LocaleSetRequest::release_message() {
-  // @@protoc_insertion_point(field_release:palm.nut.v1.LocaleSetRequest.message)
+inline std::string* LocaleCreateRequest::release_message() {
+  // @@protoc_insertion_point(field_release:palm.nut.v1.LocaleCreateRequest.message)
   return _impl_.message_.Release();
 }
-inline void LocaleSetRequest::set_allocated_message(std::string* value) {
+inline void LocaleCreateRequest::set_allocated_message(std::string* value) {
   _impl_.message_.SetAllocated(value, GetArenaForAllocation());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         if (_impl_.message_.IsDefault()) {
           _impl_.message_.Set("", GetArenaForAllocation());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.LocaleSetRequest.message)
+  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.LocaleCreateRequest.message)
+}
+
+// -------------------------------------------------------------------
+
+// LocaleUpdateRequest
+
+// int32 id = 1;
+inline void LocaleUpdateRequest::clear_id() {
+  _impl_.id_ = 0;
+}
+inline ::int32_t LocaleUpdateRequest::id() const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.LocaleUpdateRequest.id)
+  return _internal_id();
+}
+inline void LocaleUpdateRequest::set_id(::int32_t value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:palm.nut.v1.LocaleUpdateRequest.id)
+}
+inline ::int32_t LocaleUpdateRequest::_internal_id() const {
+  return _impl_.id_;
+}
+inline void LocaleUpdateRequest::_internal_set_id(::int32_t value) {
+  ;
+  _impl_.id_ = value;
+}
+
+// string message = 2;
+inline void LocaleUpdateRequest::clear_message() {
+  _impl_.message_.ClearToEmpty();
+}
+inline const std::string& LocaleUpdateRequest::message() const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.LocaleUpdateRequest.message)
+  return _internal_message();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void LocaleUpdateRequest::set_message(Arg_&& arg,
+                                                     Args_... args) {
+  ;
+  _impl_.message_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.nut.v1.LocaleUpdateRequest.message)
+}
+inline std::string* LocaleUpdateRequest::mutable_message() {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:palm.nut.v1.LocaleUpdateRequest.message)
+  return _s;
+}
+inline const std::string& LocaleUpdateRequest::_internal_message() const {
+  return _impl_.message_.Get();
+}
+inline void LocaleUpdateRequest::_internal_set_message(const std::string& value) {
+  ;
+
+
+  _impl_.message_.Set(value, GetArenaForAllocation());
+}
+inline std::string* LocaleUpdateRequest::_internal_mutable_message() {
+  ;
+  return _impl_.message_.Mutable( GetArenaForAllocation());
+}
+inline std::string* LocaleUpdateRequest::release_message() {
+  // @@protoc_insertion_point(field_release:palm.nut.v1.LocaleUpdateRequest.message)
+  return _impl_.message_.Release();
+}
+inline void LocaleUpdateRequest::set_allocated_message(std::string* value) {
+  _impl_.message_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.message_.IsDefault()) {
+          _impl_.message_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.LocaleUpdateRequest.message)
 }
 
 // -------------------------------------------------------------------

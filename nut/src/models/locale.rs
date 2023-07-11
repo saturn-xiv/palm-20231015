@@ -3,7 +3,7 @@ use std::path::Path;
 
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
-use palm::Result;
+use palm::{nut::v1, to_timestamp, Result};
 use serde::{Deserialize, Serialize};
 use yaml_rust::{Yaml, YamlLoader};
 
@@ -18,6 +18,18 @@ pub struct Item {
     pub version: i32,
     pub created_at: NaiveDateTime,
     pub updated_at: NaiveDateTime,
+}
+
+impl From<Item> for v1::locale_index_response::Item {
+    fn from(x: Item) -> Self {
+        Self {
+            id: x.id,
+            lang: x.lang.clone(),
+            code: x.code.clone(),
+            message: x.message.clone(),
+            updated_at: Some(to_timestamp!(x.updated_at)),
+        }
+    }
 }
 
 #[derive(Insertable)]
@@ -36,6 +48,7 @@ pub trait Dao {
     fn count(&mut self) -> Result<i64>;
     fn all(&mut self, offset: i64, limit: i64) -> Result<Vec<Item>>;
     fn by_lang(&mut self, lang: &str) -> Result<Vec<Item>>;
+    fn by_code(&mut self, code: &str) -> Result<Vec<Item>>;
     fn by_id(&mut self, id: i32) -> Result<Item>;
     fn by_lang_and_code(&mut self, lang: &str, code: &str) -> Result<Item>;
     fn delete(&mut self, id: i32) -> Result<()>;
@@ -203,6 +216,13 @@ impl Dao for Connection {
         let items = locales::dsl::locales
             .filter(locales::dsl::lang.eq(lang))
             .order(locales::dsl::code.asc())
+            .load::<Item>(self)?;
+        Ok(items)
+    }
+    fn by_code(&mut self, code: &str) -> Result<Vec<Item>> {
+        let items = locales::dsl::locales
+            .filter(locales::dsl::code.eq(code))
+            .order(locales::dsl::lang.asc())
             .load::<Item>(self)?;
         Ok(items)
     }

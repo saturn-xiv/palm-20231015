@@ -426,9 +426,11 @@ class Contact final :
   enum : int {
     kPhoneFieldNumber = 1,
     kWechatFieldNumber = 2,
+    kEmailFieldNumber = 3,
     kAddressFieldNumber = 99,
   };
-  // string phone = 1;
+  // optional string phone = 1;
+  bool has_phone() const;
   void clear_phone() ;
   const std::string& phone() const;
 
@@ -448,7 +450,8 @@ class Contact final :
   std::string* _internal_mutable_phone();
 
   public:
-  // string wechat = 2;
+  // optional string wechat = 2;
+  bool has_wechat() const;
   void clear_wechat() ;
   const std::string& wechat() const;
 
@@ -468,7 +471,29 @@ class Contact final :
   std::string* _internal_mutable_wechat();
 
   public:
-  // string address = 99;
+  // optional string email = 3;
+  bool has_email() const;
+  void clear_email() ;
+  const std::string& email() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_email(Arg_&& arg, Args_... args);
+  std::string* mutable_email();
+  PROTOBUF_NODISCARD std::string* release_email();
+  void set_allocated_email(std::string* ptr);
+
+  private:
+  const std::string& _internal_email() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_email(
+      const std::string& value);
+  std::string* _internal_mutable_email();
+
+  public:
+  // optional string address = 99;
+  bool has_address() const;
   void clear_address() ;
   const std::string& address() const;
 
@@ -496,10 +521,12 @@ class Contact final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr phone_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr wechat_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr email_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr address_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_ops_2drouter_2eproto;
@@ -6168,9 +6195,9 @@ class Wan final :
 
   enum : int {
     kDeviceFieldNumber = 1,
-    kNameFieldNumber = 2,
     kMacFieldNumber = 11,
-    kMetricFieldNumber = 3,
+    kMetricFieldNumber = 2,
+    kEnableFieldNumber = 99,
     kDhcpFieldNumber = 21,
     kStaticFieldNumber = 22,
   };
@@ -6194,26 +6221,6 @@ class Wan final :
   std::string* _internal_mutable_device();
 
   public:
-  // string name = 2;
-  void clear_name() ;
-  const std::string& name() const;
-
-
-
-
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_name(Arg_&& arg, Args_... args);
-  std::string* mutable_name();
-  PROTOBUF_NODISCARD std::string* release_name();
-  void set_allocated_name(std::string* ptr);
-
-  private:
-  const std::string& _internal_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
-      const std::string& value);
-  std::string* _internal_mutable_name();
-
-  public:
   // string mac = 11;
   void clear_mac() ;
   const std::string& mac() const;
@@ -6234,7 +6241,7 @@ class Wan final :
   std::string* _internal_mutable_mac();
 
   public:
-  // uint32 metric = 3;
+  // uint32 metric = 2;
   void clear_metric() ;
   ::uint32_t metric() const;
   void set_metric(::uint32_t value);
@@ -6242,6 +6249,16 @@ class Wan final :
   private:
   ::uint32_t _internal_metric() const;
   void _internal_set_metric(::uint32_t value);
+
+  public:
+  // bool enable = 99;
+  void clear_enable() ;
+  bool enable() const;
+  void set_enable(bool value);
+
+  private:
+  bool _internal_enable() const;
+  void _internal_set_enable(bool value);
 
   public:
   // .palm.ops.router.v1.Dhcp dhcp = 21;
@@ -6296,9 +6313,9 @@ class Wan final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr mac_;
     ::uint32_t metric_;
+    bool enable_;
     union IpUnion {
       constexpr IpUnion() : _constinit_{} {}
         ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
@@ -7771,9 +7788,14 @@ class UserLogsResponse final :
 
 // Contact
 
-// string phone = 1;
+// optional string phone = 1;
+inline bool Contact::has_phone() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
 inline void Contact::clear_phone() {
   _impl_.phone_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 inline const std::string& Contact::phone() const {
   // @@protoc_insertion_point(field_get:palm.ops.router.v1.Contact.phone)
@@ -7782,7 +7804,7 @@ inline const std::string& Contact::phone() const {
 template <typename Arg_, typename... Args_>
 inline PROTOBUF_ALWAYS_INLINE void Contact::set_phone(Arg_&& arg,
                                                      Args_... args) {
-  ;
+  _impl_._has_bits_[0] |= 0x00000001u;
   _impl_.phone_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
   // @@protoc_insertion_point(field_set:palm.ops.router.v1.Contact.phone)
 }
@@ -7795,20 +7817,33 @@ inline const std::string& Contact::_internal_phone() const {
   return _impl_.phone_.Get();
 }
 inline void Contact::_internal_set_phone(const std::string& value) {
-  ;
+  _impl_._has_bits_[0] |= 0x00000001u;
 
 
   _impl_.phone_.Set(value, GetArenaForAllocation());
 }
 inline std::string* Contact::_internal_mutable_phone() {
-  ;
+  _impl_._has_bits_[0] |= 0x00000001u;
   return _impl_.phone_.Mutable( GetArenaForAllocation());
 }
 inline std::string* Contact::release_phone() {
   // @@protoc_insertion_point(field_release:palm.ops.router.v1.Contact.phone)
-  return _impl_.phone_.Release();
+  if ((_impl_._has_bits_[0] & 0x00000001u) == 0) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* released = _impl_.phone_.Release();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.phone_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return released;
 }
 inline void Contact::set_allocated_phone(std::string* value) {
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
   _impl_.phone_.SetAllocated(value, GetArenaForAllocation());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         if (_impl_.phone_.IsDefault()) {
@@ -7818,9 +7853,14 @@ inline void Contact::set_allocated_phone(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Contact.phone)
 }
 
-// string wechat = 2;
+// optional string wechat = 2;
+inline bool Contact::has_wechat() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
 inline void Contact::clear_wechat() {
   _impl_.wechat_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000002u;
 }
 inline const std::string& Contact::wechat() const {
   // @@protoc_insertion_point(field_get:palm.ops.router.v1.Contact.wechat)
@@ -7829,7 +7869,7 @@ inline const std::string& Contact::wechat() const {
 template <typename Arg_, typename... Args_>
 inline PROTOBUF_ALWAYS_INLINE void Contact::set_wechat(Arg_&& arg,
                                                      Args_... args) {
-  ;
+  _impl_._has_bits_[0] |= 0x00000002u;
   _impl_.wechat_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
   // @@protoc_insertion_point(field_set:palm.ops.router.v1.Contact.wechat)
 }
@@ -7842,20 +7882,33 @@ inline const std::string& Contact::_internal_wechat() const {
   return _impl_.wechat_.Get();
 }
 inline void Contact::_internal_set_wechat(const std::string& value) {
-  ;
+  _impl_._has_bits_[0] |= 0x00000002u;
 
 
   _impl_.wechat_.Set(value, GetArenaForAllocation());
 }
 inline std::string* Contact::_internal_mutable_wechat() {
-  ;
+  _impl_._has_bits_[0] |= 0x00000002u;
   return _impl_.wechat_.Mutable( GetArenaForAllocation());
 }
 inline std::string* Contact::release_wechat() {
   // @@protoc_insertion_point(field_release:palm.ops.router.v1.Contact.wechat)
-  return _impl_.wechat_.Release();
+  if ((_impl_._has_bits_[0] & 0x00000002u) == 0) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  auto* released = _impl_.wechat_.Release();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.wechat_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return released;
 }
 inline void Contact::set_allocated_wechat(std::string* value) {
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
   _impl_.wechat_.SetAllocated(value, GetArenaForAllocation());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         if (_impl_.wechat_.IsDefault()) {
@@ -7865,9 +7918,79 @@ inline void Contact::set_allocated_wechat(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Contact.wechat)
 }
 
-// string address = 99;
+// optional string email = 3;
+inline bool Contact::has_email() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline void Contact::clear_email() {
+  _impl_.email_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline const std::string& Contact::email() const {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Contact.email)
+  return _internal_email();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Contact::set_email(Arg_&& arg,
+                                                     Args_... args) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.email_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Contact.email)
+}
+inline std::string* Contact::mutable_email() {
+  std::string* _s = _internal_mutable_email();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Contact.email)
+  return _s;
+}
+inline const std::string& Contact::_internal_email() const {
+  return _impl_.email_.Get();
+}
+inline void Contact::_internal_set_email(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+
+
+  _impl_.email_.Set(value, GetArenaForAllocation());
+}
+inline std::string* Contact::_internal_mutable_email() {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  return _impl_.email_.Mutable( GetArenaForAllocation());
+}
+inline std::string* Contact::release_email() {
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Contact.email)
+  if ((_impl_._has_bits_[0] & 0x00000004u) == 0) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  auto* released = _impl_.email_.Release();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.email_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return released;
+}
+inline void Contact::set_allocated_email(std::string* value) {
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+  _impl_.email_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.email_.IsDefault()) {
+          _impl_.email_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Contact.email)
+}
+
+// optional string address = 99;
+inline bool Contact::has_address() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
 inline void Contact::clear_address() {
   _impl_.address_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000008u;
 }
 inline const std::string& Contact::address() const {
   // @@protoc_insertion_point(field_get:palm.ops.router.v1.Contact.address)
@@ -7876,7 +7999,7 @@ inline const std::string& Contact::address() const {
 template <typename Arg_, typename... Args_>
 inline PROTOBUF_ALWAYS_INLINE void Contact::set_address(Arg_&& arg,
                                                      Args_... args) {
-  ;
+  _impl_._has_bits_[0] |= 0x00000008u;
   _impl_.address_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
   // @@protoc_insertion_point(field_set:palm.ops.router.v1.Contact.address)
 }
@@ -7889,20 +8012,33 @@ inline const std::string& Contact::_internal_address() const {
   return _impl_.address_.Get();
 }
 inline void Contact::_internal_set_address(const std::string& value) {
-  ;
+  _impl_._has_bits_[0] |= 0x00000008u;
 
 
   _impl_.address_.Set(value, GetArenaForAllocation());
 }
 inline std::string* Contact::_internal_mutable_address() {
-  ;
+  _impl_._has_bits_[0] |= 0x00000008u;
   return _impl_.address_.Mutable( GetArenaForAllocation());
 }
 inline std::string* Contact::release_address() {
   // @@protoc_insertion_point(field_release:palm.ops.router.v1.Contact.address)
-  return _impl_.address_.Release();
+  if ((_impl_._has_bits_[0] & 0x00000008u) == 0) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000008u;
+  auto* released = _impl_.address_.Release();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.address_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return released;
 }
 inline void Contact::set_allocated_address(std::string* value) {
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000008u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000008u;
+  }
   _impl_.address_.SetAllocated(value, GetArenaForAllocation());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         if (_impl_.address_.IsDefault()) {
@@ -12697,54 +12833,7 @@ inline void Wan::set_allocated_device(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Wan.device)
 }
 
-// string name = 2;
-inline void Wan::clear_name() {
-  _impl_.name_.ClearToEmpty();
-}
-inline const std::string& Wan::name() const {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Wan.name)
-  return _internal_name();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void Wan::set_name(Arg_&& arg,
-                                                     Args_... args) {
-  ;
-  _impl_.name_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Wan.name)
-}
-inline std::string* Wan::mutable_name() {
-  std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Wan.name)
-  return _s;
-}
-inline const std::string& Wan::_internal_name() const {
-  return _impl_.name_.Get();
-}
-inline void Wan::_internal_set_name(const std::string& value) {
-  ;
-
-
-  _impl_.name_.Set(value, GetArenaForAllocation());
-}
-inline std::string* Wan::_internal_mutable_name() {
-  ;
-  return _impl_.name_.Mutable( GetArenaForAllocation());
-}
-inline std::string* Wan::release_name() {
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Wan.name)
-  return _impl_.name_.Release();
-}
-inline void Wan::set_allocated_name(std::string* value) {
-  _impl_.name_.SetAllocated(value, GetArenaForAllocation());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.name_.IsDefault()) {
-          _impl_.name_.Set("", GetArenaForAllocation());
-        }
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Wan.name)
-}
-
-// uint32 metric = 3;
+// uint32 metric = 2;
 inline void Wan::clear_metric() {
   _impl_.metric_ = 0u;
 }
@@ -12957,6 +13046,26 @@ inline ::palm::ops::router::v1::Static* Wan::mutable_static_() {
   ::palm::ops::router::v1::Static* _msg = _internal_mutable_static_();
   // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Wan.static)
   return _msg;
+}
+
+// bool enable = 99;
+inline void Wan::clear_enable() {
+  _impl_.enable_ = false;
+}
+inline bool Wan::enable() const {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Wan.enable)
+  return _internal_enable();
+}
+inline void Wan::set_enable(bool value) {
+  _internal_set_enable(value);
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Wan.enable)
+}
+inline bool Wan::_internal_enable() const {
+  return _impl_.enable_;
+}
+inline void Wan::_internal_set_enable(bool value) {
+  ;
+  _impl_.enable_ = value;
 }
 
 inline bool Wan::has_ip() const {

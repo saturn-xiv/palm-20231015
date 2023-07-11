@@ -25,7 +25,9 @@ namespace v1 {
 template <typename>
 PROTOBUF_CONSTEXPR Contact::Contact(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.phone_)*/ {
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.phone_)*/ {
     &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
   }
 
@@ -33,11 +35,14 @@ PROTOBUF_CONSTEXPR Contact::Contact(
     &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
   }
 
-  , /*decltype(_impl_.address_)*/ {
+  , /*decltype(_impl_.email_)*/ {
     &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
   }
 
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+  , /*decltype(_impl_.address_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+} {}
 struct ContactDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ContactDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ContactDefaultTypeInternal() {}
@@ -661,15 +666,13 @@ PROTOBUF_CONSTEXPR Wan::Wan(
     &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
   }
 
-  , /*decltype(_impl_.name_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
   , /*decltype(_impl_.mac_)*/ {
     &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
   }
 
   , /*decltype(_impl_.metric_)*/ 0u
+
+  , /*decltype(_impl_.enable_)*/ false
 
   , /*decltype(_impl_.ip_)*/{}
   , /*decltype(_impl_._cached_size_)*/{}
@@ -845,7 +848,7 @@ static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_ops_2drouter_2eproto = nullptr;
 const ::uint32_t TableStruct_ops_2drouter_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     protodesc_cold) = {
-    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _impl_._has_bits_),
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
@@ -855,7 +858,12 @@ const ::uint32_t TableStruct_ops_2drouter_2eproto::offsets[] PROTOBUF_SECTION_VA
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _impl_.phone_),
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _impl_.wechat_),
+    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _impl_.email_),
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _impl_.address_),
+    0,
+    1,
+    2,
+    3,
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetLanRequest, _impl_._has_bits_),
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetLanRequest, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -1239,11 +1247,11 @@ const ::uint32_t TableStruct_ops_2drouter_2eproto::offsets[] PROTOBUF_SECTION_VA
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.device_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.name_),
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.metric_),
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.mac_),
     ::_pbi::kInvalidFieldOffsetTag,
     ::_pbi::kInvalidFieldOffsetTag,
+    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.enable_),
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.ip_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dhcp, _internal_metadata_),
@@ -1335,43 +1343,43 @@ const ::uint32_t TableStruct_ops_2drouter_2eproto::offsets[] PROTOBUF_SECTION_VA
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        { 0, -1, -1, sizeof(::palm::ops::router::v1::Contact)},
-        { 11, 21, -1, sizeof(::palm::ops::router::v1::RouterSetLanRequest)},
-        { 23, 33, -1, sizeof(::palm::ops::router::v1::RouterSetDmzRequest)},
-        { 35, 45, -1, sizeof(::palm::ops::router::v1::RouterSetWanRequest)},
-        { 47, -1, -1, sizeof(::palm::ops::router::v1::WanPool_Item)},
-        { 57, -1, -1, sizeof(::palm::ops::router::v1::WanPool)},
-        { 66, 76, -1, sizeof(::palm::ops::router::v1::RouterCreateUserRequest)},
-        { 78, 89, -1, sizeof(::palm::ops::router::v1::RouterIndexUserResponse_Item)},
-        { 92, -1, -1, sizeof(::palm::ops::router::v1::RouterIndexUserResponse)},
-        { 101, 116, -1, sizeof(::palm::ops::router::v1::RouterUpdateHostRequest)},
-        { 123, -1, -1, sizeof(::palm::ops::router::v1::RouterIndexRuleResponse_Item)},
-        { 138, -1, -1, sizeof(::palm::ops::router::v1::RouterIndexRuleResponse)},
-        { 147, 157, -1, sizeof(::palm::ops::router::v1::Host_Owner)},
-        { 159, 175, -1, sizeof(::palm::ops::router::v1::Host)},
-        { 183, 195, -1, sizeof(::palm::ops::router::v1::Rule_InBound)},
-        { 199, -1, -1, sizeof(::palm::ops::router::v1::Rule_OutBound_Host)},
-        { 210, 220, -1, sizeof(::palm::ops::router::v1::Rule_OutBound_Speed)},
-        { 222, 239, -1, sizeof(::palm::ops::router::v1::Rule_OutBound_Time)},
-        { 248, -1, -1, sizeof(::palm::ops::router::v1::Rule_OutBound)},
-        { 260, -1, -1, sizeof(::palm::ops::router::v1::Rule_Nat_Source)},
-        { 270, -1, -1, sizeof(::palm::ops::router::v1::Rule_Nat_Destination)},
-        { 280, 291, -1, sizeof(::palm::ops::router::v1::Rule_Nat)},
-        { 294, -1, -1, sizeof(::palm::ops::router::v1::Rule)},
-        { 308, 318, -1, sizeof(::palm::ops::router::v1::RouterStatusResponse_InterfacesEntry_DoNotUse)},
-        { 320, -1, -1, sizeof(::palm::ops::router::v1::RouterStatusResponse_Ip)},
-        { 331, 350, -1, sizeof(::palm::ops::router::v1::RouterStatusResponse)},
-        { 361, -1, -1, sizeof(::palm::ops::router::v1::Lan)},
-        { 373, -1, -1, sizeof(::palm::ops::router::v1::Dmz)},
-        { 385, -1, -1, sizeof(::palm::ops::router::v1::Wan)},
-        { 400, -1, -1, sizeof(::palm::ops::router::v1::Dhcp)},
-        { 409, 421, -1, sizeof(::palm::ops::router::v1::Static)},
-        { 425, -1, -1, sizeof(::palm::ops::router::v1::Dns)},
-        { 434, -1, -1, sizeof(::palm::ops::router::v1::UserProfile)},
-        { 444, 454, -1, sizeof(::palm::ops::router::v1::UserSignInRequest)},
-        { 456, -1, -1, sizeof(::palm::ops::router::v1::UserSignInResponse)},
-        { 465, 475, -1, sizeof(::palm::ops::router::v1::UserUpdateRequest)},
-        { 477, -1, -1, sizeof(::palm::ops::router::v1::UserLogsResponse)},
+        { 0, 12, -1, sizeof(::palm::ops::router::v1::Contact)},
+        { 16, 26, -1, sizeof(::palm::ops::router::v1::RouterSetLanRequest)},
+        { 28, 38, -1, sizeof(::palm::ops::router::v1::RouterSetDmzRequest)},
+        { 40, 50, -1, sizeof(::palm::ops::router::v1::RouterSetWanRequest)},
+        { 52, -1, -1, sizeof(::palm::ops::router::v1::WanPool_Item)},
+        { 62, -1, -1, sizeof(::palm::ops::router::v1::WanPool)},
+        { 71, 81, -1, sizeof(::palm::ops::router::v1::RouterCreateUserRequest)},
+        { 83, 94, -1, sizeof(::palm::ops::router::v1::RouterIndexUserResponse_Item)},
+        { 97, -1, -1, sizeof(::palm::ops::router::v1::RouterIndexUserResponse)},
+        { 106, 121, -1, sizeof(::palm::ops::router::v1::RouterUpdateHostRequest)},
+        { 128, -1, -1, sizeof(::palm::ops::router::v1::RouterIndexRuleResponse_Item)},
+        { 143, -1, -1, sizeof(::palm::ops::router::v1::RouterIndexRuleResponse)},
+        { 152, 162, -1, sizeof(::palm::ops::router::v1::Host_Owner)},
+        { 164, 180, -1, sizeof(::palm::ops::router::v1::Host)},
+        { 188, 200, -1, sizeof(::palm::ops::router::v1::Rule_InBound)},
+        { 204, -1, -1, sizeof(::palm::ops::router::v1::Rule_OutBound_Host)},
+        { 215, 225, -1, sizeof(::palm::ops::router::v1::Rule_OutBound_Speed)},
+        { 227, 244, -1, sizeof(::palm::ops::router::v1::Rule_OutBound_Time)},
+        { 253, -1, -1, sizeof(::palm::ops::router::v1::Rule_OutBound)},
+        { 265, -1, -1, sizeof(::palm::ops::router::v1::Rule_Nat_Source)},
+        { 275, -1, -1, sizeof(::palm::ops::router::v1::Rule_Nat_Destination)},
+        { 285, 296, -1, sizeof(::palm::ops::router::v1::Rule_Nat)},
+        { 299, -1, -1, sizeof(::palm::ops::router::v1::Rule)},
+        { 313, 323, -1, sizeof(::palm::ops::router::v1::RouterStatusResponse_InterfacesEntry_DoNotUse)},
+        { 325, -1, -1, sizeof(::palm::ops::router::v1::RouterStatusResponse_Ip)},
+        { 336, 355, -1, sizeof(::palm::ops::router::v1::RouterStatusResponse)},
+        { 366, -1, -1, sizeof(::palm::ops::router::v1::Lan)},
+        { 378, -1, -1, sizeof(::palm::ops::router::v1::Dmz)},
+        { 390, -1, -1, sizeof(::palm::ops::router::v1::Wan)},
+        { 405, -1, -1, sizeof(::palm::ops::router::v1::Dhcp)},
+        { 414, 426, -1, sizeof(::palm::ops::router::v1::Static)},
+        { 430, -1, -1, sizeof(::palm::ops::router::v1::Dns)},
+        { 439, -1, -1, sizeof(::palm::ops::router::v1::UserProfile)},
+        { 449, 459, -1, sizeof(::palm::ops::router::v1::UserSignInRequest)},
+        { 461, -1, -1, sizeof(::palm::ops::router::v1::UserSignInResponse)},
+        { 470, 480, -1, sizeof(::palm::ops::router::v1::UserUpdateRequest)},
+        { 482, -1, -1, sizeof(::palm::ops::router::v1::UserLogsResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -1417,142 +1425,144 @@ const char descriptor_table_protodef_ops_2drouter_2eproto[] PROTOBUF_SECTION_VAR
     "\n\020ops-router.proto\022\022palm.ops.router.v1\032\033"
     "google/protobuf/empty.proto\032\037google/prot"
     "obuf/timestamp.proto\032\036google/protobuf/du"
-    "ration.proto\"9\n\007Contact\022\r\n\005phone\030\001 \001(\t\022\016"
-    "\n\006wechat\030\002 \001(\t\022\017\n\007address\030c \001(\t\"O\n\023Route"
-    "rSetLanRequest\022(\n\007payload\030\001 \001(\0132\027.palm.o"
-    "ps.router.v1.Lan\022\016\n\006enable\030\002 \001(\010\"O\n\023Rout"
-    "erSetDmzRequest\022(\n\007payload\030\001 \001(\0132\027.palm."
-    "ops.router.v1.Dmz\022\016\n\006enable\030\002 \001(\010\"O\n\023Rou"
-    "terSetWanRequest\022(\n\007payload\030\001 \001(\0132\027.palm"
-    ".ops.router.v1.Wan\022\016\n\006enable\030\002 \001(\010\"b\n\007Wa"
-    "nPool\022/\n\005items\030\001 \003(\0132 .palm.ops.router.v"
-    "1.WanPool.Item\032&\n\004Item\022\016\n\006device\030\001 \001(\t\022\016"
-    "\n\006weight\030\002 \001(\r\"U\n\027RouterCreateUserReques"
-    "t\022\014\n\004name\030\001 \001(\t\022,\n\007contact\030\002 \001(\0132\033.palm."
-    "ops.router.v1.Contact\"\252\001\n\027RouterIndexUse"
-    "rResponse\022\?\n\005items\030\001 \003(\01320.palm.ops.rout"
-    "er.v1.RouterIndexUserResponse.Item\032N\n\004It"
-    "em\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022,\n\007contact\030"
-    "\003 \001(\0132\033.palm.ops.router.v1.Contact\"\217\001\n\027R"
-    "outerUpdateHostRequest\022\n\n\002id\030\001 \001(\005\022\014\n\004us"
-    "er\030\002 \001(\005\022\r\n\005group\030\003 \001(\t\022\n\n\002ip\030\004 \001(\t\022\r\n\005f"
-    "ixed\030\005 \001(\010\022\014\n\004zone\030\010 \001(\t\022\025\n\010location\030\t \001"
-    "(\tH\000\210\001\001B\013\n\t_location\"\246\002\n\027RouterIndexRule"
+    "ration.proto\"\207\001\n\007Contact\022\022\n\005phone\030\001 \001(\tH"
+    "\000\210\001\001\022\023\n\006wechat\030\002 \001(\tH\001\210\001\001\022\022\n\005email\030\003 \001(\t"
+    "H\002\210\001\001\022\024\n\007address\030c \001(\tH\003\210\001\001B\010\n\006_phoneB\t\n"
+    "\007_wechatB\010\n\006_emailB\n\n\010_address\"O\n\023Router"
+    "SetLanRequest\022(\n\007payload\030\001 \001(\0132\027.palm.op"
+    "s.router.v1.Lan\022\016\n\006enable\030\002 \001(\010\"O\n\023Route"
+    "rSetDmzRequest\022(\n\007payload\030\001 \001(\0132\027.palm.o"
+    "ps.router.v1.Dmz\022\016\n\006enable\030\002 \001(\010\"O\n\023Rout"
+    "erSetWanRequest\022(\n\007payload\030\001 \001(\0132\027.palm."
+    "ops.router.v1.Wan\022\016\n\006enable\030\002 \001(\010\"b\n\007Wan"
+    "Pool\022/\n\005items\030\001 \003(\0132 .palm.ops.router.v1"
+    ".WanPool.Item\032&\n\004Item\022\016\n\006device\030\001 \001(\t\022\016\n"
+    "\006weight\030\002 \001(\r\"U\n\027RouterCreateUserRequest"
+    "\022\014\n\004name\030\001 \001(\t\022,\n\007contact\030\002 \001(\0132\033.palm.o"
+    "ps.router.v1.Contact\"\252\001\n\027RouterIndexUser"
     "Response\022\?\n\005items\030\001 \003(\01320.palm.ops.route"
-    "r.v1.RouterIndexRuleResponse.Item\032\311\001\n\004It"
-    "em\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005group\030\003 "
-    "\001(\t\022.\n\002in\030\013 \001(\0132 .palm.ops.router.v1.Rul"
-    "e.InBoundH\000\0220\n\003out\030\014 \001(\0132!.palm.ops.rout"
-    "er.v1.Rule.OutBoundH\000\022+\n\003nat\030\r \001(\0132\034.pal"
-    "m.ops.router.v1.Rule.NatH\000B\t\n\007payload\"\357\001"
-    "\n\004Host\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003mac\030"
-    "\003 \001(\t\022\n\n\002ip\030\004 \001(\t\022\r\n\005fixed\030\005 \001(\010\022\r\n\005grou"
-    "p\030\t \001(\t\022\025\n\010location\030\013 \001(\tH\000\210\001\001\022-\n\005owner\030"
-    "\014 \001(\0132\036.palm.ops.router.v1.Host.Owner\032C\n"
-    "\005Owner\022\014\n\004name\030\001 \001(\t\022,\n\007contact\030\002 \001(\0132\033."
-    "palm.ops.router.v1.ContactB\013\n\t_location\""
-    "\276\010\n\004Rule\022\014\n\004name\030\001 \001(\t\022\r\n\005group\030\002 \001(\t\022.\n"
-    "\002in\030\013 \001(\0132 .palm.ops.router.v1.Rule.InBo"
-    "undH\000\0220\n\003out\030\014 \001(\0132!.palm.ops.router.v1."
-    "Rule.OutBoundH\000\022+\n\003nat\030\r \001(\0132\034.palm.ops."
-    "router.v1.Rule.NatH\000\032T\n\007InBound\022\016\n\006devic"
-    "e\030\001 \001(\t\022\013\n\003tcp\030\002 \001(\010\022\014\n\004port\030\003 \001(\r\022\023\n\006so"
-    "urce\030\004 \001(\tH\000\210\001\001B\t\n\007_source\032\246\004\n\010OutBound\022"
-    "6\n\004host\030\001 \001(\0132&.palm.ops.router.v1.Rule."
-    "OutBound.HostH\000\0228\n\005speed\030\002 \001(\0132\'.palm.op"
-    "s.router.v1.Rule.OutBound.SpeedH\000\0226\n\004tim"
-    "e\030\003 \001(\0132&.palm.ops.router.v1.Rule.OutBou"
-    "nd.TimeH\000\032U\n\004Host\022\n\n\002to\030\001 \001(\t\0223\n\010protoco"
-    "l\030\002 \001(\0162!.palm.ops.router.v1.Rule.Protoc"
-    "ol\022\014\n\004port\030\003 \001(\r\032;\n\005Speed\022\017\n\002up\030\001 \001(\rH\000\210"
-    "\001\001\022\021\n\004down\030\002 \001(\rH\001\210\001\001B\005\n\003_upB\007\n\005_down\032\320\001"
-    "\n\004Time\022(\n\004from\030\001 \001(\0132\032.google.protobuf.T"
-    "imestamp\022&\n\002to\030\002 \001(\0132\032.google.protobuf.T"
-    "imestamp\022\016\n\006monday\030\013 \001(\010\022\017\n\007tuesday\030\014 \001("
-    "\010\022\021\n\twednesday\030\r \001(\010\022\020\n\010thursday\030\016 \001(\010\022\016"
-    "\n\006friday\030\017 \001(\010\022\020\n\010saturday\030\020 \001(\010\022\016\n\006sund"
-    "ay\030\021 \001(\010B\t\n\007payload\032\327\001\n\003Nat\0223\n\006source\030\001 "
-    "\001(\0132#.palm.ops.router.v1.Rule.Nat.Source"
-    "\022\013\n\003tcp\030\002 \001(\010\022=\n\013destination\030\003 \001(\0132(.pal"
-    "m.ops.router.v1.Rule.Nat.Destination\032&\n\006"
-    "Source\022\016\n\006device\030\001 \001(\t\022\014\n\004port\030\003 \001(\r\032\'\n\013"
-    "Destination\022\n\n\002ip\030\001 \001(\t\022\014\n\004port\030\003 \001(\r\"&\n"
-    "\010Protocol\022\010\n\004Icmp\020\000\022\007\n\003Tcp\020\001\022\007\n\003Udp\020\002B\t\n"
-    "\007payload\"\332\004\n\024RouterStatusResponse\022L\n\nint"
-    "erfaces\030\001 \003(\01328.palm.ops.router.v1.Route"
-    "rStatusResponse.InterfacesEntry\022$\n\003lan\030\013"
-    " \001(\0132\027.palm.ops.router.v1.Lan\022$\n\003dmz\030\014 \001"
-    "(\0132\027.palm.ops.router.v1.Dmz\022$\n\003dns\030\r \001(\013"
-    "2\027.palm.ops.router.v1.Dns\022$\n\003wan\030\016 \003(\0132\027"
-    ".palm.ops.router.v1.Wan\022-\n\010wan_pool\030\017 \001("
-    "\0132\033.palm.ops.router.v1.WanPool\022\'\n\005rules\030"
-    "\025 \003(\0132\030.palm.ops.router.v1.Rule\022\'\n\005hosts"
-    "\030\026 \003(\0132\030.palm.ops.router.v1.Host\0227\n\002ip\030a"
-    " \001(\0132+.palm.ops.router.v1.RouterStatusRe"
-    "sponse.Ip\022\020\n\010firewall\030b \001(\t\022)\n\006uptime\030c "
-    "\001(\0132\031.google.protobuf.Duration\0321\n\017Interf"
-    "acesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028"
-    "\001\0322\n\002Ip\022\017\n\007address\030\001 \001(\t\022\r\n\005route\030\002 \001(\t\022"
-    "\014\n\004rule\030\003 \001(\t\"C\n\003Lan\022\016\n\006device\030\001 \001(\t\022\013\n\003"
-    "mac\030\002 \001(\t\022\016\n\006metric\030\003 \001(\r\022\017\n\007address\030\013 \001"
-    "(\t\"C\n\003Dmz\022\016\n\006device\030\001 \001(\t\022\013\n\003mac\030\002 \001(\t\022\016"
-    "\n\006metric\030\003 \001(\r\022\017\n\007address\030\013 \001(\t\"\236\001\n\003Wan\022"
-    "\016\n\006device\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006metric\030"
-    "\003 \001(\r\022\013\n\003mac\030\013 \001(\t\022(\n\004dhcp\030\025 \001(\0132\030.palm."
-    "ops.router.v1.DhcpH\000\022,\n\006static\030\026 \001(\0132\032.p"
-    "alm.ops.router.v1.StaticH\000B\004\n\002ip\"\022\n\004Dhcp"
-    "\022\n\n\002v6\030\001 \001(\010\"T\n\006Static\022\017\n\007address\030\001 \001(\t\022"
-    "\017\n\007gateway\030\003 \001(\t\022\014\n\004dns1\030\004 \001(\t\022\021\n\004dns2\030\005"
-    " \001(\tH\000\210\001\001B\007\n\005_dns2\"\024\n\003Dns\022\r\n\005items\030\001 \003(\t"
-    "\"1\n\013UserProfile\022\020\n\010nickname\030\001 \001(\t\022\020\n\010pas"
-    "sword\030\002 \001(\t\"j\n\021UserSignInRequest\022-\n\004user"
-    "\030\001 \001(\0132\037.palm.ops.router.v1.UserProfile\022"
-    "&\n\003ttl\030\t \001(\0132\031.google.protobuf.Duration\""
-    "#\n\022UserSignInResponse\022\r\n\005token\030\001 \001(\t\"s\n\021"
-    "UserUpdateRequest\0220\n\007current\030\001 \001(\0132\037.pal"
-    "m.ops.router.v1.UserProfile\022,\n\003new\030\002 \001(\013"
-    "2\037.palm.ops.router.v1.UserProfile\"!\n\020Use"
-    "rLogsResponse\022\r\n\005items\030\001 \003(\t2\376\010\n\006Router\022"
-    ":\n\006Reboot\022\026.google.protobuf.Empty\032\026.goog"
-    "le.protobuf.Empty\"\000\0229\n\005Apply\022\026.google.pr"
-    "otobuf.Empty\032\026.google.protobuf.Empty\"\000\022L"
-    "\n\006Status\022\026.google.protobuf.Empty\032(.palm."
-    "ops.router.v1.RouterStatusResponse\"\000\022;\n\006"
-    "SetDns\022\027.palm.ops.router.v1.Dns\032\026.google"
-    ".protobuf.Empty\"\000\022K\n\006SetWan\022\'.palm.ops.r"
-    "outer.v1.RouterSetWanRequest\032\026.google.pr"
-    "otobuf.Empty\"\000\022C\n\nSetWanPool\022\033.palm.ops."
-    "router.v1.WanPool\032\026.google.protobuf.Empt"
-    "y\"\000\022K\n\006SetLan\022\'.palm.ops.router.v1.Route"
-    "rSetLanRequest\032\026.google.protobuf.Empty\"\000"
-    "\022K\n\006SetDmz\022\'.palm.ops.router.v1.RouterSe"
-    "tDmzRequest\032\026.google.protobuf.Empty\"\000\022@\n"
-    "\nCreateRule\022\030.palm.ops.router.v1.Rule\032\026."
-    "google.protobuf.Empty\"\000\022X\n\nUpdateRule\0220."
-    "palm.ops.router.v1.RouterIndexRuleRespon"
-    "se.Item\032\026.google.protobuf.Empty\"\000\022R\n\tInd"
-    "exRule\022\026.google.protobuf.Empty\032+.palm.op"
-    "s.router.v1.RouterIndexRuleResponse\"\000\022S\n"
-    "\nUpdateHost\022+.palm.ops.router.v1.RouterU"
-    "pdateHostRequest\032\026.google.protobuf.Empty"
-    "\"\000\022R\n\tIndexUser\022\026.google.protobuf.Empty\032"
-    "+.palm.ops.router.v1.RouterIndexUserResp"
-    "onse\"\000\022X\n\nUpdateUser\0220.palm.ops.router.v"
-    "1.RouterIndexUserResponse.Item\032\026.google."
-    "protobuf.Empty\"\000\022S\n\nCreateUser\022+.palm.op"
-    "s.router.v1.RouterCreateUserRequest\032\026.go"
-    "ogle.protobuf.Empty\"\0002\201\003\n\004User\022Y\n\006SignIn"
-    "\022%.palm.ops.router.v1.UserSignInRequest\032"
-    "&.palm.ops.router.v1.UserSignInResponse\""
-    "\000\022N\n\007Refresh\022\031.google.protobuf.Duration\032"
-    "&.palm.ops.router.v1.UserSignInResponse\""
-    "\000\022I\n\006Update\022%.palm.ops.router.v1.UserUpd"
-    "ateRequest\032\026.google.protobuf.Empty\"\000\022;\n\007"
-    "SignOut\022\026.google.protobuf.Empty\032\026.google"
-    ".protobuf.Empty\"\000\022F\n\004Logs\022\026.google.proto"
-    "buf.Empty\032$.palm.ops.router.v1.UserLogsR"
-    "esponse\"\000B4\n0com.github.saturn_xiv.palm."
-    "plugins.ops.router.v1P\001b\006proto3"
+    "r.v1.RouterIndexUserResponse.Item\032N\n\004Ite"
+    "m\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022,\n\007contact\030\003"
+    " \001(\0132\033.palm.ops.router.v1.Contact\"\217\001\n\027Ro"
+    "uterUpdateHostRequest\022\n\n\002id\030\001 \001(\005\022\014\n\004use"
+    "r\030\002 \001(\005\022\r\n\005group\030\003 \001(\t\022\n\n\002ip\030\004 \001(\t\022\r\n\005fi"
+    "xed\030\005 \001(\010\022\014\n\004zone\030\010 \001(\t\022\025\n\010location\030\t \001("
+    "\tH\000\210\001\001B\013\n\t_location\"\246\002\n\027RouterIndexRuleR"
+    "esponse\022\?\n\005items\030\001 \003(\01320.palm.ops.router"
+    ".v1.RouterIndexRuleResponse.Item\032\311\001\n\004Ite"
+    "m\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005group\030\003 \001"
+    "(\t\022.\n\002in\030\013 \001(\0132 .palm.ops.router.v1.Rule"
+    ".InBoundH\000\0220\n\003out\030\014 \001(\0132!.palm.ops.route"
+    "r.v1.Rule.OutBoundH\000\022+\n\003nat\030\r \001(\0132\034.palm"
+    ".ops.router.v1.Rule.NatH\000B\t\n\007payload\"\357\001\n"
+    "\004Host\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003mac\030\003"
+    " \001(\t\022\n\n\002ip\030\004 \001(\t\022\r\n\005fixed\030\005 \001(\010\022\r\n\005group"
+    "\030\t \001(\t\022\025\n\010location\030\013 \001(\tH\000\210\001\001\022-\n\005owner\030\014"
+    " \001(\0132\036.palm.ops.router.v1.Host.Owner\032C\n\005"
+    "Owner\022\014\n\004name\030\001 \001(\t\022,\n\007contact\030\002 \001(\0132\033.p"
+    "alm.ops.router.v1.ContactB\013\n\t_location\"\276"
+    "\010\n\004Rule\022\014\n\004name\030\001 \001(\t\022\r\n\005group\030\002 \001(\t\022.\n\002"
+    "in\030\013 \001(\0132 .palm.ops.router.v1.Rule.InBou"
+    "ndH\000\0220\n\003out\030\014 \001(\0132!.palm.ops.router.v1.R"
+    "ule.OutBoundH\000\022+\n\003nat\030\r \001(\0132\034.palm.ops.r"
+    "outer.v1.Rule.NatH\000\032T\n\007InBound\022\016\n\006device"
+    "\030\001 \001(\t\022\013\n\003tcp\030\002 \001(\010\022\014\n\004port\030\003 \001(\r\022\023\n\006sou"
+    "rce\030\004 \001(\tH\000\210\001\001B\t\n\007_source\032\246\004\n\010OutBound\0226"
+    "\n\004host\030\001 \001(\0132&.palm.ops.router.v1.Rule.O"
+    "utBound.HostH\000\0228\n\005speed\030\002 \001(\0132\'.palm.ops"
+    ".router.v1.Rule.OutBound.SpeedH\000\0226\n\004time"
+    "\030\003 \001(\0132&.palm.ops.router.v1.Rule.OutBoun"
+    "d.TimeH\000\032U\n\004Host\022\n\n\002to\030\001 \001(\t\0223\n\010protocol"
+    "\030\002 \001(\0162!.palm.ops.router.v1.Rule.Protoco"
+    "l\022\014\n\004port\030\003 \001(\r\032;\n\005Speed\022\017\n\002up\030\001 \001(\rH\000\210\001"
+    "\001\022\021\n\004down\030\002 \001(\rH\001\210\001\001B\005\n\003_upB\007\n\005_down\032\320\001\n"
+    "\004Time\022(\n\004from\030\001 \001(\0132\032.google.protobuf.Ti"
+    "mestamp\022&\n\002to\030\002 \001(\0132\032.google.protobuf.Ti"
+    "mestamp\022\016\n\006monday\030\013 \001(\010\022\017\n\007tuesday\030\014 \001(\010"
+    "\022\021\n\twednesday\030\r \001(\010\022\020\n\010thursday\030\016 \001(\010\022\016\n"
+    "\006friday\030\017 \001(\010\022\020\n\010saturday\030\020 \001(\010\022\016\n\006sunda"
+    "y\030\021 \001(\010B\t\n\007payload\032\327\001\n\003Nat\0223\n\006source\030\001 \001"
+    "(\0132#.palm.ops.router.v1.Rule.Nat.Source\022"
+    "\013\n\003tcp\030\002 \001(\010\022=\n\013destination\030\003 \001(\0132(.palm"
+    ".ops.router.v1.Rule.Nat.Destination\032&\n\006S"
+    "ource\022\016\n\006device\030\001 \001(\t\022\014\n\004port\030\003 \001(\r\032\'\n\013D"
+    "estination\022\n\n\002ip\030\001 \001(\t\022\014\n\004port\030\003 \001(\r\"&\n\010"
+    "Protocol\022\010\n\004Icmp\020\000\022\007\n\003Tcp\020\001\022\007\n\003Udp\020\002B\t\n\007"
+    "payload\"\332\004\n\024RouterStatusResponse\022L\n\ninte"
+    "rfaces\030\001 \003(\01328.palm.ops.router.v1.Router"
+    "StatusResponse.InterfacesEntry\022$\n\003lan\030\013 "
+    "\001(\0132\027.palm.ops.router.v1.Lan\022$\n\003dmz\030\014 \001("
+    "\0132\027.palm.ops.router.v1.Dmz\022$\n\003dns\030\r \001(\0132"
+    "\027.palm.ops.router.v1.Dns\022$\n\003wan\030\016 \003(\0132\027."
+    "palm.ops.router.v1.Wan\022-\n\010wan_pool\030\017 \001(\013"
+    "2\033.palm.ops.router.v1.WanPool\022\'\n\005rules\030\025"
+    " \003(\0132\030.palm.ops.router.v1.Rule\022\'\n\005hosts\030"
+    "\026 \003(\0132\030.palm.ops.router.v1.Host\0227\n\002ip\030a "
+    "\001(\0132+.palm.ops.router.v1.RouterStatusRes"
+    "ponse.Ip\022\020\n\010firewall\030b \001(\t\022)\n\006uptime\030c \001"
+    "(\0132\031.google.protobuf.Duration\0321\n\017Interfa"
+    "cesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001"
+    "\0322\n\002Ip\022\017\n\007address\030\001 \001(\t\022\r\n\005route\030\002 \001(\t\022\014"
+    "\n\004rule\030\003 \001(\t\"C\n\003Lan\022\016\n\006device\030\001 \001(\t\022\013\n\003m"
+    "ac\030\002 \001(\t\022\016\n\006metric\030\003 \001(\r\022\017\n\007address\030\013 \001("
+    "\t\"C\n\003Dmz\022\016\n\006device\030\001 \001(\t\022\013\n\003mac\030\002 \001(\t\022\016\n"
+    "\006metric\030\003 \001(\r\022\017\n\007address\030\013 \001(\t\"\240\001\n\003Wan\022\016"
+    "\n\006device\030\001 \001(\t\022\016\n\006metric\030\002 \001(\r\022\013\n\003mac\030\013 "
+    "\001(\t\022(\n\004dhcp\030\025 \001(\0132\030.palm.ops.router.v1.D"
+    "hcpH\000\022,\n\006static\030\026 \001(\0132\032.palm.ops.router."
+    "v1.StaticH\000\022\016\n\006enable\030c \001(\010B\004\n\002ip\"\022\n\004Dhc"
+    "p\022\n\n\002v6\030\001 \001(\010\"T\n\006Static\022\017\n\007address\030\001 \001(\t"
+    "\022\017\n\007gateway\030\003 \001(\t\022\014\n\004dns1\030\004 \001(\t\022\021\n\004dns2\030"
+    "\005 \001(\tH\000\210\001\001B\007\n\005_dns2\"\024\n\003Dns\022\r\n\005items\030\001 \003("
+    "\t\"1\n\013UserProfile\022\020\n\010nickname\030\001 \001(\t\022\020\n\010pa"
+    "ssword\030\002 \001(\t\"j\n\021UserSignInRequest\022-\n\004use"
+    "r\030\001 \001(\0132\037.palm.ops.router.v1.UserProfile"
+    "\022&\n\003ttl\030\t \001(\0132\031.google.protobuf.Duration"
+    "\"#\n\022UserSignInResponse\022\r\n\005token\030\001 \001(\t\"s\n"
+    "\021UserUpdateRequest\0220\n\007current\030\001 \001(\0132\037.pa"
+    "lm.ops.router.v1.UserProfile\022,\n\003new\030\002 \001("
+    "\0132\037.palm.ops.router.v1.UserProfile\"!\n\020Us"
+    "erLogsResponse\022\r\n\005items\030\001 \003(\t2\376\010\n\006Router"
+    "\022:\n\006Reboot\022\026.google.protobuf.Empty\032\026.goo"
+    "gle.protobuf.Empty\"\000\0229\n\005Apply\022\026.google.p"
+    "rotobuf.Empty\032\026.google.protobuf.Empty\"\000\022"
+    "L\n\006Status\022\026.google.protobuf.Empty\032(.palm"
+    ".ops.router.v1.RouterStatusResponse\"\000\022;\n"
+    "\006SetDns\022\027.palm.ops.router.v1.Dns\032\026.googl"
+    "e.protobuf.Empty\"\000\022K\n\006SetWan\022\'.palm.ops."
+    "router.v1.RouterSetWanRequest\032\026.google.p"
+    "rotobuf.Empty\"\000\022C\n\nSetWanPool\022\033.palm.ops"
+    ".router.v1.WanPool\032\026.google.protobuf.Emp"
+    "ty\"\000\022K\n\006SetLan\022\'.palm.ops.router.v1.Rout"
+    "erSetLanRequest\032\026.google.protobuf.Empty\""
+    "\000\022K\n\006SetDmz\022\'.palm.ops.router.v1.RouterS"
+    "etDmzRequest\032\026.google.protobuf.Empty\"\000\022@"
+    "\n\nCreateRule\022\030.palm.ops.router.v1.Rule\032\026"
+    ".google.protobuf.Empty\"\000\022X\n\nUpdateRule\0220"
+    ".palm.ops.router.v1.RouterIndexRuleRespo"
+    "nse.Item\032\026.google.protobuf.Empty\"\000\022R\n\tIn"
+    "dexRule\022\026.google.protobuf.Empty\032+.palm.o"
+    "ps.router.v1.RouterIndexRuleResponse\"\000\022S"
+    "\n\nUpdateHost\022+.palm.ops.router.v1.Router"
+    "UpdateHostRequest\032\026.google.protobuf.Empt"
+    "y\"\000\022R\n\tIndexUser\022\026.google.protobuf.Empty"
+    "\032+.palm.ops.router.v1.RouterIndexUserRes"
+    "ponse\"\000\022X\n\nUpdateUser\0220.palm.ops.router."
+    "v1.RouterIndexUserResponse.Item\032\026.google"
+    ".protobuf.Empty\"\000\022S\n\nCreateUser\022+.palm.o"
+    "ps.router.v1.RouterCreateUserRequest\032\026.g"
+    "oogle.protobuf.Empty\"\0002\201\003\n\004User\022Y\n\006SignI"
+    "n\022%.palm.ops.router.v1.UserSignInRequest"
+    "\032&.palm.ops.router.v1.UserSignInResponse"
+    "\"\000\022N\n\007Refresh\022\031.google.protobuf.Duration"
+    "\032&.palm.ops.router.v1.UserSignInResponse"
+    "\"\000\022I\n\006Update\022%.palm.ops.router.v1.UserUp"
+    "dateRequest\032\026.google.protobuf.Empty\"\000\022;\n"
+    "\007SignOut\022\026.google.protobuf.Empty\032\026.googl"
+    "e.protobuf.Empty\"\000\022F\n\004Logs\022\026.google.prot"
+    "obuf.Empty\032$.palm.ops.router.v1.UserLogs"
+    "Response\"\000B4\n0com.github.saturn_xiv.palm"
+    ".plugins.ops.router.v1P\001b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ops_2drouter_2eproto_deps[3] =
     {
@@ -1564,7 +1574,7 @@ static ::absl::once_flag descriptor_table_ops_2drouter_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_ops_2drouter_2eproto = {
     false,
     false,
-    5551,
+    5632,
     descriptor_table_protodef_ops_2drouter_2eproto,
     "ops-router.proto",
     &descriptor_table_ops_2drouter_2eproto_once,
@@ -1630,6 +1640,21 @@ constexpr int Rule::Protocol_ARRAYSIZE;
 
 class Contact::_Internal {
  public:
+  using HasBits = decltype(std::declval<Contact>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(Contact, _impl_._has_bits_);
+  static void set_has_phone(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_wechat(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_email(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_address(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
 };
 
 Contact::Contact(::PROTOBUF_NAMESPACE_ID::Arena* arena)
@@ -1641,34 +1666,44 @@ Contact::Contact(const Contact& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   Contact* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.phone_) {}
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.phone_) {}
 
     , decltype(_impl_.wechat_) {}
 
-    , decltype(_impl_.address_) {}
+    , decltype(_impl_.email_) {}
 
-    , /*decltype(_impl_._cached_size_)*/{}};
+    , decltype(_impl_.address_) {}
+  };
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.phone_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.phone_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_phone().empty()) {
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_impl_.phone_.Set(from._internal_phone(), _this->GetArenaForAllocation());
   }
   _impl_.wechat_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.wechat_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_wechat().empty()) {
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
     _this->_impl_.wechat_.Set(from._internal_wechat(), _this->GetArenaForAllocation());
+  }
+  _impl_.email_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.email_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if ((from._impl_._has_bits_[0] & 0x00000004u) != 0) {
+    _this->_impl_.email_.Set(from._internal_email(), _this->GetArenaForAllocation());
   }
   _impl_.address_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.address_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_address().empty()) {
+  if ((from._impl_._has_bits_[0] & 0x00000008u) != 0) {
     _this->_impl_.address_.Set(from._internal_address(), _this->GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Contact)
@@ -1677,13 +1712,16 @@ Contact::Contact(const Contact& from)
 inline void Contact::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
-      decltype(_impl_.phone_) {}
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.phone_) {}
 
     , decltype(_impl_.wechat_) {}
 
+    , decltype(_impl_.email_) {}
+
     , decltype(_impl_.address_) {}
 
-    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.phone_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -1692,6 +1730,10 @@ inline void Contact::SharedCtor(::_pb::Arena* arena) {
   _impl_.wechat_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.wechat_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.email_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.email_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.address_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -1712,6 +1754,7 @@ inline void Contact::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.phone_.Destroy();
   _impl_.wechat_.Destroy();
+  _impl_.email_.Destroy();
   _impl_.address_.Destroy();
 }
 
@@ -1725,19 +1768,33 @@ void Contact::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.phone_.ClearToEmpty();
-  _impl_.wechat_.ClearToEmpty();
-  _impl_.address_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    if (cached_has_bits & 0x00000001u) {
+      _impl_.phone_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _impl_.wechat_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000004u) {
+      _impl_.email_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000008u) {
+      _impl_.address_.ClearNonDefaultToEmpty();
+    }
+  }
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Contact::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     ::uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // string phone = 1;
+      // optional string phone = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_phone();
@@ -1748,7 +1805,7 @@ const char* Contact::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) 
           goto handle_unusual;
         }
         continue;
-      // string wechat = 2;
+      // optional string wechat = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_wechat();
@@ -1759,7 +1816,18 @@ const char* Contact::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) 
           goto handle_unusual;
         }
         continue;
-      // string address = 99;
+      // optional string email = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_email();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Contact.email"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // optional string address = 99;
       case 99:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 26)) {
           auto str = _internal_mutable_address();
@@ -1786,6 +1854,7 @@ const char* Contact::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) 
     CHK_(ptr != nullptr);
   }  // while
 message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1799,24 +1868,33 @@ failure:
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string phone = 1;
-  if (!this->_internal_phone().empty()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  // optional string phone = 1;
+  if (cached_has_bits & 0x00000001u) {
     const std::string& _s = this->_internal_phone();
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
         _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Contact.phone");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
-  // string wechat = 2;
-  if (!this->_internal_wechat().empty()) {
+  // optional string wechat = 2;
+  if (cached_has_bits & 0x00000002u) {
     const std::string& _s = this->_internal_wechat();
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
         _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Contact.wechat");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
-  // string address = 99;
-  if (!this->_internal_address().empty()) {
+  // optional string email = 3;
+  if (cached_has_bits & 0x00000004u) {
+    const std::string& _s = this->_internal_email();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Contact.email");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
+  }
+
+  // optional string address = 99;
+  if (cached_has_bits & 0x00000008u) {
     const std::string& _s = this->_internal_address();
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
         _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Contact.address");
@@ -1839,24 +1917,33 @@ failure:
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string phone = 1;
-  if (!this->_internal_phone().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-                                    this->_internal_phone());
-  }
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    // optional string phone = 1;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                      this->_internal_phone());
+    }
 
-  // string wechat = 2;
-  if (!this->_internal_wechat().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-                                    this->_internal_wechat());
-  }
+    // optional string wechat = 2;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                      this->_internal_wechat());
+    }
 
-  // string address = 99;
-  if (!this->_internal_address().empty()) {
-    total_size += 2 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-                                    this->_internal_address());
-  }
+    // optional string email = 3;
+    if (cached_has_bits & 0x00000004u) {
+      total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                      this->_internal_email());
+    }
 
+    // optional string address = 99;
+    if (cached_has_bits & 0x00000008u) {
+      total_size += 2 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                      this->_internal_address());
+    }
+
+  }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -1875,14 +1962,20 @@ void Contact::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOB
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_phone().empty()) {
-    _this->_internal_set_phone(from._internal_phone());
-  }
-  if (!from._internal_wechat().empty()) {
-    _this->_internal_set_wechat(from._internal_wechat());
-  }
-  if (!from._internal_address().empty()) {
-    _this->_internal_set_address(from._internal_address());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_set_phone(from._internal_phone());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_set_wechat(from._internal_wechat());
+    }
+    if (cached_has_bits & 0x00000004u) {
+      _this->_internal_set_email(from._internal_email());
+    }
+    if (cached_has_bits & 0x00000008u) {
+      _this->_internal_set_address(from._internal_address());
+    }
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1903,10 +1996,13 @@ void Contact::InternalSwap(Contact* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.phone_, lhs_arena,
                                        &other->_impl_.phone_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.wechat_, lhs_arena,
                                        &other->_impl_.wechat_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.email_, lhs_arena,
+                                       &other->_impl_.email_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, lhs_arena,
                                        &other->_impl_.address_, rhs_arena);
 }
@@ -10218,11 +10314,11 @@ Wan::Wan(const Wan& from)
   new (&_impl_) Impl_{
       decltype(_impl_.device_) {}
 
-    , decltype(_impl_.name_) {}
-
     , decltype(_impl_.mac_) {}
 
     , decltype(_impl_.metric_) {}
+
+    , decltype(_impl_.enable_) {}
 
     , decltype(_impl_.ip_){}
     , /*decltype(_impl_._cached_size_)*/{}
@@ -10236,13 +10332,6 @@ Wan::Wan(const Wan& from)
   if (!from._internal_device().empty()) {
     _this->_impl_.device_.Set(from._internal_device(), _this->GetArenaForAllocation());
   }
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
   _impl_.mac_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.mac_.Set("", GetArenaForAllocation());
@@ -10250,7 +10339,9 @@ Wan::Wan(const Wan& from)
   if (!from._internal_mac().empty()) {
     _this->_impl_.mac_.Set(from._internal_mac(), _this->GetArenaForAllocation());
   }
-  _this->_impl_.metric_ = from._impl_.metric_;
+  ::memcpy(&_impl_.metric_, &from._impl_.metric_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.enable_) -
+    reinterpret_cast<char*>(&_impl_.metric_)) + sizeof(_impl_.enable_));
   clear_has_ip();
   switch (from.ip_case()) {
     case kDhcp: {
@@ -10275,11 +10366,11 @@ inline void Wan::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_{
       decltype(_impl_.device_) {}
 
-    , decltype(_impl_.name_) {}
-
     , decltype(_impl_.mac_) {}
 
     , decltype(_impl_.metric_) { 0u }
+
+    , decltype(_impl_.enable_) { false }
 
     , decltype(_impl_.ip_){}
     , /*decltype(_impl_._cached_size_)*/{}
@@ -10288,10 +10379,6 @@ inline void Wan::SharedCtor(::_pb::Arena* arena) {
   _impl_.device_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.mac_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -10312,7 +10399,6 @@ Wan::~Wan() {
 inline void Wan::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.device_.Destroy();
-  _impl_.name_.Destroy();
   _impl_.mac_.Destroy();
   if (has_ip()) {
     clear_ip();
@@ -10353,9 +10439,10 @@ void Wan::Clear() {
   (void) cached_has_bits;
 
   _impl_.device_.ClearToEmpty();
-  _impl_.name_.ClearToEmpty();
   _impl_.mac_.ClearToEmpty();
-  _impl_.metric_ = 0u;
+  ::memset(&_impl_.metric_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.enable_) -
+      reinterpret_cast<char*>(&_impl_.metric_)) + sizeof(_impl_.enable_));
   clear_ip();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -10377,20 +10464,9 @@ const char* Wan::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
           goto handle_unusual;
         }
         continue;
-      // string name = 2;
+      // uint32 metric = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_name();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Wan.name"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // uint32 metric = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 24)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
           _impl_.metric_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else {
@@ -10421,6 +10497,15 @@ const char* Wan::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
       case 22:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 178)) {
           ptr = ctx->ParseMessage(_internal_mutable_static_(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // bool enable = 99;
+      case 99:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 24)) {
+          _impl_.enable_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else {
           goto handle_unusual;
@@ -10463,19 +10548,11 @@ failure:
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
-  // string name = 2;
-  if (!this->_internal_name().empty()) {
-    const std::string& _s = this->_internal_name();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Wan.name");
-    target = stream->WriteStringMaybeAliased(2, _s, target);
-  }
-
-  // uint32 metric = 3;
+  // uint32 metric = 2;
   if (this->_internal_metric() != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        3, this->_internal_metric(), target);
+        2, this->_internal_metric(), target);
   }
 
   // string mac = 11;
@@ -10501,6 +10578,13 @@ failure:
     }
     default: ;
   }
+  // bool enable = 99;
+  if (this->_internal_enable() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(
+        99, this->_internal_enable(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -10523,22 +10607,21 @@ failure:
                                     this->_internal_device());
   }
 
-  // string name = 2;
-  if (!this->_internal_name().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-                                    this->_internal_name());
-  }
-
   // string mac = 11;
   if (!this->_internal_mac().empty()) {
     total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
                                     this->_internal_mac());
   }
 
-  // uint32 metric = 3;
+  // uint32 metric = 2;
   if (this->_internal_metric() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
         this->_internal_metric());
+  }
+
+  // bool enable = 99;
+  if (this->_internal_enable() != 0) {
+    total_size += 3;
   }
 
   switch (ip_case()) {
@@ -10581,14 +10664,14 @@ void Wan::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_N
   if (!from._internal_device().empty()) {
     _this->_internal_set_device(from._internal_device());
   }
-  if (!from._internal_name().empty()) {
-    _this->_internal_set_name(from._internal_name());
-  }
   if (!from._internal_mac().empty()) {
     _this->_internal_set_mac(from._internal_mac());
   }
   if (from._internal_metric() != 0) {
     _this->_internal_set_metric(from._internal_metric());
+  }
+  if (from._internal_enable() != 0) {
+    _this->_internal_set_enable(from._internal_enable());
   }
   switch (from.ip_case()) {
     case kDhcp: {
@@ -10626,12 +10709,14 @@ void Wan::InternalSwap(Wan* other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, lhs_arena,
                                        &other->_impl_.device_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.mac_, lhs_arena,
                                        &other->_impl_.mac_, rhs_arena);
-
-  swap(_impl_.metric_, other->_impl_.metric_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Wan, _impl_.enable_)
+      + sizeof(Wan::_impl_.enable_)
+      - PROTOBUF_FIELD_OFFSET(Wan, _impl_.metric_)>(
+          reinterpret_cast<char*>(&_impl_.metric_),
+          reinterpret_cast<char*>(&other->_impl_.metric_));
   swap(_impl_.ip_, other->_impl_.ip_);
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }

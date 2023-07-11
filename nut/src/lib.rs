@@ -6,7 +6,6 @@ extern crate log;
 extern crate diesel;
 
 pub mod controllers;
-pub mod graphql;
 pub mod handlers;
 pub mod i18n;
 pub mod models;

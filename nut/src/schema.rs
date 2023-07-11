@@ -232,10 +232,8 @@ diesel::table! {
         #[max_length = 45]
         ip -> Varchar,
         body -> Text,
-        #[max_length = 15]
-        body_editor -> Varchar,
-        #[max_length = 15]
-        status -> Varchar,
+        body_editor -> Int4,
+        status -> Int4,
         published_at -> Nullable<Timestamp>,
         deleted_at -> Nullable<Timestamp>,
         version -> Int4,

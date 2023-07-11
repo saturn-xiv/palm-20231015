@@ -7151,26 +7151,47 @@ class Locale final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    virtual ::grpc::Status Set(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest& request, ::google::protobuf::Empty* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncSet(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncSetRaw(context, request, cq));
+    virtual ::grpc::Status Create(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncCreate(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncCreateRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncSet(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncSetRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncCreate(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncCreateRaw(context, request, cq));
     }
-    virtual ::grpc::Status Get(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest& request, ::palm::nut::v1::LocaleIndexResponse_Item* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>> AsyncGet(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>>(AsyncGetRaw(context, request, cq));
+    virtual ::grpc::Status Update(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncUpdate(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncUpdateRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>> PrepareAsyncGet(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>>(PrepareAsyncGetRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncUpdate(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncUpdateRaw(context, request, cq));
     }
-    virtual ::grpc::Status ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::palm::nut::v1::LocaleByLangResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleByLangResponse>> AsyncByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleByLangResponse>>(AsyncByLangRaw(context, request, cq));
+    virtual ::grpc::Status ByLangAndCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest& request, ::palm::nut::v1::LocaleIndexResponse_Item* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>> AsyncByLangAndCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>>(AsyncByLangAndCodeRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleByLangResponse>> PrepareAsyncByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleByLangResponse>>(PrepareAsyncByLangRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>> PrepareAsyncByLangAndCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>>(PrepareAsyncByLangAndCodeRaw(context, request, cq));
+    }
+    virtual ::grpc::Status ById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::palm::nut::v1::LocaleIndexResponse_Item* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>> AsyncById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>>(AsyncByIdRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>> PrepareAsyncById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>>(PrepareAsyncByIdRaw(context, request, cq));
+    }
+    virtual ::grpc::Status ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::palm::nut::v1::LocaleListResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleListResponse>> AsyncByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleListResponse>>(AsyncByLangRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleListResponse>> PrepareAsyncByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleListResponse>>(PrepareAsyncByLangRaw(context, request, cq));
+    }
+    virtual ::grpc::Status ByCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest& request, ::palm::nut::v1::LocaleListResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleListResponse>> AsyncByCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleListResponse>>(AsyncByCodeRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleListResponse>> PrepareAsyncByCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleListResponse>>(PrepareAsyncByCodeRaw(context, request, cq));
     }
     virtual ::grpc::Status Index(::grpc::ClientContext* context, const ::palm::nut::v1::Pager& request, ::palm::nut::v1::LocaleIndexResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse>> AsyncIndex(::grpc::ClientContext* context, const ::palm::nut::v1::Pager& request, ::grpc::CompletionQueue* cq) {
@@ -7189,12 +7210,18 @@ class Locale final {
     class async_interface {
      public:
       virtual ~async_interface() {}
-      virtual void Set(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void Set(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void Get(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void Get(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleByLangResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleByLangResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Create(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Create(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Update(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Update(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void ByLangAndCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void ByLangAndCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void ById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void ById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleListResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleListResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void ByCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest* request, ::palm::nut::v1::LocaleListResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void ByCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest* request, ::palm::nut::v1::LocaleListResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void Index(::grpc::ClientContext* context, const ::palm::nut::v1::Pager* request, ::palm::nut::v1::LocaleIndexResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Index(::grpc::ClientContext* context, const ::palm::nut::v1::Pager* request, ::palm::nut::v1::LocaleIndexResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void Destroy(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
@@ -7204,12 +7231,18 @@ class Locale final {
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncSetRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncSetRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>* AsyncGetRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>* PrepareAsyncGetRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleByLangResponse>* AsyncByLangRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleByLangResponse>* PrepareAsyncByLangRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncCreateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncCreateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncUpdateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncUpdateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>* AsyncByLangAndCodeRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>* PrepareAsyncByLangAndCodeRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>* AsyncByIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse_Item>* PrepareAsyncByIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleListResponse>* AsyncByLangRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleListResponse>* PrepareAsyncByLangRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleListResponse>* AsyncByCodeRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleListResponse>* PrepareAsyncByCodeRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse>* AsyncIndexRaw(::grpc::ClientContext* context, const ::palm::nut::v1::Pager& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::LocaleIndexResponse>* PrepareAsyncIndexRaw(::grpc::ClientContext* context, const ::palm::nut::v1::Pager& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncDestroyRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -7218,26 +7251,47 @@ class Locale final {
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status Set(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest& request, ::google::protobuf::Empty* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncSet(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncSetRaw(context, request, cq));
+    ::grpc::Status Create(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncCreate(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncCreateRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncSet(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncSetRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncCreate(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncCreateRaw(context, request, cq));
     }
-    ::grpc::Status Get(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest& request, ::palm::nut::v1::LocaleIndexResponse_Item* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>> AsyncGet(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>>(AsyncGetRaw(context, request, cq));
+    ::grpc::Status Update(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncUpdate(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncUpdateRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>> PrepareAsyncGet(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>>(PrepareAsyncGetRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncUpdate(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncUpdateRaw(context, request, cq));
     }
-    ::grpc::Status ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::palm::nut::v1::LocaleByLangResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleByLangResponse>> AsyncByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleByLangResponse>>(AsyncByLangRaw(context, request, cq));
+    ::grpc::Status ByLangAndCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest& request, ::palm::nut::v1::LocaleIndexResponse_Item* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>> AsyncByLangAndCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>>(AsyncByLangAndCodeRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleByLangResponse>> PrepareAsyncByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleByLangResponse>>(PrepareAsyncByLangRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>> PrepareAsyncByLangAndCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>>(PrepareAsyncByLangAndCodeRaw(context, request, cq));
+    }
+    ::grpc::Status ById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::palm::nut::v1::LocaleIndexResponse_Item* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>> AsyncById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>>(AsyncByIdRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>> PrepareAsyncById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>>(PrepareAsyncByIdRaw(context, request, cq));
+    }
+    ::grpc::Status ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::palm::nut::v1::LocaleListResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleListResponse>> AsyncByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleListResponse>>(AsyncByLangRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleListResponse>> PrepareAsyncByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleListResponse>>(PrepareAsyncByLangRaw(context, request, cq));
+    }
+    ::grpc::Status ByCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest& request, ::palm::nut::v1::LocaleListResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleListResponse>> AsyncByCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleListResponse>>(AsyncByCodeRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleListResponse>> PrepareAsyncByCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleListResponse>>(PrepareAsyncByCodeRaw(context, request, cq));
     }
     ::grpc::Status Index(::grpc::ClientContext* context, const ::palm::nut::v1::Pager& request, ::palm::nut::v1::LocaleIndexResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse>> AsyncIndex(::grpc::ClientContext* context, const ::palm::nut::v1::Pager& request, ::grpc::CompletionQueue* cq) {
@@ -7256,12 +7310,18 @@ class Locale final {
     class async final :
       public StubInterface::async_interface {
      public:
-      void Set(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
-      void Set(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void Get(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, std::function<void(::grpc::Status)>) override;
-      void Get(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleByLangResponse* response, std::function<void(::grpc::Status)>) override;
-      void ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleByLangResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Create(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void Create(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Update(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void Update(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void ByLangAndCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, std::function<void(::grpc::Status)>) override;
+      void ByLangAndCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void ById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, std::function<void(::grpc::Status)>) override;
+      void ById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleListResponse* response, std::function<void(::grpc::Status)>) override;
+      void ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleListResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void ByCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest* request, ::palm::nut::v1::LocaleListResponse* response, std::function<void(::grpc::Status)>) override;
+      void ByCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest* request, ::palm::nut::v1::LocaleListResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void Index(::grpc::ClientContext* context, const ::palm::nut::v1::Pager* request, ::palm::nut::v1::LocaleIndexResponse* response, std::function<void(::grpc::Status)>) override;
       void Index(::grpc::ClientContext* context, const ::palm::nut::v1::Pager* request, ::palm::nut::v1::LocaleIndexResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void Destroy(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
@@ -7277,19 +7337,28 @@ class Locale final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncSetRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncSetRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>* AsyncGetRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>* PrepareAsyncGetRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleByLangResponse>* AsyncByLangRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleByLangResponse>* PrepareAsyncByLangRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncCreateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncCreateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncUpdateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncUpdateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>* AsyncByLangAndCodeRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>* PrepareAsyncByLangAndCodeRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>* AsyncByIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>* PrepareAsyncByIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleListResponse>* AsyncByLangRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleListResponse>* PrepareAsyncByLangRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleListResponse>* AsyncByCodeRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleListResponse>* PrepareAsyncByCodeRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse>* AsyncIndexRaw(::grpc::ClientContext* context, const ::palm::nut::v1::Pager& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse>* PrepareAsyncIndexRaw(::grpc::ClientContext* context, const ::palm::nut::v1::Pager& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncDestroyRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncDestroyRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) override;
-    const ::grpc::internal::RpcMethod rpcmethod_Set_;
-    const ::grpc::internal::RpcMethod rpcmethod_Get_;
+    const ::grpc::internal::RpcMethod rpcmethod_Create_;
+    const ::grpc::internal::RpcMethod rpcmethod_Update_;
+    const ::grpc::internal::RpcMethod rpcmethod_ByLangAndCode_;
+    const ::grpc::internal::RpcMethod rpcmethod_ById_;
     const ::grpc::internal::RpcMethod rpcmethod_ByLang_;
+    const ::grpc::internal::RpcMethod rpcmethod_ByCode_;
     const ::grpc::internal::RpcMethod rpcmethod_Index_;
     const ::grpc::internal::RpcMethod rpcmethod_Destroy_;
   };
@@ -7299,50 +7368,93 @@ class Locale final {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status Set(::grpc::ServerContext* context, const ::palm::nut::v1::LocaleSetRequest* request, ::google::protobuf::Empty* response);
-    virtual ::grpc::Status Get(::grpc::ServerContext* context, const ::palm::nut::v1::LocaleGetRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response);
-    virtual ::grpc::Status ByLang(::grpc::ServerContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleByLangResponse* response);
+    virtual ::grpc::Status Create(::grpc::ServerContext* context, const ::palm::nut::v1::LocaleCreateRequest* request, ::google::protobuf::Empty* response);
+    virtual ::grpc::Status Update(::grpc::ServerContext* context, const ::palm::nut::v1::LocaleUpdateRequest* request, ::google::protobuf::Empty* response);
+    virtual ::grpc::Status ByLangAndCode(::grpc::ServerContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response);
+    virtual ::grpc::Status ById(::grpc::ServerContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response);
+    virtual ::grpc::Status ByLang(::grpc::ServerContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleListResponse* response);
+    virtual ::grpc::Status ByCode(::grpc::ServerContext* context, const ::palm::nut::v1::LocaleByCodeRequest* request, ::palm::nut::v1::LocaleListResponse* response);
     virtual ::grpc::Status Index(::grpc::ServerContext* context, const ::palm::nut::v1::Pager* request, ::palm::nut::v1::LocaleIndexResponse* response);
     virtual ::grpc::Status Destroy(::grpc::ServerContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response);
   };
   template <class BaseClass>
-  class WithAsyncMethod_Set : public BaseClass {
+  class WithAsyncMethod_Create : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_Set() {
+    WithAsyncMethod_Create() {
       ::grpc::Service::MarkMethodAsync(0);
     }
-    ~WithAsyncMethod_Set() override {
+    ~WithAsyncMethod_Create() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Set(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleSetRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status Create(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleCreateRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestSet(::grpc::ServerContext* context, ::palm::nut::v1::LocaleSetRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestCreate(::grpc::ServerContext* context, ::palm::nut::v1::LocaleCreateRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_Get : public BaseClass {
+  class WithAsyncMethod_Update : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_Get() {
+    WithAsyncMethod_Update() {
       ::grpc::Service::MarkMethodAsync(1);
     }
-    ~WithAsyncMethod_Get() override {
+    ~WithAsyncMethod_Update() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Get(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleGetRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
+    ::grpc::Status Update(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleUpdateRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestGet(::grpc::ServerContext* context, ::palm::nut::v1::LocaleGetRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::LocaleIndexResponse_Item>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestUpdate(::grpc::ServerContext* context, ::palm::nut::v1::LocaleUpdateRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_ByLangAndCode : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_ByLangAndCode() {
+      ::grpc::Service::MarkMethodAsync(2);
+    }
+    ~WithAsyncMethod_ByLangAndCode() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ByLangAndCode(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangAndCodeRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestByLangAndCode(::grpc::ServerContext* context, ::palm::nut::v1::LocaleByLangAndCodeRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::LocaleIndexResponse_Item>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_ById : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_ById() {
+      ::grpc::Service::MarkMethodAsync(3);
+    }
+    ~WithAsyncMethod_ById() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ById(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::IdRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestById(::grpc::ServerContext* context, ::palm::nut::v1::IdRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::LocaleIndexResponse_Item>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -7351,18 +7463,38 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_ByLang() {
-      ::grpc::Service::MarkMethodAsync(2);
+      ::grpc::Service::MarkMethodAsync(4);
     }
     ~WithAsyncMethod_ByLang() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ByLang(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangRequest* /*request*/, ::palm::nut::v1::LocaleByLangResponse* /*response*/) override {
+    ::grpc::Status ByLang(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangRequest* /*request*/, ::palm::nut::v1::LocaleListResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestByLang(::grpc::ServerContext* context, ::palm::nut::v1::LocaleByLangRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::LocaleByLangResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    void RequestByLang(::grpc::ServerContext* context, ::palm::nut::v1::LocaleByLangRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::LocaleListResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_ByCode : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_ByCode() {
+      ::grpc::Service::MarkMethodAsync(5);
+    }
+    ~WithAsyncMethod_ByCode() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ByCode(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByCodeRequest* /*request*/, ::palm::nut::v1::LocaleListResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestByCode(::grpc::ServerContext* context, ::palm::nut::v1::LocaleByCodeRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::LocaleListResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -7371,7 +7503,7 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_Index() {
-      ::grpc::Service::MarkMethodAsync(3);
+      ::grpc::Service::MarkMethodAsync(6);
     }
     ~WithAsyncMethod_Index() override {
       BaseClassMustBeDerivedFromService(this);
@@ -7382,7 +7514,7 @@ class Locale final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestIndex(::grpc::ServerContext* context, ::palm::nut::v1::Pager* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::LocaleIndexResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -7391,7 +7523,7 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_Destroy() {
-      ::grpc::Service::MarkMethodAsync(4);
+      ::grpc::Service::MarkMethodAsync(7);
     }
     ~WithAsyncMethod_Destroy() override {
       BaseClassMustBeDerivedFromService(this);
@@ -7402,63 +7534,117 @@ class Locale final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDestroy(::grpc::ServerContext* context, ::palm::nut::v1::IdRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Set<WithAsyncMethod_Get<WithAsyncMethod_ByLang<WithAsyncMethod_Index<WithAsyncMethod_Destroy<Service > > > > > AsyncService;
+  typedef WithAsyncMethod_Create<WithAsyncMethod_Update<WithAsyncMethod_ByLangAndCode<WithAsyncMethod_ById<WithAsyncMethod_ByLang<WithAsyncMethod_ByCode<WithAsyncMethod_Index<WithAsyncMethod_Destroy<Service > > > > > > > > AsyncService;
   template <class BaseClass>
-  class WithCallbackMethod_Set : public BaseClass {
+  class WithCallbackMethod_Create : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_Set() {
+    WithCallbackMethod_Create() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::LocaleSetRequest, ::google::protobuf::Empty>(
+          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::LocaleCreateRequest, ::google::protobuf::Empty>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::LocaleSetRequest* request, ::google::protobuf::Empty* response) { return this->Set(context, request, response); }));}
-    void SetMessageAllocatorFor_Set(
-        ::grpc::MessageAllocator< ::palm::nut::v1::LocaleSetRequest, ::google::protobuf::Empty>* allocator) {
+                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::LocaleCreateRequest* request, ::google::protobuf::Empty* response) { return this->Create(context, request, response); }));}
+    void SetMessageAllocatorFor_Create(
+        ::grpc::MessageAllocator< ::palm::nut::v1::LocaleCreateRequest, ::google::protobuf::Empty>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::LocaleSetRequest, ::google::protobuf::Empty>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::LocaleCreateRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_Set() override {
+    ~WithCallbackMethod_Create() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Set(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleSetRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status Create(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleCreateRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* Set(
-      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::LocaleSetRequest* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerUnaryReactor* Create(
+      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::LocaleCreateRequest* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_Get : public BaseClass {
+  class WithCallbackMethod_Update : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_Get() {
+    WithCallbackMethod_Update() {
       ::grpc::Service::MarkMethodCallback(1,
-          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::LocaleGetRequest, ::palm::nut::v1::LocaleIndexResponse_Item>(
+          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::LocaleUpdateRequest, ::google::protobuf::Empty>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::LocaleGetRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response) { return this->Get(context, request, response); }));}
-    void SetMessageAllocatorFor_Get(
-        ::grpc::MessageAllocator< ::palm::nut::v1::LocaleGetRequest, ::palm::nut::v1::LocaleIndexResponse_Item>* allocator) {
+                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::LocaleUpdateRequest* request, ::google::protobuf::Empty* response) { return this->Update(context, request, response); }));}
+    void SetMessageAllocatorFor_Update(
+        ::grpc::MessageAllocator< ::palm::nut::v1::LocaleUpdateRequest, ::google::protobuf::Empty>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::LocaleGetRequest, ::palm::nut::v1::LocaleIndexResponse_Item>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::LocaleUpdateRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_Get() override {
+    ~WithCallbackMethod_Update() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Get(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleGetRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
+    ::grpc::Status Update(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleUpdateRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* Get(
-      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::LocaleGetRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerUnaryReactor* Update(
+      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::LocaleUpdateRequest* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_ByLangAndCode : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_ByLangAndCode() {
+      ::grpc::Service::MarkMethodCallback(2,
+          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::LocaleByLangAndCodeRequest, ::palm::nut::v1::LocaleIndexResponse_Item>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response) { return this->ByLangAndCode(context, request, response); }));}
+    void SetMessageAllocatorFor_ByLangAndCode(
+        ::grpc::MessageAllocator< ::palm::nut::v1::LocaleByLangAndCodeRequest, ::palm::nut::v1::LocaleIndexResponse_Item>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::LocaleByLangAndCodeRequest, ::palm::nut::v1::LocaleIndexResponse_Item>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_ByLangAndCode() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ByLangAndCode(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangAndCodeRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* ByLangAndCode(
+      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangAndCodeRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_ById : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_ById() {
+      ::grpc::Service::MarkMethodCallback(3,
+          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::IdRequest, ::palm::nut::v1::LocaleIndexResponse_Item>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response) { return this->ById(context, request, response); }));}
+    void SetMessageAllocatorFor_ById(
+        ::grpc::MessageAllocator< ::palm::nut::v1::IdRequest, ::palm::nut::v1::LocaleIndexResponse_Item>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::IdRequest, ::palm::nut::v1::LocaleIndexResponse_Item>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_ById() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ById(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::IdRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* ById(
+      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::IdRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_ByLang : public BaseClass {
@@ -7466,26 +7652,53 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_ByLang() {
-      ::grpc::Service::MarkMethodCallback(2,
-          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::LocaleByLangRequest, ::palm::nut::v1::LocaleByLangResponse>(
+      ::grpc::Service::MarkMethodCallback(4,
+          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::LocaleByLangRequest, ::palm::nut::v1::LocaleListResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleByLangResponse* response) { return this->ByLang(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleListResponse* response) { return this->ByLang(context, request, response); }));}
     void SetMessageAllocatorFor_ByLang(
-        ::grpc::MessageAllocator< ::palm::nut::v1::LocaleByLangRequest, ::palm::nut::v1::LocaleByLangResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::LocaleByLangRequest, ::palm::nut::v1::LocaleByLangResponse>*>(handler)
+        ::grpc::MessageAllocator< ::palm::nut::v1::LocaleByLangRequest, ::palm::nut::v1::LocaleListResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::LocaleByLangRequest, ::palm::nut::v1::LocaleListResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_ByLang() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ByLang(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangRequest* /*request*/, ::palm::nut::v1::LocaleByLangResponse* /*response*/) override {
+    ::grpc::Status ByLang(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangRequest* /*request*/, ::palm::nut::v1::LocaleListResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* ByLang(
-      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangRequest* /*request*/, ::palm::nut::v1::LocaleByLangResponse* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangRequest* /*request*/, ::palm::nut::v1::LocaleListResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_ByCode : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_ByCode() {
+      ::grpc::Service::MarkMethodCallback(5,
+          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::LocaleByCodeRequest, ::palm::nut::v1::LocaleListResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::LocaleByCodeRequest* request, ::palm::nut::v1::LocaleListResponse* response) { return this->ByCode(context, request, response); }));}
+    void SetMessageAllocatorFor_ByCode(
+        ::grpc::MessageAllocator< ::palm::nut::v1::LocaleByCodeRequest, ::palm::nut::v1::LocaleListResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::LocaleByCodeRequest, ::palm::nut::v1::LocaleListResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_ByCode() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ByCode(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByCodeRequest* /*request*/, ::palm::nut::v1::LocaleListResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* ByCode(
+      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::LocaleByCodeRequest* /*request*/, ::palm::nut::v1::LocaleListResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_Index : public BaseClass {
@@ -7493,13 +7706,13 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_Index() {
-      ::grpc::Service::MarkMethodCallback(3,
+      ::grpc::Service::MarkMethodCallback(6,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::Pager, ::palm::nut::v1::LocaleIndexResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::nut::v1::Pager* request, ::palm::nut::v1::LocaleIndexResponse* response) { return this->Index(context, request, response); }));}
     void SetMessageAllocatorFor_Index(
         ::grpc::MessageAllocator< ::palm::nut::v1::Pager, ::palm::nut::v1::LocaleIndexResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::Pager, ::palm::nut::v1::LocaleIndexResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -7520,13 +7733,13 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_Destroy() {
-      ::grpc::Service::MarkMethodCallback(4,
+      ::grpc::Service::MarkMethodCallback(7,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::IdRequest, ::google::protobuf::Empty>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response) { return this->Destroy(context, request, response); }));}
     void SetMessageAllocatorFor_Destroy(
         ::grpc::MessageAllocator< ::palm::nut::v1::IdRequest, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(7);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::IdRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -7541,38 +7754,72 @@ class Locale final {
     virtual ::grpc::ServerUnaryReactor* Destroy(
       ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::IdRequest* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_Set<WithCallbackMethod_Get<WithCallbackMethod_ByLang<WithCallbackMethod_Index<WithCallbackMethod_Destroy<Service > > > > > CallbackService;
+  typedef WithCallbackMethod_Create<WithCallbackMethod_Update<WithCallbackMethod_ByLangAndCode<WithCallbackMethod_ById<WithCallbackMethod_ByLang<WithCallbackMethod_ByCode<WithCallbackMethod_Index<WithCallbackMethod_Destroy<Service > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
-  class WithGenericMethod_Set : public BaseClass {
+  class WithGenericMethod_Create : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_Set() {
+    WithGenericMethod_Create() {
       ::grpc::Service::MarkMethodGeneric(0);
     }
-    ~WithGenericMethod_Set() override {
+    ~WithGenericMethod_Create() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Set(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleSetRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status Create(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleCreateRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_Get : public BaseClass {
+  class WithGenericMethod_Update : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_Get() {
+    WithGenericMethod_Update() {
       ::grpc::Service::MarkMethodGeneric(1);
     }
-    ~WithGenericMethod_Get() override {
+    ~WithGenericMethod_Update() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Get(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleGetRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
+    ::grpc::Status Update(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleUpdateRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_ByLangAndCode : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_ByLangAndCode() {
+      ::grpc::Service::MarkMethodGeneric(2);
+    }
+    ~WithGenericMethod_ByLangAndCode() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ByLangAndCode(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangAndCodeRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_ById : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_ById() {
+      ::grpc::Service::MarkMethodGeneric(3);
+    }
+    ~WithGenericMethod_ById() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ById(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::IdRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -7583,13 +7830,30 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_ByLang() {
-      ::grpc::Service::MarkMethodGeneric(2);
+      ::grpc::Service::MarkMethodGeneric(4);
     }
     ~WithGenericMethod_ByLang() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ByLang(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangRequest* /*request*/, ::palm::nut::v1::LocaleByLangResponse* /*response*/) override {
+    ::grpc::Status ByLang(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangRequest* /*request*/, ::palm::nut::v1::LocaleListResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_ByCode : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_ByCode() {
+      ::grpc::Service::MarkMethodGeneric(5);
+    }
+    ~WithGenericMethod_ByCode() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ByCode(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByCodeRequest* /*request*/, ::palm::nut::v1::LocaleListResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -7600,7 +7864,7 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_Index() {
-      ::grpc::Service::MarkMethodGeneric(3);
+      ::grpc::Service::MarkMethodGeneric(6);
     }
     ~WithGenericMethod_Index() override {
       BaseClassMustBeDerivedFromService(this);
@@ -7617,7 +7881,7 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_Destroy() {
-      ::grpc::Service::MarkMethodGeneric(4);
+      ::grpc::Service::MarkMethodGeneric(7);
     }
     ~WithGenericMethod_Destroy() override {
       BaseClassMustBeDerivedFromService(this);
@@ -7629,43 +7893,83 @@ class Locale final {
     }
   };
   template <class BaseClass>
-  class WithRawMethod_Set : public BaseClass {
+  class WithRawMethod_Create : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_Set() {
+    WithRawMethod_Create() {
       ::grpc::Service::MarkMethodRaw(0);
     }
-    ~WithRawMethod_Set() override {
+    ~WithRawMethod_Create() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Set(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleSetRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status Create(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleCreateRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestSet(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestCreate(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_Get : public BaseClass {
+  class WithRawMethod_Update : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_Get() {
+    WithRawMethod_Update() {
       ::grpc::Service::MarkMethodRaw(1);
     }
-    ~WithRawMethod_Get() override {
+    ~WithRawMethod_Update() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Get(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleGetRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
+    ::grpc::Status Update(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleUpdateRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestGet(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestUpdate(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_ByLangAndCode : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_ByLangAndCode() {
+      ::grpc::Service::MarkMethodRaw(2);
+    }
+    ~WithRawMethod_ByLangAndCode() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ByLangAndCode(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangAndCodeRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestByLangAndCode(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_ById : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_ById() {
+      ::grpc::Service::MarkMethodRaw(3);
+    }
+    ~WithRawMethod_ById() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ById(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::IdRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestById(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -7674,18 +7978,38 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_ByLang() {
-      ::grpc::Service::MarkMethodRaw(2);
+      ::grpc::Service::MarkMethodRaw(4);
     }
     ~WithRawMethod_ByLang() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ByLang(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangRequest* /*request*/, ::palm::nut::v1::LocaleByLangResponse* /*response*/) override {
+    ::grpc::Status ByLang(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangRequest* /*request*/, ::palm::nut::v1::LocaleListResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestByLang(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_ByCode : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_ByCode() {
+      ::grpc::Service::MarkMethodRaw(5);
+    }
+    ~WithRawMethod_ByCode() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ByCode(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByCodeRequest* /*request*/, ::palm::nut::v1::LocaleListResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestByCode(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -7694,7 +8018,7 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_Index() {
-      ::grpc::Service::MarkMethodRaw(3);
+      ::grpc::Service::MarkMethodRaw(6);
     }
     ~WithRawMethod_Index() override {
       BaseClassMustBeDerivedFromService(this);
@@ -7705,7 +8029,7 @@ class Locale final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestIndex(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -7714,7 +8038,7 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_Destroy() {
-      ::grpc::Service::MarkMethodRaw(4);
+      ::grpc::Service::MarkMethodRaw(7);
     }
     ~WithRawMethod_Destroy() override {
       BaseClassMustBeDerivedFromService(this);
@@ -7725,51 +8049,95 @@ class Locale final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDestroy(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_Set : public BaseClass {
+  class WithRawCallbackMethod_Create : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_Set() {
+    WithRawCallbackMethod_Create() {
       ::grpc::Service::MarkMethodRawCallback(0,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Set(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Create(context, request, response); }));
     }
-    ~WithRawCallbackMethod_Set() override {
+    ~WithRawCallbackMethod_Create() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Set(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleSetRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status Create(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleCreateRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* Set(
+    virtual ::grpc::ServerUnaryReactor* Create(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_Get : public BaseClass {
+  class WithRawCallbackMethod_Update : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_Get() {
+    WithRawCallbackMethod_Update() {
       ::grpc::Service::MarkMethodRawCallback(1,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Get(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Update(context, request, response); }));
     }
-    ~WithRawCallbackMethod_Get() override {
+    ~WithRawCallbackMethod_Update() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Get(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleGetRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
+    ::grpc::Status Update(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleUpdateRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* Get(
+    virtual ::grpc::ServerUnaryReactor* Update(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_ByLangAndCode : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_ByLangAndCode() {
+      ::grpc::Service::MarkMethodRawCallback(2,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ByLangAndCode(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_ByLangAndCode() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ByLangAndCode(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangAndCodeRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* ByLangAndCode(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_ById : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_ById() {
+      ::grpc::Service::MarkMethodRawCallback(3,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ById(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_ById() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ById(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::IdRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* ById(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -7778,7 +8146,7 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_ByLang() {
-      ::grpc::Service::MarkMethodRawCallback(2,
+      ::grpc::Service::MarkMethodRawCallback(4,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ByLang(context, request, response); }));
@@ -7787,11 +8155,33 @@ class Locale final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ByLang(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangRequest* /*request*/, ::palm::nut::v1::LocaleByLangResponse* /*response*/) override {
+    ::grpc::Status ByLang(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangRequest* /*request*/, ::palm::nut::v1::LocaleListResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* ByLang(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_ByCode : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_ByCode() {
+      ::grpc::Service::MarkMethodRawCallback(5,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ByCode(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_ByCode() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ByCode(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByCodeRequest* /*request*/, ::palm::nut::v1::LocaleListResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* ByCode(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -7800,7 +8190,7 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_Index() {
-      ::grpc::Service::MarkMethodRawCallback(3,
+      ::grpc::Service::MarkMethodRawCallback(6,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Index(context, request, response); }));
@@ -7822,7 +8212,7 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_Destroy() {
-      ::grpc::Service::MarkMethodRawCallback(4,
+      ::grpc::Service::MarkMethodRawCallback(7,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Destroy(context, request, response); }));
@@ -7839,58 +8229,112 @@ class Locale final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_Set : public BaseClass {
+  class WithStreamedUnaryMethod_Create : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_Set() {
+    WithStreamedUnaryMethod_Create() {
       ::grpc::Service::MarkMethodStreamed(0,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::palm::nut::v1::LocaleSetRequest, ::google::protobuf::Empty>(
+          ::palm::nut::v1::LocaleCreateRequest, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::palm::nut::v1::LocaleSetRequest, ::google::protobuf::Empty>* streamer) {
-                       return this->StreamedSet(context,
+                     ::palm::nut::v1::LocaleCreateRequest, ::google::protobuf::Empty>* streamer) {
+                       return this->StreamedCreate(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_Set() override {
+    ~WithStreamedUnaryMethod_Create() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status Set(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleSetRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status Create(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleCreateRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedSet(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::LocaleSetRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedCreate(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::LocaleCreateRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_Get : public BaseClass {
+  class WithStreamedUnaryMethod_Update : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_Get() {
+    WithStreamedUnaryMethod_Update() {
       ::grpc::Service::MarkMethodStreamed(1,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::palm::nut::v1::LocaleGetRequest, ::palm::nut::v1::LocaleIndexResponse_Item>(
+          ::palm::nut::v1::LocaleUpdateRequest, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::palm::nut::v1::LocaleGetRequest, ::palm::nut::v1::LocaleIndexResponse_Item>* streamer) {
-                       return this->StreamedGet(context,
+                     ::palm::nut::v1::LocaleUpdateRequest, ::google::protobuf::Empty>* streamer) {
+                       return this->StreamedUpdate(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_Get() override {
+    ~WithStreamedUnaryMethod_Update() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status Get(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleGetRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
+    ::grpc::Status Update(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleUpdateRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedGet(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::LocaleGetRequest,::palm::nut::v1::LocaleIndexResponse_Item>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedUpdate(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::LocaleUpdateRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_ByLangAndCode : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_ByLangAndCode() {
+      ::grpc::Service::MarkMethodStreamed(2,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::palm::nut::v1::LocaleByLangAndCodeRequest, ::palm::nut::v1::LocaleIndexResponse_Item>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::palm::nut::v1::LocaleByLangAndCodeRequest, ::palm::nut::v1::LocaleIndexResponse_Item>* streamer) {
+                       return this->StreamedByLangAndCode(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_ByLangAndCode() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status ByLangAndCode(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangAndCodeRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedByLangAndCode(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::LocaleByLangAndCodeRequest,::palm::nut::v1::LocaleIndexResponse_Item>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_ById : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_ById() {
+      ::grpc::Service::MarkMethodStreamed(3,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::palm::nut::v1::IdRequest, ::palm::nut::v1::LocaleIndexResponse_Item>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::palm::nut::v1::IdRequest, ::palm::nut::v1::LocaleIndexResponse_Item>* streamer) {
+                       return this->StreamedById(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_ById() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status ById(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::IdRequest* /*request*/, ::palm::nut::v1::LocaleIndexResponse_Item* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedById(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::IdRequest,::palm::nut::v1::LocaleIndexResponse_Item>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_ByLang : public BaseClass {
@@ -7898,12 +8342,12 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_ByLang() {
-      ::grpc::Service::MarkMethodStreamed(2,
+      ::grpc::Service::MarkMethodStreamed(4,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::palm::nut::v1::LocaleByLangRequest, ::palm::nut::v1::LocaleByLangResponse>(
+          ::palm::nut::v1::LocaleByLangRequest, ::palm::nut::v1::LocaleListResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::palm::nut::v1::LocaleByLangRequest, ::palm::nut::v1::LocaleByLangResponse>* streamer) {
+                     ::palm::nut::v1::LocaleByLangRequest, ::palm::nut::v1::LocaleListResponse>* streamer) {
                        return this->StreamedByLang(context,
                          streamer);
                   }));
@@ -7912,12 +8356,39 @@ class Locale final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status ByLang(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangRequest* /*request*/, ::palm::nut::v1::LocaleByLangResponse* /*response*/) override {
+    ::grpc::Status ByLang(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByLangRequest* /*request*/, ::palm::nut::v1::LocaleListResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedByLang(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::LocaleByLangRequest,::palm::nut::v1::LocaleByLangResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedByLang(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::LocaleByLangRequest,::palm::nut::v1::LocaleListResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_ByCode : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_ByCode() {
+      ::grpc::Service::MarkMethodStreamed(5,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::palm::nut::v1::LocaleByCodeRequest, ::palm::nut::v1::LocaleListResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::palm::nut::v1::LocaleByCodeRequest, ::palm::nut::v1::LocaleListResponse>* streamer) {
+                       return this->StreamedByCode(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_ByCode() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status ByCode(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::LocaleByCodeRequest* /*request*/, ::palm::nut::v1::LocaleListResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedByCode(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::LocaleByCodeRequest,::palm::nut::v1::LocaleListResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_Index : public BaseClass {
@@ -7925,7 +8396,7 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_Index() {
-      ::grpc::Service::MarkMethodStreamed(3,
+      ::grpc::Service::MarkMethodStreamed(6,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::nut::v1::Pager, ::palm::nut::v1::LocaleIndexResponse>(
             [this](::grpc::ServerContext* context,
@@ -7952,7 +8423,7 @@ class Locale final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_Destroy() {
-      ::grpc::Service::MarkMethodStreamed(4,
+      ::grpc::Service::MarkMethodStreamed(7,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::nut::v1::IdRequest, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
@@ -7973,9 +8444,9 @@ class Locale final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedDestroy(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::IdRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Set<WithStreamedUnaryMethod_Get<WithStreamedUnaryMethod_ByLang<WithStreamedUnaryMethod_Index<WithStreamedUnaryMethod_Destroy<Service > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_Create<WithStreamedUnaryMethod_Update<WithStreamedUnaryMethod_ByLangAndCode<WithStreamedUnaryMethod_ById<WithStreamedUnaryMethod_ByLang<WithStreamedUnaryMethod_ByCode<WithStreamedUnaryMethod_Index<WithStreamedUnaryMethod_Destroy<Service > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Set<WithStreamedUnaryMethod_Get<WithStreamedUnaryMethod_ByLang<WithStreamedUnaryMethod_Index<WithStreamedUnaryMethod_Destroy<Service > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_Create<WithStreamedUnaryMethod_Update<WithStreamedUnaryMethod_ByLangAndCode<WithStreamedUnaryMethod_ById<WithStreamedUnaryMethod_ByLang<WithStreamedUnaryMethod_ByCode<WithStreamedUnaryMethod_Index<WithStreamedUnaryMethod_Destroy<Service > > > > > > > > StreamedService;
 };
 
 // ----------------------------------------------------------------------------

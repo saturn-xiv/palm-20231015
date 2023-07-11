@@ -1948,9 +1948,12 @@ Attachment::Service::~Service() {
 
 
 static const char* Locale_method_names[] = {
-  "/palm.nut.v1.Locale/Set",
-  "/palm.nut.v1.Locale/Get",
+  "/palm.nut.v1.Locale/Create",
+  "/palm.nut.v1.Locale/Update",
+  "/palm.nut.v1.Locale/ByLangAndCode",
+  "/palm.nut.v1.Locale/ById",
   "/palm.nut.v1.Locale/ByLang",
+  "/palm.nut.v1.Locale/ByCode",
   "/palm.nut.v1.Locale/Index",
   "/palm.nut.v1.Locale/Destroy",
 };
@@ -1962,78 +1965,150 @@ std::unique_ptr< Locale::Stub> Locale::NewStub(const std::shared_ptr< ::grpc::Ch
 }
 
 Locale::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_Set_(Locale_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Get_(Locale_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ByLang_(Locale_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Index_(Locale_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Destroy_(Locale_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  : channel_(channel), rpcmethod_Create_(Locale_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Update_(Locale_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ByLangAndCode_(Locale_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ById_(Locale_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ByLang_(Locale_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ByCode_(Locale_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Index_(Locale_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Destroy_(Locale_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::Status Locale::Stub::Set(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest& request, ::google::protobuf::Empty* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::LocaleSetRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Set_, context, request, response);
+::grpc::Status Locale::Stub::Create(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest& request, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::LocaleCreateRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Create_, context, request, response);
 }
 
-void Locale::Stub::async::Set(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::LocaleSetRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Set_, context, request, response, std::move(f));
+void Locale::Stub::async::Create(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::LocaleCreateRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Create_, context, request, response, std::move(f));
 }
 
-void Locale::Stub::async::Set(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Set_, context, request, response, reactor);
+void Locale::Stub::async::Create(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Create_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Locale::Stub::PrepareAsyncSetRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::google::protobuf::Empty, ::palm::nut::v1::LocaleSetRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Set_, context, request);
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Locale::Stub::PrepareAsyncCreateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::google::protobuf::Empty, ::palm::nut::v1::LocaleCreateRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Create_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Locale::Stub::AsyncSetRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleSetRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Locale::Stub::AsyncCreateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleCreateRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncSetRaw(context, request, cq);
+    this->PrepareAsyncCreateRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-::grpc::Status Locale::Stub::Get(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest& request, ::palm::nut::v1::LocaleIndexResponse_Item* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::LocaleGetRequest, ::palm::nut::v1::LocaleIndexResponse_Item, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Get_, context, request, response);
+::grpc::Status Locale::Stub::Update(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest& request, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::LocaleUpdateRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Update_, context, request, response);
 }
 
-void Locale::Stub::async::Get(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::LocaleGetRequest, ::palm::nut::v1::LocaleIndexResponse_Item, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Get_, context, request, response, std::move(f));
+void Locale::Stub::async::Update(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::LocaleUpdateRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Update_, context, request, response, std::move(f));
 }
 
-void Locale::Stub::async::Get(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Get_, context, request, response, reactor);
+void Locale::Stub::async::Update(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Update_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>* Locale::Stub::PrepareAsyncGetRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::nut::v1::LocaleIndexResponse_Item, ::palm::nut::v1::LocaleGetRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Get_, context, request);
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Locale::Stub::PrepareAsyncUpdateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::google::protobuf::Empty, ::palm::nut::v1::LocaleUpdateRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Update_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>* Locale::Stub::AsyncGetRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleGetRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Locale::Stub::AsyncUpdateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleUpdateRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncGetRaw(context, request, cq);
+    this->PrepareAsyncUpdateRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-::grpc::Status Locale::Stub::ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::palm::nut::v1::LocaleByLangResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::LocaleByLangRequest, ::palm::nut::v1::LocaleByLangResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ByLang_, context, request, response);
+::grpc::Status Locale::Stub::ByLangAndCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest& request, ::palm::nut::v1::LocaleIndexResponse_Item* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::LocaleByLangAndCodeRequest, ::palm::nut::v1::LocaleIndexResponse_Item, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ByLangAndCode_, context, request, response);
 }
 
-void Locale::Stub::async::ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleByLangResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::LocaleByLangRequest, ::palm::nut::v1::LocaleByLangResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ByLang_, context, request, response, std::move(f));
+void Locale::Stub::async::ByLangAndCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::LocaleByLangAndCodeRequest, ::palm::nut::v1::LocaleIndexResponse_Item, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ByLangAndCode_, context, request, response, std::move(f));
 }
 
-void Locale::Stub::async::ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleByLangResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+void Locale::Stub::async::ByLangAndCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ByLangAndCode_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>* Locale::Stub::PrepareAsyncByLangAndCodeRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::nut::v1::LocaleIndexResponse_Item, ::palm::nut::v1::LocaleByLangAndCodeRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_ByLangAndCode_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>* Locale::Stub::AsyncByLangAndCodeRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncByLangAndCodeRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status Locale::Stub::ById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::palm::nut::v1::LocaleIndexResponse_Item* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::IdRequest, ::palm::nut::v1::LocaleIndexResponse_Item, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ById_, context, request, response);
+}
+
+void Locale::Stub::async::ById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::IdRequest, ::palm::nut::v1::LocaleIndexResponse_Item, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ById_, context, request, response, std::move(f));
+}
+
+void Locale::Stub::async::ById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ById_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>* Locale::Stub::PrepareAsyncByIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::nut::v1::LocaleIndexResponse_Item, ::palm::nut::v1::IdRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_ById_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleIndexResponse_Item>* Locale::Stub::AsyncByIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncByIdRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status Locale::Stub::ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::palm::nut::v1::LocaleListResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::LocaleByLangRequest, ::palm::nut::v1::LocaleListResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ByLang_, context, request, response);
+}
+
+void Locale::Stub::async::ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleListResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::LocaleByLangRequest, ::palm::nut::v1::LocaleListResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ByLang_, context, request, response, std::move(f));
+}
+
+void Locale::Stub::async::ByLang(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleListResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ByLang_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleByLangResponse>* Locale::Stub::PrepareAsyncByLangRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::nut::v1::LocaleByLangResponse, ::palm::nut::v1::LocaleByLangRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_ByLang_, context, request);
+::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleListResponse>* Locale::Stub::PrepareAsyncByLangRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::nut::v1::LocaleListResponse, ::palm::nut::v1::LocaleByLangRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_ByLang_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleByLangResponse>* Locale::Stub::AsyncByLangRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleListResponse>* Locale::Stub::AsyncByLangRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByLangRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncByLangRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status Locale::Stub::ByCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest& request, ::palm::nut::v1::LocaleListResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::LocaleByCodeRequest, ::palm::nut::v1::LocaleListResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ByCode_, context, request, response);
+}
+
+void Locale::Stub::async::ByCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest* request, ::palm::nut::v1::LocaleListResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::LocaleByCodeRequest, ::palm::nut::v1::LocaleListResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ByCode_, context, request, response, std::move(f));
+}
+
+void Locale::Stub::async::ByCode(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest* request, ::palm::nut::v1::LocaleListResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ByCode_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleListResponse>* Locale::Stub::PrepareAsyncByCodeRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::nut::v1::LocaleListResponse, ::palm::nut::v1::LocaleByCodeRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_ByCode_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LocaleListResponse>* Locale::Stub::AsyncByCodeRaw(::grpc::ClientContext* context, const ::palm::nut::v1::LocaleByCodeRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncByCodeRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -2088,35 +2163,65 @@ Locale::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Locale_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Locale::Service, ::palm::nut::v1::LocaleSetRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Locale::Service, ::palm::nut::v1::LocaleCreateRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Locale::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::palm::nut::v1::LocaleSetRequest* req,
+             const ::palm::nut::v1::LocaleCreateRequest* req,
              ::google::protobuf::Empty* resp) {
-               return service->Set(ctx, req, resp);
+               return service->Create(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Locale_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Locale::Service, ::palm::nut::v1::LocaleGetRequest, ::palm::nut::v1::LocaleIndexResponse_Item, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Locale::Service, ::palm::nut::v1::LocaleUpdateRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Locale::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::palm::nut::v1::LocaleGetRequest* req,
-             ::palm::nut::v1::LocaleIndexResponse_Item* resp) {
-               return service->Get(ctx, req, resp);
+             const ::palm::nut::v1::LocaleUpdateRequest* req,
+             ::google::protobuf::Empty* resp) {
+               return service->Update(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Locale_method_names[2],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Locale::Service, ::palm::nut::v1::LocaleByLangRequest, ::palm::nut::v1::LocaleByLangResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Locale::Service, ::palm::nut::v1::LocaleByLangAndCodeRequest, ::palm::nut::v1::LocaleIndexResponse_Item, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Locale::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::palm::nut::v1::LocaleByLangRequest* req,
-             ::palm::nut::v1::LocaleByLangResponse* resp) {
-               return service->ByLang(ctx, req, resp);
+             const ::palm::nut::v1::LocaleByLangAndCodeRequest* req,
+             ::palm::nut::v1::LocaleIndexResponse_Item* resp) {
+               return service->ByLangAndCode(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Locale_method_names[3],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Locale::Service, ::palm::nut::v1::IdRequest, ::palm::nut::v1::LocaleIndexResponse_Item, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](Locale::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::palm::nut::v1::IdRequest* req,
+             ::palm::nut::v1::LocaleIndexResponse_Item* resp) {
+               return service->ById(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Locale_method_names[4],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Locale::Service, ::palm::nut::v1::LocaleByLangRequest, ::palm::nut::v1::LocaleListResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](Locale::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::palm::nut::v1::LocaleByLangRequest* req,
+             ::palm::nut::v1::LocaleListResponse* resp) {
+               return service->ByLang(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Locale_method_names[5],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Locale::Service, ::palm::nut::v1::LocaleByCodeRequest, ::palm::nut::v1::LocaleListResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](Locale::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::palm::nut::v1::LocaleByCodeRequest* req,
+             ::palm::nut::v1::LocaleListResponse* resp) {
+               return service->ByCode(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Locale_method_names[6],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Locale::Service, ::palm::nut::v1::Pager, ::palm::nut::v1::LocaleIndexResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Locale::Service* service,
@@ -2126,7 +2231,7 @@ Locale::Service::Service() {
                return service->Index(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Locale_method_names[4],
+      Locale_method_names[7],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Locale::Service, ::palm::nut::v1::IdRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Locale::Service* service,
@@ -2140,21 +2245,42 @@ Locale::Service::Service() {
 Locale::Service::~Service() {
 }
 
-::grpc::Status Locale::Service::Set(::grpc::ServerContext* context, const ::palm::nut::v1::LocaleSetRequest* request, ::google::protobuf::Empty* response) {
+::grpc::Status Locale::Service::Create(::grpc::ServerContext* context, const ::palm::nut::v1::LocaleCreateRequest* request, ::google::protobuf::Empty* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Locale::Service::Get(::grpc::ServerContext* context, const ::palm::nut::v1::LocaleGetRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response) {
+::grpc::Status Locale::Service::Update(::grpc::ServerContext* context, const ::palm::nut::v1::LocaleUpdateRequest* request, ::google::protobuf::Empty* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Locale::Service::ByLang(::grpc::ServerContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleByLangResponse* response) {
+::grpc::Status Locale::Service::ByLangAndCode(::grpc::ServerContext* context, const ::palm::nut::v1::LocaleByLangAndCodeRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Locale::Service::ById(::grpc::ServerContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::LocaleIndexResponse_Item* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Locale::Service::ByLang(::grpc::ServerContext* context, const ::palm::nut::v1::LocaleByLangRequest* request, ::palm::nut::v1::LocaleListResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Locale::Service::ByCode(::grpc::ServerContext* context, const ::palm::nut::v1::LocaleByCodeRequest* request, ::palm::nut::v1::LocaleListResponse* response) {
   (void) context;
   (void) request;
   (void) response;

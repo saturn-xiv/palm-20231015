@@ -408,9 +408,13 @@ message AttachmentIndexResponse {
 // ----------------------------------------------------------------------------
 
 service Locale {
-  rpc Set(LocaleSetRequest) returns (google.protobuf.Empty) {}
-  rpc Get(LocaleGetRequest) returns (LocaleIndexResponse.Item) {}
-  rpc ByLang(LocaleByLangRequest) returns (LocaleByLangResponse) {}
+  rpc Create(LocaleCreateRequest) returns (google.protobuf.Empty) {}
+  rpc Update(LocaleUpdateRequest) returns (google.protobuf.Empty) {}
+  rpc ByLangAndCode(LocaleByLangAndCodeRequest)
+      returns (LocaleIndexResponse.Item) {}
+  rpc ById(IdRequest) returns (LocaleIndexResponse.Item) {}
+  rpc ByLang(LocaleByLangRequest) returns (LocaleListResponse) {}
+  rpc ByCode(LocaleByCodeRequest) returns (LocaleListResponse) {}
   rpc Index(Pager) returns (LocaleIndexResponse) {}
   rpc Destroy(IdRequest) returns (google.protobuf.Empty) {}
 }
@@ -419,7 +423,7 @@ message LocaleByLangRequest {
   string lang = 1;
 }
 
-message LocaleByLangResponse {
+message LocaleListResponse {
   repeated LocaleIndexResponse.Item items = 1;
 }
 
@@ -434,15 +438,21 @@ message LocaleIndexResponse {
   repeated Item items = 1;
   Pagination pagination = 9;
 }
-
-message LocaleGetRequest {
+message LocaleByCodeRequest {
+  string code = 1;
+}
+message LocaleByLangAndCodeRequest {
   string lang = 1;
   string code = 2;
 }
-message LocaleSetRequest {
+message LocaleCreateRequest {
   string lang = 1;
   string code = 2;
   string message = 3;
+}
+message LocaleUpdateRequest {
+  int32 id = 1;
+  string message = 2;
 }
 // ----------------------------------------------------------------------------
 service Notification {
