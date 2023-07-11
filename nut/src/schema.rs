@@ -24,8 +24,7 @@ diesel::table! {
         size -> Int8,
         #[max_length = 63]
         content_type -> Varchar,
-        #[max_length = 15]
-        status -> Varchar,
+        status -> Int4,
         deleted_at -> Nullable<Timestamp>,
         version -> Int4,
         updated_at -> Timestamp,

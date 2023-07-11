@@ -7,7 +7,7 @@ CREATE TABLE attachments(
     title VARCHAR(127) NOT NULL,
     size BIGINT NOT NULL,
     content_type VARCHAR(63) NOT NULL,
-    "status" VARCHAR(15) NOT NULL,
+    "status" INT NOT NULL,
     deleted_at TIMESTAMP WITHOUT TIME ZONE,
     "version" INT NOT NULL DEFAULT 0,
     updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
@@ -23,8 +23,6 @@ CREATE INDEX idx_attachments_name ON attachments("name");
 CREATE INDEX idx_attachments_title ON attachments(title);
 
 CREATE INDEX idx_attachments_content_type ON attachments(content_type);
-
-CREATE INDEX idx_attachments_status ON attachments("status");
 
 CREATE TABLE attachment_resources(
     id SERIAL PRIMARY KEY,

@@ -2366,6 +2366,7 @@ Notification::Service::~Service() {
 static const char* LeaveWord_method_names[] = {
   "/palm.nut.v1.LeaveWord/Create",
   "/palm.nut.v1.LeaveWord/Index",
+  "/palm.nut.v1.LeaveWord/Show",
   "/palm.nut.v1.LeaveWord/Destroy",
 };
 
@@ -2378,7 +2379,8 @@ std::unique_ptr< LeaveWord::Stub> LeaveWord::NewStub(const std::shared_ptr< ::gr
 LeaveWord::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_Create_(LeaveWord_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Index_(LeaveWord_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Destroy_(LeaveWord_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Show_(LeaveWord_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Destroy_(LeaveWord_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status LeaveWord::Stub::Create(::grpc::ClientContext* context, const ::palm::nut::v1::MediaContent& request, ::google::protobuf::Empty* response) {
@@ -2423,6 +2425,29 @@ void LeaveWord::Stub::async::Index(::grpc::ClientContext* context, const ::palm:
 ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LeaveWordIndexResponse>* LeaveWord::Stub::AsyncIndexRaw(::grpc::ClientContext* context, const ::palm::nut::v1::Pager& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncIndexRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status LeaveWord::Stub::Show(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::palm::nut::v1::LeaveWordIndexResponse_Item* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::IdRequest, ::palm::nut::v1::LeaveWordIndexResponse_Item, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Show_, context, request, response);
+}
+
+void LeaveWord::Stub::async::Show(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::LeaveWordIndexResponse_Item* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::IdRequest, ::palm::nut::v1::LeaveWordIndexResponse_Item, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Show_, context, request, response, std::move(f));
+}
+
+void LeaveWord::Stub::async::Show(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::LeaveWordIndexResponse_Item* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Show_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LeaveWordIndexResponse_Item>* LeaveWord::Stub::PrepareAsyncShowRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::nut::v1::LeaveWordIndexResponse_Item, ::palm::nut::v1::IdRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Show_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::palm::nut::v1::LeaveWordIndexResponse_Item>* LeaveWord::Stub::AsyncShowRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncShowRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -2474,6 +2499,16 @@ LeaveWord::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       LeaveWord_method_names[2],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< LeaveWord::Service, ::palm::nut::v1::IdRequest, ::palm::nut::v1::LeaveWordIndexResponse_Item, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](LeaveWord::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::palm::nut::v1::IdRequest* req,
+             ::palm::nut::v1::LeaveWordIndexResponse_Item* resp) {
+               return service->Show(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      LeaveWord_method_names[3],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< LeaveWord::Service, ::palm::nut::v1::IdRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LeaveWord::Service* service,
              ::grpc::ServerContext* ctx,
@@ -2494,6 +2529,13 @@ LeaveWord::Service::~Service() {
 }
 
 ::grpc::Status LeaveWord::Service::Index(::grpc::ServerContext* context, const ::palm::nut::v1::Pager* request, ::palm::nut::v1::LeaveWordIndexResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status LeaveWord::Service::Show(::grpc::ServerContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::LeaveWordIndexResponse_Item* response) {
   (void) context;
   (void) request;
   (void) response;

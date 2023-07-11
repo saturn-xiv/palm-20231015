@@ -4,7 +4,7 @@ use std::string::ToString;
 use chrono::{Datelike, NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
 use mime::Mime;
-use palm::Result;
+use palm::{nut::v1, to_timestamp, Result};
 use serde::{Deserialize, Serialize};
 use strum_macros::{Display as EnumDisplay, EnumString};
 use uuid::Uuid;
@@ -24,13 +24,27 @@ pub struct Item {
     pub title: String,
     pub size: i64,
     pub content_type: String,
-    pub status: String,
+    pub status: i32,
     pub deleted_at: Option<NaiveDateTime>,
     pub version: i32,
     pub created_at: NaiveDateTime,
     pub updated_at: NaiveDateTime,
 }
 
+impl From<Item> for v1::attachment_index_response::Item {
+    fn from(x: Item) -> Self {
+        Self {
+            id: x.id,
+            bucket: x.bucket.clone(),
+            name: x.name.clone(),
+            title: x.title.clone(),
+            size: x.size,
+            status: x.status,
+            content_type: x.content_type.clone(),
+            updated_at: Some(to_timestamp!(x.updated_at)),
+        }
+    }
+}
 impl Item {
     pub fn size(body: &[u8]) -> usize {
         body.len() / (1 << 10)
@@ -118,7 +132,7 @@ impl Dao for Connection {
         size: u64,
     ) -> Result<()> {
         let now = Utc::now().naive_utc();
-        let status = Status::Public.to_string();
+
         let content_type = content_type.to_string();
         insert_into(attachments::dsl::attachments)
             .values((
@@ -128,7 +142,7 @@ impl Dao for Connection {
                 attachments::dsl::title.eq(title),
                 attachments::dsl::content_type.eq(content_type),
                 attachments::dsl::size.eq(size as i64),
-                attachments::dsl::status.eq(&status),
+                attachments::dsl::status.eq(v1::media_content::Status::Published as i32),
                 attachments::dsl::updated_at.eq(&now),
             ))
             .execute(self)?;

@@ -2,9 +2,12 @@ use std::io::{Error as IoError, ErrorKind as IoErrorKind};
 use std::path::Path;
 use std::time::Duration;
 
+use async_trait::async_trait;
 use aws_credential_types::provider::SharedCredentialsProvider;
 use mime::Mime;
 use serde::{Deserialize, Serialize};
+
+pub use aws_sdk_s3::Client;
 
 use super::super::{minio::Config as Minio, Result};
 
@@ -43,18 +46,35 @@ impl Config {
             .region(aws_sdk_s3::config::Region::new(self.region.clone()))
             .credentials_provider(SharedCredentialsProvider::new(cred))
             .build();
-        Ok(Client(aws_sdk_s3::Client::new(&cfg)))
+        Ok(aws_sdk_s3::Client::new(&cfg))
     }
 }
 
-pub struct Client(aws_sdk_s3::Client);
+#[async_trait]
+pub trait Adapter {
+    async fn bucket_exists(&self, _name: &str) -> Result<bool>;
+    async fn create_bucket(&self, name: &str) -> Result<()>;
+    async fn delete_bucket(&self, name: &str) -> Result<()>;
+    async fn list_buckets(&self) -> Result<Vec<String>>;
+    async fn put_object<P: AsRef<Path> + Send>(
+        &self,
+        bucket: &str,
+        name: &str,
+        content_type: &Mime,
+        file: P,
+    ) -> Result<()>;
+    async fn delete_object(&self, bucket: &str, name: &str) -> Result<()>;
+    async fn list_objects(&self, bucket: &str) -> Result<Vec<String>>;
+    async fn get_object(&self, bucket: &str, name: &str, ttl: Duration) -> Result<String>;
+}
 
-impl Client {
-    pub async fn bucket_exists(&self, _name: &str) -> Result<bool> {
+#[async_trait]
+impl Adapter for Client {
+    async fn bucket_exists(&self, _name: &str) -> Result<bool> {
         Ok(false)
     }
-    pub async fn create_bucket(&self, name: &str) -> Result<()> {
-        if let Err(ref err) = self.0.create_bucket().bucket(name).send().await {
+    async fn create_bucket(&self, name: &str) -> Result<()> {
+        if let Err(ref err) = self.create_bucket().bucket(name).send().await {
             if let aws_sdk_s3::error::SdkError::<_>::ServiceError(ref err) = err {
                 let err = err.err();
                 match err {
@@ -72,13 +92,13 @@ impl Client {
         }
         Ok(())
     }
-    pub async fn delete_bucket(&self, name: &str) -> Result<()> {
-        self.0.delete_bucket().bucket(name).send().await?;
+    async fn delete_bucket(&self, name: &str) -> Result<()> {
+        self.delete_bucket().bucket(name).send().await?;
         Ok(())
     }
-    pub async fn list_buckets(&self) -> Result<Vec<String>> {
+    async fn list_buckets(&self) -> Result<Vec<String>> {
         let mut items = Vec::new();
-        if let Some(buckets) = self.0.list_buckets().send().await?.buckets() {
+        if let Some(buckets) = self.list_buckets().send().await?.buckets() {
             for it in buckets {
                 if let Some(ref it) = it.name {
                     items.push(it.clone());
@@ -88,7 +108,7 @@ impl Client {
 
         Ok(items)
     }
-    pub async fn put_object<P: AsRef<Path>>(
+    async fn put_object<P: AsRef<Path> + Send>(
         &self,
         bucket: &str,
         name: &str,
@@ -96,8 +116,7 @@ impl Client {
         file: P,
     ) -> Result<()> {
         let content_type = content_type.to_string();
-        self.0
-            .put_object()
+        Self::put_object(self)
             .bucket(bucket)
             .key(name)
             .content_type(content_type)
@@ -106,25 +125,13 @@ impl Client {
             .await?;
         Ok(())
     }
-    pub async fn remove_object(&self, bucket: &str, name: &str) -> Result<()> {
-        self.0
-            .delete_object()
-            .bucket(bucket)
-            .key(name)
-            .send()
-            .await?;
+    async fn delete_object(&self, bucket: &str, name: &str) -> Result<()> {
+        self.delete_object().bucket(bucket).key(name).send().await?;
         Ok(())
     }
-    pub async fn list_objects(&self, bucket: &str) -> Result<Vec<String>> {
+    async fn list_objects(&self, bucket: &str) -> Result<Vec<String>> {
         let mut items = Vec::new();
-        if let Some(objects) = self
-            .0
-            .list_objects()
-            .bucket(bucket)
-            .send()
-            .await?
-            .contents()
-        {
+        if let Some(objects) = self.list_objects().bucket(bucket).send().await?.contents() {
             for it in objects {
                 if let Some(ref key) = it.key {
                     items.push(key.clone());
@@ -134,9 +141,8 @@ impl Client {
 
         Ok(items)
     }
-    pub async fn get_object(&self, bucket: &str, name: &str, ttl: Duration) -> Result<String> {
+    async fn get_object(&self, bucket: &str, name: &str, ttl: Duration) -> Result<String> {
         let url = self
-            .0
             .get_object()
             .bucket(bucket)
             .key(name)

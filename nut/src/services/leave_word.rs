@@ -47,6 +47,27 @@ impl v1::leave_word_server::LeaveWord for Service {
         try_grpc!(form.handle(&ss, db))?;
         Ok(Response::new(()))
     }
+    async fn show(
+        &self,
+        req: Request<v1::IdRequest>,
+    ) -> GrpcResult<v1::leave_word_index_response::Item> {
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.db.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.cache.get())?;
+        let ch = ch.deref_mut();
+        let jwt = self.jwt.deref();
+        let enf = self.enforcer.deref();
+        let (user, _, _) = try_grpc!(ss.current_user(db, ch, jwt))?;
+        let req = req.into_inner();
+        try_grpc!(
+            user.can::<LeaveWord, _>(enf, &Operation::Read, Some(req.id))
+                .await
+        )?;
+
+        let it = try_grpc!(LeaveWordDao::by_id(db, req.id))?;
+        Ok(Response::new(it.into()))
+    }
     async fn index(&self, req: Request<v1::Pager>) -> GrpcResult<v1::LeaveWordIndexResponse> {
         let ss = Session::new(&req);
         let mut db = try_grpc!(self.db.get())?;

@@ -476,6 +476,7 @@ message IndexNotificationResponse {
 service LeaveWord {
   rpc Create(MediaContent) returns (google.protobuf.Empty) {}
   rpc Index(Pager) returns (LeaveWordIndexResponse) {}
+  rpc Show(IdRequest) returns (LeaveWordIndexResponse.Item) {}
   rpc Destroy(IdRequest) returns (google.protobuf.Empty) {}
 }
 
