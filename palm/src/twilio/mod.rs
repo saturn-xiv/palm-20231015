@@ -6,19 +6,24 @@ use std::default::Default;
 
 use hyper::StatusCode;
 use serde::{Deserialize, Serialize};
+use validator::Validate;
 
 use super::{HttpError, Result};
 
 // https://www.twilio.com/docs/api
 // https://support.twilio.com/hc/en-us/articles/223136047-Configure-a-Twilio-Phone-Number-to-Receive-and-Respond-to-Messages
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Validate, Debug, Clone)]
 pub struct Config {
+    #[validate(length(min = 1, max = 16))]
     pub from: String,
     #[serde(rename = "account-sid")]
+    #[validate(length(min = 1, max = 63))]
     pub account_sid: String,
     #[serde(rename = "auth-token")]
+    #[validate(length(min = 1, max = 127))]
     pub auth_token: String,
     #[serde(rename = "auth-token")]
+    #[validate(length(min = 1, max = 255))]
     pub sms_status_callback: Option<String>,
 }
 

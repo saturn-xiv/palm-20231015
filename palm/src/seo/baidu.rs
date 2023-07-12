@@ -19,15 +19,17 @@ pub struct Request {
     pub site_verify_content: String,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Validate, Serialize, Deserialize, Debug)]
 pub struct Profile {
     #[serde(rename = "site-verify")]
     pub site_verify: Option<SiteVerify>,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Validate, Serialize, Deserialize, Debug)]
 pub struct SiteVerify {
+    #[validate(length(min = 1, max = 127))]
     pub id: String,
+    #[validate(length(min = 1, max = 127))]
     pub content: String,
 }
 

@@ -345,10 +345,69 @@ struct UpdatePermissionsForRoleRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UpdatePermissionsForRoleRequestDefaultTypeInternal _UpdatePermissionsForRoleRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR RulesResponse_Item::RulesResponse_Item(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.ptype_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.v0_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.v1_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.v2_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.v3_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.v4_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.v5_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.id_)*/ 0
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct RulesResponse_ItemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RulesResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RulesResponse_ItemDefaultTypeInternal() {}
+  union {
+    RulesResponse_Item _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RulesResponse_ItemDefaultTypeInternal _RulesResponse_Item_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR RulesResponse::RulesResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.items_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct RulesResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RulesResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RulesResponseDefaultTypeInternal() {}
+  union {
+    RulesResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RulesResponseDefaultTypeInternal _RulesResponse_default_instance_;
 }  // namespace v1
 }  // namespace rbac
 }  // namespace palm
-static ::_pb::Metadata file_level_metadata_rbac_2eproto[18];
+static ::_pb::Metadata file_level_metadata_rbac_2eproto[20];
 static constexpr const ::_pb::EnumDescriptor**
     file_level_enum_descriptors_rbac_2eproto = nullptr;
 static constexpr const ::_pb::ServiceDescriptor**
@@ -538,6 +597,31 @@ const ::uint32_t TableStruct_rbac_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     PROTOBUF_FIELD_OFFSET(::palm::rbac::v1::UpdatePermissionsForRoleRequest, _impl_.role_),
     PROTOBUF_FIELD_OFFSET(::palm::rbac::v1::UpdatePermissionsForRoleRequest, _impl_.removed_),
     PROTOBUF_FIELD_OFFSET(::palm::rbac::v1::UpdatePermissionsForRoleRequest, _impl_.saved_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::palm::rbac::v1::RulesResponse_Item, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::palm::rbac::v1::RulesResponse_Item, _impl_.id_),
+    PROTOBUF_FIELD_OFFSET(::palm::rbac::v1::RulesResponse_Item, _impl_.ptype_),
+    PROTOBUF_FIELD_OFFSET(::palm::rbac::v1::RulesResponse_Item, _impl_.v0_),
+    PROTOBUF_FIELD_OFFSET(::palm::rbac::v1::RulesResponse_Item, _impl_.v1_),
+    PROTOBUF_FIELD_OFFSET(::palm::rbac::v1::RulesResponse_Item, _impl_.v2_),
+    PROTOBUF_FIELD_OFFSET(::palm::rbac::v1::RulesResponse_Item, _impl_.v3_),
+    PROTOBUF_FIELD_OFFSET(::palm::rbac::v1::RulesResponse_Item, _impl_.v4_),
+    PROTOBUF_FIELD_OFFSET(::palm::rbac::v1::RulesResponse_Item, _impl_.v5_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::palm::rbac::v1::RulesResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::palm::rbac::v1::RulesResponse, _impl_.items_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -560,6 +644,8 @@ static const ::_pbi::MigrationSchema
         { 147, 158, -1, sizeof(::palm::rbac::v1::HasPermissionForUserRequest)},
         { 161, -1, -1, sizeof(::palm::rbac::v1::UpdatePermissionsForUserRequest)},
         { 172, -1, -1, sizeof(::palm::rbac::v1::UpdatePermissionsForRoleRequest)},
+        { 183, -1, -1, sizeof(::palm::rbac::v1::RulesResponse_Item)},
+        { 199, -1, -1, sizeof(::palm::rbac::v1::RulesResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -581,6 +667,8 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::palm::rbac::v1::_HasPermissionForUserRequest_default_instance_._instance,
     &::palm::rbac::v1::_UpdatePermissionsForUserRequest_default_instance_._instance,
     &::palm::rbac::v1::_UpdatePermissionsForRoleRequest_default_instance_._instance,
+    &::palm::rbac::v1::_RulesResponse_Item_default_instance_._instance,
+    &::palm::rbac::v1::_RulesResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_rbac_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\nrbac.proto\022\014palm.rbac.v1\032\033google/proto"
@@ -617,54 +705,60 @@ const char descriptor_table_protodef_rbac_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
     "t\022\014\n\004role\030\001 \001(\t\0227\n\007removed\030\002 \003(\0132&.palm."
     "rbac.v1.PermissionsResponse.Item\0225\n\005save"
     "d\030\003 \003(\0132&.palm.rbac.v1.PermissionsRespon"
-    "se.Item2\271\016\n\006Policy\022D\n\013GetAllUsers\022\026.goog"
-    "le.protobuf.Empty\032\033.palm.rbac.v1.UsersRe"
-    "sponse\"\000\022L\n\017GetAllResources\022\026.google.pro"
-    "tobuf.Empty\032\037.palm.rbac.v1.ResourcesResp"
-    "onse\"\000\022N\n\020GetAllOperations\022\026.google.prot"
-    "obuf.Empty\032 .palm.rbac.v1.OperationsResp"
-    "onse\"\000\022D\n\013GetAllRoles\022\026.google.protobuf."
-    "Empty\032\033.palm.rbac.v1.RolesResponse\"\000\022K\n\017"
-    "GetRolesForUser\022\031.palm.rbac.v1.UserReque"
-    "st\032\033.palm.rbac.v1.RolesResponse\"\000\022S\n\027Get"
-    "ImplicitRolesForUser\022\031.palm.rbac.v1.User"
-    "Request\032\033.palm.rbac.v1.RolesResponse\"\000\022K"
-    "\n\017GetUsersForRole\022\031.palm.rbac.v1.RoleReq"
-    "uest\032\033.palm.rbac.v1.UsersResponse\"\000\022N\n\022D"
-    "eleteRolesForUser\022\036.palm.rbac.v1.UserRol"
-    "esRequest\032\026.google.protobuf.Empty\"\000\022K\n\017A"
-    "ddRolesForUser\022\036.palm.rbac.v1.UserRolesR"
-    "equest\032\026.google.protobuf.Empty\"\000\022A\n\nDele"
-    "teUser\022\031.palm.rbac.v1.UserRequest\032\026.goog"
-    "le.protobuf.Empty\"\000\022A\n\nDeleteRole\022\031.palm"
-    ".rbac.v1.RoleRequest\032\026.google.protobuf.E"
-    "mpty\"\000\022W\n\025AddPermissionsForRole\022$.palm.r"
-    "bac.v1.RolePermissionsRequest\032\026.google.p"
-    "rotobuf.Empty\"\000\022Z\n\030DeletePermissionsForR"
-    "ole\022$.palm.rbac.v1.RolePermissionsReques"
-    "t\032\026.google.protobuf.Empty\"\000\022W\n\025AddPermis"
-    "sionsForUser\022$.palm.rbac.v1.UserPermissi"
-    "onsRequest\032\026.google.protobuf.Empty\"\000\022Z\n\030"
-    "DeletePermissionsForUser\022$.palm.rbac.v1."
-    "UserPermissionsRequest\032\026.google.protobuf"
-    ".Empty\"\000\022W\n\025GetPermissionsForUser\022\031.palm"
-    ".rbac.v1.UserRequest\032!.palm.rbac.v1.Perm"
-    "issionsResponse\"\000\022W\n\025GetPermissionsForRo"
-    "le\022\031.palm.rbac.v1.RoleRequest\032!.palm.rba"
-    "c.v1.PermissionsResponse\"\000\022_\n\035GetImplici"
-    "tPermissionsForUser\022\031.palm.rbac.v1.UserR"
-    "equest\032!.palm.rbac.v1.PermissionsRespons"
-    "e\"\000\022O\n\016HasRoleForUser\022#.palm.rbac.v1.Has"
-    "RoleForUserRequest\032\026.google.protobuf.Emp"
-    "ty\"\000\022[\n\024HasPermissionForUser\022).palm.rbac"
-    ".v1.HasPermissionForUserRequest\032\026.google"
-    ".protobuf.Empty\"\000\022c\n\030UpdatePermissionsFo"
-    "rRole\022-.palm.rbac.v1.UpdatePermissionsFo"
-    "rRoleRequest\032\026.google.protobuf.Empty\"\000\022c"
-    "\n\030UpdatePermissionsForUser\022-.palm.rbac.v"
-    "1.UpdatePermissionsForUserRequest\032\026.goog"
-    "le.protobuf.Empty\"\000B.\n*com.github.saturn"
-    "_xiv.palm.plugins.rbac.v1P\001b\006proto3"
+    "se.Item\"\253\001\n\rRulesResponse\022/\n\005items\030\001 \003(\013"
+    "2 .palm.rbac.v1.RulesResponse.Item\032i\n\004It"
+    "em\022\n\n\002id\030\001 \001(\005\022\r\n\005ptype\030\002 \001(\t\022\n\n\002v0\030\003 \001("
+    "\t\022\n\n\002v1\030\004 \001(\t\022\n\n\002v2\030\005 \001(\t\022\n\n\002v3\030\006 \001(\t\022\n\n"
+    "\002v4\030\007 \001(\t\022\n\n\002v5\030\010 \001(\t2\377\016\n\006Policy\022D\n\013GetA"
+    "llUsers\022\026.google.protobuf.Empty\032\033.palm.r"
+    "bac.v1.UsersResponse\"\000\022L\n\017GetAllResource"
+    "s\022\026.google.protobuf.Empty\032\037.palm.rbac.v1"
+    ".ResourcesResponse\"\000\022N\n\020GetAllOperations"
+    "\022\026.google.protobuf.Empty\032 .palm.rbac.v1."
+    "OperationsResponse\"\000\022D\n\013GetAllRoles\022\026.go"
+    "ogle.protobuf.Empty\032\033.palm.rbac.v1.Roles"
+    "Response\"\000\022D\n\013GetAllRules\022\026.google.proto"
+    "buf.Empty\032\033.palm.rbac.v1.RulesResponse\"\000"
+    "\022K\n\017GetRolesForUser\022\031.palm.rbac.v1.UserR"
+    "equest\032\033.palm.rbac.v1.RolesResponse\"\000\022S\n"
+    "\027GetImplicitRolesForUser\022\031.palm.rbac.v1."
+    "UserRequest\032\033.palm.rbac.v1.RolesResponse"
+    "\"\000\022K\n\017GetUsersForRole\022\031.palm.rbac.v1.Rol"
+    "eRequest\032\033.palm.rbac.v1.UsersResponse\"\000\022"
+    "N\n\022DeleteRolesForUser\022\036.palm.rbac.v1.Use"
+    "rRolesRequest\032\026.google.protobuf.Empty\"\000\022"
+    "K\n\017AddRolesForUser\022\036.palm.rbac.v1.UserRo"
+    "lesRequest\032\026.google.protobuf.Empty\"\000\022A\n\n"
+    "DeleteUser\022\031.palm.rbac.v1.UserRequest\032\026."
+    "google.protobuf.Empty\"\000\022A\n\nDeleteRole\022\031."
+    "palm.rbac.v1.RoleRequest\032\026.google.protob"
+    "uf.Empty\"\000\022W\n\025AddPermissionsForRole\022$.pa"
+    "lm.rbac.v1.RolePermissionsRequest\032\026.goog"
+    "le.protobuf.Empty\"\000\022Z\n\030DeletePermissions"
+    "ForRole\022$.palm.rbac.v1.RolePermissionsRe"
+    "quest\032\026.google.protobuf.Empty\"\000\022W\n\025AddPe"
+    "rmissionsForUser\022$.palm.rbac.v1.UserPerm"
+    "issionsRequest\032\026.google.protobuf.Empty\"\000"
+    "\022Z\n\030DeletePermissionsForUser\022$.palm.rbac"
+    ".v1.UserPermissionsRequest\032\026.google.prot"
+    "obuf.Empty\"\000\022W\n\025GetPermissionsForUser\022\031."
+    "palm.rbac.v1.UserRequest\032!.palm.rbac.v1."
+    "PermissionsResponse\"\000\022W\n\025GetPermissionsF"
+    "orRole\022\031.palm.rbac.v1.RoleRequest\032!.palm"
+    ".rbac.v1.PermissionsResponse\"\000\022_\n\035GetImp"
+    "licitPermissionsForUser\022\031.palm.rbac.v1.U"
+    "serRequest\032!.palm.rbac.v1.PermissionsRes"
+    "ponse\"\000\022O\n\016HasRoleForUser\022#.palm.rbac.v1"
+    ".HasRoleForUserRequest\032\026.google.protobuf"
+    ".Empty\"\000\022[\n\024HasPermissionForUser\022).palm."
+    "rbac.v1.HasPermissionForUserRequest\032\026.go"
+    "ogle.protobuf.Empty\"\000\022c\n\030UpdatePermissio"
+    "nsForRole\022-.palm.rbac.v1.UpdatePermissio"
+    "nsForRoleRequest\032\026.google.protobuf.Empty"
+    "\"\000\022c\n\030UpdatePermissionsForUser\022-.palm.rb"
+    "ac.v1.UpdatePermissionsForUserRequest\032\026."
+    "google.protobuf.Empty\"\000B.\n*com.github.sa"
+    "turn_xiv.palm.plugins.rbac.v1P\001b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_rbac_2eproto_deps[1] =
     {
@@ -674,13 +768,13 @@ static ::absl::once_flag descriptor_table_rbac_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_rbac_2eproto = {
     false,
     false,
-    3275,
+    3519,
     descriptor_table_protodef_rbac_2eproto,
     "rbac.proto",
     &descriptor_table_rbac_2eproto_once,
     descriptor_table_rbac_2eproto_deps,
     1,
-    18,
+    20,
     schemas,
     file_default_instances,
     TableStruct_rbac_2eproto::offsets,
@@ -4553,6 +4647,699 @@ void UpdatePermissionsForRoleRequest::InternalSwap(UpdatePermissionsForRoleReque
       &descriptor_table_rbac_2eproto_getter, &descriptor_table_rbac_2eproto_once,
       file_level_metadata_rbac_2eproto[17]);
 }
+// ===================================================================
+
+class RulesResponse_Item::_Internal {
+ public:
+};
+
+RulesResponse_Item::RulesResponse_Item(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:palm.rbac.v1.RulesResponse.Item)
+}
+RulesResponse_Item::RulesResponse_Item(const RulesResponse_Item& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RulesResponse_Item* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.ptype_) {}
+
+    , decltype(_impl_.v0_) {}
+
+    , decltype(_impl_.v1_) {}
+
+    , decltype(_impl_.v2_) {}
+
+    , decltype(_impl_.v3_) {}
+
+    , decltype(_impl_.v4_) {}
+
+    , decltype(_impl_.v5_) {}
+
+    , decltype(_impl_.id_) {}
+
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.ptype_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.ptype_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_ptype().empty()) {
+    _this->_impl_.ptype_.Set(from._internal_ptype(), _this->GetArenaForAllocation());
+  }
+  _impl_.v0_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.v0_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_v0().empty()) {
+    _this->_impl_.v0_.Set(from._internal_v0(), _this->GetArenaForAllocation());
+  }
+  _impl_.v1_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.v1_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_v1().empty()) {
+    _this->_impl_.v1_.Set(from._internal_v1(), _this->GetArenaForAllocation());
+  }
+  _impl_.v2_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.v2_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_v2().empty()) {
+    _this->_impl_.v2_.Set(from._internal_v2(), _this->GetArenaForAllocation());
+  }
+  _impl_.v3_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.v3_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_v3().empty()) {
+    _this->_impl_.v3_.Set(from._internal_v3(), _this->GetArenaForAllocation());
+  }
+  _impl_.v4_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.v4_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_v4().empty()) {
+    _this->_impl_.v4_.Set(from._internal_v4(), _this->GetArenaForAllocation());
+  }
+  _impl_.v5_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.v5_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_v5().empty()) {
+    _this->_impl_.v5_.Set(from._internal_v5(), _this->GetArenaForAllocation());
+  }
+  _this->_impl_.id_ = from._impl_.id_;
+  // @@protoc_insertion_point(copy_constructor:palm.rbac.v1.RulesResponse.Item)
+}
+
+inline void RulesResponse_Item::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.ptype_) {}
+
+    , decltype(_impl_.v0_) {}
+
+    , decltype(_impl_.v1_) {}
+
+    , decltype(_impl_.v2_) {}
+
+    , decltype(_impl_.v3_) {}
+
+    , decltype(_impl_.v4_) {}
+
+    , decltype(_impl_.v5_) {}
+
+    , decltype(_impl_.id_) { 0 }
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.ptype_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.ptype_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.v0_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.v0_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.v1_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.v1_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.v2_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.v2_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.v3_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.v3_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.v4_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.v4_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.v5_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.v5_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+RulesResponse_Item::~RulesResponse_Item() {
+  // @@protoc_insertion_point(destructor:palm.rbac.v1.RulesResponse.Item)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void RulesResponse_Item::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.ptype_.Destroy();
+  _impl_.v0_.Destroy();
+  _impl_.v1_.Destroy();
+  _impl_.v2_.Destroy();
+  _impl_.v3_.Destroy();
+  _impl_.v4_.Destroy();
+  _impl_.v5_.Destroy();
+}
+
+void RulesResponse_Item::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void RulesResponse_Item::Clear() {
+// @@protoc_insertion_point(message_clear_start:palm.rbac.v1.RulesResponse.Item)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.ptype_.ClearToEmpty();
+  _impl_.v0_.ClearToEmpty();
+  _impl_.v1_.ClearToEmpty();
+  _impl_.v2_.ClearToEmpty();
+  _impl_.v3_.ClearToEmpty();
+  _impl_.v4_.ClearToEmpty();
+  _impl_.v5_.ClearToEmpty();
+  _impl_.id_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* RulesResponse_Item::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 8)) {
+          _impl_.id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // string ptype = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_ptype();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.rbac.v1.RulesResponse.Item.ptype"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // string v0 = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_v0();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.rbac.v1.RulesResponse.Item.v0"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // string v1 = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_v1();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.rbac.v1.RulesResponse.Item.v1"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // string v2 = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_v2();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.rbac.v1.RulesResponse.Item.v2"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // string v3 = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 50)) {
+          auto str = _internal_mutable_v3();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.rbac.v1.RulesResponse.Item.v3"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // string v4 = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 58)) {
+          auto str = _internal_mutable_v4();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.rbac.v1.RulesResponse.Item.v4"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // string v5 = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 66)) {
+          auto str = _internal_mutable_v5();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.rbac.v1.RulesResponse.Item.v5"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+::uint8_t* RulesResponse_Item::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:palm.rbac.v1.RulesResponse.Item)
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 id = 1;
+  if (this->_internal_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        1, this->_internal_id(), target);
+  }
+
+  // string ptype = 2;
+  if (!this->_internal_ptype().empty()) {
+    const std::string& _s = this->_internal_ptype();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.rbac.v1.RulesResponse.Item.ptype");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  // string v0 = 3;
+  if (!this->_internal_v0().empty()) {
+    const std::string& _s = this->_internal_v0();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.rbac.v1.RulesResponse.Item.v0");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
+  }
+
+  // string v1 = 4;
+  if (!this->_internal_v1().empty()) {
+    const std::string& _s = this->_internal_v1();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.rbac.v1.RulesResponse.Item.v1");
+    target = stream->WriteStringMaybeAliased(4, _s, target);
+  }
+
+  // string v2 = 5;
+  if (!this->_internal_v2().empty()) {
+    const std::string& _s = this->_internal_v2();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.rbac.v1.RulesResponse.Item.v2");
+    target = stream->WriteStringMaybeAliased(5, _s, target);
+  }
+
+  // string v3 = 6;
+  if (!this->_internal_v3().empty()) {
+    const std::string& _s = this->_internal_v3();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.rbac.v1.RulesResponse.Item.v3");
+    target = stream->WriteStringMaybeAliased(6, _s, target);
+  }
+
+  // string v4 = 7;
+  if (!this->_internal_v4().empty()) {
+    const std::string& _s = this->_internal_v4();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.rbac.v1.RulesResponse.Item.v4");
+    target = stream->WriteStringMaybeAliased(7, _s, target);
+  }
+
+  // string v5 = 8;
+  if (!this->_internal_v5().empty()) {
+    const std::string& _s = this->_internal_v5();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.rbac.v1.RulesResponse.Item.v5");
+    target = stream->WriteStringMaybeAliased(8, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:palm.rbac.v1.RulesResponse.Item)
+  return target;
+}
+
+::size_t RulesResponse_Item::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:palm.rbac.v1.RulesResponse.Item)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string ptype = 2;
+  if (!this->_internal_ptype().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_ptype());
+  }
+
+  // string v0 = 3;
+  if (!this->_internal_v0().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_v0());
+  }
+
+  // string v1 = 4;
+  if (!this->_internal_v1().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_v1());
+  }
+
+  // string v2 = 5;
+  if (!this->_internal_v2().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_v2());
+  }
+
+  // string v3 = 6;
+  if (!this->_internal_v3().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_v3());
+  }
+
+  // string v4 = 7;
+  if (!this->_internal_v4().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_v4());
+  }
+
+  // string v5 = 8;
+  if (!this->_internal_v5().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_v5());
+  }
+
+  // int32 id = 1;
+  if (this->_internal_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        this->_internal_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RulesResponse_Item::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    RulesResponse_Item::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RulesResponse_Item::GetClassData() const { return &_class_data_; }
+
+
+void RulesResponse_Item::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<RulesResponse_Item*>(&to_msg);
+  auto& from = static_cast<const RulesResponse_Item&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.rbac.v1.RulesResponse.Item)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_ptype().empty()) {
+    _this->_internal_set_ptype(from._internal_ptype());
+  }
+  if (!from._internal_v0().empty()) {
+    _this->_internal_set_v0(from._internal_v0());
+  }
+  if (!from._internal_v1().empty()) {
+    _this->_internal_set_v1(from._internal_v1());
+  }
+  if (!from._internal_v2().empty()) {
+    _this->_internal_set_v2(from._internal_v2());
+  }
+  if (!from._internal_v3().empty()) {
+    _this->_internal_set_v3(from._internal_v3());
+  }
+  if (!from._internal_v4().empty()) {
+    _this->_internal_set_v4(from._internal_v4());
+  }
+  if (!from._internal_v5().empty()) {
+    _this->_internal_set_v5(from._internal_v5());
+  }
+  if (from._internal_id() != 0) {
+    _this->_internal_set_id(from._internal_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RulesResponse_Item::CopyFrom(const RulesResponse_Item& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:palm.rbac.v1.RulesResponse.Item)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RulesResponse_Item::IsInitialized() const {
+  return true;
+}
+
+void RulesResponse_Item::InternalSwap(RulesResponse_Item* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ptype_, lhs_arena,
+                                       &other->_impl_.ptype_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.v0_, lhs_arena,
+                                       &other->_impl_.v0_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.v1_, lhs_arena,
+                                       &other->_impl_.v1_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.v2_, lhs_arena,
+                                       &other->_impl_.v2_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.v3_, lhs_arena,
+                                       &other->_impl_.v3_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.v4_, lhs_arena,
+                                       &other->_impl_.v4_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.v5_, lhs_arena,
+                                       &other->_impl_.v5_, rhs_arena);
+
+  swap(_impl_.id_, other->_impl_.id_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RulesResponse_Item::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_rbac_2eproto_getter, &descriptor_table_rbac_2eproto_once,
+      file_level_metadata_rbac_2eproto[18]);
+}
+// ===================================================================
+
+class RulesResponse::_Internal {
+ public:
+};
+
+RulesResponse::RulesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:palm.rbac.v1.RulesResponse)
+}
+RulesResponse::RulesResponse(const RulesResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RulesResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.items_){from._impl_.items_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:palm.rbac.v1.RulesResponse)
+}
+
+inline void RulesResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.items_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+RulesResponse::~RulesResponse() {
+  // @@protoc_insertion_point(destructor:palm.rbac.v1.RulesResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void RulesResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _internal_mutable_items()->~RepeatedPtrField();
+}
+
+void RulesResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void RulesResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:palm.rbac.v1.RulesResponse)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _internal_mutable_items()->Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* RulesResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated .palm.rbac.v1.RulesResponse.Item items = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_items(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+::uint8_t* RulesResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:palm.rbac.v1.RulesResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .palm.rbac.v1.RulesResponse.Item items = 1;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_items_size()); i < n; i++) {
+    const auto& repfield = this->_internal_items(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:palm.rbac.v1.RulesResponse)
+  return target;
+}
+
+::size_t RulesResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:palm.rbac.v1.RulesResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .palm.rbac.v1.RulesResponse.Item items = 1;
+  total_size += 1UL * this->_internal_items_size();
+  for (const auto& msg : this->_internal_items()) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RulesResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    RulesResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RulesResponse::GetClassData() const { return &_class_data_; }
+
+
+void RulesResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<RulesResponse*>(&to_msg);
+  auto& from = static_cast<const RulesResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.rbac.v1.RulesResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RulesResponse::CopyFrom(const RulesResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:palm.rbac.v1.RulesResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RulesResponse::IsInitialized() const {
+  return true;
+}
+
+void RulesResponse::InternalSwap(RulesResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _internal_mutable_items()->InternalSwap(other->_internal_mutable_items());
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RulesResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_rbac_2eproto_getter, &descriptor_table_rbac_2eproto_once,
+      file_level_metadata_rbac_2eproto[19]);
+}
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1
 }  // namespace rbac
@@ -4629,6 +5416,14 @@ Arena::CreateMaybeMessage< ::palm::rbac::v1::UpdatePermissionsForUserRequest >(A
 template<> PROTOBUF_NOINLINE ::palm::rbac::v1::UpdatePermissionsForRoleRequest*
 Arena::CreateMaybeMessage< ::palm::rbac::v1::UpdatePermissionsForRoleRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::rbac::v1::UpdatePermissionsForRoleRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::rbac::v1::RulesResponse_Item*
+Arena::CreateMaybeMessage< ::palm::rbac::v1::RulesResponse_Item >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::rbac::v1::RulesResponse_Item >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::rbac::v1::RulesResponse*
+Arena::CreateMaybeMessage< ::palm::rbac::v1::RulesResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::rbac::v1::RulesResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 // @@protoc_insertion_point(global_scope)

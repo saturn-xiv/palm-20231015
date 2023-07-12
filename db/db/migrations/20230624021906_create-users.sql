@@ -60,15 +60,13 @@ CREATE INDEX idx_user_contacts_key ON user_contacts("key");
 CREATE TABLE logs(
     id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
-    "level" VARCHAR(16) NOT NULL,
+    "level" INT NOT NULL,
     ip VARCHAR(45) NOT NULL,
     resource_type VARCHAR(255) NOT NULL,
     resource_id INT,
     "message" TEXT NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-
-CREATE INDEX idx_logs_level ON logs("level");
 
 CREATE INDEX idx_logs_ip ON logs(ip);
 

@@ -14,8 +14,9 @@ pub struct Request {
 }
 
 // https://www.indexnow.org/documentation
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Validate, Serialize, Deserialize, Debug)]
 pub struct Profile {
+    #[validate(length(min = 1, max = 127))]
     pub key: String,
 }
 

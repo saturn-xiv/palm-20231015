@@ -13,19 +13,22 @@ pub struct Request {
     pub site_verify_code: String,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Validate, Serialize, Deserialize, Debug)]
 pub struct Profile {
     #[serde(rename = "site-verify-id")]
+    #[validate(length(min = 1, max = 63))]
     pub site_verify_id: Option<String>,
     #[serde(rename = "re-captcha")]
     pub re_captcha: Option<ReCaptcha>,
 }
 
 // https://developers.google.com/recaptcha/docs/v3
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Validate, Serialize, Deserialize, Debug)]
 pub struct ReCaptcha {
     #[serde(rename = "site-key")]
+    #[validate(length(min = 1, max = 127))]
     pub site_key: String,
+    #[validate(length(min = 1, max = 127))]
     pub secret: String,
 }
 

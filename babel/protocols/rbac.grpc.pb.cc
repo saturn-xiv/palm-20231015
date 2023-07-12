@@ -28,6 +28,7 @@ static const char* Policy_method_names[] = {
   "/palm.rbac.v1.Policy/GetAllResources",
   "/palm.rbac.v1.Policy/GetAllOperations",
   "/palm.rbac.v1.Policy/GetAllRoles",
+  "/palm.rbac.v1.Policy/GetAllRules",
   "/palm.rbac.v1.Policy/GetRolesForUser",
   "/palm.rbac.v1.Policy/GetImplicitRolesForUser",
   "/palm.rbac.v1.Policy/GetUsersForRole",
@@ -59,24 +60,25 @@ Policy::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, co
   , rpcmethod_GetAllResources_(Policy_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetAllOperations_(Policy_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetAllRoles_(Policy_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetRolesForUser_(Policy_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetImplicitRolesForUser_(Policy_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetUsersForRole_(Policy_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DeleteRolesForUser_(Policy_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_AddRolesForUser_(Policy_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DeleteUser_(Policy_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DeleteRole_(Policy_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_AddPermissionsForRole_(Policy_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DeletePermissionsForRole_(Policy_method_names[12], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_AddPermissionsForUser_(Policy_method_names[13], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DeletePermissionsForUser_(Policy_method_names[14], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetPermissionsForUser_(Policy_method_names[15], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetPermissionsForRole_(Policy_method_names[16], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetImplicitPermissionsForUser_(Policy_method_names[17], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_HasRoleForUser_(Policy_method_names[18], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_HasPermissionForUser_(Policy_method_names[19], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_UpdatePermissionsForRole_(Policy_method_names[20], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_UpdatePermissionsForUser_(Policy_method_names[21], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetAllRules_(Policy_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetRolesForUser_(Policy_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetImplicitRolesForUser_(Policy_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetUsersForRole_(Policy_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DeleteRolesForUser_(Policy_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_AddRolesForUser_(Policy_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DeleteUser_(Policy_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DeleteRole_(Policy_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_AddPermissionsForRole_(Policy_method_names[12], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DeletePermissionsForRole_(Policy_method_names[13], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_AddPermissionsForUser_(Policy_method_names[14], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DeletePermissionsForUser_(Policy_method_names[15], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetPermissionsForUser_(Policy_method_names[16], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetPermissionsForRole_(Policy_method_names[17], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetImplicitPermissionsForUser_(Policy_method_names[18], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_HasRoleForUser_(Policy_method_names[19], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_HasPermissionForUser_(Policy_method_names[20], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_UpdatePermissionsForRole_(Policy_method_names[21], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_UpdatePermissionsForUser_(Policy_method_names[22], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status Policy::Stub::GetAllUsers(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::palm::rbac::v1::UsersResponse* response) {
@@ -167,6 +169,29 @@ void Policy::Stub::async::GetAllRoles(::grpc::ClientContext* context, const ::go
 ::grpc::ClientAsyncResponseReader< ::palm::rbac::v1::RolesResponse>* Policy::Stub::AsyncGetAllRolesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncGetAllRolesRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status Policy::Stub::GetAllRules(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::palm::rbac::v1::RulesResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::google::protobuf::Empty, ::palm::rbac::v1::RulesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetAllRules_, context, request, response);
+}
+
+void Policy::Stub::async::GetAllRules(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::rbac::v1::RulesResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::google::protobuf::Empty, ::palm::rbac::v1::RulesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetAllRules_, context, request, response, std::move(f));
+}
+
+void Policy::Stub::async::GetAllRules(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::rbac::v1::RulesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetAllRules_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::palm::rbac::v1::RulesResponse>* Policy::Stub::PrepareAsyncGetAllRulesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::rbac::v1::RulesResponse, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetAllRules_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::palm::rbac::v1::RulesResponse>* Policy::Stub::AsyncGetAllRulesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetAllRulesRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -629,12 +654,12 @@ Policy::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Policy_method_names[4],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::UserRequest, ::palm::rbac::v1::RolesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Policy::Service, ::google::protobuf::Empty, ::palm::rbac::v1::RulesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Policy::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::palm::rbac::v1::UserRequest* req,
-             ::palm::rbac::v1::RolesResponse* resp) {
-               return service->GetRolesForUser(ctx, req, resp);
+             const ::google::protobuf::Empty* req,
+             ::palm::rbac::v1::RulesResponse* resp) {
+               return service->GetAllRules(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Policy_method_names[5],
@@ -644,10 +669,20 @@ Policy::Service::Service() {
              ::grpc::ServerContext* ctx,
              const ::palm::rbac::v1::UserRequest* req,
              ::palm::rbac::v1::RolesResponse* resp) {
-               return service->GetImplicitRolesForUser(ctx, req, resp);
+               return service->GetRolesForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Policy_method_names[6],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::UserRequest, ::palm::rbac::v1::RolesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](Policy::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::palm::rbac::v1::UserRequest* req,
+             ::palm::rbac::v1::RolesResponse* resp) {
+               return service->GetImplicitRolesForUser(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Policy_method_names[7],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::RoleRequest, ::palm::rbac::v1::UsersResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Policy::Service* service,
@@ -657,7 +692,7 @@ Policy::Service::Service() {
                return service->GetUsersForRole(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Policy_method_names[7],
+      Policy_method_names[8],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::UserRolesRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Policy::Service* service,
@@ -667,7 +702,7 @@ Policy::Service::Service() {
                return service->DeleteRolesForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Policy_method_names[8],
+      Policy_method_names[9],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::UserRolesRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Policy::Service* service,
@@ -677,7 +712,7 @@ Policy::Service::Service() {
                return service->AddRolesForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Policy_method_names[9],
+      Policy_method_names[10],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::UserRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Policy::Service* service,
@@ -687,7 +722,7 @@ Policy::Service::Service() {
                return service->DeleteUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Policy_method_names[10],
+      Policy_method_names[11],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::RoleRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Policy::Service* service,
@@ -697,7 +732,7 @@ Policy::Service::Service() {
                return service->DeleteRole(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Policy_method_names[11],
+      Policy_method_names[12],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::RolePermissionsRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Policy::Service* service,
@@ -707,7 +742,7 @@ Policy::Service::Service() {
                return service->AddPermissionsForRole(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Policy_method_names[12],
+      Policy_method_names[13],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::RolePermissionsRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Policy::Service* service,
@@ -717,7 +752,7 @@ Policy::Service::Service() {
                return service->DeletePermissionsForRole(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Policy_method_names[13],
+      Policy_method_names[14],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::UserPermissionsRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Policy::Service* service,
@@ -727,7 +762,7 @@ Policy::Service::Service() {
                return service->AddPermissionsForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Policy_method_names[14],
+      Policy_method_names[15],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::UserPermissionsRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Policy::Service* service,
@@ -737,7 +772,7 @@ Policy::Service::Service() {
                return service->DeletePermissionsForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Policy_method_names[15],
+      Policy_method_names[16],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::UserRequest, ::palm::rbac::v1::PermissionsResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Policy::Service* service,
@@ -747,7 +782,7 @@ Policy::Service::Service() {
                return service->GetPermissionsForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Policy_method_names[16],
+      Policy_method_names[17],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::RoleRequest, ::palm::rbac::v1::PermissionsResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Policy::Service* service,
@@ -757,7 +792,7 @@ Policy::Service::Service() {
                return service->GetPermissionsForRole(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Policy_method_names[17],
+      Policy_method_names[18],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::UserRequest, ::palm::rbac::v1::PermissionsResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Policy::Service* service,
@@ -767,7 +802,7 @@ Policy::Service::Service() {
                return service->GetImplicitPermissionsForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Policy_method_names[18],
+      Policy_method_names[19],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::HasRoleForUserRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Policy::Service* service,
@@ -777,7 +812,7 @@ Policy::Service::Service() {
                return service->HasRoleForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Policy_method_names[19],
+      Policy_method_names[20],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::HasPermissionForUserRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Policy::Service* service,
@@ -787,7 +822,7 @@ Policy::Service::Service() {
                return service->HasPermissionForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Policy_method_names[20],
+      Policy_method_names[21],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::UpdatePermissionsForRoleRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Policy::Service* service,
@@ -797,7 +832,7 @@ Policy::Service::Service() {
                return service->UpdatePermissionsForRole(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Policy_method_names[21],
+      Policy_method_names[22],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Policy::Service, ::palm::rbac::v1::UpdatePermissionsForUserRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Policy::Service* service,
@@ -833,6 +868,13 @@ Policy::Service::~Service() {
 }
 
 ::grpc::Status Policy::Service::GetAllRoles(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::palm::rbac::v1::RolesResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Policy::Service::GetAllRules(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::palm::rbac::v1::RulesResponse* response) {
   (void) context;
   (void) request;
   (void) response;

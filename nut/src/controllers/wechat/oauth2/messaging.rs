@@ -6,6 +6,7 @@ use actix_web::{
 use diesel::Connection as DieselConnection;
 use palm::{
     handlers::peer::ClientIp,
+    nut::v1::user_logs_response::item::Level as LogLevel,
     try_web,
     wechat::{
         oauth2::message_push::{MessageRequest, VerifyRequest},
@@ -16,9 +17,7 @@ use palm::{
 
 use super::super::super::super::{
     models::{
-        log::{Dao as LogDao, Level as LogLevel},
-        user::Item as User,
-        wechat::oauth2_user::Dao as WechatOauth2UserDao,
+        log::Dao as LogDao, user::Item as User, wechat::oauth2_user::Dao as WechatOauth2UserDao,
     },
     orm::postgresql::Pool as DbPool,
 };
@@ -73,7 +72,7 @@ pub async fn callback(
                 LogDao::add::<_, User>(
                     db,
                     it.user_id,
-                    &LogLevel::Info,
+                    LogLevel::Info,
                     &client_ip,
                     Some(it.user_id),
                     "cancel by wechat oauth",

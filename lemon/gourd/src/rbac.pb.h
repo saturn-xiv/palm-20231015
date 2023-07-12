@@ -88,6 +88,12 @@ extern RoleRequestDefaultTypeInternal _RoleRequest_default_instance_;
 class RolesResponse;
 struct RolesResponseDefaultTypeInternal;
 extern RolesResponseDefaultTypeInternal _RolesResponse_default_instance_;
+class RulesResponse;
+struct RulesResponseDefaultTypeInternal;
+extern RulesResponseDefaultTypeInternal _RulesResponse_default_instance_;
+class RulesResponse_Item;
+struct RulesResponse_ItemDefaultTypeInternal;
+extern RulesResponse_ItemDefaultTypeInternal _RulesResponse_Item_default_instance_;
 class UpdatePermissionsForRoleRequest;
 struct UpdatePermissionsForRoleRequestDefaultTypeInternal;
 extern UpdatePermissionsForRoleRequestDefaultTypeInternal _UpdatePermissionsForRoleRequest_default_instance_;
@@ -135,6 +141,10 @@ template <>
 ::palm::rbac::v1::RoleRequest* Arena::CreateMaybeMessage<::palm::rbac::v1::RoleRequest>(Arena*);
 template <>
 ::palm::rbac::v1::RolesResponse* Arena::CreateMaybeMessage<::palm::rbac::v1::RolesResponse>(Arena*);
+template <>
+::palm::rbac::v1::RulesResponse* Arena::CreateMaybeMessage<::palm::rbac::v1::RulesResponse>(Arena*);
+template <>
+::palm::rbac::v1::RulesResponse_Item* Arena::CreateMaybeMessage<::palm::rbac::v1::RulesResponse_Item>(Arena*);
 template <>
 ::palm::rbac::v1::UpdatePermissionsForRoleRequest* Arena::CreateMaybeMessage<::palm::rbac::v1::UpdatePermissionsForRoleRequest>(Arena*);
 template <>
@@ -3365,6 +3375,482 @@ class UpdatePermissionsForRoleRequest final :
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_rbac_2eproto;
+};// -------------------------------------------------------------------
+
+class RulesResponse_Item final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.rbac.v1.RulesResponse.Item) */ {
+ public:
+  inline RulesResponse_Item() : RulesResponse_Item(nullptr) {}
+  ~RulesResponse_Item() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR RulesResponse_Item(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  RulesResponse_Item(const RulesResponse_Item& from);
+  RulesResponse_Item(RulesResponse_Item&& from) noexcept
+    : RulesResponse_Item() {
+    *this = ::std::move(from);
+  }
+
+  inline RulesResponse_Item& operator=(const RulesResponse_Item& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RulesResponse_Item& operator=(RulesResponse_Item&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RulesResponse_Item& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RulesResponse_Item* internal_default_instance() {
+    return reinterpret_cast<const RulesResponse_Item*>(
+               &_RulesResponse_Item_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    18;
+
+  friend void swap(RulesResponse_Item& a, RulesResponse_Item& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RulesResponse_Item* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RulesResponse_Item* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  RulesResponse_Item* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<RulesResponse_Item>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const RulesResponse_Item& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const RulesResponse_Item& from) {
+    RulesResponse_Item::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RulesResponse_Item* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.rbac.v1.RulesResponse.Item";
+  }
+  protected:
+  explicit RulesResponse_Item(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPtypeFieldNumber = 2,
+    kV0FieldNumber = 3,
+    kV1FieldNumber = 4,
+    kV2FieldNumber = 5,
+    kV3FieldNumber = 6,
+    kV4FieldNumber = 7,
+    kV5FieldNumber = 8,
+    kIdFieldNumber = 1,
+  };
+  // string ptype = 2;
+  void clear_ptype() ;
+  const std::string& ptype() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_ptype(Arg_&& arg, Args_... args);
+  std::string* mutable_ptype();
+  PROTOBUF_NODISCARD std::string* release_ptype();
+  void set_allocated_ptype(std::string* ptr);
+
+  private:
+  const std::string& _internal_ptype() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_ptype(
+      const std::string& value);
+  std::string* _internal_mutable_ptype();
+
+  public:
+  // string v0 = 3;
+  void clear_v0() ;
+  const std::string& v0() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_v0(Arg_&& arg, Args_... args);
+  std::string* mutable_v0();
+  PROTOBUF_NODISCARD std::string* release_v0();
+  void set_allocated_v0(std::string* ptr);
+
+  private:
+  const std::string& _internal_v0() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_v0(
+      const std::string& value);
+  std::string* _internal_mutable_v0();
+
+  public:
+  // string v1 = 4;
+  void clear_v1() ;
+  const std::string& v1() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_v1(Arg_&& arg, Args_... args);
+  std::string* mutable_v1();
+  PROTOBUF_NODISCARD std::string* release_v1();
+  void set_allocated_v1(std::string* ptr);
+
+  private:
+  const std::string& _internal_v1() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_v1(
+      const std::string& value);
+  std::string* _internal_mutable_v1();
+
+  public:
+  // string v2 = 5;
+  void clear_v2() ;
+  const std::string& v2() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_v2(Arg_&& arg, Args_... args);
+  std::string* mutable_v2();
+  PROTOBUF_NODISCARD std::string* release_v2();
+  void set_allocated_v2(std::string* ptr);
+
+  private:
+  const std::string& _internal_v2() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_v2(
+      const std::string& value);
+  std::string* _internal_mutable_v2();
+
+  public:
+  // string v3 = 6;
+  void clear_v3() ;
+  const std::string& v3() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_v3(Arg_&& arg, Args_... args);
+  std::string* mutable_v3();
+  PROTOBUF_NODISCARD std::string* release_v3();
+  void set_allocated_v3(std::string* ptr);
+
+  private:
+  const std::string& _internal_v3() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_v3(
+      const std::string& value);
+  std::string* _internal_mutable_v3();
+
+  public:
+  // string v4 = 7;
+  void clear_v4() ;
+  const std::string& v4() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_v4(Arg_&& arg, Args_... args);
+  std::string* mutable_v4();
+  PROTOBUF_NODISCARD std::string* release_v4();
+  void set_allocated_v4(std::string* ptr);
+
+  private:
+  const std::string& _internal_v4() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_v4(
+      const std::string& value);
+  std::string* _internal_mutable_v4();
+
+  public:
+  // string v5 = 8;
+  void clear_v5() ;
+  const std::string& v5() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_v5(Arg_&& arg, Args_... args);
+  std::string* mutable_v5();
+  PROTOBUF_NODISCARD std::string* release_v5();
+  void set_allocated_v5(std::string* ptr);
+
+  private:
+  const std::string& _internal_v5() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_v5(
+      const std::string& value);
+  std::string* _internal_mutable_v5();
+
+  public:
+  // int32 id = 1;
+  void clear_id() ;
+  ::int32_t id() const;
+  void set_id(::int32_t value);
+
+  private:
+  ::int32_t _internal_id() const;
+  void _internal_set_id(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.rbac.v1.RulesResponse.Item)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr ptype_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr v0_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr v1_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr v2_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr v3_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr v4_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr v5_;
+    ::int32_t id_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_rbac_2eproto;
+};// -------------------------------------------------------------------
+
+class RulesResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.rbac.v1.RulesResponse) */ {
+ public:
+  inline RulesResponse() : RulesResponse(nullptr) {}
+  ~RulesResponse() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR RulesResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  RulesResponse(const RulesResponse& from);
+  RulesResponse(RulesResponse&& from) noexcept
+    : RulesResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline RulesResponse& operator=(const RulesResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RulesResponse& operator=(RulesResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RulesResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RulesResponse* internal_default_instance() {
+    return reinterpret_cast<const RulesResponse*>(
+               &_RulesResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    19;
+
+  friend void swap(RulesResponse& a, RulesResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RulesResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RulesResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  RulesResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<RulesResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const RulesResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const RulesResponse& from) {
+    RulesResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RulesResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.rbac.v1.RulesResponse";
+  }
+  protected:
+  explicit RulesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  typedef RulesResponse_Item Item;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kItemsFieldNumber = 1,
+  };
+  // repeated .palm.rbac.v1.RulesResponse.Item items = 1;
+  int items_size() const;
+  private:
+  int _internal_items_size() const;
+
+  public:
+  void clear_items() ;
+  ::palm::rbac::v1::RulesResponse_Item* mutable_items(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::rbac::v1::RulesResponse_Item >*
+      mutable_items();
+  private:
+  const ::palm::rbac::v1::RulesResponse_Item& _internal_items(int index) const;
+  ::palm::rbac::v1::RulesResponse_Item* _internal_add_items();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<::palm::rbac::v1::RulesResponse_Item>& _internal_items() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<::palm::rbac::v1::RulesResponse_Item>* _internal_mutable_items();
+  public:
+  const ::palm::rbac::v1::RulesResponse_Item& items(int index) const;
+  ::palm::rbac::v1::RulesResponse_Item* add_items();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::rbac::v1::RulesResponse_Item >&
+      items() const;
+  // @@protoc_insertion_point(class_scope:palm.rbac.v1.RulesResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::rbac::v1::RulesResponse_Item > items_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_rbac_2eproto;
 };
 
 // ===================================================================
@@ -4969,6 +5455,411 @@ UpdatePermissionsForRoleRequest::_internal_saved() const {
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<::palm::rbac::v1::PermissionsResponse_Item>*
 UpdatePermissionsForRoleRequest::_internal_mutable_saved() {
   return &_impl_.saved_;
+}
+
+// -------------------------------------------------------------------
+
+// RulesResponse_Item
+
+// int32 id = 1;
+inline void RulesResponse_Item::clear_id() {
+  _impl_.id_ = 0;
+}
+inline ::int32_t RulesResponse_Item::id() const {
+  // @@protoc_insertion_point(field_get:palm.rbac.v1.RulesResponse.Item.id)
+  return _internal_id();
+}
+inline void RulesResponse_Item::set_id(::int32_t value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:palm.rbac.v1.RulesResponse.Item.id)
+}
+inline ::int32_t RulesResponse_Item::_internal_id() const {
+  return _impl_.id_;
+}
+inline void RulesResponse_Item::_internal_set_id(::int32_t value) {
+  ;
+  _impl_.id_ = value;
+}
+
+// string ptype = 2;
+inline void RulesResponse_Item::clear_ptype() {
+  _impl_.ptype_.ClearToEmpty();
+}
+inline const std::string& RulesResponse_Item::ptype() const {
+  // @@protoc_insertion_point(field_get:palm.rbac.v1.RulesResponse.Item.ptype)
+  return _internal_ptype();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void RulesResponse_Item::set_ptype(Arg_&& arg,
+                                                     Args_... args) {
+  ;
+  _impl_.ptype_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.rbac.v1.RulesResponse.Item.ptype)
+}
+inline std::string* RulesResponse_Item::mutable_ptype() {
+  std::string* _s = _internal_mutable_ptype();
+  // @@protoc_insertion_point(field_mutable:palm.rbac.v1.RulesResponse.Item.ptype)
+  return _s;
+}
+inline const std::string& RulesResponse_Item::_internal_ptype() const {
+  return _impl_.ptype_.Get();
+}
+inline void RulesResponse_Item::_internal_set_ptype(const std::string& value) {
+  ;
+
+
+  _impl_.ptype_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RulesResponse_Item::_internal_mutable_ptype() {
+  ;
+  return _impl_.ptype_.Mutable( GetArenaForAllocation());
+}
+inline std::string* RulesResponse_Item::release_ptype() {
+  // @@protoc_insertion_point(field_release:palm.rbac.v1.RulesResponse.Item.ptype)
+  return _impl_.ptype_.Release();
+}
+inline void RulesResponse_Item::set_allocated_ptype(std::string* value) {
+  _impl_.ptype_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.ptype_.IsDefault()) {
+          _impl_.ptype_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.rbac.v1.RulesResponse.Item.ptype)
+}
+
+// string v0 = 3;
+inline void RulesResponse_Item::clear_v0() {
+  _impl_.v0_.ClearToEmpty();
+}
+inline const std::string& RulesResponse_Item::v0() const {
+  // @@protoc_insertion_point(field_get:palm.rbac.v1.RulesResponse.Item.v0)
+  return _internal_v0();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void RulesResponse_Item::set_v0(Arg_&& arg,
+                                                     Args_... args) {
+  ;
+  _impl_.v0_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.rbac.v1.RulesResponse.Item.v0)
+}
+inline std::string* RulesResponse_Item::mutable_v0() {
+  std::string* _s = _internal_mutable_v0();
+  // @@protoc_insertion_point(field_mutable:palm.rbac.v1.RulesResponse.Item.v0)
+  return _s;
+}
+inline const std::string& RulesResponse_Item::_internal_v0() const {
+  return _impl_.v0_.Get();
+}
+inline void RulesResponse_Item::_internal_set_v0(const std::string& value) {
+  ;
+
+
+  _impl_.v0_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RulesResponse_Item::_internal_mutable_v0() {
+  ;
+  return _impl_.v0_.Mutable( GetArenaForAllocation());
+}
+inline std::string* RulesResponse_Item::release_v0() {
+  // @@protoc_insertion_point(field_release:palm.rbac.v1.RulesResponse.Item.v0)
+  return _impl_.v0_.Release();
+}
+inline void RulesResponse_Item::set_allocated_v0(std::string* value) {
+  _impl_.v0_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.v0_.IsDefault()) {
+          _impl_.v0_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.rbac.v1.RulesResponse.Item.v0)
+}
+
+// string v1 = 4;
+inline void RulesResponse_Item::clear_v1() {
+  _impl_.v1_.ClearToEmpty();
+}
+inline const std::string& RulesResponse_Item::v1() const {
+  // @@protoc_insertion_point(field_get:palm.rbac.v1.RulesResponse.Item.v1)
+  return _internal_v1();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void RulesResponse_Item::set_v1(Arg_&& arg,
+                                                     Args_... args) {
+  ;
+  _impl_.v1_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.rbac.v1.RulesResponse.Item.v1)
+}
+inline std::string* RulesResponse_Item::mutable_v1() {
+  std::string* _s = _internal_mutable_v1();
+  // @@protoc_insertion_point(field_mutable:palm.rbac.v1.RulesResponse.Item.v1)
+  return _s;
+}
+inline const std::string& RulesResponse_Item::_internal_v1() const {
+  return _impl_.v1_.Get();
+}
+inline void RulesResponse_Item::_internal_set_v1(const std::string& value) {
+  ;
+
+
+  _impl_.v1_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RulesResponse_Item::_internal_mutable_v1() {
+  ;
+  return _impl_.v1_.Mutable( GetArenaForAllocation());
+}
+inline std::string* RulesResponse_Item::release_v1() {
+  // @@protoc_insertion_point(field_release:palm.rbac.v1.RulesResponse.Item.v1)
+  return _impl_.v1_.Release();
+}
+inline void RulesResponse_Item::set_allocated_v1(std::string* value) {
+  _impl_.v1_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.v1_.IsDefault()) {
+          _impl_.v1_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.rbac.v1.RulesResponse.Item.v1)
+}
+
+// string v2 = 5;
+inline void RulesResponse_Item::clear_v2() {
+  _impl_.v2_.ClearToEmpty();
+}
+inline const std::string& RulesResponse_Item::v2() const {
+  // @@protoc_insertion_point(field_get:palm.rbac.v1.RulesResponse.Item.v2)
+  return _internal_v2();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void RulesResponse_Item::set_v2(Arg_&& arg,
+                                                     Args_... args) {
+  ;
+  _impl_.v2_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.rbac.v1.RulesResponse.Item.v2)
+}
+inline std::string* RulesResponse_Item::mutable_v2() {
+  std::string* _s = _internal_mutable_v2();
+  // @@protoc_insertion_point(field_mutable:palm.rbac.v1.RulesResponse.Item.v2)
+  return _s;
+}
+inline const std::string& RulesResponse_Item::_internal_v2() const {
+  return _impl_.v2_.Get();
+}
+inline void RulesResponse_Item::_internal_set_v2(const std::string& value) {
+  ;
+
+
+  _impl_.v2_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RulesResponse_Item::_internal_mutable_v2() {
+  ;
+  return _impl_.v2_.Mutable( GetArenaForAllocation());
+}
+inline std::string* RulesResponse_Item::release_v2() {
+  // @@protoc_insertion_point(field_release:palm.rbac.v1.RulesResponse.Item.v2)
+  return _impl_.v2_.Release();
+}
+inline void RulesResponse_Item::set_allocated_v2(std::string* value) {
+  _impl_.v2_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.v2_.IsDefault()) {
+          _impl_.v2_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.rbac.v1.RulesResponse.Item.v2)
+}
+
+// string v3 = 6;
+inline void RulesResponse_Item::clear_v3() {
+  _impl_.v3_.ClearToEmpty();
+}
+inline const std::string& RulesResponse_Item::v3() const {
+  // @@protoc_insertion_point(field_get:palm.rbac.v1.RulesResponse.Item.v3)
+  return _internal_v3();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void RulesResponse_Item::set_v3(Arg_&& arg,
+                                                     Args_... args) {
+  ;
+  _impl_.v3_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.rbac.v1.RulesResponse.Item.v3)
+}
+inline std::string* RulesResponse_Item::mutable_v3() {
+  std::string* _s = _internal_mutable_v3();
+  // @@protoc_insertion_point(field_mutable:palm.rbac.v1.RulesResponse.Item.v3)
+  return _s;
+}
+inline const std::string& RulesResponse_Item::_internal_v3() const {
+  return _impl_.v3_.Get();
+}
+inline void RulesResponse_Item::_internal_set_v3(const std::string& value) {
+  ;
+
+
+  _impl_.v3_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RulesResponse_Item::_internal_mutable_v3() {
+  ;
+  return _impl_.v3_.Mutable( GetArenaForAllocation());
+}
+inline std::string* RulesResponse_Item::release_v3() {
+  // @@protoc_insertion_point(field_release:palm.rbac.v1.RulesResponse.Item.v3)
+  return _impl_.v3_.Release();
+}
+inline void RulesResponse_Item::set_allocated_v3(std::string* value) {
+  _impl_.v3_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.v3_.IsDefault()) {
+          _impl_.v3_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.rbac.v1.RulesResponse.Item.v3)
+}
+
+// string v4 = 7;
+inline void RulesResponse_Item::clear_v4() {
+  _impl_.v4_.ClearToEmpty();
+}
+inline const std::string& RulesResponse_Item::v4() const {
+  // @@protoc_insertion_point(field_get:palm.rbac.v1.RulesResponse.Item.v4)
+  return _internal_v4();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void RulesResponse_Item::set_v4(Arg_&& arg,
+                                                     Args_... args) {
+  ;
+  _impl_.v4_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.rbac.v1.RulesResponse.Item.v4)
+}
+inline std::string* RulesResponse_Item::mutable_v4() {
+  std::string* _s = _internal_mutable_v4();
+  // @@protoc_insertion_point(field_mutable:palm.rbac.v1.RulesResponse.Item.v4)
+  return _s;
+}
+inline const std::string& RulesResponse_Item::_internal_v4() const {
+  return _impl_.v4_.Get();
+}
+inline void RulesResponse_Item::_internal_set_v4(const std::string& value) {
+  ;
+
+
+  _impl_.v4_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RulesResponse_Item::_internal_mutable_v4() {
+  ;
+  return _impl_.v4_.Mutable( GetArenaForAllocation());
+}
+inline std::string* RulesResponse_Item::release_v4() {
+  // @@protoc_insertion_point(field_release:palm.rbac.v1.RulesResponse.Item.v4)
+  return _impl_.v4_.Release();
+}
+inline void RulesResponse_Item::set_allocated_v4(std::string* value) {
+  _impl_.v4_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.v4_.IsDefault()) {
+          _impl_.v4_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.rbac.v1.RulesResponse.Item.v4)
+}
+
+// string v5 = 8;
+inline void RulesResponse_Item::clear_v5() {
+  _impl_.v5_.ClearToEmpty();
+}
+inline const std::string& RulesResponse_Item::v5() const {
+  // @@protoc_insertion_point(field_get:palm.rbac.v1.RulesResponse.Item.v5)
+  return _internal_v5();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void RulesResponse_Item::set_v5(Arg_&& arg,
+                                                     Args_... args) {
+  ;
+  _impl_.v5_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.rbac.v1.RulesResponse.Item.v5)
+}
+inline std::string* RulesResponse_Item::mutable_v5() {
+  std::string* _s = _internal_mutable_v5();
+  // @@protoc_insertion_point(field_mutable:palm.rbac.v1.RulesResponse.Item.v5)
+  return _s;
+}
+inline const std::string& RulesResponse_Item::_internal_v5() const {
+  return _impl_.v5_.Get();
+}
+inline void RulesResponse_Item::_internal_set_v5(const std::string& value) {
+  ;
+
+
+  _impl_.v5_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RulesResponse_Item::_internal_mutable_v5() {
+  ;
+  return _impl_.v5_.Mutable( GetArenaForAllocation());
+}
+inline std::string* RulesResponse_Item::release_v5() {
+  // @@protoc_insertion_point(field_release:palm.rbac.v1.RulesResponse.Item.v5)
+  return _impl_.v5_.Release();
+}
+inline void RulesResponse_Item::set_allocated_v5(std::string* value) {
+  _impl_.v5_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.v5_.IsDefault()) {
+          _impl_.v5_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.rbac.v1.RulesResponse.Item.v5)
+}
+
+// -------------------------------------------------------------------
+
+// RulesResponse
+
+// repeated .palm.rbac.v1.RulesResponse.Item items = 1;
+inline int RulesResponse::_internal_items_size() const {
+  return _impl_.items_.size();
+}
+inline int RulesResponse::items_size() const {
+  return _internal_items_size();
+}
+inline void RulesResponse::clear_items() {
+  _internal_mutable_items()->Clear();
+}
+inline ::palm::rbac::v1::RulesResponse_Item* RulesResponse::mutable_items(int index) {
+  // @@protoc_insertion_point(field_mutable:palm.rbac.v1.RulesResponse.items)
+  return _internal_mutable_items()->Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::rbac::v1::RulesResponse_Item >*
+RulesResponse::mutable_items() {
+  // @@protoc_insertion_point(field_mutable_list:palm.rbac.v1.RulesResponse.items)
+  return _internal_mutable_items();
+}
+inline const ::palm::rbac::v1::RulesResponse_Item& RulesResponse::_internal_items(int index) const {
+  return _internal_items().Get(index);
+}
+inline const ::palm::rbac::v1::RulesResponse_Item& RulesResponse::items(int index) const {
+  // @@protoc_insertion_point(field_get:palm.rbac.v1.RulesResponse.items)
+  return _internal_items(index);
+}
+inline ::palm::rbac::v1::RulesResponse_Item* RulesResponse::_internal_add_items() {
+  return _internal_mutable_items()->Add();
+}
+inline ::palm::rbac::v1::RulesResponse_Item* RulesResponse::add_items() {
+  ::palm::rbac::v1::RulesResponse_Item* _add = _internal_add_items();
+  // @@protoc_insertion_point(field_add:palm.rbac.v1.RulesResponse.items)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::rbac::v1::RulesResponse_Item >&
+RulesResponse::items() const {
+  // @@protoc_insertion_point(field_list:palm.rbac.v1.RulesResponse.items)
+  return _internal_items();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<::palm::rbac::v1::RulesResponse_Item>&
+RulesResponse::_internal_items() const {
+  return _impl_.items_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<::palm::rbac::v1::RulesResponse_Item>*
+RulesResponse::_internal_mutable_items() {
+  return &_impl_.items_;
 }
 
 #ifdef __GNUC__

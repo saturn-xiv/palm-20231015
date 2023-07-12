@@ -77,9 +77,6 @@ extern BaiduProfileDefaultTypeInternal _BaiduProfile_default_instance_;
 class BaiduProfile_SiteVerify;
 struct BaiduProfile_SiteVerifyDefaultTypeInternal;
 extern BaiduProfile_SiteVerifyDefaultTypeInternal _BaiduProfile_SiteVerify_default_instance_;
-class BingProfile;
-struct BingProfileDefaultTypeInternal;
-extern BingProfileDefaultTypeInternal _BingProfile_default_instance_;
 class CategoryCreateRequest;
 struct CategoryCreateRequestDefaultTypeInternal;
 extern CategoryCreateRequestDefaultTypeInternal _CategoryCreateRequest_default_instance_;
@@ -209,9 +206,6 @@ extern SiteLayoutResponse_AuthorDefaultTypeInternal _SiteLayoutResponse_Author_d
 class SiteMaintenanceModeRequest;
 struct SiteMaintenanceModeRequestDefaultTypeInternal;
 extern SiteMaintenanceModeRequestDefaultTypeInternal _SiteMaintenanceModeRequest_default_instance_;
-class SiteMaintenanceModeRequest_Item;
-struct SiteMaintenanceModeRequest_ItemDefaultTypeInternal;
-extern SiteMaintenanceModeRequest_ItemDefaultTypeInternal _SiteMaintenanceModeRequest_Item_default_instance_;
 class SiteSetCopyrightRequest;
 struct SiteSetCopyrightRequestDefaultTypeInternal;
 extern SiteSetCopyrightRequestDefaultTypeInternal _SiteSetCopyrightRequest_default_instance_;
@@ -224,9 +218,9 @@ extern SiteSetKeywordsRequestDefaultTypeInternal _SiteSetKeywordsRequest_default
 class SiteSetLogoRequest;
 struct SiteSetLogoRequestDefaultTypeInternal;
 extern SiteSetLogoRequestDefaultTypeInternal _SiteSetLogoRequest_default_instance_;
-class SiteSmtpTestRequest;
-struct SiteSmtpTestRequestDefaultTypeInternal;
-extern SiteSmtpTestRequestDefaultTypeInternal _SiteSmtpTestRequest_default_instance_;
+class SiteSmtpPingRequest;
+struct SiteSmtpPingRequestDefaultTypeInternal;
+extern SiteSmtpPingRequestDefaultTypeInternal _SiteSmtpPingRequest_default_instance_;
 class SiteStatusResponse;
 struct SiteStatusResponseDefaultTypeInternal;
 extern SiteStatusResponseDefaultTypeInternal _SiteStatusResponse_default_instance_;
@@ -257,9 +251,9 @@ extern SiteStatusResponse_Redis_ItemDefaultTypeInternal _SiteStatusResponse_Redi
 class SiteStatusResponse_System;
 struct SiteStatusResponse_SystemDefaultTypeInternal;
 extern SiteStatusResponse_SystemDefaultTypeInternal _SiteStatusResponse_System_default_instance_;
-class SiteTwilioTestRequest;
-struct SiteTwilioTestRequestDefaultTypeInternal;
-extern SiteTwilioTestRequestDefaultTypeInternal _SiteTwilioTestRequest_default_instance_;
+class SiteTwilioPingRequest;
+struct SiteTwilioPingRequestDefaultTypeInternal;
+extern SiteTwilioPingRequestDefaultTypeInternal _SiteTwilioPingRequest_default_instance_;
 class SitemapPingRequest;
 struct SitemapPingRequestDefaultTypeInternal;
 extern SitemapPingRequestDefaultTypeInternal _SitemapPingRequest_default_instance_;
@@ -385,8 +379,6 @@ template <>
 template <>
 ::palm::nut::v1::BaiduProfile_SiteVerify* Arena::CreateMaybeMessage<::palm::nut::v1::BaiduProfile_SiteVerify>(Arena*);
 template <>
-::palm::nut::v1::BingProfile* Arena::CreateMaybeMessage<::palm::nut::v1::BingProfile>(Arena*);
-template <>
 ::palm::nut::v1::CategoryCreateRequest* Arena::CreateMaybeMessage<::palm::nut::v1::CategoryCreateRequest>(Arena*);
 template <>
 ::palm::nut::v1::CategoryIndexResponse* Arena::CreateMaybeMessage<::palm::nut::v1::CategoryIndexResponse>(Arena*);
@@ -473,8 +465,6 @@ template <>
 template <>
 ::palm::nut::v1::SiteMaintenanceModeRequest* Arena::CreateMaybeMessage<::palm::nut::v1::SiteMaintenanceModeRequest>(Arena*);
 template <>
-::palm::nut::v1::SiteMaintenanceModeRequest_Item* Arena::CreateMaybeMessage<::palm::nut::v1::SiteMaintenanceModeRequest_Item>(Arena*);
-template <>
 ::palm::nut::v1::SiteSetCopyrightRequest* Arena::CreateMaybeMessage<::palm::nut::v1::SiteSetCopyrightRequest>(Arena*);
 template <>
 ::palm::nut::v1::SiteSetInfoRequest* Arena::CreateMaybeMessage<::palm::nut::v1::SiteSetInfoRequest>(Arena*);
@@ -483,7 +473,7 @@ template <>
 template <>
 ::palm::nut::v1::SiteSetLogoRequest* Arena::CreateMaybeMessage<::palm::nut::v1::SiteSetLogoRequest>(Arena*);
 template <>
-::palm::nut::v1::SiteSmtpTestRequest* Arena::CreateMaybeMessage<::palm::nut::v1::SiteSmtpTestRequest>(Arena*);
+::palm::nut::v1::SiteSmtpPingRequest* Arena::CreateMaybeMessage<::palm::nut::v1::SiteSmtpPingRequest>(Arena*);
 template <>
 ::palm::nut::v1::SiteStatusResponse* Arena::CreateMaybeMessage<::palm::nut::v1::SiteStatusResponse>(Arena*);
 template <>
@@ -505,7 +495,7 @@ template <>
 template <>
 ::palm::nut::v1::SiteStatusResponse_System* Arena::CreateMaybeMessage<::palm::nut::v1::SiteStatusResponse_System>(Arena*);
 template <>
-::palm::nut::v1::SiteTwilioTestRequest* Arena::CreateMaybeMessage<::palm::nut::v1::SiteTwilioTestRequest>(Arena*);
+::palm::nut::v1::SiteTwilioPingRequest* Arena::CreateMaybeMessage<::palm::nut::v1::SiteTwilioPingRequest>(Arena*);
 template <>
 ::palm::nut::v1::SitemapPingRequest* Arena::CreateMaybeMessage<::palm::nut::v1::SitemapPingRequest>(Arena*);
 template <>
@@ -13085,188 +13075,6 @@ class SitemapPingRequest final :
   friend struct ::TableStruct_nut_2eproto;
 };// -------------------------------------------------------------------
 
-class SiteMaintenanceModeRequest_Item final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.nut.v1.SiteMaintenanceModeRequest.Item) */ {
- public:
-  inline SiteMaintenanceModeRequest_Item() : SiteMaintenanceModeRequest_Item(nullptr) {}
-  ~SiteMaintenanceModeRequest_Item() override;
-  template<typename = void>
-  explicit PROTOBUF_CONSTEXPR SiteMaintenanceModeRequest_Item(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  SiteMaintenanceModeRequest_Item(const SiteMaintenanceModeRequest_Item& from);
-  SiteMaintenanceModeRequest_Item(SiteMaintenanceModeRequest_Item&& from) noexcept
-    : SiteMaintenanceModeRequest_Item() {
-    *this = ::std::move(from);
-  }
-
-  inline SiteMaintenanceModeRequest_Item& operator=(const SiteMaintenanceModeRequest_Item& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline SiteMaintenanceModeRequest_Item& operator=(SiteMaintenanceModeRequest_Item&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
-  }
-  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const SiteMaintenanceModeRequest_Item& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const SiteMaintenanceModeRequest_Item* internal_default_instance() {
-    return reinterpret_cast<const SiteMaintenanceModeRequest_Item*>(
-               &_SiteMaintenanceModeRequest_Item_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    58;
-
-  friend void swap(SiteMaintenanceModeRequest_Item& a, SiteMaintenanceModeRequest_Item& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(SiteMaintenanceModeRequest_Item* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(SiteMaintenanceModeRequest_Item* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  SiteMaintenanceModeRequest_Item* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<SiteMaintenanceModeRequest_Item>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const SiteMaintenanceModeRequest_Item& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const SiteMaintenanceModeRequest_Item& from) {
-    SiteMaintenanceModeRequest_Item::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  ::size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(SiteMaintenanceModeRequest_Item* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::absl::string_view FullMessageName() {
-    return "palm.nut.v1.SiteMaintenanceModeRequest.Item";
-  }
-  protected:
-  explicit SiteMaintenanceModeRequest_Item(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kReasonFieldNumber = 2,
-    kDurationFieldNumber = 1,
-  };
-  // string reason = 2;
-  void clear_reason() ;
-  const std::string& reason() const;
-
-
-
-
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_reason(Arg_&& arg, Args_... args);
-  std::string* mutable_reason();
-  PROTOBUF_NODISCARD std::string* release_reason();
-  void set_allocated_reason(std::string* ptr);
-
-  private:
-  const std::string& _internal_reason() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_reason(
-      const std::string& value);
-  std::string* _internal_mutable_reason();
-
-  public:
-  // .google.protobuf.Duration duration = 1;
-  bool has_duration() const;
-  void clear_duration() ;
-  const ::PROTOBUF_NAMESPACE_ID::Duration& duration() const;
-  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::Duration* release_duration();
-  ::PROTOBUF_NAMESPACE_ID::Duration* mutable_duration();
-  void set_allocated_duration(::PROTOBUF_NAMESPACE_ID::Duration* duration);
-  private:
-  const ::PROTOBUF_NAMESPACE_ID::Duration& _internal_duration() const;
-  ::PROTOBUF_NAMESPACE_ID::Duration* _internal_mutable_duration();
-  public:
-  void unsafe_arena_set_allocated_duration(
-      ::PROTOBUF_NAMESPACE_ID::Duration* duration);
-  ::PROTOBUF_NAMESPACE_ID::Duration* unsafe_arena_release_duration();
-  // @@protoc_insertion_point(class_scope:palm.nut.v1.SiteMaintenanceModeRequest.Item)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr reason_;
-    ::PROTOBUF_NAMESPACE_ID::Duration* duration_;
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_nut_2eproto;
-};// -------------------------------------------------------------------
-
 class SiteMaintenanceModeRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.nut.v1.SiteMaintenanceModeRequest) */ {
  public:
@@ -13323,7 +13131,7 @@ class SiteMaintenanceModeRequest final :
                &_SiteMaintenanceModeRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    59;
+    58;
 
   friend void swap(SiteMaintenanceModeRequest& a, SiteMaintenanceModeRequest& b) {
     a.Swap(&b);
@@ -13392,27 +13200,46 @@ class SiteMaintenanceModeRequest final :
 
   // nested types ----------------------------------------------------
 
-  typedef SiteMaintenanceModeRequest_Item Item;
-
   // accessors -------------------------------------------------------
 
   enum : int {
-    kItemFieldNumber = 1,
+    kReasonFieldNumber = 2,
+    kTtlFieldNumber = 1,
   };
-  // optional .palm.nut.v1.SiteMaintenanceModeRequest.Item item = 1;
-  bool has_item() const;
-  void clear_item() ;
-  const ::palm::nut::v1::SiteMaintenanceModeRequest_Item& item() const;
-  PROTOBUF_NODISCARD ::palm::nut::v1::SiteMaintenanceModeRequest_Item* release_item();
-  ::palm::nut::v1::SiteMaintenanceModeRequest_Item* mutable_item();
-  void set_allocated_item(::palm::nut::v1::SiteMaintenanceModeRequest_Item* item);
+  // string reason = 2;
+  void clear_reason() ;
+  const std::string& reason() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_reason(Arg_&& arg, Args_... args);
+  std::string* mutable_reason();
+  PROTOBUF_NODISCARD std::string* release_reason();
+  void set_allocated_reason(std::string* ptr);
+
   private:
-  const ::palm::nut::v1::SiteMaintenanceModeRequest_Item& _internal_item() const;
-  ::palm::nut::v1::SiteMaintenanceModeRequest_Item* _internal_mutable_item();
+  const std::string& _internal_reason() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_reason(
+      const std::string& value);
+  std::string* _internal_mutable_reason();
+
   public:
-  void unsafe_arena_set_allocated_item(
-      ::palm::nut::v1::SiteMaintenanceModeRequest_Item* item);
-  ::palm::nut::v1::SiteMaintenanceModeRequest_Item* unsafe_arena_release_item();
+  // .google.protobuf.Duration ttl = 1;
+  bool has_ttl() const;
+  void clear_ttl() ;
+  const ::PROTOBUF_NAMESPACE_ID::Duration& ttl() const;
+  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::Duration* release_ttl();
+  ::PROTOBUF_NAMESPACE_ID::Duration* mutable_ttl();
+  void set_allocated_ttl(::PROTOBUF_NAMESPACE_ID::Duration* ttl);
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Duration& _internal_ttl() const;
+  ::PROTOBUF_NAMESPACE_ID::Duration* _internal_mutable_ttl();
+  public:
+  void unsafe_arena_set_allocated_ttl(
+      ::PROTOBUF_NAMESPACE_ID::Duration* ttl);
+  ::PROTOBUF_NAMESPACE_ID::Duration* unsafe_arena_release_ttl();
   // @@protoc_insertion_point(class_scope:palm.nut.v1.SiteMaintenanceModeRequest)
  private:
   class _Internal;
@@ -13423,7 +13250,8 @@ class SiteMaintenanceModeRequest final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-    ::palm::nut::v1::SiteMaintenanceModeRequest_Item* item_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr reason_;
+    ::PROTOBUF_NAMESPACE_ID::Duration* ttl_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_nut_2eproto;
@@ -13485,7 +13313,7 @@ class SiteInstallRequest final :
                &_SiteInstallRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    60;
+    59;
 
   friend void swap(SiteInstallRequest& a, SiteInstallRequest& b) {
     a.Swap(&b);
@@ -13645,7 +13473,7 @@ class TwilioProfile final :
                &_TwilioProfile_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    61;
+    60;
 
   friend void swap(TwilioProfile& a, TwilioProfile& b) {
     a.Swap(&b);
@@ -13878,7 +13706,7 @@ class SmtpProfile final :
                &_SmtpProfile_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    62;
+    61;
 
   friend void swap(SmtpProfile& a, SmtpProfile& b) {
     a.Swap(&b);
@@ -14171,7 +13999,7 @@ class EmailTask_Address final :
                &_EmailTask_Address_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    63;
+    62;
 
   friend void swap(EmailTask_Address& a, EmailTask_Address& b) {
     a.Swap(&b);
@@ -14358,7 +14186,7 @@ class EmailTask_Body final :
                &_EmailTask_Body_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    64;
+    63;
 
   friend void swap(EmailTask_Body& a, EmailTask_Body& b) {
     a.Swap(&b);
@@ -14535,7 +14363,7 @@ class EmailTask_Attachment final :
                &_EmailTask_Attachment_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    65;
+    64;
 
   friend void swap(EmailTask_Attachment& a, EmailTask_Attachment& b) {
     a.Swap(&b);
@@ -14722,7 +14550,7 @@ class EmailTask final :
                &_EmailTask_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    66;
+    65;
 
   friend void swap(EmailTask& a, EmailTask& b) {
     a.Swap(&b);
@@ -14934,25 +14762,25 @@ class EmailTask final :
   friend struct ::TableStruct_nut_2eproto;
 };// -------------------------------------------------------------------
 
-class SiteTwilioTestRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.nut.v1.SiteTwilioTestRequest) */ {
+class SiteTwilioPingRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.nut.v1.SiteTwilioPingRequest) */ {
  public:
-  inline SiteTwilioTestRequest() : SiteTwilioTestRequest(nullptr) {}
-  ~SiteTwilioTestRequest() override;
+  inline SiteTwilioPingRequest() : SiteTwilioPingRequest(nullptr) {}
+  ~SiteTwilioPingRequest() override;
   template<typename = void>
-  explicit PROTOBUF_CONSTEXPR SiteTwilioTestRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit PROTOBUF_CONSTEXPR SiteTwilioPingRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  SiteTwilioTestRequest(const SiteTwilioTestRequest& from);
-  SiteTwilioTestRequest(SiteTwilioTestRequest&& from) noexcept
-    : SiteTwilioTestRequest() {
+  SiteTwilioPingRequest(const SiteTwilioPingRequest& from);
+  SiteTwilioPingRequest(SiteTwilioPingRequest&& from) noexcept
+    : SiteTwilioPingRequest() {
     *this = ::std::move(from);
   }
 
-  inline SiteTwilioTestRequest& operator=(const SiteTwilioTestRequest& from) {
+  inline SiteTwilioPingRequest& operator=(const SiteTwilioPingRequest& from) {
     CopyFrom(from);
     return *this;
   }
-  inline SiteTwilioTestRequest& operator=(SiteTwilioTestRequest&& from) noexcept {
+  inline SiteTwilioPingRequest& operator=(SiteTwilioPingRequest&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -14982,20 +14810,20 @@ class SiteTwilioTestRequest final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const SiteTwilioTestRequest& default_instance() {
+  static const SiteTwilioPingRequest& default_instance() {
     return *internal_default_instance();
   }
-  static inline const SiteTwilioTestRequest* internal_default_instance() {
-    return reinterpret_cast<const SiteTwilioTestRequest*>(
-               &_SiteTwilioTestRequest_default_instance_);
+  static inline const SiteTwilioPingRequest* internal_default_instance() {
+    return reinterpret_cast<const SiteTwilioPingRequest*>(
+               &_SiteTwilioPingRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    67;
+    66;
 
-  friend void swap(SiteTwilioTestRequest& a, SiteTwilioTestRequest& b) {
+  friend void swap(SiteTwilioPingRequest& a, SiteTwilioPingRequest& b) {
     a.Swap(&b);
   }
-  inline void Swap(SiteTwilioTestRequest* other) {
+  inline void Swap(SiteTwilioPingRequest* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -15008,7 +14836,7 @@ class SiteTwilioTestRequest final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(SiteTwilioTestRequest* other) {
+  void UnsafeArenaSwap(SiteTwilioPingRequest* other) {
     if (other == this) return;
     ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -15016,14 +14844,14 @@ class SiteTwilioTestRequest final :
 
   // implements Message ----------------------------------------------
 
-  SiteTwilioTestRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<SiteTwilioTestRequest>(arena);
+  SiteTwilioPingRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SiteTwilioPingRequest>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const SiteTwilioTestRequest& from);
+  void CopyFrom(const SiteTwilioPingRequest& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const SiteTwilioTestRequest& from) {
-    SiteTwilioTestRequest::MergeImpl(*this, from);
+  void MergeFrom( const SiteTwilioPingRequest& from) {
+    SiteTwilioPingRequest::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
@@ -15041,15 +14869,15 @@ class SiteTwilioTestRequest final :
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(SiteTwilioTestRequest* other);
+  void InternalSwap(SiteTwilioPingRequest* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::absl::string_view FullMessageName() {
-    return "palm.nut.v1.SiteTwilioTestRequest";
+    return "palm.nut.v1.SiteTwilioPingRequest";
   }
   protected:
-  explicit SiteTwilioTestRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit SiteTwilioPingRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   public:
 
   static const ClassData _class_data_;
@@ -15120,7 +14948,7 @@ class SiteTwilioTestRequest final :
   void unsafe_arena_set_allocated_profile(
       ::palm::nut::v1::TwilioProfile* profile);
   ::palm::nut::v1::TwilioProfile* unsafe_arena_release_profile();
-  // @@protoc_insertion_point(class_scope:palm.nut.v1.SiteTwilioTestRequest)
+  // @@protoc_insertion_point(class_scope:palm.nut.v1.SiteTwilioPingRequest)
  private:
   class _Internal;
 
@@ -15138,25 +14966,25 @@ class SiteTwilioTestRequest final :
   friend struct ::TableStruct_nut_2eproto;
 };// -------------------------------------------------------------------
 
-class SiteSmtpTestRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.nut.v1.SiteSmtpTestRequest) */ {
+class SiteSmtpPingRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.nut.v1.SiteSmtpPingRequest) */ {
  public:
-  inline SiteSmtpTestRequest() : SiteSmtpTestRequest(nullptr) {}
-  ~SiteSmtpTestRequest() override;
+  inline SiteSmtpPingRequest() : SiteSmtpPingRequest(nullptr) {}
+  ~SiteSmtpPingRequest() override;
   template<typename = void>
-  explicit PROTOBUF_CONSTEXPR SiteSmtpTestRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit PROTOBUF_CONSTEXPR SiteSmtpPingRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  SiteSmtpTestRequest(const SiteSmtpTestRequest& from);
-  SiteSmtpTestRequest(SiteSmtpTestRequest&& from) noexcept
-    : SiteSmtpTestRequest() {
+  SiteSmtpPingRequest(const SiteSmtpPingRequest& from);
+  SiteSmtpPingRequest(SiteSmtpPingRequest&& from) noexcept
+    : SiteSmtpPingRequest() {
     *this = ::std::move(from);
   }
 
-  inline SiteSmtpTestRequest& operator=(const SiteSmtpTestRequest& from) {
+  inline SiteSmtpPingRequest& operator=(const SiteSmtpPingRequest& from) {
     CopyFrom(from);
     return *this;
   }
-  inline SiteSmtpTestRequest& operator=(SiteSmtpTestRequest&& from) noexcept {
+  inline SiteSmtpPingRequest& operator=(SiteSmtpPingRequest&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -15186,20 +15014,20 @@ class SiteSmtpTestRequest final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const SiteSmtpTestRequest& default_instance() {
+  static const SiteSmtpPingRequest& default_instance() {
     return *internal_default_instance();
   }
-  static inline const SiteSmtpTestRequest* internal_default_instance() {
-    return reinterpret_cast<const SiteSmtpTestRequest*>(
-               &_SiteSmtpTestRequest_default_instance_);
+  static inline const SiteSmtpPingRequest* internal_default_instance() {
+    return reinterpret_cast<const SiteSmtpPingRequest*>(
+               &_SiteSmtpPingRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    68;
+    67;
 
-  friend void swap(SiteSmtpTestRequest& a, SiteSmtpTestRequest& b) {
+  friend void swap(SiteSmtpPingRequest& a, SiteSmtpPingRequest& b) {
     a.Swap(&b);
   }
-  inline void Swap(SiteSmtpTestRequest* other) {
+  inline void Swap(SiteSmtpPingRequest* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -15212,7 +15040,7 @@ class SiteSmtpTestRequest final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(SiteSmtpTestRequest* other) {
+  void UnsafeArenaSwap(SiteSmtpPingRequest* other) {
     if (other == this) return;
     ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -15220,14 +15048,14 @@ class SiteSmtpTestRequest final :
 
   // implements Message ----------------------------------------------
 
-  SiteSmtpTestRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<SiteSmtpTestRequest>(arena);
+  SiteSmtpPingRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SiteSmtpPingRequest>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const SiteSmtpTestRequest& from);
+  void CopyFrom(const SiteSmtpPingRequest& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const SiteSmtpTestRequest& from) {
-    SiteSmtpTestRequest::MergeImpl(*this, from);
+  void MergeFrom( const SiteSmtpPingRequest& from) {
+    SiteSmtpPingRequest::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
@@ -15245,15 +15073,15 @@ class SiteSmtpTestRequest final :
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(SiteSmtpTestRequest* other);
+  void InternalSwap(SiteSmtpPingRequest* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::absl::string_view FullMessageName() {
-    return "palm.nut.v1.SiteSmtpTestRequest";
+    return "palm.nut.v1.SiteSmtpPingRequest";
   }
   protected:
-  explicit SiteSmtpTestRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit SiteSmtpPingRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   public:
 
   static const ClassData _class_data_;
@@ -15339,7 +15167,7 @@ class SiteSmtpTestRequest final :
   void unsafe_arena_set_allocated_profile(
       ::palm::nut::v1::SmtpProfile* profile);
   ::palm::nut::v1::SmtpProfile* unsafe_arena_release_profile();
-  // @@protoc_insertion_point(class_scope:palm.nut.v1.SiteSmtpTestRequest)
+  // @@protoc_insertion_point(class_scope:palm.nut.v1.SiteSmtpPingRequest)
  private:
   class _Internal;
 
@@ -15414,7 +15242,7 @@ class SiteSetLogoRequest final :
                &_SiteSetLogoRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    69;
+    68;
 
   friend void swap(SiteSetLogoRequest& a, SiteSetLogoRequest& b) {
     a.Swap(&b);
@@ -15579,7 +15407,7 @@ class SiteSetCopyrightRequest final :
                &_SiteSetCopyrightRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    70;
+    69;
 
   friend void swap(SiteSetCopyrightRequest& a, SiteSetCopyrightRequest& b) {
     a.Swap(&b);
@@ -15744,7 +15572,7 @@ class SiteSetKeywordsRequest final :
                &_SiteSetKeywordsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    71;
+    70;
 
   friend void swap(SiteSetKeywordsRequest& a, SiteSetKeywordsRequest& b) {
     a.Swap(&b);
@@ -15919,7 +15747,7 @@ class SiteSetInfoRequest final :
                &_SiteSetInfoRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    72;
+    71;
 
   friend void swap(SiteSetInfoRequest& a, SiteSetInfoRequest& b) {
     a.Swap(&b);
@@ -16150,7 +15978,7 @@ class SiteLayoutResponse_Author final :
                &_SiteLayoutResponse_Author_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    73;
+    72;
 
   friend void swap(SiteLayoutResponse_Author& a, SiteLayoutResponse_Author& b) {
     a.Swap(&b);
@@ -16337,7 +16165,7 @@ class SiteLayoutResponse final :
                &_SiteLayoutResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    74;
+    73;
 
   friend void swap(SiteLayoutResponse& a, SiteLayoutResponse& b) {
     a.Swap(&b);
@@ -16673,7 +16501,7 @@ class GoogleProfile_ReCaptcha final :
                &_GoogleProfile_ReCaptcha_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    75;
+    74;
 
   friend void swap(GoogleProfile_ReCaptcha& a, GoogleProfile_ReCaptcha& b) {
     a.Swap(&b);
@@ -16860,7 +16688,7 @@ class GoogleProfile final :
                &_GoogleProfile_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    76;
+    75;
 
   friend void swap(GoogleProfile& a, GoogleProfile& b) {
     a.Swap(&b);
@@ -17045,7 +16873,7 @@ class BaiduProfile_SiteVerify final :
                &_BaiduProfile_SiteVerify_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    77;
+    76;
 
   friend void swap(BaiduProfile_SiteVerify& a, BaiduProfile_SiteVerify& b) {
     a.Swap(&b);
@@ -17232,7 +17060,7 @@ class BaiduProfile final :
                &_BaiduProfile_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    78;
+    77;
 
   friend void swap(BaiduProfile& a, BaiduProfile& b) {
     a.Swap(&b);
@@ -17338,173 +17166,6 @@ class BaiduProfile final :
   friend struct ::TableStruct_nut_2eproto;
 };// -------------------------------------------------------------------
 
-class BingProfile final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.nut.v1.BingProfile) */ {
- public:
-  inline BingProfile() : BingProfile(nullptr) {}
-  ~BingProfile() override;
-  template<typename = void>
-  explicit PROTOBUF_CONSTEXPR BingProfile(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  BingProfile(const BingProfile& from);
-  BingProfile(BingProfile&& from) noexcept
-    : BingProfile() {
-    *this = ::std::move(from);
-  }
-
-  inline BingProfile& operator=(const BingProfile& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline BingProfile& operator=(BingProfile&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
-  }
-  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const BingProfile& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const BingProfile* internal_default_instance() {
-    return reinterpret_cast<const BingProfile*>(
-               &_BingProfile_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    79;
-
-  friend void swap(BingProfile& a, BingProfile& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(BingProfile* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(BingProfile* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  BingProfile* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<BingProfile>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const BingProfile& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const BingProfile& from) {
-    BingProfile::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  ::size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(BingProfile* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::absl::string_view FullMessageName() {
-    return "palm.nut.v1.BingProfile";
-  }
-  protected:
-  explicit BingProfile(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kSiteVerifyIdFieldNumber = 1,
-  };
-  // optional string site_verify_id = 1;
-  bool has_site_verify_id() const;
-  void clear_site_verify_id() ;
-  const std::string& site_verify_id() const;
-
-
-
-
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_site_verify_id(Arg_&& arg, Args_... args);
-  std::string* mutable_site_verify_id();
-  PROTOBUF_NODISCARD std::string* release_site_verify_id();
-  void set_allocated_site_verify_id(std::string* ptr);
-
-  private:
-  const std::string& _internal_site_verify_id() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_site_verify_id(
-      const std::string& value);
-  std::string* _internal_mutable_site_verify_id();
-
-  public:
-  // @@protoc_insertion_point(class_scope:palm.nut.v1.BingProfile)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr site_verify_id_;
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_nut_2eproto;
-};// -------------------------------------------------------------------
-
 class SmsTask final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.nut.v1.SmsTask) */ {
  public:
@@ -17561,7 +17222,7 @@ class SmsTask final :
                &_SmsTask_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    80;
+    78;
 
   friend void swap(SmsTask& a, SmsTask& b) {
     a.Swap(&b);
@@ -17780,7 +17441,7 @@ class SiteStatusResponse_Database final :
                &_SiteStatusResponse_Database_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    81;
+    79;
 
   friend void swap(SiteStatusResponse_Database& a, SiteStatusResponse_Database& b) {
     a.Swap(&b);
@@ -17967,7 +17628,7 @@ class SiteStatusResponse_PostgreSql final :
                &_SiteStatusResponse_PostgreSql_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    82;
+    80;
 
   friend void swap(SiteStatusResponse_PostgreSql& a, SiteStatusResponse_PostgreSql& b) {
     a.Swap(&b);
@@ -18171,7 +17832,7 @@ class SiteStatusResponse_MySql final :
                &_SiteStatusResponse_MySql_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    83;
+    81;
 
   friend void swap(SiteStatusResponse_MySql& a, SiteStatusResponse_MySql& b) {
     a.Swap(&b);
@@ -18348,7 +18009,7 @@ class SiteStatusResponse_Redis_Item final :
                &_SiteStatusResponse_Redis_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    84;
+    82;
 
   friend void swap(SiteStatusResponse_Redis_Item& a, SiteStatusResponse_Redis_Item& b) {
     a.Swap(&b);
@@ -18547,7 +18208,7 @@ class SiteStatusResponse_Redis final :
                &_SiteStatusResponse_Redis_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    85;
+    83;
 
   friend void swap(SiteStatusResponse_Redis& a, SiteStatusResponse_Redis& b) {
     a.Swap(&b);
@@ -18736,7 +18397,7 @@ class SiteStatusResponse_RabbitMq final :
                &_SiteStatusResponse_RabbitMq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    86;
+    84;
 
   friend void swap(SiteStatusResponse_RabbitMq& a, SiteStatusResponse_RabbitMq& b) {
     a.Swap(&b);
@@ -18901,7 +18562,7 @@ class SiteStatusResponse_OpenSearch final :
                &_SiteStatusResponse_OpenSearch_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    87;
+    85;
 
   friend void swap(SiteStatusResponse_OpenSearch& a, SiteStatusResponse_OpenSearch& b) {
     a.Swap(&b);
@@ -19088,7 +18749,7 @@ class SiteStatusResponse_Health final :
                &_SiteStatusResponse_Health_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    88;
+    86;
 
   friend void swap(SiteStatusResponse_Health& a, SiteStatusResponse_Health& b) {
     a.Swap(&b);
@@ -19275,7 +18936,7 @@ class SiteStatusResponse_System final :
                &_SiteStatusResponse_System_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    89;
+    87;
 
   friend void swap(SiteStatusResponse_System& a, SiteStatusResponse_System& b) {
     a.Swap(&b);
@@ -19638,7 +19299,7 @@ class SiteStatusResponse final :
                &_SiteStatusResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    90;
+    88;
 
   friend void swap(SiteStatusResponse& a, SiteStatusResponse& b) {
     a.Swap(&b);
@@ -19909,7 +19570,7 @@ class ShorterLinkIndexResponse_Item final :
                &_ShorterLinkIndexResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    91;
+    89;
 
   friend void swap(ShorterLinkIndexResponse_Item& a, ShorterLinkIndexResponse_Item& b) {
     a.Swap(&b);
@@ -20147,7 +19808,7 @@ class ShorterLinkIndexResponse final :
                &_ShorterLinkIndexResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    92;
+    90;
 
   friend void swap(ShorterLinkIndexResponse& a, ShorterLinkIndexResponse& b) {
     a.Swap(&b);
@@ -20331,7 +19992,7 @@ class ShorterLinkCreateRequest final :
                &_ShorterLinkCreateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    93;
+    91;
 
   friend void swap(ShorterLinkCreateRequest& a, ShorterLinkCreateRequest& b) {
     a.Swap(&b);
@@ -20518,7 +20179,7 @@ class ShorterLinkUpdateRequest final :
                &_ShorterLinkUpdateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    94;
+    92;
 
   friend void swap(ShorterLinkUpdateRequest& a, ShorterLinkUpdateRequest& b) {
     a.Swap(&b);
@@ -20717,7 +20378,7 @@ class TagIndexResponse_Item final :
                &_TagIndexResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    95;
+    93;
 
   friend void swap(TagIndexResponse_Item& a, TagIndexResponse_Item& b) {
     a.Swap(&b);
@@ -20923,7 +20584,7 @@ class TagIndexResponse final :
                &_TagIndexResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    96;
+    94;
 
   friend void swap(TagIndexResponse& a, TagIndexResponse& b) {
     a.Swap(&b);
@@ -21090,7 +20751,7 @@ class TagCreateRequest final :
                &_TagCreateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    97;
+    95;
 
   friend void swap(TagCreateRequest& a, TagCreateRequest& b) {
     a.Swap(&b);
@@ -21267,7 +20928,7 @@ class TagUpdateRequest final :
                &_TagUpdateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    98;
+    96;
 
   friend void swap(TagUpdateRequest& a, TagUpdateRequest& b) {
     a.Swap(&b);
@@ -21456,7 +21117,7 @@ class CategoryIndexResponse_Item final :
                &_CategoryIndexResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    99;
+    97;
 
   friend void swap(CategoryIndexResponse_Item& a, CategoryIndexResponse_Item& b) {
     a.Swap(&b);
@@ -21674,7 +21335,7 @@ class CategoryIndexResponse final :
                &_CategoryIndexResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    100;
+    98;
 
   friend void swap(CategoryIndexResponse& a, CategoryIndexResponse& b) {
     a.Swap(&b);
@@ -21847,7 +21508,7 @@ class CategoryCreateRequest final :
                &_CategoryCreateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    101;
+    99;
 
   friend void swap(CategoryCreateRequest& a, CategoryCreateRequest& b) {
     a.Swap(&b);
@@ -22051,7 +21712,7 @@ class CategoryUpdateRequest final :
                &_CategoryUpdateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    102;
+    100;
 
   friend void swap(CategoryUpdateRequest& a, CategoryUpdateRequest& b) {
     a.Swap(&b);
@@ -32679,40 +32340,40 @@ inline void SitemapPingRequest::set_allocated_home(std::string* value) {
 
 // -------------------------------------------------------------------
 
-// SiteMaintenanceModeRequest_Item
+// SiteMaintenanceModeRequest
 
-// .google.protobuf.Duration duration = 1;
-inline bool SiteMaintenanceModeRequest_Item::has_duration() const {
+// .google.protobuf.Duration ttl = 1;
+inline bool SiteMaintenanceModeRequest::has_ttl() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || _impl_.duration_ != nullptr);
+  PROTOBUF_ASSUME(!value || _impl_.ttl_ != nullptr);
   return value;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::Duration& SiteMaintenanceModeRequest_Item::_internal_duration() const {
-  const ::PROTOBUF_NAMESPACE_ID::Duration* p = _impl_.duration_;
+inline const ::PROTOBUF_NAMESPACE_ID::Duration& SiteMaintenanceModeRequest::_internal_ttl() const {
+  const ::PROTOBUF_NAMESPACE_ID::Duration* p = _impl_.ttl_;
   return p != nullptr ? *p : reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Duration&>(
       ::PROTOBUF_NAMESPACE_ID::_Duration_default_instance_);
 }
-inline const ::PROTOBUF_NAMESPACE_ID::Duration& SiteMaintenanceModeRequest_Item::duration() const {
-  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteMaintenanceModeRequest.Item.duration)
-  return _internal_duration();
+inline const ::PROTOBUF_NAMESPACE_ID::Duration& SiteMaintenanceModeRequest::ttl() const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteMaintenanceModeRequest.ttl)
+  return _internal_ttl();
 }
-inline void SiteMaintenanceModeRequest_Item::unsafe_arena_set_allocated_duration(
-    ::PROTOBUF_NAMESPACE_ID::Duration* duration) {
+inline void SiteMaintenanceModeRequest::unsafe_arena_set_allocated_ttl(
+    ::PROTOBUF_NAMESPACE_ID::Duration* ttl) {
   if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.duration_);
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.ttl_);
   }
-  _impl_.duration_ = duration;
-  if (duration) {
+  _impl_.ttl_ = ttl;
+  if (ttl) {
     _impl_._has_bits_[0] |= 0x00000001u;
   } else {
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.nut.v1.SiteMaintenanceModeRequest.Item.duration)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.nut.v1.SiteMaintenanceModeRequest.ttl)
 }
-inline ::PROTOBUF_NAMESPACE_ID::Duration* SiteMaintenanceModeRequest_Item::release_duration() {
+inline ::PROTOBUF_NAMESPACE_ID::Duration* SiteMaintenanceModeRequest::release_ttl() {
   _impl_._has_bits_[0] &= ~0x00000001u;
-  ::PROTOBUF_NAMESPACE_ID::Duration* temp = _impl_.duration_;
-  _impl_.duration_ = nullptr;
+  ::PROTOBUF_NAMESPACE_ID::Duration* temp = _impl_.ttl_;
+  _impl_.ttl_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
   temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
@@ -32724,183 +32385,92 @@ inline ::PROTOBUF_NAMESPACE_ID::Duration* SiteMaintenanceModeRequest_Item::relea
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::PROTOBUF_NAMESPACE_ID::Duration* SiteMaintenanceModeRequest_Item::unsafe_arena_release_duration() {
-  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteMaintenanceModeRequest.Item.duration)
+inline ::PROTOBUF_NAMESPACE_ID::Duration* SiteMaintenanceModeRequest::unsafe_arena_release_ttl() {
+  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteMaintenanceModeRequest.ttl)
   _impl_._has_bits_[0] &= ~0x00000001u;
-  ::PROTOBUF_NAMESPACE_ID::Duration* temp = _impl_.duration_;
-  _impl_.duration_ = nullptr;
+  ::PROTOBUF_NAMESPACE_ID::Duration* temp = _impl_.ttl_;
+  _impl_.ttl_ = nullptr;
   return temp;
 }
-inline ::PROTOBUF_NAMESPACE_ID::Duration* SiteMaintenanceModeRequest_Item::_internal_mutable_duration() {
+inline ::PROTOBUF_NAMESPACE_ID::Duration* SiteMaintenanceModeRequest::_internal_mutable_ttl() {
   _impl_._has_bits_[0] |= 0x00000001u;
-  if (_impl_.duration_ == nullptr) {
+  if (_impl_.ttl_ == nullptr) {
     auto* p = CreateMaybeMessage<::PROTOBUF_NAMESPACE_ID::Duration>(GetArenaForAllocation());
-    _impl_.duration_ = p;
+    _impl_.ttl_ = p;
   }
-  return _impl_.duration_;
+  return _impl_.ttl_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::Duration* SiteMaintenanceModeRequest_Item::mutable_duration() {
-  ::PROTOBUF_NAMESPACE_ID::Duration* _msg = _internal_mutable_duration();
-  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteMaintenanceModeRequest.Item.duration)
+inline ::PROTOBUF_NAMESPACE_ID::Duration* SiteMaintenanceModeRequest::mutable_ttl() {
+  ::PROTOBUF_NAMESPACE_ID::Duration* _msg = _internal_mutable_ttl();
+  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteMaintenanceModeRequest.ttl)
   return _msg;
 }
-inline void SiteMaintenanceModeRequest_Item::set_allocated_duration(::PROTOBUF_NAMESPACE_ID::Duration* duration) {
+inline void SiteMaintenanceModeRequest::set_allocated_ttl(::PROTOBUF_NAMESPACE_ID::Duration* ttl) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.duration_);
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.ttl_);
   }
-  if (duration) {
+  if (ttl) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
         ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(duration));
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(ttl));
     if (message_arena != submessage_arena) {
-      duration = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, duration, submessage_arena);
+      ttl = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, ttl, submessage_arena);
     }
     _impl_._has_bits_[0] |= 0x00000001u;
   } else {
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
-  _impl_.duration_ = duration;
-  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteMaintenanceModeRequest.Item.duration)
+  _impl_.ttl_ = ttl;
+  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteMaintenanceModeRequest.ttl)
 }
 
 // string reason = 2;
-inline void SiteMaintenanceModeRequest_Item::clear_reason() {
+inline void SiteMaintenanceModeRequest::clear_reason() {
   _impl_.reason_.ClearToEmpty();
 }
-inline const std::string& SiteMaintenanceModeRequest_Item::reason() const {
-  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteMaintenanceModeRequest.Item.reason)
+inline const std::string& SiteMaintenanceModeRequest::reason() const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteMaintenanceModeRequest.reason)
   return _internal_reason();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void SiteMaintenanceModeRequest_Item::set_reason(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void SiteMaintenanceModeRequest::set_reason(Arg_&& arg,
                                                      Args_... args) {
   ;
   _impl_.reason_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.nut.v1.SiteMaintenanceModeRequest.Item.reason)
+  // @@protoc_insertion_point(field_set:palm.nut.v1.SiteMaintenanceModeRequest.reason)
 }
-inline std::string* SiteMaintenanceModeRequest_Item::mutable_reason() {
+inline std::string* SiteMaintenanceModeRequest::mutable_reason() {
   std::string* _s = _internal_mutable_reason();
-  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteMaintenanceModeRequest.Item.reason)
+  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteMaintenanceModeRequest.reason)
   return _s;
 }
-inline const std::string& SiteMaintenanceModeRequest_Item::_internal_reason() const {
+inline const std::string& SiteMaintenanceModeRequest::_internal_reason() const {
   return _impl_.reason_.Get();
 }
-inline void SiteMaintenanceModeRequest_Item::_internal_set_reason(const std::string& value) {
+inline void SiteMaintenanceModeRequest::_internal_set_reason(const std::string& value) {
   ;
 
 
   _impl_.reason_.Set(value, GetArenaForAllocation());
 }
-inline std::string* SiteMaintenanceModeRequest_Item::_internal_mutable_reason() {
+inline std::string* SiteMaintenanceModeRequest::_internal_mutable_reason() {
   ;
   return _impl_.reason_.Mutable( GetArenaForAllocation());
 }
-inline std::string* SiteMaintenanceModeRequest_Item::release_reason() {
-  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteMaintenanceModeRequest.Item.reason)
+inline std::string* SiteMaintenanceModeRequest::release_reason() {
+  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteMaintenanceModeRequest.reason)
   return _impl_.reason_.Release();
 }
-inline void SiteMaintenanceModeRequest_Item::set_allocated_reason(std::string* value) {
+inline void SiteMaintenanceModeRequest::set_allocated_reason(std::string* value) {
   _impl_.reason_.SetAllocated(value, GetArenaForAllocation());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         if (_impl_.reason_.IsDefault()) {
           _impl_.reason_.Set("", GetArenaForAllocation());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteMaintenanceModeRequest.Item.reason)
-}
-
-// -------------------------------------------------------------------
-
-// SiteMaintenanceModeRequest
-
-// optional .palm.nut.v1.SiteMaintenanceModeRequest.Item item = 1;
-inline bool SiteMaintenanceModeRequest::has_item() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || _impl_.item_ != nullptr);
-  return value;
-}
-inline void SiteMaintenanceModeRequest::clear_item() {
-  if (_impl_.item_ != nullptr) _impl_.item_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000001u;
-}
-inline const ::palm::nut::v1::SiteMaintenanceModeRequest_Item& SiteMaintenanceModeRequest::_internal_item() const {
-  const ::palm::nut::v1::SiteMaintenanceModeRequest_Item* p = _impl_.item_;
-  return p != nullptr ? *p : reinterpret_cast<const ::palm::nut::v1::SiteMaintenanceModeRequest_Item&>(
-      ::palm::nut::v1::_SiteMaintenanceModeRequest_Item_default_instance_);
-}
-inline const ::palm::nut::v1::SiteMaintenanceModeRequest_Item& SiteMaintenanceModeRequest::item() const {
-  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteMaintenanceModeRequest.item)
-  return _internal_item();
-}
-inline void SiteMaintenanceModeRequest::unsafe_arena_set_allocated_item(
-    ::palm::nut::v1::SiteMaintenanceModeRequest_Item* item) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.item_);
-  }
-  _impl_.item_ = item;
-  if (item) {
-    _impl_._has_bits_[0] |= 0x00000001u;
-  } else {
-    _impl_._has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.nut.v1.SiteMaintenanceModeRequest.item)
-}
-inline ::palm::nut::v1::SiteMaintenanceModeRequest_Item* SiteMaintenanceModeRequest::release_item() {
-  _impl_._has_bits_[0] &= ~0x00000001u;
-  ::palm::nut::v1::SiteMaintenanceModeRequest_Item* temp = _impl_.item_;
-  _impl_.item_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::palm::nut::v1::SiteMaintenanceModeRequest_Item* SiteMaintenanceModeRequest::unsafe_arena_release_item() {
-  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteMaintenanceModeRequest.item)
-  _impl_._has_bits_[0] &= ~0x00000001u;
-  ::palm::nut::v1::SiteMaintenanceModeRequest_Item* temp = _impl_.item_;
-  _impl_.item_ = nullptr;
-  return temp;
-}
-inline ::palm::nut::v1::SiteMaintenanceModeRequest_Item* SiteMaintenanceModeRequest::_internal_mutable_item() {
-  _impl_._has_bits_[0] |= 0x00000001u;
-  if (_impl_.item_ == nullptr) {
-    auto* p = CreateMaybeMessage<::palm::nut::v1::SiteMaintenanceModeRequest_Item>(GetArenaForAllocation());
-    _impl_.item_ = p;
-  }
-  return _impl_.item_;
-}
-inline ::palm::nut::v1::SiteMaintenanceModeRequest_Item* SiteMaintenanceModeRequest::mutable_item() {
-  ::palm::nut::v1::SiteMaintenanceModeRequest_Item* _msg = _internal_mutable_item();
-  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteMaintenanceModeRequest.item)
-  return _msg;
-}
-inline void SiteMaintenanceModeRequest::set_allocated_item(::palm::nut::v1::SiteMaintenanceModeRequest_Item* item) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete _impl_.item_;
-  }
-  if (item) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(item);
-    if (message_arena != submessage_arena) {
-      item = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, item, submessage_arena);
-    }
-    _impl_._has_bits_[0] |= 0x00000001u;
-  } else {
-    _impl_._has_bits_[0] &= ~0x00000001u;
-  }
-  _impl_.item_ = item;
-  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteMaintenanceModeRequest.item)
+  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteMaintenanceModeRequest.reason)
 }
 
 // -------------------------------------------------------------------
@@ -34163,122 +33733,122 @@ EmailTask::_internal_mutable_attachments() {
 
 // -------------------------------------------------------------------
 
-// SiteTwilioTestRequest
+// SiteTwilioPingRequest
 
 // string to = 1;
-inline void SiteTwilioTestRequest::clear_to() {
+inline void SiteTwilioPingRequest::clear_to() {
   _impl_.to_.ClearToEmpty();
 }
-inline const std::string& SiteTwilioTestRequest::to() const {
-  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteTwilioTestRequest.to)
+inline const std::string& SiteTwilioPingRequest::to() const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteTwilioPingRequest.to)
   return _internal_to();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void SiteTwilioTestRequest::set_to(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void SiteTwilioPingRequest::set_to(Arg_&& arg,
                                                      Args_... args) {
   ;
   _impl_.to_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.nut.v1.SiteTwilioTestRequest.to)
+  // @@protoc_insertion_point(field_set:palm.nut.v1.SiteTwilioPingRequest.to)
 }
-inline std::string* SiteTwilioTestRequest::mutable_to() {
+inline std::string* SiteTwilioPingRequest::mutable_to() {
   std::string* _s = _internal_mutable_to();
-  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteTwilioTestRequest.to)
+  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteTwilioPingRequest.to)
   return _s;
 }
-inline const std::string& SiteTwilioTestRequest::_internal_to() const {
+inline const std::string& SiteTwilioPingRequest::_internal_to() const {
   return _impl_.to_.Get();
 }
-inline void SiteTwilioTestRequest::_internal_set_to(const std::string& value) {
+inline void SiteTwilioPingRequest::_internal_set_to(const std::string& value) {
   ;
 
 
   _impl_.to_.Set(value, GetArenaForAllocation());
 }
-inline std::string* SiteTwilioTestRequest::_internal_mutable_to() {
+inline std::string* SiteTwilioPingRequest::_internal_mutable_to() {
   ;
   return _impl_.to_.Mutable( GetArenaForAllocation());
 }
-inline std::string* SiteTwilioTestRequest::release_to() {
-  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteTwilioTestRequest.to)
+inline std::string* SiteTwilioPingRequest::release_to() {
+  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteTwilioPingRequest.to)
   return _impl_.to_.Release();
 }
-inline void SiteTwilioTestRequest::set_allocated_to(std::string* value) {
+inline void SiteTwilioPingRequest::set_allocated_to(std::string* value) {
   _impl_.to_.SetAllocated(value, GetArenaForAllocation());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         if (_impl_.to_.IsDefault()) {
           _impl_.to_.Set("", GetArenaForAllocation());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteTwilioTestRequest.to)
+  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteTwilioPingRequest.to)
 }
 
 // string message = 2;
-inline void SiteTwilioTestRequest::clear_message() {
+inline void SiteTwilioPingRequest::clear_message() {
   _impl_.message_.ClearToEmpty();
 }
-inline const std::string& SiteTwilioTestRequest::message() const {
-  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteTwilioTestRequest.message)
+inline const std::string& SiteTwilioPingRequest::message() const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteTwilioPingRequest.message)
   return _internal_message();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void SiteTwilioTestRequest::set_message(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void SiteTwilioPingRequest::set_message(Arg_&& arg,
                                                      Args_... args) {
   ;
   _impl_.message_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.nut.v1.SiteTwilioTestRequest.message)
+  // @@protoc_insertion_point(field_set:palm.nut.v1.SiteTwilioPingRequest.message)
 }
-inline std::string* SiteTwilioTestRequest::mutable_message() {
+inline std::string* SiteTwilioPingRequest::mutable_message() {
   std::string* _s = _internal_mutable_message();
-  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteTwilioTestRequest.message)
+  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteTwilioPingRequest.message)
   return _s;
 }
-inline const std::string& SiteTwilioTestRequest::_internal_message() const {
+inline const std::string& SiteTwilioPingRequest::_internal_message() const {
   return _impl_.message_.Get();
 }
-inline void SiteTwilioTestRequest::_internal_set_message(const std::string& value) {
+inline void SiteTwilioPingRequest::_internal_set_message(const std::string& value) {
   ;
 
 
   _impl_.message_.Set(value, GetArenaForAllocation());
 }
-inline std::string* SiteTwilioTestRequest::_internal_mutable_message() {
+inline std::string* SiteTwilioPingRequest::_internal_mutable_message() {
   ;
   return _impl_.message_.Mutable( GetArenaForAllocation());
 }
-inline std::string* SiteTwilioTestRequest::release_message() {
-  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteTwilioTestRequest.message)
+inline std::string* SiteTwilioPingRequest::release_message() {
+  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteTwilioPingRequest.message)
   return _impl_.message_.Release();
 }
-inline void SiteTwilioTestRequest::set_allocated_message(std::string* value) {
+inline void SiteTwilioPingRequest::set_allocated_message(std::string* value) {
   _impl_.message_.SetAllocated(value, GetArenaForAllocation());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         if (_impl_.message_.IsDefault()) {
           _impl_.message_.Set("", GetArenaForAllocation());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteTwilioTestRequest.message)
+  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteTwilioPingRequest.message)
 }
 
 // .palm.nut.v1.TwilioProfile profile = 9;
-inline bool SiteTwilioTestRequest::has_profile() const {
+inline bool SiteTwilioPingRequest::has_profile() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.profile_ != nullptr);
   return value;
 }
-inline void SiteTwilioTestRequest::clear_profile() {
+inline void SiteTwilioPingRequest::clear_profile() {
   if (_impl_.profile_ != nullptr) _impl_.profile_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-inline const ::palm::nut::v1::TwilioProfile& SiteTwilioTestRequest::_internal_profile() const {
+inline const ::palm::nut::v1::TwilioProfile& SiteTwilioPingRequest::_internal_profile() const {
   const ::palm::nut::v1::TwilioProfile* p = _impl_.profile_;
   return p != nullptr ? *p : reinterpret_cast<const ::palm::nut::v1::TwilioProfile&>(
       ::palm::nut::v1::_TwilioProfile_default_instance_);
 }
-inline const ::palm::nut::v1::TwilioProfile& SiteTwilioTestRequest::profile() const {
-  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteTwilioTestRequest.profile)
+inline const ::palm::nut::v1::TwilioProfile& SiteTwilioPingRequest::profile() const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteTwilioPingRequest.profile)
   return _internal_profile();
 }
-inline void SiteTwilioTestRequest::unsafe_arena_set_allocated_profile(
+inline void SiteTwilioPingRequest::unsafe_arena_set_allocated_profile(
     ::palm::nut::v1::TwilioProfile* profile) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.profile_);
@@ -34289,9 +33859,9 @@ inline void SiteTwilioTestRequest::unsafe_arena_set_allocated_profile(
   } else {
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.nut.v1.SiteTwilioTestRequest.profile)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.nut.v1.SiteTwilioPingRequest.profile)
 }
-inline ::palm::nut::v1::TwilioProfile* SiteTwilioTestRequest::release_profile() {
+inline ::palm::nut::v1::TwilioProfile* SiteTwilioPingRequest::release_profile() {
   _impl_._has_bits_[0] &= ~0x00000001u;
   ::palm::nut::v1::TwilioProfile* temp = _impl_.profile_;
   _impl_.profile_ = nullptr;
@@ -34306,14 +33876,14 @@ inline ::palm::nut::v1::TwilioProfile* SiteTwilioTestRequest::release_profile() 
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::palm::nut::v1::TwilioProfile* SiteTwilioTestRequest::unsafe_arena_release_profile() {
-  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteTwilioTestRequest.profile)
+inline ::palm::nut::v1::TwilioProfile* SiteTwilioPingRequest::unsafe_arena_release_profile() {
+  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteTwilioPingRequest.profile)
   _impl_._has_bits_[0] &= ~0x00000001u;
   ::palm::nut::v1::TwilioProfile* temp = _impl_.profile_;
   _impl_.profile_ = nullptr;
   return temp;
 }
-inline ::palm::nut::v1::TwilioProfile* SiteTwilioTestRequest::_internal_mutable_profile() {
+inline ::palm::nut::v1::TwilioProfile* SiteTwilioPingRequest::_internal_mutable_profile() {
   _impl_._has_bits_[0] |= 0x00000001u;
   if (_impl_.profile_ == nullptr) {
     auto* p = CreateMaybeMessage<::palm::nut::v1::TwilioProfile>(GetArenaForAllocation());
@@ -34321,12 +33891,12 @@ inline ::palm::nut::v1::TwilioProfile* SiteTwilioTestRequest::_internal_mutable_
   }
   return _impl_.profile_;
 }
-inline ::palm::nut::v1::TwilioProfile* SiteTwilioTestRequest::mutable_profile() {
+inline ::palm::nut::v1::TwilioProfile* SiteTwilioPingRequest::mutable_profile() {
   ::palm::nut::v1::TwilioProfile* _msg = _internal_mutable_profile();
-  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteTwilioTestRequest.profile)
+  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteTwilioPingRequest.profile)
   return _msg;
 }
-inline void SiteTwilioTestRequest::set_allocated_profile(::palm::nut::v1::TwilioProfile* profile) {
+inline void SiteTwilioPingRequest::set_allocated_profile(::palm::nut::v1::TwilioProfile* profile) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete _impl_.profile_;
@@ -34343,33 +33913,33 @@ inline void SiteTwilioTestRequest::set_allocated_profile(::palm::nut::v1::Twilio
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
   _impl_.profile_ = profile;
-  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteTwilioTestRequest.profile)
+  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteTwilioPingRequest.profile)
 }
 
 // -------------------------------------------------------------------
 
-// SiteSmtpTestRequest
+// SiteSmtpPingRequest
 
 // .palm.nut.v1.EmailTask.Address to = 1;
-inline bool SiteSmtpTestRequest::has_to() const {
+inline bool SiteSmtpPingRequest::has_to() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.to_ != nullptr);
   return value;
 }
-inline void SiteSmtpTestRequest::clear_to() {
+inline void SiteSmtpPingRequest::clear_to() {
   if (_impl_.to_ != nullptr) _impl_.to_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-inline const ::palm::nut::v1::EmailTask_Address& SiteSmtpTestRequest::_internal_to() const {
+inline const ::palm::nut::v1::EmailTask_Address& SiteSmtpPingRequest::_internal_to() const {
   const ::palm::nut::v1::EmailTask_Address* p = _impl_.to_;
   return p != nullptr ? *p : reinterpret_cast<const ::palm::nut::v1::EmailTask_Address&>(
       ::palm::nut::v1::_EmailTask_Address_default_instance_);
 }
-inline const ::palm::nut::v1::EmailTask_Address& SiteSmtpTestRequest::to() const {
-  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteSmtpTestRequest.to)
+inline const ::palm::nut::v1::EmailTask_Address& SiteSmtpPingRequest::to() const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteSmtpPingRequest.to)
   return _internal_to();
 }
-inline void SiteSmtpTestRequest::unsafe_arena_set_allocated_to(
+inline void SiteSmtpPingRequest::unsafe_arena_set_allocated_to(
     ::palm::nut::v1::EmailTask_Address* to) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.to_);
@@ -34380,9 +33950,9 @@ inline void SiteSmtpTestRequest::unsafe_arena_set_allocated_to(
   } else {
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.nut.v1.SiteSmtpTestRequest.to)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.nut.v1.SiteSmtpPingRequest.to)
 }
-inline ::palm::nut::v1::EmailTask_Address* SiteSmtpTestRequest::release_to() {
+inline ::palm::nut::v1::EmailTask_Address* SiteSmtpPingRequest::release_to() {
   _impl_._has_bits_[0] &= ~0x00000001u;
   ::palm::nut::v1::EmailTask_Address* temp = _impl_.to_;
   _impl_.to_ = nullptr;
@@ -34397,14 +33967,14 @@ inline ::palm::nut::v1::EmailTask_Address* SiteSmtpTestRequest::release_to() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::palm::nut::v1::EmailTask_Address* SiteSmtpTestRequest::unsafe_arena_release_to() {
-  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteSmtpTestRequest.to)
+inline ::palm::nut::v1::EmailTask_Address* SiteSmtpPingRequest::unsafe_arena_release_to() {
+  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteSmtpPingRequest.to)
   _impl_._has_bits_[0] &= ~0x00000001u;
   ::palm::nut::v1::EmailTask_Address* temp = _impl_.to_;
   _impl_.to_ = nullptr;
   return temp;
 }
-inline ::palm::nut::v1::EmailTask_Address* SiteSmtpTestRequest::_internal_mutable_to() {
+inline ::palm::nut::v1::EmailTask_Address* SiteSmtpPingRequest::_internal_mutable_to() {
   _impl_._has_bits_[0] |= 0x00000001u;
   if (_impl_.to_ == nullptr) {
     auto* p = CreateMaybeMessage<::palm::nut::v1::EmailTask_Address>(GetArenaForAllocation());
@@ -34412,12 +33982,12 @@ inline ::palm::nut::v1::EmailTask_Address* SiteSmtpTestRequest::_internal_mutabl
   }
   return _impl_.to_;
 }
-inline ::palm::nut::v1::EmailTask_Address* SiteSmtpTestRequest::mutable_to() {
+inline ::palm::nut::v1::EmailTask_Address* SiteSmtpPingRequest::mutable_to() {
   ::palm::nut::v1::EmailTask_Address* _msg = _internal_mutable_to();
-  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteSmtpTestRequest.to)
+  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteSmtpPingRequest.to)
   return _msg;
 }
-inline void SiteSmtpTestRequest::set_allocated_to(::palm::nut::v1::EmailTask_Address* to) {
+inline void SiteSmtpPingRequest::set_allocated_to(::palm::nut::v1::EmailTask_Address* to) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete _impl_.to_;
@@ -34434,123 +34004,123 @@ inline void SiteSmtpTestRequest::set_allocated_to(::palm::nut::v1::EmailTask_Add
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
   _impl_.to_ = to;
-  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteSmtpTestRequest.to)
+  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteSmtpPingRequest.to)
 }
 
 // string subject = 2;
-inline void SiteSmtpTestRequest::clear_subject() {
+inline void SiteSmtpPingRequest::clear_subject() {
   _impl_.subject_.ClearToEmpty();
 }
-inline const std::string& SiteSmtpTestRequest::subject() const {
-  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteSmtpTestRequest.subject)
+inline const std::string& SiteSmtpPingRequest::subject() const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteSmtpPingRequest.subject)
   return _internal_subject();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void SiteSmtpTestRequest::set_subject(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void SiteSmtpPingRequest::set_subject(Arg_&& arg,
                                                      Args_... args) {
   ;
   _impl_.subject_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.nut.v1.SiteSmtpTestRequest.subject)
+  // @@protoc_insertion_point(field_set:palm.nut.v1.SiteSmtpPingRequest.subject)
 }
-inline std::string* SiteSmtpTestRequest::mutable_subject() {
+inline std::string* SiteSmtpPingRequest::mutable_subject() {
   std::string* _s = _internal_mutable_subject();
-  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteSmtpTestRequest.subject)
+  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteSmtpPingRequest.subject)
   return _s;
 }
-inline const std::string& SiteSmtpTestRequest::_internal_subject() const {
+inline const std::string& SiteSmtpPingRequest::_internal_subject() const {
   return _impl_.subject_.Get();
 }
-inline void SiteSmtpTestRequest::_internal_set_subject(const std::string& value) {
+inline void SiteSmtpPingRequest::_internal_set_subject(const std::string& value) {
   ;
 
 
   _impl_.subject_.Set(value, GetArenaForAllocation());
 }
-inline std::string* SiteSmtpTestRequest::_internal_mutable_subject() {
+inline std::string* SiteSmtpPingRequest::_internal_mutable_subject() {
   ;
   return _impl_.subject_.Mutable( GetArenaForAllocation());
 }
-inline std::string* SiteSmtpTestRequest::release_subject() {
-  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteSmtpTestRequest.subject)
+inline std::string* SiteSmtpPingRequest::release_subject() {
+  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteSmtpPingRequest.subject)
   return _impl_.subject_.Release();
 }
-inline void SiteSmtpTestRequest::set_allocated_subject(std::string* value) {
+inline void SiteSmtpPingRequest::set_allocated_subject(std::string* value) {
   _impl_.subject_.SetAllocated(value, GetArenaForAllocation());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         if (_impl_.subject_.IsDefault()) {
           _impl_.subject_.Set("", GetArenaForAllocation());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteSmtpTestRequest.subject)
+  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteSmtpPingRequest.subject)
 }
 
 // string content = 3;
-inline void SiteSmtpTestRequest::clear_content() {
+inline void SiteSmtpPingRequest::clear_content() {
   _impl_.content_.ClearToEmpty();
 }
-inline const std::string& SiteSmtpTestRequest::content() const {
-  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteSmtpTestRequest.content)
+inline const std::string& SiteSmtpPingRequest::content() const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteSmtpPingRequest.content)
   return _internal_content();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void SiteSmtpTestRequest::set_content(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void SiteSmtpPingRequest::set_content(Arg_&& arg,
                                                      Args_... args) {
   ;
   _impl_.content_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.nut.v1.SiteSmtpTestRequest.content)
+  // @@protoc_insertion_point(field_set:palm.nut.v1.SiteSmtpPingRequest.content)
 }
-inline std::string* SiteSmtpTestRequest::mutable_content() {
+inline std::string* SiteSmtpPingRequest::mutable_content() {
   std::string* _s = _internal_mutable_content();
-  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteSmtpTestRequest.content)
+  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteSmtpPingRequest.content)
   return _s;
 }
-inline const std::string& SiteSmtpTestRequest::_internal_content() const {
+inline const std::string& SiteSmtpPingRequest::_internal_content() const {
   return _impl_.content_.Get();
 }
-inline void SiteSmtpTestRequest::_internal_set_content(const std::string& value) {
+inline void SiteSmtpPingRequest::_internal_set_content(const std::string& value) {
   ;
 
 
   _impl_.content_.Set(value, GetArenaForAllocation());
 }
-inline std::string* SiteSmtpTestRequest::_internal_mutable_content() {
+inline std::string* SiteSmtpPingRequest::_internal_mutable_content() {
   ;
   return _impl_.content_.Mutable( GetArenaForAllocation());
 }
-inline std::string* SiteSmtpTestRequest::release_content() {
-  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteSmtpTestRequest.content)
+inline std::string* SiteSmtpPingRequest::release_content() {
+  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteSmtpPingRequest.content)
   return _impl_.content_.Release();
 }
-inline void SiteSmtpTestRequest::set_allocated_content(std::string* value) {
+inline void SiteSmtpPingRequest::set_allocated_content(std::string* value) {
   _impl_.content_.SetAllocated(value, GetArenaForAllocation());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         if (_impl_.content_.IsDefault()) {
           _impl_.content_.Set("", GetArenaForAllocation());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteSmtpTestRequest.content)
+  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteSmtpPingRequest.content)
 }
 
 // .palm.nut.v1.SmtpProfile profile = 9;
-inline bool SiteSmtpTestRequest::has_profile() const {
+inline bool SiteSmtpPingRequest::has_profile() const {
   bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.profile_ != nullptr);
   return value;
 }
-inline void SiteSmtpTestRequest::clear_profile() {
+inline void SiteSmtpPingRequest::clear_profile() {
   if (_impl_.profile_ != nullptr) _impl_.profile_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
-inline const ::palm::nut::v1::SmtpProfile& SiteSmtpTestRequest::_internal_profile() const {
+inline const ::palm::nut::v1::SmtpProfile& SiteSmtpPingRequest::_internal_profile() const {
   const ::palm::nut::v1::SmtpProfile* p = _impl_.profile_;
   return p != nullptr ? *p : reinterpret_cast<const ::palm::nut::v1::SmtpProfile&>(
       ::palm::nut::v1::_SmtpProfile_default_instance_);
 }
-inline const ::palm::nut::v1::SmtpProfile& SiteSmtpTestRequest::profile() const {
-  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteSmtpTestRequest.profile)
+inline const ::palm::nut::v1::SmtpProfile& SiteSmtpPingRequest::profile() const {
+  // @@protoc_insertion_point(field_get:palm.nut.v1.SiteSmtpPingRequest.profile)
   return _internal_profile();
 }
-inline void SiteSmtpTestRequest::unsafe_arena_set_allocated_profile(
+inline void SiteSmtpPingRequest::unsafe_arena_set_allocated_profile(
     ::palm::nut::v1::SmtpProfile* profile) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.profile_);
@@ -34561,9 +34131,9 @@ inline void SiteSmtpTestRequest::unsafe_arena_set_allocated_profile(
   } else {
     _impl_._has_bits_[0] &= ~0x00000002u;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.nut.v1.SiteSmtpTestRequest.profile)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.nut.v1.SiteSmtpPingRequest.profile)
 }
-inline ::palm::nut::v1::SmtpProfile* SiteSmtpTestRequest::release_profile() {
+inline ::palm::nut::v1::SmtpProfile* SiteSmtpPingRequest::release_profile() {
   _impl_._has_bits_[0] &= ~0x00000002u;
   ::palm::nut::v1::SmtpProfile* temp = _impl_.profile_;
   _impl_.profile_ = nullptr;
@@ -34578,14 +34148,14 @@ inline ::palm::nut::v1::SmtpProfile* SiteSmtpTestRequest::release_profile() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::palm::nut::v1::SmtpProfile* SiteSmtpTestRequest::unsafe_arena_release_profile() {
-  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteSmtpTestRequest.profile)
+inline ::palm::nut::v1::SmtpProfile* SiteSmtpPingRequest::unsafe_arena_release_profile() {
+  // @@protoc_insertion_point(field_release:palm.nut.v1.SiteSmtpPingRequest.profile)
   _impl_._has_bits_[0] &= ~0x00000002u;
   ::palm::nut::v1::SmtpProfile* temp = _impl_.profile_;
   _impl_.profile_ = nullptr;
   return temp;
 }
-inline ::palm::nut::v1::SmtpProfile* SiteSmtpTestRequest::_internal_mutable_profile() {
+inline ::palm::nut::v1::SmtpProfile* SiteSmtpPingRequest::_internal_mutable_profile() {
   _impl_._has_bits_[0] |= 0x00000002u;
   if (_impl_.profile_ == nullptr) {
     auto* p = CreateMaybeMessage<::palm::nut::v1::SmtpProfile>(GetArenaForAllocation());
@@ -34593,12 +34163,12 @@ inline ::palm::nut::v1::SmtpProfile* SiteSmtpTestRequest::_internal_mutable_prof
   }
   return _impl_.profile_;
 }
-inline ::palm::nut::v1::SmtpProfile* SiteSmtpTestRequest::mutable_profile() {
+inline ::palm::nut::v1::SmtpProfile* SiteSmtpPingRequest::mutable_profile() {
   ::palm::nut::v1::SmtpProfile* _msg = _internal_mutable_profile();
-  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteSmtpTestRequest.profile)
+  // @@protoc_insertion_point(field_mutable:palm.nut.v1.SiteSmtpPingRequest.profile)
   return _msg;
 }
-inline void SiteSmtpTestRequest::set_allocated_profile(::palm::nut::v1::SmtpProfile* profile) {
+inline void SiteSmtpPingRequest::set_allocated_profile(::palm::nut::v1::SmtpProfile* profile) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete _impl_.profile_;
@@ -34615,7 +34185,7 @@ inline void SiteSmtpTestRequest::set_allocated_profile(::palm::nut::v1::SmtpProf
     _impl_._has_bits_[0] &= ~0x00000002u;
   }
   _impl_.profile_ = profile;
-  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteSmtpTestRequest.profile)
+  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.SiteSmtpPingRequest.profile)
 }
 
 // -------------------------------------------------------------------
@@ -36060,75 +35630,6 @@ inline void BaiduProfile::set_allocated_site_verify(::palm::nut::v1::BaiduProfil
   }
   _impl_.site_verify_ = site_verify;
   // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.BaiduProfile.site_verify)
-}
-
-// -------------------------------------------------------------------
-
-// BingProfile
-
-// optional string site_verify_id = 1;
-inline bool BingProfile::has_site_verify_id() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
-  return value;
-}
-inline void BingProfile::clear_site_verify_id() {
-  _impl_.site_verify_id_.ClearToEmpty();
-  _impl_._has_bits_[0] &= ~0x00000001u;
-}
-inline const std::string& BingProfile::site_verify_id() const {
-  // @@protoc_insertion_point(field_get:palm.nut.v1.BingProfile.site_verify_id)
-  return _internal_site_verify_id();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void BingProfile::set_site_verify_id(Arg_&& arg,
-                                                     Args_... args) {
-  _impl_._has_bits_[0] |= 0x00000001u;
-  _impl_.site_verify_id_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.nut.v1.BingProfile.site_verify_id)
-}
-inline std::string* BingProfile::mutable_site_verify_id() {
-  std::string* _s = _internal_mutable_site_verify_id();
-  // @@protoc_insertion_point(field_mutable:palm.nut.v1.BingProfile.site_verify_id)
-  return _s;
-}
-inline const std::string& BingProfile::_internal_site_verify_id() const {
-  return _impl_.site_verify_id_.Get();
-}
-inline void BingProfile::_internal_set_site_verify_id(const std::string& value) {
-  _impl_._has_bits_[0] |= 0x00000001u;
-
-
-  _impl_.site_verify_id_.Set(value, GetArenaForAllocation());
-}
-inline std::string* BingProfile::_internal_mutable_site_verify_id() {
-  _impl_._has_bits_[0] |= 0x00000001u;
-  return _impl_.site_verify_id_.Mutable( GetArenaForAllocation());
-}
-inline std::string* BingProfile::release_site_verify_id() {
-  // @@protoc_insertion_point(field_release:palm.nut.v1.BingProfile.site_verify_id)
-  if ((_impl_._has_bits_[0] & 0x00000001u) == 0) {
-    return nullptr;
-  }
-  _impl_._has_bits_[0] &= ~0x00000001u;
-  auto* released = _impl_.site_verify_id_.Release();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.site_verify_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  return released;
-}
-inline void BingProfile::set_allocated_site_verify_id(std::string* value) {
-  if (value != nullptr) {
-    _impl_._has_bits_[0] |= 0x00000001u;
-  } else {
-    _impl_._has_bits_[0] &= ~0x00000001u;
-  }
-  _impl_.site_verify_id_.SetAllocated(value, GetArenaForAllocation());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.site_verify_id_.IsDefault()) {
-          _impl_.site_verify_id_.Set("", GetArenaForAllocation());
-        }
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.nut.v1.BingProfile.site_verify_id)
 }
 
 // -------------------------------------------------------------------

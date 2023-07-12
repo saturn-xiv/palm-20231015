@@ -9424,12 +9424,12 @@ class Site final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::TwilioProfile>> PrepareAsyncGetTwilio(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::TwilioProfile>>(PrepareAsyncGetTwilioRaw(context, request, cq));
     }
-    virtual ::grpc::Status TestTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest& request, ::google::protobuf::Empty* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncTestTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncTestTwilioRaw(context, request, cq));
+    virtual ::grpc::Status PingTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncPingTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncPingTwilioRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncTestTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncTestTwilioRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncPingTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncPingTwilioRaw(context, request, cq));
     }
     virtual ::grpc::Status SetSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SmtpProfile& request, ::google::protobuf::Empty* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncSetSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SmtpProfile& request, ::grpc::CompletionQueue* cq) {
@@ -9445,26 +9445,12 @@ class Site final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::SmtpProfile>> PrepareAsyncGetSmtp(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::SmtpProfile>>(PrepareAsyncGetSmtpRaw(context, request, cq));
     }
-    virtual ::grpc::Status TestSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest& request, ::google::protobuf::Empty* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncTestSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncTestSmtpRaw(context, request, cq));
+    virtual ::grpc::Status PingSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncPingSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncPingSmtpRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncTestSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncTestSmtpRaw(context, request, cq));
-    }
-    virtual ::grpc::Status SetBing(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile& request, ::google::protobuf::Empty* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncSetBing(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncSetBingRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncSetBing(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncSetBingRaw(context, request, cq));
-    }
-    virtual ::grpc::Status GetBing(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::palm::nut::v1::BingProfile* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::BingProfile>> AsyncGetBing(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::BingProfile>>(AsyncGetBingRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::BingProfile>> PrepareAsyncGetBing(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::BingProfile>>(PrepareAsyncGetBingRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncPingSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncPingSmtpRaw(context, request, cq));
     }
     virtual ::grpc::Status SetIndexNow(::grpc::ClientContext* context, const ::palm::nut::v1::IndexNowProfile& request, ::google::protobuf::Empty* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncSetIndexNow(::grpc::ClientContext* context, const ::palm::nut::v1::IndexNowProfile& request, ::grpc::CompletionQueue* cq) {
@@ -9561,18 +9547,14 @@ class Site final {
       virtual void SetTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::TwilioProfile* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetTwilio(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::TwilioProfile* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetTwilio(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::TwilioProfile* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void TestTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void TestTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void PingTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void PingTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void SetSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SmtpProfile* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SmtpProfile* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetSmtp(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::SmtpProfile* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetSmtp(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::SmtpProfile* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void TestSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void TestSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void SetBing(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void SetBing(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void GetBing(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::BingProfile* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void GetBing(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::BingProfile* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void PingSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void PingSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void SetIndexNow(::grpc::ClientContext* context, const ::palm::nut::v1::IndexNowProfile* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetIndexNow(::grpc::ClientContext* context, const ::palm::nut::v1::IndexNowProfile* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetIndexNow(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::IndexNowProfile* response, std::function<void(::grpc::Status)>) = 0;
@@ -9620,18 +9602,14 @@ class Site final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncSetTwilioRaw(::grpc::ClientContext* context, const ::palm::nut::v1::TwilioProfile& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::TwilioProfile>* AsyncGetTwilioRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::TwilioProfile>* PrepareAsyncGetTwilioRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncTestTwilioRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncTestTwilioRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncPingTwilioRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncPingTwilioRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncSetSmtpRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SmtpProfile& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncSetSmtpRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SmtpProfile& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::SmtpProfile>* AsyncGetSmtpRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::SmtpProfile>* PrepareAsyncGetSmtpRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncTestSmtpRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncTestSmtpRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncSetBingRaw(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncSetBingRaw(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::BingProfile>* AsyncGetBingRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::BingProfile>* PrepareAsyncGetBingRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncPingSmtpRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncPingSmtpRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncSetIndexNowRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IndexNowProfile& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncSetIndexNowRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IndexNowProfile& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::IndexNowProfile>* AsyncGetIndexNowRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
@@ -9733,12 +9711,12 @@ class Site final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::TwilioProfile>> PrepareAsyncGetTwilio(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::TwilioProfile>>(PrepareAsyncGetTwilioRaw(context, request, cq));
     }
-    ::grpc::Status TestTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest& request, ::google::protobuf::Empty* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncTestTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncTestTwilioRaw(context, request, cq));
+    ::grpc::Status PingTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncPingTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncPingTwilioRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncTestTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncTestTwilioRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncPingTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncPingTwilioRaw(context, request, cq));
     }
     ::grpc::Status SetSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SmtpProfile& request, ::google::protobuf::Empty* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncSetSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SmtpProfile& request, ::grpc::CompletionQueue* cq) {
@@ -9754,26 +9732,12 @@ class Site final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::SmtpProfile>> PrepareAsyncGetSmtp(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::SmtpProfile>>(PrepareAsyncGetSmtpRaw(context, request, cq));
     }
-    ::grpc::Status TestSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest& request, ::google::protobuf::Empty* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncTestSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncTestSmtpRaw(context, request, cq));
+    ::grpc::Status PingSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncPingSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncPingSmtpRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncTestSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncTestSmtpRaw(context, request, cq));
-    }
-    ::grpc::Status SetBing(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile& request, ::google::protobuf::Empty* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncSetBing(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncSetBingRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncSetBing(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncSetBingRaw(context, request, cq));
-    }
-    ::grpc::Status GetBing(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::palm::nut::v1::BingProfile* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::BingProfile>> AsyncGetBing(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::BingProfile>>(AsyncGetBingRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::BingProfile>> PrepareAsyncGetBing(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::BingProfile>>(PrepareAsyncGetBingRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncPingSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncPingSmtpRaw(context, request, cq));
     }
     ::grpc::Status SetIndexNow(::grpc::ClientContext* context, const ::palm::nut::v1::IndexNowProfile& request, ::google::protobuf::Empty* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncSetIndexNow(::grpc::ClientContext* context, const ::palm::nut::v1::IndexNowProfile& request, ::grpc::CompletionQueue* cq) {
@@ -9870,18 +9834,14 @@ class Site final {
       void SetTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::TwilioProfile* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetTwilio(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::TwilioProfile* response, std::function<void(::grpc::Status)>) override;
       void GetTwilio(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::TwilioProfile* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void TestTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
-      void TestTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void PingTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void PingTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
       void SetSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SmtpProfile* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void SetSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SmtpProfile* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetSmtp(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::SmtpProfile* response, std::function<void(::grpc::Status)>) override;
       void GetSmtp(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::SmtpProfile* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void TestSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
-      void TestSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void SetBing(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
-      void SetBing(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void GetBing(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::BingProfile* response, std::function<void(::grpc::Status)>) override;
-      void GetBing(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::BingProfile* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void PingSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void PingSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
       void SetIndexNow(::grpc::ClientContext* context, const ::palm::nut::v1::IndexNowProfile* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void SetIndexNow(::grpc::ClientContext* context, const ::palm::nut::v1::IndexNowProfile* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetIndexNow(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::IndexNowProfile* response, std::function<void(::grpc::Status)>) override;
@@ -9935,18 +9895,14 @@ class Site final {
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncSetTwilioRaw(::grpc::ClientContext* context, const ::palm::nut::v1::TwilioProfile& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::TwilioProfile>* AsyncGetTwilioRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::TwilioProfile>* PrepareAsyncGetTwilioRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncTestTwilioRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncTestTwilioRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncPingTwilioRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncPingTwilioRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncSetSmtpRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SmtpProfile& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncSetSmtpRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SmtpProfile& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::SmtpProfile>* AsyncGetSmtpRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::SmtpProfile>* PrepareAsyncGetSmtpRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncTestSmtpRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncTestSmtpRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncSetBingRaw(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncSetBingRaw(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::BingProfile>* AsyncGetBingRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::BingProfile>* PrepareAsyncGetBingRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncPingSmtpRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncPingSmtpRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncSetIndexNowRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IndexNowProfile& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncSetIndexNowRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IndexNowProfile& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::IndexNowProfile>* AsyncGetIndexNowRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
@@ -9978,12 +9934,10 @@ class Site final {
     const ::grpc::internal::RpcMethod rpcmethod_SetLogo_;
     const ::grpc::internal::RpcMethod rpcmethod_SetTwilio_;
     const ::grpc::internal::RpcMethod rpcmethod_GetTwilio_;
-    const ::grpc::internal::RpcMethod rpcmethod_TestTwilio_;
+    const ::grpc::internal::RpcMethod rpcmethod_PingTwilio_;
     const ::grpc::internal::RpcMethod rpcmethod_SetSmtp_;
     const ::grpc::internal::RpcMethod rpcmethod_GetSmtp_;
-    const ::grpc::internal::RpcMethod rpcmethod_TestSmtp_;
-    const ::grpc::internal::RpcMethod rpcmethod_SetBing_;
-    const ::grpc::internal::RpcMethod rpcmethod_GetBing_;
+    const ::grpc::internal::RpcMethod rpcmethod_PingSmtp_;
     const ::grpc::internal::RpcMethod rpcmethod_SetIndexNow_;
     const ::grpc::internal::RpcMethod rpcmethod_GetIndexNow_;
     const ::grpc::internal::RpcMethod rpcmethod_PingIndexNow_;
@@ -10012,12 +9966,10 @@ class Site final {
     virtual ::grpc::Status SetLogo(::grpc::ServerContext* context, const ::palm::nut::v1::SiteSetLogoRequest* request, ::google::protobuf::Empty* response);
     virtual ::grpc::Status SetTwilio(::grpc::ServerContext* context, const ::palm::nut::v1::TwilioProfile* request, ::google::protobuf::Empty* response);
     virtual ::grpc::Status GetTwilio(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::TwilioProfile* response);
-    virtual ::grpc::Status TestTwilio(::grpc::ServerContext* context, const ::palm::nut::v1::SiteTwilioTestRequest* request, ::google::protobuf::Empty* response);
+    virtual ::grpc::Status PingTwilio(::grpc::ServerContext* context, const ::palm::nut::v1::SiteTwilioPingRequest* request, ::google::protobuf::Empty* response);
     virtual ::grpc::Status SetSmtp(::grpc::ServerContext* context, const ::palm::nut::v1::SmtpProfile* request, ::google::protobuf::Empty* response);
     virtual ::grpc::Status GetSmtp(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::SmtpProfile* response);
-    virtual ::grpc::Status TestSmtp(::grpc::ServerContext* context, const ::palm::nut::v1::SiteSmtpTestRequest* request, ::google::protobuf::Empty* response);
-    virtual ::grpc::Status SetBing(::grpc::ServerContext* context, const ::palm::nut::v1::BingProfile* request, ::google::protobuf::Empty* response);
-    virtual ::grpc::Status GetBing(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::BingProfile* response);
+    virtual ::grpc::Status PingSmtp(::grpc::ServerContext* context, const ::palm::nut::v1::SiteSmtpPingRequest* request, ::google::protobuf::Empty* response);
     virtual ::grpc::Status SetIndexNow(::grpc::ServerContext* context, const ::palm::nut::v1::IndexNowProfile* request, ::google::protobuf::Empty* response);
     virtual ::grpc::Status GetIndexNow(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::IndexNowProfile* response);
     virtual ::grpc::Status PingIndexNow(::grpc::ServerContext* context, const ::palm::nut::v1::IndexNowPingRequest* request, ::google::protobuf::Empty* response);
@@ -10250,22 +10202,22 @@ class Site final {
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_TestTwilio : public BaseClass {
+  class WithAsyncMethod_PingTwilio : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_TestTwilio() {
+    WithAsyncMethod_PingTwilio() {
       ::grpc::Service::MarkMethodAsync(11);
     }
-    ~WithAsyncMethod_TestTwilio() override {
+    ~WithAsyncMethod_PingTwilio() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TestTwilio(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteTwilioTestRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status PingTwilio(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteTwilioPingRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestTestTwilio(::grpc::ServerContext* context, ::palm::nut::v1::SiteTwilioTestRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestPingTwilio(::grpc::ServerContext* context, ::palm::nut::v1::SiteTwilioPingRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -10310,63 +10262,23 @@ class Site final {
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_TestSmtp : public BaseClass {
+  class WithAsyncMethod_PingSmtp : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_TestSmtp() {
+    WithAsyncMethod_PingSmtp() {
       ::grpc::Service::MarkMethodAsync(14);
     }
-    ~WithAsyncMethod_TestSmtp() override {
+    ~WithAsyncMethod_PingSmtp() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TestSmtp(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteSmtpTestRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status PingSmtp(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteSmtpPingRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestTestSmtp(::grpc::ServerContext* context, ::palm::nut::v1::SiteSmtpTestRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestPingSmtp(::grpc::ServerContext* context, ::palm::nut::v1::SiteSmtpPingRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_SetBing : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_SetBing() {
-      ::grpc::Service::MarkMethodAsync(15);
-    }
-    ~WithAsyncMethod_SetBing() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SetBing(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::BingProfile* /*request*/, ::google::protobuf::Empty* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestSetBing(::grpc::ServerContext* context, ::palm::nut::v1::BingProfile* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_GetBing : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_GetBing() {
-      ::grpc::Service::MarkMethodAsync(16);
-    }
-    ~WithAsyncMethod_GetBing() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetBing(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::palm::nut::v1::BingProfile* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetBing(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::BingProfile>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -10375,7 +10287,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetIndexNow() {
-      ::grpc::Service::MarkMethodAsync(17);
+      ::grpc::Service::MarkMethodAsync(15);
     }
     ~WithAsyncMethod_SetIndexNow() override {
       BaseClassMustBeDerivedFromService(this);
@@ -10386,7 +10298,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetIndexNow(::grpc::ServerContext* context, ::palm::nut::v1::IndexNowProfile* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -10395,7 +10307,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetIndexNow() {
-      ::grpc::Service::MarkMethodAsync(18);
+      ::grpc::Service::MarkMethodAsync(16);
     }
     ~WithAsyncMethod_GetIndexNow() override {
       BaseClassMustBeDerivedFromService(this);
@@ -10406,7 +10318,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetIndexNow(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::IndexNowProfile>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -10415,7 +10327,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_PingIndexNow() {
-      ::grpc::Service::MarkMethodAsync(19);
+      ::grpc::Service::MarkMethodAsync(17);
     }
     ~WithAsyncMethod_PingIndexNow() override {
       BaseClassMustBeDerivedFromService(this);
@@ -10426,7 +10338,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestPingIndexNow(::grpc::ServerContext* context, ::palm::nut::v1::IndexNowPingRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -10435,7 +10347,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetGoogle() {
-      ::grpc::Service::MarkMethodAsync(20);
+      ::grpc::Service::MarkMethodAsync(18);
     }
     ~WithAsyncMethod_SetGoogle() override {
       BaseClassMustBeDerivedFromService(this);
@@ -10446,7 +10358,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetGoogle(::grpc::ServerContext* context, ::palm::nut::v1::GoogleProfile* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -10455,7 +10367,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetGoogle() {
-      ::grpc::Service::MarkMethodAsync(21);
+      ::grpc::Service::MarkMethodAsync(19);
     }
     ~WithAsyncMethod_GetGoogle() override {
       BaseClassMustBeDerivedFromService(this);
@@ -10466,7 +10378,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetGoogle(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::GoogleProfile>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -10475,7 +10387,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_PingGoogle() {
-      ::grpc::Service::MarkMethodAsync(22);
+      ::grpc::Service::MarkMethodAsync(20);
     }
     ~WithAsyncMethod_PingGoogle() override {
       BaseClassMustBeDerivedFromService(this);
@@ -10486,7 +10398,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestPingGoogle(::grpc::ServerContext* context, ::palm::nut::v1::SitemapPingRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -10495,7 +10407,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetBaidu() {
-      ::grpc::Service::MarkMethodAsync(23);
+      ::grpc::Service::MarkMethodAsync(21);
     }
     ~WithAsyncMethod_SetBaidu() override {
       BaseClassMustBeDerivedFromService(this);
@@ -10506,7 +10418,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetBaidu(::grpc::ServerContext* context, ::palm::nut::v1::BaiduProfile* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -10515,7 +10427,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetBaidu() {
-      ::grpc::Service::MarkMethodAsync(24);
+      ::grpc::Service::MarkMethodAsync(22);
     }
     ~WithAsyncMethod_GetBaidu() override {
       BaseClassMustBeDerivedFromService(this);
@@ -10526,7 +10438,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetBaidu(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::BaiduProfile>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -10535,7 +10447,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_PingBaidu() {
-      ::grpc::Service::MarkMethodAsync(25);
+      ::grpc::Service::MarkMethodAsync(23);
     }
     ~WithAsyncMethod_PingBaidu() override {
       BaseClassMustBeDerivedFromService(this);
@@ -10546,7 +10458,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestPingBaidu(::grpc::ServerContext* context, ::palm::nut::v1::SitemapPingRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -10555,7 +10467,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_Status() {
-      ::grpc::Service::MarkMethodAsync(26);
+      ::grpc::Service::MarkMethodAsync(24);
     }
     ~WithAsyncMethod_Status() override {
       BaseClassMustBeDerivedFromService(this);
@@ -10566,10 +10478,10 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestStatus(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::SiteStatusResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SetMaintenanceMode<WithAsyncMethod_Install<WithAsyncMethod_ClearCache<WithAsyncMethod_Layout<WithAsyncMethod_SetAuthor<WithAsyncMethod_SetCopyright<WithAsyncMethod_SetKeywords<WithAsyncMethod_SetInfo<WithAsyncMethod_SetLogo<WithAsyncMethod_SetTwilio<WithAsyncMethod_GetTwilio<WithAsyncMethod_TestTwilio<WithAsyncMethod_SetSmtp<WithAsyncMethod_GetSmtp<WithAsyncMethod_TestSmtp<WithAsyncMethod_SetBing<WithAsyncMethod_GetBing<WithAsyncMethod_SetIndexNow<WithAsyncMethod_GetIndexNow<WithAsyncMethod_PingIndexNow<WithAsyncMethod_SetGoogle<WithAsyncMethod_GetGoogle<WithAsyncMethod_PingGoogle<WithAsyncMethod_SetBaidu<WithAsyncMethod_GetBaidu<WithAsyncMethod_PingBaidu<WithAsyncMethod_Status<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_SetMaintenanceMode<WithAsyncMethod_Install<WithAsyncMethod_ClearCache<WithAsyncMethod_Layout<WithAsyncMethod_SetAuthor<WithAsyncMethod_SetCopyright<WithAsyncMethod_SetKeywords<WithAsyncMethod_SetInfo<WithAsyncMethod_SetLogo<WithAsyncMethod_SetTwilio<WithAsyncMethod_GetTwilio<WithAsyncMethod_PingTwilio<WithAsyncMethod_SetSmtp<WithAsyncMethod_GetSmtp<WithAsyncMethod_PingSmtp<WithAsyncMethod_SetIndexNow<WithAsyncMethod_GetIndexNow<WithAsyncMethod_PingIndexNow<WithAsyncMethod_SetGoogle<WithAsyncMethod_GetGoogle<WithAsyncMethod_PingGoogle<WithAsyncMethod_SetBaidu<WithAsyncMethod_GetBaidu<WithAsyncMethod_PingBaidu<WithAsyncMethod_Status<Service > > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_SetMaintenanceMode : public BaseClass {
    private:
@@ -10868,31 +10780,31 @@ class Site final {
       ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::palm::nut::v1::TwilioProfile* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_TestTwilio : public BaseClass {
+  class WithCallbackMethod_PingTwilio : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_TestTwilio() {
+    WithCallbackMethod_PingTwilio() {
       ::grpc::Service::MarkMethodCallback(11,
-          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::SiteTwilioTestRequest, ::google::protobuf::Empty>(
+          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::SiteTwilioPingRequest, ::google::protobuf::Empty>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::SiteTwilioTestRequest* request, ::google::protobuf::Empty* response) { return this->TestTwilio(context, request, response); }));}
-    void SetMessageAllocatorFor_TestTwilio(
-        ::grpc::MessageAllocator< ::palm::nut::v1::SiteTwilioTestRequest, ::google::protobuf::Empty>* allocator) {
+                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::SiteTwilioPingRequest* request, ::google::protobuf::Empty* response) { return this->PingTwilio(context, request, response); }));}
+    void SetMessageAllocatorFor_PingTwilio(
+        ::grpc::MessageAllocator< ::palm::nut::v1::SiteTwilioPingRequest, ::google::protobuf::Empty>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(11);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::SiteTwilioTestRequest, ::google::protobuf::Empty>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::SiteTwilioPingRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_TestTwilio() override {
+    ~WithCallbackMethod_PingTwilio() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TestTwilio(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteTwilioTestRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status PingTwilio(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteTwilioPingRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* TestTwilio(
-      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::SiteTwilioTestRequest* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerUnaryReactor* PingTwilio(
+      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::SiteTwilioPingRequest* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_SetSmtp : public BaseClass {
@@ -10949,85 +10861,31 @@ class Site final {
       ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::palm::nut::v1::SmtpProfile* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_TestSmtp : public BaseClass {
+  class WithCallbackMethod_PingSmtp : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_TestSmtp() {
+    WithCallbackMethod_PingSmtp() {
       ::grpc::Service::MarkMethodCallback(14,
-          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::SiteSmtpTestRequest, ::google::protobuf::Empty>(
+          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::SiteSmtpPingRequest, ::google::protobuf::Empty>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::SiteSmtpTestRequest* request, ::google::protobuf::Empty* response) { return this->TestSmtp(context, request, response); }));}
-    void SetMessageAllocatorFor_TestSmtp(
-        ::grpc::MessageAllocator< ::palm::nut::v1::SiteSmtpTestRequest, ::google::protobuf::Empty>* allocator) {
+                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::SiteSmtpPingRequest* request, ::google::protobuf::Empty* response) { return this->PingSmtp(context, request, response); }));}
+    void SetMessageAllocatorFor_PingSmtp(
+        ::grpc::MessageAllocator< ::palm::nut::v1::SiteSmtpPingRequest, ::google::protobuf::Empty>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(14);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::SiteSmtpTestRequest, ::google::protobuf::Empty>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::SiteSmtpPingRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_TestSmtp() override {
+    ~WithCallbackMethod_PingSmtp() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TestSmtp(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteSmtpTestRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status PingSmtp(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteSmtpPingRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* TestSmtp(
-      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::SiteSmtpTestRequest* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithCallbackMethod_SetBing : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_SetBing() {
-      ::grpc::Service::MarkMethodCallback(15,
-          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::BingProfile, ::google::protobuf::Empty>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::BingProfile* request, ::google::protobuf::Empty* response) { return this->SetBing(context, request, response); }));}
-    void SetMessageAllocatorFor_SetBing(
-        ::grpc::MessageAllocator< ::palm::nut::v1::BingProfile, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(15);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::BingProfile, ::google::protobuf::Empty>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_SetBing() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SetBing(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::BingProfile* /*request*/, ::google::protobuf::Empty* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* SetBing(
-      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::BingProfile* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithCallbackMethod_GetBing : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_GetBing() {
-      ::grpc::Service::MarkMethodCallback(16,
-          new ::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::palm::nut::v1::BingProfile>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::BingProfile* response) { return this->GetBing(context, request, response); }));}
-    void SetMessageAllocatorFor_GetBing(
-        ::grpc::MessageAllocator< ::google::protobuf::Empty, ::palm::nut::v1::BingProfile>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(16);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::palm::nut::v1::BingProfile>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_GetBing() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetBing(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::palm::nut::v1::BingProfile* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* GetBing(
-      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::palm::nut::v1::BingProfile* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerUnaryReactor* PingSmtp(
+      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::SiteSmtpPingRequest* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_SetIndexNow : public BaseClass {
@@ -11035,13 +10893,13 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetIndexNow() {
-      ::grpc::Service::MarkMethodCallback(17,
+      ::grpc::Service::MarkMethodCallback(15,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::IndexNowProfile, ::google::protobuf::Empty>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::nut::v1::IndexNowProfile* request, ::google::protobuf::Empty* response) { return this->SetIndexNow(context, request, response); }));}
     void SetMessageAllocatorFor_SetIndexNow(
         ::grpc::MessageAllocator< ::palm::nut::v1::IndexNowProfile, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(17);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(15);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::IndexNowProfile, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -11062,13 +10920,13 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetIndexNow() {
-      ::grpc::Service::MarkMethodCallback(18,
+      ::grpc::Service::MarkMethodCallback(16,
           new ::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::palm::nut::v1::IndexNowProfile>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::IndexNowProfile* response) { return this->GetIndexNow(context, request, response); }));}
     void SetMessageAllocatorFor_GetIndexNow(
         ::grpc::MessageAllocator< ::google::protobuf::Empty, ::palm::nut::v1::IndexNowProfile>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(18);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(16);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::palm::nut::v1::IndexNowProfile>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -11089,13 +10947,13 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_PingIndexNow() {
-      ::grpc::Service::MarkMethodCallback(19,
+      ::grpc::Service::MarkMethodCallback(17,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::IndexNowPingRequest, ::google::protobuf::Empty>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::nut::v1::IndexNowPingRequest* request, ::google::protobuf::Empty* response) { return this->PingIndexNow(context, request, response); }));}
     void SetMessageAllocatorFor_PingIndexNow(
         ::grpc::MessageAllocator< ::palm::nut::v1::IndexNowPingRequest, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(19);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(17);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::IndexNowPingRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -11116,13 +10974,13 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetGoogle() {
-      ::grpc::Service::MarkMethodCallback(20,
+      ::grpc::Service::MarkMethodCallback(18,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::GoogleProfile, ::google::protobuf::Empty>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::nut::v1::GoogleProfile* request, ::google::protobuf::Empty* response) { return this->SetGoogle(context, request, response); }));}
     void SetMessageAllocatorFor_SetGoogle(
         ::grpc::MessageAllocator< ::palm::nut::v1::GoogleProfile, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(20);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(18);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::GoogleProfile, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -11143,13 +11001,13 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetGoogle() {
-      ::grpc::Service::MarkMethodCallback(21,
+      ::grpc::Service::MarkMethodCallback(19,
           new ::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::palm::nut::v1::GoogleProfile>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::GoogleProfile* response) { return this->GetGoogle(context, request, response); }));}
     void SetMessageAllocatorFor_GetGoogle(
         ::grpc::MessageAllocator< ::google::protobuf::Empty, ::palm::nut::v1::GoogleProfile>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(21);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(19);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::palm::nut::v1::GoogleProfile>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -11170,13 +11028,13 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_PingGoogle() {
-      ::grpc::Service::MarkMethodCallback(22,
+      ::grpc::Service::MarkMethodCallback(20,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::SitemapPingRequest, ::google::protobuf::Empty>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::nut::v1::SitemapPingRequest* request, ::google::protobuf::Empty* response) { return this->PingGoogle(context, request, response); }));}
     void SetMessageAllocatorFor_PingGoogle(
         ::grpc::MessageAllocator< ::palm::nut::v1::SitemapPingRequest, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(22);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(20);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::SitemapPingRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -11197,13 +11055,13 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetBaidu() {
-      ::grpc::Service::MarkMethodCallback(23,
+      ::grpc::Service::MarkMethodCallback(21,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::BaiduProfile, ::google::protobuf::Empty>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::nut::v1::BaiduProfile* request, ::google::protobuf::Empty* response) { return this->SetBaidu(context, request, response); }));}
     void SetMessageAllocatorFor_SetBaidu(
         ::grpc::MessageAllocator< ::palm::nut::v1::BaiduProfile, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(23);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(21);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::BaiduProfile, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -11224,13 +11082,13 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetBaidu() {
-      ::grpc::Service::MarkMethodCallback(24,
+      ::grpc::Service::MarkMethodCallback(22,
           new ::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::palm::nut::v1::BaiduProfile>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::BaiduProfile* response) { return this->GetBaidu(context, request, response); }));}
     void SetMessageAllocatorFor_GetBaidu(
         ::grpc::MessageAllocator< ::google::protobuf::Empty, ::palm::nut::v1::BaiduProfile>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(24);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(22);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::palm::nut::v1::BaiduProfile>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -11251,13 +11109,13 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_PingBaidu() {
-      ::grpc::Service::MarkMethodCallback(25,
+      ::grpc::Service::MarkMethodCallback(23,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::SitemapPingRequest, ::google::protobuf::Empty>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::nut::v1::SitemapPingRequest* request, ::google::protobuf::Empty* response) { return this->PingBaidu(context, request, response); }));}
     void SetMessageAllocatorFor_PingBaidu(
         ::grpc::MessageAllocator< ::palm::nut::v1::SitemapPingRequest, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(25);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(23);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::SitemapPingRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -11278,13 +11136,13 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_Status() {
-      ::grpc::Service::MarkMethodCallback(26,
+      ::grpc::Service::MarkMethodCallback(24,
           new ::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::palm::nut::v1::SiteStatusResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::SiteStatusResponse* response) { return this->Status(context, request, response); }));}
     void SetMessageAllocatorFor_Status(
         ::grpc::MessageAllocator< ::google::protobuf::Empty, ::palm::nut::v1::SiteStatusResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(26);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(24);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::palm::nut::v1::SiteStatusResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -11299,7 +11157,7 @@ class Site final {
     virtual ::grpc::ServerUnaryReactor* Status(
       ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::palm::nut::v1::SiteStatusResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_SetMaintenanceMode<WithCallbackMethod_Install<WithCallbackMethod_ClearCache<WithCallbackMethod_Layout<WithCallbackMethod_SetAuthor<WithCallbackMethod_SetCopyright<WithCallbackMethod_SetKeywords<WithCallbackMethod_SetInfo<WithCallbackMethod_SetLogo<WithCallbackMethod_SetTwilio<WithCallbackMethod_GetTwilio<WithCallbackMethod_TestTwilio<WithCallbackMethod_SetSmtp<WithCallbackMethod_GetSmtp<WithCallbackMethod_TestSmtp<WithCallbackMethod_SetBing<WithCallbackMethod_GetBing<WithCallbackMethod_SetIndexNow<WithCallbackMethod_GetIndexNow<WithCallbackMethod_PingIndexNow<WithCallbackMethod_SetGoogle<WithCallbackMethod_GetGoogle<WithCallbackMethod_PingGoogle<WithCallbackMethod_SetBaidu<WithCallbackMethod_GetBaidu<WithCallbackMethod_PingBaidu<WithCallbackMethod_Status<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > CallbackService;
+  typedef WithCallbackMethod_SetMaintenanceMode<WithCallbackMethod_Install<WithCallbackMethod_ClearCache<WithCallbackMethod_Layout<WithCallbackMethod_SetAuthor<WithCallbackMethod_SetCopyright<WithCallbackMethod_SetKeywords<WithCallbackMethod_SetInfo<WithCallbackMethod_SetLogo<WithCallbackMethod_SetTwilio<WithCallbackMethod_GetTwilio<WithCallbackMethod_PingTwilio<WithCallbackMethod_SetSmtp<WithCallbackMethod_GetSmtp<WithCallbackMethod_PingSmtp<WithCallbackMethod_SetIndexNow<WithCallbackMethod_GetIndexNow<WithCallbackMethod_PingIndexNow<WithCallbackMethod_SetGoogle<WithCallbackMethod_GetGoogle<WithCallbackMethod_PingGoogle<WithCallbackMethod_SetBaidu<WithCallbackMethod_GetBaidu<WithCallbackMethod_PingBaidu<WithCallbackMethod_Status<Service > > > > > > > > > > > > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_SetMaintenanceMode : public BaseClass {
@@ -11489,18 +11347,18 @@ class Site final {
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_TestTwilio : public BaseClass {
+  class WithGenericMethod_PingTwilio : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_TestTwilio() {
+    WithGenericMethod_PingTwilio() {
       ::grpc::Service::MarkMethodGeneric(11);
     }
-    ~WithGenericMethod_TestTwilio() override {
+    ~WithGenericMethod_PingTwilio() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TestTwilio(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteTwilioTestRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status PingTwilio(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteTwilioPingRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -11540,52 +11398,18 @@ class Site final {
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_TestSmtp : public BaseClass {
+  class WithGenericMethod_PingSmtp : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_TestSmtp() {
+    WithGenericMethod_PingSmtp() {
       ::grpc::Service::MarkMethodGeneric(14);
     }
-    ~WithGenericMethod_TestSmtp() override {
+    ~WithGenericMethod_PingSmtp() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TestSmtp(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteSmtpTestRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithGenericMethod_SetBing : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_SetBing() {
-      ::grpc::Service::MarkMethodGeneric(15);
-    }
-    ~WithGenericMethod_SetBing() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SetBing(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::BingProfile* /*request*/, ::google::protobuf::Empty* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithGenericMethod_GetBing : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_GetBing() {
-      ::grpc::Service::MarkMethodGeneric(16);
-    }
-    ~WithGenericMethod_GetBing() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetBing(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::palm::nut::v1::BingProfile* /*response*/) override {
+    ::grpc::Status PingSmtp(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteSmtpPingRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -11596,7 +11420,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetIndexNow() {
-      ::grpc::Service::MarkMethodGeneric(17);
+      ::grpc::Service::MarkMethodGeneric(15);
     }
     ~WithGenericMethod_SetIndexNow() override {
       BaseClassMustBeDerivedFromService(this);
@@ -11613,7 +11437,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetIndexNow() {
-      ::grpc::Service::MarkMethodGeneric(18);
+      ::grpc::Service::MarkMethodGeneric(16);
     }
     ~WithGenericMethod_GetIndexNow() override {
       BaseClassMustBeDerivedFromService(this);
@@ -11630,7 +11454,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_PingIndexNow() {
-      ::grpc::Service::MarkMethodGeneric(19);
+      ::grpc::Service::MarkMethodGeneric(17);
     }
     ~WithGenericMethod_PingIndexNow() override {
       BaseClassMustBeDerivedFromService(this);
@@ -11647,7 +11471,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetGoogle() {
-      ::grpc::Service::MarkMethodGeneric(20);
+      ::grpc::Service::MarkMethodGeneric(18);
     }
     ~WithGenericMethod_SetGoogle() override {
       BaseClassMustBeDerivedFromService(this);
@@ -11664,7 +11488,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetGoogle() {
-      ::grpc::Service::MarkMethodGeneric(21);
+      ::grpc::Service::MarkMethodGeneric(19);
     }
     ~WithGenericMethod_GetGoogle() override {
       BaseClassMustBeDerivedFromService(this);
@@ -11681,7 +11505,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_PingGoogle() {
-      ::grpc::Service::MarkMethodGeneric(22);
+      ::grpc::Service::MarkMethodGeneric(20);
     }
     ~WithGenericMethod_PingGoogle() override {
       BaseClassMustBeDerivedFromService(this);
@@ -11698,7 +11522,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetBaidu() {
-      ::grpc::Service::MarkMethodGeneric(23);
+      ::grpc::Service::MarkMethodGeneric(21);
     }
     ~WithGenericMethod_SetBaidu() override {
       BaseClassMustBeDerivedFromService(this);
@@ -11715,7 +11539,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetBaidu() {
-      ::grpc::Service::MarkMethodGeneric(24);
+      ::grpc::Service::MarkMethodGeneric(22);
     }
     ~WithGenericMethod_GetBaidu() override {
       BaseClassMustBeDerivedFromService(this);
@@ -11732,7 +11556,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_PingBaidu() {
-      ::grpc::Service::MarkMethodGeneric(25);
+      ::grpc::Service::MarkMethodGeneric(23);
     }
     ~WithGenericMethod_PingBaidu() override {
       BaseClassMustBeDerivedFromService(this);
@@ -11749,7 +11573,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_Status() {
-      ::grpc::Service::MarkMethodGeneric(26);
+      ::grpc::Service::MarkMethodGeneric(24);
     }
     ~WithGenericMethod_Status() override {
       BaseClassMustBeDerivedFromService(this);
@@ -11981,22 +11805,22 @@ class Site final {
     }
   };
   template <class BaseClass>
-  class WithRawMethod_TestTwilio : public BaseClass {
+  class WithRawMethod_PingTwilio : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_TestTwilio() {
+    WithRawMethod_PingTwilio() {
       ::grpc::Service::MarkMethodRaw(11);
     }
-    ~WithRawMethod_TestTwilio() override {
+    ~WithRawMethod_PingTwilio() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TestTwilio(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteTwilioTestRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status PingTwilio(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteTwilioPingRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestTestTwilio(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestPingTwilio(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -12041,63 +11865,23 @@ class Site final {
     }
   };
   template <class BaseClass>
-  class WithRawMethod_TestSmtp : public BaseClass {
+  class WithRawMethod_PingSmtp : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_TestSmtp() {
+    WithRawMethod_PingSmtp() {
       ::grpc::Service::MarkMethodRaw(14);
     }
-    ~WithRawMethod_TestSmtp() override {
+    ~WithRawMethod_PingSmtp() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TestSmtp(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteSmtpTestRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status PingSmtp(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteSmtpPingRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestTestSmtp(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestPingSmtp(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_SetBing : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_SetBing() {
-      ::grpc::Service::MarkMethodRaw(15);
-    }
-    ~WithRawMethod_SetBing() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SetBing(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::BingProfile* /*request*/, ::google::protobuf::Empty* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestSetBing(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_GetBing : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_GetBing() {
-      ::grpc::Service::MarkMethodRaw(16);
-    }
-    ~WithRawMethod_GetBing() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetBing(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::palm::nut::v1::BingProfile* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetBing(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -12106,7 +11890,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetIndexNow() {
-      ::grpc::Service::MarkMethodRaw(17);
+      ::grpc::Service::MarkMethodRaw(15);
     }
     ~WithRawMethod_SetIndexNow() override {
       BaseClassMustBeDerivedFromService(this);
@@ -12117,7 +11901,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetIndexNow(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -12126,7 +11910,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetIndexNow() {
-      ::grpc::Service::MarkMethodRaw(18);
+      ::grpc::Service::MarkMethodRaw(16);
     }
     ~WithRawMethod_GetIndexNow() override {
       BaseClassMustBeDerivedFromService(this);
@@ -12137,7 +11921,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetIndexNow(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -12146,7 +11930,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_PingIndexNow() {
-      ::grpc::Service::MarkMethodRaw(19);
+      ::grpc::Service::MarkMethodRaw(17);
     }
     ~WithRawMethod_PingIndexNow() override {
       BaseClassMustBeDerivedFromService(this);
@@ -12157,7 +11941,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestPingIndexNow(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -12166,7 +11950,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetGoogle() {
-      ::grpc::Service::MarkMethodRaw(20);
+      ::grpc::Service::MarkMethodRaw(18);
     }
     ~WithRawMethod_SetGoogle() override {
       BaseClassMustBeDerivedFromService(this);
@@ -12177,7 +11961,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetGoogle(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -12186,7 +11970,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetGoogle() {
-      ::grpc::Service::MarkMethodRaw(21);
+      ::grpc::Service::MarkMethodRaw(19);
     }
     ~WithRawMethod_GetGoogle() override {
       BaseClassMustBeDerivedFromService(this);
@@ -12197,7 +11981,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetGoogle(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -12206,7 +11990,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_PingGoogle() {
-      ::grpc::Service::MarkMethodRaw(22);
+      ::grpc::Service::MarkMethodRaw(20);
     }
     ~WithRawMethod_PingGoogle() override {
       BaseClassMustBeDerivedFromService(this);
@@ -12217,7 +12001,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestPingGoogle(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -12226,7 +12010,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetBaidu() {
-      ::grpc::Service::MarkMethodRaw(23);
+      ::grpc::Service::MarkMethodRaw(21);
     }
     ~WithRawMethod_SetBaidu() override {
       BaseClassMustBeDerivedFromService(this);
@@ -12237,7 +12021,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetBaidu(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -12246,7 +12030,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetBaidu() {
-      ::grpc::Service::MarkMethodRaw(24);
+      ::grpc::Service::MarkMethodRaw(22);
     }
     ~WithRawMethod_GetBaidu() override {
       BaseClassMustBeDerivedFromService(this);
@@ -12257,7 +12041,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetBaidu(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -12266,7 +12050,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_PingBaidu() {
-      ::grpc::Service::MarkMethodRaw(25);
+      ::grpc::Service::MarkMethodRaw(23);
     }
     ~WithRawMethod_PingBaidu() override {
       BaseClassMustBeDerivedFromService(this);
@@ -12277,7 +12061,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestPingBaidu(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -12286,7 +12070,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_Status() {
-      ::grpc::Service::MarkMethodRaw(26);
+      ::grpc::Service::MarkMethodRaw(24);
     }
     ~WithRawMethod_Status() override {
       BaseClassMustBeDerivedFromService(this);
@@ -12297,7 +12081,7 @@ class Site final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestStatus(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -12543,25 +12327,25 @@ class Site final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_TestTwilio : public BaseClass {
+  class WithRawCallbackMethod_PingTwilio : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_TestTwilio() {
+    WithRawCallbackMethod_PingTwilio() {
       ::grpc::Service::MarkMethodRawCallback(11,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->TestTwilio(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->PingTwilio(context, request, response); }));
     }
-    ~WithRawCallbackMethod_TestTwilio() override {
+    ~WithRawCallbackMethod_PingTwilio() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TestTwilio(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteTwilioTestRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status PingTwilio(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteTwilioPingRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* TestTwilio(
+    virtual ::grpc::ServerUnaryReactor* PingTwilio(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -12609,69 +12393,25 @@ class Site final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_TestSmtp : public BaseClass {
+  class WithRawCallbackMethod_PingSmtp : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_TestSmtp() {
+    WithRawCallbackMethod_PingSmtp() {
       ::grpc::Service::MarkMethodRawCallback(14,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->TestSmtp(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->PingSmtp(context, request, response); }));
     }
-    ~WithRawCallbackMethod_TestSmtp() override {
+    ~WithRawCallbackMethod_PingSmtp() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TestSmtp(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteSmtpTestRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status PingSmtp(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteSmtpPingRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* TestSmtp(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_SetBing : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_SetBing() {
-      ::grpc::Service::MarkMethodRawCallback(15,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetBing(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_SetBing() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SetBing(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::BingProfile* /*request*/, ::google::protobuf::Empty* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* SetBing(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_GetBing : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_GetBing() {
-      ::grpc::Service::MarkMethodRawCallback(16,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetBing(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_GetBing() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetBing(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::palm::nut::v1::BingProfile* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* GetBing(
+    virtual ::grpc::ServerUnaryReactor* PingSmtp(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -12680,7 +12420,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetIndexNow() {
-      ::grpc::Service::MarkMethodRawCallback(17,
+      ::grpc::Service::MarkMethodRawCallback(15,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetIndexNow(context, request, response); }));
@@ -12702,7 +12442,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetIndexNow() {
-      ::grpc::Service::MarkMethodRawCallback(18,
+      ::grpc::Service::MarkMethodRawCallback(16,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetIndexNow(context, request, response); }));
@@ -12724,7 +12464,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_PingIndexNow() {
-      ::grpc::Service::MarkMethodRawCallback(19,
+      ::grpc::Service::MarkMethodRawCallback(17,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->PingIndexNow(context, request, response); }));
@@ -12746,7 +12486,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetGoogle() {
-      ::grpc::Service::MarkMethodRawCallback(20,
+      ::grpc::Service::MarkMethodRawCallback(18,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetGoogle(context, request, response); }));
@@ -12768,7 +12508,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetGoogle() {
-      ::grpc::Service::MarkMethodRawCallback(21,
+      ::grpc::Service::MarkMethodRawCallback(19,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetGoogle(context, request, response); }));
@@ -12790,7 +12530,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_PingGoogle() {
-      ::grpc::Service::MarkMethodRawCallback(22,
+      ::grpc::Service::MarkMethodRawCallback(20,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->PingGoogle(context, request, response); }));
@@ -12812,7 +12552,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetBaidu() {
-      ::grpc::Service::MarkMethodRawCallback(23,
+      ::grpc::Service::MarkMethodRawCallback(21,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetBaidu(context, request, response); }));
@@ -12834,7 +12574,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetBaidu() {
-      ::grpc::Service::MarkMethodRawCallback(24,
+      ::grpc::Service::MarkMethodRawCallback(22,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetBaidu(context, request, response); }));
@@ -12856,7 +12596,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_PingBaidu() {
-      ::grpc::Service::MarkMethodRawCallback(25,
+      ::grpc::Service::MarkMethodRawCallback(23,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->PingBaidu(context, request, response); }));
@@ -12878,7 +12618,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_Status() {
-      ::grpc::Service::MarkMethodRawCallback(26,
+      ::grpc::Service::MarkMethodRawCallback(24,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Status(context, request, response); }));
@@ -13192,31 +12932,31 @@ class Site final {
     virtual ::grpc::Status StreamedGetTwilio(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::google::protobuf::Empty,::palm::nut::v1::TwilioProfile>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_TestTwilio : public BaseClass {
+  class WithStreamedUnaryMethod_PingTwilio : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_TestTwilio() {
+    WithStreamedUnaryMethod_PingTwilio() {
       ::grpc::Service::MarkMethodStreamed(11,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::palm::nut::v1::SiteTwilioTestRequest, ::google::protobuf::Empty>(
+          ::palm::nut::v1::SiteTwilioPingRequest, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::palm::nut::v1::SiteTwilioTestRequest, ::google::protobuf::Empty>* streamer) {
-                       return this->StreamedTestTwilio(context,
+                     ::palm::nut::v1::SiteTwilioPingRequest, ::google::protobuf::Empty>* streamer) {
+                       return this->StreamedPingTwilio(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_TestTwilio() override {
+    ~WithStreamedUnaryMethod_PingTwilio() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status TestTwilio(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteTwilioTestRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status PingTwilio(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteTwilioPingRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedTestTwilio(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::SiteTwilioTestRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedPingTwilio(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::SiteTwilioPingRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_SetSmtp : public BaseClass {
@@ -13273,85 +13013,31 @@ class Site final {
     virtual ::grpc::Status StreamedGetSmtp(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::google::protobuf::Empty,::palm::nut::v1::SmtpProfile>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_TestSmtp : public BaseClass {
+  class WithStreamedUnaryMethod_PingSmtp : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_TestSmtp() {
+    WithStreamedUnaryMethod_PingSmtp() {
       ::grpc::Service::MarkMethodStreamed(14,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::palm::nut::v1::SiteSmtpTestRequest, ::google::protobuf::Empty>(
+          ::palm::nut::v1::SiteSmtpPingRequest, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::palm::nut::v1::SiteSmtpTestRequest, ::google::protobuf::Empty>* streamer) {
-                       return this->StreamedTestSmtp(context,
+                     ::palm::nut::v1::SiteSmtpPingRequest, ::google::protobuf::Empty>* streamer) {
+                       return this->StreamedPingSmtp(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_TestSmtp() override {
+    ~WithStreamedUnaryMethod_PingSmtp() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status TestSmtp(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteSmtpTestRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status PingSmtp(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::SiteSmtpPingRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedTestSmtp(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::SiteSmtpTestRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_SetBing : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_SetBing() {
-      ::grpc::Service::MarkMethodStreamed(15,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::palm::nut::v1::BingProfile, ::google::protobuf::Empty>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::palm::nut::v1::BingProfile, ::google::protobuf::Empty>* streamer) {
-                       return this->StreamedSetBing(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_SetBing() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status SetBing(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::BingProfile* /*request*/, ::google::protobuf::Empty* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedSetBing(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::BingProfile,::google::protobuf::Empty>* server_unary_streamer) = 0;
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_GetBing : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_GetBing() {
-      ::grpc::Service::MarkMethodStreamed(16,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::google::protobuf::Empty, ::palm::nut::v1::BingProfile>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::google::protobuf::Empty, ::palm::nut::v1::BingProfile>* streamer) {
-                       return this->StreamedGetBing(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_GetBing() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status GetBing(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::palm::nut::v1::BingProfile* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedGetBing(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::google::protobuf::Empty,::palm::nut::v1::BingProfile>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedPingSmtp(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::SiteSmtpPingRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_SetIndexNow : public BaseClass {
@@ -13359,7 +13045,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetIndexNow() {
-      ::grpc::Service::MarkMethodStreamed(17,
+      ::grpc::Service::MarkMethodStreamed(15,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::nut::v1::IndexNowProfile, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
@@ -13386,7 +13072,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetIndexNow() {
-      ::grpc::Service::MarkMethodStreamed(18,
+      ::grpc::Service::MarkMethodStreamed(16,
         new ::grpc::internal::StreamedUnaryHandler<
           ::google::protobuf::Empty, ::palm::nut::v1::IndexNowProfile>(
             [this](::grpc::ServerContext* context,
@@ -13413,7 +13099,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_PingIndexNow() {
-      ::grpc::Service::MarkMethodStreamed(19,
+      ::grpc::Service::MarkMethodStreamed(17,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::nut::v1::IndexNowPingRequest, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
@@ -13440,7 +13126,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetGoogle() {
-      ::grpc::Service::MarkMethodStreamed(20,
+      ::grpc::Service::MarkMethodStreamed(18,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::nut::v1::GoogleProfile, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
@@ -13467,7 +13153,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetGoogle() {
-      ::grpc::Service::MarkMethodStreamed(21,
+      ::grpc::Service::MarkMethodStreamed(19,
         new ::grpc::internal::StreamedUnaryHandler<
           ::google::protobuf::Empty, ::palm::nut::v1::GoogleProfile>(
             [this](::grpc::ServerContext* context,
@@ -13494,7 +13180,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_PingGoogle() {
-      ::grpc::Service::MarkMethodStreamed(22,
+      ::grpc::Service::MarkMethodStreamed(20,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::nut::v1::SitemapPingRequest, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
@@ -13521,7 +13207,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetBaidu() {
-      ::grpc::Service::MarkMethodStreamed(23,
+      ::grpc::Service::MarkMethodStreamed(21,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::nut::v1::BaiduProfile, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
@@ -13548,7 +13234,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetBaidu() {
-      ::grpc::Service::MarkMethodStreamed(24,
+      ::grpc::Service::MarkMethodStreamed(22,
         new ::grpc::internal::StreamedUnaryHandler<
           ::google::protobuf::Empty, ::palm::nut::v1::BaiduProfile>(
             [this](::grpc::ServerContext* context,
@@ -13575,7 +13261,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_PingBaidu() {
-      ::grpc::Service::MarkMethodStreamed(25,
+      ::grpc::Service::MarkMethodStreamed(23,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::nut::v1::SitemapPingRequest, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
@@ -13602,7 +13288,7 @@ class Site final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_Status() {
-      ::grpc::Service::MarkMethodStreamed(26,
+      ::grpc::Service::MarkMethodStreamed(24,
         new ::grpc::internal::StreamedUnaryHandler<
           ::google::protobuf::Empty, ::palm::nut::v1::SiteStatusResponse>(
             [this](::grpc::ServerContext* context,
@@ -13623,9 +13309,9 @@ class Site final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedStatus(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::google::protobuf::Empty,::palm::nut::v1::SiteStatusResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_SetMaintenanceMode<WithStreamedUnaryMethod_Install<WithStreamedUnaryMethod_ClearCache<WithStreamedUnaryMethod_Layout<WithStreamedUnaryMethod_SetAuthor<WithStreamedUnaryMethod_SetCopyright<WithStreamedUnaryMethod_SetKeywords<WithStreamedUnaryMethod_SetInfo<WithStreamedUnaryMethod_SetLogo<WithStreamedUnaryMethod_SetTwilio<WithStreamedUnaryMethod_GetTwilio<WithStreamedUnaryMethod_TestTwilio<WithStreamedUnaryMethod_SetSmtp<WithStreamedUnaryMethod_GetSmtp<WithStreamedUnaryMethod_TestSmtp<WithStreamedUnaryMethod_SetBing<WithStreamedUnaryMethod_GetBing<WithStreamedUnaryMethod_SetIndexNow<WithStreamedUnaryMethod_GetIndexNow<WithStreamedUnaryMethod_PingIndexNow<WithStreamedUnaryMethod_SetGoogle<WithStreamedUnaryMethod_GetGoogle<WithStreamedUnaryMethod_PingGoogle<WithStreamedUnaryMethod_SetBaidu<WithStreamedUnaryMethod_GetBaidu<WithStreamedUnaryMethod_PingBaidu<WithStreamedUnaryMethod_Status<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_SetMaintenanceMode<WithStreamedUnaryMethod_Install<WithStreamedUnaryMethod_ClearCache<WithStreamedUnaryMethod_Layout<WithStreamedUnaryMethod_SetAuthor<WithStreamedUnaryMethod_SetCopyright<WithStreamedUnaryMethod_SetKeywords<WithStreamedUnaryMethod_SetInfo<WithStreamedUnaryMethod_SetLogo<WithStreamedUnaryMethod_SetTwilio<WithStreamedUnaryMethod_GetTwilio<WithStreamedUnaryMethod_PingTwilio<WithStreamedUnaryMethod_SetSmtp<WithStreamedUnaryMethod_GetSmtp<WithStreamedUnaryMethod_PingSmtp<WithStreamedUnaryMethod_SetIndexNow<WithStreamedUnaryMethod_GetIndexNow<WithStreamedUnaryMethod_PingIndexNow<WithStreamedUnaryMethod_SetGoogle<WithStreamedUnaryMethod_GetGoogle<WithStreamedUnaryMethod_PingGoogle<WithStreamedUnaryMethod_SetBaidu<WithStreamedUnaryMethod_GetBaidu<WithStreamedUnaryMethod_PingBaidu<WithStreamedUnaryMethod_Status<Service > > > > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_SetMaintenanceMode<WithStreamedUnaryMethod_Install<WithStreamedUnaryMethod_ClearCache<WithStreamedUnaryMethod_Layout<WithStreamedUnaryMethod_SetAuthor<WithStreamedUnaryMethod_SetCopyright<WithStreamedUnaryMethod_SetKeywords<WithStreamedUnaryMethod_SetInfo<WithStreamedUnaryMethod_SetLogo<WithStreamedUnaryMethod_SetTwilio<WithStreamedUnaryMethod_GetTwilio<WithStreamedUnaryMethod_TestTwilio<WithStreamedUnaryMethod_SetSmtp<WithStreamedUnaryMethod_GetSmtp<WithStreamedUnaryMethod_TestSmtp<WithStreamedUnaryMethod_SetBing<WithStreamedUnaryMethod_GetBing<WithStreamedUnaryMethod_SetIndexNow<WithStreamedUnaryMethod_GetIndexNow<WithStreamedUnaryMethod_PingIndexNow<WithStreamedUnaryMethod_SetGoogle<WithStreamedUnaryMethod_GetGoogle<WithStreamedUnaryMethod_PingGoogle<WithStreamedUnaryMethod_SetBaidu<WithStreamedUnaryMethod_GetBaidu<WithStreamedUnaryMethod_PingBaidu<WithStreamedUnaryMethod_Status<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_SetMaintenanceMode<WithStreamedUnaryMethod_Install<WithStreamedUnaryMethod_ClearCache<WithStreamedUnaryMethod_Layout<WithStreamedUnaryMethod_SetAuthor<WithStreamedUnaryMethod_SetCopyright<WithStreamedUnaryMethod_SetKeywords<WithStreamedUnaryMethod_SetInfo<WithStreamedUnaryMethod_SetLogo<WithStreamedUnaryMethod_SetTwilio<WithStreamedUnaryMethod_GetTwilio<WithStreamedUnaryMethod_PingTwilio<WithStreamedUnaryMethod_SetSmtp<WithStreamedUnaryMethod_GetSmtp<WithStreamedUnaryMethod_PingSmtp<WithStreamedUnaryMethod_SetIndexNow<WithStreamedUnaryMethod_GetIndexNow<WithStreamedUnaryMethod_PingIndexNow<WithStreamedUnaryMethod_SetGoogle<WithStreamedUnaryMethod_GetGoogle<WithStreamedUnaryMethod_PingGoogle<WithStreamedUnaryMethod_SetBaidu<WithStreamedUnaryMethod_GetBaidu<WithStreamedUnaryMethod_PingBaidu<WithStreamedUnaryMethod_Status<Service > > > > > > > > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 // ----------------------------------------------------------------------------

@@ -5,6 +5,7 @@ use lettre::{
     Message, SmtpTransport, Transport,
 };
 use serde::{Deserialize, Serialize};
+use validator::Validate;
 
 use super::super::{queue::amqp::Handler as QueueHandler, Result};
 
@@ -26,11 +27,16 @@ pub struct Attachment {
     pub content_type: String,
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Validate, Debug, Clone)]
 pub struct Profile {
+    #[validate(length(min = 1, max = 63))]
     pub host: String,
+    #[validate(range(min = 1))]
     pub port: u16,
+    #[validate(length(min = 1, max = 63))]
     pub password: String,
+    #[validate(range(min = 1))]
+    pub auth_method: u8,
     pub from: Address,
     pub cc: Vec<Address>,
     pub bcc: Vec<Address>,
@@ -47,9 +53,11 @@ impl QueueHandler for Profile {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Validate, Debug, Clone)]
 pub struct Address {
+    #[validate(length(min = 1, max = 31))]
     pub name: String,
+    #[validate(length(min = 1, max = 63))]
     pub email: String,
 }
 

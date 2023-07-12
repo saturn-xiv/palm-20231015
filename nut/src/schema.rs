@@ -259,8 +259,7 @@ diesel::table! {
     logs (id) {
         id -> Int4,
         user_id -> Int4,
-        #[max_length = 16]
-        level -> Varchar,
+        level -> Int4,
         #[max_length = 45]
         ip -> Varchar,
         #[max_length = 255]

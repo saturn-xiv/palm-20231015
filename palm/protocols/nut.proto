@@ -124,7 +124,7 @@ message UserSignUpRequest {
   string email = 3;
   string password = 4;
   string lang = 11;
-  string time_zone = 12;
+  string timezone = 12;
   string home = 21;
 }
 
@@ -512,14 +512,11 @@ service Site {
 
   rpc SetTwilio(TwilioProfile) returns (google.protobuf.Empty) {}
   rpc GetTwilio(google.protobuf.Empty) returns (TwilioProfile) {}
-  rpc TestTwilio(SiteTwilioTestRequest) returns (google.protobuf.Empty) {}
+  rpc PingTwilio(SiteTwilioPingRequest) returns (google.protobuf.Empty) {}
 
   rpc SetSmtp(SmtpProfile) returns (google.protobuf.Empty) {}
   rpc GetSmtp(google.protobuf.Empty) returns (SmtpProfile) {}
-  rpc TestSmtp(SiteSmtpTestRequest) returns (google.protobuf.Empty) {}
-
-  rpc SetBing(BingProfile) returns (google.protobuf.Empty) {}
-  rpc GetBing(google.protobuf.Empty) returns (BingProfile) {}
+  rpc PingSmtp(SiteSmtpPingRequest) returns (google.protobuf.Empty) {}
 
   rpc SetIndexNow(IndexNowProfile) returns (google.protobuf.Empty) {}
   rpc GetIndexNow(google.protobuf.Empty) returns (IndexNowProfile) {}
@@ -550,11 +547,8 @@ message SitemapPingRequest {
 }
 
 message SiteMaintenanceModeRequest {
-  message Item {
-    google.protobuf.Duration duration = 1;
-    string reason = 2;
-  }
-  optional Item item = 1;
+  google.protobuf.Duration ttl = 1;
+  string reason = 2;
 }
 
 message SiteInstallRequest {
@@ -581,7 +575,7 @@ message SmtpProfile {
   repeated EmailTask.Address cc = 8;
   repeated EmailTask.Address bcc = 9;
 
-  EmailTask.Address user = 11;
+  EmailTask.Address from = 11;
   string password = 12;
 }
 
@@ -607,13 +601,13 @@ message EmailTask {
   repeated Attachment attachments = 13;
 }
 
-message SiteTwilioTestRequest {
+message SiteTwilioPingRequest {
   string to = 1;
   string message = 2;
   TwilioProfile profile = 9;
 }
 
-message SiteSmtpTestRequest {
+message SiteSmtpPingRequest {
   EmailTask.Address to = 1;
   string subject = 2;
   string content = 3;
@@ -666,9 +660,6 @@ message BaiduProfile {
     string content = 2;
   }
   optional SiteVerify site_verify = 1;
-}
-message BingProfile {
-  optional string site_verify_id = 1;
 }
 
 message SmsTask {

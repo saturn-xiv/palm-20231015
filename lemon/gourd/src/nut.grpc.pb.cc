@@ -2562,12 +2562,10 @@ static const char* Site_method_names[] = {
   "/palm.nut.v1.Site/SetLogo",
   "/palm.nut.v1.Site/SetTwilio",
   "/palm.nut.v1.Site/GetTwilio",
-  "/palm.nut.v1.Site/TestTwilio",
+  "/palm.nut.v1.Site/PingTwilio",
   "/palm.nut.v1.Site/SetSmtp",
   "/palm.nut.v1.Site/GetSmtp",
-  "/palm.nut.v1.Site/TestSmtp",
-  "/palm.nut.v1.Site/SetBing",
-  "/palm.nut.v1.Site/GetBing",
+  "/palm.nut.v1.Site/PingSmtp",
   "/palm.nut.v1.Site/SetIndexNow",
   "/palm.nut.v1.Site/GetIndexNow",
   "/palm.nut.v1.Site/PingIndexNow",
@@ -2598,22 +2596,20 @@ Site::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, cons
   , rpcmethod_SetLogo_(Site_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_SetTwilio_(Site_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetTwilio_(Site_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_TestTwilio_(Site_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PingTwilio_(Site_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_SetSmtp_(Site_method_names[12], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetSmtp_(Site_method_names[13], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_TestSmtp_(Site_method_names[14], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetBing_(Site_method_names[15], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetBing_(Site_method_names[16], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetIndexNow_(Site_method_names[17], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetIndexNow_(Site_method_names[18], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_PingIndexNow_(Site_method_names[19], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetGoogle_(Site_method_names[20], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetGoogle_(Site_method_names[21], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_PingGoogle_(Site_method_names[22], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetBaidu_(Site_method_names[23], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetBaidu_(Site_method_names[24], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_PingBaidu_(Site_method_names[25], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Status_(Site_method_names[26], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PingSmtp_(Site_method_names[14], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetIndexNow_(Site_method_names[15], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetIndexNow_(Site_method_names[16], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PingIndexNow_(Site_method_names[17], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetGoogle_(Site_method_names[18], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetGoogle_(Site_method_names[19], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PingGoogle_(Site_method_names[20], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetBaidu_(Site_method_names[21], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetBaidu_(Site_method_names[22], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PingBaidu_(Site_method_names[23], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Status_(Site_method_names[24], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status Site::Stub::SetMaintenanceMode(::grpc::ClientContext* context, const ::palm::nut::v1::SiteMaintenanceModeRequest& request, ::google::protobuf::Empty* response) {
@@ -2869,25 +2865,25 @@ void Site::Stub::async::GetTwilio(::grpc::ClientContext* context, const ::google
   return result;
 }
 
-::grpc::Status Site::Stub::TestTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest& request, ::google::protobuf::Empty* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::SiteTwilioTestRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_TestTwilio_, context, request, response);
+::grpc::Status Site::Stub::PingTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest& request, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::SiteTwilioPingRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PingTwilio_, context, request, response);
 }
 
-void Site::Stub::async::TestTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::SiteTwilioTestRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_TestTwilio_, context, request, response, std::move(f));
+void Site::Stub::async::PingTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::SiteTwilioPingRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PingTwilio_, context, request, response, std::move(f));
 }
 
-void Site::Stub::async::TestTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_TestTwilio_, context, request, response, reactor);
+void Site::Stub::async::PingTwilio(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PingTwilio_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Site::Stub::PrepareAsyncTestTwilioRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::google::protobuf::Empty, ::palm::nut::v1::SiteTwilioTestRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_TestTwilio_, context, request);
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Site::Stub::PrepareAsyncPingTwilioRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::google::protobuf::Empty, ::palm::nut::v1::SiteTwilioPingRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PingTwilio_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Site::Stub::AsyncTestTwilioRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioTestRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Site::Stub::AsyncPingTwilioRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteTwilioPingRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncTestTwilioRaw(context, request, cq);
+    this->PrepareAsyncPingTwilioRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -2938,71 +2934,25 @@ void Site::Stub::async::GetSmtp(::grpc::ClientContext* context, const ::google::
   return result;
 }
 
-::grpc::Status Site::Stub::TestSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest& request, ::google::protobuf::Empty* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::SiteSmtpTestRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_TestSmtp_, context, request, response);
+::grpc::Status Site::Stub::PingSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest& request, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::SiteSmtpPingRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PingSmtp_, context, request, response);
 }
 
-void Site::Stub::async::TestSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::SiteSmtpTestRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_TestSmtp_, context, request, response, std::move(f));
+void Site::Stub::async::PingSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::SiteSmtpPingRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PingSmtp_, context, request, response, std::move(f));
 }
 
-void Site::Stub::async::TestSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_TestSmtp_, context, request, response, reactor);
+void Site::Stub::async::PingSmtp(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PingSmtp_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Site::Stub::PrepareAsyncTestSmtpRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::google::protobuf::Empty, ::palm::nut::v1::SiteSmtpTestRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_TestSmtp_, context, request);
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Site::Stub::PrepareAsyncPingSmtpRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::google::protobuf::Empty, ::palm::nut::v1::SiteSmtpPingRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PingSmtp_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Site::Stub::AsyncTestSmtpRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpTestRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Site::Stub::AsyncPingSmtpRaw(::grpc::ClientContext* context, const ::palm::nut::v1::SiteSmtpPingRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncTestSmtpRaw(context, request, cq);
-  result->StartCall();
-  return result;
-}
-
-::grpc::Status Site::Stub::SetBing(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile& request, ::google::protobuf::Empty* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::BingProfile, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetBing_, context, request, response);
-}
-
-void Site::Stub::async::SetBing(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::BingProfile, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetBing_, context, request, response, std::move(f));
-}
-
-void Site::Stub::async::SetBing(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetBing_, context, request, response, reactor);
-}
-
-::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Site::Stub::PrepareAsyncSetBingRaw(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::google::protobuf::Empty, ::palm::nut::v1::BingProfile, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetBing_, context, request);
-}
-
-::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Site::Stub::AsyncSetBingRaw(::grpc::ClientContext* context, const ::palm::nut::v1::BingProfile& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncSetBingRaw(context, request, cq);
-  result->StartCall();
-  return result;
-}
-
-::grpc::Status Site::Stub::GetBing(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::palm::nut::v1::BingProfile* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::google::protobuf::Empty, ::palm::nut::v1::BingProfile, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetBing_, context, request, response);
-}
-
-void Site::Stub::async::GetBing(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::BingProfile* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::google::protobuf::Empty, ::palm::nut::v1::BingProfile, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetBing_, context, request, response, std::move(f));
-}
-
-void Site::Stub::async::GetBing(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::BingProfile* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetBing_, context, request, response, reactor);
-}
-
-::grpc::ClientAsyncResponseReader< ::palm::nut::v1::BingProfile>* Site::Stub::PrepareAsyncGetBingRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::nut::v1::BingProfile, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetBing_, context, request);
-}
-
-::grpc::ClientAsyncResponseReader< ::palm::nut::v1::BingProfile>* Site::Stub::AsyncGetBingRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncGetBingRaw(context, request, cq);
+    this->PrepareAsyncPingSmtpRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -3351,12 +3301,12 @@ Site::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Site_method_names[11],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Site::Service, ::palm::nut::v1::SiteTwilioTestRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Site::Service, ::palm::nut::v1::SiteTwilioPingRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Site::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::palm::nut::v1::SiteTwilioTestRequest* req,
+             const ::palm::nut::v1::SiteTwilioPingRequest* req,
              ::google::protobuf::Empty* resp) {
-               return service->TestTwilio(ctx, req, resp);
+               return service->PingTwilio(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Site_method_names[12],
@@ -3381,35 +3331,15 @@ Site::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Site_method_names[14],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Site::Service, ::palm::nut::v1::SiteSmtpTestRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Site::Service, ::palm::nut::v1::SiteSmtpPingRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Site::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::palm::nut::v1::SiteSmtpTestRequest* req,
+             const ::palm::nut::v1::SiteSmtpPingRequest* req,
              ::google::protobuf::Empty* resp) {
-               return service->TestSmtp(ctx, req, resp);
+               return service->PingSmtp(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Site_method_names[15],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Site::Service, ::palm::nut::v1::BingProfile, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](Site::Service* service,
-             ::grpc::ServerContext* ctx,
-             const ::palm::nut::v1::BingProfile* req,
-             ::google::protobuf::Empty* resp) {
-               return service->SetBing(ctx, req, resp);
-             }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Site_method_names[16],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Site::Service, ::google::protobuf::Empty, ::palm::nut::v1::BingProfile, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](Site::Service* service,
-             ::grpc::ServerContext* ctx,
-             const ::google::protobuf::Empty* req,
-             ::palm::nut::v1::BingProfile* resp) {
-               return service->GetBing(ctx, req, resp);
-             }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Site_method_names[17],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Site::Service, ::palm::nut::v1::IndexNowProfile, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Site::Service* service,
@@ -3419,7 +3349,7 @@ Site::Service::Service() {
                return service->SetIndexNow(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Site_method_names[18],
+      Site_method_names[16],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Site::Service, ::google::protobuf::Empty, ::palm::nut::v1::IndexNowProfile, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Site::Service* service,
@@ -3429,7 +3359,7 @@ Site::Service::Service() {
                return service->GetIndexNow(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Site_method_names[19],
+      Site_method_names[17],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Site::Service, ::palm::nut::v1::IndexNowPingRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Site::Service* service,
@@ -3439,7 +3369,7 @@ Site::Service::Service() {
                return service->PingIndexNow(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Site_method_names[20],
+      Site_method_names[18],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Site::Service, ::palm::nut::v1::GoogleProfile, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Site::Service* service,
@@ -3449,7 +3379,7 @@ Site::Service::Service() {
                return service->SetGoogle(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Site_method_names[21],
+      Site_method_names[19],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Site::Service, ::google::protobuf::Empty, ::palm::nut::v1::GoogleProfile, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Site::Service* service,
@@ -3459,7 +3389,7 @@ Site::Service::Service() {
                return service->GetGoogle(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Site_method_names[22],
+      Site_method_names[20],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Site::Service, ::palm::nut::v1::SitemapPingRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Site::Service* service,
@@ -3469,7 +3399,7 @@ Site::Service::Service() {
                return service->PingGoogle(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Site_method_names[23],
+      Site_method_names[21],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Site::Service, ::palm::nut::v1::BaiduProfile, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Site::Service* service,
@@ -3479,7 +3409,7 @@ Site::Service::Service() {
                return service->SetBaidu(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Site_method_names[24],
+      Site_method_names[22],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Site::Service, ::google::protobuf::Empty, ::palm::nut::v1::BaiduProfile, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Site::Service* service,
@@ -3489,7 +3419,7 @@ Site::Service::Service() {
                return service->GetBaidu(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Site_method_names[25],
+      Site_method_names[23],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Site::Service, ::palm::nut::v1::SitemapPingRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Site::Service* service,
@@ -3499,7 +3429,7 @@ Site::Service::Service() {
                return service->PingBaidu(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Site_method_names[26],
+      Site_method_names[24],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Site::Service, ::google::protobuf::Empty, ::palm::nut::v1::SiteStatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Site::Service* service,
@@ -3590,7 +3520,7 @@ Site::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Site::Service::TestTwilio(::grpc::ServerContext* context, const ::palm::nut::v1::SiteTwilioTestRequest* request, ::google::protobuf::Empty* response) {
+::grpc::Status Site::Service::PingTwilio(::grpc::ServerContext* context, const ::palm::nut::v1::SiteTwilioPingRequest* request, ::google::protobuf::Empty* response) {
   (void) context;
   (void) request;
   (void) response;
@@ -3611,21 +3541,7 @@ Site::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Site::Service::TestSmtp(::grpc::ServerContext* context, const ::palm::nut::v1::SiteSmtpTestRequest* request, ::google::protobuf::Empty* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status Site::Service::SetBing(::grpc::ServerContext* context, const ::palm::nut::v1::BingProfile* request, ::google::protobuf::Empty* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status Site::Service::GetBing(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::BingProfile* response) {
+::grpc::Status Site::Service::PingSmtp(::grpc::ServerContext* context, const ::palm::nut::v1::SiteSmtpPingRequest* request, ::google::protobuf::Empty* response) {
   (void) context;
   (void) request;
   (void) response;
