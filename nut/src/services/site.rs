@@ -1,9 +1,15 @@
+use std::fs::read_to_string;
 use std::ops::{Deref, DerefMut};
+use std::process::Command;
 use std::sync::Arc;
 
 use casbin::{Enforcer, RbacApi};
-use chrono::{Datelike, Utc};
-use diesel::Connection as DieselConntection;
+use chrono::{Datelike, NaiveDateTime, Utc};
+use diesel::{
+    sql_query,
+    sql_types::{Text, Timestamptz},
+    Connection as DieselConntection, RunQueryDsl,
+};
 use hyper::StatusCode;
 use mime::TEXT_PLAIN_UTF_8;
 use palm::{
@@ -14,7 +20,9 @@ use palm::{
     crypto::{random::string as random_string, Password, Secret},
     jwt::Jwt,
     nut::v1,
+    queue::amqp::RabbitMq,
     rbac::{Role, Subject},
+    search::OpenSearch,
     seo::{
         baidu::{ping as ping_baidu, Profile as BaiduProfile, SiteVerify as BaiduSiteVerify},
         google::{ping as ping_google, Profile as GoogleProfile, ReCaptcha as GoogleReCaptcha},
@@ -24,7 +32,7 @@ use palm::{
     session::Session,
     tasks::email::{Address as EmailAddress, Profile as SmtpProfile, Task as EmailTask},
     thrift::loquat::Config as Loquat,
-    to_code, try_grpc,
+    to_code, to_timestamp, try_grpc,
     twilio::Config as TwilioProfile,
     Error, GrpcResult, HttpError, Result,
 };
@@ -53,6 +61,8 @@ pub struct Service {
     pub db: DbPool,
     pub cache: CachePool,
     pub enforcer: Arc<Mutex<Enforcer>>,
+    pub queue: Arc<RabbitMq>,
+    pub search: Arc<OpenSearch>,
 }
 
 #[tonic::async_trait]
@@ -562,7 +572,19 @@ impl v1::site_server::Site for Service {
     }
 
     async fn status(&self, req: Request<()>) -> GrpcResult<v1::SiteStatusResponse> {
-        todo!()
+        let ss = Session::new(&req);
+        let mut db = try_grpc!(self.db.get())?;
+        let db = db.deref_mut();
+        let mut ch = try_grpc!(self.cache.get())?;
+        let ch = ch.deref_mut();
+        let jwt = self.jwt.deref();
+        let aes = self.aes.deref();
+        let enf = self.enforcer.deref();
+        let queue = self.queue.deref();
+        let search = self.search.deref();
+
+        let it = try_grpc!(new_status(&ss, db, ch, enf, jwt, aes, queue, search).await)?;
+        Ok(Response::new(it))
     }
 }
 
@@ -988,4 +1010,134 @@ impl SmtpPing {
 
         Ok(())
     }
+}
+
+pub async fn new_status<J: Jwt, S: Secret>(
+    ss: &Session,
+    db: &mut Db,
+    ch: &mut Cache,
+    enf: &Mutex<Enforcer>,
+    jwt: &J,
+    _aes: &S,
+    queue: &RabbitMq,
+    search: &OpenSearch,
+) -> Result<v1::SiteStatusResponse> {
+    {
+        let (user, _, _) = ss.current_user(db, ch, jwt)?;
+        user.is_administrator(enf).await?;
+    }
+
+    Ok(v1::SiteStatusResponse {
+        system: Some(new_system_status()?),
+        redis: Some(new_redis_status(ch)?),
+        rabbitmq: Some(new_rabbitmq_status(queue).await?),
+        opensearch: Some(new_opensearch_status(search).await?),
+        mysql: None,
+        postgresql: Some(new_postgresql_status(db)?),
+        healthes: Vec::new(),
+    })
+}
+pub fn new_postgresql_status(db: &mut Db) -> Result<v1::site_status_response::PostgreSql> {
+    let ver: DatabaseVersion = sql_query("SELECT VERSION() AS value").get_result(db)?;
+    let now: DatabaseNow = sql_query("SELECT CURRENT_TIMESTAMP AS value").get_result(db)?;
+    let databases: Vec<Database> = sql_query(r###"SELECT pg_database.datname as "name", pg_size_pretty(pg_database_size(pg_database.datname)) AS "size" FROM pg_database ORDER by "size" DESC;"###).load(db)?;
+
+    Ok(v1::site_status_response::PostgreSql {
+        version: ver.value,
+        now: Some(to_timestamp!(now.value)),
+        databases: databases
+            .iter()
+            .map(|x| v1::site_status_response::Database {
+                name: x.name.clone(),
+                size: x.size.clone(),
+            })
+            .collect(),
+    })
+}
+pub async fn new_opensearch_status(
+    search: &OpenSearch,
+) -> Result<v1::site_status_response::OpenSearch> {
+    let it = search.info().await?;
+    Ok(v1::site_status_response::OpenSearch {
+        url: it.0,
+        info: it.1,
+    })
+}
+
+pub async fn new_rabbitmq_status(queue: &RabbitMq) -> Result<v1::site_status_response::RabbitMq> {
+    let con = lapin::Connection::connect_uri(queue.uri.clone(), queue.conn.clone()).await?;
+    Ok(v1::site_status_response::RabbitMq {
+        protocol: format!(
+            "{} {}.{}.{}",
+            lapin::protocol::metadata::NAME,
+            lapin::protocol::metadata::MAJOR_VERSION,
+            lapin::protocol::metadata::MINOR_VERSION,
+            lapin::protocol::metadata::REVISION
+        ),
+        heartbeat: con.configuration().heartbeat() as u32,
+    })
+}
+
+pub fn new_redis_status(db: &mut Cache) -> Result<v1::site_status_response::Redis> {
+    let version = db.version()?;
+    // FIXME
+    let items = db
+        .keys()?
+        .iter()
+        .map(|(node, key, ttl)| v1::site_status_response::redis::Item {
+            ttl: *ttl,
+            key: key.clone(),
+            node: node.clone(),
+        })
+        .collect();
+
+    Ok(v1::site_status_response::Redis {
+        info: version,
+        items,
+    })
+}
+
+pub fn new_system_status() -> Result<v1::site_status_response::System> {
+    Ok(v1::site_status_response::System {
+        version: read_to_string("/proc/version")?,
+        cpu: read_to_string("/proc/cpuinfo")?,
+        memory: read_to_string("/proc/meminfo")?,
+        boot: read_to_string("/proc/cmdline")?,
+        disk: {
+            // read_to_string("/proc/diskstats")?
+            let it = Command::new("df").arg("-h").output()?;
+            String::from_utf8(it.stdout)?
+        },
+        load: {
+            let it = Command::new("top").arg("-b").arg("-n").arg("1").output()?;
+            String::from_utf8(it.stdout)?
+        },
+        fs: read_to_string("/proc/mounts")?,
+        swap: read_to_string("/proc/swaps")?,
+        uptime: read_to_string("/proc/uptime")?,
+        network: {
+            let it = Command::new("ip").arg("address").output()?;
+            String::from_utf8(it.stdout)?
+        },
+    })
+}
+
+#[derive(QueryableByName, PartialEq, Debug)]
+struct DatabaseVersion {
+    #[diesel(sql_type = Text)]
+    value: String,
+}
+
+#[derive(QueryableByName, PartialEq, Debug)]
+struct DatabaseNow {
+    #[diesel(sql_type = Timestamptz)]
+    value: NaiveDateTime,
+}
+
+#[derive(QueryableByName, PartialEq, Debug, Serialize, Deserialize)]
+struct Database {
+    #[diesel(sql_type = Text)]
+    name: String,
+    #[diesel(sql_type = Text)]
+    size: String,
 }

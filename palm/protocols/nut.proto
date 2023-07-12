@@ -693,6 +693,7 @@ message SiteStatusResponse {
   }
   message RabbitMq {
     string protocol = 1;
+    uint32 heartbeat = 2;
   }
   message OpenSearch {
     string url = 1;
