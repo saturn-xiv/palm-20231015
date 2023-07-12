@@ -14,7 +14,7 @@ use language_tags::LanguageTag;
 use openssl::hash::{hash, MessageDigest};
 use palm::{
     crypto::{random::bytes as random_bytes, Password},
-    rbac::Subject as RbacSubject,
+    rbac::{v1 as rbac_v1, Subject as RbacSubject},
     tasks::email::Address,
     HttpError, Result,
 };
@@ -79,6 +79,17 @@ pub struct Item {
     pub version: i32,
     pub created_at: NaiveDateTime,
     pub updated_at: NaiveDateTime,
+}
+
+impl From<Item> for rbac_v1::users_response::Item {
+    fn from(x: Item) -> Self {
+        Self {
+            id: x.id,
+            nickname: x.nickname.clone(),
+            real_name: x.real_name.clone(),
+            email: x.email.clone(),
+        }
+    }
 }
 
 impl fmt::Display for Item {

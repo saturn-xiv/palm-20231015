@@ -1,6 +1,5 @@
 use std::ops::{Deref, DerefMut};
 
-use casbin::{MgmtApi, RbacApi};
 use hyper::StatusCode;
 use juniper::{GraphQLInputObject, GraphQLObject};
 use palm::{
@@ -9,38 +8,7 @@ use palm::{
 };
 use validator::Validate;
 
-use super::super::models::{
-    casbin_rule::{Dao as CasbinRuleDao, Item as CasbinRule},
-    user::{Dao as UserDao, Item as User},
-};
 use super::{user::UserItem, Context, CurrentUserAdapter};
-
-pub async fn all_users(context: &Context) -> Result<Vec<UserItem>> {
-    let mut db = context.db.get()?;
-    let db = db.deref_mut();
-    let mut ch = context.cache.get()?;
-    let ch = ch.deref_mut();
-    let (user, _, _) = {
-        let jwt = context.loquat.deref();
-        context.session.current_user(db, ch, jwt)?
-    };
-    let enf = context.enforcer.deref();
-    if !user.is_administrator(enf).await {
-        return Err(Box::new(HttpError(StatusCode::FORBIDDEN, None)));
-    }
-
-    let mut items = Vec::new();
-    {
-        let enf = enf.lock().await;
-        for it in enf.get_all_subjects().iter() {
-            if let Ok(ref it) = <User as Subject>::from(it) {
-                let it = UserDao::by_nickname(db, it)?;
-                items.push(UserItem::new(&it));
-            }
-        }
-    }
-    Ok(items)
-}
 
 #[derive(GraphQLObject)]
 #[graphql(name = "RbacResourceItem")]
