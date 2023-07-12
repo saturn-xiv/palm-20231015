@@ -87,7 +87,7 @@ impl From<Item> for rbac_v1::users_response::Item {
             id: x.id,
             nickname: x.nickname.clone(),
             real_name: x.real_name.clone(),
-            email: x.email.clone(),
+            email: x.email,
         }
     }
 }

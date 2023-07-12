@@ -167,6 +167,15 @@ impl Resource {
     const SEP: &str = "://";
 }
 
+impl From<Resource> for v1::resources_response::Item {
+    fn from(x: Resource) -> Self {
+        Self {
+            id: x.id,
+            r#type: x.r#type,
+        }
+    }
+}
+
 impl fmt::Display for Resource {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self.id {
@@ -202,6 +211,14 @@ pub struct Permission {
     pub resource: Resource,
 }
 
+impl From<Permission> for v1::permissions_response::Item {
+    fn from(x: Permission) -> Self {
+        Self {
+            operation: x.operation.clone(),
+            resource: Some(x.resource.into()),
+        }
+    }
+}
 impl Permission {
     pub fn to_rule(&self) -> Vec<String> {
         let mut it = Vec::new();

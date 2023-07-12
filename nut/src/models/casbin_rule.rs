@@ -1,5 +1,5 @@
 use diesel::prelude::*;
-use palm::Result;
+use palm::{rbac::v1, Result};
 use serde::Serialize;
 
 use super::super::{orm::postgresql::Connection, schema::casbin_rule};
@@ -17,6 +17,20 @@ pub struct Item {
     pub v5: String,
 }
 
+impl From<Item> for v1::rules_response::Item {
+    fn from(x: Item) -> Self {
+        Self {
+            id: x.id,
+            ptype: x.ptype.clone(),
+            v0: x.v0.clone(),
+            v1: x.v1.clone(),
+            v2: x.v2.clone(),
+            v3: x.v3.clone(),
+            v4: x.v4.clone(),
+            v5: x.v5,
+        }
+    }
+}
 pub trait Dao {
     fn all(&mut self) -> Result<Vec<Item>>;
 }

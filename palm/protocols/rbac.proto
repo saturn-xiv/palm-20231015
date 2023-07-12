@@ -13,6 +13,7 @@ service Policy {
   rpc GetAllResources(google.protobuf.Empty) returns (ResourcesResponse) {}
   rpc GetAllOperations(google.protobuf.Empty) returns (OperationsResponse) {}
   rpc GetAllRoles(google.protobuf.Empty) returns (RolesResponse) {}
+  rpc GetAllRules(google.protobuf.Empty) returns (RulesResponse) {}
 
   rpc GetRolesForUser(UserRequest) returns (RolesResponse) {}
   rpc GetImplicitRolesForUser(UserRequest) returns (RolesResponse) {}
@@ -63,13 +64,21 @@ message ResourcesResponse {
   repeated Item items = 1;
 }
 
-message OperationsResponse { repeated string items = 1; }
+message OperationsResponse {
+  repeated string items = 1;
+}
 
-message RolesResponse { repeated string items = 1; }
+message RolesResponse {
+  repeated string items = 1;
+}
 
-message UserRequest { int32 id = 1; }
+message UserRequest {
+  int32 id = 1;
+}
 
-message RoleRequest { string code = 1; }
+message RoleRequest {
+  string code = 1;
+}
 
 message UserRolesRequest {
   int32 user = 1;
@@ -114,4 +123,18 @@ message UpdatePermissionsForRoleRequest {
   string role = 1;
   repeated PermissionsResponse.Item removed = 2;
   repeated PermissionsResponse.Item saved = 3;
+}
+
+message RulesResponse {
+  message Item {
+    int32 id = 1;
+    string ptype = 2;
+    string v0 = 3;
+    string v1 = 4;
+    string v2 = 5;
+    string v3 = 6;
+    string v4 = 7;
+    string v5 = 8;
+  }
+  repeated Item items = 1;
 }
