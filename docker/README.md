@@ -7,10 +7,10 @@ sudo apt install crun podman buildah fuse-overlayfs
 sudo pacman -S crun podman buildah fuse-overlayfs
 ```
 
-- Uncompress
+- Decompress
 
   ```bash
-  cat palm-spring-TIMESTAMP.tar.xz.0* > palm-spring-TIMESTAMP.tar.xz
+  cat palm-spring-TIMESTAMP.tar.xz.0? > palm-spring-TIMESTAMP.tar.xz
   ```
 
 - Podman commands
