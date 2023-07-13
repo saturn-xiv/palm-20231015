@@ -14,9 +14,10 @@ use language_tags::LanguageTag;
 use openssl::hash::{hash, MessageDigest};
 use palm::{
     crypto::{random::bytes as random_bytes, Password},
+    nut::v1,
     rbac::{v1 as rbac_v1, Subject as RbacSubject},
     tasks::email::Address,
-    HttpError, Result,
+    to_timestamp, HttpError, Result,
 };
 use serde::{Deserialize, Serialize};
 use strum_macros::{Display as EnumDisplay, EnumString};
@@ -92,6 +93,28 @@ impl From<Item> for rbac_v1::users_response::Item {
     }
 }
 
+impl From<Item> for v1::user_index_response::Item {
+    fn from(x: Item) -> Self {
+        Self {
+            id: x.id,
+            nickname: x.nickname.clone(),
+            real_name: x.real_name.clone(),
+            email: x.email.clone(),
+            lang: x.lang.clone(),
+            timezone: x.timezone.clone(),
+            avatar: x.avatar.clone(),
+            confirmed_at: x.confirmed_at.map(|x| to_timestamp!(x)),
+            locked_at: x.locked_at.map(|x| to_timestamp!(x)),
+            deleted_at: x.deleted_at.map(|x| to_timestamp!(x)),
+            sign_in_count: x.sign_in_count,
+            last_sign_in_ip: x.last_sign_in_ip.clone(),
+            last_sign_in_at: x.last_sign_in_at.map(|x| to_timestamp!(x)),
+            current_sign_in_ip: x.current_sign_in_ip.clone(),
+            current_sign_in_at: x.current_sign_in_at.map(|x| to_timestamp!(x)),
+            updated_at: Some(to_timestamp!(x.updated_at)),
+        }
+    }
+}
 impl fmt::Display for Item {
     fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
         write!(fmt, "{}<{}>", self.real_name, self.email)

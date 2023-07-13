@@ -86,12 +86,16 @@ service User {
   rpc Lock(IdRequest) returns (google.protobuf.Empty) {}
   rpc Unlock(IdRequest) returns (google.protobuf.Empty) {}
   rpc Confirm(IdRequest) returns (google.protobuf.Empty) {}
+  rpc Delete(IdRequest) returns (google.protobuf.Empty) {}
   rpc SetPassword(UserSetPasswordRequest) returns (google.protobuf.Empty) {}
 }
 
 message UserSignInRequest {
-  UserQueryRequest query = 1;
-  string password = 2;
+  oneof user {
+    string nickname = 1;
+    string email = 2;
+  }
+  string password = 9;
   google.protobuf.Duration ttl = 11;
 }
 
@@ -104,18 +108,16 @@ message UserQueryRequest {
 }
 
 message UserSignInResponse {
-  optional string token = 1;
-  UserIndexResponse.Item payload = 2;
-  repeated string roles = 11;
+  string token = 1;
+  UserIndexResponse.Item user = 2;
+  string provider_type = 9;
 
+  repeated string roles = 11;
   repeated palm.rbac.v1.PermissionsResponse.Item permissions = 12;
 
-  message Wechat {
-    bool mini_program = 1;
-    bool oauth2 = 2;
-  }
-  bool google = 21;
-  Wechat wechat = 22;
+  bool has_google = 21;
+  bool has_wechat_mini_program = 22;
+  bool has_wechat_oauth2 = 23;
 }
 
 message UserSignUpRequest {
@@ -138,14 +140,14 @@ message UserResetPasswordRequest {
 }
 
 message UserSetPasswordRequest {
-  int32 id = 1;
+  int32 user = 1;
   string password = 2;
 }
 
 message UserSetProfileRequest {
   string real_name = 1;
   string avatar = 2;
-  string time_zone = 8;
+  string timezone = 8;
   string lang = 9;
   string wechat = 11;
   string phone = 12;
@@ -156,7 +158,7 @@ message UserGetProfileResponse {
   string avatar = 2;
   string nickname = 3;
   string email = 4;
-  string time_zone = 8;
+  string timezone = 8;
   string lang = 9;
   string wechat = 11;
   string phone = 12;
@@ -191,10 +193,9 @@ message UserChangePasswordRequest {
 message UserIndexResponse {
   message Item {
     int32 id = 1;
-    string uid = 2;
-    string email = 3;
-    string nickname = 4;
-    string real_name = 5;
+    string email = 2;
+    string nickname = 3;
+    string real_name = 4;
     google.protobuf.Timestamp updated_at = 9;
     optional google.protobuf.Timestamp last_sign_in_at = 11;
     optional string last_sign_in_ip = 12;
@@ -202,7 +203,7 @@ message UserIndexResponse {
     optional string current_sign_in_ip = 14;
     int32 sign_in_count = 19;
     string lang = 21;
-    string time_zone = 22;
+    string timezone = 22;
     string avatar = 23;
     optional google.protobuf.Timestamp confirmed_at = 27;
     optional google.protobuf.Timestamp locked_at = 28;

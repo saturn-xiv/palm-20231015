@@ -2,7 +2,11 @@ use std::any::type_name;
 
 use chrono::NaiveDateTime;
 use diesel::{insert_into, prelude::*};
-use palm::{nut::v1::user_logs_response::item::Level, Result};
+use palm::{
+    nut::v1::{self, user_logs_response::item::Level},
+    rbac::v1 as rbac_v1,
+    to_timestamp, Result,
+};
 
 use super::super::{orm::postgresql::Connection, schema::logs};
 
@@ -16,6 +20,23 @@ pub struct Item {
     pub resource_id: Option<i32>,
     pub message: String,
     pub created_at: NaiveDateTime,
+}
+
+impl From<Item> for v1::user_logs_response::Item {
+    fn from(x: Item) -> Self {
+        Self {
+            id: x.id,
+            user_id: x.user_id,
+            level: x.level,
+            ip: x.ip.clone(),
+            resource: Some(rbac_v1::resources_response::Item {
+                r#type: x.resource_type.clone(),
+                id: x.resource_id,
+            }),
+            message: x.message.clone(),
+            created_at: Some(to_timestamp!(x.created_at)),
+        }
+    }
 }
 
 pub trait Dao {
