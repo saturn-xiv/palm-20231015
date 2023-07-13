@@ -168,7 +168,7 @@ RUN zsh -c "source $HOME/.zshrc \
 RUN zsh -c "source $HOME/.zshrc && rbenv global ${RUBY_VERSION}"
 
 # https://go.dev/doc/install
-ENV GO_VERSION "1.20.5"
+ENV GO_VERSION "1.20.6"
 RUN wget -q -P $HOME/downloads https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
 RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local
 RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc \
@@ -177,7 +177,7 @@ RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc \
 
 # https://github.com/sdkman/sdkman-cli
 ENV JDK_VERSION "20.0.1-open"
-ENV GRADLE_VERSION "8.2"
+ENV GRADLE_VERSION "8.2.1"
 ENV THRIFT_JAVA_VERSION "19.0.2-open"
 ENV THRIFT_GRADLE_VERSION "7.6.2"
 RUN curl -s "https://get.sdkman.io" | bash
@@ -253,7 +253,7 @@ RUN wget -q -O /usr/bin/minio \
 RUN chmod +x /usr/bin/minio
 
 # https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.56.0"
+ENV GRPC_VERSION "v1.56.1"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 # ENV PROTOBUF_VERSION "v3.21.8"
 # RUN cd $HOME/downloads/grpc/third_party/protobuf \
