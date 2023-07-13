@@ -8,6 +8,7 @@ RUN apt update \
     && apt -y install debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
 
 # https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
+ENV AMD64_GCC_VERSION 13
 ENV GCC_VERSION 12
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
@@ -36,6 +37,7 @@ RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
     imagemagick ffmpeg fonts-dejavu-extra texlive-full \
     build-essential g++-${GCC_VERSION} libstdc++-${GCC_VERSION}-dev \
+    g++-${AMD64_GCC_VERSION} libstdc++-${AMD64_GCC_VERSION}-dev \
     crossbuild-essential-arm64 g++-${GCC_VERSION}-aarch64-linux-gnu libstdc++-${GCC_VERSION}-dev:arm64 \
     crossbuild-essential-armhf g++-${GCC_VERSION}-arm-linux-gnueabihf libstdc++-${GCC_VERSION}-dev:armhf \
     crossbuild-essential-riscv64 g++-${GCC_VERSION}-riscv64-linux-gnu libstdc++-${GCC_VERSION}-dev:riscv64 \
@@ -56,8 +58,8 @@ RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CL
     && update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/lldb lldb /usr/bin/lldb-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/lld lld /usr/bin/lld-${CLANG_VERSION} 100 \
-    && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_VERSION} 100 \
-    && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${AMD64_GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${AMD64_GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/aarch64-linux-gnu-gcc aarch64-linux-gnu-gcc /usr/bin/aarch64-linux-gnu-gcc-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/aarch64-linux-gnu-g++ aarch64-linux-gnu-g++ /usr/bin/aarch64-linux-gnu-g++-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/arm-linux-gnueabihf-gcc arm-linux-gnueabihf-gcc /usr/bin/arm-linux-gnueabihf-gcc-${GCC_VERSION} 100 \
@@ -65,19 +67,6 @@ RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CL
     && update-alternatives --install /usr/bin/riscv64-linux-gnu-gcc riscv64-linux-gnu-gcc /usr/bin/riscv64-linux-gnu-gcc-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/riscv64-linux-gnu-g++ riscv64-linux-gnu-g++ /usr/bin/riscv64-linux-gnu-g++-${GCC_VERSION} 100
 
-# https://apt.llvm.org/
-ENV CLANG_VERSION=15
-RUN echo "deb [arch=amd64] http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-${CLANG_VERSION} main" > /etc/apt/sources.list.d/llvm.list
-RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
-RUN apt update
-RUN apt install -y clang-${CLANG_VERSION} \
-    clangd-${CLANG_VERSION} clang-tools-${CLANG_VERSION} clang-format-${CLANG_VERSION} \
-    lldb-${CLANG_VERSION} lld-${CLANG_VERSION}
-RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CLANG_VERSION} 100 \
-    && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${CLANG_VERSION} 100 \
-    && update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${CLANG_VERSION} 100 \
-    && update-alternatives --install /usr/bin/lldb lldb /usr/bin/lldb-${CLANG_VERSION} 100 \
-    && update-alternatives --install /usr/bin/lld lld /usr/bin/lld-${CLANG_VERSION} 100
 
 # https://www.envoyproxy.io/docs/envoy/latest/start/install#install-envoy-on-ubuntu-linux
 RUN curl -sL 'https://deb.dl.getenvoy.io/public/gpg.8115BA8E629CC074.key' | gpg --dearmor -o /usr/share/keyrings/getenvoy-keyring.gpg

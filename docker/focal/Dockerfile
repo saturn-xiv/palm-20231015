@@ -28,11 +28,11 @@ RUN apt update && apt -y upgrade
 
 RUN apt -y install zsh git locales locales-all \
     vim tzdata zip unzip tree tmux \
-    g++-${AMD64_GCC_VERSION} libstdc++-${AMD64_GCC_VERSION}-dev libstdc++-${AMD64_GCC_VERSION}-dev:arm64 libstdc++-${AMD64_GCC_VERSION}-dev:armhf libstdc++-${AMD64_GCC_VERSION}-dev:riscv64 \
+    g++-${AMD64_GCC_VERSION} libstdc++-${AMD64_GCC_VERSION}-dev \
     build-essential g++-${GCC_VERSION} libstdc++-${GCC_VERSION}-dev \
     crossbuild-essential-arm64 g++-${GCC_VERSION}-aarch64-linux-gnu libstdc++-${GCC_VERSION}-dev:arm64 \
     crossbuild-essential-armhf g++-${GCC_VERSION}-arm-linux-gnueabihf libstdc++-${GCC_VERSION}-dev:armhf \
-    crossbuild-essential-riscv64 g++-${GCC_VERSION}-riscv64-linux-gnu libstdc++-${GCC_VERSION}-dev:riscv64 \
+    crossbuild-essential-riscv64 g++-${GCC_VERSION}-riscv64-linux-gnu \
     clang-${CLANG_VERSION} clangd-${CLANG_VERSION} clang-tools-${CLANG_VERSION} clang-format-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
     cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio \
     debhelper bison flex ninja-build \

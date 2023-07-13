@@ -29,7 +29,7 @@ RUN apt update && apt -y upgrade
 
 RUN apt -y install zsh git locales locales-all \
     vim tzdata zip unzip tree tmux \
-    g++-${AMD64_GCC_VERSION} libstdc++-${AMD64_GCC_VERSION}-dev libstdc++-${AMD64_GCC_VERSION}-dev:arm64 libstdc++-${AMD64_GCC_VERSION}-dev:armhf \
+    g++-${AMD64_GCC_VERSION} libstdc++-${AMD64_GCC_VERSION}-dev \
     build-essential g++-${GCC_VERSION} libstdc++-${GCC_VERSION}-dev \
     crossbuild-essential-arm64 g++-${GCC_VERSION}-aarch64-linux-gnu libstdc++-${GCC_VERSION}-dev:arm64 \
     crossbuild-essential-armhf g++-${GCC_VERSION}-arm-linux-gnueabihf libstdc++-${GCC_VERSION}-dev:armhf \
