@@ -134,6 +134,10 @@ RUN wget -q -P $HOME/downloads https://more.musl.cc/x86_64-linux-musl/riscv64-li
     && tar xf $HOME/downloads/riscv64-linux-musl-cross.tgz \
     && echo 'export PATH=/opt/riscv64-linux-musl-cross/bin:$PATH' >> $HOME/.zshrc
 
+
+# https://pip.pypa.io/en/stable/installation/
+RUN zsh -c "source $HOME/.zshrc && python3 -m ensurepip --upgrade"
+
 RUN zsh -c "source $HOME/.zshrc && pip3 install --user cmake ansible paramiko conan supervisor"
 RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.zshrc \
     && echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/tmp/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.zshrc

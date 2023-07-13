@@ -7,7 +7,6 @@ RUN apt update
 RUN apt install -y lsb-release apt-utils \
     debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
 # https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa
-ENV PYTHON_VERSION 3.11
 RUN add-apt-repository -y ppa:deadsnakes/ppa
 # https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
 ENV AMD64_GCC_VERSION 11
@@ -38,7 +37,7 @@ RUN apt -y install zsh git locales locales-all \
     clang-${CLANG_VERSION} clangd-${CLANG_VERSION} clang-tools-${CLANG_VERSION} clang-format-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
     cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio \
     debhelper bison flex ninja-build \
-    python${PYTHON_VERSION} python${PYTHON_VERSION}-distutils python${PYTHON_VERSION}-dev python${PYTHON_VERSION}-venv virtualenv
+    python3 python3-pip python3-distutils python3-dev python3-venv virtualenv
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${CLANG_VERSION} 100 \
@@ -95,8 +94,10 @@ RUN wget -q -P $HOME/downloads https://more.musl.cc/x86_64-linux-musl/riscv64-li
     && tar xf $HOME/downloads/riscv64-linux-musl-cross.tgz \
     && echo 'export PATH=/opt/riscv64-linux-musl-cross/bin:$PATH' >> $HOME/.zshrc
 
-RUN sh -c ". $HOME/.profile && python${PYTHON_VERSION} -m ensurepip --upgrade"
-RUN sh -c ". $HOME/.profile && python${PYTHON_VERSION} -m pip install --user cmake"
+# https://pip.pypa.io/en/stable/installation/
+RUN sh -c ". $HOME/.profile && pip3 install --user --upgrade pip"
+RUN sh -c ". $HOME/.profile && pip3 install --user scikit-build"
+RUN sh -c ". $HOME/.profile && pip3 install --user cmake"
 
 # https://github.com/nvm-sh/nvm
 ENV NVM_VERSION "v0.39.3"
