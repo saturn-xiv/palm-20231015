@@ -8,9 +8,9 @@ export CODE="palm-spring"
 buildah pull ubuntu:latest
 buildah bud --layers -t $CODE .
 podman save --format=oci-archive -o $CODE-$VERSION.tar $CODE
-XZ_OPT=-9 tar -cJf - $CODE-$VERSION.tar | split -d -b 3G - $CODE-$VERSION.tar.xz.
-md5sum $CODE-$VERSION.tar* > md5.txt
+# XZ_OPT=-9 tar -cJf - $CODE-$VERSION.tar | split -d -b 3G - $CODE-$VERSION.tar.xz.
+md5sum $CODE-$VERSION.tar > md5.txt
 
-echo "done($CODE-$VERSION.tar.xz)."
+echo "done($CODE-$VERSION.tar)."
 
 exit 0
