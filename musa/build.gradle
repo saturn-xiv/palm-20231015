@@ -50,7 +50,7 @@ dependencies {
 	implementation 'org.mybatis:mybatis:3.5.13'
 
 	// https://mvnrepository.com/artifact/com.github.wechatpay-apiv3/wechatpay-java
-	implementation 'com.github.wechatpay-apiv3:wechatpay-java:0.2.9'
+	implementation 'com.github.wechatpay-apiv3:wechatpay-java:0.2.10'
 
 	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
 	implementation 'org.apache.commons:commons-lang3:3.12.0'
