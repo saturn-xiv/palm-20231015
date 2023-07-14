@@ -29,10 +29,19 @@ RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release 
 RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
 RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 
+# https://launchpad.net/~ondrej/+archive/ubuntu/php
+RUN add-apt-repository -y ppa:ondrej/php
+# https://launchpad.net/~ondrej/+archive/ubuntu/nginx
+RUN add-apt-repository -y ppa:ondrej/nginx
+
+# https://www.envoyproxy.io/docs/envoy/latest/start/install#install-envoy-on-ubuntu-linux
+RUN curl -sL 'https://deb.dl.getenvoy.io/public/gpg.8115BA8E629CC074.key' | gpg --dearmor -o /usr/share/keyrings/getenvoy-keyring.gpg
+RUN echo a077cb587a1b622e03aa4bf2f3689de14658a9497a9af2c427bba5f4cc3c4723 /usr/share/keyrings/getenvoy-keyring.gpg | sha256sum --check
+RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/getenvoy-keyring.gpg] https://deb.dl.getenvoy.io/public/deb/ubuntu $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/getenvoy.list
 RUN apt update && apt -y upgrade
 
 ENV LUA_VERSION "5.4"
-RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
+RUN apt-get install -y zsh git locales locales-all rsync openssh-client sshpass \
     vim tzdata pwgen zip unzip tree tmux dialog asciidoc doxygen \
     net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
     imagemagick ffmpeg fonts-dejavu-extra texlive-full \
@@ -51,7 +60,7 @@ RUN apt -y install zsh git locales locales-all rsync openssh-client sshpass \
     php-imagick php-gd phpunit \
     liblua${LUA_VERSION}-dev dart haxe \
     erlang rebar \
-    nginx rabbitmq-server redis postgresql mariadb-server
+    nginx-full rabbitmq-server redis postgresql mariadb-server getenvoy-envoy
 
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${CLANG_VERSION} 100 \
@@ -67,12 +76,6 @@ RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CL
     && update-alternatives --install /usr/bin/riscv64-linux-gnu-gcc riscv64-linux-gnu-gcc /usr/bin/riscv64-linux-gnu-gcc-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/riscv64-linux-gnu-g++ riscv64-linux-gnu-g++ /usr/bin/riscv64-linux-gnu-g++-${GCC_VERSION} 100
 
-
-# https://www.envoyproxy.io/docs/envoy/latest/start/install#install-envoy-on-ubuntu-linux
-RUN curl -sL 'https://deb.dl.getenvoy.io/public/gpg.8115BA8E629CC074.key' | gpg --dearmor -o /usr/share/keyrings/getenvoy-keyring.gpg
-RUN echo a077cb587a1b622e03aa4bf2f3689de14658a9497a9af2c427bba5f4cc3c4723 /usr/share/keyrings/getenvoy-keyring.gpg | sha256sum --check
-RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/getenvoy-keyring.gpg] https://deb.dl.getenvoy.io/public/deb/ubuntu $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/getenvoy.list
-RUN apt update && apt install -y getenvoy-envoy
 
 # https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
 # RUN wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | apt-key add -
@@ -126,7 +129,6 @@ RUN wget -q -P $HOME/downloads https://more.musl.cc/x86_64-linux-musl/riscv64-li
 
 # https://pip.pypa.io/en/stable/installation/
 RUN zsh -c "source $HOME/.zshrc && python3 -m ensurepip --upgrade"
-
 RUN zsh -c "source $HOME/.zshrc && pip3 install --user cmake ansible paramiko conan supervisor"
 RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.zshrc \
     && echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/tmp/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.zshrc
