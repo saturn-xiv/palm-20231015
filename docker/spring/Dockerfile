@@ -1,3 +1,4 @@
+# latest rolling devel
 FROM ubuntu:latest
 LABEL maintainer="Jeremy Zheng"
 
@@ -30,9 +31,9 @@ RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release 
 RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 
 # https://launchpad.net/~ondrej/+archive/ubuntu/php
-RUN add-apt-repository -y ppa:ondrej/php
+# RUN add-apt-repository -y ppa:ondrej/php
 # https://launchpad.net/~ondrej/+archive/ubuntu/nginx
-RUN add-apt-repository -y ppa:ondrej/nginx
+# RUN add-apt-repository -y ppa:ondrej/nginx
 
 # https://www.envoyproxy.io/docs/envoy/latest/start/install#install-envoy-on-ubuntu-linux
 RUN curl -sL 'https://deb.dl.getenvoy.io/public/gpg.8115BA8E629CC074.key' | gpg --dearmor -o /usr/share/keyrings/getenvoy-keyring.gpg
@@ -128,8 +129,14 @@ RUN wget -q -P $HOME/downloads https://more.musl.cc/x86_64-linux-musl/riscv64-li
 
 
 # https://pip.pypa.io/en/stable/installation/
-RUN zsh -c "source $HOME/.zshrc && python3 -m ensurepip --upgrade"
-RUN zsh -c "source $HOME/.zshrc && pip3 install --user cmake ansible paramiko conan supervisor"
+# RUN sh -c ". $HOME/.profile && python3 -m ensurepip --upgrade"
+RUN apt install -y python3-full
+RUN sh -c ". $HOME/.profile \
+    && python3 -m venv $HOME/local/python3 \
+    && . $HOME/local/python3/bin/activate \
+    && pip install --upgrade pip \
+    && pip install cmake ansible paramiko conan supervisor"
+RUN echo 'source $HOME/local/python3/bin/activate' >> $HOME/.zshrc
 RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.zshrc \
     && echo 'alias peony="ANSIBLE_LOG_PATH=$HOME/tmp/$(date +%Y%m%d%H%M%S).log ansible-playbook"' >> $HOME/.zshrc
 
@@ -137,6 +144,7 @@ RUN echo 'export ANSIBLE_HOST_KEY_CHECKING=False' >> $HOME/.zshrc \
 RUN wget -q -O $HOME/downloads/composer https://getcomposer.org/installer
 RUN cd $HOME/downloads \
     && php composer \
+    && mkdir -p $HOME/.local/bin \
     && mv composer.phar $HOME/.local/bin/composer
 
 
@@ -151,16 +159,15 @@ ENV RUBY_VERSION "3.2.2"
 RUN git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv \
     && git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build \
     && git clone https://github.com/rbenv/rbenv-vars.git $HOME/.rbenv/plugins/rbenv-vars 
-RUN cd $HOME/.rbenv && src/configure && make -C src
-RUN echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> $HOME/.zshrc \
-    && echo 'eval "$(rbenv init -)"' >> $HOME/.zshrc
+RUN echo 'eval "$(~/.rbenv/bin/rbenv init - zsh)"' >> ~/.zshrc
 # https://github.com/rbenv/ruby-build
-RUN apt install -y libssl-dev libyaml-dev
-RUN zsh -c "source $HOME/.zshrc \
-    && rbenv install ${RUBY_VERSION} \
-    && rbenv global ${RUBY_VERSION} \
-    && gem install bundler"
-RUN zsh -c "source $HOME/.zshrc && rbenv global ${RUBY_VERSION}"
+# https://github.com/rbenv/ruby-build/wiki#ubuntudebianmint
+RUN apt-get install -y autoconf patch build-essential rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev
+# FIXME
+# RUN zsh -c "source $HOME/.zshrc \
+#     && rbenv install ${RUBY_VERSION} \
+#     && rbenv global ${RUBY_VERSION} \
+#     && gem install bundler"
 
 # https://go.dev/doc/install
 ENV GO_VERSION "1.20.6"
