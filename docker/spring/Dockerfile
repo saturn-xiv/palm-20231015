@@ -255,7 +255,7 @@ RUN wget -q -O /usr/bin/minio \
 RUN chmod +x /usr/bin/minio
 
 # https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.56.1"
+ENV GRPC_VERSION "v1.56.2"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 # ENV PROTOBUF_VERSION "v3.21.8"
 # RUN cd $HOME/downloads/grpc/third_party/protobuf \
@@ -364,7 +364,7 @@ RUN cd /var/lib \
     && chown redis:redis redis-s redis-1 redis-2 redis-3 redis-4 redis-5 redis-6 \
     && chmod 750 redis-s redis-1 redis-2 redis-3 redis-4 redis-5 redis-6
 
-RUN mkdir /run/php \
+RUN mkdir -p /run/php \
     && echo "<?php phpinfo(); ?>" > /var/www/html/info.php \
     && echo "daemon off;" >> /etc/nginx/nginx.conf
 ADD etc/nginx.conf /etc/nginx/sites-enabled/default
