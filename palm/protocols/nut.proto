@@ -226,15 +226,13 @@ message SignInByGoogleRequest {
   string state = 3;
   string redirect_uri = 4;
 
-  optional string nonce = 8;
-  string project = 9;
+  string nonce = 9;
   google.protobuf.Duration ttl = 11;
 }
 
 message GoogleSignInUrlRequest {
   string redirect_uri = 1;
   Oauth2State state = 2;
-  string project = 11;
 }
 
 message GoogleSignInUrlResponse {
@@ -243,7 +241,7 @@ message GoogleSignInUrlResponse {
 }
 // ----------------------------------------------------------------------------
 service Wechat {
-  rpc Oauth2SignInState(WechatOauth2SignInStateRequest)
+  rpc Oauth2SignInState(google.protobuf.Empty)
       returns (WechatOauth2SignInStateResponse) {}
   rpc Oauth2SignInUrl(WechatOauth2SignInUrlRequest)
       returns (palm.orchid.v1.WechatOauth2QrConnectResponse) {}
@@ -262,14 +260,10 @@ service Wechat {
   rpc GetOauth2UserByUnionId(WechatUserQueryByUnionIdRequest)
       returns (WechatAllOauth2UserResponse) {}
 
-  rpc CurrentMiniProgramUser(CurrentWechatMiniProgramUserRequest)
-      returns (CurrentWechatMiniProgramUserResponse) {}
   rpc AllMiniProgramUser(google.protobuf.Empty)
       returns (WechatAllMiniProgramUserResponse) {}
   rpc DestroyMiniProgramUser(IdRequest) returns (google.protobuf.Empty) {}
   rpc BindMiniProgramUserById(WechatUserBindByIdRequest)
-      returns (google.protobuf.Empty) {}
-  rpc BindMiniProgramUserByAccount(WechatUserBindByAccountRequest)
       returns (google.protobuf.Empty) {}
   rpc GetMiniProgramUserById(IdRequest)
       returns (WechatAllMiniProgramUserResponse.Item) {}
@@ -281,15 +275,12 @@ service Wechat {
 
 message WechatUserBindByIdRequest {
   int32 user_id = 1;
-  string app_id = 2;
-  string open_id = 3;
+  int32 wechat_user_id = 2;
 }
 
 message WechatUserBindByAccountRequest {
   string nickname = 1;
   string password = 2;
-  string app_id = 3;
-  string open_id = 4;
 }
 
 message WechatUserQueryByOpenIdRequest {
@@ -304,7 +295,7 @@ message WechatUserQueryByUnionIdRequest {
 message WechatAllMiniProgramUserResponse {
   message Item {
     int32 id = 1;
-    optional int32 user_id = 2;
+    int32 user_id = 2;
     string union_id = 3;
     string app_id = 4;
     string open_id = 5;
@@ -342,12 +333,6 @@ message SignInByWechatOauth2Request {
   google.protobuf.Duration ttl = 11;
 }
 
-message WechatOauth2SignInStateRequest {
-  string goto = 1;
-  string host = 2;
-  string id = 9;
-}
-
 message WechatOauth2SignInStateResponse {
   string state = 1;
 }
@@ -356,8 +341,6 @@ message WechatOauth2SignInUrlRequest {
   string app_id = 1;
   string redirect_uri = 2;
   palm.orchid.v1.WechatOauth2QrConnectRequest.Language language = 3;
-
-  WechatOauth2SignInStateRequest state = 9;
 }
 
 message WechatMiniProgramUser {
@@ -367,13 +350,7 @@ message WechatMiniProgramUser {
   optional string nickname = 21;
   optional string avatar_url = 22;
 }
-message CurrentWechatMiniProgramUserRequest {
-  string app_id = 1;
-}
-message CurrentWechatMiniProgramUserResponse {
-  optional UserSignInResponse user = 1;
-  WechatMiniProgramUser wechat = 2;
-}
+
 // ----------------------------------------------------------------------------
 
 service Attachment {

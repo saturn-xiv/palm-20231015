@@ -179,6 +179,13 @@ class User final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncConfirm(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncConfirmRaw(context, request, cq));
     }
+    virtual ::grpc::Status Delete(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncDelete(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncDeleteRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncDelete(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncDeleteRaw(context, request, cq));
+    }
     virtual ::grpc::Status SetPassword(::grpc::ClientContext* context, const ::palm::nut::v1::UserSetPasswordRequest& request, ::google::protobuf::Empty* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncSetPassword(::grpc::ClientContext* context, const ::palm::nut::v1::UserSetPasswordRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncSetPasswordRaw(context, request, cq));
@@ -229,6 +236,8 @@ class User final {
       virtual void Unlock(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void Confirm(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Confirm(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Delete(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Delete(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void SetPassword(::grpc::ClientContext* context, const ::palm::nut::v1::UserSetPasswordRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetPassword(::grpc::ClientContext* context, const ::palm::nut::v1::UserSetPasswordRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
@@ -276,6 +285,8 @@ class User final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncUnlockRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncConfirmRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncConfirmRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncDeleteRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncDeleteRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncSetPasswordRaw(::grpc::ClientContext* context, const ::palm::nut::v1::UserSetPasswordRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncSetPasswordRaw(::grpc::ClientContext* context, const ::palm::nut::v1::UserSetPasswordRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
@@ -422,6 +433,13 @@ class User final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncConfirm(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncConfirmRaw(context, request, cq));
     }
+    ::grpc::Status Delete(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncDelete(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncDeleteRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncDelete(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncDeleteRaw(context, request, cq));
+    }
     ::grpc::Status SetPassword(::grpc::ClientContext* context, const ::palm::nut::v1::UserSetPasswordRequest& request, ::google::protobuf::Empty* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncSetPassword(::grpc::ClientContext* context, const ::palm::nut::v1::UserSetPasswordRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncSetPasswordRaw(context, request, cq));
@@ -472,6 +490,8 @@ class User final {
       void Unlock(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
       void Confirm(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void Confirm(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Delete(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void Delete(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
       void SetPassword(::grpc::ClientContext* context, const ::palm::nut::v1::UserSetPasswordRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void SetPassword(::grpc::ClientContext* context, const ::palm::nut::v1::UserSetPasswordRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
@@ -525,6 +545,8 @@ class User final {
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncUnlockRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncConfirmRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncConfirmRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncDeleteRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncDeleteRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncSetPasswordRaw(::grpc::ClientContext* context, const ::palm::nut::v1::UserSetPasswordRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncSetPasswordRaw(::grpc::ClientContext* context, const ::palm::nut::v1::UserSetPasswordRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_SignIn_;
@@ -547,6 +569,7 @@ class User final {
     const ::grpc::internal::RpcMethod rpcmethod_Lock_;
     const ::grpc::internal::RpcMethod rpcmethod_Unlock_;
     const ::grpc::internal::RpcMethod rpcmethod_Confirm_;
+    const ::grpc::internal::RpcMethod rpcmethod_Delete_;
     const ::grpc::internal::RpcMethod rpcmethod_SetPassword_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
@@ -575,6 +598,7 @@ class User final {
     virtual ::grpc::Status Lock(::grpc::ServerContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response);
     virtual ::grpc::Status Unlock(::grpc::ServerContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response);
     virtual ::grpc::Status Confirm(::grpc::ServerContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response);
+    virtual ::grpc::Status Delete(::grpc::ServerContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response);
     virtual ::grpc::Status SetPassword(::grpc::ServerContext* context, const ::palm::nut::v1::UserSetPasswordRequest* request, ::google::protobuf::Empty* response);
   };
   template <class BaseClass>
@@ -978,12 +1002,32 @@ class User final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_Delete : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_Delete() {
+      ::grpc::Service::MarkMethodAsync(20);
+    }
+    ~WithAsyncMethod_Delete() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Delete(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::IdRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestDelete(::grpc::ServerContext* context, ::palm::nut::v1::IdRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_SetPassword : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetPassword() {
-      ::grpc::Service::MarkMethodAsync(20);
+      ::grpc::Service::MarkMethodAsync(21);
     }
     ~WithAsyncMethod_SetPassword() override {
       BaseClassMustBeDerivedFromService(this);
@@ -994,10 +1038,10 @@ class User final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetPassword(::grpc::ServerContext* context, ::palm::nut::v1::UserSetPasswordRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SignIn<WithAsyncMethod_SignUp<WithAsyncMethod_ConfirmByEmail<WithAsyncMethod_ConfirmByToken<WithAsyncMethod_UnlockByEmail<WithAsyncMethod_UnlockByToken<WithAsyncMethod_ForgotPassword<WithAsyncMethod_ResetPassword<WithAsyncMethod_Refresh<WithAsyncMethod_Logs<WithAsyncMethod_SetProfile<WithAsyncMethod_ChangePassword<WithAsyncMethod_SignOut<WithAsyncMethod_Index<WithAsyncMethod_Show<WithAsyncMethod_Disable<WithAsyncMethod_Enable<WithAsyncMethod_Lock<WithAsyncMethod_Unlock<WithAsyncMethod_Confirm<WithAsyncMethod_SetPassword<Service > > > > > > > > > > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_SignIn<WithAsyncMethod_SignUp<WithAsyncMethod_ConfirmByEmail<WithAsyncMethod_ConfirmByToken<WithAsyncMethod_UnlockByEmail<WithAsyncMethod_UnlockByToken<WithAsyncMethod_ForgotPassword<WithAsyncMethod_ResetPassword<WithAsyncMethod_Refresh<WithAsyncMethod_Logs<WithAsyncMethod_SetProfile<WithAsyncMethod_ChangePassword<WithAsyncMethod_SignOut<WithAsyncMethod_Index<WithAsyncMethod_Show<WithAsyncMethod_Disable<WithAsyncMethod_Enable<WithAsyncMethod_Lock<WithAsyncMethod_Unlock<WithAsyncMethod_Confirm<WithAsyncMethod_Delete<WithAsyncMethod_SetPassword<Service > > > > > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_SignIn : public BaseClass {
    private:
@@ -1539,18 +1583,45 @@ class User final {
       ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::IdRequest* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithCallbackMethod_Delete : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_Delete() {
+      ::grpc::Service::MarkMethodCallback(20,
+          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::IdRequest, ::google::protobuf::Empty>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response) { return this->Delete(context, request, response); }));}
+    void SetMessageAllocatorFor_Delete(
+        ::grpc::MessageAllocator< ::palm::nut::v1::IdRequest, ::google::protobuf::Empty>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(20);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::IdRequest, ::google::protobuf::Empty>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_Delete() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Delete(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::IdRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* Delete(
+      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::IdRequest* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithCallbackMethod_SetPassword : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetPassword() {
-      ::grpc::Service::MarkMethodCallback(20,
+      ::grpc::Service::MarkMethodCallback(21,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::UserSetPasswordRequest, ::google::protobuf::Empty>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::nut::v1::UserSetPasswordRequest* request, ::google::protobuf::Empty* response) { return this->SetPassword(context, request, response); }));}
     void SetMessageAllocatorFor_SetPassword(
         ::grpc::MessageAllocator< ::palm::nut::v1::UserSetPasswordRequest, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(20);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(21);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::UserSetPasswordRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1565,7 +1636,7 @@ class User final {
     virtual ::grpc::ServerUnaryReactor* SetPassword(
       ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::UserSetPasswordRequest* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_SignIn<WithCallbackMethod_SignUp<WithCallbackMethod_ConfirmByEmail<WithCallbackMethod_ConfirmByToken<WithCallbackMethod_UnlockByEmail<WithCallbackMethod_UnlockByToken<WithCallbackMethod_ForgotPassword<WithCallbackMethod_ResetPassword<WithCallbackMethod_Refresh<WithCallbackMethod_Logs<WithCallbackMethod_SetProfile<WithCallbackMethod_ChangePassword<WithCallbackMethod_SignOut<WithCallbackMethod_Index<WithCallbackMethod_Show<WithCallbackMethod_Disable<WithCallbackMethod_Enable<WithCallbackMethod_Lock<WithCallbackMethod_Unlock<WithCallbackMethod_Confirm<WithCallbackMethod_SetPassword<Service > > > > > > > > > > > > > > > > > > > > > CallbackService;
+  typedef WithCallbackMethod_SignIn<WithCallbackMethod_SignUp<WithCallbackMethod_ConfirmByEmail<WithCallbackMethod_ConfirmByToken<WithCallbackMethod_UnlockByEmail<WithCallbackMethod_UnlockByToken<WithCallbackMethod_ForgotPassword<WithCallbackMethod_ResetPassword<WithCallbackMethod_Refresh<WithCallbackMethod_Logs<WithCallbackMethod_SetProfile<WithCallbackMethod_ChangePassword<WithCallbackMethod_SignOut<WithCallbackMethod_Index<WithCallbackMethod_Show<WithCallbackMethod_Disable<WithCallbackMethod_Enable<WithCallbackMethod_Lock<WithCallbackMethod_Unlock<WithCallbackMethod_Confirm<WithCallbackMethod_Delete<WithCallbackMethod_SetPassword<Service > > > > > > > > > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_SignIn : public BaseClass {
@@ -1908,12 +1979,29 @@ class User final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_Delete : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_Delete() {
+      ::grpc::Service::MarkMethodGeneric(20);
+    }
+    ~WithGenericMethod_Delete() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Delete(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::IdRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_SetPassword : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetPassword() {
-      ::grpc::Service::MarkMethodGeneric(20);
+      ::grpc::Service::MarkMethodGeneric(21);
     }
     ~WithGenericMethod_SetPassword() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2325,12 +2413,32 @@ class User final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_Delete : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_Delete() {
+      ::grpc::Service::MarkMethodRaw(20);
+    }
+    ~WithRawMethod_Delete() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Delete(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::IdRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestDelete(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_SetPassword : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetPassword() {
-      ::grpc::Service::MarkMethodRaw(20);
+      ::grpc::Service::MarkMethodRaw(21);
     }
     ~WithRawMethod_SetPassword() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2341,7 +2449,7 @@ class User final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetPassword(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2785,12 +2893,34 @@ class User final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithRawCallbackMethod_Delete : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_Delete() {
+      ::grpc::Service::MarkMethodRawCallback(20,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Delete(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_Delete() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Delete(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::IdRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* Delete(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_SetPassword : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetPassword() {
-      ::grpc::Service::MarkMethodRawCallback(20,
+      ::grpc::Service::MarkMethodRawCallback(21,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetPassword(context, request, response); }));
@@ -3347,12 +3477,39 @@ class User final {
     virtual ::grpc::Status StreamedConfirm(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::IdRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_Delete : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_Delete() {
+      ::grpc::Service::MarkMethodStreamed(20,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::palm::nut::v1::IdRequest, ::google::protobuf::Empty>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::palm::nut::v1::IdRequest, ::google::protobuf::Empty>* streamer) {
+                       return this->StreamedDelete(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_Delete() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status Delete(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::IdRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedDelete(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::IdRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_SetPassword : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetPassword() {
-      ::grpc::Service::MarkMethodStreamed(20,
+      ::grpc::Service::MarkMethodStreamed(21,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::nut::v1::UserSetPasswordRequest, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
@@ -3373,9 +3530,9 @@ class User final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedSetPassword(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::UserSetPasswordRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_SignIn<WithStreamedUnaryMethod_SignUp<WithStreamedUnaryMethod_ConfirmByEmail<WithStreamedUnaryMethod_ConfirmByToken<WithStreamedUnaryMethod_UnlockByEmail<WithStreamedUnaryMethod_UnlockByToken<WithStreamedUnaryMethod_ForgotPassword<WithStreamedUnaryMethod_ResetPassword<WithStreamedUnaryMethod_Refresh<WithStreamedUnaryMethod_Logs<WithStreamedUnaryMethod_SetProfile<WithStreamedUnaryMethod_ChangePassword<WithStreamedUnaryMethod_SignOut<WithStreamedUnaryMethod_Index<WithStreamedUnaryMethod_Show<WithStreamedUnaryMethod_Disable<WithStreamedUnaryMethod_Enable<WithStreamedUnaryMethod_Lock<WithStreamedUnaryMethod_Unlock<WithStreamedUnaryMethod_Confirm<WithStreamedUnaryMethod_SetPassword<Service > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_SignIn<WithStreamedUnaryMethod_SignUp<WithStreamedUnaryMethod_ConfirmByEmail<WithStreamedUnaryMethod_ConfirmByToken<WithStreamedUnaryMethod_UnlockByEmail<WithStreamedUnaryMethod_UnlockByToken<WithStreamedUnaryMethod_ForgotPassword<WithStreamedUnaryMethod_ResetPassword<WithStreamedUnaryMethod_Refresh<WithStreamedUnaryMethod_Logs<WithStreamedUnaryMethod_SetProfile<WithStreamedUnaryMethod_ChangePassword<WithStreamedUnaryMethod_SignOut<WithStreamedUnaryMethod_Index<WithStreamedUnaryMethod_Show<WithStreamedUnaryMethod_Disable<WithStreamedUnaryMethod_Enable<WithStreamedUnaryMethod_Lock<WithStreamedUnaryMethod_Unlock<WithStreamedUnaryMethod_Confirm<WithStreamedUnaryMethod_Delete<WithStreamedUnaryMethod_SetPassword<Service > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_SignIn<WithStreamedUnaryMethod_SignUp<WithStreamedUnaryMethod_ConfirmByEmail<WithStreamedUnaryMethod_ConfirmByToken<WithStreamedUnaryMethod_UnlockByEmail<WithStreamedUnaryMethod_UnlockByToken<WithStreamedUnaryMethod_ForgotPassword<WithStreamedUnaryMethod_ResetPassword<WithStreamedUnaryMethod_Refresh<WithStreamedUnaryMethod_Logs<WithStreamedUnaryMethod_SetProfile<WithStreamedUnaryMethod_ChangePassword<WithStreamedUnaryMethod_SignOut<WithStreamedUnaryMethod_Index<WithStreamedUnaryMethod_Show<WithStreamedUnaryMethod_Disable<WithStreamedUnaryMethod_Enable<WithStreamedUnaryMethod_Lock<WithStreamedUnaryMethod_Unlock<WithStreamedUnaryMethod_Confirm<WithStreamedUnaryMethod_SetPassword<Service > > > > > > > > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_SignIn<WithStreamedUnaryMethod_SignUp<WithStreamedUnaryMethod_ConfirmByEmail<WithStreamedUnaryMethod_ConfirmByToken<WithStreamedUnaryMethod_UnlockByEmail<WithStreamedUnaryMethod_UnlockByToken<WithStreamedUnaryMethod_ForgotPassword<WithStreamedUnaryMethod_ResetPassword<WithStreamedUnaryMethod_Refresh<WithStreamedUnaryMethod_Logs<WithStreamedUnaryMethod_SetProfile<WithStreamedUnaryMethod_ChangePassword<WithStreamedUnaryMethod_SignOut<WithStreamedUnaryMethod_Index<WithStreamedUnaryMethod_Show<WithStreamedUnaryMethod_Disable<WithStreamedUnaryMethod_Enable<WithStreamedUnaryMethod_Lock<WithStreamedUnaryMethod_Unlock<WithStreamedUnaryMethod_Confirm<WithStreamedUnaryMethod_Delete<WithStreamedUnaryMethod_SetPassword<Service > > > > > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 // ----------------------------------------------------------------------------
@@ -3752,11 +3909,11 @@ class Wechat final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    virtual ::grpc::Status Oauth2SignInState(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest& request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatOauth2SignInStateResponse>> AsyncOauth2SignInState(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest& request, ::grpc::CompletionQueue* cq) {
+    virtual ::grpc::Status Oauth2SignInState(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatOauth2SignInStateResponse>> AsyncOauth2SignInState(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatOauth2SignInStateResponse>>(AsyncOauth2SignInStateRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatOauth2SignInStateResponse>> PrepareAsyncOauth2SignInState(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatOauth2SignInStateResponse>> PrepareAsyncOauth2SignInState(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatOauth2SignInStateResponse>>(PrepareAsyncOauth2SignInStateRaw(context, request, cq));
     }
     virtual ::grpc::Status Oauth2SignInUrl(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInUrlRequest& request, ::palm::orchid::v1::WechatOauth2QrConnectResponse* response) = 0;
@@ -3822,13 +3979,6 @@ class Wechat final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatAllOauth2UserResponse>> PrepareAsyncGetOauth2UserByUnionId(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByUnionIdRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatAllOauth2UserResponse>>(PrepareAsyncGetOauth2UserByUnionIdRaw(context, request, cq));
     }
-    virtual ::grpc::Status CurrentMiniProgramUser(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest& request, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>> AsyncCurrentMiniProgramUser(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>>(AsyncCurrentMiniProgramUserRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>> PrepareAsyncCurrentMiniProgramUser(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>>(PrepareAsyncCurrentMiniProgramUserRaw(context, request, cq));
-    }
     virtual ::grpc::Status AllMiniProgramUser(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::palm::nut::v1::WechatAllMiniProgramUserResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatAllMiniProgramUserResponse>> AsyncAllMiniProgramUser(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatAllMiniProgramUserResponse>>(AsyncAllMiniProgramUserRaw(context, request, cq));
@@ -3849,13 +3999,6 @@ class Wechat final {
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncBindMiniProgramUserById(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByIdRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncBindMiniProgramUserByIdRaw(context, request, cq));
-    }
-    virtual ::grpc::Status BindMiniProgramUserByAccount(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest& request, ::google::protobuf::Empty* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncBindMiniProgramUserByAccount(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncBindMiniProgramUserByAccountRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncBindMiniProgramUserByAccount(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncBindMiniProgramUserByAccountRaw(context, request, cq));
     }
     virtual ::grpc::Status GetMiniProgramUserById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>> AsyncGetMiniProgramUserById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
@@ -3881,8 +4024,8 @@ class Wechat final {
     class async_interface {
      public:
       virtual ~async_interface() {}
-      virtual void Oauth2SignInState(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void Oauth2SignInState(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Oauth2SignInState(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Oauth2SignInState(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void Oauth2SignInUrl(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInUrlRequest* request, ::palm::orchid::v1::WechatOauth2QrConnectResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Oauth2SignInUrl(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInUrlRequest* request, ::palm::orchid::v1::WechatOauth2QrConnectResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void SignInByOauth2(::grpc::ClientContext* context, const ::palm::nut::v1::SignInByWechatOauth2Request* request, ::palm::nut::v1::UserSignInResponse* response, std::function<void(::grpc::Status)>) = 0;
@@ -3901,16 +4044,12 @@ class Wechat final {
       virtual void GetOauth2UserByOpenId(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByOpenIdRequest* request, ::palm::nut::v1::WechatAllOauth2UserResponse_Item* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetOauth2UserByUnionId(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByUnionIdRequest* request, ::palm::nut::v1::WechatAllOauth2UserResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetOauth2UserByUnionId(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByUnionIdRequest* request, ::palm::nut::v1::WechatAllOauth2UserResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void CurrentMiniProgramUser(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* request, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void CurrentMiniProgramUser(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* request, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void AllMiniProgramUser(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void AllMiniProgramUser(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void DestroyMiniProgramUser(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void DestroyMiniProgramUser(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void BindMiniProgramUserById(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByIdRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void BindMiniProgramUserById(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByIdRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void BindMiniProgramUserByAccount(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void BindMiniProgramUserByAccount(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetMiniProgramUserById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetMiniProgramUserById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetMiniProgramUserByOpenId(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByOpenIdRequest* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item* response, std::function<void(::grpc::Status)>) = 0;
@@ -3922,8 +4061,8 @@ class Wechat final {
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatOauth2SignInStateResponse>* AsyncOauth2SignInStateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatOauth2SignInStateResponse>* PrepareAsyncOauth2SignInStateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatOauth2SignInStateResponse>* AsyncOauth2SignInStateRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatOauth2SignInStateResponse>* PrepareAsyncOauth2SignInStateRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::orchid::v1::WechatOauth2QrConnectResponse>* AsyncOauth2SignInUrlRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInUrlRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::orchid::v1::WechatOauth2QrConnectResponse>* PrepareAsyncOauth2SignInUrlRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInUrlRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::UserSignInResponse>* AsyncSignInByOauth2Raw(::grpc::ClientContext* context, const ::palm::nut::v1::SignInByWechatOauth2Request& request, ::grpc::CompletionQueue* cq) = 0;
@@ -3942,16 +4081,12 @@ class Wechat final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatAllOauth2UserResponse_Item>* PrepareAsyncGetOauth2UserByOpenIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByOpenIdRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatAllOauth2UserResponse>* AsyncGetOauth2UserByUnionIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByUnionIdRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatAllOauth2UserResponse>* PrepareAsyncGetOauth2UserByUnionIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByUnionIdRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>* AsyncCurrentMiniProgramUserRaw(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>* PrepareAsyncCurrentMiniProgramUserRaw(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatAllMiniProgramUserResponse>* AsyncAllMiniProgramUserRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatAllMiniProgramUserResponse>* PrepareAsyncAllMiniProgramUserRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncDestroyMiniProgramUserRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncDestroyMiniProgramUserRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncBindMiniProgramUserByIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByIdRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncBindMiniProgramUserByIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByIdRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncBindMiniProgramUserByAccountRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncBindMiniProgramUserByAccountRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>* AsyncGetMiniProgramUserByIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>* PrepareAsyncGetMiniProgramUserByIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>* AsyncGetMiniProgramUserByOpenIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByOpenIdRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -3962,11 +4097,11 @@ class Wechat final {
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status Oauth2SignInState(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest& request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatOauth2SignInStateResponse>> AsyncOauth2SignInState(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest& request, ::grpc::CompletionQueue* cq) {
+    ::grpc::Status Oauth2SignInState(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatOauth2SignInStateResponse>> AsyncOauth2SignInState(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatOauth2SignInStateResponse>>(AsyncOauth2SignInStateRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatOauth2SignInStateResponse>> PrepareAsyncOauth2SignInState(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatOauth2SignInStateResponse>> PrepareAsyncOauth2SignInState(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatOauth2SignInStateResponse>>(PrepareAsyncOauth2SignInStateRaw(context, request, cq));
     }
     ::grpc::Status Oauth2SignInUrl(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInUrlRequest& request, ::palm::orchid::v1::WechatOauth2QrConnectResponse* response) override;
@@ -4032,13 +4167,6 @@ class Wechat final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatAllOauth2UserResponse>> PrepareAsyncGetOauth2UserByUnionId(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByUnionIdRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatAllOauth2UserResponse>>(PrepareAsyncGetOauth2UserByUnionIdRaw(context, request, cq));
     }
-    ::grpc::Status CurrentMiniProgramUser(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest& request, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>> AsyncCurrentMiniProgramUser(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>>(AsyncCurrentMiniProgramUserRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>> PrepareAsyncCurrentMiniProgramUser(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>>(PrepareAsyncCurrentMiniProgramUserRaw(context, request, cq));
-    }
     ::grpc::Status AllMiniProgramUser(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::palm::nut::v1::WechatAllMiniProgramUserResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatAllMiniProgramUserResponse>> AsyncAllMiniProgramUser(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatAllMiniProgramUserResponse>>(AsyncAllMiniProgramUserRaw(context, request, cq));
@@ -4059,13 +4187,6 @@ class Wechat final {
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncBindMiniProgramUserById(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByIdRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncBindMiniProgramUserByIdRaw(context, request, cq));
-    }
-    ::grpc::Status BindMiniProgramUserByAccount(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest& request, ::google::protobuf::Empty* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncBindMiniProgramUserByAccount(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncBindMiniProgramUserByAccountRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncBindMiniProgramUserByAccount(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncBindMiniProgramUserByAccountRaw(context, request, cq));
     }
     ::grpc::Status GetMiniProgramUserById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>> AsyncGetMiniProgramUserById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
@@ -4091,8 +4212,8 @@ class Wechat final {
     class async final :
       public StubInterface::async_interface {
      public:
-      void Oauth2SignInState(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response, std::function<void(::grpc::Status)>) override;
-      void Oauth2SignInState(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Oauth2SignInState(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response, std::function<void(::grpc::Status)>) override;
+      void Oauth2SignInState(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void Oauth2SignInUrl(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInUrlRequest* request, ::palm::orchid::v1::WechatOauth2QrConnectResponse* response, std::function<void(::grpc::Status)>) override;
       void Oauth2SignInUrl(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInUrlRequest* request, ::palm::orchid::v1::WechatOauth2QrConnectResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void SignInByOauth2(::grpc::ClientContext* context, const ::palm::nut::v1::SignInByWechatOauth2Request* request, ::palm::nut::v1::UserSignInResponse* response, std::function<void(::grpc::Status)>) override;
@@ -4111,16 +4232,12 @@ class Wechat final {
       void GetOauth2UserByOpenId(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByOpenIdRequest* request, ::palm::nut::v1::WechatAllOauth2UserResponse_Item* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetOauth2UserByUnionId(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByUnionIdRequest* request, ::palm::nut::v1::WechatAllOauth2UserResponse* response, std::function<void(::grpc::Status)>) override;
       void GetOauth2UserByUnionId(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByUnionIdRequest* request, ::palm::nut::v1::WechatAllOauth2UserResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void CurrentMiniProgramUser(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* request, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* response, std::function<void(::grpc::Status)>) override;
-      void CurrentMiniProgramUser(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* request, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void AllMiniProgramUser(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse* response, std::function<void(::grpc::Status)>) override;
       void AllMiniProgramUser(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void DestroyMiniProgramUser(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void DestroyMiniProgramUser(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
       void BindMiniProgramUserById(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByIdRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void BindMiniProgramUserById(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByIdRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void BindMiniProgramUserByAccount(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
-      void BindMiniProgramUserByAccount(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetMiniProgramUserById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item* response, std::function<void(::grpc::Status)>) override;
       void GetMiniProgramUserById(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetMiniProgramUserByOpenId(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByOpenIdRequest* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item* response, std::function<void(::grpc::Status)>) override;
@@ -4138,8 +4255,8 @@ class Wechat final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatOauth2SignInStateResponse>* AsyncOauth2SignInStateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatOauth2SignInStateResponse>* PrepareAsyncOauth2SignInStateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatOauth2SignInStateResponse>* AsyncOauth2SignInStateRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatOauth2SignInStateResponse>* PrepareAsyncOauth2SignInStateRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::orchid::v1::WechatOauth2QrConnectResponse>* AsyncOauth2SignInUrlRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInUrlRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::orchid::v1::WechatOauth2QrConnectResponse>* PrepareAsyncOauth2SignInUrlRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInUrlRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::UserSignInResponse>* AsyncSignInByOauth2Raw(::grpc::ClientContext* context, const ::palm::nut::v1::SignInByWechatOauth2Request& request, ::grpc::CompletionQueue* cq) override;
@@ -4158,16 +4275,12 @@ class Wechat final {
     ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatAllOauth2UserResponse_Item>* PrepareAsyncGetOauth2UserByOpenIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByOpenIdRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatAllOauth2UserResponse>* AsyncGetOauth2UserByUnionIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByUnionIdRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatAllOauth2UserResponse>* PrepareAsyncGetOauth2UserByUnionIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByUnionIdRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>* AsyncCurrentMiniProgramUserRaw(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>* PrepareAsyncCurrentMiniProgramUserRaw(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatAllMiniProgramUserResponse>* AsyncAllMiniProgramUserRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatAllMiniProgramUserResponse>* PrepareAsyncAllMiniProgramUserRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncDestroyMiniProgramUserRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncDestroyMiniProgramUserRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncBindMiniProgramUserByIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByIdRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncBindMiniProgramUserByIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByIdRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncBindMiniProgramUserByAccountRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncBindMiniProgramUserByAccountRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>* AsyncGetMiniProgramUserByIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>* PrepareAsyncGetMiniProgramUserByIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>* AsyncGetMiniProgramUserByOpenIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserQueryByOpenIdRequest& request, ::grpc::CompletionQueue* cq) override;
@@ -4184,11 +4297,9 @@ class Wechat final {
     const ::grpc::internal::RpcMethod rpcmethod_GetOauth2UserById_;
     const ::grpc::internal::RpcMethod rpcmethod_GetOauth2UserByOpenId_;
     const ::grpc::internal::RpcMethod rpcmethod_GetOauth2UserByUnionId_;
-    const ::grpc::internal::RpcMethod rpcmethod_CurrentMiniProgramUser_;
     const ::grpc::internal::RpcMethod rpcmethod_AllMiniProgramUser_;
     const ::grpc::internal::RpcMethod rpcmethod_DestroyMiniProgramUser_;
     const ::grpc::internal::RpcMethod rpcmethod_BindMiniProgramUserById_;
-    const ::grpc::internal::RpcMethod rpcmethod_BindMiniProgramUserByAccount_;
     const ::grpc::internal::RpcMethod rpcmethod_GetMiniProgramUserById_;
     const ::grpc::internal::RpcMethod rpcmethod_GetMiniProgramUserByOpenId_;
     const ::grpc::internal::RpcMethod rpcmethod_GetMiniProgramUserByUnionId_;
@@ -4199,7 +4310,7 @@ class Wechat final {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status Oauth2SignInState(::grpc::ServerContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response);
+    virtual ::grpc::Status Oauth2SignInState(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response);
     virtual ::grpc::Status Oauth2SignInUrl(::grpc::ServerContext* context, const ::palm::nut::v1::WechatOauth2SignInUrlRequest* request, ::palm::orchid::v1::WechatOauth2QrConnectResponse* response);
     virtual ::grpc::Status SignInByOauth2(::grpc::ServerContext* context, const ::palm::nut::v1::SignInByWechatOauth2Request* request, ::palm::nut::v1::UserSignInResponse* response);
     virtual ::grpc::Status AllOauth2User(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::WechatAllOauth2UserResponse* response);
@@ -4209,11 +4320,9 @@ class Wechat final {
     virtual ::grpc::Status GetOauth2UserById(::grpc::ServerContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::WechatAllOauth2UserResponse_Item* response);
     virtual ::grpc::Status GetOauth2UserByOpenId(::grpc::ServerContext* context, const ::palm::nut::v1::WechatUserQueryByOpenIdRequest* request, ::palm::nut::v1::WechatAllOauth2UserResponse_Item* response);
     virtual ::grpc::Status GetOauth2UserByUnionId(::grpc::ServerContext* context, const ::palm::nut::v1::WechatUserQueryByUnionIdRequest* request, ::palm::nut::v1::WechatAllOauth2UserResponse* response);
-    virtual ::grpc::Status CurrentMiniProgramUser(::grpc::ServerContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* request, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* response);
     virtual ::grpc::Status AllMiniProgramUser(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse* response);
     virtual ::grpc::Status DestroyMiniProgramUser(::grpc::ServerContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response);
     virtual ::grpc::Status BindMiniProgramUserById(::grpc::ServerContext* context, const ::palm::nut::v1::WechatUserBindByIdRequest* request, ::google::protobuf::Empty* response);
-    virtual ::grpc::Status BindMiniProgramUserByAccount(::grpc::ServerContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest* request, ::google::protobuf::Empty* response);
     virtual ::grpc::Status GetMiniProgramUserById(::grpc::ServerContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item* response);
     virtual ::grpc::Status GetMiniProgramUserByOpenId(::grpc::ServerContext* context, const ::palm::nut::v1::WechatUserQueryByOpenIdRequest* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item* response);
     virtual ::grpc::Status GetMiniProgramUserByUnionId(::grpc::ServerContext* context, const ::palm::nut::v1::WechatUserQueryByUnionIdRequest* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse* response);
@@ -4230,11 +4339,11 @@ class Wechat final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Oauth2SignInState(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::WechatOauth2SignInStateRequest* /*request*/, ::palm::nut::v1::WechatOauth2SignInStateResponse* /*response*/) override {
+    ::grpc::Status Oauth2SignInState(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::palm::nut::v1::WechatOauth2SignInStateResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestOauth2SignInState(::grpc::ServerContext* context, ::palm::nut::v1::WechatOauth2SignInStateRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::WechatOauth2SignInStateResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestOauth2SignInState(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::WechatOauth2SignInStateResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -4419,32 +4528,12 @@ class Wechat final {
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_CurrentMiniProgramUser : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_CurrentMiniProgramUser() {
-      ::grpc::Service::MarkMethodAsync(10);
-    }
-    ~WithAsyncMethod_CurrentMiniProgramUser() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status CurrentMiniProgramUser(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* /*request*/, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestCurrentMiniProgramUser(::grpc::ServerContext* context, ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
   class WithAsyncMethod_AllMiniProgramUser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_AllMiniProgramUser() {
-      ::grpc::Service::MarkMethodAsync(11);
+      ::grpc::Service::MarkMethodAsync(10);
     }
     ~WithAsyncMethod_AllMiniProgramUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4455,7 +4544,7 @@ class Wechat final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestAllMiniProgramUser(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::WechatAllMiniProgramUserResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4464,7 +4553,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_DestroyMiniProgramUser() {
-      ::grpc::Service::MarkMethodAsync(12);
+      ::grpc::Service::MarkMethodAsync(11);
     }
     ~WithAsyncMethod_DestroyMiniProgramUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4475,7 +4564,7 @@ class Wechat final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDestroyMiniProgramUser(::grpc::ServerContext* context, ::palm::nut::v1::IdRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4484,7 +4573,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_BindMiniProgramUserById() {
-      ::grpc::Service::MarkMethodAsync(13);
+      ::grpc::Service::MarkMethodAsync(12);
     }
     ~WithAsyncMethod_BindMiniProgramUserById() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4495,27 +4584,7 @@ class Wechat final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestBindMiniProgramUserById(::grpc::ServerContext* context, ::palm::nut::v1::WechatUserBindByIdRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_BindMiniProgramUserByAccount : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_BindMiniProgramUserByAccount() {
-      ::grpc::Service::MarkMethodAsync(14);
-    }
-    ~WithAsyncMethod_BindMiniProgramUserByAccount() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status BindMiniProgramUserByAccount(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::WechatUserBindByAccountRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestBindMiniProgramUserByAccount(::grpc::ServerContext* context, ::palm::nut::v1::WechatUserBindByAccountRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4524,7 +4593,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetMiniProgramUserById() {
-      ::grpc::Service::MarkMethodAsync(15);
+      ::grpc::Service::MarkMethodAsync(13);
     }
     ~WithAsyncMethod_GetMiniProgramUserById() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4535,7 +4604,7 @@ class Wechat final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMiniProgramUserById(::grpc::ServerContext* context, ::palm::nut::v1::IdRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4544,7 +4613,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetMiniProgramUserByOpenId() {
-      ::grpc::Service::MarkMethodAsync(16);
+      ::grpc::Service::MarkMethodAsync(14);
     }
     ~WithAsyncMethod_GetMiniProgramUserByOpenId() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4555,7 +4624,7 @@ class Wechat final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMiniProgramUserByOpenId(::grpc::ServerContext* context, ::palm::nut::v1::WechatUserQueryByOpenIdRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4564,7 +4633,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetMiniProgramUserByUnionId() {
-      ::grpc::Service::MarkMethodAsync(17);
+      ::grpc::Service::MarkMethodAsync(15);
     }
     ~WithAsyncMethod_GetMiniProgramUserByUnionId() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4575,10 +4644,10 @@ class Wechat final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMiniProgramUserByUnionId(::grpc::ServerContext* context, ::palm::nut::v1::WechatUserQueryByUnionIdRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::nut::v1::WechatAllMiniProgramUserResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Oauth2SignInState<WithAsyncMethod_Oauth2SignInUrl<WithAsyncMethod_SignInByOauth2<WithAsyncMethod_AllOauth2User<WithAsyncMethod_DestroyOauth2User<WithAsyncMethod_BindOauth2UserById<WithAsyncMethod_BindOauth2UserByAccount<WithAsyncMethod_GetOauth2UserById<WithAsyncMethod_GetOauth2UserByOpenId<WithAsyncMethod_GetOauth2UserByUnionId<WithAsyncMethod_CurrentMiniProgramUser<WithAsyncMethod_AllMiniProgramUser<WithAsyncMethod_DestroyMiniProgramUser<WithAsyncMethod_BindMiniProgramUserById<WithAsyncMethod_BindMiniProgramUserByAccount<WithAsyncMethod_GetMiniProgramUserById<WithAsyncMethod_GetMiniProgramUserByOpenId<WithAsyncMethod_GetMiniProgramUserByUnionId<Service > > > > > > > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_Oauth2SignInState<WithAsyncMethod_Oauth2SignInUrl<WithAsyncMethod_SignInByOauth2<WithAsyncMethod_AllOauth2User<WithAsyncMethod_DestroyOauth2User<WithAsyncMethod_BindOauth2UserById<WithAsyncMethod_BindOauth2UserByAccount<WithAsyncMethod_GetOauth2UserById<WithAsyncMethod_GetOauth2UserByOpenId<WithAsyncMethod_GetOauth2UserByUnionId<WithAsyncMethod_AllMiniProgramUser<WithAsyncMethod_DestroyMiniProgramUser<WithAsyncMethod_BindMiniProgramUserById<WithAsyncMethod_GetMiniProgramUserById<WithAsyncMethod_GetMiniProgramUserByOpenId<WithAsyncMethod_GetMiniProgramUserByUnionId<Service > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_Oauth2SignInState : public BaseClass {
    private:
@@ -4586,25 +4655,25 @@ class Wechat final {
    public:
     WithCallbackMethod_Oauth2SignInState() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::WechatOauth2SignInStateRequest, ::palm::nut::v1::WechatOauth2SignInStateResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::palm::nut::v1::WechatOauth2SignInStateResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response) { return this->Oauth2SignInState(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response) { return this->Oauth2SignInState(context, request, response); }));}
     void SetMessageAllocatorFor_Oauth2SignInState(
-        ::grpc::MessageAllocator< ::palm::nut::v1::WechatOauth2SignInStateRequest, ::palm::nut::v1::WechatOauth2SignInStateResponse>* allocator) {
+        ::grpc::MessageAllocator< ::google::protobuf::Empty, ::palm::nut::v1::WechatOauth2SignInStateResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::WechatOauth2SignInStateRequest, ::palm::nut::v1::WechatOauth2SignInStateResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::palm::nut::v1::WechatOauth2SignInStateResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_Oauth2SignInState() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Oauth2SignInState(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::WechatOauth2SignInStateRequest* /*request*/, ::palm::nut::v1::WechatOauth2SignInStateResponse* /*response*/) override {
+    ::grpc::Status Oauth2SignInState(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::palm::nut::v1::WechatOauth2SignInStateResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* Oauth2SignInState(
-      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::WechatOauth2SignInStateRequest* /*request*/, ::palm::nut::v1::WechatOauth2SignInStateResponse* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::palm::nut::v1::WechatOauth2SignInStateResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_Oauth2SignInUrl : public BaseClass {
@@ -4850,45 +4919,18 @@ class Wechat final {
       ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::WechatUserQueryByUnionIdRequest* /*request*/, ::palm::nut::v1::WechatAllOauth2UserResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_CurrentMiniProgramUser : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_CurrentMiniProgramUser() {
-      ::grpc::Service::MarkMethodCallback(10,
-          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::CurrentWechatMiniProgramUserRequest, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* request, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* response) { return this->CurrentMiniProgramUser(context, request, response); }));}
-    void SetMessageAllocatorFor_CurrentMiniProgramUser(
-        ::grpc::MessageAllocator< ::palm::nut::v1::CurrentWechatMiniProgramUserRequest, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(10);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::CurrentWechatMiniProgramUserRequest, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_CurrentMiniProgramUser() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status CurrentMiniProgramUser(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* /*request*/, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* CurrentMiniProgramUser(
-      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* /*request*/, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
   class WithCallbackMethod_AllMiniProgramUser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_AllMiniProgramUser() {
-      ::grpc::Service::MarkMethodCallback(11,
+      ::grpc::Service::MarkMethodCallback(10,
           new ::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::palm::nut::v1::WechatAllMiniProgramUserResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse* response) { return this->AllMiniProgramUser(context, request, response); }));}
     void SetMessageAllocatorFor_AllMiniProgramUser(
         ::grpc::MessageAllocator< ::google::protobuf::Empty, ::palm::nut::v1::WechatAllMiniProgramUserResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(11);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(10);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::palm::nut::v1::WechatAllMiniProgramUserResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -4909,13 +4951,13 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_DestroyMiniProgramUser() {
-      ::grpc::Service::MarkMethodCallback(12,
+      ::grpc::Service::MarkMethodCallback(11,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::IdRequest, ::google::protobuf::Empty>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response) { return this->DestroyMiniProgramUser(context, request, response); }));}
     void SetMessageAllocatorFor_DestroyMiniProgramUser(
         ::grpc::MessageAllocator< ::palm::nut::v1::IdRequest, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(12);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(11);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::IdRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -4936,13 +4978,13 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_BindMiniProgramUserById() {
-      ::grpc::Service::MarkMethodCallback(13,
+      ::grpc::Service::MarkMethodCallback(12,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::WechatUserBindByIdRequest, ::google::protobuf::Empty>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::nut::v1::WechatUserBindByIdRequest* request, ::google::protobuf::Empty* response) { return this->BindMiniProgramUserById(context, request, response); }));}
     void SetMessageAllocatorFor_BindMiniProgramUserById(
         ::grpc::MessageAllocator< ::palm::nut::v1::WechatUserBindByIdRequest, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(13);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(12);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::WechatUserBindByIdRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -4958,45 +5000,18 @@ class Wechat final {
       ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::WechatUserBindByIdRequest* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_BindMiniProgramUserByAccount : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_BindMiniProgramUserByAccount() {
-      ::grpc::Service::MarkMethodCallback(14,
-          new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::WechatUserBindByAccountRequest, ::google::protobuf::Empty>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest* request, ::google::protobuf::Empty* response) { return this->BindMiniProgramUserByAccount(context, request, response); }));}
-    void SetMessageAllocatorFor_BindMiniProgramUserByAccount(
-        ::grpc::MessageAllocator< ::palm::nut::v1::WechatUserBindByAccountRequest, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(14);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::WechatUserBindByAccountRequest, ::google::protobuf::Empty>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_BindMiniProgramUserByAccount() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status BindMiniProgramUserByAccount(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::WechatUserBindByAccountRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* BindMiniProgramUserByAccount(
-      ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::WechatUserBindByAccountRequest* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
   class WithCallbackMethod_GetMiniProgramUserById : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetMiniProgramUserById() {
-      ::grpc::Service::MarkMethodCallback(15,
+      ::grpc::Service::MarkMethodCallback(13,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::IdRequest, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::nut::v1::IdRequest* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item* response) { return this->GetMiniProgramUserById(context, request, response); }));}
     void SetMessageAllocatorFor_GetMiniProgramUserById(
         ::grpc::MessageAllocator< ::palm::nut::v1::IdRequest, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(15);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(13);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::IdRequest, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -5017,13 +5032,13 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetMiniProgramUserByOpenId() {
-      ::grpc::Service::MarkMethodCallback(16,
+      ::grpc::Service::MarkMethodCallback(14,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::WechatUserQueryByOpenIdRequest, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::nut::v1::WechatUserQueryByOpenIdRequest* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item* response) { return this->GetMiniProgramUserByOpenId(context, request, response); }));}
     void SetMessageAllocatorFor_GetMiniProgramUserByOpenId(
         ::grpc::MessageAllocator< ::palm::nut::v1::WechatUserQueryByOpenIdRequest, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(16);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(14);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::WechatUserQueryByOpenIdRequest, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -5044,13 +5059,13 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetMiniProgramUserByUnionId() {
-      ::grpc::Service::MarkMethodCallback(17,
+      ::grpc::Service::MarkMethodCallback(15,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::WechatUserQueryByUnionIdRequest, ::palm::nut::v1::WechatAllMiniProgramUserResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::nut::v1::WechatUserQueryByUnionIdRequest* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse* response) { return this->GetMiniProgramUserByUnionId(context, request, response); }));}
     void SetMessageAllocatorFor_GetMiniProgramUserByUnionId(
         ::grpc::MessageAllocator< ::palm::nut::v1::WechatUserQueryByUnionIdRequest, ::palm::nut::v1::WechatAllMiniProgramUserResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(17);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(15);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::nut::v1::WechatUserQueryByUnionIdRequest, ::palm::nut::v1::WechatAllMiniProgramUserResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -5065,7 +5080,7 @@ class Wechat final {
     virtual ::grpc::ServerUnaryReactor* GetMiniProgramUserByUnionId(
       ::grpc::CallbackServerContext* /*context*/, const ::palm::nut::v1::WechatUserQueryByUnionIdRequest* /*request*/, ::palm::nut::v1::WechatAllMiniProgramUserResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_Oauth2SignInState<WithCallbackMethod_Oauth2SignInUrl<WithCallbackMethod_SignInByOauth2<WithCallbackMethod_AllOauth2User<WithCallbackMethod_DestroyOauth2User<WithCallbackMethod_BindOauth2UserById<WithCallbackMethod_BindOauth2UserByAccount<WithCallbackMethod_GetOauth2UserById<WithCallbackMethod_GetOauth2UserByOpenId<WithCallbackMethod_GetOauth2UserByUnionId<WithCallbackMethod_CurrentMiniProgramUser<WithCallbackMethod_AllMiniProgramUser<WithCallbackMethod_DestroyMiniProgramUser<WithCallbackMethod_BindMiniProgramUserById<WithCallbackMethod_BindMiniProgramUserByAccount<WithCallbackMethod_GetMiniProgramUserById<WithCallbackMethod_GetMiniProgramUserByOpenId<WithCallbackMethod_GetMiniProgramUserByUnionId<Service > > > > > > > > > > > > > > > > > > CallbackService;
+  typedef WithCallbackMethod_Oauth2SignInState<WithCallbackMethod_Oauth2SignInUrl<WithCallbackMethod_SignInByOauth2<WithCallbackMethod_AllOauth2User<WithCallbackMethod_DestroyOauth2User<WithCallbackMethod_BindOauth2UserById<WithCallbackMethod_BindOauth2UserByAccount<WithCallbackMethod_GetOauth2UserById<WithCallbackMethod_GetOauth2UserByOpenId<WithCallbackMethod_GetOauth2UserByUnionId<WithCallbackMethod_AllMiniProgramUser<WithCallbackMethod_DestroyMiniProgramUser<WithCallbackMethod_BindMiniProgramUserById<WithCallbackMethod_GetMiniProgramUserById<WithCallbackMethod_GetMiniProgramUserByOpenId<WithCallbackMethod_GetMiniProgramUserByUnionId<Service > > > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Oauth2SignInState : public BaseClass {
@@ -5079,7 +5094,7 @@ class Wechat final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Oauth2SignInState(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::WechatOauth2SignInStateRequest* /*request*/, ::palm::nut::v1::WechatOauth2SignInStateResponse* /*response*/) override {
+    ::grpc::Status Oauth2SignInState(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::palm::nut::v1::WechatOauth2SignInStateResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -5238,29 +5253,12 @@ class Wechat final {
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_CurrentMiniProgramUser : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_CurrentMiniProgramUser() {
-      ::grpc::Service::MarkMethodGeneric(10);
-    }
-    ~WithGenericMethod_CurrentMiniProgramUser() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status CurrentMiniProgramUser(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* /*request*/, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
   class WithGenericMethod_AllMiniProgramUser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_AllMiniProgramUser() {
-      ::grpc::Service::MarkMethodGeneric(11);
+      ::grpc::Service::MarkMethodGeneric(10);
     }
     ~WithGenericMethod_AllMiniProgramUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5277,7 +5275,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_DestroyMiniProgramUser() {
-      ::grpc::Service::MarkMethodGeneric(12);
+      ::grpc::Service::MarkMethodGeneric(11);
     }
     ~WithGenericMethod_DestroyMiniProgramUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5294,7 +5292,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_BindMiniProgramUserById() {
-      ::grpc::Service::MarkMethodGeneric(13);
+      ::grpc::Service::MarkMethodGeneric(12);
     }
     ~WithGenericMethod_BindMiniProgramUserById() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5306,29 +5304,12 @@ class Wechat final {
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_BindMiniProgramUserByAccount : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_BindMiniProgramUserByAccount() {
-      ::grpc::Service::MarkMethodGeneric(14);
-    }
-    ~WithGenericMethod_BindMiniProgramUserByAccount() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status BindMiniProgramUserByAccount(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::WechatUserBindByAccountRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
   class WithGenericMethod_GetMiniProgramUserById : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetMiniProgramUserById() {
-      ::grpc::Service::MarkMethodGeneric(15);
+      ::grpc::Service::MarkMethodGeneric(13);
     }
     ~WithGenericMethod_GetMiniProgramUserById() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5345,7 +5326,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetMiniProgramUserByOpenId() {
-      ::grpc::Service::MarkMethodGeneric(16);
+      ::grpc::Service::MarkMethodGeneric(14);
     }
     ~WithGenericMethod_GetMiniProgramUserByOpenId() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5362,7 +5343,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetMiniProgramUserByUnionId() {
-      ::grpc::Service::MarkMethodGeneric(17);
+      ::grpc::Service::MarkMethodGeneric(15);
     }
     ~WithGenericMethod_GetMiniProgramUserByUnionId() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5385,7 +5366,7 @@ class Wechat final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Oauth2SignInState(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::WechatOauth2SignInStateRequest* /*request*/, ::palm::nut::v1::WechatOauth2SignInStateResponse* /*response*/) override {
+    ::grpc::Status Oauth2SignInState(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::palm::nut::v1::WechatOauth2SignInStateResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -5574,32 +5555,12 @@ class Wechat final {
     }
   };
   template <class BaseClass>
-  class WithRawMethod_CurrentMiniProgramUser : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_CurrentMiniProgramUser() {
-      ::grpc::Service::MarkMethodRaw(10);
-    }
-    ~WithRawMethod_CurrentMiniProgramUser() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status CurrentMiniProgramUser(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* /*request*/, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestCurrentMiniProgramUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
   class WithRawMethod_AllMiniProgramUser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_AllMiniProgramUser() {
-      ::grpc::Service::MarkMethodRaw(11);
+      ::grpc::Service::MarkMethodRaw(10);
     }
     ~WithRawMethod_AllMiniProgramUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5610,7 +5571,7 @@ class Wechat final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestAllMiniProgramUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5619,7 +5580,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_DestroyMiniProgramUser() {
-      ::grpc::Service::MarkMethodRaw(12);
+      ::grpc::Service::MarkMethodRaw(11);
     }
     ~WithRawMethod_DestroyMiniProgramUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5630,7 +5591,7 @@ class Wechat final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDestroyMiniProgramUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5639,7 +5600,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_BindMiniProgramUserById() {
-      ::grpc::Service::MarkMethodRaw(13);
+      ::grpc::Service::MarkMethodRaw(12);
     }
     ~WithRawMethod_BindMiniProgramUserById() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5650,27 +5611,7 @@ class Wechat final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestBindMiniProgramUserById(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_BindMiniProgramUserByAccount : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_BindMiniProgramUserByAccount() {
-      ::grpc::Service::MarkMethodRaw(14);
-    }
-    ~WithRawMethod_BindMiniProgramUserByAccount() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status BindMiniProgramUserByAccount(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::WechatUserBindByAccountRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestBindMiniProgramUserByAccount(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5679,7 +5620,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetMiniProgramUserById() {
-      ::grpc::Service::MarkMethodRaw(15);
+      ::grpc::Service::MarkMethodRaw(13);
     }
     ~WithRawMethod_GetMiniProgramUserById() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5690,7 +5631,7 @@ class Wechat final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMiniProgramUserById(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5699,7 +5640,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetMiniProgramUserByOpenId() {
-      ::grpc::Service::MarkMethodRaw(16);
+      ::grpc::Service::MarkMethodRaw(14);
     }
     ~WithRawMethod_GetMiniProgramUserByOpenId() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5710,7 +5651,7 @@ class Wechat final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMiniProgramUserByOpenId(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5719,7 +5660,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetMiniProgramUserByUnionId() {
-      ::grpc::Service::MarkMethodRaw(17);
+      ::grpc::Service::MarkMethodRaw(15);
     }
     ~WithRawMethod_GetMiniProgramUserByUnionId() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5730,7 +5671,7 @@ class Wechat final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMiniProgramUserByUnionId(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5748,7 +5689,7 @@ class Wechat final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Oauth2SignInState(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::WechatOauth2SignInStateRequest* /*request*/, ::palm::nut::v1::WechatOauth2SignInStateResponse* /*response*/) override {
+    ::grpc::Status Oauth2SignInState(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::palm::nut::v1::WechatOauth2SignInStateResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -5954,34 +5895,12 @@ class Wechat final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_CurrentMiniProgramUser : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_CurrentMiniProgramUser() {
-      ::grpc::Service::MarkMethodRawCallback(10,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->CurrentMiniProgramUser(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_CurrentMiniProgramUser() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status CurrentMiniProgramUser(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* /*request*/, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* CurrentMiniProgramUser(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
   class WithRawCallbackMethod_AllMiniProgramUser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_AllMiniProgramUser() {
-      ::grpc::Service::MarkMethodRawCallback(11,
+      ::grpc::Service::MarkMethodRawCallback(10,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->AllMiniProgramUser(context, request, response); }));
@@ -6003,7 +5922,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_DestroyMiniProgramUser() {
-      ::grpc::Service::MarkMethodRawCallback(12,
+      ::grpc::Service::MarkMethodRawCallback(11,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DestroyMiniProgramUser(context, request, response); }));
@@ -6025,7 +5944,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_BindMiniProgramUserById() {
-      ::grpc::Service::MarkMethodRawCallback(13,
+      ::grpc::Service::MarkMethodRawCallback(12,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->BindMiniProgramUserById(context, request, response); }));
@@ -6042,34 +5961,12 @@ class Wechat final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_BindMiniProgramUserByAccount : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_BindMiniProgramUserByAccount() {
-      ::grpc::Service::MarkMethodRawCallback(14,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->BindMiniProgramUserByAccount(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_BindMiniProgramUserByAccount() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status BindMiniProgramUserByAccount(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::WechatUserBindByAccountRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* BindMiniProgramUserByAccount(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
   class WithRawCallbackMethod_GetMiniProgramUserById : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetMiniProgramUserById() {
-      ::grpc::Service::MarkMethodRawCallback(15,
+      ::grpc::Service::MarkMethodRawCallback(13,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetMiniProgramUserById(context, request, response); }));
@@ -6091,7 +5988,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetMiniProgramUserByOpenId() {
-      ::grpc::Service::MarkMethodRawCallback(16,
+      ::grpc::Service::MarkMethodRawCallback(14,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetMiniProgramUserByOpenId(context, request, response); }));
@@ -6113,7 +6010,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetMiniProgramUserByUnionId() {
-      ::grpc::Service::MarkMethodRawCallback(17,
+      ::grpc::Service::MarkMethodRawCallback(15,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetMiniProgramUserByUnionId(context, request, response); }));
@@ -6137,10 +6034,10 @@ class Wechat final {
     WithStreamedUnaryMethod_Oauth2SignInState() {
       ::grpc::Service::MarkMethodStreamed(0,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::palm::nut::v1::WechatOauth2SignInStateRequest, ::palm::nut::v1::WechatOauth2SignInStateResponse>(
+          ::google::protobuf::Empty, ::palm::nut::v1::WechatOauth2SignInStateResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::palm::nut::v1::WechatOauth2SignInStateRequest, ::palm::nut::v1::WechatOauth2SignInStateResponse>* streamer) {
+                     ::google::protobuf::Empty, ::palm::nut::v1::WechatOauth2SignInStateResponse>* streamer) {
                        return this->StreamedOauth2SignInState(context,
                          streamer);
                   }));
@@ -6149,12 +6046,12 @@ class Wechat final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status Oauth2SignInState(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::WechatOauth2SignInStateRequest* /*request*/, ::palm::nut::v1::WechatOauth2SignInStateResponse* /*response*/) override {
+    ::grpc::Status Oauth2SignInState(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::palm::nut::v1::WechatOauth2SignInStateResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedOauth2SignInState(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::WechatOauth2SignInStateRequest,::palm::nut::v1::WechatOauth2SignInStateResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedOauth2SignInState(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::google::protobuf::Empty,::palm::nut::v1::WechatOauth2SignInStateResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_Oauth2SignInUrl : public BaseClass {
@@ -6400,39 +6297,12 @@ class Wechat final {
     virtual ::grpc::Status StreamedGetOauth2UserByUnionId(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::WechatUserQueryByUnionIdRequest,::palm::nut::v1::WechatAllOauth2UserResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_CurrentMiniProgramUser : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_CurrentMiniProgramUser() {
-      ::grpc::Service::MarkMethodStreamed(10,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::palm::nut::v1::CurrentWechatMiniProgramUserRequest, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::palm::nut::v1::CurrentWechatMiniProgramUserRequest, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>* streamer) {
-                       return this->StreamedCurrentMiniProgramUser(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_CurrentMiniProgramUser() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status CurrentMiniProgramUser(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* /*request*/, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedCurrentMiniProgramUser(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::CurrentWechatMiniProgramUserRequest,::palm::nut::v1::CurrentWechatMiniProgramUserResponse>* server_unary_streamer) = 0;
-  };
-  template <class BaseClass>
   class WithStreamedUnaryMethod_AllMiniProgramUser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_AllMiniProgramUser() {
-      ::grpc::Service::MarkMethodStreamed(11,
+      ::grpc::Service::MarkMethodStreamed(10,
         new ::grpc::internal::StreamedUnaryHandler<
           ::google::protobuf::Empty, ::palm::nut::v1::WechatAllMiniProgramUserResponse>(
             [this](::grpc::ServerContext* context,
@@ -6459,7 +6329,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_DestroyMiniProgramUser() {
-      ::grpc::Service::MarkMethodStreamed(12,
+      ::grpc::Service::MarkMethodStreamed(11,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::nut::v1::IdRequest, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
@@ -6486,7 +6356,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_BindMiniProgramUserById() {
-      ::grpc::Service::MarkMethodStreamed(13,
+      ::grpc::Service::MarkMethodStreamed(12,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::nut::v1::WechatUserBindByIdRequest, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
@@ -6508,39 +6378,12 @@ class Wechat final {
     virtual ::grpc::Status StreamedBindMiniProgramUserById(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::WechatUserBindByIdRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_BindMiniProgramUserByAccount : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_BindMiniProgramUserByAccount() {
-      ::grpc::Service::MarkMethodStreamed(14,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::palm::nut::v1::WechatUserBindByAccountRequest, ::google::protobuf::Empty>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::palm::nut::v1::WechatUserBindByAccountRequest, ::google::protobuf::Empty>* streamer) {
-                       return this->StreamedBindMiniProgramUserByAccount(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_BindMiniProgramUserByAccount() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status BindMiniProgramUserByAccount(::grpc::ServerContext* /*context*/, const ::palm::nut::v1::WechatUserBindByAccountRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedBindMiniProgramUserByAccount(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::WechatUserBindByAccountRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
-  };
-  template <class BaseClass>
   class WithStreamedUnaryMethod_GetMiniProgramUserById : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetMiniProgramUserById() {
-      ::grpc::Service::MarkMethodStreamed(15,
+      ::grpc::Service::MarkMethodStreamed(13,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::nut::v1::IdRequest, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>(
             [this](::grpc::ServerContext* context,
@@ -6567,7 +6410,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetMiniProgramUserByOpenId() {
-      ::grpc::Service::MarkMethodStreamed(16,
+      ::grpc::Service::MarkMethodStreamed(14,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::nut::v1::WechatUserQueryByOpenIdRequest, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item>(
             [this](::grpc::ServerContext* context,
@@ -6594,7 +6437,7 @@ class Wechat final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetMiniProgramUserByUnionId() {
-      ::grpc::Service::MarkMethodStreamed(17,
+      ::grpc::Service::MarkMethodStreamed(15,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::nut::v1::WechatUserQueryByUnionIdRequest, ::palm::nut::v1::WechatAllMiniProgramUserResponse>(
             [this](::grpc::ServerContext* context,
@@ -6615,11 +6458,13 @@ class Wechat final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedGetMiniProgramUserByUnionId(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::nut::v1::WechatUserQueryByUnionIdRequest,::palm::nut::v1::WechatAllMiniProgramUserResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Oauth2SignInState<WithStreamedUnaryMethod_Oauth2SignInUrl<WithStreamedUnaryMethod_SignInByOauth2<WithStreamedUnaryMethod_AllOauth2User<WithStreamedUnaryMethod_DestroyOauth2User<WithStreamedUnaryMethod_BindOauth2UserById<WithStreamedUnaryMethod_BindOauth2UserByAccount<WithStreamedUnaryMethod_GetOauth2UserById<WithStreamedUnaryMethod_GetOauth2UserByOpenId<WithStreamedUnaryMethod_GetOauth2UserByUnionId<WithStreamedUnaryMethod_CurrentMiniProgramUser<WithStreamedUnaryMethod_AllMiniProgramUser<WithStreamedUnaryMethod_DestroyMiniProgramUser<WithStreamedUnaryMethod_BindMiniProgramUserById<WithStreamedUnaryMethod_BindMiniProgramUserByAccount<WithStreamedUnaryMethod_GetMiniProgramUserById<WithStreamedUnaryMethod_GetMiniProgramUserByOpenId<WithStreamedUnaryMethod_GetMiniProgramUserByUnionId<Service > > > > > > > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_Oauth2SignInState<WithStreamedUnaryMethod_Oauth2SignInUrl<WithStreamedUnaryMethod_SignInByOauth2<WithStreamedUnaryMethod_AllOauth2User<WithStreamedUnaryMethod_DestroyOauth2User<WithStreamedUnaryMethod_BindOauth2UserById<WithStreamedUnaryMethod_BindOauth2UserByAccount<WithStreamedUnaryMethod_GetOauth2UserById<WithStreamedUnaryMethod_GetOauth2UserByOpenId<WithStreamedUnaryMethod_GetOauth2UserByUnionId<WithStreamedUnaryMethod_AllMiniProgramUser<WithStreamedUnaryMethod_DestroyMiniProgramUser<WithStreamedUnaryMethod_BindMiniProgramUserById<WithStreamedUnaryMethod_GetMiniProgramUserById<WithStreamedUnaryMethod_GetMiniProgramUserByOpenId<WithStreamedUnaryMethod_GetMiniProgramUserByUnionId<Service > > > > > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Oauth2SignInState<WithStreamedUnaryMethod_Oauth2SignInUrl<WithStreamedUnaryMethod_SignInByOauth2<WithStreamedUnaryMethod_AllOauth2User<WithStreamedUnaryMethod_DestroyOauth2User<WithStreamedUnaryMethod_BindOauth2UserById<WithStreamedUnaryMethod_BindOauth2UserByAccount<WithStreamedUnaryMethod_GetOauth2UserById<WithStreamedUnaryMethod_GetOauth2UserByOpenId<WithStreamedUnaryMethod_GetOauth2UserByUnionId<WithStreamedUnaryMethod_CurrentMiniProgramUser<WithStreamedUnaryMethod_AllMiniProgramUser<WithStreamedUnaryMethod_DestroyMiniProgramUser<WithStreamedUnaryMethod_BindMiniProgramUserById<WithStreamedUnaryMethod_BindMiniProgramUserByAccount<WithStreamedUnaryMethod_GetMiniProgramUserById<WithStreamedUnaryMethod_GetMiniProgramUserByOpenId<WithStreamedUnaryMethod_GetMiniProgramUserByUnionId<Service > > > > > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_Oauth2SignInState<WithStreamedUnaryMethod_Oauth2SignInUrl<WithStreamedUnaryMethod_SignInByOauth2<WithStreamedUnaryMethod_AllOauth2User<WithStreamedUnaryMethod_DestroyOauth2User<WithStreamedUnaryMethod_BindOauth2UserById<WithStreamedUnaryMethod_BindOauth2UserByAccount<WithStreamedUnaryMethod_GetOauth2UserById<WithStreamedUnaryMethod_GetOauth2UserByOpenId<WithStreamedUnaryMethod_GetOauth2UserByUnionId<WithStreamedUnaryMethod_AllMiniProgramUser<WithStreamedUnaryMethod_DestroyMiniProgramUser<WithStreamedUnaryMethod_BindMiniProgramUserById<WithStreamedUnaryMethod_GetMiniProgramUserById<WithStreamedUnaryMethod_GetMiniProgramUserByOpenId<WithStreamedUnaryMethod_GetMiniProgramUserByUnionId<Service > > > > > > > > > > > > > > > > StreamedService;
 };
 
+// ----------------------------------------------------------------------------
+//
 class Attachment final {
  public:
   static constexpr char const* service_full_name() {

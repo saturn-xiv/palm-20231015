@@ -129,7 +129,7 @@ impl fmt::Display for Oauth2State {
         let it = {
             let buf = rmp_serde::to_vec(self).map_err(|e| {
                 error!("{:?}", e);
-                fmt::Error::default()
+                fmt::Error
             })?;
             BASE64URL_NOPAD.encode(&buf)
         };

@@ -5,6 +5,7 @@ use diesel::{delete, insert_into, prelude::*, update};
 use hyper::StatusCode;
 use palm::{
     crypto::random::bytes as random_bytes,
+    nut::v1,
     orchid::v1::{
         wechat_oauth2_login_response::Sex, wechat_oauth2_qr_connect_request::Language,
         WechatOauth2LoginResponse,
@@ -30,7 +31,7 @@ pub struct Item {
     pub nickname: String,
     pub sex: i32,
     pub city: String,
-    pub provence: String,
+    pub province: String,
     pub country: String,
     pub head_img_url: Option<String>,
     pub privilege: Vec<u8>,
@@ -63,6 +64,25 @@ impl fmt::Display for Item {
     }
 }
 
+impl From<Item> for v1::wechat_all_oauth2_user_response::Item {
+    fn from(x: Item) -> Self {
+        Self {
+            id: x.id,
+            user_id: x.user_id,
+            app_id: x.app_id.clone(),
+            union_id: x.union_id.clone(),
+            open_id: x.open_id.clone(),
+            nickname: x.nickname.clone(),
+            head_img_url: x.head_img_url.clone(),
+            city: x.city.clone(),
+            country: x.country.clone(),
+            province: x.province.clone(),
+            lang: x.lang.clone(),
+            sex: x.sex,
+            privilege: x.privilege().unwrap_or_default(),
+        }
+    }
+}
 pub trait Dao {
     fn all(&mut self) -> Result<Vec<Item>>;
     fn by_id(&mut self, id: i32) -> Result<Item>;

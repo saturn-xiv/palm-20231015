@@ -79,11 +79,19 @@ pub fn register(config: &mut web::ServiceConfig) {
                             ),
                         )
                         .service(
-                            web::scope("/mini-program").service(
-                                web::scope("/messaging")
-                                    .service(wechat::mini_program::messaging::verify)
-                                    .service(wechat::mini_program::messaging::callback),
-                            ),
+                            web::scope("/mini-program")
+                                .service(
+                                    web::scope("/messaging")
+                                        .service(wechat::mini_program::messaging::verify)
+                                        .service(wechat::mini_program::messaging::callback),
+                                )
+                                .service(
+                                    web::scope("/users")
+                                        .service(wechat::mini_program::users::sign_in)
+                                        .service(wechat::mini_program::users::bind_by_account)
+                                        .service(wechat::mini_program::users::update_profile)
+                                        .service(wechat::mini_program::users::refresh),
+                                ),
                         ),
                 )
                 .service(echo)

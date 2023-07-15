@@ -27,7 +27,7 @@ pub struct Query {
 }
 
 impl Locale {
-    fn detect(req: &HttpRequest) -> Option<LanguageTag> {
+    pub fn detect(req: &HttpRequest) -> Option<LanguageTag> {
         let key = "locale";
 
         // 1. Check URL arguments.

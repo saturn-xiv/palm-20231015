@@ -2,7 +2,7 @@ use std::fmt;
 
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
-use palm::{crypto::random::bytes as random_bytes, Result};
+use palm::{crypto::random::bytes as random_bytes, nut::v1, Result};
 use serde::{Deserialize, Serialize};
 
 use super::super::super::{
@@ -29,6 +29,20 @@ pub struct Item {
 impl fmt::Display for Item {
     fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
         write!(fmt, "{}://{}", self.app_id, self.open_id)
+    }
+}
+
+impl From<Item> for v1::wechat_all_mini_program_user_response::Item {
+    fn from(x: Item) -> Self {
+        Self {
+            id: x.id,
+            user_id: x.user_id,
+            app_id: x.app_id.clone(),
+            union_id: x.union_id.clone(),
+            open_id: x.open_id.clone(),
+            nickname: x.nickname.clone(),
+            avatar_url: x.avatar_url,
+        }
     }
 }
 

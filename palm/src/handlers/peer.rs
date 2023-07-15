@@ -19,7 +19,7 @@ impl fmt::Display for ClientIp {
 impl ClientIp {
     /// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For
     /// https://github.com/gin-gonic/gin/blob/893c6cae07ef564cbdd2796589c449dd2ac87d21/context.go#L651
-    fn detect(req: &HttpRequest) -> Option<String> {
+    pub fn detect(req: &HttpRequest) -> Option<String> {
         let headers = req.headers();
         if let Some(it) = headers.get("X-Forwarded-For") {
             if let Ok(it) = it.to_str() {

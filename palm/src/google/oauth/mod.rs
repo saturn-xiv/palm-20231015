@@ -14,12 +14,6 @@ pub struct ClientSecret {
     pub web: Web,
 }
 
-impl ClientSecret {
-    pub fn key(project: &str) -> String {
-        format!("{}://{}", type_name::<Self>(), project)
-    }
-}
-
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Web {
     pub client_id: String,
@@ -30,6 +24,12 @@ pub struct Web {
     pub client_secret: String,
     pub redirect_uris: Vec<String>,
     pub javascript_origins: Vec<String>,
+}
+
+impl Web {
+    pub fn key(&self, id: &str) -> String {
+        format!("{}://{}/{}", type_name::<Self>(), self.project_id, id)
+    }
 }
 
 /// https://developers.google.com/photos/library/guides/authentication-authorization

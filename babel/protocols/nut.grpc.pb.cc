@@ -44,6 +44,7 @@ static const char* User_method_names[] = {
   "/palm.nut.v1.User/Lock",
   "/palm.nut.v1.User/Unlock",
   "/palm.nut.v1.User/Confirm",
+  "/palm.nut.v1.User/Delete",
   "/palm.nut.v1.User/SetPassword",
 };
 
@@ -74,7 +75,8 @@ User::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, cons
   , rpcmethod_Lock_(User_method_names[17], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Unlock_(User_method_names[18], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Confirm_(User_method_names[19], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetPassword_(User_method_names[20], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Delete_(User_method_names[20], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetPassword_(User_method_names[21], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status User::Stub::SignIn(::grpc::ClientContext* context, const ::palm::nut::v1::UserSignInRequest& request, ::palm::nut::v1::UserSignInResponse* response) {
@@ -537,6 +539,29 @@ void User::Stub::async::Confirm(::grpc::ClientContext* context, const ::palm::nu
   return result;
 }
 
+::grpc::Status User::Stub::Delete(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::IdRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Delete_, context, request, response);
+}
+
+void User::Stub::async::Delete(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::IdRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Delete_, context, request, response, std::move(f));
+}
+
+void User::Stub::async::Delete(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Delete_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* User::Stub::PrepareAsyncDeleteRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::google::protobuf::Empty, ::palm::nut::v1::IdRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Delete_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* User::Stub::AsyncDeleteRaw(::grpc::ClientContext* context, const ::palm::nut::v1::IdRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncDeleteRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 ::grpc::Status User::Stub::SetPassword(::grpc::ClientContext* context, const ::palm::nut::v1::UserSetPasswordRequest& request, ::google::protobuf::Empty* response) {
   return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::UserSetPasswordRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetPassword_, context, request, response);
 }
@@ -764,6 +789,16 @@ User::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       User_method_names[20],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< User::Service, ::palm::nut::v1::IdRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](User::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::palm::nut::v1::IdRequest* req,
+             ::google::protobuf::Empty* resp) {
+               return service->Delete(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      User_method_names[21],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< User::Service, ::palm::nut::v1::UserSetPasswordRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](User::Service* service,
              ::grpc::ServerContext* ctx,
@@ -916,6 +951,13 @@ User::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
+::grpc::Status User::Service::Delete(::grpc::ServerContext* context, const ::palm::nut::v1::IdRequest* request, ::google::protobuf::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
 ::grpc::Status User::Service::SetPassword(::grpc::ServerContext* context, const ::palm::nut::v1::UserSetPasswordRequest* request, ::google::protobuf::Empty* response) {
   (void) context;
   (void) request;
@@ -1038,11 +1080,9 @@ static const char* Wechat_method_names[] = {
   "/palm.nut.v1.Wechat/GetOauth2UserById",
   "/palm.nut.v1.Wechat/GetOauth2UserByOpenId",
   "/palm.nut.v1.Wechat/GetOauth2UserByUnionId",
-  "/palm.nut.v1.Wechat/CurrentMiniProgramUser",
   "/palm.nut.v1.Wechat/AllMiniProgramUser",
   "/palm.nut.v1.Wechat/DestroyMiniProgramUser",
   "/palm.nut.v1.Wechat/BindMiniProgramUserById",
-  "/palm.nut.v1.Wechat/BindMiniProgramUserByAccount",
   "/palm.nut.v1.Wechat/GetMiniProgramUserById",
   "/palm.nut.v1.Wechat/GetMiniProgramUserByOpenId",
   "/palm.nut.v1.Wechat/GetMiniProgramUserByUnionId",
@@ -1065,33 +1105,31 @@ Wechat::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, co
   , rpcmethod_GetOauth2UserById_(Wechat_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetOauth2UserByOpenId_(Wechat_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetOauth2UserByUnionId_(Wechat_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_CurrentMiniProgramUser_(Wechat_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_AllMiniProgramUser_(Wechat_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DestroyMiniProgramUser_(Wechat_method_names[12], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_BindMiniProgramUserById_(Wechat_method_names[13], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_BindMiniProgramUserByAccount_(Wechat_method_names[14], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetMiniProgramUserById_(Wechat_method_names[15], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetMiniProgramUserByOpenId_(Wechat_method_names[16], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetMiniProgramUserByUnionId_(Wechat_method_names[17], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_AllMiniProgramUser_(Wechat_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DestroyMiniProgramUser_(Wechat_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_BindMiniProgramUserById_(Wechat_method_names[12], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetMiniProgramUserById_(Wechat_method_names[13], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetMiniProgramUserByOpenId_(Wechat_method_names[14], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetMiniProgramUserByUnionId_(Wechat_method_names[15], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::Status Wechat::Stub::Oauth2SignInState(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest& request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::WechatOauth2SignInStateRequest, ::palm::nut::v1::WechatOauth2SignInStateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Oauth2SignInState_, context, request, response);
+::grpc::Status Wechat::Stub::Oauth2SignInState(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::google::protobuf::Empty, ::palm::nut::v1::WechatOauth2SignInStateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Oauth2SignInState_, context, request, response);
 }
 
-void Wechat::Stub::async::Oauth2SignInState(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::WechatOauth2SignInStateRequest, ::palm::nut::v1::WechatOauth2SignInStateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Oauth2SignInState_, context, request, response, std::move(f));
+void Wechat::Stub::async::Oauth2SignInState(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::google::protobuf::Empty, ::palm::nut::v1::WechatOauth2SignInStateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Oauth2SignInState_, context, request, response, std::move(f));
 }
 
-void Wechat::Stub::async::Oauth2SignInState(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+void Wechat::Stub::async::Oauth2SignInState(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Oauth2SignInState_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatOauth2SignInStateResponse>* Wechat::Stub::PrepareAsyncOauth2SignInStateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::nut::v1::WechatOauth2SignInStateResponse, ::palm::nut::v1::WechatOauth2SignInStateRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Oauth2SignInState_, context, request);
+::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatOauth2SignInStateResponse>* Wechat::Stub::PrepareAsyncOauth2SignInStateRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::nut::v1::WechatOauth2SignInStateResponse, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Oauth2SignInState_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatOauth2SignInStateResponse>* Wechat::Stub::AsyncOauth2SignInStateRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::palm::nut::v1::WechatOauth2SignInStateResponse>* Wechat::Stub::AsyncOauth2SignInStateRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncOauth2SignInStateRaw(context, request, cq);
   result->StartCall();
@@ -1305,29 +1343,6 @@ void Wechat::Stub::async::GetOauth2UserByUnionId(::grpc::ClientContext* context,
   return result;
 }
 
-::grpc::Status Wechat::Stub::CurrentMiniProgramUser(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest& request, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::CurrentWechatMiniProgramUserRequest, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_CurrentMiniProgramUser_, context, request, response);
-}
-
-void Wechat::Stub::async::CurrentMiniProgramUser(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* request, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::CurrentWechatMiniProgramUserRequest, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_CurrentMiniProgramUser_, context, request, response, std::move(f));
-}
-
-void Wechat::Stub::async::CurrentMiniProgramUser(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* request, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_CurrentMiniProgramUser_, context, request, response, reactor);
-}
-
-::grpc::ClientAsyncResponseReader< ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>* Wechat::Stub::PrepareAsyncCurrentMiniProgramUserRaw(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::nut::v1::CurrentWechatMiniProgramUserResponse, ::palm::nut::v1::CurrentWechatMiniProgramUserRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_CurrentMiniProgramUser_, context, request);
-}
-
-::grpc::ClientAsyncResponseReader< ::palm::nut::v1::CurrentWechatMiniProgramUserResponse>* Wechat::Stub::AsyncCurrentMiniProgramUserRaw(::grpc::ClientContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncCurrentMiniProgramUserRaw(context, request, cq);
-  result->StartCall();
-  return result;
-}
-
 ::grpc::Status Wechat::Stub::AllMiniProgramUser(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::palm::nut::v1::WechatAllMiniProgramUserResponse* response) {
   return ::grpc::internal::BlockingUnaryCall< ::google::protobuf::Empty, ::palm::nut::v1::WechatAllMiniProgramUserResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_AllMiniProgramUser_, context, request, response);
 }
@@ -1393,29 +1408,6 @@ void Wechat::Stub::async::BindMiniProgramUserById(::grpc::ClientContext* context
 ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Wechat::Stub::AsyncBindMiniProgramUserByIdRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByIdRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncBindMiniProgramUserByIdRaw(context, request, cq);
-  result->StartCall();
-  return result;
-}
-
-::grpc::Status Wechat::Stub::BindMiniProgramUserByAccount(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest& request, ::google::protobuf::Empty* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::palm::nut::v1::WechatUserBindByAccountRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_BindMiniProgramUserByAccount_, context, request, response);
-}
-
-void Wechat::Stub::async::BindMiniProgramUserByAccount(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::palm::nut::v1::WechatUserBindByAccountRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_BindMiniProgramUserByAccount_, context, request, response, std::move(f));
-}
-
-void Wechat::Stub::async::BindMiniProgramUserByAccount(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_BindMiniProgramUserByAccount_, context, request, response, reactor);
-}
-
-::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Wechat::Stub::PrepareAsyncBindMiniProgramUserByAccountRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::google::protobuf::Empty, ::palm::nut::v1::WechatUserBindByAccountRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_BindMiniProgramUserByAccount_, context, request);
-}
-
-::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Wechat::Stub::AsyncBindMiniProgramUserByAccountRaw(::grpc::ClientContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncBindMiniProgramUserByAccountRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -1493,10 +1485,10 @@ Wechat::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Wechat_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Wechat::Service, ::palm::nut::v1::WechatOauth2SignInStateRequest, ::palm::nut::v1::WechatOauth2SignInStateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Wechat::Service, ::google::protobuf::Empty, ::palm::nut::v1::WechatOauth2SignInStateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Wechat::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::palm::nut::v1::WechatOauth2SignInStateRequest* req,
+             const ::google::protobuf::Empty* req,
              ::palm::nut::v1::WechatOauth2SignInStateResponse* resp) {
                return service->Oauth2SignInState(ctx, req, resp);
              }, this)));
@@ -1593,16 +1585,6 @@ Wechat::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Wechat_method_names[10],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Wechat::Service, ::palm::nut::v1::CurrentWechatMiniProgramUserRequest, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](Wechat::Service* service,
-             ::grpc::ServerContext* ctx,
-             const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* req,
-             ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* resp) {
-               return service->CurrentMiniProgramUser(ctx, req, resp);
-             }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Wechat_method_names[11],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Wechat::Service, ::google::protobuf::Empty, ::palm::nut::v1::WechatAllMiniProgramUserResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Wechat::Service* service,
              ::grpc::ServerContext* ctx,
@@ -1611,7 +1593,7 @@ Wechat::Service::Service() {
                return service->AllMiniProgramUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Wechat_method_names[12],
+      Wechat_method_names[11],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Wechat::Service, ::palm::nut::v1::IdRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Wechat::Service* service,
@@ -1621,7 +1603,7 @@ Wechat::Service::Service() {
                return service->DestroyMiniProgramUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Wechat_method_names[13],
+      Wechat_method_names[12],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Wechat::Service, ::palm::nut::v1::WechatUserBindByIdRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Wechat::Service* service,
@@ -1631,17 +1613,7 @@ Wechat::Service::Service() {
                return service->BindMiniProgramUserById(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Wechat_method_names[14],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Wechat::Service, ::palm::nut::v1::WechatUserBindByAccountRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](Wechat::Service* service,
-             ::grpc::ServerContext* ctx,
-             const ::palm::nut::v1::WechatUserBindByAccountRequest* req,
-             ::google::protobuf::Empty* resp) {
-               return service->BindMiniProgramUserByAccount(ctx, req, resp);
-             }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Wechat_method_names[15],
+      Wechat_method_names[13],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Wechat::Service, ::palm::nut::v1::IdRequest, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Wechat::Service* service,
@@ -1651,7 +1623,7 @@ Wechat::Service::Service() {
                return service->GetMiniProgramUserById(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Wechat_method_names[16],
+      Wechat_method_names[14],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Wechat::Service, ::palm::nut::v1::WechatUserQueryByOpenIdRequest, ::palm::nut::v1::WechatAllMiniProgramUserResponse_Item, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Wechat::Service* service,
@@ -1661,7 +1633,7 @@ Wechat::Service::Service() {
                return service->GetMiniProgramUserByOpenId(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Wechat_method_names[17],
+      Wechat_method_names[15],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Wechat::Service, ::palm::nut::v1::WechatUserQueryByUnionIdRequest, ::palm::nut::v1::WechatAllMiniProgramUserResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Wechat::Service* service,
@@ -1675,7 +1647,7 @@ Wechat::Service::Service() {
 Wechat::Service::~Service() {
 }
 
-::grpc::Status Wechat::Service::Oauth2SignInState(::grpc::ServerContext* context, const ::palm::nut::v1::WechatOauth2SignInStateRequest* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response) {
+::grpc::Status Wechat::Service::Oauth2SignInState(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::WechatOauth2SignInStateResponse* response) {
   (void) context;
   (void) request;
   (void) response;
@@ -1745,13 +1717,6 @@ Wechat::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Wechat::Service::CurrentMiniProgramUser(::grpc::ServerContext* context, const ::palm::nut::v1::CurrentWechatMiniProgramUserRequest* request, ::palm::nut::v1::CurrentWechatMiniProgramUserResponse* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
 ::grpc::Status Wechat::Service::AllMiniProgramUser(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::palm::nut::v1::WechatAllMiniProgramUserResponse* response) {
   (void) context;
   (void) request;
@@ -1767,13 +1732,6 @@ Wechat::Service::~Service() {
 }
 
 ::grpc::Status Wechat::Service::BindMiniProgramUserById(::grpc::ServerContext* context, const ::palm::nut::v1::WechatUserBindByIdRequest* request, ::google::protobuf::Empty* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status Wechat::Service::BindMiniProgramUserByAccount(::grpc::ServerContext* context, const ::palm::nut::v1::WechatUserBindByAccountRequest* request, ::google::protobuf::Empty* response) {
   (void) context;
   (void) request;
   (void) response;
