@@ -1,6 +1,6 @@
 FetchContent_Declare(gRPC
   GIT_REPOSITORY    "https://github.com/grpc/grpc.git"
-  GIT_TAG           "v1.56.1"
+  GIT_TAG           "v1.56.2"
 )
 FetchContent_MakeAvailable(gRPC)
 
