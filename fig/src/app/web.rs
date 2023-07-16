@@ -28,7 +28,7 @@ use palm::{
 };
 use tokio::sync::Mutex;
 
-use super::super::{env::Config, graphql};
+use super::super::env::Config;
 
 pub async fn launch(cfg: &Config) -> Result<()> {
     let pg_pool = cfg.postgresql.open()?;
@@ -126,7 +126,6 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 .cookie_secure(is_prod)
                 .build(),
             )
-            .configure(graphql::register)
             .configure(nut::controllers::register)
             .configure(cms::controllers::register)
             .configure(forum::controllers::register)

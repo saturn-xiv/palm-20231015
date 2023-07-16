@@ -1,10 +1,11 @@
-use nut::{graphql::Musa, orm::postgresql::Config as PostgreSql};
+use nut::orm::postgresql::Config as PostgreSql;
 use orchid::Client as Orchid;
 use palm::{
     cache::redis::Config as Redis,
     crypto::Key,
     env::{Environment, Http, Rpc},
     minio::Config as Minio,
+    musa::Client as Musa,
     queue::amqp::Config as RabbitMqConfig,
     search::Config as OpenSearch,
     thrift::loquat::Config as Loquat,

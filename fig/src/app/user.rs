@@ -4,7 +4,7 @@ use diesel::Connection as DieselConntection;
 use hyper::StatusCode;
 use nut::{
     models::{
-        log::{Dao as LogDao, Level as LogLevel},
+        log::Dao as LogDao,
         user::{Action, Dao as UserDao, Item as User},
     },
     orm::postgresql::Connection as Db,
@@ -12,6 +12,7 @@ use nut::{
 use palm::{
     crypto::Password,
     jwt::Jwt,
+    nut::v1::user_logs_response::item::Level as LogLevel,
     rbac::{Role as RbacRole, Subject},
     Error, HttpError, Result,
 };
@@ -71,7 +72,7 @@ impl Create {
             LogDao::add::<String, User>(
                 db,
                 user.id,
-                &LogLevel::Info,
+                LogLevel::Info,
                 &hostname(),
                 Some(user.id),
                 format!("Created by system user {}.", current_user()),
@@ -127,7 +128,7 @@ impl Role {
         LogDao::add::<String, User>(
             db,
             user.id,
-            &LogLevel::Info,
+            LogLevel::Info,
             &hostname(),
             Some(user.id),
             format!("Apply role {} by system user {}", self.role, current_user()),
@@ -152,7 +153,7 @@ impl Role {
         LogDao::add::<String, User>(
             db,
             user.id,
-            &LogLevel::Info,
+            LogLevel::Info,
             &hostname(),
             Some(user.id),
             format!(
@@ -184,7 +185,7 @@ impl ResetPassword {
             LogDao::add::<String, User>(
                 db,
                 user.id,
-                &LogLevel::Info,
+                LogLevel::Info,
                 &hostname(),
                 Some(user.id),
                 format!("Reset password by system user {}.", current_user()),

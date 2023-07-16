@@ -1,12 +1,12 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Musa {
+pub struct Client {
     pub endpoint: String,
     pub token: String,
 }
 
-impl Default for Musa {
+impl Default for Client {
     fn default() -> Self {
         Self {
             endpoint: "http://127.0.0.1:8080".to_string(),
