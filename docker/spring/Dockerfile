@@ -222,7 +222,8 @@ RUN zsh -c "source $HOME/.cargo/env \
     && rustup target add armv7-unknown-linux-gnueabihf \
     && rustup target add aarch64-unknown-linux-gnu \
     && rustup target add x86_64-unknown-linux-musl \
-    && rustup target add aarch64-unknown-linux-musl"
+    && rustup target add aarch64-unknown-linux-musl \
+    && rustup target add loongarch64-unknown-linux-gnu"
 
 RUN apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
 RUN zsh -c "source $HOME/.zshrc \
