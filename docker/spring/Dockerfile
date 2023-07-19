@@ -31,9 +31,9 @@ RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release 
 RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
 
 # https://launchpad.net/~ondrej/+archive/ubuntu/php
-# RUN add-apt-repository -y ppa:ondrej/php
+RUN add-apt-repository -y ppa:ondrej/php
 # https://launchpad.net/~ondrej/+archive/ubuntu/nginx
-# RUN add-apt-repository -y ppa:ondrej/nginx
+RUN add-apt-repository -y ppa:ondrej/nginx
 
 # https://www.envoyproxy.io/docs/envoy/latest/start/install#install-envoy-on-ubuntu-linux
 RUN curl -sL 'https://deb.dl.getenvoy.io/public/gpg.8115BA8E629CC074.key' | gpg --dearmor -o /usr/share/keyrings/getenvoy-keyring.gpg
