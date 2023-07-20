@@ -107,7 +107,7 @@ RUN zsh -c "source $HOME/.zshrc \
     && npm i yarn -g"
 RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.zshrc
     
-ENV JDK_VERSION "20.0.1-open"
+ENV JDK_VERSION "20.0.2-open"
 # https://docs.gradle.org/current/userguide/compatibility.html
 ENV GRADLE_VERSION "8.2.1"
 RUN curl -s "https://get.sdkman.io" | bash
