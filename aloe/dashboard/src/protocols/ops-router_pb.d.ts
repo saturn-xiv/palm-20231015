@@ -955,6 +955,9 @@ export class Wan extends jspb.Message {
   getMetric(): number;
   setMetric(value: number): Wan;
 
+  getName(): string;
+  setName(value: string): Wan;
+
   getMac(): string;
   setMac(value: string): Wan;
 
@@ -985,6 +988,7 @@ export namespace Wan {
   export type AsObject = {
     device: string,
     metric: number,
+    name: string,
     mac: string,
     dhcp?: Dhcp.AsObject,
     pb_static?: Static.AsObject,

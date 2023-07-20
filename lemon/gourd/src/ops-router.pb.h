@@ -6195,6 +6195,7 @@ class Wan final :
 
   enum : int {
     kDeviceFieldNumber = 1,
+    kNameFieldNumber = 9,
     kMacFieldNumber = 11,
     kMetricFieldNumber = 2,
     kEnableFieldNumber = 99,
@@ -6219,6 +6220,26 @@ class Wan final :
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_device(
       const std::string& value);
   std::string* _internal_mutable_device();
+
+  public:
+  // string name = 9;
+  void clear_name() ;
+  const std::string& name() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_name(Arg_&& arg, Args_... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* ptr);
+
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
+      const std::string& value);
+  std::string* _internal_mutable_name();
 
   public:
   // string mac = 11;
@@ -6313,6 +6334,7 @@ class Wan final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr mac_;
     ::uint32_t metric_;
     bool enable_;
@@ -12851,6 +12873,53 @@ inline ::uint32_t Wan::_internal_metric() const {
 inline void Wan::_internal_set_metric(::uint32_t value) {
   ;
   _impl_.metric_ = value;
+}
+
+// string name = 9;
+inline void Wan::clear_name() {
+  _impl_.name_.ClearToEmpty();
+}
+inline const std::string& Wan::name() const {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Wan.name)
+  return _internal_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Wan::set_name(Arg_&& arg,
+                                                     Args_... args) {
+  ;
+  _impl_.name_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Wan.name)
+}
+inline std::string* Wan::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Wan.name)
+  return _s;
+}
+inline const std::string& Wan::_internal_name() const {
+  return _impl_.name_.Get();
+}
+inline void Wan::_internal_set_name(const std::string& value) {
+  ;
+
+
+  _impl_.name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* Wan::_internal_mutable_name() {
+  ;
+  return _impl_.name_.Mutable( GetArenaForAllocation());
+}
+inline std::string* Wan::release_name() {
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Wan.name)
+  return _impl_.name_.Release();
+}
+inline void Wan::set_allocated_name(std::string* value) {
+  _impl_.name_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.name_.IsDefault()) {
+          _impl_.name_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Wan.name)
 }
 
 // string mac = 11;

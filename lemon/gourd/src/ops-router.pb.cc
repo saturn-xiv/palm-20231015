@@ -666,6 +666,10 @@ PROTOBUF_CONSTEXPR Wan::Wan(
     &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
   }
 
+  , /*decltype(_impl_.name_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
   , /*decltype(_impl_.mac_)*/ {
     &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
   }
@@ -1248,6 +1252,7 @@ const ::uint32_t TableStruct_ops_2drouter_2eproto::offsets[] PROTOBUF_SECTION_VA
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.device_),
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.metric_),
+    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.name_),
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.mac_),
     ::_pbi::kInvalidFieldOffsetTag,
     ::_pbi::kInvalidFieldOffsetTag,
@@ -1372,14 +1377,14 @@ static const ::_pbi::MigrationSchema
         { 366, -1, -1, sizeof(::palm::ops::router::v1::Lan)},
         { 378, -1, -1, sizeof(::palm::ops::router::v1::Dmz)},
         { 390, -1, -1, sizeof(::palm::ops::router::v1::Wan)},
-        { 405, -1, -1, sizeof(::palm::ops::router::v1::Dhcp)},
-        { 414, 426, -1, sizeof(::palm::ops::router::v1::Static)},
-        { 430, -1, -1, sizeof(::palm::ops::router::v1::Dns)},
-        { 439, -1, -1, sizeof(::palm::ops::router::v1::UserProfile)},
-        { 449, 459, -1, sizeof(::palm::ops::router::v1::UserSignInRequest)},
-        { 461, -1, -1, sizeof(::palm::ops::router::v1::UserSignInResponse)},
-        { 470, 480, -1, sizeof(::palm::ops::router::v1::UserUpdateRequest)},
-        { 482, -1, -1, sizeof(::palm::ops::router::v1::UserLogsResponse)},
+        { 406, -1, -1, sizeof(::palm::ops::router::v1::Dhcp)},
+        { 415, 427, -1, sizeof(::palm::ops::router::v1::Static)},
+        { 431, -1, -1, sizeof(::palm::ops::router::v1::Dns)},
+        { 440, -1, -1, sizeof(::palm::ops::router::v1::UserProfile)},
+        { 450, 460, -1, sizeof(::palm::ops::router::v1::UserSignInRequest)},
+        { 462, -1, -1, sizeof(::palm::ops::router::v1::UserSignInResponse)},
+        { 471, 481, -1, sizeof(::palm::ops::router::v1::UserUpdateRequest)},
+        { 483, -1, -1, sizeof(::palm::ops::router::v1::UserLogsResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -1506,63 +1511,64 @@ const char descriptor_table_protodef_ops_2drouter_2eproto[] PROTOBUF_SECTION_VAR
     "\n\004rule\030\003 \001(\t\"C\n\003Lan\022\016\n\006device\030\001 \001(\t\022\013\n\003m"
     "ac\030\002 \001(\t\022\016\n\006metric\030\003 \001(\r\022\017\n\007address\030\013 \001("
     "\t\"C\n\003Dmz\022\016\n\006device\030\001 \001(\t\022\013\n\003mac\030\002 \001(\t\022\016\n"
-    "\006metric\030\003 \001(\r\022\017\n\007address\030\013 \001(\t\"\240\001\n\003Wan\022\016"
-    "\n\006device\030\001 \001(\t\022\016\n\006metric\030\002 \001(\r\022\013\n\003mac\030\013 "
-    "\001(\t\022(\n\004dhcp\030\025 \001(\0132\030.palm.ops.router.v1.D"
-    "hcpH\000\022,\n\006static\030\026 \001(\0132\032.palm.ops.router."
-    "v1.StaticH\000\022\016\n\006enable\030c \001(\010B\004\n\002ip\"\022\n\004Dhc"
-    "p\022\n\n\002v6\030\001 \001(\010\"T\n\006Static\022\017\n\007address\030\001 \001(\t"
-    "\022\017\n\007gateway\030\003 \001(\t\022\014\n\004dns1\030\004 \001(\t\022\021\n\004dns2\030"
-    "\005 \001(\tH\000\210\001\001B\007\n\005_dns2\"\024\n\003Dns\022\r\n\005items\030\001 \003("
-    "\t\"1\n\013UserProfile\022\020\n\010nickname\030\001 \001(\t\022\020\n\010pa"
-    "ssword\030\002 \001(\t\"j\n\021UserSignInRequest\022-\n\004use"
-    "r\030\001 \001(\0132\037.palm.ops.router.v1.UserProfile"
-    "\022&\n\003ttl\030\t \001(\0132\031.google.protobuf.Duration"
-    "\"#\n\022UserSignInResponse\022\r\n\005token\030\001 \001(\t\"s\n"
-    "\021UserUpdateRequest\0220\n\007current\030\001 \001(\0132\037.pa"
-    "lm.ops.router.v1.UserProfile\022,\n\003new\030\002 \001("
-    "\0132\037.palm.ops.router.v1.UserProfile\"!\n\020Us"
-    "erLogsResponse\022\r\n\005items\030\001 \003(\t2\376\010\n\006Router"
-    "\022:\n\006Reboot\022\026.google.protobuf.Empty\032\026.goo"
-    "gle.protobuf.Empty\"\000\0229\n\005Apply\022\026.google.p"
-    "rotobuf.Empty\032\026.google.protobuf.Empty\"\000\022"
-    "L\n\006Status\022\026.google.protobuf.Empty\032(.palm"
-    ".ops.router.v1.RouterStatusResponse\"\000\022;\n"
-    "\006SetDns\022\027.palm.ops.router.v1.Dns\032\026.googl"
-    "e.protobuf.Empty\"\000\022K\n\006SetWan\022\'.palm.ops."
-    "router.v1.RouterSetWanRequest\032\026.google.p"
-    "rotobuf.Empty\"\000\022C\n\nSetWanPool\022\033.palm.ops"
-    ".router.v1.WanPool\032\026.google.protobuf.Emp"
-    "ty\"\000\022K\n\006SetLan\022\'.palm.ops.router.v1.Rout"
-    "erSetLanRequest\032\026.google.protobuf.Empty\""
-    "\000\022K\n\006SetDmz\022\'.palm.ops.router.v1.RouterS"
-    "etDmzRequest\032\026.google.protobuf.Empty\"\000\022@"
-    "\n\nCreateRule\022\030.palm.ops.router.v1.Rule\032\026"
-    ".google.protobuf.Empty\"\000\022X\n\nUpdateRule\0220"
-    ".palm.ops.router.v1.RouterIndexRuleRespo"
-    "nse.Item\032\026.google.protobuf.Empty\"\000\022R\n\tIn"
-    "dexRule\022\026.google.protobuf.Empty\032+.palm.o"
-    "ps.router.v1.RouterIndexRuleResponse\"\000\022S"
-    "\n\nUpdateHost\022+.palm.ops.router.v1.Router"
-    "UpdateHostRequest\032\026.google.protobuf.Empt"
-    "y\"\000\022R\n\tIndexUser\022\026.google.protobuf.Empty"
-    "\032+.palm.ops.router.v1.RouterIndexUserRes"
-    "ponse\"\000\022X\n\nUpdateUser\0220.palm.ops.router."
-    "v1.RouterIndexUserResponse.Item\032\026.google"
-    ".protobuf.Empty\"\000\022S\n\nCreateUser\022+.palm.o"
-    "ps.router.v1.RouterCreateUserRequest\032\026.g"
-    "oogle.protobuf.Empty\"\0002\201\003\n\004User\022Y\n\006SignI"
-    "n\022%.palm.ops.router.v1.UserSignInRequest"
-    "\032&.palm.ops.router.v1.UserSignInResponse"
-    "\"\000\022N\n\007Refresh\022\031.google.protobuf.Duration"
-    "\032&.palm.ops.router.v1.UserSignInResponse"
-    "\"\000\022I\n\006Update\022%.palm.ops.router.v1.UserUp"
-    "dateRequest\032\026.google.protobuf.Empty\"\000\022;\n"
-    "\007SignOut\022\026.google.protobuf.Empty\032\026.googl"
-    "e.protobuf.Empty\"\000\022F\n\004Logs\022\026.google.prot"
-    "obuf.Empty\032$.palm.ops.router.v1.UserLogs"
-    "Response\"\000B4\n0com.github.saturn_xiv.palm"
-    ".plugins.ops.router.v1P\001b\006proto3"
+    "\006metric\030\003 \001(\r\022\017\n\007address\030\013 \001(\t\"\256\001\n\003Wan\022\016"
+    "\n\006device\030\001 \001(\t\022\016\n\006metric\030\002 \001(\r\022\014\n\004name\030\t"
+    " \001(\t\022\013\n\003mac\030\013 \001(\t\022(\n\004dhcp\030\025 \001(\0132\030.palm.o"
+    "ps.router.v1.DhcpH\000\022,\n\006static\030\026 \001(\0132\032.pa"
+    "lm.ops.router.v1.StaticH\000\022\016\n\006enable\030c \001("
+    "\010B\004\n\002ip\"\022\n\004Dhcp\022\n\n\002v6\030\001 \001(\010\"T\n\006Static\022\017\n"
+    "\007address\030\001 \001(\t\022\017\n\007gateway\030\003 \001(\t\022\014\n\004dns1\030"
+    "\004 \001(\t\022\021\n\004dns2\030\005 \001(\tH\000\210\001\001B\007\n\005_dns2\"\024\n\003Dns"
+    "\022\r\n\005items\030\001 \003(\t\"1\n\013UserProfile\022\020\n\010nickna"
+    "me\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"j\n\021UserSignIn"
+    "Request\022-\n\004user\030\001 \001(\0132\037.palm.ops.router."
+    "v1.UserProfile\022&\n\003ttl\030\t \001(\0132\031.google.pro"
+    "tobuf.Duration\"#\n\022UserSignInResponse\022\r\n\005"
+    "token\030\001 \001(\t\"s\n\021UserUpdateRequest\0220\n\007curr"
+    "ent\030\001 \001(\0132\037.palm.ops.router.v1.UserProfi"
+    "le\022,\n\003new\030\002 \001(\0132\037.palm.ops.router.v1.Use"
+    "rProfile\"!\n\020UserLogsResponse\022\r\n\005items\030\001 "
+    "\003(\t2\376\010\n\006Router\022:\n\006Reboot\022\026.google.protob"
+    "uf.Empty\032\026.google.protobuf.Empty\"\000\0229\n\005Ap"
+    "ply\022\026.google.protobuf.Empty\032\026.google.pro"
+    "tobuf.Empty\"\000\022L\n\006Status\022\026.google.protobu"
+    "f.Empty\032(.palm.ops.router.v1.RouterStatu"
+    "sResponse\"\000\022;\n\006SetDns\022\027.palm.ops.router."
+    "v1.Dns\032\026.google.protobuf.Empty\"\000\022K\n\006SetW"
+    "an\022\'.palm.ops.router.v1.RouterSetWanRequ"
+    "est\032\026.google.protobuf.Empty\"\000\022C\n\nSetWanP"
+    "ool\022\033.palm.ops.router.v1.WanPool\032\026.googl"
+    "e.protobuf.Empty\"\000\022K\n\006SetLan\022\'.palm.ops."
+    "router.v1.RouterSetLanRequest\032\026.google.p"
+    "rotobuf.Empty\"\000\022K\n\006SetDmz\022\'.palm.ops.rou"
+    "ter.v1.RouterSetDmzRequest\032\026.google.prot"
+    "obuf.Empty\"\000\022@\n\nCreateRule\022\030.palm.ops.ro"
+    "uter.v1.Rule\032\026.google.protobuf.Empty\"\000\022X"
+    "\n\nUpdateRule\0220.palm.ops.router.v1.Router"
+    "IndexRuleResponse.Item\032\026.google.protobuf"
+    ".Empty\"\000\022R\n\tIndexRule\022\026.google.protobuf."
+    "Empty\032+.palm.ops.router.v1.RouterIndexRu"
+    "leResponse\"\000\022S\n\nUpdateHost\022+.palm.ops.ro"
+    "uter.v1.RouterUpdateHostRequest\032\026.google"
+    ".protobuf.Empty\"\000\022R\n\tIndexUser\022\026.google."
+    "protobuf.Empty\032+.palm.ops.router.v1.Rout"
+    "erIndexUserResponse\"\000\022X\n\nUpdateUser\0220.pa"
+    "lm.ops.router.v1.RouterIndexUserResponse"
+    ".Item\032\026.google.protobuf.Empty\"\000\022S\n\nCreat"
+    "eUser\022+.palm.ops.router.v1.RouterCreateU"
+    "serRequest\032\026.google.protobuf.Empty\"\0002\201\003\n"
+    "\004User\022Y\n\006SignIn\022%.palm.ops.router.v1.Use"
+    "rSignInRequest\032&.palm.ops.router.v1.User"
+    "SignInResponse\"\000\022N\n\007Refresh\022\031.google.pro"
+    "tobuf.Duration\032&.palm.ops.router.v1.User"
+    "SignInResponse\"\000\022I\n\006Update\022%.palm.ops.ro"
+    "uter.v1.UserUpdateRequest\032\026.google.proto"
+    "buf.Empty\"\000\022;\n\007SignOut\022\026.google.protobuf"
+    ".Empty\032\026.google.protobuf.Empty\"\000\022F\n\004Logs"
+    "\022\026.google.protobuf.Empty\032$.palm.ops.rout"
+    "er.v1.UserLogsResponse\"\000B4\n0com.github.s"
+    "aturn_xiv.palm.plugins.ops.router.v1P\001b\006"
+    "proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ops_2drouter_2eproto_deps[3] =
     {
@@ -1574,7 +1580,7 @@ static ::absl::once_flag descriptor_table_ops_2drouter_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_ops_2drouter_2eproto = {
     false,
     false,
-    5632,
+    5646,
     descriptor_table_protodef_ops_2drouter_2eproto,
     "ops-router.proto",
     &descriptor_table_ops_2drouter_2eproto_once,
@@ -10314,6 +10320,8 @@ Wan::Wan(const Wan& from)
   new (&_impl_) Impl_{
       decltype(_impl_.device_) {}
 
+    , decltype(_impl_.name_) {}
+
     , decltype(_impl_.mac_) {}
 
     , decltype(_impl_.metric_) {}
@@ -10331,6 +10339,13 @@ Wan::Wan(const Wan& from)
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_device().empty()) {
     _this->_impl_.device_.Set(from._internal_device(), _this->GetArenaForAllocation());
+  }
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_name().empty()) {
+    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
   }
   _impl_.mac_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -10366,6 +10381,8 @@ inline void Wan::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_{
       decltype(_impl_.device_) {}
 
+    , decltype(_impl_.name_) {}
+
     , decltype(_impl_.mac_) {}
 
     , decltype(_impl_.metric_) { 0u }
@@ -10379,6 +10396,10 @@ inline void Wan::SharedCtor(::_pb::Arena* arena) {
   _impl_.device_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.device_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.mac_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -10399,6 +10420,7 @@ Wan::~Wan() {
 inline void Wan::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.device_.Destroy();
+  _impl_.name_.Destroy();
   _impl_.mac_.Destroy();
   if (has_ip()) {
     clear_ip();
@@ -10439,6 +10461,7 @@ void Wan::Clear() {
   (void) cached_has_bits;
 
   _impl_.device_.ClearToEmpty();
+  _impl_.name_.ClearToEmpty();
   _impl_.mac_.ClearToEmpty();
   ::memset(&_impl_.metric_, 0, static_cast<::size_t>(
       reinterpret_cast<char*>(&_impl_.enable_) -
@@ -10469,6 +10492,17 @@ const char* Wan::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
         if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
           _impl_.metric_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // string name = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 74)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Wan.name"));
         } else {
           goto handle_unusual;
         }
@@ -10555,6 +10589,14 @@ failure:
         2, this->_internal_metric(), target);
   }
 
+  // string name = 9;
+  if (!this->_internal_name().empty()) {
+    const std::string& _s = this->_internal_name();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Wan.name");
+    target = stream->WriteStringMaybeAliased(9, _s, target);
+  }
+
   // string mac = 11;
   if (!this->_internal_mac().empty()) {
     const std::string& _s = this->_internal_mac();
@@ -10605,6 +10647,12 @@ failure:
   if (!this->_internal_device().empty()) {
     total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
                                     this->_internal_device());
+  }
+
+  // string name = 9;
+  if (!this->_internal_name().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_name());
   }
 
   // string mac = 11;
@@ -10664,6 +10712,9 @@ void Wan::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_N
   if (!from._internal_device().empty()) {
     _this->_internal_set_device(from._internal_device());
   }
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
+  }
   if (!from._internal_mac().empty()) {
     _this->_internal_set_mac(from._internal_mac());
   }
@@ -10709,6 +10760,8 @@ void Wan::InternalSwap(Wan* other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, lhs_arena,
                                        &other->_impl_.device_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
+                                       &other->_impl_.name_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.mac_, lhs_arena,
                                        &other->_impl_.mac_, rhs_arena);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<

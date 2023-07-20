@@ -7492,6 +7492,7 @@ proto.palm.ops.router.v1.Wan.toObject = function(includeInstance, msg) {
   var f, obj = {
     device: jspb.Message.getFieldWithDefault(msg, 1, ""),
     metric: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    name: jspb.Message.getFieldWithDefault(msg, 9, ""),
     mac: jspb.Message.getFieldWithDefault(msg, 11, ""),
     dhcp: (f = msg.getDhcp()) && proto.palm.ops.router.v1.Dhcp.toObject(includeInstance, f),
     pb_static: (f = msg.getStatic()) && proto.palm.ops.router.v1.Static.toObject(includeInstance, f),
@@ -7539,6 +7540,10 @@ proto.palm.ops.router.v1.Wan.deserializeBinaryFromReader = function(msg, reader)
     case 2:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setMetric(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
       break;
     case 11:
       var value = /** @type {string} */ (reader.readString());
@@ -7598,6 +7603,13 @@ proto.palm.ops.router.v1.Wan.serializeBinaryToWriter = function(message, writer)
   if (f !== 0) {
     writer.writeUint32(
       2,
+      f
+    );
+  }
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
       f
     );
   }
@@ -7667,6 +7679,24 @@ proto.palm.ops.router.v1.Wan.prototype.getMetric = function() {
  */
 proto.palm.ops.router.v1.Wan.prototype.setMetric = function(value) {
   return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional string name = 9;
+ * @return {string}
+ */
+proto.palm.ops.router.v1.Wan.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.ops.router.v1.Wan} returns this
+ */
+proto.palm.ops.router.v1.Wan.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 9, value);
 };
 
 

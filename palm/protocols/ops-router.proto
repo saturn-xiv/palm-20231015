@@ -221,6 +221,7 @@ message Dmz {
 message Wan {
   string device = 1;
   uint32 metric = 2;
+  string name = 9;
 
   string mac = 11;
   oneof ip {
