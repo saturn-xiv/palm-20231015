@@ -76,7 +76,7 @@ build_rust_musl() {
 build_loquat() {
     apt-get install -y golang
 
-    local target=$WORKSPACE/loquat/build/$1
+    local target=$WORKSPACE/loquat/build/$1-Release
     local thrift_flags="-DBUILD_TESTING=OFF -DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF"
 
     mkdir -p $target
