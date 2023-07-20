@@ -178,7 +178,6 @@ pub struct ResetPassword {
 
 impl ResetPassword {
     pub fn execute<P: Password>(&self, db: &mut Db, hmac: &P) -> Result<()> {
-        // FIXME
         let user = UserDao::by_nickname(db, &self.user)?;
         db.transaction::<_, Error, _>(move |db| {
             UserDao::password(db, hmac, user.id, &self.password)?;
@@ -197,18 +196,17 @@ impl ResetPassword {
     }
 }
 
-pub fn list(_db: &mut Db) -> Result<()> {
-    // FIXME
-    // let total = UserDao::count(db)?;
-    // let page = 20;
-    println!("{:<36} NAME", "UID");
-    // for i in 1.. {
-    //     for it in UserDao::all(db, (i - 1) * page, page)?.iter() {
-    //         println!("{:<36} {}", it.uid, it);
-    //     }
-    //     if i * page >= total {
-    //         break;
-    //     }
-    // }
+pub fn list(db: &mut Db) -> Result<()> {
+    let total = UserDao::count(db)?;
+    let page = 20;
+    println!("{:<6} ID", "USER");
+    for i in 1.. {
+        for it in UserDao::all(db, (i - 1) * page, page)?.iter() {
+            println!("{:<6} {}", it.id, it);
+        }
+        if i * page >= total {
+            break;
+        }
+    }
     Ok(())
 }
