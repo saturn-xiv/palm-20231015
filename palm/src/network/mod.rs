@@ -180,6 +180,7 @@ impl Validate for Ip {
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Wan {
+    pub name: String,
     pub device: String,
     pub ip: Ip,
     pub mac: String,

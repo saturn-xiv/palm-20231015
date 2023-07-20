@@ -89,7 +89,9 @@ build_loquat() {
 }
 
 
-build_lemon() {    
+build_lemon() {
+    install_gnu_deb $2
+
     local target=$WORKSPACE/lemon/build/$1-Release
     mkdir -p $target
     cd $target
@@ -124,18 +126,18 @@ build_musa() {
 
 copy_jdk() {
     cd $TARGET_DIR
-    local jdk_version=20
+    local jdk_version="20.0.2"
     
     if [ ! -f $HOME/downloads/openjdk-${jdk_version}_linux-x64_bin.tar.gz ]
     then
-        wget -q -P $HOME/downloads https://download.java.net/java/GA/jdk20/bdc68b4b9cbc4ebcb30745c85038d91d/36/GPL/openjdk-20_linux-x64_bin.tar.gz
+        wget -q -P $HOME/downloads https://download.java.net/java/GA/jdk20.0.2/6e380f22cbe7469fa75fb448bd903d8e/9/GPL/openjdk-20.0.2_linux-x64_bin.tar.gz
     fi
     tar xf $HOME/downloads/openjdk-${jdk_version}_linux-x64_bin.tar.gz
     mv jdk-${jdk_version} jdk-${jdk_version}-x64
 
     if [ ! -f $HOME/downloads/openjdk-${jdk_version}_linux-aarch64_bin.tar.gz ]
     then
-        wget -q -P $HOME/downloads https://download.java.net/java/GA/jdk20/bdc68b4b9cbc4ebcb30745c85038d91d/36/GPL/openjdk-20_linux-aarch64_bin.tar.gz
+        wget -q -P $HOME/downloads https://download.java.net/java/GA/jdk20.0.2/6e380f22cbe7469fa75fb448bd903d8e/9/GPL/openjdk-20.0.2_linux-aarch64_bin.tar.gz
     fi    
     tar xf $HOME/downloads/openjdk-${jdk_version}_linux-aarch64_bin.tar.gz
     mv jdk-${jdk_version} jdk-${jdk_version}-aarch64
@@ -251,12 +253,12 @@ then
     build_babel x86_64
 fi
 
-build_lemon x86_64
-build_lemon aarch64
+build_lemon x86_64 amd64
+build_lemon aarch64 arm64
 
 # -----------------------------------------------------------------------------
 
-build_dashboard fig
+# build_dashboard fig
 build_dashboard aloe
 
 build_musa

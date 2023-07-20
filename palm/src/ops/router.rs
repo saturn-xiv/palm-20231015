@@ -32,6 +32,7 @@ impl From<Ip> for v1::wan::Ip {
 impl From<Wan> for v1::Wan {
     fn from(x: Wan) -> Self {
         Self {
+            name: x.name.clone(),
             device: x.device.clone(),
             ip: Some(x.ip.into()),
             enable: x.enable,

@@ -80,6 +80,7 @@ impl v1::router_server::Router for Service {
             let payload = req.payload.ok_or(Status::invalid_argument("empty wan"))?;
             let ip = payload.ip.ok_or(Status::invalid_argument("empty ip"))?;
             SetWanRequest {
+                name: payload.name.clone(),
                 device: payload.device.clone(),
                 mac: payload.mac.clone(),
                 metric: payload.metric as u8,
@@ -500,7 +501,9 @@ pub struct StaticIp {
 
 #[derive(Validate, Debug)]
 pub struct SetWanRequest {
-    #[validate(length(min = 3, max = 31))]
+    #[validate(length(min = 1, max = 31))]
+    pub name: String,
+    #[validate(length(min = 1, max = 15))]
     pub device: String,
     pub ip: Option<StaticIp>,
     #[validate(length(equal = 17))]
@@ -532,6 +535,7 @@ impl SetWanRequest {
             }
 
             let it = Wan {
+                name: self.name.clone(),
                 device: self.device.clone(),
                 mac: self.mac.clone(),
                 ip: match self.ip {
