@@ -212,6 +212,49 @@ export class PolicyClient {
     this.methodDescriptorGetAllRoles);
   }
 
+  methodDescriptorGetAllRules = new grpcWeb.MethodDescriptor(
+    '/palm.rbac.v1.Policy/GetAllRules',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    rbac_pb.RulesResponse,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    rbac_pb.RulesResponse.deserializeBinary
+  );
+
+  getAllRules(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null): Promise<rbac_pb.RulesResponse>;
+
+  getAllRules(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: rbac_pb.RulesResponse) => void): grpcWeb.ClientReadableStream<rbac_pb.RulesResponse>;
+
+  getAllRules(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: rbac_pb.RulesResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.rbac.v1.Policy/GetAllRules',
+        request,
+        metadata || {},
+        this.methodDescriptorGetAllRules,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.rbac.v1.Policy/GetAllRules',
+    request,
+    metadata || {},
+    this.methodDescriptorGetAllRules);
+  }
+
   methodDescriptorGetRolesForUser = new grpcWeb.MethodDescriptor(
     '/palm.rbac.v1.Policy/GetRolesForUser',
     grpcWeb.MethodType.UNARY,

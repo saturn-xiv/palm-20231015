@@ -421,3 +421,70 @@ export namespace UpdatePermissionsForRoleRequest {
   }
 }
 
+export class RulesResponse extends jspb.Message {
+  getItemsList(): Array<RulesResponse.Item>;
+  setItemsList(value: Array<RulesResponse.Item>): RulesResponse;
+  clearItemsList(): RulesResponse;
+  addItems(value?: RulesResponse.Item, index?: number): RulesResponse.Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RulesResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: RulesResponse): RulesResponse.AsObject;
+  static serializeBinaryToWriter(message: RulesResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RulesResponse;
+  static deserializeBinaryFromReader(message: RulesResponse, reader: jspb.BinaryReader): RulesResponse;
+}
+
+export namespace RulesResponse {
+  export type AsObject = {
+    itemsList: Array<RulesResponse.Item.AsObject>,
+  }
+
+  export class Item extends jspb.Message {
+    getId(): number;
+    setId(value: number): Item;
+
+    getPtype(): string;
+    setPtype(value: string): Item;
+
+    getV0(): string;
+    setV0(value: string): Item;
+
+    getV1(): string;
+    setV1(value: string): Item;
+
+    getV2(): string;
+    setV2(value: string): Item;
+
+    getV3(): string;
+    setV3(value: string): Item;
+
+    getV4(): string;
+    setV4(value: string): Item;
+
+    getV5(): string;
+    setV5(value: string): Item;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Item.AsObject;
+    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
+    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Item;
+    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+  }
+
+  export namespace Item {
+    export type AsObject = {
+      id: number,
+      ptype: string,
+      v0: string,
+      v1: string,
+      v2: string,
+      v3: string,
+      v4: string,
+      v5: string,
+    }
+  }
+
+}
+

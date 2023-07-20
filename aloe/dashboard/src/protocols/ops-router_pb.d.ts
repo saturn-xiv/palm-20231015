@@ -8,12 +8,23 @@ import * as google_protobuf_duration_pb from 'google-protobuf/google/protobuf/du
 export class Contact extends jspb.Message {
   getPhone(): string;
   setPhone(value: string): Contact;
+  hasPhone(): boolean;
+  clearPhone(): Contact;
 
   getWechat(): string;
   setWechat(value: string): Contact;
+  hasWechat(): boolean;
+  clearWechat(): Contact;
+
+  getEmail(): string;
+  setEmail(value: string): Contact;
+  hasEmail(): boolean;
+  clearEmail(): Contact;
 
   getAddress(): string;
   setAddress(value: string): Contact;
+  hasAddress(): boolean;
+  clearAddress(): Contact;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Contact.AsObject;
@@ -25,9 +36,30 @@ export class Contact extends jspb.Message {
 
 export namespace Contact {
   export type AsObject = {
-    phone: string,
-    wechat: string,
-    address: string,
+    phone?: string,
+    wechat?: string,
+    email?: string,
+    address?: string,
+  }
+
+  export enum PhoneCase { 
+    _PHONE_NOT_SET = 0,
+    PHONE = 1,
+  }
+
+  export enum WechatCase { 
+    _WECHAT_NOT_SET = 0,
+    WECHAT = 2,
+  }
+
+  export enum EmailCase { 
+    _EMAIL_NOT_SET = 0,
+    EMAIL = 3,
+  }
+
+  export enum AddressCase { 
+    _ADDRESS_NOT_SET = 0,
+    ADDRESS = 99,
   }
 }
 
@@ -920,9 +952,6 @@ export class Wan extends jspb.Message {
   getDevice(): string;
   setDevice(value: string): Wan;
 
-  getName(): string;
-  setName(value: string): Wan;
-
   getMetric(): number;
   setMetric(value: number): Wan;
 
@@ -939,6 +968,9 @@ export class Wan extends jspb.Message {
   hasStatic(): boolean;
   clearStatic(): Wan;
 
+  getEnable(): boolean;
+  setEnable(value: boolean): Wan;
+
   getIpCase(): Wan.IpCase;
 
   serializeBinary(): Uint8Array;
@@ -952,11 +984,11 @@ export class Wan extends jspb.Message {
 export namespace Wan {
   export type AsObject = {
     device: string,
-    name: string,
     metric: number,
     mac: string,
     dhcp?: Dhcp.AsObject,
     pb_static?: Static.AsObject,
+    enable: boolean,
   }
 
   export enum IpCase { 

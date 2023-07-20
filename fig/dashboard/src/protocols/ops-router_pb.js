@@ -858,6 +858,7 @@ proto.palm.ops.router.v1.Contact.toObject = function(includeInstance, msg) {
   var f, obj = {
     phone: jspb.Message.getFieldWithDefault(msg, 1, ""),
     wechat: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    email: jspb.Message.getFieldWithDefault(msg, 3, ""),
     address: jspb.Message.getFieldWithDefault(msg, 99, "")
   };
 
@@ -903,6 +904,10 @@ proto.palm.ops.router.v1.Contact.deserializeBinaryFromReader = function(msg, rea
       var value = /** @type {string} */ (reader.readString());
       msg.setWechat(value);
       break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setEmail(value);
+      break;
     case 99:
       var value = /** @type {string} */ (reader.readString());
       msg.setAddress(value);
@@ -936,22 +941,29 @@ proto.palm.ops.router.v1.Contact.prototype.serializeBinary = function() {
  */
 proto.palm.ops.router.v1.Contact.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getPhone();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 1));
+  if (f != null) {
     writer.writeString(
       1,
       f
     );
   }
-  f = message.getWechat();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
     writer.writeString(
       2,
       f
     );
   }
-  f = message.getAddress();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 3));
+  if (f != null) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 99));
+  if (f != null) {
     writer.writeString(
       99,
       f
@@ -974,7 +986,25 @@ proto.palm.ops.router.v1.Contact.prototype.getPhone = function() {
  * @return {!proto.palm.ops.router.v1.Contact} returns this
  */
 proto.palm.ops.router.v1.Contact.prototype.setPhone = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.ops.router.v1.Contact} returns this
+ */
+proto.palm.ops.router.v1.Contact.prototype.clearPhone = function() {
+  return jspb.Message.setField(this, 1, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.ops.router.v1.Contact.prototype.hasPhone = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -992,7 +1022,61 @@ proto.palm.ops.router.v1.Contact.prototype.getWechat = function() {
  * @return {!proto.palm.ops.router.v1.Contact} returns this
  */
 proto.palm.ops.router.v1.Contact.prototype.setWechat = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.ops.router.v1.Contact} returns this
+ */
+proto.palm.ops.router.v1.Contact.prototype.clearWechat = function() {
+  return jspb.Message.setField(this, 2, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.ops.router.v1.Contact.prototype.hasWechat = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional string email = 3;
+ * @return {string}
+ */
+proto.palm.ops.router.v1.Contact.prototype.getEmail = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.ops.router.v1.Contact} returns this
+ */
+proto.palm.ops.router.v1.Contact.prototype.setEmail = function(value) {
+  return jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.ops.router.v1.Contact} returns this
+ */
+proto.palm.ops.router.v1.Contact.prototype.clearEmail = function() {
+  return jspb.Message.setField(this, 3, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.ops.router.v1.Contact.prototype.hasEmail = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -1010,7 +1094,25 @@ proto.palm.ops.router.v1.Contact.prototype.getAddress = function() {
  * @return {!proto.palm.ops.router.v1.Contact} returns this
  */
 proto.palm.ops.router.v1.Contact.prototype.setAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 99, value);
+  return jspb.Message.setField(this, 99, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.ops.router.v1.Contact} returns this
+ */
+proto.palm.ops.router.v1.Contact.prototype.clearAddress = function() {
+  return jspb.Message.setField(this, 99, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.ops.router.v1.Contact.prototype.hasAddress = function() {
+  return jspb.Message.getField(this, 99) != null;
 };
 
 
@@ -7389,11 +7491,11 @@ proto.palm.ops.router.v1.Wan.prototype.toObject = function(opt_includeInstance) 
 proto.palm.ops.router.v1.Wan.toObject = function(includeInstance, msg) {
   var f, obj = {
     device: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    metric: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    metric: jspb.Message.getFieldWithDefault(msg, 2, 0),
     mac: jspb.Message.getFieldWithDefault(msg, 11, ""),
     dhcp: (f = msg.getDhcp()) && proto.palm.ops.router.v1.Dhcp.toObject(includeInstance, f),
-    pb_static: (f = msg.getStatic()) && proto.palm.ops.router.v1.Static.toObject(includeInstance, f)
+    pb_static: (f = msg.getStatic()) && proto.palm.ops.router.v1.Static.toObject(includeInstance, f),
+    enable: jspb.Message.getBooleanFieldWithDefault(msg, 99, false)
   };
 
   if (includeInstance) {
@@ -7435,10 +7537,6 @@ proto.palm.ops.router.v1.Wan.deserializeBinaryFromReader = function(msg, reader)
       msg.setDevice(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
-      break;
-    case 3:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setMetric(value);
       break;
@@ -7455,6 +7553,10 @@ proto.palm.ops.router.v1.Wan.deserializeBinaryFromReader = function(msg, reader)
       var value = new proto.palm.ops.router.v1.Static;
       reader.readMessage(value,proto.palm.ops.router.v1.Static.deserializeBinaryFromReader);
       msg.setStatic(value);
+      break;
+    case 99:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setEnable(value);
       break;
     default:
       reader.skipField();
@@ -7492,17 +7594,10 @@ proto.palm.ops.router.v1.Wan.serializeBinaryToWriter = function(message, writer)
       f
     );
   }
-  f = message.getName();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
   f = message.getMetric();
   if (f !== 0) {
     writer.writeUint32(
-      3,
+      2,
       f
     );
   }
@@ -7529,6 +7624,13 @@ proto.palm.ops.router.v1.Wan.serializeBinaryToWriter = function(message, writer)
       proto.palm.ops.router.v1.Static.serializeBinaryToWriter
     );
   }
+  f = message.getEnable();
+  if (f) {
+    writer.writeBool(
+      99,
+      f
+    );
+  }
 };
 
 
@@ -7551,29 +7653,11 @@ proto.palm.ops.router.v1.Wan.prototype.setDevice = function(value) {
 
 
 /**
- * optional string name = 2;
- * @return {string}
- */
-proto.palm.ops.router.v1.Wan.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.palm.ops.router.v1.Wan} returns this
- */
-proto.palm.ops.router.v1.Wan.prototype.setName = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-/**
- * optional uint32 metric = 3;
+ * optional uint32 metric = 2;
  * @return {number}
  */
 proto.palm.ops.router.v1.Wan.prototype.getMetric = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
@@ -7582,7 +7666,7 @@ proto.palm.ops.router.v1.Wan.prototype.getMetric = function() {
  * @return {!proto.palm.ops.router.v1.Wan} returns this
  */
 proto.palm.ops.router.v1.Wan.prototype.setMetric = function(value) {
-  return jspb.Message.setProto3IntField(this, 3, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -7675,6 +7759,24 @@ proto.palm.ops.router.v1.Wan.prototype.clearStatic = function() {
  */
 proto.palm.ops.router.v1.Wan.prototype.hasStatic = function() {
   return jspb.Message.getField(this, 22) != null;
+};
+
+
+/**
+ * optional bool enable = 99;
+ * @return {boolean}
+ */
+proto.palm.ops.router.v1.Wan.prototype.getEnable = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 99, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.palm.ops.router.v1.Wan} returns this
+ */
+proto.palm.ops.router.v1.Wan.prototype.setEnable = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 99, value);
 };
 
 

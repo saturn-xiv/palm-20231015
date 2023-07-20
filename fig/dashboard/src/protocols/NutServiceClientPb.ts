@@ -902,6 +902,49 @@ export class UserClient {
     this.methodDescriptorConfirm);
   }
 
+  methodDescriptorDelete = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.User/Delete',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.IdRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.IdRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  delete(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  delete(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  delete(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.User/Delete',
+        request,
+        metadata || {},
+        this.methodDescriptorDelete,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.User/Delete',
+    request,
+    metadata || {},
+    this.methodDescriptorDelete);
+  }
+
   methodDescriptorSetPassword = new grpcWeb.MethodDescriptor(
     '/palm.nut.v1.User/SetPassword',
     grpcWeb.MethodType.UNARY,
@@ -1076,26 +1119,26 @@ export class WechatClient {
   methodDescriptorOauth2SignInState = new grpcWeb.MethodDescriptor(
     '/palm.nut.v1.Wechat/Oauth2SignInState',
     grpcWeb.MethodType.UNARY,
-    nut_pb.WechatOauth2SignInStateRequest,
+    google_protobuf_empty_pb.Empty,
     nut_pb.WechatOauth2SignInStateResponse,
-    (request: nut_pb.WechatOauth2SignInStateRequest) => {
+    (request: google_protobuf_empty_pb.Empty) => {
       return request.serializeBinary();
     },
     nut_pb.WechatOauth2SignInStateResponse.deserializeBinary
   );
 
   oauth2SignInState(
-    request: nut_pb.WechatOauth2SignInStateRequest,
+    request: google_protobuf_empty_pb.Empty,
     metadata: grpcWeb.Metadata | null): Promise<nut_pb.WechatOauth2SignInStateResponse>;
 
   oauth2SignInState(
-    request: nut_pb.WechatOauth2SignInStateRequest,
+    request: google_protobuf_empty_pb.Empty,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: nut_pb.WechatOauth2SignInStateResponse) => void): grpcWeb.ClientReadableStream<nut_pb.WechatOauth2SignInStateResponse>;
 
   oauth2SignInState(
-    request: nut_pb.WechatOauth2SignInStateRequest,
+    request: google_protobuf_empty_pb.Empty,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: nut_pb.WechatOauth2SignInStateResponse) => void) {
@@ -1503,49 +1546,6 @@ export class WechatClient {
     this.methodDescriptorGetOauth2UserByUnionId);
   }
 
-  methodDescriptorCurrentMiniProgramUser = new grpcWeb.MethodDescriptor(
-    '/palm.nut.v1.Wechat/CurrentMiniProgramUser',
-    grpcWeb.MethodType.UNARY,
-    nut_pb.CurrentWechatMiniProgramUserRequest,
-    nut_pb.CurrentWechatMiniProgramUserResponse,
-    (request: nut_pb.CurrentWechatMiniProgramUserRequest) => {
-      return request.serializeBinary();
-    },
-    nut_pb.CurrentWechatMiniProgramUserResponse.deserializeBinary
-  );
-
-  currentMiniProgramUser(
-    request: nut_pb.CurrentWechatMiniProgramUserRequest,
-    metadata: grpcWeb.Metadata | null): Promise<nut_pb.CurrentWechatMiniProgramUserResponse>;
-
-  currentMiniProgramUser(
-    request: nut_pb.CurrentWechatMiniProgramUserRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: nut_pb.CurrentWechatMiniProgramUserResponse) => void): grpcWeb.ClientReadableStream<nut_pb.CurrentWechatMiniProgramUserResponse>;
-
-  currentMiniProgramUser(
-    request: nut_pb.CurrentWechatMiniProgramUserRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: nut_pb.CurrentWechatMiniProgramUserResponse) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/palm.nut.v1.Wechat/CurrentMiniProgramUser',
-        request,
-        metadata || {},
-        this.methodDescriptorCurrentMiniProgramUser,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/palm.nut.v1.Wechat/CurrentMiniProgramUser',
-    request,
-    metadata || {},
-    this.methodDescriptorCurrentMiniProgramUser);
-  }
-
   methodDescriptorAllMiniProgramUser = new grpcWeb.MethodDescriptor(
     '/palm.nut.v1.Wechat/AllMiniProgramUser',
     grpcWeb.MethodType.UNARY,
@@ -1673,49 +1673,6 @@ export class WechatClient {
     request,
     metadata || {},
     this.methodDescriptorBindMiniProgramUserById);
-  }
-
-  methodDescriptorBindMiniProgramUserByAccount = new grpcWeb.MethodDescriptor(
-    '/palm.nut.v1.Wechat/BindMiniProgramUserByAccount',
-    grpcWeb.MethodType.UNARY,
-    nut_pb.WechatUserBindByAccountRequest,
-    google_protobuf_empty_pb.Empty,
-    (request: nut_pb.WechatUserBindByAccountRequest) => {
-      return request.serializeBinary();
-    },
-    google_protobuf_empty_pb.Empty.deserializeBinary
-  );
-
-  bindMiniProgramUserByAccount(
-    request: nut_pb.WechatUserBindByAccountRequest,
-    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
-
-  bindMiniProgramUserByAccount(
-    request: nut_pb.WechatUserBindByAccountRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
-
-  bindMiniProgramUserByAccount(
-    request: nut_pb.WechatUserBindByAccountRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/palm.nut.v1.Wechat/BindMiniProgramUserByAccount',
-        request,
-        metadata || {},
-        this.methodDescriptorBindMiniProgramUserByAccount,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/palm.nut.v1.Wechat/BindMiniProgramUserByAccount',
-    request,
-    metadata || {},
-    this.methodDescriptorBindMiniProgramUserByAccount);
   }
 
   methodDescriptorGetMiniProgramUserById = new grpcWeb.MethodDescriptor(
@@ -2018,118 +1975,204 @@ export class LocaleClient {
     this.options_ = options;
   }
 
-  methodDescriptorSet = new grpcWeb.MethodDescriptor(
-    '/palm.nut.v1.Locale/Set',
+  methodDescriptorCreate = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Locale/Create',
     grpcWeb.MethodType.UNARY,
-    nut_pb.LocaleSetRequest,
+    nut_pb.LocaleCreateRequest,
     google_protobuf_empty_pb.Empty,
-    (request: nut_pb.LocaleSetRequest) => {
+    (request: nut_pb.LocaleCreateRequest) => {
       return request.serializeBinary();
     },
     google_protobuf_empty_pb.Empty.deserializeBinary
   );
 
-  set(
-    request: nut_pb.LocaleSetRequest,
+  create(
+    request: nut_pb.LocaleCreateRequest,
     metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
 
-  set(
-    request: nut_pb.LocaleSetRequest,
+  create(
+    request: nut_pb.LocaleCreateRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
-  set(
-    request: nut_pb.LocaleSetRequest,
+  create(
+    request: nut_pb.LocaleCreateRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.nut.v1.Locale/Set',
+          '/palm.nut.v1.Locale/Create',
         request,
         metadata || {},
-        this.methodDescriptorSet,
+        this.methodDescriptorCreate,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.nut.v1.Locale/Set',
+      '/palm.nut.v1.Locale/Create',
     request,
     metadata || {},
-    this.methodDescriptorSet);
+    this.methodDescriptorCreate);
   }
 
-  methodDescriptorGet = new grpcWeb.MethodDescriptor(
-    '/palm.nut.v1.Locale/Get',
+  methodDescriptorUpdate = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Locale/Update',
     grpcWeb.MethodType.UNARY,
-    nut_pb.LocaleGetRequest,
+    nut_pb.LocaleUpdateRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: nut_pb.LocaleUpdateRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  update(
+    request: nut_pb.LocaleUpdateRequest,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  update(
+    request: nut_pb.LocaleUpdateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  update(
+    request: nut_pb.LocaleUpdateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Locale/Update',
+        request,
+        metadata || {},
+        this.methodDescriptorUpdate,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Locale/Update',
+    request,
+    metadata || {},
+    this.methodDescriptorUpdate);
+  }
+
+  methodDescriptorByLangAndCode = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Locale/ByLangAndCode',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.LocaleByLangAndCodeRequest,
     nut_pb.LocaleIndexResponse.Item,
-    (request: nut_pb.LocaleGetRequest) => {
+    (request: nut_pb.LocaleByLangAndCodeRequest) => {
       return request.serializeBinary();
     },
     nut_pb.LocaleIndexResponse.Item.deserializeBinary
   );
 
-  get(
-    request: nut_pb.LocaleGetRequest,
+  byLangAndCode(
+    request: nut_pb.LocaleByLangAndCodeRequest,
     metadata: grpcWeb.Metadata | null): Promise<nut_pb.LocaleIndexResponse.Item>;
 
-  get(
-    request: nut_pb.LocaleGetRequest,
+  byLangAndCode(
+    request: nut_pb.LocaleByLangAndCodeRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: nut_pb.LocaleIndexResponse.Item) => void): grpcWeb.ClientReadableStream<nut_pb.LocaleIndexResponse.Item>;
 
-  get(
-    request: nut_pb.LocaleGetRequest,
+  byLangAndCode(
+    request: nut_pb.LocaleByLangAndCodeRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: nut_pb.LocaleIndexResponse.Item) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.nut.v1.Locale/Get',
+          '/palm.nut.v1.Locale/ByLangAndCode',
         request,
         metadata || {},
-        this.methodDescriptorGet,
+        this.methodDescriptorByLangAndCode,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.nut.v1.Locale/Get',
+      '/palm.nut.v1.Locale/ByLangAndCode',
     request,
     metadata || {},
-    this.methodDescriptorGet);
+    this.methodDescriptorByLangAndCode);
+  }
+
+  methodDescriptorById = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Locale/ById',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.IdRequest,
+    nut_pb.LocaleIndexResponse.Item,
+    (request: nut_pb.IdRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.LocaleIndexResponse.Item.deserializeBinary
+  );
+
+  byId(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.LocaleIndexResponse.Item>;
+
+  byId(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.LocaleIndexResponse.Item) => void): grpcWeb.ClientReadableStream<nut_pb.LocaleIndexResponse.Item>;
+
+  byId(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.LocaleIndexResponse.Item) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Locale/ById',
+        request,
+        metadata || {},
+        this.methodDescriptorById,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Locale/ById',
+    request,
+    metadata || {},
+    this.methodDescriptorById);
   }
 
   methodDescriptorByLang = new grpcWeb.MethodDescriptor(
     '/palm.nut.v1.Locale/ByLang',
     grpcWeb.MethodType.UNARY,
     nut_pb.LocaleByLangRequest,
-    nut_pb.LocaleByLangResponse,
+    nut_pb.LocaleListResponse,
     (request: nut_pb.LocaleByLangRequest) => {
       return request.serializeBinary();
     },
-    nut_pb.LocaleByLangResponse.deserializeBinary
+    nut_pb.LocaleListResponse.deserializeBinary
   );
 
   byLang(
     request: nut_pb.LocaleByLangRequest,
-    metadata: grpcWeb.Metadata | null): Promise<nut_pb.LocaleByLangResponse>;
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.LocaleListResponse>;
 
   byLang(
     request: nut_pb.LocaleByLangRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: nut_pb.LocaleByLangResponse) => void): grpcWeb.ClientReadableStream<nut_pb.LocaleByLangResponse>;
+               response: nut_pb.LocaleListResponse) => void): grpcWeb.ClientReadableStream<nut_pb.LocaleListResponse>;
 
   byLang(
     request: nut_pb.LocaleByLangRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: nut_pb.LocaleByLangResponse) => void) {
+               response: nut_pb.LocaleListResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
@@ -2145,6 +2188,49 @@ export class LocaleClient {
     request,
     metadata || {},
     this.methodDescriptorByLang);
+  }
+
+  methodDescriptorByCode = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Locale/ByCode',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.LocaleByCodeRequest,
+    nut_pb.LocaleListResponse,
+    (request: nut_pb.LocaleByCodeRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.LocaleListResponse.deserializeBinary
+  );
+
+  byCode(
+    request: nut_pb.LocaleByCodeRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.LocaleListResponse>;
+
+  byCode(
+    request: nut_pb.LocaleByCodeRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.LocaleListResponse) => void): grpcWeb.ClientReadableStream<nut_pb.LocaleListResponse>;
+
+  byCode(
+    request: nut_pb.LocaleByCodeRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.LocaleListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.Locale/ByCode',
+        request,
+        metadata || {},
+        this.methodDescriptorByCode,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.Locale/ByCode',
+    request,
+    metadata || {},
+    this.methodDescriptorByCode);
   }
 
   methodDescriptorIndex = new grpcWeb.MethodDescriptor(
@@ -2402,6 +2488,49 @@ export class LeaveWordClient {
     request,
     metadata || {},
     this.methodDescriptorIndex);
+  }
+
+  methodDescriptorShow = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.LeaveWord/Show',
+    grpcWeb.MethodType.UNARY,
+    nut_pb.IdRequest,
+    nut_pb.LeaveWordIndexResponse.Item,
+    (request: nut_pb.IdRequest) => {
+      return request.serializeBinary();
+    },
+    nut_pb.LeaveWordIndexResponse.Item.deserializeBinary
+  );
+
+  show(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<nut_pb.LeaveWordIndexResponse.Item>;
+
+  show(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: nut_pb.LeaveWordIndexResponse.Item) => void): grpcWeb.ClientReadableStream<nut_pb.LeaveWordIndexResponse.Item>;
+
+  show(
+    request: nut_pb.IdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: nut_pb.LeaveWordIndexResponse.Item) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.nut.v1.LeaveWord/Show',
+        request,
+        metadata || {},
+        this.methodDescriptorShow,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.nut.v1.LeaveWord/Show',
+    request,
+    metadata || {},
+    this.methodDescriptorShow);
   }
 
   methodDescriptorDestroy = new grpcWeb.MethodDescriptor(
@@ -2941,47 +3070,47 @@ export class SiteClient {
     this.methodDescriptorGetTwilio);
   }
 
-  methodDescriptorTestTwilio = new grpcWeb.MethodDescriptor(
-    '/palm.nut.v1.Site/TestTwilio',
+  methodDescriptorPingTwilio = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Site/PingTwilio',
     grpcWeb.MethodType.UNARY,
-    nut_pb.SiteTwilioTestRequest,
+    nut_pb.SiteTwilioPingRequest,
     google_protobuf_empty_pb.Empty,
-    (request: nut_pb.SiteTwilioTestRequest) => {
+    (request: nut_pb.SiteTwilioPingRequest) => {
       return request.serializeBinary();
     },
     google_protobuf_empty_pb.Empty.deserializeBinary
   );
 
-  testTwilio(
-    request: nut_pb.SiteTwilioTestRequest,
+  pingTwilio(
+    request: nut_pb.SiteTwilioPingRequest,
     metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
 
-  testTwilio(
-    request: nut_pb.SiteTwilioTestRequest,
+  pingTwilio(
+    request: nut_pb.SiteTwilioPingRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
-  testTwilio(
-    request: nut_pb.SiteTwilioTestRequest,
+  pingTwilio(
+    request: nut_pb.SiteTwilioPingRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.nut.v1.Site/TestTwilio',
+          '/palm.nut.v1.Site/PingTwilio',
         request,
         metadata || {},
-        this.methodDescriptorTestTwilio,
+        this.methodDescriptorPingTwilio,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.nut.v1.Site/TestTwilio',
+      '/palm.nut.v1.Site/PingTwilio',
     request,
     metadata || {},
-    this.methodDescriptorTestTwilio);
+    this.methodDescriptorPingTwilio);
   }
 
   methodDescriptorSetSmtp = new grpcWeb.MethodDescriptor(
@@ -3070,133 +3199,47 @@ export class SiteClient {
     this.methodDescriptorGetSmtp);
   }
 
-  methodDescriptorTestSmtp = new grpcWeb.MethodDescriptor(
-    '/palm.nut.v1.Site/TestSmtp',
+  methodDescriptorPingSmtp = new grpcWeb.MethodDescriptor(
+    '/palm.nut.v1.Site/PingSmtp',
     grpcWeb.MethodType.UNARY,
-    nut_pb.SiteSmtpTestRequest,
+    nut_pb.SiteSmtpPingRequest,
     google_protobuf_empty_pb.Empty,
-    (request: nut_pb.SiteSmtpTestRequest) => {
+    (request: nut_pb.SiteSmtpPingRequest) => {
       return request.serializeBinary();
     },
     google_protobuf_empty_pb.Empty.deserializeBinary
   );
 
-  testSmtp(
-    request: nut_pb.SiteSmtpTestRequest,
+  pingSmtp(
+    request: nut_pb.SiteSmtpPingRequest,
     metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
 
-  testSmtp(
-    request: nut_pb.SiteSmtpTestRequest,
+  pingSmtp(
+    request: nut_pb.SiteSmtpPingRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
-  testSmtp(
-    request: nut_pb.SiteSmtpTestRequest,
+  pingSmtp(
+    request: nut_pb.SiteSmtpPingRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.nut.v1.Site/TestSmtp',
+          '/palm.nut.v1.Site/PingSmtp',
         request,
         metadata || {},
-        this.methodDescriptorTestSmtp,
+        this.methodDescriptorPingSmtp,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.nut.v1.Site/TestSmtp',
+      '/palm.nut.v1.Site/PingSmtp',
     request,
     metadata || {},
-    this.methodDescriptorTestSmtp);
-  }
-
-  methodDescriptorSetBing = new grpcWeb.MethodDescriptor(
-    '/palm.nut.v1.Site/SetBing',
-    grpcWeb.MethodType.UNARY,
-    nut_pb.BingProfile,
-    google_protobuf_empty_pb.Empty,
-    (request: nut_pb.BingProfile) => {
-      return request.serializeBinary();
-    },
-    google_protobuf_empty_pb.Empty.deserializeBinary
-  );
-
-  setBing(
-    request: nut_pb.BingProfile,
-    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
-
-  setBing(
-    request: nut_pb.BingProfile,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
-
-  setBing(
-    request: nut_pb.BingProfile,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/palm.nut.v1.Site/SetBing',
-        request,
-        metadata || {},
-        this.methodDescriptorSetBing,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/palm.nut.v1.Site/SetBing',
-    request,
-    metadata || {},
-    this.methodDescriptorSetBing);
-  }
-
-  methodDescriptorGetBing = new grpcWeb.MethodDescriptor(
-    '/palm.nut.v1.Site/GetBing',
-    grpcWeb.MethodType.UNARY,
-    google_protobuf_empty_pb.Empty,
-    nut_pb.BingProfile,
-    (request: google_protobuf_empty_pb.Empty) => {
-      return request.serializeBinary();
-    },
-    nut_pb.BingProfile.deserializeBinary
-  );
-
-  getBing(
-    request: google_protobuf_empty_pb.Empty,
-    metadata: grpcWeb.Metadata | null): Promise<nut_pb.BingProfile>;
-
-  getBing(
-    request: google_protobuf_empty_pb.Empty,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: nut_pb.BingProfile) => void): grpcWeb.ClientReadableStream<nut_pb.BingProfile>;
-
-  getBing(
-    request: google_protobuf_empty_pb.Empty,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: nut_pb.BingProfile) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/palm.nut.v1.Site/GetBing',
-        request,
-        metadata || {},
-        this.methodDescriptorGetBing,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/palm.nut.v1.Site/GetBing',
-    request,
-    metadata || {},
-    this.methodDescriptorGetBing);
+    this.methodDescriptorPingSmtp);
   }
 
   methodDescriptorSetIndexNow = new grpcWeb.MethodDescriptor(

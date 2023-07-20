@@ -192,10 +192,11 @@ export namespace Oauth2State {
 }
 
 export class UserSignInRequest extends jspb.Message {
-  getQuery(): UserQueryRequest | undefined;
-  setQuery(value?: UserQueryRequest): UserSignInRequest;
-  hasQuery(): boolean;
-  clearQuery(): UserSignInRequest;
+  getNickname(): string;
+  setNickname(value: string): UserSignInRequest;
+
+  getEmail(): string;
+  setEmail(value: string): UserSignInRequest;
 
   getPassword(): string;
   setPassword(value: string): UserSignInRequest;
@@ -204,6 +205,8 @@ export class UserSignInRequest extends jspb.Message {
   setTtl(value?: google_protobuf_duration_pb.Duration): UserSignInRequest;
   hasTtl(): boolean;
   clearTtl(): UserSignInRequest;
+
+  getUserCase(): UserSignInRequest.UserCase;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UserSignInRequest.AsObject;
@@ -215,9 +218,16 @@ export class UserSignInRequest extends jspb.Message {
 
 export namespace UserSignInRequest {
   export type AsObject = {
-    query?: UserQueryRequest.AsObject,
+    nickname: string,
+    email: string,
     password: string,
     ttl?: google_protobuf_duration_pb.Duration.AsObject,
+  }
+
+  export enum UserCase { 
+    USER_NOT_SET = 0,
+    NICKNAME = 1,
+    EMAIL = 2,
   }
 }
 
@@ -258,13 +268,14 @@ export namespace UserQueryRequest {
 export class UserSignInResponse extends jspb.Message {
   getToken(): string;
   setToken(value: string): UserSignInResponse;
-  hasToken(): boolean;
-  clearToken(): UserSignInResponse;
 
-  getPayload(): UserIndexResponse.Item | undefined;
-  setPayload(value?: UserIndexResponse.Item): UserSignInResponse;
-  hasPayload(): boolean;
-  clearPayload(): UserSignInResponse;
+  getUser(): UserIndexResponse.Item | undefined;
+  setUser(value?: UserIndexResponse.Item): UserSignInResponse;
+  hasUser(): boolean;
+  clearUser(): UserSignInResponse;
+
+  getProviderType(): string;
+  setProviderType(value: string): UserSignInResponse;
 
   getRolesList(): Array<string>;
   setRolesList(value: Array<string>): UserSignInResponse;
@@ -276,13 +287,14 @@ export class UserSignInResponse extends jspb.Message {
   clearPermissionsList(): UserSignInResponse;
   addPermissions(value?: rbac_pb.PermissionsResponse.Item, index?: number): rbac_pb.PermissionsResponse.Item;
 
-  getGoogle(): boolean;
-  setGoogle(value: boolean): UserSignInResponse;
+  getHasGoogle(): boolean;
+  setHasGoogle(value: boolean): UserSignInResponse;
 
-  getWechat(): UserSignInResponse.Wechat | undefined;
-  setWechat(value?: UserSignInResponse.Wechat): UserSignInResponse;
-  hasWechat(): boolean;
-  clearWechat(): UserSignInResponse;
+  getHasWechatMiniProgram(): boolean;
+  setHasWechatMiniProgram(value: boolean): UserSignInResponse;
+
+  getHasWechatOauth2(): boolean;
+  setHasWechatOauth2(value: boolean): UserSignInResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UserSignInResponse.AsObject;
@@ -294,40 +306,14 @@ export class UserSignInResponse extends jspb.Message {
 
 export namespace UserSignInResponse {
   export type AsObject = {
-    token?: string,
-    payload?: UserIndexResponse.Item.AsObject,
+    token: string,
+    user?: UserIndexResponse.Item.AsObject,
+    providerType: string,
     rolesList: Array<string>,
     permissionsList: Array<rbac_pb.PermissionsResponse.Item.AsObject>,
-    google: boolean,
-    wechat?: UserSignInResponse.Wechat.AsObject,
-  }
-
-  export class Wechat extends jspb.Message {
-    getMiniProgram(): boolean;
-    setMiniProgram(value: boolean): Wechat;
-
-    getOauth2(): boolean;
-    setOauth2(value: boolean): Wechat;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Wechat.AsObject;
-    static toObject(includeInstance: boolean, msg: Wechat): Wechat.AsObject;
-    static serializeBinaryToWriter(message: Wechat, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Wechat;
-    static deserializeBinaryFromReader(message: Wechat, reader: jspb.BinaryReader): Wechat;
-  }
-
-  export namespace Wechat {
-    export type AsObject = {
-      miniProgram: boolean,
-      oauth2: boolean,
-    }
-  }
-
-
-  export enum TokenCase { 
-    _TOKEN_NOT_SET = 0,
-    TOKEN = 1,
+    hasGoogle: boolean,
+    hasWechatMiniProgram: boolean,
+    hasWechatOauth2: boolean,
   }
 }
 
@@ -347,8 +333,8 @@ export class UserSignUpRequest extends jspb.Message {
   getLang(): string;
   setLang(value: string): UserSignUpRequest;
 
-  getTimeZone(): string;
-  setTimeZone(value: string): UserSignUpRequest;
+  getTimezone(): string;
+  setTimezone(value: string): UserSignUpRequest;
 
   getHome(): string;
   setHome(value: string): UserSignUpRequest;
@@ -368,7 +354,7 @@ export namespace UserSignUpRequest {
     email: string,
     password: string,
     lang: string,
-    timeZone: string,
+    timezone: string,
     home: string,
   }
 }
@@ -414,8 +400,8 @@ export namespace UserResetPasswordRequest {
 }
 
 export class UserSetPasswordRequest extends jspb.Message {
-  getId(): number;
-  setId(value: number): UserSetPasswordRequest;
+  getUser(): number;
+  setUser(value: number): UserSetPasswordRequest;
 
   getPassword(): string;
   setPassword(value: string): UserSetPasswordRequest;
@@ -430,7 +416,7 @@ export class UserSetPasswordRequest extends jspb.Message {
 
 export namespace UserSetPasswordRequest {
   export type AsObject = {
-    id: number,
+    user: number,
     password: string,
   }
 }
@@ -442,8 +428,8 @@ export class UserSetProfileRequest extends jspb.Message {
   getAvatar(): string;
   setAvatar(value: string): UserSetProfileRequest;
 
-  getTimeZone(): string;
-  setTimeZone(value: string): UserSetProfileRequest;
+  getTimezone(): string;
+  setTimezone(value: string): UserSetProfileRequest;
 
   getLang(): string;
   setLang(value: string): UserSetProfileRequest;
@@ -466,7 +452,7 @@ export namespace UserSetProfileRequest {
   export type AsObject = {
     realName: string,
     avatar: string,
-    timeZone: string,
+    timezone: string,
     lang: string,
     wechat: string,
     phone: string,
@@ -486,8 +472,8 @@ export class UserGetProfileResponse extends jspb.Message {
   getEmail(): string;
   setEmail(value: string): UserGetProfileResponse;
 
-  getTimeZone(): string;
-  setTimeZone(value: string): UserGetProfileResponse;
+  getTimezone(): string;
+  setTimezone(value: string): UserGetProfileResponse;
 
   getLang(): string;
   setLang(value: string): UserGetProfileResponse;
@@ -512,7 +498,7 @@ export namespace UserGetProfileResponse {
     avatar: string,
     nickname: string,
     email: string,
-    timeZone: string,
+    timezone: string,
     lang: string,
     wechat: string,
     phone: string,
@@ -651,9 +637,6 @@ export namespace UserIndexResponse {
     getId(): number;
     setId(value: number): Item;
 
-    getUid(): string;
-    setUid(value: string): Item;
-
     getEmail(): string;
     setEmail(value: string): Item;
 
@@ -694,8 +677,8 @@ export namespace UserIndexResponse {
     getLang(): string;
     setLang(value: string): Item;
 
-    getTimeZone(): string;
-    setTimeZone(value: string): Item;
+    getTimezone(): string;
+    setTimezone(value: string): Item;
 
     getAvatar(): string;
     setAvatar(value: string): Item;
@@ -726,7 +709,6 @@ export namespace UserIndexResponse {
   export namespace Item {
     export type AsObject = {
       id: number,
-      uid: string,
       email: string,
       nickname: string,
       realName: string,
@@ -737,7 +719,7 @@ export namespace UserIndexResponse {
       currentSignInIp?: string,
       signInCount: number,
       lang: string,
-      timeZone: string,
+      timezone: string,
       avatar: string,
       confirmedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
       lockedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
@@ -799,11 +781,6 @@ export class SignInByGoogleRequest extends jspb.Message {
 
   getNonce(): string;
   setNonce(value: string): SignInByGoogleRequest;
-  hasNonce(): boolean;
-  clearNonce(): SignInByGoogleRequest;
-
-  getProject(): string;
-  setProject(value: string): SignInByGoogleRequest;
 
   getTtl(): google_protobuf_duration_pb.Duration | undefined;
   setTtl(value?: google_protobuf_duration_pb.Duration): SignInByGoogleRequest;
@@ -824,14 +801,8 @@ export namespace SignInByGoogleRequest {
     code: string,
     state: string,
     redirectUri: string,
-    nonce?: string,
-    project: string,
+    nonce: string,
     ttl?: google_protobuf_duration_pb.Duration.AsObject,
-  }
-
-  export enum NonceCase { 
-    _NONCE_NOT_SET = 0,
-    NONCE = 8,
   }
 }
 
@@ -843,9 +814,6 @@ export class GoogleSignInUrlRequest extends jspb.Message {
   setState(value?: Oauth2State): GoogleSignInUrlRequest;
   hasState(): boolean;
   clearState(): GoogleSignInUrlRequest;
-
-  getProject(): string;
-  setProject(value: string): GoogleSignInUrlRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GoogleSignInUrlRequest.AsObject;
@@ -859,7 +827,6 @@ export namespace GoogleSignInUrlRequest {
   export type AsObject = {
     redirectUri: string,
     state?: Oauth2State.AsObject,
-    project: string,
   }
 }
 
@@ -889,11 +856,8 @@ export class WechatUserBindByIdRequest extends jspb.Message {
   getUserId(): number;
   setUserId(value: number): WechatUserBindByIdRequest;
 
-  getAppId(): string;
-  setAppId(value: string): WechatUserBindByIdRequest;
-
-  getOpenId(): string;
-  setOpenId(value: string): WechatUserBindByIdRequest;
+  getWechatUserId(): number;
+  setWechatUserId(value: number): WechatUserBindByIdRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WechatUserBindByIdRequest.AsObject;
@@ -906,8 +870,7 @@ export class WechatUserBindByIdRequest extends jspb.Message {
 export namespace WechatUserBindByIdRequest {
   export type AsObject = {
     userId: number,
-    appId: string,
-    openId: string,
+    wechatUserId: number,
   }
 }
 
@@ -917,12 +880,6 @@ export class WechatUserBindByAccountRequest extends jspb.Message {
 
   getPassword(): string;
   setPassword(value: string): WechatUserBindByAccountRequest;
-
-  getAppId(): string;
-  setAppId(value: string): WechatUserBindByAccountRequest;
-
-  getOpenId(): string;
-  setOpenId(value: string): WechatUserBindByAccountRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WechatUserBindByAccountRequest.AsObject;
@@ -936,8 +893,6 @@ export namespace WechatUserBindByAccountRequest {
   export type AsObject = {
     nickname: string,
     password: string,
-    appId: string,
-    openId: string,
   }
 }
 
@@ -1006,8 +961,6 @@ export namespace WechatAllMiniProgramUserResponse {
 
     getUserId(): number;
     setUserId(value: number): Item;
-    hasUserId(): boolean;
-    clearUserId(): Item;
 
     getUnionId(): string;
     setUnionId(value: string): Item;
@@ -1039,17 +992,12 @@ export namespace WechatAllMiniProgramUserResponse {
   export namespace Item {
     export type AsObject = {
       id: number,
-      userId?: number,
+      userId: number,
       unionId: string,
       appId: string,
       openId: string,
       nickname?: string,
       avatarUrl?: string,
-    }
-
-    export enum UserIdCase { 
-      _USER_ID_NOT_SET = 0,
-      USER_ID = 2,
     }
 
     export enum NicknameCase { 
@@ -1197,32 +1145,6 @@ export namespace SignInByWechatOauth2Request {
   }
 }
 
-export class WechatOauth2SignInStateRequest extends jspb.Message {
-  getGoto(): string;
-  setGoto(value: string): WechatOauth2SignInStateRequest;
-
-  getHost(): string;
-  setHost(value: string): WechatOauth2SignInStateRequest;
-
-  getId(): string;
-  setId(value: string): WechatOauth2SignInStateRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): WechatOauth2SignInStateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: WechatOauth2SignInStateRequest): WechatOauth2SignInStateRequest.AsObject;
-  static serializeBinaryToWriter(message: WechatOauth2SignInStateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): WechatOauth2SignInStateRequest;
-  static deserializeBinaryFromReader(message: WechatOauth2SignInStateRequest, reader: jspb.BinaryReader): WechatOauth2SignInStateRequest;
-}
-
-export namespace WechatOauth2SignInStateRequest {
-  export type AsObject = {
-    pb_goto: string,
-    host: string,
-    id: string,
-  }
-}
-
 export class WechatOauth2SignInStateResponse extends jspb.Message {
   getState(): string;
   setState(value: string): WechatOauth2SignInStateResponse;
@@ -1251,11 +1173,6 @@ export class WechatOauth2SignInUrlRequest extends jspb.Message {
   getLanguage(): orchid_pb.WechatOauth2QrConnectRequest.Language;
   setLanguage(value: orchid_pb.WechatOauth2QrConnectRequest.Language): WechatOauth2SignInUrlRequest;
 
-  getState(): WechatOauth2SignInStateRequest | undefined;
-  setState(value?: WechatOauth2SignInStateRequest): WechatOauth2SignInUrlRequest;
-  hasState(): boolean;
-  clearState(): WechatOauth2SignInUrlRequest;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WechatOauth2SignInUrlRequest.AsObject;
   static toObject(includeInstance: boolean, msg: WechatOauth2SignInUrlRequest): WechatOauth2SignInUrlRequest.AsObject;
@@ -1269,7 +1186,6 @@ export namespace WechatOauth2SignInUrlRequest {
     appId: string,
     redirectUri: string,
     language: orchid_pb.WechatOauth2QrConnectRequest.Language,
-    state?: WechatOauth2SignInStateRequest.AsObject,
   }
 }
 
@@ -1318,55 +1234,6 @@ export namespace WechatMiniProgramUser {
   export enum AvatarUrlCase { 
     _AVATAR_URL_NOT_SET = 0,
     AVATAR_URL = 22,
-  }
-}
-
-export class CurrentWechatMiniProgramUserRequest extends jspb.Message {
-  getAppId(): string;
-  setAppId(value: string): CurrentWechatMiniProgramUserRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CurrentWechatMiniProgramUserRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: CurrentWechatMiniProgramUserRequest): CurrentWechatMiniProgramUserRequest.AsObject;
-  static serializeBinaryToWriter(message: CurrentWechatMiniProgramUserRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CurrentWechatMiniProgramUserRequest;
-  static deserializeBinaryFromReader(message: CurrentWechatMiniProgramUserRequest, reader: jspb.BinaryReader): CurrentWechatMiniProgramUserRequest;
-}
-
-export namespace CurrentWechatMiniProgramUserRequest {
-  export type AsObject = {
-    appId: string,
-  }
-}
-
-export class CurrentWechatMiniProgramUserResponse extends jspb.Message {
-  getUser(): UserSignInResponse | undefined;
-  setUser(value?: UserSignInResponse): CurrentWechatMiniProgramUserResponse;
-  hasUser(): boolean;
-  clearUser(): CurrentWechatMiniProgramUserResponse;
-
-  getWechat(): WechatMiniProgramUser | undefined;
-  setWechat(value?: WechatMiniProgramUser): CurrentWechatMiniProgramUserResponse;
-  hasWechat(): boolean;
-  clearWechat(): CurrentWechatMiniProgramUserResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CurrentWechatMiniProgramUserResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: CurrentWechatMiniProgramUserResponse): CurrentWechatMiniProgramUserResponse.AsObject;
-  static serializeBinaryToWriter(message: CurrentWechatMiniProgramUserResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CurrentWechatMiniProgramUserResponse;
-  static deserializeBinaryFromReader(message: CurrentWechatMiniProgramUserResponse, reader: jspb.BinaryReader): CurrentWechatMiniProgramUserResponse;
-}
-
-export namespace CurrentWechatMiniProgramUserResponse {
-  export type AsObject = {
-    user?: UserSignInResponse.AsObject,
-    wechat?: WechatMiniProgramUser.AsObject,
-  }
-
-  export enum UserCase { 
-    _USER_NOT_SET = 0,
-    USER = 1,
   }
 }
 
@@ -1511,21 +1378,21 @@ export namespace LocaleByLangRequest {
   }
 }
 
-export class LocaleByLangResponse extends jspb.Message {
+export class LocaleListResponse extends jspb.Message {
   getItemsList(): Array<LocaleIndexResponse.Item>;
-  setItemsList(value: Array<LocaleIndexResponse.Item>): LocaleByLangResponse;
-  clearItemsList(): LocaleByLangResponse;
+  setItemsList(value: Array<LocaleIndexResponse.Item>): LocaleListResponse;
+  clearItemsList(): LocaleListResponse;
   addItems(value?: LocaleIndexResponse.Item, index?: number): LocaleIndexResponse.Item;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): LocaleByLangResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: LocaleByLangResponse): LocaleByLangResponse.AsObject;
-  static serializeBinaryToWriter(message: LocaleByLangResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): LocaleByLangResponse;
-  static deserializeBinaryFromReader(message: LocaleByLangResponse, reader: jspb.BinaryReader): LocaleByLangResponse;
+  toObject(includeInstance?: boolean): LocaleListResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: LocaleListResponse): LocaleListResponse.AsObject;
+  static serializeBinaryToWriter(message: LocaleListResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LocaleListResponse;
+  static deserializeBinaryFromReader(message: LocaleListResponse, reader: jspb.BinaryReader): LocaleListResponse;
 }
 
-export namespace LocaleByLangResponse {
+export namespace LocaleListResponse {
   export type AsObject = {
     itemsList: Array<LocaleIndexResponse.Item.AsObject>,
   }
@@ -1594,50 +1461,90 @@ export namespace LocaleIndexResponse {
 
 }
 
-export class LocaleGetRequest extends jspb.Message {
-  getLang(): string;
-  setLang(value: string): LocaleGetRequest;
-
+export class LocaleByCodeRequest extends jspb.Message {
   getCode(): string;
-  setCode(value: string): LocaleGetRequest;
+  setCode(value: string): LocaleByCodeRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): LocaleGetRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: LocaleGetRequest): LocaleGetRequest.AsObject;
-  static serializeBinaryToWriter(message: LocaleGetRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): LocaleGetRequest;
-  static deserializeBinaryFromReader(message: LocaleGetRequest, reader: jspb.BinaryReader): LocaleGetRequest;
+  toObject(includeInstance?: boolean): LocaleByCodeRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: LocaleByCodeRequest): LocaleByCodeRequest.AsObject;
+  static serializeBinaryToWriter(message: LocaleByCodeRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LocaleByCodeRequest;
+  static deserializeBinaryFromReader(message: LocaleByCodeRequest, reader: jspb.BinaryReader): LocaleByCodeRequest;
 }
 
-export namespace LocaleGetRequest {
+export namespace LocaleByCodeRequest {
+  export type AsObject = {
+    code: string,
+  }
+}
+
+export class LocaleByLangAndCodeRequest extends jspb.Message {
+  getLang(): string;
+  setLang(value: string): LocaleByLangAndCodeRequest;
+
+  getCode(): string;
+  setCode(value: string): LocaleByLangAndCodeRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LocaleByLangAndCodeRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: LocaleByLangAndCodeRequest): LocaleByLangAndCodeRequest.AsObject;
+  static serializeBinaryToWriter(message: LocaleByLangAndCodeRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LocaleByLangAndCodeRequest;
+  static deserializeBinaryFromReader(message: LocaleByLangAndCodeRequest, reader: jspb.BinaryReader): LocaleByLangAndCodeRequest;
+}
+
+export namespace LocaleByLangAndCodeRequest {
   export type AsObject = {
     lang: string,
     code: string,
   }
 }
 
-export class LocaleSetRequest extends jspb.Message {
+export class LocaleCreateRequest extends jspb.Message {
   getLang(): string;
-  setLang(value: string): LocaleSetRequest;
+  setLang(value: string): LocaleCreateRequest;
 
   getCode(): string;
-  setCode(value: string): LocaleSetRequest;
+  setCode(value: string): LocaleCreateRequest;
 
   getMessage(): string;
-  setMessage(value: string): LocaleSetRequest;
+  setMessage(value: string): LocaleCreateRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): LocaleSetRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: LocaleSetRequest): LocaleSetRequest.AsObject;
-  static serializeBinaryToWriter(message: LocaleSetRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): LocaleSetRequest;
-  static deserializeBinaryFromReader(message: LocaleSetRequest, reader: jspb.BinaryReader): LocaleSetRequest;
+  toObject(includeInstance?: boolean): LocaleCreateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: LocaleCreateRequest): LocaleCreateRequest.AsObject;
+  static serializeBinaryToWriter(message: LocaleCreateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LocaleCreateRequest;
+  static deserializeBinaryFromReader(message: LocaleCreateRequest, reader: jspb.BinaryReader): LocaleCreateRequest;
 }
 
-export namespace LocaleSetRequest {
+export namespace LocaleCreateRequest {
   export type AsObject = {
     lang: string,
     code: string,
+    message: string,
+  }
+}
+
+export class LocaleUpdateRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): LocaleUpdateRequest;
+
+  getMessage(): string;
+  setMessage(value: string): LocaleUpdateRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LocaleUpdateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: LocaleUpdateRequest): LocaleUpdateRequest.AsObject;
+  static serializeBinaryToWriter(message: LocaleUpdateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LocaleUpdateRequest;
+  static deserializeBinaryFromReader(message: LocaleUpdateRequest, reader: jspb.BinaryReader): LocaleUpdateRequest;
+}
+
+export namespace LocaleUpdateRequest {
+  export type AsObject = {
+    id: number,
     message: string,
   }
 }
@@ -1839,10 +1746,13 @@ export namespace SitemapPingRequest {
 }
 
 export class SiteMaintenanceModeRequest extends jspb.Message {
-  getItem(): SiteMaintenanceModeRequest.Item | undefined;
-  setItem(value?: SiteMaintenanceModeRequest.Item): SiteMaintenanceModeRequest;
-  hasItem(): boolean;
-  clearItem(): SiteMaintenanceModeRequest;
+  getTtl(): google_protobuf_duration_pb.Duration | undefined;
+  setTtl(value?: google_protobuf_duration_pb.Duration): SiteMaintenanceModeRequest;
+  hasTtl(): boolean;
+  clearTtl(): SiteMaintenanceModeRequest;
+
+  getReason(): string;
+  setReason(value: string): SiteMaintenanceModeRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SiteMaintenanceModeRequest.AsObject;
@@ -1854,37 +1764,8 @@ export class SiteMaintenanceModeRequest extends jspb.Message {
 
 export namespace SiteMaintenanceModeRequest {
   export type AsObject = {
-    item?: SiteMaintenanceModeRequest.Item.AsObject,
-  }
-
-  export class Item extends jspb.Message {
-    getDuration(): google_protobuf_duration_pb.Duration | undefined;
-    setDuration(value?: google_protobuf_duration_pb.Duration): Item;
-    hasDuration(): boolean;
-    clearDuration(): Item;
-
-    getReason(): string;
-    setReason(value: string): Item;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Item.AsObject;
-    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
-    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Item;
-    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
-  }
-
-  export namespace Item {
-    export type AsObject = {
-      duration?: google_protobuf_duration_pb.Duration.AsObject,
-      reason: string,
-    }
-  }
-
-
-  export enum ItemCase { 
-    _ITEM_NOT_SET = 0,
-    ITEM = 1,
+    ttl?: google_protobuf_duration_pb.Duration.AsObject,
+    reason: string,
   }
 }
 
@@ -1965,10 +1846,10 @@ export class SmtpProfile extends jspb.Message {
   clearBccList(): SmtpProfile;
   addBcc(value?: EmailTask.Address, index?: number): EmailTask.Address;
 
-  getUser(): EmailTask.Address | undefined;
-  setUser(value?: EmailTask.Address): SmtpProfile;
-  hasUser(): boolean;
-  clearUser(): SmtpProfile;
+  getFrom(): EmailTask.Address | undefined;
+  setFrom(value?: EmailTask.Address): SmtpProfile;
+  hasFrom(): boolean;
+  clearFrom(): SmtpProfile;
 
   getPassword(): string;
   setPassword(value: string): SmtpProfile;
@@ -1988,7 +1869,7 @@ export namespace SmtpProfile {
     authMethod: SmtpProfile.AuthMethod,
     ccList: Array<EmailTask.Address.AsObject>,
     bccList: Array<EmailTask.Address.AsObject>,
-    user?: EmailTask.Address.AsObject,
+    from?: EmailTask.Address.AsObject,
     password: string,
   }
 
@@ -2000,15 +1881,6 @@ export namespace SmtpProfile {
 }
 
 export class EmailTask extends jspb.Message {
-  getSubject(): string;
-  setSubject(value: string): EmailTask;
-
-  getContent(): string;
-  setContent(value: string): EmailTask;
-
-  getContentType(): EmailTask.ContentType;
-  setContentType(value: EmailTask.ContentType): EmailTask;
-
   getTo(): EmailTask.Address | undefined;
   setTo(value?: EmailTask.Address): EmailTask;
   hasTo(): boolean;
@@ -2023,6 +1895,14 @@ export class EmailTask extends jspb.Message {
   setBccList(value: Array<EmailTask.Address>): EmailTask;
   clearBccList(): EmailTask;
   addBcc(value?: EmailTask.Address, index?: number): EmailTask.Address;
+
+  getSubject(): string;
+  setSubject(value: string): EmailTask;
+
+  getBody(): EmailTask.Body | undefined;
+  setBody(value?: EmailTask.Body): EmailTask;
+  hasBody(): boolean;
+  clearBody(): EmailTask;
 
   getAttachmentsList(): Array<EmailTask.Attachment>;
   setAttachmentsList(value: Array<EmailTask.Attachment>): EmailTask;
@@ -2039,12 +1919,11 @@ export class EmailTask extends jspb.Message {
 
 export namespace EmailTask {
   export type AsObject = {
-    subject: string,
-    content: string,
-    contentType: EmailTask.ContentType,
     to?: EmailTask.Address.AsObject,
     ccList: Array<EmailTask.Address.AsObject>,
     bccList: Array<EmailTask.Address.AsObject>,
+    subject: string,
+    body?: EmailTask.Body.AsObject,
     attachmentsList: Array<EmailTask.Attachment.AsObject>,
   }
 
@@ -2071,12 +1950,32 @@ export namespace EmailTask {
   }
 
 
+  export class Body extends jspb.Message {
+    getText(): string;
+    setText(value: string): Body;
+
+    getHtml(): boolean;
+    setHtml(value: boolean): Body;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Body.AsObject;
+    static toObject(includeInstance: boolean, msg: Body): Body.AsObject;
+    static serializeBinaryToWriter(message: Body, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Body;
+    static deserializeBinaryFromReader(message: Body, reader: jspb.BinaryReader): Body;
+  }
+
+  export namespace Body {
+    export type AsObject = {
+      text: string,
+      html: boolean,
+    }
+  }
+
+
   export class Attachment extends jspb.Message {
     getName(): string;
     setName(value: string): Attachment;
-
-    getContentType(): string;
-    setContentType(value: string): Attachment;
 
     getPayload(): Uint8Array | string;
     getPayload_asU8(): Uint8Array;
@@ -2094,39 +1993,33 @@ export namespace EmailTask {
   export namespace Attachment {
     export type AsObject = {
       name: string,
-      contentType: string,
       payload: Uint8Array | string,
     }
   }
 
-
-  export enum ContentType { 
-    PLAIN = 0,
-    HTML = 1,
-  }
 }
 
-export class SiteTwilioTestRequest extends jspb.Message {
+export class SiteTwilioPingRequest extends jspb.Message {
   getTo(): string;
-  setTo(value: string): SiteTwilioTestRequest;
+  setTo(value: string): SiteTwilioPingRequest;
 
   getMessage(): string;
-  setMessage(value: string): SiteTwilioTestRequest;
+  setMessage(value: string): SiteTwilioPingRequest;
 
   getProfile(): TwilioProfile | undefined;
-  setProfile(value?: TwilioProfile): SiteTwilioTestRequest;
+  setProfile(value?: TwilioProfile): SiteTwilioPingRequest;
   hasProfile(): boolean;
-  clearProfile(): SiteTwilioTestRequest;
+  clearProfile(): SiteTwilioPingRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SiteTwilioTestRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: SiteTwilioTestRequest): SiteTwilioTestRequest.AsObject;
-  static serializeBinaryToWriter(message: SiteTwilioTestRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SiteTwilioTestRequest;
-  static deserializeBinaryFromReader(message: SiteTwilioTestRequest, reader: jspb.BinaryReader): SiteTwilioTestRequest;
+  toObject(includeInstance?: boolean): SiteTwilioPingRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: SiteTwilioPingRequest): SiteTwilioPingRequest.AsObject;
+  static serializeBinaryToWriter(message: SiteTwilioPingRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SiteTwilioPingRequest;
+  static deserializeBinaryFromReader(message: SiteTwilioPingRequest, reader: jspb.BinaryReader): SiteTwilioPingRequest;
 }
 
-export namespace SiteTwilioTestRequest {
+export namespace SiteTwilioPingRequest {
   export type AsObject = {
     to: string,
     message: string,
@@ -2134,32 +2027,32 @@ export namespace SiteTwilioTestRequest {
   }
 }
 
-export class SiteSmtpTestRequest extends jspb.Message {
+export class SiteSmtpPingRequest extends jspb.Message {
   getTo(): EmailTask.Address | undefined;
-  setTo(value?: EmailTask.Address): SiteSmtpTestRequest;
+  setTo(value?: EmailTask.Address): SiteSmtpPingRequest;
   hasTo(): boolean;
-  clearTo(): SiteSmtpTestRequest;
+  clearTo(): SiteSmtpPingRequest;
 
   getSubject(): string;
-  setSubject(value: string): SiteSmtpTestRequest;
+  setSubject(value: string): SiteSmtpPingRequest;
 
   getContent(): string;
-  setContent(value: string): SiteSmtpTestRequest;
+  setContent(value: string): SiteSmtpPingRequest;
 
   getProfile(): SmtpProfile | undefined;
-  setProfile(value?: SmtpProfile): SiteSmtpTestRequest;
+  setProfile(value?: SmtpProfile): SiteSmtpPingRequest;
   hasProfile(): boolean;
-  clearProfile(): SiteSmtpTestRequest;
+  clearProfile(): SiteSmtpPingRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SiteSmtpTestRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: SiteSmtpTestRequest): SiteSmtpTestRequest.AsObject;
-  static serializeBinaryToWriter(message: SiteSmtpTestRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SiteSmtpTestRequest;
-  static deserializeBinaryFromReader(message: SiteSmtpTestRequest, reader: jspb.BinaryReader): SiteSmtpTestRequest;
+  toObject(includeInstance?: boolean): SiteSmtpPingRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: SiteSmtpPingRequest): SiteSmtpPingRequest.AsObject;
+  static serializeBinaryToWriter(message: SiteSmtpPingRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SiteSmtpPingRequest;
+  static deserializeBinaryFromReader(message: SiteSmtpPingRequest, reader: jspb.BinaryReader): SiteSmtpPingRequest;
 }
 
-export namespace SiteSmtpTestRequest {
+export namespace SiteSmtpPingRequest {
   export type AsObject = {
     to?: EmailTask.Address.AsObject,
     subject: string,
@@ -2436,31 +2329,6 @@ export namespace BaiduProfile {
   }
 }
 
-export class BingProfile extends jspb.Message {
-  getSiteVerifyId(): string;
-  setSiteVerifyId(value: string): BingProfile;
-  hasSiteVerifyId(): boolean;
-  clearSiteVerifyId(): BingProfile;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): BingProfile.AsObject;
-  static toObject(includeInstance: boolean, msg: BingProfile): BingProfile.AsObject;
-  static serializeBinaryToWriter(message: BingProfile, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): BingProfile;
-  static deserializeBinaryFromReader(message: BingProfile, reader: jspb.BinaryReader): BingProfile;
-}
-
-export namespace BingProfile {
-  export type AsObject = {
-    siteVerifyId?: string,
-  }
-
-  export enum SiteVerifyIdCase { 
-    _SITE_VERIFY_ID_NOT_SET = 0,
-    SITE_VERIFY_ID = 1,
-  }
-}
-
 export class SmsTask extends jspb.Message {
   getFrom(): string;
   setFrom(value: string): SmsTask;
@@ -2677,6 +2545,9 @@ export namespace SiteStatusResponse {
     getProtocol(): string;
     setProtocol(value: string): RabbitMq;
 
+    getHeartbeat(): number;
+    setHeartbeat(value: number): RabbitMq;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RabbitMq.AsObject;
     static toObject(includeInstance: boolean, msg: RabbitMq): RabbitMq.AsObject;
@@ -2688,6 +2559,7 @@ export namespace SiteStatusResponse {
   export namespace RabbitMq {
     export type AsObject = {
       protocol: string,
+      heartbeat: number,
     }
   }
 
