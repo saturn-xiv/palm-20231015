@@ -4,6 +4,7 @@
   "version": "2023.5.29",
   "dependencies": [
     "libevent",
+    "openssl",
 
     "boost-filesystem",
     "boost-thread",
