@@ -13,12 +13,13 @@ public class WechatPayNotificationHandler<T> {
     public WechatPayNotificationHandler(String merchantId, String env, Class<T> clazz) {
         this.env = env;
         this.clazz = clazz;
+        this.merchantId = merchantId;
     }
 
     public void execute(T context) throws IOException {
         final var props = new Properties();
         {
-            final var file = Paths.get("wechatpay", "datasource", env + ".properties").toFile();
+            final var file = Paths.get("wechatpay", merchantId, "datasource", env + ".properties").toFile();
             logger.debug("load datasource from {}", file);
             try (var stream = new FileInputStream(file)) {
                 props.load(stream);
@@ -39,5 +40,6 @@ public class WechatPayNotificationHandler<T> {
 
     private final String env;
     private final Class<T> clazz;
+    private final String merchantId;
     private final static Logger logger = LoggerFactory.getLogger(WechatPayNotificationHandler.class);
 }
