@@ -7,9 +7,9 @@ install_oauth() {
 }
 
 # react-json-view 
-# dayjs date-fns grpc-web
+# dayjs date-fns 
 install_react() {
-    yarn add filesize timezones-list \
+    yarn add grpc-web filesize timezones-list \
         moment moment-timezone \
         marked @types/marked \
         diff @types/diff \
