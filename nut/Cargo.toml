@@ -36,10 +36,6 @@ handlebars = "4"
 version = "0.4"
 features = ["serde"]
 
-[dependencies.sqlx-adapter]
-version = "0.4"
-features = ["postgres"]
-
 [dependencies.actix-session]
 version = "0.7"
 features = ["cookie-session", "redis-rs-session"]
@@ -83,7 +79,14 @@ features = ["watcher", "cached"]
 [dependencies.diesel]
 version = "2"
 default-features = false
-features = ["bigdecimal", "postgres", "mysql", "sqlite", "extras", "128-column-tables"]
+features = [
+    "bigdecimal",
+    "postgres",
+    "mysql",
+    "sqlite",
+    "extras",
+    "128-column-tables",
+]
 
 [dependencies.url]
 version = "2"
@@ -92,6 +95,12 @@ features = ["serde"]
 [dependencies.actix-web]
 version = "4"
 features = ["cookies"]
+
+[dependencies.diesel-adapter]
+# version = "0.9.0"
+features = ["postgres", "mysql", "sqlite"]
+git = "https://github.com/casbin-rs/diesel-adapter.git"
+rev = "1f930b9"
 
 [dependencies.openssl]
 version = "*"
