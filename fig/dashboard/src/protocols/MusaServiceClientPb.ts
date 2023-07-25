@@ -511,47 +511,47 @@ export class WechatPayTransferClient {
     this.options_ = options;
   }
 
-  methodDescriptorCreate = new grpcWeb.MethodDescriptor(
-    '/palm.musa.v1.WechatPayTransfer/Create',
+  methodDescriptorExecute = new grpcWeb.MethodDescriptor(
+    '/palm.musa.v1.WechatPayTransfer/Execute',
     grpcWeb.MethodType.UNARY,
-    musa_pb.WechatPayCreateTransferRequest,
-    musa_pb.WechatPayCreateTransferResponse,
-    (request: musa_pb.WechatPayCreateTransferRequest) => {
+    musa_pb.WechatPayExecuteTransferRequest,
+    musa_pb.WechatPayExecuteTransferResponse,
+    (request: musa_pb.WechatPayExecuteTransferRequest) => {
       return request.serializeBinary();
     },
-    musa_pb.WechatPayCreateTransferResponse.deserializeBinary
+    musa_pb.WechatPayExecuteTransferResponse.deserializeBinary
   );
 
-  create(
-    request: musa_pb.WechatPayCreateTransferRequest,
-    metadata: grpcWeb.Metadata | null): Promise<musa_pb.WechatPayCreateTransferResponse>;
+  execute(
+    request: musa_pb.WechatPayExecuteTransferRequest,
+    metadata: grpcWeb.Metadata | null): Promise<musa_pb.WechatPayExecuteTransferResponse>;
 
-  create(
-    request: musa_pb.WechatPayCreateTransferRequest,
+  execute(
+    request: musa_pb.WechatPayExecuteTransferRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: musa_pb.WechatPayCreateTransferResponse) => void): grpcWeb.ClientReadableStream<musa_pb.WechatPayCreateTransferResponse>;
+               response: musa_pb.WechatPayExecuteTransferResponse) => void): grpcWeb.ClientReadableStream<musa_pb.WechatPayExecuteTransferResponse>;
 
-  create(
-    request: musa_pb.WechatPayCreateTransferRequest,
+  execute(
+    request: musa_pb.WechatPayExecuteTransferRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: musa_pb.WechatPayCreateTransferResponse) => void) {
+               response: musa_pb.WechatPayExecuteTransferResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.musa.v1.WechatPayTransfer/Create',
+          '/palm.musa.v1.WechatPayTransfer/Execute',
         request,
         metadata || {},
-        this.methodDescriptorCreate,
+        this.methodDescriptorExecute,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.musa.v1.WechatPayTransfer/Create',
+      '/palm.musa.v1.WechatPayTransfer/Execute',
     request,
     metadata || {},
-    this.methodDescriptorCreate);
+    this.methodDescriptorExecute);
   }
 
   methodDescriptorQuery = new grpcWeb.MethodDescriptor(

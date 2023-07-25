@@ -155,15 +155,16 @@ message WechatPayRefundResponse {
 // ----------------------------------------------------------------------------
 
 service WechatPayTransfer {
-  rpc Create(WechatPayCreateTransferRequest)
-      returns (WechatPayCreateTransferResponse) {}
+  rpc Execute(WechatPayExecuteTransferRequest)
+      returns (WechatPayExecuteTransferResponse) {}
   rpc Query(WechatPayQueryTransferRequest)
       returns (WechatPayQueryTransferResponse) {}
 }
-message WechatPayCreateTransferRequest {
+message WechatPayExecuteTransferRequest {
   message Batch {
     string name = 1;
     string remark = 2;
+    optional string out_no = 3;
   }
 
   message Detail {
@@ -177,9 +178,8 @@ message WechatPayCreateTransferRequest {
   repeated Detail details = 3;
 
   string scene_id = 9;
-  optional string out_batch_no = 11;
 }
-message WechatPayCreateTransferResponse {
+message WechatPayExecuteTransferResponse {
   message Detail {
     string open_id = 1;
     string out_detail_no = 2;

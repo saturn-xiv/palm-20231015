@@ -4,46 +4,45 @@
 package com.github.saturn_xiv.palm.plugins.musa.v1;
 
 /**
- * Protobuf type {@code palm.musa.v1.WechatPayCreateTransferRequest}
+ * Protobuf type {@code palm.musa.v1.WechatPayExecuteTransferRequest}
  */
-public final class WechatPayCreateTransferRequest extends
+public final class WechatPayExecuteTransferRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:palm.musa.v1.WechatPayCreateTransferRequest)
-    WechatPayCreateTransferRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:palm.musa.v1.WechatPayExecuteTransferRequest)
+    WechatPayExecuteTransferRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use WechatPayCreateTransferRequest.newBuilder() to construct.
-  private WechatPayCreateTransferRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use WechatPayExecuteTransferRequest.newBuilder() to construct.
+  private WechatPayExecuteTransferRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private WechatPayCreateTransferRequest() {
+  private WechatPayExecuteTransferRequest() {
     appId_ = "";
     details_ = java.util.Collections.emptyList();
     sceneId_ = "";
-    outBatchNo_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new WechatPayCreateTransferRequest();
+    return new WechatPayExecuteTransferRequest();
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferRequest_descriptor;
+    return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteTransferRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferRequest_fieldAccessorTable
+    return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteTransferRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Builder.class);
+            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Builder.class);
   }
 
   public interface BatchOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayCreateTransferRequest.Batch)
+      // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayExecuteTransferRequest.Batch)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -69,13 +68,30 @@ private static final long serialVersionUID = 0L;
      */
     com.google.protobuf.ByteString
         getRemarkBytes();
+
+    /**
+     * <code>optional string out_no = 3;</code>
+     * @return Whether the outNo field is set.
+     */
+    boolean hasOutNo();
+    /**
+     * <code>optional string out_no = 3;</code>
+     * @return The outNo.
+     */
+    java.lang.String getOutNo();
+    /**
+     * <code>optional string out_no = 3;</code>
+     * @return The bytes for outNo.
+     */
+    com.google.protobuf.ByteString
+        getOutNoBytes();
   }
   /**
-   * Protobuf type {@code palm.musa.v1.WechatPayCreateTransferRequest.Batch}
+   * Protobuf type {@code palm.musa.v1.WechatPayExecuteTransferRequest.Batch}
    */
   public static final class Batch extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:palm.musa.v1.WechatPayCreateTransferRequest.Batch)
+      // @@protoc_insertion_point(message_implements:palm.musa.v1.WechatPayExecuteTransferRequest.Batch)
       BatchOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use Batch.newBuilder() to construct.
@@ -85,6 +101,7 @@ private static final long serialVersionUID = 0L;
     private Batch() {
       name_ = "";
       remark_ = "";
+      outNo_ = "";
     }
 
     @java.lang.Override
@@ -96,17 +113,18 @@ private static final long serialVersionUID = 0L;
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferRequest_Batch_descriptor;
+      return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteTransferRequest_Batch_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferRequest_Batch_fieldAccessorTable
+      return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteTransferRequest_Batch_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch.Builder.class);
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch.Builder.class);
     }
 
+    private int bitField0_;
     public static final int NAME_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
     private volatile java.lang.Object name_ = "";
@@ -185,6 +203,53 @@ private static final long serialVersionUID = 0L;
       }
     }
 
+    public static final int OUT_NO_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object outNo_ = "";
+    /**
+     * <code>optional string out_no = 3;</code>
+     * @return Whether the outNo field is set.
+     */
+    @java.lang.Override
+    public boolean hasOutNo() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional string out_no = 3;</code>
+     * @return The outNo.
+     */
+    @java.lang.Override
+    public java.lang.String getOutNo() {
+      java.lang.Object ref = outNo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        outNo_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string out_no = 3;</code>
+     * @return The bytes for outNo.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getOutNoBytes() {
+      java.lang.Object ref = outNo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        outNo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -205,6 +270,9 @@ private static final long serialVersionUID = 0L;
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(remark_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, remark_);
       }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, outNo_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -220,6 +288,9 @@ private static final long serialVersionUID = 0L;
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(remark_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, remark_);
       }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, outNo_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -230,15 +301,20 @@ private static final long serialVersionUID = 0L;
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch)) {
+      if (!(obj instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch)) {
         return super.equals(obj);
       }
-      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch other = (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch) obj;
+      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch other = (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch) obj;
 
       if (!getName()
           .equals(other.getName())) return false;
       if (!getRemark()
           .equals(other.getRemark())) return false;
+      if (hasOutNo() != other.hasOutNo()) return false;
+      if (hasOutNo()) {
+        if (!getOutNo()
+            .equals(other.getOutNo())) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -254,49 +330,53 @@ private static final long serialVersionUID = 0L;
       hash = (53 * hash) + getName().hashCode();
       hash = (37 * hash) + REMARK_FIELD_NUMBER;
       hash = (53 * hash) + getRemark().hashCode();
+      if (hasOutNo()) {
+        hash = (37 * hash) + OUT_NO_FIELD_NUMBER;
+        hash = (53 * hash) + getOutNo().hashCode();
+      }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch parseFrom(byte[] data)
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch parseFrom(java.io.InputStream input)
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -304,26 +384,26 @@ private static final long serialVersionUID = 0L;
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch parseDelimitedFrom(java.io.InputStream input)
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch parseDelimitedFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -336,7 +416,7 @@ private static final long serialVersionUID = 0L;
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch prototype) {
+    public static Builder newBuilder(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -352,26 +432,26 @@ private static final long serialVersionUID = 0L;
       return builder;
     }
     /**
-     * Protobuf type {@code palm.musa.v1.WechatPayCreateTransferRequest.Batch}
+     * Protobuf type {@code palm.musa.v1.WechatPayExecuteTransferRequest.Batch}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:palm.musa.v1.WechatPayCreateTransferRequest.Batch)
-        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.BatchOrBuilder {
+        // @@protoc_insertion_point(builder_implements:palm.musa.v1.WechatPayExecuteTransferRequest.Batch)
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.BatchOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferRequest_Batch_descriptor;
+        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteTransferRequest_Batch_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferRequest_Batch_fieldAccessorTable
+        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteTransferRequest_Batch_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch.Builder.class);
+                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch.Builder.class);
       }
 
-      // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch.newBuilder()
+      // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch.newBuilder()
       private Builder() {
 
       }
@@ -387,23 +467,24 @@ private static final long serialVersionUID = 0L;
         bitField0_ = 0;
         name_ = "";
         remark_ = "";
+        outNo_ = "";
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferRequest_Batch_descriptor;
+        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteTransferRequest_Batch_descriptor;
       }
 
       @java.lang.Override
-      public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch getDefaultInstanceForType() {
-        return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch.getDefaultInstance();
+      public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch getDefaultInstanceForType() {
+        return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch build() {
-        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch result = buildPartial();
+      public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch build() {
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -411,14 +492,14 @@ private static final long serialVersionUID = 0L;
       }
 
       @java.lang.Override
-      public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch buildPartial() {
-        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch result = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch(this);
+      public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch buildPartial() {
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch result = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch result) {
+      private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.name_ = name_;
@@ -426,20 +507,26 @@ private static final long serialVersionUID = 0L;
         if (((from_bitField0_ & 0x00000002) != 0)) {
           result.remark_ = remark_;
         }
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.outNo_ = outNo_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
 
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch) {
-          return mergeFrom((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch)other);
+        if (other instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch) {
+          return mergeFrom((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch other) {
-        if (other == com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch other) {
+        if (other == com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch.getDefaultInstance()) return this;
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
           bitField0_ |= 0x00000001;
@@ -448,6 +535,11 @@ private static final long serialVersionUID = 0L;
         if (!other.getRemark().isEmpty()) {
           remark_ = other.remark_;
           bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (other.hasOutNo()) {
+          outNo_ = other.outNo_;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -486,6 +578,11 @@ private static final long serialVersionUID = 0L;
                 bitField0_ |= 0x00000002;
                 break;
               } // case 18
+              case 26: {
+                outNo_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -646,6 +743,85 @@ private static final long serialVersionUID = 0L;
         onChanged();
         return this;
       }
+
+      private java.lang.Object outNo_ = "";
+      /**
+       * <code>optional string out_no = 3;</code>
+       * @return Whether the outNo field is set.
+       */
+      public boolean hasOutNo() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>optional string out_no = 3;</code>
+       * @return The outNo.
+       */
+      public java.lang.String getOutNo() {
+        java.lang.Object ref = outNo_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          outNo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string out_no = 3;</code>
+       * @return The bytes for outNo.
+       */
+      public com.google.protobuf.ByteString
+          getOutNoBytes() {
+        java.lang.Object ref = outNo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          outNo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string out_no = 3;</code>
+       * @param value The outNo to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOutNo(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        outNo_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string out_no = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOutNo() {
+        outNo_ = getDefaultInstance().getOutNo();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string out_no = 3;</code>
+       * @param value The bytes for outNo to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOutNoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        outNo_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -659,16 +835,16 @@ private static final long serialVersionUID = 0L;
       }
 
 
-      // @@protoc_insertion_point(builder_scope:palm.musa.v1.WechatPayCreateTransferRequest.Batch)
+      // @@protoc_insertion_point(builder_scope:palm.musa.v1.WechatPayExecuteTransferRequest.Batch)
     }
 
-    // @@protoc_insertion_point(class_scope:palm.musa.v1.WechatPayCreateTransferRequest.Batch)
-    private static final com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:palm.musa.v1.WechatPayExecuteTransferRequest.Batch)
+    private static final com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch();
+      DEFAULT_INSTANCE = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch();
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch getDefaultInstance() {
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -704,14 +880,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch getDefaultInstanceForType() {
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface DetailOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayCreateTransferRequest.Detail)
+      // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayExecuteTransferRequest.Detail)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -757,11 +933,11 @@ private static final long serialVersionUID = 0L;
         getRemarkBytes();
   }
   /**
-   * Protobuf type {@code palm.musa.v1.WechatPayCreateTransferRequest.Detail}
+   * Protobuf type {@code palm.musa.v1.WechatPayExecuteTransferRequest.Detail}
    */
   public static final class Detail extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:palm.musa.v1.WechatPayCreateTransferRequest.Detail)
+      // @@protoc_insertion_point(message_implements:palm.musa.v1.WechatPayExecuteTransferRequest.Detail)
       DetailOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use Detail.newBuilder() to construct.
@@ -783,15 +959,15 @@ private static final long serialVersionUID = 0L;
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferRequest_Detail_descriptor;
+      return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteTransferRequest_Detail_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferRequest_Detail_fieldAccessorTable
+      return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteTransferRequest_Detail_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.Builder.class);
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.Builder.class);
     }
 
     public static final int OPEN_ID_FIELD_NUMBER = 1;
@@ -980,10 +1156,10 @@ private static final long serialVersionUID = 0L;
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail)) {
+      if (!(obj instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail)) {
         return super.equals(obj);
       }
-      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail other = (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail) obj;
+      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail other = (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail) obj;
 
       if (!getOpenId()
           .equals(other.getOpenId())) return false;
@@ -1018,44 +1194,44 @@ private static final long serialVersionUID = 0L;
       return hash;
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail parseFrom(byte[] data)
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail parseFrom(java.io.InputStream input)
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1063,26 +1239,26 @@ private static final long serialVersionUID = 0L;
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail parseDelimitedFrom(java.io.InputStream input)
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail parseDelimitedFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail parseFrom(
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1095,7 +1271,7 @@ private static final long serialVersionUID = 0L;
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail prototype) {
+    public static Builder newBuilder(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1111,26 +1287,26 @@ private static final long serialVersionUID = 0L;
       return builder;
     }
     /**
-     * Protobuf type {@code palm.musa.v1.WechatPayCreateTransferRequest.Detail}
+     * Protobuf type {@code palm.musa.v1.WechatPayExecuteTransferRequest.Detail}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:palm.musa.v1.WechatPayCreateTransferRequest.Detail)
-        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.DetailOrBuilder {
+        // @@protoc_insertion_point(builder_implements:palm.musa.v1.WechatPayExecuteTransferRequest.Detail)
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.DetailOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferRequest_Detail_descriptor;
+        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteTransferRequest_Detail_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferRequest_Detail_fieldAccessorTable
+        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteTransferRequest_Detail_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.Builder.class);
+                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.Builder.class);
       }
 
-      // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.newBuilder()
+      // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.newBuilder()
       private Builder() {
 
       }
@@ -1154,17 +1330,17 @@ private static final long serialVersionUID = 0L;
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferRequest_Detail_descriptor;
+        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteTransferRequest_Detail_descriptor;
       }
 
       @java.lang.Override
-      public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail getDefaultInstanceForType() {
-        return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.getDefaultInstance();
+      public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail getDefaultInstanceForType() {
+        return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail build() {
-        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail result = buildPartial();
+      public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail build() {
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1172,14 +1348,14 @@ private static final long serialVersionUID = 0L;
       }
 
       @java.lang.Override
-      public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail buildPartial() {
-        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail result = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail(this);
+      public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail buildPartial() {
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail result = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail result) {
+      private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.openId_ = openId_;
@@ -1197,16 +1373,16 @@ private static final long serialVersionUID = 0L;
 
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail) {
-          return mergeFrom((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail)other);
+        if (other instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail) {
+          return mergeFrom((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail other) {
-        if (other == com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail other) {
+        if (other == com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.getDefaultInstance()) return this;
         if (!other.getOpenId().isEmpty()) {
           openId_ = other.openId_;
           bitField0_ |= 0x00000001;
@@ -1548,16 +1724,16 @@ private static final long serialVersionUID = 0L;
       }
 
 
-      // @@protoc_insertion_point(builder_scope:palm.musa.v1.WechatPayCreateTransferRequest.Detail)
+      // @@protoc_insertion_point(builder_scope:palm.musa.v1.WechatPayExecuteTransferRequest.Detail)
     }
 
-    // @@protoc_insertion_point(class_scope:palm.musa.v1.WechatPayCreateTransferRequest.Detail)
-    private static final com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:palm.musa.v1.WechatPayExecuteTransferRequest.Detail)
+    private static final com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail();
+      DEFAULT_INSTANCE = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail();
     }
 
-    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail getDefaultInstance() {
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1593,13 +1769,12 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail getDefaultInstanceForType() {
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  private int bitField0_;
   public static final int APP_ID_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
   private volatile java.lang.Object appId_ = "";
@@ -1640,9 +1815,9 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int BATCH_FIELD_NUMBER = 2;
-  private com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch batch_;
+  private com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch batch_;
   /**
-   * <code>.palm.musa.v1.WechatPayCreateTransferRequest.Batch batch = 2;</code>
+   * <code>.palm.musa.v1.WechatPayExecuteTransferRequest.Batch batch = 2;</code>
    * @return Whether the batch field is set.
    */
   @java.lang.Override
@@ -1650,58 +1825,58 @@ private static final long serialVersionUID = 0L;
     return batch_ != null;
   }
   /**
-   * <code>.palm.musa.v1.WechatPayCreateTransferRequest.Batch batch = 2;</code>
+   * <code>.palm.musa.v1.WechatPayExecuteTransferRequest.Batch batch = 2;</code>
    * @return The batch.
    */
   @java.lang.Override
-  public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch getBatch() {
-    return batch_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch.getDefaultInstance() : batch_;
+  public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch getBatch() {
+    return batch_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch.getDefaultInstance() : batch_;
   }
   /**
-   * <code>.palm.musa.v1.WechatPayCreateTransferRequest.Batch batch = 2;</code>
+   * <code>.palm.musa.v1.WechatPayExecuteTransferRequest.Batch batch = 2;</code>
    */
   @java.lang.Override
-  public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.BatchOrBuilder getBatchOrBuilder() {
-    return batch_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch.getDefaultInstance() : batch_;
+  public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.BatchOrBuilder getBatchOrBuilder() {
+    return batch_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch.getDefaultInstance() : batch_;
   }
 
   public static final int DETAILS_FIELD_NUMBER = 3;
   @SuppressWarnings("serial")
-  private java.util.List<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail> details_;
+  private java.util.List<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail> details_;
   /**
-   * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+   * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
    */
   @java.lang.Override
-  public java.util.List<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail> getDetailsList() {
+  public java.util.List<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail> getDetailsList() {
     return details_;
   }
   /**
-   * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+   * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
    */
   @java.lang.Override
-  public java.util.List<? extends com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.DetailOrBuilder> 
+  public java.util.List<? extends com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.DetailOrBuilder> 
       getDetailsOrBuilderList() {
     return details_;
   }
   /**
-   * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+   * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
    */
   @java.lang.Override
   public int getDetailsCount() {
     return details_.size();
   }
   /**
-   * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+   * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
    */
   @java.lang.Override
-  public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail getDetails(int index) {
+  public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail getDetails(int index) {
     return details_.get(index);
   }
   /**
-   * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+   * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
    */
   @java.lang.Override
-  public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.DetailOrBuilder getDetailsOrBuilder(
+  public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.DetailOrBuilder getDetailsOrBuilder(
       int index) {
     return details_.get(index);
   }
@@ -1745,53 +1920,6 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int OUT_BATCH_NO_FIELD_NUMBER = 11;
-  @SuppressWarnings("serial")
-  private volatile java.lang.Object outBatchNo_ = "";
-  /**
-   * <code>optional string out_batch_no = 11;</code>
-   * @return Whether the outBatchNo field is set.
-   */
-  @java.lang.Override
-  public boolean hasOutBatchNo() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-  /**
-   * <code>optional string out_batch_no = 11;</code>
-   * @return The outBatchNo.
-   */
-  @java.lang.Override
-  public java.lang.String getOutBatchNo() {
-    java.lang.Object ref = outBatchNo_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      outBatchNo_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>optional string out_batch_no = 11;</code>
-   * @return The bytes for outBatchNo.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getOutBatchNoBytes() {
-    java.lang.Object ref = outBatchNo_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      outBatchNo_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -1818,9 +1946,6 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sceneId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 9, sceneId_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, outBatchNo_);
-    }
     getUnknownFields().writeTo(output);
   }
 
@@ -1844,9 +1969,6 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sceneId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, sceneId_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, outBatchNo_);
-    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -1857,10 +1979,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest)) {
+    if (!(obj instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest)) {
       return super.equals(obj);
     }
-    com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest other = (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest) obj;
+    com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest other = (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest) obj;
 
     if (!getAppId()
         .equals(other.getAppId())) return false;
@@ -1873,11 +1995,6 @@ private static final long serialVersionUID = 0L;
         .equals(other.getDetailsList())) return false;
     if (!getSceneId()
         .equals(other.getSceneId())) return false;
-    if (hasOutBatchNo() != other.hasOutBatchNo()) return false;
-    if (hasOutBatchNo()) {
-      if (!getOutBatchNo()
-          .equals(other.getOutBatchNo())) return false;
-    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -1901,53 +2018,49 @@ private static final long serialVersionUID = 0L;
     }
     hash = (37 * hash) + SCENE_ID_FIELD_NUMBER;
     hash = (53 * hash) + getSceneId().hashCode();
-    if (hasOutBatchNo()) {
-      hash = (37 * hash) + OUT_BATCH_NO_FIELD_NUMBER;
-      hash = (53 * hash) + getOutBatchNo().hashCode();
-    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest parseFrom(
+  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest parseFrom(
+  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest parseFrom(
+  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest parseFrom(
+  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest parseFrom(byte[] data)
+  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest parseFrom(
+  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest parseFrom(java.io.InputStream input)
+  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest parseFrom(
+  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -1955,26 +2068,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest parseDelimitedFrom(
+  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest parseFrom(
+  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest parseFrom(
+  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -1987,7 +2100,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest prototype) {
+  public static Builder newBuilder(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -2003,26 +2116,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code palm.musa.v1.WechatPayCreateTransferRequest}
+   * Protobuf type {@code palm.musa.v1.WechatPayExecuteTransferRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:palm.musa.v1.WechatPayCreateTransferRequest)
-      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:palm.musa.v1.WechatPayExecuteTransferRequest)
+      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferRequest_descriptor;
+      return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteTransferRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferRequest_fieldAccessorTable
+      return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteTransferRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Builder.class);
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Builder.class);
     }
 
-    // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.newBuilder()
+    // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.newBuilder()
     private Builder() {
 
     }
@@ -2050,24 +2163,23 @@ private static final long serialVersionUID = 0L;
       }
       bitField0_ = (bitField0_ & ~0x00000004);
       sceneId_ = "";
-      outBatchNo_ = "";
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferRequest_descriptor;
+      return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteTransferRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest getDefaultInstanceForType() {
-      return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.getDefaultInstance();
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest getDefaultInstanceForType() {
+      return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest build() {
-      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest result = buildPartial();
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest build() {
+      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -2075,15 +2187,15 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest buildPartial() {
-      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest result = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest(this);
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest buildPartial() {
+      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest result = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest(this);
       buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartialRepeatedFields(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest result) {
+    private void buildPartialRepeatedFields(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest result) {
       if (detailsBuilder_ == null) {
         if (((bitField0_ & 0x00000004) != 0)) {
           details_ = java.util.Collections.unmodifiableList(details_);
@@ -2095,7 +2207,7 @@ private static final long serialVersionUID = 0L;
       }
     }
 
-    private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest result) {
+    private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.appId_ = appId_;
@@ -2108,26 +2220,20 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000008) != 0)) {
         result.sceneId_ = sceneId_;
       }
-      int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00000010) != 0)) {
-        result.outBatchNo_ = outBatchNo_;
-        to_bitField0_ |= 0x00000001;
-      }
-      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest) {
-        return mergeFrom((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest)other);
+      if (other instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest) {
+        return mergeFrom((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest other) {
-      if (other == com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest other) {
+      if (other == com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.getDefaultInstance()) return this;
       if (!other.getAppId().isEmpty()) {
         appId_ = other.appId_;
         bitField0_ |= 0x00000001;
@@ -2165,11 +2271,6 @@ private static final long serialVersionUID = 0L;
       if (!other.getSceneId().isEmpty()) {
         sceneId_ = other.sceneId_;
         bitField0_ |= 0x00000008;
-        onChanged();
-      }
-      if (other.hasOutBatchNo()) {
-        outBatchNo_ = other.outBatchNo_;
-        bitField0_ |= 0x00000010;
         onChanged();
       }
       this.mergeUnknownFields(other.getUnknownFields());
@@ -2211,9 +2312,9 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 18
             case 26: {
-              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail m =
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail m =
                   input.readMessage(
-                      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.parser(),
+                      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.parser(),
                       extensionRegistry);
               if (detailsBuilder_ == null) {
                 ensureDetailsIsMutable();
@@ -2228,11 +2329,6 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000008;
               break;
             } // case 74
-            case 90: {
-              outBatchNo_ = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000010;
-              break;
-            } // case 90
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -2322,31 +2418,31 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch batch_;
+    private com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch batch_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.BatchOrBuilder> batchBuilder_;
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.BatchOrBuilder> batchBuilder_;
     /**
-     * <code>.palm.musa.v1.WechatPayCreateTransferRequest.Batch batch = 2;</code>
+     * <code>.palm.musa.v1.WechatPayExecuteTransferRequest.Batch batch = 2;</code>
      * @return Whether the batch field is set.
      */
     public boolean hasBatch() {
       return ((bitField0_ & 0x00000002) != 0);
     }
     /**
-     * <code>.palm.musa.v1.WechatPayCreateTransferRequest.Batch batch = 2;</code>
+     * <code>.palm.musa.v1.WechatPayExecuteTransferRequest.Batch batch = 2;</code>
      * @return The batch.
      */
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch getBatch() {
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch getBatch() {
       if (batchBuilder_ == null) {
-        return batch_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch.getDefaultInstance() : batch_;
+        return batch_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch.getDefaultInstance() : batch_;
       } else {
         return batchBuilder_.getMessage();
       }
     }
     /**
-     * <code>.palm.musa.v1.WechatPayCreateTransferRequest.Batch batch = 2;</code>
+     * <code>.palm.musa.v1.WechatPayExecuteTransferRequest.Batch batch = 2;</code>
      */
-    public Builder setBatch(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch value) {
+    public Builder setBatch(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch value) {
       if (batchBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -2360,10 +2456,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.palm.musa.v1.WechatPayCreateTransferRequest.Batch batch = 2;</code>
+     * <code>.palm.musa.v1.WechatPayExecuteTransferRequest.Batch batch = 2;</code>
      */
     public Builder setBatch(
-        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch.Builder builderForValue) {
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch.Builder builderForValue) {
       if (batchBuilder_ == null) {
         batch_ = builderForValue.build();
       } else {
@@ -2374,13 +2470,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.palm.musa.v1.WechatPayCreateTransferRequest.Batch batch = 2;</code>
+     * <code>.palm.musa.v1.WechatPayExecuteTransferRequest.Batch batch = 2;</code>
      */
-    public Builder mergeBatch(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch value) {
+    public Builder mergeBatch(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch value) {
       if (batchBuilder_ == null) {
         if (((bitField0_ & 0x00000002) != 0) &&
           batch_ != null &&
-          batch_ != com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch.getDefaultInstance()) {
+          batch_ != com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch.getDefaultInstance()) {
           getBatchBuilder().mergeFrom(value);
         } else {
           batch_ = value;
@@ -2393,7 +2489,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.palm.musa.v1.WechatPayCreateTransferRequest.Batch batch = 2;</code>
+     * <code>.palm.musa.v1.WechatPayExecuteTransferRequest.Batch batch = 2;</code>
      */
     public Builder clearBatch() {
       bitField0_ = (bitField0_ & ~0x00000002);
@@ -2406,33 +2502,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.palm.musa.v1.WechatPayCreateTransferRequest.Batch batch = 2;</code>
+     * <code>.palm.musa.v1.WechatPayExecuteTransferRequest.Batch batch = 2;</code>
      */
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch.Builder getBatchBuilder() {
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch.Builder getBatchBuilder() {
       bitField0_ |= 0x00000002;
       onChanged();
       return getBatchFieldBuilder().getBuilder();
     }
     /**
-     * <code>.palm.musa.v1.WechatPayCreateTransferRequest.Batch batch = 2;</code>
+     * <code>.palm.musa.v1.WechatPayExecuteTransferRequest.Batch batch = 2;</code>
      */
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.BatchOrBuilder getBatchOrBuilder() {
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.BatchOrBuilder getBatchOrBuilder() {
       if (batchBuilder_ != null) {
         return batchBuilder_.getMessageOrBuilder();
       } else {
         return batch_ == null ?
-            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch.getDefaultInstance() : batch_;
+            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch.getDefaultInstance() : batch_;
       }
     }
     /**
-     * <code>.palm.musa.v1.WechatPayCreateTransferRequest.Batch batch = 2;</code>
+     * <code>.palm.musa.v1.WechatPayExecuteTransferRequest.Batch batch = 2;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.BatchOrBuilder> 
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.BatchOrBuilder> 
         getBatchFieldBuilder() {
       if (batchBuilder_ == null) {
         batchBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Batch.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.BatchOrBuilder>(
+            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Batch.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.BatchOrBuilder>(
                 getBatch(),
                 getParentForChildren(),
                 isClean());
@@ -2441,22 +2537,22 @@ private static final long serialVersionUID = 0L;
       return batchBuilder_;
     }
 
-    private java.util.List<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail> details_ =
+    private java.util.List<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail> details_ =
       java.util.Collections.emptyList();
     private void ensureDetailsIsMutable() {
       if (!((bitField0_ & 0x00000004) != 0)) {
-        details_ = new java.util.ArrayList<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail>(details_);
+        details_ = new java.util.ArrayList<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail>(details_);
         bitField0_ |= 0x00000004;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.DetailOrBuilder> detailsBuilder_;
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.DetailOrBuilder> detailsBuilder_;
 
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
-    public java.util.List<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail> getDetailsList() {
+    public java.util.List<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail> getDetailsList() {
       if (detailsBuilder_ == null) {
         return java.util.Collections.unmodifiableList(details_);
       } else {
@@ -2464,7 +2560,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
     public int getDetailsCount() {
       if (detailsBuilder_ == null) {
@@ -2474,9 +2570,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail getDetails(int index) {
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail getDetails(int index) {
       if (detailsBuilder_ == null) {
         return details_.get(index);
       } else {
@@ -2484,10 +2580,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
     public Builder setDetails(
-        int index, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail value) {
+        int index, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail value) {
       if (detailsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -2501,10 +2597,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
     public Builder setDetails(
-        int index, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.Builder builderForValue) {
+        int index, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.Builder builderForValue) {
       if (detailsBuilder_ == null) {
         ensureDetailsIsMutable();
         details_.set(index, builderForValue.build());
@@ -2515,9 +2611,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
-    public Builder addDetails(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail value) {
+    public Builder addDetails(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail value) {
       if (detailsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -2531,10 +2627,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
     public Builder addDetails(
-        int index, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail value) {
+        int index, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail value) {
       if (detailsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -2548,10 +2644,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
     public Builder addDetails(
-        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.Builder builderForValue) {
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.Builder builderForValue) {
       if (detailsBuilder_ == null) {
         ensureDetailsIsMutable();
         details_.add(builderForValue.build());
@@ -2562,10 +2658,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
     public Builder addDetails(
-        int index, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.Builder builderForValue) {
+        int index, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.Builder builderForValue) {
       if (detailsBuilder_ == null) {
         ensureDetailsIsMutable();
         details_.add(index, builderForValue.build());
@@ -2576,10 +2672,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
     public Builder addAllDetails(
-        java.lang.Iterable<? extends com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail> values) {
+        java.lang.Iterable<? extends com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail> values) {
       if (detailsBuilder_ == null) {
         ensureDetailsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -2591,7 +2687,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
     public Builder clearDetails() {
       if (detailsBuilder_ == null) {
@@ -2604,7 +2700,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
     public Builder removeDetails(int index) {
       if (detailsBuilder_ == null) {
@@ -2617,16 +2713,16 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.Builder getDetailsBuilder(
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.Builder getDetailsBuilder(
         int index) {
       return getDetailsFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.DetailOrBuilder getDetailsOrBuilder(
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.DetailOrBuilder getDetailsOrBuilder(
         int index) {
       if (detailsBuilder_ == null) {
         return details_.get(index);  } else {
@@ -2634,9 +2730,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
-    public java.util.List<? extends com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.DetailOrBuilder> 
+    public java.util.List<? extends com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.DetailOrBuilder> 
          getDetailsOrBuilderList() {
       if (detailsBuilder_ != null) {
         return detailsBuilder_.getMessageOrBuilderList();
@@ -2645,33 +2741,33 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.Builder addDetailsBuilder() {
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.Builder addDetailsBuilder() {
       return getDetailsFieldBuilder().addBuilder(
-          com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.getDefaultInstance());
+          com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.getDefaultInstance());
     }
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.Builder addDetailsBuilder(
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.Builder addDetailsBuilder(
         int index) {
       return getDetailsFieldBuilder().addBuilder(
-          index, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.getDefaultInstance());
+          index, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.getDefaultInstance());
     }
     /**
-     * <code>repeated .palm.musa.v1.WechatPayCreateTransferRequest.Detail details = 3;</code>
+     * <code>repeated .palm.musa.v1.WechatPayExecuteTransferRequest.Detail details = 3;</code>
      */
-    public java.util.List<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.Builder> 
+    public java.util.List<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.Builder> 
          getDetailsBuilderList() {
       return getDetailsFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.DetailOrBuilder> 
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.DetailOrBuilder> 
         getDetailsFieldBuilder() {
       if (detailsBuilder_ == null) {
         detailsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.Detail.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.DetailOrBuilder>(
+            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.Detail.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.DetailOrBuilder>(
                 details_,
                 ((bitField0_ & 0x00000004) != 0),
                 getParentForChildren(),
@@ -2752,85 +2848,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
-    private java.lang.Object outBatchNo_ = "";
-    /**
-     * <code>optional string out_batch_no = 11;</code>
-     * @return Whether the outBatchNo field is set.
-     */
-    public boolean hasOutBatchNo() {
-      return ((bitField0_ & 0x00000010) != 0);
-    }
-    /**
-     * <code>optional string out_batch_no = 11;</code>
-     * @return The outBatchNo.
-     */
-    public java.lang.String getOutBatchNo() {
-      java.lang.Object ref = outBatchNo_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        outBatchNo_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>optional string out_batch_no = 11;</code>
-     * @return The bytes for outBatchNo.
-     */
-    public com.google.protobuf.ByteString
-        getOutBatchNoBytes() {
-      java.lang.Object ref = outBatchNo_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        outBatchNo_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>optional string out_batch_no = 11;</code>
-     * @param value The outBatchNo to set.
-     * @return This builder for chaining.
-     */
-    public Builder setOutBatchNo(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      outBatchNo_ = value;
-      bitField0_ |= 0x00000010;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional string out_batch_no = 11;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearOutBatchNo() {
-      outBatchNo_ = getDefaultInstance().getOutBatchNo();
-      bitField0_ = (bitField0_ & ~0x00000010);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional string out_batch_no = 11;</code>
-     * @param value The bytes for outBatchNo to set.
-     * @return This builder for chaining.
-     */
-    public Builder setOutBatchNoBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
-      outBatchNo_ = value;
-      bitField0_ |= 0x00000010;
-      onChanged();
-      return this;
-    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2844,23 +2861,23 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:palm.musa.v1.WechatPayCreateTransferRequest)
+    // @@protoc_insertion_point(builder_scope:palm.musa.v1.WechatPayExecuteTransferRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:palm.musa.v1.WechatPayCreateTransferRequest)
-  private static final com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:palm.musa.v1.WechatPayExecuteTransferRequest)
+  private static final com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest();
+    DEFAULT_INSTANCE = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest();
   }
 
-  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest getDefaultInstance() {
+  public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<WechatPayCreateTransferRequest>
-      PARSER = new com.google.protobuf.AbstractParser<WechatPayCreateTransferRequest>() {
+  private static final com.google.protobuf.Parser<WechatPayExecuteTransferRequest>
+      PARSER = new com.google.protobuf.AbstractParser<WechatPayExecuteTransferRequest>() {
     @java.lang.Override
-    public WechatPayCreateTransferRequest parsePartialFrom(
+    public WechatPayExecuteTransferRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2879,17 +2896,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<WechatPayCreateTransferRequest> parser() {
+  public static com.google.protobuf.Parser<WechatPayExecuteTransferRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<WechatPayCreateTransferRequest> getParserForType() {
+  public com.google.protobuf.Parser<WechatPayExecuteTransferRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest getDefaultInstanceForType() {
+  public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

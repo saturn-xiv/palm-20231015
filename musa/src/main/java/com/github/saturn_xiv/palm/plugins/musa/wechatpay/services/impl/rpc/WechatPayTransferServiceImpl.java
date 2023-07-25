@@ -23,10 +23,11 @@ import java.util.List;
 @Component("palm.musa.service.rpc.wechat-pay.transfer")
 public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPayTransferImplBase {
     @Override
-    public void create(WechatPayCreateTransferRequest request, StreamObserver<WechatPayCreateTransferResponse> responseObserver) {
+    public void execute(WechatPayExecuteTransferRequest request,
+                        StreamObserver<WechatPayExecuteTransferResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
-        List<WechatPayCreateTransferResponse.Detail> transferDetailList = new ArrayList<>();
+        List<WechatPayExecuteTransferResponse.Detail> transferDetailList = new ArrayList<>();
         List<TransferDetailInput> transferDetailInputList = new ArrayList<>();
         long totalAmount = 0;
         for (var it : request.getDetailsList()) {
@@ -41,17 +42,20 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
                 tdi.setOutDetailNo(outDetailsNo);
                 tdi.setOpenid(it.getOpenId());
                 tdi.setUserName(it.getUsername());
-                logger.debug("add detail ({},{}) {} {} {}", it.getUsername(), it.getOpenId(), outDetailsNo, it.getAmount(), it.getRemark());
+                logger.debug("add detail ({},{}) {} {} {}",
+                        it.getUsername(), it.getOpenId(), outDetailsNo, it.getAmount(), it.getRemark());
                 transferDetailInputList.add(tdi);
             }
-            transferDetailList.add(WechatPayCreateTransferResponse.Detail.newBuilder()
+            transferDetailList.add(WechatPayExecuteTransferResponse.Detail.newBuilder()
                     .setOpenId(it.getOpenId())
                     .setOutDetailNo(outDetailsNo)
                     .build());
         }
 
-        final var outTransferNo = WechatPayClient.outNo(OutNoType.BATCH_TRANSFER);
-        logger.info("create transfer {} for {} with amount {}", outTransferNo, request.getBatch().getName(), totalAmount);
+        final var outTransferNo = request.getBatch().hasOutNo() ?
+                request.getBatch().getOutNo() : WechatPayClient.outNo(OutNoType.BATCH_TRANSFER);
+        logger.info("execute transfer {} for {} with amount {}",
+                outTransferNo, request.getBatch().getName(), totalAmount);
 
         try {
             final var response = transferBatchHelper.create(request.getAppId(), outTransferNo,
@@ -59,17 +63,17 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
                     totalAmount, transferDetailInputList.size(), transferDetailInputList,
                     request.getSceneId());
 
-            responseObserver.onNext(WechatPayCreateTransferResponse.newBuilder()
+            responseObserver.onNext(WechatPayExecuteTransferResponse.newBuilder()
                     .setOutBatchNo(response.getOutBatchNo())
                     .addAllDetails(transferDetailList)
                     .setSucceeded(
-                            WechatPayCreateTransferResponse.Succeeded.newBuilder()
+                            WechatPayExecuteTransferResponse.Succeeded.newBuilder()
                                     .setCreateTime(response.getCreateTime())
                                     .setBatchId(response.getBatchId())
                                     .build()
                     ).build());
         } catch (ServiceException e) {
-            responseObserver.onNext(WechatPayCreateTransferResponse.newBuilder()
+            responseObserver.onNext(WechatPayExecuteTransferResponse.newBuilder()
                     .setOutBatchNo(outTransferNo)
                     .addAllDetails(transferDetailList)
                     .setError(Error.newBuilder()
@@ -82,7 +86,8 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
     }
 
     @Override
-    public void query(WechatPayQueryTransferRequest request, StreamObserver<WechatPayQueryTransferResponse> responseObserver) {
+    public void query(WechatPayQueryTransferRequest request,
+                      StreamObserver<WechatPayQueryTransferResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
         logger.info("query transfer {} ({}, {})", request.getOutBatchNo(), request.getOffset(), request.getLimit());

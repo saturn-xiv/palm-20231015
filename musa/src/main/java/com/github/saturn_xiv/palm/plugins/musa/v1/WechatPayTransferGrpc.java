@@ -15,35 +15,35 @@ public final class WechatPayTransferGrpc {
   public static final String SERVICE_NAME = "palm.musa.v1.WechatPayTransfer";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest,
-      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse> getCreateMethod;
+  private static volatile io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest,
+      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferResponse> getExecuteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "Create",
-      requestType = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.class,
-      responseType = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "Execute",
+      requestType = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.class,
+      responseType = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest,
-      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse> getCreateMethod() {
-    io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse> getCreateMethod;
-    if ((getCreateMethod = WechatPayTransferGrpc.getCreateMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest,
+      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferResponse> getExecuteMethod() {
+    io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferResponse> getExecuteMethod;
+    if ((getExecuteMethod = WechatPayTransferGrpc.getExecuteMethod) == null) {
       synchronized (WechatPayTransferGrpc.class) {
-        if ((getCreateMethod = WechatPayTransferGrpc.getCreateMethod) == null) {
-          WechatPayTransferGrpc.getCreateMethod = getCreateMethod =
-              io.grpc.MethodDescriptor.<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse>newBuilder()
+        if ((getExecuteMethod = WechatPayTransferGrpc.getExecuteMethod) == null) {
+          WechatPayTransferGrpc.getExecuteMethod = getExecuteMethod =
+              io.grpc.MethodDescriptor.<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Create"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Execute"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest.getDefaultInstance()))
+                  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new WechatPayTransferMethodDescriptorSupplier("Create"))
+                  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new WechatPayTransferMethodDescriptorSupplier("Execute"))
               .build();
         }
       }
     }
-    return getCreateMethod;
+    return getExecuteMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferRequest,
@@ -127,9 +127,9 @@ public final class WechatPayTransferGrpc {
 
     /**
      */
-    default void create(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest request,
-        io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateMethod(), responseObserver);
+    default void execute(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest request,
+        io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getExecuteMethod(), responseObserver);
     }
 
     /**
@@ -169,10 +169,10 @@ public final class WechatPayTransferGrpc {
 
     /**
      */
-    public void create(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest request,
-        io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse> responseObserver) {
+    public void execute(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest request,
+        io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getCreateMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getExecuteMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -202,9 +202,9 @@ public final class WechatPayTransferGrpc {
 
     /**
      */
-    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse create(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest request) {
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferResponse execute(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCreateMethod(), getCallOptions(), request);
+          getChannel(), getExecuteMethod(), getCallOptions(), request);
     }
 
     /**
@@ -233,10 +233,10 @@ public final class WechatPayTransferGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse> create(
-        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferResponse> execute(
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getCreateMethod(), getCallOptions()), request);
+          getChannel().newCall(getExecuteMethod(), getCallOptions()), request);
     }
 
     /**
@@ -248,7 +248,7 @@ public final class WechatPayTransferGrpc {
     }
   }
 
-  private static final int METHODID_CREATE = 0;
+  private static final int METHODID_EXECUTE = 0;
   private static final int METHODID_QUERY = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
@@ -268,9 +268,9 @@ public final class WechatPayTransferGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_CREATE:
-          serviceImpl.create((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest) request,
-              (io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse>) responseObserver);
+        case METHODID_EXECUTE:
+          serviceImpl.execute((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest) request,
+              (io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferResponse>) responseObserver);
           break;
         case METHODID_QUERY:
           serviceImpl.query((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferRequest) request,
@@ -295,12 +295,12 @@ public final class WechatPayTransferGrpc {
   public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
     return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
         .addMethod(
-          getCreateMethod(),
+          getExecuteMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferRequest,
-              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse>(
-                service, METHODID_CREATE)))
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest,
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferResponse>(
+                service, METHODID_EXECUTE)))
         .addMethod(
           getQueryMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -356,7 +356,7 @@ public final class WechatPayTransferGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new WechatPayTransferFileDescriptorSupplier())
-              .addMethod(getCreateMethod())
+              .addMethod(getExecuteMethod())
               .addMethod(getQueryMethod())
               .build();
         }
