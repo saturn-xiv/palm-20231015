@@ -26,6 +26,8 @@ public class WechatPayNativeServiceImpl extends WechatPayNativeGrpc.WechatPayNat
 
         final var outTradeNo = WechatPayClient.outNo(OutNoType.TRADE);
         final var notifyUrl = WechatPayClient.notifyUrl(request.getNotifyHost(), WechatPayNotifyAction.TRANSCATION);
+
+        logger.info("prepay native out-trade-no {}", outTradeNo);
         var currency = WechatPayClient.currency(request.getAmount().getCurrency());
         var url = wechatPay.prepay(request.getAppId(),
                 request.getDescription(),

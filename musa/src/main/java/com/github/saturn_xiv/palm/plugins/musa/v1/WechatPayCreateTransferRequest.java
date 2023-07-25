@@ -19,6 +19,7 @@ private static final long serialVersionUID = 0L;
     appId_ = "";
     details_ = java.util.Collections.emptyList();
     sceneId_ = "";
+    outBatchNo_ = "";
   }
 
   @java.lang.Override
@@ -1598,6 +1599,7 @@ private static final long serialVersionUID = 0L;
 
   }
 
+  private int bitField0_;
   public static final int APP_ID_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
   private volatile java.lang.Object appId_ = "";
@@ -1743,6 +1745,53 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int OUT_BATCH_NO_FIELD_NUMBER = 11;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object outBatchNo_ = "";
+  /**
+   * <code>optional string out_batch_no = 11;</code>
+   * @return Whether the outBatchNo field is set.
+   */
+  @java.lang.Override
+  public boolean hasOutBatchNo() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   * <code>optional string out_batch_no = 11;</code>
+   * @return The outBatchNo.
+   */
+  @java.lang.Override
+  public java.lang.String getOutBatchNo() {
+    java.lang.Object ref = outBatchNo_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      outBatchNo_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string out_batch_no = 11;</code>
+   * @return The bytes for outBatchNo.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getOutBatchNoBytes() {
+    java.lang.Object ref = outBatchNo_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      outBatchNo_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -1769,6 +1818,9 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sceneId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 9, sceneId_);
     }
+    if (((bitField0_ & 0x00000001) != 0)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, outBatchNo_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -1791,6 +1843,9 @@ private static final long serialVersionUID = 0L;
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sceneId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, sceneId_);
+    }
+    if (((bitField0_ & 0x00000001) != 0)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, outBatchNo_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -1818,6 +1873,11 @@ private static final long serialVersionUID = 0L;
         .equals(other.getDetailsList())) return false;
     if (!getSceneId()
         .equals(other.getSceneId())) return false;
+    if (hasOutBatchNo() != other.hasOutBatchNo()) return false;
+    if (hasOutBatchNo()) {
+      if (!getOutBatchNo()
+          .equals(other.getOutBatchNo())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -1841,6 +1901,10 @@ private static final long serialVersionUID = 0L;
     }
     hash = (37 * hash) + SCENE_ID_FIELD_NUMBER;
     hash = (53 * hash) + getSceneId().hashCode();
+    if (hasOutBatchNo()) {
+      hash = (37 * hash) + OUT_BATCH_NO_FIELD_NUMBER;
+      hash = (53 * hash) + getOutBatchNo().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -1986,6 +2050,7 @@ private static final long serialVersionUID = 0L;
       }
       bitField0_ = (bitField0_ & ~0x00000004);
       sceneId_ = "";
+      outBatchNo_ = "";
       return this;
     }
 
@@ -2043,6 +2108,12 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000008) != 0)) {
         result.sceneId_ = sceneId_;
       }
+      int to_bitField0_ = 0;
+      if (((from_bitField0_ & 0x00000010) != 0)) {
+        result.outBatchNo_ = outBatchNo_;
+        to_bitField0_ |= 0x00000001;
+      }
+      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -2094,6 +2165,11 @@ private static final long serialVersionUID = 0L;
       if (!other.getSceneId().isEmpty()) {
         sceneId_ = other.sceneId_;
         bitField0_ |= 0x00000008;
+        onChanged();
+      }
+      if (other.hasOutBatchNo()) {
+        outBatchNo_ = other.outBatchNo_;
+        bitField0_ |= 0x00000010;
         onChanged();
       }
       this.mergeUnknownFields(other.getUnknownFields());
@@ -2152,6 +2228,11 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000008;
               break;
             } // case 74
+            case 90: {
+              outBatchNo_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 90
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -2668,6 +2749,85 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       sceneId_ = value;
       bitField0_ |= 0x00000008;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object outBatchNo_ = "";
+    /**
+     * <code>optional string out_batch_no = 11;</code>
+     * @return Whether the outBatchNo field is set.
+     */
+    public boolean hasOutBatchNo() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>optional string out_batch_no = 11;</code>
+     * @return The outBatchNo.
+     */
+    public java.lang.String getOutBatchNo() {
+      java.lang.Object ref = outBatchNo_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        outBatchNo_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string out_batch_no = 11;</code>
+     * @return The bytes for outBatchNo.
+     */
+    public com.google.protobuf.ByteString
+        getOutBatchNoBytes() {
+      java.lang.Object ref = outBatchNo_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        outBatchNo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string out_batch_no = 11;</code>
+     * @param value The outBatchNo to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOutBatchNo(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      outBatchNo_ = value;
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string out_batch_no = 11;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearOutBatchNo() {
+      outBatchNo_ = getDefaultInstance().getOutBatchNo();
+      bitField0_ = (bitField0_ & ~0x00000010);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string out_batch_no = 11;</code>
+     * @param value The bytes for outBatchNo to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOutBatchNoBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      outBatchNo_ = value;
+      bitField0_ |= 0x00000010;
       onChanged();
       return this;
     }

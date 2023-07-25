@@ -91,6 +91,28 @@ export namespace WechatPayCloseOrderRequest {
   }
 }
 
+export class Error extends jspb.Message {
+  getCode(): string;
+  setCode(value: string): Error;
+
+  getMessage(): string;
+  setMessage(value: string): Error;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Error.AsObject;
+  static toObject(includeInstance: boolean, msg: Error): Error.AsObject;
+  static serializeBinaryToWriter(message: Error, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Error;
+  static deserializeBinaryFromReader(message: Error, reader: jspb.BinaryReader): Error;
+}
+
+export namespace Error {
+  export type AsObject = {
+    code: string,
+    message: string,
+  }
+}
+
 export class WechatPayNativeQrCodeUrlResponse extends jspb.Message {
   getUrl(): string;
   setUrl(value: string): WechatPayNativeQrCodeUrlResponse;
@@ -447,6 +469,11 @@ export class WechatPayCreateTransferRequest extends jspb.Message {
   getSceneId(): string;
   setSceneId(value: string): WechatPayCreateTransferRequest;
 
+  getOutBatchNo(): string;
+  setOutBatchNo(value: string): WechatPayCreateTransferRequest;
+  hasOutBatchNo(): boolean;
+  clearOutBatchNo(): WechatPayCreateTransferRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WechatPayCreateTransferRequest.AsObject;
   static toObject(includeInstance: boolean, msg: WechatPayCreateTransferRequest): WechatPayCreateTransferRequest.AsObject;
@@ -461,6 +488,7 @@ export namespace WechatPayCreateTransferRequest {
     batch?: WechatPayCreateTransferRequest.Batch.AsObject,
     detailsList: Array<WechatPayCreateTransferRequest.Detail.AsObject>,
     sceneId: string,
+    outBatchNo?: string,
   }
 
   export class Batch extends jspb.Message {
@@ -516,6 +544,11 @@ export namespace WechatPayCreateTransferRequest {
     }
   }
 
+
+  export enum OutBatchNoCase { 
+    _OUT_BATCH_NO_NOT_SET = 0,
+    OUT_BATCH_NO = 11,
+  }
 }
 
 export class WechatPayCreateTransferResponse extends jspb.Message {
@@ -526,6 +559,18 @@ export class WechatPayCreateTransferResponse extends jspb.Message {
   setDetailsList(value: Array<WechatPayCreateTransferResponse.Detail>): WechatPayCreateTransferResponse;
   clearDetailsList(): WechatPayCreateTransferResponse;
   addDetails(value?: WechatPayCreateTransferResponse.Detail, index?: number): WechatPayCreateTransferResponse.Detail;
+
+  getSucceeded(): WechatPayCreateTransferResponse.Succeeded | undefined;
+  setSucceeded(value?: WechatPayCreateTransferResponse.Succeeded): WechatPayCreateTransferResponse;
+  hasSucceeded(): boolean;
+  clearSucceeded(): WechatPayCreateTransferResponse;
+
+  getError(): Error | undefined;
+  setError(value?: Error): WechatPayCreateTransferResponse;
+  hasError(): boolean;
+  clearError(): WechatPayCreateTransferResponse;
+
+  getPayloadCase(): WechatPayCreateTransferResponse.PayloadCase;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WechatPayCreateTransferResponse.AsObject;
@@ -539,6 +584,8 @@ export namespace WechatPayCreateTransferResponse {
   export type AsObject = {
     outBatchNo: string,
     detailsList: Array<WechatPayCreateTransferResponse.Detail.AsObject>,
+    succeeded?: WechatPayCreateTransferResponse.Succeeded.AsObject,
+    error?: Error.AsObject,
   }
 
   export class Detail extends jspb.Message {
@@ -563,6 +610,35 @@ export namespace WechatPayCreateTransferResponse {
     }
   }
 
+
+  export class Succeeded extends jspb.Message {
+    getBatchId(): string;
+    setBatchId(value: string): Succeeded;
+
+    getCreateTime(): string;
+    setCreateTime(value: string): Succeeded;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Succeeded.AsObject;
+    static toObject(includeInstance: boolean, msg: Succeeded): Succeeded.AsObject;
+    static serializeBinaryToWriter(message: Succeeded, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Succeeded;
+    static deserializeBinaryFromReader(message: Succeeded, reader: jspb.BinaryReader): Succeeded;
+  }
+
+  export namespace Succeeded {
+    export type AsObject = {
+      batchId: string,
+      createTime: string,
+    }
+  }
+
+
+  export enum PayloadCase { 
+    PAYLOAD_NOT_SET = 0,
+    SUCCEEDED = 11,
+    ERROR = 12,
+  }
 }
 
 export class WechatPayQueryTransferRequest extends jspb.Message {

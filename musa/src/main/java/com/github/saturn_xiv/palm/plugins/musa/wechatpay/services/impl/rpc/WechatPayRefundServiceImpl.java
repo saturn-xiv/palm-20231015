@@ -26,6 +26,8 @@ public class WechatPayRefundServiceImpl extends WechatPayRefundGrpc.WechatPayRef
         final var outRefundNo = WechatPayClient.outNo(OutNoType.REFUND);
         final var notifyUrl = WechatPayClient.notifyUrl(request.getNotifyHost(), WechatPayNotifyAction.REFUND);
         final var currency = WechatPayClient.currency(request.getAmount().getCurrency());
+
+        logger.info("create refund {}", outRefundNo);
         final var response = refundHelper.create(request.getOutTradeNo(), outRefundNo,
                 request.getAmount().getRefund(), request.getAmount().getTotal(), currency,
                 request.getReason(), notifyUrl);
@@ -39,6 +41,7 @@ public class WechatPayRefundServiceImpl extends WechatPayRefundGrpc.WechatPayRef
     public void query(WechatPayQueryRefundRequest request, StreamObserver<WechatPayRefundResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
+        logger.info("query refund out-refund-no {}", request.getOutRefundNo());
         final var response = refundHelper.queryByOutRefundNo(request.getOutRefundNo());
 
         responseObserver.onNext(refund2response(response));

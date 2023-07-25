@@ -2,11 +2,13 @@ package com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.impl.rpc;
 
 import com.github.saturn_xiv.palm.plugins.musa.helpers.JwtHelper;
 import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerInterceptor;
+import com.github.saturn_xiv.palm.plugins.musa.v1.Error;
 import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers.WechatPayTransferBatchHelper;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.OutNoType;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
+import com.wechat.pay.java.core.exception.ServiceException;
 import com.wechat.pay.java.service.transferbatch.model.TransferDetailInput;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
@@ -47,16 +49,34 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
                     .build());
         }
 
-        final var response = transferBatchHelper.create(request.getAppId(), WechatPayClient.outNo(OutNoType.BATCH_TRANSFER),
-                request.getBatch().getName(), request.getBatch().getRemark(),
-                totalAmount, transferDetailInputList.size(), transferDetailInputList,
-                request.getSceneId());
+        final var outTransferNo = WechatPayClient.outNo(OutNoType.BATCH_TRANSFER);
+        logger.info("create transfer {} for {} with amount {}", outTransferNo, request.getBatch().getName(), totalAmount);
 
+        try {
+            final var response = transferBatchHelper.create(request.getAppId(), outTransferNo,
+                    request.getBatch().getName(), request.getBatch().getRemark(),
+                    totalAmount, transferDetailInputList.size(), transferDetailInputList,
+                    request.getSceneId());
 
-        responseObserver.onNext(WechatPayCreateTransferResponse.newBuilder()
-                .setOutBatchNo(response.getOutBatchNo())
-                .addAllDetails(transferDetailList)
-                .build());
+            responseObserver.onNext(WechatPayCreateTransferResponse.newBuilder()
+                    .setOutBatchNo(response.getOutBatchNo())
+                    .addAllDetails(transferDetailList)
+                    .setSucceeded(
+                            WechatPayCreateTransferResponse.Succeeded.newBuilder()
+                                    .setCreateTime(response.getCreateTime())
+                                    .setBatchId(response.getBatchId())
+                                    .build()
+                    ).build());
+        } catch (ServiceException e) {
+            responseObserver.onNext(WechatPayCreateTransferResponse.newBuilder()
+                    .setOutBatchNo(outTransferNo)
+                    .addAllDetails(transferDetailList)
+                    .setError(Error.newBuilder()
+                            .setCode(e.getErrorCode())
+                            .setMessage(e.getErrorMessage())
+                            .build()
+                    ).build());
+        }
         responseObserver.onCompleted();
     }
 
@@ -64,6 +84,7 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
     public void query(WechatPayQueryTransferRequest request, StreamObserver<WechatPayQueryTransferResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
+        logger.info("query transfer {} ({}, {})", request.getOutBatchNo(), request.getOffset(), request.getLimit());
         final var response = transferBatchHelper.query(
                 request.getOutBatchNo(),
                 request.getOffset(), request.getLimit(),

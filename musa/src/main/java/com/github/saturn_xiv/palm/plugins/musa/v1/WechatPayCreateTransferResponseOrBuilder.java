@@ -42,4 +42,36 @@ public interface WechatPayCreateTransferResponseOrBuilder extends
    */
   com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.DetailOrBuilder getDetailsOrBuilder(
       int index);
+
+  /**
+   * <code>.palm.musa.v1.WechatPayCreateTransferResponse.Succeeded succeeded = 11;</code>
+   * @return Whether the succeeded field is set.
+   */
+  boolean hasSucceeded();
+  /**
+   * <code>.palm.musa.v1.WechatPayCreateTransferResponse.Succeeded succeeded = 11;</code>
+   * @return The succeeded.
+   */
+  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded getSucceeded();
+  /**
+   * <code>.palm.musa.v1.WechatPayCreateTransferResponse.Succeeded succeeded = 11;</code>
+   */
+  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.SucceededOrBuilder getSucceededOrBuilder();
+
+  /**
+   * <code>.palm.musa.v1.Error error = 12;</code>
+   * @return Whether the error field is set.
+   */
+  boolean hasError();
+  /**
+   * <code>.palm.musa.v1.Error error = 12;</code>
+   * @return The error.
+   */
+  com.github.saturn_xiv.palm.plugins.musa.v1.Error getError();
+  /**
+   * <code>.palm.musa.v1.Error error = 12;</code>
+   */
+  com.github.saturn_xiv.palm.plugins.musa.v1.ErrorOrBuilder getErrorOrBuilder();
+
+  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.PayloadCase getPayloadCase();
 }

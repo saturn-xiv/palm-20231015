@@ -29,8 +29,6 @@ namespace palm {
 namespace musa {
 namespace v1 {
 
-// ----------------------------------------------------------------------------
-//
 class WechatPayNative final {
  public:
   static constexpr char const* service_full_name() {

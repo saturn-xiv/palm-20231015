@@ -49,11 +49,11 @@ public class WechatPayBillServiceImpl extends WechatPayBillGrpc.WechatPayBillImp
     public void fundFlow(WechatPayFundFlowBillRequest request, StreamObserver<WechatPayBillResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
-
         final var billDate = WechatPayClient.billDate(request.getBillDate());
         var it = storageService.getFundFlowBill(billDate, request.getAccountType());
         byte[] content;
         if (it == null) {
+            logger.info("download fund-flow bill {}@{}", request.getBillDate(), request.getAccountType());
             if (!WechatPayClient.canDownload(request.getBillDate())) {
                 logger.error("invalid bill date {}", billDate);
                 responseObserver.onError(StatusProto.toStatusRuntimeException(

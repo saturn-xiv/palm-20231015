@@ -708,6 +708,716 @@ private static final long serialVersionUID = 0L;
 
   }
 
+  public interface SucceededOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayCreateTransferResponse.Succeeded)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string batch_id = 1;</code>
+     * @return The batchId.
+     */
+    java.lang.String getBatchId();
+    /**
+     * <code>string batch_id = 1;</code>
+     * @return The bytes for batchId.
+     */
+    com.google.protobuf.ByteString
+        getBatchIdBytes();
+
+    /**
+     * <code>string create_time = 2;</code>
+     * @return The createTime.
+     */
+    java.lang.String getCreateTime();
+    /**
+     * <code>string create_time = 2;</code>
+     * @return The bytes for createTime.
+     */
+    com.google.protobuf.ByteString
+        getCreateTimeBytes();
+  }
+  /**
+   * Protobuf type {@code palm.musa.v1.WechatPayCreateTransferResponse.Succeeded}
+   */
+  public static final class Succeeded extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:palm.musa.v1.WechatPayCreateTransferResponse.Succeeded)
+      SucceededOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Succeeded.newBuilder() to construct.
+    private Succeeded(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Succeeded() {
+      batchId_ = "";
+      createTime_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Succeeded();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferResponse_Succeeded_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferResponse_Succeeded_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.Builder.class);
+    }
+
+    public static final int BATCH_ID_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object batchId_ = "";
+    /**
+     * <code>string batch_id = 1;</code>
+     * @return The batchId.
+     */
+    @java.lang.Override
+    public java.lang.String getBatchId() {
+      java.lang.Object ref = batchId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        batchId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string batch_id = 1;</code>
+     * @return The bytes for batchId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBatchIdBytes() {
+      java.lang.Object ref = batchId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        batchId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CREATE_TIME_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object createTime_ = "";
+    /**
+     * <code>string create_time = 2;</code>
+     * @return The createTime.
+     */
+    @java.lang.Override
+    public java.lang.String getCreateTime() {
+      java.lang.Object ref = createTime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        createTime_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string create_time = 2;</code>
+     * @return The bytes for createTime.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCreateTimeBytes() {
+      java.lang.Object ref = createTime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        createTime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(batchId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, batchId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createTime_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, createTime_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(batchId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, batchId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createTime_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, createTime_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded)) {
+        return super.equals(obj);
+      }
+      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded other = (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded) obj;
+
+      if (!getBatchId()
+          .equals(other.getBatchId())) return false;
+      if (!getCreateTime()
+          .equals(other.getCreateTime())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + BATCH_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getBatchId().hashCode();
+      hash = (37 * hash) + CREATE_TIME_FIELD_NUMBER;
+      hash = (53 * hash) + getCreateTime().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code palm.musa.v1.WechatPayCreateTransferResponse.Succeeded}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:palm.musa.v1.WechatPayCreateTransferResponse.Succeeded)
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.SucceededOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferResponse_Succeeded_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferResponse_Succeeded_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.Builder.class);
+      }
+
+      // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        batchId_ = "";
+        createTime_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayCreateTransferResponse_Succeeded_descriptor;
+      }
+
+      @java.lang.Override
+      public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded getDefaultInstanceForType() {
+        return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded build() {
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded buildPartial() {
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded result = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.batchId_ = batchId_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.createTime_ = createTime_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded) {
+          return mergeFrom((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded other) {
+        if (other == com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.getDefaultInstance()) return this;
+        if (!other.getBatchId().isEmpty()) {
+          batchId_ = other.batchId_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (!other.getCreateTime().isEmpty()) {
+          createTime_ = other.createTime_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                batchId_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                createTime_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object batchId_ = "";
+      /**
+       * <code>string batch_id = 1;</code>
+       * @return The batchId.
+       */
+      public java.lang.String getBatchId() {
+        java.lang.Object ref = batchId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          batchId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string batch_id = 1;</code>
+       * @return The bytes for batchId.
+       */
+      public com.google.protobuf.ByteString
+          getBatchIdBytes() {
+        java.lang.Object ref = batchId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          batchId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string batch_id = 1;</code>
+       * @param value The batchId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBatchId(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        batchId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string batch_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBatchId() {
+        batchId_ = getDefaultInstance().getBatchId();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string batch_id = 1;</code>
+       * @param value The bytes for batchId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBatchIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        batchId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object createTime_ = "";
+      /**
+       * <code>string create_time = 2;</code>
+       * @return The createTime.
+       */
+      public java.lang.String getCreateTime() {
+        java.lang.Object ref = createTime_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          createTime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string create_time = 2;</code>
+       * @return The bytes for createTime.
+       */
+      public com.google.protobuf.ByteString
+          getCreateTimeBytes() {
+        java.lang.Object ref = createTime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          createTime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string create_time = 2;</code>
+       * @param value The createTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCreateTime(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        createTime_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string create_time = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCreateTime() {
+        createTime_ = getDefaultInstance().getCreateTime();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string create_time = 2;</code>
+       * @param value The bytes for createTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCreateTimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        createTime_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:palm.musa.v1.WechatPayCreateTransferResponse.Succeeded)
+    }
+
+    // @@protoc_insertion_point(class_scope:palm.musa.v1.WechatPayCreateTransferResponse.Succeeded)
+    private static final com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded();
+    }
+
+    public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Succeeded>
+        PARSER = new com.google.protobuf.AbstractParser<Succeeded>() {
+      @java.lang.Override
+      public Succeeded parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<Succeeded> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Succeeded> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  private int payloadCase_ = 0;
+  @SuppressWarnings("serial")
+  private java.lang.Object payload_;
+  public enum PayloadCase
+      implements com.google.protobuf.Internal.EnumLite,
+          com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+    SUCCEEDED(11),
+    ERROR(12),
+    PAYLOAD_NOT_SET(0);
+    private final int value;
+    private PayloadCase(int value) {
+      this.value = value;
+    }
+    /**
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static PayloadCase valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static PayloadCase forNumber(int value) {
+      switch (value) {
+        case 11: return SUCCEEDED;
+        case 12: return ERROR;
+        case 0: return PAYLOAD_NOT_SET;
+        default: return null;
+      }
+    }
+    public int getNumber() {
+      return this.value;
+    }
+  };
+
+  public PayloadCase
+  getPayloadCase() {
+    return PayloadCase.forNumber(
+        payloadCase_);
+  }
+
   public static final int OUT_BATCH_NO_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
   private volatile java.lang.Object outBatchNo_ = "";
@@ -788,6 +1498,68 @@ private static final long serialVersionUID = 0L;
     return details_.get(index);
   }
 
+  public static final int SUCCEEDED_FIELD_NUMBER = 11;
+  /**
+   * <code>.palm.musa.v1.WechatPayCreateTransferResponse.Succeeded succeeded = 11;</code>
+   * @return Whether the succeeded field is set.
+   */
+  @java.lang.Override
+  public boolean hasSucceeded() {
+    return payloadCase_ == 11;
+  }
+  /**
+   * <code>.palm.musa.v1.WechatPayCreateTransferResponse.Succeeded succeeded = 11;</code>
+   * @return The succeeded.
+   */
+  @java.lang.Override
+  public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded getSucceeded() {
+    if (payloadCase_ == 11) {
+       return (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded) payload_;
+    }
+    return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.getDefaultInstance();
+  }
+  /**
+   * <code>.palm.musa.v1.WechatPayCreateTransferResponse.Succeeded succeeded = 11;</code>
+   */
+  @java.lang.Override
+  public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.SucceededOrBuilder getSucceededOrBuilder() {
+    if (payloadCase_ == 11) {
+       return (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded) payload_;
+    }
+    return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.getDefaultInstance();
+  }
+
+  public static final int ERROR_FIELD_NUMBER = 12;
+  /**
+   * <code>.palm.musa.v1.Error error = 12;</code>
+   * @return Whether the error field is set.
+   */
+  @java.lang.Override
+  public boolean hasError() {
+    return payloadCase_ == 12;
+  }
+  /**
+   * <code>.palm.musa.v1.Error error = 12;</code>
+   * @return The error.
+   */
+  @java.lang.Override
+  public com.github.saturn_xiv.palm.plugins.musa.v1.Error getError() {
+    if (payloadCase_ == 12) {
+       return (com.github.saturn_xiv.palm.plugins.musa.v1.Error) payload_;
+    }
+    return com.github.saturn_xiv.palm.plugins.musa.v1.Error.getDefaultInstance();
+  }
+  /**
+   * <code>.palm.musa.v1.Error error = 12;</code>
+   */
+  @java.lang.Override
+  public com.github.saturn_xiv.palm.plugins.musa.v1.ErrorOrBuilder getErrorOrBuilder() {
+    if (payloadCase_ == 12) {
+       return (com.github.saturn_xiv.palm.plugins.musa.v1.Error) payload_;
+    }
+    return com.github.saturn_xiv.palm.plugins.musa.v1.Error.getDefaultInstance();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -808,6 +1580,12 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < details_.size(); i++) {
       output.writeMessage(2, details_.get(i));
     }
+    if (payloadCase_ == 11) {
+      output.writeMessage(11, (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded) payload_);
+    }
+    if (payloadCase_ == 12) {
+      output.writeMessage(12, (com.github.saturn_xiv.palm.plugins.musa.v1.Error) payload_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -823,6 +1601,14 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < details_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, details_.get(i));
+    }
+    if (payloadCase_ == 11) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(11, (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded) payload_);
+    }
+    if (payloadCase_ == 12) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(12, (com.github.saturn_xiv.palm.plugins.musa.v1.Error) payload_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -843,6 +1629,19 @@ private static final long serialVersionUID = 0L;
         .equals(other.getOutBatchNo())) return false;
     if (!getDetailsList()
         .equals(other.getDetailsList())) return false;
+    if (!getPayloadCase().equals(other.getPayloadCase())) return false;
+    switch (payloadCase_) {
+      case 11:
+        if (!getSucceeded()
+            .equals(other.getSucceeded())) return false;
+        break;
+      case 12:
+        if (!getError()
+            .equals(other.getError())) return false;
+        break;
+      case 0:
+      default:
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -859,6 +1658,18 @@ private static final long serialVersionUID = 0L;
     if (getDetailsCount() > 0) {
       hash = (37 * hash) + DETAILS_FIELD_NUMBER;
       hash = (53 * hash) + getDetailsList().hashCode();
+    }
+    switch (payloadCase_) {
+      case 11:
+        hash = (37 * hash) + SUCCEEDED_FIELD_NUMBER;
+        hash = (53 * hash) + getSucceeded().hashCode();
+        break;
+      case 12:
+        hash = (37 * hash) + ERROR_FIELD_NUMBER;
+        hash = (53 * hash) + getError().hashCode();
+        break;
+      case 0:
+      default:
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -999,6 +1810,14 @@ private static final long serialVersionUID = 0L;
         detailsBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00000002);
+      if (succeededBuilder_ != null) {
+        succeededBuilder_.clear();
+      }
+      if (errorBuilder_ != null) {
+        errorBuilder_.clear();
+      }
+      payloadCase_ = 0;
+      payload_ = null;
       return this;
     }
 
@@ -1027,6 +1846,7 @@ private static final long serialVersionUID = 0L;
       com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse result = new com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse(this);
       buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
+      buildPartialOneofs(result);
       onBuilt();
       return result;
     }
@@ -1047,6 +1867,19 @@ private static final long serialVersionUID = 0L;
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.outBatchNo_ = outBatchNo_;
+      }
+    }
+
+    private void buildPartialOneofs(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse result) {
+      result.payloadCase_ = payloadCase_;
+      result.payload_ = this.payload_;
+      if (payloadCase_ == 11 &&
+          succeededBuilder_ != null) {
+        result.payload_ = succeededBuilder_.build();
+      }
+      if (payloadCase_ == 12 &&
+          errorBuilder_ != null) {
+        result.payload_ = errorBuilder_.build();
       }
     }
 
@@ -1093,6 +1926,19 @@ private static final long serialVersionUID = 0L;
           }
         }
       }
+      switch (other.getPayloadCase()) {
+        case SUCCEEDED: {
+          mergeSucceeded(other.getSucceeded());
+          break;
+        }
+        case ERROR: {
+          mergeError(other.getError());
+          break;
+        }
+        case PAYLOAD_NOT_SET: {
+          break;
+        }
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -1137,6 +1983,20 @@ private static final long serialVersionUID = 0L;
               }
               break;
             } // case 18
+            case 90: {
+              input.readMessage(
+                  getSucceededFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              payloadCase_ = 11;
+              break;
+            } // case 90
+            case 98: {
+              input.readMessage(
+                  getErrorFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              payloadCase_ = 12;
+              break;
+            } // case 98
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -1152,6 +2012,21 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+    private int payloadCase_ = 0;
+    private java.lang.Object payload_;
+    public PayloadCase
+        getPayloadCase() {
+      return PayloadCase.forNumber(
+          payloadCase_);
+    }
+
+    public Builder clearPayload() {
+      payloadCase_ = 0;
+      payload_ = null;
+      onChanged();
+      return this;
+    }
+
     private int bitField0_;
 
     private java.lang.Object outBatchNo_ = "";
@@ -1464,6 +2339,290 @@ private static final long serialVersionUID = 0L;
         details_ = null;
       }
       return detailsBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.SucceededOrBuilder> succeededBuilder_;
+    /**
+     * <code>.palm.musa.v1.WechatPayCreateTransferResponse.Succeeded succeeded = 11;</code>
+     * @return Whether the succeeded field is set.
+     */
+    @java.lang.Override
+    public boolean hasSucceeded() {
+      return payloadCase_ == 11;
+    }
+    /**
+     * <code>.palm.musa.v1.WechatPayCreateTransferResponse.Succeeded succeeded = 11;</code>
+     * @return The succeeded.
+     */
+    @java.lang.Override
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded getSucceeded() {
+      if (succeededBuilder_ == null) {
+        if (payloadCase_ == 11) {
+          return (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded) payload_;
+        }
+        return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.getDefaultInstance();
+      } else {
+        if (payloadCase_ == 11) {
+          return succeededBuilder_.getMessage();
+        }
+        return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.palm.musa.v1.WechatPayCreateTransferResponse.Succeeded succeeded = 11;</code>
+     */
+    public Builder setSucceeded(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded value) {
+      if (succeededBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        payload_ = value;
+        onChanged();
+      } else {
+        succeededBuilder_.setMessage(value);
+      }
+      payloadCase_ = 11;
+      return this;
+    }
+    /**
+     * <code>.palm.musa.v1.WechatPayCreateTransferResponse.Succeeded succeeded = 11;</code>
+     */
+    public Builder setSucceeded(
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.Builder builderForValue) {
+      if (succeededBuilder_ == null) {
+        payload_ = builderForValue.build();
+        onChanged();
+      } else {
+        succeededBuilder_.setMessage(builderForValue.build());
+      }
+      payloadCase_ = 11;
+      return this;
+    }
+    /**
+     * <code>.palm.musa.v1.WechatPayCreateTransferResponse.Succeeded succeeded = 11;</code>
+     */
+    public Builder mergeSucceeded(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded value) {
+      if (succeededBuilder_ == null) {
+        if (payloadCase_ == 11 &&
+            payload_ != com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.getDefaultInstance()) {
+          payload_ = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.newBuilder((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded) payload_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          payload_ = value;
+        }
+        onChanged();
+      } else {
+        if (payloadCase_ == 11) {
+          succeededBuilder_.mergeFrom(value);
+        } else {
+          succeededBuilder_.setMessage(value);
+        }
+      }
+      payloadCase_ = 11;
+      return this;
+    }
+    /**
+     * <code>.palm.musa.v1.WechatPayCreateTransferResponse.Succeeded succeeded = 11;</code>
+     */
+    public Builder clearSucceeded() {
+      if (succeededBuilder_ == null) {
+        if (payloadCase_ == 11) {
+          payloadCase_ = 0;
+          payload_ = null;
+          onChanged();
+        }
+      } else {
+        if (payloadCase_ == 11) {
+          payloadCase_ = 0;
+          payload_ = null;
+        }
+        succeededBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.palm.musa.v1.WechatPayCreateTransferResponse.Succeeded succeeded = 11;</code>
+     */
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.Builder getSucceededBuilder() {
+      return getSucceededFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.palm.musa.v1.WechatPayCreateTransferResponse.Succeeded succeeded = 11;</code>
+     */
+    @java.lang.Override
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.SucceededOrBuilder getSucceededOrBuilder() {
+      if ((payloadCase_ == 11) && (succeededBuilder_ != null)) {
+        return succeededBuilder_.getMessageOrBuilder();
+      } else {
+        if (payloadCase_ == 11) {
+          return (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded) payload_;
+        }
+        return com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.palm.musa.v1.WechatPayCreateTransferResponse.Succeeded succeeded = 11;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.SucceededOrBuilder> 
+        getSucceededFieldBuilder() {
+      if (succeededBuilder_ == null) {
+        if (!(payloadCase_ == 11)) {
+          payload_ = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.getDefaultInstance();
+        }
+        succeededBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.SucceededOrBuilder>(
+                (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayCreateTransferResponse.Succeeded) payload_,
+                getParentForChildren(),
+                isClean());
+        payload_ = null;
+      }
+      payloadCase_ = 11;
+      onChanged();
+      return succeededBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.github.saturn_xiv.palm.plugins.musa.v1.Error, com.github.saturn_xiv.palm.plugins.musa.v1.Error.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.ErrorOrBuilder> errorBuilder_;
+    /**
+     * <code>.palm.musa.v1.Error error = 12;</code>
+     * @return Whether the error field is set.
+     */
+    @java.lang.Override
+    public boolean hasError() {
+      return payloadCase_ == 12;
+    }
+    /**
+     * <code>.palm.musa.v1.Error error = 12;</code>
+     * @return The error.
+     */
+    @java.lang.Override
+    public com.github.saturn_xiv.palm.plugins.musa.v1.Error getError() {
+      if (errorBuilder_ == null) {
+        if (payloadCase_ == 12) {
+          return (com.github.saturn_xiv.palm.plugins.musa.v1.Error) payload_;
+        }
+        return com.github.saturn_xiv.palm.plugins.musa.v1.Error.getDefaultInstance();
+      } else {
+        if (payloadCase_ == 12) {
+          return errorBuilder_.getMessage();
+        }
+        return com.github.saturn_xiv.palm.plugins.musa.v1.Error.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.palm.musa.v1.Error error = 12;</code>
+     */
+    public Builder setError(com.github.saturn_xiv.palm.plugins.musa.v1.Error value) {
+      if (errorBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        payload_ = value;
+        onChanged();
+      } else {
+        errorBuilder_.setMessage(value);
+      }
+      payloadCase_ = 12;
+      return this;
+    }
+    /**
+     * <code>.palm.musa.v1.Error error = 12;</code>
+     */
+    public Builder setError(
+        com.github.saturn_xiv.palm.plugins.musa.v1.Error.Builder builderForValue) {
+      if (errorBuilder_ == null) {
+        payload_ = builderForValue.build();
+        onChanged();
+      } else {
+        errorBuilder_.setMessage(builderForValue.build());
+      }
+      payloadCase_ = 12;
+      return this;
+    }
+    /**
+     * <code>.palm.musa.v1.Error error = 12;</code>
+     */
+    public Builder mergeError(com.github.saturn_xiv.palm.plugins.musa.v1.Error value) {
+      if (errorBuilder_ == null) {
+        if (payloadCase_ == 12 &&
+            payload_ != com.github.saturn_xiv.palm.plugins.musa.v1.Error.getDefaultInstance()) {
+          payload_ = com.github.saturn_xiv.palm.plugins.musa.v1.Error.newBuilder((com.github.saturn_xiv.palm.plugins.musa.v1.Error) payload_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          payload_ = value;
+        }
+        onChanged();
+      } else {
+        if (payloadCase_ == 12) {
+          errorBuilder_.mergeFrom(value);
+        } else {
+          errorBuilder_.setMessage(value);
+        }
+      }
+      payloadCase_ = 12;
+      return this;
+    }
+    /**
+     * <code>.palm.musa.v1.Error error = 12;</code>
+     */
+    public Builder clearError() {
+      if (errorBuilder_ == null) {
+        if (payloadCase_ == 12) {
+          payloadCase_ = 0;
+          payload_ = null;
+          onChanged();
+        }
+      } else {
+        if (payloadCase_ == 12) {
+          payloadCase_ = 0;
+          payload_ = null;
+        }
+        errorBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.palm.musa.v1.Error error = 12;</code>
+     */
+    public com.github.saturn_xiv.palm.plugins.musa.v1.Error.Builder getErrorBuilder() {
+      return getErrorFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.palm.musa.v1.Error error = 12;</code>
+     */
+    @java.lang.Override
+    public com.github.saturn_xiv.palm.plugins.musa.v1.ErrorOrBuilder getErrorOrBuilder() {
+      if ((payloadCase_ == 12) && (errorBuilder_ != null)) {
+        return errorBuilder_.getMessageOrBuilder();
+      } else {
+        if (payloadCase_ == 12) {
+          return (com.github.saturn_xiv.palm.plugins.musa.v1.Error) payload_;
+        }
+        return com.github.saturn_xiv.palm.plugins.musa.v1.Error.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.palm.musa.v1.Error error = 12;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.github.saturn_xiv.palm.plugins.musa.v1.Error, com.github.saturn_xiv.palm.plugins.musa.v1.Error.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.ErrorOrBuilder> 
+        getErrorFieldBuilder() {
+      if (errorBuilder_ == null) {
+        if (!(payloadCase_ == 12)) {
+          payload_ = com.github.saturn_xiv.palm.plugins.musa.v1.Error.getDefaultInstance();
+        }
+        errorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.github.saturn_xiv.palm.plugins.musa.v1.Error, com.github.saturn_xiv.palm.plugins.musa.v1.Error.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.ErrorOrBuilder>(
+                (com.github.saturn_xiv.palm.plugins.musa.v1.Error) payload_,
+                getParentForChildren(),
+                isClean());
+        payload_ = null;
+      }
+      payloadCase_ = 12;
+      onChanged();
+      return errorBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

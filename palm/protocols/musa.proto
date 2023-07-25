@@ -33,6 +33,10 @@ message WechatPayCloseOrderRequest {
   string reason = 2;
 }
 
+message Error {
+  string code = 1;
+  string message = 2;
+}
 // ----------------------------------------------------------------------------
 
 service WechatPayNative {
@@ -173,14 +177,25 @@ message WechatPayCreateTransferRequest {
   repeated Detail details = 3;
 
   string scene_id = 9;
+  optional string out_batch_no = 11;
 }
 message WechatPayCreateTransferResponse {
   message Detail {
     string open_id = 1;
     string out_detail_no = 2;
   }
+  message Succeeded {
+    string batch_id = 1;
+    string create_time = 2;
+  }
+
   string out_batch_no = 1;
   repeated Detail details = 2;
+
+  oneof payload {
+    Succeeded succeeded = 11;
+    Error error = 12;
+  }
 }
 message WechatPayQueryTransferRequest {
   enum DetailStatus {

@@ -30,6 +30,11 @@ public final class Musa {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_palm_musa_v1_WechatPayCloseOrderRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_palm_musa_v1_Error_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_palm_musa_v1_Error_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_palm_musa_v1_WechatPayNativeQrCodeUrlResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -120,6 +125,11 @@ public final class Musa {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_palm_musa_v1_WechatPayCreateTransferResponse_Detail_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_palm_musa_v1_WechatPayCreateTransferResponse_Succeeded_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_palm_musa_v1_WechatPayCreateTransferResponse_Succeeded_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_palm_musa_v1_WechatPayQueryTransferRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -157,7 +167,8 @@ public final class Musa {
       "\r\n\005total\030\001 \001(\005\0221\n\010currency\030\002 \001(\0162\037.palm." +
       "musa.v1.WechatPayCurrencyB\020\n\016_payer_open" +
       "_id\"B\n\032WechatPayCloseOrderRequest\022\024\n\014out" +
-      "_trade_no\030\001 \001(\t\022\016\n\006reason\030\002 \001(\t\"E\n Wecha" +
+      "_trade_no\030\001 \001(\t\022\016\n\006reason\030\002 \001(\t\"&\n\005Error" +
+      "\022\014\n\004code\030\001 \001(\t\022\017\n\007message\030\002 \001(\t\"E\n Wecha" +
       "tPayNativeQrCodeUrlResponse\022\013\n\003url\030\001 \001(\t" +
       "\022\024\n\014out_trade_no\030\002 \001(\t\"G\n\026WechatPayTrade" +
       "Response\022\023\n\013trade_state\030\001 \001(\t\022\030\n\020trade_s" +
@@ -192,68 +203,73 @@ public final class Musa {
       " \001(\t\"\205\001\n\027WechatPayRefundResponse\022\025\n\rout_" +
       "refund_no\030\001 \001(\t\022\017\n\007channel\030\002 \001(\t\022\016\n\006stat" +
       "us\030\003 \001(\t\022\035\n\025user_received_account\030\004 \001(\t\022" +
-      "\023\n\013create_time\030c \001(\t\"\277\002\n\036WechatPayCreate" +
+      "\023\n\013create_time\030c \001(\t\"\353\002\n\036WechatPayCreate" +
       "TransferRequest\022\016\n\006app_id\030\001 \001(\t\022A\n\005batch" +
       "\030\002 \001(\01322.palm.musa.v1.WechatPayCreateTra" +
       "nsferRequest.Batch\022D\n\007details\030\003 \003(\01323.pa" +
       "lm.musa.v1.WechatPayCreateTransferReques" +
-      "t.Detail\022\020\n\010scene_id\030\t \001(\t\032%\n\005Batch\022\014\n\004n" +
-      "ame\030\001 \001(\t\022\016\n\006remark\030\002 \001(\t\032K\n\006Detail\022\017\n\007o" +
-      "pen_id\030\001 \001(\t\022\020\n\010username\030\002 \001(\t\022\016\n\006amount" +
-      "\030\003 \001(\003\022\016\n\006remark\030\004 \001(\t\"\260\001\n\037WechatPayCrea" +
-      "teTransferResponse\022\024\n\014out_batch_no\030\001 \001(\t" +
-      "\022E\n\007details\030\002 \003(\01324.palm.musa.v1.WechatP" +
-      "ayCreateTransferResponse.Detail\0320\n\006Detai" +
+      "t.Detail\022\020\n\010scene_id\030\t \001(\t\022\031\n\014out_batch_" +
+      "no\030\013 \001(\tH\000\210\001\001\032%\n\005Batch\022\014\n\004name\030\001 \001(\t\022\016\n\006" +
+      "remark\030\002 \001(\t\032K\n\006Detail\022\017\n\007open_id\030\001 \001(\t\022" +
+      "\020\n\010username\030\002 \001(\t\022\016\n\006amount\030\003 \001(\003\022\016\n\006rem" +
+      "ark\030\004 \001(\tB\017\n\r_out_batch_no\"\343\002\n\037WechatPay" +
+      "CreateTransferResponse\022\024\n\014out_batch_no\030\001" +
+      " \001(\t\022E\n\007details\030\002 \003(\01324.palm.musa.v1.Wec" +
+      "hatPayCreateTransferResponse.Detail\022L\n\ts" +
+      "ucceeded\030\013 \001(\01327.palm.musa.v1.WechatPayC" +
+      "reateTransferResponse.SucceededH\000\022$\n\005err" +
+      "or\030\014 \001(\0132\023.palm.musa.v1.ErrorH\000\0320\n\006Detai" +
       "l\022\017\n\007open_id\030\001 \001(\t\022\025\n\rout_detail_no\030\002 \001(" +
-      "\t\"\325\001\n\035WechatPayQueryTransferRequest\022\024\n\014o" +
-      "ut_batch_no\030\001 \001(\t\022\016\n\006offset\030\002 \001(\005\022\r\n\005lim" +
-      "it\030\003 \001(\005\022O\n\rdetail_status\030\t \001(\01628.palm.m" +
-      "usa.v1.WechatPayQueryTransferRequest.Det" +
-      "ailStatus\".\n\014DetailStatus\022\007\n\003ALL\020\000\022\013\n\007SU" +
-      "CCESS\020\001\022\010\n\004FAIL\020\002\"\255\002\n\036WechatPayQueryTran" +
-      "sferResponse\022A\n\005batch\030\001 \001(\01322.palm.musa." +
-      "v1.WechatPayQueryTransferResponse.Batch\022" +
-      "D\n\007details\030\t \003(\01323.palm.musa.v1.WechatPa" +
-      "yQueryTransferResponse.Detail\032/\n\006Detail\022" +
-      "\025\n\rout_detail_no\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\032Q" +
-      "\n\005Batch\022\016\n\006status\030\001 \001(\t\022\014\n\004type\030\002 \001(\t\022\031\n" +
-      "\014close_reason\030\t \001(\tH\000\210\001\001B\017\n\r_close_reaso" +
-      "n*\034\n\021WechatPayCurrency\022\007\n\003CNY\020\000*4\n\025Wecha" +
-      "tPayNotifyAction\022\017\n\013TRANSCATION\020\000\022\n\n\006REF" +
-      "UND\020\001*\034\n\020WechatPayTarType\022\010\n\004GZIP\020\0002s\n\017W" +
-      "echatPayNative\022`\n\006Prepay\022$.palm.musa.v1." +
-      "WechatPayPrepayRequest\032..palm.musa.v1.We" +
-      "chatPayNativeQrCodeUrlResponse\"\0002\242\003\n\016Wec" +
-      "hatPayJsapi\022^\n\006Prepay\022$.palm.musa.v1.Wec" +
-      "hatPayPrepayRequest\032,.palm.musa.v1.Wecha" +
-      "tPayJsapiPrepayIdResponse\"\000\022v\n\026QueryOrde" +
-      "rByOutTradeNo\0224.palm.musa.v1.WechatPayQu" +
-      "eryOrderByOutTradeNoRequest\032$.palm.musa." +
-      "v1.WechatPayTradeResponse\"\000\022f\n\016QueryOrde" +
-      "rById\022,.palm.musa.v1.WechatPayQueryOrder" +
-      "ByIdRequest\032$.palm.musa.v1.WechatPayTrad" +
-      "eResponse\"\000\022P\n\nCloseOrder\022(.palm.musa.v1" +
-      ".WechatPayCloseOrderRequest\032\026.google.pro" +
-      "tobuf.Empty\"\0002\307\001\n\rWechatPayBill\022W\n\005Trade" +
-      "\022\'.palm.musa.v1.WechatPayTradeBillReques" +
-      "t\032#.palm.musa.v1.WechatPayBillResponse\"\000" +
-      "\022]\n\010FundFlow\022*.palm.musa.v1.WechatPayFun" +
-      "dFlowBillRequest\032#.palm.musa.v1.WechatPa" +
-      "yBillResponse\"\0002\315\001\n\017WechatPayRefund\022]\n\006C" +
-      "reate\022*.palm.musa.v1.WechatPayCreateRefu" +
-      "ndRequest\032%.palm.musa.v1.WechatPayRefund" +
-      "Response\"\000\022[\n\005Query\022).palm.musa.v1.Wecha" +
-      "tPayQueryRefundRequest\032%.palm.musa.v1.We" +
-      "chatPayRefundResponse\"\0002\342\001\n\021WechatPayTra" +
-      "nsfer\022g\n\006Create\022,.palm.musa.v1.WechatPay" +
-      "CreateTransferRequest\032-.palm.musa.v1.Wec" +
-      "hatPayCreateTransferResponse\"\000\022d\n\005Query\022" +
-      "+.palm.musa.v1.WechatPayQueryTransferReq" +
-      "uest\032,.palm.musa.v1.WechatPayQueryTransf" +
-      "erResponse\"\0002C\n\006Health\0229\n\005Check\022\026.google" +
-      ".protobuf.Empty\032\026.google.protobuf.Empty\"" +
-      "\000B.\n*com.github.saturn_xiv.palm.plugins." +
-      "musa.v1P\001b\006proto3"
+      "\t\0322\n\tSucceeded\022\020\n\010batch_id\030\001 \001(\t\022\023\n\013crea" +
+      "te_time\030\002 \001(\tB\t\n\007payload\"\325\001\n\035WechatPayQu" +
+      "eryTransferRequest\022\024\n\014out_batch_no\030\001 \001(\t" +
+      "\022\016\n\006offset\030\002 \001(\005\022\r\n\005limit\030\003 \001(\005\022O\n\rdetai" +
+      "l_status\030\t \001(\01628.palm.musa.v1.WechatPayQ" +
+      "ueryTransferRequest.DetailStatus\".\n\014Deta" +
+      "ilStatus\022\007\n\003ALL\020\000\022\013\n\007SUCCESS\020\001\022\010\n\004FAIL\020\002" +
+      "\"\255\002\n\036WechatPayQueryTransferResponse\022A\n\005b" +
+      "atch\030\001 \001(\01322.palm.musa.v1.WechatPayQuery" +
+      "TransferResponse.Batch\022D\n\007details\030\t \003(\0132" +
+      "3.palm.musa.v1.WechatPayQueryTransferRes" +
+      "ponse.Detail\032/\n\006Detail\022\025\n\rout_detail_no\030" +
+      "\001 \001(\t\022\016\n\006status\030\002 \001(\t\032Q\n\005Batch\022\016\n\006status" +
+      "\030\001 \001(\t\022\014\n\004type\030\002 \001(\t\022\031\n\014close_reason\030\t \001" +
+      "(\tH\000\210\001\001B\017\n\r_close_reason*\034\n\021WechatPayCur" +
+      "rency\022\007\n\003CNY\020\000*4\n\025WechatPayNotifyAction\022" +
+      "\017\n\013TRANSCATION\020\000\022\n\n\006REFUND\020\001*\034\n\020WechatPa" +
+      "yTarType\022\010\n\004GZIP\020\0002s\n\017WechatPayNative\022`\n" +
+      "\006Prepay\022$.palm.musa.v1.WechatPayPrepayRe" +
+      "quest\032..palm.musa.v1.WechatPayNativeQrCo" +
+      "deUrlResponse\"\0002\242\003\n\016WechatPayJsapi\022^\n\006Pr" +
+      "epay\022$.palm.musa.v1.WechatPayPrepayReque" +
+      "st\032,.palm.musa.v1.WechatPayJsapiPrepayId" +
+      "Response\"\000\022v\n\026QueryOrderByOutTradeNo\0224.p" +
+      "alm.musa.v1.WechatPayQueryOrderByOutTrad" +
+      "eNoRequest\032$.palm.musa.v1.WechatPayTrade" +
+      "Response\"\000\022f\n\016QueryOrderById\022,.palm.musa" +
+      ".v1.WechatPayQueryOrderByIdRequest\032$.pal" +
+      "m.musa.v1.WechatPayTradeResponse\"\000\022P\n\nCl" +
+      "oseOrder\022(.palm.musa.v1.WechatPayCloseOr" +
+      "derRequest\032\026.google.protobuf.Empty\"\0002\307\001\n" +
+      "\rWechatPayBill\022W\n\005Trade\022\'.palm.musa.v1.W" +
+      "echatPayTradeBillRequest\032#.palm.musa.v1." +
+      "WechatPayBillResponse\"\000\022]\n\010FundFlow\022*.pa" +
+      "lm.musa.v1.WechatPayFundFlowBillRequest\032" +
+      "#.palm.musa.v1.WechatPayBillResponse\"\0002\315" +
+      "\001\n\017WechatPayRefund\022]\n\006Create\022*.palm.musa" +
+      ".v1.WechatPayCreateRefundRequest\032%.palm." +
+      "musa.v1.WechatPayRefundResponse\"\000\022[\n\005Que" +
+      "ry\022).palm.musa.v1.WechatPayQueryRefundRe" +
+      "quest\032%.palm.musa.v1.WechatPayRefundResp" +
+      "onse\"\0002\342\001\n\021WechatPayTransfer\022g\n\006Create\022," +
+      ".palm.musa.v1.WechatPayCreateTransferReq" +
+      "uest\032-.palm.musa.v1.WechatPayCreateTrans" +
+      "ferResponse\"\000\022d\n\005Query\022+.palm.musa.v1.We" +
+      "chatPayQueryTransferRequest\032,.palm.musa." +
+      "v1.WechatPayQueryTransferResponse\"\0002C\n\006H" +
+      "ealth\0229\n\005Check\022\026.google.protobuf.Empty\032\026" +
+      ".google.protobuf.Empty\"\000B.\n*com.github.s" +
+      "aturn_xiv.palm.plugins.musa.v1P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -278,62 +294,68 @@ public final class Musa {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayCloseOrderRequest_descriptor,
         new java.lang.String[] { "OutTradeNo", "Reason", });
-    internal_static_palm_musa_v1_WechatPayNativeQrCodeUrlResponse_descriptor =
+    internal_static_palm_musa_v1_Error_descriptor =
       getDescriptor().getMessageTypes().get(2);
+    internal_static_palm_musa_v1_Error_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_palm_musa_v1_Error_descriptor,
+        new java.lang.String[] { "Code", "Message", });
+    internal_static_palm_musa_v1_WechatPayNativeQrCodeUrlResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
     internal_static_palm_musa_v1_WechatPayNativeQrCodeUrlResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayNativeQrCodeUrlResponse_descriptor,
         new java.lang.String[] { "Url", "OutTradeNo", });
     internal_static_palm_musa_v1_WechatPayTradeResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_palm_musa_v1_WechatPayTradeResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayTradeResponse_descriptor,
         new java.lang.String[] { "TradeState", "TradeStateDesc", });
     internal_static_palm_musa_v1_WechatPayQueryOrderByIdRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_palm_musa_v1_WechatPayQueryOrderByIdRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayQueryOrderByIdRequest_descriptor,
         new java.lang.String[] { "TransactionId", });
     internal_static_palm_musa_v1_WechatPayQueryOrderByOutTradeNoRequest_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_palm_musa_v1_WechatPayQueryOrderByOutTradeNoRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayQueryOrderByOutTradeNoRequest_descriptor,
         new java.lang.String[] { "OutTradeNo", });
     internal_static_palm_musa_v1_WechatPayJsapiPrepayIdResponse_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_palm_musa_v1_WechatPayJsapiPrepayIdResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayJsapiPrepayIdResponse_descriptor,
         new java.lang.String[] { "AppId", "TimeStamp", "NonceStr", "Package", "SignType", "PaySign", "OutTradeNo", });
     internal_static_palm_musa_v1_WechatPayBillDate_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_palm_musa_v1_WechatPayBillDate_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayBillDate_descriptor,
         new java.lang.String[] { "Year", "Month", "Day", });
     internal_static_palm_musa_v1_WechatPayBillResponse_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_palm_musa_v1_WechatPayBillResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayBillResponse_descriptor,
         new java.lang.String[] { "Content", });
     internal_static_palm_musa_v1_WechatPayTradeBillRequest_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_palm_musa_v1_WechatPayTradeBillRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayTradeBillRequest_descriptor,
         new java.lang.String[] { "BillDate", "BillType", });
     internal_static_palm_musa_v1_WechatPayFundFlowBillRequest_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_palm_musa_v1_WechatPayFundFlowBillRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayFundFlowBillRequest_descriptor,
         new java.lang.String[] { "BillDate", "AccountType", });
     internal_static_palm_musa_v1_WechatPayCreateRefundRequest_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_palm_musa_v1_WechatPayCreateRefundRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayCreateRefundRequest_descriptor,
@@ -345,23 +367,23 @@ public final class Musa {
         internal_static_palm_musa_v1_WechatPayCreateRefundRequest_Amount_descriptor,
         new java.lang.String[] { "Total", "Refund", "Currency", });
     internal_static_palm_musa_v1_WechatPayQueryRefundRequest_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_palm_musa_v1_WechatPayQueryRefundRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayQueryRefundRequest_descriptor,
         new java.lang.String[] { "OutRefundNo", });
     internal_static_palm_musa_v1_WechatPayRefundResponse_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_palm_musa_v1_WechatPayRefundResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayRefundResponse_descriptor,
         new java.lang.String[] { "OutRefundNo", "Channel", "Status", "UserReceivedAccount", "CreateTime", });
     internal_static_palm_musa_v1_WechatPayCreateTransferRequest_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_palm_musa_v1_WechatPayCreateTransferRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayCreateTransferRequest_descriptor,
-        new java.lang.String[] { "AppId", "Batch", "Details", "SceneId", });
+        new java.lang.String[] { "AppId", "Batch", "Details", "SceneId", "OutBatchNo", "OutBatchNo", });
     internal_static_palm_musa_v1_WechatPayCreateTransferRequest_Batch_descriptor =
       internal_static_palm_musa_v1_WechatPayCreateTransferRequest_descriptor.getNestedTypes().get(0);
     internal_static_palm_musa_v1_WechatPayCreateTransferRequest_Batch_fieldAccessorTable = new
@@ -375,25 +397,31 @@ public final class Musa {
         internal_static_palm_musa_v1_WechatPayCreateTransferRequest_Detail_descriptor,
         new java.lang.String[] { "OpenId", "Username", "Amount", "Remark", });
     internal_static_palm_musa_v1_WechatPayCreateTransferResponse_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_palm_musa_v1_WechatPayCreateTransferResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayCreateTransferResponse_descriptor,
-        new java.lang.String[] { "OutBatchNo", "Details", });
+        new java.lang.String[] { "OutBatchNo", "Details", "Succeeded", "Error", "Payload", });
     internal_static_palm_musa_v1_WechatPayCreateTransferResponse_Detail_descriptor =
       internal_static_palm_musa_v1_WechatPayCreateTransferResponse_descriptor.getNestedTypes().get(0);
     internal_static_palm_musa_v1_WechatPayCreateTransferResponse_Detail_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayCreateTransferResponse_Detail_descriptor,
         new java.lang.String[] { "OpenId", "OutDetailNo", });
+    internal_static_palm_musa_v1_WechatPayCreateTransferResponse_Succeeded_descriptor =
+      internal_static_palm_musa_v1_WechatPayCreateTransferResponse_descriptor.getNestedTypes().get(1);
+    internal_static_palm_musa_v1_WechatPayCreateTransferResponse_Succeeded_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_palm_musa_v1_WechatPayCreateTransferResponse_Succeeded_descriptor,
+        new java.lang.String[] { "BatchId", "CreateTime", });
     internal_static_palm_musa_v1_WechatPayQueryTransferRequest_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_palm_musa_v1_WechatPayQueryTransferRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayQueryTransferRequest_descriptor,
         new java.lang.String[] { "OutBatchNo", "Offset", "Limit", "DetailStatus", });
     internal_static_palm_musa_v1_WechatPayQueryTransferResponse_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_palm_musa_v1_WechatPayQueryTransferResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_musa_v1_WechatPayQueryTransferResponse_descriptor,

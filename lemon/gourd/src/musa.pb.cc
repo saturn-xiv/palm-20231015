@@ -94,6 +94,28 @@ struct WechatPayCloseOrderRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatPayCloseOrderRequestDefaultTypeInternal _WechatPayCloseOrderRequest_default_instance_;
 template <typename>
+PROTOBUF_CONSTEXPR Error::Error(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.code_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.message_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ErrorDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ErrorDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ErrorDefaultTypeInternal() {}
+  union {
+    Error _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ErrorDefaultTypeInternal _Error_default_instance_;
+template <typename>
 PROTOBUF_CONSTEXPR WechatPayNativeQrCodeUrlResponse::WechatPayNativeQrCodeUrlResponse(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.url_)*/ {
@@ -453,6 +475,10 @@ PROTOBUF_CONSTEXPR WechatPayCreateTransferRequest::WechatPayCreateTransferReques
     &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
   }
 
+  , /*decltype(_impl_.out_batch_no_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
   , /*decltype(_impl_.batch_)*/nullptr} {}
 struct WechatPayCreateTransferRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR WechatPayCreateTransferRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
@@ -487,6 +513,28 @@ struct WechatPayCreateTransferResponse_DetailDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatPayCreateTransferResponse_DetailDefaultTypeInternal _WechatPayCreateTransferResponse_Detail_default_instance_;
 template <typename>
+PROTOBUF_CONSTEXPR WechatPayCreateTransferResponse_Succeeded::WechatPayCreateTransferResponse_Succeeded(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.batch_id_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.create_time_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct WechatPayCreateTransferResponse_SucceededDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR WechatPayCreateTransferResponse_SucceededDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~WechatPayCreateTransferResponse_SucceededDefaultTypeInternal() {}
+  union {
+    WechatPayCreateTransferResponse_Succeeded _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatPayCreateTransferResponse_SucceededDefaultTypeInternal _WechatPayCreateTransferResponse_Succeeded_default_instance_;
+template <typename>
 PROTOBUF_CONSTEXPR WechatPayCreateTransferResponse::WechatPayCreateTransferResponse(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.details_)*/{}
@@ -494,7 +542,9 @@ PROTOBUF_CONSTEXPR WechatPayCreateTransferResponse::WechatPayCreateTransferRespo
     &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
   }
 
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+  , /*decltype(_impl_.payload_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_._oneof_case_)*/{}} {}
 struct WechatPayCreateTransferResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR WechatPayCreateTransferResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~WechatPayCreateTransferResponseDefaultTypeInternal() {}
@@ -598,7 +648,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace v1
 }  // namespace musa
 }  // namespace palm
-static ::_pb::Metadata file_level_metadata_musa_2eproto[25];
+static ::_pb::Metadata file_level_metadata_musa_2eproto[27];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_musa_2eproto[6];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_musa_2eproto = nullptr;
@@ -642,6 +692,16 @@ const ::uint32_t TableStruct_musa_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCloseOrderRequest, _impl_.out_trade_no_),
     PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCloseOrderRequest, _impl_.reason_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::palm::musa::v1::Error, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::palm::musa::v1::Error, _impl_.code_),
+    PROTOBUF_FIELD_OFFSET(::palm::musa::v1::Error, _impl_.message_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayNativeQrCodeUrlResponse, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -822,10 +882,12 @@ const ::uint32_t TableStruct_musa_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCreateTransferRequest, _impl_.batch_),
     PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCreateTransferRequest, _impl_.details_),
     PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCreateTransferRequest, _impl_.scene_id_),
+    PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCreateTransferRequest, _impl_.out_batch_no_),
+    ~0u,
+    1,
+    ~0u,
     ~0u,
     0,
-    ~0u,
-    ~0u,
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCreateTransferResponse_Detail, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -837,15 +899,28 @@ const ::uint32_t TableStruct_musa_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCreateTransferResponse_Detail, _impl_.open_id_),
     PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCreateTransferResponse_Detail, _impl_.out_detail_no_),
     ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCreateTransferResponse, _internal_metadata_),
+    PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCreateTransferResponse_Succeeded, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
     ~0u,  // no _weak_field_map_
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCreateTransferResponse_Succeeded, _impl_.batch_id_),
+    PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCreateTransferResponse_Succeeded, _impl_.create_time_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCreateTransferResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCreateTransferResponse, _impl_._oneof_case_[0]),
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCreateTransferResponse, _impl_.out_batch_no_),
     PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCreateTransferResponse, _impl_.details_),
+    ::_pbi::kInvalidFieldOffsetTag,
+    ::_pbi::kInvalidFieldOffsetTag,
+    PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCreateTransferResponse, _impl_.payload_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayQueryTransferRequest, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -901,34 +976,37 @@ static const ::_pbi::MigrationSchema
         { 0, -1, -1, sizeof(::palm::musa::v1::WechatPayPrepayRequest_Amount)},
         { 10, 23, -1, sizeof(::palm::musa::v1::WechatPayPrepayRequest)},
         { 28, -1, -1, sizeof(::palm::musa::v1::WechatPayCloseOrderRequest)},
-        { 38, -1, -1, sizeof(::palm::musa::v1::WechatPayNativeQrCodeUrlResponse)},
-        { 48, -1, -1, sizeof(::palm::musa::v1::WechatPayTradeResponse)},
-        { 58, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryOrderByIdRequest)},
-        { 67, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryOrderByOutTradeNoRequest)},
-        { 76, -1, -1, sizeof(::palm::musa::v1::WechatPayJsapiPrepayIdResponse)},
-        { 91, -1, -1, sizeof(::palm::musa::v1::WechatPayBillDate)},
-        { 102, -1, -1, sizeof(::palm::musa::v1::WechatPayBillResponse)},
-        { 111, 121, -1, sizeof(::palm::musa::v1::WechatPayTradeBillRequest)},
-        { 123, 133, -1, sizeof(::palm::musa::v1::WechatPayFundFlowBillRequest)},
-        { 135, -1, -1, sizeof(::palm::musa::v1::WechatPayCreateRefundRequest_Amount)},
-        { 146, 158, -1, sizeof(::palm::musa::v1::WechatPayCreateRefundRequest)},
-        { 162, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryRefundRequest)},
-        { 171, -1, -1, sizeof(::palm::musa::v1::WechatPayRefundResponse)},
-        { 184, -1, -1, sizeof(::palm::musa::v1::WechatPayCreateTransferRequest_Batch)},
-        { 194, -1, -1, sizeof(::palm::musa::v1::WechatPayCreateTransferRequest_Detail)},
-        { 206, 218, -1, sizeof(::palm::musa::v1::WechatPayCreateTransferRequest)},
-        { 222, -1, -1, sizeof(::palm::musa::v1::WechatPayCreateTransferResponse_Detail)},
-        { 232, -1, -1, sizeof(::palm::musa::v1::WechatPayCreateTransferResponse)},
-        { 242, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryTransferRequest)},
-        { 254, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryTransferResponse_Detail)},
-        { 264, 275, -1, sizeof(::palm::musa::v1::WechatPayQueryTransferResponse_Batch)},
-        { 278, 288, -1, sizeof(::palm::musa::v1::WechatPayQueryTransferResponse)},
+        { 38, -1, -1, sizeof(::palm::musa::v1::Error)},
+        { 48, -1, -1, sizeof(::palm::musa::v1::WechatPayNativeQrCodeUrlResponse)},
+        { 58, -1, -1, sizeof(::palm::musa::v1::WechatPayTradeResponse)},
+        { 68, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryOrderByIdRequest)},
+        { 77, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryOrderByOutTradeNoRequest)},
+        { 86, -1, -1, sizeof(::palm::musa::v1::WechatPayJsapiPrepayIdResponse)},
+        { 101, -1, -1, sizeof(::palm::musa::v1::WechatPayBillDate)},
+        { 112, -1, -1, sizeof(::palm::musa::v1::WechatPayBillResponse)},
+        { 121, 131, -1, sizeof(::palm::musa::v1::WechatPayTradeBillRequest)},
+        { 133, 143, -1, sizeof(::palm::musa::v1::WechatPayFundFlowBillRequest)},
+        { 145, -1, -1, sizeof(::palm::musa::v1::WechatPayCreateRefundRequest_Amount)},
+        { 156, 168, -1, sizeof(::palm::musa::v1::WechatPayCreateRefundRequest)},
+        { 172, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryRefundRequest)},
+        { 181, -1, -1, sizeof(::palm::musa::v1::WechatPayRefundResponse)},
+        { 194, -1, -1, sizeof(::palm::musa::v1::WechatPayCreateTransferRequest_Batch)},
+        { 204, -1, -1, sizeof(::palm::musa::v1::WechatPayCreateTransferRequest_Detail)},
+        { 216, 229, -1, sizeof(::palm::musa::v1::WechatPayCreateTransferRequest)},
+        { 234, -1, -1, sizeof(::palm::musa::v1::WechatPayCreateTransferResponse_Detail)},
+        { 244, -1, -1, sizeof(::palm::musa::v1::WechatPayCreateTransferResponse_Succeeded)},
+        { 254, -1, -1, sizeof(::palm::musa::v1::WechatPayCreateTransferResponse)},
+        { 267, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryTransferRequest)},
+        { 279, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryTransferResponse_Detail)},
+        { 289, 300, -1, sizeof(::palm::musa::v1::WechatPayQueryTransferResponse_Batch)},
+        { 303, 313, -1, sizeof(::palm::musa::v1::WechatPayQueryTransferResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
     &::palm::musa::v1::_WechatPayPrepayRequest_Amount_default_instance_._instance,
     &::palm::musa::v1::_WechatPayPrepayRequest_default_instance_._instance,
     &::palm::musa::v1::_WechatPayCloseOrderRequest_default_instance_._instance,
+    &::palm::musa::v1::_Error_default_instance_._instance,
     &::palm::musa::v1::_WechatPayNativeQrCodeUrlResponse_default_instance_._instance,
     &::palm::musa::v1::_WechatPayTradeResponse_default_instance_._instance,
     &::palm::musa::v1::_WechatPayQueryOrderByIdRequest_default_instance_._instance,
@@ -946,6 +1024,7 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::palm::musa::v1::_WechatPayCreateTransferRequest_Detail_default_instance_._instance,
     &::palm::musa::v1::_WechatPayCreateTransferRequest_default_instance_._instance,
     &::palm::musa::v1::_WechatPayCreateTransferResponse_Detail_default_instance_._instance,
+    &::palm::musa::v1::_WechatPayCreateTransferResponse_Succeeded_default_instance_._instance,
     &::palm::musa::v1::_WechatPayCreateTransferResponse_default_instance_._instance,
     &::palm::musa::v1::_WechatPayQueryTransferRequest_default_instance_._instance,
     &::palm::musa::v1::_WechatPayQueryTransferResponse_Detail_default_instance_._instance,
@@ -962,7 +1041,8 @@ const char descriptor_table_protodef_musa_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
     "\r\n\005total\030\001 \001(\005\0221\n\010currency\030\002 \001(\0162\037.palm."
     "musa.v1.WechatPayCurrencyB\020\n\016_payer_open"
     "_id\"B\n\032WechatPayCloseOrderRequest\022\024\n\014out"
-    "_trade_no\030\001 \001(\t\022\016\n\006reason\030\002 \001(\t\"E\n Wecha"
+    "_trade_no\030\001 \001(\t\022\016\n\006reason\030\002 \001(\t\"&\n\005Error"
+    "\022\014\n\004code\030\001 \001(\t\022\017\n\007message\030\002 \001(\t\"E\n Wecha"
     "tPayNativeQrCodeUrlResponse\022\013\n\003url\030\001 \001(\t"
     "\022\024\n\014out_trade_no\030\002 \001(\t\"G\n\026WechatPayTrade"
     "Response\022\023\n\013trade_state\030\001 \001(\t\022\030\n\020trade_s"
@@ -997,68 +1077,73 @@ const char descriptor_table_protodef_musa_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
     " \001(\t\"\205\001\n\027WechatPayRefundResponse\022\025\n\rout_"
     "refund_no\030\001 \001(\t\022\017\n\007channel\030\002 \001(\t\022\016\n\006stat"
     "us\030\003 \001(\t\022\035\n\025user_received_account\030\004 \001(\t\022"
-    "\023\n\013create_time\030c \001(\t\"\277\002\n\036WechatPayCreate"
+    "\023\n\013create_time\030c \001(\t\"\353\002\n\036WechatPayCreate"
     "TransferRequest\022\016\n\006app_id\030\001 \001(\t\022A\n\005batch"
     "\030\002 \001(\01322.palm.musa.v1.WechatPayCreateTra"
     "nsferRequest.Batch\022D\n\007details\030\003 \003(\01323.pa"
     "lm.musa.v1.WechatPayCreateTransferReques"
-    "t.Detail\022\020\n\010scene_id\030\t \001(\t\032%\n\005Batch\022\014\n\004n"
-    "ame\030\001 \001(\t\022\016\n\006remark\030\002 \001(\t\032K\n\006Detail\022\017\n\007o"
-    "pen_id\030\001 \001(\t\022\020\n\010username\030\002 \001(\t\022\016\n\006amount"
-    "\030\003 \001(\003\022\016\n\006remark\030\004 \001(\t\"\260\001\n\037WechatPayCrea"
-    "teTransferResponse\022\024\n\014out_batch_no\030\001 \001(\t"
-    "\022E\n\007details\030\002 \003(\01324.palm.musa.v1.WechatP"
-    "ayCreateTransferResponse.Detail\0320\n\006Detai"
+    "t.Detail\022\020\n\010scene_id\030\t \001(\t\022\031\n\014out_batch_"
+    "no\030\013 \001(\tH\000\210\001\001\032%\n\005Batch\022\014\n\004name\030\001 \001(\t\022\016\n\006"
+    "remark\030\002 \001(\t\032K\n\006Detail\022\017\n\007open_id\030\001 \001(\t\022"
+    "\020\n\010username\030\002 \001(\t\022\016\n\006amount\030\003 \001(\003\022\016\n\006rem"
+    "ark\030\004 \001(\tB\017\n\r_out_batch_no\"\343\002\n\037WechatPay"
+    "CreateTransferResponse\022\024\n\014out_batch_no\030\001"
+    " \001(\t\022E\n\007details\030\002 \003(\01324.palm.musa.v1.Wec"
+    "hatPayCreateTransferResponse.Detail\022L\n\ts"
+    "ucceeded\030\013 \001(\01327.palm.musa.v1.WechatPayC"
+    "reateTransferResponse.SucceededH\000\022$\n\005err"
+    "or\030\014 \001(\0132\023.palm.musa.v1.ErrorH\000\0320\n\006Detai"
     "l\022\017\n\007open_id\030\001 \001(\t\022\025\n\rout_detail_no\030\002 \001("
-    "\t\"\325\001\n\035WechatPayQueryTransferRequest\022\024\n\014o"
-    "ut_batch_no\030\001 \001(\t\022\016\n\006offset\030\002 \001(\005\022\r\n\005lim"
-    "it\030\003 \001(\005\022O\n\rdetail_status\030\t \001(\01628.palm.m"
-    "usa.v1.WechatPayQueryTransferRequest.Det"
-    "ailStatus\".\n\014DetailStatus\022\007\n\003ALL\020\000\022\013\n\007SU"
-    "CCESS\020\001\022\010\n\004FAIL\020\002\"\255\002\n\036WechatPayQueryTran"
-    "sferResponse\022A\n\005batch\030\001 \001(\01322.palm.musa."
-    "v1.WechatPayQueryTransferResponse.Batch\022"
-    "D\n\007details\030\t \003(\01323.palm.musa.v1.WechatPa"
-    "yQueryTransferResponse.Detail\032/\n\006Detail\022"
-    "\025\n\rout_detail_no\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\032Q"
-    "\n\005Batch\022\016\n\006status\030\001 \001(\t\022\014\n\004type\030\002 \001(\t\022\031\n"
-    "\014close_reason\030\t \001(\tH\000\210\001\001B\017\n\r_close_reaso"
-    "n*\034\n\021WechatPayCurrency\022\007\n\003CNY\020\000*4\n\025Wecha"
-    "tPayNotifyAction\022\017\n\013TRANSCATION\020\000\022\n\n\006REF"
-    "UND\020\001*\034\n\020WechatPayTarType\022\010\n\004GZIP\020\0002s\n\017W"
-    "echatPayNative\022`\n\006Prepay\022$.palm.musa.v1."
-    "WechatPayPrepayRequest\032..palm.musa.v1.We"
-    "chatPayNativeQrCodeUrlResponse\"\0002\242\003\n\016Wec"
-    "hatPayJsapi\022^\n\006Prepay\022$.palm.musa.v1.Wec"
-    "hatPayPrepayRequest\032,.palm.musa.v1.Wecha"
-    "tPayJsapiPrepayIdResponse\"\000\022v\n\026QueryOrde"
-    "rByOutTradeNo\0224.palm.musa.v1.WechatPayQu"
-    "eryOrderByOutTradeNoRequest\032$.palm.musa."
-    "v1.WechatPayTradeResponse\"\000\022f\n\016QueryOrde"
-    "rById\022,.palm.musa.v1.WechatPayQueryOrder"
-    "ByIdRequest\032$.palm.musa.v1.WechatPayTrad"
-    "eResponse\"\000\022P\n\nCloseOrder\022(.palm.musa.v1"
-    ".WechatPayCloseOrderRequest\032\026.google.pro"
-    "tobuf.Empty\"\0002\307\001\n\rWechatPayBill\022W\n\005Trade"
-    "\022\'.palm.musa.v1.WechatPayTradeBillReques"
-    "t\032#.palm.musa.v1.WechatPayBillResponse\"\000"
-    "\022]\n\010FundFlow\022*.palm.musa.v1.WechatPayFun"
-    "dFlowBillRequest\032#.palm.musa.v1.WechatPa"
-    "yBillResponse\"\0002\315\001\n\017WechatPayRefund\022]\n\006C"
-    "reate\022*.palm.musa.v1.WechatPayCreateRefu"
-    "ndRequest\032%.palm.musa.v1.WechatPayRefund"
-    "Response\"\000\022[\n\005Query\022).palm.musa.v1.Wecha"
-    "tPayQueryRefundRequest\032%.palm.musa.v1.We"
-    "chatPayRefundResponse\"\0002\342\001\n\021WechatPayTra"
-    "nsfer\022g\n\006Create\022,.palm.musa.v1.WechatPay"
-    "CreateTransferRequest\032-.palm.musa.v1.Wec"
-    "hatPayCreateTransferResponse\"\000\022d\n\005Query\022"
-    "+.palm.musa.v1.WechatPayQueryTransferReq"
-    "uest\032,.palm.musa.v1.WechatPayQueryTransf"
-    "erResponse\"\0002C\n\006Health\0229\n\005Check\022\026.google"
-    ".protobuf.Empty\032\026.google.protobuf.Empty\""
-    "\000B.\n*com.github.saturn_xiv.palm.plugins."
-    "musa.v1P\001b\006proto3"
+    "\t\0322\n\tSucceeded\022\020\n\010batch_id\030\001 \001(\t\022\023\n\013crea"
+    "te_time\030\002 \001(\tB\t\n\007payload\"\325\001\n\035WechatPayQu"
+    "eryTransferRequest\022\024\n\014out_batch_no\030\001 \001(\t"
+    "\022\016\n\006offset\030\002 \001(\005\022\r\n\005limit\030\003 \001(\005\022O\n\rdetai"
+    "l_status\030\t \001(\01628.palm.musa.v1.WechatPayQ"
+    "ueryTransferRequest.DetailStatus\".\n\014Deta"
+    "ilStatus\022\007\n\003ALL\020\000\022\013\n\007SUCCESS\020\001\022\010\n\004FAIL\020\002"
+    "\"\255\002\n\036WechatPayQueryTransferResponse\022A\n\005b"
+    "atch\030\001 \001(\01322.palm.musa.v1.WechatPayQuery"
+    "TransferResponse.Batch\022D\n\007details\030\t \003(\0132"
+    "3.palm.musa.v1.WechatPayQueryTransferRes"
+    "ponse.Detail\032/\n\006Detail\022\025\n\rout_detail_no\030"
+    "\001 \001(\t\022\016\n\006status\030\002 \001(\t\032Q\n\005Batch\022\016\n\006status"
+    "\030\001 \001(\t\022\014\n\004type\030\002 \001(\t\022\031\n\014close_reason\030\t \001"
+    "(\tH\000\210\001\001B\017\n\r_close_reason*\034\n\021WechatPayCur"
+    "rency\022\007\n\003CNY\020\000*4\n\025WechatPayNotifyAction\022"
+    "\017\n\013TRANSCATION\020\000\022\n\n\006REFUND\020\001*\034\n\020WechatPa"
+    "yTarType\022\010\n\004GZIP\020\0002s\n\017WechatPayNative\022`\n"
+    "\006Prepay\022$.palm.musa.v1.WechatPayPrepayRe"
+    "quest\032..palm.musa.v1.WechatPayNativeQrCo"
+    "deUrlResponse\"\0002\242\003\n\016WechatPayJsapi\022^\n\006Pr"
+    "epay\022$.palm.musa.v1.WechatPayPrepayReque"
+    "st\032,.palm.musa.v1.WechatPayJsapiPrepayId"
+    "Response\"\000\022v\n\026QueryOrderByOutTradeNo\0224.p"
+    "alm.musa.v1.WechatPayQueryOrderByOutTrad"
+    "eNoRequest\032$.palm.musa.v1.WechatPayTrade"
+    "Response\"\000\022f\n\016QueryOrderById\022,.palm.musa"
+    ".v1.WechatPayQueryOrderByIdRequest\032$.pal"
+    "m.musa.v1.WechatPayTradeResponse\"\000\022P\n\nCl"
+    "oseOrder\022(.palm.musa.v1.WechatPayCloseOr"
+    "derRequest\032\026.google.protobuf.Empty\"\0002\307\001\n"
+    "\rWechatPayBill\022W\n\005Trade\022\'.palm.musa.v1.W"
+    "echatPayTradeBillRequest\032#.palm.musa.v1."
+    "WechatPayBillResponse\"\000\022]\n\010FundFlow\022*.pa"
+    "lm.musa.v1.WechatPayFundFlowBillRequest\032"
+    "#.palm.musa.v1.WechatPayBillResponse\"\0002\315"
+    "\001\n\017WechatPayRefund\022]\n\006Create\022*.palm.musa"
+    ".v1.WechatPayCreateRefundRequest\032%.palm."
+    "musa.v1.WechatPayRefundResponse\"\000\022[\n\005Que"
+    "ry\022).palm.musa.v1.WechatPayQueryRefundRe"
+    "quest\032%.palm.musa.v1.WechatPayRefundResp"
+    "onse\"\0002\342\001\n\021WechatPayTransfer\022g\n\006Create\022,"
+    ".palm.musa.v1.WechatPayCreateTransferReq"
+    "uest\032-.palm.musa.v1.WechatPayCreateTrans"
+    "ferResponse\"\000\022d\n\005Query\022+.palm.musa.v1.We"
+    "chatPayQueryTransferRequest\032,.palm.musa."
+    "v1.WechatPayQueryTransferResponse\"\0002C\n\006H"
+    "ealth\0229\n\005Check\022\026.google.protobuf.Empty\032\026"
+    ".google.protobuf.Empty\"\000B.\n*com.github.s"
+    "aturn_xiv.palm.plugins.musa.v1P\001b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_musa_2eproto_deps[1] =
     {
@@ -1068,13 +1153,13 @@ static ::absl::once_flag descriptor_table_musa_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_musa_2eproto = {
     false,
     false,
-    4217,
+    4480,
     descriptor_table_protodef_musa_2eproto,
     "musa.proto",
     &descriptor_table_musa_2eproto_once,
     descriptor_table_musa_2eproto_deps,
     1,
-    25,
+    27,
     schemas,
     file_default_instances,
     TableStruct_musa_2eproto::offsets,
@@ -2071,6 +2156,249 @@ void WechatPayCloseOrderRequest::InternalSwap(WechatPayCloseOrderRequest* other)
 }
 // ===================================================================
 
+class Error::_Internal {
+ public:
+};
+
+Error::Error(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:palm.musa.v1.Error)
+}
+Error::Error(const Error& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Error* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.code_) {}
+
+    , decltype(_impl_.message_) {}
+
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.code_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.code_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_code().empty()) {
+    _this->_impl_.code_.Set(from._internal_code(), _this->GetArenaForAllocation());
+  }
+  _impl_.message_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.message_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_message().empty()) {
+    _this->_impl_.message_.Set(from._internal_message(), _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:palm.musa.v1.Error)
+}
+
+inline void Error::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.code_) {}
+
+    , decltype(_impl_.message_) {}
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.code_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.code_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.message_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.message_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+Error::~Error() {
+  // @@protoc_insertion_point(destructor:palm.musa.v1.Error)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void Error::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.code_.Destroy();
+  _impl_.message_.Destroy();
+}
+
+void Error::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void Error::Clear() {
+// @@protoc_insertion_point(message_clear_start:palm.musa.v1.Error)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.code_.ClearToEmpty();
+  _impl_.message_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Error::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string code = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_code();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.musa.v1.Error.code"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // string message = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_message();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.musa.v1.Error.message"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+::uint8_t* Error::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:palm.musa.v1.Error)
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string code = 1;
+  if (!this->_internal_code().empty()) {
+    const std::string& _s = this->_internal_code();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.musa.v1.Error.code");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
+    const std::string& _s = this->_internal_message();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.musa.v1.Error.message");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:palm.musa.v1.Error)
+  return target;
+}
+
+::size_t Error::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:palm.musa.v1.Error)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string code = 1;
+  if (!this->_internal_code().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_code());
+  }
+
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_message());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Error::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    Error::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Error::GetClassData() const { return &_class_data_; }
+
+
+void Error::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<Error*>(&to_msg);
+  auto& from = static_cast<const Error&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.musa.v1.Error)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_code().empty()) {
+    _this->_internal_set_code(from._internal_code());
+  }
+  if (!from._internal_message().empty()) {
+    _this->_internal_set_message(from._internal_message());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Error::CopyFrom(const Error& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:palm.musa.v1.Error)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Error::IsInitialized() const {
+  return true;
+}
+
+void Error::InternalSwap(Error* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, lhs_arena,
+                                       &other->_impl_.code_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, lhs_arena,
+                                       &other->_impl_.message_, rhs_arena);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Error::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
+      file_level_metadata_musa_2eproto[3]);
+}
+// ===================================================================
+
 class WechatPayNativeQrCodeUrlResponse::_Internal {
  public:
 };
@@ -2310,7 +2638,7 @@ void WechatPayNativeQrCodeUrlResponse::InternalSwap(WechatPayNativeQrCodeUrlResp
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayNativeQrCodeUrlResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[3]);
+      file_level_metadata_musa_2eproto[4]);
 }
 // ===================================================================
 
@@ -2553,7 +2881,7 @@ void WechatPayTradeResponse::InternalSwap(WechatPayTradeResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayTradeResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[4]);
+      file_level_metadata_musa_2eproto[5]);
 }
 // ===================================================================
 
@@ -2749,7 +3077,7 @@ void WechatPayQueryOrderByIdRequest::InternalSwap(WechatPayQueryOrderByIdRequest
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayQueryOrderByIdRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[5]);
+      file_level_metadata_musa_2eproto[6]);
 }
 // ===================================================================
 
@@ -2945,7 +3273,7 @@ void WechatPayQueryOrderByOutTradeNoRequest::InternalSwap(WechatPayQueryOrderByO
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayQueryOrderByOutTradeNoRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[6]);
+      file_level_metadata_musa_2eproto[7]);
 }
 // ===================================================================
 
@@ -3423,7 +3751,7 @@ void WechatPayJsapiPrepayIdResponse::InternalSwap(WechatPayJsapiPrepayIdResponse
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayJsapiPrepayIdResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[7]);
+      file_level_metadata_musa_2eproto[8]);
 }
 // ===================================================================
 
@@ -3657,7 +3985,7 @@ void WechatPayBillDate::InternalSwap(WechatPayBillDate* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayBillDate::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[8]);
+      file_level_metadata_musa_2eproto[9]);
 }
 // ===================================================================
 
@@ -3850,7 +4178,7 @@ void WechatPayBillResponse::InternalSwap(WechatPayBillResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayBillResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[9]);
+      file_level_metadata_musa_2eproto[10]);
 }
 // ===================================================================
 
@@ -4092,7 +4420,7 @@ void WechatPayTradeBillRequest::InternalSwap(WechatPayTradeBillRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayTradeBillRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[10]);
+      file_level_metadata_musa_2eproto[11]);
 }
 // ===================================================================
 
@@ -4334,7 +4662,7 @@ void WechatPayFundFlowBillRequest::InternalSwap(WechatPayFundFlowBillRequest* ot
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayFundFlowBillRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[11]);
+      file_level_metadata_musa_2eproto[12]);
 }
 // ===================================================================
 
@@ -4569,7 +4897,7 @@ void WechatPayCreateRefundRequest_Amount::InternalSwap(WechatPayCreateRefundRequ
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayCreateRefundRequest_Amount::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[12]);
+      file_level_metadata_musa_2eproto[13]);
 }
 // ===================================================================
 
@@ -4917,7 +5245,7 @@ void WechatPayCreateRefundRequest::InternalSwap(WechatPayCreateRefundRequest* ot
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayCreateRefundRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[13]);
+      file_level_metadata_musa_2eproto[14]);
 }
 // ===================================================================
 
@@ -5113,7 +5441,7 @@ void WechatPayQueryRefundRequest::InternalSwap(WechatPayQueryRefundRequest* othe
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayQueryRefundRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[14]);
+      file_level_metadata_musa_2eproto[15]);
 }
 // ===================================================================
 
@@ -5497,7 +5825,7 @@ void WechatPayRefundResponse::InternalSwap(WechatPayRefundResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayRefundResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[15]);
+      file_level_metadata_musa_2eproto[16]);
 }
 // ===================================================================
 
@@ -5740,7 +6068,7 @@ void WechatPayCreateTransferRequest_Batch::InternalSwap(WechatPayCreateTransferR
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayCreateTransferRequest_Batch::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[16]);
+      file_level_metadata_musa_2eproto[17]);
 }
 // ===================================================================
 
@@ -6063,7 +6391,7 @@ void WechatPayCreateTransferRequest_Detail::InternalSwap(WechatPayCreateTransfer
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayCreateTransferRequest_Detail::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[17]);
+      file_level_metadata_musa_2eproto[18]);
 }
 // ===================================================================
 
@@ -6074,6 +6402,9 @@ class WechatPayCreateTransferRequest::_Internal {
     8 * PROTOBUF_FIELD_OFFSET(WechatPayCreateTransferRequest, _impl_._has_bits_);
   static const ::palm::musa::v1::WechatPayCreateTransferRequest_Batch& batch(const WechatPayCreateTransferRequest* msg);
   static void set_has_batch(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_out_batch_no(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
 };
@@ -6098,6 +6429,8 @@ WechatPayCreateTransferRequest::WechatPayCreateTransferRequest(const WechatPayCr
 
     , decltype(_impl_.scene_id_) {}
 
+    , decltype(_impl_.out_batch_no_) {}
+
     , decltype(_impl_.batch_){nullptr}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -6115,7 +6448,14 @@ WechatPayCreateTransferRequest::WechatPayCreateTransferRequest(const WechatPayCr
   if (!from._internal_scene_id().empty()) {
     _this->_impl_.scene_id_.Set(from._internal_scene_id(), _this->GetArenaForAllocation());
   }
+  _impl_.out_batch_no_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.out_batch_no_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.out_batch_no_.Set(from._internal_out_batch_no(), _this->GetArenaForAllocation());
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
     _this->_impl_.batch_ = new ::palm::musa::v1::WechatPayCreateTransferRequest_Batch(*from._impl_.batch_);
   }
   // @@protoc_insertion_point(copy_constructor:palm.musa.v1.WechatPayCreateTransferRequest)
@@ -6131,6 +6471,8 @@ inline void WechatPayCreateTransferRequest::SharedCtor(::_pb::Arena* arena) {
 
     , decltype(_impl_.scene_id_) {}
 
+    , decltype(_impl_.out_batch_no_) {}
+
     , decltype(_impl_.batch_){nullptr}
   };
   _impl_.app_id_.InitDefault();
@@ -6140,6 +6482,10 @@ inline void WechatPayCreateTransferRequest::SharedCtor(::_pb::Arena* arena) {
   _impl_.scene_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.scene_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.out_batch_no_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.out_batch_no_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
@@ -6157,6 +6503,7 @@ inline void WechatPayCreateTransferRequest::SharedDtor() {
   _internal_mutable_details()->~RepeatedPtrField();
   _impl_.app_id_.Destroy();
   _impl_.scene_id_.Destroy();
+  _impl_.out_batch_no_.Destroy();
   if (this != internal_default_instance()) delete _impl_.batch_;
 }
 
@@ -6174,9 +6521,14 @@ void WechatPayCreateTransferRequest::Clear() {
   _impl_.app_id_.ClearToEmpty();
   _impl_.scene_id_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.batch_ != nullptr);
-    _impl_.batch_->Clear();
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _impl_.out_batch_no_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.batch_ != nullptr);
+      _impl_.batch_->Clear();
+    }
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -6234,6 +6586,17 @@ const char* WechatPayCreateTransferRequest::_InternalParse(const char* ptr, ::_p
           goto handle_unusual;
         }
         continue;
+      // optional string out_batch_no = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 90)) {
+          auto str = _internal_mutable_out_batch_no();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.musa.v1.WechatPayCreateTransferRequest.out_batch_no"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -6274,7 +6637,7 @@ failure:
 
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.musa.v1.WechatPayCreateTransferRequest.Batch batch = 2;
-  if (cached_has_bits & 0x00000001u) {
+  if (cached_has_bits & 0x00000002u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(2, _Internal::batch(this),
         _Internal::batch(this).GetCachedSize(), target, stream);
@@ -6294,6 +6657,14 @@ failure:
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
         _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.musa.v1.WechatPayCreateTransferRequest.scene_id");
     target = stream->WriteStringMaybeAliased(9, _s, target);
+  }
+
+  // optional string out_batch_no = 11;
+  if (cached_has_bits & 0x00000001u) {
+    const std::string& _s = this->_internal_out_batch_no();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.musa.v1.WechatPayCreateTransferRequest.out_batch_no");
+    target = stream->WriteStringMaybeAliased(11, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -6331,14 +6702,22 @@ failure:
                                     this->_internal_scene_id());
   }
 
-  // .palm.musa.v1.WechatPayCreateTransferRequest.Batch batch = 2;
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.batch_);
-  }
+  if (cached_has_bits & 0x00000003u) {
+    // optional string out_batch_no = 11;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                      this->_internal_out_batch_no());
+    }
 
+    // .palm.musa.v1.WechatPayCreateTransferRequest.Batch batch = 2;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.batch_);
+    }
+
+  }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -6364,9 +6743,15 @@ void WechatPayCreateTransferRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message&
   if (!from._internal_scene_id().empty()) {
     _this->_internal_set_scene_id(from._internal_scene_id());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_internal_mutable_batch()->::palm::musa::v1::WechatPayCreateTransferRequest_Batch::MergeFrom(
-        from._internal_batch());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_set_out_batch_no(from._internal_out_batch_no());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_batch()->::palm::musa::v1::WechatPayCreateTransferRequest_Batch::MergeFrom(
+          from._internal_batch());
+    }
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -6393,13 +6778,15 @@ void WechatPayCreateTransferRequest::InternalSwap(WechatPayCreateTransferRequest
                                        &other->_impl_.app_id_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.scene_id_, lhs_arena,
                                        &other->_impl_.scene_id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.out_batch_no_, lhs_arena,
+                                       &other->_impl_.out_batch_no_, rhs_arena);
   swap(_impl_.batch_, other->_impl_.batch_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayCreateTransferRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[18]);
+      file_level_metadata_musa_2eproto[19]);
 }
 // ===================================================================
 
@@ -6642,14 +7029,299 @@ void WechatPayCreateTransferResponse_Detail::InternalSwap(WechatPayCreateTransfe
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayCreateTransferResponse_Detail::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[19]);
+      file_level_metadata_musa_2eproto[20]);
+}
+// ===================================================================
+
+class WechatPayCreateTransferResponse_Succeeded::_Internal {
+ public:
+};
+
+WechatPayCreateTransferResponse_Succeeded::WechatPayCreateTransferResponse_Succeeded(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:palm.musa.v1.WechatPayCreateTransferResponse.Succeeded)
+}
+WechatPayCreateTransferResponse_Succeeded::WechatPayCreateTransferResponse_Succeeded(const WechatPayCreateTransferResponse_Succeeded& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  WechatPayCreateTransferResponse_Succeeded* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.batch_id_) {}
+
+    , decltype(_impl_.create_time_) {}
+
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.batch_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.batch_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_batch_id().empty()) {
+    _this->_impl_.batch_id_.Set(from._internal_batch_id(), _this->GetArenaForAllocation());
+  }
+  _impl_.create_time_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.create_time_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_create_time().empty()) {
+    _this->_impl_.create_time_.Set(from._internal_create_time(), _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:palm.musa.v1.WechatPayCreateTransferResponse.Succeeded)
+}
+
+inline void WechatPayCreateTransferResponse_Succeeded::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.batch_id_) {}
+
+    , decltype(_impl_.create_time_) {}
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.batch_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.batch_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.create_time_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.create_time_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+WechatPayCreateTransferResponse_Succeeded::~WechatPayCreateTransferResponse_Succeeded() {
+  // @@protoc_insertion_point(destructor:palm.musa.v1.WechatPayCreateTransferResponse.Succeeded)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void WechatPayCreateTransferResponse_Succeeded::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.batch_id_.Destroy();
+  _impl_.create_time_.Destroy();
+}
+
+void WechatPayCreateTransferResponse_Succeeded::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void WechatPayCreateTransferResponse_Succeeded::Clear() {
+// @@protoc_insertion_point(message_clear_start:palm.musa.v1.WechatPayCreateTransferResponse.Succeeded)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.batch_id_.ClearToEmpty();
+  _impl_.create_time_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* WechatPayCreateTransferResponse_Succeeded::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string batch_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_batch_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.musa.v1.WechatPayCreateTransferResponse.Succeeded.batch_id"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // string create_time = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_create_time();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.musa.v1.WechatPayCreateTransferResponse.Succeeded.create_time"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+::uint8_t* WechatPayCreateTransferResponse_Succeeded::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:palm.musa.v1.WechatPayCreateTransferResponse.Succeeded)
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string batch_id = 1;
+  if (!this->_internal_batch_id().empty()) {
+    const std::string& _s = this->_internal_batch_id();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.musa.v1.WechatPayCreateTransferResponse.Succeeded.batch_id");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  // string create_time = 2;
+  if (!this->_internal_create_time().empty()) {
+    const std::string& _s = this->_internal_create_time();
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.musa.v1.WechatPayCreateTransferResponse.Succeeded.create_time");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:palm.musa.v1.WechatPayCreateTransferResponse.Succeeded)
+  return target;
+}
+
+::size_t WechatPayCreateTransferResponse_Succeeded::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:palm.musa.v1.WechatPayCreateTransferResponse.Succeeded)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string batch_id = 1;
+  if (!this->_internal_batch_id().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_batch_id());
+  }
+
+  // string create_time = 2;
+  if (!this->_internal_create_time().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_create_time());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData WechatPayCreateTransferResponse_Succeeded::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    WechatPayCreateTransferResponse_Succeeded::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*WechatPayCreateTransferResponse_Succeeded::GetClassData() const { return &_class_data_; }
+
+
+void WechatPayCreateTransferResponse_Succeeded::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<WechatPayCreateTransferResponse_Succeeded*>(&to_msg);
+  auto& from = static_cast<const WechatPayCreateTransferResponse_Succeeded&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.musa.v1.WechatPayCreateTransferResponse.Succeeded)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_batch_id().empty()) {
+    _this->_internal_set_batch_id(from._internal_batch_id());
+  }
+  if (!from._internal_create_time().empty()) {
+    _this->_internal_set_create_time(from._internal_create_time());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void WechatPayCreateTransferResponse_Succeeded::CopyFrom(const WechatPayCreateTransferResponse_Succeeded& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:palm.musa.v1.WechatPayCreateTransferResponse.Succeeded)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool WechatPayCreateTransferResponse_Succeeded::IsInitialized() const {
+  return true;
+}
+
+void WechatPayCreateTransferResponse_Succeeded::InternalSwap(WechatPayCreateTransferResponse_Succeeded* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.batch_id_, lhs_arena,
+                                       &other->_impl_.batch_id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.create_time_, lhs_arena,
+                                       &other->_impl_.create_time_, rhs_arena);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata WechatPayCreateTransferResponse_Succeeded::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
+      file_level_metadata_musa_2eproto[21]);
 }
 // ===================================================================
 
 class WechatPayCreateTransferResponse::_Internal {
  public:
+  static constexpr ::int32_t kOneofCaseOffset =
+    PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayCreateTransferResponse, _impl_._oneof_case_);
+  static const ::palm::musa::v1::WechatPayCreateTransferResponse_Succeeded& succeeded(const WechatPayCreateTransferResponse* msg);
+  static const ::palm::musa::v1::Error& error(const WechatPayCreateTransferResponse* msg);
 };
 
+const ::palm::musa::v1::WechatPayCreateTransferResponse_Succeeded&
+WechatPayCreateTransferResponse::_Internal::succeeded(const WechatPayCreateTransferResponse* msg) {
+  return *msg->_impl_.payload_.succeeded_;
+}
+const ::palm::musa::v1::Error&
+WechatPayCreateTransferResponse::_Internal::error(const WechatPayCreateTransferResponse* msg) {
+  return *msg->_impl_.payload_.error_;
+}
+void WechatPayCreateTransferResponse::set_allocated_succeeded(::palm::musa::v1::WechatPayCreateTransferResponse_Succeeded* succeeded) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_payload();
+  if (succeeded) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(succeeded);
+    if (message_arena != submessage_arena) {
+      succeeded = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, succeeded, submessage_arena);
+    }
+    set_has_succeeded();
+    _impl_.payload_.succeeded_ = succeeded;
+  }
+  // @@protoc_insertion_point(field_set_allocated:palm.musa.v1.WechatPayCreateTransferResponse.succeeded)
+}
+void WechatPayCreateTransferResponse::set_allocated_error(::palm::musa::v1::Error* error) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_payload();
+  if (error) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(error);
+    if (message_arena != submessage_arena) {
+      error = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, error, submessage_arena);
+    }
+    set_has_error();
+    _impl_.payload_.error_ = error;
+  }
+  // @@protoc_insertion_point(field_set_allocated:palm.musa.v1.WechatPayCreateTransferResponse.error)
+}
 WechatPayCreateTransferResponse::WechatPayCreateTransferResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
@@ -6662,7 +7334,9 @@ WechatPayCreateTransferResponse::WechatPayCreateTransferResponse(const WechatPay
       decltype(_impl_.details_){from._impl_.details_}
     , decltype(_impl_.out_batch_no_) {}
 
-    , /*decltype(_impl_._cached_size_)*/{}};
+    , decltype(_impl_.payload_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.out_batch_no_.InitDefault();
@@ -6671,6 +7345,22 @@ WechatPayCreateTransferResponse::WechatPayCreateTransferResponse(const WechatPay
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_out_batch_no().empty()) {
     _this->_impl_.out_batch_no_.Set(from._internal_out_batch_no(), _this->GetArenaForAllocation());
+  }
+  clear_has_payload();
+  switch (from.payload_case()) {
+    case kSucceeded: {
+      _this->_internal_mutable_succeeded()->::palm::musa::v1::WechatPayCreateTransferResponse_Succeeded::MergeFrom(
+          from._internal_succeeded());
+      break;
+    }
+    case kError: {
+      _this->_internal_mutable_error()->::palm::musa::v1::Error::MergeFrom(
+          from._internal_error());
+      break;
+    }
+    case PAYLOAD_NOT_SET: {
+      break;
+    }
   }
   // @@protoc_insertion_point(copy_constructor:palm.musa.v1.WechatPayCreateTransferResponse)
 }
@@ -6681,12 +7371,15 @@ inline void WechatPayCreateTransferResponse::SharedCtor(::_pb::Arena* arena) {
       decltype(_impl_.details_){arena}
     , decltype(_impl_.out_batch_no_) {}
 
+    , decltype(_impl_.payload_){}
     , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}
   };
   _impl_.out_batch_no_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.out_batch_no_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  clear_has_payload();
 }
 
 WechatPayCreateTransferResponse::~WechatPayCreateTransferResponse() {
@@ -6702,11 +7395,37 @@ inline void WechatPayCreateTransferResponse::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _internal_mutable_details()->~RepeatedPtrField();
   _impl_.out_batch_no_.Destroy();
+  if (has_payload()) {
+    clear_payload();
+  }
 }
 
 void WechatPayCreateTransferResponse::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
+
+void WechatPayCreateTransferResponse::clear_payload() {
+// @@protoc_insertion_point(one_of_clear_start:palm.musa.v1.WechatPayCreateTransferResponse)
+  switch (payload_case()) {
+    case kSucceeded: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.payload_.succeeded_;
+      }
+      break;
+    }
+    case kError: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.payload_.error_;
+      }
+      break;
+    }
+    case PAYLOAD_NOT_SET: {
+      break;
+    }
+  }
+  _impl_._oneof_case_[0] = PAYLOAD_NOT_SET;
+}
+
 
 void WechatPayCreateTransferResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.musa.v1.WechatPayCreateTransferResponse)
@@ -6716,6 +7435,7 @@ void WechatPayCreateTransferResponse::Clear() {
 
   _internal_mutable_details()->Clear();
   _impl_.out_batch_no_.ClearToEmpty();
+  clear_payload();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -6746,6 +7466,24 @@ const char* WechatPayCreateTransferResponse::_InternalParse(const char* ptr, ::_
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // .palm.musa.v1.WechatPayCreateTransferResponse.Succeeded succeeded = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 90)) {
+          ptr = ctx->ParseMessage(_internal_mutable_succeeded(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // .palm.musa.v1.Error error = 12;
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 98)) {
+          ptr = ctx->ParseMessage(_internal_mutable_error(), ptr);
+          CHK_(ptr);
         } else {
           goto handle_unusual;
         }
@@ -6795,6 +7533,21 @@ failure:
         InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
   }
 
+  switch (payload_case()) {
+    case kSucceeded: {
+      target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(11, _Internal::succeeded(this),
+          _Internal::succeeded(this).GetCachedSize(), target, stream);
+      break;
+    }
+    case kError: {
+      target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(12, _Internal::error(this),
+          _Internal::error(this).GetCachedSize(), target, stream);
+      break;
+    }
+    default: ;
+  }
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -6824,6 +7577,25 @@ failure:
                                     this->_internal_out_batch_no());
   }
 
+  switch (payload_case()) {
+    // .palm.musa.v1.WechatPayCreateTransferResponse.Succeeded succeeded = 11;
+    case kSucceeded: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.payload_.succeeded_);
+      break;
+    }
+    // .palm.musa.v1.Error error = 12;
+    case kError: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.payload_.error_);
+      break;
+    }
+    case PAYLOAD_NOT_SET: {
+      break;
+    }
+  }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -6845,6 +7617,21 @@ void WechatPayCreateTransferResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message
   _this->_internal_mutable_details()->MergeFrom(from._internal_details());
   if (!from._internal_out_batch_no().empty()) {
     _this->_internal_set_out_batch_no(from._internal_out_batch_no());
+  }
+  switch (from.payload_case()) {
+    case kSucceeded: {
+      _this->_internal_mutable_succeeded()->::palm::musa::v1::WechatPayCreateTransferResponse_Succeeded::MergeFrom(
+          from._internal_succeeded());
+      break;
+    }
+    case kError: {
+      _this->_internal_mutable_error()->::palm::musa::v1::Error::MergeFrom(
+          from._internal_error());
+      break;
+    }
+    case PAYLOAD_NOT_SET: {
+      break;
+    }
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -6868,12 +7655,14 @@ void WechatPayCreateTransferResponse::InternalSwap(WechatPayCreateTransferRespon
   _internal_mutable_details()->InternalSwap(other->_internal_mutable_details());
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.out_batch_no_, lhs_arena,
                                        &other->_impl_.out_batch_no_, rhs_arena);
+  swap(_impl_.payload_, other->_impl_.payload_);
+  swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayCreateTransferResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[20]);
+      file_level_metadata_musa_2eproto[22]);
 }
 // ===================================================================
 
@@ -7169,7 +7958,7 @@ void WechatPayQueryTransferRequest::InternalSwap(WechatPayQueryTransferRequest* 
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayQueryTransferRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[21]);
+      file_level_metadata_musa_2eproto[23]);
 }
 // ===================================================================
 
@@ -7412,7 +8201,7 @@ void WechatPayQueryTransferResponse_Detail::InternalSwap(WechatPayQueryTransferR
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayQueryTransferResponse_Detail::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[22]);
+      file_level_metadata_musa_2eproto[24]);
 }
 // ===================================================================
 
@@ -7719,7 +8508,7 @@ void WechatPayQueryTransferResponse_Batch::InternalSwap(WechatPayQueryTransferRe
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayQueryTransferResponse_Batch::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[23]);
+      file_level_metadata_musa_2eproto[25]);
 }
 // ===================================================================
 
@@ -7959,7 +8748,7 @@ void WechatPayQueryTransferResponse::InternalSwap(WechatPayQueryTransferResponse
 ::PROTOBUF_NAMESPACE_ID::Metadata WechatPayQueryTransferResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_musa_2eproto_getter, &descriptor_table_musa_2eproto_once,
-      file_level_metadata_musa_2eproto[24]);
+      file_level_metadata_musa_2eproto[26]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1
@@ -7977,6 +8766,10 @@ Arena::CreateMaybeMessage< ::palm::musa::v1::WechatPayPrepayRequest >(Arena* are
 template<> PROTOBUF_NOINLINE ::palm::musa::v1::WechatPayCloseOrderRequest*
 Arena::CreateMaybeMessage< ::palm::musa::v1::WechatPayCloseOrderRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::musa::v1::WechatPayCloseOrderRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::musa::v1::Error*
+Arena::CreateMaybeMessage< ::palm::musa::v1::Error >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::musa::v1::Error >(arena);
 }
 template<> PROTOBUF_NOINLINE ::palm::musa::v1::WechatPayNativeQrCodeUrlResponse*
 Arena::CreateMaybeMessage< ::palm::musa::v1::WechatPayNativeQrCodeUrlResponse >(Arena* arena) {
@@ -8045,6 +8838,10 @@ Arena::CreateMaybeMessage< ::palm::musa::v1::WechatPayCreateTransferRequest >(Ar
 template<> PROTOBUF_NOINLINE ::palm::musa::v1::WechatPayCreateTransferResponse_Detail*
 Arena::CreateMaybeMessage< ::palm::musa::v1::WechatPayCreateTransferResponse_Detail >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::musa::v1::WechatPayCreateTransferResponse_Detail >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::musa::v1::WechatPayCreateTransferResponse_Succeeded*
+Arena::CreateMaybeMessage< ::palm::musa::v1::WechatPayCreateTransferResponse_Succeeded >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::musa::v1::WechatPayCreateTransferResponse_Succeeded >(arena);
 }
 template<> PROTOBUF_NOINLINE ::palm::musa::v1::WechatPayCreateTransferResponse*
 Arena::CreateMaybeMessage< ::palm::musa::v1::WechatPayCreateTransferResponse >(Arena* arena) {

@@ -69,4 +69,21 @@ public interface WechatPayCreateTransferRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getSceneIdBytes();
+
+  /**
+   * <code>optional string out_batch_no = 11;</code>
+   * @return Whether the outBatchNo field is set.
+   */
+  boolean hasOutBatchNo();
+  /**
+   * <code>optional string out_batch_no = 11;</code>
+   * @return The outBatchNo.
+   */
+  java.lang.String getOutBatchNo();
+  /**
+   * <code>optional string out_batch_no = 11;</code>
+   * @return The bytes for outBatchNo.
+   */
+  com.google.protobuf.ByteString
+      getOutBatchNoBytes();
 }

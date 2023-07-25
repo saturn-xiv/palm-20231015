@@ -36,6 +36,7 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
     public void queryOrderById(WechatPayQueryOrderByIdRequest request, StreamObserver<WechatPayTradeResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
+        logger.info("query order by transaction id {}", request.getTransactionId());
         final var response = wechatPay.queryOrderById(request.getTransactionId());
 
         responseObserver.onNext(transaction2response(response));
@@ -46,6 +47,7 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
     public void queryOrderByOutTradeNo(WechatPayQueryOrderByOutTradeNoRequest request, StreamObserver<WechatPayTradeResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
+        logger.info("query order by out-trade-no {}", request.getOutTradeNo());
         final var response = wechatPay.queryOrderByOutTradeNo(request.getOutTradeNo());
 
         responseObserver.onNext(transaction2response(response));
@@ -58,6 +60,8 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
 
         final var outTradeNo = WechatPayClient.outNo(OutNoType.TRADE);
         final var notifyUrl = WechatPayClient.notifyUrl(request.getNotifyHost(), WechatPayNotifyAction.TRANSCATION);
+
+        logger.info("prepay jsapi out-trade-no {}", outTradeNo);
         var response = wechatPay.prepayWithRequestPayment(request.getAppId(), request.getPayerOpenId(),
                 outTradeNo,
                 WechatPayClient.currency(request.getAmount().getCurrency()), request.getAmount().getTotal(), request.getDescription(),
