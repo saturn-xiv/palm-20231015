@@ -55,7 +55,7 @@ RUN apt-get install -y zsh git locales locales-all rsync openssh-client sshpass 
     cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio mold \
     debhelper bison flex ninja-build \
     musl-tools musl-dev \
-    python3 python3-distutils python3-dev python3-pip virtualenv \
+    python3 python3-distutils python3-dev python3-pip python3-full virtualenv \
     php-fpm php-mbstring php-json php-xml php-pear php-bcmath php-curl php-zip \
     php-mysql php-pgsql php-sqlite3 php-redis php-mongodb php-amqp php-zmq \
     php-imagick php-gd phpunit \
@@ -130,7 +130,6 @@ RUN wget -q -P $HOME/downloads https://more.musl.cc/x86_64-linux-musl/riscv64-li
 
 # https://pip.pypa.io/en/stable/installation/
 # RUN sh -c ". $HOME/.profile && python3 -m ensurepip --upgrade"
-RUN apt install -y python3-full
 RUN sh -c ". $HOME/.profile \
     && python3 -m venv $HOME/local/python3 \
     && . $HOME/local/python3/bin/activate \
@@ -244,7 +243,7 @@ RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
     && echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.zshrc
 
 # https://opensearch.org/downloads.html#opensearch
-ENV OPENSEARCH_VERSION "2.8.0"
+ENV OPENSEARCH_VERSION "2.9.0"
 RUN wget -q -P $HOME/downloads \
     https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
 RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C /opt \
