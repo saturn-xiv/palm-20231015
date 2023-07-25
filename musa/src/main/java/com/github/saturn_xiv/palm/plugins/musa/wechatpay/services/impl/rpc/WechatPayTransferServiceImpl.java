@@ -41,6 +41,7 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
                 tdi.setOutDetailNo(outDetailsNo);
                 tdi.setOpenid(it.getOpenId());
                 tdi.setUserName(it.getUsername());
+                logger.debug("add detail ({},{}) {} {} {}", it.getUsername(), it.getOpenId(), outDetailsNo, it.getAmount(), it.getRemark());
                 transferDetailInputList.add(tdi);
             }
             transferDetailList.add(WechatPayCreateTransferResponse.Detail.newBuilder()
