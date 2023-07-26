@@ -1,0 +1,6 @@
+not-found:
+  title: Not found
+  description: The page you are looking for isn’t here.
+forbidden:
+  title: Forbidden
+  description: You don't have permission to access this resource.

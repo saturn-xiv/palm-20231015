@@ -1,15 +1,19 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { useNavigate } from "react-router-dom";
+import { useIntl } from "react-intl";
+import Grid from "@mui/material/Grid";
 
 interface IProps {
-  title: string;
-  description: string;
+  id: string;
   logo: string;
 }
 
-const Widget = ({ title, description, logo }: IProps) => {
+const Widget = ({ id, logo }: IProps) => {
   const navigate = useNavigate();
+  const intl = useIntl();
+  const title = intl.formatMessage({ id: `errors.${id}.title` });
   return (
     <Box
       component="main"
@@ -32,7 +36,7 @@ const Widget = ({ title, description, logo }: IProps) => {
             {title}
           </Typography>
           <Typography align="center" color="textPrimary" variant="subtitle2">
-            {description}
+            {intl.formatMessage({ id: `errors.${id}.description` })}
           </Typography>
           <Box sx={{ textAlign: "center" }}>
             <img
@@ -47,18 +51,34 @@ const Widget = ({ title, description, logo }: IProps) => {
             />
           </Box>
 
-          <Button
-            component="a"
-            onClick={() => {
-              navigate(-1);
-            }}
-            startIcon={<ArrowBackIcon fontSize="small" />}
-            sx={{ mt: 3 }}
-            variant="contained"
-          >
-            {/* TODO */}
-            Go back to dashboard
-          </Button>
+          <Grid container>
+            <Grid item xs>
+              <Button
+                component="a"
+                onClick={() => {
+                  navigate(-1);
+                }}
+                startIcon={<ArrowBackIcon fontSize="small" />}
+                sx={{ mt: 3 }}
+                variant="text"
+              >
+                {intl.formatMessage({ id: "buttons.go-back" })}
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                component="a"
+                onClick={() => {
+                  navigate("/");
+                }}
+                startIcon={<HomeOutlinedIcon fontSize="small" />}
+                sx={{ mt: 3 }}
+                variant="text"
+              >
+                {intl.formatMessage({ id: "buttons.go-home" })}
+              </Button>
+            </Grid>
+          </Grid>
         </Box>
       </Container>
     </Box>

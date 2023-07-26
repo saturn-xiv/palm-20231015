@@ -12,11 +12,11 @@ import {
   Typography,
 } from "@mui/material";
 
-import GoogleOauthButton from "../../components/nut/users/sign-in/Google";
+// import GoogleOauthButton from "../../../components/nut/users/sign-in/Google";
 
 const Widget = () => {
   const [tab, setTab] = useState("email");
-  const [emailSent, setEmailSent] = useState(false);
+  //  const [emailSent, setEmailSent] = useState(false);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -106,7 +106,7 @@ const Widget = () => {
               </Typography>
               <Tabs onChange={handleTabChange} sx={{ mb: 3 }} value={tab}>
                 <Tab label="Email" value="email" />
-                <Tab label="Phone Number" value="phoneNumber" />
+                <Tab label="Phone Number" value="phone" />
               </Tabs>
               {tab === "email" && (
                 <div>
@@ -150,7 +150,7 @@ const Widget = () => {
                   </Button>
                 </div>
               )}
-              {tab === "phoneNumber" && (
+              {tab === "phone" && (
                 <div>
                   <Typography sx={{ mb: 1 }} variant="h6">
                     Not available in the demo
@@ -161,7 +161,8 @@ const Widget = () => {
 
               <div>
                 {process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID && (
-                  <GoogleOauthButton />
+                  // <GoogleOauthButton />
+                  <></>
                 )}
               </div>
             </Box>

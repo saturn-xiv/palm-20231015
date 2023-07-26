@@ -1,11 +1,8 @@
 import Layout from "../layouts/Error";
-import logo from "../assets/unauthorised.svg";
+import logo from "../assets/unauthorized.svg";
 
 const Widget = () => {
-  // TODO
-  const title = "forbidden";
-  const description = "403";
-  return <Layout title={title} description={description} logo={logo} />;
+  return <Layout id="forbidden" logo={logo} />;
 };
 
 export default Widget;
