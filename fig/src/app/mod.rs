@@ -130,16 +130,17 @@ pub async fn launch() -> Result<()> {
         let db = cfg.postgresql.open()?;
         let mut db = db.get()?;
         let db = db.deref_mut();
-        let mut enf = cfg.postgresql.casbin().await?;
 
         {
             if args.command == SubCommand::UserList {
                 return user::list(db);
             }
             if let SubCommand::UserApplyRole(ref it) = args.command {
+                let mut enf = cfg.postgresql.casbin().await?;
                 return it.apply(db, &mut enf).await;
             }
             if let SubCommand::UserExemptRole(ref it) = args.command {
+                let mut enf = cfg.postgresql.casbin().await?;
                 return it.exempt(db, &mut enf).await;
             }
             if let SubCommand::UserResetPassword(ref it) = args.command {
