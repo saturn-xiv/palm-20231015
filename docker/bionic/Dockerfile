@@ -100,7 +100,7 @@ RUN sh -c ". $HOME/.profile && pip3 install --user scikit-build"
 RUN sh -c ". $HOME/.profile && pip3 install --user cmake"
 
 # https://github.com/nvm-sh/nvm
-ENV NVM_VERSION "v0.39.3"
+ENV NVM_VERSION "v0.39.4"
 RUN git clone -b ${NVM_VERSION} https://github.com/nvm-sh/nvm.git $HOME/.nvm
 RUN echo 'export NVM_DIR="$HOME/.nvm"' >> $HOME/.zshrc
 RUN echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $HOME/.zshrc
