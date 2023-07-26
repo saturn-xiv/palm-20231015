@@ -258,7 +258,7 @@ build_lemon aarch64 arm64
 
 # -----------------------------------------------------------------------------
 
-# build_dashboard fig
+build_dashboard fig
 build_dashboard aloe
 
 build_musa

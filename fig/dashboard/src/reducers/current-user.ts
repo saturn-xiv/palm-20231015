@@ -82,18 +82,22 @@ export const to_permission = (x: PermissionsResponse.Item): IPermission => {
 
 export const to_user = (response: UserSignInResponse): IUser | undefined => {
   const decoded: any = jwtDecode<JwtPayload>(response.getToken());
-  const payload = response.getPayload();
+  const payload = response.getUser();
   if (!payload) {
     return;
   }
   return {
     uid: decoded.aud,
+    providerType: response.getProviderType(),
     nickname: payload.getNickname(),
     realName: payload.getRealName(),
     email: payload.getEmail(),
     avatar: payload.getAvatar(),
     permissions: response.getPermissionsList().map(to_permission),
     roles: response.getRolesList(),
+    hasGoogle: response.getHasGoogle(),
+    hasWechatOauth2: response.getHasWechatOauth2(),
+    hasWechatMiniProgram: response.getHasWechatMiniProgram(),
   };
 };
 
@@ -131,12 +135,16 @@ export interface IPermission {
 
 export interface IUser {
   uid: string;
+  providerType: string;
   email: string;
   nickname: string;
   realName: string;
   avatar: string;
   permissions: IPermission[];
   roles: string[];
+  hasGoogle: boolean;
+  hasWechatOauth2: boolean;
+  hasWechatMiniProgram: boolean;
 }
 
 interface IState {
