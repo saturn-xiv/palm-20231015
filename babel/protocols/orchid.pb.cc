@@ -375,63 +375,57 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::palm::orchid::v1::_WechatOauth2LoginRequest_default_instance_._instance,
 };
 const char descriptor_table_protodef_orchid_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\014orchid.proto\022\016palm.orchid.v1\032\033google/p"
-    "rotobuf/empty.proto\"=\n\035WechatMiniProgram"
-    "LoginRequest\022\016\n\006app_id\030\001 \001(\t\022\014\n\004code\030\002 \001"
-    "(\t\"V\n\036WechatMiniProgramLoginResponse\022\017\n\007"
-    "unionid\030\001 \001(\t\022\016\n\006openid\030\002 \001(\t\022\023\n\013session"
-    "_key\030\003 \001(\t\"C\n#WechatMiniProgramPhoneNumb"
-    "erRequest\022\016\n\006app_id\030\001 \001(\t\022\014\n\004code\030\002 \001(\t\""
-    "\201\001\n$WechatMiniProgramPhoneNumberResponse"
-    "\022\024\n\014phone_number\030\001 \001(\t\022\031\n\021pure_phone_num"
-    "ber\030\002 \001(\t\022\024\n\014country_code\030\003 \001(\t\022\022\n\nwater"
-    "_mark\030\004 \001(\004\"\300\001\n\034WechatOauth2QrConnectReq"
-    "uest\022\016\n\006app_id\030\001 \001(\t\022\024\n\014redirect_uri\030\002 \001"
-    "(\t\022\r\n\005state\030\003 \001(\t\022G\n\010language\030\t \001(\01625.pa"
-    "lm.orchid.v1.WechatOauth2QrConnectReques"
-    "t.Language\"\"\n\010Language\022\006\n\002EN\020\000\022\006\n\002CN\020\001\022\006"
-    "\n\002TW\020\002\",\n\035WechatOauth2QrConnectResponse\022"
-    "\013\n\003url\030\001 \001(\t\"\223\002\n\031WechatOauth2LoginRespon"
-    "se\022\017\n\007unionid\030\001 \001(\t\022\016\n\006openid\030\002 \001(\t\022\020\n\010n"
-    "ickname\030\013 \001(\t\022:\n\003sex\030\014 \001(\0162-.palm.orchid"
-    ".v1.WechatOauth2LoginResponse.Sex\022\020\n\010pro"
-    "vince\030\r \001(\t\022\014\n\004city\030\016 \001(\t\022\017\n\007country\030\017 \001"
-    "(\t\022\027\n\nheadimgurl\030\020 \001(\tH\000\210\001\001\022\021\n\tprivilege"
-    "\030\021 \003(\t\"\033\n\003Sex\022\010\n\004MALE\020\000\022\n\n\006FEMALE\020\001B\r\n\013_"
-    "headimgurl\"\220\001\n\030WechatOauth2LoginRequest\022"
-    "\016\n\006app_id\030\001 \001(\t\022\014\n\004code\030\002 \001(\t\022\r\n\005state\030\003"
-    " \001(\t\022G\n\010language\030\t \001(\01625.palm.orchid.v1."
-    "WechatOauth2QrConnectRequest.Language2\371\001"
-    "\n\021WechatMiniProgram\022h\n\005Login\022-.palm.orch"
-    "id.v1.WechatMiniProgramLoginRequest\032..pa"
-    "lm.orchid.v1.WechatMiniProgramLoginRespo"
-    "nse\"\000\022z\n\013PhoneNumber\0223.palm.orchid.v1.We"
-    "chatMiniProgramPhoneNumberRequest\0324.palm"
-    ".orchid.v1.WechatMiniProgramPhoneNumberR"
-    "esponse\"\0002\332\001\n\014WechatOauth2\022j\n\tQrConnect\022"
-    ",.palm.orchid.v1.WechatOauth2QrConnectRe"
-    "quest\032-.palm.orchid.v1.WechatOauth2QrCon"
-    "nectResponse\"\000\022^\n\005Login\022(.palm.orchid.v1"
-    ".WechatOauth2LoginRequest\032).palm.orchid."
-    "v1.WechatOauth2LoginResponse\"\0002C\n\006Health"
-    "\0229\n\005Check\022\026.google.protobuf.Empty\032\026.goog"
-    "le.protobuf.Empty\"\000B0\n,com.github.saturn"
-    "_xiv.palm.plugins.orchid.v1P\001b\006proto3"
-};
-static const ::_pbi::DescriptorTable* const descriptor_table_orchid_2eproto_deps[1] =
-    {
-        &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
+    "\n\014orchid.proto\022\016palm.orchid.v1\"=\n\035Wechat"
+    "MiniProgramLoginRequest\022\016\n\006app_id\030\001 \001(\t\022"
+    "\014\n\004code\030\002 \001(\t\"V\n\036WechatMiniProgramLoginR"
+    "esponse\022\017\n\007unionid\030\001 \001(\t\022\016\n\006openid\030\002 \001(\t"
+    "\022\023\n\013session_key\030\003 \001(\t\"C\n#WechatMiniProgr"
+    "amPhoneNumberRequest\022\016\n\006app_id\030\001 \001(\t\022\014\n\004"
+    "code\030\002 \001(\t\"\201\001\n$WechatMiniProgramPhoneNum"
+    "berResponse\022\024\n\014phone_number\030\001 \001(\t\022\031\n\021pur"
+    "e_phone_number\030\002 \001(\t\022\024\n\014country_code\030\003 \001"
+    "(\t\022\022\n\nwater_mark\030\004 \001(\004\"\300\001\n\034WechatOauth2Q"
+    "rConnectRequest\022\016\n\006app_id\030\001 \001(\t\022\024\n\014redir"
+    "ect_uri\030\002 \001(\t\022\r\n\005state\030\003 \001(\t\022G\n\010language"
+    "\030\t \001(\01625.palm.orchid.v1.WechatOauth2QrCo"
+    "nnectRequest.Language\"\"\n\010Language\022\006\n\002EN\020"
+    "\000\022\006\n\002CN\020\001\022\006\n\002TW\020\002\",\n\035WechatOauth2QrConne"
+    "ctResponse\022\013\n\003url\030\001 \001(\t\"\223\002\n\031WechatOauth2"
+    "LoginResponse\022\017\n\007unionid\030\001 \001(\t\022\016\n\006openid"
+    "\030\002 \001(\t\022\020\n\010nickname\030\013 \001(\t\022:\n\003sex\030\014 \001(\0162-."
+    "palm.orchid.v1.WechatOauth2LoginResponse"
+    ".Sex\022\020\n\010province\030\r \001(\t\022\014\n\004city\030\016 \001(\t\022\017\n\007"
+    "country\030\017 \001(\t\022\027\n\nheadimgurl\030\020 \001(\tH\000\210\001\001\022\021"
+    "\n\tprivilege\030\021 \003(\t\"\033\n\003Sex\022\010\n\004MALE\020\000\022\n\n\006FE"
+    "MALE\020\001B\r\n\013_headimgurl\"\220\001\n\030WechatOauth2Lo"
+    "ginRequest\022\016\n\006app_id\030\001 \001(\t\022\014\n\004code\030\002 \001(\t"
+    "\022\r\n\005state\030\003 \001(\t\022G\n\010language\030\t \001(\01625.palm"
+    ".orchid.v1.WechatOauth2QrConnectRequest."
+    "Language2\371\001\n\021WechatMiniProgram\022h\n\005Login\022"
+    "-.palm.orchid.v1.WechatMiniProgramLoginR"
+    "equest\032..palm.orchid.v1.WechatMiniProgra"
+    "mLoginResponse\"\000\022z\n\013PhoneNumber\0223.palm.o"
+    "rchid.v1.WechatMiniProgramPhoneNumberReq"
+    "uest\0324.palm.orchid.v1.WechatMiniProgramP"
+    "honeNumberResponse\"\0002\332\001\n\014WechatOauth2\022j\n"
+    "\tQrConnect\022,.palm.orchid.v1.WechatOauth2"
+    "QrConnectRequest\032-.palm.orchid.v1.Wechat"
+    "Oauth2QrConnectResponse\"\000\022^\n\005Login\022(.pal"
+    "m.orchid.v1.WechatOauth2LoginRequest\032).p"
+    "alm.orchid.v1.WechatOauth2LoginResponse\""
+    "\000B0\n,com.github.saturn_xiv.palm.plugins."
+    "orchid.v1P\001b\006proto3"
 };
 static ::absl::once_flag descriptor_table_orchid_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_orchid_2eproto = {
     false,
     false,
-    1677,
+    1579,
     descriptor_table_protodef_orchid_2eproto,
     "orchid.proto",
     &descriptor_table_orchid_2eproto_once,
-    descriptor_table_orchid_2eproto_deps,
-    1,
+    nullptr,
+    0,
     8,
     schemas,
     file_default_instances,

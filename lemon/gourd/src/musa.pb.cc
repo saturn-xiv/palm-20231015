@@ -1143,10 +1143,9 @@ const char descriptor_table_protodef_musa_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
     "\032..palm.musa.v1.WechatPayExecuteTransfer"
     "Response\"\000\022d\n\005Query\022+.palm.musa.v1.Wecha"
     "tPayQueryTransferRequest\032,.palm.musa.v1."
-    "WechatPayQueryTransferResponse\"\0002C\n\006Heal"
-    "th\0229\n\005Check\022\026.google.protobuf.Empty\032\026.go"
-    "ogle.protobuf.Empty\"\000B.\n*com.github.satu"
-    "rn_xiv.palm.plugins.musa.v1P\001b\006proto3"
+    "WechatPayQueryTransferResponse\"\000B.\n*com."
+    "github.saturn_xiv.palm.plugins.musa.v1P\001"
+    "b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_musa_2eproto_deps[1] =
     {
@@ -1156,7 +1155,7 @@ static ::absl::once_flag descriptor_table_musa_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_musa_2eproto = {
     false,
     false,
-    4477,
+    4408,
     descriptor_table_protodef_musa_2eproto,
     "musa.proto",
     &descriptor_table_musa_2eproto_once,

@@ -28,7 +28,6 @@ public class RpcServer {
     @PostConstruct
     void startUp() throws IOException {
         logger.info("Start gRPC server on http://{}:{}", address, port);
-        logger.info("");
         server = NettyServerBuilder.forAddress(
                         new InetSocketAddress(address, port),
                         InsecureServerCredentials.create())

@@ -797,7 +797,3 @@ message CategoryUpdateRequest {
 }
 
 // ----------------------------------------------------------------------------
-
-service Health {
-  rpc Check(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-}

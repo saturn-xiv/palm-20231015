@@ -4262,10 +4262,8 @@ const char descriptor_table_protodef_nut_2eproto[] PROTOBUF_SECTION_VARIABLE(pro
     "f.Empty\"\000\022;\n\007Destroy\022\026.palm.nut.v1.IdReq"
     "uest\032\026.google.protobuf.Empty\"\000\022E\n\005Index\022"
     "\026.google.protobuf.Empty\032\".palm.nut.v1.Ca"
-    "tegoryIndexResponse\"\0002C\n\006Health\0229\n\005Check"
-    "\022\026.google.protobuf.Empty\032\026.google.protob"
-    "uf.Empty\"\000B-\n)com.github.saturn_xiv.palm"
-    ".plugins.nut.v1P\001b\006proto3"
+    "tegoryIndexResponse\"\000B-\n)com.github.satu"
+    "rn_xiv.palm.plugins.nut.v1P\001b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_nut_2eproto_deps[5] =
     {
@@ -4279,7 +4277,7 @@ static ::absl::once_flag descriptor_table_nut_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_nut_2eproto = {
     false,
     false,
-    17945,
+    17876,
     descriptor_table_protodef_nut_2eproto,
     "nut.proto",
     &descriptor_table_nut_2eproto_once,

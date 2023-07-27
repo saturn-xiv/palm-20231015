@@ -266,10 +266,9 @@ public final class Musa {
       "\032..palm.musa.v1.WechatPayExecuteTransfer" +
       "Response\"\000\022d\n\005Query\022+.palm.musa.v1.Wecha" +
       "tPayQueryTransferRequest\032,.palm.musa.v1." +
-      "WechatPayQueryTransferResponse\"\0002C\n\006Heal" +
-      "th\0229\n\005Check\022\026.google.protobuf.Empty\032\026.go" +
-      "ogle.protobuf.Empty\"\000B.\n*com.github.satu" +
-      "rn_xiv.palm.plugins.musa.v1P\001b\006proto3"
+      "WechatPayQueryTransferResponse\"\000B.\n*com." +
+      "github.saturn_xiv.palm.plugins.musa.v1P\001" +
+      "b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

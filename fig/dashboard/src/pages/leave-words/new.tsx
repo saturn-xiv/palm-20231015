@@ -3,16 +3,16 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
+import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
 
-import Layout from "../../../layouts/anonymous/Form";
+import Layout from "../../layouts/anonymous/Form";
 
 const Widget = () => {
   const intl = useIntl();
   return (
     <Layout
-      title={intl.formatMessage({ id: "nut.users.unlock.title" })}
-      avatar={<LockOpenOutlinedIcon />}
+      title={intl.formatMessage({ id: "nut.users.leave-words.new.title" })}
+      avatar={<CommentOutlinedIcon />}
       onSubmit={(data: FormData) => {
         console.log({
           email: data.get("email"),
