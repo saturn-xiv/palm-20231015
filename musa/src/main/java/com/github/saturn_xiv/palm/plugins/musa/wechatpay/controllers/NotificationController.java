@@ -48,9 +48,10 @@ public class NotificationController {
                     .body(body)
                     .build();
             final RefundNotification resource = notificationParser.parse(param, RefundNotification.class);
-            logger.info("{} ({}, {})",
+            logger.info("{} ({}, {}) ({},{},{})",
                     resource.getOutTradeNo(),
-                    resource.getOutRefundNo(), resource.getRefundStatus()
+                    resource.getOutRefundNo(), resource.getRefundStatus(),
+                    resource.getAmount().getCurrency(), resource.getAmount().getTotal(), resource.getAmount().getRefund()
             );
             publish(RabbitmqConfiguration.WECHAT_PAY_REFUND, body, resource);
             return new ResponseEntity<>(NotificationResponse.success(), HttpStatus.OK);
@@ -82,9 +83,10 @@ public class NotificationController {
                     .body(body)
                     .build();
             Transaction resource = notificationParser.parse(param, Transaction.class);
-            logger.info("trade: {}({},{}) payer:{}@{}",
+            logger.info("trade: {}({},{}) payer:{}@{} ({},{})",
                     resource.getOutTradeNo(), resource.getOutTradeNo(), resource.getTradeType(),
-                    resource.getPayer().getOpenid(), resource.getAppid()
+                    resource.getPayer().getOpenid(), resource.getAppid(),
+                    resource.getAmount().getCurrency(), resource.getAmount().getTotal()
             );
             publish(RabbitmqConfiguration.WECHAT_PAY_TRANSACTION, body, resource);
 

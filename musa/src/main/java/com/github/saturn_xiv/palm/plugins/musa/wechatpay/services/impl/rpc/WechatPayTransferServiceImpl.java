@@ -73,6 +73,7 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
                                     .build()
                     ).build());
         } catch (ServiceException e) {
+            logger.error("{} {} {}", e.getHttpStatusCode(), e.getErrorCode(), e.getErrorMessage());
             responseObserver.onNext(WechatPayExecuteTransferResponse.newBuilder()
                     .setOutBatchNo(outTransferNo)
                     .addAllDetails(transferDetailList)
