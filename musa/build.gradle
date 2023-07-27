@@ -61,12 +61,9 @@ dependencies {
 	implementation 'org.apache.thrift:libthrift:0.18.1'
 
 	// https://mvnrepository.com/artifact/io.grpc/grpc-protobuf
-	implementation group: 'io.grpc', name: 'grpc-protobuf', version: '1.56.1'
 	// https://github.com/grpc/grpc-java
 	runtimeOnly 'io.grpc:grpc-netty-shaded:1.56.1'
-	implementation 'io.grpc:grpc-protobuf:1.56.1'
-	implementation 'io.grpc:grpc-stub:1.56.1'
-	implementation 'io.grpc:grpc-netty:1.56.1'
+	implementation 'io.grpc:grpc-all:1.56.1'
 	implementation 'org.apache.tomcat:annotations-api:6.0.53'
 
 	// https://mvnrepository.com/artifact/org.springframework.shell/spring-shell-starter

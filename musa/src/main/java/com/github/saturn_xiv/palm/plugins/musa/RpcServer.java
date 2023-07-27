@@ -6,6 +6,7 @@ import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
 import io.grpc.netty.NettyServerBuilder;
+import io.grpc.protobuf.services.HealthStatusManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ public class RpcServer {
     @PostConstruct
     void startUp() throws IOException {
         logger.info("Start gRPC server on http://{}:{}", address, port);
+        healthStatusManager = new HealthStatusManager();
         server = NettyServerBuilder.forAddress(
                         new InetSocketAddress(address, port),
                         InsecureServerCredentials.create())
@@ -36,7 +38,7 @@ public class RpcServer {
                 .addService(wechatPayNativeService)
                 .addService(wechatPayRefundService)
                 .addService(wechatPayTransferService)
-                .addService(healthService)
+                .addService(healthStatusManager.getHealthService())
                 .intercept(tokenServerInterceptor)
                 .intercept(exceptionServerInterceptor)
                 .build().start();
@@ -53,8 +55,7 @@ public class RpcServer {
     @Value("${app.rpc.address}")
     String address;
 
-    @Autowired
-    HealthGrpc.HealthImplBase healthService;
+    HealthStatusManager healthStatusManager;
     @Autowired
     WechatPayNativeGrpc.WechatPayNativeImplBase wechatPayNativeService;
     @Autowired
