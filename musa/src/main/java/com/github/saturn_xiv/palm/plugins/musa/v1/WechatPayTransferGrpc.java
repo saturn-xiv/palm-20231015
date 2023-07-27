@@ -5,14 +5,14 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.56.1)",
+    value = "by gRPC proto compiler (version 1.57.0)",
     comments = "Source: musa.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class WechatPayTransferGrpc {
 
   private WechatPayTransferGrpc() {}
 
-  public static final String SERVICE_NAME = "palm.musa.v1.WechatPayTransfer";
+  public static final java.lang.String SERVICE_NAME = "palm.musa.v1.WechatPayTransfer";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteTransferRequest,
@@ -334,9 +334,9 @@ public final class WechatPayTransferGrpc {
   private static final class WechatPayTransferMethodDescriptorSupplier
       extends WechatPayTransferBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final String methodName;
+    private final java.lang.String methodName;
 
-    WechatPayTransferMethodDescriptorSupplier(String methodName) {
+    WechatPayTransferMethodDescriptorSupplier(java.lang.String methodName) {
       this.methodName = methodName;
     }
 
