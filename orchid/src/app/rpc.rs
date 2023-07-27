@@ -8,7 +8,7 @@ use tonic::transport::Server;
 use super::super::{
     env::Config as Env,
     services::{
-        health::Service as HealthService,
+        status as services_status,
         wechat::{
             mini_program::Service as WechatMiniProgramService,
             oauth2::Service as WechatOauth2Service,
@@ -24,14 +24,15 @@ pub struct Config {
 
 impl Config {
     pub async fn launch(&self, config: Arc<Env>) -> Result<()> {
+        let (health_reporter, health_service) = tonic_health::server::health_reporter();
+        info!("start services health status reporter");
+        tokio::spawn(services_status(health_reporter));
+
         let addr = SocketAddr::new(IpAddr::V4(Ipv4Addr::new(0, 0, 0, 0)), self.port);
 
         info!("start oauth gRPC at {}", addr);
         let redis = config.redis.open()?;
         Server::builder()
-            .add_service(v1::health_server::HealthServer::new(HealthService {
-                config: config.clone(),
-            }))
             .add_service(v1::wechat_oauth2_server::WechatOauth2Server::new(
                 WechatOauth2Service {
                     config: config.clone(),
@@ -43,6 +44,7 @@ impl Config {
                     WechatMiniProgramService { config, redis },
                 ),
             )
+            .add_service(health_service)
             .serve(addr)
             .await?;
         Ok(())

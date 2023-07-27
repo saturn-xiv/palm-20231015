@@ -12,10 +12,15 @@ use palm::{
 };
 use tokio::sync::Mutex;
 use tonic::transport::Server;
+use tonic_health::server::HealthReporter;
 
 use super::super::env::Config;
 
 pub async fn launch(cfg: &Config) -> Result<()> {
+    let (health_reporter, health_service) = tonic_health::server::health_reporter();
+    info!("start services health status reporter");
+    tokio::spawn(services_status(health_reporter));
+
     let addr = cfg.rpc.addr();
 
     let rabbitmq = Arc::new(cfg.rabbitmq.open());
@@ -128,10 +133,39 @@ pub async fn launch(cfg: &Config) -> Result<()> {
                 enforcer: enforcer.clone(),
             },
         ))
-        .add_service(nut_v1::health_server::HealthServer::new(
-            nut::services::health::Service {},
-        ))
+        .add_service(health_service)
         .serve(addr)
         .await?;
     Ok(())
+}
+
+async fn services_status(mut reporter: HealthReporter) {
+    loop {
+        reporter
+            .set_serving::<nut_v1::attachment_server::AttachmentServer<nut::services::attachment::Service>>()
+            .await;
+        reporter
+            .set_serving::<nut_v1::google_server::GoogleServer<nut::services::google::Service>>()
+            .await;
+        reporter
+            .set_serving::<nut_v1::leave_word_server::LeaveWordServer<nut::services::leave_word::Service>>()
+            .await;
+        reporter
+            .set_serving::<nut_v1::locale_server::LocaleServer<nut::services::locale::Service>>()
+            .await;
+        reporter
+            .set_serving::<rbac_v1::policy_server::PolicyServer<nut::services::policy::Service>>()
+            .await;
+        reporter
+            .set_serving::<nut_v1::site_server::SiteServer<nut::services::site::Service>>()
+            .await;
+        reporter
+            .set_serving::<nut_v1::user_server::UserServer<nut::services::user::Service>>()
+            .await;
+        reporter
+            .set_serving::<nut_v1::wechat_server::WechatServer<nut::services::wechat::Service>>()
+            .await;
+
+        tokio::time::sleep(StdDuration::from_secs(3)).await;
+    }
 }
