@@ -34,6 +34,8 @@ RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release 
 RUN add-apt-repository -y ppa:ondrej/php
 # https://launchpad.net/~ondrej/+archive/ubuntu/nginx
 RUN add-apt-repository -y ppa:ondrej/nginx
+# https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa
+RUN add-apt-repository -y ppa:deadsnakes/ppa
 
 # https://www.envoyproxy.io/docs/envoy/latest/start/install#install-envoy-on-ubuntu-linux
 RUN curl -sL 'https://deb.dl.getenvoy.io/public/gpg.8115BA8E629CC074.key' | gpg --dearmor -o /usr/share/keyrings/getenvoy-keyring.gpg
@@ -55,7 +57,7 @@ RUN apt-get install -y zsh git locales locales-all rsync openssh-client sshpass 
     cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio mold \
     debhelper bison flex ninja-build \
     musl-tools musl-dev \
-    python3 python3-distutils python3-dev python3-pip python3-full virtualenv \
+    python3-full python3-dev \
     php-fpm php-mbstring php-json php-xml php-pear php-bcmath php-curl php-zip \
     php-mysql php-pgsql php-sqlite3 php-redis php-mongodb php-amqp php-zmq \
     php-imagick php-gd phpunit \
