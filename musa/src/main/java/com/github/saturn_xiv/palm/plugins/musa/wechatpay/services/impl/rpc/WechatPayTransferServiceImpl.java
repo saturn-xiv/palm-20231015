@@ -23,11 +23,11 @@ import java.util.List;
 @Component("palm.musa.service.rpc.wechat-pay.transfer")
 public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPayTransferImplBase {
     @Override
-    public void execute(WechatPayExecuteTransferRequest request,
-                        StreamObserver<WechatPayExecuteTransferResponse> responseObserver) {
+    public void executeBatch(WechatPayExecuteBatchTransferRequest request,
+                             StreamObserver<WechatPayExecuteBatchTransferResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
-        List<WechatPayExecuteTransferResponse.Detail> transferDetailList = new ArrayList<>();
+        List<WechatPayExecuteBatchTransferResponse.Detail> transferDetailList = new ArrayList<>();
         List<TransferDetailInput> transferDetailInputList = new ArrayList<>();
         long totalAmount = 0;
         for (var it : request.getDetailsList()) {
@@ -46,7 +46,7 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
                         it.getUsername(), it.getOpenId(), outDetailsNo, it.getAmount(), it.getRemark());
                 transferDetailInputList.add(tdi);
             }
-            transferDetailList.add(WechatPayExecuteTransferResponse.Detail.newBuilder()
+            transferDetailList.add(WechatPayExecuteBatchTransferResponse.Detail.newBuilder()
                     .setOpenId(it.getOpenId())
                     .setOutDetailNo(outDetailsNo)
                     .build());
@@ -66,18 +66,18 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
             logger.info("{} {} {} {}",
                     response.getBatchStatus(), response.getBatchId(),
                     response.getOutBatchNo(), response.getCreateTime());
-            responseObserver.onNext(WechatPayExecuteTransferResponse.newBuilder()
+            responseObserver.onNext(WechatPayExecuteBatchTransferResponse.newBuilder()
                     .setOutBatchNo(response.getOutBatchNo())
                     .addAllDetails(transferDetailList)
                     .setSucceeded(
-                            WechatPayExecuteTransferResponse.Succeeded.newBuilder()
+                            WechatPayExecuteBatchTransferResponse.Succeeded.newBuilder()
                                     .setCreateTime(response.getCreateTime())
                                     .setBatchId(response.getBatchId())
                                     .build()
                     ).build());
         } catch (ServiceException e) {
             logger.error("{} {} {}", e.getHttpStatusCode(), e.getErrorCode(), e.getErrorMessage());
-            responseObserver.onNext(WechatPayExecuteTransferResponse.newBuilder()
+            responseObserver.onNext(WechatPayExecuteBatchTransferResponse.newBuilder()
                     .setOutBatchNo(outTransferNo)
                     .addAllDetails(transferDetailList)
                     .setError(Error.newBuilder()
@@ -90,11 +90,11 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
     }
 
     @Override
-    public void query(WechatPayQueryTransferRequest request,
-                      StreamObserver<WechatPayQueryTransferResponse> responseObserver) {
+    public void queryBatch(WechatPayQueryBatchTransferRequest request,
+                           StreamObserver<WechatPayQueryBatchTransferResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
-        logger.info("query transfer {} ({}, {})", request.getOutBatchNo(), request.getOffset(), request.getLimit());
+        logger.info("query batch transfer {} ({}, {})", request.getOutBatchNo(), request.getOffset(), request.getLimit());
         final var response = transferBatchHelper.query(
                 request.getOutBatchNo(),
                 request.getOffset(), request.getLimit(),
@@ -102,26 +102,59 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
         );
 
 
-        List<WechatPayQueryTransferResponse.Detail> transferDetailList = new ArrayList<>();
+        List<WechatPayQueryBatchTransferResponse.Detail> transferDetailList = new ArrayList<>();
         for (var it : response.getTransferDetailList()) {
             transferDetailList.add(
-                    WechatPayQueryTransferResponse.Detail.newBuilder()
+                    WechatPayQueryBatchTransferResponse.Detail.newBuilder()
                             .setOutDetailNo(it.getOutDetailNo())
                             .setStatus(it.getDetailStatus())
                             .build()
             );
         }
-        var tb = WechatPayQueryTransferResponse.Batch.newBuilder()
+        var tb = WechatPayQueryBatchTransferResponse.Batch.newBuilder()
                 .setStatus(response.getTransferBatch().getBatchStatus())
                 .setType(response.getTransferBatch().getBatchType());
         if (response.getTransferBatch().getCloseReason() != null) {
             tb.setCloseReason(response.getTransferBatch().getCloseReason().name());
         }
 
-        responseObserver.onNext(WechatPayQueryTransferResponse.newBuilder()
+        responseObserver.onNext(WechatPayQueryBatchTransferResponse.newBuilder()
                 .setBatch(tb.build())
                 .addAllDetails(transferDetailList)
                 .build());
+        responseObserver.onCompleted();
+
+    }
+
+    @Override
+    public void queryDetail(WechatPayQueryTransferDetailRequest request,
+                            StreamObserver<WechatPayQueryTransferDetailResponse> responseObserver) {
+        jwt.verify(TokenServerInterceptor.TOKEN.get());
+
+        logger.info("query transfer detail {} ({})", request.getOutBatchNo(), request.getOutDetailNo());
+        final var response = transferBatchHelper.query(request.getOutBatchNo(), request.getOutDetailNo());
+
+        var builder = WechatPayQueryTransferDetailResponse.newBuilder()
+                .setMchId(response.getMchid())
+                .setOutBatchNo(response.getOutBatchNo())
+                .setBatchId(response.getBatchId())
+                .setAppId(response.getAppid())
+                .setOutDetailNo(response.getOutDetailNo())
+                .setDetailId(response.getDetailId())
+                .setDetailStatus(response.getDetailStatus())
+                .setTransferAmount(response.getTransferAmount())
+                .setTransferRemark(response.getTransferRemark())
+                .setOpenId(response.getOpenid())
+                .setInitiateTime(response.getInitiateTime())
+                .setUserName(response.getUserName());
+        if (response.getFailReason() != null) {
+            builder = builder.setFailReason(response.getFailReason().name());
+        }
+        if (response.getUserName() != null) {
+            builder = builder.setUserName(response.getUserName());
+        }
+
+        responseObserver.onNext(builder.build());
         responseObserver.onCompleted();
 
     }

@@ -37,6 +37,14 @@ public class WechatPayTransferBatchHelper {
         return transferBatchService.getTransferBatchByOutNo(request);
     }
 
+    public TransferDetailEntity query(String outBatchNo, String outDetailNo) {
+        final var request = new GetTransferDetailByOutNoRequest();
+        request.setOutBatchNo(outBatchNo);
+        request.setOutDetailNo(outDetailNo);
+
+        return transferBatchService.getTransferDetailByOutNo(request);
+    }
+
     public WechatPayTransferBatchHelper(TransferBatchService transferBatchService) {
         this.transferBatchService = transferBatchService;
     }

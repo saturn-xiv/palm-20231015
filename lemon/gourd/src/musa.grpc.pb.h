@@ -1658,61 +1658,83 @@ class WechatPayTransfer final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    virtual ::grpc::Status Execute(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteTransferRequest& request, ::palm::musa::v1::WechatPayExecuteTransferResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayExecuteTransferResponse>> AsyncExecute(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteTransferRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayExecuteTransferResponse>>(AsyncExecuteRaw(context, request, cq));
+    virtual ::grpc::Status ExecuteBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest& request, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>> AsyncExecuteBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>>(AsyncExecuteBatchRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayExecuteTransferResponse>> PrepareAsyncExecute(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteTransferRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayExecuteTransferResponse>>(PrepareAsyncExecuteRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>> PrepareAsyncExecuteBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>>(PrepareAsyncExecuteBatchRaw(context, request, cq));
     }
-    virtual ::grpc::Status Query(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferRequest& request, ::palm::musa::v1::WechatPayQueryTransferResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryTransferResponse>> AsyncQuery(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryTransferResponse>>(AsyncQueryRaw(context, request, cq));
+    virtual ::grpc::Status QueryBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest& request, ::palm::musa::v1::WechatPayQueryBatchTransferResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryBatchTransferResponse>> AsyncQueryBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryBatchTransferResponse>>(AsyncQueryBatchRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryTransferResponse>> PrepareAsyncQuery(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryTransferResponse>>(PrepareAsyncQueryRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryBatchTransferResponse>> PrepareAsyncQueryBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryBatchTransferResponse>>(PrepareAsyncQueryBatchRaw(context, request, cq));
+    }
+    // https://pay.weixin.qq.com/docs/merchant/apis/batch-transfer-to-balance/transfer-detail/get-transfer-detail-by-out-no.html
+    virtual ::grpc::Status QueryDetail(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest& request, ::palm::musa::v1::WechatPayQueryTransferDetailResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryTransferDetailResponse>> AsyncQueryDetail(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryTransferDetailResponse>>(AsyncQueryDetailRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryTransferDetailResponse>> PrepareAsyncQueryDetail(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryTransferDetailResponse>>(PrepareAsyncQueryDetailRaw(context, request, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
-      virtual void Execute(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteTransferRequest* request, ::palm::musa::v1::WechatPayExecuteTransferResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void Execute(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteTransferRequest* request, ::palm::musa::v1::WechatPayExecuteTransferResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void Query(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferRequest* request, ::palm::musa::v1::WechatPayQueryTransferResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void Query(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferRequest* request, ::palm::musa::v1::WechatPayQueryTransferResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void ExecuteBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest* request, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void ExecuteBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest* request, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void QueryBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest* request, ::palm::musa::v1::WechatPayQueryBatchTransferResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void QueryBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest* request, ::palm::musa::v1::WechatPayQueryBatchTransferResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // https://pay.weixin.qq.com/docs/merchant/apis/batch-transfer-to-balance/transfer-detail/get-transfer-detail-by-out-no.html
+      virtual void QueryDetail(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest* request, ::palm::musa::v1::WechatPayQueryTransferDetailResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void QueryDetail(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest* request, ::palm::musa::v1::WechatPayQueryTransferDetailResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayExecuteTransferResponse>* AsyncExecuteRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteTransferRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayExecuteTransferResponse>* PrepareAsyncExecuteRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteTransferRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryTransferResponse>* AsyncQueryRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryTransferResponse>* PrepareAsyncQueryRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>* AsyncExecuteBatchRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>* PrepareAsyncExecuteBatchRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryBatchTransferResponse>* AsyncQueryBatchRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryBatchTransferResponse>* PrepareAsyncQueryBatchRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryTransferDetailResponse>* AsyncQueryDetailRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::musa::v1::WechatPayQueryTransferDetailResponse>* PrepareAsyncQueryDetailRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status Execute(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteTransferRequest& request, ::palm::musa::v1::WechatPayExecuteTransferResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayExecuteTransferResponse>> AsyncExecute(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteTransferRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayExecuteTransferResponse>>(AsyncExecuteRaw(context, request, cq));
+    ::grpc::Status ExecuteBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest& request, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>> AsyncExecuteBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>>(AsyncExecuteBatchRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayExecuteTransferResponse>> PrepareAsyncExecute(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteTransferRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayExecuteTransferResponse>>(PrepareAsyncExecuteRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>> PrepareAsyncExecuteBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>>(PrepareAsyncExecuteBatchRaw(context, request, cq));
     }
-    ::grpc::Status Query(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferRequest& request, ::palm::musa::v1::WechatPayQueryTransferResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryTransferResponse>> AsyncQuery(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryTransferResponse>>(AsyncQueryRaw(context, request, cq));
+    ::grpc::Status QueryBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest& request, ::palm::musa::v1::WechatPayQueryBatchTransferResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryBatchTransferResponse>> AsyncQueryBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryBatchTransferResponse>>(AsyncQueryBatchRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryTransferResponse>> PrepareAsyncQuery(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryTransferResponse>>(PrepareAsyncQueryRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryBatchTransferResponse>> PrepareAsyncQueryBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryBatchTransferResponse>>(PrepareAsyncQueryBatchRaw(context, request, cq));
+    }
+    ::grpc::Status QueryDetail(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest& request, ::palm::musa::v1::WechatPayQueryTransferDetailResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryTransferDetailResponse>> AsyncQueryDetail(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryTransferDetailResponse>>(AsyncQueryDetailRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryTransferDetailResponse>> PrepareAsyncQueryDetail(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryTransferDetailResponse>>(PrepareAsyncQueryDetailRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
-      void Execute(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteTransferRequest* request, ::palm::musa::v1::WechatPayExecuteTransferResponse* response, std::function<void(::grpc::Status)>) override;
-      void Execute(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteTransferRequest* request, ::palm::musa::v1::WechatPayExecuteTransferResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void Query(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferRequest* request, ::palm::musa::v1::WechatPayQueryTransferResponse* response, std::function<void(::grpc::Status)>) override;
-      void Query(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferRequest* request, ::palm::musa::v1::WechatPayQueryTransferResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void ExecuteBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest* request, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse* response, std::function<void(::grpc::Status)>) override;
+      void ExecuteBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest* request, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void QueryBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest* request, ::palm::musa::v1::WechatPayQueryBatchTransferResponse* response, std::function<void(::grpc::Status)>) override;
+      void QueryBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest* request, ::palm::musa::v1::WechatPayQueryBatchTransferResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void QueryDetail(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest* request, ::palm::musa::v1::WechatPayQueryTransferDetailResponse* response, std::function<void(::grpc::Status)>) override;
+      void QueryDetail(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest* request, ::palm::musa::v1::WechatPayQueryTransferDetailResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -1724,12 +1746,15 @@ class WechatPayTransfer final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayExecuteTransferResponse>* AsyncExecuteRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteTransferRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayExecuteTransferResponse>* PrepareAsyncExecuteRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteTransferRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryTransferResponse>* AsyncQueryRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryTransferResponse>* PrepareAsyncQueryRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferRequest& request, ::grpc::CompletionQueue* cq) override;
-    const ::grpc::internal::RpcMethod rpcmethod_Execute_;
-    const ::grpc::internal::RpcMethod rpcmethod_Query_;
+    ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>* AsyncExecuteBatchRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>* PrepareAsyncExecuteBatchRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryBatchTransferResponse>* AsyncQueryBatchRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryBatchTransferResponse>* PrepareAsyncQueryBatchRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryTransferDetailResponse>* AsyncQueryDetailRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayQueryTransferDetailResponse>* PrepareAsyncQueryDetailRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_ExecuteBatch_;
+    const ::grpc::internal::RpcMethod rpcmethod_QueryBatch_;
+    const ::grpc::internal::RpcMethod rpcmethod_QueryDetail_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -1737,281 +1762,416 @@ class WechatPayTransfer final {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status Execute(::grpc::ServerContext* context, const ::palm::musa::v1::WechatPayExecuteTransferRequest* request, ::palm::musa::v1::WechatPayExecuteTransferResponse* response);
-    virtual ::grpc::Status Query(::grpc::ServerContext* context, const ::palm::musa::v1::WechatPayQueryTransferRequest* request, ::palm::musa::v1::WechatPayQueryTransferResponse* response);
+    virtual ::grpc::Status ExecuteBatch(::grpc::ServerContext* context, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest* request, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse* response);
+    virtual ::grpc::Status QueryBatch(::grpc::ServerContext* context, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest* request, ::palm::musa::v1::WechatPayQueryBatchTransferResponse* response);
+    // https://pay.weixin.qq.com/docs/merchant/apis/batch-transfer-to-balance/transfer-detail/get-transfer-detail-by-out-no.html
+    virtual ::grpc::Status QueryDetail(::grpc::ServerContext* context, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest* request, ::palm::musa::v1::WechatPayQueryTransferDetailResponse* response);
   };
   template <class BaseClass>
-  class WithAsyncMethod_Execute : public BaseClass {
+  class WithAsyncMethod_ExecuteBatch : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_Execute() {
+    WithAsyncMethod_ExecuteBatch() {
       ::grpc::Service::MarkMethodAsync(0);
     }
-    ~WithAsyncMethod_Execute() override {
+    ~WithAsyncMethod_ExecuteBatch() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Execute(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayExecuteTransferRequest* /*request*/, ::palm::musa::v1::WechatPayExecuteTransferResponse* /*response*/) override {
+    ::grpc::Status ExecuteBatch(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest* /*request*/, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestExecute(::grpc::ServerContext* context, ::palm::musa::v1::WechatPayExecuteTransferRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::musa::v1::WechatPayExecuteTransferResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestExecuteBatch(::grpc::ServerContext* context, ::palm::musa::v1::WechatPayExecuteBatchTransferRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_Query : public BaseClass {
+  class WithAsyncMethod_QueryBatch : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_Query() {
+    WithAsyncMethod_QueryBatch() {
       ::grpc::Service::MarkMethodAsync(1);
     }
-    ~WithAsyncMethod_Query() override {
+    ~WithAsyncMethod_QueryBatch() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Query(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryTransferRequest* /*request*/, ::palm::musa::v1::WechatPayQueryTransferResponse* /*response*/) override {
+    ::grpc::Status QueryBatch(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest* /*request*/, ::palm::musa::v1::WechatPayQueryBatchTransferResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestQuery(::grpc::ServerContext* context, ::palm::musa::v1::WechatPayQueryTransferRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::musa::v1::WechatPayQueryTransferResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestQueryBatch(::grpc::ServerContext* context, ::palm::musa::v1::WechatPayQueryBatchTransferRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::musa::v1::WechatPayQueryBatchTransferResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Execute<WithAsyncMethod_Query<Service > > AsyncService;
   template <class BaseClass>
-  class WithCallbackMethod_Execute : public BaseClass {
+  class WithAsyncMethod_QueryDetail : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_Execute() {
+    WithAsyncMethod_QueryDetail() {
+      ::grpc::Service::MarkMethodAsync(2);
+    }
+    ~WithAsyncMethod_QueryDetail() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status QueryDetail(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest* /*request*/, ::palm::musa::v1::WechatPayQueryTransferDetailResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestQueryDetail(::grpc::ServerContext* context, ::palm::musa::v1::WechatPayQueryTransferDetailRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::musa::v1::WechatPayQueryTransferDetailResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_ExecuteBatch<WithAsyncMethod_QueryBatch<WithAsyncMethod_QueryDetail<Service > > > AsyncService;
+  template <class BaseClass>
+  class WithCallbackMethod_ExecuteBatch : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_ExecuteBatch() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::palm::musa::v1::WechatPayExecuteTransferRequest, ::palm::musa::v1::WechatPayExecuteTransferResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::palm::musa::v1::WechatPayExecuteBatchTransferRequest, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::palm::musa::v1::WechatPayExecuteTransferRequest* request, ::palm::musa::v1::WechatPayExecuteTransferResponse* response) { return this->Execute(context, request, response); }));}
-    void SetMessageAllocatorFor_Execute(
-        ::grpc::MessageAllocator< ::palm::musa::v1::WechatPayExecuteTransferRequest, ::palm::musa::v1::WechatPayExecuteTransferResponse>* allocator) {
+                   ::grpc::CallbackServerContext* context, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest* request, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse* response) { return this->ExecuteBatch(context, request, response); }));}
+    void SetMessageAllocatorFor_ExecuteBatch(
+        ::grpc::MessageAllocator< ::palm::musa::v1::WechatPayExecuteBatchTransferRequest, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::musa::v1::WechatPayExecuteTransferRequest, ::palm::musa::v1::WechatPayExecuteTransferResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::musa::v1::WechatPayExecuteBatchTransferRequest, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_Execute() override {
+    ~WithCallbackMethod_ExecuteBatch() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Execute(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayExecuteTransferRequest* /*request*/, ::palm::musa::v1::WechatPayExecuteTransferResponse* /*response*/) override {
+    ::grpc::Status ExecuteBatch(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest* /*request*/, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* Execute(
-      ::grpc::CallbackServerContext* /*context*/, const ::palm::musa::v1::WechatPayExecuteTransferRequest* /*request*/, ::palm::musa::v1::WechatPayExecuteTransferResponse* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerUnaryReactor* ExecuteBatch(
+      ::grpc::CallbackServerContext* /*context*/, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest* /*request*/, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_Query : public BaseClass {
+  class WithCallbackMethod_QueryBatch : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_Query() {
+    WithCallbackMethod_QueryBatch() {
       ::grpc::Service::MarkMethodCallback(1,
-          new ::grpc::internal::CallbackUnaryHandler< ::palm::musa::v1::WechatPayQueryTransferRequest, ::palm::musa::v1::WechatPayQueryTransferResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::palm::musa::v1::WechatPayQueryBatchTransferRequest, ::palm::musa::v1::WechatPayQueryBatchTransferResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::palm::musa::v1::WechatPayQueryTransferRequest* request, ::palm::musa::v1::WechatPayQueryTransferResponse* response) { return this->Query(context, request, response); }));}
-    void SetMessageAllocatorFor_Query(
-        ::grpc::MessageAllocator< ::palm::musa::v1::WechatPayQueryTransferRequest, ::palm::musa::v1::WechatPayQueryTransferResponse>* allocator) {
+                   ::grpc::CallbackServerContext* context, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest* request, ::palm::musa::v1::WechatPayQueryBatchTransferResponse* response) { return this->QueryBatch(context, request, response); }));}
+    void SetMessageAllocatorFor_QueryBatch(
+        ::grpc::MessageAllocator< ::palm::musa::v1::WechatPayQueryBatchTransferRequest, ::palm::musa::v1::WechatPayQueryBatchTransferResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::musa::v1::WechatPayQueryTransferRequest, ::palm::musa::v1::WechatPayQueryTransferResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::musa::v1::WechatPayQueryBatchTransferRequest, ::palm::musa::v1::WechatPayQueryBatchTransferResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_Query() override {
+    ~WithCallbackMethod_QueryBatch() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Query(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryTransferRequest* /*request*/, ::palm::musa::v1::WechatPayQueryTransferResponse* /*response*/) override {
+    ::grpc::Status QueryBatch(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest* /*request*/, ::palm::musa::v1::WechatPayQueryBatchTransferResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* Query(
-      ::grpc::CallbackServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryTransferRequest* /*request*/, ::palm::musa::v1::WechatPayQueryTransferResponse* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerUnaryReactor* QueryBatch(
+      ::grpc::CallbackServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest* /*request*/, ::palm::musa::v1::WechatPayQueryBatchTransferResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_Execute<WithCallbackMethod_Query<Service > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_QueryDetail : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_QueryDetail() {
+      ::grpc::Service::MarkMethodCallback(2,
+          new ::grpc::internal::CallbackUnaryHandler< ::palm::musa::v1::WechatPayQueryTransferDetailRequest, ::palm::musa::v1::WechatPayQueryTransferDetailResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest* request, ::palm::musa::v1::WechatPayQueryTransferDetailResponse* response) { return this->QueryDetail(context, request, response); }));}
+    void SetMessageAllocatorFor_QueryDetail(
+        ::grpc::MessageAllocator< ::palm::musa::v1::WechatPayQueryTransferDetailRequest, ::palm::musa::v1::WechatPayQueryTransferDetailResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::musa::v1::WechatPayQueryTransferDetailRequest, ::palm::musa::v1::WechatPayQueryTransferDetailResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_QueryDetail() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status QueryDetail(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest* /*request*/, ::palm::musa::v1::WechatPayQueryTransferDetailResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* QueryDetail(
+      ::grpc::CallbackServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest* /*request*/, ::palm::musa::v1::WechatPayQueryTransferDetailResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_ExecuteBatch<WithCallbackMethod_QueryBatch<WithCallbackMethod_QueryDetail<Service > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
-  class WithGenericMethod_Execute : public BaseClass {
+  class WithGenericMethod_ExecuteBatch : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_Execute() {
+    WithGenericMethod_ExecuteBatch() {
       ::grpc::Service::MarkMethodGeneric(0);
     }
-    ~WithGenericMethod_Execute() override {
+    ~WithGenericMethod_ExecuteBatch() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Execute(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayExecuteTransferRequest* /*request*/, ::palm::musa::v1::WechatPayExecuteTransferResponse* /*response*/) override {
+    ::grpc::Status ExecuteBatch(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest* /*request*/, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_Query : public BaseClass {
+  class WithGenericMethod_QueryBatch : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_Query() {
+    WithGenericMethod_QueryBatch() {
       ::grpc::Service::MarkMethodGeneric(1);
     }
-    ~WithGenericMethod_Query() override {
+    ~WithGenericMethod_QueryBatch() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Query(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryTransferRequest* /*request*/, ::palm::musa::v1::WechatPayQueryTransferResponse* /*response*/) override {
+    ::grpc::Status QueryBatch(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest* /*request*/, ::palm::musa::v1::WechatPayQueryBatchTransferResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithRawMethod_Execute : public BaseClass {
+  class WithGenericMethod_QueryDetail : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_Execute() {
-      ::grpc::Service::MarkMethodRaw(0);
+    WithGenericMethod_QueryDetail() {
+      ::grpc::Service::MarkMethodGeneric(2);
     }
-    ~WithRawMethod_Execute() override {
+    ~WithGenericMethod_QueryDetail() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Execute(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayExecuteTransferRequest* /*request*/, ::palm::musa::v1::WechatPayExecuteTransferResponse* /*response*/) override {
+    ::grpc::Status QueryDetail(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest* /*request*/, ::palm::musa::v1::WechatPayQueryTransferDetailResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestExecute(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+  };
+  template <class BaseClass>
+  class WithRawMethod_ExecuteBatch : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_ExecuteBatch() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_ExecuteBatch() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ExecuteBatch(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest* /*request*/, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestExecuteBatch(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_Query : public BaseClass {
+  class WithRawMethod_QueryBatch : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_Query() {
+    WithRawMethod_QueryBatch() {
       ::grpc::Service::MarkMethodRaw(1);
     }
-    ~WithRawMethod_Query() override {
+    ~WithRawMethod_QueryBatch() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Query(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryTransferRequest* /*request*/, ::palm::musa::v1::WechatPayQueryTransferResponse* /*response*/) override {
+    ::grpc::Status QueryBatch(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest* /*request*/, ::palm::musa::v1::WechatPayQueryBatchTransferResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestQuery(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestQueryBatch(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_Execute : public BaseClass {
+  class WithRawMethod_QueryDetail : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_Execute() {
+    WithRawMethod_QueryDetail() {
+      ::grpc::Service::MarkMethodRaw(2);
+    }
+    ~WithRawMethod_QueryDetail() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status QueryDetail(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest* /*request*/, ::palm::musa::v1::WechatPayQueryTransferDetailResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestQueryDetail(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_ExecuteBatch : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_ExecuteBatch() {
       ::grpc::Service::MarkMethodRawCallback(0,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Execute(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ExecuteBatch(context, request, response); }));
     }
-    ~WithRawCallbackMethod_Execute() override {
+    ~WithRawCallbackMethod_ExecuteBatch() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Execute(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayExecuteTransferRequest* /*request*/, ::palm::musa::v1::WechatPayExecuteTransferResponse* /*response*/) override {
+    ::grpc::Status ExecuteBatch(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest* /*request*/, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* Execute(
+    virtual ::grpc::ServerUnaryReactor* ExecuteBatch(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_Query : public BaseClass {
+  class WithRawCallbackMethod_QueryBatch : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_Query() {
+    WithRawCallbackMethod_QueryBatch() {
       ::grpc::Service::MarkMethodRawCallback(1,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Query(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->QueryBatch(context, request, response); }));
     }
-    ~WithRawCallbackMethod_Query() override {
+    ~WithRawCallbackMethod_QueryBatch() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Query(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryTransferRequest* /*request*/, ::palm::musa::v1::WechatPayQueryTransferResponse* /*response*/) override {
+    ::grpc::Status QueryBatch(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest* /*request*/, ::palm::musa::v1::WechatPayQueryBatchTransferResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* Query(
+    virtual ::grpc::ServerUnaryReactor* QueryBatch(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_Execute : public BaseClass {
+  class WithRawCallbackMethod_QueryDetail : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_Execute() {
-      ::grpc::Service::MarkMethodStreamed(0,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::palm::musa::v1::WechatPayExecuteTransferRequest, ::palm::musa::v1::WechatPayExecuteTransferResponse>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::palm::musa::v1::WechatPayExecuteTransferRequest, ::palm::musa::v1::WechatPayExecuteTransferResponse>* streamer) {
-                       return this->StreamedExecute(context,
-                         streamer);
-                  }));
+    WithRawCallbackMethod_QueryDetail() {
+      ::grpc::Service::MarkMethodRawCallback(2,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->QueryDetail(context, request, response); }));
     }
-    ~WithStreamedUnaryMethod_Execute() override {
+    ~WithRawCallbackMethod_QueryDetail() override {
       BaseClassMustBeDerivedFromService(this);
     }
-    // disable regular version of this method
-    ::grpc::Status Execute(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayExecuteTransferRequest* /*request*/, ::palm::musa::v1::WechatPayExecuteTransferResponse* /*response*/) override {
+    // disable synchronous version of this method
+    ::grpc::Status QueryDetail(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest* /*request*/, ::palm::musa::v1::WechatPayQueryTransferDetailResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedExecute(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::musa::v1::WechatPayExecuteTransferRequest,::palm::musa::v1::WechatPayExecuteTransferResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::ServerUnaryReactor* QueryDetail(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_Query : public BaseClass {
+  class WithStreamedUnaryMethod_ExecuteBatch : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_Query() {
-      ::grpc::Service::MarkMethodStreamed(1,
+    WithStreamedUnaryMethod_ExecuteBatch() {
+      ::grpc::Service::MarkMethodStreamed(0,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::palm::musa::v1::WechatPayQueryTransferRequest, ::palm::musa::v1::WechatPayQueryTransferResponse>(
+          ::palm::musa::v1::WechatPayExecuteBatchTransferRequest, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::palm::musa::v1::WechatPayQueryTransferRequest, ::palm::musa::v1::WechatPayQueryTransferResponse>* streamer) {
-                       return this->StreamedQuery(context,
+                     ::palm::musa::v1::WechatPayExecuteBatchTransferRequest, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse>* streamer) {
+                       return this->StreamedExecuteBatch(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_Query() override {
+    ~WithStreamedUnaryMethod_ExecuteBatch() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status Query(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryTransferRequest* /*request*/, ::palm::musa::v1::WechatPayQueryTransferResponse* /*response*/) override {
+    ::grpc::Status ExecuteBatch(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest* /*request*/, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedQuery(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::musa::v1::WechatPayQueryTransferRequest,::palm::musa::v1::WechatPayQueryTransferResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedExecuteBatch(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::musa::v1::WechatPayExecuteBatchTransferRequest,::palm::musa::v1::WechatPayExecuteBatchTransferResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Execute<WithStreamedUnaryMethod_Query<Service > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_QueryBatch : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_QueryBatch() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::palm::musa::v1::WechatPayQueryBatchTransferRequest, ::palm::musa::v1::WechatPayQueryBatchTransferResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::palm::musa::v1::WechatPayQueryBatchTransferRequest, ::palm::musa::v1::WechatPayQueryBatchTransferResponse>* streamer) {
+                       return this->StreamedQueryBatch(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_QueryBatch() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status QueryBatch(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryBatchTransferRequest* /*request*/, ::palm::musa::v1::WechatPayQueryBatchTransferResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedQueryBatch(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::musa::v1::WechatPayQueryBatchTransferRequest,::palm::musa::v1::WechatPayQueryBatchTransferResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_QueryDetail : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_QueryDetail() {
+      ::grpc::Service::MarkMethodStreamed(2,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::palm::musa::v1::WechatPayQueryTransferDetailRequest, ::palm::musa::v1::WechatPayQueryTransferDetailResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::palm::musa::v1::WechatPayQueryTransferDetailRequest, ::palm::musa::v1::WechatPayQueryTransferDetailResponse>* streamer) {
+                       return this->StreamedQueryDetail(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_QueryDetail() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status QueryDetail(::grpc::ServerContext* /*context*/, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest* /*request*/, ::palm::musa::v1::WechatPayQueryTransferDetailResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedQueryDetail(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::musa::v1::WechatPayQueryTransferDetailRequest,::palm::musa::v1::WechatPayQueryTransferDetailResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_ExecuteBatch<WithStreamedUnaryMethod_QueryBatch<WithStreamedUnaryMethod_QueryDetail<Service > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Execute<WithStreamedUnaryMethod_Query<Service > > StreamedService;
+  typedef WithStreamedUnaryMethod_ExecuteBatch<WithStreamedUnaryMethod_QueryBatch<WithStreamedUnaryMethod_QueryDetail<Service > > > StreamedService;
 };
 
 }  // namespace v1

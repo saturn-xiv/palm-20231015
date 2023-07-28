@@ -3,8 +3,8 @@
 
 package com.github.saturn_xiv.palm.plugins.musa.v1;
 
-public interface WechatPayQueryTransferRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayQueryTransferRequest)
+public interface WechatPayQueryBatchTransferRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:palm.musa.v1.WechatPayQueryBatchTransferRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -32,13 +32,13 @@ public interface WechatPayQueryTransferRequestOrBuilder extends
   int getLimit();
 
   /**
-   * <code>.palm.musa.v1.WechatPayQueryTransferRequest.DetailStatus detail_status = 9;</code>
+   * <code>.palm.musa.v1.WechatPayQueryBatchTransferRequest.DetailStatus detail_status = 9;</code>
    * @return The enum numeric value on the wire for detailStatus.
    */
   int getDetailStatusValue();
   /**
-   * <code>.palm.musa.v1.WechatPayQueryTransferRequest.DetailStatus detail_status = 9;</code>
+   * <code>.palm.musa.v1.WechatPayQueryBatchTransferRequest.DetailStatus detail_status = 9;</code>
    * @return The detailStatus.
    */
-  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferRequest.DetailStatus getDetailStatus();
+  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferRequest.DetailStatus getDetailStatus();
 }

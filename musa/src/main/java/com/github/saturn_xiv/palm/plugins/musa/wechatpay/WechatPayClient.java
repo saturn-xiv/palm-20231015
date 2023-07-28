@@ -180,8 +180,9 @@ public class WechatPayClient {
 
     }
 
-    public static String batchTransferDetailStatus(WechatPayQueryTransferRequest.DetailStatus status) {
+    public static String batchTransferDetailStatus(WechatPayQueryBatchTransferRequest.DetailStatus status) {
         return switch (status) {
+            case WAIT_PAY -> "WAIT_PAY";
             case SUCCESS -> "SUCCESS";
             case ALL -> "ALL";
             case FAIL -> "FAIL";

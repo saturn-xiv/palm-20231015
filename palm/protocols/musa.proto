@@ -155,12 +155,15 @@ message WechatPayRefundResponse {
 // ----------------------------------------------------------------------------
 
 service WechatPayTransfer {
-  rpc Execute(WechatPayExecuteTransferRequest)
-      returns (WechatPayExecuteTransferResponse) {}
-  rpc Query(WechatPayQueryTransferRequest)
-      returns (WechatPayQueryTransferResponse) {}
+  rpc ExecuteBatch(WechatPayExecuteBatchTransferRequest)
+      returns (WechatPayExecuteBatchTransferResponse) {}
+  rpc QueryBatch(WechatPayQueryBatchTransferRequest)
+      returns (WechatPayQueryBatchTransferResponse) {}
+  // https://pay.weixin.qq.com/docs/merchant/apis/batch-transfer-to-balance/transfer-detail/get-transfer-detail-by-out-no.html
+  rpc QueryDetail(WechatPayQueryTransferDetailRequest)
+      returns (WechatPayQueryTransferDetailResponse) {}
 }
-message WechatPayExecuteTransferRequest {
+message WechatPayExecuteBatchTransferRequest {
   message Batch {
     string name = 1;
     string remark = 2;
@@ -179,7 +182,7 @@ message WechatPayExecuteTransferRequest {
 
   string scene_id = 9;
 }
-message WechatPayExecuteTransferResponse {
+message WechatPayExecuteBatchTransferResponse {
   message Detail {
     string open_id = 1;
     string out_detail_no = 2;
@@ -197,18 +200,19 @@ message WechatPayExecuteTransferResponse {
     Error error = 12;
   }
 }
-message WechatPayQueryTransferRequest {
+message WechatPayQueryBatchTransferRequest {
   enum DetailStatus {
     ALL = 0;
     SUCCESS = 1;
-    FAIL = 2;
+    WAIT_PAY = 2;
+    FAIL = 9;
   }
   string out_batch_no = 1;
   int32 offset = 2;
   int32 limit = 3;
   DetailStatus detail_status = 9;
 }
-message WechatPayQueryTransferResponse {
+message WechatPayQueryBatchTransferResponse {
   message Detail {
     string out_detail_no = 1;
     string status = 2;
@@ -221,6 +225,29 @@ message WechatPayQueryTransferResponse {
 
   Batch batch = 1;
   repeated Detail details = 9;
+}
+
+message WechatPayQueryTransferDetailRequest {
+  string out_batch_no = 1;
+  string out_detail_no = 2;
+}
+
+message WechatPayQueryTransferDetailResponse {
+  string app_id = 1;
+  string mch_id = 2;
+  string open_id = 3;
+  optional string user_name = 4;
+
+  string batch_id = 11;
+  string out_batch_no = 12;
+  string out_detail_no = 13;
+  string detail_id = 14;
+  string detail_status = 15;
+  int64 transfer_amount = 16;
+  string transfer_remark = 17;
+  optional string fail_reason = 18;
+  string initiate_time = 19;
+  string update_time = 20;
 }
 
 // ----------------------------------------------------------------------------
