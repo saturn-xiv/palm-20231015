@@ -106,16 +106,43 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
         for (var it : response.getTransferDetailList()) {
             transferDetailList.add(
                     WechatPayQueryBatchTransferResponse.Detail.newBuilder()
+                            .setDetailId(it.getDetailId())
                             .setOutDetailNo(it.getOutDetailNo())
                             .setStatus(it.getDetailStatus())
                             .build()
             );
         }
         var tb = WechatPayQueryBatchTransferResponse.Batch.newBuilder()
-                .setStatus(response.getTransferBatch().getBatchStatus())
-                .setType(response.getTransferBatch().getBatchType());
+                .setMchId(response.getTransferBatch().getMchid())
+                .setOutBatchNo(response.getTransferBatch().getOutBatchNo())
+                .setBatchId(response.getTransferBatch().getBatchId())
+                .setAppId(response.getTransferBatch().getAppid())
+                .setBatchStatus(response.getTransferBatch().getBatchStatus())
+                .setBatchType(response.getTransferBatch().getBatchType())
+                .setBatchName(response.getTransferBatch().getBatchName())
+                .setBatchRemark(response.getTransferBatch().getBatchRemark())
+                .setTotalAmount(response.getTransferBatch().getTotalAmount())
+                .setTotalNum(response.getTransferBatch().getTotalNum());
         if (response.getTransferBatch().getCloseReason() != null) {
             tb.setCloseReason(response.getTransferBatch().getCloseReason().name());
+        }
+        if (response.getTransferBatch().getCreateTime() != null) {
+            tb.setCreateTime(response.getTransferBatch().getCreateTime());
+        }
+        if (response.getTransferBatch().getUpdateTime() != null) {
+            tb.setUpdateTime(response.getTransferBatch().getUpdateTime());
+        }
+        if (response.getTransferBatch().getSuccessAmount() != null) {
+            tb.setSuccessAmount(response.getTransferBatch().getSuccessAmount());
+        }
+        if (response.getTransferBatch().getSuccessNum() != null) {
+            tb.setSuccessNum(response.getTransferBatch().getSuccessNum());
+        }
+        if (response.getTransferBatch().getFailAmount() != null) {
+            tb.setFailAmount(response.getTransferBatch().getFailAmount());
+        }
+        if (response.getTransferBatch().getFailNum() != null) {
+            tb.setFailNum(response.getTransferBatch().getFailNum());
         }
 
         responseObserver.onNext(WechatPayQueryBatchTransferResponse.newBuilder()

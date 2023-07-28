@@ -704,6 +704,9 @@ export namespace WechatPayQueryBatchTransferResponse {
   }
 
   export class Detail extends jspb.Message {
+    getDetailId(): string;
+    setDetailId(value: string): Detail;
+
     getOutDetailNo(): string;
     setOutDetailNo(value: string): Detail;
 
@@ -720,6 +723,7 @@ export namespace WechatPayQueryBatchTransferResponse {
 
   export namespace Detail {
     export type AsObject = {
+      detailId: string,
       outDetailNo: string,
       status: string,
     }
@@ -727,16 +731,73 @@ export namespace WechatPayQueryBatchTransferResponse {
 
 
   export class Batch extends jspb.Message {
-    getStatus(): string;
-    setStatus(value: string): Batch;
+    getAppId(): string;
+    setAppId(value: string): Batch;
 
-    getType(): string;
-    setType(value: string): Batch;
+    getMchId(): string;
+    setMchId(value: string): Batch;
+
+    getTransferSceneId(): string;
+    setTransferSceneId(value: string): Batch;
+
+    getBatchId(): string;
+    setBatchId(value: string): Batch;
+
+    getOutBatchNo(): string;
+    setOutBatchNo(value: string): Batch;
+
+    getBatchStatus(): string;
+    setBatchStatus(value: string): Batch;
+
+    getBatchType(): string;
+    setBatchType(value: string): Batch;
+
+    getBatchName(): string;
+    setBatchName(value: string): Batch;
+
+    getBatchRemark(): string;
+    setBatchRemark(value: string): Batch;
 
     getCloseReason(): string;
     setCloseReason(value: string): Batch;
     hasCloseReason(): boolean;
     clearCloseReason(): Batch;
+
+    getTotalAmount(): number;
+    setTotalAmount(value: number): Batch;
+
+    getTotalNum(): number;
+    setTotalNum(value: number): Batch;
+
+    getCreateTime(): string;
+    setCreateTime(value: string): Batch;
+    hasCreateTime(): boolean;
+    clearCreateTime(): Batch;
+
+    getUpdateTime(): string;
+    setUpdateTime(value: string): Batch;
+    hasUpdateTime(): boolean;
+    clearUpdateTime(): Batch;
+
+    getSuccessAmount(): number;
+    setSuccessAmount(value: number): Batch;
+    hasSuccessAmount(): boolean;
+    clearSuccessAmount(): Batch;
+
+    getSuccessNum(): number;
+    setSuccessNum(value: number): Batch;
+    hasSuccessNum(): boolean;
+    clearSuccessNum(): Batch;
+
+    getFailAmount(): number;
+    setFailAmount(value: number): Batch;
+    hasFailAmount(): boolean;
+    clearFailAmount(): Batch;
+
+    getFailNum(): number;
+    setFailNum(value: number): Batch;
+    hasFailNum(): boolean;
+    clearFailNum(): Batch;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Batch.AsObject;
@@ -748,14 +809,59 @@ export namespace WechatPayQueryBatchTransferResponse {
 
   export namespace Batch {
     export type AsObject = {
-      status: string,
-      type: string,
+      appId: string,
+      mchId: string,
+      transferSceneId: string,
+      batchId: string,
+      outBatchNo: string,
+      batchStatus: string,
+      batchType: string,
+      batchName: string,
+      batchRemark: string,
       closeReason?: string,
+      totalAmount: number,
+      totalNum: number,
+      createTime?: string,
+      updateTime?: string,
+      successAmount?: number,
+      successNum?: number,
+      failAmount?: number,
+      failNum?: number,
     }
 
     export enum CloseReasonCase { 
       _CLOSE_REASON_NOT_SET = 0,
-      CLOSE_REASON = 9,
+      CLOSE_REASON = 21,
+    }
+
+    export enum CreateTimeCase { 
+      _CREATE_TIME_NOT_SET = 0,
+      CREATE_TIME = 24,
+    }
+
+    export enum UpdateTimeCase { 
+      _UPDATE_TIME_NOT_SET = 0,
+      UPDATE_TIME = 25,
+    }
+
+    export enum SuccessAmountCase { 
+      _SUCCESS_AMOUNT_NOT_SET = 0,
+      SUCCESS_AMOUNT = 26,
+    }
+
+    export enum SuccessNumCase { 
+      _SUCCESS_NUM_NOT_SET = 0,
+      SUCCESS_NUM = 27,
+    }
+
+    export enum FailAmountCase { 
+      _FAIL_AMOUNT_NOT_SET = 0,
+      FAIL_AMOUNT = 28,
+    }
+
+    export enum FailNumCase { 
+      _FAIL_NUM_NOT_SET = 0,
+      FAIL_NUM = 29,
     }
   }
 

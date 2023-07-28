@@ -44,24 +44,36 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string out_detail_no = 1;</code>
+     * <code>string detail_id = 1;</code>
+     * @return The detailId.
+     */
+    java.lang.String getDetailId();
+    /**
+     * <code>string detail_id = 1;</code>
+     * @return The bytes for detailId.
+     */
+    com.google.protobuf.ByteString
+        getDetailIdBytes();
+
+    /**
+     * <code>string out_detail_no = 2;</code>
      * @return The outDetailNo.
      */
     java.lang.String getOutDetailNo();
     /**
-     * <code>string out_detail_no = 1;</code>
+     * <code>string out_detail_no = 2;</code>
      * @return The bytes for outDetailNo.
      */
     com.google.protobuf.ByteString
         getOutDetailNoBytes();
 
     /**
-     * <code>string status = 2;</code>
+     * <code>string status = 3;</code>
      * @return The status.
      */
     java.lang.String getStatus();
     /**
-     * <code>string status = 2;</code>
+     * <code>string status = 3;</code>
      * @return The bytes for status.
      */
     com.google.protobuf.ByteString
@@ -80,6 +92,7 @@ private static final long serialVersionUID = 0L;
       super(builder);
     }
     private Detail() {
+      detailId_ = "";
       outDetailNo_ = "";
       status_ = "";
     }
@@ -104,11 +117,50 @@ private static final long serialVersionUID = 0L;
               com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Detail.class, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Detail.Builder.class);
     }
 
-    public static final int OUT_DETAIL_NO_FIELD_NUMBER = 1;
+    public static final int DETAIL_ID_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object detailId_ = "";
+    /**
+     * <code>string detail_id = 1;</code>
+     * @return The detailId.
+     */
+    @java.lang.Override
+    public java.lang.String getDetailId() {
+      java.lang.Object ref = detailId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        detailId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string detail_id = 1;</code>
+     * @return The bytes for detailId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDetailIdBytes() {
+      java.lang.Object ref = detailId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        detailId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int OUT_DETAIL_NO_FIELD_NUMBER = 2;
     @SuppressWarnings("serial")
     private volatile java.lang.Object outDetailNo_ = "";
     /**
-     * <code>string out_detail_no = 1;</code>
+     * <code>string out_detail_no = 2;</code>
      * @return The outDetailNo.
      */
     @java.lang.Override
@@ -125,7 +177,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string out_detail_no = 1;</code>
+     * <code>string out_detail_no = 2;</code>
      * @return The bytes for outDetailNo.
      */
     @java.lang.Override
@@ -143,11 +195,11 @@ private static final long serialVersionUID = 0L;
       }
     }
 
-    public static final int STATUS_FIELD_NUMBER = 2;
+    public static final int STATUS_FIELD_NUMBER = 3;
     @SuppressWarnings("serial")
     private volatile java.lang.Object status_ = "";
     /**
-     * <code>string status = 2;</code>
+     * <code>string status = 3;</code>
      * @return The status.
      */
     @java.lang.Override
@@ -164,7 +216,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string status = 2;</code>
+     * <code>string status = 3;</code>
      * @return The bytes for status.
      */
     @java.lang.Override
@@ -196,11 +248,14 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(detailId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, detailId_);
+      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(outDetailNo_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, outDetailNo_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, outDetailNo_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, status_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, status_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -211,11 +266,14 @@ private static final long serialVersionUID = 0L;
       if (size != -1) return size;
 
       size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(detailId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, detailId_);
+      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(outDetailNo_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, outDetailNo_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, outDetailNo_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, status_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, status_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -232,6 +290,8 @@ private static final long serialVersionUID = 0L;
       }
       com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Detail other = (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Detail) obj;
 
+      if (!getDetailId()
+          .equals(other.getDetailId())) return false;
       if (!getOutDetailNo()
           .equals(other.getOutDetailNo())) return false;
       if (!getStatus()
@@ -247,6 +307,8 @@ private static final long serialVersionUID = 0L;
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + DETAIL_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getDetailId().hashCode();
       hash = (37 * hash) + OUT_DETAIL_NO_FIELD_NUMBER;
       hash = (53 * hash) + getOutDetailNo().hashCode();
       hash = (37 * hash) + STATUS_FIELD_NUMBER;
@@ -382,6 +444,7 @@ private static final long serialVersionUID = 0L;
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
+        detailId_ = "";
         outDetailNo_ = "";
         status_ = "";
         return this;
@@ -418,9 +481,12 @@ private static final long serialVersionUID = 0L;
       private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Detail result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.outDetailNo_ = outDetailNo_;
+          result.detailId_ = detailId_;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.outDetailNo_ = outDetailNo_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
           result.status_ = status_;
         }
       }
@@ -437,14 +503,19 @@ private static final long serialVersionUID = 0L;
 
       public Builder mergeFrom(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Detail other) {
         if (other == com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Detail.getDefaultInstance()) return this;
+        if (!other.getDetailId().isEmpty()) {
+          detailId_ = other.detailId_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
         if (!other.getOutDetailNo().isEmpty()) {
           outDetailNo_ = other.outDetailNo_;
-          bitField0_ |= 0x00000001;
+          bitField0_ |= 0x00000002;
           onChanged();
         }
         if (!other.getStatus().isEmpty()) {
           status_ = other.status_;
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -474,15 +545,20 @@ private static final long serialVersionUID = 0L;
                 done = true;
                 break;
               case 10: {
-                outDetailNo_ = input.readStringRequireUtf8();
+                detailId_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000001;
                 break;
               } // case 10
               case 18: {
-                status_ = input.readStringRequireUtf8();
+                outDetailNo_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000002;
                 break;
               } // case 18
+              case 26: {
+                status_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -500,9 +576,81 @@ private static final long serialVersionUID = 0L;
       }
       private int bitField0_;
 
+      private java.lang.Object detailId_ = "";
+      /**
+       * <code>string detail_id = 1;</code>
+       * @return The detailId.
+       */
+      public java.lang.String getDetailId() {
+        java.lang.Object ref = detailId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          detailId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string detail_id = 1;</code>
+       * @return The bytes for detailId.
+       */
+      public com.google.protobuf.ByteString
+          getDetailIdBytes() {
+        java.lang.Object ref = detailId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          detailId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string detail_id = 1;</code>
+       * @param value The detailId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDetailId(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        detailId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string detail_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDetailId() {
+        detailId_ = getDefaultInstance().getDetailId();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string detail_id = 1;</code>
+       * @param value The bytes for detailId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDetailIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        detailId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object outDetailNo_ = "";
       /**
-       * <code>string out_detail_no = 1;</code>
+       * <code>string out_detail_no = 2;</code>
        * @return The outDetailNo.
        */
       public java.lang.String getOutDetailNo() {
@@ -518,7 +666,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>string out_detail_no = 1;</code>
+       * <code>string out_detail_no = 2;</code>
        * @return The bytes for outDetailNo.
        */
       public com.google.protobuf.ByteString
@@ -535,7 +683,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>string out_detail_no = 1;</code>
+       * <code>string out_detail_no = 2;</code>
        * @param value The outDetailNo to set.
        * @return This builder for chaining.
        */
@@ -543,22 +691,22 @@ private static final long serialVersionUID = 0L;
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
         outDetailNo_ = value;
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
-       * <code>string out_detail_no = 1;</code>
+       * <code>string out_detail_no = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearOutDetailNo() {
         outDetailNo_ = getDefaultInstance().getOutDetailNo();
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
       /**
-       * <code>string out_detail_no = 1;</code>
+       * <code>string out_detail_no = 2;</code>
        * @param value The bytes for outDetailNo to set.
        * @return This builder for chaining.
        */
@@ -567,14 +715,14 @@ private static final long serialVersionUID = 0L;
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
         outDetailNo_ = value;
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
 
       private java.lang.Object status_ = "";
       /**
-       * <code>string status = 2;</code>
+       * <code>string status = 3;</code>
        * @return The status.
        */
       public java.lang.String getStatus() {
@@ -590,7 +738,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>string status = 2;</code>
+       * <code>string status = 3;</code>
        * @return The bytes for status.
        */
       public com.google.protobuf.ByteString
@@ -607,7 +755,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>string status = 2;</code>
+       * <code>string status = 3;</code>
        * @param value The status to set.
        * @return This builder for chaining.
        */
@@ -615,22 +763,22 @@ private static final long serialVersionUID = 0L;
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
         status_ = value;
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
       /**
-       * <code>string status = 2;</code>
+       * <code>string status = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearStatus() {
         status_ = getDefaultInstance().getStatus();
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
       /**
-       * <code>string status = 2;</code>
+       * <code>string status = 3;</code>
        * @param value The bytes for status to set.
        * @return This builder for chaining.
        */
@@ -639,7 +787,7 @@ private static final long serialVersionUID = 0L;
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
         status_ = value;
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -712,45 +860,219 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string status = 1;</code>
-     * @return The status.
+     * <code>string app_id = 1;</code>
+     * @return The appId.
      */
-    java.lang.String getStatus();
+    java.lang.String getAppId();
     /**
-     * <code>string status = 1;</code>
-     * @return The bytes for status.
-     */
-    com.google.protobuf.ByteString
-        getStatusBytes();
-
-    /**
-     * <code>string type = 2;</code>
-     * @return The type.
-     */
-    java.lang.String getType();
-    /**
-     * <code>string type = 2;</code>
-     * @return The bytes for type.
+     * <code>string app_id = 1;</code>
+     * @return The bytes for appId.
      */
     com.google.protobuf.ByteString
-        getTypeBytes();
+        getAppIdBytes();
 
     /**
-     * <code>optional string close_reason = 9;</code>
+     * <code>string mch_id = 2;</code>
+     * @return The mchId.
+     */
+    java.lang.String getMchId();
+    /**
+     * <code>string mch_id = 2;</code>
+     * @return The bytes for mchId.
+     */
+    com.google.protobuf.ByteString
+        getMchIdBytes();
+
+    /**
+     * <code>string transfer_scene_id = 9;</code>
+     * @return The transferSceneId.
+     */
+    java.lang.String getTransferSceneId();
+    /**
+     * <code>string transfer_scene_id = 9;</code>
+     * @return The bytes for transferSceneId.
+     */
+    com.google.protobuf.ByteString
+        getTransferSceneIdBytes();
+
+    /**
+     * <code>string batch_id = 11;</code>
+     * @return The batchId.
+     */
+    java.lang.String getBatchId();
+    /**
+     * <code>string batch_id = 11;</code>
+     * @return The bytes for batchId.
+     */
+    com.google.protobuf.ByteString
+        getBatchIdBytes();
+
+    /**
+     * <code>string out_batch_no = 12;</code>
+     * @return The outBatchNo.
+     */
+    java.lang.String getOutBatchNo();
+    /**
+     * <code>string out_batch_no = 12;</code>
+     * @return The bytes for outBatchNo.
+     */
+    com.google.protobuf.ByteString
+        getOutBatchNoBytes();
+
+    /**
+     * <code>string batch_status = 13;</code>
+     * @return The batchStatus.
+     */
+    java.lang.String getBatchStatus();
+    /**
+     * <code>string batch_status = 13;</code>
+     * @return The bytes for batchStatus.
+     */
+    com.google.protobuf.ByteString
+        getBatchStatusBytes();
+
+    /**
+     * <code>string batch_type = 14;</code>
+     * @return The batchType.
+     */
+    java.lang.String getBatchType();
+    /**
+     * <code>string batch_type = 14;</code>
+     * @return The bytes for batchType.
+     */
+    com.google.protobuf.ByteString
+        getBatchTypeBytes();
+
+    /**
+     * <code>string batch_name = 15;</code>
+     * @return The batchName.
+     */
+    java.lang.String getBatchName();
+    /**
+     * <code>string batch_name = 15;</code>
+     * @return The bytes for batchName.
+     */
+    com.google.protobuf.ByteString
+        getBatchNameBytes();
+
+    /**
+     * <code>string batch_remark = 16;</code>
+     * @return The batchRemark.
+     */
+    java.lang.String getBatchRemark();
+    /**
+     * <code>string batch_remark = 16;</code>
+     * @return The bytes for batchRemark.
+     */
+    com.google.protobuf.ByteString
+        getBatchRemarkBytes();
+
+    /**
+     * <code>optional string close_reason = 21;</code>
      * @return Whether the closeReason field is set.
      */
     boolean hasCloseReason();
     /**
-     * <code>optional string close_reason = 9;</code>
+     * <code>optional string close_reason = 21;</code>
      * @return The closeReason.
      */
     java.lang.String getCloseReason();
     /**
-     * <code>optional string close_reason = 9;</code>
+     * <code>optional string close_reason = 21;</code>
      * @return The bytes for closeReason.
      */
     com.google.protobuf.ByteString
         getCloseReasonBytes();
+
+    /**
+     * <code>int64 total_amount = 22;</code>
+     * @return The totalAmount.
+     */
+    long getTotalAmount();
+
+    /**
+     * <code>int32 total_num = 23;</code>
+     * @return The totalNum.
+     */
+    int getTotalNum();
+
+    /**
+     * <code>optional string create_time = 24;</code>
+     * @return Whether the createTime field is set.
+     */
+    boolean hasCreateTime();
+    /**
+     * <code>optional string create_time = 24;</code>
+     * @return The createTime.
+     */
+    java.lang.String getCreateTime();
+    /**
+     * <code>optional string create_time = 24;</code>
+     * @return The bytes for createTime.
+     */
+    com.google.protobuf.ByteString
+        getCreateTimeBytes();
+
+    /**
+     * <code>optional string update_time = 25;</code>
+     * @return Whether the updateTime field is set.
+     */
+    boolean hasUpdateTime();
+    /**
+     * <code>optional string update_time = 25;</code>
+     * @return The updateTime.
+     */
+    java.lang.String getUpdateTime();
+    /**
+     * <code>optional string update_time = 25;</code>
+     * @return The bytes for updateTime.
+     */
+    com.google.protobuf.ByteString
+        getUpdateTimeBytes();
+
+    /**
+     * <code>optional int64 success_amount = 26;</code>
+     * @return Whether the successAmount field is set.
+     */
+    boolean hasSuccessAmount();
+    /**
+     * <code>optional int64 success_amount = 26;</code>
+     * @return The successAmount.
+     */
+    long getSuccessAmount();
+
+    /**
+     * <code>optional int32 success_num = 27;</code>
+     * @return Whether the successNum field is set.
+     */
+    boolean hasSuccessNum();
+    /**
+     * <code>optional int32 success_num = 27;</code>
+     * @return The successNum.
+     */
+    int getSuccessNum();
+
+    /**
+     * <code>optional int64 fail_amount = 28;</code>
+     * @return Whether the failAmount field is set.
+     */
+    boolean hasFailAmount();
+    /**
+     * <code>optional int64 fail_amount = 28;</code>
+     * @return The failAmount.
+     */
+    long getFailAmount();
+
+    /**
+     * <code>optional int32 fail_num = 29;</code>
+     * @return Whether the failNum field is set.
+     */
+    boolean hasFailNum();
+    /**
+     * <code>optional int32 fail_num = 29;</code>
+     * @return The failNum.
+     */
+    int getFailNum();
   }
   /**
    * Protobuf type {@code palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch}
@@ -765,9 +1087,18 @@ private static final long serialVersionUID = 0L;
       super(builder);
     }
     private Batch() {
-      status_ = "";
-      type_ = "";
+      appId_ = "";
+      mchId_ = "";
+      transferSceneId_ = "";
+      batchId_ = "";
+      outBatchNo_ = "";
+      batchStatus_ = "";
+      batchType_ = "";
+      batchName_ = "";
+      batchRemark_ = "";
       closeReason_ = "";
+      createTime_ = "";
+      updateTime_ = "";
     }
 
     @java.lang.Override
@@ -791,89 +1122,362 @@ private static final long serialVersionUID = 0L;
     }
 
     private int bitField0_;
-    public static final int STATUS_FIELD_NUMBER = 1;
+    public static final int APP_ID_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
-    private volatile java.lang.Object status_ = "";
+    private volatile java.lang.Object appId_ = "";
     /**
-     * <code>string status = 1;</code>
-     * @return The status.
+     * <code>string app_id = 1;</code>
+     * @return The appId.
      */
     @java.lang.Override
-    public java.lang.String getStatus() {
-      java.lang.Object ref = status_;
+    public java.lang.String getAppId() {
+      java.lang.Object ref = appId_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        status_ = s;
+        appId_ = s;
         return s;
       }
     }
     /**
-     * <code>string status = 1;</code>
-     * @return The bytes for status.
+     * <code>string app_id = 1;</code>
+     * @return The bytes for appId.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getStatusBytes() {
-      java.lang.Object ref = status_;
+        getAppIdBytes() {
+      java.lang.Object ref = appId_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        status_ = b;
+        appId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int TYPE_FIELD_NUMBER = 2;
+    public static final int MCH_ID_FIELD_NUMBER = 2;
     @SuppressWarnings("serial")
-    private volatile java.lang.Object type_ = "";
+    private volatile java.lang.Object mchId_ = "";
     /**
-     * <code>string type = 2;</code>
-     * @return The type.
+     * <code>string mch_id = 2;</code>
+     * @return The mchId.
      */
     @java.lang.Override
-    public java.lang.String getType() {
-      java.lang.Object ref = type_;
+    public java.lang.String getMchId() {
+      java.lang.Object ref = mchId_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        type_ = s;
+        mchId_ = s;
         return s;
       }
     }
     /**
-     * <code>string type = 2;</code>
-     * @return The bytes for type.
+     * <code>string mch_id = 2;</code>
+     * @return The bytes for mchId.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getTypeBytes() {
-      java.lang.Object ref = type_;
+        getMchIdBytes() {
+      java.lang.Object ref = mchId_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        type_ = b;
+        mchId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int CLOSE_REASON_FIELD_NUMBER = 9;
+    public static final int TRANSFER_SCENE_ID_FIELD_NUMBER = 9;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object transferSceneId_ = "";
+    /**
+     * <code>string transfer_scene_id = 9;</code>
+     * @return The transferSceneId.
+     */
+    @java.lang.Override
+    public java.lang.String getTransferSceneId() {
+      java.lang.Object ref = transferSceneId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        transferSceneId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string transfer_scene_id = 9;</code>
+     * @return The bytes for transferSceneId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTransferSceneIdBytes() {
+      java.lang.Object ref = transferSceneId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        transferSceneId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BATCH_ID_FIELD_NUMBER = 11;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object batchId_ = "";
+    /**
+     * <code>string batch_id = 11;</code>
+     * @return The batchId.
+     */
+    @java.lang.Override
+    public java.lang.String getBatchId() {
+      java.lang.Object ref = batchId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        batchId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string batch_id = 11;</code>
+     * @return The bytes for batchId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBatchIdBytes() {
+      java.lang.Object ref = batchId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        batchId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int OUT_BATCH_NO_FIELD_NUMBER = 12;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object outBatchNo_ = "";
+    /**
+     * <code>string out_batch_no = 12;</code>
+     * @return The outBatchNo.
+     */
+    @java.lang.Override
+    public java.lang.String getOutBatchNo() {
+      java.lang.Object ref = outBatchNo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        outBatchNo_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string out_batch_no = 12;</code>
+     * @return The bytes for outBatchNo.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getOutBatchNoBytes() {
+      java.lang.Object ref = outBatchNo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        outBatchNo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BATCH_STATUS_FIELD_NUMBER = 13;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object batchStatus_ = "";
+    /**
+     * <code>string batch_status = 13;</code>
+     * @return The batchStatus.
+     */
+    @java.lang.Override
+    public java.lang.String getBatchStatus() {
+      java.lang.Object ref = batchStatus_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        batchStatus_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string batch_status = 13;</code>
+     * @return The bytes for batchStatus.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBatchStatusBytes() {
+      java.lang.Object ref = batchStatus_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        batchStatus_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BATCH_TYPE_FIELD_NUMBER = 14;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object batchType_ = "";
+    /**
+     * <code>string batch_type = 14;</code>
+     * @return The batchType.
+     */
+    @java.lang.Override
+    public java.lang.String getBatchType() {
+      java.lang.Object ref = batchType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        batchType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string batch_type = 14;</code>
+     * @return The bytes for batchType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBatchTypeBytes() {
+      java.lang.Object ref = batchType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        batchType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BATCH_NAME_FIELD_NUMBER = 15;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object batchName_ = "";
+    /**
+     * <code>string batch_name = 15;</code>
+     * @return The batchName.
+     */
+    @java.lang.Override
+    public java.lang.String getBatchName() {
+      java.lang.Object ref = batchName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        batchName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string batch_name = 15;</code>
+     * @return The bytes for batchName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBatchNameBytes() {
+      java.lang.Object ref = batchName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        batchName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BATCH_REMARK_FIELD_NUMBER = 16;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object batchRemark_ = "";
+    /**
+     * <code>string batch_remark = 16;</code>
+     * @return The batchRemark.
+     */
+    @java.lang.Override
+    public java.lang.String getBatchRemark() {
+      java.lang.Object ref = batchRemark_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        batchRemark_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string batch_remark = 16;</code>
+     * @return The bytes for batchRemark.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBatchRemarkBytes() {
+      java.lang.Object ref = batchRemark_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        batchRemark_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CLOSE_REASON_FIELD_NUMBER = 21;
     @SuppressWarnings("serial")
     private volatile java.lang.Object closeReason_ = "";
     /**
-     * <code>optional string close_reason = 9;</code>
+     * <code>optional string close_reason = 21;</code>
      * @return Whether the closeReason field is set.
      */
     @java.lang.Override
@@ -881,7 +1485,7 @@ private static final long serialVersionUID = 0L;
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>optional string close_reason = 9;</code>
+     * <code>optional string close_reason = 21;</code>
      * @return The closeReason.
      */
     @java.lang.Override
@@ -898,7 +1502,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional string close_reason = 9;</code>
+     * <code>optional string close_reason = 21;</code>
      * @return The bytes for closeReason.
      */
     @java.lang.Override
@@ -916,6 +1520,198 @@ private static final long serialVersionUID = 0L;
       }
     }
 
+    public static final int TOTAL_AMOUNT_FIELD_NUMBER = 22;
+    private long totalAmount_ = 0L;
+    /**
+     * <code>int64 total_amount = 22;</code>
+     * @return The totalAmount.
+     */
+    @java.lang.Override
+    public long getTotalAmount() {
+      return totalAmount_;
+    }
+
+    public static final int TOTAL_NUM_FIELD_NUMBER = 23;
+    private int totalNum_ = 0;
+    /**
+     * <code>int32 total_num = 23;</code>
+     * @return The totalNum.
+     */
+    @java.lang.Override
+    public int getTotalNum() {
+      return totalNum_;
+    }
+
+    public static final int CREATE_TIME_FIELD_NUMBER = 24;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object createTime_ = "";
+    /**
+     * <code>optional string create_time = 24;</code>
+     * @return Whether the createTime field is set.
+     */
+    @java.lang.Override
+    public boolean hasCreateTime() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional string create_time = 24;</code>
+     * @return The createTime.
+     */
+    @java.lang.Override
+    public java.lang.String getCreateTime() {
+      java.lang.Object ref = createTime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        createTime_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string create_time = 24;</code>
+     * @return The bytes for createTime.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCreateTimeBytes() {
+      java.lang.Object ref = createTime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        createTime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int UPDATE_TIME_FIELD_NUMBER = 25;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object updateTime_ = "";
+    /**
+     * <code>optional string update_time = 25;</code>
+     * @return Whether the updateTime field is set.
+     */
+    @java.lang.Override
+    public boolean hasUpdateTime() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional string update_time = 25;</code>
+     * @return The updateTime.
+     */
+    @java.lang.Override
+    public java.lang.String getUpdateTime() {
+      java.lang.Object ref = updateTime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        updateTime_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string update_time = 25;</code>
+     * @return The bytes for updateTime.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getUpdateTimeBytes() {
+      java.lang.Object ref = updateTime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        updateTime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SUCCESS_AMOUNT_FIELD_NUMBER = 26;
+    private long successAmount_ = 0L;
+    /**
+     * <code>optional int64 success_amount = 26;</code>
+     * @return Whether the successAmount field is set.
+     */
+    @java.lang.Override
+    public boolean hasSuccessAmount() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>optional int64 success_amount = 26;</code>
+     * @return The successAmount.
+     */
+    @java.lang.Override
+    public long getSuccessAmount() {
+      return successAmount_;
+    }
+
+    public static final int SUCCESS_NUM_FIELD_NUMBER = 27;
+    private int successNum_ = 0;
+    /**
+     * <code>optional int32 success_num = 27;</code>
+     * @return Whether the successNum field is set.
+     */
+    @java.lang.Override
+    public boolean hasSuccessNum() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>optional int32 success_num = 27;</code>
+     * @return The successNum.
+     */
+    @java.lang.Override
+    public int getSuccessNum() {
+      return successNum_;
+    }
+
+    public static final int FAIL_AMOUNT_FIELD_NUMBER = 28;
+    private long failAmount_ = 0L;
+    /**
+     * <code>optional int64 fail_amount = 28;</code>
+     * @return Whether the failAmount field is set.
+     */
+    @java.lang.Override
+    public boolean hasFailAmount() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <code>optional int64 fail_amount = 28;</code>
+     * @return The failAmount.
+     */
+    @java.lang.Override
+    public long getFailAmount() {
+      return failAmount_;
+    }
+
+    public static final int FAIL_NUM_FIELD_NUMBER = 29;
+    private int failNum_ = 0;
+    /**
+     * <code>optional int32 fail_num = 29;</code>
+     * @return Whether the failNum field is set.
+     */
+    @java.lang.Override
+    public boolean hasFailNum() {
+      return ((bitField0_ & 0x00000040) != 0);
+    }
+    /**
+     * <code>optional int32 fail_num = 29;</code>
+     * @return The failNum.
+     */
+    @java.lang.Override
+    public int getFailNum() {
+      return failNum_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -930,14 +1726,59 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, status_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(appId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, appId_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, type_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(mchId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, mchId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(transferSceneId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, transferSceneId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(batchId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 11, batchId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(outBatchNo_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 12, outBatchNo_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(batchStatus_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 13, batchStatus_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(batchType_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 14, batchType_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(batchName_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 15, batchName_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(batchRemark_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 16, batchRemark_);
       }
       if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, closeReason_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 21, closeReason_);
+      }
+      if (totalAmount_ != 0L) {
+        output.writeInt64(22, totalAmount_);
+      }
+      if (totalNum_ != 0) {
+        output.writeInt32(23, totalNum_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 24, createTime_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 25, updateTime_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeInt64(26, successAmount_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        output.writeInt32(27, successNum_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        output.writeInt64(28, failAmount_);
+      }
+      if (((bitField0_ & 0x00000040) != 0)) {
+        output.writeInt32(29, failNum_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -948,14 +1789,65 @@ private static final long serialVersionUID = 0L;
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, status_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(appId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, appId_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, type_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(mchId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, mchId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(transferSceneId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, transferSceneId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(batchId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, batchId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(outBatchNo_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, outBatchNo_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(batchStatus_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, batchStatus_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(batchType_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(14, batchType_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(batchName_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(15, batchName_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(batchRemark_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(16, batchRemark_);
       }
       if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, closeReason_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(21, closeReason_);
+      }
+      if (totalAmount_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(22, totalAmount_);
+      }
+      if (totalNum_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(23, totalNum_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(24, createTime_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(25, updateTime_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(26, successAmount_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(27, successNum_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(28, failAmount_);
+      }
+      if (((bitField0_ & 0x00000040) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(29, failNum_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -972,14 +1864,62 @@ private static final long serialVersionUID = 0L;
       }
       com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Batch other = (com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Batch) obj;
 
-      if (!getStatus()
-          .equals(other.getStatus())) return false;
-      if (!getType()
-          .equals(other.getType())) return false;
+      if (!getAppId()
+          .equals(other.getAppId())) return false;
+      if (!getMchId()
+          .equals(other.getMchId())) return false;
+      if (!getTransferSceneId()
+          .equals(other.getTransferSceneId())) return false;
+      if (!getBatchId()
+          .equals(other.getBatchId())) return false;
+      if (!getOutBatchNo()
+          .equals(other.getOutBatchNo())) return false;
+      if (!getBatchStatus()
+          .equals(other.getBatchStatus())) return false;
+      if (!getBatchType()
+          .equals(other.getBatchType())) return false;
+      if (!getBatchName()
+          .equals(other.getBatchName())) return false;
+      if (!getBatchRemark()
+          .equals(other.getBatchRemark())) return false;
       if (hasCloseReason() != other.hasCloseReason()) return false;
       if (hasCloseReason()) {
         if (!getCloseReason()
             .equals(other.getCloseReason())) return false;
+      }
+      if (getTotalAmount()
+          != other.getTotalAmount()) return false;
+      if (getTotalNum()
+          != other.getTotalNum()) return false;
+      if (hasCreateTime() != other.hasCreateTime()) return false;
+      if (hasCreateTime()) {
+        if (!getCreateTime()
+            .equals(other.getCreateTime())) return false;
+      }
+      if (hasUpdateTime() != other.hasUpdateTime()) return false;
+      if (hasUpdateTime()) {
+        if (!getUpdateTime()
+            .equals(other.getUpdateTime())) return false;
+      }
+      if (hasSuccessAmount() != other.hasSuccessAmount()) return false;
+      if (hasSuccessAmount()) {
+        if (getSuccessAmount()
+            != other.getSuccessAmount()) return false;
+      }
+      if (hasSuccessNum() != other.hasSuccessNum()) return false;
+      if (hasSuccessNum()) {
+        if (getSuccessNum()
+            != other.getSuccessNum()) return false;
+      }
+      if (hasFailAmount() != other.hasFailAmount()) return false;
+      if (hasFailAmount()) {
+        if (getFailAmount()
+            != other.getFailAmount()) return false;
+      }
+      if (hasFailNum() != other.hasFailNum()) return false;
+      if (hasFailNum()) {
+        if (getFailNum()
+            != other.getFailNum()) return false;
       }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
@@ -992,13 +1932,58 @@ private static final long serialVersionUID = 0L;
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + getStatus().hashCode();
-      hash = (37 * hash) + TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + getType().hashCode();
+      hash = (37 * hash) + APP_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getAppId().hashCode();
+      hash = (37 * hash) + MCH_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getMchId().hashCode();
+      hash = (37 * hash) + TRANSFER_SCENE_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getTransferSceneId().hashCode();
+      hash = (37 * hash) + BATCH_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getBatchId().hashCode();
+      hash = (37 * hash) + OUT_BATCH_NO_FIELD_NUMBER;
+      hash = (53 * hash) + getOutBatchNo().hashCode();
+      hash = (37 * hash) + BATCH_STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getBatchStatus().hashCode();
+      hash = (37 * hash) + BATCH_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getBatchType().hashCode();
+      hash = (37 * hash) + BATCH_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getBatchName().hashCode();
+      hash = (37 * hash) + BATCH_REMARK_FIELD_NUMBER;
+      hash = (53 * hash) + getBatchRemark().hashCode();
       if (hasCloseReason()) {
         hash = (37 * hash) + CLOSE_REASON_FIELD_NUMBER;
         hash = (53 * hash) + getCloseReason().hashCode();
+      }
+      hash = (37 * hash) + TOTAL_AMOUNT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTotalAmount());
+      hash = (37 * hash) + TOTAL_NUM_FIELD_NUMBER;
+      hash = (53 * hash) + getTotalNum();
+      if (hasCreateTime()) {
+        hash = (37 * hash) + CREATE_TIME_FIELD_NUMBER;
+        hash = (53 * hash) + getCreateTime().hashCode();
+      }
+      if (hasUpdateTime()) {
+        hash = (37 * hash) + UPDATE_TIME_FIELD_NUMBER;
+        hash = (53 * hash) + getUpdateTime().hashCode();
+      }
+      if (hasSuccessAmount()) {
+        hash = (37 * hash) + SUCCESS_AMOUNT_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getSuccessAmount());
+      }
+      if (hasSuccessNum()) {
+        hash = (37 * hash) + SUCCESS_NUM_FIELD_NUMBER;
+        hash = (53 * hash) + getSuccessNum();
+      }
+      if (hasFailAmount()) {
+        hash = (37 * hash) + FAIL_AMOUNT_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getFailAmount());
+      }
+      if (hasFailNum()) {
+        hash = (37 * hash) + FAIL_NUM_FIELD_NUMBER;
+        hash = (53 * hash) + getFailNum();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -1131,9 +2116,24 @@ private static final long serialVersionUID = 0L;
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        status_ = "";
-        type_ = "";
+        appId_ = "";
+        mchId_ = "";
+        transferSceneId_ = "";
+        batchId_ = "";
+        outBatchNo_ = "";
+        batchStatus_ = "";
+        batchType_ = "";
+        batchName_ = "";
+        batchRemark_ = "";
         closeReason_ = "";
+        totalAmount_ = 0L;
+        totalNum_ = 0;
+        createTime_ = "";
+        updateTime_ = "";
+        successAmount_ = 0L;
+        successNum_ = 0;
+        failAmount_ = 0L;
+        failNum_ = 0;
         return this;
       }
 
@@ -1168,15 +2168,66 @@ private static final long serialVersionUID = 0L;
       private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Batch result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.status_ = status_;
+          result.appId_ = appId_;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.type_ = type_;
+          result.mchId_ = mchId_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.transferSceneId_ = transferSceneId_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.batchId_ = batchId_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.outBatchNo_ = outBatchNo_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.batchStatus_ = batchStatus_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.batchType_ = batchType_;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.batchName_ = batchName_;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.batchRemark_ = batchRemark_;
         }
         int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000004) != 0)) {
+        if (((from_bitField0_ & 0x00000200) != 0)) {
           result.closeReason_ = closeReason_;
           to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000400) != 0)) {
+          result.totalAmount_ = totalAmount_;
+        }
+        if (((from_bitField0_ & 0x00000800) != 0)) {
+          result.totalNum_ = totalNum_;
+        }
+        if (((from_bitField0_ & 0x00001000) != 0)) {
+          result.createTime_ = createTime_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00002000) != 0)) {
+          result.updateTime_ = updateTime_;
+          to_bitField0_ |= 0x00000004;
+        }
+        if (((from_bitField0_ & 0x00004000) != 0)) {
+          result.successAmount_ = successAmount_;
+          to_bitField0_ |= 0x00000008;
+        }
+        if (((from_bitField0_ & 0x00008000) != 0)) {
+          result.successNum_ = successNum_;
+          to_bitField0_ |= 0x00000010;
+        }
+        if (((from_bitField0_ & 0x00010000) != 0)) {
+          result.failAmount_ = failAmount_;
+          to_bitField0_ |= 0x00000020;
+        }
+        if (((from_bitField0_ & 0x00020000) != 0)) {
+          result.failNum_ = failNum_;
+          to_bitField0_ |= 0x00000040;
         }
         result.bitField0_ |= to_bitField0_;
       }
@@ -1193,20 +2244,83 @@ private static final long serialVersionUID = 0L;
 
       public Builder mergeFrom(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Batch other) {
         if (other == com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Batch.getDefaultInstance()) return this;
-        if (!other.getStatus().isEmpty()) {
-          status_ = other.status_;
+        if (!other.getAppId().isEmpty()) {
+          appId_ = other.appId_;
           bitField0_ |= 0x00000001;
           onChanged();
         }
-        if (!other.getType().isEmpty()) {
-          type_ = other.type_;
+        if (!other.getMchId().isEmpty()) {
+          mchId_ = other.mchId_;
           bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (!other.getTransferSceneId().isEmpty()) {
+          transferSceneId_ = other.transferSceneId_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        if (!other.getBatchId().isEmpty()) {
+          batchId_ = other.batchId_;
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
+        if (!other.getOutBatchNo().isEmpty()) {
+          outBatchNo_ = other.outBatchNo_;
+          bitField0_ |= 0x00000010;
+          onChanged();
+        }
+        if (!other.getBatchStatus().isEmpty()) {
+          batchStatus_ = other.batchStatus_;
+          bitField0_ |= 0x00000020;
+          onChanged();
+        }
+        if (!other.getBatchType().isEmpty()) {
+          batchType_ = other.batchType_;
+          bitField0_ |= 0x00000040;
+          onChanged();
+        }
+        if (!other.getBatchName().isEmpty()) {
+          batchName_ = other.batchName_;
+          bitField0_ |= 0x00000080;
+          onChanged();
+        }
+        if (!other.getBatchRemark().isEmpty()) {
+          batchRemark_ = other.batchRemark_;
+          bitField0_ |= 0x00000100;
           onChanged();
         }
         if (other.hasCloseReason()) {
           closeReason_ = other.closeReason_;
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000200;
           onChanged();
+        }
+        if (other.getTotalAmount() != 0L) {
+          setTotalAmount(other.getTotalAmount());
+        }
+        if (other.getTotalNum() != 0) {
+          setTotalNum(other.getTotalNum());
+        }
+        if (other.hasCreateTime()) {
+          createTime_ = other.createTime_;
+          bitField0_ |= 0x00001000;
+          onChanged();
+        }
+        if (other.hasUpdateTime()) {
+          updateTime_ = other.updateTime_;
+          bitField0_ |= 0x00002000;
+          onChanged();
+        }
+        if (other.hasSuccessAmount()) {
+          setSuccessAmount(other.getSuccessAmount());
+        }
+        if (other.hasSuccessNum()) {
+          setSuccessNum(other.getSuccessNum());
+        }
+        if (other.hasFailAmount()) {
+          setFailAmount(other.getFailAmount());
+        }
+        if (other.hasFailNum()) {
+          setFailNum(other.getFailNum());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -1235,20 +2349,95 @@ private static final long serialVersionUID = 0L;
                 done = true;
                 break;
               case 10: {
-                status_ = input.readStringRequireUtf8();
+                appId_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000001;
                 break;
               } // case 10
               case 18: {
-                type_ = input.readStringRequireUtf8();
+                mchId_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000002;
                 break;
               } // case 18
               case 74: {
-                closeReason_ = input.readStringRequireUtf8();
+                transferSceneId_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000004;
                 break;
               } // case 74
+              case 90: {
+                batchId_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 90
+              case 98: {
+                outBatchNo_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 98
+              case 106: {
+                batchStatus_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 106
+              case 114: {
+                batchType_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 114
+              case 122: {
+                batchName_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000080;
+                break;
+              } // case 122
+              case 130: {
+                batchRemark_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000100;
+                break;
+              } // case 130
+              case 170: {
+                closeReason_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000200;
+                break;
+              } // case 170
+              case 176: {
+                totalAmount_ = input.readInt64();
+                bitField0_ |= 0x00000400;
+                break;
+              } // case 176
+              case 184: {
+                totalNum_ = input.readInt32();
+                bitField0_ |= 0x00000800;
+                break;
+              } // case 184
+              case 194: {
+                createTime_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00001000;
+                break;
+              } // case 194
+              case 202: {
+                updateTime_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00002000;
+                break;
+              } // case 202
+              case 208: {
+                successAmount_ = input.readInt64();
+                bitField0_ |= 0x00004000;
+                break;
+              } // case 208
+              case 216: {
+                successNum_ = input.readInt32();
+                bitField0_ |= 0x00008000;
+                break;
+              } // case 216
+              case 224: {
+                failAmount_ = input.readInt64();
+                bitField0_ |= 0x00010000;
+                break;
+              } // case 224
+              case 232: {
+                failNum_ = input.readInt32();
+                bitField0_ |= 0x00020000;
+                break;
+              } // case 232
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -1266,160 +2455,664 @@ private static final long serialVersionUID = 0L;
       }
       private int bitField0_;
 
-      private java.lang.Object status_ = "";
+      private java.lang.Object appId_ = "";
       /**
-       * <code>string status = 1;</code>
-       * @return The status.
+       * <code>string app_id = 1;</code>
+       * @return The appId.
        */
-      public java.lang.String getStatus() {
-        java.lang.Object ref = status_;
+      public java.lang.String getAppId() {
+        java.lang.Object ref = appId_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          status_ = s;
+          appId_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string status = 1;</code>
-       * @return The bytes for status.
+       * <code>string app_id = 1;</code>
+       * @return The bytes for appId.
        */
       public com.google.protobuf.ByteString
-          getStatusBytes() {
-        java.lang.Object ref = status_;
+          getAppIdBytes() {
+        java.lang.Object ref = appId_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          status_ = b;
+          appId_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string status = 1;</code>
-       * @param value The status to set.
+       * <code>string app_id = 1;</code>
+       * @param value The appId to set.
        * @return This builder for chaining.
        */
-      public Builder setStatus(
+      public Builder setAppId(
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
-        status_ = value;
+        appId_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <code>string status = 1;</code>
+       * <code>string app_id = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearStatus() {
-        status_ = getDefaultInstance().getStatus();
+      public Builder clearAppId() {
+        appId_ = getDefaultInstance().getAppId();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
       /**
-       * <code>string status = 1;</code>
-       * @param value The bytes for status to set.
+       * <code>string app_id = 1;</code>
+       * @param value The bytes for appId to set.
        * @return This builder for chaining.
        */
-      public Builder setStatusBytes(
+      public Builder setAppIdBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
-        status_ = value;
+        appId_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
 
-      private java.lang.Object type_ = "";
+      private java.lang.Object mchId_ = "";
       /**
-       * <code>string type = 2;</code>
-       * @return The type.
+       * <code>string mch_id = 2;</code>
+       * @return The mchId.
        */
-      public java.lang.String getType() {
-        java.lang.Object ref = type_;
+      public java.lang.String getMchId() {
+        java.lang.Object ref = mchId_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          type_ = s;
+          mchId_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string type = 2;</code>
-       * @return The bytes for type.
+       * <code>string mch_id = 2;</code>
+       * @return The bytes for mchId.
        */
       public com.google.protobuf.ByteString
-          getTypeBytes() {
-        java.lang.Object ref = type_;
+          getMchIdBytes() {
+        java.lang.Object ref = mchId_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          type_ = b;
+          mchId_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string type = 2;</code>
-       * @param value The type to set.
+       * <code>string mch_id = 2;</code>
+       * @param value The mchId to set.
        * @return This builder for chaining.
        */
-      public Builder setType(
+      public Builder setMchId(
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
-        type_ = value;
+        mchId_ = value;
         bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
-       * <code>string type = 2;</code>
+       * <code>string mch_id = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearType() {
-        type_ = getDefaultInstance().getType();
+      public Builder clearMchId() {
+        mchId_ = getDefaultInstance().getMchId();
         bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
       /**
-       * <code>string type = 2;</code>
-       * @param value The bytes for type to set.
+       * <code>string mch_id = 2;</code>
+       * @param value The bytes for mchId to set.
        * @return This builder for chaining.
        */
-      public Builder setTypeBytes(
+      public Builder setMchIdBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
-        type_ = value;
+        mchId_ = value;
         bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object transferSceneId_ = "";
+      /**
+       * <code>string transfer_scene_id = 9;</code>
+       * @return The transferSceneId.
+       */
+      public java.lang.String getTransferSceneId() {
+        java.lang.Object ref = transferSceneId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          transferSceneId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string transfer_scene_id = 9;</code>
+       * @return The bytes for transferSceneId.
+       */
+      public com.google.protobuf.ByteString
+          getTransferSceneIdBytes() {
+        java.lang.Object ref = transferSceneId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          transferSceneId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string transfer_scene_id = 9;</code>
+       * @param value The transferSceneId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTransferSceneId(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        transferSceneId_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string transfer_scene_id = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTransferSceneId() {
+        transferSceneId_ = getDefaultInstance().getTransferSceneId();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string transfer_scene_id = 9;</code>
+       * @param value The bytes for transferSceneId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTransferSceneIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        transferSceneId_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object batchId_ = "";
+      /**
+       * <code>string batch_id = 11;</code>
+       * @return The batchId.
+       */
+      public java.lang.String getBatchId() {
+        java.lang.Object ref = batchId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          batchId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string batch_id = 11;</code>
+       * @return The bytes for batchId.
+       */
+      public com.google.protobuf.ByteString
+          getBatchIdBytes() {
+        java.lang.Object ref = batchId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          batchId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string batch_id = 11;</code>
+       * @param value The batchId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBatchId(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        batchId_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string batch_id = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBatchId() {
+        batchId_ = getDefaultInstance().getBatchId();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string batch_id = 11;</code>
+       * @param value The bytes for batchId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBatchIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        batchId_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object outBatchNo_ = "";
+      /**
+       * <code>string out_batch_no = 12;</code>
+       * @return The outBatchNo.
+       */
+      public java.lang.String getOutBatchNo() {
+        java.lang.Object ref = outBatchNo_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          outBatchNo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string out_batch_no = 12;</code>
+       * @return The bytes for outBatchNo.
+       */
+      public com.google.protobuf.ByteString
+          getOutBatchNoBytes() {
+        java.lang.Object ref = outBatchNo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          outBatchNo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string out_batch_no = 12;</code>
+       * @param value The outBatchNo to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOutBatchNo(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        outBatchNo_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string out_batch_no = 12;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOutBatchNo() {
+        outBatchNo_ = getDefaultInstance().getOutBatchNo();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string out_batch_no = 12;</code>
+       * @param value The bytes for outBatchNo to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOutBatchNoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        outBatchNo_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object batchStatus_ = "";
+      /**
+       * <code>string batch_status = 13;</code>
+       * @return The batchStatus.
+       */
+      public java.lang.String getBatchStatus() {
+        java.lang.Object ref = batchStatus_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          batchStatus_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string batch_status = 13;</code>
+       * @return The bytes for batchStatus.
+       */
+      public com.google.protobuf.ByteString
+          getBatchStatusBytes() {
+        java.lang.Object ref = batchStatus_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          batchStatus_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string batch_status = 13;</code>
+       * @param value The batchStatus to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBatchStatus(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        batchStatus_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string batch_status = 13;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBatchStatus() {
+        batchStatus_ = getDefaultInstance().getBatchStatus();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string batch_status = 13;</code>
+       * @param value The bytes for batchStatus to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBatchStatusBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        batchStatus_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object batchType_ = "";
+      /**
+       * <code>string batch_type = 14;</code>
+       * @return The batchType.
+       */
+      public java.lang.String getBatchType() {
+        java.lang.Object ref = batchType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          batchType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string batch_type = 14;</code>
+       * @return The bytes for batchType.
+       */
+      public com.google.protobuf.ByteString
+          getBatchTypeBytes() {
+        java.lang.Object ref = batchType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          batchType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string batch_type = 14;</code>
+       * @param value The batchType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBatchType(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        batchType_ = value;
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string batch_type = 14;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBatchType() {
+        batchType_ = getDefaultInstance().getBatchType();
+        bitField0_ = (bitField0_ & ~0x00000040);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string batch_type = 14;</code>
+       * @param value The bytes for batchType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBatchTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        batchType_ = value;
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object batchName_ = "";
+      /**
+       * <code>string batch_name = 15;</code>
+       * @return The batchName.
+       */
+      public java.lang.String getBatchName() {
+        java.lang.Object ref = batchName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          batchName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string batch_name = 15;</code>
+       * @return The bytes for batchName.
+       */
+      public com.google.protobuf.ByteString
+          getBatchNameBytes() {
+        java.lang.Object ref = batchName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          batchName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string batch_name = 15;</code>
+       * @param value The batchName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBatchName(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        batchName_ = value;
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string batch_name = 15;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBatchName() {
+        batchName_ = getDefaultInstance().getBatchName();
+        bitField0_ = (bitField0_ & ~0x00000080);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string batch_name = 15;</code>
+       * @param value The bytes for batchName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBatchNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        batchName_ = value;
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object batchRemark_ = "";
+      /**
+       * <code>string batch_remark = 16;</code>
+       * @return The batchRemark.
+       */
+      public java.lang.String getBatchRemark() {
+        java.lang.Object ref = batchRemark_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          batchRemark_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string batch_remark = 16;</code>
+       * @return The bytes for batchRemark.
+       */
+      public com.google.protobuf.ByteString
+          getBatchRemarkBytes() {
+        java.lang.Object ref = batchRemark_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          batchRemark_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string batch_remark = 16;</code>
+       * @param value The batchRemark to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBatchRemark(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        batchRemark_ = value;
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string batch_remark = 16;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBatchRemark() {
+        batchRemark_ = getDefaultInstance().getBatchRemark();
+        bitField0_ = (bitField0_ & ~0x00000100);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string batch_remark = 16;</code>
+       * @param value The bytes for batchRemark to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBatchRemarkBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        batchRemark_ = value;
+        bitField0_ |= 0x00000100;
         onChanged();
         return this;
       }
 
       private java.lang.Object closeReason_ = "";
       /**
-       * <code>optional string close_reason = 9;</code>
+       * <code>optional string close_reason = 21;</code>
        * @return Whether the closeReason field is set.
        */
       public boolean hasCloseReason() {
-        return ((bitField0_ & 0x00000004) != 0);
+        return ((bitField0_ & 0x00000200) != 0);
       }
       /**
-       * <code>optional string close_reason = 9;</code>
+       * <code>optional string close_reason = 21;</code>
        * @return The closeReason.
        */
       public java.lang.String getCloseReason() {
@@ -1435,7 +3128,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>optional string close_reason = 9;</code>
+       * <code>optional string close_reason = 21;</code>
        * @return The bytes for closeReason.
        */
       public com.google.protobuf.ByteString
@@ -1452,7 +3145,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>optional string close_reason = 9;</code>
+       * <code>optional string close_reason = 21;</code>
        * @param value The closeReason to set.
        * @return This builder for chaining.
        */
@@ -1460,22 +3153,22 @@ private static final long serialVersionUID = 0L;
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
         closeReason_ = value;
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000200;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string close_reason = 9;</code>
+       * <code>optional string close_reason = 21;</code>
        * @return This builder for chaining.
        */
       public Builder clearCloseReason() {
         closeReason_ = getDefaultInstance().getCloseReason();
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000200);
         onChanged();
         return this;
       }
       /**
-       * <code>optional string close_reason = 9;</code>
+       * <code>optional string close_reason = 21;</code>
        * @param value The bytes for closeReason to set.
        * @return This builder for chaining.
        */
@@ -1484,7 +3177,389 @@ private static final long serialVersionUID = 0L;
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
         closeReason_ = value;
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
+      }
+
+      private long totalAmount_ ;
+      /**
+       * <code>int64 total_amount = 22;</code>
+       * @return The totalAmount.
+       */
+      @java.lang.Override
+      public long getTotalAmount() {
+        return totalAmount_;
+      }
+      /**
+       * <code>int64 total_amount = 22;</code>
+       * @param value The totalAmount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTotalAmount(long value) {
+
+        totalAmount_ = value;
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 total_amount = 22;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTotalAmount() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        totalAmount_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int totalNum_ ;
+      /**
+       * <code>int32 total_num = 23;</code>
+       * @return The totalNum.
+       */
+      @java.lang.Override
+      public int getTotalNum() {
+        return totalNum_;
+      }
+      /**
+       * <code>int32 total_num = 23;</code>
+       * @param value The totalNum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTotalNum(int value) {
+
+        totalNum_ = value;
+        bitField0_ |= 0x00000800;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 total_num = 23;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTotalNum() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        totalNum_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object createTime_ = "";
+      /**
+       * <code>optional string create_time = 24;</code>
+       * @return Whether the createTime field is set.
+       */
+      public boolean hasCreateTime() {
+        return ((bitField0_ & 0x00001000) != 0);
+      }
+      /**
+       * <code>optional string create_time = 24;</code>
+       * @return The createTime.
+       */
+      public java.lang.String getCreateTime() {
+        java.lang.Object ref = createTime_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          createTime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string create_time = 24;</code>
+       * @return The bytes for createTime.
+       */
+      public com.google.protobuf.ByteString
+          getCreateTimeBytes() {
+        java.lang.Object ref = createTime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          createTime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string create_time = 24;</code>
+       * @param value The createTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCreateTime(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        createTime_ = value;
+        bitField0_ |= 0x00001000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string create_time = 24;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCreateTime() {
+        createTime_ = getDefaultInstance().getCreateTime();
+        bitField0_ = (bitField0_ & ~0x00001000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string create_time = 24;</code>
+       * @param value The bytes for createTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCreateTimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        createTime_ = value;
+        bitField0_ |= 0x00001000;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object updateTime_ = "";
+      /**
+       * <code>optional string update_time = 25;</code>
+       * @return Whether the updateTime field is set.
+       */
+      public boolean hasUpdateTime() {
+        return ((bitField0_ & 0x00002000) != 0);
+      }
+      /**
+       * <code>optional string update_time = 25;</code>
+       * @return The updateTime.
+       */
+      public java.lang.String getUpdateTime() {
+        java.lang.Object ref = updateTime_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          updateTime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string update_time = 25;</code>
+       * @return The bytes for updateTime.
+       */
+      public com.google.protobuf.ByteString
+          getUpdateTimeBytes() {
+        java.lang.Object ref = updateTime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          updateTime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string update_time = 25;</code>
+       * @param value The updateTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUpdateTime(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        updateTime_ = value;
+        bitField0_ |= 0x00002000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string update_time = 25;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUpdateTime() {
+        updateTime_ = getDefaultInstance().getUpdateTime();
+        bitField0_ = (bitField0_ & ~0x00002000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string update_time = 25;</code>
+       * @param value The bytes for updateTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUpdateTimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        updateTime_ = value;
+        bitField0_ |= 0x00002000;
+        onChanged();
+        return this;
+      }
+
+      private long successAmount_ ;
+      /**
+       * <code>optional int64 success_amount = 26;</code>
+       * @return Whether the successAmount field is set.
+       */
+      @java.lang.Override
+      public boolean hasSuccessAmount() {
+        return ((bitField0_ & 0x00004000) != 0);
+      }
+      /**
+       * <code>optional int64 success_amount = 26;</code>
+       * @return The successAmount.
+       */
+      @java.lang.Override
+      public long getSuccessAmount() {
+        return successAmount_;
+      }
+      /**
+       * <code>optional int64 success_amount = 26;</code>
+       * @param value The successAmount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSuccessAmount(long value) {
+
+        successAmount_ = value;
+        bitField0_ |= 0x00004000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 success_amount = 26;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSuccessAmount() {
+        bitField0_ = (bitField0_ & ~0x00004000);
+        successAmount_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int successNum_ ;
+      /**
+       * <code>optional int32 success_num = 27;</code>
+       * @return Whether the successNum field is set.
+       */
+      @java.lang.Override
+      public boolean hasSuccessNum() {
+        return ((bitField0_ & 0x00008000) != 0);
+      }
+      /**
+       * <code>optional int32 success_num = 27;</code>
+       * @return The successNum.
+       */
+      @java.lang.Override
+      public int getSuccessNum() {
+        return successNum_;
+      }
+      /**
+       * <code>optional int32 success_num = 27;</code>
+       * @param value The successNum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSuccessNum(int value) {
+
+        successNum_ = value;
+        bitField0_ |= 0x00008000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 success_num = 27;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSuccessNum() {
+        bitField0_ = (bitField0_ & ~0x00008000);
+        successNum_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long failAmount_ ;
+      /**
+       * <code>optional int64 fail_amount = 28;</code>
+       * @return Whether the failAmount field is set.
+       */
+      @java.lang.Override
+      public boolean hasFailAmount() {
+        return ((bitField0_ & 0x00010000) != 0);
+      }
+      /**
+       * <code>optional int64 fail_amount = 28;</code>
+       * @return The failAmount.
+       */
+      @java.lang.Override
+      public long getFailAmount() {
+        return failAmount_;
+      }
+      /**
+       * <code>optional int64 fail_amount = 28;</code>
+       * @param value The failAmount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFailAmount(long value) {
+
+        failAmount_ = value;
+        bitField0_ |= 0x00010000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 fail_amount = 28;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFailAmount() {
+        bitField0_ = (bitField0_ & ~0x00010000);
+        failAmount_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int failNum_ ;
+      /**
+       * <code>optional int32 fail_num = 29;</code>
+       * @return Whether the failNum field is set.
+       */
+      @java.lang.Override
+      public boolean hasFailNum() {
+        return ((bitField0_ & 0x00020000) != 0);
+      }
+      /**
+       * <code>optional int32 fail_num = 29;</code>
+       * @return The failNum.
+       */
+      @java.lang.Override
+      public int getFailNum() {
+        return failNum_;
+      }
+      /**
+       * <code>optional int32 fail_num = 29;</code>
+       * @param value The failNum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFailNum(int value) {
+
+        failNum_ = value;
+        bitField0_ |= 0x00020000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 fail_num = 29;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFailNum() {
+        bitField0_ = (bitField0_ & ~0x00020000);
+        failNum_ = 0;
         onChanged();
         return this;
       }

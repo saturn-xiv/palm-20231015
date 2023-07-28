@@ -214,13 +214,31 @@ message WechatPayQueryBatchTransferRequest {
 }
 message WechatPayQueryBatchTransferResponse {
   message Detail {
-    string out_detail_no = 1;
-    string status = 2;
+    string detail_id = 1;
+    string out_detail_no = 2;
+    string status = 3;
   }
   message Batch {
-    string status = 1;
-    string type = 2;
-    optional string close_reason = 9;
+    string app_id = 1;
+    string mch_id = 2;
+    string transfer_scene_id = 9;
+
+    string batch_id = 11;
+    string out_batch_no = 12;
+    string batch_status = 13;
+    string batch_type = 14;
+    string batch_name = 15;
+    string batch_remark = 16;
+
+    optional string close_reason = 21;
+    int64 total_amount = 22;
+    int32 total_num = 23;
+    optional string create_time = 24;
+    optional string update_time = 25;
+    optional int64 success_amount = 26;
+    optional int32 success_num = 27;
+    optional int64 fail_amount = 28;
+    optional int32 fail_num = 29;
   }
 
   Batch batch = 1;

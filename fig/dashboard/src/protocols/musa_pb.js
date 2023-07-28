@@ -5597,8 +5597,9 @@ proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.prototype.toObject
  */
 proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.toObject = function(includeInstance, msg) {
   var f, obj = {
-    outDetailNo: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    status: jspb.Message.getFieldWithDefault(msg, 2, "")
+    detailId: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    outDetailNo: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    status: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -5637,9 +5638,13 @@ proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.deserializeBinaryF
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setOutDetailNo(value);
+      msg.setDetailId(value);
       break;
     case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setOutDetailNo(value);
+      break;
+    case 3:
       var value = /** @type {string} */ (reader.readString());
       msg.setStatus(value);
       break;
@@ -5672,17 +5677,24 @@ proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.prototype.serializ
  */
 proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getOutDetailNo();
+  f = message.getDetailId();
   if (f.length > 0) {
     writer.writeString(
       1,
       f
     );
   }
-  f = message.getStatus();
+  f = message.getOutDetailNo();
   if (f.length > 0) {
     writer.writeString(
       2,
+      f
+    );
+  }
+  f = message.getStatus();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
       f
     );
   }
@@ -5690,10 +5702,10 @@ proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.serializeBinaryToW
 
 
 /**
- * optional string out_detail_no = 1;
+ * optional string detail_id = 1;
  * @return {string}
  */
-proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.prototype.getOutDetailNo = function() {
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.prototype.getDetailId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -5702,16 +5714,16 @@ proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.prototype.getOutDe
  * @param {string} value
  * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail} returns this
  */
-proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.prototype.setOutDetailNo = function(value) {
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.prototype.setDetailId = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * optional string status = 2;
+ * optional string out_detail_no = 2;
  * @return {string}
  */
-proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.prototype.getStatus = function() {
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.prototype.getOutDetailNo = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -5720,8 +5732,26 @@ proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.prototype.getStatu
  * @param {string} value
  * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail} returns this
  */
-proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.prototype.setStatus = function(value) {
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.prototype.setOutDetailNo = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string status = 3;
+ * @return {string}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.prototype.getStatus = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Detail.prototype.setStatus = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -5757,9 +5787,24 @@ proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.toObject 
  */
 proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.toObject = function(includeInstance, msg) {
   var f, obj = {
-    status: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    type: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    closeReason: jspb.Message.getFieldWithDefault(msg, 9, "")
+    appId: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    mchId: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    transferSceneId: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    batchId: jspb.Message.getFieldWithDefault(msg, 11, ""),
+    outBatchNo: jspb.Message.getFieldWithDefault(msg, 12, ""),
+    batchStatus: jspb.Message.getFieldWithDefault(msg, 13, ""),
+    batchType: jspb.Message.getFieldWithDefault(msg, 14, ""),
+    batchName: jspb.Message.getFieldWithDefault(msg, 15, ""),
+    batchRemark: jspb.Message.getFieldWithDefault(msg, 16, ""),
+    closeReason: jspb.Message.getFieldWithDefault(msg, 21, ""),
+    totalAmount: jspb.Message.getFieldWithDefault(msg, 22, 0),
+    totalNum: jspb.Message.getFieldWithDefault(msg, 23, 0),
+    createTime: jspb.Message.getFieldWithDefault(msg, 24, ""),
+    updateTime: jspb.Message.getFieldWithDefault(msg, 25, ""),
+    successAmount: jspb.Message.getFieldWithDefault(msg, 26, 0),
+    successNum: jspb.Message.getFieldWithDefault(msg, 27, 0),
+    failAmount: jspb.Message.getFieldWithDefault(msg, 28, 0),
+    failNum: jspb.Message.getFieldWithDefault(msg, 29, 0)
   };
 
   if (includeInstance) {
@@ -5798,15 +5843,75 @@ proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.deserializeBinaryFr
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setStatus(value);
+      msg.setAppId(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setType(value);
+      msg.setMchId(value);
       break;
     case 9:
       var value = /** @type {string} */ (reader.readString());
+      msg.setTransferSceneId(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBatchId(value);
+      break;
+    case 12:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setOutBatchNo(value);
+      break;
+    case 13:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBatchStatus(value);
+      break;
+    case 14:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBatchType(value);
+      break;
+    case 15:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBatchName(value);
+      break;
+    case 16:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBatchRemark(value);
+      break;
+    case 21:
+      var value = /** @type {string} */ (reader.readString());
       msg.setCloseReason(value);
+      break;
+    case 22:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setTotalAmount(value);
+      break;
+    case 23:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTotalNum(value);
+      break;
+    case 24:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setCreateTime(value);
+      break;
+    case 25:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUpdateTime(value);
+      break;
+    case 26:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setSuccessAmount(value);
+      break;
+    case 27:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setSuccessNum(value);
+      break;
+    case 28:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setFailAmount(value);
+      break;
+    case 29:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setFailNum(value);
       break;
     default:
       reader.skipField();
@@ -5837,24 +5942,129 @@ proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.serialize
  */
 proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getStatus();
+  f = message.getAppId();
   if (f.length > 0) {
     writer.writeString(
       1,
       f
     );
   }
-  f = message.getType();
+  f = message.getMchId();
   if (f.length > 0) {
     writer.writeString(
       2,
       f
     );
   }
-  f = /** @type {string} */ (jspb.Message.getField(message, 9));
-  if (f != null) {
+  f = message.getTransferSceneId();
+  if (f.length > 0) {
     writer.writeString(
       9,
+      f
+    );
+  }
+  f = message.getBatchId();
+  if (f.length > 0) {
+    writer.writeString(
+      11,
+      f
+    );
+  }
+  f = message.getOutBatchNo();
+  if (f.length > 0) {
+    writer.writeString(
+      12,
+      f
+    );
+  }
+  f = message.getBatchStatus();
+  if (f.length > 0) {
+    writer.writeString(
+      13,
+      f
+    );
+  }
+  f = message.getBatchType();
+  if (f.length > 0) {
+    writer.writeString(
+      14,
+      f
+    );
+  }
+  f = message.getBatchName();
+  if (f.length > 0) {
+    writer.writeString(
+      15,
+      f
+    );
+  }
+  f = message.getBatchRemark();
+  if (f.length > 0) {
+    writer.writeString(
+      16,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 21));
+  if (f != null) {
+    writer.writeString(
+      21,
+      f
+    );
+  }
+  f = message.getTotalAmount();
+  if (f !== 0) {
+    writer.writeInt64(
+      22,
+      f
+    );
+  }
+  f = message.getTotalNum();
+  if (f !== 0) {
+    writer.writeInt32(
+      23,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 24));
+  if (f != null) {
+    writer.writeString(
+      24,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 25));
+  if (f != null) {
+    writer.writeString(
+      25,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 26));
+  if (f != null) {
+    writer.writeInt64(
+      26,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 27));
+  if (f != null) {
+    writer.writeInt32(
+      27,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 28));
+  if (f != null) {
+    writer.writeInt64(
+      28,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 29));
+  if (f != null) {
+    writer.writeInt32(
+      29,
       f
     );
   }
@@ -5862,10 +6072,10 @@ proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.serializeBinaryToWr
 
 
 /**
- * optional string status = 1;
+ * optional string app_id = 1;
  * @return {string}
  */
-proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getStatus = function() {
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getAppId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -5874,16 +6084,16 @@ proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getStatus
  * @param {string} value
  * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
  */
-proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setStatus = function(value) {
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setAppId = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * optional string type = 2;
+ * optional string mch_id = 2;
  * @return {string}
  */
-proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getType = function() {
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getMchId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -5892,16 +6102,16 @@ proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getType =
  * @param {string} value
  * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
  */
-proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setType = function(value) {
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setMchId = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * optional string close_reason = 9;
+ * optional string transfer_scene_id = 9;
  * @return {string}
  */
-proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getCloseReason = function() {
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getTransferSceneId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
 };
 
@@ -5910,8 +6120,134 @@ proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getCloseR
  * @param {string} value
  * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
  */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setTransferSceneId = function(value) {
+  return jspb.Message.setProto3StringField(this, 9, value);
+};
+
+
+/**
+ * optional string batch_id = 11;
+ * @return {string}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getBatchId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setBatchId = function(value) {
+  return jspb.Message.setProto3StringField(this, 11, value);
+};
+
+
+/**
+ * optional string out_batch_no = 12;
+ * @return {string}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getOutBatchNo = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setOutBatchNo = function(value) {
+  return jspb.Message.setProto3StringField(this, 12, value);
+};
+
+
+/**
+ * optional string batch_status = 13;
+ * @return {string}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getBatchStatus = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setBatchStatus = function(value) {
+  return jspb.Message.setProto3StringField(this, 13, value);
+};
+
+
+/**
+ * optional string batch_type = 14;
+ * @return {string}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getBatchType = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setBatchType = function(value) {
+  return jspb.Message.setProto3StringField(this, 14, value);
+};
+
+
+/**
+ * optional string batch_name = 15;
+ * @return {string}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getBatchName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 15, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setBatchName = function(value) {
+  return jspb.Message.setProto3StringField(this, 15, value);
+};
+
+
+/**
+ * optional string batch_remark = 16;
+ * @return {string}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getBatchRemark = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 16, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setBatchRemark = function(value) {
+  return jspb.Message.setProto3StringField(this, 16, value);
+};
+
+
+/**
+ * optional string close_reason = 21;
+ * @return {string}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getCloseReason = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 21, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
 proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setCloseReason = function(value) {
-  return jspb.Message.setField(this, 9, value);
+  return jspb.Message.setField(this, 21, value);
 };
 
 
@@ -5920,7 +6256,7 @@ proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setCloseR
  * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
  */
 proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.clearCloseReason = function() {
-  return jspb.Message.setField(this, 9, undefined);
+  return jspb.Message.setField(this, 21, undefined);
 };
 
 
@@ -5929,7 +6265,259 @@ proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.clearClos
  * @return {boolean}
  */
 proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.hasCloseReason = function() {
-  return jspb.Message.getField(this, 9) != null;
+  return jspb.Message.getField(this, 21) != null;
+};
+
+
+/**
+ * optional int64 total_amount = 22;
+ * @return {number}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getTotalAmount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 22, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setTotalAmount = function(value) {
+  return jspb.Message.setProto3IntField(this, 22, value);
+};
+
+
+/**
+ * optional int32 total_num = 23;
+ * @return {number}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getTotalNum = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 23, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setTotalNum = function(value) {
+  return jspb.Message.setProto3IntField(this, 23, value);
+};
+
+
+/**
+ * optional string create_time = 24;
+ * @return {string}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getCreateTime = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 24, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setCreateTime = function(value) {
+  return jspb.Message.setField(this, 24, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.clearCreateTime = function() {
+  return jspb.Message.setField(this, 24, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.hasCreateTime = function() {
+  return jspb.Message.getField(this, 24) != null;
+};
+
+
+/**
+ * optional string update_time = 25;
+ * @return {string}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getUpdateTime = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 25, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setUpdateTime = function(value) {
+  return jspb.Message.setField(this, 25, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.clearUpdateTime = function() {
+  return jspb.Message.setField(this, 25, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.hasUpdateTime = function() {
+  return jspb.Message.getField(this, 25) != null;
+};
+
+
+/**
+ * optional int64 success_amount = 26;
+ * @return {number}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getSuccessAmount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 26, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setSuccessAmount = function(value) {
+  return jspb.Message.setField(this, 26, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.clearSuccessAmount = function() {
+  return jspb.Message.setField(this, 26, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.hasSuccessAmount = function() {
+  return jspb.Message.getField(this, 26) != null;
+};
+
+
+/**
+ * optional int32 success_num = 27;
+ * @return {number}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getSuccessNum = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 27, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setSuccessNum = function(value) {
+  return jspb.Message.setField(this, 27, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.clearSuccessNum = function() {
+  return jspb.Message.setField(this, 27, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.hasSuccessNum = function() {
+  return jspb.Message.getField(this, 27) != null;
+};
+
+
+/**
+ * optional int64 fail_amount = 28;
+ * @return {number}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getFailAmount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 28, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setFailAmount = function(value) {
+  return jspb.Message.setField(this, 28, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.clearFailAmount = function() {
+  return jspb.Message.setField(this, 28, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.hasFailAmount = function() {
+  return jspb.Message.getField(this, 28) != null;
+};
+
+
+/**
+ * optional int32 fail_num = 29;
+ * @return {number}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.getFailNum = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 29, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.setFailNum = function(value) {
+  return jspb.Message.setField(this, 29, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch} returns this
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.clearFailNum = function() {
+  return jspb.Message.setField(this, 29, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch.prototype.hasFailNum = function() {
+  return jspb.Message.getField(this, 29) != null;
 };
 
 
