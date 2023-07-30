@@ -4,6 +4,7 @@ import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -57,13 +58,13 @@ public class WechatPayServiceImpl implements WechatPayStorageService {
 
     @Transactional(readOnly = true)
     @Override
-    public FundFlowBill getFundFlowBill(String billDate, WechatPayFundFlowBillRequest.AccountType accountType) {
+    public FundFlowBill getFundFlowBill(@NotNull String billDate, @NotNull WechatPayFundFlowBillRequest.AccountType accountType) {
         return fundFlowBillRepository.findByBillDateAndAccountType(billDate, accountType.getNumber());
     }
 
     @Transactional(readOnly = true)
     @Override
-    public TradeBill getTradeBill(String billDate, WechatPayTradeBillRequest.BillType billType) {
+    public TradeBill getTradeBill(@NotNull String billDate, @NotNull WechatPayTradeBillRequest.BillType billType) {
         return tradeBillRepository.findByBillDateAndBillType(billDate, billType.getNumber());
     }
 

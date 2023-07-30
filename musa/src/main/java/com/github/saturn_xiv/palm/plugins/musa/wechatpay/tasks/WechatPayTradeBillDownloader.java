@@ -20,6 +20,10 @@ public class WechatPayTradeBillDownloader {
         logger.info("start to download trade bills");
         for (var billDate : WechatPayClient.latestBillDates()) {
             for (var billType : WechatPayTradeBillRequest.BillType.values()) {
+                if (billType == WechatPayTradeBillRequest.BillType.UNRECOGNIZED) {
+                    continue;
+                }
+                logger.info("download wechat-pay trade bills ({},{})", billDate, billType);
                 if (wechatPayStorageService.getTradeBill(billDate, billType) == null) {
                     try {
                         final var content = wechatPayClient.downloadTradeBill(billDate, WechatPayClient.billType(billType));
