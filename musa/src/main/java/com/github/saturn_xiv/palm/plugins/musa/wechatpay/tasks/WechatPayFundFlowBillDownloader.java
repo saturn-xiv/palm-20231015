@@ -1,6 +1,7 @@
 package com.github.saturn_xiv.palm.plugins.musa.wechatpay.tasks;
 
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayFundFlowBillRequest;
+import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTarType;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
 import com.wechat.pay.java.core.exception.ServiceException;
@@ -26,7 +27,7 @@ public class WechatPayFundFlowBillDownloader {
                 if (wechatPayStorageService.getFundFlowBill(billDate, accountType) == null) {
                     try {
                         final var content = wechatPayClient.downloadFundFlowBill(billDate, WechatPayClient.accountType(accountType));
-                        wechatPayStorageService.addFundFlowBill(billDate, accountType, null, content);
+                        wechatPayStorageService.addFundFlowBill(billDate, accountType, WechatPayTarType.GZIP, content);
                     } catch (ServiceException e) {
                         logger.error("{} {} {}", e.getHttpStatusCode(), e.getErrorCode(), e.getErrorMessage());
                     }

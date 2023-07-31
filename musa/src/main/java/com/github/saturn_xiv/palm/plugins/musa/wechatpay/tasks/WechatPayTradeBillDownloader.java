@@ -1,6 +1,7 @@
 package com.github.saturn_xiv.palm.plugins.musa.wechatpay.tasks;
 
 
+import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTarType;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTradeBillRequest;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
@@ -27,7 +28,7 @@ public class WechatPayTradeBillDownloader {
                 if (wechatPayStorageService.getTradeBill(billDate, billType) == null) {
                     try {
                         final var content = wechatPayClient.downloadTradeBill(billDate, WechatPayClient.billType(billType));
-                        wechatPayStorageService.addTradeBill(billDate, billType, null, content);
+                        wechatPayStorageService.addTradeBill(billDate, billType, WechatPayTarType.GZIP, content);
                     } catch (ServiceException e) {
                         logger.error("{} {} {}", e.getHttpStatusCode(), e.getErrorCode(), e.getErrorMessage());
                     }
