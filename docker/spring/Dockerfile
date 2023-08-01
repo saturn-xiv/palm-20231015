@@ -291,7 +291,7 @@ RUN mkdir -p $HOME/build/protobuf-javascript \
 
 # https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/
 # https://github.com/grpc/grpc-java
-ENV GRPC_JAVA_PLUGIN_VERSION "1.57.0"
+ENV GRPC_JAVA_PLUGIN_VERSION "1.57.1"
 RUN wget -q -O $HOME/.local/bin/grpc_java_plugin \
     https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${GRPC_JAVA_PLUGIN_VERSION}/protoc-gen-grpc-java-${GRPC_JAVA_PLUGIN_VERSION}-linux-x86_64.exe
 RUN chmod +x $HOME/.local/bin/grpc_java_plugin
