@@ -171,9 +171,17 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
                 .setDetailStatus(response.getDetailStatus())
                 .setTransferAmount(response.getTransferAmount())
                 .setTransferRemark(response.getTransferRemark())
-                .setOpenId(response.getOpenid())
-                .setInitiateTime(response.getInitiateTime())
-                .setUserName(response.getUserName());
+                .setOpenId(response.getOpenid());
+
+
+//        TODO initial-time & update-time may be null
+        if (response.getInitiateTime() != null) {
+            builder = builder.setInitiateTime(response.getInitiateTime());
+        }
+        if (response.getUpdateTime() != null) {
+            builder = builder.setUpdateTime(response.getUpdateTime());
+        }
+
         if (response.getFailReason() != null) {
             builder = builder.setFailReason(response.getFailReason().name());
         }
