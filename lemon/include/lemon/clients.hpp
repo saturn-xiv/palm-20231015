@@ -31,13 +31,13 @@
 namespace palm {
 
 namespace nut {
-class HealthClient {
+class LocaleClient {
  public:
-  HealthClient(std::shared_ptr<grpc::Channel> channel)
-      : _stub(palm::nut::v1::Health::NewStub(channel)) {}
+  LocaleClient(std::shared_ptr<grpc::Channel> channel)
+      : _stub(palm::nut::v1::Local::NewStub(channel)) {}
 
  private:
-  std::unique_ptr<palm::nut::v1::Health::Stub> _stub;
+  std::unique_ptr<palm::nut::v1::Locale::Stub> _stub;
 };
 }  // namespace nut
 
