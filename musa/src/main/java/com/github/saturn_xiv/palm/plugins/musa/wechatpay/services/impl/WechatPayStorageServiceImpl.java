@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
-@Service("palm.musa.service.wechat-pay")
-public class WechatPayServiceImpl implements WechatPayStorageService {
+@Service("palm.musa.service.wechat-pay-storage")
+public class WechatPayStorageServiceImpl implements WechatPayStorageService {
 
 
     @Override
@@ -103,5 +103,9 @@ public class WechatPayServiceImpl implements WechatPayStorageService {
     WechatPayRefundRepository refundRepository;
     @Autowired
     WechatPayNotificationRepository notificationRepository;
+    @Autowired
+    WechatPayTransferBillReceiptRepository transferBillReceiptRepository;
+    @Autowired
+    WechatPayTransferDetailElectronicReceiptsRepository transferDetailElectronicReceiptsRepository;
 
 }

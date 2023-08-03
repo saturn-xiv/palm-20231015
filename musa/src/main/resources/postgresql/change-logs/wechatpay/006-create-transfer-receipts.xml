@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="20230803064822" author="Jeremy Zheng" labels="create transfer receipt files">
+
+        <createTable tableName="wechat_pay_transfer_bill_receipts">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="out_batch_no" type="varchar(32)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="content" type="bytea">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="wechat_pay_transfer_detail_electronic_receipts">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="accept_type" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="out_batch_no" type="varchar(32)"/>
+            <column name="out_detail_no" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="content" type="bytea">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex tableName="wechat_pay_transfer_detail_electronic_receipts"
+                     indexName="idx_wechat_pay_transfer_detail_electronic_receipts_out_detail_no">
+            <column name="out_detail_no"/>
+        </createIndex>
+        <createIndex tableName="wechat_pay_transfer_detail_electronic_receipts"
+                     indexName="idx_wechat_pay_transfer_detail_electronic_receipts_accept_type">
+            <column name="accept_type"/>
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>
