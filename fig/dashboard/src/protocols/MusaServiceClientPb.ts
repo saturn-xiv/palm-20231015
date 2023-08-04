@@ -640,5 +640,91 @@ export class WechatPayTransferClient {
     this.methodDescriptorQueryDetail);
   }
 
+  methodDescriptorGetBillReceipt = new grpcWeb.MethodDescriptor(
+    '/palm.musa.v1.WechatPayTransfer/GetBillReceipt',
+    grpcWeb.MethodType.UNARY,
+    musa_pb.WechatPayTransferGetBillReceiptRequest,
+    musa_pb.WechatPayTransferGetReceiptResponse,
+    (request: musa_pb.WechatPayTransferGetBillReceiptRequest) => {
+      return request.serializeBinary();
+    },
+    musa_pb.WechatPayTransferGetReceiptResponse.deserializeBinary
+  );
+
+  getBillReceipt(
+    request: musa_pb.WechatPayTransferGetBillReceiptRequest,
+    metadata: grpcWeb.Metadata | null): Promise<musa_pb.WechatPayTransferGetReceiptResponse>;
+
+  getBillReceipt(
+    request: musa_pb.WechatPayTransferGetBillReceiptRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: musa_pb.WechatPayTransferGetReceiptResponse) => void): grpcWeb.ClientReadableStream<musa_pb.WechatPayTransferGetReceiptResponse>;
+
+  getBillReceipt(
+    request: musa_pb.WechatPayTransferGetBillReceiptRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: musa_pb.WechatPayTransferGetReceiptResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.musa.v1.WechatPayTransfer/GetBillReceipt',
+        request,
+        metadata || {},
+        this.methodDescriptorGetBillReceipt,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.musa.v1.WechatPayTransfer/GetBillReceipt',
+    request,
+    metadata || {},
+    this.methodDescriptorGetBillReceipt);
+  }
+
+  methodDescriptorGetElectronicReceipt = new grpcWeb.MethodDescriptor(
+    '/palm.musa.v1.WechatPayTransfer/GetElectronicReceipt',
+    grpcWeb.MethodType.UNARY,
+    musa_pb.WechatPayTransferGetElectronicReceiptRequest,
+    musa_pb.WechatPayTransferGetReceiptResponse,
+    (request: musa_pb.WechatPayTransferGetElectronicReceiptRequest) => {
+      return request.serializeBinary();
+    },
+    musa_pb.WechatPayTransferGetReceiptResponse.deserializeBinary
+  );
+
+  getElectronicReceipt(
+    request: musa_pb.WechatPayTransferGetElectronicReceiptRequest,
+    metadata: grpcWeb.Metadata | null): Promise<musa_pb.WechatPayTransferGetReceiptResponse>;
+
+  getElectronicReceipt(
+    request: musa_pb.WechatPayTransferGetElectronicReceiptRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: musa_pb.WechatPayTransferGetReceiptResponse) => void): grpcWeb.ClientReadableStream<musa_pb.WechatPayTransferGetReceiptResponse>;
+
+  getElectronicReceipt(
+    request: musa_pb.WechatPayTransferGetElectronicReceiptRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: musa_pb.WechatPayTransferGetReceiptResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.musa.v1.WechatPayTransfer/GetElectronicReceipt',
+        request,
+        metadata || {},
+        this.methodDescriptorGetElectronicReceipt,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.musa.v1.WechatPayTransfer/GetElectronicReceipt',
+    request,
+    metadata || {},
+    this.methodDescriptorGetElectronicReceipt);
+  }
+
 }
 

@@ -159,10 +159,33 @@ service WechatPayTransfer {
       returns (WechatPayExecuteBatchTransferResponse) {}
   rpc QueryBatch(WechatPayQueryBatchTransferRequest)
       returns (WechatPayQueryBatchTransferResponse) {}
-  // https://pay.weixin.qq.com/docs/merchant/apis/batch-transfer-to-balance/transfer-detail/get-transfer-detail-by-out-no.html
   rpc QueryDetail(WechatPayQueryTransferDetailRequest)
       returns (WechatPayQueryTransferDetailResponse) {}
+  rpc GetBillReceipt(WechatPayTransferGetBillReceiptRequest)
+      returns (WechatPayTransferGetReceiptResponse) {}
+  rpc GetElectronicReceipt(WechatPayTransferGetElectronicReceiptRequest)
+      returns (WechatPayTransferGetReceiptResponse) {}
 }
+
+message WechatPayTransferGetElectronicReceiptRequest {
+  enum AcceptType {
+    BATCH_TRANSFER = 0;
+    TRANSFER_TO_POCKET = 1;
+    TRANSFER_TO_BANK = 2;
+  }
+  AcceptType accept_type = 1;
+  optional string out_batch_no = 2;
+  string out_detail_no = 3;
+}
+
+message WechatPayTransferGetReceiptResponse {
+  bytes payload = 1;
+}
+
+message WechatPayTransferGetBillReceiptRequest {
+  string out_batch_no = 1;
+}
+
 message WechatPayExecuteBatchTransferRequest {
   message Batch {
     string name = 1;

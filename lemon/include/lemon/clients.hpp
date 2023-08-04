@@ -34,7 +34,7 @@ namespace nut {
 class LocaleClient {
  public:
   LocaleClient(std::shared_ptr<grpc::Channel> channel)
-      : _stub(palm::nut::v1::Local::NewStub(channel)) {}
+      : _stub(palm::nut::v1::Locale::NewStub(channel)) {}
 
  private:
   std::unique_ptr<palm::nut::v1::Locale::Stub> _stub;

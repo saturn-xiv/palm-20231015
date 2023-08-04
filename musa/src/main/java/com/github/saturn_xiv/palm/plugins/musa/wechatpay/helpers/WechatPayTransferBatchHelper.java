@@ -13,7 +13,7 @@ public class WechatPayTransferBatchHelper {
                                                 String batchName, String batchRemark,
                                                 long totalAmount, int totalNum, List<TransferDetailInput> transferDetailList,
                                                 String transferSceneId) {
-
+        logger.info("create transfer batch ({},{})", appId, outBatchNo);
         final var request = new InitiateBatchTransferRequest();
         request.setAppid(appId);
         request.setOutBatchNo(outBatchNo);
@@ -28,6 +28,7 @@ public class WechatPayTransferBatchHelper {
     }
 
     public TransferBatchEntity query(String outBatchNo, int offset, int limit, String detailsStatus) {
+        logger.info("query transfer batch ({},[{},{}],{})", outBatchNo, offset, limit, detailsStatus);
         final var request = new GetTransferBatchByOutNoRequest();
         request.setOutBatchNo(outBatchNo);
         request.setNeedQueryDetail(true);
@@ -38,6 +39,7 @@ public class WechatPayTransferBatchHelper {
     }
 
     public TransferDetailEntity query(String outBatchNo, String outDetailNo) {
+        logger.info("query transfer detail ({},{})", outBatchNo, outDetailNo);
         final var request = new GetTransferDetailByOutNoRequest();
         request.setOutBatchNo(outBatchNo);
         request.setOutDetailNo(outDetailNo);

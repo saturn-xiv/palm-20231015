@@ -108,6 +108,68 @@ public final class WechatPayTransferGrpc {
     return getQueryDetailMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetBillReceiptRequest,
+      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse> getGetBillReceiptMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetBillReceipt",
+      requestType = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetBillReceiptRequest.class,
+      responseType = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetBillReceiptRequest,
+      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse> getGetBillReceiptMethod() {
+    io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetBillReceiptRequest, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse> getGetBillReceiptMethod;
+    if ((getGetBillReceiptMethod = WechatPayTransferGrpc.getGetBillReceiptMethod) == null) {
+      synchronized (WechatPayTransferGrpc.class) {
+        if ((getGetBillReceiptMethod = WechatPayTransferGrpc.getGetBillReceiptMethod) == null) {
+          WechatPayTransferGrpc.getGetBillReceiptMethod = getGetBillReceiptMethod =
+              io.grpc.MethodDescriptor.<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetBillReceiptRequest, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetBillReceipt"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetBillReceiptRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new WechatPayTransferMethodDescriptorSupplier("GetBillReceipt"))
+              .build();
+        }
+      }
+    }
+    return getGetBillReceiptMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetElectronicReceiptRequest,
+      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse> getGetElectronicReceiptMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetElectronicReceipt",
+      requestType = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetElectronicReceiptRequest.class,
+      responseType = com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetElectronicReceiptRequest,
+      com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse> getGetElectronicReceiptMethod() {
+    io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetElectronicReceiptRequest, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse> getGetElectronicReceiptMethod;
+    if ((getGetElectronicReceiptMethod = WechatPayTransferGrpc.getGetElectronicReceiptMethod) == null) {
+      synchronized (WechatPayTransferGrpc.class) {
+        if ((getGetElectronicReceiptMethod = WechatPayTransferGrpc.getGetElectronicReceiptMethod) == null) {
+          WechatPayTransferGrpc.getGetElectronicReceiptMethod = getGetElectronicReceiptMethod =
+              io.grpc.MethodDescriptor.<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetElectronicReceiptRequest, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetElectronicReceipt"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetElectronicReceiptRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new WechatPayTransferMethodDescriptorSupplier("GetElectronicReceipt"))
+              .build();
+        }
+      }
+    }
+    return getGetElectronicReceiptMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -171,13 +233,24 @@ public final class WechatPayTransferGrpc {
     }
 
     /**
-     * <pre>
-     * https://pay.weixin.qq.com/docs/merchant/apis/batch-transfer-to-balance/transfer-detail/get-transfer-detail-by-out-no.html
-     * </pre>
      */
     default void queryDetail(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferDetailRequest request,
         io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferDetailResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getQueryDetailMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getBillReceipt(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetBillReceiptRequest request,
+        io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetBillReceiptMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getElectronicReceipt(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetElectronicReceiptRequest request,
+        io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetElectronicReceiptMethod(), responseObserver);
     }
   }
 
@@ -225,14 +298,27 @@ public final class WechatPayTransferGrpc {
     }
 
     /**
-     * <pre>
-     * https://pay.weixin.qq.com/docs/merchant/apis/batch-transfer-to-balance/transfer-detail/get-transfer-detail-by-out-no.html
-     * </pre>
      */
     public void queryDetail(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferDetailRequest request,
         io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferDetailResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getQueryDetailMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getBillReceipt(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetBillReceiptRequest request,
+        io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetBillReceiptMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getElectronicReceipt(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetElectronicReceiptRequest request,
+        io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetElectronicReceiptMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -267,13 +353,24 @@ public final class WechatPayTransferGrpc {
     }
 
     /**
-     * <pre>
-     * https://pay.weixin.qq.com/docs/merchant/apis/batch-transfer-to-balance/transfer-detail/get-transfer-detail-by-out-no.html
-     * </pre>
      */
     public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferDetailResponse queryDetail(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferDetailRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getQueryDetailMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse getBillReceipt(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetBillReceiptRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetBillReceiptMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse getElectronicReceipt(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetElectronicReceiptRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetElectronicReceiptMethod(), getCallOptions(), request);
     }
   }
 
@@ -310,20 +407,35 @@ public final class WechatPayTransferGrpc {
     }
 
     /**
-     * <pre>
-     * https://pay.weixin.qq.com/docs/merchant/apis/batch-transfer-to-balance/transfer-detail/get-transfer-detail-by-out-no.html
-     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferDetailResponse> queryDetail(
         com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferDetailRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getQueryDetailMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse> getBillReceipt(
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetBillReceiptRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetBillReceiptMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse> getElectronicReceipt(
+        com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetElectronicReceiptRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetElectronicReceiptMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_EXECUTE_BATCH = 0;
   private static final int METHODID_QUERY_BATCH = 1;
   private static final int METHODID_QUERY_DETAIL = 2;
+  private static final int METHODID_GET_BILL_RECEIPT = 3;
+  private static final int METHODID_GET_ELECTRONIC_RECEIPT = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -353,6 +465,14 @@ public final class WechatPayTransferGrpc {
         case METHODID_QUERY_DETAIL:
           serviceImpl.queryDetail((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferDetailRequest) request,
               (io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferDetailResponse>) responseObserver);
+          break;
+        case METHODID_GET_BILL_RECEIPT:
+          serviceImpl.getBillReceipt((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetBillReceiptRequest) request,
+              (io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse>) responseObserver);
+          break;
+        case METHODID_GET_ELECTRONIC_RECEIPT:
+          serviceImpl.getElectronicReceipt((com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetElectronicReceiptRequest) request,
+              (io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -393,6 +513,20 @@ public final class WechatPayTransferGrpc {
               com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferDetailRequest,
               com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryTransferDetailResponse>(
                 service, METHODID_QUERY_DETAIL)))
+        .addMethod(
+          getGetBillReceiptMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetBillReceiptRequest,
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse>(
+                service, METHODID_GET_BILL_RECEIPT)))
+        .addMethod(
+          getGetElectronicReceiptMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetElectronicReceiptRequest,
+              com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayTransferGetReceiptResponse>(
+                service, METHODID_GET_ELECTRONIC_RECEIPT)))
         .build();
   }
 
@@ -444,6 +578,8 @@ public final class WechatPayTransferGrpc {
               .addMethod(getExecuteBatchMethod())
               .addMethod(getQueryBatchMethod())
               .addMethod(getQueryDetailMethod())
+              .addMethod(getGetBillReceiptMethod())
+              .addMethod(getGetElectronicReceiptMethod())
               .build();
         }
       }

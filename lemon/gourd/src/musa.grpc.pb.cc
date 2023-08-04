@@ -481,6 +481,8 @@ static const char* WechatPayTransfer_method_names[] = {
   "/palm.musa.v1.WechatPayTransfer/ExecuteBatch",
   "/palm.musa.v1.WechatPayTransfer/QueryBatch",
   "/palm.musa.v1.WechatPayTransfer/QueryDetail",
+  "/palm.musa.v1.WechatPayTransfer/GetBillReceipt",
+  "/palm.musa.v1.WechatPayTransfer/GetElectronicReceipt",
 };
 
 std::unique_ptr< WechatPayTransfer::Stub> WechatPayTransfer::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -493,6 +495,8 @@ WechatPayTransfer::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& 
   : channel_(channel), rpcmethod_ExecuteBatch_(WechatPayTransfer_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_QueryBatch_(WechatPayTransfer_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_QueryDetail_(WechatPayTransfer_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetBillReceipt_(WechatPayTransfer_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetElectronicReceipt_(WechatPayTransfer_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status WechatPayTransfer::Stub::ExecuteBatch(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayExecuteBatchTransferRequest& request, ::palm::musa::v1::WechatPayExecuteBatchTransferResponse* response) {
@@ -564,6 +568,52 @@ void WechatPayTransfer::Stub::async::QueryDetail(::grpc::ClientContext* context,
   return result;
 }
 
+::grpc::Status WechatPayTransfer::Stub::GetBillReceipt(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayTransferGetBillReceiptRequest& request, ::palm::musa::v1::WechatPayTransferGetReceiptResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::musa::v1::WechatPayTransferGetBillReceiptRequest, ::palm::musa::v1::WechatPayTransferGetReceiptResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetBillReceipt_, context, request, response);
+}
+
+void WechatPayTransfer::Stub::async::GetBillReceipt(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayTransferGetBillReceiptRequest* request, ::palm::musa::v1::WechatPayTransferGetReceiptResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::musa::v1::WechatPayTransferGetBillReceiptRequest, ::palm::musa::v1::WechatPayTransferGetReceiptResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetBillReceipt_, context, request, response, std::move(f));
+}
+
+void WechatPayTransfer::Stub::async::GetBillReceipt(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayTransferGetBillReceiptRequest* request, ::palm::musa::v1::WechatPayTransferGetReceiptResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetBillReceipt_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayTransferGetReceiptResponse>* WechatPayTransfer::Stub::PrepareAsyncGetBillReceiptRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayTransferGetBillReceiptRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::musa::v1::WechatPayTransferGetReceiptResponse, ::palm::musa::v1::WechatPayTransferGetBillReceiptRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetBillReceipt_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayTransferGetReceiptResponse>* WechatPayTransfer::Stub::AsyncGetBillReceiptRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayTransferGetBillReceiptRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetBillReceiptRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status WechatPayTransfer::Stub::GetElectronicReceipt(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayTransferGetElectronicReceiptRequest& request, ::palm::musa::v1::WechatPayTransferGetReceiptResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::musa::v1::WechatPayTransferGetElectronicReceiptRequest, ::palm::musa::v1::WechatPayTransferGetReceiptResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetElectronicReceipt_, context, request, response);
+}
+
+void WechatPayTransfer::Stub::async::GetElectronicReceipt(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayTransferGetElectronicReceiptRequest* request, ::palm::musa::v1::WechatPayTransferGetReceiptResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::musa::v1::WechatPayTransferGetElectronicReceiptRequest, ::palm::musa::v1::WechatPayTransferGetReceiptResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetElectronicReceipt_, context, request, response, std::move(f));
+}
+
+void WechatPayTransfer::Stub::async::GetElectronicReceipt(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayTransferGetElectronicReceiptRequest* request, ::palm::musa::v1::WechatPayTransferGetReceiptResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetElectronicReceipt_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayTransferGetReceiptResponse>* WechatPayTransfer::Stub::PrepareAsyncGetElectronicReceiptRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayTransferGetElectronicReceiptRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::musa::v1::WechatPayTransferGetReceiptResponse, ::palm::musa::v1::WechatPayTransferGetElectronicReceiptRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetElectronicReceipt_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::palm::musa::v1::WechatPayTransferGetReceiptResponse>* WechatPayTransfer::Stub::AsyncGetElectronicReceiptRaw(::grpc::ClientContext* context, const ::palm::musa::v1::WechatPayTransferGetElectronicReceiptRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetElectronicReceiptRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 WechatPayTransfer::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       WechatPayTransfer_method_names[0],
@@ -595,6 +645,26 @@ WechatPayTransfer::Service::Service() {
              ::palm::musa::v1::WechatPayQueryTransferDetailResponse* resp) {
                return service->QueryDetail(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      WechatPayTransfer_method_names[3],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< WechatPayTransfer::Service, ::palm::musa::v1::WechatPayTransferGetBillReceiptRequest, ::palm::musa::v1::WechatPayTransferGetReceiptResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](WechatPayTransfer::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::palm::musa::v1::WechatPayTransferGetBillReceiptRequest* req,
+             ::palm::musa::v1::WechatPayTransferGetReceiptResponse* resp) {
+               return service->GetBillReceipt(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      WechatPayTransfer_method_names[4],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< WechatPayTransfer::Service, ::palm::musa::v1::WechatPayTransferGetElectronicReceiptRequest, ::palm::musa::v1::WechatPayTransferGetReceiptResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](WechatPayTransfer::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::palm::musa::v1::WechatPayTransferGetElectronicReceiptRequest* req,
+             ::palm::musa::v1::WechatPayTransferGetReceiptResponse* resp) {
+               return service->GetElectronicReceipt(ctx, req, resp);
+             }, this)));
 }
 
 WechatPayTransfer::Service::~Service() {
@@ -615,6 +685,20 @@ WechatPayTransfer::Service::~Service() {
 }
 
 ::grpc::Status WechatPayTransfer::Service::QueryDetail(::grpc::ServerContext* context, const ::palm::musa::v1::WechatPayQueryTransferDetailRequest* request, ::palm::musa::v1::WechatPayQueryTransferDetailResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status WechatPayTransfer::Service::GetBillReceipt(::grpc::ServerContext* context, const ::palm::musa::v1::WechatPayTransferGetBillReceiptRequest* request, ::palm::musa::v1::WechatPayTransferGetReceiptResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status WechatPayTransfer::Service::GetElectronicReceipt(::grpc::ServerContext* context, const ::palm::musa::v1::WechatPayTransferGetElectronicReceiptRequest* request, ::palm::musa::v1::WechatPayTransferGetReceiptResponse* response) {
   (void) context;
   (void) request;
   (void) response;

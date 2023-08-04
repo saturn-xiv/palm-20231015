@@ -452,6 +452,83 @@ export namespace WechatPayRefundResponse {
   }
 }
 
+export class WechatPayTransferGetElectronicReceiptRequest extends jspb.Message {
+  getAcceptType(): WechatPayTransferGetElectronicReceiptRequest.AcceptType;
+  setAcceptType(value: WechatPayTransferGetElectronicReceiptRequest.AcceptType): WechatPayTransferGetElectronicReceiptRequest;
+
+  getOutBatchNo(): string;
+  setOutBatchNo(value: string): WechatPayTransferGetElectronicReceiptRequest;
+  hasOutBatchNo(): boolean;
+  clearOutBatchNo(): WechatPayTransferGetElectronicReceiptRequest;
+
+  getOutDetailNo(): string;
+  setOutDetailNo(value: string): WechatPayTransferGetElectronicReceiptRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatPayTransferGetElectronicReceiptRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatPayTransferGetElectronicReceiptRequest): WechatPayTransferGetElectronicReceiptRequest.AsObject;
+  static serializeBinaryToWriter(message: WechatPayTransferGetElectronicReceiptRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatPayTransferGetElectronicReceiptRequest;
+  static deserializeBinaryFromReader(message: WechatPayTransferGetElectronicReceiptRequest, reader: jspb.BinaryReader): WechatPayTransferGetElectronicReceiptRequest;
+}
+
+export namespace WechatPayTransferGetElectronicReceiptRequest {
+  export type AsObject = {
+    acceptType: WechatPayTransferGetElectronicReceiptRequest.AcceptType,
+    outBatchNo?: string,
+    outDetailNo: string,
+  }
+
+  export enum AcceptType { 
+    BATCH_TRANSFER = 0,
+    TRANSFER_TO_POCKET = 1,
+    TRANSFER_TO_BANK = 2,
+  }
+
+  export enum OutBatchNoCase { 
+    _OUT_BATCH_NO_NOT_SET = 0,
+    OUT_BATCH_NO = 2,
+  }
+}
+
+export class WechatPayTransferGetReceiptResponse extends jspb.Message {
+  getPayload(): Uint8Array | string;
+  getPayload_asU8(): Uint8Array;
+  getPayload_asB64(): string;
+  setPayload(value: Uint8Array | string): WechatPayTransferGetReceiptResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatPayTransferGetReceiptResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatPayTransferGetReceiptResponse): WechatPayTransferGetReceiptResponse.AsObject;
+  static serializeBinaryToWriter(message: WechatPayTransferGetReceiptResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatPayTransferGetReceiptResponse;
+  static deserializeBinaryFromReader(message: WechatPayTransferGetReceiptResponse, reader: jspb.BinaryReader): WechatPayTransferGetReceiptResponse;
+}
+
+export namespace WechatPayTransferGetReceiptResponse {
+  export type AsObject = {
+    payload: Uint8Array | string,
+  }
+}
+
+export class WechatPayTransferGetBillReceiptRequest extends jspb.Message {
+  getOutBatchNo(): string;
+  setOutBatchNo(value: string): WechatPayTransferGetBillReceiptRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WechatPayTransferGetBillReceiptRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WechatPayTransferGetBillReceiptRequest): WechatPayTransferGetBillReceiptRequest.AsObject;
+  static serializeBinaryToWriter(message: WechatPayTransferGetBillReceiptRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WechatPayTransferGetBillReceiptRequest;
+  static deserializeBinaryFromReader(message: WechatPayTransferGetBillReceiptRequest, reader: jspb.BinaryReader): WechatPayTransferGetBillReceiptRequest;
+}
+
+export namespace WechatPayTransferGetBillReceiptRequest {
+  export type AsObject = {
+    outBatchNo: string,
+  }
+}
+
 export class WechatPayExecuteBatchTransferRequest extends jspb.Message {
   getAppId(): string;
   setAppId(value: string): WechatPayExecuteBatchTransferRequest;
