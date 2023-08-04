@@ -82,7 +82,7 @@ build_loquat() {
     mkdir -p $target
     cd $target
     CC=clang CXX=clang++ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=$HOME/local/vcpkg/scripts/buildsystems/vcpkg.cmake \
-        -DABSL_PROPAGATE_CXX_STD=ON -DTINK_USE_SYSTEM_OPENSSL=ON $THRIFT_FLAGS \
+        -DABSL_PROPAGATE_CXX_STD=ON -DTINK_USE_SYSTEM_OPENSSL=ON $thrift_flags \
         ../..
     make loquat
     cp loquat $TARGET_DIR/bin/$1/
@@ -97,7 +97,7 @@ build_lemon() {
     cd $target
     cmake -DCMAKE_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$1.cmake -DCMAKE_BUILD_TYPE=Release \
         -DABSL_ENABLE_INSTALL=ON -DABSL_PROPAGATE_CXX_STD=ON \
-        -DgRPC_SSL_PROVIDER=package \
+        -DgRPC_SSL_PROVIDER=module \
         -DgRPC_PROTOBUF_PROVIDER=module -DgRPC_PROTOBUF_PACKAGE_TYPE=module -DProtobuf_PROTOC_EXECUTABLE=$HOME/.local/bin/protoc \
         -DgRPC_BUILD_TESTS=OFF \
         ../..
@@ -184,7 +184,7 @@ copy_assets() {
 
     cp -a README.md LICENSE package.json \
         docker/spring/etc/envoy.yaml \
-        palm/db palm/protocols \
+        db palm/protocols \
         $TARGET_DIR/
     
     echo "$GIT_VERSION" > $TARGET_DIR/VERSION
@@ -254,7 +254,7 @@ then
 fi
 
 build_lemon x86_64 amd64
-build_lemon aarch64 arm64
+#build_lemon aarch64 arm64
 
 # -----------------------------------------------------------------------------
 
