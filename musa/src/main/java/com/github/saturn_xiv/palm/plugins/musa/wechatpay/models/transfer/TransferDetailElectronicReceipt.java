@@ -1,5 +1,6 @@
-package com.github.saturn_xiv.palm.plugins.musa.wechatpay.models;
+package com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.transfer;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -9,21 +10,24 @@ import java.util.Date;
 
 @Entity(name = "wechat-pay.transfer.detail-electronic-receipt")
 @Table(name = "wechat_pay_transfer_detail_electronic_receipts")
-public class TransferDetailElectronicReceipts implements Serializable {
+public class TransferDetailElectronicReceipt implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Integer id;
-    @Length(min = 1, max = 31)
     @Column(name = "accept_type", nullable = false)
-    private String acceptType;
+    @Enumerated(EnumType.STRING)
+    private ReceiptAcceptType acceptType;
     @Length(min = 1, max = 32)
     @Column(name = "out_batch_no")
     private String outBatchNo;
     @Length(min = 1, max = 32)
     @Column(name = "out_detail_no", nullable = false)
     private String outDetailNo;
-    @Column(nullable = false)
+    @Column(name = "signature_status")
+    @Enumerated(EnumType.STRING)
+    private ReceiptSignatureStatus signatureStatus;
+    @JsonIgnore
     private byte[] content;
     @Column(name = "created_at", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -37,11 +41,11 @@ public class TransferDetailElectronicReceipts implements Serializable {
         this.id = id;
     }
 
-    public String getAcceptType() {
+    public ReceiptAcceptType getAcceptType() {
         return acceptType;
     }
 
-    public void setAcceptType(String acceptType) {
+    public void setAcceptType(ReceiptAcceptType acceptType) {
         this.acceptType = acceptType;
     }
 
@@ -75,5 +79,13 @@ public class TransferDetailElectronicReceipts implements Serializable {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public ReceiptSignatureStatus getSignatureStatus() {
+        return signatureStatus;
+    }
+
+    public void setSignatureStatus(ReceiptSignatureStatus signatureStatus) {
+        this.signatureStatus = signatureStatus;
     }
 }

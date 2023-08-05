@@ -1,4 +1,4 @@
-package com.github.saturn_xiv.palm.plugins.musa.wechatpay.models;
+package com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.transfer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -1,6 +1,6 @@
 package com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories;
 
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.TransferBillReceipt;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.transfer.TransferBillReceipt;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

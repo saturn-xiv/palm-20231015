@@ -106,6 +106,7 @@ public class WechatPayStorageServiceImpl implements WechatPayStorageService {
     @Autowired
     WechatPayTransferBillReceiptRepository transferBillReceiptRepository;
     @Autowired
-    WechatPayTransferDetailElectronicReceiptsRepository transferDetailElectronicReceiptsRepository;
+    WechatPayTransferDetailElectronicReceiptRepository transferDetailElectronicReceiptRepository;
+
 
 }

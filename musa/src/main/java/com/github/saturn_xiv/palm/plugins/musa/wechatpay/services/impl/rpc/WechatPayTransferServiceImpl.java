@@ -8,7 +8,7 @@ import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers.WechatPayTransferBatchHelper;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.OutNoType;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.WechatPayTransferBillReceiptRepository;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.WechatPayTransferDetailElectronicReceiptsRepository;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.WechatPayTransferDetailElectronicReceiptRepository;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
 import com.google.protobuf.ByteString;
 import com.wechat.pay.java.core.exception.ServiceException;
@@ -80,13 +80,13 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
                     .build());
         }
 
-        final var outTransferNo = request.getBatch().hasOutNo() ?
+        final var outBatchNo = request.getBatch().hasOutNo() ?
                 request.getBatch().getOutNo() : WechatPayClient.outNo(OutNoType.BATCH_TRANSFER);
         logger.info("execute transfer {} for {} with amount {}",
-                outTransferNo, request.getBatch().getName(), totalAmount);
+                outBatchNo, request.getBatch().getName(), totalAmount);
 
         try {
-            final var response = transferBatchHelper.create(request.getAppId(), outTransferNo,
+            final var response = transferBatchHelper.create(request.getAppId(), outBatchNo,
                     request.getBatch().getName(), request.getBatch().getRemark(),
                     totalAmount, transferDetailInputList.size(), transferDetailInputList,
                     request.getSceneId());
@@ -106,7 +106,7 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
         } catch (ServiceException e) {
             logger.error("{} {} {}", e.getHttpStatusCode(), e.getErrorCode(), e.getErrorMessage());
             responseObserver.onNext(WechatPayExecuteBatchTransferResponse.newBuilder()
-                    .setOutBatchNo(outTransferNo)
+                    .setOutBatchNo(outBatchNo)
                     .addAllDetails(transferDetailList)
                     .setError(Error.newBuilder()
                             .setCode(e.getErrorCode())
@@ -236,7 +236,7 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
     @Autowired
     WechatPayTransferBillReceiptRepository transferBillReceiptRepository;
     @Autowired
-    WechatPayTransferDetailElectronicReceiptsRepository transferDetailElectronicReceiptsRepository;
+    WechatPayTransferDetailElectronicReceiptRepository transferDetailElectronicReceiptsRepository;
 
     private WechatPayTransferBatchHelper transferBatchHelper;
 

@@ -1,9 +1,8 @@
 package com.github.saturn_xiv.palm.plugins.musa.wechatpay;
 
 import com.github.saturn_xiv.palm.plugins.musa.v1.*;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.*;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.BillDownloadResponse;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.OutNoType;
 import com.wechat.pay.java.core.RSAAutoCertificateConfig;
 import com.wechat.pay.java.core.RSAConfig;
 import com.wechat.pay.java.core.http.*;
@@ -36,102 +35,10 @@ import java.util.TimeZone;
 @Component("palm.musa.model.wechatpay")
 public class WechatPayClient {
 
-    public TransferBillReceiptResponse requestTransferElectronicReceipt(String acceptType, String outBatchNo, String outDetailNo) throws IllegalArgumentException {
-        logger.info("request wechat-pay transfer electronic receipt ({},{},{})", acceptType, outBatchNo, outDetailNo);
-        final var url = UriComponentsBuilder.fromUriString(API_HOME + "/v3/transfer-detail/electronic-receipts")
-                .build().toUriString();
-        final var client = this.client();
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.addHeader(Constant.ACCEPT, MediaType.APPLICATION_JSON.getValue());
-        headers.addHeader(Constant.CONTENT_TYPE, MediaType.APPLICATION_JSON.getValue());
-
-        var body = new JsonRequestBody.Builder().body(new Gson().toJson(new TransferElectronicReceiptRequest(acceptType, outBatchNo, outDetailNo))).build();
-
-        var request = new HttpRequest.Builder()
-                .httpMethod(HttpMethod.POST)
-                .headers(headers)
-                .url(url)
-                .body(body)
-                .build();
-        final var httpResponse = client.execute(request, TransferBillReceiptResponse.class);
-        final var response = httpResponse.getServiceResponse();
-        logger.debug("{}", new GsonBuilder().setPrettyPrinting().create().toJson(response));
-        return response;
-    }
-
-    public TransferBillReceiptResponse queryTransferElectronicReceipt(String acceptType, String outBatchNo, String outDetailNo) throws IllegalArgumentException {
-        logger.info("query wechat-pay transfer electronic receipt ({},{},{})", acceptType, outBatchNo, outDetailNo);
-        final var url = UriComponentsBuilder.fromUriString(API_HOME + "/v3/transfer-detail/electronic-receipts")
-                .queryParam("out_batch_no", outBatchNo)
-                .queryParam("out_detail_no", outDetailNo)
-                .queryParam("accept_type", acceptType)
-                .build().toUriString();
-        final var client = this.client();
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.addHeader(Constant.ACCEPT, MediaType.APPLICATION_JSON.getValue());
-        headers.addHeader(Constant.CONTENT_TYPE, MediaType.APPLICATION_JSON.getValue());
-
-        var request = new HttpRequest.Builder()
-                .httpMethod(HttpMethod.GET)
-                .headers(headers)
-                .url(url)
-                .build();
-        final var httpResponse = client.execute(request, TransferBillReceiptResponse.class);
-        final var response = httpResponse.getServiceResponse();
-        logger.debug("{}", new GsonBuilder().setPrettyPrinting().create().toJson(response));
-        return response;
-    }
-
-    public TransferBillReceiptResponse requestTransferBillReceipt(String outBatchNo) throws IllegalArgumentException {
-        logger.info("request wechat-pay transfer bill receipt {}", outBatchNo);
-        final var url = UriComponentsBuilder.fromUriString(API_HOME + "/v3/transfer/bill-receipt")
-                .build().toUriString();
-        final var client = this.client();
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.addHeader(Constant.ACCEPT, MediaType.APPLICATION_JSON.getValue());
-        headers.addHeader(Constant.CONTENT_TYPE, MediaType.APPLICATION_JSON.getValue());
-
-        var body = new JsonRequestBody.Builder().body(new Gson().toJson(new TransferBillReceiptRequest(outBatchNo))).build();
-
-        var request = new HttpRequest.Builder()
-                .httpMethod(HttpMethod.POST)
-                .headers(headers)
-                .url(url)
-                .body(body)
-                .build();
-        final var httpResponse = client.execute(request, TransferBillReceiptResponse.class);
-        final var response = httpResponse.getServiceResponse();
-        logger.debug("{}", new GsonBuilder().setPrettyPrinting().create().toJson(response));
-        return response;
-    }
-
-    public TransferBillReceiptResponse queryTransferBillReceipt(String outBatchNo) throws IllegalArgumentException {
-        logger.info("query wechat-pay transfer bill receipt {}", outBatchNo);
-        final var url = UriComponentsBuilder.fromUriString(API_HOME + "/v3/transfer/bill-receipt/" + outBatchNo)
-                .build().toUriString();
-        final var client = this.client();
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.addHeader(Constant.ACCEPT, MediaType.APPLICATION_JSON.getValue());
-        headers.addHeader(Constant.CONTENT_TYPE, MediaType.APPLICATION_JSON.getValue());
-
-        var request = new HttpRequest.Builder()
-                .httpMethod(HttpMethod.POST)
-                .headers(headers)
-                .url(url)
-                .build();
-        final var httpResponse = client.execute(request, TransferBillReceiptResponse.class);
-        final var response = httpResponse.getServiceResponse();
-        logger.debug("{}", new GsonBuilder().setPrettyPrinting().create().toJson(response));
-        return response;
-    }
 
     public byte[] downloadFundFlowBill(String billDate, String accountType) throws IllegalArgumentException {
         logger.info("download wechat-pay fund flow bill {} {}", billDate, accountType);
-        final var url = UriComponentsBuilder.fromUriString(API_HOME + "/bill/fundflowbill")
+        final var url = UriComponentsBuilder.fromUriString(apiHome("/bill/fundflowbill"))
                 .queryParam("bill_date", billDate)
                 .queryParam("account_type", accountType)
                 .build().toUriString();
@@ -140,11 +47,15 @@ public class WechatPayClient {
 
     public byte[] downloadTradeBill(String billDate, String billType) throws IllegalArgumentException {
         logger.info("download wechat-pay trade bill {} {}", billDate, billType);
-        final var url = UriComponentsBuilder.fromUriString(API_HOME + "/bill/tradebill")
+        final var url = UriComponentsBuilder.fromUriString(apiHome("/bill/tradebill"))
                 .queryParam("bill_date", billDate)
                 .queryParam("bill_type", billType)
                 .build().toUriString();
         return downloadBill(url);
+    }
+
+    public static String apiHome(String path) {
+        return "https://api.mch.weixin.qq.com/v3" + path;
     }
 
     private byte[] downloadBill(final String url) throws IllegalArgumentException {
@@ -363,7 +274,6 @@ public class WechatPayClient {
     final static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 
     private final static Logger logger = LoggerFactory.getLogger(WechatPayClient.class);
-    private final static String API_HOME = "https://api.mch.weixin.qq.com/v3";
 
     public String getMerchantId() {
         return merchantId;

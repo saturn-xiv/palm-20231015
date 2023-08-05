@@ -14,9 +14,8 @@
             <column name="out_batch_no" type="varchar(32)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="content" type="bytea">
-                <constraints nullable="false"/>
-            </column>
+            <column name="signature_status" type="varchar(31)"/>
+            <column name="content" type="bytea"/>
             <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
                 <constraints nullable="false"/>
             </column>
@@ -26,16 +25,15 @@
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="accept_type" type="varchar(32)">
+            <column name="accept_type" type="varchar(31)">
                 <constraints nullable="false"/>
             </column>
             <column name="out_batch_no" type="varchar(32)"/>
             <column name="out_detail_no" type="varchar(32)">
                 <constraints nullable="false"/>
             </column>
-            <column name="content" type="bytea">
-                <constraints nullable="false"/>
-            </column>
+            <column name="signature_status" type="varchar(31)"/>
+            <column name="content" type="bytea"/>
             <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
                 <constraints nullable="false"/>
             </column>

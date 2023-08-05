@@ -1,13 +1,11 @@
-package com.github.saturn_xiv.palm.plugins.musa.wechatpay.models;
+package com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.transfer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.BillDownloadResponse;
 
 import java.io.Serializable;
 
-public class TransferBillReceiptResponse implements Serializable {
-    public boolean isFinished() {
-        return "FINISHED".equals(this.signatureStatus);
-    }
+public class TransferElectronicReceiptResponse implements Serializable {
 
     public BillDownloadResponse toBillDownloadResponse() {
         var it = new BillDownloadResponse();
@@ -17,8 +15,12 @@ public class TransferBillReceiptResponse implements Serializable {
         return it;
     }
 
+    @JsonProperty("accept_type")
+    private String acceptType;
     @JsonProperty("out_batch_no")
     private String outBatchNo;
+    @JsonProperty("out_detail_no")
+    private String outDetailNo;
     @JsonProperty("signature_no")
     private String signatureNo;
     @JsonProperty("signature_status")
@@ -29,11 +31,15 @@ public class TransferBillReceiptResponse implements Serializable {
     private String hashValue;
     @JsonProperty("download_url")
     private String downloadUrl;
-    @JsonProperty("create_time")
-    private String createTime;
-    @JsonProperty("update_time")
-    private String updateTime;
 
+
+    public String getAcceptType() {
+        return acceptType;
+    }
+
+    public void setAcceptType(String acceptType) {
+        this.acceptType = acceptType;
+    }
 
     public String getOutBatchNo() {
         return outBatchNo;
@@ -41,6 +47,14 @@ public class TransferBillReceiptResponse implements Serializable {
 
     public void setOutBatchNo(String outBatchNo) {
         this.outBatchNo = outBatchNo;
+    }
+
+    public String getOutDetailNo() {
+        return outDetailNo;
+    }
+
+    public void setOutDetailNo(String outDetailNo) {
+        this.outDetailNo = outDetailNo;
     }
 
     public String getSignatureNo() {
@@ -81,21 +95,5 @@ public class TransferBillReceiptResponse implements Serializable {
 
     public void setDownloadUrl(String downloadUrl) {
         this.downloadUrl = downloadUrl;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
     }
 }

@@ -1,5 +1,6 @@
 package com.github.saturn_xiv.palm.plugins.musa.wechatpay.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -23,6 +24,7 @@ public class FundFlowBill implements Serializable {
     @Column(name = "tar_type")
     private Integer tarType;
     @Column(nullable = false)
+    @JsonIgnore
     private byte[] content;
     @Column(name = "created_at", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
