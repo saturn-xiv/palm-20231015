@@ -14,12 +14,24 @@
             <column name="out_batch_no" type="varchar(32)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="signature_status" type="varchar(31)"/>
+            <column name="signature_status" type="varchar(31)">
+                <constraints nullable="false"/>
+            </column>
             <column name="content" type="bytea"/>
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
             <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <createIndex tableName="wechat_pay_transfer_bill_receipts"
+                     indexName="idx_wechat_pay_transfer_bill_receipts_signature_status">
+            <column name="signature_status"/>
+        </createIndex>
 
         <createTable tableName="wechat_pay_transfer_detail_electronic_receipts">
             <column name="id" type="integer" autoIncrement="true">
@@ -32,8 +44,16 @@
             <column name="out_detail_no" type="varchar(32)">
                 <constraints nullable="false"/>
             </column>
-            <column name="signature_status" type="varchar(31)"/>
+            <column name="signature_status" type="varchar(31)">
+                <constraints nullable="false"/>
+            </column>
             <column name="content" type="bytea"/>
+            <column name="version" type="integer" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
             <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
                 <constraints nullable="false"/>
             </column>
@@ -45,6 +65,10 @@
         <createIndex tableName="wechat_pay_transfer_detail_electronic_receipts"
                      indexName="idx_wechat_pay_transfer_detail_electronic_receipts_accept_type">
             <column name="accept_type"/>
+        </createIndex>
+        <createIndex tableName="wechat_pay_transfer_detail_electronic_receipts"
+                     indexName="idx_wechat_pay_transfer_detail_electronic_receipts_signature_status">
+            <column name="signature_status"/>
         </createIndex>
 
     </changeSet>

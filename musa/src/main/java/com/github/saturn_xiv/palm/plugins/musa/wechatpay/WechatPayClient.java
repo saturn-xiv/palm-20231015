@@ -59,7 +59,7 @@ public class WechatPayClient {
     }
 
     private byte[] downloadBill(final String url) throws IllegalArgumentException {
-        final var client = this.client();
+        final var client = this.httpClient();
 
         HttpHeaders headers = new HttpHeaders();
         headers.addHeader(Constant.ACCEPT, MediaType.APPLICATION_JSON.getValue());
@@ -75,8 +75,8 @@ public class WechatPayClient {
         return downloadBill(response);
     }
 
-    private byte[] downloadBill(final BillDownloadResponse response) throws IllegalArgumentException {
-        final var client = this.client();
+    public byte[] downloadBill(final BillDownloadResponse response) throws IllegalArgumentException {
+        final var client = this.httpClient();
         try (InputStream stream = client.download(response.getDownloadUrl())) {
             final var content = IOUtil.toByteArray(stream);
             if (!response.verify(content)) {
@@ -90,7 +90,7 @@ public class WechatPayClient {
         }
     }
 
-    private HttpClient client() {
+    public HttpClient httpClient() {
         return new DefaultHttpClientBuilder().config(config).build();
     }
 
@@ -227,7 +227,7 @@ public class WechatPayClient {
     }
 
 
-    public TransferBatchService transferBatchService() {
+    public TransferBatchService batchTransferService() {
         return new TransferBatchService.Builder().config(config).build();
     }
 

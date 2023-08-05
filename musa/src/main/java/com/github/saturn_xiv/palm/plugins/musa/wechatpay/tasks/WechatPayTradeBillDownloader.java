@@ -34,7 +34,7 @@ public class WechatPayTradeBillDownloader {
                     }
                 }
 
-                Thread.sleep(Duration.ofSeconds(5));
+                Thread.sleep(Duration.ofMinutes(1));
             }
         }
     }

@@ -19,4 +19,10 @@ public interface WechatPayStorageService {
 
 
     void addNotification(com.wechat.pay.java.core.notification.Notification notification, String resource);
+
+    void acceptBatchTransferReceipts(String outBatchNo, String... outDetailNos);
+
+    void finishBatchTransferReceipt(String outBatchNo, byte[] content);
+
+    void finishDetailElectronicReceipt(String acceptType, String outBatchNo, String outDetailNo, byte[] content);
 }

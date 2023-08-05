@@ -4,6 +4,7 @@ import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.transfer.TransferBillReceiptRequest;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.transfer.TransferBillReceiptResponse;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.transfer.TransferElectronicReceiptRequest;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.transfer.TransferElectronicReceiptResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.wechat.pay.java.core.http.*;
@@ -16,7 +17,7 @@ public class WechatPayTransferReceiptHelper {
         this.client = client;
     }
 
-    public TransferBillReceiptResponse requestTransferElectronicReceipt(String acceptType, String outBatchNo, String outDetailNo) throws IllegalArgumentException {
+    public TransferElectronicReceiptResponse requestTransferElectronicReceipt(String acceptType, String outBatchNo, String outDetailNo) throws IllegalArgumentException {
         logger.info("request wechat-pay transfer electronic receipt ({},{},{})", acceptType, outBatchNo, outDetailNo);
         final var url = UriComponentsBuilder.fromUriString(WechatPayClient.apiHome("/transfer-detail/electronic-receipts"))
                 .build().toUriString();
@@ -33,7 +34,7 @@ public class WechatPayTransferReceiptHelper {
                 .url(url)
                 .body(body)
                 .build();
-        final var httpResponse = client.execute(request, TransferBillReceiptResponse.class);
+        final var httpResponse = client.execute(request, TransferElectronicReceiptResponse.class);
         final var response = httpResponse.getServiceResponse();
         logger.debug("{}", new GsonBuilder().setPrettyPrinting().create().toJson(response));
         return response;
@@ -95,7 +96,7 @@ public class WechatPayTransferReceiptHelper {
         headers.addHeader(Constant.CONTENT_TYPE, MediaType.APPLICATION_JSON.getValue());
 
         var request = new HttpRequest.Builder()
-                .httpMethod(HttpMethod.POST)
+                .httpMethod(HttpMethod.GET)
                 .headers(headers)
                 .url(url)
                 .build();
@@ -105,6 +106,6 @@ public class WechatPayTransferReceiptHelper {
         return response;
     }
 
-    private HttpClient client;
+    final private HttpClient client;
     private final static Logger logger = LoggerFactory.getLogger(WechatPayTransferReceiptHelper.class);
 }

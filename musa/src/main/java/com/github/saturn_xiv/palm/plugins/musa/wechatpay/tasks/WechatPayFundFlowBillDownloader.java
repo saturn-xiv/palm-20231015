@@ -33,7 +33,7 @@ public class WechatPayFundFlowBillDownloader {
                     }
                 }
 
-                Thread.sleep(Duration.ofSeconds(5));
+                Thread.sleep(Duration.ofMinutes(1));
             }
         }
     }

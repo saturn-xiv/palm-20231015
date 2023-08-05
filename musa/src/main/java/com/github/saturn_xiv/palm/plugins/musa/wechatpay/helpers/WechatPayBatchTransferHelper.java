@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-public class WechatPayTransferBatchHelper {
+public class WechatPayBatchTransferHelper {
 
     public InitiateBatchTransferResponse create(String appId, String outBatchNo,
                                                 String batchName, String batchRemark,
@@ -47,10 +47,10 @@ public class WechatPayTransferBatchHelper {
         return transferBatchService.getTransferDetailByOutNo(request);
     }
 
-    public WechatPayTransferBatchHelper(TransferBatchService transferBatchService) {
+    public WechatPayBatchTransferHelper(TransferBatchService transferBatchService) {
         this.transferBatchService = transferBatchService;
     }
 
     private TransferBatchService transferBatchService;
-    private final static Logger logger = LoggerFactory.getLogger(WechatPayTransferBatchHelper.class);
+    private final static Logger logger = LoggerFactory.getLogger(WechatPayBatchTransferHelper.class);
 }

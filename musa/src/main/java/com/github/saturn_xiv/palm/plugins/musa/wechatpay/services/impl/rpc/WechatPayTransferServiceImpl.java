@@ -5,14 +5,17 @@ import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerIntercept
 import com.github.saturn_xiv.palm.plugins.musa.v1.Error;
 import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
-import com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers.WechatPayTransferBatchHelper;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers.WechatPayBatchTransferHelper;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.OutNoType;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.transfer.ReceiptSignatureStatus;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.transfer.TransferBillReceipt;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.WechatPayTransferBillReceiptRepository;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.WechatPayTransferDetailElectronicReceiptRepository;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
 import com.google.protobuf.ByteString;
 import com.wechat.pay.java.core.exception.ServiceException;
 import com.wechat.pay.java.service.transferbatch.model.TransferDetailInput;
+import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,22 +24,48 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component("palm.musa.service.rpc.wechat-pay.transfer")
 public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPayTransferImplBase {
     @Override
-    public void getBillReceipt(WechatPayTransferGetBillReceiptRequest request, StreamObserver<WechatPayTransferGetReceiptResponse> responseObserver) {
+    public void getBillReceipt(WechatPayTransferGetBillReceiptRequest request,
+                               StreamObserver<WechatPayTransferGetReceiptResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
         final var it = transferBillReceiptRepository.findByOutBatchNo(request.getOutBatchNo());
-        responseObserver.onNext(WechatPayTransferGetReceiptResponse.newBuilder()
-                .setPayload(ByteString.copyFrom(it.getContent()))
-                .build());
-        responseObserver.onCompleted();
+
+        if (it == null) {
+            logger.warn("couldn't find transfer {}", request.getOutBatchNo());
+            var item = new TransferBillReceipt();
+            item.setOutBatchNo(request.getOutBatchNo());
+            item.setSignatureStatus(ReceiptSignatureStatus.PENDING);
+            final var now = new Date();
+            item.setUpdatedAt(now);
+            item.setCreatedAt(now);
+            transferBillReceiptRepository.save(item);
+            responseObserver.onError(
+                    Status.NOT_FOUND
+                            .withDescription("not found, put it into task queue, please check it later")
+                            .asRuntimeException());
+            return;
+        }
+
+        if (it.getSignatureStatus() == ReceiptSignatureStatus.FINISHED) {
+            responseObserver.onNext(WechatPayTransferGetReceiptResponse.newBuilder()
+                    .setPayload(ByteString.copyFrom(it.getContent()))
+                    .build());
+            responseObserver.onCompleted();
+            return;
+        }
+
+        responseObserver.onError(
+                Status.UNAVAILABLE.withDescription("please wait another 30 minutes").asRuntimeException());
     }
 
     @Override
-    public void getElectronicReceipt(WechatPayTransferGetElectronicReceiptRequest request, StreamObserver<WechatPayTransferGetReceiptResponse> responseObserver) {
+    public void getElectronicReceipt(WechatPayTransferGetElectronicReceiptRequest request,
+                                     StreamObserver<WechatPayTransferGetReceiptResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
         final var it = transferDetailElectronicReceiptsRepository.findByOutBatchNoAndOutDetailNoAndAcceptType(
@@ -90,6 +119,16 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
                     request.getBatch().getName(), request.getBatch().getRemark(),
                     totalAmount, transferDetailInputList.size(), transferDetailInputList,
                     request.getSceneId());
+            if (!request.getBatch().hasOutNo()) {
+                logger.info("put batch transfer {} into bill receipt queue", outBatchNo);
+                var item = new TransferBillReceipt();
+                item.setOutBatchNo(outBatchNo);
+                item.setSignatureStatus(ReceiptSignatureStatus.PENDING);
+                final var now = new Date();
+                item.setUpdatedAt(now);
+                item.setCreatedAt(now);
+                transferBillReceiptRepository.save(item);
+            }
 
             logger.info("{} {} {} {}",
                     response.getBatchStatus(), response.getBatchId(),
@@ -122,7 +161,8 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
                            StreamObserver<WechatPayQueryBatchTransferResponse> responseObserver) {
         jwt.verify(TokenServerInterceptor.TOKEN.get());
 
-        logger.info("query batch transfer {} ({}, {})", request.getOutBatchNo(), request.getOffset(), request.getLimit());
+        logger.info("query batch transfer {} ({}, {})",
+                request.getOutBatchNo(), request.getOffset(), request.getLimit());
         final var response = transferBatchHelper.query(
                 request.getOutBatchNo(),
                 request.getOffset(), request.getLimit(),
@@ -224,7 +264,7 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
 
     @PostConstruct
     void startUp() {
-        transferBatchHelper = new WechatPayTransferBatchHelper(client.transferBatchService());
+        transferBatchHelper = new WechatPayBatchTransferHelper(client.batchTransferService());
     }
 
     @Autowired
@@ -238,7 +278,7 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
     @Autowired
     WechatPayTransferDetailElectronicReceiptRepository transferDetailElectronicReceiptsRepository;
 
-    private WechatPayTransferBatchHelper transferBatchHelper;
+    private WechatPayBatchTransferHelper transferBatchHelper;
 
     private final static Logger logger = LoggerFactory.getLogger(WechatPayTransferServiceImpl.class);
 }

@@ -20,11 +20,15 @@ public class TransferBillReceipt implements Serializable {
     @Length(min = 1, max = 32)
     @Column(name = "out_batch_no", nullable = false)
     private String outBatchNo;
-    @Column(name = "signature_status")
+    @Column(name = "signature_status", nullable = false)
     @Enumerated(EnumType.STRING)
     private ReceiptSignatureStatus signatureStatus;
     @JsonIgnore
     private byte[] content;
+    private int version;
+    @Column(name = "updated_at", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt;
     @Column(name = "created_at", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
@@ -51,6 +55,22 @@ public class TransferBillReceipt implements Serializable {
 
     public void setContent(byte[] content) {
         this.content = content;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 
     public Date getCreatedAt() {

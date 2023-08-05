@@ -2,6 +2,9 @@ package com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.impl;
 
 import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.*;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.transfer.ReceiptAcceptType;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.transfer.ReceiptSignatureStatus;
+import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.transfer.TransferDetailElectronicReceipt;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.repositories.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
 import jakarta.validation.constraints.NotNull;
@@ -91,6 +94,48 @@ public class WechatPayStorageServiceImpl implements WechatPayStorageService {
         it.setContent(content);
         it.setCreatedAt(new Date());
         tradeBillRepository.save(it);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void acceptBatchTransferReceipts(String outBatchNo, String... outDetailNos) {
+        {
+            var it = transferBillReceiptRepository.findByOutBatchNo(outBatchNo);
+            it.setSignatureStatus(ReceiptSignatureStatus.ACCEPTED);
+            it.setUpdatedAt(new Date());
+            transferBillReceiptRepository.save(it);
+        }
+
+        for (var outDetailNo : outDetailNos) {
+            var it = new TransferDetailElectronicReceipt();
+            it.setOutBatchNo(outBatchNo);
+            it.setOutDetailNo(outDetailNo);
+            it.setAcceptType(ReceiptAcceptType.BATCH_TRANSFER);
+            it.setSignatureStatus(ReceiptSignatureStatus.ACCEPTED);
+            var now = new Date();
+            it.setUpdatedAt(now);
+            it.setCreatedAt(now);
+            transferDetailElectronicReceiptRepository.save(it);
+        }
+
+    }
+
+    @Override
+    public void finishBatchTransferReceipt(String outBatchNo, byte[] content) {
+        var it = transferBillReceiptRepository.findByOutBatchNo(outBatchNo);
+        it.setSignatureStatus(ReceiptSignatureStatus.FINISHED);
+        it.setContent(content);
+        it.setUpdatedAt(new Date());
+        transferBillReceiptRepository.save(it);
+    }
+
+    @Override
+    public void finishDetailElectronicReceipt(String acceptType, String outBatchNo, String outDetailNo, byte[] content) {
+        var it = transferDetailElectronicReceiptRepository.findByOutBatchNoAndOutDetailNoAndAcceptType(outBatchNo, outDetailNo, acceptType);
+        it.setSignatureStatus(ReceiptSignatureStatus.FINISHED);
+        it.setContent(content);
+        it.setUpdatedAt(new Date());
+        transferDetailElectronicReceiptRepository.save(it);
     }
 
     @Autowired
