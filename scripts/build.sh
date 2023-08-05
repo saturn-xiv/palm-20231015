@@ -143,7 +143,7 @@ copy_assets() {
 
     cp -a README.md LICENSE \
         docker/spring/etc/envoy.yaml \
-        palm/db palm/protocols \
+        db palm/protocols \
         $1/
     echo "$GIT_VERSION" > $1/VERSION
     echo "$(date -R)" >> $1/VERSION
@@ -161,11 +161,11 @@ build_zst() {
     cd $WORKSPACE/target/x86_64-unknown-linux-gnu/release
     cp fig $target/x86_64/
     cd $WORKSPACE/target/x86_64-unknown-linux-musl/release
-    cp aloe coconut lemon orchid loquat $target/x86_64/
+    cp aloe coconut orchid $target/x86_64/
 
     mkdir -p $target/aarch64
     cd $WORKSPACE/target/aarch64-unknown-linux-musl/release
-    cp aloe coconut lemon orchid loquat $target/aarch64/
+    cp aloe coconut orchid $target/aarch64/
 
     copy_assets $target
 
