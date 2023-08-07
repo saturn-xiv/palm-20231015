@@ -241,16 +241,11 @@ done
 
 # -----------------------------------------------------------------------------
 
-if [[ $(uname -p) == "aarch64" ]]
-then
-    build_loquat aarch64
-    build_babel aarch64
-fi
+build_loquat $(uname -p)
 
-if [[ $(uname -p) == "x86_64" ]]
+if [[ $UBUNTU_CODENAME == "focal" ]] || [[ $UBUNTU_CODENAME == "jammy" ]]
 then
-    build_loquat x86_64
-    build_babel x86_64
+    build_babel $(uname -p)
 fi
 
 build_lemon x86_64 amd64
