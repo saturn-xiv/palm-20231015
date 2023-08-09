@@ -11,7 +11,7 @@ RUN apt install -y lsb-release apt-utils \
     vim tzdata zip unzip tree tmux \
     build-essential cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio \
     debhelper bison flex ninja-build \
-    python3 python3-distutils python3-dev python3-pip virtualenv \
+    python3-full python3-dev \
     rsync bc bzr cvs mercurial subversion asciidoc w3m dblatex graphviz python3-matplotlib 
 
 RUN apt -y autoremove
