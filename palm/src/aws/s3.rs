@@ -75,7 +75,7 @@ impl Adapter for Client {
     }
     async fn create_bucket(&self, name: &str) -> Result<()> {
         if let Err(ref err) = self.create_bucket().bucket(name).send().await {
-            if let aws_sdk_s3::error::SdkError::<_>::ServiceError(ref err) = err {
+            if let aws_sdk_s3::error::SdkError::<_, _>::ServiceError(ref err) = err {
                 let err = err.err();
                 match err {
                     aws_sdk_s3::operation::create_bucket::CreateBucketError::BucketAlreadyOwnedByYou(ref _id) => {
