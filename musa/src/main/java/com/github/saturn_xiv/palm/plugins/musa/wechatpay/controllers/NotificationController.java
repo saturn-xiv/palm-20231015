@@ -84,7 +84,7 @@ public class NotificationController {
                     .build();
             Transaction resource = notificationParser.parse(param, Transaction.class);
             logger.info("trade: {}({},{}) payer:{}@{} ({},{})",
-                    resource.getOutTradeNo(), resource.getOutTradeNo(), resource.getTradeType(),
+                    resource.getOutTradeNo(), resource.getTransactionId(), resource.getTradeType(),
                     resource.getPayer().getOpenid(), resource.getAppid(),
                     resource.getAmount().getCurrency(), resource.getAmount().getTotal()
             );

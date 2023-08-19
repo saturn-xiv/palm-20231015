@@ -62,8 +62,8 @@ dependencies {
 
 	// https://mvnrepository.com/artifact/io.grpc/grpc-protobuf
 	// https://github.com/grpc/grpc-java
-	runtimeOnly 'io.grpc:grpc-netty-shaded:1.57.1'
-	implementation 'io.grpc:grpc-all:1.57.1'
+	runtimeOnly 'io.grpc:grpc-netty-shaded:1.57.2'
+	implementation 'io.grpc:grpc-all:1.57.2'
 	implementation 'org.apache.tomcat:annotations-api:6.0.53'
 
 	// https://mvnrepository.com/artifact/org.springframework.shell/spring-shell-starter
