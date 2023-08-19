@@ -11,10 +11,4 @@
         <appender-ref ref="CONSOLE"/>
     </root>
 
-    <logger name="com.wechat.pay.java.service.payments.model.TransactionMapper">
-        <level value="trace"/>
-    </logger>
-    <logger name="com.wechat.pay.java.service.payments.model.RefundNotificationMapper">
-        <level value="trace"/>
-    </logger>
 </configuration>
