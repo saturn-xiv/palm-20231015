@@ -5,9 +5,16 @@
 
     <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}musa.log}"/>
     <include resource="org/springframework/boot/logging/logback/file-appender.xml"/>
+
     <root level="INFO">
         <appender-ref ref="FILE"/>
         <appender-ref ref="CONSOLE"/>
     </root>
 
+    <logger name="com.wechat.pay.java.service.payments.model.TransactionMapper">
+        <level value="trace"/>
+    </logger>
+    <logger name="com.wechat.pay.java.service.payments.model.RefundNotificationMapper">
+        <level value="trace"/>
+    </logger>
 </configuration>
