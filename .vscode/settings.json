@@ -40,6 +40,5 @@
   },
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml"
-  },
-  "python.formatting.provider": "none"
+  }
 }
