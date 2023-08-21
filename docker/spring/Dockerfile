@@ -150,7 +150,7 @@ RUN cd $HOME/downloads \
 
 
 # https://github.com/bazelbuild/bazelisk
-ENV BAZEL_VERSION "v1.17.0"
+ENV BAZEL_VERSION "v1.18.0"
 RUN wget -q -O $HOME/.local/bin/bazel \
     https://github.com/bazelbuild/bazelisk/releases/download/${BAZEL_VERSION}/bazelisk-linux-amd64
 RUN chmod +x $HOME/.local/bin/bazel
