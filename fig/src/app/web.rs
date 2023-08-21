@@ -62,7 +62,7 @@ pub async fn launch(cfg: &Config) -> Result<()> {
             tokio::task::spawn(async move {
                 loop {
                     if let Err(e) = RabbitMq::consume(&ch, &name, &queue, &handler).await {
-                        error!("{:?}", e);
+                        error!("consume casbin message queue({}) {:?}", queue, e);
                     }
                     tokio::time::sleep(StdDuration::from_secs(5)).await;
                 }
