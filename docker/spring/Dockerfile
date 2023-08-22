@@ -61,6 +61,7 @@ RUN apt-get install -y zsh git locales locales-all rsync openssh-client sshpass 
     php-fpm php-mbstring php-json php-xml php-pear php-bcmath php-curl php-zip \
     php-mysql php-pgsql php-sqlite3 php-redis php-mongodb php-amqp php-zmq \
     php-imagick php-gd phpunit \
+    php-intl php-soap \
     liblua${LUA_VERSION}-dev dart haxe \
     erlang rebar \
     nginx-full rabbitmq-server redis postgresql mariadb-server getenvoy-envoy
@@ -197,7 +198,7 @@ RUN zsh -c "source $HOME/.zshrc \
     && sdk default gradle ${GRADLE_VERSION}"
 
 # https://github.com/nvm-sh/nvm
-ENV NVM_VERSION "v0.39.4"
+ENV NVM_VERSION "v0.39.5"
 RUN git clone -b ${NVM_VERSION} https://github.com/nvm-sh/nvm.git $HOME/.nvm
 RUN echo 'export NVM_DIR="$HOME/.nvm"' >> $HOME/.zshrc \
     && echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $HOME/.zshrc \
