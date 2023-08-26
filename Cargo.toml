@@ -8,18 +8,20 @@ members = [
     "palm",
     "bamboo",
     "nut",
-    
+
+    #"magento",
+
     "cms",
     "forum",
     "courses",
     "erp",
-    "crm",    
+    "crm",
     "mall",
-    "chats",        
+    "chats",
     "cscd",
     "cbeta",
     "flashcard",
-    
+
     "ops/mail",
     "ops/vpn",
     "ops/metrics",

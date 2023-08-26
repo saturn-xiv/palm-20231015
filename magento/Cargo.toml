@@ -1,0 +1,20 @@
+[package]
+name = "magento"
+version = "2.4.6-p2"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+log = "0.4"
+
+[dependencies.diesel]
+version = "2"
+default-features = false
+features = ["bigdecimal", "mysql", "extras", "128-column-tables"]
+
+[dependencies.palm]
+path = '../palm'
+
+[dependencies.nut]
+path = '../nut'
