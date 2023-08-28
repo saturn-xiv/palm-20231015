@@ -4,6 +4,8 @@ strip = true
 
 [workspace]
 
+resolver = "2"
+
 members = [
     "palm",
     "bamboo",
