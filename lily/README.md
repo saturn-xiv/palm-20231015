@@ -1,7 +1,8 @@
 # LILY
 
 ```bash
-$ python -m venv $HOME/local/python3
+$ sudo apt install python3-full
+$ python3 -m venv $HOME/local/python3
 $ source $HOME/local/python3/bin/activate
 > pip install psycopg pika matplotlib pandas openpyxl
 ```
