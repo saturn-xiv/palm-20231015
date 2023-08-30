@@ -36,6 +36,7 @@ class Config:
         self.peers = peers
 
     def write(self, filename):
+        logging.warn("generate %s", filename)
         with open(filename, "w") as file:
             self.interface.write(file)
             for peer in self.peers:

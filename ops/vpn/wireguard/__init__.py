@@ -13,12 +13,6 @@ VERSION = '2023.8.29'
 # https://www.wireguard.com/quickstart/
 
 
-class Peer:
-    def __init__(self, name, id):
-        self.name = name
-        self.id = id
-
-
 class Config:
     def __init__(self,  network, listen_port, peers):
         self.network = ipaddress.ip_network(network)
@@ -34,7 +28,7 @@ class Config:
         #     logging.error("network isn't enough %s", self.network.hosts())
         #     sys.exit(1)
 
-    def write(self, target):
+    def build(self, target):
         logging.warn("write to folder %s", target)
         logging.info("generate server.conf for %s", self.network)
 
