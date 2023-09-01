@@ -31,7 +31,7 @@ systemctl start openvpn@server
 # /usr/share/doc/openvpn/examples/sample-config-files/client.conf => /etc/openvpn/client.conf
 ./easyrsa gen-req CLIENT_NAME nopass
 ./easyrsa sign-req client CLIENT_NAME
-cp pki/dh.pem pki/ca.crt pki/issued/CLIENT_NAME.crt pki/private/CLIENT_NAME.key /etc/openvpn/
+cp ../ta.key pki/ca.crt pki/issued/CLIENT_NAME.crt pki/private/CLIENT_NAME.key /etc/openvpn/
 
 ```
 
