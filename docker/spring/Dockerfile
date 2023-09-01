@@ -103,7 +103,8 @@ RUN git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
 RUN cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
 RUN echo 'export LANG=en_US.UTF-8' >> $HOME/.zshrc \
     && echo 'export LC_ALL=en_US.UTF-8' >> $HOME/.zshrc \
-    && echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.zshrc
+    && echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.zshrc \
+    && echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.zshrc
 
 RUN git config --global core.quotepath false \
     && git config --global http.version HTTP/1.1 \
@@ -296,6 +297,11 @@ ENV GRPC_JAVA_PLUGIN_VERSION "1.57.2"
 RUN wget -q -O $HOME/.local/bin/grpc_java_plugin \
     https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${GRPC_JAVA_PLUGIN_VERSION}/protoc-gen-grpc-java-${GRPC_JAVA_PLUGIN_VERSION}-linux-x86_64.exe
 RUN chmod +x $HOME/.local/bin/grpc_java_plugin
+
+# https://github.com/grpc/grpc-node
+# https://github.com/grpc/grpc-node/tree/master/examples/helloworld/static_codegen
+RUN zsh -c "source $HOME/.zshrc \
+    && yarn global add grpc-tools"
 
 # https://grpc.io/docs/languages/go/quickstart/
 RUN zsh -c "source $HOME/.zshrc \
