@@ -10,6 +10,7 @@ service Markdown {
 
 message MarkdownToHtmlRequest {
   string payload = 1;
+  bool sanitize = 2;
 }
 message MarkdownToHtmlResponse {
   string payload = 1;

@@ -97,7 +97,8 @@ proto.palm.morus.v1.MarkdownToHtmlRequest.prototype.toObject = function(opt_incl
  */
 proto.palm.morus.v1.MarkdownToHtmlRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    payload: jspb.Message.getFieldWithDefault(msg, 1, "")
+    payload: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    sanitize: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
   };
 
   if (includeInstance) {
@@ -138,6 +139,10 @@ proto.palm.morus.v1.MarkdownToHtmlRequest.deserializeBinaryFromReader = function
       var value = /** @type {string} */ (reader.readString());
       msg.setPayload(value);
       break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setSanitize(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -174,6 +179,13 @@ proto.palm.morus.v1.MarkdownToHtmlRequest.serializeBinaryToWriter = function(mes
       f
     );
   }
+  f = message.getSanitize();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -192,6 +204,24 @@ proto.palm.morus.v1.MarkdownToHtmlRequest.prototype.getPayload = function() {
  */
 proto.palm.morus.v1.MarkdownToHtmlRequest.prototype.setPayload = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional bool sanitize = 2;
+ * @return {boolean}
+ */
+proto.palm.morus.v1.MarkdownToHtmlRequest.prototype.getSanitize = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.palm.morus.v1.MarkdownToHtmlRequest} returns this
+ */
+proto.palm.morus.v1.MarkdownToHtmlRequest.prototype.setSanitize = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 2, value);
 };
 
 

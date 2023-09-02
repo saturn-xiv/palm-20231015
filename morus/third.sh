@@ -3,7 +3,7 @@
 set -e
 
 yarn add @grpc/grpc-js google-protobuf \
-    marked dompurify jsdom \
+    marked dompurify jsdom canvas bufferutil utf-8-validate \
     pino pino-pretty
 
 yarn add --dev webpack webpack-cli

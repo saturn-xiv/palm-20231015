@@ -207,6 +207,7 @@ class MarkdownToHtmlRequest final :
 
   enum : int {
     kPayloadFieldNumber = 1,
+    kSanitizeFieldNumber = 2,
   };
   // string payload = 1;
   void clear_payload() ;
@@ -228,6 +229,16 @@ class MarkdownToHtmlRequest final :
   std::string* _internal_mutable_payload();
 
   public:
+  // bool sanitize = 2;
+  void clear_sanitize() ;
+  bool sanitize() const;
+  void set_sanitize(bool value);
+
+  private:
+  bool _internal_sanitize() const;
+  void _internal_set_sanitize(bool value);
+
+  public:
   // @@protoc_insertion_point(class_scope:palm.morus.v1.MarkdownToHtmlRequest)
  private:
   class _Internal;
@@ -237,6 +248,7 @@ class MarkdownToHtmlRequest final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr payload_;
+    bool sanitize_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -469,6 +481,26 @@ inline void MarkdownToHtmlRequest::set_allocated_payload(std::string* value) {
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:palm.morus.v1.MarkdownToHtmlRequest.payload)
+}
+
+// bool sanitize = 2;
+inline void MarkdownToHtmlRequest::clear_sanitize() {
+  _impl_.sanitize_ = false;
+}
+inline bool MarkdownToHtmlRequest::sanitize() const {
+  // @@protoc_insertion_point(field_get:palm.morus.v1.MarkdownToHtmlRequest.sanitize)
+  return _internal_sanitize();
+}
+inline void MarkdownToHtmlRequest::set_sanitize(bool value) {
+  _internal_set_sanitize(value);
+  // @@protoc_insertion_point(field_set:palm.morus.v1.MarkdownToHtmlRequest.sanitize)
+}
+inline bool MarkdownToHtmlRequest::_internal_sanitize() const {
+  return _impl_.sanitize_;
+}
+inline void MarkdownToHtmlRequest::_internal_set_sanitize(bool value) {
+  ;
+  _impl_.sanitize_ = value;
 }
 
 // -------------------------------------------------------------------

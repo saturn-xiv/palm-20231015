@@ -28,6 +28,8 @@ PROTOBUF_CONSTEXPR MarkdownToHtmlRequest::MarkdownToHtmlRequest(
     &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
   }
 
+  , /*decltype(_impl_.sanitize_)*/ false
+
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct MarkdownToHtmlRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR MarkdownToHtmlRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
@@ -76,6 +78,7 @@ const ::uint32_t TableStruct_morus_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::palm::morus::v1::MarkdownToHtmlRequest, _impl_.payload_),
+    PROTOBUF_FIELD_OFFSET(::palm::morus::v1::MarkdownToHtmlRequest, _impl_.sanitize_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::palm::morus::v1::MarkdownToHtmlResponse, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -90,7 +93,7 @@ const ::uint32_t TableStruct_morus_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
         { 0, -1, -1, sizeof(::palm::morus::v1::MarkdownToHtmlRequest)},
-        { 9, -1, -1, sizeof(::palm::morus::v1::MarkdownToHtmlResponse)},
+        { 10, -1, -1, sizeof(::palm::morus::v1::MarkdownToHtmlResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -98,19 +101,20 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::palm::morus::v1::_MarkdownToHtmlResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_morus_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\013morus.proto\022\rpalm.morus.v1\"(\n\025Markdown"
-    "ToHtmlRequest\022\017\n\007payload\030\001 \001(\t\")\n\026Markdo"
-    "wnToHtmlResponse\022\017\n\007payload\030\001 \001(\t2c\n\010Mar"
-    "kdown\022W\n\006ToHtml\022$.palm.morus.v1.Markdown"
-    "ToHtmlRequest\032%.palm.morus.v1.MarkdownTo"
-    "HtmlResponse\"\000B/\n+com.github.saturn_xiv."
-    "palm.plugins.morus.v1P\001b\006proto3"
+    "\n\013morus.proto\022\rpalm.morus.v1\":\n\025Markdown"
+    "ToHtmlRequest\022\017\n\007payload\030\001 \001(\t\022\020\n\010saniti"
+    "ze\030\002 \001(\010\")\n\026MarkdownToHtmlResponse\022\017\n\007pa"
+    "yload\030\001 \001(\t2c\n\010Markdown\022W\n\006ToHtml\022$.palm"
+    ".morus.v1.MarkdownToHtmlRequest\032%.palm.m"
+    "orus.v1.MarkdownToHtmlResponse\"\000B/\n+com."
+    "github.saturn_xiv.palm.plugins.morus.v1P"
+    "\001b\006proto3"
 };
 static ::absl::once_flag descriptor_table_morus_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_morus_2eproto = {
     false,
     false,
-    271,
+    289,
     descriptor_table_protodef_morus_2eproto,
     "morus.proto",
     &descriptor_table_morus_2eproto_once,
@@ -162,6 +166,8 @@ MarkdownToHtmlRequest::MarkdownToHtmlRequest(const MarkdownToHtmlRequest& from)
   new (&_impl_) Impl_{
       decltype(_impl_.payload_) {}
 
+    , decltype(_impl_.sanitize_) {}
+
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -172,6 +178,7 @@ MarkdownToHtmlRequest::MarkdownToHtmlRequest(const MarkdownToHtmlRequest& from)
   if (!from._internal_payload().empty()) {
     _this->_impl_.payload_.Set(from._internal_payload(), _this->GetArenaForAllocation());
   }
+  _this->_impl_.sanitize_ = from._impl_.sanitize_;
   // @@protoc_insertion_point(copy_constructor:palm.morus.v1.MarkdownToHtmlRequest)
 }
 
@@ -179,6 +186,8 @@ inline void MarkdownToHtmlRequest::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
       decltype(_impl_.payload_) {}
+
+    , decltype(_impl_.sanitize_) { false }
 
     , /*decltype(_impl_._cached_size_)*/{}
   };
@@ -213,6 +222,7 @@ void MarkdownToHtmlRequest::Clear() {
   (void) cached_has_bits;
 
   _impl_.payload_.ClearToEmpty();
+  _impl_.sanitize_ = false;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -229,6 +239,15 @@ const char* MarkdownToHtmlRequest::_InternalParse(const char* ptr, ::_pbi::Parse
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "palm.morus.v1.MarkdownToHtmlRequest.payload"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // bool sanitize = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.sanitize_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
         } else {
           goto handle_unusual;
         }
@@ -270,6 +289,13 @@ failure:
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
+  // bool sanitize = 2;
+  if (this->_internal_sanitize() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(
+        2, this->_internal_sanitize(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -290,6 +316,11 @@ failure:
   if (!this->_internal_payload().empty()) {
     total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
                                     this->_internal_payload());
+  }
+
+  // bool sanitize = 2;
+  if (this->_internal_sanitize() != 0) {
+    total_size += 2;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -313,6 +344,9 @@ void MarkdownToHtmlRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, 
   if (!from._internal_payload().empty()) {
     _this->_internal_set_payload(from._internal_payload());
   }
+  if (from._internal_sanitize() != 0) {
+    _this->_internal_set_sanitize(from._internal_sanitize());
+  }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -334,6 +368,8 @@ void MarkdownToHtmlRequest::InternalSwap(MarkdownToHtmlRequest* other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.payload_, lhs_arena,
                                        &other->_impl_.payload_, rhs_arena);
+
+  swap(_impl_.sanitize_, other->_impl_.sanitize_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata MarkdownToHtmlRequest::GetMetadata() const {

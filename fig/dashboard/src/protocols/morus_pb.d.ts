@@ -6,6 +6,9 @@ export class MarkdownToHtmlRequest extends jspb.Message {
   getPayload(): string;
   setPayload(value: string): MarkdownToHtmlRequest;
 
+  getSanitize(): boolean;
+  setSanitize(value: boolean): MarkdownToHtmlRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MarkdownToHtmlRequest.AsObject;
   static toObject(includeInstance: boolean, msg: MarkdownToHtmlRequest): MarkdownToHtmlRequest.AsObject;
@@ -17,6 +20,7 @@ export class MarkdownToHtmlRequest extends jspb.Message {
 export namespace MarkdownToHtmlRequest {
   export type AsObject = {
     payload: string,
+    sanitize: boolean,
   }
 }
 
