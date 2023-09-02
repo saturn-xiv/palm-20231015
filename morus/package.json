@@ -5,7 +5,12 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@grpc/grpc-js": "^1.9.2"
+    "@grpc/grpc-js": "^1.9.2",
+    "dompurify": "^3.0.5",
+    "jsdom": "^22.1.0",
+    "marked": "^7.0.5",
+    "pino": "^8.15.0",
+    "pino-pretty": "^10.2.0"
   },
   "devDependencies": {
     "webpack": "^5.88.2",

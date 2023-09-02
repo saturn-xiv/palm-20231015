@@ -3,5 +3,5 @@
 ```bash
 yarn install
 npx webpack --mode=production
-node dist/morus-xxx.js -c config.toml
+node dist/morus-xxx.js config.json
 ```
