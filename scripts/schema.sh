@@ -140,6 +140,20 @@ function generate_lemon() {
         $PALM_PROTOCOLS/*.proto
 }
 
+function generate_morus() {
+    echo "generate code for morus"
+    local target=$WORKSPACE/morus/src/protocols
+    if [ -d $target ]
+    then
+        rm -r $target
+    fi
+    mkdir -p $target
+    grpc_tools_node_protoc -I $PALM_PROTOCOLS \
+        -I $PROTOBUF_ROOT/include/google/protobuf \
+        --js_out=import_style=commonjs,binary:$target \
+        --grpc_out=grpc_js:$target $WORKSPACE/palm/protocols/morus.proto
+}
+
 function generate_babel() {
     local target=$WORKSPACE/babel/protocols
     if [ -d $target ]
@@ -192,6 +206,7 @@ generate_loquat
 generate_musa
 generate_babel
 generate_lemon
+generate_morus
 
 echo 'format rust code'
 cargo fmt
