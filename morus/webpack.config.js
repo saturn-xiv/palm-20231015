@@ -8,5 +8,6 @@ module.exports = (env, argv) =>{
       filename: argv.mode === 'production' ? 'morus.[contenthash].bundle.js' : 'morus.js',
     },
     target: 'node',
+    externals : { canvas: {} }
   };
 };
