@@ -7,6 +7,7 @@
   "dependencies": {
     "@grpc/grpc-js": "^1.9.2",
     "dompurify": "^3.0.5",
+    "google-protobuf": "^3.21.2",
     "jsdom": "^22.1.0",
     "marked": "^7.0.5",
     "pino": "^8.15.0",

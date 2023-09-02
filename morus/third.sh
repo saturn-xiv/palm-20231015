@@ -2,7 +2,7 @@
 
 set -e
 
-yarn add @grpc/grpc-js \
+yarn add @grpc/grpc-js google-protobuf \
     marked dompurify jsdom \
     pino pino-pretty
 
