@@ -46,11 +46,11 @@ function generate_fig_web() {
     fi
     mkdir -p $target
     
-    $PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/palm/protocols \
+    $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
         -I $PROTOBUF_ROOT/include/google/protobuf \
         --js_out=import_style=commonjs,binary:$target \
         --grpc-web_out=import_style=typescript,mode=grpcweb:$target \
-        $WORKSPACE/palm/protocols/*.proto
+        $PALM_PROTOCOLS/*.proto
 }
 function generate_aloe_web() {
     echo "generate code for aloe@grpc-web"
@@ -61,11 +61,11 @@ function generate_aloe_web() {
     fi
     mkdir -p $target
     
-    $PROTOBUF_ROOT/bin/protoc -I $WORKSPACE/palm/protocols \
+    $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
         -I $PROTOBUF_ROOT/include/google/protobuf \
         --js_out=import_style=commonjs,binary:$target \
         --grpc-web_out=import_style=typescript,mode=grpcweb:$target \
-        $WORKSPACE/palm/protocols/ops-router.proto
+        $PALM_PROTOCOLS/ops-router.proto
 }
 
 function generate_diesel_postgresql() {
@@ -151,7 +151,7 @@ function generate_morus() {
     grpc_tools_node_protoc -I $PALM_PROTOCOLS \
         -I $PROTOBUF_ROOT/include/google/protobuf \
         --js_out=import_style=commonjs,binary:$target \
-        --grpc_out=grpc_js:$target $WORKSPACE/palm/protocols/morus.proto
+        --grpc_out=grpc_js:$target $PALM_PROTOCOLS/morus.proto
 }
 
 function generate_babel() {
