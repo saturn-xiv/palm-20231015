@@ -9,9 +9,8 @@ resolver = "2"
 members = [
     "palm",
     "bamboo",
+    "ficus",
     "nut",
-
-    #"magento",
 
     "cms",
     "forum",
