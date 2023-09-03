@@ -11,7 +11,7 @@ extern crate lazy_static;
 macro_rules! to_timestamp {
     ($x:expr) => {{
         let it: std::time::SystemTime =
-            chrono::DateTime::<chrono::Utc>::from_utc($x, chrono::Utc).into();
+            chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset($x, chrono::Utc).into();
         it.into()
     }};
 }

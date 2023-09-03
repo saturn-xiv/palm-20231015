@@ -24,9 +24,9 @@ impl From<super::Link> for Link {
 }
 
 pub fn build(home: &str, title: &str, description: &str, links: &[Link]) -> Result<Vec<u8>> {
-    let pub_date: DateTime<Utc> = links
-        .first()
-        .map_or_else(Utc::now, |x| DateTime::<Utc>::from_utc(x.updated_at, Utc));
+    let pub_date: DateTime<Utc> = links.first().map_or_else(Utc::now, |x| {
+        DateTime::<Utc>::from_naive_utc_and_offset(x.updated_at, Utc)
+    });
     let mut ch = RssChannelBuilder::default()
         .title(title.to_string())
         .link(home.to_string())
@@ -43,7 +43,9 @@ pub fn build(home: &str, title: &str, description: &str, links: &[Link]) -> Resu
             title: Some(it.title.clone()),
             link: Some(url),
             description: Some(it.description.clone()),
-            pub_date: Some(DateTime::<Utc>::from_utc(it.updated_at, Utc).to_rfc2822()),
+            pub_date: Some(
+                DateTime::<Utc>::from_naive_utc_and_offset(it.updated_at, Utc).to_rfc2822(),
+            ),
             ..Default::default()
         });
     }

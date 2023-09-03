@@ -1040,7 +1040,7 @@ pub async fn new_status<J: Jwt, S: Secret>(
 pub fn new_postgresql_status(db: &mut Db) -> Result<v1::site_status_response::PostgreSql> {
     let ver: DatabaseVersion = sql_query("SELECT VERSION() AS value").get_result(db)?;
     let now: DatabaseNow = sql_query("SELECT CURRENT_TIMESTAMP AS value").get_result(db)?;
-    let databases: Vec<Database> = sql_query(r###"SELECT pg_database.datname as "name", pg_size_pretty(pg_database_size(pg_database.datname)) AS "size" FROM pg_database ORDER by "size" DESC;"###).load(db)?;
+    let databases: Vec<Database> = sql_query(r#"SELECT pg_database.datname as "name", pg_size_pretty(pg_database_size(pg_database.datname)) AS "size" FROM pg_database ORDER by "size" DESC;"#).load(db)?;
 
     Ok(v1::site_status_response::PostgreSql {
         version: ver.value,

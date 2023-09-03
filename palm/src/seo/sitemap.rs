@@ -51,11 +51,12 @@ pub fn urlset(home: &str, links: &[Link]) -> Result<Vec<u8>> {
         for it in links {
             writer.url(
                 UrlEntry::builder()
-                    .lastmod(DateTime::<Utc>::from_utc(it.updated_at, Utc).with_timezone(
-                        &FixedOffset::east_opt(0).ok_or_else(|| {
-                            Box::new(IoError::new(IoErrorKind::Other, "bad datetime"))
-                        })?,
-                    ))
+                    .lastmod(
+                        DateTime::<Utc>::from_naive_utc_and_offset(it.updated_at, Utc)
+                            .with_timezone(&FixedOffset::east_opt(0).ok_or_else(|| {
+                                Box::new(IoError::new(IoErrorKind::Other, "bad datetime"))
+                            })?),
+                    )
                     .changefreq(it.change_freq.clone())
                     .priority(it.priority)
                     .loc(format!("{}{}", home, it.path)),
