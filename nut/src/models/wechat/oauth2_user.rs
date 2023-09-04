@@ -2,7 +2,6 @@ use std::fmt;
 
 use chrono::{NaiveDateTime, Utc};
 use diesel::{delete, insert_into, prelude::*, update};
-use hyper::StatusCode;
 use palm::{
     crypto::random::bytes as random_bytes,
     nut::v1,
@@ -10,7 +9,7 @@ use palm::{
         wechat_oauth2_login_response::Sex, wechat_oauth2_qr_connect_request::Language,
         WechatOauth2LoginResponse,
     },
-    HttpError, Result,
+    Result,
 };
 use serde::{Deserialize, Serialize};
 
@@ -43,12 +42,7 @@ pub struct Item {
 
 impl Item {
     pub fn sex(&self) -> Result<String> {
-        let it = Sex::from_i32(self.sex).ok_or_else(|| {
-            HttpError(
-                StatusCode::FORBIDDEN,
-                Some(format!("unknown sex {}", self.sex)),
-            )
-        })?;
+        let it = Sex::try_from(self.sex)?;
         let it = it.as_str_name();
         Ok(it.to_string())
     }

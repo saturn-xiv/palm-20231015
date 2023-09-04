@@ -725,13 +725,8 @@ impl Oauth2Login {
 
         debug!("fetch wechat user {:?}", info);
         let state = self.state.parse::<Oauth2State>()?;
-        let language = orchid_v1::wechat_oauth2_qr_connect_request::Language::from_i32(
-            self.language,
-        )
-        .ok_or(HttpError(
-            StatusCode::BAD_REQUEST,
-            Some(format!("unknown language {}", self.language)),
-        ))?;
+        let language =
+            orchid_v1::wechat_oauth2_qr_connect_request::Language::try_from(self.language)?;
 
         let user = {
             let info = info.clone();
@@ -839,11 +834,7 @@ impl Oauth2LoginUrl {
             user,
             id: self.id.clone(),
         };
-        let lang = orchid_v1::wechat_oauth2_qr_connect_request::Language::from_i32(self.lang)
-            .ok_or(HttpError(
-                StatusCode::BAD_REQUEST,
-                Some(format!("unknown language {}", self.lang)),
-            ))?;
+        let lang = orchid_v1::wechat_oauth2_qr_connect_request::Language::try_from(self.lang)?;
         let url = wechat_oauth2_qr_connect_url(
             &self.app_id,
             &self.redirect_uri,

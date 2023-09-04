@@ -34,19 +34,19 @@ rusttype = "0.9"
 #ssh2 = "0.9"
 lettre = "0.10"
 zmq = "0.10"
-prost = "0.11"
-prost-types = "0.11"
 Inflector = "0.11"
 askama = "0.12"
 paho-mqtt = "0.12"
-git2 = "0.17"
+prost = "0.12"
+prost-types = "0.12"
+git2 = "0.18"
 thrift = "0.17"
 actix-web-lab = "0.19"
 ipnetwork = "0.20"
 imageproc = "0.23"
 image = "0.24"
-aws-sdk-s3 = "0.29"
-aws-sdk-sqs = "0.29"
+aws-sdk-s3 = "0.30"
+aws-sdk-sqs = "0.30"
 aws-config = "0.56"
 aws-credential-types = "0.56"
 async-mutex = "1"
@@ -88,7 +88,7 @@ version = "0.8"
 features = ["small_rng"]
 
 [dependencies.tonic]
-version = "0.9"
+version = "0.10"
 features = ["transport"]
 
 [dependencies.reqwest]
@@ -112,7 +112,7 @@ version = "0.23"
 features = ["tokio-comp", "r2d2", "cluster", "connection-manager"]
 
 [dependencies.nix]
-version = "0.26"
+version = "0.27"
 features = ["user"]
 
 [dependencies.eui48]
@@ -161,4 +161,4 @@ features = ["vendored"]
 # rev = "67d92a3"
 
 [build-dependencies]
-tonic-build = "0.9"
+tonic-build = "0.10"

@@ -25,7 +25,7 @@ version = "4"
 features = ["derive"]
 
 [dependencies.mysql]
-version = "23" # FIXME no `Flags` in the root
+version = "24"
 
 [dependencies.openssl]
 version = "*"

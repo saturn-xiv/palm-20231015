@@ -9,9 +9,9 @@ edition = "2021"
 mime = "0.3"
 log = "0.4"
 xml-rs = "0.8"
-prost = "0.11"
-prost-types = "0.11"
 askama = "0.12"
+prost = "0.12"
+prost-types = "0.12"
 serde_json = "1"
 data-encoding = "2"
 flexbuffers = "2"
@@ -31,7 +31,7 @@ version = "0.8"
 features = ["alloc"]
 
 [dependencies.tonic]
-version = "0.9"
+version = "0.10"
 features = ["transport"]
 
 [dependencies.hyper]
@@ -43,7 +43,7 @@ version = "0.16"
 features = ["derive", "phone", "card", "unic"]
 
 [dependencies.nix]
-version = "0.26"
+version = "0.27"
 features = ["reboot"]
 
 [dependencies.serde]

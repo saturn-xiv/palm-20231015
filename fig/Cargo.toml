@@ -10,8 +10,8 @@ log = "0.4"
 actix-identity = "0.5"
 actix-cors = "0.6"
 toml = "0.7"
-tonic-health = "0.9"
 env_logger = "0.10"
+tonic-health = "0.10"
 askama = "0.12"
 actix-web-lab = "0.19"
 data-encoding = "2"
@@ -26,7 +26,7 @@ version = "0.7"
 features = ["cookie-session", "redis-rs-session"]
 
 [dependencies.tonic]
-version = "0.9"
+version = "0.10"
 features = ["transport"]
 
 [dependencies.hyper]
@@ -38,8 +38,8 @@ version = "0.17"
 features = ["secure", "private", "percent-encode"]
 
 [dependencies.nix]
-version = "0.26"
-features = ["process"]
+version = "0.27"
+features = ["hostname", "process"]
 
 [dependencies.serde]
 version = "1"
