@@ -95,9 +95,12 @@ RUN wget -q -P $HOME/downloads https://more.musl.cc/x86_64-linux-musl/riscv64-li
     && echo 'export PATH=/opt/riscv64-linux-musl-cross/bin:$PATH' >> $HOME/.zshrc
 
 # https://pip.pypa.io/en/stable/installation/
-RUN sh -c ". $HOME/.profile && pip3 install --user --upgrade pip"
-RUN sh -c ". $HOME/.profile && pip3 install --user scikit-build"
-RUN sh -c ". $HOME/.profile && pip3 install --user cmake"
+RUN sh -c ". $HOME/.profile \
+    && python3 -m venv $HOME/local/python3 \
+    && . $HOME/local/python3/bin/activate \
+    && pip install --upgrade pip \
+    && pip install cmake scikit-build"
+RUN echo 'source $HOME/local/python3/bin/activate' >> $HOME/.zshrc
 
 # https://github.com/nvm-sh/nvm
 ENV NVM_VERSION "v0.39.5"
