@@ -1,24 +1,100 @@
-FROM archlinux:latest
+# latest rolling devel
+FROM ubuntu:latest
 LABEL maintainer="Jeremy Zheng"
 
-RUN pacman -Syu --needed --noconfirm
-RUN pacman -S --needed --noconfirm base-devel vim git cmake thrift \
-    pwgen sshpass openssh rsync zip unzip tree tmux asciidoc doxygen cpio \
-    clang llvm lld lldb mold bison flex ninja \
-    imagemagick ffmpeg \
-    ttf-dejavu texlive texlive-lang \
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt update \
+    && apt -y upgrade \
+    && apt -y install debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
+
+# https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
+ENV AMD64_GCC_VERSION 13
+ENV GCC_VERSION 12
+RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
+RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
+RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
+# https://apt.llvm.org/
+ENV CLANG_VERSION 16
+RUN echo "deb [arch=amd64] http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs)-${CLANG_VERSION} main" > /etc/apt/sources.list.d/llvm.list
+RUN wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+# https://dart.dev/get-dart
+RUN wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/dart.gpg
+RUN echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | tee /etc/apt/sources.list.d/dart_stable.list
+# https://wiki.debian.org/ToolChain/Cross
+RUN dpkg --add-architecture armhf
+RUN dpkg --add-architecture arm64
+RUN dpkg --add-architecture riscv64
+RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs) main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-security main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb [arch=armhf,arm64,riscv64] http://ports.ubuntu.com/ $(lsb_release -cs)-updates main restricted universe multiverse" >> /etc/apt/sources.list
+
+# https://launchpad.net/~ondrej/+archive/ubuntu/php
+RUN add-apt-repository -y ppa:ondrej/php
+# https://launchpad.net/~ondrej/+archive/ubuntu/nginx
+RUN add-apt-repository -y ppa:ondrej/nginx
+# https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa
+RUN add-apt-repository -y ppa:deadsnakes/ppa
+
+# https://www.envoyproxy.io/docs/envoy/latest/start/install#install-envoy-on-ubuntu-linux
+RUN curl -sL 'https://deb.dl.getenvoy.io/public/gpg.8115BA8E629CC074.key' | gpg --dearmor -o /usr/share/keyrings/getenvoy-keyring.gpg
+RUN echo a077cb587a1b622e03aa4bf2f3689de14658a9497a9af2c427bba5f4cc3c4723 /usr/share/keyrings/getenvoy-keyring.gpg | sha256sum --check
+RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/getenvoy-keyring.gpg] https://deb.dl.getenvoy.io/public/deb/ubuntu $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/getenvoy.list
+RUN apt update && apt -y upgrade
+
+ENV LUA_VERSION "5.4"
+RUN apt-get install -y zsh git locales locales-all rsync openssh-client sshpass \
+    vim tzdata pwgen zip unzip tree tmux dialog asciidoc doxygen \
+    net-tools dnsutils net-tools iputils-arping iputils-ping telnet \
+    imagemagick ffmpeg fonts-dejavu-extra texlive-full \
+    build-essential g++-${GCC_VERSION} libstdc++-${GCC_VERSION}-dev \
+    g++-${AMD64_GCC_VERSION} libstdc++-${AMD64_GCC_VERSION}-dev \
+    crossbuild-essential-arm64 g++-${GCC_VERSION}-aarch64-linux-gnu libstdc++-${GCC_VERSION}-dev:arm64 \
+    crossbuild-essential-armhf g++-${GCC_VERSION}-arm-linux-gnueabihf libstdc++-${GCC_VERSION}-dev:armhf \
+    crossbuild-essential-riscv64 g++-${GCC_VERSION}-riscv64-linux-gnu libstdc++-${GCC_VERSION}-dev:riscv64 \
+    clang-${CLANG_VERSION} clangd-${CLANG_VERSION} clang-tools-${CLANG_VERSION} clang-format-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
+    cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio mold \
+    debhelper bison flex ninja-build \
+    musl-tools musl-dev \
+    python3-full python3-dev \
     php-fpm php-mbstring php-json php-xml php-pear php-bcmath php-curl php-zip \
     php-mysql php-pgsql php-sqlite3 php-redis php-mongodb php-amqp php-zmq \
     php-imagick php-gd phpunit \
     php-intl php-soap \
-    dart haxe lua \
+    liblua${LUA_VERSION}-dev dart haxe \
     erlang rebar \
-    nginx mariadb postgresql rabbitmq redis minio opensearch
-RUN pacman -Scc --noconfirm
+    nginx-full rabbitmq-server redis postgresql mariadb-server getenvoy-envoy
+
+RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CLANG_VERSION} 100 \
+    && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${CLANG_VERSION} 100 \
+    && update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${CLANG_VERSION} 100 \
+    && update-alternatives --install /usr/bin/lldb lldb /usr/bin/lldb-${CLANG_VERSION} 100 \
+    && update-alternatives --install /usr/bin/lld lld /usr/bin/lld-${CLANG_VERSION} 100 \
+    && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${AMD64_GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${AMD64_GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/aarch64-linux-gnu-gcc aarch64-linux-gnu-gcc /usr/bin/aarch64-linux-gnu-gcc-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/aarch64-linux-gnu-g++ aarch64-linux-gnu-g++ /usr/bin/aarch64-linux-gnu-g++-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/arm-linux-gnueabihf-gcc arm-linux-gnueabihf-gcc /usr/bin/arm-linux-gnueabihf-gcc-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/arm-linux-gnueabihf-g++ arm-linux-gnueabihf-g++ /usr/bin/arm-linux-gnueabihf-g++-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/riscv64-linux-gnu-gcc riscv64-linux-gnu-gcc /usr/bin/riscv64-linux-gnu-gcc-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/riscv64-linux-gnu-g++ riscv64-linux-gnu-g++ /usr/bin/riscv64-linux-gnu-g++-${GCC_VERSION} 100
+
+
+# https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
+# RUN wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | apt-key add -
+# RUN echo "deb [arch=amd64] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/6.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+# RUN apt update
+# RUN apt install -y mongodb
+
+RUN apt -y autoremove && apt -y clean
 
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
     && locale-gen \
     && update-locale LANG=en_US.UTF-8
+
+RUN update-alternatives --set editor /usr/bin/vim.basic
+
 RUN mkdir -p $HOME/downloads $HOME/build $HOME/local $HOME/tmp
 
 
@@ -27,7 +103,6 @@ RUN git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
 RUN cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
 RUN echo 'export LANG=en_US.UTF-8' >> $HOME/.zshrc \
     && echo 'export LC_ALL=en_US.UTF-8' >> $HOME/.zshrc \
-    && echo 'export EDITOR=vim' >> $HOME/.zshrc \
     && echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.zshrc \
     && echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.zshrc
 
@@ -90,13 +165,15 @@ RUN git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv \
 RUN echo 'eval "$(~/.rbenv/bin/rbenv init - zsh)"' >> ~/.zshrc
 # https://github.com/rbenv/ruby-build
 # https://github.com/rbenv/ruby-build/wiki#ubuntudebianmint
-RUN zsh -c "source $HOME/.zshrc \
-    && rbenv install ${RUBY_VERSION} \
-    && rbenv global ${RUBY_VERSION} \
-    && gem install bundler"
+RUN apt-get install -y autoconf patch build-essential rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev
+# FIXME
+# RUN zsh -c "source $HOME/.zshrc \
+#     && rbenv install ${RUBY_VERSION} \
+#     && rbenv global ${RUBY_VERSION} \
+#     && gem install bundler"
 
 # https://go.dev/doc/install
-ENV GO_VERSION "1.21.0"
+ENV GO_VERSION "1.20.6"
 RUN wget -q -P $HOME/downloads https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
 RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local
 RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc \
@@ -169,6 +246,18 @@ RUN git clone https://github.com/microsoft/vcpkg.git $HOME/local/vcpkg
 RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
     && echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.zshrc
 
+# https://opensearch.org/downloads.html#opensearch
+ENV OPENSEARCH_VERSION "2.9.0"
+RUN wget -q -P $HOME/downloads \
+    https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
+RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C /opt \
+    && mv /opt/opensearch-${OPENSEARCH_VERSION} /opt/opensearch
+
+# https://min.io/download#/linux
+RUN wget -q -O /usr/bin/minio \
+    https://dl.min.io/server/minio/release/linux-amd64/minio
+RUN chmod +x /usr/bin/minio
+
 # https://github.com/grpc/grpc
 ENV GRPC_VERSION "v1.57.0"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
@@ -233,6 +322,35 @@ RUN zsh -c "source $HOME/.zshrc \
 # https://github.com/amacneil/dbmate
 RUN curl -fsSL -o $HOME/.local/bin/dbmate https://github.com/amacneil/dbmate/releases/latest/download/dbmate-linux-amd64
 RUN chmod +x $HOME/.local/bin/dbmate
+
+# https://github.com/apache/thrift
+# https://thrift.apache.org/docs/install/
+ENV THRIFT_VERSION "v0.18.1"
+RUN git clone -b $THRIFT_VERSION https://github.com/apache/thrift.git $HOME/downloads/thrift
+RUN apt install -y libboost-all-dev libevent-dev libz-dev zlib1g-dev \
+        mono-devel \
+        libglib2.0-dev \
+        libbit-vector-perl libclass-accessor-perl
+# Could not find method classifier() for arguments [test] on task ':testJar'
+
+# TODO 
+# composer: Continue as root/super user confirm
+# haxelib setup
+# haxelib install uuid
+# haxelib install hxcpp
+# FIXME make install && make install/fast
+# RUN zsh -c "source $HOME/.zshrc \
+#     && cd $HOME/downloads/thrift \
+#     && sdk use java ${THRIFT_JAVA_VERSION} \
+#     && sdk use gradle ${THRIFT_GRADLE_VERSION} \
+#     && ./bootstrap.sh \
+#     && ./configure MAKE=gmake CXXFLAGS='-g -O2' CFLAGS='-g -O2' --prefix=$HOME/.local --disable-tests"
+   
+
+# ADD conan /opt/conan
+# RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh amd64"
+# RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh arm64"
+# RUN zsh -c "source $HOME/.zshrc && cd /opt/conan && ./install.sh armhf"
 
 # https://opensearch.org/docs/latest/opensearch/install/tar/
 RUN echo "network.host: 0.0.0.0" >> /opt/opensearch/config/opensearch.yml \
