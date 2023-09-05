@@ -4,7 +4,7 @@ include(FetchContent)
 
 project(
     lemon
-    VERSION 2023.6.23
+    VERSION 2023.9.5
     DESCRIPTION "A web-frontend application."
     LANGUAGES C CXX)
 # --------------------------------------------------------
