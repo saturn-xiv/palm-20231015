@@ -2,26 +2,29 @@ FROM archlinux:latest
 LABEL maintainer="Jeremy Zheng"
 
 RUN pacman -Syu --needed --noconfirm
+RUN pacman-key --recv-keys 9B7A287D9A2EC608
 RUN pacman -S --needed --noconfirm base-devel aarch64-linux-gnu-gcc risc-v \
-    vim git cmake thrift \
+    vim git cmake thrift wget \
     pwgen sshpass openssl openssh rsync zip unzip tree tmux asciidoc doxygen cpio \
     clang llvm lld lldb mold bison flex ninja bazel \
     imagemagick ffmpeg \
     ttf-dejavu texlive texlive-lang \
-    php-fpm php-mbstring php-json php-xml php-pear php-bcmath php-curl php-zip \
-    php-mysql php-pgsql php-sqlite3 php-redis php-mongodb php-amqp php-zmq \
-    php-imagick php-gd phpunit \
-    php-intl php-soap \
+    php-fpm php-pgsql php-sqlite php-redis php-mongodb php-imagick php-gd php-intl \
     dart haxe lua \
     erlang rebar \
     jdk-openjdk libxcrypt-compat \
-    nginx mariadb postgresql rabbitmq redis minio opensearch
+    nginx mariadb postgresql rabbitmq redis
 RUN pacman -Scc --noconfirm
 
-RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
-    && locale-gen \
-    && update-locale LANG=en_US.UTF-8
+RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && locale-gen
 RUN mkdir -p $HOME/downloads $HOME/build $HOME/local $HOME/tmp
+
+
+ENV ENVOY_VERSION "1.27.0-1"
+RUN cd $HOME/downloads/ \
+    && git clone https://aur.archlinux.org/envoyproxy-bin.git  \
+    && makepkg \
+    && pacman -U envoyproxy-bin-${ENVOY_VERSION}-x86_64.pkg.tar.zst 
 
 
 # https://github.com/ohmyzsh/ohmyzsh
@@ -171,6 +174,24 @@ RUN git clone https://github.com/microsoft/vcpkg.git $HOME/local/vcpkg
 RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
     && echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.zshrc
 
+
+# https://opensearch.org/downloads.html#opensearch
+ENV OPENSEARCH_VERSION "2.9.0"
+RUN wget -q -P $HOME/downloads \
+    https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
+RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C /opt \
+    && mv /opt/opensearch-${OPENSEARCH_VERSION} /opt/opensearch
+
+# https://min.io/download#/linux
+RUN wget -q -O /usr/bin/minio \
+    https://dl.min.io/server/minio/release/linux-amd64/minio
+RUN chmod +x /usr/bin/minio
+
+
+# https://github.com/amacneil/dbmate
+RUN curl -fsSL -o $HOME/.local/bin/dbmate https://github.com/amacneil/dbmate/releases/latest/download/dbmate-linux-amd64
+RUN chmod +x $HOME/.local/bin/dbmate
+
 # https://github.com/grpc/grpc
 ENV GRPC_VERSION "v1.57.0"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
@@ -232,9 +253,6 @@ RUN zsh -c "source $HOME/.zshrc \
     && make \
     && make install"
 
-# https://github.com/amacneil/dbmate
-RUN curl -fsSL -o $HOME/.local/bin/dbmate https://github.com/amacneil/dbmate/releases/latest/download/dbmate-linux-amd64
-RUN chmod +x $HOME/.local/bin/dbmate
 
 # https://opensearch.org/docs/latest/opensearch/install/tar/
 RUN echo "network.host: 0.0.0.0" >> /opt/opensearch/config/opensearch.yml \
@@ -245,11 +263,9 @@ RUN echo "network.host: 0.0.0.0" >> /opt/opensearch/config/opensearch.yml \
 RUN mkdir -p /var/lib/minio/data \
     && chown -R nobody /var/lib/minio
 
-RUN sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
-
-RUN su - postgres -c "/usr/lib/postgresql/14/bin/initdb -D /var/lib/postgresql/data"
-RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/postgresql/data/postgresql.conf \
-    && echo "host  all  all 0.0.0.0/0 md5" >> /var/lib/postgresql/data/pg_hba.conf
+RUN su - postgres -c "/usr/bin/initdb -D /var/lib/postgres/data"
+RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/postgres/data/postgresql.conf \
+    && echo "host  all  all 0.0.0.0/0 md5" >> /var/lib/postgres/data/pg_hba.conf
 
 ADD etc/redis/* /etc/redis/
 RUN cd /var/lib \
