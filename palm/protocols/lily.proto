@@ -1,0 +1,55 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.github.saturn_xiv.palm.plugins.lily.v1";
+package palm.lily.v1;
+
+import "google/protobuf/empty.proto";
+
+message HttpResponse {
+  string content_type = 1;
+  bytes body = 2;
+}
+
+// ----------------------------------------------------------------------------
+
+service Excel {
+  rpc Load(ExcelLoadRequest) returns (google.protobuf.Empty) {}
+  rpc Query(ExcelQueryRequest) returns (ExcelQueryResponse) {}
+}
+
+message ExcelLoadRequest {
+  string id = 1;
+  bytes data = 2;
+}
+
+message ExcelQueryRequest {
+  string id = 1;
+}
+
+message ExcelQueryResponse {
+  message Item {
+    uint32 x = 1;
+    uint32 y = 2;
+    string v = 3;
+  }
+  repeated Item items = 1;
+}
+
+// ----------------------------------------------------------------------------
+
+service Tex {
+  rpc ToPdf(TexToRequest) returns (HttpResponse) {}
+  rpc ToWords(TexToRequest) returns (HttpResponse) {}
+}
+
+message TexToRequest {
+  string body = 1;
+}
+
+// ----------------------------------------------------------------------------
+
+service Epub {
+  rpc Build(EpubBuildRequest) returns (HttpResponse) {}
+}
+
+message EpubBuildRequest {}

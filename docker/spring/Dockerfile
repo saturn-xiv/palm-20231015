@@ -2,9 +2,10 @@ FROM archlinux:latest
 LABEL maintainer="Jeremy Zheng"
 
 RUN pacman -Syu --needed --noconfirm
-RUN pacman -S --needed --noconfirm base-devel vim git cmake thrift \
-    pwgen sshpass openssh rsync zip unzip tree tmux asciidoc doxygen cpio \
-    clang llvm lld lldb mold bison flex ninja \
+RUN pacman -S --needed --noconfirm base-devel aarch64-linux-gnu-gcc risc-v \
+    vim git cmake thrift \
+    pwgen sshpass openssl openssh rsync zip unzip tree tmux asciidoc doxygen cpio \
+    clang llvm lld lldb mold bison flex ninja bazel \
     imagemagick ffmpeg \
     ttf-dejavu texlive texlive-lang \
     php-fpm php-mbstring php-json php-xml php-pear php-bcmath php-curl php-zip \
@@ -13,6 +14,7 @@ RUN pacman -S --needed --noconfirm base-devel vim git cmake thrift \
     php-intl php-soap \
     dart haxe lua \
     erlang rebar \
+    jdk-openjdk libxcrypt-compat \
     nginx mariadb postgresql rabbitmq redis minio opensearch
 RUN pacman -Scc --noconfirm
 

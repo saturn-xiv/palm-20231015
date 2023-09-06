@@ -10,7 +10,7 @@ RUN apk add vim curl bash zsh pwgen openssl git tmux rsync xz zip \
     nginx nodejs npm yarn \
     php php-bcmath php-bz2 php-curl php-ftp php-fpm php-gd php-iconv php-imap \
     php-intl php-mbstring php-mysqli php-opcache php-openssl php-pdo_mysql php-pdo_pgsql php-pdo_sqlite \
-    php-pgsql php-session php-sodium php-sqlite3 php-xml php-xsl php-zip \
+    php-pgsql php-session php-sodium php-sqlite3 php-xml php-xsl php-zip php-simplexml php-tokenizer php-xmlwriter \
     composer composer-zsh-completion \
     openssl-dev 
 

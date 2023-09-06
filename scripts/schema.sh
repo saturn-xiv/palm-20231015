@@ -154,6 +154,29 @@ function generate_morus() {
         --grpc_out=grpc_js:$target $PALM_PROTOCOLS/morus.proto
 }
 
+function generate_lily() {
+    echo "generate code for lily"
+    local target=$WORKSPACE/lily/palm
+    local -a files=(
+        "lily_pb2.py"
+        "lily_pb2_grpc.py"
+    )
+
+    for f in "${files[@]}"
+    do
+        if [ -f $target/$f ]
+        then
+            rm $target/$f
+        fi
+    done
+    
+    $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
+        -I $PROTOBUF_ROOT/include/google/protobuf \
+        --python_out=$target --grpc_out=$target \
+        --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_python_plugin \
+        $PALM_PROTOCOLS/lily.proto
+}
+
 function generate_babel() {
     local target=$WORKSPACE/babel/protocols
     if [ -d $target ]
@@ -207,6 +230,7 @@ generate_musa
 generate_babel
 generate_lemon
 generate_morus
+generate_lily
 
 echo 'format rust code'
 cargo fmt
