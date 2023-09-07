@@ -1,10 +1,10 @@
 FROM archlinux:latest
 LABEL maintainer="Jeremy Zheng"
 
-RUN pacman -Syu --needed --noconfirm
 RUN pacman-key --recv-keys 9B7A287D9A2EC608
+RUN pacman -Syu --needed --noconfirm
 RUN pacman -S --needed --noconfirm base-devel aarch64-linux-gnu-gcc risc-v \
-    vim git cmake thrift wget \
+    vim git cmake thrift wget zsh \
     pwgen sshpass openssl openssh rsync zip unzip tree tmux asciidoc doxygen cpio \
     clang llvm lld lldb mold bison flex ninja bazel \
     imagemagick ffmpeg \
@@ -18,13 +18,15 @@ RUN pacman -Scc --noconfirm
 
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && locale-gen
 RUN mkdir -p $HOME/downloads $HOME/build $HOME/local $HOME/tmp
+RUN useradd -s /bin/bash -m deploy
 
-
+USER deploy
 ENV ENVOY_VERSION "1.27.0-1"
-RUN cd $HOME/downloads/ \
-    && git clone https://aur.archlinux.org/envoyproxy-bin.git  \
-    && makepkg \
-    && pacman -U envoyproxy-bin-${ENVOY_VERSION}-x86_64.pkg.tar.zst 
+RUN git clone https://aur.archlinux.org/envoyproxy-bin.git $HOME/downloads/envoyproxy-bin \
+    && cd $HOME/downloads/envoyproxy-bin \
+    && makepkg
+USER root
+RUN cd ~deploy/downloads/envoyproxy-bin && pacman -U --noconfirm envoyproxy-bin-${ENVOY_VERSION}-x86_64.pkg.tar.zst 
 
 
 # https://github.com/ohmyzsh/ohmyzsh
@@ -63,8 +65,7 @@ RUN wget -q -P $HOME/downloads https://more.musl.cc/x86_64-linux-musl/riscv64-li
 
 
 # https://pip.pypa.io/en/stable/installation/
-# RUN sh -c ". $HOME/.profile && python3 -m ensurepip --upgrade"
-RUN sh -c ". $HOME/.profile \
+RUN zsh -c ". $HOME/.zshrc \
     && python3 -m venv $HOME/local/python3 \
     && . $HOME/local/python3/bin/activate \
     && pip install --upgrade pip \
@@ -193,7 +194,7 @@ RUN curl -fsSL -o $HOME/.local/bin/dbmate https://github.com/amacneil/dbmate/rel
 RUN chmod +x $HOME/.local/bin/dbmate
 
 # https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.57.0"
+ENV GRPC_VERSION "v1.58.0"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 # ENV PROTOBUF_VERSION "v3.21.8"
 # RUN cd $HOME/downloads/grpc/third_party/protobuf \

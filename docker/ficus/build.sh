@@ -7,7 +7,7 @@ export CODE="palm-ficus"
 
 buildah pull alpine:latest
 buildah bud --layers -t $CODE .
-# podman save --format=oci-archive -o $CODE-$VERSION.tar $CODE
+podman save --format=oci-archive -o $CODE-$VERSION.tar $CODE
 # md5sum $CODE-$VERSION.tar > md5.txt
 
 echo "done($CODE-$VERSION.tar)."
