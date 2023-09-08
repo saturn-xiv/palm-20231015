@@ -111,7 +111,7 @@ RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc \
 
 # https://github.com/sdkman/sdkman-cli
 ENV JDK_VERSION "20.0.2-open"
-ENV GRADLE_VERSION "8.2.1"
+ENV GRADLE_VERSION "8.3"
 ENV THRIFT_JAVA_VERSION "19.0.2-open"
 ENV THRIFT_GRADLE_VERSION "7.6.2"
 RUN curl -s "https://get.sdkman.io" | bash
