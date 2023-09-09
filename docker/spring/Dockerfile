@@ -17,16 +17,17 @@ RUN pacman -S --needed --noconfirm base-devel aarch64-linux-gnu-gcc risc-v \
 RUN pacman -Scc --noconfirm
 
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && locale-gen
-RUN mkdir -p $HOME/downloads $HOME/build $HOME/local $HOME/tmp
-RUN useradd -s /bin/bash -m deploy
-
+RUN useradd -s /bin/zsh -m deploy
+RUN passwd -l deploy
+RUN echo 'deploy ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/101-deploy
 USER deploy
+RUN mkdir -p $HOME/downloads $HOME/build $HOME/local $HOME/tmp
+
 ENV ENVOY_VERSION "1.27.0-1"
 RUN git clone https://aur.archlinux.org/envoyproxy-bin.git $HOME/downloads/envoyproxy-bin \
     && cd $HOME/downloads/envoyproxy-bin \
-    && makepkg
-USER root
-RUN cd ~deploy/downloads/envoyproxy-bin && pacman -U --noconfirm envoyproxy-bin-${ENVOY_VERSION}-x86_64.pkg.tar.zst 
+    && makepkg \
+    && sudo pacman -U --noconfirm envoyproxy-bin-${ENVOY_VERSION}-x86_64.pkg.tar.zst 
 
 
 # https://github.com/ohmyzsh/ohmyzsh
@@ -48,19 +49,19 @@ RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf \
 # https://musl.cc/
 RUN wget -q -P $HOME/downloads https://more.musl.cc/x86_64-linux-musl/x86_64-linux-musl-cross.tgz \
     && cd /opt \
-    && tar xf $HOME/downloads/x86_64-linux-musl-cross.tgz \
+    && sudo tar xf $HOME/downloads/x86_64-linux-musl-cross.tgz \
     && echo 'export PATH=/opt/x86_64-linux-musl-cross/bin:$PATH' >> $HOME/.zshrc
 RUN wget -q -P $HOME/downloads https://more.musl.cc/x86_64-linux-musl/armv7l-linux-musleabihf-cross.tgz \
     && cd /opt \
-    && tar xf $HOME/downloads/armv7l-linux-musleabihf-cross.tgz \
+    && sudo tar xf $HOME/downloads/armv7l-linux-musleabihf-cross.tgz \
     && echo 'export PATH=/opt/armv7l-linux-musleabihf-cross/bin:$PATH' >> $HOME/.zshrc
 RUN wget -q -P $HOME/downloads https://more.musl.cc/x86_64-linux-musl/aarch64-linux-musl-cross.tgz \
     && cd /opt \
-    && tar xf $HOME/downloads/aarch64-linux-musl-cross.tgz \
+    && sudo tar xf $HOME/downloads/aarch64-linux-musl-cross.tgz \
     && echo 'export PATH=/opt/aarch64-linux-musl-cross/bin:$PATH' >> $HOME/.zshrc
 RUN wget -q -P $HOME/downloads https://more.musl.cc/x86_64-linux-musl/riscv64-linux-musl-cross.tgz \
     && cd /opt \
-    && tar xf $HOME/downloads/riscv64-linux-musl-cross.tgz \
+    && sudo tar xf $HOME/downloads/riscv64-linux-musl-cross.tgz \
     && echo 'export PATH=/opt/riscv64-linux-musl-cross/bin:$PATH' >> $HOME/.zshrc
 
 
@@ -156,8 +157,6 @@ RUN zsh -c "source $HOME/.cargo/env \
     && rustup target add x86_64-unknown-linux-musl \
     && rustup target add aarch64-unknown-linux-musl \
     && rustup target add loongarch64-unknown-linux-gnu"
-
-RUN apt install -y libpq-dev libmysqlclient-dev libsqlite3-dev
 RUN zsh -c "source $HOME/.zshrc \
     && cargo install diesel_cli \
     && cargo install --locked cargo-outdated \
@@ -167,7 +166,7 @@ RUN zsh -c "source $HOME/.zshrc \
 ENV SWIFT_VERSION "5.8.1"
 RUN wget -q -P $HOME/downloads https://download.swift.org/swift-${SWIFT_VERSION}-release/ubuntu2204/swift-${SWIFT_VERSION}-RELEASE/swift-${SWIFT_VERSION}-RELEASE-ubuntu22.04.tar.gz \
     && cd /opt \
-    && tar xf $HOME/downloads/swift-${SWIFT_VERSION}-RELEASE-ubuntu22.04.tar.gz \
+    && sudo tar xf $HOME/downloads/swift-${SWIFT_VERSION}-RELEASE-ubuntu22.04.tar.gz \
     && echo "export PATH=/opt/swift-${SWIFT_VERSION}-RELEASE-ubuntu22.04/bin:\$PATH" >> $HOME/.zshrc
 
 # https://github.com/microsoft/vcpkg
@@ -180,14 +179,16 @@ RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
 ENV OPENSEARCH_VERSION "2.9.0"
 RUN wget -q -P $HOME/downloads \
     https://artifacts.opensearch.org/releases/bundle/opensearch/${OPENSEARCH_VERSION}/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz
-RUN tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz -C /opt \
-    && mv /opt/opensearch-${OPENSEARCH_VERSION} /opt/opensearch
+RUN cd $HOME/build \
+    && tar xf $HOME/downloads/opensearch-${OPENSEARCH_VERSION}-linux-x64.tar.gz \
+    && sudo mv opensearch-${OPENSEARCH_VERSION} /opt/opensearch
 
 # https://min.io/download#/linux
-RUN wget -q -O /usr/bin/minio \
+RUN wget -q -O $HOME/downloads/minio \
     https://dl.min.io/server/minio/release/linux-amd64/minio
-RUN chmod +x /usr/bin/minio
-
+RUN sudo mv $HOME/downloads/minio /usr/bin/minio \
+    && sudo chown root:root /usr/bin/minio \
+    && sudo chmod +x /usr/bin/minio
 
 # https://github.com/amacneil/dbmate
 RUN curl -fsSL -o $HOME/.local/bin/dbmate https://github.com/amacneil/dbmate/releases/latest/download/dbmate-linux-amd64
@@ -255,6 +256,7 @@ RUN zsh -c "source $HOME/.zshrc \
     && make install"
 
 
+USER root
 # https://opensearch.org/docs/latest/opensearch/install/tar/
 RUN echo "network.host: 0.0.0.0" >> /opt/opensearch/config/opensearch.yml \
     && echo "discovery.type: single-node" >> /opt/opensearch/config/opensearch.yml \
@@ -274,7 +276,7 @@ RUN cd /var/lib \
     && chown redis:redis redis-s redis-1 redis-2 redis-3 redis-4 redis-5 redis-6 \
     && chmod 750 redis-s redis-1 redis-2 redis-3 redis-4 redis-5 redis-6
 
-RUN mkdir -p /run/php \
+RUN mkdir -p /var/www/html \
     && echo "<?php phpinfo(); ?>" > /var/www/html/info.php \
     && echo "daemon off;" >> /etc/nginx/nginx.conf
 ADD etc/nginx.conf /etc/nginx/sites-enabled/default
@@ -284,6 +286,7 @@ ADD etc/supervisor /etc/supervisor
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
+USER deploy
 VOLUME /workspace
 WORKDIR /workspace
 
