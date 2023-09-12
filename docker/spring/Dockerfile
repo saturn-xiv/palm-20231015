@@ -8,7 +8,7 @@ RUN pacman -S --needed --noconfirm base-devel aarch64-linux-gnu-gcc risc-v \
     pwgen sshpass openssl openssh rsync zip unzip tree tmux asciidoc doxygen cpio \
     clang llvm lld lldb mold bison flex ninja bazel \
     imagemagick ffmpeg \
-    ttf-dejavu texlive texlive-lang \
+    ttf-dejavu texlive texlive-lang pandoc \
     php-fpm php-pgsql php-sqlite php-redis php-mongodb php-imagick php-gd php-intl \
     dart haxe lua \
     erlang rebar \
