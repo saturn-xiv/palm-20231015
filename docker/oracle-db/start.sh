@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export CODE="container-registry.oracle.com/database/express"
-export NAME="palm-oracle-xe"
+export CODE="container-registry.oracle.com/database/free:latest"
+export NAME="palm-oracle-db"
 export DATA_DIR=$PWD/data
 
 if [ ! -d $DATA_DIR ]
