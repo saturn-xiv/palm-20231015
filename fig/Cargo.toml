@@ -7,9 +7,9 @@ edition = "2021"
 
 [dependencies]
 log = "0.4"
-actix-identity = "0.5"
 actix-cors = "0.6"
-toml = "0.7"
+actix-identity = "0.6"
+toml = "0.8"
 env_logger = "0.10"
 tonic-health = "0.10"
 askama = "0.12"
@@ -22,7 +22,7 @@ version = "0.4"
 features = ["serde"]
 
 [dependencies.actix-session]
-version = "0.7"
+version = "0.8"
 features = ["cookie-session", "redis-rs-session"]
 
 [dependencies.tonic]

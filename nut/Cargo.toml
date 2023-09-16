@@ -41,7 +41,7 @@ features = ["serde"]
 # features = ["postgres"]
 
 [dependencies.actix-session]
-version = "0.7"
+version = "0.8"
 features = ["cookie-session", "redis-rs-session"]
 
 [dependencies.chrono-tz]
