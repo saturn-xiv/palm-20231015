@@ -111,6 +111,7 @@ RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc \
     && echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc
 
 # https://github.com/sdkman/sdkman-cli
+# https://docs.gradle.org/current/userguide/compatibility.html
 ENV JDK_VERSION "20.0.2-open"
 ENV GRADLE_VERSION "8.3"
 ENV THRIFT_JAVA_VERSION "19.0.2-open"
