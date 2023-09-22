@@ -1,6 +1,7 @@
 FROM archlinux:latest
 LABEL maintainer="Jeremy Zheng"
 
+RUN echo 'Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
 RUN pacman-key --recv-keys 9B7A287D9A2EC608
 RUN pacman -Syu --needed --noconfirm
 RUN pacman -S --needed --noconfirm base-devel aarch64-linux-gnu-gcc risc-v \
