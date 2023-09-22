@@ -292,7 +292,8 @@ RUN mkdir -p /var/www/html \
     && echo "<?php phpinfo(); ?>" > /var/www/html/info.php \
     && echo "daemon off;" >> /etc/nginx/nginx.conf \
     && sed -i '35,79d' /etc/nginx/nginx.conf \
-    && sed -i '35i include sites-enabled/*.conf;' /etc/nginx/nginx.conf
+    && sed -i '35i include sites-enabled/*.conf;' /etc/nginx/nginx.conf \
+    && sed -i "s/error_log =.*/error_log = log\/php-fpm.log/g" /etc/php/php-fpm.conf
 ADD etc/nginx/sites-enabled/localhost.conf /etc/nginx/sites-enabled/localhost.conf
 
 ADD etc/envoy.yaml /etc/
