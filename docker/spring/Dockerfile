@@ -296,6 +296,7 @@ RUN mkdir -p /var/www/html \
 ADD etc/nginx/sites-enabled/localhost.conf /etc/nginx/sites-enabled/localhost.conf
 
 ADD etc/envoy.yaml /etc/
+RUN mkdir -p /var/log/envoy
 ADD etc/supervisor /etc/supervisor
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
