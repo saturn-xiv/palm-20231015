@@ -266,9 +266,19 @@ RUN echo "network.host: 0.0.0.0" >> /opt/opensearch/config/opensearch.yml \
 RUN mkdir -p /var/lib/minio/data \
     && chown -R nobody /var/lib/minio
 
+# https://www.rabbitmq.com/access-control.html#loopback-users
+RUN echo 'loopback_users = none' >> /etc/rabbitmq/rabbitmq.conf \
+    && sed -i "s/NODENAME.*/NODENAME=palm/g" /etc/rabbitmq/rabbitmq-env.conf \
+    && rabbitmq-plugins enable rabbitmq_mqtt \
+    && rabbitmq-plugins enable rabbitmq_management
+
+RUN mariadb-install-db --datadir=/var/lib/mysql --user=mysql
+
 RUN su - postgres -c "/usr/bin/initdb -D /var/lib/postgres/data"
 RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/postgres/data/postgresql.conf \
-    && echo "host  all  all 0.0.0.0/0 md5" >> /var/lib/postgres/data/pg_hba.conf
+    && echo "host  all  all 0.0.0.0/0 md5" >> /var/lib/postgres/data/pg_hba.conf \
+    && mkdir /run/postgresql \
+    && chown -R postgres:postgres /run/postgresql
 
 ADD etc/redis/* /etc/redis/
 RUN cd /var/lib \
@@ -278,8 +288,10 @@ RUN cd /var/lib \
 
 RUN mkdir -p /var/www/html \
     && echo "<?php phpinfo(); ?>" > /var/www/html/info.php \
-    && echo "daemon off;" >> /etc/nginx/nginx.conf
-ADD etc/nginx.conf /etc/nginx/sites-enabled/default
+    && echo "daemon off;" >> /etc/nginx/nginx.conf \
+    && sed -i '35,79d' /etc/nginx/nginx.conf \
+    && sed -i '35i include sites-enabled/*.conf;' /etc/nginx/nginx.conf
+ADD etc/nginx/sites-enabled/localhost.conf /etc/nginx/sites-enabled/localhost.conf
 
 ADD etc/envoy.yaml /etc/
 ADD etc/supervisor /etc/supervisor

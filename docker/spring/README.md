@@ -12,9 +12,9 @@
   ```bash
   $ cd ~/workspace
   $ ./saturn-xiv/palm/docker/spring/start.sh
-  > supervisord -c /etc/supervisor/supervisord.conf
+  > sudo supervisord -c /etc/supervisor/supervisord.conf
   # init redis cluster
-  > /etc/redis/clusters-init.sh
+  > sudo /etc/redis/clusters-init.sh
   ```
 
 - PostgreSql
@@ -27,8 +27,8 @@
 
   ```bash
   # reset root's password
-  mysql_secure_installation
-  mysql -h 127.0.0.1 -P 3306 -u root -p
+  > sudo mariadb-secure-installation
+  mariadb -h 127.0.0.1 -P 3306 -u root -p
   ```
 
 - Redis
@@ -41,11 +41,6 @@
 - Minio [dashboard](http://localhost:9001) (`admin:12345678`)
 
 - RabbitMQ [dashboard](http://localhost:15672) (`guest:guest`)
-
-  ```bash
-  # enable rabbitmq management plugin
-  rabbitmq-plugins enable rabbitmq_management
-  ```
 
 - Php [info.php](http://localhost:8080/info.php)
 
