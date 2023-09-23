@@ -23,6 +23,22 @@ function generate_grpc_by_lang() {
         $PALM_PROTOCOLS/*.proto
 }
 
+function generate_grpc_for_php() {
+    local target=$WORKSPACE/tmp/protocols/php
+    echo "generate code for grpc-php"
+    if [ -d $target ]
+    then
+        rm -r $target
+    fi
+    mkdir -p $target
+    $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
+        -I $PROTOBUF_ROOT/include/google/protobuf \
+        --php_out=$target --grpc_out=generate_server:$target \
+        --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_php_plugin \
+        $PALM_PROTOCOLS/*.proto
+}
+
+
 function generate_loquat() {    
     cd $WORKSPACE
 
@@ -208,7 +224,6 @@ DATABASE_URL=tmp/db diesel print-schema > ops/router/src/schema.rs
 
 declare -a languages=(
     # "node"
-    "php"
     "python"
     "ruby"
     "cpp"
@@ -222,6 +237,8 @@ for l in "${languages[@]}"
 do
     generate_grpc_by_lang $l
 done
+
+generate_grpc_for_php
 
 generate_fig_web
 generate_aloe_web

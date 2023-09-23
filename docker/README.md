@@ -30,4 +30,4 @@ sudo pacman -S crun podman buildah fuse-overlayfs
   podman run --rm -it docker.io/envoyproxy/envoy-dev:latest
   ```
 
-- Merge file `~/.config/containers/storage.conf`
+- Merge file `~/.config/containers/storage.conf` and `~/.config/containers/registries.conf`
