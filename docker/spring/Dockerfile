@@ -274,7 +274,7 @@ RUN echo 'loopback_users = none' >> /etc/rabbitmq/rabbitmq.conf \
     && rabbitmq-plugins enable rabbitmq_mqtt \
     && rabbitmq-plugins enable rabbitmq_management
 
-RUN mariadb-install-db --datadir=/var/lib/mysql --user=mysql
+RUN cd /usr && mariadb-install-db --datadir=/var/lib/mysql --user=mysql
 
 RUN su - postgres -c "/usr/bin/initdb -D /var/lib/postgres/data"
 RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/postgres/data/postgresql.conf \
