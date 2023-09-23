@@ -40,7 +40,7 @@ public class WechatPayBatchTransferReceiptDownloader {
 //                logger.error("fetch {}", it.getOutBatchNo(), e);
 //            }
 
-            Thread.sleep(Duration.ofMinutes(5));
+            Thread.sleep(Duration.ofMinutes(11));
         }
     }
 
