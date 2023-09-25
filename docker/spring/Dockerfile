@@ -9,7 +9,9 @@ RUN pacman -S --needed --noconfirm base-devel aarch64-linux-gnu-gcc risc-v \
     pwgen sshpass openssl openssh rsync zip unzip tree tmux asciidoc doxygen cpio \
     clang llvm lld lldb mold bison flex ninja bazel \
     imagemagick ffmpeg \
-    ttf-dejavu texlive texlive-lang pandoc \
+    ttf-dejavu nerd-fonts ttf-ubuntu-font-family \
+    ttf-arphic-ukai ttf-arphic-uming \
+    texlive texlive-lang pandoc \
     php-fpm php-pgsql php-sqlite php-redis php-mongodb php-imagick php-gd php-intl \
     dart haxe lua \
     erlang rebar \
@@ -30,6 +32,11 @@ RUN git clone https://aur.archlinux.org/envoyproxy-bin.git $HOME/downloads/envoy
     && makepkg \
     && sudo pacman -U --noconfirm envoyproxy-bin-${ENVOY_VERSION}-x86_64.pkg.tar.zst 
 
+ENV ARPHIC_TTF_VERSION "20161212-1"
+RUN git clone https://aur.archlinux.org/packages/ttf-arphic-tex-extra $HOME/downloads/ttf-arphic-tex-extra \
+    && cd ttf-arphic-tex-extra \
+    && makepkg \
+    && sudo pacman -U --noconfirm ttf-arphic-tex-extra-${ARPHIC_TTF_VERSION}-any.pkg.tar.zst
 
 # https://github.com/ohmyzsh/ohmyzsh
 RUN git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
