@@ -9,6 +9,11 @@ RUN pacman -S --needed --noconfirm base-devel aarch64-linux-gnu-gcc risc-v \
     pwgen sshpass openssl openssh rsync zip unzip tree tmux asciidoc doxygen cpio \
     clang llvm lld lldb mold bison flex ninja bazel \
     imagemagick ffmpeg xorg-font-util \
+    wqy-bitmapfont wqy-microhei wqy-zenhei \
+    ttf-fira-code woff-fira-code woff2-fira-code \
+    adobe-source-code-pro-fonts adobe-source-serif-fonts adobe-source-sans-fonts \
+    adobe-source-han-serif-cn-fonts adobe-source-han-serif-hk-fonts adobe-source-han-serif-jp-fonts adobe-source-han-serif-kr-fonts adobe-source-han-serif-tw-fonts \
+    adobe-source-han-sans-cn-fonts adobe-source-han-sans-hk-fonts adobe-source-han-sans-jp-fonts adobe-source-han-sans-kr-fonts adobe-source-han-sans-tw-fonts \
     ttf-dejavu nerd-fonts ttf-ubuntu-font-family \
     ttf-arphic-ukai ttf-arphic-uming \
     texlive texlive-lang pandoc \
