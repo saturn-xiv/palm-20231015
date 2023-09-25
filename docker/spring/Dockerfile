@@ -8,7 +8,7 @@ RUN pacman -S --needed --noconfirm base-devel aarch64-linux-gnu-gcc risc-v \
     vim git cmake thrift wget zsh man-db \
     pwgen sshpass openssl openssh rsync zip unzip tree tmux asciidoc doxygen cpio \
     clang llvm lld lldb mold bison flex ninja bazel \
-    imagemagick ffmpeg \
+    imagemagick ffmpeg xorg-font-util \
     ttf-dejavu nerd-fonts ttf-ubuntu-font-family \
     ttf-arphic-ukai ttf-arphic-uming \
     texlive texlive-lang pandoc \
@@ -33,8 +33,8 @@ RUN git clone https://aur.archlinux.org/envoyproxy-bin.git $HOME/downloads/envoy
     && sudo pacman -U --noconfirm envoyproxy-bin-${ENVOY_VERSION}-x86_64.pkg.tar.zst 
 
 ENV ARPHIC_TTF_VERSION "20161212-1"
-RUN git clone https://aur.archlinux.org/packages/ttf-arphic-tex-extra $HOME/downloads/ttf-arphic-tex-extra \
-    && cd ttf-arphic-tex-extra \
+RUN git clone https://aur.archlinux.org/ttf-arphic-tex-extra.git $HOME/downloads/ttf-arphic-tex-extra \
+    && cd $HOME/downloads/ttf-arphic-tex-extra \
     && makepkg \
     && sudo pacman -U --noconfirm ttf-arphic-tex-extra-${ARPHIC_TTF_VERSION}-any.pkg.tar.zst
 
