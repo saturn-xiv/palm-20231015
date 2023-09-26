@@ -18,7 +18,6 @@ members = [
     "erp",
     "crm",
     "mall",
-    "chats",
     "cscd",
     "cbeta",
     "flashcard",
