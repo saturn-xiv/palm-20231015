@@ -1,13 +1,13 @@
 package com.github.saturn_xiv.palm.plugins;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+
+public class App {
+    public static void main(String[] args) {
+        if (args.length != 1) {
+
+        }
+        System.out.println("Hello World!");
     }
+
+
 }
