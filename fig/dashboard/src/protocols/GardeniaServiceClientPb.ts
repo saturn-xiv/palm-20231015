@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for palm.chats.v1
+ * @fileoverview gRPC-Web generated client stub for palm.gardenia.v1
  * @enhanceable
  * @public
  */
@@ -8,7 +8,7 @@
 // versions:
 // 	protoc-gen-grpc-web v1.4.2
 // 	protoc              v4.23.4
-// source: chats.proto
+// source: gardenia.proto
 
 
 /* eslint-disable */
@@ -19,28 +19,7 @@ import * as grpcWeb from 'grpc-web';
 
 
 
-export class ArticleClient {
-  client_: grpcWeb.AbstractClientBase;
-  hostname_: string;
-  credentials_: null | { [index: string]: string; };
-  options_: null | { [index: string]: any; };
-
-  constructor (hostname: string,
-               credentials?: null | { [index: string]: string; },
-               options?: null | { [index: string]: any; }) {
-    if (!options) options = {};
-    if (!credentials) credentials = {};
-    options['format'] = 'binary';
-
-    this.client_ = new grpcWeb.GrpcWebClientBase(options);
-    this.hostname_ = hostname.replace(/\/+$/, '');
-    this.credentials_ = credentials;
-    this.options_ = options;
-  }
-
-}
-
-export class CommentClient {
+export class OpenFireClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;
   credentials_: null | { [index: string]: string; };

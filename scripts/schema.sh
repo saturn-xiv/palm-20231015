@@ -112,6 +112,24 @@ function generate_diesel_postgresql() {
     #     > flashcard/src/schema.rs
 }
 
+function generate_gardenia() {
+    cd $WORKSPACE
+    local target=gardenia/src/main/java
+    
+    echo "generate gRPC for gardenia"
+    local gardenia_target=$target/com/github/saturn_xiv/palm/plugins/gardenia/v1
+    if [ -d $gardenia_target ]
+    then
+        rm -r $gardenia_target
+    fi
+    $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
+        -I $PROTOBUF_ROOT/include/google/protobuf \
+        --java_out=$target --grpc_out=$target \
+        --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_java_plugin \
+        $PALM_PROTOCOLS/gardenia.proto
+
+}
+
 function generate_musa() {
     cd $WORKSPACE
     local target=musa/src/main/java
@@ -244,6 +262,7 @@ generate_fig_web
 generate_aloe_web
 generate_loquat
 generate_musa
+generate_gardenia
 generate_babel
 generate_lemon
 generate_morus

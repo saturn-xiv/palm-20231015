@@ -1,4 +1,4 @@
-// source: chats.proto
+// source: gardenia.proto
 /**
  * @fileoverview
  * @enhanceable
