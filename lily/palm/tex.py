@@ -1,6 +1,4 @@
 import logging
-import io
-import uuid
 import tempfile
 import os.path
 import subprocess
@@ -14,14 +12,13 @@ def _tmp_root():
 
 class Service(lily_pb2_grpc.TexServicer):
     def ToPdf(self, request, context):
-        id = str(uuid.uuid4())
-        logging.info("convert tex to pdf %s" % request.content_type)
-        with tempfile.TemporaryDirectory() as root:
-            for it in request.files:
-                with open(os.path.join(root, it.name), mode='wb') as fd:
-                    logging.debug("generate file %s/%s", root, it.name)
-                    fd.write(it.content)
-            subprocess.run(['xelatex', 'main.tex'], cwd=root)
+        logging.info("convert tex to pdf(%d)" % len(request.files))
+        with tempfile.TemporaryDirectory(prefix='tex-') as root:
+            for name in request.files:
+                with open(os.path.join(root, name), mode='wb') as fd:
+                    logging.debug("generate file %s/%s", root, name)
+                    fd.write(request.files[name])
+            subprocess.run(['xelatex', '-halt-on-error', 'main.tex'], cwd=root)
             with open(os.path.join(root, 'main.pdf'), mode="rb") as fd:
                 response = lily_pb2.File()
                 response.content_type = 'application/pdf'

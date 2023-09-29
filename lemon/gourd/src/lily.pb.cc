@@ -101,27 +101,18 @@ struct ExcelModelDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ExcelModelDefaultTypeInternal _ExcelModel_default_instance_;
 template <typename>
-PROTOBUF_CONSTEXPR TexToRequest_File::TexToRequest_File(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.name_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.content_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_._cached_size_)*/{}} {}
-struct TexToRequest_FileDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR TexToRequest_FileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~TexToRequest_FileDefaultTypeInternal() {}
+PROTOBUF_CONSTEXPR TexToRequest_FilesEntry_DoNotUse::TexToRequest_FilesEntry_DoNotUse(
+    ::_pbi::ConstantInitialized) {}
+struct TexToRequest_FilesEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TexToRequest_FilesEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TexToRequest_FilesEntry_DoNotUseDefaultTypeInternal() {}
   union {
-    TexToRequest_File _instance;
+    TexToRequest_FilesEntry_DoNotUse _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TexToRequest_FileDefaultTypeInternal _TexToRequest_File_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TexToRequest_FilesEntry_DoNotUseDefaultTypeInternal _TexToRequest_FilesEntry_DoNotUse_default_instance_;
 template <typename>
 PROTOBUF_CONSTEXPR TexToRequest::TexToRequest(
     ::_pbi::ConstantInitialized): _impl_{
@@ -202,16 +193,18 @@ const ::uint32_t TableStruct_lily_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::ExcelModel, _impl_.sheets_),
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest_File, _internal_metadata_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse, _has_bits_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
     ~0u,  // no _weak_field_map_
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest_File, _impl_.name_),
-    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest_File, _impl_.content_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse, key_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse, value_),
+    0,
+    1,
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -237,9 +230,9 @@ static const ::_pbi::MigrationSchema
         { 12, -1, -1, sizeof(::palm::lily::v1::ExcelModel_Sheet_Cell)},
         { 23, -1, -1, sizeof(::palm::lily::v1::ExcelModel_Sheet)},
         { 33, -1, -1, sizeof(::palm::lily::v1::ExcelModel)},
-        { 42, -1, -1, sizeof(::palm::lily::v1::TexToRequest_File)},
-        { 52, -1, -1, sizeof(::palm::lily::v1::TexToRequest)},
-        { 61, -1, -1, sizeof(::palm::lily::v1::EpubBuildRequest)},
+        { 42, 52, -1, sizeof(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse)},
+        { 54, -1, -1, sizeof(::palm::lily::v1::TexToRequest)},
+        { 63, -1, -1, sizeof(::palm::lily::v1::EpubBuildRequest)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -247,7 +240,7 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::palm::lily::v1::_ExcelModel_Sheet_Cell_default_instance_._instance,
     &::palm::lily::v1::_ExcelModel_Sheet_default_instance_._instance,
     &::palm::lily::v1::_ExcelModel_default_instance_._instance,
-    &::palm::lily::v1::_TexToRequest_File_default_instance_._instance,
+    &::palm::lily::v1::_TexToRequest_FilesEntry_DoNotUse_default_instance_._instance,
     &::palm::lily::v1::_TexToRequest_default_instance_._instance,
     &::palm::lily::v1::_EpubBuildRequest_default_instance_._instance,
 };
@@ -259,25 +252,25 @@ const char descriptor_table_protodef_lily_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
     "\n\005Sheet\022\014\n\004name\030\001 \001(\t\0222\n\005cells\030\002 \003(\0132#.p"
     "alm.lily.v1.ExcelModel.Sheet.Cell\032-\n\004Cel"
     "l\022\013\n\003row\030\001 \001(\r\022\013\n\003col\030\002 \001(\r\022\013\n\003val\030\003 \001(\t"
-    "\"e\n\014TexToRequest\022.\n\005files\030\001 \003(\0132\037.palm.l"
-    "ily.v1.TexToRequest.File\032%\n\004File\022\014\n\004name"
-    "\030\001 \001(\t\022\017\n\007content\030\002 \001(\014\"\022\n\020EpubBuildRequ"
-    "est2|\n\005Excel\0227\n\005Parse\022\022.palm.lily.v1.Fil"
-    "e\032\030.palm.lily.v1.ExcelModel\"\000\022:\n\010Generat"
-    "e\022\030.palm.lily.v1.ExcelModel\032\022.palm.lily."
-    "v1.File\"\0002|\n\003Tex\0229\n\005ToPdf\022\032.palm.lily.v1"
-    ".TexToRequest\032\022.palm.lily.v1.File\"\000\022:\n\006T"
-    "oWord\022\032.palm.lily.v1.TexToRequest\032\022.palm"
-    ".lily.v1.File\"\0002E\n\004Epub\022=\n\005Build\022\036.palm."
-    "lily.v1.EpubBuildRequest\032\022.palm.lily.v1."
-    "File\"\000B.\n*com.github.saturn_xiv.palm.plu"
-    "gins.lily.v1P\001b\006proto3"
+    "\"r\n\014TexToRequest\0224\n\005files\030\001 \003(\0132%.palm.l"
+    "ily.v1.TexToRequest.FilesEntry\032,\n\nFilesE"
+    "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\"\022\n\020"
+    "EpubBuildRequest2|\n\005Excel\0227\n\005Parse\022\022.pal"
+    "m.lily.v1.File\032\030.palm.lily.v1.ExcelModel"
+    "\"\000\022:\n\010Generate\022\030.palm.lily.v1.ExcelModel"
+    "\032\022.palm.lily.v1.File\"\0002|\n\003Tex\0229\n\005ToPdf\022\032"
+    ".palm.lily.v1.TexToRequest\032\022.palm.lily.v"
+    "1.File\"\000\022:\n\006ToWord\022\032.palm.lily.v1.TexToR"
+    "equest\032\022.palm.lily.v1.File\"\0002E\n\004Epub\022=\n\005"
+    "Build\022\036.palm.lily.v1.EpubBuildRequest\032\022."
+    "palm.lily.v1.File\"\000B.\n*com.github.saturn"
+    "_xiv.palm.plugins.lily.v1P\001b\006proto3"
 };
 static ::absl::once_flag descriptor_table_lily_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_lily_2eproto = {
     false,
     false,
-    782,
+    795,
     descriptor_table_protodef_lily_2eproto,
     "lily.proto",
     &descriptor_table_lily_2eproto_once,
@@ -1250,240 +1243,13 @@ void ExcelModel::InternalSwap(ExcelModel* other) {
 }
 // ===================================================================
 
-class TexToRequest_File::_Internal {
- public:
-};
-
-TexToRequest_File::TexToRequest_File(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:palm.lily.v1.TexToRequest.File)
+TexToRequest_FilesEntry_DoNotUse::TexToRequest_FilesEntry_DoNotUse() {}
+TexToRequest_FilesEntry_DoNotUse::TexToRequest_FilesEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void TexToRequest_FilesEntry_DoNotUse::MergeFrom(const TexToRequest_FilesEntry_DoNotUse& other) {
+  MergeFromInternal(other);
 }
-TexToRequest_File::TexToRequest_File(const TexToRequest_File& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  TexToRequest_File* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_) {}
-
-    , decltype(_impl_.content_) {}
-
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  _impl_.content_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.content_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_content().empty()) {
-    _this->_impl_.content_.Set(from._internal_content(), _this->GetArenaForAllocation());
-  }
-  // @@protoc_insertion_point(copy_constructor:palm.lily.v1.TexToRequest.File)
-}
-
-inline void TexToRequest_File::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_) {}
-
-    , decltype(_impl_.content_) {}
-
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.content_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.content_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-}
-
-TexToRequest_File::~TexToRequest_File() {
-  // @@protoc_insertion_point(destructor:palm.lily.v1.TexToRequest.File)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
-  SharedDtor();
-}
-
-inline void TexToRequest_File::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.name_.Destroy();
-  _impl_.content_.Destroy();
-}
-
-void TexToRequest_File::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void TexToRequest_File::Clear() {
-// @@protoc_insertion_point(message_clear_start:palm.lily.v1.TexToRequest.File)
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _impl_.name_.ClearToEmpty();
-  _impl_.content_.ClearToEmpty();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* TexToRequest_File::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string name = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_name();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.lily.v1.TexToRequest.File.name"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // bytes content = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_content();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-::uint8_t* TexToRequest_File::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:palm.lily.v1.TexToRequest.File)
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string name = 1;
-  if (!this->_internal_name().empty()) {
-    const std::string& _s = this->_internal_name();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.TexToRequest.File.name");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
-  }
-
-  // bytes content = 2;
-  if (!this->_internal_content().empty()) {
-    const std::string& _s = this->_internal_content();
-    target = stream->WriteBytesMaybeAliased(2, _s, target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:palm.lily.v1.TexToRequest.File)
-  return target;
-}
-
-::size_t TexToRequest_File::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:palm.lily.v1.TexToRequest.File)
-  ::size_t total_size = 0;
-
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // string name = 1;
-  if (!this->_internal_name().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-                                    this->_internal_name());
-  }
-
-  // bytes content = 2;
-  if (!this->_internal_content().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-                                    this->_internal_content());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData TexToRequest_File::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    TexToRequest_File::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*TexToRequest_File::GetClassData() const { return &_class_data_; }
-
-
-void TexToRequest_File::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<TexToRequest_File*>(&to_msg);
-  auto& from = static_cast<const TexToRequest_File&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.lily.v1.TexToRequest.File)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (!from._internal_name().empty()) {
-    _this->_internal_set_name(from._internal_name());
-  }
-  if (!from._internal_content().empty()) {
-    _this->_internal_set_content(from._internal_content());
-  }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void TexToRequest_File::CopyFrom(const TexToRequest_File& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:palm.lily.v1.TexToRequest.File)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool TexToRequest_File::IsInitialized() const {
-  return true;
-}
-
-void TexToRequest_File::InternalSwap(TexToRequest_File* other) {
-  using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.content_, lhs_arena,
-                                       &other->_impl_.content_, rhs_arena);
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata TexToRequest_File::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata TexToRequest_FilesEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lily_2eproto_getter, &descriptor_table_lily_2eproto_once,
       file_level_metadata_lily_2eproto[4]);
@@ -1503,17 +1269,18 @@ TexToRequest::TexToRequest(const TexToRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   TexToRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.files_){from._impl_.files_}
+      /*decltype(_impl_.files_)*/{}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.files_.MergeFrom(from._impl_.files_);
   // @@protoc_insertion_point(copy_constructor:palm.lily.v1.TexToRequest)
 }
 
 inline void TexToRequest::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
-      decltype(_impl_.files_){arena}
+      /*decltype(_impl_.files_)*/{::_pbi::ArenaInitialized(), arena}
     , /*decltype(_impl_._cached_size_)*/{}
   };
 }
@@ -1529,7 +1296,7 @@ TexToRequest::~TexToRequest() {
 
 inline void TexToRequest::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _internal_mutable_files()->~RepeatedPtrField();
+  _impl_.files_.~MapField();
 }
 
 void TexToRequest::SetCachedSize(int size) const {
@@ -1542,7 +1309,7 @@ void TexToRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_files()->Clear();
+  _impl_.files_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1552,13 +1319,13 @@ const char* TexToRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
     ::uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // repeated .palm.lily.v1.TexToRequest.File files = 1;
+      // map<string, bytes> files = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_files(), ptr);
+            ptr = ctx->ParseMessage(&_impl_.files_, ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
@@ -1595,12 +1362,29 @@ failure:
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .palm.lily.v1.TexToRequest.File files = 1;
-  for (unsigned i = 0,
-      n = static_cast<unsigned>(this->_internal_files_size()); i < n; i++) {
-    const auto& repfield = this->_internal_files(i);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
+  // map<string, bytes> files = 1;
+  if (!this->_internal_files().empty()) {
+    using MapType = ::_pb::Map<std::string, std::string>;
+    using WireHelper = TexToRequest_FilesEntry_DoNotUse::Funcs;
+    const auto& map_field = this->_internal_files();
+    auto check_utf8 = [](const MapType::value_type& entry) {
+      (void)entry;
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+          entry.first.data(), static_cast<int>(entry.first.length()),
+ ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.TexToRequest.files");
+    };
+
+    if (stream->IsSerializationDeterministic() && map_field.size() > 1) {
+      for (const auto& entry : ::_pbi::MapSorterPtr<MapType>(map_field)) {
+        target = WireHelper::InternalSerialize(1, entry.first, entry.second, target, stream);
+        check_utf8(entry);
+      }
+    } else {
+      for (const auto& entry : map_field) {
+        target = WireHelper::InternalSerialize(1, entry.first, entry.second, target, stream);
+        check_utf8(entry);
+      }
+    }
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1619,11 +1403,13 @@ failure:
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .palm.lily.v1.TexToRequest.File files = 1;
-  total_size += 1UL * this->_internal_files_size();
-  for (const auto& msg : this->_internal_files()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  // map<string, bytes> files = 1;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_files_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+      it = this->_internal_files().begin();
+      it != this->_internal_files().end(); ++it) {
+    total_size += TexToRequest_FilesEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -1644,7 +1430,7 @@ void TexToRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::P
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_files()->MergeFrom(from._internal_files());
+  _this->_impl_.files_.MergeFrom(from._impl_.files_);
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1662,7 +1448,7 @@ bool TexToRequest::IsInitialized() const {
 void TexToRequest::InternalSwap(TexToRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  _internal_mutable_files()->InternalSwap(other->_internal_mutable_files());
+  _impl_.files_.InternalSwap(&other->_impl_.files_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata TexToRequest::GetMetadata() const {
@@ -1729,9 +1515,9 @@ template<> PROTOBUF_NOINLINE ::palm::lily::v1::ExcelModel*
 Arena::CreateMaybeMessage< ::palm::lily::v1::ExcelModel >(Arena* arena) {
   return Arena::CreateMessageInternal< ::palm::lily::v1::ExcelModel >(arena);
 }
-template<> PROTOBUF_NOINLINE ::palm::lily::v1::TexToRequest_File*
-Arena::CreateMaybeMessage< ::palm::lily::v1::TexToRequest_File >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::palm::lily::v1::TexToRequest_File >(arena);
+template<> PROTOBUF_NOINLINE ::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse*
+Arena::CreateMaybeMessage< ::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::palm::lily::v1::TexToRequest*
 Arena::CreateMaybeMessage< ::palm::lily::v1::TexToRequest >(Arena* arena) {

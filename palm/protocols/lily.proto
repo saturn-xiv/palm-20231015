@@ -35,13 +35,7 @@ service Tex {
   rpc ToWord(TexToRequest) returns (File) {}
 }
 
-message TexToRequest {
-  message File {
-    string name = 1;
-    bytes content = 2;
-  }
-  repeated File files = 1;
-}
+message TexToRequest { map<string, bytes> files = 1; }
 
 // ----------------------------------------------------------------------------
 

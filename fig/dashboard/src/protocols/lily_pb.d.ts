@@ -106,10 +106,8 @@ export namespace ExcelModel {
 }
 
 export class TexToRequest extends jspb.Message {
-  getFilesList(): Array<TexToRequest.File>;
-  setFilesList(value: Array<TexToRequest.File>): TexToRequest;
-  clearFilesList(): TexToRequest;
-  addFiles(value?: TexToRequest.File, index?: number): TexToRequest.File;
+  getFilesMap(): jspb.Map<string, Uint8Array | string>;
+  clearFilesMap(): TexToRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TexToRequest.AsObject;
@@ -121,33 +119,8 @@ export class TexToRequest extends jspb.Message {
 
 export namespace TexToRequest {
   export type AsObject = {
-    filesList: Array<TexToRequest.File.AsObject>,
+    filesMap: Array<[string, Uint8Array | string]>,
   }
-
-  export class File extends jspb.Message {
-    getName(): string;
-    setName(value: string): File;
-
-    getContent(): Uint8Array | string;
-    getContent_asU8(): Uint8Array;
-    getContent_asB64(): string;
-    setContent(value: Uint8Array | string): File;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): File.AsObject;
-    static toObject(includeInstance: boolean, msg: File): File.AsObject;
-    static serializeBinaryToWriter(message: File, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): File;
-    static deserializeBinaryFromReader(message: File, reader: jspb.BinaryReader): File;
-  }
-
-  export namespace File {
-    export type AsObject = {
-      name: string,
-      content: Uint8Array | string,
-    }
-  }
-
 }
 
 export class EpubBuildRequest extends jspb.Message {
