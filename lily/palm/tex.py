@@ -18,7 +18,9 @@ class Service(lily_pb2_grpc.TexServicer):
                 with open(os.path.join(root, name), mode='wb') as fd:
                     logging.debug("generate file %s/%s", root, name)
                     fd.write(request.files[name])
-            subprocess.run(['xelatex', '-halt-on-error', 'main.tex'], cwd=root)
+            for x in range(2):
+                subprocess.run(
+                    ['xelatex', '-halt-on-error', 'main.tex'], cwd=root)
             with open(os.path.join(root, 'main.pdf'), mode="rb") as fd:
                 response = lily_pb2.File()
                 response.content_type = 'application/pdf'
