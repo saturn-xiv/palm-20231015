@@ -72,6 +72,9 @@ extern FileDefaultTypeInternal _File_default_instance_;
 class TexToRequest;
 struct TexToRequestDefaultTypeInternal;
 extern TexToRequestDefaultTypeInternal _TexToRequest_default_instance_;
+class TexToRequest_File;
+struct TexToRequest_FileDefaultTypeInternal;
+extern TexToRequest_FileDefaultTypeInternal _TexToRequest_File_default_instance_;
 }  // namespace v1
 }  // namespace lily
 }  // namespace palm
@@ -88,6 +91,8 @@ template <>
 ::palm::lily::v1::File* Arena::CreateMaybeMessage<::palm::lily::v1::File>(Arena*);
 template <>
 ::palm::lily::v1::TexToRequest* Arena::CreateMaybeMessage<::palm::lily::v1::TexToRequest>(Arena*);
+template <>
+::palm::lily::v1::TexToRequest_File* Arena::CreateMaybeMessage<::palm::lily::v1::TexToRequest_File>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 
 namespace palm {
@@ -833,6 +838,193 @@ class ExcelModel final :
   friend struct ::TableStruct_lily_2eproto;
 };// -------------------------------------------------------------------
 
+class TexToRequest_File final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.lily.v1.TexToRequest.File) */ {
+ public:
+  inline TexToRequest_File() : TexToRequest_File(nullptr) {}
+  ~TexToRequest_File() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR TexToRequest_File(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TexToRequest_File(const TexToRequest_File& from);
+  TexToRequest_File(TexToRequest_File&& from) noexcept
+    : TexToRequest_File() {
+    *this = ::std::move(from);
+  }
+
+  inline TexToRequest_File& operator=(const TexToRequest_File& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TexToRequest_File& operator=(TexToRequest_File&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TexToRequest_File& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TexToRequest_File* internal_default_instance() {
+    return reinterpret_cast<const TexToRequest_File*>(
+               &_TexToRequest_File_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(TexToRequest_File& a, TexToRequest_File& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TexToRequest_File* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TexToRequest_File* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TexToRequest_File* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TexToRequest_File>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TexToRequest_File& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const TexToRequest_File& from) {
+    TexToRequest_File::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TexToRequest_File* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.lily.v1.TexToRequest.File";
+  }
+  protected:
+  explicit TexToRequest_File(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNameFieldNumber = 1,
+    kContentFieldNumber = 2,
+  };
+  // string name = 1;
+  void clear_name() ;
+  const std::string& name() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_name(Arg_&& arg, Args_... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* ptr);
+
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
+      const std::string& value);
+  std::string* _internal_mutable_name();
+
+  public:
+  // bytes content = 2;
+  void clear_content() ;
+  const std::string& content() const;
+
+
+
+
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_content(Arg_&& arg, Args_... args);
+  std::string* mutable_content();
+  PROTOBUF_NODISCARD std::string* release_content();
+  void set_allocated_content(std::string* ptr);
+
+  private:
+  const std::string& _internal_content() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_content(
+      const std::string& value);
+  std::string* _internal_mutable_content();
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.lily.v1.TexToRequest.File)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr content_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lily_2eproto;
+};// -------------------------------------------------------------------
+
 class TexToRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.lily.v1.TexToRequest) */ {
  public:
@@ -889,7 +1081,7 @@ class TexToRequest final :
                &_TexToRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   friend void swap(TexToRequest& a, TexToRequest& b) {
     a.Swap(&b);
@@ -958,31 +1150,33 @@ class TexToRequest final :
 
   // nested types ----------------------------------------------------
 
+  typedef TexToRequest_File File;
+
   // accessors -------------------------------------------------------
 
   enum : int {
-    kBodyFieldNumber = 1,
+    kFilesFieldNumber = 1,
   };
-  // string body = 1;
-  void clear_body() ;
-  const std::string& body() const;
-
-
-
-
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_body(Arg_&& arg, Args_... args);
-  std::string* mutable_body();
-  PROTOBUF_NODISCARD std::string* release_body();
-  void set_allocated_body(std::string* ptr);
-
+  // repeated .palm.lily.v1.TexToRequest.File files = 1;
+  int files_size() const;
   private:
-  const std::string& _internal_body() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_body(
-      const std::string& value);
-  std::string* _internal_mutable_body();
+  int _internal_files_size() const;
 
   public:
+  void clear_files() ;
+  ::palm::lily::v1::TexToRequest_File* mutable_files(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::lily::v1::TexToRequest_File >*
+      mutable_files();
+  private:
+  const ::palm::lily::v1::TexToRequest_File& _internal_files(int index) const;
+  ::palm::lily::v1::TexToRequest_File* _internal_add_files();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<::palm::lily::v1::TexToRequest_File>& _internal_files() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<::palm::lily::v1::TexToRequest_File>* _internal_mutable_files();
+  public:
+  const ::palm::lily::v1::TexToRequest_File& files(int index) const;
+  ::palm::lily::v1::TexToRequest_File* add_files();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::lily::v1::TexToRequest_File >&
+      files() const;
   // @@protoc_insertion_point(class_scope:palm.lily.v1.TexToRequest)
  private:
   class _Internal;
@@ -991,7 +1185,7 @@ class TexToRequest final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr body_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::lily::v1::TexToRequest_File > files_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -1053,7 +1247,7 @@ class EpubBuildRequest final :
                &_EpubBuildRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   friend void swap(EpubBuildRequest& a, EpubBuildRequest& b) {
     a.Swap(&b);
@@ -1494,53 +1688,152 @@ ExcelModel::_internal_mutable_sheets() {
 
 // -------------------------------------------------------------------
 
-// TexToRequest
+// TexToRequest_File
 
-// string body = 1;
-inline void TexToRequest::clear_body() {
-  _impl_.body_.ClearToEmpty();
+// string name = 1;
+inline void TexToRequest_File::clear_name() {
+  _impl_.name_.ClearToEmpty();
 }
-inline const std::string& TexToRequest::body() const {
-  // @@protoc_insertion_point(field_get:palm.lily.v1.TexToRequest.body)
-  return _internal_body();
+inline const std::string& TexToRequest_File::name() const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.TexToRequest.File.name)
+  return _internal_name();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void TexToRequest::set_body(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void TexToRequest_File::set_name(Arg_&& arg,
                                                      Args_... args) {
   ;
-  _impl_.body_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.lily.v1.TexToRequest.body)
+  _impl_.name_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.lily.v1.TexToRequest.File.name)
 }
-inline std::string* TexToRequest::mutable_body() {
-  std::string* _s = _internal_mutable_body();
-  // @@protoc_insertion_point(field_mutable:palm.lily.v1.TexToRequest.body)
+inline std::string* TexToRequest_File::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:palm.lily.v1.TexToRequest.File.name)
   return _s;
 }
-inline const std::string& TexToRequest::_internal_body() const {
-  return _impl_.body_.Get();
+inline const std::string& TexToRequest_File::_internal_name() const {
+  return _impl_.name_.Get();
 }
-inline void TexToRequest::_internal_set_body(const std::string& value) {
+inline void TexToRequest_File::_internal_set_name(const std::string& value) {
   ;
 
 
-  _impl_.body_.Set(value, GetArenaForAllocation());
+  _impl_.name_.Set(value, GetArenaForAllocation());
 }
-inline std::string* TexToRequest::_internal_mutable_body() {
+inline std::string* TexToRequest_File::_internal_mutable_name() {
   ;
-  return _impl_.body_.Mutable( GetArenaForAllocation());
+  return _impl_.name_.Mutable( GetArenaForAllocation());
 }
-inline std::string* TexToRequest::release_body() {
-  // @@protoc_insertion_point(field_release:palm.lily.v1.TexToRequest.body)
-  return _impl_.body_.Release();
+inline std::string* TexToRequest_File::release_name() {
+  // @@protoc_insertion_point(field_release:palm.lily.v1.TexToRequest.File.name)
+  return _impl_.name_.Release();
 }
-inline void TexToRequest::set_allocated_body(std::string* value) {
-  _impl_.body_.SetAllocated(value, GetArenaForAllocation());
+inline void TexToRequest_File::set_allocated_name(std::string* value) {
+  _impl_.name_.SetAllocated(value, GetArenaForAllocation());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.body_.IsDefault()) {
-          _impl_.body_.Set("", GetArenaForAllocation());
+        if (_impl_.name_.IsDefault()) {
+          _impl_.name_.Set("", GetArenaForAllocation());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.TexToRequest.body)
+  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.TexToRequest.File.name)
+}
+
+// bytes content = 2;
+inline void TexToRequest_File::clear_content() {
+  _impl_.content_.ClearToEmpty();
+}
+inline const std::string& TexToRequest_File::content() const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.TexToRequest.File.content)
+  return _internal_content();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void TexToRequest_File::set_content(Arg_&& arg,
+                                                     Args_... args) {
+  ;
+  _impl_.content_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.lily.v1.TexToRequest.File.content)
+}
+inline std::string* TexToRequest_File::mutable_content() {
+  std::string* _s = _internal_mutable_content();
+  // @@protoc_insertion_point(field_mutable:palm.lily.v1.TexToRequest.File.content)
+  return _s;
+}
+inline const std::string& TexToRequest_File::_internal_content() const {
+  return _impl_.content_.Get();
+}
+inline void TexToRequest_File::_internal_set_content(const std::string& value) {
+  ;
+
+
+  _impl_.content_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TexToRequest_File::_internal_mutable_content() {
+  ;
+  return _impl_.content_.Mutable( GetArenaForAllocation());
+}
+inline std::string* TexToRequest_File::release_content() {
+  // @@protoc_insertion_point(field_release:palm.lily.v1.TexToRequest.File.content)
+  return _impl_.content_.Release();
+}
+inline void TexToRequest_File::set_allocated_content(std::string* value) {
+  _impl_.content_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.content_.IsDefault()) {
+          _impl_.content_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.TexToRequest.File.content)
+}
+
+// -------------------------------------------------------------------
+
+// TexToRequest
+
+// repeated .palm.lily.v1.TexToRequest.File files = 1;
+inline int TexToRequest::_internal_files_size() const {
+  return _impl_.files_.size();
+}
+inline int TexToRequest::files_size() const {
+  return _internal_files_size();
+}
+inline void TexToRequest::clear_files() {
+  _internal_mutable_files()->Clear();
+}
+inline ::palm::lily::v1::TexToRequest_File* TexToRequest::mutable_files(int index) {
+  // @@protoc_insertion_point(field_mutable:palm.lily.v1.TexToRequest.files)
+  return _internal_mutable_files()->Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::lily::v1::TexToRequest_File >*
+TexToRequest::mutable_files() {
+  // @@protoc_insertion_point(field_mutable_list:palm.lily.v1.TexToRequest.files)
+  return _internal_mutable_files();
+}
+inline const ::palm::lily::v1::TexToRequest_File& TexToRequest::_internal_files(int index) const {
+  return _internal_files().Get(index);
+}
+inline const ::palm::lily::v1::TexToRequest_File& TexToRequest::files(int index) const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.TexToRequest.files)
+  return _internal_files(index);
+}
+inline ::palm::lily::v1::TexToRequest_File* TexToRequest::_internal_add_files() {
+  return _internal_mutable_files()->Add();
+}
+inline ::palm::lily::v1::TexToRequest_File* TexToRequest::add_files() {
+  ::palm::lily::v1::TexToRequest_File* _add = _internal_add_files();
+  // @@protoc_insertion_point(field_add:palm.lily.v1.TexToRequest.files)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::lily::v1::TexToRequest_File >&
+TexToRequest::files() const {
+  // @@protoc_insertion_point(field_list:palm.lily.v1.TexToRequest.files)
+  return _internal_files();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<::palm::lily::v1::TexToRequest_File>&
+TexToRequest::_internal_files() const {
+  return _impl_.files_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<::palm::lily::v1::TexToRequest_File>*
+TexToRequest::_internal_mutable_files() {
+  return &_impl_.files_;
 }
 
 // -------------------------------------------------------------------

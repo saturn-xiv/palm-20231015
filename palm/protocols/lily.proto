@@ -36,7 +36,11 @@ service Tex {
 }
 
 message TexToRequest {
-  string body = 1;
+  message File {
+    string name = 1;
+    bytes content = 2;
+  }
+  repeated File files = 1;
 }
 
 // ----------------------------------------------------------------------------

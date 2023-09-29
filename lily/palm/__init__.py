@@ -9,7 +9,7 @@ import pika
 import grpc
 from grpc_health.v1 import health_pb2, health, health_pb2_grpc
 
-from . import lily_pb2_grpc, excel
+from . import lily_pb2_grpc, excel, tex
 
 
 VERSION = '2023.9.29'
@@ -38,6 +38,7 @@ def _setup_health_thread(server):
 def start_server(addr, workers):
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=workers))
     lily_pb2_grpc.add_ExcelServicer_to_server(excel.Service(), server)
+    lily_pb2_grpc.add_TexServicer_to_server(tex.Service(), server)
     _setup_health_thread(server)
     server.add_insecure_port(addr)
     server.start()
