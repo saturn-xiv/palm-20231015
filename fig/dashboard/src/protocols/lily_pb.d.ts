@@ -1,117 +1,106 @@
 import * as jspb from 'google-protobuf'
 
-import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
 
 
-export class HttpResponse extends jspb.Message {
+export class File extends jspb.Message {
   getContentType(): string;
-  setContentType(value: string): HttpResponse;
+  setContentType(value: string): File;
+  hasContentType(): boolean;
+  clearContentType(): File;
 
-  getBody(): Uint8Array | string;
-  getBody_asU8(): Uint8Array;
-  getBody_asB64(): string;
-  setBody(value: Uint8Array | string): HttpResponse;
+  getPayload(): Uint8Array | string;
+  getPayload_asU8(): Uint8Array;
+  getPayload_asB64(): string;
+  setPayload(value: Uint8Array | string): File;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): HttpResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: HttpResponse): HttpResponse.AsObject;
-  static serializeBinaryToWriter(message: HttpResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): HttpResponse;
-  static deserializeBinaryFromReader(message: HttpResponse, reader: jspb.BinaryReader): HttpResponse;
+  toObject(includeInstance?: boolean): File.AsObject;
+  static toObject(includeInstance: boolean, msg: File): File.AsObject;
+  static serializeBinaryToWriter(message: File, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): File;
+  static deserializeBinaryFromReader(message: File, reader: jspb.BinaryReader): File;
 }
 
-export namespace HttpResponse {
+export namespace File {
   export type AsObject = {
-    contentType: string,
-    body: Uint8Array | string,
+    contentType?: string,
+    payload: Uint8Array | string,
+  }
+
+  export enum ContentTypeCase { 
+    _CONTENT_TYPE_NOT_SET = 0,
+    CONTENT_TYPE = 1,
   }
 }
 
-export class ExcelLoadRequest extends jspb.Message {
-  getId(): string;
-  setId(value: string): ExcelLoadRequest;
-
-  getData(): Uint8Array | string;
-  getData_asU8(): Uint8Array;
-  getData_asB64(): string;
-  setData(value: Uint8Array | string): ExcelLoadRequest;
+export class ExcelModel extends jspb.Message {
+  getSheetsList(): Array<ExcelModel.Sheet>;
+  setSheetsList(value: Array<ExcelModel.Sheet>): ExcelModel;
+  clearSheetsList(): ExcelModel;
+  addSheets(value?: ExcelModel.Sheet, index?: number): ExcelModel.Sheet;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ExcelLoadRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: ExcelLoadRequest): ExcelLoadRequest.AsObject;
-  static serializeBinaryToWriter(message: ExcelLoadRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ExcelLoadRequest;
-  static deserializeBinaryFromReader(message: ExcelLoadRequest, reader: jspb.BinaryReader): ExcelLoadRequest;
+  toObject(includeInstance?: boolean): ExcelModel.AsObject;
+  static toObject(includeInstance: boolean, msg: ExcelModel): ExcelModel.AsObject;
+  static serializeBinaryToWriter(message: ExcelModel, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ExcelModel;
+  static deserializeBinaryFromReader(message: ExcelModel, reader: jspb.BinaryReader): ExcelModel;
 }
 
-export namespace ExcelLoadRequest {
+export namespace ExcelModel {
   export type AsObject = {
-    id: string,
-    data: Uint8Array | string,
-  }
-}
-
-export class ExcelQueryRequest extends jspb.Message {
-  getId(): string;
-  setId(value: string): ExcelQueryRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ExcelQueryRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: ExcelQueryRequest): ExcelQueryRequest.AsObject;
-  static serializeBinaryToWriter(message: ExcelQueryRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ExcelQueryRequest;
-  static deserializeBinaryFromReader(message: ExcelQueryRequest, reader: jspb.BinaryReader): ExcelQueryRequest;
-}
-
-export namespace ExcelQueryRequest {
-  export type AsObject = {
-    id: string,
-  }
-}
-
-export class ExcelQueryResponse extends jspb.Message {
-  getItemsList(): Array<ExcelQueryResponse.Item>;
-  setItemsList(value: Array<ExcelQueryResponse.Item>): ExcelQueryResponse;
-  clearItemsList(): ExcelQueryResponse;
-  addItems(value?: ExcelQueryResponse.Item, index?: number): ExcelQueryResponse.Item;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ExcelQueryResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: ExcelQueryResponse): ExcelQueryResponse.AsObject;
-  static serializeBinaryToWriter(message: ExcelQueryResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ExcelQueryResponse;
-  static deserializeBinaryFromReader(message: ExcelQueryResponse, reader: jspb.BinaryReader): ExcelQueryResponse;
-}
-
-export namespace ExcelQueryResponse {
-  export type AsObject = {
-    itemsList: Array<ExcelQueryResponse.Item.AsObject>,
+    sheetsList: Array<ExcelModel.Sheet.AsObject>,
   }
 
-  export class Item extends jspb.Message {
-    getX(): number;
-    setX(value: number): Item;
+  export class Sheet extends jspb.Message {
+    getName(): string;
+    setName(value: string): Sheet;
 
-    getY(): number;
-    setY(value: number): Item;
-
-    getV(): string;
-    setV(value: string): Item;
+    getCellsList(): Array<ExcelModel.Sheet.Cell>;
+    setCellsList(value: Array<ExcelModel.Sheet.Cell>): Sheet;
+    clearCellsList(): Sheet;
+    addCells(value?: ExcelModel.Sheet.Cell, index?: number): ExcelModel.Sheet.Cell;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Item.AsObject;
-    static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
-    static serializeBinaryToWriter(message: Item, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Item;
-    static deserializeBinaryFromReader(message: Item, reader: jspb.BinaryReader): Item;
+    toObject(includeInstance?: boolean): Sheet.AsObject;
+    static toObject(includeInstance: boolean, msg: Sheet): Sheet.AsObject;
+    static serializeBinaryToWriter(message: Sheet, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Sheet;
+    static deserializeBinaryFromReader(message: Sheet, reader: jspb.BinaryReader): Sheet;
   }
 
-  export namespace Item {
+  export namespace Sheet {
     export type AsObject = {
-      x: number,
-      y: number,
-      v: string,
+      name: string,
+      cellsList: Array<ExcelModel.Sheet.Cell.AsObject>,
     }
+
+    export class Cell extends jspb.Message {
+      getRow(): number;
+      setRow(value: number): Cell;
+
+      getCol(): number;
+      setCol(value: number): Cell;
+
+      getVal(): string;
+      setVal(value: string): Cell;
+
+      serializeBinary(): Uint8Array;
+      toObject(includeInstance?: boolean): Cell.AsObject;
+      static toObject(includeInstance: boolean, msg: Cell): Cell.AsObject;
+      static serializeBinaryToWriter(message: Cell, writer: jspb.BinaryWriter): void;
+      static deserializeBinary(bytes: Uint8Array): Cell;
+      static deserializeBinaryFromReader(message: Cell, reader: jspb.BinaryReader): Cell;
+    }
+
+    export namespace Cell {
+      export type AsObject = {
+        row: number,
+        col: number,
+        val: string,
+      }
+    }
+
   }
 
 }

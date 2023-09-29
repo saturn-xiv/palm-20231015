@@ -3,43 +3,36 @@ option java_multiple_files = true;
 option java_package = "com.github.saturn_xiv.palm.plugins.lily.v1";
 package palm.lily.v1;
 
-import "google/protobuf/empty.proto";
-
-message HttpResponse {
-  string content_type = 1;
-  bytes body = 2;
+message File {
+  optional string content_type = 1;
+  bytes payload = 2;
 }
 
 // ----------------------------------------------------------------------------
 
 service Excel {
-  rpc Load(ExcelLoadRequest) returns (google.protobuf.Empty) {}
-  rpc Query(ExcelQueryRequest) returns (ExcelQueryResponse) {}
+  rpc Parse(File) returns (ExcelModel) {}
+  rpc Generate(ExcelModel) returns (File) {}
 }
 
-message ExcelLoadRequest {
-  string id = 1;
-  bytes data = 2;
-}
-
-message ExcelQueryRequest {
-  string id = 1;
-}
-
-message ExcelQueryResponse {
-  message Item {
-    uint32 x = 1;
-    uint32 y = 2;
-    string v = 3;
+message ExcelModel {
+  message Sheet {
+    message Cell {
+      uint32 row = 1;
+      uint32 col = 2;
+      string val = 3;
+    }
+    string name = 1;
+    repeated Cell cells = 2;
   }
-  repeated Item items = 1;
+  repeated Sheet sheets = 1;
 }
 
 // ----------------------------------------------------------------------------
 
 service Tex {
-  rpc ToPdf(TexToRequest) returns (HttpResponse) {}
-  rpc ToWords(TexToRequest) returns (HttpResponse) {}
+  rpc ToPdf(TexToRequest) returns (File) {}
+  rpc ToWord(TexToRequest) returns (File) {}
 }
 
 message TexToRequest {
@@ -49,7 +42,7 @@ message TexToRequest {
 // ----------------------------------------------------------------------------
 
 service Epub {
-  rpc Build(EpubBuildRequest) returns (HttpResponse) {}
+  rpc Build(EpubBuildRequest) returns (File) {}
 }
 
 message EpubBuildRequest {}

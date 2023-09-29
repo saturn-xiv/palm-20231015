@@ -17,7 +17,6 @@
 
 import * as grpcWeb from 'grpc-web';
 
-import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
 import * as lily_pb from './lily_pb';
 
 
@@ -40,90 +39,90 @@ export class ExcelClient {
     this.options_ = options;
   }
 
-  methodDescriptorLoad = new grpcWeb.MethodDescriptor(
-    '/palm.lily.v1.Excel/Load',
+  methodDescriptorParse = new grpcWeb.MethodDescriptor(
+    '/palm.lily.v1.Excel/Parse',
     grpcWeb.MethodType.UNARY,
-    lily_pb.ExcelLoadRequest,
-    google_protobuf_empty_pb.Empty,
-    (request: lily_pb.ExcelLoadRequest) => {
+    lily_pb.File,
+    lily_pb.ExcelModel,
+    (request: lily_pb.File) => {
       return request.serializeBinary();
     },
-    google_protobuf_empty_pb.Empty.deserializeBinary
+    lily_pb.ExcelModel.deserializeBinary
   );
 
-  load(
-    request: lily_pb.ExcelLoadRequest,
-    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+  parse(
+    request: lily_pb.File,
+    metadata: grpcWeb.Metadata | null): Promise<lily_pb.ExcelModel>;
 
-  load(
-    request: lily_pb.ExcelLoadRequest,
+  parse(
+    request: lily_pb.File,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+               response: lily_pb.ExcelModel) => void): grpcWeb.ClientReadableStream<lily_pb.ExcelModel>;
 
-  load(
-    request: lily_pb.ExcelLoadRequest,
+  parse(
+    request: lily_pb.File,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void) {
+               response: lily_pb.ExcelModel) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.lily.v1.Excel/Load',
+          '/palm.lily.v1.Excel/Parse',
         request,
         metadata || {},
-        this.methodDescriptorLoad,
+        this.methodDescriptorParse,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.lily.v1.Excel/Load',
+      '/palm.lily.v1.Excel/Parse',
     request,
     metadata || {},
-    this.methodDescriptorLoad);
+    this.methodDescriptorParse);
   }
 
-  methodDescriptorQuery = new grpcWeb.MethodDescriptor(
-    '/palm.lily.v1.Excel/Query',
+  methodDescriptorGenerate = new grpcWeb.MethodDescriptor(
+    '/palm.lily.v1.Excel/Generate',
     grpcWeb.MethodType.UNARY,
-    lily_pb.ExcelQueryRequest,
-    lily_pb.ExcelQueryResponse,
-    (request: lily_pb.ExcelQueryRequest) => {
+    lily_pb.ExcelModel,
+    lily_pb.File,
+    (request: lily_pb.ExcelModel) => {
       return request.serializeBinary();
     },
-    lily_pb.ExcelQueryResponse.deserializeBinary
+    lily_pb.File.deserializeBinary
   );
 
-  query(
-    request: lily_pb.ExcelQueryRequest,
-    metadata: grpcWeb.Metadata | null): Promise<lily_pb.ExcelQueryResponse>;
+  generate(
+    request: lily_pb.ExcelModel,
+    metadata: grpcWeb.Metadata | null): Promise<lily_pb.File>;
 
-  query(
-    request: lily_pb.ExcelQueryRequest,
+  generate(
+    request: lily_pb.ExcelModel,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: lily_pb.ExcelQueryResponse) => void): grpcWeb.ClientReadableStream<lily_pb.ExcelQueryResponse>;
+               response: lily_pb.File) => void): grpcWeb.ClientReadableStream<lily_pb.File>;
 
-  query(
-    request: lily_pb.ExcelQueryRequest,
+  generate(
+    request: lily_pb.ExcelModel,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: lily_pb.ExcelQueryResponse) => void) {
+               response: lily_pb.File) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.lily.v1.Excel/Query',
+          '/palm.lily.v1.Excel/Generate',
         request,
         metadata || {},
-        this.methodDescriptorQuery,
+        this.methodDescriptorGenerate,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.lily.v1.Excel/Query',
+      '/palm.lily.v1.Excel/Generate',
     request,
     metadata || {},
-    this.methodDescriptorQuery);
+    this.methodDescriptorGenerate);
   }
 
 }
@@ -151,28 +150,28 @@ export class TexClient {
     '/palm.lily.v1.Tex/ToPdf',
     grpcWeb.MethodType.UNARY,
     lily_pb.TexToRequest,
-    lily_pb.HttpResponse,
+    lily_pb.File,
     (request: lily_pb.TexToRequest) => {
       return request.serializeBinary();
     },
-    lily_pb.HttpResponse.deserializeBinary
+    lily_pb.File.deserializeBinary
   );
 
   toPdf(
     request: lily_pb.TexToRequest,
-    metadata: grpcWeb.Metadata | null): Promise<lily_pb.HttpResponse>;
+    metadata: grpcWeb.Metadata | null): Promise<lily_pb.File>;
 
   toPdf(
     request: lily_pb.TexToRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: lily_pb.HttpResponse) => void): grpcWeb.ClientReadableStream<lily_pb.HttpResponse>;
+               response: lily_pb.File) => void): grpcWeb.ClientReadableStream<lily_pb.File>;
 
   toPdf(
     request: lily_pb.TexToRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: lily_pb.HttpResponse) => void) {
+               response: lily_pb.File) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
@@ -190,47 +189,47 @@ export class TexClient {
     this.methodDescriptorToPdf);
   }
 
-  methodDescriptorToWords = new grpcWeb.MethodDescriptor(
-    '/palm.lily.v1.Tex/ToWords',
+  methodDescriptorToWord = new grpcWeb.MethodDescriptor(
+    '/palm.lily.v1.Tex/ToWord',
     grpcWeb.MethodType.UNARY,
     lily_pb.TexToRequest,
-    lily_pb.HttpResponse,
+    lily_pb.File,
     (request: lily_pb.TexToRequest) => {
       return request.serializeBinary();
     },
-    lily_pb.HttpResponse.deserializeBinary
+    lily_pb.File.deserializeBinary
   );
 
-  toWords(
+  toWord(
     request: lily_pb.TexToRequest,
-    metadata: grpcWeb.Metadata | null): Promise<lily_pb.HttpResponse>;
+    metadata: grpcWeb.Metadata | null): Promise<lily_pb.File>;
 
-  toWords(
+  toWord(
     request: lily_pb.TexToRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: lily_pb.HttpResponse) => void): grpcWeb.ClientReadableStream<lily_pb.HttpResponse>;
+               response: lily_pb.File) => void): grpcWeb.ClientReadableStream<lily_pb.File>;
 
-  toWords(
+  toWord(
     request: lily_pb.TexToRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: lily_pb.HttpResponse) => void) {
+               response: lily_pb.File) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.lily.v1.Tex/ToWords',
+          '/palm.lily.v1.Tex/ToWord',
         request,
         metadata || {},
-        this.methodDescriptorToWords,
+        this.methodDescriptorToWord,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.lily.v1.Tex/ToWords',
+      '/palm.lily.v1.Tex/ToWord',
     request,
     metadata || {},
-    this.methodDescriptorToWords);
+    this.methodDescriptorToWord);
   }
 
 }
@@ -258,28 +257,28 @@ export class EpubClient {
     '/palm.lily.v1.Epub/Build',
     grpcWeb.MethodType.UNARY,
     lily_pb.EpubBuildRequest,
-    lily_pb.HttpResponse,
+    lily_pb.File,
     (request: lily_pb.EpubBuildRequest) => {
       return request.serializeBinary();
     },
-    lily_pb.HttpResponse.deserializeBinary
+    lily_pb.File.deserializeBinary
   );
 
   build(
     request: lily_pb.EpubBuildRequest,
-    metadata: grpcWeb.Metadata | null): Promise<lily_pb.HttpResponse>;
+    metadata: grpcWeb.Metadata | null): Promise<lily_pb.File>;
 
   build(
     request: lily_pb.EpubBuildRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: lily_pb.HttpResponse) => void): grpcWeb.ClientReadableStream<lily_pb.HttpResponse>;
+               response: lily_pb.File) => void): grpcWeb.ClientReadableStream<lily_pb.File>;
 
   build(
     request: lily_pb.EpubBuildRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: lily_pb.HttpResponse) => void) {
+               response: lily_pb.File) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +

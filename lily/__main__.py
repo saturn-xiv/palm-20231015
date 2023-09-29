@@ -4,7 +4,7 @@ import sys
 import tomllib
 import pika
 
-from palm import VERSION, excel, postgresql_url, rabbitmq_parameters
+from palm import VERSION, start_server
 
 NAME = 'lily'
 
@@ -20,9 +20,6 @@ if __name__ == '__main__':
     parser.add_argument('-d', '--debug',
                         action='store_true',
                         help='run on debug mode')
-    parser.add_argument('--load-excel',
-                        type=argparse.FileType(mode='rb'),
-                        help='load excel file into database')
     parser.add_argument('-v', '--version',
                         action='store_true',
                         help=('print %s version' % NAME))
@@ -36,19 +33,5 @@ if __name__ == '__main__':
     logging.info('load configuration from %s', args.config.name)
 
     config = tomllib.load(args.config)
-    db_url = postgresql_url(config['postgresql'])
-    if args.load_excel:
-        excel.file_to_pg(args.load_excel, db_url)
-        sys.exit(0)
-    queue_params = rabbitmq_parameters(config['rabbitmq'])
-    with pika.BlockingConnection(queue_params) as queue:
-        queue_name = '%s.excel.parser' % NAME
-        logging.info('start queue consumer(%s)', queue_name)
-        channel = queue.channel()
-        channel.queue_declare(queue=queue_name, exclusive=True,
-                              durable=True, auto_delete=False)
-        channel.basic_consume(queue=queue_name,
-                              auto_ack=True,
-                              on_message_callback=excel.queue_message_callback)
-        logging.info('[*] waiting for messages. to exit press CTRL+C')
-        channel.start_consuming()
+    rpc_params = config['rpc']
+    start_server('0.0.0.0:%d' % (rpc_params['port']), rpc_params['workers'])

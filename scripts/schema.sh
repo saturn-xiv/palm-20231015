@@ -209,6 +209,7 @@ function generate_lily() {
         --python_out=$target --grpc_out=$target \
         --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_python_plugin \
         $PALM_PROTOCOLS/lily.proto
+    sed -i 's/import lily_/from . import lily_/g' lily/palm/lily_pb2_grpc.py
 }
 
 function generate_babel() {

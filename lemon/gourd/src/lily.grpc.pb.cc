@@ -24,8 +24,8 @@ namespace lily {
 namespace v1 {
 
 static const char* Excel_method_names[] = {
-  "/palm.lily.v1.Excel/Load",
-  "/palm.lily.v1.Excel/Query",
+  "/palm.lily.v1.Excel/Parse",
+  "/palm.lily.v1.Excel/Generate",
 };
 
 std::unique_ptr< Excel::Stub> Excel::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -35,52 +35,52 @@ std::unique_ptr< Excel::Stub> Excel::NewStub(const std::shared_ptr< ::grpc::Chan
 }
 
 Excel::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_Load_(Excel_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Query_(Excel_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  : channel_(channel), rpcmethod_Parse_(Excel_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Generate_(Excel_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::Status Excel::Stub::Load(::grpc::ClientContext* context, const ::palm::lily::v1::ExcelLoadRequest& request, ::google::protobuf::Empty* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::palm::lily::v1::ExcelLoadRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Load_, context, request, response);
+::grpc::Status Excel::Stub::Parse(::grpc::ClientContext* context, const ::palm::lily::v1::File& request, ::palm::lily::v1::ExcelModel* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::lily::v1::File, ::palm::lily::v1::ExcelModel, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Parse_, context, request, response);
 }
 
-void Excel::Stub::async::Load(::grpc::ClientContext* context, const ::palm::lily::v1::ExcelLoadRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::palm::lily::v1::ExcelLoadRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Load_, context, request, response, std::move(f));
+void Excel::Stub::async::Parse(::grpc::ClientContext* context, const ::palm::lily::v1::File* request, ::palm::lily::v1::ExcelModel* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::lily::v1::File, ::palm::lily::v1::ExcelModel, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Parse_, context, request, response, std::move(f));
 }
 
-void Excel::Stub::async::Load(::grpc::ClientContext* context, const ::palm::lily::v1::ExcelLoadRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Load_, context, request, response, reactor);
+void Excel::Stub::async::Parse(::grpc::ClientContext* context, const ::palm::lily::v1::File* request, ::palm::lily::v1::ExcelModel* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Parse_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Excel::Stub::PrepareAsyncLoadRaw(::grpc::ClientContext* context, const ::palm::lily::v1::ExcelLoadRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::google::protobuf::Empty, ::palm::lily::v1::ExcelLoadRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Load_, context, request);
+::grpc::ClientAsyncResponseReader< ::palm::lily::v1::ExcelModel>* Excel::Stub::PrepareAsyncParseRaw(::grpc::ClientContext* context, const ::palm::lily::v1::File& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::lily::v1::ExcelModel, ::palm::lily::v1::File, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Parse_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Excel::Stub::AsyncLoadRaw(::grpc::ClientContext* context, const ::palm::lily::v1::ExcelLoadRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::palm::lily::v1::ExcelModel>* Excel::Stub::AsyncParseRaw(::grpc::ClientContext* context, const ::palm::lily::v1::File& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncLoadRaw(context, request, cq);
+    this->PrepareAsyncParseRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-::grpc::Status Excel::Stub::Query(::grpc::ClientContext* context, const ::palm::lily::v1::ExcelQueryRequest& request, ::palm::lily::v1::ExcelQueryResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::palm::lily::v1::ExcelQueryRequest, ::palm::lily::v1::ExcelQueryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Query_, context, request, response);
+::grpc::Status Excel::Stub::Generate(::grpc::ClientContext* context, const ::palm::lily::v1::ExcelModel& request, ::palm::lily::v1::File* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::lily::v1::ExcelModel, ::palm::lily::v1::File, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Generate_, context, request, response);
 }
 
-void Excel::Stub::async::Query(::grpc::ClientContext* context, const ::palm::lily::v1::ExcelQueryRequest* request, ::palm::lily::v1::ExcelQueryResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::palm::lily::v1::ExcelQueryRequest, ::palm::lily::v1::ExcelQueryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Query_, context, request, response, std::move(f));
+void Excel::Stub::async::Generate(::grpc::ClientContext* context, const ::palm::lily::v1::ExcelModel* request, ::palm::lily::v1::File* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::lily::v1::ExcelModel, ::palm::lily::v1::File, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Generate_, context, request, response, std::move(f));
 }
 
-void Excel::Stub::async::Query(::grpc::ClientContext* context, const ::palm::lily::v1::ExcelQueryRequest* request, ::palm::lily::v1::ExcelQueryResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Query_, context, request, response, reactor);
+void Excel::Stub::async::Generate(::grpc::ClientContext* context, const ::palm::lily::v1::ExcelModel* request, ::palm::lily::v1::File* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Generate_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::palm::lily::v1::ExcelQueryResponse>* Excel::Stub::PrepareAsyncQueryRaw(::grpc::ClientContext* context, const ::palm::lily::v1::ExcelQueryRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::lily::v1::ExcelQueryResponse, ::palm::lily::v1::ExcelQueryRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Query_, context, request);
+::grpc::ClientAsyncResponseReader< ::palm::lily::v1::File>* Excel::Stub::PrepareAsyncGenerateRaw(::grpc::ClientContext* context, const ::palm::lily::v1::ExcelModel& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::lily::v1::File, ::palm::lily::v1::ExcelModel, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Generate_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::palm::lily::v1::ExcelQueryResponse>* Excel::Stub::AsyncQueryRaw(::grpc::ClientContext* context, const ::palm::lily::v1::ExcelQueryRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::palm::lily::v1::File>* Excel::Stub::AsyncGenerateRaw(::grpc::ClientContext* context, const ::palm::lily::v1::ExcelModel& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncQueryRaw(context, request, cq);
+    this->PrepareAsyncGenerateRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -89,36 +89,36 @@ Excel::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Excel_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Excel::Service, ::palm::lily::v1::ExcelLoadRequest, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Excel::Service, ::palm::lily::v1::File, ::palm::lily::v1::ExcelModel, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Excel::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::palm::lily::v1::ExcelLoadRequest* req,
-             ::google::protobuf::Empty* resp) {
-               return service->Load(ctx, req, resp);
+             const ::palm::lily::v1::File* req,
+             ::palm::lily::v1::ExcelModel* resp) {
+               return service->Parse(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Excel_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Excel::Service, ::palm::lily::v1::ExcelQueryRequest, ::palm::lily::v1::ExcelQueryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Excel::Service, ::palm::lily::v1::ExcelModel, ::palm::lily::v1::File, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Excel::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::palm::lily::v1::ExcelQueryRequest* req,
-             ::palm::lily::v1::ExcelQueryResponse* resp) {
-               return service->Query(ctx, req, resp);
+             const ::palm::lily::v1::ExcelModel* req,
+             ::palm::lily::v1::File* resp) {
+               return service->Generate(ctx, req, resp);
              }, this)));
 }
 
 Excel::Service::~Service() {
 }
 
-::grpc::Status Excel::Service::Load(::grpc::ServerContext* context, const ::palm::lily::v1::ExcelLoadRequest* request, ::google::protobuf::Empty* response) {
+::grpc::Status Excel::Service::Parse(::grpc::ServerContext* context, const ::palm::lily::v1::File* request, ::palm::lily::v1::ExcelModel* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Excel::Service::Query(::grpc::ServerContext* context, const ::palm::lily::v1::ExcelQueryRequest* request, ::palm::lily::v1::ExcelQueryResponse* response) {
+::grpc::Status Excel::Service::Generate(::grpc::ServerContext* context, const ::palm::lily::v1::ExcelModel* request, ::palm::lily::v1::File* response) {
   (void) context;
   (void) request;
   (void) response;
@@ -128,7 +128,7 @@ Excel::Service::~Service() {
 
 static const char* Tex_method_names[] = {
   "/palm.lily.v1.Tex/ToPdf",
-  "/palm.lily.v1.Tex/ToWords",
+  "/palm.lily.v1.Tex/ToWord",
 };
 
 std::unique_ptr< Tex::Stub> Tex::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -139,51 +139,51 @@ std::unique_ptr< Tex::Stub> Tex::NewStub(const std::shared_ptr< ::grpc::ChannelI
 
 Tex::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_ToPdf_(Tex_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ToWords_(Tex_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ToWord_(Tex_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::Status Tex::Stub::ToPdf(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest& request, ::palm::lily::v1::HttpResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::palm::lily::v1::TexToRequest, ::palm::lily::v1::HttpResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ToPdf_, context, request, response);
+::grpc::Status Tex::Stub::ToPdf(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest& request, ::palm::lily::v1::File* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::lily::v1::TexToRequest, ::palm::lily::v1::File, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ToPdf_, context, request, response);
 }
 
-void Tex::Stub::async::ToPdf(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest* request, ::palm::lily::v1::HttpResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::palm::lily::v1::TexToRequest, ::palm::lily::v1::HttpResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ToPdf_, context, request, response, std::move(f));
+void Tex::Stub::async::ToPdf(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest* request, ::palm::lily::v1::File* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::lily::v1::TexToRequest, ::palm::lily::v1::File, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ToPdf_, context, request, response, std::move(f));
 }
 
-void Tex::Stub::async::ToPdf(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest* request, ::palm::lily::v1::HttpResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+void Tex::Stub::async::ToPdf(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest* request, ::palm::lily::v1::File* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ToPdf_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::palm::lily::v1::HttpResponse>* Tex::Stub::PrepareAsyncToPdfRaw(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::lily::v1::HttpResponse, ::palm::lily::v1::TexToRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_ToPdf_, context, request);
+::grpc::ClientAsyncResponseReader< ::palm::lily::v1::File>* Tex::Stub::PrepareAsyncToPdfRaw(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::lily::v1::File, ::palm::lily::v1::TexToRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_ToPdf_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::palm::lily::v1::HttpResponse>* Tex::Stub::AsyncToPdfRaw(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::palm::lily::v1::File>* Tex::Stub::AsyncToPdfRaw(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncToPdfRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-::grpc::Status Tex::Stub::ToWords(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest& request, ::palm::lily::v1::HttpResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::palm::lily::v1::TexToRequest, ::palm::lily::v1::HttpResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ToWords_, context, request, response);
+::grpc::Status Tex::Stub::ToWord(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest& request, ::palm::lily::v1::File* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::lily::v1::TexToRequest, ::palm::lily::v1::File, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ToWord_, context, request, response);
 }
 
-void Tex::Stub::async::ToWords(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest* request, ::palm::lily::v1::HttpResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::palm::lily::v1::TexToRequest, ::palm::lily::v1::HttpResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ToWords_, context, request, response, std::move(f));
+void Tex::Stub::async::ToWord(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest* request, ::palm::lily::v1::File* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::lily::v1::TexToRequest, ::palm::lily::v1::File, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ToWord_, context, request, response, std::move(f));
 }
 
-void Tex::Stub::async::ToWords(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest* request, ::palm::lily::v1::HttpResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ToWords_, context, request, response, reactor);
+void Tex::Stub::async::ToWord(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest* request, ::palm::lily::v1::File* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ToWord_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::palm::lily::v1::HttpResponse>* Tex::Stub::PrepareAsyncToWordsRaw(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::lily::v1::HttpResponse, ::palm::lily::v1::TexToRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_ToWords_, context, request);
+::grpc::ClientAsyncResponseReader< ::palm::lily::v1::File>* Tex::Stub::PrepareAsyncToWordRaw(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::lily::v1::File, ::palm::lily::v1::TexToRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_ToWord_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::palm::lily::v1::HttpResponse>* Tex::Stub::AsyncToWordsRaw(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::palm::lily::v1::File>* Tex::Stub::AsyncToWordRaw(::grpc::ClientContext* context, const ::palm::lily::v1::TexToRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncToWordsRaw(context, request, cq);
+    this->PrepareAsyncToWordRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -192,36 +192,36 @@ Tex::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Tex_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Tex::Service, ::palm::lily::v1::TexToRequest, ::palm::lily::v1::HttpResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Tex::Service, ::palm::lily::v1::TexToRequest, ::palm::lily::v1::File, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Tex::Service* service,
              ::grpc::ServerContext* ctx,
              const ::palm::lily::v1::TexToRequest* req,
-             ::palm::lily::v1::HttpResponse* resp) {
+             ::palm::lily::v1::File* resp) {
                return service->ToPdf(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Tex_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Tex::Service, ::palm::lily::v1::TexToRequest, ::palm::lily::v1::HttpResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Tex::Service, ::palm::lily::v1::TexToRequest, ::palm::lily::v1::File, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Tex::Service* service,
              ::grpc::ServerContext* ctx,
              const ::palm::lily::v1::TexToRequest* req,
-             ::palm::lily::v1::HttpResponse* resp) {
-               return service->ToWords(ctx, req, resp);
+             ::palm::lily::v1::File* resp) {
+               return service->ToWord(ctx, req, resp);
              }, this)));
 }
 
 Tex::Service::~Service() {
 }
 
-::grpc::Status Tex::Service::ToPdf(::grpc::ServerContext* context, const ::palm::lily::v1::TexToRequest* request, ::palm::lily::v1::HttpResponse* response) {
+::grpc::Status Tex::Service::ToPdf(::grpc::ServerContext* context, const ::palm::lily::v1::TexToRequest* request, ::palm::lily::v1::File* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Tex::Service::ToWords(::grpc::ServerContext* context, const ::palm::lily::v1::TexToRequest* request, ::palm::lily::v1::HttpResponse* response) {
+::grpc::Status Tex::Service::ToWord(::grpc::ServerContext* context, const ::palm::lily::v1::TexToRequest* request, ::palm::lily::v1::File* response) {
   (void) context;
   (void) request;
   (void) response;
@@ -243,23 +243,23 @@ Epub::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, cons
   : channel_(channel), rpcmethod_Build_(Epub_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::Status Epub::Stub::Build(::grpc::ClientContext* context, const ::palm::lily::v1::EpubBuildRequest& request, ::palm::lily::v1::HttpResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::palm::lily::v1::EpubBuildRequest, ::palm::lily::v1::HttpResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Build_, context, request, response);
+::grpc::Status Epub::Stub::Build(::grpc::ClientContext* context, const ::palm::lily::v1::EpubBuildRequest& request, ::palm::lily::v1::File* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::lily::v1::EpubBuildRequest, ::palm::lily::v1::File, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Build_, context, request, response);
 }
 
-void Epub::Stub::async::Build(::grpc::ClientContext* context, const ::palm::lily::v1::EpubBuildRequest* request, ::palm::lily::v1::HttpResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::palm::lily::v1::EpubBuildRequest, ::palm::lily::v1::HttpResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Build_, context, request, response, std::move(f));
+void Epub::Stub::async::Build(::grpc::ClientContext* context, const ::palm::lily::v1::EpubBuildRequest* request, ::palm::lily::v1::File* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::lily::v1::EpubBuildRequest, ::palm::lily::v1::File, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Build_, context, request, response, std::move(f));
 }
 
-void Epub::Stub::async::Build(::grpc::ClientContext* context, const ::palm::lily::v1::EpubBuildRequest* request, ::palm::lily::v1::HttpResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+void Epub::Stub::async::Build(::grpc::ClientContext* context, const ::palm::lily::v1::EpubBuildRequest* request, ::palm::lily::v1::File* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Build_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::palm::lily::v1::HttpResponse>* Epub::Stub::PrepareAsyncBuildRaw(::grpc::ClientContext* context, const ::palm::lily::v1::EpubBuildRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::lily::v1::HttpResponse, ::palm::lily::v1::EpubBuildRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Build_, context, request);
+::grpc::ClientAsyncResponseReader< ::palm::lily::v1::File>* Epub::Stub::PrepareAsyncBuildRaw(::grpc::ClientContext* context, const ::palm::lily::v1::EpubBuildRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::lily::v1::File, ::palm::lily::v1::EpubBuildRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Build_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::palm::lily::v1::HttpResponse>* Epub::Stub::AsyncBuildRaw(::grpc::ClientContext* context, const ::palm::lily::v1::EpubBuildRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::palm::lily::v1::File>* Epub::Stub::AsyncBuildRaw(::grpc::ClientContext* context, const ::palm::lily::v1::EpubBuildRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncBuildRaw(context, request, cq);
   result->StartCall();
@@ -270,11 +270,11 @@ Epub::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Epub_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Epub::Service, ::palm::lily::v1::EpubBuildRequest, ::palm::lily::v1::HttpResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Epub::Service, ::palm::lily::v1::EpubBuildRequest, ::palm::lily::v1::File, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Epub::Service* service,
              ::grpc::ServerContext* ctx,
              const ::palm::lily::v1::EpubBuildRequest* req,
-             ::palm::lily::v1::HttpResponse* resp) {
+             ::palm::lily::v1::File* resp) {
                return service->Build(ctx, req, resp);
              }, this)));
 }
@@ -282,7 +282,7 @@ Epub::Service::Service() {
 Epub::Service::~Service() {
 }
 
-::grpc::Status Epub::Service::Build(::grpc::ServerContext* context, const ::palm::lily::v1::EpubBuildRequest* request, ::palm::lily::v1::HttpResponse* response) {
+::grpc::Status Epub::Service::Build(::grpc::ServerContext* context, const ::palm::lily::v1::EpubBuildRequest* request, ::palm::lily::v1::File* response) {
   (void) context;
   (void) request;
   (void) response;

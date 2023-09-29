@@ -1,36 +1,42 @@
 import logging
-import psycopg
+import io
 
-from pandas import ExcelFile
+import pandas
 
-
-def queue_message_callback(ch, method, properties, body):
-    # TODO
-    print("[x] received %r" % body)
+from . import lily_pb2, lily_pb2_grpc
 
 
-def to_pg(name, doc, db):
-    cur = db.cursor()
-    cur.execute(psycopg.sql.SQL(
-        'INSERT INTO excel_files("name") VALUES(%s) RETURNING id'), [name])
-    file_row = cur.fetchone()
-    file_id = file_row[0]
-    for sheet_name in doc.sheet_names:
-        logging.debug('find sheet %s' % sheet_name)
-        cur.execute(psycopg.sql.SQL(
-            'INSERT INTO excel_sheets(file_id, "name") VALUES(%s, %s) RETURNING id'), [file_id, sheet_name])
-        sheet_row = cur.fetchone()
-        sheet_id = sheet_row[0]
-        sheet = doc.parse(sheet_name)
-        for row, item in sheet.to_dict().items():
-            for col, val in item.items():
-                logging.debug('find (%s, %s, %s)', row, col, val)
-                cur.execute(psycopg.sql.SQL(
-                    'INSERT INTO excel_items(sheet_id, "row", "column", "value") VALUES(%s, %s, %s, %s)'), [sheet_id, row, col, val])
+class Service(lily_pb2_grpc.ExcelServicer):
+    def Parse(self, request, context):
+        logging.info("parse excel %s" % request.content_type)
+        response = lily_pb2.ExcelParseResponse()
 
+        file = io.BytesIO(request.payload)
+        doc = pandas.read_excel(file, sheet_name=None)
+        for name, sheet in doc:
+            logging.info("find sheet %s", name)
+            sht = response.sheets.add()
+            sht.name = name
+            for row, item in sheet.to_dict().items():
+                for col, val in item.items():
+                    logging.debug('find (%s, %s, %s)', row, col, val)
+                    cell = sht.cells.add()
+                    cell.row = row
+                    cell.col = col
+                    cell.val = val
+        return response
 
-def file_to_pg(file, url):
-    logging.info("read %s", file.name)
-    doc = ExcelFile(file)
-    with psycopg.connect(url) as db:
-        to_pg(file.name, doc, db)
+    def Generate(self, request, context):
+        logging.info("parse excel %s" % request.content_type)
+        bio = io.BytesIO()
+        writer = pandas.ExcelWriter(bio, engine="xlsxwriter")
+        for name, sheet in request.sheets:
+            # https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html
+            df = pandas.DataFrame(data={'col1': [1, 2], 'col2': [3, 4]})
+            df.to_excel(writer, scheet_name=name)
+        writer.save()
+
+        bio.seek(0)
+        response = lily_pb2.File()
+        response.payload = bio.read()
+        return response

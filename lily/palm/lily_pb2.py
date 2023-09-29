@@ -11,10 +11,9 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\nlily.proto\x12\x0cpalm.lily.v1\x1a\x1bgoogle/protobuf/empty.proto\"2\n\x0cHttpResponse\x12\x14\n\x0c\x63ontent_type\x18\x01 \x01(\t\x12\x0c\n\x04\x62ody\x18\x02 \x01(\x0c\",\n\x10\x45xcelLoadRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x0c\"\x1f\n\x11\x45xcelQueryRequest\x12\n\n\x02id\x18\x01 \x01(\t\"s\n\x12\x45xcelQueryResponse\x12\x34\n\x05items\x18\x01 \x03(\x0b\x32%.palm.lily.v1.ExcelQueryResponse.Item\x1a\'\n\x04Item\x12\t\n\x01x\x18\x01 \x01(\r\x12\t\n\x01y\x18\x02 \x01(\r\x12\t\n\x01v\x18\x03 \x01(\t\"\x1c\n\x0cTexToRequest\x12\x0c\n\x04\x62ody\x18\x01 \x01(\t\"\x12\n\x10\x45pubBuildRequest2\x97\x01\n\x05\x45xcel\x12@\n\x04Load\x12\x1e.palm.lily.v1.ExcelLoadRequest\x1a\x16.google.protobuf.Empty\"\x00\x12L\n\x05Query\x12\x1f.palm.lily.v1.ExcelQueryRequest\x1a .palm.lily.v1.ExcelQueryResponse\"\x00\x32\x8d\x01\n\x03Tex\x12\x41\n\x05ToPdf\x12\x1a.palm.lily.v1.TexToRequest\x1a\x1a.palm.lily.v1.HttpResponse\"\x00\x12\x43\n\x07ToWords\x12\x1a.palm.lily.v1.TexToRequest\x1a\x1a.palm.lily.v1.HttpResponse\"\x00\x32M\n\x04\x45pub\x12\x45\n\x05\x42uild\x12\x1e.palm.lily.v1.EpubBuildRequest\x1a\x1a.palm.lily.v1.HttpResponse\"\x00\x42.\n*com.github.saturn_xiv.palm.plugins.lily.v1P\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\nlily.proto\x12\x0cpalm.lily.v1\"C\n\x04\x46ile\x12\x19\n\x0c\x63ontent_type\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x0f\n\x07payload\x18\x02 \x01(\x0c\x42\x0f\n\r_content_type\"\xb6\x01\n\nExcelModel\x12.\n\x06sheets\x18\x01 \x03(\x0b\x32\x1e.palm.lily.v1.ExcelModel.Sheet\x1ax\n\x05Sheet\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x32\n\x05\x63\x65lls\x18\x02 \x03(\x0b\x32#.palm.lily.v1.ExcelModel.Sheet.Cell\x1a-\n\x04\x43\x65ll\x12\x0b\n\x03row\x18\x01 \x01(\r\x12\x0b\n\x03\x63ol\x18\x02 \x01(\r\x12\x0b\n\x03val\x18\x03 \x01(\t\"\x1c\n\x0cTexToRequest\x12\x0c\n\x04\x62ody\x18\x01 \x01(\t\"\x12\n\x10\x45pubBuildRequest2|\n\x05\x45xcel\x12\x37\n\x05Parse\x12\x12.palm.lily.v1.File\x1a\x18.palm.lily.v1.ExcelModel\"\x00\x12:\n\x08Generate\x12\x18.palm.lily.v1.ExcelModel\x1a\x12.palm.lily.v1.File\"\x00\x32|\n\x03Tex\x12\x39\n\x05ToPdf\x12\x1a.palm.lily.v1.TexToRequest\x1a\x12.palm.lily.v1.File\"\x00\x12:\n\x06ToWord\x12\x1a.palm.lily.v1.TexToRequest\x1a\x12.palm.lily.v1.File\"\x00\x32\x45\n\x04\x45pub\x12=\n\x05\x42uild\x12\x1e.palm.lily.v1.EpubBuildRequest\x1a\x12.palm.lily.v1.File\"\x00\x42.\n*com.github.saturn_xiv.palm.plugins.lily.v1P\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -23,24 +22,22 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'\n*com.github.saturn_xiv.palm.plugins.lily.v1P\001'
-  _globals['_HTTPRESPONSE']._serialized_start=57
-  _globals['_HTTPRESPONSE']._serialized_end=107
-  _globals['_EXCELLOADREQUEST']._serialized_start=109
-  _globals['_EXCELLOADREQUEST']._serialized_end=153
-  _globals['_EXCELQUERYREQUEST']._serialized_start=155
-  _globals['_EXCELQUERYREQUEST']._serialized_end=186
-  _globals['_EXCELQUERYRESPONSE']._serialized_start=188
-  _globals['_EXCELQUERYRESPONSE']._serialized_end=303
-  _globals['_EXCELQUERYRESPONSE_ITEM']._serialized_start=264
-  _globals['_EXCELQUERYRESPONSE_ITEM']._serialized_end=303
-  _globals['_TEXTOREQUEST']._serialized_start=305
-  _globals['_TEXTOREQUEST']._serialized_end=333
-  _globals['_EPUBBUILDREQUEST']._serialized_start=335
-  _globals['_EPUBBUILDREQUEST']._serialized_end=353
-  _globals['_EXCEL']._serialized_start=356
-  _globals['_EXCEL']._serialized_end=507
-  _globals['_TEX']._serialized_start=510
-  _globals['_TEX']._serialized_end=651
-  _globals['_EPUB']._serialized_start=653
-  _globals['_EPUB']._serialized_end=730
+  _globals['_FILE']._serialized_start=28
+  _globals['_FILE']._serialized_end=95
+  _globals['_EXCELMODEL']._serialized_start=98
+  _globals['_EXCELMODEL']._serialized_end=280
+  _globals['_EXCELMODEL_SHEET']._serialized_start=160
+  _globals['_EXCELMODEL_SHEET']._serialized_end=280
+  _globals['_EXCELMODEL_SHEET_CELL']._serialized_start=235
+  _globals['_EXCELMODEL_SHEET_CELL']._serialized_end=280
+  _globals['_TEXTOREQUEST']._serialized_start=282
+  _globals['_TEXTOREQUEST']._serialized_end=310
+  _globals['_EPUBBUILDREQUEST']._serialized_start=312
+  _globals['_EPUBBUILDREQUEST']._serialized_end=330
+  _globals['_EXCEL']._serialized_start=332
+  _globals['_EXCEL']._serialized_end=456
+  _globals['_TEX']._serialized_start=458
+  _globals['_TEX']._serialized_end=582
+  _globals['_EPUB']._serialized_start=584
+  _globals['_EPUB']._serialized_end=653
 # @@protoc_insertion_point(module_scope)
