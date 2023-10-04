@@ -209,7 +209,7 @@ RUN curl -fsSL -o $HOME/.local/bin/dbmate https://github.com/amacneil/dbmate/rel
 RUN chmod +x $HOME/.local/bin/dbmate
 
 # https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.58.1"
+ENV GRPC_VERSION "v1.59.0"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 # ENV PROTOBUF_VERSION "v3.21.8"
 # RUN cd $HOME/downloads/grpc/third_party/protobuf \

@@ -43,7 +43,7 @@ FetchContent_Declare(inja
 )
 FetchContent_Declare(httplib
   GIT_REPOSITORY  "https://github.com/yhirose/cpp-httplib.git"
-  GIT_TAG         "v0.14.0"
+  GIT_TAG         "v0.14.1"
 )
 
 FetchContent_Declare(magic_enum
