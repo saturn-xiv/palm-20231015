@@ -11,23 +11,26 @@
 #include "google/protobuf/generated_message_reflection.h"
 #include "google/protobuf/reflection_ops.h"
 #include "google/protobuf/wire_format.h"
+#include "google/protobuf/generated_message_tctable_impl.h"
 // @@protoc_insertion_point(includes)
 
 // Must be included last.
 #include "google/protobuf/port_def.inc"
 PROTOBUF_PRAGMA_INIT_SEG
-namespace _pb = ::PROTOBUF_NAMESPACE_ID;
-namespace _pbi = ::PROTOBUF_NAMESPACE_ID::internal;
+namespace _pb = ::google::protobuf;
+namespace _pbi = ::google::protobuf::internal;
+namespace _fl = ::google::protobuf::internal::field_layout;
 namespace palm {
 namespace ops {
 namespace metrics {
 namespace v1 {
-template <typename>
-PROTOBUF_CONSTEXPR ReportHeartbeatRequest::ReportHeartbeatRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.created_at_)*/nullptr} {}
+        template <typename>
+PROTOBUF_CONSTEXPR ReportHeartbeatRequest::ReportHeartbeatRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_._has_bits_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_.created_at_)*/ nullptr,
+    } {}
 struct ReportHeartbeatRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ReportHeartbeatRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ReportHeartbeatRequestDefaultTypeInternal() {}
@@ -38,32 +41,33 @@ struct ReportHeartbeatRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReportHeartbeatRequestDefaultTypeInternal _ReportHeartbeatRequest_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR ReportJournalRequest::ReportJournalRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.hostname_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.user_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.group_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.command_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.message_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.created_at_)*/nullptr} {}
+        template <typename>
+PROTOBUF_CONSTEXPR ReportJournalRequest::ReportJournalRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_._has_bits_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_.hostname_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.user_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.group_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.command_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.message_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.created_at_)*/ nullptr,
+    } {}
 struct ReportJournalRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ReportJournalRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ReportJournalRequestDefaultTypeInternal() {}
@@ -74,35 +78,32 @@ struct ReportJournalRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReportJournalRequestDefaultTypeInternal _ReportJournalRequest_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR ReportNginxRequest_Access::ReportNginxRequest_Access(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.client_ip_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.method_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.path_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.http_referer_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.version_)*/ 0
-
-  , /*decltype(_impl_.status_)*/ 0u
-
-  , /*decltype(_impl_.body_bytes_sent_)*/ ::uint64_t{0u}
-
-  , /*decltype(_impl_.request_time_)*/ 0
-} {}
+        template <typename>
+PROTOBUF_CONSTEXPR ReportNginxRequest_Access::ReportNginxRequest_Access(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_._has_bits_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_.client_ip_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.method_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.path_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.http_referer_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.version_)*/ 0,
+      /*decltype(_impl_.status_)*/ 0u,
+      /*decltype(_impl_.body_bytes_sent_)*/ ::uint64_t{0u},
+      /*decltype(_impl_.request_time_)*/ 0,
+    } {}
 struct ReportNginxRequest_AccessDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ReportNginxRequest_AccessDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ReportNginxRequest_AccessDefaultTypeInternal() {}
@@ -113,14 +114,15 @@ struct ReportNginxRequest_AccessDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReportNginxRequest_AccessDefaultTypeInternal _ReportNginxRequest_Access_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR ReportNginxRequest::ReportNginxRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.created_at_)*/nullptr
-  , /*decltype(_impl_.payload_)*/{}
-  , /*decltype(_impl_._oneof_case_)*/{}} {}
+        template <typename>
+PROTOBUF_CONSTEXPR ReportNginxRequest::ReportNginxRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_._has_bits_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_.created_at_)*/ nullptr,
+      /*decltype(_impl_.payload_)*/ {},
+      /*decltype(_impl_._oneof_case_)*/ {},
+    } {}
 struct ReportNginxRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ReportNginxRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ReportNginxRequestDefaultTypeInternal() {}
@@ -215,10 +217,10 @@ const ::uint32_t TableStruct_ops_2dmetrics_2eproto::offsets[] PROTOBUF_SECTION_V
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        { 0, 9, -1, sizeof(::palm::ops::metrics::v1::ReportHeartbeatRequest)},
-        { 10, 24, -1, sizeof(::palm::ops::metrics::v1::ReportJournalRequest)},
-        { 30, 46, -1, sizeof(::palm::ops::metrics::v1::ReportNginxRequest_Access)},
-        { 54, 66, -1, sizeof(::palm::ops::metrics::v1::ReportNginxRequest)},
+        {0, 9, -1, sizeof(::palm::ops::metrics::v1::ReportHeartbeatRequest)},
+        {10, 24, -1, sizeof(::palm::ops::metrics::v1::ReportJournalRequest)},
+        {30, 46, -1, sizeof(::palm::ops::metrics::v1::ReportNginxRequest_Access)},
+        {54, 66, -1, sizeof(::palm::ops::metrics::v1::ReportNginxRequest)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -306,68 +308,62 @@ class ReportHeartbeatRequest::_Internal {
   using HasBits = decltype(std::declval<ReportHeartbeatRequest>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
     8 * PROTOBUF_FIELD_OFFSET(ReportHeartbeatRequest, _impl_._has_bits_);
-  static const ::PROTOBUF_NAMESPACE_ID::Timestamp& created_at(const ReportHeartbeatRequest* msg);
+  static const ::google::protobuf::Timestamp& created_at(const ReportHeartbeatRequest* msg);
   static void set_has_created_at(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
 };
 
-const ::PROTOBUF_NAMESPACE_ID::Timestamp&
-ReportHeartbeatRequest::_Internal::created_at(const ReportHeartbeatRequest* msg) {
+const ::google::protobuf::Timestamp& ReportHeartbeatRequest::_Internal::created_at(const ReportHeartbeatRequest* msg) {
   return *msg->_impl_.created_at_;
 }
 void ReportHeartbeatRequest::clear_created_at() {
   if (_impl_.created_at_ != nullptr) _impl_.created_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-ReportHeartbeatRequest::ReportHeartbeatRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+ReportHeartbeatRequest::ReportHeartbeatRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.metrics.v1.ReportHeartbeatRequest)
 }
-ReportHeartbeatRequest::ReportHeartbeatRequest(const ReportHeartbeatRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ReportHeartbeatRequest* const _this = this; (void)_this;
+ReportHeartbeatRequest::ReportHeartbeatRequest(const ReportHeartbeatRequest& from) : ::google::protobuf::Message() {
+  ReportHeartbeatRequest* const _this = this;
+  (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.created_at_){nullptr}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.created_at_){nullptr},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.created_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from._impl_.created_at_);
+    _this->_impl_.created_at_ = new ::google::protobuf::Timestamp(*from._impl_.created_at_);
   }
+
   // @@protoc_insertion_point(copy_constructor:palm.ops.metrics.v1.ReportHeartbeatRequest)
 }
-
 inline void ReportHeartbeatRequest::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.created_at_){nullptr}
+      decltype(_impl_._has_bits_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.created_at_){nullptr},
   };
 }
-
 ReportHeartbeatRequest::~ReportHeartbeatRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.metrics.v1.ReportHeartbeatRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void ReportHeartbeatRequest::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   if (this != internal_default_instance()) delete _impl_.created_at_;
 }
-
 void ReportHeartbeatRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void ReportHeartbeatRequest::Clear() {
+PROTOBUF_NOINLINE void ReportHeartbeatRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.metrics.v1.ReportHeartbeatRequest)
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -379,66 +375,65 @@ void ReportHeartbeatRequest::Clear() {
     _impl_.created_at_->Clear();
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ReportHeartbeatRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .google.protobuf.Timestamp created_at = 11;
-      case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 90)) {
-          ptr = ctx->ParseMessage(_internal_mutable_created_at(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* ReportHeartbeatRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> ReportHeartbeatRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ReportHeartbeatRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    11, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294966271,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ReportHeartbeatRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // .google.protobuf.Timestamp created_at = 11;
+    {::_pbi::TcParser::FastMtS1,
+     {90, 0, 0, PROTOBUF_FIELD_OFFSET(ReportHeartbeatRequest, _impl_.created_at_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .google.protobuf.Timestamp created_at = 11;
+    {PROTOBUF_FIELD_OFFSET(ReportHeartbeatRequest, _impl_.created_at_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* ReportHeartbeatRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.metrics.v1.ReportHeartbeatRequest)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp created_at = 11;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+    target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessage(11, _Internal::created_at(this),
         _Internal::created_at(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.metrics.v1.ReportHeartbeatRequest)
   return target;
@@ -456,21 +451,21 @@ failure:
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
         *_impl_.created_at_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ReportHeartbeatRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+const ::google::protobuf::Message::ClassData ReportHeartbeatRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     ReportHeartbeatRequest::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ReportHeartbeatRequest::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData*ReportHeartbeatRequest::GetClassData() const { return &_class_data_; }
 
 
-void ReportHeartbeatRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void ReportHeartbeatRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ReportHeartbeatRequest*>(&to_msg);
   auto& from = static_cast<const ReportHeartbeatRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.metrics.v1.ReportHeartbeatRequest)
@@ -479,10 +474,10 @@ void ReportHeartbeatRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg,
   (void) cached_has_bits;
 
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_internal_mutable_created_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(
+    _this->_internal_mutable_created_at()->::google::protobuf::Timestamp::MergeFrom(
         from._internal_created_at());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ReportHeartbeatRequest::CopyFrom(const ReportHeartbeatRequest& from) {
@@ -492,7 +487,7 @@ void ReportHeartbeatRequest::CopyFrom(const ReportHeartbeatRequest& from) {
   MergeFrom(from);
 }
 
-bool ReportHeartbeatRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool ReportHeartbeatRequest::IsInitialized() const {
   return true;
 }
 
@@ -503,7 +498,7 @@ void ReportHeartbeatRequest::InternalSwap(ReportHeartbeatRequest* other) {
   swap(_impl_.created_at_, other->_impl_.created_at_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ReportHeartbeatRequest::GetMetadata() const {
+::google::protobuf::Metadata ReportHeartbeatRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2dmetrics_2eproto_getter, &descriptor_table_ops_2dmetrics_2eproto_once,
       file_level_metadata_ops_2dmetrics_2eproto[0]);
@@ -515,44 +510,39 @@ class ReportJournalRequest::_Internal {
   using HasBits = decltype(std::declval<ReportJournalRequest>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
     8 * PROTOBUF_FIELD_OFFSET(ReportJournalRequest, _impl_._has_bits_);
-  static const ::PROTOBUF_NAMESPACE_ID::Timestamp& created_at(const ReportJournalRequest* msg);
+  static const ::google::protobuf::Timestamp& created_at(const ReportJournalRequest* msg);
   static void set_has_created_at(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
 };
 
-const ::PROTOBUF_NAMESPACE_ID::Timestamp&
-ReportJournalRequest::_Internal::created_at(const ReportJournalRequest* msg) {
+const ::google::protobuf::Timestamp& ReportJournalRequest::_Internal::created_at(const ReportJournalRequest* msg) {
   return *msg->_impl_.created_at_;
 }
 void ReportJournalRequest::clear_created_at() {
   if (_impl_.created_at_ != nullptr) _impl_.created_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-ReportJournalRequest::ReportJournalRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+ReportJournalRequest::ReportJournalRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.metrics.v1.ReportJournalRequest)
 }
-ReportJournalRequest::ReportJournalRequest(const ReportJournalRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ReportJournalRequest* const _this = this; (void)_this;
+ReportJournalRequest::ReportJournalRequest(const ReportJournalRequest& from) : ::google::protobuf::Message() {
+  ReportJournalRequest* const _this = this;
+  (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.hostname_) {}
-
-    , decltype(_impl_.user_) {}
-
-    , decltype(_impl_.group_) {}
-
-    , decltype(_impl_.command_) {}
-
-    , decltype(_impl_.message_) {}
-
-    , decltype(_impl_.created_at_){nullptr}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.hostname_){},
+      decltype(_impl_.user_){},
+      decltype(_impl_.group_){},
+      decltype(_impl_.command_){},
+      decltype(_impl_.message_){},
+      decltype(_impl_.created_at_){nullptr},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
   _impl_.hostname_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.hostname_.Set("", GetArenaForAllocation());
@@ -589,27 +579,22 @@ ReportJournalRequest::ReportJournalRequest(const ReportJournalRequest& from)
     _this->_impl_.message_.Set(from._internal_message(), _this->GetArenaForAllocation());
   }
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.created_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from._impl_.created_at_);
+    _this->_impl_.created_at_ = new ::google::protobuf::Timestamp(*from._impl_.created_at_);
   }
+
   // @@protoc_insertion_point(copy_constructor:palm.ops.metrics.v1.ReportJournalRequest)
 }
-
 inline void ReportJournalRequest::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.hostname_) {}
-
-    , decltype(_impl_.user_) {}
-
-    , decltype(_impl_.group_) {}
-
-    , decltype(_impl_.command_) {}
-
-    , decltype(_impl_.message_) {}
-
-    , decltype(_impl_.created_at_){nullptr}
+      decltype(_impl_._has_bits_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.hostname_){},
+      decltype(_impl_.user_){},
+      decltype(_impl_.group_){},
+      decltype(_impl_.command_){},
+      decltype(_impl_.message_){},
+      decltype(_impl_.created_at_){nullptr},
   };
   _impl_.hostname_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -632,16 +617,11 @@ inline void ReportJournalRequest::SharedCtor(::_pb::Arena* arena) {
         _impl_.message_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 ReportJournalRequest::~ReportJournalRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.metrics.v1.ReportJournalRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void ReportJournalRequest::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.hostname_.Destroy();
@@ -651,12 +631,11 @@ inline void ReportJournalRequest::SharedDtor() {
   _impl_.message_.Destroy();
   if (this != internal_default_instance()) delete _impl_.created_at_;
 }
-
 void ReportJournalRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void ReportJournalRequest::Clear() {
+PROTOBUF_NOINLINE void ReportJournalRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.metrics.v1.ReportJournalRequest)
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -673,161 +652,136 @@ void ReportJournalRequest::Clear() {
     _impl_.created_at_->Clear();
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ReportJournalRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string hostname = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_hostname();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.metrics.v1.ReportJournalRequest.hostname"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string user = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_user();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.metrics.v1.ReportJournalRequest.user"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string group = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_group();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.metrics.v1.ReportJournalRequest.group"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string command = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 34)) {
-          auto str = _internal_mutable_command();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.metrics.v1.ReportJournalRequest.command"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string message = 9;
-      case 9:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 74)) {
-          auto str = _internal_mutable_message();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.metrics.v1.ReportJournalRequest.message"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // .google.protobuf.Timestamp created_at = 11;
-      case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 90)) {
-          ptr = ctx->ParseMessage(_internal_mutable_created_at(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* ReportJournalRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 6, 1, 80, 2> ReportJournalRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ReportJournalRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    11, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294966000,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    6,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ReportJournalRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string command = 4;
+    {::_pbi::TcParser::FastUS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(ReportJournalRequest, _impl_.command_)}},
+    // string hostname = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ReportJournalRequest, _impl_.hostname_)}},
+    // string user = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(ReportJournalRequest, _impl_.user_)}},
+    // string group = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(ReportJournalRequest, _impl_.group_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string hostname = 1;
+    {PROTOBUF_FIELD_OFFSET(ReportJournalRequest, _impl_.hostname_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string user = 2;
+    {PROTOBUF_FIELD_OFFSET(ReportJournalRequest, _impl_.user_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string group = 3;
+    {PROTOBUF_FIELD_OFFSET(ReportJournalRequest, _impl_.group_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string command = 4;
+    {PROTOBUF_FIELD_OFFSET(ReportJournalRequest, _impl_.command_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string message = 9;
+    {PROTOBUF_FIELD_OFFSET(ReportJournalRequest, _impl_.message_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .google.protobuf.Timestamp created_at = 11;
+    {PROTOBUF_FIELD_OFFSET(ReportJournalRequest, _impl_.created_at_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
+  }}, {{
+    "\50\10\4\5\7\7\0\0"
+    "palm.ops.metrics.v1.ReportJournalRequest"
+    "hostname"
+    "user"
+    "group"
+    "command"
+    "message"
+  }},
+};
 
 ::uint8_t* ReportJournalRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.metrics.v1.ReportJournalRequest)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   // string hostname = 1;
   if (!this->_internal_hostname().empty()) {
     const std::string& _s = this->_internal_hostname();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportJournalRequest.hostname");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportJournalRequest.hostname");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // string user = 2;
   if (!this->_internal_user().empty()) {
     const std::string& _s = this->_internal_user();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportJournalRequest.user");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportJournalRequest.user");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   // string group = 3;
   if (!this->_internal_group().empty()) {
     const std::string& _s = this->_internal_group();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportJournalRequest.group");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportJournalRequest.group");
     target = stream->WriteStringMaybeAliased(3, _s, target);
   }
 
   // string command = 4;
   if (!this->_internal_command().empty()) {
     const std::string& _s = this->_internal_command();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportJournalRequest.command");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportJournalRequest.command");
     target = stream->WriteStringMaybeAliased(4, _s, target);
   }
 
   // string message = 9;
   if (!this->_internal_message().empty()) {
     const std::string& _s = this->_internal_message();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportJournalRequest.message");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportJournalRequest.message");
     target = stream->WriteStringMaybeAliased(9, _s, target);
   }
 
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp created_at = 11;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+    target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessage(11, _Internal::created_at(this),
         _Internal::created_at(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.metrics.v1.ReportJournalRequest)
   return target;
@@ -843,31 +797,31 @@ failure:
 
   // string hostname = 1;
   if (!this->_internal_hostname().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_hostname());
   }
 
   // string user = 2;
   if (!this->_internal_user().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_user());
   }
 
   // string group = 3;
   if (!this->_internal_group().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_group());
   }
 
   // string command = 4;
   if (!this->_internal_command().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_command());
   }
 
   // string message = 9;
   if (!this->_internal_message().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_message());
   }
 
@@ -875,21 +829,21 @@ failure:
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
         *_impl_.created_at_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ReportJournalRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+const ::google::protobuf::Message::ClassData ReportJournalRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     ReportJournalRequest::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ReportJournalRequest::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData*ReportJournalRequest::GetClassData() const { return &_class_data_; }
 
 
-void ReportJournalRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void ReportJournalRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ReportJournalRequest*>(&to_msg);
   auto& from = static_cast<const ReportJournalRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.metrics.v1.ReportJournalRequest)
@@ -913,10 +867,10 @@ void ReportJournalRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, c
     _this->_internal_set_message(from._internal_message());
   }
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_internal_mutable_created_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(
+    _this->_internal_mutable_created_at()->::google::protobuf::Timestamp::MergeFrom(
         from._internal_created_at());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ReportJournalRequest::CopyFrom(const ReportJournalRequest& from) {
@@ -926,7 +880,7 @@ void ReportJournalRequest::CopyFrom(const ReportJournalRequest& from) {
   MergeFrom(from);
 }
 
-bool ReportJournalRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool ReportJournalRequest::IsInitialized() const {
   return true;
 }
 
@@ -949,7 +903,7 @@ void ReportJournalRequest::InternalSwap(ReportJournalRequest* other) {
   swap(_impl_.created_at_, other->_impl_.created_at_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ReportJournalRequest::GetMetadata() const {
+::google::protobuf::Metadata ReportJournalRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2dmetrics_2eproto_getter, &descriptor_table_ops_2dmetrics_2eproto_once,
       file_level_metadata_ops_2dmetrics_2eproto[1]);
@@ -966,35 +920,28 @@ class ReportNginxRequest_Access::_Internal {
   }
 };
 
-ReportNginxRequest_Access::ReportNginxRequest_Access(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+ReportNginxRequest_Access::ReportNginxRequest_Access(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.metrics.v1.ReportNginxRequest.Access)
 }
-ReportNginxRequest_Access::ReportNginxRequest_Access(const ReportNginxRequest_Access& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ReportNginxRequest_Access* const _this = this; (void)_this;
+ReportNginxRequest_Access::ReportNginxRequest_Access(const ReportNginxRequest_Access& from) : ::google::protobuf::Message() {
+  ReportNginxRequest_Access* const _this = this;
+  (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.client_ip_) {}
-
-    , decltype(_impl_.method_) {}
-
-    , decltype(_impl_.path_) {}
-
-    , decltype(_impl_.http_referer_) {}
-
-    , decltype(_impl_.version_) {}
-
-    , decltype(_impl_.status_) {}
-
-    , decltype(_impl_.body_bytes_sent_) {}
-
-    , decltype(_impl_.request_time_) {}
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.client_ip_){},
+      decltype(_impl_.method_){},
+      decltype(_impl_.path_){},
+      decltype(_impl_.http_referer_){},
+      decltype(_impl_.version_){},
+      decltype(_impl_.status_){},
+      decltype(_impl_.body_bytes_sent_){},
+      decltype(_impl_.request_time_){},
   };
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
   _impl_.client_ip_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.client_ip_.Set("", GetArenaForAllocation());
@@ -1026,30 +973,22 @@ ReportNginxRequest_Access::ReportNginxRequest_Access(const ReportNginxRequest_Ac
   ::memcpy(&_impl_.version_, &from._impl_.version_,
     static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.request_time_) -
     reinterpret_cast<char*>(&_impl_.version_)) + sizeof(_impl_.request_time_));
+
   // @@protoc_insertion_point(copy_constructor:palm.ops.metrics.v1.ReportNginxRequest.Access)
 }
-
 inline void ReportNginxRequest_Access::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.client_ip_) {}
-
-    , decltype(_impl_.method_) {}
-
-    , decltype(_impl_.path_) {}
-
-    , decltype(_impl_.http_referer_) {}
-
-    , decltype(_impl_.version_) { 0 }
-
-    , decltype(_impl_.status_) { 0u }
-
-    , decltype(_impl_.body_bytes_sent_) { ::uint64_t{0u} }
-
-    , decltype(_impl_.request_time_) { 0 }
-
+      decltype(_impl_._has_bits_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.client_ip_){},
+      decltype(_impl_.method_){},
+      decltype(_impl_.path_){},
+      decltype(_impl_.http_referer_){},
+      decltype(_impl_.version_){0},
+      decltype(_impl_.status_){0u},
+      decltype(_impl_.body_bytes_sent_){::uint64_t{0u}},
+      decltype(_impl_.request_time_){0},
   };
   _impl_.client_ip_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -1068,16 +1007,11 @@ inline void ReportNginxRequest_Access::SharedCtor(::_pb::Arena* arena) {
         _impl_.http_referer_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 ReportNginxRequest_Access::~ReportNginxRequest_Access() {
   // @@protoc_insertion_point(destructor:palm.ops.metrics.v1.ReportNginxRequest.Access)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void ReportNginxRequest_Access::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.client_ip_.Destroy();
@@ -1085,12 +1019,11 @@ inline void ReportNginxRequest_Access::SharedDtor() {
   _impl_.path_.Destroy();
   _impl_.http_referer_.Destroy();
 }
-
 void ReportNginxRequest_Access::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void ReportNginxRequest_Access::Clear() {
+PROTOBUF_NOINLINE void ReportNginxRequest_Access::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.metrics.v1.ReportNginxRequest.Access)
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -1107,152 +1040,128 @@ void ReportNginxRequest_Access::Clear() {
       reinterpret_cast<char*>(&_impl_.request_time_) -
       reinterpret_cast<char*>(&_impl_.version_)) + sizeof(_impl_.request_time_));
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ReportNginxRequest_Access::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string client_ip = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_client_ip();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.metrics.v1.ReportNginxRequest.Access.client_ip"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string method = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_method();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.metrics.v1.ReportNginxRequest.Access.method"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string path = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_path();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.metrics.v1.ReportNginxRequest.Access.path"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // float version = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 37)) {
-          _impl_.version_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // uint32 status = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 40)) {
-          _impl_.status_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // uint64 body_bytes_sent = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 48)) {
-          _impl_.body_bytes_sent_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // float request_time = 7;
-      case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 61)) {
-          _impl_.request_time_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // optional string http_referer = 8;
-      case 8:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 66)) {
-          auto str = _internal_mutable_http_referer();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.metrics.v1.ReportNginxRequest.Access.http_referer"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* ReportNginxRequest_Access::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 8, 0, 93, 2> ReportNginxRequest_Access::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_._has_bits_),
+    0, // no _extensions_
+    8, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967040,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    8,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_ReportNginxRequest_Access_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // optional string http_referer = 8;
+    {::_pbi::TcParser::FastUS1,
+     {66, 0, 0, PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.http_referer_)}},
+    // string client_ip = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.client_ip_)}},
+    // string method = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.method_)}},
+    // string path = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.path_)}},
+    // float version = 4;
+    {::_pbi::TcParser::FastF32S1,
+     {37, 63, 0, PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.version_)}},
+    // uint32 status = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ReportNginxRequest_Access, _impl_.status_), 63>(),
+     {40, 63, 0, PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.status_)}},
+    // uint64 body_bytes_sent = 6;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(ReportNginxRequest_Access, _impl_.body_bytes_sent_), 63>(),
+     {48, 63, 0, PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.body_bytes_sent_)}},
+    // float request_time = 7;
+    {::_pbi::TcParser::FastF32S1,
+     {61, 63, 0, PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.request_time_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string client_ip = 1;
+    {PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.client_ip_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string method = 2;
+    {PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.method_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string path = 3;
+    {PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.path_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // float version = 4;
+    {PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.version_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // uint32 status = 5;
+    {PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.status_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint64 body_bytes_sent = 6;
+    {PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.body_bytes_sent_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+    // float request_time = 7;
+    {PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.request_time_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // optional string http_referer = 8;
+    {PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.http_referer_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\55\11\6\4\0\0\0\0\14\0\0\0\0\0\0\0"
+    "palm.ops.metrics.v1.ReportNginxRequest.Access"
+    "client_ip"
+    "method"
+    "path"
+    "http_referer"
+  }},
+};
 
 ::uint8_t* ReportNginxRequest_Access::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.metrics.v1.ReportNginxRequest.Access)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   // string client_ip = 1;
   if (!this->_internal_client_ip().empty()) {
     const std::string& _s = this->_internal_client_ip();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportNginxRequest.Access.client_ip");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportNginxRequest.Access.client_ip");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // string method = 2;
   if (!this->_internal_method().empty()) {
     const std::string& _s = this->_internal_method();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportNginxRequest.Access.method");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportNginxRequest.Access.method");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   // string path = 3;
   if (!this->_internal_path().empty()) {
     const std::string& _s = this->_internal_path();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportNginxRequest.Access.path");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportNginxRequest.Access.path");
     target = stream->WriteStringMaybeAliased(3, _s, target);
   }
 
   // float version = 4;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_version = this->_internal_version();
   ::uint32_t raw_version;
   memcpy(&raw_version, &tmp_version, sizeof(tmp_version));
@@ -1277,7 +1186,8 @@ failure:
   }
 
   // float request_time = 7;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_request_time = this->_internal_request_time();
   ::uint32_t raw_request_time;
   memcpy(&raw_request_time, &tmp_request_time, sizeof(tmp_request_time));
@@ -1291,14 +1201,15 @@ failure:
   // optional string http_referer = 8;
   if (cached_has_bits & 0x00000001u) {
     const std::string& _s = this->_internal_http_referer();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportNginxRequest.Access.http_referer");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportNginxRequest.Access.http_referer");
     target = stream->WriteStringMaybeAliased(8, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.metrics.v1.ReportNginxRequest.Access)
   return target;
@@ -1314,31 +1225,32 @@ failure:
 
   // string client_ip = 1;
   if (!this->_internal_client_ip().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_client_ip());
   }
 
   // string method = 2;
   if (!this->_internal_method().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_method());
   }
 
   // string path = 3;
   if (!this->_internal_path().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_path());
   }
 
   // optional string http_referer = 8;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_http_referer());
   }
 
   // float version = 4;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_version = this->_internal_version();
   ::uint32_t raw_version;
   memcpy(&raw_version, &tmp_version, sizeof(tmp_version));
@@ -1359,7 +1271,8 @@ failure:
   }
 
   // float request_time = 7;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_request_time = this->_internal_request_time();
   ::uint32_t raw_request_time;
   memcpy(&raw_request_time, &tmp_request_time, sizeof(tmp_request_time));
@@ -1370,14 +1283,14 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ReportNginxRequest_Access::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+const ::google::protobuf::Message::ClassData ReportNginxRequest_Access::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     ReportNginxRequest_Access::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ReportNginxRequest_Access::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData*ReportNginxRequest_Access::GetClassData() const { return &_class_data_; }
 
 
-void ReportNginxRequest_Access::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void ReportNginxRequest_Access::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ReportNginxRequest_Access*>(&to_msg);
   auto& from = static_cast<const ReportNginxRequest_Access&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.metrics.v1.ReportNginxRequest.Access)
@@ -1397,7 +1310,8 @@ void ReportNginxRequest_Access::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_m
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_internal_set_http_referer(from._internal_http_referer());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_version = from._internal_version();
   ::uint32_t raw_version;
   memcpy(&raw_version, &tmp_version, sizeof(tmp_version));
@@ -1410,14 +1324,15 @@ void ReportNginxRequest_Access::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_m
   if (from._internal_body_bytes_sent() != 0) {
     _this->_internal_set_body_bytes_sent(from._internal_body_bytes_sent());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_request_time = from._internal_request_time();
   ::uint32_t raw_request_time;
   memcpy(&raw_request_time, &tmp_request_time, sizeof(tmp_request_time));
   if (raw_request_time != 0) {
     _this->_internal_set_request_time(from._internal_request_time());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ReportNginxRequest_Access::CopyFrom(const ReportNginxRequest_Access& from) {
@@ -1427,7 +1342,7 @@ void ReportNginxRequest_Access::CopyFrom(const ReportNginxRequest_Access& from) 
   MergeFrom(from);
 }
 
-bool ReportNginxRequest_Access::IsInitialized() const {
+PROTOBUF_NOINLINE bool ReportNginxRequest_Access::IsInitialized() const {
   return true;
 }
 
@@ -1445,7 +1360,7 @@ void ReportNginxRequest_Access::InternalSwap(ReportNginxRequest_Access* other) {
                                        &other->_impl_.path_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.http_referer_, lhs_arena,
                                        &other->_impl_.http_referer_, rhs_arena);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+  ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.request_time_)
       + sizeof(ReportNginxRequest_Access::_impl_.request_time_)
       - PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.version_)>(
@@ -1453,7 +1368,7 @@ void ReportNginxRequest_Access::InternalSwap(ReportNginxRequest_Access* other) {
           reinterpret_cast<char*>(&other->_impl_.version_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ReportNginxRequest_Access::GetMetadata() const {
+::google::protobuf::Metadata ReportNginxRequest_Access::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2dmetrics_2eproto_getter, &descriptor_table_ops_2dmetrics_2eproto_once,
       file_level_metadata_ops_2dmetrics_2eproto[2]);
@@ -1468,28 +1383,26 @@ class ReportNginxRequest::_Internal {
   static constexpr ::int32_t kOneofCaseOffset =
     PROTOBUF_FIELD_OFFSET(::palm::ops::metrics::v1::ReportNginxRequest, _impl_._oneof_case_);
   static const ::palm::ops::metrics::v1::ReportNginxRequest_Access& access(const ReportNginxRequest* msg);
-  static const ::PROTOBUF_NAMESPACE_ID::Timestamp& created_at(const ReportNginxRequest* msg);
+  static const ::google::protobuf::Timestamp& created_at(const ReportNginxRequest* msg);
   static void set_has_created_at(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
 };
 
-const ::palm::ops::metrics::v1::ReportNginxRequest_Access&
-ReportNginxRequest::_Internal::access(const ReportNginxRequest* msg) {
+const ::palm::ops::metrics::v1::ReportNginxRequest_Access& ReportNginxRequest::_Internal::access(const ReportNginxRequest* msg) {
   return *msg->_impl_.payload_.access_;
 }
-const ::PROTOBUF_NAMESPACE_ID::Timestamp&
-ReportNginxRequest::_Internal::created_at(const ReportNginxRequest* msg) {
+const ::google::protobuf::Timestamp& ReportNginxRequest::_Internal::created_at(const ReportNginxRequest* msg) {
   return *msg->_impl_.created_at_;
 }
 void ReportNginxRequest::set_allocated_access(::palm::ops::metrics::v1::ReportNginxRequest_Access* access) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
   clear_payload();
   if (access) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(access);
+    ::google::protobuf::Arena* submessage_arena =
+      ::google::protobuf::Arena::InternalGetOwningArena(access);
     if (message_arena != submessage_arena) {
-      access = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+      access = ::google::protobuf::internal::GetOwnedMessage(
           message_arena, access, submessage_arena);
     }
     set_has_access();
@@ -1501,24 +1414,25 @@ void ReportNginxRequest::clear_created_at() {
   if (_impl_.created_at_ != nullptr) _impl_.created_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-ReportNginxRequest::ReportNginxRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+ReportNginxRequest::ReportNginxRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.metrics.v1.ReportNginxRequest)
 }
-ReportNginxRequest::ReportNginxRequest(const ReportNginxRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ReportNginxRequest* const _this = this; (void)_this;
+ReportNginxRequest::ReportNginxRequest(const ReportNginxRequest& from) : ::google::protobuf::Message() {
+  ReportNginxRequest* const _this = this;
+  (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.created_at_){nullptr}
-    , decltype(_impl_.payload_){}
-    , /*decltype(_impl_._oneof_case_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.created_at_){nullptr},
+      decltype(_impl_.payload_){},
+      /*decltype(_impl_._oneof_case_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.created_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from._impl_.created_at_);
+    _this->_impl_.created_at_ = new ::google::protobuf::Timestamp(*from._impl_.created_at_);
   }
   clear_has_payload();
   switch (from.payload_case()) {
@@ -1535,30 +1449,25 @@ ReportNginxRequest::ReportNginxRequest(const ReportNginxRequest& from)
       break;
     }
   }
+
   // @@protoc_insertion_point(copy_constructor:palm.ops.metrics.v1.ReportNginxRequest)
 }
-
 inline void ReportNginxRequest::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.created_at_){nullptr}
-    , decltype(_impl_.payload_){}
-    , /*decltype(_impl_._oneof_case_)*/{}
+      decltype(_impl_._has_bits_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.created_at_){nullptr},
+      decltype(_impl_.payload_){},
+      /*decltype(_impl_._oneof_case_)*/ {},
   };
   clear_has_payload();
 }
-
 ReportNginxRequest::~ReportNginxRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.metrics.v1.ReportNginxRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void ReportNginxRequest::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   if (this != internal_default_instance()) delete _impl_.created_at_;
@@ -1566,7 +1475,6 @@ inline void ReportNginxRequest::SharedDtor() {
     clear_payload();
   }
 }
-
 void ReportNginxRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
@@ -1592,7 +1500,7 @@ void ReportNginxRequest::clear_payload() {
 }
 
 
-void ReportNginxRequest::Clear() {
+PROTOBUF_NOINLINE void ReportNginxRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.metrics.v1.ReportNginxRequest)
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -1605,102 +1513,92 @@ void ReportNginxRequest::Clear() {
   }
   clear_payload();
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ReportNginxRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .palm.ops.metrics.v1.ReportNginxRequest.Access access = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_access(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string error = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_error();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.metrics.v1.ReportNginxRequest.error"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // .google.protobuf.Timestamp created_at = 9;
-      case 9:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 74)) {
-          ptr = ctx->ParseMessage(_internal_mutable_created_at(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* ReportNginxRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 3, 2, 52, 2> ReportNginxRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ReportNginxRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    9, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967036,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    2,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ReportNginxRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // .google.protobuf.Timestamp created_at = 9;
+    {::_pbi::TcParser::FastMtS1,
+     {74, 0, 1, PROTOBUF_FIELD_OFFSET(ReportNginxRequest, _impl_.created_at_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .palm.ops.metrics.v1.ReportNginxRequest.Access access = 1;
+    {PROTOBUF_FIELD_OFFSET(ReportNginxRequest, _impl_.payload_.access_), _Internal::kOneofCaseOffset + 0, 0,
+    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
+    // string error = 2;
+    {PROTOBUF_FIELD_OFFSET(ReportNginxRequest, _impl_.payload_.error_), _Internal::kOneofCaseOffset + 0, 0,
+    (0 | ::_fl::kFcOneof | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .google.protobuf.Timestamp created_at = 9;
+    {PROTOBUF_FIELD_OFFSET(ReportNginxRequest, _impl_.created_at_), _Internal::kHasBitsOffset + 0, 1,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::palm::ops::metrics::v1::ReportNginxRequest_Access>()},
+    {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
+  }}, {{
+    "\46\0\5\0\0\0\0\0"
+    "palm.ops.metrics.v1.ReportNginxRequest"
+    "error"
+  }},
+};
 
 ::uint8_t* ReportNginxRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.metrics.v1.ReportNginxRequest)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   switch (payload_case()) {
     case kAccess: {
-      target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      target = ::google::protobuf::internal::WireFormatLite::
         InternalWriteMessage(1, _Internal::access(this),
           _Internal::access(this).GetCachedSize(), target, stream);
       break;
     }
     case kError: {
       const std::string& _s = this->_internal_error();
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportNginxRequest.error");
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.metrics.v1.ReportNginxRequest.error");
       target = stream->WriteStringMaybeAliased(2, _s, target);
       break;
     }
-    default: ;
+    default:
+      break;
   }
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp created_at = 9;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+    target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessage(9, _Internal::created_at(this),
         _Internal::created_at(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.metrics.v1.ReportNginxRequest)
   return target;
@@ -1718,7 +1616,7 @@ failure:
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
         *_impl_.created_at_);
   }
 
@@ -1726,13 +1624,13 @@ failure:
     // .palm.ops.metrics.v1.ReportNginxRequest.Access access = 1;
     case kAccess: {
       total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
           *_impl_.payload_.access_);
       break;
     }
     // string error = 2;
     case kError: {
-      total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                       this->_internal_error());
       break;
     }
@@ -1743,14 +1641,14 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ReportNginxRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+const ::google::protobuf::Message::ClassData ReportNginxRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     ReportNginxRequest::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ReportNginxRequest::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData*ReportNginxRequest::GetClassData() const { return &_class_data_; }
 
 
-void ReportNginxRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void ReportNginxRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ReportNginxRequest*>(&to_msg);
   auto& from = static_cast<const ReportNginxRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.metrics.v1.ReportNginxRequest)
@@ -1759,7 +1657,7 @@ void ReportNginxRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, con
   (void) cached_has_bits;
 
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_internal_mutable_created_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(
+    _this->_internal_mutable_created_at()->::google::protobuf::Timestamp::MergeFrom(
         from._internal_created_at());
   }
   switch (from.payload_case()) {
@@ -1776,7 +1674,7 @@ void ReportNginxRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, con
       break;
     }
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ReportNginxRequest::CopyFrom(const ReportNginxRequest& from) {
@@ -1786,7 +1684,7 @@ void ReportNginxRequest::CopyFrom(const ReportNginxRequest& from) {
   MergeFrom(from);
 }
 
-bool ReportNginxRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool ReportNginxRequest::IsInitialized() const {
   return true;
 }
 
@@ -1799,7 +1697,7 @@ void ReportNginxRequest::InternalSwap(ReportNginxRequest* other) {
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ReportNginxRequest::GetMetadata() const {
+::google::protobuf::Metadata ReportNginxRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2dmetrics_2eproto_getter, &descriptor_table_ops_2dmetrics_2eproto_once,
       file_level_metadata_ops_2dmetrics_2eproto[3]);
@@ -1809,23 +1707,9 @@ void ReportNginxRequest::InternalSwap(ReportNginxRequest* other) {
 }  // namespace metrics
 }  // namespace ops
 }  // namespace palm
-PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::palm::ops::metrics::v1::ReportHeartbeatRequest*
-Arena::CreateMaybeMessage< ::palm::ops::metrics::v1::ReportHeartbeatRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::palm::ops::metrics::v1::ReportHeartbeatRequest >(arena);
-}
-template<> PROTOBUF_NOINLINE ::palm::ops::metrics::v1::ReportJournalRequest*
-Arena::CreateMaybeMessage< ::palm::ops::metrics::v1::ReportJournalRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::palm::ops::metrics::v1::ReportJournalRequest >(arena);
-}
-template<> PROTOBUF_NOINLINE ::palm::ops::metrics::v1::ReportNginxRequest_Access*
-Arena::CreateMaybeMessage< ::palm::ops::metrics::v1::ReportNginxRequest_Access >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::palm::ops::metrics::v1::ReportNginxRequest_Access >(arena);
-}
-template<> PROTOBUF_NOINLINE ::palm::ops::metrics::v1::ReportNginxRequest*
-Arena::CreateMaybeMessage< ::palm::ops::metrics::v1::ReportNginxRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::palm::ops::metrics::v1::ReportNginxRequest >(arena);
-}
-PROTOBUF_NAMESPACE_CLOSE
+namespace google {
+namespace protobuf {
+}  // namespace protobuf
+}  // namespace google
 // @@protoc_insertion_point(global_scope)
 #include "google/protobuf/port_undef.inc"

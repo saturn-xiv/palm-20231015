@@ -4,8 +4,8 @@ option java_package = "com.github.saturn_xiv.palm.plugins.lily.v1";
 package palm.lily.v1;
 
 message File {
-  optional string content_type = 1;
-  bytes payload = 2;
+  string bucket = 1;
+  string name = 2;
 }
 
 // ----------------------------------------------------------------------------
@@ -35,7 +35,10 @@ service Tex {
   rpc ToWord(TexToRequest) returns (File) {}
 }
 
-message TexToRequest { map<string, bytes> files = 1; }
+message TexToRequest {
+  map<string, bytes> files = 1;
+  bool public = 9;
+}
 
 // ----------------------------------------------------------------------------
 

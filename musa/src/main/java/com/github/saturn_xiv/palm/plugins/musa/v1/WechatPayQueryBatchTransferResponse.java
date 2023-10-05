@@ -3691,6 +3691,7 @@ private static final long serialVersionUID = 0L;
 
   }
 
+  private int bitField0_;
   public static final int BATCH_FIELD_NUMBER = 1;
   private com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Batch batch_;
   /**
@@ -3699,7 +3700,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasBatch() {
-    return batch_ != null;
+    return ((bitField0_ & 0x00000001) != 0);
   }
   /**
    * <code>.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch batch = 1;</code>
@@ -3772,7 +3773,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (batch_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(1, getBatch());
     }
     for (int i = 0; i < details_.size(); i++) {
@@ -3787,7 +3788,7 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (batch_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getBatch());
     }
@@ -3955,13 +3956,20 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.newBuilder()
     private Builder() {
-
+      maybeForceBuilderInitialization();
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+        getBatchFieldBuilder();
+        getDetailsFieldBuilder();
+      }
     }
     @java.lang.Override
     public Builder clear() {
@@ -4025,11 +4033,14 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse result) {
       int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.batch_ = batchBuilder_ == null
             ? batch_
             : batchBuilder_.build();
+        to_bitField0_ |= 0x00000001;
       }
+      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -4234,8 +4245,10 @@ private static final long serialVersionUID = 0L;
       } else {
         batchBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000001;
-      onChanged();
+      if (batch_ != null) {
+        bitField0_ |= 0x00000001;
+        onChanged();
+      }
       return this;
     }
     /**

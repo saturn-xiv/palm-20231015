@@ -11,28 +11,31 @@
 #include "google/protobuf/generated_message_reflection.h"
 #include "google/protobuf/reflection_ops.h"
 #include "google/protobuf/wire_format.h"
+#include "google/protobuf/generated_message_tctable_impl.h"
 // @@protoc_insertion_point(includes)
 
 // Must be included last.
 #include "google/protobuf/port_def.inc"
 PROTOBUF_PRAGMA_INIT_SEG
-namespace _pb = ::PROTOBUF_NAMESPACE_ID;
-namespace _pbi = ::PROTOBUF_NAMESPACE_ID::internal;
+namespace _pb = ::google::protobuf;
+namespace _pbi = ::google::protobuf::internal;
+namespace _fl = ::google::protobuf::internal::field_layout;
 namespace palm {
 namespace orchid {
 namespace v1 {
-template <typename>
-PROTOBUF_CONSTEXPR WechatMiniProgramLoginRequest::WechatMiniProgramLoginRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.app_id_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.code_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+        template <typename>
+PROTOBUF_CONSTEXPR WechatMiniProgramLoginRequest::WechatMiniProgramLoginRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.app_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.code_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
 struct WechatMiniProgramLoginRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR WechatMiniProgramLoginRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~WechatMiniProgramLoginRequestDefaultTypeInternal() {}
@@ -43,22 +46,23 @@ struct WechatMiniProgramLoginRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatMiniProgramLoginRequestDefaultTypeInternal _WechatMiniProgramLoginRequest_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR WechatMiniProgramLoginResponse::WechatMiniProgramLoginResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.unionid_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.openid_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.session_key_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+        template <typename>
+PROTOBUF_CONSTEXPR WechatMiniProgramLoginResponse::WechatMiniProgramLoginResponse(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.unionid_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.openid_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.session_key_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
 struct WechatMiniProgramLoginResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR WechatMiniProgramLoginResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~WechatMiniProgramLoginResponseDefaultTypeInternal() {}
@@ -69,18 +73,19 @@ struct WechatMiniProgramLoginResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatMiniProgramLoginResponseDefaultTypeInternal _WechatMiniProgramLoginResponse_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR WechatMiniProgramPhoneNumberRequest::WechatMiniProgramPhoneNumberRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.app_id_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.code_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+        template <typename>
+PROTOBUF_CONSTEXPR WechatMiniProgramPhoneNumberRequest::WechatMiniProgramPhoneNumberRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.app_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.code_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
 struct WechatMiniProgramPhoneNumberRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR WechatMiniProgramPhoneNumberRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~WechatMiniProgramPhoneNumberRequestDefaultTypeInternal() {}
@@ -91,24 +96,24 @@ struct WechatMiniProgramPhoneNumberRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatMiniProgramPhoneNumberRequestDefaultTypeInternal _WechatMiniProgramPhoneNumberRequest_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR WechatMiniProgramPhoneNumberResponse::WechatMiniProgramPhoneNumberResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.phone_number_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.pure_phone_number_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.country_code_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.water_mark_)*/ ::uint64_t{0u}
-
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+        template <typename>
+PROTOBUF_CONSTEXPR WechatMiniProgramPhoneNumberResponse::WechatMiniProgramPhoneNumberResponse(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.phone_number_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.pure_phone_number_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.country_code_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.water_mark_)*/ ::uint64_t{0u},
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
 struct WechatMiniProgramPhoneNumberResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR WechatMiniProgramPhoneNumberResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~WechatMiniProgramPhoneNumberResponseDefaultTypeInternal() {}
@@ -119,24 +124,24 @@ struct WechatMiniProgramPhoneNumberResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatMiniProgramPhoneNumberResponseDefaultTypeInternal _WechatMiniProgramPhoneNumberResponse_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR WechatOauth2QrConnectRequest::WechatOauth2QrConnectRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.app_id_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.redirect_uri_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.state_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.language_)*/ 0
-
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+        template <typename>
+PROTOBUF_CONSTEXPR WechatOauth2QrConnectRequest::WechatOauth2QrConnectRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.app_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.redirect_uri_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.state_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.language_)*/ 0,
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
 struct WechatOauth2QrConnectRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR WechatOauth2QrConnectRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~WechatOauth2QrConnectRequestDefaultTypeInternal() {}
@@ -147,14 +152,15 @@ struct WechatOauth2QrConnectRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatOauth2QrConnectRequestDefaultTypeInternal _WechatOauth2QrConnectRequest_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR WechatOauth2QrConnectResponse::WechatOauth2QrConnectResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.url_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+        template <typename>
+PROTOBUF_CONSTEXPR WechatOauth2QrConnectResponse::WechatOauth2QrConnectResponse(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.url_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
 struct WechatOauth2QrConnectResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR WechatOauth2QrConnectResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~WechatOauth2QrConnectResponseDefaultTypeInternal() {}
@@ -165,42 +171,42 @@ struct WechatOauth2QrConnectResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatOauth2QrConnectResponseDefaultTypeInternal _WechatOauth2QrConnectResponse_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR WechatOauth2LoginResponse::WechatOauth2LoginResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.privilege_)*/{}
-  , /*decltype(_impl_.unionid_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.openid_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.nickname_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.province_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.city_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.country_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.headimgurl_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.sex_)*/ 0
-} {}
+        template <typename>
+PROTOBUF_CONSTEXPR WechatOauth2LoginResponse::WechatOauth2LoginResponse(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_._has_bits_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_.privilege_)*/ {},
+      /*decltype(_impl_.unionid_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.openid_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.nickname_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.province_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.city_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.country_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.headimgurl_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.sex_)*/ 0,
+    } {}
 struct WechatOauth2LoginResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR WechatOauth2LoginResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~WechatOauth2LoginResponseDefaultTypeInternal() {}
@@ -211,24 +217,24 @@ struct WechatOauth2LoginResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatOauth2LoginResponseDefaultTypeInternal _WechatOauth2LoginResponse_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR WechatOauth2LoginRequest::WechatOauth2LoginRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.app_id_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.code_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.state_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.language_)*/ 0
-
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+        template <typename>
+PROTOBUF_CONSTEXPR WechatOauth2LoginRequest::WechatOauth2LoginRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.app_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.code_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.state_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.language_)*/ 0,
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
 struct WechatOauth2LoginRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR WechatOauth2LoginRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~WechatOauth2LoginRequestDefaultTypeInternal() {}
@@ -354,14 +360,14 @@ const ::uint32_t TableStruct_orchid_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        { 0, -1, -1, sizeof(::palm::orchid::v1::WechatMiniProgramLoginRequest)},
-        { 10, -1, -1, sizeof(::palm::orchid::v1::WechatMiniProgramLoginResponse)},
-        { 21, -1, -1, sizeof(::palm::orchid::v1::WechatMiniProgramPhoneNumberRequest)},
-        { 31, -1, -1, sizeof(::palm::orchid::v1::WechatMiniProgramPhoneNumberResponse)},
-        { 43, -1, -1, sizeof(::palm::orchid::v1::WechatOauth2QrConnectRequest)},
-        { 55, -1, -1, sizeof(::palm::orchid::v1::WechatOauth2QrConnectResponse)},
-        { 64, 81, -1, sizeof(::palm::orchid::v1::WechatOauth2LoginResponse)},
-        { 90, -1, -1, sizeof(::palm::orchid::v1::WechatOauth2LoginRequest)},
+        {0, -1, -1, sizeof(::palm::orchid::v1::WechatMiniProgramLoginRequest)},
+        {10, -1, -1, sizeof(::palm::orchid::v1::WechatMiniProgramLoginResponse)},
+        {21, -1, -1, sizeof(::palm::orchid::v1::WechatMiniProgramPhoneNumberRequest)},
+        {31, -1, -1, sizeof(::palm::orchid::v1::WechatMiniProgramPhoneNumberResponse)},
+        {43, -1, -1, sizeof(::palm::orchid::v1::WechatOauth2QrConnectRequest)},
+        {55, -1, -1, sizeof(::palm::orchid::v1::WechatOauth2QrConnectResponse)},
+        {64, 81, -1, sizeof(::palm::orchid::v1::WechatOauth2LoginResponse)},
+        {90, -1, -1, sizeof(::palm::orchid::v1::WechatOauth2LoginRequest)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -455,8 +461,8 @@ static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_orchid_2eproto(&descripto
 namespace palm {
 namespace orchid {
 namespace v1 {
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* WechatOauth2QrConnectRequest_Language_descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_orchid_2eproto);
+const ::google::protobuf::EnumDescriptor* WechatOauth2QrConnectRequest_Language_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_orchid_2eproto);
   return file_level_enum_descriptors_orchid_2eproto[0];
 }
 bool WechatOauth2QrConnectRequest_Language_IsValid(int value) {
@@ -481,8 +487,8 @@ constexpr int WechatOauth2QrConnectRequest::Language_ARRAYSIZE;
 
 #endif  // (__cplusplus < 201703) &&
         // (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* WechatOauth2LoginResponse_Sex_descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_orchid_2eproto);
+const ::google::protobuf::EnumDescriptor* WechatOauth2LoginResponse_Sex_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_orchid_2eproto);
   return file_level_enum_descriptors_orchid_2eproto[1];
 }
 bool WechatOauth2LoginResponse_Sex_IsValid(int value) {
@@ -511,22 +517,21 @@ class WechatMiniProgramLoginRequest::_Internal {
  public:
 };
 
-WechatMiniProgramLoginRequest::WechatMiniProgramLoginRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+WechatMiniProgramLoginRequest::WechatMiniProgramLoginRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.orchid.v1.WechatMiniProgramLoginRequest)
 }
-WechatMiniProgramLoginRequest::WechatMiniProgramLoginRequest(const WechatMiniProgramLoginRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  WechatMiniProgramLoginRequest* const _this = this; (void)_this;
+WechatMiniProgramLoginRequest::WechatMiniProgramLoginRequest(const WechatMiniProgramLoginRequest& from) : ::google::protobuf::Message() {
+  WechatMiniProgramLoginRequest* const _this = this;
+  (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.app_id_) {}
-
-    , decltype(_impl_.code_) {}
-
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+      decltype(_impl_.app_id_){},
+      decltype(_impl_.code_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
   _impl_.app_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.app_id_.Set("", GetArenaForAllocation());
@@ -541,17 +546,15 @@ WechatMiniProgramLoginRequest::WechatMiniProgramLoginRequest(const WechatMiniPro
   if (!from._internal_code().empty()) {
     _this->_impl_.code_.Set(from._internal_code(), _this->GetArenaForAllocation());
   }
+
   // @@protoc_insertion_point(copy_constructor:palm.orchid.v1.WechatMiniProgramLoginRequest)
 }
-
 inline void WechatMiniProgramLoginRequest::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
-      decltype(_impl_.app_id_) {}
-
-    , decltype(_impl_.code_) {}
-
-    , /*decltype(_impl_._cached_size_)*/{}
+      decltype(_impl_.app_id_){},
+      decltype(_impl_.code_){},
+      /*decltype(_impl_._cached_size_)*/ {},
   };
   _impl_.app_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -562,27 +565,21 @@ inline void WechatMiniProgramLoginRequest::SharedCtor(::_pb::Arena* arena) {
         _impl_.code_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 WechatMiniProgramLoginRequest::~WechatMiniProgramLoginRequest() {
   // @@protoc_insertion_point(destructor:palm.orchid.v1.WechatMiniProgramLoginRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void WechatMiniProgramLoginRequest::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.app_id_.Destroy();
   _impl_.code_.Destroy();
 }
-
 void WechatMiniProgramLoginRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void WechatMiniProgramLoginRequest::Clear() {
+PROTOBUF_NOINLINE void WechatMiniProgramLoginRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.orchid.v1.WechatMiniProgramLoginRequest)
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -590,85 +587,83 @@ void WechatMiniProgramLoginRequest::Clear() {
 
   _impl_.app_id_.ClearToEmpty();
   _impl_.code_.ClearToEmpty();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* WechatMiniProgramLoginRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string app_id = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_app_id();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatMiniProgramLoginRequest.app_id"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string code = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_code();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatMiniProgramLoginRequest.code"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
+const char* WechatMiniProgramLoginRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 63, 2> WechatMiniProgramLoginRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_WechatMiniProgramLoginRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string code = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(WechatMiniProgramLoginRequest, _impl_.code_)}},
+    // string app_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(WechatMiniProgramLoginRequest, _impl_.app_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string app_id = 1;
+    {PROTOBUF_FIELD_OFFSET(WechatMiniProgramLoginRequest, _impl_.app_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string code = 2;
+    {PROTOBUF_FIELD_OFFSET(WechatMiniProgramLoginRequest, _impl_.code_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\54\6\4\0\0\0\0\0"
+    "palm.orchid.v1.WechatMiniProgramLoginRequest"
+    "app_id"
+    "code"
+  }},
+};
 
 ::uint8_t* WechatMiniProgramLoginRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.orchid.v1.WechatMiniProgramLoginRequest)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   // string app_id = 1;
   if (!this->_internal_app_id().empty()) {
     const std::string& _s = this->_internal_app_id();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramLoginRequest.app_id");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramLoginRequest.app_id");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // string code = 2;
   if (!this->_internal_code().empty()) {
     const std::string& _s = this->_internal_code();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramLoginRequest.code");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramLoginRequest.code");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.orchid.v1.WechatMiniProgramLoginRequest)
   return target;
@@ -684,27 +679,27 @@ failure:
 
   // string app_id = 1;
   if (!this->_internal_app_id().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_app_id());
   }
 
   // string code = 2;
   if (!this->_internal_code().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_code());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData WechatMiniProgramLoginRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+const ::google::protobuf::Message::ClassData WechatMiniProgramLoginRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     WechatMiniProgramLoginRequest::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*WechatMiniProgramLoginRequest::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData*WechatMiniProgramLoginRequest::GetClassData() const { return &_class_data_; }
 
 
-void WechatMiniProgramLoginRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void WechatMiniProgramLoginRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatMiniProgramLoginRequest*>(&to_msg);
   auto& from = static_cast<const WechatMiniProgramLoginRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.orchid.v1.WechatMiniProgramLoginRequest)
@@ -718,7 +713,7 @@ void WechatMiniProgramLoginRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& 
   if (!from._internal_code().empty()) {
     _this->_internal_set_code(from._internal_code());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void WechatMiniProgramLoginRequest::CopyFrom(const WechatMiniProgramLoginRequest& from) {
@@ -728,7 +723,7 @@ void WechatMiniProgramLoginRequest::CopyFrom(const WechatMiniProgramLoginRequest
   MergeFrom(from);
 }
 
-bool WechatMiniProgramLoginRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool WechatMiniProgramLoginRequest::IsInitialized() const {
   return true;
 }
 
@@ -743,7 +738,7 @@ void WechatMiniProgramLoginRequest::InternalSwap(WechatMiniProgramLoginRequest* 
                                        &other->_impl_.code_, rhs_arena);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata WechatMiniProgramLoginRequest::GetMetadata() const {
+::google::protobuf::Metadata WechatMiniProgramLoginRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_orchid_2eproto_getter, &descriptor_table_orchid_2eproto_once,
       file_level_metadata_orchid_2eproto[0]);
@@ -754,24 +749,22 @@ class WechatMiniProgramLoginResponse::_Internal {
  public:
 };
 
-WechatMiniProgramLoginResponse::WechatMiniProgramLoginResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+WechatMiniProgramLoginResponse::WechatMiniProgramLoginResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.orchid.v1.WechatMiniProgramLoginResponse)
 }
-WechatMiniProgramLoginResponse::WechatMiniProgramLoginResponse(const WechatMiniProgramLoginResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  WechatMiniProgramLoginResponse* const _this = this; (void)_this;
+WechatMiniProgramLoginResponse::WechatMiniProgramLoginResponse(const WechatMiniProgramLoginResponse& from) : ::google::protobuf::Message() {
+  WechatMiniProgramLoginResponse* const _this = this;
+  (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.unionid_) {}
-
-    , decltype(_impl_.openid_) {}
-
-    , decltype(_impl_.session_key_) {}
-
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+      decltype(_impl_.unionid_){},
+      decltype(_impl_.openid_){},
+      decltype(_impl_.session_key_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
   _impl_.unionid_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.unionid_.Set("", GetArenaForAllocation());
@@ -793,19 +786,16 @@ WechatMiniProgramLoginResponse::WechatMiniProgramLoginResponse(const WechatMiniP
   if (!from._internal_session_key().empty()) {
     _this->_impl_.session_key_.Set(from._internal_session_key(), _this->GetArenaForAllocation());
   }
+
   // @@protoc_insertion_point(copy_constructor:palm.orchid.v1.WechatMiniProgramLoginResponse)
 }
-
 inline void WechatMiniProgramLoginResponse::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
-      decltype(_impl_.unionid_) {}
-
-    , decltype(_impl_.openid_) {}
-
-    , decltype(_impl_.session_key_) {}
-
-    , /*decltype(_impl_._cached_size_)*/{}
+      decltype(_impl_.unionid_){},
+      decltype(_impl_.openid_){},
+      decltype(_impl_.session_key_){},
+      /*decltype(_impl_._cached_size_)*/ {},
   };
   _impl_.unionid_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -820,28 +810,22 @@ inline void WechatMiniProgramLoginResponse::SharedCtor(::_pb::Arena* arena) {
         _impl_.session_key_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 WechatMiniProgramLoginResponse::~WechatMiniProgramLoginResponse() {
   // @@protoc_insertion_point(destructor:palm.orchid.v1.WechatMiniProgramLoginResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void WechatMiniProgramLoginResponse::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.unionid_.Destroy();
   _impl_.openid_.Destroy();
   _impl_.session_key_.Destroy();
 }
-
 void WechatMiniProgramLoginResponse::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void WechatMiniProgramLoginResponse::Clear() {
+PROTOBUF_NOINLINE void WechatMiniProgramLoginResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.orchid.v1.WechatMiniProgramLoginResponse)
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -850,104 +834,99 @@ void WechatMiniProgramLoginResponse::Clear() {
   _impl_.unionid_.ClearToEmpty();
   _impl_.openid_.ClearToEmpty();
   _impl_.session_key_.ClearToEmpty();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* WechatMiniProgramLoginResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string unionid = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_unionid();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatMiniProgramLoginResponse.unionid"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string openid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_openid();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatMiniProgramLoginResponse.openid"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string session_key = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_session_key();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatMiniProgramLoginResponse.session_key"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
+const char* WechatMiniProgramLoginResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 78, 2> WechatMiniProgramLoginResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_WechatMiniProgramLoginResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string unionid = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(WechatMiniProgramLoginResponse, _impl_.unionid_)}},
+    // string openid = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(WechatMiniProgramLoginResponse, _impl_.openid_)}},
+    // string session_key = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(WechatMiniProgramLoginResponse, _impl_.session_key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string unionid = 1;
+    {PROTOBUF_FIELD_OFFSET(WechatMiniProgramLoginResponse, _impl_.unionid_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string openid = 2;
+    {PROTOBUF_FIELD_OFFSET(WechatMiniProgramLoginResponse, _impl_.openid_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string session_key = 3;
+    {PROTOBUF_FIELD_OFFSET(WechatMiniProgramLoginResponse, _impl_.session_key_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\55\7\6\13\0\0\0\0"
+    "palm.orchid.v1.WechatMiniProgramLoginResponse"
+    "unionid"
+    "openid"
+    "session_key"
+  }},
+};
 
 ::uint8_t* WechatMiniProgramLoginResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.orchid.v1.WechatMiniProgramLoginResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   // string unionid = 1;
   if (!this->_internal_unionid().empty()) {
     const std::string& _s = this->_internal_unionid();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramLoginResponse.unionid");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramLoginResponse.unionid");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // string openid = 2;
   if (!this->_internal_openid().empty()) {
     const std::string& _s = this->_internal_openid();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramLoginResponse.openid");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramLoginResponse.openid");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   // string session_key = 3;
   if (!this->_internal_session_key().empty()) {
     const std::string& _s = this->_internal_session_key();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramLoginResponse.session_key");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramLoginResponse.session_key");
     target = stream->WriteStringMaybeAliased(3, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.orchid.v1.WechatMiniProgramLoginResponse)
   return target;
@@ -963,33 +942,33 @@ failure:
 
   // string unionid = 1;
   if (!this->_internal_unionid().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_unionid());
   }
 
   // string openid = 2;
   if (!this->_internal_openid().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_openid());
   }
 
   // string session_key = 3;
   if (!this->_internal_session_key().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_session_key());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData WechatMiniProgramLoginResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+const ::google::protobuf::Message::ClassData WechatMiniProgramLoginResponse::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     WechatMiniProgramLoginResponse::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*WechatMiniProgramLoginResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData*WechatMiniProgramLoginResponse::GetClassData() const { return &_class_data_; }
 
 
-void WechatMiniProgramLoginResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void WechatMiniProgramLoginResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatMiniProgramLoginResponse*>(&to_msg);
   auto& from = static_cast<const WechatMiniProgramLoginResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.orchid.v1.WechatMiniProgramLoginResponse)
@@ -1006,7 +985,7 @@ void WechatMiniProgramLoginResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message&
   if (!from._internal_session_key().empty()) {
     _this->_internal_set_session_key(from._internal_session_key());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void WechatMiniProgramLoginResponse::CopyFrom(const WechatMiniProgramLoginResponse& from) {
@@ -1016,7 +995,7 @@ void WechatMiniProgramLoginResponse::CopyFrom(const WechatMiniProgramLoginRespon
   MergeFrom(from);
 }
 
-bool WechatMiniProgramLoginResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool WechatMiniProgramLoginResponse::IsInitialized() const {
   return true;
 }
 
@@ -1033,7 +1012,7 @@ void WechatMiniProgramLoginResponse::InternalSwap(WechatMiniProgramLoginResponse
                                        &other->_impl_.session_key_, rhs_arena);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata WechatMiniProgramLoginResponse::GetMetadata() const {
+::google::protobuf::Metadata WechatMiniProgramLoginResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_orchid_2eproto_getter, &descriptor_table_orchid_2eproto_once,
       file_level_metadata_orchid_2eproto[1]);
@@ -1044,22 +1023,21 @@ class WechatMiniProgramPhoneNumberRequest::_Internal {
  public:
 };
 
-WechatMiniProgramPhoneNumberRequest::WechatMiniProgramPhoneNumberRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+WechatMiniProgramPhoneNumberRequest::WechatMiniProgramPhoneNumberRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.orchid.v1.WechatMiniProgramPhoneNumberRequest)
 }
-WechatMiniProgramPhoneNumberRequest::WechatMiniProgramPhoneNumberRequest(const WechatMiniProgramPhoneNumberRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  WechatMiniProgramPhoneNumberRequest* const _this = this; (void)_this;
+WechatMiniProgramPhoneNumberRequest::WechatMiniProgramPhoneNumberRequest(const WechatMiniProgramPhoneNumberRequest& from) : ::google::protobuf::Message() {
+  WechatMiniProgramPhoneNumberRequest* const _this = this;
+  (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.app_id_) {}
-
-    , decltype(_impl_.code_) {}
-
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+      decltype(_impl_.app_id_){},
+      decltype(_impl_.code_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
   _impl_.app_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.app_id_.Set("", GetArenaForAllocation());
@@ -1074,17 +1052,15 @@ WechatMiniProgramPhoneNumberRequest::WechatMiniProgramPhoneNumberRequest(const W
   if (!from._internal_code().empty()) {
     _this->_impl_.code_.Set(from._internal_code(), _this->GetArenaForAllocation());
   }
+
   // @@protoc_insertion_point(copy_constructor:palm.orchid.v1.WechatMiniProgramPhoneNumberRequest)
 }
-
 inline void WechatMiniProgramPhoneNumberRequest::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
-      decltype(_impl_.app_id_) {}
-
-    , decltype(_impl_.code_) {}
-
-    , /*decltype(_impl_._cached_size_)*/{}
+      decltype(_impl_.app_id_){},
+      decltype(_impl_.code_){},
+      /*decltype(_impl_._cached_size_)*/ {},
   };
   _impl_.app_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -1095,27 +1071,21 @@ inline void WechatMiniProgramPhoneNumberRequest::SharedCtor(::_pb::Arena* arena)
         _impl_.code_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 WechatMiniProgramPhoneNumberRequest::~WechatMiniProgramPhoneNumberRequest() {
   // @@protoc_insertion_point(destructor:palm.orchid.v1.WechatMiniProgramPhoneNumberRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void WechatMiniProgramPhoneNumberRequest::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.app_id_.Destroy();
   _impl_.code_.Destroy();
 }
-
 void WechatMiniProgramPhoneNumberRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void WechatMiniProgramPhoneNumberRequest::Clear() {
+PROTOBUF_NOINLINE void WechatMiniProgramPhoneNumberRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.orchid.v1.WechatMiniProgramPhoneNumberRequest)
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -1123,85 +1093,83 @@ void WechatMiniProgramPhoneNumberRequest::Clear() {
 
   _impl_.app_id_.ClearToEmpty();
   _impl_.code_.ClearToEmpty();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* WechatMiniProgramPhoneNumberRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string app_id = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_app_id();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatMiniProgramPhoneNumberRequest.app_id"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string code = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_code();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatMiniProgramPhoneNumberRequest.code"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
+const char* WechatMiniProgramPhoneNumberRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 69, 2> WechatMiniProgramPhoneNumberRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_WechatMiniProgramPhoneNumberRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string code = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(WechatMiniProgramPhoneNumberRequest, _impl_.code_)}},
+    // string app_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(WechatMiniProgramPhoneNumberRequest, _impl_.app_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string app_id = 1;
+    {PROTOBUF_FIELD_OFFSET(WechatMiniProgramPhoneNumberRequest, _impl_.app_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string code = 2;
+    {PROTOBUF_FIELD_OFFSET(WechatMiniProgramPhoneNumberRequest, _impl_.code_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\62\6\4\0\0\0\0\0"
+    "palm.orchid.v1.WechatMiniProgramPhoneNumberRequest"
+    "app_id"
+    "code"
+  }},
+};
 
 ::uint8_t* WechatMiniProgramPhoneNumberRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.orchid.v1.WechatMiniProgramPhoneNumberRequest)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   // string app_id = 1;
   if (!this->_internal_app_id().empty()) {
     const std::string& _s = this->_internal_app_id();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramPhoneNumberRequest.app_id");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramPhoneNumberRequest.app_id");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // string code = 2;
   if (!this->_internal_code().empty()) {
     const std::string& _s = this->_internal_code();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramPhoneNumberRequest.code");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramPhoneNumberRequest.code");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.orchid.v1.WechatMiniProgramPhoneNumberRequest)
   return target;
@@ -1217,27 +1185,27 @@ failure:
 
   // string app_id = 1;
   if (!this->_internal_app_id().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_app_id());
   }
 
   // string code = 2;
   if (!this->_internal_code().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_code());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData WechatMiniProgramPhoneNumberRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+const ::google::protobuf::Message::ClassData WechatMiniProgramPhoneNumberRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     WechatMiniProgramPhoneNumberRequest::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*WechatMiniProgramPhoneNumberRequest::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData*WechatMiniProgramPhoneNumberRequest::GetClassData() const { return &_class_data_; }
 
 
-void WechatMiniProgramPhoneNumberRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void WechatMiniProgramPhoneNumberRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatMiniProgramPhoneNumberRequest*>(&to_msg);
   auto& from = static_cast<const WechatMiniProgramPhoneNumberRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.orchid.v1.WechatMiniProgramPhoneNumberRequest)
@@ -1251,7 +1219,7 @@ void WechatMiniProgramPhoneNumberRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Mes
   if (!from._internal_code().empty()) {
     _this->_internal_set_code(from._internal_code());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void WechatMiniProgramPhoneNumberRequest::CopyFrom(const WechatMiniProgramPhoneNumberRequest& from) {
@@ -1261,7 +1229,7 @@ void WechatMiniProgramPhoneNumberRequest::CopyFrom(const WechatMiniProgramPhoneN
   MergeFrom(from);
 }
 
-bool WechatMiniProgramPhoneNumberRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool WechatMiniProgramPhoneNumberRequest::IsInitialized() const {
   return true;
 }
 
@@ -1276,7 +1244,7 @@ void WechatMiniProgramPhoneNumberRequest::InternalSwap(WechatMiniProgramPhoneNum
                                        &other->_impl_.code_, rhs_arena);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata WechatMiniProgramPhoneNumberRequest::GetMetadata() const {
+::google::protobuf::Metadata WechatMiniProgramPhoneNumberRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_orchid_2eproto_getter, &descriptor_table_orchid_2eproto_once,
       file_level_metadata_orchid_2eproto[2]);
@@ -1287,26 +1255,23 @@ class WechatMiniProgramPhoneNumberResponse::_Internal {
  public:
 };
 
-WechatMiniProgramPhoneNumberResponse::WechatMiniProgramPhoneNumberResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+WechatMiniProgramPhoneNumberResponse::WechatMiniProgramPhoneNumberResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.orchid.v1.WechatMiniProgramPhoneNumberResponse)
 }
-WechatMiniProgramPhoneNumberResponse::WechatMiniProgramPhoneNumberResponse(const WechatMiniProgramPhoneNumberResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  WechatMiniProgramPhoneNumberResponse* const _this = this; (void)_this;
+WechatMiniProgramPhoneNumberResponse::WechatMiniProgramPhoneNumberResponse(const WechatMiniProgramPhoneNumberResponse& from) : ::google::protobuf::Message() {
+  WechatMiniProgramPhoneNumberResponse* const _this = this;
+  (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.phone_number_) {}
-
-    , decltype(_impl_.pure_phone_number_) {}
-
-    , decltype(_impl_.country_code_) {}
-
-    , decltype(_impl_.water_mark_) {}
-
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+      decltype(_impl_.phone_number_){},
+      decltype(_impl_.pure_phone_number_){},
+      decltype(_impl_.country_code_){},
+      decltype(_impl_.water_mark_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
   _impl_.phone_number_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.phone_number_.Set("", GetArenaForAllocation());
@@ -1329,21 +1294,17 @@ WechatMiniProgramPhoneNumberResponse::WechatMiniProgramPhoneNumberResponse(const
     _this->_impl_.country_code_.Set(from._internal_country_code(), _this->GetArenaForAllocation());
   }
   _this->_impl_.water_mark_ = from._impl_.water_mark_;
+
   // @@protoc_insertion_point(copy_constructor:palm.orchid.v1.WechatMiniProgramPhoneNumberResponse)
 }
-
 inline void WechatMiniProgramPhoneNumberResponse::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
-      decltype(_impl_.phone_number_) {}
-
-    , decltype(_impl_.pure_phone_number_) {}
-
-    , decltype(_impl_.country_code_) {}
-
-    , decltype(_impl_.water_mark_) { ::uint64_t{0u} }
-
-    , /*decltype(_impl_._cached_size_)*/{}
+      decltype(_impl_.phone_number_){},
+      decltype(_impl_.pure_phone_number_){},
+      decltype(_impl_.country_code_){},
+      decltype(_impl_.water_mark_){::uint64_t{0u}},
+      /*decltype(_impl_._cached_size_)*/ {},
   };
   _impl_.phone_number_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -1358,28 +1319,22 @@ inline void WechatMiniProgramPhoneNumberResponse::SharedCtor(::_pb::Arena* arena
         _impl_.country_code_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 WechatMiniProgramPhoneNumberResponse::~WechatMiniProgramPhoneNumberResponse() {
   // @@protoc_insertion_point(destructor:palm.orchid.v1.WechatMiniProgramPhoneNumberResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void WechatMiniProgramPhoneNumberResponse::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.phone_number_.Destroy();
   _impl_.pure_phone_number_.Destroy();
   _impl_.country_code_.Destroy();
 }
-
 void WechatMiniProgramPhoneNumberResponse::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void WechatMiniProgramPhoneNumberResponse::Clear() {
+PROTOBUF_NOINLINE void WechatMiniProgramPhoneNumberResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.orchid.v1.WechatMiniProgramPhoneNumberResponse)
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -1389,107 +1344,97 @@ void WechatMiniProgramPhoneNumberResponse::Clear() {
   _impl_.pure_phone_number_.ClearToEmpty();
   _impl_.country_code_.ClearToEmpty();
   _impl_.water_mark_ = ::uint64_t{0u};
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* WechatMiniProgramPhoneNumberResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string phone_number = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_phone_number();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatMiniProgramPhoneNumberResponse.phone_number"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string pure_phone_number = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_pure_phone_number();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatMiniProgramPhoneNumberResponse.pure_phone_number"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string country_code = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_country_code();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatMiniProgramPhoneNumberResponse.country_code"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // uint64 water_mark = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 32)) {
-          _impl_.water_mark_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
+const char* WechatMiniProgramPhoneNumberResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 4, 0, 101, 2> WechatMiniProgramPhoneNumberResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    4, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967280,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    4,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_WechatMiniProgramPhoneNumberResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // uint64 water_mark = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(WechatMiniProgramPhoneNumberResponse, _impl_.water_mark_), 63>(),
+     {32, 63, 0, PROTOBUF_FIELD_OFFSET(WechatMiniProgramPhoneNumberResponse, _impl_.water_mark_)}},
+    // string phone_number = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(WechatMiniProgramPhoneNumberResponse, _impl_.phone_number_)}},
+    // string pure_phone_number = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(WechatMiniProgramPhoneNumberResponse, _impl_.pure_phone_number_)}},
+    // string country_code = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(WechatMiniProgramPhoneNumberResponse, _impl_.country_code_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string phone_number = 1;
+    {PROTOBUF_FIELD_OFFSET(WechatMiniProgramPhoneNumberResponse, _impl_.phone_number_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string pure_phone_number = 2;
+    {PROTOBUF_FIELD_OFFSET(WechatMiniProgramPhoneNumberResponse, _impl_.pure_phone_number_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string country_code = 3;
+    {PROTOBUF_FIELD_OFFSET(WechatMiniProgramPhoneNumberResponse, _impl_.country_code_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // uint64 water_mark = 4;
+    {PROTOBUF_FIELD_OFFSET(WechatMiniProgramPhoneNumberResponse, _impl_.water_mark_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+  }},
+  // no aux_entries
+  {{
+    "\63\14\21\14\0\0\0\0"
+    "palm.orchid.v1.WechatMiniProgramPhoneNumberResponse"
+    "phone_number"
+    "pure_phone_number"
+    "country_code"
+  }},
+};
 
 ::uint8_t* WechatMiniProgramPhoneNumberResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.orchid.v1.WechatMiniProgramPhoneNumberResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   // string phone_number = 1;
   if (!this->_internal_phone_number().empty()) {
     const std::string& _s = this->_internal_phone_number();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramPhoneNumberResponse.phone_number");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramPhoneNumberResponse.phone_number");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // string pure_phone_number = 2;
   if (!this->_internal_pure_phone_number().empty()) {
     const std::string& _s = this->_internal_pure_phone_number();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramPhoneNumberResponse.pure_phone_number");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramPhoneNumberResponse.pure_phone_number");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   // string country_code = 3;
   if (!this->_internal_country_code().empty()) {
     const std::string& _s = this->_internal_country_code();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramPhoneNumberResponse.country_code");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatMiniProgramPhoneNumberResponse.country_code");
     target = stream->WriteStringMaybeAliased(3, _s, target);
   }
 
@@ -1501,8 +1446,9 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.orchid.v1.WechatMiniProgramPhoneNumberResponse)
   return target;
@@ -1518,19 +1464,19 @@ failure:
 
   // string phone_number = 1;
   if (!this->_internal_phone_number().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_phone_number());
   }
 
   // string pure_phone_number = 2;
   if (!this->_internal_pure_phone_number().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_pure_phone_number());
   }
 
   // string country_code = 3;
   if (!this->_internal_country_code().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_country_code());
   }
 
@@ -1543,14 +1489,14 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData WechatMiniProgramPhoneNumberResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+const ::google::protobuf::Message::ClassData WechatMiniProgramPhoneNumberResponse::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     WechatMiniProgramPhoneNumberResponse::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*WechatMiniProgramPhoneNumberResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData*WechatMiniProgramPhoneNumberResponse::GetClassData() const { return &_class_data_; }
 
 
-void WechatMiniProgramPhoneNumberResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void WechatMiniProgramPhoneNumberResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatMiniProgramPhoneNumberResponse*>(&to_msg);
   auto& from = static_cast<const WechatMiniProgramPhoneNumberResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.orchid.v1.WechatMiniProgramPhoneNumberResponse)
@@ -1570,7 +1516,7 @@ void WechatMiniProgramPhoneNumberResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Me
   if (from._internal_water_mark() != 0) {
     _this->_internal_set_water_mark(from._internal_water_mark());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void WechatMiniProgramPhoneNumberResponse::CopyFrom(const WechatMiniProgramPhoneNumberResponse& from) {
@@ -1580,7 +1526,7 @@ void WechatMiniProgramPhoneNumberResponse::CopyFrom(const WechatMiniProgramPhone
   MergeFrom(from);
 }
 
-bool WechatMiniProgramPhoneNumberResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool WechatMiniProgramPhoneNumberResponse::IsInitialized() const {
   return true;
 }
 
@@ -1595,11 +1541,10 @@ void WechatMiniProgramPhoneNumberResponse::InternalSwap(WechatMiniProgramPhoneNu
                                        &other->_impl_.pure_phone_number_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.country_code_, lhs_arena,
                                        &other->_impl_.country_code_, rhs_arena);
-
-  swap(_impl_.water_mark_, other->_impl_.water_mark_);
+        swap(_impl_.water_mark_, other->_impl_.water_mark_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata WechatMiniProgramPhoneNumberResponse::GetMetadata() const {
+::google::protobuf::Metadata WechatMiniProgramPhoneNumberResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_orchid_2eproto_getter, &descriptor_table_orchid_2eproto_once,
       file_level_metadata_orchid_2eproto[3]);
@@ -1610,26 +1555,23 @@ class WechatOauth2QrConnectRequest::_Internal {
  public:
 };
 
-WechatOauth2QrConnectRequest::WechatOauth2QrConnectRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+WechatOauth2QrConnectRequest::WechatOauth2QrConnectRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.orchid.v1.WechatOauth2QrConnectRequest)
 }
-WechatOauth2QrConnectRequest::WechatOauth2QrConnectRequest(const WechatOauth2QrConnectRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  WechatOauth2QrConnectRequest* const _this = this; (void)_this;
+WechatOauth2QrConnectRequest::WechatOauth2QrConnectRequest(const WechatOauth2QrConnectRequest& from) : ::google::protobuf::Message() {
+  WechatOauth2QrConnectRequest* const _this = this;
+  (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.app_id_) {}
-
-    , decltype(_impl_.redirect_uri_) {}
-
-    , decltype(_impl_.state_) {}
-
-    , decltype(_impl_.language_) {}
-
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+      decltype(_impl_.app_id_){},
+      decltype(_impl_.redirect_uri_){},
+      decltype(_impl_.state_){},
+      decltype(_impl_.language_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
   _impl_.app_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.app_id_.Set("", GetArenaForAllocation());
@@ -1652,21 +1594,17 @@ WechatOauth2QrConnectRequest::WechatOauth2QrConnectRequest(const WechatOauth2QrC
     _this->_impl_.state_.Set(from._internal_state(), _this->GetArenaForAllocation());
   }
   _this->_impl_.language_ = from._impl_.language_;
+
   // @@protoc_insertion_point(copy_constructor:palm.orchid.v1.WechatOauth2QrConnectRequest)
 }
-
 inline void WechatOauth2QrConnectRequest::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
-      decltype(_impl_.app_id_) {}
-
-    , decltype(_impl_.redirect_uri_) {}
-
-    , decltype(_impl_.state_) {}
-
-    , decltype(_impl_.language_) { 0 }
-
-    , /*decltype(_impl_._cached_size_)*/{}
+      decltype(_impl_.app_id_){},
+      decltype(_impl_.redirect_uri_){},
+      decltype(_impl_.state_){},
+      decltype(_impl_.language_){0},
+      /*decltype(_impl_._cached_size_)*/ {},
   };
   _impl_.app_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -1681,28 +1619,22 @@ inline void WechatOauth2QrConnectRequest::SharedCtor(::_pb::Arena* arena) {
         _impl_.state_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 WechatOauth2QrConnectRequest::~WechatOauth2QrConnectRequest() {
   // @@protoc_insertion_point(destructor:palm.orchid.v1.WechatOauth2QrConnectRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void WechatOauth2QrConnectRequest::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.app_id_.Destroy();
   _impl_.redirect_uri_.Destroy();
   _impl_.state_.Destroy();
 }
-
 void WechatOauth2QrConnectRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void WechatOauth2QrConnectRequest::Clear() {
+PROTOBUF_NOINLINE void WechatOauth2QrConnectRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.orchid.v1.WechatOauth2QrConnectRequest)
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -1712,108 +1644,95 @@ void WechatOauth2QrConnectRequest::Clear() {
   _impl_.redirect_uri_.ClearToEmpty();
   _impl_.state_.ClearToEmpty();
   _impl_.language_ = 0;
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* WechatOauth2QrConnectRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string app_id = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_app_id();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatOauth2QrConnectRequest.app_id"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string redirect_uri = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_redirect_uri();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatOauth2QrConnectRequest.redirect_uri"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string state = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_state();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatOauth2QrConnectRequest.state"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // .palm.orchid.v1.WechatOauth2QrConnectRequest.Language language = 9;
-      case 9:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 72)) {
-          ::int32_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-          _internal_set_language(static_cast<::palm::orchid::v1::WechatOauth2QrConnectRequest_Language>(val));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
+const char* WechatOauth2QrConnectRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 4, 0, 75, 2> WechatOauth2QrConnectRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    9, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967032,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    4,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_WechatOauth2QrConnectRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string app_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(WechatOauth2QrConnectRequest, _impl_.app_id_)}},
+    // string redirect_uri = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(WechatOauth2QrConnectRequest, _impl_.redirect_uri_)}},
+    // string state = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(WechatOauth2QrConnectRequest, _impl_.state_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string app_id = 1;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2QrConnectRequest, _impl_.app_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string redirect_uri = 2;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2QrConnectRequest, _impl_.redirect_uri_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string state = 3;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2QrConnectRequest, _impl_.state_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .palm.orchid.v1.WechatOauth2QrConnectRequest.Language language = 9;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2QrConnectRequest, _impl_.language_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+  }},
+  // no aux_entries
+  {{
+    "\53\6\14\5\0\0\0\0"
+    "palm.orchid.v1.WechatOauth2QrConnectRequest"
+    "app_id"
+    "redirect_uri"
+    "state"
+  }},
+};
 
 ::uint8_t* WechatOauth2QrConnectRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.orchid.v1.WechatOauth2QrConnectRequest)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   // string app_id = 1;
   if (!this->_internal_app_id().empty()) {
     const std::string& _s = this->_internal_app_id();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2QrConnectRequest.app_id");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2QrConnectRequest.app_id");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // string redirect_uri = 2;
   if (!this->_internal_redirect_uri().empty()) {
     const std::string& _s = this->_internal_redirect_uri();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2QrConnectRequest.redirect_uri");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2QrConnectRequest.redirect_uri");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   // string state = 3;
   if (!this->_internal_state().empty()) {
     const std::string& _s = this->_internal_state();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2QrConnectRequest.state");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2QrConnectRequest.state");
     target = stream->WriteStringMaybeAliased(3, _s, target);
   }
 
@@ -1825,8 +1744,9 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.orchid.v1.WechatOauth2QrConnectRequest)
   return target;
@@ -1842,19 +1762,19 @@ failure:
 
   // string app_id = 1;
   if (!this->_internal_app_id().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_app_id());
   }
 
   // string redirect_uri = 2;
   if (!this->_internal_redirect_uri().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_redirect_uri());
   }
 
   // string state = 3;
   if (!this->_internal_state().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_state());
   }
 
@@ -1867,14 +1787,14 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData WechatOauth2QrConnectRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+const ::google::protobuf::Message::ClassData WechatOauth2QrConnectRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     WechatOauth2QrConnectRequest::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*WechatOauth2QrConnectRequest::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData*WechatOauth2QrConnectRequest::GetClassData() const { return &_class_data_; }
 
 
-void WechatOauth2QrConnectRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void WechatOauth2QrConnectRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatOauth2QrConnectRequest*>(&to_msg);
   auto& from = static_cast<const WechatOauth2QrConnectRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.orchid.v1.WechatOauth2QrConnectRequest)
@@ -1894,7 +1814,7 @@ void WechatOauth2QrConnectRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& t
   if (from._internal_language() != 0) {
     _this->_internal_set_language(from._internal_language());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void WechatOauth2QrConnectRequest::CopyFrom(const WechatOauth2QrConnectRequest& from) {
@@ -1904,7 +1824,7 @@ void WechatOauth2QrConnectRequest::CopyFrom(const WechatOauth2QrConnectRequest& 
   MergeFrom(from);
 }
 
-bool WechatOauth2QrConnectRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool WechatOauth2QrConnectRequest::IsInitialized() const {
   return true;
 }
 
@@ -1922,7 +1842,7 @@ void WechatOauth2QrConnectRequest::InternalSwap(WechatOauth2QrConnectRequest* ot
   swap(_impl_.language_, other->_impl_.language_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata WechatOauth2QrConnectRequest::GetMetadata() const {
+::google::protobuf::Metadata WechatOauth2QrConnectRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_orchid_2eproto_getter, &descriptor_table_orchid_2eproto_once,
       file_level_metadata_orchid_2eproto[4]);
@@ -1933,20 +1853,20 @@ class WechatOauth2QrConnectResponse::_Internal {
  public:
 };
 
-WechatOauth2QrConnectResponse::WechatOauth2QrConnectResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+WechatOauth2QrConnectResponse::WechatOauth2QrConnectResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.orchid.v1.WechatOauth2QrConnectResponse)
 }
-WechatOauth2QrConnectResponse::WechatOauth2QrConnectResponse(const WechatOauth2QrConnectResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  WechatOauth2QrConnectResponse* const _this = this; (void)_this;
+WechatOauth2QrConnectResponse::WechatOauth2QrConnectResponse(const WechatOauth2QrConnectResponse& from) : ::google::protobuf::Message() {
+  WechatOauth2QrConnectResponse* const _this = this;
+  (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.url_) {}
-
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+      decltype(_impl_.url_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
   _impl_.url_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.url_.Set("", GetArenaForAllocation());
@@ -1954,107 +1874,102 @@ WechatOauth2QrConnectResponse::WechatOauth2QrConnectResponse(const WechatOauth2Q
   if (!from._internal_url().empty()) {
     _this->_impl_.url_.Set(from._internal_url(), _this->GetArenaForAllocation());
   }
+
   // @@protoc_insertion_point(copy_constructor:palm.orchid.v1.WechatOauth2QrConnectResponse)
 }
-
 inline void WechatOauth2QrConnectResponse::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
-      decltype(_impl_.url_) {}
-
-    , /*decltype(_impl_._cached_size_)*/{}
+      decltype(_impl_.url_){},
+      /*decltype(_impl_._cached_size_)*/ {},
   };
   _impl_.url_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.url_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 WechatOauth2QrConnectResponse::~WechatOauth2QrConnectResponse() {
   // @@protoc_insertion_point(destructor:palm.orchid.v1.WechatOauth2QrConnectResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void WechatOauth2QrConnectResponse::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.url_.Destroy();
 }
-
 void WechatOauth2QrConnectResponse::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void WechatOauth2QrConnectResponse::Clear() {
+PROTOBUF_NOINLINE void WechatOauth2QrConnectResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.orchid.v1.WechatOauth2QrConnectResponse)
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.url_.ClearToEmpty();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* WechatOauth2QrConnectResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string url = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_url();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatOauth2QrConnectResponse.url"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
+const char* WechatOauth2QrConnectResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 56, 2> WechatOauth2QrConnectResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_WechatOauth2QrConnectResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string url = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(WechatOauth2QrConnectResponse, _impl_.url_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string url = 1;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2QrConnectResponse, _impl_.url_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\54\3\0\0\0\0\0\0"
+    "palm.orchid.v1.WechatOauth2QrConnectResponse"
+    "url"
+  }},
+};
 
 ::uint8_t* WechatOauth2QrConnectResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.orchid.v1.WechatOauth2QrConnectResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   // string url = 1;
   if (!this->_internal_url().empty()) {
     const std::string& _s = this->_internal_url();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2QrConnectResponse.url");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2QrConnectResponse.url");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.orchid.v1.WechatOauth2QrConnectResponse)
   return target;
@@ -2070,21 +1985,21 @@ failure:
 
   // string url = 1;
   if (!this->_internal_url().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_url());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData WechatOauth2QrConnectResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+const ::google::protobuf::Message::ClassData WechatOauth2QrConnectResponse::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     WechatOauth2QrConnectResponse::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*WechatOauth2QrConnectResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData*WechatOauth2QrConnectResponse::GetClassData() const { return &_class_data_; }
 
 
-void WechatOauth2QrConnectResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void WechatOauth2QrConnectResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatOauth2QrConnectResponse*>(&to_msg);
   auto& from = static_cast<const WechatOauth2QrConnectResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.orchid.v1.WechatOauth2QrConnectResponse)
@@ -2095,7 +2010,7 @@ void WechatOauth2QrConnectResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& 
   if (!from._internal_url().empty()) {
     _this->_internal_set_url(from._internal_url());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void WechatOauth2QrConnectResponse::CopyFrom(const WechatOauth2QrConnectResponse& from) {
@@ -2105,7 +2020,7 @@ void WechatOauth2QrConnectResponse::CopyFrom(const WechatOauth2QrConnectResponse
   MergeFrom(from);
 }
 
-bool WechatOauth2QrConnectResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool WechatOauth2QrConnectResponse::IsInitialized() const {
   return true;
 }
 
@@ -2118,7 +2033,7 @@ void WechatOauth2QrConnectResponse::InternalSwap(WechatOauth2QrConnectResponse* 
                                        &other->_impl_.url_, rhs_arena);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata WechatOauth2QrConnectResponse::GetMetadata() const {
+::google::protobuf::Metadata WechatOauth2QrConnectResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_orchid_2eproto_getter, &descriptor_table_orchid_2eproto_once,
       file_level_metadata_orchid_2eproto[5]);
@@ -2135,36 +2050,29 @@ class WechatOauth2LoginResponse::_Internal {
   }
 };
 
-WechatOauth2LoginResponse::WechatOauth2LoginResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+WechatOauth2LoginResponse::WechatOauth2LoginResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.orchid.v1.WechatOauth2LoginResponse)
 }
-WechatOauth2LoginResponse::WechatOauth2LoginResponse(const WechatOauth2LoginResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  WechatOauth2LoginResponse* const _this = this; (void)_this;
+WechatOauth2LoginResponse::WechatOauth2LoginResponse(const WechatOauth2LoginResponse& from) : ::google::protobuf::Message() {
+  WechatOauth2LoginResponse* const _this = this;
+  (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.privilege_){from._impl_.privilege_}
-    , decltype(_impl_.unionid_) {}
-
-    , decltype(_impl_.openid_) {}
-
-    , decltype(_impl_.nickname_) {}
-
-    , decltype(_impl_.province_) {}
-
-    , decltype(_impl_.city_) {}
-
-    , decltype(_impl_.country_) {}
-
-    , decltype(_impl_.headimgurl_) {}
-
-    , decltype(_impl_.sex_) {}
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.privilege_){from._impl_.privilege_},
+      decltype(_impl_.unionid_){},
+      decltype(_impl_.openid_){},
+      decltype(_impl_.nickname_){},
+      decltype(_impl_.province_){},
+      decltype(_impl_.city_){},
+      decltype(_impl_.country_){},
+      decltype(_impl_.headimgurl_){},
+      decltype(_impl_.sex_){},
   };
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
   _impl_.unionid_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.unionid_.Set("", GetArenaForAllocation());
@@ -2215,31 +2123,23 @@ WechatOauth2LoginResponse::WechatOauth2LoginResponse(const WechatOauth2LoginResp
     _this->_impl_.headimgurl_.Set(from._internal_headimgurl(), _this->GetArenaForAllocation());
   }
   _this->_impl_.sex_ = from._impl_.sex_;
+
   // @@protoc_insertion_point(copy_constructor:palm.orchid.v1.WechatOauth2LoginResponse)
 }
-
 inline void WechatOauth2LoginResponse::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.privilege_){arena}
-    , decltype(_impl_.unionid_) {}
-
-    , decltype(_impl_.openid_) {}
-
-    , decltype(_impl_.nickname_) {}
-
-    , decltype(_impl_.province_) {}
-
-    , decltype(_impl_.city_) {}
-
-    , decltype(_impl_.country_) {}
-
-    , decltype(_impl_.headimgurl_) {}
-
-    , decltype(_impl_.sex_) { 0 }
-
+      decltype(_impl_._has_bits_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.privilege_){arena},
+      decltype(_impl_.unionid_){},
+      decltype(_impl_.openid_){},
+      decltype(_impl_.nickname_){},
+      decltype(_impl_.province_){},
+      decltype(_impl_.city_){},
+      decltype(_impl_.country_){},
+      decltype(_impl_.headimgurl_){},
+      decltype(_impl_.sex_){0},
   };
   _impl_.unionid_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -2270,16 +2170,11 @@ inline void WechatOauth2LoginResponse::SharedCtor(::_pb::Arena* arena) {
         _impl_.headimgurl_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 WechatOauth2LoginResponse::~WechatOauth2LoginResponse() {
   // @@protoc_insertion_point(destructor:palm.orchid.v1.WechatOauth2LoginResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void WechatOauth2LoginResponse::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _internal_mutable_privilege()->~RepeatedPtrField();
@@ -2291,12 +2186,11 @@ inline void WechatOauth2LoginResponse::SharedDtor() {
   _impl_.country_.Destroy();
   _impl_.headimgurl_.Destroy();
 }
-
 void WechatOauth2LoginResponse::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void WechatOauth2LoginResponse::Clear() {
+PROTOBUF_NOINLINE void WechatOauth2LoginResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.orchid.v1.WechatOauth2LoginResponse)
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -2315,170 +2209,129 @@ void WechatOauth2LoginResponse::Clear() {
   }
   _impl_.sex_ = 0;
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* WechatOauth2LoginResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string unionid = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_unionid();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatOauth2LoginResponse.unionid"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string openid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_openid();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatOauth2LoginResponse.openid"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string nickname = 11;
-      case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 90)) {
-          auto str = _internal_mutable_nickname();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatOauth2LoginResponse.nickname"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // .palm.orchid.v1.WechatOauth2LoginResponse.Sex sex = 12;
-      case 12:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 96)) {
-          ::int32_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-          _internal_set_sex(static_cast<::palm::orchid::v1::WechatOauth2LoginResponse_Sex>(val));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string province = 13;
-      case 13:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 106)) {
-          auto str = _internal_mutable_province();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatOauth2LoginResponse.province"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string city = 14;
-      case 14:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 114)) {
-          auto str = _internal_mutable_city();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatOauth2LoginResponse.city"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string country = 15;
-      case 15:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 122)) {
-          auto str = _internal_mutable_country();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatOauth2LoginResponse.country"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // optional string headimgurl = 16;
-      case 16:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 130)) {
-          auto str = _internal_mutable_headimgurl();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatOauth2LoginResponse.headimgurl"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // repeated string privilege = 17;
-      case 17:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 138)) {
-          ptr -= 2;
-          do {
-            ptr += 2;
-            auto str = _internal_add_privilege();
-            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-            CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatOauth2LoginResponse.privilege"));
-            if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<138>(ptr));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* WechatOauth2LoginResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 9, 0, 116, 2> WechatOauth2LoginResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    17, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294837244,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    9,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_WechatOauth2LoginResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // optional string headimgurl = 16;
+    {::_pbi::TcParser::FastUS2,
+     {386, 0, 0, PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_.headimgurl_)}},
+    // string unionid = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_.unionid_)}},
+    // string openid = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_.openid_)}},
+    // string nickname = 11;
+    {::_pbi::TcParser::FastUS1,
+     {90, 63, 0, PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_.nickname_)}},
+    // .palm.orchid.v1.WechatOauth2LoginResponse.Sex sex = 12;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(WechatOauth2LoginResponse, _impl_.sex_), 63>(),
+     {96, 63, 0, PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_.sex_)}},
+    // string province = 13;
+    {::_pbi::TcParser::FastUS1,
+     {106, 63, 0, PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_.province_)}},
+    // string city = 14;
+    {::_pbi::TcParser::FastUS1,
+     {114, 63, 0, PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_.city_)}},
+    // string country = 15;
+    {::_pbi::TcParser::FastUS1,
+     {122, 63, 0, PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_.country_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string unionid = 1;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_.unionid_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string openid = 2;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_.openid_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string nickname = 11;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_.nickname_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .palm.orchid.v1.WechatOauth2LoginResponse.Sex sex = 12;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_.sex_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+    // string province = 13;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_.province_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string city = 14;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_.city_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string country = 15;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_.country_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // optional string headimgurl = 16;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_.headimgurl_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // repeated string privilege = 17;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2LoginResponse, _impl_.privilege_), -1, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+  }},
+  // no aux_entries
+  {{
+    "\50\7\6\10\0\10\4\7\12\11\0\0\0\0\0\0"
+    "palm.orchid.v1.WechatOauth2LoginResponse"
+    "unionid"
+    "openid"
+    "nickname"
+    "province"
+    "city"
+    "country"
+    "headimgurl"
+    "privilege"
+  }},
+};
 
 ::uint8_t* WechatOauth2LoginResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.orchid.v1.WechatOauth2LoginResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   // string unionid = 1;
   if (!this->_internal_unionid().empty()) {
     const std::string& _s = this->_internal_unionid();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginResponse.unionid");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginResponse.unionid");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // string openid = 2;
   if (!this->_internal_openid().empty()) {
     const std::string& _s = this->_internal_openid();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginResponse.openid");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginResponse.openid");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   // string nickname = 11;
   if (!this->_internal_nickname().empty()) {
     const std::string& _s = this->_internal_nickname();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginResponse.nickname");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginResponse.nickname");
     target = stream->WriteStringMaybeAliased(11, _s, target);
   }
 
@@ -2492,24 +2345,24 @@ failure:
   // string province = 13;
   if (!this->_internal_province().empty()) {
     const std::string& _s = this->_internal_province();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginResponse.province");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginResponse.province");
     target = stream->WriteStringMaybeAliased(13, _s, target);
   }
 
   // string city = 14;
   if (!this->_internal_city().empty()) {
     const std::string& _s = this->_internal_city();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginResponse.city");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginResponse.city");
     target = stream->WriteStringMaybeAliased(14, _s, target);
   }
 
   // string country = 15;
   if (!this->_internal_country().empty()) {
     const std::string& _s = this->_internal_country();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginResponse.country");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginResponse.country");
     target = stream->WriteStringMaybeAliased(15, _s, target);
   }
 
@@ -2517,22 +2370,23 @@ failure:
   // optional string headimgurl = 16;
   if (cached_has_bits & 0x00000001u) {
     const std::string& _s = this->_internal_headimgurl();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginResponse.headimgurl");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginResponse.headimgurl");
     target = stream->WriteStringMaybeAliased(16, _s, target);
   }
 
   // repeated string privilege = 17;
   for (int i = 0, n = this->_internal_privilege_size(); i < n; ++i) {
-    const auto& s = this->_internal_privilege(i);
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        s.data(), static_cast<int>(s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginResponse.privilege");
+    const auto& s = this->_internal_privilege().Get(i);
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginResponse.privilege");
     target = stream->WriteString(17, s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.orchid.v1.WechatOauth2LoginResponse)
   return target;
@@ -2547,52 +2401,51 @@ failure:
   (void) cached_has_bits;
 
   // repeated string privilege = 17;
-  total_size += 2 * ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_internal_privilege().size());
+  total_size += 2 * ::google::protobuf::internal::FromIntSize(_internal_privilege().size());
   for (int i = 0, n = _internal_privilege().size(); i < n; ++i) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
         _internal_privilege().Get(i));
   }
-
   // string unionid = 1;
   if (!this->_internal_unionid().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_unionid());
   }
 
   // string openid = 2;
   if (!this->_internal_openid().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_openid());
   }
 
   // string nickname = 11;
   if (!this->_internal_nickname().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_nickname());
   }
 
   // string province = 13;
   if (!this->_internal_province().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_province());
   }
 
   // string city = 14;
   if (!this->_internal_city().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_city());
   }
 
   // string country = 15;
   if (!this->_internal_country().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_country());
   }
 
   // optional string headimgurl = 16;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 2 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_headimgurl());
   }
 
@@ -2605,14 +2458,14 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData WechatOauth2LoginResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+const ::google::protobuf::Message::ClassData WechatOauth2LoginResponse::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     WechatOauth2LoginResponse::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*WechatOauth2LoginResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData*WechatOauth2LoginResponse::GetClassData() const { return &_class_data_; }
 
 
-void WechatOauth2LoginResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void WechatOauth2LoginResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatOauth2LoginResponse*>(&to_msg);
   auto& from = static_cast<const WechatOauth2LoginResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.orchid.v1.WechatOauth2LoginResponse)
@@ -2645,7 +2498,7 @@ void WechatOauth2LoginResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_m
   if (from._internal_sex() != 0) {
     _this->_internal_set_sex(from._internal_sex());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void WechatOauth2LoginResponse::CopyFrom(const WechatOauth2LoginResponse& from) {
@@ -2655,7 +2508,7 @@ void WechatOauth2LoginResponse::CopyFrom(const WechatOauth2LoginResponse& from) 
   MergeFrom(from);
 }
 
-bool WechatOauth2LoginResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool WechatOauth2LoginResponse::IsInitialized() const {
   return true;
 }
 
@@ -2665,8 +2518,7 @@ void WechatOauth2LoginResponse::InternalSwap(WechatOauth2LoginResponse* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  _internal_mutable_privilege()->InternalSwap(
-      other->_internal_mutable_privilege());
+  _impl_.privilege_.InternalSwap(&other->_impl_.privilege_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.unionid_, lhs_arena,
                                        &other->_impl_.unionid_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.openid_, lhs_arena,
@@ -2684,7 +2536,7 @@ void WechatOauth2LoginResponse::InternalSwap(WechatOauth2LoginResponse* other) {
   swap(_impl_.sex_, other->_impl_.sex_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata WechatOauth2LoginResponse::GetMetadata() const {
+::google::protobuf::Metadata WechatOauth2LoginResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_orchid_2eproto_getter, &descriptor_table_orchid_2eproto_once,
       file_level_metadata_orchid_2eproto[6]);
@@ -2695,26 +2547,23 @@ class WechatOauth2LoginRequest::_Internal {
  public:
 };
 
-WechatOauth2LoginRequest::WechatOauth2LoginRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+WechatOauth2LoginRequest::WechatOauth2LoginRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.orchid.v1.WechatOauth2LoginRequest)
 }
-WechatOauth2LoginRequest::WechatOauth2LoginRequest(const WechatOauth2LoginRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  WechatOauth2LoginRequest* const _this = this; (void)_this;
+WechatOauth2LoginRequest::WechatOauth2LoginRequest(const WechatOauth2LoginRequest& from) : ::google::protobuf::Message() {
+  WechatOauth2LoginRequest* const _this = this;
+  (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.app_id_) {}
-
-    , decltype(_impl_.code_) {}
-
-    , decltype(_impl_.state_) {}
-
-    , decltype(_impl_.language_) {}
-
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+      decltype(_impl_.app_id_){},
+      decltype(_impl_.code_){},
+      decltype(_impl_.state_){},
+      decltype(_impl_.language_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
   _impl_.app_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.app_id_.Set("", GetArenaForAllocation());
@@ -2737,21 +2586,17 @@ WechatOauth2LoginRequest::WechatOauth2LoginRequest(const WechatOauth2LoginReques
     _this->_impl_.state_.Set(from._internal_state(), _this->GetArenaForAllocation());
   }
   _this->_impl_.language_ = from._impl_.language_;
+
   // @@protoc_insertion_point(copy_constructor:palm.orchid.v1.WechatOauth2LoginRequest)
 }
-
 inline void WechatOauth2LoginRequest::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
-      decltype(_impl_.app_id_) {}
-
-    , decltype(_impl_.code_) {}
-
-    , decltype(_impl_.state_) {}
-
-    , decltype(_impl_.language_) { 0 }
-
-    , /*decltype(_impl_._cached_size_)*/{}
+      decltype(_impl_.app_id_){},
+      decltype(_impl_.code_){},
+      decltype(_impl_.state_){},
+      decltype(_impl_.language_){0},
+      /*decltype(_impl_._cached_size_)*/ {},
   };
   _impl_.app_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -2766,28 +2611,22 @@ inline void WechatOauth2LoginRequest::SharedCtor(::_pb::Arena* arena) {
         _impl_.state_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 WechatOauth2LoginRequest::~WechatOauth2LoginRequest() {
   // @@protoc_insertion_point(destructor:palm.orchid.v1.WechatOauth2LoginRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void WechatOauth2LoginRequest::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.app_id_.Destroy();
   _impl_.code_.Destroy();
   _impl_.state_.Destroy();
 }
-
 void WechatOauth2LoginRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void WechatOauth2LoginRequest::Clear() {
+PROTOBUF_NOINLINE void WechatOauth2LoginRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.orchid.v1.WechatOauth2LoginRequest)
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -2797,108 +2636,95 @@ void WechatOauth2LoginRequest::Clear() {
   _impl_.code_.ClearToEmpty();
   _impl_.state_.ClearToEmpty();
   _impl_.language_ = 0;
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* WechatOauth2LoginRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string app_id = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_app_id();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatOauth2LoginRequest.app_id"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string code = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_code();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatOauth2LoginRequest.code"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string state = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_state();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "palm.orchid.v1.WechatOauth2LoginRequest.state"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // .palm.orchid.v1.WechatOauth2QrConnectRequest.Language language = 9;
-      case 9:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 72)) {
-          ::int32_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-          _internal_set_language(static_cast<::palm::orchid::v1::WechatOauth2QrConnectRequest_Language>(val));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
+const char* WechatOauth2LoginRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 4, 0, 63, 2> WechatOauth2LoginRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    9, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967032,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    4,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_WechatOauth2LoginRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string app_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(WechatOauth2LoginRequest, _impl_.app_id_)}},
+    // string code = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(WechatOauth2LoginRequest, _impl_.code_)}},
+    // string state = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(WechatOauth2LoginRequest, _impl_.state_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string app_id = 1;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2LoginRequest, _impl_.app_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string code = 2;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2LoginRequest, _impl_.code_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string state = 3;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2LoginRequest, _impl_.state_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .palm.orchid.v1.WechatOauth2QrConnectRequest.Language language = 9;
+    {PROTOBUF_FIELD_OFFSET(WechatOauth2LoginRequest, _impl_.language_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+  }},
+  // no aux_entries
+  {{
+    "\47\6\4\5\0\0\0\0"
+    "palm.orchid.v1.WechatOauth2LoginRequest"
+    "app_id"
+    "code"
+    "state"
+  }},
+};
 
 ::uint8_t* WechatOauth2LoginRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.orchid.v1.WechatOauth2LoginRequest)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   // string app_id = 1;
   if (!this->_internal_app_id().empty()) {
     const std::string& _s = this->_internal_app_id();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginRequest.app_id");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginRequest.app_id");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // string code = 2;
   if (!this->_internal_code().empty()) {
     const std::string& _s = this->_internal_code();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginRequest.code");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginRequest.code");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   // string state = 3;
   if (!this->_internal_state().empty()) {
     const std::string& _s = this->_internal_state();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginRequest.state");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.orchid.v1.WechatOauth2LoginRequest.state");
     target = stream->WriteStringMaybeAliased(3, _s, target);
   }
 
@@ -2910,8 +2736,9 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.orchid.v1.WechatOauth2LoginRequest)
   return target;
@@ -2927,19 +2754,19 @@ failure:
 
   // string app_id = 1;
   if (!this->_internal_app_id().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_app_id());
   }
 
   // string code = 2;
   if (!this->_internal_code().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_code());
   }
 
   // string state = 3;
   if (!this->_internal_state().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_state());
   }
 
@@ -2952,14 +2779,14 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData WechatOauth2LoginRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+const ::google::protobuf::Message::ClassData WechatOauth2LoginRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     WechatOauth2LoginRequest::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*WechatOauth2LoginRequest::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData*WechatOauth2LoginRequest::GetClassData() const { return &_class_data_; }
 
 
-void WechatOauth2LoginRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void WechatOauth2LoginRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatOauth2LoginRequest*>(&to_msg);
   auto& from = static_cast<const WechatOauth2LoginRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.orchid.v1.WechatOauth2LoginRequest)
@@ -2979,7 +2806,7 @@ void WechatOauth2LoginRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_ms
   if (from._internal_language() != 0) {
     _this->_internal_set_language(from._internal_language());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void WechatOauth2LoginRequest::CopyFrom(const WechatOauth2LoginRequest& from) {
@@ -2989,7 +2816,7 @@ void WechatOauth2LoginRequest::CopyFrom(const WechatOauth2LoginRequest& from) {
   MergeFrom(from);
 }
 
-bool WechatOauth2LoginRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool WechatOauth2LoginRequest::IsInitialized() const {
   return true;
 }
 
@@ -3007,7 +2834,7 @@ void WechatOauth2LoginRequest::InternalSwap(WechatOauth2LoginRequest* other) {
   swap(_impl_.language_, other->_impl_.language_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata WechatOauth2LoginRequest::GetMetadata() const {
+::google::protobuf::Metadata WechatOauth2LoginRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_orchid_2eproto_getter, &descriptor_table_orchid_2eproto_once,
       file_level_metadata_orchid_2eproto[7]);
@@ -3016,39 +2843,9 @@ void WechatOauth2LoginRequest::InternalSwap(WechatOauth2LoginRequest* other) {
 }  // namespace v1
 }  // namespace orchid
 }  // namespace palm
-PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::palm::orchid::v1::WechatMiniProgramLoginRequest*
-Arena::CreateMaybeMessage< ::palm::orchid::v1::WechatMiniProgramLoginRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::palm::orchid::v1::WechatMiniProgramLoginRequest >(arena);
-}
-template<> PROTOBUF_NOINLINE ::palm::orchid::v1::WechatMiniProgramLoginResponse*
-Arena::CreateMaybeMessage< ::palm::orchid::v1::WechatMiniProgramLoginResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::palm::orchid::v1::WechatMiniProgramLoginResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::palm::orchid::v1::WechatMiniProgramPhoneNumberRequest*
-Arena::CreateMaybeMessage< ::palm::orchid::v1::WechatMiniProgramPhoneNumberRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::palm::orchid::v1::WechatMiniProgramPhoneNumberRequest >(arena);
-}
-template<> PROTOBUF_NOINLINE ::palm::orchid::v1::WechatMiniProgramPhoneNumberResponse*
-Arena::CreateMaybeMessage< ::palm::orchid::v1::WechatMiniProgramPhoneNumberResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::palm::orchid::v1::WechatMiniProgramPhoneNumberResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::palm::orchid::v1::WechatOauth2QrConnectRequest*
-Arena::CreateMaybeMessage< ::palm::orchid::v1::WechatOauth2QrConnectRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::palm::orchid::v1::WechatOauth2QrConnectRequest >(arena);
-}
-template<> PROTOBUF_NOINLINE ::palm::orchid::v1::WechatOauth2QrConnectResponse*
-Arena::CreateMaybeMessage< ::palm::orchid::v1::WechatOauth2QrConnectResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::palm::orchid::v1::WechatOauth2QrConnectResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::palm::orchid::v1::WechatOauth2LoginResponse*
-Arena::CreateMaybeMessage< ::palm::orchid::v1::WechatOauth2LoginResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::palm::orchid::v1::WechatOauth2LoginResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::palm::orchid::v1::WechatOauth2LoginRequest*
-Arena::CreateMaybeMessage< ::palm::orchid::v1::WechatOauth2LoginRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::palm::orchid::v1::WechatOauth2LoginRequest >(arena);
-}
-PROTOBUF_NAMESPACE_CLOSE
+namespace google {
+namespace protobuf {
+}  // namespace protobuf
+}  // namespace google
 // @@protoc_insertion_point(global_scope)
 #include "google/protobuf/port_undef.inc"

@@ -185,8 +185,8 @@ proto.palm.lily.v1.File.prototype.toObject = function(opt_includeInstance) {
  */
 proto.palm.lily.v1.File.toObject = function(includeInstance, msg) {
   var f, obj = {
-    contentType: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    payload: msg.getPayload_asB64()
+    bucket: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    name: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -225,11 +225,11 @@ proto.palm.lily.v1.File.deserializeBinaryFromReader = function(msg, reader) {
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setContentType(value);
+      msg.setBucket(value);
       break;
     case 2:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setPayload(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
       break;
     default:
       reader.skipField();
@@ -260,16 +260,16 @@ proto.palm.lily.v1.File.prototype.serializeBinary = function() {
  */
 proto.palm.lily.v1.File.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = /** @type {string} */ (jspb.Message.getField(message, 1));
-  if (f != null) {
+  f = message.getBucket();
+  if (f.length > 0) {
     writer.writeString(
       1,
       f
     );
   }
-  f = message.getPayload_asU8();
+  f = message.getName();
   if (f.length > 0) {
-    writer.writeBytes(
+    writer.writeString(
       2,
       f
     );
@@ -278,10 +278,10 @@ proto.palm.lily.v1.File.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional string content_type = 1;
+ * optional string bucket = 1;
  * @return {string}
  */
-proto.palm.lily.v1.File.prototype.getContentType = function() {
+proto.palm.lily.v1.File.prototype.getBucket = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -290,68 +290,26 @@ proto.palm.lily.v1.File.prototype.getContentType = function() {
  * @param {string} value
  * @return {!proto.palm.lily.v1.File} returns this
  */
-proto.palm.lily.v1.File.prototype.setContentType = function(value) {
-  return jspb.Message.setField(this, 1, value);
+proto.palm.lily.v1.File.prototype.setBucket = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * Clears the field making it undefined.
- * @return {!proto.palm.lily.v1.File} returns this
- */
-proto.palm.lily.v1.File.prototype.clearContentType = function() {
-  return jspb.Message.setField(this, 1, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.palm.lily.v1.File.prototype.hasContentType = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * optional bytes payload = 2;
- * @return {!(string|Uint8Array)}
- */
-proto.palm.lily.v1.File.prototype.getPayload = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/**
- * optional bytes payload = 2;
- * This is a type-conversion wrapper around `getPayload()`
+ * optional string name = 2;
  * @return {string}
  */
-proto.palm.lily.v1.File.prototype.getPayload_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getPayload()));
+proto.palm.lily.v1.File.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
- * optional bytes payload = 2;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getPayload()`
- * @return {!Uint8Array}
- */
-proto.palm.lily.v1.File.prototype.getPayload_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getPayload()));
-};
-
-
-/**
- * @param {!(string|Uint8Array)} value
+ * @param {string} value
  * @return {!proto.palm.lily.v1.File} returns this
  */
-proto.palm.lily.v1.File.prototype.setPayload = function(value) {
-  return jspb.Message.setProto3BytesField(this, 2, value);
+proto.palm.lily.v1.File.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -927,7 +885,8 @@ proto.palm.lily.v1.TexToRequest.prototype.toObject = function(opt_includeInstanc
  */
 proto.palm.lily.v1.TexToRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    filesMap: (f = msg.getFilesMap()) ? f.toObject(includeInstance, undefined) : []
+    filesMap: (f = msg.getFilesMap()) ? f.toObject(includeInstance, undefined) : [],
+    pb_public: jspb.Message.getBooleanFieldWithDefault(msg, 9, false)
   };
 
   if (includeInstance) {
@@ -970,6 +929,10 @@ proto.palm.lily.v1.TexToRequest.deserializeBinaryFromReader = function(msg, read
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readBytes, null, "", "");
          });
       break;
+    case 9:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setPublic(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1003,6 +966,13 @@ proto.palm.lily.v1.TexToRequest.serializeBinaryToWriter = function(message, writ
   if (f && f.getLength() > 0) {
     f.serializeBinary(1, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeBytes);
   }
+  f = message.getPublic();
+  if (f) {
+    writer.writeBool(
+      9,
+      f
+    );
+  }
 };
 
 
@@ -1026,6 +996,24 @@ proto.palm.lily.v1.TexToRequest.prototype.getFilesMap = function(opt_noLazyCreat
 proto.palm.lily.v1.TexToRequest.prototype.clearFilesMap = function() {
   this.getFilesMap().clear();
   return this;
+};
+
+
+/**
+ * optional bool public = 9;
+ * @return {boolean}
+ */
+proto.palm.lily.v1.TexToRequest.prototype.getPublic = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 9, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.palm.lily.v1.TexToRequest} returns this
+ */
+proto.palm.lily.v1.TexToRequest.prototype.setPublic = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 9, value);
 };
 
 

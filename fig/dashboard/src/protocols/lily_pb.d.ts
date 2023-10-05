@@ -3,15 +3,11 @@ import * as jspb from 'google-protobuf'
 
 
 export class File extends jspb.Message {
-  getContentType(): string;
-  setContentType(value: string): File;
-  hasContentType(): boolean;
-  clearContentType(): File;
+  getBucket(): string;
+  setBucket(value: string): File;
 
-  getPayload(): Uint8Array | string;
-  getPayload_asU8(): Uint8Array;
-  getPayload_asB64(): string;
-  setPayload(value: Uint8Array | string): File;
+  getName(): string;
+  setName(value: string): File;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): File.AsObject;
@@ -23,13 +19,8 @@ export class File extends jspb.Message {
 
 export namespace File {
   export type AsObject = {
-    contentType?: string,
-    payload: Uint8Array | string,
-  }
-
-  export enum ContentTypeCase { 
-    _CONTENT_TYPE_NOT_SET = 0,
-    CONTENT_TYPE = 1,
+    bucket: string,
+    name: string,
   }
 }
 
@@ -109,6 +100,9 @@ export class TexToRequest extends jspb.Message {
   getFilesMap(): jspb.Map<string, Uint8Array | string>;
   clearFilesMap(): TexToRequest;
 
+  getPublic(): boolean;
+  setPublic(value: boolean): TexToRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TexToRequest.AsObject;
   static toObject(includeInstance: boolean, msg: TexToRequest): TexToRequest.AsObject;
@@ -120,6 +114,7 @@ export class TexToRequest extends jspb.Message {
 export namespace TexToRequest {
   export type AsObject = {
     filesMap: Array<[string, Uint8Array | string]>,
+    pb_public: boolean,
   }
 }
 

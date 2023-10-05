@@ -718,7 +718,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasAmount() {
-    return amount_ != null;
+    return ((bitField0_ & 0x00000002) != 0);
   }
   /**
    * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
@@ -834,7 +834,7 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000001) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, payerOpenId_);
     }
-    if (amount_ != null) {
+    if (((bitField0_ & 0x00000002) != 0)) {
       output.writeMessage(3, getAmount());
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
@@ -858,7 +858,7 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, payerOpenId_);
     }
-    if (amount_ != null) {
+    if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(3, getAmount());
     }
@@ -1043,13 +1043,19 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.newBuilder()
     private Builder() {
-
+      maybeForceBuilderInitialization();
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+        getAmountFieldBuilder();
+      }
     }
     @java.lang.Override
     public Builder clear() {
@@ -1109,6 +1115,7 @@ private static final long serialVersionUID = 0L;
         result.amount_ = amountBuilder_ == null
             ? amount_
             : amountBuilder_.build();
+        to_bitField0_ |= 0x00000002;
       }
       if (((from_bitField0_ & 0x00000008) != 0)) {
         result.description_ = description_;
@@ -1473,8 +1480,10 @@ private static final long serialVersionUID = 0L;
       } else {
         amountBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000004;
-      onChanged();
+      if (amount_ != null) {
+        bitField0_ |= 0x00000004;
+        onChanged();
+      }
       return this;
     }
     /**

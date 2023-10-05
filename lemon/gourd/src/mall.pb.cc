@@ -11,19 +11,20 @@
 #include "google/protobuf/generated_message_reflection.h"
 #include "google/protobuf/reflection_ops.h"
 #include "google/protobuf/wire_format.h"
+#include "google/protobuf/generated_message_tctable_impl.h"
 // @@protoc_insertion_point(includes)
 
 // Must be included last.
 #include "google/protobuf/port_def.inc"
 PROTOBUF_PRAGMA_INIT_SEG
-namespace _pb = ::PROTOBUF_NAMESPACE_ID;
-namespace _pbi = ::PROTOBUF_NAMESPACE_ID::internal;
+namespace _pb = ::google::protobuf;
+namespace _pbi = ::google::protobuf::internal;
+namespace _fl = ::google::protobuf::internal::field_layout;
 namespace palm {
 namespace mall {
 namespace v1 {
-template <typename>
-PROTOBUF_CONSTEXPR Order::Order(
-    ::_pbi::ConstantInitialized) {}
+      template <typename>
+PROTOBUF_CONSTEXPR Order::Order(::_pbi::ConstantInitialized) {}
 struct OrderDefaultTypeInternal {
   PROTOBUF_CONSTEXPR OrderDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~OrderDefaultTypeInternal() {}
@@ -55,7 +56,7 @@ const ::uint32_t TableStruct_mall_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        { 0, -1, -1, sizeof(::palm::mall::v1::Order)},
+        {0, -1, -1, sizeof(::palm::mall::v1::Order)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -110,8 +111,8 @@ static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_mall_2eproto(&descriptor_
 namespace palm {
 namespace mall {
 namespace v1 {
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Order_Status_descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_mall_2eproto);
+const ::google::protobuf::EnumDescriptor* Order_Status_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_mall_2eproto);
   return file_level_enum_descriptors_mall_2eproto[0];
 }
 bool Order_Status_IsValid(int value) {
@@ -164,26 +165,27 @@ class Order::_Internal {
  public:
 };
 
-Order::Order(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena) {
+Order::Order(::google::protobuf::Arena* arena)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   // @@protoc_insertion_point(arena_constructor:palm.mall.v1.Order)
 }
-Order::Order(const Order& from)
-  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
-  Order* const _this = this; (void)_this;
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+Order::Order(const Order& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+  Order* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
   // @@protoc_insertion_point(copy_constructor:palm.mall.v1.Order)
 }
 
 
 
 
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Order::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+const ::google::protobuf::Message::ClassData Order::_class_data_ = {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Order::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData*Order::GetClassData() const { return &_class_data_; }
 
 
 
@@ -191,7 +193,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Order::GetClassData() const { 
 
 
 
-::PROTOBUF_NAMESPACE_ID::Metadata Order::GetMetadata() const {
+::google::protobuf::Metadata Order::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_mall_2eproto_getter, &descriptor_table_mall_2eproto_once,
       file_level_metadata_mall_2eproto[0]);
@@ -200,11 +202,9 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Order::GetClassData() const { 
 }  // namespace v1
 }  // namespace mall
 }  // namespace palm
-PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::palm::mall::v1::Order*
-Arena::CreateMaybeMessage< ::palm::mall::v1::Order >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::palm::mall::v1::Order >(arena);
-}
-PROTOBUF_NAMESPACE_CLOSE
+namespace google {
+namespace protobuf {
+}  // namespace protobuf
+}  // namespace google
 // @@protoc_insertion_point(global_scope)
 #include "google/protobuf/port_undef.inc"

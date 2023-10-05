@@ -156,6 +156,7 @@ private static final long serialVersionUID = 0L;
     // @@protoc_insertion_point(enum_scope:palm.musa.v1.WechatPayFundFlowBillRequest.AccountType)
   }
 
+  private int bitField0_;
   public static final int BILL_DATE_FIELD_NUMBER = 1;
   private com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayBillDate billDate_;
   /**
@@ -164,7 +165,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasBillDate() {
-    return billDate_ != null;
+    return ((bitField0_ & 0x00000001) != 0);
   }
   /**
    * <code>.palm.musa.v1.WechatPayBillDate bill_date = 1;</code>
@@ -214,7 +215,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (billDate_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(1, getBillDate());
     }
     if (accountType_ != com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayFundFlowBillRequest.AccountType.BASIC.getNumber()) {
@@ -229,7 +230,7 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (billDate_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getBillDate());
     }
@@ -394,13 +395,19 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayFundFlowBillRequest.newBuilder()
     private Builder() {
-
+      maybeForceBuilderInitialization();
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+        getBillDateFieldBuilder();
+      }
     }
     @java.lang.Override
     public Builder clear() {
@@ -445,14 +452,17 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayFundFlowBillRequest result) {
       int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.billDate_ = billDateBuilder_ == null
             ? billDate_
             : billDateBuilder_.build();
+        to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.accountType_ = accountType_;
       }
+      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -626,8 +636,10 @@ private static final long serialVersionUID = 0L;
       } else {
         billDateBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000001;
-      onChanged();
+      if (billDate_ != null) {
+        bitField0_ |= 0x00000001;
+        onChanged();
+      }
       return this;
     }
     /**
