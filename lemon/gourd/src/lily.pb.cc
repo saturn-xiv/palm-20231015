@@ -34,6 +34,10 @@ PROTOBUF_CONSTEXPR File::File(::_pbi::ConstantInitialized)
           &::_pbi::fixed_address_empty_string,
           ::_pbi::ConstantInitialized{},
       },
+      /*decltype(_impl_.content_type_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
       /*decltype(_impl_._cached_size_)*/ {},
     } {}
 struct FileDefaultTypeInternal {
@@ -164,6 +168,7 @@ const ::uint32_t TableStruct_lily_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::File, _impl_.bucket_),
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::File, _impl_.name_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::File, _impl_.content_type_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::ExcelModel_Sheet_Cell, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -229,12 +234,12 @@ const ::uint32_t TableStruct_lily_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::palm::lily::v1::File)},
-        {10, -1, -1, sizeof(::palm::lily::v1::ExcelModel_Sheet_Cell)},
-        {21, -1, -1, sizeof(::palm::lily::v1::ExcelModel_Sheet)},
-        {31, -1, -1, sizeof(::palm::lily::v1::ExcelModel)},
-        {40, 50, -1, sizeof(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse)},
-        {52, -1, -1, sizeof(::palm::lily::v1::TexToRequest)},
-        {62, -1, -1, sizeof(::palm::lily::v1::EpubBuildRequest)},
+        {11, -1, -1, sizeof(::palm::lily::v1::ExcelModel_Sheet_Cell)},
+        {22, -1, -1, sizeof(::palm::lily::v1::ExcelModel_Sheet)},
+        {32, -1, -1, sizeof(::palm::lily::v1::ExcelModel)},
+        {41, 51, -1, sizeof(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse)},
+        {53, -1, -1, sizeof(::palm::lily::v1::TexToRequest)},
+        {63, -1, -1, sizeof(::palm::lily::v1::EpubBuildRequest)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -247,32 +252,33 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::palm::lily::v1::_EpubBuildRequest_default_instance_._instance,
 };
 const char descriptor_table_protodef_lily_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\nlily.proto\022\014palm.lily.v1\"$\n\004File\022\016\n\006bu"
-    "cket\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\"\266\001\n\nExcelModel\022"
-    ".\n\006sheets\030\001 \003(\0132\036.palm.lily.v1.ExcelMode"
-    "l.Sheet\032x\n\005Sheet\022\014\n\004name\030\001 \001(\t\0222\n\005cells\030"
-    "\002 \003(\0132#.palm.lily.v1.ExcelModel.Sheet.Ce"
-    "ll\032-\n\004Cell\022\013\n\003row\030\001 \001(\r\022\013\n\003col\030\002 \001(\r\022\013\n\003"
-    "val\030\003 \001(\t\"\202\001\n\014TexToRequest\0224\n\005files\030\001 \003("
-    "\0132%.palm.lily.v1.TexToRequest.FilesEntry"
-    "\022\016\n\006public\030\t \001(\010\032,\n\nFilesEntry\022\013\n\003key\030\001 "
-    "\001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\"\022\n\020EpubBuildReque"
-    "st2|\n\005Excel\0227\n\005Parse\022\022.palm.lily.v1.File"
-    "\032\030.palm.lily.v1.ExcelModel\"\000\022:\n\010Generate"
-    "\022\030.palm.lily.v1.ExcelModel\032\022.palm.lily.v"
-    "1.File\"\0002|\n\003Tex\0229\n\005ToPdf\022\032.palm.lily.v1."
-    "TexToRequest\032\022.palm.lily.v1.File\"\000\022:\n\006To"
-    "Word\022\032.palm.lily.v1.TexToRequest\032\022.palm."
-    "lily.v1.File\"\0002E\n\004Epub\022=\n\005Build\022\036.palm.l"
-    "ily.v1.EpubBuildRequest\032\022.palm.lily.v1.F"
-    "ile\"\000B.\n*com.github.saturn_xiv.palm.plug"
-    "ins.lily.v1P\001b\006proto3"
+    "\n\nlily.proto\022\014palm.lily.v1\":\n\004File\022\016\n\006bu"
+    "cket\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\024\n\014content_type"
+    "\030\t \001(\t\"\266\001\n\nExcelModel\022.\n\006sheets\030\001 \003(\0132\036."
+    "palm.lily.v1.ExcelModel.Sheet\032x\n\005Sheet\022\014"
+    "\n\004name\030\001 \001(\t\0222\n\005cells\030\002 \003(\0132#.palm.lily."
+    "v1.ExcelModel.Sheet.Cell\032-\n\004Cell\022\013\n\003row\030"
+    "\001 \001(\r\022\013\n\003col\030\002 \001(\r\022\013\n\003val\030\003 \001(\t\"\202\001\n\014TexT"
+    "oRequest\0224\n\005files\030\001 \003(\0132%.palm.lily.v1.T"
+    "exToRequest.FilesEntry\022\016\n\006public\030\t \001(\010\032,"
+    "\n\nFilesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014"
+    ":\0028\001\"\022\n\020EpubBuildRequest2|\n\005Excel\0227\n\005Par"
+    "se\022\022.palm.lily.v1.File\032\030.palm.lily.v1.Ex"
+    "celModel\"\000\022:\n\010Generate\022\030.palm.lily.v1.Ex"
+    "celModel\032\022.palm.lily.v1.File\"\0002|\n\003Tex\0229\n"
+    "\005ToPdf\022\032.palm.lily.v1.TexToRequest\032\022.pal"
+    "m.lily.v1.File\"\000\022:\n\006ToWord\022\032.palm.lily.v"
+    "1.TexToRequest\032\022.palm.lily.v1.File\"\0002E\n\004"
+    "Epub\022=\n\005Build\022\036.palm.lily.v1.EpubBuildRe"
+    "quest\032\022.palm.lily.v1.File\"\000B.\n*com.githu"
+    "b.saturn_xiv.palm.plugins.lily.v1P\001b\006pro"
+    "to3"
 };
 static ::absl::once_flag descriptor_table_lily_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_lily_2eproto = {
     false,
     false,
-    781,
+    803,
     descriptor_table_protodef_lily_2eproto,
     "lily.proto",
     &descriptor_table_lily_2eproto_once,
@@ -324,6 +330,7 @@ File::File(const File& from) : ::google::protobuf::Message() {
   new (&_impl_) Impl_{
       decltype(_impl_.bucket_){},
       decltype(_impl_.name_){},
+      decltype(_impl_.content_type_){},
       /*decltype(_impl_._cached_size_)*/ {},
   };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -342,6 +349,13 @@ File::File(const File& from) : ::google::protobuf::Message() {
   if (!from._internal_name().empty()) {
     _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
   }
+  _impl_.content_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.content_type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_content_type().empty()) {
+    _this->_impl_.content_type_.Set(from._internal_content_type(), _this->GetArenaForAllocation());
+  }
 
   // @@protoc_insertion_point(copy_constructor:palm.lily.v1.File)
 }
@@ -350,6 +364,7 @@ inline void File::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_{
       decltype(_impl_.bucket_){},
       decltype(_impl_.name_){},
+      decltype(_impl_.content_type_){},
       /*decltype(_impl_._cached_size_)*/ {},
   };
   _impl_.bucket_.InitDefault();
@@ -359,6 +374,10 @@ inline void File::SharedCtor(::_pb::Arena* arena) {
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.content_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.content_type_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 File::~File() {
@@ -370,6 +389,7 @@ inline void File::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.bucket_.Destroy();
   _impl_.name_.Destroy();
+  _impl_.content_type_.Destroy();
 }
 void File::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
@@ -383,6 +403,7 @@ PROTOBUF_NOINLINE void File::Clear() {
 
   _impl_.bucket_.ClearToEmpty();
   _impl_.name_.ClearToEmpty();
+  _impl_.content_type_.ClearToEmpty();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -394,15 +415,15 @@ const char* File::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 36, 2> File::_table_ = {
+const ::_pbi::TcParseTable<1, 3, 0, 48, 2> File::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    9, 8,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967036,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    3,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     &_File_default_instance_._instance,
@@ -423,13 +444,17 @@ const ::_pbi::TcParseTable<1, 2, 0, 36, 2> File::_table_ = {
     // string name = 2;
     {PROTOBUF_FIELD_OFFSET(File, _impl_.name_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string content_type = 9;
+    {PROTOBUF_FIELD_OFFSET(File, _impl_.content_type_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
-    "\21\6\4\0\0\0\0\0"
+    "\21\6\4\14\0\0\0\0"
     "palm.lily.v1.File"
     "bucket"
     "name"
+    "content_type"
   }},
 };
 
@@ -454,6 +479,14 @@ const ::_pbi::TcParseTable<1, 2, 0, 36, 2> File::_table_ = {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
         _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.File.name");
     target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  // string content_type = 9;
+  if (!this->_internal_content_type().empty()) {
+    const std::string& _s = this->_internal_content_type();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.File.content_type");
+    target = stream->WriteStringMaybeAliased(9, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -485,6 +518,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 36, 2> File::_table_ = {
                                     this->_internal_name());
   }
 
+  // string content_type = 9;
+  if (!this->_internal_content_type().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_content_type());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -509,6 +548,9 @@ void File::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protob
   if (!from._internal_name().empty()) {
     _this->_internal_set_name(from._internal_name());
   }
+  if (!from._internal_content_type().empty()) {
+    _this->_internal_set_content_type(from._internal_content_type());
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -532,6 +574,8 @@ void File::InternalSwap(File* other) {
                                        &other->_impl_.bucket_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
                                        &other->_impl_.name_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.content_type_, lhs_arena,
+                                       &other->_impl_.content_type_, rhs_arena);
 }
 
 ::google::protobuf::Metadata File::GetMetadata() const {

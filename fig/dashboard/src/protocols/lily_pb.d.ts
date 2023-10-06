@@ -9,6 +9,9 @@ export class File extends jspb.Message {
   getName(): string;
   setName(value: string): File;
 
+  getContentType(): string;
+  setContentType(value: string): File;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): File.AsObject;
   static toObject(includeInstance: boolean, msg: File): File.AsObject;
@@ -21,6 +24,7 @@ export namespace File {
   export type AsObject = {
     bucket: string,
     name: string,
+    contentType: string,
   }
 }
 

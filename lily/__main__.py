@@ -2,9 +2,9 @@ import logging
 import argparse
 import sys
 import tomllib
-import pika
 
-from palm import VERSION, start_server
+
+from palm import VERSION, RpcServer, RedisClient, MinioClient
 
 NAME = 'lily'
 
@@ -33,5 +33,7 @@ if __name__ == '__main__':
     logging.info('load configuration from %s', args.config.name)
 
     config = tomllib.load(args.config)
-    rpc_params = config['rpc']
-    start_server('0.0.0.0:%d' % (rpc_params['port']), rpc_params['workers'])
+    redis_client = RedisClient(config['redis'])
+    minio_client = MinioClient(config['minio'])
+    rpc_server = RpcServer(config['rpc'])
+    rpc_server.start()

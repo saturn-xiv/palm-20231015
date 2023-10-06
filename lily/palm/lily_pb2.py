@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\nlily.proto\x12\x0cpalm.lily.v1\"$\n\x04\x46ile\x12\x0e\n\x06\x62ucket\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\xb6\x01\n\nExcelModel\x12.\n\x06sheets\x18\x01 \x03(\x0b\x32\x1e.palm.lily.v1.ExcelModel.Sheet\x1ax\n\x05Sheet\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x32\n\x05\x63\x65lls\x18\x02 \x03(\x0b\x32#.palm.lily.v1.ExcelModel.Sheet.Cell\x1a-\n\x04\x43\x65ll\x12\x0b\n\x03row\x18\x01 \x01(\r\x12\x0b\n\x03\x63ol\x18\x02 \x01(\r\x12\x0b\n\x03val\x18\x03 \x01(\t\"\x82\x01\n\x0cTexToRequest\x12\x34\n\x05\x66iles\x18\x01 \x03(\x0b\x32%.palm.lily.v1.TexToRequest.FilesEntry\x12\x0e\n\x06public\x18\t \x01(\x08\x1a,\n\nFilesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x0c:\x02\x38\x01\"\x12\n\x10\x45pubBuildRequest2|\n\x05\x45xcel\x12\x37\n\x05Parse\x12\x12.palm.lily.v1.File\x1a\x18.palm.lily.v1.ExcelModel\"\x00\x12:\n\x08Generate\x12\x18.palm.lily.v1.ExcelModel\x1a\x12.palm.lily.v1.File\"\x00\x32|\n\x03Tex\x12\x39\n\x05ToPdf\x12\x1a.palm.lily.v1.TexToRequest\x1a\x12.palm.lily.v1.File\"\x00\x12:\n\x06ToWord\x12\x1a.palm.lily.v1.TexToRequest\x1a\x12.palm.lily.v1.File\"\x00\x32\x45\n\x04\x45pub\x12=\n\x05\x42uild\x12\x1e.palm.lily.v1.EpubBuildRequest\x1a\x12.palm.lily.v1.File\"\x00\x42.\n*com.github.saturn_xiv.palm.plugins.lily.v1P\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\nlily.proto\x12\x0cpalm.lily.v1\":\n\x04\x46ile\x12\x0e\n\x06\x62ucket\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x14\n\x0c\x63ontent_type\x18\t \x01(\t\"\xb6\x01\n\nExcelModel\x12.\n\x06sheets\x18\x01 \x03(\x0b\x32\x1e.palm.lily.v1.ExcelModel.Sheet\x1ax\n\x05Sheet\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x32\n\x05\x63\x65lls\x18\x02 \x03(\x0b\x32#.palm.lily.v1.ExcelModel.Sheet.Cell\x1a-\n\x04\x43\x65ll\x12\x0b\n\x03row\x18\x01 \x01(\r\x12\x0b\n\x03\x63ol\x18\x02 \x01(\r\x12\x0b\n\x03val\x18\x03 \x01(\t\"\x82\x01\n\x0cTexToRequest\x12\x34\n\x05\x66iles\x18\x01 \x03(\x0b\x32%.palm.lily.v1.TexToRequest.FilesEntry\x12\x0e\n\x06public\x18\t \x01(\x08\x1a,\n\nFilesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x0c:\x02\x38\x01\"\x12\n\x10\x45pubBuildRequest2|\n\x05\x45xcel\x12\x37\n\x05Parse\x12\x12.palm.lily.v1.File\x1a\x18.palm.lily.v1.ExcelModel\"\x00\x12:\n\x08Generate\x12\x18.palm.lily.v1.ExcelModel\x1a\x12.palm.lily.v1.File\"\x00\x32|\n\x03Tex\x12\x39\n\x05ToPdf\x12\x1a.palm.lily.v1.TexToRequest\x1a\x12.palm.lily.v1.File\"\x00\x12:\n\x06ToWord\x12\x1a.palm.lily.v1.TexToRequest\x1a\x12.palm.lily.v1.File\"\x00\x32\x45\n\x04\x45pub\x12=\n\x05\x42uild\x12\x1e.palm.lily.v1.EpubBuildRequest\x1a\x12.palm.lily.v1.File\"\x00\x42.\n*com.github.saturn_xiv.palm.plugins.lily.v1P\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -24,23 +24,23 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _TEXTOREQUEST_FILESENTRY._options = None
   _TEXTOREQUEST_FILESENTRY._serialized_options = b'8\001'
   _globals['_FILE']._serialized_start=28
-  _globals['_FILE']._serialized_end=64
-  _globals['_EXCELMODEL']._serialized_start=67
-  _globals['_EXCELMODEL']._serialized_end=249
-  _globals['_EXCELMODEL_SHEET']._serialized_start=129
-  _globals['_EXCELMODEL_SHEET']._serialized_end=249
-  _globals['_EXCELMODEL_SHEET_CELL']._serialized_start=204
-  _globals['_EXCELMODEL_SHEET_CELL']._serialized_end=249
-  _globals['_TEXTOREQUEST']._serialized_start=252
-  _globals['_TEXTOREQUEST']._serialized_end=382
-  _globals['_TEXTOREQUEST_FILESENTRY']._serialized_start=338
-  _globals['_TEXTOREQUEST_FILESENTRY']._serialized_end=382
-  _globals['_EPUBBUILDREQUEST']._serialized_start=384
-  _globals['_EPUBBUILDREQUEST']._serialized_end=402
-  _globals['_EXCEL']._serialized_start=404
-  _globals['_EXCEL']._serialized_end=528
-  _globals['_TEX']._serialized_start=530
-  _globals['_TEX']._serialized_end=654
-  _globals['_EPUB']._serialized_start=656
-  _globals['_EPUB']._serialized_end=725
+  _globals['_FILE']._serialized_end=86
+  _globals['_EXCELMODEL']._serialized_start=89
+  _globals['_EXCELMODEL']._serialized_end=271
+  _globals['_EXCELMODEL_SHEET']._serialized_start=151
+  _globals['_EXCELMODEL_SHEET']._serialized_end=271
+  _globals['_EXCELMODEL_SHEET_CELL']._serialized_start=226
+  _globals['_EXCELMODEL_SHEET_CELL']._serialized_end=271
+  _globals['_TEXTOREQUEST']._serialized_start=274
+  _globals['_TEXTOREQUEST']._serialized_end=404
+  _globals['_TEXTOREQUEST_FILESENTRY']._serialized_start=360
+  _globals['_TEXTOREQUEST_FILESENTRY']._serialized_end=404
+  _globals['_EPUBBUILDREQUEST']._serialized_start=406
+  _globals['_EPUBBUILDREQUEST']._serialized_end=424
+  _globals['_EXCEL']._serialized_start=426
+  _globals['_EXCEL']._serialized_end=550
+  _globals['_TEX']._serialized_start=552
+  _globals['_TEX']._serialized_end=676
+  _globals['_EPUB']._serialized_start=678
+  _globals['_EPUB']._serialized_end=747
 # @@protoc_insertion_point(module_scope)

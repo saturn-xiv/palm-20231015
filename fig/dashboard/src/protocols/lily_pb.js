@@ -186,7 +186,8 @@ proto.palm.lily.v1.File.prototype.toObject = function(opt_includeInstance) {
 proto.palm.lily.v1.File.toObject = function(includeInstance, msg) {
   var f, obj = {
     bucket: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    name: jspb.Message.getFieldWithDefault(msg, 2, "")
+    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    contentType: jspb.Message.getFieldWithDefault(msg, 9, "")
   };
 
   if (includeInstance) {
@@ -231,6 +232,10 @@ proto.palm.lily.v1.File.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setContentType(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -274,6 +279,13 @@ proto.palm.lily.v1.File.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getContentType();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
+      f
+    );
+  }
 };
 
 
@@ -310,6 +322,24 @@ proto.palm.lily.v1.File.prototype.getName = function() {
  */
 proto.palm.lily.v1.File.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string content_type = 9;
+ * @return {string}
+ */
+proto.palm.lily.v1.File.prototype.getContentType = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.lily.v1.File} returns this
+ */
+proto.palm.lily.v1.File.prototype.setContentType = function(value) {
+  return jspb.Message.setProto3StringField(this, 9, value);
 };
 
 

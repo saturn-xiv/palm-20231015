@@ -228,6 +228,7 @@ class File final :
   enum : int {
     kBucketFieldNumber = 1,
     kNameFieldNumber = 2,
+    kContentTypeFieldNumber = 9,
   };
   // string bucket = 1;
   void clear_bucket() ;
@@ -261,18 +262,35 @@ class File final :
   std::string* _internal_mutable_name();
 
   public:
+  // string content_type = 9;
+  void clear_content_type() ;
+  const std::string& content_type() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_content_type(Arg_&& arg, Args_... args);
+  std::string* mutable_content_type();
+  PROTOBUF_NODISCARD std::string* release_content_type();
+  void set_allocated_content_type(std::string* ptr);
+
+  private:
+  const std::string& _internal_content_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_content_type(
+      const std::string& value);
+  std::string* _internal_mutable_content_type();
+
+  public:
   // @@protoc_insertion_point(class_scope:palm.lily.v1.File)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<1, 2, 0, 36, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<1, 3, 0, 48, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::google::protobuf::internal::ArenaStringPtr bucket_;
     ::google::protobuf::internal::ArenaStringPtr name_;
+    ::google::protobuf::internal::ArenaStringPtr content_type_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -1268,6 +1286,57 @@ inline void File::set_allocated_name(std::string* value) {
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.File.name)
+}
+
+// string content_type = 9;
+inline void File::clear_content_type() {
+  _impl_.content_type_.ClearToEmpty();
+}
+inline const std::string& File::content_type() const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.File.content_type)
+  return _internal_content_type();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void File::set_content_type(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.content_type_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.lily.v1.File.content_type)
+}
+inline std::string* File::mutable_content_type() {
+  std::string* _s = _internal_mutable_content_type();
+  // @@protoc_insertion_point(field_mutable:palm.lily.v1.File.content_type)
+  return _s;
+}
+inline const std::string& File::_internal_content_type() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.content_type_.Get();
+}
+inline void File::_internal_set_content_type(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.content_type_.Set(value, GetArenaForAllocation());
+}
+inline std::string* File::_internal_mutable_content_type() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.content_type_.Mutable( GetArenaForAllocation());
+}
+inline std::string* File::release_content_type() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.lily.v1.File.content_type)
+  return _impl_.content_type_.Release();
+}
+inline void File::set_allocated_content_type(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.content_type_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.content_type_.IsDefault()) {
+          _impl_.content_type_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.File.content_type)
 }
 
 // -------------------------------------------------------------------

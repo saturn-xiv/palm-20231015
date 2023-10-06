@@ -16,7 +16,8 @@
   $ sudo apt install imagemagick ffmpeg fonts-dejavu-extra texlive-full
   $ python3.12 -m venv $HOME/local/python3
   $ source $HOME/local/python3/bin/activate
-  $ pip install psycopg pika matplotlib ebooklib \
+  $ pip install psycopg minio redis[hiredis] \
+    pika matplotlib ebooklib \
     grpcio protobuf grpcio-health-checking \
     pandas openpyxl xlrd pyxlsb
   ```
@@ -39,3 +40,4 @@
 - [https://graphviz.org/](Graphviz)
 - [EbookLib](https://github.com/aerkalov/ebooklib)
 - [Excel files](https://pandas.pydata.org/docs/user_guide/io.html#excel-files)
+- [Data types used by Excel](https://learn.microsoft.com/en-us/office/client-developer/excel/data-types-used-by-excel)
