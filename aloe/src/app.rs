@@ -49,7 +49,6 @@ impl Args {
         let jwt = Arc::new(SslJwt::new(cfg.secrets.0.clone()));
         let db = Arc::new(Mutex::new({
             let hmac = hmac.deref();
-            let hmac = hmac.deref();
             open_db("tmp/db", hmac)?
         }));
 
@@ -75,7 +74,6 @@ impl Args {
             let db = db.clone();
             thread::spawn(move || loop {
                 let db = db.deref();
-                let db = db.deref();
                 if let Err(e) = Self::run_arp_scan(db) {
                     error!("arp scan thread {:?}", e);
                 }
@@ -87,7 +85,6 @@ impl Args {
         {
             let db = db.clone();
             thread::spawn(move || loop {
-                let db = db.deref();
                 let db = db.deref();
                 if let Err(e) = Self::run_arp_bind(db) {
                     error!("arp bind {:?}", e);

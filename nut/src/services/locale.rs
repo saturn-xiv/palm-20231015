@@ -205,7 +205,6 @@ pub async fn destroy<J: Jwt>(
     id: i32,
 ) -> Result<()> {
     let (user, _, _) = ss.current_user(db, ch, jwt)?;
-    let enf = enf.deref();
     user.can::<Locale, _>(enf, &Operation::Remove, None).await?;
     LocaleDao::delete(db, id)?;
     Ok(())

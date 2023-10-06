@@ -316,10 +316,10 @@ pub mod cbeta {
         tonic::include_proto!("palm.cbeta.v1");
     }
 }
-pub mod chats {
+pub mod gardenia {
     #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
     pub mod v1 {
-        tonic::include_proto!("palm.chats.v1");
+        tonic::include_proto!("palm.gardenia.v1");
     }
 }
 pub mod cms {
