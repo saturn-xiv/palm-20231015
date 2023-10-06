@@ -996,7 +996,6 @@ class TexToRequest final :
 
   enum : int {
     kFilesFieldNumber = 1,
-    kPublicFieldNumber = 9,
   };
   // map<string, bytes> files = 1;
   int files_size() const;
@@ -1013,22 +1012,12 @@ class TexToRequest final :
   ::google::protobuf::Map<std::string, std::string>* _internal_mutable_files();
 
   public:
-  // bool public = 9;
-  void clear_public_() ;
-  bool public_() const;
-  void set_public_(bool value);
-
-  private:
-  bool _internal_public_() const;
-  void _internal_set_public_(bool value);
-
-  public:
   // @@protoc_insertion_point(class_scope:palm.lily.v1.TexToRequest)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<0, 2, 1, 39, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<0, 1, 1, 39, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -1037,7 +1026,6 @@ class TexToRequest final :
                       ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
                       ::google::protobuf::internal::WireFormatLite::TYPE_BYTES>
         files_;
-    bool public__;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -1620,28 +1608,6 @@ inline ::google::protobuf::Map<std::string, std::string>* TexToRequest::_interna
 inline ::google::protobuf::Map<std::string, std::string>* TexToRequest::mutable_files() {
   // @@protoc_insertion_point(field_mutable_map:palm.lily.v1.TexToRequest.files)
   return _internal_mutable_files();
-}
-
-// bool public = 9;
-inline void TexToRequest::clear_public_() {
-  _impl_.public__ = false;
-}
-inline bool TexToRequest::public_() const {
-  // @@protoc_insertion_point(field_get:palm.lily.v1.TexToRequest.public)
-  return _internal_public_();
-}
-inline void TexToRequest::set_public_(bool value) {
-  _internal_set_public_(value);
-  // @@protoc_insertion_point(field_set:palm.lily.v1.TexToRequest.public)
-}
-inline bool TexToRequest::_internal_public_() const {
-  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.public__;
-}
-inline void TexToRequest::_internal_set_public_(bool value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.public__ = value;
 }
 
 // -------------------------------------------------------------------

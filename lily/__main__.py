@@ -35,5 +35,5 @@ if __name__ == '__main__':
     config = tomllib.load(args.config)
     redis_client = RedisClient(config['redis'])
     minio_client = MinioClient(config['minio'])
-    rpc_server = RpcServer(config['rpc'])
+    rpc_server = RpcServer(config['rpc'], minio_client, redis_client)
     rpc_server.start()

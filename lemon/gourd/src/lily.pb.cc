@@ -123,7 +123,6 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 PROTOBUF_CONSTEXPR TexToRequest::TexToRequest(::_pbi::ConstantInitialized)
     : _impl_{
       /* decltype(_impl_.files_) */ {},
-      /*decltype(_impl_.public__)*/ false,
       /*decltype(_impl_._cached_size_)*/ {},
     } {}
 struct TexToRequestDefaultTypeInternal {
@@ -220,7 +219,6 @@ const ::uint32_t TableStruct_lily_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest, _impl_.files_),
-    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest, _impl_.public__),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::EpubBuildRequest, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -239,7 +237,7 @@ static const ::_pbi::MigrationSchema
         {32, -1, -1, sizeof(::palm::lily::v1::ExcelModel)},
         {41, 51, -1, sizeof(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse)},
         {53, -1, -1, sizeof(::palm::lily::v1::TexToRequest)},
-        {63, -1, -1, sizeof(::palm::lily::v1::EpubBuildRequest)},
+        {62, -1, -1, sizeof(::palm::lily::v1::EpubBuildRequest)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -258,27 +256,26 @@ const char descriptor_table_protodef_lily_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
     "palm.lily.v1.ExcelModel.Sheet\032x\n\005Sheet\022\014"
     "\n\004name\030\001 \001(\t\0222\n\005cells\030\002 \003(\0132#.palm.lily."
     "v1.ExcelModel.Sheet.Cell\032-\n\004Cell\022\013\n\003row\030"
-    "\001 \001(\r\022\013\n\003col\030\002 \001(\r\022\013\n\003val\030\003 \001(\t\"\202\001\n\014TexT"
-    "oRequest\0224\n\005files\030\001 \003(\0132%.palm.lily.v1.T"
-    "exToRequest.FilesEntry\022\016\n\006public\030\t \001(\010\032,"
-    "\n\nFilesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014"
-    ":\0028\001\"\022\n\020EpubBuildRequest2|\n\005Excel\0227\n\005Par"
-    "se\022\022.palm.lily.v1.File\032\030.palm.lily.v1.Ex"
-    "celModel\"\000\022:\n\010Generate\022\030.palm.lily.v1.Ex"
-    "celModel\032\022.palm.lily.v1.File\"\0002|\n\003Tex\0229\n"
-    "\005ToPdf\022\032.palm.lily.v1.TexToRequest\032\022.pal"
-    "m.lily.v1.File\"\000\022:\n\006ToWord\022\032.palm.lily.v"
-    "1.TexToRequest\032\022.palm.lily.v1.File\"\0002E\n\004"
-    "Epub\022=\n\005Build\022\036.palm.lily.v1.EpubBuildRe"
-    "quest\032\022.palm.lily.v1.File\"\000B.\n*com.githu"
-    "b.saturn_xiv.palm.plugins.lily.v1P\001b\006pro"
-    "to3"
+    "\001 \001(\r\022\013\n\003col\030\002 \001(\r\022\013\n\003val\030\003 \001(\t\"r\n\014TexTo"
+    "Request\0224\n\005files\030\001 \003(\0132%.palm.lily.v1.Te"
+    "xToRequest.FilesEntry\032,\n\nFilesEntry\022\013\n\003k"
+    "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\"\022\n\020EpubBuild"
+    "Request2|\n\005Excel\0227\n\005Parse\022\022.palm.lily.v1"
+    ".File\032\030.palm.lily.v1.ExcelModel\"\000\022:\n\010Gen"
+    "erate\022\030.palm.lily.v1.ExcelModel\032\022.palm.l"
+    "ily.v1.File\"\0002|\n\003Tex\0229\n\005ToPdf\022\032.palm.lil"
+    "y.v1.TexToRequest\032\022.palm.lily.v1.File\"\000\022"
+    ":\n\006ToWord\022\032.palm.lily.v1.TexToRequest\032\022."
+    "palm.lily.v1.File\"\0002E\n\004Epub\022=\n\005Build\022\036.p"
+    "alm.lily.v1.EpubBuildRequest\032\022.palm.lily"
+    ".v1.File\"\000B.\n*com.github.saturn_xiv.palm"
+    ".plugins.lily.v1P\001b\006proto3"
 };
 static ::absl::once_flag descriptor_table_lily_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_lily_2eproto = {
     false,
     false,
-    803,
+    786,
     descriptor_table_protodef_lily_2eproto,
     "lily.proto",
     &descriptor_table_lily_2eproto_once,
@@ -1253,13 +1250,11 @@ TexToRequest::TexToRequest(const TexToRequest& from) : ::google::protobuf::Messa
   (void)_this;
   new (&_impl_) Impl_{
       /* decltype(_impl_.files_) */ {},
-      decltype(_impl_.public__){},
       /*decltype(_impl_._cached_size_)*/ {},
   };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   _this->_impl_.files_.MergeFrom(from._impl_.files_);
-  _this->_impl_.public__ = from._impl_.public__;
 
   // @@protoc_insertion_point(copy_constructor:palm.lily.v1.TexToRequest)
 }
@@ -1267,7 +1262,6 @@ inline void TexToRequest::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
       /* decltype(_impl_.files_) */ {::google::protobuf::internal::ArenaInitialized(), arena},
-      decltype(_impl_.public__){false},
       /*decltype(_impl_._cached_size_)*/ {},
   };
 }
@@ -1291,7 +1285,6 @@ PROTOBUF_NOINLINE void TexToRequest::Clear() {
   (void) cached_has_bits;
 
   _impl_.files_.Clear();
-  _impl_.public__ = false;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -1303,32 +1296,27 @@ const char* TexToRequest::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 2, 1, 39, 2> TexToRequest::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 1, 39, 2> TexToRequest::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    9, 0,  // max_field_number, fast_idx_mask
+    1, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967038,  // skipmap
+    4294967294,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    1,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     &_TexToRequest_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // bool public = 9;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(TexToRequest, _impl_.public__), 63>(),
-     {72, 63, 0, PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.public__)}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
     // map<string, bytes> files = 1;
     {PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.files_), 0, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
-    // bool public = 9;
-    {PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.public__), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
   }}, {{
     {::_pbi::TcParser::GetMapAuxInfo<decltype(TexToRequest()._impl_.files_)>(1, 0, 0)},
   }}, {{
@@ -1370,13 +1358,6 @@ const ::_pbi::TcParseTable<0, 2, 1, 39, 2> TexToRequest::_table_ = {
     }
   }
 
-  // bool public = 9;
-  if (this->_internal_public_() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        9, this->_internal_public_(), target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -1399,11 +1380,6 @@ const ::_pbi::TcParseTable<0, 2, 1, 39, 2> TexToRequest::_table_ = {
   for (const auto& entry : _internal_files()) {
     total_size += TexToRequest_FilesEntry_DoNotUse::Funcs::ByteSizeLong(entry.first, entry.second);
   }
-  // bool public = 9;
-  if (this->_internal_public_() != 0) {
-    total_size += 2;
-  }
-
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -1423,9 +1399,6 @@ void TexToRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google
   (void) cached_has_bits;
 
   _this->_impl_.files_.MergeFrom(from._impl_.files_);
-  if (from._internal_public_() != 0) {
-    _this->_internal_set_public_(from._internal_public_());
-  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1444,7 +1417,6 @@ void TexToRequest::InternalSwap(TexToRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.files_.InternalSwap(&other->_impl_.files_);
-        swap(_impl_.public__, other->_impl_.public__);
 }
 
 ::google::protobuf::Metadata TexToRequest::GetMetadata() const {

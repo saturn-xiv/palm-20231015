@@ -104,9 +104,6 @@ export class TexToRequest extends jspb.Message {
   getFilesMap(): jspb.Map<string, Uint8Array | string>;
   clearFilesMap(): TexToRequest;
 
-  getPublic(): boolean;
-  setPublic(value: boolean): TexToRequest;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TexToRequest.AsObject;
   static toObject(includeInstance: boolean, msg: TexToRequest): TexToRequest.AsObject;
@@ -118,7 +115,6 @@ export class TexToRequest extends jspb.Message {
 export namespace TexToRequest {
   export type AsObject = {
     filesMap: Array<[string, Uint8Array | string]>,
-    pb_public: boolean,
   }
 }
 

@@ -915,8 +915,7 @@ proto.palm.lily.v1.TexToRequest.prototype.toObject = function(opt_includeInstanc
  */
 proto.palm.lily.v1.TexToRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    filesMap: (f = msg.getFilesMap()) ? f.toObject(includeInstance, undefined) : [],
-    pb_public: jspb.Message.getBooleanFieldWithDefault(msg, 9, false)
+    filesMap: (f = msg.getFilesMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -959,10 +958,6 @@ proto.palm.lily.v1.TexToRequest.deserializeBinaryFromReader = function(msg, read
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readBytes, null, "", "");
          });
       break;
-    case 9:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setPublic(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -996,13 +991,6 @@ proto.palm.lily.v1.TexToRequest.serializeBinaryToWriter = function(message, writ
   if (f && f.getLength() > 0) {
     f.serializeBinary(1, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeBytes);
   }
-  f = message.getPublic();
-  if (f) {
-    writer.writeBool(
-      9,
-      f
-    );
-  }
 };
 
 
@@ -1026,24 +1014,6 @@ proto.palm.lily.v1.TexToRequest.prototype.getFilesMap = function(opt_noLazyCreat
 proto.palm.lily.v1.TexToRequest.prototype.clearFilesMap = function() {
   this.getFilesMap().clear();
   return this;
-};
-
-
-/**
- * optional bool public = 9;
- * @return {boolean}
- */
-proto.palm.lily.v1.TexToRequest.prototype.getPublic = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 9, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.palm.lily.v1.TexToRequest} returns this
- */
-proto.palm.lily.v1.TexToRequest.prototype.setPublic = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 9, value);
 };
 
 

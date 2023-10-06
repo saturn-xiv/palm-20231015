@@ -1,14 +1,19 @@
 
 import logging
+import threading
 from time import sleep
 from concurrent import futures
-import threading
+from datetime import timedelta
 
 import psycopg
 import pika
 import grpc
 from redis.cluster import RedisCluster
 from grpc_health.v1 import health_pb2, health, health_pb2_grpc
+from minio import Minio
+from minio.versioningconfig import VersioningConfig as MinioVersioningConfig
+from minio.commonconfig import ENABLED as MinioEnabled
+
 
 from . import lily_pb2_grpc, excel, tex
 
@@ -21,11 +26,11 @@ class RedisClient:
         self.namespace = config['namespace']
         self.connection = RedisCluster(
             host=config['host'], port=config['port'])
-        logging.info('redis cluster nodes with namespace(%s) in %s', self.namespace, list(
+        logging.info('connect redis cluster nodes with namespace(%s) in %s', self.namespace, list(
             map(lambda x: '%s:%d(%s)' % (x.host, x.port, x.server_type), self.connection.get_nodes())))
 
     def set(self, key, val, ttl=0):
-        self.connection.setex(self._key(key), ttl, val)
+        self.connection.setex(self._key(key), timedelta(seconds=ttl), val)
 
     def get(self, key):
         return self.connection.get(self._key(key))
@@ -36,19 +41,50 @@ class RedisClient:
 
 class MinioClient:
     def __init__(self, config):
-        pass
+        logging.debug("connect to minio %s", config['endpoint'])
+        self.connection = Minio(
+            config['endpoint'],
+            access_key=config['access-key'],
+            secret_key=config['secret-key'],
+            secure=config['secure'])
+        logging.debug('found buckets: %s', self.list_buckets())
+
+    def put_object(self, bucket, name, data, length, content_type):
+        logging.debug("try to upload(%s, %s, %s) with %d bytes",
+                      bucket, name, content_type, length)
+        result = self.connection.put_object(
+            bucket, name, data, length, content_type=content_type)
+        logging.info("uploaded %s, etag: %s, version-id: %s",
+                     result.object_name, result.etag, result.version_id)
+
+    def get_object_url(self, bucket, name, ttl=60*60*24*7):
+        return self.connection.presigned_get_object(bucket, name, expires=timedelta(seconds=ttl))
+
+    def bucket_exists(self, bucket):
+        ok = self.connection.bucket_exists(bucket)
+        if not ok:
+            logging.warning("bucket %s isn't existed, try to create it")
+            self.connection.make_bucket(bucket)
+            self.connection.set_bucket_versioning(
+                bucket, MinioVersioningConfig(MinioEnabled))
+
+    def list_buckets(self):
+        return list(map(lambda x: x.name, self.connection.list_buckets()))
 
 
 class RpcServer:
-    def __init__(self, config):
+    def __init__(self, config, s3, cache):
         self.addr = '0.0.0.0:%d' % (config['port'])
         self.max_workers = config['max-workers']
+        self.s3 = s3
+        self.cache = cache
 
     def start(self):
         server = grpc.server(futures.ThreadPoolExecutor(
             max_workers=self.max_workers))
         lily_pb2_grpc.add_ExcelServicer_to_server(excel.Service(), server)
-        lily_pb2_grpc.add_TexServicer_to_server(tex.Service(), server)
+        lily_pb2_grpc.add_TexServicer_to_server(
+            tex.Service(self.s3, self.cache), server)
         RpcServer._rpc_setup_health_thread(server)
         server.add_insecure_port(self.addr)
         server.start()
