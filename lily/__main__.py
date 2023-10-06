@@ -4,7 +4,8 @@ import sys
 import tomllib
 
 
-from palm import VERSION, RpcServer, RedisClient, MinioClient
+from palm import VERSION, RpcServer, RedisClient, MinioClient, RabbitMqClient
+from palm.tex import TEX2PDF_QUEUE, create_tex2pdf_queue_callback
 
 NAME = 'lily'
 
@@ -20,6 +21,8 @@ if __name__ == '__main__':
     parser.add_argument('-d', '--debug',
                         action='store_true',
                         help='run on debug mode')
+    parser.add_argument('-w', '--worker',
+                        help='run queue worker %s' % (TEX2PDF_QUEUE))
     parser.add_argument('-v', '--version',
                         action='store_true',
                         help=('print %s version' % NAME))
@@ -35,5 +38,15 @@ if __name__ == '__main__':
     config = tomllib.load(args.config)
     redis_client = RedisClient(config['redis'])
     minio_client = MinioClient(config['minio'])
-    rpc_server = RpcServer(config['rpc'], minio_client, redis_client)
+    rabbitmq_client = RabbitMqClient(config['rabbitmq'])
+    if args.worker:
+        if args.worker == TEX2PDF_QUEUE:
+            callback = create_tex2pdf_queue_callback(minio_client)
+            rabbitmq_client.start_consuming(TEX2PDF_QUEUE, callback)
+        else:
+            logging.error('unimplation queue %s', args.worker)
+            sys.exit(1)
+        sys.exit(0)
+    rpc_server = RpcServer(
+        config['rpc'], minio_client, redis_client, rabbitmq_client)
     rpc_server.start()

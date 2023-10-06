@@ -35,6 +35,7 @@
 #include "google/protobuf/map.h"  // IWYU pragma: export
 #include "google/protobuf/map_entry.h"
 #include "google/protobuf/map_field_inl.h"
+#include "google/protobuf/generated_enum_reflection.h"
 #include "google/protobuf/unknown_field_set.h"
 // @@protoc_insertion_point(includes)
 
@@ -72,9 +73,15 @@ extern ExcelModel_SheetDefaultTypeInternal _ExcelModel_Sheet_default_instance_;
 class ExcelModel_Sheet_Cell;
 struct ExcelModel_Sheet_CellDefaultTypeInternal;
 extern ExcelModel_Sheet_CellDefaultTypeInternal _ExcelModel_Sheet_Cell_default_instance_;
-class File;
-struct FileDefaultTypeInternal;
-extern FileDefaultTypeInternal _File_default_instance_;
+class S3File;
+struct S3FileDefaultTypeInternal;
+extern S3FileDefaultTypeInternal _S3File_default_instance_;
+class S3FileStatusRequest;
+struct S3FileStatusRequestDefaultTypeInternal;
+extern S3FileStatusRequestDefaultTypeInternal _S3FileStatusRequest_default_instance_;
+class S3FileStatusResponse;
+struct S3FileStatusResponseDefaultTypeInternal;
+extern S3FileStatusResponseDefaultTypeInternal _S3FileStatusResponse_default_instance_;
 class TexToRequest;
 struct TexToRequestDefaultTypeInternal;
 extern TexToRequestDefaultTypeInternal _TexToRequest_default_instance_;
@@ -92,211 +99,38 @@ namespace protobuf {
 namespace palm {
 namespace lily {
 namespace v1 {
+enum S3FileStatusResponse_Status : int {
+  S3FileStatusResponse_Status_PENDING = 0,
+  S3FileStatusResponse_Status_SUCCESSED = 1,
+  S3FileStatusResponse_Status_FAILED = 99,
+  S3FileStatusResponse_Status_S3FileStatusResponse_Status_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::min(),
+  S3FileStatusResponse_Status_S3FileStatusResponse_Status_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::max(),
+};
+
+bool S3FileStatusResponse_Status_IsValid(int value);
+constexpr S3FileStatusResponse_Status S3FileStatusResponse_Status_Status_MIN = static_cast<S3FileStatusResponse_Status>(0);
+constexpr S3FileStatusResponse_Status S3FileStatusResponse_Status_Status_MAX = static_cast<S3FileStatusResponse_Status>(99);
+constexpr int S3FileStatusResponse_Status_Status_ARRAYSIZE = 99 + 1;
+const ::google::protobuf::EnumDescriptor*
+S3FileStatusResponse_Status_descriptor();
+template <typename T>
+const std::string& S3FileStatusResponse_Status_Name(T value) {
+  static_assert(std::is_same<T, S3FileStatusResponse_Status>::value ||
+                    std::is_integral<T>::value,
+                "Incorrect type passed to Status_Name().");
+  return ::google::protobuf::internal::NameOfEnum(S3FileStatusResponse_Status_descriptor(), value);
+}
+inline bool S3FileStatusResponse_Status_Parse(absl::string_view name, S3FileStatusResponse_Status* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<S3FileStatusResponse_Status>(
+      S3FileStatusResponse_Status_descriptor(), name, value);
+}
 
 // ===================================================================
 
 
 // -------------------------------------------------------------------
-
-class File final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.lily.v1.File) */ {
- public:
-  inline File() : File(nullptr) {}
-  ~File() override;
-  template<typename = void>
-  explicit PROTOBUF_CONSTEXPR File(::google::protobuf::internal::ConstantInitialized);
-
-  File(const File& from);
-  File(File&& from) noexcept
-    : File() {
-    *this = ::std::move(from);
-  }
-
-  inline File& operator=(const File& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline File& operator=(File&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const File& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const File* internal_default_instance() {
-    return reinterpret_cast<const File*>(
-               &_File_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    0;
-
-  friend void swap(File& a, File& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(File* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(File* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  File* New(::google::protobuf::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<File>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const File& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom( const File& from) {
-    File::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  ::size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::google::protobuf::Arena* arena);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(File* other);
-
-  private:
-  friend class ::google::protobuf::internal::AnyMetadata;
-  static ::absl::string_view FullMessageName() {
-    return "palm.lily.v1.File";
-  }
-  protected:
-  explicit File(::google::protobuf::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::google::protobuf::Message::ClassData*GetClassData() const final;
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kBucketFieldNumber = 1,
-    kNameFieldNumber = 2,
-    kContentTypeFieldNumber = 9,
-  };
-  // string bucket = 1;
-  void clear_bucket() ;
-  const std::string& bucket() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_bucket(Arg_&& arg, Args_... args);
-  std::string* mutable_bucket();
-  PROTOBUF_NODISCARD std::string* release_bucket();
-  void set_allocated_bucket(std::string* ptr);
-
-  private:
-  const std::string& _internal_bucket() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_bucket(
-      const std::string& value);
-  std::string* _internal_mutable_bucket();
-
-  public:
-  // string name = 2;
-  void clear_name() ;
-  const std::string& name() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_name(Arg_&& arg, Args_... args);
-  std::string* mutable_name();
-  PROTOBUF_NODISCARD std::string* release_name();
-  void set_allocated_name(std::string* ptr);
-
-  private:
-  const std::string& _internal_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
-      const std::string& value);
-  std::string* _internal_mutable_name();
-
-  public:
-  // string content_type = 9;
-  void clear_content_type() ;
-  const std::string& content_type() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_content_type(Arg_&& arg, Args_... args);
-  std::string* mutable_content_type();
-  PROTOBUF_NODISCARD std::string* release_content_type();
-  void set_allocated_content_type(std::string* ptr);
-
-  private:
-  const std::string& _internal_content_type() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_content_type(
-      const std::string& value);
-  std::string* _internal_mutable_content_type();
-
-  public:
-  // @@protoc_insertion_point(class_scope:palm.lily.v1.File)
- private:
-  class _Internal;
-
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<1, 3, 0, 48, 2> _table_;
-  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  struct Impl_ {
-    ::google::protobuf::internal::ArenaStringPtr bucket_;
-    ::google::protobuf::internal::ArenaStringPtr name_;
-    ::google::protobuf::internal::ArenaStringPtr content_type_;
-    mutable ::google::protobuf::internal::CachedSize _cached_size_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_lily_2eproto;
-};// -------------------------------------------------------------------
 
 class ExcelModel_Sheet_Cell final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.lily.v1.ExcelModel.Sheet.Cell) */ {
@@ -354,7 +188,7 @@ class ExcelModel_Sheet_Cell final :
                &_ExcelModel_Sheet_Cell_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    0;
 
   friend void swap(ExcelModel_Sheet_Cell& a, ExcelModel_Sheet_Cell& b) {
     a.Swap(&b);
@@ -542,7 +376,7 @@ class ExcelModel_Sheet final :
                &_ExcelModel_Sheet_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    1;
 
   friend void swap(ExcelModel_Sheet& a, ExcelModel_Sheet& b) {
     a.Swap(&b);
@@ -728,7 +562,7 @@ class ExcelModel final :
                &_ExcelModel_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    2;
 
   friend void swap(ExcelModel& a, ExcelModel& b) {
     a.Swap(&b);
@@ -840,6 +674,567 @@ class ExcelModel final :
   friend struct ::TableStruct_lily_2eproto;
 };// -------------------------------------------------------------------
 
+class S3File final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.lily.v1.S3File) */ {
+ public:
+  inline S3File() : S3File(nullptr) {}
+  ~S3File() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR S3File(::google::protobuf::internal::ConstantInitialized);
+
+  S3File(const S3File& from);
+  S3File(S3File&& from) noexcept
+    : S3File() {
+    *this = ::std::move(from);
+  }
+
+  inline S3File& operator=(const S3File& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S3File& operator=(S3File&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S3File& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S3File* internal_default_instance() {
+    return reinterpret_cast<const S3File*>(
+               &_S3File_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(S3File& a, S3File& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S3File* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S3File* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S3File* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S3File>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const S3File& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const S3File& from) {
+    S3File::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S3File* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.lily.v1.S3File";
+  }
+  protected:
+  explicit S3File(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kBucketFieldNumber = 1,
+    kNameFieldNumber = 2,
+    kContentTypeFieldNumber = 9,
+  };
+  // string bucket = 1;
+  void clear_bucket() ;
+  const std::string& bucket() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_bucket(Arg_&& arg, Args_... args);
+  std::string* mutable_bucket();
+  PROTOBUF_NODISCARD std::string* release_bucket();
+  void set_allocated_bucket(std::string* ptr);
+
+  private:
+  const std::string& _internal_bucket() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_bucket(
+      const std::string& value);
+  std::string* _internal_mutable_bucket();
+
+  public:
+  // string name = 2;
+  void clear_name() ;
+  const std::string& name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_name(Arg_&& arg, Args_... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* ptr);
+
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
+      const std::string& value);
+  std::string* _internal_mutable_name();
+
+  public:
+  // string content_type = 9;
+  void clear_content_type() ;
+  const std::string& content_type() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_content_type(Arg_&& arg, Args_... args);
+  std::string* mutable_content_type();
+  PROTOBUF_NODISCARD std::string* release_content_type();
+  void set_allocated_content_type(std::string* ptr);
+
+  private:
+  const std::string& _internal_content_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_content_type(
+      const std::string& value);
+  std::string* _internal_mutable_content_type();
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.lily.v1.S3File)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<1, 3, 0, 50, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::ArenaStringPtr bucket_;
+    ::google::protobuf::internal::ArenaStringPtr name_;
+    ::google::protobuf::internal::ArenaStringPtr content_type_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lily_2eproto;
+};// -------------------------------------------------------------------
+
+class S3FileStatusRequest final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.lily.v1.S3FileStatusRequest) */ {
+ public:
+  inline S3FileStatusRequest() : S3FileStatusRequest(nullptr) {}
+  ~S3FileStatusRequest() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR S3FileStatusRequest(::google::protobuf::internal::ConstantInitialized);
+
+  S3FileStatusRequest(const S3FileStatusRequest& from);
+  S3FileStatusRequest(S3FileStatusRequest&& from) noexcept
+    : S3FileStatusRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline S3FileStatusRequest& operator=(const S3FileStatusRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S3FileStatusRequest& operator=(S3FileStatusRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S3FileStatusRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S3FileStatusRequest* internal_default_instance() {
+    return reinterpret_cast<const S3FileStatusRequest*>(
+               &_S3FileStatusRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(S3FileStatusRequest& a, S3FileStatusRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S3FileStatusRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S3FileStatusRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S3FileStatusRequest* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S3FileStatusRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const S3FileStatusRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const S3FileStatusRequest& from) {
+    S3FileStatusRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S3FileStatusRequest* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.lily.v1.S3FileStatusRequest";
+  }
+  protected:
+  explicit S3FileStatusRequest(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kBucketFieldNumber = 1,
+    kNameFieldNumber = 2,
+  };
+  // string bucket = 1;
+  void clear_bucket() ;
+  const std::string& bucket() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_bucket(Arg_&& arg, Args_... args);
+  std::string* mutable_bucket();
+  PROTOBUF_NODISCARD std::string* release_bucket();
+  void set_allocated_bucket(std::string* ptr);
+
+  private:
+  const std::string& _internal_bucket() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_bucket(
+      const std::string& value);
+  std::string* _internal_mutable_bucket();
+
+  public:
+  // string name = 2;
+  void clear_name() ;
+  const std::string& name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_name(Arg_&& arg, Args_... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* ptr);
+
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
+      const std::string& value);
+  std::string* _internal_mutable_name();
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.lily.v1.S3FileStatusRequest)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<1, 2, 0, 51, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::ArenaStringPtr bucket_;
+    ::google::protobuf::internal::ArenaStringPtr name_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lily_2eproto;
+};// -------------------------------------------------------------------
+
+class S3FileStatusResponse final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.lily.v1.S3FileStatusResponse) */ {
+ public:
+  inline S3FileStatusResponse() : S3FileStatusResponse(nullptr) {}
+  ~S3FileStatusResponse() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR S3FileStatusResponse(::google::protobuf::internal::ConstantInitialized);
+
+  S3FileStatusResponse(const S3FileStatusResponse& from);
+  S3FileStatusResponse(S3FileStatusResponse&& from) noexcept
+    : S3FileStatusResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline S3FileStatusResponse& operator=(const S3FileStatusResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S3FileStatusResponse& operator=(S3FileStatusResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S3FileStatusResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S3FileStatusResponse* internal_default_instance() {
+    return reinterpret_cast<const S3FileStatusResponse*>(
+               &_S3FileStatusResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(S3FileStatusResponse& a, S3FileStatusResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S3FileStatusResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S3FileStatusResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S3FileStatusResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S3FileStatusResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const S3FileStatusResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const S3FileStatusResponse& from) {
+    S3FileStatusResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S3FileStatusResponse* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.lily.v1.S3FileStatusResponse";
+  }
+  protected:
+  explicit S3FileStatusResponse(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  using Status = S3FileStatusResponse_Status;
+  static constexpr Status PENDING = S3FileStatusResponse_Status_PENDING;
+  static constexpr Status SUCCESSED = S3FileStatusResponse_Status_SUCCESSED;
+  static constexpr Status FAILED = S3FileStatusResponse_Status_FAILED;
+  static inline bool Status_IsValid(int value) {
+    return S3FileStatusResponse_Status_IsValid(value);
+  }
+  static constexpr Status Status_MIN = S3FileStatusResponse_Status_Status_MIN;
+  static constexpr Status Status_MAX = S3FileStatusResponse_Status_Status_MAX;
+  static constexpr int Status_ARRAYSIZE = S3FileStatusResponse_Status_Status_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor* Status_descriptor() {
+    return S3FileStatusResponse_Status_descriptor();
+  }
+  template <typename T>
+  static inline const std::string& Status_Name(T value) {
+    return S3FileStatusResponse_Status_Name(value);
+  }
+  static inline bool Status_Parse(absl::string_view name, Status* value) {
+    return S3FileStatusResponse_Status_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kStatusFieldNumber = 1,
+  };
+  // .palm.lily.v1.S3FileStatusResponse.Status status = 1;
+  void clear_status() ;
+  ::palm::lily::v1::S3FileStatusResponse_Status status() const;
+  void set_status(::palm::lily::v1::S3FileStatusResponse_Status value);
+
+  private:
+  ::palm::lily::v1::S3FileStatusResponse_Status _internal_status() const;
+  void _internal_set_status(::palm::lily::v1::S3FileStatusResponse_Status value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.lily.v1.S3FileStatusResponse)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<0, 1, 0, 0, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    int status_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lily_2eproto;
+};// -------------------------------------------------------------------
+
 class TexToRequest_FilesEntry_DoNotUse final : public ::google::protobuf::internal::MapEntry<TexToRequest_FilesEntry_DoNotUse, 
     std::string, std::string,
     ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
@@ -922,7 +1317,7 @@ class TexToRequest final :
                &_TexToRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    7;
 
   friend void swap(TexToRequest& a, TexToRequest& b) {
     a.Swap(&b);
@@ -995,9 +1390,12 @@ class TexToRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kFilesFieldNumber = 1,
+    kFilesFieldNumber = 2,
+    kTitleFieldNumber = 1,
+    kOwnerFieldNumber = 8,
+    kPublishedFieldNumber = 9,
   };
-  // map<string, bytes> files = 1;
+  // map<string, bytes> files = 2;
   int files_size() const;
   private:
   int _internal_files_size() const;
@@ -1012,21 +1410,68 @@ class TexToRequest final :
   ::google::protobuf::Map<std::string, std::string>* _internal_mutable_files();
 
   public:
+  // string title = 1;
+  void clear_title() ;
+  const std::string& title() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_title(Arg_&& arg, Args_... args);
+  std::string* mutable_title();
+  PROTOBUF_NODISCARD std::string* release_title();
+  void set_allocated_title(std::string* ptr);
+
+  private:
+  const std::string& _internal_title() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_title(
+      const std::string& value);
+  std::string* _internal_mutable_title();
+
+  public:
+  // optional string owner = 8;
+  bool has_owner() const;
+  void clear_owner() ;
+  const std::string& owner() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_owner(Arg_&& arg, Args_... args);
+  std::string* mutable_owner();
+  PROTOBUF_NODISCARD std::string* release_owner();
+  void set_allocated_owner(std::string* ptr);
+
+  private:
+  const std::string& _internal_owner() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_owner(
+      const std::string& value);
+  std::string* _internal_mutable_owner();
+
+  public:
+  // bool published = 9;
+  void clear_published() ;
+  bool published() const;
+  void set_published(bool value);
+
+  private:
+  bool _internal_published() const;
+  void _internal_set_published(bool value);
+
+  public:
   // @@protoc_insertion_point(class_scope:palm.lily.v1.TexToRequest)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<0, 1, 1, 39, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<1, 4, 1, 49, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::MapField<TexToRequest_FilesEntry_DoNotUse, std::string, std::string,
                       ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
                       ::google::protobuf::internal::WireFormatLite::TYPE_BYTES>
         files_;
-    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr title_;
+    ::google::protobuf::internal::ArenaStringPtr owner_;
+    bool published_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -1088,7 +1533,7 @@ class EpubBuildRequest final :
                &_EpubBuildRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    8;
 
   friend void swap(EpubBuildRequest& a, EpubBuildRequest& b) {
     a.Swap(&b);
@@ -1170,163 +1615,6 @@ class EpubBuildRequest final :
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
-// File
-
-// string bucket = 1;
-inline void File::clear_bucket() {
-  _impl_.bucket_.ClearToEmpty();
-}
-inline const std::string& File::bucket() const {
-  // @@protoc_insertion_point(field_get:palm.lily.v1.File.bucket)
-  return _internal_bucket();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void File::set_bucket(Arg_&& arg,
-                                                     Args_... args) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.bucket_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.lily.v1.File.bucket)
-}
-inline std::string* File::mutable_bucket() {
-  std::string* _s = _internal_mutable_bucket();
-  // @@protoc_insertion_point(field_mutable:palm.lily.v1.File.bucket)
-  return _s;
-}
-inline const std::string& File::_internal_bucket() const {
-  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.bucket_.Get();
-}
-inline void File::_internal_set_bucket(const std::string& value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.bucket_.Set(value, GetArenaForAllocation());
-}
-inline std::string* File::_internal_mutable_bucket() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  return _impl_.bucket_.Mutable( GetArenaForAllocation());
-}
-inline std::string* File::release_bucket() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.lily.v1.File.bucket)
-  return _impl_.bucket_.Release();
-}
-inline void File::set_allocated_bucket(std::string* value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.bucket_.SetAllocated(value, GetArenaForAllocation());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.bucket_.IsDefault()) {
-          _impl_.bucket_.Set("", GetArenaForAllocation());
-        }
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.File.bucket)
-}
-
-// string name = 2;
-inline void File::clear_name() {
-  _impl_.name_.ClearToEmpty();
-}
-inline const std::string& File::name() const {
-  // @@protoc_insertion_point(field_get:palm.lily.v1.File.name)
-  return _internal_name();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void File::set_name(Arg_&& arg,
-                                                     Args_... args) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.name_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.lily.v1.File.name)
-}
-inline std::string* File::mutable_name() {
-  std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:palm.lily.v1.File.name)
-  return _s;
-}
-inline const std::string& File::_internal_name() const {
-  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.name_.Get();
-}
-inline void File::_internal_set_name(const std::string& value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.name_.Set(value, GetArenaForAllocation());
-}
-inline std::string* File::_internal_mutable_name() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  return _impl_.name_.Mutable( GetArenaForAllocation());
-}
-inline std::string* File::release_name() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.lily.v1.File.name)
-  return _impl_.name_.Release();
-}
-inline void File::set_allocated_name(std::string* value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.name_.SetAllocated(value, GetArenaForAllocation());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.name_.IsDefault()) {
-          _impl_.name_.Set("", GetArenaForAllocation());
-        }
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.File.name)
-}
-
-// string content_type = 9;
-inline void File::clear_content_type() {
-  _impl_.content_type_.ClearToEmpty();
-}
-inline const std::string& File::content_type() const {
-  // @@protoc_insertion_point(field_get:palm.lily.v1.File.content_type)
-  return _internal_content_type();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void File::set_content_type(Arg_&& arg,
-                                                     Args_... args) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.content_type_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.lily.v1.File.content_type)
-}
-inline std::string* File::mutable_content_type() {
-  std::string* _s = _internal_mutable_content_type();
-  // @@protoc_insertion_point(field_mutable:palm.lily.v1.File.content_type)
-  return _s;
-}
-inline const std::string& File::_internal_content_type() const {
-  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.content_type_.Get();
-}
-inline void File::_internal_set_content_type(const std::string& value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.content_type_.Set(value, GetArenaForAllocation());
-}
-inline std::string* File::_internal_mutable_content_type() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  return _impl_.content_type_.Mutable( GetArenaForAllocation());
-}
-inline std::string* File::release_content_type() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.lily.v1.File.content_type)
-  return _impl_.content_type_.Release();
-}
-inline void File::set_allocated_content_type(std::string* value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.content_type_.SetAllocated(value, GetArenaForAllocation());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.content_type_.IsDefault()) {
-          _impl_.content_type_.Set("", GetArenaForAllocation());
-        }
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.File.content_type)
-}
-
 // -------------------------------------------------------------------
 
 // ExcelModel_Sheet_Cell
@@ -1579,11 +1867,351 @@ ExcelModel::_internal_mutable_sheets() {
 
 // -------------------------------------------------------------------
 
+// S3File
+
+// string bucket = 1;
+inline void S3File::clear_bucket() {
+  _impl_.bucket_.ClearToEmpty();
+}
+inline const std::string& S3File::bucket() const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.S3File.bucket)
+  return _internal_bucket();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void S3File::set_bucket(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.bucket_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.lily.v1.S3File.bucket)
+}
+inline std::string* S3File::mutable_bucket() {
+  std::string* _s = _internal_mutable_bucket();
+  // @@protoc_insertion_point(field_mutable:palm.lily.v1.S3File.bucket)
+  return _s;
+}
+inline const std::string& S3File::_internal_bucket() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.bucket_.Get();
+}
+inline void S3File::_internal_set_bucket(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.bucket_.Set(value, GetArenaForAllocation());
+}
+inline std::string* S3File::_internal_mutable_bucket() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.bucket_.Mutable( GetArenaForAllocation());
+}
+inline std::string* S3File::release_bucket() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.lily.v1.S3File.bucket)
+  return _impl_.bucket_.Release();
+}
+inline void S3File::set_allocated_bucket(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.bucket_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.bucket_.IsDefault()) {
+          _impl_.bucket_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.S3File.bucket)
+}
+
+// string name = 2;
+inline void S3File::clear_name() {
+  _impl_.name_.ClearToEmpty();
+}
+inline const std::string& S3File::name() const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.S3File.name)
+  return _internal_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void S3File::set_name(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.name_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.lily.v1.S3File.name)
+}
+inline std::string* S3File::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:palm.lily.v1.S3File.name)
+  return _s;
+}
+inline const std::string& S3File::_internal_name() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.name_.Get();
+}
+inline void S3File::_internal_set_name(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* S3File::_internal_mutable_name() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.name_.Mutable( GetArenaForAllocation());
+}
+inline std::string* S3File::release_name() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.lily.v1.S3File.name)
+  return _impl_.name_.Release();
+}
+inline void S3File::set_allocated_name(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.name_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.name_.IsDefault()) {
+          _impl_.name_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.S3File.name)
+}
+
+// string content_type = 9;
+inline void S3File::clear_content_type() {
+  _impl_.content_type_.ClearToEmpty();
+}
+inline const std::string& S3File::content_type() const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.S3File.content_type)
+  return _internal_content_type();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void S3File::set_content_type(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.content_type_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.lily.v1.S3File.content_type)
+}
+inline std::string* S3File::mutable_content_type() {
+  std::string* _s = _internal_mutable_content_type();
+  // @@protoc_insertion_point(field_mutable:palm.lily.v1.S3File.content_type)
+  return _s;
+}
+inline const std::string& S3File::_internal_content_type() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.content_type_.Get();
+}
+inline void S3File::_internal_set_content_type(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.content_type_.Set(value, GetArenaForAllocation());
+}
+inline std::string* S3File::_internal_mutable_content_type() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.content_type_.Mutable( GetArenaForAllocation());
+}
+inline std::string* S3File::release_content_type() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.lily.v1.S3File.content_type)
+  return _impl_.content_type_.Release();
+}
+inline void S3File::set_allocated_content_type(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.content_type_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.content_type_.IsDefault()) {
+          _impl_.content_type_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.S3File.content_type)
+}
+
+// -------------------------------------------------------------------
+
+// S3FileStatusRequest
+
+// string bucket = 1;
+inline void S3FileStatusRequest::clear_bucket() {
+  _impl_.bucket_.ClearToEmpty();
+}
+inline const std::string& S3FileStatusRequest::bucket() const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.S3FileStatusRequest.bucket)
+  return _internal_bucket();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void S3FileStatusRequest::set_bucket(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.bucket_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.lily.v1.S3FileStatusRequest.bucket)
+}
+inline std::string* S3FileStatusRequest::mutable_bucket() {
+  std::string* _s = _internal_mutable_bucket();
+  // @@protoc_insertion_point(field_mutable:palm.lily.v1.S3FileStatusRequest.bucket)
+  return _s;
+}
+inline const std::string& S3FileStatusRequest::_internal_bucket() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.bucket_.Get();
+}
+inline void S3FileStatusRequest::_internal_set_bucket(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.bucket_.Set(value, GetArenaForAllocation());
+}
+inline std::string* S3FileStatusRequest::_internal_mutable_bucket() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.bucket_.Mutable( GetArenaForAllocation());
+}
+inline std::string* S3FileStatusRequest::release_bucket() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.lily.v1.S3FileStatusRequest.bucket)
+  return _impl_.bucket_.Release();
+}
+inline void S3FileStatusRequest::set_allocated_bucket(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.bucket_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.bucket_.IsDefault()) {
+          _impl_.bucket_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.S3FileStatusRequest.bucket)
+}
+
+// string name = 2;
+inline void S3FileStatusRequest::clear_name() {
+  _impl_.name_.ClearToEmpty();
+}
+inline const std::string& S3FileStatusRequest::name() const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.S3FileStatusRequest.name)
+  return _internal_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void S3FileStatusRequest::set_name(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.name_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.lily.v1.S3FileStatusRequest.name)
+}
+inline std::string* S3FileStatusRequest::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:palm.lily.v1.S3FileStatusRequest.name)
+  return _s;
+}
+inline const std::string& S3FileStatusRequest::_internal_name() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.name_.Get();
+}
+inline void S3FileStatusRequest::_internal_set_name(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* S3FileStatusRequest::_internal_mutable_name() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.name_.Mutable( GetArenaForAllocation());
+}
+inline std::string* S3FileStatusRequest::release_name() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.lily.v1.S3FileStatusRequest.name)
+  return _impl_.name_.Release();
+}
+inline void S3FileStatusRequest::set_allocated_name(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.name_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.name_.IsDefault()) {
+          _impl_.name_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.S3FileStatusRequest.name)
+}
+
+// -------------------------------------------------------------------
+
+// S3FileStatusResponse
+
+// .palm.lily.v1.S3FileStatusResponse.Status status = 1;
+inline void S3FileStatusResponse::clear_status() {
+  _impl_.status_ = 0;
+}
+inline ::palm::lily::v1::S3FileStatusResponse_Status S3FileStatusResponse::status() const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.S3FileStatusResponse.status)
+  return _internal_status();
+}
+inline void S3FileStatusResponse::set_status(::palm::lily::v1::S3FileStatusResponse_Status value) {
+  _internal_set_status(value);
+  // @@protoc_insertion_point(field_set:palm.lily.v1.S3FileStatusResponse.status)
+}
+inline ::palm::lily::v1::S3FileStatusResponse_Status S3FileStatusResponse::_internal_status() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return static_cast<::palm::lily::v1::S3FileStatusResponse_Status>(_impl_.status_);
+}
+inline void S3FileStatusResponse::_internal_set_status(::palm::lily::v1::S3FileStatusResponse_Status value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.status_ = value;
+}
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // TexToRequest
 
-// map<string, bytes> files = 1;
+// string title = 1;
+inline void TexToRequest::clear_title() {
+  _impl_.title_.ClearToEmpty();
+}
+inline const std::string& TexToRequest::title() const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.TexToRequest.title)
+  return _internal_title();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void TexToRequest::set_title(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.title_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.lily.v1.TexToRequest.title)
+}
+inline std::string* TexToRequest::mutable_title() {
+  std::string* _s = _internal_mutable_title();
+  // @@protoc_insertion_point(field_mutable:palm.lily.v1.TexToRequest.title)
+  return _s;
+}
+inline const std::string& TexToRequest::_internal_title() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.title_.Get();
+}
+inline void TexToRequest::_internal_set_title(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.title_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TexToRequest::_internal_mutable_title() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.title_.Mutable( GetArenaForAllocation());
+}
+inline std::string* TexToRequest::release_title() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.lily.v1.TexToRequest.title)
+  return _impl_.title_.Release();
+}
+inline void TexToRequest::set_allocated_title(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.title_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.title_.IsDefault()) {
+          _impl_.title_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.TexToRequest.title)
+}
+
+// map<string, bytes> files = 2;
 inline int TexToRequest::_internal_files_size() const {
   return _internal_files().size();
 }
@@ -1610,6 +2238,97 @@ inline ::google::protobuf::Map<std::string, std::string>* TexToRequest::mutable_
   return _internal_mutable_files();
 }
 
+// optional string owner = 8;
+inline bool TexToRequest::has_owner() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline void TexToRequest::clear_owner() {
+  _impl_.owner_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& TexToRequest::owner() const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.TexToRequest.owner)
+  return _internal_owner();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void TexToRequest::set_owner(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.owner_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.lily.v1.TexToRequest.owner)
+}
+inline std::string* TexToRequest::mutable_owner() {
+  std::string* _s = _internal_mutable_owner();
+  // @@protoc_insertion_point(field_mutable:palm.lily.v1.TexToRequest.owner)
+  return _s;
+}
+inline const std::string& TexToRequest::_internal_owner() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.owner_.Get();
+}
+inline void TexToRequest::_internal_set_owner(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.owner_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TexToRequest::_internal_mutable_owner() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.owner_.Mutable( GetArenaForAllocation());
+}
+inline std::string* TexToRequest::release_owner() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.lily.v1.TexToRequest.owner)
+  if ((_impl_._has_bits_[0] & 0x00000001u) == 0) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* released = _impl_.owner_.Release();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.owner_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return released;
+}
+inline void TexToRequest::set_allocated_owner(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.owner_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.owner_.IsDefault()) {
+          _impl_.owner_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.TexToRequest.owner)
+}
+
+// bool published = 9;
+inline void TexToRequest::clear_published() {
+  _impl_.published_ = false;
+}
+inline bool TexToRequest::published() const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.TexToRequest.published)
+  return _internal_published();
+}
+inline void TexToRequest::set_published(bool value) {
+  _internal_set_published(value);
+  // @@protoc_insertion_point(field_set:palm.lily.v1.TexToRequest.published)
+}
+inline bool TexToRequest::_internal_published() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.published_;
+}
+inline void TexToRequest::_internal_set_published(bool value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.published_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // EpubBuildRequest
@@ -1623,6 +2342,19 @@ inline ::google::protobuf::Map<std::string, std::string>* TexToRequest::mutable_
 }  // namespace lily
 }  // namespace palm
 
+
+namespace google {
+namespace protobuf {
+
+template <>
+struct is_proto_enum<::palm::lily::v1::S3FileStatusResponse_Status> : std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor<::palm::lily::v1::S3FileStatusResponse_Status>() {
+  return ::palm::lily::v1::S3FileStatusResponse_Status_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 

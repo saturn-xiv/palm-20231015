@@ -17,7 +17,7 @@
   $ python3.12 -m venv $HOME/local/python3
   $ source $HOME/local/python3/bin/activate
   $ pip install psycopg minio redis[hiredis] \
-    pika matplotlib ebooklib \
+    pika msgpack matplotlib ebooklib \
     grpcio protobuf grpcio-health-checking \
     pandas openpyxl xlrd pyxlsb
   ```

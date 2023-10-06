@@ -24,33 +24,6 @@ namespace palm {
 namespace lily {
 namespace v1 {
         template <typename>
-PROTOBUF_CONSTEXPR File::File(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.bucket_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.content_type_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct FileDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR FileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~FileDefaultTypeInternal() {}
-  union {
-    File _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 FileDefaultTypeInternal _File_default_instance_;
-        template <typename>
 PROTOBUF_CONSTEXPR ExcelModel_Sheet_Cell::ExcelModel_Sheet_Cell(::_pbi::ConstantInitialized)
     : _impl_{
       /*decltype(_impl_.val_)*/ {
@@ -107,6 +80,72 @@ struct ExcelModelDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ExcelModelDefaultTypeInternal _ExcelModel_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR S3File::S3File(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.bucket_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.name_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.content_type_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct S3FileDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S3FileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S3FileDefaultTypeInternal() {}
+  union {
+    S3File _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S3FileDefaultTypeInternal _S3File_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR S3FileStatusRequest::S3FileStatusRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.bucket_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.name_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct S3FileStatusRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S3FileStatusRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S3FileStatusRequestDefaultTypeInternal() {}
+  union {
+    S3FileStatusRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S3FileStatusRequestDefaultTypeInternal _S3FileStatusRequest_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR S3FileStatusResponse::S3FileStatusResponse(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.status_)*/ 0,
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct S3FileStatusResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S3FileStatusResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S3FileStatusResponseDefaultTypeInternal() {}
+  union {
+    S3FileStatusResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S3FileStatusResponseDefaultTypeInternal _S3FileStatusResponse_default_instance_;
       template <typename>
 PROTOBUF_CONSTEXPR TexToRequest_FilesEntry_DoNotUse::TexToRequest_FilesEntry_DoNotUse(::_pbi::ConstantInitialized) {}
 struct TexToRequest_FilesEntry_DoNotUseDefaultTypeInternal {
@@ -122,8 +161,18 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
         template <typename>
 PROTOBUF_CONSTEXPR TexToRequest::TexToRequest(::_pbi::ConstantInitialized)
     : _impl_{
-      /* decltype(_impl_.files_) */ {},
+      /*decltype(_impl_._has_bits_)*/ {},
       /*decltype(_impl_._cached_size_)*/ {},
+      /* decltype(_impl_.files_) */ {},
+      /*decltype(_impl_.title_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.owner_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.published_)*/ false,
     } {}
 struct TexToRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR TexToRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
@@ -150,24 +199,12 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace v1
 }  // namespace lily
 }  // namespace palm
-static ::_pb::Metadata file_level_metadata_lily_2eproto[7];
-static constexpr const ::_pb::EnumDescriptor**
-    file_level_enum_descriptors_lily_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_lily_2eproto[9];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_lily_2eproto[1];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_lily_2eproto = nullptr;
 const ::uint32_t TableStruct_lily_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     protodesc_cold) = {
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::File, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::File, _impl_.bucket_),
-    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::File, _impl_.name_),
-    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::File, _impl_.content_type_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::ExcelModel_Sheet_Cell, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -198,6 +235,36 @@ const ::uint32_t TableStruct_lily_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::ExcelModel, _impl_.sheets_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3File, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3File, _impl_.bucket_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3File, _impl_.name_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3File, _impl_.content_type_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3FileStatusRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3FileStatusRequest, _impl_.bucket_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3FileStatusRequest, _impl_.name_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3FileStatusResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3FileStatusResponse, _impl_.status_),
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse, _has_bits_),
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -210,7 +277,7 @@ const ::uint32_t TableStruct_lily_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse, value_),
     0,
     1,
-    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest, _impl_._has_bits_),
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
@@ -218,7 +285,14 @@ const ::uint32_t TableStruct_lily_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest, _impl_.title_),
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest, _impl_.files_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest, _impl_.owner_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest, _impl_.published_),
+    ~0u,
+    ~0u,
+    0,
+    ~0u,
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::EpubBuildRequest, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -231,57 +305,70 @@ const ::uint32_t TableStruct_lily_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        {0, -1, -1, sizeof(::palm::lily::v1::File)},
-        {11, -1, -1, sizeof(::palm::lily::v1::ExcelModel_Sheet_Cell)},
-        {22, -1, -1, sizeof(::palm::lily::v1::ExcelModel_Sheet)},
-        {32, -1, -1, sizeof(::palm::lily::v1::ExcelModel)},
-        {41, 51, -1, sizeof(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse)},
-        {53, -1, -1, sizeof(::palm::lily::v1::TexToRequest)},
-        {62, -1, -1, sizeof(::palm::lily::v1::EpubBuildRequest)},
+        {0, -1, -1, sizeof(::palm::lily::v1::ExcelModel_Sheet_Cell)},
+        {11, -1, -1, sizeof(::palm::lily::v1::ExcelModel_Sheet)},
+        {21, -1, -1, sizeof(::palm::lily::v1::ExcelModel)},
+        {30, -1, -1, sizeof(::palm::lily::v1::S3File)},
+        {41, -1, -1, sizeof(::palm::lily::v1::S3FileStatusRequest)},
+        {51, -1, -1, sizeof(::palm::lily::v1::S3FileStatusResponse)},
+        {60, 70, -1, sizeof(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse)},
+        {72, 84, -1, sizeof(::palm::lily::v1::TexToRequest)},
+        {88, -1, -1, sizeof(::palm::lily::v1::EpubBuildRequest)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
-    &::palm::lily::v1::_File_default_instance_._instance,
     &::palm::lily::v1::_ExcelModel_Sheet_Cell_default_instance_._instance,
     &::palm::lily::v1::_ExcelModel_Sheet_default_instance_._instance,
     &::palm::lily::v1::_ExcelModel_default_instance_._instance,
+    &::palm::lily::v1::_S3File_default_instance_._instance,
+    &::palm::lily::v1::_S3FileStatusRequest_default_instance_._instance,
+    &::palm::lily::v1::_S3FileStatusResponse_default_instance_._instance,
     &::palm::lily::v1::_TexToRequest_FilesEntry_DoNotUse_default_instance_._instance,
     &::palm::lily::v1::_TexToRequest_default_instance_._instance,
     &::palm::lily::v1::_EpubBuildRequest_default_instance_._instance,
 };
 const char descriptor_table_protodef_lily_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\nlily.proto\022\014palm.lily.v1\":\n\004File\022\016\n\006bu"
-    "cket\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\024\n\014content_type"
-    "\030\t \001(\t\"\266\001\n\nExcelModel\022.\n\006sheets\030\001 \003(\0132\036."
-    "palm.lily.v1.ExcelModel.Sheet\032x\n\005Sheet\022\014"
-    "\n\004name\030\001 \001(\t\0222\n\005cells\030\002 \003(\0132#.palm.lily."
-    "v1.ExcelModel.Sheet.Cell\032-\n\004Cell\022\013\n\003row\030"
-    "\001 \001(\r\022\013\n\003col\030\002 \001(\r\022\013\n\003val\030\003 \001(\t\"r\n\014TexTo"
-    "Request\0224\n\005files\030\001 \003(\0132%.palm.lily.v1.Te"
-    "xToRequest.FilesEntry\032,\n\nFilesEntry\022\013\n\003k"
-    "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\"\022\n\020EpubBuild"
-    "Request2|\n\005Excel\0227\n\005Parse\022\022.palm.lily.v1"
-    ".File\032\030.palm.lily.v1.ExcelModel\"\000\022:\n\010Gen"
-    "erate\022\030.palm.lily.v1.ExcelModel\032\022.palm.l"
-    "ily.v1.File\"\0002|\n\003Tex\0229\n\005ToPdf\022\032.palm.lil"
-    "y.v1.TexToRequest\032\022.palm.lily.v1.File\"\000\022"
-    ":\n\006ToWord\022\032.palm.lily.v1.TexToRequest\032\022."
-    "palm.lily.v1.File\"\0002E\n\004Epub\022=\n\005Build\022\036.p"
-    "alm.lily.v1.EpubBuildRequest\032\022.palm.lily"
-    ".v1.File\"\000B.\n*com.github.saturn_xiv.palm"
-    ".plugins.lily.v1P\001b\006proto3"
+    "\n\nlily.proto\022\014palm.lily.v1\"\266\001\n\nExcelMode"
+    "l\022.\n\006sheets\030\001 \003(\0132\036.palm.lily.v1.ExcelMo"
+    "del.Sheet\032x\n\005Sheet\022\014\n\004name\030\001 \001(\t\0222\n\005cell"
+    "s\030\002 \003(\0132#.palm.lily.v1.ExcelModel.Sheet."
+    "Cell\032-\n\004Cell\022\013\n\003row\030\001 \001(\r\022\013\n\003col\030\002 \001(\r\022\013"
+    "\n\003val\030\003 \001(\t\"<\n\006S3File\022\016\n\006bucket\030\001 \001(\t\022\014\n"
+    "\004name\030\002 \001(\t\022\024\n\014content_type\030\t \001(\t\"3\n\023S3F"
+    "ileStatusRequest\022\016\n\006bucket\030\001 \001(\t\022\014\n\004name"
+    "\030\002 \001(\t\"\203\001\n\024S3FileStatusResponse\0229\n\006statu"
+    "s\030\001 \001(\0162).palm.lily.v1.S3FileStatusRespo"
+    "nse.Status\"0\n\006Status\022\013\n\007PENDING\020\000\022\r\n\tSUC"
+    "CESSED\020\001\022\n\n\006FAILED\020c\"\262\001\n\014TexToRequest\022\r\n"
+    "\005title\030\001 \001(\t\0224\n\005files\030\002 \003(\0132%.palm.lily."
+    "v1.TexToRequest.FilesEntry\022\022\n\005owner\030\010 \001("
+    "\tH\000\210\001\001\022\021\n\tpublished\030\t \001(\010\032,\n\nFilesEntry\022"
+    "\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001B\010\n\006_owne"
+    "r\"\022\n\020EpubBuildRequest2\200\001\n\005Excel\0229\n\005Parse"
+    "\022\024.palm.lily.v1.S3File\032\030.palm.lily.v1.Ex"
+    "celModel\"\000\022<\n\010Generate\022\030.palm.lily.v1.Ex"
+    "celModel\032\024.palm.lily.v1.S3File\"\0002[\n\002S3\022U"
+    "\n\nFileStatus\022!.palm.lily.v1.S3FileStatus"
+    "Request\032\".palm.lily.v1.S3FileStatusRespo"
+    "nse\"\0002\200\001\n\003Tex\022;\n\005ToPdf\022\032.palm.lily.v1.Te"
+    "xToRequest\032\024.palm.lily.v1.S3File\"\000\022<\n\006To"
+    "Word\022\032.palm.lily.v1.TexToRequest\032\024.palm."
+    "lily.v1.S3File\"\0002G\n\004Epub\022\?\n\005Build\022\036.palm"
+    ".lily.v1.EpubBuildRequest\032\024.palm.lily.v1"
+    ".S3File\"\000B.\n*com.github.saturn_xiv.palm."
+    "plugins.lily.v1P\001b\006proto3"
 };
 static ::absl::once_flag descriptor_table_lily_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_lily_2eproto = {
     false,
     false,
-    786,
+    1145,
     descriptor_table_protodef_lily_2eproto,
     "lily.proto",
     &descriptor_table_lily_2eproto_once,
     nullptr,
     0,
-    7,
+    9,
     schemas,
     file_default_instances,
     TableStruct_lily_2eproto::offsets,
@@ -310,276 +397,32 @@ static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_lily_2eproto(&descriptor_
 namespace palm {
 namespace lily {
 namespace v1 {
-// ===================================================================
-
-class File::_Internal {
- public:
-};
-
-File::File(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:palm.lily.v1.File)
+const ::google::protobuf::EnumDescriptor* S3FileStatusResponse_Status_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_lily_2eproto);
+  return file_level_enum_descriptors_lily_2eproto[0];
 }
-File::File(const File& from) : ::google::protobuf::Message() {
-  File* const _this = this;
-  (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.bucket_){},
-      decltype(_impl_.name_){},
-      decltype(_impl_.content_type_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  _impl_.bucket_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.bucket_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_bucket().empty()) {
-    _this->_impl_.bucket_.Set(from._internal_bucket(), _this->GetArenaForAllocation());
+bool S3FileStatusResponse_Status_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 99:
+      return true;
+    default:
+      return false;
   }
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  _impl_.content_type_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.content_type_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_content_type().empty()) {
-    _this->_impl_.content_type_.Set(from._internal_content_type(), _this->GetArenaForAllocation());
-  }
-
-  // @@protoc_insertion_point(copy_constructor:palm.lily.v1.File)
 }
-inline void File::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.bucket_){},
-      decltype(_impl_.name_){},
-      decltype(_impl_.content_type_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.bucket_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.bucket_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.content_type_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.content_type_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-}
-File::~File() {
-  // @@protoc_insertion_point(destructor:palm.lily.v1.File)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void File::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.bucket_.Destroy();
-  _impl_.name_.Destroy();
-  _impl_.content_type_.Destroy();
-}
-void File::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
+#if (__cplusplus < 201703) && \
+  (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 
-PROTOBUF_NOINLINE void File::Clear() {
-// @@protoc_insertion_point(message_clear_start:palm.lily.v1.File)
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
+constexpr S3FileStatusResponse_Status S3FileStatusResponse::PENDING;
+constexpr S3FileStatusResponse_Status S3FileStatusResponse::SUCCESSED;
+constexpr S3FileStatusResponse_Status S3FileStatusResponse::FAILED;
+constexpr S3FileStatusResponse_Status S3FileStatusResponse::Status_MIN;
+constexpr S3FileStatusResponse_Status S3FileStatusResponse::Status_MAX;
+constexpr int S3FileStatusResponse::Status_ARRAYSIZE;
 
-  _impl_.bucket_.ClearToEmpty();
-  _impl_.name_.ClearToEmpty();
-  _impl_.content_type_.ClearToEmpty();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
-}
-
-const char* File::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
-  return ptr;
-}
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 3, 0, 48, 2> File::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    9, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967036,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_File_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // string name = 2;
-    {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(File, _impl_.name_)}},
-    // string bucket = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(File, _impl_.bucket_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string bucket = 1;
-    {PROTOBUF_FIELD_OFFSET(File, _impl_.bucket_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string name = 2;
-    {PROTOBUF_FIELD_OFFSET(File, _impl_.name_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string content_type = 9;
-    {PROTOBUF_FIELD_OFFSET(File, _impl_.content_type_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\21\6\4\14\0\0\0\0"
-    "palm.lily.v1.File"
-    "bucket"
-    "name"
-    "content_type"
-  }},
-};
-
-::uint8_t* File::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:palm.lily.v1.File)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
-
-  // string bucket = 1;
-  if (!this->_internal_bucket().empty()) {
-    const std::string& _s = this->_internal_bucket();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.File.bucket");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
-  }
-
-  // string name = 2;
-  if (!this->_internal_name().empty()) {
-    const std::string& _s = this->_internal_name();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.File.name");
-    target = stream->WriteStringMaybeAliased(2, _s, target);
-  }
-
-  // string content_type = 9;
-  if (!this->_internal_content_type().empty()) {
-    const std::string& _s = this->_internal_content_type();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.File.content_type");
-    target = stream->WriteStringMaybeAliased(9, _s, target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:palm.lily.v1.File)
-  return target;
-}
-
-::size_t File::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:palm.lily.v1.File)
-  ::size_t total_size = 0;
-
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // string bucket = 1;
-  if (!this->_internal_bucket().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_bucket());
-  }
-
-  // string name = 2;
-  if (!this->_internal_name().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_name());
-  }
-
-  // string content_type = 9;
-  if (!this->_internal_content_type().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_content_type());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
-}
-
-const ::google::protobuf::Message::ClassData File::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    File::MergeImpl
-};
-const ::google::protobuf::Message::ClassData*File::GetClassData() const { return &_class_data_; }
-
-
-void File::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
-  auto* const _this = static_cast<File*>(&to_msg);
-  auto& from = static_cast<const File&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.lily.v1.File)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (!from._internal_bucket().empty()) {
-    _this->_internal_set_bucket(from._internal_bucket());
-  }
-  if (!from._internal_name().empty()) {
-    _this->_internal_set_name(from._internal_name());
-  }
-  if (!from._internal_content_type().empty()) {
-    _this->_internal_set_content_type(from._internal_content_type());
-  }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void File::CopyFrom(const File& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:palm.lily.v1.File)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-PROTOBUF_NOINLINE bool File::IsInitialized() const {
-  return true;
-}
-
-void File::InternalSwap(File* other) {
-  using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.bucket_, lhs_arena,
-                                       &other->_impl_.bucket_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.content_type_, lhs_arena,
-                                       &other->_impl_.content_type_, rhs_arena);
-}
-
-::google::protobuf::Metadata File::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_lily_2eproto_getter, &descriptor_table_lily_2eproto_once,
-      file_level_metadata_lily_2eproto[0]);
-}
+#endif  // (__cplusplus < 201703) &&
+        // (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 // ===================================================================
 
 class ExcelModel_Sheet_Cell::_Internal {
@@ -830,7 +673,7 @@ void ExcelModel_Sheet_Cell::InternalSwap(ExcelModel_Sheet_Cell* other) {
 ::google::protobuf::Metadata ExcelModel_Sheet_Cell::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lily_2eproto_getter, &descriptor_table_lily_2eproto_once,
-      file_level_metadata_lily_2eproto[1]);
+      file_level_metadata_lily_2eproto[0]);
 }
 // ===================================================================
 
@@ -1047,7 +890,7 @@ void ExcelModel_Sheet::InternalSwap(ExcelModel_Sheet* other) {
 ::google::protobuf::Metadata ExcelModel_Sheet::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lily_2eproto_getter, &descriptor_table_lily_2eproto_once,
-      file_level_metadata_lily_2eproto[2]);
+      file_level_metadata_lily_2eproto[1]);
 }
 // ===================================================================
 
@@ -1219,7 +1062,675 @@ void ExcelModel::InternalSwap(ExcelModel* other) {
 ::google::protobuf::Metadata ExcelModel::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lily_2eproto_getter, &descriptor_table_lily_2eproto_once,
+      file_level_metadata_lily_2eproto[2]);
+}
+// ===================================================================
+
+class S3File::_Internal {
+ public:
+};
+
+S3File::S3File(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:palm.lily.v1.S3File)
+}
+S3File::S3File(const S3File& from) : ::google::protobuf::Message() {
+  S3File* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.bucket_){},
+      decltype(_impl_.name_){},
+      decltype(_impl_.content_type_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.bucket_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.bucket_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_bucket().empty()) {
+    _this->_impl_.bucket_.Set(from._internal_bucket(), _this->GetArenaForAllocation());
+  }
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_name().empty()) {
+    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
+  }
+  _impl_.content_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.content_type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_content_type().empty()) {
+    _this->_impl_.content_type_.Set(from._internal_content_type(), _this->GetArenaForAllocation());
+  }
+
+  // @@protoc_insertion_point(copy_constructor:palm.lily.v1.S3File)
+}
+inline void S3File::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.bucket_){},
+      decltype(_impl_.name_){},
+      decltype(_impl_.content_type_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.bucket_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.bucket_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.content_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.content_type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+S3File::~S3File() {
+  // @@protoc_insertion_point(destructor:palm.lily.v1.S3File)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void S3File::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.bucket_.Destroy();
+  _impl_.name_.Destroy();
+  _impl_.content_type_.Destroy();
+}
+void S3File::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void S3File::Clear() {
+// @@protoc_insertion_point(message_clear_start:palm.lily.v1.S3File)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.bucket_.ClearToEmpty();
+  _impl_.name_.ClearToEmpty();
+  _impl_.content_type_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* S3File::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 3, 0, 50, 2> S3File::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    9, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967036,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_S3File_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string name = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(S3File, _impl_.name_)}},
+    // string bucket = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(S3File, _impl_.bucket_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string bucket = 1;
+    {PROTOBUF_FIELD_OFFSET(S3File, _impl_.bucket_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string name = 2;
+    {PROTOBUF_FIELD_OFFSET(S3File, _impl_.name_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string content_type = 9;
+    {PROTOBUF_FIELD_OFFSET(S3File, _impl_.content_type_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\23\6\4\14\0\0\0\0"
+    "palm.lily.v1.S3File"
+    "bucket"
+    "name"
+    "content_type"
+  }},
+};
+
+::uint8_t* S3File::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:palm.lily.v1.S3File)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string bucket = 1;
+  if (!this->_internal_bucket().empty()) {
+    const std::string& _s = this->_internal_bucket();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.S3File.bucket");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  // string name = 2;
+  if (!this->_internal_name().empty()) {
+    const std::string& _s = this->_internal_name();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.S3File.name");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  // string content_type = 9;
+  if (!this->_internal_content_type().empty()) {
+    const std::string& _s = this->_internal_content_type();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.S3File.content_type");
+    target = stream->WriteStringMaybeAliased(9, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:palm.lily.v1.S3File)
+  return target;
+}
+
+::size_t S3File::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:palm.lily.v1.S3File)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string bucket = 1;
+  if (!this->_internal_bucket().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_bucket());
+  }
+
+  // string name = 2;
+  if (!this->_internal_name().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_name());
+  }
+
+  // string content_type = 9;
+  if (!this->_internal_content_type().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_content_type());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData S3File::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    S3File::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*S3File::GetClassData() const { return &_class_data_; }
+
+
+void S3File::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<S3File*>(&to_msg);
+  auto& from = static_cast<const S3File&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.lily.v1.S3File)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_bucket().empty()) {
+    _this->_internal_set_bucket(from._internal_bucket());
+  }
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
+  }
+  if (!from._internal_content_type().empty()) {
+    _this->_internal_set_content_type(from._internal_content_type());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void S3File::CopyFrom(const S3File& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:palm.lily.v1.S3File)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool S3File::IsInitialized() const {
+  return true;
+}
+
+void S3File::InternalSwap(S3File* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.bucket_, lhs_arena,
+                                       &other->_impl_.bucket_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
+                                       &other->_impl_.name_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.content_type_, lhs_arena,
+                                       &other->_impl_.content_type_, rhs_arena);
+}
+
+::google::protobuf::Metadata S3File::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lily_2eproto_getter, &descriptor_table_lily_2eproto_once,
       file_level_metadata_lily_2eproto[3]);
+}
+// ===================================================================
+
+class S3FileStatusRequest::_Internal {
+ public:
+};
+
+S3FileStatusRequest::S3FileStatusRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:palm.lily.v1.S3FileStatusRequest)
+}
+S3FileStatusRequest::S3FileStatusRequest(const S3FileStatusRequest& from) : ::google::protobuf::Message() {
+  S3FileStatusRequest* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.bucket_){},
+      decltype(_impl_.name_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.bucket_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.bucket_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_bucket().empty()) {
+    _this->_impl_.bucket_.Set(from._internal_bucket(), _this->GetArenaForAllocation());
+  }
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_name().empty()) {
+    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
+  }
+
+  // @@protoc_insertion_point(copy_constructor:palm.lily.v1.S3FileStatusRequest)
+}
+inline void S3FileStatusRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.bucket_){},
+      decltype(_impl_.name_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.bucket_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.bucket_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+S3FileStatusRequest::~S3FileStatusRequest() {
+  // @@protoc_insertion_point(destructor:palm.lily.v1.S3FileStatusRequest)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void S3FileStatusRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.bucket_.Destroy();
+  _impl_.name_.Destroy();
+}
+void S3FileStatusRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void S3FileStatusRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:palm.lily.v1.S3FileStatusRequest)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.bucket_.ClearToEmpty();
+  _impl_.name_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* S3FileStatusRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 51, 2> S3FileStatusRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_S3FileStatusRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string name = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(S3FileStatusRequest, _impl_.name_)}},
+    // string bucket = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(S3FileStatusRequest, _impl_.bucket_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string bucket = 1;
+    {PROTOBUF_FIELD_OFFSET(S3FileStatusRequest, _impl_.bucket_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string name = 2;
+    {PROTOBUF_FIELD_OFFSET(S3FileStatusRequest, _impl_.name_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\40\6\4\0\0\0\0\0"
+    "palm.lily.v1.S3FileStatusRequest"
+    "bucket"
+    "name"
+  }},
+};
+
+::uint8_t* S3FileStatusRequest::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:palm.lily.v1.S3FileStatusRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string bucket = 1;
+  if (!this->_internal_bucket().empty()) {
+    const std::string& _s = this->_internal_bucket();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.S3FileStatusRequest.bucket");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  // string name = 2;
+  if (!this->_internal_name().empty()) {
+    const std::string& _s = this->_internal_name();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.S3FileStatusRequest.name");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:palm.lily.v1.S3FileStatusRequest)
+  return target;
+}
+
+::size_t S3FileStatusRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:palm.lily.v1.S3FileStatusRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string bucket = 1;
+  if (!this->_internal_bucket().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_bucket());
+  }
+
+  // string name = 2;
+  if (!this->_internal_name().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_name());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData S3FileStatusRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    S3FileStatusRequest::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*S3FileStatusRequest::GetClassData() const { return &_class_data_; }
+
+
+void S3FileStatusRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<S3FileStatusRequest*>(&to_msg);
+  auto& from = static_cast<const S3FileStatusRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.lily.v1.S3FileStatusRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_bucket().empty()) {
+    _this->_internal_set_bucket(from._internal_bucket());
+  }
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void S3FileStatusRequest::CopyFrom(const S3FileStatusRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:palm.lily.v1.S3FileStatusRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool S3FileStatusRequest::IsInitialized() const {
+  return true;
+}
+
+void S3FileStatusRequest::InternalSwap(S3FileStatusRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.bucket_, lhs_arena,
+                                       &other->_impl_.bucket_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
+                                       &other->_impl_.name_, rhs_arena);
+}
+
+::google::protobuf::Metadata S3FileStatusRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lily_2eproto_getter, &descriptor_table_lily_2eproto_once,
+      file_level_metadata_lily_2eproto[4]);
+}
+// ===================================================================
+
+class S3FileStatusResponse::_Internal {
+ public:
+};
+
+S3FileStatusResponse::S3FileStatusResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:palm.lily.v1.S3FileStatusResponse)
+}
+S3FileStatusResponse::S3FileStatusResponse(const S3FileStatusResponse& from)
+    : ::google::protobuf::Message(), _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:palm.lily.v1.S3FileStatusResponse)
+}
+inline void S3FileStatusResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.status_){0},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+}
+S3FileStatusResponse::~S3FileStatusResponse() {
+  // @@protoc_insertion_point(destructor:palm.lily.v1.S3FileStatusResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void S3FileStatusResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+}
+void S3FileStatusResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void S3FileStatusResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:palm.lily.v1.S3FileStatusResponse)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.status_ = 0;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* S3FileStatusResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> S3FileStatusResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_S3FileStatusResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // .palm.lily.v1.S3FileStatusResponse.Status status = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(S3FileStatusResponse, _impl_.status_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(S3FileStatusResponse, _impl_.status_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .palm.lily.v1.S3FileStatusResponse.Status status = 1;
+    {PROTOBUF_FIELD_OFFSET(S3FileStatusResponse, _impl_.status_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+::uint8_t* S3FileStatusResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:palm.lily.v1.S3FileStatusResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // .palm.lily.v1.S3FileStatusResponse.Status status = 1;
+  if (this->_internal_status() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+        1, this->_internal_status(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:palm.lily.v1.S3FileStatusResponse)
+  return target;
+}
+
+::size_t S3FileStatusResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:palm.lily.v1.S3FileStatusResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .palm.lily.v1.S3FileStatusResponse.Status status = 1;
+  if (this->_internal_status() != 0) {
+    total_size += 1 +
+                  ::_pbi::WireFormatLite::EnumSize(this->_internal_status());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData S3FileStatusResponse::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    S3FileStatusResponse::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*S3FileStatusResponse::GetClassData() const { return &_class_data_; }
+
+
+void S3FileStatusResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<S3FileStatusResponse*>(&to_msg);
+  auto& from = static_cast<const S3FileStatusResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.lily.v1.S3FileStatusResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_status() != 0) {
+    _this->_internal_set_status(from._internal_status());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void S3FileStatusResponse::CopyFrom(const S3FileStatusResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:palm.lily.v1.S3FileStatusResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool S3FileStatusResponse::IsInitialized() const {
+  return true;
+}
+
+void S3FileStatusResponse::InternalSwap(S3FileStatusResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.status_, other->_impl_.status_);
+}
+
+::google::protobuf::Metadata S3FileStatusResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lily_2eproto_getter, &descriptor_table_lily_2eproto_once,
+      file_level_metadata_lily_2eproto[5]);
 }
 // ===================================================================
 
@@ -1232,12 +1743,18 @@ void TexToRequest_FilesEntry_DoNotUse::MergeFrom(const TexToRequest_FilesEntry_D
 ::google::protobuf::Metadata TexToRequest_FilesEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lily_2eproto_getter, &descriptor_table_lily_2eproto_once,
-      file_level_metadata_lily_2eproto[4]);
+      file_level_metadata_lily_2eproto[6]);
 }
 // ===================================================================
 
 class TexToRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<TexToRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_._has_bits_);
+  static void set_has_owner(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 TexToRequest::TexToRequest(::google::protobuf::Arena* arena)
@@ -1249,21 +1766,52 @@ TexToRequest::TexToRequest(const TexToRequest& from) : ::google::protobuf::Messa
   TexToRequest* const _this = this;
   (void)_this;
   new (&_impl_) Impl_{
-      /* decltype(_impl_.files_) */ {},
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
       /*decltype(_impl_._cached_size_)*/ {},
+      /* decltype(_impl_.files_) */ {},
+      decltype(_impl_.title_){},
+      decltype(_impl_.owner_){},
+      decltype(_impl_.published_){},
   };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   _this->_impl_.files_.MergeFrom(from._impl_.files_);
+  _impl_.title_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.title_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_title().empty()) {
+    _this->_impl_.title_.Set(from._internal_title(), _this->GetArenaForAllocation());
+  }
+  _impl_.owner_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.owner_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.owner_.Set(from._internal_owner(), _this->GetArenaForAllocation());
+  }
+  _this->_impl_.published_ = from._impl_.published_;
 
   // @@protoc_insertion_point(copy_constructor:palm.lily.v1.TexToRequest)
 }
 inline void TexToRequest::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
-      /* decltype(_impl_.files_) */ {::google::protobuf::internal::ArenaInitialized(), arena},
+      decltype(_impl_._has_bits_){},
       /*decltype(_impl_._cached_size_)*/ {},
+      /* decltype(_impl_.files_) */ {::google::protobuf::internal::ArenaInitialized(), arena},
+      decltype(_impl_.title_){},
+      decltype(_impl_.owner_){},
+      decltype(_impl_.published_){false},
   };
+  _impl_.title_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.title_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.owner_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.owner_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 TexToRequest::~TexToRequest() {
   // @@protoc_insertion_point(destructor:palm.lily.v1.TexToRequest)
@@ -1273,6 +1821,8 @@ TexToRequest::~TexToRequest() {
 inline void TexToRequest::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.files_.~MapField();
+  _impl_.title_.Destroy();
+  _impl_.owner_.Destroy();
 }
 void TexToRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
@@ -1285,6 +1835,13 @@ PROTOBUF_NOINLINE void TexToRequest::Clear() {
   (void) cached_has_bits;
 
   _impl_.files_.Clear();
+  _impl_.title_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    _impl_.owner_.ClearNonDefaultToEmpty();
+  }
+  _impl_.published_ = false;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -1296,33 +1853,49 @@ const char* TexToRequest::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 1, 39, 2> TexToRequest::_table_ = {
+const ::_pbi::TcParseTable<1, 4, 1, 49, 2> TexToRequest::_table_ = {
   {
-    0,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_._has_bits_),
     0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
+    9, 8,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
+    4294966908,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
+    4,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     &_TexToRequest_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    {::_pbi::TcParser::MiniParse, {}},
+    // optional string owner = 8;
+    {::_pbi::TcParser::FastUS1,
+     {66, 0, 0, PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.owner_)}},
+    // string title = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.title_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // map<string, bytes> files = 1;
-    {PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.files_), 0, 0,
+    // string title = 1;
+    {PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.title_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // map<string, bytes> files = 2;
+    {PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.files_), -1, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+    // optional string owner = 8;
+    {PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.owner_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bool published = 9;
+    {PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.published_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
   }}, {{
     {::_pbi::TcParser::GetMapAuxInfo<decltype(TexToRequest()._impl_.files_)>(1, 0, 0)},
   }}, {{
-    "\31\5\0\0\0\0\0\0"
+    "\31\5\5\5\0\0\0\0"
     "palm.lily.v1.TexToRequest"
+    "title"
     "files"
+    "owner"
   }},
 };
 
@@ -1333,7 +1906,15 @@ const ::_pbi::TcParseTable<0, 1, 1, 39, 2> TexToRequest::_table_ = {
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
-  // map<string, bytes> files = 1;
+  // string title = 1;
+  if (!this->_internal_title().empty()) {
+    const std::string& _s = this->_internal_title();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.TexToRequest.title");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  // map<string, bytes> files = 2;
   if (!_internal_files().empty()) {
     using MapType = ::google::protobuf::Map<std::string, std::string>;
     using WireHelper = TexToRequest_FilesEntry_DoNotUse::Funcs;
@@ -1342,7 +1923,7 @@ const ::_pbi::TcParseTable<0, 1, 1, 39, 2> TexToRequest::_table_ = {
     if (stream->IsSerializationDeterministic() && field.size() > 1) {
       for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
         target = WireHelper::InternalSerialize(
-            1, entry.first, entry.second, target, stream);
+            2, entry.first, entry.second, target, stream);
         ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             entry.first.data(), static_cast<int>(entry.first.length()),
  ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.TexToRequest.files");
@@ -1350,12 +1931,28 @@ const ::_pbi::TcParseTable<0, 1, 1, 39, 2> TexToRequest::_table_ = {
     } else {
       for (const auto& entry : field) {
         target = WireHelper::InternalSerialize(
-            1, entry.first, entry.second, target, stream);
+            2, entry.first, entry.second, target, stream);
         ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             entry.first.data(), static_cast<int>(entry.first.length()),
  ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.TexToRequest.files");
       }
     }
+  }
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // optional string owner = 8;
+  if (cached_has_bits & 0x00000001u) {
+    const std::string& _s = this->_internal_owner();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.TexToRequest.owner");
+    target = stream->WriteStringMaybeAliased(8, _s, target);
+  }
+
+  // bool published = 9;
+  if (this->_internal_published() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(
+        9, this->_internal_published(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1375,11 +1972,29 @@ const ::_pbi::TcParseTable<0, 1, 1, 39, 2> TexToRequest::_table_ = {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // map<string, bytes> files = 1;
+  // map<string, bytes> files = 2;
   total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_files_size());
   for (const auto& entry : _internal_files()) {
     total_size += TexToRequest_FilesEntry_DoNotUse::Funcs::ByteSizeLong(entry.first, entry.second);
   }
+  // string title = 1;
+  if (!this->_internal_title().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_title());
+  }
+
+  // optional string owner = 8;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_owner());
+  }
+
+  // bool published = 9;
+  if (this->_internal_published() != 0) {
+    total_size += 2;
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -1399,6 +2014,15 @@ void TexToRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google
   (void) cached_has_bits;
 
   _this->_impl_.files_.MergeFrom(from._impl_.files_);
+  if (!from._internal_title().empty()) {
+    _this->_internal_set_title(from._internal_title());
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_set_owner(from._internal_owner());
+  }
+  if (from._internal_published() != 0) {
+    _this->_internal_set_published(from._internal_published());
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1415,14 +2039,22 @@ PROTOBUF_NOINLINE bool TexToRequest::IsInitialized() const {
 
 void TexToRequest::InternalSwap(TexToRequest* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.files_.InternalSwap(&other->_impl_.files_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, lhs_arena,
+                                       &other->_impl_.title_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.owner_, lhs_arena,
+                                       &other->_impl_.owner_, rhs_arena);
+        swap(_impl_.published_, other->_impl_.published_);
 }
 
 ::google::protobuf::Metadata TexToRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lily_2eproto_getter, &descriptor_table_lily_2eproto_once,
-      file_level_metadata_lily_2eproto[5]);
+      file_level_metadata_lily_2eproto[7]);
 }
 // ===================================================================
 
@@ -1461,7 +2093,7 @@ const ::google::protobuf::Message::ClassData*EpubBuildRequest::GetClassData() co
 ::google::protobuf::Metadata EpubBuildRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lily_2eproto_getter, &descriptor_table_lily_2eproto_once,
-      file_level_metadata_lily_2eproto[6]);
+      file_level_metadata_lily_2eproto[8]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1

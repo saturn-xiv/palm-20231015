@@ -2,32 +2,6 @@ import * as jspb from 'google-protobuf'
 
 
 
-export class File extends jspb.Message {
-  getBucket(): string;
-  setBucket(value: string): File;
-
-  getName(): string;
-  setName(value: string): File;
-
-  getContentType(): string;
-  setContentType(value: string): File;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): File.AsObject;
-  static toObject(includeInstance: boolean, msg: File): File.AsObject;
-  static serializeBinaryToWriter(message: File, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): File;
-  static deserializeBinaryFromReader(message: File, reader: jspb.BinaryReader): File;
-}
-
-export namespace File {
-  export type AsObject = {
-    bucket: string,
-    name: string,
-    contentType: string,
-  }
-}
-
 export class ExcelModel extends jspb.Message {
   getSheetsList(): Array<ExcelModel.Sheet>;
   setSheetsList(value: Array<ExcelModel.Sheet>): ExcelModel;
@@ -100,9 +74,92 @@ export namespace ExcelModel {
 
 }
 
+export class S3File extends jspb.Message {
+  getBucket(): string;
+  setBucket(value: string): S3File;
+
+  getName(): string;
+  setName(value: string): S3File;
+
+  getContentType(): string;
+  setContentType(value: string): S3File;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): S3File.AsObject;
+  static toObject(includeInstance: boolean, msg: S3File): S3File.AsObject;
+  static serializeBinaryToWriter(message: S3File, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): S3File;
+  static deserializeBinaryFromReader(message: S3File, reader: jspb.BinaryReader): S3File;
+}
+
+export namespace S3File {
+  export type AsObject = {
+    bucket: string,
+    name: string,
+    contentType: string,
+  }
+}
+
+export class S3FileStatusRequest extends jspb.Message {
+  getBucket(): string;
+  setBucket(value: string): S3FileStatusRequest;
+
+  getName(): string;
+  setName(value: string): S3FileStatusRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): S3FileStatusRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: S3FileStatusRequest): S3FileStatusRequest.AsObject;
+  static serializeBinaryToWriter(message: S3FileStatusRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): S3FileStatusRequest;
+  static deserializeBinaryFromReader(message: S3FileStatusRequest, reader: jspb.BinaryReader): S3FileStatusRequest;
+}
+
+export namespace S3FileStatusRequest {
+  export type AsObject = {
+    bucket: string,
+    name: string,
+  }
+}
+
+export class S3FileStatusResponse extends jspb.Message {
+  getStatus(): S3FileStatusResponse.Status;
+  setStatus(value: S3FileStatusResponse.Status): S3FileStatusResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): S3FileStatusResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: S3FileStatusResponse): S3FileStatusResponse.AsObject;
+  static serializeBinaryToWriter(message: S3FileStatusResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): S3FileStatusResponse;
+  static deserializeBinaryFromReader(message: S3FileStatusResponse, reader: jspb.BinaryReader): S3FileStatusResponse;
+}
+
+export namespace S3FileStatusResponse {
+  export type AsObject = {
+    status: S3FileStatusResponse.Status,
+  }
+
+  export enum Status { 
+    PENDING = 0,
+    SUCCESSED = 1,
+    FAILED = 99,
+  }
+}
+
 export class TexToRequest extends jspb.Message {
+  getTitle(): string;
+  setTitle(value: string): TexToRequest;
+
   getFilesMap(): jspb.Map<string, Uint8Array | string>;
   clearFilesMap(): TexToRequest;
+
+  getOwner(): string;
+  setOwner(value: string): TexToRequest;
+  hasOwner(): boolean;
+  clearOwner(): TexToRequest;
+
+  getPublished(): boolean;
+  setPublished(value: boolean): TexToRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TexToRequest.AsObject;
@@ -114,7 +171,15 @@ export class TexToRequest extends jspb.Message {
 
 export namespace TexToRequest {
   export type AsObject = {
+    title: string,
     filesMap: Array<[string, Uint8Array | string]>,
+    owner?: string,
+    published: boolean,
+  }
+
+  export enum OwnerCase { 
+    _OWNER_NOT_SET = 0,
+    OWNER = 8,
   }
 }
 
