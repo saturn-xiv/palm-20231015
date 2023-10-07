@@ -73,6 +73,7 @@ impl Config {
         if res.status() == reqwest::StatusCode::CREATED {
             return Ok(res.json().await?);
         }
-        Err(Box::new(HttpError(StatusCode::BAD_REQUEST, None)))
+        let body = res.text().await?;
+        Err(Box::new(HttpError(StatusCode::BAD_REQUEST, Some(body))))
     }
 }
