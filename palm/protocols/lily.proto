@@ -3,6 +3,8 @@ option java_multiple_files = true;
 option java_package = "com.github.saturn_xiv.palm.plugins.lily.v1";
 package palm.lily.v1;
 
+import "google/protobuf/duration.proto";
+
 // ----------------------------------------------------------------------------
 
 service Excel {
@@ -25,7 +27,7 @@ message ExcelModel {
 // ----------------------------------------------------------------------------
 
 service S3 {
-  rpc FileStatus(S3FileStatusRequest) returns (S3FileStatusResponse) {}
+  rpc GetFile(S3GetFileRequest) returns (S3GetFileResponse) {}
 }
 
 message S3File {
@@ -35,17 +37,13 @@ message S3File {
   string content_type = 9;
 }
 
-message S3FileStatusRequest {
+message S3GetFileRequest {
   string bucket = 1;
   string name = 2;
+  google.protobuf.Duration ttl = 9;
 }
-message S3FileStatusResponse {
-  enum Status {
-    PENDING = 0;
-    SUCCESSED = 1;
-    FAILED = 99;
-  }
-  Status status = 1;
+message S3GetFileResponse {
+  string url = 1;
 }
 // ----------------------------------------------------------------------------
 

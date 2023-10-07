@@ -2,10 +2,9 @@ import logging
 import tempfile
 import os.path
 import subprocess
-import uuid
+
 
 from io import BytesIO
-from datetime import datetime
 
 
 import msgpack
@@ -26,7 +25,7 @@ class Service(lily_pb2_grpc.TexServicer):
         response = lily_pb2.S3File()
         response.content_type = 'application/pdf'
         response.name = MinioClient.random_filename('.pdf')
-        response.bucket = MinioClient.current_bucket(request.published)
+        response.bucket = self.s3.current_bucket(request.published)
 
         task = msgpack.packb(
             [request.SerializeToString(), response.SerializeToString()], use_bin_type=True)

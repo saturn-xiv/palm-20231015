@@ -127,7 +127,7 @@ Excel::Service::~Service() {
 
 
 static const char* S3_method_names[] = {
-  "/palm.lily.v1.S3/FileStatus",
+  "/palm.lily.v1.S3/GetFile",
 };
 
 std::unique_ptr< S3::Stub> S3::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -137,28 +137,28 @@ std::unique_ptr< S3::Stub> S3::NewStub(const std::shared_ptr< ::grpc::ChannelInt
 }
 
 S3::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_FileStatus_(S3_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  : channel_(channel), rpcmethod_GetFile_(S3_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::Status S3::Stub::FileStatus(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest& request, ::palm::lily::v1::S3FileStatusResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::palm::lily::v1::S3FileStatusRequest, ::palm::lily::v1::S3FileStatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_FileStatus_, context, request, response);
+::grpc::Status S3::Stub::GetFile(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest& request, ::palm::lily::v1::S3GetFileResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::lily::v1::S3GetFileRequest, ::palm::lily::v1::S3GetFileResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetFile_, context, request, response);
 }
 
-void S3::Stub::async::FileStatus(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest* request, ::palm::lily::v1::S3FileStatusResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::palm::lily::v1::S3FileStatusRequest, ::palm::lily::v1::S3FileStatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_FileStatus_, context, request, response, std::move(f));
+void S3::Stub::async::GetFile(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest* request, ::palm::lily::v1::S3GetFileResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::lily::v1::S3GetFileRequest, ::palm::lily::v1::S3GetFileResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetFile_, context, request, response, std::move(f));
 }
 
-void S3::Stub::async::FileStatus(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest* request, ::palm::lily::v1::S3FileStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_FileStatus_, context, request, response, reactor);
+void S3::Stub::async::GetFile(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest* request, ::palm::lily::v1::S3GetFileResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetFile_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::palm::lily::v1::S3FileStatusResponse>* S3::Stub::PrepareAsyncFileStatusRaw(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::lily::v1::S3FileStatusResponse, ::palm::lily::v1::S3FileStatusRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_FileStatus_, context, request);
+::grpc::ClientAsyncResponseReader< ::palm::lily::v1::S3GetFileResponse>* S3::Stub::PrepareAsyncGetFileRaw(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::lily::v1::S3GetFileResponse, ::palm::lily::v1::S3GetFileRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetFile_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::palm::lily::v1::S3FileStatusResponse>* S3::Stub::AsyncFileStatusRaw(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::palm::lily::v1::S3GetFileResponse>* S3::Stub::AsyncGetFileRaw(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncFileStatusRaw(context, request, cq);
+    this->PrepareAsyncGetFileRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -167,19 +167,19 @@ S3::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       S3_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< S3::Service, ::palm::lily::v1::S3FileStatusRequest, ::palm::lily::v1::S3FileStatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< S3::Service, ::palm::lily::v1::S3GetFileRequest, ::palm::lily::v1::S3GetFileResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](S3::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::palm::lily::v1::S3FileStatusRequest* req,
-             ::palm::lily::v1::S3FileStatusResponse* resp) {
-               return service->FileStatus(ctx, req, resp);
+             const ::palm::lily::v1::S3GetFileRequest* req,
+             ::palm::lily::v1::S3GetFileResponse* resp) {
+               return service->GetFile(ctx, req, resp);
              }, this)));
 }
 
 S3::Service::~Service() {
 }
 
-::grpc::Status S3::Service::FileStatus(::grpc::ServerContext* context, const ::palm::lily::v1::S3FileStatusRequest* request, ::palm::lily::v1::S3FileStatusResponse* response) {
+::grpc::Status S3::Service::GetFile(::grpc::ServerContext* context, const ::palm::lily::v1::S3GetFileRequest* request, ::palm::lily::v1::S3GetFileResponse* response) {
   (void) context;
   (void) request;
   (void) response;

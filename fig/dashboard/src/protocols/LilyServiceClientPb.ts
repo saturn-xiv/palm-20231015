@@ -146,47 +146,47 @@ export class S3Client {
     this.options_ = options;
   }
 
-  methodDescriptorFileStatus = new grpcWeb.MethodDescriptor(
-    '/palm.lily.v1.S3/FileStatus',
+  methodDescriptorGetFile = new grpcWeb.MethodDescriptor(
+    '/palm.lily.v1.S3/GetFile',
     grpcWeb.MethodType.UNARY,
-    lily_pb.S3FileStatusRequest,
-    lily_pb.S3FileStatusResponse,
-    (request: lily_pb.S3FileStatusRequest) => {
+    lily_pb.S3GetFileRequest,
+    lily_pb.S3GetFileResponse,
+    (request: lily_pb.S3GetFileRequest) => {
       return request.serializeBinary();
     },
-    lily_pb.S3FileStatusResponse.deserializeBinary
+    lily_pb.S3GetFileResponse.deserializeBinary
   );
 
-  fileStatus(
-    request: lily_pb.S3FileStatusRequest,
-    metadata: grpcWeb.Metadata | null): Promise<lily_pb.S3FileStatusResponse>;
+  getFile(
+    request: lily_pb.S3GetFileRequest,
+    metadata: grpcWeb.Metadata | null): Promise<lily_pb.S3GetFileResponse>;
 
-  fileStatus(
-    request: lily_pb.S3FileStatusRequest,
+  getFile(
+    request: lily_pb.S3GetFileRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: lily_pb.S3FileStatusResponse) => void): grpcWeb.ClientReadableStream<lily_pb.S3FileStatusResponse>;
+               response: lily_pb.S3GetFileResponse) => void): grpcWeb.ClientReadableStream<lily_pb.S3GetFileResponse>;
 
-  fileStatus(
-    request: lily_pb.S3FileStatusRequest,
+  getFile(
+    request: lily_pb.S3GetFileRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: lily_pb.S3FileStatusResponse) => void) {
+               response: lily_pb.S3GetFileResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/palm.lily.v1.S3/FileStatus',
+          '/palm.lily.v1.S3/GetFile',
         request,
         metadata || {},
-        this.methodDescriptorFileStatus,
+        this.methodDescriptorGetFile,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/palm.lily.v1.S3/FileStatus',
+      '/palm.lily.v1.S3/GetFile',
     request,
     metadata || {},
-    this.methodDescriptorFileStatus);
+    this.methodDescriptorGetFile);
   }
 
 }

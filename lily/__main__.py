@@ -4,7 +4,7 @@ import sys
 import tomllib
 
 
-from palm import VERSION, RpcServer, RedisClient, MinioClient, RabbitMqClient
+from palm import VERSION, RpcServer, RedisClient, MinioClient, RabbitMqClient, is_stopped
 from palm.tex import TEX2PDF_QUEUE, create_tex2pdf_queue_callback
 
 NAME = 'lily'
@@ -33,6 +33,11 @@ if __name__ == '__main__':
     logging.basicConfig(level=(logging.DEBUG if args.debug else logging.INFO))
     if args.debug:
         logging.debug('run on debug mode with %s', args)
+
+    if is_stopped():
+        logging.error('.stop file existed, quit...')
+        sys.exit(1)
+
     logging.info('load configuration from %s', args.config.name)
 
     config = tomllib.load(args.config)
@@ -46,7 +51,7 @@ if __name__ == '__main__':
         else:
             logging.error('unimplation queue %s', args.worker)
             sys.exit(1)
-        sys.exit(0)
+        sys.exit()
     rpc_server = RpcServer(
         config['rpc'], minio_client, redis_client, rabbitmq_client)
     rpc_server.start()

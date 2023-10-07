@@ -35,8 +35,8 @@
 #include "google/protobuf/map.h"  // IWYU pragma: export
 #include "google/protobuf/map_entry.h"
 #include "google/protobuf/map_field_inl.h"
-#include "google/protobuf/generated_enum_reflection.h"
 #include "google/protobuf/unknown_field_set.h"
+#include "google/protobuf/duration.pb.h"
 // @@protoc_insertion_point(includes)
 
 // Must be included last.
@@ -76,12 +76,12 @@ extern ExcelModel_Sheet_CellDefaultTypeInternal _ExcelModel_Sheet_Cell_default_i
 class S3File;
 struct S3FileDefaultTypeInternal;
 extern S3FileDefaultTypeInternal _S3File_default_instance_;
-class S3FileStatusRequest;
-struct S3FileStatusRequestDefaultTypeInternal;
-extern S3FileStatusRequestDefaultTypeInternal _S3FileStatusRequest_default_instance_;
-class S3FileStatusResponse;
-struct S3FileStatusResponseDefaultTypeInternal;
-extern S3FileStatusResponseDefaultTypeInternal _S3FileStatusResponse_default_instance_;
+class S3GetFileRequest;
+struct S3GetFileRequestDefaultTypeInternal;
+extern S3GetFileRequestDefaultTypeInternal _S3GetFileRequest_default_instance_;
+class S3GetFileResponse;
+struct S3GetFileResponseDefaultTypeInternal;
+extern S3GetFileResponseDefaultTypeInternal _S3GetFileResponse_default_instance_;
 class TexToRequest;
 struct TexToRequestDefaultTypeInternal;
 extern TexToRequestDefaultTypeInternal _TexToRequest_default_instance_;
@@ -99,33 +99,6 @@ namespace protobuf {
 namespace palm {
 namespace lily {
 namespace v1 {
-enum S3FileStatusResponse_Status : int {
-  S3FileStatusResponse_Status_PENDING = 0,
-  S3FileStatusResponse_Status_SUCCESSED = 1,
-  S3FileStatusResponse_Status_FAILED = 99,
-  S3FileStatusResponse_Status_S3FileStatusResponse_Status_INT_MIN_SENTINEL_DO_NOT_USE_ =
-      std::numeric_limits<::int32_t>::min(),
-  S3FileStatusResponse_Status_S3FileStatusResponse_Status_INT_MAX_SENTINEL_DO_NOT_USE_ =
-      std::numeric_limits<::int32_t>::max(),
-};
-
-bool S3FileStatusResponse_Status_IsValid(int value);
-constexpr S3FileStatusResponse_Status S3FileStatusResponse_Status_Status_MIN = static_cast<S3FileStatusResponse_Status>(0);
-constexpr S3FileStatusResponse_Status S3FileStatusResponse_Status_Status_MAX = static_cast<S3FileStatusResponse_Status>(99);
-constexpr int S3FileStatusResponse_Status_Status_ARRAYSIZE = 99 + 1;
-const ::google::protobuf::EnumDescriptor*
-S3FileStatusResponse_Status_descriptor();
-template <typename T>
-const std::string& S3FileStatusResponse_Status_Name(T value) {
-  static_assert(std::is_same<T, S3FileStatusResponse_Status>::value ||
-                    std::is_integral<T>::value,
-                "Incorrect type passed to Status_Name().");
-  return ::google::protobuf::internal::NameOfEnum(S3FileStatusResponse_Status_descriptor(), value);
-}
-inline bool S3FileStatusResponse_Status_Parse(absl::string_view name, S3FileStatusResponse_Status* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<S3FileStatusResponse_Status>(
-      S3FileStatusResponse_Status_descriptor(), name, value);
-}
 
 // ===================================================================
 
@@ -874,25 +847,25 @@ class S3File final :
   friend struct ::TableStruct_lily_2eproto;
 };// -------------------------------------------------------------------
 
-class S3FileStatusRequest final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.lily.v1.S3FileStatusRequest) */ {
+class S3GetFileRequest final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.lily.v1.S3GetFileRequest) */ {
  public:
-  inline S3FileStatusRequest() : S3FileStatusRequest(nullptr) {}
-  ~S3FileStatusRequest() override;
+  inline S3GetFileRequest() : S3GetFileRequest(nullptr) {}
+  ~S3GetFileRequest() override;
   template<typename = void>
-  explicit PROTOBUF_CONSTEXPR S3FileStatusRequest(::google::protobuf::internal::ConstantInitialized);
+  explicit PROTOBUF_CONSTEXPR S3GetFileRequest(::google::protobuf::internal::ConstantInitialized);
 
-  S3FileStatusRequest(const S3FileStatusRequest& from);
-  S3FileStatusRequest(S3FileStatusRequest&& from) noexcept
-    : S3FileStatusRequest() {
+  S3GetFileRequest(const S3GetFileRequest& from);
+  S3GetFileRequest(S3GetFileRequest&& from) noexcept
+    : S3GetFileRequest() {
     *this = ::std::move(from);
   }
 
-  inline S3FileStatusRequest& operator=(const S3FileStatusRequest& from) {
+  inline S3GetFileRequest& operator=(const S3GetFileRequest& from) {
     CopyFrom(from);
     return *this;
   }
-  inline S3FileStatusRequest& operator=(S3FileStatusRequest&& from) noexcept {
+  inline S3GetFileRequest& operator=(S3GetFileRequest&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -922,20 +895,20 @@ class S3FileStatusRequest final :
   static const ::google::protobuf::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const S3FileStatusRequest& default_instance() {
+  static const S3GetFileRequest& default_instance() {
     return *internal_default_instance();
   }
-  static inline const S3FileStatusRequest* internal_default_instance() {
-    return reinterpret_cast<const S3FileStatusRequest*>(
-               &_S3FileStatusRequest_default_instance_);
+  static inline const S3GetFileRequest* internal_default_instance() {
+    return reinterpret_cast<const S3GetFileRequest*>(
+               &_S3GetFileRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     4;
 
-  friend void swap(S3FileStatusRequest& a, S3FileStatusRequest& b) {
+  friend void swap(S3GetFileRequest& a, S3GetFileRequest& b) {
     a.Swap(&b);
   }
-  inline void Swap(S3FileStatusRequest* other) {
+  inline void Swap(S3GetFileRequest* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -948,7 +921,7 @@ class S3FileStatusRequest final :
       ::google::protobuf::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(S3FileStatusRequest* other) {
+  void UnsafeArenaSwap(S3GetFileRequest* other) {
     if (other == this) return;
     ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -956,14 +929,14 @@ class S3FileStatusRequest final :
 
   // implements Message ----------------------------------------------
 
-  S3FileStatusRequest* New(::google::protobuf::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<S3FileStatusRequest>(arena);
+  S3GetFileRequest* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S3GetFileRequest>(arena);
   }
   using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const S3FileStatusRequest& from);
+  void CopyFrom(const S3GetFileRequest& from);
   using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom( const S3FileStatusRequest& from) {
-    S3FileStatusRequest::MergeImpl(*this, from);
+  void MergeFrom( const S3GetFileRequest& from) {
+    S3GetFileRequest::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
@@ -981,15 +954,15 @@ class S3FileStatusRequest final :
   void SharedCtor(::google::protobuf::Arena* arena);
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(S3FileStatusRequest* other);
+  void InternalSwap(S3GetFileRequest* other);
 
   private:
   friend class ::google::protobuf::internal::AnyMetadata;
   static ::absl::string_view FullMessageName() {
-    return "palm.lily.v1.S3FileStatusRequest";
+    return "palm.lily.v1.S3GetFileRequest";
   }
   protected:
-  explicit S3FileStatusRequest(::google::protobuf::Arena* arena);
+  explicit S3GetFileRequest(::google::protobuf::Arena* arena);
   public:
 
   static const ClassData _class_data_;
@@ -1004,6 +977,7 @@ class S3FileStatusRequest final :
   enum : int {
     kBucketFieldNumber = 1,
     kNameFieldNumber = 2,
+    kTtlFieldNumber = 9,
   };
   // string bucket = 1;
   void clear_bucket() ;
@@ -1037,44 +1011,61 @@ class S3FileStatusRequest final :
   std::string* _internal_mutable_name();
 
   public:
-  // @@protoc_insertion_point(class_scope:palm.lily.v1.S3FileStatusRequest)
+  // .google.protobuf.Duration ttl = 9;
+  bool has_ttl() const;
+  void clear_ttl() ;
+  const ::google::protobuf::Duration& ttl() const;
+  PROTOBUF_NODISCARD ::google::protobuf::Duration* release_ttl();
+  ::google::protobuf::Duration* mutable_ttl();
+  void set_allocated_ttl(::google::protobuf::Duration* value);
+  void unsafe_arena_set_allocated_ttl(::google::protobuf::Duration* value);
+  ::google::protobuf::Duration* unsafe_arena_release_ttl();
+
+  private:
+  const ::google::protobuf::Duration& _internal_ttl() const;
+  ::google::protobuf::Duration* _internal_mutable_ttl();
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.lily.v1.S3GetFileRequest)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<1, 2, 0, 51, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<1, 3, 1, 48, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr bucket_;
     ::google::protobuf::internal::ArenaStringPtr name_;
-    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::Duration* ttl_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_lily_2eproto;
 };// -------------------------------------------------------------------
 
-class S3FileStatusResponse final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.lily.v1.S3FileStatusResponse) */ {
+class S3GetFileResponse final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.lily.v1.S3GetFileResponse) */ {
  public:
-  inline S3FileStatusResponse() : S3FileStatusResponse(nullptr) {}
-  ~S3FileStatusResponse() override;
+  inline S3GetFileResponse() : S3GetFileResponse(nullptr) {}
+  ~S3GetFileResponse() override;
   template<typename = void>
-  explicit PROTOBUF_CONSTEXPR S3FileStatusResponse(::google::protobuf::internal::ConstantInitialized);
+  explicit PROTOBUF_CONSTEXPR S3GetFileResponse(::google::protobuf::internal::ConstantInitialized);
 
-  S3FileStatusResponse(const S3FileStatusResponse& from);
-  S3FileStatusResponse(S3FileStatusResponse&& from) noexcept
-    : S3FileStatusResponse() {
+  S3GetFileResponse(const S3GetFileResponse& from);
+  S3GetFileResponse(S3GetFileResponse&& from) noexcept
+    : S3GetFileResponse() {
     *this = ::std::move(from);
   }
 
-  inline S3FileStatusResponse& operator=(const S3FileStatusResponse& from) {
+  inline S3GetFileResponse& operator=(const S3GetFileResponse& from) {
     CopyFrom(from);
     return *this;
   }
-  inline S3FileStatusResponse& operator=(S3FileStatusResponse&& from) noexcept {
+  inline S3GetFileResponse& operator=(S3GetFileResponse&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -1104,20 +1095,20 @@ class S3FileStatusResponse final :
   static const ::google::protobuf::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const S3FileStatusResponse& default_instance() {
+  static const S3GetFileResponse& default_instance() {
     return *internal_default_instance();
   }
-  static inline const S3FileStatusResponse* internal_default_instance() {
-    return reinterpret_cast<const S3FileStatusResponse*>(
-               &_S3FileStatusResponse_default_instance_);
+  static inline const S3GetFileResponse* internal_default_instance() {
+    return reinterpret_cast<const S3GetFileResponse*>(
+               &_S3GetFileResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     5;
 
-  friend void swap(S3FileStatusResponse& a, S3FileStatusResponse& b) {
+  friend void swap(S3GetFileResponse& a, S3GetFileResponse& b) {
     a.Swap(&b);
   }
-  inline void Swap(S3FileStatusResponse* other) {
+  inline void Swap(S3GetFileResponse* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -1130,7 +1121,7 @@ class S3FileStatusResponse final :
       ::google::protobuf::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(S3FileStatusResponse* other) {
+  void UnsafeArenaSwap(S3GetFileResponse* other) {
     if (other == this) return;
     ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -1138,14 +1129,14 @@ class S3FileStatusResponse final :
 
   // implements Message ----------------------------------------------
 
-  S3FileStatusResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<S3FileStatusResponse>(arena);
+  S3GetFileResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S3GetFileResponse>(arena);
   }
   using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const S3FileStatusResponse& from);
+  void CopyFrom(const S3GetFileResponse& from);
   using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom( const S3FileStatusResponse& from) {
-    S3FileStatusResponse::MergeImpl(*this, from);
+  void MergeFrom( const S3GetFileResponse& from) {
+    S3GetFileResponse::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
@@ -1163,15 +1154,15 @@ class S3FileStatusResponse final :
   void SharedCtor(::google::protobuf::Arena* arena);
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(S3FileStatusResponse* other);
+  void InternalSwap(S3GetFileResponse* other);
 
   private:
   friend class ::google::protobuf::internal::AnyMetadata;
   static ::absl::string_view FullMessageName() {
-    return "palm.lily.v1.S3FileStatusResponse";
+    return "palm.lily.v1.S3GetFileResponse";
   }
   protected:
-  explicit S3FileStatusResponse(::google::protobuf::Arena* arena);
+  explicit S3GetFileResponse(::google::protobuf::Arena* arena);
   public:
 
   static const ClassData _class_data_;
@@ -1181,53 +1172,38 @@ class S3FileStatusResponse final :
 
   // nested types ----------------------------------------------------
 
-  using Status = S3FileStatusResponse_Status;
-  static constexpr Status PENDING = S3FileStatusResponse_Status_PENDING;
-  static constexpr Status SUCCESSED = S3FileStatusResponse_Status_SUCCESSED;
-  static constexpr Status FAILED = S3FileStatusResponse_Status_FAILED;
-  static inline bool Status_IsValid(int value) {
-    return S3FileStatusResponse_Status_IsValid(value);
-  }
-  static constexpr Status Status_MIN = S3FileStatusResponse_Status_Status_MIN;
-  static constexpr Status Status_MAX = S3FileStatusResponse_Status_Status_MAX;
-  static constexpr int Status_ARRAYSIZE = S3FileStatusResponse_Status_Status_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor* Status_descriptor() {
-    return S3FileStatusResponse_Status_descriptor();
-  }
-  template <typename T>
-  static inline const std::string& Status_Name(T value) {
-    return S3FileStatusResponse_Status_Name(value);
-  }
-  static inline bool Status_Parse(absl::string_view name, Status* value) {
-    return S3FileStatusResponse_Status_Parse(name, value);
-  }
-
   // accessors -------------------------------------------------------
 
   enum : int {
-    kStatusFieldNumber = 1,
+    kUrlFieldNumber = 1,
   };
-  // .palm.lily.v1.S3FileStatusResponse.Status status = 1;
-  void clear_status() ;
-  ::palm::lily::v1::S3FileStatusResponse_Status status() const;
-  void set_status(::palm::lily::v1::S3FileStatusResponse_Status value);
+  // string url = 1;
+  void clear_url() ;
+  const std::string& url() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_url(Arg_&& arg, Args_... args);
+  std::string* mutable_url();
+  PROTOBUF_NODISCARD std::string* release_url();
+  void set_allocated_url(std::string* ptr);
 
   private:
-  ::palm::lily::v1::S3FileStatusResponse_Status _internal_status() const;
-  void _internal_set_status(::palm::lily::v1::S3FileStatusResponse_Status value);
+  const std::string& _internal_url() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_url(
+      const std::string& value);
+  std::string* _internal_mutable_url();
 
   public:
-  // @@protoc_insertion_point(class_scope:palm.lily.v1.S3FileStatusResponse)
+  // @@protoc_insertion_point(class_scope:palm.lily.v1.S3GetFileResponse)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<0, 1, 0, 0, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<0, 1, 0, 42, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    int status_;
+    ::google::protobuf::internal::ArenaStringPtr url_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -2024,49 +2000,49 @@ inline void S3File::set_allocated_content_type(std::string* value) {
 
 // -------------------------------------------------------------------
 
-// S3FileStatusRequest
+// S3GetFileRequest
 
 // string bucket = 1;
-inline void S3FileStatusRequest::clear_bucket() {
+inline void S3GetFileRequest::clear_bucket() {
   _impl_.bucket_.ClearToEmpty();
 }
-inline const std::string& S3FileStatusRequest::bucket() const {
-  // @@protoc_insertion_point(field_get:palm.lily.v1.S3FileStatusRequest.bucket)
+inline const std::string& S3GetFileRequest::bucket() const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.S3GetFileRequest.bucket)
   return _internal_bucket();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void S3FileStatusRequest::set_bucket(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void S3GetFileRequest::set_bucket(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.bucket_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.lily.v1.S3FileStatusRequest.bucket)
+  // @@protoc_insertion_point(field_set:palm.lily.v1.S3GetFileRequest.bucket)
 }
-inline std::string* S3FileStatusRequest::mutable_bucket() {
+inline std::string* S3GetFileRequest::mutable_bucket() {
   std::string* _s = _internal_mutable_bucket();
-  // @@protoc_insertion_point(field_mutable:palm.lily.v1.S3FileStatusRequest.bucket)
+  // @@protoc_insertion_point(field_mutable:palm.lily.v1.S3GetFileRequest.bucket)
   return _s;
 }
-inline const std::string& S3FileStatusRequest::_internal_bucket() const {
+inline const std::string& S3GetFileRequest::_internal_bucket() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.bucket_.Get();
 }
-inline void S3FileStatusRequest::_internal_set_bucket(const std::string& value) {
+inline void S3GetFileRequest::_internal_set_bucket(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.bucket_.Set(value, GetArenaForAllocation());
 }
-inline std::string* S3FileStatusRequest::_internal_mutable_bucket() {
+inline std::string* S3GetFileRequest::_internal_mutable_bucket() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   return _impl_.bucket_.Mutable( GetArenaForAllocation());
 }
-inline std::string* S3FileStatusRequest::release_bucket() {
+inline std::string* S3GetFileRequest::release_bucket() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.lily.v1.S3FileStatusRequest.bucket)
+  // @@protoc_insertion_point(field_release:palm.lily.v1.S3GetFileRequest.bucket)
   return _impl_.bucket_.Release();
 }
-inline void S3FileStatusRequest::set_allocated_bucket(std::string* value) {
+inline void S3GetFileRequest::set_allocated_bucket(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.bucket_.SetAllocated(value, GetArenaForAllocation());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -2074,50 +2050,50 @@ inline void S3FileStatusRequest::set_allocated_bucket(std::string* value) {
           _impl_.bucket_.Set("", GetArenaForAllocation());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.S3FileStatusRequest.bucket)
+  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.S3GetFileRequest.bucket)
 }
 
 // string name = 2;
-inline void S3FileStatusRequest::clear_name() {
+inline void S3GetFileRequest::clear_name() {
   _impl_.name_.ClearToEmpty();
 }
-inline const std::string& S3FileStatusRequest::name() const {
-  // @@protoc_insertion_point(field_get:palm.lily.v1.S3FileStatusRequest.name)
+inline const std::string& S3GetFileRequest::name() const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.S3GetFileRequest.name)
   return _internal_name();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void S3FileStatusRequest::set_name(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void S3GetFileRequest::set_name(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.name_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:palm.lily.v1.S3FileStatusRequest.name)
+  // @@protoc_insertion_point(field_set:palm.lily.v1.S3GetFileRequest.name)
 }
-inline std::string* S3FileStatusRequest::mutable_name() {
+inline std::string* S3GetFileRequest::mutable_name() {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:palm.lily.v1.S3FileStatusRequest.name)
+  // @@protoc_insertion_point(field_mutable:palm.lily.v1.S3GetFileRequest.name)
   return _s;
 }
-inline const std::string& S3FileStatusRequest::_internal_name() const {
+inline const std::string& S3GetFileRequest::_internal_name() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.name_.Get();
 }
-inline void S3FileStatusRequest::_internal_set_name(const std::string& value) {
+inline void S3GetFileRequest::_internal_set_name(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.name_.Set(value, GetArenaForAllocation());
 }
-inline std::string* S3FileStatusRequest::_internal_mutable_name() {
+inline std::string* S3GetFileRequest::_internal_mutable_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   return _impl_.name_.Mutable( GetArenaForAllocation());
 }
-inline std::string* S3FileStatusRequest::release_name() {
+inline std::string* S3GetFileRequest::release_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.lily.v1.S3FileStatusRequest.name)
+  // @@protoc_insertion_point(field_release:palm.lily.v1.S3GetFileRequest.name)
   return _impl_.name_.Release();
 }
-inline void S3FileStatusRequest::set_allocated_name(std::string* value) {
+inline void S3GetFileRequest::set_allocated_name(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.name_.SetAllocated(value, GetArenaForAllocation());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -2125,33 +2101,154 @@ inline void S3FileStatusRequest::set_allocated_name(std::string* value) {
           _impl_.name_.Set("", GetArenaForAllocation());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.S3FileStatusRequest.name)
+  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.S3GetFileRequest.name)
+}
+
+// .google.protobuf.Duration ttl = 9;
+inline bool S3GetFileRequest::has_ttl() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.ttl_ != nullptr);
+  return value;
+}
+inline const ::google::protobuf::Duration& S3GetFileRequest::_internal_ttl() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::google::protobuf::Duration* p = _impl_.ttl_;
+  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Duration&>(::google::protobuf::_Duration_default_instance_);
+}
+inline const ::google::protobuf::Duration& S3GetFileRequest::ttl() const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.S3GetFileRequest.ttl)
+  return _internal_ttl();
+}
+inline void S3GetFileRequest::unsafe_arena_set_allocated_ttl(::google::protobuf::Duration* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.ttl_);
+  }
+  _impl_.ttl_ = reinterpret_cast<::google::protobuf::Duration*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.lily.v1.S3GetFileRequest.ttl)
+}
+inline ::google::protobuf::Duration* S3GetFileRequest::release_ttl() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::google::protobuf::Duration* released = _impl_.ttl_;
+  _impl_.ttl_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArenaForAllocation() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::google::protobuf::Duration* S3GetFileRequest::unsafe_arena_release_ttl() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.lily.v1.S3GetFileRequest.ttl)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::google::protobuf::Duration* temp = _impl_.ttl_;
+  _impl_.ttl_ = nullptr;
+  return temp;
+}
+inline ::google::protobuf::Duration* S3GetFileRequest::_internal_mutable_ttl() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.ttl_ == nullptr) {
+    auto* p = CreateMaybeMessage<::google::protobuf::Duration>(GetArenaForAllocation());
+    _impl_.ttl_ = reinterpret_cast<::google::protobuf::Duration*>(p);
+  }
+  return _impl_.ttl_;
+}
+inline ::google::protobuf::Duration* S3GetFileRequest::mutable_ttl() {
+  ::google::protobuf::Duration* _msg = _internal_mutable_ttl();
+  // @@protoc_insertion_point(field_mutable:palm.lily.v1.S3GetFileRequest.ttl)
+  return _msg;
+}
+inline void S3GetFileRequest::set_allocated_ttl(::google::protobuf::Duration* value) {
+  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.ttl_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena =
+        ::google::protobuf::Arena::InternalGetOwningArena(reinterpret_cast<::google::protobuf::MessageLite*>(value));
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.ttl_ = reinterpret_cast<::google::protobuf::Duration*>(value);
+  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.S3GetFileRequest.ttl)
 }
 
 // -------------------------------------------------------------------
 
-// S3FileStatusResponse
+// S3GetFileResponse
 
-// .palm.lily.v1.S3FileStatusResponse.Status status = 1;
-inline void S3FileStatusResponse::clear_status() {
-  _impl_.status_ = 0;
+// string url = 1;
+inline void S3GetFileResponse::clear_url() {
+  _impl_.url_.ClearToEmpty();
 }
-inline ::palm::lily::v1::S3FileStatusResponse_Status S3FileStatusResponse::status() const {
-  // @@protoc_insertion_point(field_get:palm.lily.v1.S3FileStatusResponse.status)
-  return _internal_status();
+inline const std::string& S3GetFileResponse::url() const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.S3GetFileResponse.url)
+  return _internal_url();
 }
-inline void S3FileStatusResponse::set_status(::palm::lily::v1::S3FileStatusResponse_Status value) {
-  _internal_set_status(value);
-  // @@protoc_insertion_point(field_set:palm.lily.v1.S3FileStatusResponse.status)
-}
-inline ::palm::lily::v1::S3FileStatusResponse_Status S3FileStatusResponse::_internal_status() const {
-  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return static_cast<::palm::lily::v1::S3FileStatusResponse_Status>(_impl_.status_);
-}
-inline void S3FileStatusResponse::_internal_set_status(::palm::lily::v1::S3FileStatusResponse_Status value) {
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void S3GetFileResponse::set_url(Arg_&& arg,
+                                                     Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.status_ = value;
+  _impl_.url_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.lily.v1.S3GetFileResponse.url)
+}
+inline std::string* S3GetFileResponse::mutable_url() {
+  std::string* _s = _internal_mutable_url();
+  // @@protoc_insertion_point(field_mutable:palm.lily.v1.S3GetFileResponse.url)
+  return _s;
+}
+inline const std::string& S3GetFileResponse::_internal_url() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.url_.Get();
+}
+inline void S3GetFileResponse::_internal_set_url(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.url_.Set(value, GetArenaForAllocation());
+}
+inline std::string* S3GetFileResponse::_internal_mutable_url() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.url_.Mutable( GetArenaForAllocation());
+}
+inline std::string* S3GetFileResponse::release_url() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.lily.v1.S3GetFileResponse.url)
+  return _impl_.url_.Release();
+}
+inline void S3GetFileResponse::set_allocated_url(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.url_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.url_.IsDefault()) {
+          _impl_.url_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.S3GetFileResponse.url)
 }
 
 // -------------------------------------------------------------------
@@ -2342,19 +2439,6 @@ inline void TexToRequest::_internal_set_published(bool value) {
 }  // namespace lily
 }  // namespace palm
 
-
-namespace google {
-namespace protobuf {
-
-template <>
-struct is_proto_enum<::palm::lily::v1::S3FileStatusResponse_Status> : std::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor<::palm::lily::v1::S3FileStatusResponse_Status>() {
-  return ::palm::lily::v1::S3FileStatusResponse_Status_descriptor();
-}
-
-}  // namespace protobuf
-}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 

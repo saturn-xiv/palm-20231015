@@ -403,41 +403,41 @@ class S3 final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    virtual ::grpc::Status FileStatus(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest& request, ::palm::lily::v1::S3FileStatusResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::lily::v1::S3FileStatusResponse>> AsyncFileStatus(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::lily::v1::S3FileStatusResponse>>(AsyncFileStatusRaw(context, request, cq));
+    virtual ::grpc::Status GetFile(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest& request, ::palm::lily::v1::S3GetFileResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::lily::v1::S3GetFileResponse>> AsyncGetFile(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::lily::v1::S3GetFileResponse>>(AsyncGetFileRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::lily::v1::S3FileStatusResponse>> PrepareAsyncFileStatus(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::lily::v1::S3FileStatusResponse>>(PrepareAsyncFileStatusRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::lily::v1::S3GetFileResponse>> PrepareAsyncGetFile(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::lily::v1::S3GetFileResponse>>(PrepareAsyncGetFileRaw(context, request, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
-      virtual void FileStatus(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest* request, ::palm::lily::v1::S3FileStatusResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void FileStatus(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest* request, ::palm::lily::v1::S3FileStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetFile(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest* request, ::palm::lily::v1::S3GetFileResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetFile(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest* request, ::palm::lily::v1::S3GetFileResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::lily::v1::S3FileStatusResponse>* AsyncFileStatusRaw(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::lily::v1::S3FileStatusResponse>* PrepareAsyncFileStatusRaw(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::lily::v1::S3GetFileResponse>* AsyncGetFileRaw(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::lily::v1::S3GetFileResponse>* PrepareAsyncGetFileRaw(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status FileStatus(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest& request, ::palm::lily::v1::S3FileStatusResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::lily::v1::S3FileStatusResponse>> AsyncFileStatus(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::lily::v1::S3FileStatusResponse>>(AsyncFileStatusRaw(context, request, cq));
+    ::grpc::Status GetFile(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest& request, ::palm::lily::v1::S3GetFileResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::lily::v1::S3GetFileResponse>> AsyncGetFile(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::lily::v1::S3GetFileResponse>>(AsyncGetFileRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::lily::v1::S3FileStatusResponse>> PrepareAsyncFileStatus(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::lily::v1::S3FileStatusResponse>>(PrepareAsyncFileStatusRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::lily::v1::S3GetFileResponse>> PrepareAsyncGetFile(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::lily::v1::S3GetFileResponse>>(PrepareAsyncGetFileRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
-      void FileStatus(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest* request, ::palm::lily::v1::S3FileStatusResponse* response, std::function<void(::grpc::Status)>) override;
-      void FileStatus(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest* request, ::palm::lily::v1::S3FileStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetFile(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest* request, ::palm::lily::v1::S3GetFileResponse* response, std::function<void(::grpc::Status)>) override;
+      void GetFile(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest* request, ::palm::lily::v1::S3GetFileResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -449,9 +449,9 @@ class S3 final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::palm::lily::v1::S3FileStatusResponse>* AsyncFileStatusRaw(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::palm::lily::v1::S3FileStatusResponse>* PrepareAsyncFileStatusRaw(::grpc::ClientContext* context, const ::palm::lily::v1::S3FileStatusRequest& request, ::grpc::CompletionQueue* cq) override;
-    const ::grpc::internal::RpcMethod rpcmethod_FileStatus_;
+    ::grpc::ClientAsyncResponseReader< ::palm::lily::v1::S3GetFileResponse>* AsyncGetFileRaw(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::lily::v1::S3GetFileResponse>* PrepareAsyncGetFileRaw(::grpc::ClientContext* context, const ::palm::lily::v1::S3GetFileRequest& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_GetFile_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -459,147 +459,147 @@ class S3 final {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status FileStatus(::grpc::ServerContext* context, const ::palm::lily::v1::S3FileStatusRequest* request, ::palm::lily::v1::S3FileStatusResponse* response);
+    virtual ::grpc::Status GetFile(::grpc::ServerContext* context, const ::palm::lily::v1::S3GetFileRequest* request, ::palm::lily::v1::S3GetFileResponse* response);
   };
   template <class BaseClass>
-  class WithAsyncMethod_FileStatus : public BaseClass {
+  class WithAsyncMethod_GetFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_FileStatus() {
+    WithAsyncMethod_GetFile() {
       ::grpc::Service::MarkMethodAsync(0);
     }
-    ~WithAsyncMethod_FileStatus() override {
+    ~WithAsyncMethod_GetFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status FileStatus(::grpc::ServerContext* /*context*/, const ::palm::lily::v1::S3FileStatusRequest* /*request*/, ::palm::lily::v1::S3FileStatusResponse* /*response*/) override {
+    ::grpc::Status GetFile(::grpc::ServerContext* /*context*/, const ::palm::lily::v1::S3GetFileRequest* /*request*/, ::palm::lily::v1::S3GetFileResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestFileStatus(::grpc::ServerContext* context, ::palm::lily::v1::S3FileStatusRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::lily::v1::S3FileStatusResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestGetFile(::grpc::ServerContext* context, ::palm::lily::v1::S3GetFileRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::lily::v1::S3GetFileResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_FileStatus<Service > AsyncService;
+  typedef WithAsyncMethod_GetFile<Service > AsyncService;
   template <class BaseClass>
-  class WithCallbackMethod_FileStatus : public BaseClass {
+  class WithCallbackMethod_GetFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_FileStatus() {
+    WithCallbackMethod_GetFile() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::palm::lily::v1::S3FileStatusRequest, ::palm::lily::v1::S3FileStatusResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::palm::lily::v1::S3GetFileRequest, ::palm::lily::v1::S3GetFileResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::palm::lily::v1::S3FileStatusRequest* request, ::palm::lily::v1::S3FileStatusResponse* response) { return this->FileStatus(context, request, response); }));}
-    void SetMessageAllocatorFor_FileStatus(
-        ::grpc::MessageAllocator< ::palm::lily::v1::S3FileStatusRequest, ::palm::lily::v1::S3FileStatusResponse>* allocator) {
+                   ::grpc::CallbackServerContext* context, const ::palm::lily::v1::S3GetFileRequest* request, ::palm::lily::v1::S3GetFileResponse* response) { return this->GetFile(context, request, response); }));}
+    void SetMessageAllocatorFor_GetFile(
+        ::grpc::MessageAllocator< ::palm::lily::v1::S3GetFileRequest, ::palm::lily::v1::S3GetFileResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::lily::v1::S3FileStatusRequest, ::palm::lily::v1::S3FileStatusResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::lily::v1::S3GetFileRequest, ::palm::lily::v1::S3GetFileResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_FileStatus() override {
+    ~WithCallbackMethod_GetFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status FileStatus(::grpc::ServerContext* /*context*/, const ::palm::lily::v1::S3FileStatusRequest* /*request*/, ::palm::lily::v1::S3FileStatusResponse* /*response*/) override {
+    ::grpc::Status GetFile(::grpc::ServerContext* /*context*/, const ::palm::lily::v1::S3GetFileRequest* /*request*/, ::palm::lily::v1::S3GetFileResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* FileStatus(
-      ::grpc::CallbackServerContext* /*context*/, const ::palm::lily::v1::S3FileStatusRequest* /*request*/, ::palm::lily::v1::S3FileStatusResponse* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerUnaryReactor* GetFile(
+      ::grpc::CallbackServerContext* /*context*/, const ::palm::lily::v1::S3GetFileRequest* /*request*/, ::palm::lily::v1::S3GetFileResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_FileStatus<Service > CallbackService;
+  typedef WithCallbackMethod_GetFile<Service > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
-  class WithGenericMethod_FileStatus : public BaseClass {
+  class WithGenericMethod_GetFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_FileStatus() {
+    WithGenericMethod_GetFile() {
       ::grpc::Service::MarkMethodGeneric(0);
     }
-    ~WithGenericMethod_FileStatus() override {
+    ~WithGenericMethod_GetFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status FileStatus(::grpc::ServerContext* /*context*/, const ::palm::lily::v1::S3FileStatusRequest* /*request*/, ::palm::lily::v1::S3FileStatusResponse* /*response*/) override {
+    ::grpc::Status GetFile(::grpc::ServerContext* /*context*/, const ::palm::lily::v1::S3GetFileRequest* /*request*/, ::palm::lily::v1::S3GetFileResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithRawMethod_FileStatus : public BaseClass {
+  class WithRawMethod_GetFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_FileStatus() {
+    WithRawMethod_GetFile() {
       ::grpc::Service::MarkMethodRaw(0);
     }
-    ~WithRawMethod_FileStatus() override {
+    ~WithRawMethod_GetFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status FileStatus(::grpc::ServerContext* /*context*/, const ::palm::lily::v1::S3FileStatusRequest* /*request*/, ::palm::lily::v1::S3FileStatusResponse* /*response*/) override {
+    ::grpc::Status GetFile(::grpc::ServerContext* /*context*/, const ::palm::lily::v1::S3GetFileRequest* /*request*/, ::palm::lily::v1::S3GetFileResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestFileStatus(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestGetFile(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_FileStatus : public BaseClass {
+  class WithRawCallbackMethod_GetFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_FileStatus() {
+    WithRawCallbackMethod_GetFile() {
       ::grpc::Service::MarkMethodRawCallback(0,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->FileStatus(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetFile(context, request, response); }));
     }
-    ~WithRawCallbackMethod_FileStatus() override {
+    ~WithRawCallbackMethod_GetFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status FileStatus(::grpc::ServerContext* /*context*/, const ::palm::lily::v1::S3FileStatusRequest* /*request*/, ::palm::lily::v1::S3FileStatusResponse* /*response*/) override {
+    ::grpc::Status GetFile(::grpc::ServerContext* /*context*/, const ::palm::lily::v1::S3GetFileRequest* /*request*/, ::palm::lily::v1::S3GetFileResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* FileStatus(
+    virtual ::grpc::ServerUnaryReactor* GetFile(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_FileStatus : public BaseClass {
+  class WithStreamedUnaryMethod_GetFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_FileStatus() {
+    WithStreamedUnaryMethod_GetFile() {
       ::grpc::Service::MarkMethodStreamed(0,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::palm::lily::v1::S3FileStatusRequest, ::palm::lily::v1::S3FileStatusResponse>(
+          ::palm::lily::v1::S3GetFileRequest, ::palm::lily::v1::S3GetFileResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::palm::lily::v1::S3FileStatusRequest, ::palm::lily::v1::S3FileStatusResponse>* streamer) {
-                       return this->StreamedFileStatus(context,
+                     ::palm::lily::v1::S3GetFileRequest, ::palm::lily::v1::S3GetFileResponse>* streamer) {
+                       return this->StreamedGetFile(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_FileStatus() override {
+    ~WithStreamedUnaryMethod_GetFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status FileStatus(::grpc::ServerContext* /*context*/, const ::palm::lily::v1::S3FileStatusRequest* /*request*/, ::palm::lily::v1::S3FileStatusResponse* /*response*/) override {
+    ::grpc::Status GetFile(::grpc::ServerContext* /*context*/, const ::palm::lily::v1::S3GetFileRequest* /*request*/, ::palm::lily::v1::S3GetFileResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedFileStatus(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::lily::v1::S3FileStatusRequest,::palm::lily::v1::S3FileStatusResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedGetFile(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::lily::v1::S3GetFileRequest,::palm::lily::v1::S3GetFileResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_FileStatus<Service > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_GetFile<Service > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_FileStatus<Service > StreamedService;
+  typedef WithStreamedUnaryMethod_GetFile<Service > StreamedService;
 };
 
 class Tex final {

@@ -2,6 +2,8 @@ import logging
 import threading
 import json
 import uuid
+import os.path
+
 
 from time import sleep
 from concurrent import futures
@@ -19,10 +21,14 @@ from minio.versioningconfig import VersioningConfig as MinioVersioningConfig
 from minio.commonconfig import ENABLED as MinioEnabled, Tags as MinioTags
 
 
-from . import lily_pb2_grpc, excel, tex
+from . import lily_pb2_grpc, excel, tex, s3
 
 
 VERSION = '2023.10.6'
+
+
+def is_stopped():
+    return os.path.isfile('.stop')
 
 
 class RedisClient:
@@ -46,6 +52,7 @@ class RedisClient:
 class MinioClient:
     def __init__(self, config):
         logging.debug("connect to minio %s", config['endpoint'])
+        self.namespace = config['namespace']
         self.connection = Minio(
             config['endpoint'],
             access_key=config['access-key'],
@@ -97,11 +104,51 @@ class MinioClient:
     def list_buckets(self):
         return list(map(lambda x: x.name, self.connection.list_buckets()))
 
-    def current_bucket(published):
-        return datetime.now().strftime("%Y%m") + ('O' if published else 'P')
+    def current_bucket(self, published):
+        return '-' .join([self.namespace, datetime.now().strftime("%Y%m"), ('O' if published else 'P')])
 
     def random_filename(ext=''):
         return str(uuid.uuid4())+ext
+
+
+# https://pika.readthedocs.io/en/stable/modules/parameters.html
+class RabbitMqClient:
+    def __init__(self, config):
+        credentials = pika.PlainCredentials(config['user'], config['password'])
+        self.parameters = pika.ConnectionParameters(
+            config['host'],
+            config['port'],
+            config['virtual-host'],
+            credentials)
+
+    def produce(self, queue, id, message):
+        logging.info("publish message(%s) to (%s) with %d bytes",
+                     id, queue, len(message))
+        with pika.BlockingConnection(self.parameters) as con:
+            ch = con.channel()
+            ch.queue_declare(queue=queue, durable=True)
+            ch.basic_publish(exchange='', routing_key=queue,
+                             body=message, properties=pika.BasicProperties(message_id=id, delivery_mode=pika.spec.PERSISTENT_DELIVERY_MODE))
+
+    def start_consuming(self, queue, callback):
+        logging.info("start consumer for %s", queue)
+
+        def handler(ch, method, properties, body):
+            callback(ch, method, properties, body)
+            if is_stopped():
+                logging.warn("stop consumer")
+                ch.stop_consuming()
+
+        with pika.BlockingConnection(self.parameters) as con:
+            ch = con.channel()
+            ch.queue_declare(queue=queue, durable=True)
+            ch.basic_qos(prefetch_count=1)
+            ch.basic_consume(queue=queue, on_message_callback=handler)
+            try:
+                ch.start_consuming()
+            except KeyboardInterrupt:
+                logging.warn("quit consumer...")
+                ch.stop_consuming()
 
 
 class RpcServer:
@@ -118,6 +165,7 @@ class RpcServer:
         lily_pb2_grpc.add_ExcelServicer_to_server(excel.Service(), server)
         lily_pb2_grpc.add_TexServicer_to_server(
             tex.Service(self.s3, self.cache, self.queue), server)
+        lily_pb2_grpc.add_S3Servicer_to_server(s3.Service(self.s3), server)
         RpcServer._rpc_setup_health_thread(server)
         server.add_insecure_port(self.addr)
         server.start()
@@ -149,34 +197,6 @@ class RpcServer:
 
 # -----------------------------------------------------------------------------
 
-
-# https://pika.readthedocs.io/en/stable/modules/parameters.html
-class RabbitMqClient:
-    def __init__(self, config):
-        credentials = pika.PlainCredentials(config['user'], config['password'])
-        self.parameters = pika.ConnectionParameters(
-            config['host'],
-            config['port'],
-            config['virtual-host'],
-            credentials)
-
-    def produce(self, queue, id, message):
-        logging.info("publish message(%s) to (%s) with %d bytes",
-                     id, queue, len(message))
-        with pika.BlockingConnection(self.parameters) as con:
-            ch = con.channel()
-            ch.queue_declare(queue=queue, durable=True)
-            ch.basic_publish(exchange='', routing_key=queue,
-                             body=message, properties=pika.BasicProperties(message_id=id, delivery_mode=pika.spec.PERSISTENT_DELIVERY_MODE))
-
-    def start_consuming(self, queue, callback):
-        logging.info("start consumer for %s", queue)
-        with pika.BlockingConnection(self.parameters) as con:
-            ch = con.channel()
-            ch.queue_declare(queue=queue, durable=True)
-            ch.basic_qos(prefetch_count=1)
-            ch.basic_consume(queue=queue, on_message_callback=callback)
-            ch.start_consuming()
 
 # https://www.postgresql.org/docs/current/libpq-connect.html
 

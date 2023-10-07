@@ -108,8 +108,10 @@ struct S3FileDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S3FileDefaultTypeInternal _S3File_default_instance_;
         template <typename>
-PROTOBUF_CONSTEXPR S3FileStatusRequest::S3FileStatusRequest(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR S3GetFileRequest::S3GetFileRequest(::_pbi::ConstantInitialized)
     : _impl_{
+      /*decltype(_impl_._has_bits_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
       /*decltype(_impl_.bucket_)*/ {
           &::_pbi::fixed_address_empty_string,
           ::_pbi::ConstantInitialized{},
@@ -118,34 +120,37 @@ PROTOBUF_CONSTEXPR S3FileStatusRequest::S3FileStatusRequest(::_pbi::ConstantInit
           &::_pbi::fixed_address_empty_string,
           ::_pbi::ConstantInitialized{},
       },
-      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_.ttl_)*/ nullptr,
     } {}
-struct S3FileStatusRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR S3FileStatusRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~S3FileStatusRequestDefaultTypeInternal() {}
+struct S3GetFileRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S3GetFileRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S3GetFileRequestDefaultTypeInternal() {}
   union {
-    S3FileStatusRequest _instance;
+    S3GetFileRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S3FileStatusRequestDefaultTypeInternal _S3FileStatusRequest_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S3GetFileRequestDefaultTypeInternal _S3GetFileRequest_default_instance_;
         template <typename>
-PROTOBUF_CONSTEXPR S3FileStatusResponse::S3FileStatusResponse(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR S3GetFileResponse::S3GetFileResponse(::_pbi::ConstantInitialized)
     : _impl_{
-      /*decltype(_impl_.status_)*/ 0,
+      /*decltype(_impl_.url_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
       /*decltype(_impl_._cached_size_)*/ {},
     } {}
-struct S3FileStatusResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR S3FileStatusResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~S3FileStatusResponseDefaultTypeInternal() {}
+struct S3GetFileResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S3GetFileResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S3GetFileResponseDefaultTypeInternal() {}
   union {
-    S3FileStatusResponse _instance;
+    S3GetFileResponse _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S3FileStatusResponseDefaultTypeInternal _S3FileStatusResponse_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S3GetFileResponseDefaultTypeInternal _S3GetFileResponse_default_instance_;
       template <typename>
 PROTOBUF_CONSTEXPR TexToRequest_FilesEntry_DoNotUse::TexToRequest_FilesEntry_DoNotUse(::_pbi::ConstantInitialized) {}
 struct TexToRequest_FilesEntry_DoNotUseDefaultTypeInternal {
@@ -200,7 +205,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace lily
 }  // namespace palm
 static ::_pb::Metadata file_level_metadata_lily_2eproto[9];
-static const ::_pb::EnumDescriptor* file_level_enum_descriptors_lily_2eproto[1];
+static constexpr const ::_pb::EnumDescriptor**
+    file_level_enum_descriptors_lily_2eproto = nullptr;
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_lily_2eproto = nullptr;
 const ::uint32_t TableStruct_lily_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
@@ -246,25 +252,29 @@ const ::uint32_t TableStruct_lily_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3File, _impl_.bucket_),
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3File, _impl_.name_),
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3File, _impl_.content_type_),
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3FileStatusRequest, _internal_metadata_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3GetFileRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3GetFileRequest, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
     ~0u,  // no _weak_field_map_
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3FileStatusRequest, _impl_.bucket_),
-    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3FileStatusRequest, _impl_.name_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3GetFileRequest, _impl_.bucket_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3GetFileRequest, _impl_.name_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3GetFileRequest, _impl_.ttl_),
+    ~0u,
+    ~0u,
+    0,
     ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3FileStatusResponse, _internal_metadata_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3GetFileResponse, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
     ~0u,  // no _weak_field_map_
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3FileStatusResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::S3GetFileResponse, _impl_.url_),
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse, _has_bits_),
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -309,11 +319,11 @@ static const ::_pbi::MigrationSchema
         {11, -1, -1, sizeof(::palm::lily::v1::ExcelModel_Sheet)},
         {21, -1, -1, sizeof(::palm::lily::v1::ExcelModel)},
         {30, -1, -1, sizeof(::palm::lily::v1::S3File)},
-        {41, -1, -1, sizeof(::palm::lily::v1::S3FileStatusRequest)},
-        {51, -1, -1, sizeof(::palm::lily::v1::S3FileStatusResponse)},
-        {60, 70, -1, sizeof(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse)},
-        {72, 84, -1, sizeof(::palm::lily::v1::TexToRequest)},
-        {88, -1, -1, sizeof(::palm::lily::v1::EpubBuildRequest)},
+        {41, 52, -1, sizeof(::palm::lily::v1::S3GetFileRequest)},
+        {55, -1, -1, sizeof(::palm::lily::v1::S3GetFileResponse)},
+        {64, 74, -1, sizeof(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse)},
+        {76, 88, -1, sizeof(::palm::lily::v1::TexToRequest)},
+        {92, -1, -1, sizeof(::palm::lily::v1::EpubBuildRequest)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -321,35 +331,34 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::palm::lily::v1::_ExcelModel_Sheet_default_instance_._instance,
     &::palm::lily::v1::_ExcelModel_default_instance_._instance,
     &::palm::lily::v1::_S3File_default_instance_._instance,
-    &::palm::lily::v1::_S3FileStatusRequest_default_instance_._instance,
-    &::palm::lily::v1::_S3FileStatusResponse_default_instance_._instance,
+    &::palm::lily::v1::_S3GetFileRequest_default_instance_._instance,
+    &::palm::lily::v1::_S3GetFileResponse_default_instance_._instance,
     &::palm::lily::v1::_TexToRequest_FilesEntry_DoNotUse_default_instance_._instance,
     &::palm::lily::v1::_TexToRequest_default_instance_._instance,
     &::palm::lily::v1::_EpubBuildRequest_default_instance_._instance,
 };
 const char descriptor_table_protodef_lily_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\nlily.proto\022\014palm.lily.v1\"\266\001\n\nExcelMode"
-    "l\022.\n\006sheets\030\001 \003(\0132\036.palm.lily.v1.ExcelMo"
-    "del.Sheet\032x\n\005Sheet\022\014\n\004name\030\001 \001(\t\0222\n\005cell"
-    "s\030\002 \003(\0132#.palm.lily.v1.ExcelModel.Sheet."
-    "Cell\032-\n\004Cell\022\013\n\003row\030\001 \001(\r\022\013\n\003col\030\002 \001(\r\022\013"
-    "\n\003val\030\003 \001(\t\"<\n\006S3File\022\016\n\006bucket\030\001 \001(\t\022\014\n"
-    "\004name\030\002 \001(\t\022\024\n\014content_type\030\t \001(\t\"3\n\023S3F"
-    "ileStatusRequest\022\016\n\006bucket\030\001 \001(\t\022\014\n\004name"
-    "\030\002 \001(\t\"\203\001\n\024S3FileStatusResponse\0229\n\006statu"
-    "s\030\001 \001(\0162).palm.lily.v1.S3FileStatusRespo"
-    "nse.Status\"0\n\006Status\022\013\n\007PENDING\020\000\022\r\n\tSUC"
-    "CESSED\020\001\022\n\n\006FAILED\020c\"\262\001\n\014TexToRequest\022\r\n"
-    "\005title\030\001 \001(\t\0224\n\005files\030\002 \003(\0132%.palm.lily."
-    "v1.TexToRequest.FilesEntry\022\022\n\005owner\030\010 \001("
-    "\tH\000\210\001\001\022\021\n\tpublished\030\t \001(\010\032,\n\nFilesEntry\022"
-    "\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001B\010\n\006_owne"
-    "r\"\022\n\020EpubBuildRequest2\200\001\n\005Excel\0229\n\005Parse"
-    "\022\024.palm.lily.v1.S3File\032\030.palm.lily.v1.Ex"
-    "celModel\"\000\022<\n\010Generate\022\030.palm.lily.v1.Ex"
-    "celModel\032\024.palm.lily.v1.S3File\"\0002[\n\002S3\022U"
-    "\n\nFileStatus\022!.palm.lily.v1.S3FileStatus"
-    "Request\032\".palm.lily.v1.S3FileStatusRespo"
+    "\n\nlily.proto\022\014palm.lily.v1\032\036google/proto"
+    "buf/duration.proto\"\266\001\n\nExcelModel\022.\n\006she"
+    "ets\030\001 \003(\0132\036.palm.lily.v1.ExcelModel.Shee"
+    "t\032x\n\005Sheet\022\014\n\004name\030\001 \001(\t\0222\n\005cells\030\002 \003(\0132"
+    "#.palm.lily.v1.ExcelModel.Sheet.Cell\032-\n\004"
+    "Cell\022\013\n\003row\030\001 \001(\r\022\013\n\003col\030\002 \001(\r\022\013\n\003val\030\003 "
+    "\001(\t\"<\n\006S3File\022\016\n\006bucket\030\001 \001(\t\022\014\n\004name\030\002 "
+    "\001(\t\022\024\n\014content_type\030\t \001(\t\"X\n\020S3GetFileRe"
+    "quest\022\016\n\006bucket\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022&\n\003t"
+    "tl\030\t \001(\0132\031.google.protobuf.Duration\" \n\021S"
+    "3GetFileResponse\022\013\n\003url\030\001 \001(\t\"\262\001\n\014TexToR"
+    "equest\022\r\n\005title\030\001 \001(\t\0224\n\005files\030\002 \003(\0132%.p"
+    "alm.lily.v1.TexToRequest.FilesEntry\022\022\n\005o"
+    "wner\030\010 \001(\tH\000\210\001\001\022\021\n\tpublished\030\t \001(\010\032,\n\nFi"
+    "lesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001"
+    "B\010\n\006_owner\"\022\n\020EpubBuildRequest2\200\001\n\005Excel"
+    "\0229\n\005Parse\022\024.palm.lily.v1.S3File\032\030.palm.l"
+    "ily.v1.ExcelModel\"\000\022<\n\010Generate\022\030.palm.l"
+    "ily.v1.ExcelModel\032\024.palm.lily.v1.S3File\""
+    "\0002R\n\002S3\022L\n\007GetFile\022\036.palm.lily.v1.S3GetF"
+    "ileRequest\032\037.palm.lily.v1.S3GetFileRespo"
     "nse\"\0002\200\001\n\003Tex\022;\n\005ToPdf\022\032.palm.lily.v1.Te"
     "xToRequest\032\024.palm.lily.v1.S3File\"\000\022<\n\006To"
     "Word\022\032.palm.lily.v1.TexToRequest\032\024.palm."
@@ -358,16 +367,20 @@ const char descriptor_table_protodef_lily_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
     ".S3File\"\000B.\n*com.github.saturn_xiv.palm."
     "plugins.lily.v1P\001b\006proto3"
 };
+static const ::_pbi::DescriptorTable* const descriptor_table_lily_2eproto_deps[1] =
+    {
+        &::descriptor_table_google_2fprotobuf_2fduration_2eproto,
+};
 static ::absl::once_flag descriptor_table_lily_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_lily_2eproto = {
     false,
     false,
-    1145,
+    1105,
     descriptor_table_protodef_lily_2eproto,
     "lily.proto",
     &descriptor_table_lily_2eproto_once,
-    nullptr,
-    0,
+    descriptor_table_lily_2eproto_deps,
+    1,
     9,
     schemas,
     file_default_instances,
@@ -397,32 +410,6 @@ static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_lily_2eproto(&descriptor_
 namespace palm {
 namespace lily {
 namespace v1 {
-const ::google::protobuf::EnumDescriptor* S3FileStatusResponse_Status_descriptor() {
-  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_lily_2eproto);
-  return file_level_enum_descriptors_lily_2eproto[0];
-}
-bool S3FileStatusResponse_Status_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 99:
-      return true;
-    default:
-      return false;
-  }
-}
-#if (__cplusplus < 201703) && \
-  (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
-
-constexpr S3FileStatusResponse_Status S3FileStatusResponse::PENDING;
-constexpr S3FileStatusResponse_Status S3FileStatusResponse::SUCCESSED;
-constexpr S3FileStatusResponse_Status S3FileStatusResponse::FAILED;
-constexpr S3FileStatusResponse_Status S3FileStatusResponse::Status_MIN;
-constexpr S3FileStatusResponse_Status S3FileStatusResponse::Status_MAX;
-constexpr int S3FileStatusResponse::Status_ARRAYSIZE;
-
-#endif  // (__cplusplus < 201703) &&
-        // (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 // ===================================================================
 
 class ExcelModel_Sheet_Cell::_Internal {
@@ -1336,22 +1323,38 @@ void S3File::InternalSwap(S3File* other) {
 }
 // ===================================================================
 
-class S3FileStatusRequest::_Internal {
+class S3GetFileRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<S3GetFileRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(S3GetFileRequest, _impl_._has_bits_);
+  static const ::google::protobuf::Duration& ttl(const S3GetFileRequest* msg);
+  static void set_has_ttl(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
-S3FileStatusRequest::S3FileStatusRequest(::google::protobuf::Arena* arena)
+const ::google::protobuf::Duration& S3GetFileRequest::_Internal::ttl(const S3GetFileRequest* msg) {
+  return *msg->_impl_.ttl_;
+}
+void S3GetFileRequest::clear_ttl() {
+  if (_impl_.ttl_ != nullptr) _impl_.ttl_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+S3GetFileRequest::S3GetFileRequest(::google::protobuf::Arena* arena)
     : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:palm.lily.v1.S3FileStatusRequest)
+  // @@protoc_insertion_point(arena_constructor:palm.lily.v1.S3GetFileRequest)
 }
-S3FileStatusRequest::S3FileStatusRequest(const S3FileStatusRequest& from) : ::google::protobuf::Message() {
-  S3FileStatusRequest* const _this = this;
+S3GetFileRequest::S3GetFileRequest(const S3GetFileRequest& from) : ::google::protobuf::Message() {
+  S3GetFileRequest* const _this = this;
   (void)_this;
   new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
+      /*decltype(_impl_._cached_size_)*/ {},
       decltype(_impl_.bucket_){},
       decltype(_impl_.name_){},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.ttl_){nullptr},
   };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
@@ -1369,15 +1372,20 @@ S3FileStatusRequest::S3FileStatusRequest(const S3FileStatusRequest& from) : ::go
   if (!from._internal_name().empty()) {
     _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
   }
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.ttl_ = new ::google::protobuf::Duration(*from._impl_.ttl_);
+  }
 
-  // @@protoc_insertion_point(copy_constructor:palm.lily.v1.S3FileStatusRequest)
+  // @@protoc_insertion_point(copy_constructor:palm.lily.v1.S3GetFileRequest)
 }
-inline void S3FileStatusRequest::SharedCtor(::_pb::Arena* arena) {
+inline void S3GetFileRequest::SharedCtor(::_pb::Arena* arena) {
   (void)arena;
   new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){},
+      /*decltype(_impl_._cached_size_)*/ {},
       decltype(_impl_.bucket_){},
       decltype(_impl_.name_){},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.ttl_){nullptr},
   };
   _impl_.bucket_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -1388,32 +1396,39 @@ inline void S3FileStatusRequest::SharedCtor(::_pb::Arena* arena) {
         _impl_.name_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-S3FileStatusRequest::~S3FileStatusRequest() {
-  // @@protoc_insertion_point(destructor:palm.lily.v1.S3FileStatusRequest)
+S3GetFileRequest::~S3GetFileRequest() {
+  // @@protoc_insertion_point(destructor:palm.lily.v1.S3GetFileRequest)
   _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-inline void S3FileStatusRequest::SharedDtor() {
+inline void S3GetFileRequest::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.bucket_.Destroy();
   _impl_.name_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.ttl_;
 }
-void S3FileStatusRequest::SetCachedSize(int size) const {
+void S3GetFileRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void S3FileStatusRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:palm.lily.v1.S3FileStatusRequest)
+PROTOBUF_NOINLINE void S3GetFileRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:palm.lily.v1.S3GetFileRequest)
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.bucket_.ClearToEmpty();
   _impl_.name_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.ttl_ != nullptr);
+    _impl_.ttl_->Clear();
+  }
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* S3FileStatusRequest::_InternalParse(
+const char* S3GetFileRequest::_InternalParse(
     const char* ptr, ::_pbi::ParseContext* ctx) {
   ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
@@ -1421,49 +1436,52 @@ const char* S3FileStatusRequest::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 51, 2> S3FileStatusRequest::_table_ = {
+const ::_pbi::TcParseTable<1, 3, 1, 48, 2> S3GetFileRequest::_table_ = {
   {
-    0,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(S3GetFileRequest, _impl_._has_bits_),
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    9, 8,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967036,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_S3FileStatusRequest_default_instance_._instance,
+    3,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_S3GetFileRequest_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
     // string name = 2;
     {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(S3FileStatusRequest, _impl_.name_)}},
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(S3GetFileRequest, _impl_.name_)}},
     // string bucket = 1;
     {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(S3FileStatusRequest, _impl_.bucket_)}},
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(S3GetFileRequest, _impl_.bucket_)}},
   }}, {{
     65535, 65535
   }}, {{
     // string bucket = 1;
-    {PROTOBUF_FIELD_OFFSET(S3FileStatusRequest, _impl_.bucket_), 0, 0,
+    {PROTOBUF_FIELD_OFFSET(S3GetFileRequest, _impl_.bucket_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string name = 2;
-    {PROTOBUF_FIELD_OFFSET(S3FileStatusRequest, _impl_.name_), 0, 0,
+    {PROTOBUF_FIELD_OFFSET(S3GetFileRequest, _impl_.name_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\40\6\4\0\0\0\0\0"
-    "palm.lily.v1.S3FileStatusRequest"
+    // .google.protobuf.Duration ttl = 9;
+    {PROTOBUF_FIELD_OFFSET(S3GetFileRequest, _impl_.ttl_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::google::protobuf::Duration>()},
+  }}, {{
+    "\35\6\4\0\0\0\0\0"
+    "palm.lily.v1.S3GetFileRequest"
     "bucket"
     "name"
   }},
 };
 
-::uint8_t* S3FileStatusRequest::_InternalSerialize(
+::uint8_t* S3GetFileRequest::_InternalSerialize(
     ::uint8_t* target,
     ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:palm.lily.v1.S3FileStatusRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:palm.lily.v1.S3GetFileRequest)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -1471,7 +1489,7 @@ const ::_pbi::TcParseTable<1, 2, 0, 51, 2> S3FileStatusRequest::_table_ = {
   if (!this->_internal_bucket().empty()) {
     const std::string& _s = this->_internal_bucket();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.S3FileStatusRequest.bucket");
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.S3GetFileRequest.bucket");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
@@ -1479,8 +1497,16 @@ const ::_pbi::TcParseTable<1, 2, 0, 51, 2> S3FileStatusRequest::_table_ = {
   if (!this->_internal_name().empty()) {
     const std::string& _s = this->_internal_name();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.S3FileStatusRequest.name");
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.S3GetFileRequest.name");
     target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // .google.protobuf.Duration ttl = 9;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessage(9, _Internal::ttl(this),
+        _Internal::ttl(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1488,12 +1514,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 51, 2> S3FileStatusRequest::_table_ = {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:palm.lily.v1.S3FileStatusRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:palm.lily.v1.S3GetFileRequest)
   return target;
 }
 
-::size_t S3FileStatusRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:palm.lily.v1.S3FileStatusRequest)
+::size_t S3GetFileRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:palm.lily.v1.S3GetFileRequest)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -1512,20 +1538,28 @@ const ::_pbi::TcParseTable<1, 2, 0, 51, 2> S3FileStatusRequest::_table_ = {
                                     this->_internal_name());
   }
 
+  // .google.protobuf.Duration ttl = 9;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *_impl_.ttl_);
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData S3FileStatusRequest::_class_data_ = {
+const ::google::protobuf::Message::ClassData S3GetFileRequest::_class_data_ = {
     ::google::protobuf::Message::CopyWithSourceCheck,
-    S3FileStatusRequest::MergeImpl
+    S3GetFileRequest::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*S3FileStatusRequest::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData*S3GetFileRequest::GetClassData() const { return &_class_data_; }
 
 
-void S3FileStatusRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
-  auto* const _this = static_cast<S3FileStatusRequest*>(&to_msg);
-  auto& from = static_cast<const S3FileStatusRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.lily.v1.S3FileStatusRequest)
+void S3GetFileRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<S3GetFileRequest*>(&to_msg);
+  auto& from = static_cast<const S3GetFileRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.lily.v1.S3GetFileRequest)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1536,83 +1570,107 @@ void S3FileStatusRequest::MergeImpl(::google::protobuf::Message& to_msg, const :
   if (!from._internal_name().empty()) {
     _this->_internal_set_name(from._internal_name());
   }
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_ttl()->::google::protobuf::Duration::MergeFrom(
+        from._internal_ttl());
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void S3FileStatusRequest::CopyFrom(const S3FileStatusRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:palm.lily.v1.S3FileStatusRequest)
+void S3GetFileRequest::CopyFrom(const S3GetFileRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:palm.lily.v1.S3GetFileRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool S3FileStatusRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool S3GetFileRequest::IsInitialized() const {
   return true;
 }
 
-void S3FileStatusRequest::InternalSwap(S3FileStatusRequest* other) {
+void S3GetFileRequest::InternalSwap(S3GetFileRequest* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.bucket_, lhs_arena,
                                        &other->_impl_.bucket_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
                                        &other->_impl_.name_, rhs_arena);
+  swap(_impl_.ttl_, other->_impl_.ttl_);
 }
 
-::google::protobuf::Metadata S3FileStatusRequest::GetMetadata() const {
+::google::protobuf::Metadata S3GetFileRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lily_2eproto_getter, &descriptor_table_lily_2eproto_once,
       file_level_metadata_lily_2eproto[4]);
 }
 // ===================================================================
 
-class S3FileStatusResponse::_Internal {
+class S3GetFileResponse::_Internal {
  public:
 };
 
-S3FileStatusResponse::S3FileStatusResponse(::google::protobuf::Arena* arena)
+S3GetFileResponse::S3GetFileResponse(::google::protobuf::Arena* arena)
     : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:palm.lily.v1.S3FileStatusResponse)
+  // @@protoc_insertion_point(arena_constructor:palm.lily.v1.S3GetFileResponse)
 }
-S3FileStatusResponse::S3FileStatusResponse(const S3FileStatusResponse& from)
-    : ::google::protobuf::Message(), _impl_(from._impl_) {
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:palm.lily.v1.S3FileStatusResponse)
-}
-inline void S3FileStatusResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
+S3GetFileResponse::S3GetFileResponse(const S3GetFileResponse& from) : ::google::protobuf::Message() {
+  S3GetFileResponse* const _this = this;
+  (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.status_){0},
+      decltype(_impl_.url_){},
       /*decltype(_impl_._cached_size_)*/ {},
   };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.url_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.url_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_url().empty()) {
+    _this->_impl_.url_.Set(from._internal_url(), _this->GetArenaForAllocation());
+  }
+
+  // @@protoc_insertion_point(copy_constructor:palm.lily.v1.S3GetFileResponse)
 }
-S3FileStatusResponse::~S3FileStatusResponse() {
-  // @@protoc_insertion_point(destructor:palm.lily.v1.S3FileStatusResponse)
+inline void S3GetFileResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.url_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.url_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.url_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+S3GetFileResponse::~S3GetFileResponse() {
+  // @@protoc_insertion_point(destructor:palm.lily.v1.S3GetFileResponse)
   _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-inline void S3FileStatusResponse::SharedDtor() {
+inline void S3GetFileResponse::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.url_.Destroy();
 }
-void S3FileStatusResponse::SetCachedSize(int size) const {
+void S3GetFileResponse::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void S3FileStatusResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:palm.lily.v1.S3FileStatusResponse)
+PROTOBUF_NOINLINE void S3GetFileResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:palm.lily.v1.S3GetFileResponse)
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.status_ = 0;
+  _impl_.url_.ClearToEmpty();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* S3FileStatusResponse::_InternalParse(
+const char* S3GetFileResponse::_InternalParse(
     const char* ptr, ::_pbi::ParseContext* ctx) {
   ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
@@ -1620,7 +1678,7 @@ const char* S3FileStatusResponse::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 0, 2> S3FileStatusResponse::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 0, 42, 2> S3GetFileResponse::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
@@ -1631,36 +1689,40 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> S3FileStatusResponse::_table_ = {
     1,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_S3FileStatusResponse_default_instance_._instance,
+    &_S3GetFileResponse_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // .palm.lily.v1.S3FileStatusResponse.Status status = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(S3FileStatusResponse, _impl_.status_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(S3FileStatusResponse, _impl_.status_)}},
+    // string url = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(S3GetFileResponse, _impl_.url_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // .palm.lily.v1.S3FileStatusResponse.Status status = 1;
-    {PROTOBUF_FIELD_OFFSET(S3FileStatusResponse, _impl_.status_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+    // string url = 1;
+    {PROTOBUF_FIELD_OFFSET(S3GetFileResponse, _impl_.url_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
+    "\36\3\0\0\0\0\0\0"
+    "palm.lily.v1.S3GetFileResponse"
+    "url"
   }},
 };
 
-::uint8_t* S3FileStatusResponse::_InternalSerialize(
+::uint8_t* S3GetFileResponse::_InternalSerialize(
     ::uint8_t* target,
     ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:palm.lily.v1.S3FileStatusResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:palm.lily.v1.S3GetFileResponse)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
-  // .palm.lily.v1.S3FileStatusResponse.Status status = 1;
-  if (this->_internal_status() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteEnumToArray(
-        1, this->_internal_status(), target);
+  // string url = 1;
+  if (!this->_internal_url().empty()) {
+    const std::string& _s = this->_internal_url();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.lily.v1.S3GetFileResponse.url");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1668,66 +1730,69 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> S3FileStatusResponse::_table_ = {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:palm.lily.v1.S3FileStatusResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:palm.lily.v1.S3GetFileResponse)
   return target;
 }
 
-::size_t S3FileStatusResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:palm.lily.v1.S3FileStatusResponse)
+::size_t S3GetFileResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:palm.lily.v1.S3GetFileResponse)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .palm.lily.v1.S3FileStatusResponse.Status status = 1;
-  if (this->_internal_status() != 0) {
-    total_size += 1 +
-                  ::_pbi::WireFormatLite::EnumSize(this->_internal_status());
+  // string url = 1;
+  if (!this->_internal_url().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_url());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData S3FileStatusResponse::_class_data_ = {
+const ::google::protobuf::Message::ClassData S3GetFileResponse::_class_data_ = {
     ::google::protobuf::Message::CopyWithSourceCheck,
-    S3FileStatusResponse::MergeImpl
+    S3GetFileResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*S3FileStatusResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData*S3GetFileResponse::GetClassData() const { return &_class_data_; }
 
 
-void S3FileStatusResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
-  auto* const _this = static_cast<S3FileStatusResponse*>(&to_msg);
-  auto& from = static_cast<const S3FileStatusResponse&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:palm.lily.v1.S3FileStatusResponse)
+void S3GetFileResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<S3GetFileResponse*>(&to_msg);
+  auto& from = static_cast<const S3GetFileResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.lily.v1.S3GetFileResponse)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_status() != 0) {
-    _this->_internal_set_status(from._internal_status());
+  if (!from._internal_url().empty()) {
+    _this->_internal_set_url(from._internal_url());
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void S3FileStatusResponse::CopyFrom(const S3FileStatusResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:palm.lily.v1.S3FileStatusResponse)
+void S3GetFileResponse::CopyFrom(const S3GetFileResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:palm.lily.v1.S3GetFileResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool S3FileStatusResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool S3GetFileResponse::IsInitialized() const {
   return true;
 }
 
-void S3FileStatusResponse::InternalSwap(S3FileStatusResponse* other) {
+void S3GetFileResponse::InternalSwap(S3GetFileResponse* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_.status_, other->_impl_.status_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, lhs_arena,
+                                       &other->_impl_.url_, rhs_arena);
 }
 
-::google::protobuf::Metadata S3FileStatusResponse::GetMetadata() const {
+::google::protobuf::Metadata S3GetFileResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lily_2eproto_getter, &descriptor_table_lily_2eproto_once,
       file_level_metadata_lily_2eproto[5]);

@@ -114,17 +114,17 @@ class S3Stub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.FileStatus = channel.unary_unary(
-                '/palm.lily.v1.S3/FileStatus',
-                request_serializer=lily__pb2.S3FileStatusRequest.SerializeToString,
-                response_deserializer=lily__pb2.S3FileStatusResponse.FromString,
+        self.GetFile = channel.unary_unary(
+                '/palm.lily.v1.S3/GetFile',
+                request_serializer=lily__pb2.S3GetFileRequest.SerializeToString,
+                response_deserializer=lily__pb2.S3GetFileResponse.FromString,
                 )
 
 
 class S3Servicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def FileStatus(self, request, context):
+    def GetFile(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -133,10 +133,10 @@ class S3Servicer(object):
 
 def add_S3Servicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'FileStatus': grpc.unary_unary_rpc_method_handler(
-                    servicer.FileStatus,
-                    request_deserializer=lily__pb2.S3FileStatusRequest.FromString,
-                    response_serializer=lily__pb2.S3FileStatusResponse.SerializeToString,
+            'GetFile': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetFile,
+                    request_deserializer=lily__pb2.S3GetFileRequest.FromString,
+                    response_serializer=lily__pb2.S3GetFileResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -149,7 +149,7 @@ class S3(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def FileStatus(request,
+    def GetFile(request,
             target,
             options=(),
             channel_credentials=None,
@@ -159,9 +159,9 @@ class S3(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/palm.lily.v1.S3/FileStatus',
-            lily__pb2.S3FileStatusRequest.SerializeToString,
-            lily__pb2.S3FileStatusResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/palm.lily.v1.S3/GetFile',
+            lily__pb2.S3GetFileRequest.SerializeToString,
+            lily__pb2.S3GetFileResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

@@ -1,5 +1,6 @@
 import * as jspb from 'google-protobuf'
 
+import * as google_protobuf_duration_pb from 'google-protobuf/google/protobuf/duration_pb';
 
 
 export class ExcelModel extends jspb.Message {
@@ -100,49 +101,49 @@ export namespace S3File {
   }
 }
 
-export class S3FileStatusRequest extends jspb.Message {
+export class S3GetFileRequest extends jspb.Message {
   getBucket(): string;
-  setBucket(value: string): S3FileStatusRequest;
+  setBucket(value: string): S3GetFileRequest;
 
   getName(): string;
-  setName(value: string): S3FileStatusRequest;
+  setName(value: string): S3GetFileRequest;
+
+  getTtl(): google_protobuf_duration_pb.Duration | undefined;
+  setTtl(value?: google_protobuf_duration_pb.Duration): S3GetFileRequest;
+  hasTtl(): boolean;
+  clearTtl(): S3GetFileRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): S3FileStatusRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: S3FileStatusRequest): S3FileStatusRequest.AsObject;
-  static serializeBinaryToWriter(message: S3FileStatusRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): S3FileStatusRequest;
-  static deserializeBinaryFromReader(message: S3FileStatusRequest, reader: jspb.BinaryReader): S3FileStatusRequest;
+  toObject(includeInstance?: boolean): S3GetFileRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: S3GetFileRequest): S3GetFileRequest.AsObject;
+  static serializeBinaryToWriter(message: S3GetFileRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): S3GetFileRequest;
+  static deserializeBinaryFromReader(message: S3GetFileRequest, reader: jspb.BinaryReader): S3GetFileRequest;
 }
 
-export namespace S3FileStatusRequest {
+export namespace S3GetFileRequest {
   export type AsObject = {
     bucket: string,
     name: string,
+    ttl?: google_protobuf_duration_pb.Duration.AsObject,
   }
 }
 
-export class S3FileStatusResponse extends jspb.Message {
-  getStatus(): S3FileStatusResponse.Status;
-  setStatus(value: S3FileStatusResponse.Status): S3FileStatusResponse;
+export class S3GetFileResponse extends jspb.Message {
+  getUrl(): string;
+  setUrl(value: string): S3GetFileResponse;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): S3FileStatusResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: S3FileStatusResponse): S3FileStatusResponse.AsObject;
-  static serializeBinaryToWriter(message: S3FileStatusResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): S3FileStatusResponse;
-  static deserializeBinaryFromReader(message: S3FileStatusResponse, reader: jspb.BinaryReader): S3FileStatusResponse;
+  toObject(includeInstance?: boolean): S3GetFileResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: S3GetFileResponse): S3GetFileResponse.AsObject;
+  static serializeBinaryToWriter(message: S3GetFileResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): S3GetFileResponse;
+  static deserializeBinaryFromReader(message: S3GetFileResponse, reader: jspb.BinaryReader): S3GetFileResponse;
 }
 
-export namespace S3FileStatusResponse {
+export namespace S3GetFileResponse {
   export type AsObject = {
-    status: S3FileStatusResponse.Status,
-  }
-
-  export enum Status { 
-    PENDING = 0,
-    SUCCESSED = 1,
-    FAILED = 99,
+    url: string,
   }
 }
 
