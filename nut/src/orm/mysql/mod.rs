@@ -22,12 +22,14 @@ pub struct Config {
     pub name: String,
     pub user: String,
     pub password: Option<String>,
+    #[serde(rename = "pool-size")]
+    pub pool_size: u32,
 }
 
 impl Config {
     pub fn open(&self) -> Result<Pool> {
         let manager = diesel::r2d2::ConnectionManager::<Connection>::new(&self.to_string()[..]);
-        Ok(Pool::new(manager)?)
+        Ok(Pool::builder().max_size(self.pool_size).build(manager)?)
     }
 }
 
@@ -39,6 +41,7 @@ impl Default for Config {
             user: "root".to_string(),
             name: "demo".to_string(),
             password: None,
+            pool_size: 32,
         }
     }
 }
