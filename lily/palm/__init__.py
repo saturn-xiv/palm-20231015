@@ -136,7 +136,7 @@ class RabbitMqClient:
         def handler(ch, method, properties, body):
             callback(ch, method, properties, body)
             if is_stopped():
-                logging.warn("stop consumer")
+                logging.warning("stop consumer")
                 ch.stop_consuming()
 
         with pika.BlockingConnection(self.parameters) as con:
@@ -147,7 +147,7 @@ class RabbitMqClient:
             try:
                 ch.start_consuming()
             except KeyboardInterrupt:
-                logging.warn("quit consumer...")
+                logging.warning("quit consumer...")
                 ch.stop_consuming()
 
 
@@ -174,7 +174,7 @@ class RpcServer:
         try:
             server.wait_for_termination()
         except KeyboardInterrupt:
-            logging.warn('exited...')
+            logging.warning('exited...')
             server.stop(0)
 
     def _rpc_health_checker(servicer, name):
