@@ -16,7 +16,8 @@
 namespace loquat {
 
 namespace application {
-void launch(const uint16_t port);
+void launch(const uint16_t port, const std::string& cert_file,
+            const std::string& key_file);
 }
 
 class AesHandler final : public v1::AesIf {

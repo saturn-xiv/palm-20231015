@@ -8,12 +8,17 @@
 #include <thrift/server/TNonblockingServer.h>
 #include <thrift/server/TThreadPoolServer.h>
 #include <thrift/server/TThreadedServer.h>
+#include <thrift/transport/TNonblockingSSLServerSocket.h>
 #include <thrift/transport/TNonblockingServerSocket.h>
+#include <thrift/transport/TSSLServerSocket.h>
+#include <thrift/transport/TSSLSocket.h>
 #include <thrift/transport/TServerSocket.h>
 #include <thrift/transport/TSocket.h>
 #include <thrift/transport/TTransportUtils.h>
 
-void loquat::application::launch(const uint16_t port) {
+void loquat::application::launch(const uint16_t port,
+                                 const std::string& cert_file,
+                                 const std::string& key_file) {
   std::shared_ptr<AesHandler> aesHandler = std::make_shared<AesHandler>();
   std::shared_ptr<v1::AesProcessor> aesProcessor =
       std::make_shared<v1::AesProcessor>(aesHandler);
@@ -69,10 +74,22 @@ void loquat::application::launch(const uint16_t port) {
   threadManager->threadFactory(threadFactory);
   threadManager->start();
 
-  std::shared_ptr<apache::thrift::transport::TNonblockingServerSocket>
-      serverSocket =
-          std::make_shared<apache::thrift::transport::TNonblockingServerSocket>(
-              port);
+  std::shared_ptr<apache::thrift::transport::TSSLSocketFactory>
+      sslSocketFactory =
+          std::shared_ptr<apache::thrift::transport::TSSLSocketFactory>(
+              new apache::thrift::transport::TSSLSocketFactory());
+  {
+    spdlog::debug("load cert from {}, key from {}", cert_file, key_file);
+    sslSocketFactory->loadCertificate(cert_file.c_str());
+    sslSocketFactory->loadPrivateKey(key_file.c_str());
+
+    sslSocketFactory->ciphers("ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
+  }
+
+  std::shared_ptr<apache::thrift::transport::TNonblockingSSLServerSocket>
+      serverSocket = std::make_shared<
+          apache::thrift::transport::TNonblockingSSLServerSocket>(
+          port, sslSocketFactory);
 
   std::shared_ptr<apache::thrift::protocol::TBinaryProtocolFactoryT<
       apache::thrift::transport::TFramedTransport>>

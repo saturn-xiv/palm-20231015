@@ -27,3 +27,18 @@ sudo qemu-system-aarch64 -m 4096 -cpu cortex-a57 -M virt -nographic -pflash /usr
 - [Ubuntu 22.04 (Jammy Jellyfish) Daily Build](https://cloud-images.ubuntu.com/jammy/current/)
 - [QEMU](https://wiki.archlinux.org/title/QEMU)
 - [Network bridge](https://wiki.archlinux.org/title/Network_bridge)
+
+## [Creating the Certificate Authority's Certificate and Keys](https://mariadb.com/docs/xpand/security/data-in-transit-encryption/create-self-signed-certificates-keys-openssl/)
+
+```bash
+openssl genrsa -out ca.key 4096
+openssl req -new -x509 -nodes -days 36500 -key ca.key -out ca.crt
+
+openssl req -newkey rsa:4096 -nodes -days 3650 -keyout node.key -out node.csr
+openssl x509 -req -days 3650 -set_serial 01 -in node.csr -out node.crt -CA ca.crt -CAkey ca.key
+openssl verify -CAfile ca.crt node.crt
+
+openssl rsa -noout -text -in node.key
+openssl req -noout -text -in node.csr
+openssl x509 -noout -text -in node.crt
+```

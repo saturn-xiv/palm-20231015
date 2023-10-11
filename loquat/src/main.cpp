@@ -40,6 +40,12 @@ int main(int argc, char** argv) {
     rpc_command.add_argument("-p", "--port")
         .default_value(8080)
         .scan<'i', int>();
+    rpc_command.add_argument("-C", "--cert-file")
+        .default_value(loquat::PROJECT_NAME + ".crt")
+        .required();
+    rpc_command.add_argument("-k", "--key-file")
+        .default_value(loquat::PROJECT_NAME + ".key")
+        .required();
   }
 
   program.add_subparser(rpc_command);
@@ -81,8 +87,12 @@ int main(int argc, char** argv) {
 
   if (program.is_subcommand_used(rpc_command)) {
     const int port = rpc_command.get<int>("--port");
+    const std::string cert_file = rpc_command.get<std::string>("--cert-file");
+    const std::string key_file = rpc_command.get<std::string>("--key-file");
     apache::thrift::GlobalOutput.setOutputFunction(loquat::set_thrift_logger);
-    loquat::application::launch(static_cast<uint16_t>(port));
+    
+    loquat::application::launch(static_cast<uint16_t>(port), cert_file,
+                                key_file);
   } else if (program.is_subcommand_used(generate_token_command)) {
     const int years = generate_token_command.get<int>("--years");
     const std::string key_id =
