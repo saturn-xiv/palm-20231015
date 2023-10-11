@@ -18,16 +18,14 @@ use self::protocols::{
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Config {
-    pub host: String,
-    pub port: u16,
+    pub thrift: Thrift,
     pub token: String,
 }
 
 impl Default for Config {
     fn default() -> Self {
         Self {
-            host: "127.0.0.1".to_string(),
-            port: 8080,
+            thrift: Thrift::default(),
             token: "change-me".to_string(),
         }
     }
@@ -39,11 +37,7 @@ impl Config {
     const HMAC: &str = "N6loquat2v16HmacIfE";
     const HEALTH: &str = "N6loquat2v18HealthIfE";
     pub fn open(&self, service: &str) -> Result<(Input, Output)> {
-        Thrift {
-            host: self.host.clone(),
-            port: self.port,
-        }
-        .open(service)
+        self.thrift.open(service)
     }
 }
 

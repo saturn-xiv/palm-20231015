@@ -14,6 +14,12 @@ use super::Result;
 pub struct Thrift {
     pub host: String,
     pub port: u16,
+    #[serde(rename = "ca-file")]
+    pub ca_file: String,
+    #[serde(rename = "cert-file")]
+    pub cert_file: String,
+    #[serde(rename = "key-file")]
+    pub key_file: String,
 }
 
 impl Default for Thrift {
@@ -21,6 +27,9 @@ impl Default for Thrift {
         Self {
             host: "127.0.0.1".to_string(),
             port: 8080,
+            ca_file: "ca.crt".to_string(),
+            cert_file: "client.crt".to_string(),
+            key_file: "client.key".to_string(),
         }
     }
 }
@@ -32,6 +41,8 @@ pub type Output = TMultiplexedOutputProtocol<
 
 impl Thrift {
     pub fn open(&self, service: &str) -> Result<(Input, Output)> {
+        // TODO thrift-rs doesn't support tls yet
+
         let mut ch = TTcpChannel::new();
         ch.open(format!("{}:{}", self.host, self.port))?;
 

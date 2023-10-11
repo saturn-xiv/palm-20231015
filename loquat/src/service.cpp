@@ -86,10 +86,16 @@ void loquat::application::launch(const uint16_t port,
     sslSocketFactory->ciphers("ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
   }
 
-  std::shared_ptr<apache::thrift::transport::TNonblockingSSLServerSocket>
-      serverSocket = std::make_shared<
-          apache::thrift::transport::TNonblockingSSLServerSocket>(
-          port, sslSocketFactory);
+  // TODO thrift-rust doesn't support tls yet
+  std::shared_ptr<apache::thrift::transport::TNonblockingServerSocket>
+      serverSocket =
+          std::make_shared<apache::thrift::transport::TNonblockingServerSocket>(
+              port);
+
+  // std::shared_ptr<apache::thrift::transport::TNonblockingSSLServerSocket>
+  //     serverSocket = std::make_shared<
+  //         apache::thrift::transport::TNonblockingSSLServerSocket>(
+  //         port, sslSocketFactory);
 
   std::shared_ptr<apache::thrift::protocol::TBinaryProtocolFactoryT<
       apache::thrift::transport::TFramedTransport>>
