@@ -37,10 +37,10 @@ RUN mkdir -p $HOME/downloads $HOME/build $HOME/local $HOME/tmp
 #     && makepkg \
 #     && sudo pacman -U --noconfirm envoyproxy-bin-${ENVOY_VERSION}-x86_64.pkg.tar.zst 
 ENV ENVOY_VERSION "1.27.1"
-RUN wget -q -P $HOME/downloads https://github.com/envoyproxy/envoy/releases/download/v${ENVOY_VERSION}/envoy-${ENVOY_VERSION}-linux-x86_64 \
-    && sudo mv envoy-${ENVOY_VERSION}-linux-x86_64 /usr/local/bin/envoy \
-    && sudo chmod +x /usr/local/bin/envoy \
-    && sudo chown root:root /usr/local/bin/envoy
+RUN wget -q -O $HOME/downloads/envoy https://github.com/envoyproxy/envoy/releases/download/v${ENVOY_VERSION}/envoy-${ENVOY_VERSION}-linux-x86_64 \
+    && sudo mv $HOME/downloads/envoy /usr/bin/envoy \
+    && sudo chmod +x /usr/bin/envoy \
+    && sudo chown root:root /usr/bin/envoy
 
 ENV ARPHIC_TTF_VERSION "20161212-1"
 RUN git clone https://aur.archlinux.org/ttf-arphic-tex-extra.git $HOME/downloads/ttf-arphic-tex-extra \
@@ -204,14 +204,16 @@ RUN cd $HOME/build \
 
 # https://min.io/download#/linux
 RUN wget -q -O $HOME/downloads/minio \
-    https://dl.min.io/server/minio/release/linux-amd64/minio
-RUN sudo mv $HOME/downloads/minio /usr/bin/minio \
+    https://dl.min.io/server/minio/release/linux-amd64/minio \
+    && sudo mv $HOME/downloads/minio /usr/bin/minio \
     && sudo chown root:root /usr/bin/minio \
     && sudo chmod +x /usr/bin/minio
 
 # https://github.com/amacneil/dbmate
-RUN curl -fsSL -o $HOME/.local/bin/dbmate https://github.com/amacneil/dbmate/releases/latest/download/dbmate-linux-amd64
-RUN chmod +x $HOME/.local/bin/dbmate
+RUN curl -fsSL -o $HOME/downloads/dbmate https://github.com/amacneil/dbmate/releases/latest/download/dbmate-linux-amd64 \
+    && sudo mv $HOME/downloads/dbmate /usr/bin/ \
+    && sudo chown root:root /usr/bin/dbmate \
+    && sudo chmod +x /usr/bin/dbmate
 
 # https://github.com/grpc/grpc
 ENV GRPC_VERSION "v1.59.1"
