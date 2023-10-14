@@ -72,4 +72,6 @@ def _handle_tex2pdf_message(message, s3):
             tags = {'title': request.title}
             if request.has_owner:
                 tags['owner'] = request.owner
+            if request.has_ttl:
+                tags['ttl'] = request.ttl.seconds
             s3.set_object_tags(response.bucket, response.name, tags)

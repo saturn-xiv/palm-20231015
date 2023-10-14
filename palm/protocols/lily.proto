@@ -55,6 +55,7 @@ service Tex {
 message TexToRequest {
   string title = 1;
   map<string, bytes> files = 2;
+  optional google.protobuf.Duration ttl = 7;
   optional string owner = 8;
   bool published = 9;
 }

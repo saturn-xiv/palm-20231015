@@ -1369,6 +1369,7 @@ class TexToRequest final :
     kFilesFieldNumber = 2,
     kTitleFieldNumber = 1,
     kOwnerFieldNumber = 8,
+    kTtlFieldNumber = 7,
     kPublishedFieldNumber = 9,
   };
   // map<string, bytes> files = 2;
@@ -1419,6 +1420,21 @@ class TexToRequest final :
   std::string* _internal_mutable_owner();
 
   public:
+  // optional .google.protobuf.Duration ttl = 7;
+  bool has_ttl() const;
+  void clear_ttl() ;
+  const ::google::protobuf::Duration& ttl() const;
+  PROTOBUF_NODISCARD ::google::protobuf::Duration* release_ttl();
+  ::google::protobuf::Duration* mutable_ttl();
+  void set_allocated_ttl(::google::protobuf::Duration* value);
+  void unsafe_arena_set_allocated_ttl(::google::protobuf::Duration* value);
+  ::google::protobuf::Duration* unsafe_arena_release_ttl();
+
+  private:
+  const ::google::protobuf::Duration& _internal_ttl() const;
+  ::google::protobuf::Duration* _internal_mutable_ttl();
+
+  public:
   // bool published = 9;
   void clear_published() ;
   bool published() const;
@@ -1434,7 +1450,7 @@ class TexToRequest final :
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<1, 4, 1, 49, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<2, 5, 2, 49, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -1447,6 +1463,7 @@ class TexToRequest final :
         files_;
     ::google::protobuf::internal::ArenaStringPtr title_;
     ::google::protobuf::internal::ArenaStringPtr owner_;
+    ::google::protobuf::Duration* ttl_;
     bool published_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -2333,6 +2350,98 @@ inline ::google::protobuf::Map<std::string, std::string>* TexToRequest::_interna
 inline ::google::protobuf::Map<std::string, std::string>* TexToRequest::mutable_files() {
   // @@protoc_insertion_point(field_mutable_map:palm.lily.v1.TexToRequest.files)
   return _internal_mutable_files();
+}
+
+// optional .google.protobuf.Duration ttl = 7;
+inline bool TexToRequest::has_ttl() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.ttl_ != nullptr);
+  return value;
+}
+inline const ::google::protobuf::Duration& TexToRequest::_internal_ttl() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::google::protobuf::Duration* p = _impl_.ttl_;
+  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Duration&>(::google::protobuf::_Duration_default_instance_);
+}
+inline const ::google::protobuf::Duration& TexToRequest::ttl() const {
+  // @@protoc_insertion_point(field_get:palm.lily.v1.TexToRequest.ttl)
+  return _internal_ttl();
+}
+inline void TexToRequest::unsafe_arena_set_allocated_ttl(::google::protobuf::Duration* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.ttl_);
+  }
+  _impl_.ttl_ = reinterpret_cast<::google::protobuf::Duration*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.lily.v1.TexToRequest.ttl)
+}
+inline ::google::protobuf::Duration* TexToRequest::release_ttl() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::google::protobuf::Duration* released = _impl_.ttl_;
+  _impl_.ttl_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArenaForAllocation() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::google::protobuf::Duration* TexToRequest::unsafe_arena_release_ttl() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.lily.v1.TexToRequest.ttl)
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::google::protobuf::Duration* temp = _impl_.ttl_;
+  _impl_.ttl_ = nullptr;
+  return temp;
+}
+inline ::google::protobuf::Duration* TexToRequest::_internal_mutable_ttl() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000002u;
+  if (_impl_.ttl_ == nullptr) {
+    auto* p = CreateMaybeMessage<::google::protobuf::Duration>(GetArenaForAllocation());
+    _impl_.ttl_ = reinterpret_cast<::google::protobuf::Duration*>(p);
+  }
+  return _impl_.ttl_;
+}
+inline ::google::protobuf::Duration* TexToRequest::mutable_ttl() {
+  ::google::protobuf::Duration* _msg = _internal_mutable_ttl();
+  // @@protoc_insertion_point(field_mutable:palm.lily.v1.TexToRequest.ttl)
+  return _msg;
+}
+inline void TexToRequest::set_allocated_ttl(::google::protobuf::Duration* value) {
+  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.ttl_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena =
+        ::google::protobuf::Arena::InternalGetOwningArena(reinterpret_cast<::google::protobuf::MessageLite*>(value));
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+
+  _impl_.ttl_ = reinterpret_cast<::google::protobuf::Duration*>(value);
+  // @@protoc_insertion_point(field_set_allocated:palm.lily.v1.TexToRequest.ttl)
 }
 
 // optional string owner = 8;

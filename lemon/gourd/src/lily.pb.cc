@@ -177,6 +177,7 @@ PROTOBUF_CONSTEXPR TexToRequest::TexToRequest(::_pbi::ConstantInitialized)
           &::_pbi::fixed_address_empty_string,
           ::_pbi::ConstantInitialized{},
       },
+      /*decltype(_impl_.ttl_)*/ nullptr,
       /*decltype(_impl_.published_)*/ false,
     } {}
 struct TexToRequestDefaultTypeInternal {
@@ -297,10 +298,12 @@ const ::uint32_t TableStruct_lily_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest, _impl_.title_),
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest, _impl_.files_),
+    PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest, _impl_.ttl_),
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest, _impl_.owner_),
     PROTOBUF_FIELD_OFFSET(::palm::lily::v1::TexToRequest, _impl_.published_),
     ~0u,
     ~0u,
+    1,
     0,
     ~0u,
     ~0u,  // no _has_bits_
@@ -322,8 +325,8 @@ static const ::_pbi::MigrationSchema
         {41, 52, -1, sizeof(::palm::lily::v1::S3GetFileRequest)},
         {55, -1, -1, sizeof(::palm::lily::v1::S3GetFileResponse)},
         {64, 74, -1, sizeof(::palm::lily::v1::TexToRequest_FilesEntry_DoNotUse)},
-        {76, 88, -1, sizeof(::palm::lily::v1::TexToRequest)},
-        {92, -1, -1, sizeof(::palm::lily::v1::EpubBuildRequest)},
+        {76, 89, -1, sizeof(::palm::lily::v1::TexToRequest)},
+        {94, -1, -1, sizeof(::palm::lily::v1::EpubBuildRequest)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -348,24 +351,25 @@ const char descriptor_table_protodef_lily_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
     "\001(\t\022\024\n\014content_type\030\t \001(\t\"X\n\020S3GetFileRe"
     "quest\022\016\n\006bucket\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022&\n\003t"
     "tl\030\t \001(\0132\031.google.protobuf.Duration\" \n\021S"
-    "3GetFileResponse\022\013\n\003url\030\001 \001(\t\"\262\001\n\014TexToR"
+    "3GetFileResponse\022\013\n\003url\030\001 \001(\t\"\347\001\n\014TexToR"
     "equest\022\r\n\005title\030\001 \001(\t\0224\n\005files\030\002 \003(\0132%.p"
-    "alm.lily.v1.TexToRequest.FilesEntry\022\022\n\005o"
-    "wner\030\010 \001(\tH\000\210\001\001\022\021\n\tpublished\030\t \001(\010\032,\n\nFi"
-    "lesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001"
-    "B\010\n\006_owner\"\022\n\020EpubBuildRequest2\200\001\n\005Excel"
-    "\0229\n\005Parse\022\024.palm.lily.v1.S3File\032\030.palm.l"
-    "ily.v1.ExcelModel\"\000\022<\n\010Generate\022\030.palm.l"
-    "ily.v1.ExcelModel\032\024.palm.lily.v1.S3File\""
-    "\0002R\n\002S3\022L\n\007GetFile\022\036.palm.lily.v1.S3GetF"
-    "ileRequest\032\037.palm.lily.v1.S3GetFileRespo"
-    "nse\"\0002\200\001\n\003Tex\022;\n\005ToPdf\022\032.palm.lily.v1.Te"
-    "xToRequest\032\024.palm.lily.v1.S3File\"\000\022<\n\006To"
-    "Word\022\032.palm.lily.v1.TexToRequest\032\024.palm."
-    "lily.v1.S3File\"\0002G\n\004Epub\022\?\n\005Build\022\036.palm"
-    ".lily.v1.EpubBuildRequest\032\024.palm.lily.v1"
-    ".S3File\"\000B.\n*com.github.saturn_xiv.palm."
-    "plugins.lily.v1P\001b\006proto3"
+    "alm.lily.v1.TexToRequest.FilesEntry\022+\n\003t"
+    "tl\030\007 \001(\0132\031.google.protobuf.DurationH\000\210\001\001"
+    "\022\022\n\005owner\030\010 \001(\tH\001\210\001\001\022\021\n\tpublished\030\t \001(\010\032"
+    ",\n\nFilesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001("
+    "\014:\0028\001B\006\n\004_ttlB\010\n\006_owner\"\022\n\020EpubBuildRequ"
+    "est2\200\001\n\005Excel\0229\n\005Parse\022\024.palm.lily.v1.S3"
+    "File\032\030.palm.lily.v1.ExcelModel\"\000\022<\n\010Gene"
+    "rate\022\030.palm.lily.v1.ExcelModel\032\024.palm.li"
+    "ly.v1.S3File\"\0002R\n\002S3\022L\n\007GetFile\022\036.palm.l"
+    "ily.v1.S3GetFileRequest\032\037.palm.lily.v1.S"
+    "3GetFileResponse\"\0002\200\001\n\003Tex\022;\n\005ToPdf\022\032.pa"
+    "lm.lily.v1.TexToRequest\032\024.palm.lily.v1.S"
+    "3File\"\000\022<\n\006ToWord\022\032.palm.lily.v1.TexToRe"
+    "quest\032\024.palm.lily.v1.S3File\"\0002G\n\004Epub\022\?\n"
+    "\005Build\022\036.palm.lily.v1.EpubBuildRequest\032\024"
+    ".palm.lily.v1.S3File\"\000B.\n*com.github.sat"
+    "urn_xiv.palm.plugins.lily.v1P\001b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_lily_2eproto_deps[1] =
     {
@@ -375,7 +379,7 @@ static ::absl::once_flag descriptor_table_lily_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_lily_2eproto = {
     false,
     false,
-    1105,
+    1158,
     descriptor_table_protodef_lily_2eproto,
     "lily.proto",
     &descriptor_table_lily_2eproto_once,
@@ -1817,11 +1821,22 @@ class TexToRequest::_Internal {
   using HasBits = decltype(std::declval<TexToRequest>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
     8 * PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_._has_bits_);
+  static const ::google::protobuf::Duration& ttl(const TexToRequest* msg);
+  static void set_has_ttl(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
   static void set_has_owner(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
 };
 
+const ::google::protobuf::Duration& TexToRequest::_Internal::ttl(const TexToRequest* msg) {
+  return *msg->_impl_.ttl_;
+}
+void TexToRequest::clear_ttl() {
+  if (_impl_.ttl_ != nullptr) _impl_.ttl_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
 TexToRequest::TexToRequest(::google::protobuf::Arena* arena)
     : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
@@ -1836,6 +1851,7 @@ TexToRequest::TexToRequest(const TexToRequest& from) : ::google::protobuf::Messa
       /* decltype(_impl_.files_) */ {},
       decltype(_impl_.title_){},
       decltype(_impl_.owner_){},
+      decltype(_impl_.ttl_){nullptr},
       decltype(_impl_.published_){},
   };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -1855,6 +1871,9 @@ TexToRequest::TexToRequest(const TexToRequest& from) : ::google::protobuf::Messa
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_impl_.owner_.Set(from._internal_owner(), _this->GetArenaForAllocation());
   }
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.ttl_ = new ::google::protobuf::Duration(*from._impl_.ttl_);
+  }
   _this->_impl_.published_ = from._impl_.published_;
 
   // @@protoc_insertion_point(copy_constructor:palm.lily.v1.TexToRequest)
@@ -1867,6 +1886,7 @@ inline void TexToRequest::SharedCtor(::_pb::Arena* arena) {
       /* decltype(_impl_.files_) */ {::google::protobuf::internal::ArenaInitialized(), arena},
       decltype(_impl_.title_){},
       decltype(_impl_.owner_){},
+      decltype(_impl_.ttl_){nullptr},
       decltype(_impl_.published_){false},
   };
   _impl_.title_.InitDefault();
@@ -1888,6 +1908,7 @@ inline void TexToRequest::SharedDtor() {
   _impl_.files_.~MapField();
   _impl_.title_.Destroy();
   _impl_.owner_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.ttl_;
 }
 void TexToRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
@@ -1902,8 +1923,14 @@ PROTOBUF_NOINLINE void TexToRequest::Clear() {
   _impl_.files_.Clear();
   _impl_.title_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    _impl_.owner_.ClearNonDefaultToEmpty();
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _impl_.owner_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.ttl_ != nullptr);
+      _impl_.ttl_->Clear();
+    }
   }
   _impl_.published_ = false;
   _impl_._has_bits_.Clear();
@@ -1918,16 +1945,16 @@ const char* TexToRequest::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 4, 1, 49, 2> TexToRequest::_table_ = {
+const ::_pbi::TcParseTable<2, 5, 2, 49, 2> TexToRequest::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_._has_bits_),
     0, // no _extensions_
-    9, 8,  // max_field_number, fast_idx_mask
+    9, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294966908,  // skipmap
+    4294966844,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
-    1,  // num_aux_entries
+    5,  // num_field_entries
+    2,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     &_TexToRequest_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
@@ -1938,6 +1965,10 @@ const ::_pbi::TcParseTable<1, 4, 1, 49, 2> TexToRequest::_table_ = {
     // string title = 1;
     {::_pbi::TcParser::FastUS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.title_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    // optional .google.protobuf.Duration ttl = 7;
+    {::_pbi::TcParser::FastMtS1,
+     {58, 1, 1, PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.ttl_)}},
   }}, {{
     65535, 65535
   }}, {{
@@ -1947,6 +1978,9 @@ const ::_pbi::TcParseTable<1, 4, 1, 49, 2> TexToRequest::_table_ = {
     // map<string, bytes> files = 2;
     {PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.files_), -1, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+    // optional .google.protobuf.Duration ttl = 7;
+    {PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.ttl_), _Internal::kHasBitsOffset + 1, 1,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
     // optional string owner = 8;
     {PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.owner_), _Internal::kHasBitsOffset + 0, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
@@ -1955,8 +1989,9 @@ const ::_pbi::TcParseTable<1, 4, 1, 49, 2> TexToRequest::_table_ = {
     (0 | ::_fl::kFcSingular | ::_fl::kBool)},
   }}, {{
     {::_pbi::TcParser::GetMapAuxInfo<decltype(TexToRequest()._impl_.files_)>(1, 0, 0)},
+    {::_pbi::TcParser::GetTable<::google::protobuf::Duration>()},
   }}, {{
-    "\31\5\5\5\0\0\0\0"
+    "\31\5\5\0\5\0\0\0"
     "palm.lily.v1.TexToRequest"
     "title"
     "files"
@@ -2005,6 +2040,13 @@ const ::_pbi::TcParseTable<1, 4, 1, 49, 2> TexToRequest::_table_ = {
   }
 
   cached_has_bits = _impl_._has_bits_[0];
+  // optional .google.protobuf.Duration ttl = 7;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessage(7, _Internal::ttl(this),
+        _Internal::ttl(this).GetCachedSize(), target, stream);
+  }
+
   // optional string owner = 8;
   if (cached_has_bits & 0x00000001u) {
     const std::string& _s = this->_internal_owner();
@@ -2048,13 +2090,22 @@ const ::_pbi::TcParseTable<1, 4, 1, 49, 2> TexToRequest::_table_ = {
                                     this->_internal_title());
   }
 
-  // optional string owner = 8;
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_owner());
-  }
+  if (cached_has_bits & 0x00000003u) {
+    // optional string owner = 8;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                      this->_internal_owner());
+    }
 
+    // optional .google.protobuf.Duration ttl = 7;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *_impl_.ttl_);
+    }
+
+  }
   // bool published = 9;
   if (this->_internal_published() != 0) {
     total_size += 2;
@@ -2082,8 +2133,15 @@ void TexToRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google
   if (!from._internal_title().empty()) {
     _this->_internal_set_title(from._internal_title());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_internal_set_owner(from._internal_owner());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_set_owner(from._internal_owner());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_ttl()->::google::protobuf::Duration::MergeFrom(
+          from._internal_ttl());
+    }
   }
   if (from._internal_published() != 0) {
     _this->_internal_set_published(from._internal_published());
@@ -2113,7 +2171,12 @@ void TexToRequest::InternalSwap(TexToRequest* other) {
                                        &other->_impl_.title_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.owner_, lhs_arena,
                                        &other->_impl_.owner_, rhs_arena);
-        swap(_impl_.published_, other->_impl_.published_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.published_)
+      + sizeof(TexToRequest::_impl_.published_)
+      - PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.ttl_)>(
+          reinterpret_cast<char*>(&_impl_.ttl_),
+          reinterpret_cast<char*>(&other->_impl_.ttl_));
 }
 
 ::google::protobuf::Metadata TexToRequest::GetMetadata() const {

@@ -1304,6 +1304,7 @@ proto.palm.lily.v1.TexToRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     title: jspb.Message.getFieldWithDefault(msg, 1, ""),
     filesMap: (f = msg.getFilesMap()) ? f.toObject(includeInstance, undefined) : [],
+    ttl: (f = msg.getTtl()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
     owner: jspb.Message.getFieldWithDefault(msg, 8, ""),
     published: jspb.Message.getBooleanFieldWithDefault(msg, 9, false)
   };
@@ -1352,6 +1353,11 @@ proto.palm.lily.v1.TexToRequest.deserializeBinaryFromReader = function(msg, read
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readBytes, null, "", "");
          });
       break;
+    case 7:
+      var value = new google_protobuf_duration_pb.Duration;
+      reader.readMessage(value,google_protobuf_duration_pb.Duration.deserializeBinaryFromReader);
+      msg.setTtl(value);
+      break;
     case 8:
       var value = /** @type {string} */ (reader.readString());
       msg.setOwner(value);
@@ -1399,6 +1405,14 @@ proto.palm.lily.v1.TexToRequest.serializeBinaryToWriter = function(message, writ
   f = message.getFilesMap(true);
   if (f && f.getLength() > 0) {
     f.serializeBinary(2, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeBytes);
+  }
+  f = message.getTtl();
+  if (f != null) {
+    writer.writeMessage(
+      7,
+      f,
+      google_protobuf_duration_pb.Duration.serializeBinaryToWriter
+    );
   }
   f = /** @type {string} */ (jspb.Message.getField(message, 8));
   if (f != null) {
@@ -1455,6 +1469,43 @@ proto.palm.lily.v1.TexToRequest.prototype.getFilesMap = function(opt_noLazyCreat
 proto.palm.lily.v1.TexToRequest.prototype.clearFilesMap = function() {
   this.getFilesMap().clear();
   return this;
+};
+
+
+/**
+ * optional google.protobuf.Duration ttl = 7;
+ * @return {?proto.google.protobuf.Duration}
+ */
+proto.palm.lily.v1.TexToRequest.prototype.getTtl = function() {
+  return /** @type{?proto.google.protobuf.Duration} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_duration_pb.Duration, 7));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Duration|undefined} value
+ * @return {!proto.palm.lily.v1.TexToRequest} returns this
+*/
+proto.palm.lily.v1.TexToRequest.prototype.setTtl = function(value) {
+  return jspb.Message.setWrapperField(this, 7, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.lily.v1.TexToRequest} returns this
+ */
+proto.palm.lily.v1.TexToRequest.prototype.clearTtl = function() {
+  return this.setTtl(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.lily.v1.TexToRequest.prototype.hasTtl = function() {
+  return jspb.Message.getField(this, 7) != null;
 };
 
 

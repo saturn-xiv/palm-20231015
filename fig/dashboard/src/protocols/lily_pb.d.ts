@@ -154,6 +154,11 @@ export class TexToRequest extends jspb.Message {
   getFilesMap(): jspb.Map<string, Uint8Array | string>;
   clearFilesMap(): TexToRequest;
 
+  getTtl(): google_protobuf_duration_pb.Duration | undefined;
+  setTtl(value?: google_protobuf_duration_pb.Duration): TexToRequest;
+  hasTtl(): boolean;
+  clearTtl(): TexToRequest;
+
   getOwner(): string;
   setOwner(value: string): TexToRequest;
   hasOwner(): boolean;
@@ -174,8 +179,14 @@ export namespace TexToRequest {
   export type AsObject = {
     title: string,
     filesMap: Array<[string, Uint8Array | string]>,
+    ttl?: google_protobuf_duration_pb.Duration.AsObject,
     owner?: string,
     published: boolean,
+  }
+
+  export enum TtlCase { 
+    _TTL_NOT_SET = 0,
+    TTL = 7,
   }
 
   export enum OwnerCase { 
