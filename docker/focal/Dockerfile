@@ -114,9 +114,9 @@ RUN zsh -c "source $HOME/.zshrc \
 RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.zshrc
 
 
-ENV JDK_VERSION "20.0.2-open"
+ENV JDK_VERSION "22-open"
 # https://docs.gradle.org/current/userguide/compatibility.html
-ENV GRADLE_VERSION "8.3"
+ENV GRADLE_VERSION "8.4"
 RUN curl -s "https://get.sdkman.io" | bash
 RUN sed -i -e 's/sdkman_auto_answer=false/sdkman_auto_answer=true/g' $HOME/.sdkman/etc/config
 RUN zsh -c "source $HOME/.zshrc \
