@@ -31,11 +31,16 @@ RUN echo 'deploy ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/101-deploy
 USER deploy
 RUN mkdir -p $HOME/downloads $HOME/build $HOME/local $HOME/tmp
 
-ENV ENVOY_VERSION "1.27.0-1"
-RUN git clone https://aur.archlinux.org/envoyproxy-bin.git $HOME/downloads/envoyproxy-bin \
-    && cd $HOME/downloads/envoyproxy-bin \
-    && makepkg \
-    && sudo pacman -U --noconfirm envoyproxy-bin-${ENVOY_VERSION}-x86_64.pkg.tar.zst 
+# ENV ENVOY_VERSION "1.27.0-1"
+# RUN git clone https://aur.archlinux.org/envoyproxy-bin.git $HOME/downloads/envoyproxy-bin \
+#     && cd $HOME/downloads/envoyproxy-bin \
+#     && makepkg \
+#     && sudo pacman -U --noconfirm envoyproxy-bin-${ENVOY_VERSION}-x86_64.pkg.tar.zst 
+ENV ENVOY_VERSION "1.27.1"
+RUN wget -q -P $HOME/downloads https://github.com/envoyproxy/envoy/releases/download/v${ENVOY_VERSION}/envoy-${ENVOY_VERSION}-linux-x86_64 \
+    && sudo mv envoy-${ENVOY_VERSION}-linux-x86_64 /usr/local/bin/envoy \
+    && sudo chmod +x /usr/local/bin/envoy \
+    && sudo chown root:root /usr/local/bin/envoy
 
 ENV ARPHIC_TTF_VERSION "20161212-1"
 RUN git clone https://aur.archlinux.org/ttf-arphic-tex-extra.git $HOME/downloads/ttf-arphic-tex-extra \
