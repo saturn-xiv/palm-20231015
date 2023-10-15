@@ -9,11 +9,11 @@
 #     src: ohmyzsh-master.zip
 #     dest: "{{ansible_env.HOME}}/"
 
-- name: Rename ohmyzsh
-  command: mv ohmyzsh-master .oh-my-zsh
-  args:
-    chdir: "{{ansible_env.HOME}}"
-    creates: .oh-my-zsh
+# - name: Rename ohmyzsh
+#   command: mv ohmyzsh-master .oh-my-zsh
+#   args:
+#     chdir: "{{ansible_env.HOME}}"
+#     creates: .oh-my-zsh
 
 - name: Setup .zshrc
   copy:

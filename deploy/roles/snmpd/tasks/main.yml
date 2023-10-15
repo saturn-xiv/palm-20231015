@@ -2,7 +2,7 @@
   become: true
   apt:
     pkg:
-      - net-snmp
+      - snmpd
 
 - name: backup /etc/snmp/snmpd.conf
   become: true

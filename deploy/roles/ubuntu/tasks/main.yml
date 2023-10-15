@@ -4,13 +4,6 @@
     repo: ppa:ubuntu-toolchain-r/test
   when: ansible_distribution == 'Ubuntu'
 
-- name: Update system
-  become: true
-  apt:
-    upgrade: yes
-    update_cache: yes
-    cache_valid_time: 3600
-
 - name: Install dependicy packages
   become: true
   apt:
@@ -18,8 +11,6 @@
       - apt-transport-https
       - software-properties-common
       - gnupg
-      - openssh-server
-      - openssh-client
       - sshpass
       - wpasupplicant
       - rsync
@@ -107,13 +98,6 @@
   when: ansible_distribution == 'Raspbian' or (app_os_armbian.stat.islnk is defined and app_os_armbian.stat.isreg) or (app_os_friendlyelec.stat.islnk is defined and app_os_friendlyelec.stat.isreg)
 
 # ---------------------------------------------------
-
-- name: enable nginx service
-  become: true
-  ansible.builtin.systemd:
-    name: nginx
-    enabled: yes
-    masked: no
 
 # FIXME failed on jammy
 # - name: enable cron service

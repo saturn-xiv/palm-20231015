@@ -23,6 +23,7 @@ echo 'deploy ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/101-deploy
 
     ```bash
     mkdir -p clients/CLIENT_ID/.ssh
+    cp staging/hosts clients/CLIENT_ID/
     cd clients/CLIENT_ID
     ssh-keygen -t ed25519 -f .ssh/id_ed25519 -C "your-name@change-me.com"
     ```
