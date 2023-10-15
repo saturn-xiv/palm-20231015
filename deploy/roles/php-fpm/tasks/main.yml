@@ -1,0 +1,59 @@
+# - name: add PPA for php
+#   become: true
+#   ansible.builtin.apt_repository:
+#     repo: ppa:ondrej/php
+
+# https://launchpad.net/~ondrej/+archive/ubuntu/php
+- name: add PPA for php
+  become: true
+  ansible.builtin.shell: LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
+
+- name: Install dependency packages
+  become: true
+  apt:
+    pkg:
+      - php{{ app_php_version }}-fpm
+      - php{{ app_php_version }}-mbstring
+      - php{{ app_php_version }}-xml
+      - php{{ app_php_version }}-bcmath
+      - php{{ app_php_version }}-curl
+      - php{{ app_php_version }}-zip
+      - php{{ app_php_version }}-mysql
+      - php{{ app_php_version }}-pgsql
+      - php{{ app_php_version }}-sqlite3
+      - php{{ app_php_version }}-redis
+      - php{{ app_php_version }}-mongodb
+      - php{{ app_php_version }}-amqp
+      - php{{ app_php_version }}-zmq
+      - php{{ app_php_version }}-imagick
+      - php{{ app_php_version }}-gd
+      - php{{ app_php_version }}-intl
+      - php{{ app_php_version }}-soap
+
+# https://getcomposer.org/download/
+- name: Install composer.phar
+  become: true
+  ansible.builtin.shell: wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -O - -q | php -- --quiet --install-dir=/usr/local/bin --filename=composer
+
+- name: Backup /etc/php/{{ app_php_version }}/fpm/pool.d/www.conf
+  become: true
+  copy:
+    src: /etc/php/{{ app_php_version }}/fpm/pool.d/www.conf
+    dest: "{{ ansible_env.HOME }}/backups/etc_php_{{ app_php_version }}_fpm_pool.d_www.conf"
+    remote_src: yes
+    backup: yes
+
+- name: Enable php{{ app_php_version }}-fpm listen on port {{ app_php_fpm_port }}
+  become: true
+  lineinfile:
+    path: /etc/php/{{ app_php_version }}/fpm/pool.d/www.conf
+    regexp: "^listen = "
+    line: "listen = 0.0.0.0:{{ app_php_fpm_port }}"
+
+- name: enable php{{ app_php_version }}-fpm service
+  become: true
+  ansible.builtin.systemd:
+    name: "php{{ app_php_version }}-fpm"
+    enabled: yes
+    masked: no
+    state: "restarted"
