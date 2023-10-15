@@ -86,3 +86,11 @@
     state: present
     line: "vm.max_map_count = 262144"
     create: true
+
+- name: Setup vm over commit memory
+  become: true
+  lineinfile:
+    path: "/etc/sysctl.d/100-palm.conf"
+    state: present
+    line: "vm.overcommit_memory = 1"
+    create: true
