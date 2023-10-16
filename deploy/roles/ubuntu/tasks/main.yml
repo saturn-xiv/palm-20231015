@@ -18,6 +18,7 @@
       - sysstat
       - libtool
       - ethtool
+      - nethogs
       - dnsutils
       - dnsmasq
       - uuid-runtime
