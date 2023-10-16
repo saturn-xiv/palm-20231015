@@ -2,4 +2,7 @@
 
 [db]
 
+[localhost]
+ansible_connection="local"
+
 [all:vars]
