@@ -21,15 +21,6 @@
     mode: "0750"
     state: directory
 
-- name: create /var/run/redis
-  become: true
-  ansible.builtin.file:
-    path: "/var/run/redis"
-    owner: redis
-    group: redis
-    mode: "0750"
-    state: directory
-
 - name: upload /etc/redis.conf
   become: true
   template:
@@ -45,6 +36,11 @@
     src: server.service.j2
     dest: "/usr/lib/systemd/system/redis-server-{{ app_redis_port }}.service"
     mode: "0644"
+
+- name: Force systemd to reread configs
+  become: true
+  systemd:
+    daemon_reload: yes
 
 - name: enable redis-cluster-node service
   become: true

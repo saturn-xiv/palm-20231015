@@ -5,9 +5,9 @@ After=network.target
 [Service]
 Type=notify
 ExecStart=/usr/bin/redis-server /etc/redis/node-{{ app_redis_port }}.conf --supervised systemd --daemonize no
-PIDFile=/var/run/redis/node-{{ app_redis_port }}.pid
-TimeoutStartSec=1
-TimeoutStopSec=5
+PIDFile=/run/redis-node-{{ app_redis_port }}.pid
+TimeoutStartSec=3
+TimeoutStopSec=10
 Restart=always
 User=redis
 Group=redis
