@@ -7,7 +7,9 @@ use askama::Template;
 use nix::unistd::{Gid, Uid};
 use palm::{
     crypto::random::string as random_string,
-    minio::{NginxConfig as MinioNginxConfig, SystemdConfig as MinioSystemdConfig},
+    minio::{
+        NginxConfig as MinioNginxConfig, Node as MinioNode, SystemdConfig as MinioSystemdConfig,
+    },
     network::nginx::Www as WwwNginxConf,
     Result, DESCRIPTION, NAME,
 };
@@ -31,10 +33,14 @@ pub fn nginx_conf(cfg: &Config, domain: &str) -> Result<()> {
     }
     {
         let domain = format!("s3.{}", domain);
-        let tpl = MinioNginxConfig {
-            domain: &domain,
+        let node = MinioNode {
+            host: "127.0.0.1",
             port: 9000,
             console_port: 9001,
+        };
+        let tpl = MinioNginxConfig {
+            domain: &domain,
+            nodes: &[node],
         };
         let file = root.join(format!("{}.conf", domain));
         tpl.write(&file)?;

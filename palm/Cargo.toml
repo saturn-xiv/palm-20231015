@@ -68,7 +68,7 @@ handlebars = "4"
 dirs = "5"
 google-youtube3 = "5"
 amq-protocol-uri = "7"
-jsonwebtoken = "8"
+jsonwebtoken = "9"
 flatbuffers = "23"
 
 [dependencies.chrono]

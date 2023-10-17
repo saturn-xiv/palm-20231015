@@ -69,6 +69,13 @@ impl SystemdConfig<'_> {
 #[template(path = "minio/nginx.conf", escape = "none")]
 pub struct NginxConfig<'a> {
     pub domain: &'a str,
+    pub nodes: &'a [Node<'a>],
+}
+
+#[derive(Serialize, Deserialize, Default, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct Node<'a> {
+    pub host: &'a str,
     pub port: u16,
     pub console_port: u16,
 }
