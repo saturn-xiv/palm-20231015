@@ -108,8 +108,8 @@ RUN echo 'export NVM_DIR="$HOME/.nvm"' >> $HOME/.zshrc
 RUN echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $HOME/.zshrc
 RUN echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> $HOME/.zshrc
 RUN zsh -c "source $HOME/.zshrc \
-    && nvm install node \
-    && nvm use node \
+    && nvm install lts/stable \
+    && nvm use lts/stable \
     && npm i yarn -g"
 RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.zshrc
 
@@ -154,7 +154,7 @@ RUN zsh -c "source $HOME/.zshrc \
     && make install"
 
 # https://github.com/rui314/mold
-RUN git clone -b v2.2.0 https://github.com/rui314/mold.git $HOME/downloads/mold
+RUN git clone -b v2.3.1 https://github.com/rui314/mold.git $HOME/downloads/mold
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir $HOME/build/mold \
     && cd $HOME/build/mold \

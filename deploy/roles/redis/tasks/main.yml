@@ -9,7 +9,6 @@
   ansible.builtin.systemd:
     name: redis-server
     enabled: no
-    masked: yes
     state: "stopped"
 
 - name: create /var/lib/redis
