@@ -7,6 +7,7 @@
 ```bash
 sudo apt install zsh
 sudo useradd -s /bin/zsh -m deploy
+sudo passwd -l deploy
 
 sudo su - deploy
 mkdir ~/.ssh && chmod 700 ~/.ssh
