@@ -130,7 +130,7 @@ RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc \
 
 # https://github.com/sdkman/sdkman-cli
 # https://docs.gradle.org/current/userguide/compatibility.html
-ENV JDK_VERSION "21-open"
+ENV JDK_VERSION "21.0.1-open"
 ENV GRADLE_VERSION "8.4"
 ENV THRIFT_JAVA_VERSION "19.0.2-open"
 ENV THRIFT_GRADLE_VERSION "7.6.2"
