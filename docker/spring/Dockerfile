@@ -121,7 +121,7 @@ RUN zsh -c "source $HOME/.zshrc \
     && gem install bundler"
 
 # https://go.dev/doc/install
-ENV GO_VERSION "1.21.0"
+ENV GO_VERSION "1.21.3"
 RUN wget -q -P $HOME/downloads https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
 RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local
 RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc \
