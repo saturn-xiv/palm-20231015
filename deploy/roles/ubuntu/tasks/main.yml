@@ -50,11 +50,14 @@
       - unzip
       - systemd-cron
       - systemd-timesyncd
+      - systemd-journal-remote
       - screen
       - tmux
       - hugo
       - python3-full
       - python3-dev
+      - certbot
+      - python3-certbot-nginx
       - libssl-dev
       - libpq-dev
       - libmysqlclient-dev
