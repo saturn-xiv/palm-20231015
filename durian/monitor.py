@@ -18,7 +18,7 @@ from redis.cluster import RedisCluster
 from opensearchpy import OpenSearch
 from minio import Minio
 
-NAME = 'durian'
+NAME = 'durian-monitor'
 VERSION = '2023.10.6'
 
 OPENSEARCH_INDEX_NAME = 'monitoring'
@@ -40,7 +40,7 @@ class OpenSearchClient:
         return self.connection.indices.exists(name)
 
     def create_index(self, name, number_of_shards):
-        logging.warn('create index %s' % name)
+        logging.warning('create index %s' % name)
         self.connection.indices.create(name, {
             'settings': {
                 'index': {'number_of_shards': number_of_shards}
