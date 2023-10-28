@@ -5,9 +5,9 @@
 - Install [Python3.11+](https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa)
 
   ```bash
-  $ sudo add-apt-repository ppa:deadsnakes/ppa
-  $ sudo apt update
-  $ sudo apt install python3.12-full python3.12-dev
+  sudo add-apt-repository ppa:deadsnakes/ppa
+  sudo apt update
+  sudo apt install python3.12-full python3.12-dev
   ```
 
 - Install libraries
@@ -16,7 +16,7 @@
   $ sudo apt install imagemagick ffmpeg fonts-dejavu-extra texlive-full
   $ python3.12 -m venv $HOME/local/python3
   $ source $HOME/local/python3/bin/activate
-  $ pip install psycopg2 minio redis[hiredis] \
+  $ pip install psycopg minio redis[hiredis] \
     pika msgpack matplotlib ebooklib \
     grpcio protobuf grpcio-health-checking \
     pandas openpyxl xlrd pyxlsb
@@ -24,15 +24,7 @@
 
 ## Start
 
-- create config.toml
-
-  ```toml
-  [rpc]
-  port = 9999
-  workers = 8
-  ```
-
-- run `python lily -d`
+- run `python lily -d -c config.toml`
 
 ## Documents
 

@@ -49,7 +49,7 @@ if __name__ == '__main__':
             callback = create_tex2pdf_queue_callback(minio_client)
             rabbitmq_client.start_consuming(TEX2PDF_QUEUE, callback)
         else:
-            logging.error('unimplation queue %s', args.worker)
+            logging.error('unimplemented queue %s', args.worker)
             sys.exit(1)
         sys.exit()
     rpc_server = RpcServer(
