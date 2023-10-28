@@ -29,6 +29,8 @@
       - php{{ app_php_version }}-gd
       - php{{ app_php_version }}-intl
       - php{{ app_php_version }}-soap
+      - php{{ app_php_version }}-grpc
+      - php{{ app_php_version }}-protobuf
 
 # https://getcomposer.org/download/
 - name: Install composer.phar
