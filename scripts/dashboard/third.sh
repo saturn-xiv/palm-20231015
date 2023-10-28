@@ -11,7 +11,7 @@ install_oauth() {
 install_react() {
     yarn add grpc-web filesize timezones-list \
         moment moment-timezone \
-        marked @types/marked \
+        marked \
         diff @types/diff \
         lodash @types/lodash \
         @fortawesome/fontawesome-free \

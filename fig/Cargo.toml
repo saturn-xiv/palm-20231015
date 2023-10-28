@@ -13,7 +13,7 @@ toml = "0.8"
 env_logger = "0.10"
 tonic-health = "0.10"
 askama = "0.12"
-actix-web-lab = "0.19"
+actix-web-lab = "0.20"
 data-encoding = "2"
 dirs = "5"
 
