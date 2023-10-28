@@ -11,6 +11,7 @@ RUN apt install -y lsb-release apt-utils \
     vim tzdata zip unzip tree tmux \
     build-essential cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio \
     debhelper bison flex ninja-build \
+    gawk \
     python3-full python3-dev \
     rsync bc bzr cvs mercurial subversion asciidoc w3m dblatex graphviz python3-matplotlib 
 
@@ -39,7 +40,7 @@ RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf \
     && echo 'set-option -g default-shell "/bin/zsh"' >> $HOME/.tmux.conf
 
 # https://buildroot.org/downloads/manual/manual.html#requirement
-ENV BUILDROOT_VERSION "2023.02.4"
+ENV BUILDROOT_VERSION "2023.02.6"
 RUN git clone -b ${BUILDROOT_VERSION} https://git.buildroot.net/buildroot $HOME/downloads/buildroot
 RUN echo 'export BR2_DL_DIR=$HOME/downloads' >> $HOME/.zshrc
 # make list-defconfigs
@@ -61,6 +62,13 @@ RUN zsh -c "source $HOME/.zshrc \
     && make O=$HOME/build/rpi4-64 raspberrypi4_64_defconfig \
     && cd $HOME/build/rpi4-64 \
     && make source"
+
+ENV OPENWRT_VERSION "v23.05.0"
+RUN git clone -b ${OPENWRT_VERSION} https://git.openwrt.org/openwrt/openwrt.git $HOME/downloads/openwrt
+RUN zsh -c "source $HOME/.zshrc \
+    && cd $HOME/downloads/openwrt \
+    && ./scripts/feeds update -a \
+    && ./scripts/feeds install -a"
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
