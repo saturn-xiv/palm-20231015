@@ -1,7 +1,7 @@
 # USAGE
 
 ```bash
-mvn package
+mvn package -Dmaven.test.skip=true
 java -jar target/musa-XXX.jar
 ```
 

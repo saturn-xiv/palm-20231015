@@ -30,8 +30,11 @@ public class RpcServer {
     @PostConstruct
     void startUp() throws IOException {
 //        https://github.com/grpc/grpc-java/blob/master/SECURITY.md
-//        var sslContextBuilder = SslContextBuilder.forServer(new File(certFile), new File(keyFile));
-        var credentials = TlsServerCredentials.create(new File(certFile), new File(keyFile));
+        var credentials = TlsServerCredentials.newBuilder()
+                .keyManager(new File(certFile), new File(keyFile))
+                .trustManager(new File(caFile))
+                .clientAuth(TlsServerCredentials.ClientAuth.REQUIRE)
+                .build();
         logger.info("Start gRPC server on http://{}:{}", address, port);
         healthStatusManager = new HealthStatusManager();
         server = NettyServerBuilder.forAddress(
@@ -45,7 +48,6 @@ public class RpcServer {
                 .addService(healthStatusManager.getHealthService())
                 .intercept(tokenServerInterceptor)
                 .intercept(exceptionServerInterceptor)
-//                .sslContext(GrpcSslContexts.configure(sslContextBuilder, SslProvider.OPENSSL).build())
                 .build().start();
     }
 
@@ -64,6 +66,8 @@ public class RpcServer {
     String keyFile;
     @Value("${app.rpc.cert-file}")
     String certFile;
+    @Value("${app.rpc.ca-file}")
+    String caFile;
 
     HealthStatusManager healthStatusManager;
     @Autowired
