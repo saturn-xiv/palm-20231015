@@ -2,7 +2,7 @@
 
 ```bash
 mvn package
-java -jar build/libs/musa-XXX.jar
+java -jar target/musa-XXX.jar
 ```
 
 - [Externalized Configuration](https://docs.spring.io/spring-boot/docs/1.0.1.RELEASE/reference/html/boot-features-external-config.html)

@@ -3,13 +3,10 @@ package com.github.saturn_xiv.palm.plugins.musa;
 import com.github.saturn_xiv.palm.plugins.musa.interceptors.ExceptionServerInterceptor;
 import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerInterceptor;
 import com.github.saturn_xiv.palm.plugins.musa.v1.*;
-import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
-import io.grpc.netty.GrpcSslContexts;
+import io.grpc.TlsServerCredentials;
 import io.grpc.netty.NettyServerBuilder;
 import io.grpc.protobuf.services.HealthStatusManager;
-import io.netty.handler.ssl.SslContextBuilder;
-import io.netty.handler.ssl.SslProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,12 +29,14 @@ public class RpcServer {
 
     @PostConstruct
     void startUp() throws IOException {
-        var sslContextBuilder = SslContextBuilder.forServer(new File(certFile), new File(keyFile));
+//        https://github.com/grpc/grpc-java/blob/master/SECURITY.md
+//        var sslContextBuilder = SslContextBuilder.forServer(new File(certFile), new File(keyFile));
+        var credentials = TlsServerCredentials.create(new File(certFile), new File(keyFile));
         logger.info("Start gRPC server on http://{}:{}", address, port);
         healthStatusManager = new HealthStatusManager();
         server = NettyServerBuilder.forAddress(
                         new InetSocketAddress(address, port),
-                        InsecureServerCredentials.create())
+                        credentials)
                 .addService(wechatPayBillService)
                 .addService(wechatPayJsapiService)
                 .addService(wechatPayNativeService)
@@ -46,7 +45,7 @@ public class RpcServer {
                 .addService(healthStatusManager.getHealthService())
                 .intercept(tokenServerInterceptor)
                 .intercept(exceptionServerInterceptor)
-                .sslContext(GrpcSslContexts.configure(sslContextBuilder, SslProvider.OPENSSL).build())
+//                .sslContext(GrpcSslContexts.configure(sslContextBuilder, SslProvider.OPENSSL).build())
                 .build().start();
     }
 
