@@ -1,7 +1,7 @@
 # USAGE
 
 ```bash
-gradle build
+mvn package
 java -jar build/libs/musa-XXX.jar
 ```
 
