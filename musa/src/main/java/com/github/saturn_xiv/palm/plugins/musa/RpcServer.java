@@ -5,8 +5,11 @@ import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerIntercept
 import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
+import io.grpc.netty.GrpcSslContexts;
 import io.grpc.netty.NettyServerBuilder;
 import io.grpc.protobuf.services.HealthStatusManager;
+import io.netty.handler.ssl.SslContextBuilder;
+import io.netty.handler.ssl.SslProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.concurrent.TimeUnit;
@@ -28,6 +32,7 @@ public class RpcServer {
 
     @PostConstruct
     void startUp() throws IOException {
+        var sslContextBuilder = SslContextBuilder.forServer(new File(certFile), new File(keyFile));
         logger.info("Start gRPC server on http://{}:{}", address, port);
         healthStatusManager = new HealthStatusManager();
         server = NettyServerBuilder.forAddress(
@@ -41,8 +46,10 @@ public class RpcServer {
                 .addService(healthStatusManager.getHealthService())
                 .intercept(tokenServerInterceptor)
                 .intercept(exceptionServerInterceptor)
+                .sslContext(GrpcSslContexts.configure(sslContextBuilder, SslProvider.OPENSSL).build())
                 .build().start();
     }
+
 
     @PreDestroy
     void shutDown() throws InterruptedException {
@@ -54,6 +61,10 @@ public class RpcServer {
     int port;
     @Value("${app.rpc.address}")
     String address;
+    @Value("${app.rpc.key-file}")
+    String keyFile;
+    @Value("${app.rpc.cert-file}")
+    String certFile;
 
     HealthStatusManager healthStatusManager;
     @Autowired
