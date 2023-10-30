@@ -17,10 +17,10 @@ public class ExceptionServerInterceptor implements ServerInterceptor {
                 try {
                     super.onHalfClose();
                 } catch (IllegalArgumentException e) {
-                    logger.error("", e);
+                    logger.error("bad arguments", e);
                     call.close(Status.INVALID_ARGUMENT.withCause(e).withDescription(e.getMessage()), new Metadata());
                 } catch (ServiceException e) {
-                    logger.error("{} {}", e.getErrorCode(), e.getErrorMessage(), e);
+                    logger.error("wechatpay service exception{} {}", e.getErrorCode(), e.getErrorMessage(), e);
                     call.close(Status.INTERNAL.withCause(e).withDescription(e.getErrorMessage()), new Metadata());
                 }
             }

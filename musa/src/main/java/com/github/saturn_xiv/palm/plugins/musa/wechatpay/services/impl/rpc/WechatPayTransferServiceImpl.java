@@ -1,7 +1,5 @@
 package com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.impl.rpc;
 
-import com.github.saturn_xiv.palm.plugins.musa.helpers.JwtHelper;
-import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerInterceptor;
 import com.github.saturn_xiv.palm.plugins.musa.v1.Error;
 import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
@@ -32,7 +30,6 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
     @Override
     public void getBillReceipt(WechatPayTransferGetBillReceiptRequest request,
                                StreamObserver<WechatPayTransferGetReceiptResponse> responseObserver) {
-        jwt.verify(TokenServerInterceptor.TOKEN.get());
         final var it = transferBillReceiptRepository.findByOutBatchNo(request.getOutBatchNo());
 
         if (it == null) {
@@ -66,8 +63,6 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
     @Override
     public void getElectronicReceipt(WechatPayTransferGetElectronicReceiptRequest request,
                                      StreamObserver<WechatPayTransferGetReceiptResponse> responseObserver) {
-        jwt.verify(TokenServerInterceptor.TOKEN.get());
-
         final var it = transferDetailElectronicReceiptsRepository.findByOutBatchNoAndOutDetailNoAndAcceptType(
                 request.getOutBatchNo(),
                 request.getOutDetailNo(),
@@ -82,8 +77,6 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
     @Override
     public void executeBatch(WechatPayExecuteBatchTransferRequest request,
                              StreamObserver<WechatPayExecuteBatchTransferResponse> responseObserver) {
-        jwt.verify(TokenServerInterceptor.TOKEN.get());
-
         List<WechatPayExecuteBatchTransferResponse.Detail> transferDetailList = new ArrayList<>();
         List<TransferDetailInput> transferDetailInputList = new ArrayList<>();
         long totalAmount = 0;
@@ -159,8 +152,6 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
     @Override
     public void queryBatch(WechatPayQueryBatchTransferRequest request,
                            StreamObserver<WechatPayQueryBatchTransferResponse> responseObserver) {
-        jwt.verify(TokenServerInterceptor.TOKEN.get());
-
         logger.info("query batch transfer {} ({}, {})",
                 request.getOutBatchNo(), request.getOffset(), request.getLimit());
         final var response = transferBatchHelper.query(
@@ -224,8 +215,6 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
     @Override
     public void queryDetail(WechatPayQueryTransferDetailRequest request,
                             StreamObserver<WechatPayQueryTransferDetailResponse> responseObserver) {
-        jwt.verify(TokenServerInterceptor.TOKEN.get());
-
         logger.info("query transfer detail {} ({})", request.getOutBatchNo(), request.getOutDetailNo());
         final var response = transferBatchHelper.query(request.getOutBatchNo(), request.getOutDetailNo());
 
@@ -267,8 +256,7 @@ public class WechatPayTransferServiceImpl extends WechatPayTransferGrpc.WechatPa
         transferBatchHelper = new WechatPayBatchTransferHelper(client.batchTransferService());
     }
 
-    @Autowired
-    JwtHelper jwt;
+
     @Autowired
     WechatPayClient client;
     @Autowired

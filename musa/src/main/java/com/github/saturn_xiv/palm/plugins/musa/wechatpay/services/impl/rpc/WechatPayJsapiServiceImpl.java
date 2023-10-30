@@ -1,7 +1,5 @@
 package com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.impl.rpc;
 
-import com.github.saturn_xiv.palm.plugins.musa.helpers.JwtHelper;
-import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerInterceptor;
 import com.github.saturn_xiv.palm.plugins.musa.v1.*;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers.WechatPayJsapiHelper;
@@ -22,8 +20,6 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
 
     @Override
     public void closeOrder(WechatPayCloseOrderRequest request, StreamObserver<Empty> responseObserver) {
-        jwt.verify(TokenServerInterceptor.TOKEN.get());
-
         logger.warn("close order {}, reason: {}", request.getOutTradeNo(), request.getReason());
         wechatPay.closeOrder(request.getOutTradeNo());
 
@@ -34,8 +30,6 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
 
     @Override
     public void queryOrderById(WechatPayQueryOrderByIdRequest request, StreamObserver<WechatPayTradeResponse> responseObserver) {
-        jwt.verify(TokenServerInterceptor.TOKEN.get());
-
         logger.info("query order by transaction id {}", request.getTransactionId());
         final var response = wechatPay.queryOrderById(request.getTransactionId());
 
@@ -45,8 +39,6 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
 
     @Override
     public void queryOrderByOutTradeNo(WechatPayQueryOrderByOutTradeNoRequest request, StreamObserver<WechatPayTradeResponse> responseObserver) {
-        jwt.verify(TokenServerInterceptor.TOKEN.get());
-
         logger.info("query order by out-trade-no {}", request.getOutTradeNo());
         final var response = wechatPay.queryOrderByOutTradeNo(request.getOutTradeNo());
 
@@ -56,8 +48,6 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
 
     @Override
     public void prepay(WechatPayPrepayRequest request, StreamObserver<WechatPayJsapiPrepayIdResponse> responseObserver) {
-        jwt.verify(TokenServerInterceptor.TOKEN.get());
-
         final var outTradeNo = WechatPayClient.outNo(OutNoType.TRADE);
         final var notifyUrl = WechatPayClient.notifyUrl(request.getNotifyHost(), WechatPayNotifyAction.TRANSCATION);
 
@@ -94,8 +84,7 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
                 .build();
     }
 
-    @Autowired
-    JwtHelper jwt;
+
     @Autowired
     WechatPayClient client;
     @Autowired

@@ -1,7 +1,5 @@
 package com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.impl.rpc;
 
-import com.github.saturn_xiv.palm.plugins.musa.helpers.JwtHelper;
-import com.github.saturn_xiv.palm.plugins.musa.interceptors.TokenServerInterceptor;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeGrpc;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNativeQrCodeUrlResponse;
 import com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayNotifyAction;
@@ -22,8 +20,6 @@ import javax.annotation.PostConstruct;
 public class WechatPayNativeServiceImpl extends WechatPayNativeGrpc.WechatPayNativeImplBase {
     @Override
     public void prepay(WechatPayPrepayRequest request, StreamObserver<WechatPayNativeQrCodeUrlResponse> responseObserver) {
-        jwt.verify(TokenServerInterceptor.TOKEN.get());
-
         final var outTradeNo = WechatPayClient.outNo(OutNoType.TRADE);
         final var notifyUrl = WechatPayClient.notifyUrl(request.getNotifyHost(), WechatPayNotifyAction.TRANSCATION);
 
@@ -47,8 +43,6 @@ public class WechatPayNativeServiceImpl extends WechatPayNativeGrpc.WechatPayNat
     }
 
 
-    @Autowired
-    JwtHelper jwt;
     @Autowired
     WechatPayClient client;
     @Autowired
