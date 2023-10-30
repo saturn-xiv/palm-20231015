@@ -29,7 +29,8 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
     }
 
     @Override
-    public void queryOrderById(WechatPayQueryOrderByIdRequest request, StreamObserver<WechatPayTradeResponse> responseObserver) {
+    public void queryOrderById(WechatPayQueryOrderByIdRequest request,
+                               StreamObserver<WechatPayTradeResponse> responseObserver) {
         logger.info("query order by transaction id {}", request.getTransactionId());
         final var response = wechatPay.queryOrderById(request.getTransactionId());
 
@@ -38,7 +39,8 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
     }
 
     @Override
-    public void queryOrderByOutTradeNo(WechatPayQueryOrderByOutTradeNoRequest request, StreamObserver<WechatPayTradeResponse> responseObserver) {
+    public void queryOrderByOutTradeNo(WechatPayQueryOrderByOutTradeNoRequest request,
+                                       StreamObserver<WechatPayTradeResponse> responseObserver) {
         logger.info("query order by out-trade-no {}", request.getOutTradeNo());
         final var response = wechatPay.queryOrderByOutTradeNo(request.getOutTradeNo());
 
@@ -47,14 +49,18 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
     }
 
     @Override
-    public void prepay(WechatPayPrepayRequest request, StreamObserver<WechatPayJsapiPrepayIdResponse> responseObserver) {
+    public void prepay(WechatPayPrepayRequest request,
+                       StreamObserver<WechatPayJsapiPrepayIdResponse> responseObserver) {
         final var outTradeNo = WechatPayClient.outNo(OutNoType.TRADE);
         final var notifyUrl = WechatPayClient.notifyUrl(request.getNotifyHost(), WechatPayNotifyAction.TRANSCATION);
 
         logger.info("prepay jsapi out-trade-no {}", outTradeNo);
-        var response = wechatPay.prepayWithRequestPayment(request.getAppId(), request.getPayerOpenId(),
+        var response = wechatPay.prepayWithRequestPayment(request.getAppId(),
+                request.getPayerOpenId(),
                 outTradeNo,
-                WechatPayClient.currency(request.getAmount().getCurrency()), request.getAmount().getTotal(), request.getDescription(),
+                WechatPayClient.currency(request.getAmount().getCurrency()),
+                request.getAmount().getTotal(),
+                request.getDescription(),
                 notifyUrl);
 
         storageService.addOrder(request.getAppId(), request.getPayerOpenId(), outTradeNo, request.getAmount(),

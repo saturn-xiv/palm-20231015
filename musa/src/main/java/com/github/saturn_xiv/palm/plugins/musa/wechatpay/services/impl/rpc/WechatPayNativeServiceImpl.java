@@ -19,7 +19,8 @@ import javax.annotation.PostConstruct;
 @Component("palm.musa.service.rpc.wechat-pay.native")
 public class WechatPayNativeServiceImpl extends WechatPayNativeGrpc.WechatPayNativeImplBase {
     @Override
-    public void prepay(WechatPayPrepayRequest request, StreamObserver<WechatPayNativeQrCodeUrlResponse> responseObserver) {
+    public void prepay(WechatPayPrepayRequest request,
+                       StreamObserver<WechatPayNativeQrCodeUrlResponse> responseObserver) {
         final var outTradeNo = WechatPayClient.outNo(OutNoType.TRADE);
         final var notifyUrl = WechatPayClient.notifyUrl(request.getNotifyHost(), WechatPayNotifyAction.TRANSCATION);
 

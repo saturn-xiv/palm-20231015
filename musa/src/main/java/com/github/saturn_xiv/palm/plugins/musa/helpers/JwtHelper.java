@@ -5,29 +5,18 @@ import org.apache.thrift.TException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 @Component("palm.musa.helper.jwt")
 public class JwtHelper {
 
-    public String verify(@NotNull final String token) throws IllegalArgumentException {
-        try {
-            var jwt = loquat.jwt();
-            var subject = jwt.verify(loquat.token, token, AUDIENCE);
-            if (Arrays.asList(clients).contains(subject)) {
-                return subject;
-            }
-            logger.error("invalid subject {}", subject);
-        } catch (TException e) {
-            logger.error("verify token ", e);
-        }
-        throw new IllegalArgumentException("invalid token");
+    public String verify(@NotNull final String token) throws TException {
+        var jwt = loquat.jwt();
+        return jwt.verify(loquat.token, token, AUDIENCE);
     }
 
     public String sign(final String subject, final int years) throws TException {
@@ -43,8 +32,6 @@ public class JwtHelper {
         );
     }
 
-    @Value("${app.loquat.clients}")
-    String[] clients;
 
     @Autowired
     LoquatClient loquat;

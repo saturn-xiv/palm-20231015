@@ -9,8 +9,10 @@ import org.slf4j.LoggerFactory;
 public class WechatPayJsapiHelper {
 
 
-    public PrepayWithRequestPaymentResponse prepayWithRequestPayment(String appId, String payerOpenId, String outTradeNo,
-                                                                     String amountCurrency, int amountTotal, String description, String notifyUrl) {
+    public PrepayWithRequestPaymentResponse prepayWithRequestPayment(String appId, String payerOpenId,
+                                                                     String outTradeNo,
+                                                                     String amountCurrency, int amountTotal,
+                                                                     String description, String notifyUrl) {
 
         final var amount = new Amount();
         amount.setTotal(amountTotal);

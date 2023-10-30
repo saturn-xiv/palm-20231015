@@ -42,7 +42,8 @@ public class WechatPayBillServiceImpl extends WechatPayBillGrpc.WechatPayBillImp
     }
 
     @Override
-    public void fundFlow(WechatPayFundFlowBillRequest request, StreamObserver<WechatPayBillResponse> responseObserver) {
+    public void fundFlow(WechatPayFundFlowBillRequest request,
+                         StreamObserver<WechatPayBillResponse> responseObserver) {
         final var billDate = WechatPayClient.billDate(request.getBillDate());
         var it = storageService.getFundFlowBill(billDate, request.getAccountType());
         byte[] content;

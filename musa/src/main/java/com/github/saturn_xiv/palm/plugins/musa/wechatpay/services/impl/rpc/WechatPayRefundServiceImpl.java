@@ -18,7 +18,8 @@ import javax.annotation.PostConstruct;
 public class WechatPayRefundServiceImpl extends WechatPayRefundGrpc.WechatPayRefundImplBase {
 
     @Override
-    public void create(WechatPayCreateRefundRequest request, StreamObserver<WechatPayRefundResponse> responseObserver) {
+    public void create(WechatPayCreateRefundRequest request,
+                       StreamObserver<WechatPayRefundResponse> responseObserver) {
         final var outRefundNo = WechatPayClient.outNo(OutNoType.REFUND);
         final var notifyUrl = WechatPayClient.notifyUrl(request.getNotifyHost(), WechatPayNotifyAction.REFUND);
         final var currency = WechatPayClient.currency(request.getAmount().getCurrency());

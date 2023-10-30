@@ -12,7 +12,7 @@ import java.io.IOException;
 @Component("palm.musa.task.wechat-pay.receiver.notification.translation")
 public class WechatPayTranslationNotificationReceiver extends WechatPayNotificationReceiver<Transaction> {
     public WechatPayTranslationNotificationReceiver(@Value("${app.wechatpay.merchant-id}") String merchantId,
-                                                    @Value("${app.loquat.clients}") String[] clients) {
+                                                    @Value("${app.wechatpay.notification.clients}") String[] clients) {
         super(merchantId, clients, Transaction.class);
     }
 

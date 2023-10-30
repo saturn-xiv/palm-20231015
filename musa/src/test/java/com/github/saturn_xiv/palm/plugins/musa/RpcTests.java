@@ -43,6 +43,7 @@ public class RpcTests {
                         StandardCharsets.UTF_8).trim())
                 .build();
         var header = new Metadata();
+        // TokenServerInterceptor.TOKEN.get()
         header.put(Metadata.Key.of("Authorization", Metadata.ASCII_STRING_MARSHALLER), "Bearer nil");
         var interceptor = MetadataUtils.newAttachHeadersInterceptor(header);
         try {
