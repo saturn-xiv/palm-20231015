@@ -51,6 +51,7 @@ public class RpcTests {
             var req = HealthCheckRequest.getDefaultInstance();
             var res = stub.check(req);
             System.out.println("health check status: " + res.getStatus());
+            res.getAllFields().forEach((k, v) -> System.out.println(k.getName() + " = " + v.toString()));
         } finally {
             channel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
         }
