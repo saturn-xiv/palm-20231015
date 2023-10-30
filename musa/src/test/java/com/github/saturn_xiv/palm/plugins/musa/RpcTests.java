@@ -1,11 +1,9 @@
 package com.github.saturn_xiv.palm.plugins.musa;
 
-import io.grpc.Grpc;
-import io.grpc.ManagedChannelBuilder;
-import io.grpc.StatusRuntimeException;
-import io.grpc.TlsChannelCredentials;
+import io.grpc.*;
 import io.grpc.health.v1.HealthCheckRequest;
 import io.grpc.health.v1.HealthGrpc;
+import io.grpc.stub.MetadataUtils;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -44,8 +42,11 @@ public class RpcTests {
                         new File("tmp/dev.srv"),
                         StandardCharsets.UTF_8).trim())
                 .build();
+        var header = new Metadata();
+        header.put(Metadata.Key.of("Authorization", Metadata.ASCII_STRING_MARSHALLER), "Bearer nil");
+        var interceptor = MetadataUtils.newAttachHeadersInterceptor(header);
         try {
-            var stub = HealthGrpc.newBlockingStub(channel);
+            var stub = HealthGrpc.newBlockingStub(channel).withInterceptors(interceptor);
             var req = HealthCheckRequest.getDefaultInstance();
             var res = stub.check(req);
             System.out.println("health check status: " + res.getStatus());
