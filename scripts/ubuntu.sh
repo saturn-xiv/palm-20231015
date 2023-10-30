@@ -117,27 +117,27 @@ build_babel() {
 
 build_musa() {
     cd $WORKSPACE/musa
-    gradle clean
-    gradle build    
+    mvn clean
+    mvn package -Dmaven.test.skip=true
     mkdir -p $TARGET_DIR/musa
-    find build/libs ! -name '*plain*' -type f -exec cp '{}' $TARGET_DIR/musa \;
-    cp README.md application-orig.properties $TARGET_DIR/musa/
+    # find build/libs ! -name '*plain*' -type f -exec cp '{}' $TARGET_DIR/musa \;
+    cp target/musa-*.jar  README.md application-orig.properties $TARGET_DIR/musa/
 }
 
 copy_jdk() {
     cd $TARGET_DIR
-    local jdk_version="20.0.2"
+    local jdk_version="21.0.1"
     
     if [ ! -f $HOME/downloads/openjdk-${jdk_version}_linux-x64_bin.tar.gz ]
     then
-        wget -q -P $HOME/downloads https://download.java.net/java/GA/jdk20.0.2/6e380f22cbe7469fa75fb448bd903d8e/9/GPL/openjdk-20.0.2_linux-x64_bin.tar.gz
+        wget -q -P $HOME/downloads https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
     fi
     tar xf $HOME/downloads/openjdk-${jdk_version}_linux-x64_bin.tar.gz
     mv jdk-${jdk_version} jdk-${jdk_version}-x64
 
     if [ ! -f $HOME/downloads/openjdk-${jdk_version}_linux-aarch64_bin.tar.gz ]
     then
-        wget -q -P $HOME/downloads https://download.java.net/java/GA/jdk20.0.2/6e380f22cbe7469fa75fb448bd903d8e/9/GPL/openjdk-20.0.2_linux-aarch64_bin.tar.gz
+        wget -q -P $HOME/downloads https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-aarch64_bin.tar.gz
     fi    
     tar xf $HOME/downloads/openjdk-${jdk_version}_linux-aarch64_bin.tar.gz
     mv jdk-${jdk_version} jdk-${jdk_version}-aarch64
