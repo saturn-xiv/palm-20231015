@@ -2,6 +2,7 @@
 #include "loquat/version.hpp"
 
 #include <event2/event.h>
+#include <openssl/opensslv.h>
 #include <thrift/version.h>
 #include <tink/config/tink_config.h>
 #include <tink/jwt/jwt_mac_config.h>
@@ -40,12 +41,17 @@ int main(int argc, char** argv) {
     rpc_command.add_argument("-p", "--port")
         .default_value(8080)
         .scan<'i', int>();
-    rpc_command.add_argument("-C", "--cert-file")
+    rpc_command.add_argument("-s", "--ssl")
+        .default_value(false)
+        .help("enable mutual tls mode")
+        .implicit_value(true);
+    rpc_command.add_argument("--cert-file")
         .default_value(loquat::PROJECT_NAME + ".crt")
         .required();
-    rpc_command.add_argument("-k", "--key-file")
+    rpc_command.add_argument("--key-file")
         .default_value(loquat::PROJECT_NAME + ".key")
         .required();
+    rpc_command.add_argument("--ca-file").default_value("ca.crt").required();
   }
 
   program.add_subparser(rpc_command);
@@ -63,6 +69,7 @@ int main(int argc, char** argv) {
                                                    : spdlog::level::info);
     spdlog::debug("run on debug mode {}", version);
 
+    spdlog::debug("OpenSSL v{}", OPENSSL_VERSION_STR);
     spdlog::debug("libevent v{}", event_get_version());
     spdlog::debug("Tink v{}", crypto::tink::Version::kTinkVersion);
     spdlog::debug(
@@ -89,10 +96,16 @@ int main(int argc, char** argv) {
     const int port = rpc_command.get<int>("--port");
     const std::string cert_file = rpc_command.get<std::string>("--cert-file");
     const std::string key_file = rpc_command.get<std::string>("--key-file");
+    const std::string ca_file = rpc_command.get<std::string>("--ca-file");
+    const auto ssl = std::make_optional<loquat::application::Ssl>(
+        cert_file, key_file, ca_file);
+
     apache::thrift::GlobalOutput.setOutputFunction(loquat::set_thrift_logger);
-    
-    loquat::application::launch(static_cast<uint16_t>(port), cert_file,
-                                key_file);
+
+    loquat::application::launch(
+        static_cast<uint16_t>(port),
+        rpc_command.get<bool>("--ssl") ? ssl : std::nullopt);
+
   } else if (program.is_subcommand_used(generate_token_command)) {
     const int years = generate_token_command.get<int>("--years");
     const std::string key_id =

@@ -17,8 +17,7 @@
 #include <thrift/transport/TTransportUtils.h>
 
 void loquat::application::launch(const uint16_t port,
-                                 const std::string& cert_file,
-                                 const std::string& key_file) {
+                                 std::optional<loquat::application::Ssl> ssl) {
   std::shared_ptr<AesHandler> aesHandler = std::make_shared<AesHandler>();
   std::shared_ptr<v1::AesProcessor> aesProcessor =
       std::make_shared<v1::AesProcessor>(aesHandler);
@@ -65,7 +64,7 @@ void loquat::application::launch(const uint16_t port,
           multiplexedProcessor);
 
   auto threads_count = std::thread::hardware_concurrency();
-  spdlog::info("listening on tcp://0.0.0.0:{}", port);
+
   std::shared_ptr<apache::thrift::concurrency::ThreadFactory> threadFactory =
       std::make_shared<apache::thrift::concurrency::ThreadFactory>();
   std::shared_ptr<apache::thrift::concurrency::ThreadManager> threadManager =
@@ -74,39 +73,47 @@ void loquat::application::launch(const uint16_t port,
   threadManager->threadFactory(threadFactory);
   threadManager->start();
 
-  std::shared_ptr<apache::thrift::transport::TSSLSocketFactory>
-      sslSocketFactory =
-          std::shared_ptr<apache::thrift::transport::TSSLSocketFactory>(
-              new apache::thrift::transport::TSSLSocketFactory());
-  {
-    spdlog::debug("load cert from {}, key from {}", cert_file, key_file);
-    sslSocketFactory->loadCertificate(cert_file.c_str());
-    sslSocketFactory->loadPrivateKey(key_file.c_str());
-
-    sslSocketFactory->ciphers("ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
-  }
-
-  // TODO thrift-rust doesn't support tls yet
-  std::shared_ptr<apache::thrift::transport::TNonblockingServerSocket>
-      serverSocket =
-          std::make_shared<apache::thrift::transport::TNonblockingServerSocket>(
-              port);
-
-  // std::shared_ptr<apache::thrift::transport::TNonblockingSSLServerSocket>
-  //     serverSocket = std::make_shared<
-  //         apache::thrift::transport::TNonblockingSSLServerSocket>(
-  //         port, sslSocketFactory);
-
   std::shared_ptr<apache::thrift::protocol::TBinaryProtocolFactoryT<
       apache::thrift::transport::TFramedTransport>>
       protocolFactory =
           std::make_shared<apache::thrift::protocol::TBinaryProtocolFactoryT<
               apache::thrift::transport::TFramedTransport>>();
 
-  apache::thrift::server::TNonblockingServer server(
-      multiplexedProcessor, protocolFactory, serverSocket, threadManager);
-  server.setNumIOThreads(threads_count * 2 + 1);
-  server.serve();
+  std::shared_ptr<apache::thrift::server::TNonblockingServer> server;
+
+  if (ssl) {
+    std::shared_ptr<apache::thrift::transport::TSSLSocketFactory>
+        sslSocketFactory =
+            std::make_shared<apache::thrift::transport::TSSLSocketFactory>();
+    {
+      spdlog::info("listening on tcps://0.0.0.0:{}", port);
+      spdlog::debug("load cert from {}, key from {}, ca from {}",
+                    ssl->cert_file, ssl->key_file, ssl->ca_file);
+      sslSocketFactory->loadCertificate(ssl->cert_file.c_str());
+      sslSocketFactory->loadPrivateKey(ssl->key_file.c_str());
+      sslSocketFactory->loadTrustedCertificates(ssl->ca_file.c_str());
+
+      sslSocketFactory->ciphers("ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
+    }
+
+    std::shared_ptr<apache::thrift::transport::TNonblockingSSLServerSocket>
+        serverSocket = std::make_shared<
+            apache::thrift::transport::TNonblockingSSLServerSocket>(
+            port, sslSocketFactory);
+
+    server = std::make_shared<apache::thrift::server::TNonblockingServer>(
+        multiplexedProcessor, protocolFactory, serverSocket, threadManager);
+  } else {
+    spdlog::info("listening on tcp://0.0.0.0:{}", port);
+    std::shared_ptr<apache::thrift::transport::TNonblockingServerSocket>
+        serverSocket = std::make_shared<
+            apache::thrift::transport::TNonblockingServerSocket>(port);
+    server = std::make_shared<apache::thrift::server::TNonblockingServer>(
+        multiplexedProcessor, protocolFactory, serverSocket, threadManager);
+  }
+
+  server->setNumIOThreads(threads_count * 2 + 1);
+  server->serve();
 }
 
 void loquat::AesHandler::encrypt(std::string& code, const std::string& auth,
