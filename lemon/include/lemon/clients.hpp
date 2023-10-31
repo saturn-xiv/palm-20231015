@@ -10,7 +10,6 @@
 
 #include "babel.grpc.pb.h"
 #include "cbeta.grpc.pb.h"
-#include "chats.grpc.pb.h"
 #include "cms.grpc.pb.h"
 #include "courses.grpc.pb.h"
 #include "cscd.grpc.pb.h"
