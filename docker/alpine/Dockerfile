@@ -8,6 +8,7 @@ RUN apk add vim curl bash zsh pwgen openssl git tmux rsync \
     build-base cmake git \
     python3 py3-pip python3-dev \
     nodejs npm yarn \
+    gradle maven \
     openssl-dev 
 
 RUN mkdir -p $HOME/downloads $HOME/local $HOME/tmp
