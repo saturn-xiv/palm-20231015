@@ -768,10 +768,11 @@ proto.palm.musa.v1.WechatPayPrepayRequest.prototype.toObject = function(opt_incl
 proto.palm.musa.v1.WechatPayPrepayRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     appId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    payerOpenId: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    outTradeNo: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    payerOpenId: jspb.Message.getFieldWithDefault(msg, 11, ""),
     amount: (f = msg.getAmount()) && proto.palm.musa.v1.WechatPayPrepayRequest.Amount.toObject(includeInstance, f),
-    description: jspb.Message.getFieldWithDefault(msg, 9, ""),
-    notifyHost: jspb.Message.getFieldWithDefault(msg, 11, "")
+    description: jspb.Message.getFieldWithDefault(msg, 98, ""),
+    notifyHost: jspb.Message.getFieldWithDefault(msg, 99, "")
   };
 
   if (includeInstance) {
@@ -814,18 +815,22 @@ proto.palm.musa.v1.WechatPayPrepayRequest.deserializeBinaryFromReader = function
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
+      msg.setOutTradeNo(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
       msg.setPayerOpenId(value);
       break;
-    case 3:
+    case 12:
       var value = new proto.palm.musa.v1.WechatPayPrepayRequest.Amount;
       reader.readMessage(value,proto.palm.musa.v1.WechatPayPrepayRequest.Amount.deserializeBinaryFromReader);
       msg.setAmount(value);
       break;
-    case 9:
+    case 98:
       var value = /** @type {string} */ (reader.readString());
       msg.setDescription(value);
       break;
-    case 11:
+    case 99:
       var value = /** @type {string} */ (reader.readString());
       msg.setNotifyHost(value);
       break;
@@ -872,10 +877,17 @@ proto.palm.musa.v1.WechatPayPrepayRequest.serializeBinaryToWriter = function(mes
       f
     );
   }
+  f = /** @type {string} */ (jspb.Message.getField(message, 11));
+  if (f != null) {
+    writer.writeString(
+      11,
+      f
+    );
+  }
   f = message.getAmount();
   if (f != null) {
     writer.writeMessage(
-      3,
+      12,
       f,
       proto.palm.musa.v1.WechatPayPrepayRequest.Amount.serializeBinaryToWriter
     );
@@ -883,14 +895,14 @@ proto.palm.musa.v1.WechatPayPrepayRequest.serializeBinaryToWriter = function(mes
   f = message.getDescription();
   if (f.length > 0) {
     writer.writeString(
-      9,
+      98,
       f
     );
   }
   f = message.getNotifyHost();
   if (f.length > 0) {
     writer.writeString(
-      11,
+      99,
       f
     );
   }
@@ -1076,10 +1088,10 @@ proto.palm.musa.v1.WechatPayPrepayRequest.prototype.setAppId = function(value) {
 
 
 /**
- * optional string payer_open_id = 2;
+ * optional string out_trade_no = 2;
  * @return {string}
  */
-proto.palm.musa.v1.WechatPayPrepayRequest.prototype.getPayerOpenId = function() {
+proto.palm.musa.v1.WechatPayPrepayRequest.prototype.getOutTradeNo = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -1088,7 +1100,7 @@ proto.palm.musa.v1.WechatPayPrepayRequest.prototype.getPayerOpenId = function() 
  * @param {string} value
  * @return {!proto.palm.musa.v1.WechatPayPrepayRequest} returns this
  */
-proto.palm.musa.v1.WechatPayPrepayRequest.prototype.setPayerOpenId = function(value) {
+proto.palm.musa.v1.WechatPayPrepayRequest.prototype.setOutTradeNo = function(value) {
   return jspb.Message.setField(this, 2, value);
 };
 
@@ -1097,7 +1109,7 @@ proto.palm.musa.v1.WechatPayPrepayRequest.prototype.setPayerOpenId = function(va
  * Clears the field making it undefined.
  * @return {!proto.palm.musa.v1.WechatPayPrepayRequest} returns this
  */
-proto.palm.musa.v1.WechatPayPrepayRequest.prototype.clearPayerOpenId = function() {
+proto.palm.musa.v1.WechatPayPrepayRequest.prototype.clearOutTradeNo = function() {
   return jspb.Message.setField(this, 2, undefined);
 };
 
@@ -1106,18 +1118,54 @@ proto.palm.musa.v1.WechatPayPrepayRequest.prototype.clearPayerOpenId = function(
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.palm.musa.v1.WechatPayPrepayRequest.prototype.hasPayerOpenId = function() {
+proto.palm.musa.v1.WechatPayPrepayRequest.prototype.hasOutTradeNo = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 
 
 /**
- * optional Amount amount = 3;
+ * optional string payer_open_id = 11;
+ * @return {string}
+ */
+proto.palm.musa.v1.WechatPayPrepayRequest.prototype.getPayerOpenId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.musa.v1.WechatPayPrepayRequest} returns this
+ */
+proto.palm.musa.v1.WechatPayPrepayRequest.prototype.setPayerOpenId = function(value) {
+  return jspb.Message.setField(this, 11, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.palm.musa.v1.WechatPayPrepayRequest} returns this
+ */
+proto.palm.musa.v1.WechatPayPrepayRequest.prototype.clearPayerOpenId = function() {
+  return jspb.Message.setField(this, 11, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.musa.v1.WechatPayPrepayRequest.prototype.hasPayerOpenId = function() {
+  return jspb.Message.getField(this, 11) != null;
+};
+
+
+/**
+ * optional Amount amount = 12;
  * @return {?proto.palm.musa.v1.WechatPayPrepayRequest.Amount}
  */
 proto.palm.musa.v1.WechatPayPrepayRequest.prototype.getAmount = function() {
   return /** @type{?proto.palm.musa.v1.WechatPayPrepayRequest.Amount} */ (
-    jspb.Message.getWrapperField(this, proto.palm.musa.v1.WechatPayPrepayRequest.Amount, 3));
+    jspb.Message.getWrapperField(this, proto.palm.musa.v1.WechatPayPrepayRequest.Amount, 12));
 };
 
 
@@ -1126,7 +1174,7 @@ proto.palm.musa.v1.WechatPayPrepayRequest.prototype.getAmount = function() {
  * @return {!proto.palm.musa.v1.WechatPayPrepayRequest} returns this
 */
 proto.palm.musa.v1.WechatPayPrepayRequest.prototype.setAmount = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
+  return jspb.Message.setWrapperField(this, 12, value);
 };
 
 
@@ -1144,16 +1192,16 @@ proto.palm.musa.v1.WechatPayPrepayRequest.prototype.clearAmount = function() {
  * @return {boolean}
  */
 proto.palm.musa.v1.WechatPayPrepayRequest.prototype.hasAmount = function() {
-  return jspb.Message.getField(this, 3) != null;
+  return jspb.Message.getField(this, 12) != null;
 };
 
 
 /**
- * optional string description = 9;
+ * optional string description = 98;
  * @return {string}
  */
 proto.palm.musa.v1.WechatPayPrepayRequest.prototype.getDescription = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 98, ""));
 };
 
 
@@ -1162,16 +1210,16 @@ proto.palm.musa.v1.WechatPayPrepayRequest.prototype.getDescription = function() 
  * @return {!proto.palm.musa.v1.WechatPayPrepayRequest} returns this
  */
 proto.palm.musa.v1.WechatPayPrepayRequest.prototype.setDescription = function(value) {
-  return jspb.Message.setProto3StringField(this, 9, value);
+  return jspb.Message.setProto3StringField(this, 98, value);
 };
 
 
 /**
- * optional string notify_host = 11;
+ * optional string notify_host = 99;
  * @return {string}
  */
 proto.palm.musa.v1.WechatPayPrepayRequest.prototype.getNotifyHost = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 99, ""));
 };
 
 
@@ -1180,7 +1228,7 @@ proto.palm.musa.v1.WechatPayPrepayRequest.prototype.getNotifyHost = function() {
  * @return {!proto.palm.musa.v1.WechatPayPrepayRequest} returns this
  */
 proto.palm.musa.v1.WechatPayPrepayRequest.prototype.setNotifyHost = function(value) {
-  return jspb.Message.setProto3StringField(this, 11, value);
+  return jspb.Message.setProto3StringField(this, 99, value);
 };
 
 

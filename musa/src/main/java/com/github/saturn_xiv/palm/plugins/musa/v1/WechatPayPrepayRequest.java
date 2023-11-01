@@ -17,6 +17,7 @@ private static final long serialVersionUID = 0L;
   }
   private WechatPayPrepayRequest() {
     appId_ = "";
+    outTradeNo_ = "";
     payerOpenId_ = "";
     description_ = "";
     notifyHost_ = "";
@@ -663,19 +664,66 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int PAYER_OPEN_ID_FIELD_NUMBER = 2;
+  public static final int OUT_TRADE_NO_FIELD_NUMBER = 2;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object outTradeNo_ = "";
+  /**
+   * <code>optional string out_trade_no = 2;</code>
+   * @return Whether the outTradeNo field is set.
+   */
+  @java.lang.Override
+  public boolean hasOutTradeNo() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   * <code>optional string out_trade_no = 2;</code>
+   * @return The outTradeNo.
+   */
+  @java.lang.Override
+  public java.lang.String getOutTradeNo() {
+    java.lang.Object ref = outTradeNo_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      outTradeNo_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string out_trade_no = 2;</code>
+   * @return The bytes for outTradeNo.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getOutTradeNoBytes() {
+    java.lang.Object ref = outTradeNo_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      outTradeNo_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int PAYER_OPEN_ID_FIELD_NUMBER = 11;
   @SuppressWarnings("serial")
   private volatile java.lang.Object payerOpenId_ = "";
   /**
-   * <code>optional string payer_open_id = 2;</code>
+   * <code>optional string payer_open_id = 11;</code>
    * @return Whether the payerOpenId field is set.
    */
   @java.lang.Override
   public boolean hasPayerOpenId() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return ((bitField0_ & 0x00000002) != 0);
   }
   /**
-   * <code>optional string payer_open_id = 2;</code>
+   * <code>optional string payer_open_id = 11;</code>
    * @return The payerOpenId.
    */
   @java.lang.Override
@@ -692,7 +740,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>optional string payer_open_id = 2;</code>
+   * <code>optional string payer_open_id = 11;</code>
    * @return The bytes for payerOpenId.
    */
   @java.lang.Override
@@ -710,18 +758,18 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int AMOUNT_FIELD_NUMBER = 3;
+  public static final int AMOUNT_FIELD_NUMBER = 12;
   private com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount amount_;
   /**
-   * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+   * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;</code>
    * @return Whether the amount field is set.
    */
   @java.lang.Override
   public boolean hasAmount() {
-    return ((bitField0_ & 0x00000002) != 0);
+    return ((bitField0_ & 0x00000004) != 0);
   }
   /**
-   * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+   * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;</code>
    * @return The amount.
    */
   @java.lang.Override
@@ -729,18 +777,18 @@ private static final long serialVersionUID = 0L;
     return amount_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.getDefaultInstance() : amount_;
   }
   /**
-   * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+   * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;</code>
    */
   @java.lang.Override
   public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.AmountOrBuilder getAmountOrBuilder() {
     return amount_ == null ? com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.getDefaultInstance() : amount_;
   }
 
-  public static final int DESCRIPTION_FIELD_NUMBER = 9;
+  public static final int DESCRIPTION_FIELD_NUMBER = 98;
   @SuppressWarnings("serial")
   private volatile java.lang.Object description_ = "";
   /**
-   * <code>string description = 9;</code>
+   * <code>string description = 98;</code>
    * @return The description.
    */
   @java.lang.Override
@@ -757,7 +805,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string description = 9;</code>
+   * <code>string description = 98;</code>
    * @return The bytes for description.
    */
   @java.lang.Override
@@ -775,11 +823,11 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int NOTIFY_HOST_FIELD_NUMBER = 11;
+  public static final int NOTIFY_HOST_FIELD_NUMBER = 99;
   @SuppressWarnings("serial")
   private volatile java.lang.Object notifyHost_ = "";
   /**
-   * <code>string notify_host = 11;</code>
+   * <code>string notify_host = 99;</code>
    * @return The notifyHost.
    */
   @java.lang.Override
@@ -796,7 +844,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string notify_host = 11;</code>
+   * <code>string notify_host = 99;</code>
    * @return The bytes for notifyHost.
    */
   @java.lang.Override
@@ -832,16 +880,19 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, appId_);
     }
     if (((bitField0_ & 0x00000001) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, payerOpenId_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, outTradeNo_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      output.writeMessage(3, getAmount());
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, payerOpenId_);
+    }
+    if (((bitField0_ & 0x00000004) != 0)) {
+      output.writeMessage(12, getAmount());
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, description_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 98, description_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(notifyHost_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, notifyHost_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 99, notifyHost_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -856,17 +907,20 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, appId_);
     }
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, payerOpenId_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, outTradeNo_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, payerOpenId_);
+    }
+    if (((bitField0_ & 0x00000004) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(3, getAmount());
+        .computeMessageSize(12, getAmount());
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, description_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(98, description_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(notifyHost_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, notifyHost_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(99, notifyHost_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -885,6 +939,11 @@ private static final long serialVersionUID = 0L;
 
     if (!getAppId()
         .equals(other.getAppId())) return false;
+    if (hasOutTradeNo() != other.hasOutTradeNo()) return false;
+    if (hasOutTradeNo()) {
+      if (!getOutTradeNo()
+          .equals(other.getOutTradeNo())) return false;
+    }
     if (hasPayerOpenId() != other.hasPayerOpenId()) return false;
     if (hasPayerOpenId()) {
       if (!getPayerOpenId()
@@ -912,6 +971,10 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + APP_ID_FIELD_NUMBER;
     hash = (53 * hash) + getAppId().hashCode();
+    if (hasOutTradeNo()) {
+      hash = (37 * hash) + OUT_TRADE_NO_FIELD_NUMBER;
+      hash = (53 * hash) + getOutTradeNo().hashCode();
+    }
     if (hasPayerOpenId()) {
       hash = (37 * hash) + PAYER_OPEN_ID_FIELD_NUMBER;
       hash = (53 * hash) + getPayerOpenId().hashCode();
@@ -1062,6 +1125,7 @@ private static final long serialVersionUID = 0L;
       super.clear();
       bitField0_ = 0;
       appId_ = "";
+      outTradeNo_ = "";
       payerOpenId_ = "";
       amount_ = null;
       if (amountBuilder_ != null) {
@@ -1108,19 +1172,23 @@ private static final long serialVersionUID = 0L;
       }
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.payerOpenId_ = payerOpenId_;
+        result.outTradeNo_ = outTradeNo_;
         to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.amount_ = amountBuilder_ == null
-            ? amount_
-            : amountBuilder_.build();
+        result.payerOpenId_ = payerOpenId_;
         to_bitField0_ |= 0x00000002;
       }
       if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.description_ = description_;
+        result.amount_ = amountBuilder_ == null
+            ? amount_
+            : amountBuilder_.build();
+        to_bitField0_ |= 0x00000004;
       }
       if (((from_bitField0_ & 0x00000010) != 0)) {
+        result.description_ = description_;
+      }
+      if (((from_bitField0_ & 0x00000020) != 0)) {
         result.notifyHost_ = notifyHost_;
       }
       result.bitField0_ |= to_bitField0_;
@@ -1175,9 +1243,14 @@ private static final long serialVersionUID = 0L;
         bitField0_ |= 0x00000001;
         onChanged();
       }
+      if (other.hasOutTradeNo()) {
+        outTradeNo_ = other.outTradeNo_;
+        bitField0_ |= 0x00000002;
+        onChanged();
+      }
       if (other.hasPayerOpenId()) {
         payerOpenId_ = other.payerOpenId_;
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         onChanged();
       }
       if (other.hasAmount()) {
@@ -1185,12 +1258,12 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getDescription().isEmpty()) {
         description_ = other.description_;
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         onChanged();
       }
       if (!other.getNotifyHost().isEmpty()) {
         notifyHost_ = other.notifyHost_;
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         onChanged();
       }
       this.mergeUnknownFields(other.getUnknownFields());
@@ -1225,27 +1298,32 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 10
             case 18: {
-              payerOpenId_ = input.readStringRequireUtf8();
+              outTradeNo_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000002;
               break;
             } // case 18
-            case 26: {
+            case 90: {
+              payerOpenId_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 90
+            case 98: {
               input.readMessage(
                   getAmountFieldBuilder().getBuilder(),
                   extensionRegistry);
-              bitField0_ |= 0x00000004;
-              break;
-            } // case 26
-            case 74: {
-              description_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000008;
               break;
-            } // case 74
-            case 90: {
-              notifyHost_ = input.readStringRequireUtf8();
+            } // case 98
+            case 786: {
+              description_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000010;
               break;
-            } // case 90
+            } // case 786
+            case 794: {
+              notifyHost_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000020;
+              break;
+            } // case 794
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -1335,16 +1413,95 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object payerOpenId_ = "";
+    private java.lang.Object outTradeNo_ = "";
     /**
-     * <code>optional string payer_open_id = 2;</code>
-     * @return Whether the payerOpenId field is set.
+     * <code>optional string out_trade_no = 2;</code>
+     * @return Whether the outTradeNo field is set.
      */
-    public boolean hasPayerOpenId() {
+    public boolean hasOutTradeNo() {
       return ((bitField0_ & 0x00000002) != 0);
     }
     /**
-     * <code>optional string payer_open_id = 2;</code>
+     * <code>optional string out_trade_no = 2;</code>
+     * @return The outTradeNo.
+     */
+    public java.lang.String getOutTradeNo() {
+      java.lang.Object ref = outTradeNo_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        outTradeNo_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string out_trade_no = 2;</code>
+     * @return The bytes for outTradeNo.
+     */
+    public com.google.protobuf.ByteString
+        getOutTradeNoBytes() {
+      java.lang.Object ref = outTradeNo_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        outTradeNo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string out_trade_no = 2;</code>
+     * @param value The outTradeNo to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOutTradeNo(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      outTradeNo_ = value;
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string out_trade_no = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearOutTradeNo() {
+      outTradeNo_ = getDefaultInstance().getOutTradeNo();
+      bitField0_ = (bitField0_ & ~0x00000002);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string out_trade_no = 2;</code>
+     * @param value The bytes for outTradeNo to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOutTradeNoBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      outTradeNo_ = value;
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object payerOpenId_ = "";
+    /**
+     * <code>optional string payer_open_id = 11;</code>
+     * @return Whether the payerOpenId field is set.
+     */
+    public boolean hasPayerOpenId() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional string payer_open_id = 11;</code>
      * @return The payerOpenId.
      */
     public java.lang.String getPayerOpenId() {
@@ -1360,7 +1517,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional string payer_open_id = 2;</code>
+     * <code>optional string payer_open_id = 11;</code>
      * @return The bytes for payerOpenId.
      */
     public com.google.protobuf.ByteString
@@ -1377,7 +1534,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional string payer_open_id = 2;</code>
+     * <code>optional string payer_open_id = 11;</code>
      * @param value The payerOpenId to set.
      * @return This builder for chaining.
      */
@@ -1385,22 +1542,22 @@ private static final long serialVersionUID = 0L;
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
       payerOpenId_ = value;
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
     /**
-     * <code>optional string payer_open_id = 2;</code>
+     * <code>optional string payer_open_id = 11;</code>
      * @return This builder for chaining.
      */
     public Builder clearPayerOpenId() {
       payerOpenId_ = getDefaultInstance().getPayerOpenId();
-      bitField0_ = (bitField0_ & ~0x00000002);
+      bitField0_ = (bitField0_ & ~0x00000004);
       onChanged();
       return this;
     }
     /**
-     * <code>optional string payer_open_id = 2;</code>
+     * <code>optional string payer_open_id = 11;</code>
      * @param value The bytes for payerOpenId to set.
      * @return This builder for chaining.
      */
@@ -1409,7 +1566,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       payerOpenId_ = value;
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
@@ -1418,14 +1575,14 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.AmountOrBuilder> amountBuilder_;
     /**
-     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;</code>
      * @return Whether the amount field is set.
      */
     public boolean hasAmount() {
-      return ((bitField0_ & 0x00000004) != 0);
+      return ((bitField0_ & 0x00000008) != 0);
     }
     /**
-     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;</code>
      * @return The amount.
      */
     public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount getAmount() {
@@ -1436,7 +1593,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;</code>
      */
     public Builder setAmount(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount value) {
       if (amountBuilder_ == null) {
@@ -1447,12 +1604,12 @@ private static final long serialVersionUID = 0L;
       } else {
         amountBuilder_.setMessage(value);
       }
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000008;
       onChanged();
       return this;
     }
     /**
-     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;</code>
      */
     public Builder setAmount(
         com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.Builder builderForValue) {
@@ -1461,16 +1618,16 @@ private static final long serialVersionUID = 0L;
       } else {
         amountBuilder_.setMessage(builderForValue.build());
       }
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000008;
       onChanged();
       return this;
     }
     /**
-     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;</code>
      */
     public Builder mergeAmount(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount value) {
       if (amountBuilder_ == null) {
-        if (((bitField0_ & 0x00000004) != 0) &&
+        if (((bitField0_ & 0x00000008) != 0) &&
           amount_ != null &&
           amount_ != com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.getDefaultInstance()) {
           getAmountBuilder().mergeFrom(value);
@@ -1481,16 +1638,16 @@ private static final long serialVersionUID = 0L;
         amountBuilder_.mergeFrom(value);
       }
       if (amount_ != null) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         onChanged();
       }
       return this;
     }
     /**
-     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;</code>
      */
     public Builder clearAmount() {
-      bitField0_ = (bitField0_ & ~0x00000004);
+      bitField0_ = (bitField0_ & ~0x00000008);
       amount_ = null;
       if (amountBuilder_ != null) {
         amountBuilder_.dispose();
@@ -1500,15 +1657,15 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;</code>
      */
     public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.Builder getAmountBuilder() {
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000008;
       onChanged();
       return getAmountFieldBuilder().getBuilder();
     }
     /**
-     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;</code>
      */
     public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.AmountOrBuilder getAmountOrBuilder() {
       if (amountBuilder_ != null) {
@@ -1519,7 +1676,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;</code>
+     * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount.Builder, com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.AmountOrBuilder> 
@@ -1537,7 +1694,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object description_ = "";
     /**
-     * <code>string description = 9;</code>
+     * <code>string description = 98;</code>
      * @return The description.
      */
     public java.lang.String getDescription() {
@@ -1553,7 +1710,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string description = 9;</code>
+     * <code>string description = 98;</code>
      * @return The bytes for description.
      */
     public com.google.protobuf.ByteString
@@ -1570,7 +1727,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string description = 9;</code>
+     * <code>string description = 98;</code>
      * @param value The description to set.
      * @return This builder for chaining.
      */
@@ -1578,22 +1735,22 @@ private static final long serialVersionUID = 0L;
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
       description_ = value;
-      bitField0_ |= 0x00000008;
+      bitField0_ |= 0x00000010;
       onChanged();
       return this;
     }
     /**
-     * <code>string description = 9;</code>
+     * <code>string description = 98;</code>
      * @return This builder for chaining.
      */
     public Builder clearDescription() {
       description_ = getDefaultInstance().getDescription();
-      bitField0_ = (bitField0_ & ~0x00000008);
+      bitField0_ = (bitField0_ & ~0x00000010);
       onChanged();
       return this;
     }
     /**
-     * <code>string description = 9;</code>
+     * <code>string description = 98;</code>
      * @param value The bytes for description to set.
      * @return This builder for chaining.
      */
@@ -1602,14 +1759,14 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       description_ = value;
-      bitField0_ |= 0x00000008;
+      bitField0_ |= 0x00000010;
       onChanged();
       return this;
     }
 
     private java.lang.Object notifyHost_ = "";
     /**
-     * <code>string notify_host = 11;</code>
+     * <code>string notify_host = 99;</code>
      * @return The notifyHost.
      */
     public java.lang.String getNotifyHost() {
@@ -1625,7 +1782,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string notify_host = 11;</code>
+     * <code>string notify_host = 99;</code>
      * @return The bytes for notifyHost.
      */
     public com.google.protobuf.ByteString
@@ -1642,7 +1799,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string notify_host = 11;</code>
+     * <code>string notify_host = 99;</code>
      * @param value The notifyHost to set.
      * @return This builder for chaining.
      */
@@ -1650,22 +1807,22 @@ private static final long serialVersionUID = 0L;
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
       notifyHost_ = value;
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000020;
       onChanged();
       return this;
     }
     /**
-     * <code>string notify_host = 11;</code>
+     * <code>string notify_host = 99;</code>
      * @return This builder for chaining.
      */
     public Builder clearNotifyHost() {
       notifyHost_ = getDefaultInstance().getNotifyHost();
-      bitField0_ = (bitField0_ & ~0x00000010);
+      bitField0_ = (bitField0_ & ~0x00000020);
       onChanged();
       return this;
     }
     /**
-     * <code>string notify_host = 11;</code>
+     * <code>string notify_host = 99;</code>
      * @param value The bytes for notifyHost to set.
      * @return This builder for chaining.
      */
@@ -1674,7 +1831,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       notifyHost_ = value;
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000020;
       onChanged();
       return this;
     }

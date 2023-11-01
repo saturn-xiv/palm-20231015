@@ -7,6 +7,11 @@ export class WechatPayPrepayRequest extends jspb.Message {
   getAppId(): string;
   setAppId(value: string): WechatPayPrepayRequest;
 
+  getOutTradeNo(): string;
+  setOutTradeNo(value: string): WechatPayPrepayRequest;
+  hasOutTradeNo(): boolean;
+  clearOutTradeNo(): WechatPayPrepayRequest;
+
   getPayerOpenId(): string;
   setPayerOpenId(value: string): WechatPayPrepayRequest;
   hasPayerOpenId(): boolean;
@@ -34,6 +39,7 @@ export class WechatPayPrepayRequest extends jspb.Message {
 export namespace WechatPayPrepayRequest {
   export type AsObject = {
     appId: string,
+    outTradeNo?: string,
     payerOpenId?: string,
     amount?: WechatPayPrepayRequest.Amount.AsObject,
     description: string,
@@ -63,9 +69,14 @@ export namespace WechatPayPrepayRequest {
   }
 
 
+  export enum OutTradeNoCase { 
+    _OUT_TRADE_NO_NOT_SET = 0,
+    OUT_TRADE_NO = 2,
+  }
+
   export enum PayerOpenIdCase { 
     _PAYER_OPEN_ID_NOT_SET = 0,
-    PAYER_OPEN_ID = 2,
+    PAYER_OPEN_ID = 11,
   }
 }
 

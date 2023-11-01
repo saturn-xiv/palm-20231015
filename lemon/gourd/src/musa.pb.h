@@ -699,10 +699,11 @@ class WechatPayPrepayRequest final :
 
   enum : int {
     kAppIdFieldNumber = 1,
-    kPayerOpenIdFieldNumber = 2,
-    kDescriptionFieldNumber = 9,
-    kNotifyHostFieldNumber = 11,
-    kAmountFieldNumber = 3,
+    kOutTradeNoFieldNumber = 2,
+    kPayerOpenIdFieldNumber = 11,
+    kDescriptionFieldNumber = 98,
+    kNotifyHostFieldNumber = 99,
+    kAmountFieldNumber = 12,
   };
   // string app_id = 1;
   void clear_app_id() ;
@@ -720,7 +721,24 @@ class WechatPayPrepayRequest final :
   std::string* _internal_mutable_app_id();
 
   public:
-  // optional string payer_open_id = 2;
+  // optional string out_trade_no = 2;
+  bool has_out_trade_no() const;
+  void clear_out_trade_no() ;
+  const std::string& out_trade_no() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_out_trade_no(Arg_&& arg, Args_... args);
+  std::string* mutable_out_trade_no();
+  PROTOBUF_NODISCARD std::string* release_out_trade_no();
+  void set_allocated_out_trade_no(std::string* ptr);
+
+  private:
+  const std::string& _internal_out_trade_no() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_out_trade_no(
+      const std::string& value);
+  std::string* _internal_mutable_out_trade_no();
+
+  public:
+  // optional string payer_open_id = 11;
   bool has_payer_open_id() const;
   void clear_payer_open_id() ;
   const std::string& payer_open_id() const;
@@ -737,7 +755,7 @@ class WechatPayPrepayRequest final :
   std::string* _internal_mutable_payer_open_id();
 
   public:
-  // string description = 9;
+  // string description = 98;
   void clear_description() ;
   const std::string& description() const;
   template <typename Arg_ = const std::string&, typename... Args_>
@@ -753,7 +771,7 @@ class WechatPayPrepayRequest final :
   std::string* _internal_mutable_description();
 
   public:
-  // string notify_host = 11;
+  // string notify_host = 99;
   void clear_notify_host() ;
   const std::string& notify_host() const;
   template <typename Arg_ = const std::string&, typename... Args_>
@@ -769,7 +787,7 @@ class WechatPayPrepayRequest final :
   std::string* _internal_mutable_notify_host();
 
   public:
-  // .palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;
+  // .palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;
   bool has_amount() const;
   void clear_amount() ;
   const ::palm::musa::v1::WechatPayPrepayRequest_Amount& amount() const;
@@ -789,7 +807,7 @@ class WechatPayPrepayRequest final :
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<2, 5, 1, 85, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<2, 6, 1, 97, 7> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -797,6 +815,7 @@ class WechatPayPrepayRequest final :
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr app_id_;
+    ::google::protobuf::internal::ArenaStringPtr out_trade_no_;
     ::google::protobuf::internal::ArenaStringPtr payer_open_id_;
     ::google::protobuf::internal::ArenaStringPtr description_;
     ::google::protobuf::internal::ArenaStringPtr notify_host_;
@@ -7214,14 +7233,83 @@ inline void WechatPayPrepayRequest::set_allocated_app_id(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:palm.musa.v1.WechatPayPrepayRequest.app_id)
 }
 
-// optional string payer_open_id = 2;
-inline bool WechatPayPrepayRequest::has_payer_open_id() const {
+// optional string out_trade_no = 2;
+inline bool WechatPayPrepayRequest::has_out_trade_no() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline void WechatPayPrepayRequest::clear_out_trade_no() {
+  _impl_.out_trade_no_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& WechatPayPrepayRequest::out_trade_no() const {
+  // @@protoc_insertion_point(field_get:palm.musa.v1.WechatPayPrepayRequest.out_trade_no)
+  return _internal_out_trade_no();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void WechatPayPrepayRequest::set_out_trade_no(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.out_trade_no_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.musa.v1.WechatPayPrepayRequest.out_trade_no)
+}
+inline std::string* WechatPayPrepayRequest::mutable_out_trade_no() {
+  std::string* _s = _internal_mutable_out_trade_no();
+  // @@protoc_insertion_point(field_mutable:palm.musa.v1.WechatPayPrepayRequest.out_trade_no)
+  return _s;
+}
+inline const std::string& WechatPayPrepayRequest::_internal_out_trade_no() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.out_trade_no_.Get();
+}
+inline void WechatPayPrepayRequest::_internal_set_out_trade_no(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.out_trade_no_.Set(value, GetArenaForAllocation());
+}
+inline std::string* WechatPayPrepayRequest::_internal_mutable_out_trade_no() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.out_trade_no_.Mutable( GetArenaForAllocation());
+}
+inline std::string* WechatPayPrepayRequest::release_out_trade_no() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.musa.v1.WechatPayPrepayRequest.out_trade_no)
+  if ((_impl_._has_bits_[0] & 0x00000001u) == 0) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* released = _impl_.out_trade_no_.Release();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.out_trade_no_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return released;
+}
+inline void WechatPayPrepayRequest::set_allocated_out_trade_no(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.out_trade_no_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.out_trade_no_.IsDefault()) {
+          _impl_.out_trade_no_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.musa.v1.WechatPayPrepayRequest.out_trade_no)
+}
+
+// optional string payer_open_id = 11;
+inline bool WechatPayPrepayRequest::has_payer_open_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
   return value;
 }
 inline void WechatPayPrepayRequest::clear_payer_open_id() {
   _impl_.payer_open_id_.ClearToEmpty();
-  _impl_._has_bits_[0] &= ~0x00000001u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
 }
 inline const std::string& WechatPayPrepayRequest::payer_open_id() const {
   // @@protoc_insertion_point(field_get:palm.musa.v1.WechatPayPrepayRequest.payer_open_id)
@@ -7231,7 +7319,7 @@ template <typename Arg_, typename... Args_>
 inline PROTOBUF_ALWAYS_INLINE void WechatPayPrepayRequest::set_payer_open_id(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_._has_bits_[0] |= 0x00000002u;
   _impl_.payer_open_id_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
   // @@protoc_insertion_point(field_set:palm.musa.v1.WechatPayPrepayRequest.payer_open_id)
 }
@@ -7246,21 +7334,21 @@ inline const std::string& WechatPayPrepayRequest::_internal_payer_open_id() cons
 }
 inline void WechatPayPrepayRequest::_internal_set_payer_open_id(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_._has_bits_[0] |= 0x00000002u;
   _impl_.payer_open_id_.Set(value, GetArenaForAllocation());
 }
 inline std::string* WechatPayPrepayRequest::_internal_mutable_payer_open_id() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_._has_bits_[0] |= 0x00000002u;
   return _impl_.payer_open_id_.Mutable( GetArenaForAllocation());
 }
 inline std::string* WechatPayPrepayRequest::release_payer_open_id() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   // @@protoc_insertion_point(field_release:palm.musa.v1.WechatPayPrepayRequest.payer_open_id)
-  if ((_impl_._has_bits_[0] & 0x00000001u) == 0) {
+  if ((_impl_._has_bits_[0] & 0x00000002u) == 0) {
     return nullptr;
   }
-  _impl_._has_bits_[0] &= ~0x00000001u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
   auto* released = _impl_.payer_open_id_.Release();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.payer_open_id_.Set("", GetArenaForAllocation());
@@ -7270,9 +7358,9 @@ inline std::string* WechatPayPrepayRequest::release_payer_open_id() {
 inline void WechatPayPrepayRequest::set_allocated_payer_open_id(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (value != nullptr) {
-    _impl_._has_bits_[0] |= 0x00000001u;
+    _impl_._has_bits_[0] |= 0x00000002u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000001u;
+    _impl_._has_bits_[0] &= ~0x00000002u;
   }
   _impl_.payer_open_id_.SetAllocated(value, GetArenaForAllocation());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -7283,15 +7371,15 @@ inline void WechatPayPrepayRequest::set_allocated_payer_open_id(std::string* val
   // @@protoc_insertion_point(field_set_allocated:palm.musa.v1.WechatPayPrepayRequest.payer_open_id)
 }
 
-// .palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;
+// .palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;
 inline bool WechatPayPrepayRequest::has_amount() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.amount_ != nullptr);
   return value;
 }
 inline void WechatPayPrepayRequest::clear_amount() {
   if (_impl_.amount_ != nullptr) _impl_.amount_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000002u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
 }
 inline const ::palm::musa::v1::WechatPayPrepayRequest_Amount& WechatPayPrepayRequest::_internal_amount() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
@@ -7309,16 +7397,16 @@ inline void WechatPayPrepayRequest::unsafe_arena_set_allocated_amount(::palm::mu
   }
   _impl_.amount_ = reinterpret_cast<::palm::musa::v1::WechatPayPrepayRequest_Amount*>(value);
   if (value != nullptr) {
-    _impl_._has_bits_[0] |= 0x00000002u;
+    _impl_._has_bits_[0] |= 0x00000004u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000002u;
+    _impl_._has_bits_[0] &= ~0x00000004u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.musa.v1.WechatPayPrepayRequest.amount)
 }
 inline ::palm::musa::v1::WechatPayPrepayRequest_Amount* WechatPayPrepayRequest::release_amount() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
 
-  _impl_._has_bits_[0] &= ~0x00000002u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
   ::palm::musa::v1::WechatPayPrepayRequest_Amount* released = _impl_.amount_;
   _impl_.amount_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
@@ -7338,14 +7426,14 @@ inline ::palm::musa::v1::WechatPayPrepayRequest_Amount* WechatPayPrepayRequest::
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   // @@protoc_insertion_point(field_release:palm.musa.v1.WechatPayPrepayRequest.amount)
 
-  _impl_._has_bits_[0] &= ~0x00000002u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
   ::palm::musa::v1::WechatPayPrepayRequest_Amount* temp = _impl_.amount_;
   _impl_.amount_ = nullptr;
   return temp;
 }
 inline ::palm::musa::v1::WechatPayPrepayRequest_Amount* WechatPayPrepayRequest::_internal_mutable_amount() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_._has_bits_[0] |= 0x00000004u;
   if (_impl_.amount_ == nullptr) {
     auto* p = CreateMaybeMessage<::palm::musa::v1::WechatPayPrepayRequest_Amount>(GetArenaForAllocation());
     _impl_.amount_ = reinterpret_cast<::palm::musa::v1::WechatPayPrepayRequest_Amount*>(p);
@@ -7370,16 +7458,16 @@ inline void WechatPayPrepayRequest::set_allocated_amount(::palm::musa::v1::Wecha
     if (message_arena != submessage_arena) {
       value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
     }
-    _impl_._has_bits_[0] |= 0x00000002u;
+    _impl_._has_bits_[0] |= 0x00000004u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000002u;
+    _impl_._has_bits_[0] &= ~0x00000004u;
   }
 
   _impl_.amount_ = reinterpret_cast<::palm::musa::v1::WechatPayPrepayRequest_Amount*>(value);
   // @@protoc_insertion_point(field_set_allocated:palm.musa.v1.WechatPayPrepayRequest.amount)
 }
 
-// string description = 9;
+// string description = 98;
 inline void WechatPayPrepayRequest::clear_description() {
   _impl_.description_.ClearToEmpty();
 }
@@ -7430,7 +7518,7 @@ inline void WechatPayPrepayRequest::set_allocated_description(std::string* value
   // @@protoc_insertion_point(field_set_allocated:palm.musa.v1.WechatPayPrepayRequest.description)
 }
 
-// string notify_host = 11;
+// string notify_host = 99;
 inline void WechatPayPrepayRequest::clear_notify_host() {
   _impl_.notify_host_.ClearToEmpty();
 }

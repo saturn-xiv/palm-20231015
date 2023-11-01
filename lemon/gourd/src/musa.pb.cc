@@ -49,6 +49,10 @@ PROTOBUF_CONSTEXPR WechatPayPrepayRequest::WechatPayPrepayRequest(::_pbi::Consta
           &::_pbi::fixed_address_empty_string,
           ::_pbi::ConstantInitialized{},
       },
+      /*decltype(_impl_.out_trade_no_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
       /*decltype(_impl_.payer_open_id_)*/ {
           &::_pbi::fixed_address_empty_string,
           ::_pbi::ConstantInitialized{},
@@ -890,6 +894,7 @@ const ::uint32_t TableStruct_musa_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayPrepayRequest, _impl_.app_id_),
+    PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayPrepayRequest, _impl_.out_trade_no_),
     PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayPrepayRequest, _impl_.payer_open_id_),
     PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayPrepayRequest, _impl_.amount_),
     PROTOBUF_FIELD_OFFSET(::palm::musa::v1::WechatPayPrepayRequest, _impl_.description_),
@@ -897,6 +902,7 @@ const ::uint32_t TableStruct_musa_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     ~0u,
     0,
     1,
+    2,
     ~0u,
     ~0u,
     ~0u,  // no _has_bits_
@@ -1302,37 +1308,37 @@ const ::uint32_t TableStruct_musa_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::palm::musa::v1::WechatPayPrepayRequest_Amount)},
-        {10, 23, -1, sizeof(::palm::musa::v1::WechatPayPrepayRequest)},
-        {28, -1, -1, sizeof(::palm::musa::v1::WechatPayCloseOrderRequest)},
-        {38, -1, -1, sizeof(::palm::musa::v1::Error)},
-        {48, -1, -1, sizeof(::palm::musa::v1::WechatPayNativeQrCodeUrlResponse)},
-        {58, -1, -1, sizeof(::palm::musa::v1::WechatPayTradeResponse)},
-        {68, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryOrderByIdRequest)},
-        {77, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryOrderByOutTradeNoRequest)},
-        {86, -1, -1, sizeof(::palm::musa::v1::WechatPayJsapiPrepayIdResponse)},
-        {101, -1, -1, sizeof(::palm::musa::v1::WechatPayBillDate)},
-        {112, -1, -1, sizeof(::palm::musa::v1::WechatPayBillResponse)},
-        {121, 131, -1, sizeof(::palm::musa::v1::WechatPayTradeBillRequest)},
-        {133, 143, -1, sizeof(::palm::musa::v1::WechatPayFundFlowBillRequest)},
-        {145, -1, -1, sizeof(::palm::musa::v1::WechatPayCreateRefundRequest_Amount)},
-        {156, 168, -1, sizeof(::palm::musa::v1::WechatPayCreateRefundRequest)},
-        {172, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryRefundRequest)},
-        {181, -1, -1, sizeof(::palm::musa::v1::WechatPayRefundResponse)},
-        {194, 205, -1, sizeof(::palm::musa::v1::WechatPayTransferGetElectronicReceiptRequest)},
-        {208, -1, -1, sizeof(::palm::musa::v1::WechatPayTransferGetReceiptResponse)},
-        {217, -1, -1, sizeof(::palm::musa::v1::WechatPayTransferGetBillReceiptRequest)},
-        {226, 237, -1, sizeof(::palm::musa::v1::WechatPayExecuteBatchTransferRequest_Batch)},
-        {240, -1, -1, sizeof(::palm::musa::v1::WechatPayExecuteBatchTransferRequest_Detail)},
-        {252, 264, -1, sizeof(::palm::musa::v1::WechatPayExecuteBatchTransferRequest)},
-        {268, -1, -1, sizeof(::palm::musa::v1::WechatPayExecuteBatchTransferResponse_Detail)},
-        {278, -1, -1, sizeof(::palm::musa::v1::WechatPayExecuteBatchTransferResponse_Succeeded)},
-        {288, -1, -1, sizeof(::palm::musa::v1::WechatPayExecuteBatchTransferResponse)},
-        {301, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryBatchTransferRequest)},
-        {313, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryBatchTransferResponse_Detail)},
-        {324, 350, -1, sizeof(::palm::musa::v1::WechatPayQueryBatchTransferResponse_Batch)},
-        {368, 378, -1, sizeof(::palm::musa::v1::WechatPayQueryBatchTransferResponse)},
-        {380, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryTransferDetailRequest)},
-        {390, 412, -1, sizeof(::palm::musa::v1::WechatPayQueryTransferDetailResponse)},
+        {10, 24, -1, sizeof(::palm::musa::v1::WechatPayPrepayRequest)},
+        {30, -1, -1, sizeof(::palm::musa::v1::WechatPayCloseOrderRequest)},
+        {40, -1, -1, sizeof(::palm::musa::v1::Error)},
+        {50, -1, -1, sizeof(::palm::musa::v1::WechatPayNativeQrCodeUrlResponse)},
+        {60, -1, -1, sizeof(::palm::musa::v1::WechatPayTradeResponse)},
+        {70, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryOrderByIdRequest)},
+        {79, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryOrderByOutTradeNoRequest)},
+        {88, -1, -1, sizeof(::palm::musa::v1::WechatPayJsapiPrepayIdResponse)},
+        {103, -1, -1, sizeof(::palm::musa::v1::WechatPayBillDate)},
+        {114, -1, -1, sizeof(::palm::musa::v1::WechatPayBillResponse)},
+        {123, 133, -1, sizeof(::palm::musa::v1::WechatPayTradeBillRequest)},
+        {135, 145, -1, sizeof(::palm::musa::v1::WechatPayFundFlowBillRequest)},
+        {147, -1, -1, sizeof(::palm::musa::v1::WechatPayCreateRefundRequest_Amount)},
+        {158, 170, -1, sizeof(::palm::musa::v1::WechatPayCreateRefundRequest)},
+        {174, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryRefundRequest)},
+        {183, -1, -1, sizeof(::palm::musa::v1::WechatPayRefundResponse)},
+        {196, 207, -1, sizeof(::palm::musa::v1::WechatPayTransferGetElectronicReceiptRequest)},
+        {210, -1, -1, sizeof(::palm::musa::v1::WechatPayTransferGetReceiptResponse)},
+        {219, -1, -1, sizeof(::palm::musa::v1::WechatPayTransferGetBillReceiptRequest)},
+        {228, 239, -1, sizeof(::palm::musa::v1::WechatPayExecuteBatchTransferRequest_Batch)},
+        {242, -1, -1, sizeof(::palm::musa::v1::WechatPayExecuteBatchTransferRequest_Detail)},
+        {254, 266, -1, sizeof(::palm::musa::v1::WechatPayExecuteBatchTransferRequest)},
+        {270, -1, -1, sizeof(::palm::musa::v1::WechatPayExecuteBatchTransferResponse_Detail)},
+        {280, -1, -1, sizeof(::palm::musa::v1::WechatPayExecuteBatchTransferResponse_Succeeded)},
+        {290, -1, -1, sizeof(::palm::musa::v1::WechatPayExecuteBatchTransferResponse)},
+        {303, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryBatchTransferRequest)},
+        {315, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryBatchTransferResponse_Detail)},
+        {326, 352, -1, sizeof(::palm::musa::v1::WechatPayQueryBatchTransferResponse_Batch)},
+        {370, 380, -1, sizeof(::palm::musa::v1::WechatPayQueryBatchTransferResponse)},
+        {382, -1, -1, sizeof(::palm::musa::v1::WechatPayQueryTransferDetailRequest)},
+        {392, 414, -1, sizeof(::palm::musa::v1::WechatPayQueryTransferDetailResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -1371,161 +1377,162 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 const char descriptor_table_protodef_musa_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\nmusa.proto\022\014palm.musa.v1\032\033google/proto"
-    "buf/empty.proto\"\211\002\n\026WechatPayPrepayReque"
-    "st\022\016\n\006app_id\030\001 \001(\t\022\032\n\rpayer_open_id\030\002 \001("
-    "\tH\000\210\001\001\022;\n\006amount\030\003 \001(\0132+.palm.musa.v1.We"
-    "chatPayPrepayRequest.Amount\022\023\n\013descripti"
-    "on\030\t \001(\t\022\023\n\013notify_host\030\013 \001(\t\032J\n\006Amount\022"
-    "\r\n\005total\030\001 \001(\005\0221\n\010currency\030\002 \001(\0162\037.palm."
-    "musa.v1.WechatPayCurrencyB\020\n\016_payer_open"
-    "_id\"B\n\032WechatPayCloseOrderRequest\022\024\n\014out"
-    "_trade_no\030\001 \001(\t\022\016\n\006reason\030\002 \001(\t\"&\n\005Error"
-    "\022\014\n\004code\030\001 \001(\t\022\017\n\007message\030\002 \001(\t\"E\n Wecha"
-    "tPayNativeQrCodeUrlResponse\022\013\n\003url\030\001 \001(\t"
-    "\022\024\n\014out_trade_no\030\002 \001(\t\"G\n\026WechatPayTrade"
-    "Response\022\023\n\013trade_state\030\001 \001(\t\022\030\n\020trade_s"
-    "tate_desc\030\002 \001(\t\"8\n\036WechatPayQueryOrderBy"
-    "IdRequest\022\026\n\016transaction_id\030\001 \001(\t\">\n&Wec"
-    "hatPayQueryOrderByOutTradeNoRequest\022\024\n\014o"
-    "ut_trade_no\030\001 \001(\t\"\243\001\n\036WechatPayJsapiPrep"
-    "ayIdResponse\022\016\n\006app_id\030\001 \001(\t\022\022\n\ntime_sta"
-    "mp\030\002 \001(\t\022\021\n\tnonce_str\030\003 \001(\t\022\017\n\007package\030\004"
-    " \001(\t\022\021\n\tsign_type\030\005 \001(\t\022\020\n\010pay_sign\030\006 \001("
-    "\t\022\024\n\014out_trade_no\030\013 \001(\t\"=\n\021WechatPayBill"
-    "Date\022\014\n\004year\030\001 \001(\005\022\r\n\005month\030\002 \001(\005\022\013\n\003day"
-    "\030\003 \001(\005\"(\n\025WechatPayBillResponse\022\017\n\007conte"
-    "nt\030\001 \001(\014\"\302\001\n\031WechatPayTradeBillRequest\0222"
-    "\n\tbill_date\030\001 \001(\0132\037.palm.musa.v1.WechatP"
-    "ayBillDate\022C\n\tbill_type\030\002 \001(\01620.palm.mus"
-    "a.v1.WechatPayTradeBillRequest.BillType\""
-    ",\n\010BillType\022\007\n\003ALL\020\000\022\013\n\007SUCCESS\020\001\022\n\n\006REF"
-    "UND\020\002\"\323\001\n\034WechatPayFundFlowBillRequest\0222"
-    "\n\tbill_date\030\001 \001(\0132\037.palm.musa.v1.WechatP"
-    "ayBillDate\022L\n\014account_type\030\002 \001(\01626.palm."
-    "musa.v1.WechatPayFundFlowBillRequest.Acc"
-    "ountType\"1\n\013AccountType\022\t\n\005BASIC\020\000\022\r\n\tOP"
-    "ERATION\020\001\022\010\n\004FEES\020\002\"\370\001\n\034WechatPayCreateR"
-    "efundRequest\022\024\n\014out_trade_no\030\001 \001(\t\022\016\n\006re"
-    "ason\030\002 \001(\t\022A\n\006amount\030\003 \001(\01321.palm.musa.v"
-    "1.WechatPayCreateRefundRequest.Amount\022\023\n"
-    "\013notify_host\030\013 \001(\t\032Z\n\006Amount\022\r\n\005total\030\001 "
-    "\001(\005\022\016\n\006refund\030\002 \001(\005\0221\n\010currency\030\003 \001(\0162\037."
-    "palm.musa.v1.WechatPayCurrency\"4\n\033Wechat"
-    "PayQueryRefundRequest\022\025\n\rout_refund_no\030\001"
-    " \001(\t\"\205\001\n\027WechatPayRefundResponse\022\025\n\rout_"
-    "refund_no\030\001 \001(\t\022\017\n\007channel\030\002 \001(\t\022\016\n\006stat"
-    "us\030\003 \001(\t\022\035\n\025user_received_account\030\004 \001(\t\022"
-    "\023\n\013create_time\030c \001(\t\"\235\002\n,WechatPayTransf"
-    "erGetElectronicReceiptRequest\022Z\n\013accept_"
-    "type\030\001 \001(\0162E.palm.musa.v1.WechatPayTrans"
-    "ferGetElectronicReceiptRequest.AcceptTyp"
-    "e\022\031\n\014out_batch_no\030\002 \001(\tH\000\210\001\001\022\025\n\rout_deta"
-    "il_no\030\003 \001(\t\"N\n\nAcceptType\022\022\n\016BATCH_TRANS"
-    "FER\020\000\022\026\n\022TRANSFER_TO_POCKET\020\001\022\024\n\020TRANSFE"
-    "R_TO_BANK\020\002B\017\n\r_out_batch_no\"6\n#WechatPa"
-    "yTransferGetReceiptResponse\022\017\n\007payload\030\001"
-    " \001(\014\">\n&WechatPayTransferGetBillReceiptR"
-    "equest\022\024\n\014out_batch_no\030\001 \001(\t\"\361\002\n$WechatP"
-    "ayExecuteBatchTransferRequest\022\016\n\006app_id\030"
-    "\001 \001(\t\022G\n\005batch\030\002 \001(\01328.palm.musa.v1.Wech"
-    "atPayExecuteBatchTransferRequest.Batch\022J"
-    "\n\007details\030\003 \003(\01329.palm.musa.v1.WechatPay"
-    "ExecuteBatchTransferRequest.Detail\022\020\n\010sc"
-    "ene_id\030\t \001(\t\032E\n\005Batch\022\014\n\004name\030\001 \001(\t\022\016\n\006r"
-    "emark\030\002 \001(\t\022\023\n\006out_no\030\003 \001(\tH\000\210\001\001B\t\n\007_out"
-    "_no\032K\n\006Detail\022\017\n\007open_id\030\001 \001(\t\022\020\n\010userna"
-    "me\030\002 \001(\t\022\016\n\006amount\030\003 \001(\003\022\016\n\006remark\030\004 \001(\t"
-    "\"\365\002\n%WechatPayExecuteBatchTransferRespon"
-    "se\022\024\n\014out_batch_no\030\001 \001(\t\022K\n\007details\030\002 \003("
-    "\0132:.palm.musa.v1.WechatPayExecuteBatchTr"
-    "ansferResponse.Detail\022R\n\tsucceeded\030\013 \001(\013"
-    "2=.palm.musa.v1.WechatPayExecuteBatchTra"
-    "nsferResponse.SucceededH\000\022$\n\005error\030\014 \001(\013"
-    "2\023.palm.musa.v1.ErrorH\000\0320\n\006Detail\022\017\n\007ope"
-    "n_id\030\001 \001(\t\022\025\n\rout_detail_no\030\002 \001(\t\0322\n\tSuc"
-    "ceeded\022\020\n\010batch_id\030\001 \001(\t\022\023\n\013create_time\030"
-    "\002 \001(\tB\t\n\007payload\"\355\001\n\"WechatPayQueryBatch"
-    "TransferRequest\022\024\n\014out_batch_no\030\001 \001(\t\022\016\n"
-    "\006offset\030\002 \001(\005\022\r\n\005limit\030\003 \001(\005\022T\n\rdetail_s"
-    "tatus\030\t \001(\0162=.palm.musa.v1.WechatPayQuer"
-    "yBatchTransferRequest.DetailStatus\"<\n\014De"
-    "tailStatus\022\007\n\003ALL\020\000\022\013\n\007SUCCESS\020\001\022\014\n\010WAIT"
-    "_PAY\020\002\022\010\n\004FAIL\020\t\"\216\006\n#WechatPayQueryBatch"
-    "TransferResponse\022F\n\005batch\030\001 \001(\01327.palm.m"
-    "usa.v1.WechatPayQueryBatchTransferRespon"
-    "se.Batch\022I\n\007details\030\t \003(\01328.palm.musa.v1"
-    ".WechatPayQueryBatchTransferResponse.Det"
-    "ail\032B\n\006Detail\022\021\n\tdetail_id\030\001 \001(\t\022\025\n\rout_"
-    "detail_no\030\002 \001(\t\022\016\n\006status\030\003 \001(\t\032\217\004\n\005Batc"
-    "h\022\016\n\006app_id\030\001 \001(\t\022\016\n\006mch_id\030\002 \001(\t\022\031\n\021tra"
-    "nsfer_scene_id\030\t \001(\t\022\020\n\010batch_id\030\013 \001(\t\022\024"
-    "\n\014out_batch_no\030\014 \001(\t\022\024\n\014batch_status\030\r \001"
-    "(\t\022\022\n\nbatch_type\030\016 \001(\t\022\022\n\nbatch_name\030\017 \001"
-    "(\t\022\024\n\014batch_remark\030\020 \001(\t\022\031\n\014close_reason"
-    "\030\025 \001(\tH\000\210\001\001\022\024\n\014total_amount\030\026 \001(\003\022\021\n\ttot"
-    "al_num\030\027 \001(\005\022\030\n\013create_time\030\030 \001(\tH\001\210\001\001\022\030"
-    "\n\013update_time\030\031 \001(\tH\002\210\001\001\022\033\n\016success_amou"
-    "nt\030\032 \001(\003H\003\210\001\001\022\030\n\013success_num\030\033 \001(\005H\004\210\001\001\022"
-    "\030\n\013fail_amount\030\034 \001(\003H\005\210\001\001\022\025\n\010fail_num\030\035 "
-    "\001(\005H\006\210\001\001B\017\n\r_close_reasonB\016\n\014_create_tim"
-    "eB\016\n\014_update_timeB\021\n\017_success_amountB\016\n\014"
-    "_success_numB\016\n\014_fail_amountB\013\n\t_fail_nu"
-    "m\"R\n#WechatPayQueryTransferDetailRequest"
-    "\022\024\n\014out_batch_no\030\001 \001(\t\022\025\n\rout_detail_no\030"
-    "\002 \001(\t\"\356\002\n$WechatPayQueryTransferDetailRe"
-    "sponse\022\016\n\006app_id\030\001 \001(\t\022\016\n\006mch_id\030\002 \001(\t\022\017"
-    "\n\007open_id\030\003 \001(\t\022\026\n\tuser_name\030\004 \001(\tH\000\210\001\001\022"
-    "\020\n\010batch_id\030\013 \001(\t\022\024\n\014out_batch_no\030\014 \001(\t\022"
-    "\025\n\rout_detail_no\030\r \001(\t\022\021\n\tdetail_id\030\016 \001("
-    "\t\022\025\n\rdetail_status\030\017 \001(\t\022\027\n\017transfer_amo"
-    "unt\030\020 \001(\003\022\027\n\017transfer_remark\030\021 \001(\t\022\030\n\013fa"
-    "il_reason\030\022 \001(\tH\001\210\001\001\022\025\n\rinitiate_time\030\023 "
-    "\001(\t\022\023\n\013update_time\030\024 \001(\tB\014\n\n_user_nameB\016"
-    "\n\014_fail_reason*\034\n\021WechatPayCurrency\022\007\n\003C"
-    "NY\020\000*4\n\025WechatPayNotifyAction\022\017\n\013TRANSCA"
-    "TION\020\000\022\n\n\006REFUND\020\001*\034\n\020WechatPayTarType\022\010"
-    "\n\004GZIP\020\0002s\n\017WechatPayNative\022`\n\006Prepay\022$."
-    "palm.musa.v1.WechatPayPrepayRequest\032..pa"
-    "lm.musa.v1.WechatPayNativeQrCodeUrlRespo"
-    "nse\"\0002\242\003\n\016WechatPayJsapi\022^\n\006Prepay\022$.pal"
-    "m.musa.v1.WechatPayPrepayRequest\032,.palm."
-    "musa.v1.WechatPayJsapiPrepayIdResponse\"\000"
-    "\022v\n\026QueryOrderByOutTradeNo\0224.palm.musa.v"
-    "1.WechatPayQueryOrderByOutTradeNoRequest"
-    "\032$.palm.musa.v1.WechatPayTradeResponse\"\000"
-    "\022f\n\016QueryOrderById\022,.palm.musa.v1.Wechat"
-    "PayQueryOrderByIdRequest\032$.palm.musa.v1."
-    "WechatPayTradeResponse\"\000\022P\n\nCloseOrder\022("
-    ".palm.musa.v1.WechatPayCloseOrderRequest"
-    "\032\026.google.protobuf.Empty\"\0002\307\001\n\rWechatPay"
-    "Bill\022W\n\005Trade\022\'.palm.musa.v1.WechatPayTr"
-    "adeBillRequest\032#.palm.musa.v1.WechatPayB"
-    "illResponse\"\000\022]\n\010FundFlow\022*.palm.musa.v1"
-    ".WechatPayFundFlowBillRequest\032#.palm.mus"
-    "a.v1.WechatPayBillResponse\"\0002\315\001\n\017WechatP"
-    "ayRefund\022]\n\006Create\022*.palm.musa.v1.Wechat"
-    "PayCreateRefundRequest\032%.palm.musa.v1.We"
-    "chatPayRefundResponse\"\000\022[\n\005Query\022).palm."
-    "musa.v1.WechatPayQueryRefundRequest\032%.pa"
-    "lm.musa.v1.WechatPayRefundResponse\"\0002\202\005\n"
-    "\021WechatPayTransfer\022y\n\014ExecuteBatch\0222.pal"
-    "m.musa.v1.WechatPayExecuteBatchTransferR"
-    "equest\0323.palm.musa.v1.WechatPayExecuteBa"
-    "tchTransferResponse\"\000\022s\n\nQueryBatch\0220.pa"
+    "buf/empty.proto\"\265\002\n\026WechatPayPrepayReque"
+    "st\022\016\n\006app_id\030\001 \001(\t\022\031\n\014out_trade_no\030\002 \001(\t"
+    "H\000\210\001\001\022\032\n\rpayer_open_id\030\013 \001(\tH\001\210\001\001\022;\n\006amo"
+    "unt\030\014 \001(\0132+.palm.musa.v1.WechatPayPrepay"
+    "Request.Amount\022\023\n\013description\030b \001(\t\022\023\n\013n"
+    "otify_host\030c \001(\t\032J\n\006Amount\022\r\n\005total\030\001 \001("
+    "\005\0221\n\010currency\030\002 \001(\0162\037.palm.musa.v1.Wecha"
+    "tPayCurrencyB\017\n\r_out_trade_noB\020\n\016_payer_"
+    "open_id\"B\n\032WechatPayCloseOrderRequest\022\024\n"
+    "\014out_trade_no\030\001 \001(\t\022\016\n\006reason\030\002 \001(\t\"&\n\005E"
+    "rror\022\014\n\004code\030\001 \001(\t\022\017\n\007message\030\002 \001(\t\"E\n W"
+    "echatPayNativeQrCodeUrlResponse\022\013\n\003url\030\001"
+    " \001(\t\022\024\n\014out_trade_no\030\002 \001(\t\"G\n\026WechatPayT"
+    "radeResponse\022\023\n\013trade_state\030\001 \001(\t\022\030\n\020tra"
+    "de_state_desc\030\002 \001(\t\"8\n\036WechatPayQueryOrd"
+    "erByIdRequest\022\026\n\016transaction_id\030\001 \001(\t\">\n"
+    "&WechatPayQueryOrderByOutTradeNoRequest\022"
+    "\024\n\014out_trade_no\030\001 \001(\t\"\243\001\n\036WechatPayJsapi"
+    "PrepayIdResponse\022\016\n\006app_id\030\001 \001(\t\022\022\n\ntime"
+    "_stamp\030\002 \001(\t\022\021\n\tnonce_str\030\003 \001(\t\022\017\n\007packa"
+    "ge\030\004 \001(\t\022\021\n\tsign_type\030\005 \001(\t\022\020\n\010pay_sign\030"
+    "\006 \001(\t\022\024\n\014out_trade_no\030\013 \001(\t\"=\n\021WechatPay"
+    "BillDate\022\014\n\004year\030\001 \001(\005\022\r\n\005month\030\002 \001(\005\022\013\n"
+    "\003day\030\003 \001(\005\"(\n\025WechatPayBillResponse\022\017\n\007c"
+    "ontent\030\001 \001(\014\"\302\001\n\031WechatPayTradeBillReque"
+    "st\0222\n\tbill_date\030\001 \001(\0132\037.palm.musa.v1.Wec"
+    "hatPayBillDate\022C\n\tbill_type\030\002 \001(\01620.palm"
+    ".musa.v1.WechatPayTradeBillRequest.BillT"
+    "ype\",\n\010BillType\022\007\n\003ALL\020\000\022\013\n\007SUCCESS\020\001\022\n\n"
+    "\006REFUND\020\002\"\323\001\n\034WechatPayFundFlowBillReque"
+    "st\0222\n\tbill_date\030\001 \001(\0132\037.palm.musa.v1.Wec"
+    "hatPayBillDate\022L\n\014account_type\030\002 \001(\01626.p"
+    "alm.musa.v1.WechatPayFundFlowBillRequest"
+    ".AccountType\"1\n\013AccountType\022\t\n\005BASIC\020\000\022\r"
+    "\n\tOPERATION\020\001\022\010\n\004FEES\020\002\"\370\001\n\034WechatPayCre"
+    "ateRefundRequest\022\024\n\014out_trade_no\030\001 \001(\t\022\016"
+    "\n\006reason\030\002 \001(\t\022A\n\006amount\030\003 \001(\01321.palm.mu"
+    "sa.v1.WechatPayCreateRefundRequest.Amoun"
+    "t\022\023\n\013notify_host\030\013 \001(\t\032Z\n\006Amount\022\r\n\005tota"
+    "l\030\001 \001(\005\022\016\n\006refund\030\002 \001(\005\0221\n\010currency\030\003 \001("
+    "\0162\037.palm.musa.v1.WechatPayCurrency\"4\n\033We"
+    "chatPayQueryRefundRequest\022\025\n\rout_refund_"
+    "no\030\001 \001(\t\"\205\001\n\027WechatPayRefundResponse\022\025\n\r"
+    "out_refund_no\030\001 \001(\t\022\017\n\007channel\030\002 \001(\t\022\016\n\006"
+    "status\030\003 \001(\t\022\035\n\025user_received_account\030\004 "
+    "\001(\t\022\023\n\013create_time\030c \001(\t\"\235\002\n,WechatPayTr"
+    "ansferGetElectronicReceiptRequest\022Z\n\013acc"
+    "ept_type\030\001 \001(\0162E.palm.musa.v1.WechatPayT"
+    "ransferGetElectronicReceiptRequest.Accep"
+    "tType\022\031\n\014out_batch_no\030\002 \001(\tH\000\210\001\001\022\025\n\rout_"
+    "detail_no\030\003 \001(\t\"N\n\nAcceptType\022\022\n\016BATCH_T"
+    "RANSFER\020\000\022\026\n\022TRANSFER_TO_POCKET\020\001\022\024\n\020TRA"
+    "NSFER_TO_BANK\020\002B\017\n\r_out_batch_no\"6\n#Wech"
+    "atPayTransferGetReceiptResponse\022\017\n\007paylo"
+    "ad\030\001 \001(\014\">\n&WechatPayTransferGetBillRece"
+    "iptRequest\022\024\n\014out_batch_no\030\001 \001(\t\"\361\002\n$Wec"
+    "hatPayExecuteBatchTransferRequest\022\016\n\006app"
+    "_id\030\001 \001(\t\022G\n\005batch\030\002 \001(\01328.palm.musa.v1."
+    "WechatPayExecuteBatchTransferRequest.Bat"
+    "ch\022J\n\007details\030\003 \003(\01329.palm.musa.v1.Wecha"
+    "tPayExecuteBatchTransferRequest.Detail\022\020"
+    "\n\010scene_id\030\t \001(\t\032E\n\005Batch\022\014\n\004name\030\001 \001(\t\022"
+    "\016\n\006remark\030\002 \001(\t\022\023\n\006out_no\030\003 \001(\tH\000\210\001\001B\t\n\007"
+    "_out_no\032K\n\006Detail\022\017\n\007open_id\030\001 \001(\t\022\020\n\010us"
+    "ername\030\002 \001(\t\022\016\n\006amount\030\003 \001(\003\022\016\n\006remark\030\004"
+    " \001(\t\"\365\002\n%WechatPayExecuteBatchTransferRe"
+    "sponse\022\024\n\014out_batch_no\030\001 \001(\t\022K\n\007details\030"
+    "\002 \003(\0132:.palm.musa.v1.WechatPayExecuteBat"
+    "chTransferResponse.Detail\022R\n\tsucceeded\030\013"
+    " \001(\0132=.palm.musa.v1.WechatPayExecuteBatc"
+    "hTransferResponse.SucceededH\000\022$\n\005error\030\014"
+    " \001(\0132\023.palm.musa.v1.ErrorH\000\0320\n\006Detail\022\017\n"
+    "\007open_id\030\001 \001(\t\022\025\n\rout_detail_no\030\002 \001(\t\0322\n"
+    "\tSucceeded\022\020\n\010batch_id\030\001 \001(\t\022\023\n\013create_t"
+    "ime\030\002 \001(\tB\t\n\007payload\"\355\001\n\"WechatPayQueryB"
+    "atchTransferRequest\022\024\n\014out_batch_no\030\001 \001("
+    "\t\022\016\n\006offset\030\002 \001(\005\022\r\n\005limit\030\003 \001(\005\022T\n\rdeta"
+    "il_status\030\t \001(\0162=.palm.musa.v1.WechatPay"
+    "QueryBatchTransferRequest.DetailStatus\"<"
+    "\n\014DetailStatus\022\007\n\003ALL\020\000\022\013\n\007SUCCESS\020\001\022\014\n\010"
+    "WAIT_PAY\020\002\022\010\n\004FAIL\020\t\"\216\006\n#WechatPayQueryB"
+    "atchTransferResponse\022F\n\005batch\030\001 \001(\01327.pa"
     "lm.musa.v1.WechatPayQueryBatchTransferRe"
-    "quest\0321.palm.musa.v1.WechatPayQueryBatch"
-    "TransferResponse\"\000\022v\n\013QueryDetail\0221.palm"
-    ".musa.v1.WechatPayQueryTransferDetailReq"
-    "uest\0322.palm.musa.v1.WechatPayQueryTransf"
-    "erDetailResponse\"\000\022{\n\016GetBillReceipt\0224.p"
-    "alm.musa.v1.WechatPayTransferGetBillRece"
-    "iptRequest\0321.palm.musa.v1.WechatPayTrans"
-    "ferGetReceiptResponse\"\000\022\207\001\n\024GetElectroni"
-    "cReceipt\022:.palm.musa.v1.WechatPayTransfe"
-    "rGetElectronicReceiptRequest\0321.palm.musa"
-    ".v1.WechatPayTransferGetReceiptResponse\""
-    "\000B.\n*com.github.saturn_xiv.palm.plugins."
-    "musa.v1P\001b\006proto3"
+    "sponse.Batch\022I\n\007details\030\t \003(\01328.palm.mus"
+    "a.v1.WechatPayQueryBatchTransferResponse"
+    ".Detail\032B\n\006Detail\022\021\n\tdetail_id\030\001 \001(\t\022\025\n\r"
+    "out_detail_no\030\002 \001(\t\022\016\n\006status\030\003 \001(\t\032\217\004\n\005"
+    "Batch\022\016\n\006app_id\030\001 \001(\t\022\016\n\006mch_id\030\002 \001(\t\022\031\n"
+    "\021transfer_scene_id\030\t \001(\t\022\020\n\010batch_id\030\013 \001"
+    "(\t\022\024\n\014out_batch_no\030\014 \001(\t\022\024\n\014batch_status"
+    "\030\r \001(\t\022\022\n\nbatch_type\030\016 \001(\t\022\022\n\nbatch_name"
+    "\030\017 \001(\t\022\024\n\014batch_remark\030\020 \001(\t\022\031\n\014close_re"
+    "ason\030\025 \001(\tH\000\210\001\001\022\024\n\014total_amount\030\026 \001(\003\022\021\n"
+    "\ttotal_num\030\027 \001(\005\022\030\n\013create_time\030\030 \001(\tH\001\210"
+    "\001\001\022\030\n\013update_time\030\031 \001(\tH\002\210\001\001\022\033\n\016success_"
+    "amount\030\032 \001(\003H\003\210\001\001\022\030\n\013success_num\030\033 \001(\005H\004"
+    "\210\001\001\022\030\n\013fail_amount\030\034 \001(\003H\005\210\001\001\022\025\n\010fail_nu"
+    "m\030\035 \001(\005H\006\210\001\001B\017\n\r_close_reasonB\016\n\014_create"
+    "_timeB\016\n\014_update_timeB\021\n\017_success_amount"
+    "B\016\n\014_success_numB\016\n\014_fail_amountB\013\n\t_fai"
+    "l_num\"R\n#WechatPayQueryTransferDetailReq"
+    "uest\022\024\n\014out_batch_no\030\001 \001(\t\022\025\n\rout_detail"
+    "_no\030\002 \001(\t\"\356\002\n$WechatPayQueryTransferDeta"
+    "ilResponse\022\016\n\006app_id\030\001 \001(\t\022\016\n\006mch_id\030\002 \001"
+    "(\t\022\017\n\007open_id\030\003 \001(\t\022\026\n\tuser_name\030\004 \001(\tH\000"
+    "\210\001\001\022\020\n\010batch_id\030\013 \001(\t\022\024\n\014out_batch_no\030\014 "
+    "\001(\t\022\025\n\rout_detail_no\030\r \001(\t\022\021\n\tdetail_id\030"
+    "\016 \001(\t\022\025\n\rdetail_status\030\017 \001(\t\022\027\n\017transfer"
+    "_amount\030\020 \001(\003\022\027\n\017transfer_remark\030\021 \001(\t\022\030"
+    "\n\013fail_reason\030\022 \001(\tH\001\210\001\001\022\025\n\rinitiate_tim"
+    "e\030\023 \001(\t\022\023\n\013update_time\030\024 \001(\tB\014\n\n_user_na"
+    "meB\016\n\014_fail_reason*\034\n\021WechatPayCurrency\022"
+    "\007\n\003CNY\020\000*4\n\025WechatPayNotifyAction\022\017\n\013TRA"
+    "NSCATION\020\000\022\n\n\006REFUND\020\001*\034\n\020WechatPayTarTy"
+    "pe\022\010\n\004GZIP\020\0002s\n\017WechatPayNative\022`\n\006Prepa"
+    "y\022$.palm.musa.v1.WechatPayPrepayRequest\032"
+    "..palm.musa.v1.WechatPayNativeQrCodeUrlR"
+    "esponse\"\0002\242\003\n\016WechatPayJsapi\022^\n\006Prepay\022$"
+    ".palm.musa.v1.WechatPayPrepayRequest\032,.p"
+    "alm.musa.v1.WechatPayJsapiPrepayIdRespon"
+    "se\"\000\022v\n\026QueryOrderByOutTradeNo\0224.palm.mu"
+    "sa.v1.WechatPayQueryOrderByOutTradeNoReq"
+    "uest\032$.palm.musa.v1.WechatPayTradeRespon"
+    "se\"\000\022f\n\016QueryOrderById\022,.palm.musa.v1.We"
+    "chatPayQueryOrderByIdRequest\032$.palm.musa"
+    ".v1.WechatPayTradeResponse\"\000\022P\n\nCloseOrd"
+    "er\022(.palm.musa.v1.WechatPayCloseOrderReq"
+    "uest\032\026.google.protobuf.Empty\"\0002\307\001\n\rWecha"
+    "tPayBill\022W\n\005Trade\022\'.palm.musa.v1.WechatP"
+    "ayTradeBillRequest\032#.palm.musa.v1.Wechat"
+    "PayBillResponse\"\000\022]\n\010FundFlow\022*.palm.mus"
+    "a.v1.WechatPayFundFlowBillRequest\032#.palm"
+    ".musa.v1.WechatPayBillResponse\"\0002\315\001\n\017Wec"
+    "hatPayRefund\022]\n\006Create\022*.palm.musa.v1.We"
+    "chatPayCreateRefundRequest\032%.palm.musa.v"
+    "1.WechatPayRefundResponse\"\000\022[\n\005Query\022).p"
+    "alm.musa.v1.WechatPayQueryRefundRequest\032"
+    "%.palm.musa.v1.WechatPayRefundResponse\"\000"
+    "2\202\005\n\021WechatPayTransfer\022y\n\014ExecuteBatch\0222"
+    ".palm.musa.v1.WechatPayExecuteBatchTrans"
+    "ferRequest\0323.palm.musa.v1.WechatPayExecu"
+    "teBatchTransferResponse\"\000\022s\n\nQueryBatch\022"
+    "0.palm.musa.v1.WechatPayQueryBatchTransf"
+    "erRequest\0321.palm.musa.v1.WechatPayQueryB"
+    "atchTransferResponse\"\000\022v\n\013QueryDetail\0221."
+    "palm.musa.v1.WechatPayQueryTransferDetai"
+    "lRequest\0322.palm.musa.v1.WechatPayQueryTr"
+    "ansferDetailResponse\"\000\022{\n\016GetBillReceipt"
+    "\0224.palm.musa.v1.WechatPayTransferGetBill"
+    "ReceiptRequest\0321.palm.musa.v1.WechatPayT"
+    "ransferGetReceiptResponse\"\000\022\207\001\n\024GetElect"
+    "ronicReceipt\022:.palm.musa.v1.WechatPayTra"
+    "nsferGetElectronicReceiptRequest\0321.palm."
+    "musa.v1.WechatPayTransferGetReceiptRespo"
+    "nse\"\000B.\n*com.github.saturn_xiv.palm.plug"
+    "ins.musa.v1P\001b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_musa_2eproto_deps[1] =
     {
@@ -1535,7 +1542,7 @@ static ::absl::once_flag descriptor_table_musa_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_musa_2eproto = {
     false,
     false,
-    6217,
+    6261,
     descriptor_table_protodef_musa_2eproto,
     "musa.proto",
     &descriptor_table_musa_2eproto_once,
@@ -1916,12 +1923,15 @@ class WechatPayPrepayRequest::_Internal {
   using HasBits = decltype(std::declval<WechatPayPrepayRequest>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
     8 * PROTOBUF_FIELD_OFFSET(WechatPayPrepayRequest, _impl_._has_bits_);
-  static void set_has_payer_open_id(HasBits* has_bits) {
+  static void set_has_out_trade_no(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
+  }
+  static void set_has_payer_open_id(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
   }
   static const ::palm::musa::v1::WechatPayPrepayRequest_Amount& amount(const WechatPayPrepayRequest* msg);
   static void set_has_amount(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
+    (*has_bits)[0] |= 4u;
   }
 };
 
@@ -1940,6 +1950,7 @@ WechatPayPrepayRequest::WechatPayPrepayRequest(const WechatPayPrepayRequest& fro
       decltype(_impl_._has_bits_){from._impl_._has_bits_},
       /*decltype(_impl_._cached_size_)*/ {},
       decltype(_impl_.app_id_){},
+      decltype(_impl_.out_trade_no_){},
       decltype(_impl_.payer_open_id_){},
       decltype(_impl_.description_){},
       decltype(_impl_.notify_host_){},
@@ -1954,11 +1965,18 @@ WechatPayPrepayRequest::WechatPayPrepayRequest(const WechatPayPrepayRequest& fro
   if (!from._internal_app_id().empty()) {
     _this->_impl_.app_id_.Set(from._internal_app_id(), _this->GetArenaForAllocation());
   }
+  _impl_.out_trade_no_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.out_trade_no_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.out_trade_no_.Set(from._internal_out_trade_no(), _this->GetArenaForAllocation());
+  }
   _impl_.payer_open_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.payer_open_id_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
     _this->_impl_.payer_open_id_.Set(from._internal_payer_open_id(), _this->GetArenaForAllocation());
   }
   _impl_.description_.InitDefault();
@@ -1975,7 +1993,7 @@ WechatPayPrepayRequest::WechatPayPrepayRequest(const WechatPayPrepayRequest& fro
   if (!from._internal_notify_host().empty()) {
     _this->_impl_.notify_host_.Set(from._internal_notify_host(), _this->GetArenaForAllocation());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+  if ((from._impl_._has_bits_[0] & 0x00000004u) != 0) {
     _this->_impl_.amount_ = new ::palm::musa::v1::WechatPayPrepayRequest_Amount(*from._impl_.amount_);
   }
 
@@ -1987,6 +2005,7 @@ inline void WechatPayPrepayRequest::SharedCtor(::_pb::Arena* arena) {
       decltype(_impl_._has_bits_){},
       /*decltype(_impl_._cached_size_)*/ {},
       decltype(_impl_.app_id_){},
+      decltype(_impl_.out_trade_no_){},
       decltype(_impl_.payer_open_id_){},
       decltype(_impl_.description_){},
       decltype(_impl_.notify_host_){},
@@ -1995,6 +2014,10 @@ inline void WechatPayPrepayRequest::SharedCtor(::_pb::Arena* arena) {
   _impl_.app_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.app_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.out_trade_no_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.out_trade_no_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.payer_open_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -2017,6 +2040,7 @@ WechatPayPrepayRequest::~WechatPayPrepayRequest() {
 inline void WechatPayPrepayRequest::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.app_id_.Destroy();
+  _impl_.out_trade_no_.Destroy();
   _impl_.payer_open_id_.Destroy();
   _impl_.description_.Destroy();
   _impl_.notify_host_.Destroy();
@@ -2034,12 +2058,17 @@ PROTOBUF_NOINLINE void WechatPayPrepayRequest::Clear() {
 
   _impl_.app_id_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    _impl_.payer_open_id_.ClearNonDefaultToEmpty();
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _impl_.out_trade_no_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _impl_.payer_open_id_.ClearNonDefaultToEmpty();
+    }
   }
   _impl_.description_.ClearToEmpty();
   _impl_.notify_host_.ClearToEmpty();
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000004u) {
     ABSL_DCHECK(_impl_.amount_ != nullptr);
     _impl_.amount_->Clear();
   }
@@ -2055,54 +2084,62 @@ const char* WechatPayPrepayRequest::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 5, 1, 85, 2> WechatPayPrepayRequest::_table_ = {
+const ::_pbi::TcParseTable<2, 6, 1, 97, 7> WechatPayPrepayRequest::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(WechatPayPrepayRequest, _impl_._has_bits_),
     0, // no _extensions_
-    11, 24,  // max_field_number, fast_idx_mask
+    99, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294966008,  // skipmap
+    4294964220,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    5,  // num_field_entries
+    6,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     &_WechatPayPrepayRequest_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    {::_pbi::TcParser::MiniParse, {}},
+    // .palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;
+    {::_pbi::TcParser::FastMtS1,
+     {98, 2, 0, PROTOBUF_FIELD_OFFSET(WechatPayPrepayRequest, _impl_.amount_)}},
     // string app_id = 1;
     {::_pbi::TcParser::FastUS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(WechatPayPrepayRequest, _impl_.app_id_)}},
-    // optional string payer_open_id = 2;
+    // optional string out_trade_no = 2;
     {::_pbi::TcParser::FastUS1,
-     {18, 0, 0, PROTOBUF_FIELD_OFFSET(WechatPayPrepayRequest, _impl_.payer_open_id_)}},
-    // .palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;
-    {::_pbi::TcParser::FastMtS1,
-     {26, 1, 0, PROTOBUF_FIELD_OFFSET(WechatPayPrepayRequest, _impl_.amount_)}},
+     {18, 0, 0, PROTOBUF_FIELD_OFFSET(WechatPayPrepayRequest, _impl_.out_trade_no_)}},
+    // optional string payer_open_id = 11;
+    {::_pbi::TcParser::FastUS1,
+     {90, 1, 0, PROTOBUF_FIELD_OFFSET(WechatPayPrepayRequest, _impl_.payer_open_id_)}},
   }}, {{
+    98, 0, 1,
+    65532, 4,
     65535, 65535
   }}, {{
     // string app_id = 1;
     {PROTOBUF_FIELD_OFFSET(WechatPayPrepayRequest, _impl_.app_id_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // optional string payer_open_id = 2;
-    {PROTOBUF_FIELD_OFFSET(WechatPayPrepayRequest, _impl_.payer_open_id_), _Internal::kHasBitsOffset + 0, 0,
+    // optional string out_trade_no = 2;
+    {PROTOBUF_FIELD_OFFSET(WechatPayPrepayRequest, _impl_.out_trade_no_), _Internal::kHasBitsOffset + 0, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // .palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;
-    {PROTOBUF_FIELD_OFFSET(WechatPayPrepayRequest, _impl_.amount_), _Internal::kHasBitsOffset + 1, 0,
+    // optional string payer_open_id = 11;
+    {PROTOBUF_FIELD_OFFSET(WechatPayPrepayRequest, _impl_.payer_open_id_), _Internal::kHasBitsOffset + 1, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;
+    {PROTOBUF_FIELD_OFFSET(WechatPayPrepayRequest, _impl_.amount_), _Internal::kHasBitsOffset + 2, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // string description = 9;
+    // string description = 98;
     {PROTOBUF_FIELD_OFFSET(WechatPayPrepayRequest, _impl_.description_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string notify_host = 11;
+    // string notify_host = 99;
     {PROTOBUF_FIELD_OFFSET(WechatPayPrepayRequest, _impl_.notify_host_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }}, {{
     {::_pbi::TcParser::GetTable<::palm::musa::v1::WechatPayPrepayRequest_Amount>()},
   }}, {{
-    "\43\6\15\0\13\13\0\0"
+    "\43\6\14\15\0\13\13\0"
     "palm.musa.v1.WechatPayPrepayRequest"
     "app_id"
+    "out_trade_no"
     "payer_open_id"
     "description"
     "notify_host"
@@ -2125,35 +2162,43 @@ const ::_pbi::TcParseTable<2, 5, 1, 85, 2> WechatPayPrepayRequest::_table_ = {
   }
 
   cached_has_bits = _impl_._has_bits_[0];
-  // optional string payer_open_id = 2;
+  // optional string out_trade_no = 2;
   if (cached_has_bits & 0x00000001u) {
-    const std::string& _s = this->_internal_payer_open_id();
+    const std::string& _s = this->_internal_out_trade_no();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.musa.v1.WechatPayPrepayRequest.payer_open_id");
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.musa.v1.WechatPayPrepayRequest.out_trade_no");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
-  // .palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;
+  // optional string payer_open_id = 11;
   if (cached_has_bits & 0x00000002u) {
+    const std::string& _s = this->_internal_payer_open_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.musa.v1.WechatPayPrepayRequest.payer_open_id");
+    target = stream->WriteStringMaybeAliased(11, _s, target);
+  }
+
+  // .palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;
+  if (cached_has_bits & 0x00000004u) {
     target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(3, _Internal::amount(this),
+      InternalWriteMessage(12, _Internal::amount(this),
         _Internal::amount(this).GetCachedSize(), target, stream);
   }
 
-  // string description = 9;
+  // string description = 98;
   if (!this->_internal_description().empty()) {
     const std::string& _s = this->_internal_description();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
         _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.musa.v1.WechatPayPrepayRequest.description");
-    target = stream->WriteStringMaybeAliased(9, _s, target);
+    target = stream->WriteStringMaybeAliased(98, _s, target);
   }
 
-  // string notify_host = 11;
+  // string notify_host = 99;
   if (!this->_internal_notify_host().empty()) {
     const std::string& _s = this->_internal_notify_host();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
         _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.musa.v1.WechatPayPrepayRequest.notify_host");
-    target = stream->WriteStringMaybeAliased(11, _s, target);
+    target = stream->WriteStringMaybeAliased(99, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2179,27 +2224,35 @@ const ::_pbi::TcParseTable<2, 5, 1, 85, 2> WechatPayPrepayRequest::_table_ = {
                                     this->_internal_app_id());
   }
 
-  // optional string payer_open_id = 2;
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_payer_open_id());
-  }
+  if (cached_has_bits & 0x00000003u) {
+    // optional string out_trade_no = 2;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                      this->_internal_out_trade_no());
+    }
 
-  // string description = 9;
+    // optional string payer_open_id = 11;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                      this->_internal_payer_open_id());
+    }
+
+  }
+  // string description = 98;
   if (!this->_internal_description().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+    total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_description());
   }
 
-  // string notify_host = 11;
+  // string notify_host = 99;
   if (!this->_internal_notify_host().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+    total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_notify_host());
   }
 
-  // .palm.musa.v1.WechatPayPrepayRequest.Amount amount = 3;
-  if (cached_has_bits & 0x00000002u) {
+  // .palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;
+  if (cached_has_bits & 0x00000004u) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *_impl_.amount_);
@@ -2226,8 +2279,14 @@ void WechatPayPrepayRequest::MergeImpl(::google::protobuf::Message& to_msg, cons
   if (!from._internal_app_id().empty()) {
     _this->_internal_set_app_id(from._internal_app_id());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_internal_set_payer_open_id(from._internal_payer_open_id());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_set_out_trade_no(from._internal_out_trade_no());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_set_payer_open_id(from._internal_payer_open_id());
+    }
   }
   if (!from._internal_description().empty()) {
     _this->_internal_set_description(from._internal_description());
@@ -2235,7 +2294,7 @@ void WechatPayPrepayRequest::MergeImpl(::google::protobuf::Message& to_msg, cons
   if (!from._internal_notify_host().empty()) {
     _this->_internal_set_notify_host(from._internal_notify_host());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+  if (cached_has_bits & 0x00000004u) {
     _this->_internal_mutable_amount()->::palm::musa::v1::WechatPayPrepayRequest_Amount::MergeFrom(
         from._internal_amount());
   }
@@ -2261,6 +2320,8 @@ void WechatPayPrepayRequest::InternalSwap(WechatPayPrepayRequest* other) {
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_id_, lhs_arena,
                                        &other->_impl_.app_id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.out_trade_no_, lhs_arena,
+                                       &other->_impl_.out_trade_no_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.payer_open_id_, lhs_arena,
                                        &other->_impl_.payer_open_id_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.description_, lhs_arena,

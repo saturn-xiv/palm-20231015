@@ -21,11 +21,13 @@ message WechatPayPrepayRequest {
   }
 
   string app_id = 1;
-  optional string payer_open_id = 2;
-  Amount amount = 3;
+  optional string out_trade_no = 2;
 
-  string description = 9;
-  string notify_host = 11;
+  optional string payer_open_id = 11;
+  Amount amount = 12;
+
+  string description = 98;
+  string notify_host = 99;
 }
 
 message WechatPayCloseOrderRequest {

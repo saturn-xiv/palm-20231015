@@ -51,7 +51,8 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
     @Override
     public void prepay(WechatPayPrepayRequest request,
                        StreamObserver<WechatPayJsapiPrepayIdResponse> responseObserver) {
-        final var outTradeNo = WechatPayClient.outNo(OutNoType.TRADE);
+        final var outTradeNo = request.hasOutTradeNo()
+                ? request.getOutTradeNo() : WechatPayClient.outNo(OutNoType.TRADE);
         final var notifyUrl = WechatPayClient.notifyUrl(request.getNotifyHost(), WechatPayNotifyAction.TRANSCATION);
 
         logger.info("prepay jsapi out-trade-no {}", outTradeNo);
