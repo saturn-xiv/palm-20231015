@@ -263,8 +263,9 @@ copy_assets
 # -----------------------------------------------------------------------------
 
 cd $WORKSPACE/tmp
+echo "compressing $PACKAGE_NAME..."
 XZ_OPT=-9 tar -cJf $PACKAGE_NAME.tar.xz $PACKAGE_NAME
-md5sum $PACKAGE_NAME.tar.xz
+md5sum $PACKAGE_NAME.tar.xz > $PACKAGE_NAME.txt
 
 echo "done($GIT_VERSION)."
 exit 0
