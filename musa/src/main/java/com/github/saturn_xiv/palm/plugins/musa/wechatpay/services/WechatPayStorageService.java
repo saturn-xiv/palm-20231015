@@ -13,7 +13,8 @@ public interface WechatPayStorageService {
 
     TradeBill getTradeBill(String billDate, WechatPayTradeBillRequest.BillType billType);
 
-    void addOrder(String appId, String payerOpenId, String outTradeNo, WechatPayPrepayRequest.Amount amount, String description);
+    void addOrder(String appId, String payerOpenId, String outTradeNo, WechatPayPrepayRequest.Amount amount,
+                  String description, String response);
 
     void addRefund(String outTradeNo, String outRefundNo, WechatPayCreateRefundRequest.Amount amount, String reason);
 

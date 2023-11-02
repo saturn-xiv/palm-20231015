@@ -10,7 +10,7 @@ import java.util.List;
 public interface WechatPayOrderRepository extends CrudRepository<Order, Integer> {
     Order findById(int id);
 
-    Order findByOutTradeNo(String outTradeNo);
+    List<Order> findAllByOutTradeNo(String outTradeNo);
 
     List<Order> findAllByAppId(String appId);
 

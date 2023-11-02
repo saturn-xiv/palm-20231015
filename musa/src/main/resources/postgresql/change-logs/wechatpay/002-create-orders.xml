@@ -18,7 +18,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="out_trade_no" type="varchar(32)">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false"/>
             </column>
             <column name="amount_total" type="integer">
                 <constraints nullable="false"/>
@@ -27,6 +27,9 @@
                 <constraints nullable="false"/>
             </column>
             <column name="description" type="varchar(127)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="response" type="text">
                 <constraints nullable="false"/>
             </column>
             <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
@@ -42,6 +45,9 @@
         </createIndex>
         <createIndex tableName="wechat_pay_orders" indexName="idx_wechat_pay_orders_payer_open_id">
             <column name="payer_open_id"/>
+        </createIndex>
+        <createIndex tableName="wechat_pay_orders" indexName="idx_wechat_pay_orders_out_trade_no">
+            <column name="out_trade_no"/>
         </createIndex>
 
     </changeSet>

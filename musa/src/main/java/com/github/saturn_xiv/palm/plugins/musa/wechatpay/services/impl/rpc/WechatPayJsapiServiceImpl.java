@@ -5,6 +5,7 @@ import com.github.saturn_xiv.palm.plugins.musa.wechatpay.WechatPayClient;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.helpers.WechatPayJsapiHelper;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.models.OutNoType;
 import com.github.saturn_xiv.palm.plugins.musa.wechatpay.services.WechatPayStorageService;
+import com.google.gson.Gson;
 import com.google.protobuf.Empty;
 import com.wechat.pay.java.service.payments.model.Transaction;
 import io.grpc.stub.StreamObserver;
@@ -55,7 +56,7 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
                 ? request.getOutTradeNo() : WechatPayClient.outNo(OutNoType.TRADE);
         final var notifyUrl = WechatPayClient.notifyUrl(request.getNotifyHost(), WechatPayNotifyAction.TRANSCATION);
 
-        logger.info("prepay jsapi out-trade-no {}", outTradeNo);
+        logger.info("prepay jsapi out-trade-no {}({})", outTradeNo, request.hasOutTradeNo() ? 'E' : 'N');
         var response = wechatPay.prepayWithRequestPayment(request.getAppId(),
                 request.getPayerOpenId(),
                 outTradeNo,
@@ -63,9 +64,9 @@ public class WechatPayJsapiServiceImpl extends WechatPayJsapiGrpc.WechatPayJsapi
                 request.getAmount().getTotal(),
                 request.getDescription(),
                 notifyUrl);
-
+        Gson gson = new Gson();
         storageService.addOrder(request.getAppId(), request.getPayerOpenId(), outTradeNo, request.getAmount(),
-                request.getDescription());
+                request.getDescription(), gson.toJson(response));
 
         responseObserver.onNext(WechatPayJsapiPrepayIdResponse.newBuilder()
                 .setAppId(response.getAppId())

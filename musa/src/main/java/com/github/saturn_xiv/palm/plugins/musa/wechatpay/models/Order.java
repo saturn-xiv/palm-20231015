@@ -25,6 +25,9 @@ public class Order implements Serializable {
     @Length(min = 1, max = 127)
     @Column(nullable = false)
     private String description;
+    @Length(min = 12)
+    @Column(nullable = false)
+    private String response;
     @Column(name = "amount_total", nullable = false)
     private int amountTotal;
     @Column(name = "amount_currency", nullable = false)
@@ -87,6 +90,14 @@ public class Order implements Serializable {
 
     public void setAmountCurrency(int amountCurrency) {
         this.amountCurrency = amountCurrency;
+    }
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
     }
 
     public Date getCreatedAt() {

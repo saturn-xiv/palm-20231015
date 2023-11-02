@@ -47,7 +47,8 @@ public class WechatPayStorageServiceImpl implements WechatPayStorageService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void addOrder(String appId, String payerOpenId, String outTradeNo, WechatPayPrepayRequest.Amount amount, String description) {
+    public void addOrder(String appId, String payerOpenId, String outTradeNo, WechatPayPrepayRequest.Amount amount,
+                         String description, String response) {
         var it = new Order();
         it.setAppId(appId);
         it.setPayerOpenId(payerOpenId);
@@ -55,6 +56,7 @@ public class WechatPayStorageServiceImpl implements WechatPayStorageService {
         it.setAmountTotal(amount.getTotal());
         it.setAmountCurrency(amount.getCurrency().getNumber());
         it.setDescription(description);
+        it.setResponse(response);
         it.setCreatedAt(new Date());
         orderRepository.save(it);
     }
