@@ -59,10 +59,13 @@
       - certbot
       - python3-certbot-nginx
       - build-essential
+      - pkg-config
       - cmake
       - libssl-dev
       - libpq-dev
       - libmysqlclient-dev
+      - libsqlite3-dev
+      - libudev-dev
 
 - include_tasks: locales.yml
 
