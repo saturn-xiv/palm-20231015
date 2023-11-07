@@ -98,11 +98,10 @@ impl Adapter for Client {
     }
     async fn list_buckets(&self) -> Result<Vec<String>> {
         let mut items = Vec::new();
-        if let Some(buckets) = self.list_buckets().send().await?.buckets() {
-            for it in buckets {
-                if let Some(ref it) = it.name {
-                    items.push(it.clone());
-                }
+
+        for it in self.list_buckets().send().await?.buckets() {
+            if let Some(ref it) = it.name {
+                items.push(it.clone());
             }
         }
 
@@ -131,11 +130,10 @@ impl Adapter for Client {
     }
     async fn list_objects(&self, bucket: &str) -> Result<Vec<String>> {
         let mut items = Vec::new();
-        if let Some(objects) = self.list_objects().bucket(bucket).send().await?.contents() {
-            for it in objects {
-                if let Some(ref key) = it.key {
-                    items.push(key.clone());
-                }
+
+        for it in self.list_objects().bucket(bucket).send().await?.contents() {
+            if let Some(ref key) = it.key {
+                items.push(key.clone());
             }
         }
 
