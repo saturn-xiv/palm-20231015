@@ -35,7 +35,7 @@ FetchContent_Declare(tomlplusplus
 )
 FetchContent_Declare(argparse
   GIT_REPOSITORY  "https://github.com/p-ranav/argparse.git"
-  GIT_TAG         "557948f"
+  GIT_TAG         "v3.0"
 )
 FetchContent_Declare(inja
   GIT_REPOSITORY  "https://github.com/pantor/inja.git"
