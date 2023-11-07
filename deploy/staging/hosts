@@ -2,7 +2,7 @@
 
 [db]
 
-[localhost]
-ansible_connection="local"
+[bootstrap]
+localhost ansible_connection=local
 
 [all:vars]
