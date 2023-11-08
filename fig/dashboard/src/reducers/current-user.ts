@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import jwtDecode, { JwtPayload } from "jwt-decode";
+import { jwtDecode, JwtPayload } from "jwt-decode";
 
 import { UserQueryRequest, UserSignInResponse } from "../protocols/nut_pb";
 import { PermissionsResponse } from "../protocols/rbac_pb";
