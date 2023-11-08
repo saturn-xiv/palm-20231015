@@ -4,3 +4,12 @@ ansible_user: deploy
 
 app_go_version: "1.21.3"
 app_go_architecture: "amd64"
+
+app_jdk_version: "21.0.1"
+app_jdk_architecture: "x64"
+app_jdk_hash: "415e3f918a1f4062a0074a2794853d0d"
+app_maven_version: "3.9.5"
+app_gradle_version: "8.4"
+
+app_nodejs_version: "20.9.0"
+app_nodejs_architecture: "x64"
