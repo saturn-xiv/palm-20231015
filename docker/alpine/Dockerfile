@@ -3,13 +3,12 @@ LABEL maintainer="Jeremy Zheng"
 
 RUN apk update
 RUN apk upgrade
+# nodejs npm yarn gradle maven
 RUN apk add vim curl bash zsh pwgen openssl git tmux rsync \
     openssh-client sshpass \
-    build-base cmake git \
+    build-base cmake pkgconf git \
     python3 py3-pip python3-dev \
-    nodejs npm yarn \
-    gradle maven \
-    openssl-dev 
+    openssl-dev
 
 RUN mkdir -p $HOME/downloads $HOME/local $HOME/tmp
 

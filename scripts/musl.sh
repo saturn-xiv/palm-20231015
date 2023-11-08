@@ -3,7 +3,7 @@
 set -e
 
 apk update
-apk add rust cargo pkgconf \
+apk add rust cargo \
     linux-lts-dev openssl-dev \
     libpq-dev mariadb-dev sqlite-dev \
     protobuf protobuf-dev grpc grpc-dev
