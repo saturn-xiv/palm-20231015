@@ -1,23 +1,27 @@
 {
   "name": "morus",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "2023.11.9",
+  "description": "A tex2pdf tex2word conver",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
   "license": "MIT",
-  "private": true,
   "dependencies": {
-    "@grpc/grpc-js": "^1.9.2",
-    "bufferutil": "^4.0.7",
+    "@grpc/grpc-js": "^1.9.9",
+    "bufferutil": "^4.0.8",
     "canvas": "^2.11.2",
-    "dompurify": "^3.0.5",
+    "dompurify": "^3.0.6",
     "google-protobuf": "^3.21.2",
     "jsdom": "^22.1.0",
-    "marked": "^7.0.5",
-    "pino": "^8.15.0",
-    "pino-pretty": "^10.2.0",
+    "marked": "^9.1.5",
+    "pino": "^8.16.1",
+    "pino-pretty": "^10.2.3",
     "utf-8-validate": "^6.0.3"
   },
   "devDependencies": {
-    "webpack": "^5.88.2",
+    "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
   }
 }

@@ -1,7 +1,7 @@
 # USAGE
 
 ```bash
-yarn install
+npm install
 npx webpack --mode=production
 node dist/morus-xxx.js config.json
 ```
