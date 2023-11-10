@@ -176,7 +176,7 @@ function generate_lemon() {
 
 function generate_morus() {
     echo "generate code for morus"
-    local target=$WORKSPACE/morus/src/protocols
+    local target=$WORKSPACE/morus/morus/src/protocols
     if [ -d $target ]
     then
         rm -r $target
@@ -266,7 +266,7 @@ generate_musa
 generate_gardenia
 generate_babel
 generate_lemon
-# generate_morus
+generate_morus
 generate_lily
 
 echo 'format rust code'
