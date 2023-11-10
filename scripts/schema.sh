@@ -190,7 +190,7 @@ function generate_morus() {
 
 function generate_lily() {
     echo "generate code for lily"
-    local target=$WORKSPACE/lily/palm
+    local target=$WORKSPACE/lily/lily/palm
     local -a files=(
         "lily_pb2.py"
         "lily_pb2_grpc.py"
@@ -209,7 +209,7 @@ function generate_lily() {
         --python_out=$target --grpc_out=$target \
         --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_python_plugin \
         $PALM_PROTOCOLS/lily.proto
-    sed -i 's/import lily_/from . import lily_/g' lily/palm/lily_pb2_grpc.py
+    sed -i 's/import lily_/from . import lily_/g' $target/lily_pb2_grpc.py
 }
 
 function generate_babel() {
@@ -266,7 +266,7 @@ generate_musa
 generate_gardenia
 generate_babel
 generate_lemon
-generate_morus
+# generate_morus
 generate_lily
 
 echo 'format rust code'
