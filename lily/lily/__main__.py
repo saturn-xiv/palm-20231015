@@ -4,15 +4,16 @@ import sys
 import tomllib
 
 
-from palm import VERSION, RpcServer, RedisClient, MinioClient, RabbitMqClient, is_stopped
+from palm import VERSION,  RedisClient, MinioClient, RabbitMqClient, is_stopped
 from palm.tex import TEX2PDF_QUEUE, create_tex2pdf_queue_callback
+from palm.server import Rpc as RpcServer
 
 NAME = 'lily'
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         prog=NAME,
-        description='Background worker for palm',
+        description='A tex to pdf/word converter',
         epilog='https://github.com/saturn-xiv/palm')
     parser.add_argument('-c', '--config',
                         type=argparse.FileType(mode='rb'),

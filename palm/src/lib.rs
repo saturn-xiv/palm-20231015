@@ -340,6 +340,12 @@ pub mod cscd {
         tonic::include_proto!("palm.cscd.v1");
     }
 }
+pub mod lily {
+    #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
+    pub mod v1 {
+        tonic::include_proto!("palm.lily.v1");
+    }
+}
 pub mod forum {
     #[allow(clippy::match_single_binding, clippy::derive_partial_eq_without_eq)]
     pub mod v1 {

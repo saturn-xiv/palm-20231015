@@ -11,6 +11,8 @@ import msgpack
 
 from . import lily_pb2, lily_pb2_grpc
 
+from . import MinioClient
+
 TEX2PDF_QUEUE = 'palm.lily.tex-to-pdf'
 
 
