@@ -29,7 +29,7 @@ async fn tex2pdf() {
     \include{section-1.tex}
     \include{section-2.tex}
 
-\end{document}                
+\end{document}            
         "#
             .to_string()
             .into_bytes(),

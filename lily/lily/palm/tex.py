@@ -52,8 +52,10 @@ def create_tex2pdf_queue_callback(s3):
 def _handle_tex2pdf_message(message, s3):
     (request_b, response_b) = msgpack.unpackb(
         message, use_list=False, raw=False)
-    request = lily_pb2.TexToRequest.ParseFromString(request_b)
-    response = lily_pb2.S3File.ParseFromString(response_b)
+    request = lily_pb2.TexToRequest()
+    request.ParseFromString(request_b)
+    response = lily_pb2.S3File()
+    response.ParseFromString(response_b)
     logging.info("convert tex to pdf(%d) ", len(request.files))
     with tempfile.TemporaryDirectory(prefix='tex-') as root:
         for name in request.files:
@@ -61,8 +63,12 @@ def _handle_tex2pdf_message(message, s3):
                 logging.debug("generate file %s/%s", root, name)
                 fd.write(request.files[name])
         for _ in range(2):
-            subprocess.run(
-                ['xelatex', '-halt-on-error', 'main.tex'], cwd=root)
+            try:
+                subprocess.run(
+                    ['xelatex', '-halt-on-error', 'main.tex'],  check=True, cwd=root)
+            except subprocess.CalledProcessError as e:
+                logging.error("%s", e)
+                return
 
         pdf_file = os.path.join(root, 'main.pdf')
         pdf_size = os.path.getsize(pdf_file)
