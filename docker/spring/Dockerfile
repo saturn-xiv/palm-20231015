@@ -55,8 +55,7 @@ RUN cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
 RUN echo 'export LANG=en_US.UTF-8' >> $HOME/.zshrc \
     && echo 'export LC_ALL=en_US.UTF-8' >> $HOME/.zshrc \
     && echo 'export EDITOR=vim' >> $HOME/.zshrc \
-    && echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.zshrc \
-    && echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.zshrc
+    && echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.zshrc
 
 RUN git config --global core.quotepath false \
     && git config --global http.version HTTP/1.1 \
@@ -157,15 +156,8 @@ RUN echo 'export NVM_DIR="$HOME/.nvm"' >> $HOME/.zshrc \
 # https://stackoverflow.com/questions/37324519/node-sass-does-not-yet-support-your-current-environment-linux-64-bit-with-false
 RUN zsh -c "source $HOME/.zshrc \
     && nvm install node \
-    && nvm use node \
-    && npm i yarn -g \
     && nvm install --lts \
-    && nvm use --lts \
-    && npm i yarn -g \
-    && nvm install lts/fermium \
-    && nvm use lts/fermium \
-    && npm i yarn -g"
-RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.zshrc
+    && nvm install lts/fermium"
 
 # https://www.rust-lang.org/tools/install
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -259,7 +251,7 @@ RUN chmod +x $HOME/.local/bin/grpc_java_plugin
 # https://github.com/grpc/grpc-node
 # https://github.com/grpc/grpc-node/tree/master/examples/helloworld/static_codegen
 RUN zsh -c "source $HOME/.zshrc \
-    && yarn global add grpc-tools"
+    && npm install -g grpc-tools"
 
 # https://grpc.io/docs/languages/go/quickstart/
 RUN zsh -c "source $HOME/.zshrc \

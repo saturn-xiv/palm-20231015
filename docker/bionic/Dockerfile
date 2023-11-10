@@ -110,10 +110,8 @@ RUN echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $HOME/.zshrc
 RUN echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> $HOME/.zshrc
 # version `GLIBC_2.28' not found (required by node)
 RUN zsh -c "source $HOME/.zshrc \
-    && nvm install lts/gallium \
-    && nvm use lts/gallium \
-    && npm i yarn -g"
-RUN echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $HOME/.zshrc
+    && nvm install lts/gallium"
+
 
 ENV JDK_VERSION "21.0.1-open"
 # https://docs.gradle.org/current/userguide/compatibility.html
