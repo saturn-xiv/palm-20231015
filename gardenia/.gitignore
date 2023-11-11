@@ -1,9 +1,4 @@
-/build/
+/target/
 /.idea/
-
-/.gradle/
-/gradle/
-/gradlew
-/gradlew.bat
 
 /application.properties
