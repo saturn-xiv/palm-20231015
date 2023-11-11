@@ -227,7 +227,7 @@ RUN zsh -c "source $HOME/.zshrc \
     && make install"
 
 # https://github.com/grpc/grpc-web#code-generator-plugin
-ENV GRPC_WEB_PLUGIN_VERSION "1.4.2"
+ENV GRPC_WEB_PLUGIN_VERSION "1.5.0"
 RUN wget -q -O $HOME/.local/bin/protoc-gen-grpc-web \
     https://github.com/grpc/grpc-web/releases/download/${GRPC_WEB_PLUGIN_VERSION}/protoc-gen-grpc-web-${GRPC_WEB_PLUGIN_VERSION}-linux-x86_64
 RUN chmod +x $HOME/.local/bin/protoc-gen-grpc-web
