@@ -1,15 +1,19 @@
 #!/bin/bash
 
+
+# https://create-react-app.dev/docs/adding-typescript
+
+
 set -e
 
 install_oauth() {
-    yarn add @react-oauth/google@latest react-facebook-login
+    npm install --save @react-oauth/google@latest react-facebook-login
 }
 
 # react-json-view 
 # dayjs date-fns 
 install_react() {
-    yarn add grpc-web filesize timezones-list \
+    npm install --save grpc-web filesize timezones-list \
         moment moment-timezone \
         marked \
         diff @types/diff \
@@ -43,24 +47,24 @@ install_react() {
 
 # https://ant.design/docs/react/getting-started
 install_ant_design() {
-    yarn add antd @ant-design/pro-components @ant-design/charts
+    npm install --save antd @ant-design/pro-components @ant-design/charts
 }
 
 # https://developer.microsoft.com/en-us/fluentui#/get-started/web
 install_fluent_ui(){
-    yarn add @fluentui/react
+    npm install --save @fluentui/react
 }
 
 # https://mui.com/material-ui/getting-started/overview/
 install_material_design() {
-    yarn add @mui/material @emotion/react @emotion/styled \
+    npm install --save @mui/material @emotion/react @emotion/styled \
         @mui/icons-material @fontsource/roboto \
         @mui/x-date-pickers
 }
 
 # https://react-bootstrap.github.io/getting-started/introduction
 install_bootstrap() {
-    yarn add react-bootstrap bootstrap
+    npm install --save react-bootstrap bootstrap
 }
 
 
@@ -70,7 +74,6 @@ then
     exit 1
 fi
 
-# yarn add @originjs/vite-plugin-commonjs --dev
 
 if [ $1 == "material" ]
 then
