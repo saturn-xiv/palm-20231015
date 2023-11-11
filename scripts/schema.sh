@@ -245,7 +245,7 @@ done
 
 generate_grpc_for_php
 
-generate_fig_web
+generate_dashboard
 generate_loquat
 generate_musa
 generate_gardenia
