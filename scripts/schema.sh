@@ -53,9 +53,9 @@ function generate_loquat() {
 }
 
 # https://github.com/grpc/grpc-web#code-generator-plugin
-function generate_fig_web() {
-    echo "generate code for fig@grpc-web"
-    local target=$WORKSPACE/fig/dashboard/src/protocols
+function generate_dashboard() {
+    echo "generate code for dashboard"
+    local target=$WORKSPACE/dashboard/src/protocols
     if [ -d $target ]
     then
         rm -r $target
@@ -68,21 +68,7 @@ function generate_fig_web() {
         --grpc-web_out=import_style=typescript,mode=grpcweb:$target \
         $PALM_PROTOCOLS/*.proto
 }
-function generate_aloe_web() {
-    echo "generate code for aloe@grpc-web"
-    local target=$WORKSPACE/aloe/dashboard/src/protocols
-    if [ -d $target ]
-    then
-        rm -r $target
-    fi
-    mkdir -p $target
-    
-    $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
-        -I $PROTOBUF_ROOT/include/google/protobuf \
-        --js_out=import_style=commonjs,binary:$target \
-        --grpc-web_out=import_style=typescript,mode=grpcweb:$target \
-        $PALM_PROTOCOLS/ops-router.proto
-}
+
 
 function generate_diesel_postgresql() {
     echo "generate diesel schema for postgresql"
@@ -260,7 +246,6 @@ done
 generate_grpc_for_php
 
 generate_fig_web
-generate_aloe_web
 generate_loquat
 generate_musa
 generate_gardenia
