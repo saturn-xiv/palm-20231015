@@ -44,8 +44,6 @@ async fn tex2pdf() {
 子章节1-1 正文
 
 
-\newline This is another \verb|\newline| .
-
 \par This is a new paragraph.
 
 \newpage This is a new page.
