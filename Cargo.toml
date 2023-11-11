@@ -28,9 +28,11 @@ members = [
     "ops/ddns",
     "ops/router",
 
-    "aloe",
-    "coconut",
-    "fig",
     "orchid",
+    "balsam",
+    "fig",
+    "camellia",
+    "coconut",
+    "aloe",
 
 ]

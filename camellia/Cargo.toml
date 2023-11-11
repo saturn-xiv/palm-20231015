@@ -1,0 +1,8 @@
+[package]
+name = "camellia"
+version = "2023.11.11"
+edition = "2021"
+description = "A monitoring statistics service."
+
+
+[dependencies]
