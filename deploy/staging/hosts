@@ -1,8 +1,19 @@
 [www]
 
-[db]
+[postgresql]
 
-[bootstrap]
+[redis]
+
+[php_fpm]
+
+[php_fpm:vars]
+app_php_version="8.2"
+app_php_fpm_port=9090
+
+[redis:vars]
+app_redis_port=6372
+
+[building]
 localhost ansible_connection=local
 
 [all:vars]
