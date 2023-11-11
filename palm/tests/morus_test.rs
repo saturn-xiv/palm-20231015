@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 use palm::morus::v1 as morus;
 
 #[tokio::test]
