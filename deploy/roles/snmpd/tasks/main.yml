@@ -1,0 +1,33 @@
+- name: Install dependicy packages
+  become: true
+  apt:
+    pkg:
+      - snmpd
+
+- name: backup /etc/snmp/snmpd.conf
+  become: true
+  ansible.builtin.copy:
+    src: /etc/snmp/snmpd.conf
+    dest: "{{ ansible_env.HOME }}/backups/etc_snmp_snmpd_conf"
+    remote_src: yes
+    backup: yes
+
+- name: enable snmpd agent
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/snmp/snmpd.conf
+    regexp: "^agentAddress "
+    line: "agentAddress udp:161"
+
+- name: enable snmpd view
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/snmp/snmpd.conf
+    line: "view systemonly included .1.3.6.1.4.1.2021"
+
+- name: enable snmpd service
+  become: true
+  ansible.builtin.systemd:
+    name: snmpd
+    enabled: yes
+    masked: no

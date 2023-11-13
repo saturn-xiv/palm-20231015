@@ -1,0 +1,11 @@
+- hosts: all
+  tasks:
+    - name: install node-{{ app_nodejs_version }}-{{ app_nodejs_architecture }}
+      ansible.builtin.unarchive:
+        src: "https://nodejs.org/dist/v{{ app_nodejs_version }}/node-v{{ app_nodejs_version }}-linux-{{ app_nodejs_architecture }}.tar.xz"
+        dest: "{{ ansible_env.HOME }}/local"
+        remote_src: yes
+    - name: setup PATH
+      ansible.builtin.lineinfile:
+        path: "{{ ansible_env.HOME }}/.zshrc"
+        line: "export PATH=$HOME/local/node-v{{ app_nodejs_version }}-linux-{{ app_nodejs_architecture }}/bin:$PATH"

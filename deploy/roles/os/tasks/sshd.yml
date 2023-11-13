@@ -1,0 +1,35 @@
+- name: Backup sshd_config
+  become: true
+  copy:
+    src: /etc/ssh/sshd_config
+    dest: "{{ ansible_env.HOME }}/backups/etc_sshd_config"
+    remote_src: yes
+    backup: yes
+
+- name: Disable dns for sshd
+  become: true
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^UseDNS "
+    line: UseDNS no
+
+- name: Disable GSS api auth for sshd
+  become: true
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^GSSAPIAuthentication "
+    line: GSSAPIAuthentication no
+
+- name: Disable root ssh login
+  become: true
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^PermitRootLogin no"
+    line: PermitRootLogin no
+
+- name: Disable ssh login by password
+  become: true
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^PasswordAuthentication no"
+    line: PasswordAuthentication no

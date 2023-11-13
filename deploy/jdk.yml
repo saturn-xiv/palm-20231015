@@ -1,0 +1,29 @@
+- hosts: all
+  tasks:
+    - name: install openjdk-{{ app_jdk_version }}-{{ app_jdk_architecture }}
+      ansible.builtin.unarchive:
+        src: "https://download.java.net/java/GA/jdk{{ app_jdk_version }}/{{ app_jdk_hash }}/12/GPL/openjdk-{{ app_jdk_version }}_linux-{{ app_jdk_architecture }}_bin.tar.gz"
+        dest: "{{ ansible_env.HOME }}/local"
+        remote_src: yes
+    - name: install maven {{ app_maven_version }}
+      ansible.builtin.unarchive:
+        src: "https://dlcdn.apache.org/maven/maven-3/{{ app_maven_version }}/binaries/apache-maven-{{ app_maven_version }}-bin.tar.gz"
+        dest: "{{ ansible_env.HOME }}/local"
+        remote_src: yes
+    - name: install gradle {{ app_gradle_version }}
+      ansible.builtin.unarchive:
+        src: "https://services.gradle.org/distributions/gradle-{{ app_gradle_version }}-bin.zip"
+        dest: "{{ ansible_env.HOME }}/local"
+        remote_src: yes
+    - name: setup JAVA_HOME
+      ansible.builtin.lineinfile:
+        path: "{{ ansible_env.HOME }}/.zshrc"
+        line: "export JAVA_HOME=$HOME/local/jdk-{{ app_jdk_version }}"
+    - name: setup M2_HOME
+      ansible.builtin.lineinfile:
+        path: "{{ ansible_env.HOME }}/.zshrc"
+        line: "export M2_HOME=$HOME/local/apache-maven-{{ app_maven_version }}"
+    - name: setup PATH
+      ansible.builtin.lineinfile:
+        path: "{{ ansible_env.HOME }}/.zshrc"
+        line: "export PATH=$JAVA_HOME/bin:$M2_HOME/bin:$HOME/local/gradle-{{ app_gradle_version }}/bin:$PATH"
