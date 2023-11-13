@@ -1,0 +1,799 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.github.saturn_xiv.palm.plugins.nut.v1";
+package palm.nut.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+import "rbac.proto";
+import "orchid.proto";
+
+message IdRequest {
+  int32 id = 1;
+}
+
+message Pager {
+  int64 page = 1;
+  int64 size = 2;
+}
+
+message Pagination {
+  int64 page = 1;
+  int64 size = 2;
+  int64 total = 3;
+  bool has_next = 11;
+  bool has_previous = 12;
+}
+
+message MediaContent {
+  enum Editor {
+    TEXTAREA = 0;
+    QUILL = 1;
+  }
+
+  enum Status {
+    Published = 0;
+    Draft = 1;
+    Pending = 2;
+    Private = 3;
+    Future = 4;
+    Trash = 99;
+  }
+  Editor editor = 1;
+  string body = 2;
+  Status status = 3;
+
+  optional google.protobuf.Timestamp published_at = 11;
+}
+
+message UserDetail {
+  string nickname = 1;
+  string real_name = 2;
+}
+
+message Oauth2State {
+  string goto = 1;
+  string host = 2;
+  optional string user = 3;
+  string id = 9;
+}
+
+// ----------------------------------------------------------------------------
+
+service User {
+  rpc SignIn(UserSignInRequest) returns (UserSignInResponse) {}
+  rpc SignUp(UserSignUpRequest) returns (google.protobuf.Empty) {}
+  rpc ConfirmByEmail(UserQueryRequest) returns (google.protobuf.Empty) {}
+  rpc ConfirmByToken(UserTokenRequest) returns (google.protobuf.Empty) {}
+  rpc UnlockByEmail(UserQueryRequest) returns (google.protobuf.Empty) {}
+  rpc UnlockByToken(UserTokenRequest) returns (google.protobuf.Empty) {}
+  rpc ForgotPassword(UserQueryRequest) returns (google.protobuf.Empty) {}
+  rpc ResetPassword(UserResetPasswordRequest) returns (google.protobuf.Empty) {}
+
+  rpc Refresh(google.protobuf.Duration) returns (UserSignInResponse) {}
+  rpc Logs(Pager) returns (UserLogsResponse) {}
+  rpc SetProfile(UserSetProfileRequest) returns (google.protobuf.Empty) {}
+  rpc ChangePassword(UserChangePasswordRequest)
+      returns (google.protobuf.Empty) {}
+  rpc SignOut(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc Index(Pager) returns (UserIndexResponse) {}
+  rpc Show(IdRequest) returns (UserIndexResponse.Item) {}
+  rpc Disable(IdRequest) returns (google.protobuf.Empty) {}
+  rpc Enable(IdRequest) returns (google.protobuf.Empty) {}
+  rpc Lock(IdRequest) returns (google.protobuf.Empty) {}
+  rpc Unlock(IdRequest) returns (google.protobuf.Empty) {}
+  rpc Confirm(IdRequest) returns (google.protobuf.Empty) {}
+  rpc Delete(IdRequest) returns (google.protobuf.Empty) {}
+  rpc SetPassword(UserSetPasswordRequest) returns (google.protobuf.Empty) {}
+}
+
+message UserSignInRequest {
+  oneof user {
+    string nickname = 1;
+    string email = 2;
+  }
+  string password = 9;
+  google.protobuf.Duration ttl = 11;
+}
+
+message UserQueryRequest {
+  oneof user {
+    string nickname = 1;
+    string email = 2;
+  }
+  string home = 9;
+}
+
+message UserSignInResponse {
+  string token = 1;
+  UserIndexResponse.Item user = 2;
+  string provider_type = 9;
+
+  repeated string roles = 11;
+  repeated palm.rbac.v1.PermissionsResponse.Item permissions = 12;
+
+  bool has_google = 21;
+  bool has_wechat_mini_program = 22;
+  bool has_wechat_oauth2 = 23;
+}
+
+message UserSignUpRequest {
+  string real_name = 1;
+  string nickname = 2;
+  string email = 3;
+  string password = 4;
+  string lang = 11;
+  string timezone = 12;
+  string home = 21;
+}
+
+message UserTokenRequest {
+  string payload = 1;
+}
+
+message UserResetPasswordRequest {
+  string token = 1;
+  string password = 2;
+}
+
+message UserSetPasswordRequest {
+  int32 user = 1;
+  string password = 2;
+}
+
+message UserSetProfileRequest {
+  string real_name = 1;
+  string avatar = 2;
+  string timezone = 8;
+  string lang = 9;
+  string wechat = 11;
+  string phone = 12;
+}
+
+message UserGetProfileResponse {
+  string real_name = 1;
+  string avatar = 2;
+  string nickname = 3;
+  string email = 4;
+  string timezone = 8;
+  string lang = 9;
+  string wechat = 11;
+  string phone = 12;
+}
+
+message UserLogsResponse {
+  message Item {
+    enum Level {
+      DEBUG = 0;
+      INFO = 1;
+      WARNING = 2;
+      ERROR = 3;
+      PANIC = 4;
+    }
+    int32 id = 1;
+    int32 user_id = 2;
+    string ip = 3;
+    Level level = 4;
+    string message = 5;
+    palm.rbac.v1.ResourcesResponse.Item resource = 6;
+    google.protobuf.Timestamp created_at = 11;
+  }
+
+  Pagination pagination = 1;
+  repeated Item items = 11;
+}
+message UserChangePasswordRequest {
+  string current_password = 1;
+  string new_password = 2;
+}
+
+message UserIndexResponse {
+  message Item {
+    int32 id = 1;
+    string email = 2;
+    string nickname = 3;
+    string real_name = 4;
+    google.protobuf.Timestamp updated_at = 9;
+    optional google.protobuf.Timestamp last_sign_in_at = 11;
+    optional string last_sign_in_ip = 12;
+    optional google.protobuf.Timestamp current_sign_in_at = 13;
+    optional string current_sign_in_ip = 14;
+    int32 sign_in_count = 19;
+    string lang = 21;
+    string timezone = 22;
+    string avatar = 23;
+    optional google.protobuf.Timestamp confirmed_at = 27;
+    optional google.protobuf.Timestamp locked_at = 28;
+    optional google.protobuf.Timestamp deleted_at = 29;
+  }
+
+  Pagination pagination = 1;
+  repeated Item items = 11;
+}
+
+// ----------------------------------------------------------------------------
+service Google {
+  rpc SignInUrl(GoogleSignInUrlRequest) returns (GoogleSignInUrlResponse) {}
+  rpc SignIn(SignInByGoogleRequest) returns (UserSignInResponse) {}
+}
+
+message SignInByGoogleRequest {
+  repeated string scopes = 1;
+  string code = 2;
+  string state = 3;
+  string redirect_uri = 4;
+
+  string nonce = 9;
+  google.protobuf.Duration ttl = 11;
+}
+
+message GoogleSignInUrlRequest {
+  string redirect_uri = 1;
+  Oauth2State state = 2;
+}
+
+message GoogleSignInUrlResponse {
+  string url = 1;
+  string nonce = 2;
+}
+// ----------------------------------------------------------------------------
+service Wechat {
+  rpc Oauth2SignInState(google.protobuf.Empty)
+      returns (WechatOauth2SignInStateResponse) {}
+  rpc Oauth2SignInUrl(WechatOauth2SignInUrlRequest)
+      returns (palm.orchid.v1.WechatOauth2QrConnectResponse) {}
+  rpc SignInByOauth2(SignInByWechatOauth2Request) returns (UserSignInResponse) {
+  }
+  rpc AllOauth2User(google.protobuf.Empty)
+      returns (WechatAllOauth2UserResponse) {}
+  rpc DestroyOauth2User(IdRequest) returns (google.protobuf.Empty) {}
+  rpc BindOauth2UserById(WechatUserBindByIdRequest)
+      returns (google.protobuf.Empty) {}
+  rpc BindOauth2UserByAccount(WechatUserBindByAccountRequest)
+      returns (google.protobuf.Empty) {}
+  rpc GetOauth2UserById(IdRequest) returns (WechatAllOauth2UserResponse.Item) {}
+  rpc GetOauth2UserByOpenId(WechatUserQueryByOpenIdRequest)
+      returns (WechatAllOauth2UserResponse.Item) {}
+  rpc GetOauth2UserByUnionId(WechatUserQueryByUnionIdRequest)
+      returns (WechatAllOauth2UserResponse) {}
+
+  rpc AllMiniProgramUser(google.protobuf.Empty)
+      returns (WechatAllMiniProgramUserResponse) {}
+  rpc DestroyMiniProgramUser(IdRequest) returns (google.protobuf.Empty) {}
+  rpc BindMiniProgramUserById(WechatUserBindByIdRequest)
+      returns (google.protobuf.Empty) {}
+  rpc GetMiniProgramUserById(IdRequest)
+      returns (WechatAllMiniProgramUserResponse.Item) {}
+  rpc GetMiniProgramUserByOpenId(WechatUserQueryByOpenIdRequest)
+      returns (WechatAllMiniProgramUserResponse.Item) {}
+  rpc GetMiniProgramUserByUnionId(WechatUserQueryByUnionIdRequest)
+      returns (WechatAllMiniProgramUserResponse) {}
+}
+
+message WechatUserBindByIdRequest {
+  int32 user_id = 1;
+  int32 wechat_user_id = 2;
+}
+
+message WechatUserBindByAccountRequest {
+  string nickname = 1;
+  string password = 2;
+}
+
+message WechatUserQueryByOpenIdRequest {
+  string app_id = 1;
+  string open_id = 2;
+}
+
+message WechatUserQueryByUnionIdRequest {
+  string union_id = 1;
+}
+
+message WechatAllMiniProgramUserResponse {
+  message Item {
+    int32 id = 1;
+    int32 user_id = 2;
+    string union_id = 3;
+    string app_id = 4;
+    string open_id = 5;
+    optional string nickname = 11;
+    optional string avatar_url = 12;
+  }
+  repeated Item items = 1;
+}
+message WechatAllOauth2UserResponse {
+  message Item {
+    int32 id = 1;
+    int32 user_id = 2;
+    string union_id = 3;
+    string app_id = 4;
+    string open_id = 5;
+    string nickname = 11;
+    int32 sex = 12;
+    string city = 13;
+    string province = 14;
+    string country = 15;
+    optional string head_img_url = 16;
+    repeated string privilege = 17;
+    string lang = 18;
+  }
+  repeated Item items = 1;
+}
+
+message SignInByWechatOauth2Request {
+  string state = 1;
+  string code = 2;
+  string app_id = 3;
+
+  palm.orchid.v1.WechatOauth2QrConnectRequest.Language language = 8;
+
+  google.protobuf.Duration ttl = 11;
+}
+
+message WechatOauth2SignInStateResponse {
+  string state = 1;
+}
+
+message WechatOauth2SignInUrlRequest {
+  string app_id = 1;
+  string redirect_uri = 2;
+  palm.orchid.v1.WechatOauth2QrConnectRequest.Language language = 3;
+}
+
+message WechatMiniProgramUser {
+  string app_id = 11;
+  string open_id = 12;
+  string union_id = 13;
+  optional string nickname = 21;
+  optional string avatar_url = 22;
+}
+
+// ----------------------------------------------------------------------------
+
+service Attachment {
+  rpc Index(Pager) returns (AttachmentIndexResponse) {}
+  rpc Destroy(IdRequest) returns (google.protobuf.Empty) {}
+  rpc Show(AttachmentShowRequest) returns (AttachmentShowResponse) {}
+}
+message AttachmentShowRequest {
+  int32 id = 1;
+  google.protobuf.Duration ttl = 2;
+}
+message AttachmentShowResponse {
+  AttachmentIndexResponse.Item item = 1;
+  string url = 2;
+}
+
+message AttachmentIndexResponse {
+  message Item {
+    int32 id = 1;
+    string bucket = 2;
+    string name = 3;
+    string title = 4;
+    int64 size = 5;
+    string content_type = 6;
+    MediaContent.Status status = 7;
+
+    google.protobuf.Timestamp updated_at = 11;
+  }
+  Pagination pagination = 1;
+  repeated Item items = 11;
+}
+
+// ----------------------------------------------------------------------------
+
+service Locale {
+  rpc Create(LocaleCreateRequest) returns (google.protobuf.Empty) {}
+  rpc Update(LocaleUpdateRequest) returns (google.protobuf.Empty) {}
+  rpc ByLangAndCode(LocaleByLangAndCodeRequest)
+      returns (LocaleIndexResponse.Item) {}
+  rpc ById(IdRequest) returns (LocaleIndexResponse.Item) {}
+  rpc ByLang(LocaleByLangRequest) returns (LocaleListResponse) {}
+  rpc ByCode(LocaleByCodeRequest) returns (LocaleListResponse) {}
+  rpc Index(Pager) returns (LocaleIndexResponse) {}
+  rpc Destroy(IdRequest) returns (google.protobuf.Empty) {}
+}
+
+message LocaleByLangRequest {
+  string lang = 1;
+}
+
+message LocaleListResponse {
+  repeated LocaleIndexResponse.Item items = 1;
+}
+
+message LocaleIndexResponse {
+  message Item {
+    int32 id = 1;
+    string lang = 2;
+    string code = 3;
+    string message = 4;
+    google.protobuf.Timestamp updated_at = 9;
+  }
+  repeated Item items = 1;
+  Pagination pagination = 9;
+}
+message LocaleByCodeRequest {
+  string code = 1;
+}
+message LocaleByLangAndCodeRequest {
+  string lang = 1;
+  string code = 2;
+}
+message LocaleCreateRequest {
+  string lang = 1;
+  string code = 2;
+  string message = 3;
+}
+message LocaleUpdateRequest {
+  int32 id = 1;
+  string message = 2;
+}
+// ----------------------------------------------------------------------------
+service Notification {
+  rpc Index(Pager) returns (IndexNotificationResponse) {}
+}
+
+message IndexNotificationResponse {
+  message Item {
+    oneof message {
+      EmailTask email = 1;
+      SmsTask sms = 2;
+    }
+    google.protobuf.Timestamp created_at = 19;
+  }
+  repeated Item items = 1;
+  Pagination pagination = 9;
+}
+
+// ----------------------------------------------------------------------------
+
+service LeaveWord {
+  rpc Create(MediaContent) returns (google.protobuf.Empty) {}
+  rpc Index(Pager) returns (LeaveWordIndexResponse) {}
+  rpc Show(IdRequest) returns (LeaveWordIndexResponse.Item) {}
+  rpc Destroy(IdRequest) returns (google.protobuf.Empty) {}
+}
+
+message LeaveWordIndexResponse {
+  message Item {
+    int32 id = 1;
+    string lang = 2;
+    string ip = 3;
+    MediaContent content = 8;
+    google.protobuf.Timestamp updated_at = 11;
+    google.protobuf.Timestamp created_at = 12;
+  }
+  repeated Item items = 1;
+  Pagination pagination = 9;
+}
+
+// ----------------------------------------------------------------------------
+
+service Site {
+  rpc SetMaintenanceMode(SiteMaintenanceModeRequest)
+      returns (google.protobuf.Empty) {}
+
+  rpc Install(SiteInstallRequest) returns (google.protobuf.Empty) {}
+
+  rpc ClearCache(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc Layout(google.protobuf.Empty) returns (SiteLayoutResponse) {}
+  rpc SetAuthor(SiteLayoutResponse.Author) returns (google.protobuf.Empty) {}
+  rpc SetCopyright(SiteSetCopyrightRequest) returns (google.protobuf.Empty) {}
+  rpc SetKeywords(SiteSetKeywordsRequest) returns (google.protobuf.Empty) {}
+  rpc SetInfo(SiteSetInfoRequest) returns (google.protobuf.Empty) {}
+  rpc SetLogo(SiteSetLogoRequest) returns (google.protobuf.Empty) {}
+
+  rpc SetTwilio(TwilioProfile) returns (google.protobuf.Empty) {}
+  rpc GetTwilio(google.protobuf.Empty) returns (TwilioProfile) {}
+  rpc PingTwilio(SiteTwilioPingRequest) returns (google.protobuf.Empty) {}
+
+  rpc SetSmtp(SmtpProfile) returns (google.protobuf.Empty) {}
+  rpc GetSmtp(google.protobuf.Empty) returns (SmtpProfile) {}
+  rpc PingSmtp(SiteSmtpPingRequest) returns (google.protobuf.Empty) {}
+
+  rpc SetIndexNow(IndexNowProfile) returns (google.protobuf.Empty) {}
+  rpc GetIndexNow(google.protobuf.Empty) returns (IndexNowProfile) {}
+  rpc PingIndexNow(IndexNowPingRequest) returns (google.protobuf.Empty) {}
+
+  rpc SetGoogle(GoogleProfile) returns (google.protobuf.Empty) {}
+  rpc GetGoogle(google.protobuf.Empty) returns (GoogleProfile) {}
+  rpc PingGoogle(SitemapPingRequest) returns (google.protobuf.Empty) {}
+
+  rpc SetBaidu(BaiduProfile) returns (google.protobuf.Empty) {}
+  rpc GetBaidu(google.protobuf.Empty) returns (BaiduProfile) {}
+  rpc PingBaidu(SitemapPingRequest) returns (google.protobuf.Empty) {}
+
+  rpc Status(google.protobuf.Empty) returns (SiteStatusResponse) {}
+}
+
+message IndexNowProfile {
+  string key = 1;
+}
+
+message IndexNowPingRequest {
+  string key = 1;
+  string home = 9;
+}
+
+message SitemapPingRequest {
+  string home = 1;
+}
+
+message SiteMaintenanceModeRequest {
+  google.protobuf.Duration ttl = 1;
+  string reason = 2;
+}
+
+message SiteInstallRequest {
+  UserSignUpRequest user = 1;
+}
+
+message TwilioProfile {
+  string from = 1;
+  string account_sid = 2;
+  string auth_token = 3;
+  optional string sms_status_callback = 9;
+}
+
+message SmtpProfile {
+  // https://github.com/karastojko/mailio/blob/master/include/mailio/smtp.hpp#L229
+  enum AuthMethod {
+    None = 0;
+    Login = 1;
+    StartTls = 2;
+  }
+  string host = 1;
+  uint32 port = 2;
+  AuthMethod auth_method = 3;
+  repeated EmailTask.Address cc = 8;
+  repeated EmailTask.Address bcc = 9;
+
+  EmailTask.Address from = 11;
+  string password = 12;
+}
+
+message EmailTask {
+  message Address {
+    string name = 1;
+    string email = 2;
+  }
+  message Body {
+    string text = 1;
+    bool html = 2;
+  }
+  message Attachment {
+    string name = 1;
+    bytes payload = 2;
+  }
+
+  Address to = 1;
+  repeated Address cc = 2;
+  repeated Address bcc = 3;
+  string subject = 11;
+  Body body = 12;
+  repeated Attachment attachments = 13;
+}
+
+message SiteTwilioPingRequest {
+  string to = 1;
+  string message = 2;
+  TwilioProfile profile = 9;
+}
+
+message SiteSmtpPingRequest {
+  EmailTask.Address to = 1;
+  string subject = 2;
+  string content = 3;
+  SmtpProfile profile = 9;
+}
+
+message SiteSetLogoRequest {
+  string url = 1;
+}
+message SiteSetCopyrightRequest {
+  string payload = 1;
+}
+message SiteSetKeywordsRequest {
+  repeated string items = 1;
+}
+message SiteSetInfoRequest {
+  string lang = 1;
+  string title = 11;
+  string subhead = 12;
+  string description = 13;
+}
+
+message SiteLayoutResponse {
+  message Author {
+    string name = 1;
+    string email = 2;
+  }
+  string title = 1;
+  string subhead = 2;
+  repeated string keywords = 3;
+  string description = 4;
+  Author author = 5;
+  string copyright = 6;
+  string logo = 7;
+  repeated string languages = 9;
+}
+
+message GoogleProfile {
+  // https://developers.google.com/recaptcha/intro
+  message ReCaptcha {
+    string site_key = 1;
+    string secret = 2;
+  }
+  optional string site_verify_id = 1;
+  optional ReCaptcha re_captcha = 2;
+}
+message BaiduProfile {
+  message SiteVerify {
+    string id = 1;
+    string content = 2;
+  }
+  optional SiteVerify site_verify = 1;
+}
+
+message SmsTask {
+  string from = 1;
+  repeated string to = 2;
+  string body = 3;
+}
+
+message SiteStatusResponse {
+  message Database {
+    string name = 1;
+    string size = 2;
+  }
+  message PostgreSql {
+    string version = 1;
+    google.protobuf.Timestamp now = 2;
+    repeated Database databases = 9;
+  }
+  message MySql {
+    uint64 size = 1;
+    string version = 2;
+  }
+  message Redis {
+    message Item {
+      string node = 1;
+      string key = 2;
+      int64 ttl = 3;
+    };
+    string info = 1;
+    repeated Item items = 2;
+  }
+  message RabbitMq {
+    string protocol = 1;
+    uint32 heartbeat = 2;
+  }
+  message OpenSearch {
+    string url = 1;
+    string info = 2;
+  }
+  message Health {
+    string name = 1;
+    string status = 2;
+  }
+  message System {
+    string version = 1;
+    string cpu = 2;
+    string memory = 3;
+    string boot = 4;
+    string disk = 5;
+    string load = 6;
+    string fs = 7;
+    string swap = 8;
+    string uptime = 9;
+    string network = 10;
+  }
+
+  PostgreSql postgresql = 1;
+  MySql mysql = 2;
+  Redis redis = 3;
+  RabbitMq rabbitmq = 4;
+  OpenSearch opensearch = 5;
+  System system = 11;
+  repeated Health healthes = 21;
+}
+
+// ----------------------------------------------------------------------------
+
+service ShorterLink {
+  rpc Create(ShorterLinkCreateRequest) returns (google.protobuf.Empty) {}
+  rpc Update(ShorterLinkUpdateRequest) returns (google.protobuf.Empty) {}
+  rpc Destroy(IdRequest) returns (google.protobuf.Empty) {}
+  rpc Index(Pager) returns (ShorterLinkIndexResponse) {}
+}
+
+message ShorterLinkIndexResponse {
+  message Item {
+    int32 id = 1;
+    string url = 2;
+    string details = 3;
+    string code = 9;
+
+    google.protobuf.Timestamp updated_at = 11;
+  }
+  Pagination pagination = 1;
+  repeated Item items = 11;
+}
+
+message ShorterLinkCreateRequest {
+  string url = 1;
+  string details = 2;
+}
+
+message ShorterLinkUpdateRequest {
+  int32 id = 1;
+  string url = 2;
+  string details = 3;
+}
+// ----------------------------------------------------------------------------
+
+service Tag {
+  rpc Create(TagCreateRequest) returns (google.protobuf.Empty) {}
+  rpc Update(TagUpdateRequest) returns (google.protobuf.Empty) {}
+  rpc Destroy(IdRequest) returns (google.protobuf.Empty) {}
+  rpc Index(google.protobuf.Empty) returns (TagIndexResponse) {}
+}
+
+message TagIndexResponse {
+  message Item {
+    int32 id = 1;
+    string code = 2;
+    int32 priority = 3;
+    google.protobuf.Timestamp updated_at = 11;
+  }
+  repeated Item items = 1;
+}
+
+message TagCreateRequest {
+  string code = 1;
+  int32 priority = 11;
+}
+
+message TagUpdateRequest {
+  int32 id = 1;
+  string code = 2;
+  int32 priority = 11;
+}
+// ----------------------------------------------------------------------------
+
+service Category {
+  rpc Create(CategoryCreateRequest) returns (google.protobuf.Empty) {}
+  rpc Update(CategoryUpdateRequest) returns (google.protobuf.Empty) {}
+  rpc Destroy(IdRequest) returns (google.protobuf.Empty) {}
+  rpc Index(google.protobuf.Empty) returns (CategoryIndexResponse) {}
+}
+message CategoryIndexResponse {
+  message Item {
+    int32 id = 1;
+    string code = 2;
+    int32 left = 3;
+    int32 right = 4;
+
+    google.protobuf.Timestamp updated_at = 11;
+  }
+  repeated Item items = 1;
+}
+message CategoryCreateRequest {
+  string code = 1;
+  oneof by {
+    int32 left = 2;
+    int32 parent = 3;
+  }
+}
+
+message CategoryUpdateRequest {
+  int32 id = 1;
+  string code = 2;
+}
+
+// ----------------------------------------------------------------------------
