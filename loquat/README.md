@@ -1,18 +1,5 @@
 # LOQUAT
 
-## By Cmake(ONLY support focal yet)
-
-```bash
-mkdir build
-cd build
-apt install -y cmake g++-10 golang libunwind-dev libboost-all-dev
-CC=gcc-10 CXX=g++-10 cmake -DCMAKE_BUILD_TYPE=Release \
-    -DABSL_PROPAGATE_CXX_STD=ON -DTINK_USE_SYSTEM_OPENSSL=OFF \
-    -DBUILD_COMPILER=OFF -DWITH_OPENSSL=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF \
-    ..
-make loquat
-```
-
 ## By Qemu
 
 ```bash
@@ -30,15 +17,3 @@ sudo qemu-system-aarch64 -m 4096 -cpu cortex-a57 -M virt -nographic -pflash /usr
 
 ## [Creating the Certificate Authority's Certificate and Keys](https://mariadb.com/docs/xpand/security/data-in-transit-encryption/create-self-signed-certificates-keys-openssl/)
 
-```bash
-openssl genrsa -out ca.key 4096
-openssl req -new -x509 -nodes -days 36500 -key ca.key -out ca.crt
-
-openssl req -newkey rsa:4096 -nodes -days 3650 -keyout node.key -out node.csr
-openssl x509 -req -days 3650 -set_serial 01 -in node.csr -out node.crt -CA ca.crt -CAkey ca.key
-openssl verify -CAfile ca.crt node.crt
-
-openssl rsa -noout -text -in node.key
-openssl req -noout -text -in node.csr
-openssl x509 -noout -text -in node.crt
-```
