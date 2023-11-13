@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="20230415052114" author="Jeremy Zheng" labels="create callback notifications">
+
+        <createTable tableName="wechat_pay_notifications">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="uid" type="varchar(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="create_time" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="event_type" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="summary" type="varchar(16)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="resource_type" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="resource" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex tableName="wechat_pay_notifications" indexName="idx_wechat_pay_notifications_uid">
+            <column name="uid"/>
+        </createIndex>
+        <createIndex tableName="wechat_pay_notifications" indexName="idx_wechat_pay_notifications_create_time">
+            <column name="create_time"/>
+        </createIndex>
+        <createIndex tableName="wechat_pay_notifications" indexName="idx_wechat_pay_notifications_event_type">
+            <column name="event_type"/>
+        </createIndex>
+        <createIndex tableName="wechat_pay_notifications" indexName="idx_wechat_pay_notifications_summary">
+            <column name="summary"/>
+        </createIndex>
+        <createIndex tableName="wechat_pay_notifications" indexName="idx_wechat_pay_notifications_resource_type">
+            <column name="resource_type"/>
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>

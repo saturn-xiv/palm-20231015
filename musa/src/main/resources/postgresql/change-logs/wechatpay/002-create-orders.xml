@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="20230413210316" author="Jeremy Zheng" labels="create orders">
+
+        <createTable tableName="wechat_pay_orders">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="app_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="payer_open_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="out_trade_no" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount_total" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount_currency" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(127)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="response" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex tableName="wechat_pay_orders" indexName="idx_wechat_pay_orders_app_and_payer">
+            <column name="app_id"/>
+            <column name="payer_open_id"/>
+        </createIndex>
+        <createIndex tableName="wechat_pay_orders" indexName="idx_wechat_pay_orders_app_id">
+            <column name="app_id"/>
+        </createIndex>
+        <createIndex tableName="wechat_pay_orders" indexName="idx_wechat_pay_orders_payer_open_id">
+            <column name="payer_open_id"/>
+        </createIndex>
+        <createIndex tableName="wechat_pay_orders" indexName="idx_wechat_pay_orders_out_trade_no">
+            <column name="out_trade_no"/>
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>
