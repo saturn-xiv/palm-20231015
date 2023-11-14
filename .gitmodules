@@ -1,0 +1,3 @@
+[submodule "palm/palm/vcpkg"]
+	path = palm/palm/vcpkg
+	url = https://github.com/microsoft/vcpkg.git

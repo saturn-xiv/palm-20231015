@@ -22,7 +22,8 @@ RUN apt -y install build-essential cmake mold pkg-config g++-12 \
     crossbuild-essential-armhf g++-${GCC_VERSION}-arm-linux-gnueabihf \
     crossbuild-essential-riscv64 g++-${GCC_VERSION}-riscv64-linux-gnu \
     clang-${CLANG_VERSION} clangd-${CLANG_VERSION} clang-tools-${CLANG_VERSION} clang-format-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
-    lsb-release wget git python3 golang
+    lsb-release tar curl zip unzip wget git \
+    python3 golang
 RUN apt -y clean
 
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CLANG_VERSION} 100 \
