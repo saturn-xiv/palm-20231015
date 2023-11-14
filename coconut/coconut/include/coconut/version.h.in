@@ -1,0 +1,17 @@
+#pragma once
+
+#include "palm/version.hpp"
+
+// clang-format off
+namespace coconut {
+
+inline static const std::string VERSION = "v@coconut_VERSION_MAJOR@.@coconut_VERSION_MINOR@.@coconut_VERSION_PATCH@";
+
+inline static const std::string GIT_VERSION = "@GIT_REV@";
+inline static const std::string BUILD_TIME = "@BUILD_TIME@";
+
+inline static const std::string PROJECT_NAME = "@CMAKE_PROJECT_NAME@";
+inline static const std::string PROJECT_DESCRIPTION = "@CMAKE_PROJECT_DESCRIPTION@";
+
+}
+// clang-format on
