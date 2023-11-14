@@ -4,7 +4,7 @@ set -e
 
 export PROTOBUF_ROOT=$HOME/.local
 export WORKSPACE=$PWD
-export PALM_PROTOCOLS=$WORKSPACE/palm/palm/protocols
+export PALM_PROTOCOLS=$WORKSPACE/protocols
 
 # -----------------------------------------------------------------------------
 
@@ -71,7 +71,7 @@ function generate_palm() {
     $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
         -I $PROTOBUF_ROOT/include/google/protobuf \
         --js_out=import_style=commonjs,binary:$dashboard_target \
-        --grpc-web_out=import_style=typescript,mode=grpcweb:$tardashboard_target \
+        --grpc-web_out=import_style=typescript,mode=grpcweb:$dashboard_target \
         $PALM_PROTOCOLS/*.proto
 
     echo 'generate code for palm/gourd'
@@ -176,6 +176,15 @@ function generate_lily() {
 }
 
 # -----------------------------------------------------------------------------
+declare -a languages=(
+    # "node"
+    "python"
+    "ruby"
+    "cpp"
+    "csharp"
+    "java" 
+    # "objective_c"
+)
 
 for l in "${languages[@]}"
 do
@@ -190,9 +199,6 @@ generate_musa
 generate_gardenia
 generate_morus
 generate_lily
-
-echo 'format rust code'
-cargo fmt
 
 # ----------------------------------------------------------
 

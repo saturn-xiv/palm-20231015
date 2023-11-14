@@ -1,0 +1,44 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.github.saturn_xiv.palm.plugins.nut.v1";
+package palm.nut.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message IdRequest {
+  int32 id = 1;
+}
+
+message Pager {
+  int64 page = 1;
+  int64 size = 2;
+}
+
+message Pagination {
+  int64 page = 1;
+  int64 size = 2;
+  int64 total = 3;
+  bool has_next = 11;
+  bool has_previous = 12;
+}
+
+message MediaContent {
+  enum Editor {
+    TEXTAREA = 0;
+    QUILL = 1;
+  }
+
+  enum Status {
+    Published = 0;
+    Draft = 1;
+    Pending = 2;
+    Private = 3;
+    Future = 4;
+    Trash = 99;
+  }
+  Editor editor = 1;
+  string body = 2;
+  Status status = 3;
+
+  optional google.protobuf.Timestamp published_at = 11;
+}
