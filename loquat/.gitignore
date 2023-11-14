@@ -1,5 +1,2 @@
-/python/
-/config.toml
-
-*.tar
-*.md5
+/include/loquat/version.hpp
+/build/
