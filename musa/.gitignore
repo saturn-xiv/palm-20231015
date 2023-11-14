@@ -1,8 +1,5 @@
-/.idea/
-/target/
+/python/
+/config.toml
 
-/wechatpay/
-/application.properties
-/*.conf
-
-/tmp/
+*.tar
+*.md5
