@@ -7,7 +7,7 @@
 set -e
 
 install_oauth() {
-    npm install --save @react-oauth/google@latest react-facebook-login
+    npm install --save @react-oauth/google@latest
 }
 
 # react-json-view 
@@ -60,7 +60,7 @@ install_fluent_ui(){
 install_material_design() {
     npm install --save @mui/material @emotion/react @emotion/styled \
         @mui/icons-material @fontsource/roboto \
-        @mui/x-date-pickers
+        @mui/x-date-pickers date-fns
 }
 
 # https://react-bootstrap.github.io/getting-started/introduction
@@ -75,21 +75,21 @@ then
     exit 1
 fi
 
+
+install_react
+install_oauth
+
 if [ $1 == "material" ]
 then
-    install_react
     install_material_design
 elif [ $1 == "antd" ]
 then
-    install_react
     install_ant_design
 elif [ $1 == "fluent" ]
 then
-    install_react
     install_fluent_ui
 elif [ $1 == "bootstrap" ]
 then
-    install_react
     install_bootstrap
 else
     echo "unknown option $1"

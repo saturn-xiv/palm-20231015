@@ -1,7 +1,7 @@
 {
   "name": "palm",
   "version": "2023.11.14",
-  "description": "A total free education solution.",
+  "private": true,
   "main": "index.js",
   "directories": {
     "test": "tests"
