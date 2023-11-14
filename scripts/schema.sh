@@ -55,22 +55,37 @@ function generate_loquat() {
     thrift -out $target --gen cpp:no_skeleton -r $PALM_PROTOCOLS/loquat.thrift
 }
 
+
 # https://github.com/grpc/grpc-web#code-generator-plugin
-function generate_dashboard() {
+function generate_palm() {
     cd $WORKSPACE
 
-    echo "generate code for dashboard"
-    local target=palm/palm/dashboard/src/protocols
-    if [ -d $target ]
+    echo "generate code for palm/dashboard"
+    local dashboard_target=palm/palm/dashboard/src/protocols
+    if [ -d $dashboard_target ]
     then
-        rm -r $target
+        rm -r $dashboard_target
     fi
-    mkdir -p $target
+    mkdir -p $dashboard_target
     
     $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
         -I $PROTOBUF_ROOT/include/google/protobuf \
-        --js_out=import_style=commonjs,binary:$target \
-        --grpc-web_out=import_style=typescript,mode=grpcweb:$target \
+        --js_out=import_style=commonjs,binary:$dashboard_target \
+        --grpc-web_out=import_style=typescript,mode=grpcweb:$tardashboard_target \
+        $PALM_PROTOCOLS/*.proto
+
+    echo 'generate code for palm/gourd'
+    local gourd_target=palm/palm/gourd/src
+    if [ -d $gourd_target ]
+    then
+        rm -r $gourd_target
+    fi
+    mkdir -p $gourd_target
+    thrift -out $gourd_target --gen cpp:no_skeleton -r $PALM_PROTOCOLS/*.thrift
+    $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
+        -I $PROTOBUF_ROOT/include/google/protobuf \
+        --cpp_out=$gourd_target --grpc_out=$gourd_target \
+        --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_cpp_plugin \
         $PALM_PROTOCOLS/*.proto
 }
 
@@ -169,7 +184,7 @@ done
 
 generate_grpc_for_php
 
-generate_dashboard
+generate_palm
 generate_loquat
 generate_musa
 generate_gardenia
