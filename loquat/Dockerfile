@@ -6,8 +6,8 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt update
 RUN apt -y upgrade
 
-RUN apt -y install build-essential cmake golang \
-    libssl-dev libunwind-dev libboost-all-dev
+RUN apt -y install build-essential cmake clang llvm mold \
+    golang libssl-dev libunwind-dev libboost-all-dev
 RUN apt -y clean
 
 RUN mkdir /opt/loquat
