@@ -39,7 +39,7 @@ RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CL
     && update-alternatives --install /usr/bin/arm-linux-gnueabihf-g++ arm-linux-gnueabihf-g++ /usr/bin/arm-linux-gnueabihf-g++-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/riscv64-linux-gnu-gcc riscv64-linux-gnu-gcc /usr/bin/riscv64-linux-gnu-gcc-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/riscv64-linux-gnu-g++ riscv64-linux-gnu-g++ /usr/bin/riscv64-linux-gnu-g++-${GCC_VERSION} 100
-
+RUN echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.bashrc
 
 RUN mkdir -p $HOME/downloads $HOME/build
 

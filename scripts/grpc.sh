@@ -38,7 +38,7 @@ function build_grpc() {
     -DABSL_PROPAGATE_CXX_STD=ON \
     -DgRPC_INSTALL=ON -DgRPC_SSL_PROVIDER=package -DgRPC_BUILD_TESTS=OFF \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_ROOT $SOURCE_ROOT
-    make # -j $(nproc --ignore=2)
+    make -j $(nproc --ignore=2)
     make install
 }
 
