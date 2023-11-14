@@ -14,7 +14,7 @@ coconut::Application::Application(int argc, char** argv) {
       coconut::GIT_VERSION + "(" + coconut::BUILD_TIME + ")";
   argparse::ArgumentParser program(coconut::PROJECT_NAME, version);
   program.add_description(coconut::PROJECT_DESCRIPTION);
-  program.add_epilog(palm::PROJECT_HOMEPAGE);
+  program.add_epilog("https://github.com/saturn-xiv/palm");
   program.add_argument("-d", "--debug")
       .default_value(false)
       .help("run on debug mode")
