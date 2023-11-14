@@ -3,8 +3,9 @@ file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.cpp")
 
 add_library(palm STATIC ${SOURCE_LIST})
 
+
 find_package(OpenSSL REQUIRED)
-find_package(Poco REQUIRED Util)
+find_package(Poco REQUIRED JSON XML Util)
 find_package(PahoMqttCpp CONFIG REQUIRED)
 find_package(rabbitmq-c CONFIG REQUIRED)
 find_package(cpr CONFIG REQUIRED)
@@ -16,7 +17,6 @@ find_package(Libevent CONFIG REQUIRED)
 # find_package(unofficial-git2 CONFIG REQUIRED)
 find_package(SailC++ CONFIG REQUIRED)
 find_package(pugixml CONFIG REQUIRED)
-find_package(tomlplusplus CONFIG REQUIRED)
 find_package(yaml-cpp CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 find_package(mstch CONFIG REQUIRED)
@@ -39,6 +39,9 @@ find_library(MINIO_LIBRARY miniocpp)
 find_library(CURLPP_LIBRARY curlpp)
 find_library(INIH_LIBRARY inih)
 
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(tomlplusplus REQUIRED IMPORTED_TARGET tomlplusplus)
+
 FetchContent_Declare(mailio
   GIT_REPOSITORY    "https://github.com/karastojko/mailio.git"
   GIT_TAG           "0.23.0"
@@ -48,7 +51,7 @@ FetchContent_MakeAvailable(casbin)
 
 FetchContent_Declare(casbin
   GIT_REPOSITORY    "https://github.com/casbin/casbin-cpp.git"
-  GIT_TAG           "v1.54.2"
+  GIT_TAG           "4deab3b"
 )
 FetchContent_MakeAvailable(mailio casbin)
 
@@ -80,7 +83,7 @@ target_link_libraries(palm PUBLIC bamboo gourd
   aws-cpp-sdk-s3 aws-cpp-sdk-sqs 
   ${MINIO_LIBRARY} CURL::libcurl ${CURLPP_LIBRARY} ${INIH_LIBRARY}
   cpr::cpr SAIL::sail-c++
-  pugixml::static tomlplusplus::tomlplusplus yaml-cpp nlohmann_json::nlohmann_json
+  pugixml::static PkgConfig::tomlplusplus yaml-cpp nlohmann_json::nlohmann_json
   mstch::mstch pantor::inja
   PostgreSQL::PostgreSQL libpqxx::pqxx unofficial::libmariadb unofficial::sqlite3::sqlite3 
   redis++::redis++_static 

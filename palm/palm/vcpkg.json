@@ -47,7 +47,7 @@
     "mstch",
     "inja",
     "cpp-httplib",
-    { "name": "poco", "default-features": false },
+    { "name": "poco", "default-features": false, "features": ["crypto"] },
     "jwt-cpp",
 
     { "name": "libpq", "features": ["nls", "openssl", "zlib"] },
