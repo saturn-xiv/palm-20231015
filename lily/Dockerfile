@@ -42,5 +42,6 @@ COPY config.toml /etc/lily.toml
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
 WORKDIR /opt/lily
+VOLUME /workspace
 
 CMD ["/bin/bash", "-l"]

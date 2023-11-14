@@ -17,7 +17,7 @@ COPY loquat /opt/loquat/
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
-
 WORKDIR /opt/loquat
+VOLUME /workspace
 
 CMD ["/bin/bash", "-l"]

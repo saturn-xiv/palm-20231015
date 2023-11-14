@@ -33,7 +33,7 @@ COPY coconut /opt/coconut/
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
-
 WORKDIR /opt/coconut
+VOLUME /workspace
 
 CMD ["/bin/bash", "-l"]

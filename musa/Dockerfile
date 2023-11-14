@@ -19,5 +19,6 @@ COPY musa/target/musa-*.jar musa/application.properties /opt/musa/
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
 WORKDIR /opt/musa
+VOLUME /workspace
 
 CMD ["/bin/bash", "-l"]

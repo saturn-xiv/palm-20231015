@@ -10,5 +10,6 @@ COPY morus/config.json morus/dist /opt/morus/
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
 WORKDIR /opt/morus
+VOLUME /workspace
 
 CMD ["/bin/sh", "-l"]
