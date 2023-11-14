@@ -1,5 +1,3 @@
-find_package(Libevent CONFIG REQUIRED)
-
 FetchContent_Declare(thrift
   GIT_REPOSITORY    "https://github.com/apache/thrift.git"
   GIT_TAG           "v0.19.0"
@@ -13,7 +11,7 @@ add_library(gourd STATIC ${SOURCE_LIST})
 target_link_directories(gourd PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
 target_link_libraries(gourd PUBLIC
-  libevent::core libevent::extra libevent::pthreads
+  event_core event_extra event_pthreads event_openssl
   thrift thriftnb thriftz
 )
 
