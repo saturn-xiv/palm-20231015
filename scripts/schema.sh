@@ -4,13 +4,14 @@ set -e
 
 export PROTOBUF_ROOT=$HOME/.local
 export WORKSPACE=$PWD
-export PALM_PROTOCOLS=$WORKSPACE/palm/protocols
+export PALM_PROTOCOLS=$WORKSPACE/palm/palm/protocols
 
 # -----------------------------------------------------------------------------
 
 function generate_grpc_by_lang() {
-    local target=$WORKSPACE/tmp/protocols/$1
+    cd $WORKSPACE
     echo "generate code for grpc-$1"
+    local target=sdk/$1
     if [ -d $target ]
     then
         rm -r $target
@@ -24,8 +25,10 @@ function generate_grpc_by_lang() {
 }
 
 function generate_grpc_for_php() {
-    local target=$WORKSPACE/tmp/protocols/php
+    cd $WORKSPACE
+
     echo "generate code for grpc-php"
+    local target=sdk/php
     if [ -d $target ]
     then
         rm -r $target
@@ -43,19 +46,21 @@ function generate_loquat() {
     cd $WORKSPACE
 
     echo 'generate code for loquat'
-    local cpp_target=loquat/gourd/src
-    if [ -d $cpp_target ]
+    local target=loquat/loquat/gourd/src
+    if [ -d $target ]
     then
-        rm -r $cpp_target
+        rm -r $target
     fi
-    mkdir -p $cpp_target
-    thrift -out $cpp_target --gen cpp:no_skeleton -r $PALM_PROTOCOLS/loquat.thrift
+    mkdir -p $target
+    thrift -out $target --gen cpp:no_skeleton -r $PALM_PROTOCOLS/loquat.thrift
 }
 
 # https://github.com/grpc/grpc-web#code-generator-plugin
 function generate_dashboard() {
+    cd $WORKSPACE
+
     echo "generate code for dashboard"
-    local target=$WORKSPACE/dashboard/src/protocols
+    local target=palm/palm/dashboard/src/protocols
     if [ -d $target ]
     then
         rm -r $target
@@ -69,38 +74,9 @@ function generate_dashboard() {
         $PALM_PROTOCOLS/*.proto
 }
 
-
-function generate_diesel_postgresql() {
-    echo "generate diesel schema for postgresql"
-    
-    DATABASE_URL=$1 diesel print-schema \
-        -o schema_migrations \
-            casbin_rule locales settings \
-            users user_contacts user_bans user_sessions logs \
-            google_users \
-            wechat_oauth2_users wechat_mini_program_users \
-            attachments attachment_resources \
-            roles roles_users roles_constraints permissions \
-            leave_words shorter_links notifications twilio_sms_logs crawler_logs \
-            tags tag_resources \
-            categories category_resources \
-            vote_items vote_logs \
-            footprints feedbacks favorites issues comments search_histories \
-            menus \
-            excel_files excel_sheets excel_items \
-        > nut/src/schema.rs    
-    # FIXME
-    # DATABASE_URL=$1 diesel print-schema -o cms_* > cms/src/schema.rs    
-    # DATABASE_URL=$1 diesel print-schema -o bbs_* > forum/src/schema.rs
-    # DATABASE_URL=$1 diesel print-schema -o cart_* > mall/src/schema.rs
-    # DATABASE_URL=$1 diesel print-schema \
-    #     -o flashcard_books flashcard_quizzes flashcard_scores \
-    #     > flashcard/src/schema.rs
-}
-
 function generate_gardenia() {
     cd $WORKSPACE
-    local target=gardenia/src/main/java
+    local target=gardenia/gardenia/src/main/java
     
     echo "generate gRPC for gardenia"
     local gardenia_target=$target/com/github/saturn_xiv/palm/plugins/gardenia/v1
@@ -118,9 +94,9 @@ function generate_gardenia() {
 
 function generate_musa() {
     cd $WORKSPACE
-    local target=musa/src/main/java
 
     echo "generate loquat protocol for musa"
+    local target=musa/musa/src/main/java
     local loquat_target=$target/com/github/saturn_xiv/palm/plugins/loquat/v1
     if [ -d $loquat_target ]
     then
@@ -142,27 +118,11 @@ function generate_musa() {
 
 }
 
-
-function generate_lemon() {
-    cd $WORKSPACE
-    local target=lemon/gourd/src
-
-    echo "generate lemon"
-    if [ -d $target ]
-    then
-        rm -r $target
-    fi
-    mkdir -p $target
-    $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
-        -I $PROTOBUF_ROOT/include/google/protobuf \
-        --cpp_out=$target --grpc_out=$target \
-        --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_cpp_plugin \
-        $PALM_PROTOCOLS/*.proto
-}
-
 function generate_morus() {
+    cd $WORKSPACE
+
     echo "generate code for morus"
-    local target=$WORKSPACE/morus/morus/src/protocols
+    local target=morus/morus/src/protocols
     if [ -d $target ]
     then
         rm -r $target
@@ -175,8 +135,10 @@ function generate_morus() {
 }
 
 function generate_lily() {
+    cd $WORKSPACE
+
     echo "generate code for lily"
-    local target=$WORKSPACE/lily/lily/palm
+    local target=lily/lily/palm
     local -a files=(
         "lily_pb2.py"
         "lily_pb2_grpc.py"
@@ -198,45 +160,7 @@ function generate_lily() {
     sed -i 's/import lily_/from . import lily_/g' $target/lily_pb2_grpc.py
 }
 
-function generate_babel() {
-    local target=$WORKSPACE/babel/protocols
-    if [ -d $target ]
-    then
-        rm -r $target
-    fi
-    mkdir -p $target
-
-    declare -a plugins=(
-        "rbac"
-        "nut"
-        "orchid"
-        "babel"
-    )
-
-    for p in "${plugins[@]}"
-    do
-        $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
-            -I $PROTOBUF_ROOT/include/google/protobuf \
-            --cpp_out=$target --grpc_out=$target \
-            --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_cpp_plugin \
-            $PALM_PROTOCOLS/$p.proto        
-    done
-}
 # -----------------------------------------------------------------------------
-
-generate_diesel_postgresql "postgres://www:change-me@127.0.0.1:5432/demo"
-DATABASE_URL=tmp/db diesel print-schema > ops/router/src/schema.rs
-
-declare -a languages=(
-    # "node"
-    "python"
-    "ruby"
-    "cpp"
-    "csharp"
-    # https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/
-    "java" 
-    # "objective_c"
-)
 
 for l in "${languages[@]}"
 do
@@ -249,8 +173,6 @@ generate_dashboard
 generate_loquat
 generate_musa
 generate_gardenia
-generate_babel
-generate_lemon
 generate_morus
 generate_lily
 
