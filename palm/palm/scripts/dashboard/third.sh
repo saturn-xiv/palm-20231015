@@ -12,6 +12,7 @@ install_oauth() {
 
 # react-json-view 
 # dayjs date-fns 
+# react-intl need ts v5
 install_react() {
     npm install --save grpc-web filesize timezones-list \
         moment moment-timezone \
@@ -37,7 +38,7 @@ install_react() {
         react-player \
         react-draggable \
         react-big-calendar @types/react-big-calendar \
-        react-intl \
+        react-intl@6.3.2 \
         react-router-dom@latest \
         react-helmet-async \
         formik yup \
@@ -74,7 +75,6 @@ then
     exit 1
 fi
 
-
 if [ $1 == "material" ]
 then
     install_react
@@ -97,6 +97,6 @@ else
 fi
 
 
-echo "Done($1)."
+echo "done($1)."
 
 exit 0
