@@ -27,6 +27,9 @@ function build_grpc() {
     else
         git clone --recurse-submodules -b $1 https://github.com/grpc/grpc.git $SOURCE_ROOT
     fi
+    cd $SOURCE_ROOT/third_party/protobuf
+    git checkout $2
+    git submodule update --init --recursive
    
     if [ -d $BUILD_ROOT ]
     then
@@ -42,13 +45,8 @@ function build_grpc() {
     make install
 }
 
-if [ "$#" -ne 1 ]
-then
-    echo "USAGE: $0 GRPC_VERSION"
-    exit 1
-fi
 
-build_grpc $1
+build_grpc "v1.51.1" "v3.21.12"
 
 
 if [[ $UBUNTU_CODENAME == "bionic" ]]

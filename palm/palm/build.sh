@@ -15,17 +15,15 @@ function build_dashboard() {
 
 function build_backend() {
     local build_dir=$HOME/build/palm-$(lsb_release -cs)-$1-Release
-    cmake cmake -DCMAKE_BUILD_TYPE=Release -B $build_dir -S $SOURCE_DIR
-    make -C $build_dir
-
+    
     local mailio_args="-DMAILIO_BUILD_DOCUMENTATION=OFF -DMAILIO_BUILD_EXAMPLES=OFF -DMAILIO_BUILD_SHARED_LIBRARY=OFF -DMAILIO_BUILD_TESTS=OFF"
     local casbin_args="-DCASBIN_BUILD_TEST=OFF -DCASBIN_BUILD_BENCHMARK=OFF -DCASBIN_BUILD_PYTHON_BINDINGS=OFF -DCASBIN_INSTALL=OFF"
     local thrift_args="-DBUILD_TESTING=OFF -DBUILD_COMPILER=OFF -DWITH_OPENSSL=ON -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF"
     
     cmake -DCMAKE_MAKE_PROGRAM=make -DCMAKE_BUILD_TYPE=Release -B $build_dir -S $SOURCE_DIR \
         -DVCPKG_HOST_TRIPLET=x64-linux-release -DVCPKG_TARGET_TRIPLET=$1-linux-release \
-        -DCMAKE_TOOLCHAIN_FILE=$HOME/local/vcpkg/scripts/buildsystems/vcpkg.cmake \
-        -DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=$WORKSPACE/toolchains/$1.cmake \
+        -DCMAKE_TOOLCHAIN_FILE=$SOURCE_DIR/vcpkg/scripts/buildsystems/vcpkg.cmake \
+        -DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=$SOURCE_DIR/toolchains/$1.cmake \
         $mailio_args $casbin_args $thrift_args -DBoost_NO_WARN_NEW_VERSIONS=1
         
     make -j $(nproc --ignore=2)
