@@ -1,8 +1,6 @@
 node_modules/
 
-/build/
 /include/palm/version.hpp
 /config.toml
 /.env
 /tmp/
-/.env
