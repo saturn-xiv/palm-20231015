@@ -1,0 +1,23 @@
+[rpc]
+port = 9999
+max-workers = 8
+
+[redis]
+host = "127.0.0.1"
+port = 6379
+namespace = "lily"
+db = 2
+
+[rabbitmq]
+host = "127.0.0.1"
+port = 5672
+user = "guest"
+password = "guest"
+virtual-host = "lily"
+
+[minio]
+endpoint = "localhost:9000"
+access-key = "change-me"
+secret-key = "change-me"
+secure = false
+namespace = "lily"
