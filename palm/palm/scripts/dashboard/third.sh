@@ -38,7 +38,7 @@ install_react() {
         react-player \
         react-draggable \
         react-big-calendar @types/react-big-calendar \
-        react-intl@6.3.2 \
+        react-intl@~6.3.2 \
         react-router-dom@latest \
         react-helmet-async \
         formik yup \
