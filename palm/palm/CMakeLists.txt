@@ -8,7 +8,7 @@ project(
     palm
     VERSION 2023.11.14
     DESCRIPTION "A total free education & translation & ops solution."
-    LANGUAGES CXX)
+    LANGUAGES C CXX)
 # --------------------------------------------------------
 # FIXME https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100900
 set(CMAKE_CXX_STANDARD 20)

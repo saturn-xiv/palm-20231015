@@ -1,4 +1,6 @@
 find_package(Libevent CONFIG REQUIRED)
+find_package(re2 CONFIG REQUIRED)
+find_package(gRPC CONFIG REQUIRED)
 
 FetchContent_Declare(thrift
   GIT_REPOSITORY    "https://github.com/apache/thrift.git"
@@ -13,8 +15,8 @@ add_library(gourd STATIC ${SOURCE_LIST})
 target_link_directories(gourd PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
 target_link_libraries(gourd PUBLIC dl m
-  re2::re2 c-ares::cares
-  gRPC::gpr gRPC::grpc gRPC::grpc++ gRPC::grpc++_alts gRPC::grpc++_reflection
+  re2::re2
+  gRPC::grpc gRPC::grpc++ gRPC::grpc++_alts # gRPC::grpc++_reflection
   libevent::core libevent::extra libevent::pthreads
   thrift thriftnb thriftz
 )

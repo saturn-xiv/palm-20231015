@@ -65,6 +65,7 @@
     "flatbuffers",
     "protobuf",
     { "name": "abseil", "features": ["cxx17"] },
+    "re2",
     "grpc",
 
     "spdlog",

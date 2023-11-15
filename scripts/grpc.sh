@@ -54,5 +54,5 @@ then
     cp $SOURCE_ROOT/third_party/re2/re2.pc $HOME/.local/lib/pkgconfig/
 fi
 
-echo "done($1)."
+echo "done."
 exit 0

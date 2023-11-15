@@ -42,18 +42,16 @@ find_library(INIH_LIBRARY inih)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(tomlplusplus REQUIRED IMPORTED_TARGET tomlplusplus)
 
-FetchContent_Declare(mailio
-  GIT_REPOSITORY    "https://github.com/karastojko/mailio.git"
-  GIT_TAG           "0.23.0"
-)
-FetchContent_MakeAvailable(casbin)
+# FetchContent_Declare(mailio
+#   GIT_REPOSITORY    "https://github.com/karastojko/mailio.git"
+#   GIT_TAG           "0.23.0"
+# )
 
-
-FetchContent_Declare(casbin
-  GIT_REPOSITORY    "https://github.com/casbin/casbin-cpp.git"
-  GIT_TAG           "4deab3b"
-)
-FetchContent_MakeAvailable(mailio casbin)
+# FetchContent_Declare(casbin
+#   GIT_REPOSITORY    "https://github.com/casbin/casbin-cpp.git"
+#   GIT_TAG           "4deab3b"
+# )
+# FetchContent_MakeAvailable(mailio)
 
 target_include_directories(palm PUBLIC
   ${PROJECT_SOURCE_DIR}/include
@@ -66,8 +64,8 @@ target_include_directories(palm PUBLIC
   ${casbin_SOURCE_DIR}/include
 )
 
-target_link_libraries(palm PUBLIC bamboo gourd
-  mailio casbin
+target_link_libraries(palm PUBLIC gourd
+  # mailio casbin
   
   OpenSSL::SSL OpenSSL::Crypto
   Poco::Util
@@ -75,7 +73,7 @@ target_link_libraries(palm PUBLIC bamboo gourd
   spdlog::spdlog argparse::argparse magic_enum::magic_enum
 
   libevent::core libevent::extra libevent::pthreads
-  Libssh2::libssh2 LibLZMA::LibLZMA # unofficial::git2::git2
+  Libssh2::libssh2_static LibLZMA::LibLZMA # unofficial::git2::git2
   ${LUA_LIBRARIES}
 
   PahoMqttCpp::paho-mqttpp3-static rabbitmq::rabbitmq-static
@@ -83,7 +81,7 @@ target_link_libraries(palm PUBLIC bamboo gourd
   aws-cpp-sdk-s3 aws-cpp-sdk-sqs 
   ${MINIO_LIBRARY} CURL::libcurl ${CURLPP_LIBRARY} ${INIH_LIBRARY}
   cpr::cpr SAIL::sail-c++
-  pugixml::static PkgConfig::tomlplusplus yaml-cpp nlohmann_json::nlohmann_json
+  pugixml::static PkgConfig::tomlplusplus yaml-cpp::yaml-cpp nlohmann_json::nlohmann_json
   mstch::mstch pantor::inja
   PostgreSQL::PostgreSQL libpqxx::pqxx unofficial::libmariadb unofficial::sqlite3::sqlite3 
   redis++::redis++_static 
